@@ -19,9 +19,7 @@ func cClosureStruct_Set() error {
 }
 
 type CClosure struct {
-	native  uintptr
-	Closure *Closure
-	// UNSUPPORTED : C value 'callback' : no Go type for 'gpointer'
+	native uintptr
 }
 
 var closureStruct *gi.Struct
@@ -36,10 +34,7 @@ func closureStruct_Set() error {
 }
 
 type Closure struct {
-	native    uintptr
-	InMarshal uint32
-	IsInvalid uint32
-	// UNSUPPORTED : C value 'marshal' : missing Type
+	native uintptr
 }
 
 // UNSUPPORTED : C value 'g_closure_new_object' : parameter 'object' of type 'Object' not supported
@@ -191,8 +186,6 @@ func closureNotifyDataStruct_Set() error {
 
 type ClosureNotifyData struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'notify' : no Go type for 'ClosureNotify'
 }
 
 var enumClassStruct *gi.Struct
@@ -207,12 +200,7 @@ func enumClassStruct_Set() error {
 }
 
 type EnumClass struct {
-	native     uintptr
-	GTypeClass *TypeClass
-	Minimum    int32
-	Maximum    int32
-	NValues    uint32
-	Values     *EnumValue
+	native uintptr
 }
 
 var enumValueStruct *gi.Struct
@@ -227,10 +215,7 @@ func enumValueStruct_Set() error {
 }
 
 type EnumValue struct {
-	native    uintptr
-	Value     int32
-	ValueName string
-	ValueNick string
+	native uintptr
 }
 
 var flagsClassStruct *gi.Struct
@@ -245,11 +230,7 @@ func flagsClassStruct_Set() error {
 }
 
 type FlagsClass struct {
-	native     uintptr
-	GTypeClass *TypeClass
-	Mask       uint32
-	NValues    uint32
-	Values     *FlagsValue
+	native uintptr
 }
 
 var flagsValueStruct *gi.Struct
@@ -264,10 +245,7 @@ func flagsValueStruct_Set() error {
 }
 
 type FlagsValue struct {
-	native    uintptr
-	Value     uint32
-	ValueName string
-	ValueNick string
+	native uintptr
 }
 
 var initiallyUnownedClassStruct *gi.Struct
@@ -282,16 +260,7 @@ func initiallyUnownedClassStruct_Set() error {
 }
 
 type InitiallyUnownedClass struct {
-	native     uintptr
-	GTypeClass *TypeClass
-	// UNSUPPORTED : C value 'constructor' : missing Type
-	// UNSUPPORTED : C value 'set_property' : missing Type
-	// UNSUPPORTED : C value 'get_property' : missing Type
-	// UNSUPPORTED : C value 'dispose' : missing Type
-	// UNSUPPORTED : C value 'finalize' : missing Type
-	// UNSUPPORTED : C value 'dispatch_properties_changed' : missing Type
-	// UNSUPPORTED : C value 'notify' : missing Type
-	// UNSUPPORTED : C value 'constructed' : missing Type
+	native uintptr
 }
 
 var interfaceInfoStruct *gi.Struct
@@ -307,9 +276,6 @@ func interfaceInfoStruct_Set() error {
 
 type InterfaceInfo struct {
 	native uintptr
-	// UNSUPPORTED : C value 'interface_init' : no Go type for 'InterfaceInitFunc'
-	// UNSUPPORTED : C value 'interface_finalize' : no Go type for 'InterfaceFinalizeFunc'
-	// UNSUPPORTED : C value 'interface_data' : no Go type for 'gpointer'
 }
 
 var objectClassStruct *gi.Struct
@@ -324,16 +290,7 @@ func objectClassStruct_Set() error {
 }
 
 type ObjectClass struct {
-	native     uintptr
-	GTypeClass *TypeClass
-	// UNSUPPORTED : C value 'constructor' : missing Type
-	// UNSUPPORTED : C value 'set_property' : missing Type
-	// UNSUPPORTED : C value 'get_property' : missing Type
-	// UNSUPPORTED : C value 'dispose' : missing Type
-	// UNSUPPORTED : C value 'finalize' : missing Type
-	// UNSUPPORTED : C value 'dispatch_properties_changed' : missing Type
-	// UNSUPPORTED : C value 'notify' : missing Type
-	// UNSUPPORTED : C value 'constructed' : missing Type
+	native uintptr
 }
 
 // UNSUPPORTED : C value 'g_object_class_find_property' : return type 'ParamSpec' not supported
@@ -417,8 +374,6 @@ func objectConstructParamStruct_Set() error {
 
 type ObjectConstructParam struct {
 	native uintptr
-	// UNSUPPORTED : C value 'pspec' : no Go type for 'ParamSpec'
-	Value *Value
 }
 
 var paramSpecClassStruct *gi.Struct
@@ -433,13 +388,7 @@ func paramSpecClassStruct_Set() error {
 }
 
 type ParamSpecClass struct {
-	native     uintptr
-	GTypeClass *TypeClass
-	// UNSUPPORTED : C value 'value_type' : no Go type for 'GType'
-	// UNSUPPORTED : C value 'finalize' : missing Type
-	// UNSUPPORTED : C value 'value_set_default' : missing Type
-	// UNSUPPORTED : C value 'value_validate' : missing Type
-	// UNSUPPORTED : C value 'values_cmp' : missing Type
+	native uintptr
 }
 
 var paramSpecPoolStruct *gi.Struct
@@ -479,15 +428,7 @@ func paramSpecTypeInfoStruct_Set() error {
 }
 
 type ParamSpecTypeInfo struct {
-	native       uintptr
-	InstanceSize uint16
-	NPreallocs   uint16
-	// UNSUPPORTED : C value 'instance_init' : missing Type
-	// UNSUPPORTED : C value 'value_type' : no Go type for 'GType'
-	// UNSUPPORTED : C value 'finalize' : missing Type
-	// UNSUPPORTED : C value 'value_set_default' : missing Type
-	// UNSUPPORTED : C value 'value_validate' : missing Type
-	// UNSUPPORTED : C value 'values_cmp' : missing Type
+	native uintptr
 }
 
 var parameterStruct *gi.Struct
@@ -503,8 +444,6 @@ func parameterStruct_Set() error {
 
 type Parameter struct {
 	native uintptr
-	Name   string
-	Value  *Value
 }
 
 var signalInvocationHintStruct *gi.Struct
@@ -519,10 +458,7 @@ func signalInvocationHintStruct_Set() error {
 }
 
 type SignalInvocationHint struct {
-	native   uintptr
-	SignalId uint32
-	// UNSUPPORTED : C value 'detail' : no Go type for 'GLib.Quark'
-	// UNSUPPORTED : C value 'run_type' : no Go type for 'SignalFlags'
+	native uintptr
 }
 
 var signalQueryStruct *gi.Struct
@@ -537,14 +473,7 @@ func signalQueryStruct_Set() error {
 }
 
 type SignalQuery_ struct {
-	native     uintptr
-	SignalId   uint32
-	SignalName string
-	// UNSUPPORTED : C value 'itype' : no Go type for 'GType'
-	// UNSUPPORTED : C value 'signal_flags' : no Go type for 'SignalFlags'
-	// UNSUPPORTED : C value 'return_type' : no Go type for 'GType'
-	NParams uint32
-	// UNSUPPORTED : C value 'param_types' : missing Type
+	native uintptr
 }
 
 var typeClassStruct *gi.Struct
@@ -726,7 +655,6 @@ func typeFundamentalInfoStruct_Set() error {
 
 type TypeFundamentalInfo struct {
 	native uintptr
-	// UNSUPPORTED : C value 'type_flags' : no Go type for 'TypeFundamentalFlags'
 }
 
 var typeInfoStruct *gi.Struct
@@ -741,17 +669,7 @@ func typeInfoStruct_Set() error {
 }
 
 type TypeInfo struct {
-	native    uintptr
-	ClassSize uint16
-	// UNSUPPORTED : C value 'base_init' : no Go type for 'BaseInitFunc'
-	// UNSUPPORTED : C value 'base_finalize' : no Go type for 'BaseFinalizeFunc'
-	// UNSUPPORTED : C value 'class_init' : no Go type for 'ClassInitFunc'
-	// UNSUPPORTED : C value 'class_finalize' : no Go type for 'ClassFinalizeFunc'
-	// UNSUPPORTED : C value 'class_data' : no Go type for 'gpointer'
-	InstanceSize uint16
-	NPreallocs   uint16
-	// UNSUPPORTED : C value 'instance_init' : no Go type for 'InstanceInitFunc'
-	ValueTable *TypeValueTable
+	native uintptr
 }
 
 var typeInstanceStruct *gi.Struct
@@ -830,14 +748,7 @@ func typeModuleClassStruct_Set() error {
 }
 
 type TypeModuleClass struct {
-	native      uintptr
-	ParentClass *ObjectClass
-	// UNSUPPORTED : C value 'load' : missing Type
-	// UNSUPPORTED : C value 'unload' : missing Type
-	// UNSUPPORTED : C value 'reserved1' : missing Type
-	// UNSUPPORTED : C value 'reserved2' : missing Type
-	// UNSUPPORTED : C value 'reserved3' : missing Type
-	// UNSUPPORTED : C value 'reserved4' : missing Type
+	native uintptr
 }
 
 var typePluginClassStruct *gi.Struct
@@ -853,10 +764,6 @@ func typePluginClassStruct_Set() error {
 
 type TypePluginClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'use_plugin' : no Go type for 'TypePluginUse'
-	// UNSUPPORTED : C value 'unuse_plugin' : no Go type for 'TypePluginUnuse'
-	// UNSUPPORTED : C value 'complete_type_info' : no Go type for 'TypePluginCompleteTypeInfo'
-	// UNSUPPORTED : C value 'complete_interface_info' : no Go type for 'TypePluginCompleteInterfaceInfo'
 }
 
 var typeQueryStruct *gi.Struct
@@ -872,10 +779,6 @@ func typeQueryStruct_Set() error {
 
 type TypeQuery struct {
 	native uintptr
-	// UNSUPPORTED : C value 'type' : no Go type for 'GType'
-	TypeName     string
-	ClassSize    uint32
-	InstanceSize uint32
 }
 
 var typeValueTableStruct *gi.Struct
@@ -891,14 +794,6 @@ func typeValueTableStruct_Set() error {
 
 type TypeValueTable struct {
 	native uintptr
-	// UNSUPPORTED : C value 'value_init' : missing Type
-	// UNSUPPORTED : C value 'value_free' : missing Type
-	// UNSUPPORTED : C value 'value_copy' : missing Type
-	// UNSUPPORTED : C value 'value_peek_pointer' : missing Type
-	CollectFormat string
-	// UNSUPPORTED : C value 'collect_value' : missing Type
-	LcopyFormat string
-	// UNSUPPORTED : C value 'lcopy_value' : missing Type
 }
 
 var valueStruct *gi.Struct
@@ -914,7 +809,6 @@ func valueStruct_Set() error {
 
 type Value struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : missing Type
 }
 
 var valueCopyFunction *gi.Function
@@ -2200,9 +2094,7 @@ func valueArrayStruct_Set() error {
 }
 
 type ValueArray struct {
-	native  uintptr
-	NValues uint32
-	Values  *Value
+	native uintptr
 }
 
 var valueArrayNewFunction *gi.Function

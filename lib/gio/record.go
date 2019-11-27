@@ -20,11 +20,6 @@ func actionEntryStruct_Set() error {
 
 type ActionEntry struct {
 	native uintptr
-	Name   string
-	// UNSUPPORTED : C value 'activate' : missing Type
-	ParameterType string
-	State         string
-	// UNSUPPORTED : C value 'change_state' : missing Type
 }
 
 var actionGroupInterfaceStruct *gi.Struct
@@ -40,21 +35,6 @@ func actionGroupInterfaceStruct_Set() error {
 
 type ActionGroupInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'has_action' : missing Type
-	// UNSUPPORTED : C value 'list_actions' : missing Type
-	// UNSUPPORTED : C value 'get_action_enabled' : missing Type
-	// UNSUPPORTED : C value 'get_action_parameter_type' : missing Type
-	// UNSUPPORTED : C value 'get_action_state_type' : missing Type
-	// UNSUPPORTED : C value 'get_action_state_hint' : missing Type
-	// UNSUPPORTED : C value 'get_action_state' : missing Type
-	// UNSUPPORTED : C value 'change_action_state' : missing Type
-	// UNSUPPORTED : C value 'activate_action' : missing Type
-	// UNSUPPORTED : C value 'action_added' : missing Type
-	// UNSUPPORTED : C value 'action_removed' : missing Type
-	// UNSUPPORTED : C value 'action_enabled_changed' : missing Type
-	// UNSUPPORTED : C value 'action_state_changed' : missing Type
-	// UNSUPPORTED : C value 'query_action' : missing Type
 }
 
 var actionInterfaceStruct *gi.Struct
@@ -70,15 +50,6 @@ func actionInterfaceStruct_Set() error {
 
 type ActionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_parameter_type' : missing Type
-	// UNSUPPORTED : C value 'get_state_type' : missing Type
-	// UNSUPPORTED : C value 'get_state_hint' : missing Type
-	// UNSUPPORTED : C value 'get_enabled' : missing Type
-	// UNSUPPORTED : C value 'get_state' : missing Type
-	// UNSUPPORTED : C value 'change_state' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
 }
 
 var actionMapInterfaceStruct *gi.Struct
@@ -94,10 +65,6 @@ func actionMapInterfaceStruct_Set() error {
 
 type ActionMapInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'lookup_action' : missing Type
-	// UNSUPPORTED : C value 'add_action' : missing Type
-	// UNSUPPORTED : C value 'remove_action' : missing Type
 }
 
 var appInfoIfaceStruct *gi.Struct
@@ -113,32 +80,6 @@ func appInfoIfaceStruct_Set() error {
 
 type AppInfoIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'dup' : missing Type
-	// UNSUPPORTED : C value 'equal' : missing Type
-	// UNSUPPORTED : C value 'get_id' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_description' : missing Type
-	// UNSUPPORTED : C value 'get_executable' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'launch' : missing Type
-	// UNSUPPORTED : C value 'supports_uris' : missing Type
-	// UNSUPPORTED : C value 'supports_files' : missing Type
-	// UNSUPPORTED : C value 'launch_uris' : missing Type
-	// UNSUPPORTED : C value 'should_show' : missing Type
-	// UNSUPPORTED : C value 'set_as_default_for_type' : missing Type
-	// UNSUPPORTED : C value 'set_as_default_for_extension' : missing Type
-	// UNSUPPORTED : C value 'add_supports_type' : missing Type
-	// UNSUPPORTED : C value 'can_remove_supports_type' : missing Type
-	// UNSUPPORTED : C value 'remove_supports_type' : missing Type
-	// UNSUPPORTED : C value 'can_delete' : missing Type
-	// UNSUPPORTED : C value 'do_delete' : missing Type
-	// UNSUPPORTED : C value 'get_commandline' : missing Type
-	// UNSUPPORTED : C value 'get_display_name' : missing Type
-	// UNSUPPORTED : C value 'set_as_last_used_for_type' : missing Type
-	// UNSUPPORTED : C value 'get_supported_types' : missing Type
-	// UNSUPPORTED : C value 'launch_uris_async' : missing Type
-	// UNSUPPORTED : C value 'launch_uris_finish' : missing Type
 }
 
 var appLaunchContextClassStruct *gi.Struct
@@ -154,15 +95,6 @@ func appLaunchContextClassStruct_Set() error {
 
 type AppLaunchContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_display' : missing Type
-	// UNSUPPORTED : C value 'get_startup_notify_id' : missing Type
-	// UNSUPPORTED : C value 'launch_failed' : missing Type
-	// UNSUPPORTED : C value 'launched' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
 }
 
 var appLaunchContextPrivateStruct *gi.Struct
@@ -193,21 +125,6 @@ func applicationClassStruct_Set() error {
 
 type ApplicationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'startup' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'open' : missing Type
-	// UNSUPPORTED : C value 'command_line' : missing Type
-	// UNSUPPORTED : C value 'local_command_line' : missing Type
-	// UNSUPPORTED : C value 'before_emit' : missing Type
-	// UNSUPPORTED : C value 'after_emit' : missing Type
-	// UNSUPPORTED : C value 'add_platform_data' : missing Type
-	// UNSUPPORTED : C value 'quit_mainloop' : missing Type
-	// UNSUPPORTED : C value 'run_mainloop' : missing Type
-	// UNSUPPORTED : C value 'shutdown' : missing Type
-	// UNSUPPORTED : C value 'dbus_register' : missing Type
-	// UNSUPPORTED : C value 'dbus_unregister' : missing Type
-	// UNSUPPORTED : C value 'handle_local_options' : missing Type
-	// UNSUPPORTED : C value 'name_lost' : missing Type
 }
 
 var applicationCommandLineClassStruct *gi.Struct
@@ -223,9 +140,6 @@ func applicationCommandLineClassStruct_Set() error {
 
 type ApplicationCommandLineClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'print_literal' : missing Type
-	// UNSUPPORTED : C value 'printerr_literal' : missing Type
-	// UNSUPPORTED : C value 'get_stdin' : missing Type
 }
 
 var applicationCommandLinePrivateStruct *gi.Struct
@@ -271,9 +185,6 @@ func asyncInitableIfaceStruct_Set() error {
 
 type AsyncInitableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'init_async' : missing Type
-	// UNSUPPORTED : C value 'init_finish' : missing Type
 }
 
 var asyncResultIfaceStruct *gi.Struct
@@ -289,10 +200,6 @@ func asyncResultIfaceStruct_Set() error {
 
 type AsyncResultIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_user_data' : missing Type
-	// UNSUPPORTED : C value 'get_source_object' : missing Type
-	// UNSUPPORTED : C value 'is_tagged' : missing Type
 }
 
 var bufferedInputStreamClassStruct *gi.Struct
@@ -307,16 +214,7 @@ func bufferedInputStreamClassStruct_Set() error {
 }
 
 type BufferedInputStreamClass struct {
-	native      uintptr
-	ParentClass *FilterInputStreamClass
-	// UNSUPPORTED : C value 'fill' : missing Type
-	// UNSUPPORTED : C value 'fill_async' : missing Type
-	// UNSUPPORTED : C value 'fill_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var bufferedInputStreamPrivateStruct *gi.Struct
@@ -346,10 +244,7 @@ func bufferedOutputStreamClassStruct_Set() error {
 }
 
 type BufferedOutputStreamClass struct {
-	native      uintptr
-	ParentClass *FilterOutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
+	native uintptr
 }
 
 var bufferedOutputStreamPrivateStruct *gi.Struct
@@ -380,13 +275,6 @@ func cancellableClassStruct_Set() error {
 
 type CancellableClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'cancelled' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var cancellablePrivateStruct *gi.Struct
@@ -417,7 +305,6 @@ func charsetConverterClassStruct_Set() error {
 
 type CharsetConverterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var converterIfaceStruct *gi.Struct
@@ -433,9 +320,6 @@ func converterIfaceStruct_Set() error {
 
 type ConverterIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'convert' : missing Type
-	// UNSUPPORTED : C value 'reset' : missing Type
 }
 
 var converterInputStreamClassStruct *gi.Struct
@@ -450,13 +334,7 @@ func converterInputStreamClassStruct_Set() error {
 }
 
 type ConverterInputStreamClass struct {
-	native      uintptr
-	ParentClass *FilterInputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var converterInputStreamPrivateStruct *gi.Struct
@@ -486,13 +364,7 @@ func converterOutputStreamClassStruct_Set() error {
 }
 
 type ConverterOutputStreamClass struct {
-	native      uintptr
-	ParentClass *FilterOutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var converterOutputStreamPrivateStruct *gi.Struct
@@ -537,11 +409,7 @@ func dBusAnnotationInfoStruct_Set() error {
 }
 
 type DBusAnnotationInfo struct {
-	native   uintptr
-	RefCount int32
-	Key      string
-	Value    string
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusAnnotationInfoRefFunction *gi.Function
@@ -616,11 +484,7 @@ func dBusArgInfoStruct_Set() error {
 }
 
 type DBusArgInfo struct {
-	native    uintptr
-	RefCount  int32
-	Name      string
-	Signature string
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusArgInfoRefFunction *gi.Function
@@ -695,9 +559,7 @@ func dBusErrorEntryStruct_Set() error {
 }
 
 type DBusErrorEntry struct {
-	native        uintptr
-	ErrorCode     int32
-	DbusErrorName string
+	native uintptr
 }
 
 var dBusInterfaceIfaceStruct *gi.Struct
@@ -713,11 +575,6 @@ func dBusInterfaceIfaceStruct_Set() error {
 
 type DBusInterfaceIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_info' : missing Type
-	// UNSUPPORTED : C value 'get_object' : missing Type
-	// UNSUPPORTED : C value 'set_object' : missing Type
-	// UNSUPPORTED : C value 'dup_object' : missing Type
 }
 
 var dBusInterfaceInfoStruct *gi.Struct
@@ -732,13 +589,7 @@ func dBusInterfaceInfoStruct_Set() error {
 }
 
 type DBusInterfaceInfo struct {
-	native   uintptr
-	RefCount int32
-	Name     string
-	// UNSUPPORTED : C value 'methods' : missing Type
-	// UNSUPPORTED : C value 'signals' : missing Type
-	// UNSUPPORTED : C value 'properties' : missing Type
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusInterfaceInfoCacheBuildFunction *gi.Function
@@ -971,12 +822,6 @@ func dBusInterfaceSkeletonClassStruct_Set() error {
 
 type DBusInterfaceSkeletonClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_info' : missing Type
-	// UNSUPPORTED : C value 'get_vtable' : missing Type
-	// UNSUPPORTED : C value 'get_properties' : missing Type
-	// UNSUPPORTED : C value 'flush' : missing Type
-	// UNSUPPORTED : C value 'g_authorize_method' : missing Type
 }
 
 var dBusInterfaceSkeletonPrivateStruct *gi.Struct
@@ -1007,9 +852,6 @@ func dBusInterfaceVTableStruct_Set() error {
 
 type DBusInterfaceVTable struct {
 	native uintptr
-	// UNSUPPORTED : C value 'method_call' : no Go type for 'DBusInterfaceMethodCallFunc'
-	// UNSUPPORTED : C value 'get_property' : no Go type for 'DBusInterfaceGetPropertyFunc'
-	// UNSUPPORTED : C value 'set_property' : no Go type for 'DBusInterfaceSetPropertyFunc'
 }
 
 var dBusMethodInfoStruct *gi.Struct
@@ -1024,12 +866,7 @@ func dBusMethodInfoStruct_Set() error {
 }
 
 type DBusMethodInfo struct {
-	native   uintptr
-	RefCount int32
-	Name     string
-	// UNSUPPORTED : C value 'in_args' : missing Type
-	// UNSUPPORTED : C value 'out_args' : missing Type
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusMethodInfoRefFunction *gi.Function
@@ -1104,12 +941,7 @@ func dBusNodeInfoStruct_Set() error {
 }
 
 type DBusNodeInfo struct {
-	native   uintptr
-	RefCount int32
-	Path     string
-	// UNSUPPORTED : C value 'interfaces' : missing Type
-	// UNSUPPORTED : C value 'nodes' : missing Type
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusNodeInfoNewForXmlFunction *gi.Function
@@ -1252,12 +1084,6 @@ func dBusObjectIfaceStruct_Set() error {
 
 type DBusObjectIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_object_path' : missing Type
-	// UNSUPPORTED : C value 'get_interfaces' : missing Type
-	// UNSUPPORTED : C value 'get_interface' : missing Type
-	// UNSUPPORTED : C value 'interface_added' : missing Type
-	// UNSUPPORTED : C value 'interface_removed' : missing Type
 }
 
 var dBusObjectManagerClientClassStruct *gi.Struct
@@ -1273,9 +1099,6 @@ func dBusObjectManagerClientClassStruct_Set() error {
 
 type DBusObjectManagerClientClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'interface_proxy_signal' : missing Type
-	// UNSUPPORTED : C value 'interface_proxy_properties_changed' : missing Type
 }
 
 var dBusObjectManagerClientPrivateStruct *gi.Struct
@@ -1306,15 +1129,6 @@ func dBusObjectManagerIfaceStruct_Set() error {
 
 type DBusObjectManagerIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_object_path' : missing Type
-	// UNSUPPORTED : C value 'get_objects' : missing Type
-	// UNSUPPORTED : C value 'get_object' : missing Type
-	// UNSUPPORTED : C value 'get_interface' : missing Type
-	// UNSUPPORTED : C value 'object_added' : missing Type
-	// UNSUPPORTED : C value 'object_removed' : missing Type
-	// UNSUPPORTED : C value 'interface_added' : missing Type
-	// UNSUPPORTED : C value 'interface_removed' : missing Type
 }
 
 var dBusObjectManagerServerClassStruct *gi.Struct
@@ -1330,7 +1144,6 @@ func dBusObjectManagerServerClassStruct_Set() error {
 
 type DBusObjectManagerServerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var dBusObjectManagerServerPrivateStruct *gi.Struct
@@ -1361,7 +1174,6 @@ func dBusObjectProxyClassStruct_Set() error {
 
 type DBusObjectProxyClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var dBusObjectProxyPrivateStruct *gi.Struct
@@ -1392,8 +1204,6 @@ func dBusObjectSkeletonClassStruct_Set() error {
 
 type DBusObjectSkeletonClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'authorize_method' : missing Type
 }
 
 var dBusObjectSkeletonPrivateStruct *gi.Struct
@@ -1423,12 +1233,7 @@ func dBusPropertyInfoStruct_Set() error {
 }
 
 type DBusPropertyInfo struct {
-	native    uintptr
-	RefCount  int32
-	Name      string
-	Signature string
-	// UNSUPPORTED : C value 'flags' : no Go type for 'DBusPropertyInfoFlags'
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusPropertyInfoRefFunction *gi.Function
@@ -1504,8 +1309,6 @@ func dBusProxyClassStruct_Set() error {
 
 type DBusProxyClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_properties_changed' : missing Type
-	// UNSUPPORTED : C value 'g_signal' : missing Type
 }
 
 var dBusProxyPrivateStruct *gi.Struct
@@ -1535,11 +1338,7 @@ func dBusSignalInfoStruct_Set() error {
 }
 
 type DBusSignalInfo struct {
-	native   uintptr
-	RefCount int32
-	Name     string
-	// UNSUPPORTED : C value 'args' : missing Type
-	// UNSUPPORTED : C value 'annotations' : missing Type
+	native uintptr
 }
 
 var dBusSignalInfoRefFunction *gi.Function
@@ -1615,9 +1414,6 @@ func dBusSubtreeVTableStruct_Set() error {
 
 type DBusSubtreeVTable struct {
 	native uintptr
-	// UNSUPPORTED : C value 'enumerate' : no Go type for 'DBusSubtreeEnumerateFunc'
-	// UNSUPPORTED : C value 'introspect' : no Go type for 'DBusSubtreeIntrospectFunc'
-	// UNSUPPORTED : C value 'dispatch' : no Go type for 'DBusSubtreeDispatchFunc'
 }
 
 var dataInputStreamClassStruct *gi.Struct
@@ -1632,13 +1428,7 @@ func dataInputStreamClassStruct_Set() error {
 }
 
 type DataInputStreamClass struct {
-	native      uintptr
-	ParentClass *BufferedInputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var dataInputStreamPrivateStruct *gi.Struct
@@ -1668,13 +1458,7 @@ func dataOutputStreamClassStruct_Set() error {
 }
 
 type DataOutputStreamClass struct {
-	native      uintptr
-	ParentClass *FilterOutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var dataOutputStreamPrivateStruct *gi.Struct
@@ -1705,12 +1489,6 @@ func datagramBasedInterfaceStruct_Set() error {
 
 type DatagramBasedInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'receive_messages' : missing Type
-	// UNSUPPORTED : C value 'send_messages' : missing Type
-	// UNSUPPORTED : C value 'create_source' : missing Type
-	// UNSUPPORTED : C value 'condition_check' : missing Type
-	// UNSUPPORTED : C value 'condition_wait' : missing Type
 }
 
 var desktopAppInfoClassStruct *gi.Struct
@@ -1726,7 +1504,6 @@ func desktopAppInfoClassStruct_Set() error {
 
 type DesktopAppInfoClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var desktopAppInfoLookupIfaceStruct *gi.Struct
@@ -1742,8 +1519,6 @@ func desktopAppInfoLookupIfaceStruct_Set() error {
 
 type DesktopAppInfoLookupIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_default_for_uri_scheme' : missing Type
 }
 
 var driveIfaceStruct *gi.Struct
@@ -1759,39 +1534,6 @@ func driveIfaceStruct_Set() error {
 
 type DriveIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'disconnected' : missing Type
-	// UNSUPPORTED : C value 'eject_button' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'has_volumes' : missing Type
-	// UNSUPPORTED : C value 'get_volumes' : missing Type
-	// UNSUPPORTED : C value 'is_media_removable' : missing Type
-	// UNSUPPORTED : C value 'has_media' : missing Type
-	// UNSUPPORTED : C value 'is_media_check_automatic' : missing Type
-	// UNSUPPORTED : C value 'can_eject' : missing Type
-	// UNSUPPORTED : C value 'can_poll_for_media' : missing Type
-	// UNSUPPORTED : C value 'eject' : missing Type
-	// UNSUPPORTED : C value 'eject_finish' : missing Type
-	// UNSUPPORTED : C value 'poll_for_media' : missing Type
-	// UNSUPPORTED : C value 'poll_for_media_finish' : missing Type
-	// UNSUPPORTED : C value 'get_identifier' : missing Type
-	// UNSUPPORTED : C value 'enumerate_identifiers' : missing Type
-	// UNSUPPORTED : C value 'get_start_stop_type' : missing Type
-	// UNSUPPORTED : C value 'can_start' : missing Type
-	// UNSUPPORTED : C value 'can_start_degraded' : missing Type
-	// UNSUPPORTED : C value 'start' : missing Type
-	// UNSUPPORTED : C value 'start_finish' : missing Type
-	// UNSUPPORTED : C value 'can_stop' : missing Type
-	// UNSUPPORTED : C value 'stop' : missing Type
-	// UNSUPPORTED : C value 'stop_finish' : missing Type
-	// UNSUPPORTED : C value 'stop_button' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'get_sort_key' : missing Type
-	// UNSUPPORTED : C value 'get_symbolic_icon' : missing Type
-	// UNSUPPORTED : C value 'is_removable' : missing Type
 }
 
 var dtlsClientConnectionInterfaceStruct *gi.Struct
@@ -1807,7 +1549,6 @@ func dtlsClientConnectionInterfaceStruct_Set() error {
 
 type DtlsClientConnectionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
 }
 
 var dtlsConnectionInterfaceStruct *gi.Struct
@@ -1823,16 +1564,6 @@ func dtlsConnectionInterfaceStruct_Set() error {
 
 type DtlsConnectionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'accept_certificate' : missing Type
-	// UNSUPPORTED : C value 'handshake' : missing Type
-	// UNSUPPORTED : C value 'handshake_async' : missing Type
-	// UNSUPPORTED : C value 'handshake_finish' : missing Type
-	// UNSUPPORTED : C value 'shutdown' : missing Type
-	// UNSUPPORTED : C value 'shutdown_async' : missing Type
-	// UNSUPPORTED : C value 'shutdown_finish' : missing Type
-	// UNSUPPORTED : C value 'set_advertised_protocols' : missing Type
-	// UNSUPPORTED : C value 'get_negotiated_protocol' : missing Type
 }
 
 var dtlsServerConnectionInterfaceStruct *gi.Struct
@@ -1848,7 +1579,6 @@ func dtlsServerConnectionInterfaceStruct_Set() error {
 
 type DtlsServerConnectionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
 }
 
 var emblemClassStruct *gi.Struct
@@ -1879,7 +1609,6 @@ func emblemedIconClassStruct_Set() error {
 
 type EmblemedIconClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var emblemedIconPrivateStruct *gi.Struct
@@ -1910,9 +1639,6 @@ func fileAttributeInfoStruct_Set() error {
 
 type FileAttributeInfo struct {
 	native uintptr
-	Name   string
-	// UNSUPPORTED : C value 'type' : no Go type for 'FileAttributeType'
-	// UNSUPPORTED : C value 'flags' : no Go type for 'FileAttributeInfoFlags'
 }
 
 var fileAttributeInfoListStruct *gi.Struct
@@ -1928,8 +1654,6 @@ func fileAttributeInfoListStruct_Set() error {
 
 type FileAttributeInfoList struct {
 	native uintptr
-	Infos  *FileAttributeInfo
-	NInfos int32
 }
 
 var fileAttributeInfoListNewFunction *gi.Function
@@ -2405,8 +2129,6 @@ func fileDescriptorBasedIfaceStruct_Set() error {
 
 type FileDescriptorBasedIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_fd' : missing Type
 }
 
 var fileEnumeratorClassStruct *gi.Struct
@@ -2422,20 +2144,6 @@ func fileEnumeratorClassStruct_Set() error {
 
 type FileEnumeratorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'next_file' : missing Type
-	// UNSUPPORTED : C value 'close_fn' : missing Type
-	// UNSUPPORTED : C value 'next_files_async' : missing Type
-	// UNSUPPORTED : C value 'next_files_finish' : missing Type
-	// UNSUPPORTED : C value 'close_async' : missing Type
-	// UNSUPPORTED : C value 'close_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
 }
 
 var fileEnumeratorPrivateStruct *gi.Struct
@@ -2465,22 +2173,7 @@ func fileIOStreamClassStruct_Set() error {
 }
 
 type FileIOStreamClass struct {
-	native      uintptr
-	ParentClass *IOStreamClass
-	// UNSUPPORTED : C value 'tell' : missing Type
-	// UNSUPPORTED : C value 'can_seek' : missing Type
-	// UNSUPPORTED : C value 'seek' : missing Type
-	// UNSUPPORTED : C value 'can_truncate' : missing Type
-	// UNSUPPORTED : C value 'truncate_fn' : missing Type
-	// UNSUPPORTED : C value 'query_info' : missing Type
-	// UNSUPPORTED : C value 'query_info_async' : missing Type
-	// UNSUPPORTED : C value 'query_info_finish' : missing Type
-	// UNSUPPORTED : C value 'get_etag' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var fileIOStreamPrivateStruct *gi.Struct
@@ -2526,110 +2219,6 @@ func fileIfaceStruct_Set() error {
 
 type FileIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'dup' : missing Type
-	// UNSUPPORTED : C value 'hash' : missing Type
-	// UNSUPPORTED : C value 'equal' : missing Type
-	// UNSUPPORTED : C value 'is_native' : missing Type
-	// UNSUPPORTED : C value 'has_uri_scheme' : missing Type
-	// UNSUPPORTED : C value 'get_uri_scheme' : missing Type
-	// UNSUPPORTED : C value 'get_basename' : missing Type
-	// UNSUPPORTED : C value 'get_path' : missing Type
-	// UNSUPPORTED : C value 'get_uri' : missing Type
-	// UNSUPPORTED : C value 'get_parse_name' : missing Type
-	// UNSUPPORTED : C value 'get_parent' : missing Type
-	// UNSUPPORTED : C value 'prefix_matches' : missing Type
-	// UNSUPPORTED : C value 'get_relative_path' : missing Type
-	// UNSUPPORTED : C value 'resolve_relative_path' : missing Type
-	// UNSUPPORTED : C value 'get_child_for_display_name' : missing Type
-	// UNSUPPORTED : C value 'enumerate_children' : missing Type
-	// UNSUPPORTED : C value 'enumerate_children_async' : missing Type
-	// UNSUPPORTED : C value 'enumerate_children_finish' : missing Type
-	// UNSUPPORTED : C value 'query_info' : missing Type
-	// UNSUPPORTED : C value 'query_info_async' : missing Type
-	// UNSUPPORTED : C value 'query_info_finish' : missing Type
-	// UNSUPPORTED : C value 'query_filesystem_info' : missing Type
-	// UNSUPPORTED : C value 'query_filesystem_info_async' : missing Type
-	// UNSUPPORTED : C value 'query_filesystem_info_finish' : missing Type
-	// UNSUPPORTED : C value 'find_enclosing_mount' : missing Type
-	// UNSUPPORTED : C value 'find_enclosing_mount_async' : missing Type
-	// UNSUPPORTED : C value 'find_enclosing_mount_finish' : missing Type
-	// UNSUPPORTED : C value 'set_display_name' : missing Type
-	// UNSUPPORTED : C value 'set_display_name_async' : missing Type
-	// UNSUPPORTED : C value 'set_display_name_finish' : missing Type
-	// UNSUPPORTED : C value 'query_settable_attributes' : missing Type
-	// UNSUPPORTED : C value '_query_settable_attributes_async' : missing Type
-	// UNSUPPORTED : C value '_query_settable_attributes_finish' : missing Type
-	// UNSUPPORTED : C value 'query_writable_namespaces' : missing Type
-	// UNSUPPORTED : C value '_query_writable_namespaces_async' : missing Type
-	// UNSUPPORTED : C value '_query_writable_namespaces_finish' : missing Type
-	// UNSUPPORTED : C value 'set_attribute' : missing Type
-	// UNSUPPORTED : C value 'set_attributes_from_info' : missing Type
-	// UNSUPPORTED : C value 'set_attributes_async' : missing Type
-	// UNSUPPORTED : C value 'set_attributes_finish' : missing Type
-	// UNSUPPORTED : C value 'read_fn' : missing Type
-	// UNSUPPORTED : C value 'read_async' : missing Type
-	// UNSUPPORTED : C value 'read_finish' : missing Type
-	// UNSUPPORTED : C value 'append_to' : missing Type
-	// UNSUPPORTED : C value 'append_to_async' : missing Type
-	// UNSUPPORTED : C value 'append_to_finish' : missing Type
-	// UNSUPPORTED : C value 'create' : missing Type
-	// UNSUPPORTED : C value 'create_async' : missing Type
-	// UNSUPPORTED : C value 'create_finish' : missing Type
-	// UNSUPPORTED : C value 'replace' : missing Type
-	// UNSUPPORTED : C value 'replace_async' : missing Type
-	// UNSUPPORTED : C value 'replace_finish' : missing Type
-	// UNSUPPORTED : C value 'delete_file' : missing Type
-	// UNSUPPORTED : C value 'delete_file_async' : missing Type
-	// UNSUPPORTED : C value 'delete_file_finish' : missing Type
-	// UNSUPPORTED : C value 'trash' : missing Type
-	// UNSUPPORTED : C value 'trash_async' : missing Type
-	// UNSUPPORTED : C value 'trash_finish' : missing Type
-	// UNSUPPORTED : C value 'make_directory' : missing Type
-	// UNSUPPORTED : C value 'make_directory_async' : missing Type
-	// UNSUPPORTED : C value 'make_directory_finish' : missing Type
-	// UNSUPPORTED : C value 'make_symbolic_link' : missing Type
-	// UNSUPPORTED : C value '_make_symbolic_link_async' : missing Type
-	// UNSUPPORTED : C value '_make_symbolic_link_finish' : missing Type
-	// UNSUPPORTED : C value 'copy' : missing Type
-	// UNSUPPORTED : C value 'copy_async' : missing Type
-	// UNSUPPORTED : C value 'copy_finish' : missing Type
-	// UNSUPPORTED : C value 'move' : missing Type
-	// UNSUPPORTED : C value '_move_async' : missing Type
-	// UNSUPPORTED : C value '_move_finish' : missing Type
-	// UNSUPPORTED : C value 'mount_mountable' : missing Type
-	// UNSUPPORTED : C value 'mount_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'unmount_mountable' : missing Type
-	// UNSUPPORTED : C value 'unmount_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'eject_mountable' : missing Type
-	// UNSUPPORTED : C value 'eject_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'mount_enclosing_volume' : missing Type
-	// UNSUPPORTED : C value 'mount_enclosing_volume_finish' : missing Type
-	// UNSUPPORTED : C value 'monitor_dir' : missing Type
-	// UNSUPPORTED : C value 'monitor_file' : missing Type
-	// UNSUPPORTED : C value 'open_readwrite' : missing Type
-	// UNSUPPORTED : C value 'open_readwrite_async' : missing Type
-	// UNSUPPORTED : C value 'open_readwrite_finish' : missing Type
-	// UNSUPPORTED : C value 'create_readwrite' : missing Type
-	// UNSUPPORTED : C value 'create_readwrite_async' : missing Type
-	// UNSUPPORTED : C value 'create_readwrite_finish' : missing Type
-	// UNSUPPORTED : C value 'replace_readwrite' : missing Type
-	// UNSUPPORTED : C value 'replace_readwrite_async' : missing Type
-	// UNSUPPORTED : C value 'replace_readwrite_finish' : missing Type
-	// UNSUPPORTED : C value 'start_mountable' : missing Type
-	// UNSUPPORTED : C value 'start_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'stop_mountable' : missing Type
-	// UNSUPPORTED : C value 'stop_mountable_finish' : missing Type
-	SupportsThreadContexts bool
-	// UNSUPPORTED : C value 'unmount_mountable_with_operation' : missing Type
-	// UNSUPPORTED : C value 'unmount_mountable_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'eject_mountable_with_operation' : missing Type
-	// UNSUPPORTED : C value 'eject_mountable_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'poll_mountable' : missing Type
-	// UNSUPPORTED : C value 'poll_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'measure_disk_usage' : missing Type
-	// UNSUPPORTED : C value 'measure_disk_usage_async' : missing Type
-	// UNSUPPORTED : C value 'measure_disk_usage_finish' : missing Type
 }
 
 var fileInfoClassStruct *gi.Struct
@@ -2659,19 +2248,7 @@ func fileInputStreamClassStruct_Set() error {
 }
 
 type FileInputStreamClass struct {
-	native      uintptr
-	ParentClass *InputStreamClass
-	// UNSUPPORTED : C value 'tell' : missing Type
-	// UNSUPPORTED : C value 'can_seek' : missing Type
-	// UNSUPPORTED : C value 'seek' : missing Type
-	// UNSUPPORTED : C value 'query_info' : missing Type
-	// UNSUPPORTED : C value 'query_info_async' : missing Type
-	// UNSUPPORTED : C value 'query_info_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var fileInputStreamPrivateStruct *gi.Struct
@@ -2702,14 +2279,6 @@ func fileMonitorClassStruct_Set() error {
 
 type FileMonitorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'cancel' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var fileMonitorPrivateStruct *gi.Struct
@@ -2739,22 +2308,7 @@ func fileOutputStreamClassStruct_Set() error {
 }
 
 type FileOutputStreamClass struct {
-	native      uintptr
-	ParentClass *OutputStreamClass
-	// UNSUPPORTED : C value 'tell' : missing Type
-	// UNSUPPORTED : C value 'can_seek' : missing Type
-	// UNSUPPORTED : C value 'seek' : missing Type
-	// UNSUPPORTED : C value 'can_truncate' : missing Type
-	// UNSUPPORTED : C value 'truncate_fn' : missing Type
-	// UNSUPPORTED : C value 'query_info' : missing Type
-	// UNSUPPORTED : C value 'query_info_async' : missing Type
-	// UNSUPPORTED : C value 'query_info_finish' : missing Type
-	// UNSUPPORTED : C value 'get_etag' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var fileOutputStreamPrivateStruct *gi.Struct
@@ -2785,11 +2339,6 @@ func filenameCompleterClassStruct_Set() error {
 
 type FilenameCompleterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'got_completion_data' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
 }
 
 var filterInputStreamClassStruct *gi.Struct
@@ -2804,11 +2353,7 @@ func filterInputStreamClassStruct_Set() error {
 }
 
 type FilterInputStreamClass struct {
-	native      uintptr
-	ParentClass *InputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
+	native uintptr
 }
 
 var filterOutputStreamClassStruct *gi.Struct
@@ -2823,11 +2368,7 @@ func filterOutputStreamClassStruct_Set() error {
 }
 
 type FilterOutputStreamClass struct {
-	native      uintptr
-	ParentClass *OutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
+	native uintptr
 }
 
 var iOExtensionStruct *gi.Struct
@@ -3101,22 +2642,6 @@ func iOStreamClassStruct_Set() error {
 
 type IOStreamClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_input_stream' : missing Type
-	// UNSUPPORTED : C value 'get_output_stream' : missing Type
-	// UNSUPPORTED : C value 'close_fn' : missing Type
-	// UNSUPPORTED : C value 'close_async' : missing Type
-	// UNSUPPORTED : C value 'close_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
-	// UNSUPPORTED : C value '_g_reserved8' : missing Type
-	// UNSUPPORTED : C value '_g_reserved9' : missing Type
-	// UNSUPPORTED : C value '_g_reserved10' : missing Type
 }
 
 var iOStreamPrivateStruct *gi.Struct
@@ -3147,12 +2672,6 @@ func iconIfaceStruct_Set() error {
 
 type IconIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'hash' : missing Type
-	// UNSUPPORTED : C value 'equal' : missing Type
-	// UNSUPPORTED : C value 'to_tokens' : missing Type
-	// UNSUPPORTED : C value 'from_tokens' : missing Type
-	// UNSUPPORTED : C value 'serialize' : missing Type
 }
 
 var inetAddressClassStruct *gi.Struct
@@ -3168,9 +2687,6 @@ func inetAddressClassStruct_Set() error {
 
 type InetAddressClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'to_string' : missing Type
-	// UNSUPPORTED : C value 'to_bytes' : missing Type
 }
 
 var inetAddressMaskClassStruct *gi.Struct
@@ -3186,7 +2702,6 @@ func inetAddressMaskClassStruct_Set() error {
 
 type InetAddressMaskClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var inetAddressMaskPrivateStruct *gi.Struct
@@ -3231,8 +2746,7 @@ func inetSocketAddressClassStruct_Set() error {
 }
 
 type InetSocketAddressClass struct {
-	native      uintptr
-	ParentClass *SocketAddressClass
+	native uintptr
 }
 
 var inetSocketAddressPrivateStruct *gi.Struct
@@ -3263,8 +2777,6 @@ func initableIfaceStruct_Set() error {
 
 type InitableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'init' : missing Type
 }
 
 var inputMessageStruct *gi.Struct
@@ -3280,13 +2792,6 @@ func inputMessageStruct_Set() error {
 
 type InputMessage struct {
 	native uintptr
-	// UNSUPPORTED : C value 'address' : no Go type for 'SocketAddress'
-	// UNSUPPORTED : C value 'vectors' : missing Type
-	NumVectors    uint32
-	BytesReceived uint64
-	Flags         int32
-	// UNSUPPORTED : C value 'control_messages' : missing Type
-	NumControlMessages uint32
 }
 
 var inputStreamClassStruct *gi.Struct
@@ -3302,21 +2807,6 @@ func inputStreamClassStruct_Set() error {
 
 type InputStreamClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'read_fn' : missing Type
-	// UNSUPPORTED : C value 'skip' : missing Type
-	// UNSUPPORTED : C value 'close_fn' : missing Type
-	// UNSUPPORTED : C value 'read_async' : missing Type
-	// UNSUPPORTED : C value 'read_finish' : missing Type
-	// UNSUPPORTED : C value 'skip_async' : missing Type
-	// UNSUPPORTED : C value 'skip_finish' : missing Type
-	// UNSUPPORTED : C value 'close_async' : missing Type
-	// UNSUPPORTED : C value 'close_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var inputStreamPrivateStruct *gi.Struct
@@ -3347,8 +2837,6 @@ func inputVectorStruct_Set() error {
 
 type InputVector struct {
 	native uintptr
-	// UNSUPPORTED : C value 'buffer' : no Go type for 'gpointer'
-	Size uint64
 }
 
 var listModelInterfaceStruct *gi.Struct
@@ -3364,10 +2852,6 @@ func listModelInterfaceStruct_Set() error {
 
 type ListModelInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_item_type' : missing Type
-	// UNSUPPORTED : C value 'get_n_items' : missing Type
-	// UNSUPPORTED : C value 'get_item' : missing Type
 }
 
 var listStoreClassStruct *gi.Struct
@@ -3383,7 +2867,6 @@ func listStoreClassStruct_Set() error {
 
 type ListStoreClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var loadableIconIfaceStruct *gi.Struct
@@ -3399,10 +2882,6 @@ func loadableIconIfaceStruct_Set() error {
 
 type LoadableIconIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'load' : missing Type
-	// UNSUPPORTED : C value 'load_async' : missing Type
-	// UNSUPPORTED : C value 'load_finish' : missing Type
 }
 
 var memoryInputStreamClassStruct *gi.Struct
@@ -3417,13 +2896,7 @@ func memoryInputStreamClassStruct_Set() error {
 }
 
 type MemoryInputStreamClass struct {
-	native      uintptr
-	ParentClass *InputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var memoryInputStreamPrivateStruct *gi.Struct
@@ -3453,13 +2926,7 @@ func memoryOutputStreamClassStruct_Set() error {
 }
 
 type MemoryOutputStreamClass struct {
-	native      uintptr
-	ParentClass *OutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var memoryOutputStreamPrivateStruct *gi.Struct
@@ -3490,8 +2957,6 @@ func menuAttributeIterClassStruct_Set() error {
 
 type MenuAttributeIterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_next' : missing Type
 }
 
 var menuAttributeIterPrivateStruct *gi.Struct
@@ -3522,8 +2987,6 @@ func menuLinkIterClassStruct_Set() error {
 
 type MenuLinkIterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_next' : missing Type
 }
 
 var menuLinkIterPrivateStruct *gi.Struct
@@ -3554,15 +3017,6 @@ func menuModelClassStruct_Set() error {
 
 type MenuModelClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'is_mutable' : missing Type
-	// UNSUPPORTED : C value 'get_n_items' : missing Type
-	// UNSUPPORTED : C value 'get_item_attributes' : missing Type
-	// UNSUPPORTED : C value 'iterate_item_attributes' : missing Type
-	// UNSUPPORTED : C value 'get_item_attribute_value' : missing Type
-	// UNSUPPORTED : C value 'get_item_links' : missing Type
-	// UNSUPPORTED : C value 'iterate_item_links' : missing Type
-	// UNSUPPORTED : C value 'get_item_link' : missing Type
 }
 
 var menuModelPrivateStruct *gi.Struct
@@ -3593,34 +3047,6 @@ func mountIfaceStruct_Set() error {
 
 type MountIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'unmounted' : missing Type
-	// UNSUPPORTED : C value 'get_root' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'get_uuid' : missing Type
-	// UNSUPPORTED : C value 'get_volume' : missing Type
-	// UNSUPPORTED : C value 'get_drive' : missing Type
-	// UNSUPPORTED : C value 'can_unmount' : missing Type
-	// UNSUPPORTED : C value 'can_eject' : missing Type
-	// UNSUPPORTED : C value 'unmount' : missing Type
-	// UNSUPPORTED : C value 'unmount_finish' : missing Type
-	// UNSUPPORTED : C value 'eject' : missing Type
-	// UNSUPPORTED : C value 'eject_finish' : missing Type
-	// UNSUPPORTED : C value 'remount' : missing Type
-	// UNSUPPORTED : C value 'remount_finish' : missing Type
-	// UNSUPPORTED : C value 'guess_content_type' : missing Type
-	// UNSUPPORTED : C value 'guess_content_type_finish' : missing Type
-	// UNSUPPORTED : C value 'guess_content_type_sync' : missing Type
-	// UNSUPPORTED : C value 'pre_unmount' : missing Type
-	// UNSUPPORTED : C value 'unmount_with_operation' : missing Type
-	// UNSUPPORTED : C value 'unmount_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'get_default_location' : missing Type
-	// UNSUPPORTED : C value 'get_sort_key' : missing Type
-	// UNSUPPORTED : C value 'get_symbolic_icon' : missing Type
 }
 
 var mountOperationClassStruct *gi.Struct
@@ -3636,22 +3062,6 @@ func mountOperationClassStruct_Set() error {
 
 type MountOperationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'ask_password' : missing Type
-	// UNSUPPORTED : C value 'ask_question' : missing Type
-	// UNSUPPORTED : C value 'reply' : missing Type
-	// UNSUPPORTED : C value 'aborted' : missing Type
-	// UNSUPPORTED : C value 'show_processes' : missing Type
-	// UNSUPPORTED : C value 'show_unmount_progress' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
-	// UNSUPPORTED : C value '_g_reserved8' : missing Type
-	// UNSUPPORTED : C value '_g_reserved9' : missing Type
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -3681,8 +3091,7 @@ func nativeSocketAddressClassStruct_Set() error {
 }
 
 type NativeSocketAddressClass struct {
-	native      uintptr
-	ParentClass *SocketAddressClass
+	native uintptr
 }
 
 var nativeSocketAddressPrivateStruct *gi.Struct
@@ -3712,9 +3121,7 @@ func nativeVolumeMonitorClassStruct_Set() error {
 }
 
 type NativeVolumeMonitorClass struct {
-	native      uintptr
-	ParentClass *VolumeMonitorClass
-	// UNSUPPORTED : C value 'get_mount_for_mount_path' : missing Type
+	native uintptr
 }
 
 var networkAddressClassStruct *gi.Struct
@@ -3730,7 +3137,6 @@ func networkAddressClassStruct_Set() error {
 
 type NetworkAddressClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var networkAddressPrivateStruct *gi.Struct
@@ -3761,11 +3167,6 @@ func networkMonitorInterfaceStruct_Set() error {
 
 type NetworkMonitorInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'network_changed' : missing Type
-	// UNSUPPORTED : C value 'can_reach' : missing Type
-	// UNSUPPORTED : C value 'can_reach_async' : missing Type
-	// UNSUPPORTED : C value 'can_reach_finish' : missing Type
 }
 
 var networkServiceClassStruct *gi.Struct
@@ -3781,7 +3182,6 @@ func networkServiceClassStruct_Set() error {
 
 type NetworkServiceClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var networkServicePrivateStruct *gi.Struct
@@ -3812,12 +3212,6 @@ func outputMessageStruct_Set() error {
 
 type OutputMessage struct {
 	native uintptr
-	// UNSUPPORTED : C value 'address' : no Go type for 'SocketAddress'
-	Vectors    *OutputVector
-	NumVectors uint32
-	BytesSent  uint32
-	// UNSUPPORTED : C value 'control_messages' : missing Type
-	NumControlMessages uint32
 }
 
 var outputStreamClassStruct *gi.Struct
@@ -3833,27 +3227,6 @@ func outputStreamClassStruct_Set() error {
 
 type OutputStreamClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'write_fn' : missing Type
-	// UNSUPPORTED : C value 'splice' : missing Type
-	// UNSUPPORTED : C value 'flush' : missing Type
-	// UNSUPPORTED : C value 'close_fn' : missing Type
-	// UNSUPPORTED : C value 'write_async' : missing Type
-	// UNSUPPORTED : C value 'write_finish' : missing Type
-	// UNSUPPORTED : C value 'splice_async' : missing Type
-	// UNSUPPORTED : C value 'splice_finish' : missing Type
-	// UNSUPPORTED : C value 'flush_async' : missing Type
-	// UNSUPPORTED : C value 'flush_finish' : missing Type
-	// UNSUPPORTED : C value 'close_async' : missing Type
-	// UNSUPPORTED : C value 'close_finish' : missing Type
-	// UNSUPPORTED : C value 'writev_fn' : missing Type
-	// UNSUPPORTED : C value 'writev_async' : missing Type
-	// UNSUPPORTED : C value 'writev_finish' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
-	// UNSUPPORTED : C value '_g_reserved8' : missing Type
 }
 
 var outputStreamPrivateStruct *gi.Struct
@@ -3884,8 +3257,6 @@ func outputVectorStruct_Set() error {
 
 type OutputVector struct {
 	native uintptr
-	// UNSUPPORTED : C value 'buffer' : no Go type for 'gpointer'
-	Size uint64
 }
 
 var permissionClassStruct *gi.Struct
@@ -3901,14 +3272,6 @@ func permissionClassStruct_Set() error {
 
 type PermissionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'acquire' : missing Type
-	// UNSUPPORTED : C value 'acquire_async' : missing Type
-	// UNSUPPORTED : C value 'acquire_finish' : missing Type
-	// UNSUPPORTED : C value 'release' : missing Type
-	// UNSUPPORTED : C value 'release_async' : missing Type
-	// UNSUPPORTED : C value 'release_finish' : missing Type
-	// UNSUPPORTED : C value 'reserved' : missing Type
 }
 
 var permissionPrivateStruct *gi.Struct
@@ -3939,11 +3302,6 @@ func pollableInputStreamInterfaceStruct_Set() error {
 
 type PollableInputStreamInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'can_poll' : missing Type
-	// UNSUPPORTED : C value 'is_readable' : missing Type
-	// UNSUPPORTED : C value 'create_source' : missing Type
-	// UNSUPPORTED : C value 'read_nonblocking' : missing Type
 }
 
 var pollableOutputStreamInterfaceStruct *gi.Struct
@@ -3959,12 +3317,6 @@ func pollableOutputStreamInterfaceStruct_Set() error {
 
 type PollableOutputStreamInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'can_poll' : missing Type
-	// UNSUPPORTED : C value 'is_writable' : missing Type
-	// UNSUPPORTED : C value 'create_source' : missing Type
-	// UNSUPPORTED : C value 'write_nonblocking' : missing Type
-	// UNSUPPORTED : C value 'writev_nonblocking' : missing Type
 }
 
 var proxyAddressClassStruct *gi.Struct
@@ -3979,8 +3331,7 @@ func proxyAddressClassStruct_Set() error {
 }
 
 type ProxyAddressClass struct {
-	native      uintptr
-	ParentClass *InetSocketAddressClass
+	native uintptr
 }
 
 var proxyAddressEnumeratorClassStruct *gi.Struct
@@ -3996,13 +3347,6 @@ func proxyAddressEnumeratorClassStruct_Set() error {
 
 type ProxyAddressEnumeratorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
 }
 
 var proxyAddressEnumeratorPrivateStruct *gi.Struct
@@ -4048,11 +3392,6 @@ func proxyInterfaceStruct_Set() error {
 
 type ProxyInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'connect' : missing Type
-	// UNSUPPORTED : C value 'connect_async' : missing Type
-	// UNSUPPORTED : C value 'connect_finish' : missing Type
-	// UNSUPPORTED : C value 'supports_hostname' : missing Type
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -4068,11 +3407,6 @@ func proxyResolverInterfaceStruct_Set() error {
 
 type ProxyResolverInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'is_supported' : missing Type
-	// UNSUPPORTED : C value 'lookup' : missing Type
-	// UNSUPPORTED : C value 'lookup_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_finish' : missing Type
 }
 
 var remoteActionGroupInterfaceStruct *gi.Struct
@@ -4088,9 +3422,6 @@ func remoteActionGroupInterfaceStruct_Set() error {
 
 type RemoteActionGroupInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'activate_action_full' : missing Type
-	// UNSUPPORTED : C value 'change_action_state_full' : missing Type
 }
 
 var resolverClassStruct *gi.Struct
@@ -4106,23 +3437,6 @@ func resolverClassStruct_Set() error {
 
 type ResolverClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'reload' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_address' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_address_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_address_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_service' : missing Type
-	// UNSUPPORTED : C value 'lookup_service_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_service_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_records' : missing Type
-	// UNSUPPORTED : C value 'lookup_records_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_records_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name_with_flags_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name_with_flags_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_by_name_with_flags' : missing Type
 }
 
 var resolverPrivateStruct *gi.Struct
@@ -4294,12 +3608,6 @@ func seekableIfaceStruct_Set() error {
 
 type SeekableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'tell' : missing Type
-	// UNSUPPORTED : C value 'can_seek' : missing Type
-	// UNSUPPORTED : C value 'seek' : missing Type
-	// UNSUPPORTED : C value 'can_truncate' : missing Type
-	// UNSUPPORTED : C value 'truncate_fn' : missing Type
 }
 
 var settingsBackendClassStruct *gi.Struct
@@ -4315,17 +3623,6 @@ func settingsBackendClassStruct_Set() error {
 
 type SettingsBackendClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'read' : missing Type
-	// UNSUPPORTED : C value 'get_writable' : missing Type
-	// UNSUPPORTED : C value 'write' : missing Type
-	// UNSUPPORTED : C value 'write_tree' : missing Type
-	// UNSUPPORTED : C value 'reset' : missing Type
-	// UNSUPPORTED : C value 'subscribe' : missing Type
-	// UNSUPPORTED : C value 'unsubscribe' : missing Type
-	// UNSUPPORTED : C value 'sync' : missing Type
-	// UNSUPPORTED : C value 'get_permission' : missing Type
-	// UNSUPPORTED : C value 'read_user_value' : missing Type
 }
 
 var settingsBackendPrivateStruct *gi.Struct
@@ -4356,12 +3653,6 @@ func settingsClassStruct_Set() error {
 
 type SettingsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'writable_changed' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'writable_change_event' : missing Type
-	// UNSUPPORTED : C value 'change_event' : missing Type
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -4990,12 +4281,6 @@ func simpleProxyResolverClassStruct_Set() error {
 
 type SimpleProxyResolverClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var simpleProxyResolverPrivateStruct *gi.Struct
@@ -5026,10 +4311,6 @@ func socketAddressClassStruct_Set() error {
 
 type SocketAddressClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_family' : missing Type
-	// UNSUPPORTED : C value 'get_native_size' : missing Type
-	// UNSUPPORTED : C value 'to_native' : missing Type
 }
 
 var socketAddressEnumeratorClassStruct *gi.Struct
@@ -5045,9 +4326,6 @@ func socketAddressEnumeratorClassStruct_Set() error {
 
 type SocketAddressEnumeratorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'next' : missing Type
-	// UNSUPPORTED : C value 'next_async' : missing Type
-	// UNSUPPORTED : C value 'next_finish' : missing Type
 }
 
 var socketClassStruct *gi.Struct
@@ -5063,17 +4341,6 @@ func socketClassStruct_Set() error {
 
 type SocketClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
-	// UNSUPPORTED : C value '_g_reserved7' : missing Type
-	// UNSUPPORTED : C value '_g_reserved8' : missing Type
-	// UNSUPPORTED : C value '_g_reserved9' : missing Type
-	// UNSUPPORTED : C value '_g_reserved10' : missing Type
 }
 
 var socketClientClassStruct *gi.Struct
@@ -5089,12 +4356,6 @@ func socketClientClassStruct_Set() error {
 
 type SocketClientClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'event' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
 }
 
 var socketClientPrivateStruct *gi.Struct
@@ -5125,10 +4386,6 @@ func socketConnectableIfaceStruct_Set() error {
 
 type SocketConnectableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'enumerate' : missing Type
-	// UNSUPPORTED : C value 'proxy_enumerate' : missing Type
-	// UNSUPPORTED : C value 'to_string' : missing Type
 }
 
 var socketConnectionClassStruct *gi.Struct
@@ -5143,14 +4400,7 @@ func socketConnectionClassStruct_Set() error {
 }
 
 type SocketConnectionClass struct {
-	native      uintptr
-	ParentClass *IOStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
+	native uintptr
 }
 
 var socketConnectionPrivateStruct *gi.Struct
@@ -5181,17 +4431,6 @@ func socketControlMessageClassStruct_Set() error {
 
 type SocketControlMessageClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_size' : missing Type
-	// UNSUPPORTED : C value 'get_level' : missing Type
-	// UNSUPPORTED : C value 'get_type' : missing Type
-	// UNSUPPORTED : C value 'serialize' : missing Type
-	// UNSUPPORTED : C value 'deserialize' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var socketControlMessagePrivateStruct *gi.Struct
@@ -5222,14 +4461,6 @@ func socketListenerClassStruct_Set() error {
 
 type SocketListenerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'event' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
 }
 
 var socketListenerPrivateStruct *gi.Struct
@@ -5274,15 +4505,7 @@ func socketServiceClassStruct_Set() error {
 }
 
 type SocketServiceClass struct {
-	native      uintptr
-	ParentClass *SocketListenerClass
-	// UNSUPPORTED : C value 'incoming' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
+	native uintptr
 }
 
 var socketServicePrivateStruct *gi.Struct
@@ -5668,8 +4891,7 @@ func tcpConnectionClassStruct_Set() error {
 }
 
 type TcpConnectionClass struct {
-	native      uintptr
-	ParentClass *SocketConnectionClass
+	native uintptr
 }
 
 var tcpConnectionPrivateStruct *gi.Struct
@@ -5699,8 +4921,7 @@ func tcpWrapperConnectionClassStruct_Set() error {
 }
 
 type TcpWrapperConnectionClass struct {
-	native      uintptr
-	ParentClass *TcpConnectionClass
+	native uintptr
 }
 
 var tcpWrapperConnectionPrivateStruct *gi.Struct
@@ -5745,14 +4966,7 @@ func threadedSocketServiceClassStruct_Set() error {
 }
 
 type ThreadedSocketServiceClass struct {
-	native      uintptr
-	ParentClass *SocketServiceClass
-	// UNSUPPORTED : C value 'run' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var threadedSocketServicePrivateStruct *gi.Struct
@@ -5783,16 +4997,6 @@ func tlsBackendInterfaceStruct_Set() error {
 
 type TlsBackendInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'supports_tls' : missing Type
-	// UNSUPPORTED : C value 'get_certificate_type' : missing Type
-	// UNSUPPORTED : C value 'get_client_connection_type' : missing Type
-	// UNSUPPORTED : C value 'get_server_connection_type' : missing Type
-	// UNSUPPORTED : C value 'get_file_database_type' : missing Type
-	// UNSUPPORTED : C value 'get_default_database' : missing Type
-	// UNSUPPORTED : C value 'supports_dtls' : missing Type
-	// UNSUPPORTED : C value 'get_dtls_client_connection_type' : missing Type
-	// UNSUPPORTED : C value 'get_dtls_server_connection_type' : missing Type
 }
 
 var tlsCertificateClassStruct *gi.Struct
@@ -5808,8 +5012,6 @@ func tlsCertificateClassStruct_Set() error {
 
 type TlsCertificateClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'verify' : missing Type
 }
 
 var tlsCertificatePrivateStruct *gi.Struct
@@ -5840,8 +5042,6 @@ func tlsClientConnectionInterfaceStruct_Set() error {
 
 type TlsClientConnectionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'copy_session_state' : missing Type
 }
 
 var tlsConnectionClassStruct *gi.Struct
@@ -5856,12 +5056,7 @@ func tlsConnectionClassStruct_Set() error {
 }
 
 type TlsConnectionClass struct {
-	native      uintptr
-	ParentClass *IOStreamClass
-	// UNSUPPORTED : C value 'accept_certificate' : missing Type
-	// UNSUPPORTED : C value 'handshake' : missing Type
-	// UNSUPPORTED : C value 'handshake_async' : missing Type
-	// UNSUPPORTED : C value 'handshake_finish' : missing Type
+	native uintptr
 }
 
 var tlsConnectionPrivateStruct *gi.Struct
@@ -5892,20 +5087,6 @@ func tlsDatabaseClassStruct_Set() error {
 
 type TlsDatabaseClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'verify_chain' : missing Type
-	// UNSUPPORTED : C value 'verify_chain_async' : missing Type
-	// UNSUPPORTED : C value 'verify_chain_finish' : missing Type
-	// UNSUPPORTED : C value 'create_certificate_handle' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_for_handle' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_for_handle_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_for_handle_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_issuer' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_issuer_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificate_issuer_finish' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificates_issued_by' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificates_issued_by_async' : missing Type
-	// UNSUPPORTED : C value 'lookup_certificates_issued_by_finish' : missing Type
 }
 
 var tlsDatabasePrivateStruct *gi.Struct
@@ -5936,7 +5117,6 @@ func tlsFileDatabaseInterfaceStruct_Set() error {
 
 type TlsFileDatabaseInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
 }
 
 var tlsInteractionClassStruct *gi.Struct
@@ -5952,12 +5132,6 @@ func tlsInteractionClassStruct_Set() error {
 
 type TlsInteractionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'ask_password' : missing Type
-	// UNSUPPORTED : C value 'ask_password_async' : missing Type
-	// UNSUPPORTED : C value 'ask_password_finish' : missing Type
-	// UNSUPPORTED : C value 'request_certificate' : missing Type
-	// UNSUPPORTED : C value 'request_certificate_async' : missing Type
-	// UNSUPPORTED : C value 'request_certificate_finish' : missing Type
 }
 
 var tlsInteractionPrivateStruct *gi.Struct
@@ -5988,10 +5162,6 @@ func tlsPasswordClassStruct_Set() error {
 
 type TlsPasswordClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_value' : missing Type
-	// UNSUPPORTED : C value 'set_value' : missing Type
-	// UNSUPPORTED : C value 'get_default_warning' : missing Type
 }
 
 var tlsPasswordPrivateStruct *gi.Struct
@@ -6022,7 +5192,6 @@ func tlsServerConnectionInterfaceStruct_Set() error {
 
 type TlsServerConnectionInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
 }
 
 var unixConnectionClassStruct *gi.Struct
@@ -6037,8 +5206,7 @@ func unixConnectionClassStruct_Set() error {
 }
 
 type UnixConnectionClass struct {
-	native      uintptr
-	ParentClass *SocketConnectionClass
+	native uintptr
 }
 
 var unixConnectionPrivateStruct *gi.Struct
@@ -6068,10 +5236,7 @@ func unixCredentialsMessageClassStruct_Set() error {
 }
 
 type UnixCredentialsMessageClass struct {
-	native      uintptr
-	ParentClass *SocketControlMessageClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
+	native uintptr
 }
 
 var unixCredentialsMessagePrivateStruct *gi.Struct
@@ -6102,12 +5267,6 @@ func unixFDListClassStruct_Set() error {
 
 type UnixFDListClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
 }
 
 var unixFDListPrivateStruct *gi.Struct
@@ -6137,10 +5296,7 @@ func unixFDMessageClassStruct_Set() error {
 }
 
 type UnixFDMessageClass struct {
-	native      uintptr
-	ParentClass *SocketControlMessageClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
+	native uintptr
 }
 
 var unixFDMessagePrivateStruct *gi.Struct
@@ -6170,13 +5326,7 @@ func unixInputStreamClassStruct_Set() error {
 }
 
 type UnixInputStreamClass struct {
-	native      uintptr
-	ParentClass *InputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var unixInputStreamPrivateStruct *gi.Struct
@@ -6576,13 +5726,7 @@ func unixOutputStreamClassStruct_Set() error {
 }
 
 type UnixOutputStreamClass struct {
-	native      uintptr
-	ParentClass *OutputStreamClass
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
+	native uintptr
 }
 
 var unixOutputStreamPrivateStruct *gi.Struct
@@ -6612,8 +5756,7 @@ func unixSocketAddressClassStruct_Set() error {
 }
 
 type UnixSocketAddressClass struct {
-	native      uintptr
-	ParentClass *SocketAddressClass
+	native uintptr
 }
 
 var unixSocketAddressPrivateStruct *gi.Struct
@@ -6644,24 +5787,6 @@ func vfsClassStruct_Set() error {
 
 type VfsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'is_active' : missing Type
-	// UNSUPPORTED : C value 'get_file_for_path' : missing Type
-	// UNSUPPORTED : C value 'get_file_for_uri' : missing Type
-	// UNSUPPORTED : C value 'get_supported_uri_schemes' : missing Type
-	// UNSUPPORTED : C value 'parse_name' : missing Type
-	// UNSUPPORTED : C value 'local_file_add_info' : missing Type
-	// UNSUPPORTED : C value 'add_writable_namespaces' : missing Type
-	// UNSUPPORTED : C value 'local_file_set_attributes' : missing Type
-	// UNSUPPORTED : C value 'local_file_removed' : missing Type
-	// UNSUPPORTED : C value 'local_file_moved' : missing Type
-	// UNSUPPORTED : C value 'deserialize_icon' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
 }
 
 var volumeIfaceStruct *gi.Struct
@@ -6677,28 +5802,6 @@ func volumeIfaceStruct_Set() error {
 
 type VolumeIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'removed' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'get_uuid' : missing Type
-	// UNSUPPORTED : C value 'get_drive' : missing Type
-	// UNSUPPORTED : C value 'get_mount' : missing Type
-	// UNSUPPORTED : C value 'can_mount' : missing Type
-	// UNSUPPORTED : C value 'can_eject' : missing Type
-	// UNSUPPORTED : C value 'mount_fn' : missing Type
-	// UNSUPPORTED : C value 'mount_finish' : missing Type
-	// UNSUPPORTED : C value 'eject' : missing Type
-	// UNSUPPORTED : C value 'eject_finish' : missing Type
-	// UNSUPPORTED : C value 'get_identifier' : missing Type
-	// UNSUPPORTED : C value 'enumerate_identifiers' : missing Type
-	// UNSUPPORTED : C value 'should_automount' : missing Type
-	// UNSUPPORTED : C value 'get_activation_root' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation' : missing Type
-	// UNSUPPORTED : C value 'eject_with_operation_finish' : missing Type
-	// UNSUPPORTED : C value 'get_sort_key' : missing Type
-	// UNSUPPORTED : C value 'get_symbolic_icon' : missing Type
 }
 
 var volumeMonitorClassStruct *gi.Struct
@@ -6714,32 +5817,6 @@ func volumeMonitorClassStruct_Set() error {
 
 type VolumeMonitorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'volume_added' : missing Type
-	// UNSUPPORTED : C value 'volume_removed' : missing Type
-	// UNSUPPORTED : C value 'volume_changed' : missing Type
-	// UNSUPPORTED : C value 'mount_added' : missing Type
-	// UNSUPPORTED : C value 'mount_removed' : missing Type
-	// UNSUPPORTED : C value 'mount_pre_unmount' : missing Type
-	// UNSUPPORTED : C value 'mount_changed' : missing Type
-	// UNSUPPORTED : C value 'drive_connected' : missing Type
-	// UNSUPPORTED : C value 'drive_disconnected' : missing Type
-	// UNSUPPORTED : C value 'drive_changed' : missing Type
-	// UNSUPPORTED : C value 'is_supported' : missing Type
-	// UNSUPPORTED : C value 'get_connected_drives' : missing Type
-	// UNSUPPORTED : C value 'get_volumes' : missing Type
-	// UNSUPPORTED : C value 'get_mounts' : missing Type
-	// UNSUPPORTED : C value 'get_volume_for_uuid' : missing Type
-	// UNSUPPORTED : C value 'get_mount_for_uuid' : missing Type
-	// UNSUPPORTED : C value 'adopt_orphan_mount' : missing Type
-	// UNSUPPORTED : C value 'drive_eject_button' : missing Type
-	// UNSUPPORTED : C value 'drive_stop_button' : missing Type
-	// UNSUPPORTED : C value '_g_reserved1' : missing Type
-	// UNSUPPORTED : C value '_g_reserved2' : missing Type
-	// UNSUPPORTED : C value '_g_reserved3' : missing Type
-	// UNSUPPORTED : C value '_g_reserved4' : missing Type
-	// UNSUPPORTED : C value '_g_reserved5' : missing Type
-	// UNSUPPORTED : C value '_g_reserved6' : missing Type
 }
 
 var zlibCompressorClassStruct *gi.Struct
@@ -6755,7 +5832,6 @@ func zlibCompressorClassStruct_Set() error {
 
 type ZlibCompressorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var zlibDecompressorClassStruct *gi.Struct
@@ -6771,5 +5847,4 @@ func zlibDecompressorClassStruct_Set() error {
 
 type ZlibDecompressorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }

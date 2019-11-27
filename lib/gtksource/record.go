@@ -20,13 +20,6 @@ func bufferClassStruct_Set() error {
 
 type BufferClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.TextBufferClass'
-	// UNSUPPORTED : C value 'undo' : missing Type
-	// UNSUPPORTED : C value 'redo' : missing Type
-	// UNSUPPORTED : C value 'bracket_matched' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved3' : missing Type
 }
 
 var bufferPrivateStruct *gi.Struct
@@ -57,14 +50,6 @@ func completionClassStruct_Set() error {
 
 type CompletionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'proposal_activated' : missing Type
-	// UNSUPPORTED : C value 'show' : missing Type
-	// UNSUPPORTED : C value 'hide' : missing Type
-	// UNSUPPORTED : C value 'populate_context' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'move_page' : missing Type
-	// UNSUPPORTED : C value 'activate_proposal' : missing Type
 }
 
 var completionContextClassStruct *gi.Struct
@@ -80,11 +65,6 @@ func completionContextClassStruct_Set() error {
 
 type CompletionContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value 'cancelled' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved3' : missing Type
 }
 
 var completionContextPrivateStruct *gi.Struct
@@ -115,8 +95,6 @@ func completionInfoClassStruct_Set() error {
 
 type CompletionInfoClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.WindowClass'
-	// UNSUPPORTED : C value 'before_show' : missing Type
 }
 
 var completionInfoPrivateStruct *gi.Struct
@@ -147,7 +125,6 @@ func completionItemClassStruct_Set() error {
 
 type CompletionItemClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var completionItemPrivateStruct *gi.Struct
@@ -193,17 +170,6 @@ func completionProposalIfaceStruct_Set() error {
 
 type CompletionProposalIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_label' : missing Type
-	// UNSUPPORTED : C value 'get_markup' : missing Type
-	// UNSUPPORTED : C value 'get_text' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'get_icon_name' : missing Type
-	// UNSUPPORTED : C value 'get_gicon' : missing Type
-	// UNSUPPORTED : C value 'get_info' : missing Type
-	// UNSUPPORTED : C value 'hash' : missing Type
-	// UNSUPPORTED : C value 'equal' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
 }
 
 var completionProviderIfaceStruct *gi.Struct
@@ -219,20 +185,6 @@ func completionProviderIfaceStruct_Set() error {
 
 type CompletionProviderIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'get_icon' : missing Type
-	// UNSUPPORTED : C value 'get_icon_name' : missing Type
-	// UNSUPPORTED : C value 'get_gicon' : missing Type
-	// UNSUPPORTED : C value 'populate' : missing Type
-	// UNSUPPORTED : C value 'match' : missing Type
-	// UNSUPPORTED : C value 'get_activation' : missing Type
-	// UNSUPPORTED : C value 'get_info_widget' : missing Type
-	// UNSUPPORTED : C value 'update_info' : missing Type
-	// UNSUPPORTED : C value 'get_start_iter' : missing Type
-	// UNSUPPORTED : C value 'activate_proposal' : missing Type
-	// UNSUPPORTED : C value 'get_interactive_delay' : missing Type
-	// UNSUPPORTED : C value 'get_priority' : missing Type
 }
 
 var completionWordsClassStruct *gi.Struct
@@ -248,7 +200,6 @@ func completionWordsClassStruct_Set() error {
 
 type CompletionWordsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var completionWordsPrivateStruct *gi.Struct
@@ -450,8 +401,6 @@ func fileClassStruct_Set() error {
 
 type FileClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var fileLoaderClassStruct *gi.Struct
@@ -467,8 +416,6 @@ func fileLoaderClassStruct_Set() error {
 
 type FileLoaderClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var fileLoaderPrivateStruct *gi.Struct
@@ -514,8 +461,6 @@ func fileSaverClassStruct_Set() error {
 
 type FileSaverClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var fileSaverPrivateStruct *gi.Struct
@@ -546,7 +491,6 @@ func gutterClassStruct_Set() error {
 
 type GutterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var gutterPrivateStruct *gi.Struct
@@ -577,17 +521,6 @@ func gutterRendererClassStruct_Set() error {
 
 type GutterRendererClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value 'begin' : missing Type
-	// UNSUPPORTED : C value 'draw' : missing Type
-	// UNSUPPORTED : C value 'end' : missing Type
-	// UNSUPPORTED : C value 'change_view' : missing Type
-	// UNSUPPORTED : C value 'change_buffer' : missing Type
-	// UNSUPPORTED : C value 'query_activatable' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'queue_draw' : missing Type
-	// UNSUPPORTED : C value 'query_tooltip' : missing Type
-	// UNSUPPORTED : C value 'query_data' : missing Type
 }
 
 var gutterRendererPixbufClassStruct *gi.Struct
@@ -678,9 +611,6 @@ func languageClassStruct_Set() error {
 
 type LanguageClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
 }
 
 var languageManagerClassStruct *gi.Struct
@@ -696,11 +626,6 @@ func languageManagerClassStruct_Set() error {
 
 type LanguageManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved4' : missing Type
 }
 
 var languageManagerPrivateStruct *gi.Struct
@@ -745,9 +670,7 @@ func mapClassStruct_Set() error {
 }
 
 type MapClass struct {
-	native      uintptr
-	ParentClass *ViewClass
-	// UNSUPPORTED : C value 'padding' : missing Type
+	native uintptr
 }
 
 var markAttributesClassStruct *gi.Struct
@@ -793,9 +716,6 @@ func markClassStruct_Set() error {
 
 type MarkClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.TextMarkClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
 }
 
 var markPrivateStruct *gi.Struct
@@ -826,9 +746,6 @@ func printCompositorClassStruct_Set() error {
 
 type PrintCompositorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
 }
 
 var printCompositorPrivateStruct *gi.Struct
@@ -859,8 +776,6 @@ func regionClassStruct_Set() error {
 
 type RegionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var regionIterStruct *gi.Struct
@@ -957,8 +872,6 @@ func searchContextClassStruct_Set() error {
 
 type SearchContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var searchContextPrivateStruct *gi.Struct
@@ -989,8 +902,6 @@ func searchSettingsClassStruct_Set() error {
 
 type SearchSettingsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var searchSettingsPrivateStruct *gi.Struct
@@ -1021,8 +932,6 @@ func spaceDrawerClassStruct_Set() error {
 
 type SpaceDrawerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var spaceDrawerPrivateStruct *gi.Struct
@@ -1068,7 +977,6 @@ func styleSchemeChooserButtonClassStruct_Set() error {
 
 type StyleSchemeChooserButtonClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'Gtk.ButtonClass'
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
@@ -1084,10 +992,6 @@ func styleSchemeChooserInterfaceStruct_Set() error {
 
 type StyleSchemeChooserInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_interface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_style_scheme' : missing Type
-	// UNSUPPORTED : C value 'set_style_scheme' : missing Type
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var styleSchemeChooserWidgetClassStruct *gi.Struct
@@ -1103,7 +1007,6 @@ func styleSchemeChooserWidgetClassStruct_Set() error {
 
 type StyleSchemeChooserWidgetClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'Gtk.BinClass'
 }
 
 var styleSchemeClassStruct *gi.Struct
@@ -1119,9 +1022,6 @@ func styleSchemeClassStruct_Set() error {
 
 type StyleSchemeClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
 }
 
 var styleSchemeManagerClassStruct *gi.Struct
@@ -1137,11 +1037,6 @@ func styleSchemeManagerClassStruct_Set() error {
 
 type StyleSchemeManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_source_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_source_reserved4' : missing Type
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
@@ -1187,8 +1082,6 @@ func tagClassStruct_Set() error {
 
 type TagClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.TextTagClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var undoManagerIfaceStruct *gi.Struct
@@ -1204,15 +1097,6 @@ func undoManagerIfaceStruct_Set() error {
 
 type UndoManagerIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'can_undo' : missing Type
-	// UNSUPPORTED : C value 'can_redo' : missing Type
-	// UNSUPPORTED : C value 'undo' : missing Type
-	// UNSUPPORTED : C value 'redo' : missing Type
-	// UNSUPPORTED : C value 'begin_not_undoable_action' : missing Type
-	// UNSUPPORTED : C value 'end_not_undoable_action' : missing Type
-	// UNSUPPORTED : C value 'can_undo_changed' : missing Type
-	// UNSUPPORTED : C value 'can_redo_changed' : missing Type
 }
 
 var viewClassStruct *gi.Struct
@@ -1228,13 +1112,6 @@ func viewClassStruct_Set() error {
 
 type ViewClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.TextViewClass'
-	// UNSUPPORTED : C value 'undo' : missing Type
-	// UNSUPPORTED : C value 'redo' : missing Type
-	// UNSUPPORTED : C value 'line_mark_activated' : missing Type
-	// UNSUPPORTED : C value 'show_completion' : missing Type
-	// UNSUPPORTED : C value 'move_lines' : missing Type
-	// UNSUPPORTED : C value 'move_words' : missing Type
 }
 
 var viewPrivateStruct *gi.Struct

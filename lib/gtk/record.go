@@ -19,13 +19,7 @@ func aboutDialogClassStruct_Set() error {
 }
 
 type AboutDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value 'activate_link' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var aboutDialogPrivateStruct *gi.Struct
@@ -56,12 +50,6 @@ func accelGroupClassStruct_Set() error {
 
 type AccelGroupClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'accel_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var accelGroupEntryStruct *gi.Struct
@@ -77,9 +65,6 @@ func accelGroupEntryStruct_Set() error {
 
 type AccelGroupEntry struct {
 	native uintptr
-	Key    *AccelKey
-	// UNSUPPORTED : C value 'closure' : no Go type for 'GObject.Closure'
-	// UNSUPPORTED : C value 'accel_path_quark' : no Go type for 'GLib.Quark'
 }
 
 var accelGroupPrivateStruct *gi.Struct
@@ -109,10 +94,7 @@ func accelKeyStruct_Set() error {
 }
 
 type AccelKey struct {
-	native   uintptr
-	AccelKey uint32
-	// UNSUPPORTED : C value 'accel_mods' : no Go type for 'Gdk.ModifierType'
-	AccelFlags uint32
+	native uintptr
 }
 
 var accelLabelClassStruct *gi.Struct
@@ -127,18 +109,7 @@ func accelLabelClassStruct_Set() error {
 }
 
 type AccelLabelClass struct {
-	native         uintptr
-	ParentClass    *LabelClass
-	SignalQuote1   string
-	SignalQuote2   string
-	ModNameShift   string
-	ModNameControl string
-	ModNameAlt     string
-	ModSeparator   string
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var accelLabelPrivateStruct *gi.Struct
@@ -184,12 +155,6 @@ func accessibleClassStruct_Set() error {
 
 type AccessibleClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
-	// UNSUPPORTED : C value 'connect_widget_destroyed' : missing Type
-	// UNSUPPORTED : C value 'widget_set' : missing Type
-	// UNSUPPORTED : C value 'widget_unset' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var accessiblePrivateStruct *gi.Struct
@@ -220,10 +185,6 @@ func actionBarClassStruct_Set() error {
 
 type ActionBarClass struct {
 	native uintptr
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var actionBarPrivateStruct *gi.Struct
@@ -254,17 +215,6 @@ func actionClassStruct_Set() error {
 
 type ActionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'create_menu_item' : missing Type
-	// UNSUPPORTED : C value 'create_tool_item' : missing Type
-	// UNSUPPORTED : C value 'connect_proxy' : missing Type
-	// UNSUPPORTED : C value 'disconnect_proxy' : missing Type
-	// UNSUPPORTED : C value 'create_menu' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var actionEntryStruct *gi.Struct
@@ -279,13 +229,7 @@ func actionEntryStruct_Set() error {
 }
 
 type ActionEntry struct {
-	native      uintptr
-	Name        string
-	StockId     string
-	Label       string
-	Accelerator string
-	Tooltip     string
-	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
+	native uintptr
 }
 
 var actionGroupClassStruct *gi.Struct
@@ -301,12 +245,6 @@ func actionGroupClassStruct_Set() error {
 
 type ActionGroupClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_action' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var actionGroupPrivateStruct *gi.Struct
@@ -352,10 +290,6 @@ func actionableInterfaceStruct_Set() error {
 
 type ActionableInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'get_action_name' : missing Type
-	// UNSUPPORTED : C value 'set_action_name' : missing Type
-	// UNSUPPORTED : C value 'get_action_target_value' : missing Type
-	// UNSUPPORTED : C value 'set_action_target_value' : missing Type
 }
 
 var activatableIfaceStruct *gi.Struct
@@ -371,8 +305,6 @@ func activatableIfaceStruct_Set() error {
 
 type ActivatableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'update' : missing Type
-	// UNSUPPORTED : C value 'sync_action_properties' : missing Type
 }
 
 var adjustmentClassStruct *gi.Struct
@@ -388,13 +320,6 @@ func adjustmentClassStruct_Set() error {
 
 type AdjustmentClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'value_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var adjustmentPrivateStruct *gi.Struct
@@ -424,12 +349,7 @@ func alignmentClassStruct_Set() error {
 }
 
 type AlignmentClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var alignmentPrivateStruct *gi.Struct
@@ -459,9 +379,7 @@ func appChooserButtonClassStruct_Set() error {
 }
 
 type AppChooserButtonClass struct {
-	native      uintptr
-	ParentClass *ComboBoxClass
-	// UNSUPPORTED : C value 'custom_item_activated' : missing Type
+	native uintptr
 }
 
 var appChooserButtonPrivateStruct *gi.Struct
@@ -491,8 +409,7 @@ func appChooserDialogClassStruct_Set() error {
 }
 
 type AppChooserDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
+	native uintptr
 }
 
 var appChooserDialogPrivateStruct *gi.Struct
@@ -522,11 +439,7 @@ func appChooserWidgetClassStruct_Set() error {
 }
 
 type AppChooserWidgetClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value 'application_selected' : missing Type
-	// UNSUPPORTED : C value 'application_activated' : missing Type
-	// UNSUPPORTED : C value 'populate_popup' : missing Type
+	native uintptr
 }
 
 var appChooserWidgetPrivateStruct *gi.Struct
@@ -557,9 +470,6 @@ func applicationClassStruct_Set() error {
 
 type ApplicationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.ApplicationClass'
-	// UNSUPPORTED : C value 'window_added' : missing Type
-	// UNSUPPORTED : C value 'window_removed' : missing Type
 }
 
 var applicationPrivateStruct *gi.Struct
@@ -589,8 +499,7 @@ func applicationWindowClassStruct_Set() error {
 }
 
 type ApplicationWindowClass struct {
-	native      uintptr
-	ParentClass *WindowClass
+	native uintptr
 }
 
 var applicationWindowPrivateStruct *gi.Struct
@@ -620,8 +529,7 @@ func arrowAccessibleClassStruct_Set() error {
 }
 
 type ArrowAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var arrowAccessiblePrivateStruct *gi.Struct
@@ -651,12 +559,7 @@ func arrowClassStruct_Set() error {
 }
 
 type ArrowClass struct {
-	native      uintptr
-	ParentClass *MiscClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var arrowPrivateStruct *gi.Struct
@@ -686,12 +589,7 @@ func aspectFrameClassStruct_Set() error {
 }
 
 type AspectFrameClass struct {
-	native      uintptr
-	ParentClass *FrameClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var aspectFramePrivateStruct *gi.Struct
@@ -721,17 +619,7 @@ func assistantClassStruct_Set() error {
 }
 
 type AssistantClass struct {
-	native      uintptr
-	ParentClass *WindowClass
-	// UNSUPPORTED : C value 'prepare' : missing Type
-	// UNSUPPORTED : C value 'apply' : missing Type
-	// UNSUPPORTED : C value 'close' : missing Type
-	// UNSUPPORTED : C value 'cancel' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
+	native uintptr
 }
 
 var assistantPrivateStruct *gi.Struct
@@ -761,12 +649,7 @@ func binClassStruct_Set() error {
 }
 
 type BinClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var binPrivateStruct *gi.Struct
@@ -797,7 +680,6 @@ func bindingArgStruct_Set() error {
 
 type BindingArg struct {
 	native uintptr
-	// UNSUPPORTED : C value 'arg_type' : no Go type for 'GType'
 }
 
 var bindingEntryStruct *gi.Struct
@@ -813,15 +695,6 @@ func bindingEntryStruct_Set() error {
 
 type BindingEntry struct {
 	native uintptr
-	Keyval uint32
-	// UNSUPPORTED : C value 'modifiers' : no Go type for 'Gdk.ModifierType'
-	BindingSet   *BindingSet
-	Destroyed    uint32
-	InEmission   uint32
-	MarksUnbound uint32
-	SetNext      *BindingEntry
-	HashNext     *BindingEntry
-	Signals      *BindingSignal
 }
 
 var bindingSetStruct *gi.Struct
@@ -836,15 +709,7 @@ func bindingSetStruct_Set() error {
 }
 
 type BindingSet struct {
-	native   uintptr
-	SetName  string
-	Priority int32
-	// UNSUPPORTED : C value 'widget_path_pspecs' : no Go type for 'GLib.SList'
-	// UNSUPPORTED : C value 'widget_class_pspecs' : no Go type for 'GLib.SList'
-	// UNSUPPORTED : C value 'class_branch_pspecs' : no Go type for 'GLib.SList'
-	Entries *BindingEntry
-	Current *BindingEntry
-	Parsed  uint32
+	native uintptr
 }
 
 // UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
@@ -863,11 +728,7 @@ func bindingSignalStruct_Set() error {
 }
 
 type BindingSignal struct {
-	native     uintptr
-	Next       *BindingSignal
-	SignalName string
-	NArgs      uint32
-	// UNSUPPORTED : C value 'args' : missing Type
+	native uintptr
 }
 
 var booleanCellAccessibleClassStruct *gi.Struct
@@ -882,8 +743,7 @@ func booleanCellAccessibleClassStruct_Set() error {
 }
 
 type BooleanCellAccessibleClass struct {
-	native      uintptr
-	ParentClass *RendererCellAccessibleClass
+	native uintptr
 }
 
 var booleanCellAccessiblePrivateStruct *gi.Struct
@@ -914,10 +774,6 @@ func borderStruct_Set() error {
 
 type Border struct {
 	native uintptr
-	Left   int16
-	Right  int16
-	Top    int16
-	Bottom int16
 }
 
 var borderNewFunction *gi.Function
@@ -1022,12 +878,7 @@ func boxClassStruct_Set() error {
 }
 
 type BoxClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var boxPrivateStruct *gi.Struct
@@ -1058,17 +909,6 @@ func buildableIfaceStruct_Set() error {
 
 type BuildableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'set_name' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'add_child' : missing Type
-	// UNSUPPORTED : C value 'set_buildable_property' : missing Type
-	// UNSUPPORTED : C value 'construct_child' : missing Type
-	// UNSUPPORTED : C value 'custom_tag_start' : missing Type
-	// UNSUPPORTED : C value 'custom_tag_end' : missing Type
-	// UNSUPPORTED : C value 'custom_finished' : missing Type
-	// UNSUPPORTED : C value 'parser_finished' : missing Type
-	// UNSUPPORTED : C value 'get_internal_child' : missing Type
 }
 
 var builderClassStruct *gi.Struct
@@ -1084,16 +924,6 @@ func builderClassStruct_Set() error {
 
 type BuilderClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_type_from_name' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
 var builderPrivateStruct *gi.Struct
@@ -1123,8 +953,7 @@ func buttonAccessibleClassStruct_Set() error {
 }
 
 type ButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var buttonAccessiblePrivateStruct *gi.Struct
@@ -1154,12 +983,7 @@ func buttonBoxClassStruct_Set() error {
 }
 
 type ButtonBoxClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var buttonBoxPrivateStruct *gi.Struct
@@ -1189,18 +1013,7 @@ func buttonClassStruct_Set() error {
 }
 
 type ButtonClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'pressed' : missing Type
-	// UNSUPPORTED : C value 'released' : missing Type
-	// UNSUPPORTED : C value 'clicked' : missing Type
-	// UNSUPPORTED : C value 'enter' : missing Type
-	// UNSUPPORTED : C value 'leave' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var buttonPrivateStruct *gi.Struct
@@ -1230,19 +1043,7 @@ func calendarClassStruct_Set() error {
 }
 
 type CalendarClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value 'month_changed' : missing Type
-	// UNSUPPORTED : C value 'day_selected' : missing Type
-	// UNSUPPORTED : C value 'day_selected_double_click' : missing Type
-	// UNSUPPORTED : C value 'prev_month' : missing Type
-	// UNSUPPORTED : C value 'next_month' : missing Type
-	// UNSUPPORTED : C value 'prev_year' : missing Type
-	// UNSUPPORTED : C value 'next_year' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var calendarPrivateStruct *gi.Struct
@@ -1272,9 +1073,7 @@ func cellAccessibleClassStruct_Set() error {
 }
 
 type CellAccessibleClass struct {
-	native      uintptr
-	ParentClass *AccessibleClass
-	// UNSUPPORTED : C value 'update_cache' : missing Type
+	native uintptr
 }
 
 var cellAccessibleParentIfaceStruct *gi.Struct
@@ -1290,19 +1089,6 @@ func cellAccessibleParentIfaceStruct_Set() error {
 
 type CellAccessibleParentIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_cell_extents' : missing Type
-	// UNSUPPORTED : C value 'get_cell_area' : missing Type
-	// UNSUPPORTED : C value 'grab_focus' : missing Type
-	// UNSUPPORTED : C value 'get_child_index' : missing Type
-	// UNSUPPORTED : C value 'get_renderer_state' : missing Type
-	// UNSUPPORTED : C value 'expand_collapse' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'edit' : missing Type
-	// UNSUPPORTED : C value 'update_relationset' : missing Type
-	// UNSUPPORTED : C value 'get_cell_position' : missing Type
-	// UNSUPPORTED : C value 'get_column_header_cells' : missing Type
-	// UNSUPPORTED : C value 'get_row_header_cells' : missing Type
 }
 
 var cellAccessiblePrivateStruct *gi.Struct
@@ -1333,10 +1119,6 @@ func cellAreaBoxClassStruct_Set() error {
 
 type CellAreaBoxClass struct {
 	native uintptr
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var cellAreaBoxPrivateStruct *gi.Struct
@@ -1367,33 +1149,6 @@ func cellAreaClassStruct_Set() error {
 
 type CellAreaClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'add' : missing Type
-	// UNSUPPORTED : C value 'remove' : missing Type
-	// UNSUPPORTED : C value 'foreach' : missing Type
-	// UNSUPPORTED : C value 'foreach_alloc' : missing Type
-	// UNSUPPORTED : C value 'event' : missing Type
-	// UNSUPPORTED : C value 'render' : missing Type
-	// UNSUPPORTED : C value 'apply_attributes' : missing Type
-	// UNSUPPORTED : C value 'create_context' : missing Type
-	// UNSUPPORTED : C value 'copy_context' : missing Type
-	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-	// UNSUPPORTED : C value 'set_cell_property' : missing Type
-	// UNSUPPORTED : C value 'get_cell_property' : missing Type
-	// UNSUPPORTED : C value 'focus' : missing Type
-	// UNSUPPORTED : C value 'is_activatable' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
 // UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
@@ -1445,16 +1200,6 @@ func cellAreaContextClassStruct_Set() error {
 
 type CellAreaContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'allocate' : missing Type
-	// UNSUPPORTED : C value 'reset' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
 var cellAreaContextPrivateStruct *gi.Struct
@@ -1500,9 +1245,6 @@ func cellEditableIfaceStruct_Set() error {
 
 type CellEditableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'editing_done' : missing Type
-	// UNSUPPORTED : C value 'remove_widget' : missing Type
-	// UNSUPPORTED : C value 'start_editing' : missing Type
 }
 
 var cellLayoutIfaceStruct *gi.Struct
@@ -1518,15 +1260,6 @@ func cellLayoutIfaceStruct_Set() error {
 
 type CellLayoutIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'pack_start' : missing Type
-	// UNSUPPORTED : C value 'pack_end' : missing Type
-	// UNSUPPORTED : C value 'clear' : missing Type
-	// UNSUPPORTED : C value 'add_attribute' : missing Type
-	// UNSUPPORTED : C value 'set_cell_data_func' : missing Type
-	// UNSUPPORTED : C value 'clear_attributes' : missing Type
-	// UNSUPPORTED : C value 'reorder' : missing Type
-	// UNSUPPORTED : C value 'get_cells' : missing Type
-	// UNSUPPORTED : C value 'get_area' : missing Type
 }
 
 var cellRendererAccelClassStruct *gi.Struct
@@ -1541,15 +1274,7 @@ func cellRendererAccelClassStruct_Set() error {
 }
 
 type CellRendererAccelClass struct {
-	native      uintptr
-	ParentClass *CellRendererTextClass
-	// UNSUPPORTED : C value 'accel_edited' : missing Type
-	// UNSUPPORTED : C value 'accel_cleared' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved0' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererAccelPrivateStruct *gi.Struct
@@ -1580,21 +1305,6 @@ func cellRendererClassStruct_Set() error {
 
 type CellRendererClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-	// UNSUPPORTED : C value 'get_aligned_area' : missing Type
-	// UNSUPPORTED : C value 'get_size' : missing Type
-	// UNSUPPORTED : C value 'render' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'start_editing' : missing Type
-	// UNSUPPORTED : C value 'editing_canceled' : missing Type
-	// UNSUPPORTED : C value 'editing_started' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 // UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
@@ -1627,11 +1337,6 @@ func cellRendererComboClassStruct_Set() error {
 
 type CellRendererComboClass struct {
 	native uintptr
-	Parent *CellRendererTextClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var cellRendererComboPrivateStruct *gi.Struct
@@ -1661,12 +1366,7 @@ func cellRendererPixbufClassStruct_Set() error {
 }
 
 type CellRendererPixbufClass struct {
-	native      uintptr
-	ParentClass *CellRendererClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererPixbufPrivateStruct *gi.Struct
@@ -1711,12 +1411,7 @@ func cellRendererProgressClassStruct_Set() error {
 }
 
 type CellRendererProgressClass struct {
-	native      uintptr
-	ParentClass *CellRendererClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererProgressPrivateStruct *gi.Struct
@@ -1747,11 +1442,6 @@ func cellRendererSpinClassStruct_Set() error {
 
 type CellRendererSpinClass struct {
 	native uintptr
-	Parent *CellRendererTextClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var cellRendererSpinPrivateStruct *gi.Struct
@@ -1781,12 +1471,7 @@ func cellRendererSpinnerClassStruct_Set() error {
 }
 
 type CellRendererSpinnerClass struct {
-	native      uintptr
-	ParentClass *CellRendererClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererSpinnerPrivateStruct *gi.Struct
@@ -1816,13 +1501,7 @@ func cellRendererTextClassStruct_Set() error {
 }
 
 type CellRendererTextClass struct {
-	native      uintptr
-	ParentClass *CellRendererClass
-	// UNSUPPORTED : C value 'edited' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererTextPrivateStruct *gi.Struct
@@ -1852,13 +1531,7 @@ func cellRendererToggleClassStruct_Set() error {
 }
 
 type CellRendererToggleClass struct {
-	native      uintptr
-	ParentClass *CellRendererClass
-	// UNSUPPORTED : C value 'toggled' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellRendererTogglePrivateStruct *gi.Struct
@@ -1888,12 +1561,7 @@ func cellViewClassStruct_Set() error {
 }
 
 type CellViewClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var cellViewPrivateStruct *gi.Struct
@@ -1923,13 +1591,7 @@ func checkButtonClassStruct_Set() error {
 }
 
 type CheckButtonClass struct {
-	native      uintptr
-	ParentClass *ToggleButtonClass
-	// UNSUPPORTED : C value 'draw_indicator' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var checkMenuItemAccessibleClassStruct *gi.Struct
@@ -1944,8 +1606,7 @@ func checkMenuItemAccessibleClassStruct_Set() error {
 }
 
 type CheckMenuItemAccessibleClass struct {
-	native      uintptr
-	ParentClass *MenuItemAccessibleClass
+	native uintptr
 }
 
 var checkMenuItemAccessiblePrivateStruct *gi.Struct
@@ -1975,14 +1636,7 @@ func checkMenuItemClassStruct_Set() error {
 }
 
 type CheckMenuItemClass struct {
-	native      uintptr
-	ParentClass *MenuItemClass
-	// UNSUPPORTED : C value 'toggled' : missing Type
-	// UNSUPPORTED : C value 'draw_indicator' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var checkMenuItemPrivateStruct *gi.Struct
@@ -2012,13 +1666,7 @@ func colorButtonClassStruct_Set() error {
 }
 
 type ColorButtonClass struct {
-	native      uintptr
-	ParentClass *ButtonClass
-	// UNSUPPORTED : C value 'color_set' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var colorButtonPrivateStruct *gi.Struct
@@ -2048,12 +1696,7 @@ func colorChooserDialogClassStruct_Set() error {
 }
 
 type ColorChooserDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var colorChooserDialogPrivateStruct *gi.Struct
@@ -2084,12 +1727,6 @@ func colorChooserInterfaceStruct_Set() error {
 
 type ColorChooserInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_interface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_rgba' : missing Type
-	// UNSUPPORTED : C value 'set_rgba' : missing Type
-	// UNSUPPORTED : C value 'add_palette' : missing Type
-	// UNSUPPORTED : C value 'color_activated' : missing Type
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var colorChooserWidgetClassStruct *gi.Struct
@@ -2104,16 +1741,7 @@ func colorChooserWidgetClassStruct_Set() error {
 }
 
 type ColorChooserWidgetClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var colorChooserWidgetPrivateStruct *gi.Struct
@@ -2143,13 +1771,7 @@ func colorSelectionClassStruct_Set() error {
 }
 
 type ColorSelectionClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value 'color_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var colorSelectionDialogClassStruct *gi.Struct
@@ -2164,12 +1786,7 @@ func colorSelectionDialogClassStruct_Set() error {
 }
 
 type ColorSelectionDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var colorSelectionDialogPrivateStruct *gi.Struct
@@ -2214,8 +1831,7 @@ func comboBoxAccessibleClassStruct_Set() error {
 }
 
 type ComboBoxAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var comboBoxAccessiblePrivateStruct *gi.Struct
@@ -2245,13 +1861,7 @@ func comboBoxClassStruct_Set() error {
 }
 
 type ComboBoxClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'format_entry_text' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
+	native uintptr
 }
 
 var comboBoxPrivateStruct *gi.Struct
@@ -2281,12 +1891,7 @@ func comboBoxTextClassStruct_Set() error {
 }
 
 type ComboBoxTextClass struct {
-	native      uintptr
-	ParentClass *ComboBoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var comboBoxTextPrivateStruct *gi.Struct
@@ -2316,10 +1921,7 @@ func containerAccessibleClassStruct_Set() error {
 }
 
 type ContainerAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
-	// UNSUPPORTED : C value 'add_gtk' : missing Type
-	// UNSUPPORTED : C value 'remove_gtk' : missing Type
+	native uintptr
 }
 
 var containerAccessiblePrivateStruct *gi.Struct
@@ -2349,8 +1951,7 @@ func containerCellAccessibleClassStruct_Set() error {
 }
 
 type ContainerCellAccessibleClass struct {
-	native      uintptr
-	ParentClass *CellAccessibleClass
+	native uintptr
 }
 
 var containerCellAccessiblePrivateStruct *gi.Struct
@@ -2380,26 +1981,7 @@ func containerClassStruct_Set() error {
 }
 
 type ContainerClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value 'add' : missing Type
-	// UNSUPPORTED : C value 'remove' : missing Type
-	// UNSUPPORTED : C value 'check_resize' : missing Type
-	// UNSUPPORTED : C value 'forall' : missing Type
-	// UNSUPPORTED : C value 'set_focus_child' : missing Type
-	// UNSUPPORTED : C value 'child_type' : missing Type
-	// UNSUPPORTED : C value 'composite_name' : missing Type
-	// UNSUPPORTED : C value 'set_child_property' : missing Type
-	// UNSUPPORTED : C value 'get_child_property' : missing Type
-	// UNSUPPORTED : C value 'get_path_for_child' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 // UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
@@ -2496,11 +2078,6 @@ func cssProviderClassStruct_Set() error {
 
 type CssProviderClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'parsing_error' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var cssProviderPrivateStruct *gi.Struct
@@ -2769,14 +2346,7 @@ func dialogClassStruct_Set() error {
 }
 
 type DialogClass struct {
-	native      uintptr
-	ParentClass *WindowClass
-	// UNSUPPORTED : C value 'response' : missing Type
-	// UNSUPPORTED : C value 'close' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var dialogPrivateStruct *gi.Struct
@@ -2806,12 +2376,7 @@ func drawingAreaClassStruct_Set() error {
 }
 
 type DrawingAreaClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var editableInterfaceStruct *gi.Struct
@@ -2827,17 +2392,6 @@ func editableInterfaceStruct_Set() error {
 
 type EditableInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'insert_text' : missing Type
-	// UNSUPPORTED : C value 'delete_text' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'do_insert_text' : missing Type
-	// UNSUPPORTED : C value 'do_delete_text' : missing Type
-	// UNSUPPORTED : C value 'get_chars' : missing Type
-	// UNSUPPORTED : C value 'set_selection_bounds' : missing Type
-	// UNSUPPORTED : C value 'get_selection_bounds' : missing Type
-	// UNSUPPORTED : C value 'set_position' : missing Type
-	// UNSUPPORTED : C value 'get_position' : missing Type
 }
 
 var entryAccessibleClassStruct *gi.Struct
@@ -2852,8 +2406,7 @@ func entryAccessibleClassStruct_Set() error {
 }
 
 type EntryAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var entryAccessiblePrivateStruct *gi.Struct
@@ -2884,21 +2437,6 @@ func entryBufferClassStruct_Set() error {
 
 type EntryBufferClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'inserted_text' : missing Type
-	// UNSUPPORTED : C value 'deleted_text' : missing Type
-	// UNSUPPORTED : C value 'get_text' : missing Type
-	// UNSUPPORTED : C value 'get_length' : missing Type
-	// UNSUPPORTED : C value 'insert_text' : missing Type
-	// UNSUPPORTED : C value 'delete_text' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
 var entryBufferPrivateStruct *gi.Struct
@@ -2928,27 +2466,7 @@ func entryClassStruct_Set() error {
 }
 
 type EntryClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value 'populate_popup' : missing Type
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'insert_at_cursor' : missing Type
-	// UNSUPPORTED : C value 'delete_from_cursor' : missing Type
-	// UNSUPPORTED : C value 'backspace' : missing Type
-	// UNSUPPORTED : C value 'cut_clipboard' : missing Type
-	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-	// UNSUPPORTED : C value 'paste_clipboard' : missing Type
-	// UNSUPPORTED : C value 'toggle_overwrite' : missing Type
-	// UNSUPPORTED : C value 'get_text_area_size' : missing Type
-	// UNSUPPORTED : C value 'get_frame_size' : missing Type
-	// UNSUPPORTED : C value 'insert_emoji' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
+	native uintptr
 }
 
 var entryCompletionClassStruct *gi.Struct
@@ -2964,15 +2482,6 @@ func entryCompletionClassStruct_Set() error {
 
 type EntryCompletionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'match_selected' : missing Type
-	// UNSUPPORTED : C value 'action_activated' : missing Type
-	// UNSUPPORTED : C value 'insert_prefix' : missing Type
-	// UNSUPPORTED : C value 'cursor_on_match' : missing Type
-	// UNSUPPORTED : C value 'no_matches' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved0' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
 }
 
 var entryCompletionPrivateStruct *gi.Struct
@@ -3017,12 +2526,7 @@ func eventBoxClassStruct_Set() error {
 }
 
 type EventBoxClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var eventBoxPrivateStruct *gi.Struct
@@ -3112,8 +2616,7 @@ func expanderAccessibleClassStruct_Set() error {
 }
 
 type ExpanderAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var expanderAccessiblePrivateStruct *gi.Struct
@@ -3143,13 +2646,7 @@ func expanderClassStruct_Set() error {
 }
 
 type ExpanderClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var expanderPrivateStruct *gi.Struct
@@ -3179,13 +2676,7 @@ func fileChooserButtonClassStruct_Set() error {
 }
 
 type FileChooserButtonClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value 'file_set' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fileChooserButtonPrivateStruct *gi.Struct
@@ -3215,12 +2706,7 @@ func fileChooserDialogClassStruct_Set() error {
 }
 
 type FileChooserDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fileChooserDialogPrivateStruct *gi.Struct
@@ -3250,8 +2736,7 @@ func fileChooserNativeClassStruct_Set() error {
 }
 
 type FileChooserNativeClass struct {
-	native      uintptr
-	ParentClass *NativeDialogClass
+	native uintptr
 }
 
 var fileChooserWidgetClassStruct *gi.Struct
@@ -3266,12 +2751,7 @@ func fileChooserWidgetClassStruct_Set() error {
 }
 
 type FileChooserWidgetClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fileChooserWidgetPrivateStruct *gi.Struct
@@ -3302,11 +2782,6 @@ func fileFilterInfoStruct_Set() error {
 
 type FileFilterInfo struct {
 	native uintptr
-	// UNSUPPORTED : C value 'contains' : no Go type for 'FileFilterFlags'
-	Filename    string
-	Uri         string
-	DisplayName string
-	MimeType    string
 }
 
 var fixedChildStruct *gi.Struct
@@ -3322,9 +2797,6 @@ func fixedChildStruct_Set() error {
 
 type FixedChild struct {
 	native uintptr
-	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
-	X int32
-	Y int32
 }
 
 var fixedClassStruct *gi.Struct
@@ -3339,12 +2811,7 @@ func fixedClassStruct_Set() error {
 }
 
 type FixedClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fixedPrivateStruct *gi.Struct
@@ -3374,8 +2841,7 @@ func flowBoxAccessibleClassStruct_Set() error {
 }
 
 type FlowBoxAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var flowBoxAccessiblePrivateStruct *gi.Struct
@@ -3405,8 +2871,7 @@ func flowBoxChildAccessibleClassStruct_Set() error {
 }
 
 type FlowBoxChildAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var flowBoxChildClassStruct *gi.Struct
@@ -3421,11 +2886,7 @@ func flowBoxChildClassStruct_Set() error {
 }
 
 type FlowBoxChildClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
+	native uintptr
 }
 
 var flowBoxClassStruct *gi.Struct
@@ -3440,21 +2901,7 @@ func flowBoxClassStruct_Set() error {
 }
 
 type FlowBoxClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'child_activated' : missing Type
-	// UNSUPPORTED : C value 'selected_children_changed' : missing Type
-	// UNSUPPORTED : C value 'activate_cursor_child' : missing Type
-	// UNSUPPORTED : C value 'toggle_cursor_child' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'select_all' : missing Type
-	// UNSUPPORTED : C value 'unselect_all' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
+	native uintptr
 }
 
 var fontButtonClassStruct *gi.Struct
@@ -3469,13 +2916,7 @@ func fontButtonClassStruct_Set() error {
 }
 
 type FontButtonClass struct {
-	native      uintptr
-	ParentClass *ButtonClass
-	// UNSUPPORTED : C value 'font_set' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fontButtonPrivateStruct *gi.Struct
@@ -3505,12 +2946,7 @@ func fontChooserDialogClassStruct_Set() error {
 }
 
 type FontChooserDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fontChooserDialogPrivateStruct *gi.Struct
@@ -3541,15 +2977,6 @@ func fontChooserIfaceStruct_Set() error {
 
 type FontChooserIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_font_family' : missing Type
-	// UNSUPPORTED : C value 'get_font_face' : missing Type
-	// UNSUPPORTED : C value 'get_font_size' : missing Type
-	// UNSUPPORTED : C value 'set_filter_func' : missing Type
-	// UNSUPPORTED : C value 'font_activated' : missing Type
-	// UNSUPPORTED : C value 'set_font_map' : missing Type
-	// UNSUPPORTED : C value 'get_font_map' : missing Type
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var fontChooserWidgetClassStruct *gi.Struct
@@ -3564,16 +2991,7 @@ func fontChooserWidgetClassStruct_Set() error {
 }
 
 type FontChooserWidgetClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var fontChooserWidgetPrivateStruct *gi.Struct
@@ -3603,12 +3021,7 @@ func fontSelectionClassStruct_Set() error {
 }
 
 type FontSelectionClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fontSelectionDialogClassStruct *gi.Struct
@@ -3623,12 +3036,7 @@ func fontSelectionDialogClassStruct_Set() error {
 }
 
 type FontSelectionDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var fontSelectionDialogPrivateStruct *gi.Struct
@@ -3673,8 +3081,7 @@ func frameAccessibleClassStruct_Set() error {
 }
 
 type FrameAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var frameAccessiblePrivateStruct *gi.Struct
@@ -3704,13 +3111,7 @@ func frameClassStruct_Set() error {
 }
 
 type FrameClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'compute_child_allocation' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var framePrivateStruct *gi.Struct
@@ -3741,9 +3142,6 @@ func gLAreaClassStruct_Set() error {
 
 type GLAreaClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'render' : missing Type
-	// UNSUPPORTED : C value 'resize' : missing Type
-	// UNSUPPORTED : C value 'create_context' : missing Type
 }
 
 var gestureClassStruct *gi.Struct
@@ -4121,16 +3519,7 @@ func gridClassStruct_Set() error {
 }
 
 type GridClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var gridPrivateStruct *gi.Struct
@@ -4160,8 +3549,7 @@ func hBoxClassStruct_Set() error {
 }
 
 type HBoxClass struct {
-	native      uintptr
-	ParentClass *BoxClass
+	native uintptr
 }
 
 var hButtonBoxClassStruct *gi.Struct
@@ -4176,8 +3564,7 @@ func hButtonBoxClassStruct_Set() error {
 }
 
 type HButtonBoxClass struct {
-	native      uintptr
-	ParentClass *ButtonBoxClass
+	native uintptr
 }
 
 var hPanedClassStruct *gi.Struct
@@ -4192,8 +3579,7 @@ func hPanedClassStruct_Set() error {
 }
 
 type HPanedClass struct {
-	native      uintptr
-	ParentClass *PanedClass
+	native uintptr
 }
 
 var hSVClassStruct *gi.Struct
@@ -4208,14 +3594,7 @@ func hSVClassStruct_Set() error {
 }
 
 type HSVClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'move' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var hSVPrivateStruct *gi.Struct
@@ -4245,8 +3624,7 @@ func hScaleClassStruct_Set() error {
 }
 
 type HScaleClass struct {
-	native      uintptr
-	ParentClass *ScaleClass
+	native uintptr
 }
 
 var hScrollbarClassStruct *gi.Struct
@@ -4261,8 +3639,7 @@ func hScrollbarClassStruct_Set() error {
 }
 
 type HScrollbarClass struct {
-	native      uintptr
-	ParentClass *ScrollbarClass
+	native uintptr
 }
 
 var hSeparatorClassStruct *gi.Struct
@@ -4277,8 +3654,7 @@ func hSeparatorClassStruct_Set() error {
 }
 
 type HSeparatorClass struct {
-	native      uintptr
-	ParentClass *SeparatorClass
+	native uintptr
 }
 
 var handleBoxClassStruct *gi.Struct
@@ -4293,14 +3669,7 @@ func handleBoxClassStruct_Set() error {
 }
 
 type HandleBoxClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'child_attached' : missing Type
-	// UNSUPPORTED : C value 'child_detached' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var handleBoxPrivateStruct *gi.Struct
@@ -4330,8 +3699,7 @@ func headerBarAccessibleClassStruct_Set() error {
 }
 
 type HeaderBarAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var headerBarAccessiblePrivateStruct *gi.Struct
@@ -4361,12 +3729,7 @@ func headerBarClassStruct_Set() error {
 }
 
 type HeaderBarClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var headerBarPrivateStruct *gi.Struct
@@ -4397,28 +3760,6 @@ func iMContextClassStruct_Set() error {
 
 type IMContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'preedit_start' : missing Type
-	// UNSUPPORTED : C value 'preedit_end' : missing Type
-	// UNSUPPORTED : C value 'preedit_changed' : missing Type
-	// UNSUPPORTED : C value 'commit' : missing Type
-	// UNSUPPORTED : C value 'retrieve_surrounding' : missing Type
-	// UNSUPPORTED : C value 'delete_surrounding' : missing Type
-	// UNSUPPORTED : C value 'set_client_window' : missing Type
-	// UNSUPPORTED : C value 'get_preedit_string' : missing Type
-	// UNSUPPORTED : C value 'filter_keypress' : missing Type
-	// UNSUPPORTED : C value 'focus_in' : missing Type
-	// UNSUPPORTED : C value 'focus_out' : missing Type
-	// UNSUPPORTED : C value 'reset' : missing Type
-	// UNSUPPORTED : C value 'set_cursor_location' : missing Type
-	// UNSUPPORTED : C value 'set_use_preedit' : missing Type
-	// UNSUPPORTED : C value 'set_surrounding' : missing Type
-	// UNSUPPORTED : C value 'get_surrounding' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
 var iMContextInfoStruct *gi.Struct
@@ -4433,12 +3774,7 @@ func iMContextInfoStruct_Set() error {
 }
 
 type IMContextInfo struct {
-	native         uintptr
-	ContextId      string
-	ContextName    string
-	Domain         string
-	DomainDirname  string
-	DefaultLocales string
+	native uintptr
 }
 
 var iMContextSimpleClassStruct *gi.Struct
@@ -4453,8 +3789,7 @@ func iMContextSimpleClassStruct_Set() error {
 }
 
 type IMContextSimpleClass struct {
-	native      uintptr
-	ParentClass *IMContextClass
+	native uintptr
 }
 
 var iMContextSimplePrivateStruct *gi.Struct
@@ -4484,12 +3819,7 @@ func iMMulticontextClassStruct_Set() error {
 }
 
 type IMMulticontextClass struct {
-	native      uintptr
-	ParentClass *IMContextClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var iMMulticontextPrivateStruct *gi.Struct
@@ -4520,11 +3850,6 @@ func iconFactoryClassStruct_Set() error {
 
 type IconFactoryClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var iconFactoryPrivateStruct *gi.Struct
@@ -5115,12 +4440,6 @@ func iconThemeClassStruct_Set() error {
 
 type IconThemeClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var iconThemePrivateStruct *gi.Struct
@@ -5150,8 +4469,7 @@ func iconViewAccessibleClassStruct_Set() error {
 }
 
 type IconViewAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var iconViewAccessiblePrivateStruct *gi.Struct
@@ -5181,20 +4499,7 @@ func iconViewClassStruct_Set() error {
 }
 
 type IconViewClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'item_activated' : missing Type
-	// UNSUPPORTED : C value 'selection_changed' : missing Type
-	// UNSUPPORTED : C value 'select_all' : missing Type
-	// UNSUPPORTED : C value 'unselect_all' : missing Type
-	// UNSUPPORTED : C value 'select_cursor_item' : missing Type
-	// UNSUPPORTED : C value 'toggle_cursor_item' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'activate_cursor_item' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var iconViewPrivateStruct *gi.Struct
@@ -5224,8 +4529,7 @@ func imageAccessibleClassStruct_Set() error {
 }
 
 type ImageAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var imageAccessiblePrivateStruct *gi.Struct
@@ -5255,8 +4559,7 @@ func imageCellAccessibleClassStruct_Set() error {
 }
 
 type ImageCellAccessibleClass struct {
-	native      uintptr
-	ParentClass *RendererCellAccessibleClass
+	native uintptr
 }
 
 var imageCellAccessiblePrivateStruct *gi.Struct
@@ -5286,12 +4589,7 @@ func imageClassStruct_Set() error {
 }
 
 type ImageClass struct {
-	native      uintptr
-	ParentClass *MiscClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var imageMenuItemClassStruct *gi.Struct
@@ -5306,12 +4604,7 @@ func imageMenuItemClassStruct_Set() error {
 }
 
 type ImageMenuItemClass struct {
-	native      uintptr
-	ParentClass *MenuItemClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var imageMenuItemPrivateStruct *gi.Struct
@@ -5356,14 +4649,7 @@ func infoBarClassStruct_Set() error {
 }
 
 type InfoBarClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value 'response' : missing Type
-	// UNSUPPORTED : C value 'close' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var infoBarPrivateStruct *gi.Struct
@@ -5393,12 +4679,7 @@ func invisibleClassStruct_Set() error {
 }
 
 type InvisibleClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var invisiblePrivateStruct *gi.Struct
@@ -5428,8 +4709,7 @@ func labelAccessibleClassStruct_Set() error {
 }
 
 type LabelAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var labelAccessiblePrivateStruct *gi.Struct
@@ -5459,20 +4739,7 @@ func labelClassStruct_Set() error {
 }
 
 type LabelClass struct {
-	native      uintptr
-	ParentClass *MiscClass
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-	// UNSUPPORTED : C value 'populate_popup' : missing Type
-	// UNSUPPORTED : C value 'activate_link' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var labelPrivateStruct *gi.Struct
@@ -5517,12 +4784,7 @@ func layoutClassStruct_Set() error {
 }
 
 type LayoutClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var layoutPrivateStruct *gi.Struct
@@ -5552,8 +4814,7 @@ func levelBarAccessibleClassStruct_Set() error {
 }
 
 type LevelBarAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var levelBarAccessiblePrivateStruct *gi.Struct
@@ -5584,7 +4845,6 @@ func levelBarClassStruct_Set() error {
 
 type LevelBarClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'offset_changed' : missing Type
 }
 
 var levelBarPrivateStruct *gi.Struct
@@ -5614,8 +4874,7 @@ func linkButtonAccessibleClassStruct_Set() error {
 }
 
 type LinkButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ButtonAccessibleClass
+	native uintptr
 }
 
 var linkButtonAccessiblePrivateStruct *gi.Struct
@@ -5646,11 +4905,6 @@ func linkButtonClassStruct_Set() error {
 
 type LinkButtonClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'activate_link' : missing Type
-	// UNSUPPORTED : C value '_gtk_padding1' : missing Type
-	// UNSUPPORTED : C value '_gtk_padding2' : missing Type
-	// UNSUPPORTED : C value '_gtk_padding3' : missing Type
-	// UNSUPPORTED : C value '_gtk_padding4' : missing Type
 }
 
 var linkButtonPrivateStruct *gi.Struct
@@ -5680,8 +4934,7 @@ func listBoxAccessibleClassStruct_Set() error {
 }
 
 type ListBoxAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var listBoxAccessiblePrivateStruct *gi.Struct
@@ -5711,19 +4964,7 @@ func listBoxClassStruct_Set() error {
 }
 
 type ListBoxClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'row_selected' : missing Type
-	// UNSUPPORTED : C value 'row_activated' : missing Type
-	// UNSUPPORTED : C value 'activate_cursor_row' : missing Type
-	// UNSUPPORTED : C value 'toggle_cursor_row' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'selected_rows_changed' : missing Type
-	// UNSUPPORTED : C value 'select_all' : missing Type
-	// UNSUPPORTED : C value 'unselect_all' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
+	native uintptr
 }
 
 var listBoxRowAccessibleClassStruct *gi.Struct
@@ -5738,8 +4979,7 @@ func listBoxRowAccessibleClassStruct_Set() error {
 }
 
 type ListBoxRowAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var listBoxRowClassStruct *gi.Struct
@@ -5754,11 +4994,7 @@ func listBoxRowClassStruct_Set() error {
 }
 
 type ListBoxRowClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
+	native uintptr
 }
 
 var listStoreClassStruct *gi.Struct
@@ -5774,11 +5010,6 @@ func listStoreClassStruct_Set() error {
 
 type ListStoreClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var listStorePrivateStruct *gi.Struct
@@ -5808,8 +5039,7 @@ func lockButtonAccessibleClassStruct_Set() error {
 }
 
 type LockButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ButtonAccessibleClass
+	native uintptr
 }
 
 var lockButtonAccessiblePrivateStruct *gi.Struct
@@ -5839,16 +5069,7 @@ func lockButtonClassStruct_Set() error {
 }
 
 type LockButtonClass struct {
-	native      uintptr
-	ParentClass *ButtonClass
-	// UNSUPPORTED : C value 'reserved0' : missing Type
-	// UNSUPPORTED : C value 'reserved1' : missing Type
-	// UNSUPPORTED : C value 'reserved2' : missing Type
-	// UNSUPPORTED : C value 'reserved3' : missing Type
-	// UNSUPPORTED : C value 'reserved4' : missing Type
-	// UNSUPPORTED : C value 'reserved5' : missing Type
-	// UNSUPPORTED : C value 'reserved6' : missing Type
-	// UNSUPPORTED : C value 'reserved7' : missing Type
+	native uintptr
 }
 
 var lockButtonPrivateStruct *gi.Struct
@@ -5878,8 +5099,7 @@ func menuAccessibleClassStruct_Set() error {
 }
 
 type MenuAccessibleClass struct {
-	native      uintptr
-	ParentClass *MenuShellAccessibleClass
+	native uintptr
 }
 
 var menuAccessiblePrivateStruct *gi.Struct
@@ -5909,12 +5129,7 @@ func menuBarClassStruct_Set() error {
 }
 
 type MenuBarClass struct {
-	native      uintptr
-	ParentClass *MenuShellClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuBarPrivateStruct *gi.Struct
@@ -5944,8 +5159,7 @@ func menuButtonAccessibleClassStruct_Set() error {
 }
 
 type MenuButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ToggleButtonAccessibleClass
+	native uintptr
 }
 
 var menuButtonAccessiblePrivateStruct *gi.Struct
@@ -5975,12 +5189,7 @@ func menuButtonClassStruct_Set() error {
 }
 
 type MenuButtonClass struct {
-	native      uintptr
-	ParentClass *ToggleButtonClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuButtonPrivateStruct *gi.Struct
@@ -6010,12 +5219,7 @@ func menuClassStruct_Set() error {
 }
 
 type MenuClass struct {
-	native      uintptr
-	ParentClass *MenuShellClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuItemAccessibleClassStruct *gi.Struct
@@ -6030,8 +5234,7 @@ func menuItemAccessibleClassStruct_Set() error {
 }
 
 type MenuItemAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var menuItemAccessiblePrivateStruct *gi.Struct
@@ -6061,21 +5264,7 @@ func menuItemClassStruct_Set() error {
 }
 
 type MenuItemClass struct {
-	native         uintptr
-	ParentClass    *BinClass
-	HideOnActivate uint32
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'activate_item' : missing Type
-	// UNSUPPORTED : C value 'toggle_size_request' : missing Type
-	// UNSUPPORTED : C value 'toggle_size_allocate' : missing Type
-	// UNSUPPORTED : C value 'set_label' : missing Type
-	// UNSUPPORTED : C value 'get_label' : missing Type
-	// UNSUPPORTED : C value 'select' : missing Type
-	// UNSUPPORTED : C value 'deselect' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuItemPrivateStruct *gi.Struct
@@ -6120,8 +5309,7 @@ func menuShellAccessibleClassStruct_Set() error {
 }
 
 type MenuShellAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var menuShellAccessiblePrivateStruct *gi.Struct
@@ -6151,22 +5339,7 @@ func menuShellClassStruct_Set() error {
 }
 
 type MenuShellClass struct {
-	native           uintptr
-	ParentClass      *ContainerClass
-	SubmenuPlacement uint32
-	// UNSUPPORTED : C value 'deactivate' : missing Type
-	// UNSUPPORTED : C value 'selection_done' : missing Type
-	// UNSUPPORTED : C value 'move_current' : missing Type
-	// UNSUPPORTED : C value 'activate_current' : missing Type
-	// UNSUPPORTED : C value 'cancel' : missing Type
-	// UNSUPPORTED : C value 'select_item' : missing Type
-	// UNSUPPORTED : C value 'insert' : missing Type
-	// UNSUPPORTED : C value 'get_popup_delay' : missing Type
-	// UNSUPPORTED : C value 'move_selected' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuShellPrivateStruct *gi.Struct
@@ -6196,13 +5369,7 @@ func menuToolButtonClassStruct_Set() error {
 }
 
 type MenuToolButtonClass struct {
-	native      uintptr
-	ParentClass *ToolButtonClass
-	// UNSUPPORTED : C value 'show_menu' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var menuToolButtonPrivateStruct *gi.Struct
@@ -6232,12 +5399,7 @@ func messageDialogClassStruct_Set() error {
 }
 
 type MessageDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var messageDialogPrivateStruct *gi.Struct
@@ -6267,12 +5429,7 @@ func miscClassStruct_Set() error {
 }
 
 type MiscClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var miscPrivateStruct *gi.Struct
@@ -6303,11 +5460,6 @@ func mountOperationClassStruct_Set() error {
 
 type MountOperationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.MountOperationClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -6338,14 +5490,6 @@ func nativeDialogClassStruct_Set() error {
 
 type NativeDialogClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'response' : missing Type
-	// UNSUPPORTED : C value 'show' : missing Type
-	// UNSUPPORTED : C value 'hide' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var notebookAccessibleClassStruct *gi.Struct
@@ -6360,8 +5504,7 @@ func notebookAccessibleClassStruct_Set() error {
 }
 
 type NotebookAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var notebookAccessiblePrivateStruct *gi.Struct
@@ -6391,27 +5534,7 @@ func notebookClassStruct_Set() error {
 }
 
 type NotebookClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'switch_page' : missing Type
-	// UNSUPPORTED : C value 'select_page' : missing Type
-	// UNSUPPORTED : C value 'focus_tab' : missing Type
-	// UNSUPPORTED : C value 'change_current_page' : missing Type
-	// UNSUPPORTED : C value 'move_focus_out' : missing Type
-	// UNSUPPORTED : C value 'reorder_tab' : missing Type
-	// UNSUPPORTED : C value 'insert_page' : missing Type
-	// UNSUPPORTED : C value 'create_window' : missing Type
-	// UNSUPPORTED : C value 'page_reordered' : missing Type
-	// UNSUPPORTED : C value 'page_removed' : missing Type
-	// UNSUPPORTED : C value 'page_added' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var notebookPageAccessibleClassStruct *gi.Struct
@@ -6427,7 +5550,6 @@ func notebookPageAccessibleClassStruct_Set() error {
 
 type NotebookPageAccessibleClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
 }
 
 var notebookPageAccessiblePrivateStruct *gi.Struct
@@ -6473,8 +5595,6 @@ func numerableIconClassStruct_Set() error {
 
 type NumerableIconClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.EmblemedIconClass'
-	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
 var numerableIconPrivateStruct *gi.Struct
@@ -6504,12 +5624,7 @@ func offscreenWindowClassStruct_Set() error {
 }
 
 type OffscreenWindowClass struct {
-	native      uintptr
-	ParentClass *WindowClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var orientableIfaceStruct *gi.Struct
@@ -6525,7 +5640,6 @@ func orientableIfaceStruct_Set() error {
 
 type OrientableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
 }
 
 var overlayClassStruct *gi.Struct
@@ -6540,17 +5654,7 @@ func overlayClassStruct_Set() error {
 }
 
 type OverlayClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'get_child_position' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var overlayPrivateStruct *gi.Struct
@@ -6581,11 +5685,6 @@ func padActionEntryStruct_Set() error {
 
 type PadActionEntry struct {
 	native uintptr
-	// UNSUPPORTED : C value 'type' : no Go type for 'PadActionType'
-	Index      int32
-	Mode       int32
-	Label      string
-	ActionName string
 }
 
 var padControllerClassStruct *gi.Struct
@@ -6616,8 +5715,6 @@ func pageRangeStruct_Set() error {
 
 type PageRange struct {
 	native uintptr
-	Start  int32
-	End    int32
 }
 
 var panedAccessibleClassStruct *gi.Struct
@@ -6632,8 +5729,7 @@ func panedAccessibleClassStruct_Set() error {
 }
 
 type PanedAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var panedAccessiblePrivateStruct *gi.Struct
@@ -6663,18 +5759,7 @@ func panedClassStruct_Set() error {
 }
 
 type PanedClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'cycle_child_focus' : missing Type
-	// UNSUPPORTED : C value 'toggle_handle_focus' : missing Type
-	// UNSUPPORTED : C value 'move_handle' : missing Type
-	// UNSUPPORTED : C value 'cycle_handle_focus' : missing Type
-	// UNSUPPORTED : C value 'accept_position' : missing Type
-	// UNSUPPORTED : C value 'cancel_position' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var panedPrivateStruct *gi.Struct
@@ -7112,13 +6197,7 @@ func plugClassStruct_Set() error {
 }
 
 type PlugClass struct {
-	native      uintptr
-	ParentClass *WindowClass
-	// UNSUPPORTED : C value 'embedded' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var plugPrivateStruct *gi.Struct
@@ -7148,8 +6227,7 @@ func popoverAccessibleClassStruct_Set() error {
 }
 
 type PopoverAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var popoverClassStruct *gi.Struct
@@ -7164,9 +6242,7 @@ func popoverClassStruct_Set() error {
 }
 
 type PopoverClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'closed' : missing Type
+	native uintptr
 }
 
 var popoverMenuClassStruct *gi.Struct
@@ -7181,8 +6257,7 @@ func popoverMenuClassStruct_Set() error {
 }
 
 type PopoverMenuClass struct {
-	native      uintptr
-	ParentClass *PopoverClass
+	native uintptr
 }
 
 var popoverPrivateStruct *gi.Struct
@@ -7213,26 +6288,6 @@ func printOperationClassStruct_Set() error {
 
 type PrintOperationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'done' : missing Type
-	// UNSUPPORTED : C value 'begin_print' : missing Type
-	// UNSUPPORTED : C value 'paginate' : missing Type
-	// UNSUPPORTED : C value 'request_page_setup' : missing Type
-	// UNSUPPORTED : C value 'draw_page' : missing Type
-	// UNSUPPORTED : C value 'end_print' : missing Type
-	// UNSUPPORTED : C value 'status_changed' : missing Type
-	// UNSUPPORTED : C value 'create_custom_widget' : missing Type
-	// UNSUPPORTED : C value 'custom_widget_apply' : missing Type
-	// UNSUPPORTED : C value 'preview' : missing Type
-	// UNSUPPORTED : C value 'update_custom_widget' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
 var printOperationPreviewIfaceStruct *gi.Struct
@@ -7248,20 +6303,6 @@ func printOperationPreviewIfaceStruct_Set() error {
 
 type PrintOperationPreviewIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'ready' : missing Type
-	// UNSUPPORTED : C value 'got_page_size' : missing Type
-	// UNSUPPORTED : C value 'render_page' : missing Type
-	// UNSUPPORTED : C value 'is_selected' : missing Type
-	// UNSUPPORTED : C value 'end_preview' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -7291,8 +6332,7 @@ func progressBarAccessibleClassStruct_Set() error {
 }
 
 type ProgressBarAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var progressBarAccessiblePrivateStruct *gi.Struct
@@ -7322,12 +6362,7 @@ func progressBarClassStruct_Set() error {
 }
 
 type ProgressBarClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var progressBarPrivateStruct *gi.Struct
@@ -7357,13 +6392,7 @@ func radioActionClassStruct_Set() error {
 }
 
 type RadioActionClass struct {
-	native      uintptr
-	ParentClass *ToggleActionClass
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var radioActionEntryStruct *gi.Struct
@@ -7378,13 +6407,7 @@ func radioActionEntryStruct_Set() error {
 }
 
 type RadioActionEntry struct {
-	native      uintptr
-	Name        string
-	StockId     string
-	Label       string
-	Accelerator string
-	Tooltip     string
-	Value       int32
+	native uintptr
 }
 
 var radioActionPrivateStruct *gi.Struct
@@ -7414,8 +6437,7 @@ func radioButtonAccessibleClassStruct_Set() error {
 }
 
 type RadioButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ToggleButtonAccessibleClass
+	native uintptr
 }
 
 var radioButtonAccessiblePrivateStruct *gi.Struct
@@ -7445,13 +6467,7 @@ func radioButtonClassStruct_Set() error {
 }
 
 type RadioButtonClass struct {
-	native      uintptr
-	ParentClass *CheckButtonClass
-	// UNSUPPORTED : C value 'group_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var radioButtonPrivateStruct *gi.Struct
@@ -7481,8 +6497,7 @@ func radioMenuItemAccessibleClassStruct_Set() error {
 }
 
 type RadioMenuItemAccessibleClass struct {
-	native      uintptr
-	ParentClass *CheckMenuItemAccessibleClass
+	native uintptr
 }
 
 var radioMenuItemAccessiblePrivateStruct *gi.Struct
@@ -7512,13 +6527,7 @@ func radioMenuItemClassStruct_Set() error {
 }
 
 type RadioMenuItemClass struct {
-	native      uintptr
-	ParentClass *CheckMenuItemClass
-	// UNSUPPORTED : C value 'group_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var radioMenuItemPrivateStruct *gi.Struct
@@ -7548,12 +6557,7 @@ func radioToolButtonClassStruct_Set() error {
 }
 
 type RadioToolButtonClass struct {
-	native      uintptr
-	ParentClass *ToggleToolButtonClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var rangeAccessibleClassStruct *gi.Struct
@@ -7568,8 +6572,7 @@ func rangeAccessibleClassStruct_Set() error {
 }
 
 type RangeAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var rangeAccessiblePrivateStruct *gi.Struct
@@ -7599,19 +6602,7 @@ func rangeClassStruct_Set() error {
 }
 
 type RangeClass struct {
-	native        uintptr
-	ParentClass   *WidgetClass
-	SliderDetail  string
-	StepperDetail string
-	// UNSUPPORTED : C value 'value_changed' : missing Type
-	// UNSUPPORTED : C value 'adjust_bounds' : missing Type
-	// UNSUPPORTED : C value 'move_slider' : missing Type
-	// UNSUPPORTED : C value 'get_range_border' : missing Type
-	// UNSUPPORTED : C value 'change_value' : missing Type
-	// UNSUPPORTED : C value 'get_range_size_request' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
+	native uintptr
 }
 
 var rangePrivateStruct *gi.Struct
@@ -7657,10 +6648,6 @@ func rcPropertyStruct_Set() error {
 
 type RcProperty struct {
 	native uintptr
-	// UNSUPPORTED : C value 'type_name' : no Go type for 'GLib.Quark'
-	// UNSUPPORTED : C value 'property_name' : no Go type for 'GLib.Quark'
-	Origin string
-	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
 }
 
 var rcStyleClassStruct *gi.Struct
@@ -7676,15 +6663,6 @@ func rcStyleClassStruct_Set() error {
 
 type RcStyleClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'create_rc_style' : missing Type
-	// UNSUPPORTED : C value 'parse' : missing Type
-	// UNSUPPORTED : C value 'merge' : missing Type
-	// UNSUPPORTED : C value 'create_style' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var recentActionClassStruct *gi.Struct
@@ -7699,12 +6677,7 @@ func recentActionClassStruct_Set() error {
 }
 
 type RecentActionClass struct {
-	native      uintptr
-	ParentClass *ActionClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var recentActionPrivateStruct *gi.Struct
@@ -7734,12 +6707,7 @@ func recentChooserDialogClassStruct_Set() error {
 }
 
 type RecentChooserDialogClass struct {
-	native      uintptr
-	ParentClass *DialogClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var recentChooserDialogPrivateStruct *gi.Struct
@@ -7770,20 +6738,6 @@ func recentChooserIfaceStruct_Set() error {
 
 type RecentChooserIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'set_current_uri' : missing Type
-	// UNSUPPORTED : C value 'get_current_uri' : missing Type
-	// UNSUPPORTED : C value 'select_uri' : missing Type
-	// UNSUPPORTED : C value 'unselect_uri' : missing Type
-	// UNSUPPORTED : C value 'select_all' : missing Type
-	// UNSUPPORTED : C value 'unselect_all' : missing Type
-	// UNSUPPORTED : C value 'get_items' : missing Type
-	// UNSUPPORTED : C value 'get_recent_manager' : missing Type
-	// UNSUPPORTED : C value 'add_filter' : missing Type
-	// UNSUPPORTED : C value 'remove_filter' : missing Type
-	// UNSUPPORTED : C value 'list_filters' : missing Type
-	// UNSUPPORTED : C value 'set_sort_func' : missing Type
-	// UNSUPPORTED : C value 'item_activated' : missing Type
-	// UNSUPPORTED : C value 'selection_changed' : missing Type
 }
 
 var recentChooserMenuClassStruct *gi.Struct
@@ -7798,12 +6752,7 @@ func recentChooserMenuClassStruct_Set() error {
 }
 
 type RecentChooserMenuClass struct {
-	native      uintptr
-	ParentClass *MenuClass
-	// UNSUPPORTED : C value 'gtk_recent1' : missing Type
-	// UNSUPPORTED : C value 'gtk_recent2' : missing Type
-	// UNSUPPORTED : C value 'gtk_recent3' : missing Type
-	// UNSUPPORTED : C value 'gtk_recent4' : missing Type
+	native uintptr
 }
 
 var recentChooserMenuPrivateStruct *gi.Struct
@@ -7833,12 +6782,7 @@ func recentChooserWidgetClassStruct_Set() error {
 }
 
 type RecentChooserWidgetClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var recentChooserWidgetPrivateStruct *gi.Struct
@@ -7868,14 +6812,7 @@ func recentDataStruct_Set() error {
 }
 
 type RecentData struct {
-	native      uintptr
-	DisplayName string
-	Description string
-	MimeType    string
-	AppName     string
-	AppExec     string
-	// UNSUPPORTED : C value 'groups' : missing Type
-	IsPrivate bool
+	native uintptr
 }
 
 var recentFilterInfoStruct *gi.Struct
@@ -7891,13 +6828,6 @@ func recentFilterInfoStruct_Set() error {
 
 type RecentFilterInfo struct {
 	native uintptr
-	// UNSUPPORTED : C value 'contains' : no Go type for 'RecentFilterFlags'
-	Uri         string
-	DisplayName string
-	MimeType    string
-	// UNSUPPORTED : C value 'applications' : missing Type
-	// UNSUPPORTED : C value 'groups' : missing Type
-	Age int32
 }
 
 var recentInfoStruct *gi.Struct
@@ -8642,11 +7572,6 @@ func recentManagerClassStruct_Set() error {
 
 type RecentManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_recent1' : missing Type
-	// UNSUPPORTED : C value '_gtk_recent2' : missing Type
-	// UNSUPPORTED : C value '_gtk_recent3' : missing Type
-	// UNSUPPORTED : C value '_gtk_recent4' : missing Type
 }
 
 var recentManagerPrivateStruct *gi.Struct
@@ -8676,8 +7601,7 @@ func rendererCellAccessibleClassStruct_Set() error {
 }
 
 type RendererCellAccessibleClass struct {
-	native      uintptr
-	ParentClass *CellAccessibleClass
+	native uintptr
 }
 
 var rendererCellAccessiblePrivateStruct *gi.Struct
@@ -8708,9 +7632,6 @@ func requestedSizeStruct_Set() error {
 
 type RequestedSize struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	MinimumSize int32
-	NaturalSize int32
 }
 
 var requisitionStruct *gi.Struct
@@ -8726,8 +7647,6 @@ func requisitionStruct_Set() error {
 
 type Requisition struct {
 	native uintptr
-	Width  int32
-	Height int32
 }
 
 var requisitionNewFunction *gi.Function
@@ -8832,8 +7751,7 @@ func revealerClassStruct_Set() error {
 }
 
 type RevealerClass struct {
-	native      uintptr
-	ParentClass *BinClass
+	native uintptr
 }
 
 var scaleAccessibleClassStruct *gi.Struct
@@ -8848,8 +7766,7 @@ func scaleAccessibleClassStruct_Set() error {
 }
 
 type ScaleAccessibleClass struct {
-	native      uintptr
-	ParentClass *RangeAccessibleClass
+	native uintptr
 }
 
 var scaleAccessiblePrivateStruct *gi.Struct
@@ -8879,8 +7796,7 @@ func scaleButtonAccessibleClassStruct_Set() error {
 }
 
 type ScaleButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ButtonAccessibleClass
+	native uintptr
 }
 
 var scaleButtonAccessiblePrivateStruct *gi.Struct
@@ -8910,13 +7826,7 @@ func scaleButtonClassStruct_Set() error {
 }
 
 type ScaleButtonClass struct {
-	native      uintptr
-	ParentClass *ButtonClass
-	// UNSUPPORTED : C value 'value_changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var scaleButtonPrivateStruct *gi.Struct
@@ -8946,15 +7856,7 @@ func scaleClassStruct_Set() error {
 }
 
 type ScaleClass struct {
-	native      uintptr
-	ParentClass *RangeClass
-	// UNSUPPORTED : C value 'format_value' : missing Type
-	// UNSUPPORTED : C value 'draw_value' : missing Type
-	// UNSUPPORTED : C value 'get_layout_offsets' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var scalePrivateStruct *gi.Struct
@@ -8985,8 +7887,6 @@ func scrollableInterfaceStruct_Set() error {
 
 type ScrollableInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_border' : missing Type
 }
 
 var scrollbarClassStruct *gi.Struct
@@ -9001,12 +7901,7 @@ func scrollbarClassStruct_Set() error {
 }
 
 type ScrollbarClass struct {
-	native      uintptr
-	ParentClass *RangeClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var scrolledWindowAccessibleClassStruct *gi.Struct
@@ -9021,8 +7916,7 @@ func scrolledWindowAccessibleClassStruct_Set() error {
 }
 
 type ScrolledWindowAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var scrolledWindowAccessiblePrivateStruct *gi.Struct
@@ -9052,15 +7946,7 @@ func scrolledWindowClassStruct_Set() error {
 }
 
 type ScrolledWindowClass struct {
-	native           uintptr
-	ParentClass      *BinClass
-	ScrollbarSpacing int32
-	// UNSUPPORTED : C value 'scroll_child' : missing Type
-	// UNSUPPORTED : C value 'move_focus_out' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var scrolledWindowPrivateStruct *gi.Struct
@@ -9090,12 +7976,7 @@ func searchBarClassStruct_Set() error {
 }
 
 type SearchBarClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var searchEntryClassStruct *gi.Struct
@@ -9110,12 +7991,7 @@ func searchEntryClassStruct_Set() error {
 }
 
 type SearchEntryClass struct {
-	native      uintptr
-	ParentClass *EntryClass
-	// UNSUPPORTED : C value 'search_changed' : missing Type
-	// UNSUPPORTED : C value 'next_match' : missing Type
-	// UNSUPPORTED : C value 'previous_match' : missing Type
-	// UNSUPPORTED : C value 'stop_search' : missing Type
+	native uintptr
 }
 
 var selectionDataStruct *gi.Struct
@@ -9540,12 +8416,7 @@ func separatorClassStruct_Set() error {
 }
 
 type SeparatorClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var separatorMenuItemClassStruct *gi.Struct
@@ -9560,12 +8431,7 @@ func separatorMenuItemClassStruct_Set() error {
 }
 
 type SeparatorMenuItemClass struct {
-	native      uintptr
-	ParentClass *MenuItemClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var separatorPrivateStruct *gi.Struct
@@ -9595,12 +8461,7 @@ func separatorToolItemClassStruct_Set() error {
 }
 
 type SeparatorToolItemClass struct {
-	native      uintptr
-	ParentClass *ToolItemClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var separatorToolItemPrivateStruct *gi.Struct
@@ -9631,11 +8492,6 @@ func settingsClassStruct_Set() error {
 
 type SettingsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -9666,8 +8522,6 @@ func settingsValueStruct_Set() error {
 
 type SettingsValue struct {
 	native uintptr
-	Origin string
-	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
 }
 
 var shortcutLabelClassStruct *gi.Struct
@@ -9742,10 +8596,7 @@ func shortcutsWindowClassStruct_Set() error {
 }
 
 type ShortcutsWindowClass struct {
-	native      uintptr
-	ParentClass *WindowClass
-	// UNSUPPORTED : C value 'close' : missing Type
-	// UNSUPPORTED : C value 'search' : missing Type
+	native uintptr
 }
 
 var sizeGroupClassStruct *gi.Struct
@@ -9761,11 +8612,6 @@ func sizeGroupClassStruct_Set() error {
 
 type SizeGroupClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var sizeGroupPrivateStruct *gi.Struct
@@ -9795,14 +8641,7 @@ func socketClassStruct_Set() error {
 }
 
 type SocketClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'plug_added' : missing Type
-	// UNSUPPORTED : C value 'plug_removed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var socketPrivateStruct *gi.Struct
@@ -9832,8 +8671,7 @@ func spinButtonAccessibleClassStruct_Set() error {
 }
 
 type SpinButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *EntryAccessibleClass
+	native uintptr
 }
 
 var spinButtonAccessiblePrivateStruct *gi.Struct
@@ -9863,17 +8701,7 @@ func spinButtonClassStruct_Set() error {
 }
 
 type SpinButtonClass struct {
-	native      uintptr
-	ParentClass *EntryClass
-	// UNSUPPORTED : C value 'input' : missing Type
-	// UNSUPPORTED : C value 'output' : missing Type
-	// UNSUPPORTED : C value 'value_changed' : missing Type
-	// UNSUPPORTED : C value 'change_value' : missing Type
-	// UNSUPPORTED : C value 'wrapped' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var spinButtonPrivateStruct *gi.Struct
@@ -9903,8 +8731,7 @@ func spinnerAccessibleClassStruct_Set() error {
 }
 
 type SpinnerAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var spinnerAccessiblePrivateStruct *gi.Struct
@@ -9934,12 +8761,7 @@ func spinnerClassStruct_Set() error {
 }
 
 type SpinnerClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var spinnerPrivateStruct *gi.Struct
@@ -9969,8 +8791,7 @@ func stackAccessibleClassStruct_Set() error {
 }
 
 type StackAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var stackClassStruct *gi.Struct
@@ -9985,8 +8806,7 @@ func stackClassStruct_Set() error {
 }
 
 type StackClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
+	native uintptr
 }
 
 var stackSidebarClassStruct *gi.Struct
@@ -10001,12 +8821,7 @@ func stackSidebarClassStruct_Set() error {
 }
 
 type StackSidebarClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var stackSidebarPrivateStruct *gi.Struct
@@ -10036,12 +8851,7 @@ func stackSwitcherClassStruct_Set() error {
 }
 
 type StackSwitcherClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var statusIconClassStruct *gi.Struct
@@ -10057,18 +8867,6 @@ func statusIconClassStruct_Set() error {
 
 type StatusIconClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'popup_menu' : missing Type
-	// UNSUPPORTED : C value 'size_changed' : missing Type
-	// UNSUPPORTED : C value 'button_press_event' : missing Type
-	// UNSUPPORTED : C value 'button_release_event' : missing Type
-	// UNSUPPORTED : C value 'scroll_event' : missing Type
-	// UNSUPPORTED : C value 'query_tooltip' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
 }
 
 var statusIconPrivateStruct *gi.Struct
@@ -10098,8 +8896,7 @@ func statusbarAccessibleClassStruct_Set() error {
 }
 
 type StatusbarAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var statusbarAccessiblePrivateStruct *gi.Struct
@@ -10129,15 +8926,7 @@ func statusbarClassStruct_Set() error {
 }
 
 type StatusbarClass struct {
-	native      uintptr
-	ParentClass *BoxClass
-	// UNSUPPORTED : C value 'reserved' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'text_pushed' : missing Type
-	// UNSUPPORTED : C value 'text_popped' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var statusbarPrivateStruct *gi.Struct
@@ -10167,12 +8956,7 @@ func stockItemStruct_Set() error {
 }
 
 type StockItem struct {
-	native  uintptr
-	StockId string
-	Label   string
-	// UNSUPPORTED : C value 'modifier' : no Go type for 'Gdk.ModifierType'
-	Keyval            uint32
-	TranslationDomain string
+	native uintptr
 }
 
 var stockItemCopyFunction *gi.Function
@@ -10248,45 +9032,6 @@ func styleClassStruct_Set() error {
 
 type StyleClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'realize' : missing Type
-	// UNSUPPORTED : C value 'unrealize' : missing Type
-	// UNSUPPORTED : C value 'copy' : missing Type
-	// UNSUPPORTED : C value 'clone' : missing Type
-	// UNSUPPORTED : C value 'init_from_rc' : missing Type
-	// UNSUPPORTED : C value 'set_background' : missing Type
-	// UNSUPPORTED : C value 'render_icon' : missing Type
-	// UNSUPPORTED : C value 'draw_hline' : missing Type
-	// UNSUPPORTED : C value 'draw_vline' : missing Type
-	// UNSUPPORTED : C value 'draw_shadow' : missing Type
-	// UNSUPPORTED : C value 'draw_arrow' : missing Type
-	// UNSUPPORTED : C value 'draw_diamond' : missing Type
-	// UNSUPPORTED : C value 'draw_box' : missing Type
-	// UNSUPPORTED : C value 'draw_flat_box' : missing Type
-	// UNSUPPORTED : C value 'draw_check' : missing Type
-	// UNSUPPORTED : C value 'draw_option' : missing Type
-	// UNSUPPORTED : C value 'draw_tab' : missing Type
-	// UNSUPPORTED : C value 'draw_shadow_gap' : missing Type
-	// UNSUPPORTED : C value 'draw_box_gap' : missing Type
-	// UNSUPPORTED : C value 'draw_extension' : missing Type
-	// UNSUPPORTED : C value 'draw_focus' : missing Type
-	// UNSUPPORTED : C value 'draw_slider' : missing Type
-	// UNSUPPORTED : C value 'draw_handle' : missing Type
-	// UNSUPPORTED : C value 'draw_expander' : missing Type
-	// UNSUPPORTED : C value 'draw_layout' : missing Type
-	// UNSUPPORTED : C value 'draw_resize_grip' : missing Type
-	// UNSUPPORTED : C value 'draw_spinner' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved9' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved10' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved11' : missing Type
 }
 
 var styleContextClassStruct *gi.Struct
@@ -10302,12 +9047,6 @@ func styleContextClassStruct_Set() error {
 
 type StyleContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var styleContextPrivateStruct *gi.Struct
@@ -10338,10 +9077,6 @@ func stylePropertiesClassStruct_Set() error {
 
 type StylePropertiesClass struct {
 	native uintptr
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var stylePropertiesPrivateStruct *gi.Struct
@@ -10372,9 +9107,6 @@ func styleProviderIfaceStruct_Set() error {
 
 type StyleProviderIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'get_style' : missing Type
-	// UNSUPPORTED : C value 'get_style_property' : missing Type
-	// UNSUPPORTED : C value 'get_icon_factory' : missing Type
 }
 
 var switchAccessibleClassStruct *gi.Struct
@@ -10389,8 +9121,7 @@ func switchAccessibleClassStruct_Set() error {
 }
 
 type SwitchAccessibleClass struct {
-	native      uintptr
-	ParentClass *WidgetAccessibleClass
+	native uintptr
 }
 
 var switchAccessiblePrivateStruct *gi.Struct
@@ -10420,15 +9151,7 @@ func switchClassStruct_Set() error {
 }
 
 type SwitchClass struct {
-	native      uintptr
-	ParentClass *WidgetClass
-	// UNSUPPORTED : C value 'activate' : missing Type
-	// UNSUPPORTED : C value 'state_set' : missing Type
-	// UNSUPPORTED : C value '_switch_padding_1' : missing Type
-	// UNSUPPORTED : C value '_switch_padding_2' : missing Type
-	// UNSUPPORTED : C value '_switch_padding_3' : missing Type
-	// UNSUPPORTED : C value '_switch_padding_4' : missing Type
-	// UNSUPPORTED : C value '_switch_padding_5' : missing Type
+	native uintptr
 }
 
 var switchPrivateStruct *gi.Struct
@@ -10735,19 +9458,6 @@ func tableChildStruct_Set() error {
 
 type TableChild struct {
 	native uintptr
-	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
-	LeftAttach   uint16
-	RightAttach  uint16
-	TopAttach    uint16
-	BottomAttach uint16
-	Xpadding     uint16
-	Ypadding     uint16
-	Xexpand      uint32
-	Yexpand      uint32
-	Xshrink      uint32
-	Yshrink      uint32
-	Xfill        uint32
-	Yfill        uint32
 }
 
 var tableClassStruct *gi.Struct
@@ -10762,12 +9472,7 @@ func tableClassStruct_Set() error {
 }
 
 type TableClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var tablePrivateStruct *gi.Struct
@@ -10797,15 +9502,7 @@ func tableRowColStruct_Set() error {
 }
 
 type TableRowCol struct {
-	native      uintptr
-	Requisition uint16
-	Allocation  uint16
-	Spacing     uint16
-	NeedExpand  uint32
-	NeedShrink  uint32
-	Expand      uint32
-	Shrink      uint32
-	Empty       uint32
+	native uintptr
 }
 
 var targetEntryStruct *gi.Struct
@@ -10821,9 +9518,6 @@ func targetEntryStruct_Set() error {
 
 type TargetEntry struct {
 	native uintptr
-	Target string
-	Flags  uint32
-	Info   uint32
 }
 
 var targetEntryNewFunction *gi.Function
@@ -11108,9 +9802,6 @@ func targetPairStruct_Set() error {
 
 type TargetPair struct {
 	native uintptr
-	// UNSUPPORTED : C value 'target' : no Go type for 'Gdk.Atom'
-	Flags uint32
-	Info  uint32
 }
 
 var tearoffMenuItemClassStruct *gi.Struct
@@ -11125,12 +9816,7 @@ func tearoffMenuItemClassStruct_Set() error {
 }
 
 type TearoffMenuItemClass struct {
-	native      uintptr
-	ParentClass *MenuItemClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var tearoffMenuItemPrivateStruct *gi.Struct
@@ -11161,14 +9847,6 @@ func textAppearanceStruct_Set() error {
 
 type TextAppearance struct {
 	native uintptr
-	// UNSUPPORTED : C value 'bg_color' : no Go type for 'Gdk.Color'
-	// UNSUPPORTED : C value 'fg_color' : no Go type for 'Gdk.Color'
-	Rise            int32
-	Underline       uint32
-	Strikethrough   uint32
-	DrawBg          uint32
-	InsideSelection uint32
-	IsText          uint32
 }
 
 var textAttributesStruct *gi.Struct
@@ -11183,26 +9861,7 @@ func textAttributesStruct_Set() error {
 }
 
 type TextAttributes struct {
-	native     uintptr
-	Appearance *TextAppearance
-	// UNSUPPORTED : C value 'justification' : no Go type for 'Justification'
-	// UNSUPPORTED : C value 'direction' : no Go type for 'TextDirection'
-	// UNSUPPORTED : C value 'font' : no Go type for 'Pango.FontDescription'
-	FontScale        float64
-	LeftMargin       int32
-	RightMargin      int32
-	Indent           int32
-	PixelsAboveLines int32
-	PixelsBelowLines int32
-	PixelsInsideWrap int32
-	// UNSUPPORTED : C value 'tabs' : no Go type for 'Pango.TabArray'
-	// UNSUPPORTED : C value 'wrap_mode' : no Go type for 'WrapMode'
-	// UNSUPPORTED : C value 'language' : no Go type for 'Pango.Language'
-	Invisible     uint32
-	BgFullHeight  uint32
-	Editable      uint32
-	NoFallback    uint32
-	LetterSpacing int32
+	native uintptr
 }
 
 var textAttributesNewFunction *gi.Function
@@ -11384,24 +10043,6 @@ func textBufferClassStruct_Set() error {
 
 type TextBufferClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'insert_text' : missing Type
-	// UNSUPPORTED : C value 'insert_pixbuf' : missing Type
-	// UNSUPPORTED : C value 'insert_child_anchor' : missing Type
-	// UNSUPPORTED : C value 'delete_range' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'modified_changed' : missing Type
-	// UNSUPPORTED : C value 'mark_set' : missing Type
-	// UNSUPPORTED : C value 'mark_deleted' : missing Type
-	// UNSUPPORTED : C value 'apply_tag' : missing Type
-	// UNSUPPORTED : C value 'remove_tag' : missing Type
-	// UNSUPPORTED : C value 'begin_user_action' : missing Type
-	// UNSUPPORTED : C value 'end_user_action' : missing Type
-	// UNSUPPORTED : C value 'paste_done' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var textBufferPrivateStruct *gi.Struct
@@ -11431,8 +10072,7 @@ func textCellAccessibleClassStruct_Set() error {
 }
 
 type TextCellAccessibleClass struct {
-	native      uintptr
-	ParentClass *RendererCellAccessibleClass
+	native uintptr
 }
 
 var textCellAccessiblePrivateStruct *gi.Struct
@@ -11463,11 +10103,6 @@ func textChildAnchorClassStruct_Set() error {
 
 type TextChildAnchorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var textIterStruct *gi.Struct
@@ -13868,11 +12503,6 @@ func textMarkClassStruct_Set() error {
 
 type TextMarkClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var textTagClassStruct *gi.Struct
@@ -13888,12 +12518,6 @@ func textTagClassStruct_Set() error {
 
 type TextTagClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'event' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var textTagPrivateStruct *gi.Struct
@@ -13924,14 +12548,6 @@ func textTagTableClassStruct_Set() error {
 
 type TextTagTableClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'tag_changed' : missing Type
-	// UNSUPPORTED : C value 'tag_added' : missing Type
-	// UNSUPPORTED : C value 'tag_removed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var textTagTablePrivateStruct *gi.Struct
@@ -13961,8 +12577,7 @@ func textViewAccessibleClassStruct_Set() error {
 }
 
 type TextViewAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var textViewAccessiblePrivateStruct *gi.Struct
@@ -13992,26 +12607,7 @@ func textViewClassStruct_Set() error {
 }
 
 type TextViewClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'populate_popup' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'set_anchor' : missing Type
-	// UNSUPPORTED : C value 'insert_at_cursor' : missing Type
-	// UNSUPPORTED : C value 'delete_from_cursor' : missing Type
-	// UNSUPPORTED : C value 'backspace' : missing Type
-	// UNSUPPORTED : C value 'cut_clipboard' : missing Type
-	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-	// UNSUPPORTED : C value 'paste_clipboard' : missing Type
-	// UNSUPPORTED : C value 'toggle_overwrite' : missing Type
-	// UNSUPPORTED : C value 'create_buffer' : missing Type
-	// UNSUPPORTED : C value 'draw_layer' : missing Type
-	// UNSUPPORTED : C value 'extend_selection' : missing Type
-	// UNSUPPORTED : C value 'insert_emoji' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var textViewPrivateStruct *gi.Struct
@@ -14057,24 +12653,6 @@ func themingEngineClassStruct_Set() error {
 
 type ThemingEngineClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'render_line' : missing Type
-	// UNSUPPORTED : C value 'render_background' : missing Type
-	// UNSUPPORTED : C value 'render_frame' : missing Type
-	// UNSUPPORTED : C value 'render_frame_gap' : missing Type
-	// UNSUPPORTED : C value 'render_extension' : missing Type
-	// UNSUPPORTED : C value 'render_check' : missing Type
-	// UNSUPPORTED : C value 'render_option' : missing Type
-	// UNSUPPORTED : C value 'render_arrow' : missing Type
-	// UNSUPPORTED : C value 'render_expander' : missing Type
-	// UNSUPPORTED : C value 'render_focus' : missing Type
-	// UNSUPPORTED : C value 'render_layout' : missing Type
-	// UNSUPPORTED : C value 'render_slider' : missing Type
-	// UNSUPPORTED : C value 'render_handle' : missing Type
-	// UNSUPPORTED : C value 'render_activity' : missing Type
-	// UNSUPPORTED : C value 'render_icon_pixbuf' : missing Type
-	// UNSUPPORTED : C value 'render_icon' : missing Type
-	// UNSUPPORTED : C value 'render_icon_surface' : missing Type
 }
 
 var themingEnginePrivateStruct *gi.Struct
@@ -14104,13 +12682,7 @@ func toggleActionClassStruct_Set() error {
 }
 
 type ToggleActionClass struct {
-	native      uintptr
-	ParentClass *ActionClass
-	// UNSUPPORTED : C value 'toggled' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toggleActionEntryStruct *gi.Struct
@@ -14125,14 +12697,7 @@ func toggleActionEntryStruct_Set() error {
 }
 
 type ToggleActionEntry struct {
-	native      uintptr
-	Name        string
-	StockId     string
-	Label       string
-	Accelerator string
-	Tooltip     string
-	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
-	IsActive bool
+	native uintptr
 }
 
 var toggleActionPrivateStruct *gi.Struct
@@ -14162,8 +12727,7 @@ func toggleButtonAccessibleClassStruct_Set() error {
 }
 
 type ToggleButtonAccessibleClass struct {
-	native      uintptr
-	ParentClass *ButtonAccessibleClass
+	native uintptr
 }
 
 var toggleButtonAccessiblePrivateStruct *gi.Struct
@@ -14193,13 +12757,7 @@ func toggleButtonClassStruct_Set() error {
 }
 
 type ToggleButtonClass struct {
-	native      uintptr
-	ParentClass *ButtonClass
-	// UNSUPPORTED : C value 'toggled' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toggleButtonPrivateStruct *gi.Struct
@@ -14229,13 +12787,7 @@ func toggleToolButtonClassStruct_Set() error {
 }
 
 type ToggleToolButtonClass struct {
-	native      uintptr
-	ParentClass *ToolButtonClass
-	// UNSUPPORTED : C value 'toggled' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toggleToolButtonPrivateStruct *gi.Struct
@@ -14265,14 +12817,7 @@ func toolButtonClassStruct_Set() error {
 }
 
 type ToolButtonClass struct {
-	native      uintptr
-	ParentClass *ToolItemClass
-	// UNSUPPORTED : C value 'button_type' : no Go type for 'GType'
-	// UNSUPPORTED : C value 'clicked' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toolButtonPrivateStruct *gi.Struct
@@ -14302,14 +12847,7 @@ func toolItemClassStruct_Set() error {
 }
 
 type ToolItemClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'create_menu_proxy' : missing Type
-	// UNSUPPORTED : C value 'toolbar_reconfigured' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toolItemGroupClassStruct *gi.Struct
@@ -14324,12 +12862,7 @@ func toolItemGroupClassStruct_Set() error {
 }
 
 type ToolItemGroupClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toolItemGroupPrivateStruct *gi.Struct
@@ -14374,12 +12907,7 @@ func toolPaletteClassStruct_Set() error {
 }
 
 type ToolPaletteClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toolPalettePrivateStruct *gi.Struct
@@ -14410,15 +12938,6 @@ func toolShellIfaceStruct_Set() error {
 
 type ToolShellIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'get_icon_size' : missing Type
-	// UNSUPPORTED : C value 'get_orientation' : missing Type
-	// UNSUPPORTED : C value 'get_style' : missing Type
-	// UNSUPPORTED : C value 'get_relief_style' : missing Type
-	// UNSUPPORTED : C value 'rebuild_menu' : missing Type
-	// UNSUPPORTED : C value 'get_text_orientation' : missing Type
-	// UNSUPPORTED : C value 'get_text_alignment' : missing Type
-	// UNSUPPORTED : C value 'get_ellipsize_mode' : missing Type
-	// UNSUPPORTED : C value 'get_text_size_group' : missing Type
 }
 
 var toolbarClassStruct *gi.Struct
@@ -14433,15 +12952,7 @@ func toolbarClassStruct_Set() error {
 }
 
 type ToolbarClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'orientation_changed' : missing Type
-	// UNSUPPORTED : C value 'style_changed' : missing Type
-	// UNSUPPORTED : C value 'popup_context_menu' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var toolbarPrivateStruct *gi.Struct
@@ -14472,7 +12983,6 @@ func toplevelAccessibleClassStruct_Set() error {
 
 type ToplevelAccessibleClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
 }
 
 var toplevelAccessiblePrivateStruct *gi.Struct
@@ -14503,8 +13013,6 @@ func treeDragDestIfaceStruct_Set() error {
 
 type TreeDragDestIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'drag_data_received' : missing Type
-	// UNSUPPORTED : C value 'row_drop_possible' : missing Type
 }
 
 var treeDragSourceIfaceStruct *gi.Struct
@@ -14520,9 +13028,6 @@ func treeDragSourceIfaceStruct_Set() error {
 
 type TreeDragSourceIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'row_draggable' : missing Type
-	// UNSUPPORTED : C value 'drag_data_get' : missing Type
-	// UNSUPPORTED : C value 'drag_data_delete' : missing Type
 }
 
 var treeIterStruct *gi.Struct
@@ -14538,10 +13043,6 @@ func treeIterStruct_Set() error {
 
 type TreeIter struct {
 	native uintptr
-	Stamp  int32
-	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'user_data2' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'user_data3' : no Go type for 'gpointer'
 }
 
 var treeIterCopyFunction *gi.Function
@@ -14617,13 +13118,6 @@ func treeModelFilterClassStruct_Set() error {
 
 type TreeModelFilterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'visible' : missing Type
-	// UNSUPPORTED : C value 'modify' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var treeModelFilterPrivateStruct *gi.Struct
@@ -14654,26 +13148,6 @@ func treeModelIfaceStruct_Set() error {
 
 type TreeModelIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'row_changed' : missing Type
-	// UNSUPPORTED : C value 'row_inserted' : missing Type
-	// UNSUPPORTED : C value 'row_has_child_toggled' : missing Type
-	// UNSUPPORTED : C value 'row_deleted' : missing Type
-	// UNSUPPORTED : C value 'rows_reordered' : missing Type
-	// UNSUPPORTED : C value 'get_flags' : missing Type
-	// UNSUPPORTED : C value 'get_n_columns' : missing Type
-	// UNSUPPORTED : C value 'get_column_type' : missing Type
-	// UNSUPPORTED : C value 'get_iter' : missing Type
-	// UNSUPPORTED : C value 'get_path' : missing Type
-	// UNSUPPORTED : C value 'get_value' : missing Type
-	// UNSUPPORTED : C value 'iter_next' : missing Type
-	// UNSUPPORTED : C value 'iter_previous' : missing Type
-	// UNSUPPORTED : C value 'iter_children' : missing Type
-	// UNSUPPORTED : C value 'iter_has_child' : missing Type
-	// UNSUPPORTED : C value 'iter_n_children' : missing Type
-	// UNSUPPORTED : C value 'iter_nth_child' : missing Type
-	// UNSUPPORTED : C value 'iter_parent' : missing Type
-	// UNSUPPORTED : C value 'ref_node' : missing Type
-	// UNSUPPORTED : C value 'unref_node' : missing Type
 }
 
 var treeModelSortClassStruct *gi.Struct
@@ -14689,11 +13163,6 @@ func treeModelSortClassStruct_Set() error {
 
 type TreeModelSortClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var treeModelSortPrivateStruct *gi.Struct
@@ -15445,12 +13914,6 @@ func treeSelectionClassStruct_Set() error {
 
 type TreeSelectionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var treeSelectionPrivateStruct *gi.Struct
@@ -15481,12 +13944,6 @@ func treeSortableIfaceStruct_Set() error {
 
 type TreeSortableIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'sort_column_changed' : missing Type
-	// UNSUPPORTED : C value 'get_sort_column_id' : missing Type
-	// UNSUPPORTED : C value 'set_sort_column_id' : missing Type
-	// UNSUPPORTED : C value 'set_sort_func' : missing Type
-	// UNSUPPORTED : C value 'set_default_sort_func' : missing Type
-	// UNSUPPORTED : C value 'has_default_sort_func' : missing Type
 }
 
 var treeStoreClassStruct *gi.Struct
@@ -15502,11 +13959,6 @@ func treeStoreClassStruct_Set() error {
 
 type TreeStoreClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var treeStorePrivateStruct *gi.Struct
@@ -15536,8 +13988,7 @@ func treeViewAccessibleClassStruct_Set() error {
 }
 
 type TreeViewAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var treeViewAccessiblePrivateStruct *gi.Struct
@@ -15567,31 +14018,7 @@ func treeViewClassStruct_Set() error {
 }
 
 type TreeViewClass struct {
-	native      uintptr
-	ParentClass *ContainerClass
-	// UNSUPPORTED : C value 'row_activated' : missing Type
-	// UNSUPPORTED : C value 'test_expand_row' : missing Type
-	// UNSUPPORTED : C value 'test_collapse_row' : missing Type
-	// UNSUPPORTED : C value 'row_expanded' : missing Type
-	// UNSUPPORTED : C value 'row_collapsed' : missing Type
-	// UNSUPPORTED : C value 'columns_changed' : missing Type
-	// UNSUPPORTED : C value 'cursor_changed' : missing Type
-	// UNSUPPORTED : C value 'move_cursor' : missing Type
-	// UNSUPPORTED : C value 'select_all' : missing Type
-	// UNSUPPORTED : C value 'unselect_all' : missing Type
-	// UNSUPPORTED : C value 'select_cursor_row' : missing Type
-	// UNSUPPORTED : C value 'toggle_cursor_row' : missing Type
-	// UNSUPPORTED : C value 'expand_collapse_cursor_row' : missing Type
-	// UNSUPPORTED : C value 'select_cursor_parent' : missing Type
-	// UNSUPPORTED : C value 'start_interactive_search' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
+	native uintptr
 }
 
 var treeViewColumnClassStruct *gi.Struct
@@ -15607,12 +14034,6 @@ func treeViewColumnClassStruct_Set() error {
 
 type TreeViewColumnClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value 'clicked' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var treeViewColumnPrivateStruct *gi.Struct
@@ -15658,19 +14079,6 @@ func uIManagerClassStruct_Set() error {
 
 type UIManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'add_widget' : missing Type
-	// UNSUPPORTED : C value 'actions_changed' : missing Type
-	// UNSUPPORTED : C value 'connect_proxy' : missing Type
-	// UNSUPPORTED : C value 'disconnect_proxy' : missing Type
-	// UNSUPPORTED : C value 'pre_activate' : missing Type
-	// UNSUPPORTED : C value 'post_activate' : missing Type
-	// UNSUPPORTED : C value 'get_widget' : missing Type
-	// UNSUPPORTED : C value 'get_action' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var uIManagerPrivateStruct *gi.Struct
@@ -15700,8 +14108,7 @@ func vBoxClassStruct_Set() error {
 }
 
 type VBoxClass struct {
-	native      uintptr
-	ParentClass *BoxClass
+	native uintptr
 }
 
 var vButtonBoxClassStruct *gi.Struct
@@ -15716,8 +14123,7 @@ func vButtonBoxClassStruct_Set() error {
 }
 
 type VButtonBoxClass struct {
-	native      uintptr
-	ParentClass *ButtonBoxClass
+	native uintptr
 }
 
 var vPanedClassStruct *gi.Struct
@@ -15732,8 +14138,7 @@ func vPanedClassStruct_Set() error {
 }
 
 type VPanedClass struct {
-	native      uintptr
-	ParentClass *PanedClass
+	native uintptr
 }
 
 var vScaleClassStruct *gi.Struct
@@ -15748,8 +14153,7 @@ func vScaleClassStruct_Set() error {
 }
 
 type VScaleClass struct {
-	native      uintptr
-	ParentClass *ScaleClass
+	native uintptr
 }
 
 var vScrollbarClassStruct *gi.Struct
@@ -15764,8 +14168,7 @@ func vScrollbarClassStruct_Set() error {
 }
 
 type VScrollbarClass struct {
-	native      uintptr
-	ParentClass *ScrollbarClass
+	native uintptr
 }
 
 var vSeparatorClassStruct *gi.Struct
@@ -15780,8 +14183,7 @@ func vSeparatorClassStruct_Set() error {
 }
 
 type VSeparatorClass struct {
-	native      uintptr
-	ParentClass *SeparatorClass
+	native uintptr
 }
 
 var viewportClassStruct *gi.Struct
@@ -15796,12 +14198,7 @@ func viewportClassStruct_Set() error {
 }
 
 type ViewportClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var viewportPrivateStruct *gi.Struct
@@ -15831,12 +14228,7 @@ func volumeButtonClassStruct_Set() error {
 }
 
 type VolumeButtonClass struct {
-	native      uintptr
-	ParentClass *ScaleButtonClass
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
+	native uintptr
 }
 
 var widgetAccessibleClassStruct *gi.Struct
@@ -15851,9 +14243,7 @@ func widgetAccessibleClassStruct_Set() error {
 }
 
 type WidgetAccessibleClass struct {
-	native      uintptr
-	ParentClass *AccessibleClass
-	// UNSUPPORTED : C value 'notify_gtk' : missing Type
+	native uintptr
 }
 
 var widgetAccessiblePrivateStruct *gi.Struct
@@ -15884,92 +14274,6 @@ func widgetClassStruct_Set() error {
 
 type WidgetClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	ActivateSignal uint32
-	// UNSUPPORTED : C value 'dispatch_child_properties_changed' : missing Type
-	// UNSUPPORTED : C value 'destroy' : missing Type
-	// UNSUPPORTED : C value 'show' : missing Type
-	// UNSUPPORTED : C value 'show_all' : missing Type
-	// UNSUPPORTED : C value 'hide' : missing Type
-	// UNSUPPORTED : C value 'map' : missing Type
-	// UNSUPPORTED : C value 'unmap' : missing Type
-	// UNSUPPORTED : C value 'realize' : missing Type
-	// UNSUPPORTED : C value 'unrealize' : missing Type
-	// UNSUPPORTED : C value 'size_allocate' : missing Type
-	// UNSUPPORTED : C value 'state_changed' : missing Type
-	// UNSUPPORTED : C value 'state_flags_changed' : missing Type
-	// UNSUPPORTED : C value 'parent_set' : missing Type
-	// UNSUPPORTED : C value 'hierarchy_changed' : missing Type
-	// UNSUPPORTED : C value 'style_set' : missing Type
-	// UNSUPPORTED : C value 'direction_changed' : missing Type
-	// UNSUPPORTED : C value 'grab_notify' : missing Type
-	// UNSUPPORTED : C value 'child_notify' : missing Type
-	// UNSUPPORTED : C value 'draw' : missing Type
-	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-	// UNSUPPORTED : C value 'mnemonic_activate' : missing Type
-	// UNSUPPORTED : C value 'grab_focus' : missing Type
-	// UNSUPPORTED : C value 'focus' : missing Type
-	// UNSUPPORTED : C value 'move_focus' : missing Type
-	// UNSUPPORTED : C value 'keynav_failed' : missing Type
-	// UNSUPPORTED : C value 'event' : missing Type
-	// UNSUPPORTED : C value 'button_press_event' : missing Type
-	// UNSUPPORTED : C value 'button_release_event' : missing Type
-	// UNSUPPORTED : C value 'scroll_event' : missing Type
-	// UNSUPPORTED : C value 'motion_notify_event' : missing Type
-	// UNSUPPORTED : C value 'delete_event' : missing Type
-	// UNSUPPORTED : C value 'destroy_event' : missing Type
-	// UNSUPPORTED : C value 'key_press_event' : missing Type
-	// UNSUPPORTED : C value 'key_release_event' : missing Type
-	// UNSUPPORTED : C value 'enter_notify_event' : missing Type
-	// UNSUPPORTED : C value 'leave_notify_event' : missing Type
-	// UNSUPPORTED : C value 'configure_event' : missing Type
-	// UNSUPPORTED : C value 'focus_in_event' : missing Type
-	// UNSUPPORTED : C value 'focus_out_event' : missing Type
-	// UNSUPPORTED : C value 'map_event' : missing Type
-	// UNSUPPORTED : C value 'unmap_event' : missing Type
-	// UNSUPPORTED : C value 'property_notify_event' : missing Type
-	// UNSUPPORTED : C value 'selection_clear_event' : missing Type
-	// UNSUPPORTED : C value 'selection_request_event' : missing Type
-	// UNSUPPORTED : C value 'selection_notify_event' : missing Type
-	// UNSUPPORTED : C value 'proximity_in_event' : missing Type
-	// UNSUPPORTED : C value 'proximity_out_event' : missing Type
-	// UNSUPPORTED : C value 'visibility_notify_event' : missing Type
-	// UNSUPPORTED : C value 'window_state_event' : missing Type
-	// UNSUPPORTED : C value 'damage_event' : missing Type
-	// UNSUPPORTED : C value 'grab_broken_event' : missing Type
-	// UNSUPPORTED : C value 'selection_get' : missing Type
-	// UNSUPPORTED : C value 'selection_received' : missing Type
-	// UNSUPPORTED : C value 'drag_begin' : missing Type
-	// UNSUPPORTED : C value 'drag_end' : missing Type
-	// UNSUPPORTED : C value 'drag_data_get' : missing Type
-	// UNSUPPORTED : C value 'drag_data_delete' : missing Type
-	// UNSUPPORTED : C value 'drag_leave' : missing Type
-	// UNSUPPORTED : C value 'drag_motion' : missing Type
-	// UNSUPPORTED : C value 'drag_drop' : missing Type
-	// UNSUPPORTED : C value 'drag_data_received' : missing Type
-	// UNSUPPORTED : C value 'drag_failed' : missing Type
-	// UNSUPPORTED : C value 'popup_menu' : missing Type
-	// UNSUPPORTED : C value 'show_help' : missing Type
-	// UNSUPPORTED : C value 'get_accessible' : missing Type
-	// UNSUPPORTED : C value 'screen_changed' : missing Type
-	// UNSUPPORTED : C value 'can_activate_accel' : missing Type
-	// UNSUPPORTED : C value 'composited_changed' : missing Type
-	// UNSUPPORTED : C value 'query_tooltip' : missing Type
-	// UNSUPPORTED : C value 'compute_expand' : missing Type
-	// UNSUPPORTED : C value 'adjust_size_request' : missing Type
-	// UNSUPPORTED : C value 'adjust_size_allocation' : missing Type
-	// UNSUPPORTED : C value 'style_updated' : missing Type
-	// UNSUPPORTED : C value 'touch_event' : missing Type
-	// UNSUPPORTED : C value 'get_preferred_height_and_baseline_for_width' : missing Type
-	// UNSUPPORTED : C value 'adjust_baseline_request' : missing Type
-	// UNSUPPORTED : C value 'adjust_baseline_allocation' : missing Type
-	// UNSUPPORTED : C value 'queue_draw_region' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
@@ -16888,8 +15192,7 @@ func windowAccessibleClassStruct_Set() error {
 }
 
 type WindowAccessibleClass struct {
-	native      uintptr
-	ParentClass *ContainerAccessibleClass
+	native uintptr
 }
 
 var windowAccessiblePrivateStruct *gi.Struct
@@ -16919,16 +15222,7 @@ func windowClassStruct_Set() error {
 }
 
 type WindowClass struct {
-	native      uintptr
-	ParentClass *BinClass
-	// UNSUPPORTED : C value 'set_focus' : missing Type
-	// UNSUPPORTED : C value 'activate_focus' : missing Type
-	// UNSUPPORTED : C value 'activate_default' : missing Type
-	// UNSUPPORTED : C value 'keys_changed' : missing Type
-	// UNSUPPORTED : C value 'enable_debugging' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
+	native uintptr
 }
 
 var windowGeometryInfoStruct *gi.Struct
@@ -16959,11 +15253,6 @@ func windowGroupClassStruct_Set() error {
 
 type WindowGroupClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
 var windowGroupPrivateStruct *gi.Struct

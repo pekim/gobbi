@@ -260,15 +260,6 @@ func classVTableStruct_Set() error {
 
 type ClassVTable struct {
 	native uintptr
-	// UNSUPPORTED : C value 'get_property' : no Go type for 'ClassGetPropertyFunction'
-	// UNSUPPORTED : C value 'set_property' : no Go type for 'ClassSetPropertyFunction'
-	// UNSUPPORTED : C value 'has_property' : no Go type for 'ClassHasPropertyFunction'
-	// UNSUPPORTED : C value 'delete_property' : no Go type for 'ClassDeletePropertyFunction'
-	// UNSUPPORTED : C value 'enumerate_properties' : no Go type for 'ClassEnumeratePropertiesFunction'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var contextClassStruct *gi.Struct
@@ -284,11 +275,6 @@ func contextClassStruct_Set() error {
 
 type ContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var contextPrivateStruct *gi.Struct
@@ -319,11 +305,6 @@ func exceptionClassStruct_Set() error {
 
 type ExceptionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var exceptionPrivateStruct *gi.Struct
@@ -354,11 +335,6 @@ func valueClassStruct_Set() error {
 
 type ValueClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var valuePrivateStruct *gi.Struct
@@ -389,11 +365,6 @@ func virtualMachineClassStruct_Set() error {
 
 type VirtualMachineClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var virtualMachinePrivateStruct *gi.Struct
@@ -424,11 +395,6 @@ func weakValueClassStruct_Set() error {
 
 type WeakValueClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_jsc_reserved0' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
-	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
 var weakValuePrivateStruct *gi.Struct

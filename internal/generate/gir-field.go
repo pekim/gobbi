@@ -28,11 +28,11 @@ func (f Field) generate(g *jen.Group) {
 		return
 	}
 
-	goType, err := f.Type.jenGoType()
-	if err != nil {
-		g.Comment(unsupportedf(f.Name, err.Error()))
-		return
-	}
-
-	g.Id(f.goVarName).Add(goType)
+	//goType, err := f.Type.jenGoType()
+	//if err != nil {
+	//	g.Comment(unsupportedf(f.Name, err.Error()))
+	//	return
+	//}
+	//
+	//g.Id(f.goVarName).Add(goType)
 }

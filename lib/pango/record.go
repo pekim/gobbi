@@ -20,15 +20,6 @@ func analysisStruct_Set() error {
 
 type Analysis struct {
 	native uintptr
-	// UNSUPPORTED : C value 'shape_engine' : no Go type for 'EngineShape'
-	// UNSUPPORTED : C value 'lang_engine' : no Go type for 'EngineLang'
-	// UNSUPPORTED : C value 'font' : no Go type for 'Font'
-	Level    uint8
-	Gravity  uint8
-	Flags    uint8
-	Script   uint8
-	Language *Language
-	// UNSUPPORTED : C value 'extra_attrs' : no Go type for 'GLib.SList'
 }
 
 var attrClassStruct *gi.Struct
@@ -44,10 +35,6 @@ func attrClassStruct_Set() error {
 
 type AttrClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'type' : no Go type for 'AttrType'
-	// UNSUPPORTED : C value 'copy' : missing Type
-	// UNSUPPORTED : C value 'destroy' : missing Type
-	// UNSUPPORTED : C value 'equal' : missing Type
 }
 
 var attrColorStruct *gi.Struct
@@ -63,8 +50,6 @@ func attrColorStruct_Set() error {
 
 type AttrColor struct {
 	native uintptr
-	Attr   *Attribute
-	Color  *Color
 }
 
 var attrFloatStruct *gi.Struct
@@ -80,8 +65,6 @@ func attrFloatStruct_Set() error {
 
 type AttrFloat struct {
 	native uintptr
-	Attr   *Attribute
-	Value  float64
 }
 
 var attrFontDescStruct *gi.Struct
@@ -97,8 +80,6 @@ func attrFontDescStruct_Set() error {
 
 type AttrFontDesc struct {
 	native uintptr
-	Attr   *Attribute
-	Desc   *FontDescription
 }
 
 var attrFontFeaturesStruct *gi.Struct
@@ -113,9 +94,7 @@ func attrFontFeaturesStruct_Set() error {
 }
 
 type AttrFontFeatures struct {
-	native   uintptr
-	Attr     *Attribute
-	Features string
+	native uintptr
 }
 
 var attrIntStruct *gi.Struct
@@ -131,8 +110,6 @@ func attrIntStruct_Set() error {
 
 type AttrInt struct {
 	native uintptr
-	Attr   *Attribute
-	Value  int32
 }
 
 var attrIteratorStruct *gi.Struct
@@ -294,8 +271,6 @@ func attrLanguageStruct_Set() error {
 
 type AttrLanguage struct {
 	native uintptr
-	Attr   *Attribute
-	Value  *Language
 }
 
 var attrListStruct *gi.Struct
@@ -599,13 +574,7 @@ func attrShapeStruct_Set() error {
 }
 
 type AttrShape struct {
-	native      uintptr
-	Attr        *Attribute
-	InkRect     *Rectangle
-	LogicalRect *Rectangle
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'copy_func' : no Go type for 'AttrDataCopyFunc'
-	// UNSUPPORTED : C value 'destroy_func' : no Go type for 'GLib.DestroyNotify'
+	native uintptr
 }
 
 var attrSizeStruct *gi.Struct
@@ -620,10 +589,7 @@ func attrSizeStruct_Set() error {
 }
 
 type AttrSize struct {
-	native   uintptr
-	Attr     *Attribute
-	Size     int32
-	Absolute uint32
+	native uintptr
 }
 
 var attrStringStruct *gi.Struct
@@ -639,8 +605,6 @@ func attrStringStruct_Set() error {
 
 type AttrString struct {
 	native uintptr
-	Attr   *Attribute
-	Value  string
 }
 
 var attributeStruct *gi.Struct
@@ -655,10 +619,7 @@ func attributeStruct_Set() error {
 }
 
 type Attribute struct {
-	native     uintptr
-	Klass      *AttrClass
-	StartIndex uint32
-	EndIndex   uint32
+	native uintptr
 }
 
 var attributeCopyFunction *gi.Function
@@ -796,9 +757,6 @@ func colorStruct_Set() error {
 
 type Color struct {
 	native uintptr
-	Red    uint16
-	Green  uint16
-	Blue   uint16
 }
 
 var colorCopyFunction *gi.Function
@@ -1110,12 +1068,7 @@ func engineInfoStruct_Set() error {
 }
 
 type EngineInfo struct {
-	native     uintptr
-	Id         string
-	EngineType string
-	RenderType string
-	Scripts    *EngineScriptInfo
-	NScripts   int32
+	native uintptr
 }
 
 var engineLangClassStruct *gi.Struct
@@ -1131,7 +1084,6 @@ func engineLangClassStruct_Set() error {
 
 type EngineLangClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'script_break' : missing Type
 }
 
 var engineScriptInfoStruct *gi.Struct
@@ -1147,8 +1099,6 @@ func engineScriptInfoStruct_Set() error {
 
 type EngineScriptInfo struct {
 	native uintptr
-	// UNSUPPORTED : C value 'script' : no Go type for 'Script'
-	Langs string
 }
 
 var engineShapeClassStruct *gi.Struct
@@ -1164,8 +1114,6 @@ func engineShapeClassStruct_Set() error {
 
 type EngineShapeClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'script_shape' : missing Type
-	// UNSUPPORTED : C value 'covers' : missing Type
 }
 
 var fontClassStruct *gi.Struct
@@ -1181,16 +1129,6 @@ func fontClassStruct_Set() error {
 
 type FontClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'describe' : missing Type
-	// UNSUPPORTED : C value 'get_coverage' : missing Type
-	// UNSUPPORTED : C value 'find_shaper' : missing Type
-	// UNSUPPORTED : C value 'get_glyph_extents' : missing Type
-	// UNSUPPORTED : C value 'get_metrics' : missing Type
-	// UNSUPPORTED : C value 'get_font_map' : missing Type
-	// UNSUPPORTED : C value 'describe_absolute' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved1' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
 }
 
 var fontDescriptionStruct *gi.Struct
@@ -1892,13 +1830,6 @@ func fontFaceClassStruct_Set() error {
 
 type FontFaceClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_face_name' : missing Type
-	// UNSUPPORTED : C value 'describe' : missing Type
-	// UNSUPPORTED : C value 'list_sizes' : missing Type
-	// UNSUPPORTED : C value 'is_synthesized' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved3' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
 var fontFamilyClassStruct *gi.Struct
@@ -1914,13 +1845,6 @@ func fontFamilyClassStruct_Set() error {
 
 type FontFamilyClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'list_faces' : missing Type
-	// UNSUPPORTED : C value 'get_name' : missing Type
-	// UNSUPPORTED : C value 'is_monospace' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved3' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
 var fontMapClassStruct *gi.Struct
@@ -1936,15 +1860,6 @@ func fontMapClassStruct_Set() error {
 
 type FontMapClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'load_font' : missing Type
-	// UNSUPPORTED : C value 'list_families' : missing Type
-	// UNSUPPORTED : C value 'load_fontset' : missing Type
-	ShapeEngineType string
-	// UNSUPPORTED : C value 'get_serial' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved1' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
 }
 
 var fontMetricsStruct *gi.Struct
@@ -2321,15 +2236,6 @@ func fontsetClassStruct_Set() error {
 
 type FontsetClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_font' : missing Type
-	// UNSUPPORTED : C value 'get_metrics' : missing Type
-	// UNSUPPORTED : C value 'get_language' : missing Type
-	// UNSUPPORTED : C value 'foreach' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved1' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved3' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
 var fontsetSimpleClassStruct *gi.Struct
@@ -2359,10 +2265,7 @@ func glyphGeometryStruct_Set() error {
 }
 
 type GlyphGeometry struct {
-	native  uintptr
-	Width   GlyphUnit
-	XOffset GlyphUnit
-	YOffset GlyphUnit
+	native uintptr
 }
 
 var glyphInfoStruct *gi.Struct
@@ -2377,10 +2280,7 @@ func glyphInfoStruct_Set() error {
 }
 
 type GlyphInfo struct {
-	native   uintptr
-	Glyph    Glyph
-	Geometry *GlyphGeometry
-	Attr     *GlyphVisAttr
+	native uintptr
 }
 
 var glyphItemStruct *gi.Struct
@@ -2396,8 +2296,6 @@ func glyphItemStruct_Set() error {
 
 type GlyphItem struct {
 	native uintptr
-	Item   *Item
-	Glyphs *GlyphString
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
@@ -2512,15 +2410,7 @@ func glyphItemIterStruct_Set() error {
 }
 
 type GlyphItemIter struct {
-	native     uintptr
-	GlyphItem  *GlyphItem
-	Text       string
-	StartGlyph int32
-	StartIndex int32
-	StartChar  int32
-	EndGlyph   int32
-	EndIndex   int32
-	EndChar    int32
+	native uintptr
 }
 
 var glyphItemIterCopyFunction *gi.Function
@@ -2727,10 +2617,7 @@ func glyphStringStruct_Set() error {
 }
 
 type GlyphString struct {
-	native    uintptr
-	NumGlyphs int32
-	// UNSUPPORTED : C value 'glyphs' : missing Type
-	LogClusters int32
+	native uintptr
 }
 
 var glyphStringNewFunction *gi.Function
@@ -2976,8 +2863,7 @@ func glyphVisAttrStruct_Set() error {
 }
 
 type GlyphVisAttr struct {
-	native         uintptr
-	IsClusterStart uint32
+	native uintptr
 }
 
 var includedModuleStruct *gi.Struct
@@ -2993,10 +2879,6 @@ func includedModuleStruct_Set() error {
 
 type IncludedModule struct {
 	native uintptr
-	// UNSUPPORTED : C value 'list' : missing Type
-	// UNSUPPORTED : C value 'init' : missing Type
-	// UNSUPPORTED : C value 'exit' : missing Type
-	// UNSUPPORTED : C value 'create' : missing Type
 }
 
 var itemStruct *gi.Struct
@@ -3011,11 +2893,7 @@ func itemStruct_Set() error {
 }
 
 type Item struct {
-	native   uintptr
-	Offset   int32
-	Length   int32
-	NumChars int32
-	Analysis *Analysis
+	native uintptr
 }
 
 var itemNewFunction *gi.Function
@@ -3882,12 +3760,6 @@ func layoutLineStruct_Set() error {
 
 type LayoutLine struct {
 	native uintptr
-	// UNSUPPORTED : C value 'layout' : no Go type for 'Layout'
-	StartIndex int32
-	Length     int32
-	// UNSUPPORTED : C value 'runs' : no Go type for 'GLib.SList'
-	IsParagraphStart uint32
-	ResolvedDir      uint32
 }
 
 var layoutLineGetExtentsFunction *gi.Function
@@ -4100,20 +3972,7 @@ func logAttrStruct_Set() error {
 }
 
 type LogAttr struct {
-	native                    uintptr
-	IsLineBreak               uint32
-	IsMandatoryBreak          uint32
-	IsCharBreak               uint32
-	IsWhite                   uint32
-	IsCursorPosition          uint32
-	IsWordStart               uint32
-	IsWordEnd                 uint32
-	IsSentenceBoundary        uint32
-	IsSentenceStart           uint32
-	IsSentenceEnd             uint32
-	BackspaceDeletesCharacter uint32
-	IsExpandableSpace         uint32
-	IsWordBoundary            uint32
+	native uintptr
 }
 
 var mapStruct *gi.Struct
@@ -4163,12 +4022,6 @@ func matrixStruct_Set() error {
 
 type Matrix struct {
 	native uintptr
-	Xx     float64
-	Xy     float64
-	Yx     float64
-	Yy     float64
-	X0     float64
-	Y0     float64
 }
 
 var matrixConcatFunction *gi.Function
@@ -4563,10 +4416,6 @@ func rectangleStruct_Set() error {
 
 type Rectangle struct {
 	native uintptr
-	X      int32
-	Y      int32
-	Width  int32
-	Height int32
 }
 
 var rendererClassStruct *gi.Struct
@@ -4582,20 +4431,6 @@ func rendererClassStruct_Set() error {
 
 type RendererClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'draw_glyphs' : missing Type
-	// UNSUPPORTED : C value 'draw_rectangle' : missing Type
-	// UNSUPPORTED : C value 'draw_error_underline' : missing Type
-	// UNSUPPORTED : C value 'draw_shape' : missing Type
-	// UNSUPPORTED : C value 'draw_trapezoid' : missing Type
-	// UNSUPPORTED : C value 'draw_glyph' : missing Type
-	// UNSUPPORTED : C value 'part_changed' : missing Type
-	// UNSUPPORTED : C value 'begin' : missing Type
-	// UNSUPPORTED : C value 'end' : missing Type
-	// UNSUPPORTED : C value 'prepare_run' : missing Type
-	// UNSUPPORTED : C value 'draw_glyph_item' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved3' : missing Type
-	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
 var rendererPrivateStruct *gi.Struct

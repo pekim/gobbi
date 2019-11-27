@@ -170,10 +170,6 @@ func rectangleStruct_Set() error {
 
 type Rectangle struct {
 	native uintptr
-	X      float64
-	Y      float64
-	Width  float64
-	Height float64
 }
 
 var rectangleIntStruct *gi.Struct
@@ -189,8 +185,4 @@ func rectangleIntStruct_Set() error {
 
 type RectangleInt struct {
 	native uintptr
-	X      int32
-	Y      int32
-	Width  int32
-	Height int32
 }

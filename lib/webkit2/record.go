@@ -251,11 +251,6 @@ func authenticationRequestClassStruct_Set() error {
 
 type AuthenticationRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var authenticationRequestPrivateStruct *gi.Struct
@@ -286,11 +281,6 @@ func automationSessionClassStruct_Set() error {
 
 type AutomationSessionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var automationSessionPrivateStruct *gi.Struct
@@ -321,11 +311,6 @@ func backForwardListClassStruct_Set() error {
 
 type BackForwardListClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var backForwardListItemClassStruct *gi.Struct
@@ -341,11 +326,6 @@ func backForwardListItemClassStruct_Set() error {
 
 type BackForwardListItemClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var backForwardListItemPrivateStruct *gi.Struct
@@ -391,7 +371,6 @@ func colorChooserRequestClassStruct_Set() error {
 
 type ColorChooserRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var colorChooserRequestPrivateStruct *gi.Struct
@@ -422,11 +401,6 @@ func contextMenuClassStruct_Set() error {
 
 type ContextMenuClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var contextMenuItemClassStruct *gi.Struct
@@ -442,11 +416,6 @@ func contextMenuItemClassStruct_Set() error {
 
 type ContextMenuItemClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var contextMenuItemPrivateStruct *gi.Struct
@@ -492,11 +461,6 @@ func cookieManagerClassStruct_Set() error {
 
 type CookieManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var cookieManagerPrivateStruct *gi.Struct
@@ -702,11 +666,6 @@ func deviceInfoPermissionRequestClassStruct_Set() error {
 
 type DeviceInfoPermissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
@@ -737,12 +696,6 @@ func downloadClassStruct_Set() error {
 
 type DownloadClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'decide_destination' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var downloadPrivateStruct *gi.Struct
@@ -773,11 +726,6 @@ func editorStateClassStruct_Set() error {
 
 type EditorStateClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var editorStatePrivateStruct *gi.Struct
@@ -808,11 +756,6 @@ func faviconDatabaseClassStruct_Set() error {
 
 type FaviconDatabaseClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var faviconDatabasePrivateStruct *gi.Struct
@@ -843,11 +786,6 @@ func fileChooserRequestClassStruct_Set() error {
 
 type FileChooserRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var fileChooserRequestPrivateStruct *gi.Struct
@@ -878,11 +816,6 @@ func findControllerClassStruct_Set() error {
 
 type FindControllerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var findControllerPrivateStruct *gi.Struct
@@ -913,11 +846,6 @@ func formSubmissionRequestClassStruct_Set() error {
 
 type FormSubmissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var formSubmissionRequestPrivateStruct *gi.Struct
@@ -948,11 +876,6 @@ func geolocationManagerClassStruct_Set() error {
 
 type GeolocationManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var geolocationManagerPrivateStruct *gi.Struct
@@ -983,11 +906,6 @@ func geolocationPermissionRequestClassStruct_Set() error {
 
 type GeolocationPermissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var geolocationPermissionRequestPrivateStruct *gi.Struct
@@ -1272,11 +1190,6 @@ func hitTestResultClassStruct_Set() error {
 
 type HitTestResultClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var hitTestResultPrivateStruct *gi.Struct
@@ -1307,11 +1220,6 @@ func installMissingMediaPluginsPermissionRequestClassStruct_Set() error {
 
 type InstallMissingMediaPluginsPermissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
@@ -1796,12 +1704,7 @@ func navigationPolicyDecisionClassStruct_Set() error {
 }
 
 type NavigationPolicyDecisionClass struct {
-	native      uintptr
-	ParentClass *PolicyDecisionClass
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
+	native uintptr
 }
 
 var navigationPolicyDecisionPrivateStruct *gi.Struct
@@ -1939,13 +1842,6 @@ func notificationClassStruct_Set() error {
 
 type NotificationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved4' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved5' : missing Type
 }
 
 var notificationPermissionRequestClassStruct *gi.Struct
@@ -1961,7 +1857,6 @@ func notificationPermissionRequestClassStruct_Set() error {
 
 type NotificationPermissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var notificationPermissionRequestPrivateStruct *gi.Struct
@@ -2007,11 +1902,6 @@ func optionMenuClassStruct_Set() error {
 
 type OptionMenuClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var optionMenuItemStruct *gi.Struct
@@ -2309,9 +2199,6 @@ func permissionRequestIfaceStruct_Set() error {
 
 type PermissionRequestIface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_interface' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'allow' : missing Type
-	// UNSUPPORTED : C value 'deny' : missing Type
 }
 
 var pluginClassStruct *gi.Struct
@@ -2327,11 +2214,6 @@ func pluginClassStruct_Set() error {
 
 type PluginClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var pluginPrivateStruct *gi.Struct
@@ -2362,11 +2244,6 @@ func policyDecisionClassStruct_Set() error {
 
 type PolicyDecisionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var policyDecisionPrivateStruct *gi.Struct
@@ -2397,13 +2274,6 @@ func printCustomWidgetClassStruct_Set() error {
 
 type PrintCustomWidgetClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'apply' : missing Type
-	// UNSUPPORTED : C value 'update' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var printCustomWidgetPrivateStruct *gi.Struct
@@ -2434,11 +2304,6 @@ func printOperationClassStruct_Set() error {
 
 type PrintOperationClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -2468,12 +2333,7 @@ func responsePolicyDecisionClassStruct_Set() error {
 }
 
 type ResponsePolicyDecisionClass struct {
-	native      uintptr
-	ParentClass *PolicyDecisionClass
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
+	native uintptr
 }
 
 var responsePolicyDecisionPrivateStruct *gi.Struct
@@ -2731,11 +2591,6 @@ func securityManagerClassStruct_Set() error {
 
 type SecurityManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var securityManagerPrivateStruct *gi.Struct
@@ -3067,11 +2922,6 @@ func settingsClassStruct_Set() error {
 
 type SettingsClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -3102,11 +2952,6 @@ func uRIRequestClassStruct_Set() error {
 
 type URIRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var uRIRequestPrivateStruct *gi.Struct
@@ -3137,11 +2982,6 @@ func uRIResponseClassStruct_Set() error {
 
 type URIResponseClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var uRIResponsePrivateStruct *gi.Struct
@@ -3172,11 +3012,6 @@ func uRISchemeRequestClassStruct_Set() error {
 
 type URISchemeRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var uRISchemeRequestPrivateStruct *gi.Struct
@@ -3314,11 +3149,6 @@ func userContentFilterStoreClassStruct_Set() error {
 
 type UserContentFilterStoreClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var userContentFilterStorePrivateStruct *gi.Struct
@@ -3349,11 +3179,6 @@ func userContentManagerClassStruct_Set() error {
 
 type UserContentManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var userContentManagerPrivateStruct *gi.Struct
@@ -3384,11 +3209,6 @@ func userMediaPermissionRequestClassStruct_Set() error {
 
 type UserMediaPermissionRequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var userMediaPermissionRequestPrivateStruct *gi.Struct
@@ -3577,15 +3397,6 @@ func webContextClassStruct_Set() error {
 
 type WebContextClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'download_started' : missing Type
-	// UNSUPPORTED : C value 'initialize_web_extensions' : missing Type
-	// UNSUPPORTED : C value 'initialize_notification_permissions' : missing Type
-	// UNSUPPORTED : C value 'automation_started' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var webContextPrivateStruct *gi.Struct
@@ -3616,11 +3427,6 @@ func webInspectorClassStruct_Set() error {
 
 type WebInspectorClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var webInspectorPrivateStruct *gi.Struct
@@ -3651,11 +3457,6 @@ func webResourceClassStruct_Set() error {
 
 type WebResourceClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var webResourcePrivateStruct *gi.Struct
@@ -3686,11 +3487,6 @@ func webViewBaseClassStruct_Set() error {
 
 type WebViewBaseClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parentClass' : no Go type for 'Gtk.ContainerClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var webViewBasePrivateStruct *gi.Struct
@@ -3721,35 +3517,6 @@ func webViewClassStruct_Set() error {
 
 type WebViewClass struct {
 	native uintptr
-	Parent *WebViewBaseClass
-	// UNSUPPORTED : C value 'load_changed' : missing Type
-	// UNSUPPORTED : C value 'load_failed' : missing Type
-	// UNSUPPORTED : C value 'create' : missing Type
-	// UNSUPPORTED : C value 'ready_to_show' : missing Type
-	// UNSUPPORTED : C value 'run_as_modal' : missing Type
-	// UNSUPPORTED : C value 'close' : missing Type
-	// UNSUPPORTED : C value 'script_dialog' : missing Type
-	// UNSUPPORTED : C value 'decide_policy' : missing Type
-	// UNSUPPORTED : C value 'permission_request' : missing Type
-	// UNSUPPORTED : C value 'mouse_target_changed' : missing Type
-	// UNSUPPORTED : C value 'print' : missing Type
-	// UNSUPPORTED : C value 'resource_load_started' : missing Type
-	// UNSUPPORTED : C value 'enter_fullscreen' : missing Type
-	// UNSUPPORTED : C value 'leave_fullscreen' : missing Type
-	// UNSUPPORTED : C value 'run_file_chooser' : missing Type
-	// UNSUPPORTED : C value 'context_menu' : missing Type
-	// UNSUPPORTED : C value 'context_menu_dismissed' : missing Type
-	// UNSUPPORTED : C value 'submit_form' : missing Type
-	// UNSUPPORTED : C value 'insecure_content_detected' : missing Type
-	// UNSUPPORTED : C value 'web_process_crashed' : missing Type
-	// UNSUPPORTED : C value 'authenticate' : missing Type
-	// UNSUPPORTED : C value 'load_failed_with_tls_errors' : missing Type
-	// UNSUPPORTED : C value 'show_notification' : missing Type
-	// UNSUPPORTED : C value 'run_color_chooser' : missing Type
-	// UNSUPPORTED : C value 'show_option_menu' : missing Type
-	// UNSUPPORTED : C value 'web_process_terminated' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
 }
 
 var webViewPrivateStruct *gi.Struct
@@ -3970,11 +3737,6 @@ func websiteDataManagerClassStruct_Set() error {
 
 type WebsiteDataManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var websiteDataManagerPrivateStruct *gi.Struct
@@ -4005,11 +3767,6 @@ func windowPropertiesClassStruct_Set() error {
 
 type WindowPropertiesClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
-	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
 var windowPropertiesPrivateStruct *gi.Struct

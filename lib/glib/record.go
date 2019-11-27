@@ -20,8 +20,6 @@ func arrayStruct_Set() error {
 
 type Array struct {
 	native uintptr
-	Data   string
-	Len    uint32
 }
 
 var asyncQueueStruct *gi.Struct
@@ -1419,8 +1417,6 @@ func byteArrayStruct_Set() error {
 
 type ByteArray struct {
 	native uintptr
-	Data   uint8
-	Len    uint32
 }
 
 var bytesStruct *gi.Struct
@@ -2061,13 +2057,7 @@ func dateStruct_Set() error {
 }
 
 type Date struct {
-	native     uintptr
-	JulianDays uint32
-	Julian     uint32
-	Dmy        uint32
-	Day        uint32
-	Month      uint32
-	Year       uint32
+	native uintptr
 }
 
 var dateNewFunction *gi.Function
@@ -4616,8 +4606,6 @@ func debugKeyStruct_Set() error {
 
 type DebugKey struct {
 	native uintptr
-	Key    string
-	Value  uint32
 }
 
 var dirStruct *gi.Struct
@@ -4705,10 +4693,7 @@ func errorStruct_Set() error {
 }
 
 type Error struct {
-	native  uintptr
-	Domain  Quark
-	Code    int32
-	Message string
+	native uintptr
 }
 
 // UNSUPPORTED : C value 'g_error_new' : parameter '...' has no type
@@ -5093,14 +5078,6 @@ func hookStruct_Set() error {
 
 type Hook struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	Next     *Hook
-	Prev     *Hook
-	RefCount uint32
-	HookId   uint64
-	Flags    uint32
-	// UNSUPPORTED : C value 'func' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'destroy' : no Go type for 'DestroyNotify'
 }
 
 var hookCompareIdsFunction *gi.Function
@@ -5148,14 +5125,7 @@ func hookListStruct_Set() error {
 }
 
 type HookList struct {
-	native   uintptr
-	SeqId    uint64
-	HookSize uint32
-	IsSetup  uint32
-	Hooks    *Hook
-	// UNSUPPORTED : C value 'dummy3' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'finalize_hook' : no Go type for 'HookFinalizeFunc'
-	// UNSUPPORTED : C value 'dummy' : missing Type
+	native uintptr
 }
 
 var hookListClearFunction *gi.Function
@@ -5848,14 +5818,6 @@ func iOFuncsStruct_Set() error {
 
 type IOFuncs struct {
 	native uintptr
-	// UNSUPPORTED : C value 'io_read' : missing Type
-	// UNSUPPORTED : C value 'io_write' : missing Type
-	// UNSUPPORTED : C value 'io_seek' : missing Type
-	// UNSUPPORTED : C value 'io_close' : missing Type
-	// UNSUPPORTED : C value 'io_create_watch' : missing Type
-	// UNSUPPORTED : C value 'io_free' : missing Type
-	// UNSUPPORTED : C value 'io_set_flags' : missing Type
-	// UNSUPPORTED : C value 'io_get_flags' : missing Type
 }
 
 var keyFileStruct *gi.Struct
@@ -7182,9 +7144,6 @@ func listStruct_Set() error {
 
 type List struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'next' : no Go type for 'GLib.List'
-	// UNSUPPORTED : C value 'prev' : no Go type for 'GLib.List'
 }
 
 var logFieldStruct *gi.Struct
@@ -7200,9 +7159,6 @@ func logFieldStruct_Set() error {
 
 type LogField struct {
 	native uintptr
-	Key    string
-	// UNSUPPORTED : C value 'value' : no Go type for 'gpointer'
-	Length int32
 }
 
 var mainContextStruct *gi.Struct
@@ -8439,11 +8395,6 @@ func markupParserStruct_Set() error {
 
 type MarkupParser struct {
 	native uintptr
-	// UNSUPPORTED : C value 'start_element' : missing Type
-	// UNSUPPORTED : C value 'end_element' : missing Type
-	// UNSUPPORTED : C value 'text' : missing Type
-	// UNSUPPORTED : C value 'passthrough' : missing Type
-	// UNSUPPORTED : C value 'error' : missing Type
 }
 
 var matchInfoStruct *gi.Struct
@@ -8953,12 +8904,6 @@ func memVTableStruct_Set() error {
 
 type MemVTable struct {
 	native uintptr
-	// UNSUPPORTED : C value 'malloc' : missing Type
-	// UNSUPPORTED : C value 'realloc' : missing Type
-	// UNSUPPORTED : C value 'free' : missing Type
-	// UNSUPPORTED : C value 'calloc' : missing Type
-	// UNSUPPORTED : C value 'try_malloc' : missing Type
-	// UNSUPPORTED : C value 'try_realloc' : missing Type
 }
 
 var nodeStruct *gi.Struct
@@ -8974,11 +8919,6 @@ func nodeStruct_Set() error {
 
 type Node struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	Next     *Node
-	Prev     *Node
-	Parent   *Node
-	Children *Node
 }
 
 // UNSUPPORTED : C value 'g_node_child_index' : parameter 'data' of type 'gpointer' not supported
@@ -9582,8 +9522,6 @@ func onceStruct_Set() error {
 
 type Once struct {
 	native uintptr
-	// UNSUPPORTED : C value 'status' : no Go type for 'OnceStatus'
-	// UNSUPPORTED : C value 'retval' : no Go type for 'gpointer'
 }
 
 // UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
@@ -10137,14 +10075,7 @@ func optionEntryStruct_Set() error {
 }
 
 type OptionEntry struct {
-	native    uintptr
-	LongName  string
-	ShortName int8
-	Flags     int32
-	// UNSUPPORTED : C value 'arg' : no Go type for 'OptionArg'
-	// UNSUPPORTED : C value 'arg_data' : no Go type for 'gpointer'
-	Description    string
-	ArgDescription string
+	native uintptr
 }
 
 var optionGroupStruct *gi.Struct
@@ -10404,10 +10335,7 @@ func pollFDStruct_Set() error {
 }
 
 type PollFD struct {
-	native  uintptr
-	Fd      int32
-	Events  uint16
-	Revents uint16
+	native uintptr
 }
 
 var privateStruct *gi.Struct
@@ -10444,8 +10372,6 @@ func ptrArrayStruct_Set() error {
 
 type PtrArray struct {
 	native uintptr
-	// UNSUPPORTED : C value 'pdata' : no Go type for 'gpointer'
-	Len uint32
 }
 
 var queueStruct *gi.Struct
@@ -10461,9 +10387,6 @@ func queueStruct_Set() error {
 
 type Queue struct {
 	native uintptr
-	// UNSUPPORTED : C value 'head' : no Go type for 'GLib.List'
-	// UNSUPPORTED : C value 'tail' : no Go type for 'GLib.List'
-	Length uint32
 }
 
 var queueClearFunction *gi.Function
@@ -11721,8 +11644,6 @@ func sListStruct_Set() error {
 
 type SList struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'next' : no Go type for 'GLib.SList'
 }
 
 var scannerStruct *gi.Struct
@@ -11738,21 +11659,6 @@ func scannerStruct_Set() error {
 
 type Scanner struct {
 	native uintptr
-	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-	MaxParseErrors uint32
-	ParseErrors    uint32
-	InputName      string
-	Qdata          *Data
-	Config         *ScannerConfig
-	// UNSUPPORTED : C value 'token' : no Go type for 'TokenType'
-	// UNSUPPORTED : C value 'value' : no Go type for 'TokenValue'
-	Line     uint32
-	Position uint32
-	// UNSUPPORTED : C value 'next_token' : no Go type for 'TokenType'
-	// UNSUPPORTED : C value 'next_value' : no Go type for 'TokenValue'
-	NextLine     uint32
-	NextPosition uint32
-	// UNSUPPORTED : C value 'msg_handler' : no Go type for 'ScannerMsgFunc'
 }
 
 var scannerCurLineFunction *gi.Function
@@ -12063,33 +11969,7 @@ func scannerConfigStruct_Set() error {
 }
 
 type ScannerConfig struct {
-	native              uintptr
-	CsetSkipCharacters  string
-	CsetIdentifierFirst string
-	CsetIdentifierNth   string
-	CpairCommentSingle  string
-	CaseSensitive       uint32
-	SkipCommentMulti    uint32
-	SkipCommentSingle   uint32
-	ScanCommentMulti    uint32
-	ScanIdentifier      uint32
-	ScanIdentifier1char uint32
-	ScanIdentifierNULL  uint32
-	ScanSymbols         uint32
-	ScanBinary          uint32
-	ScanOctal           uint32
-	ScanFloat           uint32
-	ScanHex             uint32
-	ScanHexDollar       uint32
-	ScanStringSq        uint32
-	ScanStringDq        uint32
-	Numbers2Int         uint32
-	Int2Float           uint32
-	Identifier2String   uint32
-	Char2Token          uint32
-	Symbol2Token        uint32
-	Scope0Fallback      uint32
-	StoreInt64          uint32
+	native uintptr
 }
 
 var sequenceStruct *gi.Struct
@@ -13331,9 +13211,6 @@ func sourceCallbackFuncsStruct_Set() error {
 
 type SourceCallbackFuncs struct {
 	native uintptr
-	// UNSUPPORTED : C value 'ref' : missing Type
-	// UNSUPPORTED : C value 'unref' : missing Type
-	// UNSUPPORTED : C value 'get' : missing Type
 }
 
 var sourceFuncsStruct *gi.Struct
@@ -13349,10 +13226,6 @@ func sourceFuncsStruct_Set() error {
 
 type SourceFuncs struct {
 	native uintptr
-	// UNSUPPORTED : C value 'prepare' : missing Type
-	// UNSUPPORTED : C value 'check' : missing Type
-	// UNSUPPORTED : C value 'dispatch' : missing Type
-	// UNSUPPORTED : C value 'finalize' : missing Type
 }
 
 var sourcePrivateStruct *gi.Struct
@@ -13397,10 +13270,7 @@ func string_Struct_Set() error {
 }
 
 type String struct {
-	native       uintptr
-	Str          string
-	Len          uint64
-	AllocatedLen uint64
+	native uintptr
 }
 
 var stringAppendFunction *gi.Function
@@ -14413,13 +14283,7 @@ func testConfigStruct_Set() error {
 }
 
 type TestConfig struct {
-	native          uintptr
-	TestInitialized bool
-	TestQuick       bool
-	TestPerf        bool
-	TestVerbose     bool
-	TestQuiet       bool
-	TestUndefined   bool
+	native uintptr
 }
 
 var testLogBufferStruct *gi.Struct
@@ -14540,11 +14404,6 @@ func testLogMsgStruct_Set() error {
 
 type TestLogMsg struct {
 	native uintptr
-	// UNSUPPORTED : C value 'log_type' : no Go type for 'TestLogType'
-	NStrings uint32
-	Strings  string
-	NNums    uint32
-	// UNSUPPORTED : C value 'nums' : no Go type for 'long double'
 }
 
 var testLogMsgFreeFunction *gi.Function
@@ -14742,9 +14601,6 @@ func threadPoolStruct_Set() error {
 
 type ThreadPool struct {
 	native uintptr
-	// UNSUPPORTED : C value 'func' : no Go type for 'Func'
-	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-	Exclusive bool
 }
 
 var threadPoolFreeFunction *gi.Function
@@ -14925,8 +14781,6 @@ func timeValStruct_Set() error {
 
 type TimeVal struct {
 	native uintptr
-	TvSec  int64
-	TvUsec int64
 }
 
 var timeValAddFunction *gi.Function
@@ -15557,7 +15411,6 @@ func trashStackStruct_Set() error {
 
 type TrashStack struct {
 	native uintptr
-	Next   *TrashStack
 }
 
 var treeStruct *gi.Struct

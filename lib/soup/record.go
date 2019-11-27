@@ -20,11 +20,6 @@ func addressClassStruct_Set() error {
 
 type AddressClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var authClassStruct *gi.Struct
@@ -40,18 +35,6 @@ func authClassStruct_Set() error {
 
 type AuthClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	SchemeName string
-	Strength   uint32
-	// UNSUPPORTED : C value 'update' : missing Type
-	// UNSUPPORTED : C value 'get_protection_space' : missing Type
-	// UNSUPPORTED : C value 'authenticate' : missing Type
-	// UNSUPPORTED : C value 'is_authenticated' : missing Type
-	// UNSUPPORTED : C value 'get_authorization' : missing Type
-	// UNSUPPORTED : C value 'is_ready' : missing Type
-	// UNSUPPORTED : C value 'can_authenticate' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var authDomainBasicClassStruct *gi.Struct
@@ -66,12 +49,7 @@ func authDomainBasicClassStruct_Set() error {
 }
 
 type AuthDomainBasicClass struct {
-	native      uintptr
-	ParentClass *AuthDomainClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var authDomainClassStruct *gi.Struct
@@ -87,13 +65,6 @@ func authDomainClassStruct_Set() error {
 
 type AuthDomainClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'accepts' : missing Type
-	// UNSUPPORTED : C value 'challenge' : missing Type
-	// UNSUPPORTED : C value 'check_password' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var authDomainDigestClassStruct *gi.Struct
@@ -108,12 +79,7 @@ func authDomainDigestClassStruct_Set() error {
 }
 
 type AuthDomainDigestClass struct {
-	native      uintptr
-	ParentClass *AuthDomainClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var authManagerClassStruct *gi.Struct
@@ -129,8 +95,6 @@ func authManagerClassStruct_Set() error {
 
 type AuthManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'authenticate' : missing Type
 }
 
 var authManagerPrivateStruct *gi.Struct
@@ -161,8 +125,6 @@ func bufferStruct_Set() error {
 
 type Buffer struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	Length uint64
 }
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
@@ -284,11 +246,6 @@ func cacheClassStruct_Set() error {
 
 type CacheClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'get_cacheability' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 }
 
 var cachePrivateStruct *gi.Struct
@@ -427,12 +384,6 @@ func contentDecoderClassStruct_Set() error {
 
 type ContentDecoderClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
 var contentDecoderPrivateStruct *gi.Struct
@@ -463,14 +414,6 @@ func contentSnifferClassStruct_Set() error {
 
 type ContentSnifferClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'sniff' : missing Type
-	// UNSUPPORTED : C value 'get_buffer_size' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
 var contentSnifferPrivateStruct *gi.Struct
@@ -500,14 +443,7 @@ func cookieStruct_Set() error {
 }
 
 type Cookie struct {
-	native   uintptr
-	Name     string
-	Value    string
-	Domain   string
-	Path     string
-	Expires  *Date
-	Secure   bool
-	HttpOnly bool
+	native uintptr
 }
 
 var cookieNewFunction *gi.Function
@@ -1238,12 +1174,6 @@ func cookieJarClassStruct_Set() error {
 
 type CookieJarClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'save' : missing Type
-	// UNSUPPORTED : C value 'is_persistent' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 }
 
 var cookieJarDBClassStruct *gi.Struct
@@ -1258,12 +1188,7 @@ func cookieJarDBClassStruct_Set() error {
 }
 
 type CookieJarDBClass struct {
-	native      uintptr
-	ParentClass *CookieJarClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var cookieJarTextClassStruct *gi.Struct
@@ -1278,12 +1203,7 @@ func cookieJarTextClassStruct_Set() error {
 }
 
 type CookieJarTextClass struct {
-	native      uintptr
-	ParentClass *CookieJarClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var dateStruct *gi.Struct
@@ -1299,14 +1219,6 @@ func dateStruct_Set() error {
 
 type Date struct {
 	native uintptr
-	Year   int32
-	Month  int32
-	Day    int32
-	Hour   int32
-	Minute int32
-	Second int32
-	Utc    bool
-	Offset int32
 }
 
 var dateNewFunction *gi.Function
@@ -1839,15 +1751,6 @@ func hSTSEnforcerClassStruct_Set() error {
 
 type HSTSEnforcerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'is_persistent' : missing Type
-	// UNSUPPORTED : C value 'has_valid_policy' : missing Type
-	// UNSUPPORTED : C value 'changed' : missing Type
-	// UNSUPPORTED : C value 'hsts_enforced' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var hSTSEnforcerDBClassStruct *gi.Struct
@@ -1862,12 +1765,7 @@ func hSTSEnforcerDBClassStruct_Set() error {
 }
 
 type HSTSEnforcerDBClass struct {
-	native      uintptr
-	ParentClass *HSTSEnforcerClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var hSTSEnforcerDBPrivateStruct *gi.Struct
@@ -1912,11 +1810,7 @@ func hSTSPolicyStruct_Set() error {
 }
 
 type HSTSPolicy struct {
-	native            uintptr
-	Domain            string
-	MaxAge            uint64
-	Expires           *Date
-	IncludeSubdomains bool
+	native uintptr
 }
 
 var hSTSPolicyNewFunction *gi.Function
@@ -2257,11 +2151,6 @@ func loggerClassStruct_Set() error {
 
 type LoggerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var messageBodyStruct *gi.Struct
@@ -2277,8 +2166,6 @@ func messageBodyStruct_Set() error {
 
 type MessageBody struct {
 	native uintptr
-	Data   string
-	Length int64
 }
 
 var messageBodyNewFunction *gi.Function
@@ -2625,21 +2512,6 @@ func messageClassStruct_Set() error {
 
 type MessageClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'wrote_informational' : missing Type
-	// UNSUPPORTED : C value 'wrote_headers' : missing Type
-	// UNSUPPORTED : C value 'wrote_chunk' : missing Type
-	// UNSUPPORTED : C value 'wrote_body' : missing Type
-	// UNSUPPORTED : C value 'got_informational' : missing Type
-	// UNSUPPORTED : C value 'got_headers' : missing Type
-	// UNSUPPORTED : C value 'got_chunk' : missing Type
-	// UNSUPPORTED : C value 'got_body' : missing Type
-	// UNSUPPORTED : C value 'restarted' : missing Type
-	// UNSUPPORTED : C value 'finished' : missing Type
-	// UNSUPPORTED : C value 'starting' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 }
 
 var messageHeadersStruct *gi.Struct
@@ -3629,7 +3501,6 @@ func multipartInputStreamClassStruct_Set() error {
 
 type MultipartInputStreamClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.FilterInputStreamClass'
 }
 
 var multipartInputStreamPrivateStruct *gi.Struct
@@ -3660,9 +3531,6 @@ func passwordManagerInterfaceStruct_Set() error {
 
 type PasswordManagerInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_passwords_async' : missing Type
-	// UNSUPPORTED : C value 'get_passwords_sync' : missing Type
 }
 
 var proxyResolverDefaultClassStruct *gi.Struct
@@ -3678,7 +3546,6 @@ func proxyResolverDefaultClassStruct_Set() error {
 
 type ProxyResolverDefaultClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -3694,9 +3561,6 @@ func proxyResolverInterfaceStruct_Set() error {
 
 type ProxyResolverInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_proxy_async' : missing Type
-	// UNSUPPORTED : C value 'get_proxy_sync' : missing Type
 }
 
 var proxyURIResolverInterfaceStruct *gi.Struct
@@ -3712,13 +3576,6 @@ func proxyURIResolverInterfaceStruct_Set() error {
 
 type ProxyURIResolverInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'base' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'get_proxy_uri_async' : missing Type
-	// UNSUPPORTED : C value 'get_proxy_uri_sync' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var rangeStruct *gi.Struct
@@ -3734,8 +3591,6 @@ func rangeStruct_Set() error {
 
 type Range struct {
 	native uintptr
-	Start  int64
-	End    int64
 }
 
 var requestClassStruct *gi.Struct
@@ -3751,14 +3606,6 @@ func requestClassStruct_Set() error {
 
 type RequestClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
-	Schemes string
-	// UNSUPPORTED : C value 'check_uri' : missing Type
-	// UNSUPPORTED : C value 'send' : missing Type
-	// UNSUPPORTED : C value 'send_async' : missing Type
-	// UNSUPPORTED : C value 'send_finish' : missing Type
-	// UNSUPPORTED : C value 'get_content_length' : missing Type
-	// UNSUPPORTED : C value 'get_content_type' : missing Type
 }
 
 var requestDataClassStruct *gi.Struct
@@ -3774,7 +3621,6 @@ func requestDataClassStruct_Set() error {
 
 type RequestDataClass struct {
 	native uintptr
-	Parent *RequestClass
 }
 
 var requestDataPrivateStruct *gi.Struct
@@ -3805,7 +3651,6 @@ func requestFileClassStruct_Set() error {
 
 type RequestFileClass struct {
 	native uintptr
-	Parent *RequestClass
 }
 
 var requestFilePrivateStruct *gi.Struct
@@ -3836,7 +3681,6 @@ func requestHTTPClassStruct_Set() error {
 
 type RequestHTTPClass struct {
 	native uintptr
-	Parent *RequestClass
 }
 
 var requestHTTPPrivateStruct *gi.Struct
@@ -3882,7 +3726,6 @@ func requesterClassStruct_Set() error {
 
 type RequesterClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var requesterPrivateStruct *gi.Struct
@@ -3913,15 +3756,6 @@ func serverClassStruct_Set() error {
 
 type ServerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'request_started' : missing Type
-	// UNSUPPORTED : C value 'request_read' : missing Type
-	// UNSUPPORTED : C value 'request_finished' : missing Type
-	// UNSUPPORTED : C value 'request_aborted' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var sessionAsyncClassStruct *gi.Struct
@@ -3936,12 +3770,7 @@ func sessionAsyncClassStruct_Set() error {
 }
 
 type SessionAsyncClass struct {
-	native      uintptr
-	ParentClass *SessionClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var sessionClassStruct *gi.Struct
@@ -3957,17 +3786,6 @@ func sessionClassStruct_Set() error {
 
 type SessionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'request_started' : missing Type
-	// UNSUPPORTED : C value 'authenticate' : missing Type
-	// UNSUPPORTED : C value 'queue_message' : missing Type
-	// UNSUPPORTED : C value 'requeue_message' : missing Type
-	// UNSUPPORTED : C value 'send_message' : missing Type
-	// UNSUPPORTED : C value 'cancel_message' : missing Type
-	// UNSUPPORTED : C value 'auth_required' : missing Type
-	// UNSUPPORTED : C value 'flush_queue' : missing Type
-	// UNSUPPORTED : C value 'kick' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var sessionFeatureInterfaceStruct *gi.Struct
@@ -3983,15 +3801,6 @@ func sessionFeatureInterfaceStruct_Set() error {
 
 type SessionFeatureInterface struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
-	// UNSUPPORTED : C value 'attach' : missing Type
-	// UNSUPPORTED : C value 'detach' : missing Type
-	// UNSUPPORTED : C value 'request_queued' : missing Type
-	// UNSUPPORTED : C value 'request_started' : missing Type
-	// UNSUPPORTED : C value 'request_unqueued' : missing Type
-	// UNSUPPORTED : C value 'add_feature' : missing Type
-	// UNSUPPORTED : C value 'remove_feature' : missing Type
-	// UNSUPPORTED : C value 'has_feature' : missing Type
 }
 
 var sessionSyncClassStruct *gi.Struct
@@ -4006,12 +3815,7 @@ func sessionSyncClassStruct_Set() error {
 }
 
 type SessionSyncClass struct {
-	native      uintptr
-	ParentClass *SessionClass
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+	native uintptr
 }
 
 var socketClassStruct *gi.Struct
@@ -4027,15 +3831,6 @@ func socketClassStruct_Set() error {
 
 type SocketClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'readable' : missing Type
-	// UNSUPPORTED : C value 'writable' : missing Type
-	// UNSUPPORTED : C value 'disconnected' : missing Type
-	// UNSUPPORTED : C value 'new_connection' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var uRIStruct *gi.Struct
@@ -4050,15 +3845,7 @@ func uRIStruct_Set() error {
 }
 
 type URI struct {
-	native   uintptr
-	Scheme   string
-	User     string
-	Password string
-	Host     string
-	Port     uint32
-	Path     string
-	Query    string
-	Fragment string
+	native uintptr
 }
 
 var uRINewFunction *gi.Function
@@ -4886,12 +4673,6 @@ func websocketConnectionClassStruct_Set() error {
 
 type WebsocketConnectionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
-	// UNSUPPORTED : C value 'message' : missing Type
-	// UNSUPPORTED : C value 'error' : missing Type
-	// UNSUPPORTED : C value 'closing' : missing Type
-	// UNSUPPORTED : C value 'closed' : missing Type
-	// UNSUPPORTED : C value 'pong' : missing Type
 }
 
 var websocketConnectionPrivateStruct *gi.Struct
@@ -4922,17 +4703,6 @@ func websocketExtensionClassStruct_Set() error {
 
 type WebsocketExtensionClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-	Name string
-	// UNSUPPORTED : C value 'configure' : missing Type
-	// UNSUPPORTED : C value 'get_request_params' : missing Type
-	// UNSUPPORTED : C value 'get_response_params' : missing Type
-	// UNSUPPORTED : C value 'process_outgoing_message' : missing Type
-	// UNSUPPORTED : C value 'process_incoming_message' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
-	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
 var websocketExtensionDeflateClassStruct *gi.Struct
@@ -4947,8 +4717,7 @@ func websocketExtensionDeflateClassStruct_Set() error {
 }
 
 type WebsocketExtensionDeflateClass struct {
-	native      uintptr
-	ParentClass *WebsocketExtensionClass
+	native uintptr
 }
 
 var websocketExtensionManagerClassStruct *gi.Struct
@@ -4964,7 +4733,6 @@ func websocketExtensionManagerClassStruct_Set() error {
 
 type WebsocketExtensionManagerClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
 var xMLRPCParamsStruct *gi.Struct
