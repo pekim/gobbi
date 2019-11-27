@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var libraries = []generate.RepositorySpec{
+var libraries = generate.RepositorySpecs{
 	{Version: "1.0", Name: "Atk"},
 	{Version: "1.0", Name: "cairo"},
 	{Version: "2.0", Name: "freetype2"},
@@ -28,7 +28,7 @@ var libraries = []generate.RepositorySpec{
 func generateLibraries() {
 	start := time.Now()
 
-	generate.Generate(libraries)
+	libraries.Generate()
 
 	end := time.Now()
 	fmt.Printf("generation %.0fms\n\n", end.Sub(start).Seconds()*1000)

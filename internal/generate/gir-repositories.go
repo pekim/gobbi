@@ -5,28 +5,29 @@ import (
 	"sync"
 )
 
-type RepositorySpec struct {
+type repositorySpec struct {
 	Version string
 	Name    string
 }
 
-func Generate(specs []RepositorySpec) {
-	fmt.Print("\u001B[?25l")       // hide cursor
-	defer fmt.Print("\u001B[?25h") // show cursor
+type RepositorySpecs []repositorySpec
+
+func (ss RepositorySpecs) Generate() {
+	ss.ansi("25l") // hide cursor
 
 	var wg sync.WaitGroup
 
 	namespaces := make(namespaces)
 	rr := []*repository{}
 
-	progressLineLen := 2 * len(specs)
-	prepareProgressLine(progressLineLen)
+	progressLineLen := 2 * len(ss)
+	ss.prepareProgressLine(progressLineLen)
 
 	var mu sync.Mutex
-	for _, spec := range specs {
+	for _, spec := range ss {
 		wg.Add(1)
 
-		go func(spec RepositorySpec) {
+		go func(spec repositorySpec) {
 			defer wg.Done()
 
 			r := repositoryFromFile(spec)
@@ -34,7 +35,7 @@ func Generate(specs []RepositorySpec) {
 			mu.Lock()
 			defer mu.Unlock()
 
-			incrementProgress()
+			ss.incrementProgress()
 			namespaces[r.Namespace.Name] = r.Namespace
 			rr = append(rr, r)
 		}(spec)
@@ -59,35 +60,54 @@ func Generate(specs []RepositorySpec) {
 			defer mu.Unlock()
 
 			unsupportedCount += r.Namespace.unsupportedCount
-			incrementProgress()
+			ss.incrementProgress()
 
 			wg.Done()
 		}(r)
 	}
 	wg.Wait()
 
-	clearProgressLine(progressLineLen)
+	ss.clearProgressLine(progressLineLen)
+	ss.ansi("25h") // show cursor
 	fmt.Printf("%d unsupported\n", unsupportedCount)
 }
 
-func lineOfChars(char string, len int) {
-	fmt.Print("\u001B[1G") // start of line
+func (ss RepositorySpecs) ansi(sequence string) {
+	if !isTerminal() {
+		return
+	}
 
+	fmt.Printf("\u001B[%s", sequence)
+}
+
+func (ss RepositorySpecs) moveToStartOfLine() {
+	ss.ansi("G") // start of line
+}
+
+func (ss RepositorySpecs) lineOfChars(char string, len int) {
+	if !isTerminal() {
+		return
+	}
+
+	ss.moveToStartOfLine()
 	for i := 0; i < len; i++ {
 		fmt.Print(char)
 	}
-
-	fmt.Print("\u001B[1G") // start of line
+	ss.moveToStartOfLine()
 }
 
-func prepareProgressLine(len int) {
-	lineOfChars("\u2591", len) // light shade block
+func (ss RepositorySpecs) prepareProgressLine(len int) {
+	ss.lineOfChars("\u2591", len) // light shade block
 }
 
-func clearProgressLine(len int) {
-	lineOfChars(" ", len)
+func (ss RepositorySpecs) clearProgressLine(len int) {
+	ss.lineOfChars(" ", len)
 }
 
-func incrementProgress() {
+func (ss RepositorySpecs) incrementProgress() {
+	if !isTerminal() {
+		return
+	}
+
 	fmt.Print("\u2592") // medium shade block
 }

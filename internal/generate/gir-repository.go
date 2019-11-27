@@ -32,7 +32,7 @@ func (r *repository) loadFromFile(filename string, required bool) {
 	}
 }
 
-func repositoryFromFile(spec RepositorySpec) *repository {
+func repositoryFromFile(spec repositorySpec) *repository {
 	fullname := spec.Name + "-" + spec.Version
 
 	r := &repository{}
