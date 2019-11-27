@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type Argument struct {
@@ -48,23 +47,7 @@ func (a Argument) supportedAsOutParameter() bool {
 		return true
 	}
 
-	typ := a.Type.resolvedType()
-	if typ != a.Type {
-		// do not yet support pointers here
-		if strings.HasSuffix(a.Type.CType, "*") {
-			return false
-		}
-	}
-
-	if _, ok := argumentGetFunctionNames[typ.Name]; ok {
-		return true
-	}
-
-	if _, ok := typ.namespace.outParameterGeneratorByName(typ.Name); ok {
-		return true
-	}
-
-	return false
+	return a.isSupported()
 }
 
 func (a Argument) isSupported() bool {
