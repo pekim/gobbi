@@ -35,7 +35,7 @@ func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
 }
 
 func (a *Argument) transferOwnershipJen(g *jen.Group) {
-	if a.Type.Name != "utf8" && a.Type.Name != "filename" {
+	if !a.Type.isString() {
 		return
 	}
 

@@ -227,6 +227,10 @@ func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Stat
 	return nil
 }
 
+func (t *Type) isString() bool {
+	return t.Name == "utf8" || t.Name == "filename"
+}
+
 func (t *Type) isAlias() bool {
 	_, found := t.namespace.Aliases.byName(t.Name)
 	return found

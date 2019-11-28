@@ -104,7 +104,7 @@ func (p Parameter) generateOutValue(g *jen.Group, varNamePrefix string, index in
 }
 
 func (p *Parameter) transferOwnershipJen(g *jen.Group) {
-	if p.Type.Name != "utf8" && p.Type.Name != "filename" {
+	if !p.Type.isString() {
 		return
 	}
 
