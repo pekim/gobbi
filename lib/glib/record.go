@@ -951,9 +951,73 @@ func (recv *BookmarkFile) HasItem(uri string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_bookmark_file_load_from_data' : parameter 'data' has no type
 
-// UNSUPPORTED : C value 'g_bookmark_file_load_from_data_dirs' : parameter 'file' of type 'filename' not supported
+var bookmarkFileLoadFromDataDirsFunction *gi.Function
+var bookmarkFileLoadFromDataDirsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bookmark_file_load_from_file' : parameter 'filename' of type 'filename' not supported
+func bookmarkFileLoadFromDataDirsFunction_Set() error {
+	var err error
+	bookmarkFileLoadFromDataDirsFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileLoadFromDataDirsFunction, err = bookmarkFileStruct.InvokerNew("load_from_data_dirs")
+	})
+	return err
+}
+
+// LoadFromDataDirs is a representation of the C type g_bookmark_file_load_from_data_dirs.
+func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(file)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := bookmarkFileLoadFromDataDirsFunction_Set()
+	if err == nil {
+		ret = bookmarkFileLoadFromDataDirsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
+
+var bookmarkFileLoadFromFileFunction *gi.Function
+var bookmarkFileLoadFromFileFunction_Once sync.Once
+
+func bookmarkFileLoadFromFileFunction_Set() error {
+	var err error
+	bookmarkFileLoadFromFileFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileLoadFromFileFunction, err = bookmarkFileStruct.InvokerNew("load_from_file")
+	})
+	return err
+}
+
+// LoadFromFile is a representation of the C type g_bookmark_file_load_from_file.
+func (recv *BookmarkFile) LoadFromFile(filename string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(filename)
+
+	var ret gi.Argument
+
+	err := bookmarkFileLoadFromFileFunction_Set()
+	if err == nil {
+		ret = bookmarkFileLoadFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bookmarkFileMoveItemFunction *gi.Function
 var bookmarkFileMoveItemFunction_Once sync.Once
@@ -1402,7 +1466,38 @@ func (recv *BookmarkFile) ToData() (uint64, error) {
 	return out0, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_to_file' : parameter 'filename' of type 'filename' not supported
+var bookmarkFileToFileFunction *gi.Function
+var bookmarkFileToFileFunction_Once sync.Once
+
+func bookmarkFileToFileFunction_Set() error {
+	var err error
+	bookmarkFileToFileFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileToFileFunction, err = bookmarkFileStruct.InvokerNew("to_file")
+	})
+	return err
+}
+
+// ToFile is a representation of the C type g_bookmark_file_to_file.
+func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(filename)
+
+	var ret gi.Argument
+
+	err := bookmarkFileToFileFunction_Set()
+	if err == nil {
+		ret = bookmarkFileToFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var byteArrayStruct *gi.Struct
 var byteArrayStruct_Once sync.Once
@@ -4651,7 +4746,37 @@ func (recv *Dir) Close() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_dir_read_name' : return type 'filename' not supported
+var dirReadNameFunction *gi.Function
+var dirReadNameFunction_Once sync.Once
+
+func dirReadNameFunction_Set() error {
+	var err error
+	dirReadNameFunction_Once.Do(func() {
+		err = dirStruct_Set()
+		if err != nil {
+			return
+		}
+		dirReadNameFunction, err = dirStruct.InvokerNew("read_name")
+	})
+	return err
+}
+
+// ReadName is a representation of the C type g_dir_read_name.
+func (recv *Dir) ReadName() (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dirReadNameFunction_Set()
+	if err == nil {
+		ret = dirReadNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var dirRewindFunction *gi.Function
 var dirRewindFunction_Once sync.Once
@@ -5311,7 +5436,38 @@ type IOChannel struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_io_channel_new_file' : parameter 'filename' of type 'filename' not supported
+var iOChannelNewFileFunction *gi.Function
+var iOChannelNewFileFunction_Once sync.Once
+
+func iOChannelNewFileFunction_Set() error {
+	var err error
+	iOChannelNewFileFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelNewFileFunction, err = iOChannelStruct.InvokerNew("new_file")
+	})
+	return err
+}
+
+// IOChannelNewFile is a representation of the C type g_io_channel_new_file.
+func IOChannelNewFile(filename string, mode string) (*IOChannel, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(mode)
+
+	var ret gi.Argument
+
+	err := iOChannelNewFileFunction_Set()
+	if err == nil {
+		ret = iOChannelNewFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &IOChannel{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var iOChannelUnixNewFunction *gi.Function
 var iOChannelUnixNewFunction_Once sync.Once
@@ -6574,11 +6730,11 @@ func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_key_file_load_from_data' : parameter 'flags' of type 'KeyFileFlags' not supported
 
-// UNSUPPORTED : C value 'g_key_file_load_from_data_dirs' : parameter 'file' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_key_file_load_from_data_dirs' : parameter 'flags' of type 'KeyFileFlags' not supported
 
-// UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'file' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'search_dirs' has no type
 
-// UNSUPPORTED : C value 'g_key_file_load_from_file' : parameter 'file' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_key_file_load_from_file' : parameter 'flags' of type 'KeyFileFlags' not supported
 
 var keyFileRefFunction *gi.Function
 var keyFileRefFunction_Once sync.Once
@@ -7922,7 +8078,38 @@ type MappedFile struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_mapped_file_new' : parameter 'filename' of type 'filename' not supported
+var mappedFileNewFunction *gi.Function
+var mappedFileNewFunction_Once sync.Once
+
+func mappedFileNewFunction_Set() error {
+	var err error
+	mappedFileNewFunction_Once.Do(func() {
+		err = mappedFileStruct_Set()
+		if err != nil {
+			return
+		}
+		mappedFileNewFunction, err = mappedFileStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MappedFileNew is a representation of the C type g_mapped_file_new.
+func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetBoolean(writable)
+
+	var ret gi.Argument
+
+	err := mappedFileNewFunction_Set()
+	if err == nil {
+		ret = mappedFileNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &MappedFile{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var mappedFileNewFromFdFunction *gi.Function
 var mappedFileNewFromFdFunction_Once sync.Once

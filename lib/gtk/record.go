@@ -4197,7 +4197,37 @@ func (recv *IconSource) GetDirectionWildcarded() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_filename' : return type 'filename' not supported
+var iconSourceGetFilenameFunction *gi.Function
+var iconSourceGetFilenameFunction_Once sync.Once
+
+func iconSourceGetFilenameFunction_Set() error {
+	var err error
+	iconSourceGetFilenameFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetFilenameFunction, err = iconSourceStruct.InvokerNew("get_filename")
+	})
+	return err
+}
+
+// GetFilename is a representation of the C type gtk_icon_source_get_filename.
+func (recv *IconSource) GetFilename() (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetFilenameFunction_Set()
+	if err == nil {
+		ret = iconSourceGetFilenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var iconSourceGetIconNameFunction *gi.Function
 var iconSourceGetIconNameFunction_Once sync.Once
@@ -4332,7 +4362,34 @@ func (recv *IconSource) SetDirectionWildcarded(setting bool) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_filename' : parameter 'filename' of type 'filename' not supported
+var iconSourceSetFilenameFunction *gi.Function
+var iconSourceSetFilenameFunction_Once sync.Once
+
+func iconSourceSetFilenameFunction_Set() error {
+	var err error
+	iconSourceSetFilenameFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetFilenameFunction, err = iconSourceStruct.InvokerNew("set_filename")
+	})
+	return err
+}
+
+// SetFilename is a representation of the C type gtk_icon_source_set_filename.
+func (recv *IconSource) SetFilename(filename string) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(filename)
+
+	err := iconSourceSetFilenameFunction_Set()
+	if err == nil {
+		iconSourceSetFilenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var iconSourceSetIconNameFunction *gi.Function
 var iconSourceSetIconNameFunction_Once sync.Once

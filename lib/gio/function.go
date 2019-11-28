@@ -39,7 +39,7 @@ func ActionNameIsValid(actionName string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'commandline' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'flags' of type 'AppInfoCreateFlags' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_all' : return type 'GLib.List' not supported
 
@@ -730,15 +730,15 @@ func DbusIsUniqueName(string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_dtls_server_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : parameter 'arg' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : parameter 'arg' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_path' : parameter 'path' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_file_new_for_path' : return type 'File' not supported
 
 // UNSUPPORTED : C value 'g_file_new_for_uri' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_new_tmp' : parameter 'tmpl' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_file_new_tmp' : parameter 'iostream' of type 'FileIOStream' not supported
 
 // UNSUPPORTED : C value 'g_file_parse_name' : return type 'File' not supported
 
@@ -812,13 +812,58 @@ func IoExtensionPointRegister(name string) (*IOExtensionPoint, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : parameter 'dirname' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory' : parameter 'dirname' of type 'filename' not supported
+var ioModulesScanAllInDirectoryFunction *gi.Function
+var ioModulesScanAllInDirectoryFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : parameter 'dirname' of type 'filename' not supported
+func ioModulesScanAllInDirectoryFunction_Set() error {
+	var err error
+	ioModulesScanAllInDirectoryFunction_Once.Do(func() {
+		ioModulesScanAllInDirectoryFunction, err = gi.FunctionInvokerNew("Gio", "io_modules_scan_all_in_directory")
+	})
+	return err
+}
+
+// IoModulesScanAllInDirectory is a representation of the C type g_io_modules_scan_all_in_directory.
+func IoModulesScanAllInDirectory(dirname string) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(dirname)
+
+	err := ioModulesScanAllInDirectoryFunction_Set()
+	if err == nil {
+		ioModulesScanAllInDirectoryFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var ioModulesScanAllInDirectoryWithScopeFunction *gi.Function
+var ioModulesScanAllInDirectoryWithScopeFunction_Once sync.Once
+
+func ioModulesScanAllInDirectoryWithScopeFunction_Set() error {
+	var err error
+	ioModulesScanAllInDirectoryWithScopeFunction_Once.Do(func() {
+		ioModulesScanAllInDirectoryWithScopeFunction, err = gi.FunctionInvokerNew("Gio", "io_modules_scan_all_in_directory_with_scope")
+	})
+	return err
+}
+
+// IoModulesScanAllInDirectoryWithScope is a representation of the C type g_io_modules_scan_all_in_directory_with_scope.
+func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(dirname)
+	inArgs[1].SetPointer(scope.native)
+
+	err := ioModulesScanAllInDirectoryWithScopeFunction_Set()
+	if err == nil {
+		ioModulesScanAllInDirectoryWithScopeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var ioSchedulerCancelAllJobsFunction *gi.Function
 var ioSchedulerCancelAllJobsFunction_Once sync.Once
@@ -892,7 +937,33 @@ func NetworkingInit() error {
 
 // UNSUPPORTED : C value 'g_resource_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_resource_load' : parameter 'filename' of type 'filename' not supported
+var resourceLoadFunction *gi.Function
+var resourceLoadFunction_Once sync.Once
+
+func resourceLoadFunction_Set() error {
+	var err error
+	resourceLoadFunction_Once.Do(func() {
+		resourceLoadFunction, err = gi.FunctionInvokerNew("Gio", "resource_load")
+	})
+	return err
+}
+
+// ResourceLoad is a representation of the C type g_resource_load.
+func ResourceLoad(filename string) (*Resource, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := resourceLoadFunction_Set()
+	if err == nil {
+		ret = resourceLoadFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Resource{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
@@ -990,11 +1061,37 @@ func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
 
 // UNSUPPORTED : C value 'g_tls_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_tls_file_database_new' : parameter 'anchors' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_tls_file_database_new' : return type 'TlsFileDatabase' not supported
 
 // UNSUPPORTED : C value 'g_tls_server_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : parameter 'mount_path' of type 'filename' not supported
+var unixIsMountPathSystemInternalFunction *gi.Function
+var unixIsMountPathSystemInternalFunction_Once sync.Once
+
+func unixIsMountPathSystemInternalFunction_Set() error {
+	var err error
+	unixIsMountPathSystemInternalFunction_Once.Do(func() {
+		unixIsMountPathSystemInternalFunction, err = gi.FunctionInvokerNew("Gio", "unix_is_mount_path_system_internal")
+	})
+	return err
+}
+
+// UnixIsMountPathSystemInternal is a representation of the C type g_unix_is_mount_path_system_internal.
+func UnixIsMountPathSystemInternal(mountPath string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(mountPath)
+
+	var ret gi.Argument
+
+	err := unixIsMountPathSystemInternalFunction_Set()
+	if err == nil {
+		ret = unixIsMountPathSystemInternalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var unixIsSystemDevicePathFunction *gi.Function
 var unixIsSystemDevicePathFunction_Once sync.Once
@@ -1052,7 +1149,35 @@ func UnixIsSystemFsType(fsType string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_at' : parameter 'mount_path' of type 'filename' not supported
+var unixMountAtFunction *gi.Function
+var unixMountAtFunction_Once sync.Once
+
+func unixMountAtFunction_Set() error {
+	var err error
+	unixMountAtFunction_Once.Do(func() {
+		unixMountAtFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_at")
+	})
+	return err
+}
+
+// UnixMountAt is a representation of the C type g_unix_mount_at.
+func UnixMountAt(mountPath string) (*UnixMountEntry, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(mountPath)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := unixMountAtFunction_Set()
+	if err == nil {
+		ret = unixMountAtFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := &UnixMountEntry{native: ret.Pointer()}
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
 
 var unixMountCompareFunction *gi.Function
 var unixMountCompareFunction_Once sync.Once
@@ -1111,7 +1236,35 @@ func UnixMountCopy(mountEntry *UnixMountEntry) (*UnixMountEntry, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_for' : parameter 'file_path' of type 'filename' not supported
+var unixMountForFunction *gi.Function
+var unixMountForFunction_Once sync.Once
+
+func unixMountForFunction_Set() error {
+	var err error
+	unixMountForFunction_Once.Do(func() {
+		unixMountForFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_for")
+	})
+	return err
+}
+
+// UnixMountFor is a representation of the C type g_unix_mount_for.
+func UnixMountFor(filePath string) (*UnixMountEntry, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filePath)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := unixMountForFunction_Set()
+	if err == nil {
+		ret = unixMountForFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := &UnixMountEntry{native: ret.Pointer()}
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
 
 var unixMountFreeFunction *gi.Function
 var unixMountFreeFunction_Once sync.Once
@@ -1137,7 +1290,33 @@ func UnixMountFree(mountEntry *UnixMountEntry) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_get_device_path' : return type 'filename' not supported
+var unixMountGetDevicePathFunction *gi.Function
+var unixMountGetDevicePathFunction_Once sync.Once
+
+func unixMountGetDevicePathFunction_Set() error {
+	var err error
+	unixMountGetDevicePathFunction_Once.Do(func() {
+		unixMountGetDevicePathFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_get_device_path")
+	})
+	return err
+}
+
+// UnixMountGetDevicePath is a representation of the C type g_unix_mount_get_device_path.
+func UnixMountGetDevicePath(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGetDevicePathFunction_Set()
+	if err == nil {
+		ret = unixMountGetDevicePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var unixMountGetFsTypeFunction *gi.Function
 var unixMountGetFsTypeFunction_Once sync.Once
@@ -1167,7 +1346,33 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : return type 'filename' not supported
+var unixMountGetMountPathFunction *gi.Function
+var unixMountGetMountPathFunction_Once sync.Once
+
+func unixMountGetMountPathFunction_Set() error {
+	var err error
+	unixMountGetMountPathFunction_Once.Do(func() {
+		unixMountGetMountPathFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_get_mount_path")
+	})
+	return err
+}
+
+// UnixMountGetMountPath is a representation of the C type g_unix_mount_get_mount_path.
+func UnixMountGetMountPath(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGetMountPathFunction_Set()
+	if err == nil {
+		ret = unixMountGetMountPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var unixMountGetOptionsFunction *gi.Function
 var unixMountGetOptionsFunction_Once sync.Once

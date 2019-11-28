@@ -4125,7 +4125,39 @@ type SettingsSchemaSource struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_settings_schema_source_new_from_directory' : parameter 'directory' of type 'filename' not supported
+var settingsSchemaSourceNewFromDirectoryFunction *gi.Function
+var settingsSchemaSourceNewFromDirectoryFunction_Once sync.Once
+
+func settingsSchemaSourceNewFromDirectoryFunction_Set() error {
+	var err error
+	settingsSchemaSourceNewFromDirectoryFunction_Once.Do(func() {
+		err = settingsSchemaSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaSourceNewFromDirectoryFunction, err = settingsSchemaSourceStruct.InvokerNew("new_from_directory")
+	})
+	return err
+}
+
+// SettingsSchemaSourceNewFromDirectory is a representation of the C type g_settings_schema_source_new_from_directory.
+func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(directory)
+	inArgs[1].SetPointer(parent.native)
+	inArgs[2].SetBoolean(trusted)
+
+	var ret gi.Argument
+
+	err := settingsSchemaSourceNewFromDirectoryFunction_Set()
+	if err == nil {
+		ret = settingsSchemaSourceNewFromDirectoryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SettingsSchemaSource{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'non_relocatable' has no type
 
@@ -5482,7 +5514,37 @@ func (recv *UnixMountPoint) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_get_device_path' : return type 'filename' not supported
+var unixMountPointGetDevicePathFunction *gi.Function
+var unixMountPointGetDevicePathFunction_Once sync.Once
+
+func unixMountPointGetDevicePathFunction_Set() error {
+	var err error
+	unixMountPointGetDevicePathFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGetDevicePathFunction, err = unixMountPointStruct.InvokerNew("get_device_path")
+	})
+	return err
+}
+
+// GetDevicePath is a representation of the C type g_unix_mount_point_get_device_path.
+func (recv *UnixMountPoint) GetDevicePath() (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointGetDevicePathFunction_Set()
+	if err == nil {
+		ret = unixMountPointGetDevicePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var unixMountPointGetFsTypeFunction *gi.Function
 var unixMountPointGetFsTypeFunction_Once sync.Once
@@ -5516,7 +5578,37 @@ func (recv *UnixMountPoint) GetFsType() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_get_mount_path' : return type 'filename' not supported
+var unixMountPointGetMountPathFunction *gi.Function
+var unixMountPointGetMountPathFunction_Once sync.Once
+
+func unixMountPointGetMountPathFunction_Set() error {
+	var err error
+	unixMountPointGetMountPathFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGetMountPathFunction, err = unixMountPointStruct.InvokerNew("get_mount_path")
+	})
+	return err
+}
+
+// GetMountPath is a representation of the C type g_unix_mount_point_get_mount_path.
+func (recv *UnixMountPoint) GetMountPath() (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointGetMountPathFunction_Set()
+	if err == nil {
+		ret = unixMountPointGetMountPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var unixMountPointGetOptionsFunction *gi.Function
 var unixMountPointGetOptionsFunction_Once sync.Once

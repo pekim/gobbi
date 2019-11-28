@@ -38,6 +38,7 @@ var jenGoTypes = map[string]*jen.Statement{
 
 	// misc.
 	"gboolean": jen.Bool(),
+	"filename": jen.String(),
 	"utf8":     jen.String(),
 }
 
@@ -137,7 +138,7 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		return jen.Lit(float64(value)), err
 	case "gboolean":
 		return jen.Lit(stringValue == "true"), nil
-	case "utf8":
+	case "filename", "utf8":
 		return jen.Lit(stringValue), nil
 	}
 

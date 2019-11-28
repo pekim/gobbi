@@ -7,7 +7,34 @@ import (
 	"sync"
 )
 
-// UNSUPPORTED : C value 'g_access' : parameter 'filename' of type 'filename' not supported
+var accessFunction *gi.Function
+var accessFunction_Once sync.Once
+
+func accessFunction_Set() error {
+	var err error
+	accessFunction_Once.Do(func() {
+		accessFunction, err = gi.FunctionInvokerNew("GLib", "access")
+	})
+	return err
+}
+
+// Access is a representation of the C type g_access.
+func Access(filename string, mode int32) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetInt32(mode)
+
+	var ret gi.Argument
+
+	err := accessFunction_Set()
+	if err == nil {
+		ret = accessFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var asciiDigitValueFunction *gi.Function
 var asciiDigitValueFunction_Once sync.Once
@@ -1058,7 +1085,33 @@ func Base64Decode(text string) (uint64, error) {
 
 // UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' has no type
 
-// UNSUPPORTED : C value 'g_basename' : parameter 'file_name' of type 'filename' not supported
+var basenameFunction *gi.Function
+var basenameFunction_Once sync.Once
+
+func basenameFunction_Set() error {
+	var err error
+	basenameFunction_Once.Do(func() {
+		basenameFunction, err = gi.FunctionInvokerNew("GLib", "basename")
+	})
+	return err
+}
+
+// Basename is a representation of the C type g_basename.
+func Basename(fileName string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fileName)
+
+	var ret gi.Argument
+
+	err := basenameFunction_Set()
+	if err == nil {
+		ret = basenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var bitLockFunction *gi.Function
 var bitLockFunction_Once sync.Once
@@ -1251,13 +1304,13 @@ func BookmarkFileErrorQuark() (Quark, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_build_filename' : parameter 'first_element' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_build_filename' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'first_element' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' has no type
 
-// UNSUPPORTED : C value 'g_build_path' : parameter 'separator' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_build_path' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' has no type
 
@@ -1291,9 +1344,62 @@ func ByteArrayNew() error {
 
 // UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' has no type
 
-// UNSUPPORTED : C value 'g_canonicalize_filename' : parameter 'filename' of type 'filename' not supported
+var canonicalizeFilenameFunction *gi.Function
+var canonicalizeFilenameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_chdir' : parameter 'path' of type 'filename' not supported
+func canonicalizeFilenameFunction_Set() error {
+	var err error
+	canonicalizeFilenameFunction_Once.Do(func() {
+		canonicalizeFilenameFunction, err = gi.FunctionInvokerNew("GLib", "canonicalize_filename")
+	})
+	return err
+}
+
+// CanonicalizeFilename is a representation of the C type g_canonicalize_filename.
+func CanonicalizeFilename(filename string, relativeTo string) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(relativeTo)
+
+	var ret gi.Argument
+
+	err := canonicalizeFilenameFunction_Set()
+	if err == nil {
+		ret = canonicalizeFilenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var chdirFunction *gi.Function
+var chdirFunction_Once sync.Once
+
+func chdirFunction_Set() error {
+	var err error
+	chdirFunction_Once.Do(func() {
+		chdirFunction, err = gi.FunctionInvokerNew("GLib", "chdir")
+	})
+	return err
+}
+
+// Chdir is a representation of the C type g_chdir.
+func Chdir(path string) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(path)
+
+	var ret gi.Argument
+
+	err := chdirFunction_Set()
+	if err == nil {
+		ret = chdirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var checkVersionFunction *gi.Function
 var checkVersionFunction_Once sync.Once
@@ -1879,7 +1985,33 @@ func Dgettext(domain string, msgid string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_dir_make_tmp' : parameter 'tmpl' of type 'filename' not supported
+var dirMakeTmpFunction *gi.Function
+var dirMakeTmpFunction_Once sync.Once
+
+func dirMakeTmpFunction_Set() error {
+	var err error
+	dirMakeTmpFunction_Once.Do(func() {
+		dirMakeTmpFunction, err = gi.FunctionInvokerNew("GLib", "dir_make_tmp")
+	})
+	return err
+}
+
+// DirMakeTmp is a representation of the C type g_dir_make_tmp.
+func DirMakeTmp(tmpl string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(tmpl)
+
+	var ret gi.Argument
+
+	err := dirMakeTmpFunction_Set()
+	if err == nil {
+		ret = dirMakeTmpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_direct_equal' : parameter 'v1' of type 'gpointer' not supported
 
@@ -2014,29 +2146,276 @@ func FileErrorQuark() (Quark, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'filename' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'contents' has no type
 
-// UNSUPPORTED : C value 'g_file_open_tmp' : parameter 'tmpl' of type 'filename' not supported
+var fileOpenTmpFunction *gi.Function
+var fileOpenTmpFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_read_link' : parameter 'filename' of type 'filename' not supported
+func fileOpenTmpFunction_Set() error {
+	var err error
+	fileOpenTmpFunction_Once.Do(func() {
+		fileOpenTmpFunction, err = gi.FunctionInvokerNew("GLib", "file_open_tmp")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'filename' of type 'filename' not supported
+// FileOpenTmp is a representation of the C type g_file_open_tmp.
+func FileOpenTmp(tmpl string) (int32, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(tmpl)
 
-// UNSUPPORTED : C value 'g_file_test' : parameter 'filename' of type 'filename' not supported
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_filename_display_basename' : parameter 'filename' of type 'filename' not supported
+	err := fileOpenTmpFunction_Set()
+	if err == nil {
+		ret = fileOpenTmpFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
-// UNSUPPORTED : C value 'g_filename_display_name' : parameter 'filename' of type 'filename' not supported
+	retGo := ret.Int32()
+	out0 := outArgs[0].String(true)
 
-// UNSUPPORTED : C value 'g_filename_from_uri' : return type 'filename' not supported
+	return retGo, out0, err
+}
 
-// UNSUPPORTED : C value 'g_filename_from_utf8' : return type 'filename' not supported
+var fileReadLinkFunction *gi.Function
+var fileReadLinkFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_filename_to_uri' : parameter 'filename' of type 'filename' not supported
+func fileReadLinkFunction_Set() error {
+	var err error
+	fileReadLinkFunction_Once.Do(func() {
+		fileReadLinkFunction, err = gi.FunctionInvokerNew("GLib", "file_read_link")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_filename_to_utf8' : parameter 'opsysstring' of type 'filename' not supported
+// FileReadLink is a representation of the C type g_file_read_link.
+func FileReadLink(filename string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
 
-// UNSUPPORTED : C value 'g_find_program_in_path' : parameter 'program' of type 'filename' not supported
+	var ret gi.Argument
+
+	err := fileReadLinkFunction_Set()
+	if err == nil {
+		ret = fileReadLinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'contents' has no type
+
+// UNSUPPORTED : C value 'g_file_test' : parameter 'test' of type 'FileTest' not supported
+
+var filenameDisplayBasenameFunction *gi.Function
+var filenameDisplayBasenameFunction_Once sync.Once
+
+func filenameDisplayBasenameFunction_Set() error {
+	var err error
+	filenameDisplayBasenameFunction_Once.Do(func() {
+		filenameDisplayBasenameFunction, err = gi.FunctionInvokerNew("GLib", "filename_display_basename")
+	})
+	return err
+}
+
+// FilenameDisplayBasename is a representation of the C type g_filename_display_basename.
+func FilenameDisplayBasename(filename string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := filenameDisplayBasenameFunction_Set()
+	if err == nil {
+		ret = filenameDisplayBasenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var filenameDisplayNameFunction *gi.Function
+var filenameDisplayNameFunction_Once sync.Once
+
+func filenameDisplayNameFunction_Set() error {
+	var err error
+	filenameDisplayNameFunction_Once.Do(func() {
+		filenameDisplayNameFunction, err = gi.FunctionInvokerNew("GLib", "filename_display_name")
+	})
+	return err
+}
+
+// FilenameDisplayName is a representation of the C type g_filename_display_name.
+func FilenameDisplayName(filename string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := filenameDisplayNameFunction_Set()
+	if err == nil {
+		ret = filenameDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var filenameFromUriFunction *gi.Function
+var filenameFromUriFunction_Once sync.Once
+
+func filenameFromUriFunction_Set() error {
+	var err error
+	filenameFromUriFunction_Once.Do(func() {
+		filenameFromUriFunction, err = gi.FunctionInvokerNew("GLib", "filename_from_uri")
+	})
+	return err
+}
+
+// FilenameFromUri is a representation of the C type g_filename_from_uri.
+func FilenameFromUri(uri string) (string, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := filenameFromUriFunction_Set()
+	if err == nil {
+		ret = filenameFromUriFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
+
+var filenameFromUtf8Function *gi.Function
+var filenameFromUtf8Function_Once sync.Once
+
+func filenameFromUtf8Function_Set() error {
+	var err error
+	filenameFromUtf8Function_Once.Do(func() {
+		filenameFromUtf8Function, err = gi.FunctionInvokerNew("GLib", "filename_from_utf8")
+	})
+	return err
+}
+
+// FilenameFromUtf8 is a representation of the C type g_filename_from_utf8.
+func FilenameFromUtf8(utf8string string, len int32) (string, uint64, uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(utf8string)
+	inArgs[1].SetInt32(len)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := filenameFromUtf8Function_Set()
+	if err == nil {
+		ret = filenameFromUtf8Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return retGo, out0, out1, err
+}
+
+var filenameToUriFunction *gi.Function
+var filenameToUriFunction_Once sync.Once
+
+func filenameToUriFunction_Set() error {
+	var err error
+	filenameToUriFunction_Once.Do(func() {
+		filenameToUriFunction, err = gi.FunctionInvokerNew("GLib", "filename_to_uri")
+	})
+	return err
+}
+
+// FilenameToUri is a representation of the C type g_filename_to_uri.
+func FilenameToUri(filename string, hostname string) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(hostname)
+
+	var ret gi.Argument
+
+	err := filenameToUriFunction_Set()
+	if err == nil {
+		ret = filenameToUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var filenameToUtf8Function *gi.Function
+var filenameToUtf8Function_Once sync.Once
+
+func filenameToUtf8Function_Set() error {
+	var err error
+	filenameToUtf8Function_Once.Do(func() {
+		filenameToUtf8Function, err = gi.FunctionInvokerNew("GLib", "filename_to_utf8")
+	})
+	return err
+}
+
+// FilenameToUtf8 is a representation of the C type g_filename_to_utf8.
+func FilenameToUtf8(opsysstring string, len int32) (string, uint64, uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(opsysstring)
+	inArgs[1].SetInt32(len)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := filenameToUtf8Function_Set()
+	if err == nil {
+		ret = filenameToUtf8Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return retGo, out0, out1, err
+}
+
+var findProgramInPathFunction *gi.Function
+var findProgramInPathFunction_Once sync.Once
+
+func findProgramInPathFunction_Set() error {
+	var err error
+	findProgramInPathFunction_Once.Do(func() {
+		findProgramInPathFunction, err = gi.FunctionInvokerNew("GLib", "find_program_in_path")
+	})
+	return err
+}
+
+// FindProgramInPath is a representation of the C type g_find_program_in_path.
+func FindProgramInPath(program string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(program)
+
+	var ret gi.Argument
+
+	err := findProgramInPathFunction_Set()
+	if err == nil {
+		ret = findProgramInPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var formatSizeFunction *gi.Function
 var formatSizeFunction_Once sync.Once
@@ -2208,7 +2587,31 @@ func GetConsoleCharset() (bool, string, error) {
 	return retGo, out0, err
 }
 
-// UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
+var getCurrentDirFunction *gi.Function
+var getCurrentDirFunction_Once sync.Once
+
+func getCurrentDirFunction_Set() error {
+	var err error
+	getCurrentDirFunction_Once.Do(func() {
+		getCurrentDirFunction, err = gi.FunctionInvokerNew("GLib", "get_current_dir")
+	})
+	return err
+}
+
+// GetCurrentDir is a representation of the C type g_get_current_dir.
+func GetCurrentDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getCurrentDirFunction_Set()
+	if err == nil {
+		ret = getCurrentDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var getCurrentTimeFunction *gi.Function
 var getCurrentTimeFunction_Once sync.Once
@@ -2258,7 +2661,31 @@ func GetEnviron() error {
 
 // UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' has no type
 
-// UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
+var getHomeDirFunction *gi.Function
+var getHomeDirFunction_Once sync.Once
+
+func getHomeDirFunction_Set() error {
+	var err error
+	getHomeDirFunction_Once.Do(func() {
+		getHomeDirFunction, err = gi.FunctionInvokerNew("GLib", "get_home_dir")
+	})
+	return err
+}
+
+// GetHomeDir is a representation of the C type g_get_home_dir.
+func GetHomeDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getHomeDirFunction_Set()
+	if err == nil {
+		ret = getHomeDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var getHostNameFunction *gi.Function
 var getHostNameFunction_Once sync.Once
@@ -2434,7 +2861,31 @@ func GetPrgname() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
+var getRealNameFunction *gi.Function
+var getRealNameFunction_Once sync.Once
+
+func getRealNameFunction_Set() error {
+	var err error
+	getRealNameFunction_Once.Do(func() {
+		getRealNameFunction, err = gi.FunctionInvokerNew("GLib", "get_real_name")
+	})
+	return err
+}
+
+// GetRealName is a representation of the C type g_get_real_name.
+func GetRealName() (string, error) {
+
+	var ret gi.Argument
+
+	err := getRealNameFunction_Set()
+	if err == nil {
+		ret = getRealNameFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var getRealTimeFunction *gi.Function
 var getRealTimeFunction_Once sync.Once
@@ -2506,21 +2957,191 @@ func GetSystemDataDirs() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_get_tmp_dir' : return type 'filename' not supported
+var getTmpDirFunction *gi.Function
+var getTmpDirFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_get_user_cache_dir' : return type 'filename' not supported
+func getTmpDirFunction_Set() error {
+	var err error
+	getTmpDirFunction_Once.Do(func() {
+		getTmpDirFunction, err = gi.FunctionInvokerNew("GLib", "get_tmp_dir")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_get_user_config_dir' : return type 'filename' not supported
+// GetTmpDir is a representation of the C type g_get_tmp_dir.
+func GetTmpDir() (string, error) {
 
-// UNSUPPORTED : C value 'g_get_user_data_dir' : return type 'filename' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_get_user_name' : return type 'filename' not supported
+	err := getTmpDirFunction_Set()
+	if err == nil {
+		ret = getTmpDirFunction.Invoke(nil, nil)
+	}
 
-// UNSUPPORTED : C value 'g_get_user_runtime_dir' : return type 'filename' not supported
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var getUserCacheDirFunction *gi.Function
+var getUserCacheDirFunction_Once sync.Once
+
+func getUserCacheDirFunction_Set() error {
+	var err error
+	getUserCacheDirFunction_Once.Do(func() {
+		getUserCacheDirFunction, err = gi.FunctionInvokerNew("GLib", "get_user_cache_dir")
+	})
+	return err
+}
+
+// GetUserCacheDir is a representation of the C type g_get_user_cache_dir.
+func GetUserCacheDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getUserCacheDirFunction_Set()
+	if err == nil {
+		ret = getUserCacheDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var getUserConfigDirFunction *gi.Function
+var getUserConfigDirFunction_Once sync.Once
+
+func getUserConfigDirFunction_Set() error {
+	var err error
+	getUserConfigDirFunction_Once.Do(func() {
+		getUserConfigDirFunction, err = gi.FunctionInvokerNew("GLib", "get_user_config_dir")
+	})
+	return err
+}
+
+// GetUserConfigDir is a representation of the C type g_get_user_config_dir.
+func GetUserConfigDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getUserConfigDirFunction_Set()
+	if err == nil {
+		ret = getUserConfigDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var getUserDataDirFunction *gi.Function
+var getUserDataDirFunction_Once sync.Once
+
+func getUserDataDirFunction_Set() error {
+	var err error
+	getUserDataDirFunction_Once.Do(func() {
+		getUserDataDirFunction, err = gi.FunctionInvokerNew("GLib", "get_user_data_dir")
+	})
+	return err
+}
+
+// GetUserDataDir is a representation of the C type g_get_user_data_dir.
+func GetUserDataDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getUserDataDirFunction_Set()
+	if err == nil {
+		ret = getUserDataDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var getUserNameFunction *gi.Function
+var getUserNameFunction_Once sync.Once
+
+func getUserNameFunction_Set() error {
+	var err error
+	getUserNameFunction_Once.Do(func() {
+		getUserNameFunction, err = gi.FunctionInvokerNew("GLib", "get_user_name")
+	})
+	return err
+}
+
+// GetUserName is a representation of the C type g_get_user_name.
+func GetUserName() (string, error) {
+
+	var ret gi.Argument
+
+	err := getUserNameFunction_Set()
+	if err == nil {
+		ret = getUserNameFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var getUserRuntimeDirFunction *gi.Function
+var getUserRuntimeDirFunction_Once sync.Once
+
+func getUserRuntimeDirFunction_Set() error {
+	var err error
+	getUserRuntimeDirFunction_Once.Do(func() {
+		getUserRuntimeDirFunction, err = gi.FunctionInvokerNew("GLib", "get_user_runtime_dir")
+	})
+	return err
+}
+
+// GetUserRuntimeDir is a representation of the C type g_get_user_runtime_dir.
+func GetUserRuntimeDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := getUserRuntimeDirFunction_Set()
+	if err == nil {
+		ret = getUserRuntimeDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_get_user_special_dir' : parameter 'directory' of type 'UserDirectory' not supported
 
-// UNSUPPORTED : C value 'g_getenv' : parameter 'variable' of type 'filename' not supported
+var getenvFunction *gi.Function
+var getenvFunction_Once sync.Once
+
+func getenvFunction_Set() error {
+	var err error
+	getenvFunction_Once.Do(func() {
+		getenvFunction, err = gi.FunctionInvokerNew("GLib", "getenv")
+	})
+	return err
+}
+
+// Getenv is a representation of the C type g_getenv.
+func Getenv(variable string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(variable)
+
+	var ret gi.Argument
+
+	err := getenvFunction_Set()
+	if err == nil {
+		ret = getenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_hash_table_add' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
@@ -3504,15 +4125,149 @@ func MemSetVtable(vtable *MemVTable) error {
 
 // UNSUPPORTED : C value 'g_memdup' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_mkdir_with_parents' : parameter 'pathname' of type 'filename' not supported
+var mkdirWithParentsFunction *gi.Function
+var mkdirWithParentsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_mkdtemp' : parameter 'tmpl' of type 'filename' not supported
+func mkdirWithParentsFunction_Set() error {
+	var err error
+	mkdirWithParentsFunction_Once.Do(func() {
+		mkdirWithParentsFunction, err = gi.FunctionInvokerNew("GLib", "mkdir_with_parents")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_mkdtemp_full' : parameter 'tmpl' of type 'filename' not supported
+// MkdirWithParents is a representation of the C type g_mkdir_with_parents.
+func MkdirWithParents(pathname string, mode int32) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(pathname)
+	inArgs[1].SetInt32(mode)
 
-// UNSUPPORTED : C value 'g_mkstemp' : parameter 'tmpl' of type 'filename' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_mkstemp_full' : parameter 'tmpl' of type 'filename' not supported
+	err := mkdirWithParentsFunction_Set()
+	if err == nil {
+		ret = mkdirWithParentsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var mkdtempFunction *gi.Function
+var mkdtempFunction_Once sync.Once
+
+func mkdtempFunction_Set() error {
+	var err error
+	mkdtempFunction_Once.Do(func() {
+		mkdtempFunction, err = gi.FunctionInvokerNew("GLib", "mkdtemp")
+	})
+	return err
+}
+
+// Mkdtemp is a representation of the C type g_mkdtemp.
+func Mkdtemp(tmpl string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(tmpl)
+
+	var ret gi.Argument
+
+	err := mkdtempFunction_Set()
+	if err == nil {
+		ret = mkdtempFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var mkdtempFullFunction *gi.Function
+var mkdtempFullFunction_Once sync.Once
+
+func mkdtempFullFunction_Set() error {
+	var err error
+	mkdtempFullFunction_Once.Do(func() {
+		mkdtempFullFunction, err = gi.FunctionInvokerNew("GLib", "mkdtemp_full")
+	})
+	return err
+}
+
+// MkdtempFull is a representation of the C type g_mkdtemp_full.
+func MkdtempFull(tmpl string, mode int32) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(tmpl)
+	inArgs[1].SetInt32(mode)
+
+	var ret gi.Argument
+
+	err := mkdtempFullFunction_Set()
+	if err == nil {
+		ret = mkdtempFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var mkstempFunction *gi.Function
+var mkstempFunction_Once sync.Once
+
+func mkstempFunction_Set() error {
+	var err error
+	mkstempFunction_Once.Do(func() {
+		mkstempFunction, err = gi.FunctionInvokerNew("GLib", "mkstemp")
+	})
+	return err
+}
+
+// Mkstemp is a representation of the C type g_mkstemp.
+func Mkstemp(tmpl string) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(tmpl)
+
+	var ret gi.Argument
+
+	err := mkstempFunction_Set()
+	if err == nil {
+		ret = mkstempFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var mkstempFullFunction *gi.Function
+var mkstempFullFunction_Once sync.Once
+
+func mkstempFullFunction_Set() error {
+	var err error
+	mkstempFullFunction_Once.Do(func() {
+		mkstempFullFunction, err = gi.FunctionInvokerNew("GLib", "mkstemp_full")
+	})
+	return err
+}
+
+// MkstempFull is a representation of the C type g_mkstemp_full.
+func MkstempFull(tmpl string, flags int32, mode int32) (int32, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(tmpl)
+	inArgs[1].SetInt32(flags)
+	inArgs[2].SetInt32(mode)
+
+	var ret gi.Argument
+
+	err := mkstempFullFunction_Set()
+	if err == nil {
+		ret = mkstempFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_nullify_pointer' : parameter 'nullify_location' of type 'gpointer' not supported
 
@@ -3622,13 +4377,117 @@ func OptionErrorQuark() (Quark, error) {
 
 // UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' has no type
 
-// UNSUPPORTED : C value 'g_path_get_basename' : parameter 'file_name' of type 'filename' not supported
+var pathGetBasenameFunction *gi.Function
+var pathGetBasenameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_path_get_dirname' : parameter 'file_name' of type 'filename' not supported
+func pathGetBasenameFunction_Set() error {
+	var err error
+	pathGetBasenameFunction_Once.Do(func() {
+		pathGetBasenameFunction, err = gi.FunctionInvokerNew("GLib", "path_get_basename")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_path_is_absolute' : parameter 'file_name' of type 'filename' not supported
+// PathGetBasename is a representation of the C type g_path_get_basename.
+func PathGetBasename(fileName string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fileName)
 
-// UNSUPPORTED : C value 'g_path_skip_root' : parameter 'file_name' of type 'filename' not supported
+	var ret gi.Argument
+
+	err := pathGetBasenameFunction_Set()
+	if err == nil {
+		ret = pathGetBasenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var pathGetDirnameFunction *gi.Function
+var pathGetDirnameFunction_Once sync.Once
+
+func pathGetDirnameFunction_Set() error {
+	var err error
+	pathGetDirnameFunction_Once.Do(func() {
+		pathGetDirnameFunction, err = gi.FunctionInvokerNew("GLib", "path_get_dirname")
+	})
+	return err
+}
+
+// PathGetDirname is a representation of the C type g_path_get_dirname.
+func PathGetDirname(fileName string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fileName)
+
+	var ret gi.Argument
+
+	err := pathGetDirnameFunction_Set()
+	if err == nil {
+		ret = pathGetDirnameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var pathIsAbsoluteFunction *gi.Function
+var pathIsAbsoluteFunction_Once sync.Once
+
+func pathIsAbsoluteFunction_Set() error {
+	var err error
+	pathIsAbsoluteFunction_Once.Do(func() {
+		pathIsAbsoluteFunction, err = gi.FunctionInvokerNew("GLib", "path_is_absolute")
+	})
+	return err
+}
+
+// PathIsAbsolute is a representation of the C type g_path_is_absolute.
+func PathIsAbsolute(fileName string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fileName)
+
+	var ret gi.Argument
+
+	err := pathIsAbsoluteFunction_Set()
+	if err == nil {
+		ret = pathIsAbsoluteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var pathSkipRootFunction *gi.Function
+var pathSkipRootFunction_Once sync.Once
+
+func pathSkipRootFunction_Set() error {
+	var err error
+	pathSkipRootFunction_Once.Do(func() {
+		pathSkipRootFunction, err = gi.FunctionInvokerNew("GLib", "path_skip_root")
+	})
+	return err
+}
+
+// PathSkipRoot is a representation of the C type g_path_skip_root.
+func PathSkipRoot(fileName string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fileName)
+
+	var ret gi.Argument
+
+	err := pathSkipRootFunction_Set()
+	if err == nil {
+		ret = pathSkipRootFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var patternMatchFunction *gi.Function
 var patternMatchFunction_Once sync.Once
@@ -4474,7 +5333,33 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 	return err
 }
 
-// UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
+var rmdirFunction *gi.Function
+var rmdirFunction_Once sync.Once
+
+func rmdirFunction_Set() error {
+	var err error
+	rmdirFunction_Once.Do(func() {
+		rmdirFunction, err = gi.FunctionInvokerNew("GLib", "rmdir")
+	})
+	return err
+}
+
+// Rmdir is a representation of the C type g_rmdir.
+func Rmdir(filename string) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := rmdirFunction_Set()
+	if err == nil {
+		ret = rmdirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_sequence_get' : return type 'gpointer' not supported
 
@@ -4720,7 +5605,35 @@ func SetPrgname(prgname string) error {
 
 // UNSUPPORTED : C value 'g_set_printerr_handler' : parameter 'func' of type 'PrintFunc' not supported
 
-// UNSUPPORTED : C value 'g_setenv' : parameter 'variable' of type 'filename' not supported
+var setenvFunction *gi.Function
+var setenvFunction_Once sync.Once
+
+func setenvFunction_Set() error {
+	var err error
+	setenvFunction_Once.Do(func() {
+		setenvFunction, err = gi.FunctionInvokerNew("GLib", "setenv")
+	})
+	return err
+}
+
+// Setenv is a representation of the C type g_setenv.
+func Setenv(variable string, value string, overwrite bool) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(variable)
+	inArgs[1].SetString(value)
+	inArgs[2].SetBoolean(overwrite)
+
+	var ret gi.Argument
+
+	err := setenvFunction_Set()
+	if err == nil {
+		ret = setenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var shellErrorQuarkFunction *gi.Function
 var shellErrorQuarkFunction_Once sync.Once
@@ -4748,11 +5661,63 @@ func ShellErrorQuark() (Quark, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'command_line' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'argvp' has no type
 
-// UNSUPPORTED : C value 'g_shell_quote' : parameter 'unquoted_string' of type 'filename' not supported
+var shellQuoteFunction *gi.Function
+var shellQuoteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_shell_unquote' : parameter 'quoted_string' of type 'filename' not supported
+func shellQuoteFunction_Set() error {
+	var err error
+	shellQuoteFunction_Once.Do(func() {
+		shellQuoteFunction, err = gi.FunctionInvokerNew("GLib", "shell_quote")
+	})
+	return err
+}
+
+// ShellQuote is a representation of the C type g_shell_quote.
+func ShellQuote(unquotedString string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(unquotedString)
+
+	var ret gi.Argument
+
+	err := shellQuoteFunction_Set()
+	if err == nil {
+		ret = shellQuoteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var shellUnquoteFunction *gi.Function
+var shellUnquoteFunction_Once sync.Once
+
+func shellUnquoteFunction_Set() error {
+	var err error
+	shellUnquoteFunction_Once.Do(func() {
+		shellUnquoteFunction, err = gi.FunctionInvokerNew("GLib", "shell_unquote")
+	})
+	return err
+}
+
+// ShellUnquote is a representation of the C type g_shell_unquote.
+func ShellUnquote(quotedString string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(quotedString)
+
+	var ret gi.Argument
+
+	err := shellUnquoteFunction_Set()
+	if err == nil {
+		ret = shellUnquoteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_slice_alloc' : return type 'gpointer' not supported
 
@@ -4857,11 +5822,11 @@ func SpacedPrimesClosest(num uint32) (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_spawn_async' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'working_directory' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'working_directory' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'argv' has no type
 
 var spawnCheckExitStatusFunction *gi.Function
 var spawnCheckExitStatusFunction_Once sync.Once
@@ -4915,9 +5880,35 @@ func SpawnClosePid(pid Pid) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_spawn_command_line_async' : parameter 'command_line' of type 'filename' not supported
+var spawnCommandLineAsyncFunction *gi.Function
+var spawnCommandLineAsyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'command_line' of type 'filename' not supported
+func spawnCommandLineAsyncFunction_Set() error {
+	var err error
+	spawnCommandLineAsyncFunction_Once.Do(func() {
+		spawnCommandLineAsyncFunction, err = gi.FunctionInvokerNew("GLib", "spawn_command_line_async")
+	})
+	return err
+}
+
+// SpawnCommandLineAsync is a representation of the C type g_spawn_command_line_async.
+func SpawnCommandLineAsync(commandLine string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(commandLine)
+
+	var ret gi.Argument
+
+	err := spawnCommandLineAsyncFunction_Set()
+	if err == nil {
+		ret = spawnCommandLineAsyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'standard_output' has no type
 
 var spawnErrorQuarkFunction *gi.Function
 var spawnErrorQuarkFunction_Once sync.Once
@@ -4971,7 +5962,7 @@ func SpawnExitErrorQuark() (Quark, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'working_directory' of type 'filename' not supported
+// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'argv' has no type
 
 // UNSUPPORTED : C value 'g_sprintf' : parameter '...' has no type
 
@@ -7376,9 +8367,57 @@ func UnixSignalSourceNew(signum int32) (*Source, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
+var unlinkFunction *gi.Function
+var unlinkFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unsetenv' : parameter 'variable' of type 'filename' not supported
+func unlinkFunction_Set() error {
+	var err error
+	unlinkFunction_Once.Do(func() {
+		unlinkFunction, err = gi.FunctionInvokerNew("GLib", "unlink")
+	})
+	return err
+}
+
+// Unlink is a representation of the C type g_unlink.
+func Unlink(filename string) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := unlinkFunction_Set()
+	if err == nil {
+		ret = unlinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var unsetenvFunction *gi.Function
+var unsetenvFunction_Once sync.Once
+
+func unsetenvFunction_Set() error {
+	var err error
+	unsetenvFunction_Once.Do(func() {
+		unsetenvFunction, err = gi.FunctionInvokerNew("GLib", "unsetenv")
+	})
+	return err
+}
+
+// Unsetenv is a representation of the C type g_unsetenv.
+func Unsetenv(variable string) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(variable)
+
+	err := unsetenvFunction_Set()
+	if err == nil {
+		unsetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var uriEscapeStringFunction *gi.Function
 var uriEscapeStringFunction_Once sync.Once

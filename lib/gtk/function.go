@@ -719,9 +719,57 @@ func PaperSizeGetDefault() (string, error) {
 
 // UNSUPPORTED : C value 'gtk_propagate_event' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_add_default_file' : parameter 'filename' of type 'filename' not supported
+var rcAddDefaultFileFunction *gi.Function
+var rcAddDefaultFileFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_find_module_in_path' : return type 'filename' not supported
+func rcAddDefaultFileFunction_Set() error {
+	var err error
+	rcAddDefaultFileFunction_Once.Do(func() {
+		rcAddDefaultFileFunction, err = gi.FunctionInvokerNew("Gtk", "rc_add_default_file")
+	})
+	return err
+}
+
+// RcAddDefaultFile is a representation of the C type gtk_rc_add_default_file.
+func RcAddDefaultFile(filename string) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	err := rcAddDefaultFileFunction_Set()
+	if err == nil {
+		rcAddDefaultFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var rcFindModuleInPathFunction *gi.Function
+var rcFindModuleInPathFunction_Once sync.Once
+
+func rcFindModuleInPathFunction_Set() error {
+	var err error
+	rcFindModuleInPathFunction_Once.Do(func() {
+		rcFindModuleInPathFunction, err = gi.FunctionInvokerNew("Gtk", "rc_find_module_in_path")
+	})
+	return err
+}
+
+// RcFindModuleInPath is a representation of the C type gtk_rc_find_module_in_path.
+func RcFindModuleInPath(moduleFile string) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(moduleFile)
+
+	var ret gi.Argument
+
+	err := rcFindModuleInPathFunction_Set()
+	if err == nil {
+		ret = rcFindModuleInPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
 
@@ -747,11 +795,83 @@ func RcGetDefaultFiles() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_rc_get_im_module_file' : return type 'filename' not supported
+var rcGetImModuleFileFunction *gi.Function
+var rcGetImModuleFileFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_get_im_module_path' : return type 'filename' not supported
+func rcGetImModuleFileFunction_Set() error {
+	var err error
+	rcGetImModuleFileFunction_Once.Do(func() {
+		rcGetImModuleFileFunction, err = gi.FunctionInvokerNew("Gtk", "rc_get_im_module_file")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_rc_get_module_dir' : return type 'filename' not supported
+// RcGetImModuleFile is a representation of the C type gtk_rc_get_im_module_file.
+func RcGetImModuleFile() (string, error) {
+
+	var ret gi.Argument
+
+	err := rcGetImModuleFileFunction_Set()
+	if err == nil {
+		ret = rcGetImModuleFileFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var rcGetImModulePathFunction *gi.Function
+var rcGetImModulePathFunction_Once sync.Once
+
+func rcGetImModulePathFunction_Set() error {
+	var err error
+	rcGetImModulePathFunction_Once.Do(func() {
+		rcGetImModulePathFunction, err = gi.FunctionInvokerNew("Gtk", "rc_get_im_module_path")
+	})
+	return err
+}
+
+// RcGetImModulePath is a representation of the C type gtk_rc_get_im_module_path.
+func RcGetImModulePath() (string, error) {
+
+	var ret gi.Argument
+
+	err := rcGetImModulePathFunction_Set()
+	if err == nil {
+		ret = rcGetImModulePathFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var rcGetModuleDirFunction *gi.Function
+var rcGetModuleDirFunction_Once sync.Once
+
+func rcGetModuleDirFunction_Set() error {
+	var err error
+	rcGetModuleDirFunction_Once.Do(func() {
+		rcGetModuleDirFunction, err = gi.FunctionInvokerNew("Gtk", "rc_get_module_dir")
+	})
+	return err
+}
+
+// RcGetModuleDir is a representation of the C type gtk_rc_get_module_dir.
+func RcGetModuleDir() (string, error) {
+
+	var ret gi.Argument
+
+	err := rcGetModuleDirFunction_Set()
+	if err == nil {
+		ret = rcGetModuleDirFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_rc_get_style' : parameter 'widget' of type 'Widget' not supported
 

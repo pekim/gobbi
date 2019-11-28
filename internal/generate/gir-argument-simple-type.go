@@ -26,6 +26,7 @@ var argumentGetFunctionNames = map[string]string{
 	"gdouble": "Float64",
 
 	"gboolean": "Boolean",
+	"filename": "String",
 	"utf8":     "String",
 }
 
@@ -55,5 +56,6 @@ var argumentSetFunctionNames = map[string]string{
 	"gdouble": "SetFloat64",
 
 	"gboolean": "SetBoolean",
+	"filename": "SetString",
 	"utf8":     "SetString",
 }
