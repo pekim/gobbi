@@ -86,6 +86,7 @@ func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
 
 	if t.isQualifiedName() {
 		return nil, false
+		//return jen.Qual(t.foreignNamespace.goFullPackageName, t.foreignName), true
 	}
 
 	if jenType, found := jenGoTypes[t.Name]; found {

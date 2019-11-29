@@ -31,16 +31,19 @@ type Namespace struct {
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
 
-	libDir           string
-	namespaces       namespaces
-	goPackageName    string
-	cSymbolPrefixes  []string
-	unsupportedCount int
+	libDir            string
+	namespaces        namespaces
+	goPackageName     string
+	goFullPackageName string
+	cSymbolPrefixes   []string
+	unsupportedCount  int
 }
 
 func (n *Namespace) init(namespaces namespaces) {
 	n.namespaces = namespaces
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
+	n.goPackageName = strings.ToLower(n.Name)
+	n.goFullPackageName = "github.com/pekim/gobbi/lib/" + n.goPackageName
 
 	n.Aliases.init(n)
 	n.Bitfields.init(n)
@@ -51,8 +54,6 @@ func (n *Namespace) init(namespaces namespaces) {
 }
 
 func (n *Namespace) generate() {
-	n.goPackageName = strings.ToLower(n.Name)
-
 	n.libDir = projectFilepath("..", "lib", n.goPackageName)
 	n.generateLibDir()
 
