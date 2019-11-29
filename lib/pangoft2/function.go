@@ -41,12 +41,12 @@ func shutdownDisplayFunction_Set() error {
 }
 
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
-func ShutdownDisplay() error {
+func ShutdownDisplay() {
 
 	err := shutdownDisplayFunction_Set()
 	if err == nil {
 		shutdownDisplayFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }

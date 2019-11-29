@@ -248,7 +248,7 @@ func encodingCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_source_encoding_copy.
-func (recv *Encoding) Copy() (*Encoding, error) {
+func (recv *Encoding) Copy() *Encoding {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -261,7 +261,7 @@ func (recv *Encoding) Copy() (*Encoding, error) {
 
 	retGo := &Encoding{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var encodingFreeFunction *gi.Function
@@ -280,7 +280,7 @@ func encodingFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_source_encoding_free.
-func (recv *Encoding) Free() error {
+func (recv *Encoding) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -289,7 +289,7 @@ func (recv *Encoding) Free() error {
 		encodingFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var encodingGetCharsetFunction *gi.Function
@@ -308,7 +308,7 @@ func encodingGetCharsetFunction_Set() error {
 }
 
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
-func (recv *Encoding) GetCharset() (string, error) {
+func (recv *Encoding) GetCharset() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -321,7 +321,7 @@ func (recv *Encoding) GetCharset() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var encodingGetNameFunction *gi.Function
@@ -340,7 +340,7 @@ func encodingGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type gtk_source_encoding_get_name.
-func (recv *Encoding) GetName() (string, error) {
+func (recv *Encoding) GetName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -353,7 +353,7 @@ func (recv *Encoding) GetName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var encodingToStringFunction *gi.Function
@@ -372,7 +372,7 @@ func encodingToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_source_encoding_to_string.
-func (recv *Encoding) ToString() (string, error) {
+func (recv *Encoding) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -385,7 +385,7 @@ func (recv *Encoding) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var fileClassStruct *gi.Struct
@@ -811,7 +811,7 @@ func regionIterIsEndFunction_Set() error {
 }
 
 // IsEnd is a representation of the C type gtk_source_region_iter_is_end.
-func (recv *RegionIter) IsEnd() (bool, error) {
+func (recv *RegionIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -824,7 +824,7 @@ func (recv *RegionIter) IsEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var regionIterNextFunction *gi.Function
@@ -843,7 +843,7 @@ func regionIterNextFunction_Set() error {
 }
 
 // Next is a representation of the C type gtk_source_region_iter_next.
-func (recv *RegionIter) Next() (bool, error) {
+func (recv *RegionIter) Next() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -856,7 +856,7 @@ func (recv *RegionIter) Next() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var searchContextClassStruct *gi.Struct

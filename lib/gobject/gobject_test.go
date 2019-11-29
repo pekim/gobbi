@@ -21,12 +21,10 @@ func TestBadFunction(t *testing.T) {
 	})
 
 	// good
-	_, err := SignalName(0)
-	assert.Nil(t, err)
+	SignalName(0)
 	assert.Equal(t, 0, handlerCalledCount)
 
 	// bad
-	err = Bad()
-	assert.NotNil(t, err)
+	Bad()
 	assert.Equal(t, 1, handlerCalledCount)
 }

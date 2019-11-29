@@ -27,7 +27,7 @@ func checkVersionFunction_Set() error {
 }
 
 // CheckVersion is a representation of the C type soup_check_version.
-func CheckVersion(major uint32, minor uint32, micro uint32) (bool, error) {
+func CheckVersion(major uint32, minor uint32, micro uint32) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(major)
 	inArgs[1].SetUint32(minor)
@@ -42,7 +42,7 @@ func CheckVersion(major uint32, minor uint32, micro uint32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var cookieParseFunction *gi.Function
@@ -57,7 +57,7 @@ func cookieParseFunction_Set() error {
 }
 
 // CookieParse is a representation of the C type soup_cookie_parse.
-func CookieParse(header string, origin *URI) (*Cookie, error) {
+func CookieParse(header string, origin *URI) *Cookie {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(header)
 	inArgs[1].SetPointer(origin.native)
@@ -71,7 +71,7 @@ func CookieParse(header string, origin *URI) (*Cookie, error) {
 
 	retGo := &Cookie{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_cookies_free' : parameter 'cookies' of type 'GLib.SList' not supported
@@ -118,7 +118,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
-func GetMajorVersion() (uint32, error) {
+func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -129,7 +129,7 @@ func GetMajorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMicroVersionFunction *gi.Function
@@ -144,7 +144,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
-func GetMicroVersion() (uint32, error) {
+func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -155,7 +155,7 @@ func GetMicroVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMinorVersionFunction *gi.Function
@@ -170,7 +170,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
-func GetMinorVersion() (uint32, error) {
+func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -181,7 +181,7 @@ func GetMinorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var headerContainsFunction *gi.Function
@@ -196,7 +196,7 @@ func headerContainsFunction_Set() error {
 }
 
 // HeaderContains is a representation of the C type soup_header_contains.
-func HeaderContains(header string, token string) (bool, error) {
+func HeaderContains(header string, token string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(header)
 	inArgs[1].SetString(token)
@@ -210,7 +210,7 @@ func HeaderContains(header string, token string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_header_free_list' : parameter 'list' of type 'GLib.SList' not supported
@@ -245,7 +245,7 @@ func headersParseFunction_Set() error {
 }
 
 // HeadersParse is a representation of the C type soup_headers_parse.
-func HeadersParse(str string, len int32, dest *MessageHeaders) (bool, error) {
+func HeadersParse(str string, len int32, dest *MessageHeaders) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -260,7 +260,7 @@ func HeadersParse(str string, len int32, dest *MessageHeaders) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'ver' of type 'HTTPVersion' not supported
@@ -283,7 +283,7 @@ func messageHeadersIterInitFunction_Set() error {
 }
 
 // MessageHeadersIterInit is a representation of the C type soup_message_headers_iter_init.
-func MessageHeadersIterInit(hdrs *MessageHeaders) (*MessageHeadersIter, error) {
+func MessageHeadersIterInit(hdrs *MessageHeaders) *MessageHeadersIter {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(hdrs.native)
 
@@ -296,7 +296,7 @@ func MessageHeadersIterInit(hdrs *MessageHeaders) (*MessageHeadersIter, error) {
 
 	out0 := &MessageHeadersIter{native: outArgs[0].Pointer()}
 
-	return out0, err
+	return out0
 }
 
 // UNSUPPORTED : C value 'soup_request_error_quark' : return type 'GLib.Quark' not supported
@@ -315,7 +315,7 @@ func statusGetPhraseFunction_Set() error {
 }
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
-func StatusGetPhrase(statusCode uint32) (string, error) {
+func StatusGetPhrase(statusCode uint32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
@@ -328,7 +328,7 @@ func StatusGetPhrase(statusCode uint32) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var statusProxifyFunction *gi.Function
@@ -343,7 +343,7 @@ func statusProxifyFunction_Set() error {
 }
 
 // StatusProxify is a representation of the C type soup_status_proxify.
-func StatusProxify(statusCode uint32) (uint32, error) {
+func StatusProxify(statusCode uint32) uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
@@ -356,7 +356,7 @@ func StatusProxify(statusCode uint32) (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_str_case_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -375,7 +375,7 @@ func tldDomainIsPublicSuffixFunction_Set() error {
 }
 
 // TldDomainIsPublicSuffix is a representation of the C type soup_tld_domain_is_public_suffix.
-func TldDomainIsPublicSuffix(domain string) (bool, error) {
+func TldDomainIsPublicSuffix(domain string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(domain)
 
@@ -388,7 +388,7 @@ func TldDomainIsPublicSuffix(domain string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
@@ -405,7 +405,7 @@ func tldGetBaseDomainFunction_Set() error {
 }
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
-func TldGetBaseDomain(hostname string) (string, error) {
+func TldGetBaseDomain(hostname string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
@@ -418,7 +418,7 @@ func TldGetBaseDomain(hostname string) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var uriDecodeFunction *gi.Function
@@ -433,7 +433,7 @@ func uriDecodeFunction_Set() error {
 }
 
 // UriDecode is a representation of the C type soup_uri_decode.
-func UriDecode(part string) (string, error) {
+func UriDecode(part string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(part)
 
@@ -446,7 +446,7 @@ func UriDecode(part string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var uriEncodeFunction *gi.Function
@@ -461,7 +461,7 @@ func uriEncodeFunction_Set() error {
 }
 
 // UriEncode is a representation of the C type soup_uri_encode.
-func UriEncode(part string, escapeExtra string) (string, error) {
+func UriEncode(part string, escapeExtra string) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(escapeExtra)
@@ -475,7 +475,7 @@ func UriEncode(part string, escapeExtra string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var uriNormalizeFunction *gi.Function
@@ -490,7 +490,7 @@ func uriNormalizeFunction_Set() error {
 }
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
-func UriNormalize(part string, unescapeExtra string) (string, error) {
+func UriNormalize(part string, unescapeExtra string) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(unescapeExtra)
@@ -504,7 +504,7 @@ func UriNormalize(part string, unescapeExtra string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_value_array_append' : parameter 'array' of type 'GObject.ValueArray' not supported
@@ -595,7 +595,7 @@ func xmlrpcParseRequestFunction_Set() error {
 }
 
 // XmlrpcParseRequest is a representation of the C type soup_xmlrpc_parse_request.
-func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams, error) {
+func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(methodCall)
 	inArgs[1].SetInt32(length)
@@ -611,7 +611,7 @@ func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams,
 	retGo := ret.String(true)
 	out0 := &XMLRPCParams{native: outArgs[0].Pointer()}
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : return type 'GLib.Variant' not supported

@@ -19,7 +19,7 @@ func actionNameIsValidFunction_Set() error {
 }
 
 // ActionNameIsValid is a representation of the C type g_action_name_is_valid.
-func ActionNameIsValid(actionName string) (bool, error) {
+func ActionNameIsValid(actionName string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(actionName)
 
@@ -32,7 +32,7 @@ func ActionNameIsValid(actionName string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
@@ -71,7 +71,7 @@ func appInfoResetTypeAssociationsFunction_Set() error {
 }
 
 // AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
-func AppInfoResetTypeAssociations(contentType string) error {
+func AppInfoResetTypeAssociations(contentType string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(contentType)
 
@@ -80,7 +80,7 @@ func AppInfoResetTypeAssociations(contentType string) error {
 		appInfoResetTypeAssociationsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
@@ -111,7 +111,7 @@ func busUnownNameFunction_Set() error {
 }
 
 // BusUnownName is a representation of the C type g_bus_unown_name.
-func BusUnownName(ownerId uint32) error {
+func BusUnownName(ownerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(ownerId)
 
@@ -120,7 +120,7 @@ func BusUnownName(ownerId uint32) error {
 		busUnownNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var busUnwatchNameFunction *gi.Function
@@ -135,7 +135,7 @@ func busUnwatchNameFunction_Set() error {
 }
 
 // BusUnwatchName is a representation of the C type g_bus_unwatch_name.
-func BusUnwatchName(watcherId uint32) error {
+func BusUnwatchName(watcherId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(watcherId)
 
@@ -144,7 +144,7 @@ func BusUnwatchName(watcherId uint32) error {
 		busUnwatchNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
@@ -167,7 +167,7 @@ func contentTypeCanBeExecutableFunction_Set() error {
 }
 
 // ContentTypeCanBeExecutable is a representation of the C type g_content_type_can_be_executable.
-func ContentTypeCanBeExecutable(type_ string) (bool, error) {
+func ContentTypeCanBeExecutable(type_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -180,7 +180,7 @@ func ContentTypeCanBeExecutable(type_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeEqualsFunction *gi.Function
@@ -195,7 +195,7 @@ func contentTypeEqualsFunction_Set() error {
 }
 
 // ContentTypeEquals is a representation of the C type g_content_type_equals.
-func ContentTypeEquals(type1 string, type2 string) (bool, error) {
+func ContentTypeEquals(type1 string, type2 string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(type1)
 	inArgs[1].SetString(type2)
@@ -209,7 +209,7 @@ func ContentTypeEquals(type1 string, type2 string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeFromMimeTypeFunction *gi.Function
@@ -224,7 +224,7 @@ func contentTypeFromMimeTypeFunction_Set() error {
 }
 
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
-func ContentTypeFromMimeType(mimeType string) (string, error) {
+func ContentTypeFromMimeType(mimeType string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mimeType)
 
@@ -237,7 +237,7 @@ func ContentTypeFromMimeType(mimeType string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeGetDescriptionFunction *gi.Function
@@ -252,7 +252,7 @@ func contentTypeGetDescriptionFunction_Set() error {
 }
 
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
-func ContentTypeGetDescription(type_ string) (string, error) {
+func ContentTypeGetDescription(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -265,7 +265,7 @@ func ContentTypeGetDescription(type_ string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeGetGenericIconNameFunction *gi.Function
@@ -280,7 +280,7 @@ func contentTypeGetGenericIconNameFunction_Set() error {
 }
 
 // ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
-func ContentTypeGetGenericIconName(type_ string) (string, error) {
+func ContentTypeGetGenericIconName(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -293,7 +293,7 @@ func ContentTypeGetGenericIconName(type_ string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
@@ -310,14 +310,14 @@ func contentTypeGetMimeDirsFunction_Set() error {
 }
 
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
-func ContentTypeGetMimeDirs() error {
+func ContentTypeGetMimeDirs() {
 
 	err := contentTypeGetMimeDirsFunction_Set()
 	if err == nil {
 		contentTypeGetMimeDirsFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 var contentTypeGetMimeTypeFunction *gi.Function
@@ -332,7 +332,7 @@ func contentTypeGetMimeTypeFunction_Set() error {
 }
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
-func ContentTypeGetMimeType(type_ string) (string, error) {
+func ContentTypeGetMimeType(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -345,7 +345,7 @@ func ContentTypeGetMimeType(type_ string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
@@ -366,7 +366,7 @@ func contentTypeIsAFunction_Set() error {
 }
 
 // ContentTypeIsA is a representation of the C type g_content_type_is_a.
-func ContentTypeIsA(type_ string, supertype string) (bool, error) {
+func ContentTypeIsA(type_ string, supertype string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(type_)
 	inArgs[1].SetString(supertype)
@@ -380,7 +380,7 @@ func ContentTypeIsA(type_ string, supertype string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeIsMimeTypeFunction *gi.Function
@@ -395,7 +395,7 @@ func contentTypeIsMimeTypeFunction_Set() error {
 }
 
 // ContentTypeIsMimeType is a representation of the C type g_content_type_is_mime_type.
-func ContentTypeIsMimeType(type_ string, mimeType string) (bool, error) {
+func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(type_)
 	inArgs[1].SetString(mimeType)
@@ -409,7 +409,7 @@ func ContentTypeIsMimeType(type_ string, mimeType string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var contentTypeIsUnknownFunction *gi.Function
@@ -424,7 +424,7 @@ func contentTypeIsUnknownFunction_Set() error {
 }
 
 // ContentTypeIsUnknown is a representation of the C type g_content_type_is_unknown.
-func ContentTypeIsUnknown(type_ string) (bool, error) {
+func ContentTypeIsUnknown(type_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -437,7 +437,7 @@ func ContentTypeIsUnknown(type_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' has no type
@@ -456,7 +456,7 @@ func dbusAddressEscapeValueFunction_Set() error {
 }
 
 // DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
-func DbusAddressEscapeValue(string_ string) (string, error) {
+func DbusAddressEscapeValue(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -469,7 +469,7 @@ func DbusAddressEscapeValue(string_ string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
@@ -512,7 +512,7 @@ func dbusGenerateGuidFunction_Set() error {
 }
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
-func DbusGenerateGuid() (string, error) {
+func DbusGenerateGuid() string {
 
 	var ret gi.Argument
 
@@ -523,7 +523,7 @@ func DbusGenerateGuid() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : parameter 'gvalue' of type 'GObject.Value' not supported
@@ -542,7 +542,7 @@ func dbusIsAddressFunction_Set() error {
 }
 
 // DbusIsAddress is a representation of the C type g_dbus_is_address.
-func DbusIsAddress(string_ string) (bool, error) {
+func DbusIsAddress(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -555,7 +555,7 @@ func DbusIsAddress(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsGuidFunction *gi.Function
@@ -570,7 +570,7 @@ func dbusIsGuidFunction_Set() error {
 }
 
 // DbusIsGuid is a representation of the C type g_dbus_is_guid.
-func DbusIsGuid(string_ string) (bool, error) {
+func DbusIsGuid(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -583,7 +583,7 @@ func DbusIsGuid(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsInterfaceNameFunction *gi.Function
@@ -598,7 +598,7 @@ func dbusIsInterfaceNameFunction_Set() error {
 }
 
 // DbusIsInterfaceName is a representation of the C type g_dbus_is_interface_name.
-func DbusIsInterfaceName(string_ string) (bool, error) {
+func DbusIsInterfaceName(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -611,7 +611,7 @@ func DbusIsInterfaceName(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsMemberNameFunction *gi.Function
@@ -626,7 +626,7 @@ func dbusIsMemberNameFunction_Set() error {
 }
 
 // DbusIsMemberName is a representation of the C type g_dbus_is_member_name.
-func DbusIsMemberName(string_ string) (bool, error) {
+func DbusIsMemberName(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -639,7 +639,7 @@ func DbusIsMemberName(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsNameFunction *gi.Function
@@ -654,7 +654,7 @@ func dbusIsNameFunction_Set() error {
 }
 
 // DbusIsName is a representation of the C type g_dbus_is_name.
-func DbusIsName(string_ string) (bool, error) {
+func DbusIsName(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -667,7 +667,7 @@ func DbusIsName(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsSupportedAddressFunction *gi.Function
@@ -682,7 +682,7 @@ func dbusIsSupportedAddressFunction_Set() error {
 }
 
 // DbusIsSupportedAddress is a representation of the C type g_dbus_is_supported_address.
-func DbusIsSupportedAddress(string_ string) (bool, error) {
+func DbusIsSupportedAddress(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -695,7 +695,7 @@ func DbusIsSupportedAddress(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var dbusIsUniqueNameFunction *gi.Function
@@ -710,7 +710,7 @@ func dbusIsUniqueNameFunction_Set() error {
 }
 
 // DbusIsUniqueName is a representation of the C type g_dbus_is_unique_name.
-func DbusIsUniqueName(string_ string) (bool, error) {
+func DbusIsUniqueName(string_ string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -723,7 +723,7 @@ func DbusIsUniqueName(string_ string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
@@ -768,7 +768,7 @@ func ioExtensionPointLookupFunction_Set() error {
 }
 
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
-func IoExtensionPointLookup(name string) (*IOExtensionPoint, error) {
+func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -781,7 +781,7 @@ func IoExtensionPointLookup(name string) (*IOExtensionPoint, error) {
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var ioExtensionPointRegisterFunction *gi.Function
@@ -796,7 +796,7 @@ func ioExtensionPointRegisterFunction_Set() error {
 }
 
 // IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
-func IoExtensionPointRegister(name string) (*IOExtensionPoint, error) {
+func IoExtensionPointRegister(name string) *IOExtensionPoint {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -809,7 +809,7 @@ func IoExtensionPointRegister(name string) (*IOExtensionPoint, error) {
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : return type 'GLib.List' not supported
@@ -828,7 +828,7 @@ func ioModulesScanAllInDirectoryFunction_Set() error {
 }
 
 // IoModulesScanAllInDirectory is a representation of the C type g_io_modules_scan_all_in_directory.
-func IoModulesScanAllInDirectory(dirname string) error {
+func IoModulesScanAllInDirectory(dirname string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(dirname)
 
@@ -837,7 +837,7 @@ func IoModulesScanAllInDirectory(dirname string) error {
 		ioModulesScanAllInDirectoryFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var ioModulesScanAllInDirectoryWithScopeFunction *gi.Function
@@ -852,7 +852,7 @@ func ioModulesScanAllInDirectoryWithScopeFunction_Set() error {
 }
 
 // IoModulesScanAllInDirectoryWithScope is a representation of the C type g_io_modules_scan_all_in_directory_with_scope.
-func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) error {
+func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(dirname)
 	inArgs[1].SetPointer(scope.native)
@@ -862,7 +862,7 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 		ioModulesScanAllInDirectoryWithScopeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var ioSchedulerCancelAllJobsFunction *gi.Function
@@ -877,14 +877,14 @@ func ioSchedulerCancelAllJobsFunction_Set() error {
 }
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
-func IoSchedulerCancelAllJobs() error {
+func IoSchedulerCancelAllJobs() {
 
 	err := ioSchedulerCancelAllJobsFunction_Set()
 	if err == nil {
 		ioSchedulerCancelAllJobsFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
@@ -907,14 +907,14 @@ func networkingInitFunction_Set() error {
 }
 
 // NetworkingInit is a representation of the C type g_networking_init.
-func NetworkingInit() error {
+func NetworkingInit() {
 
 	err := networkingInitFunction_Set()
 	if err == nil {
 		networkingInitFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
@@ -949,7 +949,7 @@ func resourceLoadFunction_Set() error {
 }
 
 // ResourceLoad is a representation of the C type g_resource_load.
-func ResourceLoad(filename string) (*Resource, error) {
+func ResourceLoad(filename string) *Resource {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
 
@@ -962,7 +962,7 @@ func ResourceLoad(filename string) (*Resource, error) {
 
 	retGo := &Resource{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
@@ -985,7 +985,7 @@ func resourcesRegisterFunction_Set() error {
 }
 
 // ResourcesRegister is a representation of the C type g_resources_register.
-func ResourcesRegister(resource *Resource) error {
+func ResourcesRegister(resource *Resource) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(resource.native)
 
@@ -994,7 +994,7 @@ func ResourcesRegister(resource *Resource) error {
 		resourcesRegisterFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var resourcesUnregisterFunction *gi.Function
@@ -1009,7 +1009,7 @@ func resourcesUnregisterFunction_Set() error {
 }
 
 // ResourcesUnregister is a representation of the C type g_resources_unregister.
-func ResourcesUnregister(resource *Resource) error {
+func ResourcesUnregister(resource *Resource) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(resource.native)
 
@@ -1018,7 +1018,7 @@ func ResourcesUnregister(resource *Resource) error {
 		resourcesUnregisterFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var settingsSchemaSourceGetDefaultFunction *gi.Function
@@ -1033,7 +1033,7 @@ func settingsSchemaSourceGetDefaultFunction_Set() error {
 }
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
-func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
+func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 	var ret gi.Argument
 
@@ -1044,7 +1044,7 @@ func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
 
 	retGo := &SettingsSchemaSource{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : parameter 'object' of type 'GObject.Object' not supported
@@ -1077,7 +1077,7 @@ func unixIsMountPathSystemInternalFunction_Set() error {
 }
 
 // UnixIsMountPathSystemInternal is a representation of the C type g_unix_is_mount_path_system_internal.
-func UnixIsMountPathSystemInternal(mountPath string) (bool, error) {
+func UnixIsMountPathSystemInternal(mountPath string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mountPath)
 
@@ -1090,7 +1090,7 @@ func UnixIsMountPathSystemInternal(mountPath string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var unixIsSystemDevicePathFunction *gi.Function
@@ -1105,7 +1105,7 @@ func unixIsSystemDevicePathFunction_Set() error {
 }
 
 // UnixIsSystemDevicePath is a representation of the C type g_unix_is_system_device_path.
-func UnixIsSystemDevicePath(devicePath string) (bool, error) {
+func UnixIsSystemDevicePath(devicePath string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(devicePath)
 
@@ -1118,7 +1118,7 @@ func UnixIsSystemDevicePath(devicePath string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var unixIsSystemFsTypeFunction *gi.Function
@@ -1133,7 +1133,7 @@ func unixIsSystemFsTypeFunction_Set() error {
 }
 
 // UnixIsSystemFsType is a representation of the C type g_unix_is_system_fs_type.
-func UnixIsSystemFsType(fsType string) (bool, error) {
+func UnixIsSystemFsType(fsType string) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(fsType)
 
@@ -1146,7 +1146,7 @@ func UnixIsSystemFsType(fsType string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountAtFunction *gi.Function
@@ -1161,7 +1161,7 @@ func unixMountAtFunction_Set() error {
 }
 
 // UnixMountAt is a representation of the C type g_unix_mount_at.
-func UnixMountAt(mountPath string) (*UnixMountEntry, uint64, error) {
+func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mountPath)
 
@@ -1176,7 +1176,7 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64, error) {
 	retGo := &UnixMountEntry{native: ret.Pointer()}
 	out0 := outArgs[0].Uint64()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var unixMountCompareFunction *gi.Function
@@ -1191,7 +1191,7 @@ func unixMountCompareFunction_Set() error {
 }
 
 // UnixMountCompare is a representation of the C type g_unix_mount_compare.
-func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) (int32, error) {
+func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(mount1.native)
 	inArgs[1].SetPointer(mount2.native)
@@ -1205,7 +1205,7 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) (int32, er
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountCopyFunction *gi.Function
@@ -1220,7 +1220,7 @@ func unixMountCopyFunction_Set() error {
 }
 
 // UnixMountCopy is a representation of the C type g_unix_mount_copy.
-func UnixMountCopy(mountEntry *UnixMountEntry) (*UnixMountEntry, error) {
+func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1233,7 +1233,7 @@ func UnixMountCopy(mountEntry *UnixMountEntry) (*UnixMountEntry, error) {
 
 	retGo := &UnixMountEntry{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountForFunction *gi.Function
@@ -1248,7 +1248,7 @@ func unixMountForFunction_Set() error {
 }
 
 // UnixMountFor is a representation of the C type g_unix_mount_for.
-func UnixMountFor(filePath string) (*UnixMountEntry, uint64, error) {
+func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filePath)
 
@@ -1263,7 +1263,7 @@ func UnixMountFor(filePath string) (*UnixMountEntry, uint64, error) {
 	retGo := &UnixMountEntry{native: ret.Pointer()}
 	out0 := outArgs[0].Uint64()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var unixMountFreeFunction *gi.Function
@@ -1278,7 +1278,7 @@ func unixMountFreeFunction_Set() error {
 }
 
 // UnixMountFree is a representation of the C type g_unix_mount_free.
-func UnixMountFree(mountEntry *UnixMountEntry) error {
+func UnixMountFree(mountEntry *UnixMountEntry) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1287,7 +1287,7 @@ func UnixMountFree(mountEntry *UnixMountEntry) error {
 		unixMountFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var unixMountGetDevicePathFunction *gi.Function
@@ -1302,7 +1302,7 @@ func unixMountGetDevicePathFunction_Set() error {
 }
 
 // UnixMountGetDevicePath is a representation of the C type g_unix_mount_get_device_path.
-func UnixMountGetDevicePath(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1315,7 +1315,7 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGetFsTypeFunction *gi.Function
@@ -1330,7 +1330,7 @@ func unixMountGetFsTypeFunction_Set() error {
 }
 
 // UnixMountGetFsType is a representation of the C type g_unix_mount_get_fs_type.
-func UnixMountGetFsType(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1343,7 +1343,7 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGetMountPathFunction *gi.Function
@@ -1358,7 +1358,7 @@ func unixMountGetMountPathFunction_Set() error {
 }
 
 // UnixMountGetMountPath is a representation of the C type g_unix_mount_get_mount_path.
-func UnixMountGetMountPath(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1371,7 +1371,7 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGetOptionsFunction *gi.Function
@@ -1386,7 +1386,7 @@ func unixMountGetOptionsFunction_Set() error {
 }
 
 // UnixMountGetOptions is a representation of the C type g_unix_mount_get_options.
-func UnixMountGetOptions(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGetOptions(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1399,7 +1399,7 @@ func UnixMountGetOptions(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGetRootPathFunction *gi.Function
@@ -1414,7 +1414,7 @@ func unixMountGetRootPathFunction_Set() error {
 }
 
 // UnixMountGetRootPath is a representation of the C type g_unix_mount_get_root_path.
-func UnixMountGetRootPath(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGetRootPath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1427,7 +1427,7 @@ func UnixMountGetRootPath(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGuessCanEjectFunction *gi.Function
@@ -1442,7 +1442,7 @@ func unixMountGuessCanEjectFunction_Set() error {
 }
 
 // UnixMountGuessCanEject is a representation of the C type g_unix_mount_guess_can_eject.
-func UnixMountGuessCanEject(mountEntry *UnixMountEntry) (bool, error) {
+func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1455,7 +1455,7 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_icon' : return type 'Icon' not supported
@@ -1472,7 +1472,7 @@ func unixMountGuessNameFunction_Set() error {
 }
 
 // UnixMountGuessName is a representation of the C type g_unix_mount_guess_name.
-func UnixMountGuessName(mountEntry *UnixMountEntry) (string, error) {
+func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1485,7 +1485,7 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountGuessShouldDisplayFunction *gi.Function
@@ -1500,7 +1500,7 @@ func unixMountGuessShouldDisplayFunction_Set() error {
 }
 
 // UnixMountGuessShouldDisplay is a representation of the C type g_unix_mount_guess_should_display.
-func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) (bool, error) {
+func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1513,7 +1513,7 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : return type 'Icon' not supported
@@ -1530,7 +1530,7 @@ func unixMountIsReadonlyFunction_Set() error {
 }
 
 // UnixMountIsReadonly is a representation of the C type g_unix_mount_is_readonly.
-func UnixMountIsReadonly(mountEntry *UnixMountEntry) (bool, error) {
+func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1543,7 +1543,7 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountIsSystemInternalFunction *gi.Function
@@ -1558,7 +1558,7 @@ func unixMountIsSystemInternalFunction_Set() error {
 }
 
 // UnixMountIsSystemInternal is a representation of the C type g_unix_mount_is_system_internal.
-func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) (bool, error) {
+func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(mountEntry.native)
 
@@ -1571,7 +1571,7 @@ func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var unixMountPointsChangedSinceFunction *gi.Function
@@ -1586,7 +1586,7 @@ func unixMountPointsChangedSinceFunction_Set() error {
 }
 
 // UnixMountPointsChangedSince is a representation of the C type g_unix_mount_points_changed_since.
-func UnixMountPointsChangedSince(time uint64) (bool, error) {
+func UnixMountPointsChangedSince(time uint64) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(time)
 
@@ -1599,7 +1599,7 @@ func UnixMountPointsChangedSince(time uint64) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
@@ -1616,7 +1616,7 @@ func unixMountsChangedSinceFunction_Set() error {
 }
 
 // UnixMountsChangedSince is a representation of the C type g_unix_mounts_changed_since.
-func UnixMountsChangedSince(time uint64) (bool, error) {
+func UnixMountsChangedSince(time uint64) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(time)
 
@@ -1629,7 +1629,7 @@ func UnixMountsChangedSince(time uint64) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported

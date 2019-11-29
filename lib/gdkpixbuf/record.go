@@ -38,7 +38,7 @@ func pixbufFormatCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gdk_pixbuf_format_copy.
-func (recv *PixbufFormat) Copy() (*PixbufFormat, error) {
+func (recv *PixbufFormat) Copy() *PixbufFormat {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -51,7 +51,7 @@ func (recv *PixbufFormat) Copy() (*PixbufFormat, error) {
 
 	retGo := &PixbufFormat{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatFreeFunction *gi.Function
@@ -70,7 +70,7 @@ func pixbufFormatFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gdk_pixbuf_format_free.
-func (recv *PixbufFormat) Free() error {
+func (recv *PixbufFormat) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -79,7 +79,7 @@ func (recv *PixbufFormat) Free() error {
 		pixbufFormatFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var pixbufFormatGetDescriptionFunction *gi.Function
@@ -98,7 +98,7 @@ func pixbufFormatGetDescriptionFunction_Set() error {
 }
 
 // GetDescription is a representation of the C type gdk_pixbuf_format_get_description.
-func (recv *PixbufFormat) GetDescription() (string, error) {
+func (recv *PixbufFormat) GetDescription() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -111,7 +111,7 @@ func (recv *PixbufFormat) GetDescription() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatGetExtensionsFunction *gi.Function
@@ -130,7 +130,7 @@ func pixbufFormatGetExtensionsFunction_Set() error {
 }
 
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
-func (recv *PixbufFormat) GetExtensions() error {
+func (recv *PixbufFormat) GetExtensions() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -139,7 +139,7 @@ func (recv *PixbufFormat) GetExtensions() error {
 		pixbufFormatGetExtensionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var pixbufFormatGetLicenseFunction *gi.Function
@@ -158,7 +158,7 @@ func pixbufFormatGetLicenseFunction_Set() error {
 }
 
 // GetLicense is a representation of the C type gdk_pixbuf_format_get_license.
-func (recv *PixbufFormat) GetLicense() (string, error) {
+func (recv *PixbufFormat) GetLicense() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -171,7 +171,7 @@ func (recv *PixbufFormat) GetLicense() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatGetMimeTypesFunction *gi.Function
@@ -190,7 +190,7 @@ func pixbufFormatGetMimeTypesFunction_Set() error {
 }
 
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
-func (recv *PixbufFormat) GetMimeTypes() error {
+func (recv *PixbufFormat) GetMimeTypes() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -199,7 +199,7 @@ func (recv *PixbufFormat) GetMimeTypes() error {
 		pixbufFormatGetMimeTypesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var pixbufFormatGetNameFunction *gi.Function
@@ -218,7 +218,7 @@ func pixbufFormatGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type gdk_pixbuf_format_get_name.
-func (recv *PixbufFormat) GetName() (string, error) {
+func (recv *PixbufFormat) GetName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -231,7 +231,7 @@ func (recv *PixbufFormat) GetName() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatIsDisabledFunction *gi.Function
@@ -250,7 +250,7 @@ func pixbufFormatIsDisabledFunction_Set() error {
 }
 
 // IsDisabled is a representation of the C type gdk_pixbuf_format_is_disabled.
-func (recv *PixbufFormat) IsDisabled() (bool, error) {
+func (recv *PixbufFormat) IsDisabled() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -263,7 +263,7 @@ func (recv *PixbufFormat) IsDisabled() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatIsSaveOptionSupportedFunction *gi.Function
@@ -282,7 +282,7 @@ func pixbufFormatIsSaveOptionSupportedFunction_Set() error {
 }
 
 // IsSaveOptionSupported is a representation of the C type gdk_pixbuf_format_is_save_option_supported.
-func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) (bool, error) {
+func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(optionKey)
@@ -296,7 +296,7 @@ func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) (bool, error) 
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatIsScalableFunction *gi.Function
@@ -315,7 +315,7 @@ func pixbufFormatIsScalableFunction_Set() error {
 }
 
 // IsScalable is a representation of the C type gdk_pixbuf_format_is_scalable.
-func (recv *PixbufFormat) IsScalable() (bool, error) {
+func (recv *PixbufFormat) IsScalable() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -328,7 +328,7 @@ func (recv *PixbufFormat) IsScalable() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatIsWritableFunction *gi.Function
@@ -347,7 +347,7 @@ func pixbufFormatIsWritableFunction_Set() error {
 }
 
 // IsWritable is a representation of the C type gdk_pixbuf_format_is_writable.
-func (recv *PixbufFormat) IsWritable() (bool, error) {
+func (recv *PixbufFormat) IsWritable() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -360,7 +360,7 @@ func (recv *PixbufFormat) IsWritable() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var pixbufFormatSetDisabledFunction *gi.Function
@@ -379,7 +379,7 @@ func pixbufFormatSetDisabledFunction_Set() error {
 }
 
 // SetDisabled is a representation of the C type gdk_pixbuf_format_set_disabled.
-func (recv *PixbufFormat) SetDisabled(disabled bool) error {
+func (recv *PixbufFormat) SetDisabled(disabled bool) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(disabled)
@@ -389,7 +389,7 @@ func (recv *PixbufFormat) SetDisabled(disabled bool) error {
 		pixbufFormatSetDisabledFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var pixbufLoaderClassStruct *gi.Struct

@@ -38,7 +38,7 @@ func atomNameFunction_Set() error {
 }
 
 // Name is a representation of the C type gdk_atom_name.
-func (recv *Atom) Name() (string, error) {
+func (recv *Atom) Name() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -51,7 +51,7 @@ func (recv *Atom) Name() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var colorStruct *gi.Struct
@@ -85,7 +85,7 @@ func colorCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gdk_color_copy.
-func (recv *Color) Copy() (*Color, error) {
+func (recv *Color) Copy() *Color {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -98,7 +98,7 @@ func (recv *Color) Copy() (*Color, error) {
 
 	retGo := &Color{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var colorEqualFunction *gi.Function
@@ -117,7 +117,7 @@ func colorEqualFunction_Set() error {
 }
 
 // Equal is a representation of the C type gdk_color_equal.
-func (recv *Color) Equal(colorb *Color) (bool, error) {
+func (recv *Color) Equal(colorb *Color) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(colorb.native)
@@ -131,7 +131,7 @@ func (recv *Color) Equal(colorb *Color) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var colorFreeFunction *gi.Function
@@ -150,7 +150,7 @@ func colorFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gdk_color_free.
-func (recv *Color) Free() error {
+func (recv *Color) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -159,7 +159,7 @@ func (recv *Color) Free() error {
 		colorFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var colorHashFunction *gi.Function
@@ -178,7 +178,7 @@ func colorHashFunction_Set() error {
 }
 
 // Hash is a representation of the C type gdk_color_hash.
-func (recv *Color) Hash() (uint32, error) {
+func (recv *Color) Hash() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -191,7 +191,7 @@ func (recv *Color) Hash() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var colorToStringFunction *gi.Function
@@ -210,7 +210,7 @@ func colorToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gdk_color_to_string.
-func (recv *Color) ToString() (string, error) {
+func (recv *Color) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -223,7 +223,7 @@ func (recv *Color) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var devicePadInterfaceStruct *gi.Struct
@@ -692,7 +692,7 @@ func frameTimingsGetCompleteFunction_Set() error {
 }
 
 // GetComplete is a representation of the C type gdk_frame_timings_get_complete.
-func (recv *FrameTimings) GetComplete() (bool, error) {
+func (recv *FrameTimings) GetComplete() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -705,7 +705,7 @@ func (recv *FrameTimings) GetComplete() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsGetFrameCounterFunction *gi.Function
@@ -724,7 +724,7 @@ func frameTimingsGetFrameCounterFunction_Set() error {
 }
 
 // GetFrameCounter is a representation of the C type gdk_frame_timings_get_frame_counter.
-func (recv *FrameTimings) GetFrameCounter() (int64, error) {
+func (recv *FrameTimings) GetFrameCounter() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -737,7 +737,7 @@ func (recv *FrameTimings) GetFrameCounter() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsGetFrameTimeFunction *gi.Function
@@ -756,7 +756,7 @@ func frameTimingsGetFrameTimeFunction_Set() error {
 }
 
 // GetFrameTime is a representation of the C type gdk_frame_timings_get_frame_time.
-func (recv *FrameTimings) GetFrameTime() (int64, error) {
+func (recv *FrameTimings) GetFrameTime() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -769,7 +769,7 @@ func (recv *FrameTimings) GetFrameTime() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsGetPredictedPresentationTimeFunction *gi.Function
@@ -788,7 +788,7 @@ func frameTimingsGetPredictedPresentationTimeFunction_Set() error {
 }
 
 // GetPredictedPresentationTime is a representation of the C type gdk_frame_timings_get_predicted_presentation_time.
-func (recv *FrameTimings) GetPredictedPresentationTime() (int64, error) {
+func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -801,7 +801,7 @@ func (recv *FrameTimings) GetPredictedPresentationTime() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsGetPresentationTimeFunction *gi.Function
@@ -820,7 +820,7 @@ func frameTimingsGetPresentationTimeFunction_Set() error {
 }
 
 // GetPresentationTime is a representation of the C type gdk_frame_timings_get_presentation_time.
-func (recv *FrameTimings) GetPresentationTime() (int64, error) {
+func (recv *FrameTimings) GetPresentationTime() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -833,7 +833,7 @@ func (recv *FrameTimings) GetPresentationTime() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsGetRefreshIntervalFunction *gi.Function
@@ -852,7 +852,7 @@ func frameTimingsGetRefreshIntervalFunction_Set() error {
 }
 
 // GetRefreshInterval is a representation of the C type gdk_frame_timings_get_refresh_interval.
-func (recv *FrameTimings) GetRefreshInterval() (int64, error) {
+func (recv *FrameTimings) GetRefreshInterval() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -865,7 +865,7 @@ func (recv *FrameTimings) GetRefreshInterval() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsRefFunction *gi.Function
@@ -884,7 +884,7 @@ func frameTimingsRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gdk_frame_timings_ref.
-func (recv *FrameTimings) Ref() (*FrameTimings, error) {
+func (recv *FrameTimings) Ref() *FrameTimings {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -897,7 +897,7 @@ func (recv *FrameTimings) Ref() (*FrameTimings, error) {
 
 	retGo := &FrameTimings{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var frameTimingsUnrefFunction *gi.Function
@@ -916,7 +916,7 @@ func frameTimingsUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gdk_frame_timings_unref.
-func (recv *FrameTimings) Unref() error {
+func (recv *FrameTimings) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -925,7 +925,7 @@ func (recv *FrameTimings) Unref() error {
 		frameTimingsUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var geometryStruct *gi.Struct
@@ -1019,7 +1019,7 @@ func rGBACopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gdk_rgba_copy.
-func (recv *RGBA) Copy() (*RGBA, error) {
+func (recv *RGBA) Copy() *RGBA {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1032,7 +1032,7 @@ func (recv *RGBA) Copy() (*RGBA, error) {
 
 	retGo := &RGBA{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var rGBAEqualFunction *gi.Function
@@ -1051,7 +1051,7 @@ func rGBAEqualFunction_Set() error {
 }
 
 // Equal is a representation of the C type gdk_rgba_equal.
-func (recv *RGBA) Equal(p2 *RGBA) (bool, error) {
+func (recv *RGBA) Equal(p2 *RGBA) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(p2.native)
@@ -1065,7 +1065,7 @@ func (recv *RGBA) Equal(p2 *RGBA) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var rGBAFreeFunction *gi.Function
@@ -1084,7 +1084,7 @@ func rGBAFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gdk_rgba_free.
-func (recv *RGBA) Free() error {
+func (recv *RGBA) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1093,7 +1093,7 @@ func (recv *RGBA) Free() error {
 		rGBAFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var rGBAHashFunction *gi.Function
@@ -1112,7 +1112,7 @@ func rGBAHashFunction_Set() error {
 }
 
 // Hash is a representation of the C type gdk_rgba_hash.
-func (recv *RGBA) Hash() (uint32, error) {
+func (recv *RGBA) Hash() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1125,7 +1125,7 @@ func (recv *RGBA) Hash() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var rGBAParseFunction *gi.Function
@@ -1144,7 +1144,7 @@ func rGBAParseFunction_Set() error {
 }
 
 // Parse is a representation of the C type gdk_rgba_parse.
-func (recv *RGBA) Parse(spec string) (bool, error) {
+func (recv *RGBA) Parse(spec string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(spec)
@@ -1158,7 +1158,7 @@ func (recv *RGBA) Parse(spec string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var rGBAToStringFunction *gi.Function
@@ -1177,7 +1177,7 @@ func rGBAToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gdk_rgba_to_string.
-func (recv *RGBA) ToString() (string, error) {
+func (recv *RGBA) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1190,7 +1190,7 @@ func (recv *RGBA) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var rectangleStruct *gi.Struct
@@ -1224,7 +1224,7 @@ func rectangleEqualFunction_Set() error {
 }
 
 // Equal is a representation of the C type gdk_rectangle_equal.
-func (recv *Rectangle) Equal(rect2 *Rectangle) (bool, error) {
+func (recv *Rectangle) Equal(rect2 *Rectangle) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(rect2.native)
@@ -1238,7 +1238,7 @@ func (recv *Rectangle) Equal(rect2 *Rectangle) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var rectangleIntersectFunction *gi.Function
@@ -1257,7 +1257,7 @@ func rectangleIntersectFunction_Set() error {
 }
 
 // Intersect is a representation of the C type gdk_rectangle_intersect.
-func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle, error) {
+func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(src2.native)
@@ -1273,7 +1273,7 @@ func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle, error) {
 	retGo := ret.Boolean()
 	out0 := &Rectangle{native: outArgs[0].Pointer()}
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var rectangleUnionFunction *gi.Function
@@ -1292,7 +1292,7 @@ func rectangleUnionFunction_Set() error {
 }
 
 // Union is a representation of the C type gdk_rectangle_union.
-func (recv *Rectangle) Union(src2 *Rectangle) (*Rectangle, error) {
+func (recv *Rectangle) Union(src2 *Rectangle) *Rectangle {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(src2.native)
@@ -1306,7 +1306,7 @@ func (recv *Rectangle) Union(src2 *Rectangle) (*Rectangle, error) {
 
 	out0 := &Rectangle{native: outArgs[0].Pointer()}
 
-	return out0, err
+	return out0
 }
 
 var timeCoordStruct *gi.Struct

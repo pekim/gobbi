@@ -163,7 +163,6 @@ func (f *Function) generateFunction(fi *file) {
 		ParamsFunc(func(g *jen.Group) {                  // (return value, out params)
 			f.ReturnValue.generateDeclaration(g)       // return value
 			f.Parameters.generateReturnDeclarations(g) // out params
-			g.Error()
 		}).
 		BlockFunc(f.generateBody) // { body }
 	fi.Line()
@@ -260,7 +259,5 @@ func (f *Function) generateReturn(g *jen.Group) {
 		for i := 0; i < f.Parameters.outCount(); i++ {
 			g.Id(fmt.Sprintf("out%d", i))
 		}
-
-		g.Id("err")
 	})
 }

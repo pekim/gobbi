@@ -38,7 +38,7 @@ func globalContextRefRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type JSGlobalContextRetain.
-func (recv *GlobalContextRef) Ref() error {
+func (recv *GlobalContextRef) Ref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -47,7 +47,7 @@ func (recv *GlobalContextRef) Ref() error {
 		globalContextRefRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var globalContextRefUnrefFunction *gi.Function
@@ -66,7 +66,7 @@ func globalContextRefUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type JSGlobalContextRelease.
-func (recv *GlobalContextRef) Unref() error {
+func (recv *GlobalContextRef) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -75,7 +75,7 @@ func (recv *GlobalContextRef) Unref() error {
 		globalContextRefUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueRefStruct *gi.Struct
@@ -124,7 +124,7 @@ func stringRefRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type JSStringRetain.
-func (recv *StringRef) Ref() error {
+func (recv *StringRef) Ref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -133,7 +133,7 @@ func (recv *StringRef) Ref() error {
 		stringRefRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var stringRefUnrefFunction *gi.Function
@@ -152,7 +152,7 @@ func stringRefUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type JSStringRelease.
-func (recv *StringRef) Unref() error {
+func (recv *StringRef) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -161,7 +161,7 @@ func (recv *StringRef) Unref() error {
 		stringRefUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var stringRefGetMaximumUTF8CStringSizeFunction *gi.Function
@@ -180,7 +180,7 @@ func stringRefGetMaximumUTF8CStringSizeFunction_Set() error {
 }
 
 // GetMaximumUTF8CStringSize is a representation of the C type JSStringGetMaximumUTF8CStringSize.
-func (recv *StringRef) GetMaximumUTF8CStringSize() (uint64, error) {
+func (recv *StringRef) GetMaximumUTF8CStringSize() uint64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -193,7 +193,7 @@ func (recv *StringRef) GetMaximumUTF8CStringSize() (uint64, error) {
 
 	retGo := ret.Uint64()
 
-	return retGo, err
+	return retGo
 }
 
 var stringRefGetUTF8CStringJSStringGetUTF8CStringFunction *gi.Function
@@ -212,7 +212,7 @@ func stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Set() error {
 }
 
 // GetUTF8CStringJSStringGetUTF8CString is a representation of the C type JSStringGetUTF8CString.
-func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, bufferSize uint64) (uint64, string, error) {
+func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, bufferSize uint64) (uint64, string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(buffer)
@@ -229,7 +229,7 @@ func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, buffe
 	retGo := ret.Uint64()
 	out0 := outArgs[0].String(false)
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var classClassStruct *gi.Struct

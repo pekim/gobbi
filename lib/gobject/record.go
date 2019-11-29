@@ -63,7 +63,7 @@ func closureInvalidateFunction_Set() error {
 }
 
 // Invalidate is a representation of the C type g_closure_invalidate.
-func (recv *Closure) Invalidate() error {
+func (recv *Closure) Invalidate() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -72,7 +72,7 @@ func (recv *Closure) Invalidate() error {
 		closureInvalidateFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_closure_invoke' : parameter 'param_values' has no type
@@ -93,7 +93,7 @@ func closureRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type g_closure_ref.
-func (recv *Closure) Ref() (*Closure, error) {
+func (recv *Closure) Ref() *Closure {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -106,7 +106,7 @@ func (recv *Closure) Ref() (*Closure, error) {
 
 	retGo := &Closure{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_closure_remove_finalize_notifier' : parameter 'notify_data' of type 'gpointer' not supported
@@ -133,7 +133,7 @@ func closureSinkFunction_Set() error {
 }
 
 // Sink is a representation of the C type g_closure_sink.
-func (recv *Closure) Sink() error {
+func (recv *Closure) Sink() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -142,7 +142,7 @@ func (recv *Closure) Sink() error {
 		closureSinkFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var closureUnrefFunction *gi.Function
@@ -161,7 +161,7 @@ func closureUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type g_closure_unref.
-func (recv *Closure) Unref() error {
+func (recv *Closure) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -170,7 +170,7 @@ func (recv *Closure) Unref() error {
 		closureUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var closureNotifyDataStruct *gi.Struct
@@ -315,7 +315,7 @@ func objectClassListPropertiesFunction_Set() error {
 }
 
 // ListProperties is a representation of the C type g_object_class_list_properties.
-func (recv *ObjectClass) ListProperties() (uint32, error) {
+func (recv *ObjectClass) ListProperties() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -328,7 +328,7 @@ func (recv *ObjectClass) ListProperties() (uint32, error) {
 
 	out0 := outArgs[0].Uint32()
 
-	return out0, err
+	return out0
 }
 
 var objectClassOverridePropertyFunction *gi.Function
@@ -347,7 +347,7 @@ func objectClassOverridePropertyFunction_Set() error {
 }
 
 // OverrideProperty is a representation of the C type g_object_class_override_property.
-func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) error {
+func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(propertyId)
@@ -358,7 +358,7 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) error 
 		objectClassOverridePropertyFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var objectConstructParamStruct *gi.Struct
@@ -507,7 +507,7 @@ func typeClassAddPrivateFunction_Set() error {
 }
 
 // AddPrivate is a representation of the C type g_type_class_add_private.
-func (recv *TypeClass) AddPrivate(privateSize uint64) error {
+func (recv *TypeClass) AddPrivate(privateSize uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(privateSize)
@@ -517,7 +517,7 @@ func (recv *TypeClass) AddPrivate(privateSize uint64) error {
 		typeClassAddPrivateFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var typeClassGetInstancePrivateOffsetFunction *gi.Function
@@ -536,7 +536,7 @@ func typeClassGetInstancePrivateOffsetFunction_Set() error {
 }
 
 // GetInstancePrivateOffset is a representation of the C type g_type_class_get_instance_private_offset.
-func (recv *TypeClass) GetInstancePrivateOffset() (int32, error) {
+func (recv *TypeClass) GetInstancePrivateOffset() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -549,7 +549,7 @@ func (recv *TypeClass) GetInstancePrivateOffset() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_type_class_get_private' : parameter 'private_type' of type 'GType' not supported
@@ -570,7 +570,7 @@ func typeClassPeekParentFunction_Set() error {
 }
 
 // PeekParent is a representation of the C type g_type_class_peek_parent.
-func (recv *TypeClass) PeekParent() (*TypeClass, error) {
+func (recv *TypeClass) PeekParent() *TypeClass {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -583,7 +583,7 @@ func (recv *TypeClass) PeekParent() (*TypeClass, error) {
 
 	retGo := &TypeClass{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var typeClassUnrefFunction *gi.Function
@@ -602,7 +602,7 @@ func typeClassUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type g_type_class_unref.
-func (recv *TypeClass) Unref() error {
+func (recv *TypeClass) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -611,7 +611,7 @@ func (recv *TypeClass) Unref() error {
 		typeClassUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var typeClassUnrefUncachedFunction *gi.Function
@@ -630,7 +630,7 @@ func typeClassUnrefUncachedFunction_Set() error {
 }
 
 // UnrefUncached is a representation of the C type g_type_class_unref_uncached.
-func (recv *TypeClass) UnrefUncached() error {
+func (recv *TypeClass) UnrefUncached() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -639,7 +639,7 @@ func (recv *TypeClass) UnrefUncached() error {
 		typeClassUnrefUncachedFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var typeFundamentalInfoStruct *gi.Struct
@@ -720,7 +720,7 @@ func typeInterfacePeekParentFunction_Set() error {
 }
 
 // PeekParent is a representation of the C type g_type_interface_peek_parent.
-func (recv *TypeInterface) PeekParent() (*TypeInterface, error) {
+func (recv *TypeInterface) PeekParent() *TypeInterface {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -733,7 +733,7 @@ func (recv *TypeInterface) PeekParent() (*TypeInterface, error) {
 
 	retGo := &TypeInterface{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var typeModuleClassStruct *gi.Struct
@@ -827,7 +827,7 @@ func valueCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type g_value_copy.
-func (recv *Value) Copy(destValue *Value) error {
+func (recv *Value) Copy(destValue *Value) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(destValue.native)
@@ -837,7 +837,7 @@ func (recv *Value) Copy(destValue *Value) error {
 		valueCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_dup_boxed' : return type 'gpointer' not supported
@@ -862,7 +862,7 @@ func valueDupStringFunction_Set() error {
 }
 
 // DupString is a representation of the C type g_value_dup_string.
-func (recv *Value) DupString() (string, error) {
+func (recv *Value) DupString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -875,7 +875,7 @@ func (recv *Value) DupString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_dup_variant' : return type 'GLib.Variant' not supported
@@ -896,7 +896,7 @@ func valueFitsPointerFunction_Set() error {
 }
 
 // FitsPointer is a representation of the C type g_value_fits_pointer.
-func (recv *Value) FitsPointer() (bool, error) {
+func (recv *Value) FitsPointer() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -909,7 +909,7 @@ func (recv *Value) FitsPointer() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetBooleanFunction *gi.Function
@@ -928,7 +928,7 @@ func valueGetBooleanFunction_Set() error {
 }
 
 // GetBoolean is a representation of the C type g_value_get_boolean.
-func (recv *Value) GetBoolean() (bool, error) {
+func (recv *Value) GetBoolean() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -941,7 +941,7 @@ func (recv *Value) GetBoolean() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_get_boxed' : return type 'gpointer' not supported
@@ -962,7 +962,7 @@ func valueGetCharFunction_Set() error {
 }
 
 // GetChar is a representation of the C type g_value_get_char.
-func (recv *Value) GetChar() (int8, error) {
+func (recv *Value) GetChar() int8 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -975,7 +975,7 @@ func (recv *Value) GetChar() (int8, error) {
 
 	retGo := ret.Int8()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetDoubleFunction *gi.Function
@@ -994,7 +994,7 @@ func valueGetDoubleFunction_Set() error {
 }
 
 // GetDouble is a representation of the C type g_value_get_double.
-func (recv *Value) GetDouble() (float64, error) {
+func (recv *Value) GetDouble() float64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1007,7 +1007,7 @@ func (recv *Value) GetDouble() (float64, error) {
 
 	retGo := ret.Float64()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetEnumFunction *gi.Function
@@ -1026,7 +1026,7 @@ func valueGetEnumFunction_Set() error {
 }
 
 // GetEnum is a representation of the C type g_value_get_enum.
-func (recv *Value) GetEnum() (int32, error) {
+func (recv *Value) GetEnum() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1039,7 +1039,7 @@ func (recv *Value) GetEnum() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetFlagsFunction *gi.Function
@@ -1058,7 +1058,7 @@ func valueGetFlagsFunction_Set() error {
 }
 
 // GetFlags is a representation of the C type g_value_get_flags.
-func (recv *Value) GetFlags() (uint32, error) {
+func (recv *Value) GetFlags() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1071,7 +1071,7 @@ func (recv *Value) GetFlags() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetFloatFunction *gi.Function
@@ -1090,7 +1090,7 @@ func valueGetFloatFunction_Set() error {
 }
 
 // GetFloat is a representation of the C type g_value_get_float.
-func (recv *Value) GetFloat() (float32, error) {
+func (recv *Value) GetFloat() float32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1103,7 +1103,7 @@ func (recv *Value) GetFloat() (float32, error) {
 
 	retGo := ret.Float32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_get_gtype' : return type 'GType' not supported
@@ -1124,7 +1124,7 @@ func valueGetIntFunction_Set() error {
 }
 
 // GetInt is a representation of the C type g_value_get_int.
-func (recv *Value) GetInt() (int32, error) {
+func (recv *Value) GetInt() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1137,7 +1137,7 @@ func (recv *Value) GetInt() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetInt64Function *gi.Function
@@ -1156,7 +1156,7 @@ func valueGetInt64Function_Set() error {
 }
 
 // GetInt64 is a representation of the C type g_value_get_int64.
-func (recv *Value) GetInt64() (int64, error) {
+func (recv *Value) GetInt64() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1169,7 +1169,7 @@ func (recv *Value) GetInt64() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetLongFunction *gi.Function
@@ -1188,7 +1188,7 @@ func valueGetLongFunction_Set() error {
 }
 
 // GetLong is a representation of the C type g_value_get_long.
-func (recv *Value) GetLong() (int64, error) {
+func (recv *Value) GetLong() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1201,7 +1201,7 @@ func (recv *Value) GetLong() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_get_object' : return type 'Object' not supported
@@ -1226,7 +1226,7 @@ func valueGetScharFunction_Set() error {
 }
 
 // GetSchar is a representation of the C type g_value_get_schar.
-func (recv *Value) GetSchar() (int8, error) {
+func (recv *Value) GetSchar() int8 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1239,7 +1239,7 @@ func (recv *Value) GetSchar() (int8, error) {
 
 	retGo := ret.Int8()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetStringFunction *gi.Function
@@ -1258,7 +1258,7 @@ func valueGetStringFunction_Set() error {
 }
 
 // GetString is a representation of the C type g_value_get_string.
-func (recv *Value) GetString() (string, error) {
+func (recv *Value) GetString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1271,7 +1271,7 @@ func (recv *Value) GetString() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetUcharFunction *gi.Function
@@ -1290,7 +1290,7 @@ func valueGetUcharFunction_Set() error {
 }
 
 // GetUchar is a representation of the C type g_value_get_uchar.
-func (recv *Value) GetUchar() (uint8, error) {
+func (recv *Value) GetUchar() uint8 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1303,7 +1303,7 @@ func (recv *Value) GetUchar() (uint8, error) {
 
 	retGo := ret.Uint8()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetUintFunction *gi.Function
@@ -1322,7 +1322,7 @@ func valueGetUintFunction_Set() error {
 }
 
 // GetUint is a representation of the C type g_value_get_uint.
-func (recv *Value) GetUint() (uint32, error) {
+func (recv *Value) GetUint() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1335,7 +1335,7 @@ func (recv *Value) GetUint() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetUint64Function *gi.Function
@@ -1354,7 +1354,7 @@ func valueGetUint64Function_Set() error {
 }
 
 // GetUint64 is a representation of the C type g_value_get_uint64.
-func (recv *Value) GetUint64() (uint64, error) {
+func (recv *Value) GetUint64() uint64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1367,7 +1367,7 @@ func (recv *Value) GetUint64() (uint64, error) {
 
 	retGo := ret.Uint64()
 
-	return retGo, err
+	return retGo
 }
 
 var valueGetUlongFunction *gi.Function
@@ -1386,7 +1386,7 @@ func valueGetUlongFunction_Set() error {
 }
 
 // GetUlong is a representation of the C type g_value_get_ulong.
-func (recv *Value) GetUlong() (uint64, error) {
+func (recv *Value) GetUlong() uint64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1399,7 +1399,7 @@ func (recv *Value) GetUlong() (uint64, error) {
 
 	retGo := ret.Uint64()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_get_variant' : return type 'GLib.Variant' not supported
@@ -1422,7 +1422,7 @@ func valueInitFromInstanceFunction_Set() error {
 }
 
 // InitFromInstance is a representation of the C type g_value_init_from_instance.
-func (recv *Value) InitFromInstance(instance *TypeInstance) error {
+func (recv *Value) InitFromInstance(instance *TypeInstance) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(instance.native)
@@ -1432,7 +1432,7 @@ func (recv *Value) InitFromInstance(instance *TypeInstance) error {
 		valueInitFromInstanceFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_peek_pointer' : return type 'gpointer' not supported
@@ -1453,7 +1453,7 @@ func valueResetFunction_Set() error {
 }
 
 // Reset is a representation of the C type g_value_reset.
-func (recv *Value) Reset() (*Value, error) {
+func (recv *Value) Reset() *Value {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1466,7 +1466,7 @@ func (recv *Value) Reset() (*Value, error) {
 
 	retGo := &Value{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueSetBooleanFunction *gi.Function
@@ -1485,7 +1485,7 @@ func valueSetBooleanFunction_Set() error {
 }
 
 // SetBoolean is a representation of the C type g_value_set_boolean.
-func (recv *Value) SetBoolean(vBoolean bool) error {
+func (recv *Value) SetBoolean(vBoolean bool) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(vBoolean)
@@ -1495,7 +1495,7 @@ func (recv *Value) SetBoolean(vBoolean bool) error {
 		valueSetBooleanFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_set_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
@@ -1518,7 +1518,7 @@ func valueSetCharFunction_Set() error {
 }
 
 // SetChar is a representation of the C type g_value_set_char.
-func (recv *Value) SetChar(vChar int8) error {
+func (recv *Value) SetChar(vChar int8) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(vChar)
@@ -1528,7 +1528,7 @@ func (recv *Value) SetChar(vChar int8) error {
 		valueSetCharFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetDoubleFunction *gi.Function
@@ -1547,7 +1547,7 @@ func valueSetDoubleFunction_Set() error {
 }
 
 // SetDouble is a representation of the C type g_value_set_double.
-func (recv *Value) SetDouble(vDouble float64) error {
+func (recv *Value) SetDouble(vDouble float64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(vDouble)
@@ -1557,7 +1557,7 @@ func (recv *Value) SetDouble(vDouble float64) error {
 		valueSetDoubleFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetEnumFunction *gi.Function
@@ -1576,7 +1576,7 @@ func valueSetEnumFunction_Set() error {
 }
 
 // SetEnum is a representation of the C type g_value_set_enum.
-func (recv *Value) SetEnum(vEnum int32) error {
+func (recv *Value) SetEnum(vEnum int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(vEnum)
@@ -1586,7 +1586,7 @@ func (recv *Value) SetEnum(vEnum int32) error {
 		valueSetEnumFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetFlagsFunction *gi.Function
@@ -1605,7 +1605,7 @@ func valueSetFlagsFunction_Set() error {
 }
 
 // SetFlags is a representation of the C type g_value_set_flags.
-func (recv *Value) SetFlags(vFlags uint32) error {
+func (recv *Value) SetFlags(vFlags uint32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(vFlags)
@@ -1615,7 +1615,7 @@ func (recv *Value) SetFlags(vFlags uint32) error {
 		valueSetFlagsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetFloatFunction *gi.Function
@@ -1634,7 +1634,7 @@ func valueSetFloatFunction_Set() error {
 }
 
 // SetFloat is a representation of the C type g_value_set_float.
-func (recv *Value) SetFloat(vFloat float32) error {
+func (recv *Value) SetFloat(vFloat float32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat32(vFloat)
@@ -1644,7 +1644,7 @@ func (recv *Value) SetFloat(vFloat float32) error {
 		valueSetFloatFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_set_gtype' : parameter 'v_gtype' of type 'GType' not supported
@@ -1667,7 +1667,7 @@ func valueSetIntFunction_Set() error {
 }
 
 // SetInt is a representation of the C type g_value_set_int.
-func (recv *Value) SetInt(vInt int32) error {
+func (recv *Value) SetInt(vInt int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(vInt)
@@ -1677,7 +1677,7 @@ func (recv *Value) SetInt(vInt int32) error {
 		valueSetIntFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetInt64Function *gi.Function
@@ -1696,7 +1696,7 @@ func valueSetInt64Function_Set() error {
 }
 
 // SetInt64 is a representation of the C type g_value_set_int64.
-func (recv *Value) SetInt64(vInt64 int64) error {
+func (recv *Value) SetInt64(vInt64 int64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(vInt64)
@@ -1706,7 +1706,7 @@ func (recv *Value) SetInt64(vInt64 int64) error {
 		valueSetInt64Function.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetLongFunction *gi.Function
@@ -1725,7 +1725,7 @@ func valueSetLongFunction_Set() error {
 }
 
 // SetLong is a representation of the C type g_value_set_long.
-func (recv *Value) SetLong(vLong int64) error {
+func (recv *Value) SetLong(vLong int64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(vLong)
@@ -1735,7 +1735,7 @@ func (recv *Value) SetLong(vLong int64) error {
 		valueSetLongFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_set_object' : parameter 'v_object' of type 'Object' not supported
@@ -1764,7 +1764,7 @@ func valueSetScharFunction_Set() error {
 }
 
 // SetSchar is a representation of the C type g_value_set_schar.
-func (recv *Value) SetSchar(vChar int8) error {
+func (recv *Value) SetSchar(vChar int8) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(vChar)
@@ -1774,7 +1774,7 @@ func (recv *Value) SetSchar(vChar int8) error {
 		valueSetScharFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_set_static_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
@@ -1795,7 +1795,7 @@ func valueSetStaticStringFunction_Set() error {
 }
 
 // SetStaticString is a representation of the C type g_value_set_static_string.
-func (recv *Value) SetStaticString(vString string) error {
+func (recv *Value) SetStaticString(vString string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
@@ -1805,7 +1805,7 @@ func (recv *Value) SetStaticString(vString string) error {
 		valueSetStaticStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetStringFunction *gi.Function
@@ -1824,7 +1824,7 @@ func valueSetStringFunction_Set() error {
 }
 
 // SetString is a representation of the C type g_value_set_string.
-func (recv *Value) SetString(vString string) error {
+func (recv *Value) SetString(vString string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
@@ -1834,7 +1834,7 @@ func (recv *Value) SetString(vString string) error {
 		valueSetStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetStringTakeOwnershipFunction *gi.Function
@@ -1853,7 +1853,7 @@ func valueSetStringTakeOwnershipFunction_Set() error {
 }
 
 // SetStringTakeOwnership is a representation of the C type g_value_set_string_take_ownership.
-func (recv *Value) SetStringTakeOwnership(vString string) error {
+func (recv *Value) SetStringTakeOwnership(vString string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
@@ -1863,7 +1863,7 @@ func (recv *Value) SetStringTakeOwnership(vString string) error {
 		valueSetStringTakeOwnershipFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetUcharFunction *gi.Function
@@ -1882,7 +1882,7 @@ func valueSetUcharFunction_Set() error {
 }
 
 // SetUchar is a representation of the C type g_value_set_uchar.
-func (recv *Value) SetUchar(vUchar uint8) error {
+func (recv *Value) SetUchar(vUchar uint8) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint8(vUchar)
@@ -1892,7 +1892,7 @@ func (recv *Value) SetUchar(vUchar uint8) error {
 		valueSetUcharFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetUintFunction *gi.Function
@@ -1911,7 +1911,7 @@ func valueSetUintFunction_Set() error {
 }
 
 // SetUint is a representation of the C type g_value_set_uint.
-func (recv *Value) SetUint(vUint uint32) error {
+func (recv *Value) SetUint(vUint uint32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(vUint)
@@ -1921,7 +1921,7 @@ func (recv *Value) SetUint(vUint uint32) error {
 		valueSetUintFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetUint64Function *gi.Function
@@ -1940,7 +1940,7 @@ func valueSetUint64Function_Set() error {
 }
 
 // SetUint64 is a representation of the C type g_value_set_uint64.
-func (recv *Value) SetUint64(vUint64 uint64) error {
+func (recv *Value) SetUint64(vUint64 uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(vUint64)
@@ -1950,7 +1950,7 @@ func (recv *Value) SetUint64(vUint64 uint64) error {
 		valueSetUint64Function.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueSetUlongFunction *gi.Function
@@ -1969,7 +1969,7 @@ func valueSetUlongFunction_Set() error {
 }
 
 // SetUlong is a representation of the C type g_value_set_ulong.
-func (recv *Value) SetUlong(vUlong uint64) error {
+func (recv *Value) SetUlong(vUlong uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(vUlong)
@@ -1979,7 +1979,7 @@ func (recv *Value) SetUlong(vUlong uint64) error {
 		valueSetUlongFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_set_variant' : parameter 'variant' of type 'GLib.Variant' not supported
@@ -2006,7 +2006,7 @@ func valueTakeStringFunction_Set() error {
 }
 
 // TakeString is a representation of the C type g_value_take_string.
-func (recv *Value) TakeString(vString string) error {
+func (recv *Value) TakeString(vString string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
@@ -2016,7 +2016,7 @@ func (recv *Value) TakeString(vString string) error {
 		valueTakeStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_value_take_variant' : parameter 'variant' of type 'GLib.Variant' not supported
@@ -2037,7 +2037,7 @@ func valueTransformFunction_Set() error {
 }
 
 // Transform is a representation of the C type g_value_transform.
-func (recv *Value) Transform(destValue *Value) (bool, error) {
+func (recv *Value) Transform(destValue *Value) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(destValue.native)
@@ -2051,7 +2051,7 @@ func (recv *Value) Transform(destValue *Value) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var valueUnsetFunction *gi.Function
@@ -2070,7 +2070,7 @@ func valueUnsetFunction_Set() error {
 }
 
 // Unset is a representation of the C type g_value_unset.
-func (recv *Value) Unset() error {
+func (recv *Value) Unset() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2079,7 +2079,7 @@ func (recv *Value) Unset() error {
 		valueUnsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueArrayStruct *gi.Struct
@@ -2113,7 +2113,7 @@ func valueArrayNewFunction_Set() error {
 }
 
 // ValueArrayNew is a representation of the C type g_value_array_new.
-func ValueArrayNew(nPrealloced uint32) (*ValueArray, error) {
+func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(nPrealloced)
 
@@ -2126,7 +2126,7 @@ func ValueArrayNew(nPrealloced uint32) (*ValueArray, error) {
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayAppendFunction *gi.Function
@@ -2145,7 +2145,7 @@ func valueArrayAppendFunction_Set() error {
 }
 
 // Append is a representation of the C type g_value_array_append.
-func (recv *ValueArray) Append(value *Value) (*ValueArray, error) {
+func (recv *ValueArray) Append(value *Value) *ValueArray {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(value.native)
@@ -2159,7 +2159,7 @@ func (recv *ValueArray) Append(value *Value) (*ValueArray, error) {
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayCopyFunction *gi.Function
@@ -2178,7 +2178,7 @@ func valueArrayCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type g_value_array_copy.
-func (recv *ValueArray) Copy() (*ValueArray, error) {
+func (recv *ValueArray) Copy() *ValueArray {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2191,7 +2191,7 @@ func (recv *ValueArray) Copy() (*ValueArray, error) {
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayFreeFunction *gi.Function
@@ -2210,7 +2210,7 @@ func valueArrayFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type g_value_array_free.
-func (recv *ValueArray) Free() error {
+func (recv *ValueArray) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2219,7 +2219,7 @@ func (recv *ValueArray) Free() error {
 		valueArrayFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var valueArrayGetNthFunction *gi.Function
@@ -2238,7 +2238,7 @@ func valueArrayGetNthFunction_Set() error {
 }
 
 // GetNth is a representation of the C type g_value_array_get_nth.
-func (recv *ValueArray) GetNth(index uint32) (*Value, error) {
+func (recv *ValueArray) GetNth(index uint32) *Value {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(index)
@@ -2252,7 +2252,7 @@ func (recv *ValueArray) GetNth(index uint32) (*Value, error) {
 
 	retGo := &Value{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayInsertFunction *gi.Function
@@ -2271,7 +2271,7 @@ func valueArrayInsertFunction_Set() error {
 }
 
 // Insert is a representation of the C type g_value_array_insert.
-func (recv *ValueArray) Insert(index uint32, value *Value) (*ValueArray, error) {
+func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(index)
@@ -2286,7 +2286,7 @@ func (recv *ValueArray) Insert(index uint32, value *Value) (*ValueArray, error) 
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayPrependFunction *gi.Function
@@ -2305,7 +2305,7 @@ func valueArrayPrependFunction_Set() error {
 }
 
 // Prepend is a representation of the C type g_value_array_prepend.
-func (recv *ValueArray) Prepend(value *Value) (*ValueArray, error) {
+func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(value.native)
@@ -2319,7 +2319,7 @@ func (recv *ValueArray) Prepend(value *Value) (*ValueArray, error) {
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var valueArrayRemoveFunction *gi.Function
@@ -2338,7 +2338,7 @@ func valueArrayRemoveFunction_Set() error {
 }
 
 // Remove is a representation of the C type g_value_array_remove.
-func (recv *ValueArray) Remove(index uint32) (*ValueArray, error) {
+func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(index)
@@ -2352,7 +2352,7 @@ func (recv *ValueArray) Remove(index uint32) (*ValueArray, error) {
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_value_array_sort' : parameter 'compare_func' of type 'GLib.CompareFunc' not supported
@@ -2390,7 +2390,7 @@ func weakRefClearFunction_Set() error {
 }
 
 // Clear is a representation of the C type g_weak_ref_clear.
-func (recv *WeakRef) Clear() error {
+func (recv *WeakRef) Clear() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2399,7 +2399,7 @@ func (recv *WeakRef) Clear() error {
 		weakRefClearFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_weak_ref_get' : return type 'Object' not supported

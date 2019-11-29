@@ -792,7 +792,7 @@ func borderNewFunction_Set() error {
 }
 
 // BorderNew is a representation of the C type gtk_border_new.
-func BorderNew() (*Border, error) {
+func BorderNew() *Border {
 
 	var ret gi.Argument
 
@@ -803,7 +803,7 @@ func BorderNew() (*Border, error) {
 
 	retGo := &Border{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var borderCopyFunction *gi.Function
@@ -822,7 +822,7 @@ func borderCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_border_copy.
-func (recv *Border) Copy() (*Border, error) {
+func (recv *Border) Copy() *Border {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -835,7 +835,7 @@ func (recv *Border) Copy() (*Border, error) {
 
 	retGo := &Border{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var borderFreeFunction *gi.Function
@@ -854,7 +854,7 @@ func borderFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_border_free.
-func (recv *Border) Free() error {
+func (recv *Border) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -863,7 +863,7 @@ func (recv *Border) Free() error {
 		borderFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var boxClassStruct *gi.Struct
@@ -1171,7 +1171,7 @@ func cellAreaClassListCellPropertiesFunction_Set() error {
 }
 
 // ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
-func (recv *CellAreaClass) ListCellProperties() (uint32, error) {
+func (recv *CellAreaClass) ListCellProperties() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1184,7 +1184,7 @@ func (recv *CellAreaClass) ListCellProperties() (uint32, error) {
 
 	out0 := outArgs[0].Uint32()
 
-	return out0, err
+	return out0
 }
 
 var cellAreaContextClassStruct *gi.Struct
@@ -2002,7 +2002,7 @@ func containerClassHandleBorderWidthFunction_Set() error {
 }
 
 // HandleBorderWidth is a representation of the C type gtk_container_class_handle_border_width.
-func (recv *ContainerClass) HandleBorderWidth() error {
+func (recv *ContainerClass) HandleBorderWidth() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2011,7 +2011,7 @@ func (recv *ContainerClass) HandleBorderWidth() error {
 		containerClassHandleBorderWidthFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' has no type
@@ -2034,7 +2034,7 @@ func containerClassListChildPropertiesFunction_Set() error {
 }
 
 // ListChildProperties is a representation of the C type gtk_container_class_list_child_properties.
-func (recv *ContainerClass) ListChildProperties() (uint32, error) {
+func (recv *ContainerClass) ListChildProperties() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2047,7 +2047,7 @@ func (recv *ContainerClass) ListChildProperties() (uint32, error) {
 
 	out0 := outArgs[0].Uint32()
 
-	return out0, err
+	return out0
 }
 
 var containerPrivateStruct *gi.Struct
@@ -2126,7 +2126,7 @@ func cssSectionGetEndLineFunction_Set() error {
 }
 
 // GetEndLine is a representation of the C type gtk_css_section_get_end_line.
-func (recv *CssSection) GetEndLine() (uint32, error) {
+func (recv *CssSection) GetEndLine() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2139,7 +2139,7 @@ func (recv *CssSection) GetEndLine() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var cssSectionGetEndPositionFunction *gi.Function
@@ -2158,7 +2158,7 @@ func cssSectionGetEndPositionFunction_Set() error {
 }
 
 // GetEndPosition is a representation of the C type gtk_css_section_get_end_position.
-func (recv *CssSection) GetEndPosition() (uint32, error) {
+func (recv *CssSection) GetEndPosition() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2171,7 +2171,7 @@ func (recv *CssSection) GetEndPosition() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_css_section_get_file' : return type 'Gio.File' not supported
@@ -2192,7 +2192,7 @@ func cssSectionGetParentFunction_Set() error {
 }
 
 // GetParent is a representation of the C type gtk_css_section_get_parent.
-func (recv *CssSection) GetParent() (*CssSection, error) {
+func (recv *CssSection) GetParent() *CssSection {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2205,7 +2205,7 @@ func (recv *CssSection) GetParent() (*CssSection, error) {
 
 	retGo := &CssSection{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_css_section_get_section_type' : return type 'CssSectionType' not supported
@@ -2226,7 +2226,7 @@ func cssSectionGetStartLineFunction_Set() error {
 }
 
 // GetStartLine is a representation of the C type gtk_css_section_get_start_line.
-func (recv *CssSection) GetStartLine() (uint32, error) {
+func (recv *CssSection) GetStartLine() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2239,7 +2239,7 @@ func (recv *CssSection) GetStartLine() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var cssSectionGetStartPositionFunction *gi.Function
@@ -2258,7 +2258,7 @@ func cssSectionGetStartPositionFunction_Set() error {
 }
 
 // GetStartPosition is a representation of the C type gtk_css_section_get_start_position.
-func (recv *CssSection) GetStartPosition() (uint32, error) {
+func (recv *CssSection) GetStartPosition() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2271,7 +2271,7 @@ func (recv *CssSection) GetStartPosition() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var cssSectionRefFunction *gi.Function
@@ -2290,7 +2290,7 @@ func cssSectionRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_css_section_ref.
-func (recv *CssSection) Ref() (*CssSection, error) {
+func (recv *CssSection) Ref() *CssSection {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2303,7 +2303,7 @@ func (recv *CssSection) Ref() (*CssSection, error) {
 
 	retGo := &CssSection{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var cssSectionUnrefFunction *gi.Function
@@ -2322,7 +2322,7 @@ func cssSectionUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_css_section_unref.
-func (recv *CssSection) Unref() error {
+func (recv *CssSection) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2331,7 +2331,7 @@ func (recv *CssSection) Unref() error {
 		cssSectionUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var dialogClassStruct *gi.Struct
@@ -3325,7 +3325,7 @@ func gradientNewLinearFunction_Set() error {
 }
 
 // GradientNewLinear is a representation of the C type gtk_gradient_new_linear.
-func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) (*Gradient, error) {
+func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Gradient {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetFloat64(x0)
 	inArgs[1].SetFloat64(y0)
@@ -3341,7 +3341,7 @@ func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) (*Gradien
 
 	retGo := &Gradient{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var gradientNewRadialFunction *gi.Function
@@ -3360,7 +3360,7 @@ func gradientNewRadialFunction_Set() error {
 }
 
 // GradientNewRadial is a representation of the C type gtk_gradient_new_radial.
-func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 float64, radius1 float64) (*Gradient, error) {
+func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 float64, radius1 float64) *Gradient {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetFloat64(x0)
 	inArgs[1].SetFloat64(y0)
@@ -3378,7 +3378,7 @@ func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 f
 
 	retGo := &Gradient{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var gradientAddColorStopFunction *gi.Function
@@ -3397,7 +3397,7 @@ func gradientAddColorStopFunction_Set() error {
 }
 
 // AddColorStop is a representation of the C type gtk_gradient_add_color_stop.
-func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) error {
+func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(offset)
@@ -3408,7 +3408,7 @@ func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) error {
 		gradientAddColorStopFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var gradientRefFunction *gi.Function
@@ -3427,7 +3427,7 @@ func gradientRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_gradient_ref.
-func (recv *Gradient) Ref() (*Gradient, error) {
+func (recv *Gradient) Ref() *Gradient {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3440,7 +3440,7 @@ func (recv *Gradient) Ref() (*Gradient, error) {
 
 	retGo := &Gradient{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_gradient_resolve' : parameter 'props' of type 'StyleProperties' not supported
@@ -3463,7 +3463,7 @@ func gradientToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_gradient_to_string.
-func (recv *Gradient) ToString() (string, error) {
+func (recv *Gradient) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3476,7 +3476,7 @@ func (recv *Gradient) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var gradientUnrefFunction *gi.Function
@@ -3495,7 +3495,7 @@ func gradientUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_gradient_unref.
-func (recv *Gradient) Unref() error {
+func (recv *Gradient) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3504,7 +3504,7 @@ func (recv *Gradient) Unref() error {
 		gradientUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var gridClassStruct *gi.Struct
@@ -3913,7 +3913,7 @@ func iconSetNewFunction_Set() error {
 }
 
 // IconSetNew is a representation of the C type gtk_icon_set_new.
-func IconSetNew() (*IconSet, error) {
+func IconSetNew() *IconSet {
 
 	var ret gi.Argument
 
@@ -3924,7 +3924,7 @@ func IconSetNew() (*IconSet, error) {
 
 	retGo := &IconSet{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_set_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
@@ -3945,7 +3945,7 @@ func iconSetAddSourceFunction_Set() error {
 }
 
 // AddSource is a representation of the C type gtk_icon_set_add_source.
-func (recv *IconSet) AddSource(source *IconSource) error {
+func (recv *IconSet) AddSource(source *IconSource) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(source.native)
@@ -3955,7 +3955,7 @@ func (recv *IconSet) AddSource(source *IconSource) error {
 		iconSetAddSourceFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var iconSetCopyFunction *gi.Function
@@ -3974,7 +3974,7 @@ func iconSetCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_icon_set_copy.
-func (recv *IconSet) Copy() (*IconSet, error) {
+func (recv *IconSet) Copy() *IconSet {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3987,7 +3987,7 @@ func (recv *IconSet) Copy() (*IconSet, error) {
 
 	retGo := &IconSet{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' has no type
@@ -4008,7 +4008,7 @@ func iconSetRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_icon_set_ref.
-func (recv *IconSet) Ref() (*IconSet, error) {
+func (recv *IconSet) Ref() *IconSet {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4021,7 +4021,7 @@ func (recv *IconSet) Ref() (*IconSet, error) {
 
 	retGo := &IconSet{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_set_render_icon' : parameter 'style' of type 'Style' not supported
@@ -4046,7 +4046,7 @@ func iconSetUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_icon_set_unref.
-func (recv *IconSet) Unref() error {
+func (recv *IconSet) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4055,7 +4055,7 @@ func (recv *IconSet) Unref() error {
 		iconSetUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var iconSourceStruct *gi.Struct
@@ -4089,7 +4089,7 @@ func iconSourceNewFunction_Set() error {
 }
 
 // IconSourceNew is a representation of the C type gtk_icon_source_new.
-func IconSourceNew() (*IconSource, error) {
+func IconSourceNew() *IconSource {
 
 	var ret gi.Argument
 
@@ -4100,7 +4100,7 @@ func IconSourceNew() (*IconSource, error) {
 
 	retGo := &IconSource{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var iconSourceCopyFunction *gi.Function
@@ -4119,7 +4119,7 @@ func iconSourceCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_icon_source_copy.
-func (recv *IconSource) Copy() (*IconSource, error) {
+func (recv *IconSource) Copy() *IconSource {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4132,7 +4132,7 @@ func (recv *IconSource) Copy() (*IconSource, error) {
 
 	retGo := &IconSource{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var iconSourceFreeFunction *gi.Function
@@ -4151,7 +4151,7 @@ func iconSourceFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_icon_source_free.
-func (recv *IconSource) Free() error {
+func (recv *IconSource) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4160,7 +4160,7 @@ func (recv *IconSource) Free() error {
 		iconSourceFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_direction' : return type 'TextDirection' not supported
@@ -4181,7 +4181,7 @@ func iconSourceGetDirectionWildcardedFunction_Set() error {
 }
 
 // GetDirectionWildcarded is a representation of the C type gtk_icon_source_get_direction_wildcarded.
-func (recv *IconSource) GetDirectionWildcarded() (bool, error) {
+func (recv *IconSource) GetDirectionWildcarded() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4194,7 +4194,7 @@ func (recv *IconSource) GetDirectionWildcarded() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var iconSourceGetFilenameFunction *gi.Function
@@ -4213,7 +4213,7 @@ func iconSourceGetFilenameFunction_Set() error {
 }
 
 // GetFilename is a representation of the C type gtk_icon_source_get_filename.
-func (recv *IconSource) GetFilename() (string, error) {
+func (recv *IconSource) GetFilename() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4226,7 +4226,7 @@ func (recv *IconSource) GetFilename() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var iconSourceGetIconNameFunction *gi.Function
@@ -4245,7 +4245,7 @@ func iconSourceGetIconNameFunction_Set() error {
 }
 
 // GetIconName is a representation of the C type gtk_icon_source_get_icon_name.
-func (recv *IconSource) GetIconName() (string, error) {
+func (recv *IconSource) GetIconName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4258,7 +4258,7 @@ func (recv *IconSource) GetIconName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
@@ -4281,7 +4281,7 @@ func iconSourceGetSizeWildcardedFunction_Set() error {
 }
 
 // GetSizeWildcarded is a representation of the C type gtk_icon_source_get_size_wildcarded.
-func (recv *IconSource) GetSizeWildcarded() (bool, error) {
+func (recv *IconSource) GetSizeWildcarded() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4294,7 +4294,7 @@ func (recv *IconSource) GetSizeWildcarded() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_state' : return type 'StateType' not supported
@@ -4315,7 +4315,7 @@ func iconSourceGetStateWildcardedFunction_Set() error {
 }
 
 // GetStateWildcarded is a representation of the C type gtk_icon_source_get_state_wildcarded.
-func (recv *IconSource) GetStateWildcarded() (bool, error) {
+func (recv *IconSource) GetStateWildcarded() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -4328,7 +4328,7 @@ func (recv *IconSource) GetStateWildcarded() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_direction' : parameter 'direction' of type 'TextDirection' not supported
@@ -4349,7 +4349,7 @@ func iconSourceSetDirectionWildcardedFunction_Set() error {
 }
 
 // SetDirectionWildcarded is a representation of the C type gtk_icon_source_set_direction_wildcarded.
-func (recv *IconSource) SetDirectionWildcarded(setting bool) error {
+func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(setting)
@@ -4359,7 +4359,7 @@ func (recv *IconSource) SetDirectionWildcarded(setting bool) error {
 		iconSourceSetDirectionWildcardedFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var iconSourceSetFilenameFunction *gi.Function
@@ -4378,7 +4378,7 @@ func iconSourceSetFilenameFunction_Set() error {
 }
 
 // SetFilename is a representation of the C type gtk_icon_source_set_filename.
-func (recv *IconSource) SetFilename(filename string) error {
+func (recv *IconSource) SetFilename(filename string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(filename)
@@ -4388,7 +4388,7 @@ func (recv *IconSource) SetFilename(filename string) error {
 		iconSourceSetFilenameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var iconSourceSetIconNameFunction *gi.Function
@@ -4407,7 +4407,7 @@ func iconSourceSetIconNameFunction_Set() error {
 }
 
 // SetIconName is a representation of the C type gtk_icon_source_set_icon_name.
-func (recv *IconSource) SetIconName(iconName string) error {
+func (recv *IconSource) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconName)
@@ -4417,7 +4417,7 @@ func (recv *IconSource) SetIconName(iconName string) error {
 		iconSourceSetIconNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
@@ -4440,7 +4440,7 @@ func iconSourceSetSizeWildcardedFunction_Set() error {
 }
 
 // SetSizeWildcarded is a representation of the C type gtk_icon_source_set_size_wildcarded.
-func (recv *IconSource) SetSizeWildcarded(setting bool) error {
+func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(setting)
@@ -4450,7 +4450,7 @@ func (recv *IconSource) SetSizeWildcarded(setting bool) error {
 		iconSourceSetSizeWildcardedFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_state' : parameter 'state' of type 'StateType' not supported
@@ -4471,7 +4471,7 @@ func iconSourceSetStateWildcardedFunction_Set() error {
 }
 
 // SetStateWildcarded is a representation of the C type gtk_icon_source_set_state_wildcarded.
-func (recv *IconSource) SetStateWildcarded(setting bool) error {
+func (recv *IconSource) SetStateWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(setting)
@@ -4481,7 +4481,7 @@ func (recv *IconSource) SetStateWildcarded(setting bool) error {
 		iconSourceSetStateWildcardedFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var iconThemeClassStruct *gi.Struct
@@ -5865,7 +5865,7 @@ func paperSizeNewFunction_Set() error {
 }
 
 // PaperSizeNew is a representation of the C type gtk_paper_size_new.
-func PaperSizeNew(name string) (*PaperSize, error) {
+func PaperSizeNew(name string) *PaperSize {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -5878,7 +5878,7 @@ func PaperSizeNew(name string) (*PaperSize, error) {
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'unit' of type 'Unit' not supported
@@ -5901,7 +5901,7 @@ func paperSizeNewFromIppFunction_Set() error {
 }
 
 // PaperSizeNewFromIpp is a representation of the C type gtk_paper_size_new_from_ipp.
-func PaperSizeNewFromIpp(ippName string, width float64, height float64) (*PaperSize, error) {
+func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(ippName)
 	inArgs[1].SetFloat64(width)
@@ -5916,7 +5916,7 @@ func PaperSizeNewFromIpp(ippName string, width float64, height float64) (*PaperS
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
@@ -5937,7 +5937,7 @@ func paperSizeNewFromPpdFunction_Set() error {
 }
 
 // PaperSizeNewFromPpd is a representation of the C type gtk_paper_size_new_from_ppd.
-func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) (*PaperSize, error) {
+func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) *PaperSize {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(ppdName)
 	inArgs[1].SetString(ppdDisplayName)
@@ -5953,7 +5953,7 @@ func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, h
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var paperSizeCopyFunction *gi.Function
@@ -5972,7 +5972,7 @@ func paperSizeCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_paper_size_copy.
-func (recv *PaperSize) Copy() (*PaperSize, error) {
+func (recv *PaperSize) Copy() *PaperSize {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -5985,7 +5985,7 @@ func (recv *PaperSize) Copy() (*PaperSize, error) {
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var paperSizeFreeFunction *gi.Function
@@ -6004,7 +6004,7 @@ func paperSizeFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_paper_size_free.
-func (recv *PaperSize) Free() error {
+func (recv *PaperSize) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6013,7 +6013,7 @@ func (recv *PaperSize) Free() error {
 		paperSizeFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_default_bottom_margin' : parameter 'unit' of type 'Unit' not supported
@@ -6040,7 +6040,7 @@ func paperSizeGetDisplayNameFunction_Set() error {
 }
 
 // GetDisplayName is a representation of the C type gtk_paper_size_get_display_name.
-func (recv *PaperSize) GetDisplayName() (string, error) {
+func (recv *PaperSize) GetDisplayName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6053,7 +6053,7 @@ func (recv *PaperSize) GetDisplayName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_height' : parameter 'unit' of type 'Unit' not supported
@@ -6074,7 +6074,7 @@ func paperSizeGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type gtk_paper_size_get_name.
-func (recv *PaperSize) GetName() (string, error) {
+func (recv *PaperSize) GetName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6087,7 +6087,7 @@ func (recv *PaperSize) GetName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var paperSizeGetPpdNameFunction *gi.Function
@@ -6106,7 +6106,7 @@ func paperSizeGetPpdNameFunction_Set() error {
 }
 
 // GetPpdName is a representation of the C type gtk_paper_size_get_ppd_name.
-func (recv *PaperSize) GetPpdName() (string, error) {
+func (recv *PaperSize) GetPpdName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6119,7 +6119,7 @@ func (recv *PaperSize) GetPpdName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_width' : parameter 'unit' of type 'Unit' not supported
@@ -6140,7 +6140,7 @@ func paperSizeIsCustomFunction_Set() error {
 }
 
 // IsCustom is a representation of the C type gtk_paper_size_is_custom.
-func (recv *PaperSize) IsCustom() (bool, error) {
+func (recv *PaperSize) IsCustom() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6153,7 +6153,7 @@ func (recv *PaperSize) IsCustom() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var paperSizeIsEqualFunction *gi.Function
@@ -6172,7 +6172,7 @@ func paperSizeIsEqualFunction_Set() error {
 }
 
 // IsEqual is a representation of the C type gtk_paper_size_is_equal.
-func (recv *PaperSize) IsEqual(size2 *PaperSize) (bool, error) {
+func (recv *PaperSize) IsEqual(size2 *PaperSize) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(size2.native)
@@ -6186,7 +6186,7 @@ func (recv *PaperSize) IsEqual(size2 *PaperSize) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var paperSizeIsIppFunction *gi.Function
@@ -6205,7 +6205,7 @@ func paperSizeIsIppFunction_Set() error {
 }
 
 // IsIpp is a representation of the C type gtk_paper_size_is_ipp.
-func (recv *PaperSize) IsIpp() (bool, error) {
+func (recv *PaperSize) IsIpp() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6218,7 +6218,7 @@ func (recv *PaperSize) IsIpp() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'unit' of type 'Unit' not supported
@@ -6920,7 +6920,7 @@ func recentInfoExistsFunction_Set() error {
 }
 
 // Exists is a representation of the C type gtk_recent_info_exists.
-func (recv *RecentInfo) Exists() (bool, error) {
+func (recv *RecentInfo) Exists() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6933,7 +6933,7 @@ func (recv *RecentInfo) Exists() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetAddedFunction *gi.Function
@@ -6952,7 +6952,7 @@ func recentInfoGetAddedFunction_Set() error {
 }
 
 // GetAdded is a representation of the C type gtk_recent_info_get_added.
-func (recv *RecentInfo) GetAdded() (int64, error) {
+func (recv *RecentInfo) GetAdded() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6965,7 +6965,7 @@ func (recv *RecentInfo) GetAdded() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetAgeFunction *gi.Function
@@ -6984,7 +6984,7 @@ func recentInfoGetAgeFunction_Set() error {
 }
 
 // GetAge is a representation of the C type gtk_recent_info_get_age.
-func (recv *RecentInfo) GetAge() (int32, error) {
+func (recv *RecentInfo) GetAge() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -6997,7 +6997,7 @@ func (recv *RecentInfo) GetAge() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetApplicationInfoFunction *gi.Function
@@ -7016,7 +7016,7 @@ func recentInfoGetApplicationInfoFunction_Set() error {
 }
 
 // GetApplicationInfo is a representation of the C type gtk_recent_info_get_application_info.
-func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32, int64, error) {
+func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32, int64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(appName)
@@ -7034,7 +7034,7 @@ func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32
 	out1 := outArgs[1].Uint32()
 	out2 := outArgs[2].Int64()
 
-	return retGo, out0, out1, out2, err
+	return retGo, out0, out1, out2
 }
 
 var recentInfoGetApplicationsFunction *gi.Function
@@ -7053,7 +7053,7 @@ func recentInfoGetApplicationsFunction_Set() error {
 }
 
 // GetApplications is a representation of the C type gtk_recent_info_get_applications.
-func (recv *RecentInfo) GetApplications() (uint64, error) {
+func (recv *RecentInfo) GetApplications() uint64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7066,7 +7066,7 @@ func (recv *RecentInfo) GetApplications() (uint64, error) {
 
 	out0 := outArgs[0].Uint64()
 
-	return out0, err
+	return out0
 }
 
 var recentInfoGetDescriptionFunction *gi.Function
@@ -7085,7 +7085,7 @@ func recentInfoGetDescriptionFunction_Set() error {
 }
 
 // GetDescription is a representation of the C type gtk_recent_info_get_description.
-func (recv *RecentInfo) GetDescription() (string, error) {
+func (recv *RecentInfo) GetDescription() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7098,7 +7098,7 @@ func (recv *RecentInfo) GetDescription() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetDisplayNameFunction *gi.Function
@@ -7117,7 +7117,7 @@ func recentInfoGetDisplayNameFunction_Set() error {
 }
 
 // GetDisplayName is a representation of the C type gtk_recent_info_get_display_name.
-func (recv *RecentInfo) GetDisplayName() (string, error) {
+func (recv *RecentInfo) GetDisplayName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7130,7 +7130,7 @@ func (recv *RecentInfo) GetDisplayName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_gicon' : return type 'Gio.Icon' not supported
@@ -7151,7 +7151,7 @@ func recentInfoGetGroupsFunction_Set() error {
 }
 
 // GetGroups is a representation of the C type gtk_recent_info_get_groups.
-func (recv *RecentInfo) GetGroups() (uint64, error) {
+func (recv *RecentInfo) GetGroups() uint64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7164,7 +7164,7 @@ func (recv *RecentInfo) GetGroups() (uint64, error) {
 
 	out0 := outArgs[0].Uint64()
 
-	return out0, err
+	return out0
 }
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_icon' : return type 'GdkPixbuf.Pixbuf' not supported
@@ -7185,7 +7185,7 @@ func recentInfoGetMimeTypeFunction_Set() error {
 }
 
 // GetMimeType is a representation of the C type gtk_recent_info_get_mime_type.
-func (recv *RecentInfo) GetMimeType() (string, error) {
+func (recv *RecentInfo) GetMimeType() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7198,7 +7198,7 @@ func (recv *RecentInfo) GetMimeType() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetModifiedFunction *gi.Function
@@ -7217,7 +7217,7 @@ func recentInfoGetModifiedFunction_Set() error {
 }
 
 // GetModified is a representation of the C type gtk_recent_info_get_modified.
-func (recv *RecentInfo) GetModified() (int64, error) {
+func (recv *RecentInfo) GetModified() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7230,7 +7230,7 @@ func (recv *RecentInfo) GetModified() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetPrivateHintFunction *gi.Function
@@ -7249,7 +7249,7 @@ func recentInfoGetPrivateHintFunction_Set() error {
 }
 
 // GetPrivateHint is a representation of the C type gtk_recent_info_get_private_hint.
-func (recv *RecentInfo) GetPrivateHint() (bool, error) {
+func (recv *RecentInfo) GetPrivateHint() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7262,7 +7262,7 @@ func (recv *RecentInfo) GetPrivateHint() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetShortNameFunction *gi.Function
@@ -7281,7 +7281,7 @@ func recentInfoGetShortNameFunction_Set() error {
 }
 
 // GetShortName is a representation of the C type gtk_recent_info_get_short_name.
-func (recv *RecentInfo) GetShortName() (string, error) {
+func (recv *RecentInfo) GetShortName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7294,7 +7294,7 @@ func (recv *RecentInfo) GetShortName() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetUriFunction *gi.Function
@@ -7313,7 +7313,7 @@ func recentInfoGetUriFunction_Set() error {
 }
 
 // GetUri is a representation of the C type gtk_recent_info_get_uri.
-func (recv *RecentInfo) GetUri() (string, error) {
+func (recv *RecentInfo) GetUri() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7326,7 +7326,7 @@ func (recv *RecentInfo) GetUri() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetUriDisplayFunction *gi.Function
@@ -7345,7 +7345,7 @@ func recentInfoGetUriDisplayFunction_Set() error {
 }
 
 // GetUriDisplay is a representation of the C type gtk_recent_info_get_uri_display.
-func (recv *RecentInfo) GetUriDisplay() (string, error) {
+func (recv *RecentInfo) GetUriDisplay() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7358,7 +7358,7 @@ func (recv *RecentInfo) GetUriDisplay() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoGetVisitedFunction *gi.Function
@@ -7377,7 +7377,7 @@ func recentInfoGetVisitedFunction_Set() error {
 }
 
 // GetVisited is a representation of the C type gtk_recent_info_get_visited.
-func (recv *RecentInfo) GetVisited() (int64, error) {
+func (recv *RecentInfo) GetVisited() int64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7390,7 +7390,7 @@ func (recv *RecentInfo) GetVisited() (int64, error) {
 
 	retGo := ret.Int64()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoHasApplicationFunction *gi.Function
@@ -7409,7 +7409,7 @@ func recentInfoHasApplicationFunction_Set() error {
 }
 
 // HasApplication is a representation of the C type gtk_recent_info_has_application.
-func (recv *RecentInfo) HasApplication(appName string) (bool, error) {
+func (recv *RecentInfo) HasApplication(appName string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(appName)
@@ -7423,7 +7423,7 @@ func (recv *RecentInfo) HasApplication(appName string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoHasGroupFunction *gi.Function
@@ -7442,7 +7442,7 @@ func recentInfoHasGroupFunction_Set() error {
 }
 
 // HasGroup is a representation of the C type gtk_recent_info_has_group.
-func (recv *RecentInfo) HasGroup(groupName string) (bool, error) {
+func (recv *RecentInfo) HasGroup(groupName string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
@@ -7456,7 +7456,7 @@ func (recv *RecentInfo) HasGroup(groupName string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoIsLocalFunction *gi.Function
@@ -7475,7 +7475,7 @@ func recentInfoIsLocalFunction_Set() error {
 }
 
 // IsLocal is a representation of the C type gtk_recent_info_is_local.
-func (recv *RecentInfo) IsLocal() (bool, error) {
+func (recv *RecentInfo) IsLocal() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7488,7 +7488,7 @@ func (recv *RecentInfo) IsLocal() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoLastApplicationFunction *gi.Function
@@ -7507,7 +7507,7 @@ func recentInfoLastApplicationFunction_Set() error {
 }
 
 // LastApplication is a representation of the C type gtk_recent_info_last_application.
-func (recv *RecentInfo) LastApplication() (string, error) {
+func (recv *RecentInfo) LastApplication() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7520,7 +7520,7 @@ func (recv *RecentInfo) LastApplication() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoMatchFunction *gi.Function
@@ -7539,7 +7539,7 @@ func recentInfoMatchFunction_Set() error {
 }
 
 // Match is a representation of the C type gtk_recent_info_match.
-func (recv *RecentInfo) Match(infoB *RecentInfo) (bool, error) {
+func (recv *RecentInfo) Match(infoB *RecentInfo) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(infoB.native)
@@ -7553,7 +7553,7 @@ func (recv *RecentInfo) Match(infoB *RecentInfo) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoRefFunction *gi.Function
@@ -7572,7 +7572,7 @@ func recentInfoRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_recent_info_ref.
-func (recv *RecentInfo) Ref() (*RecentInfo, error) {
+func (recv *RecentInfo) Ref() *RecentInfo {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7585,7 +7585,7 @@ func (recv *RecentInfo) Ref() (*RecentInfo, error) {
 
 	retGo := &RecentInfo{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var recentInfoUnrefFunction *gi.Function
@@ -7604,7 +7604,7 @@ func recentInfoUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_recent_info_unref.
-func (recv *RecentInfo) Unref() error {
+func (recv *RecentInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7613,7 +7613,7 @@ func (recv *RecentInfo) Unref() error {
 		recentInfoUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var recentManagerClassStruct *gi.Struct
@@ -7722,7 +7722,7 @@ func requisitionNewFunction_Set() error {
 }
 
 // RequisitionNew is a representation of the C type gtk_requisition_new.
-func RequisitionNew() (*Requisition, error) {
+func RequisitionNew() *Requisition {
 
 	var ret gi.Argument
 
@@ -7733,7 +7733,7 @@ func RequisitionNew() (*Requisition, error) {
 
 	retGo := &Requisition{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var requisitionCopyFunction *gi.Function
@@ -7752,7 +7752,7 @@ func requisitionCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_requisition_copy.
-func (recv *Requisition) Copy() (*Requisition, error) {
+func (recv *Requisition) Copy() *Requisition {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7765,7 +7765,7 @@ func (recv *Requisition) Copy() (*Requisition, error) {
 
 	retGo := &Requisition{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var requisitionFreeFunction *gi.Function
@@ -7784,7 +7784,7 @@ func requisitionFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_requisition_free.
-func (recv *Requisition) Free() error {
+func (recv *Requisition) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -7793,7 +7793,7 @@ func (recv *Requisition) Free() error {
 		requisitionFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var revealerClassStruct *gi.Struct
@@ -8082,7 +8082,7 @@ func selectionDataCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_selection_data_copy.
-func (recv *SelectionData) Copy() (*SelectionData, error) {
+func (recv *SelectionData) Copy() *SelectionData {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8095,7 +8095,7 @@ func (recv *SelectionData) Copy() (*SelectionData, error) {
 
 	retGo := &SelectionData{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var selectionDataFreeFunction *gi.Function
@@ -8114,7 +8114,7 @@ func selectionDataFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_selection_data_free.
-func (recv *SelectionData) Free() error {
+func (recv *SelectionData) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8123,7 +8123,7 @@ func (recv *SelectionData) Free() error {
 		selectionDataFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var selectionDataGetDataFunction *gi.Function
@@ -8142,7 +8142,7 @@ func selectionDataGetDataFunction_Set() error {
 }
 
 // GetData is a representation of the C type gtk_selection_data_get_data.
-func (recv *SelectionData) GetData() error {
+func (recv *SelectionData) GetData() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8151,7 +8151,7 @@ func (recv *SelectionData) GetData() error {
 		selectionDataGetDataFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_data_type' : return type 'Gdk.Atom' not supported
@@ -8172,7 +8172,7 @@ func selectionDataGetDataWithLengthFunction_Set() error {
 }
 
 // GetDataWithLength is a representation of the C type gtk_selection_data_get_data_with_length.
-func (recv *SelectionData) GetDataWithLength() (int32, error) {
+func (recv *SelectionData) GetDataWithLength() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8185,7 +8185,7 @@ func (recv *SelectionData) GetDataWithLength() (int32, error) {
 
 	out0 := outArgs[0].Int32()
 
-	return out0, err
+	return out0
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_display' : return type 'Gdk.Display' not supported
@@ -8206,7 +8206,7 @@ func selectionDataGetFormatFunction_Set() error {
 }
 
 // GetFormat is a representation of the C type gtk_selection_data_get_format.
-func (recv *SelectionData) GetFormat() (int32, error) {
+func (recv *SelectionData) GetFormat() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8219,7 +8219,7 @@ func (recv *SelectionData) GetFormat() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var selectionDataGetLengthFunction *gi.Function
@@ -8238,7 +8238,7 @@ func selectionDataGetLengthFunction_Set() error {
 }
 
 // GetLength is a representation of the C type gtk_selection_data_get_length.
-func (recv *SelectionData) GetLength() (int32, error) {
+func (recv *SelectionData) GetLength() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8251,7 +8251,7 @@ func (recv *SelectionData) GetLength() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
@@ -8278,7 +8278,7 @@ func selectionDataGetTextFunction_Set() error {
 }
 
 // GetText is a representation of the C type gtk_selection_data_get_text.
-func (recv *SelectionData) GetText() (string, error) {
+func (recv *SelectionData) GetText() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8291,7 +8291,7 @@ func (recv *SelectionData) GetText() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var selectionDataGetUrisFunction *gi.Function
@@ -8310,7 +8310,7 @@ func selectionDataGetUrisFunction_Set() error {
 }
 
 // GetUris is a representation of the C type gtk_selection_data_get_uris.
-func (recv *SelectionData) GetUris() error {
+func (recv *SelectionData) GetUris() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8319,7 +8319,7 @@ func (recv *SelectionData) GetUris() error {
 		selectionDataGetUrisFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_set' : parameter 'type' of type 'Gdk.Atom' not supported
@@ -8342,7 +8342,7 @@ func selectionDataSetTextFunction_Set() error {
 }
 
 // SetText is a representation of the C type gtk_selection_data_set_text.
-func (recv *SelectionData) SetText(str string, len int32) (bool, error) {
+func (recv *SelectionData) SetText(str string, len int32) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(str)
@@ -8357,7 +8357,7 @@ func (recv *SelectionData) SetText(str string, len int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' has no type
@@ -8378,7 +8378,7 @@ func selectionDataTargetsIncludeImageFunction_Set() error {
 }
 
 // TargetsIncludeImage is a representation of the C type gtk_selection_data_targets_include_image.
-func (recv *SelectionData) TargetsIncludeImage(writable bool) (bool, error) {
+func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(writable)
@@ -8392,7 +8392,7 @@ func (recv *SelectionData) TargetsIncludeImage(writable bool) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_targets_include_rich_text' : parameter 'buffer' of type 'TextBuffer' not supported
@@ -8413,7 +8413,7 @@ func selectionDataTargetsIncludeTextFunction_Set() error {
 }
 
 // TargetsIncludeText is a representation of the C type gtk_selection_data_targets_include_text.
-func (recv *SelectionData) TargetsIncludeText() (bool, error) {
+func (recv *SelectionData) TargetsIncludeText() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8426,7 +8426,7 @@ func (recv *SelectionData) TargetsIncludeText() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var selectionDataTargetsIncludeUriFunction *gi.Function
@@ -8445,7 +8445,7 @@ func selectionDataTargetsIncludeUriFunction_Set() error {
 }
 
 // TargetsIncludeUri is a representation of the C type gtk_selection_data_targets_include_uri.
-func (recv *SelectionData) TargetsIncludeUri() (bool, error) {
+func (recv *SelectionData) TargetsIncludeUri() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -8458,7 +8458,7 @@ func (recv *SelectionData) TargetsIncludeUri() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var separatorClassStruct *gi.Struct
@@ -9032,7 +9032,7 @@ func stockItemCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_stock_item_copy.
-func (recv *StockItem) Copy() (*StockItem, error) {
+func (recv *StockItem) Copy() *StockItem {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9045,7 +9045,7 @@ func (recv *StockItem) Copy() (*StockItem, error) {
 
 	retGo := &StockItem{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var stockItemFreeFunction *gi.Function
@@ -9064,7 +9064,7 @@ func stockItemFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_stock_item_free.
-func (recv *StockItem) Free() error {
+func (recv *StockItem) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9073,7 +9073,7 @@ func (recv *StockItem) Free() error {
 		stockItemFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var styleClassStruct *gi.Struct
@@ -9257,7 +9257,7 @@ func symbolicColorNewAlphaFunction_Set() error {
 }
 
 // SymbolicColorNewAlpha is a representation of the C type gtk_symbolic_color_new_alpha.
-func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) (*SymbolicColor, error) {
+func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(color.native)
 	inArgs[1].SetFloat64(factor)
@@ -9271,7 +9271,7 @@ func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) (*SymbolicColor
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_new_literal' : parameter 'color' of type 'Gdk.RGBA' not supported
@@ -9292,7 +9292,7 @@ func symbolicColorNewMixFunction_Set() error {
 }
 
 // SymbolicColorNewMix is a representation of the C type gtk_symbolic_color_new_mix.
-func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor float64) (*SymbolicColor, error) {
+func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(color1.native)
 	inArgs[1].SetPointer(color2.native)
@@ -9307,7 +9307,7 @@ func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor fl
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var symbolicColorNewNameFunction *gi.Function
@@ -9326,7 +9326,7 @@ func symbolicColorNewNameFunction_Set() error {
 }
 
 // SymbolicColorNewName is a representation of the C type gtk_symbolic_color_new_name.
-func SymbolicColorNewName(name string) (*SymbolicColor, error) {
+func SymbolicColorNewName(name string) *SymbolicColor {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -9339,7 +9339,7 @@ func SymbolicColorNewName(name string) (*SymbolicColor, error) {
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var symbolicColorNewShadeFunction *gi.Function
@@ -9358,7 +9358,7 @@ func symbolicColorNewShadeFunction_Set() error {
 }
 
 // SymbolicColorNewShade is a representation of the C type gtk_symbolic_color_new_shade.
-func SymbolicColorNewShade(color *SymbolicColor, factor float64) (*SymbolicColor, error) {
+func SymbolicColorNewShade(color *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(color.native)
 	inArgs[1].SetFloat64(factor)
@@ -9372,7 +9372,7 @@ func SymbolicColorNewShade(color *SymbolicColor, factor float64) (*SymbolicColor
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var symbolicColorNewWin32Function *gi.Function
@@ -9391,7 +9391,7 @@ func symbolicColorNewWin32Function_Set() error {
 }
 
 // SymbolicColorNewWin32 is a representation of the C type gtk_symbolic_color_new_win32.
-func SymbolicColorNewWin32(themeClass string, id int32) (*SymbolicColor, error) {
+func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(themeClass)
 	inArgs[1].SetInt32(id)
@@ -9405,7 +9405,7 @@ func SymbolicColorNewWin32(themeClass string, id int32) (*SymbolicColor, error) 
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var symbolicColorRefFunction *gi.Function
@@ -9424,7 +9424,7 @@ func symbolicColorRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_symbolic_color_ref.
-func (recv *SymbolicColor) Ref() (*SymbolicColor, error) {
+func (recv *SymbolicColor) Ref() *SymbolicColor {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9437,7 +9437,7 @@ func (recv *SymbolicColor) Ref() (*SymbolicColor, error) {
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_resolve' : parameter 'props' of type 'StyleProperties' not supported
@@ -9458,7 +9458,7 @@ func symbolicColorToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_symbolic_color_to_string.
-func (recv *SymbolicColor) ToString() (string, error) {
+func (recv *SymbolicColor) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9471,7 +9471,7 @@ func (recv *SymbolicColor) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var symbolicColorUnrefFunction *gi.Function
@@ -9490,7 +9490,7 @@ func symbolicColorUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_symbolic_color_unref.
-func (recv *SymbolicColor) Unref() error {
+func (recv *SymbolicColor) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9499,7 +9499,7 @@ func (recv *SymbolicColor) Unref() error {
 		symbolicColorUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var tableChildStruct *gi.Struct
@@ -9593,7 +9593,7 @@ func targetEntryNewFunction_Set() error {
 }
 
 // TargetEntryNew is a representation of the C type gtk_target_entry_new.
-func TargetEntryNew(target string, flags uint32, info uint32) (*TargetEntry, error) {
+func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(target)
 	inArgs[1].SetUint32(flags)
@@ -9608,7 +9608,7 @@ func TargetEntryNew(target string, flags uint32, info uint32) (*TargetEntry, err
 
 	retGo := &TargetEntry{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var targetEntryCopyFunction *gi.Function
@@ -9627,7 +9627,7 @@ func targetEntryCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_target_entry_copy.
-func (recv *TargetEntry) Copy() (*TargetEntry, error) {
+func (recv *TargetEntry) Copy() *TargetEntry {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9640,7 +9640,7 @@ func (recv *TargetEntry) Copy() (*TargetEntry, error) {
 
 	retGo := &TargetEntry{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var targetEntryFreeFunction *gi.Function
@@ -9659,7 +9659,7 @@ func targetEntryFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_target_entry_free.
-func (recv *TargetEntry) Free() error {
+func (recv *TargetEntry) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9668,7 +9668,7 @@ func (recv *TargetEntry) Free() error {
 		targetEntryFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var targetListStruct *gi.Struct
@@ -9706,7 +9706,7 @@ func targetListAddImageTargetsFunction_Set() error {
 }
 
 // AddImageTargets is a representation of the C type gtk_target_list_add_image_targets.
-func (recv *TargetList) AddImageTargets(info uint32, writable bool) error {
+func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(info)
@@ -9717,7 +9717,7 @@ func (recv *TargetList) AddImageTargets(info uint32, writable bool) error {
 		targetListAddImageTargetsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'buffer' of type 'TextBuffer' not supported
@@ -9740,7 +9740,7 @@ func targetListAddTextTargetsFunction_Set() error {
 }
 
 // AddTextTargets is a representation of the C type gtk_target_list_add_text_targets.
-func (recv *TargetList) AddTextTargets(info uint32) error {
+func (recv *TargetList) AddTextTargets(info uint32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(info)
@@ -9750,7 +9750,7 @@ func (recv *TargetList) AddTextTargets(info uint32) error {
 		targetListAddTextTargetsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var targetListAddUriTargetsFunction *gi.Function
@@ -9769,7 +9769,7 @@ func targetListAddUriTargetsFunction_Set() error {
 }
 
 // AddUriTargets is a representation of the C type gtk_target_list_add_uri_targets.
-func (recv *TargetList) AddUriTargets(info uint32) error {
+func (recv *TargetList) AddUriTargets(info uint32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(info)
@@ -9779,7 +9779,7 @@ func (recv *TargetList) AddUriTargets(info uint32) error {
 		targetListAddUriTargetsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_target_list_find' : parameter 'target' of type 'Gdk.Atom' not supported
@@ -9800,7 +9800,7 @@ func targetListRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_target_list_ref.
-func (recv *TargetList) Ref() (*TargetList, error) {
+func (recv *TargetList) Ref() *TargetList {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9813,7 +9813,7 @@ func (recv *TargetList) Ref() (*TargetList, error) {
 
 	retGo := &TargetList{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_target_list_remove' : parameter 'target' of type 'Gdk.Atom' not supported
@@ -9834,7 +9834,7 @@ func targetListUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_target_list_unref.
-func (recv *TargetList) Unref() error {
+func (recv *TargetList) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9843,7 +9843,7 @@ func (recv *TargetList) Unref() error {
 		targetListUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var targetPairStruct *gi.Struct
@@ -9937,7 +9937,7 @@ func textAttributesNewFunction_Set() error {
 }
 
 // TextAttributesNew is a representation of the C type gtk_text_attributes_new.
-func TextAttributesNew() (*TextAttributes, error) {
+func TextAttributesNew() *TextAttributes {
 
 	var ret gi.Argument
 
@@ -9948,7 +9948,7 @@ func TextAttributesNew() (*TextAttributes, error) {
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var textAttributesCopyFunction *gi.Function
@@ -9967,7 +9967,7 @@ func textAttributesCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_text_attributes_copy.
-func (recv *TextAttributes) Copy() (*TextAttributes, error) {
+func (recv *TextAttributes) Copy() *TextAttributes {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -9980,7 +9980,7 @@ func (recv *TextAttributes) Copy() (*TextAttributes, error) {
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var textAttributesCopyValuesFunction *gi.Function
@@ -9999,7 +9999,7 @@ func textAttributesCopyValuesFunction_Set() error {
 }
 
 // CopyValues is a representation of the C type gtk_text_attributes_copy_values.
-func (recv *TextAttributes) CopyValues(dest *TextAttributes) error {
+func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(dest.native)
@@ -10009,7 +10009,7 @@ func (recv *TextAttributes) CopyValues(dest *TextAttributes) error {
 		textAttributesCopyValuesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textAttributesRefFunction *gi.Function
@@ -10028,7 +10028,7 @@ func textAttributesRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_text_attributes_ref.
-func (recv *TextAttributes) Ref() (*TextAttributes, error) {
+func (recv *TextAttributes) Ref() *TextAttributes {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10041,7 +10041,7 @@ func (recv *TextAttributes) Ref() (*TextAttributes, error) {
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var textAttributesUnrefFunction *gi.Function
@@ -10060,7 +10060,7 @@ func textAttributesUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_text_attributes_unref.
-func (recv *TextAttributes) Unref() error {
+func (recv *TextAttributes) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10069,7 +10069,7 @@ func (recv *TextAttributes) Unref() error {
 		textAttributesUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textBTreeStruct *gi.Struct
@@ -10193,7 +10193,7 @@ func textIterAssignFunction_Set() error {
 }
 
 // Assign is a representation of the C type gtk_text_iter_assign.
-func (recv *TextIter) Assign(other *TextIter) error {
+func (recv *TextIter) Assign(other *TextIter) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(other.native)
@@ -10203,7 +10203,7 @@ func (recv *TextIter) Assign(other *TextIter) error {
 		textIterAssignFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterBackwardCharFunction *gi.Function
@@ -10222,7 +10222,7 @@ func textIterBackwardCharFunction_Set() error {
 }
 
 // BackwardChar is a representation of the C type gtk_text_iter_backward_char.
-func (recv *TextIter) BackwardChar() (bool, error) {
+func (recv *TextIter) BackwardChar() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10235,7 +10235,7 @@ func (recv *TextIter) BackwardChar() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardCharsFunction *gi.Function
@@ -10254,7 +10254,7 @@ func textIterBackwardCharsFunction_Set() error {
 }
 
 // BackwardChars is a representation of the C type gtk_text_iter_backward_chars.
-func (recv *TextIter) BackwardChars(count int32) (bool, error) {
+func (recv *TextIter) BackwardChars(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10268,7 +10268,7 @@ func (recv *TextIter) BackwardChars(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardCursorPositionFunction *gi.Function
@@ -10287,7 +10287,7 @@ func textIterBackwardCursorPositionFunction_Set() error {
 }
 
 // BackwardCursorPosition is a representation of the C type gtk_text_iter_backward_cursor_position.
-func (recv *TextIter) BackwardCursorPosition() (bool, error) {
+func (recv *TextIter) BackwardCursorPosition() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10300,7 +10300,7 @@ func (recv *TextIter) BackwardCursorPosition() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardCursorPositionsFunction *gi.Function
@@ -10319,7 +10319,7 @@ func textIterBackwardCursorPositionsFunction_Set() error {
 }
 
 // BackwardCursorPositions is a representation of the C type gtk_text_iter_backward_cursor_positions.
-func (recv *TextIter) BackwardCursorPositions(count int32) (bool, error) {
+func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10333,7 +10333,7 @@ func (recv *TextIter) BackwardCursorPositions(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
@@ -10354,7 +10354,7 @@ func textIterBackwardLineFunction_Set() error {
 }
 
 // BackwardLine is a representation of the C type gtk_text_iter_backward_line.
-func (recv *TextIter) BackwardLine() (bool, error) {
+func (recv *TextIter) BackwardLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10367,7 +10367,7 @@ func (recv *TextIter) BackwardLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardLinesFunction *gi.Function
@@ -10386,7 +10386,7 @@ func textIterBackwardLinesFunction_Set() error {
 }
 
 // BackwardLines is a representation of the C type gtk_text_iter_backward_lines.
-func (recv *TextIter) BackwardLines(count int32) (bool, error) {
+func (recv *TextIter) BackwardLines(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10400,7 +10400,7 @@ func (recv *TextIter) BackwardLines(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
@@ -10421,7 +10421,7 @@ func textIterBackwardSentenceStartFunction_Set() error {
 }
 
 // BackwardSentenceStart is a representation of the C type gtk_text_iter_backward_sentence_start.
-func (recv *TextIter) BackwardSentenceStart() (bool, error) {
+func (recv *TextIter) BackwardSentenceStart() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10434,7 +10434,7 @@ func (recv *TextIter) BackwardSentenceStart() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardSentenceStartsFunction *gi.Function
@@ -10453,7 +10453,7 @@ func textIterBackwardSentenceStartsFunction_Set() error {
 }
 
 // BackwardSentenceStarts is a representation of the C type gtk_text_iter_backward_sentence_starts.
-func (recv *TextIter) BackwardSentenceStarts(count int32) (bool, error) {
+func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10467,7 +10467,7 @@ func (recv *TextIter) BackwardSentenceStarts(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
@@ -10488,7 +10488,7 @@ func textIterBackwardVisibleCursorPositionFunction_Set() error {
 }
 
 // BackwardVisibleCursorPosition is a representation of the C type gtk_text_iter_backward_visible_cursor_position.
-func (recv *TextIter) BackwardVisibleCursorPosition() (bool, error) {
+func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10501,7 +10501,7 @@ func (recv *TextIter) BackwardVisibleCursorPosition() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardVisibleCursorPositionsFunction *gi.Function
@@ -10520,7 +10520,7 @@ func textIterBackwardVisibleCursorPositionsFunction_Set() error {
 }
 
 // BackwardVisibleCursorPositions is a representation of the C type gtk_text_iter_backward_visible_cursor_positions.
-func (recv *TextIter) BackwardVisibleCursorPositions(count int32) (bool, error) {
+func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10534,7 +10534,7 @@ func (recv *TextIter) BackwardVisibleCursorPositions(count int32) (bool, error) 
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardVisibleLineFunction *gi.Function
@@ -10553,7 +10553,7 @@ func textIterBackwardVisibleLineFunction_Set() error {
 }
 
 // BackwardVisibleLine is a representation of the C type gtk_text_iter_backward_visible_line.
-func (recv *TextIter) BackwardVisibleLine() (bool, error) {
+func (recv *TextIter) BackwardVisibleLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10566,7 +10566,7 @@ func (recv *TextIter) BackwardVisibleLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardVisibleLinesFunction *gi.Function
@@ -10585,7 +10585,7 @@ func textIterBackwardVisibleLinesFunction_Set() error {
 }
 
 // BackwardVisibleLines is a representation of the C type gtk_text_iter_backward_visible_lines.
-func (recv *TextIter) BackwardVisibleLines(count int32) (bool, error) {
+func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10599,7 +10599,7 @@ func (recv *TextIter) BackwardVisibleLines(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardVisibleWordStartFunction *gi.Function
@@ -10618,7 +10618,7 @@ func textIterBackwardVisibleWordStartFunction_Set() error {
 }
 
 // BackwardVisibleWordStart is a representation of the C type gtk_text_iter_backward_visible_word_start.
-func (recv *TextIter) BackwardVisibleWordStart() (bool, error) {
+func (recv *TextIter) BackwardVisibleWordStart() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10631,7 +10631,7 @@ func (recv *TextIter) BackwardVisibleWordStart() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardVisibleWordStartsFunction *gi.Function
@@ -10650,7 +10650,7 @@ func textIterBackwardVisibleWordStartsFunction_Set() error {
 }
 
 // BackwardVisibleWordStarts is a representation of the C type gtk_text_iter_backward_visible_word_starts.
-func (recv *TextIter) BackwardVisibleWordStarts(count int32) (bool, error) {
+func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10664,7 +10664,7 @@ func (recv *TextIter) BackwardVisibleWordStarts(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardWordStartFunction *gi.Function
@@ -10683,7 +10683,7 @@ func textIterBackwardWordStartFunction_Set() error {
 }
 
 // BackwardWordStart is a representation of the C type gtk_text_iter_backward_word_start.
-func (recv *TextIter) BackwardWordStart() (bool, error) {
+func (recv *TextIter) BackwardWordStart() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10696,7 +10696,7 @@ func (recv *TextIter) BackwardWordStart() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterBackwardWordStartsFunction *gi.Function
@@ -10715,7 +10715,7 @@ func textIterBackwardWordStartsFunction_Set() error {
 }
 
 // BackwardWordStarts is a representation of the C type gtk_text_iter_backward_word_starts.
-func (recv *TextIter) BackwardWordStarts(count int32) (bool, error) {
+func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -10729,7 +10729,7 @@ func (recv *TextIter) BackwardWordStarts(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_begins_tag' : parameter 'tag' of type 'TextTag' not supported
@@ -10750,7 +10750,7 @@ func textIterCanInsertFunction_Set() error {
 }
 
 // CanInsert is a representation of the C type gtk_text_iter_can_insert.
-func (recv *TextIter) CanInsert(defaultEditability bool) (bool, error) {
+func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(defaultEditability)
@@ -10764,7 +10764,7 @@ func (recv *TextIter) CanInsert(defaultEditability bool) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterCompareFunction *gi.Function
@@ -10783,7 +10783,7 @@ func textIterCompareFunction_Set() error {
 }
 
 // Compare is a representation of the C type gtk_text_iter_compare.
-func (recv *TextIter) Compare(rhs *TextIter) (int32, error) {
+func (recv *TextIter) Compare(rhs *TextIter) int32 {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(rhs.native)
@@ -10797,7 +10797,7 @@ func (recv *TextIter) Compare(rhs *TextIter) (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterCopyFunction *gi.Function
@@ -10816,7 +10816,7 @@ func textIterCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_text_iter_copy.
-func (recv *TextIter) Copy() (*TextIter, error) {
+func (recv *TextIter) Copy() *TextIter {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10829,7 +10829,7 @@ func (recv *TextIter) Copy() (*TextIter, error) {
 
 	retGo := &TextIter{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var textIterEditableFunction *gi.Function
@@ -10848,7 +10848,7 @@ func textIterEditableFunction_Set() error {
 }
 
 // Editable is a representation of the C type gtk_text_iter_editable.
-func (recv *TextIter) Editable(defaultSetting bool) (bool, error) {
+func (recv *TextIter) Editable(defaultSetting bool) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(defaultSetting)
@@ -10862,7 +10862,7 @@ func (recv *TextIter) Editable(defaultSetting bool) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterEndsLineFunction *gi.Function
@@ -10881,7 +10881,7 @@ func textIterEndsLineFunction_Set() error {
 }
 
 // EndsLine is a representation of the C type gtk_text_iter_ends_line.
-func (recv *TextIter) EndsLine() (bool, error) {
+func (recv *TextIter) EndsLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10894,7 +10894,7 @@ func (recv *TextIter) EndsLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterEndsSentenceFunction *gi.Function
@@ -10913,7 +10913,7 @@ func textIterEndsSentenceFunction_Set() error {
 }
 
 // EndsSentence is a representation of the C type gtk_text_iter_ends_sentence.
-func (recv *TextIter) EndsSentence() (bool, error) {
+func (recv *TextIter) EndsSentence() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10926,7 +10926,7 @@ func (recv *TextIter) EndsSentence() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_ends_tag' : parameter 'tag' of type 'TextTag' not supported
@@ -10947,7 +10947,7 @@ func textIterEndsWordFunction_Set() error {
 }
 
 // EndsWord is a representation of the C type gtk_text_iter_ends_word.
-func (recv *TextIter) EndsWord() (bool, error) {
+func (recv *TextIter) EndsWord() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -10960,7 +10960,7 @@ func (recv *TextIter) EndsWord() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterEqualFunction *gi.Function
@@ -10979,7 +10979,7 @@ func textIterEqualFunction_Set() error {
 }
 
 // Equal is a representation of the C type gtk_text_iter_equal.
-func (recv *TextIter) Equal(rhs *TextIter) (bool, error) {
+func (recv *TextIter) Equal(rhs *TextIter) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(rhs.native)
@@ -10993,7 +10993,7 @@ func (recv *TextIter) Equal(rhs *TextIter) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardCharFunction *gi.Function
@@ -11012,7 +11012,7 @@ func textIterForwardCharFunction_Set() error {
 }
 
 // ForwardChar is a representation of the C type gtk_text_iter_forward_char.
-func (recv *TextIter) ForwardChar() (bool, error) {
+func (recv *TextIter) ForwardChar() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11025,7 +11025,7 @@ func (recv *TextIter) ForwardChar() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardCharsFunction *gi.Function
@@ -11044,7 +11044,7 @@ func textIterForwardCharsFunction_Set() error {
 }
 
 // ForwardChars is a representation of the C type gtk_text_iter_forward_chars.
-func (recv *TextIter) ForwardChars(count int32) (bool, error) {
+func (recv *TextIter) ForwardChars(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11058,7 +11058,7 @@ func (recv *TextIter) ForwardChars(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardCursorPositionFunction *gi.Function
@@ -11077,7 +11077,7 @@ func textIterForwardCursorPositionFunction_Set() error {
 }
 
 // ForwardCursorPosition is a representation of the C type gtk_text_iter_forward_cursor_position.
-func (recv *TextIter) ForwardCursorPosition() (bool, error) {
+func (recv *TextIter) ForwardCursorPosition() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11090,7 +11090,7 @@ func (recv *TextIter) ForwardCursorPosition() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardCursorPositionsFunction *gi.Function
@@ -11109,7 +11109,7 @@ func textIterForwardCursorPositionsFunction_Set() error {
 }
 
 // ForwardCursorPositions is a representation of the C type gtk_text_iter_forward_cursor_positions.
-func (recv *TextIter) ForwardCursorPositions(count int32) (bool, error) {
+func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11123,7 +11123,7 @@ func (recv *TextIter) ForwardCursorPositions(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
@@ -11144,7 +11144,7 @@ func textIterForwardLineFunction_Set() error {
 }
 
 // ForwardLine is a representation of the C type gtk_text_iter_forward_line.
-func (recv *TextIter) ForwardLine() (bool, error) {
+func (recv *TextIter) ForwardLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11157,7 +11157,7 @@ func (recv *TextIter) ForwardLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardLinesFunction *gi.Function
@@ -11176,7 +11176,7 @@ func textIterForwardLinesFunction_Set() error {
 }
 
 // ForwardLines is a representation of the C type gtk_text_iter_forward_lines.
-func (recv *TextIter) ForwardLines(count int32) (bool, error) {
+func (recv *TextIter) ForwardLines(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11190,7 +11190,7 @@ func (recv *TextIter) ForwardLines(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
@@ -11211,7 +11211,7 @@ func textIterForwardSentenceEndFunction_Set() error {
 }
 
 // ForwardSentenceEnd is a representation of the C type gtk_text_iter_forward_sentence_end.
-func (recv *TextIter) ForwardSentenceEnd() (bool, error) {
+func (recv *TextIter) ForwardSentenceEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11224,7 +11224,7 @@ func (recv *TextIter) ForwardSentenceEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardSentenceEndsFunction *gi.Function
@@ -11243,7 +11243,7 @@ func textIterForwardSentenceEndsFunction_Set() error {
 }
 
 // ForwardSentenceEnds is a representation of the C type gtk_text_iter_forward_sentence_ends.
-func (recv *TextIter) ForwardSentenceEnds(count int32) (bool, error) {
+func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11257,7 +11257,7 @@ func (recv *TextIter) ForwardSentenceEnds(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardToEndFunction *gi.Function
@@ -11276,7 +11276,7 @@ func textIterForwardToEndFunction_Set() error {
 }
 
 // ForwardToEnd is a representation of the C type gtk_text_iter_forward_to_end.
-func (recv *TextIter) ForwardToEnd() error {
+func (recv *TextIter) ForwardToEnd() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11285,7 +11285,7 @@ func (recv *TextIter) ForwardToEnd() error {
 		textIterForwardToEndFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterForwardToLineEndFunction *gi.Function
@@ -11304,7 +11304,7 @@ func textIterForwardToLineEndFunction_Set() error {
 }
 
 // ForwardToLineEnd is a representation of the C type gtk_text_iter_forward_to_line_end.
-func (recv *TextIter) ForwardToLineEnd() (bool, error) {
+func (recv *TextIter) ForwardToLineEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11317,7 +11317,7 @@ func (recv *TextIter) ForwardToLineEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
@@ -11338,7 +11338,7 @@ func textIterForwardVisibleCursorPositionFunction_Set() error {
 }
 
 // ForwardVisibleCursorPosition is a representation of the C type gtk_text_iter_forward_visible_cursor_position.
-func (recv *TextIter) ForwardVisibleCursorPosition() (bool, error) {
+func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11351,7 +11351,7 @@ func (recv *TextIter) ForwardVisibleCursorPosition() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardVisibleCursorPositionsFunction *gi.Function
@@ -11370,7 +11370,7 @@ func textIterForwardVisibleCursorPositionsFunction_Set() error {
 }
 
 // ForwardVisibleCursorPositions is a representation of the C type gtk_text_iter_forward_visible_cursor_positions.
-func (recv *TextIter) ForwardVisibleCursorPositions(count int32) (bool, error) {
+func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11384,7 +11384,7 @@ func (recv *TextIter) ForwardVisibleCursorPositions(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardVisibleLineFunction *gi.Function
@@ -11403,7 +11403,7 @@ func textIterForwardVisibleLineFunction_Set() error {
 }
 
 // ForwardVisibleLine is a representation of the C type gtk_text_iter_forward_visible_line.
-func (recv *TextIter) ForwardVisibleLine() (bool, error) {
+func (recv *TextIter) ForwardVisibleLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11416,7 +11416,7 @@ func (recv *TextIter) ForwardVisibleLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardVisibleLinesFunction *gi.Function
@@ -11435,7 +11435,7 @@ func textIterForwardVisibleLinesFunction_Set() error {
 }
 
 // ForwardVisibleLines is a representation of the C type gtk_text_iter_forward_visible_lines.
-func (recv *TextIter) ForwardVisibleLines(count int32) (bool, error) {
+func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11449,7 +11449,7 @@ func (recv *TextIter) ForwardVisibleLines(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardVisibleWordEndFunction *gi.Function
@@ -11468,7 +11468,7 @@ func textIterForwardVisibleWordEndFunction_Set() error {
 }
 
 // ForwardVisibleWordEnd is a representation of the C type gtk_text_iter_forward_visible_word_end.
-func (recv *TextIter) ForwardVisibleWordEnd() (bool, error) {
+func (recv *TextIter) ForwardVisibleWordEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11481,7 +11481,7 @@ func (recv *TextIter) ForwardVisibleWordEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardVisibleWordEndsFunction *gi.Function
@@ -11500,7 +11500,7 @@ func textIterForwardVisibleWordEndsFunction_Set() error {
 }
 
 // ForwardVisibleWordEnds is a representation of the C type gtk_text_iter_forward_visible_word_ends.
-func (recv *TextIter) ForwardVisibleWordEnds(count int32) (bool, error) {
+func (recv *TextIter) ForwardVisibleWordEnds(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11514,7 +11514,7 @@ func (recv *TextIter) ForwardVisibleWordEnds(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardWordEndFunction *gi.Function
@@ -11533,7 +11533,7 @@ func textIterForwardWordEndFunction_Set() error {
 }
 
 // ForwardWordEnd is a representation of the C type gtk_text_iter_forward_word_end.
-func (recv *TextIter) ForwardWordEnd() (bool, error) {
+func (recv *TextIter) ForwardWordEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11546,7 +11546,7 @@ func (recv *TextIter) ForwardWordEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterForwardWordEndsFunction *gi.Function
@@ -11565,7 +11565,7 @@ func textIterForwardWordEndsFunction_Set() error {
 }
 
 // ForwardWordEnds is a representation of the C type gtk_text_iter_forward_word_ends.
-func (recv *TextIter) ForwardWordEnds(count int32) (bool, error) {
+func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
@@ -11579,7 +11579,7 @@ func (recv *TextIter) ForwardWordEnds(count int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterFreeFunction *gi.Function
@@ -11598,7 +11598,7 @@ func textIterFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_text_iter_free.
-func (recv *TextIter) Free() error {
+func (recv *TextIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11607,7 +11607,7 @@ func (recv *TextIter) Free() error {
 		textIterFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterGetAttributesFunction *gi.Function
@@ -11626,7 +11626,7 @@ func textIterGetAttributesFunction_Set() error {
 }
 
 // GetAttributes is a representation of the C type gtk_text_iter_get_attributes.
-func (recv *TextIter) GetAttributes() (bool, *TextAttributes, error) {
+func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11641,7 +11641,7 @@ func (recv *TextIter) GetAttributes() (bool, *TextAttributes, error) {
 	retGo := ret.Boolean()
 	out0 := &TextAttributes{native: outArgs[0].Pointer()}
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_buffer' : return type 'TextBuffer' not supported
@@ -11662,7 +11662,7 @@ func textIterGetBytesInLineFunction_Set() error {
 }
 
 // GetBytesInLine is a representation of the C type gtk_text_iter_get_bytes_in_line.
-func (recv *TextIter) GetBytesInLine() (int32, error) {
+func (recv *TextIter) GetBytesInLine() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11675,7 +11675,7 @@ func (recv *TextIter) GetBytesInLine() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_char' : return type 'gunichar' not supported
@@ -11696,7 +11696,7 @@ func textIterGetCharsInLineFunction_Set() error {
 }
 
 // GetCharsInLine is a representation of the C type gtk_text_iter_get_chars_in_line.
-func (recv *TextIter) GetCharsInLine() (int32, error) {
+func (recv *TextIter) GetCharsInLine() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11709,7 +11709,7 @@ func (recv *TextIter) GetCharsInLine() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_child_anchor' : return type 'TextChildAnchor' not supported
@@ -11732,7 +11732,7 @@ func textIterGetLineFunction_Set() error {
 }
 
 // GetLine is a representation of the C type gtk_text_iter_get_line.
-func (recv *TextIter) GetLine() (int32, error) {
+func (recv *TextIter) GetLine() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11745,7 +11745,7 @@ func (recv *TextIter) GetLine() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterGetLineIndexFunction *gi.Function
@@ -11764,7 +11764,7 @@ func textIterGetLineIndexFunction_Set() error {
 }
 
 // GetLineIndex is a representation of the C type gtk_text_iter_get_line_index.
-func (recv *TextIter) GetLineIndex() (int32, error) {
+func (recv *TextIter) GetLineIndex() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11777,7 +11777,7 @@ func (recv *TextIter) GetLineIndex() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterGetLineOffsetFunction *gi.Function
@@ -11796,7 +11796,7 @@ func textIterGetLineOffsetFunction_Set() error {
 }
 
 // GetLineOffset is a representation of the C type gtk_text_iter_get_line_offset.
-func (recv *TextIter) GetLineOffset() (int32, error) {
+func (recv *TextIter) GetLineOffset() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11809,7 +11809,7 @@ func (recv *TextIter) GetLineOffset() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_marks' : return type 'GLib.SList' not supported
@@ -11830,7 +11830,7 @@ func textIterGetOffsetFunction_Set() error {
 }
 
 // GetOffset is a representation of the C type gtk_text_iter_get_offset.
-func (recv *TextIter) GetOffset() (int32, error) {
+func (recv *TextIter) GetOffset() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11843,7 +11843,7 @@ func (recv *TextIter) GetOffset() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
@@ -11864,7 +11864,7 @@ func textIterGetSliceFunction_Set() error {
 }
 
 // GetSlice is a representation of the C type gtk_text_iter_get_slice.
-func (recv *TextIter) GetSlice(end *TextIter) (string, error) {
+func (recv *TextIter) GetSlice(end *TextIter) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(end.native)
@@ -11878,7 +11878,7 @@ func (recv *TextIter) GetSlice(end *TextIter) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_tags' : return type 'GLib.SList' not supported
@@ -11899,7 +11899,7 @@ func textIterGetTextFunction_Set() error {
 }
 
 // GetText is a representation of the C type gtk_text_iter_get_text.
-func (recv *TextIter) GetText(end *TextIter) (string, error) {
+func (recv *TextIter) GetText(end *TextIter) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(end.native)
@@ -11913,7 +11913,7 @@ func (recv *TextIter) GetText(end *TextIter) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_toggled_tags' : return type 'GLib.SList' not supported
@@ -11934,7 +11934,7 @@ func textIterGetVisibleLineIndexFunction_Set() error {
 }
 
 // GetVisibleLineIndex is a representation of the C type gtk_text_iter_get_visible_line_index.
-func (recv *TextIter) GetVisibleLineIndex() (int32, error) {
+func (recv *TextIter) GetVisibleLineIndex() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11947,7 +11947,7 @@ func (recv *TextIter) GetVisibleLineIndex() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterGetVisibleLineOffsetFunction *gi.Function
@@ -11966,7 +11966,7 @@ func textIterGetVisibleLineOffsetFunction_Set() error {
 }
 
 // GetVisibleLineOffset is a representation of the C type gtk_text_iter_get_visible_line_offset.
-func (recv *TextIter) GetVisibleLineOffset() (int32, error) {
+func (recv *TextIter) GetVisibleLineOffset() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -11979,7 +11979,7 @@ func (recv *TextIter) GetVisibleLineOffset() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterGetVisibleSliceFunction *gi.Function
@@ -11998,7 +11998,7 @@ func textIterGetVisibleSliceFunction_Set() error {
 }
 
 // GetVisibleSlice is a representation of the C type gtk_text_iter_get_visible_slice.
-func (recv *TextIter) GetVisibleSlice(end *TextIter) (string, error) {
+func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(end.native)
@@ -12012,7 +12012,7 @@ func (recv *TextIter) GetVisibleSlice(end *TextIter) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var textIterGetVisibleTextFunction *gi.Function
@@ -12031,7 +12031,7 @@ func textIterGetVisibleTextFunction_Set() error {
 }
 
 // GetVisibleText is a representation of the C type gtk_text_iter_get_visible_text.
-func (recv *TextIter) GetVisibleText(end *TextIter) (string, error) {
+func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(end.native)
@@ -12045,7 +12045,7 @@ func (recv *TextIter) GetVisibleText(end *TextIter) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_has_tag' : parameter 'tag' of type 'TextTag' not supported
@@ -12066,7 +12066,7 @@ func textIterInRangeFunction_Set() error {
 }
 
 // InRange is a representation of the C type gtk_text_iter_in_range.
-func (recv *TextIter) InRange(start *TextIter, end *TextIter) (bool, error) {
+func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(start.native)
@@ -12081,7 +12081,7 @@ func (recv *TextIter) InRange(start *TextIter, end *TextIter) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterInsideSentenceFunction *gi.Function
@@ -12100,7 +12100,7 @@ func textIterInsideSentenceFunction_Set() error {
 }
 
 // InsideSentence is a representation of the C type gtk_text_iter_inside_sentence.
-func (recv *TextIter) InsideSentence() (bool, error) {
+func (recv *TextIter) InsideSentence() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12113,7 +12113,7 @@ func (recv *TextIter) InsideSentence() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterInsideWordFunction *gi.Function
@@ -12132,7 +12132,7 @@ func textIterInsideWordFunction_Set() error {
 }
 
 // InsideWord is a representation of the C type gtk_text_iter_inside_word.
-func (recv *TextIter) InsideWord() (bool, error) {
+func (recv *TextIter) InsideWord() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12145,7 +12145,7 @@ func (recv *TextIter) InsideWord() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterIsCursorPositionFunction *gi.Function
@@ -12164,7 +12164,7 @@ func textIterIsCursorPositionFunction_Set() error {
 }
 
 // IsCursorPosition is a representation of the C type gtk_text_iter_is_cursor_position.
-func (recv *TextIter) IsCursorPosition() (bool, error) {
+func (recv *TextIter) IsCursorPosition() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12177,7 +12177,7 @@ func (recv *TextIter) IsCursorPosition() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterIsEndFunction *gi.Function
@@ -12196,7 +12196,7 @@ func textIterIsEndFunction_Set() error {
 }
 
 // IsEnd is a representation of the C type gtk_text_iter_is_end.
-func (recv *TextIter) IsEnd() (bool, error) {
+func (recv *TextIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12209,7 +12209,7 @@ func (recv *TextIter) IsEnd() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterIsStartFunction *gi.Function
@@ -12228,7 +12228,7 @@ func textIterIsStartFunction_Set() error {
 }
 
 // IsStart is a representation of the C type gtk_text_iter_is_start.
-func (recv *TextIter) IsStart() (bool, error) {
+func (recv *TextIter) IsStart() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12241,7 +12241,7 @@ func (recv *TextIter) IsStart() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterOrderFunction *gi.Function
@@ -12260,7 +12260,7 @@ func textIterOrderFunction_Set() error {
 }
 
 // Order is a representation of the C type gtk_text_iter_order.
-func (recv *TextIter) Order(second *TextIter) error {
+func (recv *TextIter) Order(second *TextIter) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(second.native)
@@ -12270,7 +12270,7 @@ func (recv *TextIter) Order(second *TextIter) error {
 		textIterOrderFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetLineFunction *gi.Function
@@ -12289,7 +12289,7 @@ func textIterSetLineFunction_Set() error {
 }
 
 // SetLine is a representation of the C type gtk_text_iter_set_line.
-func (recv *TextIter) SetLine(lineNumber int32) error {
+func (recv *TextIter) SetLine(lineNumber int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(lineNumber)
@@ -12299,7 +12299,7 @@ func (recv *TextIter) SetLine(lineNumber int32) error {
 		textIterSetLineFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetLineIndexFunction *gi.Function
@@ -12318,7 +12318,7 @@ func textIterSetLineIndexFunction_Set() error {
 }
 
 // SetLineIndex is a representation of the C type gtk_text_iter_set_line_index.
-func (recv *TextIter) SetLineIndex(byteOnLine int32) error {
+func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(byteOnLine)
@@ -12328,7 +12328,7 @@ func (recv *TextIter) SetLineIndex(byteOnLine int32) error {
 		textIterSetLineIndexFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetLineOffsetFunction *gi.Function
@@ -12347,7 +12347,7 @@ func textIterSetLineOffsetFunction_Set() error {
 }
 
 // SetLineOffset is a representation of the C type gtk_text_iter_set_line_offset.
-func (recv *TextIter) SetLineOffset(charOnLine int32) error {
+func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOnLine)
@@ -12357,7 +12357,7 @@ func (recv *TextIter) SetLineOffset(charOnLine int32) error {
 		textIterSetLineOffsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetOffsetFunction *gi.Function
@@ -12376,7 +12376,7 @@ func textIterSetOffsetFunction_Set() error {
 }
 
 // SetOffset is a representation of the C type gtk_text_iter_set_offset.
-func (recv *TextIter) SetOffset(charOffset int32) error {
+func (recv *TextIter) SetOffset(charOffset int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOffset)
@@ -12386,7 +12386,7 @@ func (recv *TextIter) SetOffset(charOffset int32) error {
 		textIterSetOffsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetVisibleLineIndexFunction *gi.Function
@@ -12405,7 +12405,7 @@ func textIterSetVisibleLineIndexFunction_Set() error {
 }
 
 // SetVisibleLineIndex is a representation of the C type gtk_text_iter_set_visible_line_index.
-func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) error {
+func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(byteOnLine)
@@ -12415,7 +12415,7 @@ func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) error {
 		textIterSetVisibleLineIndexFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterSetVisibleLineOffsetFunction *gi.Function
@@ -12434,7 +12434,7 @@ func textIterSetVisibleLineOffsetFunction_Set() error {
 }
 
 // SetVisibleLineOffset is a representation of the C type gtk_text_iter_set_visible_line_offset.
-func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) error {
+func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOnLine)
@@ -12444,7 +12444,7 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) error {
 		textIterSetVisibleLineOffsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var textIterStartsLineFunction *gi.Function
@@ -12463,7 +12463,7 @@ func textIterStartsLineFunction_Set() error {
 }
 
 // StartsLine is a representation of the C type gtk_text_iter_starts_line.
-func (recv *TextIter) StartsLine() (bool, error) {
+func (recv *TextIter) StartsLine() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12476,7 +12476,7 @@ func (recv *TextIter) StartsLine() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var textIterStartsSentenceFunction *gi.Function
@@ -12495,7 +12495,7 @@ func textIterStartsSentenceFunction_Set() error {
 }
 
 // StartsSentence is a representation of the C type gtk_text_iter_starts_sentence.
-func (recv *TextIter) StartsSentence() (bool, error) {
+func (recv *TextIter) StartsSentence() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12508,7 +12508,7 @@ func (recv *TextIter) StartsSentence() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_starts_tag' : parameter 'tag' of type 'TextTag' not supported
@@ -12529,7 +12529,7 @@ func textIterStartsWordFunction_Set() error {
 }
 
 // StartsWord is a representation of the C type gtk_text_iter_starts_word.
-func (recv *TextIter) StartsWord() (bool, error) {
+func (recv *TextIter) StartsWord() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -12542,7 +12542,7 @@ func (recv *TextIter) StartsWord() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
@@ -13118,7 +13118,7 @@ func treeIterCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_tree_iter_copy.
-func (recv *TreeIter) Copy() (*TreeIter, error) {
+func (recv *TreeIter) Copy() *TreeIter {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13131,7 +13131,7 @@ func (recv *TreeIter) Copy() (*TreeIter, error) {
 
 	retGo := &TreeIter{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treeIterFreeFunction *gi.Function
@@ -13150,7 +13150,7 @@ func treeIterFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_tree_iter_free.
-func (recv *TreeIter) Free() error {
+func (recv *TreeIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13159,7 +13159,7 @@ func (recv *TreeIter) Free() error {
 		treeIterFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treeModelFilterClassStruct *gi.Struct
@@ -13268,7 +13268,7 @@ func treePathNewFunction_Set() error {
 }
 
 // TreePathNew is a representation of the C type gtk_tree_path_new.
-func TreePathNew() (*TreePath, error) {
+func TreePathNew() *TreePath {
 
 	var ret gi.Argument
 
@@ -13279,7 +13279,7 @@ func TreePathNew() (*TreePath, error) {
 
 	retGo := &TreePath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treePathNewFirstFunction *gi.Function
@@ -13298,7 +13298,7 @@ func treePathNewFirstFunction_Set() error {
 }
 
 // TreePathNewFirst is a representation of the C type gtk_tree_path_new_first.
-func TreePathNewFirst() (*TreePath, error) {
+func TreePathNewFirst() *TreePath {
 
 	var ret gi.Argument
 
@@ -13309,7 +13309,7 @@ func TreePathNewFirst() (*TreePath, error) {
 
 	retGo := &TreePath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' has no type
@@ -13332,7 +13332,7 @@ func treePathNewFromStringFunction_Set() error {
 }
 
 // TreePathNewFromString is a representation of the C type gtk_tree_path_new_from_string.
-func TreePathNewFromString(path string) (*TreePath, error) {
+func TreePathNewFromString(path string) *TreePath {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(path)
 
@@ -13345,7 +13345,7 @@ func TreePathNewFromString(path string) (*TreePath, error) {
 
 	retGo := &TreePath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treePathAppendIndexFunction *gi.Function
@@ -13364,7 +13364,7 @@ func treePathAppendIndexFunction_Set() error {
 }
 
 // AppendIndex is a representation of the C type gtk_tree_path_append_index.
-func (recv *TreePath) AppendIndex(index int32) error {
+func (recv *TreePath) AppendIndex(index int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(index)
@@ -13374,7 +13374,7 @@ func (recv *TreePath) AppendIndex(index int32) error {
 		treePathAppendIndexFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treePathCompareFunction *gi.Function
@@ -13393,7 +13393,7 @@ func treePathCompareFunction_Set() error {
 }
 
 // Compare is a representation of the C type gtk_tree_path_compare.
-func (recv *TreePath) Compare(b *TreePath) (int32, error) {
+func (recv *TreePath) Compare(b *TreePath) int32 {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(b.native)
@@ -13407,7 +13407,7 @@ func (recv *TreePath) Compare(b *TreePath) (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathCopyFunction *gi.Function
@@ -13426,7 +13426,7 @@ func treePathCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_tree_path_copy.
-func (recv *TreePath) Copy() (*TreePath, error) {
+func (recv *TreePath) Copy() *TreePath {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13439,7 +13439,7 @@ func (recv *TreePath) Copy() (*TreePath, error) {
 
 	retGo := &TreePath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treePathDownFunction *gi.Function
@@ -13458,7 +13458,7 @@ func treePathDownFunction_Set() error {
 }
 
 // Down is a representation of the C type gtk_tree_path_down.
-func (recv *TreePath) Down() error {
+func (recv *TreePath) Down() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13467,7 +13467,7 @@ func (recv *TreePath) Down() error {
 		treePathDownFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treePathFreeFunction *gi.Function
@@ -13486,7 +13486,7 @@ func treePathFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_tree_path_free.
-func (recv *TreePath) Free() error {
+func (recv *TreePath) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13495,7 +13495,7 @@ func (recv *TreePath) Free() error {
 		treePathFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treePathGetDepthFunction *gi.Function
@@ -13514,7 +13514,7 @@ func treePathGetDepthFunction_Set() error {
 }
 
 // GetDepth is a representation of the C type gtk_tree_path_get_depth.
-func (recv *TreePath) GetDepth() (int32, error) {
+func (recv *TreePath) GetDepth() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13527,7 +13527,7 @@ func (recv *TreePath) GetDepth() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathGetIndicesFunction *gi.Function
@@ -13546,7 +13546,7 @@ func treePathGetIndicesFunction_Set() error {
 }
 
 // GetIndices is a representation of the C type gtk_tree_path_get_indices.
-func (recv *TreePath) GetIndices() (int32, error) {
+func (recv *TreePath) GetIndices() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13559,7 +13559,7 @@ func (recv *TreePath) GetIndices() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathGetIndicesWithDepthFunction *gi.Function
@@ -13578,7 +13578,7 @@ func treePathGetIndicesWithDepthFunction_Set() error {
 }
 
 // GetIndicesWithDepth is a representation of the C type gtk_tree_path_get_indices_with_depth.
-func (recv *TreePath) GetIndicesWithDepth() (int32, error) {
+func (recv *TreePath) GetIndicesWithDepth() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13591,7 +13591,7 @@ func (recv *TreePath) GetIndicesWithDepth() (int32, error) {
 
 	out0 := outArgs[0].Int32()
 
-	return out0, err
+	return out0
 }
 
 var treePathIsAncestorFunction *gi.Function
@@ -13610,7 +13610,7 @@ func treePathIsAncestorFunction_Set() error {
 }
 
 // IsAncestor is a representation of the C type gtk_tree_path_is_ancestor.
-func (recv *TreePath) IsAncestor(descendant *TreePath) (bool, error) {
+func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(descendant.native)
@@ -13624,7 +13624,7 @@ func (recv *TreePath) IsAncestor(descendant *TreePath) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathIsDescendantFunction *gi.Function
@@ -13643,7 +13643,7 @@ func treePathIsDescendantFunction_Set() error {
 }
 
 // IsDescendant is a representation of the C type gtk_tree_path_is_descendant.
-func (recv *TreePath) IsDescendant(ancestor *TreePath) (bool, error) {
+func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(ancestor.native)
@@ -13657,7 +13657,7 @@ func (recv *TreePath) IsDescendant(ancestor *TreePath) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathNextFunction *gi.Function
@@ -13676,7 +13676,7 @@ func treePathNextFunction_Set() error {
 }
 
 // Next is a representation of the C type gtk_tree_path_next.
-func (recv *TreePath) Next() error {
+func (recv *TreePath) Next() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13685,7 +13685,7 @@ func (recv *TreePath) Next() error {
 		treePathNextFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treePathPrependIndexFunction *gi.Function
@@ -13704,7 +13704,7 @@ func treePathPrependIndexFunction_Set() error {
 }
 
 // PrependIndex is a representation of the C type gtk_tree_path_prepend_index.
-func (recv *TreePath) PrependIndex(index int32) error {
+func (recv *TreePath) PrependIndex(index int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(index)
@@ -13714,7 +13714,7 @@ func (recv *TreePath) PrependIndex(index int32) error {
 		treePathPrependIndexFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var treePathPrevFunction *gi.Function
@@ -13733,7 +13733,7 @@ func treePathPrevFunction_Set() error {
 }
 
 // Prev is a representation of the C type gtk_tree_path_prev.
-func (recv *TreePath) Prev() (bool, error) {
+func (recv *TreePath) Prev() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13746,7 +13746,7 @@ func (recv *TreePath) Prev() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var treePathToStringFunction *gi.Function
@@ -13765,7 +13765,7 @@ func treePathToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_tree_path_to_string.
-func (recv *TreePath) ToString() (string, error) {
+func (recv *TreePath) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13778,7 +13778,7 @@ func (recv *TreePath) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var treePathUpFunction *gi.Function
@@ -13797,7 +13797,7 @@ func treePathUpFunction_Set() error {
 }
 
 // Up is a representation of the C type gtk_tree_path_up.
-func (recv *TreePath) Up() (bool, error) {
+func (recv *TreePath) Up() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13810,7 +13810,7 @@ func (recv *TreePath) Up() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var treeRowReferenceStruct *gi.Struct
@@ -13848,7 +13848,7 @@ func treeRowReferenceCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_tree_row_reference_copy.
-func (recv *TreeRowReference) Copy() (*TreeRowReference, error) {
+func (recv *TreeRowReference) Copy() *TreeRowReference {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13861,7 +13861,7 @@ func (recv *TreeRowReference) Copy() (*TreeRowReference, error) {
 
 	retGo := &TreeRowReference{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treeRowReferenceFreeFunction *gi.Function
@@ -13880,7 +13880,7 @@ func treeRowReferenceFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_tree_row_reference_free.
-func (recv *TreeRowReference) Free() error {
+func (recv *TreeRowReference) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13889,7 +13889,7 @@ func (recv *TreeRowReference) Free() error {
 		treeRowReferenceFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_get_model' : return type 'TreeModel' not supported
@@ -13910,7 +13910,7 @@ func treeRowReferenceGetPathFunction_Set() error {
 }
 
 // GetPath is a representation of the C type gtk_tree_row_reference_get_path.
-func (recv *TreeRowReference) GetPath() (*TreePath, error) {
+func (recv *TreeRowReference) GetPath() *TreePath {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13923,7 +13923,7 @@ func (recv *TreeRowReference) GetPath() (*TreePath, error) {
 
 	retGo := &TreePath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var treeRowReferenceValidFunction *gi.Function
@@ -13942,7 +13942,7 @@ func treeRowReferenceValidFunction_Set() error {
 }
 
 // Valid is a representation of the C type gtk_tree_row_reference_valid.
-func (recv *TreeRowReference) Valid() (bool, error) {
+func (recv *TreeRowReference) Valid() bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -13955,7 +13955,7 @@ func (recv *TreeRowReference) Valid() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var treeSelectionClassStruct *gi.Struct
@@ -14351,7 +14351,7 @@ func widgetClassBindTemplateChildFullFunction_Set() error {
 }
 
 // BindTemplateChildFull is a representation of the C type gtk_widget_class_bind_template_child_full.
-func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, structOffset int32) error {
+func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, structOffset int32) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -14363,7 +14363,7 @@ func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, 
 		widgetClassBindTemplateChildFullFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_find_style_property' : return type 'GObject.ParamSpec' not supported
@@ -14384,7 +14384,7 @@ func widgetClassGetCssNameFunction_Set() error {
 }
 
 // GetCssName is a representation of the C type gtk_widget_class_get_css_name.
-func (recv *WidgetClass) GetCssName() (string, error) {
+func (recv *WidgetClass) GetCssName() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -14397,7 +14397,7 @@ func (recv *WidgetClass) GetCssName() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_install_style_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
@@ -14420,7 +14420,7 @@ func widgetClassListStylePropertiesFunction_Set() error {
 }
 
 // ListStyleProperties is a representation of the C type gtk_widget_class_list_style_properties.
-func (recv *WidgetClass) ListStyleProperties() (uint32, error) {
+func (recv *WidgetClass) ListStyleProperties() uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -14433,7 +14433,7 @@ func (recv *WidgetClass) ListStyleProperties() (uint32, error) {
 
 	out0 := outArgs[0].Uint32()
 
-	return out0, err
+	return out0
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_accessible_role' : parameter 'role' of type 'Atk.Role' not supported
@@ -14458,7 +14458,7 @@ func widgetClassSetCssNameFunction_Set() error {
 }
 
 // SetCssName is a representation of the C type gtk_widget_class_set_css_name.
-func (recv *WidgetClass) SetCssName(name string) error {
+func (recv *WidgetClass) SetCssName(name string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -14468,7 +14468,7 @@ func (recv *WidgetClass) SetCssName(name string) error {
 		widgetClassSetCssNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_template' : parameter 'template_bytes' of type 'GLib.Bytes' not supported
@@ -14489,7 +14489,7 @@ func widgetClassSetTemplateFromResourceFunction_Set() error {
 }
 
 // SetTemplateFromResource is a representation of the C type gtk_widget_class_set_template_from_resource.
-func (recv *WidgetClass) SetTemplateFromResource(resourceName string) error {
+func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(resourceName)
@@ -14499,7 +14499,7 @@ func (recv *WidgetClass) SetTemplateFromResource(resourceName string) error {
 		widgetClassSetTemplateFromResourceFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetClassPrivateStruct *gi.Struct
@@ -14548,7 +14548,7 @@ func widgetPathNewFunction_Set() error {
 }
 
 // WidgetPathNew is a representation of the C type gtk_widget_path_new.
-func WidgetPathNew() (*WidgetPath, error) {
+func WidgetPathNew() *WidgetPath {
 
 	var ret gi.Argument
 
@@ -14559,7 +14559,7 @@ func WidgetPathNew() (*WidgetPath, error) {
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_append_for_widget' : parameter 'widget' of type 'Widget' not supported
@@ -14582,7 +14582,7 @@ func widgetPathAppendWithSiblingsFunction_Set() error {
 }
 
 // AppendWithSiblings is a representation of the C type gtk_widget_path_append_with_siblings.
-func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex uint32) (int32, error) {
+func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex uint32) int32 {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetPointer(siblings.native)
@@ -14597,7 +14597,7 @@ func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex ui
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathCopyFunction *gi.Function
@@ -14616,7 +14616,7 @@ func widgetPathCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_widget_path_copy.
-func (recv *WidgetPath) Copy() (*WidgetPath, error) {
+func (recv *WidgetPath) Copy() *WidgetPath {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -14629,7 +14629,7 @@ func (recv *WidgetPath) Copy() (*WidgetPath, error) {
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathFreeFunction *gi.Function
@@ -14648,7 +14648,7 @@ func widgetPathFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_widget_path_free.
-func (recv *WidgetPath) Free() error {
+func (recv *WidgetPath) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -14657,7 +14657,7 @@ func (recv *WidgetPath) Free() error {
 		widgetPathFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_get_object_type' : return type 'GType' not supported
@@ -14682,7 +14682,7 @@ func widgetPathIterAddClassFunction_Set() error {
 }
 
 // IterAddClass is a representation of the C type gtk_widget_path_iter_add_class.
-func (recv *WidgetPath) IterAddClass(pos int32, name string) error {
+func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14693,7 +14693,7 @@ func (recv *WidgetPath) IterAddClass(pos int32, name string) error {
 		widgetPathIterAddClassFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_add_region' : parameter 'flags' of type 'RegionFlags' not supported
@@ -14714,7 +14714,7 @@ func widgetPathIterClearClassesFunction_Set() error {
 }
 
 // IterClearClasses is a representation of the C type gtk_widget_path_iter_clear_classes.
-func (recv *WidgetPath) IterClearClasses(pos int32) error {
+func (recv *WidgetPath) IterClearClasses(pos int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14724,7 +14724,7 @@ func (recv *WidgetPath) IterClearClasses(pos int32) error {
 		widgetPathIterClearClassesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPathIterClearRegionsFunction *gi.Function
@@ -14743,7 +14743,7 @@ func widgetPathIterClearRegionsFunction_Set() error {
 }
 
 // IterClearRegions is a representation of the C type gtk_widget_path_iter_clear_regions.
-func (recv *WidgetPath) IterClearRegions(pos int32) error {
+func (recv *WidgetPath) IterClearRegions(pos int32) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14753,7 +14753,7 @@ func (recv *WidgetPath) IterClearRegions(pos int32) error {
 		widgetPathIterClearRegionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPathIterGetNameFunction *gi.Function
@@ -14772,7 +14772,7 @@ func widgetPathIterGetNameFunction_Set() error {
 }
 
 // IterGetName is a representation of the C type gtk_widget_path_iter_get_name.
-func (recv *WidgetPath) IterGetName(pos int32) (string, error) {
+func (recv *WidgetPath) IterGetName(pos int32) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14786,7 +14786,7 @@ func (recv *WidgetPath) IterGetName(pos int32) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathIterGetObjectNameFunction *gi.Function
@@ -14805,7 +14805,7 @@ func widgetPathIterGetObjectNameFunction_Set() error {
 }
 
 // IterGetObjectName is a representation of the C type gtk_widget_path_iter_get_object_name.
-func (recv *WidgetPath) IterGetObjectName(pos int32) (string, error) {
+func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14819,7 +14819,7 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_get_object_type' : return type 'GType' not supported
@@ -14840,7 +14840,7 @@ func widgetPathIterGetSiblingIndexFunction_Set() error {
 }
 
 // IterGetSiblingIndex is a representation of the C type gtk_widget_path_iter_get_sibling_index.
-func (recv *WidgetPath) IterGetSiblingIndex(pos int32) (uint32, error) {
+func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14854,7 +14854,7 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathIterGetSiblingsFunction *gi.Function
@@ -14873,7 +14873,7 @@ func widgetPathIterGetSiblingsFunction_Set() error {
 }
 
 // IterGetSiblings is a representation of the C type gtk_widget_path_iter_get_siblings.
-func (recv *WidgetPath) IterGetSiblings(pos int32) (*WidgetPath, error) {
+func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14887,7 +14887,7 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) (*WidgetPath, error) {
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_get_state' : return type 'StateFlags' not supported
@@ -14908,7 +14908,7 @@ func widgetPathIterHasClassFunction_Set() error {
 }
 
 // IterHasClass is a representation of the C type gtk_widget_path_iter_has_class.
-func (recv *WidgetPath) IterHasClass(pos int32, name string) (bool, error) {
+func (recv *WidgetPath) IterHasClass(pos int32, name string) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14923,7 +14923,7 @@ func (recv *WidgetPath) IterHasClass(pos int32, name string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathIterHasNameFunction *gi.Function
@@ -14942,7 +14942,7 @@ func widgetPathIterHasNameFunction_Set() error {
 }
 
 // IterHasName is a representation of the C type gtk_widget_path_iter_has_name.
-func (recv *WidgetPath) IterHasName(pos int32, name string) (bool, error) {
+func (recv *WidgetPath) IterHasName(pos int32, name string) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14957,7 +14957,7 @@ func (recv *WidgetPath) IterHasName(pos int32, name string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_has_qclass' : parameter 'qname' of type 'GLib.Quark' not supported
@@ -14988,7 +14988,7 @@ func widgetPathIterRemoveClassFunction_Set() error {
 }
 
 // IterRemoveClass is a representation of the C type gtk_widget_path_iter_remove_class.
-func (recv *WidgetPath) IterRemoveClass(pos int32, name string) error {
+func (recv *WidgetPath) IterRemoveClass(pos int32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -14999,7 +14999,7 @@ func (recv *WidgetPath) IterRemoveClass(pos int32, name string) error {
 		widgetPathIterRemoveClassFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPathIterRemoveRegionFunction *gi.Function
@@ -15018,7 +15018,7 @@ func widgetPathIterRemoveRegionFunction_Set() error {
 }
 
 // IterRemoveRegion is a representation of the C type gtk_widget_path_iter_remove_region.
-func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) error {
+func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -15029,7 +15029,7 @@ func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) error {
 		widgetPathIterRemoveRegionFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPathIterSetNameFunction *gi.Function
@@ -15048,7 +15048,7 @@ func widgetPathIterSetNameFunction_Set() error {
 }
 
 // IterSetName is a representation of the C type gtk_widget_path_iter_set_name.
-func (recv *WidgetPath) IterSetName(pos int32, name string) error {
+func (recv *WidgetPath) IterSetName(pos int32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -15059,7 +15059,7 @@ func (recv *WidgetPath) IterSetName(pos int32, name string) error {
 		widgetPathIterSetNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPathIterSetObjectNameFunction *gi.Function
@@ -15078,7 +15078,7 @@ func widgetPathIterSetObjectNameFunction_Set() error {
 }
 
 // IterSetObjectName is a representation of the C type gtk_widget_path_iter_set_object_name.
-func (recv *WidgetPath) IterSetObjectName(pos int32, name string) error {
+func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
@@ -15089,7 +15089,7 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) error {
 		widgetPathIterSetObjectNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_set_object_type' : parameter 'type' of type 'GType' not supported
@@ -15112,7 +15112,7 @@ func widgetPathLengthFunction_Set() error {
 }
 
 // Length is a representation of the C type gtk_widget_path_length.
-func (recv *WidgetPath) Length() (int32, error) {
+func (recv *WidgetPath) Length() int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -15125,7 +15125,7 @@ func (recv *WidgetPath) Length() (int32, error) {
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_widget_path_prepend_type' : parameter 'type' of type 'GType' not supported
@@ -15146,7 +15146,7 @@ func widgetPathRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type gtk_widget_path_ref.
-func (recv *WidgetPath) Ref() (*WidgetPath, error) {
+func (recv *WidgetPath) Ref() *WidgetPath {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -15159,7 +15159,7 @@ func (recv *WidgetPath) Ref() (*WidgetPath, error) {
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathToStringFunction *gi.Function
@@ -15178,7 +15178,7 @@ func widgetPathToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_widget_path_to_string.
-func (recv *WidgetPath) ToString() (string, error) {
+func (recv *WidgetPath) ToString() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -15191,7 +15191,7 @@ func (recv *WidgetPath) ToString() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var widgetPathUnrefFunction *gi.Function
@@ -15210,7 +15210,7 @@ func widgetPathUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type gtk_widget_path_unref.
-func (recv *WidgetPath) Unref() error {
+func (recv *WidgetPath) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -15219,7 +15219,7 @@ func (recv *WidgetPath) Unref() error {
 		widgetPathUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var widgetPrivateStruct *gi.Struct

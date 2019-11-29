@@ -85,7 +85,7 @@ func enumGetValueFunction_Set() error {
 }
 
 // EnumGetValue is a representation of the C type g_enum_get_value.
-func EnumGetValue(enumClass *EnumClass, value int32) (*EnumValue, error) {
+func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetInt32(value)
@@ -99,7 +99,7 @@ func EnumGetValue(enumClass *EnumClass, value int32) (*EnumValue, error) {
 
 	retGo := &EnumValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var enumGetValueByNameFunction *gi.Function
@@ -114,7 +114,7 @@ func enumGetValueByNameFunction_Set() error {
 }
 
 // EnumGetValueByName is a representation of the C type g_enum_get_value_by_name.
-func EnumGetValueByName(enumClass *EnumClass, name string) (*EnumValue, error) {
+func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetString(name)
@@ -128,7 +128,7 @@ func EnumGetValueByName(enumClass *EnumClass, name string) (*EnumValue, error) {
 
 	retGo := &EnumValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var enumGetValueByNickFunction *gi.Function
@@ -143,7 +143,7 @@ func enumGetValueByNickFunction_Set() error {
 }
 
 // EnumGetValueByNick is a representation of the C type g_enum_get_value_by_nick.
-func EnumGetValueByNick(enumClass *EnumClass, nick string) (*EnumValue, error) {
+func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetString(nick)
@@ -157,7 +157,7 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) (*EnumValue, error) {
 
 	retGo := &EnumValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_enum_register_static' : return type 'GType' not supported
@@ -178,7 +178,7 @@ func flagsGetFirstValueFunction_Set() error {
 }
 
 // FlagsGetFirstValue is a representation of the C type g_flags_get_first_value.
-func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) (*FlagsValue, error) {
+func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetUint32(value)
@@ -192,7 +192,7 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) (*FlagsValue, erro
 
 	retGo := &FlagsValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var flagsGetValueByNameFunction *gi.Function
@@ -207,7 +207,7 @@ func flagsGetValueByNameFunction_Set() error {
 }
 
 // FlagsGetValueByName is a representation of the C type g_flags_get_value_by_name.
-func FlagsGetValueByName(flagsClass *FlagsClass, name string) (*FlagsValue, error) {
+func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetString(name)
@@ -221,7 +221,7 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) (*FlagsValue, erro
 
 	retGo := &FlagsValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var flagsGetValueByNickFunction *gi.Function
@@ -236,7 +236,7 @@ func flagsGetValueByNickFunction_Set() error {
 }
 
 // FlagsGetValueByNick is a representation of the C type g_flags_get_value_by_nick.
-func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) (*FlagsValue, error) {
+func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetString(nick)
@@ -250,7 +250,7 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) (*FlagsValue, erro
 
 	retGo := &FlagsValue{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_flags_register_static' : return type 'GType' not supported
@@ -301,7 +301,7 @@ func paramSpecPoolNewFunction_Set() error {
 }
 
 // ParamSpecPoolNew is a representation of the C type g_param_spec_pool_new.
-func ParamSpecPoolNew(typePrefixing bool) (*ParamSpecPool, error) {
+func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetBoolean(typePrefixing)
 
@@ -314,7 +314,7 @@ func ParamSpecPoolNew(typePrefixing bool) (*ParamSpecPool, error) {
 
 	retGo := &ParamSpecPool{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_param_spec_string' : parameter 'flags' of type 'ParamFlags' not supported
@@ -411,7 +411,7 @@ func signalNameFunction_Set() error {
 }
 
 // SignalName is a representation of the C type g_signal_name.
-func SignalName(signalId uint32) (string, error) {
+func SignalName(signalId uint32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
@@ -424,7 +424,7 @@ func SignalName(signalId uint32) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_signal_new' : parameter 'itype' of type 'GType' not supported
@@ -453,7 +453,7 @@ func signalQueryFunction_Set() error {
 }
 
 // SignalQuery is a representation of the C type g_signal_query.
-func SignalQuery(signalId uint32) (*SignalQuery_, error) {
+func SignalQuery(signalId uint32) *SignalQuery_ {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
@@ -466,7 +466,7 @@ func SignalQuery(signalId uint32) (*SignalQuery_, error) {
 
 	out0 := &SignalQuery_{native: outArgs[0].Pointer()}
 
-	return out0, err
+	return out0
 }
 
 var signalRemoveEmissionHookFunction *gi.Function
@@ -481,7 +481,7 @@ func signalRemoveEmissionHookFunction_Set() error {
 }
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
-func SignalRemoveEmissionHook(signalId uint32, hookId uint64) error {
+func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
@@ -491,7 +491,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) error {
 		signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
@@ -518,7 +518,7 @@ func strdupValueContentsFunction_Set() error {
 }
 
 // StrdupValueContents is a representation of the C type g_strdup_value_contents.
-func StrdupValueContents(value *Value) (string, error) {
+func StrdupValueContents(value *Value) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(value.native)
 
@@ -531,7 +531,7 @@ func StrdupValueContents(value *Value) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_type_add_class_cache_func' : parameter 'cache_data' of type 'gpointer' not supported
@@ -562,7 +562,7 @@ func typeCheckInstanceFunction_Set() error {
 }
 
 // TypeCheckInstance is a representation of the C type g_type_check_instance.
-func TypeCheckInstance(instance *TypeInstance) (bool, error) {
+func TypeCheckInstance(instance *TypeInstance) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(instance.native)
 
@@ -575,7 +575,7 @@ func TypeCheckInstance(instance *TypeInstance) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_type_check_instance_cast' : parameter 'iface_type' of type 'GType' not supported
@@ -598,7 +598,7 @@ func typeCheckValueFunction_Set() error {
 }
 
 // TypeCheckValue is a representation of the C type g_type_check_value.
-func TypeCheckValue(value *Value) (bool, error) {
+func TypeCheckValue(value *Value) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(value.native)
 
@@ -611,7 +611,7 @@ func TypeCheckValue(value *Value) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_type_check_value_holds' : parameter 'type' of type 'GType' not supported
@@ -644,7 +644,7 @@ func typeDefaultInterfaceUnrefFunction_Set() error {
 }
 
 // TypeDefaultInterfaceUnref is a representation of the C type g_type_default_interface_unref.
-func TypeDefaultInterfaceUnref(gIface *TypeInterface) error {
+func TypeDefaultInterfaceUnref(gIface *TypeInterface) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(gIface.native)
 
@@ -653,7 +653,7 @@ func TypeDefaultInterfaceUnref(gIface *TypeInterface) error {
 		typeDefaultInterfaceUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_type_depth' : parameter 'type' of type 'GType' not supported
@@ -672,7 +672,7 @@ func typeFreeInstanceFunction_Set() error {
 }
 
 // TypeFreeInstance is a representation of the C type g_type_free_instance.
-func TypeFreeInstance(instance *TypeInstance) error {
+func TypeFreeInstance(instance *TypeInstance) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(instance.native)
 
@@ -681,7 +681,7 @@ func TypeFreeInstance(instance *TypeInstance) error {
 		typeFreeInstanceFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_type_from_name' : return type 'GType' not supported
@@ -708,7 +708,7 @@ func typeGetTypeRegistrationSerialFunction_Set() error {
 }
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
-func TypeGetTypeRegistrationSerial() (uint32, error) {
+func TypeGetTypeRegistrationSerial() uint32 {
 
 	var ret gi.Argument
 
@@ -719,7 +719,7 @@ func TypeGetTypeRegistrationSerial() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var typeInitFunction *gi.Function
@@ -734,14 +734,14 @@ func typeInitFunction_Set() error {
 }
 
 // TypeInit is a representation of the C type g_type_init.
-func TypeInit() error {
+func TypeInit() {
 
 	err := typeInitFunction_Set()
 	if err == nil {
 		typeInitFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : parameter 'debug_flags' of type 'TypeDebugFlags' not supported
@@ -772,7 +772,7 @@ func typeNameFromClassFunction_Set() error {
 }
 
 // TypeNameFromClass is a representation of the C type g_type_name_from_class.
-func TypeNameFromClass(gClass *TypeClass) (string, error) {
+func TypeNameFromClass(gClass *TypeClass) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(gClass.native)
 
@@ -785,7 +785,7 @@ func TypeNameFromClass(gClass *TypeClass) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var typeNameFromInstanceFunction *gi.Function
@@ -800,7 +800,7 @@ func typeNameFromInstanceFunction_Set() error {
 }
 
 // TypeNameFromInstance is a representation of the C type g_type_name_from_instance.
-func TypeNameFromInstance(instance *TypeInstance) (string, error) {
+func TypeNameFromInstance(instance *TypeInstance) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(instance.native)
 
@@ -813,7 +813,7 @@ func TypeNameFromInstance(instance *TypeInstance) (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_type_next_base' : parameter 'leaf_type' of type 'GType' not supported
@@ -860,12 +860,12 @@ func badFunction_Set() error {
 }
 
 // Bad is a representation of the C type g_bad.
-func Bad() error {
+func Bad() {
 
 	err := badFunction_Set()
 	if err == nil {
 		badFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }

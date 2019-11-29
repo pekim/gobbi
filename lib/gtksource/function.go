@@ -23,7 +23,7 @@ func encodingGetCurrentFunction_Set() error {
 }
 
 // EncodingGetCurrent is a representation of the C type gtk_source_encoding_get_current.
-func EncodingGetCurrent() (*Encoding, error) {
+func EncodingGetCurrent() *Encoding {
 
 	var ret gi.Argument
 
@@ -34,7 +34,7 @@ func EncodingGetCurrent() (*Encoding, error) {
 
 	retGo := &Encoding{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_encoding_get_default_candidates' : return type 'GLib.SList' not supported
@@ -51,7 +51,7 @@ func encodingGetFromCharsetFunction_Set() error {
 }
 
 // EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
-func EncodingGetFromCharset(charset string) (*Encoding, error) {
+func EncodingGetFromCharset(charset string) *Encoding {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(charset)
 
@@ -64,7 +64,7 @@ func EncodingGetFromCharset(charset string) (*Encoding, error) {
 
 	retGo := &Encoding{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var encodingGetUtf8Function *gi.Function
@@ -79,7 +79,7 @@ func encodingGetUtf8Function_Set() error {
 }
 
 // EncodingGetUtf8 is a representation of the C type gtk_source_encoding_get_utf8.
-func EncodingGetUtf8() (*Encoding, error) {
+func EncodingGetUtf8() *Encoding {
 
 	var ret gi.Argument
 
@@ -90,7 +90,7 @@ func EncodingGetUtf8() (*Encoding, error) {
 
 	retGo := &Encoding{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_error_quark' : return type 'GLib.Quark' not supported
@@ -109,7 +109,7 @@ func utilsEscapeSearchTextFunction_Set() error {
 }
 
 // UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
-func UtilsEscapeSearchText(text string) (string, error) {
+func UtilsEscapeSearchText(text string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
@@ -122,7 +122,7 @@ func UtilsEscapeSearchText(text string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var utilsUnescapeSearchTextFunction *gi.Function
@@ -137,7 +137,7 @@ func utilsUnescapeSearchTextFunction_Set() error {
 }
 
 // UtilsUnescapeSearchText is a representation of the C type gtk_source_utils_unescape_search_text.
-func UtilsUnescapeSearchText(text string) (string, error) {
+func UtilsUnescapeSearchText(text string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
@@ -150,5 +150,5 @@ func UtilsUnescapeSearchText(text string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }

@@ -53,7 +53,7 @@ func bindingSetFindFunction_Set() error {
 }
 
 // BindingSetFind is a representation of the C type gtk_binding_set_find.
-func BindingSetFind(setName string) (*BindingSet, error) {
+func BindingSetFind(setName string) *BindingSet {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
@@ -66,7 +66,7 @@ func BindingSetFind(setName string) (*BindingSet, error) {
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var bindingSetNewFunction *gi.Function
@@ -81,7 +81,7 @@ func bindingSetNewFunction_Set() error {
 }
 
 // BindingSetNew is a representation of the C type gtk_binding_set_new.
-func BindingSetNew(setName string) (*BindingSet, error) {
+func BindingSetNew(setName string) *BindingSet {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
@@ -94,7 +94,7 @@ func BindingSetNew(setName string) (*BindingSet, error) {
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'object' of type 'GObject.Object' not supported
@@ -119,7 +119,7 @@ func checkVersionFunction_Set() error {
 }
 
 // CheckVersion is a representation of the C type gtk_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) (string, error) {
+func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
@@ -134,7 +134,7 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type 'GLib.Quark' not supported
@@ -155,14 +155,14 @@ func disableSetlocaleFunction_Set() error {
 }
 
 // DisableSetlocale is a representation of the C type gtk_disable_setlocale.
-func DisableSetlocale() error {
+func DisableSetlocale() {
 
 	err := disableSetlocaleFunction_Set()
 	if err == nil {
 		disableSetlocaleFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 var distributeNaturalAllocationFunction *gi.Function
@@ -177,7 +177,7 @@ func distributeNaturalAllocationFunction_Set() error {
 }
 
 // DistributeNaturalAllocation is a representation of the C type gtk_distribute_natural_allocation.
-func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) (int32, error) {
+func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) int32 {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(extraSpace)
 	inArgs[1].SetUint32(nRequestedSizes)
@@ -192,7 +192,7 @@ func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes
 
 	retGo := ret.Int32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_drag_cancel' : parameter 'context' of type 'Gdk.DragContext' not supported
@@ -229,7 +229,7 @@ func eventsPendingFunction_Set() error {
 }
 
 // EventsPending is a representation of the C type gtk_events_pending.
-func EventsPending() (bool, error) {
+func EventsPending() bool {
 
 	var ret gi.Argument
 
@@ -240,7 +240,7 @@ func EventsPending() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var falseFunction *gi.Function
@@ -255,7 +255,7 @@ func falseFunction_Set() error {
 }
 
 // False is a representation of the C type gtk_false.
-func False() (bool, error) {
+func False() bool {
 
 	var ret gi.Argument
 
@@ -266,7 +266,7 @@ func False() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type 'GLib.Quark' not supported
@@ -283,7 +283,7 @@ func getBinaryAgeFunction_Set() error {
 }
 
 // GetBinaryAge is a representation of the C type gtk_get_binary_age.
-func GetBinaryAge() (uint32, error) {
+func GetBinaryAge() uint32 {
 
 	var ret gi.Argument
 
@@ -294,7 +294,7 @@ func GetBinaryAge() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_current_event' : return type 'Gdk.Event' not supported
@@ -315,7 +315,7 @@ func getCurrentEventTimeFunction_Set() error {
 }
 
 // GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
-func GetCurrentEventTime() (uint32, error) {
+func GetCurrentEventTime() uint32 {
 
 	var ret gi.Argument
 
@@ -326,7 +326,7 @@ func GetCurrentEventTime() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getDebugFlagsFunction *gi.Function
@@ -341,7 +341,7 @@ func getDebugFlagsFunction_Set() error {
 }
 
 // GetDebugFlags is a representation of the C type gtk_get_debug_flags.
-func GetDebugFlags() (uint32, error) {
+func GetDebugFlags() uint32 {
 
 	var ret gi.Argument
 
@@ -352,7 +352,7 @@ func GetDebugFlags() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_default_language' : return type 'Pango.Language' not supported
@@ -371,7 +371,7 @@ func getInterfaceAgeFunction_Set() error {
 }
 
 // GetInterfaceAge is a representation of the C type gtk_get_interface_age.
-func GetInterfaceAge() (uint32, error) {
+func GetInterfaceAge() uint32 {
 
 	var ret gi.Argument
 
@@ -382,7 +382,7 @@ func GetInterfaceAge() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_locale_direction' : return type 'TextDirection' not supported
@@ -399,7 +399,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type gtk_get_major_version.
-func GetMajorVersion() (uint32, error) {
+func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -410,7 +410,7 @@ func GetMajorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMicroVersionFunction *gi.Function
@@ -425,7 +425,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type gtk_get_micro_version.
-func GetMicroVersion() (uint32, error) {
+func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -436,7 +436,7 @@ func GetMicroVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMinorVersionFunction *gi.Function
@@ -451,7 +451,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type gtk_get_minor_version.
-func GetMinorVersion() (uint32, error) {
+func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -462,7 +462,7 @@ func GetMinorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : return type 'GLib.OptionGroup' not supported
@@ -503,7 +503,7 @@ func keySnooperRemoveFunction_Set() error {
 }
 
 // KeySnooperRemove is a representation of the C type gtk_key_snooper_remove.
-func KeySnooperRemove(snooperHandlerId uint32) error {
+func KeySnooperRemove(snooperHandlerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(snooperHandlerId)
 
@@ -512,7 +512,7 @@ func KeySnooperRemove(snooperHandlerId uint32) error {
 		keySnooperRemoveFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var mainFunction *gi.Function
@@ -527,14 +527,14 @@ func mainFunction_Set() error {
 }
 
 // Main is a representation of the C type gtk_main.
-func Main() error {
+func Main() {
 
 	err := mainFunction_Set()
 	if err == nil {
 		mainFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : parameter 'event' of type 'Gdk.Event' not supported
@@ -551,7 +551,7 @@ func mainIterationFunction_Set() error {
 }
 
 // MainIteration is a representation of the C type gtk_main_iteration.
-func MainIteration() (bool, error) {
+func MainIteration() bool {
 
 	var ret gi.Argument
 
@@ -562,7 +562,7 @@ func MainIteration() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var mainIterationDoFunction *gi.Function
@@ -577,7 +577,7 @@ func mainIterationDoFunction_Set() error {
 }
 
 // MainIterationDo is a representation of the C type gtk_main_iteration_do.
-func MainIterationDo(blocking bool) (bool, error) {
+func MainIterationDo(blocking bool) bool {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetBoolean(blocking)
 
@@ -590,7 +590,7 @@ func MainIterationDo(blocking bool) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var mainLevelFunction *gi.Function
@@ -605,7 +605,7 @@ func mainLevelFunction_Set() error {
 }
 
 // MainLevel is a representation of the C type gtk_main_level.
-func MainLevel() (uint32, error) {
+func MainLevel() uint32 {
 
 	var ret gi.Argument
 
@@ -616,7 +616,7 @@ func MainLevel() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var mainQuitFunction *gi.Function
@@ -631,14 +631,14 @@ func mainQuitFunction_Set() error {
 }
 
 // MainQuit is a representation of the C type gtk_main_quit.
-func MainQuit() error {
+func MainQuit() {
 
 	err := mainQuitFunction_Set()
 	if err == nil {
 		mainQuitFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'style' of type 'Style' not supported
@@ -693,7 +693,7 @@ func paperSizeGetDefaultFunction_Set() error {
 }
 
 // PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
-func PaperSizeGetDefault() (string, error) {
+func PaperSizeGetDefault() string {
 
 	var ret gi.Argument
 
@@ -704,7 +704,7 @@ func PaperSizeGetDefault() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : return type 'GLib.List' not supported
@@ -731,7 +731,7 @@ func rcAddDefaultFileFunction_Set() error {
 }
 
 // RcAddDefaultFile is a representation of the C type gtk_rc_add_default_file.
-func RcAddDefaultFile(filename string) error {
+func RcAddDefaultFile(filename string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
 
@@ -740,7 +740,7 @@ func RcAddDefaultFile(filename string) error {
 		rcAddDefaultFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var rcFindModuleInPathFunction *gi.Function
@@ -755,7 +755,7 @@ func rcFindModuleInPathFunction_Set() error {
 }
 
 // RcFindModuleInPath is a representation of the C type gtk_rc_find_module_in_path.
-func RcFindModuleInPath(moduleFile string) (string, error) {
+func RcFindModuleInPath(moduleFile string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(moduleFile)
 
@@ -768,7 +768,7 @@ func RcFindModuleInPath(moduleFile string) (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
@@ -785,14 +785,14 @@ func rcGetDefaultFilesFunction_Set() error {
 }
 
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
-func RcGetDefaultFiles() error {
+func RcGetDefaultFiles() {
 
 	err := rcGetDefaultFilesFunction_Set()
 	if err == nil {
 		rcGetDefaultFilesFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 var rcGetImModuleFileFunction *gi.Function
@@ -807,7 +807,7 @@ func rcGetImModuleFileFunction_Set() error {
 }
 
 // RcGetImModuleFile is a representation of the C type gtk_rc_get_im_module_file.
-func RcGetImModuleFile() (string, error) {
+func RcGetImModuleFile() string {
 
 	var ret gi.Argument
 
@@ -818,7 +818,7 @@ func RcGetImModuleFile() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var rcGetImModulePathFunction *gi.Function
@@ -833,7 +833,7 @@ func rcGetImModulePathFunction_Set() error {
 }
 
 // RcGetImModulePath is a representation of the C type gtk_rc_get_im_module_path.
-func RcGetImModulePath() (string, error) {
+func RcGetImModulePath() string {
 
 	var ret gi.Argument
 
@@ -844,7 +844,7 @@ func RcGetImModulePath() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var rcGetModuleDirFunction *gi.Function
@@ -859,7 +859,7 @@ func rcGetModuleDirFunction_Set() error {
 }
 
 // RcGetModuleDir is a representation of the C type gtk_rc_get_module_dir.
-func RcGetModuleDir() (string, error) {
+func RcGetModuleDir() string {
 
 	var ret gi.Argument
 
@@ -870,7 +870,7 @@ func RcGetModuleDir() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_rc_get_style' : parameter 'widget' of type 'Widget' not supported
@@ -889,7 +889,7 @@ func rcGetThemeDirFunction_Set() error {
 }
 
 // RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
-func RcGetThemeDir() (string, error) {
+func RcGetThemeDir() string {
 
 	var ret gi.Argument
 
@@ -900,7 +900,7 @@ func RcGetThemeDir() (string, error) {
 
 	retGo := ret.String(true)
 
-	return retGo, err
+	return retGo
 }
 
 var rcParseFunction *gi.Function
@@ -915,7 +915,7 @@ func rcParseFunction_Set() error {
 }
 
 // RcParse is a representation of the C type gtk_rc_parse.
-func RcParse(filename string) error {
+func RcParse(filename string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
 
@@ -924,7 +924,7 @@ func RcParse(filename string) error {
 		rcParseFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_rc_parse_color' : parameter 'scanner' of type 'GLib.Scanner' not supported
@@ -947,7 +947,7 @@ func rcParseStringFunction_Set() error {
 }
 
 // RcParseString is a representation of the C type gtk_rc_parse_string.
-func RcParseString(rcString string) error {
+func RcParseString(rcString string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(rcString)
 
@@ -956,7 +956,7 @@ func RcParseString(rcString string) error {
 		rcParseStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_border' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
@@ -981,7 +981,7 @@ func rcReparseAllFunction_Set() error {
 }
 
 // RcReparseAll is a representation of the C type gtk_rc_reparse_all.
-func RcReparseAll() (bool, error) {
+func RcReparseAll() bool {
 
 	var ret gi.Argument
 
@@ -992,7 +992,7 @@ func RcReparseAll() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : parameter 'settings' of type 'Settings' not supported
@@ -1057,7 +1057,7 @@ func rgbToHsvFunction_Set() error {
 }
 
 // RgbToHsv is a representation of the C type gtk_rgb_to_hsv.
-func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64, error) {
+func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetFloat64(r)
 	inArgs[1].SetFloat64(g)
@@ -1074,7 +1074,7 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64, error
 	out1 := outArgs[1].Float64()
 	out2 := outArgs[2].Float64()
 
-	return out0, out1, out2, err
+	return out0, out1, out2
 }
 
 // UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'widget' of type 'Widget' not supported
@@ -1103,7 +1103,7 @@ func setDebugFlagsFunction_Set() error {
 }
 
 // SetDebugFlags is a representation of the C type gtk_set_debug_flags.
-func SetDebugFlags(flags uint32) error {
+func SetDebugFlags(flags uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(flags)
 
@@ -1112,7 +1112,7 @@ func SetDebugFlags(flags uint32) error {
 		setDebugFlagsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter 'parent' of type 'Window' not supported
@@ -1139,7 +1139,7 @@ func stockLookupFunction_Set() error {
 }
 
 // StockLookup is a representation of the C type gtk_stock_lookup.
-func StockLookup(stockId string) (bool, *StockItem, error) {
+func StockLookup(stockId string) (bool, *StockItem) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(stockId)
 
@@ -1154,7 +1154,7 @@ func StockLookup(stockId string) (bool, *StockItem, error) {
 	retGo := ret.Boolean()
 	out0 := &StockItem{native: outArgs[0].Pointer()}
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'func' of type 'TranslateFunc' not supported
@@ -1173,7 +1173,7 @@ func targetTableNewFromListFunction_Set() error {
 }
 
 // TargetTableNewFromList is a representation of the C type gtk_target_table_new_from_list.
-func TargetTableNewFromList(list *TargetList) (int32, error) {
+func TargetTableNewFromList(list *TargetList) int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(list.native)
 
@@ -1186,7 +1186,7 @@ func TargetTableNewFromList(list *TargetList) (int32, error) {
 
 	out0 := outArgs[0].Int32()
 
-	return out0, err
+	return out0
 }
 
 // UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' has no type
@@ -1223,7 +1223,7 @@ func testListAllTypesFunction_Set() error {
 }
 
 // TestListAllTypes is a representation of the C type gtk_test_list_all_types.
-func TestListAllTypes() (uint32, error) {
+func TestListAllTypes() uint32 {
 
 	var outArgs [1]gi.Argument
 
@@ -1234,7 +1234,7 @@ func TestListAllTypes() (uint32, error) {
 
 	out0 := outArgs[0].Uint32()
 
-	return out0, err
+	return out0
 }
 
 var testRegisterAllTypesFunction *gi.Function
@@ -1249,14 +1249,14 @@ func testRegisterAllTypesFunction_Set() error {
 }
 
 // TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
-func TestRegisterAllTypes() error {
+func TestRegisterAllTypes() {
 
 	err := testRegisterAllTypesFunction_Set()
 	if err == nil {
 		testRegisterAllTypesFunction.Invoke(nil, nil)
 	}
 
-	return err
+	return
 }
 
 // UNSUPPORTED : C value 'gtk_test_slider_get_value' : parameter 'widget' of type 'Widget' not supported
@@ -1297,7 +1297,7 @@ func trueFunction_Set() error {
 }
 
 // True is a representation of the C type gtk_true.
-func True() (bool, error) {
+func True() bool {
 
 	var ret gi.Argument
 
@@ -1308,5 +1308,5 @@ func True() (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }

@@ -325,7 +325,7 @@ func rangeNewFunction_Set() error {
 }
 
 // RangeNew is a representation of the C type atk_range_new.
-func RangeNew(lowerLimit float64, upperLimit float64, description string) (*Range, error) {
+func RangeNew(lowerLimit float64, upperLimit float64, description string) *Range {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetFloat64(lowerLimit)
 	inArgs[1].SetFloat64(upperLimit)
@@ -340,7 +340,7 @@ func RangeNew(lowerLimit float64, upperLimit float64, description string) (*Rang
 
 	retGo := &Range{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var rangeCopyFunction *gi.Function
@@ -359,7 +359,7 @@ func rangeCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type atk_range_copy.
-func (recv *Range) Copy() (*Range, error) {
+func (recv *Range) Copy() *Range {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -372,7 +372,7 @@ func (recv *Range) Copy() (*Range, error) {
 
 	retGo := &Range{native: ret.Pointer()}
 
-	return retGo, err
+	return retGo
 }
 
 var rangeFreeFunction *gi.Function
@@ -391,7 +391,7 @@ func rangeFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type atk_range_free.
-func (recv *Range) Free() error {
+func (recv *Range) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -400,7 +400,7 @@ func (recv *Range) Free() error {
 		rangeFreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return err
+	return
 }
 
 var rangeGetDescriptionFunction *gi.Function
@@ -419,7 +419,7 @@ func rangeGetDescriptionFunction_Set() error {
 }
 
 // GetDescription is a representation of the C type atk_range_get_description.
-func (recv *Range) GetDescription() (string, error) {
+func (recv *Range) GetDescription() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -432,7 +432,7 @@ func (recv *Range) GetDescription() (string, error) {
 
 	retGo := ret.String(false)
 
-	return retGo, err
+	return retGo
 }
 
 var rangeGetLowerLimitFunction *gi.Function
@@ -451,7 +451,7 @@ func rangeGetLowerLimitFunction_Set() error {
 }
 
 // GetLowerLimit is a representation of the C type atk_range_get_lower_limit.
-func (recv *Range) GetLowerLimit() (float64, error) {
+func (recv *Range) GetLowerLimit() float64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -464,7 +464,7 @@ func (recv *Range) GetLowerLimit() (float64, error) {
 
 	retGo := ret.Float64()
 
-	return retGo, err
+	return retGo
 }
 
 var rangeGetUpperLimitFunction *gi.Function
@@ -483,7 +483,7 @@ func rangeGetUpperLimitFunction_Set() error {
 }
 
 // GetUpperLimit is a representation of the C type atk_range_get_upper_limit.
-func (recv *Range) GetUpperLimit() (float64, error) {
+func (recv *Range) GetUpperLimit() float64 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -496,7 +496,7 @@ func (recv *Range) GetUpperLimit() (float64, error) {
 
 	retGo := ret.Float64()
 
-	return retGo, err
+	return retGo
 }
 
 var rectangleStruct *gi.Struct

@@ -19,7 +19,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
-func GetMajorVersion() (uint32, error) {
+func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -30,7 +30,7 @@ func GetMajorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMicroVersionFunction *gi.Function
@@ -45,7 +45,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
-func GetMicroVersion() (uint32, error) {
+func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -56,7 +56,7 @@ func GetMicroVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 var getMinorVersionFunction *gi.Function
@@ -71,7 +71,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
-func GetMinorVersion() (uint32, error) {
+func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
@@ -82,7 +82,7 @@ func GetMinorVersion() (uint32, error) {
 
 	retGo := ret.Uint32()
 
-	return retGo, err
+	return retGo
 }
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported
@@ -99,7 +99,7 @@ func optionsGetBooleanFunction_Set() error {
 }
 
 // OptionsGetBoolean is a representation of the C type jsc_options_get_boolean.
-func OptionsGetBoolean(option string) (bool, bool, error) {
+func OptionsGetBoolean(option string) (bool, bool) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -114,7 +114,7 @@ func OptionsGetBoolean(option string) (bool, bool, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Boolean()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsGetDoubleFunction *gi.Function
@@ -129,7 +129,7 @@ func optionsGetDoubleFunction_Set() error {
 }
 
 // OptionsGetDouble is a representation of the C type jsc_options_get_double.
-func OptionsGetDouble(option string) (bool, float64, error) {
+func OptionsGetDouble(option string) (bool, float64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -144,7 +144,7 @@ func OptionsGetDouble(option string) (bool, float64, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Float64()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsGetIntFunction *gi.Function
@@ -159,7 +159,7 @@ func optionsGetIntFunction_Set() error {
 }
 
 // OptionsGetInt is a representation of the C type jsc_options_get_int.
-func OptionsGetInt(option string) (bool, int32, error) {
+func OptionsGetInt(option string) (bool, int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -174,7 +174,7 @@ func OptionsGetInt(option string) (bool, int32, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Int32()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
@@ -191,7 +191,7 @@ func optionsGetRangeStringFunction_Set() error {
 }
 
 // OptionsGetRangeString is a representation of the C type jsc_options_get_range_string.
-func OptionsGetRangeString(option string) (bool, string, error) {
+func OptionsGetRangeString(option string) (bool, string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -206,7 +206,7 @@ func OptionsGetRangeString(option string) (bool, string, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].String(true)
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsGetSizeFunction *gi.Function
@@ -221,7 +221,7 @@ func optionsGetSizeFunction_Set() error {
 }
 
 // OptionsGetSize is a representation of the C type jsc_options_get_size.
-func OptionsGetSize(option string) (bool, uint64, error) {
+func OptionsGetSize(option string) (bool, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -236,7 +236,7 @@ func OptionsGetSize(option string) (bool, uint64, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Uint64()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsGetStringFunction *gi.Function
@@ -251,7 +251,7 @@ func optionsGetStringFunction_Set() error {
 }
 
 // OptionsGetString is a representation of the C type jsc_options_get_string.
-func OptionsGetString(option string) (bool, string, error) {
+func OptionsGetString(option string) (bool, string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -266,7 +266,7 @@ func OptionsGetString(option string) (bool, string, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].String(true)
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsGetUintFunction *gi.Function
@@ -281,7 +281,7 @@ func optionsGetUintFunction_Set() error {
 }
 
 // OptionsGetUint is a representation of the C type jsc_options_get_uint.
-func OptionsGetUint(option string) (bool, uint32, error) {
+func OptionsGetUint(option string) (bool, uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(option)
 
@@ -296,7 +296,7 @@ func OptionsGetUint(option string) (bool, uint32, error) {
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Uint32()
 
-	return retGo, out0, err
+	return retGo, out0
 }
 
 var optionsSetBooleanFunction *gi.Function
@@ -311,7 +311,7 @@ func optionsSetBooleanFunction_Set() error {
 }
 
 // OptionsSetBoolean is a representation of the C type jsc_options_set_boolean.
-func OptionsSetBoolean(option string, value bool) (bool, error) {
+func OptionsSetBoolean(option string, value bool) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetBoolean(value)
@@ -325,7 +325,7 @@ func OptionsSetBoolean(option string, value bool) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetDoubleFunction *gi.Function
@@ -340,7 +340,7 @@ func optionsSetDoubleFunction_Set() error {
 }
 
 // OptionsSetDouble is a representation of the C type jsc_options_set_double.
-func OptionsSetDouble(option string, value float64) (bool, error) {
+func OptionsSetDouble(option string, value float64) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetFloat64(value)
@@ -354,7 +354,7 @@ func OptionsSetDouble(option string, value float64) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetIntFunction *gi.Function
@@ -369,7 +369,7 @@ func optionsSetIntFunction_Set() error {
 }
 
 // OptionsSetInt is a representation of the C type jsc_options_set_int.
-func OptionsSetInt(option string, value int32) (bool, error) {
+func OptionsSetInt(option string, value int32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetInt32(value)
@@ -383,7 +383,7 @@ func OptionsSetInt(option string, value int32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetRangeStringFunction *gi.Function
@@ -398,7 +398,7 @@ func optionsSetRangeStringFunction_Set() error {
 }
 
 // OptionsSetRangeString is a representation of the C type jsc_options_set_range_string.
-func OptionsSetRangeString(option string, value string) (bool, error) {
+func OptionsSetRangeString(option string, value string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetString(value)
@@ -412,7 +412,7 @@ func OptionsSetRangeString(option string, value string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetSizeFunction *gi.Function
@@ -427,7 +427,7 @@ func optionsSetSizeFunction_Set() error {
 }
 
 // OptionsSetSize is a representation of the C type jsc_options_set_size.
-func OptionsSetSize(option string, value uint64) (bool, error) {
+func OptionsSetSize(option string, value uint64) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetUint64(value)
@@ -441,7 +441,7 @@ func OptionsSetSize(option string, value uint64) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetStringFunction *gi.Function
@@ -456,7 +456,7 @@ func optionsSetStringFunction_Set() error {
 }
 
 // OptionsSetString is a representation of the C type jsc_options_set_string.
-func OptionsSetString(option string, value string) (bool, error) {
+func OptionsSetString(option string, value string) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetString(value)
@@ -470,7 +470,7 @@ func OptionsSetString(option string, value string) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
 
 var optionsSetUintFunction *gi.Function
@@ -485,7 +485,7 @@ func optionsSetUintFunction_Set() error {
 }
 
 // OptionsSetUint is a representation of the C type jsc_options_set_uint.
-func OptionsSetUint(option string, value uint32) (bool, error) {
+func OptionsSetUint(option string, value uint32) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(option)
 	inArgs[1].SetUint32(value)
@@ -499,5 +499,5 @@ func OptionsSetUint(option string, value uint32) (bool, error) {
 
 	retGo := ret.Boolean()
 
-	return retGo, err
+	return retGo
 }
