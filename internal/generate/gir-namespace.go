@@ -113,14 +113,6 @@ func (n *Namespace) giFile(f *file) {
 				Call(jen.Lit(n.Name), jen.Lit(n.Version)))
 }
 
-func (n *Namespace) outParameterGeneratorByName(name string) (outParameterGenerator, bool) {
-	if record, found := n.Records.byName(name); found {
-		return record, true
-	}
-
-	return nil, false
-}
-
 func (n *Namespace) setUnsupportedCount() {
 	re := regexp.MustCompile(`\/\/ UNSUPPORTED `)
 

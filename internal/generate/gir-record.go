@@ -125,18 +125,6 @@ func (r *Record) supportedAsOutParameter() bool {
 	return true
 }
 
-func (r *Record) generateDeclaration() *jen.Statement {
-	return jen.Op("*").Id(r.goName)
-}
-
-func (r *Record) argumentGetFunctionName() string {
-	return "Pointer"
-}
-
-func (r *Record) argumentSetFunctionName() string {
-	return "SetPointer"
-}
-
 func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {
 	s.
 		Op("&").

@@ -113,8 +113,9 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return goType, nil
 	}
 
-	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
-		return generator.generateDeclaration(), nil
+	if t.isRecord() {
+		record, _ := t.namespace.Records.byName(t.Name)
+		return jen.Op("*").Id(record.goName), nil
 	}
 
 	return nil, fmt.Errorf("no Go type for '%s'", t.Name)
@@ -190,8 +191,8 @@ func (t *Type) argumentValueGetFunctionName() string {
 		return getFunctionName
 	}
 
-	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
-		return generator.argumentGetFunctionName()
+	if t.isRecord() {
+		return "Pointer"
 	}
 
 	panic(fmt.Sprintf("Cannot determine argumentGetFunctionName for %s", t.Name))
@@ -212,16 +213,17 @@ func (t *Type) argumentValueSetFunctionName() string {
 		return setFunctionName
 	}
 
-	if generator, ok := t.namespace.outParameterGeneratorByName(name); ok {
-		return generator.argumentSetFunctionName()
+	if t.isRecord() {
+		return "SetPointer"
 	}
 
 	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s", t.Name))
 }
 
 func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Statement) {
-	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
-		return generator.createFromArgument
+	if t.isRecord() {
+		record, _ := t.namespace.Records.byName(t.Name)
+		return record.createFromArgument
 	}
 
 	return nil
