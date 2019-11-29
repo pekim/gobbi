@@ -351,7 +351,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_signal_accumulator_true_handled' : parameter 'dummy' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'detail' of type 'GLib.Quark' not supported
+// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'hook_func' of type 'SignalEmissionHook' not supported
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' has no type
 
@@ -369,7 +369,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_signal_emit_by_name' : parameter 'instance' of type 'Object' not supported
 
-// UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'detail' of type 'GLib.Quark' not supported
+// UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'var_args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' has no type
 

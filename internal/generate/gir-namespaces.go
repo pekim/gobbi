@@ -11,3 +11,7 @@ func (nn namespaces) byName(name string) (*Namespace, bool) {
 
 	return nil, false
 }
+
+//func (nn namespaces) byQualifiedName(namespaceName string, name string) *Type {
+//
+//}

@@ -4,6 +4,7 @@ package gtk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -14960,11 +14961,75 @@ func (recv *WidgetPath) IterHasName(pos int32, name string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qclass' : parameter 'qname' of type 'GLib.Quark' not supported
+var widgetPathIterHasQclassFunction *gi.Function
+var widgetPathIterHasQclassFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qname' : parameter 'qname' of type 'GLib.Quark' not supported
+func widgetPathIterHasQclassFunction_Set() error {
+	var err error
+	widgetPathIterHasQclassFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasQclassFunction, err = widgetPathStruct.InvokerNew("iter_has_qclass")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qregion' : parameter 'qname' of type 'GLib.Quark' not supported
+// IterHasQclass is a representation of the C type gtk_widget_path_iter_has_qclass.
+func (recv *WidgetPath) IterHasQclass(pos int32, qname glib.Quark) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetUint32(uint32(qname))
+
+	var ret gi.Argument
+
+	err := widgetPathIterHasQclassFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasQclassFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var widgetPathIterHasQnameFunction *gi.Function
+var widgetPathIterHasQnameFunction_Once sync.Once
+
+func widgetPathIterHasQnameFunction_Set() error {
+	var err error
+	widgetPathIterHasQnameFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasQnameFunction, err = widgetPathStruct.InvokerNew("iter_has_qname")
+	})
+	return err
+}
+
+// IterHasQname is a representation of the C type gtk_widget_path_iter_has_qname.
+func (recv *WidgetPath) IterHasQname(pos int32, qname glib.Quark) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetUint32(uint32(qname))
+
+	var ret gi.Argument
+
+	err := widgetPathIterHasQnameFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasQnameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qregion' : parameter 'flags' of type 'RegionFlags' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_has_region' : parameter 'flags' of type 'RegionFlags' not supported
 

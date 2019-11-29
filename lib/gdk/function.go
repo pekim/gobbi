@@ -4,6 +4,7 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -450,7 +451,31 @@ func GetShowEvents() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
+var glErrorQuarkFunction *gi.Function
+var glErrorQuarkFunction_Once sync.Once
+
+func glErrorQuarkFunction_Set() error {
+	var err error
+	glErrorQuarkFunction_Once.Do(func() {
+		glErrorQuarkFunction, err = gi.FunctionInvokerNew("Gdk", "gl_error_quark")
+	})
+	return err
+}
+
+// GlErrorQuark is a representation of the C type gdk_gl_error_quark.
+func GlErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := glErrorQuarkFunction_Set()
+	if err == nil {
+		ret = glErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_init' : parameter 'argv' has no type
 

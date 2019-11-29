@@ -4,6 +4,7 @@ package gtk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -101,7 +102,31 @@ func BindingSetNew(setName string) *BindingSet {
 
 // UNSUPPORTED : C value 'gtk_bindings_activate_event' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_builder_error_quark' : return type 'GLib.Quark' not supported
+var builderErrorQuarkFunction *gi.Function
+var builderErrorQuarkFunction_Once sync.Once
+
+func builderErrorQuarkFunction_Set() error {
+	var err error
+	builderErrorQuarkFunction_Once.Do(func() {
+		builderErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "builder_error_quark")
+	})
+	return err
+}
+
+// BuilderErrorQuark is a representation of the C type gtk_builder_error_quark.
+func BuilderErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := builderErrorQuarkFunction_Set()
+	if err == nil {
+		ret = builderErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : parameter 'cr' of type 'cairo.Context' not supported
 
@@ -137,7 +162,31 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type 'GLib.Quark' not supported
+var cssProviderErrorQuarkFunction *gi.Function
+var cssProviderErrorQuarkFunction_Once sync.Once
+
+func cssProviderErrorQuarkFunction_Set() error {
+	var err error
+	cssProviderErrorQuarkFunction_Once.Do(func() {
+		cssProviderErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "css_provider_error_quark")
+	})
+	return err
+}
+
+// CssProviderErrorQuark is a representation of the C type gtk_css_provider_error_quark.
+func CssProviderErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := cssProviderErrorQuarkFunction_Set()
+	if err == nil {
+		ret = cssProviderErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_device_grab_add' : parameter 'widget' of type 'Widget' not supported
 
@@ -269,7 +318,31 @@ func False() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type 'GLib.Quark' not supported
+var fileChooserErrorQuarkFunction *gi.Function
+var fileChooserErrorQuarkFunction_Once sync.Once
+
+func fileChooserErrorQuarkFunction_Set() error {
+	var err error
+	fileChooserErrorQuarkFunction_Once.Do(func() {
+		fileChooserErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "file_chooser_error_quark")
+	})
+	return err
+}
+
+// FileChooserErrorQuark is a representation of the C type gtk_file_chooser_error_quark.
+func FileChooserErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := fileChooserErrorQuarkFunction_Set()
+	if err == nil {
+		ret = fileChooserErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 var getBinaryAgeFunction *gi.Function
 var getBinaryAgeFunction_Once sync.Once
@@ -481,7 +554,31 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_icon_size_register_alias' : parameter 'target' of type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type 'GLib.Quark' not supported
+var iconThemeErrorQuarkFunction *gi.Function
+var iconThemeErrorQuarkFunction_Once sync.Once
+
+func iconThemeErrorQuarkFunction_Set() error {
+	var err error
+	iconThemeErrorQuarkFunction_Once.Do(func() {
+		iconThemeErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "icon_theme_error_quark")
+	})
+	return err
+}
+
+// IconThemeErrorQuark is a representation of the C type gtk_icon_theme_error_quark.
+func IconThemeErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := iconThemeErrorQuarkFunction_Set()
+	if err == nil {
+		ret = iconThemeErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_init' : parameter 'argv' has no type
 
@@ -711,7 +808,31 @@ func PaperSizeGetDefault() string {
 
 // UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'gtk_print_error_quark' : return type 'GLib.Quark' not supported
+var printErrorQuarkFunction *gi.Function
+var printErrorQuarkFunction_Once sync.Once
+
+func printErrorQuarkFunction_Set() error {
+	var err error
+	printErrorQuarkFunction_Once.Do(func() {
+		printErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "print_error_quark")
+	})
+	return err
+}
+
+// PrintErrorQuark is a representation of the C type gtk_print_error_quark.
+func PrintErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := printErrorQuarkFunction_Set()
+	if err == nil {
+		ret = printErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : parameter 'parent' of type 'Window' not supported
 
@@ -1003,9 +1124,57 @@ func RcReparseAll() bool {
 
 // UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' has no type
 
-// UNSUPPORTED : C value 'gtk_recent_chooser_error_quark' : return type 'GLib.Quark' not supported
+var recentChooserErrorQuarkFunction *gi.Function
+var recentChooserErrorQuarkFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_recent_manager_error_quark' : return type 'GLib.Quark' not supported
+func recentChooserErrorQuarkFunction_Set() error {
+	var err error
+	recentChooserErrorQuarkFunction_Once.Do(func() {
+		recentChooserErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "recent_chooser_error_quark")
+	})
+	return err
+}
+
+// RecentChooserErrorQuark is a representation of the C type gtk_recent_chooser_error_quark.
+func RecentChooserErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := recentChooserErrorQuarkFunction_Set()
+	if err == nil {
+		ret = recentChooserErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
+
+var recentManagerErrorQuarkFunction *gi.Function
+var recentManagerErrorQuarkFunction_Once sync.Once
+
+func recentManagerErrorQuarkFunction_Set() error {
+	var err error
+	recentManagerErrorQuarkFunction_Once.Do(func() {
+		recentManagerErrorQuarkFunction, err = gi.FunctionInvokerNew("Gtk", "recent_manager_error_quark")
+	})
+	return err
+}
+
+// RecentManagerErrorQuark is a representation of the C type gtk_recent_manager_error_quark.
+func RecentManagerErrorQuark() glib.Quark {
+
+	var ret gi.Argument
+
+	err := recentManagerErrorQuarkFunction_Set()
+	if err == nil {
+		ret = recentManagerErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_render_activity' : parameter 'context' of type 'StyleContext' not supported
 

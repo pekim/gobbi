@@ -25,8 +25,7 @@ func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
 			Parens(argValue)
 	}
 
-	createFromArgument := typ.createFromArgumentFunction()
-
+	createFromArgument := typ.createFromOutArgumentFunction()
 	if createFromArgument != nil {
 		createFromArgument(s, argValue)
 	} else {
