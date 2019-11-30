@@ -22,6 +22,42 @@ type ActionEntry struct {
 	native uintptr
 }
 
+// Name returns the C field 'name'.
+func (recv *ActionEntry) Name() string {
+	argValue := gi.FieldGet(actionEntryStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// ParameterType returns the C field 'parameter_type'.
+func (recv *ActionEntry) ParameterType() string {
+	argValue := gi.FieldGet(actionEntryStruct, recv.native, "parameter_type")
+	value := argValue.String(false)
+	return value
+}
+
+// State returns the C field 'state'.
+func (recv *ActionEntry) State() string {
+	argValue := gi.FieldGet(actionEntryStruct, recv.native, "state")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'change_state' : for field getter : missing Type
+
+// ActionEntryStruct creates an uninitialised ActionEntry.
+func ActionEntryStruct() *ActionEntry {
+	err := actionEntryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ActionEntry{native: actionEntryStruct.Alloc()}
+	return structGo
+}
+
 var actionGroupInterfaceStruct *gi.Struct
 var actionGroupInterfaceStruct_Once sync.Once
 
@@ -35,6 +71,47 @@ func actionGroupInterfaceStruct_Set() error {
 
 type ActionGroupInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'has_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'list_actions' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_enabled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_parameter_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_state_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_state_hint' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_action_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'action_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'action_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'action_enabled_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'action_state_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_action' : for field getter : missing Type
+
+// ActionGroupInterfaceStruct creates an uninitialised ActionGroupInterface.
+func ActionGroupInterfaceStruct() *ActionGroupInterface {
+	err := actionGroupInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ActionGroupInterface{native: actionGroupInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var actionInterfaceStruct *gi.Struct
@@ -52,6 +129,35 @@ type ActionInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_parameter_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_state_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_state_hint' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_enabled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// ActionInterfaceStruct creates an uninitialised ActionInterface.
+func ActionInterfaceStruct() *ActionInterface {
+	err := actionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ActionInterface{native: actionInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var actionMapInterfaceStruct *gi.Struct
 var actionMapInterfaceStruct_Once sync.Once
 
@@ -65,6 +171,25 @@ func actionMapInterfaceStruct_Set() error {
 
 type ActionMapInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'lookup_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_action' : for field getter : missing Type
+
+// ActionMapInterfaceStruct creates an uninitialised ActionMapInterface.
+func ActionMapInterfaceStruct() *ActionMapInterface {
+	err := actionMapInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ActionMapInterface{native: actionMapInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var appInfoIfaceStruct *gi.Struct
@@ -82,6 +207,69 @@ type AppInfoIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'dup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_id' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_description' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_executable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_uris' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_files' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_uris' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'should_show' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_as_default_for_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_as_default_for_extension' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_supports_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_remove_supports_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_supports_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_delete' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'do_delete' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_commandline' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_display_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_as_last_used_for_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_supported_types' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_uris_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_uris_finish' : for field getter : missing Type
+
+// AppInfoIfaceStruct creates an uninitialised AppInfoIface.
+func AppInfoIfaceStruct() *AppInfoIface {
+	err := appInfoIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AppInfoIface{native: appInfoIfaceStruct.Alloc()}
+	return structGo
+}
+
 var appLaunchContextClassStruct *gi.Struct
 var appLaunchContextClassStruct_Once sync.Once
 
@@ -95,6 +283,35 @@ func appLaunchContextClassStruct_Set() error {
 
 type AppLaunchContextClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_display' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_startup_notify_id' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_failed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launched' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// AppLaunchContextClassStruct creates an uninitialised AppLaunchContextClass.
+func AppLaunchContextClassStruct() *AppLaunchContextClass {
+	err := appLaunchContextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AppLaunchContextClass{native: appLaunchContextClassStruct.Alloc()}
+	return structGo
 }
 
 var appLaunchContextPrivateStruct *gi.Struct
@@ -112,6 +329,17 @@ type AppLaunchContextPrivate struct {
 	native uintptr
 }
 
+// AppLaunchContextPrivateStruct creates an uninitialised AppLaunchContextPrivate.
+func AppLaunchContextPrivateStruct() *AppLaunchContextPrivate {
+	err := appLaunchContextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AppLaunchContextPrivate{native: appLaunchContextPrivateStruct.Alloc()}
+	return structGo
+}
+
 var applicationClassStruct *gi.Struct
 var applicationClassStruct_Once sync.Once
 
@@ -125,6 +353,47 @@ func applicationClassStruct_Set() error {
 
 type ApplicationClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'startup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'command_line' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_command_line' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'before_emit' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'after_emit' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_platform_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'quit_mainloop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_mainloop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dbus_register' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dbus_unregister' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handle_local_options' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'name_lost' : for field getter : missing Type
+
+// ApplicationClassStruct creates an uninitialised ApplicationClass.
+func ApplicationClassStruct() *ApplicationClass {
+	err := applicationClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ApplicationClass{native: applicationClassStruct.Alloc()}
+	return structGo
 }
 
 var applicationCommandLineClassStruct *gi.Struct
@@ -142,6 +411,23 @@ type ApplicationCommandLineClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'print_literal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'printerr_literal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_stdin' : for field getter : missing Type
+
+// ApplicationCommandLineClassStruct creates an uninitialised ApplicationCommandLineClass.
+func ApplicationCommandLineClassStruct() *ApplicationCommandLineClass {
+	err := applicationCommandLineClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ApplicationCommandLineClass{native: applicationCommandLineClassStruct.Alloc()}
+	return structGo
+}
+
 var applicationCommandLinePrivateStruct *gi.Struct
 var applicationCommandLinePrivateStruct_Once sync.Once
 
@@ -155,6 +441,17 @@ func applicationCommandLinePrivateStruct_Set() error {
 
 type ApplicationCommandLinePrivate struct {
 	native uintptr
+}
+
+// ApplicationCommandLinePrivateStruct creates an uninitialised ApplicationCommandLinePrivate.
+func ApplicationCommandLinePrivateStruct() *ApplicationCommandLinePrivate {
+	err := applicationCommandLinePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ApplicationCommandLinePrivate{native: applicationCommandLinePrivateStruct.Alloc()}
+	return structGo
 }
 
 var applicationPrivateStruct *gi.Struct
@@ -172,6 +469,17 @@ type ApplicationPrivate struct {
 	native uintptr
 }
 
+// ApplicationPrivateStruct creates an uninitialised ApplicationPrivate.
+func ApplicationPrivateStruct() *ApplicationPrivate {
+	err := applicationPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ApplicationPrivate{native: applicationPrivateStruct.Alloc()}
+	return structGo
+}
+
 var asyncInitableIfaceStruct *gi.Struct
 var asyncInitableIfaceStruct_Once sync.Once
 
@@ -185,6 +493,23 @@ func asyncInitableIfaceStruct_Set() error {
 
 type AsyncInitableIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'init_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'init_finish' : for field getter : missing Type
+
+// AsyncInitableIfaceStruct creates an uninitialised AsyncInitableIface.
+func AsyncInitableIfaceStruct() *AsyncInitableIface {
+	err := asyncInitableIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AsyncInitableIface{native: asyncInitableIfaceStruct.Alloc()}
+	return structGo
 }
 
 var asyncResultIfaceStruct *gi.Struct
@@ -202,6 +527,25 @@ type AsyncResultIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_user_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_source_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_tagged' : for field getter : missing Type
+
+// AsyncResultIfaceStruct creates an uninitialised AsyncResultIface.
+func AsyncResultIfaceStruct() *AsyncResultIface {
+	err := asyncResultIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AsyncResultIface{native: asyncResultIfaceStruct.Alloc()}
+	return structGo
+}
+
 var bufferedInputStreamClassStruct *gi.Struct
 var bufferedInputStreamClassStruct_Once sync.Once
 
@@ -215,6 +559,40 @@ func bufferedInputStreamClassStruct_Set() error {
 
 type BufferedInputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *BufferedInputStreamClass) ParentClass() *FilterInputStreamClass {
+	argValue := gi.FieldGet(bufferedInputStreamClassStruct, recv.native, "parent_class")
+	value := &FilterInputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'fill' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'fill_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'fill_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// BufferedInputStreamClassStruct creates an uninitialised BufferedInputStreamClass.
+func BufferedInputStreamClassStruct() *BufferedInputStreamClass {
+	err := bufferedInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferedInputStreamClass{native: bufferedInputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var bufferedInputStreamPrivateStruct *gi.Struct
@@ -232,6 +610,17 @@ type BufferedInputStreamPrivate struct {
 	native uintptr
 }
 
+// BufferedInputStreamPrivateStruct creates an uninitialised BufferedInputStreamPrivate.
+func BufferedInputStreamPrivateStruct() *BufferedInputStreamPrivate {
+	err := bufferedInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferedInputStreamPrivate{native: bufferedInputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var bufferedOutputStreamClassStruct *gi.Struct
 var bufferedOutputStreamClassStruct_Once sync.Once
 
@@ -245,6 +634,28 @@ func bufferedOutputStreamClassStruct_Set() error {
 
 type BufferedOutputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *BufferedOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+	argValue := gi.FieldGet(bufferedOutputStreamClassStruct, recv.native, "parent_class")
+	value := &FilterOutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// BufferedOutputStreamClassStruct creates an uninitialised BufferedOutputStreamClass.
+func BufferedOutputStreamClassStruct() *BufferedOutputStreamClass {
+	err := bufferedOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferedOutputStreamClass{native: bufferedOutputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var bufferedOutputStreamPrivateStruct *gi.Struct
@@ -262,6 +673,17 @@ type BufferedOutputStreamPrivate struct {
 	native uintptr
 }
 
+// BufferedOutputStreamPrivateStruct creates an uninitialised BufferedOutputStreamPrivate.
+func BufferedOutputStreamPrivateStruct() *BufferedOutputStreamPrivate {
+	err := bufferedOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferedOutputStreamPrivate{native: bufferedOutputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var cancellableClassStruct *gi.Struct
 var cancellableClassStruct_Once sync.Once
 
@@ -275,6 +697,31 @@ func cancellableClassStruct_Set() error {
 
 type CancellableClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'cancelled' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// CancellableClassStruct creates an uninitialised CancellableClass.
+func CancellableClassStruct() *CancellableClass {
+	err := cancellableClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CancellableClass{native: cancellableClassStruct.Alloc()}
+	return structGo
 }
 
 var cancellablePrivateStruct *gi.Struct
@@ -292,6 +739,17 @@ type CancellablePrivate struct {
 	native uintptr
 }
 
+// CancellablePrivateStruct creates an uninitialised CancellablePrivate.
+func CancellablePrivateStruct() *CancellablePrivate {
+	err := cancellablePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CancellablePrivate{native: cancellablePrivateStruct.Alloc()}
+	return structGo
+}
+
 var charsetConverterClassStruct *gi.Struct
 var charsetConverterClassStruct_Once sync.Once
 
@@ -305,6 +763,19 @@ func charsetConverterClassStruct_Set() error {
 
 type CharsetConverterClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// CharsetConverterClassStruct creates an uninitialised CharsetConverterClass.
+func CharsetConverterClassStruct() *CharsetConverterClass {
+	err := charsetConverterClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CharsetConverterClass{native: charsetConverterClassStruct.Alloc()}
+	return structGo
 }
 
 var converterIfaceStruct *gi.Struct
@@ -322,6 +793,23 @@ type ConverterIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'convert' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// ConverterIfaceStruct creates an uninitialised ConverterIface.
+func ConverterIfaceStruct() *ConverterIface {
+	err := converterIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ConverterIface{native: converterIfaceStruct.Alloc()}
+	return structGo
+}
+
 var converterInputStreamClassStruct *gi.Struct
 var converterInputStreamClassStruct_Once sync.Once
 
@@ -335,6 +823,34 @@ func converterInputStreamClassStruct_Set() error {
 
 type ConverterInputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *ConverterInputStreamClass) ParentClass() *FilterInputStreamClass {
+	argValue := gi.FieldGet(converterInputStreamClassStruct, recv.native, "parent_class")
+	value := &FilterInputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// ConverterInputStreamClassStruct creates an uninitialised ConverterInputStreamClass.
+func ConverterInputStreamClassStruct() *ConverterInputStreamClass {
+	err := converterInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ConverterInputStreamClass{native: converterInputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var converterInputStreamPrivateStruct *gi.Struct
@@ -352,6 +868,17 @@ type ConverterInputStreamPrivate struct {
 	native uintptr
 }
 
+// ConverterInputStreamPrivateStruct creates an uninitialised ConverterInputStreamPrivate.
+func ConverterInputStreamPrivateStruct() *ConverterInputStreamPrivate {
+	err := converterInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ConverterInputStreamPrivate{native: converterInputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var converterOutputStreamClassStruct *gi.Struct
 var converterOutputStreamClassStruct_Once sync.Once
 
@@ -365,6 +892,34 @@ func converterOutputStreamClassStruct_Set() error {
 
 type ConverterOutputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *ConverterOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+	argValue := gi.FieldGet(converterOutputStreamClassStruct, recv.native, "parent_class")
+	value := &FilterOutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// ConverterOutputStreamClassStruct creates an uninitialised ConverterOutputStreamClass.
+func ConverterOutputStreamClassStruct() *ConverterOutputStreamClass {
+	err := converterOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ConverterOutputStreamClass{native: converterOutputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var converterOutputStreamPrivateStruct *gi.Struct
@@ -382,6 +937,17 @@ type ConverterOutputStreamPrivate struct {
 	native uintptr
 }
 
+// ConverterOutputStreamPrivateStruct creates an uninitialised ConverterOutputStreamPrivate.
+func ConverterOutputStreamPrivateStruct() *ConverterOutputStreamPrivate {
+	err := converterOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ConverterOutputStreamPrivate{native: converterOutputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var credentialsClassStruct *gi.Struct
 var credentialsClassStruct_Once sync.Once
 
@@ -397,6 +963,17 @@ type CredentialsClass struct {
 	native uintptr
 }
 
+// CredentialsClassStruct creates an uninitialised CredentialsClass.
+func CredentialsClassStruct() *CredentialsClass {
+	err := credentialsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CredentialsClass{native: credentialsClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusAnnotationInfoStruct *gi.Struct
 var dBusAnnotationInfoStruct_Once sync.Once
 
@@ -410,6 +987,40 @@ func dBusAnnotationInfoStruct_Set() error {
 
 type DBusAnnotationInfo struct {
 	native uintptr
+}
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusAnnotationInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Key returns the C field 'key'.
+func (recv *DBusAnnotationInfo) Key() string {
+	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "key")
+	value := argValue.String(false)
+	return value
+}
+
+// Value returns the C field 'value'.
+func (recv *DBusAnnotationInfo) Value() string {
+	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "value")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusAnnotationInfoStruct creates an uninitialised DBusAnnotationInfo.
+func DBusAnnotationInfoStruct() *DBusAnnotationInfo {
+	err := dBusAnnotationInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusAnnotationInfo{native: dBusAnnotationInfoStruct.Alloc()}
+	return structGo
 }
 
 var dBusAnnotationInfoRefFunction *gi.Function
@@ -487,6 +1098,40 @@ type DBusArgInfo struct {
 	native uintptr
 }
 
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusArgInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Name returns the C field 'name'.
+func (recv *DBusArgInfo) Name() string {
+	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// Signature returns the C field 'signature'.
+func (recv *DBusArgInfo) Signature() string {
+	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "signature")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusArgInfoStruct creates an uninitialised DBusArgInfo.
+func DBusArgInfoStruct() *DBusArgInfo {
+	err := dBusArgInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusArgInfo{native: dBusArgInfoStruct.Alloc()}
+	return structGo
+}
+
 var dBusArgInfoRefFunction *gi.Function
 var dBusArgInfoRefFunction_Once sync.Once
 
@@ -562,6 +1207,31 @@ type DBusErrorEntry struct {
 	native uintptr
 }
 
+// ErrorCode returns the C field 'error_code'.
+func (recv *DBusErrorEntry) ErrorCode() int32 {
+	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "error_code")
+	value := argValue.Int32()
+	return value
+}
+
+// DbusErrorName returns the C field 'dbus_error_name'.
+func (recv *DBusErrorEntry) DbusErrorName() string {
+	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "dbus_error_name")
+	value := argValue.String(false)
+	return value
+}
+
+// DBusErrorEntryStruct creates an uninitialised DBusErrorEntry.
+func DBusErrorEntryStruct() *DBusErrorEntry {
+	err := dBusErrorEntryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusErrorEntry{native: dBusErrorEntryStruct.Alloc()}
+	return structGo
+}
+
 var dBusInterfaceIfaceStruct *gi.Struct
 var dBusInterfaceIfaceStruct_Once sync.Once
 
@@ -577,6 +1247,27 @@ type DBusInterfaceIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dup_object' : for field getter : missing Type
+
+// DBusInterfaceIfaceStruct creates an uninitialised DBusInterfaceIface.
+func DBusInterfaceIfaceStruct() *DBusInterfaceIface {
+	err := dBusInterfaceIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceIface{native: dBusInterfaceIfaceStruct.Alloc()}
+	return structGo
+}
+
 var dBusInterfaceInfoStruct *gi.Struct
 var dBusInterfaceInfoStruct_Once sync.Once
 
@@ -590,6 +1281,39 @@ func dBusInterfaceInfoStruct_Set() error {
 
 type DBusInterfaceInfo struct {
 	native uintptr
+}
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusInterfaceInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Name returns the C field 'name'.
+func (recv *DBusInterfaceInfo) Name() string {
+	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'methods' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'signals' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'properties' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusInterfaceInfoStruct creates an uninitialised DBusInterfaceInfo.
+func DBusInterfaceInfoStruct() *DBusInterfaceInfo {
+	err := dBusInterfaceInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceInfo{native: dBusInterfaceInfoStruct.Alloc()}
+	return structGo
 }
 
 var dBusInterfaceInfoCacheBuildFunction *gi.Function
@@ -824,6 +1548,29 @@ type DBusInterfaceSkeletonClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_vtable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_properties' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'g_authorize_method' : for field getter : missing Type
+
+// DBusInterfaceSkeletonClassStruct creates an uninitialised DBusInterfaceSkeletonClass.
+func DBusInterfaceSkeletonClassStruct() *DBusInterfaceSkeletonClass {
+	err := dBusInterfaceSkeletonClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceSkeletonClass{native: dBusInterfaceSkeletonClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusInterfaceSkeletonPrivateStruct *gi.Struct
 var dBusInterfaceSkeletonPrivateStruct_Once sync.Once
 
@@ -837,6 +1584,17 @@ func dBusInterfaceSkeletonPrivateStruct_Set() error {
 
 type DBusInterfaceSkeletonPrivate struct {
 	native uintptr
+}
+
+// DBusInterfaceSkeletonPrivateStruct creates an uninitialised DBusInterfaceSkeletonPrivate.
+func DBusInterfaceSkeletonPrivateStruct() *DBusInterfaceSkeletonPrivate {
+	err := dBusInterfaceSkeletonPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceSkeletonPrivate{native: dBusInterfaceSkeletonPrivateStruct.Alloc()}
+	return structGo
 }
 
 var dBusInterfaceVTableStruct *gi.Struct
@@ -854,6 +1612,23 @@ type DBusInterfaceVTable struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'method_call' : for field getter : no Go type for 'DBusInterfaceMethodCallFunc'
+
+// UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'DBusInterfaceGetPropertyFunc'
+
+// UNSUPPORTED : C value 'set_property' : for field getter : no Go type for 'DBusInterfaceSetPropertyFunc'
+
+// DBusInterfaceVTableStruct creates an uninitialised DBusInterfaceVTable.
+func DBusInterfaceVTableStruct() *DBusInterfaceVTable {
+	err := dBusInterfaceVTableStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceVTable{native: dBusInterfaceVTableStruct.Alloc()}
+	return structGo
+}
+
 var dBusMethodInfoStruct *gi.Struct
 var dBusMethodInfoStruct_Once sync.Once
 
@@ -867,6 +1642,37 @@ func dBusMethodInfoStruct_Set() error {
 
 type DBusMethodInfo struct {
 	native uintptr
+}
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusMethodInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Name returns the C field 'name'.
+func (recv *DBusMethodInfo) Name() string {
+	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'in_args' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'out_args' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusMethodInfoStruct creates an uninitialised DBusMethodInfo.
+func DBusMethodInfoStruct() *DBusMethodInfo {
+	err := dBusMethodInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusMethodInfo{native: dBusMethodInfoStruct.Alloc()}
+	return structGo
 }
 
 var dBusMethodInfoRefFunction *gi.Function
@@ -943,6 +1749,26 @@ func dBusNodeInfoStruct_Set() error {
 type DBusNodeInfo struct {
 	native uintptr
 }
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusNodeInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Path returns the C field 'path'.
+func (recv *DBusNodeInfo) Path() string {
+	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "path")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'interfaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'nodes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
 
 var dBusNodeInfoNewForXmlFunction *gi.Function
 var dBusNodeInfoNewForXmlFunction_Once sync.Once
@@ -1086,6 +1912,29 @@ type DBusObjectIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_object_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_interfaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_interface' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_removed' : for field getter : missing Type
+
+// DBusObjectIfaceStruct creates an uninitialised DBusObjectIface.
+func DBusObjectIfaceStruct() *DBusObjectIface {
+	err := dBusObjectIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectIface{native: dBusObjectIfaceStruct.Alloc()}
+	return structGo
+}
+
 var dBusObjectManagerClientClassStruct *gi.Struct
 var dBusObjectManagerClientClassStruct_Once sync.Once
 
@@ -1099,6 +1948,23 @@ func dBusObjectManagerClientClassStruct_Set() error {
 
 type DBusObjectManagerClientClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'interface_proxy_signal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_proxy_properties_changed' : for field getter : missing Type
+
+// DBusObjectManagerClientClassStruct creates an uninitialised DBusObjectManagerClientClass.
+func DBusObjectManagerClientClassStruct() *DBusObjectManagerClientClass {
+	err := dBusObjectManagerClientClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectManagerClientClass{native: dBusObjectManagerClientClassStruct.Alloc()}
+	return structGo
 }
 
 var dBusObjectManagerClientPrivateStruct *gi.Struct
@@ -1116,6 +1982,17 @@ type DBusObjectManagerClientPrivate struct {
 	native uintptr
 }
 
+// DBusObjectManagerClientPrivateStruct creates an uninitialised DBusObjectManagerClientPrivate.
+func DBusObjectManagerClientPrivateStruct() *DBusObjectManagerClientPrivate {
+	err := dBusObjectManagerClientPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectManagerClientPrivate{native: dBusObjectManagerClientPrivateStruct.Alloc()}
+	return structGo
+}
+
 var dBusObjectManagerIfaceStruct *gi.Struct
 var dBusObjectManagerIfaceStruct_Once sync.Once
 
@@ -1129,6 +2006,35 @@ func dBusObjectManagerIfaceStruct_Set() error {
 
 type DBusObjectManagerIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_object_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_objects' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_interface' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'object_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'object_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_removed' : for field getter : missing Type
+
+// DBusObjectManagerIfaceStruct creates an uninitialised DBusObjectManagerIface.
+func DBusObjectManagerIfaceStruct() *DBusObjectManagerIface {
+	err := dBusObjectManagerIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectManagerIface{native: dBusObjectManagerIfaceStruct.Alloc()}
+	return structGo
 }
 
 var dBusObjectManagerServerClassStruct *gi.Struct
@@ -1146,6 +2052,19 @@ type DBusObjectManagerServerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// DBusObjectManagerServerClassStruct creates an uninitialised DBusObjectManagerServerClass.
+func DBusObjectManagerServerClassStruct() *DBusObjectManagerServerClass {
+	err := dBusObjectManagerServerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectManagerServerClass{native: dBusObjectManagerServerClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusObjectManagerServerPrivateStruct *gi.Struct
 var dBusObjectManagerServerPrivateStruct_Once sync.Once
 
@@ -1159,6 +2078,17 @@ func dBusObjectManagerServerPrivateStruct_Set() error {
 
 type DBusObjectManagerServerPrivate struct {
 	native uintptr
+}
+
+// DBusObjectManagerServerPrivateStruct creates an uninitialised DBusObjectManagerServerPrivate.
+func DBusObjectManagerServerPrivateStruct() *DBusObjectManagerServerPrivate {
+	err := dBusObjectManagerServerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectManagerServerPrivate{native: dBusObjectManagerServerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var dBusObjectProxyClassStruct *gi.Struct
@@ -1176,6 +2106,19 @@ type DBusObjectProxyClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// DBusObjectProxyClassStruct creates an uninitialised DBusObjectProxyClass.
+func DBusObjectProxyClassStruct() *DBusObjectProxyClass {
+	err := dBusObjectProxyClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectProxyClass{native: dBusObjectProxyClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusObjectProxyPrivateStruct *gi.Struct
 var dBusObjectProxyPrivateStruct_Once sync.Once
 
@@ -1189,6 +2132,17 @@ func dBusObjectProxyPrivateStruct_Set() error {
 
 type DBusObjectProxyPrivate struct {
 	native uintptr
+}
+
+// DBusObjectProxyPrivateStruct creates an uninitialised DBusObjectProxyPrivate.
+func DBusObjectProxyPrivateStruct() *DBusObjectProxyPrivate {
+	err := dBusObjectProxyPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectProxyPrivate{native: dBusObjectProxyPrivateStruct.Alloc()}
+	return structGo
 }
 
 var dBusObjectSkeletonClassStruct *gi.Struct
@@ -1206,6 +2160,21 @@ type DBusObjectSkeletonClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'authorize_method' : for field getter : missing Type
+
+// DBusObjectSkeletonClassStruct creates an uninitialised DBusObjectSkeletonClass.
+func DBusObjectSkeletonClassStruct() *DBusObjectSkeletonClass {
+	err := dBusObjectSkeletonClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectSkeletonClass{native: dBusObjectSkeletonClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusObjectSkeletonPrivateStruct *gi.Struct
 var dBusObjectSkeletonPrivateStruct_Once sync.Once
 
@@ -1221,6 +2190,17 @@ type DBusObjectSkeletonPrivate struct {
 	native uintptr
 }
 
+// DBusObjectSkeletonPrivateStruct creates an uninitialised DBusObjectSkeletonPrivate.
+func DBusObjectSkeletonPrivateStruct() *DBusObjectSkeletonPrivate {
+	err := dBusObjectSkeletonPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusObjectSkeletonPrivate{native: dBusObjectSkeletonPrivateStruct.Alloc()}
+	return structGo
+}
+
 var dBusPropertyInfoStruct *gi.Struct
 var dBusPropertyInfoStruct_Once sync.Once
 
@@ -1234,6 +2214,42 @@ func dBusPropertyInfoStruct_Set() error {
 
 type DBusPropertyInfo struct {
 	native uintptr
+}
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusPropertyInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Name returns the C field 'name'.
+func (recv *DBusPropertyInfo) Name() string {
+	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// Signature returns the C field 'signature'.
+func (recv *DBusPropertyInfo) Signature() string {
+	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "signature")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'DBusPropertyInfoFlags'
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusPropertyInfoStruct creates an uninitialised DBusPropertyInfo.
+func DBusPropertyInfoStruct() *DBusPropertyInfo {
+	err := dBusPropertyInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusPropertyInfo{native: dBusPropertyInfoStruct.Alloc()}
+	return structGo
 }
 
 var dBusPropertyInfoRefFunction *gi.Function
@@ -1311,6 +2327,21 @@ type DBusProxyClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_properties_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'g_signal' : for field getter : missing Type
+
+// DBusProxyClassStruct creates an uninitialised DBusProxyClass.
+func DBusProxyClassStruct() *DBusProxyClass {
+	err := dBusProxyClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusProxyClass{native: dBusProxyClassStruct.Alloc()}
+	return structGo
+}
+
 var dBusProxyPrivateStruct *gi.Struct
 var dBusProxyPrivateStruct_Once sync.Once
 
@@ -1326,6 +2357,17 @@ type DBusProxyPrivate struct {
 	native uintptr
 }
 
+// DBusProxyPrivateStruct creates an uninitialised DBusProxyPrivate.
+func DBusProxyPrivateStruct() *DBusProxyPrivate {
+	err := dBusProxyPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusProxyPrivate{native: dBusProxyPrivateStruct.Alloc()}
+	return structGo
+}
+
 var dBusSignalInfoStruct *gi.Struct
 var dBusSignalInfoStruct_Once sync.Once
 
@@ -1339,6 +2381,35 @@ func dBusSignalInfoStruct_Set() error {
 
 type DBusSignalInfo struct {
 	native uintptr
+}
+
+// RefCount returns the C field 'ref_count'.
+func (recv *DBusSignalInfo) RefCount() int32 {
+	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "ref_count")
+	value := argValue.Int32()
+	return value
+}
+
+// Name returns the C field 'name'.
+func (recv *DBusSignalInfo) Name() string {
+	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'args' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// DBusSignalInfoStruct creates an uninitialised DBusSignalInfo.
+func DBusSignalInfoStruct() *DBusSignalInfo {
+	err := dBusSignalInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusSignalInfo{native: dBusSignalInfoStruct.Alloc()}
+	return structGo
 }
 
 var dBusSignalInfoRefFunction *gi.Function
@@ -1416,6 +2487,23 @@ type DBusSubtreeVTable struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'enumerate' : for field getter : no Go type for 'DBusSubtreeEnumerateFunc'
+
+// UNSUPPORTED : C value 'introspect' : for field getter : no Go type for 'DBusSubtreeIntrospectFunc'
+
+// UNSUPPORTED : C value 'dispatch' : for field getter : no Go type for 'DBusSubtreeDispatchFunc'
+
+// DBusSubtreeVTableStruct creates an uninitialised DBusSubtreeVTable.
+func DBusSubtreeVTableStruct() *DBusSubtreeVTable {
+	err := dBusSubtreeVTableStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusSubtreeVTable{native: dBusSubtreeVTableStruct.Alloc()}
+	return structGo
+}
+
 var dataInputStreamClassStruct *gi.Struct
 var dataInputStreamClassStruct_Once sync.Once
 
@@ -1429,6 +2517,34 @@ func dataInputStreamClassStruct_Set() error {
 
 type DataInputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *DataInputStreamClass) ParentClass() *BufferedInputStreamClass {
+	argValue := gi.FieldGet(dataInputStreamClassStruct, recv.native, "parent_class")
+	value := &BufferedInputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// DataInputStreamClassStruct creates an uninitialised DataInputStreamClass.
+func DataInputStreamClassStruct() *DataInputStreamClass {
+	err := dataInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DataInputStreamClass{native: dataInputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var dataInputStreamPrivateStruct *gi.Struct
@@ -1446,6 +2562,17 @@ type DataInputStreamPrivate struct {
 	native uintptr
 }
 
+// DataInputStreamPrivateStruct creates an uninitialised DataInputStreamPrivate.
+func DataInputStreamPrivateStruct() *DataInputStreamPrivate {
+	err := dataInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DataInputStreamPrivate{native: dataInputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var dataOutputStreamClassStruct *gi.Struct
 var dataOutputStreamClassStruct_Once sync.Once
 
@@ -1459,6 +2586,34 @@ func dataOutputStreamClassStruct_Set() error {
 
 type DataOutputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *DataOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+	argValue := gi.FieldGet(dataOutputStreamClassStruct, recv.native, "parent_class")
+	value := &FilterOutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// DataOutputStreamClassStruct creates an uninitialised DataOutputStreamClass.
+func DataOutputStreamClassStruct() *DataOutputStreamClass {
+	err := dataOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DataOutputStreamClass{native: dataOutputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var dataOutputStreamPrivateStruct *gi.Struct
@@ -1476,6 +2631,17 @@ type DataOutputStreamPrivate struct {
 	native uintptr
 }
 
+// DataOutputStreamPrivateStruct creates an uninitialised DataOutputStreamPrivate.
+func DataOutputStreamPrivateStruct() *DataOutputStreamPrivate {
+	err := dataOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DataOutputStreamPrivate{native: dataOutputStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var datagramBasedInterfaceStruct *gi.Struct
 var datagramBasedInterfaceStruct_Once sync.Once
 
@@ -1489,6 +2655,29 @@ func datagramBasedInterfaceStruct_Set() error {
 
 type DatagramBasedInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'receive_messages' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'send_messages' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_source' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'condition_check' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'condition_wait' : for field getter : missing Type
+
+// DatagramBasedInterfaceStruct creates an uninitialised DatagramBasedInterface.
+func DatagramBasedInterfaceStruct() *DatagramBasedInterface {
+	err := datagramBasedInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DatagramBasedInterface{native: datagramBasedInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var desktopAppInfoClassStruct *gi.Struct
@@ -1506,6 +2695,19 @@ type DesktopAppInfoClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// DesktopAppInfoClassStruct creates an uninitialised DesktopAppInfoClass.
+func DesktopAppInfoClassStruct() *DesktopAppInfoClass {
+	err := desktopAppInfoClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DesktopAppInfoClass{native: desktopAppInfoClassStruct.Alloc()}
+	return structGo
+}
+
 var desktopAppInfoLookupIfaceStruct *gi.Struct
 var desktopAppInfoLookupIfaceStruct_Once sync.Once
 
@@ -1519,6 +2721,21 @@ func desktopAppInfoLookupIfaceStruct_Set() error {
 
 type DesktopAppInfoLookupIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_default_for_uri_scheme' : for field getter : missing Type
+
+// DesktopAppInfoLookupIfaceStruct creates an uninitialised DesktopAppInfoLookupIface.
+func DesktopAppInfoLookupIfaceStruct() *DesktopAppInfoLookupIface {
+	err := desktopAppInfoLookupIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DesktopAppInfoLookupIface{native: desktopAppInfoLookupIfaceStruct.Alloc()}
+	return structGo
 }
 
 var driveIfaceStruct *gi.Struct
@@ -1536,6 +2753,83 @@ type DriveIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'disconnected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_volumes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volumes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_media_removable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_media' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_media_check_automatic' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_poll_for_media' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_for_media' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_for_media_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_identifier' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_identifiers' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_start_stop_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_start' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_start_degraded' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_stop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_removable' : for field getter : missing Type
+
+// DriveIfaceStruct creates an uninitialised DriveIface.
+func DriveIfaceStruct() *DriveIface {
+	err := driveIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DriveIface{native: driveIfaceStruct.Alloc()}
+	return structGo
+}
+
 var dtlsClientConnectionInterfaceStruct *gi.Struct
 var dtlsClientConnectionInterfaceStruct_Once sync.Once
 
@@ -1549,6 +2843,19 @@ func dtlsClientConnectionInterfaceStruct_Set() error {
 
 type DtlsClientConnectionInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// DtlsClientConnectionInterfaceStruct creates an uninitialised DtlsClientConnectionInterface.
+func DtlsClientConnectionInterfaceStruct() *DtlsClientConnectionInterface {
+	err := dtlsClientConnectionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DtlsClientConnectionInterface{native: dtlsClientConnectionInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var dtlsConnectionInterfaceStruct *gi.Struct
@@ -1566,6 +2873,37 @@ type DtlsConnectionInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'accept_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_advertised_protocols' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_negotiated_protocol' : for field getter : missing Type
+
+// DtlsConnectionInterfaceStruct creates an uninitialised DtlsConnectionInterface.
+func DtlsConnectionInterfaceStruct() *DtlsConnectionInterface {
+	err := dtlsConnectionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DtlsConnectionInterface{native: dtlsConnectionInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var dtlsServerConnectionInterfaceStruct *gi.Struct
 var dtlsServerConnectionInterfaceStruct_Once sync.Once
 
@@ -1579,6 +2917,19 @@ func dtlsServerConnectionInterfaceStruct_Set() error {
 
 type DtlsServerConnectionInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// DtlsServerConnectionInterfaceStruct creates an uninitialised DtlsServerConnectionInterface.
+func DtlsServerConnectionInterfaceStruct() *DtlsServerConnectionInterface {
+	err := dtlsServerConnectionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DtlsServerConnectionInterface{native: dtlsServerConnectionInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var emblemClassStruct *gi.Struct
@@ -1596,6 +2947,17 @@ type EmblemClass struct {
 	native uintptr
 }
 
+// EmblemClassStruct creates an uninitialised EmblemClass.
+func EmblemClassStruct() *EmblemClass {
+	err := emblemClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EmblemClass{native: emblemClassStruct.Alloc()}
+	return structGo
+}
+
 var emblemedIconClassStruct *gi.Struct
 var emblemedIconClassStruct_Once sync.Once
 
@@ -1609,6 +2971,19 @@ func emblemedIconClassStruct_Set() error {
 
 type EmblemedIconClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// EmblemedIconClassStruct creates an uninitialised EmblemedIconClass.
+func EmblemedIconClassStruct() *EmblemedIconClass {
+	err := emblemedIconClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EmblemedIconClass{native: emblemedIconClassStruct.Alloc()}
+	return structGo
 }
 
 var emblemedIconPrivateStruct *gi.Struct
@@ -1626,6 +3001,17 @@ type EmblemedIconPrivate struct {
 	native uintptr
 }
 
+// EmblemedIconPrivateStruct creates an uninitialised EmblemedIconPrivate.
+func EmblemedIconPrivateStruct() *EmblemedIconPrivate {
+	err := emblemedIconPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EmblemedIconPrivate{native: emblemedIconPrivateStruct.Alloc()}
+	return structGo
+}
+
 var fileAttributeInfoStruct *gi.Struct
 var fileAttributeInfoStruct_Once sync.Once
 
@@ -1641,6 +3027,28 @@ type FileAttributeInfo struct {
 	native uintptr
 }
 
+// Name returns the C field 'name'.
+func (recv *FileAttributeInfo) Name() string {
+	argValue := gi.FieldGet(fileAttributeInfoStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'FileAttributeType'
+
+// UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'FileAttributeInfoFlags'
+
+// FileAttributeInfoStruct creates an uninitialised FileAttributeInfo.
+func FileAttributeInfoStruct() *FileAttributeInfo {
+	err := fileAttributeInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileAttributeInfo{native: fileAttributeInfoStruct.Alloc()}
+	return structGo
+}
+
 var fileAttributeInfoListStruct *gi.Struct
 var fileAttributeInfoListStruct_Once sync.Once
 
@@ -1654,6 +3062,20 @@ func fileAttributeInfoListStruct_Set() error {
 
 type FileAttributeInfoList struct {
 	native uintptr
+}
+
+// Infos returns the C field 'infos'.
+func (recv *FileAttributeInfoList) Infos() *FileAttributeInfo {
+	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "infos")
+	value := &FileAttributeInfo{native: argValue.Pointer()}
+	return value
+}
+
+// NInfos returns the C field 'n_infos'.
+func (recv *FileAttributeInfoList) NInfos() int32 {
+	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "n_infos")
+	value := argValue.Int32()
+	return value
 }
 
 var fileAttributeInfoListNewFunction *gi.Function
@@ -2131,6 +3553,21 @@ type FileDescriptorBasedIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_fd' : for field getter : missing Type
+
+// FileDescriptorBasedIfaceStruct creates an uninitialised FileDescriptorBasedIface.
+func FileDescriptorBasedIfaceStruct() *FileDescriptorBasedIface {
+	err := fileDescriptorBasedIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileDescriptorBasedIface{native: fileDescriptorBasedIfaceStruct.Alloc()}
+	return structGo
+}
+
 var fileEnumeratorClassStruct *gi.Struct
 var fileEnumeratorClassStruct_Once sync.Once
 
@@ -2144,6 +3581,45 @@ func fileEnumeratorClassStruct_Set() error {
 
 type FileEnumeratorClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'next_file' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_files_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_files_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// FileEnumeratorClassStruct creates an uninitialised FileEnumeratorClass.
+func FileEnumeratorClassStruct() *FileEnumeratorClass {
+	err := fileEnumeratorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileEnumeratorClass{native: fileEnumeratorClassStruct.Alloc()}
+	return structGo
 }
 
 var fileEnumeratorPrivateStruct *gi.Struct
@@ -2161,6 +3637,17 @@ type FileEnumeratorPrivate struct {
 	native uintptr
 }
 
+// FileEnumeratorPrivateStruct creates an uninitialised FileEnumeratorPrivate.
+func FileEnumeratorPrivateStruct() *FileEnumeratorPrivate {
+	err := fileEnumeratorPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileEnumeratorPrivate{native: fileEnumeratorPrivateStruct.Alloc()}
+	return structGo
+}
+
 var fileIOStreamClassStruct *gi.Struct
 var fileIOStreamClassStruct_Once sync.Once
 
@@ -2174,6 +3661,52 @@ func fileIOStreamClassStruct_Set() error {
 
 type FileIOStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *FileIOStreamClass) ParentClass() *IOStreamClass {
+	argValue := gi.FieldGet(fileIOStreamClassStruct, recv.native, "parent_class")
+	value := &IOStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_etag' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// FileIOStreamClassStruct creates an uninitialised FileIOStreamClass.
+func FileIOStreamClassStruct() *FileIOStreamClass {
+	err := fileIOStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileIOStreamClass{native: fileIOStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var fileIOStreamPrivateStruct *gi.Struct
@@ -2191,6 +3724,17 @@ type FileIOStreamPrivate struct {
 	native uintptr
 }
 
+// FileIOStreamPrivateStruct creates an uninitialised FileIOStreamPrivate.
+func FileIOStreamPrivateStruct() *FileIOStreamPrivate {
+	err := fileIOStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileIOStreamPrivate{native: fileIOStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var fileIconClassStruct *gi.Struct
 var fileIconClassStruct_Once sync.Once
 
@@ -2204,6 +3748,17 @@ func fileIconClassStruct_Set() error {
 
 type FileIconClass struct {
 	native uintptr
+}
+
+// FileIconClassStruct creates an uninitialised FileIconClass.
+func FileIconClassStruct() *FileIconClass {
+	err := fileIconClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileIconClass{native: fileIconClassStruct.Alloc()}
+	return structGo
 }
 
 var fileIfaceStruct *gi.Struct
@@ -2221,6 +3776,230 @@ type FileIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'dup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hash' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_native' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_uri_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uri_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_basename' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_parse_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_parent' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'prefix_matches' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_relative_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'resolve_relative_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_child_for_display_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_children' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_children_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_children_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_filesystem_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_filesystem_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_filesystem_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_enclosing_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_enclosing_mount_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_enclosing_mount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_display_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_display_name_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_display_name_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_settable_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_settable_attributes_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_settable_attributes_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_writable_namespaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_writable_namespaces_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_writable_namespaces_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attribute' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attributes_from_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attributes_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attributes_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'append_to' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'append_to_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'append_to_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_file' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_file_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_file_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'trash' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'trash_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'trash_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_directory' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_directory_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_directory_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_symbolic_link' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_make_symbolic_link_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_make_symbolic_link_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_move_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_move_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_enclosing_volume' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_enclosing_volume_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'monitor_dir' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'monitor_file' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open_readwrite' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open_readwrite_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open_readwrite_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_readwrite' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_readwrite_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_readwrite_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_readwrite' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_readwrite_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_readwrite_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_mountable_finish' : for field getter : missing Type
+
+// SupportsThreadContexts returns the C field 'supports_thread_contexts'.
+func (recv *FileIface) SupportsThreadContexts() bool {
+	argValue := gi.FieldGet(fileIfaceStruct, recv.native, "supports_thread_contexts")
+	value := argValue.Boolean()
+	return value
+}
+
+// UNSUPPORTED : C value 'unmount_mountable_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_mountable_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'measure_disk_usage' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'measure_disk_usage_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'measure_disk_usage_finish' : for field getter : missing Type
+
+// FileIfaceStruct creates an uninitialised FileIface.
+func FileIfaceStruct() *FileIface {
+	err := fileIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileIface{native: fileIfaceStruct.Alloc()}
+	return structGo
+}
+
 var fileInfoClassStruct *gi.Struct
 var fileInfoClassStruct_Once sync.Once
 
@@ -2234,6 +4013,17 @@ func fileInfoClassStruct_Set() error {
 
 type FileInfoClass struct {
 	native uintptr
+}
+
+// FileInfoClassStruct creates an uninitialised FileInfoClass.
+func FileInfoClassStruct() *FileInfoClass {
+	err := fileInfoClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileInfoClass{native: fileInfoClassStruct.Alloc()}
+	return structGo
 }
 
 var fileInputStreamClassStruct *gi.Struct
@@ -2251,6 +4041,46 @@ type FileInputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *FileInputStreamClass) ParentClass() *InputStreamClass {
+	argValue := gi.FieldGet(fileInputStreamClassStruct, recv.native, "parent_class")
+	value := &InputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// FileInputStreamClassStruct creates an uninitialised FileInputStreamClass.
+func FileInputStreamClassStruct() *FileInputStreamClass {
+	err := fileInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileInputStreamClass{native: fileInputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var fileInputStreamPrivateStruct *gi.Struct
 var fileInputStreamPrivateStruct_Once sync.Once
 
@@ -2264,6 +4094,17 @@ func fileInputStreamPrivateStruct_Set() error {
 
 type FileInputStreamPrivate struct {
 	native uintptr
+}
+
+// FileInputStreamPrivateStruct creates an uninitialised FileInputStreamPrivate.
+func FileInputStreamPrivateStruct() *FileInputStreamPrivate {
+	err := fileInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileInputStreamPrivate{native: fileInputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var fileMonitorClassStruct *gi.Struct
@@ -2281,6 +4122,33 @@ type FileMonitorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cancel' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// FileMonitorClassStruct creates an uninitialised FileMonitorClass.
+func FileMonitorClassStruct() *FileMonitorClass {
+	err := fileMonitorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileMonitorClass{native: fileMonitorClassStruct.Alloc()}
+	return structGo
+}
+
 var fileMonitorPrivateStruct *gi.Struct
 var fileMonitorPrivateStruct_Once sync.Once
 
@@ -2294,6 +4162,17 @@ func fileMonitorPrivateStruct_Set() error {
 
 type FileMonitorPrivate struct {
 	native uintptr
+}
+
+// FileMonitorPrivateStruct creates an uninitialised FileMonitorPrivate.
+func FileMonitorPrivateStruct() *FileMonitorPrivate {
+	err := fileMonitorPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileMonitorPrivate{native: fileMonitorPrivateStruct.Alloc()}
+	return structGo
 }
 
 var fileOutputStreamClassStruct *gi.Struct
@@ -2311,6 +4190,52 @@ type FileOutputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *FileOutputStreamClass) ParentClass() *OutputStreamClass {
+	argValue := gi.FieldGet(fileOutputStreamClassStruct, recv.native, "parent_class")
+	value := &OutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_etag' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// FileOutputStreamClassStruct creates an uninitialised FileOutputStreamClass.
+func FileOutputStreamClassStruct() *FileOutputStreamClass {
+	err := fileOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileOutputStreamClass{native: fileOutputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var fileOutputStreamPrivateStruct *gi.Struct
 var fileOutputStreamPrivateStruct_Once sync.Once
 
@@ -2324,6 +4249,17 @@ func fileOutputStreamPrivateStruct_Set() error {
 
 type FileOutputStreamPrivate struct {
 	native uintptr
+}
+
+// FileOutputStreamPrivateStruct creates an uninitialised FileOutputStreamPrivate.
+func FileOutputStreamPrivateStruct() *FileOutputStreamPrivate {
+	err := fileOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileOutputStreamPrivate{native: fileOutputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var filenameCompleterClassStruct *gi.Struct
@@ -2341,6 +4277,27 @@ type FilenameCompleterClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'got_completion_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// FilenameCompleterClassStruct creates an uninitialised FilenameCompleterClass.
+func FilenameCompleterClassStruct() *FilenameCompleterClass {
+	err := filenameCompleterClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilenameCompleterClass{native: filenameCompleterClassStruct.Alloc()}
+	return structGo
+}
+
 var filterInputStreamClassStruct *gi.Struct
 var filterInputStreamClassStruct_Once sync.Once
 
@@ -2354,6 +4311,30 @@ func filterInputStreamClassStruct_Set() error {
 
 type FilterInputStreamClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *FilterInputStreamClass) ParentClass() *InputStreamClass {
+	argValue := gi.FieldGet(filterInputStreamClassStruct, recv.native, "parent_class")
+	value := &InputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// FilterInputStreamClassStruct creates an uninitialised FilterInputStreamClass.
+func FilterInputStreamClassStruct() *FilterInputStreamClass {
+	err := filterInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilterInputStreamClass{native: filterInputStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var filterOutputStreamClassStruct *gi.Struct
@@ -2371,6 +4352,30 @@ type FilterOutputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *FilterOutputStreamClass) ParentClass() *OutputStreamClass {
+	argValue := gi.FieldGet(filterOutputStreamClassStruct, recv.native, "parent_class")
+	value := &OutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// FilterOutputStreamClassStruct creates an uninitialised FilterOutputStreamClass.
+func FilterOutputStreamClassStruct() *FilterOutputStreamClass {
+	err := filterOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilterOutputStreamClass{native: filterOutputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var iOExtensionStruct *gi.Struct
 var iOExtensionStruct_Once sync.Once
 
@@ -2384,6 +4389,17 @@ func iOExtensionStruct_Set() error {
 
 type IOExtension struct {
 	native uintptr
+}
+
+// IOExtensionStruct creates an uninitialised IOExtension.
+func IOExtensionStruct() *IOExtension {
+	err := iOExtensionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOExtension{native: iOExtensionStruct.Alloc()}
+	return structGo
 }
 
 var iOExtensionGetNameFunction *gi.Function
@@ -2469,6 +4485,17 @@ type IOExtensionPoint struct {
 	native uintptr
 }
 
+// IOExtensionPointStruct creates an uninitialised IOExtensionPoint.
+func IOExtensionPointStruct() *IOExtensionPoint {
+	err := iOExtensionPointStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOExtensionPoint{native: iOExtensionPointStruct.Alloc()}
+	return structGo
+}
+
 var iOExtensionPointGetExtensionByNameFunction *gi.Function
 var iOExtensionPointGetExtensionByNameFunction_Once sync.Once
 
@@ -2523,6 +4550,17 @@ type IOModuleClass struct {
 	native uintptr
 }
 
+// IOModuleClassStruct creates an uninitialised IOModuleClass.
+func IOModuleClassStruct() *IOModuleClass {
+	err := iOModuleClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOModuleClass{native: iOModuleClassStruct.Alloc()}
+	return structGo
+}
+
 var iOModuleScopeStruct *gi.Struct
 var iOModuleScopeStruct_Once sync.Once
 
@@ -2536,6 +4574,17 @@ func iOModuleScopeStruct_Set() error {
 
 type IOModuleScope struct {
 	native uintptr
+}
+
+// IOModuleScopeStruct creates an uninitialised IOModuleScope.
+func IOModuleScopeStruct() *IOModuleScope {
+	err := iOModuleScopeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOModuleScope{native: iOModuleScopeStruct.Alloc()}
+	return structGo
 }
 
 var iOModuleScopeBlockFunction *gi.Function
@@ -2610,6 +4659,17 @@ type IOSchedulerJob struct {
 	native uintptr
 }
 
+// IOSchedulerJobStruct creates an uninitialised IOSchedulerJob.
+func IOSchedulerJobStruct() *IOSchedulerJob {
+	err := iOSchedulerJobStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOSchedulerJob{native: iOSchedulerJobStruct.Alloc()}
+	return structGo
+}
+
 // UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop' : parameter 'func' of type 'GLib.SourceFunc' not supported
 
 // UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
@@ -2629,6 +4689,17 @@ type IOStreamAdapter struct {
 	native uintptr
 }
 
+// IOStreamAdapterStruct creates an uninitialised IOStreamAdapter.
+func IOStreamAdapterStruct() *IOStreamAdapter {
+	err := iOStreamAdapterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOStreamAdapter{native: iOStreamAdapterStruct.Alloc()}
+	return structGo
+}
+
 var iOStreamClassStruct *gi.Struct
 var iOStreamClassStruct_Once sync.Once
 
@@ -2642,6 +4713,49 @@ func iOStreamClassStruct_Set() error {
 
 type IOStreamClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_input_stream' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_output_stream' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved10' : for field getter : missing Type
+
+// IOStreamClassStruct creates an uninitialised IOStreamClass.
+func IOStreamClassStruct() *IOStreamClass {
+	err := iOStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOStreamClass{native: iOStreamClassStruct.Alloc()}
+	return structGo
 }
 
 var iOStreamPrivateStruct *gi.Struct
@@ -2659,6 +4773,17 @@ type IOStreamPrivate struct {
 	native uintptr
 }
 
+// IOStreamPrivateStruct creates an uninitialised IOStreamPrivate.
+func IOStreamPrivateStruct() *IOStreamPrivate {
+	err := iOStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOStreamPrivate{native: iOStreamPrivateStruct.Alloc()}
+	return structGo
+}
+
 var iconIfaceStruct *gi.Struct
 var iconIfaceStruct_Once sync.Once
 
@@ -2672,6 +4797,29 @@ func iconIfaceStruct_Set() error {
 
 type IconIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'hash' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_tokens' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'from_tokens' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'serialize' : for field getter : missing Type
+
+// IconIfaceStruct creates an uninitialised IconIface.
+func IconIfaceStruct() *IconIface {
+	err := iconIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IconIface{native: iconIfaceStruct.Alloc()}
+	return structGo
 }
 
 var inetAddressClassStruct *gi.Struct
@@ -2689,6 +4837,23 @@ type InetAddressClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'to_string' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_bytes' : for field getter : missing Type
+
+// InetAddressClassStruct creates an uninitialised InetAddressClass.
+func InetAddressClassStruct() *InetAddressClass {
+	err := inetAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetAddressClass{native: inetAddressClassStruct.Alloc()}
+	return structGo
+}
+
 var inetAddressMaskClassStruct *gi.Struct
 var inetAddressMaskClassStruct_Once sync.Once
 
@@ -2702,6 +4867,19 @@ func inetAddressMaskClassStruct_Set() error {
 
 type InetAddressMaskClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// InetAddressMaskClassStruct creates an uninitialised InetAddressMaskClass.
+func InetAddressMaskClassStruct() *InetAddressMaskClass {
+	err := inetAddressMaskClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetAddressMaskClass{native: inetAddressMaskClassStruct.Alloc()}
+	return structGo
 }
 
 var inetAddressMaskPrivateStruct *gi.Struct
@@ -2719,6 +4897,17 @@ type InetAddressMaskPrivate struct {
 	native uintptr
 }
 
+// InetAddressMaskPrivateStruct creates an uninitialised InetAddressMaskPrivate.
+func InetAddressMaskPrivateStruct() *InetAddressMaskPrivate {
+	err := inetAddressMaskPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetAddressMaskPrivate{native: inetAddressMaskPrivateStruct.Alloc()}
+	return structGo
+}
+
 var inetAddressPrivateStruct *gi.Struct
 var inetAddressPrivateStruct_Once sync.Once
 
@@ -2732,6 +4921,17 @@ func inetAddressPrivateStruct_Set() error {
 
 type InetAddressPrivate struct {
 	native uintptr
+}
+
+// InetAddressPrivateStruct creates an uninitialised InetAddressPrivate.
+func InetAddressPrivateStruct() *InetAddressPrivate {
+	err := inetAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetAddressPrivate{native: inetAddressPrivateStruct.Alloc()}
+	return structGo
 }
 
 var inetSocketAddressClassStruct *gi.Struct
@@ -2749,6 +4949,24 @@ type InetSocketAddressClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *InetSocketAddressClass) ParentClass() *SocketAddressClass {
+	argValue := gi.FieldGet(inetSocketAddressClassStruct, recv.native, "parent_class")
+	value := &SocketAddressClass{native: argValue.Pointer()}
+	return value
+}
+
+// InetSocketAddressClassStruct creates an uninitialised InetSocketAddressClass.
+func InetSocketAddressClassStruct() *InetSocketAddressClass {
+	err := inetSocketAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetSocketAddressClass{native: inetSocketAddressClassStruct.Alloc()}
+	return structGo
+}
+
 var inetSocketAddressPrivateStruct *gi.Struct
 var inetSocketAddressPrivateStruct_Once sync.Once
 
@@ -2762,6 +4980,17 @@ func inetSocketAddressPrivateStruct_Set() error {
 
 type InetSocketAddressPrivate struct {
 	native uintptr
+}
+
+// InetSocketAddressPrivateStruct creates an uninitialised InetSocketAddressPrivate.
+func InetSocketAddressPrivateStruct() *InetSocketAddressPrivate {
+	err := inetSocketAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InetSocketAddressPrivate{native: inetSocketAddressPrivateStruct.Alloc()}
+	return structGo
 }
 
 var initableIfaceStruct *gi.Struct
@@ -2779,6 +5008,21 @@ type InitableIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'init' : for field getter : missing Type
+
+// InitableIfaceStruct creates an uninitialised InitableIface.
+func InitableIfaceStruct() *InitableIface {
+	err := initableIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InitableIface{native: initableIfaceStruct.Alloc()}
+	return structGo
+}
+
 var inputMessageStruct *gi.Struct
 var inputMessageStruct_Once sync.Once
 
@@ -2792,6 +5036,51 @@ func inputMessageStruct_Set() error {
 
 type InputMessage struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'vectors' : for field getter : missing Type
+
+// NumVectors returns the C field 'num_vectors'.
+func (recv *InputMessage) NumVectors() uint32 {
+	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_vectors")
+	value := argValue.Uint32()
+	return value
+}
+
+// BytesReceived returns the C field 'bytes_received'.
+func (recv *InputMessage) BytesReceived() uint64 {
+	argValue := gi.FieldGet(inputMessageStruct, recv.native, "bytes_received")
+	value := argValue.Uint64()
+	return value
+}
+
+// Flags returns the C field 'flags'.
+func (recv *InputMessage) Flags() int32 {
+	argValue := gi.FieldGet(inputMessageStruct, recv.native, "flags")
+	value := argValue.Int32()
+	return value
+}
+
+// UNSUPPORTED : C value 'control_messages' : for field getter : missing Type
+
+// NumControlMessages returns the C field 'num_control_messages'.
+func (recv *InputMessage) NumControlMessages() uint32 {
+	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_control_messages")
+	value := argValue.Uint32()
+	return value
+}
+
+// InputMessageStruct creates an uninitialised InputMessage.
+func InputMessageStruct() *InputMessage {
+	err := inputMessageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InputMessage{native: inputMessageStruct.Alloc()}
+	return structGo
 }
 
 var inputStreamClassStruct *gi.Struct
@@ -2809,6 +5098,47 @@ type InputStreamClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'read_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'skip' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'skip_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'skip_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// InputStreamClassStruct creates an uninitialised InputStreamClass.
+func InputStreamClassStruct() *InputStreamClass {
+	err := inputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InputStreamClass{native: inputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var inputStreamPrivateStruct *gi.Struct
 var inputStreamPrivateStruct_Once sync.Once
 
@@ -2822,6 +5152,17 @@ func inputStreamPrivateStruct_Set() error {
 
 type InputStreamPrivate struct {
 	native uintptr
+}
+
+// InputStreamPrivateStruct creates an uninitialised InputStreamPrivate.
+func InputStreamPrivateStruct() *InputStreamPrivate {
+	err := inputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InputStreamPrivate{native: inputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var inputVectorStruct *gi.Struct
@@ -2839,6 +5180,26 @@ type InputVector struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
+
+// Size returns the C field 'size'.
+func (recv *InputVector) Size() uint64 {
+	argValue := gi.FieldGet(inputVectorStruct, recv.native, "size")
+	value := argValue.Uint64()
+	return value
+}
+
+// InputVectorStruct creates an uninitialised InputVector.
+func InputVectorStruct() *InputVector {
+	err := inputVectorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InputVector{native: inputVectorStruct.Alloc()}
+	return structGo
+}
+
 var listModelInterfaceStruct *gi.Struct
 var listModelInterfaceStruct_Once sync.Once
 
@@ -2852,6 +5213,25 @@ func listModelInterfaceStruct_Set() error {
 
 type ListModelInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_item_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_n_items' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item' : for field getter : missing Type
+
+// ListModelInterfaceStruct creates an uninitialised ListModelInterface.
+func ListModelInterfaceStruct() *ListModelInterface {
+	err := listModelInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ListModelInterface{native: listModelInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var listStoreClassStruct *gi.Struct
@@ -2869,6 +5249,19 @@ type ListStoreClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// ListStoreClassStruct creates an uninitialised ListStoreClass.
+func ListStoreClassStruct() *ListStoreClass {
+	err := listStoreClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ListStoreClass{native: listStoreClassStruct.Alloc()}
+	return structGo
+}
+
 var loadableIconIfaceStruct *gi.Struct
 var loadableIconIfaceStruct_Once sync.Once
 
@@ -2882,6 +5275,25 @@ func loadableIconIfaceStruct_Set() error {
 
 type LoadableIconIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'load' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_finish' : for field getter : missing Type
+
+// LoadableIconIfaceStruct creates an uninitialised LoadableIconIface.
+func LoadableIconIfaceStruct() *LoadableIconIface {
+	err := loadableIconIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LoadableIconIface{native: loadableIconIfaceStruct.Alloc()}
+	return structGo
 }
 
 var memoryInputStreamClassStruct *gi.Struct
@@ -2899,6 +5311,34 @@ type MemoryInputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *MemoryInputStreamClass) ParentClass() *InputStreamClass {
+	argValue := gi.FieldGet(memoryInputStreamClassStruct, recv.native, "parent_class")
+	value := &InputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// MemoryInputStreamClassStruct creates an uninitialised MemoryInputStreamClass.
+func MemoryInputStreamClassStruct() *MemoryInputStreamClass {
+	err := memoryInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MemoryInputStreamClass{native: memoryInputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var memoryInputStreamPrivateStruct *gi.Struct
 var memoryInputStreamPrivateStruct_Once sync.Once
 
@@ -2912,6 +5352,17 @@ func memoryInputStreamPrivateStruct_Set() error {
 
 type MemoryInputStreamPrivate struct {
 	native uintptr
+}
+
+// MemoryInputStreamPrivateStruct creates an uninitialised MemoryInputStreamPrivate.
+func MemoryInputStreamPrivateStruct() *MemoryInputStreamPrivate {
+	err := memoryInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MemoryInputStreamPrivate{native: memoryInputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var memoryOutputStreamClassStruct *gi.Struct
@@ -2929,6 +5380,34 @@ type MemoryOutputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *MemoryOutputStreamClass) ParentClass() *OutputStreamClass {
+	argValue := gi.FieldGet(memoryOutputStreamClassStruct, recv.native, "parent_class")
+	value := &OutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// MemoryOutputStreamClassStruct creates an uninitialised MemoryOutputStreamClass.
+func MemoryOutputStreamClassStruct() *MemoryOutputStreamClass {
+	err := memoryOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MemoryOutputStreamClass{native: memoryOutputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var memoryOutputStreamPrivateStruct *gi.Struct
 var memoryOutputStreamPrivateStruct_Once sync.Once
 
@@ -2942,6 +5421,17 @@ func memoryOutputStreamPrivateStruct_Set() error {
 
 type MemoryOutputStreamPrivate struct {
 	native uintptr
+}
+
+// MemoryOutputStreamPrivateStruct creates an uninitialised MemoryOutputStreamPrivate.
+func MemoryOutputStreamPrivateStruct() *MemoryOutputStreamPrivate {
+	err := memoryOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MemoryOutputStreamPrivate{native: memoryOutputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var menuAttributeIterClassStruct *gi.Struct
@@ -2959,6 +5449,21 @@ type MenuAttributeIterClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_next' : for field getter : missing Type
+
+// MenuAttributeIterClassStruct creates an uninitialised MenuAttributeIterClass.
+func MenuAttributeIterClassStruct() *MenuAttributeIterClass {
+	err := menuAttributeIterClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuAttributeIterClass{native: menuAttributeIterClassStruct.Alloc()}
+	return structGo
+}
+
 var menuAttributeIterPrivateStruct *gi.Struct
 var menuAttributeIterPrivateStruct_Once sync.Once
 
@@ -2972,6 +5477,17 @@ func menuAttributeIterPrivateStruct_Set() error {
 
 type MenuAttributeIterPrivate struct {
 	native uintptr
+}
+
+// MenuAttributeIterPrivateStruct creates an uninitialised MenuAttributeIterPrivate.
+func MenuAttributeIterPrivateStruct() *MenuAttributeIterPrivate {
+	err := menuAttributeIterPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuAttributeIterPrivate{native: menuAttributeIterPrivateStruct.Alloc()}
+	return structGo
 }
 
 var menuLinkIterClassStruct *gi.Struct
@@ -2989,6 +5505,21 @@ type MenuLinkIterClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_next' : for field getter : missing Type
+
+// MenuLinkIterClassStruct creates an uninitialised MenuLinkIterClass.
+func MenuLinkIterClassStruct() *MenuLinkIterClass {
+	err := menuLinkIterClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuLinkIterClass{native: menuLinkIterClassStruct.Alloc()}
+	return structGo
+}
+
 var menuLinkIterPrivateStruct *gi.Struct
 var menuLinkIterPrivateStruct_Once sync.Once
 
@@ -3002,6 +5533,17 @@ func menuLinkIterPrivateStruct_Set() error {
 
 type MenuLinkIterPrivate struct {
 	native uintptr
+}
+
+// MenuLinkIterPrivateStruct creates an uninitialised MenuLinkIterPrivate.
+func MenuLinkIterPrivateStruct() *MenuLinkIterPrivate {
+	err := menuLinkIterPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuLinkIterPrivate{native: menuLinkIterPrivateStruct.Alloc()}
+	return structGo
 }
 
 var menuModelClassStruct *gi.Struct
@@ -3019,6 +5561,35 @@ type MenuModelClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'is_mutable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_n_items' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iterate_item_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_attribute_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_links' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iterate_item_links' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_link' : for field getter : missing Type
+
+// MenuModelClassStruct creates an uninitialised MenuModelClass.
+func MenuModelClassStruct() *MenuModelClass {
+	err := menuModelClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuModelClass{native: menuModelClassStruct.Alloc()}
+	return structGo
+}
+
 var menuModelPrivateStruct *gi.Struct
 var menuModelPrivateStruct_Once sync.Once
 
@@ -3032,6 +5603,17 @@ func menuModelPrivateStruct_Set() error {
 
 type MenuModelPrivate struct {
 	native uintptr
+}
+
+// MenuModelPrivateStruct creates an uninitialised MenuModelPrivate.
+func MenuModelPrivateStruct() *MenuModelPrivate {
+	err := menuModelPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuModelPrivate{native: menuModelPrivateStruct.Alloc()}
+	return structGo
 }
 
 var mountIfaceStruct *gi.Struct
@@ -3049,6 +5631,73 @@ type MountIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmounted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_root' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volume' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_drive' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'guess_content_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'guess_content_type_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'guess_content_type_sync' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pre_unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_location' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
+
+// MountIfaceStruct creates an uninitialised MountIface.
+func MountIfaceStruct() *MountIface {
+	err := mountIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MountIface{native: mountIfaceStruct.Alloc()}
+	return structGo
+}
+
 var mountOperationClassStruct *gi.Struct
 var mountOperationClassStruct_Once sync.Once
 
@@ -3062,6 +5711,49 @@ func mountOperationClassStruct_Set() error {
 
 type MountOperationClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'ask_password' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ask_question' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reply' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'aborted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_processes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_unmount_progress' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
+
+// MountOperationClassStruct creates an uninitialised MountOperationClass.
+func MountOperationClassStruct() *MountOperationClass {
+	err := mountOperationClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MountOperationClass{native: mountOperationClassStruct.Alloc()}
+	return structGo
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -3079,6 +5771,17 @@ type MountOperationPrivate struct {
 	native uintptr
 }
 
+// MountOperationPrivateStruct creates an uninitialised MountOperationPrivate.
+func MountOperationPrivateStruct() *MountOperationPrivate {
+	err := mountOperationPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MountOperationPrivate{native: mountOperationPrivateStruct.Alloc()}
+	return structGo
+}
+
 var nativeSocketAddressClassStruct *gi.Struct
 var nativeSocketAddressClassStruct_Once sync.Once
 
@@ -3092,6 +5795,24 @@ func nativeSocketAddressClassStruct_Set() error {
 
 type NativeSocketAddressClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *NativeSocketAddressClass) ParentClass() *SocketAddressClass {
+	argValue := gi.FieldGet(nativeSocketAddressClassStruct, recv.native, "parent_class")
+	value := &SocketAddressClass{native: argValue.Pointer()}
+	return value
+}
+
+// NativeSocketAddressClassStruct creates an uninitialised NativeSocketAddressClass.
+func NativeSocketAddressClassStruct() *NativeSocketAddressClass {
+	err := nativeSocketAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NativeSocketAddressClass{native: nativeSocketAddressClassStruct.Alloc()}
+	return structGo
 }
 
 var nativeSocketAddressPrivateStruct *gi.Struct
@@ -3109,6 +5830,17 @@ type NativeSocketAddressPrivate struct {
 	native uintptr
 }
 
+// NativeSocketAddressPrivateStruct creates an uninitialised NativeSocketAddressPrivate.
+func NativeSocketAddressPrivateStruct() *NativeSocketAddressPrivate {
+	err := nativeSocketAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NativeSocketAddressPrivate{native: nativeSocketAddressPrivateStruct.Alloc()}
+	return structGo
+}
+
 var nativeVolumeMonitorClassStruct *gi.Struct
 var nativeVolumeMonitorClassStruct_Once sync.Once
 
@@ -3122,6 +5854,26 @@ func nativeVolumeMonitorClassStruct_Set() error {
 
 type NativeVolumeMonitorClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *NativeVolumeMonitorClass) ParentClass() *VolumeMonitorClass {
+	argValue := gi.FieldGet(nativeVolumeMonitorClassStruct, recv.native, "parent_class")
+	value := &VolumeMonitorClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'get_mount_for_mount_path' : for field getter : missing Type
+
+// NativeVolumeMonitorClassStruct creates an uninitialised NativeVolumeMonitorClass.
+func NativeVolumeMonitorClassStruct() *NativeVolumeMonitorClass {
+	err := nativeVolumeMonitorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NativeVolumeMonitorClass{native: nativeVolumeMonitorClassStruct.Alloc()}
+	return structGo
 }
 
 var networkAddressClassStruct *gi.Struct
@@ -3139,6 +5891,19 @@ type NetworkAddressClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// NetworkAddressClassStruct creates an uninitialised NetworkAddressClass.
+func NetworkAddressClassStruct() *NetworkAddressClass {
+	err := networkAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NetworkAddressClass{native: networkAddressClassStruct.Alloc()}
+	return structGo
+}
+
 var networkAddressPrivateStruct *gi.Struct
 var networkAddressPrivateStruct_Once sync.Once
 
@@ -3152,6 +5917,17 @@ func networkAddressPrivateStruct_Set() error {
 
 type NetworkAddressPrivate struct {
 	native uintptr
+}
+
+// NetworkAddressPrivateStruct creates an uninitialised NetworkAddressPrivate.
+func NetworkAddressPrivateStruct() *NetworkAddressPrivate {
+	err := networkAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NetworkAddressPrivate{native: networkAddressPrivateStruct.Alloc()}
+	return structGo
 }
 
 var networkMonitorInterfaceStruct *gi.Struct
@@ -3169,6 +5945,27 @@ type NetworkMonitorInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'network_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_reach' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_reach_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_reach_finish' : for field getter : missing Type
+
+// NetworkMonitorInterfaceStruct creates an uninitialised NetworkMonitorInterface.
+func NetworkMonitorInterfaceStruct() *NetworkMonitorInterface {
+	err := networkMonitorInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NetworkMonitorInterface{native: networkMonitorInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var networkServiceClassStruct *gi.Struct
 var networkServiceClassStruct_Once sync.Once
 
@@ -3182,6 +5979,19 @@ func networkServiceClassStruct_Set() error {
 
 type NetworkServiceClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// NetworkServiceClassStruct creates an uninitialised NetworkServiceClass.
+func NetworkServiceClassStruct() *NetworkServiceClass {
+	err := networkServiceClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NetworkServiceClass{native: networkServiceClassStruct.Alloc()}
+	return structGo
 }
 
 var networkServicePrivateStruct *gi.Struct
@@ -3199,6 +6009,17 @@ type NetworkServicePrivate struct {
 	native uintptr
 }
 
+// NetworkServicePrivateStruct creates an uninitialised NetworkServicePrivate.
+func NetworkServicePrivateStruct() *NetworkServicePrivate {
+	err := networkServicePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NetworkServicePrivate{native: networkServicePrivateStruct.Alloc()}
+	return structGo
+}
+
 var outputMessageStruct *gi.Struct
 var outputMessageStruct_Once sync.Once
 
@@ -3212,6 +6033,49 @@ func outputMessageStruct_Set() error {
 
 type OutputMessage struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
+
+// Vectors returns the C field 'vectors'.
+func (recv *OutputMessage) Vectors() *OutputVector {
+	argValue := gi.FieldGet(outputMessageStruct, recv.native, "vectors")
+	value := &OutputVector{native: argValue.Pointer()}
+	return value
+}
+
+// NumVectors returns the C field 'num_vectors'.
+func (recv *OutputMessage) NumVectors() uint32 {
+	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_vectors")
+	value := argValue.Uint32()
+	return value
+}
+
+// BytesSent returns the C field 'bytes_sent'.
+func (recv *OutputMessage) BytesSent() uint32 {
+	argValue := gi.FieldGet(outputMessageStruct, recv.native, "bytes_sent")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'control_messages' : for field getter : missing Type
+
+// NumControlMessages returns the C field 'num_control_messages'.
+func (recv *OutputMessage) NumControlMessages() uint32 {
+	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_control_messages")
+	value := argValue.Uint32()
+	return value
+}
+
+// OutputMessageStruct creates an uninitialised OutputMessage.
+func OutputMessageStruct() *OutputMessage {
+	err := outputMessageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OutputMessage{native: outputMessageStruct.Alloc()}
+	return structGo
 }
 
 var outputStreamClassStruct *gi.Struct
@@ -3229,6 +6093,59 @@ type OutputStreamClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'write_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'splice' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'splice_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'splice_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// OutputStreamClassStruct creates an uninitialised OutputStreamClass.
+func OutputStreamClassStruct() *OutputStreamClass {
+	err := outputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OutputStreamClass{native: outputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var outputStreamPrivateStruct *gi.Struct
 var outputStreamPrivateStruct_Once sync.Once
 
@@ -3242,6 +6159,17 @@ func outputStreamPrivateStruct_Set() error {
 
 type OutputStreamPrivate struct {
 	native uintptr
+}
+
+// OutputStreamPrivateStruct creates an uninitialised OutputStreamPrivate.
+func OutputStreamPrivateStruct() *OutputStreamPrivate {
+	err := outputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OutputStreamPrivate{native: outputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var outputVectorStruct *gi.Struct
@@ -3259,6 +6187,26 @@ type OutputVector struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
+
+// Size returns the C field 'size'.
+func (recv *OutputVector) Size() uint64 {
+	argValue := gi.FieldGet(outputVectorStruct, recv.native, "size")
+	value := argValue.Uint64()
+	return value
+}
+
+// OutputVectorStruct creates an uninitialised OutputVector.
+func OutputVectorStruct() *OutputVector {
+	err := outputVectorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OutputVector{native: outputVectorStruct.Alloc()}
+	return structGo
+}
+
 var permissionClassStruct *gi.Struct
 var permissionClassStruct_Once sync.Once
 
@@ -3272,6 +6220,33 @@ func permissionClassStruct_Set() error {
 
 type PermissionClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'acquire' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'acquire_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'acquire_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'release' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'release_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'release_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved' : for field getter : missing Type
+
+// PermissionClassStruct creates an uninitialised PermissionClass.
+func PermissionClassStruct() *PermissionClass {
+	err := permissionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PermissionClass{native: permissionClassStruct.Alloc()}
+	return structGo
 }
 
 var permissionPrivateStruct *gi.Struct
@@ -3289,6 +6264,17 @@ type PermissionPrivate struct {
 	native uintptr
 }
 
+// PermissionPrivateStruct creates an uninitialised PermissionPrivate.
+func PermissionPrivateStruct() *PermissionPrivate {
+	err := permissionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PermissionPrivate{native: permissionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var pollableInputStreamInterfaceStruct *gi.Struct
 var pollableInputStreamInterfaceStruct_Once sync.Once
 
@@ -3302,6 +6288,27 @@ func pollableInputStreamInterfaceStruct_Set() error {
 
 type PollableInputStreamInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'can_poll' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_readable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_source' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_nonblocking' : for field getter : missing Type
+
+// PollableInputStreamInterfaceStruct creates an uninitialised PollableInputStreamInterface.
+func PollableInputStreamInterfaceStruct() *PollableInputStreamInterface {
+	err := pollableInputStreamInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PollableInputStreamInterface{native: pollableInputStreamInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var pollableOutputStreamInterfaceStruct *gi.Struct
@@ -3319,6 +6326,29 @@ type PollableOutputStreamInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'can_poll' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_writable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_source' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_nonblocking' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_nonblocking' : for field getter : missing Type
+
+// PollableOutputStreamInterfaceStruct creates an uninitialised PollableOutputStreamInterface.
+func PollableOutputStreamInterfaceStruct() *PollableOutputStreamInterface {
+	err := pollableOutputStreamInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PollableOutputStreamInterface{native: pollableOutputStreamInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var proxyAddressClassStruct *gi.Struct
 var proxyAddressClassStruct_Once sync.Once
 
@@ -3332,6 +6362,24 @@ func proxyAddressClassStruct_Set() error {
 
 type ProxyAddressClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *ProxyAddressClass) ParentClass() *InetSocketAddressClass {
+	argValue := gi.FieldGet(proxyAddressClassStruct, recv.native, "parent_class")
+	value := &InetSocketAddressClass{native: argValue.Pointer()}
+	return value
+}
+
+// ProxyAddressClassStruct creates an uninitialised ProxyAddressClass.
+func ProxyAddressClassStruct() *ProxyAddressClass {
+	err := proxyAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyAddressClass{native: proxyAddressClassStruct.Alloc()}
+	return structGo
 }
 
 var proxyAddressEnumeratorClassStruct *gi.Struct
@@ -3349,6 +6397,31 @@ type ProxyAddressEnumeratorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// ProxyAddressEnumeratorClassStruct creates an uninitialised ProxyAddressEnumeratorClass.
+func ProxyAddressEnumeratorClassStruct() *ProxyAddressEnumeratorClass {
+	err := proxyAddressEnumeratorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyAddressEnumeratorClass{native: proxyAddressEnumeratorClassStruct.Alloc()}
+	return structGo
+}
+
 var proxyAddressEnumeratorPrivateStruct *gi.Struct
 var proxyAddressEnumeratorPrivateStruct_Once sync.Once
 
@@ -3362,6 +6435,17 @@ func proxyAddressEnumeratorPrivateStruct_Set() error {
 
 type ProxyAddressEnumeratorPrivate struct {
 	native uintptr
+}
+
+// ProxyAddressEnumeratorPrivateStruct creates an uninitialised ProxyAddressEnumeratorPrivate.
+func ProxyAddressEnumeratorPrivateStruct() *ProxyAddressEnumeratorPrivate {
+	err := proxyAddressEnumeratorPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyAddressEnumeratorPrivate{native: proxyAddressEnumeratorPrivateStruct.Alloc()}
+	return structGo
 }
 
 var proxyAddressPrivateStruct *gi.Struct
@@ -3379,6 +6463,17 @@ type ProxyAddressPrivate struct {
 	native uintptr
 }
 
+// ProxyAddressPrivateStruct creates an uninitialised ProxyAddressPrivate.
+func ProxyAddressPrivateStruct() *ProxyAddressPrivate {
+	err := proxyAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyAddressPrivate{native: proxyAddressPrivateStruct.Alloc()}
+	return structGo
+}
+
 var proxyInterfaceStruct *gi.Struct
 var proxyInterfaceStruct_Once sync.Once
 
@@ -3392,6 +6487,27 @@ func proxyInterfaceStruct_Set() error {
 
 type ProxyInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'connect' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'connect_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'connect_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_hostname' : for field getter : missing Type
+
+// ProxyInterfaceStruct creates an uninitialised ProxyInterface.
+func ProxyInterfaceStruct() *ProxyInterface {
+	err := proxyInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyInterface{native: proxyInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -3409,6 +6525,27 @@ type ProxyResolverInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'is_supported' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_finish' : for field getter : missing Type
+
+// ProxyResolverInterfaceStruct creates an uninitialised ProxyResolverInterface.
+func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
+	err := proxyResolverInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyResolverInterface{native: proxyResolverInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var remoteActionGroupInterfaceStruct *gi.Struct
 var remoteActionGroupInterfaceStruct_Once sync.Once
 
@@ -3422,6 +6559,23 @@ func remoteActionGroupInterfaceStruct_Set() error {
 
 type RemoteActionGroupInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'activate_action_full' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_action_state_full' : for field getter : missing Type
+
+// RemoteActionGroupInterfaceStruct creates an uninitialised RemoteActionGroupInterface.
+func RemoteActionGroupInterfaceStruct() *RemoteActionGroupInterface {
+	err := remoteActionGroupInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RemoteActionGroupInterface{native: remoteActionGroupInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var resolverClassStruct *gi.Struct
@@ -3439,6 +6593,51 @@ type ResolverClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'reload' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_address' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_address_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_address_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_service' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_service_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_service_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_records' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_records_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_records_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_with_flags_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_with_flags_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_with_flags' : for field getter : missing Type
+
+// ResolverClassStruct creates an uninitialised ResolverClass.
+func ResolverClassStruct() *ResolverClass {
+	err := resolverClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ResolverClass{native: resolverClassStruct.Alloc()}
+	return structGo
+}
+
 var resolverPrivateStruct *gi.Struct
 var resolverPrivateStruct_Once sync.Once
 
@@ -3452,6 +6651,17 @@ func resolverPrivateStruct_Set() error {
 
 type ResolverPrivate struct {
 	native uintptr
+}
+
+// ResolverPrivateStruct creates an uninitialised ResolverPrivate.
+func ResolverPrivateStruct() *ResolverPrivate {
+	err := resolverPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ResolverPrivate{native: resolverPrivateStruct.Alloc()}
+	return structGo
 }
 
 var resourceStruct *gi.Struct
@@ -3610,6 +6820,29 @@ type SeekableIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// SeekableIfaceStruct creates an uninitialised SeekableIface.
+func SeekableIfaceStruct() *SeekableIface {
+	err := seekableIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SeekableIface{native: seekableIfaceStruct.Alloc()}
+	return structGo
+}
+
 var settingsBackendClassStruct *gi.Struct
 var settingsBackendClassStruct_Once sync.Once
 
@@ -3623,6 +6856,39 @@ func settingsBackendClassStruct_Set() error {
 
 type SettingsBackendClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'read' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_writable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_tree' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'subscribe' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unsubscribe' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'sync' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_permission' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_user_value' : for field getter : missing Type
+
+// SettingsBackendClassStruct creates an uninitialised SettingsBackendClass.
+func SettingsBackendClassStruct() *SettingsBackendClass {
+	err := settingsBackendClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsBackendClass{native: settingsBackendClassStruct.Alloc()}
+	return structGo
 }
 
 var settingsBackendPrivateStruct *gi.Struct
@@ -3640,6 +6906,17 @@ type SettingsBackendPrivate struct {
 	native uintptr
 }
 
+// SettingsBackendPrivateStruct creates an uninitialised SettingsBackendPrivate.
+func SettingsBackendPrivateStruct() *SettingsBackendPrivate {
+	err := settingsBackendPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsBackendPrivate{native: settingsBackendPrivateStruct.Alloc()}
+	return structGo
+}
+
 var settingsClassStruct *gi.Struct
 var settingsClassStruct_Once sync.Once
 
@@ -3653,6 +6930,29 @@ func settingsClassStruct_Set() error {
 
 type SettingsClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'writable_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writable_change_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// SettingsClassStruct creates an uninitialised SettingsClass.
+func SettingsClassStruct() *SettingsClass {
+	err := settingsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsClass{native: settingsClassStruct.Alloc()}
+	return structGo
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -3670,6 +6970,17 @@ type SettingsPrivate struct {
 	native uintptr
 }
 
+// SettingsPrivateStruct creates an uninitialised SettingsPrivate.
+func SettingsPrivateStruct() *SettingsPrivate {
+	err := settingsPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsPrivate{native: settingsPrivateStruct.Alloc()}
+	return structGo
+}
+
 var settingsSchemaStruct *gi.Struct
 var settingsSchemaStruct_Once sync.Once
 
@@ -3683,6 +6994,17 @@ func settingsSchemaStruct_Set() error {
 
 type SettingsSchema struct {
 	native uintptr
+}
+
+// SettingsSchemaStruct creates an uninitialised SettingsSchema.
+func SettingsSchemaStruct() *SettingsSchema {
+	err := settingsSchemaStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsSchema{native: settingsSchemaStruct.Alloc()}
+	return structGo
 }
 
 var settingsSchemaGetIdFunction *gi.Function
@@ -3944,6 +7266,17 @@ func settingsSchemaKeyStruct_Set() error {
 
 type SettingsSchemaKey struct {
 	native uintptr
+}
+
+// SettingsSchemaKeyStruct creates an uninitialised SettingsSchemaKey.
+func SettingsSchemaKeyStruct() *SettingsSchemaKey {
+	err := settingsSchemaKeyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsSchemaKey{native: settingsSchemaKeyStruct.Alloc()}
+	return structGo
 }
 
 // UNSUPPORTED : C value 'g_settings_schema_key_get_default_value' : return type 'GLib.Variant' not supported
@@ -4270,6 +7603,17 @@ type SimpleActionGroupClass struct {
 	native uintptr
 }
 
+// SimpleActionGroupClassStruct creates an uninitialised SimpleActionGroupClass.
+func SimpleActionGroupClassStruct() *SimpleActionGroupClass {
+	err := simpleActionGroupClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleActionGroupClass{native: simpleActionGroupClassStruct.Alloc()}
+	return structGo
+}
+
 var simpleActionGroupPrivateStruct *gi.Struct
 var simpleActionGroupPrivateStruct_Once sync.Once
 
@@ -4283,6 +7627,17 @@ func simpleActionGroupPrivateStruct_Set() error {
 
 type SimpleActionGroupPrivate struct {
 	native uintptr
+}
+
+// SimpleActionGroupPrivateStruct creates an uninitialised SimpleActionGroupPrivate.
+func SimpleActionGroupPrivateStruct() *SimpleActionGroupPrivate {
+	err := simpleActionGroupPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleActionGroupPrivate{native: simpleActionGroupPrivateStruct.Alloc()}
+	return structGo
 }
 
 var simpleAsyncResultClassStruct *gi.Struct
@@ -4300,6 +7655,17 @@ type SimpleAsyncResultClass struct {
 	native uintptr
 }
 
+// SimpleAsyncResultClassStruct creates an uninitialised SimpleAsyncResultClass.
+func SimpleAsyncResultClassStruct() *SimpleAsyncResultClass {
+	err := simpleAsyncResultClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleAsyncResultClass{native: simpleAsyncResultClassStruct.Alloc()}
+	return structGo
+}
+
 var simpleProxyResolverClassStruct *gi.Struct
 var simpleProxyResolverClassStruct_Once sync.Once
 
@@ -4313,6 +7679,29 @@ func simpleProxyResolverClassStruct_Set() error {
 
 type SimpleProxyResolverClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// SimpleProxyResolverClassStruct creates an uninitialised SimpleProxyResolverClass.
+func SimpleProxyResolverClassStruct() *SimpleProxyResolverClass {
+	err := simpleProxyResolverClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleProxyResolverClass{native: simpleProxyResolverClassStruct.Alloc()}
+	return structGo
 }
 
 var simpleProxyResolverPrivateStruct *gi.Struct
@@ -4330,6 +7719,17 @@ type SimpleProxyResolverPrivate struct {
 	native uintptr
 }
 
+// SimpleProxyResolverPrivateStruct creates an uninitialised SimpleProxyResolverPrivate.
+func SimpleProxyResolverPrivateStruct() *SimpleProxyResolverPrivate {
+	err := simpleProxyResolverPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleProxyResolverPrivate{native: simpleProxyResolverPrivateStruct.Alloc()}
+	return structGo
+}
+
 var socketAddressClassStruct *gi.Struct
 var socketAddressClassStruct_Once sync.Once
 
@@ -4343,6 +7743,25 @@ func socketAddressClassStruct_Set() error {
 
 type SocketAddressClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_family' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_native_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_native' : for field getter : missing Type
+
+// SocketAddressClassStruct creates an uninitialised SocketAddressClass.
+func SocketAddressClassStruct() *SocketAddressClass {
+	err := socketAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketAddressClass{native: socketAddressClassStruct.Alloc()}
+	return structGo
 }
 
 var socketAddressEnumeratorClassStruct *gi.Struct
@@ -4360,6 +7779,23 @@ type SocketAddressEnumeratorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'next' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_finish' : for field getter : missing Type
+
+// SocketAddressEnumeratorClassStruct creates an uninitialised SocketAddressEnumeratorClass.
+func SocketAddressEnumeratorClassStruct() *SocketAddressEnumeratorClass {
+	err := socketAddressEnumeratorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketAddressEnumeratorClass{native: socketAddressEnumeratorClassStruct.Alloc()}
+	return structGo
+}
+
 var socketClassStruct *gi.Struct
 var socketClassStruct_Once sync.Once
 
@@ -4373,6 +7809,39 @@ func socketClassStruct_Set() error {
 
 type SocketClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved10' : for field getter : missing Type
+
+// SocketClassStruct creates an uninitialised SocketClass.
+func SocketClassStruct() *SocketClass {
+	err := socketClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	return structGo
 }
 
 var socketClientClassStruct *gi.Struct
@@ -4390,6 +7859,29 @@ type SocketClientClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'event' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// SocketClientClassStruct creates an uninitialised SocketClientClass.
+func SocketClientClassStruct() *SocketClientClass {
+	err := socketClientClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketClientClass{native: socketClientClassStruct.Alloc()}
+	return structGo
+}
+
 var socketClientPrivateStruct *gi.Struct
 var socketClientPrivateStruct_Once sync.Once
 
@@ -4403,6 +7895,17 @@ func socketClientPrivateStruct_Set() error {
 
 type SocketClientPrivate struct {
 	native uintptr
+}
+
+// SocketClientPrivateStruct creates an uninitialised SocketClientPrivate.
+func SocketClientPrivateStruct() *SocketClientPrivate {
+	err := socketClientPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketClientPrivate{native: socketClientPrivateStruct.Alloc()}
+	return structGo
 }
 
 var socketConnectableIfaceStruct *gi.Struct
@@ -4420,6 +7923,25 @@ type SocketConnectableIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'enumerate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'proxy_enumerate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_string' : for field getter : missing Type
+
+// SocketConnectableIfaceStruct creates an uninitialised SocketConnectableIface.
+func SocketConnectableIfaceStruct() *SocketConnectableIface {
+	err := socketConnectableIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketConnectableIface{native: socketConnectableIfaceStruct.Alloc()}
+	return structGo
+}
+
 var socketConnectionClassStruct *gi.Struct
 var socketConnectionClassStruct_Once sync.Once
 
@@ -4433,6 +7955,36 @@ func socketConnectionClassStruct_Set() error {
 
 type SocketConnectionClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *SocketConnectionClass) ParentClass() *IOStreamClass {
+	argValue := gi.FieldGet(socketConnectionClassStruct, recv.native, "parent_class")
+	value := &IOStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// SocketConnectionClassStruct creates an uninitialised SocketConnectionClass.
+func SocketConnectionClassStruct() *SocketConnectionClass {
+	err := socketConnectionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketConnectionClass{native: socketConnectionClassStruct.Alloc()}
+	return structGo
 }
 
 var socketConnectionPrivateStruct *gi.Struct
@@ -4450,6 +8002,17 @@ type SocketConnectionPrivate struct {
 	native uintptr
 }
 
+// SocketConnectionPrivateStruct creates an uninitialised SocketConnectionPrivate.
+func SocketConnectionPrivateStruct() *SocketConnectionPrivate {
+	err := socketConnectionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketConnectionPrivate{native: socketConnectionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var socketControlMessageClassStruct *gi.Struct
 var socketControlMessageClassStruct_Once sync.Once
 
@@ -4463,6 +8026,39 @@ func socketControlMessageClassStruct_Set() error {
 
 type SocketControlMessageClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_level' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'serialize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deserialize' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// SocketControlMessageClassStruct creates an uninitialised SocketControlMessageClass.
+func SocketControlMessageClassStruct() *SocketControlMessageClass {
+	err := socketControlMessageClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketControlMessageClass{native: socketControlMessageClassStruct.Alloc()}
+	return structGo
 }
 
 var socketControlMessagePrivateStruct *gi.Struct
@@ -4480,6 +8076,17 @@ type SocketControlMessagePrivate struct {
 	native uintptr
 }
 
+// SocketControlMessagePrivateStruct creates an uninitialised SocketControlMessagePrivate.
+func SocketControlMessagePrivateStruct() *SocketControlMessagePrivate {
+	err := socketControlMessagePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketControlMessagePrivate{native: socketControlMessagePrivateStruct.Alloc()}
+	return structGo
+}
+
 var socketListenerClassStruct *gi.Struct
 var socketListenerClassStruct_Once sync.Once
 
@@ -4493,6 +8100,33 @@ func socketListenerClassStruct_Set() error {
 
 type SocketListenerClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'event' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// SocketListenerClassStruct creates an uninitialised SocketListenerClass.
+func SocketListenerClassStruct() *SocketListenerClass {
+	err := socketListenerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketListenerClass{native: socketListenerClassStruct.Alloc()}
+	return structGo
 }
 
 var socketListenerPrivateStruct *gi.Struct
@@ -4510,6 +8144,17 @@ type SocketListenerPrivate struct {
 	native uintptr
 }
 
+// SocketListenerPrivateStruct creates an uninitialised SocketListenerPrivate.
+func SocketListenerPrivateStruct() *SocketListenerPrivate {
+	err := socketListenerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketListenerPrivate{native: socketListenerPrivateStruct.Alloc()}
+	return structGo
+}
+
 var socketPrivateStruct *gi.Struct
 var socketPrivateStruct_Once sync.Once
 
@@ -4523,6 +8168,17 @@ func socketPrivateStruct_Set() error {
 
 type SocketPrivate struct {
 	native uintptr
+}
+
+// SocketPrivateStruct creates an uninitialised SocketPrivate.
+func SocketPrivateStruct() *SocketPrivate {
+	err := socketPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketPrivate{native: socketPrivateStruct.Alloc()}
+	return structGo
 }
 
 var socketServiceClassStruct *gi.Struct
@@ -4540,6 +8196,38 @@ type SocketServiceClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *SocketServiceClass) ParentClass() *SocketListenerClass {
+	argValue := gi.FieldGet(socketServiceClassStruct, recv.native, "parent_class")
+	value := &SocketListenerClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'incoming' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// SocketServiceClassStruct creates an uninitialised SocketServiceClass.
+func SocketServiceClassStruct() *SocketServiceClass {
+	err := socketServiceClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketServiceClass{native: socketServiceClassStruct.Alloc()}
+	return structGo
+}
+
 var socketServicePrivateStruct *gi.Struct
 var socketServicePrivateStruct_Once sync.Once
 
@@ -4553,6 +8241,17 @@ func socketServicePrivateStruct_Set() error {
 
 type SocketServicePrivate struct {
 	native uintptr
+}
+
+// SocketServicePrivateStruct creates an uninitialised SocketServicePrivate.
+func SocketServicePrivateStruct() *SocketServicePrivate {
+	err := socketServicePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketServicePrivate{native: socketServicePrivateStruct.Alloc()}
+	return structGo
 }
 
 var srvTargetStruct *gi.Struct
@@ -4808,6 +8507,17 @@ type StaticResource struct {
 	native uintptr
 }
 
+// StaticResourceStruct creates an uninitialised StaticResource.
+func StaticResourceStruct() *StaticResource {
+	err := staticResourceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StaticResource{native: staticResourceStruct.Alloc()}
+	return structGo
+}
+
 var staticResourceFiniFunction *gi.Function
 var staticResourceFiniFunction_Once sync.Once
 
@@ -4911,6 +8621,17 @@ type TaskClass struct {
 	native uintptr
 }
 
+// TaskClassStruct creates an uninitialised TaskClass.
+func TaskClassStruct() *TaskClass {
+	err := taskClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TaskClass{native: taskClassStruct.Alloc()}
+	return structGo
+}
+
 var tcpConnectionClassStruct *gi.Struct
 var tcpConnectionClassStruct_Once sync.Once
 
@@ -4924,6 +8645,24 @@ func tcpConnectionClassStruct_Set() error {
 
 type TcpConnectionClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *TcpConnectionClass) ParentClass() *SocketConnectionClass {
+	argValue := gi.FieldGet(tcpConnectionClassStruct, recv.native, "parent_class")
+	value := &SocketConnectionClass{native: argValue.Pointer()}
+	return value
+}
+
+// TcpConnectionClassStruct creates an uninitialised TcpConnectionClass.
+func TcpConnectionClassStruct() *TcpConnectionClass {
+	err := tcpConnectionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TcpConnectionClass{native: tcpConnectionClassStruct.Alloc()}
+	return structGo
 }
 
 var tcpConnectionPrivateStruct *gi.Struct
@@ -4941,6 +8680,17 @@ type TcpConnectionPrivate struct {
 	native uintptr
 }
 
+// TcpConnectionPrivateStruct creates an uninitialised TcpConnectionPrivate.
+func TcpConnectionPrivateStruct() *TcpConnectionPrivate {
+	err := tcpConnectionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TcpConnectionPrivate{native: tcpConnectionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var tcpWrapperConnectionClassStruct *gi.Struct
 var tcpWrapperConnectionClassStruct_Once sync.Once
 
@@ -4954,6 +8704,24 @@ func tcpWrapperConnectionClassStruct_Set() error {
 
 type TcpWrapperConnectionClass struct {
 	native uintptr
+}
+
+// ParentClass returns the C field 'parent_class'.
+func (recv *TcpWrapperConnectionClass) ParentClass() *TcpConnectionClass {
+	argValue := gi.FieldGet(tcpWrapperConnectionClassStruct, recv.native, "parent_class")
+	value := &TcpConnectionClass{native: argValue.Pointer()}
+	return value
+}
+
+// TcpWrapperConnectionClassStruct creates an uninitialised TcpWrapperConnectionClass.
+func TcpWrapperConnectionClassStruct() *TcpWrapperConnectionClass {
+	err := tcpWrapperConnectionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TcpWrapperConnectionClass{native: tcpWrapperConnectionClassStruct.Alloc()}
+	return structGo
 }
 
 var tcpWrapperConnectionPrivateStruct *gi.Struct
@@ -4971,6 +8739,17 @@ type TcpWrapperConnectionPrivate struct {
 	native uintptr
 }
 
+// TcpWrapperConnectionPrivateStruct creates an uninitialised TcpWrapperConnectionPrivate.
+func TcpWrapperConnectionPrivateStruct() *TcpWrapperConnectionPrivate {
+	err := tcpWrapperConnectionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TcpWrapperConnectionPrivate{native: tcpWrapperConnectionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var themedIconClassStruct *gi.Struct
 var themedIconClassStruct_Once sync.Once
 
@@ -4984,6 +8763,17 @@ func themedIconClassStruct_Set() error {
 
 type ThemedIconClass struct {
 	native uintptr
+}
+
+// ThemedIconClassStruct creates an uninitialised ThemedIconClass.
+func ThemedIconClassStruct() *ThemedIconClass {
+	err := themedIconClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ThemedIconClass{native: themedIconClassStruct.Alloc()}
+	return structGo
 }
 
 var threadedSocketServiceClassStruct *gi.Struct
@@ -5001,6 +8791,36 @@ type ThreadedSocketServiceClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *ThreadedSocketServiceClass) ParentClass() *SocketServiceClass {
+	argValue := gi.FieldGet(threadedSocketServiceClassStruct, recv.native, "parent_class")
+	value := &SocketServiceClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'run' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// ThreadedSocketServiceClassStruct creates an uninitialised ThreadedSocketServiceClass.
+func ThreadedSocketServiceClassStruct() *ThreadedSocketServiceClass {
+	err := threadedSocketServiceClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ThreadedSocketServiceClass{native: threadedSocketServiceClassStruct.Alloc()}
+	return structGo
+}
+
 var threadedSocketServicePrivateStruct *gi.Struct
 var threadedSocketServicePrivateStruct_Once sync.Once
 
@@ -5014,6 +8834,17 @@ func threadedSocketServicePrivateStruct_Set() error {
 
 type ThreadedSocketServicePrivate struct {
 	native uintptr
+}
+
+// ThreadedSocketServicePrivateStruct creates an uninitialised ThreadedSocketServicePrivate.
+func ThreadedSocketServicePrivateStruct() *ThreadedSocketServicePrivate {
+	err := threadedSocketServicePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ThreadedSocketServicePrivate{native: threadedSocketServicePrivateStruct.Alloc()}
+	return structGo
 }
 
 var tlsBackendInterfaceStruct *gi.Struct
@@ -5031,6 +8862,37 @@ type TlsBackendInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'supports_tls' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_certificate_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_client_connection_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_server_connection_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_file_database_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_database' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_dtls' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_dtls_client_connection_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_dtls_server_connection_type' : for field getter : missing Type
+
+// TlsBackendInterfaceStruct creates an uninitialised TlsBackendInterface.
+func TlsBackendInterfaceStruct() *TlsBackendInterface {
+	err := tlsBackendInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsBackendInterface{native: tlsBackendInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var tlsCertificateClassStruct *gi.Struct
 var tlsCertificateClassStruct_Once sync.Once
 
@@ -5044,6 +8906,21 @@ func tlsCertificateClassStruct_Set() error {
 
 type TlsCertificateClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'verify' : for field getter : missing Type
+
+// TlsCertificateClassStruct creates an uninitialised TlsCertificateClass.
+func TlsCertificateClassStruct() *TlsCertificateClass {
+	err := tlsCertificateClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsCertificateClass{native: tlsCertificateClassStruct.Alloc()}
+	return structGo
 }
 
 var tlsCertificatePrivateStruct *gi.Struct
@@ -5061,6 +8938,17 @@ type TlsCertificatePrivate struct {
 	native uintptr
 }
 
+// TlsCertificatePrivateStruct creates an uninitialised TlsCertificatePrivate.
+func TlsCertificatePrivateStruct() *TlsCertificatePrivate {
+	err := tlsCertificatePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsCertificatePrivate{native: tlsCertificatePrivateStruct.Alloc()}
+	return structGo
+}
+
 var tlsClientConnectionInterfaceStruct *gi.Struct
 var tlsClientConnectionInterfaceStruct_Once sync.Once
 
@@ -5074,6 +8962,21 @@ func tlsClientConnectionInterfaceStruct_Set() error {
 
 type TlsClientConnectionInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'copy_session_state' : for field getter : missing Type
+
+// TlsClientConnectionInterfaceStruct creates an uninitialised TlsClientConnectionInterface.
+func TlsClientConnectionInterfaceStruct() *TlsClientConnectionInterface {
+	err := tlsClientConnectionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsClientConnectionInterface{native: tlsClientConnectionInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var tlsConnectionClassStruct *gi.Struct
@@ -5091,6 +8994,32 @@ type TlsConnectionClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *TlsConnectionClass) ParentClass() *IOStreamClass {
+	argValue := gi.FieldGet(tlsConnectionClassStruct, recv.native, "parent_class")
+	value := &IOStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'accept_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_finish' : for field getter : missing Type
+
+// TlsConnectionClassStruct creates an uninitialised TlsConnectionClass.
+func TlsConnectionClassStruct() *TlsConnectionClass {
+	err := tlsConnectionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsConnectionClass{native: tlsConnectionClassStruct.Alloc()}
+	return structGo
+}
+
 var tlsConnectionPrivateStruct *gi.Struct
 var tlsConnectionPrivateStruct_Once sync.Once
 
@@ -5104,6 +9033,17 @@ func tlsConnectionPrivateStruct_Set() error {
 
 type TlsConnectionPrivate struct {
 	native uintptr
+}
+
+// TlsConnectionPrivateStruct creates an uninitialised TlsConnectionPrivate.
+func TlsConnectionPrivateStruct() *TlsConnectionPrivate {
+	err := tlsConnectionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsConnectionPrivate{native: tlsConnectionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var tlsDatabaseClassStruct *gi.Struct
@@ -5121,6 +9061,45 @@ type TlsDatabaseClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'verify_chain' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'verify_chain_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'verify_chain_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_certificate_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_for_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_for_handle_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_for_handle_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_issuer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_issuer_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_issuer_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificates_issued_by' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificates_issued_by_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificates_issued_by_finish' : for field getter : missing Type
+
+// TlsDatabaseClassStruct creates an uninitialised TlsDatabaseClass.
+func TlsDatabaseClassStruct() *TlsDatabaseClass {
+	err := tlsDatabaseClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsDatabaseClass{native: tlsDatabaseClassStruct.Alloc()}
+	return structGo
+}
+
 var tlsDatabasePrivateStruct *gi.Struct
 var tlsDatabasePrivateStruct_Once sync.Once
 
@@ -5134,6 +9113,17 @@ func tlsDatabasePrivateStruct_Set() error {
 
 type TlsDatabasePrivate struct {
 	native uintptr
+}
+
+// TlsDatabasePrivateStruct creates an uninitialised TlsDatabasePrivate.
+func TlsDatabasePrivateStruct() *TlsDatabasePrivate {
+	err := tlsDatabasePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsDatabasePrivate{native: tlsDatabasePrivateStruct.Alloc()}
+	return structGo
 }
 
 var tlsFileDatabaseInterfaceStruct *gi.Struct
@@ -5151,6 +9141,19 @@ type TlsFileDatabaseInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// TlsFileDatabaseInterfaceStruct creates an uninitialised TlsFileDatabaseInterface.
+func TlsFileDatabaseInterfaceStruct() *TlsFileDatabaseInterface {
+	err := tlsFileDatabaseInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsFileDatabaseInterface{native: tlsFileDatabaseInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var tlsInteractionClassStruct *gi.Struct
 var tlsInteractionClassStruct_Once sync.Once
 
@@ -5164,6 +9167,29 @@ func tlsInteractionClassStruct_Set() error {
 
 type TlsInteractionClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'ask_password' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ask_password_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ask_password_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_certificate_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_certificate_finish' : for field getter : missing Type
+
+// TlsInteractionClassStruct creates an uninitialised TlsInteractionClass.
+func TlsInteractionClassStruct() *TlsInteractionClass {
+	err := tlsInteractionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsInteractionClass{native: tlsInteractionClassStruct.Alloc()}
+	return structGo
 }
 
 var tlsInteractionPrivateStruct *gi.Struct
@@ -5181,6 +9207,17 @@ type TlsInteractionPrivate struct {
 	native uintptr
 }
 
+// TlsInteractionPrivateStruct creates an uninitialised TlsInteractionPrivate.
+func TlsInteractionPrivateStruct() *TlsInteractionPrivate {
+	err := tlsInteractionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsInteractionPrivate{native: tlsInteractionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var tlsPasswordClassStruct *gi.Struct
 var tlsPasswordClassStruct_Once sync.Once
 
@@ -5194,6 +9231,25 @@ func tlsPasswordClassStruct_Set() error {
 
 type TlsPasswordClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'get_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_warning' : for field getter : missing Type
+
+// TlsPasswordClassStruct creates an uninitialised TlsPasswordClass.
+func TlsPasswordClassStruct() *TlsPasswordClass {
+	err := tlsPasswordClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsPasswordClass{native: tlsPasswordClassStruct.Alloc()}
+	return structGo
 }
 
 var tlsPasswordPrivateStruct *gi.Struct
@@ -5211,6 +9267,17 @@ type TlsPasswordPrivate struct {
 	native uintptr
 }
 
+// TlsPasswordPrivateStruct creates an uninitialised TlsPasswordPrivate.
+func TlsPasswordPrivateStruct() *TlsPasswordPrivate {
+	err := tlsPasswordPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsPasswordPrivate{native: tlsPasswordPrivateStruct.Alloc()}
+	return structGo
+}
+
 var tlsServerConnectionInterfaceStruct *gi.Struct
 var tlsServerConnectionInterfaceStruct_Once sync.Once
 
@@ -5224,6 +9291,19 @@ func tlsServerConnectionInterfaceStruct_Set() error {
 
 type TlsServerConnectionInterface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// TlsServerConnectionInterfaceStruct creates an uninitialised TlsServerConnectionInterface.
+func TlsServerConnectionInterfaceStruct() *TlsServerConnectionInterface {
+	err := tlsServerConnectionInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsServerConnectionInterface{native: tlsServerConnectionInterfaceStruct.Alloc()}
+	return structGo
 }
 
 var unixConnectionClassStruct *gi.Struct
@@ -5241,6 +9321,24 @@ type UnixConnectionClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixConnectionClass) ParentClass() *SocketConnectionClass {
+	argValue := gi.FieldGet(unixConnectionClassStruct, recv.native, "parent_class")
+	value := &SocketConnectionClass{native: argValue.Pointer()}
+	return value
+}
+
+// UnixConnectionClassStruct creates an uninitialised UnixConnectionClass.
+func UnixConnectionClassStruct() *UnixConnectionClass {
+	err := unixConnectionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixConnectionClass{native: unixConnectionClassStruct.Alloc()}
+	return structGo
+}
+
 var unixConnectionPrivateStruct *gi.Struct
 var unixConnectionPrivateStruct_Once sync.Once
 
@@ -5254,6 +9352,17 @@ func unixConnectionPrivateStruct_Set() error {
 
 type UnixConnectionPrivate struct {
 	native uintptr
+}
+
+// UnixConnectionPrivateStruct creates an uninitialised UnixConnectionPrivate.
+func UnixConnectionPrivateStruct() *UnixConnectionPrivate {
+	err := unixConnectionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixConnectionPrivate{native: unixConnectionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixCredentialsMessageClassStruct *gi.Struct
@@ -5271,6 +9380,28 @@ type UnixCredentialsMessageClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixCredentialsMessageClass) ParentClass() *SocketControlMessageClass {
+	argValue := gi.FieldGet(unixCredentialsMessageClassStruct, recv.native, "parent_class")
+	value := &SocketControlMessageClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UnixCredentialsMessageClassStruct creates an uninitialised UnixCredentialsMessageClass.
+func UnixCredentialsMessageClassStruct() *UnixCredentialsMessageClass {
+	err := unixCredentialsMessageClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixCredentialsMessageClass{native: unixCredentialsMessageClassStruct.Alloc()}
+	return structGo
+}
+
 var unixCredentialsMessagePrivateStruct *gi.Struct
 var unixCredentialsMessagePrivateStruct_Once sync.Once
 
@@ -5284,6 +9415,17 @@ func unixCredentialsMessagePrivateStruct_Set() error {
 
 type UnixCredentialsMessagePrivate struct {
 	native uintptr
+}
+
+// UnixCredentialsMessagePrivateStruct creates an uninitialised UnixCredentialsMessagePrivate.
+func UnixCredentialsMessagePrivateStruct() *UnixCredentialsMessagePrivate {
+	err := unixCredentialsMessagePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixCredentialsMessagePrivate{native: unixCredentialsMessagePrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixFDListClassStruct *gi.Struct
@@ -5301,6 +9443,29 @@ type UnixFDListClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UnixFDListClassStruct creates an uninitialised UnixFDListClass.
+func UnixFDListClassStruct() *UnixFDListClass {
+	err := unixFDListClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixFDListClass{native: unixFDListClassStruct.Alloc()}
+	return structGo
+}
+
 var unixFDListPrivateStruct *gi.Struct
 var unixFDListPrivateStruct_Once sync.Once
 
@@ -5314,6 +9479,17 @@ func unixFDListPrivateStruct_Set() error {
 
 type UnixFDListPrivate struct {
 	native uintptr
+}
+
+// UnixFDListPrivateStruct creates an uninitialised UnixFDListPrivate.
+func UnixFDListPrivateStruct() *UnixFDListPrivate {
+	err := unixFDListPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixFDListPrivate{native: unixFDListPrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixFDMessageClassStruct *gi.Struct
@@ -5331,6 +9507,28 @@ type UnixFDMessageClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixFDMessageClass) ParentClass() *SocketControlMessageClass {
+	argValue := gi.FieldGet(unixFDMessageClassStruct, recv.native, "parent_class")
+	value := &SocketControlMessageClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UnixFDMessageClassStruct creates an uninitialised UnixFDMessageClass.
+func UnixFDMessageClassStruct() *UnixFDMessageClass {
+	err := unixFDMessageClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixFDMessageClass{native: unixFDMessageClassStruct.Alloc()}
+	return structGo
+}
+
 var unixFDMessagePrivateStruct *gi.Struct
 var unixFDMessagePrivateStruct_Once sync.Once
 
@@ -5344,6 +9542,17 @@ func unixFDMessagePrivateStruct_Set() error {
 
 type UnixFDMessagePrivate struct {
 	native uintptr
+}
+
+// UnixFDMessagePrivateStruct creates an uninitialised UnixFDMessagePrivate.
+func UnixFDMessagePrivateStruct() *UnixFDMessagePrivate {
+	err := unixFDMessagePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixFDMessagePrivate{native: unixFDMessagePrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixInputStreamClassStruct *gi.Struct
@@ -5361,6 +9570,34 @@ type UnixInputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixInputStreamClass) ParentClass() *InputStreamClass {
+	argValue := gi.FieldGet(unixInputStreamClassStruct, recv.native, "parent_class")
+	value := &InputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UnixInputStreamClassStruct creates an uninitialised UnixInputStreamClass.
+func UnixInputStreamClassStruct() *UnixInputStreamClass {
+	err := unixInputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixInputStreamClass{native: unixInputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var unixInputStreamPrivateStruct *gi.Struct
 var unixInputStreamPrivateStruct_Once sync.Once
 
@@ -5374,6 +9611,17 @@ func unixInputStreamPrivateStruct_Set() error {
 
 type UnixInputStreamPrivate struct {
 	native uintptr
+}
+
+// UnixInputStreamPrivateStruct creates an uninitialised UnixInputStreamPrivate.
+func UnixInputStreamPrivateStruct() *UnixInputStreamPrivate {
+	err := unixInputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixInputStreamPrivate{native: unixInputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixMountEntryStruct *gi.Struct
@@ -5391,6 +9639,17 @@ type UnixMountEntry struct {
 	native uintptr
 }
 
+// UnixMountEntryStruct creates an uninitialised UnixMountEntry.
+func UnixMountEntryStruct() *UnixMountEntry {
+	err := unixMountEntryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixMountEntry{native: unixMountEntryStruct.Alloc()}
+	return structGo
+}
+
 var unixMountMonitorClassStruct *gi.Struct
 var unixMountMonitorClassStruct_Once sync.Once
 
@@ -5406,6 +9665,17 @@ type UnixMountMonitorClass struct {
 	native uintptr
 }
 
+// UnixMountMonitorClassStruct creates an uninitialised UnixMountMonitorClass.
+func UnixMountMonitorClassStruct() *UnixMountMonitorClass {
+	err := unixMountMonitorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixMountMonitorClass{native: unixMountMonitorClassStruct.Alloc()}
+	return structGo
+}
+
 var unixMountPointStruct *gi.Struct
 var unixMountPointStruct_Once sync.Once
 
@@ -5419,6 +9689,17 @@ func unixMountPointStruct_Set() error {
 
 type UnixMountPoint struct {
 	native uintptr
+}
+
+// UnixMountPointStruct creates an uninitialised UnixMountPoint.
+func UnixMountPointStruct() *UnixMountPoint {
+	err := unixMountPointStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixMountPoint{native: unixMountPointStruct.Alloc()}
+	return structGo
 }
 
 var unixMountPointCompareFunction *gi.Function
@@ -5821,6 +10102,34 @@ type UnixOutputStreamClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixOutputStreamClass) ParentClass() *OutputStreamClass {
+	argValue := gi.FieldGet(unixOutputStreamClassStruct, recv.native, "parent_class")
+	value := &OutputStreamClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UnixOutputStreamClassStruct creates an uninitialised UnixOutputStreamClass.
+func UnixOutputStreamClassStruct() *UnixOutputStreamClass {
+	err := unixOutputStreamClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixOutputStreamClass{native: unixOutputStreamClassStruct.Alloc()}
+	return structGo
+}
+
 var unixOutputStreamPrivateStruct *gi.Struct
 var unixOutputStreamPrivateStruct_Once sync.Once
 
@@ -5834,6 +10143,17 @@ func unixOutputStreamPrivateStruct_Set() error {
 
 type UnixOutputStreamPrivate struct {
 	native uintptr
+}
+
+// UnixOutputStreamPrivateStruct creates an uninitialised UnixOutputStreamPrivate.
+func UnixOutputStreamPrivateStruct() *UnixOutputStreamPrivate {
+	err := unixOutputStreamPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixOutputStreamPrivate{native: unixOutputStreamPrivateStruct.Alloc()}
+	return structGo
 }
 
 var unixSocketAddressClassStruct *gi.Struct
@@ -5851,6 +10171,24 @@ type UnixSocketAddressClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *UnixSocketAddressClass) ParentClass() *SocketAddressClass {
+	argValue := gi.FieldGet(unixSocketAddressClassStruct, recv.native, "parent_class")
+	value := &SocketAddressClass{native: argValue.Pointer()}
+	return value
+}
+
+// UnixSocketAddressClassStruct creates an uninitialised UnixSocketAddressClass.
+func UnixSocketAddressClassStruct() *UnixSocketAddressClass {
+	err := unixSocketAddressClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixSocketAddressClass{native: unixSocketAddressClassStruct.Alloc()}
+	return structGo
+}
+
 var unixSocketAddressPrivateStruct *gi.Struct
 var unixSocketAddressPrivateStruct_Once sync.Once
 
@@ -5864,6 +10202,17 @@ func unixSocketAddressPrivateStruct_Set() error {
 
 type UnixSocketAddressPrivate struct {
 	native uintptr
+}
+
+// UnixSocketAddressPrivateStruct creates an uninitialised UnixSocketAddressPrivate.
+func UnixSocketAddressPrivateStruct() *UnixSocketAddressPrivate {
+	err := unixSocketAddressPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixSocketAddressPrivate{native: unixSocketAddressPrivateStruct.Alloc()}
+	return structGo
 }
 
 var vfsClassStruct *gi.Struct
@@ -5881,6 +10230,53 @@ type VfsClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'is_active' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_file_for_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_file_for_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_supported_uri_schemes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'parse_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_file_add_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_writable_namespaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_file_set_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_file_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_file_moved' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deserialize_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// VfsClassStruct creates an uninitialised VfsClass.
+func VfsClassStruct() *VfsClass {
+	err := vfsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VfsClass{native: vfsClassStruct.Alloc()}
+	return structGo
+}
+
 var volumeIfaceStruct *gi.Struct
 var volumeIfaceStruct_Once sync.Once
 
@@ -5894,6 +10290,61 @@ func volumeIfaceStruct_Set() error {
 
 type VolumeIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_drive' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_identifier' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_identifiers' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'should_automount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_activation_root' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
+
+// VolumeIfaceStruct creates an uninitialised VolumeIface.
+func VolumeIfaceStruct() *VolumeIface {
+	err := volumeIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VolumeIface{native: volumeIfaceStruct.Alloc()}
+	return structGo
 }
 
 var volumeMonitorClassStruct *gi.Struct
@@ -5911,6 +10362,69 @@ type VolumeMonitorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'volume_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'volume_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'volume_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_pre_unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_connected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_disconnected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_supported' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_connected_drives' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volumes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_mounts' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volume_for_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_mount_for_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'adopt_orphan_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_eject_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_stop_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// VolumeMonitorClassStruct creates an uninitialised VolumeMonitorClass.
+func VolumeMonitorClassStruct() *VolumeMonitorClass {
+	err := volumeMonitorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VolumeMonitorClass{native: volumeMonitorClassStruct.Alloc()}
+	return structGo
+}
+
 var zlibCompressorClassStruct *gi.Struct
 var zlibCompressorClassStruct_Once sync.Once
 
@@ -5926,6 +10440,19 @@ type ZlibCompressorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// ZlibCompressorClassStruct creates an uninitialised ZlibCompressorClass.
+func ZlibCompressorClassStruct() *ZlibCompressorClass {
+	err := zlibCompressorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ZlibCompressorClass{native: zlibCompressorClassStruct.Alloc()}
+	return structGo
+}
+
 var zlibDecompressorClassStruct *gi.Struct
 var zlibDecompressorClassStruct_Once sync.Once
 
@@ -5939,4 +10466,17 @@ func zlibDecompressorClassStruct_Set() error {
 
 type ZlibDecompressorClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// ZlibDecompressorClassStruct creates an uninitialised ZlibDecompressorClass.
+func ZlibDecompressorClassStruct() *ZlibDecompressorClass {
+	err := zlibDecompressorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ZlibDecompressorClass{native: zlibDecompressorClassStruct.Alloc()}
+	return structGo
 }

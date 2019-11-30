@@ -47,14 +47,16 @@ func (r *Record) init(ns *Namespace) {
 	r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)
 	r.Methods.init(ns, r)
-	r.Fields.init(ns)
+	r.Fields.init(ns, r)
 	//r.Signals.init(ns, r)
 }
 
 func (r *Record) generate(f *file) {
 	r.generateStructInfo(f)
 	r.generateType(f)
+	r.Fields.generate(f)
 	r.Constructors.generate(f)
+	r.generateStructConstructor(f)
 	r.Methods.generate(f)
 }
 
@@ -111,14 +113,9 @@ func (r *Record) generateType(f *file) {
 	f.
 		Type().
 		Id(r.goName).
-		StructFunc(r.generateFields)
+		Struct(jen.Id("native").Uintptr())
 
 	f.Line()
-}
-
-func (r *Record) generateFields(g *jen.Group) {
-	g.Id("native").Uintptr()
-	r.Fields.generate(g)
 }
 
 func (r *Record) supportedAsOutParameter() bool {
@@ -131,5 +128,58 @@ func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {
 		Id(r.goName).
 		Values(jen.Dict{
 			jen.Id("native"): argValue,
+		})
+}
+
+func (r *Record) generateStructConstructor(f *file) {
+	if len(r.Constructors) > 0 {
+		return
+	}
+
+	f.Line()
+
+	// TODO
+	//		set finalizer to free memory
+
+	funcName := r.goName + "Struct"
+
+	f.Commentf("%s creates an uninitialised %s.", funcName, r.goName)
+	f.
+		Func().
+		Id(funcName).
+		Params().
+		Params(jen.Op("*").Id(r.goName)).
+		BlockFunc(func(g *jen.Group) {
+			// err := someStruct_Set()
+			g.
+				Id("err").
+				Op(":=").
+				Id(r.structInfoSetFuncGoName).
+				Call()
+
+			// if err != nil {
+			//   return nil
+			// }
+			g.
+				If(jen.Id("err").Op("!=").Nil()).
+				Block(jen.Return().Nil())
+
+			g.Line()
+
+			// structGo := &SomeStruct{native: SomeStruct.Alloc()}
+			g.
+				Id("structGo").
+				Op(":=").
+				Do(func(s *jen.Statement) {
+					// SomeStruct.Alloc()
+					struct_ := jen.
+						Id(r.structInfoGoName).Dot("Alloc").
+						Call()
+
+					r.createFromArgument(s, struct_)
+				})
+
+			// return structGo
+			g.Return(jen.Id("structGo"))
 		})
 }

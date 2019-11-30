@@ -22,6 +22,17 @@ type Context struct {
 	native uintptr
 }
 
+// ContextStruct creates an uninitialised Context.
+func ContextStruct() *Context {
+	err := contextStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Context{native: contextStruct.Alloc()}
+	return structGo
+}
+
 var deviceStruct *gi.Struct
 var deviceStruct_Once sync.Once
 
@@ -35,6 +46,17 @@ func deviceStruct_Set() error {
 
 type Device struct {
 	native uintptr
+}
+
+// DeviceStruct creates an uninitialised Device.
+func DeviceStruct() *Device {
+	err := deviceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Device{native: deviceStruct.Alloc()}
+	return structGo
 }
 
 var surfaceStruct *gi.Struct
@@ -52,6 +74,17 @@ type Surface struct {
 	native uintptr
 }
 
+// SurfaceStruct creates an uninitialised Surface.
+func SurfaceStruct() *Surface {
+	err := surfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Surface{native: surfaceStruct.Alloc()}
+	return structGo
+}
+
 var matrixStruct *gi.Struct
 var matrixStruct_Once sync.Once
 
@@ -65,6 +98,17 @@ func matrixStruct_Set() error {
 
 type Matrix struct {
 	native uintptr
+}
+
+// MatrixStruct creates an uninitialised Matrix.
+func MatrixStruct() *Matrix {
+	err := matrixStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Matrix{native: matrixStruct.Alloc()}
+	return structGo
 }
 
 var patternStruct *gi.Struct
@@ -82,6 +126,17 @@ type Pattern struct {
 	native uintptr
 }
 
+// PatternStruct creates an uninitialised Pattern.
+func PatternStruct() *Pattern {
+	err := patternStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Pattern{native: patternStruct.Alloc()}
+	return structGo
+}
+
 var regionStruct *gi.Struct
 var regionStruct_Once sync.Once
 
@@ -95,6 +150,17 @@ func regionStruct_Set() error {
 
 type Region struct {
 	native uintptr
+}
+
+// RegionStruct creates an uninitialised Region.
+func RegionStruct() *Region {
+	err := regionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Region{native: regionStruct.Alloc()}
+	return structGo
 }
 
 var fontOptionsStruct *gi.Struct
@@ -112,6 +178,17 @@ type FontOptions struct {
 	native uintptr
 }
 
+// FontOptionsStruct creates an uninitialised FontOptions.
+func FontOptionsStruct() *FontOptions {
+	err := fontOptionsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FontOptions{native: fontOptionsStruct.Alloc()}
+	return structGo
+}
+
 var fontFaceStruct *gi.Struct
 var fontFaceStruct_Once sync.Once
 
@@ -125,6 +202,17 @@ func fontFaceStruct_Set() error {
 
 type FontFace struct {
 	native uintptr
+}
+
+// FontFaceStruct creates an uninitialised FontFace.
+func FontFaceStruct() *FontFace {
+	err := fontFaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FontFace{native: fontFaceStruct.Alloc()}
+	return structGo
 }
 
 var scaledFontStruct *gi.Struct
@@ -142,6 +230,17 @@ type ScaledFont struct {
 	native uintptr
 }
 
+// ScaledFontStruct creates an uninitialised ScaledFont.
+func ScaledFontStruct() *ScaledFont {
+	err := scaledFontStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ScaledFont{native: scaledFontStruct.Alloc()}
+	return structGo
+}
+
 var pathStruct *gi.Struct
 var pathStruct_Once sync.Once
 
@@ -155,6 +254,17 @@ func pathStruct_Set() error {
 
 type Path struct {
 	native uintptr
+}
+
+// PathStruct creates an uninitialised Path.
+func PathStruct() *Path {
+	err := pathStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Path{native: pathStruct.Alloc()}
+	return structGo
 }
 
 var rectangleStruct *gi.Struct
@@ -172,6 +282,45 @@ type Rectangle struct {
 	native uintptr
 }
 
+// X returns the C field 'x'.
+func (recv *Rectangle) X() float64 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *Rectangle) Y() float64 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Width returns the C field 'width'.
+func (recv *Rectangle) Width() float64 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
+	value := argValue.Float64()
+	return value
+}
+
+// Height returns the C field 'height'.
+func (recv *Rectangle) Height() float64 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
+	value := argValue.Float64()
+	return value
+}
+
+// RectangleStruct creates an uninitialised Rectangle.
+func RectangleStruct() *Rectangle {
+	err := rectangleStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	return structGo
+}
+
 var rectangleIntStruct *gi.Struct
 var rectangleIntStruct_Once sync.Once
 
@@ -185,4 +334,43 @@ func rectangleIntStruct_Set() error {
 
 type RectangleInt struct {
 	native uintptr
+}
+
+// X returns the C field 'x'.
+func (recv *RectangleInt) X() int32 {
+	argValue := gi.FieldGet(rectangleIntStruct, recv.native, "x")
+	value := argValue.Int32()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *RectangleInt) Y() int32 {
+	argValue := gi.FieldGet(rectangleIntStruct, recv.native, "y")
+	value := argValue.Int32()
+	return value
+}
+
+// Width returns the C field 'width'.
+func (recv *RectangleInt) Width() int32 {
+	argValue := gi.FieldGet(rectangleIntStruct, recv.native, "width")
+	value := argValue.Int32()
+	return value
+}
+
+// Height returns the C field 'height'.
+func (recv *RectangleInt) Height() int32 {
+	argValue := gi.FieldGet(rectangleIntStruct, recv.native, "height")
+	value := argValue.Int32()
+	return value
+}
+
+// RectangleIntStruct creates an uninitialised RectangleInt.
+func RectangleIntStruct() *RectangleInt {
+	err := rectangleIntStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RectangleInt{native: rectangleIntStruct.Alloc()}
+	return structGo
 }

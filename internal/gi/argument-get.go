@@ -17,35 +17,35 @@ func (a Argument) Int16() int16 {
 }
 
 func (a Argument) Int32() int32 {
-	return (int32)(*(*C.gint)(unsafe.Pointer(&a)))
+	return (int32)(*(*C.gint32)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Int64() int64 {
-	return (int64)(*(*C.gint)(unsafe.Pointer(&a)))
+	return (int64)(*(*C.gint64)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Uint8() uint8 {
-	return (uint8)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (uint8)(*(*C.guint8)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Uint16() uint16 {
-	return (uint16)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (uint16)(*(*C.guint16)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Uint32() uint32 {
-	return (uint32)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (uint32)(*(*C.guint32)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Uint64() uint64 {
-	return (uint64)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (uint64)(*(*C.guint64)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Float32() float32 {
-	return (float32)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (float32)(*(*C.gfloat)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Float64() float64 {
-	return (float64)(*(*C.guint)(unsafe.Pointer(&a)))
+	return (float64)(*(*C.gdouble)(unsafe.Pointer(&a)))
 }
 
 func (a Argument) Boolean() bool {

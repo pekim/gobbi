@@ -6,6 +6,8 @@ import (
 	"github.com/pekim/gobbi/internal/gi"
 )
 
+const receiverName = "recv"
+
 type Function struct {
 	Name              string `xml:"name,attr"`
 	Blacklist         bool   `xml:"blacklist,attr"`
@@ -174,7 +176,7 @@ func (f *Function) generateReceiver(s *jen.Statement) {
 	}
 
 	s.Params(jen.
-		Id("recv").
+		Id(receiverName).
 		Op("*").
 		Id(f.record.goName),
 	)

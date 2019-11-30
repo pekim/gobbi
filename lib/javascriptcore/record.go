@@ -22,6 +22,17 @@ type GlobalContextRef struct {
 	native uintptr
 }
 
+// GlobalContextRefStruct creates an uninitialised GlobalContextRef.
+func GlobalContextRefStruct() *GlobalContextRef {
+	err := globalContextRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GlobalContextRef{native: globalContextRefStruct.Alloc()}
+	return structGo
+}
+
 var globalContextRefRefFunction *gi.Function
 var globalContextRefRefFunction_Once sync.Once
 
@@ -93,6 +104,17 @@ type ValueRef struct {
 	native uintptr
 }
 
+// ValueRefStruct creates an uninitialised ValueRef.
+func ValueRefStruct() *ValueRef {
+	err := valueRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ValueRef{native: valueRefStruct.Alloc()}
+	return structGo
+}
+
 var stringRefStruct *gi.Struct
 var stringRefStruct_Once sync.Once
 
@@ -106,6 +128,17 @@ func stringRefStruct_Set() error {
 
 type StringRef struct {
 	native uintptr
+}
+
+// StringRefStruct creates an uninitialised StringRef.
+func StringRefStruct() *StringRef {
+	err := stringRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StringRef{native: stringRefStruct.Alloc()}
+	return structGo
 }
 
 var stringRefRefFunction *gi.Function
@@ -247,6 +280,17 @@ type ClassClass struct {
 	native uintptr
 }
 
+// ClassClassStruct creates an uninitialised ClassClass.
+func ClassClassStruct() *ClassClass {
+	err := classClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ClassClass{native: classClassStruct.Alloc()}
+	return structGo
+}
+
 var classVTableStruct *gi.Struct
 var classVTableStruct_Once sync.Once
 
@@ -260,6 +304,35 @@ func classVTableStruct_Set() error {
 
 type ClassVTable struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'ClassGetPropertyFunction'
+
+// UNSUPPORTED : C value 'set_property' : for field getter : no Go type for 'ClassSetPropertyFunction'
+
+// UNSUPPORTED : C value 'has_property' : for field getter : no Go type for 'ClassHasPropertyFunction'
+
+// UNSUPPORTED : C value 'delete_property' : for field getter : no Go type for 'ClassDeletePropertyFunction'
+
+// UNSUPPORTED : C value 'enumerate_properties' : for field getter : no Go type for 'ClassEnumeratePropertiesFunction'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// ClassVTableStruct creates an uninitialised ClassVTable.
+func ClassVTableStruct() *ClassVTable {
+	err := classVTableStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ClassVTable{native: classVTableStruct.Alloc()}
+	return structGo
 }
 
 var contextClassStruct *gi.Struct
@@ -277,6 +350,27 @@ type ContextClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// ContextClassStruct creates an uninitialised ContextClass.
+func ContextClassStruct() *ContextClass {
+	err := contextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextClass{native: contextClassStruct.Alloc()}
+	return structGo
+}
+
 var contextPrivateStruct *gi.Struct
 var contextPrivateStruct_Once sync.Once
 
@@ -290,6 +384,17 @@ func contextPrivateStruct_Set() error {
 
 type ContextPrivate struct {
 	native uintptr
+}
+
+// ContextPrivateStruct creates an uninitialised ContextPrivate.
+func ContextPrivateStruct() *ContextPrivate {
+	err := contextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextPrivate{native: contextPrivateStruct.Alloc()}
+	return structGo
 }
 
 var exceptionClassStruct *gi.Struct
@@ -307,6 +412,27 @@ type ExceptionClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// ExceptionClassStruct creates an uninitialised ExceptionClass.
+func ExceptionClassStruct() *ExceptionClass {
+	err := exceptionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ExceptionClass{native: exceptionClassStruct.Alloc()}
+	return structGo
+}
+
 var exceptionPrivateStruct *gi.Struct
 var exceptionPrivateStruct_Once sync.Once
 
@@ -320,6 +446,17 @@ func exceptionPrivateStruct_Set() error {
 
 type ExceptionPrivate struct {
 	native uintptr
+}
+
+// ExceptionPrivateStruct creates an uninitialised ExceptionPrivate.
+func ExceptionPrivateStruct() *ExceptionPrivate {
+	err := exceptionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ExceptionPrivate{native: exceptionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var valueClassStruct *gi.Struct
@@ -337,6 +474,27 @@ type ValueClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// ValueClassStruct creates an uninitialised ValueClass.
+func ValueClassStruct() *ValueClass {
+	err := valueClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ValueClass{native: valueClassStruct.Alloc()}
+	return structGo
+}
+
 var valuePrivateStruct *gi.Struct
 var valuePrivateStruct_Once sync.Once
 
@@ -350,6 +508,17 @@ func valuePrivateStruct_Set() error {
 
 type ValuePrivate struct {
 	native uintptr
+}
+
+// ValuePrivateStruct creates an uninitialised ValuePrivate.
+func ValuePrivateStruct() *ValuePrivate {
+	err := valuePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ValuePrivate{native: valuePrivateStruct.Alloc()}
+	return structGo
 }
 
 var virtualMachineClassStruct *gi.Struct
@@ -367,6 +536,27 @@ type VirtualMachineClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// VirtualMachineClassStruct creates an uninitialised VirtualMachineClass.
+func VirtualMachineClassStruct() *VirtualMachineClass {
+	err := virtualMachineClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VirtualMachineClass{native: virtualMachineClassStruct.Alloc()}
+	return structGo
+}
+
 var virtualMachinePrivateStruct *gi.Struct
 var virtualMachinePrivateStruct_Once sync.Once
 
@@ -380,6 +570,17 @@ func virtualMachinePrivateStruct_Set() error {
 
 type VirtualMachinePrivate struct {
 	native uintptr
+}
+
+// VirtualMachinePrivateStruct creates an uninitialised VirtualMachinePrivate.
+func VirtualMachinePrivateStruct() *VirtualMachinePrivate {
+	err := virtualMachinePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VirtualMachinePrivate{native: virtualMachinePrivateStruct.Alloc()}
+	return structGo
 }
 
 var weakValueClassStruct *gi.Struct
@@ -397,6 +598,27 @@ type WeakValueClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// WeakValueClassStruct creates an uninitialised WeakValueClass.
+func WeakValueClassStruct() *WeakValueClass {
+	err := weakValueClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WeakValueClass{native: weakValueClassStruct.Alloc()}
+	return structGo
+}
+
 var weakValuePrivateStruct *gi.Struct
 var weakValuePrivateStruct_Once sync.Once
 
@@ -410,4 +632,15 @@ func weakValuePrivateStruct_Set() error {
 
 type WeakValuePrivate struct {
 	native uintptr
+}
+
+// WeakValuePrivateStruct creates an uninitialised WeakValuePrivate.
+func WeakValuePrivateStruct() *WeakValuePrivate {
+	err := weakValuePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WeakValuePrivate{native: weakValuePrivateStruct.Alloc()}
+	return structGo
 }

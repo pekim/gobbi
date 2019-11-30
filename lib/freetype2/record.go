@@ -22,6 +22,17 @@ type Bitmap struct {
 	native uintptr
 }
 
+// BitmapStruct creates an uninitialised Bitmap.
+func BitmapStruct() *Bitmap {
+	err := bitmapStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Bitmap{native: bitmapStruct.Alloc()}
+	return structGo
+}
+
 var faceStruct *gi.Struct
 var faceStruct_Once sync.Once
 
@@ -37,6 +48,17 @@ type Face struct {
 	native uintptr
 }
 
+// FaceStruct creates an uninitialised Face.
+func FaceStruct() *Face {
+	err := faceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Face{native: faceStruct.Alloc()}
+	return structGo
+}
+
 var libraryStruct *gi.Struct
 var libraryStruct_Once sync.Once
 
@@ -50,4 +72,15 @@ func libraryStruct_Set() error {
 
 type Library struct {
 	native uintptr
+}
+
+// LibraryStruct creates an uninitialised Library.
+func LibraryStruct() *Library {
+	err := libraryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Library{native: libraryStruct.Alloc()}
+	return structGo
 }

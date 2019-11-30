@@ -1,17 +1,15 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
-
 type Fields []*Field
 
-func (cc Fields) init(ns *Namespace) {
+func (cc Fields) init(ns *Namespace, record *Record) {
 	for _, f := range cc {
-		f.init(ns)
+		f.init(ns, record)
 	}
 }
 
-func (ff Fields) generate(g *jen.Group) {
+func (ff Fields) generate(fi *file) {
 	for _, f := range ff {
-		f.generate(g)
+		f.generate(fi)
 	}
 }

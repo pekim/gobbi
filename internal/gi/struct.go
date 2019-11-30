@@ -58,3 +58,9 @@ func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 		info:       invoker,
 	}, nil
 }
+
+func (s *Struct) Alloc() uintptr {
+	size := C.g_struct_info_get_size(s.info)
+	struct_ := C.malloc(size)
+	return uintptr(struct_)
+}

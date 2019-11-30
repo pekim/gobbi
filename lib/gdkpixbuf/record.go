@@ -22,6 +22,17 @@ type PixbufFormat struct {
 	native uintptr
 }
 
+// PixbufFormatStruct creates an uninitialised PixbufFormat.
+func PixbufFormatStruct() *PixbufFormat {
+	err := pixbufFormatStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PixbufFormat{native: pixbufFormatStruct.Alloc()}
+	return structGo
+}
+
 var pixbufFormatCopyFunction *gi.Function
 var pixbufFormatCopyFunction_Once sync.Once
 
@@ -407,6 +418,27 @@ type PixbufLoaderClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'size_prepared' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'area_prepared' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'area_updated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'closed' : for field getter : missing Type
+
+// PixbufLoaderClassStruct creates an uninitialised PixbufLoaderClass.
+func PixbufLoaderClassStruct() *PixbufLoaderClass {
+	err := pixbufLoaderClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PixbufLoaderClass{native: pixbufLoaderClassStruct.Alloc()}
+	return structGo
+}
+
 var pixbufSimpleAnimClassStruct *gi.Struct
 var pixbufSimpleAnimClassStruct_Once sync.Once
 
@@ -420,4 +452,15 @@ func pixbufSimpleAnimClassStruct_Set() error {
 
 type PixbufSimpleAnimClass struct {
 	native uintptr
+}
+
+// PixbufSimpleAnimClassStruct creates an uninitialised PixbufSimpleAnimClass.
+func PixbufSimpleAnimClassStruct() *PixbufSimpleAnimClass {
+	err := pixbufSimpleAnimClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PixbufSimpleAnimClass{native: pixbufSimpleAnimClassStruct.Alloc()}
+	return structGo
 }

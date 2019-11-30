@@ -253,6 +253,27 @@ type AuthenticationRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// AuthenticationRequestClassStruct creates an uninitialised AuthenticationRequestClass.
+func AuthenticationRequestClassStruct() *AuthenticationRequestClass {
+	err := authenticationRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AuthenticationRequestClass{native: authenticationRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var authenticationRequestPrivateStruct *gi.Struct
 var authenticationRequestPrivateStruct_Once sync.Once
 
@@ -266,6 +287,17 @@ func authenticationRequestPrivateStruct_Set() error {
 
 type AuthenticationRequestPrivate struct {
 	native uintptr
+}
+
+// AuthenticationRequestPrivateStruct creates an uninitialised AuthenticationRequestPrivate.
+func AuthenticationRequestPrivateStruct() *AuthenticationRequestPrivate {
+	err := authenticationRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AuthenticationRequestPrivate{native: authenticationRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var automationSessionClassStruct *gi.Struct
@@ -283,6 +315,27 @@ type AutomationSessionClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// AutomationSessionClassStruct creates an uninitialised AutomationSessionClass.
+func AutomationSessionClassStruct() *AutomationSessionClass {
+	err := automationSessionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AutomationSessionClass{native: automationSessionClassStruct.Alloc()}
+	return structGo
+}
+
 var automationSessionPrivateStruct *gi.Struct
 var automationSessionPrivateStruct_Once sync.Once
 
@@ -296,6 +349,17 @@ func automationSessionPrivateStruct_Set() error {
 
 type AutomationSessionPrivate struct {
 	native uintptr
+}
+
+// AutomationSessionPrivateStruct creates an uninitialised AutomationSessionPrivate.
+func AutomationSessionPrivateStruct() *AutomationSessionPrivate {
+	err := automationSessionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AutomationSessionPrivate{native: automationSessionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var backForwardListClassStruct *gi.Struct
@@ -313,6 +377,27 @@ type BackForwardListClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// BackForwardListClassStruct creates an uninitialised BackForwardListClass.
+func BackForwardListClassStruct() *BackForwardListClass {
+	err := backForwardListClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BackForwardListClass{native: backForwardListClassStruct.Alloc()}
+	return structGo
+}
+
 var backForwardListItemClassStruct *gi.Struct
 var backForwardListItemClassStruct_Once sync.Once
 
@@ -326,6 +411,27 @@ func backForwardListItemClassStruct_Set() error {
 
 type BackForwardListItemClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// BackForwardListItemClassStruct creates an uninitialised BackForwardListItemClass.
+func BackForwardListItemClassStruct() *BackForwardListItemClass {
+	err := backForwardListItemClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BackForwardListItemClass{native: backForwardListItemClassStruct.Alloc()}
+	return structGo
 }
 
 var backForwardListItemPrivateStruct *gi.Struct
@@ -343,6 +449,17 @@ type BackForwardListItemPrivate struct {
 	native uintptr
 }
 
+// BackForwardListItemPrivateStruct creates an uninitialised BackForwardListItemPrivate.
+func BackForwardListItemPrivateStruct() *BackForwardListItemPrivate {
+	err := backForwardListItemPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BackForwardListItemPrivate{native: backForwardListItemPrivateStruct.Alloc()}
+	return structGo
+}
+
 var backForwardListPrivateStruct *gi.Struct
 var backForwardListPrivateStruct_Once sync.Once
 
@@ -356,6 +473,17 @@ func backForwardListPrivateStruct_Set() error {
 
 type BackForwardListPrivate struct {
 	native uintptr
+}
+
+// BackForwardListPrivateStruct creates an uninitialised BackForwardListPrivate.
+func BackForwardListPrivateStruct() *BackForwardListPrivate {
+	err := backForwardListPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BackForwardListPrivate{native: backForwardListPrivateStruct.Alloc()}
+	return structGo
 }
 
 var colorChooserRequestClassStruct *gi.Struct
@@ -373,6 +501,19 @@ type ColorChooserRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// ColorChooserRequestClassStruct creates an uninitialised ColorChooserRequestClass.
+func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
+	err := colorChooserRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ColorChooserRequestClass{native: colorChooserRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var colorChooserRequestPrivateStruct *gi.Struct
 var colorChooserRequestPrivateStruct_Once sync.Once
 
@@ -386,6 +527,17 @@ func colorChooserRequestPrivateStruct_Set() error {
 
 type ColorChooserRequestPrivate struct {
 	native uintptr
+}
+
+// ColorChooserRequestPrivateStruct creates an uninitialised ColorChooserRequestPrivate.
+func ColorChooserRequestPrivateStruct() *ColorChooserRequestPrivate {
+	err := colorChooserRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ColorChooserRequestPrivate{native: colorChooserRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var contextMenuClassStruct *gi.Struct
@@ -403,6 +555,27 @@ type ContextMenuClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// ContextMenuClassStruct creates an uninitialised ContextMenuClass.
+func ContextMenuClassStruct() *ContextMenuClass {
+	err := contextMenuClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextMenuClass{native: contextMenuClassStruct.Alloc()}
+	return structGo
+}
+
 var contextMenuItemClassStruct *gi.Struct
 var contextMenuItemClassStruct_Once sync.Once
 
@@ -416,6 +589,27 @@ func contextMenuItemClassStruct_Set() error {
 
 type ContextMenuItemClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// ContextMenuItemClassStruct creates an uninitialised ContextMenuItemClass.
+func ContextMenuItemClassStruct() *ContextMenuItemClass {
+	err := contextMenuItemClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextMenuItemClass{native: contextMenuItemClassStruct.Alloc()}
+	return structGo
 }
 
 var contextMenuItemPrivateStruct *gi.Struct
@@ -433,6 +627,17 @@ type ContextMenuItemPrivate struct {
 	native uintptr
 }
 
+// ContextMenuItemPrivateStruct creates an uninitialised ContextMenuItemPrivate.
+func ContextMenuItemPrivateStruct() *ContextMenuItemPrivate {
+	err := contextMenuItemPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextMenuItemPrivate{native: contextMenuItemPrivateStruct.Alloc()}
+	return structGo
+}
+
 var contextMenuPrivateStruct *gi.Struct
 var contextMenuPrivateStruct_Once sync.Once
 
@@ -446,6 +651,17 @@ func contextMenuPrivateStruct_Set() error {
 
 type ContextMenuPrivate struct {
 	native uintptr
+}
+
+// ContextMenuPrivateStruct creates an uninitialised ContextMenuPrivate.
+func ContextMenuPrivateStruct() *ContextMenuPrivate {
+	err := contextMenuPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContextMenuPrivate{native: contextMenuPrivateStruct.Alloc()}
+	return structGo
 }
 
 var cookieManagerClassStruct *gi.Struct
@@ -463,6 +679,27 @@ type CookieManagerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// CookieManagerClassStruct creates an uninitialised CookieManagerClass.
+func CookieManagerClassStruct() *CookieManagerClass {
+	err := cookieManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CookieManagerClass{native: cookieManagerClassStruct.Alloc()}
+	return structGo
+}
+
 var cookieManagerPrivateStruct *gi.Struct
 var cookieManagerPrivateStruct_Once sync.Once
 
@@ -476,6 +713,17 @@ func cookieManagerPrivateStruct_Set() error {
 
 type CookieManagerPrivate struct {
 	native uintptr
+}
+
+// CookieManagerPrivateStruct creates an uninitialised CookieManagerPrivate.
+func CookieManagerPrivateStruct() *CookieManagerPrivate {
+	err := cookieManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CookieManagerPrivate{native: cookieManagerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var credentialStruct *gi.Struct
@@ -668,6 +916,27 @@ type DeviceInfoPermissionRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// DeviceInfoPermissionRequestClassStruct creates an uninitialised DeviceInfoPermissionRequestClass.
+func DeviceInfoPermissionRequestClassStruct() *DeviceInfoPermissionRequestClass {
+	err := deviceInfoPermissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DeviceInfoPermissionRequestClass{native: deviceInfoPermissionRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
 var deviceInfoPermissionRequestPrivateStruct_Once sync.Once
 
@@ -681,6 +950,17 @@ func deviceInfoPermissionRequestPrivateStruct_Set() error {
 
 type DeviceInfoPermissionRequestPrivate struct {
 	native uintptr
+}
+
+// DeviceInfoPermissionRequestPrivateStruct creates an uninitialised DeviceInfoPermissionRequestPrivate.
+func DeviceInfoPermissionRequestPrivateStruct() *DeviceInfoPermissionRequestPrivate {
+	err := deviceInfoPermissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DeviceInfoPermissionRequestPrivate{native: deviceInfoPermissionRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var downloadClassStruct *gi.Struct
@@ -698,6 +978,29 @@ type DownloadClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'decide_destination' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// DownloadClassStruct creates an uninitialised DownloadClass.
+func DownloadClassStruct() *DownloadClass {
+	err := downloadClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DownloadClass{native: downloadClassStruct.Alloc()}
+	return structGo
+}
+
 var downloadPrivateStruct *gi.Struct
 var downloadPrivateStruct_Once sync.Once
 
@@ -711,6 +1014,17 @@ func downloadPrivateStruct_Set() error {
 
 type DownloadPrivate struct {
 	native uintptr
+}
+
+// DownloadPrivateStruct creates an uninitialised DownloadPrivate.
+func DownloadPrivateStruct() *DownloadPrivate {
+	err := downloadPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DownloadPrivate{native: downloadPrivateStruct.Alloc()}
+	return structGo
 }
 
 var editorStateClassStruct *gi.Struct
@@ -728,6 +1042,27 @@ type EditorStateClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// EditorStateClassStruct creates an uninitialised EditorStateClass.
+func EditorStateClassStruct() *EditorStateClass {
+	err := editorStateClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EditorStateClass{native: editorStateClassStruct.Alloc()}
+	return structGo
+}
+
 var editorStatePrivateStruct *gi.Struct
 var editorStatePrivateStruct_Once sync.Once
 
@@ -741,6 +1076,17 @@ func editorStatePrivateStruct_Set() error {
 
 type EditorStatePrivate struct {
 	native uintptr
+}
+
+// EditorStatePrivateStruct creates an uninitialised EditorStatePrivate.
+func EditorStatePrivateStruct() *EditorStatePrivate {
+	err := editorStatePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EditorStatePrivate{native: editorStatePrivateStruct.Alloc()}
+	return structGo
 }
 
 var faviconDatabaseClassStruct *gi.Struct
@@ -758,6 +1104,27 @@ type FaviconDatabaseClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// FaviconDatabaseClassStruct creates an uninitialised FaviconDatabaseClass.
+func FaviconDatabaseClassStruct() *FaviconDatabaseClass {
+	err := faviconDatabaseClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FaviconDatabaseClass{native: faviconDatabaseClassStruct.Alloc()}
+	return structGo
+}
+
 var faviconDatabasePrivateStruct *gi.Struct
 var faviconDatabasePrivateStruct_Once sync.Once
 
@@ -771,6 +1138,17 @@ func faviconDatabasePrivateStruct_Set() error {
 
 type FaviconDatabasePrivate struct {
 	native uintptr
+}
+
+// FaviconDatabasePrivateStruct creates an uninitialised FaviconDatabasePrivate.
+func FaviconDatabasePrivateStruct() *FaviconDatabasePrivate {
+	err := faviconDatabasePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FaviconDatabasePrivate{native: faviconDatabasePrivateStruct.Alloc()}
+	return structGo
 }
 
 var fileChooserRequestClassStruct *gi.Struct
@@ -788,6 +1166,27 @@ type FileChooserRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// FileChooserRequestClassStruct creates an uninitialised FileChooserRequestClass.
+func FileChooserRequestClassStruct() *FileChooserRequestClass {
+	err := fileChooserRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileChooserRequestClass{native: fileChooserRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var fileChooserRequestPrivateStruct *gi.Struct
 var fileChooserRequestPrivateStruct_Once sync.Once
 
@@ -801,6 +1200,17 @@ func fileChooserRequestPrivateStruct_Set() error {
 
 type FileChooserRequestPrivate struct {
 	native uintptr
+}
+
+// FileChooserRequestPrivateStruct creates an uninitialised FileChooserRequestPrivate.
+func FileChooserRequestPrivateStruct() *FileChooserRequestPrivate {
+	err := fileChooserRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileChooserRequestPrivate{native: fileChooserRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var findControllerClassStruct *gi.Struct
@@ -818,6 +1228,27 @@ type FindControllerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// FindControllerClassStruct creates an uninitialised FindControllerClass.
+func FindControllerClassStruct() *FindControllerClass {
+	err := findControllerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FindControllerClass{native: findControllerClassStruct.Alloc()}
+	return structGo
+}
+
 var findControllerPrivateStruct *gi.Struct
 var findControllerPrivateStruct_Once sync.Once
 
@@ -831,6 +1262,17 @@ func findControllerPrivateStruct_Set() error {
 
 type FindControllerPrivate struct {
 	native uintptr
+}
+
+// FindControllerPrivateStruct creates an uninitialised FindControllerPrivate.
+func FindControllerPrivateStruct() *FindControllerPrivate {
+	err := findControllerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FindControllerPrivate{native: findControllerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var formSubmissionRequestClassStruct *gi.Struct
@@ -848,6 +1290,27 @@ type FormSubmissionRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// FormSubmissionRequestClassStruct creates an uninitialised FormSubmissionRequestClass.
+func FormSubmissionRequestClassStruct() *FormSubmissionRequestClass {
+	err := formSubmissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FormSubmissionRequestClass{native: formSubmissionRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var formSubmissionRequestPrivateStruct *gi.Struct
 var formSubmissionRequestPrivateStruct_Once sync.Once
 
@@ -861,6 +1324,17 @@ func formSubmissionRequestPrivateStruct_Set() error {
 
 type FormSubmissionRequestPrivate struct {
 	native uintptr
+}
+
+// FormSubmissionRequestPrivateStruct creates an uninitialised FormSubmissionRequestPrivate.
+func FormSubmissionRequestPrivateStruct() *FormSubmissionRequestPrivate {
+	err := formSubmissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FormSubmissionRequestPrivate{native: formSubmissionRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var geolocationManagerClassStruct *gi.Struct
@@ -878,6 +1352,27 @@ type GeolocationManagerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// GeolocationManagerClassStruct creates an uninitialised GeolocationManagerClass.
+func GeolocationManagerClassStruct() *GeolocationManagerClass {
+	err := geolocationManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GeolocationManagerClass{native: geolocationManagerClassStruct.Alloc()}
+	return structGo
+}
+
 var geolocationManagerPrivateStruct *gi.Struct
 var geolocationManagerPrivateStruct_Once sync.Once
 
@@ -891,6 +1386,17 @@ func geolocationManagerPrivateStruct_Set() error {
 
 type GeolocationManagerPrivate struct {
 	native uintptr
+}
+
+// GeolocationManagerPrivateStruct creates an uninitialised GeolocationManagerPrivate.
+func GeolocationManagerPrivateStruct() *GeolocationManagerPrivate {
+	err := geolocationManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GeolocationManagerPrivate{native: geolocationManagerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var geolocationPermissionRequestClassStruct *gi.Struct
@@ -908,6 +1414,27 @@ type GeolocationPermissionRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// GeolocationPermissionRequestClassStruct creates an uninitialised GeolocationPermissionRequestClass.
+func GeolocationPermissionRequestClassStruct() *GeolocationPermissionRequestClass {
+	err := geolocationPermissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GeolocationPermissionRequestClass{native: geolocationPermissionRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var geolocationPermissionRequestPrivateStruct *gi.Struct
 var geolocationPermissionRequestPrivateStruct_Once sync.Once
 
@@ -921,6 +1448,17 @@ func geolocationPermissionRequestPrivateStruct_Set() error {
 
 type GeolocationPermissionRequestPrivate struct {
 	native uintptr
+}
+
+// GeolocationPermissionRequestPrivateStruct creates an uninitialised GeolocationPermissionRequestPrivate.
+func GeolocationPermissionRequestPrivateStruct() *GeolocationPermissionRequestPrivate {
+	err := geolocationPermissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GeolocationPermissionRequestPrivate{native: geolocationPermissionRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var geolocationPositionStruct *gi.Struct
@@ -1192,6 +1730,27 @@ type HitTestResultClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// HitTestResultClassStruct creates an uninitialised HitTestResultClass.
+func HitTestResultClassStruct() *HitTestResultClass {
+	err := hitTestResultClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &HitTestResultClass{native: hitTestResultClassStruct.Alloc()}
+	return structGo
+}
+
 var hitTestResultPrivateStruct *gi.Struct
 var hitTestResultPrivateStruct_Once sync.Once
 
@@ -1205,6 +1764,17 @@ func hitTestResultPrivateStruct_Set() error {
 
 type HitTestResultPrivate struct {
 	native uintptr
+}
+
+// HitTestResultPrivateStruct creates an uninitialised HitTestResultPrivate.
+func HitTestResultPrivateStruct() *HitTestResultPrivate {
+	err := hitTestResultPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &HitTestResultPrivate{native: hitTestResultPrivateStruct.Alloc()}
+	return structGo
 }
 
 var installMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
@@ -1222,6 +1792,27 @@ type InstallMissingMediaPluginsPermissionRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// InstallMissingMediaPluginsPermissionRequestClassStruct creates an uninitialised InstallMissingMediaPluginsPermissionRequestClass.
+func InstallMissingMediaPluginsPermissionRequestClassStruct() *InstallMissingMediaPluginsPermissionRequestClass {
+	err := installMissingMediaPluginsPermissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InstallMissingMediaPluginsPermissionRequestClass{native: installMissingMediaPluginsPermissionRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
 var installMissingMediaPluginsPermissionRequestPrivateStruct_Once sync.Once
 
@@ -1237,6 +1828,17 @@ type InstallMissingMediaPluginsPermissionRequestPrivate struct {
 	native uintptr
 }
 
+// InstallMissingMediaPluginsPermissionRequestPrivateStruct creates an uninitialised InstallMissingMediaPluginsPermissionRequestPrivate.
+func InstallMissingMediaPluginsPermissionRequestPrivateStruct() *InstallMissingMediaPluginsPermissionRequestPrivate {
+	err := installMissingMediaPluginsPermissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InstallMissingMediaPluginsPermissionRequestPrivate{native: installMissingMediaPluginsPermissionRequestPrivateStruct.Alloc()}
+	return structGo
+}
+
 var javascriptResultStruct *gi.Struct
 var javascriptResultStruct_Once sync.Once
 
@@ -1250,6 +1852,17 @@ func javascriptResultStruct_Set() error {
 
 type JavascriptResult struct {
 	native uintptr
+}
+
+// JavascriptResultStruct creates an uninitialised JavascriptResult.
+func JavascriptResultStruct() *JavascriptResult {
+	err := javascriptResultStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &JavascriptResult{native: javascriptResultStruct.Alloc()}
+	return structGo
 }
 
 // UNSUPPORTED : C value 'webkit_javascript_result_get_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
@@ -1331,6 +1944,17 @@ func mimeInfoStruct_Set() error {
 
 type MimeInfo struct {
 	native uintptr
+}
+
+// MimeInfoStruct creates an uninitialised MimeInfo.
+func MimeInfoStruct() *MimeInfo {
+	err := mimeInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MimeInfo{native: mimeInfoStruct.Alloc()}
+	return structGo
 }
 
 var mimeInfoGetDescriptionFunction *gi.Function
@@ -1498,6 +2122,17 @@ func navigationActionStruct_Set() error {
 
 type NavigationAction struct {
 	native uintptr
+}
+
+// NavigationActionStruct creates an uninitialised NavigationAction.
+func NavigationActionStruct() *NavigationAction {
+	err := navigationActionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NavigationAction{native: navigationActionStruct.Alloc()}
+	return structGo
 }
 
 var navigationActionCopyFunction *gi.Function
@@ -1707,6 +2342,32 @@ type NavigationPolicyDecisionClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *NavigationPolicyDecisionClass) ParentClass() *PolicyDecisionClass {
+	argValue := gi.FieldGet(navigationPolicyDecisionClassStruct, recv.native, "parent_class")
+	value := &PolicyDecisionClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// NavigationPolicyDecisionClassStruct creates an uninitialised NavigationPolicyDecisionClass.
+func NavigationPolicyDecisionClassStruct() *NavigationPolicyDecisionClass {
+	err := navigationPolicyDecisionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NavigationPolicyDecisionClass{native: navigationPolicyDecisionClassStruct.Alloc()}
+	return structGo
+}
+
 var navigationPolicyDecisionPrivateStruct *gi.Struct
 var navigationPolicyDecisionPrivateStruct_Once sync.Once
 
@@ -1720,6 +2381,17 @@ func navigationPolicyDecisionPrivateStruct_Set() error {
 
 type NavigationPolicyDecisionPrivate struct {
 	native uintptr
+}
+
+// NavigationPolicyDecisionPrivateStruct creates an uninitialised NavigationPolicyDecisionPrivate.
+func NavigationPolicyDecisionPrivateStruct() *NavigationPolicyDecisionPrivate {
+	err := navigationPolicyDecisionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NavigationPolicyDecisionPrivate{native: navigationPolicyDecisionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var networkProxySettingsStruct *gi.Struct
@@ -1844,6 +2516,31 @@ type NotificationClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved5' : for field getter : missing Type
+
+// NotificationClassStruct creates an uninitialised NotificationClass.
+func NotificationClassStruct() *NotificationClass {
+	err := notificationClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NotificationClass{native: notificationClassStruct.Alloc()}
+	return structGo
+}
+
 var notificationPermissionRequestClassStruct *gi.Struct
 var notificationPermissionRequestClassStruct_Once sync.Once
 
@@ -1857,6 +2554,19 @@ func notificationPermissionRequestClassStruct_Set() error {
 
 type NotificationPermissionRequestClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// NotificationPermissionRequestClassStruct creates an uninitialised NotificationPermissionRequestClass.
+func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestClass {
+	err := notificationPermissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NotificationPermissionRequestClass{native: notificationPermissionRequestClassStruct.Alloc()}
+	return structGo
 }
 
 var notificationPermissionRequestPrivateStruct *gi.Struct
@@ -1874,6 +2584,17 @@ type NotificationPermissionRequestPrivate struct {
 	native uintptr
 }
 
+// NotificationPermissionRequestPrivateStruct creates an uninitialised NotificationPermissionRequestPrivate.
+func NotificationPermissionRequestPrivateStruct() *NotificationPermissionRequestPrivate {
+	err := notificationPermissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NotificationPermissionRequestPrivate{native: notificationPermissionRequestPrivateStruct.Alloc()}
+	return structGo
+}
+
 var notificationPrivateStruct *gi.Struct
 var notificationPrivateStruct_Once sync.Once
 
@@ -1887,6 +2608,17 @@ func notificationPrivateStruct_Set() error {
 
 type NotificationPrivate struct {
 	native uintptr
+}
+
+// NotificationPrivateStruct creates an uninitialised NotificationPrivate.
+func NotificationPrivateStruct() *NotificationPrivate {
+	err := notificationPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NotificationPrivate{native: notificationPrivateStruct.Alloc()}
+	return structGo
 }
 
 var optionMenuClassStruct *gi.Struct
@@ -1904,6 +2636,27 @@ type OptionMenuClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// OptionMenuClassStruct creates an uninitialised OptionMenuClass.
+func OptionMenuClassStruct() *OptionMenuClass {
+	err := optionMenuClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OptionMenuClass{native: optionMenuClassStruct.Alloc()}
+	return structGo
+}
+
 var optionMenuItemStruct *gi.Struct
 var optionMenuItemStruct_Once sync.Once
 
@@ -1917,6 +2670,17 @@ func optionMenuItemStruct_Set() error {
 
 type OptionMenuItem struct {
 	native uintptr
+}
+
+// OptionMenuItemStruct creates an uninitialised OptionMenuItem.
+func OptionMenuItemStruct() *OptionMenuItem {
+	err := optionMenuItemStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OptionMenuItem{native: optionMenuItemStruct.Alloc()}
+	return structGo
 }
 
 var optionMenuItemCopyFunction *gi.Function
@@ -2186,6 +2950,17 @@ type OptionMenuPrivate struct {
 	native uintptr
 }
 
+// OptionMenuPrivateStruct creates an uninitialised OptionMenuPrivate.
+func OptionMenuPrivateStruct() *OptionMenuPrivate {
+	err := optionMenuPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OptionMenuPrivate{native: optionMenuPrivateStruct.Alloc()}
+	return structGo
+}
+
 var permissionRequestIfaceStruct *gi.Struct
 var permissionRequestIfaceStruct_Once sync.Once
 
@@ -2199,6 +2974,23 @@ func permissionRequestIfaceStruct_Set() error {
 
 type PermissionRequestIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'allow' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deny' : for field getter : missing Type
+
+// PermissionRequestIfaceStruct creates an uninitialised PermissionRequestIface.
+func PermissionRequestIfaceStruct() *PermissionRequestIface {
+	err := permissionRequestIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PermissionRequestIface{native: permissionRequestIfaceStruct.Alloc()}
+	return structGo
 }
 
 var pluginClassStruct *gi.Struct
@@ -2216,6 +3008,27 @@ type PluginClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// PluginClassStruct creates an uninitialised PluginClass.
+func PluginClassStruct() *PluginClass {
+	err := pluginClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PluginClass{native: pluginClassStruct.Alloc()}
+	return structGo
+}
+
 var pluginPrivateStruct *gi.Struct
 var pluginPrivateStruct_Once sync.Once
 
@@ -2229,6 +3042,17 @@ func pluginPrivateStruct_Set() error {
 
 type PluginPrivate struct {
 	native uintptr
+}
+
+// PluginPrivateStruct creates an uninitialised PluginPrivate.
+func PluginPrivateStruct() *PluginPrivate {
+	err := pluginPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PluginPrivate{native: pluginPrivateStruct.Alloc()}
+	return structGo
 }
 
 var policyDecisionClassStruct *gi.Struct
@@ -2246,6 +3070,27 @@ type PolicyDecisionClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// PolicyDecisionClassStruct creates an uninitialised PolicyDecisionClass.
+func PolicyDecisionClassStruct() *PolicyDecisionClass {
+	err := policyDecisionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PolicyDecisionClass{native: policyDecisionClassStruct.Alloc()}
+	return structGo
+}
+
 var policyDecisionPrivateStruct *gi.Struct
 var policyDecisionPrivateStruct_Once sync.Once
 
@@ -2259,6 +3104,17 @@ func policyDecisionPrivateStruct_Set() error {
 
 type PolicyDecisionPrivate struct {
 	native uintptr
+}
+
+// PolicyDecisionPrivateStruct creates an uninitialised PolicyDecisionPrivate.
+func PolicyDecisionPrivateStruct() *PolicyDecisionPrivate {
+	err := policyDecisionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PolicyDecisionPrivate{native: policyDecisionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var printCustomWidgetClassStruct *gi.Struct
@@ -2276,6 +3132,31 @@ type PrintCustomWidgetClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'apply' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// PrintCustomWidgetClassStruct creates an uninitialised PrintCustomWidgetClass.
+func PrintCustomWidgetClassStruct() *PrintCustomWidgetClass {
+	err := printCustomWidgetClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintCustomWidgetClass{native: printCustomWidgetClassStruct.Alloc()}
+	return structGo
+}
+
 var printCustomWidgetPrivateStruct *gi.Struct
 var printCustomWidgetPrivateStruct_Once sync.Once
 
@@ -2289,6 +3170,17 @@ func printCustomWidgetPrivateStruct_Set() error {
 
 type PrintCustomWidgetPrivate struct {
 	native uintptr
+}
+
+// PrintCustomWidgetPrivateStruct creates an uninitialised PrintCustomWidgetPrivate.
+func PrintCustomWidgetPrivateStruct() *PrintCustomWidgetPrivate {
+	err := printCustomWidgetPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintCustomWidgetPrivate{native: printCustomWidgetPrivateStruct.Alloc()}
+	return structGo
 }
 
 var printOperationClassStruct *gi.Struct
@@ -2306,6 +3198,27 @@ type PrintOperationClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// PrintOperationClassStruct creates an uninitialised PrintOperationClass.
+func PrintOperationClassStruct() *PrintOperationClass {
+	err := printOperationClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintOperationClass{native: printOperationClassStruct.Alloc()}
+	return structGo
+}
+
 var printOperationPrivateStruct *gi.Struct
 var printOperationPrivateStruct_Once sync.Once
 
@@ -2319,6 +3232,17 @@ func printOperationPrivateStruct_Set() error {
 
 type PrintOperationPrivate struct {
 	native uintptr
+}
+
+// PrintOperationPrivateStruct creates an uninitialised PrintOperationPrivate.
+func PrintOperationPrivateStruct() *PrintOperationPrivate {
+	err := printOperationPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintOperationPrivate{native: printOperationPrivateStruct.Alloc()}
+	return structGo
 }
 
 var responsePolicyDecisionClassStruct *gi.Struct
@@ -2336,6 +3260,32 @@ type ResponsePolicyDecisionClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *ResponsePolicyDecisionClass) ParentClass() *PolicyDecisionClass {
+	argValue := gi.FieldGet(responsePolicyDecisionClassStruct, recv.native, "parent_class")
+	value := &PolicyDecisionClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// ResponsePolicyDecisionClassStruct creates an uninitialised ResponsePolicyDecisionClass.
+func ResponsePolicyDecisionClassStruct() *ResponsePolicyDecisionClass {
+	err := responsePolicyDecisionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ResponsePolicyDecisionClass{native: responsePolicyDecisionClassStruct.Alloc()}
+	return structGo
+}
+
 var responsePolicyDecisionPrivateStruct *gi.Struct
 var responsePolicyDecisionPrivateStruct_Once sync.Once
 
@@ -2351,6 +3301,17 @@ type ResponsePolicyDecisionPrivate struct {
 	native uintptr
 }
 
+// ResponsePolicyDecisionPrivateStruct creates an uninitialised ResponsePolicyDecisionPrivate.
+func ResponsePolicyDecisionPrivateStruct() *ResponsePolicyDecisionPrivate {
+	err := responsePolicyDecisionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ResponsePolicyDecisionPrivate{native: responsePolicyDecisionPrivateStruct.Alloc()}
+	return structGo
+}
+
 var scriptDialogStruct *gi.Struct
 var scriptDialogStruct_Once sync.Once
 
@@ -2364,6 +3325,17 @@ func scriptDialogStruct_Set() error {
 
 type ScriptDialog struct {
 	native uintptr
+}
+
+// ScriptDialogStruct creates an uninitialised ScriptDialog.
+func ScriptDialogStruct() *ScriptDialog {
+	err := scriptDialogStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ScriptDialog{native: scriptDialogStruct.Alloc()}
+	return structGo
 }
 
 var scriptDialogCloseFunction *gi.Function
@@ -2593,6 +3565,27 @@ type SecurityManagerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// SecurityManagerClassStruct creates an uninitialised SecurityManagerClass.
+func SecurityManagerClassStruct() *SecurityManagerClass {
+	err := securityManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SecurityManagerClass{native: securityManagerClassStruct.Alloc()}
+	return structGo
+}
+
 var securityManagerPrivateStruct *gi.Struct
 var securityManagerPrivateStruct_Once sync.Once
 
@@ -2606,6 +3599,17 @@ func securityManagerPrivateStruct_Set() error {
 
 type SecurityManagerPrivate struct {
 	native uintptr
+}
+
+// SecurityManagerPrivateStruct creates an uninitialised SecurityManagerPrivate.
+func SecurityManagerPrivateStruct() *SecurityManagerPrivate {
+	err := securityManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SecurityManagerPrivate{native: securityManagerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var securityOriginStruct *gi.Struct
@@ -2924,6 +3928,27 @@ type SettingsClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// SettingsClassStruct creates an uninitialised SettingsClass.
+func SettingsClassStruct() *SettingsClass {
+	err := settingsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsClass{native: settingsClassStruct.Alloc()}
+	return structGo
+}
+
 var settingsPrivateStruct *gi.Struct
 var settingsPrivateStruct_Once sync.Once
 
@@ -2937,6 +3962,17 @@ func settingsPrivateStruct_Set() error {
 
 type SettingsPrivate struct {
 	native uintptr
+}
+
+// SettingsPrivateStruct creates an uninitialised SettingsPrivate.
+func SettingsPrivateStruct() *SettingsPrivate {
+	err := settingsPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsPrivate{native: settingsPrivateStruct.Alloc()}
+	return structGo
 }
 
 var uRIRequestClassStruct *gi.Struct
@@ -2954,6 +3990,27 @@ type URIRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// URIRequestClassStruct creates an uninitialised URIRequestClass.
+func URIRequestClassStruct() *URIRequestClass {
+	err := uRIRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URIRequestClass{native: uRIRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var uRIRequestPrivateStruct *gi.Struct
 var uRIRequestPrivateStruct_Once sync.Once
 
@@ -2967,6 +4024,17 @@ func uRIRequestPrivateStruct_Set() error {
 
 type URIRequestPrivate struct {
 	native uintptr
+}
+
+// URIRequestPrivateStruct creates an uninitialised URIRequestPrivate.
+func URIRequestPrivateStruct() *URIRequestPrivate {
+	err := uRIRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URIRequestPrivate{native: uRIRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var uRIResponseClassStruct *gi.Struct
@@ -2984,6 +4052,27 @@ type URIResponseClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// URIResponseClassStruct creates an uninitialised URIResponseClass.
+func URIResponseClassStruct() *URIResponseClass {
+	err := uRIResponseClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URIResponseClass{native: uRIResponseClassStruct.Alloc()}
+	return structGo
+}
+
 var uRIResponsePrivateStruct *gi.Struct
 var uRIResponsePrivateStruct_Once sync.Once
 
@@ -2997,6 +4086,17 @@ func uRIResponsePrivateStruct_Set() error {
 
 type URIResponsePrivate struct {
 	native uintptr
+}
+
+// URIResponsePrivateStruct creates an uninitialised URIResponsePrivate.
+func URIResponsePrivateStruct() *URIResponsePrivate {
+	err := uRIResponsePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URIResponsePrivate{native: uRIResponsePrivateStruct.Alloc()}
+	return structGo
 }
 
 var uRISchemeRequestClassStruct *gi.Struct
@@ -3014,6 +4114,27 @@ type URISchemeRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// URISchemeRequestClassStruct creates an uninitialised URISchemeRequestClass.
+func URISchemeRequestClassStruct() *URISchemeRequestClass {
+	err := uRISchemeRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URISchemeRequestClass{native: uRISchemeRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var uRISchemeRequestPrivateStruct *gi.Struct
 var uRISchemeRequestPrivateStruct_Once sync.Once
 
@@ -3029,6 +4150,17 @@ type URISchemeRequestPrivate struct {
 	native uintptr
 }
 
+// URISchemeRequestPrivateStruct creates an uninitialised URISchemeRequestPrivate.
+func URISchemeRequestPrivateStruct() *URISchemeRequestPrivate {
+	err := uRISchemeRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &URISchemeRequestPrivate{native: uRISchemeRequestPrivateStruct.Alloc()}
+	return structGo
+}
+
 var userContentFilterStruct *gi.Struct
 var userContentFilterStruct_Once sync.Once
 
@@ -3042,6 +4174,17 @@ func userContentFilterStruct_Set() error {
 
 type UserContentFilter struct {
 	native uintptr
+}
+
+// UserContentFilterStruct creates an uninitialised UserContentFilter.
+func UserContentFilterStruct() *UserContentFilter {
+	err := userContentFilterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentFilter{native: userContentFilterStruct.Alloc()}
+	return structGo
 }
 
 var userContentFilterGetIdentifierFunction *gi.Function
@@ -3151,6 +4294,27 @@ type UserContentFilterStoreClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UserContentFilterStoreClassStruct creates an uninitialised UserContentFilterStoreClass.
+func UserContentFilterStoreClassStruct() *UserContentFilterStoreClass {
+	err := userContentFilterStoreClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentFilterStoreClass{native: userContentFilterStoreClassStruct.Alloc()}
+	return structGo
+}
+
 var userContentFilterStorePrivateStruct *gi.Struct
 var userContentFilterStorePrivateStruct_Once sync.Once
 
@@ -3164,6 +4328,17 @@ func userContentFilterStorePrivateStruct_Set() error {
 
 type UserContentFilterStorePrivate struct {
 	native uintptr
+}
+
+// UserContentFilterStorePrivateStruct creates an uninitialised UserContentFilterStorePrivate.
+func UserContentFilterStorePrivateStruct() *UserContentFilterStorePrivate {
+	err := userContentFilterStorePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentFilterStorePrivate{native: userContentFilterStorePrivateStruct.Alloc()}
+	return structGo
 }
 
 var userContentManagerClassStruct *gi.Struct
@@ -3181,6 +4356,27 @@ type UserContentManagerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UserContentManagerClassStruct creates an uninitialised UserContentManagerClass.
+func UserContentManagerClassStruct() *UserContentManagerClass {
+	err := userContentManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentManagerClass{native: userContentManagerClassStruct.Alloc()}
+	return structGo
+}
+
 var userContentManagerPrivateStruct *gi.Struct
 var userContentManagerPrivateStruct_Once sync.Once
 
@@ -3194,6 +4390,17 @@ func userContentManagerPrivateStruct_Set() error {
 
 type UserContentManagerPrivate struct {
 	native uintptr
+}
+
+// UserContentManagerPrivateStruct creates an uninitialised UserContentManagerPrivate.
+func UserContentManagerPrivateStruct() *UserContentManagerPrivate {
+	err := userContentManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentManagerPrivate{native: userContentManagerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var userMediaPermissionRequestClassStruct *gi.Struct
@@ -3211,6 +4418,27 @@ type UserMediaPermissionRequestClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UserMediaPermissionRequestClassStruct creates an uninitialised UserMediaPermissionRequestClass.
+func UserMediaPermissionRequestClassStruct() *UserMediaPermissionRequestClass {
+	err := userMediaPermissionRequestClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserMediaPermissionRequestClass{native: userMediaPermissionRequestClassStruct.Alloc()}
+	return structGo
+}
+
 var userMediaPermissionRequestPrivateStruct *gi.Struct
 var userMediaPermissionRequestPrivateStruct_Once sync.Once
 
@@ -3224,6 +4452,17 @@ func userMediaPermissionRequestPrivateStruct_Set() error {
 
 type UserMediaPermissionRequestPrivate struct {
 	native uintptr
+}
+
+// UserMediaPermissionRequestPrivateStruct creates an uninitialised UserMediaPermissionRequestPrivate.
+func UserMediaPermissionRequestPrivateStruct() *UserMediaPermissionRequestPrivate {
+	err := userMediaPermissionRequestPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserMediaPermissionRequestPrivate{native: userMediaPermissionRequestPrivateStruct.Alloc()}
+	return structGo
 }
 
 var userScriptStruct *gi.Struct
@@ -3399,6 +4638,35 @@ type WebContextClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'download_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'initialize_web_extensions' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'initialize_notification_permissions' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'automation_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WebContextClassStruct creates an uninitialised WebContextClass.
+func WebContextClassStruct() *WebContextClass {
+	err := webContextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebContextClass{native: webContextClassStruct.Alloc()}
+	return structGo
+}
+
 var webContextPrivateStruct *gi.Struct
 var webContextPrivateStruct_Once sync.Once
 
@@ -3412,6 +4680,17 @@ func webContextPrivateStruct_Set() error {
 
 type WebContextPrivate struct {
 	native uintptr
+}
+
+// WebContextPrivateStruct creates an uninitialised WebContextPrivate.
+func WebContextPrivateStruct() *WebContextPrivate {
+	err := webContextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebContextPrivate{native: webContextPrivateStruct.Alloc()}
+	return structGo
 }
 
 var webInspectorClassStruct *gi.Struct
@@ -3429,6 +4708,27 @@ type WebInspectorClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WebInspectorClassStruct creates an uninitialised WebInspectorClass.
+func WebInspectorClassStruct() *WebInspectorClass {
+	err := webInspectorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebInspectorClass{native: webInspectorClassStruct.Alloc()}
+	return structGo
+}
+
 var webInspectorPrivateStruct *gi.Struct
 var webInspectorPrivateStruct_Once sync.Once
 
@@ -3442,6 +4742,17 @@ func webInspectorPrivateStruct_Set() error {
 
 type WebInspectorPrivate struct {
 	native uintptr
+}
+
+// WebInspectorPrivateStruct creates an uninitialised WebInspectorPrivate.
+func WebInspectorPrivateStruct() *WebInspectorPrivate {
+	err := webInspectorPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebInspectorPrivate{native: webInspectorPrivateStruct.Alloc()}
+	return structGo
 }
 
 var webResourceClassStruct *gi.Struct
@@ -3459,6 +4770,27 @@ type WebResourceClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WebResourceClassStruct creates an uninitialised WebResourceClass.
+func WebResourceClassStruct() *WebResourceClass {
+	err := webResourceClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebResourceClass{native: webResourceClassStruct.Alloc()}
+	return structGo
+}
+
 var webResourcePrivateStruct *gi.Struct
 var webResourcePrivateStruct_Once sync.Once
 
@@ -3472,6 +4804,17 @@ func webResourcePrivateStruct_Set() error {
 
 type WebResourcePrivate struct {
 	native uintptr
+}
+
+// WebResourcePrivateStruct creates an uninitialised WebResourcePrivate.
+func WebResourcePrivateStruct() *WebResourcePrivate {
+	err := webResourcePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebResourcePrivate{native: webResourcePrivateStruct.Alloc()}
+	return structGo
 }
 
 var webViewBaseClassStruct *gi.Struct
@@ -3489,6 +4832,27 @@ type WebViewBaseClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parentClass' : for field getter : no Go type for 'Gtk.ContainerClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WebViewBaseClassStruct creates an uninitialised WebViewBaseClass.
+func WebViewBaseClassStruct() *WebViewBaseClass {
+	err := webViewBaseClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebViewBaseClass{native: webViewBaseClassStruct.Alloc()}
+	return structGo
+}
+
 var webViewBasePrivateStruct *gi.Struct
 var webViewBasePrivateStruct_Once sync.Once
 
@@ -3502,6 +4866,17 @@ func webViewBasePrivateStruct_Set() error {
 
 type WebViewBasePrivate struct {
 	native uintptr
+}
+
+// WebViewBasePrivateStruct creates an uninitialised WebViewBasePrivate.
+func WebViewBasePrivateStruct() *WebViewBasePrivate {
+	err := webViewBasePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebViewBasePrivate{native: webViewBasePrivateStruct.Alloc()}
+	return structGo
 }
 
 var webViewClassStruct *gi.Struct
@@ -3519,6 +4894,80 @@ type WebViewClass struct {
 	native uintptr
 }
 
+// Parent returns the C field 'parent'.
+func (recv *WebViewClass) Parent() *WebViewBaseClass {
+	argValue := gi.FieldGet(webViewClassStruct, recv.native, "parent")
+	value := &WebViewBaseClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'load_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_failed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ready_to_show' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_as_modal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'script_dialog' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'decide_policy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'permission_request' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mouse_target_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'print' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'resource_load_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enter_fullscreen' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'leave_fullscreen' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_file_chooser' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'context_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'context_menu_dismissed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'submit_form' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insecure_content_detected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'web_process_crashed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'authenticate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_failed_with_tls_errors' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_notification' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_color_chooser' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_option_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'web_process_terminated' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// WebViewClassStruct creates an uninitialised WebViewClass.
+func WebViewClassStruct() *WebViewClass {
+	err := webViewClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebViewClass{native: webViewClassStruct.Alloc()}
+	return structGo
+}
+
 var webViewPrivateStruct *gi.Struct
 var webViewPrivateStruct_Once sync.Once
 
@@ -3532,6 +4981,17 @@ func webViewPrivateStruct_Set() error {
 
 type WebViewPrivate struct {
 	native uintptr
+}
+
+// WebViewPrivateStruct creates an uninitialised WebViewPrivate.
+func WebViewPrivateStruct() *WebViewPrivate {
+	err := webViewPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebViewPrivate{native: webViewPrivateStruct.Alloc()}
+	return structGo
 }
 
 var webViewSessionStateStruct *gi.Struct
@@ -3626,6 +5086,17 @@ func websiteDataStruct_Set() error {
 
 type WebsiteData struct {
 	native uintptr
+}
+
+// WebsiteDataStruct creates an uninitialised WebsiteData.
+func WebsiteDataStruct() *WebsiteData {
+	err := websiteDataStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebsiteData{native: websiteDataStruct.Alloc()}
+	return structGo
 }
 
 var websiteDataGetNameFunction *gi.Function
@@ -3739,6 +5210,27 @@ type WebsiteDataManagerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WebsiteDataManagerClassStruct creates an uninitialised WebsiteDataManagerClass.
+func WebsiteDataManagerClassStruct() *WebsiteDataManagerClass {
+	err := websiteDataManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebsiteDataManagerClass{native: websiteDataManagerClassStruct.Alloc()}
+	return structGo
+}
+
 var websiteDataManagerPrivateStruct *gi.Struct
 var websiteDataManagerPrivateStruct_Once sync.Once
 
@@ -3752,6 +5244,17 @@ func websiteDataManagerPrivateStruct_Set() error {
 
 type WebsiteDataManagerPrivate struct {
 	native uintptr
+}
+
+// WebsiteDataManagerPrivateStruct creates an uninitialised WebsiteDataManagerPrivate.
+func WebsiteDataManagerPrivateStruct() *WebsiteDataManagerPrivate {
+	err := websiteDataManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebsiteDataManagerPrivate{native: websiteDataManagerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var windowPropertiesClassStruct *gi.Struct
@@ -3769,6 +5272,27 @@ type WindowPropertiesClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// WindowPropertiesClassStruct creates an uninitialised WindowPropertiesClass.
+func WindowPropertiesClassStruct() *WindowPropertiesClass {
+	err := windowPropertiesClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WindowPropertiesClass{native: windowPropertiesClassStruct.Alloc()}
+	return structGo
+}
+
 var windowPropertiesPrivateStruct *gi.Struct
 var windowPropertiesPrivateStruct_Once sync.Once
 
@@ -3782,4 +5306,15 @@ func windowPropertiesPrivateStruct_Set() error {
 
 type WindowPropertiesPrivate struct {
 	native uintptr
+}
+
+// WindowPropertiesPrivateStruct creates an uninitialised WindowPropertiesPrivate.
+func WindowPropertiesPrivateStruct() *WindowPropertiesPrivate {
+	err := windowPropertiesPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WindowPropertiesPrivate{native: windowPropertiesPrivateStruct.Alloc()}
+	return structGo
 }

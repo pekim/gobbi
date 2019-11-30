@@ -22,6 +22,31 @@ type BufferClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextBufferClass'
+
+// UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'redo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'bracket_matched' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// BufferClassStruct creates an uninitialised BufferClass.
+func BufferClassStruct() *BufferClass {
+	err := bufferClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferClass{native: bufferClassStruct.Alloc()}
+	return structGo
+}
+
 var bufferPrivateStruct *gi.Struct
 var bufferPrivateStruct_Once sync.Once
 
@@ -35,6 +60,17 @@ func bufferPrivateStruct_Set() error {
 
 type BufferPrivate struct {
 	native uintptr
+}
+
+// BufferPrivateStruct creates an uninitialised BufferPrivate.
+func BufferPrivateStruct() *BufferPrivate {
+	err := bufferPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BufferPrivate{native: bufferPrivateStruct.Alloc()}
+	return structGo
 }
 
 var completionClassStruct *gi.Struct
@@ -52,6 +88,33 @@ type CompletionClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'proposal_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hide' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate_context' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_page' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_proposal' : for field getter : missing Type
+
+// CompletionClassStruct creates an uninitialised CompletionClass.
+func CompletionClassStruct() *CompletionClass {
+	err := completionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionClass{native: completionClassStruct.Alloc()}
+	return structGo
+}
+
 var completionContextClassStruct *gi.Struct
 var completionContextClassStruct_Once sync.Once
 
@@ -65,6 +128,27 @@ func completionContextClassStruct_Set() error {
 
 type CompletionContextClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+
+// UNSUPPORTED : C value 'cancelled' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// CompletionContextClassStruct creates an uninitialised CompletionContextClass.
+func CompletionContextClassStruct() *CompletionContextClass {
+	err := completionContextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionContextClass{native: completionContextClassStruct.Alloc()}
+	return structGo
 }
 
 var completionContextPrivateStruct *gi.Struct
@@ -82,6 +166,17 @@ type CompletionContextPrivate struct {
 	native uintptr
 }
 
+// CompletionContextPrivateStruct creates an uninitialised CompletionContextPrivate.
+func CompletionContextPrivateStruct() *CompletionContextPrivate {
+	err := completionContextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionContextPrivate{native: completionContextPrivateStruct.Alloc()}
+	return structGo
+}
+
 var completionInfoClassStruct *gi.Struct
 var completionInfoClassStruct_Once sync.Once
 
@@ -95,6 +190,21 @@ func completionInfoClassStruct_Set() error {
 
 type CompletionInfoClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.WindowClass'
+
+// UNSUPPORTED : C value 'before_show' : for field getter : missing Type
+
+// CompletionInfoClassStruct creates an uninitialised CompletionInfoClass.
+func CompletionInfoClassStruct() *CompletionInfoClass {
+	err := completionInfoClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionInfoClass{native: completionInfoClassStruct.Alloc()}
+	return structGo
 }
 
 var completionInfoPrivateStruct *gi.Struct
@@ -112,6 +222,17 @@ type CompletionInfoPrivate struct {
 	native uintptr
 }
 
+// CompletionInfoPrivateStruct creates an uninitialised CompletionInfoPrivate.
+func CompletionInfoPrivateStruct() *CompletionInfoPrivate {
+	err := completionInfoPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionInfoPrivate{native: completionInfoPrivateStruct.Alloc()}
+	return structGo
+}
+
 var completionItemClassStruct *gi.Struct
 var completionItemClassStruct_Once sync.Once
 
@@ -125,6 +246,19 @@ func completionItemClassStruct_Set() error {
 
 type CompletionItemClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// CompletionItemClassStruct creates an uninitialised CompletionItemClass.
+func CompletionItemClassStruct() *CompletionItemClass {
+	err := completionItemClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionItemClass{native: completionItemClassStruct.Alloc()}
+	return structGo
 }
 
 var completionItemPrivateStruct *gi.Struct
@@ -142,6 +276,17 @@ type CompletionItemPrivate struct {
 	native uintptr
 }
 
+// CompletionItemPrivateStruct creates an uninitialised CompletionItemPrivate.
+func CompletionItemPrivateStruct() *CompletionItemPrivate {
+	err := completionItemPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionItemPrivate{native: completionItemPrivateStruct.Alloc()}
+	return structGo
+}
+
 var completionPrivateStruct *gi.Struct
 var completionPrivateStruct_Once sync.Once
 
@@ -155,6 +300,17 @@ func completionPrivateStruct_Set() error {
 
 type CompletionPrivate struct {
 	native uintptr
+}
+
+// CompletionPrivateStruct creates an uninitialised CompletionPrivate.
+func CompletionPrivateStruct() *CompletionPrivate {
+	err := completionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionPrivate{native: completionPrivateStruct.Alloc()}
+	return structGo
 }
 
 var completionProposalIfaceStruct *gi.Struct
@@ -172,6 +328,39 @@ type CompletionProposalIface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_label' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_markup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_gicon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hash' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// CompletionProposalIfaceStruct creates an uninitialised CompletionProposalIface.
+func CompletionProposalIfaceStruct() *CompletionProposalIface {
+	err := completionProposalIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionProposalIface{native: completionProposalIfaceStruct.Alloc()}
+	return structGo
+}
+
 var completionProviderIfaceStruct *gi.Struct
 var completionProviderIfaceStruct_Once sync.Once
 
@@ -185,6 +374,45 @@ func completionProviderIfaceStruct_Set() error {
 
 type CompletionProviderIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_gicon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'match' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_activation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_info_widget' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_start_iter' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_proposal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_interactive_delay' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_priority' : for field getter : missing Type
+
+// CompletionProviderIfaceStruct creates an uninitialised CompletionProviderIface.
+func CompletionProviderIfaceStruct() *CompletionProviderIface {
+	err := completionProviderIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionProviderIface{native: completionProviderIfaceStruct.Alloc()}
+	return structGo
 }
 
 var completionWordsClassStruct *gi.Struct
@@ -202,6 +430,19 @@ type CompletionWordsClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// CompletionWordsClassStruct creates an uninitialised CompletionWordsClass.
+func CompletionWordsClassStruct() *CompletionWordsClass {
+	err := completionWordsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionWordsClass{native: completionWordsClassStruct.Alloc()}
+	return structGo
+}
+
 var completionWordsPrivateStruct *gi.Struct
 var completionWordsPrivateStruct_Once sync.Once
 
@@ -217,6 +458,17 @@ type CompletionWordsPrivate struct {
 	native uintptr
 }
 
+// CompletionWordsPrivateStruct creates an uninitialised CompletionWordsPrivate.
+func CompletionWordsPrivateStruct() *CompletionWordsPrivate {
+	err := completionWordsPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CompletionWordsPrivate{native: completionWordsPrivateStruct.Alloc()}
+	return structGo
+}
+
 var encodingStruct *gi.Struct
 var encodingStruct_Once sync.Once
 
@@ -230,6 +482,17 @@ func encodingStruct_Set() error {
 
 type Encoding struct {
 	native uintptr
+}
+
+// EncodingStruct creates an uninitialised Encoding.
+func EncodingStruct() *Encoding {
+	err := encodingStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Encoding{native: encodingStruct.Alloc()}
+	return structGo
 }
 
 var encodingCopyFunction *gi.Function
@@ -403,6 +666,21 @@ type FileClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// FileClassStruct creates an uninitialised FileClass.
+func FileClassStruct() *FileClass {
+	err := fileClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileClass{native: fileClassStruct.Alloc()}
+	return structGo
+}
+
 var fileLoaderClassStruct *gi.Struct
 var fileLoaderClassStruct_Once sync.Once
 
@@ -416,6 +694,21 @@ func fileLoaderClassStruct_Set() error {
 
 type FileLoaderClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// FileLoaderClassStruct creates an uninitialised FileLoaderClass.
+func FileLoaderClassStruct() *FileLoaderClass {
+	err := fileLoaderClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileLoaderClass{native: fileLoaderClassStruct.Alloc()}
+	return structGo
 }
 
 var fileLoaderPrivateStruct *gi.Struct
@@ -433,6 +726,17 @@ type FileLoaderPrivate struct {
 	native uintptr
 }
 
+// FileLoaderPrivateStruct creates an uninitialised FileLoaderPrivate.
+func FileLoaderPrivateStruct() *FileLoaderPrivate {
+	err := fileLoaderPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileLoaderPrivate{native: fileLoaderPrivateStruct.Alloc()}
+	return structGo
+}
+
 var filePrivateStruct *gi.Struct
 var filePrivateStruct_Once sync.Once
 
@@ -446,6 +750,17 @@ func filePrivateStruct_Set() error {
 
 type FilePrivate struct {
 	native uintptr
+}
+
+// FilePrivateStruct creates an uninitialised FilePrivate.
+func FilePrivateStruct() *FilePrivate {
+	err := filePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilePrivate{native: filePrivateStruct.Alloc()}
+	return structGo
 }
 
 var fileSaverClassStruct *gi.Struct
@@ -463,6 +778,21 @@ type FileSaverClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// FileSaverClassStruct creates an uninitialised FileSaverClass.
+func FileSaverClassStruct() *FileSaverClass {
+	err := fileSaverClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileSaverClass{native: fileSaverClassStruct.Alloc()}
+	return structGo
+}
+
 var fileSaverPrivateStruct *gi.Struct
 var fileSaverPrivateStruct_Once sync.Once
 
@@ -476,6 +806,17 @@ func fileSaverPrivateStruct_Set() error {
 
 type FileSaverPrivate struct {
 	native uintptr
+}
+
+// FileSaverPrivateStruct creates an uninitialised FileSaverPrivate.
+func FileSaverPrivateStruct() *FileSaverPrivate {
+	err := fileSaverPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileSaverPrivate{native: fileSaverPrivateStruct.Alloc()}
+	return structGo
 }
 
 var gutterClassStruct *gi.Struct
@@ -493,6 +834,19 @@ type GutterClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// GutterClassStruct creates an uninitialised GutterClass.
+func GutterClassStruct() *GutterClass {
+	err := gutterClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterClass{native: gutterClassStruct.Alloc()}
+	return structGo
+}
+
 var gutterPrivateStruct *gi.Struct
 var gutterPrivateStruct_Once sync.Once
 
@@ -506,6 +860,17 @@ func gutterPrivateStruct_Set() error {
 
 type GutterPrivate struct {
 	native uintptr
+}
+
+// GutterPrivateStruct creates an uninitialised GutterPrivate.
+func GutterPrivateStruct() *GutterPrivate {
+	err := gutterPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterPrivate{native: gutterPrivateStruct.Alloc()}
+	return structGo
 }
 
 var gutterRendererClassStruct *gi.Struct
@@ -523,6 +888,39 @@ type GutterRendererClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+
+// UNSUPPORTED : C value 'begin' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_view' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_buffer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_activatable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'queue_draw' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_tooltip' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_data' : for field getter : missing Type
+
+// GutterRendererClassStruct creates an uninitialised GutterRendererClass.
+func GutterRendererClassStruct() *GutterRendererClass {
+	err := gutterRendererClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererClass{native: gutterRendererClassStruct.Alloc()}
+	return structGo
+}
+
 var gutterRendererPixbufClassStruct *gi.Struct
 var gutterRendererPixbufClassStruct_Once sync.Once
 
@@ -536,6 +934,17 @@ func gutterRendererPixbufClassStruct_Set() error {
 
 type GutterRendererPixbufClass struct {
 	native uintptr
+}
+
+// GutterRendererPixbufClassStruct creates an uninitialised GutterRendererPixbufClass.
+func GutterRendererPixbufClassStruct() *GutterRendererPixbufClass {
+	err := gutterRendererPixbufClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererPixbufClass{native: gutterRendererPixbufClassStruct.Alloc()}
+	return structGo
 }
 
 var gutterRendererPixbufPrivateStruct *gi.Struct
@@ -553,6 +962,17 @@ type GutterRendererPixbufPrivate struct {
 	native uintptr
 }
 
+// GutterRendererPixbufPrivateStruct creates an uninitialised GutterRendererPixbufPrivate.
+func GutterRendererPixbufPrivateStruct() *GutterRendererPixbufPrivate {
+	err := gutterRendererPixbufPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererPixbufPrivate{native: gutterRendererPixbufPrivateStruct.Alloc()}
+	return structGo
+}
+
 var gutterRendererPrivateStruct *gi.Struct
 var gutterRendererPrivateStruct_Once sync.Once
 
@@ -566,6 +986,17 @@ func gutterRendererPrivateStruct_Set() error {
 
 type GutterRendererPrivate struct {
 	native uintptr
+}
+
+// GutterRendererPrivateStruct creates an uninitialised GutterRendererPrivate.
+func GutterRendererPrivateStruct() *GutterRendererPrivate {
+	err := gutterRendererPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererPrivate{native: gutterRendererPrivateStruct.Alloc()}
+	return structGo
 }
 
 var gutterRendererTextClassStruct *gi.Struct
@@ -583,6 +1014,17 @@ type GutterRendererTextClass struct {
 	native uintptr
 }
 
+// GutterRendererTextClassStruct creates an uninitialised GutterRendererTextClass.
+func GutterRendererTextClassStruct() *GutterRendererTextClass {
+	err := gutterRendererTextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererTextClass{native: gutterRendererTextClassStruct.Alloc()}
+	return structGo
+}
+
 var gutterRendererTextPrivateStruct *gi.Struct
 var gutterRendererTextPrivateStruct_Once sync.Once
 
@@ -596,6 +1038,17 @@ func gutterRendererTextPrivateStruct_Set() error {
 
 type GutterRendererTextPrivate struct {
 	native uintptr
+}
+
+// GutterRendererTextPrivateStruct creates an uninitialised GutterRendererTextPrivate.
+func GutterRendererTextPrivateStruct() *GutterRendererTextPrivate {
+	err := gutterRendererTextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GutterRendererTextPrivate{native: gutterRendererTextPrivateStruct.Alloc()}
+	return structGo
 }
 
 var languageClassStruct *gi.Struct
@@ -613,6 +1066,23 @@ type LanguageClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// LanguageClassStruct creates an uninitialised LanguageClass.
+func LanguageClassStruct() *LanguageClass {
+	err := languageClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LanguageClass{native: languageClassStruct.Alloc()}
+	return structGo
+}
+
 var languageManagerClassStruct *gi.Struct
 var languageManagerClassStruct_Once sync.Once
 
@@ -626,6 +1096,27 @@ func languageManagerClassStruct_Set() error {
 
 type LanguageManagerClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved4' : for field getter : missing Type
+
+// LanguageManagerClassStruct creates an uninitialised LanguageManagerClass.
+func LanguageManagerClassStruct() *LanguageManagerClass {
+	err := languageManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LanguageManagerClass{native: languageManagerClassStruct.Alloc()}
+	return structGo
 }
 
 var languageManagerPrivateStruct *gi.Struct
@@ -643,6 +1134,17 @@ type LanguageManagerPrivate struct {
 	native uintptr
 }
 
+// LanguageManagerPrivateStruct creates an uninitialised LanguageManagerPrivate.
+func LanguageManagerPrivateStruct() *LanguageManagerPrivate {
+	err := languageManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LanguageManagerPrivate{native: languageManagerPrivateStruct.Alloc()}
+	return structGo
+}
+
 var languagePrivateStruct *gi.Struct
 var languagePrivateStruct_Once sync.Once
 
@@ -656,6 +1158,17 @@ func languagePrivateStruct_Set() error {
 
 type LanguagePrivate struct {
 	native uintptr
+}
+
+// LanguagePrivateStruct creates an uninitialised LanguagePrivate.
+func LanguagePrivateStruct() *LanguagePrivate {
+	err := languagePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LanguagePrivate{native: languagePrivateStruct.Alloc()}
+	return structGo
 }
 
 var mapClassStruct *gi.Struct
@@ -673,6 +1186,26 @@ type MapClass struct {
 	native uintptr
 }
 
+// ParentClass returns the C field 'parent_class'.
+func (recv *MapClass) ParentClass() *ViewClass {
+	argValue := gi.FieldGet(mapClassStruct, recv.native, "parent_class")
+	value := &ViewClass{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// MapClassStruct creates an uninitialised MapClass.
+func MapClassStruct() *MapClass {
+	err := mapClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MapClass{native: mapClassStruct.Alloc()}
+	return structGo
+}
+
 var markAttributesClassStruct *gi.Struct
 var markAttributesClassStruct_Once sync.Once
 
@@ -686,6 +1219,17 @@ func markAttributesClassStruct_Set() error {
 
 type MarkAttributesClass struct {
 	native uintptr
+}
+
+// MarkAttributesClassStruct creates an uninitialised MarkAttributesClass.
+func MarkAttributesClassStruct() *MarkAttributesClass {
+	err := markAttributesClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MarkAttributesClass{native: markAttributesClassStruct.Alloc()}
+	return structGo
 }
 
 var markAttributesPrivateStruct *gi.Struct
@@ -703,6 +1247,17 @@ type MarkAttributesPrivate struct {
 	native uintptr
 }
 
+// MarkAttributesPrivateStruct creates an uninitialised MarkAttributesPrivate.
+func MarkAttributesPrivateStruct() *MarkAttributesPrivate {
+	err := markAttributesPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MarkAttributesPrivate{native: markAttributesPrivateStruct.Alloc()}
+	return structGo
+}
+
 var markClassStruct *gi.Struct
 var markClassStruct_Once sync.Once
 
@@ -716,6 +1271,23 @@ func markClassStruct_Set() error {
 
 type MarkClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextMarkClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// MarkClassStruct creates an uninitialised MarkClass.
+func MarkClassStruct() *MarkClass {
+	err := markClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MarkClass{native: markClassStruct.Alloc()}
+	return structGo
 }
 
 var markPrivateStruct *gi.Struct
@@ -733,6 +1305,17 @@ type MarkPrivate struct {
 	native uintptr
 }
 
+// MarkPrivateStruct creates an uninitialised MarkPrivate.
+func MarkPrivateStruct() *MarkPrivate {
+	err := markPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MarkPrivate{native: markPrivateStruct.Alloc()}
+	return structGo
+}
+
 var printCompositorClassStruct *gi.Struct
 var printCompositorClassStruct_Once sync.Once
 
@@ -746,6 +1329,23 @@ func printCompositorClassStruct_Set() error {
 
 type PrintCompositorClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// PrintCompositorClassStruct creates an uninitialised PrintCompositorClass.
+func PrintCompositorClassStruct() *PrintCompositorClass {
+	err := printCompositorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintCompositorClass{native: printCompositorClassStruct.Alloc()}
+	return structGo
 }
 
 var printCompositorPrivateStruct *gi.Struct
@@ -763,6 +1363,17 @@ type PrintCompositorPrivate struct {
 	native uintptr
 }
 
+// PrintCompositorPrivateStruct creates an uninitialised PrintCompositorPrivate.
+func PrintCompositorPrivateStruct() *PrintCompositorPrivate {
+	err := printCompositorPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PrintCompositorPrivate{native: printCompositorPrivateStruct.Alloc()}
+	return structGo
+}
+
 var regionClassStruct *gi.Struct
 var regionClassStruct_Once sync.Once
 
@@ -778,6 +1389,21 @@ type RegionClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// RegionClassStruct creates an uninitialised RegionClass.
+func RegionClassStruct() *RegionClass {
+	err := regionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RegionClass{native: regionClassStruct.Alloc()}
+	return structGo
+}
+
 var regionIterStruct *gi.Struct
 var regionIterStruct_Once sync.Once
 
@@ -791,6 +1417,17 @@ func regionIterStruct_Set() error {
 
 type RegionIter struct {
 	native uintptr
+}
+
+// RegionIterStruct creates an uninitialised RegionIter.
+func RegionIterStruct() *RegionIter {
+	err := regionIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RegionIter{native: regionIterStruct.Alloc()}
+	return structGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
@@ -874,6 +1511,21 @@ type SearchContextClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// SearchContextClassStruct creates an uninitialised SearchContextClass.
+func SearchContextClassStruct() *SearchContextClass {
+	err := searchContextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SearchContextClass{native: searchContextClassStruct.Alloc()}
+	return structGo
+}
+
 var searchContextPrivateStruct *gi.Struct
 var searchContextPrivateStruct_Once sync.Once
 
@@ -887,6 +1539,17 @@ func searchContextPrivateStruct_Set() error {
 
 type SearchContextPrivate struct {
 	native uintptr
+}
+
+// SearchContextPrivateStruct creates an uninitialised SearchContextPrivate.
+func SearchContextPrivateStruct() *SearchContextPrivate {
+	err := searchContextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SearchContextPrivate{native: searchContextPrivateStruct.Alloc()}
+	return structGo
 }
 
 var searchSettingsClassStruct *gi.Struct
@@ -904,6 +1567,21 @@ type SearchSettingsClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// SearchSettingsClassStruct creates an uninitialised SearchSettingsClass.
+func SearchSettingsClassStruct() *SearchSettingsClass {
+	err := searchSettingsClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SearchSettingsClass{native: searchSettingsClassStruct.Alloc()}
+	return structGo
+}
+
 var searchSettingsPrivateStruct *gi.Struct
 var searchSettingsPrivateStruct_Once sync.Once
 
@@ -917,6 +1595,17 @@ func searchSettingsPrivateStruct_Set() error {
 
 type SearchSettingsPrivate struct {
 	native uintptr
+}
+
+// SearchSettingsPrivateStruct creates an uninitialised SearchSettingsPrivate.
+func SearchSettingsPrivateStruct() *SearchSettingsPrivate {
+	err := searchSettingsPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SearchSettingsPrivate{native: searchSettingsPrivateStruct.Alloc()}
+	return structGo
 }
 
 var spaceDrawerClassStruct *gi.Struct
@@ -934,6 +1623,21 @@ type SpaceDrawerClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// SpaceDrawerClassStruct creates an uninitialised SpaceDrawerClass.
+func SpaceDrawerClassStruct() *SpaceDrawerClass {
+	err := spaceDrawerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SpaceDrawerClass{native: spaceDrawerClassStruct.Alloc()}
+	return structGo
+}
+
 var spaceDrawerPrivateStruct *gi.Struct
 var spaceDrawerPrivateStruct_Once sync.Once
 
@@ -947,6 +1651,17 @@ func spaceDrawerPrivateStruct_Set() error {
 
 type SpaceDrawerPrivate struct {
 	native uintptr
+}
+
+// SpaceDrawerPrivateStruct creates an uninitialised SpaceDrawerPrivate.
+func SpaceDrawerPrivateStruct() *SpaceDrawerPrivate {
+	err := spaceDrawerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SpaceDrawerPrivate{native: spaceDrawerPrivateStruct.Alloc()}
+	return structGo
 }
 
 var styleClassStruct *gi.Struct
@@ -964,6 +1679,17 @@ type StyleClass struct {
 	native uintptr
 }
 
+// StyleClassStruct creates an uninitialised StyleClass.
+func StyleClassStruct() *StyleClass {
+	err := styleClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleClass{native: styleClassStruct.Alloc()}
+	return structGo
+}
+
 var styleSchemeChooserButtonClassStruct *gi.Struct
 var styleSchemeChooserButtonClassStruct_Once sync.Once
 
@@ -977,6 +1703,19 @@ func styleSchemeChooserButtonClassStruct_Set() error {
 
 type StyleSchemeChooserButtonClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.ButtonClass'
+
+// StyleSchemeChooserButtonClassStruct creates an uninitialised StyleSchemeChooserButtonClass.
+func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
+	err := styleSchemeChooserButtonClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeChooserButtonClass{native: styleSchemeChooserButtonClassStruct.Alloc()}
+	return structGo
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
@@ -994,6 +1733,25 @@ type StyleSchemeChooserInterface struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'base_interface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'get_style_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_style_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// StyleSchemeChooserInterfaceStruct creates an uninitialised StyleSchemeChooserInterface.
+func StyleSchemeChooserInterfaceStruct() *StyleSchemeChooserInterface {
+	err := styleSchemeChooserInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeChooserInterface{native: styleSchemeChooserInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var styleSchemeChooserWidgetClassStruct *gi.Struct
 var styleSchemeChooserWidgetClassStruct_Once sync.Once
 
@@ -1007,6 +1765,19 @@ func styleSchemeChooserWidgetClassStruct_Set() error {
 
 type StyleSchemeChooserWidgetClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.BinClass'
+
+// StyleSchemeChooserWidgetClassStruct creates an uninitialised StyleSchemeChooserWidgetClass.
+func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
+	err := styleSchemeChooserWidgetClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeChooserWidgetClass{native: styleSchemeChooserWidgetClassStruct.Alloc()}
+	return structGo
 }
 
 var styleSchemeClassStruct *gi.Struct
@@ -1024,6 +1795,23 @@ type StyleSchemeClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'base_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// StyleSchemeClassStruct creates an uninitialised StyleSchemeClass.
+func StyleSchemeClassStruct() *StyleSchemeClass {
+	err := styleSchemeClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeClass{native: styleSchemeClassStruct.Alloc()}
+	return structGo
+}
+
 var styleSchemeManagerClassStruct *gi.Struct
 var styleSchemeManagerClassStruct_Once sync.Once
 
@@ -1037,6 +1825,27 @@ func styleSchemeManagerClassStruct_Set() error {
 
 type StyleSchemeManagerClass struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved4' : for field getter : missing Type
+
+// StyleSchemeManagerClassStruct creates an uninitialised StyleSchemeManagerClass.
+func StyleSchemeManagerClassStruct() *StyleSchemeManagerClass {
+	err := styleSchemeManagerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeManagerClass{native: styleSchemeManagerClassStruct.Alloc()}
+	return structGo
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
@@ -1054,6 +1863,17 @@ type StyleSchemeManagerPrivate struct {
 	native uintptr
 }
 
+// StyleSchemeManagerPrivateStruct creates an uninitialised StyleSchemeManagerPrivate.
+func StyleSchemeManagerPrivateStruct() *StyleSchemeManagerPrivate {
+	err := styleSchemeManagerPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemeManagerPrivate{native: styleSchemeManagerPrivateStruct.Alloc()}
+	return structGo
+}
+
 var styleSchemePrivateStruct *gi.Struct
 var styleSchemePrivateStruct_Once sync.Once
 
@@ -1067,6 +1887,17 @@ func styleSchemePrivateStruct_Set() error {
 
 type StyleSchemePrivate struct {
 	native uintptr
+}
+
+// StyleSchemePrivateStruct creates an uninitialised StyleSchemePrivate.
+func StyleSchemePrivateStruct() *StyleSchemePrivate {
+	err := styleSchemePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StyleSchemePrivate{native: styleSchemePrivateStruct.Alloc()}
+	return structGo
 }
 
 var tagClassStruct *gi.Struct
@@ -1084,6 +1915,21 @@ type TagClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextTagClass'
+
+// UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// TagClassStruct creates an uninitialised TagClass.
+func TagClassStruct() *TagClass {
+	err := tagClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TagClass{native: tagClassStruct.Alloc()}
+	return structGo
+}
+
 var undoManagerIfaceStruct *gi.Struct
 var undoManagerIfaceStruct_Once sync.Once
 
@@ -1097,6 +1943,35 @@ func undoManagerIfaceStruct_Set() error {
 
 type UndoManagerIface struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'can_undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_redo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'redo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'begin_not_undoable_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'end_not_undoable_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_undo_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_redo_changed' : for field getter : missing Type
+
+// UndoManagerIfaceStruct creates an uninitialised UndoManagerIface.
+func UndoManagerIfaceStruct() *UndoManagerIface {
+	err := undoManagerIfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UndoManagerIface{native: undoManagerIfaceStruct.Alloc()}
+	return structGo
 }
 
 var viewClassStruct *gi.Struct
@@ -1114,6 +1989,31 @@ type ViewClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextViewClass'
+
+// UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'redo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'line_mark_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_completion' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_lines' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_words' : for field getter : missing Type
+
+// ViewClassStruct creates an uninitialised ViewClass.
+func ViewClassStruct() *ViewClass {
+	err := viewClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ViewClass{native: viewClassStruct.Alloc()}
+	return structGo
+}
+
 var viewPrivateStruct *gi.Struct
 var viewPrivateStruct_Once sync.Once
 
@@ -1127,4 +2027,15 @@ func viewPrivateStruct_Set() error {
 
 type ViewPrivate struct {
 	native uintptr
+}
+
+// ViewPrivateStruct creates an uninitialised ViewPrivate.
+func ViewPrivateStruct() *ViewPrivate {
+	err := viewPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ViewPrivate{native: viewPrivateStruct.Alloc()}
+	return structGo
 }

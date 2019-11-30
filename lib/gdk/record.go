@@ -22,6 +22,17 @@ type Atom struct {
 	native uintptr
 }
 
+// AtomStruct creates an uninitialised Atom.
+func AtomStruct() *Atom {
+	err := atomStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Atom{native: atomStruct.Alloc()}
+	return structGo
+}
+
 var atomNameFunction *gi.Function
 var atomNameFunction_Once sync.Once
 
@@ -67,6 +78,45 @@ func colorStruct_Set() error {
 
 type Color struct {
 	native uintptr
+}
+
+// Pixel returns the C field 'pixel'.
+func (recv *Color) Pixel() uint32 {
+	argValue := gi.FieldGet(colorStruct, recv.native, "pixel")
+	value := argValue.Uint32()
+	return value
+}
+
+// Red returns the C field 'red'.
+func (recv *Color) Red() uint16 {
+	argValue := gi.FieldGet(colorStruct, recv.native, "red")
+	value := argValue.Uint16()
+	return value
+}
+
+// Green returns the C field 'green'.
+func (recv *Color) Green() uint16 {
+	argValue := gi.FieldGet(colorStruct, recv.native, "green")
+	value := argValue.Uint16()
+	return value
+}
+
+// Blue returns the C field 'blue'.
+func (recv *Color) Blue() uint16 {
+	argValue := gi.FieldGet(colorStruct, recv.native, "blue")
+	value := argValue.Uint16()
+	return value
+}
+
+// ColorStruct creates an uninitialised Color.
+func ColorStruct() *Color {
+	err := colorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Color{native: colorStruct.Alloc()}
+	return structGo
 }
 
 var colorCopyFunction *gi.Function
@@ -241,6 +291,17 @@ type DevicePadInterface struct {
 	native uintptr
 }
 
+// DevicePadInterfaceStruct creates an uninitialised DevicePadInterface.
+func DevicePadInterfaceStruct() *DevicePadInterface {
+	err := devicePadInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DevicePadInterface{native: devicePadInterfaceStruct.Alloc()}
+	return structGo
+}
+
 var drawingContextClassStruct *gi.Struct
 var drawingContextClassStruct_Once sync.Once
 
@@ -254,6 +315,17 @@ func drawingContextClassStruct_Set() error {
 
 type DrawingContextClass struct {
 	native uintptr
+}
+
+// DrawingContextClassStruct creates an uninitialised DrawingContextClass.
+func DrawingContextClassStruct() *DrawingContextClass {
+	err := drawingContextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DrawingContextClass{native: drawingContextClassStruct.Alloc()}
+	return structGo
 }
 
 var eventAnyStruct *gi.Struct
@@ -271,6 +343,28 @@ type EventAny struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventAny) SendEvent() int8 {
+	argValue := gi.FieldGet(eventAnyStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// EventAnyStruct creates an uninitialised EventAny.
+func EventAnyStruct() *EventAny {
+	err := eventAnyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventAny{native: eventAnyStruct.Alloc()}
+	return structGo
+}
+
 var eventButtonStruct *gi.Struct
 var eventButtonStruct_Once sync.Once
 
@@ -284,6 +378,81 @@ func eventButtonStruct_Set() error {
 
 type EventButton struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventButton) SendEvent() int8 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventButton) Time() uint32 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventButton) X() float64 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventButton) Y() float64 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Axes returns the C field 'axes'.
+func (recv *EventButton) Axes() float64 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "axes")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// Button returns the C field 'button'.
+func (recv *EventButton) Button() uint32 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "button")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventButton) XRoot() float64 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventButton) YRoot() float64 {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// EventButtonStruct creates an uninitialised EventButton.
+func EventButtonStruct() *EventButton {
+	err := eventButtonStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventButton{native: eventButtonStruct.Alloc()}
+	return structGo
 }
 
 var eventConfigureStruct *gi.Struct
@@ -301,6 +470,56 @@ type EventConfigure struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventConfigure) SendEvent() int8 {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventConfigure) X() int32 {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "x")
+	value := argValue.Int32()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventConfigure) Y() int32 {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "y")
+	value := argValue.Int32()
+	return value
+}
+
+// Width returns the C field 'width'.
+func (recv *EventConfigure) Width() int32 {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "width")
+	value := argValue.Int32()
+	return value
+}
+
+// Height returns the C field 'height'.
+func (recv *EventConfigure) Height() int32 {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "height")
+	value := argValue.Int32()
+	return value
+}
+
+// EventConfigureStruct creates an uninitialised EventConfigure.
+func EventConfigureStruct() *EventConfigure {
+	err := eventConfigureStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventConfigure{native: eventConfigureStruct.Alloc()}
+	return structGo
+}
+
 var eventCrossingStruct *gi.Struct
 var eventCrossingStruct_Once sync.Once
 
@@ -314,6 +533,78 @@ func eventCrossingStruct_Set() error {
 
 type EventCrossing struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventCrossing) SendEvent() int8 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'subwindow' : for field getter : no Go type for 'Window'
+
+// Time returns the C field 'time'.
+func (recv *EventCrossing) Time() uint32 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventCrossing) X() float64 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventCrossing) Y() float64 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventCrossing) XRoot() float64 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventCrossing) YRoot() float64 {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'mode' : for field getter : no Go type for 'CrossingMode'
+
+// UNSUPPORTED : C value 'detail' : for field getter : no Go type for 'NotifyType'
+
+// Focus returns the C field 'focus'.
+func (recv *EventCrossing) Focus() bool {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "focus")
+	value := argValue.Boolean()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// EventCrossingStruct creates an uninitialised EventCrossing.
+func EventCrossingStruct() *EventCrossing {
+	err := eventCrossingStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventCrossing{native: eventCrossingStruct.Alloc()}
+	return structGo
 }
 
 var eventDNDStruct *gi.Struct
@@ -331,6 +622,51 @@ type EventDND struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventDND) SendEvent() int8 {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'context' : for field getter : no Go type for 'DragContext'
+
+// Time returns the C field 'time'.
+func (recv *EventDND) Time() uint32 {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventDND) XRoot() int16 {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "x_root")
+	value := argValue.Int16()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventDND) YRoot() int16 {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "y_root")
+	value := argValue.Int16()
+	return value
+}
+
+// EventDNDStruct creates an uninitialised EventDND.
+func EventDNDStruct() *EventDND {
+	err := eventDNDStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventDND{native: eventDNDStruct.Alloc()}
+	return structGo
+}
+
 var eventExposeStruct *gi.Struct
 var eventExposeStruct_Once sync.Once
 
@@ -344,6 +680,44 @@ func eventExposeStruct_Set() error {
 
 type EventExpose struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventExpose) SendEvent() int8 {
+	argValue := gi.FieldGet(eventExposeStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Area returns the C field 'area'.
+func (recv *EventExpose) Area() *Rectangle {
+	argValue := gi.FieldGet(eventExposeStruct, recv.native, "area")
+	value := &Rectangle{native: argValue.Pointer()}
+	return value
+}
+
+// UNSUPPORTED : C value 'region' : for field getter : no Go type for 'cairo.Region'
+
+// Count returns the C field 'count'.
+func (recv *EventExpose) Count() int32 {
+	argValue := gi.FieldGet(eventExposeStruct, recv.native, "count")
+	value := argValue.Int32()
+	return value
+}
+
+// EventExposeStruct creates an uninitialised EventExpose.
+func EventExposeStruct() *EventExpose {
+	err := eventExposeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventExpose{native: eventExposeStruct.Alloc()}
+	return structGo
 }
 
 var eventFocusStruct *gi.Struct
@@ -361,6 +735,35 @@ type EventFocus struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventFocus) SendEvent() int8 {
+	argValue := gi.FieldGet(eventFocusStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// In returns the C field 'in'.
+func (recv *EventFocus) In() int16 {
+	argValue := gi.FieldGet(eventFocusStruct, recv.native, "in")
+	value := argValue.Int16()
+	return value
+}
+
+// EventFocusStruct creates an uninitialised EventFocus.
+func EventFocusStruct() *EventFocus {
+	err := eventFocusStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventFocus{native: eventFocusStruct.Alloc()}
+	return structGo
+}
+
 var eventGrabBrokenStruct *gi.Struct
 var eventGrabBrokenStruct_Once sync.Once
 
@@ -374,6 +777,44 @@ func eventGrabBrokenStruct_Set() error {
 
 type EventGrabBroken struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventGrabBroken) SendEvent() int8 {
+	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Keyboard returns the C field 'keyboard'.
+func (recv *EventGrabBroken) Keyboard() bool {
+	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "keyboard")
+	value := argValue.Boolean()
+	return value
+}
+
+// Implicit returns the C field 'implicit'.
+func (recv *EventGrabBroken) Implicit() bool {
+	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "implicit")
+	value := argValue.Boolean()
+	return value
+}
+
+// UNSUPPORTED : C value 'grab_window' : for field getter : no Go type for 'Window'
+
+// EventGrabBrokenStruct creates an uninitialised EventGrabBroken.
+func EventGrabBrokenStruct() *EventGrabBroken {
+	err := eventGrabBrokenStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventGrabBroken{native: eventGrabBrokenStruct.Alloc()}
+	return structGo
 }
 
 var eventKeyStruct *gi.Struct
@@ -391,6 +832,79 @@ type EventKey struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventKey) SendEvent() int8 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventKey) Time() uint32 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// Keyval returns the C field 'keyval'.
+func (recv *EventKey) Keyval() uint32 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "keyval")
+	value := argValue.Uint32()
+	return value
+}
+
+// Length returns the C field 'length'.
+func (recv *EventKey) Length() int32 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "length")
+	value := argValue.Int32()
+	return value
+}
+
+// String returns the C field 'string'.
+func (recv *EventKey) String() string {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "string")
+	value := argValue.String(false)
+	return value
+}
+
+// HardwareKeycode returns the C field 'hardware_keycode'.
+func (recv *EventKey) HardwareKeycode() uint16 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "hardware_keycode")
+	value := argValue.Uint16()
+	return value
+}
+
+// Group returns the C field 'group'.
+func (recv *EventKey) Group() uint8 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "group")
+	value := argValue.Uint8()
+	return value
+}
+
+// IsModifier returns the C field 'is_modifier'.
+func (recv *EventKey) IsModifier() uint32 {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "is_modifier")
+	value := argValue.Uint32()
+	return value
+}
+
+// EventKeyStruct creates an uninitialised EventKey.
+func EventKeyStruct() *EventKey {
+	err := eventKeyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventKey{native: eventKeyStruct.Alloc()}
+	return structGo
+}
+
 var eventMotionStruct *gi.Struct
 var eventMotionStruct_Once sync.Once
 
@@ -404,6 +918,81 @@ func eventMotionStruct_Set() error {
 
 type EventMotion struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventMotion) SendEvent() int8 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventMotion) Time() uint32 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventMotion) X() float64 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventMotion) Y() float64 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Axes returns the C field 'axes'.
+func (recv *EventMotion) Axes() float64 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "axes")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// IsHint returns the C field 'is_hint'.
+func (recv *EventMotion) IsHint() int16 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "is_hint")
+	value := argValue.Int16()
+	return value
+}
+
+// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventMotion) XRoot() float64 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventMotion) YRoot() float64 {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// EventMotionStruct creates an uninitialised EventMotion.
+func EventMotionStruct() *EventMotion {
+	err := eventMotionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventMotion{native: eventMotionStruct.Alloc()}
+	return structGo
 }
 
 var eventOwnerChangeStruct *gi.Struct
@@ -421,6 +1010,53 @@ type EventOwnerChange struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventOwnerChange) SendEvent() int8 {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'owner' : for field getter : no Go type for 'Window'
+
+// UNSUPPORTED : C value 'reason' : for field getter : no Go type for 'OwnerChange'
+
+// Selection returns the C field 'selection'.
+func (recv *EventOwnerChange) Selection() *Atom {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "selection")
+	value := &Atom{native: argValue.Pointer()}
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventOwnerChange) Time() uint32 {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// SelectionTime returns the C field 'selection_time'.
+func (recv *EventOwnerChange) SelectionTime() uint32 {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "selection_time")
+	value := argValue.Uint32()
+	return value
+}
+
+// EventOwnerChangeStruct creates an uninitialised EventOwnerChange.
+func EventOwnerChangeStruct() *EventOwnerChange {
+	err := eventOwnerChangeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventOwnerChange{native: eventOwnerChangeStruct.Alloc()}
+	return structGo
+}
+
 var eventPadAxisStruct *gi.Struct
 var eventPadAxisStruct_Once sync.Once
 
@@ -434,6 +1070,63 @@ func eventPadAxisStruct_Set() error {
 
 type EventPadAxis struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventPadAxis) SendEvent() int8 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventPadAxis) Time() uint32 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// Group returns the C field 'group'.
+func (recv *EventPadAxis) Group() uint32 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "group")
+	value := argValue.Uint32()
+	return value
+}
+
+// Index returns the C field 'index'.
+func (recv *EventPadAxis) Index() uint32 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "index")
+	value := argValue.Uint32()
+	return value
+}
+
+// Mode returns the C field 'mode'.
+func (recv *EventPadAxis) Mode() uint32 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "mode")
+	value := argValue.Uint32()
+	return value
+}
+
+// Value returns the C field 'value'.
+func (recv *EventPadAxis) Value() float64 {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "value")
+	value := argValue.Float64()
+	return value
+}
+
+// EventPadAxisStruct creates an uninitialised EventPadAxis.
+func EventPadAxisStruct() *EventPadAxis {
+	err := eventPadAxisStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventPadAxis{native: eventPadAxisStruct.Alloc()}
+	return structGo
 }
 
 var eventPadButtonStruct *gi.Struct
@@ -451,6 +1144,56 @@ type EventPadButton struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventPadButton) SendEvent() int8 {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventPadButton) Time() uint32 {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// Group returns the C field 'group'.
+func (recv *EventPadButton) Group() uint32 {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "group")
+	value := argValue.Uint32()
+	return value
+}
+
+// Button returns the C field 'button'.
+func (recv *EventPadButton) Button() uint32 {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "button")
+	value := argValue.Uint32()
+	return value
+}
+
+// Mode returns the C field 'mode'.
+func (recv *EventPadButton) Mode() uint32 {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "mode")
+	value := argValue.Uint32()
+	return value
+}
+
+// EventPadButtonStruct creates an uninitialised EventPadButton.
+func EventPadButtonStruct() *EventPadButton {
+	err := eventPadButtonStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventPadButton{native: eventPadButtonStruct.Alloc()}
+	return structGo
+}
+
 var eventPadGroupModeStruct *gi.Struct
 var eventPadGroupModeStruct_Once sync.Once
 
@@ -464,6 +1207,49 @@ func eventPadGroupModeStruct_Set() error {
 
 type EventPadGroupMode struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventPadGroupMode) SendEvent() int8 {
+	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventPadGroupMode) Time() uint32 {
+	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// Group returns the C field 'group'.
+func (recv *EventPadGroupMode) Group() uint32 {
+	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "group")
+	value := argValue.Uint32()
+	return value
+}
+
+// Mode returns the C field 'mode'.
+func (recv *EventPadGroupMode) Mode() uint32 {
+	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "mode")
+	value := argValue.Uint32()
+	return value
+}
+
+// EventPadGroupModeStruct creates an uninitialised EventPadGroupMode.
+func EventPadGroupModeStruct() *EventPadGroupMode {
+	err := eventPadGroupModeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventPadGroupMode{native: eventPadGroupModeStruct.Alloc()}
+	return structGo
 }
 
 var eventPropertyStruct *gi.Struct
@@ -481,6 +1267,44 @@ type EventProperty struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventProperty) SendEvent() int8 {
+	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Atom returns the C field 'atom'.
+func (recv *EventProperty) Atom() *Atom {
+	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "atom")
+	value := &Atom{native: argValue.Pointer()}
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventProperty) Time() uint32 {
+	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'PropertyState'
+
+// EventPropertyStruct creates an uninitialised EventProperty.
+func EventPropertyStruct() *EventProperty {
+	err := eventPropertyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventProperty{native: eventPropertyStruct.Alloc()}
+	return structGo
+}
+
 var eventProximityStruct *gi.Struct
 var eventProximityStruct_Once sync.Once
 
@@ -494,6 +1318,37 @@ func eventProximityStruct_Set() error {
 
 type EventProximity struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventProximity) SendEvent() int8 {
+	argValue := gi.FieldGet(eventProximityStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventProximity) Time() uint32 {
+	argValue := gi.FieldGet(eventProximityStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// EventProximityStruct creates an uninitialised EventProximity.
+func EventProximityStruct() *EventProximity {
+	err := eventProximityStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventProximity{native: eventProximityStruct.Alloc()}
+	return structGo
 }
 
 var eventScrollStruct *gi.Struct
@@ -511,6 +1366,90 @@ type EventScroll struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventScroll) SendEvent() int8 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventScroll) Time() uint32 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventScroll) X() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventScroll) Y() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// UNSUPPORTED : C value 'direction' : for field getter : no Go type for 'ScrollDirection'
+
+// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventScroll) XRoot() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventScroll) YRoot() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// DeltaX returns the C field 'delta_x'.
+func (recv *EventScroll) DeltaX() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "delta_x")
+	value := argValue.Float64()
+	return value
+}
+
+// DeltaY returns the C field 'delta_y'.
+func (recv *EventScroll) DeltaY() float64 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "delta_y")
+	value := argValue.Float64()
+	return value
+}
+
+// IsStop returns the C field 'is_stop'.
+func (recv *EventScroll) IsStop() uint32 {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "is_stop")
+	value := argValue.Uint32()
+	return value
+}
+
+// EventScrollStruct creates an uninitialised EventScroll.
+func EventScrollStruct() *EventScroll {
+	err := eventScrollStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventScroll{native: eventScrollStruct.Alloc()}
+	return structGo
+}
+
 var eventSelectionStruct *gi.Struct
 var eventSelectionStruct_Once sync.Once
 
@@ -524,6 +1463,58 @@ func eventSelectionStruct_Set() error {
 
 type EventSelection struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventSelection) SendEvent() int8 {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Selection returns the C field 'selection'.
+func (recv *EventSelection) Selection() *Atom {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "selection")
+	value := &Atom{native: argValue.Pointer()}
+	return value
+}
+
+// Target returns the C field 'target'.
+func (recv *EventSelection) Target() *Atom {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "target")
+	value := &Atom{native: argValue.Pointer()}
+	return value
+}
+
+// Property returns the C field 'property'.
+func (recv *EventSelection) Property() *Atom {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "property")
+	value := &Atom{native: argValue.Pointer()}
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventSelection) Time() uint32 {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'requestor' : for field getter : no Go type for 'Window'
+
+// EventSelectionStruct creates an uninitialised EventSelection.
+func EventSelectionStruct() *EventSelection {
+	err := eventSelectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventSelection{native: eventSelectionStruct.Alloc()}
+	return structGo
 }
 
 var eventSequenceStruct *gi.Struct
@@ -541,6 +1532,17 @@ type EventSequence struct {
 	native uintptr
 }
 
+// EventSequenceStruct creates an uninitialised EventSequence.
+func EventSequenceStruct() *EventSequence {
+	err := eventSequenceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventSequence{native: eventSequenceStruct.Alloc()}
+	return structGo
+}
+
 var eventSettingStruct *gi.Struct
 var eventSettingStruct_Once sync.Once
 
@@ -554,6 +1556,37 @@ func eventSettingStruct_Set() error {
 
 type EventSetting struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventSetting) SendEvent() int8 {
+	argValue := gi.FieldGet(eventSettingStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'action' : for field getter : no Go type for 'SettingAction'
+
+// Name returns the C field 'name'.
+func (recv *EventSetting) Name() string {
+	argValue := gi.FieldGet(eventSettingStruct, recv.native, "name")
+	value := argValue.String(false)
+	return value
+}
+
+// EventSettingStruct creates an uninitialised EventSetting.
+func EventSettingStruct() *EventSetting {
+	err := eventSettingStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventSetting{native: eventSettingStruct.Alloc()}
+	return structGo
 }
 
 var eventTouchStruct *gi.Struct
@@ -571,6 +1604,88 @@ type EventTouch struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventTouch) SendEvent() int8 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventTouch) Time() uint32 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventTouch) X() float64 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventTouch) Y() float64 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Axes returns the C field 'axes'.
+func (recv *EventTouch) Axes() float64 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "axes")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// Sequence returns the C field 'sequence'.
+func (recv *EventTouch) Sequence() *EventSequence {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "sequence")
+	value := &EventSequence{native: argValue.Pointer()}
+	return value
+}
+
+// EmulatingPointer returns the C field 'emulating_pointer'.
+func (recv *EventTouch) EmulatingPointer() bool {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "emulating_pointer")
+	value := argValue.Boolean()
+	return value
+}
+
+// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventTouch) XRoot() float64 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventTouch) YRoot() float64 {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// EventTouchStruct creates an uninitialised EventTouch.
+func EventTouchStruct() *EventTouch {
+	err := eventTouchStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventTouch{native: eventTouchStruct.Alloc()}
+	return structGo
+}
+
 var eventTouchpadPinchStruct *gi.Struct
 var eventTouchpadPinchStruct_Once sync.Once
 
@@ -584,6 +1699,107 @@ func eventTouchpadPinchStruct_Set() error {
 
 type EventTouchpadPinch struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventTouchpadPinch) SendEvent() int8 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Phase returns the C field 'phase'.
+func (recv *EventTouchpadPinch) Phase() int8 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "phase")
+	value := argValue.Int8()
+	return value
+}
+
+// NFingers returns the C field 'n_fingers'.
+func (recv *EventTouchpadPinch) NFingers() int8 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "n_fingers")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventTouchpadPinch) Time() uint32 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventTouchpadPinch) X() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventTouchpadPinch) Y() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Dx returns the C field 'dx'.
+func (recv *EventTouchpadPinch) Dx() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "dx")
+	value := argValue.Float64()
+	return value
+}
+
+// Dy returns the C field 'dy'.
+func (recv *EventTouchpadPinch) Dy() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "dy")
+	value := argValue.Float64()
+	return value
+}
+
+// AngleDelta returns the C field 'angle_delta'.
+func (recv *EventTouchpadPinch) AngleDelta() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "angle_delta")
+	value := argValue.Float64()
+	return value
+}
+
+// Scale returns the C field 'scale'.
+func (recv *EventTouchpadPinch) Scale() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "scale")
+	value := argValue.Float64()
+	return value
+}
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventTouchpadPinch) XRoot() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventTouchpadPinch) YRoot() float64 {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// EventTouchpadPinchStruct creates an uninitialised EventTouchpadPinch.
+func EventTouchpadPinchStruct() *EventTouchpadPinch {
+	err := eventTouchpadPinchStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventTouchpadPinch{native: eventTouchpadPinchStruct.Alloc()}
+	return structGo
 }
 
 var eventTouchpadSwipeStruct *gi.Struct
@@ -601,6 +1817,93 @@ type EventTouchpadSwipe struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventTouchpadSwipe) SendEvent() int8 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// Phase returns the C field 'phase'.
+func (recv *EventTouchpadSwipe) Phase() int8 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "phase")
+	value := argValue.Int8()
+	return value
+}
+
+// NFingers returns the C field 'n_fingers'.
+func (recv *EventTouchpadSwipe) NFingers() int8 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "n_fingers")
+	value := argValue.Int8()
+	return value
+}
+
+// Time returns the C field 'time'.
+func (recv *EventTouchpadSwipe) Time() uint32 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *EventTouchpadSwipe) X() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "x")
+	value := argValue.Float64()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *EventTouchpadSwipe) Y() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "y")
+	value := argValue.Float64()
+	return value
+}
+
+// Dx returns the C field 'dx'.
+func (recv *EventTouchpadSwipe) Dx() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "dx")
+	value := argValue.Float64()
+	return value
+}
+
+// Dy returns the C field 'dy'.
+func (recv *EventTouchpadSwipe) Dy() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "dy")
+	value := argValue.Float64()
+	return value
+}
+
+// XRoot returns the C field 'x_root'.
+func (recv *EventTouchpadSwipe) XRoot() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "x_root")
+	value := argValue.Float64()
+	return value
+}
+
+// YRoot returns the C field 'y_root'.
+func (recv *EventTouchpadSwipe) YRoot() float64 {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "y_root")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// EventTouchpadSwipeStruct creates an uninitialised EventTouchpadSwipe.
+func EventTouchpadSwipeStruct() *EventTouchpadSwipe {
+	err := eventTouchpadSwipeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventTouchpadSwipe{native: eventTouchpadSwipeStruct.Alloc()}
+	return structGo
+}
+
 var eventVisibilityStruct *gi.Struct
 var eventVisibilityStruct_Once sync.Once
 
@@ -614,6 +1917,30 @@ func eventVisibilityStruct_Set() error {
 
 type EventVisibility struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventVisibility) SendEvent() int8 {
+	argValue := gi.FieldGet(eventVisibilityStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'VisibilityState'
+
+// EventVisibilityStruct creates an uninitialised EventVisibility.
+func EventVisibilityStruct() *EventVisibility {
+	err := eventVisibilityStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventVisibility{native: eventVisibilityStruct.Alloc()}
+	return structGo
 }
 
 var eventWindowStateStruct *gi.Struct
@@ -631,6 +1958,32 @@ type EventWindowState struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
+
+// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+
+// SendEvent returns the C field 'send_event'.
+func (recv *EventWindowState) SendEvent() int8 {
+	argValue := gi.FieldGet(eventWindowStateStruct, recv.native, "send_event")
+	value := argValue.Int8()
+	return value
+}
+
+// UNSUPPORTED : C value 'changed_mask' : for field getter : no Go type for 'WindowState'
+
+// UNSUPPORTED : C value 'new_window_state' : for field getter : no Go type for 'WindowState'
+
+// EventWindowStateStruct creates an uninitialised EventWindowState.
+func EventWindowStateStruct() *EventWindowState {
+	err := eventWindowStateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &EventWindowState{native: eventWindowStateStruct.Alloc()}
+	return structGo
+}
+
 var frameClockClassStruct *gi.Struct
 var frameClockClassStruct_Once sync.Once
 
@@ -644,6 +1997,17 @@ func frameClockClassStruct_Set() error {
 
 type FrameClockClass struct {
 	native uintptr
+}
+
+// FrameClockClassStruct creates an uninitialised FrameClockClass.
+func FrameClockClassStruct() *FrameClockClass {
+	err := frameClockClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FrameClockClass{native: frameClockClassStruct.Alloc()}
+	return structGo
 }
 
 var frameClockPrivateStruct *gi.Struct
@@ -661,6 +2025,17 @@ type FrameClockPrivate struct {
 	native uintptr
 }
 
+// FrameClockPrivateStruct creates an uninitialised FrameClockPrivate.
+func FrameClockPrivateStruct() *FrameClockPrivate {
+	err := frameClockPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FrameClockPrivate{native: frameClockPrivateStruct.Alloc()}
+	return structGo
+}
+
 var frameTimingsStruct *gi.Struct
 var frameTimingsStruct_Once sync.Once
 
@@ -674,6 +2049,17 @@ func frameTimingsStruct_Set() error {
 
 type FrameTimings struct {
 	native uintptr
+}
+
+// FrameTimingsStruct creates an uninitialised FrameTimings.
+func FrameTimingsStruct() *FrameTimings {
+	err := frameTimingsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FrameTimings{native: frameTimingsStruct.Alloc()}
+	return structGo
 }
 
 var frameTimingsGetCompleteFunction *gi.Function
@@ -943,6 +2329,89 @@ type Geometry struct {
 	native uintptr
 }
 
+// MinWidth returns the C field 'min_width'.
+func (recv *Geometry) MinWidth() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "min_width")
+	value := argValue.Int32()
+	return value
+}
+
+// MinHeight returns the C field 'min_height'.
+func (recv *Geometry) MinHeight() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "min_height")
+	value := argValue.Int32()
+	return value
+}
+
+// MaxWidth returns the C field 'max_width'.
+func (recv *Geometry) MaxWidth() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "max_width")
+	value := argValue.Int32()
+	return value
+}
+
+// MaxHeight returns the C field 'max_height'.
+func (recv *Geometry) MaxHeight() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "max_height")
+	value := argValue.Int32()
+	return value
+}
+
+// BaseWidth returns the C field 'base_width'.
+func (recv *Geometry) BaseWidth() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "base_width")
+	value := argValue.Int32()
+	return value
+}
+
+// BaseHeight returns the C field 'base_height'.
+func (recv *Geometry) BaseHeight() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "base_height")
+	value := argValue.Int32()
+	return value
+}
+
+// WidthInc returns the C field 'width_inc'.
+func (recv *Geometry) WidthInc() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "width_inc")
+	value := argValue.Int32()
+	return value
+}
+
+// HeightInc returns the C field 'height_inc'.
+func (recv *Geometry) HeightInc() int32 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "height_inc")
+	value := argValue.Int32()
+	return value
+}
+
+// MinAspect returns the C field 'min_aspect'.
+func (recv *Geometry) MinAspect() float64 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "min_aspect")
+	value := argValue.Float64()
+	return value
+}
+
+// MaxAspect returns the C field 'max_aspect'.
+func (recv *Geometry) MaxAspect() float64 {
+	argValue := gi.FieldGet(geometryStruct, recv.native, "max_aspect")
+	value := argValue.Float64()
+	return value
+}
+
+// UNSUPPORTED : C value 'win_gravity' : for field getter : no Go type for 'Gravity'
+
+// GeometryStruct creates an uninitialised Geometry.
+func GeometryStruct() *Geometry {
+	err := geometryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Geometry{native: geometryStruct.Alloc()}
+	return structGo
+}
+
 var keymapKeyStruct *gi.Struct
 var keymapKeyStruct_Once sync.Once
 
@@ -956,6 +2425,38 @@ func keymapKeyStruct_Set() error {
 
 type KeymapKey struct {
 	native uintptr
+}
+
+// Keycode returns the C field 'keycode'.
+func (recv *KeymapKey) Keycode() uint32 {
+	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "keycode")
+	value := argValue.Uint32()
+	return value
+}
+
+// Group returns the C field 'group'.
+func (recv *KeymapKey) Group() int32 {
+	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "group")
+	value := argValue.Int32()
+	return value
+}
+
+// Level returns the C field 'level'.
+func (recv *KeymapKey) Level() int32 {
+	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "level")
+	value := argValue.Int32()
+	return value
+}
+
+// KeymapKeyStruct creates an uninitialised KeymapKey.
+func KeymapKeyStruct() *KeymapKey {
+	err := keymapKeyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &KeymapKey{native: keymapKeyStruct.Alloc()}
+	return structGo
 }
 
 var monitorClassStruct *gi.Struct
@@ -973,6 +2474,17 @@ type MonitorClass struct {
 	native uintptr
 }
 
+// MonitorClassStruct creates an uninitialised MonitorClass.
+func MonitorClassStruct() *MonitorClass {
+	err := monitorClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MonitorClass{native: monitorClassStruct.Alloc()}
+	return structGo
+}
+
 var pointStruct *gi.Struct
 var pointStruct_Once sync.Once
 
@@ -988,6 +2500,31 @@ type Point struct {
 	native uintptr
 }
 
+// X returns the C field 'x'.
+func (recv *Point) X() int32 {
+	argValue := gi.FieldGet(pointStruct, recv.native, "x")
+	value := argValue.Int32()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *Point) Y() int32 {
+	argValue := gi.FieldGet(pointStruct, recv.native, "y")
+	value := argValue.Int32()
+	return value
+}
+
+// PointStruct creates an uninitialised Point.
+func PointStruct() *Point {
+	err := pointStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Point{native: pointStruct.Alloc()}
+	return structGo
+}
+
 var rGBAStruct *gi.Struct
 var rGBAStruct_Once sync.Once
 
@@ -1001,6 +2538,45 @@ func rGBAStruct_Set() error {
 
 type RGBA struct {
 	native uintptr
+}
+
+// Red returns the C field 'red'.
+func (recv *RGBA) Red() float64 {
+	argValue := gi.FieldGet(rGBAStruct, recv.native, "red")
+	value := argValue.Float64()
+	return value
+}
+
+// Green returns the C field 'green'.
+func (recv *RGBA) Green() float64 {
+	argValue := gi.FieldGet(rGBAStruct, recv.native, "green")
+	value := argValue.Float64()
+	return value
+}
+
+// Blue returns the C field 'blue'.
+func (recv *RGBA) Blue() float64 {
+	argValue := gi.FieldGet(rGBAStruct, recv.native, "blue")
+	value := argValue.Float64()
+	return value
+}
+
+// Alpha returns the C field 'alpha'.
+func (recv *RGBA) Alpha() float64 {
+	argValue := gi.FieldGet(rGBAStruct, recv.native, "alpha")
+	value := argValue.Float64()
+	return value
+}
+
+// RGBAStruct creates an uninitialised RGBA.
+func RGBAStruct() *RGBA {
+	err := rGBAStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RGBA{native: rGBAStruct.Alloc()}
+	return structGo
 }
 
 var rGBACopyFunction *gi.Function
@@ -1208,6 +2784,45 @@ type Rectangle struct {
 	native uintptr
 }
 
+// X returns the C field 'x'.
+func (recv *Rectangle) X() int32 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
+	value := argValue.Int32()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *Rectangle) Y() int32 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
+	value := argValue.Int32()
+	return value
+}
+
+// Width returns the C field 'width'.
+func (recv *Rectangle) Width() int32 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
+	value := argValue.Int32()
+	return value
+}
+
+// Height returns the C field 'height'.
+func (recv *Rectangle) Height() int32 {
+	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
+	value := argValue.Int32()
+	return value
+}
+
+// RectangleStruct creates an uninitialised Rectangle.
+func RectangleStruct() *Rectangle {
+	err := rectangleStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	return structGo
+}
+
 var rectangleEqualFunction *gi.Function
 var rectangleEqualFunction_Once sync.Once
 
@@ -1324,6 +2939,26 @@ type TimeCoord struct {
 	native uintptr
 }
 
+// Time returns the C field 'time'.
+func (recv *TimeCoord) Time() uint32 {
+	argValue := gi.FieldGet(timeCoordStruct, recv.native, "time")
+	value := argValue.Uint32()
+	return value
+}
+
+// UNSUPPORTED : C value 'axes' : for field getter : missing Type
+
+// TimeCoordStruct creates an uninitialised TimeCoord.
+func TimeCoordStruct() *TimeCoord {
+	err := timeCoordStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TimeCoord{native: timeCoordStruct.Alloc()}
+	return structGo
+}
+
 var windowAttrStruct *gi.Struct
 var windowAttrStruct_Once sync.Once
 
@@ -1337,6 +2972,90 @@ func windowAttrStruct_Set() error {
 
 type WindowAttr struct {
 	native uintptr
+}
+
+// Title returns the C field 'title'.
+func (recv *WindowAttr) Title() string {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "title")
+	value := argValue.String(false)
+	return value
+}
+
+// EventMask returns the C field 'event_mask'.
+func (recv *WindowAttr) EventMask() int32 {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "event_mask")
+	value := argValue.Int32()
+	return value
+}
+
+// X returns the C field 'x'.
+func (recv *WindowAttr) X() int32 {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "x")
+	value := argValue.Int32()
+	return value
+}
+
+// Y returns the C field 'y'.
+func (recv *WindowAttr) Y() int32 {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "y")
+	value := argValue.Int32()
+	return value
+}
+
+// Width returns the C field 'width'.
+func (recv *WindowAttr) Width() int32 {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "width")
+	value := argValue.Int32()
+	return value
+}
+
+// Height returns the C field 'height'.
+func (recv *WindowAttr) Height() int32 {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "height")
+	value := argValue.Int32()
+	return value
+}
+
+// UNSUPPORTED : C value 'wclass' : for field getter : no Go type for 'WindowWindowClass'
+
+// UNSUPPORTED : C value 'visual' : for field getter : no Go type for 'Visual'
+
+// UNSUPPORTED : C value 'window_type' : for field getter : no Go type for 'WindowType'
+
+// UNSUPPORTED : C value 'cursor' : for field getter : no Go type for 'Cursor'
+
+// WmclassName returns the C field 'wmclass_name'.
+func (recv *WindowAttr) WmclassName() string {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "wmclass_name")
+	value := argValue.String(false)
+	return value
+}
+
+// WmclassClass returns the C field 'wmclass_class'.
+func (recv *WindowAttr) WmclassClass() string {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "wmclass_class")
+	value := argValue.String(false)
+	return value
+}
+
+// OverrideRedirect returns the C field 'override_redirect'.
+func (recv *WindowAttr) OverrideRedirect() bool {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "override_redirect")
+	value := argValue.Boolean()
+	return value
+}
+
+// UNSUPPORTED : C value 'type_hint' : for field getter : no Go type for 'WindowTypeHint'
+
+// WindowAttrStruct creates an uninitialised WindowAttr.
+func WindowAttrStruct() *WindowAttr {
+	err := windowAttrStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WindowAttr{native: windowAttrStruct.Alloc()}
+	return structGo
 }
 
 var windowClassStruct *gi.Struct
@@ -1354,6 +3073,43 @@ type WindowClass struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'pick_embedded_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_embedder' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'from_embedder' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_surface' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved8' : for field getter : missing Type
+
+// WindowClassStruct creates an uninitialised WindowClass.
+func WindowClassStruct() *WindowClass {
+	err := windowClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WindowClass{native: windowClassStruct.Alloc()}
+	return structGo
+}
+
 var windowRedirectStruct *gi.Struct
 var windowRedirectStruct_Once sync.Once
 
@@ -1367,4 +3123,15 @@ func windowRedirectStruct_Set() error {
 
 type WindowRedirect struct {
 	native uintptr
+}
+
+// WindowRedirectStruct creates an uninitialised WindowRedirect.
+func WindowRedirectStruct() *WindowRedirect {
+	err := windowRedirectStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WindowRedirect{native: windowRedirectStruct.Alloc()}
+	return structGo
 }
