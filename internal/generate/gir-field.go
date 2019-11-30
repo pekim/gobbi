@@ -45,7 +45,9 @@ func (f *Field) generateGetter(fi *file) {
 		return
 	}
 
-	fi.Commentf("// %s returns the C field '%s'.", f.goName, f.Name)
+	funcName := "Field" + f.goName
+
+	fi.Commentf("// %s returns the C field '%s'.", funcName, f.Name)
 	fi.
 		Func().
 		Params(
@@ -54,7 +56,7 @@ func (f *Field) generateGetter(fi *file) {
 				Op("*").
 				Id(f.record.goName),
 		).
-		Id("Field" + f.goName).
+		Id(funcName).
 		Params().
 		Add(goType).
 		BlockFunc(f.generateGetterBody)
@@ -111,7 +113,9 @@ func (f *Field) generateSetter(fi *file) {
 		return
 	}
 
-	fi.Commentf("// %s sets the value of the C field '%s'.", f.goName, f.Name)
+	funcName := "SetField" + f.goName
+
+	fi.Commentf("// %s sets the value of the C field '%s'.", funcName, f.Name)
 	fi.
 		Func().
 		Params(
@@ -120,7 +124,7 @@ func (f *Field) generateSetter(fi *file) {
 				Op("*").
 				Id(f.record.goName),
 		).
-		Id("SetField" + f.goName).
+		Id(funcName).
 		Params(jen.Id("value").Add(goType)).
 		BlockFunc(f.generateSetterBody)
 }

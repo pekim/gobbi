@@ -77,28 +77,28 @@ type AuthClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
-// SchemeName returns the C field 'scheme_name'.
+// FieldSchemeName returns the C field 'scheme_name'.
 func (recv *AuthClass) FieldSchemeName() string {
 	argValue := gi.FieldGet(authClassStruct, recv.native, "scheme_name")
 	value := argValue.String(false)
 	return value
 }
 
-// SchemeName sets the value of the C field 'scheme_name'.
+// SetFieldSchemeName sets the value of the C field 'scheme_name'.
 func (recv *AuthClass) SetFieldSchemeName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(authClassStruct, recv.native, "scheme_name", argValue)
 }
 
-// Strength returns the C field 'strength'.
+// FieldStrength returns the C field 'strength'.
 func (recv *AuthClass) FieldStrength() uint32 {
 	argValue := gi.FieldGet(authClassStruct, recv.native, "strength")
 	value := argValue.Uint32()
 	return value
 }
 
-// Strength sets the value of the C field 'strength'.
+// SetFieldStrength sets the value of the C field 'strength'.
 func (recv *AuthClass) SetFieldStrength(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
@@ -171,14 +171,14 @@ type AuthDomainBasicClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) FieldParentClass() *AuthDomainClass {
 	argValue := gi.FieldGet(authDomainBasicClassStruct, recv.native, "parent_class")
 	value := &AuthDomainClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) SetFieldParentClass(value *AuthDomainClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -289,14 +289,14 @@ type AuthDomainDigestClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) FieldParentClass() *AuthDomainClass {
 	argValue := gi.FieldGet(authDomainDigestClassStruct, recv.native, "parent_class")
 	value := &AuthDomainClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) SetFieldParentClass(value *AuthDomainClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -421,14 +421,14 @@ type Buffer struct {
 
 // UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
 
-// Length returns the C field 'length'.
+// FieldLength returns the C field 'length'.
 func (recv *Buffer) FieldLength() uint64 {
 	argValue := gi.FieldGet(bufferStruct, recv.native, "length")
 	value := argValue.Uint64()
 	return value
 }
 
-// Length sets the value of the C field 'length'.
+// SetFieldLength sets the value of the C field 'length'.
 func (recv *Buffer) SetFieldLength(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
@@ -950,98 +950,98 @@ type Cookie struct {
 	native uintptr
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *Cookie) FieldName() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *Cookie) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(cookieStruct, recv.native, "name", argValue)
 }
 
-// Value returns the C field 'value'.
+// FieldValue returns the C field 'value'.
 func (recv *Cookie) FieldValue() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
 }
 
-// Value sets the value of the C field 'value'.
+// SetFieldValue sets the value of the C field 'value'.
 func (recv *Cookie) SetFieldValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(cookieStruct, recv.native, "value", argValue)
 }
 
-// Domain returns the C field 'domain'.
+// FieldDomain returns the C field 'domain'.
 func (recv *Cookie) FieldDomain() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "domain")
 	value := argValue.String(false)
 	return value
 }
 
-// Domain sets the value of the C field 'domain'.
+// SetFieldDomain sets the value of the C field 'domain'.
 func (recv *Cookie) SetFieldDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(cookieStruct, recv.native, "domain", argValue)
 }
 
-// Path returns the C field 'path'.
+// FieldPath returns the C field 'path'.
 func (recv *Cookie) FieldPath() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
-// Path sets the value of the C field 'path'.
+// SetFieldPath sets the value of the C field 'path'.
 func (recv *Cookie) SetFieldPath(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(cookieStruct, recv.native, "path", argValue)
 }
 
-// Expires returns the C field 'expires'.
+// FieldExpires returns the C field 'expires'.
 func (recv *Cookie) FieldExpires() *Date {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "expires")
 	value := &Date{native: argValue.Pointer()}
 	return value
 }
 
-// Expires sets the value of the C field 'expires'.
+// SetFieldExpires sets the value of the C field 'expires'.
 func (recv *Cookie) SetFieldExpires(value *Date) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
 	gi.FieldSet(cookieStruct, recv.native, "expires", argValue)
 }
 
-// Secure returns the C field 'secure'.
+// FieldSecure returns the C field 'secure'.
 func (recv *Cookie) FieldSecure() bool {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "secure")
 	value := argValue.Boolean()
 	return value
 }
 
-// Secure sets the value of the C field 'secure'.
+// SetFieldSecure sets the value of the C field 'secure'.
 func (recv *Cookie) SetFieldSecure(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.FieldSet(cookieStruct, recv.native, "secure", argValue)
 }
 
-// HttpOnly returns the C field 'http_only'.
+// FieldHttpOnly returns the C field 'http_only'.
 func (recv *Cookie) FieldHttpOnly() bool {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "http_only")
 	value := argValue.Boolean()
 	return value
 }
 
-// HttpOnly sets the value of the C field 'http_only'.
+// SetFieldHttpOnly sets the value of the C field 'http_only'.
 func (recv *Cookie) SetFieldHttpOnly(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
@@ -1832,14 +1832,14 @@ type CookieJarDBClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarDBClass) FieldParentClass() *CookieJarClass {
 	argValue := gi.FieldGet(cookieJarDBClassStruct, recv.native, "parent_class")
 	value := &CookieJarClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarDBClass) SetFieldParentClass(value *CookieJarClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -1892,14 +1892,14 @@ type CookieJarTextClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarTextClass) FieldParentClass() *CookieJarClass {
 	argValue := gi.FieldGet(cookieJarTextClassStruct, recv.native, "parent_class")
 	value := &CookieJarClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarTextClass) SetFieldParentClass(value *CookieJarClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -1952,112 +1952,112 @@ type Date struct {
 	native uintptr
 }
 
-// Year returns the C field 'year'.
+// FieldYear returns the C field 'year'.
 func (recv *Date) FieldYear() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "year")
 	value := argValue.Int32()
 	return value
 }
 
-// Year sets the value of the C field 'year'.
+// SetFieldYear sets the value of the C field 'year'.
 func (recv *Date) SetFieldYear(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "year", argValue)
 }
 
-// Month returns the C field 'month'.
+// FieldMonth returns the C field 'month'.
 func (recv *Date) FieldMonth() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "month")
 	value := argValue.Int32()
 	return value
 }
 
-// Month sets the value of the C field 'month'.
+// SetFieldMonth sets the value of the C field 'month'.
 func (recv *Date) SetFieldMonth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "month", argValue)
 }
 
-// Day returns the C field 'day'.
+// FieldDay returns the C field 'day'.
 func (recv *Date) FieldDay() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "day")
 	value := argValue.Int32()
 	return value
 }
 
-// Day sets the value of the C field 'day'.
+// SetFieldDay sets the value of the C field 'day'.
 func (recv *Date) SetFieldDay(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "day", argValue)
 }
 
-// Hour returns the C field 'hour'.
+// FieldHour returns the C field 'hour'.
 func (recv *Date) FieldHour() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "hour")
 	value := argValue.Int32()
 	return value
 }
 
-// Hour sets the value of the C field 'hour'.
+// SetFieldHour sets the value of the C field 'hour'.
 func (recv *Date) SetFieldHour(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "hour", argValue)
 }
 
-// Minute returns the C field 'minute'.
+// FieldMinute returns the C field 'minute'.
 func (recv *Date) FieldMinute() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "minute")
 	value := argValue.Int32()
 	return value
 }
 
-// Minute sets the value of the C field 'minute'.
+// SetFieldMinute sets the value of the C field 'minute'.
 func (recv *Date) SetFieldMinute(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "minute", argValue)
 }
 
-// Second returns the C field 'second'.
+// FieldSecond returns the C field 'second'.
 func (recv *Date) FieldSecond() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "second")
 	value := argValue.Int32()
 	return value
 }
 
-// Second sets the value of the C field 'second'.
+// SetFieldSecond sets the value of the C field 'second'.
 func (recv *Date) SetFieldSecond(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dateStruct, recv.native, "second", argValue)
 }
 
-// Utc returns the C field 'utc'.
+// FieldUtc returns the C field 'utc'.
 func (recv *Date) FieldUtc() bool {
 	argValue := gi.FieldGet(dateStruct, recv.native, "utc")
 	value := argValue.Boolean()
 	return value
 }
 
-// Utc sets the value of the C field 'utc'.
+// SetFieldUtc sets the value of the C field 'utc'.
 func (recv *Date) SetFieldUtc(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.FieldSet(dateStruct, recv.native, "utc", argValue)
 }
 
-// Offset returns the C field 'offset'.
+// FieldOffset returns the C field 'offset'.
 func (recv *Date) FieldOffset() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "offset")
 	value := argValue.Int32()
 	return value
 }
 
-// Offset sets the value of the C field 'offset'.
+// SetFieldOffset sets the value of the C field 'offset'.
 func (recv *Date) SetFieldOffset(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
@@ -2662,14 +2662,14 @@ type HSTSEnforcerDBClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) FieldParentClass() *HSTSEnforcerClass {
 	argValue := gi.FieldGet(hSTSEnforcerDBClassStruct, recv.native, "parent_class")
 	value := &HSTSEnforcerClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) SetFieldParentClass(value *HSTSEnforcerClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -2782,56 +2782,56 @@ type HSTSPolicy struct {
 	native uintptr
 }
 
-// Domain returns the C field 'domain'.
+// FieldDomain returns the C field 'domain'.
 func (recv *HSTSPolicy) FieldDomain() string {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "domain")
 	value := argValue.String(false)
 	return value
 }
 
-// Domain sets the value of the C field 'domain'.
+// SetFieldDomain sets the value of the C field 'domain'.
 func (recv *HSTSPolicy) SetFieldDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(hSTSPolicyStruct, recv.native, "domain", argValue)
 }
 
-// MaxAge returns the C field 'max_age'.
+// FieldMaxAge returns the C field 'max_age'.
 func (recv *HSTSPolicy) FieldMaxAge() uint64 {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "max_age")
 	value := argValue.Uint64()
 	return value
 }
 
-// MaxAge sets the value of the C field 'max_age'.
+// SetFieldMaxAge sets the value of the C field 'max_age'.
 func (recv *HSTSPolicy) SetFieldMaxAge(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
 	gi.FieldSet(hSTSPolicyStruct, recv.native, "max_age", argValue)
 }
 
-// Expires returns the C field 'expires'.
+// FieldExpires returns the C field 'expires'.
 func (recv *HSTSPolicy) FieldExpires() *Date {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "expires")
 	value := &Date{native: argValue.Pointer()}
 	return value
 }
 
-// Expires sets the value of the C field 'expires'.
+// SetFieldExpires sets the value of the C field 'expires'.
 func (recv *HSTSPolicy) SetFieldExpires(value *Date) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
 	gi.FieldSet(hSTSPolicyStruct, recv.native, "expires", argValue)
 }
 
-// IncludeSubdomains returns the C field 'include_subdomains'.
+// FieldIncludeSubdomains returns the C field 'include_subdomains'.
 func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "include_subdomains")
 	value := argValue.Boolean()
 	return value
 }
 
-// IncludeSubdomains sets the value of the C field 'include_subdomains'.
+// SetFieldIncludeSubdomains sets the value of the C field 'include_subdomains'.
 func (recv *HSTSPolicy) SetFieldIncludeSubdomains(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
@@ -3228,28 +3228,28 @@ type MessageBody struct {
 	native uintptr
 }
 
-// Data returns the C field 'data'.
+// FieldData returns the C field 'data'.
 func (recv *MessageBody) FieldData() string {
 	argValue := gi.FieldGet(messageBodyStruct, recv.native, "data")
 	value := argValue.String(false)
 	return value
 }
 
-// Data sets the value of the C field 'data'.
+// SetFieldData sets the value of the C field 'data'.
 func (recv *MessageBody) SetFieldData(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(messageBodyStruct, recv.native, "data", argValue)
 }
 
-// Length returns the C field 'length'.
+// FieldLength returns the C field 'length'.
 func (recv *MessageBody) FieldLength() int64 {
 	argValue := gi.FieldGet(messageBodyStruct, recv.native, "length")
 	value := argValue.Int64()
 	return value
 }
 
-// Length sets the value of the C field 'length'.
+// SetFieldLength sets the value of the C field 'length'.
 func (recv *MessageBody) SetFieldLength(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
@@ -4951,28 +4951,28 @@ type Range struct {
 	native uintptr
 }
 
-// Start returns the C field 'start'.
+// FieldStart returns the C field 'start'.
 func (recv *Range) FieldStart() int64 {
 	argValue := gi.FieldGet(rangeStruct, recv.native, "start")
 	value := argValue.Int64()
 	return value
 }
 
-// Start sets the value of the C field 'start'.
+// SetFieldStart sets the value of the C field 'start'.
 func (recv *Range) SetFieldStart(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
 	gi.FieldSet(rangeStruct, recv.native, "start", argValue)
 }
 
-// End returns the C field 'end'.
+// FieldEnd returns the C field 'end'.
 func (recv *Range) FieldEnd() int64 {
 	argValue := gi.FieldGet(rangeStruct, recv.native, "end")
 	value := argValue.Int64()
 	return value
 }
 
-// End sets the value of the C field 'end'.
+// SetFieldEnd sets the value of the C field 'end'.
 func (recv *Range) SetFieldEnd(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
@@ -5013,14 +5013,14 @@ type RequestClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
 
-// Schemes returns the C field 'schemes'.
+// FieldSchemes returns the C field 'schemes'.
 func (recv *RequestClass) FieldSchemes() string {
 	argValue := gi.FieldGet(requestClassStruct, recv.native, "schemes")
 	value := argValue.String(false)
 	return value
 }
 
-// Schemes sets the value of the C field 'schemes'.
+// SetFieldSchemes sets the value of the C field 'schemes'.
 func (recv *RequestClass) SetFieldSchemes(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -5081,14 +5081,14 @@ type RequestDataClass struct {
 	native uintptr
 }
 
-// Parent returns the C field 'parent'.
+// FieldParent returns the C field 'parent'.
 func (recv *RequestDataClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestDataClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
 }
 
-// Parent sets the value of the C field 'parent'.
+// SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestDataClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5155,14 +5155,14 @@ type RequestFileClass struct {
 	native uintptr
 }
 
-// Parent returns the C field 'parent'.
+// FieldParent returns the C field 'parent'.
 func (recv *RequestFileClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestFileClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
 }
 
-// Parent sets the value of the C field 'parent'.
+// SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestFileClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5229,14 +5229,14 @@ type RequestHTTPClass struct {
 	native uintptr
 }
 
-// Parent returns the C field 'parent'.
+// FieldParent returns the C field 'parent'.
 func (recv *RequestHTTPClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestHTTPClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
 }
 
-// Parent sets the value of the C field 'parent'.
+// SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestHTTPClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5463,14 +5463,14 @@ type SessionAsyncClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionAsyncClass) FieldParentClass() *SessionClass {
 	argValue := gi.FieldGet(sessionAsyncClassStruct, recv.native, "parent_class")
 	value := &SessionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionAsyncClass) SetFieldParentClass(value *SessionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5663,14 +5663,14 @@ type SessionSyncClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionSyncClass) FieldParentClass() *SessionClass {
 	argValue := gi.FieldGet(sessionSyncClassStruct, recv.native, "parent_class")
 	value := &SessionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionSyncClass) SetFieldParentClass(value *SessionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5789,112 +5789,112 @@ type URI struct {
 	native uintptr
 }
 
-// Scheme returns the C field 'scheme'.
+// FieldScheme returns the C field 'scheme'.
 func (recv *URI) FieldScheme() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "scheme")
 	value := argValue.String(false)
 	return value
 }
 
-// Scheme sets the value of the C field 'scheme'.
+// SetFieldScheme sets the value of the C field 'scheme'.
 func (recv *URI) SetFieldScheme(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "scheme", argValue)
 }
 
-// User returns the C field 'user'.
+// FieldUser returns the C field 'user'.
 func (recv *URI) FieldUser() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "user")
 	value := argValue.String(false)
 	return value
 }
 
-// User sets the value of the C field 'user'.
+// SetFieldUser sets the value of the C field 'user'.
 func (recv *URI) SetFieldUser(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "user", argValue)
 }
 
-// Password returns the C field 'password'.
+// FieldPassword returns the C field 'password'.
 func (recv *URI) FieldPassword() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "password")
 	value := argValue.String(false)
 	return value
 }
 
-// Password sets the value of the C field 'password'.
+// SetFieldPassword sets the value of the C field 'password'.
 func (recv *URI) SetFieldPassword(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "password", argValue)
 }
 
-// Host returns the C field 'host'.
+// FieldHost returns the C field 'host'.
 func (recv *URI) FieldHost() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "host")
 	value := argValue.String(false)
 	return value
 }
 
-// Host sets the value of the C field 'host'.
+// SetFieldHost sets the value of the C field 'host'.
 func (recv *URI) SetFieldHost(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "host", argValue)
 }
 
-// Port returns the C field 'port'.
+// FieldPort returns the C field 'port'.
 func (recv *URI) FieldPort() uint32 {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "port")
 	value := argValue.Uint32()
 	return value
 }
 
-// Port sets the value of the C field 'port'.
+// SetFieldPort sets the value of the C field 'port'.
 func (recv *URI) SetFieldPort(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.FieldSet(uRIStruct, recv.native, "port", argValue)
 }
 
-// Path returns the C field 'path'.
+// FieldPath returns the C field 'path'.
 func (recv *URI) FieldPath() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
-// Path sets the value of the C field 'path'.
+// SetFieldPath sets the value of the C field 'path'.
 func (recv *URI) SetFieldPath(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "path", argValue)
 }
 
-// Query returns the C field 'query'.
+// FieldQuery returns the C field 'query'.
 func (recv *URI) FieldQuery() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "query")
 	value := argValue.String(false)
 	return value
 }
 
-// Query sets the value of the C field 'query'.
+// SetFieldQuery sets the value of the C field 'query'.
 func (recv *URI) SetFieldQuery(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(uRIStruct, recv.native, "query", argValue)
 }
 
-// Fragment returns the C field 'fragment'.
+// FieldFragment returns the C field 'fragment'.
 func (recv *URI) FieldFragment() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "fragment")
 	value := argValue.String(false)
 	return value
 }
 
-// Fragment sets the value of the C field 'fragment'.
+// SetFieldFragment sets the value of the C field 'fragment'.
 func (recv *URI) SetFieldFragment(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -6816,14 +6816,14 @@ type WebsocketExtensionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *WebsocketExtensionClass) FieldName() string {
 	argValue := gi.FieldGet(websocketExtensionClassStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *WebsocketExtensionClass) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -6896,14 +6896,14 @@ type WebsocketExtensionDeflateClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) FieldParentClass() *WebsocketExtensionClass {
 	argValue := gi.FieldGet(websocketExtensionDeflateClassStruct, recv.native, "parent_class")
 	value := &WebsocketExtensionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) SetFieldParentClass(value *WebsocketExtensionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)

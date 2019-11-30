@@ -1469,14 +1469,14 @@ type MapClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *MapClass) FieldParentClass() *ViewClass {
 	argValue := gi.FieldGet(mapClassStruct, recv.native, "parent_class")
 	value := &ViewClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)

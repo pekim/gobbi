@@ -23,14 +23,14 @@ type ActionEntry struct {
 	native uintptr
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *ActionEntry) FieldName() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *ActionEntry) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -41,28 +41,28 @@ func (recv *ActionEntry) SetFieldName(value string) {
 
 // UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
-// ParameterType returns the C field 'parameter_type'.
+// FieldParameterType returns the C field 'parameter_type'.
 func (recv *ActionEntry) FieldParameterType() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "parameter_type")
 	value := argValue.String(false)
 	return value
 }
 
-// ParameterType sets the value of the C field 'parameter_type'.
+// SetFieldParameterType sets the value of the C field 'parameter_type'.
 func (recv *ActionEntry) SetFieldParameterType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(actionEntryStruct, recv.native, "parameter_type", argValue)
 }
 
-// State returns the C field 'state'.
+// FieldState returns the C field 'state'.
 func (recv *ActionEntry) FieldState() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "state")
 	value := argValue.String(false)
 	return value
 }
 
-// State sets the value of the C field 'state'.
+// SetFieldState sets the value of the C field 'state'.
 func (recv *ActionEntry) SetFieldState(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -815,14 +815,14 @@ type BufferedInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *BufferedInputStreamClass) FieldParentClass() *FilterInputStreamClass {
 	argValue := gi.FieldGet(bufferedInputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BufferedInputStreamClass) SetFieldParentClass(value *FilterInputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -921,14 +921,14 @@ type BufferedOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *BufferedOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(bufferedOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BufferedOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -1167,14 +1167,14 @@ type ConverterInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *ConverterInputStreamClass) FieldParentClass() *FilterInputStreamClass {
 	argValue := gi.FieldGet(converterInputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ConverterInputStreamClass) SetFieldParentClass(value *FilterInputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -1261,14 +1261,14 @@ type ConverterOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *ConverterOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(converterOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ConverterOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -1385,42 +1385,42 @@ type DBusAnnotationInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusAnnotationInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusAnnotationInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusAnnotationInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Key returns the C field 'key'.
+// FieldKey returns the C field 'key'.
 func (recv *DBusAnnotationInfo) FieldKey() string {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "key")
 	value := argValue.String(false)
 	return value
 }
 
-// Key sets the value of the C field 'key'.
+// SetFieldKey sets the value of the C field 'key'.
 func (recv *DBusAnnotationInfo) SetFieldKey(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(dBusAnnotationInfoStruct, recv.native, "key", argValue)
 }
 
-// Value returns the C field 'value'.
+// FieldValue returns the C field 'value'.
 func (recv *DBusAnnotationInfo) FieldValue() string {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
 }
 
-// Value sets the value of the C field 'value'.
+// SetFieldValue sets the value of the C field 'value'.
 func (recv *DBusAnnotationInfo) SetFieldValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -1521,42 +1521,42 @@ type DBusArgInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusArgInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusArgInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusArgInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *DBusArgInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *DBusArgInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(dBusArgInfoStruct, recv.native, "name", argValue)
 }
 
-// Signature returns the C field 'signature'.
+// FieldSignature returns the C field 'signature'.
 func (recv *DBusArgInfo) FieldSignature() string {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "signature")
 	value := argValue.String(false)
 	return value
 }
 
-// Signature sets the value of the C field 'signature'.
+// SetFieldSignature sets the value of the C field 'signature'.
 func (recv *DBusArgInfo) SetFieldSignature(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -1657,28 +1657,28 @@ type DBusErrorEntry struct {
 	native uintptr
 }
 
-// ErrorCode returns the C field 'error_code'.
+// FieldErrorCode returns the C field 'error_code'.
 func (recv *DBusErrorEntry) FieldErrorCode() int32 {
 	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "error_code")
 	value := argValue.Int32()
 	return value
 }
 
-// ErrorCode sets the value of the C field 'error_code'.
+// SetFieldErrorCode sets the value of the C field 'error_code'.
 func (recv *DBusErrorEntry) SetFieldErrorCode(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusErrorEntryStruct, recv.native, "error_code", argValue)
 }
 
-// DbusErrorName returns the C field 'dbus_error_name'.
+// FieldDbusErrorName returns the C field 'dbus_error_name'.
 func (recv *DBusErrorEntry) FieldDbusErrorName() string {
 	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "dbus_error_name")
 	value := argValue.String(false)
 	return value
 }
 
-// DbusErrorName sets the value of the C field 'dbus_error_name'.
+// SetFieldDbusErrorName sets the value of the C field 'dbus_error_name'.
 func (recv *DBusErrorEntry) SetFieldDbusErrorName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -1765,28 +1765,28 @@ type DBusInterfaceInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusInterfaceInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusInterfaceInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusInterfaceInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *DBusInterfaceInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *DBusInterfaceInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -2182,28 +2182,28 @@ type DBusMethodInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusMethodInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusMethodInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusMethodInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *DBusMethodInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *DBusMethodInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -2312,28 +2312,28 @@ type DBusNodeInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusNodeInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusNodeInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusNodeInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Path returns the C field 'path'.
+// FieldPath returns the C field 'path'.
 func (recv *DBusNodeInfo) FieldPath() string {
 	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
-// Path sets the value of the C field 'path'.
+// SetFieldPath sets the value of the C field 'path'.
 func (recv *DBusNodeInfo) SetFieldPath(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -2882,42 +2882,42 @@ type DBusPropertyInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusPropertyInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusPropertyInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusPropertyInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *DBusPropertyInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *DBusPropertyInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.FieldSet(dBusPropertyInfoStruct, recv.native, "name", argValue)
 }
 
-// Signature returns the C field 'signature'.
+// FieldSignature returns the C field 'signature'.
 func (recv *DBusPropertyInfo) FieldSignature() string {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "signature")
 	value := argValue.String(false)
 	return value
 }
 
-// Signature sets the value of the C field 'signature'.
+// SetFieldSignature sets the value of the C field 'signature'.
 func (recv *DBusPropertyInfo) SetFieldSignature(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -3090,28 +3090,28 @@ type DBusSignalInfo struct {
 	native uintptr
 }
 
-// RefCount returns the C field 'ref_count'.
+// FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusSignalInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
-// RefCount sets the value of the C field 'ref_count'.
+// SetFieldRefCount sets the value of the C field 'ref_count'.
 func (recv *DBusSignalInfo) SetFieldRefCount(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.FieldSet(dBusSignalInfoStruct, recv.native, "ref_count", argValue)
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *DBusSignalInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *DBusSignalInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -3258,14 +3258,14 @@ type DataInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *DataInputStreamClass) FieldParentClass() *BufferedInputStreamClass {
 	argValue := gi.FieldGet(dataInputStreamClassStruct, recv.native, "parent_class")
 	value := &BufferedInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *DataInputStreamClass) SetFieldParentClass(value *BufferedInputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -3352,14 +3352,14 @@ type DataOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *DataOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(dataOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *DataOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -3966,14 +3966,14 @@ type FileAttributeInfo struct {
 	native uintptr
 }
 
-// Name returns the C field 'name'.
+// FieldName returns the C field 'name'.
 func (recv *FileAttributeInfo) FieldName() string {
 	argValue := gi.FieldGet(fileAttributeInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
-// Name sets the value of the C field 'name'.
+// SetFieldName sets the value of the C field 'name'.
 func (recv *FileAttributeInfo) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
@@ -4018,28 +4018,28 @@ type FileAttributeInfoList struct {
 	native uintptr
 }
 
-// Infos returns the C field 'infos'.
+// FieldInfos returns the C field 'infos'.
 func (recv *FileAttributeInfoList) FieldInfos() *FileAttributeInfo {
 	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "infos")
 	value := &FileAttributeInfo{native: argValue.Pointer()}
 	return value
 }
 
-// Infos sets the value of the C field 'infos'.
+// SetFieldInfos sets the value of the C field 'infos'.
 func (recv *FileAttributeInfoList) SetFieldInfos(value *FileAttributeInfo) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
 	gi.FieldSet(fileAttributeInfoListStruct, recv.native, "infos", argValue)
 }
 
-// NInfos returns the C field 'n_infos'.
+// FieldNInfos returns the C field 'n_infos'.
 func (recv *FileAttributeInfoList) FieldNInfos() int32 {
 	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "n_infos")
 	value := argValue.Int32()
 	return value
 }
 
-// NInfos sets the value of the C field 'n_infos'.
+// SetFieldNInfos sets the value of the C field 'n_infos'.
 func (recv *FileAttributeInfoList) SetFieldNInfos(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
@@ -4675,14 +4675,14 @@ type FileIOStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *FileIOStreamClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(fileIOStreamClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileIOStreamClass) SetFieldParentClass(value *IOStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5211,14 +5211,14 @@ type FileIface struct {
 
 // UNSUPPORTED : C value 'stop_mountable_finish' : for field setter : missing Type
 
-// SupportsThreadContexts returns the C field 'supports_thread_contexts'.
+// FieldSupportsThreadContexts returns the C field 'supports_thread_contexts'.
 func (recv *FileIface) FieldSupportsThreadContexts() bool {
 	argValue := gi.FieldGet(fileIfaceStruct, recv.native, "supports_thread_contexts")
 	value := argValue.Boolean()
 	return value
 }
 
-// SupportsThreadContexts sets the value of the C field 'supports_thread_contexts'.
+// SetFieldSupportsThreadContexts sets the value of the C field 'supports_thread_contexts'.
 func (recv *FileIface) SetFieldSupportsThreadContexts(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
@@ -5321,14 +5321,14 @@ type FileInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *FileInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(fileInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5531,14 +5531,14 @@ type FileOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *FileOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(fileOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5711,14 +5711,14 @@ type FilterInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *FilterInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(filterInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FilterInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5767,14 +5767,14 @@ type FilterOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *FilterOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(filterOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FilterOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -6485,14 +6485,14 @@ type InetSocketAddressClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *InetSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(inetSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *InetSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -6605,42 +6605,42 @@ type InputMessage struct {
 
 // UNSUPPORTED : C value 'vectors' : for field setter : missing Type
 
-// NumVectors returns the C field 'num_vectors'.
+// FieldNumVectors returns the C field 'num_vectors'.
 func (recv *InputMessage) FieldNumVectors() uint32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_vectors")
 	value := argValue.Uint32()
 	return value
 }
 
-// NumVectors sets the value of the C field 'num_vectors'.
+// SetFieldNumVectors sets the value of the C field 'num_vectors'.
 func (recv *InputMessage) SetFieldNumVectors(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.FieldSet(inputMessageStruct, recv.native, "num_vectors", argValue)
 }
 
-// BytesReceived returns the C field 'bytes_received'.
+// FieldBytesReceived returns the C field 'bytes_received'.
 func (recv *InputMessage) FieldBytesReceived() uint64 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "bytes_received")
 	value := argValue.Uint64()
 	return value
 }
 
-// BytesReceived sets the value of the C field 'bytes_received'.
+// SetFieldBytesReceived sets the value of the C field 'bytes_received'.
 func (recv *InputMessage) SetFieldBytesReceived(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
 	gi.FieldSet(inputMessageStruct, recv.native, "bytes_received", argValue)
 }
 
-// Flags returns the C field 'flags'.
+// FieldFlags returns the C field 'flags'.
 func (recv *InputMessage) FieldFlags() int32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "flags")
 	value := argValue.Int32()
 	return value
 }
 
-// Flags sets the value of the C field 'flags'.
+// SetFieldFlags sets the value of the C field 'flags'.
 func (recv *InputMessage) SetFieldFlags(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
@@ -6651,14 +6651,14 @@ func (recv *InputMessage) SetFieldFlags(value int32) {
 
 // UNSUPPORTED : C value 'control_messages' : for field setter : missing Type
 
-// NumControlMessages returns the C field 'num_control_messages'.
+// FieldNumControlMessages returns the C field 'num_control_messages'.
 func (recv *InputMessage) FieldNumControlMessages() uint32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_control_messages")
 	value := argValue.Uint32()
 	return value
 }
 
-// NumControlMessages sets the value of the C field 'num_control_messages'.
+// SetFieldNumControlMessages sets the value of the C field 'num_control_messages'.
 func (recv *InputMessage) SetFieldNumControlMessages(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
@@ -6819,14 +6819,14 @@ type InputVector struct {
 
 // UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
 
-// Size returns the C field 'size'.
+// FieldSize returns the C field 'size'.
 func (recv *InputVector) FieldSize() uint64 {
 	argValue := gi.FieldGet(inputVectorStruct, recv.native, "size")
 	value := argValue.Uint64()
 	return value
 }
 
-// Size sets the value of the C field 'size'.
+// SetFieldSize sets the value of the C field 'size'.
 func (recv *InputVector) SetFieldSize(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
@@ -6989,14 +6989,14 @@ type MemoryInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *MemoryInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(memoryInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MemoryInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -7083,14 +7083,14 @@ type MemoryOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *MemoryOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(memoryOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MemoryOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -7675,14 +7675,14 @@ type NativeSocketAddressClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *NativeSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(nativeSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NativeSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -7749,14 +7749,14 @@ type NativeVolumeMonitorClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *NativeVolumeMonitorClass) FieldParentClass() *VolumeMonitorClass {
 	argValue := gi.FieldGet(nativeVolumeMonitorClassStruct, recv.native, "parent_class")
 	value := &VolumeMonitorClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NativeVolumeMonitorClass) SetFieldParentClass(value *VolumeMonitorClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -7979,42 +7979,42 @@ type OutputMessage struct {
 
 // UNSUPPORTED : C value 'address' : for field setter : no Go type for 'SocketAddress'
 
-// Vectors returns the C field 'vectors'.
+// FieldVectors returns the C field 'vectors'.
 func (recv *OutputMessage) FieldVectors() *OutputVector {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "vectors")
 	value := &OutputVector{native: argValue.Pointer()}
 	return value
 }
 
-// Vectors sets the value of the C field 'vectors'.
+// SetFieldVectors sets the value of the C field 'vectors'.
 func (recv *OutputMessage) SetFieldVectors(value *OutputVector) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
 	gi.FieldSet(outputMessageStruct, recv.native, "vectors", argValue)
 }
 
-// NumVectors returns the C field 'num_vectors'.
+// FieldNumVectors returns the C field 'num_vectors'.
 func (recv *OutputMessage) FieldNumVectors() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_vectors")
 	value := argValue.Uint32()
 	return value
 }
 
-// NumVectors sets the value of the C field 'num_vectors'.
+// SetFieldNumVectors sets the value of the C field 'num_vectors'.
 func (recv *OutputMessage) SetFieldNumVectors(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.FieldSet(outputMessageStruct, recv.native, "num_vectors", argValue)
 }
 
-// BytesSent returns the C field 'bytes_sent'.
+// FieldBytesSent returns the C field 'bytes_sent'.
 func (recv *OutputMessage) FieldBytesSent() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "bytes_sent")
 	value := argValue.Uint32()
 	return value
 }
 
-// BytesSent sets the value of the C field 'bytes_sent'.
+// SetFieldBytesSent sets the value of the C field 'bytes_sent'.
 func (recv *OutputMessage) SetFieldBytesSent(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
@@ -8025,14 +8025,14 @@ func (recv *OutputMessage) SetFieldBytesSent(value uint32) {
 
 // UNSUPPORTED : C value 'control_messages' : for field setter : missing Type
 
-// NumControlMessages returns the C field 'num_control_messages'.
+// FieldNumControlMessages returns the C field 'num_control_messages'.
 func (recv *OutputMessage) FieldNumControlMessages() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_control_messages")
 	value := argValue.Uint32()
 	return value
 }
 
-// NumControlMessages sets the value of the C field 'num_control_messages'.
+// SetFieldNumControlMessages sets the value of the C field 'num_control_messages'.
 func (recv *OutputMessage) SetFieldNumControlMessages(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
@@ -8217,14 +8217,14 @@ type OutputVector struct {
 
 // UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
 
-// Size returns the C field 'size'.
+// FieldSize returns the C field 'size'.
 func (recv *OutputVector) FieldSize() uint64 {
 	argValue := gi.FieldGet(outputVectorStruct, recv.native, "size")
 	value := argValue.Uint64()
 	return value
 }
 
-// Size sets the value of the C field 'size'.
+// SetFieldSize sets the value of the C field 'size'.
 func (recv *OutputVector) SetFieldSize(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
@@ -8457,14 +8457,14 @@ type ProxyAddressClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *ProxyAddressClass) FieldParentClass() *InetSocketAddressClass {
 	argValue := gi.FieldGet(proxyAddressClassStruct, recv.native, "parent_class")
 	value := &InetSocketAddressClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ProxyAddressClass) SetFieldParentClass(value *InetSocketAddressClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -10353,14 +10353,14 @@ type SocketConnectionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketConnectionClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(socketConnectionClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SocketConnectionClass) SetFieldParentClass(value *IOStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -10677,14 +10677,14 @@ type SocketServiceClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketServiceClass) FieldParentClass() *SocketListenerClass {
 	argValue := gi.FieldGet(socketServiceClassStruct, recv.native, "parent_class")
 	value := &SocketListenerClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SocketServiceClass) SetFieldParentClass(value *SocketListenerClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -11165,14 +11165,14 @@ type TcpConnectionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *TcpConnectionClass) FieldParentClass() *SocketConnectionClass {
 	argValue := gi.FieldGet(tcpConnectionClassStruct, recv.native, "parent_class")
 	value := &SocketConnectionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TcpConnectionClass) SetFieldParentClass(value *SocketConnectionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -11239,14 +11239,14 @@ type TcpWrapperConnectionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *TcpWrapperConnectionClass) FieldParentClass() *TcpConnectionClass {
 	argValue := gi.FieldGet(tcpWrapperConnectionClassStruct, recv.native, "parent_class")
 	value := &TcpConnectionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TcpWrapperConnectionClass) SetFieldParentClass(value *TcpConnectionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -11343,14 +11343,14 @@ type ThreadedSocketServiceClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *ThreadedSocketServiceClass) FieldParentClass() *SocketServiceClass {
 	argValue := gi.FieldGet(threadedSocketServiceClassStruct, recv.native, "parent_class")
 	value := &SocketServiceClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ThreadedSocketServiceClass) SetFieldParentClass(value *SocketServiceClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -11617,14 +11617,14 @@ type TlsConnectionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *TlsConnectionClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(tlsConnectionClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TlsConnectionClass) SetFieldParentClass(value *IOStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -12051,14 +12051,14 @@ type UnixConnectionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixConnectionClass) FieldParentClass() *SocketConnectionClass {
 	argValue := gi.FieldGet(unixConnectionClassStruct, recv.native, "parent_class")
 	value := &SocketConnectionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixConnectionClass) SetFieldParentClass(value *SocketConnectionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -12125,14 +12125,14 @@ type UnixCredentialsMessageClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixCredentialsMessageClass) FieldParentClass() *SocketControlMessageClass {
 	argValue := gi.FieldGet(unixCredentialsMessageClassStruct, recv.native, "parent_class")
 	value := &SocketControlMessageClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixCredentialsMessageClass) SetFieldParentClass(value *SocketControlMessageClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -12291,14 +12291,14 @@ type UnixFDMessageClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixFDMessageClass) FieldParentClass() *SocketControlMessageClass {
 	argValue := gi.FieldGet(unixFDMessageClassStruct, recv.native, "parent_class")
 	value := &SocketControlMessageClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixFDMessageClass) SetFieldParentClass(value *SocketControlMessageClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -12373,14 +12373,14 @@ type UnixInputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(unixInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -12942,14 +12942,14 @@ type UnixOutputStreamClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(unixOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -13036,14 +13036,14 @@ type UnixSocketAddressClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(unixSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *UnixSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)

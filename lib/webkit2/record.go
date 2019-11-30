@@ -2691,14 +2691,14 @@ type NavigationPolicyDecisionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
 	argValue := gi.FieldGet(navigationPolicyDecisionClassStruct, recv.native, "parent_class")
 	value := &PolicyDecisionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -3772,14 +3772,14 @@ type ResponsePolicyDecisionClass struct {
 	native uintptr
 }
 
-// ParentClass returns the C field 'parent_class'.
+// FieldParentClass returns the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
 	argValue := gi.FieldGet(responsePolicyDecisionClassStruct, recv.native, "parent_class")
 	value := &PolicyDecisionClass{native: argValue.Pointer()}
 	return value
 }
 
-// ParentClass sets the value of the C field 'parent_class'.
+// SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
@@ -5661,14 +5661,14 @@ type WebViewClass struct {
 	native uintptr
 }
 
-// Parent returns the C field 'parent'.
+// FieldParent returns the C field 'parent'.
 func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
 	argValue := gi.FieldGet(webViewClassStruct, recv.native, "parent")
 	value := &WebViewBaseClass{native: argValue.Pointer()}
 	return value
 }
 
-// Parent sets the value of the C field 'parent'.
+// SetFieldParent sets the value of the C field 'parent'.
 func (recv *WebViewClass) SetFieldParent(value *WebViewBaseClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.native)
