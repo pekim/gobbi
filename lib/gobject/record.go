@@ -5,6 +5,7 @@ package gobject
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"runtime"
 	"sync"
 )
 
@@ -40,7 +41,11 @@ func CClosureStruct() *CClosure {
 	}
 
 	structGo := &CClosure{native: cClosureStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCClosure)
 	return structGo
+}
+func finalizeCClosure(obj *CClosure) {
+	cClosureStruct.Free(obj.native)
 }
 
 var closureStruct *gi.Struct
@@ -237,7 +242,11 @@ func ClosureNotifyDataStruct() *ClosureNotifyData {
 	}
 
 	structGo := &ClosureNotifyData{native: closureNotifyDataStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeClosureNotifyData)
 	return structGo
+}
+func finalizeClosureNotifyData(obj *ClosureNotifyData) {
+	closureNotifyDataStruct.Free(obj.native)
 }
 
 var enumClassStruct *gi.Struct
@@ -298,7 +307,11 @@ func EnumClassStruct() *EnumClass {
 	}
 
 	structGo := &EnumClass{native: enumClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEnumClass)
 	return structGo
+}
+func finalizeEnumClass(obj *EnumClass) {
+	enumClassStruct.Free(obj.native)
 }
 
 var enumValueStruct *gi.Struct
@@ -345,7 +358,11 @@ func EnumValueStruct() *EnumValue {
 	}
 
 	structGo := &EnumValue{native: enumValueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEnumValue)
 	return structGo
+}
+func finalizeEnumValue(obj *EnumValue) {
+	enumValueStruct.Free(obj.native)
 }
 
 var flagsClassStruct *gi.Struct
@@ -399,7 +416,11 @@ func FlagsClassStruct() *FlagsClass {
 	}
 
 	structGo := &FlagsClass{native: flagsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlagsClass)
 	return structGo
+}
+func finalizeFlagsClass(obj *FlagsClass) {
+	flagsClassStruct.Free(obj.native)
 }
 
 var flagsValueStruct *gi.Struct
@@ -446,7 +467,11 @@ func FlagsValueStruct() *FlagsValue {
 	}
 
 	structGo := &FlagsValue{native: flagsValueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlagsValue)
 	return structGo
+}
+func finalizeFlagsValue(obj *FlagsValue) {
+	flagsValueStruct.Free(obj.native)
 }
 
 var initiallyUnownedClassStruct *gi.Struct
@@ -495,7 +520,11 @@ func InitiallyUnownedClassStruct() *InitiallyUnownedClass {
 	}
 
 	structGo := &InitiallyUnownedClass{native: initiallyUnownedClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInitiallyUnownedClass)
 	return structGo
+}
+func finalizeInitiallyUnownedClass(obj *InitiallyUnownedClass) {
+	initiallyUnownedClassStruct.Free(obj.native)
 }
 
 var interfaceInfoStruct *gi.Struct
@@ -527,7 +556,11 @@ func InterfaceInfoStruct() *InterfaceInfo {
 	}
 
 	structGo := &InterfaceInfo{native: interfaceInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInterfaceInfo)
 	return structGo
+}
+func finalizeInterfaceInfo(obj *InterfaceInfo) {
+	interfaceInfoStruct.Free(obj.native)
 }
 
 var objectClassStruct *gi.Struct
@@ -567,17 +600,6 @@ func (recv *ObjectClass) GTypeClass() *TypeClass {
 // UNSUPPORTED : C value 'notify' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'constructed' : for field getter : missing Type
-
-// ObjectClassStruct creates an uninitialised ObjectClass.
-func ObjectClassStruct() *ObjectClass {
-	err := objectClassStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ObjectClass{native: objectClassStruct.Alloc()}
-	return structGo
-}
 
 // UNSUPPORTED : C value 'g_object_class_find_property' : return type 'ParamSpec' not supported
 
@@ -647,6 +669,21 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 	return
 }
 
+// ObjectClassStruct creates an uninitialised ObjectClass.
+func ObjectClassStruct() *ObjectClass {
+	err := objectClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ObjectClass{native: objectClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeObjectClass)
+	return structGo
+}
+func finalizeObjectClass(obj *ObjectClass) {
+	objectClassStruct.Free(obj.native)
+}
+
 var objectConstructParamStruct *gi.Struct
 var objectConstructParamStruct_Once sync.Once
 
@@ -679,7 +716,11 @@ func ObjectConstructParamStruct() *ObjectConstructParam {
 	}
 
 	structGo := &ObjectConstructParam{native: objectConstructParamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeObjectConstructParam)
 	return structGo
+}
+func finalizeObjectConstructParam(obj *ObjectConstructParam) {
+	objectConstructParamStruct.Free(obj.native)
 }
 
 var paramSpecClassStruct *gi.Struct
@@ -722,7 +763,11 @@ func ParamSpecClassStruct() *ParamSpecClass {
 	}
 
 	structGo := &ParamSpecClass{native: paramSpecClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeParamSpecClass)
 	return structGo
+}
+func finalizeParamSpecClass(obj *ParamSpecClass) {
+	paramSpecClassStruct.Free(obj.native)
 }
 
 var paramSpecPoolStruct *gi.Struct
@@ -740,17 +785,6 @@ type ParamSpecPool struct {
 	native uintptr
 }
 
-// ParamSpecPoolStruct creates an uninitialised ParamSpecPool.
-func ParamSpecPoolStruct() *ParamSpecPool {
-	err := paramSpecPoolStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ParamSpecPool{native: paramSpecPoolStruct.Alloc()}
-	return structGo
-}
-
 // UNSUPPORTED : C value 'g_param_spec_pool_insert' : parameter 'pspec' of type 'ParamSpec' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_pool_list' : parameter 'owner_type' of type 'GType' not supported
@@ -760,6 +794,21 @@ func ParamSpecPoolStruct() *ParamSpecPool {
 // UNSUPPORTED : C value 'g_param_spec_pool_lookup' : parameter 'owner_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_pool_remove' : parameter 'pspec' of type 'ParamSpec' not supported
+
+// ParamSpecPoolStruct creates an uninitialised ParamSpecPool.
+func ParamSpecPoolStruct() *ParamSpecPool {
+	err := paramSpecPoolStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ParamSpecPool{native: paramSpecPoolStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeParamSpecPool)
+	return structGo
+}
+func finalizeParamSpecPool(obj *ParamSpecPool) {
+	paramSpecPoolStruct.Free(obj.native)
+}
 
 var paramSpecTypeInfoStruct *gi.Struct
 var paramSpecTypeInfoStruct_Once sync.Once
@@ -810,7 +859,11 @@ func ParamSpecTypeInfoStruct() *ParamSpecTypeInfo {
 	}
 
 	structGo := &ParamSpecTypeInfo{native: paramSpecTypeInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeParamSpecTypeInfo)
 	return structGo
+}
+func finalizeParamSpecTypeInfo(obj *ParamSpecTypeInfo) {
+	paramSpecTypeInfoStruct.Free(obj.native)
 }
 
 var parameterStruct *gi.Struct
@@ -850,7 +903,11 @@ func ParameterStruct() *Parameter {
 	}
 
 	structGo := &Parameter{native: parameterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeParameter)
 	return structGo
+}
+func finalizeParameter(obj *Parameter) {
+	parameterStruct.Free(obj.native)
 }
 
 var signalInvocationHintStruct *gi.Struct
@@ -892,7 +949,11 @@ func SignalInvocationHintStruct() *SignalInvocationHint {
 	}
 
 	structGo := &SignalInvocationHint{native: signalInvocationHintStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSignalInvocationHint)
 	return structGo
+}
+func finalizeSignalInvocationHint(obj *SignalInvocationHint) {
+	signalInvocationHintStruct.Free(obj.native)
 }
 
 var signalQueryStruct *gi.Struct
@@ -947,7 +1008,11 @@ func SignalQuery_Struct() *SignalQuery_ {
 	}
 
 	structGo := &SignalQuery_{native: signalQueryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSignalQuery_)
 	return structGo
+}
+func finalizeSignalQuery_(obj *SignalQuery_) {
+	signalQueryStruct.Free(obj.native)
 }
 
 var typeClassStruct *gi.Struct
@@ -963,17 +1028,6 @@ func typeClassStruct_Set() error {
 
 type TypeClass struct {
 	native uintptr
-}
-
-// TypeClassStruct creates an uninitialised TypeClass.
-func TypeClassStruct() *TypeClass {
-	err := typeClassStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TypeClass{native: typeClassStruct.Alloc()}
-	return structGo
 }
 
 var typeClassAddPrivateFunction *gi.Function
@@ -1127,6 +1181,21 @@ func (recv *TypeClass) UnrefUncached() {
 	return
 }
 
+// TypeClassStruct creates an uninitialised TypeClass.
+func TypeClassStruct() *TypeClass {
+	err := typeClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TypeClass{native: typeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeClass)
+	return structGo
+}
+func finalizeTypeClass(obj *TypeClass) {
+	typeClassStruct.Free(obj.native)
+}
+
 var typeFundamentalInfoStruct *gi.Struct
 var typeFundamentalInfoStruct_Once sync.Once
 
@@ -1152,7 +1221,11 @@ func TypeFundamentalInfoStruct() *TypeFundamentalInfo {
 	}
 
 	structGo := &TypeFundamentalInfo{native: typeFundamentalInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeFundamentalInfo)
 	return structGo
+}
+func finalizeTypeFundamentalInfo(obj *TypeFundamentalInfo) {
+	typeFundamentalInfoStruct.Free(obj.native)
 }
 
 var typeInfoStruct *gi.Struct
@@ -1218,7 +1291,11 @@ func TypeInfoStruct() *TypeInfo {
 	}
 
 	structGo := &TypeInfo{native: typeInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeInfo)
 	return structGo
+}
+func finalizeTypeInfo(obj *TypeInfo) {
+	typeInfoStruct.Free(obj.native)
 }
 
 var typeInstanceStruct *gi.Struct
@@ -1236,6 +1313,8 @@ type TypeInstance struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_type_instance_get_private' : parameter 'private_type' of type 'GType' not supported
+
 // TypeInstanceStruct creates an uninitialised TypeInstance.
 func TypeInstanceStruct() *TypeInstance {
 	err := typeInstanceStruct_Set()
@@ -1244,10 +1323,12 @@ func TypeInstanceStruct() *TypeInstance {
 	}
 
 	structGo := &TypeInstance{native: typeInstanceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeInstance)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'g_type_instance_get_private' : parameter 'private_type' of type 'GType' not supported
+func finalizeTypeInstance(obj *TypeInstance) {
+	typeInstanceStruct.Free(obj.native)
+}
 
 var typeInterfaceStruct *gi.Struct
 var typeInterfaceStruct_Once sync.Once
@@ -1262,17 +1343,6 @@ func typeInterfaceStruct_Set() error {
 
 type TypeInterface struct {
 	native uintptr
-}
-
-// TypeInterfaceStruct creates an uninitialised TypeInterface.
-func TypeInterfaceStruct() *TypeInterface {
-	err := typeInterfaceStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TypeInterface{native: typeInterfaceStruct.Alloc()}
-	return structGo
 }
 
 var typeInterfacePeekParentFunction *gi.Function
@@ -1305,6 +1375,21 @@ func (recv *TypeInterface) PeekParent() *TypeInterface {
 	retGo := &TypeInterface{native: ret.Pointer()}
 
 	return retGo
+}
+
+// TypeInterfaceStruct creates an uninitialised TypeInterface.
+func TypeInterfaceStruct() *TypeInterface {
+	err := typeInterfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TypeInterface{native: typeInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeInterface)
+	return structGo
+}
+func finalizeTypeInterface(obj *TypeInterface) {
+	typeInterfaceStruct.Free(obj.native)
 }
 
 var typeModuleClassStruct *gi.Struct
@@ -1349,7 +1434,11 @@ func TypeModuleClassStruct() *TypeModuleClass {
 	}
 
 	structGo := &TypeModuleClass{native: typeModuleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeModuleClass)
 	return structGo
+}
+func finalizeTypeModuleClass(obj *TypeModuleClass) {
+	typeModuleClassStruct.Free(obj.native)
 }
 
 var typePluginClassStruct *gi.Struct
@@ -1383,7 +1472,11 @@ func TypePluginClassStruct() *TypePluginClass {
 	}
 
 	structGo := &TypePluginClass{native: typePluginClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypePluginClass)
 	return structGo
+}
+func finalizeTypePluginClass(obj *TypePluginClass) {
+	typePluginClassStruct.Free(obj.native)
 }
 
 var typeQueryStruct *gi.Struct
@@ -1432,7 +1525,11 @@ func TypeQueryStruct() *TypeQuery {
 	}
 
 	structGo := &TypeQuery{native: typeQueryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeQuery)
 	return structGo
+}
+func finalizeTypeQuery(obj *TypeQuery) {
+	typeQueryStruct.Free(obj.native)
 }
 
 var typeValueTableStruct *gi.Struct
@@ -1484,7 +1581,11 @@ func TypeValueTableStruct() *TypeValueTable {
 	}
 
 	structGo := &TypeValueTable{native: typeValueTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTypeValueTable)
 	return structGo
+}
+func finalizeTypeValueTable(obj *TypeValueTable) {
+	typeValueTableStruct.Free(obj.native)
 }
 
 var valueStruct *gi.Struct
@@ -1503,17 +1604,6 @@ type Value struct {
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : missing Type
-
-// ValueStruct creates an uninitialised Value.
-func ValueStruct() *Value {
-	err := valueStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Value{native: valueStruct.Alloc()}
-	return structGo
-}
 
 var valueCopyFunction *gi.Function
 var valueCopyFunction_Once sync.Once
@@ -2786,6 +2876,21 @@ func (recv *Value) Unset() {
 	return
 }
 
+// ValueStruct creates an uninitialised Value.
+func ValueStruct() *Value {
+	err := valueStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Value{native: valueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeValue)
+	return structGo
+}
+func finalizeValue(obj *Value) {
+	valueStruct.Free(obj.native)
+}
+
 var valueArrayStruct *gi.Struct
 var valueArrayStruct_Once sync.Once
 
@@ -3092,17 +3197,6 @@ type WeakRef struct {
 	native uintptr
 }
 
-// WeakRefStruct creates an uninitialised WeakRef.
-func WeakRefStruct() *WeakRef {
-	err := weakRefStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &WeakRef{native: weakRefStruct.Alloc()}
-	return structGo
-}
-
 var weakRefClearFunction *gi.Function
 var weakRefClearFunction_Once sync.Once
 
@@ -3136,3 +3230,18 @@ func (recv *WeakRef) Clear() {
 // UNSUPPORTED : C value 'g_weak_ref_init' : parameter 'object' of type 'Object' not supported
 
 // UNSUPPORTED : C value 'g_weak_ref_set' : parameter 'object' of type 'Object' not supported
+
+// WeakRefStruct creates an uninitialised WeakRef.
+func WeakRefStruct() *WeakRef {
+	err := weakRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WeakRef{native: weakRefStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWeakRef)
+	return structGo
+}
+func finalizeWeakRef(obj *WeakRef) {
+	weakRefStruct.Free(obj.native)
+}

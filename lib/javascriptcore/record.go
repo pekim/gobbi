@@ -4,6 +4,7 @@ package javascriptcore
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -20,17 +21,6 @@ func globalContextRefStruct_Set() error {
 
 type GlobalContextRef struct {
 	native uintptr
-}
-
-// GlobalContextRefStruct creates an uninitialised GlobalContextRef.
-func GlobalContextRefStruct() *GlobalContextRef {
-	err := globalContextRefStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &GlobalContextRef{native: globalContextRefStruct.Alloc()}
-	return structGo
 }
 
 var globalContextRefRefFunction *gi.Function
@@ -89,6 +79,21 @@ func (recv *GlobalContextRef) Unref() {
 	return
 }
 
+// GlobalContextRefStruct creates an uninitialised GlobalContextRef.
+func GlobalContextRefStruct() *GlobalContextRef {
+	err := globalContextRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GlobalContextRef{native: globalContextRefStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlobalContextRef)
+	return structGo
+}
+func finalizeGlobalContextRef(obj *GlobalContextRef) {
+	globalContextRefStruct.Free(obj.native)
+}
+
 var valueRefStruct *gi.Struct
 var valueRefStruct_Once sync.Once
 
@@ -112,7 +117,11 @@ func ValueRefStruct() *ValueRef {
 	}
 
 	structGo := &ValueRef{native: valueRefStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeValueRef)
 	return structGo
+}
+func finalizeValueRef(obj *ValueRef) {
+	valueRefStruct.Free(obj.native)
 }
 
 var stringRefStruct *gi.Struct
@@ -128,17 +137,6 @@ func stringRefStruct_Set() error {
 
 type StringRef struct {
 	native uintptr
-}
-
-// StringRefStruct creates an uninitialised StringRef.
-func StringRefStruct() *StringRef {
-	err := stringRefStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &StringRef{native: stringRefStruct.Alloc()}
-	return structGo
 }
 
 var stringRefRefFunction *gi.Function
@@ -265,6 +263,21 @@ func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, buffe
 	return retGo, out0
 }
 
+// StringRefStruct creates an uninitialised StringRef.
+func StringRefStruct() *StringRef {
+	err := stringRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StringRef{native: stringRefStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStringRef)
+	return structGo
+}
+func finalizeStringRef(obj *StringRef) {
+	stringRefStruct.Free(obj.native)
+}
+
 var classClassStruct *gi.Struct
 var classClassStruct_Once sync.Once
 
@@ -288,7 +301,11 @@ func ClassClassStruct() *ClassClass {
 	}
 
 	structGo := &ClassClass{native: classClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeClassClass)
 	return structGo
+}
+func finalizeClassClass(obj *ClassClass) {
+	classClassStruct.Free(obj.native)
 }
 
 var classVTableStruct *gi.Struct
@@ -332,7 +349,11 @@ func ClassVTableStruct() *ClassVTable {
 	}
 
 	structGo := &ClassVTable{native: classVTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeClassVTable)
 	return structGo
+}
+func finalizeClassVTable(obj *ClassVTable) {
+	classVTableStruct.Free(obj.native)
 }
 
 var contextClassStruct *gi.Struct
@@ -368,7 +389,11 @@ func ContextClassStruct() *ContextClass {
 	}
 
 	structGo := &ContextClass{native: contextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextClass)
 	return structGo
+}
+func finalizeContextClass(obj *ContextClass) {
+	contextClassStruct.Free(obj.native)
 }
 
 var contextPrivateStruct *gi.Struct
@@ -394,7 +419,11 @@ func ContextPrivateStruct() *ContextPrivate {
 	}
 
 	structGo := &ContextPrivate{native: contextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextPrivate)
 	return structGo
+}
+func finalizeContextPrivate(obj *ContextPrivate) {
+	contextPrivateStruct.Free(obj.native)
 }
 
 var exceptionClassStruct *gi.Struct
@@ -430,7 +459,11 @@ func ExceptionClassStruct() *ExceptionClass {
 	}
 
 	structGo := &ExceptionClass{native: exceptionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExceptionClass)
 	return structGo
+}
+func finalizeExceptionClass(obj *ExceptionClass) {
+	exceptionClassStruct.Free(obj.native)
 }
 
 var exceptionPrivateStruct *gi.Struct
@@ -456,7 +489,11 @@ func ExceptionPrivateStruct() *ExceptionPrivate {
 	}
 
 	structGo := &ExceptionPrivate{native: exceptionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExceptionPrivate)
 	return structGo
+}
+func finalizeExceptionPrivate(obj *ExceptionPrivate) {
+	exceptionPrivateStruct.Free(obj.native)
 }
 
 var valueClassStruct *gi.Struct
@@ -492,7 +529,11 @@ func ValueClassStruct() *ValueClass {
 	}
 
 	structGo := &ValueClass{native: valueClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeValueClass)
 	return structGo
+}
+func finalizeValueClass(obj *ValueClass) {
+	valueClassStruct.Free(obj.native)
 }
 
 var valuePrivateStruct *gi.Struct
@@ -518,7 +559,11 @@ func ValuePrivateStruct() *ValuePrivate {
 	}
 
 	structGo := &ValuePrivate{native: valuePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeValuePrivate)
 	return structGo
+}
+func finalizeValuePrivate(obj *ValuePrivate) {
+	valuePrivateStruct.Free(obj.native)
 }
 
 var virtualMachineClassStruct *gi.Struct
@@ -554,7 +599,11 @@ func VirtualMachineClassStruct() *VirtualMachineClass {
 	}
 
 	structGo := &VirtualMachineClass{native: virtualMachineClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVirtualMachineClass)
 	return structGo
+}
+func finalizeVirtualMachineClass(obj *VirtualMachineClass) {
+	virtualMachineClassStruct.Free(obj.native)
 }
 
 var virtualMachinePrivateStruct *gi.Struct
@@ -580,7 +629,11 @@ func VirtualMachinePrivateStruct() *VirtualMachinePrivate {
 	}
 
 	structGo := &VirtualMachinePrivate{native: virtualMachinePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVirtualMachinePrivate)
 	return structGo
+}
+func finalizeVirtualMachinePrivate(obj *VirtualMachinePrivate) {
+	virtualMachinePrivateStruct.Free(obj.native)
 }
 
 var weakValueClassStruct *gi.Struct
@@ -616,7 +669,11 @@ func WeakValueClassStruct() *WeakValueClass {
 	}
 
 	structGo := &WeakValueClass{native: weakValueClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWeakValueClass)
 	return structGo
+}
+func finalizeWeakValueClass(obj *WeakValueClass) {
+	weakValueClassStruct.Free(obj.native)
 }
 
 var weakValuePrivateStruct *gi.Struct
@@ -642,5 +699,9 @@ func WeakValuePrivateStruct() *WeakValuePrivate {
 	}
 
 	structGo := &WeakValuePrivate{native: weakValuePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWeakValuePrivate)
 	return structGo
+}
+func finalizeWeakValuePrivate(obj *WeakValuePrivate) {
+	weakValuePrivateStruct.Free(obj.native)
 }

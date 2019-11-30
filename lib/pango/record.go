@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -73,7 +74,11 @@ func AnalysisStruct() *Analysis {
 	}
 
 	structGo := &Analysis{native: analysisStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAnalysis)
 	return structGo
+}
+func finalizeAnalysis(obj *Analysis) {
+	analysisStruct.Free(obj.native)
 }
 
 var attrClassStruct *gi.Struct
@@ -107,7 +112,11 @@ func AttrClassStruct() *AttrClass {
 	}
 
 	structGo := &AttrClass{native: attrClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrClass)
 	return structGo
+}
+func finalizeAttrClass(obj *AttrClass) {
+	attrClassStruct.Free(obj.native)
 }
 
 var attrColorStruct *gi.Struct
@@ -147,7 +156,11 @@ func AttrColorStruct() *AttrColor {
 	}
 
 	structGo := &AttrColor{native: attrColorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrColor)
 	return structGo
+}
+func finalizeAttrColor(obj *AttrColor) {
+	attrColorStruct.Free(obj.native)
 }
 
 var attrFloatStruct *gi.Struct
@@ -187,7 +200,11 @@ func AttrFloatStruct() *AttrFloat {
 	}
 
 	structGo := &AttrFloat{native: attrFloatStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrFloat)
 	return structGo
+}
+func finalizeAttrFloat(obj *AttrFloat) {
+	attrFloatStruct.Free(obj.native)
 }
 
 var attrFontDescStruct *gi.Struct
@@ -227,7 +244,11 @@ func AttrFontDescStruct() *AttrFontDesc {
 	}
 
 	structGo := &AttrFontDesc{native: attrFontDescStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrFontDesc)
 	return structGo
+}
+func finalizeAttrFontDesc(obj *AttrFontDesc) {
+	attrFontDescStruct.Free(obj.native)
 }
 
 var attrFontFeaturesStruct *gi.Struct
@@ -267,7 +288,11 @@ func AttrFontFeaturesStruct() *AttrFontFeatures {
 	}
 
 	structGo := &AttrFontFeatures{native: attrFontFeaturesStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrFontFeatures)
 	return structGo
+}
+func finalizeAttrFontFeatures(obj *AttrFontFeatures) {
+	attrFontFeaturesStruct.Free(obj.native)
 }
 
 var attrIntStruct *gi.Struct
@@ -307,7 +332,11 @@ func AttrIntStruct() *AttrInt {
 	}
 
 	structGo := &AttrInt{native: attrIntStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrInt)
 	return structGo
+}
+func finalizeAttrInt(obj *AttrInt) {
+	attrIntStruct.Free(obj.native)
 }
 
 var attrIteratorStruct *gi.Struct
@@ -323,17 +352,6 @@ func attrIteratorStruct_Set() error {
 
 type AttrIterator struct {
 	native uintptr
-}
-
-// AttrIteratorStruct creates an uninitialised AttrIterator.
-func AttrIteratorStruct() *AttrIterator {
-	err := attrIteratorStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &AttrIterator{native: attrIteratorStruct.Alloc()}
-	return structGo
 }
 
 var attrIteratorCopyFunction *gi.Function
@@ -467,6 +485,21 @@ func (recv *AttrIterator) Range() (int32, int32) {
 	return out0, out1
 }
 
+// AttrIteratorStruct creates an uninitialised AttrIterator.
+func AttrIteratorStruct() *AttrIterator {
+	err := attrIteratorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AttrIterator{native: attrIteratorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrIterator)
+	return structGo
+}
+func finalizeAttrIterator(obj *AttrIterator) {
+	attrIteratorStruct.Free(obj.native)
+}
+
 var attrLanguageStruct *gi.Struct
 var attrLanguageStruct_Once sync.Once
 
@@ -504,7 +537,11 @@ func AttrLanguageStruct() *AttrLanguage {
 	}
 
 	structGo := &AttrLanguage{native: attrLanguageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrLanguage)
 	return structGo
+}
+func finalizeAttrLanguage(obj *AttrLanguage) {
+	attrLanguageStruct.Free(obj.native)
 }
 
 var attrListStruct *gi.Struct
@@ -846,7 +883,11 @@ func AttrShapeStruct() *AttrShape {
 	}
 
 	structGo := &AttrShape{native: attrShapeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrShape)
 	return structGo
+}
+func finalizeAttrShape(obj *AttrShape) {
+	attrShapeStruct.Free(obj.native)
 }
 
 var attrSizeStruct *gi.Struct
@@ -893,7 +934,11 @@ func AttrSizeStruct() *AttrSize {
 	}
 
 	structGo := &AttrSize{native: attrSizeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrSize)
 	return structGo
+}
+func finalizeAttrSize(obj *AttrSize) {
+	attrSizeStruct.Free(obj.native)
 }
 
 var attrStringStruct *gi.Struct
@@ -933,7 +978,11 @@ func AttrStringStruct() *AttrString {
 	}
 
 	structGo := &AttrString{native: attrStringStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttrString)
 	return structGo
+}
+func finalizeAttrString(obj *AttrString) {
+	attrStringStruct.Free(obj.native)
 }
 
 var attributeStruct *gi.Struct
@@ -970,17 +1019,6 @@ func (recv *Attribute) EndIndex() uint32 {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "end_index")
 	value := argValue.Uint32()
 	return value
-}
-
-// AttributeStruct creates an uninitialised Attribute.
-func AttributeStruct() *Attribute {
-	err := attributeStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Attribute{native: attributeStruct.Alloc()}
-	return structGo
 }
 
 var attributeCopyFunction *gi.Function
@@ -1105,6 +1143,21 @@ func (recv *Attribute) Init(klass *AttrClass) {
 	return
 }
 
+// AttributeStruct creates an uninitialised Attribute.
+func AttributeStruct() *Attribute {
+	err := attributeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Attribute{native: attributeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttribute)
+	return structGo
+}
+func finalizeAttribute(obj *Attribute) {
+	attributeStruct.Free(obj.native)
+}
+
 var colorStruct *gi.Struct
 var colorStruct_Once sync.Once
 
@@ -1139,17 +1192,6 @@ func (recv *Color) Blue() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "blue")
 	value := argValue.Uint16()
 	return value
-}
-
-// ColorStruct creates an uninitialised Color.
-func ColorStruct() *Color {
-	err := colorStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Color{native: colorStruct.Alloc()}
-	return structGo
 }
 
 var colorCopyFunction *gi.Function
@@ -1277,6 +1319,21 @@ func (recv *Color) ToString() string {
 	return retGo
 }
 
+// ColorStruct creates an uninitialised Color.
+func ColorStruct() *Color {
+	err := colorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Color{native: colorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColor)
+	return structGo
+}
+func finalizeColor(obj *Color) {
+	colorStruct.Free(obj.native)
+}
+
 var contextClassStruct *gi.Struct
 var contextClassStruct_Once sync.Once
 
@@ -1300,7 +1357,11 @@ func ContextClassStruct() *ContextClass {
 	}
 
 	structGo := &ContextClass{native: contextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextClass)
 	return structGo
+}
+func finalizeContextClass(obj *ContextClass) {
+	contextClassStruct.Free(obj.native)
 }
 
 var coverageStruct *gi.Struct
@@ -1316,17 +1377,6 @@ func coverageStruct_Set() error {
 
 type Coverage struct {
 	native uintptr
-}
-
-// CoverageStruct creates an uninitialised Coverage.
-func CoverageStruct() *Coverage {
-	err := coverageStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Coverage{native: coverageStruct.Alloc()}
-	return structGo
 }
 
 var coverageCopyFunction *gi.Function
@@ -1456,6 +1506,21 @@ func (recv *Coverage) Unref() {
 	return
 }
 
+// CoverageStruct creates an uninitialised Coverage.
+func CoverageStruct() *Coverage {
+	err := coverageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Coverage{native: coverageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCoverage)
+	return structGo
+}
+func finalizeCoverage(obj *Coverage) {
+	coverageStruct.Free(obj.native)
+}
+
 var engineClassStruct *gi.Struct
 var engineClassStruct_Once sync.Once
 
@@ -1479,7 +1544,11 @@ func EngineClassStruct() *EngineClass {
 	}
 
 	structGo := &EngineClass{native: engineClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEngineClass)
 	return structGo
+}
+func finalizeEngineClass(obj *EngineClass) {
+	engineClassStruct.Free(obj.native)
 }
 
 var engineInfoStruct *gi.Struct
@@ -1540,7 +1609,11 @@ func EngineInfoStruct() *EngineInfo {
 	}
 
 	structGo := &EngineInfo{native: engineInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEngineInfo)
 	return structGo
+}
+func finalizeEngineInfo(obj *EngineInfo) {
+	engineInfoStruct.Free(obj.native)
 }
 
 var engineLangClassStruct *gi.Struct
@@ -1568,7 +1641,11 @@ func EngineLangClassStruct() *EngineLangClass {
 	}
 
 	structGo := &EngineLangClass{native: engineLangClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEngineLangClass)
 	return structGo
+}
+func finalizeEngineLangClass(obj *EngineLangClass) {
+	engineLangClassStruct.Free(obj.native)
 }
 
 var engineScriptInfoStruct *gi.Struct
@@ -1603,7 +1680,11 @@ func EngineScriptInfoStruct() *EngineScriptInfo {
 	}
 
 	structGo := &EngineScriptInfo{native: engineScriptInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEngineScriptInfo)
 	return structGo
+}
+func finalizeEngineScriptInfo(obj *EngineScriptInfo) {
+	engineScriptInfoStruct.Free(obj.native)
 }
 
 var engineShapeClassStruct *gi.Struct
@@ -1633,7 +1714,11 @@ func EngineShapeClassStruct() *EngineShapeClass {
 	}
 
 	structGo := &EngineShapeClass{native: engineShapeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEngineShapeClass)
 	return structGo
+}
+func finalizeEngineShapeClass(obj *EngineShapeClass) {
+	engineShapeClassStruct.Free(obj.native)
 }
 
 var fontClassStruct *gi.Struct
@@ -1679,7 +1764,11 @@ func FontClassStruct() *FontClass {
 	}
 
 	structGo := &FontClass{native: fontClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontClass)
 	return structGo
+}
+func finalizeFontClass(obj *FontClass) {
+	fontClassStruct.Free(obj.native)
 }
 
 var fontDescriptionStruct *gi.Struct
@@ -2405,7 +2494,11 @@ func FontFaceClassStruct() *FontFaceClass {
 	}
 
 	structGo := &FontFaceClass{native: fontFaceClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontFaceClass)
 	return structGo
+}
+func finalizeFontFaceClass(obj *FontFaceClass) {
+	fontFaceClassStruct.Free(obj.native)
 }
 
 var fontFamilyClassStruct *gi.Struct
@@ -2445,7 +2538,11 @@ func FontFamilyClassStruct() *FontFamilyClass {
 	}
 
 	structGo := &FontFamilyClass{native: fontFamilyClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontFamilyClass)
 	return structGo
+}
+func finalizeFontFamilyClass(obj *FontFamilyClass) {
+	fontFamilyClassStruct.Free(obj.native)
 }
 
 var fontMapClassStruct *gi.Struct
@@ -2494,7 +2591,11 @@ func FontMapClassStruct() *FontMapClass {
 	}
 
 	structGo := &FontMapClass{native: fontMapClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontMapClass)
 	return structGo
+}
+func finalizeFontMapClass(obj *FontMapClass) {
+	fontMapClassStruct.Free(obj.native)
 }
 
 var fontMetricsStruct *gi.Struct
@@ -2899,7 +3000,11 @@ func FontsetClassStruct() *FontsetClass {
 	}
 
 	structGo := &FontsetClass{native: fontsetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontsetClass)
 	return structGo
+}
+func finalizeFontsetClass(obj *FontsetClass) {
+	fontsetClassStruct.Free(obj.native)
 }
 
 var fontsetSimpleClassStruct *gi.Struct
@@ -2925,7 +3030,11 @@ func FontsetSimpleClassStruct() *FontsetSimpleClass {
 	}
 
 	structGo := &FontsetSimpleClass{native: fontsetSimpleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontsetSimpleClass)
 	return structGo
+}
+func finalizeFontsetSimpleClass(obj *FontsetSimpleClass) {
+	fontsetSimpleClassStruct.Free(obj.native)
 }
 
 var glyphGeometryStruct *gi.Struct
@@ -2972,7 +3081,11 @@ func GlyphGeometryStruct() *GlyphGeometry {
 	}
 
 	structGo := &GlyphGeometry{native: glyphGeometryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlyphGeometry)
 	return structGo
+}
+func finalizeGlyphGeometry(obj *GlyphGeometry) {
+	glyphGeometryStruct.Free(obj.native)
 }
 
 var glyphInfoStruct *gi.Struct
@@ -3019,7 +3132,11 @@ func GlyphInfoStruct() *GlyphInfo {
 	}
 
 	structGo := &GlyphInfo{native: glyphInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlyphInfo)
 	return structGo
+}
+func finalizeGlyphInfo(obj *GlyphInfo) {
+	glyphInfoStruct.Free(obj.native)
 }
 
 var glyphItemStruct *gi.Struct
@@ -3049,17 +3166,6 @@ func (recv *GlyphItem) Glyphs() *GlyphString {
 	argValue := gi.FieldGet(glyphItemStruct, recv.native, "glyphs")
 	value := &GlyphString{native: argValue.Pointer()}
 	return value
-}
-
-// GlyphItemStruct creates an uninitialised GlyphItem.
-func GlyphItemStruct() *GlyphItem {
-	err := glyphItemStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &GlyphItem{native: glyphItemStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
@@ -3162,6 +3268,21 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 	return retGo
 }
 
+// GlyphItemStruct creates an uninitialised GlyphItem.
+func GlyphItemStruct() *GlyphItem {
+	err := glyphItemStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GlyphItem{native: glyphItemStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlyphItem)
+	return structGo
+}
+func finalizeGlyphItem(obj *GlyphItem) {
+	glyphItemStruct.Free(obj.native)
+}
+
 var glyphItemIterStruct *gi.Struct
 var glyphItemIterStruct_Once sync.Once
 
@@ -3231,17 +3352,6 @@ func (recv *GlyphItemIter) EndChar() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "end_char")
 	value := argValue.Int32()
 	return value
-}
-
-// GlyphItemIterStruct creates an uninitialised GlyphItemIter.
-func GlyphItemIterStruct() *GlyphItemIter {
-	err := glyphItemIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &GlyphItemIter{native: glyphItemIterStruct.Alloc()}
-	return structGo
 }
 
 var glyphItemIterCopyFunction *gi.Function
@@ -3434,6 +3544,21 @@ func (recv *GlyphItemIter) PrevCluster() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+// GlyphItemIterStruct creates an uninitialised GlyphItemIter.
+func GlyphItemIterStruct() *GlyphItemIter {
+	err := glyphItemIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &GlyphItemIter{native: glyphItemIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlyphItemIter)
+	return structGo
+}
+func finalizeGlyphItemIter(obj *GlyphItemIter) {
+	glyphItemIterStruct.Free(obj.native)
 }
 
 var glyphStringStruct *gi.Struct
@@ -3728,7 +3853,11 @@ func GlyphVisAttrStruct() *GlyphVisAttr {
 	}
 
 	structGo := &GlyphVisAttr{native: glyphVisAttrStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGlyphVisAttr)
 	return structGo
+}
+func finalizeGlyphVisAttr(obj *GlyphVisAttr) {
+	glyphVisAttrStruct.Free(obj.native)
 }
 
 var includedModuleStruct *gi.Struct
@@ -3762,7 +3891,11 @@ func IncludedModuleStruct() *IncludedModule {
 	}
 
 	structGo := &IncludedModule{native: includedModuleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIncludedModule)
 	return structGo
+}
+func finalizeIncludedModule(obj *IncludedModule) {
+	includedModuleStruct.Free(obj.native)
 }
 
 var itemStruct *gi.Struct
@@ -3947,17 +4080,6 @@ type Language struct {
 	native uintptr
 }
 
-// LanguageStruct creates an uninitialised Language.
-func LanguageStruct() *Language {
-	err := languageStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Language{native: languageStruct.Alloc()}
-	return structGo
-}
-
 var languageGetSampleStringFunction *gi.Function
 var languageGetSampleStringFunction_Once sync.Once
 
@@ -4089,6 +4211,21 @@ func (recv *Language) ToString() string {
 	return retGo
 }
 
+// LanguageStruct creates an uninitialised Language.
+func LanguageStruct() *Language {
+	err := languageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Language{native: languageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLanguage)
+	return structGo
+}
+func finalizeLanguage(obj *Language) {
+	languageStruct.Free(obj.native)
+}
+
 var layoutClassStruct *gi.Struct
 var layoutClassStruct_Once sync.Once
 
@@ -4112,7 +4249,11 @@ func LayoutClassStruct() *LayoutClass {
 	}
 
 	structGo := &LayoutClass{native: layoutClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLayoutClass)
 	return structGo
+}
+func finalizeLayoutClass(obj *LayoutClass) {
+	layoutClassStruct.Free(obj.native)
 }
 
 var layoutIterStruct *gi.Struct
@@ -4128,17 +4269,6 @@ func layoutIterStruct_Set() error {
 
 type LayoutIter struct {
 	native uintptr
-}
-
-// LayoutIterStruct creates an uninitialised LayoutIter.
-func LayoutIterStruct() *LayoutIter {
-	err := layoutIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &LayoutIter{native: layoutIterStruct.Alloc()}
-	return structGo
 }
 
 var layoutIterAtLastLineFunction *gi.Function
@@ -4692,6 +4822,21 @@ func (recv *LayoutIter) NextRun() bool {
 	return retGo
 }
 
+// LayoutIterStruct creates an uninitialised LayoutIter.
+func LayoutIterStruct() *LayoutIter {
+	err := layoutIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LayoutIter{native: layoutIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLayoutIter)
+	return structGo
+}
+func finalizeLayoutIter(obj *LayoutIter) {
+	layoutIterStruct.Free(obj.native)
+}
+
 var layoutLineStruct *gi.Struct
 var layoutLineStruct_Once sync.Once
 
@@ -4737,17 +4882,6 @@ func (recv *LayoutLine) ResolvedDir() uint32 {
 	argValue := gi.FieldGet(layoutLineStruct, recv.native, "resolved_dir")
 	value := argValue.Uint32()
 	return value
-}
-
-// LayoutLineStruct creates an uninitialised LayoutLine.
-func LayoutLineStruct() *LayoutLine {
-	err := layoutLineStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &LayoutLine{native: layoutLineStruct.Alloc()}
-	return structGo
 }
 
 var layoutLineGetExtentsFunction *gi.Function
@@ -4948,6 +5082,21 @@ func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	return retGo, out0, out1
 }
 
+// LayoutLineStruct creates an uninitialised LayoutLine.
+func LayoutLineStruct() *LayoutLine {
+	err := layoutLineStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &LayoutLine{native: layoutLineStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLayoutLine)
+	return structGo
+}
+func finalizeLayoutLine(obj *LayoutLine) {
+	layoutLineStruct.Free(obj.native)
+}
+
 var logAttrStruct *gi.Struct
 var logAttrStruct_Once sync.Once
 
@@ -5062,7 +5211,11 @@ func LogAttrStruct() *LogAttr {
 	}
 
 	structGo := &LogAttr{native: logAttrStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLogAttr)
 	return structGo
+}
+func finalizeLogAttr(obj *LogAttr) {
+	logAttrStruct.Free(obj.native)
 }
 
 var mapStruct *gi.Struct
@@ -5080,6 +5233,10 @@ type Map struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'pango_map_get_engine' : parameter 'script' of type 'Script' not supported
+
+// UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'script' of type 'Script' not supported
+
 // MapStruct creates an uninitialised Map.
 func MapStruct() *Map {
 	err := mapStruct_Set()
@@ -5088,12 +5245,12 @@ func MapStruct() *Map {
 	}
 
 	structGo := &Map{native: mapStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMap)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'pango_map_get_engine' : parameter 'script' of type 'Script' not supported
-
-// UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'script' of type 'Script' not supported
+func finalizeMap(obj *Map) {
+	mapStruct.Free(obj.native)
+}
 
 var mapEntryStruct *gi.Struct
 var mapEntryStruct_Once sync.Once
@@ -5118,7 +5275,11 @@ func MapEntryStruct() *MapEntry {
 	}
 
 	structGo := &MapEntry{native: mapEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMapEntry)
 	return structGo
+}
+func finalizeMapEntry(obj *MapEntry) {
+	mapEntryStruct.Free(obj.native)
 }
 
 var matrixStruct *gi.Struct
@@ -5176,17 +5337,6 @@ func (recv *Matrix) Y0() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "y0")
 	value := argValue.Float64()
 	return value
-}
-
-// MatrixStruct creates an uninitialised Matrix.
-func MatrixStruct() *Matrix {
-	err := matrixStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Matrix{native: matrixStruct.Alloc()}
-	return structGo
 }
 
 var matrixConcatFunction *gi.Function
@@ -5568,6 +5718,21 @@ func (recv *Matrix) Translate(tx float64, ty float64) {
 	return
 }
 
+// MatrixStruct creates an uninitialised Matrix.
+func MatrixStruct() *Matrix {
+	err := matrixStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Matrix{native: matrixStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMatrix)
+	return structGo
+}
+func finalizeMatrix(obj *Matrix) {
+	matrixStruct.Free(obj.native)
+}
+
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once
 
@@ -5619,7 +5784,11 @@ func RectangleStruct() *Rectangle {
 	}
 
 	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRectangle)
 	return structGo
+}
+func finalizeRectangle(obj *Rectangle) {
+	rectangleStruct.Free(obj.native)
 }
 
 var rendererClassStruct *gi.Struct
@@ -5673,7 +5842,11 @@ func RendererClassStruct() *RendererClass {
 	}
 
 	structGo := &RendererClass{native: rendererClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRendererClass)
 	return structGo
+}
+func finalizeRendererClass(obj *RendererClass) {
+	rendererClassStruct.Free(obj.native)
 }
 
 var rendererPrivateStruct *gi.Struct
@@ -5699,7 +5872,11 @@ func RendererPrivateStruct() *RendererPrivate {
 	}
 
 	structGo := &RendererPrivate{native: rendererPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRendererPrivate)
 	return structGo
+}
+func finalizeRendererPrivate(obj *RendererPrivate) {
+	rendererPrivateStruct.Free(obj.native)
 }
 
 var scriptIterStruct *gi.Struct
@@ -5715,17 +5892,6 @@ func scriptIterStruct_Set() error {
 
 type ScriptIter struct {
 	native uintptr
-}
-
-// ScriptIterStruct creates an uninitialised ScriptIter.
-func ScriptIterStruct() *ScriptIter {
-	err := scriptIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ScriptIter{native: scriptIterStruct.Alloc()}
-	return structGo
 }
 
 var scriptIterFreeFunction *gi.Function
@@ -5788,6 +5954,21 @@ func (recv *ScriptIter) Next() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+// ScriptIterStruct creates an uninitialised ScriptIter.
+func ScriptIterStruct() *ScriptIter {
+	err := scriptIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ScriptIter{native: scriptIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScriptIter)
+	return structGo
+}
+func finalizeScriptIter(obj *ScriptIter) {
+	scriptIterStruct.Free(obj.native)
 }
 
 var tabArrayStruct *gi.Struct

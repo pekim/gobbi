@@ -56,8 +56,13 @@ func (r *Record) generate(f *file) {
 	r.generateType(f)
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
-	r.generateStructConstructor(f)
 	r.Methods.generate(f)
+
+	if len(r.Constructors) == 0 {
+		r.generateStructConstructor(f)
+		r.generateStructFinalizer(f)
+	}
+
 }
 
 func (r *Record) generateStructInfo(f *file) {
@@ -131,15 +136,24 @@ func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {
 		})
 }
 
+func (r *Record) generateStructFinalizer(f *file) {
+	// func finalizeSomeStruct(obj *SomeStruct) {
+	//   ...
+	// }
+	f.
+		Func().
+		Id("finalize" + r.goName).
+		Params(jen.Id("obj").Op("*").Id(r.goName)).
+		BlockFunc(func(g *jen.Group) {
+			// SomeStuct.Free(obj.native)
+			g.
+				Id(r.structInfoGoName).Dot("Free").
+				Call(jen.Id("obj").Dot("native"))
+		})
+}
+
 func (r *Record) generateStructConstructor(f *file) {
-	if len(r.Constructors) > 0 {
-		return
-	}
-
 	f.Line()
-
-	// TODO
-	//		set finalizer to free memory
 
 	funcName := r.goName + "Struct"
 
@@ -178,6 +192,14 @@ func (r *Record) generateStructConstructor(f *file) {
 
 					r.createFromArgument(s, struct_)
 				})
+
+			// runtime.SetFinalizer(structGo, finalizeSomeType)
+			g.
+				Qual("runtime", "SetFinalizer").
+				Call(
+					jen.Id("structGo"),
+					jen.Id("finalize"+r.goName),
+				)
 
 			// return structGo
 			g.Return(jen.Id("structGo"))

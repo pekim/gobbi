@@ -4,6 +4,7 @@ package glib
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -44,7 +45,11 @@ func ArrayStruct() *Array {
 	}
 
 	structGo := &Array{native: arrayStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeArray)
 	return structGo
+}
+func finalizeArray(obj *Array) {
+	arrayStruct.Free(obj.native)
 }
 
 var asyncQueueStruct *gi.Struct
@@ -60,17 +65,6 @@ func asyncQueueStruct_Set() error {
 
 type AsyncQueue struct {
 	native uintptr
-}
-
-// AsyncQueueStruct creates an uninitialised AsyncQueue.
-func AsyncQueueStruct() *AsyncQueue {
-	err := asyncQueueStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &AsyncQueue{native: asyncQueueStruct.Alloc()}
-	return structGo
 }
 
 var asyncQueueLengthFunction *gi.Function
@@ -345,6 +339,21 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 	return
 }
 
+// AsyncQueueStruct creates an uninitialised AsyncQueue.
+func AsyncQueueStruct() *AsyncQueue {
+	err := asyncQueueStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AsyncQueue{native: asyncQueueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAsyncQueue)
+	return structGo
+}
+func finalizeAsyncQueue(obj *AsyncQueue) {
+	asyncQueueStruct.Free(obj.native)
+}
+
 var bookmarkFileStruct *gi.Struct
 var bookmarkFileStruct_Once sync.Once
 
@@ -358,17 +367,6 @@ func bookmarkFileStruct_Set() error {
 
 type BookmarkFile struct {
 	native uintptr
-}
-
-// BookmarkFileStruct creates an uninitialised BookmarkFile.
-func BookmarkFileStruct() *BookmarkFile {
-	err := bookmarkFileStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &BookmarkFile{native: bookmarkFileStruct.Alloc()}
-	return structGo
 }
 
 var bookmarkFileAddApplicationFunction *gi.Function
@@ -1546,6 +1544,21 @@ func (recv *BookmarkFile) ToFile(filename string) bool {
 	return retGo
 }
 
+// BookmarkFileStruct creates an uninitialised BookmarkFile.
+func BookmarkFileStruct() *BookmarkFile {
+	err := bookmarkFileStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &BookmarkFile{native: bookmarkFileStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBookmarkFile)
+	return structGo
+}
+func finalizeBookmarkFile(obj *BookmarkFile) {
+	bookmarkFileStruct.Free(obj.native)
+}
+
 var byteArrayStruct *gi.Struct
 var byteArrayStruct_Once sync.Once
 
@@ -1583,7 +1596,11 @@ func ByteArrayStruct() *ByteArray {
 	}
 
 	structGo := &ByteArray{native: byteArrayStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeByteArray)
 	return structGo
+}
+func finalizeByteArray(obj *ByteArray) {
+	byteArrayStruct.Free(obj.native)
 }
 
 var bytesStruct *gi.Struct
@@ -2081,17 +2098,6 @@ type Cond struct {
 	native uintptr
 }
 
-// CondStruct creates an uninitialised Cond.
-func CondStruct() *Cond {
-	err := condStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Cond{native: condStruct.Alloc()}
-	return structGo
-}
-
 var condBroadcastFunction *gi.Function
 var condBroadcastFunction_Once sync.Once
 
@@ -2208,6 +2214,21 @@ func (recv *Cond) Signal() {
 
 // UNSUPPORTED : C value 'g_cond_wait_until' : parameter 'mutex' of type 'Mutex' not supported
 
+// CondStruct creates an uninitialised Cond.
+func CondStruct() *Cond {
+	err := condStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Cond{native: condStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCond)
+	return structGo
+}
+func finalizeCond(obj *Cond) {
+	condStruct.Free(obj.native)
+}
+
 var dataStruct *gi.Struct
 var dataStruct_Once sync.Once
 
@@ -2231,7 +2252,11 @@ func DataStruct() *Data {
 	}
 
 	structGo := &Data{native: dataStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeData)
 	return structGo
+}
+func finalizeData(obj *Data) {
+	dataStruct.Free(obj.native)
 }
 
 var dateStruct *gi.Struct
@@ -4861,7 +4886,11 @@ func DebugKeyStruct() *DebugKey {
 	}
 
 	structGo := &DebugKey{native: debugKeyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDebugKey)
 	return structGo
+}
+func finalizeDebugKey(obj *DebugKey) {
+	debugKeyStruct.Free(obj.native)
 }
 
 var dirStruct *gi.Struct
@@ -4877,17 +4906,6 @@ func dirStruct_Set() error {
 
 type Dir struct {
 	native uintptr
-}
-
-// DirStruct creates an uninitialised Dir.
-func DirStruct() *Dir {
-	err := dirStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Dir{native: dirStruct.Alloc()}
-	return structGo
 }
 
 var dirCloseFunction *gi.Function
@@ -4976,6 +4994,21 @@ func (recv *Dir) Rewind() {
 	}
 
 	return
+}
+
+// DirStruct creates an uninitialised Dir.
+func DirStruct() *Dir {
+	err := dirStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Dir{native: dirStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDir)
+	return structGo
+}
+func finalizeDir(obj *Dir) {
+	dirStruct.Free(obj.native)
 }
 
 var errorStruct *gi.Struct
@@ -5169,7 +5202,11 @@ func HashTableStruct() *HashTable {
 	}
 
 	structGo := &HashTable{native: hashTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHashTable)
 	return structGo
+}
+func finalizeHashTable(obj *HashTable) {
+	hashTableStruct.Free(obj.native)
 }
 
 var hashTableIterStruct *gi.Struct
@@ -5185,17 +5222,6 @@ func hashTableIterStruct_Set() error {
 
 type HashTableIter struct {
 	native uintptr
-}
-
-// HashTableIterStruct creates an uninitialised HashTableIter.
-func HashTableIterStruct() *HashTableIter {
-	err := hashTableIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &HashTableIter{native: hashTableIterStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'g_hash_table_iter_get_hash_table' : return type 'GLib.HashTable' not supported
@@ -5262,6 +5288,21 @@ func (recv *HashTableIter) Steal() {
 	return
 }
 
+// HashTableIterStruct creates an uninitialised HashTableIter.
+func HashTableIterStruct() *HashTableIter {
+	err := hashTableIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &HashTableIter{native: hashTableIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHashTableIter)
+	return structGo
+}
+func finalizeHashTableIter(obj *HashTableIter) {
+	hashTableIterStruct.Free(obj.native)
+}
+
 var hmacStruct *gi.Struct
 var hmacStruct_Once sync.Once
 
@@ -5275,17 +5316,6 @@ func hmacStruct_Set() error {
 
 type Hmac struct {
 	native uintptr
-}
-
-// HmacStruct creates an uninitialised Hmac.
-func HmacStruct() *Hmac {
-	err := hmacStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Hmac{native: hmacStruct.Alloc()}
-	return structGo
 }
 
 var hmacCopyFunction *gi.Function
@@ -5416,6 +5446,21 @@ func (recv *Hmac) Unref() {
 
 // UNSUPPORTED : C value 'g_hmac_update' : parameter 'data' has no type
 
+// HmacStruct creates an uninitialised Hmac.
+func HmacStruct() *Hmac {
+	err := hmacStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Hmac{native: hmacStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHmac)
+	return structGo
+}
+func finalizeHmac(obj *Hmac) {
+	hmacStruct.Free(obj.native)
+}
+
 var hookStruct *gi.Struct
 var hookStruct_Once sync.Once
 
@@ -5472,17 +5517,6 @@ func (recv *Hook) Flags() uint32 {
 
 // UNSUPPORTED : C value 'destroy' : for field getter : no Go type for 'DestroyNotify'
 
-// HookStruct creates an uninitialised Hook.
-func HookStruct() *Hook {
-	err := hookStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Hook{native: hookStruct.Alloc()}
-	return structGo
-}
-
 var hookCompareIdsFunction *gi.Function
 var hookCompareIdsFunction_Once sync.Once
 
@@ -5514,6 +5548,21 @@ func (recv *Hook) CompareIds(sibling *Hook) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+// HookStruct creates an uninitialised Hook.
+func HookStruct() *Hook {
+	err := hookStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Hook{native: hookStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHook)
+	return structGo
+}
+func finalizeHook(obj *Hook) {
+	hookStruct.Free(obj.native)
 }
 
 var hookListStruct *gi.Struct
@@ -5564,17 +5613,6 @@ func (recv *HookList) Hooks() *Hook {
 // UNSUPPORTED : C value 'finalize_hook' : for field getter : no Go type for 'HookFinalizeFunc'
 
 // UNSUPPORTED : C value 'dummy' : for field getter : missing Type
-
-// HookListStruct creates an uninitialised HookList.
-func HookListStruct() *HookList {
-	err := hookListStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &HookList{native: hookListStruct.Alloc()}
-	return structGo
-}
 
 var hookListClearFunction *gi.Function
 var hookListClearFunction_Once sync.Once
@@ -5695,6 +5733,21 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 
 // UNSUPPORTED : C value 'g_hook_list_marshal_check' : parameter 'marshaller' of type 'HookCheckMarshaller' not supported
 
+// HookListStruct creates an uninitialised HookList.
+func HookListStruct() *HookList {
+	err := hookListStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &HookList{native: hookListStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHookList)
+	return structGo
+}
+func finalizeHookList(obj *HookList) {
+	hookListStruct.Free(obj.native)
+}
+
 var iConvStruct *gi.Struct
 var iConvStruct_Once sync.Once
 
@@ -5708,17 +5761,6 @@ func iConvStruct_Set() error {
 
 type IConv struct {
 	native uintptr
-}
-
-// IConvStruct creates an uninitialised IConv.
-func IConvStruct() *IConv {
-	err := iConvStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &IConv{native: iConvStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'g_iconv' : moved to iconv
@@ -5753,6 +5795,21 @@ func (recv *IConv) Close() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+// IConvStruct creates an uninitialised IConv.
+func IConvStruct() *IConv {
+	err := iConvStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IConv{native: iConvStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIConv)
+	return structGo
+}
+func finalizeIConv(obj *IConv) {
+	iConvStruct.Free(obj.native)
 }
 
 var iOChannelStruct *gi.Struct
@@ -6334,7 +6391,11 @@ func IOFuncsStruct() *IOFuncs {
 	}
 
 	structGo := &IOFuncs{native: iOFuncsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOFuncs)
 	return structGo
+}
+func finalizeIOFuncs(obj *IOFuncs) {
+	iOFuncsStruct.Free(obj.native)
 }
 
 var keyFileStruct *gi.Struct
@@ -7677,7 +7738,11 @@ func ListStruct() *List {
 	}
 
 	structGo := &List{native: listStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeList)
 	return structGo
+}
+func finalizeList(obj *List) {
+	listStruct.Free(obj.native)
 }
 
 var logFieldStruct *gi.Struct
@@ -7719,7 +7784,11 @@ func LogFieldStruct() *LogField {
 	}
 
 	structGo := &LogField{native: logFieldStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLogField)
 	return structGo
+}
+func finalizeLogField(obj *LogField) {
+	logFieldStruct.Free(obj.native)
 }
 
 var mainContextStruct *gi.Struct
@@ -9007,7 +9076,11 @@ func MarkupParserStruct() *MarkupParser {
 	}
 
 	structGo := &MarkupParser{native: markupParserStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMarkupParser)
 	return structGo
+}
+func finalizeMarkupParser(obj *MarkupParser) {
+	markupParserStruct.Free(obj.native)
 }
 
 var matchInfoStruct *gi.Struct
@@ -9023,17 +9096,6 @@ func matchInfoStruct_Set() error {
 
 type MatchInfo struct {
 	native uintptr
-}
-
-// MatchInfoStruct creates an uninitialised MatchInfo.
-func MatchInfoStruct() *MatchInfo {
-	err := matchInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &MatchInfo{native: matchInfoStruct.Alloc()}
-	return structGo
 }
 
 var matchInfoExpandReferencesFunction *gi.Function
@@ -9515,6 +9577,21 @@ func (recv *MatchInfo) Unref() {
 	return
 }
 
+// MatchInfoStruct creates an uninitialised MatchInfo.
+func MatchInfoStruct() *MatchInfo {
+	err := matchInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MatchInfo{native: matchInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMatchInfo)
+	return structGo
+}
+func finalizeMatchInfo(obj *MatchInfo) {
+	matchInfoStruct.Free(obj.native)
+}
+
 var memVTableStruct *gi.Struct
 var memVTableStruct_Once sync.Once
 
@@ -9550,7 +9627,11 @@ func MemVTableStruct() *MemVTable {
 	}
 
 	structGo := &MemVTable{native: memVTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMemVTable)
 	return structGo
+}
+func finalizeMemVTable(obj *MemVTable) {
+	memVTableStruct.Free(obj.native)
 }
 
 var nodeStruct *gi.Struct
@@ -9596,17 +9677,6 @@ func (recv *Node) Children() *Node {
 	argValue := gi.FieldGet(nodeStruct, recv.native, "children")
 	value := &Node{native: argValue.Pointer()}
 	return value
-}
-
-// NodeStruct creates an uninitialised Node.
-func NodeStruct() *Node {
-	err := nodeStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Node{native: nodeStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'g_node_child_index' : parameter 'data' of type 'gpointer' not supported
@@ -10197,6 +10267,21 @@ func (recv *Node) Unlink() {
 	return
 }
 
+// NodeStruct creates an uninitialised Node.
+func NodeStruct() *Node {
+	err := nodeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Node{native: nodeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNode)
+	return structGo
+}
+func finalizeNode(obj *Node) {
+	nodeStruct.Free(obj.native)
+}
+
 var onceStruct *gi.Struct
 var onceStruct_Once sync.Once
 
@@ -10216,6 +10301,8 @@ type Once struct {
 
 // UNSUPPORTED : C value 'retval' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
+
 // OnceStruct creates an uninitialised Once.
 func OnceStruct() *Once {
 	err := onceStruct_Set()
@@ -10224,10 +10311,12 @@ func OnceStruct() *Once {
 	}
 
 	structGo := &Once{native: onceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOnce)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
+func finalizeOnce(obj *Once) {
+	onceStruct.Free(obj.native)
+}
 
 var optionContextStruct *gi.Struct
 var optionContextStruct_Once sync.Once
@@ -10242,17 +10331,6 @@ func optionContextStruct_Set() error {
 
 type OptionContext struct {
 	native uintptr
-}
-
-// OptionContextStruct creates an uninitialised OptionContext.
-func OptionContextStruct() *OptionContext {
-	err := optionContextStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &OptionContext{native: optionContextStruct.Alloc()}
-	return structGo
 }
 
 var optionContextAddGroupFunction *gi.Function
@@ -10777,6 +10855,21 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 	return
 }
 
+// OptionContextStruct creates an uninitialised OptionContext.
+func OptionContextStruct() *OptionContext {
+	err := optionContextStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OptionContext{native: optionContextStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOptionContext)
+	return structGo
+}
+func finalizeOptionContext(obj *OptionContext) {
+	optionContextStruct.Free(obj.native)
+}
+
 var optionEntryStruct *gi.Struct
 var optionEntryStruct_Once sync.Once
 
@@ -10839,7 +10932,11 @@ func OptionEntryStruct() *OptionEntry {
 	}
 
 	structGo := &OptionEntry{native: optionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOptionEntry)
 	return structGo
+}
+func finalizeOptionEntry(obj *OptionEntry) {
+	optionEntryStruct.Free(obj.native)
 }
 
 var optionGroupStruct *gi.Struct
@@ -11026,17 +11123,6 @@ type PatternSpec struct {
 	native uintptr
 }
 
-// PatternSpecStruct creates an uninitialised PatternSpec.
-func PatternSpecStruct() *PatternSpec {
-	err := patternSpecStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &PatternSpec{native: patternSpecStruct.Alloc()}
-	return structGo
-}
-
 var patternSpecEqualFunction *gi.Function
 var patternSpecEqualFunction_Once sync.Once
 
@@ -11098,6 +11184,21 @@ func (recv *PatternSpec) Free() {
 	return
 }
 
+// PatternSpecStruct creates an uninitialised PatternSpec.
+func PatternSpecStruct() *PatternSpec {
+	err := patternSpecStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PatternSpec{native: patternSpecStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePatternSpec)
+	return structGo
+}
+func finalizePatternSpec(obj *PatternSpec) {
+	patternSpecStruct.Free(obj.native)
+}
+
 var pollFDStruct *gi.Struct
 var pollFDStruct_Once sync.Once
 
@@ -11142,7 +11243,11 @@ func PollFDStruct() *PollFD {
 	}
 
 	structGo := &PollFD{native: pollFDStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePollFD)
 	return structGo
+}
+func finalizePollFD(obj *PollFD) {
+	pollFDStruct.Free(obj.native)
 }
 
 var privateStruct *gi.Struct
@@ -11160,6 +11265,12 @@ type Private struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_private_get' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_private_replace' : parameter 'value' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_private_set' : parameter 'value' of type 'gpointer' not supported
+
 // PrivateStruct creates an uninitialised Private.
 func PrivateStruct() *Private {
 	err := privateStruct_Set()
@@ -11168,14 +11279,12 @@ func PrivateStruct() *Private {
 	}
 
 	structGo := &Private{native: privateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrivate)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'g_private_get' : return type 'gpointer' not supported
-
-// UNSUPPORTED : C value 'g_private_replace' : parameter 'value' of type 'gpointer' not supported
-
-// UNSUPPORTED : C value 'g_private_set' : parameter 'value' of type 'gpointer' not supported
+func finalizePrivate(obj *Private) {
+	privateStruct.Free(obj.native)
+}
 
 var ptrArrayStruct *gi.Struct
 var ptrArrayStruct_Once sync.Once
@@ -11209,7 +11318,11 @@ func PtrArrayStruct() *PtrArray {
 	}
 
 	structGo := &PtrArray{native: ptrArrayStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePtrArray)
 	return structGo
+}
+func finalizePtrArray(obj *PtrArray) {
+	ptrArrayStruct.Free(obj.native)
 }
 
 var queueStruct *gi.Struct
@@ -11236,17 +11349,6 @@ func (recv *Queue) Length() uint32 {
 	argValue := gi.FieldGet(queueStruct, recv.native, "length")
 	value := argValue.Uint32()
 	return value
-}
-
-// QueueStruct creates an uninitialised Queue.
-func QueueStruct() *Queue {
-	err := queueStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Queue{native: queueStruct.Alloc()}
-	return structGo
 }
 
 var queueClearFunction *gi.Function
@@ -11527,6 +11629,21 @@ func (recv *Queue) Reverse() {
 
 // UNSUPPORTED : C value 'g_queue_unlink' : parameter 'link_' of type 'GLib.List' not supported
 
+// QueueStruct creates an uninitialised Queue.
+func QueueStruct() *Queue {
+	err := queueStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Queue{native: queueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeQueue)
+	return structGo
+}
+func finalizeQueue(obj *Queue) {
+	queueStruct.Free(obj.native)
+}
+
 var rWLockStruct *gi.Struct
 var rWLockStruct_Once sync.Once
 
@@ -11540,17 +11657,6 @@ func rWLockStruct_Set() error {
 
 type RWLock struct {
 	native uintptr
-}
-
-// RWLockStruct creates an uninitialised RWLock.
-func RWLockStruct() *RWLock {
-	err := rWLockStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &RWLock{native: rWLockStruct.Alloc()}
-	return structGo
 }
 
 var rWLockClearFunction *gi.Function
@@ -11785,6 +11891,21 @@ func (recv *RWLock) WriterUnlock() {
 	return
 }
 
+// RWLockStruct creates an uninitialised RWLock.
+func RWLockStruct() *RWLock {
+	err := rWLockStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RWLock{native: rWLockStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRWLock)
+	return structGo
+}
+func finalizeRWLock(obj *RWLock) {
+	rWLockStruct.Free(obj.native)
+}
+
 var randStruct *gi.Struct
 var randStruct_Once sync.Once
 
@@ -11798,17 +11919,6 @@ func randStruct_Set() error {
 
 type Rand struct {
 	native uintptr
-}
-
-// RandStruct creates an uninitialised Rand.
-func RandStruct() *Rand {
-	err := randStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Rand{native: randStruct.Alloc()}
-	return structGo
 }
 
 var randCopyFunction *gi.Function
@@ -12062,6 +12172,21 @@ func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 	return
 }
 
+// RandStruct creates an uninitialised Rand.
+func RandStruct() *Rand {
+	err := randStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Rand{native: randStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRand)
+	return structGo
+}
+func finalizeRand(obj *Rand) {
+	randStruct.Free(obj.native)
+}
+
 var recMutexStruct *gi.Struct
 var recMutexStruct_Once sync.Once
 
@@ -12075,17 +12200,6 @@ func recMutexStruct_Set() error {
 
 type RecMutex struct {
 	native uintptr
-}
-
-// RecMutexStruct creates an uninitialised RecMutex.
-func RecMutexStruct() *RecMutex {
-	err := recMutexStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &RecMutex{native: recMutexStruct.Alloc()}
-	return structGo
 }
 
 var recMutexClearFunction *gi.Function
@@ -12230,6 +12344,21 @@ func (recv *RecMutex) Unlock() {
 	}
 
 	return
+}
+
+// RecMutexStruct creates an uninitialised RecMutex.
+func RecMutexStruct() *RecMutex {
+	err := recMutexStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RecMutex{native: recMutexStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecMutex)
+	return structGo
+}
+func finalizeRecMutex(obj *RecMutex) {
+	recMutexStruct.Free(obj.native)
 }
 
 var regexStruct *gi.Struct
@@ -12551,7 +12680,11 @@ func SListStruct() *SList {
 	}
 
 	structGo := &SList{native: sListStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSList)
 	return structGo
+}
+func finalizeSList(obj *SList) {
+	sListStruct.Free(obj.native)
 }
 
 var scannerStruct *gi.Struct
@@ -12643,17 +12776,6 @@ func (recv *Scanner) NextPosition() uint32 {
 }
 
 // UNSUPPORTED : C value 'msg_handler' : for field getter : no Go type for 'ScannerMsgFunc'
-
-// ScannerStruct creates an uninitialised Scanner.
-func ScannerStruct() *Scanner {
-	err := scannerStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Scanner{native: scannerStruct.Alloc()}
-	return structGo
-}
 
 var scannerCurLineFunction *gi.Function
 var scannerCurLineFunction_Once sync.Once
@@ -12951,6 +13073,21 @@ func (recv *Scanner) SyncFileOffset() {
 
 // UNSUPPORTED : C value 'g_scanner_warn' : parameter '...' has no type
 
+// ScannerStruct creates an uninitialised Scanner.
+func ScannerStruct() *Scanner {
+	err := scannerStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Scanner{native: scannerStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScanner)
+	return structGo
+}
+func finalizeScanner(obj *Scanner) {
+	scannerStruct.Free(obj.native)
+}
+
 var scannerConfigStruct *gi.Struct
 var scannerConfigStruct_Once sync.Once
 
@@ -13156,7 +13293,11 @@ func ScannerConfigStruct() *ScannerConfig {
 	}
 
 	structGo := &ScannerConfig{native: scannerConfigStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScannerConfig)
 	return structGo
+}
+func finalizeScannerConfig(obj *ScannerConfig) {
+	scannerConfigStruct.Free(obj.native)
 }
 
 var sequenceStruct *gi.Struct
@@ -13172,17 +13313,6 @@ func sequenceStruct_Set() error {
 
 type Sequence struct {
 	native uintptr
-}
-
-// SequenceStruct creates an uninitialised Sequence.
-func SequenceStruct() *Sequence {
-	err := sequenceStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Sequence{native: sequenceStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'g_sequence_append' : parameter 'data' of type 'gpointer' not supported
@@ -13396,6 +13526,21 @@ func (recv *Sequence) IsEmpty() bool {
 
 // UNSUPPORTED : C value 'g_sequence_sort_iter' : parameter 'cmp_func' of type 'SequenceIterCompareFunc' not supported
 
+// SequenceStruct creates an uninitialised Sequence.
+func SequenceStruct() *Sequence {
+	err := sequenceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Sequence{native: sequenceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSequence)
+	return structGo
+}
+func finalizeSequence(obj *Sequence) {
+	sequenceStruct.Free(obj.native)
+}
+
 var sequenceIterStruct *gi.Struct
 var sequenceIterStruct_Once sync.Once
 
@@ -13409,17 +13554,6 @@ func sequenceIterStruct_Set() error {
 
 type SequenceIter struct {
 	native uintptr
-}
-
-// SequenceIterStruct creates an uninitialised SequenceIter.
-func SequenceIterStruct() *SequenceIter {
-	err := sequenceIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &SequenceIter{native: sequenceIterStruct.Alloc()}
-	return structGo
 }
 
 var sequenceIterCompareFunction *gi.Function
@@ -13678,6 +13812,21 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 	retGo := &SequenceIter{native: ret.Pointer()}
 
 	return retGo
+}
+
+// SequenceIterStruct creates an uninitialised SequenceIter.
+func SequenceIterStruct() *SequenceIter {
+	err := sequenceIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SequenceIter{native: sequenceIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSequenceIter)
+	return structGo
+}
+func finalizeSequenceIter(obj *SequenceIter) {
+	sequenceIterStruct.Free(obj.native)
 }
 
 var sourceStruct *gi.Struct
@@ -14436,7 +14585,11 @@ func SourceCallbackFuncsStruct() *SourceCallbackFuncs {
 	}
 
 	structGo := &SourceCallbackFuncs{native: sourceCallbackFuncsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSourceCallbackFuncs)
 	return structGo
+}
+func finalizeSourceCallbackFuncs(obj *SourceCallbackFuncs) {
+	sourceCallbackFuncsStruct.Free(obj.native)
 }
 
 var sourceFuncsStruct *gi.Struct
@@ -14470,7 +14623,11 @@ func SourceFuncsStruct() *SourceFuncs {
 	}
 
 	structGo := &SourceFuncs{native: sourceFuncsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSourceFuncs)
 	return structGo
+}
+func finalizeSourceFuncs(obj *SourceFuncs) {
+	sourceFuncsStruct.Free(obj.native)
 }
 
 var sourcePrivateStruct *gi.Struct
@@ -14496,7 +14653,11 @@ func SourcePrivateStruct() *SourcePrivate {
 	}
 
 	structGo := &SourcePrivate{native: sourcePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSourcePrivate)
 	return structGo
+}
+func finalizeSourcePrivate(obj *SourcePrivate) {
+	sourcePrivateStruct.Free(obj.native)
 }
 
 var statBufStruct *gi.Struct
@@ -14522,7 +14683,11 @@ func StatBufStruct() *StatBuf {
 	}
 
 	structGo := &StatBuf{native: statBufStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatBuf)
 	return structGo
+}
+func finalizeStatBuf(obj *StatBuf) {
+	statBufStruct.Free(obj.native)
 }
 
 var string_Struct *gi.Struct
@@ -14559,17 +14724,6 @@ func (recv *String) AllocatedLen() uint64 {
 	argValue := gi.FieldGet(string_Struct, recv.native, "allocated_len")
 	value := argValue.Uint64()
 	return value
-}
-
-// StringStruct creates an uninitialised String.
-func StringStruct() *String {
-	err := string_Struct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &String{native: string_Struct.Alloc()}
-	return structGo
 }
 
 var stringAppendFunction *gi.Function
@@ -15384,6 +15538,21 @@ func (recv *String) Up() *String {
 
 // UNSUPPORTED : C value 'g_string_vprintf' : parameter 'args' of type 'va_list' not supported
 
+// StringStruct creates an uninitialised String.
+func StringStruct() *String {
+	err := string_Struct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &String{native: string_Struct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeString)
+	return structGo
+}
+func finalizeString(obj *String) {
+	string_Struct.Free(obj.native)
+}
+
 var stringChunkStruct *gi.Struct
 var stringChunkStruct_Once sync.Once
 
@@ -15397,17 +15566,6 @@ func stringChunkStruct_Set() error {
 
 type StringChunk struct {
 	native uintptr
-}
-
-// StringChunkStruct creates an uninitialised StringChunk.
-func StringChunkStruct() *StringChunk {
-	err := stringChunkStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &StringChunk{native: stringChunkStruct.Alloc()}
-	return structGo
 }
 
 var stringChunkClearFunction *gi.Function
@@ -15566,6 +15724,21 @@ func (recv *StringChunk) InsertLen(string_ string, len int32) string {
 	return retGo
 }
 
+// StringChunkStruct creates an uninitialised StringChunk.
+func StringChunkStruct() *StringChunk {
+	err := stringChunkStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StringChunk{native: stringChunkStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStringChunk)
+	return structGo
+}
+func finalizeStringChunk(obj *StringChunk) {
+	stringChunkStruct.Free(obj.native)
+}
+
 var testCaseStruct *gi.Struct
 var testCaseStruct_Once sync.Once
 
@@ -15589,7 +15762,11 @@ func TestCaseStruct() *TestCase {
 	}
 
 	structGo := &TestCase{native: testCaseStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTestCase)
 	return structGo
+}
+func finalizeTestCase(obj *TestCase) {
+	testCaseStruct.Free(obj.native)
 }
 
 var testConfigStruct *gi.Struct
@@ -15657,7 +15834,11 @@ func TestConfigStruct() *TestConfig {
 	}
 
 	structGo := &TestConfig{native: testConfigStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTestConfig)
 	return structGo
+}
+func finalizeTestConfig(obj *TestConfig) {
+	testConfigStruct.Free(obj.native)
 }
 
 var testLogBufferStruct *gi.Struct
@@ -15673,17 +15854,6 @@ func testLogBufferStruct_Set() error {
 
 type TestLogBuffer struct {
 	native uintptr
-}
-
-// TestLogBufferStruct creates an uninitialised TestLogBuffer.
-func TestLogBufferStruct() *TestLogBuffer {
-	err := testLogBufferStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TestLogBuffer{native: testLogBufferStruct.Alloc()}
-	return structGo
 }
 
 var testLogBufferFreeFunction *gi.Function
@@ -15776,6 +15946,21 @@ func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
 	return
 }
 
+// TestLogBufferStruct creates an uninitialised TestLogBuffer.
+func TestLogBufferStruct() *TestLogBuffer {
+	err := testLogBufferStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TestLogBuffer{native: testLogBufferStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTestLogBuffer)
+	return structGo
+}
+func finalizeTestLogBuffer(obj *TestLogBuffer) {
+	testLogBufferStruct.Free(obj.native)
+}
+
 var testLogMsgStruct *gi.Struct
 var testLogMsgStruct_Once sync.Once
 
@@ -15816,17 +16001,6 @@ func (recv *TestLogMsg) NNums() uint32 {
 
 // UNSUPPORTED : C value 'nums' : for field getter : no Go type for 'long double'
 
-// TestLogMsgStruct creates an uninitialised TestLogMsg.
-func TestLogMsgStruct() *TestLogMsg {
-	err := testLogMsgStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TestLogMsg{native: testLogMsgStruct.Alloc()}
-	return structGo
-}
-
 var testLogMsgFreeFunction *gi.Function
 var testLogMsgFreeFunction_Once sync.Once
 
@@ -15855,6 +16029,21 @@ func (recv *TestLogMsg) Free() {
 	return
 }
 
+// TestLogMsgStruct creates an uninitialised TestLogMsg.
+func TestLogMsgStruct() *TestLogMsg {
+	err := testLogMsgStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TestLogMsg{native: testLogMsgStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTestLogMsg)
+	return structGo
+}
+func finalizeTestLogMsg(obj *TestLogMsg) {
+	testLogMsgStruct.Free(obj.native)
+}
+
 var testSuiteStruct *gi.Struct
 var testSuiteStruct_Once sync.Once
 
@@ -15868,17 +16057,6 @@ func testSuiteStruct_Set() error {
 
 type TestSuite struct {
 	native uintptr
-}
-
-// TestSuiteStruct creates an uninitialised TestSuite.
-func TestSuiteStruct() *TestSuite {
-	err := testSuiteStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TestSuite{native: testSuiteStruct.Alloc()}
-	return structGo
 }
 
 var testSuiteAddFunction *gi.Function
@@ -15937,6 +16115,21 @@ func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 	}
 
 	return
+}
+
+// TestSuiteStruct creates an uninitialised TestSuite.
+func TestSuiteStruct() *TestSuite {
+	err := testSuiteStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TestSuite{native: testSuiteStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTestSuite)
+	return structGo
+}
+func finalizeTestSuite(obj *TestSuite) {
+	testSuiteStruct.Free(obj.native)
 }
 
 var threadStruct *gi.Struct
@@ -16044,17 +16237,6 @@ func (recv *ThreadPool) Exclusive() bool {
 	argValue := gi.FieldGet(threadPoolStruct, recv.native, "exclusive")
 	value := argValue.Boolean()
 	return value
-}
-
-// ThreadPoolStruct creates an uninitialised ThreadPool.
-func ThreadPoolStruct() *ThreadPool {
-	err := threadPoolStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ThreadPool{native: threadPoolStruct.Alloc()}
-	return structGo
 }
 
 var threadPoolFreeFunction *gi.Function
@@ -16222,6 +16404,21 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 	return retGo
 }
 
+// ThreadPoolStruct creates an uninitialised ThreadPool.
+func ThreadPoolStruct() *ThreadPool {
+	err := threadPoolStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ThreadPool{native: threadPoolStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThreadPool)
+	return structGo
+}
+func finalizeThreadPool(obj *ThreadPool) {
+	threadPoolStruct.Free(obj.native)
+}
+
 var timeValStruct *gi.Struct
 var timeValStruct_Once sync.Once
 
@@ -16249,17 +16446,6 @@ func (recv *TimeVal) TvUsec() int64 {
 	argValue := gi.FieldGet(timeValStruct, recv.native, "tv_usec")
 	value := argValue.Int64()
 	return value
-}
-
-// TimeValStruct creates an uninitialised TimeVal.
-func TimeValStruct() *TimeVal {
-	err := timeValStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TimeVal{native: timeValStruct.Alloc()}
-	return structGo
 }
 
 var timeValAddFunction *gi.Function
@@ -16321,6 +16507,21 @@ func (recv *TimeVal) ToIso8601() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+// TimeValStruct creates an uninitialised TimeVal.
+func TimeValStruct() *TimeVal {
+	err := timeValStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TimeVal{native: timeValStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTimeVal)
+	return structGo
+}
+func finalizeTimeVal(obj *TimeVal) {
+	timeValStruct.Free(obj.native)
 }
 
 var timeZoneStruct *gi.Struct
@@ -16672,17 +16873,6 @@ type Timer struct {
 	native uintptr
 }
 
-// TimerStruct creates an uninitialised Timer.
-func TimerStruct() *Timer {
-	err := timerStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Timer{native: timerStruct.Alloc()}
-	return structGo
-}
-
 var timerContinueFunction *gi.Function
 var timerContinueFunction_Once sync.Once
 
@@ -16888,6 +17078,21 @@ func (recv *Timer) Stop() {
 	return
 }
 
+// TimerStruct creates an uninitialised Timer.
+func TimerStruct() *Timer {
+	err := timerStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Timer{native: timerStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTimer)
+	return structGo
+}
+func finalizeTimer(obj *Timer) {
+	timerStruct.Free(obj.native)
+}
+
 var trashStackStruct *gi.Struct
 var trashStackStruct_Once sync.Once
 
@@ -16918,7 +17123,11 @@ func TrashStackStruct() *TrashStack {
 	}
 
 	structGo := &TrashStack{native: trashStackStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTrashStack)
 	return structGo
+}
+func finalizeTrashStack(obj *TrashStack) {
+	trashStackStruct.Free(obj.native)
 }
 
 var treeStruct *gi.Struct
@@ -16934,17 +17143,6 @@ func treeStruct_Set() error {
 
 type Tree struct {
 	native uintptr
-}
-
-// TreeStruct creates an uninitialised Tree.
-func TreeStruct() *Tree {
-	err := treeStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Tree{native: treeStruct.Alloc()}
-	return structGo
 }
 
 var treeDestroyFunction *gi.Function
@@ -17115,6 +17313,21 @@ func (recv *Tree) Unref() {
 	}
 
 	return
+}
+
+// TreeStruct creates an uninitialised Tree.
+func TreeStruct() *Tree {
+	err := treeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Tree{native: treeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTree)
+	return structGo
+}
+func finalizeTree(obj *Tree) {
+	treeStruct.Free(obj.native)
 }
 
 var variantStruct *gi.Struct
@@ -19895,17 +20108,6 @@ type VariantIter struct {
 	native uintptr
 }
 
-// VariantIterStruct creates an uninitialised VariantIter.
-func VariantIterStruct() *VariantIter {
-	err := variantIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &VariantIter{native: variantIterStruct.Alloc()}
-	return structGo
-}
-
 var variantIterCopyFunction *gi.Function
 var variantIterCopyFunction_Once sync.Once
 
@@ -20065,6 +20267,21 @@ func (recv *VariantIter) NextValue() *Variant {
 	retGo := &Variant{native: ret.Pointer()}
 
 	return retGo
+}
+
+// VariantIterStruct creates an uninitialised VariantIter.
+func VariantIterStruct() *VariantIter {
+	err := variantIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VariantIter{native: variantIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVariantIter)
+	return structGo
+}
+func finalizeVariantIter(obj *VariantIter) {
+	variantIterStruct.Free(obj.native)
 }
 
 var variantTypeStruct *gi.Struct

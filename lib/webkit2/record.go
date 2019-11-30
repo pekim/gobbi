@@ -4,6 +4,7 @@ package webkit2
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -271,7 +272,11 @@ func AuthenticationRequestClassStruct() *AuthenticationRequestClass {
 	}
 
 	structGo := &AuthenticationRequestClass{native: authenticationRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthenticationRequestClass)
 	return structGo
+}
+func finalizeAuthenticationRequestClass(obj *AuthenticationRequestClass) {
+	authenticationRequestClassStruct.Free(obj.native)
 }
 
 var authenticationRequestPrivateStruct *gi.Struct
@@ -297,7 +302,11 @@ func AuthenticationRequestPrivateStruct() *AuthenticationRequestPrivate {
 	}
 
 	structGo := &AuthenticationRequestPrivate{native: authenticationRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthenticationRequestPrivate)
 	return structGo
+}
+func finalizeAuthenticationRequestPrivate(obj *AuthenticationRequestPrivate) {
+	authenticationRequestPrivateStruct.Free(obj.native)
 }
 
 var automationSessionClassStruct *gi.Struct
@@ -333,7 +342,11 @@ func AutomationSessionClassStruct() *AutomationSessionClass {
 	}
 
 	structGo := &AutomationSessionClass{native: automationSessionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAutomationSessionClass)
 	return structGo
+}
+func finalizeAutomationSessionClass(obj *AutomationSessionClass) {
+	automationSessionClassStruct.Free(obj.native)
 }
 
 var automationSessionPrivateStruct *gi.Struct
@@ -359,7 +372,11 @@ func AutomationSessionPrivateStruct() *AutomationSessionPrivate {
 	}
 
 	structGo := &AutomationSessionPrivate{native: automationSessionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAutomationSessionPrivate)
 	return structGo
+}
+func finalizeAutomationSessionPrivate(obj *AutomationSessionPrivate) {
+	automationSessionPrivateStruct.Free(obj.native)
 }
 
 var backForwardListClassStruct *gi.Struct
@@ -395,7 +412,11 @@ func BackForwardListClassStruct() *BackForwardListClass {
 	}
 
 	structGo := &BackForwardListClass{native: backForwardListClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBackForwardListClass)
 	return structGo
+}
+func finalizeBackForwardListClass(obj *BackForwardListClass) {
+	backForwardListClassStruct.Free(obj.native)
 }
 
 var backForwardListItemClassStruct *gi.Struct
@@ -431,7 +452,11 @@ func BackForwardListItemClassStruct() *BackForwardListItemClass {
 	}
 
 	structGo := &BackForwardListItemClass{native: backForwardListItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBackForwardListItemClass)
 	return structGo
+}
+func finalizeBackForwardListItemClass(obj *BackForwardListItemClass) {
+	backForwardListItemClassStruct.Free(obj.native)
 }
 
 var backForwardListItemPrivateStruct *gi.Struct
@@ -457,7 +482,11 @@ func BackForwardListItemPrivateStruct() *BackForwardListItemPrivate {
 	}
 
 	structGo := &BackForwardListItemPrivate{native: backForwardListItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBackForwardListItemPrivate)
 	return structGo
+}
+func finalizeBackForwardListItemPrivate(obj *BackForwardListItemPrivate) {
+	backForwardListItemPrivateStruct.Free(obj.native)
 }
 
 var backForwardListPrivateStruct *gi.Struct
@@ -483,7 +512,11 @@ func BackForwardListPrivateStruct() *BackForwardListPrivate {
 	}
 
 	structGo := &BackForwardListPrivate{native: backForwardListPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBackForwardListPrivate)
 	return structGo
+}
+func finalizeBackForwardListPrivate(obj *BackForwardListPrivate) {
+	backForwardListPrivateStruct.Free(obj.native)
 }
 
 var colorChooserRequestClassStruct *gi.Struct
@@ -511,7 +544,11 @@ func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
 	}
 
 	structGo := &ColorChooserRequestClass{native: colorChooserRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserRequestClass)
 	return structGo
+}
+func finalizeColorChooserRequestClass(obj *ColorChooserRequestClass) {
+	colorChooserRequestClassStruct.Free(obj.native)
 }
 
 var colorChooserRequestPrivateStruct *gi.Struct
@@ -537,7 +574,11 @@ func ColorChooserRequestPrivateStruct() *ColorChooserRequestPrivate {
 	}
 
 	structGo := &ColorChooserRequestPrivate{native: colorChooserRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserRequestPrivate)
 	return structGo
+}
+func finalizeColorChooserRequestPrivate(obj *ColorChooserRequestPrivate) {
+	colorChooserRequestPrivateStruct.Free(obj.native)
 }
 
 var contextMenuClassStruct *gi.Struct
@@ -573,7 +614,11 @@ func ContextMenuClassStruct() *ContextMenuClass {
 	}
 
 	structGo := &ContextMenuClass{native: contextMenuClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextMenuClass)
 	return structGo
+}
+func finalizeContextMenuClass(obj *ContextMenuClass) {
+	contextMenuClassStruct.Free(obj.native)
 }
 
 var contextMenuItemClassStruct *gi.Struct
@@ -609,7 +654,11 @@ func ContextMenuItemClassStruct() *ContextMenuItemClass {
 	}
 
 	structGo := &ContextMenuItemClass{native: contextMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextMenuItemClass)
 	return structGo
+}
+func finalizeContextMenuItemClass(obj *ContextMenuItemClass) {
+	contextMenuItemClassStruct.Free(obj.native)
 }
 
 var contextMenuItemPrivateStruct *gi.Struct
@@ -635,7 +684,11 @@ func ContextMenuItemPrivateStruct() *ContextMenuItemPrivate {
 	}
 
 	structGo := &ContextMenuItemPrivate{native: contextMenuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextMenuItemPrivate)
 	return structGo
+}
+func finalizeContextMenuItemPrivate(obj *ContextMenuItemPrivate) {
+	contextMenuItemPrivateStruct.Free(obj.native)
 }
 
 var contextMenuPrivateStruct *gi.Struct
@@ -661,7 +714,11 @@ func ContextMenuPrivateStruct() *ContextMenuPrivate {
 	}
 
 	structGo := &ContextMenuPrivate{native: contextMenuPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContextMenuPrivate)
 	return structGo
+}
+func finalizeContextMenuPrivate(obj *ContextMenuPrivate) {
+	contextMenuPrivateStruct.Free(obj.native)
 }
 
 var cookieManagerClassStruct *gi.Struct
@@ -697,7 +754,11 @@ func CookieManagerClassStruct() *CookieManagerClass {
 	}
 
 	structGo := &CookieManagerClass{native: cookieManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCookieManagerClass)
 	return structGo
+}
+func finalizeCookieManagerClass(obj *CookieManagerClass) {
+	cookieManagerClassStruct.Free(obj.native)
 }
 
 var cookieManagerPrivateStruct *gi.Struct
@@ -723,7 +784,11 @@ func CookieManagerPrivateStruct() *CookieManagerPrivate {
 	}
 
 	structGo := &CookieManagerPrivate{native: cookieManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCookieManagerPrivate)
 	return structGo
+}
+func finalizeCookieManagerPrivate(obj *CookieManagerPrivate) {
+	cookieManagerPrivateStruct.Free(obj.native)
 }
 
 var credentialStruct *gi.Struct
@@ -934,7 +999,11 @@ func DeviceInfoPermissionRequestClassStruct() *DeviceInfoPermissionRequestClass 
 	}
 
 	structGo := &DeviceInfoPermissionRequestClass{native: deviceInfoPermissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDeviceInfoPermissionRequestClass)
 	return structGo
+}
+func finalizeDeviceInfoPermissionRequestClass(obj *DeviceInfoPermissionRequestClass) {
+	deviceInfoPermissionRequestClassStruct.Free(obj.native)
 }
 
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
@@ -960,7 +1029,11 @@ func DeviceInfoPermissionRequestPrivateStruct() *DeviceInfoPermissionRequestPriv
 	}
 
 	structGo := &DeviceInfoPermissionRequestPrivate{native: deviceInfoPermissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDeviceInfoPermissionRequestPrivate)
 	return structGo
+}
+func finalizeDeviceInfoPermissionRequestPrivate(obj *DeviceInfoPermissionRequestPrivate) {
+	deviceInfoPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var downloadClassStruct *gi.Struct
@@ -998,7 +1071,11 @@ func DownloadClassStruct() *DownloadClass {
 	}
 
 	structGo := &DownloadClass{native: downloadClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDownloadClass)
 	return structGo
+}
+func finalizeDownloadClass(obj *DownloadClass) {
+	downloadClassStruct.Free(obj.native)
 }
 
 var downloadPrivateStruct *gi.Struct
@@ -1024,7 +1101,11 @@ func DownloadPrivateStruct() *DownloadPrivate {
 	}
 
 	structGo := &DownloadPrivate{native: downloadPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDownloadPrivate)
 	return structGo
+}
+func finalizeDownloadPrivate(obj *DownloadPrivate) {
+	downloadPrivateStruct.Free(obj.native)
 }
 
 var editorStateClassStruct *gi.Struct
@@ -1060,7 +1141,11 @@ func EditorStateClassStruct() *EditorStateClass {
 	}
 
 	structGo := &EditorStateClass{native: editorStateClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEditorStateClass)
 	return structGo
+}
+func finalizeEditorStateClass(obj *EditorStateClass) {
+	editorStateClassStruct.Free(obj.native)
 }
 
 var editorStatePrivateStruct *gi.Struct
@@ -1086,7 +1171,11 @@ func EditorStatePrivateStruct() *EditorStatePrivate {
 	}
 
 	structGo := &EditorStatePrivate{native: editorStatePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEditorStatePrivate)
 	return structGo
+}
+func finalizeEditorStatePrivate(obj *EditorStatePrivate) {
+	editorStatePrivateStruct.Free(obj.native)
 }
 
 var faviconDatabaseClassStruct *gi.Struct
@@ -1122,7 +1211,11 @@ func FaviconDatabaseClassStruct() *FaviconDatabaseClass {
 	}
 
 	structGo := &FaviconDatabaseClass{native: faviconDatabaseClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFaviconDatabaseClass)
 	return structGo
+}
+func finalizeFaviconDatabaseClass(obj *FaviconDatabaseClass) {
+	faviconDatabaseClassStruct.Free(obj.native)
 }
 
 var faviconDatabasePrivateStruct *gi.Struct
@@ -1148,7 +1241,11 @@ func FaviconDatabasePrivateStruct() *FaviconDatabasePrivate {
 	}
 
 	structGo := &FaviconDatabasePrivate{native: faviconDatabasePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFaviconDatabasePrivate)
 	return structGo
+}
+func finalizeFaviconDatabasePrivate(obj *FaviconDatabasePrivate) {
+	faviconDatabasePrivateStruct.Free(obj.native)
 }
 
 var fileChooserRequestClassStruct *gi.Struct
@@ -1184,7 +1281,11 @@ func FileChooserRequestClassStruct() *FileChooserRequestClass {
 	}
 
 	structGo := &FileChooserRequestClass{native: fileChooserRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserRequestClass)
 	return structGo
+}
+func finalizeFileChooserRequestClass(obj *FileChooserRequestClass) {
+	fileChooserRequestClassStruct.Free(obj.native)
 }
 
 var fileChooserRequestPrivateStruct *gi.Struct
@@ -1210,7 +1311,11 @@ func FileChooserRequestPrivateStruct() *FileChooserRequestPrivate {
 	}
 
 	structGo := &FileChooserRequestPrivate{native: fileChooserRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserRequestPrivate)
 	return structGo
+}
+func finalizeFileChooserRequestPrivate(obj *FileChooserRequestPrivate) {
+	fileChooserRequestPrivateStruct.Free(obj.native)
 }
 
 var findControllerClassStruct *gi.Struct
@@ -1246,7 +1351,11 @@ func FindControllerClassStruct() *FindControllerClass {
 	}
 
 	structGo := &FindControllerClass{native: findControllerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFindControllerClass)
 	return structGo
+}
+func finalizeFindControllerClass(obj *FindControllerClass) {
+	findControllerClassStruct.Free(obj.native)
 }
 
 var findControllerPrivateStruct *gi.Struct
@@ -1272,7 +1381,11 @@ func FindControllerPrivateStruct() *FindControllerPrivate {
 	}
 
 	structGo := &FindControllerPrivate{native: findControllerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFindControllerPrivate)
 	return structGo
+}
+func finalizeFindControllerPrivate(obj *FindControllerPrivate) {
+	findControllerPrivateStruct.Free(obj.native)
 }
 
 var formSubmissionRequestClassStruct *gi.Struct
@@ -1308,7 +1421,11 @@ func FormSubmissionRequestClassStruct() *FormSubmissionRequestClass {
 	}
 
 	structGo := &FormSubmissionRequestClass{native: formSubmissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFormSubmissionRequestClass)
 	return structGo
+}
+func finalizeFormSubmissionRequestClass(obj *FormSubmissionRequestClass) {
+	formSubmissionRequestClassStruct.Free(obj.native)
 }
 
 var formSubmissionRequestPrivateStruct *gi.Struct
@@ -1334,7 +1451,11 @@ func FormSubmissionRequestPrivateStruct() *FormSubmissionRequestPrivate {
 	}
 
 	structGo := &FormSubmissionRequestPrivate{native: formSubmissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFormSubmissionRequestPrivate)
 	return structGo
+}
+func finalizeFormSubmissionRequestPrivate(obj *FormSubmissionRequestPrivate) {
+	formSubmissionRequestPrivateStruct.Free(obj.native)
 }
 
 var geolocationManagerClassStruct *gi.Struct
@@ -1370,7 +1491,11 @@ func GeolocationManagerClassStruct() *GeolocationManagerClass {
 	}
 
 	structGo := &GeolocationManagerClass{native: geolocationManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGeolocationManagerClass)
 	return structGo
+}
+func finalizeGeolocationManagerClass(obj *GeolocationManagerClass) {
+	geolocationManagerClassStruct.Free(obj.native)
 }
 
 var geolocationManagerPrivateStruct *gi.Struct
@@ -1396,7 +1521,11 @@ func GeolocationManagerPrivateStruct() *GeolocationManagerPrivate {
 	}
 
 	structGo := &GeolocationManagerPrivate{native: geolocationManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGeolocationManagerPrivate)
 	return structGo
+}
+func finalizeGeolocationManagerPrivate(obj *GeolocationManagerPrivate) {
+	geolocationManagerPrivateStruct.Free(obj.native)
 }
 
 var geolocationPermissionRequestClassStruct *gi.Struct
@@ -1432,7 +1561,11 @@ func GeolocationPermissionRequestClassStruct() *GeolocationPermissionRequestClas
 	}
 
 	structGo := &GeolocationPermissionRequestClass{native: geolocationPermissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGeolocationPermissionRequestClass)
 	return structGo
+}
+func finalizeGeolocationPermissionRequestClass(obj *GeolocationPermissionRequestClass) {
+	geolocationPermissionRequestClassStruct.Free(obj.native)
 }
 
 var geolocationPermissionRequestPrivateStruct *gi.Struct
@@ -1458,7 +1591,11 @@ func GeolocationPermissionRequestPrivateStruct() *GeolocationPermissionRequestPr
 	}
 
 	structGo := &GeolocationPermissionRequestPrivate{native: geolocationPermissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGeolocationPermissionRequestPrivate)
 	return structGo
+}
+func finalizeGeolocationPermissionRequestPrivate(obj *GeolocationPermissionRequestPrivate) {
+	geolocationPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var geolocationPositionStruct *gi.Struct
@@ -1748,7 +1885,11 @@ func HitTestResultClassStruct() *HitTestResultClass {
 	}
 
 	structGo := &HitTestResultClass{native: hitTestResultClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHitTestResultClass)
 	return structGo
+}
+func finalizeHitTestResultClass(obj *HitTestResultClass) {
+	hitTestResultClassStruct.Free(obj.native)
 }
 
 var hitTestResultPrivateStruct *gi.Struct
@@ -1774,7 +1915,11 @@ func HitTestResultPrivateStruct() *HitTestResultPrivate {
 	}
 
 	structGo := &HitTestResultPrivate{native: hitTestResultPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHitTestResultPrivate)
 	return structGo
+}
+func finalizeHitTestResultPrivate(obj *HitTestResultPrivate) {
+	hitTestResultPrivateStruct.Free(obj.native)
 }
 
 var installMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
@@ -1810,7 +1955,11 @@ func InstallMissingMediaPluginsPermissionRequestClassStruct() *InstallMissingMed
 	}
 
 	structGo := &InstallMissingMediaPluginsPermissionRequestClass{native: installMissingMediaPluginsPermissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInstallMissingMediaPluginsPermissionRequestClass)
 	return structGo
+}
+func finalizeInstallMissingMediaPluginsPermissionRequestClass(obj *InstallMissingMediaPluginsPermissionRequestClass) {
+	installMissingMediaPluginsPermissionRequestClassStruct.Free(obj.native)
 }
 
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
@@ -1836,7 +1985,11 @@ func InstallMissingMediaPluginsPermissionRequestPrivateStruct() *InstallMissingM
 	}
 
 	structGo := &InstallMissingMediaPluginsPermissionRequestPrivate{native: installMissingMediaPluginsPermissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInstallMissingMediaPluginsPermissionRequestPrivate)
 	return structGo
+}
+func finalizeInstallMissingMediaPluginsPermissionRequestPrivate(obj *InstallMissingMediaPluginsPermissionRequestPrivate) {
+	installMissingMediaPluginsPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var javascriptResultStruct *gi.Struct
@@ -1852,17 +2005,6 @@ func javascriptResultStruct_Set() error {
 
 type JavascriptResult struct {
 	native uintptr
-}
-
-// JavascriptResultStruct creates an uninitialised JavascriptResult.
-func JavascriptResultStruct() *JavascriptResult {
-	err := javascriptResultStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &JavascriptResult{native: javascriptResultStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'webkit_javascript_result_get_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
@@ -1931,6 +2073,21 @@ func (recv *JavascriptResult) Unref() {
 	return
 }
 
+// JavascriptResultStruct creates an uninitialised JavascriptResult.
+func JavascriptResultStruct() *JavascriptResult {
+	err := javascriptResultStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &JavascriptResult{native: javascriptResultStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeJavascriptResult)
+	return structGo
+}
+func finalizeJavascriptResult(obj *JavascriptResult) {
+	javascriptResultStruct.Free(obj.native)
+}
+
 var mimeInfoStruct *gi.Struct
 var mimeInfoStruct_Once sync.Once
 
@@ -1944,17 +2101,6 @@ func mimeInfoStruct_Set() error {
 
 type MimeInfo struct {
 	native uintptr
-}
-
-// MimeInfoStruct creates an uninitialised MimeInfo.
-func MimeInfoStruct() *MimeInfo {
-	err := mimeInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &MimeInfo{native: mimeInfoStruct.Alloc()}
-	return structGo
 }
 
 var mimeInfoGetDescriptionFunction *gi.Function
@@ -2109,6 +2255,21 @@ func (recv *MimeInfo) Unref() {
 	return
 }
 
+// MimeInfoStruct creates an uninitialised MimeInfo.
+func MimeInfoStruct() *MimeInfo {
+	err := mimeInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MimeInfo{native: mimeInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMimeInfo)
+	return structGo
+}
+func finalizeMimeInfo(obj *MimeInfo) {
+	mimeInfoStruct.Free(obj.native)
+}
+
 var navigationActionStruct *gi.Struct
 var navigationActionStruct_Once sync.Once
 
@@ -2122,17 +2283,6 @@ func navigationActionStruct_Set() error {
 
 type NavigationAction struct {
 	native uintptr
-}
-
-// NavigationActionStruct creates an uninitialised NavigationAction.
-func NavigationActionStruct() *NavigationAction {
-	err := navigationActionStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &NavigationAction{native: navigationActionStruct.Alloc()}
-	return structGo
 }
 
 var navigationActionCopyFunction *gi.Function
@@ -2327,6 +2477,21 @@ func (recv *NavigationAction) IsUserGesture() bool {
 	return retGo
 }
 
+// NavigationActionStruct creates an uninitialised NavigationAction.
+func NavigationActionStruct() *NavigationAction {
+	err := navigationActionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NavigationAction{native: navigationActionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNavigationAction)
+	return structGo
+}
+func finalizeNavigationAction(obj *NavigationAction) {
+	navigationActionStruct.Free(obj.native)
+}
+
 var navigationPolicyDecisionClassStruct *gi.Struct
 var navigationPolicyDecisionClassStruct_Once sync.Once
 
@@ -2365,7 +2530,11 @@ func NavigationPolicyDecisionClassStruct() *NavigationPolicyDecisionClass {
 	}
 
 	structGo := &NavigationPolicyDecisionClass{native: navigationPolicyDecisionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNavigationPolicyDecisionClass)
 	return structGo
+}
+func finalizeNavigationPolicyDecisionClass(obj *NavigationPolicyDecisionClass) {
+	navigationPolicyDecisionClassStruct.Free(obj.native)
 }
 
 var navigationPolicyDecisionPrivateStruct *gi.Struct
@@ -2391,7 +2560,11 @@ func NavigationPolicyDecisionPrivateStruct() *NavigationPolicyDecisionPrivate {
 	}
 
 	structGo := &NavigationPolicyDecisionPrivate{native: navigationPolicyDecisionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNavigationPolicyDecisionPrivate)
 	return structGo
+}
+func finalizeNavigationPolicyDecisionPrivate(obj *NavigationPolicyDecisionPrivate) {
+	navigationPolicyDecisionPrivateStruct.Free(obj.native)
 }
 
 var networkProxySettingsStruct *gi.Struct
@@ -2538,7 +2711,11 @@ func NotificationClassStruct() *NotificationClass {
 	}
 
 	structGo := &NotificationClass{native: notificationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotificationClass)
 	return structGo
+}
+func finalizeNotificationClass(obj *NotificationClass) {
+	notificationClassStruct.Free(obj.native)
 }
 
 var notificationPermissionRequestClassStruct *gi.Struct
@@ -2566,7 +2743,11 @@ func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestCl
 	}
 
 	structGo := &NotificationPermissionRequestClass{native: notificationPermissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotificationPermissionRequestClass)
 	return structGo
+}
+func finalizeNotificationPermissionRequestClass(obj *NotificationPermissionRequestClass) {
+	notificationPermissionRequestClassStruct.Free(obj.native)
 }
 
 var notificationPermissionRequestPrivateStruct *gi.Struct
@@ -2592,7 +2773,11 @@ func NotificationPermissionRequestPrivateStruct() *NotificationPermissionRequest
 	}
 
 	structGo := &NotificationPermissionRequestPrivate{native: notificationPermissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotificationPermissionRequestPrivate)
 	return structGo
+}
+func finalizeNotificationPermissionRequestPrivate(obj *NotificationPermissionRequestPrivate) {
+	notificationPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var notificationPrivateStruct *gi.Struct
@@ -2618,7 +2803,11 @@ func NotificationPrivateStruct() *NotificationPrivate {
 	}
 
 	structGo := &NotificationPrivate{native: notificationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotificationPrivate)
 	return structGo
+}
+func finalizeNotificationPrivate(obj *NotificationPrivate) {
+	notificationPrivateStruct.Free(obj.native)
 }
 
 var optionMenuClassStruct *gi.Struct
@@ -2654,7 +2843,11 @@ func OptionMenuClassStruct() *OptionMenuClass {
 	}
 
 	structGo := &OptionMenuClass{native: optionMenuClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOptionMenuClass)
 	return structGo
+}
+func finalizeOptionMenuClass(obj *OptionMenuClass) {
+	optionMenuClassStruct.Free(obj.native)
 }
 
 var optionMenuItemStruct *gi.Struct
@@ -2670,17 +2863,6 @@ func optionMenuItemStruct_Set() error {
 
 type OptionMenuItem struct {
 	native uintptr
-}
-
-// OptionMenuItemStruct creates an uninitialised OptionMenuItem.
-func OptionMenuItemStruct() *OptionMenuItem {
-	err := optionMenuItemStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &OptionMenuItem{native: optionMenuItemStruct.Alloc()}
-	return structGo
 }
 
 var optionMenuItemCopyFunction *gi.Function
@@ -2935,6 +3117,21 @@ func (recv *OptionMenuItem) IsSelected() bool {
 	return retGo
 }
 
+// OptionMenuItemStruct creates an uninitialised OptionMenuItem.
+func OptionMenuItemStruct() *OptionMenuItem {
+	err := optionMenuItemStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OptionMenuItem{native: optionMenuItemStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOptionMenuItem)
+	return structGo
+}
+func finalizeOptionMenuItem(obj *OptionMenuItem) {
+	optionMenuItemStruct.Free(obj.native)
+}
+
 var optionMenuPrivateStruct *gi.Struct
 var optionMenuPrivateStruct_Once sync.Once
 
@@ -2958,7 +3155,11 @@ func OptionMenuPrivateStruct() *OptionMenuPrivate {
 	}
 
 	structGo := &OptionMenuPrivate{native: optionMenuPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOptionMenuPrivate)
 	return structGo
+}
+func finalizeOptionMenuPrivate(obj *OptionMenuPrivate) {
+	optionMenuPrivateStruct.Free(obj.native)
 }
 
 var permissionRequestIfaceStruct *gi.Struct
@@ -2990,7 +3191,11 @@ func PermissionRequestIfaceStruct() *PermissionRequestIface {
 	}
 
 	structGo := &PermissionRequestIface{native: permissionRequestIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePermissionRequestIface)
 	return structGo
+}
+func finalizePermissionRequestIface(obj *PermissionRequestIface) {
+	permissionRequestIfaceStruct.Free(obj.native)
 }
 
 var pluginClassStruct *gi.Struct
@@ -3026,7 +3231,11 @@ func PluginClassStruct() *PluginClass {
 	}
 
 	structGo := &PluginClass{native: pluginClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePluginClass)
 	return structGo
+}
+func finalizePluginClass(obj *PluginClass) {
+	pluginClassStruct.Free(obj.native)
 }
 
 var pluginPrivateStruct *gi.Struct
@@ -3052,7 +3261,11 @@ func PluginPrivateStruct() *PluginPrivate {
 	}
 
 	structGo := &PluginPrivate{native: pluginPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePluginPrivate)
 	return structGo
+}
+func finalizePluginPrivate(obj *PluginPrivate) {
+	pluginPrivateStruct.Free(obj.native)
 }
 
 var policyDecisionClassStruct *gi.Struct
@@ -3088,7 +3301,11 @@ func PolicyDecisionClassStruct() *PolicyDecisionClass {
 	}
 
 	structGo := &PolicyDecisionClass{native: policyDecisionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePolicyDecisionClass)
 	return structGo
+}
+func finalizePolicyDecisionClass(obj *PolicyDecisionClass) {
+	policyDecisionClassStruct.Free(obj.native)
 }
 
 var policyDecisionPrivateStruct *gi.Struct
@@ -3114,7 +3331,11 @@ func PolicyDecisionPrivateStruct() *PolicyDecisionPrivate {
 	}
 
 	structGo := &PolicyDecisionPrivate{native: policyDecisionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePolicyDecisionPrivate)
 	return structGo
+}
+func finalizePolicyDecisionPrivate(obj *PolicyDecisionPrivate) {
+	policyDecisionPrivateStruct.Free(obj.native)
 }
 
 var printCustomWidgetClassStruct *gi.Struct
@@ -3154,7 +3375,11 @@ func PrintCustomWidgetClassStruct() *PrintCustomWidgetClass {
 	}
 
 	structGo := &PrintCustomWidgetClass{native: printCustomWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintCustomWidgetClass)
 	return structGo
+}
+func finalizePrintCustomWidgetClass(obj *PrintCustomWidgetClass) {
+	printCustomWidgetClassStruct.Free(obj.native)
 }
 
 var printCustomWidgetPrivateStruct *gi.Struct
@@ -3180,7 +3405,11 @@ func PrintCustomWidgetPrivateStruct() *PrintCustomWidgetPrivate {
 	}
 
 	structGo := &PrintCustomWidgetPrivate{native: printCustomWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintCustomWidgetPrivate)
 	return structGo
+}
+func finalizePrintCustomWidgetPrivate(obj *PrintCustomWidgetPrivate) {
+	printCustomWidgetPrivateStruct.Free(obj.native)
 }
 
 var printOperationClassStruct *gi.Struct
@@ -3216,7 +3445,11 @@ func PrintOperationClassStruct() *PrintOperationClass {
 	}
 
 	structGo := &PrintOperationClass{native: printOperationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintOperationClass)
 	return structGo
+}
+func finalizePrintOperationClass(obj *PrintOperationClass) {
+	printOperationClassStruct.Free(obj.native)
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -3242,7 +3475,11 @@ func PrintOperationPrivateStruct() *PrintOperationPrivate {
 	}
 
 	structGo := &PrintOperationPrivate{native: printOperationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintOperationPrivate)
 	return structGo
+}
+func finalizePrintOperationPrivate(obj *PrintOperationPrivate) {
+	printOperationPrivateStruct.Free(obj.native)
 }
 
 var responsePolicyDecisionClassStruct *gi.Struct
@@ -3283,7 +3520,11 @@ func ResponsePolicyDecisionClassStruct() *ResponsePolicyDecisionClass {
 	}
 
 	structGo := &ResponsePolicyDecisionClass{native: responsePolicyDecisionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeResponsePolicyDecisionClass)
 	return structGo
+}
+func finalizeResponsePolicyDecisionClass(obj *ResponsePolicyDecisionClass) {
+	responsePolicyDecisionClassStruct.Free(obj.native)
 }
 
 var responsePolicyDecisionPrivateStruct *gi.Struct
@@ -3309,7 +3550,11 @@ func ResponsePolicyDecisionPrivateStruct() *ResponsePolicyDecisionPrivate {
 	}
 
 	structGo := &ResponsePolicyDecisionPrivate{native: responsePolicyDecisionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeResponsePolicyDecisionPrivate)
 	return structGo
+}
+func finalizeResponsePolicyDecisionPrivate(obj *ResponsePolicyDecisionPrivate) {
+	responsePolicyDecisionPrivateStruct.Free(obj.native)
 }
 
 var scriptDialogStruct *gi.Struct
@@ -3325,17 +3570,6 @@ func scriptDialogStruct_Set() error {
 
 type ScriptDialog struct {
 	native uintptr
-}
-
-// ScriptDialogStruct creates an uninitialised ScriptDialog.
-func ScriptDialogStruct() *ScriptDialog {
-	err := scriptDialogStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ScriptDialog{native: scriptDialogStruct.Alloc()}
-	return structGo
 }
 
 var scriptDialogCloseFunction *gi.Function
@@ -3550,6 +3784,21 @@ func (recv *ScriptDialog) Unref() {
 	return
 }
 
+// ScriptDialogStruct creates an uninitialised ScriptDialog.
+func ScriptDialogStruct() *ScriptDialog {
+	err := scriptDialogStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ScriptDialog{native: scriptDialogStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScriptDialog)
+	return structGo
+}
+func finalizeScriptDialog(obj *ScriptDialog) {
+	scriptDialogStruct.Free(obj.native)
+}
+
 var securityManagerClassStruct *gi.Struct
 var securityManagerClassStruct_Once sync.Once
 
@@ -3583,7 +3832,11 @@ func SecurityManagerClassStruct() *SecurityManagerClass {
 	}
 
 	structGo := &SecurityManagerClass{native: securityManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSecurityManagerClass)
 	return structGo
+}
+func finalizeSecurityManagerClass(obj *SecurityManagerClass) {
+	securityManagerClassStruct.Free(obj.native)
 }
 
 var securityManagerPrivateStruct *gi.Struct
@@ -3609,7 +3862,11 @@ func SecurityManagerPrivateStruct() *SecurityManagerPrivate {
 	}
 
 	structGo := &SecurityManagerPrivate{native: securityManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSecurityManagerPrivate)
 	return structGo
+}
+func finalizeSecurityManagerPrivate(obj *SecurityManagerPrivate) {
+	securityManagerPrivateStruct.Free(obj.native)
 }
 
 var securityOriginStruct *gi.Struct
@@ -3946,7 +4203,11 @@ func SettingsClassStruct() *SettingsClass {
 	}
 
 	structGo := &SettingsClass{native: settingsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsClass)
 	return structGo
+}
+func finalizeSettingsClass(obj *SettingsClass) {
+	settingsClassStruct.Free(obj.native)
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -3972,7 +4233,11 @@ func SettingsPrivateStruct() *SettingsPrivate {
 	}
 
 	structGo := &SettingsPrivate{native: settingsPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsPrivate)
 	return structGo
+}
+func finalizeSettingsPrivate(obj *SettingsPrivate) {
+	settingsPrivateStruct.Free(obj.native)
 }
 
 var uRIRequestClassStruct *gi.Struct
@@ -4008,7 +4273,11 @@ func URIRequestClassStruct() *URIRequestClass {
 	}
 
 	structGo := &URIRequestClass{native: uRIRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURIRequestClass)
 	return structGo
+}
+func finalizeURIRequestClass(obj *URIRequestClass) {
+	uRIRequestClassStruct.Free(obj.native)
 }
 
 var uRIRequestPrivateStruct *gi.Struct
@@ -4034,7 +4303,11 @@ func URIRequestPrivateStruct() *URIRequestPrivate {
 	}
 
 	structGo := &URIRequestPrivate{native: uRIRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURIRequestPrivate)
 	return structGo
+}
+func finalizeURIRequestPrivate(obj *URIRequestPrivate) {
+	uRIRequestPrivateStruct.Free(obj.native)
 }
 
 var uRIResponseClassStruct *gi.Struct
@@ -4070,7 +4343,11 @@ func URIResponseClassStruct() *URIResponseClass {
 	}
 
 	structGo := &URIResponseClass{native: uRIResponseClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURIResponseClass)
 	return structGo
+}
+func finalizeURIResponseClass(obj *URIResponseClass) {
+	uRIResponseClassStruct.Free(obj.native)
 }
 
 var uRIResponsePrivateStruct *gi.Struct
@@ -4096,7 +4373,11 @@ func URIResponsePrivateStruct() *URIResponsePrivate {
 	}
 
 	structGo := &URIResponsePrivate{native: uRIResponsePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURIResponsePrivate)
 	return structGo
+}
+func finalizeURIResponsePrivate(obj *URIResponsePrivate) {
+	uRIResponsePrivateStruct.Free(obj.native)
 }
 
 var uRISchemeRequestClassStruct *gi.Struct
@@ -4132,7 +4413,11 @@ func URISchemeRequestClassStruct() *URISchemeRequestClass {
 	}
 
 	structGo := &URISchemeRequestClass{native: uRISchemeRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURISchemeRequestClass)
 	return structGo
+}
+func finalizeURISchemeRequestClass(obj *URISchemeRequestClass) {
+	uRISchemeRequestClassStruct.Free(obj.native)
 }
 
 var uRISchemeRequestPrivateStruct *gi.Struct
@@ -4158,7 +4443,11 @@ func URISchemeRequestPrivateStruct() *URISchemeRequestPrivate {
 	}
 
 	structGo := &URISchemeRequestPrivate{native: uRISchemeRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeURISchemeRequestPrivate)
 	return structGo
+}
+func finalizeURISchemeRequestPrivate(obj *URISchemeRequestPrivate) {
+	uRISchemeRequestPrivateStruct.Free(obj.native)
 }
 
 var userContentFilterStruct *gi.Struct
@@ -4174,17 +4463,6 @@ func userContentFilterStruct_Set() error {
 
 type UserContentFilter struct {
 	native uintptr
-}
-
-// UserContentFilterStruct creates an uninitialised UserContentFilter.
-func UserContentFilterStruct() *UserContentFilter {
-	err := userContentFilterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &UserContentFilter{native: userContentFilterStruct.Alloc()}
-	return structGo
 }
 
 var userContentFilterGetIdentifierFunction *gi.Function
@@ -4279,6 +4557,21 @@ func (recv *UserContentFilter) Unref() {
 	return
 }
 
+// UserContentFilterStruct creates an uninitialised UserContentFilter.
+func UserContentFilterStruct() *UserContentFilter {
+	err := userContentFilterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UserContentFilter{native: userContentFilterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserContentFilter)
+	return structGo
+}
+func finalizeUserContentFilter(obj *UserContentFilter) {
+	userContentFilterStruct.Free(obj.native)
+}
+
 var userContentFilterStoreClassStruct *gi.Struct
 var userContentFilterStoreClassStruct_Once sync.Once
 
@@ -4312,7 +4605,11 @@ func UserContentFilterStoreClassStruct() *UserContentFilterStoreClass {
 	}
 
 	structGo := &UserContentFilterStoreClass{native: userContentFilterStoreClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserContentFilterStoreClass)
 	return structGo
+}
+func finalizeUserContentFilterStoreClass(obj *UserContentFilterStoreClass) {
+	userContentFilterStoreClassStruct.Free(obj.native)
 }
 
 var userContentFilterStorePrivateStruct *gi.Struct
@@ -4338,7 +4635,11 @@ func UserContentFilterStorePrivateStruct() *UserContentFilterStorePrivate {
 	}
 
 	structGo := &UserContentFilterStorePrivate{native: userContentFilterStorePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserContentFilterStorePrivate)
 	return structGo
+}
+func finalizeUserContentFilterStorePrivate(obj *UserContentFilterStorePrivate) {
+	userContentFilterStorePrivateStruct.Free(obj.native)
 }
 
 var userContentManagerClassStruct *gi.Struct
@@ -4374,7 +4675,11 @@ func UserContentManagerClassStruct() *UserContentManagerClass {
 	}
 
 	structGo := &UserContentManagerClass{native: userContentManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserContentManagerClass)
 	return structGo
+}
+func finalizeUserContentManagerClass(obj *UserContentManagerClass) {
+	userContentManagerClassStruct.Free(obj.native)
 }
 
 var userContentManagerPrivateStruct *gi.Struct
@@ -4400,7 +4705,11 @@ func UserContentManagerPrivateStruct() *UserContentManagerPrivate {
 	}
 
 	structGo := &UserContentManagerPrivate{native: userContentManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserContentManagerPrivate)
 	return structGo
+}
+func finalizeUserContentManagerPrivate(obj *UserContentManagerPrivate) {
+	userContentManagerPrivateStruct.Free(obj.native)
 }
 
 var userMediaPermissionRequestClassStruct *gi.Struct
@@ -4436,7 +4745,11 @@ func UserMediaPermissionRequestClassStruct() *UserMediaPermissionRequestClass {
 	}
 
 	structGo := &UserMediaPermissionRequestClass{native: userMediaPermissionRequestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserMediaPermissionRequestClass)
 	return structGo
+}
+func finalizeUserMediaPermissionRequestClass(obj *UserMediaPermissionRequestClass) {
+	userMediaPermissionRequestClassStruct.Free(obj.native)
 }
 
 var userMediaPermissionRequestPrivateStruct *gi.Struct
@@ -4462,7 +4775,11 @@ func UserMediaPermissionRequestPrivateStruct() *UserMediaPermissionRequestPrivat
 	}
 
 	structGo := &UserMediaPermissionRequestPrivate{native: userMediaPermissionRequestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUserMediaPermissionRequestPrivate)
 	return structGo
+}
+func finalizeUserMediaPermissionRequestPrivate(obj *UserMediaPermissionRequestPrivate) {
+	userMediaPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var userScriptStruct *gi.Struct
@@ -4664,7 +4981,11 @@ func WebContextClassStruct() *WebContextClass {
 	}
 
 	structGo := &WebContextClass{native: webContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebContextClass)
 	return structGo
+}
+func finalizeWebContextClass(obj *WebContextClass) {
+	webContextClassStruct.Free(obj.native)
 }
 
 var webContextPrivateStruct *gi.Struct
@@ -4690,7 +5011,11 @@ func WebContextPrivateStruct() *WebContextPrivate {
 	}
 
 	structGo := &WebContextPrivate{native: webContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebContextPrivate)
 	return structGo
+}
+func finalizeWebContextPrivate(obj *WebContextPrivate) {
+	webContextPrivateStruct.Free(obj.native)
 }
 
 var webInspectorClassStruct *gi.Struct
@@ -4726,7 +5051,11 @@ func WebInspectorClassStruct() *WebInspectorClass {
 	}
 
 	structGo := &WebInspectorClass{native: webInspectorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebInspectorClass)
 	return structGo
+}
+func finalizeWebInspectorClass(obj *WebInspectorClass) {
+	webInspectorClassStruct.Free(obj.native)
 }
 
 var webInspectorPrivateStruct *gi.Struct
@@ -4752,7 +5081,11 @@ func WebInspectorPrivateStruct() *WebInspectorPrivate {
 	}
 
 	structGo := &WebInspectorPrivate{native: webInspectorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebInspectorPrivate)
 	return structGo
+}
+func finalizeWebInspectorPrivate(obj *WebInspectorPrivate) {
+	webInspectorPrivateStruct.Free(obj.native)
 }
 
 var webResourceClassStruct *gi.Struct
@@ -4788,7 +5121,11 @@ func WebResourceClassStruct() *WebResourceClass {
 	}
 
 	structGo := &WebResourceClass{native: webResourceClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebResourceClass)
 	return structGo
+}
+func finalizeWebResourceClass(obj *WebResourceClass) {
+	webResourceClassStruct.Free(obj.native)
 }
 
 var webResourcePrivateStruct *gi.Struct
@@ -4814,7 +5151,11 @@ func WebResourcePrivateStruct() *WebResourcePrivate {
 	}
 
 	structGo := &WebResourcePrivate{native: webResourcePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebResourcePrivate)
 	return structGo
+}
+func finalizeWebResourcePrivate(obj *WebResourcePrivate) {
+	webResourcePrivateStruct.Free(obj.native)
 }
 
 var webViewBaseClassStruct *gi.Struct
@@ -4850,7 +5191,11 @@ func WebViewBaseClassStruct() *WebViewBaseClass {
 	}
 
 	structGo := &WebViewBaseClass{native: webViewBaseClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebViewBaseClass)
 	return structGo
+}
+func finalizeWebViewBaseClass(obj *WebViewBaseClass) {
+	webViewBaseClassStruct.Free(obj.native)
 }
 
 var webViewBasePrivateStruct *gi.Struct
@@ -4876,7 +5221,11 @@ func WebViewBasePrivateStruct() *WebViewBasePrivate {
 	}
 
 	structGo := &WebViewBasePrivate{native: webViewBasePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebViewBasePrivate)
 	return structGo
+}
+func finalizeWebViewBasePrivate(obj *WebViewBasePrivate) {
+	webViewBasePrivateStruct.Free(obj.native)
 }
 
 var webViewClassStruct *gi.Struct
@@ -4965,7 +5314,11 @@ func WebViewClassStruct() *WebViewClass {
 	}
 
 	structGo := &WebViewClass{native: webViewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebViewClass)
 	return structGo
+}
+func finalizeWebViewClass(obj *WebViewClass) {
+	webViewClassStruct.Free(obj.native)
 }
 
 var webViewPrivateStruct *gi.Struct
@@ -4991,7 +5344,11 @@ func WebViewPrivateStruct() *WebViewPrivate {
 	}
 
 	structGo := &WebViewPrivate{native: webViewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebViewPrivate)
 	return structGo
+}
+func finalizeWebViewPrivate(obj *WebViewPrivate) {
+	webViewPrivateStruct.Free(obj.native)
 }
 
 var webViewSessionStateStruct *gi.Struct
@@ -5086,17 +5443,6 @@ func websiteDataStruct_Set() error {
 
 type WebsiteData struct {
 	native uintptr
-}
-
-// WebsiteDataStruct creates an uninitialised WebsiteData.
-func WebsiteDataStruct() *WebsiteData {
-	err := websiteDataStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &WebsiteData{native: websiteDataStruct.Alloc()}
-	return structGo
 }
 
 var websiteDataGetNameFunction *gi.Function
@@ -5195,6 +5541,21 @@ func (recv *WebsiteData) Unref() {
 	return
 }
 
+// WebsiteDataStruct creates an uninitialised WebsiteData.
+func WebsiteDataStruct() *WebsiteData {
+	err := websiteDataStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WebsiteData{native: websiteDataStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsiteData)
+	return structGo
+}
+func finalizeWebsiteData(obj *WebsiteData) {
+	websiteDataStruct.Free(obj.native)
+}
+
 var websiteDataManagerClassStruct *gi.Struct
 var websiteDataManagerClassStruct_Once sync.Once
 
@@ -5228,7 +5589,11 @@ func WebsiteDataManagerClassStruct() *WebsiteDataManagerClass {
 	}
 
 	structGo := &WebsiteDataManagerClass{native: websiteDataManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsiteDataManagerClass)
 	return structGo
+}
+func finalizeWebsiteDataManagerClass(obj *WebsiteDataManagerClass) {
+	websiteDataManagerClassStruct.Free(obj.native)
 }
 
 var websiteDataManagerPrivateStruct *gi.Struct
@@ -5254,7 +5619,11 @@ func WebsiteDataManagerPrivateStruct() *WebsiteDataManagerPrivate {
 	}
 
 	structGo := &WebsiteDataManagerPrivate{native: websiteDataManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsiteDataManagerPrivate)
 	return structGo
+}
+func finalizeWebsiteDataManagerPrivate(obj *WebsiteDataManagerPrivate) {
+	websiteDataManagerPrivateStruct.Free(obj.native)
 }
 
 var windowPropertiesClassStruct *gi.Struct
@@ -5290,7 +5659,11 @@ func WindowPropertiesClassStruct() *WindowPropertiesClass {
 	}
 
 	structGo := &WindowPropertiesClass{native: windowPropertiesClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowPropertiesClass)
 	return structGo
+}
+func finalizeWindowPropertiesClass(obj *WindowPropertiesClass) {
+	windowPropertiesClassStruct.Free(obj.native)
 }
 
 var windowPropertiesPrivateStruct *gi.Struct
@@ -5316,5 +5689,9 @@ func WindowPropertiesPrivateStruct() *WindowPropertiesPrivate {
 	}
 
 	structGo := &WindowPropertiesPrivate{native: windowPropertiesPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowPropertiesPrivate)
 	return structGo
+}
+func finalizeWindowPropertiesPrivate(obj *WindowPropertiesPrivate) {
+	windowPropertiesPrivateStruct.Free(obj.native)
 }

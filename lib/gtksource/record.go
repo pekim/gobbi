@@ -4,6 +4,7 @@ package gtksource
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -44,7 +45,11 @@ func BufferClassStruct() *BufferClass {
 	}
 
 	structGo := &BufferClass{native: bufferClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferClass)
 	return structGo
+}
+func finalizeBufferClass(obj *BufferClass) {
+	bufferClassStruct.Free(obj.native)
 }
 
 var bufferPrivateStruct *gi.Struct
@@ -70,7 +75,11 @@ func BufferPrivateStruct() *BufferPrivate {
 	}
 
 	structGo := &BufferPrivate{native: bufferPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferPrivate)
 	return structGo
+}
+func finalizeBufferPrivate(obj *BufferPrivate) {
+	bufferPrivateStruct.Free(obj.native)
 }
 
 var completionClassStruct *gi.Struct
@@ -112,7 +121,11 @@ func CompletionClassStruct() *CompletionClass {
 	}
 
 	structGo := &CompletionClass{native: completionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionClass)
 	return structGo
+}
+func finalizeCompletionClass(obj *CompletionClass) {
+	completionClassStruct.Free(obj.native)
 }
 
 var completionContextClassStruct *gi.Struct
@@ -148,7 +161,11 @@ func CompletionContextClassStruct() *CompletionContextClass {
 	}
 
 	structGo := &CompletionContextClass{native: completionContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionContextClass)
 	return structGo
+}
+func finalizeCompletionContextClass(obj *CompletionContextClass) {
+	completionContextClassStruct.Free(obj.native)
 }
 
 var completionContextPrivateStruct *gi.Struct
@@ -174,7 +191,11 @@ func CompletionContextPrivateStruct() *CompletionContextPrivate {
 	}
 
 	structGo := &CompletionContextPrivate{native: completionContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionContextPrivate)
 	return structGo
+}
+func finalizeCompletionContextPrivate(obj *CompletionContextPrivate) {
+	completionContextPrivateStruct.Free(obj.native)
 }
 
 var completionInfoClassStruct *gi.Struct
@@ -204,7 +225,11 @@ func CompletionInfoClassStruct() *CompletionInfoClass {
 	}
 
 	structGo := &CompletionInfoClass{native: completionInfoClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionInfoClass)
 	return structGo
+}
+func finalizeCompletionInfoClass(obj *CompletionInfoClass) {
+	completionInfoClassStruct.Free(obj.native)
 }
 
 var completionInfoPrivateStruct *gi.Struct
@@ -230,7 +255,11 @@ func CompletionInfoPrivateStruct() *CompletionInfoPrivate {
 	}
 
 	structGo := &CompletionInfoPrivate{native: completionInfoPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionInfoPrivate)
 	return structGo
+}
+func finalizeCompletionInfoPrivate(obj *CompletionInfoPrivate) {
+	completionInfoPrivateStruct.Free(obj.native)
 }
 
 var completionItemClassStruct *gi.Struct
@@ -258,7 +287,11 @@ func CompletionItemClassStruct() *CompletionItemClass {
 	}
 
 	structGo := &CompletionItemClass{native: completionItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionItemClass)
 	return structGo
+}
+func finalizeCompletionItemClass(obj *CompletionItemClass) {
+	completionItemClassStruct.Free(obj.native)
 }
 
 var completionItemPrivateStruct *gi.Struct
@@ -284,7 +317,11 @@ func CompletionItemPrivateStruct() *CompletionItemPrivate {
 	}
 
 	structGo := &CompletionItemPrivate{native: completionItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionItemPrivate)
 	return structGo
+}
+func finalizeCompletionItemPrivate(obj *CompletionItemPrivate) {
+	completionItemPrivateStruct.Free(obj.native)
 }
 
 var completionPrivateStruct *gi.Struct
@@ -310,7 +347,11 @@ func CompletionPrivateStruct() *CompletionPrivate {
 	}
 
 	structGo := &CompletionPrivate{native: completionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionPrivate)
 	return structGo
+}
+func finalizeCompletionPrivate(obj *CompletionPrivate) {
+	completionPrivateStruct.Free(obj.native)
 }
 
 var completionProposalIfaceStruct *gi.Struct
@@ -358,7 +399,11 @@ func CompletionProposalIfaceStruct() *CompletionProposalIface {
 	}
 
 	structGo := &CompletionProposalIface{native: completionProposalIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionProposalIface)
 	return structGo
+}
+func finalizeCompletionProposalIface(obj *CompletionProposalIface) {
+	completionProposalIfaceStruct.Free(obj.native)
 }
 
 var completionProviderIfaceStruct *gi.Struct
@@ -412,7 +457,11 @@ func CompletionProviderIfaceStruct() *CompletionProviderIface {
 	}
 
 	structGo := &CompletionProviderIface{native: completionProviderIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionProviderIface)
 	return structGo
+}
+func finalizeCompletionProviderIface(obj *CompletionProviderIface) {
+	completionProviderIfaceStruct.Free(obj.native)
 }
 
 var completionWordsClassStruct *gi.Struct
@@ -440,7 +489,11 @@ func CompletionWordsClassStruct() *CompletionWordsClass {
 	}
 
 	structGo := &CompletionWordsClass{native: completionWordsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionWordsClass)
 	return structGo
+}
+func finalizeCompletionWordsClass(obj *CompletionWordsClass) {
+	completionWordsClassStruct.Free(obj.native)
 }
 
 var completionWordsPrivateStruct *gi.Struct
@@ -466,7 +519,11 @@ func CompletionWordsPrivateStruct() *CompletionWordsPrivate {
 	}
 
 	structGo := &CompletionWordsPrivate{native: completionWordsPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCompletionWordsPrivate)
 	return structGo
+}
+func finalizeCompletionWordsPrivate(obj *CompletionWordsPrivate) {
+	completionWordsPrivateStruct.Free(obj.native)
 }
 
 var encodingStruct *gi.Struct
@@ -482,17 +539,6 @@ func encodingStruct_Set() error {
 
 type Encoding struct {
 	native uintptr
-}
-
-// EncodingStruct creates an uninitialised Encoding.
-func EncodingStruct() *Encoding {
-	err := encodingStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Encoding{native: encodingStruct.Alloc()}
-	return structGo
 }
 
 var encodingCopyFunction *gi.Function
@@ -651,6 +697,21 @@ func (recv *Encoding) ToString() string {
 	return retGo
 }
 
+// EncodingStruct creates an uninitialised Encoding.
+func EncodingStruct() *Encoding {
+	err := encodingStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Encoding{native: encodingStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEncoding)
+	return structGo
+}
+func finalizeEncoding(obj *Encoding) {
+	encodingStruct.Free(obj.native)
+}
+
 var fileClassStruct *gi.Struct
 var fileClassStruct_Once sync.Once
 
@@ -678,7 +739,11 @@ func FileClassStruct() *FileClass {
 	}
 
 	structGo := &FileClass{native: fileClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileClass)
 	return structGo
+}
+func finalizeFileClass(obj *FileClass) {
+	fileClassStruct.Free(obj.native)
 }
 
 var fileLoaderClassStruct *gi.Struct
@@ -708,7 +773,11 @@ func FileLoaderClassStruct() *FileLoaderClass {
 	}
 
 	structGo := &FileLoaderClass{native: fileLoaderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileLoaderClass)
 	return structGo
+}
+func finalizeFileLoaderClass(obj *FileLoaderClass) {
+	fileLoaderClassStruct.Free(obj.native)
 }
 
 var fileLoaderPrivateStruct *gi.Struct
@@ -734,7 +803,11 @@ func FileLoaderPrivateStruct() *FileLoaderPrivate {
 	}
 
 	structGo := &FileLoaderPrivate{native: fileLoaderPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileLoaderPrivate)
 	return structGo
+}
+func finalizeFileLoaderPrivate(obj *FileLoaderPrivate) {
+	fileLoaderPrivateStruct.Free(obj.native)
 }
 
 var filePrivateStruct *gi.Struct
@@ -760,7 +833,11 @@ func FilePrivateStruct() *FilePrivate {
 	}
 
 	structGo := &FilePrivate{native: filePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilePrivate)
 	return structGo
+}
+func finalizeFilePrivate(obj *FilePrivate) {
+	filePrivateStruct.Free(obj.native)
 }
 
 var fileSaverClassStruct *gi.Struct
@@ -790,7 +867,11 @@ func FileSaverClassStruct() *FileSaverClass {
 	}
 
 	structGo := &FileSaverClass{native: fileSaverClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileSaverClass)
 	return structGo
+}
+func finalizeFileSaverClass(obj *FileSaverClass) {
+	fileSaverClassStruct.Free(obj.native)
 }
 
 var fileSaverPrivateStruct *gi.Struct
@@ -816,7 +897,11 @@ func FileSaverPrivateStruct() *FileSaverPrivate {
 	}
 
 	structGo := &FileSaverPrivate{native: fileSaverPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileSaverPrivate)
 	return structGo
+}
+func finalizeFileSaverPrivate(obj *FileSaverPrivate) {
+	fileSaverPrivateStruct.Free(obj.native)
 }
 
 var gutterClassStruct *gi.Struct
@@ -844,7 +929,11 @@ func GutterClassStruct() *GutterClass {
 	}
 
 	structGo := &GutterClass{native: gutterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterClass)
 	return structGo
+}
+func finalizeGutterClass(obj *GutterClass) {
+	gutterClassStruct.Free(obj.native)
 }
 
 var gutterPrivateStruct *gi.Struct
@@ -870,7 +959,11 @@ func GutterPrivateStruct() *GutterPrivate {
 	}
 
 	structGo := &GutterPrivate{native: gutterPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterPrivate)
 	return structGo
+}
+func finalizeGutterPrivate(obj *GutterPrivate) {
+	gutterPrivateStruct.Free(obj.native)
 }
 
 var gutterRendererClassStruct *gi.Struct
@@ -918,7 +1011,11 @@ func GutterRendererClassStruct() *GutterRendererClass {
 	}
 
 	structGo := &GutterRendererClass{native: gutterRendererClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererClass)
 	return structGo
+}
+func finalizeGutterRendererClass(obj *GutterRendererClass) {
+	gutterRendererClassStruct.Free(obj.native)
 }
 
 var gutterRendererPixbufClassStruct *gi.Struct
@@ -944,7 +1041,11 @@ func GutterRendererPixbufClassStruct() *GutterRendererPixbufClass {
 	}
 
 	structGo := &GutterRendererPixbufClass{native: gutterRendererPixbufClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererPixbufClass)
 	return structGo
+}
+func finalizeGutterRendererPixbufClass(obj *GutterRendererPixbufClass) {
+	gutterRendererPixbufClassStruct.Free(obj.native)
 }
 
 var gutterRendererPixbufPrivateStruct *gi.Struct
@@ -970,7 +1071,11 @@ func GutterRendererPixbufPrivateStruct() *GutterRendererPixbufPrivate {
 	}
 
 	structGo := &GutterRendererPixbufPrivate{native: gutterRendererPixbufPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererPixbufPrivate)
 	return structGo
+}
+func finalizeGutterRendererPixbufPrivate(obj *GutterRendererPixbufPrivate) {
+	gutterRendererPixbufPrivateStruct.Free(obj.native)
 }
 
 var gutterRendererPrivateStruct *gi.Struct
@@ -996,7 +1101,11 @@ func GutterRendererPrivateStruct() *GutterRendererPrivate {
 	}
 
 	structGo := &GutterRendererPrivate{native: gutterRendererPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererPrivate)
 	return structGo
+}
+func finalizeGutterRendererPrivate(obj *GutterRendererPrivate) {
+	gutterRendererPrivateStruct.Free(obj.native)
 }
 
 var gutterRendererTextClassStruct *gi.Struct
@@ -1022,7 +1131,11 @@ func GutterRendererTextClassStruct() *GutterRendererTextClass {
 	}
 
 	structGo := &GutterRendererTextClass{native: gutterRendererTextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererTextClass)
 	return structGo
+}
+func finalizeGutterRendererTextClass(obj *GutterRendererTextClass) {
+	gutterRendererTextClassStruct.Free(obj.native)
 }
 
 var gutterRendererTextPrivateStruct *gi.Struct
@@ -1048,7 +1161,11 @@ func GutterRendererTextPrivateStruct() *GutterRendererTextPrivate {
 	}
 
 	structGo := &GutterRendererTextPrivate{native: gutterRendererTextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGutterRendererTextPrivate)
 	return structGo
+}
+func finalizeGutterRendererTextPrivate(obj *GutterRendererTextPrivate) {
+	gutterRendererTextPrivateStruct.Free(obj.native)
 }
 
 var languageClassStruct *gi.Struct
@@ -1080,7 +1197,11 @@ func LanguageClassStruct() *LanguageClass {
 	}
 
 	structGo := &LanguageClass{native: languageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLanguageClass)
 	return structGo
+}
+func finalizeLanguageClass(obj *LanguageClass) {
+	languageClassStruct.Free(obj.native)
 }
 
 var languageManagerClassStruct *gi.Struct
@@ -1116,7 +1237,11 @@ func LanguageManagerClassStruct() *LanguageManagerClass {
 	}
 
 	structGo := &LanguageManagerClass{native: languageManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLanguageManagerClass)
 	return structGo
+}
+func finalizeLanguageManagerClass(obj *LanguageManagerClass) {
+	languageManagerClassStruct.Free(obj.native)
 }
 
 var languageManagerPrivateStruct *gi.Struct
@@ -1142,7 +1267,11 @@ func LanguageManagerPrivateStruct() *LanguageManagerPrivate {
 	}
 
 	structGo := &LanguageManagerPrivate{native: languageManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLanguageManagerPrivate)
 	return structGo
+}
+func finalizeLanguageManagerPrivate(obj *LanguageManagerPrivate) {
+	languageManagerPrivateStruct.Free(obj.native)
 }
 
 var languagePrivateStruct *gi.Struct
@@ -1168,7 +1297,11 @@ func LanguagePrivateStruct() *LanguagePrivate {
 	}
 
 	structGo := &LanguagePrivate{native: languagePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLanguagePrivate)
 	return structGo
+}
+func finalizeLanguagePrivate(obj *LanguagePrivate) {
+	languagePrivateStruct.Free(obj.native)
 }
 
 var mapClassStruct *gi.Struct
@@ -1203,7 +1336,11 @@ func MapClassStruct() *MapClass {
 	}
 
 	structGo := &MapClass{native: mapClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMapClass)
 	return structGo
+}
+func finalizeMapClass(obj *MapClass) {
+	mapClassStruct.Free(obj.native)
 }
 
 var markAttributesClassStruct *gi.Struct
@@ -1229,7 +1366,11 @@ func MarkAttributesClassStruct() *MarkAttributesClass {
 	}
 
 	structGo := &MarkAttributesClass{native: markAttributesClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMarkAttributesClass)
 	return structGo
+}
+func finalizeMarkAttributesClass(obj *MarkAttributesClass) {
+	markAttributesClassStruct.Free(obj.native)
 }
 
 var markAttributesPrivateStruct *gi.Struct
@@ -1255,7 +1396,11 @@ func MarkAttributesPrivateStruct() *MarkAttributesPrivate {
 	}
 
 	structGo := &MarkAttributesPrivate{native: markAttributesPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMarkAttributesPrivate)
 	return structGo
+}
+func finalizeMarkAttributesPrivate(obj *MarkAttributesPrivate) {
+	markAttributesPrivateStruct.Free(obj.native)
 }
 
 var markClassStruct *gi.Struct
@@ -1287,7 +1432,11 @@ func MarkClassStruct() *MarkClass {
 	}
 
 	structGo := &MarkClass{native: markClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMarkClass)
 	return structGo
+}
+func finalizeMarkClass(obj *MarkClass) {
+	markClassStruct.Free(obj.native)
 }
 
 var markPrivateStruct *gi.Struct
@@ -1313,7 +1462,11 @@ func MarkPrivateStruct() *MarkPrivate {
 	}
 
 	structGo := &MarkPrivate{native: markPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMarkPrivate)
 	return structGo
+}
+func finalizeMarkPrivate(obj *MarkPrivate) {
+	markPrivateStruct.Free(obj.native)
 }
 
 var printCompositorClassStruct *gi.Struct
@@ -1345,7 +1498,11 @@ func PrintCompositorClassStruct() *PrintCompositorClass {
 	}
 
 	structGo := &PrintCompositorClass{native: printCompositorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintCompositorClass)
 	return structGo
+}
+func finalizePrintCompositorClass(obj *PrintCompositorClass) {
+	printCompositorClassStruct.Free(obj.native)
 }
 
 var printCompositorPrivateStruct *gi.Struct
@@ -1371,7 +1528,11 @@ func PrintCompositorPrivateStruct() *PrintCompositorPrivate {
 	}
 
 	structGo := &PrintCompositorPrivate{native: printCompositorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintCompositorPrivate)
 	return structGo
+}
+func finalizePrintCompositorPrivate(obj *PrintCompositorPrivate) {
+	printCompositorPrivateStruct.Free(obj.native)
 }
 
 var regionClassStruct *gi.Struct
@@ -1401,7 +1562,11 @@ func RegionClassStruct() *RegionClass {
 	}
 
 	structGo := &RegionClass{native: regionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRegionClass)
 	return structGo
+}
+func finalizeRegionClass(obj *RegionClass) {
+	regionClassStruct.Free(obj.native)
 }
 
 var regionIterStruct *gi.Struct
@@ -1417,17 +1582,6 @@ func regionIterStruct_Set() error {
 
 type RegionIter struct {
 	native uintptr
-}
-
-// RegionIterStruct creates an uninitialised RegionIter.
-func RegionIterStruct() *RegionIter {
-	err := regionIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &RegionIter{native: regionIterStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
@@ -1496,6 +1650,21 @@ func (recv *RegionIter) Next() bool {
 	return retGo
 }
 
+// RegionIterStruct creates an uninitialised RegionIter.
+func RegionIterStruct() *RegionIter {
+	err := regionIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RegionIter{native: regionIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRegionIter)
+	return structGo
+}
+func finalizeRegionIter(obj *RegionIter) {
+	regionIterStruct.Free(obj.native)
+}
+
 var searchContextClassStruct *gi.Struct
 var searchContextClassStruct_Once sync.Once
 
@@ -1523,7 +1692,11 @@ func SearchContextClassStruct() *SearchContextClass {
 	}
 
 	structGo := &SearchContextClass{native: searchContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchContextClass)
 	return structGo
+}
+func finalizeSearchContextClass(obj *SearchContextClass) {
+	searchContextClassStruct.Free(obj.native)
 }
 
 var searchContextPrivateStruct *gi.Struct
@@ -1549,7 +1722,11 @@ func SearchContextPrivateStruct() *SearchContextPrivate {
 	}
 
 	structGo := &SearchContextPrivate{native: searchContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchContextPrivate)
 	return structGo
+}
+func finalizeSearchContextPrivate(obj *SearchContextPrivate) {
+	searchContextPrivateStruct.Free(obj.native)
 }
 
 var searchSettingsClassStruct *gi.Struct
@@ -1579,7 +1756,11 @@ func SearchSettingsClassStruct() *SearchSettingsClass {
 	}
 
 	structGo := &SearchSettingsClass{native: searchSettingsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchSettingsClass)
 	return structGo
+}
+func finalizeSearchSettingsClass(obj *SearchSettingsClass) {
+	searchSettingsClassStruct.Free(obj.native)
 }
 
 var searchSettingsPrivateStruct *gi.Struct
@@ -1605,7 +1786,11 @@ func SearchSettingsPrivateStruct() *SearchSettingsPrivate {
 	}
 
 	structGo := &SearchSettingsPrivate{native: searchSettingsPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchSettingsPrivate)
 	return structGo
+}
+func finalizeSearchSettingsPrivate(obj *SearchSettingsPrivate) {
+	searchSettingsPrivateStruct.Free(obj.native)
 }
 
 var spaceDrawerClassStruct *gi.Struct
@@ -1635,7 +1820,11 @@ func SpaceDrawerClassStruct() *SpaceDrawerClass {
 	}
 
 	structGo := &SpaceDrawerClass{native: spaceDrawerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpaceDrawerClass)
 	return structGo
+}
+func finalizeSpaceDrawerClass(obj *SpaceDrawerClass) {
+	spaceDrawerClassStruct.Free(obj.native)
 }
 
 var spaceDrawerPrivateStruct *gi.Struct
@@ -1661,7 +1850,11 @@ func SpaceDrawerPrivateStruct() *SpaceDrawerPrivate {
 	}
 
 	structGo := &SpaceDrawerPrivate{native: spaceDrawerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpaceDrawerPrivate)
 	return structGo
+}
+func finalizeSpaceDrawerPrivate(obj *SpaceDrawerPrivate) {
+	spaceDrawerPrivateStruct.Free(obj.native)
 }
 
 var styleClassStruct *gi.Struct
@@ -1687,7 +1880,11 @@ func StyleClassStruct() *StyleClass {
 	}
 
 	structGo := &StyleClass{native: styleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleClass)
 	return structGo
+}
+func finalizeStyleClass(obj *StyleClass) {
+	styleClassStruct.Free(obj.native)
 }
 
 var styleSchemeChooserButtonClassStruct *gi.Struct
@@ -1715,7 +1912,11 @@ func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
 	}
 
 	structGo := &StyleSchemeChooserButtonClass{native: styleSchemeChooserButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserButtonClass)
 	return structGo
+}
+func finalizeStyleSchemeChooserButtonClass(obj *StyleSchemeChooserButtonClass) {
+	styleSchemeChooserButtonClassStruct.Free(obj.native)
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
@@ -1749,7 +1950,11 @@ func StyleSchemeChooserInterfaceStruct() *StyleSchemeChooserInterface {
 	}
 
 	structGo := &StyleSchemeChooserInterface{native: styleSchemeChooserInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserInterface)
 	return structGo
+}
+func finalizeStyleSchemeChooserInterface(obj *StyleSchemeChooserInterface) {
+	styleSchemeChooserInterfaceStruct.Free(obj.native)
 }
 
 var styleSchemeChooserWidgetClassStruct *gi.Struct
@@ -1777,7 +1982,11 @@ func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
 	}
 
 	structGo := &StyleSchemeChooserWidgetClass{native: styleSchemeChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserWidgetClass)
 	return structGo
+}
+func finalizeStyleSchemeChooserWidgetClass(obj *StyleSchemeChooserWidgetClass) {
+	styleSchemeChooserWidgetClassStruct.Free(obj.native)
 }
 
 var styleSchemeClassStruct *gi.Struct
@@ -1809,7 +2018,11 @@ func StyleSchemeClassStruct() *StyleSchemeClass {
 	}
 
 	structGo := &StyleSchemeClass{native: styleSchemeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeClass)
 	return structGo
+}
+func finalizeStyleSchemeClass(obj *StyleSchemeClass) {
+	styleSchemeClassStruct.Free(obj.native)
 }
 
 var styleSchemeManagerClassStruct *gi.Struct
@@ -1845,7 +2058,11 @@ func StyleSchemeManagerClassStruct() *StyleSchemeManagerClass {
 	}
 
 	structGo := &StyleSchemeManagerClass{native: styleSchemeManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeManagerClass)
 	return structGo
+}
+func finalizeStyleSchemeManagerClass(obj *StyleSchemeManagerClass) {
+	styleSchemeManagerClassStruct.Free(obj.native)
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
@@ -1871,7 +2088,11 @@ func StyleSchemeManagerPrivateStruct() *StyleSchemeManagerPrivate {
 	}
 
 	structGo := &StyleSchemeManagerPrivate{native: styleSchemeManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemeManagerPrivate)
 	return structGo
+}
+func finalizeStyleSchemeManagerPrivate(obj *StyleSchemeManagerPrivate) {
+	styleSchemeManagerPrivateStruct.Free(obj.native)
 }
 
 var styleSchemePrivateStruct *gi.Struct
@@ -1897,7 +2118,11 @@ func StyleSchemePrivateStruct() *StyleSchemePrivate {
 	}
 
 	structGo := &StyleSchemePrivate{native: styleSchemePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleSchemePrivate)
 	return structGo
+}
+func finalizeStyleSchemePrivate(obj *StyleSchemePrivate) {
+	styleSchemePrivateStruct.Free(obj.native)
 }
 
 var tagClassStruct *gi.Struct
@@ -1927,7 +2152,11 @@ func TagClassStruct() *TagClass {
 	}
 
 	structGo := &TagClass{native: tagClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTagClass)
 	return structGo
+}
+func finalizeTagClass(obj *TagClass) {
+	tagClassStruct.Free(obj.native)
 }
 
 var undoManagerIfaceStruct *gi.Struct
@@ -1971,7 +2200,11 @@ func UndoManagerIfaceStruct() *UndoManagerIface {
 	}
 
 	structGo := &UndoManagerIface{native: undoManagerIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUndoManagerIface)
 	return structGo
+}
+func finalizeUndoManagerIface(obj *UndoManagerIface) {
+	undoManagerIfaceStruct.Free(obj.native)
 }
 
 var viewClassStruct *gi.Struct
@@ -2011,7 +2244,11 @@ func ViewClassStruct() *ViewClass {
 	}
 
 	structGo := &ViewClass{native: viewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeViewClass)
 	return structGo
+}
+func finalizeViewClass(obj *ViewClass) {
+	viewClassStruct.Free(obj.native)
 }
 
 var viewPrivateStruct *gi.Struct
@@ -2037,5 +2274,9 @@ func ViewPrivateStruct() *ViewPrivate {
 	}
 
 	structGo := &ViewPrivate{native: viewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeViewPrivate)
 	return structGo
+}
+func finalizeViewPrivate(obj *ViewPrivate) {
+	viewPrivateStruct.Free(obj.native)
 }

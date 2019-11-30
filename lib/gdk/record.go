@@ -4,6 +4,7 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -20,17 +21,6 @@ func atomStruct_Set() error {
 
 type Atom struct {
 	native uintptr
-}
-
-// AtomStruct creates an uninitialised Atom.
-func AtomStruct() *Atom {
-	err := atomStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Atom{native: atomStruct.Alloc()}
-	return structGo
 }
 
 var atomNameFunction *gi.Function
@@ -63,6 +53,21 @@ func (recv *Atom) Name() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+// AtomStruct creates an uninitialised Atom.
+func AtomStruct() *Atom {
+	err := atomStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Atom{native: atomStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAtom)
+	return structGo
+}
+func finalizeAtom(obj *Atom) {
+	atomStruct.Free(obj.native)
 }
 
 var colorStruct *gi.Struct
@@ -106,17 +111,6 @@ func (recv *Color) Blue() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "blue")
 	value := argValue.Uint16()
 	return value
-}
-
-// ColorStruct creates an uninitialised Color.
-func ColorStruct() *Color {
-	err := colorStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Color{native: colorStruct.Alloc()}
-	return structGo
 }
 
 var colorCopyFunction *gi.Function
@@ -276,6 +270,21 @@ func (recv *Color) ToString() string {
 	return retGo
 }
 
+// ColorStruct creates an uninitialised Color.
+func ColorStruct() *Color {
+	err := colorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Color{native: colorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColor)
+	return structGo
+}
+func finalizeColor(obj *Color) {
+	colorStruct.Free(obj.native)
+}
+
 var devicePadInterfaceStruct *gi.Struct
 var devicePadInterfaceStruct_Once sync.Once
 
@@ -299,7 +308,11 @@ func DevicePadInterfaceStruct() *DevicePadInterface {
 	}
 
 	structGo := &DevicePadInterface{native: devicePadInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDevicePadInterface)
 	return structGo
+}
+func finalizeDevicePadInterface(obj *DevicePadInterface) {
+	devicePadInterfaceStruct.Free(obj.native)
 }
 
 var drawingContextClassStruct *gi.Struct
@@ -325,7 +338,11 @@ func DrawingContextClassStruct() *DrawingContextClass {
 	}
 
 	structGo := &DrawingContextClass{native: drawingContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDrawingContextClass)
 	return structGo
+}
+func finalizeDrawingContextClass(obj *DrawingContextClass) {
+	drawingContextClassStruct.Free(obj.native)
 }
 
 var eventAnyStruct *gi.Struct
@@ -362,7 +379,11 @@ func EventAnyStruct() *EventAny {
 	}
 
 	structGo := &EventAny{native: eventAnyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventAny)
 	return structGo
+}
+func finalizeEventAny(obj *EventAny) {
+	eventAnyStruct.Free(obj.native)
 }
 
 var eventButtonStruct *gi.Struct
@@ -452,7 +473,11 @@ func EventButtonStruct() *EventButton {
 	}
 
 	structGo := &EventButton{native: eventButtonStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventButton)
 	return structGo
+}
+func finalizeEventButton(obj *EventButton) {
+	eventButtonStruct.Free(obj.native)
 }
 
 var eventConfigureStruct *gi.Struct
@@ -517,7 +542,11 @@ func EventConfigureStruct() *EventConfigure {
 	}
 
 	structGo := &EventConfigure{native: eventConfigureStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventConfigure)
 	return structGo
+}
+func finalizeEventConfigure(obj *EventConfigure) {
+	eventConfigureStruct.Free(obj.native)
 }
 
 var eventCrossingStruct *gi.Struct
@@ -604,7 +633,11 @@ func EventCrossingStruct() *EventCrossing {
 	}
 
 	structGo := &EventCrossing{native: eventCrossingStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventCrossing)
 	return structGo
+}
+func finalizeEventCrossing(obj *EventCrossing) {
+	eventCrossingStruct.Free(obj.native)
 }
 
 var eventDNDStruct *gi.Struct
@@ -664,7 +697,11 @@ func EventDNDStruct() *EventDND {
 	}
 
 	structGo := &EventDND{native: eventDNDStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventDND)
 	return structGo
+}
+func finalizeEventDND(obj *EventDND) {
+	eventDNDStruct.Free(obj.native)
 }
 
 var eventExposeStruct *gi.Struct
@@ -717,7 +754,11 @@ func EventExposeStruct() *EventExpose {
 	}
 
 	structGo := &EventExpose{native: eventExposeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventExpose)
 	return structGo
+}
+func finalizeEventExpose(obj *EventExpose) {
+	eventExposeStruct.Free(obj.native)
 }
 
 var eventFocusStruct *gi.Struct
@@ -761,7 +802,11 @@ func EventFocusStruct() *EventFocus {
 	}
 
 	structGo := &EventFocus{native: eventFocusStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventFocus)
 	return structGo
+}
+func finalizeEventFocus(obj *EventFocus) {
+	eventFocusStruct.Free(obj.native)
 }
 
 var eventGrabBrokenStruct *gi.Struct
@@ -814,7 +859,11 @@ func EventGrabBrokenStruct() *EventGrabBroken {
 	}
 
 	structGo := &EventGrabBroken{native: eventGrabBrokenStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventGrabBroken)
 	return structGo
+}
+func finalizeEventGrabBroken(obj *EventGrabBroken) {
+	eventGrabBrokenStruct.Free(obj.native)
 }
 
 var eventKeyStruct *gi.Struct
@@ -902,7 +951,11 @@ func EventKeyStruct() *EventKey {
 	}
 
 	structGo := &EventKey{native: eventKeyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventKey)
 	return structGo
+}
+func finalizeEventKey(obj *EventKey) {
+	eventKeyStruct.Free(obj.native)
 }
 
 var eventMotionStruct *gi.Struct
@@ -992,7 +1045,11 @@ func EventMotionStruct() *EventMotion {
 	}
 
 	structGo := &EventMotion{native: eventMotionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventMotion)
 	return structGo
+}
+func finalizeEventMotion(obj *EventMotion) {
+	eventMotionStruct.Free(obj.native)
 }
 
 var eventOwnerChangeStruct *gi.Struct
@@ -1054,7 +1111,11 @@ func EventOwnerChangeStruct() *EventOwnerChange {
 	}
 
 	structGo := &EventOwnerChange{native: eventOwnerChangeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventOwnerChange)
 	return structGo
+}
+func finalizeEventOwnerChange(obj *EventOwnerChange) {
+	eventOwnerChangeStruct.Free(obj.native)
 }
 
 var eventPadAxisStruct *gi.Struct
@@ -1126,7 +1187,11 @@ func EventPadAxisStruct() *EventPadAxis {
 	}
 
 	structGo := &EventPadAxis{native: eventPadAxisStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventPadAxis)
 	return structGo
+}
+func finalizeEventPadAxis(obj *EventPadAxis) {
+	eventPadAxisStruct.Free(obj.native)
 }
 
 var eventPadButtonStruct *gi.Struct
@@ -1191,7 +1256,11 @@ func EventPadButtonStruct() *EventPadButton {
 	}
 
 	structGo := &EventPadButton{native: eventPadButtonStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventPadButton)
 	return structGo
+}
+func finalizeEventPadButton(obj *EventPadButton) {
+	eventPadButtonStruct.Free(obj.native)
 }
 
 var eventPadGroupModeStruct *gi.Struct
@@ -1249,7 +1318,11 @@ func EventPadGroupModeStruct() *EventPadGroupMode {
 	}
 
 	structGo := &EventPadGroupMode{native: eventPadGroupModeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventPadGroupMode)
 	return structGo
+}
+func finalizeEventPadGroupMode(obj *EventPadGroupMode) {
+	eventPadGroupModeStruct.Free(obj.native)
 }
 
 var eventPropertyStruct *gi.Struct
@@ -1302,7 +1375,11 @@ func EventPropertyStruct() *EventProperty {
 	}
 
 	structGo := &EventProperty{native: eventPropertyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventProperty)
 	return structGo
+}
+func finalizeEventProperty(obj *EventProperty) {
+	eventPropertyStruct.Free(obj.native)
 }
 
 var eventProximityStruct *gi.Struct
@@ -1348,7 +1425,11 @@ func EventProximityStruct() *EventProximity {
 	}
 
 	structGo := &EventProximity{native: eventProximityStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventProximity)
 	return structGo
+}
+func finalizeEventProximity(obj *EventProximity) {
+	eventProximityStruct.Free(obj.native)
 }
 
 var eventScrollStruct *gi.Struct
@@ -1447,7 +1528,11 @@ func EventScrollStruct() *EventScroll {
 	}
 
 	structGo := &EventScroll{native: eventScrollStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventScroll)
 	return structGo
+}
+func finalizeEventScroll(obj *EventScroll) {
+	eventScrollStruct.Free(obj.native)
 }
 
 var eventSelectionStruct *gi.Struct
@@ -1514,7 +1599,11 @@ func EventSelectionStruct() *EventSelection {
 	}
 
 	structGo := &EventSelection{native: eventSelectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventSelection)
 	return structGo
+}
+func finalizeEventSelection(obj *EventSelection) {
+	eventSelectionStruct.Free(obj.native)
 }
 
 var eventSequenceStruct *gi.Struct
@@ -1540,7 +1629,11 @@ func EventSequenceStruct() *EventSequence {
 	}
 
 	structGo := &EventSequence{native: eventSequenceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventSequence)
 	return structGo
+}
+func finalizeEventSequence(obj *EventSequence) {
+	eventSequenceStruct.Free(obj.native)
 }
 
 var eventSettingStruct *gi.Struct
@@ -1586,7 +1679,11 @@ func EventSettingStruct() *EventSetting {
 	}
 
 	structGo := &EventSetting{native: eventSettingStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventSetting)
 	return structGo
+}
+func finalizeEventSetting(obj *EventSetting) {
+	eventSettingStruct.Free(obj.native)
 }
 
 var eventTouchStruct *gi.Struct
@@ -1683,7 +1780,11 @@ func EventTouchStruct() *EventTouch {
 	}
 
 	structGo := &EventTouch{native: eventTouchStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventTouch)
 	return structGo
+}
+func finalizeEventTouch(obj *EventTouch) {
+	eventTouchStruct.Free(obj.native)
 }
 
 var eventTouchpadPinchStruct *gi.Struct
@@ -1799,7 +1900,11 @@ func EventTouchpadPinchStruct() *EventTouchpadPinch {
 	}
 
 	structGo := &EventTouchpadPinch{native: eventTouchpadPinchStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventTouchpadPinch)
 	return structGo
+}
+func finalizeEventTouchpadPinch(obj *EventTouchpadPinch) {
+	eventTouchpadPinchStruct.Free(obj.native)
 }
 
 var eventTouchpadSwipeStruct *gi.Struct
@@ -1901,7 +2006,11 @@ func EventTouchpadSwipeStruct() *EventTouchpadSwipe {
 	}
 
 	structGo := &EventTouchpadSwipe{native: eventTouchpadSwipeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventTouchpadSwipe)
 	return structGo
+}
+func finalizeEventTouchpadSwipe(obj *EventTouchpadSwipe) {
+	eventTouchpadSwipeStruct.Free(obj.native)
 }
 
 var eventVisibilityStruct *gi.Struct
@@ -1940,7 +2049,11 @@ func EventVisibilityStruct() *EventVisibility {
 	}
 
 	structGo := &EventVisibility{native: eventVisibilityStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventVisibility)
 	return structGo
+}
+func finalizeEventVisibility(obj *EventVisibility) {
+	eventVisibilityStruct.Free(obj.native)
 }
 
 var eventWindowStateStruct *gi.Struct
@@ -1981,7 +2094,11 @@ func EventWindowStateStruct() *EventWindowState {
 	}
 
 	structGo := &EventWindowState{native: eventWindowStateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventWindowState)
 	return structGo
+}
+func finalizeEventWindowState(obj *EventWindowState) {
+	eventWindowStateStruct.Free(obj.native)
 }
 
 var frameClockClassStruct *gi.Struct
@@ -2007,7 +2124,11 @@ func FrameClockClassStruct() *FrameClockClass {
 	}
 
 	structGo := &FrameClockClass{native: frameClockClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameClockClass)
 	return structGo
+}
+func finalizeFrameClockClass(obj *FrameClockClass) {
+	frameClockClassStruct.Free(obj.native)
 }
 
 var frameClockPrivateStruct *gi.Struct
@@ -2033,7 +2154,11 @@ func FrameClockPrivateStruct() *FrameClockPrivate {
 	}
 
 	structGo := &FrameClockPrivate{native: frameClockPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameClockPrivate)
 	return structGo
+}
+func finalizeFrameClockPrivate(obj *FrameClockPrivate) {
+	frameClockPrivateStruct.Free(obj.native)
 }
 
 var frameTimingsStruct *gi.Struct
@@ -2049,17 +2174,6 @@ func frameTimingsStruct_Set() error {
 
 type FrameTimings struct {
 	native uintptr
-}
-
-// FrameTimingsStruct creates an uninitialised FrameTimings.
-func FrameTimingsStruct() *FrameTimings {
-	err := frameTimingsStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &FrameTimings{native: frameTimingsStruct.Alloc()}
-	return structGo
 }
 
 var frameTimingsGetCompleteFunction *gi.Function
@@ -2314,6 +2428,21 @@ func (recv *FrameTimings) Unref() {
 	return
 }
 
+// FrameTimingsStruct creates an uninitialised FrameTimings.
+func FrameTimingsStruct() *FrameTimings {
+	err := frameTimingsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FrameTimings{native: frameTimingsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameTimings)
+	return structGo
+}
+func finalizeFrameTimings(obj *FrameTimings) {
+	frameTimingsStruct.Free(obj.native)
+}
+
 var geometryStruct *gi.Struct
 var geometryStruct_Once sync.Once
 
@@ -2409,7 +2538,11 @@ func GeometryStruct() *Geometry {
 	}
 
 	structGo := &Geometry{native: geometryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGeometry)
 	return structGo
+}
+func finalizeGeometry(obj *Geometry) {
+	geometryStruct.Free(obj.native)
 }
 
 var keymapKeyStruct *gi.Struct
@@ -2456,7 +2589,11 @@ func KeymapKeyStruct() *KeymapKey {
 	}
 
 	structGo := &KeymapKey{native: keymapKeyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeKeymapKey)
 	return structGo
+}
+func finalizeKeymapKey(obj *KeymapKey) {
+	keymapKeyStruct.Free(obj.native)
 }
 
 var monitorClassStruct *gi.Struct
@@ -2482,7 +2619,11 @@ func MonitorClassStruct() *MonitorClass {
 	}
 
 	structGo := &MonitorClass{native: monitorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMonitorClass)
 	return structGo
+}
+func finalizeMonitorClass(obj *MonitorClass) {
+	monitorClassStruct.Free(obj.native)
 }
 
 var pointStruct *gi.Struct
@@ -2522,7 +2663,11 @@ func PointStruct() *Point {
 	}
 
 	structGo := &Point{native: pointStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePoint)
 	return structGo
+}
+func finalizePoint(obj *Point) {
+	pointStruct.Free(obj.native)
 }
 
 var rGBAStruct *gi.Struct
@@ -2566,17 +2711,6 @@ func (recv *RGBA) Alpha() float64 {
 	argValue := gi.FieldGet(rGBAStruct, recv.native, "alpha")
 	value := argValue.Float64()
 	return value
-}
-
-// RGBAStruct creates an uninitialised RGBA.
-func RGBAStruct() *RGBA {
-	err := rGBAStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &RGBA{native: rGBAStruct.Alloc()}
-	return structGo
 }
 
 var rGBACopyFunction *gi.Function
@@ -2769,6 +2903,21 @@ func (recv *RGBA) ToString() string {
 	return retGo
 }
 
+// RGBAStruct creates an uninitialised RGBA.
+func RGBAStruct() *RGBA {
+	err := rGBAStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RGBA{native: rGBAStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRGBA)
+	return structGo
+}
+func finalizeRGBA(obj *RGBA) {
+	rGBAStruct.Free(obj.native)
+}
+
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once
 
@@ -2810,17 +2959,6 @@ func (recv *Rectangle) Height() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
-}
-
-// RectangleStruct creates an uninitialised Rectangle.
-func RectangleStruct() *Rectangle {
-	err := rectangleStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Rectangle{native: rectangleStruct.Alloc()}
-	return structGo
 }
 
 var rectangleEqualFunction *gi.Function
@@ -2924,6 +3062,21 @@ func (recv *Rectangle) Union(src2 *Rectangle) *Rectangle {
 	return out0
 }
 
+// RectangleStruct creates an uninitialised Rectangle.
+func RectangleStruct() *Rectangle {
+	err := rectangleStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRectangle)
+	return structGo
+}
+func finalizeRectangle(obj *Rectangle) {
+	rectangleStruct.Free(obj.native)
+}
+
 var timeCoordStruct *gi.Struct
 var timeCoordStruct_Once sync.Once
 
@@ -2956,7 +3109,11 @@ func TimeCoordStruct() *TimeCoord {
 	}
 
 	structGo := &TimeCoord{native: timeCoordStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTimeCoord)
 	return structGo
+}
+func finalizeTimeCoord(obj *TimeCoord) {
+	timeCoordStruct.Free(obj.native)
 }
 
 var windowAttrStruct *gi.Struct
@@ -3055,7 +3212,11 @@ func WindowAttrStruct() *WindowAttr {
 	}
 
 	structGo := &WindowAttr{native: windowAttrStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowAttr)
 	return structGo
+}
+func finalizeWindowAttr(obj *WindowAttr) {
+	windowAttrStruct.Free(obj.native)
 }
 
 var windowClassStruct *gi.Struct
@@ -3107,7 +3268,11 @@ func WindowClassStruct() *WindowClass {
 	}
 
 	structGo := &WindowClass{native: windowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowClass)
 	return structGo
+}
+func finalizeWindowClass(obj *WindowClass) {
+	windowClassStruct.Free(obj.native)
 }
 
 var windowRedirectStruct *gi.Struct
@@ -3133,5 +3298,9 @@ func WindowRedirectStruct() *WindowRedirect {
 	}
 
 	structGo := &WindowRedirect{native: windowRedirectStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowRedirect)
 	return structGo
+}
+func finalizeWindowRedirect(obj *WindowRedirect) {
+	windowRedirectStruct.Free(obj.native)
 }

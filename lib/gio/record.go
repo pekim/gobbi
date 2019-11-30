@@ -4,6 +4,7 @@ package gio
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -55,7 +56,11 @@ func ActionEntryStruct() *ActionEntry {
 	}
 
 	structGo := &ActionEntry{native: actionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionEntry)
 	return structGo
+}
+func finalizeActionEntry(obj *ActionEntry) {
+	actionEntryStruct.Free(obj.native)
 }
 
 var actionGroupInterfaceStruct *gi.Struct
@@ -111,7 +116,11 @@ func ActionGroupInterfaceStruct() *ActionGroupInterface {
 	}
 
 	structGo := &ActionGroupInterface{native: actionGroupInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionGroupInterface)
 	return structGo
+}
+func finalizeActionGroupInterface(obj *ActionGroupInterface) {
+	actionGroupInterfaceStruct.Free(obj.native)
 }
 
 var actionInterfaceStruct *gi.Struct
@@ -155,7 +164,11 @@ func ActionInterfaceStruct() *ActionInterface {
 	}
 
 	structGo := &ActionInterface{native: actionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionInterface)
 	return structGo
+}
+func finalizeActionInterface(obj *ActionInterface) {
+	actionInterfaceStruct.Free(obj.native)
 }
 
 var actionMapInterfaceStruct *gi.Struct
@@ -189,7 +202,11 @@ func ActionMapInterfaceStruct() *ActionMapInterface {
 	}
 
 	structGo := &ActionMapInterface{native: actionMapInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionMapInterface)
 	return structGo
+}
+func finalizeActionMapInterface(obj *ActionMapInterface) {
+	actionMapInterfaceStruct.Free(obj.native)
 }
 
 var appInfoIfaceStruct *gi.Struct
@@ -267,7 +284,11 @@ func AppInfoIfaceStruct() *AppInfoIface {
 	}
 
 	structGo := &AppInfoIface{native: appInfoIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppInfoIface)
 	return structGo
+}
+func finalizeAppInfoIface(obj *AppInfoIface) {
+	appInfoIfaceStruct.Free(obj.native)
 }
 
 var appLaunchContextClassStruct *gi.Struct
@@ -311,7 +332,11 @@ func AppLaunchContextClassStruct() *AppLaunchContextClass {
 	}
 
 	structGo := &AppLaunchContextClass{native: appLaunchContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppLaunchContextClass)
 	return structGo
+}
+func finalizeAppLaunchContextClass(obj *AppLaunchContextClass) {
+	appLaunchContextClassStruct.Free(obj.native)
 }
 
 var appLaunchContextPrivateStruct *gi.Struct
@@ -337,7 +362,11 @@ func AppLaunchContextPrivateStruct() *AppLaunchContextPrivate {
 	}
 
 	structGo := &AppLaunchContextPrivate{native: appLaunchContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppLaunchContextPrivate)
 	return structGo
+}
+func finalizeAppLaunchContextPrivate(obj *AppLaunchContextPrivate) {
+	appLaunchContextPrivateStruct.Free(obj.native)
 }
 
 var applicationClassStruct *gi.Struct
@@ -393,7 +422,11 @@ func ApplicationClassStruct() *ApplicationClass {
 	}
 
 	structGo := &ApplicationClass{native: applicationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationClass)
 	return structGo
+}
+func finalizeApplicationClass(obj *ApplicationClass) {
+	applicationClassStruct.Free(obj.native)
 }
 
 var applicationCommandLineClassStruct *gi.Struct
@@ -425,7 +458,11 @@ func ApplicationCommandLineClassStruct() *ApplicationCommandLineClass {
 	}
 
 	structGo := &ApplicationCommandLineClass{native: applicationCommandLineClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationCommandLineClass)
 	return structGo
+}
+func finalizeApplicationCommandLineClass(obj *ApplicationCommandLineClass) {
+	applicationCommandLineClassStruct.Free(obj.native)
 }
 
 var applicationCommandLinePrivateStruct *gi.Struct
@@ -451,7 +488,11 @@ func ApplicationCommandLinePrivateStruct() *ApplicationCommandLinePrivate {
 	}
 
 	structGo := &ApplicationCommandLinePrivate{native: applicationCommandLinePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationCommandLinePrivate)
 	return structGo
+}
+func finalizeApplicationCommandLinePrivate(obj *ApplicationCommandLinePrivate) {
+	applicationCommandLinePrivateStruct.Free(obj.native)
 }
 
 var applicationPrivateStruct *gi.Struct
@@ -477,7 +518,11 @@ func ApplicationPrivateStruct() *ApplicationPrivate {
 	}
 
 	structGo := &ApplicationPrivate{native: applicationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationPrivate)
 	return structGo
+}
+func finalizeApplicationPrivate(obj *ApplicationPrivate) {
+	applicationPrivateStruct.Free(obj.native)
 }
 
 var asyncInitableIfaceStruct *gi.Struct
@@ -509,7 +554,11 @@ func AsyncInitableIfaceStruct() *AsyncInitableIface {
 	}
 
 	structGo := &AsyncInitableIface{native: asyncInitableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAsyncInitableIface)
 	return structGo
+}
+func finalizeAsyncInitableIface(obj *AsyncInitableIface) {
+	asyncInitableIfaceStruct.Free(obj.native)
 }
 
 var asyncResultIfaceStruct *gi.Struct
@@ -543,7 +592,11 @@ func AsyncResultIfaceStruct() *AsyncResultIface {
 	}
 
 	structGo := &AsyncResultIface{native: asyncResultIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAsyncResultIface)
 	return structGo
+}
+func finalizeAsyncResultIface(obj *AsyncResultIface) {
+	asyncResultIfaceStruct.Free(obj.native)
 }
 
 var bufferedInputStreamClassStruct *gi.Struct
@@ -592,7 +645,11 @@ func BufferedInputStreamClassStruct() *BufferedInputStreamClass {
 	}
 
 	structGo := &BufferedInputStreamClass{native: bufferedInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferedInputStreamClass)
 	return structGo
+}
+func finalizeBufferedInputStreamClass(obj *BufferedInputStreamClass) {
+	bufferedInputStreamClassStruct.Free(obj.native)
 }
 
 var bufferedInputStreamPrivateStruct *gi.Struct
@@ -618,7 +675,11 @@ func BufferedInputStreamPrivateStruct() *BufferedInputStreamPrivate {
 	}
 
 	structGo := &BufferedInputStreamPrivate{native: bufferedInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferedInputStreamPrivate)
 	return structGo
+}
+func finalizeBufferedInputStreamPrivate(obj *BufferedInputStreamPrivate) {
+	bufferedInputStreamPrivateStruct.Free(obj.native)
 }
 
 var bufferedOutputStreamClassStruct *gi.Struct
@@ -655,7 +716,11 @@ func BufferedOutputStreamClassStruct() *BufferedOutputStreamClass {
 	}
 
 	structGo := &BufferedOutputStreamClass{native: bufferedOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferedOutputStreamClass)
 	return structGo
+}
+func finalizeBufferedOutputStreamClass(obj *BufferedOutputStreamClass) {
+	bufferedOutputStreamClassStruct.Free(obj.native)
 }
 
 var bufferedOutputStreamPrivateStruct *gi.Struct
@@ -681,7 +746,11 @@ func BufferedOutputStreamPrivateStruct() *BufferedOutputStreamPrivate {
 	}
 
 	structGo := &BufferedOutputStreamPrivate{native: bufferedOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBufferedOutputStreamPrivate)
 	return structGo
+}
+func finalizeBufferedOutputStreamPrivate(obj *BufferedOutputStreamPrivate) {
+	bufferedOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var cancellableClassStruct *gi.Struct
@@ -721,7 +790,11 @@ func CancellableClassStruct() *CancellableClass {
 	}
 
 	structGo := &CancellableClass{native: cancellableClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCancellableClass)
 	return structGo
+}
+func finalizeCancellableClass(obj *CancellableClass) {
+	cancellableClassStruct.Free(obj.native)
 }
 
 var cancellablePrivateStruct *gi.Struct
@@ -747,7 +820,11 @@ func CancellablePrivateStruct() *CancellablePrivate {
 	}
 
 	structGo := &CancellablePrivate{native: cancellablePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCancellablePrivate)
 	return structGo
+}
+func finalizeCancellablePrivate(obj *CancellablePrivate) {
+	cancellablePrivateStruct.Free(obj.native)
 }
 
 var charsetConverterClassStruct *gi.Struct
@@ -775,7 +852,11 @@ func CharsetConverterClassStruct() *CharsetConverterClass {
 	}
 
 	structGo := &CharsetConverterClass{native: charsetConverterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCharsetConverterClass)
 	return structGo
+}
+func finalizeCharsetConverterClass(obj *CharsetConverterClass) {
+	charsetConverterClassStruct.Free(obj.native)
 }
 
 var converterIfaceStruct *gi.Struct
@@ -807,7 +888,11 @@ func ConverterIfaceStruct() *ConverterIface {
 	}
 
 	structGo := &ConverterIface{native: converterIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConverterIface)
 	return structGo
+}
+func finalizeConverterIface(obj *ConverterIface) {
+	converterIfaceStruct.Free(obj.native)
 }
 
 var converterInputStreamClassStruct *gi.Struct
@@ -850,7 +935,11 @@ func ConverterInputStreamClassStruct() *ConverterInputStreamClass {
 	}
 
 	structGo := &ConverterInputStreamClass{native: converterInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConverterInputStreamClass)
 	return structGo
+}
+func finalizeConverterInputStreamClass(obj *ConverterInputStreamClass) {
+	converterInputStreamClassStruct.Free(obj.native)
 }
 
 var converterInputStreamPrivateStruct *gi.Struct
@@ -876,7 +965,11 @@ func ConverterInputStreamPrivateStruct() *ConverterInputStreamPrivate {
 	}
 
 	structGo := &ConverterInputStreamPrivate{native: converterInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConverterInputStreamPrivate)
 	return structGo
+}
+func finalizeConverterInputStreamPrivate(obj *ConverterInputStreamPrivate) {
+	converterInputStreamPrivateStruct.Free(obj.native)
 }
 
 var converterOutputStreamClassStruct *gi.Struct
@@ -919,7 +1012,11 @@ func ConverterOutputStreamClassStruct() *ConverterOutputStreamClass {
 	}
 
 	structGo := &ConverterOutputStreamClass{native: converterOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConverterOutputStreamClass)
 	return structGo
+}
+func finalizeConverterOutputStreamClass(obj *ConverterOutputStreamClass) {
+	converterOutputStreamClassStruct.Free(obj.native)
 }
 
 var converterOutputStreamPrivateStruct *gi.Struct
@@ -945,7 +1042,11 @@ func ConverterOutputStreamPrivateStruct() *ConverterOutputStreamPrivate {
 	}
 
 	structGo := &ConverterOutputStreamPrivate{native: converterOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConverterOutputStreamPrivate)
 	return structGo
+}
+func finalizeConverterOutputStreamPrivate(obj *ConverterOutputStreamPrivate) {
+	converterOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var credentialsClassStruct *gi.Struct
@@ -971,7 +1072,11 @@ func CredentialsClassStruct() *CredentialsClass {
 	}
 
 	structGo := &CredentialsClass{native: credentialsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCredentialsClass)
 	return structGo
+}
+func finalizeCredentialsClass(obj *CredentialsClass) {
+	credentialsClassStruct.Free(obj.native)
 }
 
 var dBusAnnotationInfoStruct *gi.Struct
@@ -1011,17 +1116,6 @@ func (recv *DBusAnnotationInfo) Value() string {
 }
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusAnnotationInfoStruct creates an uninitialised DBusAnnotationInfo.
-func DBusAnnotationInfoStruct() *DBusAnnotationInfo {
-	err := dBusAnnotationInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusAnnotationInfo{native: dBusAnnotationInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusAnnotationInfoRefFunction *gi.Function
 var dBusAnnotationInfoRefFunction_Once sync.Once
@@ -1083,6 +1177,21 @@ func (recv *DBusAnnotationInfo) Unref() {
 	return
 }
 
+// DBusAnnotationInfoStruct creates an uninitialised DBusAnnotationInfo.
+func DBusAnnotationInfoStruct() *DBusAnnotationInfo {
+	err := dBusAnnotationInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusAnnotationInfo{native: dBusAnnotationInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusAnnotationInfo)
+	return structGo
+}
+func finalizeDBusAnnotationInfo(obj *DBusAnnotationInfo) {
+	dBusAnnotationInfoStruct.Free(obj.native)
+}
+
 var dBusArgInfoStruct *gi.Struct
 var dBusArgInfoStruct_Once sync.Once
 
@@ -1120,17 +1229,6 @@ func (recv *DBusArgInfo) Signature() string {
 }
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusArgInfoStruct creates an uninitialised DBusArgInfo.
-func DBusArgInfoStruct() *DBusArgInfo {
-	err := dBusArgInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusArgInfo{native: dBusArgInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusArgInfoRefFunction *gi.Function
 var dBusArgInfoRefFunction_Once sync.Once
@@ -1192,6 +1290,21 @@ func (recv *DBusArgInfo) Unref() {
 	return
 }
 
+// DBusArgInfoStruct creates an uninitialised DBusArgInfo.
+func DBusArgInfoStruct() *DBusArgInfo {
+	err := dBusArgInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusArgInfo{native: dBusArgInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusArgInfo)
+	return structGo
+}
+func finalizeDBusArgInfo(obj *DBusArgInfo) {
+	dBusArgInfoStruct.Free(obj.native)
+}
+
 var dBusErrorEntryStruct *gi.Struct
 var dBusErrorEntryStruct_Once sync.Once
 
@@ -1229,7 +1342,11 @@ func DBusErrorEntryStruct() *DBusErrorEntry {
 	}
 
 	structGo := &DBusErrorEntry{native: dBusErrorEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusErrorEntry)
 	return structGo
+}
+func finalizeDBusErrorEntry(obj *DBusErrorEntry) {
+	dBusErrorEntryStruct.Free(obj.native)
 }
 
 var dBusInterfaceIfaceStruct *gi.Struct
@@ -1265,7 +1382,11 @@ func DBusInterfaceIfaceStruct() *DBusInterfaceIface {
 	}
 
 	structGo := &DBusInterfaceIface{native: dBusInterfaceIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceIface)
 	return structGo
+}
+func finalizeDBusInterfaceIface(obj *DBusInterfaceIface) {
+	dBusInterfaceIfaceStruct.Free(obj.native)
 }
 
 var dBusInterfaceInfoStruct *gi.Struct
@@ -1304,17 +1425,6 @@ func (recv *DBusInterfaceInfo) Name() string {
 // UNSUPPORTED : C value 'properties' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusInterfaceInfoStruct creates an uninitialised DBusInterfaceInfo.
-func DBusInterfaceInfoStruct() *DBusInterfaceInfo {
-	err := dBusInterfaceInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusInterfaceInfo{native: dBusInterfaceInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusInterfaceInfoCacheBuildFunction *gi.Function
 var dBusInterfaceInfoCacheBuildFunction_Once sync.Once
@@ -1533,6 +1643,21 @@ func (recv *DBusInterfaceInfo) Unref() {
 	return
 }
 
+// DBusInterfaceInfoStruct creates an uninitialised DBusInterfaceInfo.
+func DBusInterfaceInfoStruct() *DBusInterfaceInfo {
+	err := dBusInterfaceInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceInfo{native: dBusInterfaceInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceInfo)
+	return structGo
+}
+func finalizeDBusInterfaceInfo(obj *DBusInterfaceInfo) {
+	dBusInterfaceInfoStruct.Free(obj.native)
+}
+
 var dBusInterfaceSkeletonClassStruct *gi.Struct
 var dBusInterfaceSkeletonClassStruct_Once sync.Once
 
@@ -1568,7 +1693,11 @@ func DBusInterfaceSkeletonClassStruct() *DBusInterfaceSkeletonClass {
 	}
 
 	structGo := &DBusInterfaceSkeletonClass{native: dBusInterfaceSkeletonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceSkeletonClass)
 	return structGo
+}
+func finalizeDBusInterfaceSkeletonClass(obj *DBusInterfaceSkeletonClass) {
+	dBusInterfaceSkeletonClassStruct.Free(obj.native)
 }
 
 var dBusInterfaceSkeletonPrivateStruct *gi.Struct
@@ -1594,7 +1723,11 @@ func DBusInterfaceSkeletonPrivateStruct() *DBusInterfaceSkeletonPrivate {
 	}
 
 	structGo := &DBusInterfaceSkeletonPrivate{native: dBusInterfaceSkeletonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceSkeletonPrivate)
 	return structGo
+}
+func finalizeDBusInterfaceSkeletonPrivate(obj *DBusInterfaceSkeletonPrivate) {
+	dBusInterfaceSkeletonPrivateStruct.Free(obj.native)
 }
 
 var dBusInterfaceVTableStruct *gi.Struct
@@ -1626,7 +1759,11 @@ func DBusInterfaceVTableStruct() *DBusInterfaceVTable {
 	}
 
 	structGo := &DBusInterfaceVTable{native: dBusInterfaceVTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceVTable)
 	return structGo
+}
+func finalizeDBusInterfaceVTable(obj *DBusInterfaceVTable) {
+	dBusInterfaceVTableStruct.Free(obj.native)
 }
 
 var dBusMethodInfoStruct *gi.Struct
@@ -1663,17 +1800,6 @@ func (recv *DBusMethodInfo) Name() string {
 // UNSUPPORTED : C value 'out_args' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusMethodInfoStruct creates an uninitialised DBusMethodInfo.
-func DBusMethodInfoStruct() *DBusMethodInfo {
-	err := dBusMethodInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusMethodInfo{native: dBusMethodInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusMethodInfoRefFunction *gi.Function
 var dBusMethodInfoRefFunction_Once sync.Once
@@ -1733,6 +1859,21 @@ func (recv *DBusMethodInfo) Unref() {
 	}
 
 	return
+}
+
+// DBusMethodInfoStruct creates an uninitialised DBusMethodInfo.
+func DBusMethodInfoStruct() *DBusMethodInfo {
+	err := dBusMethodInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusMethodInfo{native: dBusMethodInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusMethodInfo)
+	return structGo
+}
+func finalizeDBusMethodInfo(obj *DBusMethodInfo) {
+	dBusMethodInfoStruct.Free(obj.native)
 }
 
 var dBusNodeInfoStruct *gi.Struct
@@ -1932,7 +2073,11 @@ func DBusObjectIfaceStruct() *DBusObjectIface {
 	}
 
 	structGo := &DBusObjectIface{native: dBusObjectIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectIface)
 	return structGo
+}
+func finalizeDBusObjectIface(obj *DBusObjectIface) {
+	dBusObjectIfaceStruct.Free(obj.native)
 }
 
 var dBusObjectManagerClientClassStruct *gi.Struct
@@ -1964,7 +2109,11 @@ func DBusObjectManagerClientClassStruct() *DBusObjectManagerClientClass {
 	}
 
 	structGo := &DBusObjectManagerClientClass{native: dBusObjectManagerClientClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectManagerClientClass)
 	return structGo
+}
+func finalizeDBusObjectManagerClientClass(obj *DBusObjectManagerClientClass) {
+	dBusObjectManagerClientClassStruct.Free(obj.native)
 }
 
 var dBusObjectManagerClientPrivateStruct *gi.Struct
@@ -1990,7 +2139,11 @@ func DBusObjectManagerClientPrivateStruct() *DBusObjectManagerClientPrivate {
 	}
 
 	structGo := &DBusObjectManagerClientPrivate{native: dBusObjectManagerClientPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectManagerClientPrivate)
 	return structGo
+}
+func finalizeDBusObjectManagerClientPrivate(obj *DBusObjectManagerClientPrivate) {
+	dBusObjectManagerClientPrivateStruct.Free(obj.native)
 }
 
 var dBusObjectManagerIfaceStruct *gi.Struct
@@ -2034,7 +2187,11 @@ func DBusObjectManagerIfaceStruct() *DBusObjectManagerIface {
 	}
 
 	structGo := &DBusObjectManagerIface{native: dBusObjectManagerIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectManagerIface)
 	return structGo
+}
+func finalizeDBusObjectManagerIface(obj *DBusObjectManagerIface) {
+	dBusObjectManagerIfaceStruct.Free(obj.native)
 }
 
 var dBusObjectManagerServerClassStruct *gi.Struct
@@ -2062,7 +2219,11 @@ func DBusObjectManagerServerClassStruct() *DBusObjectManagerServerClass {
 	}
 
 	structGo := &DBusObjectManagerServerClass{native: dBusObjectManagerServerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectManagerServerClass)
 	return structGo
+}
+func finalizeDBusObjectManagerServerClass(obj *DBusObjectManagerServerClass) {
+	dBusObjectManagerServerClassStruct.Free(obj.native)
 }
 
 var dBusObjectManagerServerPrivateStruct *gi.Struct
@@ -2088,7 +2249,11 @@ func DBusObjectManagerServerPrivateStruct() *DBusObjectManagerServerPrivate {
 	}
 
 	structGo := &DBusObjectManagerServerPrivate{native: dBusObjectManagerServerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectManagerServerPrivate)
 	return structGo
+}
+func finalizeDBusObjectManagerServerPrivate(obj *DBusObjectManagerServerPrivate) {
+	dBusObjectManagerServerPrivateStruct.Free(obj.native)
 }
 
 var dBusObjectProxyClassStruct *gi.Struct
@@ -2116,7 +2281,11 @@ func DBusObjectProxyClassStruct() *DBusObjectProxyClass {
 	}
 
 	structGo := &DBusObjectProxyClass{native: dBusObjectProxyClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectProxyClass)
 	return structGo
+}
+func finalizeDBusObjectProxyClass(obj *DBusObjectProxyClass) {
+	dBusObjectProxyClassStruct.Free(obj.native)
 }
 
 var dBusObjectProxyPrivateStruct *gi.Struct
@@ -2142,7 +2311,11 @@ func DBusObjectProxyPrivateStruct() *DBusObjectProxyPrivate {
 	}
 
 	structGo := &DBusObjectProxyPrivate{native: dBusObjectProxyPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectProxyPrivate)
 	return structGo
+}
+func finalizeDBusObjectProxyPrivate(obj *DBusObjectProxyPrivate) {
+	dBusObjectProxyPrivateStruct.Free(obj.native)
 }
 
 var dBusObjectSkeletonClassStruct *gi.Struct
@@ -2172,7 +2345,11 @@ func DBusObjectSkeletonClassStruct() *DBusObjectSkeletonClass {
 	}
 
 	structGo := &DBusObjectSkeletonClass{native: dBusObjectSkeletonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectSkeletonClass)
 	return structGo
+}
+func finalizeDBusObjectSkeletonClass(obj *DBusObjectSkeletonClass) {
+	dBusObjectSkeletonClassStruct.Free(obj.native)
 }
 
 var dBusObjectSkeletonPrivateStruct *gi.Struct
@@ -2198,7 +2375,11 @@ func DBusObjectSkeletonPrivateStruct() *DBusObjectSkeletonPrivate {
 	}
 
 	structGo := &DBusObjectSkeletonPrivate{native: dBusObjectSkeletonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusObjectSkeletonPrivate)
 	return structGo
+}
+func finalizeDBusObjectSkeletonPrivate(obj *DBusObjectSkeletonPrivate) {
+	dBusObjectSkeletonPrivateStruct.Free(obj.native)
 }
 
 var dBusPropertyInfoStruct *gi.Struct
@@ -2240,17 +2421,6 @@ func (recv *DBusPropertyInfo) Signature() string {
 // UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'DBusPropertyInfoFlags'
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusPropertyInfoStruct creates an uninitialised DBusPropertyInfo.
-func DBusPropertyInfoStruct() *DBusPropertyInfo {
-	err := dBusPropertyInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusPropertyInfo{native: dBusPropertyInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusPropertyInfoRefFunction *gi.Function
 var dBusPropertyInfoRefFunction_Once sync.Once
@@ -2312,6 +2482,21 @@ func (recv *DBusPropertyInfo) Unref() {
 	return
 }
 
+// DBusPropertyInfoStruct creates an uninitialised DBusPropertyInfo.
+func DBusPropertyInfoStruct() *DBusPropertyInfo {
+	err := dBusPropertyInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusPropertyInfo{native: dBusPropertyInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusPropertyInfo)
+	return structGo
+}
+func finalizeDBusPropertyInfo(obj *DBusPropertyInfo) {
+	dBusPropertyInfoStruct.Free(obj.native)
+}
+
 var dBusProxyClassStruct *gi.Struct
 var dBusProxyClassStruct_Once sync.Once
 
@@ -2339,7 +2524,11 @@ func DBusProxyClassStruct() *DBusProxyClass {
 	}
 
 	structGo := &DBusProxyClass{native: dBusProxyClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusProxyClass)
 	return structGo
+}
+func finalizeDBusProxyClass(obj *DBusProxyClass) {
+	dBusProxyClassStruct.Free(obj.native)
 }
 
 var dBusProxyPrivateStruct *gi.Struct
@@ -2365,7 +2554,11 @@ func DBusProxyPrivateStruct() *DBusProxyPrivate {
 	}
 
 	structGo := &DBusProxyPrivate{native: dBusProxyPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusProxyPrivate)
 	return structGo
+}
+func finalizeDBusProxyPrivate(obj *DBusProxyPrivate) {
+	dBusProxyPrivateStruct.Free(obj.native)
 }
 
 var dBusSignalInfoStruct *gi.Struct
@@ -2400,17 +2593,6 @@ func (recv *DBusSignalInfo) Name() string {
 // UNSUPPORTED : C value 'args' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
-
-// DBusSignalInfoStruct creates an uninitialised DBusSignalInfo.
-func DBusSignalInfoStruct() *DBusSignalInfo {
-	err := dBusSignalInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &DBusSignalInfo{native: dBusSignalInfoStruct.Alloc()}
-	return structGo
-}
 
 var dBusSignalInfoRefFunction *gi.Function
 var dBusSignalInfoRefFunction_Once sync.Once
@@ -2472,6 +2654,21 @@ func (recv *DBusSignalInfo) Unref() {
 	return
 }
 
+// DBusSignalInfoStruct creates an uninitialised DBusSignalInfo.
+func DBusSignalInfoStruct() *DBusSignalInfo {
+	err := dBusSignalInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusSignalInfo{native: dBusSignalInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusSignalInfo)
+	return structGo
+}
+func finalizeDBusSignalInfo(obj *DBusSignalInfo) {
+	dBusSignalInfoStruct.Free(obj.native)
+}
+
 var dBusSubtreeVTableStruct *gi.Struct
 var dBusSubtreeVTableStruct_Once sync.Once
 
@@ -2501,7 +2698,11 @@ func DBusSubtreeVTableStruct() *DBusSubtreeVTable {
 	}
 
 	structGo := &DBusSubtreeVTable{native: dBusSubtreeVTableStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusSubtreeVTable)
 	return structGo
+}
+func finalizeDBusSubtreeVTable(obj *DBusSubtreeVTable) {
+	dBusSubtreeVTableStruct.Free(obj.native)
 }
 
 var dataInputStreamClassStruct *gi.Struct
@@ -2544,7 +2745,11 @@ func DataInputStreamClassStruct() *DataInputStreamClass {
 	}
 
 	structGo := &DataInputStreamClass{native: dataInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDataInputStreamClass)
 	return structGo
+}
+func finalizeDataInputStreamClass(obj *DataInputStreamClass) {
+	dataInputStreamClassStruct.Free(obj.native)
 }
 
 var dataInputStreamPrivateStruct *gi.Struct
@@ -2570,7 +2775,11 @@ func DataInputStreamPrivateStruct() *DataInputStreamPrivate {
 	}
 
 	structGo := &DataInputStreamPrivate{native: dataInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDataInputStreamPrivate)
 	return structGo
+}
+func finalizeDataInputStreamPrivate(obj *DataInputStreamPrivate) {
+	dataInputStreamPrivateStruct.Free(obj.native)
 }
 
 var dataOutputStreamClassStruct *gi.Struct
@@ -2613,7 +2822,11 @@ func DataOutputStreamClassStruct() *DataOutputStreamClass {
 	}
 
 	structGo := &DataOutputStreamClass{native: dataOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDataOutputStreamClass)
 	return structGo
+}
+func finalizeDataOutputStreamClass(obj *DataOutputStreamClass) {
+	dataOutputStreamClassStruct.Free(obj.native)
 }
 
 var dataOutputStreamPrivateStruct *gi.Struct
@@ -2639,7 +2852,11 @@ func DataOutputStreamPrivateStruct() *DataOutputStreamPrivate {
 	}
 
 	structGo := &DataOutputStreamPrivate{native: dataOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDataOutputStreamPrivate)
 	return structGo
+}
+func finalizeDataOutputStreamPrivate(obj *DataOutputStreamPrivate) {
+	dataOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var datagramBasedInterfaceStruct *gi.Struct
@@ -2677,7 +2894,11 @@ func DatagramBasedInterfaceStruct() *DatagramBasedInterface {
 	}
 
 	structGo := &DatagramBasedInterface{native: datagramBasedInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDatagramBasedInterface)
 	return structGo
+}
+func finalizeDatagramBasedInterface(obj *DatagramBasedInterface) {
+	datagramBasedInterfaceStruct.Free(obj.native)
 }
 
 var desktopAppInfoClassStruct *gi.Struct
@@ -2705,7 +2926,11 @@ func DesktopAppInfoClassStruct() *DesktopAppInfoClass {
 	}
 
 	structGo := &DesktopAppInfoClass{native: desktopAppInfoClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDesktopAppInfoClass)
 	return structGo
+}
+func finalizeDesktopAppInfoClass(obj *DesktopAppInfoClass) {
+	desktopAppInfoClassStruct.Free(obj.native)
 }
 
 var desktopAppInfoLookupIfaceStruct *gi.Struct
@@ -2735,7 +2960,11 @@ func DesktopAppInfoLookupIfaceStruct() *DesktopAppInfoLookupIface {
 	}
 
 	structGo := &DesktopAppInfoLookupIface{native: desktopAppInfoLookupIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDesktopAppInfoLookupIface)
 	return structGo
+}
+func finalizeDesktopAppInfoLookupIface(obj *DesktopAppInfoLookupIface) {
+	desktopAppInfoLookupIfaceStruct.Free(obj.native)
 }
 
 var driveIfaceStruct *gi.Struct
@@ -2827,7 +3056,11 @@ func DriveIfaceStruct() *DriveIface {
 	}
 
 	structGo := &DriveIface{native: driveIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDriveIface)
 	return structGo
+}
+func finalizeDriveIface(obj *DriveIface) {
+	driveIfaceStruct.Free(obj.native)
 }
 
 var dtlsClientConnectionInterfaceStruct *gi.Struct
@@ -2855,7 +3088,11 @@ func DtlsClientConnectionInterfaceStruct() *DtlsClientConnectionInterface {
 	}
 
 	structGo := &DtlsClientConnectionInterface{native: dtlsClientConnectionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDtlsClientConnectionInterface)
 	return structGo
+}
+func finalizeDtlsClientConnectionInterface(obj *DtlsClientConnectionInterface) {
+	dtlsClientConnectionInterfaceStruct.Free(obj.native)
 }
 
 var dtlsConnectionInterfaceStruct *gi.Struct
@@ -2901,7 +3138,11 @@ func DtlsConnectionInterfaceStruct() *DtlsConnectionInterface {
 	}
 
 	structGo := &DtlsConnectionInterface{native: dtlsConnectionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDtlsConnectionInterface)
 	return structGo
+}
+func finalizeDtlsConnectionInterface(obj *DtlsConnectionInterface) {
+	dtlsConnectionInterfaceStruct.Free(obj.native)
 }
 
 var dtlsServerConnectionInterfaceStruct *gi.Struct
@@ -2929,7 +3170,11 @@ func DtlsServerConnectionInterfaceStruct() *DtlsServerConnectionInterface {
 	}
 
 	structGo := &DtlsServerConnectionInterface{native: dtlsServerConnectionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDtlsServerConnectionInterface)
 	return structGo
+}
+func finalizeDtlsServerConnectionInterface(obj *DtlsServerConnectionInterface) {
+	dtlsServerConnectionInterfaceStruct.Free(obj.native)
 }
 
 var emblemClassStruct *gi.Struct
@@ -2955,7 +3200,11 @@ func EmblemClassStruct() *EmblemClass {
 	}
 
 	structGo := &EmblemClass{native: emblemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEmblemClass)
 	return structGo
+}
+func finalizeEmblemClass(obj *EmblemClass) {
+	emblemClassStruct.Free(obj.native)
 }
 
 var emblemedIconClassStruct *gi.Struct
@@ -2983,7 +3232,11 @@ func EmblemedIconClassStruct() *EmblemedIconClass {
 	}
 
 	structGo := &EmblemedIconClass{native: emblemedIconClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEmblemedIconClass)
 	return structGo
+}
+func finalizeEmblemedIconClass(obj *EmblemedIconClass) {
+	emblemedIconClassStruct.Free(obj.native)
 }
 
 var emblemedIconPrivateStruct *gi.Struct
@@ -3009,7 +3262,11 @@ func EmblemedIconPrivateStruct() *EmblemedIconPrivate {
 	}
 
 	structGo := &EmblemedIconPrivate{native: emblemedIconPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEmblemedIconPrivate)
 	return structGo
+}
+func finalizeEmblemedIconPrivate(obj *EmblemedIconPrivate) {
+	emblemedIconPrivateStruct.Free(obj.native)
 }
 
 var fileAttributeInfoStruct *gi.Struct
@@ -3046,7 +3303,11 @@ func FileAttributeInfoStruct() *FileAttributeInfo {
 	}
 
 	structGo := &FileAttributeInfo{native: fileAttributeInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileAttributeInfo)
 	return structGo
+}
+func finalizeFileAttributeInfo(obj *FileAttributeInfo) {
+	fileAttributeInfoStruct.Free(obj.native)
 }
 
 var fileAttributeInfoListStruct *gi.Struct
@@ -3565,7 +3826,11 @@ func FileDescriptorBasedIfaceStruct() *FileDescriptorBasedIface {
 	}
 
 	structGo := &FileDescriptorBasedIface{native: fileDescriptorBasedIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileDescriptorBasedIface)
 	return structGo
+}
+func finalizeFileDescriptorBasedIface(obj *FileDescriptorBasedIface) {
+	fileDescriptorBasedIfaceStruct.Free(obj.native)
 }
 
 var fileEnumeratorClassStruct *gi.Struct
@@ -3619,7 +3884,11 @@ func FileEnumeratorClassStruct() *FileEnumeratorClass {
 	}
 
 	structGo := &FileEnumeratorClass{native: fileEnumeratorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileEnumeratorClass)
 	return structGo
+}
+func finalizeFileEnumeratorClass(obj *FileEnumeratorClass) {
+	fileEnumeratorClassStruct.Free(obj.native)
 }
 
 var fileEnumeratorPrivateStruct *gi.Struct
@@ -3645,7 +3914,11 @@ func FileEnumeratorPrivateStruct() *FileEnumeratorPrivate {
 	}
 
 	structGo := &FileEnumeratorPrivate{native: fileEnumeratorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileEnumeratorPrivate)
 	return structGo
+}
+func finalizeFileEnumeratorPrivate(obj *FileEnumeratorPrivate) {
+	fileEnumeratorPrivateStruct.Free(obj.native)
 }
 
 var fileIOStreamClassStruct *gi.Struct
@@ -3706,7 +3979,11 @@ func FileIOStreamClassStruct() *FileIOStreamClass {
 	}
 
 	structGo := &FileIOStreamClass{native: fileIOStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileIOStreamClass)
 	return structGo
+}
+func finalizeFileIOStreamClass(obj *FileIOStreamClass) {
+	fileIOStreamClassStruct.Free(obj.native)
 }
 
 var fileIOStreamPrivateStruct *gi.Struct
@@ -3732,7 +4009,11 @@ func FileIOStreamPrivateStruct() *FileIOStreamPrivate {
 	}
 
 	structGo := &FileIOStreamPrivate{native: fileIOStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileIOStreamPrivate)
 	return structGo
+}
+func finalizeFileIOStreamPrivate(obj *FileIOStreamPrivate) {
+	fileIOStreamPrivateStruct.Free(obj.native)
 }
 
 var fileIconClassStruct *gi.Struct
@@ -3758,7 +4039,11 @@ func FileIconClassStruct() *FileIconClass {
 	}
 
 	structGo := &FileIconClass{native: fileIconClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileIconClass)
 	return structGo
+}
+func finalizeFileIconClass(obj *FileIconClass) {
+	fileIconClassStruct.Free(obj.native)
 }
 
 var fileIfaceStruct *gi.Struct
@@ -3997,7 +4282,11 @@ func FileIfaceStruct() *FileIface {
 	}
 
 	structGo := &FileIface{native: fileIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileIface)
 	return structGo
+}
+func finalizeFileIface(obj *FileIface) {
+	fileIfaceStruct.Free(obj.native)
 }
 
 var fileInfoClassStruct *gi.Struct
@@ -4023,7 +4312,11 @@ func FileInfoClassStruct() *FileInfoClass {
 	}
 
 	structGo := &FileInfoClass{native: fileInfoClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileInfoClass)
 	return structGo
+}
+func finalizeFileInfoClass(obj *FileInfoClass) {
+	fileInfoClassStruct.Free(obj.native)
 }
 
 var fileInputStreamClassStruct *gi.Struct
@@ -4078,7 +4371,11 @@ func FileInputStreamClassStruct() *FileInputStreamClass {
 	}
 
 	structGo := &FileInputStreamClass{native: fileInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileInputStreamClass)
 	return structGo
+}
+func finalizeFileInputStreamClass(obj *FileInputStreamClass) {
+	fileInputStreamClassStruct.Free(obj.native)
 }
 
 var fileInputStreamPrivateStruct *gi.Struct
@@ -4104,7 +4401,11 @@ func FileInputStreamPrivateStruct() *FileInputStreamPrivate {
 	}
 
 	structGo := &FileInputStreamPrivate{native: fileInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileInputStreamPrivate)
 	return structGo
+}
+func finalizeFileInputStreamPrivate(obj *FileInputStreamPrivate) {
+	fileInputStreamPrivateStruct.Free(obj.native)
 }
 
 var fileMonitorClassStruct *gi.Struct
@@ -4146,7 +4447,11 @@ func FileMonitorClassStruct() *FileMonitorClass {
 	}
 
 	structGo := &FileMonitorClass{native: fileMonitorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileMonitorClass)
 	return structGo
+}
+func finalizeFileMonitorClass(obj *FileMonitorClass) {
+	fileMonitorClassStruct.Free(obj.native)
 }
 
 var fileMonitorPrivateStruct *gi.Struct
@@ -4172,7 +4477,11 @@ func FileMonitorPrivateStruct() *FileMonitorPrivate {
 	}
 
 	structGo := &FileMonitorPrivate{native: fileMonitorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileMonitorPrivate)
 	return structGo
+}
+func finalizeFileMonitorPrivate(obj *FileMonitorPrivate) {
+	fileMonitorPrivateStruct.Free(obj.native)
 }
 
 var fileOutputStreamClassStruct *gi.Struct
@@ -4233,7 +4542,11 @@ func FileOutputStreamClassStruct() *FileOutputStreamClass {
 	}
 
 	structGo := &FileOutputStreamClass{native: fileOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileOutputStreamClass)
 	return structGo
+}
+func finalizeFileOutputStreamClass(obj *FileOutputStreamClass) {
+	fileOutputStreamClassStruct.Free(obj.native)
 }
 
 var fileOutputStreamPrivateStruct *gi.Struct
@@ -4259,7 +4572,11 @@ func FileOutputStreamPrivateStruct() *FileOutputStreamPrivate {
 	}
 
 	structGo := &FileOutputStreamPrivate{native: fileOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileOutputStreamPrivate)
 	return structGo
+}
+func finalizeFileOutputStreamPrivate(obj *FileOutputStreamPrivate) {
+	fileOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var filenameCompleterClassStruct *gi.Struct
@@ -4295,7 +4612,11 @@ func FilenameCompleterClassStruct() *FilenameCompleterClass {
 	}
 
 	structGo := &FilenameCompleterClass{native: filenameCompleterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilenameCompleterClass)
 	return structGo
+}
+func finalizeFilenameCompleterClass(obj *FilenameCompleterClass) {
+	filenameCompleterClassStruct.Free(obj.native)
 }
 
 var filterInputStreamClassStruct *gi.Struct
@@ -4334,7 +4655,11 @@ func FilterInputStreamClassStruct() *FilterInputStreamClass {
 	}
 
 	structGo := &FilterInputStreamClass{native: filterInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilterInputStreamClass)
 	return structGo
+}
+func finalizeFilterInputStreamClass(obj *FilterInputStreamClass) {
+	filterInputStreamClassStruct.Free(obj.native)
 }
 
 var filterOutputStreamClassStruct *gi.Struct
@@ -4373,7 +4698,11 @@ func FilterOutputStreamClassStruct() *FilterOutputStreamClass {
 	}
 
 	structGo := &FilterOutputStreamClass{native: filterOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilterOutputStreamClass)
 	return structGo
+}
+func finalizeFilterOutputStreamClass(obj *FilterOutputStreamClass) {
+	filterOutputStreamClassStruct.Free(obj.native)
 }
 
 var iOExtensionStruct *gi.Struct
@@ -4389,17 +4718,6 @@ func iOExtensionStruct_Set() error {
 
 type IOExtension struct {
 	native uintptr
-}
-
-// IOExtensionStruct creates an uninitialised IOExtension.
-func IOExtensionStruct() *IOExtension {
-	err := iOExtensionStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &IOExtension{native: iOExtensionStruct.Alloc()}
-	return structGo
 }
 
 var iOExtensionGetNameFunction *gi.Function
@@ -4470,6 +4788,21 @@ func (recv *IOExtension) GetPriority() int32 {
 
 // UNSUPPORTED : C value 'g_io_extension_ref_class' : return type 'GObject.TypeClass' not supported
 
+// IOExtensionStruct creates an uninitialised IOExtension.
+func IOExtensionStruct() *IOExtension {
+	err := iOExtensionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOExtension{native: iOExtensionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOExtension)
+	return structGo
+}
+func finalizeIOExtension(obj *IOExtension) {
+	iOExtensionStruct.Free(obj.native)
+}
+
 var iOExtensionPointStruct *gi.Struct
 var iOExtensionPointStruct_Once sync.Once
 
@@ -4483,17 +4816,6 @@ func iOExtensionPointStruct_Set() error {
 
 type IOExtensionPoint struct {
 	native uintptr
-}
-
-// IOExtensionPointStruct creates an uninitialised IOExtensionPoint.
-func IOExtensionPointStruct() *IOExtensionPoint {
-	err := iOExtensionPointStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &IOExtensionPoint{native: iOExtensionPointStruct.Alloc()}
-	return structGo
 }
 
 var iOExtensionPointGetExtensionByNameFunction *gi.Function
@@ -4535,6 +4857,21 @@ func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 
 // UNSUPPORTED : C value 'g_io_extension_point_set_required_type' : parameter 'type' of type 'GType' not supported
 
+// IOExtensionPointStruct creates an uninitialised IOExtensionPoint.
+func IOExtensionPointStruct() *IOExtensionPoint {
+	err := iOExtensionPointStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOExtensionPoint{native: iOExtensionPointStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOExtensionPoint)
+	return structGo
+}
+func finalizeIOExtensionPoint(obj *IOExtensionPoint) {
+	iOExtensionPointStruct.Free(obj.native)
+}
+
 var iOModuleClassStruct *gi.Struct
 var iOModuleClassStruct_Once sync.Once
 
@@ -4558,7 +4895,11 @@ func IOModuleClassStruct() *IOModuleClass {
 	}
 
 	structGo := &IOModuleClass{native: iOModuleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOModuleClass)
 	return structGo
+}
+func finalizeIOModuleClass(obj *IOModuleClass) {
+	iOModuleClassStruct.Free(obj.native)
 }
 
 var iOModuleScopeStruct *gi.Struct
@@ -4574,17 +4915,6 @@ func iOModuleScopeStruct_Set() error {
 
 type IOModuleScope struct {
 	native uintptr
-}
-
-// IOModuleScopeStruct creates an uninitialised IOModuleScope.
-func IOModuleScopeStruct() *IOModuleScope {
-	err := iOModuleScopeStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &IOModuleScope{native: iOModuleScopeStruct.Alloc()}
-	return structGo
 }
 
 var iOModuleScopeBlockFunction *gi.Function
@@ -4644,6 +4974,21 @@ func (recv *IOModuleScope) Free() {
 	return
 }
 
+// IOModuleScopeStruct creates an uninitialised IOModuleScope.
+func IOModuleScopeStruct() *IOModuleScope {
+	err := iOModuleScopeStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOModuleScope{native: iOModuleScopeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOModuleScope)
+	return structGo
+}
+func finalizeIOModuleScope(obj *IOModuleScope) {
+	iOModuleScopeStruct.Free(obj.native)
+}
+
 var iOSchedulerJobStruct *gi.Struct
 var iOSchedulerJobStruct_Once sync.Once
 
@@ -4659,6 +5004,10 @@ type IOSchedulerJob struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop' : parameter 'func' of type 'GLib.SourceFunc' not supported
+
+// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
+
 // IOSchedulerJobStruct creates an uninitialised IOSchedulerJob.
 func IOSchedulerJobStruct() *IOSchedulerJob {
 	err := iOSchedulerJobStruct_Set()
@@ -4667,12 +5016,12 @@ func IOSchedulerJobStruct() *IOSchedulerJob {
 	}
 
 	structGo := &IOSchedulerJob{native: iOSchedulerJobStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOSchedulerJob)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop' : parameter 'func' of type 'GLib.SourceFunc' not supported
-
-// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
+func finalizeIOSchedulerJob(obj *IOSchedulerJob) {
+	iOSchedulerJobStruct.Free(obj.native)
+}
 
 var iOStreamAdapterStruct *gi.Struct
 var iOStreamAdapterStruct_Once sync.Once
@@ -4697,7 +5046,11 @@ func IOStreamAdapterStruct() *IOStreamAdapter {
 	}
 
 	structGo := &IOStreamAdapter{native: iOStreamAdapterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOStreamAdapter)
 	return structGo
+}
+func finalizeIOStreamAdapter(obj *IOStreamAdapter) {
+	iOStreamAdapterStruct.Free(obj.native)
 }
 
 var iOStreamClassStruct *gi.Struct
@@ -4755,7 +5108,11 @@ func IOStreamClassStruct() *IOStreamClass {
 	}
 
 	structGo := &IOStreamClass{native: iOStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOStreamClass)
 	return structGo
+}
+func finalizeIOStreamClass(obj *IOStreamClass) {
+	iOStreamClassStruct.Free(obj.native)
 }
 
 var iOStreamPrivateStruct *gi.Struct
@@ -4781,7 +5138,11 @@ func IOStreamPrivateStruct() *IOStreamPrivate {
 	}
 
 	structGo := &IOStreamPrivate{native: iOStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOStreamPrivate)
 	return structGo
+}
+func finalizeIOStreamPrivate(obj *IOStreamPrivate) {
+	iOStreamPrivateStruct.Free(obj.native)
 }
 
 var iconIfaceStruct *gi.Struct
@@ -4819,7 +5180,11 @@ func IconIfaceStruct() *IconIface {
 	}
 
 	structGo := &IconIface{native: iconIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconIface)
 	return structGo
+}
+func finalizeIconIface(obj *IconIface) {
+	iconIfaceStruct.Free(obj.native)
 }
 
 var inetAddressClassStruct *gi.Struct
@@ -4851,7 +5216,11 @@ func InetAddressClassStruct() *InetAddressClass {
 	}
 
 	structGo := &InetAddressClass{native: inetAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetAddressClass)
 	return structGo
+}
+func finalizeInetAddressClass(obj *InetAddressClass) {
+	inetAddressClassStruct.Free(obj.native)
 }
 
 var inetAddressMaskClassStruct *gi.Struct
@@ -4879,7 +5248,11 @@ func InetAddressMaskClassStruct() *InetAddressMaskClass {
 	}
 
 	structGo := &InetAddressMaskClass{native: inetAddressMaskClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetAddressMaskClass)
 	return structGo
+}
+func finalizeInetAddressMaskClass(obj *InetAddressMaskClass) {
+	inetAddressMaskClassStruct.Free(obj.native)
 }
 
 var inetAddressMaskPrivateStruct *gi.Struct
@@ -4905,7 +5278,11 @@ func InetAddressMaskPrivateStruct() *InetAddressMaskPrivate {
 	}
 
 	structGo := &InetAddressMaskPrivate{native: inetAddressMaskPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetAddressMaskPrivate)
 	return structGo
+}
+func finalizeInetAddressMaskPrivate(obj *InetAddressMaskPrivate) {
+	inetAddressMaskPrivateStruct.Free(obj.native)
 }
 
 var inetAddressPrivateStruct *gi.Struct
@@ -4931,7 +5308,11 @@ func InetAddressPrivateStruct() *InetAddressPrivate {
 	}
 
 	structGo := &InetAddressPrivate{native: inetAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetAddressPrivate)
 	return structGo
+}
+func finalizeInetAddressPrivate(obj *InetAddressPrivate) {
+	inetAddressPrivateStruct.Free(obj.native)
 }
 
 var inetSocketAddressClassStruct *gi.Struct
@@ -4964,7 +5345,11 @@ func InetSocketAddressClassStruct() *InetSocketAddressClass {
 	}
 
 	structGo := &InetSocketAddressClass{native: inetSocketAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetSocketAddressClass)
 	return structGo
+}
+func finalizeInetSocketAddressClass(obj *InetSocketAddressClass) {
+	inetSocketAddressClassStruct.Free(obj.native)
 }
 
 var inetSocketAddressPrivateStruct *gi.Struct
@@ -4990,7 +5375,11 @@ func InetSocketAddressPrivateStruct() *InetSocketAddressPrivate {
 	}
 
 	structGo := &InetSocketAddressPrivate{native: inetSocketAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInetSocketAddressPrivate)
 	return structGo
+}
+func finalizeInetSocketAddressPrivate(obj *InetSocketAddressPrivate) {
+	inetSocketAddressPrivateStruct.Free(obj.native)
 }
 
 var initableIfaceStruct *gi.Struct
@@ -5020,7 +5409,11 @@ func InitableIfaceStruct() *InitableIface {
 	}
 
 	structGo := &InitableIface{native: initableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInitableIface)
 	return structGo
+}
+func finalizeInitableIface(obj *InitableIface) {
+	initableIfaceStruct.Free(obj.native)
 }
 
 var inputMessageStruct *gi.Struct
@@ -5080,7 +5473,11 @@ func InputMessageStruct() *InputMessage {
 	}
 
 	structGo := &InputMessage{native: inputMessageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInputMessage)
 	return structGo
+}
+func finalizeInputMessage(obj *InputMessage) {
+	inputMessageStruct.Free(obj.native)
 }
 
 var inputStreamClassStruct *gi.Struct
@@ -5136,7 +5533,11 @@ func InputStreamClassStruct() *InputStreamClass {
 	}
 
 	structGo := &InputStreamClass{native: inputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInputStreamClass)
 	return structGo
+}
+func finalizeInputStreamClass(obj *InputStreamClass) {
+	inputStreamClassStruct.Free(obj.native)
 }
 
 var inputStreamPrivateStruct *gi.Struct
@@ -5162,7 +5563,11 @@ func InputStreamPrivateStruct() *InputStreamPrivate {
 	}
 
 	structGo := &InputStreamPrivate{native: inputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInputStreamPrivate)
 	return structGo
+}
+func finalizeInputStreamPrivate(obj *InputStreamPrivate) {
+	inputStreamPrivateStruct.Free(obj.native)
 }
 
 var inputVectorStruct *gi.Struct
@@ -5197,7 +5602,11 @@ func InputVectorStruct() *InputVector {
 	}
 
 	structGo := &InputVector{native: inputVectorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInputVector)
 	return structGo
+}
+func finalizeInputVector(obj *InputVector) {
+	inputVectorStruct.Free(obj.native)
 }
 
 var listModelInterfaceStruct *gi.Struct
@@ -5231,7 +5640,11 @@ func ListModelInterfaceStruct() *ListModelInterface {
 	}
 
 	structGo := &ListModelInterface{native: listModelInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListModelInterface)
 	return structGo
+}
+func finalizeListModelInterface(obj *ListModelInterface) {
+	listModelInterfaceStruct.Free(obj.native)
 }
 
 var listStoreClassStruct *gi.Struct
@@ -5259,7 +5672,11 @@ func ListStoreClassStruct() *ListStoreClass {
 	}
 
 	structGo := &ListStoreClass{native: listStoreClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListStoreClass)
 	return structGo
+}
+func finalizeListStoreClass(obj *ListStoreClass) {
+	listStoreClassStruct.Free(obj.native)
 }
 
 var loadableIconIfaceStruct *gi.Struct
@@ -5293,7 +5710,11 @@ func LoadableIconIfaceStruct() *LoadableIconIface {
 	}
 
 	structGo := &LoadableIconIface{native: loadableIconIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLoadableIconIface)
 	return structGo
+}
+func finalizeLoadableIconIface(obj *LoadableIconIface) {
+	loadableIconIfaceStruct.Free(obj.native)
 }
 
 var memoryInputStreamClassStruct *gi.Struct
@@ -5336,7 +5757,11 @@ func MemoryInputStreamClassStruct() *MemoryInputStreamClass {
 	}
 
 	structGo := &MemoryInputStreamClass{native: memoryInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMemoryInputStreamClass)
 	return structGo
+}
+func finalizeMemoryInputStreamClass(obj *MemoryInputStreamClass) {
+	memoryInputStreamClassStruct.Free(obj.native)
 }
 
 var memoryInputStreamPrivateStruct *gi.Struct
@@ -5362,7 +5787,11 @@ func MemoryInputStreamPrivateStruct() *MemoryInputStreamPrivate {
 	}
 
 	structGo := &MemoryInputStreamPrivate{native: memoryInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMemoryInputStreamPrivate)
 	return structGo
+}
+func finalizeMemoryInputStreamPrivate(obj *MemoryInputStreamPrivate) {
+	memoryInputStreamPrivateStruct.Free(obj.native)
 }
 
 var memoryOutputStreamClassStruct *gi.Struct
@@ -5405,7 +5834,11 @@ func MemoryOutputStreamClassStruct() *MemoryOutputStreamClass {
 	}
 
 	structGo := &MemoryOutputStreamClass{native: memoryOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMemoryOutputStreamClass)
 	return structGo
+}
+func finalizeMemoryOutputStreamClass(obj *MemoryOutputStreamClass) {
+	memoryOutputStreamClassStruct.Free(obj.native)
 }
 
 var memoryOutputStreamPrivateStruct *gi.Struct
@@ -5431,7 +5864,11 @@ func MemoryOutputStreamPrivateStruct() *MemoryOutputStreamPrivate {
 	}
 
 	structGo := &MemoryOutputStreamPrivate{native: memoryOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMemoryOutputStreamPrivate)
 	return structGo
+}
+func finalizeMemoryOutputStreamPrivate(obj *MemoryOutputStreamPrivate) {
+	memoryOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var menuAttributeIterClassStruct *gi.Struct
@@ -5461,7 +5898,11 @@ func MenuAttributeIterClassStruct() *MenuAttributeIterClass {
 	}
 
 	structGo := &MenuAttributeIterClass{native: menuAttributeIterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuAttributeIterClass)
 	return structGo
+}
+func finalizeMenuAttributeIterClass(obj *MenuAttributeIterClass) {
+	menuAttributeIterClassStruct.Free(obj.native)
 }
 
 var menuAttributeIterPrivateStruct *gi.Struct
@@ -5487,7 +5928,11 @@ func MenuAttributeIterPrivateStruct() *MenuAttributeIterPrivate {
 	}
 
 	structGo := &MenuAttributeIterPrivate{native: menuAttributeIterPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuAttributeIterPrivate)
 	return structGo
+}
+func finalizeMenuAttributeIterPrivate(obj *MenuAttributeIterPrivate) {
+	menuAttributeIterPrivateStruct.Free(obj.native)
 }
 
 var menuLinkIterClassStruct *gi.Struct
@@ -5517,7 +5962,11 @@ func MenuLinkIterClassStruct() *MenuLinkIterClass {
 	}
 
 	structGo := &MenuLinkIterClass{native: menuLinkIterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuLinkIterClass)
 	return structGo
+}
+func finalizeMenuLinkIterClass(obj *MenuLinkIterClass) {
+	menuLinkIterClassStruct.Free(obj.native)
 }
 
 var menuLinkIterPrivateStruct *gi.Struct
@@ -5543,7 +5992,11 @@ func MenuLinkIterPrivateStruct() *MenuLinkIterPrivate {
 	}
 
 	structGo := &MenuLinkIterPrivate{native: menuLinkIterPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuLinkIterPrivate)
 	return structGo
+}
+func finalizeMenuLinkIterPrivate(obj *MenuLinkIterPrivate) {
+	menuLinkIterPrivateStruct.Free(obj.native)
 }
 
 var menuModelClassStruct *gi.Struct
@@ -5587,7 +6040,11 @@ func MenuModelClassStruct() *MenuModelClass {
 	}
 
 	structGo := &MenuModelClass{native: menuModelClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuModelClass)
 	return structGo
+}
+func finalizeMenuModelClass(obj *MenuModelClass) {
+	menuModelClassStruct.Free(obj.native)
 }
 
 var menuModelPrivateStruct *gi.Struct
@@ -5613,7 +6070,11 @@ func MenuModelPrivateStruct() *MenuModelPrivate {
 	}
 
 	structGo := &MenuModelPrivate{native: menuModelPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuModelPrivate)
 	return structGo
+}
+func finalizeMenuModelPrivate(obj *MenuModelPrivate) {
+	menuModelPrivateStruct.Free(obj.native)
 }
 
 var mountIfaceStruct *gi.Struct
@@ -5695,7 +6156,11 @@ func MountIfaceStruct() *MountIface {
 	}
 
 	structGo := &MountIface{native: mountIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMountIface)
 	return structGo
+}
+func finalizeMountIface(obj *MountIface) {
+	mountIfaceStruct.Free(obj.native)
 }
 
 var mountOperationClassStruct *gi.Struct
@@ -5753,7 +6218,11 @@ func MountOperationClassStruct() *MountOperationClass {
 	}
 
 	structGo := &MountOperationClass{native: mountOperationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMountOperationClass)
 	return structGo
+}
+func finalizeMountOperationClass(obj *MountOperationClass) {
+	mountOperationClassStruct.Free(obj.native)
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -5779,7 +6248,11 @@ func MountOperationPrivateStruct() *MountOperationPrivate {
 	}
 
 	structGo := &MountOperationPrivate{native: mountOperationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMountOperationPrivate)
 	return structGo
+}
+func finalizeMountOperationPrivate(obj *MountOperationPrivate) {
+	mountOperationPrivateStruct.Free(obj.native)
 }
 
 var nativeSocketAddressClassStruct *gi.Struct
@@ -5812,7 +6285,11 @@ func NativeSocketAddressClassStruct() *NativeSocketAddressClass {
 	}
 
 	structGo := &NativeSocketAddressClass{native: nativeSocketAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNativeSocketAddressClass)
 	return structGo
+}
+func finalizeNativeSocketAddressClass(obj *NativeSocketAddressClass) {
+	nativeSocketAddressClassStruct.Free(obj.native)
 }
 
 var nativeSocketAddressPrivateStruct *gi.Struct
@@ -5838,7 +6315,11 @@ func NativeSocketAddressPrivateStruct() *NativeSocketAddressPrivate {
 	}
 
 	structGo := &NativeSocketAddressPrivate{native: nativeSocketAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNativeSocketAddressPrivate)
 	return structGo
+}
+func finalizeNativeSocketAddressPrivate(obj *NativeSocketAddressPrivate) {
+	nativeSocketAddressPrivateStruct.Free(obj.native)
 }
 
 var nativeVolumeMonitorClassStruct *gi.Struct
@@ -5873,7 +6354,11 @@ func NativeVolumeMonitorClassStruct() *NativeVolumeMonitorClass {
 	}
 
 	structGo := &NativeVolumeMonitorClass{native: nativeVolumeMonitorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNativeVolumeMonitorClass)
 	return structGo
+}
+func finalizeNativeVolumeMonitorClass(obj *NativeVolumeMonitorClass) {
+	nativeVolumeMonitorClassStruct.Free(obj.native)
 }
 
 var networkAddressClassStruct *gi.Struct
@@ -5901,7 +6386,11 @@ func NetworkAddressClassStruct() *NetworkAddressClass {
 	}
 
 	structGo := &NetworkAddressClass{native: networkAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNetworkAddressClass)
 	return structGo
+}
+func finalizeNetworkAddressClass(obj *NetworkAddressClass) {
+	networkAddressClassStruct.Free(obj.native)
 }
 
 var networkAddressPrivateStruct *gi.Struct
@@ -5927,7 +6416,11 @@ func NetworkAddressPrivateStruct() *NetworkAddressPrivate {
 	}
 
 	structGo := &NetworkAddressPrivate{native: networkAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNetworkAddressPrivate)
 	return structGo
+}
+func finalizeNetworkAddressPrivate(obj *NetworkAddressPrivate) {
+	networkAddressPrivateStruct.Free(obj.native)
 }
 
 var networkMonitorInterfaceStruct *gi.Struct
@@ -5963,7 +6456,11 @@ func NetworkMonitorInterfaceStruct() *NetworkMonitorInterface {
 	}
 
 	structGo := &NetworkMonitorInterface{native: networkMonitorInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNetworkMonitorInterface)
 	return structGo
+}
+func finalizeNetworkMonitorInterface(obj *NetworkMonitorInterface) {
+	networkMonitorInterfaceStruct.Free(obj.native)
 }
 
 var networkServiceClassStruct *gi.Struct
@@ -5991,7 +6488,11 @@ func NetworkServiceClassStruct() *NetworkServiceClass {
 	}
 
 	structGo := &NetworkServiceClass{native: networkServiceClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNetworkServiceClass)
 	return structGo
+}
+func finalizeNetworkServiceClass(obj *NetworkServiceClass) {
+	networkServiceClassStruct.Free(obj.native)
 }
 
 var networkServicePrivateStruct *gi.Struct
@@ -6017,7 +6518,11 @@ func NetworkServicePrivateStruct() *NetworkServicePrivate {
 	}
 
 	structGo := &NetworkServicePrivate{native: networkServicePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNetworkServicePrivate)
 	return structGo
+}
+func finalizeNetworkServicePrivate(obj *NetworkServicePrivate) {
+	networkServicePrivateStruct.Free(obj.native)
 }
 
 var outputMessageStruct *gi.Struct
@@ -6075,7 +6580,11 @@ func OutputMessageStruct() *OutputMessage {
 	}
 
 	structGo := &OutputMessage{native: outputMessageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOutputMessage)
 	return structGo
+}
+func finalizeOutputMessage(obj *OutputMessage) {
+	outputMessageStruct.Free(obj.native)
 }
 
 var outputStreamClassStruct *gi.Struct
@@ -6143,7 +6652,11 @@ func OutputStreamClassStruct() *OutputStreamClass {
 	}
 
 	structGo := &OutputStreamClass{native: outputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOutputStreamClass)
 	return structGo
+}
+func finalizeOutputStreamClass(obj *OutputStreamClass) {
+	outputStreamClassStruct.Free(obj.native)
 }
 
 var outputStreamPrivateStruct *gi.Struct
@@ -6169,7 +6682,11 @@ func OutputStreamPrivateStruct() *OutputStreamPrivate {
 	}
 
 	structGo := &OutputStreamPrivate{native: outputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOutputStreamPrivate)
 	return structGo
+}
+func finalizeOutputStreamPrivate(obj *OutputStreamPrivate) {
+	outputStreamPrivateStruct.Free(obj.native)
 }
 
 var outputVectorStruct *gi.Struct
@@ -6204,7 +6721,11 @@ func OutputVectorStruct() *OutputVector {
 	}
 
 	structGo := &OutputVector{native: outputVectorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOutputVector)
 	return structGo
+}
+func finalizeOutputVector(obj *OutputVector) {
+	outputVectorStruct.Free(obj.native)
 }
 
 var permissionClassStruct *gi.Struct
@@ -6246,7 +6767,11 @@ func PermissionClassStruct() *PermissionClass {
 	}
 
 	structGo := &PermissionClass{native: permissionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePermissionClass)
 	return structGo
+}
+func finalizePermissionClass(obj *PermissionClass) {
+	permissionClassStruct.Free(obj.native)
 }
 
 var permissionPrivateStruct *gi.Struct
@@ -6272,7 +6797,11 @@ func PermissionPrivateStruct() *PermissionPrivate {
 	}
 
 	structGo := &PermissionPrivate{native: permissionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePermissionPrivate)
 	return structGo
+}
+func finalizePermissionPrivate(obj *PermissionPrivate) {
+	permissionPrivateStruct.Free(obj.native)
 }
 
 var pollableInputStreamInterfaceStruct *gi.Struct
@@ -6308,7 +6837,11 @@ func PollableInputStreamInterfaceStruct() *PollableInputStreamInterface {
 	}
 
 	structGo := &PollableInputStreamInterface{native: pollableInputStreamInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePollableInputStreamInterface)
 	return structGo
+}
+func finalizePollableInputStreamInterface(obj *PollableInputStreamInterface) {
+	pollableInputStreamInterfaceStruct.Free(obj.native)
 }
 
 var pollableOutputStreamInterfaceStruct *gi.Struct
@@ -6346,7 +6879,11 @@ func PollableOutputStreamInterfaceStruct() *PollableOutputStreamInterface {
 	}
 
 	structGo := &PollableOutputStreamInterface{native: pollableOutputStreamInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePollableOutputStreamInterface)
 	return structGo
+}
+func finalizePollableOutputStreamInterface(obj *PollableOutputStreamInterface) {
+	pollableOutputStreamInterfaceStruct.Free(obj.native)
 }
 
 var proxyAddressClassStruct *gi.Struct
@@ -6379,7 +6916,11 @@ func ProxyAddressClassStruct() *ProxyAddressClass {
 	}
 
 	structGo := &ProxyAddressClass{native: proxyAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyAddressClass)
 	return structGo
+}
+func finalizeProxyAddressClass(obj *ProxyAddressClass) {
+	proxyAddressClassStruct.Free(obj.native)
 }
 
 var proxyAddressEnumeratorClassStruct *gi.Struct
@@ -6419,7 +6960,11 @@ func ProxyAddressEnumeratorClassStruct() *ProxyAddressEnumeratorClass {
 	}
 
 	structGo := &ProxyAddressEnumeratorClass{native: proxyAddressEnumeratorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyAddressEnumeratorClass)
 	return structGo
+}
+func finalizeProxyAddressEnumeratorClass(obj *ProxyAddressEnumeratorClass) {
+	proxyAddressEnumeratorClassStruct.Free(obj.native)
 }
 
 var proxyAddressEnumeratorPrivateStruct *gi.Struct
@@ -6445,7 +6990,11 @@ func ProxyAddressEnumeratorPrivateStruct() *ProxyAddressEnumeratorPrivate {
 	}
 
 	structGo := &ProxyAddressEnumeratorPrivate{native: proxyAddressEnumeratorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyAddressEnumeratorPrivate)
 	return structGo
+}
+func finalizeProxyAddressEnumeratorPrivate(obj *ProxyAddressEnumeratorPrivate) {
+	proxyAddressEnumeratorPrivateStruct.Free(obj.native)
 }
 
 var proxyAddressPrivateStruct *gi.Struct
@@ -6471,7 +7020,11 @@ func ProxyAddressPrivateStruct() *ProxyAddressPrivate {
 	}
 
 	structGo := &ProxyAddressPrivate{native: proxyAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyAddressPrivate)
 	return structGo
+}
+func finalizeProxyAddressPrivate(obj *ProxyAddressPrivate) {
+	proxyAddressPrivateStruct.Free(obj.native)
 }
 
 var proxyInterfaceStruct *gi.Struct
@@ -6507,7 +7060,11 @@ func ProxyInterfaceStruct() *ProxyInterface {
 	}
 
 	structGo := &ProxyInterface{native: proxyInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyInterface)
 	return structGo
+}
+func finalizeProxyInterface(obj *ProxyInterface) {
+	proxyInterfaceStruct.Free(obj.native)
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -6543,7 +7100,11 @@ func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
 	}
 
 	structGo := &ProxyResolverInterface{native: proxyResolverInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyResolverInterface)
 	return structGo
+}
+func finalizeProxyResolverInterface(obj *ProxyResolverInterface) {
+	proxyResolverInterfaceStruct.Free(obj.native)
 }
 
 var remoteActionGroupInterfaceStruct *gi.Struct
@@ -6575,7 +7136,11 @@ func RemoteActionGroupInterfaceStruct() *RemoteActionGroupInterface {
 	}
 
 	structGo := &RemoteActionGroupInterface{native: remoteActionGroupInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRemoteActionGroupInterface)
 	return structGo
+}
+func finalizeRemoteActionGroupInterface(obj *RemoteActionGroupInterface) {
+	remoteActionGroupInterfaceStruct.Free(obj.native)
 }
 
 var resolverClassStruct *gi.Struct
@@ -6635,7 +7200,11 @@ func ResolverClassStruct() *ResolverClass {
 	}
 
 	structGo := &ResolverClass{native: resolverClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeResolverClass)
 	return structGo
+}
+func finalizeResolverClass(obj *ResolverClass) {
+	resolverClassStruct.Free(obj.native)
 }
 
 var resolverPrivateStruct *gi.Struct
@@ -6661,7 +7230,11 @@ func ResolverPrivateStruct() *ResolverPrivate {
 	}
 
 	structGo := &ResolverPrivate{native: resolverPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeResolverPrivate)
 	return structGo
+}
+func finalizeResolverPrivate(obj *ResolverPrivate) {
+	resolverPrivateStruct.Free(obj.native)
 }
 
 var resourceStruct *gi.Struct
@@ -6840,7 +7413,11 @@ func SeekableIfaceStruct() *SeekableIface {
 	}
 
 	structGo := &SeekableIface{native: seekableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeekableIface)
 	return structGo
+}
+func finalizeSeekableIface(obj *SeekableIface) {
+	seekableIfaceStruct.Free(obj.native)
 }
 
 var settingsBackendClassStruct *gi.Struct
@@ -6888,7 +7465,11 @@ func SettingsBackendClassStruct() *SettingsBackendClass {
 	}
 
 	structGo := &SettingsBackendClass{native: settingsBackendClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsBackendClass)
 	return structGo
+}
+func finalizeSettingsBackendClass(obj *SettingsBackendClass) {
+	settingsBackendClassStruct.Free(obj.native)
 }
 
 var settingsBackendPrivateStruct *gi.Struct
@@ -6914,7 +7495,11 @@ func SettingsBackendPrivateStruct() *SettingsBackendPrivate {
 	}
 
 	structGo := &SettingsBackendPrivate{native: settingsBackendPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsBackendPrivate)
 	return structGo
+}
+func finalizeSettingsBackendPrivate(obj *SettingsBackendPrivate) {
+	settingsBackendPrivateStruct.Free(obj.native)
 }
 
 var settingsClassStruct *gi.Struct
@@ -6952,7 +7537,11 @@ func SettingsClassStruct() *SettingsClass {
 	}
 
 	structGo := &SettingsClass{native: settingsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsClass)
 	return structGo
+}
+func finalizeSettingsClass(obj *SettingsClass) {
+	settingsClassStruct.Free(obj.native)
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -6978,7 +7567,11 @@ func SettingsPrivateStruct() *SettingsPrivate {
 	}
 
 	structGo := &SettingsPrivate{native: settingsPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsPrivate)
 	return structGo
+}
+func finalizeSettingsPrivate(obj *SettingsPrivate) {
+	settingsPrivateStruct.Free(obj.native)
 }
 
 var settingsSchemaStruct *gi.Struct
@@ -6994,17 +7587,6 @@ func settingsSchemaStruct_Set() error {
 
 type SettingsSchema struct {
 	native uintptr
-}
-
-// SettingsSchemaStruct creates an uninitialised SettingsSchema.
-func SettingsSchemaStruct() *SettingsSchema {
-	err := settingsSchemaStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &SettingsSchema{native: settingsSchemaStruct.Alloc()}
-	return structGo
 }
 
 var settingsSchemaGetIdFunction *gi.Function
@@ -7253,6 +7835,21 @@ func (recv *SettingsSchema) Unref() {
 	return
 }
 
+// SettingsSchemaStruct creates an uninitialised SettingsSchema.
+func SettingsSchemaStruct() *SettingsSchema {
+	err := settingsSchemaStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsSchema{native: settingsSchemaStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsSchema)
+	return structGo
+}
+func finalizeSettingsSchema(obj *SettingsSchema) {
+	settingsSchemaStruct.Free(obj.native)
+}
+
 var settingsSchemaKeyStruct *gi.Struct
 var settingsSchemaKeyStruct_Once sync.Once
 
@@ -7266,17 +7863,6 @@ func settingsSchemaKeyStruct_Set() error {
 
 type SettingsSchemaKey struct {
 	native uintptr
-}
-
-// SettingsSchemaKeyStruct creates an uninitialised SettingsSchemaKey.
-func SettingsSchemaKeyStruct() *SettingsSchemaKey {
-	err := settingsSchemaKeyStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &SettingsSchemaKey{native: settingsSchemaKeyStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'g_settings_schema_key_get_default_value' : return type 'GLib.Variant' not supported
@@ -7441,6 +8027,21 @@ func (recv *SettingsSchemaKey) Unref() {
 	}
 
 	return
+}
+
+// SettingsSchemaKeyStruct creates an uninitialised SettingsSchemaKey.
+func SettingsSchemaKeyStruct() *SettingsSchemaKey {
+	err := settingsSchemaKeyStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsSchemaKey{native: settingsSchemaKeyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsSchemaKey)
+	return structGo
+}
+func finalizeSettingsSchemaKey(obj *SettingsSchemaKey) {
+	settingsSchemaKeyStruct.Free(obj.native)
 }
 
 var settingsSchemaSourceStruct *gi.Struct
@@ -7611,7 +8212,11 @@ func SimpleActionGroupClassStruct() *SimpleActionGroupClass {
 	}
 
 	structGo := &SimpleActionGroupClass{native: simpleActionGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleActionGroupClass)
 	return structGo
+}
+func finalizeSimpleActionGroupClass(obj *SimpleActionGroupClass) {
+	simpleActionGroupClassStruct.Free(obj.native)
 }
 
 var simpleActionGroupPrivateStruct *gi.Struct
@@ -7637,7 +8242,11 @@ func SimpleActionGroupPrivateStruct() *SimpleActionGroupPrivate {
 	}
 
 	structGo := &SimpleActionGroupPrivate{native: simpleActionGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleActionGroupPrivate)
 	return structGo
+}
+func finalizeSimpleActionGroupPrivate(obj *SimpleActionGroupPrivate) {
+	simpleActionGroupPrivateStruct.Free(obj.native)
 }
 
 var simpleAsyncResultClassStruct *gi.Struct
@@ -7663,7 +8272,11 @@ func SimpleAsyncResultClassStruct() *SimpleAsyncResultClass {
 	}
 
 	structGo := &SimpleAsyncResultClass{native: simpleAsyncResultClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleAsyncResultClass)
 	return structGo
+}
+func finalizeSimpleAsyncResultClass(obj *SimpleAsyncResultClass) {
+	simpleAsyncResultClassStruct.Free(obj.native)
 }
 
 var simpleProxyResolverClassStruct *gi.Struct
@@ -7701,7 +8314,11 @@ func SimpleProxyResolverClassStruct() *SimpleProxyResolverClass {
 	}
 
 	structGo := &SimpleProxyResolverClass{native: simpleProxyResolverClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleProxyResolverClass)
 	return structGo
+}
+func finalizeSimpleProxyResolverClass(obj *SimpleProxyResolverClass) {
+	simpleProxyResolverClassStruct.Free(obj.native)
 }
 
 var simpleProxyResolverPrivateStruct *gi.Struct
@@ -7727,7 +8344,11 @@ func SimpleProxyResolverPrivateStruct() *SimpleProxyResolverPrivate {
 	}
 
 	structGo := &SimpleProxyResolverPrivate{native: simpleProxyResolverPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleProxyResolverPrivate)
 	return structGo
+}
+func finalizeSimpleProxyResolverPrivate(obj *SimpleProxyResolverPrivate) {
+	simpleProxyResolverPrivateStruct.Free(obj.native)
 }
 
 var socketAddressClassStruct *gi.Struct
@@ -7761,7 +8382,11 @@ func SocketAddressClassStruct() *SocketAddressClass {
 	}
 
 	structGo := &SocketAddressClass{native: socketAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketAddressClass)
 	return structGo
+}
+func finalizeSocketAddressClass(obj *SocketAddressClass) {
+	socketAddressClassStruct.Free(obj.native)
 }
 
 var socketAddressEnumeratorClassStruct *gi.Struct
@@ -7793,7 +8418,11 @@ func SocketAddressEnumeratorClassStruct() *SocketAddressEnumeratorClass {
 	}
 
 	structGo := &SocketAddressEnumeratorClass{native: socketAddressEnumeratorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketAddressEnumeratorClass)
 	return structGo
+}
+func finalizeSocketAddressEnumeratorClass(obj *SocketAddressEnumeratorClass) {
+	socketAddressEnumeratorClassStruct.Free(obj.native)
 }
 
 var socketClassStruct *gi.Struct
@@ -7841,7 +8470,11 @@ func SocketClassStruct() *SocketClass {
 	}
 
 	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
+}
+func finalizeSocketClass(obj *SocketClass) {
+	socketClassStruct.Free(obj.native)
 }
 
 var socketClientClassStruct *gi.Struct
@@ -7879,7 +8512,11 @@ func SocketClientClassStruct() *SocketClientClass {
 	}
 
 	structGo := &SocketClientClass{native: socketClientClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClientClass)
 	return structGo
+}
+func finalizeSocketClientClass(obj *SocketClientClass) {
+	socketClientClassStruct.Free(obj.native)
 }
 
 var socketClientPrivateStruct *gi.Struct
@@ -7905,7 +8542,11 @@ func SocketClientPrivateStruct() *SocketClientPrivate {
 	}
 
 	structGo := &SocketClientPrivate{native: socketClientPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClientPrivate)
 	return structGo
+}
+func finalizeSocketClientPrivate(obj *SocketClientPrivate) {
+	socketClientPrivateStruct.Free(obj.native)
 }
 
 var socketConnectableIfaceStruct *gi.Struct
@@ -7939,7 +8580,11 @@ func SocketConnectableIfaceStruct() *SocketConnectableIface {
 	}
 
 	structGo := &SocketConnectableIface{native: socketConnectableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketConnectableIface)
 	return structGo
+}
+func finalizeSocketConnectableIface(obj *SocketConnectableIface) {
+	socketConnectableIfaceStruct.Free(obj.native)
 }
 
 var socketConnectionClassStruct *gi.Struct
@@ -7984,7 +8629,11 @@ func SocketConnectionClassStruct() *SocketConnectionClass {
 	}
 
 	structGo := &SocketConnectionClass{native: socketConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketConnectionClass)
 	return structGo
+}
+func finalizeSocketConnectionClass(obj *SocketConnectionClass) {
+	socketConnectionClassStruct.Free(obj.native)
 }
 
 var socketConnectionPrivateStruct *gi.Struct
@@ -8010,7 +8659,11 @@ func SocketConnectionPrivateStruct() *SocketConnectionPrivate {
 	}
 
 	structGo := &SocketConnectionPrivate{native: socketConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketConnectionPrivate)
 	return structGo
+}
+func finalizeSocketConnectionPrivate(obj *SocketConnectionPrivate) {
+	socketConnectionPrivateStruct.Free(obj.native)
 }
 
 var socketControlMessageClassStruct *gi.Struct
@@ -8058,7 +8711,11 @@ func SocketControlMessageClassStruct() *SocketControlMessageClass {
 	}
 
 	structGo := &SocketControlMessageClass{native: socketControlMessageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketControlMessageClass)
 	return structGo
+}
+func finalizeSocketControlMessageClass(obj *SocketControlMessageClass) {
+	socketControlMessageClassStruct.Free(obj.native)
 }
 
 var socketControlMessagePrivateStruct *gi.Struct
@@ -8084,7 +8741,11 @@ func SocketControlMessagePrivateStruct() *SocketControlMessagePrivate {
 	}
 
 	structGo := &SocketControlMessagePrivate{native: socketControlMessagePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketControlMessagePrivate)
 	return structGo
+}
+func finalizeSocketControlMessagePrivate(obj *SocketControlMessagePrivate) {
+	socketControlMessagePrivateStruct.Free(obj.native)
 }
 
 var socketListenerClassStruct *gi.Struct
@@ -8126,7 +8787,11 @@ func SocketListenerClassStruct() *SocketListenerClass {
 	}
 
 	structGo := &SocketListenerClass{native: socketListenerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketListenerClass)
 	return structGo
+}
+func finalizeSocketListenerClass(obj *SocketListenerClass) {
+	socketListenerClassStruct.Free(obj.native)
 }
 
 var socketListenerPrivateStruct *gi.Struct
@@ -8152,7 +8817,11 @@ func SocketListenerPrivateStruct() *SocketListenerPrivate {
 	}
 
 	structGo := &SocketListenerPrivate{native: socketListenerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketListenerPrivate)
 	return structGo
+}
+func finalizeSocketListenerPrivate(obj *SocketListenerPrivate) {
+	socketListenerPrivateStruct.Free(obj.native)
 }
 
 var socketPrivateStruct *gi.Struct
@@ -8178,7 +8847,11 @@ func SocketPrivateStruct() *SocketPrivate {
 	}
 
 	structGo := &SocketPrivate{native: socketPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketPrivate)
 	return structGo
+}
+func finalizeSocketPrivate(obj *SocketPrivate) {
+	socketPrivateStruct.Free(obj.native)
 }
 
 var socketServiceClassStruct *gi.Struct
@@ -8225,7 +8898,11 @@ func SocketServiceClassStruct() *SocketServiceClass {
 	}
 
 	structGo := &SocketServiceClass{native: socketServiceClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketServiceClass)
 	return structGo
+}
+func finalizeSocketServiceClass(obj *SocketServiceClass) {
+	socketServiceClassStruct.Free(obj.native)
 }
 
 var socketServicePrivateStruct *gi.Struct
@@ -8251,7 +8928,11 @@ func SocketServicePrivateStruct() *SocketServicePrivate {
 	}
 
 	structGo := &SocketServicePrivate{native: socketServicePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketServicePrivate)
 	return structGo
+}
+func finalizeSocketServicePrivate(obj *SocketServicePrivate) {
+	socketServicePrivateStruct.Free(obj.native)
 }
 
 var srvTargetStruct *gi.Struct
@@ -8507,17 +9188,6 @@ type StaticResource struct {
 	native uintptr
 }
 
-// StaticResourceStruct creates an uninitialised StaticResource.
-func StaticResourceStruct() *StaticResource {
-	err := staticResourceStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &StaticResource{native: staticResourceStruct.Alloc()}
-	return structGo
-}
-
 var staticResourceFiniFunction *gi.Function
 var staticResourceFiniFunction_Once sync.Once
 
@@ -8606,6 +9276,21 @@ func (recv *StaticResource) Init() {
 	return
 }
 
+// StaticResourceStruct creates an uninitialised StaticResource.
+func StaticResourceStruct() *StaticResource {
+	err := staticResourceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StaticResource{native: staticResourceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStaticResource)
+	return structGo
+}
+func finalizeStaticResource(obj *StaticResource) {
+	staticResourceStruct.Free(obj.native)
+}
+
 var taskClassStruct *gi.Struct
 var taskClassStruct_Once sync.Once
 
@@ -8629,7 +9314,11 @@ func TaskClassStruct() *TaskClass {
 	}
 
 	structGo := &TaskClass{native: taskClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTaskClass)
 	return structGo
+}
+func finalizeTaskClass(obj *TaskClass) {
+	taskClassStruct.Free(obj.native)
 }
 
 var tcpConnectionClassStruct *gi.Struct
@@ -8662,7 +9351,11 @@ func TcpConnectionClassStruct() *TcpConnectionClass {
 	}
 
 	structGo := &TcpConnectionClass{native: tcpConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTcpConnectionClass)
 	return structGo
+}
+func finalizeTcpConnectionClass(obj *TcpConnectionClass) {
+	tcpConnectionClassStruct.Free(obj.native)
 }
 
 var tcpConnectionPrivateStruct *gi.Struct
@@ -8688,7 +9381,11 @@ func TcpConnectionPrivateStruct() *TcpConnectionPrivate {
 	}
 
 	structGo := &TcpConnectionPrivate{native: tcpConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTcpConnectionPrivate)
 	return structGo
+}
+func finalizeTcpConnectionPrivate(obj *TcpConnectionPrivate) {
+	tcpConnectionPrivateStruct.Free(obj.native)
 }
 
 var tcpWrapperConnectionClassStruct *gi.Struct
@@ -8721,7 +9418,11 @@ func TcpWrapperConnectionClassStruct() *TcpWrapperConnectionClass {
 	}
 
 	structGo := &TcpWrapperConnectionClass{native: tcpWrapperConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTcpWrapperConnectionClass)
 	return structGo
+}
+func finalizeTcpWrapperConnectionClass(obj *TcpWrapperConnectionClass) {
+	tcpWrapperConnectionClassStruct.Free(obj.native)
 }
 
 var tcpWrapperConnectionPrivateStruct *gi.Struct
@@ -8747,7 +9448,11 @@ func TcpWrapperConnectionPrivateStruct() *TcpWrapperConnectionPrivate {
 	}
 
 	structGo := &TcpWrapperConnectionPrivate{native: tcpWrapperConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTcpWrapperConnectionPrivate)
 	return structGo
+}
+func finalizeTcpWrapperConnectionPrivate(obj *TcpWrapperConnectionPrivate) {
+	tcpWrapperConnectionPrivateStruct.Free(obj.native)
 }
 
 var themedIconClassStruct *gi.Struct
@@ -8773,7 +9478,11 @@ func ThemedIconClassStruct() *ThemedIconClass {
 	}
 
 	structGo := &ThemedIconClass{native: themedIconClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThemedIconClass)
 	return structGo
+}
+func finalizeThemedIconClass(obj *ThemedIconClass) {
+	themedIconClassStruct.Free(obj.native)
 }
 
 var threadedSocketServiceClassStruct *gi.Struct
@@ -8818,7 +9527,11 @@ func ThreadedSocketServiceClassStruct() *ThreadedSocketServiceClass {
 	}
 
 	structGo := &ThreadedSocketServiceClass{native: threadedSocketServiceClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThreadedSocketServiceClass)
 	return structGo
+}
+func finalizeThreadedSocketServiceClass(obj *ThreadedSocketServiceClass) {
+	threadedSocketServiceClassStruct.Free(obj.native)
 }
 
 var threadedSocketServicePrivateStruct *gi.Struct
@@ -8844,7 +9557,11 @@ func ThreadedSocketServicePrivateStruct() *ThreadedSocketServicePrivate {
 	}
 
 	structGo := &ThreadedSocketServicePrivate{native: threadedSocketServicePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThreadedSocketServicePrivate)
 	return structGo
+}
+func finalizeThreadedSocketServicePrivate(obj *ThreadedSocketServicePrivate) {
+	threadedSocketServicePrivateStruct.Free(obj.native)
 }
 
 var tlsBackendInterfaceStruct *gi.Struct
@@ -8890,7 +9607,11 @@ func TlsBackendInterfaceStruct() *TlsBackendInterface {
 	}
 
 	structGo := &TlsBackendInterface{native: tlsBackendInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsBackendInterface)
 	return structGo
+}
+func finalizeTlsBackendInterface(obj *TlsBackendInterface) {
+	tlsBackendInterfaceStruct.Free(obj.native)
 }
 
 var tlsCertificateClassStruct *gi.Struct
@@ -8920,7 +9641,11 @@ func TlsCertificateClassStruct() *TlsCertificateClass {
 	}
 
 	structGo := &TlsCertificateClass{native: tlsCertificateClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsCertificateClass)
 	return structGo
+}
+func finalizeTlsCertificateClass(obj *TlsCertificateClass) {
+	tlsCertificateClassStruct.Free(obj.native)
 }
 
 var tlsCertificatePrivateStruct *gi.Struct
@@ -8946,7 +9671,11 @@ func TlsCertificatePrivateStruct() *TlsCertificatePrivate {
 	}
 
 	structGo := &TlsCertificatePrivate{native: tlsCertificatePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsCertificatePrivate)
 	return structGo
+}
+func finalizeTlsCertificatePrivate(obj *TlsCertificatePrivate) {
+	tlsCertificatePrivateStruct.Free(obj.native)
 }
 
 var tlsClientConnectionInterfaceStruct *gi.Struct
@@ -8976,7 +9705,11 @@ func TlsClientConnectionInterfaceStruct() *TlsClientConnectionInterface {
 	}
 
 	structGo := &TlsClientConnectionInterface{native: tlsClientConnectionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsClientConnectionInterface)
 	return structGo
+}
+func finalizeTlsClientConnectionInterface(obj *TlsClientConnectionInterface) {
+	tlsClientConnectionInterfaceStruct.Free(obj.native)
 }
 
 var tlsConnectionClassStruct *gi.Struct
@@ -9017,7 +9750,11 @@ func TlsConnectionClassStruct() *TlsConnectionClass {
 	}
 
 	structGo := &TlsConnectionClass{native: tlsConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsConnectionClass)
 	return structGo
+}
+func finalizeTlsConnectionClass(obj *TlsConnectionClass) {
+	tlsConnectionClassStruct.Free(obj.native)
 }
 
 var tlsConnectionPrivateStruct *gi.Struct
@@ -9043,7 +9780,11 @@ func TlsConnectionPrivateStruct() *TlsConnectionPrivate {
 	}
 
 	structGo := &TlsConnectionPrivate{native: tlsConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsConnectionPrivate)
 	return structGo
+}
+func finalizeTlsConnectionPrivate(obj *TlsConnectionPrivate) {
+	tlsConnectionPrivateStruct.Free(obj.native)
 }
 
 var tlsDatabaseClassStruct *gi.Struct
@@ -9097,7 +9838,11 @@ func TlsDatabaseClassStruct() *TlsDatabaseClass {
 	}
 
 	structGo := &TlsDatabaseClass{native: tlsDatabaseClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsDatabaseClass)
 	return structGo
+}
+func finalizeTlsDatabaseClass(obj *TlsDatabaseClass) {
+	tlsDatabaseClassStruct.Free(obj.native)
 }
 
 var tlsDatabasePrivateStruct *gi.Struct
@@ -9123,7 +9868,11 @@ func TlsDatabasePrivateStruct() *TlsDatabasePrivate {
 	}
 
 	structGo := &TlsDatabasePrivate{native: tlsDatabasePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsDatabasePrivate)
 	return structGo
+}
+func finalizeTlsDatabasePrivate(obj *TlsDatabasePrivate) {
+	tlsDatabasePrivateStruct.Free(obj.native)
 }
 
 var tlsFileDatabaseInterfaceStruct *gi.Struct
@@ -9151,7 +9900,11 @@ func TlsFileDatabaseInterfaceStruct() *TlsFileDatabaseInterface {
 	}
 
 	structGo := &TlsFileDatabaseInterface{native: tlsFileDatabaseInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsFileDatabaseInterface)
 	return structGo
+}
+func finalizeTlsFileDatabaseInterface(obj *TlsFileDatabaseInterface) {
+	tlsFileDatabaseInterfaceStruct.Free(obj.native)
 }
 
 var tlsInteractionClassStruct *gi.Struct
@@ -9189,7 +9942,11 @@ func TlsInteractionClassStruct() *TlsInteractionClass {
 	}
 
 	structGo := &TlsInteractionClass{native: tlsInteractionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsInteractionClass)
 	return structGo
+}
+func finalizeTlsInteractionClass(obj *TlsInteractionClass) {
+	tlsInteractionClassStruct.Free(obj.native)
 }
 
 var tlsInteractionPrivateStruct *gi.Struct
@@ -9215,7 +9972,11 @@ func TlsInteractionPrivateStruct() *TlsInteractionPrivate {
 	}
 
 	structGo := &TlsInteractionPrivate{native: tlsInteractionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsInteractionPrivate)
 	return structGo
+}
+func finalizeTlsInteractionPrivate(obj *TlsInteractionPrivate) {
+	tlsInteractionPrivateStruct.Free(obj.native)
 }
 
 var tlsPasswordClassStruct *gi.Struct
@@ -9249,7 +10010,11 @@ func TlsPasswordClassStruct() *TlsPasswordClass {
 	}
 
 	structGo := &TlsPasswordClass{native: tlsPasswordClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsPasswordClass)
 	return structGo
+}
+func finalizeTlsPasswordClass(obj *TlsPasswordClass) {
+	tlsPasswordClassStruct.Free(obj.native)
 }
 
 var tlsPasswordPrivateStruct *gi.Struct
@@ -9275,7 +10040,11 @@ func TlsPasswordPrivateStruct() *TlsPasswordPrivate {
 	}
 
 	structGo := &TlsPasswordPrivate{native: tlsPasswordPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsPasswordPrivate)
 	return structGo
+}
+func finalizeTlsPasswordPrivate(obj *TlsPasswordPrivate) {
+	tlsPasswordPrivateStruct.Free(obj.native)
 }
 
 var tlsServerConnectionInterfaceStruct *gi.Struct
@@ -9303,7 +10072,11 @@ func TlsServerConnectionInterfaceStruct() *TlsServerConnectionInterface {
 	}
 
 	structGo := &TlsServerConnectionInterface{native: tlsServerConnectionInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsServerConnectionInterface)
 	return structGo
+}
+func finalizeTlsServerConnectionInterface(obj *TlsServerConnectionInterface) {
+	tlsServerConnectionInterfaceStruct.Free(obj.native)
 }
 
 var unixConnectionClassStruct *gi.Struct
@@ -9336,7 +10109,11 @@ func UnixConnectionClassStruct() *UnixConnectionClass {
 	}
 
 	structGo := &UnixConnectionClass{native: unixConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixConnectionClass)
 	return structGo
+}
+func finalizeUnixConnectionClass(obj *UnixConnectionClass) {
+	unixConnectionClassStruct.Free(obj.native)
 }
 
 var unixConnectionPrivateStruct *gi.Struct
@@ -9362,7 +10139,11 @@ func UnixConnectionPrivateStruct() *UnixConnectionPrivate {
 	}
 
 	structGo := &UnixConnectionPrivate{native: unixConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixConnectionPrivate)
 	return structGo
+}
+func finalizeUnixConnectionPrivate(obj *UnixConnectionPrivate) {
+	unixConnectionPrivateStruct.Free(obj.native)
 }
 
 var unixCredentialsMessageClassStruct *gi.Struct
@@ -9399,7 +10180,11 @@ func UnixCredentialsMessageClassStruct() *UnixCredentialsMessageClass {
 	}
 
 	structGo := &UnixCredentialsMessageClass{native: unixCredentialsMessageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixCredentialsMessageClass)
 	return structGo
+}
+func finalizeUnixCredentialsMessageClass(obj *UnixCredentialsMessageClass) {
+	unixCredentialsMessageClassStruct.Free(obj.native)
 }
 
 var unixCredentialsMessagePrivateStruct *gi.Struct
@@ -9425,7 +10210,11 @@ func UnixCredentialsMessagePrivateStruct() *UnixCredentialsMessagePrivate {
 	}
 
 	structGo := &UnixCredentialsMessagePrivate{native: unixCredentialsMessagePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixCredentialsMessagePrivate)
 	return structGo
+}
+func finalizeUnixCredentialsMessagePrivate(obj *UnixCredentialsMessagePrivate) {
+	unixCredentialsMessagePrivateStruct.Free(obj.native)
 }
 
 var unixFDListClassStruct *gi.Struct
@@ -9463,7 +10252,11 @@ func UnixFDListClassStruct() *UnixFDListClass {
 	}
 
 	structGo := &UnixFDListClass{native: unixFDListClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixFDListClass)
 	return structGo
+}
+func finalizeUnixFDListClass(obj *UnixFDListClass) {
+	unixFDListClassStruct.Free(obj.native)
 }
 
 var unixFDListPrivateStruct *gi.Struct
@@ -9489,7 +10282,11 @@ func UnixFDListPrivateStruct() *UnixFDListPrivate {
 	}
 
 	structGo := &UnixFDListPrivate{native: unixFDListPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixFDListPrivate)
 	return structGo
+}
+func finalizeUnixFDListPrivate(obj *UnixFDListPrivate) {
+	unixFDListPrivateStruct.Free(obj.native)
 }
 
 var unixFDMessageClassStruct *gi.Struct
@@ -9526,7 +10323,11 @@ func UnixFDMessageClassStruct() *UnixFDMessageClass {
 	}
 
 	structGo := &UnixFDMessageClass{native: unixFDMessageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixFDMessageClass)
 	return structGo
+}
+func finalizeUnixFDMessageClass(obj *UnixFDMessageClass) {
+	unixFDMessageClassStruct.Free(obj.native)
 }
 
 var unixFDMessagePrivateStruct *gi.Struct
@@ -9552,7 +10353,11 @@ func UnixFDMessagePrivateStruct() *UnixFDMessagePrivate {
 	}
 
 	structGo := &UnixFDMessagePrivate{native: unixFDMessagePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixFDMessagePrivate)
 	return structGo
+}
+func finalizeUnixFDMessagePrivate(obj *UnixFDMessagePrivate) {
+	unixFDMessagePrivateStruct.Free(obj.native)
 }
 
 var unixInputStreamClassStruct *gi.Struct
@@ -9595,7 +10400,11 @@ func UnixInputStreamClassStruct() *UnixInputStreamClass {
 	}
 
 	structGo := &UnixInputStreamClass{native: unixInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixInputStreamClass)
 	return structGo
+}
+func finalizeUnixInputStreamClass(obj *UnixInputStreamClass) {
+	unixInputStreamClassStruct.Free(obj.native)
 }
 
 var unixInputStreamPrivateStruct *gi.Struct
@@ -9621,7 +10430,11 @@ func UnixInputStreamPrivateStruct() *UnixInputStreamPrivate {
 	}
 
 	structGo := &UnixInputStreamPrivate{native: unixInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixInputStreamPrivate)
 	return structGo
+}
+func finalizeUnixInputStreamPrivate(obj *UnixInputStreamPrivate) {
+	unixInputStreamPrivateStruct.Free(obj.native)
 }
 
 var unixMountEntryStruct *gi.Struct
@@ -9647,7 +10460,11 @@ func UnixMountEntryStruct() *UnixMountEntry {
 	}
 
 	structGo := &UnixMountEntry{native: unixMountEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixMountEntry)
 	return structGo
+}
+func finalizeUnixMountEntry(obj *UnixMountEntry) {
+	unixMountEntryStruct.Free(obj.native)
 }
 
 var unixMountMonitorClassStruct *gi.Struct
@@ -9673,7 +10490,11 @@ func UnixMountMonitorClassStruct() *UnixMountMonitorClass {
 	}
 
 	structGo := &UnixMountMonitorClass{native: unixMountMonitorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixMountMonitorClass)
 	return structGo
+}
+func finalizeUnixMountMonitorClass(obj *UnixMountMonitorClass) {
+	unixMountMonitorClassStruct.Free(obj.native)
 }
 
 var unixMountPointStruct *gi.Struct
@@ -9689,17 +10510,6 @@ func unixMountPointStruct_Set() error {
 
 type UnixMountPoint struct {
 	native uintptr
-}
-
-// UnixMountPointStruct creates an uninitialised UnixMountPoint.
-func UnixMountPointStruct() *UnixMountPoint {
-	err := unixMountPointStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &UnixMountPoint{native: unixMountPointStruct.Alloc()}
-	return structGo
 }
 
 var unixMountPointCompareFunction *gi.Function
@@ -10087,6 +10897,21 @@ func (recv *UnixMountPoint) IsUserMountable() bool {
 	return retGo
 }
 
+// UnixMountPointStruct creates an uninitialised UnixMountPoint.
+func UnixMountPointStruct() *UnixMountPoint {
+	err := unixMountPointStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixMountPoint{native: unixMountPointStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixMountPoint)
+	return structGo
+}
+func finalizeUnixMountPoint(obj *UnixMountPoint) {
+	unixMountPointStruct.Free(obj.native)
+}
+
 var unixOutputStreamClassStruct *gi.Struct
 var unixOutputStreamClassStruct_Once sync.Once
 
@@ -10127,7 +10952,11 @@ func UnixOutputStreamClassStruct() *UnixOutputStreamClass {
 	}
 
 	structGo := &UnixOutputStreamClass{native: unixOutputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixOutputStreamClass)
 	return structGo
+}
+func finalizeUnixOutputStreamClass(obj *UnixOutputStreamClass) {
+	unixOutputStreamClassStruct.Free(obj.native)
 }
 
 var unixOutputStreamPrivateStruct *gi.Struct
@@ -10153,7 +10982,11 @@ func UnixOutputStreamPrivateStruct() *UnixOutputStreamPrivate {
 	}
 
 	structGo := &UnixOutputStreamPrivate{native: unixOutputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixOutputStreamPrivate)
 	return structGo
+}
+func finalizeUnixOutputStreamPrivate(obj *UnixOutputStreamPrivate) {
+	unixOutputStreamPrivateStruct.Free(obj.native)
 }
 
 var unixSocketAddressClassStruct *gi.Struct
@@ -10186,7 +11019,11 @@ func UnixSocketAddressClassStruct() *UnixSocketAddressClass {
 	}
 
 	structGo := &UnixSocketAddressClass{native: unixSocketAddressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixSocketAddressClass)
 	return structGo
+}
+func finalizeUnixSocketAddressClass(obj *UnixSocketAddressClass) {
+	unixSocketAddressClassStruct.Free(obj.native)
 }
 
 var unixSocketAddressPrivateStruct *gi.Struct
@@ -10212,7 +11049,11 @@ func UnixSocketAddressPrivateStruct() *UnixSocketAddressPrivate {
 	}
 
 	structGo := &UnixSocketAddressPrivate{native: unixSocketAddressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixSocketAddressPrivate)
 	return structGo
+}
+func finalizeUnixSocketAddressPrivate(obj *UnixSocketAddressPrivate) {
+	unixSocketAddressPrivateStruct.Free(obj.native)
 }
 
 var vfsClassStruct *gi.Struct
@@ -10274,7 +11115,11 @@ func VfsClassStruct() *VfsClass {
 	}
 
 	structGo := &VfsClass{native: vfsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVfsClass)
 	return structGo
+}
+func finalizeVfsClass(obj *VfsClass) {
+	vfsClassStruct.Free(obj.native)
 }
 
 var volumeIfaceStruct *gi.Struct
@@ -10344,7 +11189,11 @@ func VolumeIfaceStruct() *VolumeIface {
 	}
 
 	structGo := &VolumeIface{native: volumeIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVolumeIface)
 	return structGo
+}
+func finalizeVolumeIface(obj *VolumeIface) {
+	volumeIfaceStruct.Free(obj.native)
 }
 
 var volumeMonitorClassStruct *gi.Struct
@@ -10422,7 +11271,11 @@ func VolumeMonitorClassStruct() *VolumeMonitorClass {
 	}
 
 	structGo := &VolumeMonitorClass{native: volumeMonitorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVolumeMonitorClass)
 	return structGo
+}
+func finalizeVolumeMonitorClass(obj *VolumeMonitorClass) {
+	volumeMonitorClassStruct.Free(obj.native)
 }
 
 var zlibCompressorClassStruct *gi.Struct
@@ -10450,7 +11303,11 @@ func ZlibCompressorClassStruct() *ZlibCompressorClass {
 	}
 
 	structGo := &ZlibCompressorClass{native: zlibCompressorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeZlibCompressorClass)
 	return structGo
+}
+func finalizeZlibCompressorClass(obj *ZlibCompressorClass) {
+	zlibCompressorClassStruct.Free(obj.native)
 }
 
 var zlibDecompressorClassStruct *gi.Struct
@@ -10478,5 +11335,9 @@ func ZlibDecompressorClassStruct() *ZlibDecompressorClass {
 	}
 
 	structGo := &ZlibDecompressorClass{native: zlibDecompressorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeZlibDecompressorClass)
 	return structGo
+}
+func finalizeZlibDecompressorClass(obj *ZlibDecompressorClass) {
+	zlibDecompressorClassStruct.Free(obj.native)
 }

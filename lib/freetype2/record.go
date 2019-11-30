@@ -4,6 +4,7 @@ package freetype2
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -30,7 +31,11 @@ func BitmapStruct() *Bitmap {
 	}
 
 	structGo := &Bitmap{native: bitmapStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBitmap)
 	return structGo
+}
+func finalizeBitmap(obj *Bitmap) {
+	bitmapStruct.Free(obj.native)
 }
 
 var faceStruct *gi.Struct
@@ -56,7 +61,11 @@ func FaceStruct() *Face {
 	}
 
 	structGo := &Face{native: faceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFace)
 	return structGo
+}
+func finalizeFace(obj *Face) {
+	faceStruct.Free(obj.native)
 }
 
 var libraryStruct *gi.Struct
@@ -82,5 +91,9 @@ func LibraryStruct() *Library {
 	}
 
 	structGo := &Library{native: libraryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLibrary)
 	return structGo
+}
+func finalizeLibrary(obj *Library) {
+	libraryStruct.Free(obj.native)
 }

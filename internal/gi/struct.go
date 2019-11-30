@@ -64,3 +64,7 @@ func (s *Struct) Alloc() uintptr {
 	struct_ := C.malloc(size)
 	return uintptr(struct_)
 }
+
+func (s *Struct) Free(struct_ uintptr) {
+	C.free(unsafe.Pointer(struct_))
+}

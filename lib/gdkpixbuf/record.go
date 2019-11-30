@@ -4,6 +4,7 @@ package gdkpixbuf
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -20,17 +21,6 @@ func pixbufFormatStruct_Set() error {
 
 type PixbufFormat struct {
 	native uintptr
-}
-
-// PixbufFormatStruct creates an uninitialised PixbufFormat.
-func PixbufFormatStruct() *PixbufFormat {
-	err := pixbufFormatStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &PixbufFormat{native: pixbufFormatStruct.Alloc()}
-	return structGo
 }
 
 var pixbufFormatCopyFunction *gi.Function
@@ -403,6 +393,21 @@ func (recv *PixbufFormat) SetDisabled(disabled bool) {
 	return
 }
 
+// PixbufFormatStruct creates an uninitialised PixbufFormat.
+func PixbufFormatStruct() *PixbufFormat {
+	err := pixbufFormatStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &PixbufFormat{native: pixbufFormatStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePixbufFormat)
+	return structGo
+}
+func finalizePixbufFormat(obj *PixbufFormat) {
+	pixbufFormatStruct.Free(obj.native)
+}
+
 var pixbufLoaderClassStruct *gi.Struct
 var pixbufLoaderClassStruct_Once sync.Once
 
@@ -436,7 +441,11 @@ func PixbufLoaderClassStruct() *PixbufLoaderClass {
 	}
 
 	structGo := &PixbufLoaderClass{native: pixbufLoaderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePixbufLoaderClass)
 	return structGo
+}
+func finalizePixbufLoaderClass(obj *PixbufLoaderClass) {
+	pixbufLoaderClassStruct.Free(obj.native)
 }
 
 var pixbufSimpleAnimClassStruct *gi.Struct
@@ -462,5 +471,9 @@ func PixbufSimpleAnimClassStruct() *PixbufSimpleAnimClass {
 	}
 
 	structGo := &PixbufSimpleAnimClass{native: pixbufSimpleAnimClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePixbufSimpleAnimClass)
 	return structGo
+}
+func finalizePixbufSimpleAnimClass(obj *PixbufSimpleAnimClass) {
+	pixbufSimpleAnimClassStruct.Free(obj.native)
 }

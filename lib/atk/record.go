@@ -4,6 +4,7 @@ package atk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -44,7 +45,11 @@ func ActionIfaceStruct() *ActionIface {
 	}
 
 	structGo := &ActionIface{native: actionIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionIface)
 	return structGo
+}
+func finalizeActionIface(obj *ActionIface) {
+	actionIfaceStruct.Free(obj.native)
 }
 
 var attributeStruct *gi.Struct
@@ -84,7 +89,11 @@ func AttributeStruct() *Attribute {
 	}
 
 	structGo := &Attribute{native: attributeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAttribute)
 	return structGo
+}
+func finalizeAttribute(obj *Attribute) {
+	attributeStruct.Free(obj.native)
 }
 
 var componentIfaceStruct *gi.Struct
@@ -144,7 +153,11 @@ func ComponentIfaceStruct() *ComponentIface {
 	}
 
 	structGo := &ComponentIface{native: componentIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComponentIface)
 	return structGo
+}
+func finalizeComponentIface(obj *ComponentIface) {
+	componentIfaceStruct.Free(obj.native)
 }
 
 var documentIfaceStruct *gi.Struct
@@ -188,7 +201,11 @@ func DocumentIfaceStruct() *DocumentIface {
 	}
 
 	structGo := &DocumentIface{native: documentIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDocumentIface)
 	return structGo
+}
+func finalizeDocumentIface(obj *DocumentIface) {
+	documentIfaceStruct.Free(obj.native)
 }
 
 var editableTextIfaceStruct *gi.Struct
@@ -230,7 +247,11 @@ func EditableTextIfaceStruct() *EditableTextIface {
 	}
 
 	structGo := &EditableTextIface{native: editableTextIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEditableTextIface)
 	return structGo
+}
+func finalizeEditableTextIface(obj *EditableTextIface) {
+	editableTextIfaceStruct.Free(obj.native)
 }
 
 var gObjectAccessibleClassStruct *gi.Struct
@@ -267,7 +288,11 @@ func GObjectAccessibleClassStruct() *GObjectAccessibleClass {
 	}
 
 	structGo := &GObjectAccessibleClass{native: gObjectAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGObjectAccessibleClass)
 	return structGo
+}
+func finalizeGObjectAccessibleClass(obj *GObjectAccessibleClass) {
+	gObjectAccessibleClassStruct.Free(obj.native)
 }
 
 var hyperlinkClassStruct *gi.Struct
@@ -315,7 +340,11 @@ func HyperlinkClassStruct() *HyperlinkClass {
 	}
 
 	structGo := &HyperlinkClass{native: hyperlinkClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHyperlinkClass)
 	return structGo
+}
+func finalizeHyperlinkClass(obj *HyperlinkClass) {
+	hyperlinkClassStruct.Free(obj.native)
 }
 
 var hyperlinkImplIfaceStruct *gi.Struct
@@ -345,7 +374,11 @@ func HyperlinkImplIfaceStruct() *HyperlinkImplIface {
 	}
 
 	structGo := &HyperlinkImplIface{native: hyperlinkImplIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHyperlinkImplIface)
 	return structGo
+}
+func finalizeHyperlinkImplIface(obj *HyperlinkImplIface) {
+	hyperlinkImplIfaceStruct.Free(obj.native)
 }
 
 var hypertextIfaceStruct *gi.Struct
@@ -381,7 +414,11 @@ func HypertextIfaceStruct() *HypertextIface {
 	}
 
 	structGo := &HypertextIface{native: hypertextIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHypertextIface)
 	return structGo
+}
+func finalizeHypertextIface(obj *HypertextIface) {
+	hypertextIfaceStruct.Free(obj.native)
 }
 
 var imageIfaceStruct *gi.Struct
@@ -419,7 +456,11 @@ func ImageIfaceStruct() *ImageIface {
 	}
 
 	structGo := &ImageIface{native: imageIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageIface)
 	return structGo
+}
+func finalizeImageIface(obj *ImageIface) {
+	imageIfaceStruct.Free(obj.native)
 }
 
 var implementorStruct *gi.Struct
@@ -437,6 +478,8 @@ type Implementor struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'atk_implementor_ref_accessible' : return type 'Object' not supported
+
 // ImplementorStruct creates an uninitialised Implementor.
 func ImplementorStruct() *Implementor {
 	err := implementorStruct_Set()
@@ -445,10 +488,12 @@ func ImplementorStruct() *Implementor {
 	}
 
 	structGo := &Implementor{native: implementorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImplementor)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'atk_implementor_ref_accessible' : return type 'Object' not supported
+func finalizeImplementor(obj *Implementor) {
+	implementorStruct.Free(obj.native)
+}
 
 var keyEventStructStruct *gi.Struct
 var keyEventStructStruct_Once sync.Once
@@ -522,7 +567,11 @@ func KeyEventStructStruct() *KeyEventStruct {
 	}
 
 	structGo := &KeyEventStruct{native: keyEventStructStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeKeyEventStruct)
 	return structGo
+}
+func finalizeKeyEventStruct(obj *KeyEventStruct) {
+	keyEventStructStruct.Free(obj.native)
 }
 
 var miscClassStruct *gi.Struct
@@ -556,7 +605,11 @@ func MiscClassStruct() *MiscClass {
 	}
 
 	structGo := &MiscClass{native: miscClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMiscClass)
 	return structGo
+}
+func finalizeMiscClass(obj *MiscClass) {
+	miscClassStruct.Free(obj.native)
 }
 
 var noOpObjectClassStruct *gi.Struct
@@ -589,7 +642,11 @@ func NoOpObjectClassStruct() *NoOpObjectClass {
 	}
 
 	structGo := &NoOpObjectClass{native: noOpObjectClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNoOpObjectClass)
 	return structGo
+}
+func finalizeNoOpObjectClass(obj *NoOpObjectClass) {
+	noOpObjectClassStruct.Free(obj.native)
 }
 
 var noOpObjectFactoryClassStruct *gi.Struct
@@ -622,7 +679,11 @@ func NoOpObjectFactoryClassStruct() *NoOpObjectFactoryClass {
 	}
 
 	structGo := &NoOpObjectFactoryClass{native: noOpObjectFactoryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNoOpObjectFactoryClass)
 	return structGo
+}
+func finalizeNoOpObjectFactoryClass(obj *NoOpObjectFactoryClass) {
+	noOpObjectFactoryClassStruct.Free(obj.native)
 }
 
 var objectClassStruct *gi.Struct
@@ -704,7 +765,11 @@ func ObjectClassStruct() *ObjectClass {
 	}
 
 	structGo := &ObjectClass{native: objectClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeObjectClass)
 	return structGo
+}
+func finalizeObjectClass(obj *ObjectClass) {
+	objectClassStruct.Free(obj.native)
 }
 
 var objectFactoryClassStruct *gi.Struct
@@ -742,7 +807,11 @@ func ObjectFactoryClassStruct() *ObjectFactoryClass {
 	}
 
 	structGo := &ObjectFactoryClass{native: objectFactoryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeObjectFactoryClass)
 	return structGo
+}
+func finalizeObjectFactoryClass(obj *ObjectFactoryClass) {
+	objectFactoryClassStruct.Free(obj.native)
 }
 
 var plugClassStruct *gi.Struct
@@ -777,7 +846,11 @@ func PlugClassStruct() *PlugClass {
 	}
 
 	structGo := &PlugClass{native: plugClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePlugClass)
 	return structGo
+}
+func finalizePlugClass(obj *PlugClass) {
+	plugClassStruct.Free(obj.native)
 }
 
 var propertyValuesStruct *gi.Struct
@@ -814,7 +887,11 @@ func PropertyValuesStruct() *PropertyValues {
 	}
 
 	structGo := &PropertyValues{native: propertyValuesStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePropertyValues)
 	return structGo
+}
+func finalizePropertyValues(obj *PropertyValues) {
+	propertyValuesStruct.Free(obj.native)
 }
 
 var rangeStruct *gi.Struct
@@ -1073,7 +1150,11 @@ func RectangleStruct() *Rectangle {
 	}
 
 	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRectangle)
 	return structGo
+}
+func finalizeRectangle(obj *Rectangle) {
+	rectangleStruct.Free(obj.native)
 }
 
 var registryClassStruct *gi.Struct
@@ -1101,7 +1182,11 @@ func RegistryClassStruct() *RegistryClass {
 	}
 
 	structGo := &RegistryClass{native: registryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRegistryClass)
 	return structGo
+}
+func finalizeRegistryClass(obj *RegistryClass) {
+	registryClassStruct.Free(obj.native)
 }
 
 var relationClassStruct *gi.Struct
@@ -1129,7 +1214,11 @@ func RelationClassStruct() *RelationClass {
 	}
 
 	structGo := &RelationClass{native: relationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRelationClass)
 	return structGo
+}
+func finalizeRelationClass(obj *RelationClass) {
+	relationClassStruct.Free(obj.native)
 }
 
 var relationSetClassStruct *gi.Struct
@@ -1161,7 +1250,11 @@ func RelationSetClassStruct() *RelationSetClass {
 	}
 
 	structGo := &RelationSetClass{native: relationSetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRelationSetClass)
 	return structGo
+}
+func finalizeRelationSetClass(obj *RelationSetClass) {
+	relationSetClassStruct.Free(obj.native)
 }
 
 var selectionIfaceStruct *gi.Struct
@@ -1205,7 +1298,11 @@ func SelectionIfaceStruct() *SelectionIface {
 	}
 
 	structGo := &SelectionIface{native: selectionIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSelectionIface)
 	return structGo
+}
+func finalizeSelectionIface(obj *SelectionIface) {
+	selectionIfaceStruct.Free(obj.native)
 }
 
 var socketClassStruct *gi.Struct
@@ -1240,7 +1337,11 @@ func SocketClassStruct() *SocketClass {
 	}
 
 	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
+}
+func finalizeSocketClass(obj *SocketClass) {
+	socketClassStruct.Free(obj.native)
 }
 
 var stateSetClassStruct *gi.Struct
@@ -1268,7 +1369,11 @@ func StateSetClassStruct() *StateSetClass {
 	}
 
 	structGo := &StateSetClass{native: stateSetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStateSetClass)
 	return structGo
+}
+func finalizeStateSetClass(obj *StateSetClass) {
+	stateSetClassStruct.Free(obj.native)
 }
 
 var streamableContentIfaceStruct *gi.Struct
@@ -1310,7 +1415,11 @@ func StreamableContentIfaceStruct() *StreamableContentIface {
 	}
 
 	structGo := &StreamableContentIface{native: streamableContentIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStreamableContentIface)
 	return structGo
+}
+func finalizeStreamableContentIface(obj *StreamableContentIface) {
+	streamableContentIfaceStruct.Free(obj.native)
 }
 
 var tableCellIfaceStruct *gi.Struct
@@ -1350,7 +1459,11 @@ func TableCellIfaceStruct() *TableCellIface {
 	}
 
 	structGo := &TableCellIface{native: tableCellIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTableCellIface)
 	return structGo
+}
+func finalizeTableCellIface(obj *TableCellIface) {
+	tableCellIfaceStruct.Free(obj.native)
 }
 
 var tableIfaceStruct *gi.Struct
@@ -1450,7 +1563,11 @@ func TableIfaceStruct() *TableIface {
 	}
 
 	structGo := &TableIface{native: tableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTableIface)
 	return structGo
+}
+func finalizeTableIface(obj *TableIface) {
+	tableIfaceStruct.Free(obj.native)
 }
 
 var textIfaceStruct *gi.Struct
@@ -1530,7 +1647,11 @@ func TextIfaceStruct() *TextIface {
 	}
 
 	structGo := &TextIface{native: textIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextIface)
 	return structGo
+}
+func finalizeTextIface(obj *TextIface) {
+	textIfaceStruct.Free(obj.native)
 }
 
 var textRangeStruct *gi.Struct
@@ -1584,7 +1705,11 @@ func TextRangeStruct() *TextRange {
 	}
 
 	structGo := &TextRange{native: textRangeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextRange)
 	return structGo
+}
+func finalizeTextRange(obj *TextRange) {
+	textRangeStruct.Free(obj.native)
 }
 
 var textRectangleStruct *gi.Struct
@@ -1638,7 +1763,11 @@ func TextRectangleStruct() *TextRectangle {
 	}
 
 	structGo := &TextRectangle{native: textRectangleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextRectangle)
 	return structGo
+}
+func finalizeTextRectangle(obj *TextRectangle) {
+	textRectangleStruct.Free(obj.native)
 }
 
 var utilClassStruct *gi.Struct
@@ -1680,7 +1809,11 @@ func UtilClassStruct() *UtilClass {
 	}
 
 	structGo := &UtilClass{native: utilClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUtilClass)
 	return structGo
+}
+func finalizeUtilClass(obj *UtilClass) {
+	utilClassStruct.Free(obj.native)
 }
 
 var valueIfaceStruct *gi.Struct
@@ -1728,7 +1861,11 @@ func ValueIfaceStruct() *ValueIface {
 	}
 
 	structGo := &ValueIface{native: valueIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeValueIface)
 	return structGo
+}
+func finalizeValueIface(obj *ValueIface) {
+	valueIfaceStruct.Free(obj.native)
 }
 
 var windowIfaceStruct *gi.Struct
@@ -1756,5 +1893,9 @@ func WindowIfaceStruct() *WindowIface {
 	}
 
 	structGo := &WindowIface{native: windowIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowIface)
 	return structGo
+}
+func finalizeWindowIface(obj *WindowIface) {
+	windowIfaceStruct.Free(obj.native)
 }

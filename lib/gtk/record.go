@@ -5,6 +5,7 @@ package gtk
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"runtime"
 	"sync"
 )
 
@@ -48,7 +49,11 @@ func AboutDialogClassStruct() *AboutDialogClass {
 	}
 
 	structGo := &AboutDialogClass{native: aboutDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAboutDialogClass)
 	return structGo
+}
+func finalizeAboutDialogClass(obj *AboutDialogClass) {
+	aboutDialogClassStruct.Free(obj.native)
 }
 
 var aboutDialogPrivateStruct *gi.Struct
@@ -74,7 +79,11 @@ func AboutDialogPrivateStruct() *AboutDialogPrivate {
 	}
 
 	structGo := &AboutDialogPrivate{native: aboutDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAboutDialogPrivate)
 	return structGo
+}
+func finalizeAboutDialogPrivate(obj *AboutDialogPrivate) {
+	aboutDialogPrivateStruct.Free(obj.native)
 }
 
 var accelGroupClassStruct *gi.Struct
@@ -112,7 +121,11 @@ func AccelGroupClassStruct() *AccelGroupClass {
 	}
 
 	structGo := &AccelGroupClass{native: accelGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelGroupClass)
 	return structGo
+}
+func finalizeAccelGroupClass(obj *AccelGroupClass) {
+	accelGroupClassStruct.Free(obj.native)
 }
 
 var accelGroupEntryStruct *gi.Struct
@@ -154,7 +167,11 @@ func AccelGroupEntryStruct() *AccelGroupEntry {
 	}
 
 	structGo := &AccelGroupEntry{native: accelGroupEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelGroupEntry)
 	return structGo
+}
+func finalizeAccelGroupEntry(obj *AccelGroupEntry) {
+	accelGroupEntryStruct.Free(obj.native)
 }
 
 var accelGroupPrivateStruct *gi.Struct
@@ -180,7 +197,11 @@ func AccelGroupPrivateStruct() *AccelGroupPrivate {
 	}
 
 	structGo := &AccelGroupPrivate{native: accelGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelGroupPrivate)
 	return structGo
+}
+func finalizeAccelGroupPrivate(obj *AccelGroupPrivate) {
+	accelGroupPrivateStruct.Free(obj.native)
 }
 
 var accelKeyStruct *gi.Struct
@@ -222,7 +243,11 @@ func AccelKeyStruct() *AccelKey {
 	}
 
 	structGo := &AccelKey{native: accelKeyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelKey)
 	return structGo
+}
+func finalizeAccelKey(obj *AccelKey) {
+	accelKeyStruct.Free(obj.native)
 }
 
 var accelLabelClassStruct *gi.Struct
@@ -305,7 +330,11 @@ func AccelLabelClassStruct() *AccelLabelClass {
 	}
 
 	structGo := &AccelLabelClass{native: accelLabelClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelLabelClass)
 	return structGo
+}
+func finalizeAccelLabelClass(obj *AccelLabelClass) {
+	accelLabelClassStruct.Free(obj.native)
 }
 
 var accelLabelPrivateStruct *gi.Struct
@@ -331,7 +360,11 @@ func AccelLabelPrivateStruct() *AccelLabelPrivate {
 	}
 
 	structGo := &AccelLabelPrivate{native: accelLabelPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelLabelPrivate)
 	return structGo
+}
+func finalizeAccelLabelPrivate(obj *AccelLabelPrivate) {
+	accelLabelPrivateStruct.Free(obj.native)
 }
 
 var accelMapClassStruct *gi.Struct
@@ -357,7 +390,11 @@ func AccelMapClassStruct() *AccelMapClass {
 	}
 
 	structGo := &AccelMapClass{native: accelMapClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccelMapClass)
 	return structGo
+}
+func finalizeAccelMapClass(obj *AccelMapClass) {
+	accelMapClassStruct.Free(obj.native)
 }
 
 var accessibleClassStruct *gi.Struct
@@ -395,7 +432,11 @@ func AccessibleClassStruct() *AccessibleClass {
 	}
 
 	structGo := &AccessibleClass{native: accessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccessibleClass)
 	return structGo
+}
+func finalizeAccessibleClass(obj *AccessibleClass) {
+	accessibleClassStruct.Free(obj.native)
 }
 
 var accessiblePrivateStruct *gi.Struct
@@ -421,7 +462,11 @@ func AccessiblePrivateStruct() *AccessiblePrivate {
 	}
 
 	structGo := &AccessiblePrivate{native: accessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAccessiblePrivate)
 	return structGo
+}
+func finalizeAccessiblePrivate(obj *AccessiblePrivate) {
+	accessiblePrivateStruct.Free(obj.native)
 }
 
 var actionBarClassStruct *gi.Struct
@@ -455,7 +500,11 @@ func ActionBarClassStruct() *ActionBarClass {
 	}
 
 	structGo := &ActionBarClass{native: actionBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionBarClass)
 	return structGo
+}
+func finalizeActionBarClass(obj *ActionBarClass) {
+	actionBarClassStruct.Free(obj.native)
 }
 
 var actionBarPrivateStruct *gi.Struct
@@ -481,7 +530,11 @@ func ActionBarPrivateStruct() *ActionBarPrivate {
 	}
 
 	structGo := &ActionBarPrivate{native: actionBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionBarPrivate)
 	return structGo
+}
+func finalizeActionBarPrivate(obj *ActionBarPrivate) {
+	actionBarPrivateStruct.Free(obj.native)
 }
 
 var actionClassStruct *gi.Struct
@@ -529,7 +582,11 @@ func ActionClassStruct() *ActionClass {
 	}
 
 	structGo := &ActionClass{native: actionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionClass)
 	return structGo
+}
+func finalizeActionClass(obj *ActionClass) {
+	actionClassStruct.Free(obj.native)
 }
 
 var actionEntryStruct *gi.Struct
@@ -592,7 +649,11 @@ func ActionEntryStruct() *ActionEntry {
 	}
 
 	structGo := &ActionEntry{native: actionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionEntry)
 	return structGo
+}
+func finalizeActionEntry(obj *ActionEntry) {
+	actionEntryStruct.Free(obj.native)
 }
 
 var actionGroupClassStruct *gi.Struct
@@ -630,7 +691,11 @@ func ActionGroupClassStruct() *ActionGroupClass {
 	}
 
 	structGo := &ActionGroupClass{native: actionGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionGroupClass)
 	return structGo
+}
+func finalizeActionGroupClass(obj *ActionGroupClass) {
+	actionGroupClassStruct.Free(obj.native)
 }
 
 var actionGroupPrivateStruct *gi.Struct
@@ -656,7 +721,11 @@ func ActionGroupPrivateStruct() *ActionGroupPrivate {
 	}
 
 	structGo := &ActionGroupPrivate{native: actionGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionGroupPrivate)
 	return structGo
+}
+func finalizeActionGroupPrivate(obj *ActionGroupPrivate) {
+	actionGroupPrivateStruct.Free(obj.native)
 }
 
 var actionPrivateStruct *gi.Struct
@@ -682,7 +751,11 @@ func ActionPrivateStruct() *ActionPrivate {
 	}
 
 	structGo := &ActionPrivate{native: actionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionPrivate)
 	return structGo
+}
+func finalizeActionPrivate(obj *ActionPrivate) {
+	actionPrivateStruct.Free(obj.native)
 }
 
 var actionableInterfaceStruct *gi.Struct
@@ -716,7 +789,11 @@ func ActionableInterfaceStruct() *ActionableInterface {
 	}
 
 	structGo := &ActionableInterface{native: actionableInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActionableInterface)
 	return structGo
+}
+func finalizeActionableInterface(obj *ActionableInterface) {
+	actionableInterfaceStruct.Free(obj.native)
 }
 
 var activatableIfaceStruct *gi.Struct
@@ -746,7 +823,11 @@ func ActivatableIfaceStruct() *ActivatableIface {
 	}
 
 	structGo := &ActivatableIface{native: activatableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeActivatableIface)
 	return structGo
+}
+func finalizeActivatableIface(obj *ActivatableIface) {
+	activatableIfaceStruct.Free(obj.native)
 }
 
 var adjustmentClassStruct *gi.Struct
@@ -786,7 +867,11 @@ func AdjustmentClassStruct() *AdjustmentClass {
 	}
 
 	structGo := &AdjustmentClass{native: adjustmentClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAdjustmentClass)
 	return structGo
+}
+func finalizeAdjustmentClass(obj *AdjustmentClass) {
+	adjustmentClassStruct.Free(obj.native)
 }
 
 var adjustmentPrivateStruct *gi.Struct
@@ -812,7 +897,11 @@ func AdjustmentPrivateStruct() *AdjustmentPrivate {
 	}
 
 	structGo := &AdjustmentPrivate{native: adjustmentPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAdjustmentPrivate)
 	return structGo
+}
+func finalizeAdjustmentPrivate(obj *AdjustmentPrivate) {
+	adjustmentPrivateStruct.Free(obj.native)
 }
 
 var alignmentClassStruct *gi.Struct
@@ -853,7 +942,11 @@ func AlignmentClassStruct() *AlignmentClass {
 	}
 
 	structGo := &AlignmentClass{native: alignmentClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAlignmentClass)
 	return structGo
+}
+func finalizeAlignmentClass(obj *AlignmentClass) {
+	alignmentClassStruct.Free(obj.native)
 }
 
 var alignmentPrivateStruct *gi.Struct
@@ -879,7 +972,11 @@ func AlignmentPrivateStruct() *AlignmentPrivate {
 	}
 
 	structGo := &AlignmentPrivate{native: alignmentPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAlignmentPrivate)
 	return structGo
+}
+func finalizeAlignmentPrivate(obj *AlignmentPrivate) {
+	alignmentPrivateStruct.Free(obj.native)
 }
 
 var appChooserButtonClassStruct *gi.Struct
@@ -914,7 +1011,11 @@ func AppChooserButtonClassStruct() *AppChooserButtonClass {
 	}
 
 	structGo := &AppChooserButtonClass{native: appChooserButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserButtonClass)
 	return structGo
+}
+func finalizeAppChooserButtonClass(obj *AppChooserButtonClass) {
+	appChooserButtonClassStruct.Free(obj.native)
 }
 
 var appChooserButtonPrivateStruct *gi.Struct
@@ -940,7 +1041,11 @@ func AppChooserButtonPrivateStruct() *AppChooserButtonPrivate {
 	}
 
 	structGo := &AppChooserButtonPrivate{native: appChooserButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserButtonPrivate)
 	return structGo
+}
+func finalizeAppChooserButtonPrivate(obj *AppChooserButtonPrivate) {
+	appChooserButtonPrivateStruct.Free(obj.native)
 }
 
 var appChooserDialogClassStruct *gi.Struct
@@ -973,7 +1078,11 @@ func AppChooserDialogClassStruct() *AppChooserDialogClass {
 	}
 
 	structGo := &AppChooserDialogClass{native: appChooserDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserDialogClass)
 	return structGo
+}
+func finalizeAppChooserDialogClass(obj *AppChooserDialogClass) {
+	appChooserDialogClassStruct.Free(obj.native)
 }
 
 var appChooserDialogPrivateStruct *gi.Struct
@@ -999,7 +1108,11 @@ func AppChooserDialogPrivateStruct() *AppChooserDialogPrivate {
 	}
 
 	structGo := &AppChooserDialogPrivate{native: appChooserDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserDialogPrivate)
 	return structGo
+}
+func finalizeAppChooserDialogPrivate(obj *AppChooserDialogPrivate) {
+	appChooserDialogPrivateStruct.Free(obj.native)
 }
 
 var appChooserWidgetClassStruct *gi.Struct
@@ -1038,7 +1151,11 @@ func AppChooserWidgetClassStruct() *AppChooserWidgetClass {
 	}
 
 	structGo := &AppChooserWidgetClass{native: appChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserWidgetClass)
 	return structGo
+}
+func finalizeAppChooserWidgetClass(obj *AppChooserWidgetClass) {
+	appChooserWidgetClassStruct.Free(obj.native)
 }
 
 var appChooserWidgetPrivateStruct *gi.Struct
@@ -1064,7 +1181,11 @@ func AppChooserWidgetPrivateStruct() *AppChooserWidgetPrivate {
 	}
 
 	structGo := &AppChooserWidgetPrivate{native: appChooserWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppChooserWidgetPrivate)
 	return structGo
+}
+func finalizeAppChooserWidgetPrivate(obj *AppChooserWidgetPrivate) {
+	appChooserWidgetPrivateStruct.Free(obj.native)
 }
 
 var applicationClassStruct *gi.Struct
@@ -1096,7 +1217,11 @@ func ApplicationClassStruct() *ApplicationClass {
 	}
 
 	structGo := &ApplicationClass{native: applicationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationClass)
 	return structGo
+}
+func finalizeApplicationClass(obj *ApplicationClass) {
+	applicationClassStruct.Free(obj.native)
 }
 
 var applicationPrivateStruct *gi.Struct
@@ -1122,7 +1247,11 @@ func ApplicationPrivateStruct() *ApplicationPrivate {
 	}
 
 	structGo := &ApplicationPrivate{native: applicationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationPrivate)
 	return structGo
+}
+func finalizeApplicationPrivate(obj *ApplicationPrivate) {
+	applicationPrivateStruct.Free(obj.native)
 }
 
 var applicationWindowClassStruct *gi.Struct
@@ -1155,7 +1284,11 @@ func ApplicationWindowClassStruct() *ApplicationWindowClass {
 	}
 
 	structGo := &ApplicationWindowClass{native: applicationWindowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationWindowClass)
 	return structGo
+}
+func finalizeApplicationWindowClass(obj *ApplicationWindowClass) {
+	applicationWindowClassStruct.Free(obj.native)
 }
 
 var applicationWindowPrivateStruct *gi.Struct
@@ -1181,7 +1314,11 @@ func ApplicationWindowPrivateStruct() *ApplicationWindowPrivate {
 	}
 
 	structGo := &ApplicationWindowPrivate{native: applicationWindowPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationWindowPrivate)
 	return structGo
+}
+func finalizeApplicationWindowPrivate(obj *ApplicationWindowPrivate) {
+	applicationWindowPrivateStruct.Free(obj.native)
 }
 
 var arrowAccessibleClassStruct *gi.Struct
@@ -1214,7 +1351,11 @@ func ArrowAccessibleClassStruct() *ArrowAccessibleClass {
 	}
 
 	structGo := &ArrowAccessibleClass{native: arrowAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeArrowAccessibleClass)
 	return structGo
+}
+func finalizeArrowAccessibleClass(obj *ArrowAccessibleClass) {
+	arrowAccessibleClassStruct.Free(obj.native)
 }
 
 var arrowAccessiblePrivateStruct *gi.Struct
@@ -1240,7 +1381,11 @@ func ArrowAccessiblePrivateStruct() *ArrowAccessiblePrivate {
 	}
 
 	structGo := &ArrowAccessiblePrivate{native: arrowAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeArrowAccessiblePrivate)
 	return structGo
+}
+func finalizeArrowAccessiblePrivate(obj *ArrowAccessiblePrivate) {
+	arrowAccessiblePrivateStruct.Free(obj.native)
 }
 
 var arrowClassStruct *gi.Struct
@@ -1281,7 +1426,11 @@ func ArrowClassStruct() *ArrowClass {
 	}
 
 	structGo := &ArrowClass{native: arrowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeArrowClass)
 	return structGo
+}
+func finalizeArrowClass(obj *ArrowClass) {
+	arrowClassStruct.Free(obj.native)
 }
 
 var arrowPrivateStruct *gi.Struct
@@ -1307,7 +1456,11 @@ func ArrowPrivateStruct() *ArrowPrivate {
 	}
 
 	structGo := &ArrowPrivate{native: arrowPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeArrowPrivate)
 	return structGo
+}
+func finalizeArrowPrivate(obj *ArrowPrivate) {
+	arrowPrivateStruct.Free(obj.native)
 }
 
 var aspectFrameClassStruct *gi.Struct
@@ -1348,7 +1501,11 @@ func AspectFrameClassStruct() *AspectFrameClass {
 	}
 
 	structGo := &AspectFrameClass{native: aspectFrameClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAspectFrameClass)
 	return structGo
+}
+func finalizeAspectFrameClass(obj *AspectFrameClass) {
+	aspectFrameClassStruct.Free(obj.native)
 }
 
 var aspectFramePrivateStruct *gi.Struct
@@ -1374,7 +1531,11 @@ func AspectFramePrivateStruct() *AspectFramePrivate {
 	}
 
 	structGo := &AspectFramePrivate{native: aspectFramePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAspectFramePrivate)
 	return structGo
+}
+func finalizeAspectFramePrivate(obj *AspectFramePrivate) {
+	aspectFramePrivateStruct.Free(obj.native)
 }
 
 var assistantClassStruct *gi.Struct
@@ -1425,7 +1586,11 @@ func AssistantClassStruct() *AssistantClass {
 	}
 
 	structGo := &AssistantClass{native: assistantClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAssistantClass)
 	return structGo
+}
+func finalizeAssistantClass(obj *AssistantClass) {
+	assistantClassStruct.Free(obj.native)
 }
 
 var assistantPrivateStruct *gi.Struct
@@ -1451,7 +1616,11 @@ func AssistantPrivateStruct() *AssistantPrivate {
 	}
 
 	structGo := &AssistantPrivate{native: assistantPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAssistantPrivate)
 	return structGo
+}
+func finalizeAssistantPrivate(obj *AssistantPrivate) {
+	assistantPrivateStruct.Free(obj.native)
 }
 
 var binClassStruct *gi.Struct
@@ -1492,7 +1661,11 @@ func BinClassStruct() *BinClass {
 	}
 
 	structGo := &BinClass{native: binClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBinClass)
 	return structGo
+}
+func finalizeBinClass(obj *BinClass) {
+	binClassStruct.Free(obj.native)
 }
 
 var binPrivateStruct *gi.Struct
@@ -1518,7 +1691,11 @@ func BinPrivateStruct() *BinPrivate {
 	}
 
 	structGo := &BinPrivate{native: binPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBinPrivate)
 	return structGo
+}
+func finalizeBinPrivate(obj *BinPrivate) {
+	binPrivateStruct.Free(obj.native)
 }
 
 var bindingArgStruct *gi.Struct
@@ -1546,7 +1723,11 @@ func BindingArgStruct() *BindingArg {
 	}
 
 	structGo := &BindingArg{native: bindingArgStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBindingArg)
 	return structGo
+}
+func finalizeBindingArg(obj *BindingArg) {
+	bindingArgStruct.Free(obj.native)
 }
 
 var bindingEntryStruct *gi.Struct
@@ -1630,7 +1811,11 @@ func BindingEntryStruct() *BindingEntry {
 	}
 
 	structGo := &BindingEntry{native: bindingEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBindingEntry)
 	return structGo
+}
+func finalizeBindingEntry(obj *BindingEntry) {
+	bindingEntryStruct.Free(obj.native)
 }
 
 var bindingSetStruct *gi.Struct
@@ -1689,6 +1874,10 @@ func (recv *BindingSet) Parsed() uint32 {
 	return value
 }
 
+// UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'gtk_binding_set_add_path' : parameter 'path_type' of type 'PathType' not supported
+
 // BindingSetStruct creates an uninitialised BindingSet.
 func BindingSetStruct() *BindingSet {
 	err := bindingSetStruct_Set()
@@ -1697,12 +1886,12 @@ func BindingSetStruct() *BindingSet {
 	}
 
 	structGo := &BindingSet{native: bindingSetStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBindingSet)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
-
-// UNSUPPORTED : C value 'gtk_binding_set_add_path' : parameter 'path_type' of type 'PathType' not supported
+func finalizeBindingSet(obj *BindingSet) {
+	bindingSetStruct.Free(obj.native)
+}
 
 var bindingSignalStruct *gi.Struct
 var bindingSignalStruct_Once sync.Once
@@ -1750,7 +1939,11 @@ func BindingSignalStruct() *BindingSignal {
 	}
 
 	structGo := &BindingSignal{native: bindingSignalStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBindingSignal)
 	return structGo
+}
+func finalizeBindingSignal(obj *BindingSignal) {
+	bindingSignalStruct.Free(obj.native)
 }
 
 var booleanCellAccessibleClassStruct *gi.Struct
@@ -1783,7 +1976,11 @@ func BooleanCellAccessibleClassStruct() *BooleanCellAccessibleClass {
 	}
 
 	structGo := &BooleanCellAccessibleClass{native: booleanCellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBooleanCellAccessibleClass)
 	return structGo
+}
+func finalizeBooleanCellAccessibleClass(obj *BooleanCellAccessibleClass) {
+	booleanCellAccessibleClassStruct.Free(obj.native)
 }
 
 var booleanCellAccessiblePrivateStruct *gi.Struct
@@ -1809,7 +2006,11 @@ func BooleanCellAccessiblePrivateStruct() *BooleanCellAccessiblePrivate {
 	}
 
 	structGo := &BooleanCellAccessiblePrivate{native: booleanCellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBooleanCellAccessiblePrivate)
 	return structGo
+}
+func finalizeBooleanCellAccessiblePrivate(obj *BooleanCellAccessiblePrivate) {
+	booleanCellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var borderStruct *gi.Struct
@@ -1983,7 +2184,11 @@ func BoxClassStruct() *BoxClass {
 	}
 
 	structGo := &BoxClass{native: boxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBoxClass)
 	return structGo
+}
+func finalizeBoxClass(obj *BoxClass) {
+	boxClassStruct.Free(obj.native)
 }
 
 var boxPrivateStruct *gi.Struct
@@ -2009,7 +2214,11 @@ func BoxPrivateStruct() *BoxPrivate {
 	}
 
 	structGo := &BoxPrivate{native: boxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBoxPrivate)
 	return structGo
+}
+func finalizeBoxPrivate(obj *BoxPrivate) {
+	boxPrivateStruct.Free(obj.native)
 }
 
 var buildableIfaceStruct *gi.Struct
@@ -2057,7 +2266,11 @@ func BuildableIfaceStruct() *BuildableIface {
 	}
 
 	structGo := &BuildableIface{native: buildableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBuildableIface)
 	return structGo
+}
+func finalizeBuildableIface(obj *BuildableIface) {
+	buildableIfaceStruct.Free(obj.native)
 }
 
 var builderClassStruct *gi.Struct
@@ -2103,7 +2316,11 @@ func BuilderClassStruct() *BuilderClass {
 	}
 
 	structGo := &BuilderClass{native: builderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBuilderClass)
 	return structGo
+}
+func finalizeBuilderClass(obj *BuilderClass) {
+	builderClassStruct.Free(obj.native)
 }
 
 var builderPrivateStruct *gi.Struct
@@ -2129,7 +2346,11 @@ func BuilderPrivateStruct() *BuilderPrivate {
 	}
 
 	structGo := &BuilderPrivate{native: builderPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeBuilderPrivate)
 	return structGo
+}
+func finalizeBuilderPrivate(obj *BuilderPrivate) {
+	builderPrivateStruct.Free(obj.native)
 }
 
 var buttonAccessibleClassStruct *gi.Struct
@@ -2162,7 +2383,11 @@ func ButtonAccessibleClassStruct() *ButtonAccessibleClass {
 	}
 
 	structGo := &ButtonAccessibleClass{native: buttonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonAccessibleClass)
 	return structGo
+}
+func finalizeButtonAccessibleClass(obj *ButtonAccessibleClass) {
+	buttonAccessibleClassStruct.Free(obj.native)
 }
 
 var buttonAccessiblePrivateStruct *gi.Struct
@@ -2188,7 +2413,11 @@ func ButtonAccessiblePrivateStruct() *ButtonAccessiblePrivate {
 	}
 
 	structGo := &ButtonAccessiblePrivate{native: buttonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeButtonAccessiblePrivate(obj *ButtonAccessiblePrivate) {
+	buttonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var buttonBoxClassStruct *gi.Struct
@@ -2229,7 +2458,11 @@ func ButtonBoxClassStruct() *ButtonBoxClass {
 	}
 
 	structGo := &ButtonBoxClass{native: buttonBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonBoxClass)
 	return structGo
+}
+func finalizeButtonBoxClass(obj *ButtonBoxClass) {
+	buttonBoxClassStruct.Free(obj.native)
 }
 
 var buttonBoxPrivateStruct *gi.Struct
@@ -2255,7 +2488,11 @@ func ButtonBoxPrivateStruct() *ButtonBoxPrivate {
 	}
 
 	structGo := &ButtonBoxPrivate{native: buttonBoxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonBoxPrivate)
 	return structGo
+}
+func finalizeButtonBoxPrivate(obj *ButtonBoxPrivate) {
+	buttonBoxPrivateStruct.Free(obj.native)
 }
 
 var buttonClassStruct *gi.Struct
@@ -2308,7 +2545,11 @@ func ButtonClassStruct() *ButtonClass {
 	}
 
 	structGo := &ButtonClass{native: buttonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonClass)
 	return structGo
+}
+func finalizeButtonClass(obj *ButtonClass) {
+	buttonClassStruct.Free(obj.native)
 }
 
 var buttonPrivateStruct *gi.Struct
@@ -2334,7 +2575,11 @@ func ButtonPrivateStruct() *ButtonPrivate {
 	}
 
 	structGo := &ButtonPrivate{native: buttonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeButtonPrivate)
 	return structGo
+}
+func finalizeButtonPrivate(obj *ButtonPrivate) {
+	buttonPrivateStruct.Free(obj.native)
 }
 
 var calendarClassStruct *gi.Struct
@@ -2389,7 +2634,11 @@ func CalendarClassStruct() *CalendarClass {
 	}
 
 	structGo := &CalendarClass{native: calendarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCalendarClass)
 	return structGo
+}
+func finalizeCalendarClass(obj *CalendarClass) {
+	calendarClassStruct.Free(obj.native)
 }
 
 var calendarPrivateStruct *gi.Struct
@@ -2415,7 +2664,11 @@ func CalendarPrivateStruct() *CalendarPrivate {
 	}
 
 	structGo := &CalendarPrivate{native: calendarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCalendarPrivate)
 	return structGo
+}
+func finalizeCalendarPrivate(obj *CalendarPrivate) {
+	calendarPrivateStruct.Free(obj.native)
 }
 
 var cellAccessibleClassStruct *gi.Struct
@@ -2450,7 +2703,11 @@ func CellAccessibleClassStruct() *CellAccessibleClass {
 	}
 
 	structGo := &CellAccessibleClass{native: cellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAccessibleClass)
 	return structGo
+}
+func finalizeCellAccessibleClass(obj *CellAccessibleClass) {
+	cellAccessibleClassStruct.Free(obj.native)
 }
 
 var cellAccessibleParentIfaceStruct *gi.Struct
@@ -2502,7 +2759,11 @@ func CellAccessibleParentIfaceStruct() *CellAccessibleParentIface {
 	}
 
 	structGo := &CellAccessibleParentIface{native: cellAccessibleParentIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAccessibleParentIface)
 	return structGo
+}
+func finalizeCellAccessibleParentIface(obj *CellAccessibleParentIface) {
+	cellAccessibleParentIfaceStruct.Free(obj.native)
 }
 
 var cellAccessiblePrivateStruct *gi.Struct
@@ -2528,7 +2789,11 @@ func CellAccessiblePrivateStruct() *CellAccessiblePrivate {
 	}
 
 	structGo := &CellAccessiblePrivate{native: cellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAccessiblePrivate)
 	return structGo
+}
+func finalizeCellAccessiblePrivate(obj *CellAccessiblePrivate) {
+	cellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var cellAreaBoxClassStruct *gi.Struct
@@ -2562,7 +2827,11 @@ func CellAreaBoxClassStruct() *CellAreaBoxClass {
 	}
 
 	structGo := &CellAreaBoxClass{native: cellAreaBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaBoxClass)
 	return structGo
+}
+func finalizeCellAreaBoxClass(obj *CellAreaBoxClass) {
+	cellAreaBoxClassStruct.Free(obj.native)
 }
 
 var cellAreaBoxPrivateStruct *gi.Struct
@@ -2588,7 +2857,11 @@ func CellAreaBoxPrivateStruct() *CellAreaBoxPrivate {
 	}
 
 	structGo := &CellAreaBoxPrivate{native: cellAreaBoxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaBoxPrivate)
 	return structGo
+}
+func finalizeCellAreaBoxPrivate(obj *CellAreaBoxPrivate) {
+	cellAreaBoxPrivateStruct.Free(obj.native)
 }
 
 var cellAreaClassStruct *gi.Struct
@@ -2660,17 +2933,6 @@ type CellAreaClass struct {
 
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
 
-// CellAreaClassStruct creates an uninitialised CellAreaClass.
-func CellAreaClassStruct() *CellAreaClass {
-	err := cellAreaClassStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &CellAreaClass{native: cellAreaClassStruct.Alloc()}
-	return structGo
-}
-
 // UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
 
 // UNSUPPORTED : C value 'gtk_cell_area_class_install_cell_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
@@ -2705,6 +2967,21 @@ func (recv *CellAreaClass) ListCellProperties() uint32 {
 	out0 := outArgs[0].Uint32()
 
 	return out0
+}
+
+// CellAreaClassStruct creates an uninitialised CellAreaClass.
+func CellAreaClassStruct() *CellAreaClass {
+	err := cellAreaClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CellAreaClass{native: cellAreaClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaClass)
+	return structGo
+}
+func finalizeCellAreaClass(obj *CellAreaClass) {
+	cellAreaClassStruct.Free(obj.native)
 }
 
 var cellAreaContextClassStruct *gi.Struct
@@ -2750,7 +3027,11 @@ func CellAreaContextClassStruct() *CellAreaContextClass {
 	}
 
 	structGo := &CellAreaContextClass{native: cellAreaContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaContextClass)
 	return structGo
+}
+func finalizeCellAreaContextClass(obj *CellAreaContextClass) {
+	cellAreaContextClassStruct.Free(obj.native)
 }
 
 var cellAreaContextPrivateStruct *gi.Struct
@@ -2776,7 +3057,11 @@ func CellAreaContextPrivateStruct() *CellAreaContextPrivate {
 	}
 
 	structGo := &CellAreaContextPrivate{native: cellAreaContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaContextPrivate)
 	return structGo
+}
+func finalizeCellAreaContextPrivate(obj *CellAreaContextPrivate) {
+	cellAreaContextPrivateStruct.Free(obj.native)
 }
 
 var cellAreaPrivateStruct *gi.Struct
@@ -2802,7 +3087,11 @@ func CellAreaPrivateStruct() *CellAreaPrivate {
 	}
 
 	structGo := &CellAreaPrivate{native: cellAreaPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellAreaPrivate)
 	return structGo
+}
+func finalizeCellAreaPrivate(obj *CellAreaPrivate) {
+	cellAreaPrivateStruct.Free(obj.native)
 }
 
 var cellEditableIfaceStruct *gi.Struct
@@ -2834,7 +3123,11 @@ func CellEditableIfaceStruct() *CellEditableIface {
 	}
 
 	structGo := &CellEditableIface{native: cellEditableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellEditableIface)
 	return structGo
+}
+func finalizeCellEditableIface(obj *CellEditableIface) {
+	cellEditableIfaceStruct.Free(obj.native)
 }
 
 var cellLayoutIfaceStruct *gi.Struct
@@ -2878,7 +3171,11 @@ func CellLayoutIfaceStruct() *CellLayoutIface {
 	}
 
 	structGo := &CellLayoutIface{native: cellLayoutIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellLayoutIface)
 	return structGo
+}
+func finalizeCellLayoutIface(obj *CellLayoutIface) {
+	cellLayoutIfaceStruct.Free(obj.native)
 }
 
 var cellRendererAccelClassStruct *gi.Struct
@@ -2925,7 +3222,11 @@ func CellRendererAccelClassStruct() *CellRendererAccelClass {
 	}
 
 	structGo := &CellRendererAccelClass{native: cellRendererAccelClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererAccelClass)
 	return structGo
+}
+func finalizeCellRendererAccelClass(obj *CellRendererAccelClass) {
+	cellRendererAccelClassStruct.Free(obj.native)
 }
 
 var cellRendererAccelPrivateStruct *gi.Struct
@@ -2951,7 +3252,11 @@ func CellRendererAccelPrivateStruct() *CellRendererAccelPrivate {
 	}
 
 	structGo := &CellRendererAccelPrivate{native: cellRendererAccelPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererAccelPrivate)
 	return structGo
+}
+func finalizeCellRendererAccelPrivate(obj *CellRendererAccelPrivate) {
+	cellRendererAccelPrivateStruct.Free(obj.native)
 }
 
 var cellRendererClassStruct *gi.Struct
@@ -2999,6 +3304,8 @@ type CellRendererClass struct {
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
+
 // CellRendererClassStruct creates an uninitialised CellRendererClass.
 func CellRendererClassStruct() *CellRendererClass {
 	err := cellRendererClassStruct_Set()
@@ -3007,10 +3314,12 @@ func CellRendererClassStruct() *CellRendererClass {
 	}
 
 	structGo := &CellRendererClass{native: cellRendererClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererClass)
 	return structGo
 }
-
-// UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
+func finalizeCellRendererClass(obj *CellRendererClass) {
+	cellRendererClassStruct.Free(obj.native)
+}
 
 var cellRendererClassPrivateStruct *gi.Struct
 var cellRendererClassPrivateStruct_Once sync.Once
@@ -3035,7 +3344,11 @@ func CellRendererClassPrivateStruct() *CellRendererClassPrivate {
 	}
 
 	structGo := &CellRendererClassPrivate{native: cellRendererClassPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererClassPrivate)
 	return structGo
+}
+func finalizeCellRendererClassPrivate(obj *CellRendererClassPrivate) {
+	cellRendererClassPrivateStruct.Free(obj.native)
 }
 
 var cellRendererComboClassStruct *gi.Struct
@@ -3076,7 +3389,11 @@ func CellRendererComboClassStruct() *CellRendererComboClass {
 	}
 
 	structGo := &CellRendererComboClass{native: cellRendererComboClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererComboClass)
 	return structGo
+}
+func finalizeCellRendererComboClass(obj *CellRendererComboClass) {
+	cellRendererComboClassStruct.Free(obj.native)
 }
 
 var cellRendererComboPrivateStruct *gi.Struct
@@ -3102,7 +3419,11 @@ func CellRendererComboPrivateStruct() *CellRendererComboPrivate {
 	}
 
 	structGo := &CellRendererComboPrivate{native: cellRendererComboPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererComboPrivate)
 	return structGo
+}
+func finalizeCellRendererComboPrivate(obj *CellRendererComboPrivate) {
+	cellRendererComboPrivateStruct.Free(obj.native)
 }
 
 var cellRendererPixbufClassStruct *gi.Struct
@@ -3143,7 +3464,11 @@ func CellRendererPixbufClassStruct() *CellRendererPixbufClass {
 	}
 
 	structGo := &CellRendererPixbufClass{native: cellRendererPixbufClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererPixbufClass)
 	return structGo
+}
+func finalizeCellRendererPixbufClass(obj *CellRendererPixbufClass) {
+	cellRendererPixbufClassStruct.Free(obj.native)
 }
 
 var cellRendererPixbufPrivateStruct *gi.Struct
@@ -3169,7 +3494,11 @@ func CellRendererPixbufPrivateStruct() *CellRendererPixbufPrivate {
 	}
 
 	structGo := &CellRendererPixbufPrivate{native: cellRendererPixbufPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererPixbufPrivate)
 	return structGo
+}
+func finalizeCellRendererPixbufPrivate(obj *CellRendererPixbufPrivate) {
+	cellRendererPixbufPrivateStruct.Free(obj.native)
 }
 
 var cellRendererPrivateStruct *gi.Struct
@@ -3195,7 +3524,11 @@ func CellRendererPrivateStruct() *CellRendererPrivate {
 	}
 
 	structGo := &CellRendererPrivate{native: cellRendererPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererPrivate)
 	return structGo
+}
+func finalizeCellRendererPrivate(obj *CellRendererPrivate) {
+	cellRendererPrivateStruct.Free(obj.native)
 }
 
 var cellRendererProgressClassStruct *gi.Struct
@@ -3236,7 +3569,11 @@ func CellRendererProgressClassStruct() *CellRendererProgressClass {
 	}
 
 	structGo := &CellRendererProgressClass{native: cellRendererProgressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererProgressClass)
 	return structGo
+}
+func finalizeCellRendererProgressClass(obj *CellRendererProgressClass) {
+	cellRendererProgressClassStruct.Free(obj.native)
 }
 
 var cellRendererProgressPrivateStruct *gi.Struct
@@ -3262,7 +3599,11 @@ func CellRendererProgressPrivateStruct() *CellRendererProgressPrivate {
 	}
 
 	structGo := &CellRendererProgressPrivate{native: cellRendererProgressPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererProgressPrivate)
 	return structGo
+}
+func finalizeCellRendererProgressPrivate(obj *CellRendererProgressPrivate) {
+	cellRendererProgressPrivateStruct.Free(obj.native)
 }
 
 var cellRendererSpinClassStruct *gi.Struct
@@ -3303,7 +3644,11 @@ func CellRendererSpinClassStruct() *CellRendererSpinClass {
 	}
 
 	structGo := &CellRendererSpinClass{native: cellRendererSpinClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererSpinClass)
 	return structGo
+}
+func finalizeCellRendererSpinClass(obj *CellRendererSpinClass) {
+	cellRendererSpinClassStruct.Free(obj.native)
 }
 
 var cellRendererSpinPrivateStruct *gi.Struct
@@ -3329,7 +3674,11 @@ func CellRendererSpinPrivateStruct() *CellRendererSpinPrivate {
 	}
 
 	structGo := &CellRendererSpinPrivate{native: cellRendererSpinPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererSpinPrivate)
 	return structGo
+}
+func finalizeCellRendererSpinPrivate(obj *CellRendererSpinPrivate) {
+	cellRendererSpinPrivateStruct.Free(obj.native)
 }
 
 var cellRendererSpinnerClassStruct *gi.Struct
@@ -3370,7 +3719,11 @@ func CellRendererSpinnerClassStruct() *CellRendererSpinnerClass {
 	}
 
 	structGo := &CellRendererSpinnerClass{native: cellRendererSpinnerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererSpinnerClass)
 	return structGo
+}
+func finalizeCellRendererSpinnerClass(obj *CellRendererSpinnerClass) {
+	cellRendererSpinnerClassStruct.Free(obj.native)
 }
 
 var cellRendererSpinnerPrivateStruct *gi.Struct
@@ -3396,7 +3749,11 @@ func CellRendererSpinnerPrivateStruct() *CellRendererSpinnerPrivate {
 	}
 
 	structGo := &CellRendererSpinnerPrivate{native: cellRendererSpinnerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererSpinnerPrivate)
 	return structGo
+}
+func finalizeCellRendererSpinnerPrivate(obj *CellRendererSpinnerPrivate) {
+	cellRendererSpinnerPrivateStruct.Free(obj.native)
 }
 
 var cellRendererTextClassStruct *gi.Struct
@@ -3439,7 +3796,11 @@ func CellRendererTextClassStruct() *CellRendererTextClass {
 	}
 
 	structGo := &CellRendererTextClass{native: cellRendererTextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererTextClass)
 	return structGo
+}
+func finalizeCellRendererTextClass(obj *CellRendererTextClass) {
+	cellRendererTextClassStruct.Free(obj.native)
 }
 
 var cellRendererTextPrivateStruct *gi.Struct
@@ -3465,7 +3826,11 @@ func CellRendererTextPrivateStruct() *CellRendererTextPrivate {
 	}
 
 	structGo := &CellRendererTextPrivate{native: cellRendererTextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererTextPrivate)
 	return structGo
+}
+func finalizeCellRendererTextPrivate(obj *CellRendererTextPrivate) {
+	cellRendererTextPrivateStruct.Free(obj.native)
 }
 
 var cellRendererToggleClassStruct *gi.Struct
@@ -3508,7 +3873,11 @@ func CellRendererToggleClassStruct() *CellRendererToggleClass {
 	}
 
 	structGo := &CellRendererToggleClass{native: cellRendererToggleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererToggleClass)
 	return structGo
+}
+func finalizeCellRendererToggleClass(obj *CellRendererToggleClass) {
+	cellRendererToggleClassStruct.Free(obj.native)
 }
 
 var cellRendererTogglePrivateStruct *gi.Struct
@@ -3534,7 +3903,11 @@ func CellRendererTogglePrivateStruct() *CellRendererTogglePrivate {
 	}
 
 	structGo := &CellRendererTogglePrivate{native: cellRendererTogglePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellRendererTogglePrivate)
 	return structGo
+}
+func finalizeCellRendererTogglePrivate(obj *CellRendererTogglePrivate) {
+	cellRendererTogglePrivateStruct.Free(obj.native)
 }
 
 var cellViewClassStruct *gi.Struct
@@ -3575,7 +3948,11 @@ func CellViewClassStruct() *CellViewClass {
 	}
 
 	structGo := &CellViewClass{native: cellViewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellViewClass)
 	return structGo
+}
+func finalizeCellViewClass(obj *CellViewClass) {
+	cellViewClassStruct.Free(obj.native)
 }
 
 var cellViewPrivateStruct *gi.Struct
@@ -3601,7 +3978,11 @@ func CellViewPrivateStruct() *CellViewPrivate {
 	}
 
 	structGo := &CellViewPrivate{native: cellViewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCellViewPrivate)
 	return structGo
+}
+func finalizeCellViewPrivate(obj *CellViewPrivate) {
+	cellViewPrivateStruct.Free(obj.native)
 }
 
 var checkButtonClassStruct *gi.Struct
@@ -3644,7 +4025,11 @@ func CheckButtonClassStruct() *CheckButtonClass {
 	}
 
 	structGo := &CheckButtonClass{native: checkButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCheckButtonClass)
 	return structGo
+}
+func finalizeCheckButtonClass(obj *CheckButtonClass) {
+	checkButtonClassStruct.Free(obj.native)
 }
 
 var checkMenuItemAccessibleClassStruct *gi.Struct
@@ -3677,7 +4062,11 @@ func CheckMenuItemAccessibleClassStruct() *CheckMenuItemAccessibleClass {
 	}
 
 	structGo := &CheckMenuItemAccessibleClass{native: checkMenuItemAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCheckMenuItemAccessibleClass)
 	return structGo
+}
+func finalizeCheckMenuItemAccessibleClass(obj *CheckMenuItemAccessibleClass) {
+	checkMenuItemAccessibleClassStruct.Free(obj.native)
 }
 
 var checkMenuItemAccessiblePrivateStruct *gi.Struct
@@ -3703,7 +4092,11 @@ func CheckMenuItemAccessiblePrivateStruct() *CheckMenuItemAccessiblePrivate {
 	}
 
 	structGo := &CheckMenuItemAccessiblePrivate{native: checkMenuItemAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCheckMenuItemAccessiblePrivate)
 	return structGo
+}
+func finalizeCheckMenuItemAccessiblePrivate(obj *CheckMenuItemAccessiblePrivate) {
+	checkMenuItemAccessiblePrivateStruct.Free(obj.native)
 }
 
 var checkMenuItemClassStruct *gi.Struct
@@ -3748,7 +4141,11 @@ func CheckMenuItemClassStruct() *CheckMenuItemClass {
 	}
 
 	structGo := &CheckMenuItemClass{native: checkMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCheckMenuItemClass)
 	return structGo
+}
+func finalizeCheckMenuItemClass(obj *CheckMenuItemClass) {
+	checkMenuItemClassStruct.Free(obj.native)
 }
 
 var checkMenuItemPrivateStruct *gi.Struct
@@ -3774,7 +4171,11 @@ func CheckMenuItemPrivateStruct() *CheckMenuItemPrivate {
 	}
 
 	structGo := &CheckMenuItemPrivate{native: checkMenuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCheckMenuItemPrivate)
 	return structGo
+}
+func finalizeCheckMenuItemPrivate(obj *CheckMenuItemPrivate) {
+	checkMenuItemPrivateStruct.Free(obj.native)
 }
 
 var colorButtonClassStruct *gi.Struct
@@ -3817,7 +4218,11 @@ func ColorButtonClassStruct() *ColorButtonClass {
 	}
 
 	structGo := &ColorButtonClass{native: colorButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorButtonClass)
 	return structGo
+}
+func finalizeColorButtonClass(obj *ColorButtonClass) {
+	colorButtonClassStruct.Free(obj.native)
 }
 
 var colorButtonPrivateStruct *gi.Struct
@@ -3843,7 +4248,11 @@ func ColorButtonPrivateStruct() *ColorButtonPrivate {
 	}
 
 	structGo := &ColorButtonPrivate{native: colorButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorButtonPrivate)
 	return structGo
+}
+func finalizeColorButtonPrivate(obj *ColorButtonPrivate) {
+	colorButtonPrivateStruct.Free(obj.native)
 }
 
 var colorChooserDialogClassStruct *gi.Struct
@@ -3884,7 +4293,11 @@ func ColorChooserDialogClassStruct() *ColorChooserDialogClass {
 	}
 
 	structGo := &ColorChooserDialogClass{native: colorChooserDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserDialogClass)
 	return structGo
+}
+func finalizeColorChooserDialogClass(obj *ColorChooserDialogClass) {
+	colorChooserDialogClassStruct.Free(obj.native)
 }
 
 var colorChooserDialogPrivateStruct *gi.Struct
@@ -3910,7 +4323,11 @@ func ColorChooserDialogPrivateStruct() *ColorChooserDialogPrivate {
 	}
 
 	structGo := &ColorChooserDialogPrivate{native: colorChooserDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserDialogPrivate)
 	return structGo
+}
+func finalizeColorChooserDialogPrivate(obj *ColorChooserDialogPrivate) {
+	colorChooserDialogPrivateStruct.Free(obj.native)
 }
 
 var colorChooserInterfaceStruct *gi.Struct
@@ -3948,7 +4365,11 @@ func ColorChooserInterfaceStruct() *ColorChooserInterface {
 	}
 
 	structGo := &ColorChooserInterface{native: colorChooserInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserInterface)
 	return structGo
+}
+func finalizeColorChooserInterface(obj *ColorChooserInterface) {
+	colorChooserInterfaceStruct.Free(obj.native)
 }
 
 var colorChooserWidgetClassStruct *gi.Struct
@@ -3997,7 +4418,11 @@ func ColorChooserWidgetClassStruct() *ColorChooserWidgetClass {
 	}
 
 	structGo := &ColorChooserWidgetClass{native: colorChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserWidgetClass)
 	return structGo
+}
+func finalizeColorChooserWidgetClass(obj *ColorChooserWidgetClass) {
+	colorChooserWidgetClassStruct.Free(obj.native)
 }
 
 var colorChooserWidgetPrivateStruct *gi.Struct
@@ -4023,7 +4448,11 @@ func ColorChooserWidgetPrivateStruct() *ColorChooserWidgetPrivate {
 	}
 
 	structGo := &ColorChooserWidgetPrivate{native: colorChooserWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorChooserWidgetPrivate)
 	return structGo
+}
+func finalizeColorChooserWidgetPrivate(obj *ColorChooserWidgetPrivate) {
+	colorChooserWidgetPrivateStruct.Free(obj.native)
 }
 
 var colorSelectionClassStruct *gi.Struct
@@ -4066,7 +4495,11 @@ func ColorSelectionClassStruct() *ColorSelectionClass {
 	}
 
 	structGo := &ColorSelectionClass{native: colorSelectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorSelectionClass)
 	return structGo
+}
+func finalizeColorSelectionClass(obj *ColorSelectionClass) {
+	colorSelectionClassStruct.Free(obj.native)
 }
 
 var colorSelectionDialogClassStruct *gi.Struct
@@ -4107,7 +4540,11 @@ func ColorSelectionDialogClassStruct() *ColorSelectionDialogClass {
 	}
 
 	structGo := &ColorSelectionDialogClass{native: colorSelectionDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorSelectionDialogClass)
 	return structGo
+}
+func finalizeColorSelectionDialogClass(obj *ColorSelectionDialogClass) {
+	colorSelectionDialogClassStruct.Free(obj.native)
 }
 
 var colorSelectionDialogPrivateStruct *gi.Struct
@@ -4133,7 +4570,11 @@ func ColorSelectionDialogPrivateStruct() *ColorSelectionDialogPrivate {
 	}
 
 	structGo := &ColorSelectionDialogPrivate{native: colorSelectionDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorSelectionDialogPrivate)
 	return structGo
+}
+func finalizeColorSelectionDialogPrivate(obj *ColorSelectionDialogPrivate) {
+	colorSelectionDialogPrivateStruct.Free(obj.native)
 }
 
 var colorSelectionPrivateStruct *gi.Struct
@@ -4159,7 +4600,11 @@ func ColorSelectionPrivateStruct() *ColorSelectionPrivate {
 	}
 
 	structGo := &ColorSelectionPrivate{native: colorSelectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeColorSelectionPrivate)
 	return structGo
+}
+func finalizeColorSelectionPrivate(obj *ColorSelectionPrivate) {
+	colorSelectionPrivateStruct.Free(obj.native)
 }
 
 var comboBoxAccessibleClassStruct *gi.Struct
@@ -4192,7 +4637,11 @@ func ComboBoxAccessibleClassStruct() *ComboBoxAccessibleClass {
 	}
 
 	structGo := &ComboBoxAccessibleClass{native: comboBoxAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxAccessibleClass)
 	return structGo
+}
+func finalizeComboBoxAccessibleClass(obj *ComboBoxAccessibleClass) {
+	comboBoxAccessibleClassStruct.Free(obj.native)
 }
 
 var comboBoxAccessiblePrivateStruct *gi.Struct
@@ -4218,7 +4667,11 @@ func ComboBoxAccessiblePrivateStruct() *ComboBoxAccessiblePrivate {
 	}
 
 	structGo := &ComboBoxAccessiblePrivate{native: comboBoxAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxAccessiblePrivate)
 	return structGo
+}
+func finalizeComboBoxAccessiblePrivate(obj *ComboBoxAccessiblePrivate) {
+	comboBoxAccessiblePrivateStruct.Free(obj.native)
 }
 
 var comboBoxClassStruct *gi.Struct
@@ -4261,7 +4714,11 @@ func ComboBoxClassStruct() *ComboBoxClass {
 	}
 
 	structGo := &ComboBoxClass{native: comboBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxClass)
 	return structGo
+}
+func finalizeComboBoxClass(obj *ComboBoxClass) {
+	comboBoxClassStruct.Free(obj.native)
 }
 
 var comboBoxPrivateStruct *gi.Struct
@@ -4287,7 +4744,11 @@ func ComboBoxPrivateStruct() *ComboBoxPrivate {
 	}
 
 	structGo := &ComboBoxPrivate{native: comboBoxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxPrivate)
 	return structGo
+}
+func finalizeComboBoxPrivate(obj *ComboBoxPrivate) {
+	comboBoxPrivateStruct.Free(obj.native)
 }
 
 var comboBoxTextClassStruct *gi.Struct
@@ -4328,7 +4789,11 @@ func ComboBoxTextClassStruct() *ComboBoxTextClass {
 	}
 
 	structGo := &ComboBoxTextClass{native: comboBoxTextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxTextClass)
 	return structGo
+}
+func finalizeComboBoxTextClass(obj *ComboBoxTextClass) {
+	comboBoxTextClassStruct.Free(obj.native)
 }
 
 var comboBoxTextPrivateStruct *gi.Struct
@@ -4354,7 +4819,11 @@ func ComboBoxTextPrivateStruct() *ComboBoxTextPrivate {
 	}
 
 	structGo := &ComboBoxTextPrivate{native: comboBoxTextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeComboBoxTextPrivate)
 	return structGo
+}
+func finalizeComboBoxTextPrivate(obj *ComboBoxTextPrivate) {
+	comboBoxTextPrivateStruct.Free(obj.native)
 }
 
 var containerAccessibleClassStruct *gi.Struct
@@ -4391,7 +4860,11 @@ func ContainerAccessibleClassStruct() *ContainerAccessibleClass {
 	}
 
 	structGo := &ContainerAccessibleClass{native: containerAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerAccessibleClass)
 	return structGo
+}
+func finalizeContainerAccessibleClass(obj *ContainerAccessibleClass) {
+	containerAccessibleClassStruct.Free(obj.native)
 }
 
 var containerAccessiblePrivateStruct *gi.Struct
@@ -4417,7 +4890,11 @@ func ContainerAccessiblePrivateStruct() *ContainerAccessiblePrivate {
 	}
 
 	structGo := &ContainerAccessiblePrivate{native: containerAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerAccessiblePrivate)
 	return structGo
+}
+func finalizeContainerAccessiblePrivate(obj *ContainerAccessiblePrivate) {
+	containerAccessiblePrivateStruct.Free(obj.native)
 }
 
 var containerCellAccessibleClassStruct *gi.Struct
@@ -4450,7 +4927,11 @@ func ContainerCellAccessibleClassStruct() *ContainerCellAccessibleClass {
 	}
 
 	structGo := &ContainerCellAccessibleClass{native: containerCellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerCellAccessibleClass)
 	return structGo
+}
+func finalizeContainerCellAccessibleClass(obj *ContainerCellAccessibleClass) {
+	containerCellAccessibleClassStruct.Free(obj.native)
 }
 
 var containerCellAccessiblePrivateStruct *gi.Struct
@@ -4476,7 +4957,11 @@ func ContainerCellAccessiblePrivateStruct() *ContainerCellAccessiblePrivate {
 	}
 
 	structGo := &ContainerCellAccessiblePrivate{native: containerCellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerCellAccessiblePrivate)
 	return structGo
+}
+func finalizeContainerCellAccessiblePrivate(obj *ContainerCellAccessiblePrivate) {
+	containerCellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var containerClassStruct *gi.Struct
@@ -4536,17 +5021,6 @@ func (recv *ContainerClass) ParentClass() *WidgetClass {
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
-
-// ContainerClassStruct creates an uninitialised ContainerClass.
-func ContainerClassStruct() *ContainerClass {
-	err := containerClassStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ContainerClass{native: containerClassStruct.Alloc()}
-	return structGo
-}
 
 // UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
 
@@ -4614,6 +5088,21 @@ func (recv *ContainerClass) ListChildProperties() uint32 {
 	return out0
 }
 
+// ContainerClassStruct creates an uninitialised ContainerClass.
+func ContainerClassStruct() *ContainerClass {
+	err := containerClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ContainerClass{native: containerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerClass)
+	return structGo
+}
+func finalizeContainerClass(obj *ContainerClass) {
+	containerClassStruct.Free(obj.native)
+}
+
 var containerPrivateStruct *gi.Struct
 var containerPrivateStruct_Once sync.Once
 
@@ -4637,7 +5126,11 @@ func ContainerPrivateStruct() *ContainerPrivate {
 	}
 
 	structGo := &ContainerPrivate{native: containerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContainerPrivate)
 	return structGo
+}
+func finalizeContainerPrivate(obj *ContainerPrivate) {
+	containerPrivateStruct.Free(obj.native)
 }
 
 var cssProviderClassStruct *gi.Struct
@@ -4673,7 +5166,11 @@ func CssProviderClassStruct() *CssProviderClass {
 	}
 
 	structGo := &CssProviderClass{native: cssProviderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCssProviderClass)
 	return structGo
+}
+func finalizeCssProviderClass(obj *CssProviderClass) {
+	cssProviderClassStruct.Free(obj.native)
 }
 
 var cssProviderPrivateStruct *gi.Struct
@@ -4699,7 +5196,11 @@ func CssProviderPrivateStruct() *CssProviderPrivate {
 	}
 
 	structGo := &CssProviderPrivate{native: cssProviderPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCssProviderPrivate)
 	return structGo
+}
+func finalizeCssProviderPrivate(obj *CssProviderPrivate) {
+	cssProviderPrivateStruct.Free(obj.native)
 }
 
 var cssSectionStruct *gi.Struct
@@ -4715,17 +5216,6 @@ func cssSectionStruct_Set() error {
 
 type CssSection struct {
 	native uintptr
-}
-
-// CssSectionStruct creates an uninitialised CssSection.
-func CssSectionStruct() *CssSection {
-	err := cssSectionStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &CssSection{native: cssSectionStruct.Alloc()}
-	return structGo
 }
 
 var cssSectionGetEndLineFunction *gi.Function
@@ -4952,6 +5442,21 @@ func (recv *CssSection) Unref() {
 	return
 }
 
+// CssSectionStruct creates an uninitialised CssSection.
+func CssSectionStruct() *CssSection {
+	err := cssSectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &CssSection{native: cssSectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCssSection)
+	return structGo
+}
+func finalizeCssSection(obj *CssSection) {
+	cssSectionStruct.Free(obj.native)
+}
+
 var dialogClassStruct *gi.Struct
 var dialogClassStruct_Once sync.Once
 
@@ -4994,7 +5499,11 @@ func DialogClassStruct() *DialogClass {
 	}
 
 	structGo := &DialogClass{native: dialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDialogClass)
 	return structGo
+}
+func finalizeDialogClass(obj *DialogClass) {
+	dialogClassStruct.Free(obj.native)
 }
 
 var dialogPrivateStruct *gi.Struct
@@ -5020,7 +5529,11 @@ func DialogPrivateStruct() *DialogPrivate {
 	}
 
 	structGo := &DialogPrivate{native: dialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDialogPrivate)
 	return structGo
+}
+func finalizeDialogPrivate(obj *DialogPrivate) {
+	dialogPrivateStruct.Free(obj.native)
 }
 
 var drawingAreaClassStruct *gi.Struct
@@ -5061,7 +5574,11 @@ func DrawingAreaClassStruct() *DrawingAreaClass {
 	}
 
 	structGo := &DrawingAreaClass{native: drawingAreaClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDrawingAreaClass)
 	return structGo
+}
+func finalizeDrawingAreaClass(obj *DrawingAreaClass) {
+	drawingAreaClassStruct.Free(obj.native)
 }
 
 var editableInterfaceStruct *gi.Struct
@@ -5109,7 +5626,11 @@ func EditableInterfaceStruct() *EditableInterface {
 	}
 
 	structGo := &EditableInterface{native: editableInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEditableInterface)
 	return structGo
+}
+func finalizeEditableInterface(obj *EditableInterface) {
+	editableInterfaceStruct.Free(obj.native)
 }
 
 var entryAccessibleClassStruct *gi.Struct
@@ -5142,7 +5663,11 @@ func EntryAccessibleClassStruct() *EntryAccessibleClass {
 	}
 
 	structGo := &EntryAccessibleClass{native: entryAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryAccessibleClass)
 	return structGo
+}
+func finalizeEntryAccessibleClass(obj *EntryAccessibleClass) {
+	entryAccessibleClassStruct.Free(obj.native)
 }
 
 var entryAccessiblePrivateStruct *gi.Struct
@@ -5168,7 +5693,11 @@ func EntryAccessiblePrivateStruct() *EntryAccessiblePrivate {
 	}
 
 	structGo := &EntryAccessiblePrivate{native: entryAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryAccessiblePrivate)
 	return structGo
+}
+func finalizeEntryAccessiblePrivate(obj *EntryAccessiblePrivate) {
+	entryAccessiblePrivateStruct.Free(obj.native)
 }
 
 var entryBufferClassStruct *gi.Struct
@@ -5224,7 +5753,11 @@ func EntryBufferClassStruct() *EntryBufferClass {
 	}
 
 	structGo := &EntryBufferClass{native: entryBufferClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryBufferClass)
 	return structGo
+}
+func finalizeEntryBufferClass(obj *EntryBufferClass) {
+	entryBufferClassStruct.Free(obj.native)
 }
 
 var entryBufferPrivateStruct *gi.Struct
@@ -5250,7 +5783,11 @@ func EntryBufferPrivateStruct() *EntryBufferPrivate {
 	}
 
 	structGo := &EntryBufferPrivate{native: entryBufferPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryBufferPrivate)
 	return structGo
+}
+func finalizeEntryBufferPrivate(obj *EntryBufferPrivate) {
+	entryBufferPrivateStruct.Free(obj.native)
 }
 
 var entryClassStruct *gi.Struct
@@ -5321,7 +5858,11 @@ func EntryClassStruct() *EntryClass {
 	}
 
 	structGo := &EntryClass{native: entryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryClass)
 	return structGo
+}
+func finalizeEntryClass(obj *EntryClass) {
+	entryClassStruct.Free(obj.native)
 }
 
 var entryCompletionClassStruct *gi.Struct
@@ -5365,7 +5906,11 @@ func EntryCompletionClassStruct() *EntryCompletionClass {
 	}
 
 	structGo := &EntryCompletionClass{native: entryCompletionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryCompletionClass)
 	return structGo
+}
+func finalizeEntryCompletionClass(obj *EntryCompletionClass) {
+	entryCompletionClassStruct.Free(obj.native)
 }
 
 var entryCompletionPrivateStruct *gi.Struct
@@ -5391,7 +5936,11 @@ func EntryCompletionPrivateStruct() *EntryCompletionPrivate {
 	}
 
 	structGo := &EntryCompletionPrivate{native: entryCompletionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryCompletionPrivate)
 	return structGo
+}
+func finalizeEntryCompletionPrivate(obj *EntryCompletionPrivate) {
+	entryCompletionPrivateStruct.Free(obj.native)
 }
 
 var entryPrivateStruct *gi.Struct
@@ -5417,7 +5966,11 @@ func EntryPrivateStruct() *EntryPrivate {
 	}
 
 	structGo := &EntryPrivate{native: entryPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEntryPrivate)
 	return structGo
+}
+func finalizeEntryPrivate(obj *EntryPrivate) {
+	entryPrivateStruct.Free(obj.native)
 }
 
 var eventBoxClassStruct *gi.Struct
@@ -5458,7 +6011,11 @@ func EventBoxClassStruct() *EventBoxClass {
 	}
 
 	structGo := &EventBoxClass{native: eventBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventBoxClass)
 	return structGo
+}
+func finalizeEventBoxClass(obj *EventBoxClass) {
+	eventBoxClassStruct.Free(obj.native)
 }
 
 var eventBoxPrivateStruct *gi.Struct
@@ -5484,7 +6041,11 @@ func EventBoxPrivateStruct() *EventBoxPrivate {
 	}
 
 	structGo := &EventBoxPrivate{native: eventBoxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventBoxPrivate)
 	return structGo
+}
+func finalizeEventBoxPrivate(obj *EventBoxPrivate) {
+	eventBoxPrivateStruct.Free(obj.native)
 }
 
 var eventControllerClassStruct *gi.Struct
@@ -5510,7 +6071,11 @@ func EventControllerClassStruct() *EventControllerClass {
 	}
 
 	structGo := &EventControllerClass{native: eventControllerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventControllerClass)
 	return structGo
+}
+func finalizeEventControllerClass(obj *EventControllerClass) {
+	eventControllerClassStruct.Free(obj.native)
 }
 
 var eventControllerKeyClassStruct *gi.Struct
@@ -5536,7 +6101,11 @@ func EventControllerKeyClassStruct() *EventControllerKeyClass {
 	}
 
 	structGo := &EventControllerKeyClass{native: eventControllerKeyClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventControllerKeyClass)
 	return structGo
+}
+func finalizeEventControllerKeyClass(obj *EventControllerKeyClass) {
+	eventControllerKeyClassStruct.Free(obj.native)
 }
 
 var eventControllerMotionClassStruct *gi.Struct
@@ -5562,7 +6131,11 @@ func EventControllerMotionClassStruct() *EventControllerMotionClass {
 	}
 
 	structGo := &EventControllerMotionClass{native: eventControllerMotionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventControllerMotionClass)
 	return structGo
+}
+func finalizeEventControllerMotionClass(obj *EventControllerMotionClass) {
+	eventControllerMotionClassStruct.Free(obj.native)
 }
 
 var eventControllerScrollClassStruct *gi.Struct
@@ -5588,7 +6161,11 @@ func EventControllerScrollClassStruct() *EventControllerScrollClass {
 	}
 
 	structGo := &EventControllerScrollClass{native: eventControllerScrollClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeEventControllerScrollClass)
 	return structGo
+}
+func finalizeEventControllerScrollClass(obj *EventControllerScrollClass) {
+	eventControllerScrollClassStruct.Free(obj.native)
 }
 
 var expanderAccessibleClassStruct *gi.Struct
@@ -5621,7 +6198,11 @@ func ExpanderAccessibleClassStruct() *ExpanderAccessibleClass {
 	}
 
 	structGo := &ExpanderAccessibleClass{native: expanderAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExpanderAccessibleClass)
 	return structGo
+}
+func finalizeExpanderAccessibleClass(obj *ExpanderAccessibleClass) {
+	expanderAccessibleClassStruct.Free(obj.native)
 }
 
 var expanderAccessiblePrivateStruct *gi.Struct
@@ -5647,7 +6228,11 @@ func ExpanderAccessiblePrivateStruct() *ExpanderAccessiblePrivate {
 	}
 
 	structGo := &ExpanderAccessiblePrivate{native: expanderAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExpanderAccessiblePrivate)
 	return structGo
+}
+func finalizeExpanderAccessiblePrivate(obj *ExpanderAccessiblePrivate) {
+	expanderAccessiblePrivateStruct.Free(obj.native)
 }
 
 var expanderClassStruct *gi.Struct
@@ -5690,7 +6275,11 @@ func ExpanderClassStruct() *ExpanderClass {
 	}
 
 	structGo := &ExpanderClass{native: expanderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExpanderClass)
 	return structGo
+}
+func finalizeExpanderClass(obj *ExpanderClass) {
+	expanderClassStruct.Free(obj.native)
 }
 
 var expanderPrivateStruct *gi.Struct
@@ -5716,7 +6305,11 @@ func ExpanderPrivateStruct() *ExpanderPrivate {
 	}
 
 	structGo := &ExpanderPrivate{native: expanderPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeExpanderPrivate)
 	return structGo
+}
+func finalizeExpanderPrivate(obj *ExpanderPrivate) {
+	expanderPrivateStruct.Free(obj.native)
 }
 
 var fileChooserButtonClassStruct *gi.Struct
@@ -5759,7 +6352,11 @@ func FileChooserButtonClassStruct() *FileChooserButtonClass {
 	}
 
 	structGo := &FileChooserButtonClass{native: fileChooserButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserButtonClass)
 	return structGo
+}
+func finalizeFileChooserButtonClass(obj *FileChooserButtonClass) {
+	fileChooserButtonClassStruct.Free(obj.native)
 }
 
 var fileChooserButtonPrivateStruct *gi.Struct
@@ -5785,7 +6382,11 @@ func FileChooserButtonPrivateStruct() *FileChooserButtonPrivate {
 	}
 
 	structGo := &FileChooserButtonPrivate{native: fileChooserButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserButtonPrivate)
 	return structGo
+}
+func finalizeFileChooserButtonPrivate(obj *FileChooserButtonPrivate) {
+	fileChooserButtonPrivateStruct.Free(obj.native)
 }
 
 var fileChooserDialogClassStruct *gi.Struct
@@ -5826,7 +6427,11 @@ func FileChooserDialogClassStruct() *FileChooserDialogClass {
 	}
 
 	structGo := &FileChooserDialogClass{native: fileChooserDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserDialogClass)
 	return structGo
+}
+func finalizeFileChooserDialogClass(obj *FileChooserDialogClass) {
+	fileChooserDialogClassStruct.Free(obj.native)
 }
 
 var fileChooserDialogPrivateStruct *gi.Struct
@@ -5852,7 +6457,11 @@ func FileChooserDialogPrivateStruct() *FileChooserDialogPrivate {
 	}
 
 	structGo := &FileChooserDialogPrivate{native: fileChooserDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserDialogPrivate)
 	return structGo
+}
+func finalizeFileChooserDialogPrivate(obj *FileChooserDialogPrivate) {
+	fileChooserDialogPrivateStruct.Free(obj.native)
 }
 
 var fileChooserNativeClassStruct *gi.Struct
@@ -5885,7 +6494,11 @@ func FileChooserNativeClassStruct() *FileChooserNativeClass {
 	}
 
 	structGo := &FileChooserNativeClass{native: fileChooserNativeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserNativeClass)
 	return structGo
+}
+func finalizeFileChooserNativeClass(obj *FileChooserNativeClass) {
+	fileChooserNativeClassStruct.Free(obj.native)
 }
 
 var fileChooserWidgetClassStruct *gi.Struct
@@ -5926,7 +6539,11 @@ func FileChooserWidgetClassStruct() *FileChooserWidgetClass {
 	}
 
 	structGo := &FileChooserWidgetClass{native: fileChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserWidgetClass)
 	return structGo
+}
+func finalizeFileChooserWidgetClass(obj *FileChooserWidgetClass) {
+	fileChooserWidgetClassStruct.Free(obj.native)
 }
 
 var fileChooserWidgetPrivateStruct *gi.Struct
@@ -5952,7 +6569,11 @@ func FileChooserWidgetPrivateStruct() *FileChooserWidgetPrivate {
 	}
 
 	structGo := &FileChooserWidgetPrivate{native: fileChooserWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileChooserWidgetPrivate)
 	return structGo
+}
+func finalizeFileChooserWidgetPrivate(obj *FileChooserWidgetPrivate) {
+	fileChooserWidgetPrivateStruct.Free(obj.native)
 }
 
 var fileFilterInfoStruct *gi.Struct
@@ -6008,7 +6629,11 @@ func FileFilterInfoStruct() *FileFilterInfo {
 	}
 
 	structGo := &FileFilterInfo{native: fileFilterInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileFilterInfo)
 	return structGo
+}
+func finalizeFileFilterInfo(obj *FileFilterInfo) {
+	fileFilterInfoStruct.Free(obj.native)
 }
 
 var fixedChildStruct *gi.Struct
@@ -6050,7 +6675,11 @@ func FixedChildStruct() *FixedChild {
 	}
 
 	structGo := &FixedChild{native: fixedChildStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFixedChild)
 	return structGo
+}
+func finalizeFixedChild(obj *FixedChild) {
+	fixedChildStruct.Free(obj.native)
 }
 
 var fixedClassStruct *gi.Struct
@@ -6091,7 +6720,11 @@ func FixedClassStruct() *FixedClass {
 	}
 
 	structGo := &FixedClass{native: fixedClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFixedClass)
 	return structGo
+}
+func finalizeFixedClass(obj *FixedClass) {
+	fixedClassStruct.Free(obj.native)
 }
 
 var fixedPrivateStruct *gi.Struct
@@ -6117,7 +6750,11 @@ func FixedPrivateStruct() *FixedPrivate {
 	}
 
 	structGo := &FixedPrivate{native: fixedPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFixedPrivate)
 	return structGo
+}
+func finalizeFixedPrivate(obj *FixedPrivate) {
+	fixedPrivateStruct.Free(obj.native)
 }
 
 var flowBoxAccessibleClassStruct *gi.Struct
@@ -6150,7 +6787,11 @@ func FlowBoxAccessibleClassStruct() *FlowBoxAccessibleClass {
 	}
 
 	structGo := &FlowBoxAccessibleClass{native: flowBoxAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlowBoxAccessibleClass)
 	return structGo
+}
+func finalizeFlowBoxAccessibleClass(obj *FlowBoxAccessibleClass) {
+	flowBoxAccessibleClassStruct.Free(obj.native)
 }
 
 var flowBoxAccessiblePrivateStruct *gi.Struct
@@ -6176,7 +6817,11 @@ func FlowBoxAccessiblePrivateStruct() *FlowBoxAccessiblePrivate {
 	}
 
 	structGo := &FlowBoxAccessiblePrivate{native: flowBoxAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlowBoxAccessiblePrivate)
 	return structGo
+}
+func finalizeFlowBoxAccessiblePrivate(obj *FlowBoxAccessiblePrivate) {
+	flowBoxAccessiblePrivateStruct.Free(obj.native)
 }
 
 var flowBoxChildAccessibleClassStruct *gi.Struct
@@ -6209,7 +6854,11 @@ func FlowBoxChildAccessibleClassStruct() *FlowBoxChildAccessibleClass {
 	}
 
 	structGo := &FlowBoxChildAccessibleClass{native: flowBoxChildAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlowBoxChildAccessibleClass)
 	return structGo
+}
+func finalizeFlowBoxChildAccessibleClass(obj *FlowBoxChildAccessibleClass) {
+	flowBoxChildAccessibleClassStruct.Free(obj.native)
 }
 
 var flowBoxChildClassStruct *gi.Struct
@@ -6248,7 +6897,11 @@ func FlowBoxChildClassStruct() *FlowBoxChildClass {
 	}
 
 	structGo := &FlowBoxChildClass{native: flowBoxChildClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlowBoxChildClass)
 	return structGo
+}
+func finalizeFlowBoxChildClass(obj *FlowBoxChildClass) {
+	flowBoxChildClassStruct.Free(obj.native)
 }
 
 var flowBoxClassStruct *gi.Struct
@@ -6307,7 +6960,11 @@ func FlowBoxClassStruct() *FlowBoxClass {
 	}
 
 	structGo := &FlowBoxClass{native: flowBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFlowBoxClass)
 	return structGo
+}
+func finalizeFlowBoxClass(obj *FlowBoxClass) {
+	flowBoxClassStruct.Free(obj.native)
 }
 
 var fontButtonClassStruct *gi.Struct
@@ -6350,7 +7007,11 @@ func FontButtonClassStruct() *FontButtonClass {
 	}
 
 	structGo := &FontButtonClass{native: fontButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontButtonClass)
 	return structGo
+}
+func finalizeFontButtonClass(obj *FontButtonClass) {
+	fontButtonClassStruct.Free(obj.native)
 }
 
 var fontButtonPrivateStruct *gi.Struct
@@ -6376,7 +7037,11 @@ func FontButtonPrivateStruct() *FontButtonPrivate {
 	}
 
 	structGo := &FontButtonPrivate{native: fontButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontButtonPrivate)
 	return structGo
+}
+func finalizeFontButtonPrivate(obj *FontButtonPrivate) {
+	fontButtonPrivateStruct.Free(obj.native)
 }
 
 var fontChooserDialogClassStruct *gi.Struct
@@ -6417,7 +7082,11 @@ func FontChooserDialogClassStruct() *FontChooserDialogClass {
 	}
 
 	structGo := &FontChooserDialogClass{native: fontChooserDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontChooserDialogClass)
 	return structGo
+}
+func finalizeFontChooserDialogClass(obj *FontChooserDialogClass) {
+	fontChooserDialogClassStruct.Free(obj.native)
 }
 
 var fontChooserDialogPrivateStruct *gi.Struct
@@ -6443,7 +7112,11 @@ func FontChooserDialogPrivateStruct() *FontChooserDialogPrivate {
 	}
 
 	structGo := &FontChooserDialogPrivate{native: fontChooserDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontChooserDialogPrivate)
 	return structGo
+}
+func finalizeFontChooserDialogPrivate(obj *FontChooserDialogPrivate) {
+	fontChooserDialogPrivateStruct.Free(obj.native)
 }
 
 var fontChooserIfaceStruct *gi.Struct
@@ -6487,7 +7160,11 @@ func FontChooserIfaceStruct() *FontChooserIface {
 	}
 
 	structGo := &FontChooserIface{native: fontChooserIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontChooserIface)
 	return structGo
+}
+func finalizeFontChooserIface(obj *FontChooserIface) {
+	fontChooserIfaceStruct.Free(obj.native)
 }
 
 var fontChooserWidgetClassStruct *gi.Struct
@@ -6536,7 +7213,11 @@ func FontChooserWidgetClassStruct() *FontChooserWidgetClass {
 	}
 
 	structGo := &FontChooserWidgetClass{native: fontChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontChooserWidgetClass)
 	return structGo
+}
+func finalizeFontChooserWidgetClass(obj *FontChooserWidgetClass) {
+	fontChooserWidgetClassStruct.Free(obj.native)
 }
 
 var fontChooserWidgetPrivateStruct *gi.Struct
@@ -6562,7 +7243,11 @@ func FontChooserWidgetPrivateStruct() *FontChooserWidgetPrivate {
 	}
 
 	structGo := &FontChooserWidgetPrivate{native: fontChooserWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontChooserWidgetPrivate)
 	return structGo
+}
+func finalizeFontChooserWidgetPrivate(obj *FontChooserWidgetPrivate) {
+	fontChooserWidgetPrivateStruct.Free(obj.native)
 }
 
 var fontSelectionClassStruct *gi.Struct
@@ -6603,7 +7288,11 @@ func FontSelectionClassStruct() *FontSelectionClass {
 	}
 
 	structGo := &FontSelectionClass{native: fontSelectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontSelectionClass)
 	return structGo
+}
+func finalizeFontSelectionClass(obj *FontSelectionClass) {
+	fontSelectionClassStruct.Free(obj.native)
 }
 
 var fontSelectionDialogClassStruct *gi.Struct
@@ -6644,7 +7333,11 @@ func FontSelectionDialogClassStruct() *FontSelectionDialogClass {
 	}
 
 	structGo := &FontSelectionDialogClass{native: fontSelectionDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontSelectionDialogClass)
 	return structGo
+}
+func finalizeFontSelectionDialogClass(obj *FontSelectionDialogClass) {
+	fontSelectionDialogClassStruct.Free(obj.native)
 }
 
 var fontSelectionDialogPrivateStruct *gi.Struct
@@ -6670,7 +7363,11 @@ func FontSelectionDialogPrivateStruct() *FontSelectionDialogPrivate {
 	}
 
 	structGo := &FontSelectionDialogPrivate{native: fontSelectionDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontSelectionDialogPrivate)
 	return structGo
+}
+func finalizeFontSelectionDialogPrivate(obj *FontSelectionDialogPrivate) {
+	fontSelectionDialogPrivateStruct.Free(obj.native)
 }
 
 var fontSelectionPrivateStruct *gi.Struct
@@ -6696,7 +7393,11 @@ func FontSelectionPrivateStruct() *FontSelectionPrivate {
 	}
 
 	structGo := &FontSelectionPrivate{native: fontSelectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontSelectionPrivate)
 	return structGo
+}
+func finalizeFontSelectionPrivate(obj *FontSelectionPrivate) {
+	fontSelectionPrivateStruct.Free(obj.native)
 }
 
 var frameAccessibleClassStruct *gi.Struct
@@ -6729,7 +7430,11 @@ func FrameAccessibleClassStruct() *FrameAccessibleClass {
 	}
 
 	structGo := &FrameAccessibleClass{native: frameAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameAccessibleClass)
 	return structGo
+}
+func finalizeFrameAccessibleClass(obj *FrameAccessibleClass) {
+	frameAccessibleClassStruct.Free(obj.native)
 }
 
 var frameAccessiblePrivateStruct *gi.Struct
@@ -6755,7 +7460,11 @@ func FrameAccessiblePrivateStruct() *FrameAccessiblePrivate {
 	}
 
 	structGo := &FrameAccessiblePrivate{native: frameAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameAccessiblePrivate)
 	return structGo
+}
+func finalizeFrameAccessiblePrivate(obj *FrameAccessiblePrivate) {
+	frameAccessiblePrivateStruct.Free(obj.native)
 }
 
 var frameClassStruct *gi.Struct
@@ -6798,7 +7507,11 @@ func FrameClassStruct() *FrameClass {
 	}
 
 	structGo := &FrameClass{native: frameClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFrameClass)
 	return structGo
+}
+func finalizeFrameClass(obj *FrameClass) {
+	frameClassStruct.Free(obj.native)
 }
 
 var framePrivateStruct *gi.Struct
@@ -6824,7 +7537,11 @@ func FramePrivateStruct() *FramePrivate {
 	}
 
 	structGo := &FramePrivate{native: framePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFramePrivate)
 	return structGo
+}
+func finalizeFramePrivate(obj *FramePrivate) {
+	framePrivateStruct.Free(obj.native)
 }
 
 var gLAreaClassStruct *gi.Struct
@@ -6856,7 +7573,11 @@ func GLAreaClassStruct() *GLAreaClass {
 	}
 
 	structGo := &GLAreaClass{native: gLAreaClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGLAreaClass)
 	return structGo
+}
+func finalizeGLAreaClass(obj *GLAreaClass) {
+	gLAreaClassStruct.Free(obj.native)
 }
 
 var gestureClassStruct *gi.Struct
@@ -6882,7 +7603,11 @@ func GestureClassStruct() *GestureClass {
 	}
 
 	structGo := &GestureClass{native: gestureClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureClass)
 	return structGo
+}
+func finalizeGestureClass(obj *GestureClass) {
+	gestureClassStruct.Free(obj.native)
 }
 
 var gestureDragClassStruct *gi.Struct
@@ -6908,7 +7633,11 @@ func GestureDragClassStruct() *GestureDragClass {
 	}
 
 	structGo := &GestureDragClass{native: gestureDragClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureDragClass)
 	return structGo
+}
+func finalizeGestureDragClass(obj *GestureDragClass) {
+	gestureDragClassStruct.Free(obj.native)
 }
 
 var gestureLongPressClassStruct *gi.Struct
@@ -6934,7 +7663,11 @@ func GestureLongPressClassStruct() *GestureLongPressClass {
 	}
 
 	structGo := &GestureLongPressClass{native: gestureLongPressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureLongPressClass)
 	return structGo
+}
+func finalizeGestureLongPressClass(obj *GestureLongPressClass) {
+	gestureLongPressClassStruct.Free(obj.native)
 }
 
 var gestureMultiPressClassStruct *gi.Struct
@@ -6960,7 +7693,11 @@ func GestureMultiPressClassStruct() *GestureMultiPressClass {
 	}
 
 	structGo := &GestureMultiPressClass{native: gestureMultiPressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureMultiPressClass)
 	return structGo
+}
+func finalizeGestureMultiPressClass(obj *GestureMultiPressClass) {
+	gestureMultiPressClassStruct.Free(obj.native)
 }
 
 var gesturePanClassStruct *gi.Struct
@@ -6986,7 +7723,11 @@ func GesturePanClassStruct() *GesturePanClass {
 	}
 
 	structGo := &GesturePanClass{native: gesturePanClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGesturePanClass)
 	return structGo
+}
+func finalizeGesturePanClass(obj *GesturePanClass) {
+	gesturePanClassStruct.Free(obj.native)
 }
 
 var gestureRotateClassStruct *gi.Struct
@@ -7012,7 +7753,11 @@ func GestureRotateClassStruct() *GestureRotateClass {
 	}
 
 	structGo := &GestureRotateClass{native: gestureRotateClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureRotateClass)
 	return structGo
+}
+func finalizeGestureRotateClass(obj *GestureRotateClass) {
+	gestureRotateClassStruct.Free(obj.native)
 }
 
 var gestureSingleClassStruct *gi.Struct
@@ -7038,7 +7783,11 @@ func GestureSingleClassStruct() *GestureSingleClass {
 	}
 
 	structGo := &GestureSingleClass{native: gestureSingleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureSingleClass)
 	return structGo
+}
+func finalizeGestureSingleClass(obj *GestureSingleClass) {
+	gestureSingleClassStruct.Free(obj.native)
 }
 
 var gestureStylusClassStruct *gi.Struct
@@ -7064,7 +7813,11 @@ func GestureStylusClassStruct() *GestureStylusClass {
 	}
 
 	structGo := &GestureStylusClass{native: gestureStylusClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureStylusClass)
 	return structGo
+}
+func finalizeGestureStylusClass(obj *GestureStylusClass) {
+	gestureStylusClassStruct.Free(obj.native)
 }
 
 var gestureSwipeClassStruct *gi.Struct
@@ -7090,7 +7843,11 @@ func GestureSwipeClassStruct() *GestureSwipeClass {
 	}
 
 	structGo := &GestureSwipeClass{native: gestureSwipeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureSwipeClass)
 	return structGo
+}
+func finalizeGestureSwipeClass(obj *GestureSwipeClass) {
+	gestureSwipeClassStruct.Free(obj.native)
 }
 
 var gestureZoomClassStruct *gi.Struct
@@ -7116,7 +7873,11 @@ func GestureZoomClassStruct() *GestureZoomClass {
 	}
 
 	structGo := &GestureZoomClass{native: gestureZoomClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGestureZoomClass)
 	return structGo
+}
+func finalizeGestureZoomClass(obj *GestureZoomClass) {
+	gestureZoomClassStruct.Free(obj.native)
 }
 
 var gradientStruct *gi.Struct
@@ -7378,7 +8139,11 @@ func GridClassStruct() *GridClass {
 	}
 
 	structGo := &GridClass{native: gridClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGridClass)
 	return structGo
+}
+func finalizeGridClass(obj *GridClass) {
+	gridClassStruct.Free(obj.native)
 }
 
 var gridPrivateStruct *gi.Struct
@@ -7404,7 +8169,11 @@ func GridPrivateStruct() *GridPrivate {
 	}
 
 	structGo := &GridPrivate{native: gridPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeGridPrivate)
 	return structGo
+}
+func finalizeGridPrivate(obj *GridPrivate) {
+	gridPrivateStruct.Free(obj.native)
 }
 
 var hBoxClassStruct *gi.Struct
@@ -7437,7 +8206,11 @@ func HBoxClassStruct() *HBoxClass {
 	}
 
 	structGo := &HBoxClass{native: hBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHBoxClass)
 	return structGo
+}
+func finalizeHBoxClass(obj *HBoxClass) {
+	hBoxClassStruct.Free(obj.native)
 }
 
 var hButtonBoxClassStruct *gi.Struct
@@ -7470,7 +8243,11 @@ func HButtonBoxClassStruct() *HButtonBoxClass {
 	}
 
 	structGo := &HButtonBoxClass{native: hButtonBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHButtonBoxClass)
 	return structGo
+}
+func finalizeHButtonBoxClass(obj *HButtonBoxClass) {
+	hButtonBoxClassStruct.Free(obj.native)
 }
 
 var hPanedClassStruct *gi.Struct
@@ -7503,7 +8280,11 @@ func HPanedClassStruct() *HPanedClass {
 	}
 
 	structGo := &HPanedClass{native: hPanedClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHPanedClass)
 	return structGo
+}
+func finalizeHPanedClass(obj *HPanedClass) {
+	hPanedClassStruct.Free(obj.native)
 }
 
 var hSVClassStruct *gi.Struct
@@ -7548,7 +8329,11 @@ func HSVClassStruct() *HSVClass {
 	}
 
 	structGo := &HSVClass{native: hSVClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSVClass)
 	return structGo
+}
+func finalizeHSVClass(obj *HSVClass) {
+	hSVClassStruct.Free(obj.native)
 }
 
 var hSVPrivateStruct *gi.Struct
@@ -7574,7 +8359,11 @@ func HSVPrivateStruct() *HSVPrivate {
 	}
 
 	structGo := &HSVPrivate{native: hSVPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSVPrivate)
 	return structGo
+}
+func finalizeHSVPrivate(obj *HSVPrivate) {
+	hSVPrivateStruct.Free(obj.native)
 }
 
 var hScaleClassStruct *gi.Struct
@@ -7607,7 +8396,11 @@ func HScaleClassStruct() *HScaleClass {
 	}
 
 	structGo := &HScaleClass{native: hScaleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHScaleClass)
 	return structGo
+}
+func finalizeHScaleClass(obj *HScaleClass) {
+	hScaleClassStruct.Free(obj.native)
 }
 
 var hScrollbarClassStruct *gi.Struct
@@ -7640,7 +8433,11 @@ func HScrollbarClassStruct() *HScrollbarClass {
 	}
 
 	structGo := &HScrollbarClass{native: hScrollbarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHScrollbarClass)
 	return structGo
+}
+func finalizeHScrollbarClass(obj *HScrollbarClass) {
+	hScrollbarClassStruct.Free(obj.native)
 }
 
 var hSeparatorClassStruct *gi.Struct
@@ -7673,7 +8470,11 @@ func HSeparatorClassStruct() *HSeparatorClass {
 	}
 
 	structGo := &HSeparatorClass{native: hSeparatorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSeparatorClass)
 	return structGo
+}
+func finalizeHSeparatorClass(obj *HSeparatorClass) {
+	hSeparatorClassStruct.Free(obj.native)
 }
 
 var handleBoxClassStruct *gi.Struct
@@ -7718,7 +8519,11 @@ func HandleBoxClassStruct() *HandleBoxClass {
 	}
 
 	structGo := &HandleBoxClass{native: handleBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHandleBoxClass)
 	return structGo
+}
+func finalizeHandleBoxClass(obj *HandleBoxClass) {
+	handleBoxClassStruct.Free(obj.native)
 }
 
 var handleBoxPrivateStruct *gi.Struct
@@ -7744,7 +8549,11 @@ func HandleBoxPrivateStruct() *HandleBoxPrivate {
 	}
 
 	structGo := &HandleBoxPrivate{native: handleBoxPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHandleBoxPrivate)
 	return structGo
+}
+func finalizeHandleBoxPrivate(obj *HandleBoxPrivate) {
+	handleBoxPrivateStruct.Free(obj.native)
 }
 
 var headerBarAccessibleClassStruct *gi.Struct
@@ -7777,7 +8586,11 @@ func HeaderBarAccessibleClassStruct() *HeaderBarAccessibleClass {
 	}
 
 	structGo := &HeaderBarAccessibleClass{native: headerBarAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHeaderBarAccessibleClass)
 	return structGo
+}
+func finalizeHeaderBarAccessibleClass(obj *HeaderBarAccessibleClass) {
+	headerBarAccessibleClassStruct.Free(obj.native)
 }
 
 var headerBarAccessiblePrivateStruct *gi.Struct
@@ -7803,7 +8616,11 @@ func HeaderBarAccessiblePrivateStruct() *HeaderBarAccessiblePrivate {
 	}
 
 	structGo := &HeaderBarAccessiblePrivate{native: headerBarAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHeaderBarAccessiblePrivate)
 	return structGo
+}
+func finalizeHeaderBarAccessiblePrivate(obj *HeaderBarAccessiblePrivate) {
+	headerBarAccessiblePrivateStruct.Free(obj.native)
 }
 
 var headerBarClassStruct *gi.Struct
@@ -7844,7 +8661,11 @@ func HeaderBarClassStruct() *HeaderBarClass {
 	}
 
 	structGo := &HeaderBarClass{native: headerBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHeaderBarClass)
 	return structGo
+}
+func finalizeHeaderBarClass(obj *HeaderBarClass) {
+	headerBarClassStruct.Free(obj.native)
 }
 
 var headerBarPrivateStruct *gi.Struct
@@ -7870,7 +8691,11 @@ func HeaderBarPrivateStruct() *HeaderBarPrivate {
 	}
 
 	structGo := &HeaderBarPrivate{native: headerBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHeaderBarPrivate)
 	return structGo
+}
+func finalizeHeaderBarPrivate(obj *HeaderBarPrivate) {
+	headerBarPrivateStruct.Free(obj.native)
 }
 
 var iMContextClassStruct *gi.Struct
@@ -7940,7 +8765,11 @@ func IMContextClassStruct() *IMContextClass {
 	}
 
 	structGo := &IMContextClass{native: iMContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMContextClass)
 	return structGo
+}
+func finalizeIMContextClass(obj *IMContextClass) {
+	iMContextClassStruct.Free(obj.native)
 }
 
 var iMContextInfoStruct *gi.Struct
@@ -8001,7 +8830,11 @@ func IMContextInfoStruct() *IMContextInfo {
 	}
 
 	structGo := &IMContextInfo{native: iMContextInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMContextInfo)
 	return structGo
+}
+func finalizeIMContextInfo(obj *IMContextInfo) {
+	iMContextInfoStruct.Free(obj.native)
 }
 
 var iMContextSimpleClassStruct *gi.Struct
@@ -8034,7 +8867,11 @@ func IMContextSimpleClassStruct() *IMContextSimpleClass {
 	}
 
 	structGo := &IMContextSimpleClass{native: iMContextSimpleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMContextSimpleClass)
 	return structGo
+}
+func finalizeIMContextSimpleClass(obj *IMContextSimpleClass) {
+	iMContextSimpleClassStruct.Free(obj.native)
 }
 
 var iMContextSimplePrivateStruct *gi.Struct
@@ -8060,7 +8897,11 @@ func IMContextSimplePrivateStruct() *IMContextSimplePrivate {
 	}
 
 	structGo := &IMContextSimplePrivate{native: iMContextSimplePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMContextSimplePrivate)
 	return structGo
+}
+func finalizeIMContextSimplePrivate(obj *IMContextSimplePrivate) {
+	iMContextSimplePrivateStruct.Free(obj.native)
 }
 
 var iMMulticontextClassStruct *gi.Struct
@@ -8101,7 +8942,11 @@ func IMMulticontextClassStruct() *IMMulticontextClass {
 	}
 
 	structGo := &IMMulticontextClass{native: iMMulticontextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMMulticontextClass)
 	return structGo
+}
+func finalizeIMMulticontextClass(obj *IMMulticontextClass) {
+	iMMulticontextClassStruct.Free(obj.native)
 }
 
 var iMMulticontextPrivateStruct *gi.Struct
@@ -8127,7 +8972,11 @@ func IMMulticontextPrivateStruct() *IMMulticontextPrivate {
 	}
 
 	structGo := &IMMulticontextPrivate{native: iMMulticontextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIMMulticontextPrivate)
 	return structGo
+}
+func finalizeIMMulticontextPrivate(obj *IMMulticontextPrivate) {
+	iMMulticontextPrivateStruct.Free(obj.native)
 }
 
 var iconFactoryClassStruct *gi.Struct
@@ -8163,7 +9012,11 @@ func IconFactoryClassStruct() *IconFactoryClass {
 	}
 
 	structGo := &IconFactoryClass{native: iconFactoryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconFactoryClass)
 	return structGo
+}
+func finalizeIconFactoryClass(obj *IconFactoryClass) {
+	iconFactoryClassStruct.Free(obj.native)
 }
 
 var iconFactoryPrivateStruct *gi.Struct
@@ -8189,7 +9042,11 @@ func IconFactoryPrivateStruct() *IconFactoryPrivate {
 	}
 
 	structGo := &IconFactoryPrivate{native: iconFactoryPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconFactoryPrivate)
 	return structGo
+}
+func finalizeIconFactoryPrivate(obj *IconFactoryPrivate) {
+	iconFactoryPrivateStruct.Free(obj.native)
 }
 
 var iconInfoClassStruct *gi.Struct
@@ -8215,7 +9072,11 @@ func IconInfoClassStruct() *IconInfoClass {
 	}
 
 	structGo := &IconInfoClass{native: iconInfoClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconInfoClass)
 	return structGo
+}
+func finalizeIconInfoClass(obj *IconInfoClass) {
+	iconInfoClassStruct.Free(obj.native)
 }
 
 var iconSetStruct *gi.Struct
@@ -8855,7 +9716,11 @@ func IconThemeClassStruct() *IconThemeClass {
 	}
 
 	structGo := &IconThemeClass{native: iconThemeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconThemeClass)
 	return structGo
+}
+func finalizeIconThemeClass(obj *IconThemeClass) {
+	iconThemeClassStruct.Free(obj.native)
 }
 
 var iconThemePrivateStruct *gi.Struct
@@ -8881,7 +9746,11 @@ func IconThemePrivateStruct() *IconThemePrivate {
 	}
 
 	structGo := &IconThemePrivate{native: iconThemePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconThemePrivate)
 	return structGo
+}
+func finalizeIconThemePrivate(obj *IconThemePrivate) {
+	iconThemePrivateStruct.Free(obj.native)
 }
 
 var iconViewAccessibleClassStruct *gi.Struct
@@ -8914,7 +9783,11 @@ func IconViewAccessibleClassStruct() *IconViewAccessibleClass {
 	}
 
 	structGo := &IconViewAccessibleClass{native: iconViewAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconViewAccessibleClass)
 	return structGo
+}
+func finalizeIconViewAccessibleClass(obj *IconViewAccessibleClass) {
+	iconViewAccessibleClassStruct.Free(obj.native)
 }
 
 var iconViewAccessiblePrivateStruct *gi.Struct
@@ -8940,7 +9813,11 @@ func IconViewAccessiblePrivateStruct() *IconViewAccessiblePrivate {
 	}
 
 	structGo := &IconViewAccessiblePrivate{native: iconViewAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconViewAccessiblePrivate)
 	return structGo
+}
+func finalizeIconViewAccessiblePrivate(obj *IconViewAccessiblePrivate) {
+	iconViewAccessiblePrivateStruct.Free(obj.native)
 }
 
 var iconViewClassStruct *gi.Struct
@@ -8997,7 +9874,11 @@ func IconViewClassStruct() *IconViewClass {
 	}
 
 	structGo := &IconViewClass{native: iconViewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconViewClass)
 	return structGo
+}
+func finalizeIconViewClass(obj *IconViewClass) {
+	iconViewClassStruct.Free(obj.native)
 }
 
 var iconViewPrivateStruct *gi.Struct
@@ -9023,7 +9904,11 @@ func IconViewPrivateStruct() *IconViewPrivate {
 	}
 
 	structGo := &IconViewPrivate{native: iconViewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIconViewPrivate)
 	return structGo
+}
+func finalizeIconViewPrivate(obj *IconViewPrivate) {
+	iconViewPrivateStruct.Free(obj.native)
 }
 
 var imageAccessibleClassStruct *gi.Struct
@@ -9056,7 +9941,11 @@ func ImageAccessibleClassStruct() *ImageAccessibleClass {
 	}
 
 	structGo := &ImageAccessibleClass{native: imageAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageAccessibleClass)
 	return structGo
+}
+func finalizeImageAccessibleClass(obj *ImageAccessibleClass) {
+	imageAccessibleClassStruct.Free(obj.native)
 }
 
 var imageAccessiblePrivateStruct *gi.Struct
@@ -9082,7 +9971,11 @@ func ImageAccessiblePrivateStruct() *ImageAccessiblePrivate {
 	}
 
 	structGo := &ImageAccessiblePrivate{native: imageAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageAccessiblePrivate)
 	return structGo
+}
+func finalizeImageAccessiblePrivate(obj *ImageAccessiblePrivate) {
+	imageAccessiblePrivateStruct.Free(obj.native)
 }
 
 var imageCellAccessibleClassStruct *gi.Struct
@@ -9115,7 +10008,11 @@ func ImageCellAccessibleClassStruct() *ImageCellAccessibleClass {
 	}
 
 	structGo := &ImageCellAccessibleClass{native: imageCellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageCellAccessibleClass)
 	return structGo
+}
+func finalizeImageCellAccessibleClass(obj *ImageCellAccessibleClass) {
+	imageCellAccessibleClassStruct.Free(obj.native)
 }
 
 var imageCellAccessiblePrivateStruct *gi.Struct
@@ -9141,7 +10038,11 @@ func ImageCellAccessiblePrivateStruct() *ImageCellAccessiblePrivate {
 	}
 
 	structGo := &ImageCellAccessiblePrivate{native: imageCellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageCellAccessiblePrivate)
 	return structGo
+}
+func finalizeImageCellAccessiblePrivate(obj *ImageCellAccessiblePrivate) {
+	imageCellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var imageClassStruct *gi.Struct
@@ -9182,7 +10083,11 @@ func ImageClassStruct() *ImageClass {
 	}
 
 	structGo := &ImageClass{native: imageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageClass)
 	return structGo
+}
+func finalizeImageClass(obj *ImageClass) {
+	imageClassStruct.Free(obj.native)
 }
 
 var imageMenuItemClassStruct *gi.Struct
@@ -9223,7 +10128,11 @@ func ImageMenuItemClassStruct() *ImageMenuItemClass {
 	}
 
 	structGo := &ImageMenuItemClass{native: imageMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageMenuItemClass)
 	return structGo
+}
+func finalizeImageMenuItemClass(obj *ImageMenuItemClass) {
+	imageMenuItemClassStruct.Free(obj.native)
 }
 
 var imageMenuItemPrivateStruct *gi.Struct
@@ -9249,7 +10158,11 @@ func ImageMenuItemPrivateStruct() *ImageMenuItemPrivate {
 	}
 
 	structGo := &ImageMenuItemPrivate{native: imageMenuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImageMenuItemPrivate)
 	return structGo
+}
+func finalizeImageMenuItemPrivate(obj *ImageMenuItemPrivate) {
+	imageMenuItemPrivateStruct.Free(obj.native)
 }
 
 var imagePrivateStruct *gi.Struct
@@ -9275,7 +10188,11 @@ func ImagePrivateStruct() *ImagePrivate {
 	}
 
 	structGo := &ImagePrivate{native: imagePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeImagePrivate)
 	return structGo
+}
+func finalizeImagePrivate(obj *ImagePrivate) {
+	imagePrivateStruct.Free(obj.native)
 }
 
 var infoBarClassStruct *gi.Struct
@@ -9320,7 +10237,11 @@ func InfoBarClassStruct() *InfoBarClass {
 	}
 
 	structGo := &InfoBarClass{native: infoBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInfoBarClass)
 	return structGo
+}
+func finalizeInfoBarClass(obj *InfoBarClass) {
+	infoBarClassStruct.Free(obj.native)
 }
 
 var infoBarPrivateStruct *gi.Struct
@@ -9346,7 +10267,11 @@ func InfoBarPrivateStruct() *InfoBarPrivate {
 	}
 
 	structGo := &InfoBarPrivate{native: infoBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInfoBarPrivate)
 	return structGo
+}
+func finalizeInfoBarPrivate(obj *InfoBarPrivate) {
+	infoBarPrivateStruct.Free(obj.native)
 }
 
 var invisibleClassStruct *gi.Struct
@@ -9387,7 +10312,11 @@ func InvisibleClassStruct() *InvisibleClass {
 	}
 
 	structGo := &InvisibleClass{native: invisibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInvisibleClass)
 	return structGo
+}
+func finalizeInvisibleClass(obj *InvisibleClass) {
+	invisibleClassStruct.Free(obj.native)
 }
 
 var invisiblePrivateStruct *gi.Struct
@@ -9413,7 +10342,11 @@ func InvisiblePrivateStruct() *InvisiblePrivate {
 	}
 
 	structGo := &InvisiblePrivate{native: invisiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInvisiblePrivate)
 	return structGo
+}
+func finalizeInvisiblePrivate(obj *InvisiblePrivate) {
+	invisiblePrivateStruct.Free(obj.native)
 }
 
 var labelAccessibleClassStruct *gi.Struct
@@ -9446,7 +10379,11 @@ func LabelAccessibleClassStruct() *LabelAccessibleClass {
 	}
 
 	structGo := &LabelAccessibleClass{native: labelAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLabelAccessibleClass)
 	return structGo
+}
+func finalizeLabelAccessibleClass(obj *LabelAccessibleClass) {
+	labelAccessibleClassStruct.Free(obj.native)
 }
 
 var labelAccessiblePrivateStruct *gi.Struct
@@ -9472,7 +10409,11 @@ func LabelAccessiblePrivateStruct() *LabelAccessiblePrivate {
 	}
 
 	structGo := &LabelAccessiblePrivate{native: labelAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLabelAccessiblePrivate)
 	return structGo
+}
+func finalizeLabelAccessiblePrivate(obj *LabelAccessiblePrivate) {
+	labelAccessiblePrivateStruct.Free(obj.native)
 }
 
 var labelClassStruct *gi.Struct
@@ -9529,7 +10470,11 @@ func LabelClassStruct() *LabelClass {
 	}
 
 	structGo := &LabelClass{native: labelClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLabelClass)
 	return structGo
+}
+func finalizeLabelClass(obj *LabelClass) {
+	labelClassStruct.Free(obj.native)
 }
 
 var labelPrivateStruct *gi.Struct
@@ -9555,7 +10500,11 @@ func LabelPrivateStruct() *LabelPrivate {
 	}
 
 	structGo := &LabelPrivate{native: labelPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLabelPrivate)
 	return structGo
+}
+func finalizeLabelPrivate(obj *LabelPrivate) {
+	labelPrivateStruct.Free(obj.native)
 }
 
 var labelSelectionInfoStruct *gi.Struct
@@ -9581,7 +10530,11 @@ func LabelSelectionInfoStruct() *LabelSelectionInfo {
 	}
 
 	structGo := &LabelSelectionInfo{native: labelSelectionInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLabelSelectionInfo)
 	return structGo
+}
+func finalizeLabelSelectionInfo(obj *LabelSelectionInfo) {
+	labelSelectionInfoStruct.Free(obj.native)
 }
 
 var layoutClassStruct *gi.Struct
@@ -9622,7 +10575,11 @@ func LayoutClassStruct() *LayoutClass {
 	}
 
 	structGo := &LayoutClass{native: layoutClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLayoutClass)
 	return structGo
+}
+func finalizeLayoutClass(obj *LayoutClass) {
+	layoutClassStruct.Free(obj.native)
 }
 
 var layoutPrivateStruct *gi.Struct
@@ -9648,7 +10605,11 @@ func LayoutPrivateStruct() *LayoutPrivate {
 	}
 
 	structGo := &LayoutPrivate{native: layoutPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLayoutPrivate)
 	return structGo
+}
+func finalizeLayoutPrivate(obj *LayoutPrivate) {
+	layoutPrivateStruct.Free(obj.native)
 }
 
 var levelBarAccessibleClassStruct *gi.Struct
@@ -9681,7 +10642,11 @@ func LevelBarAccessibleClassStruct() *LevelBarAccessibleClass {
 	}
 
 	structGo := &LevelBarAccessibleClass{native: levelBarAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLevelBarAccessibleClass)
 	return structGo
+}
+func finalizeLevelBarAccessibleClass(obj *LevelBarAccessibleClass) {
+	levelBarAccessibleClassStruct.Free(obj.native)
 }
 
 var levelBarAccessiblePrivateStruct *gi.Struct
@@ -9707,7 +10672,11 @@ func LevelBarAccessiblePrivateStruct() *LevelBarAccessiblePrivate {
 	}
 
 	structGo := &LevelBarAccessiblePrivate{native: levelBarAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLevelBarAccessiblePrivate)
 	return structGo
+}
+func finalizeLevelBarAccessiblePrivate(obj *LevelBarAccessiblePrivate) {
+	levelBarAccessiblePrivateStruct.Free(obj.native)
 }
 
 var levelBarClassStruct *gi.Struct
@@ -9735,7 +10704,11 @@ func LevelBarClassStruct() *LevelBarClass {
 	}
 
 	structGo := &LevelBarClass{native: levelBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLevelBarClass)
 	return structGo
+}
+func finalizeLevelBarClass(obj *LevelBarClass) {
+	levelBarClassStruct.Free(obj.native)
 }
 
 var levelBarPrivateStruct *gi.Struct
@@ -9761,7 +10734,11 @@ func LevelBarPrivateStruct() *LevelBarPrivate {
 	}
 
 	structGo := &LevelBarPrivate{native: levelBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLevelBarPrivate)
 	return structGo
+}
+func finalizeLevelBarPrivate(obj *LevelBarPrivate) {
+	levelBarPrivateStruct.Free(obj.native)
 }
 
 var linkButtonAccessibleClassStruct *gi.Struct
@@ -9794,7 +10771,11 @@ func LinkButtonAccessibleClassStruct() *LinkButtonAccessibleClass {
 	}
 
 	structGo := &LinkButtonAccessibleClass{native: linkButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLinkButtonAccessibleClass)
 	return structGo
+}
+func finalizeLinkButtonAccessibleClass(obj *LinkButtonAccessibleClass) {
+	linkButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var linkButtonAccessiblePrivateStruct *gi.Struct
@@ -9820,7 +10801,11 @@ func LinkButtonAccessiblePrivateStruct() *LinkButtonAccessiblePrivate {
 	}
 
 	structGo := &LinkButtonAccessiblePrivate{native: linkButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLinkButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeLinkButtonAccessiblePrivate(obj *LinkButtonAccessiblePrivate) {
+	linkButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var linkButtonClassStruct *gi.Struct
@@ -9856,7 +10841,11 @@ func LinkButtonClassStruct() *LinkButtonClass {
 	}
 
 	structGo := &LinkButtonClass{native: linkButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLinkButtonClass)
 	return structGo
+}
+func finalizeLinkButtonClass(obj *LinkButtonClass) {
+	linkButtonClassStruct.Free(obj.native)
 }
 
 var linkButtonPrivateStruct *gi.Struct
@@ -9882,7 +10871,11 @@ func LinkButtonPrivateStruct() *LinkButtonPrivate {
 	}
 
 	structGo := &LinkButtonPrivate{native: linkButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLinkButtonPrivate)
 	return structGo
+}
+func finalizeLinkButtonPrivate(obj *LinkButtonPrivate) {
+	linkButtonPrivateStruct.Free(obj.native)
 }
 
 var listBoxAccessibleClassStruct *gi.Struct
@@ -9915,7 +10908,11 @@ func ListBoxAccessibleClassStruct() *ListBoxAccessibleClass {
 	}
 
 	structGo := &ListBoxAccessibleClass{native: listBoxAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListBoxAccessibleClass)
 	return structGo
+}
+func finalizeListBoxAccessibleClass(obj *ListBoxAccessibleClass) {
+	listBoxAccessibleClassStruct.Free(obj.native)
 }
 
 var listBoxAccessiblePrivateStruct *gi.Struct
@@ -9941,7 +10938,11 @@ func ListBoxAccessiblePrivateStruct() *ListBoxAccessiblePrivate {
 	}
 
 	structGo := &ListBoxAccessiblePrivate{native: listBoxAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListBoxAccessiblePrivate)
 	return structGo
+}
+func finalizeListBoxAccessiblePrivate(obj *ListBoxAccessiblePrivate) {
+	listBoxAccessiblePrivateStruct.Free(obj.native)
 }
 
 var listBoxClassStruct *gi.Struct
@@ -9996,7 +10997,11 @@ func ListBoxClassStruct() *ListBoxClass {
 	}
 
 	structGo := &ListBoxClass{native: listBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListBoxClass)
 	return structGo
+}
+func finalizeListBoxClass(obj *ListBoxClass) {
+	listBoxClassStruct.Free(obj.native)
 }
 
 var listBoxRowAccessibleClassStruct *gi.Struct
@@ -10029,7 +11034,11 @@ func ListBoxRowAccessibleClassStruct() *ListBoxRowAccessibleClass {
 	}
 
 	structGo := &ListBoxRowAccessibleClass{native: listBoxRowAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListBoxRowAccessibleClass)
 	return structGo
+}
+func finalizeListBoxRowAccessibleClass(obj *ListBoxRowAccessibleClass) {
+	listBoxRowAccessibleClassStruct.Free(obj.native)
 }
 
 var listBoxRowClassStruct *gi.Struct
@@ -10068,7 +11077,11 @@ func ListBoxRowClassStruct() *ListBoxRowClass {
 	}
 
 	structGo := &ListBoxRowClass{native: listBoxRowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListBoxRowClass)
 	return structGo
+}
+func finalizeListBoxRowClass(obj *ListBoxRowClass) {
+	listBoxRowClassStruct.Free(obj.native)
 }
 
 var listStoreClassStruct *gi.Struct
@@ -10104,7 +11117,11 @@ func ListStoreClassStruct() *ListStoreClass {
 	}
 
 	structGo := &ListStoreClass{native: listStoreClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListStoreClass)
 	return structGo
+}
+func finalizeListStoreClass(obj *ListStoreClass) {
+	listStoreClassStruct.Free(obj.native)
 }
 
 var listStorePrivateStruct *gi.Struct
@@ -10130,7 +11147,11 @@ func ListStorePrivateStruct() *ListStorePrivate {
 	}
 
 	structGo := &ListStorePrivate{native: listStorePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeListStorePrivate)
 	return structGo
+}
+func finalizeListStorePrivate(obj *ListStorePrivate) {
+	listStorePrivateStruct.Free(obj.native)
 }
 
 var lockButtonAccessibleClassStruct *gi.Struct
@@ -10163,7 +11184,11 @@ func LockButtonAccessibleClassStruct() *LockButtonAccessibleClass {
 	}
 
 	structGo := &LockButtonAccessibleClass{native: lockButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLockButtonAccessibleClass)
 	return structGo
+}
+func finalizeLockButtonAccessibleClass(obj *LockButtonAccessibleClass) {
+	lockButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var lockButtonAccessiblePrivateStruct *gi.Struct
@@ -10189,7 +11214,11 @@ func LockButtonAccessiblePrivateStruct() *LockButtonAccessiblePrivate {
 	}
 
 	structGo := &LockButtonAccessiblePrivate{native: lockButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLockButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeLockButtonAccessiblePrivate(obj *LockButtonAccessiblePrivate) {
+	lockButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var lockButtonClassStruct *gi.Struct
@@ -10238,7 +11267,11 @@ func LockButtonClassStruct() *LockButtonClass {
 	}
 
 	structGo := &LockButtonClass{native: lockButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLockButtonClass)
 	return structGo
+}
+func finalizeLockButtonClass(obj *LockButtonClass) {
+	lockButtonClassStruct.Free(obj.native)
 }
 
 var lockButtonPrivateStruct *gi.Struct
@@ -10264,7 +11297,11 @@ func LockButtonPrivateStruct() *LockButtonPrivate {
 	}
 
 	structGo := &LockButtonPrivate{native: lockButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLockButtonPrivate)
 	return structGo
+}
+func finalizeLockButtonPrivate(obj *LockButtonPrivate) {
+	lockButtonPrivateStruct.Free(obj.native)
 }
 
 var menuAccessibleClassStruct *gi.Struct
@@ -10297,7 +11334,11 @@ func MenuAccessibleClassStruct() *MenuAccessibleClass {
 	}
 
 	structGo := &MenuAccessibleClass{native: menuAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuAccessibleClass)
 	return structGo
+}
+func finalizeMenuAccessibleClass(obj *MenuAccessibleClass) {
+	menuAccessibleClassStruct.Free(obj.native)
 }
 
 var menuAccessiblePrivateStruct *gi.Struct
@@ -10323,7 +11364,11 @@ func MenuAccessiblePrivateStruct() *MenuAccessiblePrivate {
 	}
 
 	structGo := &MenuAccessiblePrivate{native: menuAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuAccessiblePrivate)
 	return structGo
+}
+func finalizeMenuAccessiblePrivate(obj *MenuAccessiblePrivate) {
+	menuAccessiblePrivateStruct.Free(obj.native)
 }
 
 var menuBarClassStruct *gi.Struct
@@ -10364,7 +11409,11 @@ func MenuBarClassStruct() *MenuBarClass {
 	}
 
 	structGo := &MenuBarClass{native: menuBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuBarClass)
 	return structGo
+}
+func finalizeMenuBarClass(obj *MenuBarClass) {
+	menuBarClassStruct.Free(obj.native)
 }
 
 var menuBarPrivateStruct *gi.Struct
@@ -10390,7 +11439,11 @@ func MenuBarPrivateStruct() *MenuBarPrivate {
 	}
 
 	structGo := &MenuBarPrivate{native: menuBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuBarPrivate)
 	return structGo
+}
+func finalizeMenuBarPrivate(obj *MenuBarPrivate) {
+	menuBarPrivateStruct.Free(obj.native)
 }
 
 var menuButtonAccessibleClassStruct *gi.Struct
@@ -10423,7 +11476,11 @@ func MenuButtonAccessibleClassStruct() *MenuButtonAccessibleClass {
 	}
 
 	structGo := &MenuButtonAccessibleClass{native: menuButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuButtonAccessibleClass)
 	return structGo
+}
+func finalizeMenuButtonAccessibleClass(obj *MenuButtonAccessibleClass) {
+	menuButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var menuButtonAccessiblePrivateStruct *gi.Struct
@@ -10449,7 +11506,11 @@ func MenuButtonAccessiblePrivateStruct() *MenuButtonAccessiblePrivate {
 	}
 
 	structGo := &MenuButtonAccessiblePrivate{native: menuButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeMenuButtonAccessiblePrivate(obj *MenuButtonAccessiblePrivate) {
+	menuButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var menuButtonClassStruct *gi.Struct
@@ -10490,7 +11551,11 @@ func MenuButtonClassStruct() *MenuButtonClass {
 	}
 
 	structGo := &MenuButtonClass{native: menuButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuButtonClass)
 	return structGo
+}
+func finalizeMenuButtonClass(obj *MenuButtonClass) {
+	menuButtonClassStruct.Free(obj.native)
 }
 
 var menuButtonPrivateStruct *gi.Struct
@@ -10516,7 +11581,11 @@ func MenuButtonPrivateStruct() *MenuButtonPrivate {
 	}
 
 	structGo := &MenuButtonPrivate{native: menuButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuButtonPrivate)
 	return structGo
+}
+func finalizeMenuButtonPrivate(obj *MenuButtonPrivate) {
+	menuButtonPrivateStruct.Free(obj.native)
 }
 
 var menuClassStruct *gi.Struct
@@ -10557,7 +11626,11 @@ func MenuClassStruct() *MenuClass {
 	}
 
 	structGo := &MenuClass{native: menuClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuClass)
 	return structGo
+}
+func finalizeMenuClass(obj *MenuClass) {
+	menuClassStruct.Free(obj.native)
 }
 
 var menuItemAccessibleClassStruct *gi.Struct
@@ -10590,7 +11663,11 @@ func MenuItemAccessibleClassStruct() *MenuItemAccessibleClass {
 	}
 
 	structGo := &MenuItemAccessibleClass{native: menuItemAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuItemAccessibleClass)
 	return structGo
+}
+func finalizeMenuItemAccessibleClass(obj *MenuItemAccessibleClass) {
+	menuItemAccessibleClassStruct.Free(obj.native)
 }
 
 var menuItemAccessiblePrivateStruct *gi.Struct
@@ -10616,7 +11693,11 @@ func MenuItemAccessiblePrivateStruct() *MenuItemAccessiblePrivate {
 	}
 
 	structGo := &MenuItemAccessiblePrivate{native: menuItemAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuItemAccessiblePrivate)
 	return structGo
+}
+func finalizeMenuItemAccessiblePrivate(obj *MenuItemAccessiblePrivate) {
+	menuItemAccessiblePrivateStruct.Free(obj.native)
 }
 
 var menuItemClassStruct *gi.Struct
@@ -10680,7 +11761,11 @@ func MenuItemClassStruct() *MenuItemClass {
 	}
 
 	structGo := &MenuItemClass{native: menuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuItemClass)
 	return structGo
+}
+func finalizeMenuItemClass(obj *MenuItemClass) {
+	menuItemClassStruct.Free(obj.native)
 }
 
 var menuItemPrivateStruct *gi.Struct
@@ -10706,7 +11791,11 @@ func MenuItemPrivateStruct() *MenuItemPrivate {
 	}
 
 	structGo := &MenuItemPrivate{native: menuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuItemPrivate)
 	return structGo
+}
+func finalizeMenuItemPrivate(obj *MenuItemPrivate) {
+	menuItemPrivateStruct.Free(obj.native)
 }
 
 var menuPrivateStruct *gi.Struct
@@ -10732,7 +11821,11 @@ func MenuPrivateStruct() *MenuPrivate {
 	}
 
 	structGo := &MenuPrivate{native: menuPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuPrivate)
 	return structGo
+}
+func finalizeMenuPrivate(obj *MenuPrivate) {
+	menuPrivateStruct.Free(obj.native)
 }
 
 var menuShellAccessibleClassStruct *gi.Struct
@@ -10765,7 +11858,11 @@ func MenuShellAccessibleClassStruct() *MenuShellAccessibleClass {
 	}
 
 	structGo := &MenuShellAccessibleClass{native: menuShellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuShellAccessibleClass)
 	return structGo
+}
+func finalizeMenuShellAccessibleClass(obj *MenuShellAccessibleClass) {
+	menuShellAccessibleClassStruct.Free(obj.native)
 }
 
 var menuShellAccessiblePrivateStruct *gi.Struct
@@ -10791,7 +11888,11 @@ func MenuShellAccessiblePrivateStruct() *MenuShellAccessiblePrivate {
 	}
 
 	structGo := &MenuShellAccessiblePrivate{native: menuShellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuShellAccessiblePrivate)
 	return structGo
+}
+func finalizeMenuShellAccessiblePrivate(obj *MenuShellAccessiblePrivate) {
+	menuShellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var menuShellClassStruct *gi.Struct
@@ -10857,7 +11958,11 @@ func MenuShellClassStruct() *MenuShellClass {
 	}
 
 	structGo := &MenuShellClass{native: menuShellClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuShellClass)
 	return structGo
+}
+func finalizeMenuShellClass(obj *MenuShellClass) {
+	menuShellClassStruct.Free(obj.native)
 }
 
 var menuShellPrivateStruct *gi.Struct
@@ -10883,7 +11988,11 @@ func MenuShellPrivateStruct() *MenuShellPrivate {
 	}
 
 	structGo := &MenuShellPrivate{native: menuShellPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuShellPrivate)
 	return structGo
+}
+func finalizeMenuShellPrivate(obj *MenuShellPrivate) {
+	menuShellPrivateStruct.Free(obj.native)
 }
 
 var menuToolButtonClassStruct *gi.Struct
@@ -10926,7 +12035,11 @@ func MenuToolButtonClassStruct() *MenuToolButtonClass {
 	}
 
 	structGo := &MenuToolButtonClass{native: menuToolButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuToolButtonClass)
 	return structGo
+}
+func finalizeMenuToolButtonClass(obj *MenuToolButtonClass) {
+	menuToolButtonClassStruct.Free(obj.native)
 }
 
 var menuToolButtonPrivateStruct *gi.Struct
@@ -10952,7 +12065,11 @@ func MenuToolButtonPrivateStruct() *MenuToolButtonPrivate {
 	}
 
 	structGo := &MenuToolButtonPrivate{native: menuToolButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuToolButtonPrivate)
 	return structGo
+}
+func finalizeMenuToolButtonPrivate(obj *MenuToolButtonPrivate) {
+	menuToolButtonPrivateStruct.Free(obj.native)
 }
 
 var messageDialogClassStruct *gi.Struct
@@ -10993,7 +12110,11 @@ func MessageDialogClassStruct() *MessageDialogClass {
 	}
 
 	structGo := &MessageDialogClass{native: messageDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageDialogClass)
 	return structGo
+}
+func finalizeMessageDialogClass(obj *MessageDialogClass) {
+	messageDialogClassStruct.Free(obj.native)
 }
 
 var messageDialogPrivateStruct *gi.Struct
@@ -11019,7 +12140,11 @@ func MessageDialogPrivateStruct() *MessageDialogPrivate {
 	}
 
 	structGo := &MessageDialogPrivate{native: messageDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageDialogPrivate)
 	return structGo
+}
+func finalizeMessageDialogPrivate(obj *MessageDialogPrivate) {
+	messageDialogPrivateStruct.Free(obj.native)
 }
 
 var miscClassStruct *gi.Struct
@@ -11060,7 +12185,11 @@ func MiscClassStruct() *MiscClass {
 	}
 
 	structGo := &MiscClass{native: miscClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMiscClass)
 	return structGo
+}
+func finalizeMiscClass(obj *MiscClass) {
+	miscClassStruct.Free(obj.native)
 }
 
 var miscPrivateStruct *gi.Struct
@@ -11086,7 +12215,11 @@ func MiscPrivateStruct() *MiscPrivate {
 	}
 
 	structGo := &MiscPrivate{native: miscPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMiscPrivate)
 	return structGo
+}
+func finalizeMiscPrivate(obj *MiscPrivate) {
+	miscPrivateStruct.Free(obj.native)
 }
 
 var mountOperationClassStruct *gi.Struct
@@ -11122,7 +12255,11 @@ func MountOperationClassStruct() *MountOperationClass {
 	}
 
 	structGo := &MountOperationClass{native: mountOperationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMountOperationClass)
 	return structGo
+}
+func finalizeMountOperationClass(obj *MountOperationClass) {
+	mountOperationClassStruct.Free(obj.native)
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -11148,7 +12285,11 @@ func MountOperationPrivateStruct() *MountOperationPrivate {
 	}
 
 	structGo := &MountOperationPrivate{native: mountOperationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMountOperationPrivate)
 	return structGo
+}
+func finalizeMountOperationPrivate(obj *MountOperationPrivate) {
+	mountOperationPrivateStruct.Free(obj.native)
 }
 
 var nativeDialogClassStruct *gi.Struct
@@ -11190,7 +12331,11 @@ func NativeDialogClassStruct() *NativeDialogClass {
 	}
 
 	structGo := &NativeDialogClass{native: nativeDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNativeDialogClass)
 	return structGo
+}
+func finalizeNativeDialogClass(obj *NativeDialogClass) {
+	nativeDialogClassStruct.Free(obj.native)
 }
 
 var notebookAccessibleClassStruct *gi.Struct
@@ -11223,7 +12368,11 @@ func NotebookAccessibleClassStruct() *NotebookAccessibleClass {
 	}
 
 	structGo := &NotebookAccessibleClass{native: notebookAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookAccessibleClass)
 	return structGo
+}
+func finalizeNotebookAccessibleClass(obj *NotebookAccessibleClass) {
+	notebookAccessibleClassStruct.Free(obj.native)
 }
 
 var notebookAccessiblePrivateStruct *gi.Struct
@@ -11249,7 +12398,11 @@ func NotebookAccessiblePrivateStruct() *NotebookAccessiblePrivate {
 	}
 
 	structGo := &NotebookAccessiblePrivate{native: notebookAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookAccessiblePrivate)
 	return structGo
+}
+func finalizeNotebookAccessiblePrivate(obj *NotebookAccessiblePrivate) {
+	notebookAccessiblePrivateStruct.Free(obj.native)
 }
 
 var notebookClassStruct *gi.Struct
@@ -11320,7 +12473,11 @@ func NotebookClassStruct() *NotebookClass {
 	}
 
 	structGo := &NotebookClass{native: notebookClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookClass)
 	return structGo
+}
+func finalizeNotebookClass(obj *NotebookClass) {
+	notebookClassStruct.Free(obj.native)
 }
 
 var notebookPageAccessibleClassStruct *gi.Struct
@@ -11348,7 +12505,11 @@ func NotebookPageAccessibleClassStruct() *NotebookPageAccessibleClass {
 	}
 
 	structGo := &NotebookPageAccessibleClass{native: notebookPageAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookPageAccessibleClass)
 	return structGo
+}
+func finalizeNotebookPageAccessibleClass(obj *NotebookPageAccessibleClass) {
+	notebookPageAccessibleClassStruct.Free(obj.native)
 }
 
 var notebookPageAccessiblePrivateStruct *gi.Struct
@@ -11374,7 +12535,11 @@ func NotebookPageAccessiblePrivateStruct() *NotebookPageAccessiblePrivate {
 	}
 
 	structGo := &NotebookPageAccessiblePrivate{native: notebookPageAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookPageAccessiblePrivate)
 	return structGo
+}
+func finalizeNotebookPageAccessiblePrivate(obj *NotebookPageAccessiblePrivate) {
+	notebookPageAccessiblePrivateStruct.Free(obj.native)
 }
 
 var notebookPrivateStruct *gi.Struct
@@ -11400,7 +12565,11 @@ func NotebookPrivateStruct() *NotebookPrivate {
 	}
 
 	structGo := &NotebookPrivate{native: notebookPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNotebookPrivate)
 	return structGo
+}
+func finalizeNotebookPrivate(obj *NotebookPrivate) {
+	notebookPrivateStruct.Free(obj.native)
 }
 
 var numerableIconClassStruct *gi.Struct
@@ -11430,7 +12599,11 @@ func NumerableIconClassStruct() *NumerableIconClass {
 	}
 
 	structGo := &NumerableIconClass{native: numerableIconClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNumerableIconClass)
 	return structGo
+}
+func finalizeNumerableIconClass(obj *NumerableIconClass) {
+	numerableIconClassStruct.Free(obj.native)
 }
 
 var numerableIconPrivateStruct *gi.Struct
@@ -11456,7 +12629,11 @@ func NumerableIconPrivateStruct() *NumerableIconPrivate {
 	}
 
 	structGo := &NumerableIconPrivate{native: numerableIconPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNumerableIconPrivate)
 	return structGo
+}
+func finalizeNumerableIconPrivate(obj *NumerableIconPrivate) {
+	numerableIconPrivateStruct.Free(obj.native)
 }
 
 var offscreenWindowClassStruct *gi.Struct
@@ -11497,7 +12674,11 @@ func OffscreenWindowClassStruct() *OffscreenWindowClass {
 	}
 
 	structGo := &OffscreenWindowClass{native: offscreenWindowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOffscreenWindowClass)
 	return structGo
+}
+func finalizeOffscreenWindowClass(obj *OffscreenWindowClass) {
+	offscreenWindowClassStruct.Free(obj.native)
 }
 
 var orientableIfaceStruct *gi.Struct
@@ -11525,7 +12706,11 @@ func OrientableIfaceStruct() *OrientableIface {
 	}
 
 	structGo := &OrientableIface{native: orientableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOrientableIface)
 	return structGo
+}
+func finalizeOrientableIface(obj *OrientableIface) {
+	orientableIfaceStruct.Free(obj.native)
 }
 
 var overlayClassStruct *gi.Struct
@@ -11576,7 +12761,11 @@ func OverlayClassStruct() *OverlayClass {
 	}
 
 	structGo := &OverlayClass{native: overlayClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOverlayClass)
 	return structGo
+}
+func finalizeOverlayClass(obj *OverlayClass) {
+	overlayClassStruct.Free(obj.native)
 }
 
 var overlayPrivateStruct *gi.Struct
@@ -11602,7 +12791,11 @@ func OverlayPrivateStruct() *OverlayPrivate {
 	}
 
 	structGo := &OverlayPrivate{native: overlayPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOverlayPrivate)
 	return structGo
+}
+func finalizeOverlayPrivate(obj *OverlayPrivate) {
+	overlayPrivateStruct.Free(obj.native)
 }
 
 var padActionEntryStruct *gi.Struct
@@ -11658,7 +12851,11 @@ func PadActionEntryStruct() *PadActionEntry {
 	}
 
 	structGo := &PadActionEntry{native: padActionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePadActionEntry)
 	return structGo
+}
+func finalizePadActionEntry(obj *PadActionEntry) {
+	padActionEntryStruct.Free(obj.native)
 }
 
 var padControllerClassStruct *gi.Struct
@@ -11684,7 +12881,11 @@ func PadControllerClassStruct() *PadControllerClass {
 	}
 
 	structGo := &PadControllerClass{native: padControllerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePadControllerClass)
 	return structGo
+}
+func finalizePadControllerClass(obj *PadControllerClass) {
+	padControllerClassStruct.Free(obj.native)
 }
 
 var pageRangeStruct *gi.Struct
@@ -11724,7 +12925,11 @@ func PageRangeStruct() *PageRange {
 	}
 
 	structGo := &PageRange{native: pageRangeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePageRange)
 	return structGo
+}
+func finalizePageRange(obj *PageRange) {
+	pageRangeStruct.Free(obj.native)
 }
 
 var panedAccessibleClassStruct *gi.Struct
@@ -11757,7 +12962,11 @@ func PanedAccessibleClassStruct() *PanedAccessibleClass {
 	}
 
 	structGo := &PanedAccessibleClass{native: panedAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePanedAccessibleClass)
 	return structGo
+}
+func finalizePanedAccessibleClass(obj *PanedAccessibleClass) {
+	panedAccessibleClassStruct.Free(obj.native)
 }
 
 var panedAccessiblePrivateStruct *gi.Struct
@@ -11783,7 +12992,11 @@ func PanedAccessiblePrivateStruct() *PanedAccessiblePrivate {
 	}
 
 	structGo := &PanedAccessiblePrivate{native: panedAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePanedAccessiblePrivate)
 	return structGo
+}
+func finalizePanedAccessiblePrivate(obj *PanedAccessiblePrivate) {
+	panedAccessiblePrivateStruct.Free(obj.native)
 }
 
 var panedClassStruct *gi.Struct
@@ -11836,7 +13049,11 @@ func PanedClassStruct() *PanedClass {
 	}
 
 	structGo := &PanedClass{native: panedClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePanedClass)
 	return structGo
+}
+func finalizePanedClass(obj *PanedClass) {
+	panedClassStruct.Free(obj.native)
 }
 
 var panedPrivateStruct *gi.Struct
@@ -11862,7 +13079,11 @@ func PanedPrivateStruct() *PanedPrivate {
 	}
 
 	structGo := &PanedPrivate{native: panedPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePanedPrivate)
 	return structGo
+}
+func finalizePanedPrivate(obj *PanedPrivate) {
+	panedPrivateStruct.Free(obj.native)
 }
 
 var paperSizeStruct *gi.Struct
@@ -12281,7 +13502,11 @@ func PlacesSidebarClassStruct() *PlacesSidebarClass {
 	}
 
 	structGo := &PlacesSidebarClass{native: placesSidebarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePlacesSidebarClass)
 	return structGo
+}
+func finalizePlacesSidebarClass(obj *PlacesSidebarClass) {
+	placesSidebarClassStruct.Free(obj.native)
 }
 
 var plugClassStruct *gi.Struct
@@ -12324,7 +13549,11 @@ func PlugClassStruct() *PlugClass {
 	}
 
 	structGo := &PlugClass{native: plugClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePlugClass)
 	return structGo
+}
+func finalizePlugClass(obj *PlugClass) {
+	plugClassStruct.Free(obj.native)
 }
 
 var plugPrivateStruct *gi.Struct
@@ -12350,7 +13579,11 @@ func PlugPrivateStruct() *PlugPrivate {
 	}
 
 	structGo := &PlugPrivate{native: plugPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePlugPrivate)
 	return structGo
+}
+func finalizePlugPrivate(obj *PlugPrivate) {
+	plugPrivateStruct.Free(obj.native)
 }
 
 var popoverAccessibleClassStruct *gi.Struct
@@ -12383,7 +13616,11 @@ func PopoverAccessibleClassStruct() *PopoverAccessibleClass {
 	}
 
 	structGo := &PopoverAccessibleClass{native: popoverAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePopoverAccessibleClass)
 	return structGo
+}
+func finalizePopoverAccessibleClass(obj *PopoverAccessibleClass) {
+	popoverAccessibleClassStruct.Free(obj.native)
 }
 
 var popoverClassStruct *gi.Struct
@@ -12418,7 +13655,11 @@ func PopoverClassStruct() *PopoverClass {
 	}
 
 	structGo := &PopoverClass{native: popoverClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePopoverClass)
 	return structGo
+}
+func finalizePopoverClass(obj *PopoverClass) {
+	popoverClassStruct.Free(obj.native)
 }
 
 var popoverMenuClassStruct *gi.Struct
@@ -12451,7 +13692,11 @@ func PopoverMenuClassStruct() *PopoverMenuClass {
 	}
 
 	structGo := &PopoverMenuClass{native: popoverMenuClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePopoverMenuClass)
 	return structGo
+}
+func finalizePopoverMenuClass(obj *PopoverMenuClass) {
+	popoverMenuClassStruct.Free(obj.native)
 }
 
 var popoverPrivateStruct *gi.Struct
@@ -12477,7 +13722,11 @@ func PopoverPrivateStruct() *PopoverPrivate {
 	}
 
 	structGo := &PopoverPrivate{native: popoverPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePopoverPrivate)
 	return structGo
+}
+func finalizePopoverPrivate(obj *PopoverPrivate) {
+	popoverPrivateStruct.Free(obj.native)
 }
 
 var printOperationClassStruct *gi.Struct
@@ -12543,7 +13792,11 @@ func PrintOperationClassStruct() *PrintOperationClass {
 	}
 
 	structGo := &PrintOperationClass{native: printOperationClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintOperationClass)
 	return structGo
+}
+func finalizePrintOperationClass(obj *PrintOperationClass) {
+	printOperationClassStruct.Free(obj.native)
 }
 
 var printOperationPreviewIfaceStruct *gi.Struct
@@ -12597,7 +13850,11 @@ func PrintOperationPreviewIfaceStruct() *PrintOperationPreviewIface {
 	}
 
 	structGo := &PrintOperationPreviewIface{native: printOperationPreviewIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintOperationPreviewIface)
 	return structGo
+}
+func finalizePrintOperationPreviewIface(obj *PrintOperationPreviewIface) {
+	printOperationPreviewIfaceStruct.Free(obj.native)
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -12623,7 +13880,11 @@ func PrintOperationPrivateStruct() *PrintOperationPrivate {
 	}
 
 	structGo := &PrintOperationPrivate{native: printOperationPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePrintOperationPrivate)
 	return structGo
+}
+func finalizePrintOperationPrivate(obj *PrintOperationPrivate) {
+	printOperationPrivateStruct.Free(obj.native)
 }
 
 var progressBarAccessibleClassStruct *gi.Struct
@@ -12656,7 +13917,11 @@ func ProgressBarAccessibleClassStruct() *ProgressBarAccessibleClass {
 	}
 
 	structGo := &ProgressBarAccessibleClass{native: progressBarAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProgressBarAccessibleClass)
 	return structGo
+}
+func finalizeProgressBarAccessibleClass(obj *ProgressBarAccessibleClass) {
+	progressBarAccessibleClassStruct.Free(obj.native)
 }
 
 var progressBarAccessiblePrivateStruct *gi.Struct
@@ -12682,7 +13947,11 @@ func ProgressBarAccessiblePrivateStruct() *ProgressBarAccessiblePrivate {
 	}
 
 	structGo := &ProgressBarAccessiblePrivate{native: progressBarAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProgressBarAccessiblePrivate)
 	return structGo
+}
+func finalizeProgressBarAccessiblePrivate(obj *ProgressBarAccessiblePrivate) {
+	progressBarAccessiblePrivateStruct.Free(obj.native)
 }
 
 var progressBarClassStruct *gi.Struct
@@ -12723,7 +13992,11 @@ func ProgressBarClassStruct() *ProgressBarClass {
 	}
 
 	structGo := &ProgressBarClass{native: progressBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProgressBarClass)
 	return structGo
+}
+func finalizeProgressBarClass(obj *ProgressBarClass) {
+	progressBarClassStruct.Free(obj.native)
 }
 
 var progressBarPrivateStruct *gi.Struct
@@ -12749,7 +14022,11 @@ func ProgressBarPrivateStruct() *ProgressBarPrivate {
 	}
 
 	structGo := &ProgressBarPrivate{native: progressBarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProgressBarPrivate)
 	return structGo
+}
+func finalizeProgressBarPrivate(obj *ProgressBarPrivate) {
+	progressBarPrivateStruct.Free(obj.native)
 }
 
 var radioActionClassStruct *gi.Struct
@@ -12792,7 +14069,11 @@ func RadioActionClassStruct() *RadioActionClass {
 	}
 
 	structGo := &RadioActionClass{native: radioActionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioActionClass)
 	return structGo
+}
+func finalizeRadioActionClass(obj *RadioActionClass) {
+	radioActionClassStruct.Free(obj.native)
 }
 
 var radioActionEntryStruct *gi.Struct
@@ -12860,7 +14141,11 @@ func RadioActionEntryStruct() *RadioActionEntry {
 	}
 
 	structGo := &RadioActionEntry{native: radioActionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioActionEntry)
 	return structGo
+}
+func finalizeRadioActionEntry(obj *RadioActionEntry) {
+	radioActionEntryStruct.Free(obj.native)
 }
 
 var radioActionPrivateStruct *gi.Struct
@@ -12886,7 +14171,11 @@ func RadioActionPrivateStruct() *RadioActionPrivate {
 	}
 
 	structGo := &RadioActionPrivate{native: radioActionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioActionPrivate)
 	return structGo
+}
+func finalizeRadioActionPrivate(obj *RadioActionPrivate) {
+	radioActionPrivateStruct.Free(obj.native)
 }
 
 var radioButtonAccessibleClassStruct *gi.Struct
@@ -12919,7 +14208,11 @@ func RadioButtonAccessibleClassStruct() *RadioButtonAccessibleClass {
 	}
 
 	structGo := &RadioButtonAccessibleClass{native: radioButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioButtonAccessibleClass)
 	return structGo
+}
+func finalizeRadioButtonAccessibleClass(obj *RadioButtonAccessibleClass) {
+	radioButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var radioButtonAccessiblePrivateStruct *gi.Struct
@@ -12945,7 +14238,11 @@ func RadioButtonAccessiblePrivateStruct() *RadioButtonAccessiblePrivate {
 	}
 
 	structGo := &RadioButtonAccessiblePrivate{native: radioButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeRadioButtonAccessiblePrivate(obj *RadioButtonAccessiblePrivate) {
+	radioButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var radioButtonClassStruct *gi.Struct
@@ -12988,7 +14285,11 @@ func RadioButtonClassStruct() *RadioButtonClass {
 	}
 
 	structGo := &RadioButtonClass{native: radioButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioButtonClass)
 	return structGo
+}
+func finalizeRadioButtonClass(obj *RadioButtonClass) {
+	radioButtonClassStruct.Free(obj.native)
 }
 
 var radioButtonPrivateStruct *gi.Struct
@@ -13014,7 +14315,11 @@ func RadioButtonPrivateStruct() *RadioButtonPrivate {
 	}
 
 	structGo := &RadioButtonPrivate{native: radioButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioButtonPrivate)
 	return structGo
+}
+func finalizeRadioButtonPrivate(obj *RadioButtonPrivate) {
+	radioButtonPrivateStruct.Free(obj.native)
 }
 
 var radioMenuItemAccessibleClassStruct *gi.Struct
@@ -13047,7 +14352,11 @@ func RadioMenuItemAccessibleClassStruct() *RadioMenuItemAccessibleClass {
 	}
 
 	structGo := &RadioMenuItemAccessibleClass{native: radioMenuItemAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioMenuItemAccessibleClass)
 	return structGo
+}
+func finalizeRadioMenuItemAccessibleClass(obj *RadioMenuItemAccessibleClass) {
+	radioMenuItemAccessibleClassStruct.Free(obj.native)
 }
 
 var radioMenuItemAccessiblePrivateStruct *gi.Struct
@@ -13073,7 +14382,11 @@ func RadioMenuItemAccessiblePrivateStruct() *RadioMenuItemAccessiblePrivate {
 	}
 
 	structGo := &RadioMenuItemAccessiblePrivate{native: radioMenuItemAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioMenuItemAccessiblePrivate)
 	return structGo
+}
+func finalizeRadioMenuItemAccessiblePrivate(obj *RadioMenuItemAccessiblePrivate) {
+	radioMenuItemAccessiblePrivateStruct.Free(obj.native)
 }
 
 var radioMenuItemClassStruct *gi.Struct
@@ -13116,7 +14429,11 @@ func RadioMenuItemClassStruct() *RadioMenuItemClass {
 	}
 
 	structGo := &RadioMenuItemClass{native: radioMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioMenuItemClass)
 	return structGo
+}
+func finalizeRadioMenuItemClass(obj *RadioMenuItemClass) {
+	radioMenuItemClassStruct.Free(obj.native)
 }
 
 var radioMenuItemPrivateStruct *gi.Struct
@@ -13142,7 +14459,11 @@ func RadioMenuItemPrivateStruct() *RadioMenuItemPrivate {
 	}
 
 	structGo := &RadioMenuItemPrivate{native: radioMenuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioMenuItemPrivate)
 	return structGo
+}
+func finalizeRadioMenuItemPrivate(obj *RadioMenuItemPrivate) {
+	radioMenuItemPrivateStruct.Free(obj.native)
 }
 
 var radioToolButtonClassStruct *gi.Struct
@@ -13183,7 +14504,11 @@ func RadioToolButtonClassStruct() *RadioToolButtonClass {
 	}
 
 	structGo := &RadioToolButtonClass{native: radioToolButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRadioToolButtonClass)
 	return structGo
+}
+func finalizeRadioToolButtonClass(obj *RadioToolButtonClass) {
+	radioToolButtonClassStruct.Free(obj.native)
 }
 
 var rangeAccessibleClassStruct *gi.Struct
@@ -13216,7 +14541,11 @@ func RangeAccessibleClassStruct() *RangeAccessibleClass {
 	}
 
 	structGo := &RangeAccessibleClass{native: rangeAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRangeAccessibleClass)
 	return structGo
+}
+func finalizeRangeAccessibleClass(obj *RangeAccessibleClass) {
+	rangeAccessibleClassStruct.Free(obj.native)
 }
 
 var rangeAccessiblePrivateStruct *gi.Struct
@@ -13242,7 +14571,11 @@ func RangeAccessiblePrivateStruct() *RangeAccessiblePrivate {
 	}
 
 	structGo := &RangeAccessiblePrivate{native: rangeAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRangeAccessiblePrivate)
 	return structGo
+}
+func finalizeRangeAccessiblePrivate(obj *RangeAccessiblePrivate) {
+	rangeAccessiblePrivateStruct.Free(obj.native)
 }
 
 var rangeClassStruct *gi.Struct
@@ -13307,7 +14640,11 @@ func RangeClassStruct() *RangeClass {
 	}
 
 	structGo := &RangeClass{native: rangeClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRangeClass)
 	return structGo
+}
+func finalizeRangeClass(obj *RangeClass) {
+	rangeClassStruct.Free(obj.native)
 }
 
 var rangePrivateStruct *gi.Struct
@@ -13333,7 +14670,11 @@ func RangePrivateStruct() *RangePrivate {
 	}
 
 	structGo := &RangePrivate{native: rangePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRangePrivate)
 	return structGo
+}
+func finalizeRangePrivate(obj *RangePrivate) {
+	rangePrivateStruct.Free(obj.native)
 }
 
 var rcContextStruct *gi.Struct
@@ -13359,7 +14700,11 @@ func RcContextStruct() *RcContext {
 	}
 
 	structGo := &RcContext{native: rcContextStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRcContext)
 	return structGo
+}
+func finalizeRcContext(obj *RcContext) {
+	rcContextStruct.Free(obj.native)
 }
 
 var rcPropertyStruct *gi.Struct
@@ -13408,7 +14753,11 @@ func RcPropertyStruct() *RcProperty {
 	}
 
 	structGo := &RcProperty{native: rcPropertyStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRcProperty)
 	return structGo
+}
+func finalizeRcProperty(obj *RcProperty) {
+	rcPropertyStruct.Free(obj.native)
 }
 
 var rcStyleClassStruct *gi.Struct
@@ -13452,7 +14801,11 @@ func RcStyleClassStruct() *RcStyleClass {
 	}
 
 	structGo := &RcStyleClass{native: rcStyleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRcStyleClass)
 	return structGo
+}
+func finalizeRcStyleClass(obj *RcStyleClass) {
+	rcStyleClassStruct.Free(obj.native)
 }
 
 var recentActionClassStruct *gi.Struct
@@ -13493,7 +14846,11 @@ func RecentActionClassStruct() *RecentActionClass {
 	}
 
 	structGo := &RecentActionClass{native: recentActionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentActionClass)
 	return structGo
+}
+func finalizeRecentActionClass(obj *RecentActionClass) {
+	recentActionClassStruct.Free(obj.native)
 }
 
 var recentActionPrivateStruct *gi.Struct
@@ -13519,7 +14876,11 @@ func RecentActionPrivateStruct() *RecentActionPrivate {
 	}
 
 	structGo := &RecentActionPrivate{native: recentActionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentActionPrivate)
 	return structGo
+}
+func finalizeRecentActionPrivate(obj *RecentActionPrivate) {
+	recentActionPrivateStruct.Free(obj.native)
 }
 
 var recentChooserDialogClassStruct *gi.Struct
@@ -13560,7 +14921,11 @@ func RecentChooserDialogClassStruct() *RecentChooserDialogClass {
 	}
 
 	structGo := &RecentChooserDialogClass{native: recentChooserDialogClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserDialogClass)
 	return structGo
+}
+func finalizeRecentChooserDialogClass(obj *RecentChooserDialogClass) {
+	recentChooserDialogClassStruct.Free(obj.native)
 }
 
 var recentChooserDialogPrivateStruct *gi.Struct
@@ -13586,7 +14951,11 @@ func RecentChooserDialogPrivateStruct() *RecentChooserDialogPrivate {
 	}
 
 	structGo := &RecentChooserDialogPrivate{native: recentChooserDialogPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserDialogPrivate)
 	return structGo
+}
+func finalizeRecentChooserDialogPrivate(obj *RecentChooserDialogPrivate) {
+	recentChooserDialogPrivateStruct.Free(obj.native)
 }
 
 var recentChooserIfaceStruct *gi.Struct
@@ -13640,7 +15009,11 @@ func RecentChooserIfaceStruct() *RecentChooserIface {
 	}
 
 	structGo := &RecentChooserIface{native: recentChooserIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserIface)
 	return structGo
+}
+func finalizeRecentChooserIface(obj *RecentChooserIface) {
+	recentChooserIfaceStruct.Free(obj.native)
 }
 
 var recentChooserMenuClassStruct *gi.Struct
@@ -13681,7 +15054,11 @@ func RecentChooserMenuClassStruct() *RecentChooserMenuClass {
 	}
 
 	structGo := &RecentChooserMenuClass{native: recentChooserMenuClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserMenuClass)
 	return structGo
+}
+func finalizeRecentChooserMenuClass(obj *RecentChooserMenuClass) {
+	recentChooserMenuClassStruct.Free(obj.native)
 }
 
 var recentChooserMenuPrivateStruct *gi.Struct
@@ -13707,7 +15084,11 @@ func RecentChooserMenuPrivateStruct() *RecentChooserMenuPrivate {
 	}
 
 	structGo := &RecentChooserMenuPrivate{native: recentChooserMenuPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserMenuPrivate)
 	return structGo
+}
+func finalizeRecentChooserMenuPrivate(obj *RecentChooserMenuPrivate) {
+	recentChooserMenuPrivateStruct.Free(obj.native)
 }
 
 var recentChooserWidgetClassStruct *gi.Struct
@@ -13748,7 +15129,11 @@ func RecentChooserWidgetClassStruct() *RecentChooserWidgetClass {
 	}
 
 	structGo := &RecentChooserWidgetClass{native: recentChooserWidgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserWidgetClass)
 	return structGo
+}
+func finalizeRecentChooserWidgetClass(obj *RecentChooserWidgetClass) {
+	recentChooserWidgetClassStruct.Free(obj.native)
 }
 
 var recentChooserWidgetPrivateStruct *gi.Struct
@@ -13774,7 +15159,11 @@ func RecentChooserWidgetPrivateStruct() *RecentChooserWidgetPrivate {
 	}
 
 	structGo := &RecentChooserWidgetPrivate{native: recentChooserWidgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentChooserWidgetPrivate)
 	return structGo
+}
+func finalizeRecentChooserWidgetPrivate(obj *RecentChooserWidgetPrivate) {
+	recentChooserWidgetPrivateStruct.Free(obj.native)
 }
 
 var recentDataStruct *gi.Struct
@@ -13844,7 +15233,11 @@ func RecentDataStruct() *RecentData {
 	}
 
 	structGo := &RecentData{native: recentDataStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentData)
 	return structGo
+}
+func finalizeRecentData(obj *RecentData) {
+	recentDataStruct.Free(obj.native)
 }
 
 var recentFilterInfoStruct *gi.Struct
@@ -13904,7 +15297,11 @@ func RecentFilterInfoStruct() *RecentFilterInfo {
 	}
 
 	structGo := &RecentFilterInfo{native: recentFilterInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentFilterInfo)
 	return structGo
+}
+func finalizeRecentFilterInfo(obj *RecentFilterInfo) {
+	recentFilterInfoStruct.Free(obj.native)
 }
 
 var recentInfoStruct *gi.Struct
@@ -13920,17 +15317,6 @@ func recentInfoStruct_Set() error {
 
 type RecentInfo struct {
 	native uintptr
-}
-
-// RecentInfoStruct creates an uninitialised RecentInfo.
-func RecentInfoStruct() *RecentInfo {
-	err := recentInfoStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &RecentInfo{native: recentInfoStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'gtk_recent_info_create_app_info' : return type 'Gio.AppInfo' not supported
@@ -14647,6 +16033,21 @@ func (recv *RecentInfo) Unref() {
 	return
 }
 
+// RecentInfoStruct creates an uninitialised RecentInfo.
+func RecentInfoStruct() *RecentInfo {
+	err := recentInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &RecentInfo{native: recentInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentInfo)
+	return structGo
+}
+func finalizeRecentInfo(obj *RecentInfo) {
+	recentInfoStruct.Free(obj.native)
+}
+
 var recentManagerClassStruct *gi.Struct
 var recentManagerClassStruct_Once sync.Once
 
@@ -14680,7 +16081,11 @@ func RecentManagerClassStruct() *RecentManagerClass {
 	}
 
 	structGo := &RecentManagerClass{native: recentManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentManagerClass)
 	return structGo
+}
+func finalizeRecentManagerClass(obj *RecentManagerClass) {
+	recentManagerClassStruct.Free(obj.native)
 }
 
 var recentManagerPrivateStruct *gi.Struct
@@ -14706,7 +16111,11 @@ func RecentManagerPrivateStruct() *RecentManagerPrivate {
 	}
 
 	structGo := &RecentManagerPrivate{native: recentManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRecentManagerPrivate)
 	return structGo
+}
+func finalizeRecentManagerPrivate(obj *RecentManagerPrivate) {
+	recentManagerPrivateStruct.Free(obj.native)
 }
 
 var rendererCellAccessibleClassStruct *gi.Struct
@@ -14739,7 +16148,11 @@ func RendererCellAccessibleClassStruct() *RendererCellAccessibleClass {
 	}
 
 	structGo := &RendererCellAccessibleClass{native: rendererCellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRendererCellAccessibleClass)
 	return structGo
+}
+func finalizeRendererCellAccessibleClass(obj *RendererCellAccessibleClass) {
+	rendererCellAccessibleClassStruct.Free(obj.native)
 }
 
 var rendererCellAccessiblePrivateStruct *gi.Struct
@@ -14765,7 +16178,11 @@ func RendererCellAccessiblePrivateStruct() *RendererCellAccessiblePrivate {
 	}
 
 	structGo := &RendererCellAccessiblePrivate{native: rendererCellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRendererCellAccessiblePrivate)
 	return structGo
+}
+func finalizeRendererCellAccessiblePrivate(obj *RendererCellAccessiblePrivate) {
+	rendererCellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var requestedSizeStruct *gi.Struct
@@ -14807,7 +16224,11 @@ func RequestedSizeStruct() *RequestedSize {
 	}
 
 	structGo := &RequestedSize{native: requestedSizeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestedSize)
 	return structGo
+}
+func finalizeRequestedSize(obj *RequestedSize) {
+	requestedSizeStruct.Free(obj.native)
 }
 
 var requisitionStruct *gi.Struct
@@ -14959,7 +16380,11 @@ func RevealerClassStruct() *RevealerClass {
 	}
 
 	structGo := &RevealerClass{native: revealerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRevealerClass)
 	return structGo
+}
+func finalizeRevealerClass(obj *RevealerClass) {
+	revealerClassStruct.Free(obj.native)
 }
 
 var scaleAccessibleClassStruct *gi.Struct
@@ -14992,7 +16417,11 @@ func ScaleAccessibleClassStruct() *ScaleAccessibleClass {
 	}
 
 	structGo := &ScaleAccessibleClass{native: scaleAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleAccessibleClass)
 	return structGo
+}
+func finalizeScaleAccessibleClass(obj *ScaleAccessibleClass) {
+	scaleAccessibleClassStruct.Free(obj.native)
 }
 
 var scaleAccessiblePrivateStruct *gi.Struct
@@ -15018,7 +16447,11 @@ func ScaleAccessiblePrivateStruct() *ScaleAccessiblePrivate {
 	}
 
 	structGo := &ScaleAccessiblePrivate{native: scaleAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleAccessiblePrivate)
 	return structGo
+}
+func finalizeScaleAccessiblePrivate(obj *ScaleAccessiblePrivate) {
+	scaleAccessiblePrivateStruct.Free(obj.native)
 }
 
 var scaleButtonAccessibleClassStruct *gi.Struct
@@ -15051,7 +16484,11 @@ func ScaleButtonAccessibleClassStruct() *ScaleButtonAccessibleClass {
 	}
 
 	structGo := &ScaleButtonAccessibleClass{native: scaleButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleButtonAccessibleClass)
 	return structGo
+}
+func finalizeScaleButtonAccessibleClass(obj *ScaleButtonAccessibleClass) {
+	scaleButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var scaleButtonAccessiblePrivateStruct *gi.Struct
@@ -15077,7 +16514,11 @@ func ScaleButtonAccessiblePrivateStruct() *ScaleButtonAccessiblePrivate {
 	}
 
 	structGo := &ScaleButtonAccessiblePrivate{native: scaleButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeScaleButtonAccessiblePrivate(obj *ScaleButtonAccessiblePrivate) {
+	scaleButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var scaleButtonClassStruct *gi.Struct
@@ -15120,7 +16561,11 @@ func ScaleButtonClassStruct() *ScaleButtonClass {
 	}
 
 	structGo := &ScaleButtonClass{native: scaleButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleButtonClass)
 	return structGo
+}
+func finalizeScaleButtonClass(obj *ScaleButtonClass) {
+	scaleButtonClassStruct.Free(obj.native)
 }
 
 var scaleButtonPrivateStruct *gi.Struct
@@ -15146,7 +16591,11 @@ func ScaleButtonPrivateStruct() *ScaleButtonPrivate {
 	}
 
 	structGo := &ScaleButtonPrivate{native: scaleButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleButtonPrivate)
 	return structGo
+}
+func finalizeScaleButtonPrivate(obj *ScaleButtonPrivate) {
+	scaleButtonPrivateStruct.Free(obj.native)
 }
 
 var scaleClassStruct *gi.Struct
@@ -15193,7 +16642,11 @@ func ScaleClassStruct() *ScaleClass {
 	}
 
 	structGo := &ScaleClass{native: scaleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaleClass)
 	return structGo
+}
+func finalizeScaleClass(obj *ScaleClass) {
+	scaleClassStruct.Free(obj.native)
 }
 
 var scalePrivateStruct *gi.Struct
@@ -15219,7 +16672,11 @@ func ScalePrivateStruct() *ScalePrivate {
 	}
 
 	structGo := &ScalePrivate{native: scalePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScalePrivate)
 	return structGo
+}
+func finalizeScalePrivate(obj *ScalePrivate) {
+	scalePrivateStruct.Free(obj.native)
 }
 
 var scrollableInterfaceStruct *gi.Struct
@@ -15249,7 +16706,11 @@ func ScrollableInterfaceStruct() *ScrollableInterface {
 	}
 
 	structGo := &ScrollableInterface{native: scrollableInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrollableInterface)
 	return structGo
+}
+func finalizeScrollableInterface(obj *ScrollableInterface) {
+	scrollableInterfaceStruct.Free(obj.native)
 }
 
 var scrollbarClassStruct *gi.Struct
@@ -15290,7 +16751,11 @@ func ScrollbarClassStruct() *ScrollbarClass {
 	}
 
 	structGo := &ScrollbarClass{native: scrollbarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrollbarClass)
 	return structGo
+}
+func finalizeScrollbarClass(obj *ScrollbarClass) {
+	scrollbarClassStruct.Free(obj.native)
 }
 
 var scrolledWindowAccessibleClassStruct *gi.Struct
@@ -15323,7 +16788,11 @@ func ScrolledWindowAccessibleClassStruct() *ScrolledWindowAccessibleClass {
 	}
 
 	structGo := &ScrolledWindowAccessibleClass{native: scrolledWindowAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrolledWindowAccessibleClass)
 	return structGo
+}
+func finalizeScrolledWindowAccessibleClass(obj *ScrolledWindowAccessibleClass) {
+	scrolledWindowAccessibleClassStruct.Free(obj.native)
 }
 
 var scrolledWindowAccessiblePrivateStruct *gi.Struct
@@ -15349,7 +16818,11 @@ func ScrolledWindowAccessiblePrivateStruct() *ScrolledWindowAccessiblePrivate {
 	}
 
 	structGo := &ScrolledWindowAccessiblePrivate{native: scrolledWindowAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrolledWindowAccessiblePrivate)
 	return structGo
+}
+func finalizeScrolledWindowAccessiblePrivate(obj *ScrolledWindowAccessiblePrivate) {
+	scrolledWindowAccessiblePrivateStruct.Free(obj.native)
 }
 
 var scrolledWindowClassStruct *gi.Struct
@@ -15401,7 +16874,11 @@ func ScrolledWindowClassStruct() *ScrolledWindowClass {
 	}
 
 	structGo := &ScrolledWindowClass{native: scrolledWindowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrolledWindowClass)
 	return structGo
+}
+func finalizeScrolledWindowClass(obj *ScrolledWindowClass) {
+	scrolledWindowClassStruct.Free(obj.native)
 }
 
 var scrolledWindowPrivateStruct *gi.Struct
@@ -15427,7 +16904,11 @@ func ScrolledWindowPrivateStruct() *ScrolledWindowPrivate {
 	}
 
 	structGo := &ScrolledWindowPrivate{native: scrolledWindowPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScrolledWindowPrivate)
 	return structGo
+}
+func finalizeScrolledWindowPrivate(obj *ScrolledWindowPrivate) {
+	scrolledWindowPrivateStruct.Free(obj.native)
 }
 
 var searchBarClassStruct *gi.Struct
@@ -15468,7 +16949,11 @@ func SearchBarClassStruct() *SearchBarClass {
 	}
 
 	structGo := &SearchBarClass{native: searchBarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchBarClass)
 	return structGo
+}
+func finalizeSearchBarClass(obj *SearchBarClass) {
+	searchBarClassStruct.Free(obj.native)
 }
 
 var searchEntryClassStruct *gi.Struct
@@ -15509,7 +16994,11 @@ func SearchEntryClassStruct() *SearchEntryClass {
 	}
 
 	structGo := &SearchEntryClass{native: searchEntryClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSearchEntryClass)
 	return structGo
+}
+func finalizeSearchEntryClass(obj *SearchEntryClass) {
+	searchEntryClassStruct.Free(obj.native)
 }
 
 var selectionDataStruct *gi.Struct
@@ -15525,17 +17014,6 @@ func selectionDataStruct_Set() error {
 
 type SelectionData struct {
 	native uintptr
-}
-
-// SelectionDataStruct creates an uninitialised SelectionData.
-func SelectionDataStruct() *SelectionData {
-	err := selectionDataStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &SelectionData{native: selectionDataStruct.Alloc()}
-	return structGo
 }
 
 var selectionDataCopyFunction *gi.Function
@@ -15933,6 +17411,21 @@ func (recv *SelectionData) TargetsIncludeUri() bool {
 	return retGo
 }
 
+// SelectionDataStruct creates an uninitialised SelectionData.
+func SelectionDataStruct() *SelectionData {
+	err := selectionDataStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SelectionData{native: selectionDataStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSelectionData)
+	return structGo
+}
+func finalizeSelectionData(obj *SelectionData) {
+	selectionDataStruct.Free(obj.native)
+}
+
 var separatorClassStruct *gi.Struct
 var separatorClassStruct_Once sync.Once
 
@@ -15971,7 +17464,11 @@ func SeparatorClassStruct() *SeparatorClass {
 	}
 
 	structGo := &SeparatorClass{native: separatorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeparatorClass)
 	return structGo
+}
+func finalizeSeparatorClass(obj *SeparatorClass) {
+	separatorClassStruct.Free(obj.native)
 }
 
 var separatorMenuItemClassStruct *gi.Struct
@@ -16012,7 +17509,11 @@ func SeparatorMenuItemClassStruct() *SeparatorMenuItemClass {
 	}
 
 	structGo := &SeparatorMenuItemClass{native: separatorMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeparatorMenuItemClass)
 	return structGo
+}
+func finalizeSeparatorMenuItemClass(obj *SeparatorMenuItemClass) {
+	separatorMenuItemClassStruct.Free(obj.native)
 }
 
 var separatorPrivateStruct *gi.Struct
@@ -16038,7 +17539,11 @@ func SeparatorPrivateStruct() *SeparatorPrivate {
 	}
 
 	structGo := &SeparatorPrivate{native: separatorPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeparatorPrivate)
 	return structGo
+}
+func finalizeSeparatorPrivate(obj *SeparatorPrivate) {
+	separatorPrivateStruct.Free(obj.native)
 }
 
 var separatorToolItemClassStruct *gi.Struct
@@ -16079,7 +17584,11 @@ func SeparatorToolItemClassStruct() *SeparatorToolItemClass {
 	}
 
 	structGo := &SeparatorToolItemClass{native: separatorToolItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeparatorToolItemClass)
 	return structGo
+}
+func finalizeSeparatorToolItemClass(obj *SeparatorToolItemClass) {
+	separatorToolItemClassStruct.Free(obj.native)
 }
 
 var separatorToolItemPrivateStruct *gi.Struct
@@ -16105,7 +17614,11 @@ func SeparatorToolItemPrivateStruct() *SeparatorToolItemPrivate {
 	}
 
 	structGo := &SeparatorToolItemPrivate{native: separatorToolItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSeparatorToolItemPrivate)
 	return structGo
+}
+func finalizeSeparatorToolItemPrivate(obj *SeparatorToolItemPrivate) {
+	separatorToolItemPrivateStruct.Free(obj.native)
 }
 
 var settingsClassStruct *gi.Struct
@@ -16141,7 +17654,11 @@ func SettingsClassStruct() *SettingsClass {
 	}
 
 	structGo := &SettingsClass{native: settingsClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsClass)
 	return structGo
+}
+func finalizeSettingsClass(obj *SettingsClass) {
+	settingsClassStruct.Free(obj.native)
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -16167,7 +17684,11 @@ func SettingsPrivateStruct() *SettingsPrivate {
 	}
 
 	structGo := &SettingsPrivate{native: settingsPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsPrivate)
 	return structGo
+}
+func finalizeSettingsPrivate(obj *SettingsPrivate) {
+	settingsPrivateStruct.Free(obj.native)
 }
 
 var settingsValueStruct *gi.Struct
@@ -16202,7 +17723,11 @@ func SettingsValueStruct() *SettingsValue {
 	}
 
 	structGo := &SettingsValue{native: settingsValueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsValue)
 	return structGo
+}
+func finalizeSettingsValue(obj *SettingsValue) {
+	settingsValueStruct.Free(obj.native)
 }
 
 var shortcutLabelClassStruct *gi.Struct
@@ -16228,7 +17753,11 @@ func ShortcutLabelClassStruct() *ShortcutLabelClass {
 	}
 
 	structGo := &ShortcutLabelClass{native: shortcutLabelClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeShortcutLabelClass)
 	return structGo
+}
+func finalizeShortcutLabelClass(obj *ShortcutLabelClass) {
+	shortcutLabelClassStruct.Free(obj.native)
 }
 
 var shortcutsGroupClassStruct *gi.Struct
@@ -16254,7 +17783,11 @@ func ShortcutsGroupClassStruct() *ShortcutsGroupClass {
 	}
 
 	structGo := &ShortcutsGroupClass{native: shortcutsGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeShortcutsGroupClass)
 	return structGo
+}
+func finalizeShortcutsGroupClass(obj *ShortcutsGroupClass) {
+	shortcutsGroupClassStruct.Free(obj.native)
 }
 
 var shortcutsSectionClassStruct *gi.Struct
@@ -16280,7 +17813,11 @@ func ShortcutsSectionClassStruct() *ShortcutsSectionClass {
 	}
 
 	structGo := &ShortcutsSectionClass{native: shortcutsSectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeShortcutsSectionClass)
 	return structGo
+}
+func finalizeShortcutsSectionClass(obj *ShortcutsSectionClass) {
+	shortcutsSectionClassStruct.Free(obj.native)
 }
 
 var shortcutsShortcutClassStruct *gi.Struct
@@ -16306,7 +17843,11 @@ func ShortcutsShortcutClassStruct() *ShortcutsShortcutClass {
 	}
 
 	structGo := &ShortcutsShortcutClass{native: shortcutsShortcutClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeShortcutsShortcutClass)
 	return structGo
+}
+func finalizeShortcutsShortcutClass(obj *ShortcutsShortcutClass) {
+	shortcutsShortcutClassStruct.Free(obj.native)
 }
 
 var shortcutsWindowClassStruct *gi.Struct
@@ -16343,7 +17884,11 @@ func ShortcutsWindowClassStruct() *ShortcutsWindowClass {
 	}
 
 	structGo := &ShortcutsWindowClass{native: shortcutsWindowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeShortcutsWindowClass)
 	return structGo
+}
+func finalizeShortcutsWindowClass(obj *ShortcutsWindowClass) {
+	shortcutsWindowClassStruct.Free(obj.native)
 }
 
 var sizeGroupClassStruct *gi.Struct
@@ -16379,7 +17924,11 @@ func SizeGroupClassStruct() *SizeGroupClass {
 	}
 
 	structGo := &SizeGroupClass{native: sizeGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSizeGroupClass)
 	return structGo
+}
+func finalizeSizeGroupClass(obj *SizeGroupClass) {
+	sizeGroupClassStruct.Free(obj.native)
 }
 
 var sizeGroupPrivateStruct *gi.Struct
@@ -16405,7 +17954,11 @@ func SizeGroupPrivateStruct() *SizeGroupPrivate {
 	}
 
 	structGo := &SizeGroupPrivate{native: sizeGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSizeGroupPrivate)
 	return structGo
+}
+func finalizeSizeGroupPrivate(obj *SizeGroupPrivate) {
+	sizeGroupPrivateStruct.Free(obj.native)
 }
 
 var socketClassStruct *gi.Struct
@@ -16450,7 +18003,11 @@ func SocketClassStruct() *SocketClass {
 	}
 
 	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
+}
+func finalizeSocketClass(obj *SocketClass) {
+	socketClassStruct.Free(obj.native)
 }
 
 var socketPrivateStruct *gi.Struct
@@ -16476,7 +18033,11 @@ func SocketPrivateStruct() *SocketPrivate {
 	}
 
 	structGo := &SocketPrivate{native: socketPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketPrivate)
 	return structGo
+}
+func finalizeSocketPrivate(obj *SocketPrivate) {
+	socketPrivateStruct.Free(obj.native)
 }
 
 var spinButtonAccessibleClassStruct *gi.Struct
@@ -16509,7 +18070,11 @@ func SpinButtonAccessibleClassStruct() *SpinButtonAccessibleClass {
 	}
 
 	structGo := &SpinButtonAccessibleClass{native: spinButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinButtonAccessibleClass)
 	return structGo
+}
+func finalizeSpinButtonAccessibleClass(obj *SpinButtonAccessibleClass) {
+	spinButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var spinButtonAccessiblePrivateStruct *gi.Struct
@@ -16535,7 +18100,11 @@ func SpinButtonAccessiblePrivateStruct() *SpinButtonAccessiblePrivate {
 	}
 
 	structGo := &SpinButtonAccessiblePrivate{native: spinButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeSpinButtonAccessiblePrivate(obj *SpinButtonAccessiblePrivate) {
+	spinButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var spinButtonClassStruct *gi.Struct
@@ -16586,7 +18155,11 @@ func SpinButtonClassStruct() *SpinButtonClass {
 	}
 
 	structGo := &SpinButtonClass{native: spinButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinButtonClass)
 	return structGo
+}
+func finalizeSpinButtonClass(obj *SpinButtonClass) {
+	spinButtonClassStruct.Free(obj.native)
 }
 
 var spinButtonPrivateStruct *gi.Struct
@@ -16612,7 +18185,11 @@ func SpinButtonPrivateStruct() *SpinButtonPrivate {
 	}
 
 	structGo := &SpinButtonPrivate{native: spinButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinButtonPrivate)
 	return structGo
+}
+func finalizeSpinButtonPrivate(obj *SpinButtonPrivate) {
+	spinButtonPrivateStruct.Free(obj.native)
 }
 
 var spinnerAccessibleClassStruct *gi.Struct
@@ -16645,7 +18222,11 @@ func SpinnerAccessibleClassStruct() *SpinnerAccessibleClass {
 	}
 
 	structGo := &SpinnerAccessibleClass{native: spinnerAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinnerAccessibleClass)
 	return structGo
+}
+func finalizeSpinnerAccessibleClass(obj *SpinnerAccessibleClass) {
+	spinnerAccessibleClassStruct.Free(obj.native)
 }
 
 var spinnerAccessiblePrivateStruct *gi.Struct
@@ -16671,7 +18252,11 @@ func SpinnerAccessiblePrivateStruct() *SpinnerAccessiblePrivate {
 	}
 
 	structGo := &SpinnerAccessiblePrivate{native: spinnerAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinnerAccessiblePrivate)
 	return structGo
+}
+func finalizeSpinnerAccessiblePrivate(obj *SpinnerAccessiblePrivate) {
+	spinnerAccessiblePrivateStruct.Free(obj.native)
 }
 
 var spinnerClassStruct *gi.Struct
@@ -16712,7 +18297,11 @@ func SpinnerClassStruct() *SpinnerClass {
 	}
 
 	structGo := &SpinnerClass{native: spinnerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinnerClass)
 	return structGo
+}
+func finalizeSpinnerClass(obj *SpinnerClass) {
+	spinnerClassStruct.Free(obj.native)
 }
 
 var spinnerPrivateStruct *gi.Struct
@@ -16738,7 +18327,11 @@ func SpinnerPrivateStruct() *SpinnerPrivate {
 	}
 
 	structGo := &SpinnerPrivate{native: spinnerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSpinnerPrivate)
 	return structGo
+}
+func finalizeSpinnerPrivate(obj *SpinnerPrivate) {
+	spinnerPrivateStruct.Free(obj.native)
 }
 
 var stackAccessibleClassStruct *gi.Struct
@@ -16771,7 +18364,11 @@ func StackAccessibleClassStruct() *StackAccessibleClass {
 	}
 
 	structGo := &StackAccessibleClass{native: stackAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStackAccessibleClass)
 	return structGo
+}
+func finalizeStackAccessibleClass(obj *StackAccessibleClass) {
+	stackAccessibleClassStruct.Free(obj.native)
 }
 
 var stackClassStruct *gi.Struct
@@ -16804,7 +18401,11 @@ func StackClassStruct() *StackClass {
 	}
 
 	structGo := &StackClass{native: stackClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStackClass)
 	return structGo
+}
+func finalizeStackClass(obj *StackClass) {
+	stackClassStruct.Free(obj.native)
 }
 
 var stackSidebarClassStruct *gi.Struct
@@ -16845,7 +18446,11 @@ func StackSidebarClassStruct() *StackSidebarClass {
 	}
 
 	structGo := &StackSidebarClass{native: stackSidebarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStackSidebarClass)
 	return structGo
+}
+func finalizeStackSidebarClass(obj *StackSidebarClass) {
+	stackSidebarClassStruct.Free(obj.native)
 }
 
 var stackSidebarPrivateStruct *gi.Struct
@@ -16871,7 +18476,11 @@ func StackSidebarPrivateStruct() *StackSidebarPrivate {
 	}
 
 	structGo := &StackSidebarPrivate{native: stackSidebarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStackSidebarPrivate)
 	return structGo
+}
+func finalizeStackSidebarPrivate(obj *StackSidebarPrivate) {
+	stackSidebarPrivateStruct.Free(obj.native)
 }
 
 var stackSwitcherClassStruct *gi.Struct
@@ -16912,7 +18521,11 @@ func StackSwitcherClassStruct() *StackSwitcherClass {
 	}
 
 	structGo := &StackSwitcherClass{native: stackSwitcherClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStackSwitcherClass)
 	return structGo
+}
+func finalizeStackSwitcherClass(obj *StackSwitcherClass) {
+	stackSwitcherClassStruct.Free(obj.native)
 }
 
 var statusIconClassStruct *gi.Struct
@@ -16962,7 +18575,11 @@ func StatusIconClassStruct() *StatusIconClass {
 	}
 
 	structGo := &StatusIconClass{native: statusIconClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusIconClass)
 	return structGo
+}
+func finalizeStatusIconClass(obj *StatusIconClass) {
+	statusIconClassStruct.Free(obj.native)
 }
 
 var statusIconPrivateStruct *gi.Struct
@@ -16988,7 +18605,11 @@ func StatusIconPrivateStruct() *StatusIconPrivate {
 	}
 
 	structGo := &StatusIconPrivate{native: statusIconPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusIconPrivate)
 	return structGo
+}
+func finalizeStatusIconPrivate(obj *StatusIconPrivate) {
+	statusIconPrivateStruct.Free(obj.native)
 }
 
 var statusbarAccessibleClassStruct *gi.Struct
@@ -17021,7 +18642,11 @@ func StatusbarAccessibleClassStruct() *StatusbarAccessibleClass {
 	}
 
 	structGo := &StatusbarAccessibleClass{native: statusbarAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusbarAccessibleClass)
 	return structGo
+}
+func finalizeStatusbarAccessibleClass(obj *StatusbarAccessibleClass) {
+	statusbarAccessibleClassStruct.Free(obj.native)
 }
 
 var statusbarAccessiblePrivateStruct *gi.Struct
@@ -17047,7 +18672,11 @@ func StatusbarAccessiblePrivateStruct() *StatusbarAccessiblePrivate {
 	}
 
 	structGo := &StatusbarAccessiblePrivate{native: statusbarAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusbarAccessiblePrivate)
 	return structGo
+}
+func finalizeStatusbarAccessiblePrivate(obj *StatusbarAccessiblePrivate) {
+	statusbarAccessiblePrivateStruct.Free(obj.native)
 }
 
 var statusbarClassStruct *gi.Struct
@@ -17094,7 +18723,11 @@ func StatusbarClassStruct() *StatusbarClass {
 	}
 
 	structGo := &StatusbarClass{native: statusbarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusbarClass)
 	return structGo
+}
+func finalizeStatusbarClass(obj *StatusbarClass) {
+	statusbarClassStruct.Free(obj.native)
 }
 
 var statusbarPrivateStruct *gi.Struct
@@ -17120,7 +18753,11 @@ func StatusbarPrivateStruct() *StatusbarPrivate {
 	}
 
 	structGo := &StatusbarPrivate{native: statusbarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStatusbarPrivate)
 	return structGo
+}
+func finalizeStatusbarPrivate(obj *StatusbarPrivate) {
+	statusbarPrivateStruct.Free(obj.native)
 }
 
 var stockItemStruct *gi.Struct
@@ -17166,17 +18803,6 @@ func (recv *StockItem) TranslationDomain() string {
 	argValue := gi.FieldGet(stockItemStruct, recv.native, "translation_domain")
 	value := argValue.String(false)
 	return value
-}
-
-// StockItemStruct creates an uninitialised StockItem.
-func StockItemStruct() *StockItem {
-	err := stockItemStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &StockItem{native: stockItemStruct.Alloc()}
-	return structGo
 }
 
 var stockItemCopyFunction *gi.Function
@@ -17237,6 +18863,21 @@ func (recv *StockItem) Free() {
 	}
 
 	return
+}
+
+// StockItemStruct creates an uninitialised StockItem.
+func StockItemStruct() *StockItem {
+	err := stockItemStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &StockItem{native: stockItemStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStockItem)
+	return structGo
+}
+func finalizeStockItem(obj *StockItem) {
+	stockItemStruct.Free(obj.native)
 }
 
 var styleClassStruct *gi.Struct
@@ -17340,7 +18981,11 @@ func StyleClassStruct() *StyleClass {
 	}
 
 	structGo := &StyleClass{native: styleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleClass)
 	return structGo
+}
+func finalizeStyleClass(obj *StyleClass) {
+	styleClassStruct.Free(obj.native)
 }
 
 var styleContextClassStruct *gi.Struct
@@ -17378,7 +19023,11 @@ func StyleContextClassStruct() *StyleContextClass {
 	}
 
 	structGo := &StyleContextClass{native: styleContextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleContextClass)
 	return structGo
+}
+func finalizeStyleContextClass(obj *StyleContextClass) {
+	styleContextClassStruct.Free(obj.native)
 }
 
 var styleContextPrivateStruct *gi.Struct
@@ -17404,7 +19053,11 @@ func StyleContextPrivateStruct() *StyleContextPrivate {
 	}
 
 	structGo := &StyleContextPrivate{native: styleContextPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleContextPrivate)
 	return structGo
+}
+func finalizeStyleContextPrivate(obj *StyleContextPrivate) {
+	styleContextPrivateStruct.Free(obj.native)
 }
 
 var stylePropertiesClassStruct *gi.Struct
@@ -17438,7 +19091,11 @@ func StylePropertiesClassStruct() *StylePropertiesClass {
 	}
 
 	structGo := &StylePropertiesClass{native: stylePropertiesClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStylePropertiesClass)
 	return structGo
+}
+func finalizeStylePropertiesClass(obj *StylePropertiesClass) {
+	stylePropertiesClassStruct.Free(obj.native)
 }
 
 var stylePropertiesPrivateStruct *gi.Struct
@@ -17464,7 +19121,11 @@ func StylePropertiesPrivateStruct() *StylePropertiesPrivate {
 	}
 
 	structGo := &StylePropertiesPrivate{native: stylePropertiesPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStylePropertiesPrivate)
 	return structGo
+}
+func finalizeStylePropertiesPrivate(obj *StylePropertiesPrivate) {
+	stylePropertiesPrivateStruct.Free(obj.native)
 }
 
 var styleProviderIfaceStruct *gi.Struct
@@ -17496,7 +19157,11 @@ func StyleProviderIfaceStruct() *StyleProviderIface {
 	}
 
 	structGo := &StyleProviderIface{native: styleProviderIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeStyleProviderIface)
 	return structGo
+}
+func finalizeStyleProviderIface(obj *StyleProviderIface) {
+	styleProviderIfaceStruct.Free(obj.native)
 }
 
 var switchAccessibleClassStruct *gi.Struct
@@ -17529,7 +19194,11 @@ func SwitchAccessibleClassStruct() *SwitchAccessibleClass {
 	}
 
 	structGo := &SwitchAccessibleClass{native: switchAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSwitchAccessibleClass)
 	return structGo
+}
+func finalizeSwitchAccessibleClass(obj *SwitchAccessibleClass) {
+	switchAccessibleClassStruct.Free(obj.native)
 }
 
 var switchAccessiblePrivateStruct *gi.Struct
@@ -17555,7 +19224,11 @@ func SwitchAccessiblePrivateStruct() *SwitchAccessiblePrivate {
 	}
 
 	structGo := &SwitchAccessiblePrivate{native: switchAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSwitchAccessiblePrivate)
 	return structGo
+}
+func finalizeSwitchAccessiblePrivate(obj *SwitchAccessiblePrivate) {
+	switchAccessiblePrivateStruct.Free(obj.native)
 }
 
 var switchClassStruct *gi.Struct
@@ -17602,7 +19275,11 @@ func SwitchClassStruct() *SwitchClass {
 	}
 
 	structGo := &SwitchClass{native: switchClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSwitchClass)
 	return structGo
+}
+func finalizeSwitchClass(obj *SwitchClass) {
+	switchClassStruct.Free(obj.native)
 }
 
 var switchPrivateStruct *gi.Struct
@@ -17628,7 +19305,11 @@ func SwitchPrivateStruct() *SwitchPrivate {
 	}
 
 	structGo := &SwitchPrivate{native: switchPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSwitchPrivate)
 	return structGo
+}
+func finalizeSwitchPrivate(obj *SwitchPrivate) {
+	switchPrivateStruct.Free(obj.native)
 }
 
 var symbolicColorStruct *gi.Struct
@@ -18016,7 +19697,11 @@ func TableChildStruct() *TableChild {
 	}
 
 	structGo := &TableChild{native: tableChildStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTableChild)
 	return structGo
+}
+func finalizeTableChild(obj *TableChild) {
+	tableChildStruct.Free(obj.native)
 }
 
 var tableClassStruct *gi.Struct
@@ -18057,7 +19742,11 @@ func TableClassStruct() *TableClass {
 	}
 
 	structGo := &TableClass{native: tableClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTableClass)
 	return structGo
+}
+func finalizeTableClass(obj *TableClass) {
+	tableClassStruct.Free(obj.native)
 }
 
 var tablePrivateStruct *gi.Struct
@@ -18083,7 +19772,11 @@ func TablePrivateStruct() *TablePrivate {
 	}
 
 	structGo := &TablePrivate{native: tablePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTablePrivate)
 	return structGo
+}
+func finalizeTablePrivate(obj *TablePrivate) {
+	tablePrivateStruct.Free(obj.native)
 }
 
 var tableRowColStruct *gi.Struct
@@ -18165,7 +19858,11 @@ func TableRowColStruct() *TableRowCol {
 	}
 
 	structGo := &TableRowCol{native: tableRowColStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTableRowCol)
 	return structGo
+}
+func finalizeTableRowCol(obj *TableRowCol) {
+	tableRowColStruct.Free(obj.native)
 }
 
 var targetEntryStruct *gi.Struct
@@ -18512,7 +20209,11 @@ func TargetPairStruct() *TargetPair {
 	}
 
 	structGo := &TargetPair{native: targetPairStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTargetPair)
 	return structGo
+}
+func finalizeTargetPair(obj *TargetPair) {
+	targetPairStruct.Free(obj.native)
 }
 
 var tearoffMenuItemClassStruct *gi.Struct
@@ -18553,7 +20254,11 @@ func TearoffMenuItemClassStruct() *TearoffMenuItemClass {
 	}
 
 	structGo := &TearoffMenuItemClass{native: tearoffMenuItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTearoffMenuItemClass)
 	return structGo
+}
+func finalizeTearoffMenuItemClass(obj *TearoffMenuItemClass) {
+	tearoffMenuItemClassStruct.Free(obj.native)
 }
 
 var tearoffMenuItemPrivateStruct *gi.Struct
@@ -18579,7 +20284,11 @@ func TearoffMenuItemPrivateStruct() *TearoffMenuItemPrivate {
 	}
 
 	structGo := &TearoffMenuItemPrivate{native: tearoffMenuItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTearoffMenuItemPrivate)
 	return structGo
+}
+func finalizeTearoffMenuItemPrivate(obj *TearoffMenuItemPrivate) {
+	tearoffMenuItemPrivateStruct.Free(obj.native)
 }
 
 var textAppearanceStruct *gi.Struct
@@ -18651,7 +20360,11 @@ func TextAppearanceStruct() *TextAppearance {
 	}
 
 	structGo := &TextAppearance{native: textAppearanceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextAppearance)
 	return structGo
+}
+func finalizeTextAppearance(obj *TextAppearance) {
+	textAppearanceStruct.Free(obj.native)
 }
 
 var textAttributesStruct *gi.Struct
@@ -18946,7 +20659,11 @@ func TextBTreeStruct() *TextBTree {
 	}
 
 	structGo := &TextBTree{native: textBTreeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextBTree)
 	return structGo
+}
+func finalizeTextBTree(obj *TextBTree) {
+	textBTreeStruct.Free(obj.native)
 }
 
 var textBufferClassStruct *gi.Struct
@@ -19008,7 +20725,11 @@ func TextBufferClassStruct() *TextBufferClass {
 	}
 
 	structGo := &TextBufferClass{native: textBufferClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextBufferClass)
 	return structGo
+}
+func finalizeTextBufferClass(obj *TextBufferClass) {
+	textBufferClassStruct.Free(obj.native)
 }
 
 var textBufferPrivateStruct *gi.Struct
@@ -19034,7 +20755,11 @@ func TextBufferPrivateStruct() *TextBufferPrivate {
 	}
 
 	structGo := &TextBufferPrivate{native: textBufferPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextBufferPrivate)
 	return structGo
+}
+func finalizeTextBufferPrivate(obj *TextBufferPrivate) {
+	textBufferPrivateStruct.Free(obj.native)
 }
 
 var textCellAccessibleClassStruct *gi.Struct
@@ -19067,7 +20792,11 @@ func TextCellAccessibleClassStruct() *TextCellAccessibleClass {
 	}
 
 	structGo := &TextCellAccessibleClass{native: textCellAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextCellAccessibleClass)
 	return structGo
+}
+func finalizeTextCellAccessibleClass(obj *TextCellAccessibleClass) {
+	textCellAccessibleClassStruct.Free(obj.native)
 }
 
 var textCellAccessiblePrivateStruct *gi.Struct
@@ -19093,7 +20822,11 @@ func TextCellAccessiblePrivateStruct() *TextCellAccessiblePrivate {
 	}
 
 	structGo := &TextCellAccessiblePrivate{native: textCellAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextCellAccessiblePrivate)
 	return structGo
+}
+func finalizeTextCellAccessiblePrivate(obj *TextCellAccessiblePrivate) {
+	textCellAccessiblePrivateStruct.Free(obj.native)
 }
 
 var textChildAnchorClassStruct *gi.Struct
@@ -19129,7 +20862,11 @@ func TextChildAnchorClassStruct() *TextChildAnchorClass {
 	}
 
 	structGo := &TextChildAnchorClass{native: textChildAnchorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextChildAnchorClass)
 	return structGo
+}
+func finalizeTextChildAnchorClass(obj *TextChildAnchorClass) {
+	textChildAnchorClassStruct.Free(obj.native)
 }
 
 var textIterStruct *gi.Struct
@@ -19145,17 +20882,6 @@ func textIterStruct_Set() error {
 
 type TextIter struct {
 	native uintptr
-}
-
-// TextIterStruct creates an uninitialised TextIter.
-func TextIterStruct() *TextIter {
-	err := textIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TextIter{native: textIterStruct.Alloc()}
-	return structGo
 }
 
 var textIterAssignFunction *gi.Function
@@ -21528,6 +23254,21 @@ func (recv *TextIter) StartsWord() bool {
 
 // UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
 
+// TextIterStruct creates an uninitialised TextIter.
+func TextIterStruct() *TextIter {
+	err := textIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TextIter{native: textIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextIter)
+	return structGo
+}
+func finalizeTextIter(obj *TextIter) {
+	textIterStruct.Free(obj.native)
+}
+
 var textMarkClassStruct *gi.Struct
 var textMarkClassStruct_Once sync.Once
 
@@ -21561,7 +23302,11 @@ func TextMarkClassStruct() *TextMarkClass {
 	}
 
 	structGo := &TextMarkClass{native: textMarkClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextMarkClass)
 	return structGo
+}
+func finalizeTextMarkClass(obj *TextMarkClass) {
+	textMarkClassStruct.Free(obj.native)
 }
 
 var textTagClassStruct *gi.Struct
@@ -21599,7 +23344,11 @@ func TextTagClassStruct() *TextTagClass {
 	}
 
 	structGo := &TextTagClass{native: textTagClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextTagClass)
 	return structGo
+}
+func finalizeTextTagClass(obj *TextTagClass) {
+	textTagClassStruct.Free(obj.native)
 }
 
 var textTagPrivateStruct *gi.Struct
@@ -21625,7 +23374,11 @@ func TextTagPrivateStruct() *TextTagPrivate {
 	}
 
 	structGo := &TextTagPrivate{native: textTagPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextTagPrivate)
 	return structGo
+}
+func finalizeTextTagPrivate(obj *TextTagPrivate) {
+	textTagPrivateStruct.Free(obj.native)
 }
 
 var textTagTableClassStruct *gi.Struct
@@ -21667,7 +23420,11 @@ func TextTagTableClassStruct() *TextTagTableClass {
 	}
 
 	structGo := &TextTagTableClass{native: textTagTableClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextTagTableClass)
 	return structGo
+}
+func finalizeTextTagTableClass(obj *TextTagTableClass) {
+	textTagTableClassStruct.Free(obj.native)
 }
 
 var textTagTablePrivateStruct *gi.Struct
@@ -21693,7 +23450,11 @@ func TextTagTablePrivateStruct() *TextTagTablePrivate {
 	}
 
 	structGo := &TextTagTablePrivate{native: textTagTablePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextTagTablePrivate)
 	return structGo
+}
+func finalizeTextTagTablePrivate(obj *TextTagTablePrivate) {
+	textTagTablePrivateStruct.Free(obj.native)
 }
 
 var textViewAccessibleClassStruct *gi.Struct
@@ -21726,7 +23487,11 @@ func TextViewAccessibleClassStruct() *TextViewAccessibleClass {
 	}
 
 	structGo := &TextViewAccessibleClass{native: textViewAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextViewAccessibleClass)
 	return structGo
+}
+func finalizeTextViewAccessibleClass(obj *TextViewAccessibleClass) {
+	textViewAccessibleClassStruct.Free(obj.native)
 }
 
 var textViewAccessiblePrivateStruct *gi.Struct
@@ -21752,7 +23517,11 @@ func TextViewAccessiblePrivateStruct() *TextViewAccessiblePrivate {
 	}
 
 	structGo := &TextViewAccessiblePrivate{native: textViewAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextViewAccessiblePrivate)
 	return structGo
+}
+func finalizeTextViewAccessiblePrivate(obj *TextViewAccessiblePrivate) {
+	textViewAccessiblePrivateStruct.Free(obj.native)
 }
 
 var textViewClassStruct *gi.Struct
@@ -21821,7 +23590,11 @@ func TextViewClassStruct() *TextViewClass {
 	}
 
 	structGo := &TextViewClass{native: textViewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextViewClass)
 	return structGo
+}
+func finalizeTextViewClass(obj *TextViewClass) {
+	textViewClassStruct.Free(obj.native)
 }
 
 var textViewPrivateStruct *gi.Struct
@@ -21847,7 +23620,11 @@ func TextViewPrivateStruct() *TextViewPrivate {
 	}
 
 	structGo := &TextViewPrivate{native: textViewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTextViewPrivate)
 	return structGo
+}
+func finalizeTextViewPrivate(obj *TextViewPrivate) {
+	textViewPrivateStruct.Free(obj.native)
 }
 
 var themeEngineStruct *gi.Struct
@@ -21873,7 +23650,11 @@ func ThemeEngineStruct() *ThemeEngine {
 	}
 
 	structGo := &ThemeEngine{native: themeEngineStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThemeEngine)
 	return structGo
+}
+func finalizeThemeEngine(obj *ThemeEngine) {
+	themeEngineStruct.Free(obj.native)
 }
 
 var themingEngineClassStruct *gi.Struct
@@ -21935,7 +23716,11 @@ func ThemingEngineClassStruct() *ThemingEngineClass {
 	}
 
 	structGo := &ThemingEngineClass{native: themingEngineClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThemingEngineClass)
 	return structGo
+}
+func finalizeThemingEngineClass(obj *ThemingEngineClass) {
+	themingEngineClassStruct.Free(obj.native)
 }
 
 var themingEnginePrivateStruct *gi.Struct
@@ -21961,7 +23746,11 @@ func ThemingEnginePrivateStruct() *ThemingEnginePrivate {
 	}
 
 	structGo := &ThemingEnginePrivate{native: themingEnginePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeThemingEnginePrivate)
 	return structGo
+}
+func finalizeThemingEnginePrivate(obj *ThemingEnginePrivate) {
+	themingEnginePrivateStruct.Free(obj.native)
 }
 
 var toggleActionClassStruct *gi.Struct
@@ -22004,7 +23793,11 @@ func ToggleActionClassStruct() *ToggleActionClass {
 	}
 
 	structGo := &ToggleActionClass{native: toggleActionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleActionClass)
 	return structGo
+}
+func finalizeToggleActionClass(obj *ToggleActionClass) {
+	toggleActionClassStruct.Free(obj.native)
 }
 
 var toggleActionEntryStruct *gi.Struct
@@ -22074,7 +23867,11 @@ func ToggleActionEntryStruct() *ToggleActionEntry {
 	}
 
 	structGo := &ToggleActionEntry{native: toggleActionEntryStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleActionEntry)
 	return structGo
+}
+func finalizeToggleActionEntry(obj *ToggleActionEntry) {
+	toggleActionEntryStruct.Free(obj.native)
 }
 
 var toggleActionPrivateStruct *gi.Struct
@@ -22100,7 +23897,11 @@ func ToggleActionPrivateStruct() *ToggleActionPrivate {
 	}
 
 	structGo := &ToggleActionPrivate{native: toggleActionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleActionPrivate)
 	return structGo
+}
+func finalizeToggleActionPrivate(obj *ToggleActionPrivate) {
+	toggleActionPrivateStruct.Free(obj.native)
 }
 
 var toggleButtonAccessibleClassStruct *gi.Struct
@@ -22133,7 +23934,11 @@ func ToggleButtonAccessibleClassStruct() *ToggleButtonAccessibleClass {
 	}
 
 	structGo := &ToggleButtonAccessibleClass{native: toggleButtonAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleButtonAccessibleClass)
 	return structGo
+}
+func finalizeToggleButtonAccessibleClass(obj *ToggleButtonAccessibleClass) {
+	toggleButtonAccessibleClassStruct.Free(obj.native)
 }
 
 var toggleButtonAccessiblePrivateStruct *gi.Struct
@@ -22159,7 +23964,11 @@ func ToggleButtonAccessiblePrivateStruct() *ToggleButtonAccessiblePrivate {
 	}
 
 	structGo := &ToggleButtonAccessiblePrivate{native: toggleButtonAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleButtonAccessiblePrivate)
 	return structGo
+}
+func finalizeToggleButtonAccessiblePrivate(obj *ToggleButtonAccessiblePrivate) {
+	toggleButtonAccessiblePrivateStruct.Free(obj.native)
 }
 
 var toggleButtonClassStruct *gi.Struct
@@ -22202,7 +24011,11 @@ func ToggleButtonClassStruct() *ToggleButtonClass {
 	}
 
 	structGo := &ToggleButtonClass{native: toggleButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleButtonClass)
 	return structGo
+}
+func finalizeToggleButtonClass(obj *ToggleButtonClass) {
+	toggleButtonClassStruct.Free(obj.native)
 }
 
 var toggleButtonPrivateStruct *gi.Struct
@@ -22228,7 +24041,11 @@ func ToggleButtonPrivateStruct() *ToggleButtonPrivate {
 	}
 
 	structGo := &ToggleButtonPrivate{native: toggleButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleButtonPrivate)
 	return structGo
+}
+func finalizeToggleButtonPrivate(obj *ToggleButtonPrivate) {
+	toggleButtonPrivateStruct.Free(obj.native)
 }
 
 var toggleToolButtonClassStruct *gi.Struct
@@ -22271,7 +24088,11 @@ func ToggleToolButtonClassStruct() *ToggleToolButtonClass {
 	}
 
 	structGo := &ToggleToolButtonClass{native: toggleToolButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleToolButtonClass)
 	return structGo
+}
+func finalizeToggleToolButtonClass(obj *ToggleToolButtonClass) {
+	toggleToolButtonClassStruct.Free(obj.native)
 }
 
 var toggleToolButtonPrivateStruct *gi.Struct
@@ -22297,7 +24118,11 @@ func ToggleToolButtonPrivateStruct() *ToggleToolButtonPrivate {
 	}
 
 	structGo := &ToggleToolButtonPrivate{native: toggleToolButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToggleToolButtonPrivate)
 	return structGo
+}
+func finalizeToggleToolButtonPrivate(obj *ToggleToolButtonPrivate) {
+	toggleToolButtonPrivateStruct.Free(obj.native)
 }
 
 var toolButtonClassStruct *gi.Struct
@@ -22342,7 +24167,11 @@ func ToolButtonClassStruct() *ToolButtonClass {
 	}
 
 	structGo := &ToolButtonClass{native: toolButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolButtonClass)
 	return structGo
+}
+func finalizeToolButtonClass(obj *ToolButtonClass) {
+	toolButtonClassStruct.Free(obj.native)
 }
 
 var toolButtonPrivateStruct *gi.Struct
@@ -22368,7 +24197,11 @@ func ToolButtonPrivateStruct() *ToolButtonPrivate {
 	}
 
 	structGo := &ToolButtonPrivate{native: toolButtonPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolButtonPrivate)
 	return structGo
+}
+func finalizeToolButtonPrivate(obj *ToolButtonPrivate) {
+	toolButtonPrivateStruct.Free(obj.native)
 }
 
 var toolItemClassStruct *gi.Struct
@@ -22413,7 +24246,11 @@ func ToolItemClassStruct() *ToolItemClass {
 	}
 
 	structGo := &ToolItemClass{native: toolItemClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolItemClass)
 	return structGo
+}
+func finalizeToolItemClass(obj *ToolItemClass) {
+	toolItemClassStruct.Free(obj.native)
 }
 
 var toolItemGroupClassStruct *gi.Struct
@@ -22454,7 +24291,11 @@ func ToolItemGroupClassStruct() *ToolItemGroupClass {
 	}
 
 	structGo := &ToolItemGroupClass{native: toolItemGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolItemGroupClass)
 	return structGo
+}
+func finalizeToolItemGroupClass(obj *ToolItemGroupClass) {
+	toolItemGroupClassStruct.Free(obj.native)
 }
 
 var toolItemGroupPrivateStruct *gi.Struct
@@ -22480,7 +24321,11 @@ func ToolItemGroupPrivateStruct() *ToolItemGroupPrivate {
 	}
 
 	structGo := &ToolItemGroupPrivate{native: toolItemGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolItemGroupPrivate)
 	return structGo
+}
+func finalizeToolItemGroupPrivate(obj *ToolItemGroupPrivate) {
+	toolItemGroupPrivateStruct.Free(obj.native)
 }
 
 var toolItemPrivateStruct *gi.Struct
@@ -22506,7 +24351,11 @@ func ToolItemPrivateStruct() *ToolItemPrivate {
 	}
 
 	structGo := &ToolItemPrivate{native: toolItemPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolItemPrivate)
 	return structGo
+}
+func finalizeToolItemPrivate(obj *ToolItemPrivate) {
+	toolItemPrivateStruct.Free(obj.native)
 }
 
 var toolPaletteClassStruct *gi.Struct
@@ -22547,7 +24396,11 @@ func ToolPaletteClassStruct() *ToolPaletteClass {
 	}
 
 	structGo := &ToolPaletteClass{native: toolPaletteClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolPaletteClass)
 	return structGo
+}
+func finalizeToolPaletteClass(obj *ToolPaletteClass) {
+	toolPaletteClassStruct.Free(obj.native)
 }
 
 var toolPalettePrivateStruct *gi.Struct
@@ -22573,7 +24426,11 @@ func ToolPalettePrivateStruct() *ToolPalettePrivate {
 	}
 
 	structGo := &ToolPalettePrivate{native: toolPalettePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolPalettePrivate)
 	return structGo
+}
+func finalizeToolPalettePrivate(obj *ToolPalettePrivate) {
+	toolPalettePrivateStruct.Free(obj.native)
 }
 
 var toolShellIfaceStruct *gi.Struct
@@ -22617,7 +24474,11 @@ func ToolShellIfaceStruct() *ToolShellIface {
 	}
 
 	structGo := &ToolShellIface{native: toolShellIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolShellIface)
 	return structGo
+}
+func finalizeToolShellIface(obj *ToolShellIface) {
+	toolShellIfaceStruct.Free(obj.native)
 }
 
 var toolbarClassStruct *gi.Struct
@@ -22664,7 +24525,11 @@ func ToolbarClassStruct() *ToolbarClass {
 	}
 
 	structGo := &ToolbarClass{native: toolbarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolbarClass)
 	return structGo
+}
+func finalizeToolbarClass(obj *ToolbarClass) {
+	toolbarClassStruct.Free(obj.native)
 }
 
 var toolbarPrivateStruct *gi.Struct
@@ -22690,7 +24555,11 @@ func ToolbarPrivateStruct() *ToolbarPrivate {
 	}
 
 	structGo := &ToolbarPrivate{native: toolbarPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToolbarPrivate)
 	return structGo
+}
+func finalizeToolbarPrivate(obj *ToolbarPrivate) {
+	toolbarPrivateStruct.Free(obj.native)
 }
 
 var toplevelAccessibleClassStruct *gi.Struct
@@ -22718,7 +24587,11 @@ func ToplevelAccessibleClassStruct() *ToplevelAccessibleClass {
 	}
 
 	structGo := &ToplevelAccessibleClass{native: toplevelAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToplevelAccessibleClass)
 	return structGo
+}
+func finalizeToplevelAccessibleClass(obj *ToplevelAccessibleClass) {
+	toplevelAccessibleClassStruct.Free(obj.native)
 }
 
 var toplevelAccessiblePrivateStruct *gi.Struct
@@ -22744,7 +24617,11 @@ func ToplevelAccessiblePrivateStruct() *ToplevelAccessiblePrivate {
 	}
 
 	structGo := &ToplevelAccessiblePrivate{native: toplevelAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeToplevelAccessiblePrivate)
 	return structGo
+}
+func finalizeToplevelAccessiblePrivate(obj *ToplevelAccessiblePrivate) {
+	toplevelAccessiblePrivateStruct.Free(obj.native)
 }
 
 var treeDragDestIfaceStruct *gi.Struct
@@ -22774,7 +24651,11 @@ func TreeDragDestIfaceStruct() *TreeDragDestIface {
 	}
 
 	structGo := &TreeDragDestIface{native: treeDragDestIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeDragDestIface)
 	return structGo
+}
+func finalizeTreeDragDestIface(obj *TreeDragDestIface) {
+	treeDragDestIfaceStruct.Free(obj.native)
 }
 
 var treeDragSourceIfaceStruct *gi.Struct
@@ -22806,7 +24687,11 @@ func TreeDragSourceIfaceStruct() *TreeDragSourceIface {
 	}
 
 	structGo := &TreeDragSourceIface{native: treeDragSourceIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeDragSourceIface)
 	return structGo
+}
+func finalizeTreeDragSourceIface(obj *TreeDragSourceIface) {
+	treeDragSourceIfaceStruct.Free(obj.native)
 }
 
 var treeIterStruct *gi.Struct
@@ -22836,17 +24721,6 @@ func (recv *TreeIter) Stamp() int32 {
 // UNSUPPORTED : C value 'user_data2' : for field getter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'user_data3' : for field getter : no Go type for 'gpointer'
-
-// TreeIterStruct creates an uninitialised TreeIter.
-func TreeIterStruct() *TreeIter {
-	err := treeIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TreeIter{native: treeIterStruct.Alloc()}
-	return structGo
-}
 
 var treeIterCopyFunction *gi.Function
 var treeIterCopyFunction_Once sync.Once
@@ -22908,6 +24782,21 @@ func (recv *TreeIter) Free() {
 	return
 }
 
+// TreeIterStruct creates an uninitialised TreeIter.
+func TreeIterStruct() *TreeIter {
+	err := treeIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TreeIter{native: treeIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeIter)
+	return structGo
+}
+func finalizeTreeIter(obj *TreeIter) {
+	treeIterStruct.Free(obj.native)
+}
+
 var treeModelFilterClassStruct *gi.Struct
 var treeModelFilterClassStruct_Once sync.Once
 
@@ -22945,7 +24834,11 @@ func TreeModelFilterClassStruct() *TreeModelFilterClass {
 	}
 
 	structGo := &TreeModelFilterClass{native: treeModelFilterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeModelFilterClass)
 	return structGo
+}
+func finalizeTreeModelFilterClass(obj *TreeModelFilterClass) {
+	treeModelFilterClassStruct.Free(obj.native)
 }
 
 var treeModelFilterPrivateStruct *gi.Struct
@@ -22971,7 +24864,11 @@ func TreeModelFilterPrivateStruct() *TreeModelFilterPrivate {
 	}
 
 	structGo := &TreeModelFilterPrivate{native: treeModelFilterPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeModelFilterPrivate)
 	return structGo
+}
+func finalizeTreeModelFilterPrivate(obj *TreeModelFilterPrivate) {
+	treeModelFilterPrivateStruct.Free(obj.native)
 }
 
 var treeModelIfaceStruct *gi.Struct
@@ -23037,7 +24934,11 @@ func TreeModelIfaceStruct() *TreeModelIface {
 	}
 
 	structGo := &TreeModelIface{native: treeModelIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeModelIface)
 	return structGo
+}
+func finalizeTreeModelIface(obj *TreeModelIface) {
+	treeModelIfaceStruct.Free(obj.native)
 }
 
 var treeModelSortClassStruct *gi.Struct
@@ -23073,7 +24974,11 @@ func TreeModelSortClassStruct() *TreeModelSortClass {
 	}
 
 	structGo := &TreeModelSortClass{native: treeModelSortClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeModelSortClass)
 	return structGo
+}
+func finalizeTreeModelSortClass(obj *TreeModelSortClass) {
+	treeModelSortClassStruct.Free(obj.native)
 }
 
 var treeModelSortPrivateStruct *gi.Struct
@@ -23099,7 +25004,11 @@ func TreeModelSortPrivateStruct() *TreeModelSortPrivate {
 	}
 
 	structGo := &TreeModelSortPrivate{native: treeModelSortPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeModelSortPrivate)
 	return structGo
+}
+func finalizeTreeModelSortPrivate(obj *TreeModelSortPrivate) {
+	treeModelSortPrivateStruct.Free(obj.native)
 }
 
 var treePathStruct *gi.Struct
@@ -23858,7 +25767,11 @@ func TreeSelectionClassStruct() *TreeSelectionClass {
 	}
 
 	structGo := &TreeSelectionClass{native: treeSelectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeSelectionClass)
 	return structGo
+}
+func finalizeTreeSelectionClass(obj *TreeSelectionClass) {
+	treeSelectionClassStruct.Free(obj.native)
 }
 
 var treeSelectionPrivateStruct *gi.Struct
@@ -23884,7 +25797,11 @@ func TreeSelectionPrivateStruct() *TreeSelectionPrivate {
 	}
 
 	structGo := &TreeSelectionPrivate{native: treeSelectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeSelectionPrivate)
 	return structGo
+}
+func finalizeTreeSelectionPrivate(obj *TreeSelectionPrivate) {
+	treeSelectionPrivateStruct.Free(obj.native)
 }
 
 var treeSortableIfaceStruct *gi.Struct
@@ -23922,7 +25839,11 @@ func TreeSortableIfaceStruct() *TreeSortableIface {
 	}
 
 	structGo := &TreeSortableIface{native: treeSortableIfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeSortableIface)
 	return structGo
+}
+func finalizeTreeSortableIface(obj *TreeSortableIface) {
+	treeSortableIfaceStruct.Free(obj.native)
 }
 
 var treeStoreClassStruct *gi.Struct
@@ -23958,7 +25879,11 @@ func TreeStoreClassStruct() *TreeStoreClass {
 	}
 
 	structGo := &TreeStoreClass{native: treeStoreClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeStoreClass)
 	return structGo
+}
+func finalizeTreeStoreClass(obj *TreeStoreClass) {
+	treeStoreClassStruct.Free(obj.native)
 }
 
 var treeStorePrivateStruct *gi.Struct
@@ -23984,7 +25909,11 @@ func TreeStorePrivateStruct() *TreeStorePrivate {
 	}
 
 	structGo := &TreeStorePrivate{native: treeStorePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeStorePrivate)
 	return structGo
+}
+func finalizeTreeStorePrivate(obj *TreeStorePrivate) {
+	treeStorePrivateStruct.Free(obj.native)
 }
 
 var treeViewAccessibleClassStruct *gi.Struct
@@ -24017,7 +25946,11 @@ func TreeViewAccessibleClassStruct() *TreeViewAccessibleClass {
 	}
 
 	structGo := &TreeViewAccessibleClass{native: treeViewAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewAccessibleClass)
 	return structGo
+}
+func finalizeTreeViewAccessibleClass(obj *TreeViewAccessibleClass) {
+	treeViewAccessibleClassStruct.Free(obj.native)
 }
 
 var treeViewAccessiblePrivateStruct *gi.Struct
@@ -24043,7 +25976,11 @@ func TreeViewAccessiblePrivateStruct() *TreeViewAccessiblePrivate {
 	}
 
 	structGo := &TreeViewAccessiblePrivate{native: treeViewAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewAccessiblePrivate)
 	return structGo
+}
+func finalizeTreeViewAccessiblePrivate(obj *TreeViewAccessiblePrivate) {
+	treeViewAccessiblePrivateStruct.Free(obj.native)
 }
 
 var treeViewClassStruct *gi.Struct
@@ -24122,7 +26059,11 @@ func TreeViewClassStruct() *TreeViewClass {
 	}
 
 	structGo := &TreeViewClass{native: treeViewClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewClass)
 	return structGo
+}
+func finalizeTreeViewClass(obj *TreeViewClass) {
+	treeViewClassStruct.Free(obj.native)
 }
 
 var treeViewColumnClassStruct *gi.Struct
@@ -24160,7 +26101,11 @@ func TreeViewColumnClassStruct() *TreeViewColumnClass {
 	}
 
 	structGo := &TreeViewColumnClass{native: treeViewColumnClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewColumnClass)
 	return structGo
+}
+func finalizeTreeViewColumnClass(obj *TreeViewColumnClass) {
+	treeViewColumnClassStruct.Free(obj.native)
 }
 
 var treeViewColumnPrivateStruct *gi.Struct
@@ -24186,7 +26131,11 @@ func TreeViewColumnPrivateStruct() *TreeViewColumnPrivate {
 	}
 
 	structGo := &TreeViewColumnPrivate{native: treeViewColumnPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewColumnPrivate)
 	return structGo
+}
+func finalizeTreeViewColumnPrivate(obj *TreeViewColumnPrivate) {
+	treeViewColumnPrivateStruct.Free(obj.native)
 }
 
 var treeViewPrivateStruct *gi.Struct
@@ -24212,7 +26161,11 @@ func TreeViewPrivateStruct() *TreeViewPrivate {
 	}
 
 	structGo := &TreeViewPrivate{native: treeViewPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTreeViewPrivate)
 	return structGo
+}
+func finalizeTreeViewPrivate(obj *TreeViewPrivate) {
+	treeViewPrivateStruct.Free(obj.native)
 }
 
 var uIManagerClassStruct *gi.Struct
@@ -24264,7 +26217,11 @@ func UIManagerClassStruct() *UIManagerClass {
 	}
 
 	structGo := &UIManagerClass{native: uIManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUIManagerClass)
 	return structGo
+}
+func finalizeUIManagerClass(obj *UIManagerClass) {
+	uIManagerClassStruct.Free(obj.native)
 }
 
 var uIManagerPrivateStruct *gi.Struct
@@ -24290,7 +26247,11 @@ func UIManagerPrivateStruct() *UIManagerPrivate {
 	}
 
 	structGo := &UIManagerPrivate{native: uIManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUIManagerPrivate)
 	return structGo
+}
+func finalizeUIManagerPrivate(obj *UIManagerPrivate) {
+	uIManagerPrivateStruct.Free(obj.native)
 }
 
 var vBoxClassStruct *gi.Struct
@@ -24323,7 +26284,11 @@ func VBoxClassStruct() *VBoxClass {
 	}
 
 	structGo := &VBoxClass{native: vBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVBoxClass)
 	return structGo
+}
+func finalizeVBoxClass(obj *VBoxClass) {
+	vBoxClassStruct.Free(obj.native)
 }
 
 var vButtonBoxClassStruct *gi.Struct
@@ -24356,7 +26321,11 @@ func VButtonBoxClassStruct() *VButtonBoxClass {
 	}
 
 	structGo := &VButtonBoxClass{native: vButtonBoxClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVButtonBoxClass)
 	return structGo
+}
+func finalizeVButtonBoxClass(obj *VButtonBoxClass) {
+	vButtonBoxClassStruct.Free(obj.native)
 }
 
 var vPanedClassStruct *gi.Struct
@@ -24389,7 +26358,11 @@ func VPanedClassStruct() *VPanedClass {
 	}
 
 	structGo := &VPanedClass{native: vPanedClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVPanedClass)
 	return structGo
+}
+func finalizeVPanedClass(obj *VPanedClass) {
+	vPanedClassStruct.Free(obj.native)
 }
 
 var vScaleClassStruct *gi.Struct
@@ -24422,7 +26395,11 @@ func VScaleClassStruct() *VScaleClass {
 	}
 
 	structGo := &VScaleClass{native: vScaleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVScaleClass)
 	return structGo
+}
+func finalizeVScaleClass(obj *VScaleClass) {
+	vScaleClassStruct.Free(obj.native)
 }
 
 var vScrollbarClassStruct *gi.Struct
@@ -24455,7 +26432,11 @@ func VScrollbarClassStruct() *VScrollbarClass {
 	}
 
 	structGo := &VScrollbarClass{native: vScrollbarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVScrollbarClass)
 	return structGo
+}
+func finalizeVScrollbarClass(obj *VScrollbarClass) {
+	vScrollbarClassStruct.Free(obj.native)
 }
 
 var vSeparatorClassStruct *gi.Struct
@@ -24488,7 +26469,11 @@ func VSeparatorClassStruct() *VSeparatorClass {
 	}
 
 	structGo := &VSeparatorClass{native: vSeparatorClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVSeparatorClass)
 	return structGo
+}
+func finalizeVSeparatorClass(obj *VSeparatorClass) {
+	vSeparatorClassStruct.Free(obj.native)
 }
 
 var viewportClassStruct *gi.Struct
@@ -24529,7 +26514,11 @@ func ViewportClassStruct() *ViewportClass {
 	}
 
 	structGo := &ViewportClass{native: viewportClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeViewportClass)
 	return structGo
+}
+func finalizeViewportClass(obj *ViewportClass) {
+	viewportClassStruct.Free(obj.native)
 }
 
 var viewportPrivateStruct *gi.Struct
@@ -24555,7 +26544,11 @@ func ViewportPrivateStruct() *ViewportPrivate {
 	}
 
 	structGo := &ViewportPrivate{native: viewportPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeViewportPrivate)
 	return structGo
+}
+func finalizeViewportPrivate(obj *ViewportPrivate) {
+	viewportPrivateStruct.Free(obj.native)
 }
 
 var volumeButtonClassStruct *gi.Struct
@@ -24596,7 +26589,11 @@ func VolumeButtonClassStruct() *VolumeButtonClass {
 	}
 
 	structGo := &VolumeButtonClass{native: volumeButtonClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVolumeButtonClass)
 	return structGo
+}
+func finalizeVolumeButtonClass(obj *VolumeButtonClass) {
+	volumeButtonClassStruct.Free(obj.native)
 }
 
 var widgetAccessibleClassStruct *gi.Struct
@@ -24631,7 +26628,11 @@ func WidgetAccessibleClassStruct() *WidgetAccessibleClass {
 	}
 
 	structGo := &WidgetAccessibleClass{native: widgetAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWidgetAccessibleClass)
 	return structGo
+}
+func finalizeWidgetAccessibleClass(obj *WidgetAccessibleClass) {
+	widgetAccessibleClassStruct.Free(obj.native)
 }
 
 var widgetAccessiblePrivateStruct *gi.Struct
@@ -24657,7 +26658,11 @@ func WidgetAccessiblePrivateStruct() *WidgetAccessiblePrivate {
 	}
 
 	structGo := &WidgetAccessiblePrivate{native: widgetAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWidgetAccessiblePrivate)
 	return structGo
+}
+func finalizeWidgetAccessiblePrivate(obj *WidgetAccessiblePrivate) {
+	widgetAccessiblePrivateStruct.Free(obj.native)
 }
 
 var widgetClassStruct *gi.Struct
@@ -24852,17 +26857,6 @@ func (recv *WidgetClass) ActivateSignal() uint32 {
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
-// WidgetClassStruct creates an uninitialised WidgetClass.
-func WidgetClassStruct() *WidgetClass {
-	err := widgetClassStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &WidgetClass{native: widgetClassStruct.Alloc()}
-	return structGo
-}
-
 // UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
 
 var widgetClassBindTemplateChildFullFunction *gi.Function
@@ -25032,6 +27026,21 @@ func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 	return
 }
 
+// WidgetClassStruct creates an uninitialised WidgetClass.
+func WidgetClassStruct() *WidgetClass {
+	err := widgetClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &WidgetClass{native: widgetClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWidgetClass)
+	return structGo
+}
+func finalizeWidgetClass(obj *WidgetClass) {
+	widgetClassStruct.Free(obj.native)
+}
+
 var widgetClassPrivateStruct *gi.Struct
 var widgetClassPrivateStruct_Once sync.Once
 
@@ -25055,7 +27064,11 @@ func WidgetClassPrivateStruct() *WidgetClassPrivate {
 	}
 
 	structGo := &WidgetClassPrivate{native: widgetClassPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWidgetClassPrivate)
 	return structGo
+}
+func finalizeWidgetClassPrivate(obj *WidgetClassPrivate) {
+	widgetClassPrivateStruct.Free(obj.native)
 }
 
 var widgetPathStruct *gi.Struct
@@ -25850,7 +27863,11 @@ func WidgetPrivateStruct() *WidgetPrivate {
 	}
 
 	structGo := &WidgetPrivate{native: widgetPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWidgetPrivate)
 	return structGo
+}
+func finalizeWidgetPrivate(obj *WidgetPrivate) {
+	widgetPrivateStruct.Free(obj.native)
 }
 
 var windowAccessibleClassStruct *gi.Struct
@@ -25883,7 +27900,11 @@ func WindowAccessibleClassStruct() *WindowAccessibleClass {
 	}
 
 	structGo := &WindowAccessibleClass{native: windowAccessibleClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowAccessibleClass)
 	return structGo
+}
+func finalizeWindowAccessibleClass(obj *WindowAccessibleClass) {
+	windowAccessibleClassStruct.Free(obj.native)
 }
 
 var windowAccessiblePrivateStruct *gi.Struct
@@ -25909,7 +27930,11 @@ func WindowAccessiblePrivateStruct() *WindowAccessiblePrivate {
 	}
 
 	structGo := &WindowAccessiblePrivate{native: windowAccessiblePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowAccessiblePrivate)
 	return structGo
+}
+func finalizeWindowAccessiblePrivate(obj *WindowAccessiblePrivate) {
+	windowAccessiblePrivateStruct.Free(obj.native)
 }
 
 var windowClassStruct *gi.Struct
@@ -25958,7 +27983,11 @@ func WindowClassStruct() *WindowClass {
 	}
 
 	structGo := &WindowClass{native: windowClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowClass)
 	return structGo
+}
+func finalizeWindowClass(obj *WindowClass) {
+	windowClassStruct.Free(obj.native)
 }
 
 var windowGeometryInfoStruct *gi.Struct
@@ -25984,7 +28013,11 @@ func WindowGeometryInfoStruct() *WindowGeometryInfo {
 	}
 
 	structGo := &WindowGeometryInfo{native: windowGeometryInfoStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowGeometryInfo)
 	return structGo
+}
+func finalizeWindowGeometryInfo(obj *WindowGeometryInfo) {
+	windowGeometryInfoStruct.Free(obj.native)
 }
 
 var windowGroupClassStruct *gi.Struct
@@ -26020,7 +28053,11 @@ func WindowGroupClassStruct() *WindowGroupClass {
 	}
 
 	structGo := &WindowGroupClass{native: windowGroupClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowGroupClass)
 	return structGo
+}
+func finalizeWindowGroupClass(obj *WindowGroupClass) {
+	windowGroupClassStruct.Free(obj.native)
 }
 
 var windowGroupPrivateStruct *gi.Struct
@@ -26046,7 +28083,11 @@ func WindowGroupPrivateStruct() *WindowGroupPrivate {
 	}
 
 	structGo := &WindowGroupPrivate{native: windowGroupPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowGroupPrivate)
 	return structGo
+}
+func finalizeWindowGroupPrivate(obj *WindowGroupPrivate) {
+	windowGroupPrivateStruct.Free(obj.native)
 }
 
 var windowPrivateStruct *gi.Struct
@@ -26072,5 +28113,9 @@ func WindowPrivateStruct() *WindowPrivate {
 	}
 
 	structGo := &WindowPrivate{native: windowPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWindowPrivate)
 	return structGo
+}
+func finalizeWindowPrivate(obj *WindowPrivate) {
+	windowPrivateStruct.Free(obj.native)
 }

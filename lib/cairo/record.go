@@ -4,6 +4,7 @@ package cairo
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -30,7 +31,11 @@ func ContextStruct() *Context {
 	}
 
 	structGo := &Context{native: contextStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContext)
 	return structGo
+}
+func finalizeContext(obj *Context) {
+	contextStruct.Free(obj.native)
 }
 
 var deviceStruct *gi.Struct
@@ -56,7 +61,11 @@ func DeviceStruct() *Device {
 	}
 
 	structGo := &Device{native: deviceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDevice)
 	return structGo
+}
+func finalizeDevice(obj *Device) {
+	deviceStruct.Free(obj.native)
 }
 
 var surfaceStruct *gi.Struct
@@ -82,7 +91,11 @@ func SurfaceStruct() *Surface {
 	}
 
 	structGo := &Surface{native: surfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSurface)
 	return structGo
+}
+func finalizeSurface(obj *Surface) {
+	surfaceStruct.Free(obj.native)
 }
 
 var matrixStruct *gi.Struct
@@ -108,7 +121,11 @@ func MatrixStruct() *Matrix {
 	}
 
 	structGo := &Matrix{native: matrixStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMatrix)
 	return structGo
+}
+func finalizeMatrix(obj *Matrix) {
+	matrixStruct.Free(obj.native)
 }
 
 var patternStruct *gi.Struct
@@ -134,7 +151,11 @@ func PatternStruct() *Pattern {
 	}
 
 	structGo := &Pattern{native: patternStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePattern)
 	return structGo
+}
+func finalizePattern(obj *Pattern) {
+	patternStruct.Free(obj.native)
 }
 
 var regionStruct *gi.Struct
@@ -160,7 +181,11 @@ func RegionStruct() *Region {
 	}
 
 	structGo := &Region{native: regionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRegion)
 	return structGo
+}
+func finalizeRegion(obj *Region) {
+	regionStruct.Free(obj.native)
 }
 
 var fontOptionsStruct *gi.Struct
@@ -186,7 +211,11 @@ func FontOptionsStruct() *FontOptions {
 	}
 
 	structGo := &FontOptions{native: fontOptionsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontOptions)
 	return structGo
+}
+func finalizeFontOptions(obj *FontOptions) {
+	fontOptionsStruct.Free(obj.native)
 }
 
 var fontFaceStruct *gi.Struct
@@ -212,7 +241,11 @@ func FontFaceStruct() *FontFace {
 	}
 
 	structGo := &FontFace{native: fontFaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFontFace)
 	return structGo
+}
+func finalizeFontFace(obj *FontFace) {
+	fontFaceStruct.Free(obj.native)
 }
 
 var scaledFontStruct *gi.Struct
@@ -238,7 +271,11 @@ func ScaledFontStruct() *ScaledFont {
 	}
 
 	structGo := &ScaledFont{native: scaledFontStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeScaledFont)
 	return structGo
+}
+func finalizeScaledFont(obj *ScaledFont) {
+	scaledFontStruct.Free(obj.native)
 }
 
 var pathStruct *gi.Struct
@@ -264,7 +301,11 @@ func PathStruct() *Path {
 	}
 
 	structGo := &Path{native: pathStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePath)
 	return structGo
+}
+func finalizePath(obj *Path) {
+	pathStruct.Free(obj.native)
 }
 
 var rectangleStruct *gi.Struct
@@ -318,7 +359,11 @@ func RectangleStruct() *Rectangle {
 	}
 
 	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRectangle)
 	return structGo
+}
+func finalizeRectangle(obj *Rectangle) {
+	rectangleStruct.Free(obj.native)
 }
 
 var rectangleIntStruct *gi.Struct
@@ -372,5 +417,9 @@ func RectangleIntStruct() *RectangleInt {
 	}
 
 	structGo := &RectangleInt{native: rectangleIntStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRectangleInt)
 	return structGo
+}
+func finalizeRectangleInt(obj *RectangleInt) {
+	rectangleIntStruct.Free(obj.native)
 }

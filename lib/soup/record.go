@@ -4,6 +4,7 @@ package soup
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	"runtime"
 	"sync"
 )
 
@@ -40,7 +41,11 @@ func AddressClassStruct() *AddressClass {
 	}
 
 	structGo := &AddressClass{native: addressClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAddressClass)
 	return structGo
+}
+func finalizeAddressClass(obj *AddressClass) {
+	addressClassStruct.Free(obj.native)
 }
 
 var authClassStruct *gi.Struct
@@ -100,7 +105,11 @@ func AuthClassStruct() *AuthClass {
 	}
 
 	structGo := &AuthClass{native: authClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthClass)
 	return structGo
+}
+func finalizeAuthClass(obj *AuthClass) {
+	authClassStruct.Free(obj.native)
 }
 
 var authDomainBasicClassStruct *gi.Struct
@@ -141,7 +150,11 @@ func AuthDomainBasicClassStruct() *AuthDomainBasicClass {
 	}
 
 	structGo := &AuthDomainBasicClass{native: authDomainBasicClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthDomainBasicClass)
 	return structGo
+}
+func finalizeAuthDomainBasicClass(obj *AuthDomainBasicClass) {
+	authDomainBasicClassStruct.Free(obj.native)
 }
 
 var authDomainClassStruct *gi.Struct
@@ -181,7 +194,11 @@ func AuthDomainClassStruct() *AuthDomainClass {
 	}
 
 	structGo := &AuthDomainClass{native: authDomainClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthDomainClass)
 	return structGo
+}
+func finalizeAuthDomainClass(obj *AuthDomainClass) {
+	authDomainClassStruct.Free(obj.native)
 }
 
 var authDomainDigestClassStruct *gi.Struct
@@ -222,7 +239,11 @@ func AuthDomainDigestClassStruct() *AuthDomainDigestClass {
 	}
 
 	structGo := &AuthDomainDigestClass{native: authDomainDigestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthDomainDigestClass)
 	return structGo
+}
+func finalizeAuthDomainDigestClass(obj *AuthDomainDigestClass) {
+	authDomainDigestClassStruct.Free(obj.native)
 }
 
 var authManagerClassStruct *gi.Struct
@@ -252,7 +273,11 @@ func AuthManagerClassStruct() *AuthManagerClass {
 	}
 
 	structGo := &AuthManagerClass{native: authManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthManagerClass)
 	return structGo
+}
+func finalizeAuthManagerClass(obj *AuthManagerClass) {
+	authManagerClassStruct.Free(obj.native)
 }
 
 var authManagerPrivateStruct *gi.Struct
@@ -278,7 +303,11 @@ func AuthManagerPrivateStruct() *AuthManagerPrivate {
 	}
 
 	structGo := &AuthManagerPrivate{native: authManagerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAuthManagerPrivate)
 	return structGo
+}
+func finalizeAuthManagerPrivate(obj *AuthManagerPrivate) {
+	authManagerPrivateStruct.Free(obj.native)
 }
 
 var bufferStruct *gi.Struct
@@ -444,7 +473,11 @@ func CacheClassStruct() *CacheClass {
 	}
 
 	structGo := &CacheClass{native: cacheClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCacheClass)
 	return structGo
+}
+func finalizeCacheClass(obj *CacheClass) {
+	cacheClassStruct.Free(obj.native)
 }
 
 var cachePrivateStruct *gi.Struct
@@ -470,7 +503,11 @@ func CachePrivateStruct() *CachePrivate {
 	}
 
 	structGo := &CachePrivate{native: cachePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCachePrivate)
 	return structGo
+}
+func finalizeCachePrivate(obj *CachePrivate) {
+	cachePrivateStruct.Free(obj.native)
 }
 
 var clientContextStruct *gi.Struct
@@ -486,17 +523,6 @@ func clientContextStruct_Set() error {
 
 type ClientContext struct {
 	native uintptr
-}
-
-// ClientContextStruct creates an uninitialised ClientContext.
-func ClientContextStruct() *ClientContext {
-	err := clientContextStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &ClientContext{native: clientContextStruct.Alloc()}
-	return structGo
 }
 
 // UNSUPPORTED : C value 'soup_client_context_get_address' : return type 'Address' not supported
@@ -577,6 +603,21 @@ func (recv *ClientContext) GetHost() string {
 
 // UNSUPPORTED : C value 'soup_client_context_steal_connection' : return type 'Gio.IOStream' not supported
 
+// ClientContextStruct creates an uninitialised ClientContext.
+func ClientContextStruct() *ClientContext {
+	err := clientContextStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ClientContext{native: clientContextStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeClientContext)
+	return structGo
+}
+func finalizeClientContext(obj *ClientContext) {
+	clientContextStruct.Free(obj.native)
+}
+
 var connectionStruct *gi.Struct
 var connectionStruct_Once sync.Once
 
@@ -600,7 +641,11 @@ func ConnectionStruct() *Connection {
 	}
 
 	structGo := &Connection{native: connectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeConnection)
 	return structGo
+}
+func finalizeConnection(obj *Connection) {
+	connectionStruct.Free(obj.native)
 }
 
 var contentDecoderClassStruct *gi.Struct
@@ -638,7 +683,11 @@ func ContentDecoderClassStruct() *ContentDecoderClass {
 	}
 
 	structGo := &ContentDecoderClass{native: contentDecoderClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContentDecoderClass)
 	return structGo
+}
+func finalizeContentDecoderClass(obj *ContentDecoderClass) {
+	contentDecoderClassStruct.Free(obj.native)
 }
 
 var contentDecoderPrivateStruct *gi.Struct
@@ -664,7 +713,11 @@ func ContentDecoderPrivateStruct() *ContentDecoderPrivate {
 	}
 
 	structGo := &ContentDecoderPrivate{native: contentDecoderPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContentDecoderPrivate)
 	return structGo
+}
+func finalizeContentDecoderPrivate(obj *ContentDecoderPrivate) {
+	contentDecoderPrivateStruct.Free(obj.native)
 }
 
 var contentSnifferClassStruct *gi.Struct
@@ -706,7 +759,11 @@ func ContentSnifferClassStruct() *ContentSnifferClass {
 	}
 
 	structGo := &ContentSnifferClass{native: contentSnifferClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContentSnifferClass)
 	return structGo
+}
+func finalizeContentSnifferClass(obj *ContentSnifferClass) {
+	contentSnifferClassStruct.Free(obj.native)
 }
 
 var contentSnifferPrivateStruct *gi.Struct
@@ -732,7 +789,11 @@ func ContentSnifferPrivateStruct() *ContentSnifferPrivate {
 	}
 
 	structGo := &ContentSnifferPrivate{native: contentSnifferPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeContentSnifferPrivate)
 	return structGo
+}
+func finalizeContentSnifferPrivate(obj *ContentSnifferPrivate) {
+	contentSnifferPrivateStruct.Free(obj.native)
 }
 
 var cookieStruct *gi.Struct
@@ -1549,7 +1610,11 @@ func CookieJarClassStruct() *CookieJarClass {
 	}
 
 	structGo := &CookieJarClass{native: cookieJarClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCookieJarClass)
 	return structGo
+}
+func finalizeCookieJarClass(obj *CookieJarClass) {
+	cookieJarClassStruct.Free(obj.native)
 }
 
 var cookieJarDBClassStruct *gi.Struct
@@ -1590,7 +1655,11 @@ func CookieJarDBClassStruct() *CookieJarDBClass {
 	}
 
 	structGo := &CookieJarDBClass{native: cookieJarDBClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCookieJarDBClass)
 	return structGo
+}
+func finalizeCookieJarDBClass(obj *CookieJarDBClass) {
+	cookieJarDBClassStruct.Free(obj.native)
 }
 
 var cookieJarTextClassStruct *gi.Struct
@@ -1631,7 +1700,11 @@ func CookieJarTextClassStruct() *CookieJarTextClass {
 	}
 
 	structGo := &CookieJarTextClass{native: cookieJarTextClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeCookieJarTextClass)
 	return structGo
+}
+func finalizeCookieJarTextClass(obj *CookieJarTextClass) {
+	cookieJarTextClassStruct.Free(obj.native)
 }
 
 var dateStruct *gi.Struct
@@ -2263,7 +2336,11 @@ func HSTSEnforcerClassStruct() *HSTSEnforcerClass {
 	}
 
 	structGo := &HSTSEnforcerClass{native: hSTSEnforcerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerClass)
 	return structGo
+}
+func finalizeHSTSEnforcerClass(obj *HSTSEnforcerClass) {
+	hSTSEnforcerClassStruct.Free(obj.native)
 }
 
 var hSTSEnforcerDBClassStruct *gi.Struct
@@ -2304,7 +2381,11 @@ func HSTSEnforcerDBClassStruct() *HSTSEnforcerDBClass {
 	}
 
 	structGo := &HSTSEnforcerDBClass{native: hSTSEnforcerDBClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerDBClass)
 	return structGo
+}
+func finalizeHSTSEnforcerDBClass(obj *HSTSEnforcerDBClass) {
+	hSTSEnforcerDBClassStruct.Free(obj.native)
 }
 
 var hSTSEnforcerDBPrivateStruct *gi.Struct
@@ -2330,7 +2411,11 @@ func HSTSEnforcerDBPrivateStruct() *HSTSEnforcerDBPrivate {
 	}
 
 	structGo := &HSTSEnforcerDBPrivate{native: hSTSEnforcerDBPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerDBPrivate)
 	return structGo
+}
+func finalizeHSTSEnforcerDBPrivate(obj *HSTSEnforcerDBPrivate) {
+	hSTSEnforcerDBPrivateStruct.Free(obj.native)
 }
 
 var hSTSEnforcerPrivateStruct *gi.Struct
@@ -2356,7 +2441,11 @@ func HSTSEnforcerPrivateStruct() *HSTSEnforcerPrivate {
 	}
 
 	structGo := &HSTSEnforcerPrivate{native: hSTSEnforcerPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerPrivate)
 	return structGo
+}
+func finalizeHSTSEnforcerPrivate(obj *HSTSEnforcerPrivate) {
+	hSTSEnforcerPrivateStruct.Free(obj.native)
 }
 
 var hSTSPolicyStruct *gi.Struct
@@ -2760,7 +2849,11 @@ func LoggerClassStruct() *LoggerClass {
 	}
 
 	structGo := &LoggerClass{native: loggerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeLoggerClass)
 	return structGo
+}
+func finalizeLoggerClass(obj *LoggerClass) {
+	loggerClassStruct.Free(obj.native)
 }
 
 var messageBodyStruct *gi.Struct
@@ -3176,7 +3269,11 @@ func MessageClassStruct() *MessageClass {
 	}
 
 	structGo := &MessageClass{native: messageClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageClass)
 	return structGo
+}
+func finalizeMessageClass(obj *MessageClass) {
+	messageClassStruct.Free(obj.native)
 }
 
 var messageHeadersStruct *gi.Struct
@@ -3790,17 +3887,6 @@ type MessageHeadersIter struct {
 	native uintptr
 }
 
-// MessageHeadersIterStruct creates an uninitialised MessageHeadersIter.
-func MessageHeadersIterStruct() *MessageHeadersIter {
-	err := messageHeadersIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &MessageHeadersIter{native: messageHeadersIterStruct.Alloc()}
-	return structGo
-}
-
 var messageHeadersIterNextFunction *gi.Function
 var messageHeadersIterNextFunction_Once sync.Once
 
@@ -3836,6 +3922,21 @@ func (recv *MessageHeadersIter) Next() (bool, string, string) {
 	return retGo, out0, out1
 }
 
+// MessageHeadersIterStruct creates an uninitialised MessageHeadersIter.
+func MessageHeadersIterStruct() *MessageHeadersIter {
+	err := messageHeadersIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MessageHeadersIter{native: messageHeadersIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageHeadersIter)
+	return structGo
+}
+func finalizeMessageHeadersIter(obj *MessageHeadersIter) {
+	messageHeadersIterStruct.Free(obj.native)
+}
+
 var messageQueueStruct *gi.Struct
 var messageQueueStruct_Once sync.Once
 
@@ -3859,7 +3960,11 @@ func MessageQueueStruct() *MessageQueue {
 	}
 
 	structGo := &MessageQueue{native: messageQueueStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageQueue)
 	return structGo
+}
+func finalizeMessageQueue(obj *MessageQueue) {
+	messageQueueStruct.Free(obj.native)
 }
 
 var messageQueueItemStruct *gi.Struct
@@ -3885,7 +3990,11 @@ func MessageQueueItemStruct() *MessageQueueItem {
 	}
 
 	structGo := &MessageQueueItem{native: messageQueueItemStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMessageQueueItem)
 	return structGo
+}
+func finalizeMessageQueueItem(obj *MessageQueueItem) {
+	messageQueueItemStruct.Free(obj.native)
 }
 
 var multipartStruct *gi.Struct
@@ -4211,7 +4320,11 @@ func MultipartInputStreamClassStruct() *MultipartInputStreamClass {
 	}
 
 	structGo := &MultipartInputStreamClass{native: multipartInputStreamClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMultipartInputStreamClass)
 	return structGo
+}
+func finalizeMultipartInputStreamClass(obj *MultipartInputStreamClass) {
+	multipartInputStreamClassStruct.Free(obj.native)
 }
 
 var multipartInputStreamPrivateStruct *gi.Struct
@@ -4237,7 +4350,11 @@ func MultipartInputStreamPrivateStruct() *MultipartInputStreamPrivate {
 	}
 
 	structGo := &MultipartInputStreamPrivate{native: multipartInputStreamPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMultipartInputStreamPrivate)
 	return structGo
+}
+func finalizeMultipartInputStreamPrivate(obj *MultipartInputStreamPrivate) {
+	multipartInputStreamPrivateStruct.Free(obj.native)
 }
 
 var passwordManagerInterfaceStruct *gi.Struct
@@ -4269,7 +4386,11 @@ func PasswordManagerInterfaceStruct() *PasswordManagerInterface {
 	}
 
 	structGo := &PasswordManagerInterface{native: passwordManagerInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePasswordManagerInterface)
 	return structGo
+}
+func finalizePasswordManagerInterface(obj *PasswordManagerInterface) {
+	passwordManagerInterfaceStruct.Free(obj.native)
 }
 
 var proxyResolverDefaultClassStruct *gi.Struct
@@ -4297,7 +4418,11 @@ func ProxyResolverDefaultClassStruct() *ProxyResolverDefaultClass {
 	}
 
 	structGo := &ProxyResolverDefaultClass{native: proxyResolverDefaultClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyResolverDefaultClass)
 	return structGo
+}
+func finalizeProxyResolverDefaultClass(obj *ProxyResolverDefaultClass) {
+	proxyResolverDefaultClassStruct.Free(obj.native)
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -4329,7 +4454,11 @@ func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
 	}
 
 	structGo := &ProxyResolverInterface{native: proxyResolverInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyResolverInterface)
 	return structGo
+}
+func finalizeProxyResolverInterface(obj *ProxyResolverInterface) {
+	proxyResolverInterfaceStruct.Free(obj.native)
 }
 
 var proxyURIResolverInterfaceStruct *gi.Struct
@@ -4369,7 +4498,11 @@ func ProxyURIResolverInterfaceStruct() *ProxyURIResolverInterface {
 	}
 
 	structGo := &ProxyURIResolverInterface{native: proxyURIResolverInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyURIResolverInterface)
 	return structGo
+}
+func finalizeProxyURIResolverInterface(obj *ProxyURIResolverInterface) {
+	proxyURIResolverInterfaceStruct.Free(obj.native)
 }
 
 var rangeStruct *gi.Struct
@@ -4409,7 +4542,11 @@ func RangeStruct() *Range {
 	}
 
 	structGo := &Range{native: rangeStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRange)
 	return structGo
+}
+func finalizeRange(obj *Range) {
+	rangeStruct.Free(obj.native)
 }
 
 var requestClassStruct *gi.Struct
@@ -4456,7 +4593,11 @@ func RequestClassStruct() *RequestClass {
 	}
 
 	structGo := &RequestClass{native: requestClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestClass)
 	return structGo
+}
+func finalizeRequestClass(obj *RequestClass) {
+	requestClassStruct.Free(obj.native)
 }
 
 var requestDataClassStruct *gi.Struct
@@ -4489,7 +4630,11 @@ func RequestDataClassStruct() *RequestDataClass {
 	}
 
 	structGo := &RequestDataClass{native: requestDataClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestDataClass)
 	return structGo
+}
+func finalizeRequestDataClass(obj *RequestDataClass) {
+	requestDataClassStruct.Free(obj.native)
 }
 
 var requestDataPrivateStruct *gi.Struct
@@ -4515,7 +4660,11 @@ func RequestDataPrivateStruct() *RequestDataPrivate {
 	}
 
 	structGo := &RequestDataPrivate{native: requestDataPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestDataPrivate)
 	return structGo
+}
+func finalizeRequestDataPrivate(obj *RequestDataPrivate) {
+	requestDataPrivateStruct.Free(obj.native)
 }
 
 var requestFileClassStruct *gi.Struct
@@ -4548,7 +4697,11 @@ func RequestFileClassStruct() *RequestFileClass {
 	}
 
 	structGo := &RequestFileClass{native: requestFileClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestFileClass)
 	return structGo
+}
+func finalizeRequestFileClass(obj *RequestFileClass) {
+	requestFileClassStruct.Free(obj.native)
 }
 
 var requestFilePrivateStruct *gi.Struct
@@ -4574,7 +4727,11 @@ func RequestFilePrivateStruct() *RequestFilePrivate {
 	}
 
 	structGo := &RequestFilePrivate{native: requestFilePrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestFilePrivate)
 	return structGo
+}
+func finalizeRequestFilePrivate(obj *RequestFilePrivate) {
+	requestFilePrivateStruct.Free(obj.native)
 }
 
 var requestHTTPClassStruct *gi.Struct
@@ -4607,7 +4764,11 @@ func RequestHTTPClassStruct() *RequestHTTPClass {
 	}
 
 	structGo := &RequestHTTPClass{native: requestHTTPClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestHTTPClass)
 	return structGo
+}
+func finalizeRequestHTTPClass(obj *RequestHTTPClass) {
+	requestHTTPClassStruct.Free(obj.native)
 }
 
 var requestHTTPPrivateStruct *gi.Struct
@@ -4633,7 +4794,11 @@ func RequestHTTPPrivateStruct() *RequestHTTPPrivate {
 	}
 
 	structGo := &RequestHTTPPrivate{native: requestHTTPPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestHTTPPrivate)
 	return structGo
+}
+func finalizeRequestHTTPPrivate(obj *RequestHTTPPrivate) {
+	requestHTTPPrivateStruct.Free(obj.native)
 }
 
 var requestPrivateStruct *gi.Struct
@@ -4659,7 +4824,11 @@ func RequestPrivateStruct() *RequestPrivate {
 	}
 
 	structGo := &RequestPrivate{native: requestPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequestPrivate)
 	return structGo
+}
+func finalizeRequestPrivate(obj *RequestPrivate) {
+	requestPrivateStruct.Free(obj.native)
 }
 
 var requesterClassStruct *gi.Struct
@@ -4687,7 +4856,11 @@ func RequesterClassStruct() *RequesterClass {
 	}
 
 	structGo := &RequesterClass{native: requesterClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequesterClass)
 	return structGo
+}
+func finalizeRequesterClass(obj *RequesterClass) {
+	requesterClassStruct.Free(obj.native)
 }
 
 var requesterPrivateStruct *gi.Struct
@@ -4713,7 +4886,11 @@ func RequesterPrivateStruct() *RequesterPrivate {
 	}
 
 	structGo := &RequesterPrivate{native: requesterPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeRequesterPrivate)
 	return structGo
+}
+func finalizeRequesterPrivate(obj *RequesterPrivate) {
+	requesterPrivateStruct.Free(obj.native)
 }
 
 var serverClassStruct *gi.Struct
@@ -4757,7 +4934,11 @@ func ServerClassStruct() *ServerClass {
 	}
 
 	structGo := &ServerClass{native: serverClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeServerClass)
 	return structGo
+}
+func finalizeServerClass(obj *ServerClass) {
+	serverClassStruct.Free(obj.native)
 }
 
 var sessionAsyncClassStruct *gi.Struct
@@ -4798,7 +4979,11 @@ func SessionAsyncClassStruct() *SessionAsyncClass {
 	}
 
 	structGo := &SessionAsyncClass{native: sessionAsyncClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSessionAsyncClass)
 	return structGo
+}
+func finalizeSessionAsyncClass(obj *SessionAsyncClass) {
+	sessionAsyncClassStruct.Free(obj.native)
 }
 
 var sessionClassStruct *gi.Struct
@@ -4846,7 +5031,11 @@ func SessionClassStruct() *SessionClass {
 	}
 
 	structGo := &SessionClass{native: sessionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSessionClass)
 	return structGo
+}
+func finalizeSessionClass(obj *SessionClass) {
+	sessionClassStruct.Free(obj.native)
 }
 
 var sessionFeatureInterfaceStruct *gi.Struct
@@ -4890,7 +5079,11 @@ func SessionFeatureInterfaceStruct() *SessionFeatureInterface {
 	}
 
 	structGo := &SessionFeatureInterface{native: sessionFeatureInterfaceStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSessionFeatureInterface)
 	return structGo
+}
+func finalizeSessionFeatureInterface(obj *SessionFeatureInterface) {
+	sessionFeatureInterfaceStruct.Free(obj.native)
 }
 
 var sessionSyncClassStruct *gi.Struct
@@ -4931,7 +5124,11 @@ func SessionSyncClassStruct() *SessionSyncClass {
 	}
 
 	structGo := &SessionSyncClass{native: sessionSyncClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSessionSyncClass)
 	return structGo
+}
+func finalizeSessionSyncClass(obj *SessionSyncClass) {
+	sessionSyncClassStruct.Free(obj.native)
 }
 
 var socketClassStruct *gi.Struct
@@ -4975,7 +5172,11 @@ func SocketClassStruct() *SocketClass {
 	}
 
 	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
+}
+func finalizeSocketClass(obj *SocketClass) {
+	socketClassStruct.Free(obj.native)
 }
 
 var uRIStruct *gi.Struct
@@ -5896,7 +6097,11 @@ func WebsocketConnectionClassStruct() *WebsocketConnectionClass {
 	}
 
 	structGo := &WebsocketConnectionClass{native: websocketConnectionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsocketConnectionClass)
 	return structGo
+}
+func finalizeWebsocketConnectionClass(obj *WebsocketConnectionClass) {
+	websocketConnectionClassStruct.Free(obj.native)
 }
 
 var websocketConnectionPrivateStruct *gi.Struct
@@ -5922,7 +6127,11 @@ func WebsocketConnectionPrivateStruct() *WebsocketConnectionPrivate {
 	}
 
 	structGo := &WebsocketConnectionPrivate{native: websocketConnectionPrivateStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsocketConnectionPrivate)
 	return structGo
+}
+func finalizeWebsocketConnectionPrivate(obj *WebsocketConnectionPrivate) {
+	websocketConnectionPrivateStruct.Free(obj.native)
 }
 
 var websocketExtensionClassStruct *gi.Struct
@@ -5975,7 +6184,11 @@ func WebsocketExtensionClassStruct() *WebsocketExtensionClass {
 	}
 
 	structGo := &WebsocketExtensionClass{native: websocketExtensionClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionClass)
 	return structGo
+}
+func finalizeWebsocketExtensionClass(obj *WebsocketExtensionClass) {
+	websocketExtensionClassStruct.Free(obj.native)
 }
 
 var websocketExtensionDeflateClassStruct *gi.Struct
@@ -6008,7 +6221,11 @@ func WebsocketExtensionDeflateClassStruct() *WebsocketExtensionDeflateClass {
 	}
 
 	structGo := &WebsocketExtensionDeflateClass{native: websocketExtensionDeflateClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionDeflateClass)
 	return structGo
+}
+func finalizeWebsocketExtensionDeflateClass(obj *WebsocketExtensionDeflateClass) {
+	websocketExtensionDeflateClassStruct.Free(obj.native)
 }
 
 var websocketExtensionManagerClassStruct *gi.Struct
@@ -6036,7 +6253,11 @@ func WebsocketExtensionManagerClassStruct() *WebsocketExtensionManagerClass {
 	}
 
 	structGo := &WebsocketExtensionManagerClass{native: websocketExtensionManagerClassStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionManagerClass)
 	return structGo
+}
+func finalizeWebsocketExtensionManagerClass(obj *WebsocketExtensionManagerClass) {
+	websocketExtensionManagerClassStruct.Free(obj.native)
 }
 
 var xMLRPCParamsStruct *gi.Struct
@@ -6052,17 +6273,6 @@ func xMLRPCParamsStruct_Set() error {
 
 type XMLRPCParams struct {
 	native uintptr
-}
-
-// XMLRPCParamsStruct creates an uninitialised XMLRPCParams.
-func XMLRPCParamsStruct() *XMLRPCParams {
-	err := xMLRPCParamsStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &XMLRPCParams{native: xMLRPCParamsStruct.Alloc()}
-	return structGo
 }
 
 var xMLRPCParamsFreeFunction *gi.Function
@@ -6094,3 +6304,18 @@ func (recv *XMLRPCParams) Free() {
 }
 
 // UNSUPPORTED : C value 'soup_xmlrpc_params_parse' : return type 'GLib.Variant' not supported
+
+// XMLRPCParamsStruct creates an uninitialised XMLRPCParams.
+func XMLRPCParamsStruct() *XMLRPCParams {
+	err := xMLRPCParamsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &XMLRPCParams{native: xMLRPCParamsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeXMLRPCParams)
+	return structGo
+}
+func finalizeXMLRPCParams(obj *XMLRPCParams) {
+	xMLRPCParamsStruct.Free(obj.native)
+}
