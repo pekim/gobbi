@@ -25,13 +25,23 @@ type AddressClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // AddressClassStruct creates an uninitialised AddressClass.
 func AddressClassStruct() *AddressClass {
@@ -65,37 +75,71 @@ type AuthClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // SchemeName returns the C field 'scheme_name'.
-func (recv *AuthClass) SchemeName() string {
+func (recv *AuthClass) FieldSchemeName() string {
 	argValue := gi.FieldGet(authClassStruct, recv.native, "scheme_name")
 	value := argValue.String(false)
 	return value
 }
 
+// SchemeName sets the value of the C field 'scheme_name'.
+func (recv *AuthClass) SetFieldSchemeName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(authClassStruct, recv.native, "scheme_name", argValue)
+}
+
 // Strength returns the C field 'strength'.
-func (recv *AuthClass) Strength() uint32 {
+func (recv *AuthClass) FieldStrength() uint32 {
 	argValue := gi.FieldGet(authClassStruct, recv.native, "strength")
 	value := argValue.Uint32()
 	return value
 }
 
+// Strength sets the value of the C field 'strength'.
+func (recv *AuthClass) SetFieldStrength(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(authClassStruct, recv.native, "strength", argValue)
+}
+
 // UNSUPPORTED : C value 'update' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_protection_space' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_protection_space' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'authenticate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'authenticate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_authenticated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_authenticated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_authorization' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_authorization' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_ready' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_ready' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_authenticate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_authenticate' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // AuthClassStruct creates an uninitialised AuthClass.
 func AuthClassStruct() *AuthClass {
@@ -128,19 +172,34 @@ type AuthDomainBasicClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AuthDomainBasicClass) ParentClass() *AuthDomainClass {
+func (recv *AuthDomainBasicClass) FieldParentClass() *AuthDomainClass {
 	argValue := gi.FieldGet(authDomainBasicClassStruct, recv.native, "parent_class")
 	value := &AuthDomainClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AuthDomainBasicClass) SetFieldParentClass(value *AuthDomainClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(authDomainBasicClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // AuthDomainBasicClassStruct creates an uninitialised AuthDomainBasicClass.
 func AuthDomainBasicClassStruct() *AuthDomainBasicClass {
@@ -174,17 +233,31 @@ type AuthDomainClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'accepts' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accepts' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'challenge' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'challenge' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'check_password' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'check_password' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // AuthDomainClassStruct creates an uninitialised AuthDomainClass.
 func AuthDomainClassStruct() *AuthDomainClass {
@@ -217,19 +290,34 @@ type AuthDomainDigestClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AuthDomainDigestClass) ParentClass() *AuthDomainClass {
+func (recv *AuthDomainDigestClass) FieldParentClass() *AuthDomainClass {
 	argValue := gi.FieldGet(authDomainDigestClassStruct, recv.native, "parent_class")
 	value := &AuthDomainClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AuthDomainDigestClass) SetFieldParentClass(value *AuthDomainClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(authDomainDigestClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // AuthDomainDigestClassStruct creates an uninitialised AuthDomainDigestClass.
 func AuthDomainDigestClassStruct() *AuthDomainDigestClass {
@@ -263,7 +351,11 @@ type AuthManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'authenticate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'authenticate' : for field setter : missing Type
 
 // AuthManagerClassStruct creates an uninitialised AuthManagerClass.
 func AuthManagerClassStruct() *AuthManagerClass {
@@ -327,11 +419,20 @@ type Buffer struct {
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+
 // Length returns the C field 'length'.
-func (recv *Buffer) Length() uint64 {
+func (recv *Buffer) FieldLength() uint64 {
 	argValue := gi.FieldGet(bufferStruct, recv.native, "length")
 	value := argValue.Uint64()
 	return value
+}
+
+// Length sets the value of the C field 'length'.
+func (recv *Buffer) SetFieldLength(value uint64) {
+	var argValue gi.Argument
+	argValue.SetUint64(value)
+	gi.FieldSet(bufferStruct, recv.native, "length", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
@@ -457,13 +558,23 @@ type CacheClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_cacheability' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_cacheability' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
 
 // CacheClassStruct creates an uninitialised CacheClass.
 func CacheClassStruct() *CacheClass {
@@ -665,15 +776,27 @@ type ContentDecoderClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved5' : for field setter : missing Type
 
 // ContentDecoderClassStruct creates an uninitialised ContentDecoderClass.
 func ContentDecoderClassStruct() *ContentDecoderClass {
@@ -737,19 +860,35 @@ type ContentSnifferClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'sniff' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'sniff' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_buffer_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_buffer_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved5' : for field setter : missing Type
 
 // ContentSnifferClassStruct creates an uninitialised ContentSnifferClass.
 func ContentSnifferClassStruct() *ContentSnifferClass {
@@ -812,52 +951,101 @@ type Cookie struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *Cookie) Name() string {
+func (recv *Cookie) FieldName() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *Cookie) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(cookieStruct, recv.native, "name", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *Cookie) Value() string {
+func (recv *Cookie) FieldValue() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
 }
 
+// Value sets the value of the C field 'value'.
+func (recv *Cookie) SetFieldValue(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(cookieStruct, recv.native, "value", argValue)
+}
+
 // Domain returns the C field 'domain'.
-func (recv *Cookie) Domain() string {
+func (recv *Cookie) FieldDomain() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "domain")
 	value := argValue.String(false)
 	return value
 }
 
+// Domain sets the value of the C field 'domain'.
+func (recv *Cookie) SetFieldDomain(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(cookieStruct, recv.native, "domain", argValue)
+}
+
 // Path returns the C field 'path'.
-func (recv *Cookie) Path() string {
+func (recv *Cookie) FieldPath() string {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
+// Path sets the value of the C field 'path'.
+func (recv *Cookie) SetFieldPath(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(cookieStruct, recv.native, "path", argValue)
+}
+
 // Expires returns the C field 'expires'.
-func (recv *Cookie) Expires() *Date {
+func (recv *Cookie) FieldExpires() *Date {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "expires")
 	value := &Date{native: argValue.Pointer()}
 	return value
 }
 
+// Expires sets the value of the C field 'expires'.
+func (recv *Cookie) SetFieldExpires(value *Date) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cookieStruct, recv.native, "expires", argValue)
+}
+
 // Secure returns the C field 'secure'.
-func (recv *Cookie) Secure() bool {
+func (recv *Cookie) FieldSecure() bool {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "secure")
 	value := argValue.Boolean()
 	return value
 }
 
+// Secure sets the value of the C field 'secure'.
+func (recv *Cookie) SetFieldSecure(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(cookieStruct, recv.native, "secure", argValue)
+}
+
 // HttpOnly returns the C field 'http_only'.
-func (recv *Cookie) HttpOnly() bool {
+func (recv *Cookie) FieldHttpOnly() bool {
 	argValue := gi.FieldGet(cookieStruct, recv.native, "http_only")
 	value := argValue.Boolean()
 	return value
+}
+
+// HttpOnly sets the value of the C field 'http_only'.
+func (recv *Cookie) SetFieldHttpOnly(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(cookieStruct, recv.native, "http_only", argValue)
 }
 
 var cookieNewFunction *gi.Function
@@ -1592,15 +1780,27 @@ type CookieJarClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'save' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'save' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_persistent' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_persistent' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
 
 // CookieJarClassStruct creates an uninitialised CookieJarClass.
 func CookieJarClassStruct() *CookieJarClass {
@@ -1633,19 +1833,34 @@ type CookieJarDBClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CookieJarDBClass) ParentClass() *CookieJarClass {
+func (recv *CookieJarDBClass) FieldParentClass() *CookieJarClass {
 	argValue := gi.FieldGet(cookieJarDBClassStruct, recv.native, "parent_class")
 	value := &CookieJarClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CookieJarDBClass) SetFieldParentClass(value *CookieJarClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cookieJarDBClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // CookieJarDBClassStruct creates an uninitialised CookieJarDBClass.
 func CookieJarDBClassStruct() *CookieJarDBClass {
@@ -1678,19 +1893,34 @@ type CookieJarTextClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CookieJarTextClass) ParentClass() *CookieJarClass {
+func (recv *CookieJarTextClass) FieldParentClass() *CookieJarClass {
 	argValue := gi.FieldGet(cookieJarTextClassStruct, recv.native, "parent_class")
 	value := &CookieJarClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CookieJarTextClass) SetFieldParentClass(value *CookieJarClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cookieJarTextClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // CookieJarTextClassStruct creates an uninitialised CookieJarTextClass.
 func CookieJarTextClassStruct() *CookieJarTextClass {
@@ -1723,59 +1953,115 @@ type Date struct {
 }
 
 // Year returns the C field 'year'.
-func (recv *Date) Year() int32 {
+func (recv *Date) FieldYear() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "year")
 	value := argValue.Int32()
 	return value
 }
 
+// Year sets the value of the C field 'year'.
+func (recv *Date) SetFieldYear(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "year", argValue)
+}
+
 // Month returns the C field 'month'.
-func (recv *Date) Month() int32 {
+func (recv *Date) FieldMonth() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "month")
 	value := argValue.Int32()
 	return value
 }
 
+// Month sets the value of the C field 'month'.
+func (recv *Date) SetFieldMonth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "month", argValue)
+}
+
 // Day returns the C field 'day'.
-func (recv *Date) Day() int32 {
+func (recv *Date) FieldDay() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "day")
 	value := argValue.Int32()
 	return value
 }
 
+// Day sets the value of the C field 'day'.
+func (recv *Date) SetFieldDay(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "day", argValue)
+}
+
 // Hour returns the C field 'hour'.
-func (recv *Date) Hour() int32 {
+func (recv *Date) FieldHour() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "hour")
 	value := argValue.Int32()
 	return value
 }
 
+// Hour sets the value of the C field 'hour'.
+func (recv *Date) SetFieldHour(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "hour", argValue)
+}
+
 // Minute returns the C field 'minute'.
-func (recv *Date) Minute() int32 {
+func (recv *Date) FieldMinute() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "minute")
 	value := argValue.Int32()
 	return value
 }
 
+// Minute sets the value of the C field 'minute'.
+func (recv *Date) SetFieldMinute(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "minute", argValue)
+}
+
 // Second returns the C field 'second'.
-func (recv *Date) Second() int32 {
+func (recv *Date) FieldSecond() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "second")
 	value := argValue.Int32()
 	return value
 }
 
+// Second sets the value of the C field 'second'.
+func (recv *Date) SetFieldSecond(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "second", argValue)
+}
+
 // Utc returns the C field 'utc'.
-func (recv *Date) Utc() bool {
+func (recv *Date) FieldUtc() bool {
 	argValue := gi.FieldGet(dateStruct, recv.native, "utc")
 	value := argValue.Boolean()
 	return value
 }
 
+// Utc sets the value of the C field 'utc'.
+func (recv *Date) SetFieldUtc(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(dateStruct, recv.native, "utc", argValue)
+}
+
 // Offset returns the C field 'offset'.
-func (recv *Date) Offset() int32 {
+func (recv *Date) FieldOffset() int32 {
 	argValue := gi.FieldGet(dateStruct, recv.native, "offset")
 	value := argValue.Int32()
 	return value
+}
+
+// Offset sets the value of the C field 'offset'.
+func (recv *Date) SetFieldOffset(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dateStruct, recv.native, "offset", argValue)
 }
 
 var dateNewFunction *gi.Function
@@ -2312,21 +2598,39 @@ type HSTSEnforcerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'is_persistent' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_persistent' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'has_valid_policy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'has_valid_policy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'hsts_enforced' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'hsts_enforced' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // HSTSEnforcerClassStruct creates an uninitialised HSTSEnforcerClass.
 func HSTSEnforcerClassStruct() *HSTSEnforcerClass {
@@ -2359,19 +2663,34 @@ type HSTSEnforcerDBClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HSTSEnforcerDBClass) ParentClass() *HSTSEnforcerClass {
+func (recv *HSTSEnforcerDBClass) FieldParentClass() *HSTSEnforcerClass {
 	argValue := gi.FieldGet(hSTSEnforcerDBClassStruct, recv.native, "parent_class")
 	value := &HSTSEnforcerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HSTSEnforcerDBClass) SetFieldParentClass(value *HSTSEnforcerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hSTSEnforcerDBClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // HSTSEnforcerDBClassStruct creates an uninitialised HSTSEnforcerDBClass.
 func HSTSEnforcerDBClassStruct() *HSTSEnforcerDBClass {
@@ -2464,31 +2783,59 @@ type HSTSPolicy struct {
 }
 
 // Domain returns the C field 'domain'.
-func (recv *HSTSPolicy) Domain() string {
+func (recv *HSTSPolicy) FieldDomain() string {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "domain")
 	value := argValue.String(false)
 	return value
 }
 
+// Domain sets the value of the C field 'domain'.
+func (recv *HSTSPolicy) SetFieldDomain(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(hSTSPolicyStruct, recv.native, "domain", argValue)
+}
+
 // MaxAge returns the C field 'max_age'.
-func (recv *HSTSPolicy) MaxAge() uint64 {
+func (recv *HSTSPolicy) FieldMaxAge() uint64 {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "max_age")
 	value := argValue.Uint64()
 	return value
 }
 
+// MaxAge sets the value of the C field 'max_age'.
+func (recv *HSTSPolicy) SetFieldMaxAge(value uint64) {
+	var argValue gi.Argument
+	argValue.SetUint64(value)
+	gi.FieldSet(hSTSPolicyStruct, recv.native, "max_age", argValue)
+}
+
 // Expires returns the C field 'expires'.
-func (recv *HSTSPolicy) Expires() *Date {
+func (recv *HSTSPolicy) FieldExpires() *Date {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "expires")
 	value := &Date{native: argValue.Pointer()}
 	return value
 }
 
+// Expires sets the value of the C field 'expires'.
+func (recv *HSTSPolicy) SetFieldExpires(value *Date) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hSTSPolicyStruct, recv.native, "expires", argValue)
+}
+
 // IncludeSubdomains returns the C field 'include_subdomains'.
-func (recv *HSTSPolicy) IncludeSubdomains() bool {
+func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
 	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "include_subdomains")
 	value := argValue.Boolean()
 	return value
+}
+
+// IncludeSubdomains sets the value of the C field 'include_subdomains'.
+func (recv *HSTSPolicy) SetFieldIncludeSubdomains(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(hSTSPolicyStruct, recv.native, "include_subdomains", argValue)
 }
 
 var hSTSPolicyNewFunction *gi.Function
@@ -2833,13 +3180,23 @@ type LoggerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // LoggerClassStruct creates an uninitialised LoggerClass.
 func LoggerClassStruct() *LoggerClass {
@@ -2872,17 +3229,31 @@ type MessageBody struct {
 }
 
 // Data returns the C field 'data'.
-func (recv *MessageBody) Data() string {
+func (recv *MessageBody) FieldData() string {
 	argValue := gi.FieldGet(messageBodyStruct, recv.native, "data")
 	value := argValue.String(false)
 	return value
 }
 
+// Data sets the value of the C field 'data'.
+func (recv *MessageBody) SetFieldData(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(messageBodyStruct, recv.native, "data", argValue)
+}
+
 // Length returns the C field 'length'.
-func (recv *MessageBody) Length() int64 {
+func (recv *MessageBody) FieldLength() int64 {
 	argValue := gi.FieldGet(messageBodyStruct, recv.native, "length")
 	value := argValue.Int64()
 	return value
+}
+
+// Length sets the value of the C field 'length'.
+func (recv *MessageBody) SetFieldLength(value int64) {
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.FieldSet(messageBodyStruct, recv.native, "length", argValue)
 }
 
 var messageBodyNewFunction *gi.Function
@@ -3233,33 +3604,63 @@ type MessageClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'wrote_informational' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'wrote_informational' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'wrote_headers' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'wrote_headers' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'wrote_chunk' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'wrote_chunk' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'wrote_body' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'wrote_body' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'got_informational' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'got_informational' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'got_headers' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'got_headers' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'got_chunk' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'got_chunk' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'got_body' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'got_body' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'restarted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'restarted' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'finished' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'finished' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'starting' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'starting' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
 
 // MessageClassStruct creates an uninitialised MessageClass.
 func MessageClassStruct() *MessageClass {
@@ -4312,6 +4713,8 @@ type MultipartInputStreamClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gio.FilterInputStreamClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gio.FilterInputStreamClass'
+
 // MultipartInputStreamClassStruct creates an uninitialised MultipartInputStreamClass.
 func MultipartInputStreamClassStruct() *MultipartInputStreamClass {
 	err := multipartInputStreamClassStruct_Set()
@@ -4374,9 +4777,15 @@ type PasswordManagerInterface struct {
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_passwords_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_passwords_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_passwords_sync' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_passwords_sync' : for field setter : missing Type
 
 // PasswordManagerInterfaceStruct creates an uninitialised PasswordManagerInterface.
 func PasswordManagerInterfaceStruct() *PasswordManagerInterface {
@@ -4410,6 +4819,8 @@ type ProxyResolverDefaultClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // ProxyResolverDefaultClassStruct creates an uninitialised ProxyResolverDefaultClass.
 func ProxyResolverDefaultClassStruct() *ProxyResolverDefaultClass {
 	err := proxyResolverDefaultClassStruct_Set()
@@ -4442,9 +4853,15 @@ type ProxyResolverInterface struct {
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_proxy_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_proxy_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_proxy_sync' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_proxy_sync' : for field setter : missing Type
 
 // ProxyResolverInterfaceStruct creates an uninitialised ProxyResolverInterface.
 func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
@@ -4478,17 +4895,31 @@ type ProxyURIResolverInterface struct {
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_proxy_uri_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_proxy_uri_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_proxy_uri_sync' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_proxy_uri_sync' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // ProxyURIResolverInterfaceStruct creates an uninitialised ProxyURIResolverInterface.
 func ProxyURIResolverInterfaceStruct() *ProxyURIResolverInterface {
@@ -4521,17 +4952,31 @@ type Range struct {
 }
 
 // Start returns the C field 'start'.
-func (recv *Range) Start() int64 {
+func (recv *Range) FieldStart() int64 {
 	argValue := gi.FieldGet(rangeStruct, recv.native, "start")
 	value := argValue.Int64()
 	return value
 }
 
+// Start sets the value of the C field 'start'.
+func (recv *Range) SetFieldStart(value int64) {
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.FieldSet(rangeStruct, recv.native, "start", argValue)
+}
+
 // End returns the C field 'end'.
-func (recv *Range) End() int64 {
+func (recv *Range) FieldEnd() int64 {
 	argValue := gi.FieldGet(rangeStruct, recv.native, "end")
 	value := argValue.Int64()
 	return value
+}
+
+// End sets the value of the C field 'end'.
+func (recv *Range) SetFieldEnd(value int64) {
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.FieldSet(rangeStruct, recv.native, "end", argValue)
 }
 
 // RangeStruct creates an uninitialised Range.
@@ -4566,24 +5011,45 @@ type RequestClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // Schemes returns the C field 'schemes'.
-func (recv *RequestClass) Schemes() string {
+func (recv *RequestClass) FieldSchemes() string {
 	argValue := gi.FieldGet(requestClassStruct, recv.native, "schemes")
 	value := argValue.String(false)
 	return value
 }
 
+// Schemes sets the value of the C field 'schemes'.
+func (recv *RequestClass) SetFieldSchemes(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(requestClassStruct, recv.native, "schemes", argValue)
+}
+
 // UNSUPPORTED : C value 'check_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'check_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'send' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'send' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'send_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'send_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'send_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'send_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_content_length' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_content_length' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_content_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_content_type' : for field setter : missing Type
 
 // RequestClassStruct creates an uninitialised RequestClass.
 func RequestClassStruct() *RequestClass {
@@ -4616,10 +5082,17 @@ type RequestDataClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *RequestDataClass) Parent() *RequestClass {
+func (recv *RequestDataClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestDataClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
+}
+
+// Parent sets the value of the C field 'parent'.
+func (recv *RequestDataClass) SetFieldParent(value *RequestClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestDataClassStruct, recv.native, "parent", argValue)
 }
 
 // RequestDataClassStruct creates an uninitialised RequestDataClass.
@@ -4683,10 +5156,17 @@ type RequestFileClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *RequestFileClass) Parent() *RequestClass {
+func (recv *RequestFileClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestFileClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
+}
+
+// Parent sets the value of the C field 'parent'.
+func (recv *RequestFileClass) SetFieldParent(value *RequestClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestFileClassStruct, recv.native, "parent", argValue)
 }
 
 // RequestFileClassStruct creates an uninitialised RequestFileClass.
@@ -4750,10 +5230,17 @@ type RequestHTTPClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *RequestHTTPClass) Parent() *RequestClass {
+func (recv *RequestHTTPClass) FieldParent() *RequestClass {
 	argValue := gi.FieldGet(requestHTTPClassStruct, recv.native, "parent")
 	value := &RequestClass{native: argValue.Pointer()}
 	return value
+}
+
+// Parent sets the value of the C field 'parent'.
+func (recv *RequestHTTPClass) SetFieldParent(value *RequestClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestHTTPClassStruct, recv.native, "parent", argValue)
 }
 
 // RequestHTTPClassStruct creates an uninitialised RequestHTTPClass.
@@ -4848,6 +5335,8 @@ type RequesterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // RequesterClassStruct creates an uninitialised RequesterClass.
 func RequesterClassStruct() *RequesterClass {
 	err := requesterClassStruct_Set()
@@ -4910,21 +5399,39 @@ type ServerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'request_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_started' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'request_read' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'request_read' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'request_finished' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_finished' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'request_aborted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'request_aborted' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // ServerClassStruct creates an uninitialised ServerClass.
 func ServerClassStruct() *ServerClass {
@@ -4957,19 +5464,34 @@ type SessionAsyncClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SessionAsyncClass) ParentClass() *SessionClass {
+func (recv *SessionAsyncClass) FieldParentClass() *SessionClass {
 	argValue := gi.FieldGet(sessionAsyncClassStruct, recv.native, "parent_class")
 	value := &SessionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SessionAsyncClass) SetFieldParentClass(value *SessionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(sessionAsyncClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // SessionAsyncClassStruct creates an uninitialised SessionAsyncClass.
 func SessionAsyncClassStruct() *SessionAsyncClass {
@@ -5003,25 +5525,47 @@ type SessionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'request_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_started' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'authenticate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'authenticate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'queue_message' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'queue_message' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'requeue_message' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'requeue_message' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'send_message' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'send_message' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cancel_message' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cancel_message' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'auth_required' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'auth_required' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'flush_queue' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'flush_queue' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'kick' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'kick' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // SessionClassStruct creates an uninitialised SessionClass.
 func SessionClassStruct() *SessionClass {
@@ -5055,21 +5599,39 @@ type SessionFeatureInterface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'attach' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'attach' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'detach' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'detach' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'request_queued' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_queued' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'request_started' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'request_started' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'request_unqueued' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_unqueued' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_feature' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_feature' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_feature' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_feature' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'has_feature' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_feature' : for field setter : missing Type
 
 // SessionFeatureInterfaceStruct creates an uninitialised SessionFeatureInterface.
 func SessionFeatureInterfaceStruct() *SessionFeatureInterface {
@@ -5102,19 +5664,34 @@ type SessionSyncClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SessionSyncClass) ParentClass() *SessionClass {
+func (recv *SessionSyncClass) FieldParentClass() *SessionClass {
 	argValue := gi.FieldGet(sessionSyncClassStruct, recv.native, "parent_class")
 	value := &SessionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SessionSyncClass) SetFieldParentClass(value *SessionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(sessionSyncClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // SessionSyncClassStruct creates an uninitialised SessionSyncClass.
 func SessionSyncClassStruct() *SessionSyncClass {
@@ -5148,21 +5725,39 @@ type SocketClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'readable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'readable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'writable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'writable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'disconnected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'disconnected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'new_connection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'new_connection' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // SocketClassStruct creates an uninitialised SocketClass.
 func SocketClassStruct() *SocketClass {
@@ -5195,59 +5790,115 @@ type URI struct {
 }
 
 // Scheme returns the C field 'scheme'.
-func (recv *URI) Scheme() string {
+func (recv *URI) FieldScheme() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "scheme")
 	value := argValue.String(false)
 	return value
 }
 
+// Scheme sets the value of the C field 'scheme'.
+func (recv *URI) SetFieldScheme(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "scheme", argValue)
+}
+
 // User returns the C field 'user'.
-func (recv *URI) User() string {
+func (recv *URI) FieldUser() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "user")
 	value := argValue.String(false)
 	return value
 }
 
+// User sets the value of the C field 'user'.
+func (recv *URI) SetFieldUser(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "user", argValue)
+}
+
 // Password returns the C field 'password'.
-func (recv *URI) Password() string {
+func (recv *URI) FieldPassword() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "password")
 	value := argValue.String(false)
 	return value
 }
 
+// Password sets the value of the C field 'password'.
+func (recv *URI) SetFieldPassword(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "password", argValue)
+}
+
 // Host returns the C field 'host'.
-func (recv *URI) Host() string {
+func (recv *URI) FieldHost() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "host")
 	value := argValue.String(false)
 	return value
 }
 
+// Host sets the value of the C field 'host'.
+func (recv *URI) SetFieldHost(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "host", argValue)
+}
+
 // Port returns the C field 'port'.
-func (recv *URI) Port() uint32 {
+func (recv *URI) FieldPort() uint32 {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "port")
 	value := argValue.Uint32()
 	return value
 }
 
+// Port sets the value of the C field 'port'.
+func (recv *URI) SetFieldPort(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(uRIStruct, recv.native, "port", argValue)
+}
+
 // Path returns the C field 'path'.
-func (recv *URI) Path() string {
+func (recv *URI) FieldPath() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
+// Path sets the value of the C field 'path'.
+func (recv *URI) SetFieldPath(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "path", argValue)
+}
+
 // Query returns the C field 'query'.
-func (recv *URI) Query() string {
+func (recv *URI) FieldQuery() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "query")
 	value := argValue.String(false)
 	return value
 }
 
+// Query sets the value of the C field 'query'.
+func (recv *URI) SetFieldQuery(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "query", argValue)
+}
+
 // Fragment returns the C field 'fragment'.
-func (recv *URI) Fragment() string {
+func (recv *URI) FieldFragment() string {
 	argValue := gi.FieldGet(uRIStruct, recv.native, "fragment")
 	value := argValue.String(false)
 	return value
+}
+
+// Fragment sets the value of the C field 'fragment'.
+func (recv *URI) SetFieldFragment(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(uRIStruct, recv.native, "fragment", argValue)
 }
 
 var uRINewFunction *gi.Function
@@ -6079,15 +6730,27 @@ type WebsocketConnectionClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'message' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'message' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'error' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'error' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'closing' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'closing' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'closed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'closed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pong' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pong' : for field setter : missing Type
 
 // WebsocketConnectionClassStruct creates an uninitialised WebsocketConnectionClass.
 func WebsocketConnectionClassStruct() *WebsocketConnectionClass {
@@ -6151,30 +6814,57 @@ type WebsocketExtensionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // Name returns the C field 'name'.
-func (recv *WebsocketExtensionClass) Name() string {
+func (recv *WebsocketExtensionClass) FieldName() string {
 	argValue := gi.FieldGet(websocketExtensionClassStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *WebsocketExtensionClass) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(websocketExtensionClassStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'configure' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'configure' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_request_params' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_request_params' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_response_params' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_response_params' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'process_outgoing_message' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'process_outgoing_message' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'process_incoming_message' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'process_incoming_message' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_libsoup_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_libsoup_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_libsoup_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_libsoup_reserved4' : for field setter : missing Type
 
 // WebsocketExtensionClassStruct creates an uninitialised WebsocketExtensionClass.
 func WebsocketExtensionClassStruct() *WebsocketExtensionClass {
@@ -6207,10 +6897,17 @@ type WebsocketExtensionDeflateClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *WebsocketExtensionDeflateClass) ParentClass() *WebsocketExtensionClass {
+func (recv *WebsocketExtensionDeflateClass) FieldParentClass() *WebsocketExtensionClass {
 	argValue := gi.FieldGet(websocketExtensionDeflateClassStruct, recv.native, "parent_class")
 	value := &WebsocketExtensionClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *WebsocketExtensionDeflateClass) SetFieldParentClass(value *WebsocketExtensionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(websocketExtensionDeflateClassStruct, recv.native, "parent_class", argValue)
 }
 
 // WebsocketExtensionDeflateClassStruct creates an uninitialised WebsocketExtensionDeflateClass.
@@ -6244,6 +6941,8 @@ type WebsocketExtensionManagerClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // WebsocketExtensionManagerClassStruct creates an uninitialised WebsocketExtensionManagerClass.
 func WebsocketExtensionManagerClassStruct() *WebsocketExtensionManagerClass {

@@ -325,21 +325,39 @@ type ClassVTable struct {
 
 // UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'ClassGetPropertyFunction'
 
+// UNSUPPORTED : C value 'get_property' : for field setter : no Go type for 'ClassGetPropertyFunction'
+
 // UNSUPPORTED : C value 'set_property' : for field getter : no Go type for 'ClassSetPropertyFunction'
+
+// UNSUPPORTED : C value 'set_property' : for field setter : no Go type for 'ClassSetPropertyFunction'
 
 // UNSUPPORTED : C value 'has_property' : for field getter : no Go type for 'ClassHasPropertyFunction'
 
+// UNSUPPORTED : C value 'has_property' : for field setter : no Go type for 'ClassHasPropertyFunction'
+
 // UNSUPPORTED : C value 'delete_property' : for field getter : no Go type for 'ClassDeletePropertyFunction'
+
+// UNSUPPORTED : C value 'delete_property' : for field setter : no Go type for 'ClassDeletePropertyFunction'
 
 // UNSUPPORTED : C value 'enumerate_properties' : for field getter : no Go type for 'ClassEnumeratePropertiesFunction'
 
+// UNSUPPORTED : C value 'enumerate_properties' : for field setter : no Go type for 'ClassEnumeratePropertiesFunction'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // ClassVTableStruct creates an uninitialised ClassVTable.
 func ClassVTableStruct() *ClassVTable {
@@ -373,13 +391,23 @@ type ContextClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // ContextClassStruct creates an uninitialised ContextClass.
 func ContextClassStruct() *ContextClass {
@@ -443,13 +471,23 @@ type ExceptionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // ExceptionClassStruct creates an uninitialised ExceptionClass.
 func ExceptionClassStruct() *ExceptionClass {
@@ -513,13 +551,23 @@ type ValueClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // ValueClassStruct creates an uninitialised ValueClass.
 func ValueClassStruct() *ValueClass {
@@ -583,13 +631,23 @@ type VirtualMachineClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // VirtualMachineClassStruct creates an uninitialised VirtualMachineClass.
 func VirtualMachineClassStruct() *VirtualMachineClass {
@@ -653,13 +711,23 @@ type WeakValueClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_jsc_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_jsc_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_jsc_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_jsc_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_jsc_reserved3' : for field setter : missing Type
 
 // WeakValueClassStruct creates an uninitialised WeakValueClass.
 func WeakValueClassStruct() *WeakValueClass {

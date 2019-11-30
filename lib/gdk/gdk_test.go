@@ -10,13 +10,25 @@ func TestCleanBuild(t *testing.T) {
 }
 
 func TestFieldGet(t *testing.T) {
-	for i := 0; i < 1000; i++ {
-		color := RGBAStruct()
-		ok := color.Parse("#123456")
+	epsilon := 0.004
 
-		assert.True(t, ok)
-		assert.InEpsilon(t, 0x12/float64(0x100), color.Red(), 0.005)
-		assert.InEpsilon(t, 0x34/float64(0x100), color.Green(), 0.005)
-		assert.InEpsilon(t, 0x56/float64(0x100), color.Blue(), 0.005)
-	}
+	color := RGBAStruct()
+	ok := color.Parse("#123456")
+
+	assert.True(t, ok)
+	assert.InEpsilon(t, 0x12/float64(0x100), color.FieldRed(), epsilon)
+	assert.InEpsilon(t, 0x34/float64(0x100), color.FieldGreen(), epsilon)
+	assert.InEpsilon(t, 0x56/float64(0x100), color.FieldBlue(), epsilon)
+}
+
+func TestFieldSet(t *testing.T) {
+	epsilon := 0.004
+	color := RGBAStruct()
+
+	ok := color.Parse("#123456")
+	assert.True(t, ok)
+	assert.InEpsilon(t, 0x12/float64(0x100), color.FieldRed(), epsilon)
+
+	color.SetFieldRed(0xcc / float64(0x100))
+	assert.InEpsilon(t, 0xcc/float64(0x100), color.FieldRed(), epsilon)
 }

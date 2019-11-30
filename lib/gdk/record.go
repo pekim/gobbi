@@ -86,31 +86,59 @@ type Color struct {
 }
 
 // Pixel returns the C field 'pixel'.
-func (recv *Color) Pixel() uint32 {
+func (recv *Color) FieldPixel() uint32 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "pixel")
 	value := argValue.Uint32()
 	return value
 }
 
+// Pixel sets the value of the C field 'pixel'.
+func (recv *Color) SetFieldPixel(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(colorStruct, recv.native, "pixel", argValue)
+}
+
 // Red returns the C field 'red'.
-func (recv *Color) Red() uint16 {
+func (recv *Color) FieldRed() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "red")
 	value := argValue.Uint16()
 	return value
 }
 
+// Red sets the value of the C field 'red'.
+func (recv *Color) SetFieldRed(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "red", argValue)
+}
+
 // Green returns the C field 'green'.
-func (recv *Color) Green() uint16 {
+func (recv *Color) FieldGreen() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "green")
 	value := argValue.Uint16()
 	return value
 }
 
+// Green sets the value of the C field 'green'.
+func (recv *Color) SetFieldGreen(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "green", argValue)
+}
+
 // Blue returns the C field 'blue'.
-func (recv *Color) Blue() uint16 {
+func (recv *Color) FieldBlue() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "blue")
 	value := argValue.Uint16()
 	return value
+}
+
+// Blue sets the value of the C field 'blue'.
+func (recv *Color) SetFieldBlue(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "blue", argValue)
 }
 
 var colorCopyFunction *gi.Function
@@ -362,13 +390,24 @@ type EventAny struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventAny) SendEvent() int8 {
+func (recv *EventAny) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventAnyStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
+}
+
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventAny) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventAnyStruct, recv.native, "send_event", argValue)
 }
 
 // EventAnyStruct creates an uninitialised EventAny.
@@ -403,66 +442,130 @@ type EventButton struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventButton) SendEvent() int8 {
+func (recv *EventButton) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventButton) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventButton) Time() uint32 {
+func (recv *EventButton) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventButton) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventButton) X() float64 {
+func (recv *EventButton) FieldX() float64 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventButton) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventButton) Y() float64 {
+func (recv *EventButton) FieldY() float64 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventButton) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "y", argValue)
+}
+
 // Axes returns the C field 'axes'.
-func (recv *EventButton) Axes() float64 {
+func (recv *EventButton) FieldAxes() float64 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "axes")
 	value := argValue.Float64()
 	return value
 }
 
+// Axes sets the value of the C field 'axes'.
+func (recv *EventButton) SetFieldAxes(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "axes", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
 
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+
 // Button returns the C field 'button'.
-func (recv *EventButton) Button() uint32 {
+func (recv *EventButton) FieldButton() uint32 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "button")
 	value := argValue.Uint32()
 	return value
 }
 
+// Button sets the value of the C field 'button'.
+func (recv *EventButton) SetFieldButton(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "button", argValue)
+}
+
 // UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
 
+// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventButton) XRoot() float64 {
+func (recv *EventButton) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventButton) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventButton) YRoot() float64 {
+func (recv *EventButton) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventButtonStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
+}
+
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventButton) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventButtonStruct, recv.native, "y_root", argValue)
 }
 
 // EventButtonStruct creates an uninitialised EventButton.
@@ -497,41 +600,80 @@ type EventConfigure struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventConfigure) SendEvent() int8 {
+func (recv *EventConfigure) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventConfigure) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventConfigureStruct, recv.native, "send_event", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventConfigure) X() int32 {
+func (recv *EventConfigure) FieldX() int32 {
 	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventConfigure) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventConfigureStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventConfigure) Y() int32 {
+func (recv *EventConfigure) FieldY() int32 {
 	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventConfigure) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventConfigureStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *EventConfigure) Width() int32 {
+func (recv *EventConfigure) FieldWidth() int32 {
 	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *EventConfigure) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventConfigureStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *EventConfigure) Height() int32 {
+func (recv *EventConfigure) FieldHeight() int32 {
 	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *EventConfigure) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventConfigureStruct, recv.native, "height", argValue)
 }
 
 // EventConfigureStruct creates an uninitialised EventConfigure.
@@ -566,64 +708,125 @@ type EventCrossing struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventCrossing) SendEvent() int8 {
+func (recv *EventCrossing) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventCrossing) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'subwindow' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'subwindow' : for field setter : no Go type for 'Window'
+
 // Time returns the C field 'time'.
-func (recv *EventCrossing) Time() uint32 {
+func (recv *EventCrossing) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventCrossing) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventCrossing) X() float64 {
+func (recv *EventCrossing) FieldX() float64 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventCrossing) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventCrossing) Y() float64 {
+func (recv *EventCrossing) FieldY() float64 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventCrossing) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "y", argValue)
+}
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventCrossing) XRoot() float64 {
+func (recv *EventCrossing) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventCrossing) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventCrossing) YRoot() float64 {
+func (recv *EventCrossing) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
 }
 
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventCrossing) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "y_root", argValue)
+}
+
 // UNSUPPORTED : C value 'mode' : for field getter : no Go type for 'CrossingMode'
+
+// UNSUPPORTED : C value 'mode' : for field setter : no Go type for 'CrossingMode'
 
 // UNSUPPORTED : C value 'detail' : for field getter : no Go type for 'NotifyType'
 
+// UNSUPPORTED : C value 'detail' : for field setter : no Go type for 'NotifyType'
+
 // Focus returns the C field 'focus'.
-func (recv *EventCrossing) Focus() bool {
+func (recv *EventCrossing) FieldFocus() bool {
 	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "focus")
 	value := argValue.Boolean()
 	return value
 }
 
+// Focus sets the value of the C field 'focus'.
+func (recv *EventCrossing) SetFieldFocus(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(eventCrossingStruct, recv.native, "focus", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
 
 // EventCrossingStruct creates an uninitialised EventCrossing.
 func EventCrossingStruct() *EventCrossing {
@@ -657,36 +860,70 @@ type EventDND struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventDND) SendEvent() int8 {
+func (recv *EventDND) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventDNDStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventDND) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventDNDStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'context' : for field getter : no Go type for 'DragContext'
 
+// UNSUPPORTED : C value 'context' : for field setter : no Go type for 'DragContext'
+
 // Time returns the C field 'time'.
-func (recv *EventDND) Time() uint32 {
+func (recv *EventDND) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventDNDStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventDND) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventDNDStruct, recv.native, "time", argValue)
+}
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventDND) XRoot() int16 {
+func (recv *EventDND) FieldXRoot() int16 {
 	argValue := gi.FieldGet(eventDNDStruct, recv.native, "x_root")
 	value := argValue.Int16()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventDND) SetFieldXRoot(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(eventDNDStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventDND) YRoot() int16 {
+func (recv *EventDND) FieldYRoot() int16 {
 	argValue := gi.FieldGet(eventDNDStruct, recv.native, "y_root")
 	value := argValue.Int16()
 	return value
+}
+
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventDND) SetFieldYRoot(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(eventDNDStruct, recv.native, "y_root", argValue)
 }
 
 // EventDNDStruct creates an uninitialised EventDND.
@@ -721,29 +958,56 @@ type EventExpose struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventExpose) SendEvent() int8 {
+func (recv *EventExpose) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventExposeStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventExpose) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventExposeStruct, recv.native, "send_event", argValue)
+}
+
 // Area returns the C field 'area'.
-func (recv *EventExpose) Area() *Rectangle {
+func (recv *EventExpose) FieldArea() *Rectangle {
 	argValue := gi.FieldGet(eventExposeStruct, recv.native, "area")
 	value := &Rectangle{native: argValue.Pointer()}
 	return value
 }
 
+// Area sets the value of the C field 'area'.
+func (recv *EventExpose) SetFieldArea(value *Rectangle) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventExposeStruct, recv.native, "area", argValue)
+}
+
 // UNSUPPORTED : C value 'region' : for field getter : no Go type for 'cairo.Region'
 
+// UNSUPPORTED : C value 'region' : for field setter : no Go type for 'cairo.Region'
+
 // Count returns the C field 'count'.
-func (recv *EventExpose) Count() int32 {
+func (recv *EventExpose) FieldCount() int32 {
 	argValue := gi.FieldGet(eventExposeStruct, recv.native, "count")
 	value := argValue.Int32()
 	return value
+}
+
+// Count sets the value of the C field 'count'.
+func (recv *EventExpose) SetFieldCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventExposeStruct, recv.native, "count", argValue)
 }
 
 // EventExposeStruct creates an uninitialised EventExpose.
@@ -778,20 +1042,38 @@ type EventFocus struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventFocus) SendEvent() int8 {
+func (recv *EventFocus) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventFocusStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventFocus) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventFocusStruct, recv.native, "send_event", argValue)
+}
+
 // In returns the C field 'in'.
-func (recv *EventFocus) In() int16 {
+func (recv *EventFocus) FieldIn() int16 {
 	argValue := gi.FieldGet(eventFocusStruct, recv.native, "in")
 	value := argValue.Int16()
 	return value
+}
+
+// In sets the value of the C field 'in'.
+func (recv *EventFocus) SetFieldIn(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(eventFocusStruct, recv.native, "in", argValue)
 }
 
 // EventFocusStruct creates an uninitialised EventFocus.
@@ -826,30 +1108,57 @@ type EventGrabBroken struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventGrabBroken) SendEvent() int8 {
+func (recv *EventGrabBroken) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventGrabBroken) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventGrabBrokenStruct, recv.native, "send_event", argValue)
+}
+
 // Keyboard returns the C field 'keyboard'.
-func (recv *EventGrabBroken) Keyboard() bool {
+func (recv *EventGrabBroken) FieldKeyboard() bool {
 	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "keyboard")
 	value := argValue.Boolean()
 	return value
 }
 
+// Keyboard sets the value of the C field 'keyboard'.
+func (recv *EventGrabBroken) SetFieldKeyboard(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(eventGrabBrokenStruct, recv.native, "keyboard", argValue)
+}
+
 // Implicit returns the C field 'implicit'.
-func (recv *EventGrabBroken) Implicit() bool {
+func (recv *EventGrabBroken) FieldImplicit() bool {
 	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "implicit")
 	value := argValue.Boolean()
 	return value
 }
 
+// Implicit sets the value of the C field 'implicit'.
+func (recv *EventGrabBroken) SetFieldImplicit(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(eventGrabBrokenStruct, recv.native, "implicit", argValue)
+}
+
 // UNSUPPORTED : C value 'grab_window' : for field getter : no Go type for 'Window'
+
+// UNSUPPORTED : C value 'grab_window' : for field setter : no Go type for 'Window'
 
 // EventGrabBrokenStruct creates an uninitialised EventGrabBroken.
 func EventGrabBrokenStruct() *EventGrabBroken {
@@ -883,64 +1192,126 @@ type EventKey struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventKey) SendEvent() int8 {
+func (recv *EventKey) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventKey) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventKey) Time() uint32 {
+func (recv *EventKey) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventKey) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "time", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
 
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+
 // Keyval returns the C field 'keyval'.
-func (recv *EventKey) Keyval() uint32 {
+func (recv *EventKey) FieldKeyval() uint32 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "keyval")
 	value := argValue.Uint32()
 	return value
 }
 
+// Keyval sets the value of the C field 'keyval'.
+func (recv *EventKey) SetFieldKeyval(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "keyval", argValue)
+}
+
 // Length returns the C field 'length'.
-func (recv *EventKey) Length() int32 {
+func (recv *EventKey) FieldLength() int32 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "length")
 	value := argValue.Int32()
 	return value
 }
 
+// Length sets the value of the C field 'length'.
+func (recv *EventKey) SetFieldLength(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "length", argValue)
+}
+
 // String returns the C field 'string'.
-func (recv *EventKey) String() string {
+func (recv *EventKey) FieldString() string {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "string")
 	value := argValue.String(false)
 	return value
 }
 
+// String sets the value of the C field 'string'.
+func (recv *EventKey) SetFieldString(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "string", argValue)
+}
+
 // HardwareKeycode returns the C field 'hardware_keycode'.
-func (recv *EventKey) HardwareKeycode() uint16 {
+func (recv *EventKey) FieldHardwareKeycode() uint16 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "hardware_keycode")
 	value := argValue.Uint16()
 	return value
 }
 
+// HardwareKeycode sets the value of the C field 'hardware_keycode'.
+func (recv *EventKey) SetFieldHardwareKeycode(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "hardware_keycode", argValue)
+}
+
 // Group returns the C field 'group'.
-func (recv *EventKey) Group() uint8 {
+func (recv *EventKey) FieldGroup() uint8 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "group")
 	value := argValue.Uint8()
 	return value
 }
 
+// Group sets the value of the C field 'group'.
+func (recv *EventKey) SetFieldGroup(value uint8) {
+	var argValue gi.Argument
+	argValue.SetUint8(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "group", argValue)
+}
+
 // IsModifier returns the C field 'is_modifier'.
-func (recv *EventKey) IsModifier() uint32 {
+func (recv *EventKey) FieldIsModifier() uint32 {
 	argValue := gi.FieldGet(eventKeyStruct, recv.native, "is_modifier")
 	value := argValue.Uint32()
 	return value
+}
+
+// IsModifier sets the value of the C field 'is_modifier'.
+func (recv *EventKey) SetFieldIsModifier(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventKeyStruct, recv.native, "is_modifier", argValue)
 }
 
 // EventKeyStruct creates an uninitialised EventKey.
@@ -975,66 +1346,130 @@ type EventMotion struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventMotion) SendEvent() int8 {
+func (recv *EventMotion) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventMotion) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventMotion) Time() uint32 {
+func (recv *EventMotion) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventMotion) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventMotion) X() float64 {
+func (recv *EventMotion) FieldX() float64 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventMotion) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventMotion) Y() float64 {
+func (recv *EventMotion) FieldY() float64 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventMotion) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "y", argValue)
+}
+
 // Axes returns the C field 'axes'.
-func (recv *EventMotion) Axes() float64 {
+func (recv *EventMotion) FieldAxes() float64 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "axes")
 	value := argValue.Float64()
 	return value
 }
 
+// Axes sets the value of the C field 'axes'.
+func (recv *EventMotion) SetFieldAxes(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "axes", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
 
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+
 // IsHint returns the C field 'is_hint'.
-func (recv *EventMotion) IsHint() int16 {
+func (recv *EventMotion) FieldIsHint() int16 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "is_hint")
 	value := argValue.Int16()
 	return value
 }
 
+// IsHint sets the value of the C field 'is_hint'.
+func (recv *EventMotion) SetFieldIsHint(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "is_hint", argValue)
+}
+
 // UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
 
+// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventMotion) XRoot() float64 {
+func (recv *EventMotion) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventMotion) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventMotion) YRoot() float64 {
+func (recv *EventMotion) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventMotionStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
+}
+
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventMotion) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventMotionStruct, recv.native, "y_root", argValue)
 }
 
 // EventMotionStruct creates an uninitialised EventMotion.
@@ -1069,38 +1504,74 @@ type EventOwnerChange struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventOwnerChange) SendEvent() int8 {
+func (recv *EventOwnerChange) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventOwnerChange) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'owner' : for field getter : no Go type for 'Window'
+
+// UNSUPPORTED : C value 'owner' : for field setter : no Go type for 'Window'
 
 // UNSUPPORTED : C value 'reason' : for field getter : no Go type for 'OwnerChange'
 
+// UNSUPPORTED : C value 'reason' : for field setter : no Go type for 'OwnerChange'
+
 // Selection returns the C field 'selection'.
-func (recv *EventOwnerChange) Selection() *Atom {
+func (recv *EventOwnerChange) FieldSelection() *Atom {
 	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "selection")
 	value := &Atom{native: argValue.Pointer()}
 	return value
 }
 
+// Selection sets the value of the C field 'selection'.
+func (recv *EventOwnerChange) SetFieldSelection(value *Atom) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "selection", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventOwnerChange) Time() uint32 {
+func (recv *EventOwnerChange) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventOwnerChange) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "time", argValue)
+}
+
 // SelectionTime returns the C field 'selection_time'.
-func (recv *EventOwnerChange) SelectionTime() uint32 {
+func (recv *EventOwnerChange) FieldSelectionTime() uint32 {
 	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "selection_time")
 	value := argValue.Uint32()
 	return value
+}
+
+// SelectionTime sets the value of the C field 'selection_time'.
+func (recv *EventOwnerChange) SetFieldSelectionTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "selection_time", argValue)
 }
 
 // EventOwnerChangeStruct creates an uninitialised EventOwnerChange.
@@ -1135,48 +1606,94 @@ type EventPadAxis struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventPadAxis) SendEvent() int8 {
+func (recv *EventPadAxis) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventPadAxis) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventPadAxis) Time() uint32 {
+func (recv *EventPadAxis) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventPadAxis) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "time", argValue)
+}
+
 // Group returns the C field 'group'.
-func (recv *EventPadAxis) Group() uint32 {
+func (recv *EventPadAxis) FieldGroup() uint32 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "group")
 	value := argValue.Uint32()
 	return value
 }
 
+// Group sets the value of the C field 'group'.
+func (recv *EventPadAxis) SetFieldGroup(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "group", argValue)
+}
+
 // Index returns the C field 'index'.
-func (recv *EventPadAxis) Index() uint32 {
+func (recv *EventPadAxis) FieldIndex() uint32 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "index")
 	value := argValue.Uint32()
 	return value
 }
 
+// Index sets the value of the C field 'index'.
+func (recv *EventPadAxis) SetFieldIndex(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "index", argValue)
+}
+
 // Mode returns the C field 'mode'.
-func (recv *EventPadAxis) Mode() uint32 {
+func (recv *EventPadAxis) FieldMode() uint32 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "mode")
 	value := argValue.Uint32()
 	return value
 }
 
+// Mode sets the value of the C field 'mode'.
+func (recv *EventPadAxis) SetFieldMode(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "mode", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *EventPadAxis) Value() float64 {
+func (recv *EventPadAxis) FieldValue() float64 {
 	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "value")
 	value := argValue.Float64()
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *EventPadAxis) SetFieldValue(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "value", argValue)
 }
 
 // EventPadAxisStruct creates an uninitialised EventPadAxis.
@@ -1211,41 +1728,80 @@ type EventPadButton struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventPadButton) SendEvent() int8 {
+func (recv *EventPadButton) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventPadButton) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventPadButton) Time() uint32 {
+func (recv *EventPadButton) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventPadButton) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "time", argValue)
+}
+
 // Group returns the C field 'group'.
-func (recv *EventPadButton) Group() uint32 {
+func (recv *EventPadButton) FieldGroup() uint32 {
 	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "group")
 	value := argValue.Uint32()
 	return value
 }
 
+// Group sets the value of the C field 'group'.
+func (recv *EventPadButton) SetFieldGroup(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "group", argValue)
+}
+
 // Button returns the C field 'button'.
-func (recv *EventPadButton) Button() uint32 {
+func (recv *EventPadButton) FieldButton() uint32 {
 	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "button")
 	value := argValue.Uint32()
 	return value
 }
 
+// Button sets the value of the C field 'button'.
+func (recv *EventPadButton) SetFieldButton(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "button", argValue)
+}
+
 // Mode returns the C field 'mode'.
-func (recv *EventPadButton) Mode() uint32 {
+func (recv *EventPadButton) FieldMode() uint32 {
 	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "mode")
 	value := argValue.Uint32()
 	return value
+}
+
+// Mode sets the value of the C field 'mode'.
+func (recv *EventPadButton) SetFieldMode(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "mode", argValue)
 }
 
 // EventPadButtonStruct creates an uninitialised EventPadButton.
@@ -1280,34 +1836,66 @@ type EventPadGroupMode struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventPadGroupMode) SendEvent() int8 {
+func (recv *EventPadGroupMode) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventPadGroupMode) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventPadGroupModeStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventPadGroupMode) Time() uint32 {
+func (recv *EventPadGroupMode) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventPadGroupMode) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadGroupModeStruct, recv.native, "time", argValue)
+}
+
 // Group returns the C field 'group'.
-func (recv *EventPadGroupMode) Group() uint32 {
+func (recv *EventPadGroupMode) FieldGroup() uint32 {
 	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "group")
 	value := argValue.Uint32()
 	return value
 }
 
+// Group sets the value of the C field 'group'.
+func (recv *EventPadGroupMode) SetFieldGroup(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadGroupModeStruct, recv.native, "group", argValue)
+}
+
 // Mode returns the C field 'mode'.
-func (recv *EventPadGroupMode) Mode() uint32 {
+func (recv *EventPadGroupMode) FieldMode() uint32 {
 	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "mode")
 	value := argValue.Uint32()
 	return value
+}
+
+// Mode sets the value of the C field 'mode'.
+func (recv *EventPadGroupMode) SetFieldMode(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPadGroupModeStruct, recv.native, "mode", argValue)
 }
 
 // EventPadGroupModeStruct creates an uninitialised EventPadGroupMode.
@@ -1342,30 +1930,57 @@ type EventProperty struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventProperty) SendEvent() int8 {
+func (recv *EventProperty) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventProperty) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventPropertyStruct, recv.native, "send_event", argValue)
+}
+
 // Atom returns the C field 'atom'.
-func (recv *EventProperty) Atom() *Atom {
+func (recv *EventProperty) FieldAtom() *Atom {
 	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "atom")
 	value := &Atom{native: argValue.Pointer()}
 	return value
 }
 
+// Atom sets the value of the C field 'atom'.
+func (recv *EventProperty) SetFieldAtom(value *Atom) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventPropertyStruct, recv.native, "atom", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventProperty) Time() uint32 {
+func (recv *EventProperty) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventProperty) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventPropertyStruct, recv.native, "time", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'PropertyState'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'PropertyState'
 
 // EventPropertyStruct creates an uninitialised EventProperty.
 func EventPropertyStruct() *EventProperty {
@@ -1399,23 +2014,43 @@ type EventProximity struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventProximity) SendEvent() int8 {
+func (recv *EventProximity) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventProximityStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventProximity) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventProximityStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventProximity) Time() uint32 {
+func (recv *EventProximity) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventProximityStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventProximity) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventProximityStruct, recv.native, "time", argValue)
+}
+
 // UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+
+// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
 
 // EventProximityStruct creates an uninitialised EventProximity.
 func EventProximityStruct() *EventProximity {
@@ -1449,75 +2084,148 @@ type EventScroll struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventScroll) SendEvent() int8 {
+func (recv *EventScroll) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventScroll) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventScroll) Time() uint32 {
+func (recv *EventScroll) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventScroll) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventScroll) X() float64 {
+func (recv *EventScroll) FieldX() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventScroll) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventScroll) Y() float64 {
+func (recv *EventScroll) FieldY() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventScroll) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "y", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
 
 // UNSUPPORTED : C value 'direction' : for field getter : no Go type for 'ScrollDirection'
 
+// UNSUPPORTED : C value 'direction' : for field setter : no Go type for 'ScrollDirection'
+
 // UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
 
+// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventScroll) XRoot() float64 {
+func (recv *EventScroll) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventScroll) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventScroll) YRoot() float64 {
+func (recv *EventScroll) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
 }
 
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventScroll) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "y_root", argValue)
+}
+
 // DeltaX returns the C field 'delta_x'.
-func (recv *EventScroll) DeltaX() float64 {
+func (recv *EventScroll) FieldDeltaX() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "delta_x")
 	value := argValue.Float64()
 	return value
 }
 
+// DeltaX sets the value of the C field 'delta_x'.
+func (recv *EventScroll) SetFieldDeltaX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "delta_x", argValue)
+}
+
 // DeltaY returns the C field 'delta_y'.
-func (recv *EventScroll) DeltaY() float64 {
+func (recv *EventScroll) FieldDeltaY() float64 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "delta_y")
 	value := argValue.Float64()
 	return value
 }
 
+// DeltaY sets the value of the C field 'delta_y'.
+func (recv *EventScroll) SetFieldDeltaY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "delta_y", argValue)
+}
+
 // IsStop returns the C field 'is_stop'.
-func (recv *EventScroll) IsStop() uint32 {
+func (recv *EventScroll) FieldIsStop() uint32 {
 	argValue := gi.FieldGet(eventScrollStruct, recv.native, "is_stop")
 	value := argValue.Uint32()
 	return value
+}
+
+// IsStop sets the value of the C field 'is_stop'.
+func (recv *EventScroll) SetFieldIsStop(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventScrollStruct, recv.native, "is_stop", argValue)
 }
 
 // EventScrollStruct creates an uninitialised EventScroll.
@@ -1552,44 +2260,85 @@ type EventSelection struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventSelection) SendEvent() int8 {
+func (recv *EventSelection) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventSelection) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventSelectionStruct, recv.native, "send_event", argValue)
+}
+
 // Selection returns the C field 'selection'.
-func (recv *EventSelection) Selection() *Atom {
+func (recv *EventSelection) FieldSelection() *Atom {
 	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "selection")
 	value := &Atom{native: argValue.Pointer()}
 	return value
 }
 
+// Selection sets the value of the C field 'selection'.
+func (recv *EventSelection) SetFieldSelection(value *Atom) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSelectionStruct, recv.native, "selection", argValue)
+}
+
 // Target returns the C field 'target'.
-func (recv *EventSelection) Target() *Atom {
+func (recv *EventSelection) FieldTarget() *Atom {
 	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "target")
 	value := &Atom{native: argValue.Pointer()}
 	return value
 }
 
+// Target sets the value of the C field 'target'.
+func (recv *EventSelection) SetFieldTarget(value *Atom) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSelectionStruct, recv.native, "target", argValue)
+}
+
 // Property returns the C field 'property'.
-func (recv *EventSelection) Property() *Atom {
+func (recv *EventSelection) FieldProperty() *Atom {
 	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "property")
 	value := &Atom{native: argValue.Pointer()}
 	return value
 }
 
+// Property sets the value of the C field 'property'.
+func (recv *EventSelection) SetFieldProperty(value *Atom) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSelectionStruct, recv.native, "property", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventSelection) Time() uint32 {
+func (recv *EventSelection) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventSelection) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventSelectionStruct, recv.native, "time", argValue)
+}
+
 // UNSUPPORTED : C value 'requestor' : for field getter : no Go type for 'Window'
+
+// UNSUPPORTED : C value 'requestor' : for field setter : no Go type for 'Window'
 
 // EventSelectionStruct creates an uninitialised EventSelection.
 func EventSelectionStruct() *EventSelection {
@@ -1653,22 +2402,42 @@ type EventSetting struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventSetting) SendEvent() int8 {
+func (recv *EventSetting) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventSettingStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventSetting) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventSettingStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'action' : for field getter : no Go type for 'SettingAction'
 
+// UNSUPPORTED : C value 'action' : for field setter : no Go type for 'SettingAction'
+
 // Name returns the C field 'name'.
-func (recv *EventSetting) Name() string {
+func (recv *EventSetting) FieldName() string {
 	argValue := gi.FieldGet(eventSettingStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
+}
+
+// Name sets the value of the C field 'name'.
+func (recv *EventSetting) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(eventSettingStruct, recv.native, "name", argValue)
 }
 
 // EventSettingStruct creates an uninitialised EventSetting.
@@ -1703,73 +2472,144 @@ type EventTouch struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventTouch) SendEvent() int8 {
+func (recv *EventTouch) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventTouch) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "send_event", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventTouch) Time() uint32 {
+func (recv *EventTouch) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventTouch) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventTouch) X() float64 {
+func (recv *EventTouch) FieldX() float64 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventTouch) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventTouch) Y() float64 {
+func (recv *EventTouch) FieldY() float64 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventTouch) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "y", argValue)
+}
+
 // Axes returns the C field 'axes'.
-func (recv *EventTouch) Axes() float64 {
+func (recv *EventTouch) FieldAxes() float64 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "axes")
 	value := argValue.Float64()
 	return value
 }
 
+// Axes sets the value of the C field 'axes'.
+func (recv *EventTouch) SetFieldAxes(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "axes", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
 
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+
 // Sequence returns the C field 'sequence'.
-func (recv *EventTouch) Sequence() *EventSequence {
+func (recv *EventTouch) FieldSequence() *EventSequence {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "sequence")
 	value := &EventSequence{native: argValue.Pointer()}
 	return value
 }
 
+// Sequence sets the value of the C field 'sequence'.
+func (recv *EventTouch) SetFieldSequence(value *EventSequence) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventTouchStruct, recv.native, "sequence", argValue)
+}
+
 // EmulatingPointer returns the C field 'emulating_pointer'.
-func (recv *EventTouch) EmulatingPointer() bool {
+func (recv *EventTouch) FieldEmulatingPointer() bool {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "emulating_pointer")
 	value := argValue.Boolean()
 	return value
 }
 
+// EmulatingPointer sets the value of the C field 'emulating_pointer'.
+func (recv *EventTouch) SetFieldEmulatingPointer(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "emulating_pointer", argValue)
+}
+
 // UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
 
+// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventTouch) XRoot() float64 {
+func (recv *EventTouch) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventTouch) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventTouch) YRoot() float64 {
+func (recv *EventTouch) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventTouchStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
+}
+
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventTouch) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchStruct, recv.native, "y_root", argValue)
 }
 
 // EventTouchStruct creates an uninitialised EventTouch.
@@ -1804,93 +2644,183 @@ type EventTouchpadPinch struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventTouchpadPinch) SendEvent() int8 {
+func (recv *EventTouchpadPinch) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventTouchpadPinch) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "send_event", argValue)
+}
+
 // Phase returns the C field 'phase'.
-func (recv *EventTouchpadPinch) Phase() int8 {
+func (recv *EventTouchpadPinch) FieldPhase() int8 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "phase")
 	value := argValue.Int8()
 	return value
 }
 
+// Phase sets the value of the C field 'phase'.
+func (recv *EventTouchpadPinch) SetFieldPhase(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "phase", argValue)
+}
+
 // NFingers returns the C field 'n_fingers'.
-func (recv *EventTouchpadPinch) NFingers() int8 {
+func (recv *EventTouchpadPinch) FieldNFingers() int8 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "n_fingers")
 	value := argValue.Int8()
 	return value
 }
 
+// NFingers sets the value of the C field 'n_fingers'.
+func (recv *EventTouchpadPinch) SetFieldNFingers(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "n_fingers", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventTouchpadPinch) Time() uint32 {
+func (recv *EventTouchpadPinch) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventTouchpadPinch) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventTouchpadPinch) X() float64 {
+func (recv *EventTouchpadPinch) FieldX() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventTouchpadPinch) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventTouchpadPinch) Y() float64 {
+func (recv *EventTouchpadPinch) FieldY() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventTouchpadPinch) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "y", argValue)
+}
+
 // Dx returns the C field 'dx'.
-func (recv *EventTouchpadPinch) Dx() float64 {
+func (recv *EventTouchpadPinch) FieldDx() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "dx")
 	value := argValue.Float64()
 	return value
 }
 
+// Dx sets the value of the C field 'dx'.
+func (recv *EventTouchpadPinch) SetFieldDx(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "dx", argValue)
+}
+
 // Dy returns the C field 'dy'.
-func (recv *EventTouchpadPinch) Dy() float64 {
+func (recv *EventTouchpadPinch) FieldDy() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "dy")
 	value := argValue.Float64()
 	return value
 }
 
+// Dy sets the value of the C field 'dy'.
+func (recv *EventTouchpadPinch) SetFieldDy(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "dy", argValue)
+}
+
 // AngleDelta returns the C field 'angle_delta'.
-func (recv *EventTouchpadPinch) AngleDelta() float64 {
+func (recv *EventTouchpadPinch) FieldAngleDelta() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "angle_delta")
 	value := argValue.Float64()
 	return value
 }
 
+// AngleDelta sets the value of the C field 'angle_delta'.
+func (recv *EventTouchpadPinch) SetFieldAngleDelta(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "angle_delta", argValue)
+}
+
 // Scale returns the C field 'scale'.
-func (recv *EventTouchpadPinch) Scale() float64 {
+func (recv *EventTouchpadPinch) FieldScale() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "scale")
 	value := argValue.Float64()
 	return value
 }
 
+// Scale sets the value of the C field 'scale'.
+func (recv *EventTouchpadPinch) SetFieldScale(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "scale", argValue)
+}
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventTouchpadPinch) XRoot() float64 {
+func (recv *EventTouchpadPinch) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventTouchpadPinch) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventTouchpadPinch) YRoot() float64 {
+func (recv *EventTouchpadPinch) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
 }
 
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventTouchpadPinch) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "y_root", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
 
 // EventTouchpadPinchStruct creates an uninitialised EventTouchpadPinch.
 func EventTouchpadPinchStruct() *EventTouchpadPinch {
@@ -1924,79 +2854,155 @@ type EventTouchpadSwipe struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventTouchpadSwipe) SendEvent() int8 {
+func (recv *EventTouchpadSwipe) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventTouchpadSwipe) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "send_event", argValue)
+}
+
 // Phase returns the C field 'phase'.
-func (recv *EventTouchpadSwipe) Phase() int8 {
+func (recv *EventTouchpadSwipe) FieldPhase() int8 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "phase")
 	value := argValue.Int8()
 	return value
 }
 
+// Phase sets the value of the C field 'phase'.
+func (recv *EventTouchpadSwipe) SetFieldPhase(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "phase", argValue)
+}
+
 // NFingers returns the C field 'n_fingers'.
-func (recv *EventTouchpadSwipe) NFingers() int8 {
+func (recv *EventTouchpadSwipe) FieldNFingers() int8 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "n_fingers")
 	value := argValue.Int8()
 	return value
 }
 
+// NFingers sets the value of the C field 'n_fingers'.
+func (recv *EventTouchpadSwipe) SetFieldNFingers(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "n_fingers", argValue)
+}
+
 // Time returns the C field 'time'.
-func (recv *EventTouchpadSwipe) Time() uint32 {
+func (recv *EventTouchpadSwipe) FieldTime() uint32 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *EventTouchpadSwipe) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "time", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *EventTouchpadSwipe) X() float64 {
+func (recv *EventTouchpadSwipe) FieldX() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "x")
 	value := argValue.Float64()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *EventTouchpadSwipe) SetFieldX(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *EventTouchpadSwipe) Y() float64 {
+func (recv *EventTouchpadSwipe) FieldY() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "y")
 	value := argValue.Float64()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *EventTouchpadSwipe) SetFieldY(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "y", argValue)
+}
+
 // Dx returns the C field 'dx'.
-func (recv *EventTouchpadSwipe) Dx() float64 {
+func (recv *EventTouchpadSwipe) FieldDx() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "dx")
 	value := argValue.Float64()
 	return value
 }
 
+// Dx sets the value of the C field 'dx'.
+func (recv *EventTouchpadSwipe) SetFieldDx(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "dx", argValue)
+}
+
 // Dy returns the C field 'dy'.
-func (recv *EventTouchpadSwipe) Dy() float64 {
+func (recv *EventTouchpadSwipe) FieldDy() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "dy")
 	value := argValue.Float64()
 	return value
 }
 
+// Dy sets the value of the C field 'dy'.
+func (recv *EventTouchpadSwipe) SetFieldDy(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "dy", argValue)
+}
+
 // XRoot returns the C field 'x_root'.
-func (recv *EventTouchpadSwipe) XRoot() float64 {
+func (recv *EventTouchpadSwipe) FieldXRoot() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "x_root")
 	value := argValue.Float64()
 	return value
 }
 
+// XRoot sets the value of the C field 'x_root'.
+func (recv *EventTouchpadSwipe) SetFieldXRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "x_root", argValue)
+}
+
 // YRoot returns the C field 'y_root'.
-func (recv *EventTouchpadSwipe) YRoot() float64 {
+func (recv *EventTouchpadSwipe) FieldYRoot() float64 {
 	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "y_root")
 	value := argValue.Float64()
 	return value
 }
 
+// YRoot sets the value of the C field 'y_root'.
+func (recv *EventTouchpadSwipe) SetFieldYRoot(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "y_root", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
 
 // EventTouchpadSwipeStruct creates an uninitialised EventTouchpadSwipe.
 func EventTouchpadSwipeStruct() *EventTouchpadSwipe {
@@ -2030,16 +3036,29 @@ type EventVisibility struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventVisibility) SendEvent() int8 {
+func (recv *EventVisibility) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventVisibilityStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventVisibility) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventVisibilityStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'state' : for field getter : no Go type for 'VisibilityState'
+
+// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'VisibilityState'
 
 // EventVisibilityStruct creates an uninitialised EventVisibility.
 func EventVisibilityStruct() *EventVisibility {
@@ -2073,18 +3092,33 @@ type EventWindowState struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'EventType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
+
 // UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
 
+// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+
 // SendEvent returns the C field 'send_event'.
-func (recv *EventWindowState) SendEvent() int8 {
+func (recv *EventWindowState) FieldSendEvent() int8 {
 	argValue := gi.FieldGet(eventWindowStateStruct, recv.native, "send_event")
 	value := argValue.Int8()
 	return value
 }
 
+// SendEvent sets the value of the C field 'send_event'.
+func (recv *EventWindowState) SetFieldSendEvent(value int8) {
+	var argValue gi.Argument
+	argValue.SetInt8(value)
+	gi.FieldSet(eventWindowStateStruct, recv.native, "send_event", argValue)
+}
+
 // UNSUPPORTED : C value 'changed_mask' : for field getter : no Go type for 'WindowState'
 
+// UNSUPPORTED : C value 'changed_mask' : for field setter : no Go type for 'WindowState'
+
 // UNSUPPORTED : C value 'new_window_state' : for field getter : no Go type for 'WindowState'
+
+// UNSUPPORTED : C value 'new_window_state' : for field setter : no Go type for 'WindowState'
 
 // EventWindowStateStruct creates an uninitialised EventWindowState.
 func EventWindowStateStruct() *EventWindowState {
@@ -2459,76 +3493,148 @@ type Geometry struct {
 }
 
 // MinWidth returns the C field 'min_width'.
-func (recv *Geometry) MinWidth() int32 {
+func (recv *Geometry) FieldMinWidth() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "min_width")
 	value := argValue.Int32()
 	return value
 }
 
+// MinWidth sets the value of the C field 'min_width'.
+func (recv *Geometry) SetFieldMinWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "min_width", argValue)
+}
+
 // MinHeight returns the C field 'min_height'.
-func (recv *Geometry) MinHeight() int32 {
+func (recv *Geometry) FieldMinHeight() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "min_height")
 	value := argValue.Int32()
 	return value
 }
 
+// MinHeight sets the value of the C field 'min_height'.
+func (recv *Geometry) SetFieldMinHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "min_height", argValue)
+}
+
 // MaxWidth returns the C field 'max_width'.
-func (recv *Geometry) MaxWidth() int32 {
+func (recv *Geometry) FieldMaxWidth() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "max_width")
 	value := argValue.Int32()
 	return value
 }
 
+// MaxWidth sets the value of the C field 'max_width'.
+func (recv *Geometry) SetFieldMaxWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "max_width", argValue)
+}
+
 // MaxHeight returns the C field 'max_height'.
-func (recv *Geometry) MaxHeight() int32 {
+func (recv *Geometry) FieldMaxHeight() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "max_height")
 	value := argValue.Int32()
 	return value
 }
 
+// MaxHeight sets the value of the C field 'max_height'.
+func (recv *Geometry) SetFieldMaxHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "max_height", argValue)
+}
+
 // BaseWidth returns the C field 'base_width'.
-func (recv *Geometry) BaseWidth() int32 {
+func (recv *Geometry) FieldBaseWidth() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "base_width")
 	value := argValue.Int32()
 	return value
 }
 
+// BaseWidth sets the value of the C field 'base_width'.
+func (recv *Geometry) SetFieldBaseWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "base_width", argValue)
+}
+
 // BaseHeight returns the C field 'base_height'.
-func (recv *Geometry) BaseHeight() int32 {
+func (recv *Geometry) FieldBaseHeight() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "base_height")
 	value := argValue.Int32()
 	return value
 }
 
+// BaseHeight sets the value of the C field 'base_height'.
+func (recv *Geometry) SetFieldBaseHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "base_height", argValue)
+}
+
 // WidthInc returns the C field 'width_inc'.
-func (recv *Geometry) WidthInc() int32 {
+func (recv *Geometry) FieldWidthInc() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "width_inc")
 	value := argValue.Int32()
 	return value
 }
 
+// WidthInc sets the value of the C field 'width_inc'.
+func (recv *Geometry) SetFieldWidthInc(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "width_inc", argValue)
+}
+
 // HeightInc returns the C field 'height_inc'.
-func (recv *Geometry) HeightInc() int32 {
+func (recv *Geometry) FieldHeightInc() int32 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "height_inc")
 	value := argValue.Int32()
 	return value
 }
 
+// HeightInc sets the value of the C field 'height_inc'.
+func (recv *Geometry) SetFieldHeightInc(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(geometryStruct, recv.native, "height_inc", argValue)
+}
+
 // MinAspect returns the C field 'min_aspect'.
-func (recv *Geometry) MinAspect() float64 {
+func (recv *Geometry) FieldMinAspect() float64 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "min_aspect")
 	value := argValue.Float64()
 	return value
 }
 
+// MinAspect sets the value of the C field 'min_aspect'.
+func (recv *Geometry) SetFieldMinAspect(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(geometryStruct, recv.native, "min_aspect", argValue)
+}
+
 // MaxAspect returns the C field 'max_aspect'.
-func (recv *Geometry) MaxAspect() float64 {
+func (recv *Geometry) FieldMaxAspect() float64 {
 	argValue := gi.FieldGet(geometryStruct, recv.native, "max_aspect")
 	value := argValue.Float64()
 	return value
 }
 
+// MaxAspect sets the value of the C field 'max_aspect'.
+func (recv *Geometry) SetFieldMaxAspect(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(geometryStruct, recv.native, "max_aspect", argValue)
+}
+
 // UNSUPPORTED : C value 'win_gravity' : for field getter : no Go type for 'Gravity'
+
+// UNSUPPORTED : C value 'win_gravity' : for field setter : no Go type for 'Gravity'
 
 // GeometryStruct creates an uninitialised Geometry.
 func GeometryStruct() *Geometry {
@@ -2561,24 +3667,45 @@ type KeymapKey struct {
 }
 
 // Keycode returns the C field 'keycode'.
-func (recv *KeymapKey) Keycode() uint32 {
+func (recv *KeymapKey) FieldKeycode() uint32 {
 	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "keycode")
 	value := argValue.Uint32()
 	return value
 }
 
+// Keycode sets the value of the C field 'keycode'.
+func (recv *KeymapKey) SetFieldKeycode(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(keymapKeyStruct, recv.native, "keycode", argValue)
+}
+
 // Group returns the C field 'group'.
-func (recv *KeymapKey) Group() int32 {
+func (recv *KeymapKey) FieldGroup() int32 {
 	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "group")
 	value := argValue.Int32()
 	return value
 }
 
+// Group sets the value of the C field 'group'.
+func (recv *KeymapKey) SetFieldGroup(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(keymapKeyStruct, recv.native, "group", argValue)
+}
+
 // Level returns the C field 'level'.
-func (recv *KeymapKey) Level() int32 {
+func (recv *KeymapKey) FieldLevel() int32 {
 	argValue := gi.FieldGet(keymapKeyStruct, recv.native, "level")
 	value := argValue.Int32()
 	return value
+}
+
+// Level sets the value of the C field 'level'.
+func (recv *KeymapKey) SetFieldLevel(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(keymapKeyStruct, recv.native, "level", argValue)
 }
 
 // KeymapKeyStruct creates an uninitialised KeymapKey.
@@ -2642,17 +3769,31 @@ type Point struct {
 }
 
 // X returns the C field 'x'.
-func (recv *Point) X() int32 {
+func (recv *Point) FieldX() int32 {
 	argValue := gi.FieldGet(pointStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *Point) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(pointStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *Point) Y() int32 {
+func (recv *Point) FieldY() int32 {
 	argValue := gi.FieldGet(pointStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
+}
+
+// Y sets the value of the C field 'y'.
+func (recv *Point) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(pointStruct, recv.native, "y", argValue)
 }
 
 // PointStruct creates an uninitialised Point.
@@ -2686,31 +3827,59 @@ type RGBA struct {
 }
 
 // Red returns the C field 'red'.
-func (recv *RGBA) Red() float64 {
+func (recv *RGBA) FieldRed() float64 {
 	argValue := gi.FieldGet(rGBAStruct, recv.native, "red")
 	value := argValue.Float64()
 	return value
 }
 
+// Red sets the value of the C field 'red'.
+func (recv *RGBA) SetFieldRed(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(rGBAStruct, recv.native, "red", argValue)
+}
+
 // Green returns the C field 'green'.
-func (recv *RGBA) Green() float64 {
+func (recv *RGBA) FieldGreen() float64 {
 	argValue := gi.FieldGet(rGBAStruct, recv.native, "green")
 	value := argValue.Float64()
 	return value
 }
 
+// Green sets the value of the C field 'green'.
+func (recv *RGBA) SetFieldGreen(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(rGBAStruct, recv.native, "green", argValue)
+}
+
 // Blue returns the C field 'blue'.
-func (recv *RGBA) Blue() float64 {
+func (recv *RGBA) FieldBlue() float64 {
 	argValue := gi.FieldGet(rGBAStruct, recv.native, "blue")
 	value := argValue.Float64()
 	return value
 }
 
+// Blue sets the value of the C field 'blue'.
+func (recv *RGBA) SetFieldBlue(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(rGBAStruct, recv.native, "blue", argValue)
+}
+
 // Alpha returns the C field 'alpha'.
-func (recv *RGBA) Alpha() float64 {
+func (recv *RGBA) FieldAlpha() float64 {
 	argValue := gi.FieldGet(rGBAStruct, recv.native, "alpha")
 	value := argValue.Float64()
 	return value
+}
+
+// Alpha sets the value of the C field 'alpha'.
+func (recv *RGBA) SetFieldAlpha(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(rGBAStruct, recv.native, "alpha", argValue)
 }
 
 var rGBACopyFunction *gi.Function
@@ -2934,31 +4103,59 @@ type Rectangle struct {
 }
 
 // X returns the C field 'x'.
-func (recv *Rectangle) X() int32 {
+func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *Rectangle) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *Rectangle) Y() int32 {
+func (recv *Rectangle) FieldY() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *Rectangle) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *Rectangle) Width() int32 {
+func (recv *Rectangle) FieldWidth() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *Rectangle) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *Rectangle) Height() int32 {
+func (recv *Rectangle) FieldHeight() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *Rectangle) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "height", argValue)
 }
 
 var rectangleEqualFunction *gi.Function
@@ -3093,13 +4290,22 @@ type TimeCoord struct {
 }
 
 // Time returns the C field 'time'.
-func (recv *TimeCoord) Time() uint32 {
+func (recv *TimeCoord) FieldTime() uint32 {
 	argValue := gi.FieldGet(timeCoordStruct, recv.native, "time")
 	value := argValue.Uint32()
 	return value
 }
 
+// Time sets the value of the C field 'time'.
+func (recv *TimeCoord) SetFieldTime(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(timeCoordStruct, recv.native, "time", argValue)
+}
+
 // UNSUPPORTED : C value 'axes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'axes' : for field setter : missing Type
 
 // TimeCoordStruct creates an uninitialised TimeCoord.
 func TimeCoordStruct() *TimeCoord {
@@ -3132,77 +4338,150 @@ type WindowAttr struct {
 }
 
 // Title returns the C field 'title'.
-func (recv *WindowAttr) Title() string {
+func (recv *WindowAttr) FieldTitle() string {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "title")
 	value := argValue.String(false)
 	return value
 }
 
+// Title sets the value of the C field 'title'.
+func (recv *WindowAttr) SetFieldTitle(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "title", argValue)
+}
+
 // EventMask returns the C field 'event_mask'.
-func (recv *WindowAttr) EventMask() int32 {
+func (recv *WindowAttr) FieldEventMask() int32 {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "event_mask")
 	value := argValue.Int32()
 	return value
 }
 
+// EventMask sets the value of the C field 'event_mask'.
+func (recv *WindowAttr) SetFieldEventMask(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "event_mask", argValue)
+}
+
 // X returns the C field 'x'.
-func (recv *WindowAttr) X() int32 {
+func (recv *WindowAttr) FieldX() int32 {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *WindowAttr) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *WindowAttr) Y() int32 {
+func (recv *WindowAttr) FieldY() int32 {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *WindowAttr) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *WindowAttr) Width() int32 {
+func (recv *WindowAttr) FieldWidth() int32 {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *WindowAttr) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *WindowAttr) Height() int32 {
+func (recv *WindowAttr) FieldHeight() int32 {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
 }
 
+// Height sets the value of the C field 'height'.
+func (recv *WindowAttr) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "height", argValue)
+}
+
 // UNSUPPORTED : C value 'wclass' : for field getter : no Go type for 'WindowWindowClass'
+
+// UNSUPPORTED : C value 'wclass' : for field setter : no Go type for 'WindowWindowClass'
 
 // UNSUPPORTED : C value 'visual' : for field getter : no Go type for 'Visual'
 
+// UNSUPPORTED : C value 'visual' : for field setter : no Go type for 'Visual'
+
 // UNSUPPORTED : C value 'window_type' : for field getter : no Go type for 'WindowType'
+
+// UNSUPPORTED : C value 'window_type' : for field setter : no Go type for 'WindowType'
 
 // UNSUPPORTED : C value 'cursor' : for field getter : no Go type for 'Cursor'
 
+// UNSUPPORTED : C value 'cursor' : for field setter : no Go type for 'Cursor'
+
 // WmclassName returns the C field 'wmclass_name'.
-func (recv *WindowAttr) WmclassName() string {
+func (recv *WindowAttr) FieldWmclassName() string {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "wmclass_name")
 	value := argValue.String(false)
 	return value
 }
 
+// WmclassName sets the value of the C field 'wmclass_name'.
+func (recv *WindowAttr) SetFieldWmclassName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "wmclass_name", argValue)
+}
+
 // WmclassClass returns the C field 'wmclass_class'.
-func (recv *WindowAttr) WmclassClass() string {
+func (recv *WindowAttr) FieldWmclassClass() string {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "wmclass_class")
 	value := argValue.String(false)
 	return value
 }
 
+// WmclassClass sets the value of the C field 'wmclass_class'.
+func (recv *WindowAttr) SetFieldWmclassClass(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "wmclass_class", argValue)
+}
+
 // OverrideRedirect returns the C field 'override_redirect'.
-func (recv *WindowAttr) OverrideRedirect() bool {
+func (recv *WindowAttr) FieldOverrideRedirect() bool {
 	argValue := gi.FieldGet(windowAttrStruct, recv.native, "override_redirect")
 	value := argValue.Boolean()
 	return value
 }
 
+// OverrideRedirect sets the value of the C field 'override_redirect'.
+func (recv *WindowAttr) SetFieldOverrideRedirect(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(windowAttrStruct, recv.native, "override_redirect", argValue)
+}
+
 // UNSUPPORTED : C value 'type_hint' : for field getter : no Go type for 'WindowTypeHint'
+
+// UNSUPPORTED : C value 'type_hint' : for field setter : no Go type for 'WindowTypeHint'
 
 // WindowAttrStruct creates an uninitialised WindowAttr.
 func WindowAttrStruct() *WindowAttr {
@@ -3236,29 +4515,55 @@ type WindowClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'pick_embedded_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pick_embedded_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'to_embedder' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'to_embedder' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'from_embedder' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'from_embedder' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_surface' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_surface' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gdk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gdk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gdk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gdk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gdk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gdk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gdk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gdk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gdk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gdk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gdk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gdk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gdk_reserved8' : for field setter : missing Type
 
 // WindowClassStruct creates an uninitialised WindowClass.
 func WindowClassStruct() *WindowClass {

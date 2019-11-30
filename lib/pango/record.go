@@ -25,46 +25,89 @@ type Analysis struct {
 
 // UNSUPPORTED : C value 'shape_engine' : for field getter : no Go type for 'EngineShape'
 
+// UNSUPPORTED : C value 'shape_engine' : for field setter : no Go type for 'EngineShape'
+
 // UNSUPPORTED : C value 'lang_engine' : for field getter : no Go type for 'EngineLang'
+
+// UNSUPPORTED : C value 'lang_engine' : for field setter : no Go type for 'EngineLang'
 
 // UNSUPPORTED : C value 'font' : for field getter : no Go type for 'Font'
 
+// UNSUPPORTED : C value 'font' : for field setter : no Go type for 'Font'
+
 // Level returns the C field 'level'.
-func (recv *Analysis) Level() uint8 {
+func (recv *Analysis) FieldLevel() uint8 {
 	argValue := gi.FieldGet(analysisStruct, recv.native, "level")
 	value := argValue.Uint8()
 	return value
 }
 
+// Level sets the value of the C field 'level'.
+func (recv *Analysis) SetFieldLevel(value uint8) {
+	var argValue gi.Argument
+	argValue.SetUint8(value)
+	gi.FieldSet(analysisStruct, recv.native, "level", argValue)
+}
+
 // Gravity returns the C field 'gravity'.
-func (recv *Analysis) Gravity() uint8 {
+func (recv *Analysis) FieldGravity() uint8 {
 	argValue := gi.FieldGet(analysisStruct, recv.native, "gravity")
 	value := argValue.Uint8()
 	return value
 }
 
+// Gravity sets the value of the C field 'gravity'.
+func (recv *Analysis) SetFieldGravity(value uint8) {
+	var argValue gi.Argument
+	argValue.SetUint8(value)
+	gi.FieldSet(analysisStruct, recv.native, "gravity", argValue)
+}
+
 // Flags returns the C field 'flags'.
-func (recv *Analysis) Flags() uint8 {
+func (recv *Analysis) FieldFlags() uint8 {
 	argValue := gi.FieldGet(analysisStruct, recv.native, "flags")
 	value := argValue.Uint8()
 	return value
 }
 
+// Flags sets the value of the C field 'flags'.
+func (recv *Analysis) SetFieldFlags(value uint8) {
+	var argValue gi.Argument
+	argValue.SetUint8(value)
+	gi.FieldSet(analysisStruct, recv.native, "flags", argValue)
+}
+
 // Script returns the C field 'script'.
-func (recv *Analysis) Script() uint8 {
+func (recv *Analysis) FieldScript() uint8 {
 	argValue := gi.FieldGet(analysisStruct, recv.native, "script")
 	value := argValue.Uint8()
 	return value
 }
 
+// Script sets the value of the C field 'script'.
+func (recv *Analysis) SetFieldScript(value uint8) {
+	var argValue gi.Argument
+	argValue.SetUint8(value)
+	gi.FieldSet(analysisStruct, recv.native, "script", argValue)
+}
+
 // Language returns the C field 'language'.
-func (recv *Analysis) Language() *Language {
+func (recv *Analysis) FieldLanguage() *Language {
 	argValue := gi.FieldGet(analysisStruct, recv.native, "language")
 	value := &Language{native: argValue.Pointer()}
 	return value
 }
 
+// Language sets the value of the C field 'language'.
+func (recv *Analysis) SetFieldLanguage(value *Language) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(analysisStruct, recv.native, "language", argValue)
+}
+
 // UNSUPPORTED : C value 'extra_attrs' : for field getter : no Go type for 'GLib.SList'
+
+// UNSUPPORTED : C value 'extra_attrs' : for field setter : no Go type for 'GLib.SList'
 
 // AnalysisStruct creates an uninitialised Analysis.
 func AnalysisStruct() *Analysis {
@@ -98,11 +141,19 @@ type AttrClass struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'AttrType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'AttrType'
+
 // UNSUPPORTED : C value 'copy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'destroy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'destroy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field setter : missing Type
 
 // AttrClassStruct creates an uninitialised AttrClass.
 func AttrClassStruct() *AttrClass {
@@ -135,17 +186,31 @@ type AttrColor struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrColor) Attr() *Attribute {
+func (recv *AttrColor) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrColorStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrColor) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrColorStruct, recv.native, "attr", argValue)
+}
+
 // Color returns the C field 'color'.
-func (recv *AttrColor) Color() *Color {
+func (recv *AttrColor) FieldColor() *Color {
 	argValue := gi.FieldGet(attrColorStruct, recv.native, "color")
 	value := &Color{native: argValue.Pointer()}
 	return value
+}
+
+// Color sets the value of the C field 'color'.
+func (recv *AttrColor) SetFieldColor(value *Color) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrColorStruct, recv.native, "color", argValue)
 }
 
 // AttrColorStruct creates an uninitialised AttrColor.
@@ -179,17 +244,31 @@ type AttrFloat struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrFloat) Attr() *Attribute {
+func (recv *AttrFloat) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrFloatStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrFloat) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrFloatStruct, recv.native, "attr", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *AttrFloat) Value() float64 {
+func (recv *AttrFloat) FieldValue() float64 {
 	argValue := gi.FieldGet(attrFloatStruct, recv.native, "value")
 	value := argValue.Float64()
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *AttrFloat) SetFieldValue(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(attrFloatStruct, recv.native, "value", argValue)
 }
 
 // AttrFloatStruct creates an uninitialised AttrFloat.
@@ -223,17 +302,31 @@ type AttrFontDesc struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrFontDesc) Attr() *Attribute {
+func (recv *AttrFontDesc) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrFontDescStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrFontDesc) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrFontDescStruct, recv.native, "attr", argValue)
+}
+
 // Desc returns the C field 'desc'.
-func (recv *AttrFontDesc) Desc() *FontDescription {
+func (recv *AttrFontDesc) FieldDesc() *FontDescription {
 	argValue := gi.FieldGet(attrFontDescStruct, recv.native, "desc")
 	value := &FontDescription{native: argValue.Pointer()}
 	return value
+}
+
+// Desc sets the value of the C field 'desc'.
+func (recv *AttrFontDesc) SetFieldDesc(value *FontDescription) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrFontDescStruct, recv.native, "desc", argValue)
 }
 
 // AttrFontDescStruct creates an uninitialised AttrFontDesc.
@@ -267,17 +360,31 @@ type AttrFontFeatures struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrFontFeatures) Attr() *Attribute {
+func (recv *AttrFontFeatures) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrFontFeaturesStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrFontFeatures) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrFontFeaturesStruct, recv.native, "attr", argValue)
+}
+
 // Features returns the C field 'features'.
-func (recv *AttrFontFeatures) Features() string {
+func (recv *AttrFontFeatures) FieldFeatures() string {
 	argValue := gi.FieldGet(attrFontFeaturesStruct, recv.native, "features")
 	value := argValue.String(false)
 	return value
+}
+
+// Features sets the value of the C field 'features'.
+func (recv *AttrFontFeatures) SetFieldFeatures(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(attrFontFeaturesStruct, recv.native, "features", argValue)
 }
 
 // AttrFontFeaturesStruct creates an uninitialised AttrFontFeatures.
@@ -311,17 +418,31 @@ type AttrInt struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrInt) Attr() *Attribute {
+func (recv *AttrInt) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrIntStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrInt) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrIntStruct, recv.native, "attr", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *AttrInt) Value() int32 {
+func (recv *AttrInt) FieldValue() int32 {
 	argValue := gi.FieldGet(attrIntStruct, recv.native, "value")
 	value := argValue.Int32()
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *AttrInt) SetFieldValue(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(attrIntStruct, recv.native, "value", argValue)
 }
 
 // AttrIntStruct creates an uninitialised AttrInt.
@@ -516,17 +637,31 @@ type AttrLanguage struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrLanguage) Attr() *Attribute {
+func (recv *AttrLanguage) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrLanguageStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrLanguage) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrLanguageStruct, recv.native, "attr", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *AttrLanguage) Value() *Language {
+func (recv *AttrLanguage) FieldValue() *Language {
 	argValue := gi.FieldGet(attrLanguageStruct, recv.native, "value")
 	value := &Language{native: argValue.Pointer()}
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *AttrLanguage) SetFieldValue(value *Language) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrLanguageStruct, recv.native, "value", argValue)
 }
 
 // AttrLanguageStruct creates an uninitialised AttrLanguage.
@@ -849,31 +984,58 @@ type AttrShape struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrShape) Attr() *Attribute {
+func (recv *AttrShape) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrShapeStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrShape) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrShapeStruct, recv.native, "attr", argValue)
+}
+
 // InkRect returns the C field 'ink_rect'.
-func (recv *AttrShape) InkRect() *Rectangle {
+func (recv *AttrShape) FieldInkRect() *Rectangle {
 	argValue := gi.FieldGet(attrShapeStruct, recv.native, "ink_rect")
 	value := &Rectangle{native: argValue.Pointer()}
 	return value
 }
 
+// InkRect sets the value of the C field 'ink_rect'.
+func (recv *AttrShape) SetFieldInkRect(value *Rectangle) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrShapeStruct, recv.native, "ink_rect", argValue)
+}
+
 // LogicalRect returns the C field 'logical_rect'.
-func (recv *AttrShape) LogicalRect() *Rectangle {
+func (recv *AttrShape) FieldLogicalRect() *Rectangle {
 	argValue := gi.FieldGet(attrShapeStruct, recv.native, "logical_rect")
 	value := &Rectangle{native: argValue.Pointer()}
 	return value
 }
 
+// LogicalRect sets the value of the C field 'logical_rect'.
+func (recv *AttrShape) SetFieldLogicalRect(value *Rectangle) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrShapeStruct, recv.native, "logical_rect", argValue)
+}
+
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+
+// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'copy_func' : for field getter : no Go type for 'AttrDataCopyFunc'
 
+// UNSUPPORTED : C value 'copy_func' : for field setter : no Go type for 'AttrDataCopyFunc'
+
 // UNSUPPORTED : C value 'destroy_func' : for field getter : no Go type for 'GLib.DestroyNotify'
+
+// UNSUPPORTED : C value 'destroy_func' : for field setter : no Go type for 'GLib.DestroyNotify'
 
 // AttrShapeStruct creates an uninitialised AttrShape.
 func AttrShapeStruct() *AttrShape {
@@ -906,24 +1068,45 @@ type AttrSize struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrSize) Attr() *Attribute {
+func (recv *AttrSize) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrSizeStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrSize) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrSizeStruct, recv.native, "attr", argValue)
+}
+
 // Size returns the C field 'size'.
-func (recv *AttrSize) Size() int32 {
+func (recv *AttrSize) FieldSize() int32 {
 	argValue := gi.FieldGet(attrSizeStruct, recv.native, "size")
 	value := argValue.Int32()
 	return value
 }
 
+// Size sets the value of the C field 'size'.
+func (recv *AttrSize) SetFieldSize(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(attrSizeStruct, recv.native, "size", argValue)
+}
+
 // Absolute returns the C field 'absolute'.
-func (recv *AttrSize) Absolute() uint32 {
+func (recv *AttrSize) FieldAbsolute() uint32 {
 	argValue := gi.FieldGet(attrSizeStruct, recv.native, "absolute")
 	value := argValue.Uint32()
 	return value
+}
+
+// Absolute sets the value of the C field 'absolute'.
+func (recv *AttrSize) SetFieldAbsolute(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(attrSizeStruct, recv.native, "absolute", argValue)
 }
 
 // AttrSizeStruct creates an uninitialised AttrSize.
@@ -957,17 +1140,31 @@ type AttrString struct {
 }
 
 // Attr returns the C field 'attr'.
-func (recv *AttrString) Attr() *Attribute {
+func (recv *AttrString) FieldAttr() *Attribute {
 	argValue := gi.FieldGet(attrStringStruct, recv.native, "attr")
 	value := &Attribute{native: argValue.Pointer()}
 	return value
 }
 
+// Attr sets the value of the C field 'attr'.
+func (recv *AttrString) SetFieldAttr(value *Attribute) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attrStringStruct, recv.native, "attr", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *AttrString) Value() string {
+func (recv *AttrString) FieldValue() string {
 	argValue := gi.FieldGet(attrStringStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *AttrString) SetFieldValue(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(attrStringStruct, recv.native, "value", argValue)
 }
 
 // AttrStringStruct creates an uninitialised AttrString.
@@ -1001,24 +1198,45 @@ type Attribute struct {
 }
 
 // Klass returns the C field 'klass'.
-func (recv *Attribute) Klass() *AttrClass {
+func (recv *Attribute) FieldKlass() *AttrClass {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "klass")
 	value := &AttrClass{native: argValue.Pointer()}
 	return value
 }
 
+// Klass sets the value of the C field 'klass'.
+func (recv *Attribute) SetFieldKlass(value *AttrClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(attributeStruct, recv.native, "klass", argValue)
+}
+
 // StartIndex returns the C field 'start_index'.
-func (recv *Attribute) StartIndex() uint32 {
+func (recv *Attribute) FieldStartIndex() uint32 {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "start_index")
 	value := argValue.Uint32()
 	return value
 }
 
+// StartIndex sets the value of the C field 'start_index'.
+func (recv *Attribute) SetFieldStartIndex(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(attributeStruct, recv.native, "start_index", argValue)
+}
+
 // EndIndex returns the C field 'end_index'.
-func (recv *Attribute) EndIndex() uint32 {
+func (recv *Attribute) FieldEndIndex() uint32 {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "end_index")
 	value := argValue.Uint32()
 	return value
+}
+
+// EndIndex sets the value of the C field 'end_index'.
+func (recv *Attribute) SetFieldEndIndex(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(attributeStruct, recv.native, "end_index", argValue)
 }
 
 var attributeCopyFunction *gi.Function
@@ -1174,24 +1392,45 @@ type Color struct {
 }
 
 // Red returns the C field 'red'.
-func (recv *Color) Red() uint16 {
+func (recv *Color) FieldRed() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "red")
 	value := argValue.Uint16()
 	return value
 }
 
+// Red sets the value of the C field 'red'.
+func (recv *Color) SetFieldRed(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "red", argValue)
+}
+
 // Green returns the C field 'green'.
-func (recv *Color) Green() uint16 {
+func (recv *Color) FieldGreen() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "green")
 	value := argValue.Uint16()
 	return value
 }
 
+// Green sets the value of the C field 'green'.
+func (recv *Color) SetFieldGreen(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "green", argValue)
+}
+
 // Blue returns the C field 'blue'.
-func (recv *Color) Blue() uint16 {
+func (recv *Color) FieldBlue() uint16 {
 	argValue := gi.FieldGet(colorStruct, recv.native, "blue")
 	value := argValue.Uint16()
 	return value
+}
+
+// Blue sets the value of the C field 'blue'.
+func (recv *Color) SetFieldBlue(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(colorStruct, recv.native, "blue", argValue)
 }
 
 var colorCopyFunction *gi.Function
@@ -1567,38 +1806,73 @@ type EngineInfo struct {
 }
 
 // Id returns the C field 'id'.
-func (recv *EngineInfo) Id() string {
+func (recv *EngineInfo) FieldId() string {
 	argValue := gi.FieldGet(engineInfoStruct, recv.native, "id")
 	value := argValue.String(false)
 	return value
 }
 
+// Id sets the value of the C field 'id'.
+func (recv *EngineInfo) SetFieldId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(engineInfoStruct, recv.native, "id", argValue)
+}
+
 // EngineType returns the C field 'engine_type'.
-func (recv *EngineInfo) EngineType() string {
+func (recv *EngineInfo) FieldEngineType() string {
 	argValue := gi.FieldGet(engineInfoStruct, recv.native, "engine_type")
 	value := argValue.String(false)
 	return value
 }
 
+// EngineType sets the value of the C field 'engine_type'.
+func (recv *EngineInfo) SetFieldEngineType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(engineInfoStruct, recv.native, "engine_type", argValue)
+}
+
 // RenderType returns the C field 'render_type'.
-func (recv *EngineInfo) RenderType() string {
+func (recv *EngineInfo) FieldRenderType() string {
 	argValue := gi.FieldGet(engineInfoStruct, recv.native, "render_type")
 	value := argValue.String(false)
 	return value
 }
 
+// RenderType sets the value of the C field 'render_type'.
+func (recv *EngineInfo) SetFieldRenderType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(engineInfoStruct, recv.native, "render_type", argValue)
+}
+
 // Scripts returns the C field 'scripts'.
-func (recv *EngineInfo) Scripts() *EngineScriptInfo {
+func (recv *EngineInfo) FieldScripts() *EngineScriptInfo {
 	argValue := gi.FieldGet(engineInfoStruct, recv.native, "scripts")
 	value := &EngineScriptInfo{native: argValue.Pointer()}
 	return value
 }
 
+// Scripts sets the value of the C field 'scripts'.
+func (recv *EngineInfo) SetFieldScripts(value *EngineScriptInfo) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(engineInfoStruct, recv.native, "scripts", argValue)
+}
+
 // NScripts returns the C field 'n_scripts'.
-func (recv *EngineInfo) NScripts() int32 {
+func (recv *EngineInfo) FieldNScripts() int32 {
 	argValue := gi.FieldGet(engineInfoStruct, recv.native, "n_scripts")
 	value := argValue.Int32()
 	return value
+}
+
+// NScripts sets the value of the C field 'n_scripts'.
+func (recv *EngineInfo) SetFieldNScripts(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(engineInfoStruct, recv.native, "n_scripts", argValue)
 }
 
 // EngineInfoStruct creates an uninitialised EngineInfo.
@@ -1633,6 +1907,8 @@ type EngineLangClass struct {
 
 // UNSUPPORTED : C value 'script_break' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'script_break' : for field setter : missing Type
+
 // EngineLangClassStruct creates an uninitialised EngineLangClass.
 func EngineLangClassStruct() *EngineLangClass {
 	err := engineLangClassStruct_Set()
@@ -1665,11 +1941,20 @@ type EngineScriptInfo struct {
 
 // UNSUPPORTED : C value 'script' : for field getter : no Go type for 'Script'
 
+// UNSUPPORTED : C value 'script' : for field setter : no Go type for 'Script'
+
 // Langs returns the C field 'langs'.
-func (recv *EngineScriptInfo) Langs() string {
+func (recv *EngineScriptInfo) FieldLangs() string {
 	argValue := gi.FieldGet(engineScriptInfoStruct, recv.native, "langs")
 	value := argValue.String(false)
 	return value
+}
+
+// Langs sets the value of the C field 'langs'.
+func (recv *EngineScriptInfo) SetFieldLangs(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(engineScriptInfoStruct, recv.native, "langs", argValue)
 }
 
 // EngineScriptInfoStruct creates an uninitialised EngineScriptInfo.
@@ -1704,7 +1989,11 @@ type EngineShapeClass struct {
 
 // UNSUPPORTED : C value 'script_shape' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'script_shape' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'covers' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'covers' : for field setter : missing Type
 
 // EngineShapeClassStruct creates an uninitialised EngineShapeClass.
 func EngineShapeClassStruct() *EngineShapeClass {
@@ -1738,23 +2027,43 @@ type FontClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'describe' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'describe' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_coverage' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_coverage' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'find_shaper' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_shaper' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_glyph_extents' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_glyph_extents' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_metrics' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_metrics' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_font_map' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_font_map' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'describe_absolute' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'describe_absolute' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_pango_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved2' : for field setter : missing Type
 
 // FontClassStruct creates an uninitialised FontClass.
 func FontClassStruct() *FontClass {
@@ -2474,17 +2783,31 @@ type FontFaceClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_face_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_face_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'describe' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'describe' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'list_sizes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'list_sizes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_synthesized' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_synthesized' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved4' : for field setter : missing Type
 
 // FontFaceClassStruct creates an uninitialised FontFaceClass.
 func FontFaceClassStruct() *FontFaceClass {
@@ -2518,17 +2841,31 @@ type FontFamilyClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'list_faces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'list_faces' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_monospace' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_monospace' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_pango_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved4' : for field setter : missing Type
 
 // FontFamilyClassStruct creates an uninitialised FontFamilyClass.
 func FontFamilyClassStruct() *FontFamilyClass {
@@ -2562,26 +2899,49 @@ type FontMapClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'load_font' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_font' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'list_families' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'list_families' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'load_fontset' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'load_fontset' : for field setter : missing Type
+
 // ShapeEngineType returns the C field 'shape_engine_type'.
-func (recv *FontMapClass) ShapeEngineType() string {
+func (recv *FontMapClass) FieldShapeEngineType() string {
 	argValue := gi.FieldGet(fontMapClassStruct, recv.native, "shape_engine_type")
 	value := argValue.String(false)
 	return value
 }
 
+// ShapeEngineType sets the value of the C field 'shape_engine_type'.
+func (recv *FontMapClass) SetFieldShapeEngineType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fontMapClassStruct, recv.native, "shape_engine_type", argValue)
+}
+
 // UNSUPPORTED : C value 'get_serial' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_serial' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved2' : for field setter : missing Type
 
 // FontMapClassStruct creates an uninitialised FontMapClass.
 func FontMapClassStruct() *FontMapClass {
@@ -2976,21 +3336,39 @@ type FontsetClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_font' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_font' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_metrics' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_metrics' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_language' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_language' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'foreach' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'foreach' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_pango_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved4' : for field setter : missing Type
 
 // FontsetClassStruct creates an uninitialised FontsetClass.
 func FontsetClassStruct() *FontsetClass {
@@ -3053,24 +3431,45 @@ type GlyphGeometry struct {
 }
 
 // Width returns the C field 'width'.
-func (recv *GlyphGeometry) Width() GlyphUnit {
+func (recv *GlyphGeometry) FieldWidth() GlyphUnit {
 	argValue := gi.FieldGet(glyphGeometryStruct, recv.native, "width")
 	value := GlyphUnit(argValue.Int32())
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *GlyphGeometry) SetFieldWidth(value GlyphUnit) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(glyphGeometryStruct, recv.native, "width", argValue)
+}
+
 // XOffset returns the C field 'x_offset'.
-func (recv *GlyphGeometry) XOffset() GlyphUnit {
+func (recv *GlyphGeometry) FieldXOffset() GlyphUnit {
 	argValue := gi.FieldGet(glyphGeometryStruct, recv.native, "x_offset")
 	value := GlyphUnit(argValue.Int32())
 	return value
 }
 
+// XOffset sets the value of the C field 'x_offset'.
+func (recv *GlyphGeometry) SetFieldXOffset(value GlyphUnit) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(glyphGeometryStruct, recv.native, "x_offset", argValue)
+}
+
 // YOffset returns the C field 'y_offset'.
-func (recv *GlyphGeometry) YOffset() GlyphUnit {
+func (recv *GlyphGeometry) FieldYOffset() GlyphUnit {
 	argValue := gi.FieldGet(glyphGeometryStruct, recv.native, "y_offset")
 	value := GlyphUnit(argValue.Int32())
 	return value
+}
+
+// YOffset sets the value of the C field 'y_offset'.
+func (recv *GlyphGeometry) SetFieldYOffset(value GlyphUnit) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(glyphGeometryStruct, recv.native, "y_offset", argValue)
 }
 
 // GlyphGeometryStruct creates an uninitialised GlyphGeometry.
@@ -3104,24 +3503,45 @@ type GlyphInfo struct {
 }
 
 // Glyph returns the C field 'glyph'.
-func (recv *GlyphInfo) Glyph() Glyph {
+func (recv *GlyphInfo) FieldGlyph() Glyph {
 	argValue := gi.FieldGet(glyphInfoStruct, recv.native, "glyph")
 	value := Glyph(argValue.Uint32())
 	return value
 }
 
+// Glyph sets the value of the C field 'glyph'.
+func (recv *GlyphInfo) SetFieldGlyph(value Glyph) {
+	var argValue gi.Argument
+	argValue.SetUint32(uint32(value))
+	gi.FieldSet(glyphInfoStruct, recv.native, "glyph", argValue)
+}
+
 // Geometry returns the C field 'geometry'.
-func (recv *GlyphInfo) Geometry() *GlyphGeometry {
+func (recv *GlyphInfo) FieldGeometry() *GlyphGeometry {
 	argValue := gi.FieldGet(glyphInfoStruct, recv.native, "geometry")
 	value := &GlyphGeometry{native: argValue.Pointer()}
 	return value
 }
 
+// Geometry sets the value of the C field 'geometry'.
+func (recv *GlyphInfo) SetFieldGeometry(value *GlyphGeometry) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(glyphInfoStruct, recv.native, "geometry", argValue)
+}
+
 // Attr returns the C field 'attr'.
-func (recv *GlyphInfo) Attr() *GlyphVisAttr {
+func (recv *GlyphInfo) FieldAttr() *GlyphVisAttr {
 	argValue := gi.FieldGet(glyphInfoStruct, recv.native, "attr")
 	value := &GlyphVisAttr{native: argValue.Pointer()}
 	return value
+}
+
+// Attr sets the value of the C field 'attr'.
+func (recv *GlyphInfo) SetFieldAttr(value *GlyphVisAttr) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(glyphInfoStruct, recv.native, "attr", argValue)
 }
 
 // GlyphInfoStruct creates an uninitialised GlyphInfo.
@@ -3155,17 +3575,31 @@ type GlyphItem struct {
 }
 
 // Item returns the C field 'item'.
-func (recv *GlyphItem) Item() *Item {
+func (recv *GlyphItem) FieldItem() *Item {
 	argValue := gi.FieldGet(glyphItemStruct, recv.native, "item")
 	value := &Item{native: argValue.Pointer()}
 	return value
 }
 
+// Item sets the value of the C field 'item'.
+func (recv *GlyphItem) SetFieldItem(value *Item) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(glyphItemStruct, recv.native, "item", argValue)
+}
+
 // Glyphs returns the C field 'glyphs'.
-func (recv *GlyphItem) Glyphs() *GlyphString {
+func (recv *GlyphItem) FieldGlyphs() *GlyphString {
 	argValue := gi.FieldGet(glyphItemStruct, recv.native, "glyphs")
 	value := &GlyphString{native: argValue.Pointer()}
 	return value
+}
+
+// Glyphs sets the value of the C field 'glyphs'.
+func (recv *GlyphItem) SetFieldGlyphs(value *GlyphString) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(glyphItemStruct, recv.native, "glyphs", argValue)
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
@@ -3299,59 +3733,115 @@ type GlyphItemIter struct {
 }
 
 // GlyphItem returns the C field 'glyph_item'.
-func (recv *GlyphItemIter) GlyphItem() *GlyphItem {
+func (recv *GlyphItemIter) FieldGlyphItem() *GlyphItem {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "glyph_item")
 	value := &GlyphItem{native: argValue.Pointer()}
 	return value
 }
 
+// GlyphItem sets the value of the C field 'glyph_item'.
+func (recv *GlyphItemIter) SetFieldGlyphItem(value *GlyphItem) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "glyph_item", argValue)
+}
+
 // Text returns the C field 'text'.
-func (recv *GlyphItemIter) Text() string {
+func (recv *GlyphItemIter) FieldText() string {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "text")
 	value := argValue.String(false)
 	return value
 }
 
+// Text sets the value of the C field 'text'.
+func (recv *GlyphItemIter) SetFieldText(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "text", argValue)
+}
+
 // StartGlyph returns the C field 'start_glyph'.
-func (recv *GlyphItemIter) StartGlyph() int32 {
+func (recv *GlyphItemIter) FieldStartGlyph() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "start_glyph")
 	value := argValue.Int32()
 	return value
 }
 
+// StartGlyph sets the value of the C field 'start_glyph'.
+func (recv *GlyphItemIter) SetFieldStartGlyph(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "start_glyph", argValue)
+}
+
 // StartIndex returns the C field 'start_index'.
-func (recv *GlyphItemIter) StartIndex() int32 {
+func (recv *GlyphItemIter) FieldStartIndex() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "start_index")
 	value := argValue.Int32()
 	return value
 }
 
+// StartIndex sets the value of the C field 'start_index'.
+func (recv *GlyphItemIter) SetFieldStartIndex(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "start_index", argValue)
+}
+
 // StartChar returns the C field 'start_char'.
-func (recv *GlyphItemIter) StartChar() int32 {
+func (recv *GlyphItemIter) FieldStartChar() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "start_char")
 	value := argValue.Int32()
 	return value
 }
 
+// StartChar sets the value of the C field 'start_char'.
+func (recv *GlyphItemIter) SetFieldStartChar(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "start_char", argValue)
+}
+
 // EndGlyph returns the C field 'end_glyph'.
-func (recv *GlyphItemIter) EndGlyph() int32 {
+func (recv *GlyphItemIter) FieldEndGlyph() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "end_glyph")
 	value := argValue.Int32()
 	return value
 }
 
+// EndGlyph sets the value of the C field 'end_glyph'.
+func (recv *GlyphItemIter) SetFieldEndGlyph(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "end_glyph", argValue)
+}
+
 // EndIndex returns the C field 'end_index'.
-func (recv *GlyphItemIter) EndIndex() int32 {
+func (recv *GlyphItemIter) FieldEndIndex() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "end_index")
 	value := argValue.Int32()
 	return value
 }
 
+// EndIndex sets the value of the C field 'end_index'.
+func (recv *GlyphItemIter) SetFieldEndIndex(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "end_index", argValue)
+}
+
 // EndChar returns the C field 'end_char'.
-func (recv *GlyphItemIter) EndChar() int32 {
+func (recv *GlyphItemIter) FieldEndChar() int32 {
 	argValue := gi.FieldGet(glyphItemIterStruct, recv.native, "end_char")
 	value := argValue.Int32()
 	return value
+}
+
+// EndChar sets the value of the C field 'end_char'.
+func (recv *GlyphItemIter) SetFieldEndChar(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphItemIterStruct, recv.native, "end_char", argValue)
 }
 
 var glyphItemIterCopyFunction *gi.Function
@@ -3577,19 +4067,35 @@ type GlyphString struct {
 }
 
 // NumGlyphs returns the C field 'num_glyphs'.
-func (recv *GlyphString) NumGlyphs() int32 {
+func (recv *GlyphString) FieldNumGlyphs() int32 {
 	argValue := gi.FieldGet(glyphStringStruct, recv.native, "num_glyphs")
 	value := argValue.Int32()
 	return value
 }
 
+// NumGlyphs sets the value of the C field 'num_glyphs'.
+func (recv *GlyphString) SetFieldNumGlyphs(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphStringStruct, recv.native, "num_glyphs", argValue)
+}
+
 // UNSUPPORTED : C value 'glyphs' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'glyphs' : for field setter : missing Type
+
 // LogClusters returns the C field 'log_clusters'.
-func (recv *GlyphString) LogClusters() int32 {
+func (recv *GlyphString) FieldLogClusters() int32 {
 	argValue := gi.FieldGet(glyphStringStruct, recv.native, "log_clusters")
 	value := argValue.Int32()
 	return value
+}
+
+// LogClusters sets the value of the C field 'log_clusters'.
+func (recv *GlyphString) SetFieldLogClusters(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(glyphStringStruct, recv.native, "log_clusters", argValue)
 }
 
 var glyphStringNewFunction *gi.Function
@@ -3839,10 +4345,17 @@ type GlyphVisAttr struct {
 }
 
 // IsClusterStart returns the C field 'is_cluster_start'.
-func (recv *GlyphVisAttr) IsClusterStart() uint32 {
+func (recv *GlyphVisAttr) FieldIsClusterStart() uint32 {
 	argValue := gi.FieldGet(glyphVisAttrStruct, recv.native, "is_cluster_start")
 	value := argValue.Uint32()
 	return value
+}
+
+// IsClusterStart sets the value of the C field 'is_cluster_start'.
+func (recv *GlyphVisAttr) SetFieldIsClusterStart(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(glyphVisAttrStruct, recv.native, "is_cluster_start", argValue)
 }
 
 // GlyphVisAttrStruct creates an uninitialised GlyphVisAttr.
@@ -3877,11 +4390,19 @@ type IncludedModule struct {
 
 // UNSUPPORTED : C value 'list' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'list' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'init' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'init' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'exit' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'exit' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create' : for field setter : missing Type
 
 // IncludedModuleStruct creates an uninitialised IncludedModule.
 func IncludedModuleStruct() *IncludedModule {
@@ -3914,31 +4435,59 @@ type Item struct {
 }
 
 // Offset returns the C field 'offset'.
-func (recv *Item) Offset() int32 {
+func (recv *Item) FieldOffset() int32 {
 	argValue := gi.FieldGet(itemStruct, recv.native, "offset")
 	value := argValue.Int32()
 	return value
 }
 
+// Offset sets the value of the C field 'offset'.
+func (recv *Item) SetFieldOffset(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(itemStruct, recv.native, "offset", argValue)
+}
+
 // Length returns the C field 'length'.
-func (recv *Item) Length() int32 {
+func (recv *Item) FieldLength() int32 {
 	argValue := gi.FieldGet(itemStruct, recv.native, "length")
 	value := argValue.Int32()
 	return value
 }
 
+// Length sets the value of the C field 'length'.
+func (recv *Item) SetFieldLength(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(itemStruct, recv.native, "length", argValue)
+}
+
 // NumChars returns the C field 'num_chars'.
-func (recv *Item) NumChars() int32 {
+func (recv *Item) FieldNumChars() int32 {
 	argValue := gi.FieldGet(itemStruct, recv.native, "num_chars")
 	value := argValue.Int32()
 	return value
 }
 
+// NumChars sets the value of the C field 'num_chars'.
+func (recv *Item) SetFieldNumChars(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(itemStruct, recv.native, "num_chars", argValue)
+}
+
 // Analysis returns the C field 'analysis'.
-func (recv *Item) Analysis() *Analysis {
+func (recv *Item) FieldAnalysis() *Analysis {
 	argValue := gi.FieldGet(itemStruct, recv.native, "analysis")
 	value := &Analysis{native: argValue.Pointer()}
 	return value
+}
+
+// Analysis sets the value of the C field 'analysis'.
+func (recv *Item) SetFieldAnalysis(value *Analysis) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(itemStruct, recv.native, "analysis", argValue)
 }
 
 var itemNewFunction *gi.Function
@@ -4854,34 +5403,66 @@ type LayoutLine struct {
 
 // UNSUPPORTED : C value 'layout' : for field getter : no Go type for 'Layout'
 
+// UNSUPPORTED : C value 'layout' : for field setter : no Go type for 'Layout'
+
 // StartIndex returns the C field 'start_index'.
-func (recv *LayoutLine) StartIndex() int32 {
+func (recv *LayoutLine) FieldStartIndex() int32 {
 	argValue := gi.FieldGet(layoutLineStruct, recv.native, "start_index")
 	value := argValue.Int32()
 	return value
 }
 
+// StartIndex sets the value of the C field 'start_index'.
+func (recv *LayoutLine) SetFieldStartIndex(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(layoutLineStruct, recv.native, "start_index", argValue)
+}
+
 // Length returns the C field 'length'.
-func (recv *LayoutLine) Length() int32 {
+func (recv *LayoutLine) FieldLength() int32 {
 	argValue := gi.FieldGet(layoutLineStruct, recv.native, "length")
 	value := argValue.Int32()
 	return value
 }
 
+// Length sets the value of the C field 'length'.
+func (recv *LayoutLine) SetFieldLength(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(layoutLineStruct, recv.native, "length", argValue)
+}
+
 // UNSUPPORTED : C value 'runs' : for field getter : no Go type for 'GLib.SList'
 
+// UNSUPPORTED : C value 'runs' : for field setter : no Go type for 'GLib.SList'
+
 // IsParagraphStart returns the C field 'is_paragraph_start'.
-func (recv *LayoutLine) IsParagraphStart() uint32 {
+func (recv *LayoutLine) FieldIsParagraphStart() uint32 {
 	argValue := gi.FieldGet(layoutLineStruct, recv.native, "is_paragraph_start")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsParagraphStart sets the value of the C field 'is_paragraph_start'.
+func (recv *LayoutLine) SetFieldIsParagraphStart(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(layoutLineStruct, recv.native, "is_paragraph_start", argValue)
+}
+
 // ResolvedDir returns the C field 'resolved_dir'.
-func (recv *LayoutLine) ResolvedDir() uint32 {
+func (recv *LayoutLine) FieldResolvedDir() uint32 {
 	argValue := gi.FieldGet(layoutLineStruct, recv.native, "resolved_dir")
 	value := argValue.Uint32()
 	return value
+}
+
+// ResolvedDir sets the value of the C field 'resolved_dir'.
+func (recv *LayoutLine) SetFieldResolvedDir(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(layoutLineStruct, recv.native, "resolved_dir", argValue)
 }
 
 var layoutLineGetExtentsFunction *gi.Function
@@ -5113,94 +5694,185 @@ type LogAttr struct {
 }
 
 // IsLineBreak returns the C field 'is_line_break'.
-func (recv *LogAttr) IsLineBreak() uint32 {
+func (recv *LogAttr) FieldIsLineBreak() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_line_break")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsLineBreak sets the value of the C field 'is_line_break'.
+func (recv *LogAttr) SetFieldIsLineBreak(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_line_break", argValue)
+}
+
 // IsMandatoryBreak returns the C field 'is_mandatory_break'.
-func (recv *LogAttr) IsMandatoryBreak() uint32 {
+func (recv *LogAttr) FieldIsMandatoryBreak() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_mandatory_break")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsMandatoryBreak sets the value of the C field 'is_mandatory_break'.
+func (recv *LogAttr) SetFieldIsMandatoryBreak(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_mandatory_break", argValue)
+}
+
 // IsCharBreak returns the C field 'is_char_break'.
-func (recv *LogAttr) IsCharBreak() uint32 {
+func (recv *LogAttr) FieldIsCharBreak() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_char_break")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsCharBreak sets the value of the C field 'is_char_break'.
+func (recv *LogAttr) SetFieldIsCharBreak(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_char_break", argValue)
+}
+
 // IsWhite returns the C field 'is_white'.
-func (recv *LogAttr) IsWhite() uint32 {
+func (recv *LogAttr) FieldIsWhite() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_white")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsWhite sets the value of the C field 'is_white'.
+func (recv *LogAttr) SetFieldIsWhite(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_white", argValue)
+}
+
 // IsCursorPosition returns the C field 'is_cursor_position'.
-func (recv *LogAttr) IsCursorPosition() uint32 {
+func (recv *LogAttr) FieldIsCursorPosition() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_cursor_position")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsCursorPosition sets the value of the C field 'is_cursor_position'.
+func (recv *LogAttr) SetFieldIsCursorPosition(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_cursor_position", argValue)
+}
+
 // IsWordStart returns the C field 'is_word_start'.
-func (recv *LogAttr) IsWordStart() uint32 {
+func (recv *LogAttr) FieldIsWordStart() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_word_start")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsWordStart sets the value of the C field 'is_word_start'.
+func (recv *LogAttr) SetFieldIsWordStart(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_word_start", argValue)
+}
+
 // IsWordEnd returns the C field 'is_word_end'.
-func (recv *LogAttr) IsWordEnd() uint32 {
+func (recv *LogAttr) FieldIsWordEnd() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_word_end")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsWordEnd sets the value of the C field 'is_word_end'.
+func (recv *LogAttr) SetFieldIsWordEnd(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_word_end", argValue)
+}
+
 // IsSentenceBoundary returns the C field 'is_sentence_boundary'.
-func (recv *LogAttr) IsSentenceBoundary() uint32 {
+func (recv *LogAttr) FieldIsSentenceBoundary() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_sentence_boundary")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsSentenceBoundary sets the value of the C field 'is_sentence_boundary'.
+func (recv *LogAttr) SetFieldIsSentenceBoundary(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_sentence_boundary", argValue)
+}
+
 // IsSentenceStart returns the C field 'is_sentence_start'.
-func (recv *LogAttr) IsSentenceStart() uint32 {
+func (recv *LogAttr) FieldIsSentenceStart() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_sentence_start")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsSentenceStart sets the value of the C field 'is_sentence_start'.
+func (recv *LogAttr) SetFieldIsSentenceStart(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_sentence_start", argValue)
+}
+
 // IsSentenceEnd returns the C field 'is_sentence_end'.
-func (recv *LogAttr) IsSentenceEnd() uint32 {
+func (recv *LogAttr) FieldIsSentenceEnd() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_sentence_end")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsSentenceEnd sets the value of the C field 'is_sentence_end'.
+func (recv *LogAttr) SetFieldIsSentenceEnd(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_sentence_end", argValue)
+}
+
 // BackspaceDeletesCharacter returns the C field 'backspace_deletes_character'.
-func (recv *LogAttr) BackspaceDeletesCharacter() uint32 {
+func (recv *LogAttr) FieldBackspaceDeletesCharacter() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "backspace_deletes_character")
 	value := argValue.Uint32()
 	return value
 }
 
+// BackspaceDeletesCharacter sets the value of the C field 'backspace_deletes_character'.
+func (recv *LogAttr) SetFieldBackspaceDeletesCharacter(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "backspace_deletes_character", argValue)
+}
+
 // IsExpandableSpace returns the C field 'is_expandable_space'.
-func (recv *LogAttr) IsExpandableSpace() uint32 {
+func (recv *LogAttr) FieldIsExpandableSpace() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_expandable_space")
 	value := argValue.Uint32()
 	return value
 }
 
+// IsExpandableSpace sets the value of the C field 'is_expandable_space'.
+func (recv *LogAttr) SetFieldIsExpandableSpace(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_expandable_space", argValue)
+}
+
 // IsWordBoundary returns the C field 'is_word_boundary'.
-func (recv *LogAttr) IsWordBoundary() uint32 {
+func (recv *LogAttr) FieldIsWordBoundary() uint32 {
 	argValue := gi.FieldGet(logAttrStruct, recv.native, "is_word_boundary")
 	value := argValue.Uint32()
 	return value
+}
+
+// IsWordBoundary sets the value of the C field 'is_word_boundary'.
+func (recv *LogAttr) SetFieldIsWordBoundary(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(logAttrStruct, recv.native, "is_word_boundary", argValue)
 }
 
 // LogAttrStruct creates an uninitialised LogAttr.
@@ -5298,45 +5970,87 @@ type Matrix struct {
 }
 
 // Xx returns the C field 'xx'.
-func (recv *Matrix) Xx() float64 {
+func (recv *Matrix) FieldXx() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "xx")
 	value := argValue.Float64()
 	return value
 }
 
+// Xx sets the value of the C field 'xx'.
+func (recv *Matrix) SetFieldXx(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "xx", argValue)
+}
+
 // Xy returns the C field 'xy'.
-func (recv *Matrix) Xy() float64 {
+func (recv *Matrix) FieldXy() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "xy")
 	value := argValue.Float64()
 	return value
 }
 
+// Xy sets the value of the C field 'xy'.
+func (recv *Matrix) SetFieldXy(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "xy", argValue)
+}
+
 // Yx returns the C field 'yx'.
-func (recv *Matrix) Yx() float64 {
+func (recv *Matrix) FieldYx() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "yx")
 	value := argValue.Float64()
 	return value
 }
 
+// Yx sets the value of the C field 'yx'.
+func (recv *Matrix) SetFieldYx(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "yx", argValue)
+}
+
 // Yy returns the C field 'yy'.
-func (recv *Matrix) Yy() float64 {
+func (recv *Matrix) FieldYy() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "yy")
 	value := argValue.Float64()
 	return value
 }
 
+// Yy sets the value of the C field 'yy'.
+func (recv *Matrix) SetFieldYy(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "yy", argValue)
+}
+
 // X0 returns the C field 'x0'.
-func (recv *Matrix) X0() float64 {
+func (recv *Matrix) FieldX0() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "x0")
 	value := argValue.Float64()
 	return value
 }
 
+// X0 sets the value of the C field 'x0'.
+func (recv *Matrix) SetFieldX0(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "x0", argValue)
+}
+
 // Y0 returns the C field 'y0'.
-func (recv *Matrix) Y0() float64 {
+func (recv *Matrix) FieldY0() float64 {
 	argValue := gi.FieldGet(matrixStruct, recv.native, "y0")
 	value := argValue.Float64()
 	return value
+}
+
+// Y0 sets the value of the C field 'y0'.
+func (recv *Matrix) SetFieldY0(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(matrixStruct, recv.native, "y0", argValue)
 }
 
 var matrixConcatFunction *gi.Function
@@ -5749,31 +6463,59 @@ type Rectangle struct {
 }
 
 // X returns the C field 'x'.
-func (recv *Rectangle) X() int32 {
+func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *Rectangle) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *Rectangle) Y() int32 {
+func (recv *Rectangle) FieldY() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *Rectangle) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *Rectangle) Width() int32 {
+func (recv *Rectangle) FieldWidth() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *Rectangle) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *Rectangle) Height() int32 {
+func (recv *Rectangle) FieldHeight() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *Rectangle) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "height", argValue)
 }
 
 // RectangleStruct creates an uninitialised Rectangle.
@@ -5808,31 +6550,59 @@ type RendererClass struct {
 
 // UNSUPPORTED : C value 'draw_glyphs' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_glyphs' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_rectangle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_rectangle' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_error_underline' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_error_underline' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_shape' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_shape' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_trapezoid' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_trapezoid' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_glyph' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_glyph' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'part_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'part_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'begin' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'begin' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'end' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'end' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'prepare_run' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'prepare_run' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_glyph_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_glyph_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_pango_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_pango_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_pango_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_pango_reserved4' : for field setter : missing Type
 
 // RendererClassStruct creates an uninitialised RendererClass.
 func RendererClassStruct() *RendererClass {

@@ -425,13 +425,23 @@ type PixbufLoaderClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'size_prepared' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'size_prepared' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'area_prepared' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'area_prepared' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'area_updated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'area_updated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'closed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'closed' : for field setter : missing Type
 
 // PixbufLoaderClassStruct creates an uninitialised PixbufLoaderClass.
 func PixbufLoaderClassStruct() *PixbufLoaderClass {

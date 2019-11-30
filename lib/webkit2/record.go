@@ -256,13 +256,23 @@ type AuthenticationRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // AuthenticationRequestClassStruct creates an uninitialised AuthenticationRequestClass.
 func AuthenticationRequestClassStruct() *AuthenticationRequestClass {
@@ -326,13 +336,23 @@ type AutomationSessionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // AutomationSessionClassStruct creates an uninitialised AutomationSessionClass.
 func AutomationSessionClassStruct() *AutomationSessionClass {
@@ -396,13 +416,23 @@ type BackForwardListClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // BackForwardListClassStruct creates an uninitialised BackForwardListClass.
 func BackForwardListClassStruct() *BackForwardListClass {
@@ -436,13 +466,23 @@ type BackForwardListItemClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // BackForwardListItemClassStruct creates an uninitialised BackForwardListItemClass.
 func BackForwardListItemClassStruct() *BackForwardListItemClass {
@@ -536,6 +576,8 @@ type ColorChooserRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // ColorChooserRequestClassStruct creates an uninitialised ColorChooserRequestClass.
 func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
 	err := colorChooserRequestClassStruct_Set()
@@ -598,13 +640,23 @@ type ContextMenuClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // ContextMenuClassStruct creates an uninitialised ContextMenuClass.
 func ContextMenuClassStruct() *ContextMenuClass {
@@ -638,13 +690,23 @@ type ContextMenuItemClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // ContextMenuItemClassStruct creates an uninitialised ContextMenuItemClass.
 func ContextMenuItemClassStruct() *ContextMenuItemClass {
@@ -738,13 +800,23 @@ type CookieManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // CookieManagerClassStruct creates an uninitialised CookieManagerClass.
 func CookieManagerClassStruct() *CookieManagerClass {
@@ -983,13 +1055,23 @@ type DeviceInfoPermissionRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // DeviceInfoPermissionRequestClassStruct creates an uninitialised DeviceInfoPermissionRequestClass.
 func DeviceInfoPermissionRequestClassStruct() *DeviceInfoPermissionRequestClass {
@@ -1053,15 +1135,27 @@ type DownloadClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'decide_destination' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'decide_destination' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // DownloadClassStruct creates an uninitialised DownloadClass.
 func DownloadClassStruct() *DownloadClass {
@@ -1125,13 +1219,23 @@ type EditorStateClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // EditorStateClassStruct creates an uninitialised EditorStateClass.
 func EditorStateClassStruct() *EditorStateClass {
@@ -1195,13 +1299,23 @@ type FaviconDatabaseClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // FaviconDatabaseClassStruct creates an uninitialised FaviconDatabaseClass.
 func FaviconDatabaseClassStruct() *FaviconDatabaseClass {
@@ -1265,13 +1379,23 @@ type FileChooserRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // FileChooserRequestClassStruct creates an uninitialised FileChooserRequestClass.
 func FileChooserRequestClassStruct() *FileChooserRequestClass {
@@ -1335,13 +1459,23 @@ type FindControllerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // FindControllerClassStruct creates an uninitialised FindControllerClass.
 func FindControllerClassStruct() *FindControllerClass {
@@ -1405,13 +1539,23 @@ type FormSubmissionRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // FormSubmissionRequestClassStruct creates an uninitialised FormSubmissionRequestClass.
 func FormSubmissionRequestClassStruct() *FormSubmissionRequestClass {
@@ -1475,13 +1619,23 @@ type GeolocationManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // GeolocationManagerClassStruct creates an uninitialised GeolocationManagerClass.
 func GeolocationManagerClassStruct() *GeolocationManagerClass {
@@ -1545,13 +1699,23 @@ type GeolocationPermissionRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // GeolocationPermissionRequestClassStruct creates an uninitialised GeolocationPermissionRequestClass.
 func GeolocationPermissionRequestClassStruct() *GeolocationPermissionRequestClass {
@@ -1869,13 +2033,23 @@ type HitTestResultClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // HitTestResultClassStruct creates an uninitialised HitTestResultClass.
 func HitTestResultClassStruct() *HitTestResultClass {
@@ -1939,13 +2113,23 @@ type InstallMissingMediaPluginsPermissionRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // InstallMissingMediaPluginsPermissionRequestClassStruct creates an uninitialised InstallMissingMediaPluginsPermissionRequestClass.
 func InstallMissingMediaPluginsPermissionRequestClassStruct() *InstallMissingMediaPluginsPermissionRequestClass {
@@ -2508,19 +2692,34 @@ type NavigationPolicyDecisionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NavigationPolicyDecisionClass) ParentClass() *PolicyDecisionClass {
+func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
 	argValue := gi.FieldGet(navigationPolicyDecisionClassStruct, recv.native, "parent_class")
 	value := &PolicyDecisionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NavigationPolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(navigationPolicyDecisionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // NavigationPolicyDecisionClassStruct creates an uninitialised NavigationPolicyDecisionClass.
 func NavigationPolicyDecisionClassStruct() *NavigationPolicyDecisionClass {
@@ -2691,17 +2890,31 @@ type NotificationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved5' : for field setter : missing Type
 
 // NotificationClassStruct creates an uninitialised NotificationClass.
 func NotificationClassStruct() *NotificationClass {
@@ -2734,6 +2947,8 @@ type NotificationPermissionRequestClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // NotificationPermissionRequestClassStruct creates an uninitialised NotificationPermissionRequestClass.
 func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestClass {
@@ -2827,13 +3042,23 @@ type OptionMenuClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // OptionMenuClassStruct creates an uninitialised OptionMenuClass.
 func OptionMenuClassStruct() *OptionMenuClass {
@@ -3179,9 +3404,15 @@ type PermissionRequestIface struct {
 
 // UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'allow' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'allow' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'deny' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deny' : for field setter : missing Type
 
 // PermissionRequestIfaceStruct creates an uninitialised PermissionRequestIface.
 func PermissionRequestIfaceStruct() *PermissionRequestIface {
@@ -3215,13 +3446,23 @@ type PluginClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // PluginClassStruct creates an uninitialised PluginClass.
 func PluginClassStruct() *PluginClass {
@@ -3285,13 +3526,23 @@ type PolicyDecisionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // PolicyDecisionClassStruct creates an uninitialised PolicyDecisionClass.
 func PolicyDecisionClassStruct() *PolicyDecisionClass {
@@ -3355,17 +3606,31 @@ type PrintCustomWidgetClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'apply' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'apply' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'update' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'update' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // PrintCustomWidgetClassStruct creates an uninitialised PrintCustomWidgetClass.
 func PrintCustomWidgetClassStruct() *PrintCustomWidgetClass {
@@ -3429,13 +3694,23 @@ type PrintOperationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // PrintOperationClassStruct creates an uninitialised PrintOperationClass.
 func PrintOperationClassStruct() *PrintOperationClass {
@@ -3498,19 +3773,34 @@ type ResponsePolicyDecisionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ResponsePolicyDecisionClass) ParentClass() *PolicyDecisionClass {
+func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
 	argValue := gi.FieldGet(responsePolicyDecisionClassStruct, recv.native, "parent_class")
 	value := &PolicyDecisionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ResponsePolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(responsePolicyDecisionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // ResponsePolicyDecisionClassStruct creates an uninitialised ResponsePolicyDecisionClass.
 func ResponsePolicyDecisionClassStruct() *ResponsePolicyDecisionClass {
@@ -3816,13 +4106,23 @@ type SecurityManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // SecurityManagerClassStruct creates an uninitialised SecurityManagerClass.
 func SecurityManagerClassStruct() *SecurityManagerClass {
@@ -4187,13 +4487,23 @@ type SettingsClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // SettingsClassStruct creates an uninitialised SettingsClass.
 func SettingsClassStruct() *SettingsClass {
@@ -4257,13 +4567,23 @@ type URIRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // URIRequestClassStruct creates an uninitialised URIRequestClass.
 func URIRequestClassStruct() *URIRequestClass {
@@ -4327,13 +4647,23 @@ type URIResponseClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // URIResponseClassStruct creates an uninitialised URIResponseClass.
 func URIResponseClassStruct() *URIResponseClass {
@@ -4397,13 +4727,23 @@ type URISchemeRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // URISchemeRequestClassStruct creates an uninitialised URISchemeRequestClass.
 func URISchemeRequestClassStruct() *URISchemeRequestClass {
@@ -4589,13 +4929,23 @@ type UserContentFilterStoreClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // UserContentFilterStoreClassStruct creates an uninitialised UserContentFilterStoreClass.
 func UserContentFilterStoreClassStruct() *UserContentFilterStoreClass {
@@ -4659,13 +5009,23 @@ type UserContentManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // UserContentManagerClassStruct creates an uninitialised UserContentManagerClass.
 func UserContentManagerClassStruct() *UserContentManagerClass {
@@ -4729,13 +5089,23 @@ type UserMediaPermissionRequestClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // UserMediaPermissionRequestClassStruct creates an uninitialised UserMediaPermissionRequestClass.
 func UserMediaPermissionRequestClassStruct() *UserMediaPermissionRequestClass {
@@ -4957,21 +5327,39 @@ type WebContextClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'download_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'download_started' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'initialize_web_extensions' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'initialize_web_extensions' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'initialize_notification_permissions' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'initialize_notification_permissions' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'automation_started' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'automation_started' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WebContextClassStruct creates an uninitialised WebContextClass.
 func WebContextClassStruct() *WebContextClass {
@@ -5035,13 +5423,23 @@ type WebInspectorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WebInspectorClassStruct creates an uninitialised WebInspectorClass.
 func WebInspectorClassStruct() *WebInspectorClass {
@@ -5105,13 +5503,23 @@ type WebResourceClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WebResourceClassStruct creates an uninitialised WebResourceClass.
 func WebResourceClassStruct() *WebResourceClass {
@@ -5175,13 +5583,23 @@ type WebViewBaseClass struct {
 
 // UNSUPPORTED : C value 'parentClass' : for field getter : no Go type for 'Gtk.ContainerClass'
 
+// UNSUPPORTED : C value 'parentClass' : for field setter : no Go type for 'Gtk.ContainerClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WebViewBaseClassStruct creates an uninitialised WebViewBaseClass.
 func WebViewBaseClassStruct() *WebViewBaseClass {
@@ -5244,67 +5662,130 @@ type WebViewClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *WebViewClass) Parent() *WebViewBaseClass {
+func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
 	argValue := gi.FieldGet(webViewClassStruct, recv.native, "parent")
 	value := &WebViewBaseClass{native: argValue.Pointer()}
 	return value
 }
 
+// Parent sets the value of the C field 'parent'.
+func (recv *WebViewClass) SetFieldParent(value *WebViewBaseClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(webViewClassStruct, recv.native, "parent", argValue)
+}
+
 // UNSUPPORTED : C value 'load_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'load_failed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'load_failed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'ready_to_show' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ready_to_show' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'run_as_modal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_as_modal' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'script_dialog' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'script_dialog' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'decide_policy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'decide_policy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'permission_request' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'permission_request' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mouse_target_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mouse_target_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'print' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'print' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'resource_load_started' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'resource_load_started' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'enter_fullscreen' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enter_fullscreen' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'leave_fullscreen' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'leave_fullscreen' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'run_file_chooser' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_file_chooser' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'context_menu' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'context_menu' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'context_menu_dismissed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'context_menu_dismissed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'submit_form' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'submit_form' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insecure_content_detected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insecure_content_detected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'web_process_crashed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'web_process_crashed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'authenticate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'authenticate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'load_failed_with_tls_errors' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'load_failed_with_tls_errors' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'show_notification' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_notification' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'run_color_chooser' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'run_color_chooser' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'show_option_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_option_menu' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'web_process_terminated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'web_process_terminated' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
 
 // WebViewClassStruct creates an uninitialised WebViewClass.
 func WebViewClassStruct() *WebViewClass {
@@ -5573,13 +6054,23 @@ type WebsiteDataManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WebsiteDataManagerClassStruct creates an uninitialised WebsiteDataManagerClass.
 func WebsiteDataManagerClassStruct() *WebsiteDataManagerClass {
@@ -5643,13 +6134,23 @@ type WindowPropertiesClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_webkit_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_webkit_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_webkit_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_webkit_reserved3' : for field setter : missing Type
 
 // WindowPropertiesClassStruct creates an uninitialised WindowPropertiesClass.
 func WindowPropertiesClassStruct() *WindowPropertiesClass {

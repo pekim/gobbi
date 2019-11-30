@@ -25,17 +25,31 @@ type ActionIface struct {
 
 // UNSUPPORTED : C value 'do_action' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'do_action' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_n_actions' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_n_actions' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_keybinding' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_keybinding' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_localized_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_localized_name' : for field setter : missing Type
 
 // ActionIfaceStruct creates an uninitialised ActionIface.
 func ActionIfaceStruct() *ActionIface {
@@ -68,17 +82,31 @@ type Attribute struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *Attribute) Name() string {
+func (recv *Attribute) FieldName() string {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *Attribute) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(attributeStruct, recv.native, "name", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *Attribute) Value() string {
+func (recv *Attribute) FieldValue() string {
 	argValue := gi.FieldGet(attributeStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *Attribute) SetFieldValue(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(attributeStruct, recv.native, "value", argValue)
 }
 
 // AttributeStruct creates an uninitialised Attribute.
@@ -113,37 +141,71 @@ type ComponentIface struct {
 
 // UNSUPPORTED : C value 'add_focus_handler' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_focus_handler' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'contains' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'contains' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'ref_accessible_at_point' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ref_accessible_at_point' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_extents' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_extents' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_position' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_position' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_size' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'grab_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'grab_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_focus_handler' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_focus_handler' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_extents' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_extents' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_position' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_position' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_layer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_layer' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_mdi_zorder' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_mdi_zorder' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'bounds_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'bounds_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_alpha' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_alpha' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'scroll_to' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'scroll_to' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'scroll_to_point' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'scroll_to_point' : for field setter : missing Type
 
 // ComponentIfaceStruct creates an uninitialised ComponentIface.
 func ComponentIfaceStruct() *ComponentIface {
@@ -177,21 +239,39 @@ type DocumentIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_document_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_document_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_document' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_document' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_document_locale' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_document_locale' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_document_attributes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_document_attributes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_document_attribute_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_document_attribute_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_document_attribute' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_document_attribute' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_current_page_number' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_current_page_number' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_page_count' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_page_count' : for field setter : missing Type
 
 // DocumentIfaceStruct creates an uninitialised DocumentIface.
 func DocumentIfaceStruct() *DocumentIface {
@@ -225,19 +305,35 @@ type EditableTextIface struct {
 
 // UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'set_run_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_run_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_text_contents' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_text_contents' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'cut_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cut_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'delete_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'delete_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'paste_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'paste_text' : for field setter : missing Type
 
 // EditableTextIfaceStruct creates an uninitialised EditableTextIface.
 func EditableTextIfaceStruct() *EditableTextIface {
@@ -270,15 +366,26 @@ type GObjectAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *GObjectAccessibleClass) ParentClass() *ObjectClass {
+func (recv *GObjectAccessibleClass) FieldParentClass() *ObjectClass {
 	argValue := gi.FieldGet(gObjectAccessibleClassStruct, recv.native, "parent_class")
 	value := &ObjectClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *GObjectAccessibleClass) SetFieldParentClass(value *ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(gObjectAccessibleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
 
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
+
 // UNSUPPORTED : C value 'pad2' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad2' : for field setter : no Go type for 'Function'
 
 // GObjectAccessibleClassStruct creates an uninitialised GObjectAccessibleClass.
 func GObjectAccessibleClassStruct() *GObjectAccessibleClass {
@@ -312,25 +419,47 @@ type HyperlinkClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_object' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_object' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_end_index' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_end_index' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_start_index' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_start_index' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_valid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_valid' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_anchors' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_anchors' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'link_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'link_state' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_selected_link' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_selected_link' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'link_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'link_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
 
 // HyperlinkClassStruct creates an uninitialised HyperlinkClass.
 func HyperlinkClassStruct() *HyperlinkClass {
@@ -364,7 +493,11 @@ type HyperlinkImplIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_hyperlink' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_hyperlink' : for field setter : missing Type
 
 // HyperlinkImplIfaceStruct creates an uninitialised HyperlinkImplIface.
 func HyperlinkImplIfaceStruct() *HyperlinkImplIface {
@@ -398,13 +531,23 @@ type HypertextIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_link' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_link' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_links' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_links' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_link_index' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_link_index' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'link_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'link_selected' : for field setter : missing Type
 
 // HypertextIfaceStruct creates an uninitialised HypertextIface.
 func HypertextIfaceStruct() *HypertextIface {
@@ -438,15 +581,27 @@ type ImageIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_image_position' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_image_position' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_image_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_image_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_image_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_image_size' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_image_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_image_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_image_locale' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_image_locale' : for field setter : missing Type
 
 // ImageIfaceStruct creates an uninitialised ImageIface.
 func ImageIfaceStruct() *ImageIface {
@@ -511,52 +666,101 @@ type KeyEventStruct struct {
 }
 
 // Type returns the C field 'type'.
-func (recv *KeyEventStruct) Type() int32 {
+func (recv *KeyEventStruct) FieldType() int32 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "type")
 	value := argValue.Int32()
 	return value
 }
 
+// Type sets the value of the C field 'type'.
+func (recv *KeyEventStruct) SetFieldType(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "type", argValue)
+}
+
 // State returns the C field 'state'.
-func (recv *KeyEventStruct) State() uint32 {
+func (recv *KeyEventStruct) FieldState() uint32 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "state")
 	value := argValue.Uint32()
 	return value
 }
 
+// State sets the value of the C field 'state'.
+func (recv *KeyEventStruct) SetFieldState(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "state", argValue)
+}
+
 // Keyval returns the C field 'keyval'.
-func (recv *KeyEventStruct) Keyval() uint32 {
+func (recv *KeyEventStruct) FieldKeyval() uint32 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "keyval")
 	value := argValue.Uint32()
 	return value
 }
 
+// Keyval sets the value of the C field 'keyval'.
+func (recv *KeyEventStruct) SetFieldKeyval(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "keyval", argValue)
+}
+
 // Length returns the C field 'length'.
-func (recv *KeyEventStruct) Length() int32 {
+func (recv *KeyEventStruct) FieldLength() int32 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "length")
 	value := argValue.Int32()
 	return value
 }
 
+// Length sets the value of the C field 'length'.
+func (recv *KeyEventStruct) SetFieldLength(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "length", argValue)
+}
+
 // String returns the C field 'string'.
-func (recv *KeyEventStruct) String() string {
+func (recv *KeyEventStruct) FieldString() string {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "string")
 	value := argValue.String(false)
 	return value
 }
 
+// String sets the value of the C field 'string'.
+func (recv *KeyEventStruct) SetFieldString(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "string", argValue)
+}
+
 // Keycode returns the C field 'keycode'.
-func (recv *KeyEventStruct) Keycode() uint16 {
+func (recv *KeyEventStruct) FieldKeycode() uint16 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "keycode")
 	value := argValue.Uint16()
 	return value
 }
 
+// Keycode sets the value of the C field 'keycode'.
+func (recv *KeyEventStruct) SetFieldKeycode(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "keycode", argValue)
+}
+
 // Timestamp returns the C field 'timestamp'.
-func (recv *KeyEventStruct) Timestamp() uint32 {
+func (recv *KeyEventStruct) FieldTimestamp() uint32 {
 	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "timestamp")
 	value := argValue.Uint32()
 	return value
+}
+
+// Timestamp sets the value of the C field 'timestamp'.
+func (recv *KeyEventStruct) SetFieldTimestamp(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(keyEventStructStruct, recv.native, "timestamp", argValue)
 }
 
 // KeyEventStructStruct creates an uninitialised KeyEventStruct.
@@ -591,11 +795,19 @@ type MiscClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'threads_enter' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'threads_enter' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'threads_leave' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'threads_leave' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'vfuncs' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'vfuncs' : for field setter : missing Type
 
 // MiscClassStruct creates an uninitialised MiscClass.
 func MiscClassStruct() *MiscClass {
@@ -628,10 +840,17 @@ type NoOpObjectClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NoOpObjectClass) ParentClass() *ObjectClass {
+func (recv *NoOpObjectClass) FieldParentClass() *ObjectClass {
 	argValue := gi.FieldGet(noOpObjectClassStruct, recv.native, "parent_class")
 	value := &ObjectClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NoOpObjectClass) SetFieldParentClass(value *ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(noOpObjectClassStruct, recv.native, "parent_class", argValue)
 }
 
 // NoOpObjectClassStruct creates an uninitialised NoOpObjectClass.
@@ -665,10 +884,17 @@ type NoOpObjectFactoryClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NoOpObjectFactoryClass) ParentClass() *ObjectFactoryClass {
+func (recv *NoOpObjectFactoryClass) FieldParentClass() *ObjectFactoryClass {
 	argValue := gi.FieldGet(noOpObjectFactoryClassStruct, recv.native, "parent_class")
 	value := &ObjectFactoryClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NoOpObjectFactoryClass) SetFieldParentClass(value *ObjectFactoryClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(noOpObjectFactoryClassStruct, recv.native, "parent_class", argValue)
 }
 
 // NoOpObjectFactoryClassStruct creates an uninitialised NoOpObjectFactoryClass.
@@ -703,59 +929,115 @@ type ObjectClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_parent' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_parent' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_children' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_children' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'ref_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ref_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_index_in_parent' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_index_in_parent' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'ref_relation_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ref_relation_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_role' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_role' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_layer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_layer' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_mdi_zorder' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_mdi_zorder' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'ref_state_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ref_state_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_description' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_description' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_parent' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_parent' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_role' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_role' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'connect_property_change_handler' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'connect_property_change_handler' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_property_change_handler' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_property_change_handler' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'initialize' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'initialize' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'children_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'children_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'focus_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'focus_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'property_change' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'property_change' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'state_change' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'state_change' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'visible_data_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'visible_data_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'active_descendant_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'active_descendant_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_object_locale' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_object_locale' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
 
 // ObjectClassStruct creates an uninitialised ObjectClass.
 func ObjectClassStruct() *ObjectClass {
@@ -789,15 +1071,27 @@ type ObjectFactoryClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'create_accessible' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_accessible' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'invalidate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'invalidate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_accessible_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_accessible_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
 
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
+
 // UNSUPPORTED : C value 'pad2' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad2' : for field setter : no Go type for 'Function'
 
 // ObjectFactoryClassStruct creates an uninitialised ObjectFactoryClass.
 func ObjectFactoryClassStruct() *ObjectFactoryClass {
@@ -830,13 +1124,22 @@ type PlugClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PlugClass) ParentClass() *ObjectClass {
+func (recv *PlugClass) FieldParentClass() *ObjectClass {
 	argValue := gi.FieldGet(plugClassStruct, recv.native, "parent_class")
 	value := &ObjectClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PlugClass) SetFieldParentClass(value *ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(plugClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'get_object_id' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object_id' : for field setter : missing Type
 
 // PlugClassStruct creates an uninitialised PlugClass.
 func PlugClassStruct() *PlugClass {
@@ -869,15 +1172,26 @@ type PropertyValues struct {
 }
 
 // PropertyName returns the C field 'property_name'.
-func (recv *PropertyValues) PropertyName() string {
+func (recv *PropertyValues) FieldPropertyName() string {
 	argValue := gi.FieldGet(propertyValuesStruct, recv.native, "property_name")
 	value := argValue.String(false)
 	return value
 }
 
+// PropertyName sets the value of the C field 'property_name'.
+func (recv *PropertyValues) SetFieldPropertyName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(propertyValuesStruct, recv.native, "property_name", argValue)
+}
+
 // UNSUPPORTED : C value 'old_value' : for field getter : no Go type for 'GObject.Value'
 
+// UNSUPPORTED : C value 'old_value' : for field setter : no Go type for 'GObject.Value'
+
 // UNSUPPORTED : C value 'new_value' : for field getter : no Go type for 'GObject.Value'
+
+// UNSUPPORTED : C value 'new_value' : for field setter : no Go type for 'GObject.Value'
 
 // PropertyValuesStruct creates an uninitialised PropertyValues.
 func PropertyValuesStruct() *PropertyValues {
@@ -1115,31 +1429,59 @@ type Rectangle struct {
 }
 
 // X returns the C field 'x'.
-func (recv *Rectangle) X() int32 {
+func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *Rectangle) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *Rectangle) Y() int32 {
+func (recv *Rectangle) FieldY() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *Rectangle) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *Rectangle) Width() int32 {
+func (recv *Rectangle) FieldWidth() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *Rectangle) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *Rectangle) Height() int32 {
+func (recv *Rectangle) FieldHeight() int32 {
 	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *Rectangle) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(rectangleStruct, recv.native, "height", argValue)
 }
 
 // RectangleStruct creates an uninitialised Rectangle.
@@ -1174,6 +1516,8 @@ type RegistryClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // RegistryClassStruct creates an uninitialised RegistryClass.
 func RegistryClassStruct() *RegistryClass {
 	err := registryClassStruct_Set()
@@ -1205,6 +1549,8 @@ type RelationClass struct {
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // RelationClassStruct creates an uninitialised RelationClass.
 func RelationClassStruct() *RelationClass {
@@ -1238,9 +1584,15 @@ type RelationSetClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
 
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
+
 // UNSUPPORTED : C value 'pad2' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad2' : for field setter : no Go type for 'Function'
 
 // RelationSetClassStruct creates an uninitialised RelationSetClass.
 func RelationSetClassStruct() *RelationSetClass {
@@ -1274,21 +1626,39 @@ type SelectionIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'add_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'clear_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'clear_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'ref_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ref_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_selection_count' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_selection_count' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_child_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_child_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remove_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_all_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_all_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'selection_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'selection_changed' : for field setter : missing Type
 
 // SelectionIfaceStruct creates an uninitialised SelectionIface.
 func SelectionIfaceStruct() *SelectionIface {
@@ -1321,13 +1691,22 @@ type SocketClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SocketClass) ParentClass() *ObjectClass {
+func (recv *SocketClass) FieldParentClass() *ObjectClass {
 	argValue := gi.FieldGet(socketClassStruct, recv.native, "parent_class")
 	value := &ObjectClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SocketClass) SetFieldParentClass(value *ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'embed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'embed' : for field setter : missing Type
 
 // SocketClassStruct creates an uninitialised SocketClass.
 func SocketClassStruct() *SocketClass {
@@ -1361,6 +1740,8 @@ type StateSetClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // StateSetClassStruct creates an uninitialised StateSetClass.
 func StateSetClassStruct() *StateSetClass {
 	err := stateSetClassStruct_Set()
@@ -1393,19 +1774,35 @@ type StreamableContentIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_n_mime_types' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_n_mime_types' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_mime_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_mime_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_stream' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_stream' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_uri' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_uri' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad1' : for field setter : no Go type for 'Function'
 
 // UNSUPPORTED : C value 'pad2' : for field getter : no Go type for 'Function'
 
+// UNSUPPORTED : C value 'pad2' : for field setter : no Go type for 'Function'
+
 // UNSUPPORTED : C value 'pad3' : for field getter : no Go type for 'Function'
+
+// UNSUPPORTED : C value 'pad3' : for field setter : no Go type for 'Function'
 
 // StreamableContentIfaceStruct creates an uninitialised StreamableContentIface.
 func StreamableContentIfaceStruct() *StreamableContentIface {
@@ -1439,17 +1836,31 @@ type TableCellIface struct {
 
 // UNSUPPORTED : C value 'get_column_span' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_column_span' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_header_cells' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_column_header_cells' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_position' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_position' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_row_span' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_row_span' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_row_header_cells' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_row_header_cells' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_row_column_span' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_row_column_span' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_table' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_table' : for field setter : missing Type
 
 // TableCellIfaceStruct creates an uninitialised TableCellIface.
 func TableCellIfaceStruct() *TableCellIface {
@@ -1483,77 +1894,151 @@ type TableIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'ref_at' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ref_at' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_index_at' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_index_at' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_at_index' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_column_at_index' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_row_at_index' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_row_at_index' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_n_columns' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_n_columns' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_rows' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_rows' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_extent_at' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_column_extent_at' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_row_extent_at' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_row_extent_at' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_caption' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_caption' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_column_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_column_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_header' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_column_header' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_row_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_row_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_row_header' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_row_header' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_summary' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_summary' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_caption' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_caption' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_column_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_column_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_column_header' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_column_header' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_row_description' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_row_description' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_row_header' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_row_header' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_summary' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_summary' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_selected_columns' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_selected_columns' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_selected_rows' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_selected_rows' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_column_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_column_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_row_selected' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_row_selected' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_row_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_row_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_row_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_row_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_column_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_column_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_column_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_column_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_inserted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_inserted' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'column_inserted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'column_inserted' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_deleted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_deleted' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'column_deleted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'column_deleted' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_reordered' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_reordered' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'column_reordered' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'column_reordered' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'model_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'model_changed' : for field setter : missing Type
 
 // TableIfaceStruct creates an uninitialised TableIface.
 func TableIfaceStruct() *TableIface {
@@ -1587,57 +2072,111 @@ type TextIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_text_after_offset' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_text_after_offset' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text_at_offset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text_at_offset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_character_at_offset' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_character_at_offset' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text_before_offset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text_before_offset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_caret_offset' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_caret_offset' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_run_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_run_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_default_attributes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_default_attributes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_character_extents' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_character_extents' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_character_count' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_character_count' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_offset_at_point' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_offset_at_point' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_selections' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_selections' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_selection' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_selection' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_caret_offset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_caret_offset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'text_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'text_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'text_caret_moved' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'text_caret_moved' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'text_selection_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'text_selection_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'text_attributes_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'text_attributes_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_range_extents' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_range_extents' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_bounded_ranges' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_bounded_ranges' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_string_at_offset' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_string_at_offset' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'scroll_substring_to' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'scroll_substring_to' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'scroll_substring_to_point' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'scroll_substring_to_point' : for field setter : missing Type
 
 // TextIfaceStruct creates an uninitialised TextIface.
 func TextIfaceStruct() *TextIface {
@@ -1670,31 +2209,59 @@ type TextRange struct {
 }
 
 // Bounds returns the C field 'bounds'.
-func (recv *TextRange) Bounds() *TextRectangle {
+func (recv *TextRange) FieldBounds() *TextRectangle {
 	argValue := gi.FieldGet(textRangeStruct, recv.native, "bounds")
 	value := &TextRectangle{native: argValue.Pointer()}
 	return value
 }
 
+// Bounds sets the value of the C field 'bounds'.
+func (recv *TextRange) SetFieldBounds(value *TextRectangle) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(textRangeStruct, recv.native, "bounds", argValue)
+}
+
 // StartOffset returns the C field 'start_offset'.
-func (recv *TextRange) StartOffset() int32 {
+func (recv *TextRange) FieldStartOffset() int32 {
 	argValue := gi.FieldGet(textRangeStruct, recv.native, "start_offset")
 	value := argValue.Int32()
 	return value
 }
 
+// StartOffset sets the value of the C field 'start_offset'.
+func (recv *TextRange) SetFieldStartOffset(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRangeStruct, recv.native, "start_offset", argValue)
+}
+
 // EndOffset returns the C field 'end_offset'.
-func (recv *TextRange) EndOffset() int32 {
+func (recv *TextRange) FieldEndOffset() int32 {
 	argValue := gi.FieldGet(textRangeStruct, recv.native, "end_offset")
 	value := argValue.Int32()
 	return value
 }
 
+// EndOffset sets the value of the C field 'end_offset'.
+func (recv *TextRange) SetFieldEndOffset(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRangeStruct, recv.native, "end_offset", argValue)
+}
+
 // Content returns the C field 'content'.
-func (recv *TextRange) Content() string {
+func (recv *TextRange) FieldContent() string {
 	argValue := gi.FieldGet(textRangeStruct, recv.native, "content")
 	value := argValue.String(false)
 	return value
+}
+
+// Content sets the value of the C field 'content'.
+func (recv *TextRange) SetFieldContent(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(textRangeStruct, recv.native, "content", argValue)
 }
 
 // TextRangeStruct creates an uninitialised TextRange.
@@ -1728,31 +2295,59 @@ type TextRectangle struct {
 }
 
 // X returns the C field 'x'.
-func (recv *TextRectangle) X() int32 {
+func (recv *TextRectangle) FieldX() int32 {
 	argValue := gi.FieldGet(textRectangleStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *TextRectangle) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRectangleStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *TextRectangle) Y() int32 {
+func (recv *TextRectangle) FieldY() int32 {
 	argValue := gi.FieldGet(textRectangleStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
 }
 
+// Y sets the value of the C field 'y'.
+func (recv *TextRectangle) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRectangleStruct, recv.native, "y", argValue)
+}
+
 // Width returns the C field 'width'.
-func (recv *TextRectangle) Width() int32 {
+func (recv *TextRectangle) FieldWidth() int32 {
 	argValue := gi.FieldGet(textRectangleStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *TextRectangle) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRectangleStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *TextRectangle) Height() int32 {
+func (recv *TextRectangle) FieldHeight() int32 {
 	argValue := gi.FieldGet(textRectangleStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *TextRectangle) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textRectangleStruct, recv.native, "height", argValue)
 }
 
 // TextRectangleStruct creates an uninitialised TextRectangle.
@@ -1787,19 +2382,35 @@ type UtilClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'add_global_event_listener' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_global_event_listener' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remove_global_event_listener' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_global_event_listener' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_key_event_listener' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_key_event_listener' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remove_key_event_listener' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_key_event_listener' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_root' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_root' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_toolkit_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_toolkit_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_toolkit_version' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_toolkit_version' : for field setter : missing Type
 
 // UtilClassStruct creates an uninitialised UtilClass.
 func UtilClassStruct() *UtilClass {
@@ -1833,25 +2444,47 @@ type ValueIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_current_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_current_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_maximum_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_maximum_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_minimum_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_minimum_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_current_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_current_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_minimum_increment' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_minimum_increment' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_value_and_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_value_and_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_range' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_range' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_increment' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_increment' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_sub_ranges' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_sub_ranges' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_value' : for field setter : missing Type
 
 // ValueIfaceStruct creates an uninitialised ValueIface.
 func ValueIfaceStruct() *ValueIface {
@@ -1884,6 +2517,8 @@ type WindowIface struct {
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
 
 // WindowIfaceStruct creates an uninitialised WindowIface.
 func WindowIfaceStruct() *WindowIface {

@@ -25,17 +25,31 @@ type BufferClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextBufferClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextBufferClass'
+
 // UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'undo' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'redo' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'redo' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'bracket_matched' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'bracket_matched' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field setter : missing Type
 
 // BufferClassStruct creates an uninitialised BufferClass.
 func BufferClassStruct() *BufferClass {
@@ -99,19 +113,35 @@ type CompletionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'proposal_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'proposal_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'hide' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hide' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'populate_context' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'populate_context' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move_page' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_page' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_proposal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_proposal' : for field setter : missing Type
 
 // CompletionClassStruct creates an uninitialised CompletionClass.
 func CompletionClassStruct() *CompletionClass {
@@ -145,13 +175,23 @@ type CompletionContextClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value 'cancelled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cancelled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field setter : missing Type
 
 // CompletionContextClassStruct creates an uninitialised CompletionContextClass.
 func CompletionContextClassStruct() *CompletionContextClass {
@@ -215,7 +255,11 @@ type CompletionInfoClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.WindowClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.WindowClass'
+
 // UNSUPPORTED : C value 'before_show' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'before_show' : for field setter : missing Type
 
 // CompletionInfoClassStruct creates an uninitialised CompletionInfoClass.
 func CompletionInfoClassStruct() *CompletionInfoClass {
@@ -278,6 +322,8 @@ type CompletionItemClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // CompletionItemClassStruct creates an uninitialised CompletionItemClass.
 func CompletionItemClassStruct() *CompletionItemClass {
@@ -371,25 +417,47 @@ type CompletionProposalIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_label' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_label' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_markup' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_markup' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_gicon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_gicon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_info' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'hash' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'hash' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'equal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'equal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // CompletionProposalIfaceStruct creates an uninitialised CompletionProposalIface.
 func CompletionProposalIfaceStruct() *CompletionProposalIface {
@@ -423,31 +491,59 @@ type CompletionProviderIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_gicon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_gicon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'populate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'match' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'match' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_activation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_activation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_info_widget' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_info_widget' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'update_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update_info' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_start_iter' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_start_iter' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_proposal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_proposal' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_interactive_delay' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_interactive_delay' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_priority' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_priority' : for field setter : missing Type
 
 // CompletionProviderIfaceStruct creates an uninitialised CompletionProviderIface.
 func CompletionProviderIfaceStruct() *CompletionProviderIface {
@@ -480,6 +576,8 @@ type CompletionWordsClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // CompletionWordsClassStruct creates an uninitialised CompletionWordsClass.
 func CompletionWordsClassStruct() *CompletionWordsClass {
@@ -729,7 +827,11 @@ type FileClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // FileClassStruct creates an uninitialised FileClass.
 func FileClassStruct() *FileClass {
@@ -763,7 +865,11 @@ type FileLoaderClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // FileLoaderClassStruct creates an uninitialised FileLoaderClass.
 func FileLoaderClassStruct() *FileLoaderClass {
@@ -857,7 +963,11 @@ type FileSaverClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // FileSaverClassStruct creates an uninitialised FileSaverClass.
 func FileSaverClassStruct() *FileSaverClass {
@@ -921,6 +1031,8 @@ type GutterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // GutterClassStruct creates an uninitialised GutterClass.
 func GutterClassStruct() *GutterClass {
 	err := gutterClassStruct_Set()
@@ -983,25 +1095,47 @@ type GutterRendererClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value 'begin' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'begin' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'end' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'change_view' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_view' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'change_buffer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_buffer' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_activatable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_activatable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'queue_draw' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'queue_draw' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_tooltip' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_tooltip' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_data' : for field setter : missing Type
 
 // GutterRendererClassStruct creates an uninitialised GutterRendererClass.
 func GutterRendererClassStruct() *GutterRendererClass {
@@ -1185,9 +1319,15 @@ type LanguageClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
 
 // LanguageClassStruct creates an uninitialised LanguageClass.
 func LanguageClassStruct() *LanguageClass {
@@ -1221,13 +1361,23 @@ type LanguageManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved4' : for field setter : missing Type
 
 // LanguageManagerClassStruct creates an uninitialised LanguageManagerClass.
 func LanguageManagerClassStruct() *LanguageManagerClass {
@@ -1320,13 +1470,22 @@ type MapClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MapClass) ParentClass() *ViewClass {
+func (recv *MapClass) FieldParentClass() *ViewClass {
 	argValue := gi.FieldGet(mapClassStruct, recv.native, "parent_class")
 	value := &ViewClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(mapClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // MapClassStruct creates an uninitialised MapClass.
 func MapClassStruct() *MapClass {
@@ -1420,9 +1579,15 @@ type MarkClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextMarkClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextMarkClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
 
 // MarkClassStruct creates an uninitialised MarkClass.
 func MarkClassStruct() *MarkClass {
@@ -1486,9 +1651,15 @@ type PrintCompositorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
 
 // PrintCompositorClassStruct creates an uninitialised PrintCompositorClass.
 func PrintCompositorClassStruct() *PrintCompositorClass {
@@ -1552,7 +1723,11 @@ type RegionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // RegionClassStruct creates an uninitialised RegionClass.
 func RegionClassStruct() *RegionClass {
@@ -1682,7 +1857,11 @@ type SearchContextClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // SearchContextClassStruct creates an uninitialised SearchContextClass.
 func SearchContextClassStruct() *SearchContextClass {
@@ -1746,7 +1925,11 @@ type SearchSettingsClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // SearchSettingsClassStruct creates an uninitialised SearchSettingsClass.
 func SearchSettingsClassStruct() *SearchSettingsClass {
@@ -1810,7 +1993,11 @@ type SpaceDrawerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // SpaceDrawerClassStruct creates an uninitialised SpaceDrawerClass.
 func SpaceDrawerClassStruct() *SpaceDrawerClass {
@@ -1904,6 +2091,8 @@ type StyleSchemeChooserButtonClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.ButtonClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.ButtonClass'
+
 // StyleSchemeChooserButtonClassStruct creates an uninitialised StyleSchemeChooserButtonClass.
 func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
 	err := styleSchemeChooserButtonClassStruct_Set()
@@ -1936,11 +2125,19 @@ type StyleSchemeChooserInterface struct {
 
 // UNSUPPORTED : C value 'base_interface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_style_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_style_scheme' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_style_scheme' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_style_scheme' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // StyleSchemeChooserInterfaceStruct creates an uninitialised StyleSchemeChooserInterface.
 func StyleSchemeChooserInterfaceStruct() *StyleSchemeChooserInterface {
@@ -1974,6 +2171,8 @@ type StyleSchemeChooserWidgetClass struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.BinClass'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.BinClass'
+
 // StyleSchemeChooserWidgetClassStruct creates an uninitialised StyleSchemeChooserWidgetClass.
 func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
 	err := styleSchemeChooserWidgetClassStruct_Set()
@@ -2006,9 +2205,15 @@ type StyleSchemeClass struct {
 
 // UNSUPPORTED : C value 'base_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'base_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
 
 // StyleSchemeClassStruct creates an uninitialised StyleSchemeClass.
 func StyleSchemeClassStruct() *StyleSchemeClass {
@@ -2042,13 +2247,23 @@ type StyleSchemeManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_source_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_source_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_source_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_source_reserved4' : for field setter : missing Type
 
 // StyleSchemeManagerClassStruct creates an uninitialised StyleSchemeManagerClass.
 func StyleSchemeManagerClassStruct() *StyleSchemeManagerClass {
@@ -2142,7 +2357,11 @@ type TagClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextTagClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextTagClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // TagClassStruct creates an uninitialised TagClass.
 func TagClassStruct() *TagClass {
@@ -2176,21 +2395,39 @@ type UndoManagerIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'can_undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_undo' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_redo' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_redo' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'undo' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'redo' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'redo' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'begin_not_undoable_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'begin_not_undoable_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'end_not_undoable_action' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'end_not_undoable_action' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_undo_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_undo_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_redo_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_redo_changed' : for field setter : missing Type
 
 // UndoManagerIfaceStruct creates an uninitialised UndoManagerIface.
 func UndoManagerIfaceStruct() *UndoManagerIface {
@@ -2224,17 +2461,31 @@ type ViewClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextViewClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextViewClass'
+
 // UNSUPPORTED : C value 'undo' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'undo' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'redo' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'redo' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'line_mark_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'line_mark_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show_completion' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show_completion' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_lines' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_lines' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_words' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_words' : for field setter : missing Type
 
 // ViewClassStruct creates an uninitialised ViewClass.
 func ViewClassStruct() *ViewClass {

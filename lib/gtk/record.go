@@ -25,21 +25,38 @@ type AboutDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AboutDialogClass) ParentClass() *DialogClass {
+func (recv *AboutDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(aboutDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AboutDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(aboutDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'activate_link' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_link' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AboutDialogClassStruct creates an uninitialised AboutDialogClass.
 func AboutDialogClassStruct() *AboutDialogClass {
@@ -103,15 +120,27 @@ type AccelGroupClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'accel_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accel_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AccelGroupClassStruct creates an uninitialised AccelGroupClass.
 func AccelGroupClassStruct() *AccelGroupClass {
@@ -144,19 +173,35 @@ type AccelGroupEntry struct {
 }
 
 // Key returns the C field 'key'.
-func (recv *AccelGroupEntry) Key() *AccelKey {
+func (recv *AccelGroupEntry) FieldKey() *AccelKey {
 	argValue := gi.FieldGet(accelGroupEntryStruct, recv.native, "key")
 	value := &AccelKey{native: argValue.Pointer()}
 	return value
 }
 
+// Key sets the value of the C field 'key'.
+func (recv *AccelGroupEntry) SetFieldKey(value *AccelKey) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(accelGroupEntryStruct, recv.native, "key", argValue)
+}
+
 // UNSUPPORTED : C value 'closure' : for field getter : no Go type for 'GObject.Closure'
 
+// UNSUPPORTED : C value 'closure' : for field setter : no Go type for 'GObject.Closure'
+
 // AccelPathQuark returns the C field 'accel_path_quark'.
-func (recv *AccelGroupEntry) AccelPathQuark() glib.Quark {
+func (recv *AccelGroupEntry) FieldAccelPathQuark() glib.Quark {
 	argValue := gi.FieldGet(accelGroupEntryStruct, recv.native, "accel_path_quark")
 	value := glib.Quark(argValue.Uint32())
 	return value
+}
+
+// AccelPathQuark sets the value of the C field 'accel_path_quark'.
+func (recv *AccelGroupEntry) SetFieldAccelPathQuark(value glib.Quark) {
+	var argValue gi.Argument
+	argValue.SetUint32(uint32(value))
+	gi.FieldSet(accelGroupEntryStruct, recv.native, "accel_path_quark", argValue)
 }
 
 // AccelGroupEntryStruct creates an uninitialised AccelGroupEntry.
@@ -220,19 +265,35 @@ type AccelKey struct {
 }
 
 // AccelKey returns the C field 'accel_key'.
-func (recv *AccelKey) AccelKey() uint32 {
+func (recv *AccelKey) FieldAccelKey() uint32 {
 	argValue := gi.FieldGet(accelKeyStruct, recv.native, "accel_key")
 	value := argValue.Uint32()
 	return value
 }
 
+// AccelKey sets the value of the C field 'accel_key'.
+func (recv *AccelKey) SetFieldAccelKey(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(accelKeyStruct, recv.native, "accel_key", argValue)
+}
+
 // UNSUPPORTED : C value 'accel_mods' : for field getter : no Go type for 'Gdk.ModifierType'
 
+// UNSUPPORTED : C value 'accel_mods' : for field setter : no Go type for 'Gdk.ModifierType'
+
 // AccelFlags returns the C field 'accel_flags'.
-func (recv *AccelKey) AccelFlags() uint32 {
+func (recv *AccelKey) FieldAccelFlags() uint32 {
 	argValue := gi.FieldGet(accelKeyStruct, recv.native, "accel_flags")
 	value := argValue.Uint32()
 	return value
+}
+
+// AccelFlags sets the value of the C field 'accel_flags'.
+func (recv *AccelKey) SetFieldAccelFlags(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(accelKeyStruct, recv.native, "accel_flags", argValue)
 }
 
 // AccelKeyStruct creates an uninitialised AccelKey.
@@ -266,61 +327,118 @@ type AccelLabelClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AccelLabelClass) ParentClass() *LabelClass {
+func (recv *AccelLabelClass) FieldParentClass() *LabelClass {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "parent_class")
 	value := &LabelClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AccelLabelClass) SetFieldParentClass(value *LabelClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "parent_class", argValue)
+}
+
 // SignalQuote1 returns the C field 'signal_quote1'.
-func (recv *AccelLabelClass) SignalQuote1() string {
+func (recv *AccelLabelClass) FieldSignalQuote1() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "signal_quote1")
 	value := argValue.String(false)
 	return value
 }
 
+// SignalQuote1 sets the value of the C field 'signal_quote1'.
+func (recv *AccelLabelClass) SetFieldSignalQuote1(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "signal_quote1", argValue)
+}
+
 // SignalQuote2 returns the C field 'signal_quote2'.
-func (recv *AccelLabelClass) SignalQuote2() string {
+func (recv *AccelLabelClass) FieldSignalQuote2() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "signal_quote2")
 	value := argValue.String(false)
 	return value
 }
 
+// SignalQuote2 sets the value of the C field 'signal_quote2'.
+func (recv *AccelLabelClass) SetFieldSignalQuote2(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "signal_quote2", argValue)
+}
+
 // ModNameShift returns the C field 'mod_name_shift'.
-func (recv *AccelLabelClass) ModNameShift() string {
+func (recv *AccelLabelClass) FieldModNameShift() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "mod_name_shift")
 	value := argValue.String(false)
 	return value
 }
 
+// ModNameShift sets the value of the C field 'mod_name_shift'.
+func (recv *AccelLabelClass) SetFieldModNameShift(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "mod_name_shift", argValue)
+}
+
 // ModNameControl returns the C field 'mod_name_control'.
-func (recv *AccelLabelClass) ModNameControl() string {
+func (recv *AccelLabelClass) FieldModNameControl() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "mod_name_control")
 	value := argValue.String(false)
 	return value
 }
 
+// ModNameControl sets the value of the C field 'mod_name_control'.
+func (recv *AccelLabelClass) SetFieldModNameControl(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "mod_name_control", argValue)
+}
+
 // ModNameAlt returns the C field 'mod_name_alt'.
-func (recv *AccelLabelClass) ModNameAlt() string {
+func (recv *AccelLabelClass) FieldModNameAlt() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "mod_name_alt")
 	value := argValue.String(false)
 	return value
 }
 
+// ModNameAlt sets the value of the C field 'mod_name_alt'.
+func (recv *AccelLabelClass) SetFieldModNameAlt(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "mod_name_alt", argValue)
+}
+
 // ModSeparator returns the C field 'mod_separator'.
-func (recv *AccelLabelClass) ModSeparator() string {
+func (recv *AccelLabelClass) FieldModSeparator() string {
 	argValue := gi.FieldGet(accelLabelClassStruct, recv.native, "mod_separator")
 	value := argValue.String(false)
 	return value
 }
 
+// ModSeparator sets the value of the C field 'mod_separator'.
+func (recv *AccelLabelClass) SetFieldModSeparator(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(accelLabelClassStruct, recv.native, "mod_separator", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AccelLabelClassStruct creates an uninitialised AccelLabelClass.
 func AccelLabelClassStruct() *AccelLabelClass {
@@ -414,15 +532,27 @@ type AccessibleClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Atk.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Atk.ObjectClass'
+
 // UNSUPPORTED : C value 'connect_widget_destroyed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'connect_widget_destroyed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'widget_set' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'widget_set' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'widget_unset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'widget_unset' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AccessibleClassStruct creates an uninitialised AccessibleClass.
 func AccessibleClassStruct() *AccessibleClass {
@@ -486,11 +616,19 @@ type ActionBarClass struct {
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ActionBarClassStruct creates an uninitialised ActionBarClass.
 func ActionBarClassStruct() *ActionBarClass {
@@ -554,25 +692,47 @@ type ActionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_menu_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_menu_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_tool_item' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_tool_item' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'connect_proxy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'connect_proxy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'disconnect_proxy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'disconnect_proxy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_menu' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_menu' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ActionClassStruct creates an uninitialised ActionClass.
 func ActionClassStruct() *ActionClass {
@@ -605,41 +765,78 @@ type ActionEntry struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *ActionEntry) Name() string {
+func (recv *ActionEntry) FieldName() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *ActionEntry) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "name", argValue)
+}
+
 // StockId returns the C field 'stock_id'.
-func (recv *ActionEntry) StockId() string {
+func (recv *ActionEntry) FieldStockId() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "stock_id")
 	value := argValue.String(false)
 	return value
 }
 
+// StockId sets the value of the C field 'stock_id'.
+func (recv *ActionEntry) SetFieldStockId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "stock_id", argValue)
+}
+
 // Label returns the C field 'label'.
-func (recv *ActionEntry) Label() string {
+func (recv *ActionEntry) FieldLabel() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "label")
 	value := argValue.String(false)
 	return value
 }
 
+// Label sets the value of the C field 'label'.
+func (recv *ActionEntry) SetFieldLabel(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "label", argValue)
+}
+
 // Accelerator returns the C field 'accelerator'.
-func (recv *ActionEntry) Accelerator() string {
+func (recv *ActionEntry) FieldAccelerator() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "accelerator")
 	value := argValue.String(false)
 	return value
 }
 
+// Accelerator sets the value of the C field 'accelerator'.
+func (recv *ActionEntry) SetFieldAccelerator(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "accelerator", argValue)
+}
+
 // Tooltip returns the C field 'tooltip'.
-func (recv *ActionEntry) Tooltip() string {
+func (recv *ActionEntry) FieldTooltip() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "tooltip")
 	value := argValue.String(false)
 	return value
 }
 
+// Tooltip sets the value of the C field 'tooltip'.
+func (recv *ActionEntry) SetFieldTooltip(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "tooltip", argValue)
+}
+
 // UNSUPPORTED : C value 'callback' : for field getter : no Go type for 'GObject.Callback'
+
+// UNSUPPORTED : C value 'callback' : for field setter : no Go type for 'GObject.Callback'
 
 // ActionEntryStruct creates an uninitialised ActionEntry.
 func ActionEntryStruct() *ActionEntry {
@@ -673,15 +870,27 @@ type ActionGroupClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ActionGroupClassStruct creates an uninitialised ActionGroupClass.
 func ActionGroupClassStruct() *ActionGroupClass {
@@ -775,11 +984,19 @@ type ActionableInterface struct {
 
 // UNSUPPORTED : C value 'get_action_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_action_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_action_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_action_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_action_target_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_action_target_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_action_target_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_action_target_value' : for field setter : missing Type
 
 // ActionableInterfaceStruct creates an uninitialised ActionableInterface.
 func ActionableInterfaceStruct() *ActionableInterface {
@@ -813,7 +1030,11 @@ type ActivatableIface struct {
 
 // UNSUPPORTED : C value 'update' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'update' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'sync_action_properties' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'sync_action_properties' : for field setter : missing Type
 
 // ActivatableIfaceStruct creates an uninitialised ActivatableIface.
 func ActivatableIfaceStruct() *ActivatableIface {
@@ -847,17 +1068,31 @@ type AdjustmentClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'value_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AdjustmentClassStruct creates an uninitialised AdjustmentClass.
 func AdjustmentClassStruct() *AdjustmentClass {
@@ -920,19 +1155,34 @@ type AlignmentClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AlignmentClass) ParentClass() *BinClass {
+func (recv *AlignmentClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(alignmentClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AlignmentClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(alignmentClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AlignmentClassStruct creates an uninitialised AlignmentClass.
 func AlignmentClassStruct() *AlignmentClass {
@@ -995,13 +1245,22 @@ type AppChooserButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AppChooserButtonClass) ParentClass() *ComboBoxClass {
+func (recv *AppChooserButtonClass) FieldParentClass() *ComboBoxClass {
 	argValue := gi.FieldGet(appChooserButtonClassStruct, recv.native, "parent_class")
 	value := &ComboBoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AppChooserButtonClass) SetFieldParentClass(value *ComboBoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(appChooserButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'custom_item_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'custom_item_activated' : for field setter : missing Type
 
 // AppChooserButtonClassStruct creates an uninitialised AppChooserButtonClass.
 func AppChooserButtonClassStruct() *AppChooserButtonClass {
@@ -1064,10 +1323,17 @@ type AppChooserDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AppChooserDialogClass) ParentClass() *DialogClass {
+func (recv *AppChooserDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(appChooserDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AppChooserDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(appChooserDialogClassStruct, recv.native, "parent_class", argValue)
 }
 
 // AppChooserDialogClassStruct creates an uninitialised AppChooserDialogClass.
@@ -1131,17 +1397,30 @@ type AppChooserWidgetClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AppChooserWidgetClass) ParentClass() *BoxClass {
+func (recv *AppChooserWidgetClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(appChooserWidgetClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AppChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(appChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'application_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'application_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'application_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'application_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate_popup' : for field setter : missing Type
 
 // AppChooserWidgetClassStruct creates an uninitialised AppChooserWidgetClass.
 func AppChooserWidgetClassStruct() *AppChooserWidgetClass {
@@ -1205,9 +1484,15 @@ type ApplicationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gio.ApplicationClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gio.ApplicationClass'
+
 // UNSUPPORTED : C value 'window_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'window_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'window_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'window_removed' : for field setter : missing Type
 
 // ApplicationClassStruct creates an uninitialised ApplicationClass.
 func ApplicationClassStruct() *ApplicationClass {
@@ -1270,10 +1555,17 @@ type ApplicationWindowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ApplicationWindowClass) ParentClass() *WindowClass {
+func (recv *ApplicationWindowClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(applicationWindowClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ApplicationWindowClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(applicationWindowClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ApplicationWindowClassStruct creates an uninitialised ApplicationWindowClass.
@@ -1337,10 +1629,17 @@ type ArrowAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ArrowAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *ArrowAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(arrowAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ArrowAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(arrowAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ArrowAccessibleClassStruct creates an uninitialised ArrowAccessibleClass.
@@ -1404,19 +1703,34 @@ type ArrowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ArrowClass) ParentClass() *MiscClass {
+func (recv *ArrowClass) FieldParentClass() *MiscClass {
 	argValue := gi.FieldGet(arrowClassStruct, recv.native, "parent_class")
 	value := &MiscClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ArrowClass) SetFieldParentClass(value *MiscClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(arrowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ArrowClassStruct creates an uninitialised ArrowClass.
 func ArrowClassStruct() *ArrowClass {
@@ -1479,19 +1793,34 @@ type AspectFrameClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AspectFrameClass) ParentClass() *FrameClass {
+func (recv *AspectFrameClass) FieldParentClass() *FrameClass {
 	argValue := gi.FieldGet(aspectFrameClassStruct, recv.native, "parent_class")
 	value := &FrameClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AspectFrameClass) SetFieldParentClass(value *FrameClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(aspectFrameClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // AspectFrameClassStruct creates an uninitialised AspectFrameClass.
 func AspectFrameClassStruct() *AspectFrameClass {
@@ -1554,29 +1883,54 @@ type AssistantClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *AssistantClass) ParentClass() *WindowClass {
+func (recv *AssistantClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(assistantClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *AssistantClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(assistantClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'prepare' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'prepare' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'apply' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'apply' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cancel' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cancel' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // AssistantClassStruct creates an uninitialised AssistantClass.
 func AssistantClassStruct() *AssistantClass {
@@ -1639,19 +1993,34 @@ type BinClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *BinClass) ParentClass() *ContainerClass {
+func (recv *BinClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(binClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *BinClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(binClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // BinClassStruct creates an uninitialised BinClass.
 func BinClassStruct() *BinClass {
@@ -1715,6 +2084,8 @@ type BindingArg struct {
 
 // UNSUPPORTED : C value 'arg_type' : for field getter : no Go type for 'GType'
 
+// UNSUPPORTED : C value 'arg_type' : for field setter : no Go type for 'GType'
+
 // BindingArgStruct creates an uninitialised BindingArg.
 func BindingArgStruct() *BindingArg {
 	err := bindingArgStruct_Set()
@@ -1746,61 +2117,119 @@ type BindingEntry struct {
 }
 
 // Keyval returns the C field 'keyval'.
-func (recv *BindingEntry) Keyval() uint32 {
+func (recv *BindingEntry) FieldKeyval() uint32 {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "keyval")
 	value := argValue.Uint32()
 	return value
 }
 
+// Keyval sets the value of the C field 'keyval'.
+func (recv *BindingEntry) SetFieldKeyval(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingEntryStruct, recv.native, "keyval", argValue)
+}
+
 // UNSUPPORTED : C value 'modifiers' : for field getter : no Go type for 'Gdk.ModifierType'
 
+// UNSUPPORTED : C value 'modifiers' : for field setter : no Go type for 'Gdk.ModifierType'
+
 // BindingSet returns the C field 'binding_set'.
-func (recv *BindingEntry) BindingSet() *BindingSet {
+func (recv *BindingEntry) FieldBindingSet() *BindingSet {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "binding_set")
 	value := &BindingSet{native: argValue.Pointer()}
 	return value
 }
 
+// BindingSet sets the value of the C field 'binding_set'.
+func (recv *BindingEntry) SetFieldBindingSet(value *BindingSet) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingEntryStruct, recv.native, "binding_set", argValue)
+}
+
 // Destroyed returns the C field 'destroyed'.
-func (recv *BindingEntry) Destroyed() uint32 {
+func (recv *BindingEntry) FieldDestroyed() uint32 {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "destroyed")
 	value := argValue.Uint32()
 	return value
 }
 
+// Destroyed sets the value of the C field 'destroyed'.
+func (recv *BindingEntry) SetFieldDestroyed(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingEntryStruct, recv.native, "destroyed", argValue)
+}
+
 // InEmission returns the C field 'in_emission'.
-func (recv *BindingEntry) InEmission() uint32 {
+func (recv *BindingEntry) FieldInEmission() uint32 {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "in_emission")
 	value := argValue.Uint32()
 	return value
 }
 
+// InEmission sets the value of the C field 'in_emission'.
+func (recv *BindingEntry) SetFieldInEmission(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingEntryStruct, recv.native, "in_emission", argValue)
+}
+
 // MarksUnbound returns the C field 'marks_unbound'.
-func (recv *BindingEntry) MarksUnbound() uint32 {
+func (recv *BindingEntry) FieldMarksUnbound() uint32 {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "marks_unbound")
 	value := argValue.Uint32()
 	return value
 }
 
+// MarksUnbound sets the value of the C field 'marks_unbound'.
+func (recv *BindingEntry) SetFieldMarksUnbound(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingEntryStruct, recv.native, "marks_unbound", argValue)
+}
+
 // SetNext returns the C field 'set_next'.
-func (recv *BindingEntry) SetNext() *BindingEntry {
+func (recv *BindingEntry) FieldSetNext() *BindingEntry {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "set_next")
 	value := &BindingEntry{native: argValue.Pointer()}
 	return value
 }
 
+// SetNext sets the value of the C field 'set_next'.
+func (recv *BindingEntry) SetFieldSetNext(value *BindingEntry) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingEntryStruct, recv.native, "set_next", argValue)
+}
+
 // HashNext returns the C field 'hash_next'.
-func (recv *BindingEntry) HashNext() *BindingEntry {
+func (recv *BindingEntry) FieldHashNext() *BindingEntry {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "hash_next")
 	value := &BindingEntry{native: argValue.Pointer()}
 	return value
 }
 
+// HashNext sets the value of the C field 'hash_next'.
+func (recv *BindingEntry) SetFieldHashNext(value *BindingEntry) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingEntryStruct, recv.native, "hash_next", argValue)
+}
+
 // Signals returns the C field 'signals'.
-func (recv *BindingEntry) Signals() *BindingSignal {
+func (recv *BindingEntry) FieldSignals() *BindingSignal {
 	argValue := gi.FieldGet(bindingEntryStruct, recv.native, "signals")
 	value := &BindingSignal{native: argValue.Pointer()}
 	return value
+}
+
+// Signals sets the value of the C field 'signals'.
+func (recv *BindingEntry) SetFieldSignals(value *BindingSignal) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingEntryStruct, recv.native, "signals", argValue)
 }
 
 // BindingEntryStruct creates an uninitialised BindingEntry.
@@ -1834,44 +2263,85 @@ type BindingSet struct {
 }
 
 // SetName returns the C field 'set_name'.
-func (recv *BindingSet) SetName() string {
+func (recv *BindingSet) FieldSetName() string {
 	argValue := gi.FieldGet(bindingSetStruct, recv.native, "set_name")
 	value := argValue.String(false)
 	return value
 }
 
+// SetName sets the value of the C field 'set_name'.
+func (recv *BindingSet) SetFieldSetName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(bindingSetStruct, recv.native, "set_name", argValue)
+}
+
 // Priority returns the C field 'priority'.
-func (recv *BindingSet) Priority() int32 {
+func (recv *BindingSet) FieldPriority() int32 {
 	argValue := gi.FieldGet(bindingSetStruct, recv.native, "priority")
 	value := argValue.Int32()
 	return value
 }
 
+// Priority sets the value of the C field 'priority'.
+func (recv *BindingSet) SetFieldPriority(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(bindingSetStruct, recv.native, "priority", argValue)
+}
+
 // UNSUPPORTED : C value 'widget_path_pspecs' : for field getter : no Go type for 'GLib.SList'
+
+// UNSUPPORTED : C value 'widget_path_pspecs' : for field setter : no Go type for 'GLib.SList'
 
 // UNSUPPORTED : C value 'widget_class_pspecs' : for field getter : no Go type for 'GLib.SList'
 
+// UNSUPPORTED : C value 'widget_class_pspecs' : for field setter : no Go type for 'GLib.SList'
+
 // UNSUPPORTED : C value 'class_branch_pspecs' : for field getter : no Go type for 'GLib.SList'
 
+// UNSUPPORTED : C value 'class_branch_pspecs' : for field setter : no Go type for 'GLib.SList'
+
 // Entries returns the C field 'entries'.
-func (recv *BindingSet) Entries() *BindingEntry {
+func (recv *BindingSet) FieldEntries() *BindingEntry {
 	argValue := gi.FieldGet(bindingSetStruct, recv.native, "entries")
 	value := &BindingEntry{native: argValue.Pointer()}
 	return value
 }
 
+// Entries sets the value of the C field 'entries'.
+func (recv *BindingSet) SetFieldEntries(value *BindingEntry) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingSetStruct, recv.native, "entries", argValue)
+}
+
 // Current returns the C field 'current'.
-func (recv *BindingSet) Current() *BindingEntry {
+func (recv *BindingSet) FieldCurrent() *BindingEntry {
 	argValue := gi.FieldGet(bindingSetStruct, recv.native, "current")
 	value := &BindingEntry{native: argValue.Pointer()}
 	return value
 }
 
+// Current sets the value of the C field 'current'.
+func (recv *BindingSet) SetFieldCurrent(value *BindingEntry) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingSetStruct, recv.native, "current", argValue)
+}
+
 // Parsed returns the C field 'parsed'.
-func (recv *BindingSet) Parsed() uint32 {
+func (recv *BindingSet) FieldParsed() uint32 {
 	argValue := gi.FieldGet(bindingSetStruct, recv.native, "parsed")
 	value := argValue.Uint32()
 	return value
+}
+
+// Parsed sets the value of the C field 'parsed'.
+func (recv *BindingSet) SetFieldParsed(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingSetStruct, recv.native, "parsed", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
@@ -1909,27 +2379,50 @@ type BindingSignal struct {
 }
 
 // Next returns the C field 'next'.
-func (recv *BindingSignal) Next() *BindingSignal {
+func (recv *BindingSignal) FieldNext() *BindingSignal {
 	argValue := gi.FieldGet(bindingSignalStruct, recv.native, "next")
 	value := &BindingSignal{native: argValue.Pointer()}
 	return value
 }
 
+// Next sets the value of the C field 'next'.
+func (recv *BindingSignal) SetFieldNext(value *BindingSignal) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bindingSignalStruct, recv.native, "next", argValue)
+}
+
 // SignalName returns the C field 'signal_name'.
-func (recv *BindingSignal) SignalName() string {
+func (recv *BindingSignal) FieldSignalName() string {
 	argValue := gi.FieldGet(bindingSignalStruct, recv.native, "signal_name")
 	value := argValue.String(false)
 	return value
 }
 
+// SignalName sets the value of the C field 'signal_name'.
+func (recv *BindingSignal) SetFieldSignalName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(bindingSignalStruct, recv.native, "signal_name", argValue)
+}
+
 // NArgs returns the C field 'n_args'.
-func (recv *BindingSignal) NArgs() uint32 {
+func (recv *BindingSignal) FieldNArgs() uint32 {
 	argValue := gi.FieldGet(bindingSignalStruct, recv.native, "n_args")
 	value := argValue.Uint32()
 	return value
 }
 
+// NArgs sets the value of the C field 'n_args'.
+func (recv *BindingSignal) SetFieldNArgs(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(bindingSignalStruct, recv.native, "n_args", argValue)
+}
+
 // UNSUPPORTED : C value 'args' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'args' : for field setter : missing Type
 
 // BindingSignalStruct creates an uninitialised BindingSignal.
 func BindingSignalStruct() *BindingSignal {
@@ -1962,10 +2455,17 @@ type BooleanCellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *BooleanCellAccessibleClass) ParentClass() *RendererCellAccessibleClass {
+func (recv *BooleanCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
 	argValue := gi.FieldGet(booleanCellAccessibleClassStruct, recv.native, "parent_class")
 	value := &RendererCellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *BooleanCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(booleanCellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // BooleanCellAccessibleClassStruct creates an uninitialised BooleanCellAccessibleClass.
@@ -2029,31 +2529,59 @@ type Border struct {
 }
 
 // Left returns the C field 'left'.
-func (recv *Border) Left() int16 {
+func (recv *Border) FieldLeft() int16 {
 	argValue := gi.FieldGet(borderStruct, recv.native, "left")
 	value := argValue.Int16()
 	return value
 }
 
+// Left sets the value of the C field 'left'.
+func (recv *Border) SetFieldLeft(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(borderStruct, recv.native, "left", argValue)
+}
+
 // Right returns the C field 'right'.
-func (recv *Border) Right() int16 {
+func (recv *Border) FieldRight() int16 {
 	argValue := gi.FieldGet(borderStruct, recv.native, "right")
 	value := argValue.Int16()
 	return value
 }
 
+// Right sets the value of the C field 'right'.
+func (recv *Border) SetFieldRight(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(borderStruct, recv.native, "right", argValue)
+}
+
 // Top returns the C field 'top'.
-func (recv *Border) Top() int16 {
+func (recv *Border) FieldTop() int16 {
 	argValue := gi.FieldGet(borderStruct, recv.native, "top")
 	value := argValue.Int16()
 	return value
 }
 
+// Top sets the value of the C field 'top'.
+func (recv *Border) SetFieldTop(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(borderStruct, recv.native, "top", argValue)
+}
+
 // Bottom returns the C field 'bottom'.
-func (recv *Border) Bottom() int16 {
+func (recv *Border) FieldBottom() int16 {
 	argValue := gi.FieldGet(borderStruct, recv.native, "bottom")
 	value := argValue.Int16()
 	return value
+}
+
+// Bottom sets the value of the C field 'bottom'.
+func (recv *Border) SetFieldBottom(value int16) {
+	var argValue gi.Argument
+	argValue.SetInt16(value)
+	gi.FieldSet(borderStruct, recv.native, "bottom", argValue)
 }
 
 var borderNewFunction *gi.Function
@@ -2162,19 +2690,34 @@ type BoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *BoxClass) ParentClass() *ContainerClass {
+func (recv *BoxClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(boxClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *BoxClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(boxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // BoxClassStruct creates an uninitialised BoxClass.
 func BoxClassStruct() *BoxClass {
@@ -2238,25 +2781,47 @@ type BuildableIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'set_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_buildable_property' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_buildable_property' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'construct_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'construct_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'custom_tag_start' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'custom_tag_start' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'custom_tag_end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'custom_tag_end' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'custom_finished' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'custom_finished' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'parser_finished' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'parser_finished' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_internal_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_internal_child' : for field setter : missing Type
 
 // BuildableIfaceStruct creates an uninitialised BuildableIface.
 func BuildableIfaceStruct() *BuildableIface {
@@ -2290,23 +2855,43 @@ type BuilderClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_type_from_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_type_from_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // BuilderClassStruct creates an uninitialised BuilderClass.
 func BuilderClassStruct() *BuilderClass {
@@ -2369,10 +2954,17 @@ type ButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ButtonAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ButtonAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(buttonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ButtonAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(buttonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ButtonAccessibleClassStruct creates an uninitialised ButtonAccessibleClass.
@@ -2436,19 +3028,34 @@ type ButtonBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ButtonBoxClass) ParentClass() *BoxClass {
+func (recv *ButtonBoxClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(buttonBoxClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ButtonBoxClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(buttonBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ButtonBoxClassStruct creates an uninitialised ButtonBoxClass.
 func ButtonBoxClassStruct() *ButtonBoxClass {
@@ -2511,31 +3118,58 @@ type ButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ButtonClass) ParentClass() *BinClass {
+func (recv *ButtonClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(buttonClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ButtonClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(buttonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'pressed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pressed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'released' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'released' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'clicked' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'clicked' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'enter' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'enter' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'leave' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'leave' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ButtonClassStruct creates an uninitialised ButtonClass.
 func ButtonClassStruct() *ButtonClass {
@@ -2598,33 +3232,62 @@ type CalendarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CalendarClass) ParentClass() *WidgetClass {
+func (recv *CalendarClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(calendarClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CalendarClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(calendarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'month_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'month_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'day_selected' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'day_selected' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'day_selected_double_click' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'day_selected_double_click' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'prev_month' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'prev_month' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'next_month' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_month' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'prev_year' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'prev_year' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'next_year' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_year' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CalendarClassStruct creates an uninitialised CalendarClass.
 func CalendarClassStruct() *CalendarClass {
@@ -2687,13 +3350,22 @@ type CellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellAccessibleClass) ParentClass() *AccessibleClass {
+func (recv *CellAccessibleClass) FieldParentClass() *AccessibleClass {
 	argValue := gi.FieldGet(cellAccessibleClassStruct, recv.native, "parent_class")
 	value := &AccessibleClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellAccessibleClass) SetFieldParentClass(value *AccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellAccessibleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'update_cache' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update_cache' : for field setter : missing Type
 
 // CellAccessibleClassStruct creates an uninitialised CellAccessibleClass.
 func CellAccessibleClassStruct() *CellAccessibleClass {
@@ -2727,29 +3399,55 @@ type CellAccessibleParentIface struct {
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_cell_extents' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_cell_extents' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_cell_area' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_cell_area' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'grab_focus' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'grab_focus' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_child_index' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_child_index' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_renderer_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_renderer_state' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'expand_collapse' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'expand_collapse' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'edit' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'edit' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'update_relationset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update_relationset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_cell_position' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_cell_position' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_header_cells' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_column_header_cells' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_row_header_cells' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_row_header_cells' : for field setter : missing Type
 
 // CellAccessibleParentIfaceStruct creates an uninitialised CellAccessibleParentIface.
 func CellAccessibleParentIfaceStruct() *CellAccessibleParentIface {
@@ -2813,11 +3511,19 @@ type CellAreaBoxClass struct {
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellAreaBoxClassStruct creates an uninitialised CellAreaBoxClass.
 func CellAreaBoxClassStruct() *CellAreaBoxClass {
@@ -2881,57 +3587,111 @@ type CellAreaClass struct {
 
 // UNSUPPORTED : C value 'add' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'foreach' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'foreach' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'foreach_alloc' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'foreach_alloc' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'apply_attributes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'apply_attributes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_context' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_context' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_context' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_context' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_request_mode' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_request_mode' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_width' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_width' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_height_for_width' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_height_for_width' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_height' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_height' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_width_for_height' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_width_for_height' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_cell_property' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_cell_property' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_cell_property' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_cell_property' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_activatable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_activatable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
 
@@ -3001,23 +3761,43 @@ type CellAreaContextClass struct {
 
 // UNSUPPORTED : C value 'allocate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'allocate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_height_for_width' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_height_for_width' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_width_for_height' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_width_for_height' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // CellAreaContextClassStruct creates an uninitialised CellAreaContextClass.
 func CellAreaContextClassStruct() *CellAreaContextClass {
@@ -3111,9 +3891,15 @@ type CellEditableIface struct {
 
 // UNSUPPORTED : C value 'editing_done' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'editing_done' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_widget' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_widget' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'start_editing' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_editing' : for field setter : missing Type
 
 // CellEditableIfaceStruct creates an uninitialised CellEditableIface.
 func CellEditableIfaceStruct() *CellEditableIface {
@@ -3147,21 +3933,39 @@ type CellLayoutIface struct {
 
 // UNSUPPORTED : C value 'pack_start' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'pack_start' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pack_end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pack_end' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'clear' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'clear' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_attribute' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_attribute' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_cell_data_func' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_cell_data_func' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'clear_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'clear_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'reorder' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reorder' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_cells' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_cells' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_area' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_area' : for field setter : missing Type
 
 // CellLayoutIfaceStruct creates an uninitialised CellLayoutIface.
 func CellLayoutIfaceStruct() *CellLayoutIface {
@@ -3194,25 +3998,46 @@ type CellRendererAccelClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererAccelClass) ParentClass() *CellRendererTextClass {
+func (recv *CellRendererAccelClass) FieldParentClass() *CellRendererTextClass {
 	argValue := gi.FieldGet(cellRendererAccelClassStruct, recv.native, "parent_class")
 	value := &CellRendererTextClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererAccelClass) SetFieldParentClass(value *CellRendererTextClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererAccelClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'accel_edited' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accel_edited' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'accel_cleared' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'accel_cleared' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererAccelClassStruct creates an uninitialised CellRendererAccelClass.
 func CellRendererAccelClassStruct() *CellRendererAccelClass {
@@ -3276,33 +4101,63 @@ type CellRendererClass struct {
 
 // UNSUPPORTED : C value 'get_request_mode' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_request_mode' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_width' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_width' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_height_for_width' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_height_for_width' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_height' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_height' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_width_for_height' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_width_for_height' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_aligned_area' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_aligned_area' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'start_editing' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_editing' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'editing_canceled' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'editing_canceled' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'editing_started' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'editing_started' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
 
@@ -3367,19 +4222,34 @@ type CellRendererComboClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *CellRendererComboClass) Parent() *CellRendererTextClass {
+func (recv *CellRendererComboClass) FieldParent() *CellRendererTextClass {
 	argValue := gi.FieldGet(cellRendererComboClassStruct, recv.native, "parent")
 	value := &CellRendererTextClass{native: argValue.Pointer()}
 	return value
 }
 
+// Parent sets the value of the C field 'parent'.
+func (recv *CellRendererComboClass) SetFieldParent(value *CellRendererTextClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererComboClassStruct, recv.native, "parent", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererComboClassStruct creates an uninitialised CellRendererComboClass.
 func CellRendererComboClassStruct() *CellRendererComboClass {
@@ -3442,19 +4312,34 @@ type CellRendererPixbufClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererPixbufClass) ParentClass() *CellRendererClass {
+func (recv *CellRendererPixbufClass) FieldParentClass() *CellRendererClass {
 	argValue := gi.FieldGet(cellRendererPixbufClassStruct, recv.native, "parent_class")
 	value := &CellRendererClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererPixbufClass) SetFieldParentClass(value *CellRendererClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererPixbufClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererPixbufClassStruct creates an uninitialised CellRendererPixbufClass.
 func CellRendererPixbufClassStruct() *CellRendererPixbufClass {
@@ -3547,19 +4432,34 @@ type CellRendererProgressClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererProgressClass) ParentClass() *CellRendererClass {
+func (recv *CellRendererProgressClass) FieldParentClass() *CellRendererClass {
 	argValue := gi.FieldGet(cellRendererProgressClassStruct, recv.native, "parent_class")
 	value := &CellRendererClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererProgressClass) SetFieldParentClass(value *CellRendererClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererProgressClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererProgressClassStruct creates an uninitialised CellRendererProgressClass.
 func CellRendererProgressClassStruct() *CellRendererProgressClass {
@@ -3622,19 +4522,34 @@ type CellRendererSpinClass struct {
 }
 
 // Parent returns the C field 'parent'.
-func (recv *CellRendererSpinClass) Parent() *CellRendererTextClass {
+func (recv *CellRendererSpinClass) FieldParent() *CellRendererTextClass {
 	argValue := gi.FieldGet(cellRendererSpinClassStruct, recv.native, "parent")
 	value := &CellRendererTextClass{native: argValue.Pointer()}
 	return value
 }
 
+// Parent sets the value of the C field 'parent'.
+func (recv *CellRendererSpinClass) SetFieldParent(value *CellRendererTextClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererSpinClassStruct, recv.native, "parent", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererSpinClassStruct creates an uninitialised CellRendererSpinClass.
 func CellRendererSpinClassStruct() *CellRendererSpinClass {
@@ -3697,19 +4612,34 @@ type CellRendererSpinnerClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererSpinnerClass) ParentClass() *CellRendererClass {
+func (recv *CellRendererSpinnerClass) FieldParentClass() *CellRendererClass {
 	argValue := gi.FieldGet(cellRendererSpinnerClassStruct, recv.native, "parent_class")
 	value := &CellRendererClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererSpinnerClass) SetFieldParentClass(value *CellRendererClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererSpinnerClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererSpinnerClassStruct creates an uninitialised CellRendererSpinnerClass.
 func CellRendererSpinnerClassStruct() *CellRendererSpinnerClass {
@@ -3772,21 +4702,38 @@ type CellRendererTextClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererTextClass) ParentClass() *CellRendererClass {
+func (recv *CellRendererTextClass) FieldParentClass() *CellRendererClass {
 	argValue := gi.FieldGet(cellRendererTextClassStruct, recv.native, "parent_class")
 	value := &CellRendererClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererTextClass) SetFieldParentClass(value *CellRendererClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererTextClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'edited' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'edited' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererTextClassStruct creates an uninitialised CellRendererTextClass.
 func CellRendererTextClassStruct() *CellRendererTextClass {
@@ -3849,21 +4796,38 @@ type CellRendererToggleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellRendererToggleClass) ParentClass() *CellRendererClass {
+func (recv *CellRendererToggleClass) FieldParentClass() *CellRendererClass {
 	argValue := gi.FieldGet(cellRendererToggleClassStruct, recv.native, "parent_class")
 	value := &CellRendererClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellRendererToggleClass) SetFieldParentClass(value *CellRendererClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellRendererToggleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellRendererToggleClassStruct creates an uninitialised CellRendererToggleClass.
 func CellRendererToggleClassStruct() *CellRendererToggleClass {
@@ -3926,19 +4890,34 @@ type CellViewClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CellViewClass) ParentClass() *WidgetClass {
+func (recv *CellViewClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(cellViewClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CellViewClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cellViewClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CellViewClassStruct creates an uninitialised CellViewClass.
 func CellViewClassStruct() *CellViewClass {
@@ -4001,21 +4980,38 @@ type CheckButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CheckButtonClass) ParentClass() *ToggleButtonClass {
+func (recv *CheckButtonClass) FieldParentClass() *ToggleButtonClass {
 	argValue := gi.FieldGet(checkButtonClassStruct, recv.native, "parent_class")
 	value := &ToggleButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CheckButtonClass) SetFieldParentClass(value *ToggleButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(checkButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'draw_indicator' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_indicator' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CheckButtonClassStruct creates an uninitialised CheckButtonClass.
 func CheckButtonClassStruct() *CheckButtonClass {
@@ -4048,10 +5044,17 @@ type CheckMenuItemAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CheckMenuItemAccessibleClass) ParentClass() *MenuItemAccessibleClass {
+func (recv *CheckMenuItemAccessibleClass) FieldParentClass() *MenuItemAccessibleClass {
 	argValue := gi.FieldGet(checkMenuItemAccessibleClassStruct, recv.native, "parent_class")
 	value := &MenuItemAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CheckMenuItemAccessibleClass) SetFieldParentClass(value *MenuItemAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(checkMenuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // CheckMenuItemAccessibleClassStruct creates an uninitialised CheckMenuItemAccessibleClass.
@@ -4115,23 +5118,42 @@ type CheckMenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *CheckMenuItemClass) ParentClass() *MenuItemClass {
+func (recv *CheckMenuItemClass) FieldParentClass() *MenuItemClass {
 	argValue := gi.FieldGet(checkMenuItemClassStruct, recv.native, "parent_class")
 	value := &MenuItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *CheckMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(checkMenuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggled' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_indicator' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_indicator' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CheckMenuItemClassStruct creates an uninitialised CheckMenuItemClass.
 func CheckMenuItemClassStruct() *CheckMenuItemClass {
@@ -4194,21 +5216,38 @@ type ColorButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ColorButtonClass) ParentClass() *ButtonClass {
+func (recv *ColorButtonClass) FieldParentClass() *ButtonClass {
 	argValue := gi.FieldGet(colorButtonClassStruct, recv.native, "parent_class")
 	value := &ButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorButtonClass) SetFieldParentClass(value *ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(colorButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'color_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'color_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ColorButtonClassStruct creates an uninitialised ColorButtonClass.
 func ColorButtonClassStruct() *ColorButtonClass {
@@ -4271,19 +5310,34 @@ type ColorChooserDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ColorChooserDialogClass) ParentClass() *DialogClass {
+func (recv *ColorChooserDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(colorChooserDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorChooserDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(colorChooserDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ColorChooserDialogClassStruct creates an uninitialised ColorChooserDialogClass.
 func ColorChooserDialogClassStruct() *ColorChooserDialogClass {
@@ -4347,15 +5401,27 @@ type ColorChooserInterface struct {
 
 // UNSUPPORTED : C value 'base_interface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_rgba' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_rgba' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_rgba' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_rgba' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_palette' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_palette' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'color_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'color_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // ColorChooserInterfaceStruct creates an uninitialised ColorChooserInterface.
 func ColorChooserInterfaceStruct() *ColorChooserInterface {
@@ -4388,27 +5454,50 @@ type ColorChooserWidgetClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ColorChooserWidgetClass) ParentClass() *BoxClass {
+func (recv *ColorChooserWidgetClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(colorChooserWidgetClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(colorChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // ColorChooserWidgetClassStruct creates an uninitialised ColorChooserWidgetClass.
 func ColorChooserWidgetClassStruct() *ColorChooserWidgetClass {
@@ -4471,21 +5560,38 @@ type ColorSelectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ColorSelectionClass) ParentClass() *BoxClass {
+func (recv *ColorSelectionClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(colorSelectionClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorSelectionClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(colorSelectionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'color_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'color_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ColorSelectionClassStruct creates an uninitialised ColorSelectionClass.
 func ColorSelectionClassStruct() *ColorSelectionClass {
@@ -4518,19 +5624,34 @@ type ColorSelectionDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ColorSelectionDialogClass) ParentClass() *DialogClass {
+func (recv *ColorSelectionDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(colorSelectionDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorSelectionDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(colorSelectionDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ColorSelectionDialogClassStruct creates an uninitialised ColorSelectionDialogClass.
 func ColorSelectionDialogClassStruct() *ColorSelectionDialogClass {
@@ -4623,10 +5744,17 @@ type ComboBoxAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ComboBoxAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ComboBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(comboBoxAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ComboBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(comboBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ComboBoxAccessibleClassStruct creates an uninitialised ComboBoxAccessibleClass.
@@ -4690,21 +5818,38 @@ type ComboBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ComboBoxClass) ParentClass() *BinClass {
+func (recv *ComboBoxClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(comboBoxClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ComboBoxClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(comboBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'format_entry_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'format_entry_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // ComboBoxClassStruct creates an uninitialised ComboBoxClass.
 func ComboBoxClassStruct() *ComboBoxClass {
@@ -4767,19 +5912,34 @@ type ComboBoxTextClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ComboBoxTextClass) ParentClass() *ComboBoxClass {
+func (recv *ComboBoxTextClass) FieldParentClass() *ComboBoxClass {
 	argValue := gi.FieldGet(comboBoxTextClassStruct, recv.native, "parent_class")
 	value := &ComboBoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ComboBoxTextClass) SetFieldParentClass(value *ComboBoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(comboBoxTextClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ComboBoxTextClassStruct creates an uninitialised ComboBoxTextClass.
 func ComboBoxTextClassStruct() *ComboBoxTextClass {
@@ -4842,15 +6002,26 @@ type ContainerAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ContainerAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *ContainerAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(containerAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ContainerAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(containerAccessibleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'add_gtk' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_gtk' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_gtk' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_gtk' : for field setter : missing Type
 
 // ContainerAccessibleClassStruct creates an uninitialised ContainerAccessibleClass.
 func ContainerAccessibleClassStruct() *ContainerAccessibleClass {
@@ -4913,10 +6084,17 @@ type ContainerCellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ContainerCellAccessibleClass) ParentClass() *CellAccessibleClass {
+func (recv *ContainerCellAccessibleClass) FieldParentClass() *CellAccessibleClass {
 	argValue := gi.FieldGet(containerCellAccessibleClassStruct, recv.native, "parent_class")
 	value := &CellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ContainerCellAccessibleClass) SetFieldParentClass(value *CellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(containerCellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ContainerCellAccessibleClassStruct creates an uninitialised ContainerCellAccessibleClass.
@@ -4980,47 +6158,90 @@ type ContainerClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ContainerClass) ParentClass() *WidgetClass {
+func (recv *ContainerClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(containerClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ContainerClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(containerClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'add' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remove' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'check_resize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'check_resize' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'forall' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'forall' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_focus_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_focus_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'child_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'child_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'composite_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'composite_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_child_property' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_child_property' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_child_property' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_child_property' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_path_for_child' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_path_for_child' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
 
@@ -5150,13 +6371,23 @@ type CssProviderClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'parsing_error' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'parsing_error' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // CssProviderClassStruct creates an uninitialised CssProviderClass.
 func CssProviderClassStruct() *CssProviderClass {
@@ -5473,23 +6704,42 @@ type DialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *DialogClass) ParentClass() *WindowClass {
+func (recv *DialogClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(dialogClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *DialogClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(dialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'response' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'response' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // DialogClassStruct creates an uninitialised DialogClass.
 func DialogClassStruct() *DialogClass {
@@ -5552,19 +6802,34 @@ type DrawingAreaClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *DrawingAreaClass) ParentClass() *WidgetClass {
+func (recv *DrawingAreaClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(drawingAreaClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *DrawingAreaClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(drawingAreaClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // DrawingAreaClassStruct creates an uninitialised DrawingAreaClass.
 func DrawingAreaClassStruct() *DrawingAreaClass {
@@ -5598,25 +6863,47 @@ type EditableInterface struct {
 
 // UNSUPPORTED : C value 'base_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'insert_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'delete_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'delete_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'do_insert_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'do_insert_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'do_delete_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'do_delete_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_chars' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_chars' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_selection_bounds' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_selection_bounds' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_selection_bounds' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_selection_bounds' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_position' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_position' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_position' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_position' : for field setter : missing Type
 
 // EditableInterfaceStruct creates an uninitialised EditableInterface.
 func EditableInterfaceStruct() *EditableInterface {
@@ -5649,10 +6936,17 @@ type EntryAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *EntryAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *EntryAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(entryAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *EntryAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(entryAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // EntryAccessibleClassStruct creates an uninitialised EntryAccessibleClass.
@@ -5717,33 +7011,63 @@ type EntryBufferClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'inserted_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'inserted_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'deleted_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'deleted_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_length' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_length' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'delete_text' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'delete_text' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // EntryBufferClassStruct creates an uninitialised EntryBufferClass.
 func EntryBufferClassStruct() *EntryBufferClass {
@@ -5806,49 +7130,94 @@ type EntryClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *EntryClass) ParentClass() *WidgetClass {
+func (recv *EntryClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(entryClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *EntryClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(entryClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate_popup' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'insert_at_cursor' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'insert_at_cursor' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_from_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_from_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'backspace' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'backspace' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'cut_clipboard' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cut_clipboard' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_clipboard' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_clipboard' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'paste_clipboard' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'paste_clipboard' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_overwrite' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_overwrite' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text_area_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text_area_size' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_frame_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_frame_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_emoji' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_emoji' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // EntryClassStruct creates an uninitialised EntryClass.
 func EntryClassStruct() *EntryClass {
@@ -5882,21 +7251,39 @@ type EntryCompletionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'match_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'match_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'action_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'action_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_prefix' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_prefix' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cursor_on_match' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cursor_on_match' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'no_matches' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'no_matches' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved0' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved0' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // EntryCompletionClassStruct creates an uninitialised EntryCompletionClass.
 func EntryCompletionClassStruct() *EntryCompletionClass {
@@ -5989,19 +7376,34 @@ type EventBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *EventBoxClass) ParentClass() *BinClass {
+func (recv *EventBoxClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(eventBoxClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *EventBoxClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // EventBoxClassStruct creates an uninitialised EventBoxClass.
 func EventBoxClassStruct() *EventBoxClass {
@@ -6184,10 +7586,17 @@ type ExpanderAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ExpanderAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ExpanderAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(expanderAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ExpanderAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(expanderAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ExpanderAccessibleClassStruct creates an uninitialised ExpanderAccessibleClass.
@@ -6251,21 +7660,38 @@ type ExpanderClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ExpanderClass) ParentClass() *BinClass {
+func (recv *ExpanderClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(expanderClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ExpanderClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(expanderClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ExpanderClassStruct creates an uninitialised ExpanderClass.
 func ExpanderClassStruct() *ExpanderClass {
@@ -6328,21 +7754,38 @@ type FileChooserButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileChooserButtonClass) ParentClass() *BoxClass {
+func (recv *FileChooserButtonClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(fileChooserButtonClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileChooserButtonClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileChooserButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'file_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'file_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value '__gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '__gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '__gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '__gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '__gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '__gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '__gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '__gtk_reserved4' : for field setter : missing Type
 
 // FileChooserButtonClassStruct creates an uninitialised FileChooserButtonClass.
 func FileChooserButtonClassStruct() *FileChooserButtonClass {
@@ -6405,19 +7848,34 @@ type FileChooserDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileChooserDialogClass) ParentClass() *DialogClass {
+func (recv *FileChooserDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(fileChooserDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileChooserDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileChooserDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FileChooserDialogClassStruct creates an uninitialised FileChooserDialogClass.
 func FileChooserDialogClassStruct() *FileChooserDialogClass {
@@ -6480,10 +7938,17 @@ type FileChooserNativeClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileChooserNativeClass) ParentClass() *NativeDialogClass {
+func (recv *FileChooserNativeClass) FieldParentClass() *NativeDialogClass {
 	argValue := gi.FieldGet(fileChooserNativeClassStruct, recv.native, "parent_class")
 	value := &NativeDialogClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileChooserNativeClass) SetFieldParentClass(value *NativeDialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileChooserNativeClassStruct, recv.native, "parent_class", argValue)
 }
 
 // FileChooserNativeClassStruct creates an uninitialised FileChooserNativeClass.
@@ -6517,19 +7982,34 @@ type FileChooserWidgetClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileChooserWidgetClass) ParentClass() *BoxClass {
+func (recv *FileChooserWidgetClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(fileChooserWidgetClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FileChooserWidgetClassStruct creates an uninitialised FileChooserWidgetClass.
 func FileChooserWidgetClassStruct() *FileChooserWidgetClass {
@@ -6593,32 +8073,62 @@ type FileFilterInfo struct {
 
 // UNSUPPORTED : C value 'contains' : for field getter : no Go type for 'FileFilterFlags'
 
+// UNSUPPORTED : C value 'contains' : for field setter : no Go type for 'FileFilterFlags'
+
 // Filename returns the C field 'filename'.
-func (recv *FileFilterInfo) Filename() string {
+func (recv *FileFilterInfo) FieldFilename() string {
 	argValue := gi.FieldGet(fileFilterInfoStruct, recv.native, "filename")
 	value := argValue.String(false)
 	return value
 }
 
+// Filename sets the value of the C field 'filename'.
+func (recv *FileFilterInfo) SetFieldFilename(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fileFilterInfoStruct, recv.native, "filename", argValue)
+}
+
 // Uri returns the C field 'uri'.
-func (recv *FileFilterInfo) Uri() string {
+func (recv *FileFilterInfo) FieldUri() string {
 	argValue := gi.FieldGet(fileFilterInfoStruct, recv.native, "uri")
 	value := argValue.String(false)
 	return value
 }
 
+// Uri sets the value of the C field 'uri'.
+func (recv *FileFilterInfo) SetFieldUri(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fileFilterInfoStruct, recv.native, "uri", argValue)
+}
+
 // DisplayName returns the C field 'display_name'.
-func (recv *FileFilterInfo) DisplayName() string {
+func (recv *FileFilterInfo) FieldDisplayName() string {
 	argValue := gi.FieldGet(fileFilterInfoStruct, recv.native, "display_name")
 	value := argValue.String(false)
 	return value
 }
 
+// DisplayName sets the value of the C field 'display_name'.
+func (recv *FileFilterInfo) SetFieldDisplayName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fileFilterInfoStruct, recv.native, "display_name", argValue)
+}
+
 // MimeType returns the C field 'mime_type'.
-func (recv *FileFilterInfo) MimeType() string {
+func (recv *FileFilterInfo) FieldMimeType() string {
 	argValue := gi.FieldGet(fileFilterInfoStruct, recv.native, "mime_type")
 	value := argValue.String(false)
 	return value
+}
+
+// MimeType sets the value of the C field 'mime_type'.
+func (recv *FileFilterInfo) SetFieldMimeType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fileFilterInfoStruct, recv.native, "mime_type", argValue)
 }
 
 // FileFilterInfoStruct creates an uninitialised FileFilterInfo.
@@ -6653,18 +8163,34 @@ type FixedChild struct {
 
 // UNSUPPORTED : C value 'widget' : for field getter : no Go type for 'Widget'
 
+// UNSUPPORTED : C value 'widget' : for field setter : no Go type for 'Widget'
+
 // X returns the C field 'x'.
-func (recv *FixedChild) X() int32 {
+func (recv *FixedChild) FieldX() int32 {
 	argValue := gi.FieldGet(fixedChildStruct, recv.native, "x")
 	value := argValue.Int32()
 	return value
 }
 
+// X sets the value of the C field 'x'.
+func (recv *FixedChild) SetFieldX(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(fixedChildStruct, recv.native, "x", argValue)
+}
+
 // Y returns the C field 'y'.
-func (recv *FixedChild) Y() int32 {
+func (recv *FixedChild) FieldY() int32 {
 	argValue := gi.FieldGet(fixedChildStruct, recv.native, "y")
 	value := argValue.Int32()
 	return value
+}
+
+// Y sets the value of the C field 'y'.
+func (recv *FixedChild) SetFieldY(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(fixedChildStruct, recv.native, "y", argValue)
 }
 
 // FixedChildStruct creates an uninitialised FixedChild.
@@ -6698,19 +8224,34 @@ type FixedClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FixedClass) ParentClass() *ContainerClass {
+func (recv *FixedClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(fixedClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FixedClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fixedClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FixedClassStruct creates an uninitialised FixedClass.
 func FixedClassStruct() *FixedClass {
@@ -6773,10 +8314,17 @@ type FlowBoxAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FlowBoxAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *FlowBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(flowBoxAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FlowBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(flowBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // FlowBoxAccessibleClassStruct creates an uninitialised FlowBoxAccessibleClass.
@@ -6840,10 +8388,17 @@ type FlowBoxChildAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FlowBoxChildAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *FlowBoxChildAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(flowBoxChildAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FlowBoxChildAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(flowBoxChildAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // FlowBoxChildAccessibleClassStruct creates an uninitialised FlowBoxChildAccessibleClass.
@@ -6877,17 +8432,30 @@ type FlowBoxChildClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FlowBoxChildClass) ParentClass() *BinClass {
+func (recv *FlowBoxChildClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(flowBoxChildClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FlowBoxChildClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(flowBoxChildClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // FlowBoxChildClassStruct creates an uninitialised FlowBoxChildClass.
 func FlowBoxChildClassStruct() *FlowBoxChildClass {
@@ -6920,37 +8488,70 @@ type FlowBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FlowBoxClass) ParentClass() *ContainerClass {
+func (recv *FlowBoxClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(flowBoxClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FlowBoxClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(flowBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'child_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'child_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selected_children_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selected_children_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_cursor_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_cursor_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_cursor_child' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_cursor_child' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unselect_all' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unselect_all' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // FlowBoxClassStruct creates an uninitialised FlowBoxClass.
 func FlowBoxClassStruct() *FlowBoxClass {
@@ -6983,21 +8584,38 @@ type FontButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FontButtonClass) ParentClass() *ButtonClass {
+func (recv *FontButtonClass) FieldParentClass() *ButtonClass {
 	argValue := gi.FieldGet(fontButtonClassStruct, recv.native, "parent_class")
 	value := &ButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FontButtonClass) SetFieldParentClass(value *ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fontButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'font_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'font_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FontButtonClassStruct creates an uninitialised FontButtonClass.
 func FontButtonClassStruct() *FontButtonClass {
@@ -7060,19 +8678,34 @@ type FontChooserDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FontChooserDialogClass) ParentClass() *DialogClass {
+func (recv *FontChooserDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(fontChooserDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FontChooserDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fontChooserDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FontChooserDialogClassStruct creates an uninitialised FontChooserDialogClass.
 func FontChooserDialogClassStruct() *FontChooserDialogClass {
@@ -7136,21 +8769,39 @@ type FontChooserIface struct {
 
 // UNSUPPORTED : C value 'base_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_font_family' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_font_family' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_font_face' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_font_face' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_font_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_font_size' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_filter_func' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_filter_func' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'font_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'font_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_font_map' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_font_map' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_font_map' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_font_map' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // FontChooserIfaceStruct creates an uninitialised FontChooserIface.
 func FontChooserIfaceStruct() *FontChooserIface {
@@ -7183,27 +8834,50 @@ type FontChooserWidgetClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FontChooserWidgetClass) ParentClass() *BoxClass {
+func (recv *FontChooserWidgetClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(fontChooserWidgetClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FontChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fontChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // FontChooserWidgetClassStruct creates an uninitialised FontChooserWidgetClass.
 func FontChooserWidgetClassStruct() *FontChooserWidgetClass {
@@ -7266,19 +8940,34 @@ type FontSelectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FontSelectionClass) ParentClass() *BoxClass {
+func (recv *FontSelectionClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(fontSelectionClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FontSelectionClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fontSelectionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FontSelectionClassStruct creates an uninitialised FontSelectionClass.
 func FontSelectionClassStruct() *FontSelectionClass {
@@ -7311,19 +9000,34 @@ type FontSelectionDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FontSelectionDialogClass) ParentClass() *DialogClass {
+func (recv *FontSelectionDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(fontSelectionDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FontSelectionDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fontSelectionDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FontSelectionDialogClassStruct creates an uninitialised FontSelectionDialogClass.
 func FontSelectionDialogClassStruct() *FontSelectionDialogClass {
@@ -7416,10 +9120,17 @@ type FrameAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FrameAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *FrameAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(frameAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FrameAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(frameAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // FrameAccessibleClassStruct creates an uninitialised FrameAccessibleClass.
@@ -7483,21 +9194,38 @@ type FrameClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FrameClass) ParentClass() *BinClass {
+func (recv *FrameClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(frameClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FrameClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(frameClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'compute_child_allocation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'compute_child_allocation' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // FrameClassStruct creates an uninitialised FrameClass.
 func FrameClassStruct() *FrameClass {
@@ -7561,9 +9289,15 @@ type GLAreaClass struct {
 
 // UNSUPPORTED : C value 'render' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'resize' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'resize' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_context' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_context' : for field setter : missing Type
 
 // GLAreaClassStruct creates an uninitialised GLAreaClass.
 func GLAreaClassStruct() *GLAreaClass {
@@ -8109,27 +9843,50 @@ type GridClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *GridClass) ParentClass() *ContainerClass {
+func (recv *GridClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(gridClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *GridClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(gridClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // GridClassStruct creates an uninitialised GridClass.
 func GridClassStruct() *GridClass {
@@ -8192,10 +9949,17 @@ type HBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HBoxClass) ParentClass() *BoxClass {
+func (recv *HBoxClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(hBoxClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HBoxClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hBoxClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HBoxClassStruct creates an uninitialised HBoxClass.
@@ -8229,10 +9993,17 @@ type HButtonBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HButtonBoxClass) ParentClass() *ButtonBoxClass {
+func (recv *HButtonBoxClass) FieldParentClass() *ButtonBoxClass {
 	argValue := gi.FieldGet(hButtonBoxClassStruct, recv.native, "parent_class")
 	value := &ButtonBoxClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HButtonBoxClass) SetFieldParentClass(value *ButtonBoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hButtonBoxClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HButtonBoxClassStruct creates an uninitialised HButtonBoxClass.
@@ -8266,10 +10037,17 @@ type HPanedClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HPanedClass) ParentClass() *PanedClass {
+func (recv *HPanedClass) FieldParentClass() *PanedClass {
 	argValue := gi.FieldGet(hPanedClassStruct, recv.native, "parent_class")
 	value := &PanedClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HPanedClass) SetFieldParentClass(value *PanedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hPanedClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HPanedClassStruct creates an uninitialised HPanedClass.
@@ -8303,23 +10081,42 @@ type HSVClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HSVClass) ParentClass() *WidgetClass {
+func (recv *HSVClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(hSVClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HSVClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hSVClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // HSVClassStruct creates an uninitialised HSVClass.
 func HSVClassStruct() *HSVClass {
@@ -8382,10 +10179,17 @@ type HScaleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HScaleClass) ParentClass() *ScaleClass {
+func (recv *HScaleClass) FieldParentClass() *ScaleClass {
 	argValue := gi.FieldGet(hScaleClassStruct, recv.native, "parent_class")
 	value := &ScaleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HScaleClass) SetFieldParentClass(value *ScaleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hScaleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HScaleClassStruct creates an uninitialised HScaleClass.
@@ -8419,10 +10223,17 @@ type HScrollbarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HScrollbarClass) ParentClass() *ScrollbarClass {
+func (recv *HScrollbarClass) FieldParentClass() *ScrollbarClass {
 	argValue := gi.FieldGet(hScrollbarClassStruct, recv.native, "parent_class")
 	value := &ScrollbarClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HScrollbarClass) SetFieldParentClass(value *ScrollbarClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hScrollbarClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HScrollbarClassStruct creates an uninitialised HScrollbarClass.
@@ -8456,10 +10267,17 @@ type HSeparatorClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HSeparatorClass) ParentClass() *SeparatorClass {
+func (recv *HSeparatorClass) FieldParentClass() *SeparatorClass {
 	argValue := gi.FieldGet(hSeparatorClassStruct, recv.native, "parent_class")
 	value := &SeparatorClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HSeparatorClass) SetFieldParentClass(value *SeparatorClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hSeparatorClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HSeparatorClassStruct creates an uninitialised HSeparatorClass.
@@ -8493,23 +10311,42 @@ type HandleBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HandleBoxClass) ParentClass() *BinClass {
+func (recv *HandleBoxClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(handleBoxClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HandleBoxClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(handleBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'child_attached' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'child_attached' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'child_detached' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'child_detached' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // HandleBoxClassStruct creates an uninitialised HandleBoxClass.
 func HandleBoxClassStruct() *HandleBoxClass {
@@ -8572,10 +10409,17 @@ type HeaderBarAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HeaderBarAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *HeaderBarAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(headerBarAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HeaderBarAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(headerBarAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // HeaderBarAccessibleClassStruct creates an uninitialised HeaderBarAccessibleClass.
@@ -8639,19 +10483,34 @@ type HeaderBarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *HeaderBarClass) ParentClass() *ContainerClass {
+func (recv *HeaderBarClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(headerBarClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *HeaderBarClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(headerBarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // HeaderBarClassStruct creates an uninitialised HeaderBarClass.
 func HeaderBarClassStruct() *HeaderBarClass {
@@ -8715,47 +10574,91 @@ type IMContextClass struct {
 
 // UNSUPPORTED : C value 'preedit_start' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'preedit_start' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'preedit_end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'preedit_end' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'preedit_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'preedit_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'commit' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'commit' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'retrieve_surrounding' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'retrieve_surrounding' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_surrounding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_surrounding' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_client_window' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_client_window' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preedit_string' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preedit_string' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'filter_keypress' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'filter_keypress' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'focus_in' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'focus_in' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'focus_out' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'focus_out' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_cursor_location' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_cursor_location' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_use_preedit' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_use_preedit' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_surrounding' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_surrounding' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_surrounding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_surrounding' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // IMContextClassStruct creates an uninitialised IMContextClass.
 func IMContextClassStruct() *IMContextClass {
@@ -8788,38 +10691,73 @@ type IMContextInfo struct {
 }
 
 // ContextId returns the C field 'context_id'.
-func (recv *IMContextInfo) ContextId() string {
+func (recv *IMContextInfo) FieldContextId() string {
 	argValue := gi.FieldGet(iMContextInfoStruct, recv.native, "context_id")
 	value := argValue.String(false)
 	return value
 }
 
+// ContextId sets the value of the C field 'context_id'.
+func (recv *IMContextInfo) SetFieldContextId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(iMContextInfoStruct, recv.native, "context_id", argValue)
+}
+
 // ContextName returns the C field 'context_name'.
-func (recv *IMContextInfo) ContextName() string {
+func (recv *IMContextInfo) FieldContextName() string {
 	argValue := gi.FieldGet(iMContextInfoStruct, recv.native, "context_name")
 	value := argValue.String(false)
 	return value
 }
 
+// ContextName sets the value of the C field 'context_name'.
+func (recv *IMContextInfo) SetFieldContextName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(iMContextInfoStruct, recv.native, "context_name", argValue)
+}
+
 // Domain returns the C field 'domain'.
-func (recv *IMContextInfo) Domain() string {
+func (recv *IMContextInfo) FieldDomain() string {
 	argValue := gi.FieldGet(iMContextInfoStruct, recv.native, "domain")
 	value := argValue.String(false)
 	return value
 }
 
+// Domain sets the value of the C field 'domain'.
+func (recv *IMContextInfo) SetFieldDomain(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(iMContextInfoStruct, recv.native, "domain", argValue)
+}
+
 // DomainDirname returns the C field 'domain_dirname'.
-func (recv *IMContextInfo) DomainDirname() string {
+func (recv *IMContextInfo) FieldDomainDirname() string {
 	argValue := gi.FieldGet(iMContextInfoStruct, recv.native, "domain_dirname")
 	value := argValue.String(false)
 	return value
 }
 
+// DomainDirname sets the value of the C field 'domain_dirname'.
+func (recv *IMContextInfo) SetFieldDomainDirname(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(iMContextInfoStruct, recv.native, "domain_dirname", argValue)
+}
+
 // DefaultLocales returns the C field 'default_locales'.
-func (recv *IMContextInfo) DefaultLocales() string {
+func (recv *IMContextInfo) FieldDefaultLocales() string {
 	argValue := gi.FieldGet(iMContextInfoStruct, recv.native, "default_locales")
 	value := argValue.String(false)
 	return value
+}
+
+// DefaultLocales sets the value of the C field 'default_locales'.
+func (recv *IMContextInfo) SetFieldDefaultLocales(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(iMContextInfoStruct, recv.native, "default_locales", argValue)
 }
 
 // IMContextInfoStruct creates an uninitialised IMContextInfo.
@@ -8853,10 +10791,17 @@ type IMContextSimpleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *IMContextSimpleClass) ParentClass() *IMContextClass {
+func (recv *IMContextSimpleClass) FieldParentClass() *IMContextClass {
 	argValue := gi.FieldGet(iMContextSimpleClassStruct, recv.native, "parent_class")
 	value := &IMContextClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *IMContextSimpleClass) SetFieldParentClass(value *IMContextClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(iMContextSimpleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // IMContextSimpleClassStruct creates an uninitialised IMContextSimpleClass.
@@ -8920,19 +10865,34 @@ type IMMulticontextClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *IMMulticontextClass) ParentClass() *IMContextClass {
+func (recv *IMMulticontextClass) FieldParentClass() *IMContextClass {
 	argValue := gi.FieldGet(iMMulticontextClassStruct, recv.native, "parent_class")
 	value := &IMContextClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *IMMulticontextClass) SetFieldParentClass(value *IMContextClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(iMMulticontextClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // IMMulticontextClassStruct creates an uninitialised IMMulticontextClass.
 func IMMulticontextClassStruct() *IMMulticontextClass {
@@ -8996,13 +10956,23 @@ type IconFactoryClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // IconFactoryClassStruct creates an uninitialised IconFactoryClass.
 func IconFactoryClassStruct() *IconFactoryClass {
@@ -9698,15 +11668,27 @@ type IconThemeClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // IconThemeClassStruct creates an uninitialised IconThemeClass.
 func IconThemeClassStruct() *IconThemeClass {
@@ -9769,10 +11751,17 @@ type IconViewAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *IconViewAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *IconViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(iconViewAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *IconViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(iconViewAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // IconViewAccessibleClassStruct creates an uninitialised IconViewAccessibleClass.
@@ -9836,35 +11825,66 @@ type IconViewClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *IconViewClass) ParentClass() *ContainerClass {
+func (recv *IconViewClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(iconViewClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *IconViewClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(iconViewClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'item_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'item_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selection_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selection_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_all' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select_all' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unselect_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unselect_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_cursor_item' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select_cursor_item' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_cursor_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_cursor_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate_cursor_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_cursor_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // IconViewClassStruct creates an uninitialised IconViewClass.
 func IconViewClassStruct() *IconViewClass {
@@ -9927,10 +11947,17 @@ type ImageAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ImageAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *ImageAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(imageAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ImageAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(imageAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ImageAccessibleClassStruct creates an uninitialised ImageAccessibleClass.
@@ -9994,10 +12021,17 @@ type ImageCellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ImageCellAccessibleClass) ParentClass() *RendererCellAccessibleClass {
+func (recv *ImageCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
 	argValue := gi.FieldGet(imageCellAccessibleClassStruct, recv.native, "parent_class")
 	value := &RendererCellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ImageCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(imageCellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ImageCellAccessibleClassStruct creates an uninitialised ImageCellAccessibleClass.
@@ -10061,19 +12095,34 @@ type ImageClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ImageClass) ParentClass() *MiscClass {
+func (recv *ImageClass) FieldParentClass() *MiscClass {
 	argValue := gi.FieldGet(imageClassStruct, recv.native, "parent_class")
 	value := &MiscClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ImageClass) SetFieldParentClass(value *MiscClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(imageClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ImageClassStruct creates an uninitialised ImageClass.
 func ImageClassStruct() *ImageClass {
@@ -10106,19 +12155,34 @@ type ImageMenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ImageMenuItemClass) ParentClass() *MenuItemClass {
+func (recv *ImageMenuItemClass) FieldParentClass() *MenuItemClass {
 	argValue := gi.FieldGet(imageMenuItemClassStruct, recv.native, "parent_class")
 	value := &MenuItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ImageMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(imageMenuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ImageMenuItemClassStruct creates an uninitialised ImageMenuItemClass.
 func ImageMenuItemClassStruct() *ImageMenuItemClass {
@@ -10211,23 +12275,42 @@ type InfoBarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *InfoBarClass) ParentClass() *BoxClass {
+func (recv *InfoBarClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(infoBarClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *InfoBarClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(infoBarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'response' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'response' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // InfoBarClassStruct creates an uninitialised InfoBarClass.
 func InfoBarClassStruct() *InfoBarClass {
@@ -10290,19 +12373,34 @@ type InvisibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *InvisibleClass) ParentClass() *WidgetClass {
+func (recv *InvisibleClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(invisibleClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *InvisibleClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(invisibleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // InvisibleClassStruct creates an uninitialised InvisibleClass.
 func InvisibleClassStruct() *InvisibleClass {
@@ -10365,10 +12463,17 @@ type LabelAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LabelAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *LabelAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(labelAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LabelAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(labelAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // LabelAccessibleClassStruct creates an uninitialised LabelAccessibleClass.
@@ -10432,35 +12537,66 @@ type LabelClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LabelClass) ParentClass() *MiscClass {
+func (recv *LabelClass) FieldParentClass() *MiscClass {
 	argValue := gi.FieldGet(labelClassStruct, recv.native, "parent_class")
 	value := &MiscClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LabelClass) SetFieldParentClass(value *MiscClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(labelClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_clipboard' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_clipboard' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate_popup' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate_link' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_link' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // LabelClassStruct creates an uninitialised LabelClass.
 func LabelClassStruct() *LabelClass {
@@ -10553,19 +12689,34 @@ type LayoutClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LayoutClass) ParentClass() *ContainerClass {
+func (recv *LayoutClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(layoutClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LayoutClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(layoutClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // LayoutClassStruct creates an uninitialised LayoutClass.
 func LayoutClassStruct() *LayoutClass {
@@ -10628,10 +12779,17 @@ type LevelBarAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LevelBarAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *LevelBarAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(levelBarAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LevelBarAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(levelBarAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // LevelBarAccessibleClassStruct creates an uninitialised LevelBarAccessibleClass.
@@ -10696,6 +12854,8 @@ type LevelBarClass struct {
 
 // UNSUPPORTED : C value 'offset_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'offset_changed' : for field setter : missing Type
+
 // LevelBarClassStruct creates an uninitialised LevelBarClass.
 func LevelBarClassStruct() *LevelBarClass {
 	err := levelBarClassStruct_Set()
@@ -10757,10 +12917,17 @@ type LinkButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LinkButtonAccessibleClass) ParentClass() *ButtonAccessibleClass {
+func (recv *LinkButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
 	argValue := gi.FieldGet(linkButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LinkButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(linkButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // LinkButtonAccessibleClassStruct creates an uninitialised LinkButtonAccessibleClass.
@@ -10825,13 +12992,23 @@ type LinkButtonClass struct {
 
 // UNSUPPORTED : C value 'activate_link' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_link' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_padding1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_padding1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_padding2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_padding2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_padding3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_padding3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_padding4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_padding4' : for field setter : missing Type
 
 // LinkButtonClassStruct creates an uninitialised LinkButtonClass.
 func LinkButtonClassStruct() *LinkButtonClass {
@@ -10894,10 +13071,17 @@ type ListBoxAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ListBoxAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ListBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(listBoxAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ListBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(listBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ListBoxAccessibleClassStruct creates an uninitialised ListBoxAccessibleClass.
@@ -10961,33 +13145,62 @@ type ListBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ListBoxClass) ParentClass() *ContainerClass {
+func (recv *ListBoxClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(listBoxClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ListBoxClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(listBoxClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'row_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_cursor_row' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_cursor_row' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_cursor_row' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_cursor_row' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selected_rows_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selected_rows_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_all' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select_all' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unselect_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unselect_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // ListBoxClassStruct creates an uninitialised ListBoxClass.
 func ListBoxClassStruct() *ListBoxClass {
@@ -11020,10 +13233,17 @@ type ListBoxRowAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ListBoxRowAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ListBoxRowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(listBoxRowAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ListBoxRowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(listBoxRowAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ListBoxRowAccessibleClassStruct creates an uninitialised ListBoxRowAccessibleClass.
@@ -11057,17 +13277,30 @@ type ListBoxRowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ListBoxRowClass) ParentClass() *BinClass {
+func (recv *ListBoxRowClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(listBoxRowClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ListBoxRowClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(listBoxRowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // ListBoxRowClassStruct creates an uninitialised ListBoxRowClass.
 func ListBoxRowClassStruct() *ListBoxRowClass {
@@ -11101,13 +13334,23 @@ type ListStoreClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ListStoreClassStruct creates an uninitialised ListStoreClass.
 func ListStoreClassStruct() *ListStoreClass {
@@ -11170,10 +13413,17 @@ type LockButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LockButtonAccessibleClass) ParentClass() *ButtonAccessibleClass {
+func (recv *LockButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
 	argValue := gi.FieldGet(lockButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LockButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(lockButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // LockButtonAccessibleClassStruct creates an uninitialised LockButtonAccessibleClass.
@@ -11237,27 +13487,50 @@ type LockButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *LockButtonClass) ParentClass() *ButtonClass {
+func (recv *LockButtonClass) FieldParentClass() *ButtonClass {
 	argValue := gi.FieldGet(lockButtonClassStruct, recv.native, "parent_class")
 	value := &ButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *LockButtonClass) SetFieldParentClass(value *ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(lockButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'reserved0' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved0' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved7' : for field setter : missing Type
 
 // LockButtonClassStruct creates an uninitialised LockButtonClass.
 func LockButtonClassStruct() *LockButtonClass {
@@ -11320,10 +13593,17 @@ type MenuAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuAccessibleClass) ParentClass() *MenuShellAccessibleClass {
+func (recv *MenuAccessibleClass) FieldParentClass() *MenuShellAccessibleClass {
 	argValue := gi.FieldGet(menuAccessibleClassStruct, recv.native, "parent_class")
 	value := &MenuShellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuAccessibleClass) SetFieldParentClass(value *MenuShellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // MenuAccessibleClassStruct creates an uninitialised MenuAccessibleClass.
@@ -11387,19 +13667,34 @@ type MenuBarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuBarClass) ParentClass() *MenuShellClass {
+func (recv *MenuBarClass) FieldParentClass() *MenuShellClass {
 	argValue := gi.FieldGet(menuBarClassStruct, recv.native, "parent_class")
 	value := &MenuShellClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuBarClass) SetFieldParentClass(value *MenuShellClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuBarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuBarClassStruct creates an uninitialised MenuBarClass.
 func MenuBarClassStruct() *MenuBarClass {
@@ -11462,10 +13757,17 @@ type MenuButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuButtonAccessibleClass) ParentClass() *ToggleButtonAccessibleClass {
+func (recv *MenuButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessibleClass {
 	argValue := gi.FieldGet(menuButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ToggleButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuButtonAccessibleClass) SetFieldParentClass(value *ToggleButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // MenuButtonAccessibleClassStruct creates an uninitialised MenuButtonAccessibleClass.
@@ -11529,19 +13831,34 @@ type MenuButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuButtonClass) ParentClass() *ToggleButtonClass {
+func (recv *MenuButtonClass) FieldParentClass() *ToggleButtonClass {
 	argValue := gi.FieldGet(menuButtonClassStruct, recv.native, "parent_class")
 	value := &ToggleButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuButtonClass) SetFieldParentClass(value *ToggleButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuButtonClassStruct creates an uninitialised MenuButtonClass.
 func MenuButtonClassStruct() *MenuButtonClass {
@@ -11604,19 +13921,34 @@ type MenuClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuClass) ParentClass() *MenuShellClass {
+func (recv *MenuClass) FieldParentClass() *MenuShellClass {
 	argValue := gi.FieldGet(menuClassStruct, recv.native, "parent_class")
 	value := &MenuShellClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuClass) SetFieldParentClass(value *MenuShellClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuClassStruct creates an uninitialised MenuClass.
 func MenuClassStruct() *MenuClass {
@@ -11649,10 +13981,17 @@ type MenuItemAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuItemAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *MenuItemAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(menuItemAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuItemAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // MenuItemAccessibleClassStruct creates an uninitialised MenuItemAccessibleClass.
@@ -11716,42 +14055,80 @@ type MenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuItemClass) ParentClass() *BinClass {
+func (recv *MenuItemClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(menuItemClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuItemClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // HideOnActivate returns the C field 'hide_on_activate'.
-func (recv *MenuItemClass) HideOnActivate() uint32 {
+func (recv *MenuItemClass) FieldHideOnActivate() uint32 {
 	argValue := gi.FieldGet(menuItemClassStruct, recv.native, "hide_on_activate")
 	value := argValue.Uint32()
 	return value
 }
 
+// HideOnActivate sets the value of the C field 'hide_on_activate'.
+func (recv *MenuItemClass) SetFieldHideOnActivate(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(menuItemClassStruct, recv.native, "hide_on_activate", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'toggle_size_request' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggle_size_request' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_size_allocate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_size_allocate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_label' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_label' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_label' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_label' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'deselect' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'deselect' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuItemClassStruct creates an uninitialised MenuItemClass.
 func MenuItemClassStruct() *MenuItemClass {
@@ -11844,10 +14221,17 @@ type MenuShellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuShellAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *MenuShellAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(menuShellAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuShellAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuShellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // MenuShellAccessibleClassStruct creates an uninitialised MenuShellAccessibleClass.
@@ -11911,44 +14295,84 @@ type MenuShellClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuShellClass) ParentClass() *ContainerClass {
+func (recv *MenuShellClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(menuShellClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuShellClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuShellClassStruct, recv.native, "parent_class", argValue)
+}
+
 // SubmenuPlacement returns the C field 'submenu_placement'.
-func (recv *MenuShellClass) SubmenuPlacement() uint32 {
+func (recv *MenuShellClass) FieldSubmenuPlacement() uint32 {
 	argValue := gi.FieldGet(menuShellClassStruct, recv.native, "submenu_placement")
 	value := argValue.Uint32()
 	return value
 }
 
+// SubmenuPlacement sets the value of the C field 'submenu_placement'.
+func (recv *MenuShellClass) SetFieldSubmenuPlacement(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(menuShellClassStruct, recv.native, "submenu_placement", argValue)
+}
+
 // UNSUPPORTED : C value 'deactivate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deactivate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selection_done' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selection_done' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_current' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_current' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate_current' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_current' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'cancel' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cancel' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_item' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_item' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_popup_delay' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_popup_delay' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_selected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_selected' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuShellClassStruct creates an uninitialised MenuShellClass.
 func MenuShellClassStruct() *MenuShellClass {
@@ -12011,21 +14435,38 @@ type MenuToolButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MenuToolButtonClass) ParentClass() *ToolButtonClass {
+func (recv *MenuToolButtonClass) FieldParentClass() *ToolButtonClass {
 	argValue := gi.FieldGet(menuToolButtonClassStruct, recv.native, "parent_class")
 	value := &ToolButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MenuToolButtonClass) SetFieldParentClass(value *ToolButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuToolButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'show_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_menu' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MenuToolButtonClassStruct creates an uninitialised MenuToolButtonClass.
 func MenuToolButtonClassStruct() *MenuToolButtonClass {
@@ -12088,19 +14529,34 @@ type MessageDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MessageDialogClass) ParentClass() *DialogClass {
+func (recv *MessageDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(messageDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MessageDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(messageDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MessageDialogClassStruct creates an uninitialised MessageDialogClass.
 func MessageDialogClassStruct() *MessageDialogClass {
@@ -12163,19 +14619,34 @@ type MiscClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MiscClass) ParentClass() *WidgetClass {
+func (recv *MiscClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(miscClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MiscClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(miscClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MiscClassStruct creates an uninitialised MiscClass.
 func MiscClassStruct() *MiscClass {
@@ -12239,13 +14710,23 @@ type MountOperationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gio.MountOperationClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gio.MountOperationClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // MountOperationClassStruct creates an uninitialised MountOperationClass.
 func MountOperationClassStruct() *MountOperationClass {
@@ -12309,19 +14790,35 @@ type NativeDialogClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'response' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'response' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'hide' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hide' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // NativeDialogClassStruct creates an uninitialised NativeDialogClass.
 func NativeDialogClassStruct() *NativeDialogClass {
@@ -12354,10 +14851,17 @@ type NotebookAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NotebookAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *NotebookAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(notebookAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NotebookAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(notebookAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // NotebookAccessibleClassStruct creates an uninitialised NotebookAccessibleClass.
@@ -12421,49 +14925,94 @@ type NotebookClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NotebookClass) ParentClass() *ContainerClass {
+func (recv *NotebookClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(notebookClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NotebookClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(notebookClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'switch_page' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'switch_page' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_page' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_page' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'focus_tab' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'focus_tab' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'change_current_page' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_current_page' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_focus_out' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_focus_out' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'reorder_tab' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'reorder_tab' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_page' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_page' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_window' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_window' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'page_reordered' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'page_reordered' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'page_removed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'page_removed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'page_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'page_added' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // NotebookClassStruct creates an uninitialised NotebookClass.
 func NotebookClassStruct() *NotebookClass {
@@ -12496,6 +15045,8 @@ type NotebookPageAccessibleClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Atk.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Atk.ObjectClass'
 
 // NotebookPageAccessibleClassStruct creates an uninitialised NotebookPageAccessibleClass.
 func NotebookPageAccessibleClassStruct() *NotebookPageAccessibleClass {
@@ -12589,7 +15140,11 @@ type NumerableIconClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gio.EmblemedIconClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gio.EmblemedIconClass'
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // NumerableIconClassStruct creates an uninitialised NumerableIconClass.
 func NumerableIconClassStruct() *NumerableIconClass {
@@ -12652,19 +15207,34 @@ type OffscreenWindowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *OffscreenWindowClass) ParentClass() *WindowClass {
+func (recv *OffscreenWindowClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(offscreenWindowClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *OffscreenWindowClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(offscreenWindowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // OffscreenWindowClassStruct creates an uninitialised OffscreenWindowClass.
 func OffscreenWindowClassStruct() *OffscreenWindowClass {
@@ -12698,6 +15268,8 @@ type OrientableIface struct {
 
 // UNSUPPORTED : C value 'base_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // OrientableIfaceStruct creates an uninitialised OrientableIface.
 func OrientableIfaceStruct() *OrientableIface {
 	err := orientableIfaceStruct_Set()
@@ -12729,29 +15301,54 @@ type OverlayClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *OverlayClass) ParentClass() *BinClass {
+func (recv *OverlayClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(overlayClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *OverlayClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(overlayClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'get_child_position' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_child_position' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // OverlayClassStruct creates an uninitialised OverlayClass.
 func OverlayClassStruct() *OverlayClass {
@@ -12815,32 +15412,62 @@ type PadActionEntry struct {
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'PadActionType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'PadActionType'
+
 // Index returns the C field 'index'.
-func (recv *PadActionEntry) Index() int32 {
+func (recv *PadActionEntry) FieldIndex() int32 {
 	argValue := gi.FieldGet(padActionEntryStruct, recv.native, "index")
 	value := argValue.Int32()
 	return value
 }
 
+// Index sets the value of the C field 'index'.
+func (recv *PadActionEntry) SetFieldIndex(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(padActionEntryStruct, recv.native, "index", argValue)
+}
+
 // Mode returns the C field 'mode'.
-func (recv *PadActionEntry) Mode() int32 {
+func (recv *PadActionEntry) FieldMode() int32 {
 	argValue := gi.FieldGet(padActionEntryStruct, recv.native, "mode")
 	value := argValue.Int32()
 	return value
 }
 
+// Mode sets the value of the C field 'mode'.
+func (recv *PadActionEntry) SetFieldMode(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(padActionEntryStruct, recv.native, "mode", argValue)
+}
+
 // Label returns the C field 'label'.
-func (recv *PadActionEntry) Label() string {
+func (recv *PadActionEntry) FieldLabel() string {
 	argValue := gi.FieldGet(padActionEntryStruct, recv.native, "label")
 	value := argValue.String(false)
 	return value
 }
 
+// Label sets the value of the C field 'label'.
+func (recv *PadActionEntry) SetFieldLabel(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(padActionEntryStruct, recv.native, "label", argValue)
+}
+
 // ActionName returns the C field 'action_name'.
-func (recv *PadActionEntry) ActionName() string {
+func (recv *PadActionEntry) FieldActionName() string {
 	argValue := gi.FieldGet(padActionEntryStruct, recv.native, "action_name")
 	value := argValue.String(false)
 	return value
+}
+
+// ActionName sets the value of the C field 'action_name'.
+func (recv *PadActionEntry) SetFieldActionName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(padActionEntryStruct, recv.native, "action_name", argValue)
 }
 
 // PadActionEntryStruct creates an uninitialised PadActionEntry.
@@ -12904,17 +15531,31 @@ type PageRange struct {
 }
 
 // Start returns the C field 'start'.
-func (recv *PageRange) Start() int32 {
+func (recv *PageRange) FieldStart() int32 {
 	argValue := gi.FieldGet(pageRangeStruct, recv.native, "start")
 	value := argValue.Int32()
 	return value
 }
 
+// Start sets the value of the C field 'start'.
+func (recv *PageRange) SetFieldStart(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(pageRangeStruct, recv.native, "start", argValue)
+}
+
 // End returns the C field 'end'.
-func (recv *PageRange) End() int32 {
+func (recv *PageRange) FieldEnd() int32 {
 	argValue := gi.FieldGet(pageRangeStruct, recv.native, "end")
 	value := argValue.Int32()
 	return value
+}
+
+// End sets the value of the C field 'end'.
+func (recv *PageRange) SetFieldEnd(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(pageRangeStruct, recv.native, "end", argValue)
 }
 
 // PageRangeStruct creates an uninitialised PageRange.
@@ -12948,10 +15589,17 @@ type PanedAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PanedAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *PanedAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(panedAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PanedAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(panedAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // PanedAccessibleClassStruct creates an uninitialised PanedAccessibleClass.
@@ -13015,31 +15663,58 @@ type PanedClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PanedClass) ParentClass() *ContainerClass {
+func (recv *PanedClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(panedClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PanedClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(panedClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'cycle_child_focus' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cycle_child_focus' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_handle_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_handle_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_handle' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cycle_handle_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cycle_handle_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'accept_position' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accept_position' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cancel_position' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cancel_position' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // PanedClassStruct creates an uninitialised PanedClass.
 func PanedClassStruct() *PanedClass {
@@ -13525,21 +16200,38 @@ type PlugClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PlugClass) ParentClass() *WindowClass {
+func (recv *PlugClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(plugClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PlugClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(plugClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'embedded' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'embedded' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // PlugClassStruct creates an uninitialised PlugClass.
 func PlugClassStruct() *PlugClass {
@@ -13602,10 +16294,17 @@ type PopoverAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PopoverAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *PopoverAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(popoverAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PopoverAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(popoverAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // PopoverAccessibleClassStruct creates an uninitialised PopoverAccessibleClass.
@@ -13639,13 +16338,22 @@ type PopoverClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PopoverClass) ParentClass() *BinClass {
+func (recv *PopoverClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(popoverClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PopoverClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(popoverClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'closed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'closed' : for field setter : missing Type
 
 // PopoverClassStruct creates an uninitialised PopoverClass.
 func PopoverClassStruct() *PopoverClass {
@@ -13678,10 +16386,17 @@ type PopoverMenuClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *PopoverMenuClass) ParentClass() *PopoverClass {
+func (recv *PopoverMenuClass) FieldParentClass() *PopoverClass {
 	argValue := gi.FieldGet(popoverMenuClassStruct, recv.native, "parent_class")
 	value := &PopoverClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *PopoverMenuClass) SetFieldParentClass(value *PopoverClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(popoverMenuClassStruct, recv.native, "parent_class", argValue)
 }
 
 // PopoverMenuClassStruct creates an uninitialised PopoverMenuClass.
@@ -13746,43 +16461,83 @@ type PrintOperationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'done' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'done' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'begin_print' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'begin_print' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'paginate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'paginate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'request_page_setup' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'request_page_setup' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_page' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_page' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'end_print' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'end_print' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'status_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'status_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_custom_widget' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_custom_widget' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'custom_widget_apply' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'custom_widget_apply' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'preview' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'preview' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'update_custom_widget' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'update_custom_widget' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // PrintOperationClassStruct creates an uninitialised PrintOperationClass.
 func PrintOperationClassStruct() *PrintOperationClass {
@@ -13816,31 +16571,59 @@ type PrintOperationPreviewIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'ready' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ready' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'got_page_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'got_page_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_page' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_page' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_selected' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_selected' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'end_preview' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'end_preview' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // PrintOperationPreviewIfaceStruct creates an uninitialised PrintOperationPreviewIface.
 func PrintOperationPreviewIfaceStruct() *PrintOperationPreviewIface {
@@ -13903,10 +16686,17 @@ type ProgressBarAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ProgressBarAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *ProgressBarAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(progressBarAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ProgressBarAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(progressBarAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ProgressBarAccessibleClassStruct creates an uninitialised ProgressBarAccessibleClass.
@@ -13970,19 +16760,34 @@ type ProgressBarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ProgressBarClass) ParentClass() *WidgetClass {
+func (recv *ProgressBarClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(progressBarClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ProgressBarClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(progressBarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ProgressBarClassStruct creates an uninitialised ProgressBarClass.
 func ProgressBarClassStruct() *ProgressBarClass {
@@ -14045,21 +16850,38 @@ type RadioActionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioActionClass) ParentClass() *ToggleActionClass {
+func (recv *RadioActionClass) FieldParentClass() *ToggleActionClass {
 	argValue := gi.FieldGet(radioActionClassStruct, recv.native, "parent_class")
 	value := &ToggleActionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioActionClass) SetFieldParentClass(value *ToggleActionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioActionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RadioActionClassStruct creates an uninitialised RadioActionClass.
 func RadioActionClassStruct() *RadioActionClass {
@@ -14092,45 +16914,87 @@ type RadioActionEntry struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *RadioActionEntry) Name() string {
+func (recv *RadioActionEntry) FieldName() string {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *RadioActionEntry) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "name", argValue)
+}
+
 // StockId returns the C field 'stock_id'.
-func (recv *RadioActionEntry) StockId() string {
+func (recv *RadioActionEntry) FieldStockId() string {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "stock_id")
 	value := argValue.String(false)
 	return value
 }
 
+// StockId sets the value of the C field 'stock_id'.
+func (recv *RadioActionEntry) SetFieldStockId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "stock_id", argValue)
+}
+
 // Label returns the C field 'label'.
-func (recv *RadioActionEntry) Label() string {
+func (recv *RadioActionEntry) FieldLabel() string {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "label")
 	value := argValue.String(false)
 	return value
 }
 
+// Label sets the value of the C field 'label'.
+func (recv *RadioActionEntry) SetFieldLabel(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "label", argValue)
+}
+
 // Accelerator returns the C field 'accelerator'.
-func (recv *RadioActionEntry) Accelerator() string {
+func (recv *RadioActionEntry) FieldAccelerator() string {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "accelerator")
 	value := argValue.String(false)
 	return value
 }
 
+// Accelerator sets the value of the C field 'accelerator'.
+func (recv *RadioActionEntry) SetFieldAccelerator(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "accelerator", argValue)
+}
+
 // Tooltip returns the C field 'tooltip'.
-func (recv *RadioActionEntry) Tooltip() string {
+func (recv *RadioActionEntry) FieldTooltip() string {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "tooltip")
 	value := argValue.String(false)
 	return value
 }
 
+// Tooltip sets the value of the C field 'tooltip'.
+func (recv *RadioActionEntry) SetFieldTooltip(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "tooltip", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *RadioActionEntry) Value() int32 {
+func (recv *RadioActionEntry) FieldValue() int32 {
 	argValue := gi.FieldGet(radioActionEntryStruct, recv.native, "value")
 	value := argValue.Int32()
 	return value
+}
+
+// Value sets the value of the C field 'value'.
+func (recv *RadioActionEntry) SetFieldValue(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(radioActionEntryStruct, recv.native, "value", argValue)
 }
 
 // RadioActionEntryStruct creates an uninitialised RadioActionEntry.
@@ -14194,10 +17058,17 @@ type RadioButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioButtonAccessibleClass) ParentClass() *ToggleButtonAccessibleClass {
+func (recv *RadioButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessibleClass {
 	argValue := gi.FieldGet(radioButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ToggleButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioButtonAccessibleClass) SetFieldParentClass(value *ToggleButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // RadioButtonAccessibleClassStruct creates an uninitialised RadioButtonAccessibleClass.
@@ -14261,21 +17132,38 @@ type RadioButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioButtonClass) ParentClass() *CheckButtonClass {
+func (recv *RadioButtonClass) FieldParentClass() *CheckButtonClass {
 	argValue := gi.FieldGet(radioButtonClassStruct, recv.native, "parent_class")
 	value := &CheckButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioButtonClass) SetFieldParentClass(value *CheckButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'group_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'group_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RadioButtonClassStruct creates an uninitialised RadioButtonClass.
 func RadioButtonClassStruct() *RadioButtonClass {
@@ -14338,10 +17226,17 @@ type RadioMenuItemAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioMenuItemAccessibleClass) ParentClass() *CheckMenuItemAccessibleClass {
+func (recv *RadioMenuItemAccessibleClass) FieldParentClass() *CheckMenuItemAccessibleClass {
 	argValue := gi.FieldGet(radioMenuItemAccessibleClassStruct, recv.native, "parent_class")
 	value := &CheckMenuItemAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioMenuItemAccessibleClass) SetFieldParentClass(value *CheckMenuItemAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioMenuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // RadioMenuItemAccessibleClassStruct creates an uninitialised RadioMenuItemAccessibleClass.
@@ -14405,21 +17300,38 @@ type RadioMenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioMenuItemClass) ParentClass() *CheckMenuItemClass {
+func (recv *RadioMenuItemClass) FieldParentClass() *CheckMenuItemClass {
 	argValue := gi.FieldGet(radioMenuItemClassStruct, recv.native, "parent_class")
 	value := &CheckMenuItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioMenuItemClass) SetFieldParentClass(value *CheckMenuItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioMenuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'group_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'group_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RadioMenuItemClassStruct creates an uninitialised RadioMenuItemClass.
 func RadioMenuItemClassStruct() *RadioMenuItemClass {
@@ -14482,19 +17394,34 @@ type RadioToolButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RadioToolButtonClass) ParentClass() *ToggleToolButtonClass {
+func (recv *RadioToolButtonClass) FieldParentClass() *ToggleToolButtonClass {
 	argValue := gi.FieldGet(radioToolButtonClassStruct, recv.native, "parent_class")
 	value := &ToggleToolButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RadioToolButtonClass) SetFieldParentClass(value *ToggleToolButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(radioToolButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RadioToolButtonClassStruct creates an uninitialised RadioToolButtonClass.
 func RadioToolButtonClassStruct() *RadioToolButtonClass {
@@ -14527,10 +17454,17 @@ type RangeAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RangeAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *RangeAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(rangeAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RangeAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(rangeAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // RangeAccessibleClassStruct creates an uninitialised RangeAccessibleClass.
@@ -14594,43 +17528,82 @@ type RangeClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RangeClass) ParentClass() *WidgetClass {
+func (recv *RangeClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(rangeClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RangeClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(rangeClassStruct, recv.native, "parent_class", argValue)
+}
+
 // SliderDetail returns the C field 'slider_detail'.
-func (recv *RangeClass) SliderDetail() string {
+func (recv *RangeClass) FieldSliderDetail() string {
 	argValue := gi.FieldGet(rangeClassStruct, recv.native, "slider_detail")
 	value := argValue.String(false)
 	return value
 }
 
+// SliderDetail sets the value of the C field 'slider_detail'.
+func (recv *RangeClass) SetFieldSliderDetail(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(rangeClassStruct, recv.native, "slider_detail", argValue)
+}
+
 // StepperDetail returns the C field 'stepper_detail'.
-func (recv *RangeClass) StepperDetail() string {
+func (recv *RangeClass) FieldStepperDetail() string {
 	argValue := gi.FieldGet(rangeClassStruct, recv.native, "stepper_detail")
 	value := argValue.String(false)
 	return value
 }
 
+// StepperDetail sets the value of the C field 'stepper_detail'.
+func (recv *RangeClass) SetFieldStepperDetail(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(rangeClassStruct, recv.native, "stepper_detail", argValue)
+}
+
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'value_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'adjust_bounds' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'adjust_bounds' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'move_slider' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'move_slider' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_range_border' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_range_border' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'change_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_range_size_request' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_range_size_request' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // RangeClassStruct creates an uninitialised RangeClass.
 func RangeClassStruct() *RangeClass {
@@ -14723,27 +17696,50 @@ type RcProperty struct {
 }
 
 // TypeName returns the C field 'type_name'.
-func (recv *RcProperty) TypeName() glib.Quark {
+func (recv *RcProperty) FieldTypeName() glib.Quark {
 	argValue := gi.FieldGet(rcPropertyStruct, recv.native, "type_name")
 	value := glib.Quark(argValue.Uint32())
 	return value
 }
 
+// TypeName sets the value of the C field 'type_name'.
+func (recv *RcProperty) SetFieldTypeName(value glib.Quark) {
+	var argValue gi.Argument
+	argValue.SetUint32(uint32(value))
+	gi.FieldSet(rcPropertyStruct, recv.native, "type_name", argValue)
+}
+
 // PropertyName returns the C field 'property_name'.
-func (recv *RcProperty) PropertyName() glib.Quark {
+func (recv *RcProperty) FieldPropertyName() glib.Quark {
 	argValue := gi.FieldGet(rcPropertyStruct, recv.native, "property_name")
 	value := glib.Quark(argValue.Uint32())
 	return value
 }
 
+// PropertyName sets the value of the C field 'property_name'.
+func (recv *RcProperty) SetFieldPropertyName(value glib.Quark) {
+	var argValue gi.Argument
+	argValue.SetUint32(uint32(value))
+	gi.FieldSet(rcPropertyStruct, recv.native, "property_name", argValue)
+}
+
 // Origin returns the C field 'origin'.
-func (recv *RcProperty) Origin() string {
+func (recv *RcProperty) FieldOrigin() string {
 	argValue := gi.FieldGet(rcPropertyStruct, recv.native, "origin")
 	value := argValue.String(false)
 	return value
 }
 
+// Origin sets the value of the C field 'origin'.
+func (recv *RcProperty) SetFieldOrigin(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(rcPropertyStruct, recv.native, "origin", argValue)
+}
+
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'GObject.Value'
+
+// UNSUPPORTED : C value 'value' : for field setter : no Go type for 'GObject.Value'
 
 // RcPropertyStruct creates an uninitialised RcProperty.
 func RcPropertyStruct() *RcProperty {
@@ -14777,21 +17773,39 @@ type RcStyleClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'create_rc_style' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_rc_style' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'parse' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'parse' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'merge' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'merge' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_style' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_style' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RcStyleClassStruct creates an uninitialised RcStyleClass.
 func RcStyleClassStruct() *RcStyleClass {
@@ -14824,19 +17838,34 @@ type RecentActionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RecentActionClass) ParentClass() *ActionClass {
+func (recv *RecentActionClass) FieldParentClass() *ActionClass {
 	argValue := gi.FieldGet(recentActionClassStruct, recv.native, "parent_class")
 	value := &ActionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RecentActionClass) SetFieldParentClass(value *ActionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(recentActionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RecentActionClassStruct creates an uninitialised RecentActionClass.
 func RecentActionClassStruct() *RecentActionClass {
@@ -14899,19 +17928,34 @@ type RecentChooserDialogClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RecentChooserDialogClass) ParentClass() *DialogClass {
+func (recv *RecentChooserDialogClass) FieldParentClass() *DialogClass {
 	argValue := gi.FieldGet(recentChooserDialogClassStruct, recv.native, "parent_class")
 	value := &DialogClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RecentChooserDialogClass) SetFieldParentClass(value *DialogClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(recentChooserDialogClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RecentChooserDialogClassStruct creates an uninitialised RecentChooserDialogClass.
 func RecentChooserDialogClassStruct() *RecentChooserDialogClass {
@@ -14975,31 +18019,59 @@ type RecentChooserIface struct {
 
 // UNSUPPORTED : C value 'set_current_uri' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_current_uri' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_current_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_current_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_uri' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_uri' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unselect_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unselect_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unselect_all' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unselect_all' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_items' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_items' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_recent_manager' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_recent_manager' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_filter' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_filter' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_filter' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_filter' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'list_filters' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'list_filters' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_sort_func' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_sort_func' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'item_activated' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'item_activated' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'selection_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'selection_changed' : for field setter : missing Type
 
 // RecentChooserIfaceStruct creates an uninitialised RecentChooserIface.
 func RecentChooserIfaceStruct() *RecentChooserIface {
@@ -15032,19 +18104,34 @@ type RecentChooserMenuClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RecentChooserMenuClass) ParentClass() *MenuClass {
+func (recv *RecentChooserMenuClass) FieldParentClass() *MenuClass {
 	argValue := gi.FieldGet(recentChooserMenuClassStruct, recv.native, "parent_class")
 	value := &MenuClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RecentChooserMenuClass) SetFieldParentClass(value *MenuClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(recentChooserMenuClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'gtk_recent1' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'gtk_recent1' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'gtk_recent2' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'gtk_recent2' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'gtk_recent3' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'gtk_recent3' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'gtk_recent4' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'gtk_recent4' : for field setter : missing Type
 
 // RecentChooserMenuClassStruct creates an uninitialised RecentChooserMenuClass.
 func RecentChooserMenuClassStruct() *RecentChooserMenuClass {
@@ -15107,19 +18194,34 @@ type RecentChooserWidgetClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RecentChooserWidgetClass) ParentClass() *BoxClass {
+func (recv *RecentChooserWidgetClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(recentChooserWidgetClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RecentChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(recentChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // RecentChooserWidgetClassStruct creates an uninitialised RecentChooserWidgetClass.
 func RecentChooserWidgetClassStruct() *RecentChooserWidgetClass {
@@ -15182,47 +18284,91 @@ type RecentData struct {
 }
 
 // DisplayName returns the C field 'display_name'.
-func (recv *RecentData) DisplayName() string {
+func (recv *RecentData) FieldDisplayName() string {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "display_name")
 	value := argValue.String(false)
 	return value
 }
 
+// DisplayName sets the value of the C field 'display_name'.
+func (recv *RecentData) SetFieldDisplayName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentDataStruct, recv.native, "display_name", argValue)
+}
+
 // Description returns the C field 'description'.
-func (recv *RecentData) Description() string {
+func (recv *RecentData) FieldDescription() string {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "description")
 	value := argValue.String(false)
 	return value
 }
 
+// Description sets the value of the C field 'description'.
+func (recv *RecentData) SetFieldDescription(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentDataStruct, recv.native, "description", argValue)
+}
+
 // MimeType returns the C field 'mime_type'.
-func (recv *RecentData) MimeType() string {
+func (recv *RecentData) FieldMimeType() string {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "mime_type")
 	value := argValue.String(false)
 	return value
 }
 
+// MimeType sets the value of the C field 'mime_type'.
+func (recv *RecentData) SetFieldMimeType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentDataStruct, recv.native, "mime_type", argValue)
+}
+
 // AppName returns the C field 'app_name'.
-func (recv *RecentData) AppName() string {
+func (recv *RecentData) FieldAppName() string {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "app_name")
 	value := argValue.String(false)
 	return value
 }
 
+// AppName sets the value of the C field 'app_name'.
+func (recv *RecentData) SetFieldAppName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentDataStruct, recv.native, "app_name", argValue)
+}
+
 // AppExec returns the C field 'app_exec'.
-func (recv *RecentData) AppExec() string {
+func (recv *RecentData) FieldAppExec() string {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "app_exec")
 	value := argValue.String(false)
 	return value
 }
 
+// AppExec sets the value of the C field 'app_exec'.
+func (recv *RecentData) SetFieldAppExec(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentDataStruct, recv.native, "app_exec", argValue)
+}
+
 // UNSUPPORTED : C value 'groups' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'groups' : for field setter : missing Type
+
 // IsPrivate returns the C field 'is_private'.
-func (recv *RecentData) IsPrivate() bool {
+func (recv *RecentData) FieldIsPrivate() bool {
 	argValue := gi.FieldGet(recentDataStruct, recv.native, "is_private")
 	value := argValue.Boolean()
 	return value
+}
+
+// IsPrivate sets the value of the C field 'is_private'.
+func (recv *RecentData) SetFieldIsPrivate(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(recentDataStruct, recv.native, "is_private", argValue)
 }
 
 // RecentDataStruct creates an uninitialised RecentData.
@@ -15257,36 +18403,70 @@ type RecentFilterInfo struct {
 
 // UNSUPPORTED : C value 'contains' : for field getter : no Go type for 'RecentFilterFlags'
 
+// UNSUPPORTED : C value 'contains' : for field setter : no Go type for 'RecentFilterFlags'
+
 // Uri returns the C field 'uri'.
-func (recv *RecentFilterInfo) Uri() string {
+func (recv *RecentFilterInfo) FieldUri() string {
 	argValue := gi.FieldGet(recentFilterInfoStruct, recv.native, "uri")
 	value := argValue.String(false)
 	return value
 }
 
+// Uri sets the value of the C field 'uri'.
+func (recv *RecentFilterInfo) SetFieldUri(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentFilterInfoStruct, recv.native, "uri", argValue)
+}
+
 // DisplayName returns the C field 'display_name'.
-func (recv *RecentFilterInfo) DisplayName() string {
+func (recv *RecentFilterInfo) FieldDisplayName() string {
 	argValue := gi.FieldGet(recentFilterInfoStruct, recv.native, "display_name")
 	value := argValue.String(false)
 	return value
 }
 
+// DisplayName sets the value of the C field 'display_name'.
+func (recv *RecentFilterInfo) SetFieldDisplayName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentFilterInfoStruct, recv.native, "display_name", argValue)
+}
+
 // MimeType returns the C field 'mime_type'.
-func (recv *RecentFilterInfo) MimeType() string {
+func (recv *RecentFilterInfo) FieldMimeType() string {
 	argValue := gi.FieldGet(recentFilterInfoStruct, recv.native, "mime_type")
 	value := argValue.String(false)
 	return value
 }
 
+// MimeType sets the value of the C field 'mime_type'.
+func (recv *RecentFilterInfo) SetFieldMimeType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(recentFilterInfoStruct, recv.native, "mime_type", argValue)
+}
+
 // UNSUPPORTED : C value 'applications' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'applications' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'groups' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'groups' : for field setter : missing Type
+
 // Age returns the C field 'age'.
-func (recv *RecentFilterInfo) Age() int32 {
+func (recv *RecentFilterInfo) FieldAge() int32 {
 	argValue := gi.FieldGet(recentFilterInfoStruct, recv.native, "age")
 	value := argValue.Int32()
 	return value
+}
+
+// Age sets the value of the C field 'age'.
+func (recv *RecentFilterInfo) SetFieldAge(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(recentFilterInfoStruct, recv.native, "age", argValue)
 }
 
 // RecentFilterInfoStruct creates an uninitialised RecentFilterInfo.
@@ -16065,13 +19245,23 @@ type RecentManagerClass struct {
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_recent1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_recent1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_recent2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_recent2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_recent3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_recent3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_recent4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_recent4' : for field setter : missing Type
 
 // RecentManagerClassStruct creates an uninitialised RecentManagerClass.
 func RecentManagerClassStruct() *RecentManagerClass {
@@ -16134,10 +19324,17 @@ type RendererCellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RendererCellAccessibleClass) ParentClass() *CellAccessibleClass {
+func (recv *RendererCellAccessibleClass) FieldParentClass() *CellAccessibleClass {
 	argValue := gi.FieldGet(rendererCellAccessibleClassStruct, recv.native, "parent_class")
 	value := &CellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RendererCellAccessibleClass) SetFieldParentClass(value *CellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(rendererCellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // RendererCellAccessibleClassStruct creates an uninitialised RendererCellAccessibleClass.
@@ -16202,18 +19399,34 @@ type RequestedSize struct {
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+
 // MinimumSize returns the C field 'minimum_size'.
-func (recv *RequestedSize) MinimumSize() int32 {
+func (recv *RequestedSize) FieldMinimumSize() int32 {
 	argValue := gi.FieldGet(requestedSizeStruct, recv.native, "minimum_size")
 	value := argValue.Int32()
 	return value
 }
 
+// MinimumSize sets the value of the C field 'minimum_size'.
+func (recv *RequestedSize) SetFieldMinimumSize(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(requestedSizeStruct, recv.native, "minimum_size", argValue)
+}
+
 // NaturalSize returns the C field 'natural_size'.
-func (recv *RequestedSize) NaturalSize() int32 {
+func (recv *RequestedSize) FieldNaturalSize() int32 {
 	argValue := gi.FieldGet(requestedSizeStruct, recv.native, "natural_size")
 	value := argValue.Int32()
 	return value
+}
+
+// NaturalSize sets the value of the C field 'natural_size'.
+func (recv *RequestedSize) SetFieldNaturalSize(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(requestedSizeStruct, recv.native, "natural_size", argValue)
 }
 
 // RequestedSizeStruct creates an uninitialised RequestedSize.
@@ -16247,17 +19460,31 @@ type Requisition struct {
 }
 
 // Width returns the C field 'width'.
-func (recv *Requisition) Width() int32 {
+func (recv *Requisition) FieldWidth() int32 {
 	argValue := gi.FieldGet(requisitionStruct, recv.native, "width")
 	value := argValue.Int32()
 	return value
 }
 
+// Width sets the value of the C field 'width'.
+func (recv *Requisition) SetFieldWidth(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(requisitionStruct, recv.native, "width", argValue)
+}
+
 // Height returns the C field 'height'.
-func (recv *Requisition) Height() int32 {
+func (recv *Requisition) FieldHeight() int32 {
 	argValue := gi.FieldGet(requisitionStruct, recv.native, "height")
 	value := argValue.Int32()
 	return value
+}
+
+// Height sets the value of the C field 'height'.
+func (recv *Requisition) SetFieldHeight(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(requisitionStruct, recv.native, "height", argValue)
 }
 
 var requisitionNewFunction *gi.Function
@@ -16366,10 +19593,17 @@ type RevealerClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *RevealerClass) ParentClass() *BinClass {
+func (recv *RevealerClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(revealerClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *RevealerClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(revealerClassStruct, recv.native, "parent_class", argValue)
 }
 
 // RevealerClassStruct creates an uninitialised RevealerClass.
@@ -16403,10 +19637,17 @@ type ScaleAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScaleAccessibleClass) ParentClass() *RangeAccessibleClass {
+func (recv *ScaleAccessibleClass) FieldParentClass() *RangeAccessibleClass {
 	argValue := gi.FieldGet(scaleAccessibleClassStruct, recv.native, "parent_class")
 	value := &RangeAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScaleAccessibleClass) SetFieldParentClass(value *RangeAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scaleAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ScaleAccessibleClassStruct creates an uninitialised ScaleAccessibleClass.
@@ -16470,10 +19711,17 @@ type ScaleButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScaleButtonAccessibleClass) ParentClass() *ButtonAccessibleClass {
+func (recv *ScaleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
 	argValue := gi.FieldGet(scaleButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScaleButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scaleButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ScaleButtonAccessibleClassStruct creates an uninitialised ScaleButtonAccessibleClass.
@@ -16537,21 +19785,38 @@ type ScaleButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScaleButtonClass) ParentClass() *ButtonClass {
+func (recv *ScaleButtonClass) FieldParentClass() *ButtonClass {
 	argValue := gi.FieldGet(scaleButtonClassStruct, recv.native, "parent_class")
 	value := &ButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScaleButtonClass) SetFieldParentClass(value *ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scaleButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'value_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ScaleButtonClassStruct creates an uninitialised ScaleButtonClass.
 func ScaleButtonClassStruct() *ScaleButtonClass {
@@ -16614,25 +19879,46 @@ type ScaleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScaleClass) ParentClass() *RangeClass {
+func (recv *ScaleClass) FieldParentClass() *RangeClass {
 	argValue := gi.FieldGet(scaleClassStruct, recv.native, "parent_class")
 	value := &RangeClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScaleClass) SetFieldParentClass(value *RangeClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scaleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'format_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'format_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_layout_offsets' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_layout_offsets' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ScaleClassStruct creates an uninitialised ScaleClass.
 func ScaleClassStruct() *ScaleClass {
@@ -16696,7 +19982,11 @@ type ScrollableInterface struct {
 
 // UNSUPPORTED : C value 'base_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'base_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_border' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_border' : for field setter : missing Type
 
 // ScrollableInterfaceStruct creates an uninitialised ScrollableInterface.
 func ScrollableInterfaceStruct() *ScrollableInterface {
@@ -16729,19 +20019,34 @@ type ScrollbarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScrollbarClass) ParentClass() *RangeClass {
+func (recv *ScrollbarClass) FieldParentClass() *RangeClass {
 	argValue := gi.FieldGet(scrollbarClassStruct, recv.native, "parent_class")
 	value := &RangeClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScrollbarClass) SetFieldParentClass(value *RangeClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scrollbarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ScrollbarClassStruct creates an uninitialised ScrollbarClass.
 func ScrollbarClassStruct() *ScrollbarClass {
@@ -16774,10 +20079,17 @@ type ScrolledWindowAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScrolledWindowAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *ScrolledWindowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(scrolledWindowAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScrolledWindowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scrolledWindowAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ScrolledWindowAccessibleClassStruct creates an uninitialised ScrolledWindowAccessibleClass.
@@ -16841,30 +20153,56 @@ type ScrolledWindowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ScrolledWindowClass) ParentClass() *BinClass {
+func (recv *ScrolledWindowClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(scrolledWindowClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ScrolledWindowClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(scrolledWindowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // ScrollbarSpacing returns the C field 'scrollbar_spacing'.
-func (recv *ScrolledWindowClass) ScrollbarSpacing() int32 {
+func (recv *ScrolledWindowClass) FieldScrollbarSpacing() int32 {
 	argValue := gi.FieldGet(scrolledWindowClassStruct, recv.native, "scrollbar_spacing")
 	value := argValue.Int32()
 	return value
 }
 
+// ScrollbarSpacing sets the value of the C field 'scrollbar_spacing'.
+func (recv *ScrolledWindowClass) SetFieldScrollbarSpacing(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(scrolledWindowClassStruct, recv.native, "scrollbar_spacing", argValue)
+}
+
 // UNSUPPORTED : C value 'scroll_child' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'scroll_child' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move_focus_out' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_focus_out' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ScrolledWindowClassStruct creates an uninitialised ScrolledWindowClass.
 func ScrolledWindowClassStruct() *ScrolledWindowClass {
@@ -16927,19 +20265,34 @@ type SearchBarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SearchBarClass) ParentClass() *BinClass {
+func (recv *SearchBarClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(searchBarClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SearchBarClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(searchBarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SearchBarClassStruct creates an uninitialised SearchBarClass.
 func SearchBarClassStruct() *SearchBarClass {
@@ -16972,19 +20325,34 @@ type SearchEntryClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SearchEntryClass) ParentClass() *EntryClass {
+func (recv *SearchEntryClass) FieldParentClass() *EntryClass {
 	argValue := gi.FieldGet(searchEntryClassStruct, recv.native, "parent_class")
 	value := &EntryClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SearchEntryClass) SetFieldParentClass(value *EntryClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(searchEntryClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'search_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'search_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'next_match' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'next_match' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'previous_match' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'previous_match' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'stop_search' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_search' : for field setter : missing Type
 
 // SearchEntryClassStruct creates an uninitialised SearchEntryClass.
 func SearchEntryClassStruct() *SearchEntryClass {
@@ -17442,19 +20810,34 @@ type SeparatorClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SeparatorClass) ParentClass() *WidgetClass {
+func (recv *SeparatorClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(separatorClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SeparatorClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(separatorClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SeparatorClassStruct creates an uninitialised SeparatorClass.
 func SeparatorClassStruct() *SeparatorClass {
@@ -17487,19 +20870,34 @@ type SeparatorMenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SeparatorMenuItemClass) ParentClass() *MenuItemClass {
+func (recv *SeparatorMenuItemClass) FieldParentClass() *MenuItemClass {
 	argValue := gi.FieldGet(separatorMenuItemClassStruct, recv.native, "parent_class")
 	value := &MenuItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SeparatorMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(separatorMenuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SeparatorMenuItemClassStruct creates an uninitialised SeparatorMenuItemClass.
 func SeparatorMenuItemClassStruct() *SeparatorMenuItemClass {
@@ -17562,19 +20960,34 @@ type SeparatorToolItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SeparatorToolItemClass) ParentClass() *ToolItemClass {
+func (recv *SeparatorToolItemClass) FieldParentClass() *ToolItemClass {
 	argValue := gi.FieldGet(separatorToolItemClassStruct, recv.native, "parent_class")
 	value := &ToolItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SeparatorToolItemClass) SetFieldParentClass(value *ToolItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(separatorToolItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SeparatorToolItemClassStruct creates an uninitialised SeparatorToolItemClass.
 func SeparatorToolItemClassStruct() *SeparatorToolItemClass {
@@ -17638,13 +21051,23 @@ type SettingsClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SettingsClassStruct creates an uninitialised SettingsClass.
 func SettingsClassStruct() *SettingsClass {
@@ -17707,13 +21130,22 @@ type SettingsValue struct {
 }
 
 // Origin returns the C field 'origin'.
-func (recv *SettingsValue) Origin() string {
+func (recv *SettingsValue) FieldOrigin() string {
 	argValue := gi.FieldGet(settingsValueStruct, recv.native, "origin")
 	value := argValue.String(false)
 	return value
 }
 
+// Origin sets the value of the C field 'origin'.
+func (recv *SettingsValue) SetFieldOrigin(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(settingsValueStruct, recv.native, "origin", argValue)
+}
+
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'GObject.Value'
+
+// UNSUPPORTED : C value 'value' : for field setter : no Go type for 'GObject.Value'
 
 // SettingsValueStruct creates an uninitialised SettingsValue.
 func SettingsValueStruct() *SettingsValue {
@@ -17866,15 +21298,26 @@ type ShortcutsWindowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ShortcutsWindowClass) ParentClass() *WindowClass {
+func (recv *ShortcutsWindowClass) FieldParentClass() *WindowClass {
 	argValue := gi.FieldGet(shortcutsWindowClassStruct, recv.native, "parent_class")
 	value := &WindowClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ShortcutsWindowClass) SetFieldParentClass(value *WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(shortcutsWindowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'search' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'search' : for field setter : missing Type
 
 // ShortcutsWindowClassStruct creates an uninitialised ShortcutsWindowClass.
 func ShortcutsWindowClassStruct() *ShortcutsWindowClass {
@@ -17908,13 +21351,23 @@ type SizeGroupClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SizeGroupClassStruct creates an uninitialised SizeGroupClass.
 func SizeGroupClassStruct() *SizeGroupClass {
@@ -17977,23 +21430,42 @@ type SocketClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SocketClass) ParentClass() *ContainerClass {
+func (recv *SocketClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(socketClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SocketClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'plug_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'plug_added' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'plug_removed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'plug_removed' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SocketClassStruct creates an uninitialised SocketClass.
 func SocketClassStruct() *SocketClass {
@@ -18056,10 +21528,17 @@ type SpinButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SpinButtonAccessibleClass) ParentClass() *EntryAccessibleClass {
+func (recv *SpinButtonAccessibleClass) FieldParentClass() *EntryAccessibleClass {
 	argValue := gi.FieldGet(spinButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &EntryAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SpinButtonAccessibleClass) SetFieldParentClass(value *EntryAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(spinButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // SpinButtonAccessibleClassStruct creates an uninitialised SpinButtonAccessibleClass.
@@ -18123,29 +21602,54 @@ type SpinButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SpinButtonClass) ParentClass() *EntryClass {
+func (recv *SpinButtonClass) FieldParentClass() *EntryClass {
 	argValue := gi.FieldGet(spinButtonClassStruct, recv.native, "parent_class")
 	value := &EntryClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SpinButtonClass) SetFieldParentClass(value *EntryClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(spinButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'input' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'input' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'output' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'output' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'value_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'change_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'wrapped' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'wrapped' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SpinButtonClassStruct creates an uninitialised SpinButtonClass.
 func SpinButtonClassStruct() *SpinButtonClass {
@@ -18208,10 +21712,17 @@ type SpinnerAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SpinnerAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *SpinnerAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(spinnerAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SpinnerAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(spinnerAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // SpinnerAccessibleClassStruct creates an uninitialised SpinnerAccessibleClass.
@@ -18275,19 +21786,34 @@ type SpinnerClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SpinnerClass) ParentClass() *WidgetClass {
+func (recv *SpinnerClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(spinnerClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SpinnerClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(spinnerClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // SpinnerClassStruct creates an uninitialised SpinnerClass.
 func SpinnerClassStruct() *SpinnerClass {
@@ -18350,10 +21876,17 @@ type StackAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StackAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *StackAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(stackAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StackAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(stackAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // StackAccessibleClassStruct creates an uninitialised StackAccessibleClass.
@@ -18387,10 +21920,17 @@ type StackClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StackClass) ParentClass() *ContainerClass {
+func (recv *StackClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(stackClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StackClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(stackClassStruct, recv.native, "parent_class", argValue)
 }
 
 // StackClassStruct creates an uninitialised StackClass.
@@ -18424,19 +21964,34 @@ type StackSidebarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StackSidebarClass) ParentClass() *BinClass {
+func (recv *StackSidebarClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(stackSidebarClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StackSidebarClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(stackSidebarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // StackSidebarClassStruct creates an uninitialised StackSidebarClass.
 func StackSidebarClassStruct() *StackSidebarClass {
@@ -18499,19 +22054,34 @@ type StackSwitcherClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StackSwitcherClass) ParentClass() *BoxClass {
+func (recv *StackSwitcherClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(stackSwitcherClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StackSwitcherClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(stackSwitcherClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // StackSwitcherClassStruct creates an uninitialised StackSwitcherClass.
 func StackSwitcherClassStruct() *StackSwitcherClass {
@@ -18545,27 +22115,51 @@ type StatusIconClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'popup_menu' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'popup_menu' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'size_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'size_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'button_press_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'button_press_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'button_release_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'button_release_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'scroll_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'scroll_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_tooltip' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_tooltip' : for field setter : missing Type
 
 // UNSUPPORTED : C value '__gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '__gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '__gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '__gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '__gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '__gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '__gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '__gtk_reserved4' : for field setter : missing Type
 
 // StatusIconClassStruct creates an uninitialised StatusIconClass.
 func StatusIconClassStruct() *StatusIconClass {
@@ -18628,10 +22222,17 @@ type StatusbarAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StatusbarAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *StatusbarAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(statusbarAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StatusbarAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(statusbarAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // StatusbarAccessibleClassStruct creates an uninitialised StatusbarAccessibleClass.
@@ -18695,25 +22296,46 @@ type StatusbarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *StatusbarClass) ParentClass() *BoxClass {
+func (recv *StatusbarClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(statusbarClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *StatusbarClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(statusbarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'reserved' : for field getter : no Go type for 'gpointer'
+
+// UNSUPPORTED : C value 'reserved' : for field setter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'text_pushed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'text_pushed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'text_popped' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'text_popped' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // StatusbarClassStruct creates an uninitialised StatusbarClass.
 func StatusbarClassStruct() *StatusbarClass {
@@ -18776,33 +22398,63 @@ type StockItem struct {
 }
 
 // StockId returns the C field 'stock_id'.
-func (recv *StockItem) StockId() string {
+func (recv *StockItem) FieldStockId() string {
 	argValue := gi.FieldGet(stockItemStruct, recv.native, "stock_id")
 	value := argValue.String(false)
 	return value
 }
 
+// StockId sets the value of the C field 'stock_id'.
+func (recv *StockItem) SetFieldStockId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(stockItemStruct, recv.native, "stock_id", argValue)
+}
+
 // Label returns the C field 'label'.
-func (recv *StockItem) Label() string {
+func (recv *StockItem) FieldLabel() string {
 	argValue := gi.FieldGet(stockItemStruct, recv.native, "label")
 	value := argValue.String(false)
 	return value
 }
 
+// Label sets the value of the C field 'label'.
+func (recv *StockItem) SetFieldLabel(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(stockItemStruct, recv.native, "label", argValue)
+}
+
 // UNSUPPORTED : C value 'modifier' : for field getter : no Go type for 'Gdk.ModifierType'
 
+// UNSUPPORTED : C value 'modifier' : for field setter : no Go type for 'Gdk.ModifierType'
+
 // Keyval returns the C field 'keyval'.
-func (recv *StockItem) Keyval() uint32 {
+func (recv *StockItem) FieldKeyval() uint32 {
 	argValue := gi.FieldGet(stockItemStruct, recv.native, "keyval")
 	value := argValue.Uint32()
 	return value
 }
 
+// Keyval sets the value of the C field 'keyval'.
+func (recv *StockItem) SetFieldKeyval(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(stockItemStruct, recv.native, "keyval", argValue)
+}
+
 // TranslationDomain returns the C field 'translation_domain'.
-func (recv *StockItem) TranslationDomain() string {
+func (recv *StockItem) FieldTranslationDomain() string {
 	argValue := gi.FieldGet(stockItemStruct, recv.native, "translation_domain")
 	value := argValue.String(false)
 	return value
+}
+
+// TranslationDomain sets the value of the C field 'translation_domain'.
+func (recv *StockItem) SetFieldTranslationDomain(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(stockItemStruct, recv.native, "translation_domain", argValue)
 }
 
 var stockItemCopyFunction *gi.Function
@@ -18897,81 +22549,159 @@ type StyleClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'realize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'realize' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unrealize' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unrealize' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'copy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'clone' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'clone' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'init_from_rc' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'init_from_rc' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_background' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_background' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_icon' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_hline' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_hline' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_vline' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_vline' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_shadow' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_shadow' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_arrow' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_arrow' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_diamond' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_diamond' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_box' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_box' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_flat_box' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_flat_box' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_check' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_check' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_option' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_option' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_tab' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_tab' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_shadow_gap' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_shadow_gap' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_box_gap' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_box_gap' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_extension' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_extension' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_focus' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_focus' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_slider' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_slider' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_handle' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_expander' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_expander' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_layout' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_layout' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_resize_grip' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_resize_grip' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw_spinner' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw_spinner' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved9' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved9' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved10' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved10' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved11' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved11' : for field setter : missing Type
 
 // StyleClassStruct creates an uninitialised StyleClass.
 func StyleClassStruct() *StyleClass {
@@ -19005,15 +22735,27 @@ type StyleContextClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // StyleContextClassStruct creates an uninitialised StyleContextClass.
 func StyleContextClassStruct() *StyleContextClass {
@@ -19077,11 +22819,19 @@ type StylePropertiesClass struct {
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // StylePropertiesClassStruct creates an uninitialised StylePropertiesClass.
 func StylePropertiesClassStruct() *StylePropertiesClass {
@@ -19145,9 +22895,15 @@ type StyleProviderIface struct {
 
 // UNSUPPORTED : C value 'get_style' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_style' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_style_property' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_style_property' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon_factory' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon_factory' : for field setter : missing Type
 
 // StyleProviderIfaceStruct creates an uninitialised StyleProviderIface.
 func StyleProviderIfaceStruct() *StyleProviderIface {
@@ -19180,10 +22936,17 @@ type SwitchAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SwitchAccessibleClass) ParentClass() *WidgetAccessibleClass {
+func (recv *SwitchAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 	argValue := gi.FieldGet(switchAccessibleClassStruct, recv.native, "parent_class")
 	value := &WidgetAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SwitchAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(switchAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // SwitchAccessibleClassStruct creates an uninitialised SwitchAccessibleClass.
@@ -19247,25 +23010,46 @@ type SwitchClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SwitchClass) ParentClass() *WidgetClass {
+func (recv *SwitchClass) FieldParentClass() *WidgetClass {
 	argValue := gi.FieldGet(switchClassStruct, recv.native, "parent_class")
 	value := &WidgetClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SwitchClass) SetFieldParentClass(value *WidgetClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(switchClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'state_set' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'state_set' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_switch_padding_1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_switch_padding_1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_switch_padding_2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_switch_padding_2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_switch_padding_3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_switch_padding_3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_switch_padding_4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_switch_padding_4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_switch_padding_5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_switch_padding_5' : for field setter : missing Type
 
 // SwitchClassStruct creates an uninitialised SwitchClass.
 func SwitchClassStruct() *SwitchClass {
@@ -19605,88 +23389,174 @@ type TableChild struct {
 
 // UNSUPPORTED : C value 'widget' : for field getter : no Go type for 'Widget'
 
+// UNSUPPORTED : C value 'widget' : for field setter : no Go type for 'Widget'
+
 // LeftAttach returns the C field 'left_attach'.
-func (recv *TableChild) LeftAttach() uint16 {
+func (recv *TableChild) FieldLeftAttach() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "left_attach")
 	value := argValue.Uint16()
 	return value
 }
 
+// LeftAttach sets the value of the C field 'left_attach'.
+func (recv *TableChild) SetFieldLeftAttach(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "left_attach", argValue)
+}
+
 // RightAttach returns the C field 'right_attach'.
-func (recv *TableChild) RightAttach() uint16 {
+func (recv *TableChild) FieldRightAttach() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "right_attach")
 	value := argValue.Uint16()
 	return value
 }
 
+// RightAttach sets the value of the C field 'right_attach'.
+func (recv *TableChild) SetFieldRightAttach(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "right_attach", argValue)
+}
+
 // TopAttach returns the C field 'top_attach'.
-func (recv *TableChild) TopAttach() uint16 {
+func (recv *TableChild) FieldTopAttach() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "top_attach")
 	value := argValue.Uint16()
 	return value
 }
 
+// TopAttach sets the value of the C field 'top_attach'.
+func (recv *TableChild) SetFieldTopAttach(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "top_attach", argValue)
+}
+
 // BottomAttach returns the C field 'bottom_attach'.
-func (recv *TableChild) BottomAttach() uint16 {
+func (recv *TableChild) FieldBottomAttach() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "bottom_attach")
 	value := argValue.Uint16()
 	return value
 }
 
+// BottomAttach sets the value of the C field 'bottom_attach'.
+func (recv *TableChild) SetFieldBottomAttach(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "bottom_attach", argValue)
+}
+
 // Xpadding returns the C field 'xpadding'.
-func (recv *TableChild) Xpadding() uint16 {
+func (recv *TableChild) FieldXpadding() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "xpadding")
 	value := argValue.Uint16()
 	return value
 }
 
+// Xpadding sets the value of the C field 'xpadding'.
+func (recv *TableChild) SetFieldXpadding(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "xpadding", argValue)
+}
+
 // Ypadding returns the C field 'ypadding'.
-func (recv *TableChild) Ypadding() uint16 {
+func (recv *TableChild) FieldYpadding() uint16 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "ypadding")
 	value := argValue.Uint16()
 	return value
 }
 
+// Ypadding sets the value of the C field 'ypadding'.
+func (recv *TableChild) SetFieldYpadding(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableChildStruct, recv.native, "ypadding", argValue)
+}
+
 // Xexpand returns the C field 'xexpand'.
-func (recv *TableChild) Xexpand() uint32 {
+func (recv *TableChild) FieldXexpand() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "xexpand")
 	value := argValue.Uint32()
 	return value
 }
 
+// Xexpand sets the value of the C field 'xexpand'.
+func (recv *TableChild) SetFieldXexpand(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "xexpand", argValue)
+}
+
 // Yexpand returns the C field 'yexpand'.
-func (recv *TableChild) Yexpand() uint32 {
+func (recv *TableChild) FieldYexpand() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "yexpand")
 	value := argValue.Uint32()
 	return value
 }
 
+// Yexpand sets the value of the C field 'yexpand'.
+func (recv *TableChild) SetFieldYexpand(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "yexpand", argValue)
+}
+
 // Xshrink returns the C field 'xshrink'.
-func (recv *TableChild) Xshrink() uint32 {
+func (recv *TableChild) FieldXshrink() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "xshrink")
 	value := argValue.Uint32()
 	return value
 }
 
+// Xshrink sets the value of the C field 'xshrink'.
+func (recv *TableChild) SetFieldXshrink(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "xshrink", argValue)
+}
+
 // Yshrink returns the C field 'yshrink'.
-func (recv *TableChild) Yshrink() uint32 {
+func (recv *TableChild) FieldYshrink() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "yshrink")
 	value := argValue.Uint32()
 	return value
 }
 
+// Yshrink sets the value of the C field 'yshrink'.
+func (recv *TableChild) SetFieldYshrink(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "yshrink", argValue)
+}
+
 // Xfill returns the C field 'xfill'.
-func (recv *TableChild) Xfill() uint32 {
+func (recv *TableChild) FieldXfill() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "xfill")
 	value := argValue.Uint32()
 	return value
 }
 
+// Xfill sets the value of the C field 'xfill'.
+func (recv *TableChild) SetFieldXfill(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "xfill", argValue)
+}
+
 // Yfill returns the C field 'yfill'.
-func (recv *TableChild) Yfill() uint32 {
+func (recv *TableChild) FieldYfill() uint32 {
 	argValue := gi.FieldGet(tableChildStruct, recv.native, "yfill")
 	value := argValue.Uint32()
 	return value
+}
+
+// Yfill sets the value of the C field 'yfill'.
+func (recv *TableChild) SetFieldYfill(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableChildStruct, recv.native, "yfill", argValue)
 }
 
 // TableChildStruct creates an uninitialised TableChild.
@@ -19720,19 +23590,34 @@ type TableClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TableClass) ParentClass() *ContainerClass {
+func (recv *TableClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(tableClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TableClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tableClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TableClassStruct creates an uninitialised TableClass.
 func TableClassStruct() *TableClass {
@@ -19795,59 +23680,115 @@ type TableRowCol struct {
 }
 
 // Requisition returns the C field 'requisition'.
-func (recv *TableRowCol) Requisition() uint16 {
+func (recv *TableRowCol) FieldRequisition() uint16 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "requisition")
 	value := argValue.Uint16()
 	return value
 }
 
+// Requisition sets the value of the C field 'requisition'.
+func (recv *TableRowCol) SetFieldRequisition(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "requisition", argValue)
+}
+
 // Allocation returns the C field 'allocation'.
-func (recv *TableRowCol) Allocation() uint16 {
+func (recv *TableRowCol) FieldAllocation() uint16 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "allocation")
 	value := argValue.Uint16()
 	return value
 }
 
+// Allocation sets the value of the C field 'allocation'.
+func (recv *TableRowCol) SetFieldAllocation(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "allocation", argValue)
+}
+
 // Spacing returns the C field 'spacing'.
-func (recv *TableRowCol) Spacing() uint16 {
+func (recv *TableRowCol) FieldSpacing() uint16 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "spacing")
 	value := argValue.Uint16()
 	return value
 }
 
+// Spacing sets the value of the C field 'spacing'.
+func (recv *TableRowCol) SetFieldSpacing(value uint16) {
+	var argValue gi.Argument
+	argValue.SetUint16(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "spacing", argValue)
+}
+
 // NeedExpand returns the C field 'need_expand'.
-func (recv *TableRowCol) NeedExpand() uint32 {
+func (recv *TableRowCol) FieldNeedExpand() uint32 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "need_expand")
 	value := argValue.Uint32()
 	return value
 }
 
+// NeedExpand sets the value of the C field 'need_expand'.
+func (recv *TableRowCol) SetFieldNeedExpand(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "need_expand", argValue)
+}
+
 // NeedShrink returns the C field 'need_shrink'.
-func (recv *TableRowCol) NeedShrink() uint32 {
+func (recv *TableRowCol) FieldNeedShrink() uint32 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "need_shrink")
 	value := argValue.Uint32()
 	return value
 }
 
+// NeedShrink sets the value of the C field 'need_shrink'.
+func (recv *TableRowCol) SetFieldNeedShrink(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "need_shrink", argValue)
+}
+
 // Expand returns the C field 'expand'.
-func (recv *TableRowCol) Expand() uint32 {
+func (recv *TableRowCol) FieldExpand() uint32 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "expand")
 	value := argValue.Uint32()
 	return value
 }
 
+// Expand sets the value of the C field 'expand'.
+func (recv *TableRowCol) SetFieldExpand(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "expand", argValue)
+}
+
 // Shrink returns the C field 'shrink'.
-func (recv *TableRowCol) Shrink() uint32 {
+func (recv *TableRowCol) FieldShrink() uint32 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "shrink")
 	value := argValue.Uint32()
 	return value
 }
 
+// Shrink sets the value of the C field 'shrink'.
+func (recv *TableRowCol) SetFieldShrink(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "shrink", argValue)
+}
+
 // Empty returns the C field 'empty'.
-func (recv *TableRowCol) Empty() uint32 {
+func (recv *TableRowCol) FieldEmpty() uint32 {
 	argValue := gi.FieldGet(tableRowColStruct, recv.native, "empty")
 	value := argValue.Uint32()
 	return value
+}
+
+// Empty sets the value of the C field 'empty'.
+func (recv *TableRowCol) SetFieldEmpty(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(tableRowColStruct, recv.native, "empty", argValue)
 }
 
 // TableRowColStruct creates an uninitialised TableRowCol.
@@ -19881,24 +23822,45 @@ type TargetEntry struct {
 }
 
 // Target returns the C field 'target'.
-func (recv *TargetEntry) Target() string {
+func (recv *TargetEntry) FieldTarget() string {
 	argValue := gi.FieldGet(targetEntryStruct, recv.native, "target")
 	value := argValue.String(false)
 	return value
 }
 
+// Target sets the value of the C field 'target'.
+func (recv *TargetEntry) SetFieldTarget(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(targetEntryStruct, recv.native, "target", argValue)
+}
+
 // Flags returns the C field 'flags'.
-func (recv *TargetEntry) Flags() uint32 {
+func (recv *TargetEntry) FieldFlags() uint32 {
 	argValue := gi.FieldGet(targetEntryStruct, recv.native, "flags")
 	value := argValue.Uint32()
 	return value
 }
 
+// Flags sets the value of the C field 'flags'.
+func (recv *TargetEntry) SetFieldFlags(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(targetEntryStruct, recv.native, "flags", argValue)
+}
+
 // Info returns the C field 'info'.
-func (recv *TargetEntry) Info() uint32 {
+func (recv *TargetEntry) FieldInfo() uint32 {
 	argValue := gi.FieldGet(targetEntryStruct, recv.native, "info")
 	value := argValue.Uint32()
 	return value
+}
+
+// Info sets the value of the C field 'info'.
+func (recv *TargetEntry) SetFieldInfo(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(targetEntryStruct, recv.native, "info", argValue)
 }
 
 var targetEntryNewFunction *gi.Function
@@ -20187,18 +24149,34 @@ type TargetPair struct {
 
 // UNSUPPORTED : C value 'target' : for field getter : no Go type for 'Gdk.Atom'
 
+// UNSUPPORTED : C value 'target' : for field setter : no Go type for 'Gdk.Atom'
+
 // Flags returns the C field 'flags'.
-func (recv *TargetPair) Flags() uint32 {
+func (recv *TargetPair) FieldFlags() uint32 {
 	argValue := gi.FieldGet(targetPairStruct, recv.native, "flags")
 	value := argValue.Uint32()
 	return value
 }
 
+// Flags sets the value of the C field 'flags'.
+func (recv *TargetPair) SetFieldFlags(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(targetPairStruct, recv.native, "flags", argValue)
+}
+
 // Info returns the C field 'info'.
-func (recv *TargetPair) Info() uint32 {
+func (recv *TargetPair) FieldInfo() uint32 {
 	argValue := gi.FieldGet(targetPairStruct, recv.native, "info")
 	value := argValue.Uint32()
 	return value
+}
+
+// Info sets the value of the C field 'info'.
+func (recv *TargetPair) SetFieldInfo(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(targetPairStruct, recv.native, "info", argValue)
 }
 
 // TargetPairStruct creates an uninitialised TargetPair.
@@ -20232,19 +24210,34 @@ type TearoffMenuItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TearoffMenuItemClass) ParentClass() *MenuItemClass {
+func (recv *TearoffMenuItemClass) FieldParentClass() *MenuItemClass {
 	argValue := gi.FieldGet(tearoffMenuItemClassStruct, recv.native, "parent_class")
 	value := &MenuItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TearoffMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tearoffMenuItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TearoffMenuItemClassStruct creates an uninitialised TearoffMenuItemClass.
 func TearoffMenuItemClassStruct() *TearoffMenuItemClass {
@@ -20308,48 +24301,94 @@ type TextAppearance struct {
 
 // UNSUPPORTED : C value 'bg_color' : for field getter : no Go type for 'Gdk.Color'
 
+// UNSUPPORTED : C value 'bg_color' : for field setter : no Go type for 'Gdk.Color'
+
 // UNSUPPORTED : C value 'fg_color' : for field getter : no Go type for 'Gdk.Color'
 
+// UNSUPPORTED : C value 'fg_color' : for field setter : no Go type for 'Gdk.Color'
+
 // Rise returns the C field 'rise'.
-func (recv *TextAppearance) Rise() int32 {
+func (recv *TextAppearance) FieldRise() int32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "rise")
 	value := argValue.Int32()
 	return value
 }
 
+// Rise sets the value of the C field 'rise'.
+func (recv *TextAppearance) SetFieldRise(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "rise", argValue)
+}
+
 // Underline returns the C field 'underline'.
-func (recv *TextAppearance) Underline() uint32 {
+func (recv *TextAppearance) FieldUnderline() uint32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "underline")
 	value := argValue.Uint32()
 	return value
 }
 
+// Underline sets the value of the C field 'underline'.
+func (recv *TextAppearance) SetFieldUnderline(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "underline", argValue)
+}
+
 // Strikethrough returns the C field 'strikethrough'.
-func (recv *TextAppearance) Strikethrough() uint32 {
+func (recv *TextAppearance) FieldStrikethrough() uint32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "strikethrough")
 	value := argValue.Uint32()
 	return value
 }
 
+// Strikethrough sets the value of the C field 'strikethrough'.
+func (recv *TextAppearance) SetFieldStrikethrough(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "strikethrough", argValue)
+}
+
 // DrawBg returns the C field 'draw_bg'.
-func (recv *TextAppearance) DrawBg() uint32 {
+func (recv *TextAppearance) FieldDrawBg() uint32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "draw_bg")
 	value := argValue.Uint32()
 	return value
 }
 
+// DrawBg sets the value of the C field 'draw_bg'.
+func (recv *TextAppearance) SetFieldDrawBg(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "draw_bg", argValue)
+}
+
 // InsideSelection returns the C field 'inside_selection'.
-func (recv *TextAppearance) InsideSelection() uint32 {
+func (recv *TextAppearance) FieldInsideSelection() uint32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "inside_selection")
 	value := argValue.Uint32()
 	return value
 }
 
+// InsideSelection sets the value of the C field 'inside_selection'.
+func (recv *TextAppearance) SetFieldInsideSelection(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "inside_selection", argValue)
+}
+
 // IsText returns the C field 'is_text'.
-func (recv *TextAppearance) IsText() uint32 {
+func (recv *TextAppearance) FieldIsText() uint32 {
 	argValue := gi.FieldGet(textAppearanceStruct, recv.native, "is_text")
 	value := argValue.Uint32()
 	return value
+}
+
+// IsText sets the value of the C field 'is_text'.
+func (recv *TextAppearance) SetFieldIsText(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAppearanceStruct, recv.native, "is_text", argValue)
 }
 
 // TextAppearanceStruct creates an uninitialised TextAppearance.
@@ -20383,106 +24422,209 @@ type TextAttributes struct {
 }
 
 // Appearance returns the C field 'appearance'.
-func (recv *TextAttributes) Appearance() *TextAppearance {
+func (recv *TextAttributes) FieldAppearance() *TextAppearance {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "appearance")
 	value := &TextAppearance{native: argValue.Pointer()}
 	return value
 }
 
+// Appearance sets the value of the C field 'appearance'.
+func (recv *TextAttributes) SetFieldAppearance(value *TextAppearance) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(textAttributesStruct, recv.native, "appearance", argValue)
+}
+
 // UNSUPPORTED : C value 'justification' : for field getter : no Go type for 'Justification'
+
+// UNSUPPORTED : C value 'justification' : for field setter : no Go type for 'Justification'
 
 // UNSUPPORTED : C value 'direction' : for field getter : no Go type for 'TextDirection'
 
+// UNSUPPORTED : C value 'direction' : for field setter : no Go type for 'TextDirection'
+
 // UNSUPPORTED : C value 'font' : for field getter : no Go type for 'Pango.FontDescription'
 
+// UNSUPPORTED : C value 'font' : for field setter : no Go type for 'Pango.FontDescription'
+
 // FontScale returns the C field 'font_scale'.
-func (recv *TextAttributes) FontScale() float64 {
+func (recv *TextAttributes) FieldFontScale() float64 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "font_scale")
 	value := argValue.Float64()
 	return value
 }
 
+// FontScale sets the value of the C field 'font_scale'.
+func (recv *TextAttributes) SetFieldFontScale(value float64) {
+	var argValue gi.Argument
+	argValue.SetFloat64(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "font_scale", argValue)
+}
+
 // LeftMargin returns the C field 'left_margin'.
-func (recv *TextAttributes) LeftMargin() int32 {
+func (recv *TextAttributes) FieldLeftMargin() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "left_margin")
 	value := argValue.Int32()
 	return value
 }
 
+// LeftMargin sets the value of the C field 'left_margin'.
+func (recv *TextAttributes) SetFieldLeftMargin(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "left_margin", argValue)
+}
+
 // RightMargin returns the C field 'right_margin'.
-func (recv *TextAttributes) RightMargin() int32 {
+func (recv *TextAttributes) FieldRightMargin() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "right_margin")
 	value := argValue.Int32()
 	return value
 }
 
+// RightMargin sets the value of the C field 'right_margin'.
+func (recv *TextAttributes) SetFieldRightMargin(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "right_margin", argValue)
+}
+
 // Indent returns the C field 'indent'.
-func (recv *TextAttributes) Indent() int32 {
+func (recv *TextAttributes) FieldIndent() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "indent")
 	value := argValue.Int32()
 	return value
 }
 
+// Indent sets the value of the C field 'indent'.
+func (recv *TextAttributes) SetFieldIndent(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "indent", argValue)
+}
+
 // PixelsAboveLines returns the C field 'pixels_above_lines'.
-func (recv *TextAttributes) PixelsAboveLines() int32 {
+func (recv *TextAttributes) FieldPixelsAboveLines() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "pixels_above_lines")
 	value := argValue.Int32()
 	return value
 }
 
+// PixelsAboveLines sets the value of the C field 'pixels_above_lines'.
+func (recv *TextAttributes) SetFieldPixelsAboveLines(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "pixels_above_lines", argValue)
+}
+
 // PixelsBelowLines returns the C field 'pixels_below_lines'.
-func (recv *TextAttributes) PixelsBelowLines() int32 {
+func (recv *TextAttributes) FieldPixelsBelowLines() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "pixels_below_lines")
 	value := argValue.Int32()
 	return value
 }
 
+// PixelsBelowLines sets the value of the C field 'pixels_below_lines'.
+func (recv *TextAttributes) SetFieldPixelsBelowLines(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "pixels_below_lines", argValue)
+}
+
 // PixelsInsideWrap returns the C field 'pixels_inside_wrap'.
-func (recv *TextAttributes) PixelsInsideWrap() int32 {
+func (recv *TextAttributes) FieldPixelsInsideWrap() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "pixels_inside_wrap")
 	value := argValue.Int32()
 	return value
 }
 
+// PixelsInsideWrap sets the value of the C field 'pixels_inside_wrap'.
+func (recv *TextAttributes) SetFieldPixelsInsideWrap(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "pixels_inside_wrap", argValue)
+}
+
 // UNSUPPORTED : C value 'tabs' : for field getter : no Go type for 'Pango.TabArray'
+
+// UNSUPPORTED : C value 'tabs' : for field setter : no Go type for 'Pango.TabArray'
 
 // UNSUPPORTED : C value 'wrap_mode' : for field getter : no Go type for 'WrapMode'
 
+// UNSUPPORTED : C value 'wrap_mode' : for field setter : no Go type for 'WrapMode'
+
 // UNSUPPORTED : C value 'language' : for field getter : no Go type for 'Pango.Language'
 
+// UNSUPPORTED : C value 'language' : for field setter : no Go type for 'Pango.Language'
+
 // Invisible returns the C field 'invisible'.
-func (recv *TextAttributes) Invisible() uint32 {
+func (recv *TextAttributes) FieldInvisible() uint32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "invisible")
 	value := argValue.Uint32()
 	return value
 }
 
+// Invisible sets the value of the C field 'invisible'.
+func (recv *TextAttributes) SetFieldInvisible(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "invisible", argValue)
+}
+
 // BgFullHeight returns the C field 'bg_full_height'.
-func (recv *TextAttributes) BgFullHeight() uint32 {
+func (recv *TextAttributes) FieldBgFullHeight() uint32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "bg_full_height")
 	value := argValue.Uint32()
 	return value
 }
 
+// BgFullHeight sets the value of the C field 'bg_full_height'.
+func (recv *TextAttributes) SetFieldBgFullHeight(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "bg_full_height", argValue)
+}
+
 // Editable returns the C field 'editable'.
-func (recv *TextAttributes) Editable() uint32 {
+func (recv *TextAttributes) FieldEditable() uint32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "editable")
 	value := argValue.Uint32()
 	return value
 }
 
+// Editable sets the value of the C field 'editable'.
+func (recv *TextAttributes) SetFieldEditable(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "editable", argValue)
+}
+
 // NoFallback returns the C field 'no_fallback'.
-func (recv *TextAttributes) NoFallback() uint32 {
+func (recv *TextAttributes) FieldNoFallback() uint32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "no_fallback")
 	value := argValue.Uint32()
 	return value
 }
 
+// NoFallback sets the value of the C field 'no_fallback'.
+func (recv *TextAttributes) SetFieldNoFallback(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "no_fallback", argValue)
+}
+
 // LetterSpacing returns the C field 'letter_spacing'.
-func (recv *TextAttributes) LetterSpacing() int32 {
+func (recv *TextAttributes) FieldLetterSpacing() int32 {
 	argValue := gi.FieldGet(textAttributesStruct, recv.native, "letter_spacing")
 	value := argValue.Int32()
 	return value
+}
+
+// LetterSpacing sets the value of the C field 'letter_spacing'.
+func (recv *TextAttributes) SetFieldLetterSpacing(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(textAttributesStruct, recv.native, "letter_spacing", argValue)
 }
 
 var textAttributesNewFunction *gi.Function
@@ -20683,39 +24825,75 @@ type TextBufferClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'insert_text' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_text' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'insert_pixbuf' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'insert_pixbuf' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'insert_child_anchor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'insert_child_anchor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'delete_range' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'delete_range' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'modified_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'modified_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mark_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mark_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mark_deleted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mark_deleted' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'apply_tag' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'apply_tag' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remove_tag' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remove_tag' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'begin_user_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'begin_user_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'end_user_action' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'end_user_action' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'paste_done' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'paste_done' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextBufferClassStruct creates an uninitialised TextBufferClass.
 func TextBufferClassStruct() *TextBufferClass {
@@ -20778,10 +24956,17 @@ type TextCellAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TextCellAccessibleClass) ParentClass() *RendererCellAccessibleClass {
+func (recv *TextCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
 	argValue := gi.FieldGet(textCellAccessibleClassStruct, recv.native, "parent_class")
 	value := &RendererCellAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TextCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(textCellAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // TextCellAccessibleClassStruct creates an uninitialised TextCellAccessibleClass.
@@ -20846,13 +25031,23 @@ type TextChildAnchorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextChildAnchorClassStruct creates an uninitialised TextChildAnchorClass.
 func TextChildAnchorClassStruct() *TextChildAnchorClass {
@@ -23286,13 +27481,23 @@ type TextMarkClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextMarkClassStruct creates an uninitialised TextMarkClass.
 func TextMarkClassStruct() *TextMarkClass {
@@ -23326,15 +27531,27 @@ type TextTagClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'event' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextTagClassStruct creates an uninitialised TextTagClass.
 func TextTagClassStruct() *TextTagClass {
@@ -23398,19 +27615,35 @@ type TextTagTableClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'tag_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tag_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'tag_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'tag_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'tag_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tag_removed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextTagTableClassStruct creates an uninitialised TextTagTableClass.
 func TextTagTableClassStruct() *TextTagTableClass {
@@ -23473,10 +27706,17 @@ type TextViewAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TextViewAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *TextViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(textViewAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TextViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(textViewAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // TextViewAccessibleClassStruct creates an uninitialised TextViewAccessibleClass.
@@ -23540,47 +27780,90 @@ type TextViewClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TextViewClass) ParentClass() *ContainerClass {
+func (recv *TextViewClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(textViewClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TextViewClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(textViewClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'populate_popup' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_anchor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_anchor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'insert_at_cursor' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'insert_at_cursor' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_from_cursor' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_from_cursor' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'backspace' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'backspace' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'cut_clipboard' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cut_clipboard' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_clipboard' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_clipboard' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'paste_clipboard' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'paste_clipboard' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_overwrite' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_overwrite' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_buffer' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_buffer' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'draw_layer' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'draw_layer' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'extend_selection' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'extend_selection' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'insert_emoji' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'insert_emoji' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TextViewClassStruct creates an uninitialised TextViewClass.
 func TextViewClassStruct() *TextViewClass {
@@ -23674,39 +27957,75 @@ type ThemingEngineClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'render_line' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_line' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_background' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_background' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_frame' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_frame' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_frame_gap' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_frame_gap' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_extension' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_extension' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_check' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_check' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_option' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_option' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_arrow' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_arrow' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_expander' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_expander' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_layout' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_layout' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_slider' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_slider' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_handle' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_activity' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_activity' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_icon_pixbuf' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_icon_pixbuf' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'render_icon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'render_icon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'render_icon_surface' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'render_icon_surface' : for field setter : missing Type
 
 // ThemingEngineClassStruct creates an uninitialised ThemingEngineClass.
 func ThemingEngineClassStruct() *ThemingEngineClass {
@@ -23769,21 +28088,38 @@ type ToggleActionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToggleActionClass) ParentClass() *ActionClass {
+func (recv *ToggleActionClass) FieldParentClass() *ActionClass {
 	argValue := gi.FieldGet(toggleActionClassStruct, recv.native, "parent_class")
 	value := &ActionClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToggleActionClass) SetFieldParentClass(value *ActionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toggleActionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToggleActionClassStruct creates an uninitialised ToggleActionClass.
 func ToggleActionClassStruct() *ToggleActionClass {
@@ -23816,47 +28152,91 @@ type ToggleActionEntry struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *ToggleActionEntry) Name() string {
+func (recv *ToggleActionEntry) FieldName() string {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *ToggleActionEntry) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "name", argValue)
+}
+
 // StockId returns the C field 'stock_id'.
-func (recv *ToggleActionEntry) StockId() string {
+func (recv *ToggleActionEntry) FieldStockId() string {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "stock_id")
 	value := argValue.String(false)
 	return value
 }
 
+// StockId sets the value of the C field 'stock_id'.
+func (recv *ToggleActionEntry) SetFieldStockId(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "stock_id", argValue)
+}
+
 // Label returns the C field 'label'.
-func (recv *ToggleActionEntry) Label() string {
+func (recv *ToggleActionEntry) FieldLabel() string {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "label")
 	value := argValue.String(false)
 	return value
 }
 
+// Label sets the value of the C field 'label'.
+func (recv *ToggleActionEntry) SetFieldLabel(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "label", argValue)
+}
+
 // Accelerator returns the C field 'accelerator'.
-func (recv *ToggleActionEntry) Accelerator() string {
+func (recv *ToggleActionEntry) FieldAccelerator() string {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "accelerator")
 	value := argValue.String(false)
 	return value
 }
 
+// Accelerator sets the value of the C field 'accelerator'.
+func (recv *ToggleActionEntry) SetFieldAccelerator(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "accelerator", argValue)
+}
+
 // Tooltip returns the C field 'tooltip'.
-func (recv *ToggleActionEntry) Tooltip() string {
+func (recv *ToggleActionEntry) FieldTooltip() string {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "tooltip")
 	value := argValue.String(false)
 	return value
 }
 
+// Tooltip sets the value of the C field 'tooltip'.
+func (recv *ToggleActionEntry) SetFieldTooltip(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "tooltip", argValue)
+}
+
 // UNSUPPORTED : C value 'callback' : for field getter : no Go type for 'GObject.Callback'
 
+// UNSUPPORTED : C value 'callback' : for field setter : no Go type for 'GObject.Callback'
+
 // IsActive returns the C field 'is_active'.
-func (recv *ToggleActionEntry) IsActive() bool {
+func (recv *ToggleActionEntry) FieldIsActive() bool {
 	argValue := gi.FieldGet(toggleActionEntryStruct, recv.native, "is_active")
 	value := argValue.Boolean()
 	return value
+}
+
+// IsActive sets the value of the C field 'is_active'.
+func (recv *ToggleActionEntry) SetFieldIsActive(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(toggleActionEntryStruct, recv.native, "is_active", argValue)
 }
 
 // ToggleActionEntryStruct creates an uninitialised ToggleActionEntry.
@@ -23920,10 +28300,17 @@ type ToggleButtonAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToggleButtonAccessibleClass) ParentClass() *ButtonAccessibleClass {
+func (recv *ToggleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
 	argValue := gi.FieldGet(toggleButtonAccessibleClassStruct, recv.native, "parent_class")
 	value := &ButtonAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToggleButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toggleButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ToggleButtonAccessibleClassStruct creates an uninitialised ToggleButtonAccessibleClass.
@@ -23987,21 +28374,38 @@ type ToggleButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToggleButtonClass) ParentClass() *ButtonClass {
+func (recv *ToggleButtonClass) FieldParentClass() *ButtonClass {
 	argValue := gi.FieldGet(toggleButtonClassStruct, recv.native, "parent_class")
 	value := &ButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToggleButtonClass) SetFieldParentClass(value *ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toggleButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToggleButtonClassStruct creates an uninitialised ToggleButtonClass.
 func ToggleButtonClassStruct() *ToggleButtonClass {
@@ -24064,21 +28468,38 @@ type ToggleToolButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToggleToolButtonClass) ParentClass() *ToolButtonClass {
+func (recv *ToggleToolButtonClass) FieldParentClass() *ToolButtonClass {
 	argValue := gi.FieldGet(toggleToolButtonClassStruct, recv.native, "parent_class")
 	value := &ToolButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToggleToolButtonClass) SetFieldParentClass(value *ToolButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toggleToolButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'toggled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToggleToolButtonClassStruct creates an uninitialised ToggleToolButtonClass.
 func ToggleToolButtonClassStruct() *ToggleToolButtonClass {
@@ -24141,23 +28562,42 @@ type ToolButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToolButtonClass) ParentClass() *ToolItemClass {
+func (recv *ToolButtonClass) FieldParentClass() *ToolItemClass {
 	argValue := gi.FieldGet(toolButtonClassStruct, recv.native, "parent_class")
 	value := &ToolItemClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToolButtonClass) SetFieldParentClass(value *ToolItemClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toolButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'button_type' : for field getter : no Go type for 'GType'
+
+// UNSUPPORTED : C value 'button_type' : for field setter : no Go type for 'GType'
 
 // UNSUPPORTED : C value 'clicked' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'clicked' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToolButtonClassStruct creates an uninitialised ToolButtonClass.
 func ToolButtonClassStruct() *ToolButtonClass {
@@ -24220,23 +28660,42 @@ type ToolItemClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToolItemClass) ParentClass() *BinClass {
+func (recv *ToolItemClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(toolItemClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToolItemClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toolItemClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'create_menu_proxy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_menu_proxy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toolbar_reconfigured' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toolbar_reconfigured' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToolItemClassStruct creates an uninitialised ToolItemClass.
 func ToolItemClassStruct() *ToolItemClass {
@@ -24269,19 +28728,34 @@ type ToolItemGroupClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToolItemGroupClass) ParentClass() *ContainerClass {
+func (recv *ToolItemGroupClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(toolItemGroupClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToolItemGroupClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toolItemGroupClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToolItemGroupClassStruct creates an uninitialised ToolItemGroupClass.
 func ToolItemGroupClassStruct() *ToolItemGroupClass {
@@ -24374,19 +28848,34 @@ type ToolPaletteClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToolPaletteClass) ParentClass() *ContainerClass {
+func (recv *ToolPaletteClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(toolPaletteClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToolPaletteClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toolPaletteClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToolPaletteClassStruct creates an uninitialised ToolPaletteClass.
 func ToolPaletteClassStruct() *ToolPaletteClass {
@@ -24450,21 +28939,39 @@ type ToolShellIface struct {
 
 // UNSUPPORTED : C value 'get_icon_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_icon_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_orientation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_orientation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_style' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_style' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_relief_style' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_relief_style' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'rebuild_menu' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'rebuild_menu' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text_orientation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text_orientation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_text_alignment' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_text_alignment' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_ellipsize_mode' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_ellipsize_mode' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_text_size_group' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_text_size_group' : for field setter : missing Type
 
 // ToolShellIfaceStruct creates an uninitialised ToolShellIface.
 func ToolShellIfaceStruct() *ToolShellIface {
@@ -24497,25 +29004,46 @@ type ToolbarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ToolbarClass) ParentClass() *ContainerClass {
+func (recv *ToolbarClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(toolbarClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ToolbarClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(toolbarClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'orientation_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'orientation_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'style_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'style_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'popup_context_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'popup_context_menu' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ToolbarClassStruct creates an uninitialised ToolbarClass.
 func ToolbarClassStruct() *ToolbarClass {
@@ -24579,6 +29107,8 @@ type ToplevelAccessibleClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Atk.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Atk.ObjectClass'
+
 // ToplevelAccessibleClassStruct creates an uninitialised ToplevelAccessibleClass.
 func ToplevelAccessibleClassStruct() *ToplevelAccessibleClass {
 	err := toplevelAccessibleClassStruct_Set()
@@ -24641,7 +29171,11 @@ type TreeDragDestIface struct {
 
 // UNSUPPORTED : C value 'drag_data_received' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_data_received' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'row_drop_possible' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_drop_possible' : for field setter : missing Type
 
 // TreeDragDestIfaceStruct creates an uninitialised TreeDragDestIface.
 func TreeDragDestIfaceStruct() *TreeDragDestIface {
@@ -24675,9 +29209,15 @@ type TreeDragSourceIface struct {
 
 // UNSUPPORTED : C value 'row_draggable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_draggable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_data_get' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_data_get' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_data_delete' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drag_data_delete' : for field setter : missing Type
 
 // TreeDragSourceIfaceStruct creates an uninitialised TreeDragSourceIface.
 func TreeDragSourceIfaceStruct() *TreeDragSourceIface {
@@ -24710,17 +29250,30 @@ type TreeIter struct {
 }
 
 // Stamp returns the C field 'stamp'.
-func (recv *TreeIter) Stamp() int32 {
+func (recv *TreeIter) FieldStamp() int32 {
 	argValue := gi.FieldGet(treeIterStruct, recv.native, "stamp")
 	value := argValue.Int32()
 	return value
 }
 
+// Stamp sets the value of the C field 'stamp'.
+func (recv *TreeIter) SetFieldStamp(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(treeIterStruct, recv.native, "stamp", argValue)
+}
+
 // UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
+
+// UNSUPPORTED : C value 'user_data' : for field setter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'user_data2' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'user_data2' : for field setter : no Go type for 'gpointer'
+
 // UNSUPPORTED : C value 'user_data3' : for field getter : no Go type for 'gpointer'
+
+// UNSUPPORTED : C value 'user_data3' : for field setter : no Go type for 'gpointer'
 
 var treeIterCopyFunction *gi.Function
 var treeIterCopyFunction_Once sync.Once
@@ -24814,17 +29367,31 @@ type TreeModelFilterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'visible' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'visible' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'modify' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'modify' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TreeModelFilterClassStruct creates an uninitialised TreeModelFilterClass.
 func TreeModelFilterClassStruct() *TreeModelFilterClass {
@@ -24888,43 +29455,83 @@ type TreeModelIface struct {
 
 // UNSUPPORTED : C value 'row_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'row_inserted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_inserted' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_has_child_toggled' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_has_child_toggled' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'row_deleted' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_deleted' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'rows_reordered' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'rows_reordered' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_flags' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_flags' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_columns' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_columns' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_column_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_column_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_iter' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_iter' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_path' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'iter_next' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iter_next' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'iter_previous' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'iter_previous' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'iter_children' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iter_children' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'iter_has_child' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'iter_has_child' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'iter_n_children' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iter_n_children' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'iter_nth_child' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'iter_nth_child' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'iter_parent' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'iter_parent' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'ref_node' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ref_node' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unref_node' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unref_node' : for field setter : missing Type
 
 // TreeModelIfaceStruct creates an uninitialised TreeModelIface.
 func TreeModelIfaceStruct() *TreeModelIface {
@@ -24958,13 +29565,23 @@ type TreeModelSortClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TreeModelSortClassStruct creates an uninitialised TreeModelSortClass.
 func TreeModelSortClassStruct() *TreeModelSortClass {
@@ -25749,15 +30366,27 @@ type TreeSelectionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TreeSelectionClassStruct creates an uninitialised TreeSelectionClass.
 func TreeSelectionClassStruct() *TreeSelectionClass {
@@ -25821,15 +30450,27 @@ type TreeSortableIface struct {
 
 // UNSUPPORTED : C value 'sort_column_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'sort_column_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_sort_column_id' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_sort_column_id' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_sort_column_id' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_sort_column_id' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_sort_func' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_sort_func' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_default_sort_func' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_default_sort_func' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'has_default_sort_func' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_default_sort_func' : for field setter : missing Type
 
 // TreeSortableIfaceStruct creates an uninitialised TreeSortableIface.
 func TreeSortableIfaceStruct() *TreeSortableIface {
@@ -25863,13 +30504,23 @@ type TreeStoreClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TreeStoreClassStruct creates an uninitialised TreeStoreClass.
 func TreeStoreClassStruct() *TreeStoreClass {
@@ -25932,10 +30583,17 @@ type TreeViewAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TreeViewAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *TreeViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(treeViewAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TreeViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(treeViewAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // TreeViewAccessibleClassStruct creates an uninitialised TreeViewAccessibleClass.
@@ -25999,57 +30657,110 @@ type TreeViewClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TreeViewClass) ParentClass() *ContainerClass {
+func (recv *TreeViewClass) FieldParentClass() *ContainerClass {
 	argValue := gi.FieldGet(treeViewClassStruct, recv.native, "parent_class")
 	value := &ContainerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TreeViewClass) SetFieldParentClass(value *ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(treeViewClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'row_activated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_activated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'test_expand_row' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'test_expand_row' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'test_collapse_row' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'test_collapse_row' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'row_expanded' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'row_expanded' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'row_collapsed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'row_collapsed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'columns_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'columns_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'cursor_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cursor_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_cursor' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_all' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select_all' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unselect_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unselect_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'select_cursor_row' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'select_cursor_row' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'toggle_cursor_row' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'toggle_cursor_row' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'expand_collapse_cursor_row' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'expand_collapse_cursor_row' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'select_cursor_parent' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'select_cursor_parent' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'start_interactive_search' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_interactive_search' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
 // TreeViewClassStruct creates an uninitialised TreeViewClass.
 func TreeViewClassStruct() *TreeViewClass {
@@ -26083,15 +30794,27 @@ type TreeViewColumnClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // UNSUPPORTED : C value 'clicked' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'clicked' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // TreeViewColumnClassStruct creates an uninitialised TreeViewColumnClass.
 func TreeViewColumnClassStruct() *TreeViewColumnClass {
@@ -26185,29 +30908,55 @@ type UIManagerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'add_widget' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_widget' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'actions_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'actions_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'connect_proxy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'connect_proxy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'disconnect_proxy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'disconnect_proxy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'pre_activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'pre_activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'post_activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'post_activate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_widget' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_widget' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_action' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_action' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // UIManagerClassStruct creates an uninitialised UIManagerClass.
 func UIManagerClassStruct() *UIManagerClass {
@@ -26270,10 +31019,17 @@ type VBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VBoxClass) ParentClass() *BoxClass {
+func (recv *VBoxClass) FieldParentClass() *BoxClass {
 	argValue := gi.FieldGet(vBoxClassStruct, recv.native, "parent_class")
 	value := &BoxClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VBoxClass) SetFieldParentClass(value *BoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vBoxClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VBoxClassStruct creates an uninitialised VBoxClass.
@@ -26307,10 +31063,17 @@ type VButtonBoxClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VButtonBoxClass) ParentClass() *ButtonBoxClass {
+func (recv *VButtonBoxClass) FieldParentClass() *ButtonBoxClass {
 	argValue := gi.FieldGet(vButtonBoxClassStruct, recv.native, "parent_class")
 	value := &ButtonBoxClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VButtonBoxClass) SetFieldParentClass(value *ButtonBoxClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vButtonBoxClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VButtonBoxClassStruct creates an uninitialised VButtonBoxClass.
@@ -26344,10 +31107,17 @@ type VPanedClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VPanedClass) ParentClass() *PanedClass {
+func (recv *VPanedClass) FieldParentClass() *PanedClass {
 	argValue := gi.FieldGet(vPanedClassStruct, recv.native, "parent_class")
 	value := &PanedClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VPanedClass) SetFieldParentClass(value *PanedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vPanedClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VPanedClassStruct creates an uninitialised VPanedClass.
@@ -26381,10 +31151,17 @@ type VScaleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VScaleClass) ParentClass() *ScaleClass {
+func (recv *VScaleClass) FieldParentClass() *ScaleClass {
 	argValue := gi.FieldGet(vScaleClassStruct, recv.native, "parent_class")
 	value := &ScaleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VScaleClass) SetFieldParentClass(value *ScaleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vScaleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VScaleClassStruct creates an uninitialised VScaleClass.
@@ -26418,10 +31195,17 @@ type VScrollbarClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VScrollbarClass) ParentClass() *ScrollbarClass {
+func (recv *VScrollbarClass) FieldParentClass() *ScrollbarClass {
 	argValue := gi.FieldGet(vScrollbarClassStruct, recv.native, "parent_class")
 	value := &ScrollbarClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VScrollbarClass) SetFieldParentClass(value *ScrollbarClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vScrollbarClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VScrollbarClassStruct creates an uninitialised VScrollbarClass.
@@ -26455,10 +31239,17 @@ type VSeparatorClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VSeparatorClass) ParentClass() *SeparatorClass {
+func (recv *VSeparatorClass) FieldParentClass() *SeparatorClass {
 	argValue := gi.FieldGet(vSeparatorClassStruct, recv.native, "parent_class")
 	value := &SeparatorClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VSeparatorClass) SetFieldParentClass(value *SeparatorClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(vSeparatorClassStruct, recv.native, "parent_class", argValue)
 }
 
 // VSeparatorClassStruct creates an uninitialised VSeparatorClass.
@@ -26492,19 +31283,34 @@ type ViewportClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ViewportClass) ParentClass() *BinClass {
+func (recv *ViewportClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(viewportClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ViewportClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(viewportClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // ViewportClassStruct creates an uninitialised ViewportClass.
 func ViewportClassStruct() *ViewportClass {
@@ -26567,19 +31373,34 @@ type VolumeButtonClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *VolumeButtonClass) ParentClass() *ScaleButtonClass {
+func (recv *VolumeButtonClass) FieldParentClass() *ScaleButtonClass {
 	argValue := gi.FieldGet(volumeButtonClassStruct, recv.native, "parent_class")
 	value := &ScaleButtonClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *VolumeButtonClass) SetFieldParentClass(value *ScaleButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(volumeButtonClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // VolumeButtonClassStruct creates an uninitialised VolumeButtonClass.
 func VolumeButtonClassStruct() *VolumeButtonClass {
@@ -26612,13 +31433,22 @@ type WidgetAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *WidgetAccessibleClass) ParentClass() *AccessibleClass {
+func (recv *WidgetAccessibleClass) FieldParentClass() *AccessibleClass {
 	argValue := gi.FieldGet(widgetAccessibleClassStruct, recv.native, "parent_class")
 	value := &AccessibleClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *WidgetAccessibleClass) SetFieldParentClass(value *AccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(widgetAccessibleClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'notify_gtk' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'notify_gtk' : for field setter : missing Type
 
 // WidgetAccessibleClassStruct creates an uninitialised WidgetAccessibleClass.
 func WidgetAccessibleClassStruct() *WidgetAccessibleClass {
@@ -26682,180 +31512,357 @@ type WidgetClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+
 // ActivateSignal returns the C field 'activate_signal'.
-func (recv *WidgetClass) ActivateSignal() uint32 {
+func (recv *WidgetClass) FieldActivateSignal() uint32 {
 	argValue := gi.FieldGet(widgetClassStruct, recv.native, "activate_signal")
 	value := argValue.Uint32()
 	return value
 }
 
+// ActivateSignal sets the value of the C field 'activate_signal'.
+func (recv *WidgetClass) SetFieldActivateSignal(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(widgetClassStruct, recv.native, "activate_signal", argValue)
+}
+
 // UNSUPPORTED : C value 'dispatch_child_properties_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dispatch_child_properties_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'destroy' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'destroy' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'show' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show_all' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show_all' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'hide' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hide' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'map' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'map' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unmap' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmap' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'realize' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'realize' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unrealize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unrealize' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'size_allocate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'size_allocate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'state_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'state_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'state_flags_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'state_flags_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'parent_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'parent_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'hierarchy_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'hierarchy_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'style_set' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'style_set' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'direction_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'direction_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'grab_notify' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'grab_notify' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'child_notify' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'child_notify' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'draw' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'draw' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_request_mode' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_request_mode' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_height' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_height' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_width_for_height' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_width_for_height' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_width' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_width' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_preferred_height_for_width' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_preferred_height_for_width' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mnemonic_activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mnemonic_activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'grab_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'grab_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'focus' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'focus' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'keynav_failed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'keynav_failed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'button_press_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'button_press_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'button_release_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'button_release_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'scroll_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'scroll_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'motion_notify_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'motion_notify_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'destroy_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'destroy_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'key_press_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'key_press_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'key_release_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'key_release_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'enter_notify_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enter_notify_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'leave_notify_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'leave_notify_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'configure_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'configure_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'focus_in_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'focus_in_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'focus_out_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'focus_out_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'map_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'map_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unmap_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmap_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'property_notify_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'property_notify_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'selection_clear_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'selection_clear_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selection_request_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selection_request_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'selection_notify_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'selection_notify_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'proximity_in_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'proximity_in_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'proximity_out_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'proximity_out_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'visibility_notify_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'visibility_notify_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'window_state_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'window_state_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'damage_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'damage_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'grab_broken_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'grab_broken_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'selection_get' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'selection_get' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'selection_received' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'selection_received' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drag_begin' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_begin' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_end' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drag_end' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drag_data_get' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_data_get' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_data_delete' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drag_data_delete' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drag_leave' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_leave' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_motion' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drag_motion' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drag_drop' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_drop' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drag_data_received' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drag_data_received' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drag_failed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drag_failed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'popup_menu' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'popup_menu' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show_help' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show_help' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_accessible' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_accessible' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'screen_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'screen_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_activate_accel' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_activate_accel' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'composited_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'composited_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_tooltip' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_tooltip' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'compute_expand' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'compute_expand' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'adjust_size_request' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'adjust_size_request' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'adjust_size_allocation' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'adjust_size_allocation' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'style_updated' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'style_updated' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'touch_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'touch_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_preferred_height_and_baseline_for_width' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_preferred_height_and_baseline_for_width' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'adjust_baseline_request' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'adjust_baseline_request' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'adjust_baseline_allocation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'adjust_baseline_allocation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'queue_draw_region' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'queue_draw_region' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved7' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
 
@@ -27886,10 +32893,17 @@ type WindowAccessibleClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *WindowAccessibleClass) ParentClass() *ContainerAccessibleClass {
+func (recv *WindowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 	argValue := gi.FieldGet(windowAccessibleClassStruct, recv.native, "parent_class")
 	value := &ContainerAccessibleClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *WindowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(windowAccessibleClassStruct, recv.native, "parent_class", argValue)
 }
 
 // WindowAccessibleClassStruct creates an uninitialised WindowAccessibleClass.
@@ -27953,27 +32967,50 @@ type WindowClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *WindowClass) ParentClass() *BinClass {
+func (recv *WindowClass) FieldParentClass() *BinClass {
 	argValue := gi.FieldGet(windowClassStruct, recv.native, "parent_class")
 	value := &BinClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *WindowClass) SetFieldParentClass(value *BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(windowClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'set_focus' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_focus' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'activate_focus' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_focus' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_default' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_default' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'keys_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'keys_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'enable_debugging' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enable_debugging' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
 
 // WindowClassStruct creates an uninitialised WindowClass.
 func WindowClassStruct() *WindowClass {
@@ -28037,13 +33074,23 @@ type WindowGroupClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_gtk_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_gtk_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_gtk_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
 // WindowGroupClassStruct creates an uninitialised WindowGroupClass.
 func WindowGroupClassStruct() *WindowGroupClass {

@@ -24,29 +24,54 @@ type ActionEntry struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *ActionEntry) Name() string {
+func (recv *ActionEntry) FieldName() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *ActionEntry) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
+
 // ParameterType returns the C field 'parameter_type'.
-func (recv *ActionEntry) ParameterType() string {
+func (recv *ActionEntry) FieldParameterType() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "parameter_type")
 	value := argValue.String(false)
 	return value
 }
 
+// ParameterType sets the value of the C field 'parameter_type'.
+func (recv *ActionEntry) SetFieldParameterType(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "parameter_type", argValue)
+}
+
 // State returns the C field 'state'.
-func (recv *ActionEntry) State() string {
+func (recv *ActionEntry) FieldState() string {
 	argValue := gi.FieldGet(actionEntryStruct, recv.native, "state")
 	value := argValue.String(false)
 	return value
 }
 
+// State sets the value of the C field 'state'.
+func (recv *ActionEntry) SetFieldState(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(actionEntryStruct, recv.native, "state", argValue)
+}
+
 // UNSUPPORTED : C value 'change_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_state' : for field setter : missing Type
 
 // ActionEntryStruct creates an uninitialised ActionEntry.
 func ActionEntryStruct() *ActionEntry {
@@ -80,33 +105,63 @@ type ActionGroupInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'has_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'list_actions' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'list_actions' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_action_enabled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_enabled' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_action_parameter_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_action_parameter_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_action_state_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_state_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_action_state_hint' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_action_state_hint' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_action_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_action_state' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'change_action_state' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_action_state' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'action_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'action_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'action_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'action_removed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'action_enabled_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'action_enabled_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'action_state_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'action_state_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_action' : for field setter : missing Type
 
 // ActionGroupInterfaceStruct creates an uninitialised ActionGroupInterface.
 func ActionGroupInterfaceStruct() *ActionGroupInterface {
@@ -140,21 +195,39 @@ type ActionInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_parameter_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_parameter_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_state_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_state_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_state_hint' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_state_hint' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_enabled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_enabled' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_state' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_state' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'change_state' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_state' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // ActionInterfaceStruct creates an uninitialised ActionInterface.
 func ActionInterfaceStruct() *ActionInterface {
@@ -188,11 +261,19 @@ type ActionMapInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'lookup_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_action' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'add_action' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'add_action' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_action' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_action' : for field setter : missing Type
 
 // ActionMapInterfaceStruct creates an uninitialised ActionMapInterface.
 func ActionMapInterfaceStruct() *ActionMapInterface {
@@ -226,55 +307,107 @@ type AppInfoIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'dup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dup' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'equal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'equal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_id' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_id' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_description' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_description' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_executable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_executable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'launch' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'launch' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'supports_uris' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_uris' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'supports_files' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'supports_files' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'launch_uris' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_uris' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'should_show' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'should_show' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_as_default_for_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_as_default_for_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_as_default_for_extension' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_as_default_for_extension' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_supports_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_supports_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_remove_supports_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_remove_supports_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remove_supports_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remove_supports_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_delete' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_delete' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'do_delete' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'do_delete' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_commandline' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_commandline' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_display_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_display_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_as_last_used_for_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_as_last_used_for_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_supported_types' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_supported_types' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'launch_uris_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'launch_uris_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'launch_uris_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_uris_finish' : for field setter : missing Type
 
 // AppInfoIfaceStruct creates an uninitialised AppInfoIface.
 func AppInfoIfaceStruct() *AppInfoIface {
@@ -308,21 +441,39 @@ type AppLaunchContextClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_display' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_display' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_startup_notify_id' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_startup_notify_id' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'launch_failed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'launch_failed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'launched' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'launched' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // AppLaunchContextClassStruct creates an uninitialised AppLaunchContextClass.
 func AppLaunchContextClassStruct() *AppLaunchContextClass {
@@ -386,33 +537,63 @@ type ApplicationClass struct {
 
 // UNSUPPORTED : C value 'startup' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'startup' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'activate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'open' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'open' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'command_line' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'command_line' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'local_command_line' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'local_command_line' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'before_emit' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'before_emit' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'after_emit' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'after_emit' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_platform_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_platform_data' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'quit_mainloop' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'quit_mainloop' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'run_mainloop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run_mainloop' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'shutdown' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'shutdown' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'dbus_register' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dbus_register' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'dbus_unregister' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'dbus_unregister' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'handle_local_options' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'handle_local_options' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'name_lost' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'name_lost' : for field setter : missing Type
 
 // ApplicationClassStruct creates an uninitialised ApplicationClass.
 func ApplicationClassStruct() *ApplicationClass {
@@ -446,9 +627,15 @@ type ApplicationCommandLineClass struct {
 
 // UNSUPPORTED : C value 'print_literal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'print_literal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'printerr_literal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'printerr_literal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_stdin' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_stdin' : for field setter : missing Type
 
 // ApplicationCommandLineClassStruct creates an uninitialised ApplicationCommandLineClass.
 func ApplicationCommandLineClassStruct() *ApplicationCommandLineClass {
@@ -542,9 +729,15 @@ type AsyncInitableIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'init_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'init_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'init_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'init_finish' : for field setter : missing Type
 
 // AsyncInitableIfaceStruct creates an uninitialised AsyncInitableIface.
 func AsyncInitableIfaceStruct() *AsyncInitableIface {
@@ -578,11 +771,19 @@ type AsyncResultIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_user_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_user_data' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_source_object' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_source_object' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_tagged' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_tagged' : for field setter : missing Type
 
 // AsyncResultIfaceStruct creates an uninitialised AsyncResultIface.
 func AsyncResultIfaceStruct() *AsyncResultIface {
@@ -615,27 +816,50 @@ type BufferedInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *BufferedInputStreamClass) ParentClass() *FilterInputStreamClass {
+func (recv *BufferedInputStreamClass) FieldParentClass() *FilterInputStreamClass {
 	argValue := gi.FieldGet(bufferedInputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *BufferedInputStreamClass) SetFieldParentClass(value *FilterInputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bufferedInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'fill' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'fill' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'fill_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'fill_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'fill_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'fill_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // BufferedInputStreamClassStruct creates an uninitialised BufferedInputStreamClass.
 func BufferedInputStreamClassStruct() *BufferedInputStreamClass {
@@ -698,15 +922,26 @@ type BufferedOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *BufferedOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+func (recv *BufferedOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(bufferedOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *BufferedOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bufferedOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // BufferedOutputStreamClassStruct creates an uninitialised BufferedOutputStreamClass.
 func BufferedOutputStreamClassStruct() *BufferedOutputStreamClass {
@@ -770,17 +1005,31 @@ type CancellableClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'cancelled' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'cancelled' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // CancellableClassStruct creates an uninitialised CancellableClass.
 func CancellableClassStruct() *CancellableClass {
@@ -844,6 +1093,8 @@ type CharsetConverterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // CharsetConverterClassStruct creates an uninitialised CharsetConverterClass.
 func CharsetConverterClassStruct() *CharsetConverterClass {
 	err := charsetConverterClassStruct_Set()
@@ -876,9 +1127,15 @@ type ConverterIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'convert' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'convert' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field setter : missing Type
 
 // ConverterIfaceStruct creates an uninitialised ConverterIface.
 func ConverterIfaceStruct() *ConverterIface {
@@ -911,21 +1168,38 @@ type ConverterInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ConverterInputStreamClass) ParentClass() *FilterInputStreamClass {
+func (recv *ConverterInputStreamClass) FieldParentClass() *FilterInputStreamClass {
 	argValue := gi.FieldGet(converterInputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ConverterInputStreamClass) SetFieldParentClass(value *FilterInputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(converterInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // ConverterInputStreamClassStruct creates an uninitialised ConverterInputStreamClass.
 func ConverterInputStreamClassStruct() *ConverterInputStreamClass {
@@ -988,21 +1262,38 @@ type ConverterOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ConverterOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+func (recv *ConverterOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(converterOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ConverterOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(converterOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // ConverterOutputStreamClassStruct creates an uninitialised ConverterOutputStreamClass.
 func ConverterOutputStreamClassStruct() *ConverterOutputStreamClass {
@@ -1095,27 +1386,50 @@ type DBusAnnotationInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusAnnotationInfo) RefCount() int32 {
+func (recv *DBusAnnotationInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusAnnotationInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusAnnotationInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Key returns the C field 'key'.
-func (recv *DBusAnnotationInfo) Key() string {
+func (recv *DBusAnnotationInfo) FieldKey() string {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "key")
 	value := argValue.String(false)
 	return value
 }
 
+// Key sets the value of the C field 'key'.
+func (recv *DBusAnnotationInfo) SetFieldKey(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusAnnotationInfoStruct, recv.native, "key", argValue)
+}
+
 // Value returns the C field 'value'.
-func (recv *DBusAnnotationInfo) Value() string {
+func (recv *DBusAnnotationInfo) FieldValue() string {
 	argValue := gi.FieldGet(dBusAnnotationInfoStruct, recv.native, "value")
 	value := argValue.String(false)
 	return value
 }
 
+// Value sets the value of the C field 'value'.
+func (recv *DBusAnnotationInfo) SetFieldValue(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusAnnotationInfoStruct, recv.native, "value", argValue)
+}
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusAnnotationInfoRefFunction *gi.Function
 var dBusAnnotationInfoRefFunction_Once sync.Once
@@ -1208,27 +1522,50 @@ type DBusArgInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusArgInfo) RefCount() int32 {
+func (recv *DBusArgInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusArgInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusArgInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Name returns the C field 'name'.
-func (recv *DBusArgInfo) Name() string {
+func (recv *DBusArgInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *DBusArgInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusArgInfoStruct, recv.native, "name", argValue)
+}
+
 // Signature returns the C field 'signature'.
-func (recv *DBusArgInfo) Signature() string {
+func (recv *DBusArgInfo) FieldSignature() string {
 	argValue := gi.FieldGet(dBusArgInfoStruct, recv.native, "signature")
 	value := argValue.String(false)
 	return value
 }
 
+// Signature sets the value of the C field 'signature'.
+func (recv *DBusArgInfo) SetFieldSignature(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusArgInfoStruct, recv.native, "signature", argValue)
+}
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusArgInfoRefFunction *gi.Function
 var dBusArgInfoRefFunction_Once sync.Once
@@ -1321,17 +1658,31 @@ type DBusErrorEntry struct {
 }
 
 // ErrorCode returns the C field 'error_code'.
-func (recv *DBusErrorEntry) ErrorCode() int32 {
+func (recv *DBusErrorEntry) FieldErrorCode() int32 {
 	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "error_code")
 	value := argValue.Int32()
 	return value
 }
 
+// ErrorCode sets the value of the C field 'error_code'.
+func (recv *DBusErrorEntry) SetFieldErrorCode(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusErrorEntryStruct, recv.native, "error_code", argValue)
+}
+
 // DbusErrorName returns the C field 'dbus_error_name'.
-func (recv *DBusErrorEntry) DbusErrorName() string {
+func (recv *DBusErrorEntry) FieldDbusErrorName() string {
 	argValue := gi.FieldGet(dBusErrorEntryStruct, recv.native, "dbus_error_name")
 	value := argValue.String(false)
 	return value
+}
+
+// DbusErrorName sets the value of the C field 'dbus_error_name'.
+func (recv *DBusErrorEntry) SetFieldDbusErrorName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusErrorEntryStruct, recv.native, "dbus_error_name", argValue)
 }
 
 // DBusErrorEntryStruct creates an uninitialised DBusErrorEntry.
@@ -1366,13 +1717,23 @@ type DBusInterfaceIface struct {
 
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_info' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_object' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_object' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_object' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_object' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'dup_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dup_object' : for field setter : missing Type
 
 // DBusInterfaceIfaceStruct creates an uninitialised DBusInterfaceIface.
 func DBusInterfaceIfaceStruct() *DBusInterfaceIface {
@@ -1405,26 +1766,48 @@ type DBusInterfaceInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusInterfaceInfo) RefCount() int32 {
+func (recv *DBusInterfaceInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusInterfaceInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusInterfaceInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Name returns the C field 'name'.
-func (recv *DBusInterfaceInfo) Name() string {
+func (recv *DBusInterfaceInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusInterfaceInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *DBusInterfaceInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusInterfaceInfoStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'methods' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'methods' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'signals' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'signals' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'properties' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'properties' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusInterfaceInfoCacheBuildFunction *gi.Function
 var dBusInterfaceInfoCacheBuildFunction_Once sync.Once
@@ -1675,15 +2058,27 @@ type DBusInterfaceSkeletonClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_info' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_vtable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_vtable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_properties' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_properties' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'flush' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'flush' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'g_authorize_method' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'g_authorize_method' : for field setter : missing Type
 
 // DBusInterfaceSkeletonClassStruct creates an uninitialised DBusInterfaceSkeletonClass.
 func DBusInterfaceSkeletonClassStruct() *DBusInterfaceSkeletonClass {
@@ -1747,9 +2142,15 @@ type DBusInterfaceVTable struct {
 
 // UNSUPPORTED : C value 'method_call' : for field getter : no Go type for 'DBusInterfaceMethodCallFunc'
 
+// UNSUPPORTED : C value 'method_call' : for field setter : no Go type for 'DBusInterfaceMethodCallFunc'
+
 // UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'DBusInterfaceGetPropertyFunc'
 
+// UNSUPPORTED : C value 'get_property' : for field setter : no Go type for 'DBusInterfaceGetPropertyFunc'
+
 // UNSUPPORTED : C value 'set_property' : for field getter : no Go type for 'DBusInterfaceSetPropertyFunc'
+
+// UNSUPPORTED : C value 'set_property' : for field setter : no Go type for 'DBusInterfaceSetPropertyFunc'
 
 // DBusInterfaceVTableStruct creates an uninitialised DBusInterfaceVTable.
 func DBusInterfaceVTableStruct() *DBusInterfaceVTable {
@@ -1782,24 +2183,44 @@ type DBusMethodInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusMethodInfo) RefCount() int32 {
+func (recv *DBusMethodInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusMethodInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusMethodInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Name returns the C field 'name'.
-func (recv *DBusMethodInfo) Name() string {
+func (recv *DBusMethodInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusMethodInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *DBusMethodInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusMethodInfoStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'in_args' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'in_args' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'out_args' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'out_args' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusMethodInfoRefFunction *gi.Function
 var dBusMethodInfoRefFunction_Once sync.Once
@@ -1892,24 +2313,44 @@ type DBusNodeInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusNodeInfo) RefCount() int32 {
+func (recv *DBusNodeInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusNodeInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusNodeInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Path returns the C field 'path'.
-func (recv *DBusNodeInfo) Path() string {
+func (recv *DBusNodeInfo) FieldPath() string {
 	argValue := gi.FieldGet(dBusNodeInfoStruct, recv.native, "path")
 	value := argValue.String(false)
 	return value
 }
 
+// Path sets the value of the C field 'path'.
+func (recv *DBusNodeInfo) SetFieldPath(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusNodeInfoStruct, recv.native, "path", argValue)
+}
+
 // UNSUPPORTED : C value 'interfaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interfaces' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'nodes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'nodes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusNodeInfoNewForXmlFunction *gi.Function
 var dBusNodeInfoNewForXmlFunction_Once sync.Once
@@ -2055,15 +2496,27 @@ type DBusObjectIface struct {
 
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_object_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object_path' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_interfaces' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_interfaces' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_interface' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_interface' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'interface_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'interface_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'interface_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_removed' : for field setter : missing Type
 
 // DBusObjectIfaceStruct creates an uninitialised DBusObjectIface.
 func DBusObjectIfaceStruct() *DBusObjectIface {
@@ -2097,9 +2550,15 @@ type DBusObjectManagerClientClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'interface_proxy_signal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'interface_proxy_signal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'interface_proxy_properties_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_proxy_properties_changed' : for field setter : missing Type
 
 // DBusObjectManagerClientClassStruct creates an uninitialised DBusObjectManagerClientClass.
 func DBusObjectManagerClientClassStruct() *DBusObjectManagerClientClass {
@@ -2163,21 +2622,39 @@ type DBusObjectManagerIface struct {
 
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'parent_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_object_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object_path' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_objects' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_objects' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_object' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_object' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_interface' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_interface' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'object_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'object_added' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'object_removed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'object_removed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'interface_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'interface_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'interface_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'interface_removed' : for field setter : missing Type
 
 // DBusObjectManagerIfaceStruct creates an uninitialised DBusObjectManagerIface.
 func DBusObjectManagerIfaceStruct() *DBusObjectManagerIface {
@@ -2210,6 +2687,8 @@ type DBusObjectManagerServerClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // DBusObjectManagerServerClassStruct creates an uninitialised DBusObjectManagerServerClass.
 func DBusObjectManagerServerClassStruct() *DBusObjectManagerServerClass {
@@ -2273,6 +2752,8 @@ type DBusObjectProxyClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // DBusObjectProxyClassStruct creates an uninitialised DBusObjectProxyClass.
 func DBusObjectProxyClassStruct() *DBusObjectProxyClass {
 	err := dBusObjectProxyClassStruct_Set()
@@ -2335,7 +2816,11 @@ type DBusObjectSkeletonClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'authorize_method' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'authorize_method' : for field setter : missing Type
 
 // DBusObjectSkeletonClassStruct creates an uninitialised DBusObjectSkeletonClass.
 func DBusObjectSkeletonClassStruct() *DBusObjectSkeletonClass {
@@ -2398,29 +2883,54 @@ type DBusPropertyInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusPropertyInfo) RefCount() int32 {
+func (recv *DBusPropertyInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusPropertyInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusPropertyInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Name returns the C field 'name'.
-func (recv *DBusPropertyInfo) Name() string {
+func (recv *DBusPropertyInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *DBusPropertyInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusPropertyInfoStruct, recv.native, "name", argValue)
+}
+
 // Signature returns the C field 'signature'.
-func (recv *DBusPropertyInfo) Signature() string {
+func (recv *DBusPropertyInfo) FieldSignature() string {
 	argValue := gi.FieldGet(dBusPropertyInfoStruct, recv.native, "signature")
 	value := argValue.String(false)
 	return value
 }
 
+// Signature sets the value of the C field 'signature'.
+func (recv *DBusPropertyInfo) SetFieldSignature(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusPropertyInfoStruct, recv.native, "signature", argValue)
+}
+
 // UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'DBusPropertyInfoFlags'
 
+// UNSUPPORTED : C value 'flags' : for field setter : no Go type for 'DBusPropertyInfoFlags'
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusPropertyInfoRefFunction *gi.Function
 var dBusPropertyInfoRefFunction_Once sync.Once
@@ -2514,7 +3024,11 @@ type DBusProxyClass struct {
 
 // UNSUPPORTED : C value 'g_properties_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'g_properties_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'g_signal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'g_signal' : for field setter : missing Type
 
 // DBusProxyClassStruct creates an uninitialised DBusProxyClass.
 func DBusProxyClassStruct() *DBusProxyClass {
@@ -2577,22 +3091,40 @@ type DBusSignalInfo struct {
 }
 
 // RefCount returns the C field 'ref_count'.
-func (recv *DBusSignalInfo) RefCount() int32 {
+func (recv *DBusSignalInfo) FieldRefCount() int32 {
 	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "ref_count")
 	value := argValue.Int32()
 	return value
 }
 
+// RefCount sets the value of the C field 'ref_count'.
+func (recv *DBusSignalInfo) SetFieldRefCount(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(dBusSignalInfoStruct, recv.native, "ref_count", argValue)
+}
+
 // Name returns the C field 'name'.
-func (recv *DBusSignalInfo) Name() string {
+func (recv *DBusSignalInfo) FieldName() string {
 	argValue := gi.FieldGet(dBusSignalInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *DBusSignalInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(dBusSignalInfoStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'args' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'args' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'annotations' : for field setter : missing Type
 
 var dBusSignalInfoRefFunction *gi.Function
 var dBusSignalInfoRefFunction_Once sync.Once
@@ -2686,9 +3218,15 @@ type DBusSubtreeVTable struct {
 
 // UNSUPPORTED : C value 'enumerate' : for field getter : no Go type for 'DBusSubtreeEnumerateFunc'
 
+// UNSUPPORTED : C value 'enumerate' : for field setter : no Go type for 'DBusSubtreeEnumerateFunc'
+
 // UNSUPPORTED : C value 'introspect' : for field getter : no Go type for 'DBusSubtreeIntrospectFunc'
 
+// UNSUPPORTED : C value 'introspect' : for field setter : no Go type for 'DBusSubtreeIntrospectFunc'
+
 // UNSUPPORTED : C value 'dispatch' : for field getter : no Go type for 'DBusSubtreeDispatchFunc'
+
+// UNSUPPORTED : C value 'dispatch' : for field setter : no Go type for 'DBusSubtreeDispatchFunc'
 
 // DBusSubtreeVTableStruct creates an uninitialised DBusSubtreeVTable.
 func DBusSubtreeVTableStruct() *DBusSubtreeVTable {
@@ -2721,21 +3259,38 @@ type DataInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *DataInputStreamClass) ParentClass() *BufferedInputStreamClass {
+func (recv *DataInputStreamClass) FieldParentClass() *BufferedInputStreamClass {
 	argValue := gi.FieldGet(dataInputStreamClassStruct, recv.native, "parent_class")
 	value := &BufferedInputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *DataInputStreamClass) SetFieldParentClass(value *BufferedInputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(dataInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // DataInputStreamClassStruct creates an uninitialised DataInputStreamClass.
 func DataInputStreamClassStruct() *DataInputStreamClass {
@@ -2798,21 +3353,38 @@ type DataOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *DataOutputStreamClass) ParentClass() *FilterOutputStreamClass {
+func (recv *DataOutputStreamClass) FieldParentClass() *FilterOutputStreamClass {
 	argValue := gi.FieldGet(dataOutputStreamClassStruct, recv.native, "parent_class")
 	value := &FilterOutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *DataOutputStreamClass) SetFieldParentClass(value *FilterOutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(dataOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // DataOutputStreamClassStruct creates an uninitialised DataOutputStreamClass.
 func DataOutputStreamClassStruct() *DataOutputStreamClass {
@@ -2876,15 +3448,27 @@ type DatagramBasedInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'receive_messages' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'receive_messages' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'send_messages' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'send_messages' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_source' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_source' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'condition_check' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'condition_check' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'condition_wait' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'condition_wait' : for field setter : missing Type
 
 // DatagramBasedInterfaceStruct creates an uninitialised DatagramBasedInterface.
 func DatagramBasedInterfaceStruct() *DatagramBasedInterface {
@@ -2918,6 +3502,8 @@ type DesktopAppInfoClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // DesktopAppInfoClassStruct creates an uninitialised DesktopAppInfoClass.
 func DesktopAppInfoClassStruct() *DesktopAppInfoClass {
 	err := desktopAppInfoClassStruct_Set()
@@ -2950,7 +3536,11 @@ type DesktopAppInfoLookupIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_default_for_uri_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_for_uri_scheme' : for field setter : missing Type
 
 // DesktopAppInfoLookupIfaceStruct creates an uninitialised DesktopAppInfoLookupIface.
 func DesktopAppInfoLookupIfaceStruct() *DesktopAppInfoLookupIface {
@@ -2984,69 +3574,135 @@ type DriveIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'disconnected' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'disconnected' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_button' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'has_volumes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'has_volumes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_volumes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volumes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_media_removable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_media_removable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'has_media' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_media' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_media_check_automatic' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_media_check_automatic' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_eject' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_poll_for_media' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_poll_for_media' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'poll_for_media' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_for_media' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'poll_for_media_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'poll_for_media_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_identifier' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_identifier' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'enumerate_identifiers' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'enumerate_identifiers' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_start_stop_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_start_stop_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_start' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_start' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_start_degraded' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_start_degraded' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'start' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'start' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'start_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_stop' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_stop' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'stop' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'stop_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'stop_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'stop_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'stop_button' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_with_operation' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_sort_key' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_removable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_removable' : for field setter : missing Type
 
 // DriveIfaceStruct creates an uninitialised DriveIface.
 func DriveIfaceStruct() *DriveIface {
@@ -3080,6 +3736,8 @@ type DtlsClientConnectionInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // DtlsClientConnectionInterfaceStruct creates an uninitialised DtlsClientConnectionInterface.
 func DtlsClientConnectionInterfaceStruct() *DtlsClientConnectionInterface {
 	err := dtlsClientConnectionInterfaceStruct_Set()
@@ -3112,23 +3770,43 @@ type DtlsConnectionInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'accept_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accept_certificate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'handshake' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'handshake' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'handshake_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'handshake_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'handshake_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'shutdown' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'shutdown_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'shutdown_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'shutdown_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'shutdown_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_advertised_protocols' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_advertised_protocols' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_negotiated_protocol' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_negotiated_protocol' : for field setter : missing Type
 
 // DtlsConnectionInterfaceStruct creates an uninitialised DtlsConnectionInterface.
 func DtlsConnectionInterfaceStruct() *DtlsConnectionInterface {
@@ -3161,6 +3839,8 @@ type DtlsServerConnectionInterface struct {
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
 
 // DtlsServerConnectionInterfaceStruct creates an uninitialised DtlsServerConnectionInterface.
 func DtlsServerConnectionInterfaceStruct() *DtlsServerConnectionInterface {
@@ -3224,6 +3904,8 @@ type EmblemedIconClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // EmblemedIconClassStruct creates an uninitialised EmblemedIconClass.
 func EmblemedIconClassStruct() *EmblemedIconClass {
 	err := emblemedIconClassStruct_Set()
@@ -3285,15 +3967,26 @@ type FileAttributeInfo struct {
 }
 
 // Name returns the C field 'name'.
-func (recv *FileAttributeInfo) Name() string {
+func (recv *FileAttributeInfo) FieldName() string {
 	argValue := gi.FieldGet(fileAttributeInfoStruct, recv.native, "name")
 	value := argValue.String(false)
 	return value
 }
 
+// Name sets the value of the C field 'name'.
+func (recv *FileAttributeInfo) SetFieldName(value string) {
+	var argValue gi.Argument
+	argValue.SetString(value)
+	gi.FieldSet(fileAttributeInfoStruct, recv.native, "name", argValue)
+}
+
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'FileAttributeType'
 
+// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'FileAttributeType'
+
 // UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'FileAttributeInfoFlags'
+
+// UNSUPPORTED : C value 'flags' : for field setter : no Go type for 'FileAttributeInfoFlags'
 
 // FileAttributeInfoStruct creates an uninitialised FileAttributeInfo.
 func FileAttributeInfoStruct() *FileAttributeInfo {
@@ -3326,17 +4019,31 @@ type FileAttributeInfoList struct {
 }
 
 // Infos returns the C field 'infos'.
-func (recv *FileAttributeInfoList) Infos() *FileAttributeInfo {
+func (recv *FileAttributeInfoList) FieldInfos() *FileAttributeInfo {
 	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "infos")
 	value := &FileAttributeInfo{native: argValue.Pointer()}
 	return value
 }
 
+// Infos sets the value of the C field 'infos'.
+func (recv *FileAttributeInfoList) SetFieldInfos(value *FileAttributeInfo) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileAttributeInfoListStruct, recv.native, "infos", argValue)
+}
+
 // NInfos returns the C field 'n_infos'.
-func (recv *FileAttributeInfoList) NInfos() int32 {
+func (recv *FileAttributeInfoList) FieldNInfos() int32 {
 	argValue := gi.FieldGet(fileAttributeInfoListStruct, recv.native, "n_infos")
 	value := argValue.Int32()
 	return value
+}
+
+// NInfos sets the value of the C field 'n_infos'.
+func (recv *FileAttributeInfoList) SetFieldNInfos(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(fileAttributeInfoListStruct, recv.native, "n_infos", argValue)
 }
 
 var fileAttributeInfoListNewFunction *gi.Function
@@ -3816,7 +4523,11 @@ type FileDescriptorBasedIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_fd' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_fd' : for field setter : missing Type
 
 // FileDescriptorBasedIfaceStruct creates an uninitialised FileDescriptorBasedIface.
 func FileDescriptorBasedIfaceStruct() *FileDescriptorBasedIface {
@@ -3850,31 +4561,59 @@ type FileEnumeratorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'next_file' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_file' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_fn' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'next_files_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_files_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'next_files_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'next_files_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
 
 // FileEnumeratorClassStruct creates an uninitialised FileEnumeratorClass.
 func FileEnumeratorClassStruct() *FileEnumeratorClass {
@@ -3937,39 +4676,74 @@ type FileIOStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileIOStreamClass) ParentClass() *IOStreamClass {
+func (recv *FileIOStreamClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(fileIOStreamClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileIOStreamClass) SetFieldParentClass(value *IOStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileIOStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tell' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_seek' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_truncate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_etag' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_etag' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // FileIOStreamClassStruct creates an uninitialised FileIOStreamClass.
 func FileIOStreamClassStruct() *FileIOStreamClass {
@@ -4063,216 +4837,429 @@ type FileIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'dup' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'dup' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'hash' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'hash' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'equal' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'equal' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_native' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_native' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'has_uri_scheme' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'has_uri_scheme' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_uri_scheme' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_uri_scheme' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_basename' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_basename' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_path' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_path' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_parse_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_parse_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_parent' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_parent' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'prefix_matches' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'prefix_matches' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_relative_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_relative_path' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'resolve_relative_path' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'resolve_relative_path' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_child_for_display_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_child_for_display_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'enumerate_children' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'enumerate_children' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'enumerate_children_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_children_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'enumerate_children_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'enumerate_children_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_info' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_filesystem_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_filesystem_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_filesystem_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_filesystem_info_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_filesystem_info_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_filesystem_info_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'find_enclosing_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_enclosing_mount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'find_enclosing_mount_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'find_enclosing_mount_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'find_enclosing_mount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'find_enclosing_mount_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_display_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_display_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_display_name_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_display_name_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_display_name_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_display_name_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_settable_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_settable_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_query_settable_attributes_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_query_settable_attributes_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_query_settable_attributes_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_settable_attributes_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_writable_namespaces' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_writable_namespaces' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_query_writable_namespaces_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_query_writable_namespaces_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_query_writable_namespaces_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_query_writable_namespaces_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_attribute' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attribute' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_attributes_from_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_attributes_from_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'set_attributes_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'set_attributes_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_attributes_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_attributes_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'read_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'read_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'read_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'read_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'append_to' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'append_to' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'append_to_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'append_to_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'append_to_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'append_to_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'replace' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'replace' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'replace_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'replace_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'replace_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_file' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_file' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'delete_file_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'delete_file_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'delete_file_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'delete_file_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'trash' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'trash' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'trash_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'trash_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'trash_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'trash_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'make_directory' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_directory' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'make_directory_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'make_directory_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'make_directory_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'make_directory_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'make_symbolic_link' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'make_symbolic_link' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_make_symbolic_link_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_make_symbolic_link_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_make_symbolic_link_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_make_symbolic_link_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'copy' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'copy_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'copy_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'copy_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'move' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'move' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_move_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_move_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_move_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_move_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mount_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_mountable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mount_mountable_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mount_mountable_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unmount_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_mountable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unmount_mountable_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unmount_mountable_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_mountable_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_mountable_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mount_enclosing_volume' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_enclosing_volume' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mount_enclosing_volume_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mount_enclosing_volume_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'monitor_dir' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'monitor_dir' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'monitor_file' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'monitor_file' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'open_readwrite' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open_readwrite' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'open_readwrite_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'open_readwrite_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'open_readwrite_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'open_readwrite_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_readwrite' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_readwrite' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_readwrite_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_readwrite_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_readwrite_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_readwrite_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'replace_readwrite' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_readwrite' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'replace_readwrite_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'replace_readwrite_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'replace_readwrite_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'replace_readwrite_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'start_mountable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'start_mountable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'start_mountable_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'start_mountable_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'stop_mountable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'stop_mountable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'stop_mountable_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'stop_mountable_finish' : for field setter : missing Type
+
 // SupportsThreadContexts returns the C field 'supports_thread_contexts'.
-func (recv *FileIface) SupportsThreadContexts() bool {
+func (recv *FileIface) FieldSupportsThreadContexts() bool {
 	argValue := gi.FieldGet(fileIfaceStruct, recv.native, "supports_thread_contexts")
 	value := argValue.Boolean()
 	return value
 }
 
+// SupportsThreadContexts sets the value of the C field 'supports_thread_contexts'.
+func (recv *FileIface) SetFieldSupportsThreadContexts(value bool) {
+	var argValue gi.Argument
+	argValue.SetBoolean(value)
+	gi.FieldSet(fileIfaceStruct, recv.native, "supports_thread_contexts", argValue)
+}
+
 // UNSUPPORTED : C value 'unmount_mountable_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_mountable_with_operation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unmount_mountable_with_operation_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unmount_mountable_with_operation_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_mountable_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_mountable_with_operation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_mountable_with_operation_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_mountable_with_operation_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'poll_mountable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'poll_mountable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'poll_mountable_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'poll_mountable_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'measure_disk_usage' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'measure_disk_usage' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'measure_disk_usage_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'measure_disk_usage_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'measure_disk_usage_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'measure_disk_usage_finish' : for field setter : missing Type
 
 // FileIfaceStruct creates an uninitialised FileIface.
 func FileIfaceStruct() *FileIface {
@@ -4335,33 +5322,62 @@ type FileInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileInputStreamClass) ParentClass() *InputStreamClass {
+func (recv *FileInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(fileInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tell' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_seek' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // FileInputStreamClassStruct creates an uninitialised FileInputStreamClass.
 func FileInputStreamClassStruct() *FileInputStreamClass {
@@ -4425,19 +5441,35 @@ type FileMonitorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'cancel' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'cancel' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // FileMonitorClassStruct creates an uninitialised FileMonitorClass.
 func FileMonitorClassStruct() *FileMonitorClass {
@@ -4500,39 +5532,74 @@ type FileOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FileOutputStreamClass) ParentClass() *OutputStreamClass {
+func (recv *FileOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(fileOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FileOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fileOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tell' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_seek' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_truncate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'query_info_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'query_info_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'query_info_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'query_info_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_etag' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_etag' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // FileOutputStreamClassStruct creates an uninitialised FileOutputStreamClass.
 func FileOutputStreamClassStruct() *FileOutputStreamClass {
@@ -4596,13 +5663,23 @@ type FilenameCompleterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'got_completion_data' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'got_completion_data' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // FilenameCompleterClassStruct creates an uninitialised FilenameCompleterClass.
 func FilenameCompleterClassStruct() *FilenameCompleterClass {
@@ -4635,17 +5712,30 @@ type FilterInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FilterInputStreamClass) ParentClass() *InputStreamClass {
+func (recv *FilterInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(filterInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FilterInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(filterInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // FilterInputStreamClassStruct creates an uninitialised FilterInputStreamClass.
 func FilterInputStreamClassStruct() *FilterInputStreamClass {
@@ -4678,17 +5768,30 @@ type FilterOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *FilterOutputStreamClass) ParentClass() *OutputStreamClass {
+func (recv *FilterOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(filterOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *FilterOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(filterOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // FilterOutputStreamClassStruct creates an uninitialised FilterOutputStreamClass.
 func FilterOutputStreamClassStruct() *FilterOutputStreamClass {
@@ -5070,35 +6173,67 @@ type IOStreamClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_input_stream' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_input_stream' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_output_stream' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_output_stream' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved9' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved10' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved10' : for field setter : missing Type
 
 // IOStreamClassStruct creates an uninitialised IOStreamClass.
 func IOStreamClassStruct() *IOStreamClass {
@@ -5162,15 +6297,27 @@ type IconIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'hash' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'hash' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'equal' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'equal' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'to_tokens' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_tokens' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'from_tokens' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'from_tokens' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'serialize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'serialize' : for field setter : missing Type
 
 // IconIfaceStruct creates an uninitialised IconIface.
 func IconIfaceStruct() *IconIface {
@@ -5204,9 +6351,15 @@ type InetAddressClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'to_string' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'to_string' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'to_bytes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_bytes' : for field setter : missing Type
 
 // InetAddressClassStruct creates an uninitialised InetAddressClass.
 func InetAddressClassStruct() *InetAddressClass {
@@ -5239,6 +6392,8 @@ type InetAddressMaskClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // InetAddressMaskClassStruct creates an uninitialised InetAddressMaskClass.
 func InetAddressMaskClassStruct() *InetAddressMaskClass {
@@ -5331,10 +6486,17 @@ type InetSocketAddressClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *InetSocketAddressClass) ParentClass() *SocketAddressClass {
+func (recv *InetSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(inetSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *InetSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(inetSocketAddressClassStruct, recv.native, "parent_class", argValue)
 }
 
 // InetSocketAddressClassStruct creates an uninitialised InetSocketAddressClass.
@@ -5399,7 +6561,11 @@ type InitableIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'init' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'init' : for field setter : missing Type
 
 // InitableIfaceStruct creates an uninitialised InitableIface.
 func InitableIfaceStruct() *InitableIface {
@@ -5433,36 +6599,70 @@ type InputMessage struct {
 
 // UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
 
+// UNSUPPORTED : C value 'address' : for field setter : no Go type for 'SocketAddress'
+
 // UNSUPPORTED : C value 'vectors' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'vectors' : for field setter : missing Type
+
 // NumVectors returns the C field 'num_vectors'.
-func (recv *InputMessage) NumVectors() uint32 {
+func (recv *InputMessage) FieldNumVectors() uint32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_vectors")
 	value := argValue.Uint32()
 	return value
 }
 
+// NumVectors sets the value of the C field 'num_vectors'.
+func (recv *InputMessage) SetFieldNumVectors(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(inputMessageStruct, recv.native, "num_vectors", argValue)
+}
+
 // BytesReceived returns the C field 'bytes_received'.
-func (recv *InputMessage) BytesReceived() uint64 {
+func (recv *InputMessage) FieldBytesReceived() uint64 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "bytes_received")
 	value := argValue.Uint64()
 	return value
 }
 
+// BytesReceived sets the value of the C field 'bytes_received'.
+func (recv *InputMessage) SetFieldBytesReceived(value uint64) {
+	var argValue gi.Argument
+	argValue.SetUint64(value)
+	gi.FieldSet(inputMessageStruct, recv.native, "bytes_received", argValue)
+}
+
 // Flags returns the C field 'flags'.
-func (recv *InputMessage) Flags() int32 {
+func (recv *InputMessage) FieldFlags() int32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "flags")
 	value := argValue.Int32()
 	return value
 }
 
+// Flags sets the value of the C field 'flags'.
+func (recv *InputMessage) SetFieldFlags(value int32) {
+	var argValue gi.Argument
+	argValue.SetInt32(value)
+	gi.FieldSet(inputMessageStruct, recv.native, "flags", argValue)
+}
+
 // UNSUPPORTED : C value 'control_messages' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'control_messages' : for field setter : missing Type
+
 // NumControlMessages returns the C field 'num_control_messages'.
-func (recv *InputMessage) NumControlMessages() uint32 {
+func (recv *InputMessage) FieldNumControlMessages() uint32 {
 	argValue := gi.FieldGet(inputMessageStruct, recv.native, "num_control_messages")
 	value := argValue.Uint32()
 	return value
+}
+
+// NumControlMessages sets the value of the C field 'num_control_messages'.
+func (recv *InputMessage) SetFieldNumControlMessages(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(inputMessageStruct, recv.native, "num_control_messages", argValue)
 }
 
 // InputMessageStruct creates an uninitialised InputMessage.
@@ -5497,33 +6697,63 @@ type InputStreamClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'read_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'skip' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'skip' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'read_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'read_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'read_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'skip_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'skip_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'skip_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'skip_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // InputStreamClassStruct creates an uninitialised InputStreamClass.
 func InputStreamClassStruct() *InputStreamClass {
@@ -5587,11 +6817,20 @@ type InputVector struct {
 
 // UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
+
 // Size returns the C field 'size'.
-func (recv *InputVector) Size() uint64 {
+func (recv *InputVector) FieldSize() uint64 {
 	argValue := gi.FieldGet(inputVectorStruct, recv.native, "size")
 	value := argValue.Uint64()
 	return value
+}
+
+// Size sets the value of the C field 'size'.
+func (recv *InputVector) SetFieldSize(value uint64) {
+	var argValue gi.Argument
+	argValue.SetUint64(value)
+	gi.FieldSet(inputVectorStruct, recv.native, "size", argValue)
 }
 
 // InputVectorStruct creates an uninitialised InputVector.
@@ -5626,11 +6865,19 @@ type ListModelInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'get_item_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_items' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_items' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_item' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item' : for field setter : missing Type
 
 // ListModelInterfaceStruct creates an uninitialised ListModelInterface.
 func ListModelInterfaceStruct() *ListModelInterface {
@@ -5664,6 +6911,8 @@ type ListStoreClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // ListStoreClassStruct creates an uninitialised ListStoreClass.
 func ListStoreClassStruct() *ListStoreClass {
 	err := listStoreClassStruct_Set()
@@ -5696,11 +6945,19 @@ type LoadableIconIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'load' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'load_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'load_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'load_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'load_finish' : for field setter : missing Type
 
 // LoadableIconIfaceStruct creates an uninitialised LoadableIconIface.
 func LoadableIconIfaceStruct() *LoadableIconIface {
@@ -5733,21 +6990,38 @@ type MemoryInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MemoryInputStreamClass) ParentClass() *InputStreamClass {
+func (recv *MemoryInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(memoryInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MemoryInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(memoryInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // MemoryInputStreamClassStruct creates an uninitialised MemoryInputStreamClass.
 func MemoryInputStreamClassStruct() *MemoryInputStreamClass {
@@ -5810,21 +7084,38 @@ type MemoryOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *MemoryOutputStreamClass) ParentClass() *OutputStreamClass {
+func (recv *MemoryOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(memoryOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *MemoryOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(memoryOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // MemoryOutputStreamClassStruct creates an uninitialised MemoryOutputStreamClass.
 func MemoryOutputStreamClassStruct() *MemoryOutputStreamClass {
@@ -5888,7 +7179,11 @@ type MenuAttributeIterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_next' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_next' : for field setter : missing Type
 
 // MenuAttributeIterClassStruct creates an uninitialised MenuAttributeIterClass.
 func MenuAttributeIterClassStruct() *MenuAttributeIterClass {
@@ -5952,7 +7247,11 @@ type MenuLinkIterClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_next' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_next' : for field setter : missing Type
 
 // MenuLinkIterClassStruct creates an uninitialised MenuLinkIterClass.
 func MenuLinkIterClassStruct() *MenuLinkIterClass {
@@ -6016,21 +7315,39 @@ type MenuModelClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'is_mutable' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_mutable' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_n_items' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_n_items' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_item_attributes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_attributes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'iterate_item_attributes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'iterate_item_attributes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_item_attribute_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_attribute_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_item_links' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_item_links' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'iterate_item_links' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'iterate_item_links' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_item_link' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_item_link' : for field setter : missing Type
 
 // MenuModelClassStruct creates an uninitialised MenuModelClass.
 func MenuModelClassStruct() *MenuModelClass {
@@ -6094,59 +7411,115 @@ type MountIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unmounted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unmounted' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_root' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_root' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_uuid' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_uuid' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_volume' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volume' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_drive' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_drive' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_unmount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_eject' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unmount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unmount_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unmount_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'remount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'remount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'remount_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'remount_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'guess_content_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'guess_content_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'guess_content_type_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'guess_content_type_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'guess_content_type_sync' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'guess_content_type_sync' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'pre_unmount' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'pre_unmount' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unmount_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unmount_with_operation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'unmount_with_operation_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'unmount_with_operation_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_default_location' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_location' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_sort_key' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field setter : missing Type
 
 // MountIfaceStruct creates an uninitialised MountIface.
 func MountIfaceStruct() *MountIface {
@@ -6180,35 +7553,67 @@ type MountOperationClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'ask_password' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ask_password' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'ask_question' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ask_question' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reply' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reply' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'aborted' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'aborted' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'show_processes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'show_processes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'show_unmount_progress' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'show_unmount_progress' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved8' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved9' : for field setter : missing Type
 
 // MountOperationClassStruct creates an uninitialised MountOperationClass.
 func MountOperationClassStruct() *MountOperationClass {
@@ -6271,10 +7676,17 @@ type NativeSocketAddressClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NativeSocketAddressClass) ParentClass() *SocketAddressClass {
+func (recv *NativeSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(nativeSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NativeSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(nativeSocketAddressClassStruct, recv.native, "parent_class", argValue)
 }
 
 // NativeSocketAddressClassStruct creates an uninitialised NativeSocketAddressClass.
@@ -6338,13 +7750,22 @@ type NativeVolumeMonitorClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *NativeVolumeMonitorClass) ParentClass() *VolumeMonitorClass {
+func (recv *NativeVolumeMonitorClass) FieldParentClass() *VolumeMonitorClass {
 	argValue := gi.FieldGet(nativeVolumeMonitorClassStruct, recv.native, "parent_class")
 	value := &VolumeMonitorClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *NativeVolumeMonitorClass) SetFieldParentClass(value *VolumeMonitorClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(nativeVolumeMonitorClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'get_mount_for_mount_path' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_mount_for_mount_path' : for field setter : missing Type
 
 // NativeVolumeMonitorClassStruct creates an uninitialised NativeVolumeMonitorClass.
 func NativeVolumeMonitorClassStruct() *NativeVolumeMonitorClass {
@@ -6377,6 +7798,8 @@ type NetworkAddressClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // NetworkAddressClassStruct creates an uninitialised NetworkAddressClass.
 func NetworkAddressClassStruct() *NetworkAddressClass {
@@ -6440,13 +7863,23 @@ type NetworkMonitorInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'network_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'network_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_reach' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_reach' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_reach_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_reach_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_reach_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_reach_finish' : for field setter : missing Type
 
 // NetworkMonitorInterfaceStruct creates an uninitialised NetworkMonitorInterface.
 func NetworkMonitorInterfaceStruct() *NetworkMonitorInterface {
@@ -6479,6 +7912,8 @@ type NetworkServiceClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // NetworkServiceClassStruct creates an uninitialised NetworkServiceClass.
 func NetworkServiceClassStruct() *NetworkServiceClass {
@@ -6542,34 +7977,66 @@ type OutputMessage struct {
 
 // UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
 
+// UNSUPPORTED : C value 'address' : for field setter : no Go type for 'SocketAddress'
+
 // Vectors returns the C field 'vectors'.
-func (recv *OutputMessage) Vectors() *OutputVector {
+func (recv *OutputMessage) FieldVectors() *OutputVector {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "vectors")
 	value := &OutputVector{native: argValue.Pointer()}
 	return value
 }
 
+// Vectors sets the value of the C field 'vectors'.
+func (recv *OutputMessage) SetFieldVectors(value *OutputVector) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(outputMessageStruct, recv.native, "vectors", argValue)
+}
+
 // NumVectors returns the C field 'num_vectors'.
-func (recv *OutputMessage) NumVectors() uint32 {
+func (recv *OutputMessage) FieldNumVectors() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_vectors")
 	value := argValue.Uint32()
 	return value
 }
 
+// NumVectors sets the value of the C field 'num_vectors'.
+func (recv *OutputMessage) SetFieldNumVectors(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(outputMessageStruct, recv.native, "num_vectors", argValue)
+}
+
 // BytesSent returns the C field 'bytes_sent'.
-func (recv *OutputMessage) BytesSent() uint32 {
+func (recv *OutputMessage) FieldBytesSent() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "bytes_sent")
 	value := argValue.Uint32()
 	return value
 }
 
+// BytesSent sets the value of the C field 'bytes_sent'.
+func (recv *OutputMessage) SetFieldBytesSent(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(outputMessageStruct, recv.native, "bytes_sent", argValue)
+}
+
 // UNSUPPORTED : C value 'control_messages' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'control_messages' : for field setter : missing Type
+
 // NumControlMessages returns the C field 'num_control_messages'.
-func (recv *OutputMessage) NumControlMessages() uint32 {
+func (recv *OutputMessage) FieldNumControlMessages() uint32 {
 	argValue := gi.FieldGet(outputMessageStruct, recv.native, "num_control_messages")
 	value := argValue.Uint32()
 	return value
+}
+
+// NumControlMessages sets the value of the C field 'num_control_messages'.
+func (recv *OutputMessage) SetFieldNumControlMessages(value uint32) {
+	var argValue gi.Argument
+	argValue.SetUint32(value)
+	gi.FieldSet(outputMessageStruct, recv.native, "num_control_messages", argValue)
 }
 
 // OutputMessageStruct creates an uninitialised OutputMessage.
@@ -6604,45 +8071,87 @@ type OutputStreamClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'write_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'splice' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'splice' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'flush' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_fn' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_fn' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'write_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'write_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'write_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'splice_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'splice_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'splice_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'splice_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'flush_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'flush_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'flush_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'flush_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'close_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'close_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'close_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'close_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'writev_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_fn' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'writev_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'writev_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'writev_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved8' : for field setter : missing Type
 
 // OutputStreamClassStruct creates an uninitialised OutputStreamClass.
 func OutputStreamClassStruct() *OutputStreamClass {
@@ -6706,11 +8215,20 @@ type OutputVector struct {
 
 // UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
 
+// UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
+
 // Size returns the C field 'size'.
-func (recv *OutputVector) Size() uint64 {
+func (recv *OutputVector) FieldSize() uint64 {
 	argValue := gi.FieldGet(outputVectorStruct, recv.native, "size")
 	value := argValue.Uint64()
 	return value
+}
+
+// Size sets the value of the C field 'size'.
+func (recv *OutputVector) SetFieldSize(value uint64) {
+	var argValue gi.Argument
+	argValue.SetUint64(value)
+	gi.FieldSet(outputVectorStruct, recv.native, "size", argValue)
 }
 
 // OutputVectorStruct creates an uninitialised OutputVector.
@@ -6745,19 +8263,35 @@ type PermissionClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'acquire' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'acquire' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'acquire_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'acquire_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'acquire_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'acquire_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'release' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'release' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'release_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'release_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'release_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'release_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reserved' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reserved' : for field setter : missing Type
 
 // PermissionClassStruct creates an uninitialised PermissionClass.
 func PermissionClassStruct() *PermissionClass {
@@ -6821,13 +8355,23 @@ type PollableInputStreamInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'can_poll' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_poll' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_readable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_readable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_source' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_source' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'read_nonblocking' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_nonblocking' : for field setter : missing Type
 
 // PollableInputStreamInterfaceStruct creates an uninitialised PollableInputStreamInterface.
 func PollableInputStreamInterfaceStruct() *PollableInputStreamInterface {
@@ -6861,15 +8405,27 @@ type PollableOutputStreamInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'can_poll' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_poll' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'is_writable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'is_writable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'create_source' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'create_source' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'write_nonblocking' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'write_nonblocking' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'writev_nonblocking' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writev_nonblocking' : for field setter : missing Type
 
 // PollableOutputStreamInterfaceStruct creates an uninitialised PollableOutputStreamInterface.
 func PollableOutputStreamInterfaceStruct() *PollableOutputStreamInterface {
@@ -6902,10 +8458,17 @@ type ProxyAddressClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ProxyAddressClass) ParentClass() *InetSocketAddressClass {
+func (recv *ProxyAddressClass) FieldParentClass() *InetSocketAddressClass {
 	argValue := gi.FieldGet(proxyAddressClassStruct, recv.native, "parent_class")
 	value := &InetSocketAddressClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ProxyAddressClass) SetFieldParentClass(value *InetSocketAddressClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(proxyAddressClassStruct, recv.native, "parent_class", argValue)
 }
 
 // ProxyAddressClassStruct creates an uninitialised ProxyAddressClass.
@@ -6940,17 +8503,31 @@ type ProxyAddressEnumeratorClass struct {
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
 
 // ProxyAddressEnumeratorClassStruct creates an uninitialised ProxyAddressEnumeratorClass.
 func ProxyAddressEnumeratorClassStruct() *ProxyAddressEnumeratorClass {
@@ -7044,13 +8621,23 @@ type ProxyInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'connect' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'connect' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'connect_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'connect_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'connect_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'connect_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'supports_hostname' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_hostname' : for field setter : missing Type
 
 // ProxyInterfaceStruct creates an uninitialised ProxyInterface.
 func ProxyInterfaceStruct() *ProxyInterface {
@@ -7084,13 +8671,23 @@ type ProxyResolverInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'is_supported' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_supported' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_finish' : for field setter : missing Type
 
 // ProxyResolverInterfaceStruct creates an uninitialised ProxyResolverInterface.
 func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
@@ -7124,9 +8721,15 @@ type RemoteActionGroupInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'activate_action_full' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'activate_action_full' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'change_action_state_full' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'change_action_state_full' : for field setter : missing Type
 
 // RemoteActionGroupInterfaceStruct creates an uninitialised RemoteActionGroupInterface.
 func RemoteActionGroupInterfaceStruct() *RemoteActionGroupInterface {
@@ -7160,37 +8763,71 @@ type ResolverClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'reload' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reload' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_by_name' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_by_name' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_by_name_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_by_name_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_by_name_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_by_address' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_address' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_by_address_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_by_address_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_by_address_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_address_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_service' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_service' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_service_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_service_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_service_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_service_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_records' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_records' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_records_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_records_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_records_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_records_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_by_name_with_flags_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_by_name_with_flags_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_by_name_with_flags_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_by_name_with_flags_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_by_name_with_flags' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_by_name_with_flags' : for field setter : missing Type
 
 // ResolverClassStruct creates an uninitialised ResolverClass.
 func ResolverClassStruct() *ResolverClass {
@@ -7395,15 +9032,27 @@ type SeekableIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'tell' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'tell' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_seek' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_seek' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'seek' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'seek' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_truncate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_truncate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'truncate_fn' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'truncate_fn' : for field setter : missing Type
 
 // SeekableIfaceStruct creates an uninitialised SeekableIface.
 func SeekableIfaceStruct() *SeekableIface {
@@ -7437,25 +9086,47 @@ type SettingsBackendClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'read' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_writable' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_writable' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'write' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'write' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'write_tree' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'write_tree' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'reset' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'reset' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'subscribe' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'subscribe' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'unsubscribe' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'unsubscribe' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'sync' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'sync' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_permission' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_permission' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'read_user_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'read_user_value' : for field setter : missing Type
 
 // SettingsBackendClassStruct creates an uninitialised SettingsBackendClass.
 func SettingsBackendClassStruct() *SettingsBackendClass {
@@ -7519,15 +9190,27 @@ type SettingsClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'writable_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writable_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'writable_change_event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'writable_change_event' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'change_event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'change_event' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'padding' : for field setter : missing Type
 
 // SettingsClassStruct creates an uninitialised SettingsClass.
 func SettingsClassStruct() *SettingsClass {
@@ -8296,15 +9979,27 @@ type SimpleProxyResolverClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // SimpleProxyResolverClassStruct creates an uninitialised SimpleProxyResolverClass.
 func SimpleProxyResolverClassStruct() *SimpleProxyResolverClass {
@@ -8368,11 +10063,19 @@ type SocketAddressClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_family' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_family' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_native_size' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_native_size' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'to_native' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_native' : for field setter : missing Type
 
 // SocketAddressClassStruct creates an uninitialised SocketAddressClass.
 func SocketAddressClassStruct() *SocketAddressClass {
@@ -8406,9 +10109,15 @@ type SocketAddressEnumeratorClass struct {
 
 // UNSUPPORTED : C value 'next' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'next' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'next_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'next_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'next_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'next_finish' : for field setter : missing Type
 
 // SocketAddressEnumeratorClassStruct creates an uninitialised SocketAddressEnumeratorClass.
 func SocketAddressEnumeratorClassStruct() *SocketAddressEnumeratorClass {
@@ -8442,25 +10151,47 @@ type SocketClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved7' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved7' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved8' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved8' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved9' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved9' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved10' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved10' : for field setter : missing Type
 
 // SocketClassStruct creates an uninitialised SocketClass.
 func SocketClassStruct() *SocketClass {
@@ -8494,15 +10225,27 @@ type SocketClientClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'event' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'event' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // SocketClientClassStruct creates an uninitialised SocketClientClass.
 func SocketClientClassStruct() *SocketClientClass {
@@ -8566,11 +10309,19 @@ type SocketConnectableIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'enumerate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'proxy_enumerate' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'proxy_enumerate' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'to_string' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'to_string' : for field setter : missing Type
 
 // SocketConnectableIfaceStruct creates an uninitialised SocketConnectableIface.
 func SocketConnectableIfaceStruct() *SocketConnectableIface {
@@ -8603,23 +10354,42 @@ type SocketConnectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SocketConnectionClass) ParentClass() *IOStreamClass {
+func (recv *SocketConnectionClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(socketConnectionClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SocketConnectionClass) SetFieldParentClass(value *IOStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketConnectionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // SocketConnectionClassStruct creates an uninitialised SocketConnectionClass.
 func SocketConnectionClassStruct() *SocketConnectionClass {
@@ -8683,25 +10453,47 @@ type SocketControlMessageClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_size' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_size' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_level' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_level' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'serialize' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'serialize' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'deserialize' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deserialize' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // SocketControlMessageClassStruct creates an uninitialised SocketControlMessageClass.
 func SocketControlMessageClassStruct() *SocketControlMessageClass {
@@ -8765,19 +10557,35 @@ type SocketListenerClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'event' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'event' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // SocketListenerClassStruct creates an uninitialised SocketListenerClass.
 func SocketListenerClassStruct() *SocketListenerClass {
@@ -8870,25 +10678,46 @@ type SocketServiceClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *SocketServiceClass) ParentClass() *SocketListenerClass {
+func (recv *SocketServiceClass) FieldParentClass() *SocketListenerClass {
 	argValue := gi.FieldGet(socketServiceClassStruct, recv.native, "parent_class")
 	value := &SocketListenerClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *SocketServiceClass) SetFieldParentClass(value *SocketListenerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketServiceClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'incoming' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'incoming' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // SocketServiceClassStruct creates an uninitialised SocketServiceClass.
 func SocketServiceClassStruct() *SocketServiceClass {
@@ -9337,10 +11166,17 @@ type TcpConnectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TcpConnectionClass) ParentClass() *SocketConnectionClass {
+func (recv *TcpConnectionClass) FieldParentClass() *SocketConnectionClass {
 	argValue := gi.FieldGet(tcpConnectionClassStruct, recv.native, "parent_class")
 	value := &SocketConnectionClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TcpConnectionClass) SetFieldParentClass(value *SocketConnectionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tcpConnectionClassStruct, recv.native, "parent_class", argValue)
 }
 
 // TcpConnectionClassStruct creates an uninitialised TcpConnectionClass.
@@ -9404,10 +11240,17 @@ type TcpWrapperConnectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TcpWrapperConnectionClass) ParentClass() *TcpConnectionClass {
+func (recv *TcpWrapperConnectionClass) FieldParentClass() *TcpConnectionClass {
 	argValue := gi.FieldGet(tcpWrapperConnectionClassStruct, recv.native, "parent_class")
 	value := &TcpConnectionClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TcpWrapperConnectionClass) SetFieldParentClass(value *TcpConnectionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tcpWrapperConnectionClassStruct, recv.native, "parent_class", argValue)
 }
 
 // TcpWrapperConnectionClassStruct creates an uninitialised TcpWrapperConnectionClass.
@@ -9501,23 +11344,42 @@ type ThreadedSocketServiceClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *ThreadedSocketServiceClass) ParentClass() *SocketServiceClass {
+func (recv *ThreadedSocketServiceClass) FieldParentClass() *SocketServiceClass {
 	argValue := gi.FieldGet(threadedSocketServiceClassStruct, recv.native, "parent_class")
 	value := &SocketServiceClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *ThreadedSocketServiceClass) SetFieldParentClass(value *SocketServiceClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(threadedSocketServiceClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'run' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'run' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // ThreadedSocketServiceClassStruct creates an uninitialised ThreadedSocketServiceClass.
 func ThreadedSocketServiceClassStruct() *ThreadedSocketServiceClass {
@@ -9581,23 +11443,43 @@ type TlsBackendInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'supports_tls' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_tls' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_certificate_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_certificate_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_client_connection_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_client_connection_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_server_connection_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_server_connection_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_file_database_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_file_database_type' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_default_database' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_default_database' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'supports_dtls' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'supports_dtls' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_dtls_client_connection_type' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_dtls_client_connection_type' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_dtls_server_connection_type' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_dtls_server_connection_type' : for field setter : missing Type
 
 // TlsBackendInterfaceStruct creates an uninitialised TlsBackendInterface.
 func TlsBackendInterfaceStruct() *TlsBackendInterface {
@@ -9631,7 +11513,11 @@ type TlsCertificateClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'verify' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'verify' : for field setter : missing Type
 
 // TlsCertificateClassStruct creates an uninitialised TlsCertificateClass.
 func TlsCertificateClassStruct() *TlsCertificateClass {
@@ -9695,7 +11581,11 @@ type TlsClientConnectionInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'copy_session_state' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'copy_session_state' : for field setter : missing Type
 
 // TlsClientConnectionInterfaceStruct creates an uninitialised TlsClientConnectionInterface.
 func TlsClientConnectionInterfaceStruct() *TlsClientConnectionInterface {
@@ -9728,19 +11618,34 @@ type TlsConnectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *TlsConnectionClass) ParentClass() *IOStreamClass {
+func (recv *TlsConnectionClass) FieldParentClass() *IOStreamClass {
 	argValue := gi.FieldGet(tlsConnectionClassStruct, recv.native, "parent_class")
 	value := &IOStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *TlsConnectionClass) SetFieldParentClass(value *IOStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tlsConnectionClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value 'accept_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'accept_certificate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'handshake' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'handshake' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'handshake_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'handshake_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'handshake_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'handshake_finish' : for field setter : missing Type
 
 // TlsConnectionClassStruct creates an uninitialised TlsConnectionClass.
 func TlsConnectionClassStruct() *TlsConnectionClass {
@@ -9804,31 +11709,59 @@ type TlsDatabaseClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'verify_chain' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'verify_chain' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'verify_chain_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'verify_chain_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'verify_chain_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'verify_chain_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'create_certificate_handle' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'create_certificate_handle' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_certificate_for_handle' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_for_handle' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_certificate_for_handle_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_certificate_for_handle_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_certificate_for_handle_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_for_handle_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_certificate_issuer' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_certificate_issuer' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_certificate_issuer_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificate_issuer_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_certificate_issuer_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_certificate_issuer_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_certificates_issued_by' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificates_issued_by' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'lookup_certificates_issued_by_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'lookup_certificates_issued_by_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'lookup_certificates_issued_by_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'lookup_certificates_issued_by_finish' : for field setter : missing Type
 
 // TlsDatabaseClassStruct creates an uninitialised TlsDatabaseClass.
 func TlsDatabaseClassStruct() *TlsDatabaseClass {
@@ -9892,6 +11825,8 @@ type TlsFileDatabaseInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // TlsFileDatabaseInterfaceStruct creates an uninitialised TlsFileDatabaseInterface.
 func TlsFileDatabaseInterfaceStruct() *TlsFileDatabaseInterface {
 	err := tlsFileDatabaseInterfaceStruct_Set()
@@ -9924,15 +11859,27 @@ type TlsInteractionClass struct {
 
 // UNSUPPORTED : C value 'ask_password' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ask_password' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'ask_password_async' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'ask_password_async' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'ask_password_finish' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'ask_password_finish' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'request_certificate' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_certificate' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'request_certificate_async' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'request_certificate_async' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'request_certificate_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'request_certificate_finish' : for field setter : missing Type
 
 // TlsInteractionClassStruct creates an uninitialised TlsInteractionClass.
 func TlsInteractionClassStruct() *TlsInteractionClass {
@@ -9996,11 +11943,19 @@ type TlsPasswordClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'get_value' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_value' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'set_value' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'set_value' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_default_warning' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_default_warning' : for field setter : missing Type
 
 // TlsPasswordClassStruct creates an uninitialised TlsPasswordClass.
 func TlsPasswordClassStruct() *TlsPasswordClass {
@@ -10064,6 +12019,8 @@ type TlsServerConnectionInterface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // TlsServerConnectionInterfaceStruct creates an uninitialised TlsServerConnectionInterface.
 func TlsServerConnectionInterfaceStruct() *TlsServerConnectionInterface {
 	err := tlsServerConnectionInterfaceStruct_Set()
@@ -10095,10 +12052,17 @@ type UnixConnectionClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixConnectionClass) ParentClass() *SocketConnectionClass {
+func (recv *UnixConnectionClass) FieldParentClass() *SocketConnectionClass {
 	argValue := gi.FieldGet(unixConnectionClassStruct, recv.native, "parent_class")
 	value := &SocketConnectionClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixConnectionClass) SetFieldParentClass(value *SocketConnectionClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixConnectionClassStruct, recv.native, "parent_class", argValue)
 }
 
 // UnixConnectionClassStruct creates an uninitialised UnixConnectionClass.
@@ -10162,15 +12126,26 @@ type UnixCredentialsMessageClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixCredentialsMessageClass) ParentClass() *SocketControlMessageClass {
+func (recv *UnixCredentialsMessageClass) FieldParentClass() *SocketControlMessageClass {
 	argValue := gi.FieldGet(unixCredentialsMessageClassStruct, recv.native, "parent_class")
 	value := &SocketControlMessageClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixCredentialsMessageClass) SetFieldParentClass(value *SocketControlMessageClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixCredentialsMessageClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UnixCredentialsMessageClassStruct creates an uninitialised UnixCredentialsMessageClass.
 func UnixCredentialsMessageClassStruct() *UnixCredentialsMessageClass {
@@ -10234,15 +12209,27 @@ type UnixFDListClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UnixFDListClassStruct creates an uninitialised UnixFDListClass.
 func UnixFDListClassStruct() *UnixFDListClass {
@@ -10305,15 +12292,26 @@ type UnixFDMessageClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixFDMessageClass) ParentClass() *SocketControlMessageClass {
+func (recv *UnixFDMessageClass) FieldParentClass() *SocketControlMessageClass {
 	argValue := gi.FieldGet(unixFDMessageClassStruct, recv.native, "parent_class")
 	value := &SocketControlMessageClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixFDMessageClass) SetFieldParentClass(value *SocketControlMessageClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixFDMessageClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UnixFDMessageClassStruct creates an uninitialised UnixFDMessageClass.
 func UnixFDMessageClassStruct() *UnixFDMessageClass {
@@ -10376,21 +12374,38 @@ type UnixInputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixInputStreamClass) ParentClass() *InputStreamClass {
+func (recv *UnixInputStreamClass) FieldParentClass() *InputStreamClass {
 	argValue := gi.FieldGet(unixInputStreamClassStruct, recv.native, "parent_class")
 	value := &InputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixInputStreamClass) SetFieldParentClass(value *InputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixInputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UnixInputStreamClassStruct creates an uninitialised UnixInputStreamClass.
 func UnixInputStreamClassStruct() *UnixInputStreamClass {
@@ -10928,21 +12943,38 @@ type UnixOutputStreamClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixOutputStreamClass) ParentClass() *OutputStreamClass {
+func (recv *UnixOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.FieldGet(unixOutputStreamClassStruct, recv.native, "parent_class")
 	value := &OutputStreamClass{native: argValue.Pointer()}
 	return value
 }
 
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixOutputStreamClass) SetFieldParentClass(value *OutputStreamClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixOutputStreamClassStruct, recv.native, "parent_class", argValue)
+}
+
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
 
 // UnixOutputStreamClassStruct creates an uninitialised UnixOutputStreamClass.
 func UnixOutputStreamClassStruct() *UnixOutputStreamClass {
@@ -11005,10 +13037,17 @@ type UnixSocketAddressClass struct {
 }
 
 // ParentClass returns the C field 'parent_class'.
-func (recv *UnixSocketAddressClass) ParentClass() *SocketAddressClass {
+func (recv *UnixSocketAddressClass) FieldParentClass() *SocketAddressClass {
 	argValue := gi.FieldGet(unixSocketAddressClassStruct, recv.native, "parent_class")
 	value := &SocketAddressClass{native: argValue.Pointer()}
 	return value
+}
+
+// ParentClass sets the value of the C field 'parent_class'.
+func (recv *UnixSocketAddressClass) SetFieldParentClass(value *SocketAddressClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixSocketAddressClassStruct, recv.native, "parent_class", argValue)
 }
 
 // UnixSocketAddressClassStruct creates an uninitialised UnixSocketAddressClass.
@@ -11073,39 +13112,75 @@ type VfsClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'is_active' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_active' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_file_for_path' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_file_for_path' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_file_for_uri' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_file_for_uri' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_supported_uri_schemes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_supported_uri_schemes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'parse_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'parse_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'local_file_add_info' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'local_file_add_info' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'add_writable_namespaces' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'add_writable_namespaces' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'local_file_set_attributes' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'local_file_set_attributes' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'local_file_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'local_file_removed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'local_file_moved' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'local_file_moved' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'deserialize_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'deserialize_icon' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // VfsClassStruct creates an uninitialised VfsClass.
 func VfsClassStruct() *VfsClass {
@@ -11139,47 +13214,91 @@ type VolumeIface struct {
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
+// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'removed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'removed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_name' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_icon' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_icon' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_uuid' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_drive' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_drive' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_mount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'can_mount' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'can_mount' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'can_eject' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'can_eject' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mount_fn' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mount_fn' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mount_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_identifier' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_identifier' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'enumerate_identifiers' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'enumerate_identifiers' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'should_automount' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'should_automount' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_activation_root' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_activation_root' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'eject_with_operation' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'eject_with_operation' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'eject_with_operation_finish' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'eject_with_operation_finish' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_sort_key' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_sort_key' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_symbolic_icon' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_symbolic_icon' : for field setter : missing Type
 
 // VolumeIfaceStruct creates an uninitialised VolumeIface.
 func VolumeIfaceStruct() *VolumeIface {
@@ -11213,55 +13332,107 @@ type VolumeMonitorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // UNSUPPORTED : C value 'volume_added' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'volume_added' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'volume_removed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'volume_removed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'volume_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'volume_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mount_added' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mount_added' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mount_removed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_removed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'mount_pre_unmount' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'mount_pre_unmount' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'mount_changed' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'mount_changed' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drive_connected' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drive_connected' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drive_disconnected' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_disconnected' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drive_changed' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drive_changed' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'is_supported' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'is_supported' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_connected_drives' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_connected_drives' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_volumes' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volumes' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_mounts' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_mounts' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'get_volume_for_uuid' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'get_volume_for_uuid' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'get_mount_for_uuid' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'get_mount_for_uuid' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'adopt_orphan_mount' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'adopt_orphan_mount' : for field setter : missing Type
 
 // UNSUPPORTED : C value 'drive_eject_button' : for field getter : missing Type
 
+// UNSUPPORTED : C value 'drive_eject_button' : for field setter : missing Type
+
 // UNSUPPORTED : C value 'drive_stop_button' : for field getter : missing Type
+
+// UNSUPPORTED : C value 'drive_stop_button' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved1' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved2' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved2' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved3' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved3' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved4' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved4' : for field setter : missing Type
 
 // UNSUPPORTED : C value '_g_reserved5' : for field getter : missing Type
 
+// UNSUPPORTED : C value '_g_reserved5' : for field setter : missing Type
+
 // UNSUPPORTED : C value '_g_reserved6' : for field getter : missing Type
+
+// UNSUPPORTED : C value '_g_reserved6' : for field setter : missing Type
 
 // VolumeMonitorClassStruct creates an uninitialised VolumeMonitorClass.
 func VolumeMonitorClassStruct() *VolumeMonitorClass {
@@ -11295,6 +13466,8 @@ type ZlibCompressorClass struct {
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+
 // ZlibCompressorClassStruct creates an uninitialised ZlibCompressorClass.
 func ZlibCompressorClassStruct() *ZlibCompressorClass {
 	err := zlibCompressorClassStruct_Set()
@@ -11326,6 +13499,8 @@ type ZlibDecompressorClass struct {
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+
+// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
 
 // ZlibDecompressorClassStruct creates an uninitialised ZlibDecompressorClass.
 func ZlibDecompressorClassStruct() *ZlibDecompressorClass {

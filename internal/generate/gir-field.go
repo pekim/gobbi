@@ -34,7 +34,7 @@ func (f *Field) generate(fi *file) {
 	}
 
 	f.generateGetter(fi)
-	//f.generateSetter(g)
+	f.generateSetter(fi)
 }
 
 func (f *Field) generateGetter(fi *file) {
@@ -54,7 +54,7 @@ func (f *Field) generateGetter(fi *file) {
 				Op("*").
 				Id(f.record.goName),
 		).
-		Id(f.goName).
+		Id("Field" + f.goName).
 		Params().
 		Add(goType).
 		BlockFunc(f.generateGetterBody)
@@ -101,4 +101,70 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 		})
 
 	g.Return(jen.Id("value"))
+}
+
+func (f *Field) generateSetter(fi *file) {
+	goType, err := f.Type.jenGoType()
+	if err != nil {
+		fi.Comment(unsupportedf(f.Name, "for field setter : %s", err.Error()))
+		fi.Line()
+		return
+	}
+
+	fi.Commentf("// %s sets the value of the C field '%s'.", f.goName, f.Name)
+	fi.
+		Func().
+		Params(
+			jen.
+				Id(receiverName).
+				Op("*").
+				Id(f.record.goName),
+		).
+		Id("SetField" + f.goName).
+		Params(jen.Id("value").Add(goType)).
+		BlockFunc(f.generateSetterBody)
+}
+
+func (f *Field) generateSetterBody(g *jen.Group) {
+	jenValue := jen.Id("value")
+
+	if f.Type.isAlias() {
+		typ := f.Type.resolvedType()
+
+		jenValue = jen.
+			Add(jenGoTypes[typ.Name]).
+			Parens(jenValue)
+	}
+
+	if f.Type.isRecord() {
+		jenValue = jenValue.Dot("native")
+	}
+
+	value := jenValue
+	createFromArgument := f.Type.createFromInArgumentFunction()
+	if createFromArgument != nil {
+		value = createFromArgument(jenValue)
+	}
+
+	// var argValue gi.Argument
+	g.
+		Var().
+		Id("argValue").
+		Qual(gi.PackageName, "Argument")
+
+	// argValue.Set...(value)
+	typ := f.Type.resolvedType()
+	g.
+		Id("argValue").
+		Dot(typ.argumentValueSetFunctionName()).
+		Call(value)
+
+	g.
+		Qual(gi.PackageName, "FieldSet").
+		Call(
+			jen.Id(f.record.structInfoGoName),
+			jen.Id(receiverName).Dot("native"),
+			jen.Lit(f.Name),
+			jen.Id("argValue"),
+		)
 }
