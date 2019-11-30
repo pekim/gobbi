@@ -4,7 +4,6 @@ package gtk
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/internal/generate"
 	"github.com/pekim/gobbi/lib/gobject"
 	"reflect"
 	"strings"
@@ -221,7 +220,15 @@ func gtkBuilderGetConnectMethodForInterfaces(
 }
 
 func gtkBuilderGetConnectMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
-	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
+	nameParts := strings.Split(signalName, "-")
+	goNameParts := []string{}
+	for _, namePart := range nameParts {
+		goPart := strings.Title(namePart)
+		goNameParts = append(goNameParts, goPart)
+	}
+	goSignalName := strings.Join(goNameParts, "")
+
+	connectMethodName := "Connect" + goSignalName
 	connectMethod := gtkInstance.MethodByName(connectMethodName)
 	if !connectMethod.IsValid() {
 		return reflect.Value{}, false
