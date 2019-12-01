@@ -240,12 +240,12 @@ func (f *Function) generateReturnVar(g *jen.Group) {
 		return
 	}
 
+	value := f.ReturnValue.generateValue(jen.Id("ret"))
+
 	g.
 		Id("retGo").
 		Op(":=").
-		Do(func(s *jen.Statement) {
-			f.ReturnValue.generateValue(s, jen.Id("ret"))
-		})
+		Add(value)
 }
 
 func (f *Function) generateOutArgValues(g *jen.Group) {

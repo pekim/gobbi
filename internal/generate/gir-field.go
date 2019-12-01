@@ -74,8 +74,11 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 			jen.Lit(f.Name),
 		)
 
-	s := g.Id("value").Op(":=")
-	generateValue(f.Type, f.transferOwnership(), s, jen.Id("argValue"))
+	value := f.Type.generateOutArgValue(f.transferOwnership(), jen.Id("argValue"))
+	g.
+		Id("value").
+		Op(":=").
+		Add(value)
 
 	g.Return(jen.Id("value"))
 }

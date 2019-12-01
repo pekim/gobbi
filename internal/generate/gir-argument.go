@@ -12,30 +12,8 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func generateValue(typ *Type, transferOwnership *bool, s *jen.Statement, argVar *jen.Statement) {
-	resolvedType := typ.resolvedType()
-
-	var to *jen.Statement
-	if transferOwnership != nil {
-		to = jen.Lit(*transferOwnership)
-	}
-
-	argValue := argVar.
-		Dot(resolvedType.argumentValueGetFunctionName()).
-		Call(to)
-
-	if typ.isAlias() {
-		argValue = jen.
-			Id(typ.Name).
-			Parens(argValue)
-	}
-
-	s.Add(typ.createFromOutArgument(argValue))
-}
-
-func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
-	generateValue(a.Type, a.transferOwnership(), s, argVar)
-
+func (a *Argument) generateValue(argVar *jen.Statement) *jen.Statement {
+	return a.Type.generateOutArgValue(a.transferOwnership(), argVar)
 }
 
 func (a *Argument) transferOwnership() *bool {

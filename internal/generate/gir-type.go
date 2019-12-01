@@ -272,6 +272,29 @@ func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
 	return arg
 }
 
+// generateOutArgValue generates a statement that transforms an out
+// argument value to the Type's Go type.
+func (t *Type) generateOutArgValue(transferOwnership *bool, argVar *jen.Statement) *jen.Statement {
+	resolvedType := t.resolvedType()
+
+	var to *jen.Statement
+	if transferOwnership != nil {
+		to = jen.Lit(*transferOwnership)
+	}
+
+	argValue := argVar.
+		Dot(resolvedType.argumentValueGetFunctionName()).
+		Call(to)
+
+	if t.isAlias() {
+		argValue = jen.
+			Id(t.Name).
+			Parens(argValue)
+	}
+
+	return t.createFromOutArgument(argValue)
+}
+
 func (t *Type) isString() bool {
 	return t.Name == "utf8" || t.Name == "filename"
 }
