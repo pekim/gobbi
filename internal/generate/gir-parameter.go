@@ -83,11 +83,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 		goVar = goVar.Dot("native")
 	}
 
-	value := goVar
-	createFromArgument := p.Type.createFromInArgumentFunction()
-	if createFromArgument != nil {
-		value = createFromArgument(goVar)
-	}
+	value := p.Type.createFromInArgument(goVar)
 
 	// inArgs[<index>].Set...(<goVar>)
 	g.

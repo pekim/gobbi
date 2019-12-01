@@ -127,8 +127,8 @@ func (r *Record) supportedAsOutParameter() bool {
 	return true
 }
 
-func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {
-	s.
+func (r *Record) createFromArgument(argValue *jen.Statement) *jen.Statement {
+	return jen.
 		Op("&").
 		Id(r.goName).
 		Values(jen.Dict{
@@ -164,23 +164,24 @@ func (r *Record) generateStructConstructor(f *file) {
 		Params().
 		Params(jen.Op("*").Id(r.goName)).
 		BlockFunc(func(g *jen.Group) {
-			// err := someStruct_Set()
+			// GEN: err := someStruct_Set()
 			g.
 				Id("err").
 				Op(":=").
 				Id(r.structInfoSetFuncGoName).
 				Call()
 
-			// if err != nil {
-			//   return nil
-			// }
+			// GEN:
+			//	if err != nil {
+			//		return nil
+			//	}
 			g.
 				If(jen.Id("err").Op("!=").Nil()).
 				Block(jen.Return().Nil())
 
 			g.Line()
 
-			// structGo := &SomeStruct{native: SomeStruct.Alloc()}
+			// GEN: structGo := &SomeStruct{native: SomeStruct.Alloc()}
 			g.
 				Id("structGo").
 				Op(":=").
@@ -190,10 +191,10 @@ func (r *Record) generateStructConstructor(f *file) {
 						Id(r.structInfoGoName).Dot("Alloc").
 						Call()
 
-					r.createFromArgument(s, struct_)
+					s.Add(r.createFromArgument(struct_))
 				})
 
-			// runtime.SetFinalizer(structGo, finalizeSomeType)
+			// GEN: runtime.SetFinalizer(structGo, finalizeSomeType)
 			g.
 				Qual("runtime", "SetFinalizer").
 				Call(
@@ -201,7 +202,7 @@ func (r *Record) generateStructConstructor(f *file) {
 					jen.Id("finalize"+r.goName),
 				)
 
-			// return structGo
+			// GEN: return structGo
 			g.Return(jen.Id("structGo"))
 		})
 }

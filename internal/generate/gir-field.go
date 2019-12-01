@@ -63,6 +63,7 @@ func (f *Field) generateGetter(fi *file) {
 }
 
 func (f *Field) generateGetterBody(g *jen.Group) {
+	// GEN: argValue := gi.FieldGet(someStruct, recv.native, "field-name")
 	g.
 		Id("argValue").
 		Op(":=").
@@ -73,36 +74,19 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 			jen.Lit(f.Name),
 		)
 
-	typ := f.Type.resolvedType()
-	argValue := jen.
-		Id("argValue").
-		Dot(typ.argumentValueGetFunctionName()).
-		CallFunc(func(g *jen.Group) {
-			if typ.isString() {
-				g.False()
-			}
-		})
-
-	if f.Type.isAlias() {
-		argValue = jen.
-			Id(f.Type.Name).
-			Parens(argValue)
-	}
-
-	createFromArgument := typ.createFromOutArgumentFunction()
-
-	g.
-		Id("value").
-		Op(":=").
-		Do(func(s *jen.Statement) {
-			if createFromArgument != nil {
-				createFromArgument(s, argValue)
-			} else {
-				s.Add(argValue)
-			}
-		})
+	s := g.Id("value").Op(":=")
+	generateValue(f.Type, f.transferOwnership(), s, jen.Id("argValue"))
 
 	g.Return(jen.Id("value"))
+}
+
+func (f *Field) transferOwnership() *bool {
+	if !f.Type.isString() {
+		return nil
+	}
+
+	to := false
+	return &to
 }
 
 func (f *Field) generateSetter(fi *file) {
@@ -144,11 +128,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 		jenValue = jenValue.Dot("native")
 	}
 
-	value := jenValue
-	createFromArgument := f.Type.createFromInArgumentFunction()
-	if createFromArgument != nil {
-		value = createFromArgument(jenValue)
-	}
+	value := f.Type.createFromInArgument(jenValue)
 
 	// var argValue gi.Argument
 	g.

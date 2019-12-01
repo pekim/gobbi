@@ -238,26 +238,24 @@ func (t *Type) argumentValueSetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s", t.Name))
 }
 
-func (t *Type) createFromOutArgumentFunction() func(s *jen.Statement, arg *jen.Statement) {
+func (t *Type) createFromOutArgument(argValue *jen.Statement) *jen.Statement {
 	if t.isRecord() {
 		record, _ := t.namespace.Records.byName(t.Name)
-		return record.createFromArgument
+		return record.createFromArgument(argValue)
 	}
 
 	if t.isQualifiedName() {
 		if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			return func(s *jen.Statement, arg *jen.Statement) {
-				s.
-					Qual(t.foreignNamespace.goFullPackageName, t.foreignName).
-					Parens(arg)
-			}
+			return jen.
+				Qual(t.foreignNamespace.goFullPackageName, t.foreignName).
+				Parens(argValue)
 		}
 	}
 
-	return nil
+	return argValue
 }
 
-func (t *Type) createFromInArgumentFunction() func(arg *jen.Statement) *jen.Statement {
+func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
 	//if t.isRecord() {
 	//	record, _ := t.namespace.Records.byName(t.Name)
 	//	return record.createFromArgument
@@ -265,15 +263,13 @@ func (t *Type) createFromInArgumentFunction() func(arg *jen.Statement) *jen.Stat
 
 	if t.isQualifiedName() {
 		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			return func(arg *jen.Statement) *jen.Statement {
-				return jen.
-					Add(jenGoTypes[alias.Type.Name]).
-					Parens(arg)
-			}
+			return jen.
+				Add(jenGoTypes[alias.Type.Name]).
+				Parens(arg)
 		}
 	}
 
-	return nil
+	return arg
 }
 
 func (t *Type) isString() bool {

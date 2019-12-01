@@ -12,33 +12,39 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
-	typ := a.Type.resolvedType()
+func generateValue(typ *Type, transferOwnership *bool, s *jen.Statement, argVar *jen.Statement) {
+	resolvedType := typ.resolvedType()
+
+	var to *jen.Statement
+	if transferOwnership != nil {
+		to = jen.Lit(*transferOwnership)
+	}
 
 	argValue := argVar.
-		Dot(typ.argumentValueGetFunctionName()).
-		CallFunc(a.transferOwnershipJen)
+		Dot(resolvedType.argumentValueGetFunctionName()).
+		Call(to)
 
-	if a.Type.isAlias() {
+	if typ.isAlias() {
 		argValue = jen.
-			Id(a.Type.Name).
+			Id(typ.Name).
 			Parens(argValue)
 	}
 
-	createFromArgument := typ.createFromOutArgumentFunction()
-	if createFromArgument != nil {
-		createFromArgument(s, argValue)
-	} else {
-		s.Add(argValue)
-	}
+	s.Add(typ.createFromOutArgument(argValue))
 }
 
-func (a *Argument) transferOwnershipJen(g *jen.Group) {
+func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
+	generateValue(a.Type, a.transferOwnership(), s, argVar)
+
+}
+
+func (a *Argument) transferOwnership() *bool {
 	if !a.Type.isString() {
-		return
+		return nil
 	}
 
-	g.Lit(a.TransferOwnership == "full")
+	to := a.TransferOwnership == "full"
+	return &to
 }
 
 func (a Argument) supportedAsOutParameter() bool {
