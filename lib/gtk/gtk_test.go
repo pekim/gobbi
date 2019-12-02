@@ -17,3 +17,12 @@ func TestFunctionCall(t *testing.T) {
 	v := GetMajorVersion()
 	assert.Equal(t, uint32(3), v)
 }
+
+//func TestClass(t *testing.T) {
+//	Init()
+//	label := LabelNew("test")
+//	label.SetXalign(0.3)
+//	assert.Equal(t, 0.35, label.GetXalign())
+//	//assert.Equal(t, "text", label.GetText())
+//
+//}
