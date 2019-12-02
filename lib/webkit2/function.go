@@ -348,6 +348,58 @@ func UserContentFilterErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : parameter 'request' of type 'UserMediaPermissionRequest' not supported
+var userMediaPermissionIsForAudioDeviceFunction *gi.Function
+var userMediaPermissionIsForAudioDeviceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_video_device' : parameter 'request' of type 'UserMediaPermissionRequest' not supported
+func userMediaPermissionIsForAudioDeviceFunction_Set() error {
+	var err error
+	userMediaPermissionIsForAudioDeviceFunction_Once.Do(func() {
+		userMediaPermissionIsForAudioDeviceFunction, err = gi.FunctionInvokerNew("WebKit2", "user_media_permission_is_for_audio_device")
+	})
+	return err
+}
+
+// UserMediaPermissionIsForAudioDevice is a representation of the C type webkit_user_media_permission_is_for_audio_device.
+func UserMediaPermissionIsForAudioDevice(request *UserMediaPermissionRequest) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(request.native)
+
+	var ret gi.Argument
+
+	err := userMediaPermissionIsForAudioDeviceFunction_Set()
+	if err == nil {
+		ret = userMediaPermissionIsForAudioDeviceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var userMediaPermissionIsForVideoDeviceFunction *gi.Function
+var userMediaPermissionIsForVideoDeviceFunction_Once sync.Once
+
+func userMediaPermissionIsForVideoDeviceFunction_Set() error {
+	var err error
+	userMediaPermissionIsForVideoDeviceFunction_Once.Do(func() {
+		userMediaPermissionIsForVideoDeviceFunction, err = gi.FunctionInvokerNew("WebKit2", "user_media_permission_is_for_video_device")
+	})
+	return err
+}
+
+// UserMediaPermissionIsForVideoDevice is a representation of the C type webkit_user_media_permission_is_for_video_device.
+func UserMediaPermissionIsForVideoDevice(request *UserMediaPermissionRequest) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(request.native)
+
+	var ret gi.Argument
+
+	err := userMediaPermissionIsForVideoDeviceFunction_Set()
+	if err == nil {
+		ret = userMediaPermissionIsForVideoDeviceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}

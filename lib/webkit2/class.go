@@ -499,15 +499,105 @@ func (recv *BackForwardList) SetFieldPriv(value *BackForwardListPrivate) {
 	gi.FieldSet(backForwardListStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_back_item' : return type 'BackForwardListItem' not supported
+var backForwardListGetBackItemFunction *gi.Function
+var backForwardListGetBackItemFunction_Once sync.Once
+
+func backForwardListGetBackItemFunction_Set() error {
+	var err error
+	backForwardListGetBackItemFunction_Once.Do(func() {
+		err = backForwardListStruct_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetBackItemFunction, err = backForwardListStruct.InvokerNew("get_back_item")
+	})
+	return err
+}
+
+// GetBackItem is a representation of the C type webkit_back_forward_list_get_back_item.
+func (recv *BackForwardList) GetBackItem() *BackForwardListItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := backForwardListGetBackItemFunction_Set()
+	if err == nil {
+		ret = backForwardListGetBackItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &BackForwardListItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_back_forward_list_get_back_list' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'webkit_back_forward_list_get_back_list_with_limit' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_current_item' : return type 'BackForwardListItem' not supported
+var backForwardListGetCurrentItemFunction *gi.Function
+var backForwardListGetCurrentItemFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_forward_item' : return type 'BackForwardListItem' not supported
+func backForwardListGetCurrentItemFunction_Set() error {
+	var err error
+	backForwardListGetCurrentItemFunction_Once.Do(func() {
+		err = backForwardListStruct_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetCurrentItemFunction, err = backForwardListStruct.InvokerNew("get_current_item")
+	})
+	return err
+}
+
+// GetCurrentItem is a representation of the C type webkit_back_forward_list_get_current_item.
+func (recv *BackForwardList) GetCurrentItem() *BackForwardListItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := backForwardListGetCurrentItemFunction_Set()
+	if err == nil {
+		ret = backForwardListGetCurrentItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &BackForwardListItem{native: ret.Pointer()}
+
+	return retGo
+}
+
+var backForwardListGetForwardItemFunction *gi.Function
+var backForwardListGetForwardItemFunction_Once sync.Once
+
+func backForwardListGetForwardItemFunction_Set() error {
+	var err error
+	backForwardListGetForwardItemFunction_Once.Do(func() {
+		err = backForwardListStruct_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetForwardItemFunction, err = backForwardListStruct.InvokerNew("get_forward_item")
+	})
+	return err
+}
+
+// GetForwardItem is a representation of the C type webkit_back_forward_list_get_forward_item.
+func (recv *BackForwardList) GetForwardItem() *BackForwardListItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := backForwardListGetForwardItemFunction_Set()
+	if err == nil {
+		ret = backForwardListGetForwardItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &BackForwardListItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_back_forward_list_get_forward_list' : return type 'GLib.List' not supported
 
@@ -545,7 +635,38 @@ func (recv *BackForwardList) GetLength() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_nth_item' : return type 'BackForwardListItem' not supported
+var backForwardListGetNthItemFunction *gi.Function
+var backForwardListGetNthItemFunction_Once sync.Once
+
+func backForwardListGetNthItemFunction_Set() error {
+	var err error
+	backForwardListGetNthItemFunction_Once.Do(func() {
+		err = backForwardListStruct_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetNthItemFunction, err = backForwardListStruct.InvokerNew("get_nth_item")
+	})
+	return err
+}
+
+// GetNthItem is a representation of the C type webkit_back_forward_list_get_nth_item.
+func (recv *BackForwardList) GetNthItem(index int32) *BackForwardListItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(index)
+
+	var ret gi.Argument
+
+	err := backForwardListGetNthItemFunction_Set()
+	if err == nil {
+		ret = backForwardListGetNthItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &BackForwardListItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // BackForwardListStruct creates an uninitialised BackForwardList.
 func BackForwardListStruct() *BackForwardList {
@@ -835,15 +956,131 @@ func (recv *ContextMenu) SetFieldPriv(value *ContextMenuPrivate) {
 	gi.FieldSet(contextMenuStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_new' : return type 'ContextMenu' not supported
+var contextMenuNewFunction *gi.Function
+var contextMenuNewFunction_Once sync.Once
+
+func contextMenuNewFunction_Set() error {
+	var err error
+	contextMenuNewFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuNewFunction, err = contextMenuStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ContextMenuNew is a representation of the C type webkit_context_menu_new.
+func ContextMenuNew() *ContextMenu {
+
+	var ret gi.Argument
+
+	err := contextMenuNewFunction_Set()
+	if err == nil {
+		ret = contextMenuNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &ContextMenu{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_context_menu_new_with_items' : parameter 'items' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_append' : parameter 'item' of type 'ContextMenuItem' not supported
+var contextMenuAppendFunction *gi.Function
+var contextMenuAppendFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_context_menu_first' : return type 'ContextMenuItem' not supported
+func contextMenuAppendFunction_Set() error {
+	var err error
+	contextMenuAppendFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuAppendFunction, err = contextMenuStruct.InvokerNew("append")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_context_menu_get_item_at_position' : return type 'ContextMenuItem' not supported
+// Append is a representation of the C type webkit_context_menu_append.
+func (recv *ContextMenu) Append(item *ContextMenuItem) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
+
+	err := contextMenuAppendFunction_Set()
+	if err == nil {
+		contextMenuAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var contextMenuFirstFunction *gi.Function
+var contextMenuFirstFunction_Once sync.Once
+
+func contextMenuFirstFunction_Set() error {
+	var err error
+	contextMenuFirstFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuFirstFunction, err = contextMenuStruct.InvokerNew("first")
+	})
+	return err
+}
+
+// First is a representation of the C type webkit_context_menu_first.
+func (recv *ContextMenu) First() *ContextMenuItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextMenuFirstFunction_Set()
+	if err == nil {
+		ret = contextMenuFirstFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextMenuGetItemAtPositionFunction *gi.Function
+var contextMenuGetItemAtPositionFunction_Once sync.Once
+
+func contextMenuGetItemAtPositionFunction_Set() error {
+	var err error
+	contextMenuGetItemAtPositionFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuGetItemAtPositionFunction, err = contextMenuStruct.InvokerNew("get_item_at_position")
+	})
+	return err
+}
+
+// GetItemAtPosition is a representation of the C type webkit_context_menu_get_item_at_position.
+func (recv *ContextMenu) GetItemAtPosition(position uint32) *ContextMenuItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(position)
+
+	var ret gi.Argument
+
+	err := contextMenuGetItemAtPositionFunction_Set()
+	if err == nil {
+		ret = contextMenuGetItemAtPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_context_menu_get_items' : return type 'GLib.List' not supported
 
@@ -881,15 +1118,155 @@ func (recv *ContextMenu) GetNItems() uint32 {
 
 // UNSUPPORTED : C value 'webkit_context_menu_get_user_data' : return type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_insert' : parameter 'item' of type 'ContextMenuItem' not supported
+var contextMenuInsertFunction *gi.Function
+var contextMenuInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_context_menu_last' : return type 'ContextMenuItem' not supported
+func contextMenuInsertFunction_Set() error {
+	var err error
+	contextMenuInsertFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuInsertFunction, err = contextMenuStruct.InvokerNew("insert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_context_menu_move_item' : parameter 'item' of type 'ContextMenuItem' not supported
+// Insert is a representation of the C type webkit_context_menu_insert.
+func (recv *ContextMenu) Insert(item *ContextMenuItem, position int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
+	inArgs[2].SetInt32(position)
 
-// UNSUPPORTED : C value 'webkit_context_menu_prepend' : parameter 'item' of type 'ContextMenuItem' not supported
+	err := contextMenuInsertFunction_Set()
+	if err == nil {
+		contextMenuInsertFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'webkit_context_menu_remove' : parameter 'item' of type 'ContextMenuItem' not supported
+	return
+}
+
+var contextMenuLastFunction *gi.Function
+var contextMenuLastFunction_Once sync.Once
+
+func contextMenuLastFunction_Set() error {
+	var err error
+	contextMenuLastFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuLastFunction, err = contextMenuStruct.InvokerNew("last")
+	})
+	return err
+}
+
+// Last is a representation of the C type webkit_context_menu_last.
+func (recv *ContextMenu) Last() *ContextMenuItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextMenuLastFunction_Set()
+	if err == nil {
+		ret = contextMenuLastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextMenuMoveItemFunction *gi.Function
+var contextMenuMoveItemFunction_Once sync.Once
+
+func contextMenuMoveItemFunction_Set() error {
+	var err error
+	contextMenuMoveItemFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuMoveItemFunction, err = contextMenuStruct.InvokerNew("move_item")
+	})
+	return err
+}
+
+// MoveItem is a representation of the C type webkit_context_menu_move_item.
+func (recv *ContextMenu) MoveItem(item *ContextMenuItem, position int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
+	inArgs[2].SetInt32(position)
+
+	err := contextMenuMoveItemFunction_Set()
+	if err == nil {
+		contextMenuMoveItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var contextMenuPrependFunction *gi.Function
+var contextMenuPrependFunction_Once sync.Once
+
+func contextMenuPrependFunction_Set() error {
+	var err error
+	contextMenuPrependFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuPrependFunction, err = contextMenuStruct.InvokerNew("prepend")
+	})
+	return err
+}
+
+// Prepend is a representation of the C type webkit_context_menu_prepend.
+func (recv *ContextMenu) Prepend(item *ContextMenuItem) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
+
+	err := contextMenuPrependFunction_Set()
+	if err == nil {
+		contextMenuPrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var contextMenuRemoveFunction *gi.Function
+var contextMenuRemoveFunction_Once sync.Once
+
+func contextMenuRemoveFunction_Set() error {
+	var err error
+	contextMenuRemoveFunction_Once.Do(func() {
+		err = contextMenuStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuRemoveFunction, err = contextMenuStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type webkit_context_menu_remove.
+func (recv *ContextMenu) Remove(item *ContextMenuItem) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
+
+	err := contextMenuRemoveFunction_Set()
+	if err == nil {
+		contextMenuRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contextMenuRemoveAllFunction *gi.Function
 var contextMenuRemoveAllFunction_Once sync.Once
@@ -962,9 +1339,68 @@ func (recv *ContextMenuItem) SetFieldPriv(value *ContextMenuItemPrivate) {
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_new_from_stock_action_with_label' : parameter 'action' of type 'ContextMenuAction' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new_separator' : return type 'ContextMenuItem' not supported
+var contextMenuItemNewSeparatorFunction *gi.Function
+var contextMenuItemNewSeparatorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new_with_submenu' : parameter 'submenu' of type 'ContextMenu' not supported
+func contextMenuItemNewSeparatorFunction_Set() error {
+	var err error
+	contextMenuItemNewSeparatorFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewSeparatorFunction, err = contextMenuItemStruct.InvokerNew("new_separator")
+	})
+	return err
+}
+
+// ContextMenuItemNewSeparator is a representation of the C type webkit_context_menu_item_new_separator.
+func ContextMenuItemNewSeparator() *ContextMenuItem {
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewSeparatorFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewSeparatorFunction.Invoke(nil, nil)
+	}
+
+	retGo := &ContextMenuItem{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextMenuItemNewWithSubmenuFunction *gi.Function
+var contextMenuItemNewWithSubmenuFunction_Once sync.Once
+
+func contextMenuItemNewWithSubmenuFunction_Set() error {
+	var err error
+	contextMenuItemNewWithSubmenuFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewWithSubmenuFunction, err = contextMenuItemStruct.InvokerNew("new_with_submenu")
+	})
+	return err
+}
+
+// ContextMenuItemNewWithSubmenu is a representation of the C type webkit_context_menu_item_new_with_submenu.
+func ContextMenuItemNewWithSubmenu(label string, submenu *ContextMenu) *ContextMenuItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(label)
+	inArgs[1].SetPointer(submenu.native)
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewWithSubmenuFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewWithSubmenuFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_get_action' : return type 'Gtk.Action' not supported
 
@@ -972,7 +1408,37 @@ func (recv *ContextMenuItem) SetFieldPriv(value *ContextMenuItemPrivate) {
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_get_stock_action' : return type 'ContextMenuAction' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_get_submenu' : return type 'ContextMenu' not supported
+var contextMenuItemGetSubmenuFunction *gi.Function
+var contextMenuItemGetSubmenuFunction_Once sync.Once
+
+func contextMenuItemGetSubmenuFunction_Set() error {
+	var err error
+	contextMenuItemGetSubmenuFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemGetSubmenuFunction, err = contextMenuItemStruct.InvokerNew("get_submenu")
+	})
+	return err
+}
+
+// GetSubmenu is a representation of the C type webkit_context_menu_item_get_submenu.
+func (recv *ContextMenuItem) GetSubmenu() *ContextMenu {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextMenuItemGetSubmenuFunction_Set()
+	if err == nil {
+		ret = contextMenuItemGetSubmenuFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenu{native: ret.Pointer()}
+
+	return retGo
+}
 
 var contextMenuItemIsSeparatorFunction *gi.Function
 var contextMenuItemIsSeparatorFunction_Once sync.Once
@@ -1006,7 +1472,34 @@ func (recv *ContextMenuItem) IsSeparator() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_set_submenu' : parameter 'submenu' of type 'ContextMenu' not supported
+var contextMenuItemSetSubmenuFunction *gi.Function
+var contextMenuItemSetSubmenuFunction_Once sync.Once
+
+func contextMenuItemSetSubmenuFunction_Set() error {
+	var err error
+	contextMenuItemSetSubmenuFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemSetSubmenuFunction, err = contextMenuItemStruct.InvokerNew("set_submenu")
+	})
+	return err
+}
+
+// SetSubmenu is a representation of the C type webkit_context_menu_item_set_submenu.
+func (recv *ContextMenuItem) SetSubmenu(submenu *ContextMenu) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(submenu.native)
+
+	err := contextMenuItemSetSubmenuFunction_Set()
+	if err == nil {
+		contextMenuItemSetSubmenuFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cookieManagerStruct *gi.Struct
 var cookieManagerStruct_Once sync.Once
@@ -1392,11 +1885,101 @@ func (recv *Download) GetReceivedDataLength() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_download_get_request' : return type 'URIRequest' not supported
+var downloadGetRequestFunction *gi.Function
+var downloadGetRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_download_get_response' : return type 'URIResponse' not supported
+func downloadGetRequestFunction_Set() error {
+	var err error
+	downloadGetRequestFunction_Once.Do(func() {
+		err = downloadStruct_Set()
+		if err != nil {
+			return
+		}
+		downloadGetRequestFunction, err = downloadStruct.InvokerNew("get_request")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_download_get_web_view' : return type 'WebView' not supported
+// GetRequest is a representation of the C type webkit_download_get_request.
+func (recv *Download) GetRequest() *URIRequest {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := downloadGetRequestFunction_Set()
+	if err == nil {
+		ret = downloadGetRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIRequest{native: ret.Pointer()}
+
+	return retGo
+}
+
+var downloadGetResponseFunction *gi.Function
+var downloadGetResponseFunction_Once sync.Once
+
+func downloadGetResponseFunction_Set() error {
+	var err error
+	downloadGetResponseFunction_Once.Do(func() {
+		err = downloadStruct_Set()
+		if err != nil {
+			return
+		}
+		downloadGetResponseFunction, err = downloadStruct.InvokerNew("get_response")
+	})
+	return err
+}
+
+// GetResponse is a representation of the C type webkit_download_get_response.
+func (recv *Download) GetResponse() *URIResponse {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := downloadGetResponseFunction_Set()
+	if err == nil {
+		ret = downloadGetResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIResponse{native: ret.Pointer()}
+
+	return retGo
+}
+
+var downloadGetWebViewFunction *gi.Function
+var downloadGetWebViewFunction_Once sync.Once
+
+func downloadGetWebViewFunction_Set() error {
+	var err error
+	downloadGetWebViewFunction_Once.Do(func() {
+		err = downloadStruct_Set()
+		if err != nil {
+			return
+		}
+		downloadGetWebViewFunction, err = downloadStruct.InvokerNew("get_web_view")
+	})
+	return err
+}
+
+// GetWebView is a representation of the C type webkit_download_get_web_view.
+func (recv *Download) GetWebView() *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := downloadGetWebViewFunction_Set()
+	if err == nil {
+		ret = downloadGetWebViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
 
 var downloadSetAllowOverwriteFunction *gi.Function
 var downloadSetAllowOverwriteFunction_Once sync.Once
@@ -2124,7 +2707,37 @@ func (recv *FindController) GetSearchText() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_find_controller_get_web_view' : return type 'WebView' not supported
+var findControllerGetWebViewFunction *gi.Function
+var findControllerGetWebViewFunction_Once sync.Once
+
+func findControllerGetWebViewFunction_Set() error {
+	var err error
+	findControllerGetWebViewFunction_Once.Do(func() {
+		err = findControllerStruct_Set()
+		if err != nil {
+			return
+		}
+		findControllerGetWebViewFunction, err = findControllerStruct.InvokerNew("get_web_view")
+	})
+	return err
+}
+
+// GetWebView is a representation of the C type webkit_find_controller_get_web_view.
+func (recv *FindController) GetWebView() *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := findControllerGetWebViewFunction_Set()
+	if err == nil {
+		ret = findControllerGetWebViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
 
 var findControllerSearchFunction *gi.Function
 var findControllerSearchFunction_Once sync.Once
@@ -3007,9 +3620,19 @@ type NavigationPolicyDecision struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'PolicyDecision'
+// FieldParent returns the C field 'parent'.
+func (recv *NavigationPolicyDecision) FieldParent() *PolicyDecision {
+	argValue := gi.FieldGet(navigationPolicyDecisionStruct, recv.native, "parent")
+	value := &PolicyDecision{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'PolicyDecision'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *NavigationPolicyDecision) SetFieldParent(value *PolicyDecision) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(navigationPolicyDecisionStruct, recv.native, "parent", argValue)
+}
 
 var navigationPolicyDecisionGetFrameNameFunction *gi.Function
 var navigationPolicyDecisionGetFrameNameFunction_Once sync.Once
@@ -3141,7 +3764,37 @@ func (recv *NavigationPolicyDecision) GetNavigationAction() *NavigationAction {
 
 // UNSUPPORTED : C value 'webkit_navigation_policy_decision_get_navigation_type' : return type 'NavigationType' not supported
 
-// UNSUPPORTED : C value 'webkit_navigation_policy_decision_get_request' : return type 'URIRequest' not supported
+var navigationPolicyDecisionGetRequestFunction *gi.Function
+var navigationPolicyDecisionGetRequestFunction_Once sync.Once
+
+func navigationPolicyDecisionGetRequestFunction_Set() error {
+	var err error
+	navigationPolicyDecisionGetRequestFunction_Once.Do(func() {
+		err = navigationPolicyDecisionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationPolicyDecisionGetRequestFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_request")
+	})
+	return err
+}
+
+// GetRequest is a representation of the C type webkit_navigation_policy_decision_get_request.
+func (recv *NavigationPolicyDecision) GetRequest() *URIRequest {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := navigationPolicyDecisionGetRequestFunction_Set()
+	if err == nil {
+		ret = navigationPolicyDecisionGetRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIRequest{native: ret.Pointer()}
+
+	return retGo
+}
 
 // NavigationPolicyDecisionStruct creates an uninitialised NavigationPolicyDecision.
 func NavigationPolicyDecisionStruct() *NavigationPolicyDecision {
@@ -3989,7 +4642,37 @@ func (recv *PrintOperation) SetFieldPriv(value *PrintOperationPrivate) {
 	gi.FieldSet(printOperationStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_print_operation_new' : parameter 'web_view' of type 'WebView' not supported
+var printOperationNewFunction *gi.Function
+var printOperationNewFunction_Once sync.Once
+
+func printOperationNewFunction_Set() error {
+	var err error
+	printOperationNewFunction_Once.Do(func() {
+		err = printOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		printOperationNewFunction, err = printOperationStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PrintOperationNew is a representation of the C type webkit_print_operation_new.
+func PrintOperationNew(webView *WebView) *PrintOperation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(webView.native)
+
+	var ret gi.Argument
+
+	err := printOperationNewFunction_Set()
+	if err == nil {
+		ret = printOperationNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PrintOperation{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_print_operation_get_page_setup' : return type 'Gtk.PageSetup' not supported
 
@@ -4044,13 +4727,83 @@ type ResponsePolicyDecision struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'PolicyDecision'
+// FieldParent returns the C field 'parent'.
+func (recv *ResponsePolicyDecision) FieldParent() *PolicyDecision {
+	argValue := gi.FieldGet(responsePolicyDecisionStruct, recv.native, "parent")
+	value := &PolicyDecision{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'PolicyDecision'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ResponsePolicyDecision) SetFieldParent(value *PolicyDecision) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(responsePolicyDecisionStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'webkit_response_policy_decision_get_request' : return type 'URIRequest' not supported
+var responsePolicyDecisionGetRequestFunction *gi.Function
+var responsePolicyDecisionGetRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_response_policy_decision_get_response' : return type 'URIResponse' not supported
+func responsePolicyDecisionGetRequestFunction_Set() error {
+	var err error
+	responsePolicyDecisionGetRequestFunction_Once.Do(func() {
+		err = responsePolicyDecisionStruct_Set()
+		if err != nil {
+			return
+		}
+		responsePolicyDecisionGetRequestFunction, err = responsePolicyDecisionStruct.InvokerNew("get_request")
+	})
+	return err
+}
+
+// GetRequest is a representation of the C type webkit_response_policy_decision_get_request.
+func (recv *ResponsePolicyDecision) GetRequest() *URIRequest {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := responsePolicyDecisionGetRequestFunction_Set()
+	if err == nil {
+		ret = responsePolicyDecisionGetRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIRequest{native: ret.Pointer()}
+
+	return retGo
+}
+
+var responsePolicyDecisionGetResponseFunction *gi.Function
+var responsePolicyDecisionGetResponseFunction_Once sync.Once
+
+func responsePolicyDecisionGetResponseFunction_Set() error {
+	var err error
+	responsePolicyDecisionGetResponseFunction_Once.Do(func() {
+		err = responsePolicyDecisionStruct_Set()
+		if err != nil {
+			return
+		}
+		responsePolicyDecisionGetResponseFunction, err = responsePolicyDecisionStruct.InvokerNew("get_response")
+	})
+	return err
+}
+
+// GetResponse is a representation of the C type webkit_response_policy_decision_get_response.
+func (recv *ResponsePolicyDecision) GetResponse() *URIResponse {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := responsePolicyDecisionGetResponseFunction_Set()
+	if err == nil {
+		ret = responsePolicyDecisionGetResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIResponse{native: ret.Pointer()}
+
+	return retGo
+}
 
 var responsePolicyDecisionIsMimeTypeSupportedFunction *gi.Function
 var responsePolicyDecisionIsMimeTypeSupportedFunction_Once sync.Once
@@ -4552,7 +5305,35 @@ func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
 	gi.FieldSet(settingsStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_settings_new' : return type 'Settings' not supported
+var settingsNewFunction *gi.Function
+var settingsNewFunction_Once sync.Once
+
+func settingsNewFunction_Set() error {
+	var err error
+	settingsNewFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsNewFunction, err = settingsStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SettingsNew is a representation of the C type webkit_settings_new.
+func SettingsNew() *Settings {
+
+	var ret gi.Argument
+
+	err := settingsNewFunction_Set()
+	if err == nil {
+		ret = settingsNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Settings{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_settings_new_with_settings' : parameter '...' of type 'nil' not supported
 
@@ -8025,7 +8806,37 @@ type URIRequest struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'webkit_uri_request_new' : return type 'URIRequest' not supported
+var uRIRequestNewFunction *gi.Function
+var uRIRequestNewFunction_Once sync.Once
+
+func uRIRequestNewFunction_Set() error {
+	var err error
+	uRIRequestNewFunction_Once.Do(func() {
+		err = uRIRequestStruct_Set()
+		if err != nil {
+			return
+		}
+		uRIRequestNewFunction, err = uRIRequestStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// URIRequestNew is a representation of the C type webkit_uri_request_new.
+func URIRequestNew(uri string) *URIRequest {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	var ret gi.Argument
+
+	err := uRIRequestNewFunction_Set()
+	if err == nil {
+		ret = uRIRequestNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIRequest{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_uri_request_get_http_headers' : return type 'Soup.MessageHeaders' not supported
 
@@ -8451,7 +9262,37 @@ func (recv *URISchemeRequest) GetUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_uri_scheme_request_get_web_view' : return type 'WebView' not supported
+var uRISchemeRequestGetWebViewFunction *gi.Function
+var uRISchemeRequestGetWebViewFunction_Once sync.Once
+
+func uRISchemeRequestGetWebViewFunction_Set() error {
+	var err error
+	uRISchemeRequestGetWebViewFunction_Once.Do(func() {
+		err = uRISchemeRequestStruct_Set()
+		if err != nil {
+			return
+		}
+		uRISchemeRequestGetWebViewFunction, err = uRISchemeRequestStruct.InvokerNew("get_web_view")
+	})
+	return err
+}
+
+// GetWebView is a representation of the C type webkit_uri_scheme_request_get_web_view.
+func (recv *URISchemeRequest) GetWebView() *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := uRISchemeRequestGetWebViewFunction_Set()
+	if err == nil {
+		ret = uRISchemeRequestGetWebViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
 
 // URISchemeRequestStruct creates an uninitialised URISchemeRequest.
 func URISchemeRequestStruct() *URISchemeRequest {
@@ -8487,7 +9328,37 @@ type UserContentFilterStore struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_new' : return type 'UserContentFilterStore' not supported
+var userContentFilterStoreNewFunction *gi.Function
+var userContentFilterStoreNewFunction_Once sync.Once
+
+func userContentFilterStoreNewFunction_Set() error {
+	var err error
+	userContentFilterStoreNewFunction_Once.Do(func() {
+		err = userContentFilterStoreStruct_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreNewFunction, err = userContentFilterStoreStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// UserContentFilterStoreNew is a representation of the C type webkit_user_content_filter_store_new.
+func UserContentFilterStoreNew(storagePath string) *UserContentFilterStore {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(storagePath)
+
+	var ret gi.Argument
+
+	err := userContentFilterStoreNewFunction_Set()
+	if err == nil {
+		ret = userContentFilterStoreNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &UserContentFilterStore{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -8560,7 +9431,35 @@ type UserContentManager struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'webkit_user_content_manager_new' : return type 'UserContentManager' not supported
+var userContentManagerNewFunction *gi.Function
+var userContentManagerNewFunction_Once sync.Once
+
+func userContentManagerNewFunction_Set() error {
+	var err error
+	userContentManagerNewFunction_Once.Do(func() {
+		err = userContentManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		userContentManagerNewFunction, err = userContentManagerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// UserContentManagerNew is a representation of the C type webkit_user_content_manager_new.
+func UserContentManagerNew() *UserContentManager {
+
+	var ret gi.Argument
+
+	err := userContentManagerNewFunction_Set()
+	if err == nil {
+		ret = userContentManagerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &UserContentManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 var userContentManagerAddFilterFunction *gi.Function
 var userContentManagerAddFilterFunction_Once sync.Once
@@ -8970,11 +9869,97 @@ type WebContext struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'webkit_web_context_new' : return type 'WebContext' not supported
+var webContextNewFunction *gi.Function
+var webContextNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_context_new_ephemeral' : return type 'WebContext' not supported
+func webContextNewFunction_Set() error {
+	var err error
+	webContextNewFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextNewFunction, err = webContextStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_web_context_new_with_website_data_manager' : parameter 'manager' of type 'WebsiteDataManager' not supported
+// WebContextNew is a representation of the C type webkit_web_context_new.
+func WebContextNew() *WebContext {
+
+	var ret gi.Argument
+
+	err := webContextNewFunction_Set()
+	if err == nil {
+		ret = webContextNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &WebContext{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webContextNewEphemeralFunction *gi.Function
+var webContextNewEphemeralFunction_Once sync.Once
+
+func webContextNewEphemeralFunction_Set() error {
+	var err error
+	webContextNewEphemeralFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextNewEphemeralFunction, err = webContextStruct.InvokerNew("new_ephemeral")
+	})
+	return err
+}
+
+// WebContextNewEphemeral is a representation of the C type webkit_web_context_new_ephemeral.
+func WebContextNewEphemeral() *WebContext {
+
+	var ret gi.Argument
+
+	err := webContextNewEphemeralFunction_Set()
+	if err == nil {
+		ret = webContextNewEphemeralFunction.Invoke(nil, nil)
+	}
+
+	retGo := &WebContext{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webContextNewWithWebsiteDataManagerFunction *gi.Function
+var webContextNewWithWebsiteDataManagerFunction_Once sync.Once
+
+func webContextNewWithWebsiteDataManagerFunction_Set() error {
+	var err error
+	webContextNewWithWebsiteDataManagerFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextNewWithWebsiteDataManagerFunction, err = webContextStruct.InvokerNew("new_with_website_data_manager")
+	})
+	return err
+}
+
+// WebContextNewWithWebsiteDataManager is a representation of the C type webkit_web_context_new_with_website_data_manager.
+func WebContextNewWithWebsiteDataManager(manager *WebsiteDataManager) *WebContext {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(manager.native)
+
+	var ret gi.Argument
+
+	err := webContextNewWithWebsiteDataManagerFunction_Set()
+	if err == nil {
+		ret = webContextNewWithWebsiteDataManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebContext{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webContextAddPathToSandboxFunction *gi.Function
 var webContextAddPathToSandboxFunction_Once sync.Once
@@ -9036,13 +10021,104 @@ func (recv *WebContext) ClearCache() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_download_uri' : return type 'Download' not supported
+var webContextDownloadUriFunction *gi.Function
+var webContextDownloadUriFunction_Once sync.Once
+
+func webContextDownloadUriFunction_Set() error {
+	var err error
+	webContextDownloadUriFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextDownloadUriFunction, err = webContextStruct.InvokerNew("download_uri")
+	})
+	return err
+}
+
+// DownloadUri is a representation of the C type webkit_web_context_download_uri.
+func (recv *WebContext) DownloadUri(uri string) *Download {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var ret gi.Argument
+
+	err := webContextDownloadUriFunction_Set()
+	if err == nil {
+		ret = webContextDownloadUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Download{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_context_get_cache_model' : return type 'CacheModel' not supported
 
-// UNSUPPORTED : C value 'webkit_web_context_get_cookie_manager' : return type 'CookieManager' not supported
+var webContextGetCookieManagerFunction *gi.Function
+var webContextGetCookieManagerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_context_get_favicon_database' : return type 'FaviconDatabase' not supported
+func webContextGetCookieManagerFunction_Set() error {
+	var err error
+	webContextGetCookieManagerFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetCookieManagerFunction, err = webContextStruct.InvokerNew("get_cookie_manager")
+	})
+	return err
+}
+
+// GetCookieManager is a representation of the C type webkit_web_context_get_cookie_manager.
+func (recv *WebContext) GetCookieManager() *CookieManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webContextGetCookieManagerFunction_Set()
+	if err == nil {
+		ret = webContextGetCookieManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CookieManager{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webContextGetFaviconDatabaseFunction *gi.Function
+var webContextGetFaviconDatabaseFunction_Once sync.Once
+
+func webContextGetFaviconDatabaseFunction_Set() error {
+	var err error
+	webContextGetFaviconDatabaseFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetFaviconDatabaseFunction, err = webContextStruct.InvokerNew("get_favicon_database")
+	})
+	return err
+}
+
+// GetFaviconDatabase is a representation of the C type webkit_web_context_get_favicon_database.
+func (recv *WebContext) GetFaviconDatabase() *FaviconDatabase {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webContextGetFaviconDatabaseFunction_Set()
+	if err == nil {
+		ret = webContextGetFaviconDatabaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FaviconDatabase{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webContextGetFaviconDatabaseDirectoryFunction *gi.Function
 var webContextGetFaviconDatabaseDirectoryFunction_Once sync.Once
@@ -9076,7 +10152,37 @@ func (recv *WebContext) GetFaviconDatabaseDirectory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_geolocation_manager' : return type 'GeolocationManager' not supported
+var webContextGetGeolocationManagerFunction *gi.Function
+var webContextGetGeolocationManagerFunction_Once sync.Once
+
+func webContextGetGeolocationManagerFunction_Set() error {
+	var err error
+	webContextGetGeolocationManagerFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetGeolocationManagerFunction, err = webContextStruct.InvokerNew("get_geolocation_manager")
+	})
+	return err
+}
+
+// GetGeolocationManager is a representation of the C type webkit_web_context_get_geolocation_manager.
+func (recv *WebContext) GetGeolocationManager() *GeolocationManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webContextGetGeolocationManagerFunction_Set()
+	if err == nil {
+		ret = webContextGetGeolocationManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &GeolocationManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_context_get_plugins' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -9116,7 +10222,37 @@ func (recv *WebContext) GetSandboxEnabled() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_security_manager' : return type 'SecurityManager' not supported
+var webContextGetSecurityManagerFunction *gi.Function
+var webContextGetSecurityManagerFunction_Once sync.Once
+
+func webContextGetSecurityManagerFunction_Set() error {
+	var err error
+	webContextGetSecurityManagerFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetSecurityManagerFunction, err = webContextStruct.InvokerNew("get_security_manager")
+	})
+	return err
+}
+
+// GetSecurityManager is a representation of the C type webkit_web_context_get_security_manager.
+func (recv *WebContext) GetSecurityManager() *SecurityManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webContextGetSecurityManagerFunction_Set()
+	if err == nil {
+		ret = webContextGetSecurityManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SecurityManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webContextGetSpellCheckingEnabledFunction *gi.Function
 var webContextGetSpellCheckingEnabledFunction_Once sync.Once
@@ -9212,7 +10348,37 @@ func (recv *WebContext) GetWebProcessCountLimit() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_website_data_manager' : return type 'WebsiteDataManager' not supported
+var webContextGetWebsiteDataManagerFunction *gi.Function
+var webContextGetWebsiteDataManagerFunction_Once sync.Once
+
+func webContextGetWebsiteDataManagerFunction_Set() error {
+	var err error
+	webContextGetWebsiteDataManagerFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetWebsiteDataManagerFunction, err = webContextStruct.InvokerNew("get_website_data_manager")
+	})
+	return err
+}
+
+// GetWebsiteDataManager is a representation of the C type webkit_web_context_get_website_data_manager.
+func (recv *WebContext) GetWebsiteDataManager() *WebsiteDataManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webContextGetWebsiteDataManagerFunction_Set()
+	if err == nil {
+		ret = webContextGetWebsiteDataManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebsiteDataManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_context_initialize_notification_permissions' : parameter 'allowed_origins' of type 'GLib.List' not supported
 
@@ -9770,7 +10936,37 @@ func (recv *WebInspector) GetInspectedUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_inspector_get_web_view' : return type 'WebViewBase' not supported
+var webInspectorGetWebViewFunction *gi.Function
+var webInspectorGetWebViewFunction_Once sync.Once
+
+func webInspectorGetWebViewFunction_Set() error {
+	var err error
+	webInspectorGetWebViewFunction_Once.Do(func() {
+		err = webInspectorStruct_Set()
+		if err != nil {
+			return
+		}
+		webInspectorGetWebViewFunction, err = webInspectorStruct.InvokerNew("get_web_view")
+	})
+	return err
+}
+
+// GetWebView is a representation of the C type webkit_web_inspector_get_web_view.
+func (recv *WebInspector) GetWebView() *WebViewBase {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webInspectorGetWebViewFunction_Set()
+	if err == nil {
+		ret = webInspectorGetWebViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebViewBase{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webInspectorIsAttachedFunction *gi.Function
 var webInspectorIsAttachedFunction_Once sync.Once
@@ -9884,7 +11080,37 @@ func (recv *WebResource) SetFieldPriv(value *WebResourcePrivate) {
 
 // UNSUPPORTED : C value 'webkit_web_resource_get_data_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_resource_get_response' : return type 'URIResponse' not supported
+var webResourceGetResponseFunction *gi.Function
+var webResourceGetResponseFunction_Once sync.Once
+
+func webResourceGetResponseFunction_Set() error {
+	var err error
+	webResourceGetResponseFunction_Once.Do(func() {
+		err = webResourceStruct_Set()
+		if err != nil {
+			return
+		}
+		webResourceGetResponseFunction, err = webResourceStruct.InvokerNew("get_response")
+	})
+	return err
+}
+
+// GetResponse is a representation of the C type webkit_web_resource_get_response.
+func (recv *WebResource) GetResponse() *URIResponse {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webResourceGetResponseFunction_Set()
+	if err == nil {
+		ret = webResourceGetResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIResponse{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webResourceGetUriFunction *gi.Function
 var webResourceGetUriFunction_Once sync.Once
@@ -9948,19 +11174,177 @@ type WebView struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'WebViewBase'
+// FieldParent returns the C field 'parent'.
+func (recv *WebView) FieldParent() *WebViewBase {
+	argValue := gi.FieldGet(webViewStruct, recv.native, "parent")
+	value := &WebViewBase{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'WebViewBase'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebView) SetFieldParent(value *WebViewBase) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(webViewStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'webkit_web_view_new' : return type 'WebView' not supported
+var webViewNewFunction *gi.Function
+var webViewNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_view_new_with_context' : parameter 'context' of type 'WebContext' not supported
+func webViewNewFunction_Set() error {
+	var err error
+	webViewNewFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewNewFunction, err = webViewStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_web_view_new_with_related_view' : parameter 'web_view' of type 'WebView' not supported
+// WebViewNew is a representation of the C type webkit_web_view_new.
+func WebViewNew() *WebView {
 
-// UNSUPPORTED : C value 'webkit_web_view_new_with_settings' : parameter 'settings' of type 'Settings' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'webkit_web_view_new_with_user_content_manager' : parameter 'user_content_manager' of type 'UserContentManager' not supported
+	err := webViewNewFunction_Set()
+	if err == nil {
+		ret = webViewNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewNewWithContextFunction *gi.Function
+var webViewNewWithContextFunction_Once sync.Once
+
+func webViewNewWithContextFunction_Set() error {
+	var err error
+	webViewNewWithContextFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewNewWithContextFunction, err = webViewStruct.InvokerNew("new_with_context")
+	})
+	return err
+}
+
+// WebViewNewWithContext is a representation of the C type webkit_web_view_new_with_context.
+func WebViewNewWithContext(context *WebContext) *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := webViewNewWithContextFunction_Set()
+	if err == nil {
+		ret = webViewNewWithContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewNewWithRelatedViewFunction *gi.Function
+var webViewNewWithRelatedViewFunction_Once sync.Once
+
+func webViewNewWithRelatedViewFunction_Set() error {
+	var err error
+	webViewNewWithRelatedViewFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewNewWithRelatedViewFunction, err = webViewStruct.InvokerNew("new_with_related_view")
+	})
+	return err
+}
+
+// WebViewNewWithRelatedView is a representation of the C type webkit_web_view_new_with_related_view.
+func WebViewNewWithRelatedView(webView *WebView) *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(webView.native)
+
+	var ret gi.Argument
+
+	err := webViewNewWithRelatedViewFunction_Set()
+	if err == nil {
+		ret = webViewNewWithRelatedViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewNewWithSettingsFunction *gi.Function
+var webViewNewWithSettingsFunction_Once sync.Once
+
+func webViewNewWithSettingsFunction_Set() error {
+	var err error
+	webViewNewWithSettingsFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewNewWithSettingsFunction, err = webViewStruct.InvokerNew("new_with_settings")
+	})
+	return err
+}
+
+// WebViewNewWithSettings is a representation of the C type webkit_web_view_new_with_settings.
+func WebViewNewWithSettings(settings *Settings) *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(settings.native)
+
+	var ret gi.Argument
+
+	err := webViewNewWithSettingsFunction_Set()
+	if err == nil {
+		ret = webViewNewWithSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewNewWithUserContentManagerFunction *gi.Function
+var webViewNewWithUserContentManagerFunction_Once sync.Once
+
+func webViewNewWithUserContentManagerFunction_Set() error {
+	var err error
+	webViewNewWithUserContentManagerFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewNewWithUserContentManagerFunction, err = webViewStruct.InvokerNew("new_with_user_content_manager")
+	})
+	return err
+}
+
+// WebViewNewWithUserContentManager is a representation of the C type webkit_web_view_new_with_user_content_manager.
+func WebViewNewWithUserContentManager(userContentManager *UserContentManager) *WebView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(userContentManager.native)
+
+	var ret gi.Argument
+
+	err := webViewNewWithUserContentManagerFunction_Set()
+	if err == nil {
+		ret = webViewNewWithUserContentManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebView{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -10063,7 +11447,38 @@ func (recv *WebView) CanShowMimeType(mimeType string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_download_uri' : return type 'Download' not supported
+var webViewDownloadUriFunction *gi.Function
+var webViewDownloadUriFunction_Once sync.Once
+
+func webViewDownloadUriFunction_Set() error {
+	var err error
+	webViewDownloadUriFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewDownloadUriFunction, err = webViewStruct.InvokerNew("download_uri")
+	})
+	return err
+}
+
+// DownloadUri is a representation of the C type webkit_web_view_download_uri.
+func (recv *WebView) DownloadUri(uri string) *Download {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var ret gi.Argument
+
+	err := webViewDownloadUriFunction_Set()
+	if err == nil {
+		ret = webViewDownloadUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Download{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webViewExecuteEditingCommandFunction *gi.Function
 var webViewExecuteEditingCommandFunction_Once sync.Once
@@ -10124,11 +11539,71 @@ func (recv *WebView) ExecuteEditingCommandWithArgument(command string, argument 
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_back_forward_list' : return type 'BackForwardList' not supported
+var webViewGetBackForwardListFunction *gi.Function
+var webViewGetBackForwardListFunction_Once sync.Once
+
+func webViewGetBackForwardListFunction_Set() error {
+	var err error
+	webViewGetBackForwardListFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetBackForwardListFunction, err = webViewStruct.InvokerNew("get_back_forward_list")
+	})
+	return err
+}
+
+// GetBackForwardList is a representation of the C type webkit_web_view_get_back_forward_list.
+func (recv *WebView) GetBackForwardList() *BackForwardList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetBackForwardListFunction_Set()
+	if err == nil {
+		ret = webViewGetBackForwardListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &BackForwardList{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_get_background_color' : parameter 'rgba' of type 'Gdk.RGBA' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_get_context' : return type 'WebContext' not supported
+var webViewGetContextFunction *gi.Function
+var webViewGetContextFunction_Once sync.Once
+
+func webViewGetContextFunction_Set() error {
+	var err error
+	webViewGetContextFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetContextFunction, err = webViewStruct.InvokerNew("get_context")
+	})
+	return err
+}
+
+// GetContext is a representation of the C type webkit_web_view_get_context.
+func (recv *WebView) GetContext() *WebContext {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetContextFunction_Set()
+	if err == nil {
+		ret = webViewGetContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebContext{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webViewGetCustomCharsetFunction *gi.Function
 var webViewGetCustomCharsetFunction_Once sync.Once
@@ -10162,7 +11637,37 @@ func (recv *WebView) GetCustomCharset() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_editor_state' : return type 'EditorState' not supported
+var webViewGetEditorStateFunction *gi.Function
+var webViewGetEditorStateFunction_Once sync.Once
+
+func webViewGetEditorStateFunction_Set() error {
+	var err error
+	webViewGetEditorStateFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetEditorStateFunction, err = webViewStruct.InvokerNew("get_editor_state")
+	})
+	return err
+}
+
+// GetEditorState is a representation of the C type webkit_web_view_get_editor_state.
+func (recv *WebView) GetEditorState() *EditorState {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetEditorStateFunction_Set()
+	if err == nil {
+		ret = webViewGetEditorStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &EditorState{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webViewGetEstimatedLoadProgressFunction *gi.Function
 var webViewGetEstimatedLoadProgressFunction_Once sync.Once
@@ -10198,13 +11703,103 @@ func (recv *WebView) GetEstimatedLoadProgress() float64 {
 
 // UNSUPPORTED : C value 'webkit_web_view_get_favicon' : return type 'cairo.Surface' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_get_find_controller' : return type 'FindController' not supported
+var webViewGetFindControllerFunction *gi.Function
+var webViewGetFindControllerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_view_get_inspector' : return type 'WebInspector' not supported
+func webViewGetFindControllerFunction_Set() error {
+	var err error
+	webViewGetFindControllerFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetFindControllerFunction, err = webViewStruct.InvokerNew("get_find_controller")
+	})
+	return err
+}
+
+// GetFindController is a representation of the C type webkit_web_view_get_find_controller.
+func (recv *WebView) GetFindController() *FindController {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetFindControllerFunction_Set()
+	if err == nil {
+		ret = webViewGetFindControllerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FindController{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewGetInspectorFunction *gi.Function
+var webViewGetInspectorFunction_Once sync.Once
+
+func webViewGetInspectorFunction_Set() error {
+	var err error
+	webViewGetInspectorFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetInspectorFunction, err = webViewStruct.InvokerNew("get_inspector")
+	})
+	return err
+}
+
+// GetInspector is a representation of the C type webkit_web_view_get_inspector.
+func (recv *WebView) GetInspector() *WebInspector {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetInspectorFunction_Set()
+	if err == nil {
+		ret = webViewGetInspectorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebInspector{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_get_javascript_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_get_main_resource' : return type 'WebResource' not supported
+var webViewGetMainResourceFunction *gi.Function
+var webViewGetMainResourceFunction_Once sync.Once
+
+func webViewGetMainResourceFunction_Set() error {
+	var err error
+	webViewGetMainResourceFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetMainResourceFunction, err = webViewStruct.InvokerNew("get_main_resource")
+	})
+	return err
+}
+
+// GetMainResource is a representation of the C type webkit_web_view_get_main_resource.
+func (recv *WebView) GetMainResource() *WebResource {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetMainResourceFunction_Set()
+	if err == nil {
+		ret = webViewGetMainResourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebResource{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webViewGetPageIdFunction *gi.Function
 var webViewGetPageIdFunction_Once sync.Once
@@ -10270,7 +11865,37 @@ func (recv *WebView) GetSessionState() *WebViewSessionState {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_settings' : return type 'Settings' not supported
+var webViewGetSettingsFunction *gi.Function
+var webViewGetSettingsFunction_Once sync.Once
+
+func webViewGetSettingsFunction_Set() error {
+	var err error
+	webViewGetSettingsFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetSettingsFunction, err = webViewStruct.InvokerNew("get_settings")
+	})
+	return err
+}
+
+// GetSettings is a representation of the C type webkit_web_view_get_settings.
+func (recv *WebView) GetSettings() *Settings {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetSettingsFunction_Set()
+	if err == nil {
+		ret = webViewGetSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Settings{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'region' of type 'SnapshotRegion' not supported
 
@@ -10342,11 +11967,101 @@ func (recv *WebView) GetUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_user_content_manager' : return type 'UserContentManager' not supported
+var webViewGetUserContentManagerFunction *gi.Function
+var webViewGetUserContentManagerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_view_get_website_data_manager' : return type 'WebsiteDataManager' not supported
+func webViewGetUserContentManagerFunction_Set() error {
+	var err error
+	webViewGetUserContentManagerFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetUserContentManagerFunction, err = webViewStruct.InvokerNew("get_user_content_manager")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_web_view_get_window_properties' : return type 'WindowProperties' not supported
+// GetUserContentManager is a representation of the C type webkit_web_view_get_user_content_manager.
+func (recv *WebView) GetUserContentManager() *UserContentManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetUserContentManagerFunction_Set()
+	if err == nil {
+		ret = webViewGetUserContentManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &UserContentManager{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewGetWebsiteDataManagerFunction *gi.Function
+var webViewGetWebsiteDataManagerFunction_Once sync.Once
+
+func webViewGetWebsiteDataManagerFunction_Set() error {
+	var err error
+	webViewGetWebsiteDataManagerFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetWebsiteDataManagerFunction, err = webViewStruct.InvokerNew("get_website_data_manager")
+	})
+	return err
+}
+
+// GetWebsiteDataManager is a representation of the C type webkit_web_view_get_website_data_manager.
+func (recv *WebView) GetWebsiteDataManager() *WebsiteDataManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetWebsiteDataManagerFunction_Set()
+	if err == nil {
+		ret = webViewGetWebsiteDataManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WebsiteDataManager{native: ret.Pointer()}
+
+	return retGo
+}
+
+var webViewGetWindowPropertiesFunction *gi.Function
+var webViewGetWindowPropertiesFunction_Once sync.Once
+
+func webViewGetWindowPropertiesFunction_Set() error {
+	var err error
+	webViewGetWindowPropertiesFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGetWindowPropertiesFunction, err = webViewStruct.InvokerNew("get_window_properties")
+	})
+	return err
+}
+
+// GetWindowProperties is a representation of the C type webkit_web_view_get_window_properties.
+func (recv *WebView) GetWindowProperties() *WindowProperties {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := webViewGetWindowPropertiesFunction_Set()
+	if err == nil {
+		ret = webViewGetWindowPropertiesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WindowProperties{native: ret.Pointer()}
+
+	return retGo
+}
 
 var webViewGetZoomLevelFunction *gi.Function
 var webViewGetZoomLevelFunction_Once sync.Once
@@ -10436,7 +12151,34 @@ func (recv *WebView) GoForward() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_go_to_back_forward_list_item' : parameter 'list_item' of type 'BackForwardListItem' not supported
+var webViewGoToBackForwardListItemFunction *gi.Function
+var webViewGoToBackForwardListItemFunction_Once sync.Once
+
+func webViewGoToBackForwardListItemFunction_Set() error {
+	var err error
+	webViewGoToBackForwardListItemFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewGoToBackForwardListItemFunction, err = webViewStruct.InvokerNew("go_to_back_forward_list_item")
+	})
+	return err
+}
+
+// GoToBackForwardListItem is a representation of the C type webkit_web_view_go_to_back_forward_list_item.
+func (recv *WebView) GoToBackForwardListItem(listItem *BackForwardListItem) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(listItem.native)
+
+	err := webViewGoToBackForwardListItemFunction_Set()
+	if err == nil {
+		webViewGoToBackForwardListItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webViewIsControlledByAutomationFunction *gi.Function
 var webViewIsControlledByAutomationFunction_Once sync.Once
@@ -10690,7 +12432,34 @@ func (recv *WebView) LoadPlainText(plainText string) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_load_request' : parameter 'request' of type 'URIRequest' not supported
+var webViewLoadRequestFunction *gi.Function
+var webViewLoadRequestFunction_Once sync.Once
+
+func webViewLoadRequestFunction_Set() error {
+	var err error
+	webViewLoadRequestFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewLoadRequestFunction, err = webViewStruct.InvokerNew("load_request")
+	})
+	return err
+}
+
+// LoadRequest is a representation of the C type webkit_web_view_load_request.
+func (recv *WebView) LoadRequest(request *URIRequest) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(request.native)
+
+	err := webViewLoadRequestFunction_Set()
+	if err == nil {
+		webViewLoadRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webViewLoadUriFunction *gi.Function
 var webViewLoadUriFunction_Once sync.Once
@@ -10886,7 +12655,34 @@ func (recv *WebView) SetEditable(editable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_set_settings' : parameter 'settings' of type 'Settings' not supported
+var webViewSetSettingsFunction *gi.Function
+var webViewSetSettingsFunction_Once sync.Once
+
+func webViewSetSettingsFunction_Set() error {
+	var err error
+	webViewSetSettingsFunction_Once.Do(func() {
+		err = webViewStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewSetSettingsFunction, err = webViewStruct.InvokerNew("set_settings")
+	})
+	return err
+}
+
+// SetSettings is a representation of the C type webkit_web_view_set_settings.
+func (recv *WebView) SetSettings(settings *Settings) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(settings.native)
+
+	err := webViewSetSettingsFunction_Set()
+	if err == nil {
+		webViewSetSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webViewSetZoomLevelFunction *gi.Function
 var webViewSetZoomLevelFunction_Once sync.Once
@@ -11042,7 +12838,35 @@ func (recv *WebsiteDataManager) SetFieldPriv(value *WebsiteDataManagerPrivate) {
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_new_ephemeral' : return type 'WebsiteDataManager' not supported
+var websiteDataManagerNewEphemeralFunction *gi.Function
+var websiteDataManagerNewEphemeralFunction_Once sync.Once
+
+func websiteDataManagerNewEphemeralFunction_Set() error {
+	var err error
+	websiteDataManagerNewEphemeralFunction_Once.Do(func() {
+		err = websiteDataManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataManagerNewEphemeralFunction, err = websiteDataManagerStruct.InvokerNew("new_ephemeral")
+	})
+	return err
+}
+
+// WebsiteDataManagerNewEphemeral is a representation of the C type webkit_website_data_manager_new_ephemeral.
+func WebsiteDataManagerNewEphemeral() *WebsiteDataManager {
+
+	var ret gi.Argument
+
+	err := websiteDataManagerNewEphemeralFunction_Set()
+	if err == nil {
+		ret = websiteDataManagerNewEphemeralFunction.Invoke(nil, nil)
+	}
+
+	retGo := &WebsiteDataManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'types' of type 'WebsiteDataTypes' not supported
 
@@ -11116,7 +12940,37 @@ func (recv *WebsiteDataManager) GetBaseDataDirectory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_get_cookie_manager' : return type 'CookieManager' not supported
+var websiteDataManagerGetCookieManagerFunction *gi.Function
+var websiteDataManagerGetCookieManagerFunction_Once sync.Once
+
+func websiteDataManagerGetCookieManagerFunction_Set() error {
+	var err error
+	websiteDataManagerGetCookieManagerFunction_Once.Do(func() {
+		err = websiteDataManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataManagerGetCookieManagerFunction, err = websiteDataManagerStruct.InvokerNew("get_cookie_manager")
+	})
+	return err
+}
+
+// GetCookieManager is a representation of the C type webkit_website_data_manager_get_cookie_manager.
+func (recv *WebsiteDataManager) GetCookieManager() *CookieManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := websiteDataManagerGetCookieManagerFunction_Set()
+	if err == nil {
+		ret = websiteDataManagerGetCookieManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CookieManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 var websiteDataManagerGetDiskCacheDirectoryFunction *gi.Function
 var websiteDataManagerGetDiskCacheDirectoryFunction_Once sync.Once

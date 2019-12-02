@@ -2595,7 +2595,37 @@ func (recv *NavigationAction) GetMouseButton() uint32 {
 
 // UNSUPPORTED : C value 'webkit_navigation_action_get_navigation_type' : return type 'NavigationType' not supported
 
-// UNSUPPORTED : C value 'webkit_navigation_action_get_request' : return type 'URIRequest' not supported
+var navigationActionGetRequestFunction *gi.Function
+var navigationActionGetRequestFunction_Once sync.Once
+
+func navigationActionGetRequestFunction_Set() error {
+	var err error
+	navigationActionGetRequestFunction_Once.Do(func() {
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionGetRequestFunction, err = navigationActionStruct.InvokerNew("get_request")
+	})
+	return err
+}
+
+// GetRequest is a representation of the C type webkit_navigation_action_get_request.
+func (recv *NavigationAction) GetRequest() *URIRequest {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := navigationActionGetRequestFunction_Set()
+	if err == nil {
+		ret = navigationActionGetRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URIRequest{native: ret.Pointer()}
+
+	return retGo
+}
 
 var navigationActionIsRedirectFunction *gi.Function
 var navigationActionIsRedirectFunction_Once sync.Once

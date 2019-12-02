@@ -6597,9 +6597,19 @@ type InputMessage struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
+// FieldAddress returns the C field 'address'.
+func (recv *InputMessage) FieldAddress() *SocketAddress {
+	argValue := gi.FieldGet(inputMessageStruct, recv.native, "address")
+	value := &SocketAddress{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'address' : for field setter : no Go type for 'SocketAddress'
+// SetFieldAddress sets the value of the C field 'address'.
+func (recv *InputMessage) SetFieldAddress(value *SocketAddress) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(inputMessageStruct, recv.native, "address", argValue)
+}
 
 // UNSUPPORTED : C value 'vectors' : for field getter : missing Type
 
@@ -7975,9 +7985,19 @@ type OutputMessage struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'address' : for field getter : no Go type for 'SocketAddress'
+// FieldAddress returns the C field 'address'.
+func (recv *OutputMessage) FieldAddress() *SocketAddress {
+	argValue := gi.FieldGet(outputMessageStruct, recv.native, "address")
+	value := &SocketAddress{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'address' : for field setter : no Go type for 'SocketAddress'
+// SetFieldAddress sets the value of the C field 'address'.
+func (recv *OutputMessage) SetFieldAddress(value *SocketAddress) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(outputMessageStruct, recv.native, "address", argValue)
+}
 
 // FieldVectors returns the C field 'vectors'.
 func (recv *OutputMessage) FieldVectors() *OutputVector {

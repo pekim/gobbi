@@ -636,9 +636,69 @@ type ClientContext struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'soup_client_context_get_address' : return type 'Address' not supported
+var clientContextGetAddressFunction *gi.Function
+var clientContextGetAddressFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_client_context_get_auth_domain' : return type 'AuthDomain' not supported
+func clientContextGetAddressFunction_Set() error {
+	var err error
+	clientContextGetAddressFunction_Once.Do(func() {
+		err = clientContextStruct_Set()
+		if err != nil {
+			return
+		}
+		clientContextGetAddressFunction, err = clientContextStruct.InvokerNew("get_address")
+	})
+	return err
+}
+
+// GetAddress is a representation of the C type soup_client_context_get_address.
+func (recv *ClientContext) GetAddress() *Address {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := clientContextGetAddressFunction_Set()
+	if err == nil {
+		ret = clientContextGetAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{native: ret.Pointer()}
+
+	return retGo
+}
+
+var clientContextGetAuthDomainFunction *gi.Function
+var clientContextGetAuthDomainFunction_Once sync.Once
+
+func clientContextGetAuthDomainFunction_Set() error {
+	var err error
+	clientContextGetAuthDomainFunction_Once.Do(func() {
+		err = clientContextStruct_Set()
+		if err != nil {
+			return
+		}
+		clientContextGetAuthDomainFunction, err = clientContextStruct.InvokerNew("get_auth_domain")
+	})
+	return err
+}
+
+// GetAuthDomain is a representation of the C type soup_client_context_get_auth_domain.
+func (recv *ClientContext) GetAuthDomain() *AuthDomain {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := clientContextGetAuthDomainFunction_Set()
+	if err == nil {
+		ret = clientContextGetAuthDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &AuthDomain{native: ret.Pointer()}
+
+	return retGo
+}
 
 var clientContextGetAuthUserFunction *gi.Function
 var clientContextGetAuthUserFunction_Once sync.Once
@@ -710,7 +770,37 @@ func (recv *ClientContext) GetHost() string {
 
 // UNSUPPORTED : C value 'soup_client_context_get_remote_address' : return type 'Gio.SocketAddress' not supported
 
-// UNSUPPORTED : C value 'soup_client_context_get_socket' : return type 'Socket' not supported
+var clientContextGetSocketFunction *gi.Function
+var clientContextGetSocketFunction_Once sync.Once
+
+func clientContextGetSocketFunction_Set() error {
+	var err error
+	clientContextGetSocketFunction_Once.Do(func() {
+		err = clientContextStruct_Set()
+		if err != nil {
+			return
+		}
+		clientContextGetSocketFunction, err = clientContextStruct.InvokerNew("get_socket")
+	})
+	return err
+}
+
+// GetSocket is a representation of the C type soup_client_context_get_socket.
+func (recv *ClientContext) GetSocket() *Socket {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := clientContextGetSocketFunction_Set()
+	if err == nil {
+		ret = clientContextGetSocketFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Socket{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_client_context_steal_connection' : return type 'Gio.IOStream' not supported
 
@@ -2872,7 +2962,37 @@ func HSTSPolicyNew(domain string, maxAge uint64, includeSubdomains bool) *HSTSPo
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_hsts_policy_new_from_response' : parameter 'msg' of type 'Message' not supported
+var hSTSPolicyNewFromResponseFunction *gi.Function
+var hSTSPolicyNewFromResponseFunction_Once sync.Once
+
+func hSTSPolicyNewFromResponseFunction_Set() error {
+	var err error
+	hSTSPolicyNewFromResponseFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyNewFromResponseFunction, err = hSTSPolicyStruct.InvokerNew("new_from_response")
+	})
+	return err
+}
+
+// HSTSPolicyNewFromResponse is a representation of the C type soup_hsts_policy_new_from_response.
+func HSTSPolicyNewFromResponse(msg *Message) *HSTSPolicy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyNewFromResponseFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyNewFromResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &HSTSPolicy{native: ret.Pointer()}
+
+	return retGo
+}
 
 var hSTSPolicyNewFullFunction *gi.Function
 var hSTSPolicyNewFullFunction_Once sync.Once

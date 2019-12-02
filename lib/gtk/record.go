@@ -8161,9 +8161,19 @@ type FixedChild struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'widget' : for field getter : no Go type for 'Widget'
+// FieldWidget returns the C field 'widget'.
+func (recv *FixedChild) FieldWidget() *Widget {
+	argValue := gi.FieldGet(fixedChildStruct, recv.native, "widget")
+	value := &Widget{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'widget' : for field setter : no Go type for 'Widget'
+// SetFieldWidget sets the value of the C field 'widget'.
+func (recv *FixedChild) SetFieldWidget(value *Widget) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(fixedChildStruct, recv.native, "widget", argValue)
+}
 
 // FieldX returns the C field 'x'.
 func (recv *FixedChild) FieldX() int32 {
@@ -9763,9 +9773,9 @@ func (recv *Gradient) Ref() *Gradient {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gradient_resolve' : parameter 'props' of type 'StyleProperties' not supported
+// UNSUPPORTED : C value 'gtk_gradient_resolve' : parameter 'resolved_gradient' of type 'cairo.Pattern' not supported
 
-// UNSUPPORTED : C value 'gtk_gradient_resolve_for_context' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_gradient_resolve_for_context' : return type 'cairo.Pattern' not supported
 
 var gradientToStringFunction *gi.Function
 var gradientToStringFunction_Once sync.Once
@@ -11191,11 +11201,11 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : parameter 'direction' of type 'TextDirection' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : parameter 'size' of type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'size' of type 'IconSize' not supported
 
 var iconSetUnrefFunction *gi.Function
 var iconSetUnrefFunction_Once sync.Once
@@ -20713,7 +20723,38 @@ func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_targets_include_rich_text' : parameter 'buffer' of type 'TextBuffer' not supported
+var selectionDataTargetsIncludeRichTextFunction *gi.Function
+var selectionDataTargetsIncludeRichTextFunction_Once sync.Once
+
+func selectionDataTargetsIncludeRichTextFunction_Set() error {
+	var err error
+	selectionDataTargetsIncludeRichTextFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataTargetsIncludeRichTextFunction, err = selectionDataStruct.InvokerNew("targets_include_rich_text")
+	})
+	return err
+}
+
+// TargetsIncludeRichText is a representation of the C type gtk_selection_data_targets_include_rich_text.
+func (recv *SelectionData) TargetsIncludeRichText(buffer *TextBuffer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(buffer.native)
+
+	var ret gi.Argument
+
+	err := selectionDataTargetsIncludeRichTextFunction_Set()
+	if err == nil {
+		ret = selectionDataTargetsIncludeRichTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var selectionDataTargetsIncludeTextFunction *gi.Function
 var selectionDataTargetsIncludeTextFunction_Once sync.Once
@@ -23310,7 +23351,7 @@ func (recv *SymbolicColor) Ref() *SymbolicColor {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_symbolic_color_resolve' : parameter 'props' of type 'StyleProperties' not supported
+// UNSUPPORTED : C value 'gtk_symbolic_color_resolve' : parameter 'resolved_color' of type 'Gdk.RGBA' not supported
 
 var symbolicColorToStringFunction *gi.Function
 var symbolicColorToStringFunction_Once sync.Once
@@ -23387,9 +23428,19 @@ type TableChild struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'widget' : for field getter : no Go type for 'Widget'
+// FieldWidget returns the C field 'widget'.
+func (recv *TableChild) FieldWidget() *Widget {
+	argValue := gi.FieldGet(tableChildStruct, recv.native, "widget")
+	value := &Widget{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'widget' : for field setter : no Go type for 'Widget'
+// SetFieldWidget sets the value of the C field 'widget'.
+func (recv *TableChild) SetFieldWidget(value *Widget) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tableChildStruct, recv.native, "widget", argValue)
+}
 
 // FieldLeftAttach returns the C field 'left_attach'.
 func (recv *TableChild) FieldLeftAttach() uint16 {
@@ -24006,7 +24057,36 @@ func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'buffer' of type 'TextBuffer' not supported
+var targetListAddRichTextTargetsFunction *gi.Function
+var targetListAddRichTextTargetsFunction_Once sync.Once
+
+func targetListAddRichTextTargetsFunction_Set() error {
+	var err error
+	targetListAddRichTextTargetsFunction_Once.Do(func() {
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListAddRichTextTargetsFunction, err = targetListStruct.InvokerNew("add_rich_text_targets")
+	})
+	return err
+}
+
+// AddRichTextTargets is a representation of the C type gtk_target_list_add_rich_text_targets.
+func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer *TextBuffer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(info)
+	inArgs[2].SetBoolean(deserializable)
+	inArgs[3].SetPointer(buffer.native)
+
+	err := targetListAddRichTextTargetsFunction_Set()
+	if err == nil {
+		targetListAddRichTextTargetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' of type 'nil' not supported
 
@@ -25372,7 +25452,38 @@ func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
+var textIterBackwardToTagToggleFunction *gi.Function
+var textIterBackwardToTagToggleFunction_Once sync.Once
+
+func textIterBackwardToTagToggleFunction_Set() error {
+	var err error
+	textIterBackwardToTagToggleFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardToTagToggleFunction, err = textIterStruct.InvokerNew("backward_to_tag_toggle")
+	})
+	return err
+}
+
+// BackwardToTagToggle is a representation of the C type gtk_text_iter_backward_to_tag_toggle.
+func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardToTagToggleFunction_Set()
+	if err == nil {
+		ret = textIterBackwardToTagToggleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterBackwardVisibleCursorPositionFunction *gi.Function
 var textIterBackwardVisibleCursorPositionFunction_Once sync.Once
@@ -25634,7 +25745,38 @@ func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_begins_tag' : parameter 'tag' of type 'TextTag' not supported
+var textIterBeginsTagFunction *gi.Function
+var textIterBeginsTagFunction_Once sync.Once
+
+func textIterBeginsTagFunction_Set() error {
+	var err error
+	textIterBeginsTagFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBeginsTagFunction, err = textIterStruct.InvokerNew("begins_tag")
+	})
+	return err
+}
+
+// BeginsTag is a representation of the C type gtk_text_iter_begins_tag.
+func (recv *TextIter) BeginsTag(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterBeginsTagFunction_Set()
+	if err == nil {
+		ret = textIterBeginsTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterCanInsertFunction *gi.Function
 var textIterCanInsertFunction_Once sync.Once
@@ -25831,7 +25973,38 @@ func (recv *TextIter) EndsSentence() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_ends_tag' : parameter 'tag' of type 'TextTag' not supported
+var textIterEndsTagFunction *gi.Function
+var textIterEndsTagFunction_Once sync.Once
+
+func textIterEndsTagFunction_Set() error {
+	var err error
+	textIterEndsTagFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterEndsTagFunction, err = textIterStruct.InvokerNew("ends_tag")
+	})
+	return err
+}
+
+// EndsTag is a representation of the C type gtk_text_iter_ends_tag.
+func (recv *TextIter) EndsTag(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterEndsTagFunction_Set()
+	if err == nil {
+		ret = textIterEndsTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterEndsWordFunction *gi.Function
 var textIterEndsWordFunction_Once sync.Once
@@ -26222,7 +26395,38 @@ func (recv *TextIter) ForwardToLineEnd() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
+var textIterForwardToTagToggleFunction *gi.Function
+var textIterForwardToTagToggleFunction_Once sync.Once
+
+func textIterForwardToTagToggleFunction_Set() error {
+	var err error
+	textIterForwardToTagToggleFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardToTagToggleFunction, err = textIterStruct.InvokerNew("forward_to_tag_toggle")
+	})
+	return err
+}
+
+// ForwardToTagToggle is a representation of the C type gtk_text_iter_forward_to_tag_toggle.
+func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardToTagToggleFunction_Set()
+	if err == nil {
+		ret = textIterForwardToTagToggleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterForwardVisibleCursorPositionFunction *gi.Function
 var textIterForwardVisibleCursorPositionFunction_Once sync.Once
@@ -26546,7 +26750,37 @@ func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_get_buffer' : return type 'TextBuffer' not supported
+var textIterGetBufferFunction *gi.Function
+var textIterGetBufferFunction_Once sync.Once
+
+func textIterGetBufferFunction_Set() error {
+	var err error
+	textIterGetBufferFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetBufferFunction, err = textIterStruct.InvokerNew("get_buffer")
+	})
+	return err
+}
+
+// GetBuffer is a representation of the C type gtk_text_iter_get_buffer.
+func (recv *TextIter) GetBuffer() *TextBuffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterGetBufferFunction_Set()
+	if err == nil {
+		ret = textIterGetBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &TextBuffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 var textIterGetBytesInLineFunction *gi.Function
 var textIterGetBytesInLineFunction_Once sync.Once
@@ -26614,7 +26848,37 @@ func (recv *TextIter) GetCharsInLine() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_get_child_anchor' : return type 'TextChildAnchor' not supported
+var textIterGetChildAnchorFunction *gi.Function
+var textIterGetChildAnchorFunction_Once sync.Once
+
+func textIterGetChildAnchorFunction_Set() error {
+	var err error
+	textIterGetChildAnchorFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetChildAnchorFunction, err = textIterStruct.InvokerNew("get_child_anchor")
+	})
+	return err
+}
+
+// GetChildAnchor is a representation of the C type gtk_text_iter_get_child_anchor.
+func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterGetChildAnchorFunction_Set()
+	if err == nil {
+		ret = textIterGetChildAnchorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &TextChildAnchor{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_language' : return type 'Pango.Language' not supported
 
@@ -26950,7 +27214,38 @@ func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_has_tag' : parameter 'tag' of type 'TextTag' not supported
+var textIterHasTagFunction *gi.Function
+var textIterHasTagFunction_Once sync.Once
+
+func textIterHasTagFunction_Set() error {
+	var err error
+	textIterHasTagFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterHasTagFunction, err = textIterStruct.InvokerNew("has_tag")
+	})
+	return err
+}
+
+// HasTag is a representation of the C type gtk_text_iter_has_tag.
+func (recv *TextIter) HasTag(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterHasTagFunction_Set()
+	if err == nil {
+		ret = textIterHasTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterInRangeFunction *gi.Function
 var textIterInRangeFunction_Once sync.Once
@@ -27413,7 +27708,38 @@ func (recv *TextIter) StartsSentence() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_starts_tag' : parameter 'tag' of type 'TextTag' not supported
+var textIterStartsTagFunction *gi.Function
+var textIterStartsTagFunction_Once sync.Once
+
+func textIterStartsTagFunction_Set() error {
+	var err error
+	textIterStartsTagFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterStartsTagFunction, err = textIterStruct.InvokerNew("starts_tag")
+	})
+	return err
+}
+
+// StartsTag is a representation of the C type gtk_text_iter_starts_tag.
+func (recv *TextIter) StartsTag(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterStartsTagFunction_Set()
+	if err == nil {
+		ret = textIterStartsTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textIterStartsWordFunction *gi.Function
 var textIterStartsWordFunction_Once sync.Once
@@ -27447,7 +27773,38 @@ func (recv *TextIter) StartsWord() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
+var textIterTogglesTagFunction *gi.Function
+var textIterTogglesTagFunction_Once sync.Once
+
+func textIterTogglesTagFunction_Set() error {
+	var err error
+	textIterTogglesTagFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterTogglesTagFunction, err = textIterStruct.InvokerNew("toggles_tag")
+	})
+	return err
+}
+
+// TogglesTag is a representation of the C type gtk_text_iter_toggles_tag.
+func (recv *TextIter) TogglesTag(tag *TextTag) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tag.native)
+
+	var ret gi.Argument
+
+	err := textIterTogglesTagFunction_Set()
+	if err == nil {
+		ret = textIterTogglesTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // TextIterStruct creates an uninitialised TextIter.
 func TextIterStruct() *TextIter {
@@ -32123,7 +32480,38 @@ func WidgetPathNew() *WidgetPath {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_append_for_widget' : parameter 'widget' of type 'Widget' not supported
+var widgetPathAppendForWidgetFunction *gi.Function
+var widgetPathAppendForWidgetFunction_Once sync.Once
+
+func widgetPathAppendForWidgetFunction_Set() error {
+	var err error
+	widgetPathAppendForWidgetFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathAppendForWidgetFunction, err = widgetPathStruct.InvokerNew("append_for_widget")
+	})
+	return err
+}
+
+// AppendForWidget is a representation of the C type gtk_widget_path_append_for_widget.
+func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(widget.native)
+
+	var ret gi.Argument
+
+	err := widgetPathAppendForWidgetFunction_Set()
+	if err == nil {
+		ret = widgetPathAppendForWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_widget_path_append_type' : parameter 'type' of type 'GType' not supported
 

@@ -14,12 +14,12 @@ func (cc Classes) generate(f *file) {
 	}
 }
 
-func (cc Classes) forName(name string) *Class {
-	for _, class := range cc {
-		if class.Name == name {
-			return class
+func (cc Classes) byName(name string) (*Class, bool) {
+	for _, c := range cc {
+		if c.Name == name {
+			return c, true
 		}
 	}
 
-	return nil
+	return nil, false
 }

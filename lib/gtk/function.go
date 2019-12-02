@@ -188,9 +188,9 @@ func CssProviderErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_device_grab_add' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_device_grab_add' : parameter 'device' of type 'Gdk.Device' not supported
 
-// UNSUPPORTED : C value 'gtk_device_grab_remove' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_device_grab_remove' : parameter 'device' of type 'Gdk.Device' not supported
 
 var disableSetlocaleFunction *gi.Function
 var disableSetlocaleFunction_Once sync.Once
@@ -264,7 +264,7 @@ func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes
 
 // UNSUPPORTED : C value 'gtk_drag_set_icon_widget' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : parameter 'cr' of type 'cairo.Context' not supported
 
 var eventsPendingFunction *gi.Function
 var eventsPendingFunction_Once sync.Once
@@ -540,7 +540,31 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : return type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'gtk_grab_get_current' : return type 'Widget' not supported
+var grabGetCurrentFunction *gi.Function
+var grabGetCurrentFunction_Once sync.Once
+
+func grabGetCurrentFunction_Set() error {
+	var err error
+	grabGetCurrentFunction_Once.Do(func() {
+		grabGetCurrentFunction, err = gi.FunctionInvokerNew("Gtk", "grab_get_current")
+	})
+	return err
+}
+
+// GrabGetCurrent is a representation of the C type gtk_grab_get_current.
+func GrabGetCurrent() *Widget {
+
+	var ret gi.Argument
+
+	err := grabGetCurrentFunction_Set()
+	if err == nil {
+		ret = grabGetCurrentFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Widget{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_icon_size_from_name' : return type 'IconSize' not supported
 
@@ -548,7 +572,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_icon_size_lookup' : parameter 'size' of type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : parameter 'settings' of type 'Settings' not supported
+// UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : parameter 'size' of type 'IconSize' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_size_register' : return type 'IconSize' not supported
 
@@ -738,45 +762,45 @@ func MainQuit() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_box' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_box' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_box_gap' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_box_gap' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_check' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_check' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_diamond' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_diamond' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_expander' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_expander' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_extension' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_extension' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_flat_box' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_flat_box' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_focus' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_focus' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_handle' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_handle' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_hline' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_hline' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_layout' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_layout' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_option' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_option' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_resize_grip' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_resize_grip' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_shadow' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_shadow' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_shadow_gap' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_shadow_gap' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_slider' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_slider' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_spinner' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_spinner' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_tab' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_tab' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_vline' : parameter 'style' of type 'Style' not supported
+// UNSUPPORTED : C value 'gtk_paint_vline' : parameter 'cr' of type 'cairo.Context' not supported
 
 var paperSizeGetDefaultFunction *gi.Function
 var paperSizeGetDefaultFunction_Once sync.Once
@@ -834,11 +858,39 @@ func PrintErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : parameter 'parent' of type 'Window' not supported
+var printRunPageSetupDialogFunction *gi.Function
+var printRunPageSetupDialogFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog_async' : parameter 'parent' of type 'Window' not supported
+func printRunPageSetupDialogFunction_Set() error {
+	var err error
+	printRunPageSetupDialogFunction_Once.Do(func() {
+		printRunPageSetupDialogFunction, err = gi.FunctionInvokerNew("Gtk", "print_run_page_setup_dialog")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_propagate_event' : parameter 'widget' of type 'Widget' not supported
+// PrintRunPageSetupDialog is a representation of the C type gtk_print_run_page_setup_dialog.
+func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(parent.native)
+	inArgs[1].SetPointer(pageSetup.native)
+	inArgs[2].SetPointer(settings.native)
+
+	var ret gi.Argument
+
+	err := printRunPageSetupDialogFunction_Set()
+	if err == nil {
+		ret = printRunPageSetupDialogFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PageSetup{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog_async' : parameter 'done_cb' of type 'PageSetupDoneFunc' not supported
+
+// UNSUPPORTED : C value 'gtk_propagate_event' : parameter 'event' of type 'Gdk.Event' not supported
 
 var rcAddDefaultFileFunction *gi.Function
 var rcAddDefaultFileFunction_Once sync.Once
@@ -892,7 +944,7 @@ func RcFindModuleInPath(moduleFile string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
+// UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
 var rcGetDefaultFilesFunction *gi.Function
 var rcGetDefaultFilesFunction_Once sync.Once
@@ -994,9 +1046,35 @@ func RcGetModuleDir() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_get_style' : parameter 'widget' of type 'Widget' not supported
+var rcGetStyleFunction *gi.Function
+var rcGetStyleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : parameter 'settings' of type 'Settings' not supported
+func rcGetStyleFunction_Set() error {
+	var err error
+	rcGetStyleFunction_Once.Do(func() {
+		rcGetStyleFunction, err = gi.FunctionInvokerNew("Gtk", "rc_get_style")
+	})
+	return err
+}
+
+// RcGetStyle is a representation of the C type gtk_rc_get_style.
+func RcGetStyle(widget *Widget) *Style {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+
+	var ret gi.Argument
+
+	err := rcGetStyleFunction_Set()
+	if err == nil {
+		ret = rcGetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Style{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : parameter 'type' of type 'GType' not supported
 
 var rcGetThemeDirFunction *gi.Function
 var rcGetThemeDirFunction_Once sync.Once
@@ -1116,9 +1194,58 @@ func RcReparseAll() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : parameter 'settings' of type 'Settings' not supported
+var rcReparseAllForSettingsFunction *gi.Function
+var rcReparseAllForSettingsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_reset_styles' : parameter 'settings' of type 'Settings' not supported
+func rcReparseAllForSettingsFunction_Set() error {
+	var err error
+	rcReparseAllForSettingsFunction_Once.Do(func() {
+		rcReparseAllForSettingsFunction, err = gi.FunctionInvokerNew("Gtk", "rc_reparse_all_for_settings")
+	})
+	return err
+}
+
+// RcReparseAllForSettings is a representation of the C type gtk_rc_reparse_all_for_settings.
+func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(settings.native)
+	inArgs[1].SetBoolean(forceLoad)
+
+	var ret gi.Argument
+
+	err := rcReparseAllForSettingsFunction_Set()
+	if err == nil {
+		ret = rcReparseAllForSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var rcResetStylesFunction *gi.Function
+var rcResetStylesFunction_Once sync.Once
+
+func rcResetStylesFunction_Set() error {
+	var err error
+	rcResetStylesFunction_Once.Do(func() {
+		rcResetStylesFunction, err = gi.FunctionInvokerNew("Gtk", "rc_reset_styles")
+	})
+	return err
+}
+
+// RcResetStyles is a representation of the C type gtk_rc_reset_styles.
+func RcResetStyles(settings *Settings) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(settings.native)
+
+	err := rcResetStylesFunction_Set()
+	if err == nil {
+		rcResetStylesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type 'GLib.Scanner' not supported
 
@@ -1176,43 +1303,43 @@ func RecentManagerErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_render_activity' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_activity' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_arrow' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_arrow' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_background' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_background' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_background_get_clip' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_background_get_clip' : parameter 'out_clip' of type 'Gdk.Rectangle' not supported
 
-// UNSUPPORTED : C value 'gtk_render_check' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_check' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_expander' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_expander' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_extension' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_extension' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_focus' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_focus' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_frame' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_frame' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_frame_gap' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_frame_gap' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_handle' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_handle' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_icon' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : parameter 'size' of type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon_surface' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_icon_surface' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_layout' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_layout' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_line' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_line' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_option' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_option' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_slider' : parameter 'context' of type 'StyleContext' not supported
+// UNSUPPORTED : C value 'gtk_render_slider' : parameter 'cr' of type 'cairo.Context' not supported
 
 var rgbToHsvFunction *gi.Function
 var rgbToHsvFunction_Once sync.Once
@@ -1246,19 +1373,41 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	return out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'selection' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'selection' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_clear_targets' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_selection_clear_targets' : parameter 'selection' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_convert' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_selection_convert' : parameter 'selection' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_owner_set' : parameter 'widget' of type 'Widget' not supported
+// UNSUPPORTED : C value 'gtk_selection_owner_set' : parameter 'selection' of type 'Gdk.Atom' not supported
 
 // UNSUPPORTED : C value 'gtk_selection_owner_set_for_display' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_remove_all' : parameter 'widget' of type 'Widget' not supported
+var selectionRemoveAllFunction *gi.Function
+var selectionRemoveAllFunction_Once sync.Once
+
+func selectionRemoveAllFunction_Set() error {
+	var err error
+	selectionRemoveAllFunction_Once.Do(func() {
+		selectionRemoveAllFunction, err = gi.FunctionInvokerNew("Gtk", "selection_remove_all")
+	})
+	return err
+}
+
+// SelectionRemoveAll is a representation of the C type gtk_selection_remove_all.
+func SelectionRemoveAll(widget *Widget) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+
+	err := selectionRemoveAllFunction_Set()
+	if err == nil {
+		selectionRemoveAllFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var setDebugFlagsFunction *gi.Function
 var setDebugFlagsFunction_Once sync.Once
@@ -1284,11 +1433,39 @@ func SetDebugFlags(flags uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter 'parent' of type 'Window' not supported
+// UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_show_uri' : parameter 'screen' of type 'Gdk.Screen' not supported
 
-// UNSUPPORTED : C value 'gtk_show_uri_on_window' : parameter 'parent' of type 'Window' not supported
+var showUriOnWindowFunction *gi.Function
+var showUriOnWindowFunction_Once sync.Once
+
+func showUriOnWindowFunction_Set() error {
+	var err error
+	showUriOnWindowFunction_Once.Do(func() {
+		showUriOnWindowFunction, err = gi.FunctionInvokerNew("Gtk", "show_uri_on_window")
+	})
+	return err
+}
+
+// ShowUriOnWindow is a representation of the C type gtk_show_uri_on_window.
+func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(parent.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetUint32(timestamp)
+
+	var ret gi.Argument
+
+	err := showUriOnWindowFunction_Set()
+	if err == nil {
+		ret = showUriOnWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_stock_add' : parameter 'items' of type 'nil' not supported
 
@@ -1366,17 +1543,71 @@ func TargetTableNewFromList(list *TargetList) int32 {
 
 // UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_test_create_simple_window' : return type 'Widget' not supported
+var testCreateSimpleWindowFunction *gi.Function
+var testCreateSimpleWindowFunction_Once sync.Once
+
+func testCreateSimpleWindowFunction_Set() error {
+	var err error
+	testCreateSimpleWindowFunction_Once.Do(func() {
+		testCreateSimpleWindowFunction, err = gi.FunctionInvokerNew("Gtk", "test_create_simple_window")
+	})
+	return err
+}
+
+// TestCreateSimpleWindow is a representation of the C type gtk_test_create_simple_window.
+func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(windowTitle)
+	inArgs[1].SetString(dialogText)
+
+	var ret gi.Argument
+
+	err := testCreateSimpleWindowFunction_Set()
+	if err == nil {
+		ret = testCreateSimpleWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_test_create_widget' : parameter 'widget_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_test_find_label' : parameter 'widget' of type 'Widget' not supported
+var testFindLabelFunction *gi.Function
+var testFindLabelFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_test_find_sibling' : parameter 'base_widget' of type 'Widget' not supported
+func testFindLabelFunction_Set() error {
+	var err error
+	testFindLabelFunction_Once.Do(func() {
+		testFindLabelFunction, err = gi.FunctionInvokerNew("Gtk", "test_find_label")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget' of type 'Widget' not supported
+// TestFindLabel is a representation of the C type gtk_test_find_label.
+func TestFindLabel(widget *Widget, labelPattern string) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+	inArgs[1].SetString(labelPattern)
+
+	var ret gi.Argument
+
+	err := testFindLabelFunction_Set()
+	if err == nil {
+		ret = testFindLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_test_find_sibling' : parameter 'widget_type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' of type 'nil' not supported
 
@@ -1428,21 +1659,169 @@ func TestRegisterAllTypes() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_test_slider_get_value' : parameter 'widget' of type 'Widget' not supported
+var testSliderGetValueFunction *gi.Function
+var testSliderGetValueFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_test_slider_set_perc' : parameter 'widget' of type 'Widget' not supported
+func testSliderGetValueFunction_Set() error {
+	var err error
+	testSliderGetValueFunction_Once.Do(func() {
+		testSliderGetValueFunction, err = gi.FunctionInvokerNew("Gtk", "test_slider_get_value")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_test_spin_button_click' : parameter 'spinner' of type 'SpinButton' not supported
+// TestSliderGetValue is a representation of the C type gtk_test_slider_get_value.
+func TestSliderGetValue(widget *Widget) float64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(widget.native)
 
-// UNSUPPORTED : C value 'gtk_test_text_get' : parameter 'widget' of type 'Widget' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_test_text_set' : parameter 'widget' of type 'Widget' not supported
+	err := testSliderGetValueFunction_Set()
+	if err == nil {
+		ret = testSliderGetValueFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_test_widget_click' : parameter 'widget' of type 'Widget' not supported
+	retGo := ret.Float64()
 
-// UNSUPPORTED : C value 'gtk_test_widget_send_key' : parameter 'widget' of type 'Widget' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'gtk_test_widget_wait_for_draw' : parameter 'widget' of type 'Widget' not supported
+var testSliderSetPercFunction *gi.Function
+var testSliderSetPercFunction_Once sync.Once
+
+func testSliderSetPercFunction_Set() error {
+	var err error
+	testSliderSetPercFunction_Once.Do(func() {
+		testSliderSetPercFunction, err = gi.FunctionInvokerNew("Gtk", "test_slider_set_perc")
+	})
+	return err
+}
+
+// TestSliderSetPerc is a representation of the C type gtk_test_slider_set_perc.
+func TestSliderSetPerc(widget *Widget, percentage float64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+	inArgs[1].SetFloat64(percentage)
+
+	err := testSliderSetPercFunction_Set()
+	if err == nil {
+		testSliderSetPercFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var testSpinButtonClickFunction *gi.Function
+var testSpinButtonClickFunction_Once sync.Once
+
+func testSpinButtonClickFunction_Set() error {
+	var err error
+	testSpinButtonClickFunction_Once.Do(func() {
+		testSpinButtonClickFunction, err = gi.FunctionInvokerNew("Gtk", "test_spin_button_click")
+	})
+	return err
+}
+
+// TestSpinButtonClick is a representation of the C type gtk_test_spin_button_click.
+func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(spinner.native)
+	inArgs[1].SetUint32(button)
+	inArgs[2].SetBoolean(upwards)
+
+	var ret gi.Argument
+
+	err := testSpinButtonClickFunction_Set()
+	if err == nil {
+		ret = testSpinButtonClickFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var testTextGetFunction *gi.Function
+var testTextGetFunction_Once sync.Once
+
+func testTextGetFunction_Set() error {
+	var err error
+	testTextGetFunction_Once.Do(func() {
+		testTextGetFunction, err = gi.FunctionInvokerNew("Gtk", "test_text_get")
+	})
+	return err
+}
+
+// TestTextGet is a representation of the C type gtk_test_text_get.
+func TestTextGet(widget *Widget) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+
+	var ret gi.Argument
+
+	err := testTextGetFunction_Set()
+	if err == nil {
+		ret = testTextGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var testTextSetFunction *gi.Function
+var testTextSetFunction_Once sync.Once
+
+func testTextSetFunction_Set() error {
+	var err error
+	testTextSetFunction_Once.Do(func() {
+		testTextSetFunction, err = gi.FunctionInvokerNew("Gtk", "test_text_set")
+	})
+	return err
+}
+
+// TestTextSet is a representation of the C type gtk_test_text_set.
+func TestTextSet(widget *Widget, string_ string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+	inArgs[1].SetString(string_)
+
+	err := testTextSetFunction_Set()
+	if err == nil {
+		testTextSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gtk_test_widget_click' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'gtk_test_widget_send_key' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
+
+var testWidgetWaitForDrawFunction *gi.Function
+var testWidgetWaitForDrawFunction_Once sync.Once
+
+func testWidgetWaitForDrawFunction_Set() error {
+	var err error
+	testWidgetWaitForDrawFunction_Once.Do(func() {
+		testWidgetWaitForDrawFunction, err = gi.FunctionInvokerNew("Gtk", "test_widget_wait_for_draw")
+	})
+	return err
+}
+
+// TestWidgetWaitForDraw is a representation of the C type gtk_test_widget_wait_for_draw.
+func TestWidgetWaitForDraw(widget *Widget) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(widget.native)
+
+	err := testWidgetWaitForDrawFunction_Set()
+	if err == nil {
+		testWidgetWaitForDrawFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : parameter 'tree_model' of type 'TreeModel' not supported
 

@@ -633,7 +633,37 @@ type Implementor struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'atk_implementor_ref_accessible' : return type 'Object' not supported
+var implementorRefAccessibleFunction *gi.Function
+var implementorRefAccessibleFunction_Once sync.Once
+
+func implementorRefAccessibleFunction_Set() error {
+	var err error
+	implementorRefAccessibleFunction_Once.Do(func() {
+		err = implementorStruct_Set()
+		if err != nil {
+			return
+		}
+		implementorRefAccessibleFunction, err = implementorStruct.InvokerNew("ref_accessible")
+	})
+	return err
+}
+
+// RefAccessible is a representation of the C type atk_implementor_ref_accessible.
+func (recv *Implementor) RefAccessible() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := implementorRefAccessibleFunction_Set()
+	if err == nil {
+		ret = implementorRefAccessibleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 // ImplementorStruct creates an uninitialised Implementor.
 func ImplementorStruct() *Implementor {

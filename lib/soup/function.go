@@ -77,9 +77,9 @@ func CookieParse(header string, origin *URI) *Cookie {
 
 // UNSUPPORTED : C value 'soup_cookies_free' : parameter 'cookies' of type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_cookies_from_request' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_cookies_from_request' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_cookies_from_response' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_cookies_from_response' : return type 'GLib.SList' not supported
 
 // UNSUPPORTED : C value 'soup_cookies_to_cookie_header' : parameter 'cookies' of type 'GLib.SList' not supported
 
@@ -89,7 +89,7 @@ func CookieParse(header string, origin *URI) *Cookie {
 
 // UNSUPPORTED : C value 'soup_form_decode' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_form_decode_multipart' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_form_decode_multipart' : return type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'soup_form_encode' : parameter '...' of type 'nil' not supported
 
@@ -105,7 +105,34 @@ func CookieParse(header string, origin *URI) *Cookie {
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : return type 'Message' not supported
+var formRequestNewFromMultipartFunction *gi.Function
+var formRequestNewFromMultipartFunction_Once sync.Once
+
+func formRequestNewFromMultipartFunction_Set() error {
+	var err error
+	formRequestNewFromMultipartFunction_Once.Do(func() {
+		formRequestNewFromMultipartFunction, err = gi.FunctionInvokerNew("Soup", "form_request_new_from_multipart")
+	})
+	return err
+}
+
+// FormRequestNewFromMultipart is a representation of the C type soup_form_request_new_from_multipart.
+func FormRequestNewFromMultipart(uri string, multipart *Multipart) *Message {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(uri)
+	inArgs[1].SetPointer(multipart.native)
+
+	var ret gi.Argument
+
+	err := formRequestNewFromMultipartFunction_Set()
+	if err == nil {
+		ret = formRequestNewFromMultipartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Message{native: ret.Pointer()}
+
+	return retGo
+}
 
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
@@ -634,13 +661,39 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake' : parameter 'msg' of type 'Message' not supported
+var websocketClientVerifyHandshakeFunction *gi.Function
+var websocketClientVerifyHandshakeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+func websocketClientVerifyHandshakeFunction_Set() error {
+	var err error
+	websocketClientVerifyHandshakeFunction_Once.Do(func() {
+		websocketClientVerifyHandshakeFunction, err = gi.FunctionInvokerNew("Soup", "websocket_client_verify_handshake")
+	})
+	return err
+}
+
+// WebsocketClientVerifyHandshake is a representation of the C type soup_websocket_client_verify_handshake.
+func WebsocketClientVerifyHandshake(msg *Message) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := websocketClientVerifyHandshakeFunction_Set()
+	if err == nil {
+		ret = websocketClientVerifyHandshakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
 
 var websocketErrorGetQuarkFunction *gi.Function
 var websocketErrorGetQuarkFunction_Once sync.Once
@@ -668,13 +721,13 @@ func WebsocketErrorGetQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' of type 'nil' not supported
 
@@ -744,9 +797,9 @@ func XmlrpcFaultQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_new' : parameter 'params' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_message_set_fault' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_message_set_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_message_set_response' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_message_set_response' : parameter 'value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'params' of type 'GObject.ValueArray' not supported
 
@@ -787,9 +840,9 @@ func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams)
 
 // UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_set_fault' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_set_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_set_response' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_set_response' : parameter 'type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_variant_get_datetime' : parameter 'variant' of type 'GLib.Variant' not supported
 

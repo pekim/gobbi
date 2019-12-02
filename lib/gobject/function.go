@@ -4,6 +4,7 @@ package gobject
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -67,9 +68,54 @@ import (
 
 // UNSUPPORTED : C value 'g_cclosure_new_swap' : parameter 'callback_func' of type 'Callback' not supported
 
-// UNSUPPORTED : C value 'g_clear_object' : parameter 'object_ptr' of type 'Object' not supported
+var clearObjectFunction *gi.Function
+var clearObjectFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_clear_signal_handler' : parameter 'instance' of type 'Object' not supported
+func clearObjectFunction_Set() error {
+	var err error
+	clearObjectFunction_Once.Do(func() {
+		clearObjectFunction, err = gi.FunctionInvokerNew("GObject", "clear_object")
+	})
+	return err
+}
+
+// ClearObject is a representation of the C type g_clear_object.
+func ClearObject(objectPtr *Object) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(objectPtr.native)
+
+	err := clearObjectFunction_Set()
+	if err == nil {
+		clearObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var clearSignalHandlerFunction *gi.Function
+var clearSignalHandlerFunction_Once sync.Once
+
+func clearSignalHandlerFunction_Set() error {
+	var err error
+	clearSignalHandlerFunction_Once.Do(func() {
+		clearSignalHandlerFunction, err = gi.FunctionInvokerNew("GObject", "clear_signal_handler")
+	})
+	return err
+}
+
+// ClearSignalHandler is a representation of the C type g_clear_signal_handler.
+func ClearSignalHandler(handlerIdPtr uint64, instance *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(handlerIdPtr)
+	inArgs[1].SetPointer(instance.native)
+
+	err := clearSignalHandlerFunction_Set()
+	if err == nil {
+		clearSignalHandlerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_enum_complete_type_info' : parameter 'g_enum_type' of type 'GType' not supported
 
@@ -283,7 +329,34 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // UNSUPPORTED : C value 'g_param_spec_object' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_override' : parameter 'overridden' of type 'ParamSpec' not supported
+var paramSpecOverrideFunction *gi.Function
+var paramSpecOverrideFunction_Once sync.Once
+
+func paramSpecOverrideFunction_Set() error {
+	var err error
+	paramSpecOverrideFunction_Once.Do(func() {
+		paramSpecOverrideFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_override")
+	})
+	return err
+}
+
+// ParamSpecOverride_ is a representation of the C type g_param_spec_override.
+func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetPointer(overridden.native)
+
+	var ret gi.Argument
+
+	err := paramSpecOverrideFunction_Set()
+	if err == nil {
+		ret = paramSpecOverrideFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_param' : parameter 'param_type' of type 'GType' not supported
 
@@ -329,21 +402,155 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_param_spec_unichar' : parameter 'default_value' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'element_spec' of type 'ParamSpec' not supported
+// UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'type' of type 'GLib.VariantType' not supported
 
 // UNSUPPORTED : C value 'g_param_type_register_static' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_value_convert' : parameter 'pspec' of type 'ParamSpec' not supported
+var paramValueConvertFunction *gi.Function
+var paramValueConvertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_value_defaults' : parameter 'pspec' of type 'ParamSpec' not supported
+func paramValueConvertFunction_Set() error {
+	var err error
+	paramValueConvertFunction_Once.Do(func() {
+		paramValueConvertFunction, err = gi.FunctionInvokerNew("GObject", "param_value_convert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_param_value_set_default' : parameter 'pspec' of type 'ParamSpec' not supported
+// ParamValueConvert is a representation of the C type g_param_value_convert.
+func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(srcValue.native)
+	inArgs[2].SetPointer(destValue.native)
+	inArgs[3].SetBoolean(strictValidation)
 
-// UNSUPPORTED : C value 'g_param_value_validate' : parameter 'pspec' of type 'ParamSpec' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_param_values_cmp' : parameter 'pspec' of type 'ParamSpec' not supported
+	err := paramValueConvertFunction_Set()
+	if err == nil {
+		ret = paramValueConvertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var paramValueDefaultsFunction *gi.Function
+var paramValueDefaultsFunction_Once sync.Once
+
+func paramValueDefaultsFunction_Set() error {
+	var err error
+	paramValueDefaultsFunction_Once.Do(func() {
+		paramValueDefaultsFunction, err = gi.FunctionInvokerNew("GObject", "param_value_defaults")
+	})
+	return err
+}
+
+// ParamValueDefaults is a representation of the C type g_param_value_defaults.
+func ParamValueDefaults(pspec *ParamSpec, value *Value) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := paramValueDefaultsFunction_Set()
+	if err == nil {
+		ret = paramValueDefaultsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var paramValueSetDefaultFunction *gi.Function
+var paramValueSetDefaultFunction_Once sync.Once
+
+func paramValueSetDefaultFunction_Set() error {
+	var err error
+	paramValueSetDefaultFunction_Once.Do(func() {
+		paramValueSetDefaultFunction, err = gi.FunctionInvokerNew("GObject", "param_value_set_default")
+	})
+	return err
+}
+
+// ParamValueSetDefault is a representation of the C type g_param_value_set_default.
+func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
+
+	err := paramValueSetDefaultFunction_Set()
+	if err == nil {
+		paramValueSetDefaultFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paramValueValidateFunction *gi.Function
+var paramValueValidateFunction_Once sync.Once
+
+func paramValueValidateFunction_Set() error {
+	var err error
+	paramValueValidateFunction_Once.Do(func() {
+		paramValueValidateFunction, err = gi.FunctionInvokerNew("GObject", "param_value_validate")
+	})
+	return err
+}
+
+// ParamValueValidate is a representation of the C type g_param_value_validate.
+func ParamValueValidate(pspec *ParamSpec, value *Value) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := paramValueValidateFunction_Set()
+	if err == nil {
+		ret = paramValueValidateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var paramValuesCmpFunction *gi.Function
+var paramValuesCmpFunction_Once sync.Once
+
+func paramValuesCmpFunction_Set() error {
+	var err error
+	paramValuesCmpFunction_Once.Do(func() {
+		paramValuesCmpFunction, err = gi.FunctionInvokerNew("GObject", "param_values_cmp")
+	})
+	return err
+}
+
+// ParamValuesCmp is a representation of the C type g_param_values_cmp.
+func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value1.native)
+	inArgs[2].SetPointer(value2.native)
+
+	var ret gi.Argument
+
+	err := paramValuesCmpFunction_Set()
+	if err == nil {
+		ret = paramValuesCmpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_pointer_type_register_static' : return type 'GType' not supported
 
@@ -357,43 +564,275 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden_handler' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_signal_connect_closure' : parameter 'instance' of type 'Object' not supported
+var signalConnectClosureFunction *gi.Function
+var signalConnectClosureFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_connect_closure_by_id' : parameter 'instance' of type 'Object' not supported
+func signalConnectClosureFunction_Set() error {
+	var err error
+	signalConnectClosureFunction_Once.Do(func() {
+		signalConnectClosureFunction, err = gi.FunctionInvokerNew("GObject", "signal_connect_closure")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_signal_connect_data' : parameter 'instance' of type 'Object' not supported
+// SignalConnectClosure is a representation of the C type g_signal_connect_closure.
+func SignalConnectClosure(instance *Object, detailedSignal string, closure *Closure, after bool) uint64 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetString(detailedSignal)
+	inArgs[2].SetPointer(closure.native)
+	inArgs[3].SetBoolean(after)
+
+	var ret gi.Argument
+
+	err := signalConnectClosureFunction_Set()
+	if err == nil {
+		ret = signalConnectClosureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var signalConnectClosureByIdFunction *gi.Function
+var signalConnectClosureByIdFunction_Once sync.Once
+
+func signalConnectClosureByIdFunction_Set() error {
+	var err error
+	signalConnectClosureByIdFunction_Once.Do(func() {
+		signalConnectClosureByIdFunction, err = gi.FunctionInvokerNew("GObject", "signal_connect_closure_by_id")
+	})
+	return err
+}
+
+// SignalConnectClosureById is a representation of the C type g_signal_connect_closure_by_id.
+func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint32(signalId)
+	inArgs[2].SetUint32(uint32(detail))
+	inArgs[3].SetPointer(closure.native)
+	inArgs[4].SetBoolean(after)
+
+	var ret gi.Argument
+
+	err := signalConnectClosureByIdFunction_Set()
+	if err == nil {
+		ret = signalConnectClosureByIdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_signal_connect_data' : parameter 'c_handler' of type 'Callback' not supported
 
 // UNSUPPORTED : C value 'g_signal_connect_object' : parameter 'c_handler' of type 'Callback' not supported
 
-// UNSUPPORTED : C value 'g_signal_emit' : parameter 'instance' of type 'Object' not supported
+// UNSUPPORTED : C value 'g_signal_emit' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_signal_emit_by_name' : parameter 'instance' of type 'Object' not supported
+// UNSUPPORTED : C value 'g_signal_emit_by_name' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'var_args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_signal_get_invocation_hint' : parameter 'instance' of type 'Object' not supported
+var signalGetInvocationHintFunction *gi.Function
+var signalGetInvocationHintFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_handler_block' : parameter 'instance' of type 'Object' not supported
+func signalGetInvocationHintFunction_Set() error {
+	var err error
+	signalGetInvocationHintFunction_Once.Do(func() {
+		signalGetInvocationHintFunction, err = gi.FunctionInvokerNew("GObject", "signal_get_invocation_hint")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_signal_handler_disconnect' : parameter 'instance' of type 'Object' not supported
+// SignalGetInvocationHint is a representation of the C type g_signal_get_invocation_hint.
+func SignalGetInvocationHint(instance *Object) *SignalInvocationHint {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(instance.native)
 
-// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'instance' of type 'Object' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_signal_handler_is_connected' : parameter 'instance' of type 'Object' not supported
+	err := signalGetInvocationHintFunction_Set()
+	if err == nil {
+		ret = signalGetInvocationHintFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_signal_handler_unblock' : parameter 'instance' of type 'Object' not supported
+	retGo := &SignalInvocationHint{native: ret.Pointer()}
 
-// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'instance' of type 'Object' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_signal_handlers_destroy' : parameter 'instance' of type 'Object' not supported
+var signalHandlerBlockFunction *gi.Function
+var signalHandlerBlockFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'instance' of type 'Object' not supported
+func signalHandlerBlockFunction_Set() error {
+	var err error
+	signalHandlerBlockFunction_Once.Do(func() {
+		signalHandlerBlockFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_block")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'instance' of type 'Object' not supported
+// SignalHandlerBlock is a representation of the C type g_signal_handler_block.
+func SignalHandlerBlock(instance *Object, handlerId uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint64(handlerId)
 
-// UNSUPPORTED : C value 'g_signal_has_handler_pending' : parameter 'instance' of type 'Object' not supported
+	err := signalHandlerBlockFunction_Set()
+	if err == nil {
+		signalHandlerBlockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var signalHandlerDisconnectFunction *gi.Function
+var signalHandlerDisconnectFunction_Once sync.Once
+
+func signalHandlerDisconnectFunction_Set() error {
+	var err error
+	signalHandlerDisconnectFunction_Once.Do(func() {
+		signalHandlerDisconnectFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_disconnect")
+	})
+	return err
+}
+
+// SignalHandlerDisconnect is a representation of the C type g_signal_handler_disconnect.
+func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint64(handlerId)
+
+	err := signalHandlerDisconnectFunction_Set()
+	if err == nil {
+		signalHandlerDisconnectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'mask' of type 'SignalMatchType' not supported
+
+var signalHandlerIsConnectedFunction *gi.Function
+var signalHandlerIsConnectedFunction_Once sync.Once
+
+func signalHandlerIsConnectedFunction_Set() error {
+	var err error
+	signalHandlerIsConnectedFunction_Once.Do(func() {
+		signalHandlerIsConnectedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_is_connected")
+	})
+	return err
+}
+
+// SignalHandlerIsConnected is a representation of the C type g_signal_handler_is_connected.
+func SignalHandlerIsConnected(instance *Object, handlerId uint64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint64(handlerId)
+
+	var ret gi.Argument
+
+	err := signalHandlerIsConnectedFunction_Set()
+	if err == nil {
+		ret = signalHandlerIsConnectedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var signalHandlerUnblockFunction *gi.Function
+var signalHandlerUnblockFunction_Once sync.Once
+
+func signalHandlerUnblockFunction_Set() error {
+	var err error
+	signalHandlerUnblockFunction_Once.Do(func() {
+		signalHandlerUnblockFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_unblock")
+	})
+	return err
+}
+
+// SignalHandlerUnblock is a representation of the C type g_signal_handler_unblock.
+func SignalHandlerUnblock(instance *Object, handlerId uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint64(handlerId)
+
+	err := signalHandlerUnblockFunction_Set()
+	if err == nil {
+		signalHandlerUnblockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+
+var signalHandlersDestroyFunction *gi.Function
+var signalHandlersDestroyFunction_Once sync.Once
+
+func signalHandlersDestroyFunction_Set() error {
+	var err error
+	signalHandlersDestroyFunction_Once.Do(func() {
+		signalHandlersDestroyFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_destroy")
+	})
+	return err
+}
+
+// SignalHandlersDestroy is a representation of the C type g_signal_handlers_destroy.
+func SignalHandlersDestroy(instance *Object) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+
+	err := signalHandlersDestroyFunction_Set()
+	if err == nil {
+		signalHandlersDestroyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+
+// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+
+var signalHasHandlerPendingFunction *gi.Function
+var signalHasHandlerPendingFunction_Once sync.Once
+
+func signalHasHandlerPendingFunction_Set() error {
+	var err error
+	signalHasHandlerPendingFunction_Once.Do(func() {
+		signalHasHandlerPendingFunction, err = gi.FunctionInvokerNew("GObject", "signal_has_handler_pending")
+	})
+	return err
+}
+
+// SignalHasHandlerPending is a representation of the C type g_signal_has_handler_pending.
+func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint32(signalId)
+	inArgs[2].SetUint32(uint32(detail))
+	inArgs[3].SetBoolean(mayBeBlocked)
+
+	var ret gi.Argument
+
+	err := signalHasHandlerPendingFunction_Set()
+	if err == nil {
+		ret = signalHasHandlerPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_signal_list_ids' : parameter 'itype' of type 'GType' not supported
 
@@ -496,9 +935,56 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_stop_emission' : parameter 'instance' of type 'Object' not supported
+var signalStopEmissionFunction *gi.Function
+var signalStopEmissionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_stop_emission_by_name' : parameter 'instance' of type 'Object' not supported
+func signalStopEmissionFunction_Set() error {
+	var err error
+	signalStopEmissionFunction_Once.Do(func() {
+		signalStopEmissionFunction, err = gi.FunctionInvokerNew("GObject", "signal_stop_emission")
+	})
+	return err
+}
+
+// SignalStopEmission is a representation of the C type g_signal_stop_emission.
+func SignalStopEmission(instance *Object, signalId uint32, detail glib.Quark) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetUint32(signalId)
+	inArgs[2].SetUint32(uint32(detail))
+
+	err := signalStopEmissionFunction_Set()
+	if err == nil {
+		signalStopEmissionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var signalStopEmissionByNameFunction *gi.Function
+var signalStopEmissionByNameFunction_Once sync.Once
+
+func signalStopEmissionByNameFunction_Set() error {
+	var err error
+	signalStopEmissionByNameFunction_Once.Do(func() {
+		signalStopEmissionByNameFunction, err = gi.FunctionInvokerNew("GObject", "signal_stop_emission_by_name")
+	})
+	return err
+}
+
+// SignalStopEmissionByName is a representation of the C type g_signal_stop_emission_by_name.
+func SignalStopEmissionByName(instance *Object, detailedSignal string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.native)
+	inArgs[1].SetString(detailedSignal)
+
+	err := signalStopEmissionByNameFunction_Set()
+	if err == nil {
+		signalStopEmissionByNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_signal_type_cclosure_new' : parameter 'itype' of type 'GType' not supported
 

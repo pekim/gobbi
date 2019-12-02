@@ -104,7 +104,38 @@ func (recv *Closure) SetFieldIsInvalid(value uint32) {
 
 // UNSUPPORTED : C value 'marshal' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'g_closure_new_object' : parameter 'object' of type 'Object' not supported
+var closureNewObjectFunction *gi.Function
+var closureNewObjectFunction_Once sync.Once
+
+func closureNewObjectFunction_Set() error {
+	var err error
+	closureNewObjectFunction_Once.Do(func() {
+		err = closureStruct_Set()
+		if err != nil {
+			return
+		}
+		closureNewObjectFunction, err = closureStruct.InvokerNew("new_object")
+	})
+	return err
+}
+
+// ClosureNewObject is a representation of the C type g_closure_new_object.
+func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint32(sizeofClosure)
+	inArgs[1].SetPointer(object.native)
+
+	var ret gi.Argument
+
+	err := closureNewObjectFunction_Set()
+	if err == nil {
+		ret = closureNewObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Closure{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_closure_new_simple' : parameter 'data' of type 'gpointer' not supported
 
@@ -787,11 +818,70 @@ func (recv *ObjectClass) SetFieldGTypeClass(value *TypeClass) {
 
 // UNSUPPORTED : C value 'constructed' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'g_object_class_find_property' : return type 'ParamSpec' not supported
+var objectClassFindPropertyFunction *gi.Function
+var objectClassFindPropertyFunction_Once sync.Once
+
+func objectClassFindPropertyFunction_Set() error {
+	var err error
+	objectClassFindPropertyFunction_Once.Do(func() {
+		err = objectClassStruct_Set()
+		if err != nil {
+			return
+		}
+		objectClassFindPropertyFunction, err = objectClassStruct.InvokerNew("find_property")
+	})
+	return err
+}
+
+// FindProperty is a representation of the C type g_object_class_find_property.
+func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(propertyName)
+
+	var ret gi.Argument
+
+	err := objectClassFindPropertyFunction_Set()
+	if err == nil {
+		ret = objectClassFindPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_object_class_install_properties' : parameter 'pspecs' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_class_install_property' : parameter 'pspec' of type 'ParamSpec' not supported
+var objectClassInstallPropertyFunction *gi.Function
+var objectClassInstallPropertyFunction_Once sync.Once
+
+func objectClassInstallPropertyFunction_Set() error {
+	var err error
+	objectClassInstallPropertyFunction_Once.Do(func() {
+		err = objectClassStruct_Set()
+		if err != nil {
+			return
+		}
+		objectClassInstallPropertyFunction, err = objectClassStruct.InvokerNew("install_property")
+	})
+	return err
+}
+
+// InstallProperty is a representation of the C type g_object_class_install_property.
+func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(propertyId)
+	inArgs[2].SetPointer(pspec.native)
+
+	err := objectClassInstallPropertyFunction_Set()
+	if err == nil {
+		objectClassInstallPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var objectClassListPropertiesFunction *gi.Function
 var objectClassListPropertiesFunction_Once sync.Once
@@ -885,9 +975,19 @@ type ObjectConstructParam struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pspec' : for field getter : no Go type for 'ParamSpec'
+// FieldPspec returns the C field 'pspec'.
+func (recv *ObjectConstructParam) FieldPspec() *ParamSpec {
+	argValue := gi.FieldGet(objectConstructParamStruct, recv.native, "pspec")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'pspec' : for field setter : no Go type for 'ParamSpec'
+// SetFieldPspec sets the value of the C field 'pspec'.
+func (recv *ObjectConstructParam) SetFieldPspec(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(objectConstructParamStruct, recv.native, "pspec", argValue)
+}
 
 // FieldValue returns the C field 'value'.
 func (recv *ObjectConstructParam) FieldValue() *Value {
@@ -997,7 +1097,7 @@ type ParamSpecPool struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_param_spec_pool_insert' : parameter 'pspec' of type 'ParamSpec' not supported
+// UNSUPPORTED : C value 'g_param_spec_pool_insert' : parameter 'owner_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_pool_list' : parameter 'owner_type' of type 'GType' not supported
 
@@ -1005,7 +1105,34 @@ type ParamSpecPool struct {
 
 // UNSUPPORTED : C value 'g_param_spec_pool_lookup' : parameter 'owner_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_pool_remove' : parameter 'pspec' of type 'ParamSpec' not supported
+var paramSpecPoolRemoveFunction *gi.Function
+var paramSpecPoolRemoveFunction_Once sync.Once
+
+func paramSpecPoolRemoveFunction_Set() error {
+	var err error
+	paramSpecPoolRemoveFunction_Once.Do(func() {
+		err = paramSpecPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecPoolRemoveFunction, err = paramSpecPoolStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_param_spec_pool_remove.
+func (recv *ParamSpecPool) Remove(pspec *ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(pspec.native)
+
+	err := paramSpecPoolRemoveFunction_Set()
+	if err == nil {
+		paramSpecPoolRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // ParamSpecPoolStruct creates an uninitialised ParamSpecPool.
 func ParamSpecPoolStruct() *ParamSpecPool {
@@ -2053,9 +2180,69 @@ func (recv *Value) Copy(destValue *Value) {
 
 // UNSUPPORTED : C value 'g_value_dup_boxed' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_value_dup_object' : return type 'Object' not supported
+var valueDupObjectFunction *gi.Function
+var valueDupObjectFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_dup_param' : return type 'ParamSpec' not supported
+func valueDupObjectFunction_Set() error {
+	var err error
+	valueDupObjectFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueDupObjectFunction, err = valueStruct.InvokerNew("dup_object")
+	})
+	return err
+}
+
+// DupObject is a representation of the C type g_value_dup_object.
+func (recv *Value) DupObject() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueDupObjectFunction_Set()
+	if err == nil {
+		ret = valueDupObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var valueDupParamFunction *gi.Function
+var valueDupParamFunction_Once sync.Once
+
+func valueDupParamFunction_Set() error {
+	var err error
+	valueDupParamFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueDupParamFunction, err = valueStruct.InvokerNew("dup_param")
+	})
+	return err
+}
+
+// DupParam is a representation of the C type g_value_dup_param.
+func (recv *Value) DupParam() *ParamSpec {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueDupParamFunction_Set()
+	if err == nil {
+		ret = valueDupParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
 
 var valueDupStringFunction *gi.Function
 var valueDupStringFunction_Once sync.Once
@@ -2415,9 +2602,69 @@ func (recv *Value) GetLong() int64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_get_object' : return type 'Object' not supported
+var valueGetObjectFunction *gi.Function
+var valueGetObjectFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_get_param' : return type 'ParamSpec' not supported
+func valueGetObjectFunction_Set() error {
+	var err error
+	valueGetObjectFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetObjectFunction, err = valueStruct.InvokerNew("get_object")
+	})
+	return err
+}
+
+// GetObject is a representation of the C type g_value_get_object.
+func (recv *Value) GetObject() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetObjectFunction_Set()
+	if err == nil {
+		ret = valueGetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var valueGetParamFunction *gi.Function
+var valueGetParamFunction_Once sync.Once
+
+func valueGetParamFunction_Set() error {
+	var err error
+	valueGetParamFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetParamFunction, err = valueStruct.InvokerNew("get_param")
+	})
+	return err
+}
+
+// GetParam is a representation of the C type g_value_get_param.
+func (recv *Value) GetParam() *ParamSpec {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetParamFunction_Set()
+	if err == nil {
+		ret = valueGetParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_value_get_pointer' : return type 'gpointer' not supported
 
@@ -2949,13 +3196,94 @@ func (recv *Value) SetLong(vLong int64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_object' : parameter 'v_object' of type 'Object' not supported
+var valueSetObjectFunction *gi.Function
+var valueSetObjectFunction_Once sync.Once
+
+func valueSetObjectFunction_Set() error {
+	var err error
+	valueSetObjectFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetObjectFunction, err = valueStruct.InvokerNew("set_object")
+	})
+	return err
+}
+
+// SetObject is a representation of the C type g_value_set_object.
+func (recv *Value) SetObject(vObject *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(vObject.native)
+
+	err := valueSetObjectFunction_Set()
+	if err == nil {
+		valueSetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_value_set_object_take_ownership' : parameter 'v_object' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_value_set_param' : parameter 'param' of type 'ParamSpec' not supported
+var valueSetParamFunction *gi.Function
+var valueSetParamFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_set_param_take_ownership' : parameter 'param' of type 'ParamSpec' not supported
+func valueSetParamFunction_Set() error {
+	var err error
+	valueSetParamFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetParamFunction, err = valueStruct.InvokerNew("set_param")
+	})
+	return err
+}
+
+// SetParam is a representation of the C type g_value_set_param.
+func (recv *Value) SetParam(param *ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(param.native)
+
+	err := valueSetParamFunction_Set()
+	if err == nil {
+		valueSetParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var valueSetParamTakeOwnershipFunction *gi.Function
+var valueSetParamTakeOwnershipFunction_Once sync.Once
+
+func valueSetParamTakeOwnershipFunction_Set() error {
+	var err error
+	valueSetParamTakeOwnershipFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetParamTakeOwnershipFunction, err = valueStruct.InvokerNew("set_param_take_ownership")
+	})
+	return err
+}
+
+// SetParamTakeOwnership is a representation of the C type g_value_set_param_take_ownership.
+func (recv *Value) SetParamTakeOwnership(param *ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(param.native)
+
+	err := valueSetParamTakeOwnershipFunction_Set()
+	if err == nil {
+		valueSetParamTakeOwnershipFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_value_set_pointer' : parameter 'v_pointer' of type 'gpointer' not supported
 
@@ -3199,7 +3527,34 @@ func (recv *Value) SetUlong(vUlong uint64) {
 
 // UNSUPPORTED : C value 'g_value_take_object' : parameter 'v_object' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_value_take_param' : parameter 'param' of type 'ParamSpec' not supported
+var valueTakeParamFunction *gi.Function
+var valueTakeParamFunction_Once sync.Once
+
+func valueTakeParamFunction_Set() error {
+	var err error
+	valueTakeParamFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueTakeParamFunction, err = valueStruct.InvokerNew("take_param")
+	})
+	return err
+}
+
+// TakeParam is a representation of the C type g_value_take_param.
+func (recv *Value) TakeParam(param *ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(param.native)
+
+	err := valueTakeParamFunction_Set()
+	if err == nil {
+		valueTakeParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueTakeStringFunction *gi.Function
 var valueTakeStringFunction_Once sync.Once
@@ -3656,11 +4011,95 @@ func (recv *WeakRef) Clear() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_weak_ref_get' : return type 'Object' not supported
+var weakRefGetFunction *gi.Function
+var weakRefGetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_weak_ref_init' : parameter 'object' of type 'Object' not supported
+func weakRefGetFunction_Set() error {
+	var err error
+	weakRefGetFunction_Once.Do(func() {
+		err = weakRefStruct_Set()
+		if err != nil {
+			return
+		}
+		weakRefGetFunction, err = weakRefStruct.InvokerNew("get")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_weak_ref_set' : parameter 'object' of type 'Object' not supported
+// Get is a representation of the C type g_weak_ref_get.
+func (recv *WeakRef) Get() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := weakRefGetFunction_Set()
+	if err == nil {
+		ret = weakRefGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var weakRefInitFunction *gi.Function
+var weakRefInitFunction_Once sync.Once
+
+func weakRefInitFunction_Set() error {
+	var err error
+	weakRefInitFunction_Once.Do(func() {
+		err = weakRefStruct_Set()
+		if err != nil {
+			return
+		}
+		weakRefInitFunction, err = weakRefStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type g_weak_ref_init.
+func (recv *WeakRef) Init(object *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(object.native)
+
+	err := weakRefInitFunction_Set()
+	if err == nil {
+		weakRefInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var weakRefSetFunction *gi.Function
+var weakRefSetFunction_Once sync.Once
+
+func weakRefSetFunction_Set() error {
+	var err error
+	weakRefSetFunction_Once.Do(func() {
+		err = weakRefStruct_Set()
+		if err != nil {
+			return
+		}
+		weakRefSetFunction, err = weakRefStruct.InvokerNew("set")
+	})
+	return err
+}
+
+// Set is a representation of the C type g_weak_ref_set.
+func (recv *WeakRef) Set(object *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(object.native)
+
+	err := weakRefSetFunction_Set()
+	if err == nil {
+		weakRefSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // WeakRefStruct creates an uninitialised WeakRef.
 func WeakRefStruct() *WeakRef {

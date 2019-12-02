@@ -43,7 +43,37 @@ func (recv *Buffer) SetFieldPriv(value *BufferPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_buffer_new' : parameter 'table' of type 'Gtk.TextTagTable' not supported
 
-// UNSUPPORTED : C value 'gtk_source_buffer_new_with_language' : parameter 'language' of type 'Language' not supported
+var bufferNewWithLanguageFunction *gi.Function
+var bufferNewWithLanguageFunction_Once sync.Once
+
+func bufferNewWithLanguageFunction_Set() error {
+	var err error
+	bufferNewWithLanguageFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferNewWithLanguageFunction, err = bufferStruct.InvokerNew("new_with_language")
+	})
+	return err
+}
+
+// BufferNewWithLanguage is a representation of the C type gtk_source_buffer_new_with_language.
+func BufferNewWithLanguage(language *Language) *Buffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(language.native)
+
+	var ret gi.Argument
+
+	err := bufferNewWithLanguageFunction_Set()
+	if err == nil {
+		ret = bufferNewWithLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_buffer_backward_iter_to_source_mark' : parameter 'iter' of type 'Gtk.TextIter' not supported
 
@@ -275,7 +305,37 @@ func (recv *Buffer) GetImplicitTrailingNewline() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_language' : return type 'Language' not supported
+var bufferGetLanguageFunction *gi.Function
+var bufferGetLanguageFunction_Once sync.Once
+
+func bufferGetLanguageFunction_Set() error {
+	var err error
+	bufferGetLanguageFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferGetLanguageFunction, err = bufferStruct.InvokerNew("get_language")
+	})
+	return err
+}
+
+// GetLanguage is a representation of the C type gtk_source_buffer_get_language.
+func (recv *Buffer) GetLanguage() *Language {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferGetLanguageFunction_Set()
+	if err == nil {
+		ret = bufferGetLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Language{native: ret.Pointer()}
+
+	return retGo
+}
 
 var bufferGetMaxUndoLevelsFunction *gi.Function
 var bufferGetMaxUndoLevelsFunction_Once sync.Once
@@ -313,7 +373,37 @@ func (recv *Buffer) GetMaxUndoLevels() int32 {
 
 // UNSUPPORTED : C value 'gtk_source_buffer_get_source_marks_at_line' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_style_scheme' : return type 'StyleScheme' not supported
+var bufferGetStyleSchemeFunction *gi.Function
+var bufferGetStyleSchemeFunction_Once sync.Once
+
+func bufferGetStyleSchemeFunction_Set() error {
+	var err error
+	bufferGetStyleSchemeFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferGetStyleSchemeFunction, err = bufferStruct.InvokerNew("get_style_scheme")
+	})
+	return err
+}
+
+// GetStyleScheme is a representation of the C type gtk_source_buffer_get_style_scheme.
+func (recv *Buffer) GetStyleScheme() *StyleScheme {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferGetStyleSchemeFunction_Set()
+	if err == nil {
+		ret = bufferGetStyleSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StyleScheme{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_buffer_get_undo_manager' : return type 'UndoManager' not supported
 
@@ -442,7 +532,34 @@ func (recv *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_set_language' : parameter 'language' of type 'Language' not supported
+var bufferSetLanguageFunction *gi.Function
+var bufferSetLanguageFunction_Once sync.Once
+
+func bufferSetLanguageFunction_Set() error {
+	var err error
+	bufferSetLanguageFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferSetLanguageFunction, err = bufferStruct.InvokerNew("set_language")
+	})
+	return err
+}
+
+// SetLanguage is a representation of the C type gtk_source_buffer_set_language.
+func (recv *Buffer) SetLanguage(language *Language) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(language.native)
+
+	err := bufferSetLanguageFunction_Set()
+	if err == nil {
+		bufferSetLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferSetMaxUndoLevelsFunction *gi.Function
 var bufferSetMaxUndoLevelsFunction_Once sync.Once
@@ -473,7 +590,34 @@ func (recv *Buffer) SetMaxUndoLevels(maxUndoLevels int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_set_style_scheme' : parameter 'scheme' of type 'StyleScheme' not supported
+var bufferSetStyleSchemeFunction *gi.Function
+var bufferSetStyleSchemeFunction_Once sync.Once
+
+func bufferSetStyleSchemeFunction_Set() error {
+	var err error
+	bufferSetStyleSchemeFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferSetStyleSchemeFunction, err = bufferStruct.InvokerNew("set_style_scheme")
+	})
+	return err
+}
+
+// SetStyleScheme is a representation of the C type gtk_source_buffer_set_style_scheme.
+func (recv *Buffer) SetStyleScheme(scheme *StyleScheme) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(scheme.native)
+
+	err := bufferSetStyleSchemeFunction_Set()
+	if err == nil {
+		bufferSetStyleSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_buffer_set_undo_manager' : parameter 'manager' of type 'UndoManager' not supported
 
@@ -572,11 +716,71 @@ func (recv *Completion) BlockInteractive() {
 
 // UNSUPPORTED : C value 'gtk_source_completion_create_context' : parameter 'position' of type 'Gtk.TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_get_info_window' : return type 'CompletionInfo' not supported
+var completionGetInfoWindowFunction *gi.Function
+var completionGetInfoWindowFunction_Once sync.Once
+
+func completionGetInfoWindowFunction_Set() error {
+	var err error
+	completionGetInfoWindowFunction_Once.Do(func() {
+		err = completionStruct_Set()
+		if err != nil {
+			return
+		}
+		completionGetInfoWindowFunction, err = completionStruct.InvokerNew("get_info_window")
+	})
+	return err
+}
+
+// GetInfoWindow is a representation of the C type gtk_source_completion_get_info_window.
+func (recv *Completion) GetInfoWindow() *CompletionInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := completionGetInfoWindowFunction_Set()
+	if err == nil {
+		ret = completionGetInfoWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CompletionInfo{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_completion_get_providers' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_get_view' : return type 'View' not supported
+var completionGetViewFunction *gi.Function
+var completionGetViewFunction_Once sync.Once
+
+func completionGetViewFunction_Set() error {
+	var err error
+	completionGetViewFunction_Once.Do(func() {
+		err = completionStruct_Set()
+		if err != nil {
+			return
+		}
+		completionGetViewFunction, err = completionStruct.InvokerNew("get_view")
+	})
+	return err
+}
+
+// GetView is a representation of the C type gtk_source_completion_get_view.
+func (recv *Completion) GetView() *View {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := completionGetViewFunction_Set()
+	if err == nil {
+		ret = completionGetViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &View{native: ret.Pointer()}
+
+	return retGo
+}
 
 var completionHideFunction *gi.Function
 var completionHideFunction_Once sync.Once
@@ -742,7 +946,35 @@ func (recv *CompletionInfo) SetFieldPriv(value *CompletionInfoPrivate) {
 	gi.FieldSet(completionInfoStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_info_new' : return type 'CompletionInfo' not supported
+var completionInfoNewFunction *gi.Function
+var completionInfoNewFunction_Once sync.Once
+
+func completionInfoNewFunction_Set() error {
+	var err error
+	completionInfoNewFunction_Once.Do(func() {
+		err = completionInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		completionInfoNewFunction, err = completionInfoStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CompletionInfoNew is a representation of the C type gtk_source_completion_info_new.
+func CompletionInfoNew() *CompletionInfo {
+
+	var ret gi.Argument
+
+	err := completionInfoNewFunction_Set()
+	if err == nil {
+		ret = completionInfoNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &CompletionInfo{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_completion_info_get_widget' : return type 'Gtk.Widget' not supported
 
@@ -785,7 +1017,40 @@ func (recv *CompletionItem) SetFieldPriv(value *CompletionItemPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_completion_item_new' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_item_new_from_stock' : return type 'CompletionItem' not supported
+var completionItemNewFromStockFunction *gi.Function
+var completionItemNewFromStockFunction_Once sync.Once
+
+func completionItemNewFromStockFunction_Set() error {
+	var err error
+	completionItemNewFromStockFunction_Once.Do(func() {
+		err = completionItemStruct_Set()
+		if err != nil {
+			return
+		}
+		completionItemNewFromStockFunction, err = completionItemStruct.InvokerNew("new_from_stock")
+	})
+	return err
+}
+
+// CompletionItemNewFromStock is a representation of the C type gtk_source_completion_item_new_from_stock.
+func CompletionItemNewFromStock(label string, text string, stock string, info string) *CompletionItem {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(label)
+	inArgs[1].SetString(text)
+	inArgs[2].SetString(stock)
+	inArgs[3].SetString(info)
+
+	var ret gi.Argument
+
+	err := completionItemNewFromStockFunction_Set()
+	if err == nil {
+		ret = completionItemNewFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CompletionItem{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_completion_item_new_with_markup' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
 
@@ -1010,7 +1275,35 @@ func (recv *File) SetFieldPriv(value *FilePrivate) {
 	gi.FieldSet(fileStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_new' : return type 'File' not supported
+var fileNewFunction *gi.Function
+var fileNewFunction_Once sync.Once
+
+func fileNewFunction_Set() error {
+	var err error
+	fileNewFunction_Once.Do(func() {
+		err = fileStruct_Set()
+		if err != nil {
+			return
+		}
+		fileNewFunction, err = fileStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FileNew is a representation of the C type gtk_source_file_new.
+func FileNew() *File {
+
+	var ret gi.Argument
+
+	err := fileNewFunction_Set()
+	if err == nil {
+		ret = fileNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &File{native: ret.Pointer()}
+
+	return retGo
+}
 
 var fileCheckFileOnDiskFunction *gi.Function
 var fileCheckFileOnDiskFunction_Once sync.Once
@@ -1243,11 +1536,72 @@ func (recv *FileLoader) SetFieldPriv(value *FileLoaderPrivate) {
 	gi.FieldSet(fileLoaderStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_new' : parameter 'buffer' of type 'Buffer' not supported
+var fileLoaderNewFunction *gi.Function
+var fileLoaderNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_new_from_stream' : parameter 'buffer' of type 'Buffer' not supported
+func fileLoaderNewFunction_Set() error {
+	var err error
+	fileLoaderNewFunction_Once.Do(func() {
+		err = fileLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderNewFunction, err = fileLoaderStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_get_buffer' : return type 'Buffer' not supported
+// FileLoaderNew is a representation of the C type gtk_source_file_loader_new.
+func FileLoaderNew(buffer *Buffer, file *File) *FileLoader {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(file.native)
+
+	var ret gi.Argument
+
+	err := fileLoaderNewFunction_Set()
+	if err == nil {
+		ret = fileLoaderNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileLoader{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_source_file_loader_new_from_stream' : parameter 'stream' of type 'Gio.InputStream' not supported
+
+var fileLoaderGetBufferFunction *gi.Function
+var fileLoaderGetBufferFunction_Once sync.Once
+
+func fileLoaderGetBufferFunction_Set() error {
+	var err error
+	fileLoaderGetBufferFunction_Once.Do(func() {
+		err = fileLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderGetBufferFunction, err = fileLoaderStruct.InvokerNew("get_buffer")
+	})
+	return err
+}
+
+// GetBuffer is a representation of the C type gtk_source_file_loader_get_buffer.
+func (recv *FileLoader) GetBuffer() *Buffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileLoaderGetBufferFunction_Set()
+	if err == nil {
+		ret = fileLoaderGetBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_get_compression_type' : return type 'CompressionType' not supported
 
@@ -1283,7 +1637,37 @@ func (recv *FileLoader) GetEncoding() *Encoding {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_get_file' : return type 'File' not supported
+var fileLoaderGetFileFunction *gi.Function
+var fileLoaderGetFileFunction_Once sync.Once
+
+func fileLoaderGetFileFunction_Set() error {
+	var err error
+	fileLoaderGetFileFunction_Once.Do(func() {
+		err = fileLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderGetFileFunction, err = fileLoaderStruct.InvokerNew("get_file")
+	})
+	return err
+}
+
+// GetFile is a representation of the C type gtk_source_file_loader_get_file.
+func (recv *FileLoader) GetFile() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileLoaderGetFileFunction_Set()
+	if err == nil {
+		ret = fileLoaderGetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &File{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_get_input_stream' : return type 'Gio.InputStream' not supported
 
@@ -1330,11 +1714,72 @@ func (recv *FileSaver) SetFieldPriv(value *FileSaverPrivate) {
 	gi.FieldSet(fileSaverStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_new' : parameter 'buffer' of type 'Buffer' not supported
+var fileSaverNewFunction *gi.Function
+var fileSaverNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_new_with_target' : parameter 'buffer' of type 'Buffer' not supported
+func fileSaverNewFunction_Set() error {
+	var err error
+	fileSaverNewFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverNewFunction, err = fileSaverStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_buffer' : return type 'Buffer' not supported
+// FileSaverNew is a representation of the C type gtk_source_file_saver_new.
+func FileSaverNew(buffer *Buffer, file *File) *FileSaver {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(file.native)
+
+	var ret gi.Argument
+
+	err := fileSaverNewFunction_Set()
+	if err == nil {
+		ret = fileSaverNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileSaver{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_source_file_saver_new_with_target' : parameter 'target_location' of type 'Gio.File' not supported
+
+var fileSaverGetBufferFunction *gi.Function
+var fileSaverGetBufferFunction_Once sync.Once
+
+func fileSaverGetBufferFunction_Set() error {
+	var err error
+	fileSaverGetBufferFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetBufferFunction, err = fileSaverStruct.InvokerNew("get_buffer")
+	})
+	return err
+}
+
+// GetBuffer is a representation of the C type gtk_source_file_saver_get_buffer.
+func (recv *FileSaver) GetBuffer() *Buffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileSaverGetBufferFunction_Set()
+	if err == nil {
+		ret = fileSaverGetBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_get_compression_type' : return type 'CompressionType' not supported
 
@@ -1370,7 +1815,37 @@ func (recv *FileSaver) GetEncoding() *Encoding {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_file' : return type 'File' not supported
+var fileSaverGetFileFunction *gi.Function
+var fileSaverGetFileFunction_Once sync.Once
+
+func fileSaverGetFileFunction_Set() error {
+	var err error
+	fileSaverGetFileFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetFileFunction, err = fileSaverStruct.InvokerNew("get_file")
+	})
+	return err
+}
+
+// GetFile is a representation of the C type gtk_source_file_saver_get_file.
+func (recv *FileSaver) GetFile() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileSaverGetFileFunction_Set()
+	if err == nil {
+		ret = fileSaverGetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &File{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_get_flags' : return type 'FileSaverFlags' not supported
 
@@ -1480,15 +1955,109 @@ func (recv *Gutter) GetPadding(xpad int32, ypad int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_get_renderer_at_pos' : return type 'GutterRenderer' not supported
+var gutterGetRendererAtPosFunction *gi.Function
+var gutterGetRendererAtPosFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_gutter_get_view' : return type 'View' not supported
+func gutterGetRendererAtPosFunction_Set() error {
+	var err error
+	gutterGetRendererAtPosFunction_Once.Do(func() {
+		err = gutterStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterGetRendererAtPosFunction, err = gutterStruct.InvokerNew("get_renderer_at_pos")
+	})
+	return err
+}
+
+// GetRendererAtPos is a representation of the C type gtk_source_gutter_get_renderer_at_pos.
+func (recv *Gutter) GetRendererAtPos(x int32, y int32) *GutterRenderer {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(x)
+	inArgs[2].SetInt32(y)
+
+	var ret gi.Argument
+
+	err := gutterGetRendererAtPosFunction_Set()
+	if err == nil {
+		ret = gutterGetRendererAtPosFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &GutterRenderer{native: ret.Pointer()}
+
+	return retGo
+}
+
+var gutterGetViewFunction *gi.Function
+var gutterGetViewFunction_Once sync.Once
+
+func gutterGetViewFunction_Set() error {
+	var err error
+	gutterGetViewFunction_Once.Do(func() {
+		err = gutterStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterGetViewFunction, err = gutterStruct.InvokerNew("get_view")
+	})
+	return err
+}
+
+// GetView is a representation of the C type gtk_source_gutter_get_view.
+func (recv *Gutter) GetView() *View {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := gutterGetViewFunction_Set()
+	if err == nil {
+		ret = gutterGetViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &View{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_gutter_get_window' : return type 'Gdk.Window' not supported
 
 // UNSUPPORTED : C value 'gtk_source_gutter_get_window_type' : return type 'Gtk.TextWindowType' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_insert' : parameter 'renderer' of type 'GutterRenderer' not supported
+var gutterInsertFunction *gi.Function
+var gutterInsertFunction_Once sync.Once
+
+func gutterInsertFunction_Set() error {
+	var err error
+	gutterInsertFunction_Once.Do(func() {
+		err = gutterStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterInsertFunction, err = gutterStruct.InvokerNew("insert")
+	})
+	return err
+}
+
+// Insert is a representation of the C type gtk_source_gutter_insert.
+func (recv *Gutter) Insert(renderer *GutterRenderer, position int32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
+	inArgs[2].SetInt32(position)
+
+	var ret gi.Argument
+
+	err := gutterInsertFunction_Set()
+	if err == nil {
+		ret = gutterInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var gutterQueueDrawFunction *gi.Function
 var gutterQueueDrawFunction_Once sync.Once
@@ -1518,9 +2087,64 @@ func (recv *Gutter) QueueDraw() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_remove' : parameter 'renderer' of type 'GutterRenderer' not supported
+var gutterRemoveFunction *gi.Function
+var gutterRemoveFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_gutter_reorder' : parameter 'renderer' of type 'GutterRenderer' not supported
+func gutterRemoveFunction_Set() error {
+	var err error
+	gutterRemoveFunction_Once.Do(func() {
+		err = gutterStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterRemoveFunction, err = gutterStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type gtk_source_gutter_remove.
+func (recv *Gutter) Remove(renderer *GutterRenderer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
+
+	err := gutterRemoveFunction_Set()
+	if err == nil {
+		gutterRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var gutterReorderFunction *gi.Function
+var gutterReorderFunction_Once sync.Once
+
+func gutterReorderFunction_Set() error {
+	var err error
+	gutterReorderFunction_Once.Do(func() {
+		err = gutterStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterReorderFunction, err = gutterStruct.InvokerNew("reorder")
+	})
+	return err
+}
+
+// Reorder is a representation of the C type gtk_source_gutter_reorder.
+func (recv *Gutter) Reorder(renderer *GutterRenderer, position int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
+	inArgs[2].SetInt32(position)
+
+	err := gutterReorderFunction_Set()
+	if err == nil {
+		gutterReorderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterSetPaddingFunction *gi.Function
 var gutterSetPaddingFunction_Once sync.Once
@@ -1944,7 +2568,35 @@ type GutterRendererPixbuf struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_pixbuf_new' : return type 'GutterRendererPixbuf' not supported
+var gutterRendererPixbufNewFunction *gi.Function
+var gutterRendererPixbufNewFunction_Once sync.Once
+
+func gutterRendererPixbufNewFunction_Set() error {
+	var err error
+	gutterRendererPixbufNewFunction_Once.Do(func() {
+		err = gutterRendererPixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererPixbufNewFunction, err = gutterRendererPixbufStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// GutterRendererPixbufNew is a representation of the C type gtk_source_gutter_renderer_pixbuf_new.
+func GutterRendererPixbufNew() *GutterRendererPixbuf {
+
+	var ret gi.Argument
+
+	err := gutterRendererPixbufNewFunction_Set()
+	if err == nil {
+		ret = gutterRendererPixbufNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &GutterRendererPixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_pixbuf_get_gicon' : return type 'Gio.Icon' not supported
 
@@ -2091,7 +2743,35 @@ type GutterRendererText struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_text_new' : return type 'GutterRendererText' not supported
+var gutterRendererTextNewFunction *gi.Function
+var gutterRendererTextNewFunction_Once sync.Once
+
+func gutterRendererTextNewFunction_Set() error {
+	var err error
+	gutterRendererTextNewFunction_Once.Do(func() {
+		err = gutterRendererTextStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererTextNewFunction, err = gutterRendererTextStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// GutterRendererTextNew is a representation of the C type gtk_source_gutter_renderer_text_new.
+func GutterRendererTextNew() *GutterRendererText {
+
+	var ret gi.Argument
+
+	err := gutterRendererTextNewFunction_Set()
+	if err == nil {
+		ret = gutterRendererTextNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &GutterRendererText{native: ret.Pointer()}
+
+	return retGo
+}
 
 var gutterRendererTextMeasureFunction *gi.Function
 var gutterRendererTextMeasureFunction_Once sync.Once
@@ -2613,9 +3293,68 @@ func (recv *LanguageManager) SetFieldPriv(value *LanguageManagerPrivate) {
 	gi.FieldSet(languageManagerStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_language_manager_new' : return type 'LanguageManager' not supported
+var languageManagerNewFunction *gi.Function
+var languageManagerNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_language_manager_get_language' : return type 'Language' not supported
+func languageManagerNewFunction_Set() error {
+	var err error
+	languageManagerNewFunction_Once.Do(func() {
+		err = languageManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		languageManagerNewFunction, err = languageManagerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// LanguageManagerNew is a representation of the C type gtk_source_language_manager_new.
+func LanguageManagerNew() *LanguageManager {
+
+	var ret gi.Argument
+
+	err := languageManagerNewFunction_Set()
+	if err == nil {
+		ret = languageManagerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &LanguageManager{native: ret.Pointer()}
+
+	return retGo
+}
+
+var languageManagerGetLanguageFunction *gi.Function
+var languageManagerGetLanguageFunction_Once sync.Once
+
+func languageManagerGetLanguageFunction_Set() error {
+	var err error
+	languageManagerGetLanguageFunction_Once.Do(func() {
+		err = languageManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		languageManagerGetLanguageFunction, err = languageManagerStruct.InvokerNew("get_language")
+	})
+	return err
+}
+
+// GetLanguage is a representation of the C type gtk_source_language_manager_get_language.
+func (recv *LanguageManager) GetLanguage(id string) *Language {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(id)
+
+	var ret gi.Argument
+
+	err := languageManagerGetLanguageFunction_Set()
+	if err == nil {
+		ret = languageManagerGetLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Language{native: ret.Pointer()}
+
+	return retGo
+}
 
 var languageManagerGetLanguageIdsFunction *gi.Function
 var languageManagerGetLanguageIdsFunction_Once sync.Once
@@ -2673,7 +3412,39 @@ func (recv *LanguageManager) GetSearchPath() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_language_manager_guess_language' : return type 'Language' not supported
+var languageManagerGuessLanguageFunction *gi.Function
+var languageManagerGuessLanguageFunction_Once sync.Once
+
+func languageManagerGuessLanguageFunction_Set() error {
+	var err error
+	languageManagerGuessLanguageFunction_Once.Do(func() {
+		err = languageManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		languageManagerGuessLanguageFunction, err = languageManagerStruct.InvokerNew("guess_language")
+	})
+	return err
+}
+
+// GuessLanguage is a representation of the C type gtk_source_language_manager_guess_language.
+func (recv *LanguageManager) GuessLanguage(filename string, contentType string) *Language {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(filename)
+	inArgs[2].SetString(contentType)
+
+	var ret gi.Argument
+
+	err := languageManagerGuessLanguageFunction_Set()
+	if err == nil {
+		ret = languageManagerGuessLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Language{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_language_manager_set_search_path' : parameter 'dirs' of type 'nil' not supported
 
@@ -2692,15 +3463,110 @@ type Map struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'View'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *Map) FieldParentInstance() *View {
+	argValue := gi.FieldGet(mapStruct, recv.native, "parent_instance")
+	value := &View{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'View'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *Map) SetFieldParentInstance(value *View) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(mapStruct, recv.native, "parent_instance", argValue)
+}
 
-// UNSUPPORTED : C value 'gtk_source_map_new' : return type 'Map' not supported
+var mapNewFunction *gi.Function
+var mapNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_map_get_view' : return type 'View' not supported
+func mapNewFunction_Set() error {
+	var err error
+	mapNewFunction_Once.Do(func() {
+		err = mapStruct_Set()
+		if err != nil {
+			return
+		}
+		mapNewFunction, err = mapStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_map_set_view' : parameter 'view' of type 'View' not supported
+// MapNew is a representation of the C type gtk_source_map_new.
+func MapNew() *Map {
+
+	var ret gi.Argument
+
+	err := mapNewFunction_Set()
+	if err == nil {
+		ret = mapNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Map{native: ret.Pointer()}
+
+	return retGo
+}
+
+var mapGetViewFunction *gi.Function
+var mapGetViewFunction_Once sync.Once
+
+func mapGetViewFunction_Set() error {
+	var err error
+	mapGetViewFunction_Once.Do(func() {
+		err = mapStruct_Set()
+		if err != nil {
+			return
+		}
+		mapGetViewFunction, err = mapStruct.InvokerNew("get_view")
+	})
+	return err
+}
+
+// GetView is a representation of the C type gtk_source_map_get_view.
+func (recv *Map) GetView() *View {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mapGetViewFunction_Set()
+	if err == nil {
+		ret = mapGetViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &View{native: ret.Pointer()}
+
+	return retGo
+}
+
+var mapSetViewFunction *gi.Function
+var mapSetViewFunction_Once sync.Once
+
+func mapSetViewFunction_Set() error {
+	var err error
+	mapSetViewFunction_Once.Do(func() {
+		err = mapStruct_Set()
+		if err != nil {
+			return
+		}
+		mapSetViewFunction, err = mapStruct.InvokerNew("set_view")
+	})
+	return err
+}
+
+// SetView is a representation of the C type gtk_source_map_set_view.
+func (recv *Map) SetView(view *View) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(view.native)
+
+	err := mapSetViewFunction_Set()
+	if err == nil {
+		mapSetViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var markStruct *gi.Struct
 var markStruct_Once sync.Once
@@ -2735,7 +3601,38 @@ func (recv *Mark) SetFieldPriv(value *MarkPrivate) {
 	gi.FieldSet(markStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_new' : return type 'Mark' not supported
+var markNewFunction *gi.Function
+var markNewFunction_Once sync.Once
+
+func markNewFunction_Set() error {
+	var err error
+	markNewFunction_Once.Do(func() {
+		err = markStruct_Set()
+		if err != nil {
+			return
+		}
+		markNewFunction, err = markStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MarkNew is a representation of the C type gtk_source_mark_new.
+func MarkNew(name string, category string) *Mark {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(category)
+
+	var ret gi.Argument
+
+	err := markNewFunction_Set()
+	if err == nil {
+		ret = markNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Mark{native: ret.Pointer()}
+
+	return retGo
+}
 
 var markGetCategoryFunction *gi.Function
 var markGetCategoryFunction_Once sync.Once
@@ -2769,9 +3666,71 @@ func (recv *Mark) GetCategory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_next' : return type 'Mark' not supported
+var markNextFunction *gi.Function
+var markNextFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_mark_prev' : return type 'Mark' not supported
+func markNextFunction_Set() error {
+	var err error
+	markNextFunction_Once.Do(func() {
+		err = markStruct_Set()
+		if err != nil {
+			return
+		}
+		markNextFunction, err = markStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type gtk_source_mark_next.
+func (recv *Mark) Next(category string) *Mark {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(category)
+
+	var ret gi.Argument
+
+	err := markNextFunction_Set()
+	if err == nil {
+		ret = markNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Mark{native: ret.Pointer()}
+
+	return retGo
+}
+
+var markPrevFunction *gi.Function
+var markPrevFunction_Once sync.Once
+
+func markPrevFunction_Set() error {
+	var err error
+	markPrevFunction_Once.Do(func() {
+		err = markStruct_Set()
+		if err != nil {
+			return
+		}
+		markPrevFunction, err = markStruct.InvokerNew("prev")
+	})
+	return err
+}
+
+// Prev is a representation of the C type gtk_source_mark_prev.
+func (recv *Mark) Prev(category string) *Mark {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(category)
+
+	var ret gi.Argument
+
+	err := markPrevFunction_Set()
+	if err == nil {
+		ret = markPrevFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Mark{native: ret.Pointer()}
+
+	return retGo
+}
 
 var markAttributesStruct *gi.Struct
 var markAttributesStruct_Once sync.Once
@@ -2788,7 +3747,35 @@ type MarkAttributes struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_new' : return type 'MarkAttributes' not supported
+var markAttributesNewFunction *gi.Function
+var markAttributesNewFunction_Once sync.Once
+
+func markAttributesNewFunction_Set() error {
+	var err error
+	markAttributesNewFunction_Once.Do(func() {
+		err = markAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		markAttributesNewFunction, err = markAttributesStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MarkAttributesNew is a representation of the C type gtk_source_mark_attributes_new.
+func MarkAttributesNew() *MarkAttributes {
+
+	var ret gi.Argument
+
+	err := markAttributesNewFunction_Set()
+	if err == nil {
+		ret = markAttributesNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &MarkAttributes{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_mark_attributes_get_background' : parameter 'background' of type 'Gdk.RGBA' not supported
 
@@ -2860,9 +3847,71 @@ func (recv *MarkAttributes) GetStockId() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_get_tooltip_markup' : parameter 'mark' of type 'Mark' not supported
+var markAttributesGetTooltipMarkupFunction *gi.Function
+var markAttributesGetTooltipMarkupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_get_tooltip_text' : parameter 'mark' of type 'Mark' not supported
+func markAttributesGetTooltipMarkupFunction_Set() error {
+	var err error
+	markAttributesGetTooltipMarkupFunction_Once.Do(func() {
+		err = markAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		markAttributesGetTooltipMarkupFunction, err = markAttributesStruct.InvokerNew("get_tooltip_markup")
+	})
+	return err
+}
+
+// GetTooltipMarkup is a representation of the C type gtk_source_mark_attributes_get_tooltip_markup.
+func (recv *MarkAttributes) GetTooltipMarkup(mark *Mark) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mark.native)
+
+	var ret gi.Argument
+
+	err := markAttributesGetTooltipMarkupFunction_Set()
+	if err == nil {
+		ret = markAttributesGetTooltipMarkupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var markAttributesGetTooltipTextFunction *gi.Function
+var markAttributesGetTooltipTextFunction_Once sync.Once
+
+func markAttributesGetTooltipTextFunction_Set() error {
+	var err error
+	markAttributesGetTooltipTextFunction_Once.Do(func() {
+		err = markAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		markAttributesGetTooltipTextFunction, err = markAttributesStruct.InvokerNew("get_tooltip_text")
+	})
+	return err
+}
+
+// GetTooltipText is a representation of the C type gtk_source_mark_attributes_get_tooltip_text.
+func (recv *MarkAttributes) GetTooltipText(mark *Mark) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mark.native)
+
+	var ret gi.Argument
+
+	err := markAttributesGetTooltipTextFunction_Set()
+	if err == nil {
+		ret = markAttributesGetTooltipTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_mark_attributes_render_icon' : parameter 'widget' of type 'Gtk.Widget' not supported
 
@@ -2963,9 +4012,69 @@ func (recv *PrintCompositor) SetFieldPriv(value *PrintCompositorPrivate) {
 	gi.FieldSet(printCompositorStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_print_compositor_new' : parameter 'buffer' of type 'Buffer' not supported
+var printCompositorNewFunction *gi.Function
+var printCompositorNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_print_compositor_new_from_view' : parameter 'view' of type 'View' not supported
+func printCompositorNewFunction_Set() error {
+	var err error
+	printCompositorNewFunction_Once.Do(func() {
+		err = printCompositorStruct_Set()
+		if err != nil {
+			return
+		}
+		printCompositorNewFunction, err = printCompositorStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PrintCompositorNew is a representation of the C type gtk_source_print_compositor_new.
+func PrintCompositorNew(buffer *Buffer) *PrintCompositor {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(buffer.native)
+
+	var ret gi.Argument
+
+	err := printCompositorNewFunction_Set()
+	if err == nil {
+		ret = printCompositorNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PrintCompositor{native: ret.Pointer()}
+
+	return retGo
+}
+
+var printCompositorNewFromViewFunction *gi.Function
+var printCompositorNewFromViewFunction_Once sync.Once
+
+func printCompositorNewFromViewFunction_Set() error {
+	var err error
+	printCompositorNewFromViewFunction_Once.Do(func() {
+		err = printCompositorStruct_Set()
+		if err != nil {
+			return
+		}
+		printCompositorNewFromViewFunction, err = printCompositorStruct.InvokerNew("new_from_view")
+	})
+	return err
+}
+
+// PrintCompositorNewFromView is a representation of the C type gtk_source_print_compositor_new_from_view.
+func PrintCompositorNewFromView(view *View) *PrintCompositor {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(view.native)
+
+	var ret gi.Argument
+
+	err := printCompositorNewFromViewFunction_Set()
+	if err == nil {
+		ret = printCompositorNewFromViewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PrintCompositor{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_print_compositor_draw_page' : parameter 'context' of type 'Gtk.PrintContext' not supported
 
@@ -3003,7 +4112,37 @@ func (recv *PrintCompositor) GetBodyFontName() string {
 
 // UNSUPPORTED : C value 'gtk_source_print_compositor_get_bottom_margin' : parameter 'unit' of type 'Gtk.Unit' not supported
 
-// UNSUPPORTED : C value 'gtk_source_print_compositor_get_buffer' : return type 'Buffer' not supported
+var printCompositorGetBufferFunction *gi.Function
+var printCompositorGetBufferFunction_Once sync.Once
+
+func printCompositorGetBufferFunction_Set() error {
+	var err error
+	printCompositorGetBufferFunction_Once.Do(func() {
+		err = printCompositorStruct_Set()
+		if err != nil {
+			return
+		}
+		printCompositorGetBufferFunction, err = printCompositorStruct.InvokerNew("get_buffer")
+	})
+	return err
+}
+
+// GetBuffer is a representation of the C type gtk_source_print_compositor_get_buffer.
+func (recv *PrintCompositor) GetBuffer() *Buffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := printCompositorGetBufferFunction_Set()
+	if err == nil {
+		ret = printCompositorGetBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 var printCompositorGetFooterFontNameFunction *gi.Function
 var printCompositorGetFooterFontNameFunction_Once sync.Once
@@ -3691,7 +4830,34 @@ type Region struct {
 
 // UNSUPPORTED : C value 'gtk_source_region_new' : parameter 'buffer' of type 'Gtk.TextBuffer' not supported
 
-// UNSUPPORTED : C value 'gtk_source_region_add_region' : parameter 'region_to_add' of type 'Region' not supported
+var regionAddRegionFunction *gi.Function
+var regionAddRegionFunction_Once sync.Once
+
+func regionAddRegionFunction_Set() error {
+	var err error
+	regionAddRegionFunction_Once.Do(func() {
+		err = regionStruct_Set()
+		if err != nil {
+			return
+		}
+		regionAddRegionFunction, err = regionStruct.InvokerNew("add_region")
+	})
+	return err
+}
+
+// AddRegion is a representation of the C type gtk_source_region_add_region.
+func (recv *Region) AddRegion(regionToAdd *Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(regionToAdd.native)
+
+	err := regionAddRegionFunction_Set()
+	if err == nil {
+		regionAddRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_region_add_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
 
@@ -3731,7 +4897,38 @@ func (recv *Region) GetStartRegionIter() *RegionIter {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_intersect_region' : parameter 'region2' of type 'Region' not supported
+var regionIntersectRegionFunction *gi.Function
+var regionIntersectRegionFunction_Once sync.Once
+
+func regionIntersectRegionFunction_Set() error {
+	var err error
+	regionIntersectRegionFunction_Once.Do(func() {
+		err = regionStruct_Set()
+		if err != nil {
+			return
+		}
+		regionIntersectRegionFunction, err = regionStruct.InvokerNew("intersect_region")
+	})
+	return err
+}
+
+// IntersectRegion is a representation of the C type gtk_source_region_intersect_region.
+func (recv *Region) IntersectRegion(region2 *Region) *Region {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(region2.native)
+
+	var ret gi.Argument
+
+	err := regionIntersectRegionFunction_Set()
+	if err == nil {
+		ret = regionIntersectRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Region{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_region_intersect_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
 
@@ -3767,7 +4964,34 @@ func (recv *Region) IsEmpty() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_subtract_region' : parameter 'region_to_subtract' of type 'Region' not supported
+var regionSubtractRegionFunction *gi.Function
+var regionSubtractRegionFunction_Once sync.Once
+
+func regionSubtractRegionFunction_Set() error {
+	var err error
+	regionSubtractRegionFunction_Once.Do(func() {
+		err = regionStruct_Set()
+		if err != nil {
+			return
+		}
+		regionSubtractRegionFunction, err = regionStruct.InvokerNew("subtract_region")
+	})
+	return err
+}
+
+// SubtractRegion is a representation of the C type gtk_source_region_subtract_region.
+func (recv *Region) SubtractRegion(regionToSubtract *Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(regionToSubtract.native)
+
+	err := regionSubtractRegionFunction_Set()
+	if err == nil {
+		regionSubtractRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_region_subtract_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
 
@@ -3836,7 +5060,38 @@ func (recv *SearchContext) SetFieldPriv(value *SearchContextPrivate) {
 	gi.FieldSet(searchContextStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_new' : parameter 'buffer' of type 'Buffer' not supported
+var searchContextNewFunction *gi.Function
+var searchContextNewFunction_Once sync.Once
+
+func searchContextNewFunction_Set() error {
+	var err error
+	searchContextNewFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextNewFunction, err = searchContextStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SearchContextNew is a representation of the C type gtk_source_search_context_new.
+func SearchContextNew(buffer *Buffer, settings *SearchSettings) *SearchContext {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(settings.native)
+
+	var ret gi.Argument
+
+	err := searchContextNewFunction_Set()
+	if err == nil {
+		ret = searchContextNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SearchContext{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_search_context_backward' : parameter 'iter' of type 'Gtk.TextIter' not supported
 
@@ -3858,7 +5113,37 @@ func (recv *SearchContext) SetFieldPriv(value *SearchContextPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_search_context_forward_finish2' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_source_search_context_get_buffer' : return type 'Buffer' not supported
+var searchContextGetBufferFunction *gi.Function
+var searchContextGetBufferFunction_Once sync.Once
+
+func searchContextGetBufferFunction_Set() error {
+	var err error
+	searchContextGetBufferFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextGetBufferFunction, err = searchContextStruct.InvokerNew("get_buffer")
+	})
+	return err
+}
+
+// GetBuffer is a representation of the C type gtk_source_search_context_get_buffer.
+func (recv *SearchContext) GetBuffer() *Buffer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := searchContextGetBufferFunction_Set()
+	if err == nil {
+		ret = searchContextGetBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 var searchContextGetHighlightFunction *gi.Function
 var searchContextGetHighlightFunction_Once sync.Once
@@ -3892,7 +5177,37 @@ func (recv *SearchContext) GetHighlight() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_get_match_style' : return type 'Style' not supported
+var searchContextGetMatchStyleFunction *gi.Function
+var searchContextGetMatchStyleFunction_Once sync.Once
+
+func searchContextGetMatchStyleFunction_Set() error {
+	var err error
+	searchContextGetMatchStyleFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextGetMatchStyleFunction, err = searchContextStruct.InvokerNew("get_match_style")
+	})
+	return err
+}
+
+// GetMatchStyle is a representation of the C type gtk_source_search_context_get_match_style.
+func (recv *SearchContext) GetMatchStyle() *Style {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := searchContextGetMatchStyleFunction_Set()
+	if err == nil {
+		ret = searchContextGetMatchStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Style{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_search_context_get_occurrence_position' : parameter 'match_start' of type 'Gtk.TextIter' not supported
 
@@ -3930,7 +5245,37 @@ func (recv *SearchContext) GetOccurrencesCount() int32 {
 
 // UNSUPPORTED : C value 'gtk_source_search_context_get_regex_error' : return type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'gtk_source_search_context_get_settings' : return type 'SearchSettings' not supported
+var searchContextGetSettingsFunction *gi.Function
+var searchContextGetSettingsFunction_Once sync.Once
+
+func searchContextGetSettingsFunction_Set() error {
+	var err error
+	searchContextGetSettingsFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextGetSettingsFunction, err = searchContextStruct.InvokerNew("get_settings")
+	})
+	return err
+}
+
+// GetSettings is a representation of the C type gtk_source_search_context_get_settings.
+func (recv *SearchContext) GetSettings() *SearchSettings {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := searchContextGetSettingsFunction_Set()
+	if err == nil {
+		ret = searchContextGetSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SearchSettings{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_search_context_replace' : parameter 'match_start' of type 'Gtk.TextIter' not supported
 
@@ -3999,9 +5344,63 @@ func (recv *SearchContext) SetHighlight(highlight bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_set_match_style' : parameter 'match_style' of type 'Style' not supported
+var searchContextSetMatchStyleFunction *gi.Function
+var searchContextSetMatchStyleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_set_settings' : parameter 'settings' of type 'SearchSettings' not supported
+func searchContextSetMatchStyleFunction_Set() error {
+	var err error
+	searchContextSetMatchStyleFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextSetMatchStyleFunction, err = searchContextStruct.InvokerNew("set_match_style")
+	})
+	return err
+}
+
+// SetMatchStyle is a representation of the C type gtk_source_search_context_set_match_style.
+func (recv *SearchContext) SetMatchStyle(matchStyle *Style) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(matchStyle.native)
+
+	err := searchContextSetMatchStyleFunction_Set()
+	if err == nil {
+		searchContextSetMatchStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var searchContextSetSettingsFunction *gi.Function
+var searchContextSetSettingsFunction_Once sync.Once
+
+func searchContextSetSettingsFunction_Set() error {
+	var err error
+	searchContextSetSettingsFunction_Once.Do(func() {
+		err = searchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		searchContextSetSettingsFunction, err = searchContextStruct.InvokerNew("set_settings")
+	})
+	return err
+}
+
+// SetSettings is a representation of the C type gtk_source_search_context_set_settings.
+func (recv *SearchContext) SetSettings(settings *SearchSettings) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(settings.native)
+
+	err := searchContextSetSettingsFunction_Set()
+	if err == nil {
+		searchContextSetSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var searchSettingsStruct *gi.Struct
 var searchSettingsStruct_Once sync.Once
@@ -4036,7 +5435,35 @@ func (recv *SearchSettings) SetFieldPriv(value *SearchSettingsPrivate) {
 	gi.FieldSet(searchSettingsStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_settings_new' : return type 'SearchSettings' not supported
+var searchSettingsNewFunction *gi.Function
+var searchSettingsNewFunction_Once sync.Once
+
+func searchSettingsNewFunction_Set() error {
+	var err error
+	searchSettingsNewFunction_Once.Do(func() {
+		err = searchSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		searchSettingsNewFunction, err = searchSettingsStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SearchSettingsNew is a representation of the C type gtk_source_search_settings_new.
+func SearchSettingsNew() *SearchSettings {
+
+	var ret gi.Argument
+
+	err := searchSettingsNewFunction_Set()
+	if err == nil {
+		ret = searchSettingsNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SearchSettings{native: ret.Pointer()}
+
+	return retGo
+}
 
 var searchSettingsGetAtWordBoundariesFunction *gi.Function
 var searchSettingsGetAtWordBoundariesFunction_Once sync.Once
@@ -4376,7 +5803,35 @@ func (recv *SpaceDrawer) SetFieldPriv(value *SpaceDrawerPrivate) {
 	gi.FieldSet(spaceDrawerStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_space_drawer_new' : return type 'SpaceDrawer' not supported
+var spaceDrawerNewFunction *gi.Function
+var spaceDrawerNewFunction_Once sync.Once
+
+func spaceDrawerNewFunction_Set() error {
+	var err error
+	spaceDrawerNewFunction_Once.Do(func() {
+		err = spaceDrawerStruct_Set()
+		if err != nil {
+			return
+		}
+		spaceDrawerNewFunction, err = spaceDrawerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SpaceDrawerNew is a representation of the C type gtk_source_space_drawer_new.
+func SpaceDrawerNew() *SpaceDrawer {
+
+	var ret gi.Argument
+
+	err := spaceDrawerNewFunction_Set()
+	if err == nil {
+		ret = spaceDrawerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SpaceDrawer{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_space_drawer_bind_matrix_setting' : parameter 'settings' of type 'Gio.Settings' not supported
 
@@ -4466,7 +5921,37 @@ type Style struct {
 
 // UNSUPPORTED : C value 'gtk_source_style_apply' : parameter 'tag' of type 'Gtk.TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_source_style_copy' : return type 'Style' not supported
+var styleCopyFunction *gi.Function
+var styleCopyFunction_Once sync.Once
+
+func styleCopyFunction_Set() error {
+	var err error
+	styleCopyFunction_Once.Do(func() {
+		err = styleStruct_Set()
+		if err != nil {
+			return
+		}
+		styleCopyFunction, err = styleStruct.InvokerNew("copy")
+	})
+	return err
+}
+
+// Copy is a representation of the C type gtk_source_style_copy.
+func (recv *Style) Copy() *Style {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := styleCopyFunction_Set()
+	if err == nil {
+		ret = styleCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Style{native: ret.Pointer()}
+
+	return retGo
+}
 
 // StyleStruct creates an uninitialised Style.
 func StyleStruct() *Style {
@@ -4672,7 +6157,38 @@ func (recv *StyleScheme) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_get_style' : return type 'Style' not supported
+var styleSchemeGetStyleFunction *gi.Function
+var styleSchemeGetStyleFunction_Once sync.Once
+
+func styleSchemeGetStyleFunction_Set() error {
+	var err error
+	styleSchemeGetStyleFunction_Once.Do(func() {
+		err = styleSchemeStruct_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeGetStyleFunction, err = styleSchemeStruct.InvokerNew("get_style")
+	})
+	return err
+}
+
+// GetStyle is a representation of the C type gtk_source_style_scheme_get_style.
+func (recv *StyleScheme) GetStyle(styleId string) *Style {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(styleId)
+
+	var ret gi.Argument
+
+	err := styleSchemeGetStyleFunction_Set()
+	if err == nil {
+		ret = styleSchemeGetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Style{native: ret.Pointer()}
+
+	return retGo
+}
 
 // StyleSchemeStruct creates an uninitialised StyleScheme.
 func StyleSchemeStruct() *StyleScheme {
@@ -4708,7 +6224,35 @@ type StyleSchemeChooserButton struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.Button'
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_chooser_button_new' : return type 'StyleSchemeChooserButton' not supported
+var styleSchemeChooserButtonNewFunction *gi.Function
+var styleSchemeChooserButtonNewFunction_Once sync.Once
+
+func styleSchemeChooserButtonNewFunction_Set() error {
+	var err error
+	styleSchemeChooserButtonNewFunction_Once.Do(func() {
+		err = styleSchemeChooserButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeChooserButtonNewFunction, err = styleSchemeChooserButtonStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// StyleSchemeChooserButtonNew is a representation of the C type gtk_source_style_scheme_chooser_button_new.
+func StyleSchemeChooserButtonNew() *StyleSchemeChooserButton {
+
+	var ret gi.Argument
+
+	err := styleSchemeChooserButtonNewFunction_Set()
+	if err == nil {
+		ret = styleSchemeChooserButtonNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &StyleSchemeChooserButton{native: ret.Pointer()}
+
+	return retGo
+}
 
 var styleSchemeChooserWidgetStruct *gi.Struct
 var styleSchemeChooserWidgetStruct_Once sync.Once
@@ -4729,7 +6273,35 @@ type StyleSchemeChooserWidget struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.Bin'
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_chooser_widget_new' : return type 'StyleSchemeChooserWidget' not supported
+var styleSchemeChooserWidgetNewFunction *gi.Function
+var styleSchemeChooserWidgetNewFunction_Once sync.Once
+
+func styleSchemeChooserWidgetNewFunction_Set() error {
+	var err error
+	styleSchemeChooserWidgetNewFunction_Once.Do(func() {
+		err = styleSchemeChooserWidgetStruct_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeChooserWidgetNewFunction, err = styleSchemeChooserWidgetStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// StyleSchemeChooserWidgetNew is a representation of the C type gtk_source_style_scheme_chooser_widget_new.
+func StyleSchemeChooserWidgetNew() *StyleSchemeChooserWidget {
+
+	var ret gi.Argument
+
+	err := styleSchemeChooserWidgetNewFunction_Set()
+	if err == nil {
+		ret = styleSchemeChooserWidgetNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &StyleSchemeChooserWidget{native: ret.Pointer()}
+
+	return retGo
+}
 
 var styleSchemeManagerStruct *gi.Struct
 var styleSchemeManagerStruct_Once sync.Once
@@ -4764,7 +6336,35 @@ func (recv *StyleSchemeManager) SetFieldPriv(value *StyleSchemeManagerPrivate) {
 	gi.FieldSet(styleSchemeManagerStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_manager_new' : return type 'StyleSchemeManager' not supported
+var styleSchemeManagerNewFunction *gi.Function
+var styleSchemeManagerNewFunction_Once sync.Once
+
+func styleSchemeManagerNewFunction_Set() error {
+	var err error
+	styleSchemeManagerNewFunction_Once.Do(func() {
+		err = styleSchemeManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeManagerNewFunction, err = styleSchemeManagerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// StyleSchemeManagerNew is a representation of the C type gtk_source_style_scheme_manager_new.
+func StyleSchemeManagerNew() *StyleSchemeManager {
+
+	var ret gi.Argument
+
+	err := styleSchemeManagerNewFunction_Set()
+	if err == nil {
+		ret = styleSchemeManagerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &StyleSchemeManager{native: ret.Pointer()}
+
+	return retGo
+}
 
 var styleSchemeManagerAppendSearchPathFunction *gi.Function
 var styleSchemeManagerAppendSearchPathFunction_Once sync.Once
@@ -4823,7 +6423,38 @@ func (recv *StyleSchemeManager) ForceRescan() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_manager_get_scheme' : return type 'StyleScheme' not supported
+var styleSchemeManagerGetSchemeFunction *gi.Function
+var styleSchemeManagerGetSchemeFunction_Once sync.Once
+
+func styleSchemeManagerGetSchemeFunction_Set() error {
+	var err error
+	styleSchemeManagerGetSchemeFunction_Once.Do(func() {
+		err = styleSchemeManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeManagerGetSchemeFunction, err = styleSchemeManagerStruct.InvokerNew("get_scheme")
+	})
+	return err
+}
+
+// GetScheme is a representation of the C type gtk_source_style_scheme_manager_get_scheme.
+func (recv *StyleSchemeManager) GetScheme(schemeId string) *StyleScheme {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(schemeId)
+
+	var ret gi.Argument
+
+	err := styleSchemeManagerGetSchemeFunction_Set()
+	if err == nil {
+		ret = styleSchemeManagerGetSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StyleScheme{native: ret.Pointer()}
+
+	return retGo
+}
 
 var styleSchemeManagerGetSchemeIdsFunction *gi.Function
 var styleSchemeManagerGetSchemeIdsFunction_Once sync.Once
@@ -4931,7 +6562,37 @@ type Tag struct {
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Gtk.TextTag'
 
-// UNSUPPORTED : C value 'gtk_source_tag_new' : return type 'Tag' not supported
+var tagNewFunction *gi.Function
+var tagNewFunction_Once sync.Once
+
+func tagNewFunction_Set() error {
+	var err error
+	tagNewFunction_Once.Do(func() {
+		err = tagStruct_Set()
+		if err != nil {
+			return
+		}
+		tagNewFunction, err = tagStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// TagNew is a representation of the C type gtk_source_tag_new.
+func TagNew(name string) *Tag {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := tagNewFunction_Set()
+	if err == nil {
+		ret = tagNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Tag{native: ret.Pointer()}
+
+	return retGo
+}
 
 var viewStruct *gi.Struct
 var viewStruct_Once sync.Once
@@ -4966,9 +6627,67 @@ func (recv *View) SetFieldPriv(value *ViewPrivate) {
 	gi.FieldSet(viewStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_new' : return type 'View' not supported
+var viewNewFunction *gi.Function
+var viewNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_view_new_with_buffer' : parameter 'buffer' of type 'Buffer' not supported
+func viewNewFunction_Set() error {
+	var err error
+	viewNewFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewNewFunction, err = viewStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ViewNew is a representation of the C type gtk_source_view_new.
+func ViewNew() *View {
+
+	var ret gi.Argument
+
+	err := viewNewFunction_Set()
+	if err == nil {
+		ret = viewNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &View{native: ret.Pointer()}
+
+	return retGo
+}
+
+var viewNewWithBufferFunction *gi.Function
+var viewNewWithBufferFunction_Once sync.Once
+
+func viewNewWithBufferFunction_Set() error {
+	var err error
+	viewNewWithBufferFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewNewWithBufferFunction, err = viewStruct.InvokerNew("new_with_buffer")
+	})
+	return err
+}
+
+// ViewNewWithBuffer is a representation of the C type gtk_source_view_new_with_buffer.
+func ViewNewWithBuffer(buffer *Buffer) *View {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(buffer.native)
+
+	var ret gi.Argument
+
+	err := viewNewWithBufferFunction_Set()
+	if err == nil {
+		ret = viewNewWithBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &View{native: ret.Pointer()}
+
+	return retGo
+}
 
 var viewGetAutoIndentFunction *gi.Function
 var viewGetAutoIndentFunction_Once sync.Once
@@ -5004,7 +6723,37 @@ func (recv *View) GetAutoIndent() bool {
 
 // UNSUPPORTED : C value 'gtk_source_view_get_background_pattern' : return type 'BackgroundPatternType' not supported
 
-// UNSUPPORTED : C value 'gtk_source_view_get_completion' : return type 'Completion' not supported
+var viewGetCompletionFunction *gi.Function
+var viewGetCompletionFunction_Once sync.Once
+
+func viewGetCompletionFunction_Set() error {
+	var err error
+	viewGetCompletionFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewGetCompletionFunction, err = viewStruct.InvokerNew("get_completion")
+	})
+	return err
+}
+
+// GetCompletion is a representation of the C type gtk_source_view_get_completion.
+func (recv *View) GetCompletion() *Completion {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := viewGetCompletionFunction_Set()
+	if err == nil {
+		ret = viewGetCompletionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Completion{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_view_get_draw_spaces' : return type 'DrawSpacesFlags' not supported
 
@@ -5138,7 +6887,39 @@ func (recv *View) GetInsertSpacesInsteadOfTabs() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_get_mark_attributes' : return type 'MarkAttributes' not supported
+var viewGetMarkAttributesFunction *gi.Function
+var viewGetMarkAttributesFunction_Once sync.Once
+
+func viewGetMarkAttributesFunction_Set() error {
+	var err error
+	viewGetMarkAttributesFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewGetMarkAttributesFunction, err = viewStruct.InvokerNew("get_mark_attributes")
+	})
+	return err
+}
+
+// GetMarkAttributes is a representation of the C type gtk_source_view_get_mark_attributes.
+func (recv *View) GetMarkAttributes(category string, priority int32) *MarkAttributes {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(category)
+	inArgs[2].SetInt32(priority)
+
+	var ret gi.Argument
+
+	err := viewGetMarkAttributesFunction_Set()
+	if err == nil {
+		ret = viewGetMarkAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &MarkAttributes{native: ret.Pointer()}
+
+	return retGo
+}
 
 var viewGetRightMarginPositionFunction *gi.Function
 var viewGetRightMarginPositionFunction_Once sync.Once
@@ -5302,7 +7083,37 @@ func (recv *View) GetSmartBackspace() bool {
 
 // UNSUPPORTED : C value 'gtk_source_view_get_smart_home_end' : return type 'SmartHomeEndType' not supported
 
-// UNSUPPORTED : C value 'gtk_source_view_get_space_drawer' : return type 'SpaceDrawer' not supported
+var viewGetSpaceDrawerFunction *gi.Function
+var viewGetSpaceDrawerFunction_Once sync.Once
+
+func viewGetSpaceDrawerFunction_Set() error {
+	var err error
+	viewGetSpaceDrawerFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewGetSpaceDrawerFunction, err = viewStruct.InvokerNew("get_space_drawer")
+	})
+	return err
+}
+
+// GetSpaceDrawer is a representation of the C type gtk_source_view_get_space_drawer.
+func (recv *View) GetSpaceDrawer() *SpaceDrawer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := viewGetSpaceDrawerFunction_Set()
+	if err == nil {
+		ret = viewGetSpaceDrawerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SpaceDrawer{native: ret.Pointer()}
+
+	return retGo
+}
 
 var viewGetTabWidthFunction *gi.Function
 var viewGetTabWidthFunction_Once sync.Once
@@ -5489,7 +7300,36 @@ func (recv *View) SetInsertSpacesInsteadOfTabs(enable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_set_mark_attributes' : parameter 'attributes' of type 'MarkAttributes' not supported
+var viewSetMarkAttributesFunction *gi.Function
+var viewSetMarkAttributesFunction_Once sync.Once
+
+func viewSetMarkAttributesFunction_Set() error {
+	var err error
+	viewSetMarkAttributesFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewSetMarkAttributesFunction, err = viewStruct.InvokerNew("set_mark_attributes")
+	})
+	return err
+}
+
+// SetMarkAttributes is a representation of the C type gtk_source_view_set_mark_attributes.
+func (recv *View) SetMarkAttributes(category string, attributes *MarkAttributes, priority int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(category)
+	inArgs[2].SetPointer(attributes.native)
+	inArgs[3].SetInt32(priority)
+
+	err := viewSetMarkAttributesFunction_Set()
+	if err == nil {
+		viewSetMarkAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var viewSetRightMarginPositionFunction *gi.Function
 var viewSetRightMarginPositionFunction_Once sync.Once

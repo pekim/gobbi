@@ -23,17 +23,47 @@ type Analysis struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'shape_engine' : for field getter : no Go type for 'EngineShape'
+// FieldShapeEngine returns the C field 'shape_engine'.
+func (recv *Analysis) FieldShapeEngine() *EngineShape {
+	argValue := gi.FieldGet(analysisStruct, recv.native, "shape_engine")
+	value := &EngineShape{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'shape_engine' : for field setter : no Go type for 'EngineShape'
+// SetFieldShapeEngine sets the value of the C field 'shape_engine'.
+func (recv *Analysis) SetFieldShapeEngine(value *EngineShape) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(analysisStruct, recv.native, "shape_engine", argValue)
+}
 
-// UNSUPPORTED : C value 'lang_engine' : for field getter : no Go type for 'EngineLang'
+// FieldLangEngine returns the C field 'lang_engine'.
+func (recv *Analysis) FieldLangEngine() *EngineLang {
+	argValue := gi.FieldGet(analysisStruct, recv.native, "lang_engine")
+	value := &EngineLang{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'lang_engine' : for field setter : no Go type for 'EngineLang'
+// SetFieldLangEngine sets the value of the C field 'lang_engine'.
+func (recv *Analysis) SetFieldLangEngine(value *EngineLang) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(analysisStruct, recv.native, "lang_engine", argValue)
+}
 
-// UNSUPPORTED : C value 'font' : for field getter : no Go type for 'Font'
+// FieldFont returns the C field 'font'.
+func (recv *Analysis) FieldFont() *Font {
+	argValue := gi.FieldGet(analysisStruct, recv.native, "font")
+	value := &Font{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'font' : for field setter : no Go type for 'Font'
+// SetFieldFont sets the value of the C field 'font'.
+func (recv *Analysis) SetFieldFont(value *Font) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(analysisStruct, recv.native, "font", argValue)
+}
 
 // FieldLevel returns the C field 'level'.
 func (recv *Analysis) FieldLevel() uint8 {
@@ -4160,9 +4190,75 @@ func (recv *GlyphString) Copy() *GlyphString {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_extents' : parameter 'font' of type 'Font' not supported
+var glyphStringExtentsFunction *gi.Function
+var glyphStringExtentsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_glyph_string_extents_range' : parameter 'font' of type 'Font' not supported
+func glyphStringExtentsFunction_Set() error {
+	var err error
+	glyphStringExtentsFunction_Once.Do(func() {
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringExtentsFunction, err = glyphStringStruct.InvokerNew("extents")
+	})
+	return err
+}
+
+// Extents is a representation of the C type pango_glyph_string_extents.
+func (recv *GlyphString) Extents(font *Font) (*Rectangle, *Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(font.native)
+
+	var outArgs [2]gi.Argument
+
+	err := glyphStringExtentsFunction_Set()
+	if err == nil {
+		glyphStringExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1
+}
+
+var glyphStringExtentsRangeFunction *gi.Function
+var glyphStringExtentsRangeFunction_Once sync.Once
+
+func glyphStringExtentsRangeFunction_Set() error {
+	var err error
+	glyphStringExtentsRangeFunction_Once.Do(func() {
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringExtentsRangeFunction, err = glyphStringStruct.InvokerNew("extents_range")
+	})
+	return err
+}
+
+// ExtentsRange is a representation of the C type pango_glyph_string_extents_range.
+func (recv *GlyphString) ExtentsRange(start int32, end int32, font *Font) (*Rectangle, *Rectangle) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(start)
+	inArgs[2].SetInt32(end)
+	inArgs[3].SetPointer(font.native)
+
+	var outArgs [2]gi.Argument
+
+	err := glyphStringExtentsRangeFunction_Set()
+	if err == nil {
+		glyphStringExtentsRangeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1
+}
 
 var glyphStringFreeFunction *gi.Function
 var glyphStringFreeFunction_Once sync.Once
@@ -5041,7 +5137,37 @@ func (recv *LayoutIter) GetIndex() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_layout' : return type 'Layout' not supported
+var layoutIterGetLayoutFunction *gi.Function
+var layoutIterGetLayoutFunction_Once sync.Once
+
+func layoutIterGetLayoutFunction_Set() error {
+	var err error
+	layoutIterGetLayoutFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLayoutFunction, err = layoutIterStruct.InvokerNew("get_layout")
+	})
+	return err
+}
+
+// GetLayout is a representation of the C type pango_layout_iter_get_layout.
+func (recv *LayoutIter) GetLayout() *Layout {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutIterGetLayoutFunction_Set()
+	if err == nil {
+		ret = layoutIterGetLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Layout{native: ret.Pointer()}
+
+	return retGo
+}
 
 var layoutIterGetLayoutExtentsFunction *gi.Function
 var layoutIterGetLayoutExtentsFunction_Once sync.Once
@@ -5401,9 +5527,19 @@ type LayoutLine struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'layout' : for field getter : no Go type for 'Layout'
+// FieldLayout returns the C field 'layout'.
+func (recv *LayoutLine) FieldLayout() *Layout {
+	argValue := gi.FieldGet(layoutLineStruct, recv.native, "layout")
+	value := &Layout{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'layout' : for field setter : no Go type for 'Layout'
+// SetFieldLayout sets the value of the C field 'layout'.
+func (recv *LayoutLine) SetFieldLayout(value *Layout) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(layoutLineStruct, recv.native, "layout", argValue)
+}
 
 // FieldStartIndex returns the C field 'start_index'.
 func (recv *LayoutLine) FieldStartIndex() int32 {

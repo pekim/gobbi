@@ -29,17 +29,175 @@ type Pixbuf struct {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_file' : return type 'Pixbuf' not supported
+var pixbufNewFromFileFunction *gi.Function
+var pixbufNewFromFileFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_file_at_scale' : return type 'Pixbuf' not supported
+func pixbufNewFromFileFunction_Set() error {
+	var err error
+	pixbufNewFromFileFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromFileFunction, err = pixbufStruct.InvokerNew("new_from_file")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_file_at_size' : return type 'Pixbuf' not supported
+// PixbufNewFromFile is a representation of the C type gdk_pixbuf_new_from_file.
+func PixbufNewFromFile(filename string) *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromFileFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufNewFromFileAtScaleFunction *gi.Function
+var pixbufNewFromFileAtScaleFunction_Once sync.Once
+
+func pixbufNewFromFileAtScaleFunction_Set() error {
+	var err error
+	pixbufNewFromFileAtScaleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromFileAtScaleFunction, err = pixbufStruct.InvokerNew("new_from_file_at_scale")
+	})
+	return err
+}
+
+// PixbufNewFromFileAtScale is a representation of the C type gdk_pixbuf_new_from_file_at_scale.
+func PixbufNewFromFileAtScale(filename string, width int32, height int32, preserveAspectRatio bool) *Pixbuf {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+	inArgs[3].SetBoolean(preserveAspectRatio)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromFileAtScaleFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromFileAtScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufNewFromFileAtSizeFunction *gi.Function
+var pixbufNewFromFileAtSizeFunction_Once sync.Once
+
+func pixbufNewFromFileAtSizeFunction_Set() error {
+	var err error
+	pixbufNewFromFileAtSizeFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromFileAtSizeFunction, err = pixbufStruct.InvokerNew("new_from_file_at_size")
+	})
+	return err
+}
+
+// PixbufNewFromFileAtSize is a representation of the C type gdk_pixbuf_new_from_file_at_size.
+func PixbufNewFromFileAtSize(filename string, width int32, height int32) *Pixbuf {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromFileAtSizeFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromFileAtSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_inline' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_resource' : return type 'Pixbuf' not supported
+var pixbufNewFromResourceFunction *gi.Function
+var pixbufNewFromResourceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_resource_at_scale' : return type 'Pixbuf' not supported
+func pixbufNewFromResourceFunction_Set() error {
+	var err error
+	pixbufNewFromResourceFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromResourceFunction, err = pixbufStruct.InvokerNew("new_from_resource")
+	})
+	return err
+}
+
+// PixbufNewFromResource is a representation of the C type gdk_pixbuf_new_from_resource.
+func PixbufNewFromResource(resourcePath string) *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(resourcePath)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromResourceFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromResourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufNewFromResourceAtScaleFunction *gi.Function
+var pixbufNewFromResourceAtScaleFunction_Once sync.Once
+
+func pixbufNewFromResourceAtScaleFunction_Set() error {
+	var err error
+	pixbufNewFromResourceAtScaleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromResourceAtScaleFunction, err = pixbufStruct.InvokerNew("new_from_resource_at_scale")
+	})
+	return err
+}
+
+// PixbufNewFromResourceAtScale is a representation of the C type gdk_pixbuf_new_from_resource_at_scale.
+func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32, preserveAspectRatio bool) *Pixbuf {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(resourcePath)
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+	inArgs[3].SetBoolean(preserveAspectRatio)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromResourceAtScaleFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromResourceAtScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_stream' : parameter 'stream' of type 'Gio.InputStream' not supported
 
@@ -49,21 +207,179 @@ type Pixbuf struct {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_xpm_data' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_add_alpha' : return type 'Pixbuf' not supported
+var pixbufAddAlphaFunction *gi.Function
+var pixbufAddAlphaFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_apply_embedded_orientation' : return type 'Pixbuf' not supported
+func pixbufAddAlphaFunction_Set() error {
+	var err error
+	pixbufAddAlphaFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAddAlphaFunction, err = pixbufStruct.InvokerNew("add_alpha")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_composite' : parameter 'dest' of type 'Pixbuf' not supported
+// AddAlpha is a representation of the C type gdk_pixbuf_add_alpha.
+func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(substituteColor)
+	inArgs[2].SetUint8(r)
+	inArgs[3].SetUint8(g)
+	inArgs[4].SetUint8(b)
 
-// UNSUPPORTED : C value 'gdk_pixbuf_composite_color' : parameter 'dest' of type 'Pixbuf' not supported
+	var ret gi.Argument
+
+	err := pixbufAddAlphaFunction_Set()
+	if err == nil {
+		ret = pixbufAddAlphaFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufApplyEmbeddedOrientationFunction *gi.Function
+var pixbufApplyEmbeddedOrientationFunction_Once sync.Once
+
+func pixbufApplyEmbeddedOrientationFunction_Set() error {
+	var err error
+	pixbufApplyEmbeddedOrientationFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufApplyEmbeddedOrientationFunction, err = pixbufStruct.InvokerNew("apply_embedded_orientation")
+	})
+	return err
+}
+
+// ApplyEmbeddedOrientation is a representation of the C type gdk_pixbuf_apply_embedded_orientation.
+func (recv *Pixbuf) ApplyEmbeddedOrientation() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufApplyEmbeddedOrientationFunction_Set()
+	if err == nil {
+		ret = pixbufApplyEmbeddedOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_pixbuf_composite' : parameter 'interp_type' of type 'InterpType' not supported
+
+// UNSUPPORTED : C value 'gdk_pixbuf_composite_color' : parameter 'interp_type' of type 'InterpType' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_composite_color_simple' : parameter 'interp_type' of type 'InterpType' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_copy' : return type 'Pixbuf' not supported
+var pixbufCopyFunction *gi.Function
+var pixbufCopyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_copy_area' : parameter 'dest_pixbuf' of type 'Pixbuf' not supported
+func pixbufCopyFunction_Set() error {
+	var err error
+	pixbufCopyFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCopyFunction, err = pixbufStruct.InvokerNew("copy")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_copy_options' : parameter 'dest_pixbuf' of type 'Pixbuf' not supported
+// Copy is a representation of the C type gdk_pixbuf_copy.
+func (recv *Pixbuf) Copy() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufCopyFunction_Set()
+	if err == nil {
+		ret = pixbufCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufCopyAreaFunction *gi.Function
+var pixbufCopyAreaFunction_Once sync.Once
+
+func pixbufCopyAreaFunction_Set() error {
+	var err error
+	pixbufCopyAreaFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCopyAreaFunction, err = pixbufStruct.InvokerNew("copy_area")
+	})
+	return err
+}
+
+// CopyArea is a representation of the C type gdk_pixbuf_copy_area.
+func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, destPixbuf *Pixbuf, destX int32, destY int32) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(srcX)
+	inArgs[2].SetInt32(srcY)
+	inArgs[3].SetInt32(width)
+	inArgs[4].SetInt32(height)
+	inArgs[5].SetPointer(destPixbuf.native)
+	inArgs[6].SetInt32(destX)
+	inArgs[7].SetInt32(destY)
+
+	err := pixbufCopyAreaFunction_Set()
+	if err == nil {
+		pixbufCopyAreaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pixbufCopyOptionsFunction *gi.Function
+var pixbufCopyOptionsFunction_Once sync.Once
+
+func pixbufCopyOptionsFunction_Set() error {
+	var err error
+	pixbufCopyOptionsFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCopyOptionsFunction, err = pixbufStruct.InvokerNew("copy_options")
+	})
+	return err
+}
+
+// CopyOptions is a representation of the C type gdk_pixbuf_copy_options.
+func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(destPixbuf.native)
+
+	var ret gi.Argument
+
+	err := pixbufCopyOptionsFunction_Set()
+	if err == nil {
+		ret = pixbufCopyOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var pixbufFillFunction *gi.Function
 var pixbufFillFunction_Once sync.Once
@@ -94,7 +410,38 @@ func (recv *Pixbuf) Fill(pixel uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_flip' : return type 'Pixbuf' not supported
+var pixbufFlipFunction *gi.Function
+var pixbufFlipFunction_Once sync.Once
+
+func pixbufFlipFunction_Set() error {
+	var err error
+	pixbufFlipFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFlipFunction, err = pixbufStruct.InvokerNew("flip")
+	})
+	return err
+}
+
+// Flip is a representation of the C type gdk_pixbuf_flip.
+func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(horizontal)
+
+	var ret gi.Argument
+
+	err := pixbufFlipFunction_Set()
+	if err == nil {
+		ret = pixbufFlipFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufGetBitsPerSampleFunction *gi.Function
 var pixbufGetBitsPerSampleFunction_Once sync.Once
@@ -417,7 +764,41 @@ func (recv *Pixbuf) GetWidth() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_subpixbuf' : return type 'Pixbuf' not supported
+var pixbufNewSubpixbufFunction *gi.Function
+var pixbufNewSubpixbufFunction_Once sync.Once
+
+func pixbufNewSubpixbufFunction_Set() error {
+	var err error
+	pixbufNewSubpixbufFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewSubpixbufFunction, err = pixbufStruct.InvokerNew("new_subpixbuf")
+	})
+	return err
+}
+
+// NewSubpixbuf is a representation of the C type gdk_pixbuf_new_subpixbuf.
+func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int32) *Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(srcX)
+	inArgs[2].SetInt32(srcY)
+	inArgs[3].SetInt32(width)
+	inArgs[4].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := pixbufNewSubpixbufFunction_Set()
+	if err == nil {
+		ret = pixbufNewSubpixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_read_pixel_bytes' : return type 'GLib.Bytes' not supported
 
@@ -453,7 +834,37 @@ func (recv *Pixbuf) ReadPixels() uint8 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_ref' : return type 'Pixbuf' not supported
+var pixbufRefFunction *gi.Function
+var pixbufRefFunction_Once sync.Once
+
+func pixbufRefFunction_Set() error {
+	var err error
+	pixbufRefFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufRefFunction, err = pixbufStruct.InvokerNew("ref")
+	})
+	return err
+}
+
+// Ref is a representation of the C type gdk_pixbuf_ref.
+func (recv *Pixbuf) Ref() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufRefFunction_Set()
+	if err == nil {
+		ret = pixbufRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufRemoveOptionFunction *gi.Function
 var pixbufRemoveOptionFunction_Once sync.Once
@@ -490,7 +901,36 @@ func (recv *Pixbuf) RemoveOption(key string) bool {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_rotate_simple' : parameter 'angle' of type 'PixbufRotation' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_saturate_and_pixelate' : parameter 'dest' of type 'Pixbuf' not supported
+var pixbufSaturateAndPixelateFunction *gi.Function
+var pixbufSaturateAndPixelateFunction_Once sync.Once
+
+func pixbufSaturateAndPixelateFunction_Set() error {
+	var err error
+	pixbufSaturateAndPixelateFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufSaturateAndPixelateFunction, err = pixbufStruct.InvokerNew("saturate_and_pixelate")
+	})
+	return err
+}
+
+// SaturateAndPixelate is a representation of the C type gdk_pixbuf_saturate_and_pixelate.
+func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(dest.native)
+	inArgs[2].SetFloat32(saturation)
+	inArgs[3].SetBoolean(pixelate)
+
+	err := pixbufSaturateAndPixelateFunction_Set()
+	if err == nil {
+		pixbufSaturateAndPixelateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -512,7 +952,7 @@ func (recv *Pixbuf) RemoveOption(key string) bool {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_savev' : parameter 'option_keys' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_scale' : parameter 'dest' of type 'Pixbuf' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_scale' : parameter 'interp_type' of type 'InterpType' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_scale_simple' : parameter 'interp_type' of type 'InterpType' not supported
 
@@ -593,9 +1033,69 @@ type PixbufAnimation struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_file' : return type 'PixbufAnimation' not supported
+var pixbufAnimationNewFromFileFunction *gi.Function
+var pixbufAnimationNewFromFileFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_resource' : return type 'PixbufAnimation' not supported
+func pixbufAnimationNewFromFileFunction_Set() error {
+	var err error
+	pixbufAnimationNewFromFileFunction_Once.Do(func() {
+		err = pixbufAnimationStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationNewFromFileFunction, err = pixbufAnimationStruct.InvokerNew("new_from_file")
+	})
+	return err
+}
+
+// PixbufAnimationNewFromFile is a representation of the C type gdk_pixbuf_animation_new_from_file.
+func PixbufAnimationNewFromFile(filename string) *PixbufAnimation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := pixbufAnimationNewFromFileFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationNewFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufAnimation{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufAnimationNewFromResourceFunction *gi.Function
+var pixbufAnimationNewFromResourceFunction_Once sync.Once
+
+func pixbufAnimationNewFromResourceFunction_Set() error {
+	var err error
+	pixbufAnimationNewFromResourceFunction_Once.Do(func() {
+		err = pixbufAnimationStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationNewFromResourceFunction, err = pixbufAnimationStruct.InvokerNew("new_from_resource")
+	})
+	return err
+}
+
+// PixbufAnimationNewFromResource is a representation of the C type gdk_pixbuf_animation_new_from_resource.
+func PixbufAnimationNewFromResource(resourcePath string) *PixbufAnimation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(resourcePath)
+
+	var ret gi.Argument
+
+	err := pixbufAnimationNewFromResourceFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationNewFromResourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufAnimation{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_stream' : parameter 'stream' of type 'Gio.InputStream' not supported
 
@@ -635,7 +1135,37 @@ func (recv *PixbufAnimation) GetHeight() int32 {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_animation_get_iter' : parameter 'start_time' of type 'GLib.TimeVal' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_get_static_image' : return type 'Pixbuf' not supported
+var pixbufAnimationGetStaticImageFunction *gi.Function
+var pixbufAnimationGetStaticImageFunction_Once sync.Once
+
+func pixbufAnimationGetStaticImageFunction_Set() error {
+	var err error
+	pixbufAnimationGetStaticImageFunction_Once.Do(func() {
+		err = pixbufAnimationStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationGetStaticImageFunction, err = pixbufAnimationStruct.InvokerNew("get_static_image")
+	})
+	return err
+}
+
+// GetStaticImage is a representation of the C type gdk_pixbuf_animation_get_static_image.
+func (recv *PixbufAnimation) GetStaticImage() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufAnimationGetStaticImageFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationGetStaticImageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufAnimationGetWidthFunction *gi.Function
 var pixbufAnimationGetWidthFunction_Once sync.Once
@@ -701,7 +1231,37 @@ func (recv *PixbufAnimation) IsStaticImage() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_ref' : return type 'PixbufAnimation' not supported
+var pixbufAnimationRefFunction *gi.Function
+var pixbufAnimationRefFunction_Once sync.Once
+
+func pixbufAnimationRefFunction_Set() error {
+	var err error
+	pixbufAnimationRefFunction_Once.Do(func() {
+		err = pixbufAnimationStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationRefFunction, err = pixbufAnimationStruct.InvokerNew("ref")
+	})
+	return err
+}
+
+// Ref is a representation of the C type gdk_pixbuf_animation_ref.
+func (recv *PixbufAnimation) Ref() *PixbufAnimation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufAnimationRefFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufAnimation{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufAnimationUnrefFunction *gi.Function
 var pixbufAnimationUnrefFunction_Once sync.Once
@@ -780,7 +1340,37 @@ func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_iter_get_pixbuf' : return type 'Pixbuf' not supported
+var pixbufAnimationIterGetPixbufFunction *gi.Function
+var pixbufAnimationIterGetPixbufFunction_Once sync.Once
+
+func pixbufAnimationIterGetPixbufFunction_Set() error {
+	var err error
+	pixbufAnimationIterGetPixbufFunction_Once.Do(func() {
+		err = pixbufAnimationIterStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationIterGetPixbufFunction, err = pixbufAnimationIterStruct.InvokerNew("get_pixbuf")
+	})
+	return err
+}
+
+// GetPixbuf is a representation of the C type gdk_pixbuf_animation_iter_get_pixbuf.
+func (recv *PixbufAnimationIter) GetPixbuf() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufAnimationIterGetPixbufFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationIterGetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufAnimationIterOnCurrentlyLoadingFrameFunction *gi.Function
 var pixbufAnimationIterOnCurrentlyLoadingFrameFunction_Once sync.Once
@@ -848,11 +1438,99 @@ type PixbufLoader struct {
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_new' : return type 'PixbufLoader' not supported
+var pixbufLoaderNewFunction *gi.Function
+var pixbufLoaderNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_new_with_mime_type' : return type 'PixbufLoader' not supported
+func pixbufLoaderNewFunction_Set() error {
+	var err error
+	pixbufLoaderNewFunction_Once.Do(func() {
+		err = pixbufLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderNewFunction, err = pixbufLoaderStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_new_with_type' : return type 'PixbufLoader' not supported
+// PixbufLoaderNew is a representation of the C type gdk_pixbuf_loader_new.
+func PixbufLoaderNew() *PixbufLoader {
+
+	var ret gi.Argument
+
+	err := pixbufLoaderNewFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &PixbufLoader{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufLoaderNewWithMimeTypeFunction *gi.Function
+var pixbufLoaderNewWithMimeTypeFunction_Once sync.Once
+
+func pixbufLoaderNewWithMimeTypeFunction_Set() error {
+	var err error
+	pixbufLoaderNewWithMimeTypeFunction_Once.Do(func() {
+		err = pixbufLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderNewWithMimeTypeFunction, err = pixbufLoaderStruct.InvokerNew("new_with_mime_type")
+	})
+	return err
+}
+
+// PixbufLoaderNewWithMimeType is a representation of the C type gdk_pixbuf_loader_new_with_mime_type.
+func PixbufLoaderNewWithMimeType(mimeType string) *PixbufLoader {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(mimeType)
+
+	var ret gi.Argument
+
+	err := pixbufLoaderNewWithMimeTypeFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderNewWithMimeTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufLoader{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufLoaderNewWithTypeFunction *gi.Function
+var pixbufLoaderNewWithTypeFunction_Once sync.Once
+
+func pixbufLoaderNewWithTypeFunction_Set() error {
+	var err error
+	pixbufLoaderNewWithTypeFunction_Once.Do(func() {
+		err = pixbufLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderNewWithTypeFunction, err = pixbufLoaderStruct.InvokerNew("new_with_type")
+	})
+	return err
+}
+
+// PixbufLoaderNewWithType is a representation of the C type gdk_pixbuf_loader_new_with_type.
+func PixbufLoaderNewWithType(imageType string) *PixbufLoader {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(imageType)
+
+	var ret gi.Argument
+
+	err := pixbufLoaderNewWithTypeFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderNewWithTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufLoader{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufLoaderCloseFunction *gi.Function
 var pixbufLoaderCloseFunction_Once sync.Once
@@ -886,7 +1564,37 @@ func (recv *PixbufLoader) Close() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_get_animation' : return type 'PixbufAnimation' not supported
+var pixbufLoaderGetAnimationFunction *gi.Function
+var pixbufLoaderGetAnimationFunction_Once sync.Once
+
+func pixbufLoaderGetAnimationFunction_Set() error {
+	var err error
+	pixbufLoaderGetAnimationFunction_Once.Do(func() {
+		err = pixbufLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderGetAnimationFunction, err = pixbufLoaderStruct.InvokerNew("get_animation")
+	})
+	return err
+}
+
+// GetAnimation is a representation of the C type gdk_pixbuf_loader_get_animation.
+func (recv *PixbufLoader) GetAnimation() *PixbufAnimation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufLoaderGetAnimationFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderGetAnimationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufAnimation{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufLoaderGetFormatFunction *gi.Function
 var pixbufLoaderGetFormatFunction_Once sync.Once
@@ -920,7 +1628,37 @@ func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_get_pixbuf' : return type 'Pixbuf' not supported
+var pixbufLoaderGetPixbufFunction *gi.Function
+var pixbufLoaderGetPixbufFunction_Once sync.Once
+
+func pixbufLoaderGetPixbufFunction_Set() error {
+	var err error
+	pixbufLoaderGetPixbufFunction_Once.Do(func() {
+		err = pixbufLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderGetPixbufFunction, err = pixbufLoaderStruct.InvokerNew("get_pixbuf")
+	})
+	return err
+}
+
+// GetPixbuf is a representation of the C type gdk_pixbuf_loader_get_pixbuf.
+func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufLoaderGetPixbufFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderGetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{native: ret.Pointer()}
+
+	return retGo
+}
 
 var pixbufLoaderSetSizeFunction *gi.Function
 var pixbufLoaderSetSizeFunction_Once sync.Once
@@ -971,9 +1709,68 @@ type PixbufSimpleAnim struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_simple_anim_new' : return type 'PixbufSimpleAnim' not supported
+var pixbufSimpleAnimNewFunction *gi.Function
+var pixbufSimpleAnimNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_simple_anim_add_frame' : parameter 'pixbuf' of type 'Pixbuf' not supported
+func pixbufSimpleAnimNewFunction_Set() error {
+	var err error
+	pixbufSimpleAnimNewFunction_Once.Do(func() {
+		err = pixbufSimpleAnimStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufSimpleAnimNewFunction, err = pixbufSimpleAnimStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PixbufSimpleAnimNew is a representation of the C type gdk_pixbuf_simple_anim_new.
+func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleAnim {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(width)
+	inArgs[1].SetInt32(height)
+	inArgs[2].SetFloat32(rate)
+
+	var ret gi.Argument
+
+	err := pixbufSimpleAnimNewFunction_Set()
+	if err == nil {
+		ret = pixbufSimpleAnimNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PixbufSimpleAnim{native: ret.Pointer()}
+
+	return retGo
+}
+
+var pixbufSimpleAnimAddFrameFunction *gi.Function
+var pixbufSimpleAnimAddFrameFunction_Once sync.Once
+
+func pixbufSimpleAnimAddFrameFunction_Set() error {
+	var err error
+	pixbufSimpleAnimAddFrameFunction_Once.Do(func() {
+		err = pixbufSimpleAnimStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufSimpleAnimAddFrameFunction, err = pixbufSimpleAnimStruct.InvokerNew("add_frame")
+	})
+	return err
+}
+
+// AddFrame is a representation of the C type gdk_pixbuf_simple_anim_add_frame.
+func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(pixbuf.native)
+
+	err := pixbufSimpleAnimAddFrameFunction_Set()
+	if err == nil {
+		pixbufSimpleAnimAddFrameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var pixbufSimpleAnimGetLoopFunction *gi.Function
 var pixbufSimpleAnimGetLoopFunction_Once sync.Once

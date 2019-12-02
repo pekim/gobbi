@@ -17,7 +17,29 @@ import (
 
 // UNSUPPORTED : C value 'atk_focus_tracker_init' : parameter 'init' of type 'EventListenerInit' not supported
 
-// UNSUPPORTED : C value 'atk_focus_tracker_notify' : parameter 'object' of type 'Object' not supported
+var focusTrackerNotifyFunction *gi.Function
+var focusTrackerNotifyFunction_Once sync.Once
+
+func focusTrackerNotifyFunction_Set() error {
+	var err error
+	focusTrackerNotifyFunction_Once.Do(func() {
+		focusTrackerNotifyFunction, err = gi.FunctionInvokerNew("Atk", "focus_tracker_notify")
+	})
+	return err
+}
+
+// FocusTrackerNotify is a representation of the C type atk_focus_tracker_notify.
+func FocusTrackerNotify(object *Object) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(object.native)
+
+	err := focusTrackerNotifyFunction_Set()
+	if err == nil {
+		focusTrackerNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var getBinaryAgeFunction *gi.Function
 var getBinaryAgeFunction_Once sync.Once
@@ -45,9 +67,57 @@ func GetBinaryAge() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_get_default_registry' : return type 'Registry' not supported
+var getDefaultRegistryFunction *gi.Function
+var getDefaultRegistryFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_get_focus_object' : return type 'Object' not supported
+func getDefaultRegistryFunction_Set() error {
+	var err error
+	getDefaultRegistryFunction_Once.Do(func() {
+		getDefaultRegistryFunction, err = gi.FunctionInvokerNew("Atk", "get_default_registry")
+	})
+	return err
+}
+
+// GetDefaultRegistry is a representation of the C type atk_get_default_registry.
+func GetDefaultRegistry() *Registry {
+
+	var ret gi.Argument
+
+	err := getDefaultRegistryFunction_Set()
+	if err == nil {
+		ret = getDefaultRegistryFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Registry{native: ret.Pointer()}
+
+	return retGo
+}
+
+var getFocusObjectFunction *gi.Function
+var getFocusObjectFunction_Once sync.Once
+
+func getFocusObjectFunction_Set() error {
+	var err error
+	getFocusObjectFunction_Once.Do(func() {
+		getFocusObjectFunction, err = gi.FunctionInvokerNew("Atk", "get_focus_object")
+	})
+	return err
+}
+
+// GetFocusObject is a representation of the C type atk_get_focus_object.
+func GetFocusObject() *Object {
+
+	var ret gi.Argument
+
+	err := getFocusObjectFunction_Set()
+	if err == nil {
+		ret = getFocusObjectFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 var getInterfaceAgeFunction *gi.Function
 var getInterfaceAgeFunction_Once sync.Once
@@ -153,7 +223,31 @@ func GetMinorVersion() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_get_root' : return type 'Object' not supported
+var getRootFunction *gi.Function
+var getRootFunction_Once sync.Once
+
+func getRootFunction_Set() error {
+	var err error
+	getRootFunction_Once.Do(func() {
+		getRootFunction, err = gi.FunctionInvokerNew("Atk", "get_root")
+	})
+	return err
+}
+
+// GetRoot is a representation of the C type atk_get_root.
+func GetRoot() *Object {
+
+	var ret gi.Argument
+
+	err := getRootFunction_Set()
+	if err == nil {
+		ret = getRootFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 var getToolkitNameFunction *gi.Function
 var getToolkitNameFunction_Once sync.Once

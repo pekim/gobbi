@@ -37,9 +37,14 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.namespace = ns
 	f.Parameters.init(ns)
 	f.ReturnValue.init(ns)
-	f.goName = makeExportedGoName(f.Name)
 	f.record = record
 	f.receiver = receiver
+
+	f.goName = makeExportedGoName(f.Name)
+	if f.namespace.Name == "GObject" && f.goName == "ParamSpecOverride" {
+		// Avoid name clash with a class of the same name.
+		f.goName += "_"
+	}
 
 	recordName := ""
 	if record != nil {

@@ -69,7 +69,37 @@ func (recv *Class) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_class_get_parent' : return type 'Class' not supported
+var classGetParentFunction *gi.Function
+var classGetParentFunction_Once sync.Once
+
+func classGetParentFunction_Set() error {
+	var err error
+	classGetParentFunction_Once.Do(func() {
+		err = classStruct_Set()
+		if err != nil {
+			return
+		}
+		classGetParentFunction, err = classStruct.InvokerNew("get_parent")
+	})
+	return err
+}
+
+// GetParent is a representation of the C type jsc_class_get_parent.
+func (recv *Class) GetParent() *Class {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := classGetParentFunction_Set()
+	if err == nil {
+		ret = classGetParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Class{native: ret.Pointer()}
+
+	return retGo
+}
 
 // ClassStruct creates an uninitialised Class.
 func ClassStruct() *Class {
@@ -105,9 +135,67 @@ type Context struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'jsc_context_new' : return type 'Context' not supported
+var contextNewFunction *gi.Function
+var contextNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_context_new_with_virtual_machine' : parameter 'vm' of type 'VirtualMachine' not supported
+func contextNewFunction_Set() error {
+	var err error
+	contextNewFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextNewFunction, err = contextStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ContextNew is a representation of the C type jsc_context_new.
+func ContextNew() *Context {
+
+	var ret gi.Argument
+
+	err := contextNewFunction_Set()
+	if err == nil {
+		ret = contextNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextNewWithVirtualMachineFunction *gi.Function
+var contextNewWithVirtualMachineFunction_Once sync.Once
+
+func contextNewWithVirtualMachineFunction_Set() error {
+	var err error
+	contextNewWithVirtualMachineFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextNewWithVirtualMachineFunction, err = contextStruct.InvokerNew("new_with_virtual_machine")
+	})
+	return err
+}
+
+// ContextNewWithVirtualMachine is a representation of the C type jsc_context_new_with_virtual_machine.
+func ContextNewWithVirtualMachine(vm *VirtualMachine) *Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(vm.native)
+
+	var ret gi.Argument
+
+	err := contextNewWithVirtualMachineFunction_Set()
+	if err == nil {
+		ret = contextNewWithVirtualMachineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'jsc_context_check_syntax' : parameter 'mode' of type 'CheckSyntaxMode' not supported
 
@@ -139,19 +227,206 @@ func (recv *Context) ClearException() {
 	return
 }
 
-// UNSUPPORTED : C value 'jsc_context_evaluate' : return type 'Value' not supported
+var contextEvaluateFunction *gi.Function
+var contextEvaluateFunction_Once sync.Once
+
+func contextEvaluateFunction_Set() error {
+	var err error
+	contextEvaluateFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextEvaluateFunction, err = contextStruct.InvokerNew("evaluate")
+	})
+	return err
+}
+
+// Evaluate is a representation of the C type jsc_context_evaluate.
+func (recv *Context) Evaluate(code string, length int32) *Value {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(code)
+	inArgs[2].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := contextEvaluateFunction_Set()
+	if err == nil {
+		ret = contextEvaluateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'jsc_context_evaluate_in_object' : parameter 'object_instance' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'jsc_context_evaluate_with_source_uri' : return type 'Value' not supported
+var contextEvaluateWithSourceUriFunction *gi.Function
+var contextEvaluateWithSourceUriFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_context_get_exception' : return type 'Exception' not supported
+func contextEvaluateWithSourceUriFunction_Set() error {
+	var err error
+	contextEvaluateWithSourceUriFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextEvaluateWithSourceUriFunction, err = contextStruct.InvokerNew("evaluate_with_source_uri")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'jsc_context_get_global_object' : return type 'Value' not supported
+// EvaluateWithSourceUri is a representation of the C type jsc_context_evaluate_with_source_uri.
+func (recv *Context) EvaluateWithSourceUri(code string, length int32, uri string, lineNumber uint32) *Value {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(code)
+	inArgs[2].SetInt32(length)
+	inArgs[3].SetString(uri)
+	inArgs[4].SetUint32(lineNumber)
 
-// UNSUPPORTED : C value 'jsc_context_get_value' : return type 'Value' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'jsc_context_get_virtual_machine' : return type 'VirtualMachine' not supported
+	err := contextEvaluateWithSourceUriFunction_Set()
+	if err == nil {
+		ret = contextEvaluateWithSourceUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextGetExceptionFunction *gi.Function
+var contextGetExceptionFunction_Once sync.Once
+
+func contextGetExceptionFunction_Set() error {
+	var err error
+	contextGetExceptionFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetExceptionFunction, err = contextStruct.InvokerNew("get_exception")
+	})
+	return err
+}
+
+// GetException is a representation of the C type jsc_context_get_exception.
+func (recv *Context) GetException() *Exception {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextGetExceptionFunction_Set()
+	if err == nil {
+		ret = contextGetExceptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Exception{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextGetGlobalObjectFunction *gi.Function
+var contextGetGlobalObjectFunction_Once sync.Once
+
+func contextGetGlobalObjectFunction_Set() error {
+	var err error
+	contextGetGlobalObjectFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetGlobalObjectFunction, err = contextStruct.InvokerNew("get_global_object")
+	})
+	return err
+}
+
+// GetGlobalObject is a representation of the C type jsc_context_get_global_object.
+func (recv *Context) GetGlobalObject() *Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextGetGlobalObjectFunction_Set()
+	if err == nil {
+		ret = contextGetGlobalObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextGetValueFunction *gi.Function
+var contextGetValueFunction_Once sync.Once
+
+func contextGetValueFunction_Set() error {
+	var err error
+	contextGetValueFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetValueFunction, err = contextStruct.InvokerNew("get_value")
+	})
+	return err
+}
+
+// GetValue is a representation of the C type jsc_context_get_value.
+func (recv *Context) GetValue(name string) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := contextGetValueFunction_Set()
+	if err == nil {
+		ret = contextGetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextGetVirtualMachineFunction *gi.Function
+var contextGetVirtualMachineFunction_Once sync.Once
+
+func contextGetVirtualMachineFunction_Set() error {
+	var err error
+	contextGetVirtualMachineFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetVirtualMachineFunction, err = contextStruct.InvokerNew("get_virtual_machine")
+	})
+	return err
+}
+
+// GetVirtualMachine is a representation of the C type jsc_context_get_virtual_machine.
+func (recv *Context) GetVirtualMachine() *VirtualMachine {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextGetVirtualMachineFunction_Set()
+	if err == nil {
+		ret = contextGetVirtualMachineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VirtualMachine{native: ret.Pointer()}
+
+	return retGo
+}
 
 var contextPopExceptionHandlerFunction *gi.Function
 var contextPopExceptionHandlerFunction_Once sync.Once
@@ -183,9 +458,37 @@ func (recv *Context) PopExceptionHandler() {
 
 // UNSUPPORTED : C value 'jsc_context_push_exception_handler' : parameter 'handler' of type 'ExceptionHandler' not supported
 
-// UNSUPPORTED : C value 'jsc_context_register_class' : parameter 'parent_class' of type 'Class' not supported
+// UNSUPPORTED : C value 'jsc_context_register_class' : parameter 'destroy_notify' of type 'GLib.DestroyNotify' not supported
 
-// UNSUPPORTED : C value 'jsc_context_set_value' : parameter 'value' of type 'Value' not supported
+var contextSetValueFunction *gi.Function
+var contextSetValueFunction_Once sync.Once
+
+func contextSetValueFunction_Set() error {
+	var err error
+	contextSetValueFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextSetValueFunction, err = contextStruct.InvokerNew("set_value")
+	})
+	return err
+}
+
+// SetValue is a representation of the C type jsc_context_set_value.
+func (recv *Context) SetValue(name string, value *Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(value.native)
+
+	err := contextSetValueFunction_Set()
+	if err == nil {
+		contextSetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contextThrowFunction *gi.Function
 var contextThrowFunction_Once sync.Once
@@ -216,7 +519,34 @@ func (recv *Context) Throw(errorMessage string) {
 	return
 }
 
-// UNSUPPORTED : C value 'jsc_context_throw_exception' : parameter 'exception' of type 'Exception' not supported
+var contextThrowExceptionFunction *gi.Function
+var contextThrowExceptionFunction_Once sync.Once
+
+func contextThrowExceptionFunction_Set() error {
+	var err error
+	contextThrowExceptionFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextThrowExceptionFunction, err = contextStruct.InvokerNew("throw_exception")
+	})
+	return err
+}
+
+// ThrowException is a representation of the C type jsc_context_throw_exception.
+func (recv *Context) ThrowException(exception *Exception) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(exception.native)
+
+	err := contextThrowExceptionFunction_Set()
+	if err == nil {
+		contextThrowExceptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'jsc_context_throw_printf' : parameter '...' of type 'nil' not supported
 
@@ -271,17 +601,80 @@ type Exception struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'jsc_exception_new' : parameter 'context' of type 'Context' not supported
+var exceptionNewFunction *gi.Function
+var exceptionNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_exception_new_printf' : parameter 'context' of type 'Context' not supported
+func exceptionNewFunction_Set() error {
+	var err error
+	exceptionNewFunction_Once.Do(func() {
+		err = exceptionStruct_Set()
+		if err != nil {
+			return
+		}
+		exceptionNewFunction, err = exceptionStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'jsc_exception_new_vprintf' : parameter 'context' of type 'Context' not supported
+// ExceptionNew is a representation of the C type jsc_exception_new.
+func ExceptionNew(context *Context, message string) *Exception {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetString(message)
 
-// UNSUPPORTED : C value 'jsc_exception_new_with_name' : parameter 'context' of type 'Context' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'jsc_exception_new_with_name_printf' : parameter 'context' of type 'Context' not supported
+	err := exceptionNewFunction_Set()
+	if err == nil {
+		ret = exceptionNewFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'jsc_exception_new_with_name_vprintf' : parameter 'context' of type 'Context' not supported
+	retGo := &Exception{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'jsc_exception_new_printf' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'jsc_exception_new_vprintf' : parameter 'args' of type 'va_list' not supported
+
+var exceptionNewWithNameFunction *gi.Function
+var exceptionNewWithNameFunction_Once sync.Once
+
+func exceptionNewWithNameFunction_Set() error {
+	var err error
+	exceptionNewWithNameFunction_Once.Do(func() {
+		err = exceptionStruct_Set()
+		if err != nil {
+			return
+		}
+		exceptionNewWithNameFunction, err = exceptionStruct.InvokerNew("new_with_name")
+	})
+	return err
+}
+
+// ExceptionNewWithName is a representation of the C type jsc_exception_new_with_name.
+func ExceptionNewWithName(context *Context, name string, message string) *Exception {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(message)
+
+	var ret gi.Argument
+
+	err := exceptionNewWithNameFunction_Set()
+	if err == nil {
+		ret = exceptionNewWithNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Exception{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'jsc_exception_new_with_name_printf' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'jsc_exception_new_with_name_vprintf' : parameter 'args' of type 'va_list' not supported
 
 var exceptionGetBacktraceStringFunction *gi.Function
 var exceptionGetBacktraceStringFunction_Once sync.Once
@@ -558,31 +951,184 @@ type Value struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'jsc_value_new_array' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array' : parameter 'first_item_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : parameter 'array' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_array_from_strv' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array_from_strv' : parameter 'strv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_boolean' : parameter 'context' of type 'Context' not supported
+var valueNewBooleanFunction *gi.Function
+var valueNewBooleanFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_value_new_function' : parameter 'context' of type 'Context' not supported
+func valueNewBooleanFunction_Set() error {
+	var err error
+	valueNewBooleanFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueNewBooleanFunction, err = valueStruct.InvokerNew("new_boolean")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'jsc_value_new_function_variadic' : parameter 'context' of type 'Context' not supported
+// ValueNewBoolean is a representation of the C type jsc_value_new_boolean.
+func ValueNewBoolean(context *Context, value bool) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetBoolean(value)
 
-// UNSUPPORTED : C value 'jsc_value_new_functionv' : parameter 'context' of type 'Context' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'jsc_value_new_null' : parameter 'context' of type 'Context' not supported
+	err := valueNewBooleanFunction_Set()
+	if err == nil {
+		ret = valueNewBooleanFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'jsc_value_new_number' : parameter 'context' of type 'Context' not supported
+	retGo := &Value{native: ret.Pointer()}
 
-// UNSUPPORTED : C value 'jsc_value_new_object' : parameter 'context' of type 'Context' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'jsc_value_new_string' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_function' : parameter 'callback' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_string_from_bytes' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_function_variadic' : parameter 'callback' of type 'VariadicFunction' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_undefined' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'jsc_value_new_functionv' : parameter 'callback' of type 'GObject.Callback' not supported
+
+var valueNewNullFunction *gi.Function
+var valueNewNullFunction_Once sync.Once
+
+func valueNewNullFunction_Set() error {
+	var err error
+	valueNewNullFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueNewNullFunction, err = valueStruct.InvokerNew("new_null")
+	})
+	return err
+}
+
+// ValueNewNull is a representation of the C type jsc_value_new_null.
+func ValueNewNull(context *Context) *Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := valueNewNullFunction_Set()
+	if err == nil {
+		ret = valueNewNullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+var valueNewNumberFunction *gi.Function
+var valueNewNumberFunction_Once sync.Once
+
+func valueNewNumberFunction_Set() error {
+	var err error
+	valueNewNumberFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueNewNumberFunction, err = valueStruct.InvokerNew("new_number")
+	})
+	return err
+}
+
+// ValueNewNumber is a representation of the C type jsc_value_new_number.
+func ValueNewNumber(context *Context, number float64) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetFloat64(number)
+
+	var ret gi.Argument
+
+	err := valueNewNumberFunction_Set()
+	if err == nil {
+		ret = valueNewNumberFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'jsc_value_new_object' : parameter 'instance' of type 'gpointer' not supported
+
+var valueNewStringFunction *gi.Function
+var valueNewStringFunction_Once sync.Once
+
+func valueNewStringFunction_Set() error {
+	var err error
+	valueNewStringFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueNewStringFunction, err = valueStruct.InvokerNew("new_string")
+	})
+	return err
+}
+
+// ValueNewString is a representation of the C type jsc_value_new_string.
+func ValueNewString(context *Context, string_ string) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetString(string_)
+
+	var ret gi.Argument
+
+	err := valueNewStringFunction_Set()
+	if err == nil {
+		ret = valueNewStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'jsc_value_new_string_from_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+var valueNewUndefinedFunction *gi.Function
+var valueNewUndefinedFunction_Once sync.Once
+
+func valueNewUndefinedFunction_Set() error {
+	var err error
+	valueNewUndefinedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueNewUndefinedFunction, err = valueStruct.InvokerNew("new_undefined")
+	})
+	return err
+}
+
+// ValueNewUndefined is a representation of the C type jsc_value_new_undefined.
+func ValueNewUndefined(context *Context) *Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := valueNewUndefinedFunction_Set()
+	if err == nil {
+		ret = valueNewUndefinedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'jsc_value_constructor_call' : parameter 'first_parameter_type' of type 'GType' not supported
 
@@ -592,7 +1138,37 @@ type Value struct {
 
 // UNSUPPORTED : C value 'jsc_value_function_callv' : parameter 'parameters' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_get_context' : return type 'Context' not supported
+var valueGetContextFunction *gi.Function
+var valueGetContextFunction_Once sync.Once
+
+func valueGetContextFunction_Set() error {
+	var err error
+	valueGetContextFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetContextFunction, err = valueStruct.InvokerNew("get_context")
+	})
+	return err
+}
+
+// GetContext is a representation of the C type jsc_value_get_context.
+func (recv *Value) GetContext() *Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetContextFunction_Set()
+	if err == nil {
+		ret = valueGetContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
 
 var valueIsArrayFunction *gi.Function
 var valueIsArrayFunction_Once sync.Once
@@ -947,9 +1523,71 @@ func (recv *Value) ObjectEnumerateProperties() {
 	return
 }
 
-// UNSUPPORTED : C value 'jsc_value_object_get_property' : return type 'Value' not supported
+var valueObjectGetPropertyFunction *gi.Function
+var valueObjectGetPropertyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_value_object_get_property_at_index' : return type 'Value' not supported
+func valueObjectGetPropertyFunction_Set() error {
+	var err error
+	valueObjectGetPropertyFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueObjectGetPropertyFunction, err = valueStruct.InvokerNew("object_get_property")
+	})
+	return err
+}
+
+// ObjectGetProperty is a representation of the C type jsc_value_object_get_property.
+func (recv *Value) ObjectGetProperty(name string) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := valueObjectGetPropertyFunction_Set()
+	if err == nil {
+		ret = valueObjectGetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
+
+var valueObjectGetPropertyAtIndexFunction *gi.Function
+var valueObjectGetPropertyAtIndexFunction_Once sync.Once
+
+func valueObjectGetPropertyAtIndexFunction_Set() error {
+	var err error
+	valueObjectGetPropertyAtIndexFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueObjectGetPropertyAtIndexFunction, err = valueStruct.InvokerNew("object_get_property_at_index")
+	})
+	return err
+}
+
+// ObjectGetPropertyAtIndex is a representation of the C type jsc_value_object_get_property_at_index.
+func (recv *Value) ObjectGetPropertyAtIndex(index uint32) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(index)
+
+	var ret gi.Argument
+
+	err := valueObjectGetPropertyAtIndexFunction_Set()
+	if err == nil {
+		ret = valueObjectGetPropertyAtIndexFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}
 
 var valueObjectHasPropertyFunction *gi.Function
 var valueObjectHasPropertyFunction_Once sync.Once
@@ -1021,9 +1659,65 @@ func (recv *Value) ObjectIsInstanceOf(name string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_object_set_property' : parameter 'property' of type 'Value' not supported
+var valueObjectSetPropertyFunction *gi.Function
+var valueObjectSetPropertyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_value_object_set_property_at_index' : parameter 'property' of type 'Value' not supported
+func valueObjectSetPropertyFunction_Set() error {
+	var err error
+	valueObjectSetPropertyFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueObjectSetPropertyFunction, err = valueStruct.InvokerNew("object_set_property")
+	})
+	return err
+}
+
+// ObjectSetProperty is a representation of the C type jsc_value_object_set_property.
+func (recv *Value) ObjectSetProperty(name string, property *Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(property.native)
+
+	err := valueObjectSetPropertyFunction_Set()
+	if err == nil {
+		valueObjectSetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var valueObjectSetPropertyAtIndexFunction *gi.Function
+var valueObjectSetPropertyAtIndexFunction_Once sync.Once
+
+func valueObjectSetPropertyAtIndexFunction_Set() error {
+	var err error
+	valueObjectSetPropertyAtIndexFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueObjectSetPropertyAtIndexFunction, err = valueStruct.InvokerNew("object_set_property_at_index")
+	})
+	return err
+}
+
+// ObjectSetPropertyAtIndex is a representation of the C type jsc_value_object_set_property_at_index.
+func (recv *Value) ObjectSetPropertyAtIndex(index uint32, property *Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(index)
+	inArgs[2].SetPointer(property.native)
+
+	err := valueObjectSetPropertyAtIndexFunction_Set()
+	if err == nil {
+		valueObjectSetPropertyAtIndexFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueToBooleanFunction *gi.Function
 var valueToBooleanFunction_Once sync.Once
@@ -1174,7 +1868,35 @@ type VirtualMachine struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'jsc_virtual_machine_new' : return type 'VirtualMachine' not supported
+var virtualMachineNewFunction *gi.Function
+var virtualMachineNewFunction_Once sync.Once
+
+func virtualMachineNewFunction_Set() error {
+	var err error
+	virtualMachineNewFunction_Once.Do(func() {
+		err = virtualMachineStruct_Set()
+		if err != nil {
+			return
+		}
+		virtualMachineNewFunction, err = virtualMachineStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// VirtualMachineNew is a representation of the C type jsc_virtual_machine_new.
+func VirtualMachineNew() *VirtualMachine {
+
+	var ret gi.Argument
+
+	err := virtualMachineNewFunction_Set()
+	if err == nil {
+		ret = virtualMachineNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &VirtualMachine{native: ret.Pointer()}
+
+	return retGo
+}
 
 var weakValueStruct *gi.Struct
 var weakValueStruct_Once sync.Once
@@ -1195,6 +1917,66 @@ type WeakValue struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'jsc_weak_value_new' : parameter 'value' of type 'Value' not supported
+var weakValueNewFunction *gi.Function
+var weakValueNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_weak_value_get_value' : return type 'Value' not supported
+func weakValueNewFunction_Set() error {
+	var err error
+	weakValueNewFunction_Once.Do(func() {
+		err = weakValueStruct_Set()
+		if err != nil {
+			return
+		}
+		weakValueNewFunction, err = weakValueStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// WeakValueNew is a representation of the C type jsc_weak_value_new.
+func WeakValueNew(value *Value) *WeakValue {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := weakValueNewFunction_Set()
+	if err == nil {
+		ret = weakValueNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &WeakValue{native: ret.Pointer()}
+
+	return retGo
+}
+
+var weakValueGetValueFunction *gi.Function
+var weakValueGetValueFunction_Once sync.Once
+
+func weakValueGetValueFunction_Set() error {
+	var err error
+	weakValueGetValueFunction_Once.Do(func() {
+		err = weakValueStruct_Set()
+		if err != nil {
+			return
+		}
+		weakValueGetValueFunction, err = weakValueStruct.InvokerNew("get_value")
+	})
+	return err
+}
+
+// GetValue is a representation of the C type jsc_weak_value_get_value.
+func (recv *WeakValue) GetValue() *Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := weakValueGetValueFunction_Set()
+	if err == nil {
+		ret = weakValueGetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Value{native: ret.Pointer()}
+
+	return retGo
+}

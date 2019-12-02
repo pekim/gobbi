@@ -127,6 +127,11 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return goType, nil
 	}
 
+	if t.isClass() {
+		class, _ := t.namespace.Classes.byName(t.Name)
+		return jen.Op("*").Id(class.goName), nil
+	}
+
 	if t.isRecord() {
 		record, _ := t.namespace.Records.byName(t.Name)
 		return jen.Op("*").Id(record.goName), nil
@@ -255,6 +260,11 @@ func (t *Type) argumentValueSetFunctionName() string {
 }
 
 func (t *Type) createFromOutArgument(argValue *jen.Statement) *jen.Statement {
+	if t.isClass() {
+		class, _ := t.namespace.Classes.byName(t.Name)
+		return class.createFromArgument(argValue)
+	}
+
 	if t.isRecord() {
 		record, _ := t.namespace.Records.byName(t.Name)
 		return record.createFromArgument(argValue)
@@ -320,7 +330,16 @@ func (t *Type) isAlias() bool {
 	return found
 }
 
+func (t *Type) isClass() bool {
+	_, found := t.namespace.Classes.byName(t.Name)
+	return found
+}
+
 func (t *Type) isRecord() bool {
+	if t.isClass() {
+		return true
+	}
+
 	_, found := t.namespace.Records.byName(t.Name)
 	return found
 }

@@ -22,7 +22,35 @@ type FontMap struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_ft2_font_map_new' : return type 'FontMap' not supported
+var fontMapNewFunction *gi.Function
+var fontMapNewFunction_Once sync.Once
+
+func fontMapNewFunction_Set() error {
+	var err error
+	fontMapNewFunction_Once.Do(func() {
+		err = fontMapStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMapNewFunction, err = fontMapStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FontMapNew is a representation of the C type pango_ft2_font_map_new.
+func FontMapNew() *FontMap {
+
+	var ret gi.Argument
+
+	err := fontMapNewFunction_Set()
+	if err == nil {
+		ret = fontMapNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &FontMap{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_ft2_font_map_create_context' : return type 'Pango.Context' not supported
 

@@ -54,9 +54,36 @@ func ActionNameIsValid(actionName string) bool {
 
 // UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : parameter 'context' of type 'AppLaunchContext' not supported
+var appInfoLaunchDefaultForUriFunction *gi.Function
+var appInfoLaunchDefaultForUriFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'context' of type 'AppLaunchContext' not supported
+func appInfoLaunchDefaultForUriFunction_Set() error {
+	var err error
+	appInfoLaunchDefaultForUriFunction_Once.Do(func() {
+		appInfoLaunchDefaultForUriFunction, err = gi.FunctionInvokerNew("Gio", "app_info_launch_default_for_uri")
+	})
+	return err
+}
+
+// AppInfoLaunchDefaultForUri is a representation of the C type g_app_info_launch_default_for_uri.
+func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(uri)
+	inArgs[1].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := appInfoLaunchDefaultForUriFunction_Set()
+	if err == nil {
+		ret = appInfoLaunchDefaultForUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -94,9 +121,9 @@ func AppInfoResetTypeAssociations(contentType string) {
 
 // UNSUPPORTED : C value 'g_bus_own_name' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'connection' of type 'DBusConnection' not supported
+// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : parameter 'connection' of type 'DBusConnection' not supported
+// UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
@@ -150,9 +177,9 @@ func BusUnwatchName(watcherId uint32) {
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'connection' of type 'DBusConnection' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : parameter 'connection' of type 'DBusConnection' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
@@ -475,11 +502,40 @@ func DbusAddressEscapeValue(string_ string) string {
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'cancellable' of type 'Cancellable' not supported
+// UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'cancellable' of type 'Cancellable' not supported
+var dbusAddressGetStreamSyncFunction *gi.Function
+var dbusAddressGetStreamSyncFunction_Once sync.Once
+
+func dbusAddressGetStreamSyncFunction_Set() error {
+	var err error
+	dbusAddressGetStreamSyncFunction_Once.Do(func() {
+		dbusAddressGetStreamSyncFunction, err = gi.FunctionInvokerNew("Gio", "dbus_address_get_stream_sync")
+	})
+	return err
+}
+
+// DbusAddressGetStreamSync is a representation of the C type g_dbus_address_get_stream_sync.
+func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(address)
+	inArgs[1].SetPointer(cancellable.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dbusAddressGetStreamSyncFunction_Set()
+	if err == nil {
+		ret = dbusAddressGetStreamSyncFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := &IOStream{native: ret.Pointer()}
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' of type 'nil' not supported
 
@@ -819,7 +875,7 @@ func DbusIsUniqueName(string_ string) bool {
 
 // UNSUPPORTED : C value 'g_file_new_for_uri' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_new_tmp' : parameter 'iostream' of type 'FileIOStream' not supported
+// UNSUPPORTED : C value 'g_file_new_tmp' : return type 'File' not supported
 
 // UNSUPPORTED : C value 'g_file_parse_name' : return type 'File' not supported
 
@@ -994,9 +1050,61 @@ func IoSchedulerCancelAllJobs() {
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
 
-// UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : return type 'SettingsBackend' not supported
+var keyfileSettingsBackendNewFunction *gi.Function
+var keyfileSettingsBackendNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type 'SettingsBackend' not supported
+func keyfileSettingsBackendNewFunction_Set() error {
+	var err error
+	keyfileSettingsBackendNewFunction_Once.Do(func() {
+		keyfileSettingsBackendNewFunction, err = gi.FunctionInvokerNew("Gio", "keyfile_settings_backend_new")
+	})
+	return err
+}
+
+// KeyfileSettingsBackendNew is a representation of the C type g_keyfile_settings_backend_new.
+func KeyfileSettingsBackendNew(filename string, rootPath string, rootGroup string) *SettingsBackend {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(rootPath)
+	inArgs[2].SetString(rootGroup)
+
+	var ret gi.Argument
+
+	err := keyfileSettingsBackendNewFunction_Set()
+	if err == nil {
+		ret = keyfileSettingsBackendNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SettingsBackend{native: ret.Pointer()}
+
+	return retGo
+}
+
+var memorySettingsBackendNewFunction *gi.Function
+var memorySettingsBackendNewFunction_Once sync.Once
+
+func memorySettingsBackendNewFunction_Set() error {
+	var err error
+	memorySettingsBackendNewFunction_Once.Do(func() {
+		memorySettingsBackendNewFunction, err = gi.FunctionInvokerNew("Gio", "memory_settings_backend_new")
+	})
+	return err
+}
+
+// MemorySettingsBackendNew is a representation of the C type g_memory_settings_backend_new.
+func MemorySettingsBackendNew() *SettingsBackend {
+
+	var ret gi.Argument
+
+	err := memorySettingsBackendNewFunction_Set()
+	if err == nil {
+		ret = memorySettingsBackendNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SettingsBackend{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_network_monitor_get_default' : return type 'NetworkMonitor' not supported
 
@@ -1022,17 +1130,41 @@ func NetworkingInit() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
+var nullSettingsBackendNewFunction *gi.Function
+var nullSettingsBackendNewFunction_Once sync.Once
+
+func nullSettingsBackendNewFunction_Set() error {
+	var err error
+	nullSettingsBackendNewFunction_Once.Do(func() {
+		nullSettingsBackendNewFunction, err = gi.FunctionInvokerNew("Gio", "null_settings_backend_new")
+	})
+	return err
+}
+
+// NullSettingsBackendNew is a representation of the C type g_null_settings_backend_new.
+func NullSettingsBackendNew() *SettingsBackend {
+
+	var ret gi.Argument
+
+	err := nullSettingsBackendNewFunction_Set()
+	if err == nil {
+		ret = nullSettingsBackendNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SettingsBackend{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_pollable_source_new' : parameter 'pollable_stream' of type 'GObject.Object' not supported
 
 // UNSUPPORTED : C value 'g_pollable_source_new_full' : parameter 'pollable_stream' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_read' : parameter 'stream' of type 'InputStream' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_read' : parameter 'buffer' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_write' : parameter 'stream' of type 'OutputStream' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_write' : parameter 'buffer' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'stream' of type 'OutputStream' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'buffer' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : return type 'Proxy' not supported
 
@@ -1210,7 +1342,7 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 // UNSUPPORTED : C value 'g_tls_backend_get_default' : return type 'TlsBackend' not supported
 
-// UNSUPPORTED : C value 'g_tls_client_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
+// UNSUPPORTED : C value 'g_tls_client_connection_new' : parameter 'server_identity' of type 'SocketConnectable' not supported
 
 var tlsErrorQuarkFunction *gi.Function
 var tlsErrorQuarkFunction_Once sync.Once
@@ -1240,7 +1372,7 @@ func TlsErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'g_tls_file_database_new' : return type 'TlsFileDatabase' not supported
 
-// UNSUPPORTED : C value 'g_tls_server_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
+// UNSUPPORTED : C value 'g_tls_server_connection_new' : return type 'TlsServerConnection' not supported
 
 var unixIsMountPathSystemInternalFunction *gi.Function
 var unixIsMountPathSystemInternalFunction_Once sync.Once

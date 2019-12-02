@@ -23,9 +23,19 @@ type GObjectAccessible struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Object'
+// FieldParent returns the C field 'parent'.
+func (recv *GObjectAccessible) FieldParent() *Object {
+	argValue := gi.FieldGet(gObjectAccessibleStruct, recv.native, "parent")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *GObjectAccessible) SetFieldParent(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(gObjectAccessibleStruct, recv.native, "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'atk_gobject_accessible_get_object' : return type 'GObject.Object' not supported
 
@@ -127,7 +137,38 @@ func (recv *Hyperlink) GetNAnchors() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_hyperlink_get_object' : return type 'Object' not supported
+var hyperlinkGetObjectFunction *gi.Function
+var hyperlinkGetObjectFunction_Once sync.Once
+
+func hyperlinkGetObjectFunction_Set() error {
+	var err error
+	hyperlinkGetObjectFunction_Once.Do(func() {
+		err = hyperlinkStruct_Set()
+		if err != nil {
+			return
+		}
+		hyperlinkGetObjectFunction, err = hyperlinkStruct.InvokerNew("get_object")
+	})
+	return err
+}
+
+// GetObject is a representation of the C type atk_hyperlink_get_object.
+func (recv *Hyperlink) GetObject(i int32) *Object {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(i)
+
+	var ret gi.Argument
+
+	err := hyperlinkGetObjectFunction_Set()
+	if err == nil {
+		ret = hyperlinkGetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 var hyperlinkGetStartIndexFunction *gi.Function
 var hyperlinkGetStartIndexFunction_Once sync.Once
@@ -410,9 +451,19 @@ type NoOpObject struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Object'
+// FieldParent returns the C field 'parent'.
+func (recv *NoOpObject) FieldParent() *Object {
+	argValue := gi.FieldGet(noOpObjectStruct, recv.native, "parent")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *NoOpObject) SetFieldParent(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(noOpObjectStruct, recv.native, "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'atk_no_op_object_new' : parameter 'obj' of type 'GObject.Object' not supported
 
@@ -431,11 +482,49 @@ type NoOpObjectFactory struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'ObjectFactory'
+// FieldParent returns the C field 'parent'.
+func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
+	argValue := gi.FieldGet(noOpObjectFactoryStruct, recv.native, "parent")
+	value := &ObjectFactory{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'ObjectFactory'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *NoOpObjectFactory) SetFieldParent(value *ObjectFactory) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(noOpObjectFactoryStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'atk_no_op_object_factory_new' : return type 'NoOpObjectFactory' not supported
+var noOpObjectFactoryNewFunction *gi.Function
+var noOpObjectFactoryNewFunction_Once sync.Once
+
+func noOpObjectFactoryNewFunction_Set() error {
+	var err error
+	noOpObjectFactoryNewFunction_Once.Do(func() {
+		err = noOpObjectFactoryStruct_Set()
+		if err != nil {
+			return
+		}
+		noOpObjectFactoryNewFunction, err = noOpObjectFactoryStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// NoOpObjectFactoryNew is a representation of the C type atk_no_op_object_factory_new.
+func NoOpObjectFactoryNew() *NoOpObjectFactory {
+
+	var ret gi.Argument
+
+	err := noOpObjectFactoryNewFunction_Set()
+	if err == nil {
+		ret = noOpObjectFactoryNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &NoOpObjectFactory{native: ret.Pointer()}
+
+	return retGo
+}
 
 var objectStruct *gi.Struct
 var objectStruct_Once sync.Once
@@ -484,17 +573,37 @@ func (recv *Object) SetFieldName(value string) {
 	gi.FieldSet(objectStruct, recv.native, "name", argValue)
 }
 
-// UNSUPPORTED : C value 'accessible_parent' : for field getter : no Go type for 'Object'
+// FieldAccessibleParent returns the C field 'accessible_parent'.
+func (recv *Object) FieldAccessibleParent() *Object {
+	argValue := gi.FieldGet(objectStruct, recv.native, "accessible_parent")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'accessible_parent' : for field setter : no Go type for 'Object'
+// SetFieldAccessibleParent sets the value of the C field 'accessible_parent'.
+func (recv *Object) SetFieldAccessibleParent(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(objectStruct, recv.native, "accessible_parent", argValue)
+}
 
 // UNSUPPORTED : C value 'role' : for field getter : no Go type for 'Role'
 
 // UNSUPPORTED : C value 'role' : for field setter : no Go type for 'Role'
 
-// UNSUPPORTED : C value 'relation_set' : for field getter : no Go type for 'RelationSet'
+// FieldRelationSet returns the C field 'relation_set'.
+func (recv *Object) FieldRelationSet() *RelationSet {
+	argValue := gi.FieldGet(objectStruct, recv.native, "relation_set")
+	value := &RelationSet{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'relation_set' : for field setter : no Go type for 'RelationSet'
+// SetFieldRelationSet sets the value of the C field 'relation_set'.
+func (recv *Object) SetFieldRelationSet(value *RelationSet) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(objectStruct, recv.native, "relation_set", argValue)
+}
 
 // UNSUPPORTED : C value 'layer' : for field getter : no Go type for 'Layer'
 
@@ -732,7 +841,37 @@ func (recv *Object) GetObjectLocale() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_get_parent' : return type 'Object' not supported
+var objectGetParentFunction *gi.Function
+var objectGetParentFunction_Once sync.Once
+
+func objectGetParentFunction_Set() error {
+	var err error
+	objectGetParentFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectGetParentFunction, err = objectStruct.InvokerNew("get_parent")
+	})
+	return err
+}
+
+// GetParent is a representation of the C type atk_object_get_parent.
+func (recv *Object) GetParent() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := objectGetParentFunction_Set()
+	if err == nil {
+		ret = objectGetParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_object_get_role' : return type 'Role' not supported
 
@@ -768,13 +907,134 @@ func (recv *Object) NotifyStateChange(state State, value bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_object_peek_parent' : return type 'Object' not supported
+var objectPeekParentFunction *gi.Function
+var objectPeekParentFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_object_ref_accessible_child' : return type 'Object' not supported
+func objectPeekParentFunction_Set() error {
+	var err error
+	objectPeekParentFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectPeekParentFunction, err = objectStruct.InvokerNew("peek_parent")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_object_ref_relation_set' : return type 'RelationSet' not supported
+// PeekParent is a representation of the C type atk_object_peek_parent.
+func (recv *Object) PeekParent() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'atk_object_ref_state_set' : return type 'StateSet' not supported
+	var ret gi.Argument
+
+	err := objectPeekParentFunction_Set()
+	if err == nil {
+		ret = objectPeekParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var objectRefAccessibleChildFunction *gi.Function
+var objectRefAccessibleChildFunction_Once sync.Once
+
+func objectRefAccessibleChildFunction_Set() error {
+	var err error
+	objectRefAccessibleChildFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRefAccessibleChildFunction, err = objectStruct.InvokerNew("ref_accessible_child")
+	})
+	return err
+}
+
+// RefAccessibleChild is a representation of the C type atk_object_ref_accessible_child.
+func (recv *Object) RefAccessibleChild(i int32) *Object {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(i)
+
+	var ret gi.Argument
+
+	err := objectRefAccessibleChildFunction_Set()
+	if err == nil {
+		ret = objectRefAccessibleChildFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var objectRefRelationSetFunction *gi.Function
+var objectRefRelationSetFunction_Once sync.Once
+
+func objectRefRelationSetFunction_Set() error {
+	var err error
+	objectRefRelationSetFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRefRelationSetFunction, err = objectStruct.InvokerNew("ref_relation_set")
+	})
+	return err
+}
+
+// RefRelationSet is a representation of the C type atk_object_ref_relation_set.
+func (recv *Object) RefRelationSet() *RelationSet {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := objectRefRelationSetFunction_Set()
+	if err == nil {
+		ret = objectRefRelationSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &RelationSet{native: ret.Pointer()}
+
+	return retGo
+}
+
+var objectRefStateSetFunction *gi.Function
+var objectRefStateSetFunction_Once sync.Once
+
+func objectRefStateSetFunction_Set() error {
+	var err error
+	objectRefStateSetFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRefStateSetFunction, err = objectStruct.InvokerNew("ref_state_set")
+	})
+	return err
+}
+
+// RefStateSet is a representation of the C type atk_object_ref_state_set.
+func (recv *Object) RefStateSet() *StateSet {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := objectRefStateSetFunction_Set()
+	if err == nil {
+		ret = objectRefStateSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StateSet{native: ret.Pointer()}
+
+	return retGo
+}
 
 var objectRemovePropertyChangeHandlerFunction *gi.Function
 var objectRemovePropertyChangeHandlerFunction_Once sync.Once
@@ -894,7 +1154,34 @@ func (recv *Object) SetName(name string) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_object_set_parent' : parameter 'parent' of type 'Object' not supported
+var objectSetParentFunction *gi.Function
+var objectSetParentFunction_Once sync.Once
+
+func objectSetParentFunction_Set() error {
+	var err error
+	objectSetParentFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectSetParentFunction, err = objectStruct.InvokerNew("set_parent")
+	})
+	return err
+}
+
+// SetParent is a representation of the C type atk_object_set_parent.
+func (recv *Object) SetParent(parent *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(parent.native)
+
+	err := objectSetParentFunction_Set()
+	if err == nil {
+		objectSetParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'atk_object_set_role' : parameter 'role' of type 'Role' not supported
 
@@ -994,11 +1281,49 @@ type Plug struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Plug) FieldParent() *Object {
+	argValue := gi.FieldGet(plugStruct, recv.native, "parent")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Plug) SetFieldParent(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(plugStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'atk_plug_new' : return type 'Plug' not supported
+var plugNewFunction *gi.Function
+var plugNewFunction_Once sync.Once
+
+func plugNewFunction_Set() error {
+	var err error
+	plugNewFunction_Once.Do(func() {
+		err = plugStruct_Set()
+		if err != nil {
+			return
+		}
+		plugNewFunction, err = plugStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PlugNew is a representation of the C type atk_plug_new.
+func PlugNew() *Plug {
+
+	var ret gi.Argument
+
+	err := plugNewFunction_Set()
+	if err == nil {
+		ret = plugNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Plug{native: ret.Pointer()}
+
+	return retGo
+}
 
 var plugGetIdFunction *gi.Function
 var plugGetIdFunction_Once sync.Once
@@ -1109,7 +1434,34 @@ type Relation struct {
 
 // UNSUPPORTED : C value 'atk_relation_new' : parameter 'targets' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'atk_relation_add_target' : parameter 'target' of type 'Object' not supported
+var relationAddTargetFunction *gi.Function
+var relationAddTargetFunction_Once sync.Once
+
+func relationAddTargetFunction_Set() error {
+	var err error
+	relationAddTargetFunction_Once.Do(func() {
+		err = relationStruct_Set()
+		if err != nil {
+			return
+		}
+		relationAddTargetFunction, err = relationStruct.InvokerNew("add_target")
+	})
+	return err
+}
+
+// AddTarget is a representation of the C type atk_relation_add_target.
+func (recv *Relation) AddTarget(target *Object) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(target.native)
+
+	err := relationAddTargetFunction_Set()
+	if err == nil {
+		relationAddTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'atk_relation_get_relation_type' : return type 'RelationType' not supported
 
@@ -1141,7 +1493,38 @@ func (recv *Relation) GetTarget() {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_relation_remove_target' : parameter 'target' of type 'Object' not supported
+var relationRemoveTargetFunction *gi.Function
+var relationRemoveTargetFunction_Once sync.Once
+
+func relationRemoveTargetFunction_Set() error {
+	var err error
+	relationRemoveTargetFunction_Once.Do(func() {
+		err = relationStruct_Set()
+		if err != nil {
+			return
+		}
+		relationRemoveTargetFunction, err = relationStruct.InvokerNew("remove_target")
+	})
+	return err
+}
+
+// RemoveTarget is a representation of the C type atk_relation_remove_target.
+func (recv *Relation) RemoveTarget(target *Object) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(target.native)
+
+	var ret gi.Argument
+
+	err := relationRemoveTargetFunction_Set()
+	if err == nil {
+		ret = relationRemoveTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var relationSetStruct *gi.Struct
 var relationSetStruct_Once sync.Once
@@ -1166,9 +1549,64 @@ type RelationSet struct {
 
 // UNSUPPORTED : C value 'relations' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'atk_relation_set_new' : return type 'RelationSet' not supported
+var relationSetNewFunction *gi.Function
+var relationSetNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_relation_set_add' : parameter 'relation' of type 'Relation' not supported
+func relationSetNewFunction_Set() error {
+	var err error
+	relationSetNewFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetNewFunction, err = relationSetStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// RelationSetNew is a representation of the C type atk_relation_set_new.
+func RelationSetNew() *RelationSet {
+
+	var ret gi.Argument
+
+	err := relationSetNewFunction_Set()
+	if err == nil {
+		ret = relationSetNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &RelationSet{native: ret.Pointer()}
+
+	return retGo
+}
+
+var relationSetAddFunction *gi.Function
+var relationSetAddFunction_Once sync.Once
+
+func relationSetAddFunction_Set() error {
+	var err error
+	relationSetAddFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetAddFunction, err = relationSetStruct.InvokerNew("add")
+	})
+	return err
+}
+
+// Add is a representation of the C type atk_relation_set_add.
+func (recv *RelationSet) Add(relation *Relation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(relation.native)
+
+	err := relationSetAddFunction_Set()
+	if err == nil {
+		relationSetAddFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'atk_relation_set_add_relation_by_type' : parameter 'relationship' of type 'RelationType' not supported
 
@@ -1208,11 +1646,69 @@ func (recv *RelationSet) GetNRelations() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_relation_set_get_relation' : return type 'Relation' not supported
+var relationSetGetRelationFunction *gi.Function
+var relationSetGetRelationFunction_Once sync.Once
+
+func relationSetGetRelationFunction_Set() error {
+	var err error
+	relationSetGetRelationFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetGetRelationFunction, err = relationSetStruct.InvokerNew("get_relation")
+	})
+	return err
+}
+
+// GetRelation is a representation of the C type atk_relation_set_get_relation.
+func (recv *RelationSet) GetRelation(i int32) *Relation {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(i)
+
+	var ret gi.Argument
+
+	err := relationSetGetRelationFunction_Set()
+	if err == nil {
+		ret = relationSetGetRelationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Relation{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_relation_set_get_relation_by_type' : parameter 'relationship' of type 'RelationType' not supported
 
-// UNSUPPORTED : C value 'atk_relation_set_remove' : parameter 'relation' of type 'Relation' not supported
+var relationSetRemoveFunction *gi.Function
+var relationSetRemoveFunction_Once sync.Once
+
+func relationSetRemoveFunction_Set() error {
+	var err error
+	relationSetRemoveFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetRemoveFunction, err = relationSetStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type atk_relation_set_remove.
+func (recv *RelationSet) Remove(relation *Relation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(relation.native)
+
+	err := relationSetRemoveFunction_Set()
+	if err == nil {
+		relationSetRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var socketStruct *gi.Struct
 var socketStruct_Once sync.Once
@@ -1229,11 +1725,49 @@ type Socket struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Socket) FieldParent() *Object {
+	argValue := gi.FieldGet(socketStruct, recv.native, "parent")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Socket) SetFieldParent(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'atk_socket_new' : return type 'Socket' not supported
+var socketNewFunction *gi.Function
+var socketNewFunction_Once sync.Once
+
+func socketNewFunction_Set() error {
+	var err error
+	socketNewFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketNewFunction, err = socketStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SocketNew is a representation of the C type atk_socket_new.
+func SocketNew() *Socket {
+
+	var ret gi.Argument
+
+	err := socketNewFunction_Set()
+	if err == nil {
+		ret = socketNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Socket{native: ret.Pointer()}
+
+	return retGo
+}
 
 var socketEmbedFunction *gi.Function
 var socketEmbedFunction_Once sync.Once
@@ -1315,13 +1849,72 @@ type StateSet struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'atk_state_set_new' : return type 'StateSet' not supported
+var stateSetNewFunction *gi.Function
+var stateSetNewFunction_Once sync.Once
+
+func stateSetNewFunction_Set() error {
+	var err error
+	stateSetNewFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetNewFunction, err = stateSetStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// StateSetNew is a representation of the C type atk_state_set_new.
+func StateSetNew() *StateSet {
+
+	var ret gi.Argument
+
+	err := stateSetNewFunction_Set()
+	if err == nil {
+		ret = stateSetNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &StateSet{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_state_set_add_state' : parameter 'type' of type 'StateType' not supported
 
 // UNSUPPORTED : C value 'atk_state_set_add_states' : parameter 'types' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'atk_state_set_and_sets' : parameter 'compare_set' of type 'StateSet' not supported
+var stateSetAndSetsFunction *gi.Function
+var stateSetAndSetsFunction_Once sync.Once
+
+func stateSetAndSetsFunction_Set() error {
+	var err error
+	stateSetAndSetsFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetAndSetsFunction, err = stateSetStruct.InvokerNew("and_sets")
+	})
+	return err
+}
+
+// AndSets is a representation of the C type atk_state_set_and_sets.
+func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(compareSet.native)
+
+	var ret gi.Argument
+
+	err := stateSetAndSetsFunction_Set()
+	if err == nil {
+		ret = stateSetAndSetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StateSet{native: ret.Pointer()}
+
+	return retGo
+}
 
 var stateSetClearStatesFunction *gi.Function
 var stateSetClearStatesFunction_Once sync.Once
@@ -1387,11 +1980,73 @@ func (recv *StateSet) IsEmpty() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_state_set_or_sets' : parameter 'compare_set' of type 'StateSet' not supported
+var stateSetOrSetsFunction *gi.Function
+var stateSetOrSetsFunction_Once sync.Once
+
+func stateSetOrSetsFunction_Set() error {
+	var err error
+	stateSetOrSetsFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetOrSetsFunction, err = stateSetStruct.InvokerNew("or_sets")
+	})
+	return err
+}
+
+// OrSets is a representation of the C type atk_state_set_or_sets.
+func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(compareSet.native)
+
+	var ret gi.Argument
+
+	err := stateSetOrSetsFunction_Set()
+	if err == nil {
+		ret = stateSetOrSetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StateSet{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_state_set_remove_state' : parameter 'type' of type 'StateType' not supported
 
-// UNSUPPORTED : C value 'atk_state_set_xor_sets' : parameter 'compare_set' of type 'StateSet' not supported
+var stateSetXorSetsFunction *gi.Function
+var stateSetXorSetsFunction_Once sync.Once
+
+func stateSetXorSetsFunction_Set() error {
+	var err error
+	stateSetXorSetsFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetXorSetsFunction, err = stateSetStruct.InvokerNew("xor_sets")
+	})
+	return err
+}
+
+// XorSets is a representation of the C type atk_state_set_xor_sets.
+func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(compareSet.native)
+
+	var ret gi.Argument
+
+	err := stateSetXorSetsFunction_Set()
+	if err == nil {
+		ret = stateSetXorSetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &StateSet{native: ret.Pointer()}
+
+	return retGo
+}
 
 var utilStruct *gi.Struct
 var utilStruct_Once sync.Once

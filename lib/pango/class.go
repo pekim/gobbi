@@ -23,7 +23,35 @@ type Context struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_context_new' : return type 'Context' not supported
+var contextNewFunction *gi.Function
+var contextNewFunction_Once sync.Once
+
+func contextNewFunction_Set() error {
+	var err error
+	contextNewFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextNewFunction, err = contextStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ContextNew is a representation of the C type pango_context_new.
+func ContextNew() *Context {
+
+	var ret gi.Argument
+
+	err := contextNewFunction_Set()
+	if err == nil {
+		ret = contextNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
 
 var contextChangedFunction *gi.Function
 var contextChangedFunction_Once sync.Once
@@ -89,7 +117,37 @@ func (recv *Context) GetFontDescription() *FontDescription {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_context_get_font_map' : return type 'FontMap' not supported
+var contextGetFontMapFunction *gi.Function
+var contextGetFontMapFunction_Once sync.Once
+
+func contextGetFontMapFunction_Set() error {
+	var err error
+	contextGetFontMapFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetFontMapFunction, err = contextStruct.InvokerNew("get_font_map")
+	})
+	return err
+}
+
+// GetFontMap is a representation of the C type pango_context_get_font_map.
+func (recv *Context) GetFontMap() *FontMap {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := contextGetFontMapFunction_Set()
+	if err == nil {
+		ret = contextGetFontMapFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FontMap{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_context_get_gravity' : return type 'Gravity' not supported
 
@@ -227,9 +285,72 @@ func (recv *Context) GetSerial() uint32 {
 
 // UNSUPPORTED : C value 'pango_context_list_families' : parameter 'families' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'pango_context_load_font' : return type 'Font' not supported
+var contextLoadFontFunction *gi.Function
+var contextLoadFontFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_context_load_fontset' : return type 'Fontset' not supported
+func contextLoadFontFunction_Set() error {
+	var err error
+	contextLoadFontFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextLoadFontFunction, err = contextStruct.InvokerNew("load_font")
+	})
+	return err
+}
+
+// LoadFont is a representation of the C type pango_context_load_font.
+func (recv *Context) LoadFont(desc *FontDescription) *Font {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(desc.native)
+
+	var ret gi.Argument
+
+	err := contextLoadFontFunction_Set()
+	if err == nil {
+		ret = contextLoadFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Font{native: ret.Pointer()}
+
+	return retGo
+}
+
+var contextLoadFontsetFunction *gi.Function
+var contextLoadFontsetFunction_Once sync.Once
+
+func contextLoadFontsetFunction_Set() error {
+	var err error
+	contextLoadFontsetFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextLoadFontsetFunction, err = contextStruct.InvokerNew("load_fontset")
+	})
+	return err
+}
+
+// LoadFontset is a representation of the C type pango_context_load_fontset.
+func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fontset {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(desc.native)
+	inArgs[2].SetPointer(language.native)
+
+	var ret gi.Argument
+
+	err := contextLoadFontsetFunction_Set()
+	if err == nil {
+		ret = contextLoadFontsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Fontset{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_context_set_base_dir' : parameter 'direction' of type 'Direction' not supported
 
@@ -264,7 +385,34 @@ func (recv *Context) SetFontDescription(desc *FontDescription) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_context_set_font_map' : parameter 'font_map' of type 'FontMap' not supported
+var contextSetFontMapFunction *gi.Function
+var contextSetFontMapFunction_Once sync.Once
+
+func contextSetFontMapFunction_Set() error {
+	var err error
+	contextSetFontMapFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextSetFontMapFunction, err = contextStruct.InvokerNew("set_font_map")
+	})
+	return err
+}
+
+// SetFontMap is a representation of the C type pango_context_set_font_map.
+func (recv *Context) SetFontMap(fontMap *FontMap) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fontMap.native)
+
+	err := contextSetFontMapFunction_Set()
+	if err == nil {
+		contextSetFontMapFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'pango_context_set_gravity_hint' : parameter 'hint' of type 'GravityHint' not supported
 
@@ -401,9 +549,19 @@ type EngineShape struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Engine'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *EngineShape) FieldParentInstance() *Engine {
+	argValue := gi.FieldGet(engineShapeStruct, recv.native, "parent_instance")
+	value := &Engine{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Engine'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *EngineShape) SetFieldParentInstance(value *Engine) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(engineShapeStruct, recv.native, "parent_instance", argValue)
+}
 
 // EngineShapeStruct creates an uninitialised EngineShape.
 func EngineShapeStruct() *EngineShape {
@@ -503,7 +661,39 @@ func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_find_shaper' : return type 'EngineShape' not supported
+var fontFindShaperFunction *gi.Function
+var fontFindShaperFunction_Once sync.Once
+
+func fontFindShaperFunction_Set() error {
+	var err error
+	fontFindShaperFunction_Once.Do(func() {
+		err = fontStruct_Set()
+		if err != nil {
+			return
+		}
+		fontFindShaperFunction, err = fontStruct.InvokerNew("find_shaper")
+	})
+	return err
+}
+
+// FindShaper is a representation of the C type pango_font_find_shaper.
+func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(language.native)
+	inArgs[2].SetUint32(ch)
+
+	var ret gi.Argument
+
+	err := fontFindShaperFunction_Set()
+	if err == nil {
+		ret = fontFindShaperFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &EngineShape{native: ret.Pointer()}
+
+	return retGo
+}
 
 var fontGetCoverageFunction *gi.Function
 var fontGetCoverageFunction_Once sync.Once
@@ -538,7 +728,37 @@ func (recv *Font) GetCoverage(language *Language) *Coverage {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_get_font_map' : return type 'FontMap' not supported
+var fontGetFontMapFunction *gi.Function
+var fontGetFontMapFunction_Once sync.Once
+
+func fontGetFontMapFunction_Set() error {
+	var err error
+	fontGetFontMapFunction_Once.Do(func() {
+		err = fontStruct_Set()
+		if err != nil {
+			return
+		}
+		fontGetFontMapFunction, err = fontStruct.InvokerNew("get_font_map")
+	})
+	return err
+}
+
+// GetFontMap is a representation of the C type pango_font_get_font_map.
+func (recv *Font) GetFontMap() *FontMap {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fontGetFontMapFunction_Set()
+	if err == nil {
+		ret = fontGetFontMapFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FontMap{native: ret.Pointer()}
+
+	return retGo
+}
 
 var fontGetGlyphExtentsFunction *gi.Function
 var fontGetGlyphExtentsFunction_Once sync.Once
@@ -901,7 +1121,37 @@ func (recv *FontMap) Changed() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_font_map_create_context' : return type 'Context' not supported
+var fontMapCreateContextFunction *gi.Function
+var fontMapCreateContextFunction_Once sync.Once
+
+func fontMapCreateContextFunction_Set() error {
+	var err error
+	fontMapCreateContextFunction_Once.Do(func() {
+		err = fontMapStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMapCreateContextFunction, err = fontMapStruct.InvokerNew("create_context")
+	})
+	return err
+}
+
+// CreateContext is a representation of the C type pango_font_map_create_context.
+func (recv *FontMap) CreateContext() *Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fontMapCreateContextFunction_Set()
+	if err == nil {
+		ret = fontMapCreateContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
 
 var fontMapGetSerialFunction *gi.Function
 var fontMapGetSerialFunction_Once sync.Once
@@ -969,9 +1219,74 @@ func (recv *FontMap) GetShapeEngineType() string {
 
 // UNSUPPORTED : C value 'pango_font_map_list_families' : parameter 'families' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'pango_font_map_load_font' : parameter 'context' of type 'Context' not supported
+var fontMapLoadFontFunction *gi.Function
+var fontMapLoadFontFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_font_map_load_fontset' : parameter 'context' of type 'Context' not supported
+func fontMapLoadFontFunction_Set() error {
+	var err error
+	fontMapLoadFontFunction_Once.Do(func() {
+		err = fontMapStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMapLoadFontFunction, err = fontMapStruct.InvokerNew("load_font")
+	})
+	return err
+}
+
+// LoadFont is a representation of the C type pango_font_map_load_font.
+func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(context.native)
+	inArgs[2].SetPointer(desc.native)
+
+	var ret gi.Argument
+
+	err := fontMapLoadFontFunction_Set()
+	if err == nil {
+		ret = fontMapLoadFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Font{native: ret.Pointer()}
+
+	return retGo
+}
+
+var fontMapLoadFontsetFunction *gi.Function
+var fontMapLoadFontsetFunction_Once sync.Once
+
+func fontMapLoadFontsetFunction_Set() error {
+	var err error
+	fontMapLoadFontsetFunction_Once.Do(func() {
+		err = fontMapStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMapLoadFontsetFunction, err = fontMapStruct.InvokerNew("load_fontset")
+	})
+	return err
+}
+
+// LoadFontset is a representation of the C type pango_font_map_load_fontset.
+func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, language *Language) *Fontset {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(context.native)
+	inArgs[2].SetPointer(desc.native)
+	inArgs[3].SetPointer(language.native)
+
+	var ret gi.Argument
+
+	err := fontMapLoadFontsetFunction_Set()
+	if err == nil {
+		ret = fontMapLoadFontsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Fontset{native: ret.Pointer()}
+
+	return retGo
+}
 
 // FontMapStruct creates an uninitialised FontMap.
 func FontMapStruct() *FontMap {
@@ -1009,7 +1324,38 @@ type Fontset struct {
 
 // UNSUPPORTED : C value 'pango_fontset_foreach' : parameter 'func' of type 'FontsetForeachFunc' not supported
 
-// UNSUPPORTED : C value 'pango_fontset_get_font' : return type 'Font' not supported
+var fontsetGetFontFunction *gi.Function
+var fontsetGetFontFunction_Once sync.Once
+
+func fontsetGetFontFunction_Set() error {
+	var err error
+	fontsetGetFontFunction_Once.Do(func() {
+		err = fontsetStruct_Set()
+		if err != nil {
+			return
+		}
+		fontsetGetFontFunction, err = fontsetStruct.InvokerNew("get_font")
+	})
+	return err
+}
+
+// GetFont is a representation of the C type pango_fontset_get_font.
+func (recv *Fontset) GetFont(wc uint32) *Font {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(wc)
+
+	var ret gi.Argument
+
+	err := fontsetGetFontFunction_Set()
+	if err == nil {
+		ret = fontsetGetFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Font{native: ret.Pointer()}
+
+	return retGo
+}
 
 var fontsetGetMetricsFunction *gi.Function
 var fontsetGetMetricsFunction_Once sync.Once
@@ -1073,9 +1419,66 @@ type FontsetSimple struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_fontset_simple_new' : return type 'FontsetSimple' not supported
+var fontsetSimpleNewFunction *gi.Function
+var fontsetSimpleNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_fontset_simple_append' : parameter 'font' of type 'Font' not supported
+func fontsetSimpleNewFunction_Set() error {
+	var err error
+	fontsetSimpleNewFunction_Once.Do(func() {
+		err = fontsetSimpleStruct_Set()
+		if err != nil {
+			return
+		}
+		fontsetSimpleNewFunction, err = fontsetSimpleStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FontsetSimpleNew is a representation of the C type pango_fontset_simple_new.
+func FontsetSimpleNew(language *Language) *FontsetSimple {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(language.native)
+
+	var ret gi.Argument
+
+	err := fontsetSimpleNewFunction_Set()
+	if err == nil {
+		ret = fontsetSimpleNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FontsetSimple{native: ret.Pointer()}
+
+	return retGo
+}
+
+var fontsetSimpleAppendFunction *gi.Function
+var fontsetSimpleAppendFunction_Once sync.Once
+
+func fontsetSimpleAppendFunction_Set() error {
+	var err error
+	fontsetSimpleAppendFunction_Once.Do(func() {
+		err = fontsetSimpleStruct_Set()
+		if err != nil {
+			return
+		}
+		fontsetSimpleAppendFunction, err = fontsetSimpleStruct.InvokerNew("append")
+	})
+	return err
+}
+
+// Append is a representation of the C type pango_fontset_simple_append.
+func (recv *FontsetSimple) Append(font *Font) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(font.native)
+
+	err := fontsetSimpleAppendFunction_Set()
+	if err == nil {
+		fontsetSimpleAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontsetSimpleSizeFunction *gi.Function
 var fontsetSimpleSizeFunction_Once sync.Once
@@ -1124,7 +1527,37 @@ type Layout struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_layout_new' : parameter 'context' of type 'Context' not supported
+var layoutNewFunction *gi.Function
+var layoutNewFunction_Once sync.Once
+
+func layoutNewFunction_Set() error {
+	var err error
+	layoutNewFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutNewFunction, err = layoutStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// LayoutNew is a representation of the C type pango_layout_new.
+func LayoutNew(context *Context) *Layout {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := layoutNewFunction_Set()
+	if err == nil {
+		ret = layoutNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Layout{native: ret.Pointer()}
+
+	return retGo
+}
 
 var layoutContextChangedFunction *gi.Function
 var layoutContextChangedFunction_Once sync.Once
@@ -1154,7 +1587,37 @@ func (recv *Layout) ContextChanged() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_layout_copy' : return type 'Layout' not supported
+var layoutCopyFunction *gi.Function
+var layoutCopyFunction_Once sync.Once
+
+func layoutCopyFunction_Set() error {
+	var err error
+	layoutCopyFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutCopyFunction, err = layoutStruct.InvokerNew("copy")
+	})
+	return err
+}
+
+// Copy is a representation of the C type pango_layout_copy.
+func (recv *Layout) Copy() *Layout {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutCopyFunction_Set()
+	if err == nil {
+		ret = layoutCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Layout{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_layout_get_alignment' : return type 'Alignment' not supported
 
@@ -1286,7 +1749,37 @@ func (recv *Layout) GetCharacterCount() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_context' : return type 'Context' not supported
+var layoutGetContextFunction *gi.Function
+var layoutGetContextFunction_Once sync.Once
+
+func layoutGetContextFunction_Set() error {
+	var err error
+	layoutGetContextFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutGetContextFunction, err = layoutStruct.InvokerNew("get_context")
+	})
+	return err
+}
+
+// GetContext is a representation of the C type pango_layout_get_context.
+func (recv *Layout) GetContext() *Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutGetContextFunction_Set()
+	if err == nil {
+		ret = layoutGetContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Context{native: ret.Pointer()}
+
+	return retGo
+}
 
 var layoutGetCursorPosFunction *gi.Function
 var layoutGetCursorPosFunction_Once sync.Once
@@ -2659,7 +3152,37 @@ func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height i
 	return
 }
 
-// UNSUPPORTED : C value 'pango_renderer_draw_glyph' : parameter 'font' of type 'Font' not supported
+var rendererDrawGlyphFunction *gi.Function
+var rendererDrawGlyphFunction_Once sync.Once
+
+func rendererDrawGlyphFunction_Set() error {
+	var err error
+	rendererDrawGlyphFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererDrawGlyphFunction, err = rendererStruct.InvokerNew("draw_glyph")
+	})
+	return err
+}
+
+// DrawGlyph is a representation of the C type pango_renderer_draw_glyph.
+func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(font.native)
+	inArgs[2].SetUint32(uint32(glyph))
+	inArgs[3].SetFloat64(x)
+	inArgs[4].SetFloat64(y)
+
+	err := rendererDrawGlyphFunction_Set()
+	if err == nil {
+		rendererDrawGlyphFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rendererDrawGlyphItemFunction *gi.Function
 var rendererDrawGlyphItemFunction_Once sync.Once
@@ -2693,9 +3216,68 @@ func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, 
 	return
 }
 
-// UNSUPPORTED : C value 'pango_renderer_draw_glyphs' : parameter 'font' of type 'Font' not supported
+var rendererDrawGlyphsFunction *gi.Function
+var rendererDrawGlyphsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_renderer_draw_layout' : parameter 'layout' of type 'Layout' not supported
+func rendererDrawGlyphsFunction_Set() error {
+	var err error
+	rendererDrawGlyphsFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererDrawGlyphsFunction, err = rendererStruct.InvokerNew("draw_glyphs")
+	})
+	return err
+}
+
+// DrawGlyphs is a representation of the C type pango_renderer_draw_glyphs.
+func (recv *Renderer) DrawGlyphs(font *Font, glyphs *GlyphString, x int32, y int32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(font.native)
+	inArgs[2].SetPointer(glyphs.native)
+	inArgs[3].SetInt32(x)
+	inArgs[4].SetInt32(y)
+
+	err := rendererDrawGlyphsFunction_Set()
+	if err == nil {
+		rendererDrawGlyphsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var rendererDrawLayoutFunction *gi.Function
+var rendererDrawLayoutFunction_Once sync.Once
+
+func rendererDrawLayoutFunction_Set() error {
+	var err error
+	rendererDrawLayoutFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererDrawLayoutFunction, err = rendererStruct.InvokerNew("draw_layout")
+	})
+	return err
+}
+
+// DrawLayout is a representation of the C type pango_renderer_draw_layout.
+func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(layout.native)
+	inArgs[2].SetInt32(x)
+	inArgs[3].SetInt32(y)
+
+	err := rendererDrawLayoutFunction_Set()
+	if err == nil {
+		rendererDrawLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rendererDrawLayoutLineFunction *gi.Function
 var rendererDrawLayoutLineFunction_Once sync.Once
@@ -2736,7 +3318,37 @@ func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 
 // UNSUPPORTED : C value 'pango_renderer_get_color' : parameter 'part' of type 'RenderPart' not supported
 
-// UNSUPPORTED : C value 'pango_renderer_get_layout' : return type 'Layout' not supported
+var rendererGetLayoutFunction *gi.Function
+var rendererGetLayoutFunction_Once sync.Once
+
+func rendererGetLayoutFunction_Set() error {
+	var err error
+	rendererGetLayoutFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererGetLayoutFunction, err = rendererStruct.InvokerNew("get_layout")
+	})
+	return err
+}
+
+// GetLayout is a representation of the C type pango_renderer_get_layout.
+func (recv *Renderer) GetLayout() *Layout {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := rendererGetLayoutFunction_Set()
+	if err == nil {
+		ret = rendererGetLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Layout{native: ret.Pointer()}
+
+	return retGo
+}
 
 var rendererGetLayoutLineFunction *gi.Function
 var rendererGetLayoutLineFunction_Once sync.Once

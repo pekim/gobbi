@@ -392,9 +392,19 @@ type EventAny struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventAny) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventAnyStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventAny) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventAnyStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventAny) FieldSendEvent() int8 {
@@ -444,9 +454,19 @@ type EventButton struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventButton) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventButton) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventButtonStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventButton) FieldSendEvent() int8 {
@@ -536,9 +556,19 @@ func (recv *EventButton) SetFieldButton(value uint32) {
 	gi.FieldSet(eventButtonStruct, recv.native, "button", argValue)
 }
 
-// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+// FieldDevice returns the C field 'device'.
+func (recv *EventButton) FieldDevice() *Device {
+	argValue := gi.FieldGet(eventButtonStruct, recv.native, "device")
+	value := &Device{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+// SetFieldDevice sets the value of the C field 'device'.
+func (recv *EventButton) SetFieldDevice(value *Device) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventButtonStruct, recv.native, "device", argValue)
+}
 
 // FieldXRoot returns the C field 'x_root'.
 func (recv *EventButton) FieldXRoot() float64 {
@@ -602,9 +632,19 @@ type EventConfigure struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventConfigure) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventConfigureStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventConfigure) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventConfigureStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventConfigure) FieldSendEvent() int8 {
@@ -710,9 +750,19 @@ type EventCrossing struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventCrossing) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventCrossing) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventCrossingStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventCrossing) FieldSendEvent() int8 {
@@ -728,9 +778,19 @@ func (recv *EventCrossing) SetFieldSendEvent(value int8) {
 	gi.FieldSet(eventCrossingStruct, recv.native, "send_event", argValue)
 }
 
-// UNSUPPORTED : C value 'subwindow' : for field getter : no Go type for 'Window'
+// FieldSubwindow returns the C field 'subwindow'.
+func (recv *EventCrossing) FieldSubwindow() *Window {
+	argValue := gi.FieldGet(eventCrossingStruct, recv.native, "subwindow")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'subwindow' : for field setter : no Go type for 'Window'
+// SetFieldSubwindow sets the value of the C field 'subwindow'.
+func (recv *EventCrossing) SetFieldSubwindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventCrossingStruct, recv.native, "subwindow", argValue)
+}
 
 // FieldTime returns the C field 'time'.
 func (recv *EventCrossing) FieldTime() uint32 {
@@ -862,9 +922,19 @@ type EventDND struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventDND) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventDND) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventDNDStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventDND) FieldSendEvent() int8 {
@@ -880,9 +950,19 @@ func (recv *EventDND) SetFieldSendEvent(value int8) {
 	gi.FieldSet(eventDNDStruct, recv.native, "send_event", argValue)
 }
 
-// UNSUPPORTED : C value 'context' : for field getter : no Go type for 'DragContext'
+// FieldContext returns the C field 'context'.
+func (recv *EventDND) FieldContext() *DragContext {
+	argValue := gi.FieldGet(eventDNDStruct, recv.native, "context")
+	value := &DragContext{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'context' : for field setter : no Go type for 'DragContext'
+// SetFieldContext sets the value of the C field 'context'.
+func (recv *EventDND) SetFieldContext(value *DragContext) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventDNDStruct, recv.native, "context", argValue)
+}
 
 // FieldTime returns the C field 'time'.
 func (recv *EventDND) FieldTime() uint32 {
@@ -960,9 +1040,19 @@ type EventExpose struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventExpose) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventExposeStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventExpose) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventExposeStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventExpose) FieldSendEvent() int8 {
@@ -1044,9 +1134,19 @@ type EventFocus struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventFocus) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventFocusStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventFocus) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventFocusStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventFocus) FieldSendEvent() int8 {
@@ -1110,9 +1210,19 @@ type EventGrabBroken struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventGrabBroken) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventGrabBroken) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventGrabBrokenStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventGrabBroken) FieldSendEvent() int8 {
@@ -1156,9 +1266,19 @@ func (recv *EventGrabBroken) SetFieldImplicit(value bool) {
 	gi.FieldSet(eventGrabBrokenStruct, recv.native, "implicit", argValue)
 }
 
-// UNSUPPORTED : C value 'grab_window' : for field getter : no Go type for 'Window'
+// FieldGrabWindow returns the C field 'grab_window'.
+func (recv *EventGrabBroken) FieldGrabWindow() *Window {
+	argValue := gi.FieldGet(eventGrabBrokenStruct, recv.native, "grab_window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'grab_window' : for field setter : no Go type for 'Window'
+// SetFieldGrabWindow sets the value of the C field 'grab_window'.
+func (recv *EventGrabBroken) SetFieldGrabWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventGrabBrokenStruct, recv.native, "grab_window", argValue)
+}
 
 // EventGrabBrokenStruct creates an uninitialised EventGrabBroken.
 func EventGrabBrokenStruct() *EventGrabBroken {
@@ -1194,9 +1314,19 @@ type EventKey struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventKey) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventKeyStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventKey) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventKeyStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventKey) FieldSendEvent() int8 {
@@ -1348,9 +1478,19 @@ type EventMotion struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventMotion) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventMotion) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventMotionStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventMotion) FieldSendEvent() int8 {
@@ -1440,9 +1580,19 @@ func (recv *EventMotion) SetFieldIsHint(value int16) {
 	gi.FieldSet(eventMotionStruct, recv.native, "is_hint", argValue)
 }
 
-// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+// FieldDevice returns the C field 'device'.
+func (recv *EventMotion) FieldDevice() *Device {
+	argValue := gi.FieldGet(eventMotionStruct, recv.native, "device")
+	value := &Device{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+// SetFieldDevice sets the value of the C field 'device'.
+func (recv *EventMotion) SetFieldDevice(value *Device) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventMotionStruct, recv.native, "device", argValue)
+}
 
 // FieldXRoot returns the C field 'x_root'.
 func (recv *EventMotion) FieldXRoot() float64 {
@@ -1506,9 +1656,19 @@ type EventOwnerChange struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventOwnerChange) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventOwnerChange) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventOwnerChange) FieldSendEvent() int8 {
@@ -1524,9 +1684,19 @@ func (recv *EventOwnerChange) SetFieldSendEvent(value int8) {
 	gi.FieldSet(eventOwnerChangeStruct, recv.native, "send_event", argValue)
 }
 
-// UNSUPPORTED : C value 'owner' : for field getter : no Go type for 'Window'
+// FieldOwner returns the C field 'owner'.
+func (recv *EventOwnerChange) FieldOwner() *Window {
+	argValue := gi.FieldGet(eventOwnerChangeStruct, recv.native, "owner")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'owner' : for field setter : no Go type for 'Window'
+// SetFieldOwner sets the value of the C field 'owner'.
+func (recv *EventOwnerChange) SetFieldOwner(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventOwnerChangeStruct, recv.native, "owner", argValue)
+}
 
 // UNSUPPORTED : C value 'reason' : for field getter : no Go type for 'OwnerChange'
 
@@ -1608,9 +1778,19 @@ type EventPadAxis struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventPadAxis) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventPadAxisStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventPadAxis) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventPadAxisStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventPadAxis) FieldSendEvent() int8 {
@@ -1730,9 +1910,19 @@ type EventPadButton struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventPadButton) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventPadButtonStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventPadButton) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventPadButtonStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventPadButton) FieldSendEvent() int8 {
@@ -1838,9 +2028,19 @@ type EventPadGroupMode struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventPadGroupMode) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventPadGroupModeStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventPadGroupMode) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventPadGroupModeStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventPadGroupMode) FieldSendEvent() int8 {
@@ -1932,9 +2132,19 @@ type EventProperty struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventProperty) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventPropertyStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventProperty) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventPropertyStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventProperty) FieldSendEvent() int8 {
@@ -2016,9 +2226,19 @@ type EventProximity struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventProximity) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventProximityStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventProximity) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventProximityStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventProximity) FieldSendEvent() int8 {
@@ -2048,9 +2268,19 @@ func (recv *EventProximity) SetFieldTime(value uint32) {
 	gi.FieldSet(eventProximityStruct, recv.native, "time", argValue)
 }
 
-// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+// FieldDevice returns the C field 'device'.
+func (recv *EventProximity) FieldDevice() *Device {
+	argValue := gi.FieldGet(eventProximityStruct, recv.native, "device")
+	value := &Device{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+// SetFieldDevice sets the value of the C field 'device'.
+func (recv *EventProximity) SetFieldDevice(value *Device) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventProximityStruct, recv.native, "device", argValue)
+}
 
 // EventProximityStruct creates an uninitialised EventProximity.
 func EventProximityStruct() *EventProximity {
@@ -2086,9 +2316,19 @@ type EventScroll struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventScroll) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventScroll) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventScrollStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventScroll) FieldSendEvent() int8 {
@@ -2154,9 +2394,19 @@ func (recv *EventScroll) SetFieldY(value float64) {
 
 // UNSUPPORTED : C value 'direction' : for field setter : no Go type for 'ScrollDirection'
 
-// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+// FieldDevice returns the C field 'device'.
+func (recv *EventScroll) FieldDevice() *Device {
+	argValue := gi.FieldGet(eventScrollStruct, recv.native, "device")
+	value := &Device{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+// SetFieldDevice sets the value of the C field 'device'.
+func (recv *EventScroll) SetFieldDevice(value *Device) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventScrollStruct, recv.native, "device", argValue)
+}
 
 // FieldXRoot returns the C field 'x_root'.
 func (recv *EventScroll) FieldXRoot() float64 {
@@ -2262,9 +2512,19 @@ type EventSelection struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventSelection) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventSelection) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSelectionStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventSelection) FieldSendEvent() int8 {
@@ -2336,9 +2596,19 @@ func (recv *EventSelection) SetFieldTime(value uint32) {
 	gi.FieldSet(eventSelectionStruct, recv.native, "time", argValue)
 }
 
-// UNSUPPORTED : C value 'requestor' : for field getter : no Go type for 'Window'
+// FieldRequestor returns the C field 'requestor'.
+func (recv *EventSelection) FieldRequestor() *Window {
+	argValue := gi.FieldGet(eventSelectionStruct, recv.native, "requestor")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'requestor' : for field setter : no Go type for 'Window'
+// SetFieldRequestor sets the value of the C field 'requestor'.
+func (recv *EventSelection) SetFieldRequestor(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSelectionStruct, recv.native, "requestor", argValue)
+}
 
 // EventSelectionStruct creates an uninitialised EventSelection.
 func EventSelectionStruct() *EventSelection {
@@ -2404,9 +2674,19 @@ type EventSetting struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventSetting) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventSettingStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventSetting) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventSettingStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventSetting) FieldSendEvent() int8 {
@@ -2474,9 +2754,19 @@ type EventTouch struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventTouch) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventTouch) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventTouchStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventTouch) FieldSendEvent() int8 {
@@ -2580,9 +2870,19 @@ func (recv *EventTouch) SetFieldEmulatingPointer(value bool) {
 	gi.FieldSet(eventTouchStruct, recv.native, "emulating_pointer", argValue)
 }
 
-// UNSUPPORTED : C value 'device' : for field getter : no Go type for 'Device'
+// FieldDevice returns the C field 'device'.
+func (recv *EventTouch) FieldDevice() *Device {
+	argValue := gi.FieldGet(eventTouchStruct, recv.native, "device")
+	value := &Device{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'device' : for field setter : no Go type for 'Device'
+// SetFieldDevice sets the value of the C field 'device'.
+func (recv *EventTouch) SetFieldDevice(value *Device) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventTouchStruct, recv.native, "device", argValue)
+}
 
 // FieldXRoot returns the C field 'x_root'.
 func (recv *EventTouch) FieldXRoot() float64 {
@@ -2646,9 +2946,19 @@ type EventTouchpadPinch struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventTouchpadPinch) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventTouchpadPinchStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventTouchpadPinch) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventTouchpadPinchStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventTouchpadPinch) FieldSendEvent() int8 {
@@ -2856,9 +3166,19 @@ type EventTouchpadSwipe struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventTouchpadSwipe) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventTouchpadSwipeStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventTouchpadSwipe) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventTouchpadSwipeStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventTouchpadSwipe) FieldSendEvent() int8 {
@@ -3038,9 +3358,19 @@ type EventVisibility struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventVisibility) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventVisibilityStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventVisibility) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventVisibilityStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventVisibility) FieldSendEvent() int8 {
@@ -3094,9 +3424,19 @@ type EventWindowState struct {
 
 // UNSUPPORTED : C value 'type' : for field setter : no Go type for 'EventType'
 
-// UNSUPPORTED : C value 'window' : for field getter : no Go type for 'Window'
+// FieldWindow returns the C field 'window'.
+func (recv *EventWindowState) FieldWindow() *Window {
+	argValue := gi.FieldGet(eventWindowStateStruct, recv.native, "window")
+	value := &Window{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'window' : for field setter : no Go type for 'Window'
+// SetFieldWindow sets the value of the C field 'window'.
+func (recv *EventWindowState) SetFieldWindow(value *Window) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(eventWindowStateStruct, recv.native, "window", argValue)
+}
 
 // FieldSendEvent returns the C field 'send_event'.
 func (recv *EventWindowState) FieldSendEvent() int8 {
@@ -4425,17 +4765,37 @@ func (recv *WindowAttr) SetFieldHeight(value int32) {
 
 // UNSUPPORTED : C value 'wclass' : for field setter : no Go type for 'WindowWindowClass'
 
-// UNSUPPORTED : C value 'visual' : for field getter : no Go type for 'Visual'
+// FieldVisual returns the C field 'visual'.
+func (recv *WindowAttr) FieldVisual() *Visual {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "visual")
+	value := &Visual{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'visual' : for field setter : no Go type for 'Visual'
+// SetFieldVisual sets the value of the C field 'visual'.
+func (recv *WindowAttr) SetFieldVisual(value *Visual) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(windowAttrStruct, recv.native, "visual", argValue)
+}
 
 // UNSUPPORTED : C value 'window_type' : for field getter : no Go type for 'WindowType'
 
 // UNSUPPORTED : C value 'window_type' : for field setter : no Go type for 'WindowType'
 
-// UNSUPPORTED : C value 'cursor' : for field getter : no Go type for 'Cursor'
+// FieldCursor returns the C field 'cursor'.
+func (recv *WindowAttr) FieldCursor() *Cursor {
+	argValue := gi.FieldGet(windowAttrStruct, recv.native, "cursor")
+	value := &Cursor{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'cursor' : for field setter : no Go type for 'Cursor'
+// SetFieldCursor sets the value of the C field 'cursor'.
+func (recv *WindowAttr) SetFieldCursor(value *Cursor) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(windowAttrStruct, recv.native, "cursor", argValue)
+}
 
 // FieldWmclassName returns the C field 'wmclass_name'.
 func (recv *WindowAttr) FieldWmclassName() string {

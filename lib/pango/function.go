@@ -638,9 +638,9 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_is_zero_width' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_itemize' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'pango_itemize' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'context' of type 'Context' not supported
+// UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'base_dir' of type 'Direction' not supported
 
 var languageFromStringFunction *gi.Function
 var languageFromStringFunction_Once sync.Once

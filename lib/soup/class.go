@@ -27,15 +27,108 @@ type Address struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_address_new' : return type 'Address' not supported
+var addressNewFunction *gi.Function
+var addressNewFunction_Once sync.Once
+
+func addressNewFunction_Set() error {
+	var err error
+	addressNewFunction_Once.Do(func() {
+		err = addressStruct_Set()
+		if err != nil {
+			return
+		}
+		addressNewFunction, err = addressStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// AddressNew is a representation of the C type soup_address_new.
+func AddressNew(name string, port uint32) *Address {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetUint32(port)
+
+	var ret gi.Argument
+
+	err := addressNewFunction_Set()
+	if err == nil {
+		ret = addressNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_address_new_any' : parameter 'family' of type 'AddressFamily' not supported
 
 // UNSUPPORTED : C value 'soup_address_new_from_sockaddr' : parameter 'sa' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'soup_address_equal_by_ip' : parameter 'addr2' of type 'Address' not supported
+var addressEqualByIpFunction *gi.Function
+var addressEqualByIpFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_address_equal_by_name' : parameter 'addr2' of type 'Address' not supported
+func addressEqualByIpFunction_Set() error {
+	var err error
+	addressEqualByIpFunction_Once.Do(func() {
+		err = addressStruct_Set()
+		if err != nil {
+			return
+		}
+		addressEqualByIpFunction, err = addressStruct.InvokerNew("equal_by_ip")
+	})
+	return err
+}
+
+// EqualByIp is a representation of the C type soup_address_equal_by_ip.
+func (recv *Address) EqualByIp(addr2 *Address) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(addr2.native)
+
+	var ret gi.Argument
+
+	err := addressEqualByIpFunction_Set()
+	if err == nil {
+		ret = addressEqualByIpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var addressEqualByNameFunction *gi.Function
+var addressEqualByNameFunction_Once sync.Once
+
+func addressEqualByNameFunction_Set() error {
+	var err error
+	addressEqualByNameFunction_Once.Do(func() {
+		err = addressStruct_Set()
+		if err != nil {
+			return
+		}
+		addressEqualByNameFunction, err = addressStruct.InvokerNew("equal_by_name")
+	})
+	return err
+}
+
+// EqualByName is a representation of the C type soup_address_equal_by_name.
+func (recv *Address) EqualByName(addr2 *Address) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(addr2.native)
+
+	var ret gi.Argument
+
+	err := addressEqualByNameFunction_Set()
+	if err == nil {
+		ret = addressEqualByNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_address_get_gsockaddr' : return type 'Gio.SocketAddress' not supported
 
@@ -336,7 +429,38 @@ func (recv *Auth) CanAuthenticate() bool {
 
 // UNSUPPORTED : C value 'soup_auth_free_protection_space' : parameter 'space' of type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_auth_get_authorization' : parameter 'msg' of type 'Message' not supported
+var authGetAuthorizationFunction *gi.Function
+var authGetAuthorizationFunction_Once sync.Once
+
+func authGetAuthorizationFunction_Set() error {
+	var err error
+	authGetAuthorizationFunction_Once.Do(func() {
+		err = authStruct_Set()
+		if err != nil {
+			return
+		}
+		authGetAuthorizationFunction, err = authStruct.InvokerNew("get_authorization")
+	})
+	return err
+}
+
+// GetAuthorization is a representation of the C type soup_auth_get_authorization.
+func (recv *Auth) GetAuthorization(msg *Message) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := authGetAuthorizationFunction_Set()
+	if err == nil {
+		ret = authGetAuthorizationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var authGetHostFunction *gi.Function
 var authGetHostFunction_Once sync.Once
@@ -597,7 +721,38 @@ func (recv *Auth) IsForProxy() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_auth_is_ready' : parameter 'msg' of type 'Message' not supported
+var authIsReadyFunction *gi.Function
+var authIsReadyFunction_Once sync.Once
+
+func authIsReadyFunction_Set() error {
+	var err error
+	authIsReadyFunction_Once.Do(func() {
+		err = authStruct_Set()
+		if err != nil {
+			return
+		}
+		authIsReadyFunction, err = authStruct.InvokerNew("is_ready")
+	})
+	return err
+}
+
+// IsReady is a representation of the C type soup_auth_is_ready.
+func (recv *Auth) IsReady(msg *Message) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := authIsReadyFunction_Set()
+	if err == nil {
+		ret = authIsReadyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var authSavePasswordFunction *gi.Function
 var authSavePasswordFunction_Once sync.Once
@@ -629,7 +784,39 @@ func (recv *Auth) SavePassword(username string, password string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_auth_update' : parameter 'msg' of type 'Message' not supported
+var authUpdateFunction *gi.Function
+var authUpdateFunction_Once sync.Once
+
+func authUpdateFunction_Set() error {
+	var err error
+	authUpdateFunction_Once.Do(func() {
+		err = authStruct_Set()
+		if err != nil {
+			return
+		}
+		authUpdateFunction, err = authStruct.InvokerNew("update")
+	})
+	return err
+}
+
+// Update is a representation of the C type soup_auth_update.
+func (recv *Auth) Update(msg *Message, authHeader string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+	inArgs[2].SetString(authHeader)
+
+	var ret gi.Argument
+
+	err := authUpdateFunction_Set()
+	if err == nil {
+		ret = authUpdateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var authBasicStruct *gi.Struct
 var authBasicStruct_Once sync.Once
@@ -710,7 +897,38 @@ type AuthDomain struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_auth_domain_accepts' : parameter 'msg' of type 'Message' not supported
+var authDomainAcceptsFunction *gi.Function
+var authDomainAcceptsFunction_Once sync.Once
+
+func authDomainAcceptsFunction_Set() error {
+	var err error
+	authDomainAcceptsFunction_Once.Do(func() {
+		err = authDomainStruct_Set()
+		if err != nil {
+			return
+		}
+		authDomainAcceptsFunction, err = authDomainStruct.InvokerNew("accepts")
+	})
+	return err
+}
+
+// Accepts is a representation of the C type soup_auth_domain_accepts.
+func (recv *AuthDomain) Accepts(msg *Message) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := authDomainAcceptsFunction_Set()
+	if err == nil {
+		ret = authDomainAcceptsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var authDomainAddPathFunction *gi.Function
 var authDomainAddPathFunction_Once sync.Once
@@ -741,11 +959,102 @@ func (recv *AuthDomain) AddPath(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_auth_domain_challenge' : parameter 'msg' of type 'Message' not supported
+var authDomainChallengeFunction *gi.Function
+var authDomainChallengeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_auth_domain_check_password' : parameter 'msg' of type 'Message' not supported
+func authDomainChallengeFunction_Set() error {
+	var err error
+	authDomainChallengeFunction_Once.Do(func() {
+		err = authDomainStruct_Set()
+		if err != nil {
+			return
+		}
+		authDomainChallengeFunction, err = authDomainStruct.InvokerNew("challenge")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_auth_domain_covers' : parameter 'msg' of type 'Message' not supported
+// Challenge is a representation of the C type soup_auth_domain_challenge.
+func (recv *AuthDomain) Challenge(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := authDomainChallengeFunction_Set()
+	if err == nil {
+		authDomainChallengeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var authDomainCheckPasswordFunction *gi.Function
+var authDomainCheckPasswordFunction_Once sync.Once
+
+func authDomainCheckPasswordFunction_Set() error {
+	var err error
+	authDomainCheckPasswordFunction_Once.Do(func() {
+		err = authDomainStruct_Set()
+		if err != nil {
+			return
+		}
+		authDomainCheckPasswordFunction, err = authDomainStruct.InvokerNew("check_password")
+	})
+	return err
+}
+
+// CheckPassword is a representation of the C type soup_auth_domain_check_password.
+func (recv *AuthDomain) CheckPassword(msg *Message, username string, password string) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+	inArgs[2].SetString(username)
+	inArgs[3].SetString(password)
+
+	var ret gi.Argument
+
+	err := authDomainCheckPasswordFunction_Set()
+	if err == nil {
+		ret = authDomainCheckPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var authDomainCoversFunction *gi.Function
+var authDomainCoversFunction_Once sync.Once
+
+func authDomainCoversFunction_Set() error {
+	var err error
+	authDomainCoversFunction_Once.Do(func() {
+		err = authDomainStruct_Set()
+		if err != nil {
+			return
+		}
+		authDomainCoversFunction, err = authDomainStruct.InvokerNew("covers")
+	})
+	return err
+}
+
+// Covers is a representation of the C type soup_auth_domain_covers.
+func (recv *AuthDomain) Covers(msg *Message) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := authDomainCoversFunction_Set()
+	if err == nil {
+		ret = authDomainCoversFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var authDomainGetRealmFunction *gi.Function
 var authDomainGetRealmFunction_Once sync.Once
@@ -812,7 +1121,39 @@ func (recv *AuthDomain) RemovePath(path string) {
 
 // UNSUPPORTED : C value 'soup_auth_domain_set_generic_auth_callback' : parameter 'auth_callback' of type 'AuthDomainGenericAuthCallback' not supported
 
-// UNSUPPORTED : C value 'soup_auth_domain_try_generic_auth_callback' : parameter 'msg' of type 'Message' not supported
+var authDomainTryGenericAuthCallbackFunction *gi.Function
+var authDomainTryGenericAuthCallbackFunction_Once sync.Once
+
+func authDomainTryGenericAuthCallbackFunction_Set() error {
+	var err error
+	authDomainTryGenericAuthCallbackFunction_Once.Do(func() {
+		err = authDomainStruct_Set()
+		if err != nil {
+			return
+		}
+		authDomainTryGenericAuthCallbackFunction, err = authDomainStruct.InvokerNew("try_generic_auth_callback")
+	})
+	return err
+}
+
+// TryGenericAuthCallback is a representation of the C type soup_auth_domain_try_generic_auth_callback.
+func (recv *AuthDomain) TryGenericAuthCallback(msg *Message, username string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+	inArgs[2].SetString(username)
+
+	var ret gi.Argument
+
+	err := authDomainTryGenericAuthCallbackFunction_Set()
+	if err == nil {
+		ret = authDomainTryGenericAuthCallbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // AuthDomainStruct creates an uninitialised AuthDomain.
 func AuthDomainStruct() *AuthDomain {
@@ -844,9 +1185,19 @@ type AuthDomainBasic struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'AuthDomain'
+// FieldParent returns the C field 'parent'.
+func (recv *AuthDomainBasic) FieldParent() *AuthDomain {
+	argValue := gi.FieldGet(authDomainBasicStruct, recv.native, "parent")
+	value := &AuthDomain{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'AuthDomain'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *AuthDomainBasic) SetFieldParent(value *AuthDomain) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(authDomainBasicStruct, recv.native, "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'soup_auth_domain_basic_new' : parameter '...' of type 'nil' not supported
 
@@ -867,9 +1218,19 @@ type AuthDomainDigest struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'AuthDomain'
+// FieldParent returns the C field 'parent'.
+func (recv *AuthDomainDigest) FieldParent() *AuthDomain {
+	argValue := gi.FieldGet(authDomainDigestStruct, recv.native, "parent")
+	value := &AuthDomain{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'AuthDomain'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *AuthDomainDigest) SetFieldParent(value *AuthDomain) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(authDomainDigestStruct, recv.native, "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'soup_auth_domain_digest_new' : parameter '...' of type 'nil' not supported
 
@@ -936,7 +1297,35 @@ func (recv *AuthManager) ClearCachedCredentials() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_auth_manager_use_auth' : parameter 'auth' of type 'Auth' not supported
+var authManagerUseAuthFunction *gi.Function
+var authManagerUseAuthFunction_Once sync.Once
+
+func authManagerUseAuthFunction_Set() error {
+	var err error
+	authManagerUseAuthFunction_Once.Do(func() {
+		err = authManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		authManagerUseAuthFunction, err = authManagerStruct.InvokerNew("use_auth")
+	})
+	return err
+}
+
+// UseAuth is a representation of the C type soup_auth_manager_use_auth.
+func (recv *AuthManager) UseAuth(uri *URI, auth *Auth) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(uri.native)
+	inArgs[2].SetPointer(auth.native)
+
+	err := authManagerUseAuthFunction_Set()
+	if err == nil {
+		authManagerUseAuthFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // AuthManagerStruct creates an uninitialised AuthManager.
 func AuthManagerStruct() *AuthManager {
@@ -1302,7 +1691,35 @@ func (recv *ContentSniffer) SetFieldPriv(value *ContentSnifferPrivate) {
 	gi.FieldSet(contentSnifferStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_content_sniffer_new' : return type 'ContentSniffer' not supported
+var contentSnifferNewFunction *gi.Function
+var contentSnifferNewFunction_Once sync.Once
+
+func contentSnifferNewFunction_Set() error {
+	var err error
+	contentSnifferNewFunction_Once.Do(func() {
+		err = contentSnifferStruct_Set()
+		if err != nil {
+			return
+		}
+		contentSnifferNewFunction, err = contentSnifferStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ContentSnifferNew is a representation of the C type soup_content_sniffer_new.
+func ContentSnifferNew() *ContentSniffer {
+
+	var ret gi.Argument
+
+	err := contentSnifferNewFunction_Set()
+	if err == nil {
+		ret = contentSnifferNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &ContentSniffer{native: ret.Pointer()}
+
+	return retGo
+}
 
 var contentSnifferGetBufferSizeFunction *gi.Function
 var contentSnifferGetBufferSizeFunction_Once sync.Once
@@ -1336,7 +1753,7 @@ func (recv *ContentSniffer) GetBufferSize() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_content_sniffer_sniff' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_content_sniffer_sniff' : parameter 'params' of type 'GLib.HashTable' not supported
 
 var cookieJarStruct *gi.Struct
 var cookieJarStruct_Once sync.Once
@@ -1357,7 +1774,35 @@ type CookieJar struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_cookie_jar_new' : return type 'CookieJar' not supported
+var cookieJarNewFunction *gi.Function
+var cookieJarNewFunction_Once sync.Once
+
+func cookieJarNewFunction_Set() error {
+	var err error
+	cookieJarNewFunction_Once.Do(func() {
+		err = cookieJarStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieJarNewFunction, err = cookieJarStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CookieJarNew is a representation of the C type soup_cookie_jar_new.
+func CookieJarNew() *CookieJar {
+
+	var ret gi.Argument
+
+	err := cookieJarNewFunction_Set()
+	if err == nil {
+		ret = cookieJarNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &CookieJar{native: ret.Pointer()}
+
+	return retGo
+}
 
 var cookieJarAddCookieFunction *gi.Function
 var cookieJarAddCookieFunction_Once sync.Once
@@ -1656,11 +2101,52 @@ type CookieJarDB struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'CookieJar'
+// FieldParent returns the C field 'parent'.
+func (recv *CookieJarDB) FieldParent() *CookieJar {
+	argValue := gi.FieldGet(cookieJarDBStruct, recv.native, "parent")
+	value := &CookieJar{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'CookieJar'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *CookieJarDB) SetFieldParent(value *CookieJar) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cookieJarDBStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'soup_cookie_jar_db_new' : return type 'CookieJarDB' not supported
+var cookieJarDBNewFunction *gi.Function
+var cookieJarDBNewFunction_Once sync.Once
+
+func cookieJarDBNewFunction_Set() error {
+	var err error
+	cookieJarDBNewFunction_Once.Do(func() {
+		err = cookieJarDBStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieJarDBNewFunction, err = cookieJarDBStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CookieJarDBNew is a representation of the C type soup_cookie_jar_db_new.
+func CookieJarDBNew(filename string, readOnly bool) *CookieJarDB {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetBoolean(readOnly)
+
+	var ret gi.Argument
+
+	err := cookieJarDBNewFunction_Set()
+	if err == nil {
+		ret = cookieJarDBNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CookieJarDB{native: ret.Pointer()}
+
+	return retGo
+}
 
 var cookieJarTextStruct *gi.Struct
 var cookieJarTextStruct_Once sync.Once
@@ -1677,11 +2163,52 @@ type CookieJarText struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'CookieJar'
+// FieldParent returns the C field 'parent'.
+func (recv *CookieJarText) FieldParent() *CookieJar {
+	argValue := gi.FieldGet(cookieJarTextStruct, recv.native, "parent")
+	value := &CookieJar{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'CookieJar'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *CookieJarText) SetFieldParent(value *CookieJar) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(cookieJarTextStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'soup_cookie_jar_text_new' : return type 'CookieJarText' not supported
+var cookieJarTextNewFunction *gi.Function
+var cookieJarTextNewFunction_Once sync.Once
+
+func cookieJarTextNewFunction_Set() error {
+	var err error
+	cookieJarTextNewFunction_Once.Do(func() {
+		err = cookieJarTextStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieJarTextNewFunction, err = cookieJarTextStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CookieJarTextNew is a representation of the C type soup_cookie_jar_text_new.
+func CookieJarTextNew(filename string, readOnly bool) *CookieJarText {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetBoolean(readOnly)
+
+	var ret gi.Argument
+
+	err := cookieJarTextNewFunction_Set()
+	if err == nil {
+		ret = cookieJarTextNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &CookieJarText{native: ret.Pointer()}
+
+	return retGo
+}
 
 var hSTSEnforcerStruct *gi.Struct
 var hSTSEnforcerStruct_Once sync.Once
@@ -1716,7 +2243,35 @@ func (recv *HSTSEnforcer) SetFieldPriv(value *HSTSEnforcerPrivate) {
 	gi.FieldSet(hSTSEnforcerStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_hsts_enforcer_new' : return type 'HSTSEnforcer' not supported
+var hSTSEnforcerNewFunction *gi.Function
+var hSTSEnforcerNewFunction_Once sync.Once
+
+func hSTSEnforcerNewFunction_Set() error {
+	var err error
+	hSTSEnforcerNewFunction_Once.Do(func() {
+		err = hSTSEnforcerStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSEnforcerNewFunction, err = hSTSEnforcerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// HSTSEnforcerNew is a representation of the C type soup_hsts_enforcer_new.
+func HSTSEnforcerNew() *HSTSEnforcer {
+
+	var ret gi.Argument
+
+	err := hSTSEnforcerNewFunction_Set()
+	if err == nil {
+		ret = hSTSEnforcerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &HSTSEnforcer{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_hsts_enforcer_get_domains' : return type 'GLib.List' not supported
 
@@ -1861,9 +2416,19 @@ type HSTSEnforcerDB struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'HSTSEnforcer'
+// FieldParent returns the C field 'parent'.
+func (recv *HSTSEnforcerDB) FieldParent() *HSTSEnforcer {
+	argValue := gi.FieldGet(hSTSEnforcerDBStruct, recv.native, "parent")
+	value := &HSTSEnforcer{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'HSTSEnforcer'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *HSTSEnforcerDB) SetFieldParent(value *HSTSEnforcer) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(hSTSEnforcerDBStruct, recv.native, "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *HSTSEnforcerDB) FieldPriv() *HSTSEnforcerDBPrivate {
@@ -1879,7 +2444,37 @@ func (recv *HSTSEnforcerDB) SetFieldPriv(value *HSTSEnforcerDBPrivate) {
 	gi.FieldSet(hSTSEnforcerDBStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_hsts_enforcer_db_new' : return type 'HSTSEnforcerDB' not supported
+var hSTSEnforcerDBNewFunction *gi.Function
+var hSTSEnforcerDBNewFunction_Once sync.Once
+
+func hSTSEnforcerDBNewFunction_Set() error {
+	var err error
+	hSTSEnforcerDBNewFunction_Once.Do(func() {
+		err = hSTSEnforcerDBStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSEnforcerDBNewFunction, err = hSTSEnforcerDBStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// HSTSEnforcerDBNew is a representation of the C type soup_hsts_enforcer_db_new.
+func HSTSEnforcerDBNew(filename string) *HSTSEnforcerDB {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	var ret gi.Argument
+
+	err := hSTSEnforcerDBNewFunction_Set()
+	if err == nil {
+		ret = hSTSEnforcerDBNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &HSTSEnforcerDB{native: ret.Pointer()}
+
+	return retGo
+}
 
 var loggerStruct *gi.Struct
 var loggerStruct_Once sync.Once
@@ -1902,9 +2497,63 @@ type Logger struct {
 
 // UNSUPPORTED : C value 'soup_logger_new' : parameter 'level' of type 'LoggerLogLevel' not supported
 
-// UNSUPPORTED : C value 'soup_logger_attach' : parameter 'session' of type 'Session' not supported
+var loggerAttachFunction *gi.Function
+var loggerAttachFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_logger_detach' : parameter 'session' of type 'Session' not supported
+func loggerAttachFunction_Set() error {
+	var err error
+	loggerAttachFunction_Once.Do(func() {
+		err = loggerStruct_Set()
+		if err != nil {
+			return
+		}
+		loggerAttachFunction, err = loggerStruct.InvokerNew("attach")
+	})
+	return err
+}
+
+// Attach is a representation of the C type soup_logger_attach.
+func (recv *Logger) Attach(session *Session) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(session.native)
+
+	err := loggerAttachFunction_Set()
+	if err == nil {
+		loggerAttachFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var loggerDetachFunction *gi.Function
+var loggerDetachFunction_Once sync.Once
+
+func loggerDetachFunction_Set() error {
+	var err error
+	loggerDetachFunction_Once.Do(func() {
+		err = loggerStruct_Set()
+		if err != nil {
+			return
+		}
+		loggerDetachFunction, err = loggerStruct.InvokerNew("detach")
+	})
+	return err
+}
+
+// Detach is a representation of the C type soup_logger_detach.
+func (recv *Logger) Detach(session *Session) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(session.native)
+
+	err := loggerDetachFunction_Set()
+	if err == nil {
+		loggerDetachFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_logger_set_printer' : parameter 'printer' of type 'LoggerPrinter' not supported
 
@@ -2029,9 +2678,71 @@ func (recv *Message) SetFieldResponseHeaders(value *MessageHeaders) {
 	gi.FieldSet(messageStruct, recv.native, "response_headers", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_message_new' : return type 'Message' not supported
+var messageNewFunction *gi.Function
+var messageNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_message_new_from_uri' : return type 'Message' not supported
+func messageNewFunction_Set() error {
+	var err error
+	messageNewFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageNewFunction, err = messageStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MessageNew is a representation of the C type soup_message_new.
+func MessageNew(method string, uriString string) *Message {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(method)
+	inArgs[1].SetString(uriString)
+
+	var ret gi.Argument
+
+	err := messageNewFunction_Set()
+	if err == nil {
+		ret = messageNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Message{native: ret.Pointer()}
+
+	return retGo
+}
+
+var messageNewFromUriFunction *gi.Function
+var messageNewFromUriFunction_Once sync.Once
+
+func messageNewFromUriFunction_Set() error {
+	var err error
+	messageNewFromUriFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageNewFromUriFunction, err = messageStruct.InvokerNew("new_from_uri")
+	})
+	return err
+}
+
+// MessageNewFromUri is a representation of the C type soup_message_new_from_uri.
+func MessageNewFromUri(method string, uri *URI) *Message {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(method)
+	inArgs[1].SetPointer(uri.native)
+
+	var ret gi.Argument
+
+	err := messageNewFromUriFunction_Set()
+	if err == nil {
+		ret = messageNewFromUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Message{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_message_add_header_handler' : parameter 'callback' of type 'GObject.Callback' not supported
 
@@ -2069,7 +2780,37 @@ func (recv *Message) Finished() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_get_address' : return type 'Address' not supported
+var messageGetAddressFunction *gi.Function
+var messageGetAddressFunction_Once sync.Once
+
+func messageGetAddressFunction_Set() error {
+	var err error
+	messageGetAddressFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageGetAddressFunction, err = messageStruct.InvokerNew("get_address")
+	})
+	return err
+}
+
+// GetAddress is a representation of the C type soup_message_get_address.
+func (recv *Message) GetAddress() *Address {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := messageGetAddressFunction_Set()
+	if err == nil {
+		ret = messageGetAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{native: ret.Pointer()}
+
+	return retGo
+}
 
 var messageGetFirstPartyFunction *gi.Function
 var messageGetFirstPartyFunction_Once sync.Once
@@ -2111,7 +2852,37 @@ func (recv *Message) GetFirstParty() *URI {
 
 // UNSUPPORTED : C value 'soup_message_get_priority' : return type 'MessagePriority' not supported
 
-// UNSUPPORTED : C value 'soup_message_get_soup_request' : return type 'Request' not supported
+var messageGetSoupRequestFunction *gi.Function
+var messageGetSoupRequestFunction_Once sync.Once
+
+func messageGetSoupRequestFunction_Set() error {
+	var err error
+	messageGetSoupRequestFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageGetSoupRequestFunction, err = messageStruct.InvokerNew("get_soup_request")
+	})
+	return err
+}
+
+// GetSoupRequest is a representation of the C type soup_message_get_soup_request.
+func (recv *Message) GetSoupRequest() *Request {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := messageGetSoupRequestFunction_Set()
+	if err == nil {
+		ret = messageGetSoupRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Request{native: ret.Pointer()}
+
+	return retGo
+}
 
 var messageGetUriFunction *gi.Function
 var messageGetUriFunction_Once sync.Once
@@ -2665,7 +3436,7 @@ type MultipartInputStream struct {
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Gio.FilterInputStream'
 
-// UNSUPPORTED : C value 'soup_multipart_input_stream_new' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_multipart_input_stream_new' : parameter 'base_stream' of type 'Gio.InputStream' not supported
 
 var multipartInputStreamGetHeadersFunction *gi.Function
 var multipartInputStreamGetHeadersFunction_Once sync.Once
@@ -2836,7 +3607,37 @@ func (recv *Request) GetContentType() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_request_get_session' : return type 'Session' not supported
+var requestGetSessionFunction *gi.Function
+var requestGetSessionFunction_Once sync.Once
+
+func requestGetSessionFunction_Set() error {
+	var err error
+	requestGetSessionFunction_Once.Do(func() {
+		err = requestStruct_Set()
+		if err != nil {
+			return
+		}
+		requestGetSessionFunction, err = requestStruct.InvokerNew("get_session")
+	})
+	return err
+}
+
+// GetSession is a representation of the C type soup_request_get_session.
+func (recv *Request) GetSession() *Session {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := requestGetSessionFunction_Set()
+	if err == nil {
+		ret = requestGetSessionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Session{native: ret.Pointer()}
+
+	return retGo
+}
 
 var requestGetUriFunction *gi.Function
 var requestGetUriFunction_Once sync.Once
@@ -2906,9 +3707,19 @@ type RequestData struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Request'
+// FieldParent returns the C field 'parent'.
+func (recv *RequestData) FieldParent() *Request {
+	argValue := gi.FieldGet(requestDataStruct, recv.native, "parent")
+	value := &Request{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Request'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RequestData) SetFieldParent(value *Request) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestDataStruct, recv.native, "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestData) FieldPriv() *RequestDataPrivate {
@@ -2954,9 +3765,19 @@ type RequestFile struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Request'
+// FieldParent returns the C field 'parent'.
+func (recv *RequestFile) FieldParent() *Request {
+	argValue := gi.FieldGet(requestFileStruct, recv.native, "parent")
+	value := &Request{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Request'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RequestFile) SetFieldParent(value *Request) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestFileStruct, recv.native, "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestFile) FieldPriv() *RequestFilePrivate {
@@ -3004,9 +3825,19 @@ type RequestHTTP struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Request'
+// FieldParent returns the C field 'parent'.
+func (recv *RequestHTTP) FieldParent() *Request {
+	argValue := gi.FieldGet(requestHTTPStruct, recv.native, "parent")
+	value := &Request{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Request'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RequestHTTP) SetFieldParent(value *Request) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(requestHTTPStruct, recv.native, "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestHTTP) FieldPriv() *RequestHTTPPrivate {
@@ -3022,7 +3853,37 @@ func (recv *RequestHTTP) SetFieldPriv(value *RequestHTTPPrivate) {
 	gi.FieldSet(requestHTTPStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_request_http_get_message' : return type 'Message' not supported
+var requestHTTPGetMessageFunction *gi.Function
+var requestHTTPGetMessageFunction_Once sync.Once
+
+func requestHTTPGetMessageFunction_Set() error {
+	var err error
+	requestHTTPGetMessageFunction_Once.Do(func() {
+		err = requestHTTPStruct_Set()
+		if err != nil {
+			return
+		}
+		requestHTTPGetMessageFunction, err = requestHTTPStruct.InvokerNew("get_message")
+	})
+	return err
+}
+
+// GetMessage is a representation of the C type soup_request_http_get_message.
+func (recv *RequestHTTP) GetMessage() *Message {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := requestHTTPGetMessageFunction_Set()
+	if err == nil {
+		ret = requestHTTPGetMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Message{native: ret.Pointer()}
+
+	return retGo
+}
 
 // RequestHTTPStruct creates an uninitialised RequestHTTP.
 func RequestHTTPStruct() *RequestHTTP {
@@ -3072,11 +3933,101 @@ func (recv *Requester) SetFieldPriv(value *RequesterPrivate) {
 	gi.FieldSet(requesterStruct, recv.native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_requester_new' : return type 'Requester' not supported
+var requesterNewFunction *gi.Function
+var requesterNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_requester_request' : return type 'Request' not supported
+func requesterNewFunction_Set() error {
+	var err error
+	requesterNewFunction_Once.Do(func() {
+		err = requesterStruct_Set()
+		if err != nil {
+			return
+		}
+		requesterNewFunction, err = requesterStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_requester_request_uri' : return type 'Request' not supported
+// RequesterNew is a representation of the C type soup_requester_new.
+func RequesterNew() *Requester {
+
+	var ret gi.Argument
+
+	err := requesterNewFunction_Set()
+	if err == nil {
+		ret = requesterNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Requester{native: ret.Pointer()}
+
+	return retGo
+}
+
+var requesterRequestFunction *gi.Function
+var requesterRequestFunction_Once sync.Once
+
+func requesterRequestFunction_Set() error {
+	var err error
+	requesterRequestFunction_Once.Do(func() {
+		err = requesterStruct_Set()
+		if err != nil {
+			return
+		}
+		requesterRequestFunction, err = requesterStruct.InvokerNew("request")
+	})
+	return err
+}
+
+// Request is a representation of the C type soup_requester_request.
+func (recv *Requester) Request(uriString string) *Request {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uriString)
+
+	var ret gi.Argument
+
+	err := requesterRequestFunction_Set()
+	if err == nil {
+		ret = requesterRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Request{native: ret.Pointer()}
+
+	return retGo
+}
+
+var requesterRequestUriFunction *gi.Function
+var requesterRequestUriFunction_Once sync.Once
+
+func requesterRequestUriFunction_Set() error {
+	var err error
+	requesterRequestUriFunction_Once.Do(func() {
+		err = requesterStruct_Set()
+		if err != nil {
+			return
+		}
+		requesterRequestUriFunction, err = requesterStruct.InvokerNew("request_uri")
+	})
+	return err
+}
+
+// RequestUri is a representation of the C type soup_requester_request_uri.
+func (recv *Requester) RequestUri(uri *URI) *Request {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(uri.native)
+
+	var ret gi.Argument
+
+	err := requesterRequestUriFunction_Set()
+	if err == nil {
+		ret = requesterRequestUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Request{native: ret.Pointer()}
+
+	return retGo
+}
 
 var serverStruct *gi.Struct
 var serverStruct_Once sync.Once
@@ -3101,7 +4052,34 @@ type Server struct {
 
 // UNSUPPORTED : C value 'soup_server_accept_iostream' : parameter 'stream' of type 'Gio.IOStream' not supported
 
-// UNSUPPORTED : C value 'soup_server_add_auth_domain' : parameter 'auth_domain' of type 'AuthDomain' not supported
+var serverAddAuthDomainFunction *gi.Function
+var serverAddAuthDomainFunction_Once sync.Once
+
+func serverAddAuthDomainFunction_Set() error {
+	var err error
+	serverAddAuthDomainFunction_Once.Do(func() {
+		err = serverStruct_Set()
+		if err != nil {
+			return
+		}
+		serverAddAuthDomainFunction, err = serverStruct.InvokerNew("add_auth_domain")
+	})
+	return err
+}
+
+// AddAuthDomain is a representation of the C type soup_server_add_auth_domain.
+func (recv *Server) AddAuthDomain(authDomain *AuthDomain) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(authDomain.native)
+
+	err := serverAddAuthDomainFunction_Set()
+	if err == nil {
+		serverAddAuthDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_server_add_early_handler' : parameter 'callback' of type 'ServerCallback' not supported
 
@@ -3141,7 +4119,37 @@ func (recv *Server) Disconnect() {
 
 // UNSUPPORTED : C value 'soup_server_get_async_context' : return type 'GLib.MainContext' not supported
 
-// UNSUPPORTED : C value 'soup_server_get_listener' : return type 'Socket' not supported
+var serverGetListenerFunction *gi.Function
+var serverGetListenerFunction_Once sync.Once
+
+func serverGetListenerFunction_Set() error {
+	var err error
+	serverGetListenerFunction_Once.Do(func() {
+		err = serverStruct_Set()
+		if err != nil {
+			return
+		}
+		serverGetListenerFunction, err = serverStruct.InvokerNew("get_listener")
+	})
+	return err
+}
+
+// GetListener is a representation of the C type soup_server_get_listener.
+func (recv *Server) GetListener() *Socket {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := serverGetListenerFunction_Set()
+	if err == nil {
+		ret = serverGetListenerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Socket{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_server_get_listeners' : return type 'GLib.SList' not supported
 
@@ -3221,7 +4229,34 @@ func (recv *Server) IsHttps() bool {
 
 // UNSUPPORTED : C value 'soup_server_listen_socket' : parameter 'socket' of type 'Gio.Socket' not supported
 
-// UNSUPPORTED : C value 'soup_server_pause_message' : parameter 'msg' of type 'Message' not supported
+var serverPauseMessageFunction *gi.Function
+var serverPauseMessageFunction_Once sync.Once
+
+func serverPauseMessageFunction_Set() error {
+	var err error
+	serverPauseMessageFunction_Once.Do(func() {
+		err = serverStruct_Set()
+		if err != nil {
+			return
+		}
+		serverPauseMessageFunction, err = serverStruct.InvokerNew("pause_message")
+	})
+	return err
+}
+
+// PauseMessage is a representation of the C type soup_server_pause_message.
+func (recv *Server) PauseMessage(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := serverPauseMessageFunction_Set()
+	if err == nil {
+		serverPauseMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var serverQuitFunction *gi.Function
 var serverQuitFunction_Once sync.Once
@@ -3251,7 +4286,34 @@ func (recv *Server) Quit() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_server_remove_auth_domain' : parameter 'auth_domain' of type 'AuthDomain' not supported
+var serverRemoveAuthDomainFunction *gi.Function
+var serverRemoveAuthDomainFunction_Once sync.Once
+
+func serverRemoveAuthDomainFunction_Set() error {
+	var err error
+	serverRemoveAuthDomainFunction_Once.Do(func() {
+		err = serverStruct_Set()
+		if err != nil {
+			return
+		}
+		serverRemoveAuthDomainFunction, err = serverStruct.InvokerNew("remove_auth_domain")
+	})
+	return err
+}
+
+// RemoveAuthDomain is a representation of the C type soup_server_remove_auth_domain.
+func (recv *Server) RemoveAuthDomain(authDomain *AuthDomain) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(authDomain.native)
+
+	err := serverRemoveAuthDomainFunction_Set()
+	if err == nil {
+		serverRemoveAuthDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var serverRemoveHandlerFunction *gi.Function
 var serverRemoveHandlerFunction_Once sync.Once
@@ -3374,7 +4436,34 @@ func (recv *Server) SetSslCertFile(sslCertFile string, sslKeyFile string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_server_unpause_message' : parameter 'msg' of type 'Message' not supported
+var serverUnpauseMessageFunction *gi.Function
+var serverUnpauseMessageFunction_Once sync.Once
+
+func serverUnpauseMessageFunction_Set() error {
+	var err error
+	serverUnpauseMessageFunction_Once.Do(func() {
+		err = serverStruct_Set()
+		if err != nil {
+			return
+		}
+		serverUnpauseMessageFunction, err = serverStruct.InvokerNew("unpause_message")
+	})
+	return err
+}
+
+// UnpauseMessage is a representation of the C type soup_server_unpause_message.
+func (recv *Server) UnpauseMessage(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := serverUnpauseMessageFunction_Set()
+	if err == nil {
+		serverUnpauseMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sessionStruct *gi.Struct
 var sessionStruct_Once sync.Once
@@ -3395,7 +4484,35 @@ type Session struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_session_new' : return type 'Session' not supported
+var sessionNewFunction *gi.Function
+var sessionNewFunction_Once sync.Once
+
+func sessionNewFunction_Set() error {
+	var err error
+	sessionNewFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionNewFunction, err = sessionStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SessionNew is a representation of the C type soup_session_new.
+func SessionNew() *Session {
+
+	var ret gi.Argument
+
+	err := sessionNewFunction_Set()
+	if err == nil {
+		ret = sessionNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Session{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_session_new_with_options' : parameter '...' of type 'nil' not supported
 
@@ -3431,7 +4548,35 @@ func (recv *Session) Abort() {
 
 // UNSUPPORTED : C value 'soup_session_add_feature_by_type' : parameter 'feature_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_session_cancel_message' : parameter 'msg' of type 'Message' not supported
+var sessionCancelMessageFunction *gi.Function
+var sessionCancelMessageFunction_Once sync.Once
+
+func sessionCancelMessageFunction_Set() error {
+	var err error
+	sessionCancelMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionCancelMessageFunction, err = sessionStruct.InvokerNew("cancel_message")
+	})
+	return err
+}
+
+// CancelMessage is a representation of the C type soup_session_cancel_message.
+func (recv *Session) CancelMessage(msg *Message, statusCode uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+	inArgs[2].SetUint32(statusCode)
+
+	err := sessionCancelMessageFunction_Set()
+	if err == nil {
+		sessionCancelMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_session_connect_async' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -3447,7 +4592,34 @@ func (recv *Session) Abort() {
 
 // UNSUPPORTED : C value 'soup_session_has_feature' : parameter 'feature_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_session_pause_message' : parameter 'msg' of type 'Message' not supported
+var sessionPauseMessageFunction *gi.Function
+var sessionPauseMessageFunction_Once sync.Once
+
+func sessionPauseMessageFunction_Set() error {
+	var err error
+	sessionPauseMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionPauseMessageFunction, err = sessionStruct.InvokerNew("pause_message")
+	})
+	return err
+}
+
+// PauseMessage is a representation of the C type soup_session_pause_message.
+func (recv *Session) PauseMessage(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := sessionPauseMessageFunction_Set()
+	if err == nil {
+		sessionPauseMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_session_prefetch_dns' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -3480,41 +4652,314 @@ func (recv *Session) PrepareForUri(uri *URI) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_session_queue_message' : parameter 'msg' of type 'Message' not supported
+// UNSUPPORTED : C value 'soup_session_queue_message' : parameter 'callback' of type 'SessionCallback' not supported
 
-// UNSUPPORTED : C value 'soup_session_redirect_message' : parameter 'msg' of type 'Message' not supported
+var sessionRedirectMessageFunction *gi.Function
+var sessionRedirectMessageFunction_Once sync.Once
+
+func sessionRedirectMessageFunction_Set() error {
+	var err error
+	sessionRedirectMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRedirectMessageFunction, err = sessionStruct.InvokerNew("redirect_message")
+	})
+	return err
+}
+
+// RedirectMessage is a representation of the C type soup_session_redirect_message.
+func (recv *Session) RedirectMessage(msg *Message) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := sessionRedirectMessageFunction_Set()
+	if err == nil {
+		ret = sessionRedirectMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_session_remove_feature' : parameter 'feature' of type 'SessionFeature' not supported
 
 // UNSUPPORTED : C value 'soup_session_remove_feature_by_type' : parameter 'feature_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_session_request' : return type 'Request' not supported
+var sessionRequestFunction *gi.Function
+var sessionRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_session_request_http' : return type 'RequestHTTP' not supported
+func sessionRequestFunction_Set() error {
+	var err error
+	sessionRequestFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRequestFunction, err = sessionStruct.InvokerNew("request")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_session_request_http_uri' : return type 'RequestHTTP' not supported
+// Request is a representation of the C type soup_session_request.
+func (recv *Session) Request(uriString string) *Request {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uriString)
 
-// UNSUPPORTED : C value 'soup_session_request_uri' : return type 'Request' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'soup_session_requeue_message' : parameter 'msg' of type 'Message' not supported
+	err := sessionRequestFunction_Set()
+	if err == nil {
+		ret = sessionRequestFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'soup_session_send' : parameter 'msg' of type 'Message' not supported
+	retGo := &Request{native: ret.Pointer()}
 
-// UNSUPPORTED : C value 'soup_session_send_async' : parameter 'msg' of type 'Message' not supported
+	return retGo
+}
+
+var sessionRequestHttpFunction *gi.Function
+var sessionRequestHttpFunction_Once sync.Once
+
+func sessionRequestHttpFunction_Set() error {
+	var err error
+	sessionRequestHttpFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRequestHttpFunction, err = sessionStruct.InvokerNew("request_http")
+	})
+	return err
+}
+
+// RequestHttp is a representation of the C type soup_session_request_http.
+func (recv *Session) RequestHttp(method string, uriString string) *RequestHTTP {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(method)
+	inArgs[2].SetString(uriString)
+
+	var ret gi.Argument
+
+	err := sessionRequestHttpFunction_Set()
+	if err == nil {
+		ret = sessionRequestHttpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &RequestHTTP{native: ret.Pointer()}
+
+	return retGo
+}
+
+var sessionRequestHttpUriFunction *gi.Function
+var sessionRequestHttpUriFunction_Once sync.Once
+
+func sessionRequestHttpUriFunction_Set() error {
+	var err error
+	sessionRequestHttpUriFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRequestHttpUriFunction, err = sessionStruct.InvokerNew("request_http_uri")
+	})
+	return err
+}
+
+// RequestHttpUri is a representation of the C type soup_session_request_http_uri.
+func (recv *Session) RequestHttpUri(method string, uri *URI) *RequestHTTP {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(method)
+	inArgs[2].SetPointer(uri.native)
+
+	var ret gi.Argument
+
+	err := sessionRequestHttpUriFunction_Set()
+	if err == nil {
+		ret = sessionRequestHttpUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &RequestHTTP{native: ret.Pointer()}
+
+	return retGo
+}
+
+var sessionRequestUriFunction *gi.Function
+var sessionRequestUriFunction_Once sync.Once
+
+func sessionRequestUriFunction_Set() error {
+	var err error
+	sessionRequestUriFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRequestUriFunction, err = sessionStruct.InvokerNew("request_uri")
+	})
+	return err
+}
+
+// RequestUri is a representation of the C type soup_session_request_uri.
+func (recv *Session) RequestUri(uri *URI) *Request {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(uri.native)
+
+	var ret gi.Argument
+
+	err := sessionRequestUriFunction_Set()
+	if err == nil {
+		ret = sessionRequestUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Request{native: ret.Pointer()}
+
+	return retGo
+}
+
+var sessionRequeueMessageFunction *gi.Function
+var sessionRequeueMessageFunction_Once sync.Once
+
+func sessionRequeueMessageFunction_Set() error {
+	var err error
+	sessionRequeueMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionRequeueMessageFunction, err = sessionStruct.InvokerNew("requeue_message")
+	})
+	return err
+}
+
+// RequeueMessage is a representation of the C type soup_session_requeue_message.
+func (recv *Session) RequeueMessage(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := sessionRequeueMessageFunction_Set()
+	if err == nil {
+		sessionRequeueMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'soup_session_send' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+
+// UNSUPPORTED : C value 'soup_session_send_async' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
 // UNSUPPORTED : C value 'soup_session_send_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'soup_session_send_message' : parameter 'msg' of type 'Message' not supported
+var sessionSendMessageFunction *gi.Function
+var sessionSendMessageFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_session_steal_connection' : parameter 'msg' of type 'Message' not supported
+func sessionSendMessageFunction_Set() error {
+	var err error
+	sessionSendMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionSendMessageFunction, err = sessionStruct.InvokerNew("send_message")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_session_unpause_message' : parameter 'msg' of type 'Message' not supported
+// SendMessage is a representation of the C type soup_session_send_message.
+func (recv *Session) SendMessage(msg *Message) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
 
-// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'msg' of type 'Message' not supported
+	var ret gi.Argument
+
+	err := sessionSendMessageFunction_Set()
+	if err == nil {
+		ret = sessionSendMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'soup_session_steal_connection' : return type 'Gio.IOStream' not supported
+
+var sessionUnpauseMessageFunction *gi.Function
+var sessionUnpauseMessageFunction_Once sync.Once
+
+func sessionUnpauseMessageFunction_Set() error {
+	var err error
+	sessionUnpauseMessageFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionUnpauseMessageFunction, err = sessionStruct.InvokerNew("unpause_message")
+	})
+	return err
+}
+
+// UnpauseMessage is a representation of the C type soup_session_unpause_message.
+func (recv *Session) UnpauseMessage(msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	err := sessionUnpauseMessageFunction_Set()
+	if err == nil {
+		sessionUnpauseMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'protocols' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_session_websocket_connect_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'soup_session_would_redirect' : parameter 'msg' of type 'Message' not supported
+var sessionWouldRedirectFunction *gi.Function
+var sessionWouldRedirectFunction_Once sync.Once
+
+func sessionWouldRedirectFunction_Set() error {
+	var err error
+	sessionWouldRedirectFunction_Once.Do(func() {
+		err = sessionStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionWouldRedirectFunction, err = sessionStruct.InvokerNew("would_redirect")
+	})
+	return err
+}
+
+// WouldRedirect is a representation of the C type soup_session_would_redirect.
+func (recv *Session) WouldRedirect(msg *Message) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(msg.native)
+
+	var ret gi.Argument
+
+	err := sessionWouldRedirectFunction_Set()
+	if err == nil {
+		ret = sessionWouldRedirectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var sessionAsyncStruct *gi.Struct
 var sessionAsyncStruct_Once sync.Once
@@ -3531,11 +4976,49 @@ type SessionAsync struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Session'
+// FieldParent returns the C field 'parent'.
+func (recv *SessionAsync) FieldParent() *Session {
+	argValue := gi.FieldGet(sessionAsyncStruct, recv.native, "parent")
+	value := &Session{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Session'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *SessionAsync) SetFieldParent(value *Session) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(sessionAsyncStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'soup_session_async_new' : return type 'SessionAsync' not supported
+var sessionAsyncNewFunction *gi.Function
+var sessionAsyncNewFunction_Once sync.Once
+
+func sessionAsyncNewFunction_Set() error {
+	var err error
+	sessionAsyncNewFunction_Once.Do(func() {
+		err = sessionAsyncStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionAsyncNewFunction, err = sessionAsyncStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SessionAsyncNew is a representation of the C type soup_session_async_new.
+func SessionAsyncNew() *SessionAsync {
+
+	var ret gi.Argument
+
+	err := sessionAsyncNewFunction_Set()
+	if err == nil {
+		ret = sessionAsyncNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SessionAsync{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_session_async_new_with_options' : parameter '...' of type 'nil' not supported
 
@@ -3554,11 +5037,49 @@ type SessionSync struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Session'
+// FieldParent returns the C field 'parent'.
+func (recv *SessionSync) FieldParent() *Session {
+	argValue := gi.FieldGet(sessionSyncStruct, recv.native, "parent")
+	value := &Session{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Session'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *SessionSync) SetFieldParent(value *Session) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(sessionSyncStruct, recv.native, "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'soup_session_sync_new' : return type 'SessionSync' not supported
+var sessionSyncNewFunction *gi.Function
+var sessionSyncNewFunction_Once sync.Once
+
+func sessionSyncNewFunction_Set() error {
+	var err error
+	sessionSyncNewFunction_Once.Do(func() {
+		err = sessionSyncStruct_Set()
+		if err != nil {
+			return
+		}
+		sessionSyncNewFunction, err = sessionSyncStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SessionSyncNew is a representation of the C type soup_session_sync_new.
+func SessionSyncNew() *SessionSync {
+
+	var ret gi.Argument
+
+	err := sessionSyncNewFunction_Set()
+	if err == nil {
+		ret = sessionSyncNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := &SessionSync{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_session_sync_new_with_options' : parameter '...' of type 'nil' not supported
 
@@ -3647,9 +5168,69 @@ func (recv *Socket) GetFd() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_socket_get_local_address' : return type 'Address' not supported
+var socketGetLocalAddressFunction *gi.Function
+var socketGetLocalAddressFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_socket_get_remote_address' : return type 'Address' not supported
+func socketGetLocalAddressFunction_Set() error {
+	var err error
+	socketGetLocalAddressFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetLocalAddressFunction, err = socketStruct.InvokerNew("get_local_address")
+	})
+	return err
+}
+
+// GetLocalAddress is a representation of the C type soup_socket_get_local_address.
+func (recv *Socket) GetLocalAddress() *Address {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetLocalAddressFunction_Set()
+	if err == nil {
+		ret = socketGetLocalAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{native: ret.Pointer()}
+
+	return retGo
+}
+
+var socketGetRemoteAddressFunction *gi.Function
+var socketGetRemoteAddressFunction_Once sync.Once
+
+func socketGetRemoteAddressFunction_Set() error {
+	var err error
+	socketGetRemoteAddressFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetRemoteAddressFunction, err = socketStruct.InvokerNew("get_remote_address")
+	})
+	return err
+}
+
+// GetRemoteAddress is a representation of the C type soup_socket_get_remote_address.
+func (recv *Socket) GetRemoteAddress() *Address {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetRemoteAddressFunction_Set()
+	if err == nil {
+		ret = socketGetRemoteAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{native: ret.Pointer()}
+
+	return retGo
+}
 
 var socketIsConnectedFunction *gi.Function
 var socketIsConnectedFunction_Once sync.Once
@@ -4252,9 +5833,19 @@ type WebsocketExtensionDeflate struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'WebsocketExtension'
+// FieldParent returns the C field 'parent'.
+func (recv *WebsocketExtensionDeflate) FieldParent() *WebsocketExtension {
+	argValue := gi.FieldGet(websocketExtensionDeflateStruct, recv.native, "parent")
+	value := &WebsocketExtension{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'WebsocketExtension'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebsocketExtensionDeflate) SetFieldParent(value *WebsocketExtension) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(websocketExtensionDeflateStruct, recv.native, "parent", argValue)
+}
 
 // WebsocketExtensionDeflateStruct creates an uninitialised WebsocketExtensionDeflate.
 func WebsocketExtensionDeflateStruct() *WebsocketExtensionDeflate {

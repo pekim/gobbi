@@ -89,7 +89,7 @@ func Beep() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_cairo_create' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_cairo_create' : return type 'cairo.Context' not supported
 
 // UNSUPPORTED : C value 'gdk_cairo_draw_from_gl' : parameter 'cr' of type 'cairo.Context' not supported
 
@@ -165,31 +165,200 @@ func DisableMultidevice() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_drag_abort' : parameter 'context' of type 'DragContext' not supported
+var dragAbortFunction *gi.Function
+var dragAbortFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_drag_begin' : parameter 'window' of type 'Window' not supported
+func dragAbortFunction_Set() error {
+	var err error
+	dragAbortFunction_Once.Do(func() {
+		dragAbortFunction, err = gi.FunctionInvokerNew("Gdk", "drag_abort")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_drag_begin_for_device' : parameter 'window' of type 'Window' not supported
+// DragAbort is a representation of the C type gdk_drag_abort.
+func DragAbort(context *DragContext, time uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetUint32(time)
 
-// UNSUPPORTED : C value 'gdk_drag_begin_from_point' : parameter 'window' of type 'Window' not supported
+	err := dragAbortFunction_Set()
+	if err == nil {
+		dragAbortFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gdk_drag_drop' : parameter 'context' of type 'DragContext' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gdk_drag_drop_done' : parameter 'context' of type 'DragContext' not supported
+// UNSUPPORTED : C value 'gdk_drag_begin' : parameter 'targets' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_drop_succeeded' : parameter 'context' of type 'DragContext' not supported
+// UNSUPPORTED : C value 'gdk_drag_begin_for_device' : parameter 'targets' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : parameter 'context' of type 'DragContext' not supported
+// UNSUPPORTED : C value 'gdk_drag_begin_from_point' : parameter 'targets' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_get_selection' : parameter 'context' of type 'DragContext' not supported
+var dragDropFunction *gi.Function
+var dragDropFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'context' of type 'DragContext' not supported
+func dragDropFunction_Set() error {
+	var err error
+	dragDropFunction_Once.Do(func() {
+		dragDropFunction, err = gi.FunctionInvokerNew("Gdk", "drag_drop")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_drag_status' : parameter 'context' of type 'DragContext' not supported
+// DragDrop is a representation of the C type gdk_drag_drop.
+func DragDrop(context *DragContext, time uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetUint32(time)
 
-// UNSUPPORTED : C value 'gdk_drop_finish' : parameter 'context' of type 'DragContext' not supported
+	err := dragDropFunction_Set()
+	if err == nil {
+		dragDropFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gdk_drop_reply' : parameter 'context' of type 'DragContext' not supported
+	return
+}
+
+var dragDropDoneFunction *gi.Function
+var dragDropDoneFunction_Once sync.Once
+
+func dragDropDoneFunction_Set() error {
+	var err error
+	dragDropDoneFunction_Once.Do(func() {
+		dragDropDoneFunction, err = gi.FunctionInvokerNew("Gdk", "drag_drop_done")
+	})
+	return err
+}
+
+// DragDropDone is a representation of the C type gdk_drag_drop_done.
+func DragDropDone(context *DragContext, success bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetBoolean(success)
+
+	err := dragDropDoneFunction_Set()
+	if err == nil {
+		dragDropDoneFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dragDropSucceededFunction *gi.Function
+var dragDropSucceededFunction_Once sync.Once
+
+func dragDropSucceededFunction_Set() error {
+	var err error
+	dragDropSucceededFunction_Once.Do(func() {
+		dragDropSucceededFunction, err = gi.FunctionInvokerNew("Gdk", "drag_drop_succeeded")
+	})
+	return err
+}
+
+// DragDropSucceeded is a representation of the C type gdk_drag_drop_succeeded.
+func DragDropSucceeded(context *DragContext) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := dragDropSucceededFunction_Set()
+	if err == nil {
+		ret = dragDropSucceededFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : parameter 'protocol' of type 'DragProtocol' not supported
+
+var dragGetSelectionFunction *gi.Function
+var dragGetSelectionFunction_Once sync.Once
+
+func dragGetSelectionFunction_Set() error {
+	var err error
+	dragGetSelectionFunction_Once.Do(func() {
+		dragGetSelectionFunction, err = gi.FunctionInvokerNew("Gdk", "drag_get_selection")
+	})
+	return err
+}
+
+// DragGetSelection is a representation of the C type gdk_drag_get_selection.
+func DragGetSelection(context *DragContext) *Atom {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := dragGetSelectionFunction_Set()
+	if err == nil {
+		ret = dragGetSelectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Atom{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'protocol' of type 'DragProtocol' not supported
+
+// UNSUPPORTED : C value 'gdk_drag_status' : parameter 'action' of type 'DragAction' not supported
+
+var dropFinishFunction *gi.Function
+var dropFinishFunction_Once sync.Once
+
+func dropFinishFunction_Set() error {
+	var err error
+	dropFinishFunction_Once.Do(func() {
+		dropFinishFunction, err = gi.FunctionInvokerNew("Gdk", "drop_finish")
+	})
+	return err
+}
+
+// DropFinish is a representation of the C type gdk_drop_finish.
+func DropFinish(context *DragContext, success bool, time uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetBoolean(success)
+	inArgs[2].SetUint32(time)
+
+	err := dropFinishFunction_Set()
+	if err == nil {
+		dropFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dropReplyFunction *gi.Function
+var dropReplyFunction_Once sync.Once
+
+func dropReplyFunction_Set() error {
+	var err error
+	dropReplyFunction_Once.Do(func() {
+		dropReplyFunction, err = gi.FunctionInvokerNew("Gdk", "drop_reply")
+	})
+	return err
+}
+
+// DropReply is a representation of the C type gdk_drop_reply.
+func DropReply(context *DragContext, accepted bool, time uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetBoolean(accepted)
+	inArgs[2].SetUint32(time)
+
+	err := dropReplyFunction_Set()
+	if err == nil {
+		dropReplyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var errorTrapPopFunction *gi.Function
 var errorTrapPopFunction_Once sync.Once
@@ -345,7 +514,31 @@ func Flush() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
+var getDefaultRootWindowFunction *gi.Function
+var getDefaultRootWindowFunction_Once sync.Once
+
+func getDefaultRootWindowFunction_Set() error {
+	var err error
+	getDefaultRootWindowFunction_Once.Do(func() {
+		getDefaultRootWindowFunction, err = gi.FunctionInvokerNew("Gdk", "get_default_root_window")
+	})
+	return err
+}
+
+// GetDefaultRootWindow is a representation of the C type gdk_get_default_root_window.
+func GetDefaultRootWindow() *Window {
+
+	var ret gi.Argument
+
+	err := getDefaultRootWindowFunction_Set()
+	if err == nil {
+		ret = getDefaultRootWindowFunction.Invoke(nil, nil)
+	}
+
+	retGo := &Window{native: ret.Pointer()}
+
+	return retGo
+}
 
 var getDisplayFunction *gi.Function
 var getDisplayFunction_Once sync.Once
@@ -481,7 +674,7 @@ func GlErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_keyboard_grab' : return type 'GrabStatus' not supported
 
 var keyboardUngrabFunction *gi.Function
 var keyboardUngrabFunction_Once sync.Once
@@ -780,17 +973,66 @@ func NotifyStartupCompleteWithId(startupId string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : parameter 'window' of type 'Window' not supported
+var offscreenWindowGetEmbedderFunction *gi.Function
+var offscreenWindowGetEmbedderFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : parameter 'window' of type 'Window' not supported
+func offscreenWindowGetEmbedderFunction_Set() error {
+	var err error
+	offscreenWindowGetEmbedderFunction_Once.Do(func() {
+		offscreenWindowGetEmbedderFunction, err = gi.FunctionInvokerNew("Gdk", "offscreen_window_get_embedder")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : parameter 'window' of type 'Window' not supported
+// OffscreenWindowGetEmbedder is a representation of the C type gdk_offscreen_window_get_embedder.
+func OffscreenWindowGetEmbedder(window *Window) *Window {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(window.native)
+
+	var ret gi.Argument
+
+	err := offscreenWindowGetEmbedderFunction_Set()
+	if err == nil {
+		ret = offscreenWindowGetEmbedderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Window{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : return type 'cairo.Surface' not supported
+
+var offscreenWindowSetEmbedderFunction *gi.Function
+var offscreenWindowSetEmbedderFunction_Once sync.Once
+
+func offscreenWindowSetEmbedderFunction_Set() error {
+	var err error
+	offscreenWindowSetEmbedderFunction_Once.Do(func() {
+		offscreenWindowSetEmbedderFunction, err = gi.FunctionInvokerNew("Gdk", "offscreen_window_set_embedder")
+	})
+	return err
+}
+
+// OffscreenWindowSetEmbedder is a representation of the C type gdk_offscreen_window_set_embedder.
+func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(window.native)
+	inArgs[1].SetPointer(embedder.native)
+
+	err := offscreenWindowSetEmbedderFunction_Set()
+	if err == nil {
+		offscreenWindowSetEmbedderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gdk_pango_context_get' : return type 'Pango.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : parameter 'display' of type 'Display' not supported
+// UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : return type 'Pango.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : parameter 'screen' of type 'Screen' not supported
+// UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : return type 'Pango.Context' not supported
 
 // UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : parameter 'layout' of type 'Pango.Layout' not supported
 
@@ -800,9 +1042,9 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : return type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'event_mask' of type 'EventMask' not supported
 
 var pointerIsGrabbedFunction *gi.Function
 var pointerIsGrabbedFunction_Once sync.Once
@@ -876,31 +1118,273 @@ func PreParseLibgtkOnly() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_property_change' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_property_change' : parameter 'mode' of type 'PropMode' not supported
 
-// UNSUPPORTED : C value 'gdk_property_delete' : parameter 'window' of type 'Window' not supported
+var propertyDeleteFunction *gi.Function
+var propertyDeleteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_property_get' : parameter 'window' of type 'Window' not supported
+func propertyDeleteFunction_Set() error {
+	var err error
+	propertyDeleteFunction_Once.Do(func() {
+		propertyDeleteFunction, err = gi.FunctionInvokerNew("Gdk", "property_delete")
+	})
+	return err
+}
+
+// PropertyDelete is a representation of the C type gdk_property_delete.
+func PropertyDelete(window *Window, property *Atom) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(window.native)
+	inArgs[1].SetPointer(property.native)
+
+	err := propertyDeleteFunction_Set()
+	if err == nil {
+		propertyDeleteFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gdk_property_get' : parameter 'data' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_query_depths' : parameter 'depths' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_query_visual_types' : parameter 'visual_types' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_convert' : parameter 'requestor' of type 'Window' not supported
+var selectionConvertFunction *gi.Function
+var selectionConvertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_selection_owner_get' : return type 'Window' not supported
+func selectionConvertFunction_Set() error {
+	var err error
+	selectionConvertFunction_Once.Do(func() {
+		selectionConvertFunction, err = gi.FunctionInvokerNew("Gdk", "selection_convert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_selection_owner_get_for_display' : parameter 'display' of type 'Display' not supported
+// SelectionConvert is a representation of the C type gdk_selection_convert.
+func SelectionConvert(requestor *Window, selection *Atom, target *Atom, time uint32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(requestor.native)
+	inArgs[1].SetPointer(selection.native)
+	inArgs[2].SetPointer(target.native)
+	inArgs[3].SetUint32(time)
 
-// UNSUPPORTED : C value 'gdk_selection_owner_set' : parameter 'owner' of type 'Window' not supported
+	err := selectionConvertFunction_Set()
+	if err == nil {
+		selectionConvertFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gdk_selection_owner_set_for_display' : parameter 'display' of type 'Display' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gdk_selection_property_get' : parameter 'requestor' of type 'Window' not supported
+var selectionOwnerGetFunction *gi.Function
+var selectionOwnerGetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_selection_send_notify' : parameter 'requestor' of type 'Window' not supported
+func selectionOwnerGetFunction_Set() error {
+	var err error
+	selectionOwnerGetFunction_Once.Do(func() {
+		selectionOwnerGetFunction, err = gi.FunctionInvokerNew("Gdk", "selection_owner_get")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : parameter 'display' of type 'Display' not supported
+// SelectionOwnerGet is a representation of the C type gdk_selection_owner_get.
+func SelectionOwnerGet(selection *Atom) *Window {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(selection.native)
+
+	var ret gi.Argument
+
+	err := selectionOwnerGetFunction_Set()
+	if err == nil {
+		ret = selectionOwnerGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Window{native: ret.Pointer()}
+
+	return retGo
+}
+
+var selectionOwnerGetForDisplayFunction *gi.Function
+var selectionOwnerGetForDisplayFunction_Once sync.Once
+
+func selectionOwnerGetForDisplayFunction_Set() error {
+	var err error
+	selectionOwnerGetForDisplayFunction_Once.Do(func() {
+		selectionOwnerGetForDisplayFunction, err = gi.FunctionInvokerNew("Gdk", "selection_owner_get_for_display")
+	})
+	return err
+}
+
+// SelectionOwnerGetForDisplay is a representation of the C type gdk_selection_owner_get_for_display.
+func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(selection.native)
+
+	var ret gi.Argument
+
+	err := selectionOwnerGetForDisplayFunction_Set()
+	if err == nil {
+		ret = selectionOwnerGetForDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Window{native: ret.Pointer()}
+
+	return retGo
+}
+
+var selectionOwnerSetFunction *gi.Function
+var selectionOwnerSetFunction_Once sync.Once
+
+func selectionOwnerSetFunction_Set() error {
+	var err error
+	selectionOwnerSetFunction_Once.Do(func() {
+		selectionOwnerSetFunction, err = gi.FunctionInvokerNew("Gdk", "selection_owner_set")
+	})
+	return err
+}
+
+// SelectionOwnerSet is a representation of the C type gdk_selection_owner_set.
+func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(owner.native)
+	inArgs[1].SetPointer(selection.native)
+	inArgs[2].SetUint32(time)
+	inArgs[3].SetBoolean(sendEvent)
+
+	var ret gi.Argument
+
+	err := selectionOwnerSetFunction_Set()
+	if err == nil {
+		ret = selectionOwnerSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var selectionOwnerSetForDisplayFunction *gi.Function
+var selectionOwnerSetForDisplayFunction_Once sync.Once
+
+func selectionOwnerSetForDisplayFunction_Set() error {
+	var err error
+	selectionOwnerSetForDisplayFunction_Once.Do(func() {
+		selectionOwnerSetForDisplayFunction, err = gi.FunctionInvokerNew("Gdk", "selection_owner_set_for_display")
+	})
+	return err
+}
+
+// SelectionOwnerSetForDisplay is a representation of the C type gdk_selection_owner_set_for_display.
+func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(owner.native)
+	inArgs[2].SetPointer(selection.native)
+	inArgs[3].SetUint32(time)
+	inArgs[4].SetBoolean(sendEvent)
+
+	var ret gi.Argument
+
+	err := selectionOwnerSetForDisplayFunction_Set()
+	if err == nil {
+		ret = selectionOwnerSetForDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var selectionPropertyGetFunction *gi.Function
+var selectionPropertyGetFunction_Once sync.Once
+
+func selectionPropertyGetFunction_Set() error {
+	var err error
+	selectionPropertyGetFunction_Once.Do(func() {
+		selectionPropertyGetFunction, err = gi.FunctionInvokerNew("Gdk", "selection_property_get")
+	})
+	return err
+}
+
+// SelectionPropertyGet is a representation of the C type gdk_selection_property_get.
+func SelectionPropertyGet(requestor *Window, data uint8, propType *Atom, propFormat int32) int32 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(requestor.native)
+	inArgs[1].SetUint8(data)
+	inArgs[2].SetPointer(propType.native)
+	inArgs[3].SetInt32(propFormat)
+
+	var ret gi.Argument
+
+	err := selectionPropertyGetFunction_Set()
+	if err == nil {
+		ret = selectionPropertyGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var selectionSendNotifyFunction *gi.Function
+var selectionSendNotifyFunction_Once sync.Once
+
+func selectionSendNotifyFunction_Set() error {
+	var err error
+	selectionSendNotifyFunction_Once.Do(func() {
+		selectionSendNotifyFunction, err = gi.FunctionInvokerNew("Gdk", "selection_send_notify")
+	})
+	return err
+}
+
+// SelectionSendNotify is a representation of the C type gdk_selection_send_notify.
+func SelectionSendNotify(requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(requestor.native)
+	inArgs[1].SetPointer(selection.native)
+	inArgs[2].SetPointer(target.native)
+	inArgs[3].SetPointer(property.native)
+	inArgs[4].SetUint32(time)
+
+	err := selectionSendNotifyFunction_Set()
+	if err == nil {
+		selectionSendNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var selectionSendNotifyForDisplayFunction *gi.Function
+var selectionSendNotifyForDisplayFunction_Once sync.Once
+
+func selectionSendNotifyForDisplayFunction_Set() error {
+	var err error
+	selectionSendNotifyForDisplayFunction_Once.Do(func() {
+		selectionSendNotifyForDisplayFunction, err = gi.FunctionInvokerNew("Gdk", "selection_send_notify_for_display")
+	})
+	return err
+}
+
+// SelectionSendNotifyForDisplay is a representation of the C type gdk_selection_send_notify_for_display.
+func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(requestor.native)
+	inArgs[2].SetPointer(selection.native)
+	inArgs[3].SetPointer(target.native)
+	inArgs[4].SetPointer(property.native)
+	inArgs[5].SetUint32(time)
+
+	err := selectionSendNotifyForDisplayFunction_Set()
+	if err == nil {
+		selectionSendNotifyForDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var setAllowedBackendsFunction *gi.Function
 var setAllowedBackendsFunction_Once sync.Once
@@ -1000,15 +1484,37 @@ func SetShowEvents(showEvents bool) {
 
 // UNSUPPORTED : C value 'gdk_setting_get' : parameter 'value' of type 'GObject.Value' not supported
 
-// UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'window' of type 'Window' not supported
+// UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'unset_flags' of type 'WindowState' not supported
 
-// UNSUPPORTED : C value 'gdk_test_render_sync' : parameter 'window' of type 'Window' not supported
+var testRenderSyncFunction *gi.Function
+var testRenderSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_test_simulate_button' : parameter 'window' of type 'Window' not supported
+func testRenderSyncFunction_Set() error {
+	var err error
+	testRenderSyncFunction_Once.Do(func() {
+		testRenderSyncFunction, err = gi.FunctionInvokerNew("Gdk", "test_render_sync")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_test_simulate_key' : parameter 'window' of type 'Window' not supported
+// TestRenderSync is a representation of the C type gdk_test_render_sync.
+func TestRenderSync(window *Window) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(window.native)
 
-// UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : parameter 'display' of type 'Display' not supported
+	err := testRenderSyncFunction_Set()
+	if err == nil {
+		testRenderSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gdk_test_simulate_button' : parameter 'modifiers' of type 'ModifierType' not supported
+
+// UNSUPPORTED : C value 'gdk_test_simulate_key' : parameter 'modifiers' of type 'ModifierType' not supported
+
+// UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : parameter 'text' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_threads_add_idle' : parameter 'function' of type 'GLib.SourceFunc' not supported
 

@@ -26,7 +26,37 @@ type Binding struct {
 
 // UNSUPPORTED : C value 'g_binding_get_flags' : return type 'BindingFlags' not supported
 
-// UNSUPPORTED : C value 'g_binding_get_source' : return type 'Object' not supported
+var bindingGetSourceFunction *gi.Function
+var bindingGetSourceFunction_Once sync.Once
+
+func bindingGetSourceFunction_Set() error {
+	var err error
+	bindingGetSourceFunction_Once.Do(func() {
+		err = bindingStruct_Set()
+		if err != nil {
+			return
+		}
+		bindingGetSourceFunction, err = bindingStruct.InvokerNew("get_source")
+	})
+	return err
+}
+
+// GetSource is a representation of the C type g_binding_get_source.
+func (recv *Binding) GetSource() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bindingGetSourceFunction_Set()
+	if err == nil {
+		ret = bindingGetSourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 var bindingGetSourcePropertyFunction *gi.Function
 var bindingGetSourcePropertyFunction_Once sync.Once
@@ -60,7 +90,37 @@ func (recv *Binding) GetSourceProperty() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_binding_get_target' : return type 'Object' not supported
+var bindingGetTargetFunction *gi.Function
+var bindingGetTargetFunction_Once sync.Once
+
+func bindingGetTargetFunction_Set() error {
+	var err error
+	bindingGetTargetFunction_Once.Do(func() {
+		err = bindingStruct_Set()
+		if err != nil {
+			return
+		}
+		bindingGetTargetFunction, err = bindingStruct.InvokerNew("get_target")
+	})
+	return err
+}
+
+// GetTarget is a representation of the C type g_binding_get_target.
+func (recv *Binding) GetTarget() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bindingGetTargetFunction_Set()
+	if err == nil {
+		ret = bindingGetTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 var bindingGetTargetPropertyFunction *gi.Function
 var bindingGetTargetPropertyFunction_Once sync.Once
@@ -222,11 +282,11 @@ func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 
 // UNSUPPORTED : C value 'g_object_add_weak_pointer' : parameter 'weak_pointer_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_object_bind_property' : parameter 'target' of type 'Object' not supported
+// UNSUPPORTED : C value 'g_object_bind_property' : parameter 'flags' of type 'BindingFlags' not supported
 
-// UNSUPPORTED : C value 'g_object_bind_property_full' : parameter 'target' of type 'Object' not supported
+// UNSUPPORTED : C value 'g_object_bind_property_full' : parameter 'flags' of type 'BindingFlags' not supported
 
-// UNSUPPORTED : C value 'g_object_bind_property_with_closures' : parameter 'target' of type 'Object' not supported
+// UNSUPPORTED : C value 'g_object_bind_property_with_closures' : parameter 'flags' of type 'BindingFlags' not supported
 
 // UNSUPPORTED : C value 'g_object_connect' : parameter '...' of type 'nil' not supported
 
@@ -393,11 +453,98 @@ func (recv *Object) Notify(propertyName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_object_notify_by_pspec' : parameter 'pspec' of type 'ParamSpec' not supported
+var objectNotifyByPspecFunction *gi.Function
+var objectNotifyByPspecFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_ref' : return type 'Object' not supported
+func objectNotifyByPspecFunction_Set() error {
+	var err error
+	objectNotifyByPspecFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectNotifyByPspecFunction, err = objectStruct.InvokerNew("notify_by_pspec")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_object_ref_sink' : return type 'Object' not supported
+// NotifyByPspec is a representation of the C type g_object_notify_by_pspec.
+func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(pspec.native)
+
+	err := objectNotifyByPspecFunction_Set()
+	if err == nil {
+		objectNotifyByPspecFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var objectRefFunction *gi.Function
+var objectRefFunction_Once sync.Once
+
+func objectRefFunction_Set() error {
+	var err error
+	objectRefFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRefFunction, err = objectStruct.InvokerNew("ref")
+	})
+	return err
+}
+
+// Ref is a representation of the C type g_object_ref.
+func (recv *Object) Ref() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := objectRefFunction_Set()
+	if err == nil {
+		ret = objectRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
+
+var objectRefSinkFunction *gi.Function
+var objectRefSinkFunction_Once sync.Once
+
+func objectRefSinkFunction_Set() error {
+	var err error
+	objectRefSinkFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRefSinkFunction, err = objectStruct.InvokerNew("ref_sink")
+	})
+	return err
+}
+
+// RefSink is a representation of the C type g_object_ref_sink.
+func (recv *Object) RefSink() *Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := objectRefSinkFunction_Set()
+	if err == nil {
+		ret = objectRefSinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Object{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_object_remove_toggle_ref' : parameter 'notify' of type 'ToggleNotify' not supported
 
@@ -789,11 +936,101 @@ func (recv *ParamSpec) GetNick() string {
 
 // UNSUPPORTED : C value 'g_param_spec_get_qdata' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_get_redirect_target' : return type 'ParamSpec' not supported
+var paramSpecGetRedirectTargetFunction *gi.Function
+var paramSpecGetRedirectTargetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_ref' : return type 'ParamSpec' not supported
+func paramSpecGetRedirectTargetFunction_Set() error {
+	var err error
+	paramSpecGetRedirectTargetFunction_Once.Do(func() {
+		err = paramSpecStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecGetRedirectTargetFunction, err = paramSpecStruct.InvokerNew("get_redirect_target")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_param_spec_ref_sink' : return type 'ParamSpec' not supported
+// GetRedirectTarget is a representation of the C type g_param_spec_get_redirect_target.
+func (recv *ParamSpec) GetRedirectTarget() *ParamSpec {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := paramSpecGetRedirectTargetFunction_Set()
+	if err == nil {
+		ret = paramSpecGetRedirectTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
+
+var paramSpecRefFunction *gi.Function
+var paramSpecRefFunction_Once sync.Once
+
+func paramSpecRefFunction_Set() error {
+	var err error
+	paramSpecRefFunction_Once.Do(func() {
+		err = paramSpecStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecRefFunction, err = paramSpecStruct.InvokerNew("ref")
+	})
+	return err
+}
+
+// Ref is a representation of the C type g_param_spec_ref.
+func (recv *ParamSpec) Ref() *ParamSpec {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := paramSpecRefFunction_Set()
+	if err == nil {
+		ret = paramSpecRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
+
+var paramSpecRefSinkFunction *gi.Function
+var paramSpecRefSinkFunction_Once sync.Once
+
+func paramSpecRefSinkFunction_Set() error {
+	var err error
+	paramSpecRefSinkFunction_Once.Do(func() {
+		err = paramSpecStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecRefSinkFunction, err = paramSpecStruct.InvokerNew("ref_sink")
+	})
+	return err
+}
+
+// RefSink is a representation of the C type g_param_spec_ref_sink.
+func (recv *ParamSpec) RefSink() *ParamSpec {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := paramSpecRefSinkFunction_Set()
+	if err == nil {
+		ret = paramSpecRefSinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpec{native: ret.Pointer()}
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_set_qdata' : parameter 'data' of type 'gpointer' not supported
 
@@ -887,9 +1124,19 @@ type ParamSpecBoolean struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecBoolean) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecBooleanStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecBoolean) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecBooleanStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecBoolean) FieldDefaultValue() bool {
@@ -935,9 +1182,19 @@ type ParamSpecBoxed struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecBoxed) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecBoxedStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecBoxed) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecBoxedStruct, recv.native, "parent_instance", argValue)
+}
 
 // ParamSpecBoxedStruct creates an uninitialised ParamSpecBoxed.
 func ParamSpecBoxedStruct() *ParamSpecBoxed {
@@ -969,9 +1226,19 @@ type ParamSpecChar struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecChar) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecCharStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecChar) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecCharStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecChar) FieldMinimum() int8 {
@@ -1045,9 +1312,19 @@ type ParamSpecDouble struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecDouble) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecDouble) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecDoubleStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecDouble) FieldMinimum() float64 {
@@ -1135,9 +1412,19 @@ type ParamSpecEnum struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecEnum) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecEnumStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecEnum) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecEnumStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldEnumClass returns the C field 'enum_class'.
 func (recv *ParamSpecEnum) FieldEnumClass() *EnumClass {
@@ -1197,9 +1484,19 @@ type ParamSpecFlags struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecFlags) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecFlagsStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecFlags) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecFlagsStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldFlagsClass returns the C field 'flags_class'.
 func (recv *ParamSpecFlags) FieldFlagsClass() *FlagsClass {
@@ -1259,9 +1556,19 @@ type ParamSpecFloat struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecFloat) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecFloatStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecFloat) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecFloatStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecFloat) FieldMinimum() float32 {
@@ -1349,9 +1656,19 @@ type ParamSpecGType struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecGType) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecGTypeStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecGType) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecGTypeStruct, recv.native, "parent_instance", argValue)
+}
 
 // UNSUPPORTED : C value 'is_a_type' : for field getter : no Go type for 'GType'
 
@@ -1387,9 +1704,19 @@ type ParamSpecInt struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecInt) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecIntStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecInt) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecIntStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecInt) FieldMinimum() int32 {
@@ -1463,9 +1790,19 @@ type ParamSpecInt64 struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecInt64) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecInt64Struct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecInt64) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecInt64Struct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecInt64) FieldMinimum() int64 {
@@ -1539,9 +1876,19 @@ type ParamSpecLong struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecLong) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecLongStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecLong) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecLongStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecLong) FieldMinimum() int64 {
@@ -1615,9 +1962,19 @@ type ParamSpecObject struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecObject) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecObjectStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecObject) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecObjectStruct, recv.native, "parent_instance", argValue)
+}
 
 // ParamSpecObjectStruct creates an uninitialised ParamSpecObject.
 func ParamSpecObjectStruct() *ParamSpecObject {
@@ -1679,9 +2036,19 @@ type ParamSpecParam struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecParam) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecParamStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecParam) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecParamStruct, recv.native, "parent_instance", argValue)
+}
 
 // ParamSpecParamStruct creates an uninitialised ParamSpecParam.
 func ParamSpecParamStruct() *ParamSpecParam {
@@ -1713,9 +2080,19 @@ type ParamSpecPointer struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecPointer) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecPointerStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecPointer) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecPointerStruct, recv.native, "parent_instance", argValue)
+}
 
 // ParamSpecPointerStruct creates an uninitialised ParamSpecPointer.
 func ParamSpecPointerStruct() *ParamSpecPointer {
@@ -1747,9 +2124,19 @@ type ParamSpecString struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecString) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecStringStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecString) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecStringStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecString) FieldDefaultValue() string {
@@ -1865,9 +2252,19 @@ type ParamSpecUChar struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecUChar) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecUCharStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecUChar) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecUCharStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUChar) FieldMinimum() uint8 {
@@ -1941,9 +2338,19 @@ type ParamSpecUInt struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecUInt) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecUIntStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecUInt) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecUIntStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUInt) FieldMinimum() uint32 {
@@ -2017,9 +2424,19 @@ type ParamSpecUInt64 struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecUInt64) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecUInt64Struct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecUInt64) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecUInt64Struct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUInt64) FieldMinimum() uint64 {
@@ -2093,9 +2510,19 @@ type ParamSpecULong struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecULong) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecULongStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecULong) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecULongStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecULong) FieldMinimum() uint64 {
@@ -2169,9 +2596,19 @@ type ParamSpecUnichar struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecUnichar) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecUnicharStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecUnichar) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecUnicharStruct, recv.native, "parent_instance", argValue)
+}
 
 // UNSUPPORTED : C value 'default_value' : for field getter : no Go type for 'gunichar'
 
@@ -2207,13 +2644,33 @@ type ParamSpecValueArray struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecValueArray) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecValueArrayStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecValueArray) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecValueArrayStruct, recv.native, "parent_instance", argValue)
+}
 
-// UNSUPPORTED : C value 'element_spec' : for field getter : no Go type for 'ParamSpec'
+// FieldElementSpec returns the C field 'element_spec'.
+func (recv *ParamSpecValueArray) FieldElementSpec() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecValueArrayStruct, recv.native, "element_spec")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'element_spec' : for field setter : no Go type for 'ParamSpec'
+// SetFieldElementSpec sets the value of the C field 'element_spec'.
+func (recv *ParamSpecValueArray) SetFieldElementSpec(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecValueArrayStruct, recv.native, "element_spec", argValue)
+}
 
 // FieldFixedNElements returns the C field 'fixed_n_elements'.
 func (recv *ParamSpecValueArray) FieldFixedNElements() uint32 {
@@ -2259,9 +2716,19 @@ type ParamSpecVariant struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'ParamSpec'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *ParamSpecVariant) FieldParentInstance() *ParamSpec {
+	argValue := gi.FieldGet(paramSpecVariantStruct, recv.native, "parent_instance")
+	value := &ParamSpec{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'ParamSpec'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *ParamSpecVariant) SetFieldParentInstance(value *ParamSpec) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(paramSpecVariantStruct, recv.native, "parent_instance", argValue)
+}
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'GLib.VariantType'
 
@@ -2301,9 +2768,19 @@ type TypeModule struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Object'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *TypeModule) FieldParentInstance() *Object {
+	argValue := gi.FieldGet(typeModuleStruct, recv.native, "parent_instance")
+	value := &Object{native: argValue.Pointer()}
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Object'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *TypeModule) SetFieldParentInstance(value *Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(typeModuleStruct, recv.native, "parent_instance", argValue)
+}
 
 // FieldUseCount returns the C field 'use_count'.
 func (recv *TypeModule) FieldUseCount() uint32 {
