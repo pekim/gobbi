@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strconv"
-	"strings"
 )
 
 var jenGoTypes = map[string]*jen.Statement{
@@ -65,22 +64,11 @@ func (t *Type) init(ns *Namespace) {
 }
 
 func (t *Type) analyseName() {
-	parts := strings.Split(t.Name, ".")
-
-	if len(parts) == 1 {
-		return
+	isForeign, foreignNamespace, foreignName := t.namespace.namespaces.analyseName(t.Name)
+	if isForeign {
+		t.foreignNamespace = foreignNamespace
+		t.foreignName = foreignName
 	}
-
-	if len(parts) != 2 {
-		panic(fmt.Sprintf("Unsupported Type name %s", t.Name))
-	}
-
-	ns, found := t.namespace.namespaces.byName(parts[0])
-	if !found {
-		panic(fmt.Sprintf("Namespace %s referenced in Type name %s not found", parts[0], t.Name))
-	}
-	t.foreignNamespace = ns
-	t.foreignName = parts[1]
 }
 
 func (t *Type) isQualifiedName() bool {
