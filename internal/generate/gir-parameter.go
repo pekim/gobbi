@@ -38,12 +38,8 @@ func (p *Parameter) init(ns *Namespace) {
 }
 
 func (p Parameter) supported() (bool, string) {
-	if p.Type == nil {
-		return false, fmt.Sprintf("parameter '%s' has no type", p.Name)
-	}
-
 	if !p.isSupported() {
-		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type.Name)
+		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type)
 	}
 
 	return true, ""

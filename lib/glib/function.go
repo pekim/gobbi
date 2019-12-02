@@ -1075,15 +1075,15 @@ func Base64Decode(text string) uint64 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' has no type
+// UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'in' has no type
+// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'in' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'out' has no type
+// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'out' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' has no type
+// UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' of type 'nil' not supported
 
 var basenameFunction *gi.Function
 var basenameFunction_Once sync.Once
@@ -1304,19 +1304,19 @@ func BookmarkFileErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_build_filename' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_build_filename' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' has no type
+// UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_build_path' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_build_path' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' has no type
+// UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' has no type
+// UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' has no type
+// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' of type 'nil' not supported
 
 var byteArrayNewFunction *gi.Function
 var byteArrayNewFunction_Once sync.Once
@@ -1340,9 +1340,9 @@ func ByteArrayNew() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' has no type
+// UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' of type 'nil' not supported
 
 var canonicalizeFilenameFunction *gi.Function
 var canonicalizeFilenameFunction_Once sync.Once
@@ -1531,7 +1531,7 @@ func Close(fd int32) bool {
 
 // UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'digest_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_convert' : parameter 'str' has no type
+// UNSUPPORTED : C value 'g_convert' : parameter 'str' of type 'nil' not supported
 
 var convertErrorQuarkFunction *gi.Function
 var convertErrorQuarkFunction_Once sync.Once
@@ -1559,9 +1559,9 @@ func ConvertErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_convert_with_fallback' : parameter 'str' has no type
+// UNSUPPORTED : C value 'g_convert_with_fallback' : parameter 'str' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_convert_with_iconv' : parameter 'str' has no type
+// UNSUPPORTED : C value 'g_convert_with_iconv' : parameter 'str' of type 'nil' not supported
 
 var datalistClearFunction *gi.Function
 var datalistClearFunction_Once sync.Once
@@ -2112,11 +2112,11 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' has no type
+// UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_environ_setenv' : parameter 'envp' has no type
+// UNSUPPORTED : C value 'g_environ_setenv' : parameter 'envp' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' has no type
+// UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_file_error_from_errno' : return type 'FileError' not supported
 
@@ -2146,7 +2146,7 @@ func FileErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'contents' has no type
+// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'contents' of type 'nil' not supported
 
 var fileOpenTmpFunction *gi.Function
 var fileOpenTmpFunction_Once sync.Once
@@ -2206,7 +2206,7 @@ func FileReadLink(filename string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'contents' has no type
+// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'contents' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_file_test' : parameter 'test' of type 'FileTest' not supported
 
@@ -2659,7 +2659,7 @@ func GetEnviron() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' has no type
+// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' of type 'nil' not supported
 
 var getHomeDirFunction *gi.Function
 var getHomeDirFunction_Once sync.Once
@@ -3735,7 +3735,7 @@ func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' has no type
+// UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_log' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
@@ -4047,7 +4047,7 @@ func MarkupEscapeText(text string, length int32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'args' of type 'va_list' not supported
 
@@ -4375,7 +4375,7 @@ func OptionErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' has no type
+// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' of type 'nil' not supported
 
 var pathGetBasenameFunction *gi.Function
 var pathGetBasenameFunction_Once sync.Once
@@ -4614,13 +4614,13 @@ func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_prefix_error' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_prefix_error' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_print' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_print' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_printerr' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_printerr' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_printf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_printf' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_printf_string_upper_bound' : parameter 'args' of type 'va_list' not supported
 
@@ -4652,11 +4652,11 @@ func PropagateError(src *Error) *Error {
 	return out0
 }
 
-// UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_ptr_array_find' : parameter 'haystack' has no type
+// UNSUPPORTED : C value 'g_ptr_array_find' : parameter 'haystack' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : parameter 'haystack' has no type
+// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : parameter 'haystack' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'pbase' of type 'gpointer' not supported
 
@@ -5279,7 +5279,7 @@ func RegexEscapeNul(string_ string, length int32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_regex_match_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
 
@@ -5545,7 +5545,7 @@ func SetApplicationName(applicationName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_set_error' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_set_error' : parameter '...' of type 'nil' not supported
 
 var setErrorLiteralFunction *gi.Function
 var setErrorLiteralFunction_Once sync.Once
@@ -5661,7 +5661,7 @@ func ShellErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'argvp' has no type
+// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'argvp' of type 'nil' not supported
 
 var shellQuoteFunction *gi.Function
 var shellQuoteFunction_Once sync.Once
@@ -5735,7 +5735,7 @@ func ShellUnquote(quotedString string) string {
 
 // UNSUPPORTED : C value 'g_slice_set_config' : parameter 'ckey' of type 'SliceConfig' not supported
 
-// UNSUPPORTED : C value 'g_snprintf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_snprintf' : parameter '...' of type 'nil' not supported
 
 var sourceRemoveFunction *gi.Function
 var sourceRemoveFunction_Once sync.Once
@@ -5822,11 +5822,11 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_async' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'g_spawn_async' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'argv' of type 'nil' not supported
 
 var spawnCheckExitStatusFunction *gi.Function
 var spawnCheckExitStatusFunction_Once sync.Once
@@ -5908,7 +5908,7 @@ func SpawnCommandLineAsync(commandLine string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'standard_output' has no type
+// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'standard_output' of type 'nil' not supported
 
 var spawnErrorQuarkFunction *gi.Function
 var spawnErrorQuarkFunction_Once sync.Once
@@ -5962,9 +5962,9 @@ func SpawnExitErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_sprintf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_sprintf' : parameter '...' of type 'nil' not supported
 
 var stpcpyFunction *gi.Function
 var stpcpyFunction_Once sync.Once
@@ -6144,7 +6144,7 @@ func StrToAscii(str string, fromLocale string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' has no type
+// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' of type 'nil' not supported
 
 var strcanonFunction *gi.Function
 var strcanonFunction_Once sync.Once
@@ -6318,7 +6318,7 @@ func Strcompress(source string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_strconcat' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_strconcat' : parameter '...' of type 'nil' not supported
 
 var strdelimitFunction *gi.Function
 var strdelimitFunction_Once sync.Once
@@ -6406,7 +6406,7 @@ func Strdup(str string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_strdup_printf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_strdup_printf' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_strdup_vprintf' : parameter 'args' of type 'va_list' not supported
 
@@ -6629,7 +6629,7 @@ func StripContext(msgid string, msgval string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_strjoin' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_strjoin' : parameter '...' of type 'nil' not supported
 
 var strjoinvFunction *gi.Function
 var strjoinvFunction_Once sync.Once
@@ -7370,17 +7370,17 @@ func TestIncomplete(msg string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_test_init' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_test_init' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : parameter 'log_func' of type 'TestLogFatalFunc' not supported
 
 // UNSUPPORTED : C value 'g_test_log_type_name' : parameter 'log_type' of type 'TestLogType' not supported
 
-// UNSUPPORTED : C value 'g_test_maximized_result' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_test_maximized_result' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_test_message' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_test_message' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_test_minimized_result' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_test_minimized_result' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_test_queue_destroy' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
@@ -9129,9 +9129,9 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
+// UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_utf8_validate_len' : parameter 'str' has no type
+// UNSUPPORTED : C value 'g_utf8_validate_len' : parameter 'str' of type 'nil' not supported
 
 var uuidStringIsValidFunction *gi.Function
 var uuidStringIsValidFunction_Once sync.Once

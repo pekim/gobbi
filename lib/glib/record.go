@@ -1008,7 +1008,7 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_load_from_data' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_bookmark_file_load_from_data' : parameter 'data' of type 'nil' not supported
 
 var bookmarkFileLoadFromDataDirsFunction *gi.Function
 var bookmarkFileLoadFromDataDirsFunction_Once sync.Once
@@ -1310,7 +1310,7 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_set_groups' : parameter 'groups' has no type
+// UNSUPPORTED : C value 'g_bookmark_file_set_groups' : parameter 'groups' of type 'nil' not supported
 
 var bookmarkFileSetIconFunction *gi.Function
 var bookmarkFileSetIconFunction_Once sync.Once
@@ -1646,13 +1646,13 @@ type Bytes struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_bytes_new' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_bytes_new' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_bytes_new_static' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_bytes_new_static' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_bytes_new_take' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_bytes_new_take' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_bytes_new_with_free_func' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_bytes_new_with_free_func' : parameter 'data' of type 'nil' not supported
 
 var bytesCompareFunction *gi.Function
 var bytesCompareFunction_Once sync.Once
@@ -2047,7 +2047,7 @@ func (recv *Checksum) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_checksum_get_digest' : parameter 'buffer' has no type
+// UNSUPPORTED : C value 'g_checksum_get_digest' : parameter 'buffer' of type 'nil' not supported
 
 var checksumGetStringFunction *gi.Function
 var checksumGetStringFunction_Once sync.Once
@@ -2109,7 +2109,7 @@ func (recv *Checksum) Reset() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_checksum_update' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_checksum_update' : parameter 'data' of type 'nil' not supported
 
 var condStruct *gi.Struct
 var condStruct_Once sync.Once
@@ -5152,7 +5152,7 @@ func (recv *Error) SetFieldMessage(value string) {
 	gi.FieldSet(errorStruct, recv.native, "message", argValue)
 }
 
-// UNSUPPORTED : C value 'g_error_new' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_error_new' : parameter '...' of type 'nil' not supported
 
 var errorNewLiteralFunction *gi.Function
 var errorNewLiteralFunction_Once sync.Once
@@ -5455,7 +5455,7 @@ func (recv *Hmac) Copy() *Hmac {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_hmac_get_digest' : parameter 'buffer' has no type
+// UNSUPPORTED : C value 'g_hmac_get_digest' : parameter 'buffer' of type 'nil' not supported
 
 var hmacGetStringFunction *gi.Function
 var hmacGetStringFunction_Once sync.Once
@@ -5549,7 +5549,7 @@ func (recv *Hmac) Unref() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_hmac_update' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_hmac_update' : parameter 'data' of type 'nil' not supported
 
 // HmacStruct creates an uninitialised Hmac.
 func HmacStruct() *Hmac {
@@ -6297,13 +6297,13 @@ func (recv *IOChannel) Init() {
 
 // UNSUPPORTED : C value 'g_io_channel_read' : return type 'IOError' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_read_chars' : parameter 'buf' has no type
+// UNSUPPORTED : C value 'g_io_channel_read_chars' : parameter 'buf' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_line' : return type 'IOStatus' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_line_string' : return type 'IOStatus' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_read_to_end' : parameter 'str_return' has no type
+// UNSUPPORTED : C value 'g_io_channel_read_to_end' : parameter 'str_return' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_unichar' : parameter 'thechar' of type 'gunichar' not supported
 
@@ -6528,7 +6528,7 @@ func (recv *IOChannel) Unref() {
 
 // UNSUPPORTED : C value 'g_io_channel_write' : return type 'IOError' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_write_chars' : parameter 'buf' has no type
+// UNSUPPORTED : C value 'g_io_channel_write_chars' : parameter 'buf' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_write_unichar' : parameter 'thechar' of type 'gunichar' not supported
 
@@ -7350,7 +7350,7 @@ func (recv *KeyFile) HasKey(groupName string, key string) bool {
 
 // UNSUPPORTED : C value 'g_key_file_load_from_data_dirs' : parameter 'flags' of type 'KeyFileFlags' not supported
 
-// UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'search_dirs' has no type
+// UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'search_dirs' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_key_file_load_from_file' : parameter 'flags' of type 'KeyFileFlags' not supported
 
@@ -7551,7 +7551,7 @@ func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_boolean_list' : parameter 'list' has no type
+// UNSUPPORTED : C value 'g_key_file_set_boolean_list' : parameter 'list' of type 'nil' not supported
 
 var keyFileSetCommentFunction *gi.Function
 var keyFileSetCommentFunction_Once sync.Once
@@ -7619,7 +7619,7 @@ func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_double_list' : parameter 'list' has no type
+// UNSUPPORTED : C value 'g_key_file_set_double_list' : parameter 'list' of type 'nil' not supported
 
 var keyFileSetInt64Function *gi.Function
 var keyFileSetInt64Function_Once sync.Once
@@ -7683,7 +7683,7 @@ func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_integer_list' : parameter 'list' has no type
+// UNSUPPORTED : C value 'g_key_file_set_integer_list' : parameter 'list' of type 'nil' not supported
 
 var keyFileSetListSeparatorFunction *gi.Function
 var keyFileSetListSeparatorFunction_Once sync.Once
@@ -7746,7 +7746,7 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_locale_string_list' : parameter 'list' has no type
+// UNSUPPORTED : C value 'g_key_file_set_locale_string_list' : parameter 'list' of type 'nil' not supported
 
 var keyFileSetStringFunction *gi.Function
 var keyFileSetStringFunction_Once sync.Once
@@ -7779,7 +7779,7 @@ func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_string_list' : parameter 'list' has no type
+// UNSUPPORTED : C value 'g_key_file_set_string_list' : parameter 'list' of type 'nil' not supported
 
 var keyFileSetUint64Function *gi.Function
 var keyFileSetUint64Function_Once sync.Once
@@ -8116,7 +8116,7 @@ func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_main_context_check' : parameter 'fds' has no type
+// UNSUPPORTED : C value 'g_main_context_check' : parameter 'fds' of type 'nil' not supported
 
 var mainContextDispatchFunction *gi.Function
 var mainContextDispatchFunction_Once sync.Once
@@ -8376,7 +8376,7 @@ func (recv *MainContext) PushThreadDefault() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_main_context_query' : parameter 'fds' has no type
+// UNSUPPORTED : C value 'g_main_context_query' : parameter 'fds' of type 'nil' not supported
 
 var mainContextRefFunction *gi.Function
 var mainContextRefFunction_Once sync.Once
@@ -10920,9 +10920,9 @@ func (recv *OptionContext) GetSummary() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_option_context_parse' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'g_option_context_parse' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_option_context_parse_strv' : parameter 'arguments' has no type
+// UNSUPPORTED : C value 'g_option_context_parse_strv' : parameter 'arguments' of type 'nil' not supported
 
 var optionContextSetDescriptionFunction *gi.Function
 var optionContextSetDescriptionFunction_Once sync.Once
@@ -12933,9 +12933,9 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 
 // UNSUPPORTED : C value 'g_regex_match_all' : parameter 'match_options' of type 'RegexMatchFlags' not supported
 
-// UNSUPPORTED : C value 'g_regex_match_all_full' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_match_all_full' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_regex_match_full' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_match_full' : parameter 'string' of type 'nil' not supported
 
 var regexRefFunction *gi.Function
 var regexRefFunction_Once sync.Once
@@ -12969,15 +12969,15 @@ func (recv *Regex) Ref() *Regex {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_replace' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_replace' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_regex_replace_eval' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_replace_eval' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_regex_replace_literal' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_replace_literal' : parameter 'string' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_regex_split' : parameter 'match_options' of type 'RegexMatchFlags' not supported
 
-// UNSUPPORTED : C value 'g_regex_split_full' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_regex_split_full' : parameter 'string' of type 'nil' not supported
 
 var regexUnrefFunction *gi.Function
 var regexUnrefFunction_Once sync.Once
@@ -13338,7 +13338,7 @@ func (recv *Scanner) Eof() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_scanner_error' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_scanner_error' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_scanner_get_next_token' : return type 'TokenType' not supported
 
@@ -13504,7 +13504,7 @@ func (recv *Scanner) SyncFileOffset() {
 
 // UNSUPPORTED : C value 'g_scanner_unexp_token' : parameter 'expected_token' of type 'TokenType' not supported
 
-// UNSUPPORTED : C value 'g_scanner_warn' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_scanner_warn' : parameter '...' of type 'nil' not supported
 
 // ScannerStruct creates an uninitialised Scanner.
 func ScannerStruct() *Scanner {
@@ -15476,7 +15476,7 @@ func (recv *String) AppendLen(val string, len int32) *String {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_string_append_printf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_string_append_printf' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_string_append_unichar' : parameter 'wc' of type 'gunichar' not supported
 
@@ -16086,7 +16086,7 @@ func (recv *String) PrependLen(val string, len int32) *String {
 
 // UNSUPPORTED : C value 'g_string_prepend_unichar' : parameter 'wc' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_string_printf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_string_printf' : parameter '...' of type 'nil' not supported
 
 var stringSetSizeFunction *gi.Function
 var stringSetSizeFunction_Once sync.Once
@@ -18094,9 +18094,9 @@ type Variant struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_variant_new' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_array' : parameter 'children' has no type
+// UNSUPPORTED : C value 'g_variant_new_array' : parameter 'children' of type 'nil' not supported
 
 var variantNewBooleanFunction *gi.Function
 var variantNewBooleanFunction_Once sync.Once
@@ -18162,9 +18162,9 @@ func VariantNewByte(value uint8) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' has no type
+// UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' has no type
+// UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' of type 'nil' not supported
 
 var variantNewDictEntryFunction *gi.Function
 var variantNewDictEntryFunction_Once sync.Once
@@ -18267,7 +18267,7 @@ func VariantNewFromBytes(type_ *VariantType, bytes *Bytes, trusted bool) *Varian
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'data' of type 'nil' not supported
 
 var variantNewHandleFunction *gi.Function
 var variantNewHandleFunction_Once sync.Once
@@ -18462,13 +18462,13 @@ func VariantNewObjectPath(objectPath string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' has no type
+// UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_parsed' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_new_parsed' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_variant_new_parsed_va' : parameter 'app' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_printf' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_new_printf' : parameter '...' of type 'nil' not supported
 
 var variantNewSignatureFunction *gi.Function
 var variantNewSignatureFunction_Once sync.Once
@@ -18534,7 +18534,7 @@ func VariantNewString(string_ string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' has no type
+// UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' of type 'nil' not supported
 
 var variantNewTakeStringFunction *gi.Function
 var variantNewTakeStringFunction_Once sync.Once
@@ -18568,7 +18568,7 @@ func VariantNewTakeString(string_ string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_tuple' : parameter 'children' has no type
+// UNSUPPORTED : C value 'g_variant_new_tuple' : parameter 'children' of type 'nil' not supported
 
 var variantNewUint16Function *gi.Function
 var variantNewUint16Function_Once sync.Once
@@ -18996,7 +18996,7 @@ func (recv *Variant) Equal(two *Variant) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_get' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_get' : parameter '...' of type 'nil' not supported
 
 var variantGetBooleanFunction *gi.Function
 var variantGetBooleanFunction_Once sync.Once
@@ -19122,7 +19122,7 @@ func (recv *Variant) GetBytestringArray() uint64 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'g_variant_get_child' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_get_child' : parameter '...' of type 'nil' not supported
 
 var variantGetChildValueFunction *gi.Function
 var variantGetChildValueFunction_Once sync.Once
@@ -19965,7 +19965,7 @@ func (recv *Variant) IterNew() *VariantIter {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_lookup' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_lookup' : parameter '...' of type 'nil' not supported
 
 var variantLookupValueFunction *gi.Function
 var variantLookupValueFunction_Once sync.Once
@@ -20273,9 +20273,9 @@ func VariantBuilderNew(type_ *VariantType) *VariantBuilder {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_builder_add' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_builder_add' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_variant_builder_add_parsed' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_builder_add_parsed' : parameter '...' of type 'nil' not supported
 
 var variantBuilderAddValueFunction *gi.Function
 var variantBuilderAddValueFunction_Once sync.Once
@@ -20681,7 +20681,7 @@ func (recv *VariantDict) Init(fromAsv *Variant) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_insert' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_dict_insert' : parameter '...' of type 'nil' not supported
 
 var variantDictInsertValueFunction *gi.Function
 var variantDictInsertValueFunction_Once sync.Once
@@ -20713,7 +20713,7 @@ func (recv *VariantDict) InsertValue(key string, value *Variant) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_lookup' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_dict_lookup' : parameter '...' of type 'nil' not supported
 
 var variantDictLookupValueFunction *gi.Function
 var variantDictLookupValueFunction_Once sync.Once
@@ -20950,7 +20950,7 @@ func (recv *VariantIter) Init(value *Variant) uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_iter_loop' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_iter_loop' : parameter '...' of type 'nil' not supported
 
 var variantIterNChildrenFunction *gi.Function
 var variantIterNChildrenFunction_Once sync.Once
@@ -20984,7 +20984,7 @@ func (recv *VariantIter) NChildren() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_iter_next' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_variant_iter_next' : parameter '...' of type 'nil' not supported
 
 var variantIterNextValueFunction *gi.Function
 var variantIterNextValueFunction_Once sync.Once
@@ -21177,7 +21177,7 @@ func VariantTypeNewMaybe(element *VariantType) *VariantType {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_type_new_tuple' : parameter 'items' has no type
+// UNSUPPORTED : C value 'g_variant_type_new_tuple' : parameter 'items' of type 'nil' not supported
 
 var variantTypeCopyFunction *gi.Function
 var variantTypeCopyFunction_Once sync.Once

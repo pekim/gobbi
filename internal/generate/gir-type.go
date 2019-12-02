@@ -51,6 +51,14 @@ type Type struct {
 	foreignName      string
 }
 
+func (t *Type) String() string {
+	if t == nil {
+		return "nil"
+	}
+
+	return t.Name
+}
+
 func (t *Type) init(ns *Namespace) {
 	t.namespace = ns
 	t.analyseName()
@@ -79,6 +87,10 @@ func (t *Type) isQualifiedName() bool {
 	return t.foreignNamespace != nil
 }
 
+func (t *Type) isValid() bool {
+	return t != nil && t.Name != ""
+}
+
 func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
 	if t == nil {
 		return nil, false
@@ -102,7 +114,7 @@ func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
 }
 
 func (t *Type) jenGoType() (*jen.Statement, error) {
-	if t == nil {
+	if !t.isValid() {
 		return nil, errors.New("missing Type")
 	}
 
@@ -209,6 +221,10 @@ func (t *Type) argumentValueGetFunctionName() string {
 }
 
 func (t *Type) resolvedType() *Type {
+	if t == nil {
+		return t
+	}
+
 	alias, isAlias := t.namespace.Aliases.byName(t.Name)
 	if isAlias {
 		return alias.Type

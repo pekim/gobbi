@@ -1715,7 +1715,7 @@ func (recv *Coverage) Ref() *Coverage {
 
 // UNSUPPORTED : C value 'pango_coverage_set' : parameter 'level' of type 'CoverageLevel' not supported
 
-// UNSUPPORTED : C value 'pango_coverage_to_bytes' : parameter 'bytes' has no type
+// UNSUPPORTED : C value 'pango_coverage_to_bytes' : parameter 'bytes' of type 'nil' not supported
 
 var coverageUnrefFunction *gi.Function
 var coverageUnrefFunction_Once sync.Once
@@ -3664,9 +3664,9 @@ func (recv *GlyphItem) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_glyph_item_get_logical_widths' : parameter 'logical_widths' has no type
+// UNSUPPORTED : C value 'pango_glyph_item_get_logical_widths' : parameter 'logical_widths' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'pango_glyph_item_letter_space' : parameter 'log_attrs' has no type
+// UNSUPPORTED : C value 'pango_glyph_item_letter_space' : parameter 'log_attrs' of type 'nil' not supported
 
 var glyphItemSplitFunction *gi.Function
 var glyphItemSplitFunction_Once sync.Once
@@ -4192,7 +4192,7 @@ func (recv *GlyphString) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : parameter 'logical_widths' has no type
+// UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : parameter 'logical_widths' of type 'nil' not supported
 
 var glyphStringGetWidthFunction *gi.Function
 var glyphStringGetWidthFunction_Once sync.Once
@@ -5531,7 +5531,7 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : parameter 'ranges' has no type
+// UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : parameter 'ranges' of type 'nil' not supported
 
 var layoutLineIndexToXFunction *gi.Function
 var layoutLineIndexToXFunction_Once sync.Once

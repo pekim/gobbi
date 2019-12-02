@@ -2781,7 +2781,7 @@ type NetworkProxySettings struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' has no type
+// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' of type 'nil' not supported
 
 var networkProxySettingsAddProxyForSchemeFunction *gi.Function
 var networkProxySettingsAddProxyForSchemeFunction_Once sync.Once

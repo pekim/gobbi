@@ -142,7 +142,7 @@ func (recv *Closure) Invalidate() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_closure_invoke' : parameter 'param_values' has no type
+// UNSUPPORTED : C value 'g_closure_invoke' : parameter 'param_values' of type 'nil' not supported
 
 var closureRefFunction *gi.Function
 var closureRefFunction_Once sync.Once
@@ -789,7 +789,7 @@ func (recv *ObjectClass) SetFieldGTypeClass(value *TypeClass) {
 
 // UNSUPPORTED : C value 'g_object_class_find_property' : return type 'ParamSpec' not supported
 
-// UNSUPPORTED : C value 'g_object_class_install_properties' : parameter 'pspecs' has no type
+// UNSUPPORTED : C value 'g_object_class_install_properties' : parameter 'pspecs' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_object_class_install_property' : parameter 'pspec' of type 'ParamSpec' not supported
 

@@ -43,9 +43,13 @@ func (a Argument) supportedAsOutParameter() bool {
 }
 
 func (a Argument) isSupported() bool {
+	if !a.Type.isValid() {
+		return false
+	}
+
 	typ := a.Type.resolvedType()
 
-	if typ == nil || typ.Name == "" {
+	if !typ.isValid() {
 		return false
 	}
 

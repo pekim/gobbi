@@ -9776,7 +9776,7 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'non_relocatable' has no type
+// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'non_relocatable' of type 'nil' not supported
 
 var settingsSchemaSourceLookupFunction *gi.Function
 var settingsSchemaSourceLookupFunction_Once sync.Once

@@ -6273,7 +6273,7 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' has no type
+// UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_container_class_install_child_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
@@ -11157,7 +11157,7 @@ func (recv *IconSet) Copy() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' has no type
+// UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' of type 'nil' not supported
 
 var iconSetRefFunction *gi.Function
 var iconSetRefFunction_Once sync.Once
@@ -20578,7 +20578,7 @@ func (recv *SelectionData) GetLength() int32 {
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_target' : return type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_data_get_targets' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_selection_data_get_targets' : parameter 'targets' of type 'nil' not supported
 
 var selectionDataGetTextFunction *gi.Function
 var selectionDataGetTextFunction_Once sync.Once
@@ -20678,7 +20678,7 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' has no type
+// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' of type 'nil' not supported
 
 var selectionDataTargetsIncludeImageFunction *gi.Function
 var selectionDataTargetsIncludeImageFunction_Once sync.Once
@@ -23972,7 +23972,7 @@ type TargetList struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gtk_target_list_new' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_target_list_new' : parameter 'targets' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_target_list_add' : parameter 'target' of type 'Gdk.Atom' not supported
 
@@ -24008,7 +24008,7 @@ func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 
 // UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'buffer' of type 'TextBuffer' not supported
 
-// UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' of type 'nil' not supported
 
 var targetListAddTextTargetsFunction *gi.Function
 var targetListAddTextTargetsFunction_Once sync.Once
@@ -29703,9 +29703,9 @@ func TreePathNewFirst() *TreePath {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' has no type
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : parameter 'indices' has no type
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : parameter 'indices' of type 'nil' not supported
 
 var treePathNewFromStringFunction *gi.Function
 var treePathNewFromStringFunction_Once sync.Once

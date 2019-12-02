@@ -371,7 +371,7 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 
 // UNSUPPORTED : C value 'pango_bidi_type_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_break' : parameter 'attrs' has no type
+// UNSUPPORTED : C value 'pango_break' : parameter 'attrs' of type 'nil' not supported
 
 var configKeyGetFunction *gi.Function
 var configKeyGetFunction_Once sync.Once
@@ -598,7 +598,7 @@ func GetLibSubdirectory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'log_attrs' has no type
+// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'log_attrs' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
@@ -698,7 +698,7 @@ func LanguageGetDefault() *Language {
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
 
-// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' has no type
+// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'context' of type 'GLib.MarkupParseContext' not supported
 

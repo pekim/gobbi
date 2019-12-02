@@ -353,9 +353,9 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'hook_func' of type 'SignalEmissionHook' not supported
 
-// UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' has no type
+// UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_signal_chain_from_overridden_handler' : parameter '...' has no type
+// UNSUPPORTED : C value 'g_signal_chain_from_overridden_handler' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_signal_connect_closure' : parameter 'instance' of type 'Object' not supported
 
@@ -371,7 +371,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' has no type
+// UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_signal_get_invocation_hint' : parameter 'instance' of type 'Object' not supported
 

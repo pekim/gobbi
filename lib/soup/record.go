@@ -437,9 +437,9 @@ func (recv *Buffer) SetFieldLength(value uint64) {
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' has no type
+// UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' has no type
+// UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' of type 'nil' not supported
 
 var bufferCopyFunction *gi.Function
 var bufferCopyFunction_Once sync.Once
@@ -503,7 +503,7 @@ func (recv *Buffer) Free() {
 
 // UNSUPPORTED : C value 'soup_buffer_get_as_bytes' : return type 'GLib.Bytes' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_get_data' : parameter 'data' has no type
+// UNSUPPORTED : C value 'soup_buffer_get_data' : parameter 'data' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_buffer_get_owner' : return type 'gpointer' not supported
 
@@ -3317,7 +3317,7 @@ func (recv *MessageBody) AppendBuffer(buffer *Buffer) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' has no type
+// UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' of type 'nil' not supported
 
 var messageBodyCompleteFunction *gi.Function
 var messageBodyCompleteFunction_Once sync.Once
@@ -4016,7 +4016,7 @@ func (recv *MessageHeaders) GetOne(name string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_get_ranges' : parameter 'ranges' has no type
+// UNSUPPORTED : C value 'soup_message_headers_get_ranges' : parameter 'ranges' of type 'nil' not supported
 
 var messageHeadersHeaderContainsFunction *gi.Function
 var messageHeadersHeaderContainsFunction_Once sync.Once
@@ -6586,7 +6586,7 @@ func (recv *URI) SetQuery(query string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_uri_set_query_from_fields' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_uri_set_query_from_fields' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_uri_set_query_from_form' : parameter 'form' of type 'GLib.HashTable' not supported
 

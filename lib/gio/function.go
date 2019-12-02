@@ -351,7 +351,7 @@ func ContentTypeGetMimeType(type_ string) string {
 
 // UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' has no type
+// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_content_type_guess_for_tree' : parameter 'root' of type 'File' not supported
 
@@ -441,7 +441,7 @@ func ContentTypeIsUnknown(type_ string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' has no type
+// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
 
@@ -481,7 +481,7 @@ func DbusAddressEscapeValue(string_ string) string {
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'cancellable' of type 'Cancellable' not supported
 
-// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' has no type
+// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_encode_gerror' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -547,7 +547,7 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' has no type
+// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 

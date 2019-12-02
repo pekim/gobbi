@@ -333,7 +333,7 @@ func RemoveKeyEventListener(listenerId uint32) {
 
 // UNSUPPORTED : C value 'atk_text_attribute_register' : return type 'TextAttribute' not supported
 
-// UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' has no type
+// UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'atk_value_type_get_localized_name' : parameter 'value_type' of type 'ValueType' not supported
 

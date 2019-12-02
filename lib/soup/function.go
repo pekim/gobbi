@@ -91,7 +91,7 @@ func CookieParse(header string, origin *URI) *Cookie {
 
 // UNSUPPORTED : C value 'soup_form_decode_multipart' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_form_encode' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_form_encode' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_form_encode_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
 
@@ -99,7 +99,7 @@ func CookieParse(header string, origin *URI) *Cookie {
 
 // UNSUPPORTED : C value 'soup_form_encode_valist' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_form_request_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
 
@@ -632,7 +632,7 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 // UNSUPPORTED : C value 'soup_value_hash_new' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'msg' of type 'Message' not supported
 
@@ -676,9 +676,9 @@ func WebsocketErrorGetQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'params' has no type
+// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'params' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_method_response' : parameter 'value' of type 'GObject.Value' not supported
 
@@ -712,7 +712,7 @@ func XmlrpcErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -785,7 +785,7 @@ func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams)
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : return type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter '...' has no type
+// UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_set_fault' : parameter 'msg' of type 'Message' not supported
 

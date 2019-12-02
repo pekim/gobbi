@@ -477,9 +477,9 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_init' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_init' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
 
@@ -796,7 +796,7 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
 
-// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
@@ -882,9 +882,9 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_property_get' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_query_depths' : parameter 'depths' has no type
+// UNSUPPORTED : C value 'gdk_query_depths' : parameter 'depths' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_query_visual_types' : parameter 'visual_types' has no type
+// UNSUPPORTED : C value 'gdk_query_visual_types' : parameter 'visual_types' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_selection_convert' : parameter 'requestor' of type 'Window' not supported
 

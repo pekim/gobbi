@@ -24,7 +24,7 @@ import (
 
 // UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_codes' has no type
+// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_codes' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : parameter 'default_mod_mask' of type 'Gdk.ModifierType' not supported
 
@@ -580,11 +580,11 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
@@ -806,7 +806,7 @@ func PaperSizeGetDefault() string {
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' of type 'nil' not supported
 
 var printErrorQuarkFunction *gi.Function
 var printErrorQuarkFunction_Once sync.Once
@@ -1122,7 +1122,7 @@ func RcReparseAll() bool {
 
 // UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' has no type
+// UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' of type 'nil' not supported
 
 var recentChooserErrorQuarkFunction *gi.Function
 var recentChooserErrorQuarkFunction_Once sync.Once
@@ -1290,9 +1290,9 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_show_uri_on_window' : parameter 'parent' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_add' : parameter 'items' has no type
+// UNSUPPORTED : C value 'gtk_stock_add' : parameter 'items' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_add_static' : parameter 'items' has no type
+// UNSUPPORTED : C value 'gtk_stock_add_static' : parameter 'items' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
 
@@ -1328,7 +1328,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 
 // UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'func' of type 'TranslateFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' of type 'nil' not supported
 
 var targetTableNewFromListFunction *gi.Function
 var targetTableNewFromListFunction_Once sync.Once
@@ -1358,19 +1358,19 @@ func TargetTableNewFromList(list *TargetList) int32 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : parameter 'targets' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_targets_include_text' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_targets_include_text' : parameter 'targets' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' has no type
+// UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_test_create_simple_window' : return type 'Widget' not supported
 
 // UNSUPPORTED : C value 'gtk_test_create_widget' : parameter 'widget_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter '...' has no type
+// UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_test_find_label' : parameter 'widget' of type 'Widget' not supported
 
@@ -1378,7 +1378,7 @@ func TargetTableNewFromList(list *TargetList) int32 {
 
 // UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' has no type
+// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' of type 'nil' not supported
 
 var testListAllTypesFunction *gi.Function
 var testListAllTypesFunction_Once sync.Once
