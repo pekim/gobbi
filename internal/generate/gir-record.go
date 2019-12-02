@@ -15,6 +15,7 @@ type Record struct {
 	GlibGetType    string       `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
 	GlibTypeStruct string       `xml:"http://www.gtk.org/introspection/glib/1.0 type-struct,attr"`
 	Doc            *Doc         `xml:"doc"`
+	ParentName     string       `xml:"parent,attr"`
 	Fields         Fields       `xml:"field"`
 	Constructors   Constructors `xml:"constructor"`
 	Functions      Functions    `xml:"function"`
@@ -24,6 +25,8 @@ type Record struct {
 	goName           string
 	namespace        *Namespace
 	newFromCFuncName string
+	parentNamespace  *Namespace
+	parent           *Class
 
 	structInfoGoName        string
 	structInfoOnceGoName    string

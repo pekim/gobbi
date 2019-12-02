@@ -7,11 +7,7 @@ import (
 
 type Class struct {
 	*Record
-	ParentName string `xml:"parent,attr"`
 	//Implements Implementss `xml:"implements"`
-
-	parentNamespace *Namespace
-	parent          *Class
 }
 
 func (c *Class) init(ns *Namespace) {
