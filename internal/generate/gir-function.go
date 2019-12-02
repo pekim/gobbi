@@ -175,11 +175,7 @@ func (f *Function) generateReceiver(s *jen.Statement) {
 		return
 	}
 
-	s.Params(jen.
-		Id(receiverName).
-		Op("*").
-		Id(f.record.goName),
-	)
+	s.Add(generateReceiverParams(f.record))
 }
 
 func (f *Function) generateBody(g *jen.Group) {

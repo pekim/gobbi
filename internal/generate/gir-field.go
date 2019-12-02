@@ -48,14 +48,10 @@ func (f *Field) generateGetter(fi *file) {
 	funcName := "Field" + f.goName
 
 	fi.Commentf("// %s returns the C field '%s'.", funcName, f.Name)
+	// GEN: func (recv *SomeRecord) Field...() (someType) {...}
 	fi.
 		Func().
-		Params(
-			jen.
-				Id(receiverName).
-				Op("*").
-				Id(f.record.goName),
-		).
+		Add(generateReceiverParams(f.record)).
 		Id(funcName).
 		Params().
 		Add(goType).
@@ -83,15 +79,6 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 	g.Return(jen.Id("value"))
 }
 
-func (f *Field) transferOwnership() *bool {
-	if !f.Type.isString() {
-		return nil
-	}
-
-	to := false
-	return &to
-}
-
 func (f *Field) generateSetter(fi *file) {
 	goType, err := f.Type.jenGoType()
 	if err != nil {
@@ -103,14 +90,10 @@ func (f *Field) generateSetter(fi *file) {
 	funcName := "SetField" + f.goName
 
 	fi.Commentf("// %s sets the value of the C field '%s'.", funcName, f.Name)
+	// GEN: func (recv *SomeRecord) SetField...(value someType) {...}
 	fi.
 		Func().
-		Params(
-			jen.
-				Id(receiverName).
-				Op("*").
-				Id(f.record.goName),
-		).
+		Add(generateReceiverParams(f.record)).
 		Id(funcName).
 		Params(jen.Id("value").Add(goType)).
 		BlockFunc(f.generateSetterBody)
@@ -154,4 +137,13 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 			jen.Lit(f.Name),
 			jen.Id("argValue"),
 		)
+}
+
+func (f *Field) transferOwnership() *bool {
+	if !f.Type.isString() {
+		return nil
+	}
+
+	to := false
+	return &to
 }

@@ -38,3 +38,13 @@ func docVersion(version string) string {
 
 	return fmt.Sprintf("//\n// since %s", version)
 }
+
+func generateReceiverParams(record *Record) *jen.Statement {
+	// GEN: (recv *SomeRecord)
+	return jen.Params(
+		jen.
+			Id(receiverName).
+			Op("*").
+			Id(record.goName),
+	)
+}
