@@ -69,7 +69,7 @@ func appInfoLaunchDefaultForUriFunction_Set() error {
 func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) bool {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(uri)
-	inArgs[1].SetPointer(context.native)
+	inArgs[1].SetPointer(context.Native)
 
 	var ret gi.Argument
 
@@ -521,7 +521,7 @@ func dbusAddressGetStreamSyncFunction_Set() error {
 func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(address)
-	inArgs[1].SetPointer(cancellable.native)
+	inArgs[1].SetPointer(cancellable.Native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -531,7 +531,8 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 		ret = dbusAddressGetStreamSyncFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &IOStream{native: ret.Pointer()}
+	retGo := &IOStream{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].String(true)
 
 	return retGo, out0
@@ -940,7 +941,8 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 		ret = ioExtensionPointLookupFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOExtensionPoint{native: ret.Pointer()}
+	retGo := &IOExtensionPoint{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -968,7 +970,8 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 		ret = ioExtensionPointRegisterFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOExtensionPoint{native: ret.Pointer()}
+	retGo := &IOExtensionPoint{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1016,7 +1019,7 @@ func ioModulesScanAllInDirectoryWithScopeFunction_Set() error {
 func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(dirname)
-	inArgs[1].SetPointer(scope.native)
+	inArgs[1].SetPointer(scope.Native)
 
 	err := ioModulesScanAllInDirectoryWithScopeFunction_Set()
 	if err == nil {
@@ -1075,7 +1078,8 @@ func KeyfileSettingsBackendNew(filename string, rootPath string, rootGroup strin
 		ret = keyfileSettingsBackendNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SettingsBackend{native: ret.Pointer()}
+	retGo := &SettingsBackend{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1101,7 +1105,8 @@ func MemorySettingsBackendNew() *SettingsBackend {
 		ret = memorySettingsBackendNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SettingsBackend{native: ret.Pointer()}
+	retGo := &SettingsBackend{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1151,7 +1156,8 @@ func NullSettingsBackendNew() *SettingsBackend {
 		ret = nullSettingsBackendNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SettingsBackend{native: ret.Pointer()}
+	retGo := &SettingsBackend{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1245,7 +1251,8 @@ func ResourceLoad(filename string) *Resource {
 		ret = resourceLoadFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Resource{native: ret.Pointer()}
+	retGo := &Resource{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1272,7 +1279,7 @@ func resourcesRegisterFunction_Set() error {
 // ResourcesRegister is a representation of the C type g_resources_register.
 func ResourcesRegister(resource *Resource) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(resource.native)
+	inArgs[0].SetPointer(resource.Native)
 
 	err := resourcesRegisterFunction_Set()
 	if err == nil {
@@ -1296,7 +1303,7 @@ func resourcesUnregisterFunction_Set() error {
 // ResourcesUnregister is a representation of the C type g_resources_unregister.
 func ResourcesUnregister(resource *Resource) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(resource.native)
+	inArgs[0].SetPointer(resource.Native)
 
 	err := resourcesUnregisterFunction_Set()
 	if err == nil {
@@ -1327,7 +1334,8 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 		ret = settingsSchemaSourceGetDefaultFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SettingsSchemaSource{native: ret.Pointer()}
+	retGo := &SettingsSchemaSource{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1482,7 +1490,8 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 		ret = unixMountAtFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &UnixMountEntry{native: ret.Pointer()}
+	retGo := &UnixMountEntry{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].Uint64()
 
 	return retGo, out0
@@ -1502,8 +1511,8 @@ func unixMountCompareFunction_Set() error {
 // UnixMountCompare is a representation of the C type g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(mount1.native)
-	inArgs[1].SetPointer(mount2.native)
+	inArgs[0].SetPointer(mount1.Native)
+	inArgs[1].SetPointer(mount2.Native)
 
 	var ret gi.Argument
 
@@ -1531,7 +1540,7 @@ func unixMountCopyFunction_Set() error {
 // UnixMountCopy is a representation of the C type g_unix_mount_copy.
 func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1540,7 +1549,8 @@ func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
 		ret = unixMountCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixMountEntry{native: ret.Pointer()}
+	retGo := &UnixMountEntry{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1569,7 +1579,8 @@ func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 		ret = unixMountForFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &UnixMountEntry{native: ret.Pointer()}
+	retGo := &UnixMountEntry{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].Uint64()
 
 	return retGo, out0
@@ -1589,7 +1600,7 @@ func unixMountFreeFunction_Set() error {
 // UnixMountFree is a representation of the C type g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	err := unixMountFreeFunction_Set()
 	if err == nil {
@@ -1613,7 +1624,7 @@ func unixMountGetDevicePathFunction_Set() error {
 // UnixMountGetDevicePath is a representation of the C type g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1641,7 +1652,7 @@ func unixMountGetFsTypeFunction_Set() error {
 // UnixMountGetFsType is a representation of the C type g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1669,7 +1680,7 @@ func unixMountGetMountPathFunction_Set() error {
 // UnixMountGetMountPath is a representation of the C type g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1697,7 +1708,7 @@ func unixMountGetOptionsFunction_Set() error {
 // UnixMountGetOptions is a representation of the C type g_unix_mount_get_options.
 func UnixMountGetOptions(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1725,7 +1736,7 @@ func unixMountGetRootPathFunction_Set() error {
 // UnixMountGetRootPath is a representation of the C type g_unix_mount_get_root_path.
 func UnixMountGetRootPath(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1753,7 +1764,7 @@ func unixMountGuessCanEjectFunction_Set() error {
 // UnixMountGuessCanEject is a representation of the C type g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1783,7 +1794,7 @@ func unixMountGuessNameFunction_Set() error {
 // UnixMountGuessName is a representation of the C type g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1811,7 +1822,7 @@ func unixMountGuessShouldDisplayFunction_Set() error {
 // UnixMountGuessShouldDisplay is a representation of the C type g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1841,7 +1852,7 @@ func unixMountIsReadonlyFunction_Set() error {
 // UnixMountIsReadonly is a representation of the C type g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 
@@ -1869,7 +1880,7 @@ func unixMountIsSystemInternalFunction_Set() error {
 // UnixMountIsSystemInternal is a representation of the C type g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(mountEntry.native)
+	inArgs[0].SetPointer(mountEntry.Native)
 
 	var ret gi.Argument
 

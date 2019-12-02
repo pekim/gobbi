@@ -38,7 +38,7 @@ func TestFunctionCallArgStringReturnString(t *testing.T) {
 
 func TestRecordConstructor(t *testing.T) {
 	date := DateNew()
-	assert.NotNil(t, date.native)
+	assert.NotNil(t, date.Native)
 }
 
 func TestRecordMethod(t *testing.T) {

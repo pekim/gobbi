@@ -4,6 +4,8 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 )
@@ -20,7 +22,7 @@ func appLaunchContextStruct_Set() error {
 }
 
 type AppLaunchContext struct {
-	native uintptr
+	gio.AppLaunchContext
 }
 
 var appLaunchContextNewFunction *gi.Function
@@ -48,7 +50,8 @@ func AppLaunchContextNew() *AppLaunchContext {
 		ret = appLaunchContextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &AppLaunchContext{native: ret.Pointer()}
+	retGo := &AppLaunchContext{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -71,7 +74,7 @@ func appLaunchContextSetDesktopFunction_Set() error {
 // SetDesktop is a representation of the C type gdk_app_launch_context_set_desktop.
 func (recv *AppLaunchContext) SetDesktop(desktop int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(desktop)
 
 	err := appLaunchContextSetDesktopFunction_Set()
@@ -100,8 +103,8 @@ func appLaunchContextSetDisplayFunction_Set() error {
 // SetDisplay is a representation of the C type gdk_app_launch_context_set_display.
 func (recv *AppLaunchContext) SetDisplay(display *Display) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(display.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(display.Native)
 
 	err := appLaunchContextSetDisplayFunction_Set()
 	if err == nil {
@@ -131,7 +134,7 @@ func appLaunchContextSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gdk_app_launch_context_set_icon_name.
 func (recv *AppLaunchContext) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(iconName)
 
 	err := appLaunchContextSetIconNameFunction_Set()
@@ -160,8 +163,8 @@ func appLaunchContextSetScreenFunction_Set() error {
 // SetScreen is a representation of the C type gdk_app_launch_context_set_screen.
 func (recv *AppLaunchContext) SetScreen(screen *Screen) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(screen.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(screen.Native)
 
 	err := appLaunchContextSetScreenFunction_Set()
 	if err == nil {
@@ -189,7 +192,7 @@ func appLaunchContextSetTimestampFunction_Set() error {
 // SetTimestamp is a representation of the C type gdk_app_launch_context_set_timestamp.
 func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(timestamp)
 
 	err := appLaunchContextSetTimestampFunction_Set()
@@ -212,7 +215,7 @@ func cursorStruct_Set() error {
 }
 
 type Cursor struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'gdk_cursor_new' : parameter 'cursor_type' of type 'CursorType' not supported
@@ -237,7 +240,7 @@ func cursorNewFromNameFunction_Set() error {
 // CursorNewFromName is a representation of the C type gdk_cursor_new_from_name.
 func CursorNewFromName(display *Display, name string) *Cursor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(display.native)
+	inArgs[0].SetPointer(display.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -247,7 +250,8 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 		ret = cursorNewFromNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cursor{native: ret.Pointer()}
+	retGo := &Cursor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -276,7 +280,7 @@ func cursorGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_cursor_get_display.
 func (recv *Cursor) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -285,7 +289,8 @@ func (recv *Cursor) GetDisplay() *Display {
 		ret = cursorGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -312,7 +317,7 @@ func cursorRefFunction_Set() error {
 // Ref is a representation of the C type gdk_cursor_ref.
 func (recv *Cursor) Ref() *Cursor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -321,7 +326,8 @@ func (recv *Cursor) Ref() *Cursor {
 		ret = cursorRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cursor{native: ret.Pointer()}
+	retGo := &Cursor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -344,7 +350,7 @@ func cursorUnrefFunction_Set() error {
 // Unref is a representation of the C type gdk_cursor_unref.
 func (recv *Cursor) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := cursorUnrefFunction_Set()
 	if err == nil {
@@ -366,7 +372,7 @@ func deviceStruct_Set() error {
 }
 
 type Device struct {
-	native uintptr
+	gobject.Object
 }
 
 var deviceGetAssociatedDeviceFunction *gi.Function
@@ -387,7 +393,7 @@ func deviceGetAssociatedDeviceFunction_Set() error {
 // GetAssociatedDevice is a representation of the C type gdk_device_get_associated_device.
 func (recv *Device) GetAssociatedDevice() *Device {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -396,7 +402,8 @@ func (recv *Device) GetAssociatedDevice() *Device {
 		ret = deviceGetAssociatedDeviceFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Device{native: ret.Pointer()}
+	retGo := &Device{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -429,7 +436,7 @@ func deviceGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_device_get_display.
 func (recv *Device) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -438,7 +445,8 @@ func (recv *Device) GetDisplay() *Display {
 		ret = deviceGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -461,7 +469,7 @@ func deviceGetHasCursorFunction_Set() error {
 // GetHasCursor is a representation of the C type gdk_device_get_has_cursor.
 func (recv *Device) GetHasCursor() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -497,7 +505,7 @@ func deviceGetLastEventWindowFunction_Set() error {
 // GetLastEventWindow is a representation of the C type gdk_device_get_last_event_window.
 func (recv *Device) GetLastEventWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -506,7 +514,8 @@ func (recv *Device) GetLastEventWindow() *Window {
 		ret = deviceGetLastEventWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -531,7 +540,7 @@ func deviceGetNAxesFunction_Set() error {
 // GetNAxes is a representation of the C type gdk_device_get_n_axes.
 func (recv *Device) GetNAxes() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -563,7 +572,7 @@ func deviceGetNKeysFunction_Set() error {
 // GetNKeys is a representation of the C type gdk_device_get_n_keys.
 func (recv *Device) GetNKeys() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -595,7 +604,7 @@ func deviceGetNameFunction_Set() error {
 // GetName is a representation of the C type gdk_device_get_name.
 func (recv *Device) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -627,7 +636,7 @@ func deviceGetPositionFunction_Set() error {
 // GetPosition is a representation of the C type gdk_device_get_position.
 func (recv *Device) GetPosition() (*Screen, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 
@@ -636,7 +645,8 @@ func (recv *Device) GetPosition() (*Screen, int32, int32) {
 		deviceGetPositionFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Screen{native: outArgs[0].Pointer()}
+	out0 := &Screen{}
+	out0.Native = outArgs[0].Pointer()
 	out1 := outArgs[1].Int32()
 	out2 := outArgs[2].Int32()
 
@@ -661,7 +671,7 @@ func deviceGetPositionDoubleFunction_Set() error {
 // GetPositionDouble is a representation of the C type gdk_device_get_position_double.
 func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 
@@ -670,7 +680,8 @@ func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 		deviceGetPositionDoubleFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Screen{native: outArgs[0].Pointer()}
+	out0 := &Screen{}
+	out0.Native = outArgs[0].Pointer()
 	out1 := outArgs[1].Float64()
 	out2 := outArgs[2].Float64()
 
@@ -695,7 +706,7 @@ func deviceGetProductIdFunction_Set() error {
 // GetProductId is a representation of the C type gdk_device_get_product_id.
 func (recv *Device) GetProductId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -727,7 +738,7 @@ func deviceGetSeatFunction_Set() error {
 // GetSeat is a representation of the C type gdk_device_get_seat.
 func (recv *Device) GetSeat() *Seat {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -736,7 +747,8 @@ func (recv *Device) GetSeat() *Seat {
 		ret = deviceGetSeatFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Seat{native: ret.Pointer()}
+	retGo := &Seat{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -763,7 +775,7 @@ func deviceGetVendorIdFunction_Set() error {
 // GetVendorId is a representation of the C type gdk_device_get_vendor_id.
 func (recv *Device) GetVendorId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -795,7 +807,7 @@ func deviceGetWindowAtPositionFunction_Set() error {
 // GetWindowAtPosition is a representation of the C type gdk_device_get_window_at_position.
 func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -805,7 +817,8 @@ func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 		ret = deviceGetWindowAtPositionFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
@@ -830,7 +843,7 @@ func deviceGetWindowAtPositionDoubleFunction_Set() error {
 // GetWindowAtPositionDouble is a representation of the C type gdk_device_get_window_at_position_double.
 func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -840,7 +853,8 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 		ret = deviceGetWindowAtPositionDoubleFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].Float64()
 	out1 := outArgs[1].Float64()
 
@@ -877,7 +891,7 @@ func deviceUngrabFunction_Set() error {
 // Ungrab is a representation of the C type gdk_device_ungrab.
 func (recv *Device) Ungrab(time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(time)
 
 	err := deviceUngrabFunction_Set()
@@ -906,8 +920,8 @@ func deviceWarpFunction_Set() error {
 // Warp is a representation of the C type gdk_device_warp.
 func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(screen.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(screen.Native)
 	inArgs[2].SetInt32(x)
 	inArgs[3].SetInt32(y)
 
@@ -926,12 +940,13 @@ func DeviceStruct() *Device {
 		return nil
 	}
 
-	structGo := &Device{native: deviceStruct.Alloc()}
+	structGo := &Device{}
+	structGo.Native = deviceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDevice)
 	return structGo
 }
 func finalizeDevice(obj *Device) {
-	deviceStruct.Free(obj.native)
+	deviceStruct.Free(obj.Native)
 }
 
 var deviceManagerStruct *gi.Struct
@@ -946,7 +961,7 @@ func deviceManagerStruct_Set() error {
 }
 
 type DeviceManager struct {
-	native uintptr
+	gobject.Object
 }
 
 var deviceManagerGetClientPointerFunction *gi.Function
@@ -967,7 +982,7 @@ func deviceManagerGetClientPointerFunction_Set() error {
 // GetClientPointer is a representation of the C type gdk_device_manager_get_client_pointer.
 func (recv *DeviceManager) GetClientPointer() *Device {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -976,7 +991,8 @@ func (recv *DeviceManager) GetClientPointer() *Device {
 		ret = deviceManagerGetClientPointerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Device{native: ret.Pointer()}
+	retGo := &Device{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -999,7 +1015,7 @@ func deviceManagerGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_device_manager_get_display.
 func (recv *DeviceManager) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1008,7 +1024,8 @@ func (recv *DeviceManager) GetDisplay() *Display {
 		ret = deviceManagerGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1022,12 +1039,13 @@ func DeviceManagerStruct() *DeviceManager {
 		return nil
 	}
 
-	structGo := &DeviceManager{native: deviceManagerStruct.Alloc()}
+	structGo := &DeviceManager{}
+	structGo.Native = deviceManagerStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDeviceManager)
 	return structGo
 }
 func finalizeDeviceManager(obj *DeviceManager) {
-	deviceManagerStruct.Free(obj.native)
+	deviceManagerStruct.Free(obj.Native)
 }
 
 var deviceToolStruct *gi.Struct
@@ -1042,7 +1060,7 @@ func deviceToolStruct_Set() error {
 }
 
 type DeviceTool struct {
-	native uintptr
+	gobject.Object
 }
 
 var deviceToolGetHardwareIdFunction *gi.Function
@@ -1063,7 +1081,7 @@ func deviceToolGetHardwareIdFunction_Set() error {
 // GetHardwareId is a representation of the C type gdk_device_tool_get_hardware_id.
 func (recv *DeviceTool) GetHardwareId() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1095,7 +1113,7 @@ func deviceToolGetSerialFunction_Set() error {
 // GetSerial is a representation of the C type gdk_device_tool_get_serial.
 func (recv *DeviceTool) GetSerial() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1118,12 +1136,13 @@ func DeviceToolStruct() *DeviceTool {
 		return nil
 	}
 
-	structGo := &DeviceTool{native: deviceToolStruct.Alloc()}
+	structGo := &DeviceTool{}
+	structGo.Native = deviceToolStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDeviceTool)
 	return structGo
 }
 func finalizeDeviceTool(obj *DeviceTool) {
-	deviceToolStruct.Free(obj.native)
+	deviceToolStruct.Free(obj.Native)
 }
 
 var displayStruct *gi.Struct
@@ -1138,7 +1157,7 @@ func displayStruct_Set() error {
 }
 
 type Display struct {
-	native uintptr
+	gobject.Object
 }
 
 var displayBeepFunction *gi.Function
@@ -1159,7 +1178,7 @@ func displayBeepFunction_Set() error {
 // Beep is a representation of the C type gdk_display_beep.
 func (recv *Display) Beep() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := displayBeepFunction_Set()
 	if err == nil {
@@ -1187,7 +1206,7 @@ func displayCloseFunction_Set() error {
 // Close is a representation of the C type gdk_display_close.
 func (recv *Display) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := displayCloseFunction_Set()
 	if err == nil {
@@ -1215,8 +1234,8 @@ func displayDeviceIsGrabbedFunction_Set() error {
 // DeviceIsGrabbed is a representation of the C type gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(device.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(device.Native)
 
 	var ret gi.Argument
 
@@ -1248,7 +1267,7 @@ func displayFlushFunction_Set() error {
 // Flush is a representation of the C type gdk_display_flush.
 func (recv *Display) Flush() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := displayFlushFunction_Set()
 	if err == nil {
@@ -1276,7 +1295,7 @@ func displayGetAppLaunchContextFunction_Set() error {
 // GetAppLaunchContext is a representation of the C type gdk_display_get_app_launch_context.
 func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1285,7 +1304,8 @@ func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
 		ret = displayGetAppLaunchContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &AppLaunchContext{native: ret.Pointer()}
+	retGo := &AppLaunchContext{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1308,7 +1328,7 @@ func displayGetDefaultCursorSizeFunction_Set() error {
 // GetDefaultCursorSize is a representation of the C type gdk_display_get_default_cursor_size.
 func (recv *Display) GetDefaultCursorSize() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1340,7 +1360,7 @@ func displayGetDefaultGroupFunction_Set() error {
 // GetDefaultGroup is a representation of the C type gdk_display_get_default_group.
 func (recv *Display) GetDefaultGroup() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1349,7 +1369,8 @@ func (recv *Display) GetDefaultGroup() *Window {
 		ret = displayGetDefaultGroupFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1372,7 +1393,7 @@ func displayGetDefaultScreenFunction_Set() error {
 // GetDefaultScreen is a representation of the C type gdk_display_get_default_screen.
 func (recv *Display) GetDefaultScreen() *Screen {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1381,7 +1402,8 @@ func (recv *Display) GetDefaultScreen() *Screen {
 		ret = displayGetDefaultScreenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Screen{native: ret.Pointer()}
+	retGo := &Screen{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1404,7 +1426,7 @@ func displayGetDefaultSeatFunction_Set() error {
 // GetDefaultSeat is a representation of the C type gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1413,7 +1435,8 @@ func (recv *Display) GetDefaultSeat() *Seat {
 		ret = displayGetDefaultSeatFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Seat{native: ret.Pointer()}
+	retGo := &Seat{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1436,7 +1459,7 @@ func displayGetDeviceManagerFunction_Set() error {
 // GetDeviceManager is a representation of the C type gdk_display_get_device_manager.
 func (recv *Display) GetDeviceManager() *DeviceManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1445,7 +1468,8 @@ func (recv *Display) GetDeviceManager() *DeviceManager {
 		ret = displayGetDeviceManagerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DeviceManager{native: ret.Pointer()}
+	retGo := &DeviceManager{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1470,7 +1494,7 @@ func displayGetMaximalCursorSizeFunction_Set() error {
 // GetMaximalCursorSize is a representation of the C type gdk_display_get_maximal_cursor_size.
 func (recv *Display) GetMaximalCursorSize() (uint32, uint32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -1503,7 +1527,7 @@ func displayGetMonitorFunction_Set() error {
 // GetMonitor is a representation of the C type gdk_display_get_monitor.
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var ret gi.Argument
@@ -1513,7 +1537,8 @@ func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 		ret = displayGetMonitorFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Monitor{native: ret.Pointer()}
+	retGo := &Monitor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1536,7 +1561,7 @@ func displayGetMonitorAtPointFunction_Set() error {
 // GetMonitorAtPoint is a representation of the C type gdk_display_get_monitor_at_point.
 func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -1547,7 +1572,8 @@ func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 		ret = displayGetMonitorAtPointFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Monitor{native: ret.Pointer()}
+	retGo := &Monitor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1570,8 +1596,8 @@ func displayGetMonitorAtWindowFunction_Set() error {
 // GetMonitorAtWindow is a representation of the C type gdk_display_get_monitor_at_window.
 func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(window.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(window.Native)
 
 	var ret gi.Argument
 
@@ -1580,7 +1606,8 @@ func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 		ret = displayGetMonitorAtWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Monitor{native: ret.Pointer()}
+	retGo := &Monitor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1603,7 +1630,7 @@ func displayGetNMonitorsFunction_Set() error {
 // GetNMonitors is a representation of the C type gdk_display_get_n_monitors.
 func (recv *Display) GetNMonitors() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1635,7 +1662,7 @@ func displayGetNScreensFunction_Set() error {
 // GetNScreens is a representation of the C type gdk_display_get_n_screens.
 func (recv *Display) GetNScreens() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1667,7 +1694,7 @@ func displayGetNameFunction_Set() error {
 // GetName is a representation of the C type gdk_display_get_name.
 func (recv *Display) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1701,7 +1728,7 @@ func displayGetPrimaryMonitorFunction_Set() error {
 // GetPrimaryMonitor is a representation of the C type gdk_display_get_primary_monitor.
 func (recv *Display) GetPrimaryMonitor() *Monitor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1710,7 +1737,8 @@ func (recv *Display) GetPrimaryMonitor() *Monitor {
 		ret = displayGetPrimaryMonitorFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Monitor{native: ret.Pointer()}
+	retGo := &Monitor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1733,7 +1761,7 @@ func displayGetScreenFunction_Set() error {
 // GetScreen is a representation of the C type gdk_display_get_screen.
 func (recv *Display) GetScreen(screenNum int32) *Screen {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(screenNum)
 
 	var ret gi.Argument
@@ -1743,7 +1771,8 @@ func (recv *Display) GetScreen(screenNum int32) *Screen {
 		ret = displayGetScreenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Screen{native: ret.Pointer()}
+	retGo := &Screen{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1766,7 +1795,7 @@ func displayGetWindowAtPointerFunction_Set() error {
 // GetWindowAtPointer is a representation of the C type gdk_display_get_window_at_pointer.
 func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -1776,7 +1805,8 @@ func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 		ret = displayGetWindowAtPointerFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
@@ -1801,7 +1831,7 @@ func displayHasPendingFunction_Set() error {
 // HasPending is a representation of the C type gdk_display_has_pending.
 func (recv *Display) HasPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1833,7 +1863,7 @@ func displayIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type gdk_display_is_closed.
 func (recv *Display) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1865,7 +1895,7 @@ func displayKeyboardUngrabFunction_Set() error {
 // KeyboardUngrab is a representation of the C type gdk_display_keyboard_ungrab.
 func (recv *Display) KeyboardUngrab(time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(time)
 
 	err := displayKeyboardUngrabFunction_Set()
@@ -1898,7 +1928,7 @@ func displayNotifyStartupCompleteFunction_Set() error {
 // NotifyStartupComplete is a representation of the C type gdk_display_notify_startup_complete.
 func (recv *Display) NotifyStartupComplete(startupId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(startupId)
 
 	err := displayNotifyStartupCompleteFunction_Set()
@@ -1929,7 +1959,7 @@ func displayPointerIsGrabbedFunction_Set() error {
 // PointerIsGrabbed is a representation of the C type gdk_display_pointer_is_grabbed.
 func (recv *Display) PointerIsGrabbed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1961,7 +1991,7 @@ func displayPointerUngrabFunction_Set() error {
 // PointerUngrab is a representation of the C type gdk_display_pointer_ungrab.
 func (recv *Display) PointerUngrab(time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(time)
 
 	err := displayPointerUngrabFunction_Set()
@@ -1992,8 +2022,8 @@ func displayRequestSelectionNotificationFunction_Set() error {
 // RequestSelectionNotification is a representation of the C type gdk_display_request_selection_notification.
 func (recv *Display) RequestSelectionNotification(selection *Atom) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(selection.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(selection.Native)
 
 	var ret gi.Argument
 
@@ -2025,7 +2055,7 @@ func displaySetDoubleClickDistanceFunction_Set() error {
 // SetDoubleClickDistance is a representation of the C type gdk_display_set_double_click_distance.
 func (recv *Display) SetDoubleClickDistance(distance uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(distance)
 
 	err := displaySetDoubleClickDistanceFunction_Set()
@@ -2054,7 +2084,7 @@ func displaySetDoubleClickTimeFunction_Set() error {
 // SetDoubleClickTime is a representation of the C type gdk_display_set_double_click_time.
 func (recv *Display) SetDoubleClickTime(msec uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(msec)
 
 	err := displaySetDoubleClickTimeFunction_Set()
@@ -2085,7 +2115,7 @@ func displaySupportsClipboardPersistenceFunction_Set() error {
 // SupportsClipboardPersistence is a representation of the C type gdk_display_supports_clipboard_persistence.
 func (recv *Display) SupportsClipboardPersistence() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2117,7 +2147,7 @@ func displaySupportsCompositeFunction_Set() error {
 // SupportsComposite is a representation of the C type gdk_display_supports_composite.
 func (recv *Display) SupportsComposite() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2149,7 +2179,7 @@ func displaySupportsCursorAlphaFunction_Set() error {
 // SupportsCursorAlpha is a representation of the C type gdk_display_supports_cursor_alpha.
 func (recv *Display) SupportsCursorAlpha() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2181,7 +2211,7 @@ func displaySupportsCursorColorFunction_Set() error {
 // SupportsCursorColor is a representation of the C type gdk_display_supports_cursor_color.
 func (recv *Display) SupportsCursorColor() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2213,7 +2243,7 @@ func displaySupportsInputShapesFunction_Set() error {
 // SupportsInputShapes is a representation of the C type gdk_display_supports_input_shapes.
 func (recv *Display) SupportsInputShapes() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2245,7 +2275,7 @@ func displaySupportsSelectionNotificationFunction_Set() error {
 // SupportsSelectionNotification is a representation of the C type gdk_display_supports_selection_notification.
 func (recv *Display) SupportsSelectionNotification() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2277,7 +2307,7 @@ func displaySupportsShapesFunction_Set() error {
 // SupportsShapes is a representation of the C type gdk_display_supports_shapes.
 func (recv *Display) SupportsShapes() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2309,7 +2339,7 @@ func displaySyncFunction_Set() error {
 // Sync is a representation of the C type gdk_display_sync.
 func (recv *Display) Sync() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := displaySyncFunction_Set()
 	if err == nil {
@@ -2337,8 +2367,8 @@ func displayWarpPointerFunction_Set() error {
 // WarpPointer is a representation of the C type gdk_display_warp_pointer.
 func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(screen.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(screen.Native)
 	inArgs[2].SetInt32(x)
 	inArgs[3].SetInt32(y)
 
@@ -2357,12 +2387,13 @@ func DisplayStruct() *Display {
 		return nil
 	}
 
-	structGo := &Display{native: displayStruct.Alloc()}
+	structGo := &Display{}
+	structGo.Native = displayStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDisplay)
 	return structGo
 }
 func finalizeDisplay(obj *Display) {
-	displayStruct.Free(obj.native)
+	displayStruct.Free(obj.Native)
 }
 
 var displayManagerStruct *gi.Struct
@@ -2377,7 +2408,7 @@ func displayManagerStruct_Set() error {
 }
 
 type DisplayManager struct {
-	native uintptr
+	gobject.Object
 }
 
 var displayManagerGetDefaultDisplayFunction *gi.Function
@@ -2398,7 +2429,7 @@ func displayManagerGetDefaultDisplayFunction_Set() error {
 // GetDefaultDisplay is a representation of the C type gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2407,7 +2438,8 @@ func (recv *DisplayManager) GetDefaultDisplay() *Display {
 		ret = displayManagerGetDefaultDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2432,7 +2464,7 @@ func displayManagerOpenDisplayFunction_Set() error {
 // OpenDisplay is a representation of the C type gdk_display_manager_open_display.
 func (recv *DisplayManager) OpenDisplay(name string) *Display {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -2442,7 +2474,8 @@ func (recv *DisplayManager) OpenDisplay(name string) *Display {
 		ret = displayManagerOpenDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2465,8 +2498,8 @@ func displayManagerSetDefaultDisplayFunction_Set() error {
 // SetDefaultDisplay is a representation of the C type gdk_display_manager_set_default_display.
 func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(display.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(display.Native)
 
 	err := displayManagerSetDefaultDisplayFunction_Set()
 	if err == nil {
@@ -2483,12 +2516,13 @@ func DisplayManagerStruct() *DisplayManager {
 		return nil
 	}
 
-	structGo := &DisplayManager{native: displayManagerStruct.Alloc()}
+	structGo := &DisplayManager{}
+	structGo.Native = displayManagerStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDisplayManager)
 	return structGo
 }
 func finalizeDisplayManager(obj *DisplayManager) {
-	displayManagerStruct.Free(obj.native)
+	displayManagerStruct.Free(obj.Native)
 }
 
 var dragContextStruct *gi.Struct
@@ -2503,7 +2537,7 @@ func dragContextStruct_Set() error {
 }
 
 type DragContext struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'gdk_drag_context_get_actions' : return type 'DragAction' not supported
@@ -2526,7 +2560,7 @@ func dragContextGetDestWindowFunction_Set() error {
 // GetDestWindow is a representation of the C type gdk_drag_context_get_dest_window.
 func (recv *DragContext) GetDestWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2535,7 +2569,8 @@ func (recv *DragContext) GetDestWindow() *Window {
 		ret = dragContextGetDestWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2558,7 +2593,7 @@ func dragContextGetDeviceFunction_Set() error {
 // GetDevice is a representation of the C type gdk_drag_context_get_device.
 func (recv *DragContext) GetDevice() *Device {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2567,7 +2602,8 @@ func (recv *DragContext) GetDevice() *Device {
 		ret = dragContextGetDeviceFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Device{native: ret.Pointer()}
+	retGo := &Device{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2590,7 +2626,7 @@ func dragContextGetDragWindowFunction_Set() error {
 // GetDragWindow is a representation of the C type gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2599,7 +2635,8 @@ func (recv *DragContext) GetDragWindow() *Window {
 		ret = dragContextGetDragWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2626,7 +2663,7 @@ func dragContextGetSourceWindowFunction_Set() error {
 // GetSourceWindow is a representation of the C type gdk_drag_context_get_source_window.
 func (recv *DragContext) GetSourceWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2635,7 +2672,8 @@ func (recv *DragContext) GetSourceWindow() *Window {
 		ret = dragContextGetSourceWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2664,8 +2702,8 @@ func dragContextSetDeviceFunction_Set() error {
 // SetDevice is a representation of the C type gdk_drag_context_set_device.
 func (recv *DragContext) SetDevice(device *Device) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(device.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(device.Native)
 
 	err := dragContextSetDeviceFunction_Set()
 	if err == nil {
@@ -2693,7 +2731,7 @@ func dragContextSetHotspotFunction_Set() error {
 // SetHotspot is a representation of the C type gdk_drag_context_set_hotspot.
 func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(hotX)
 	inArgs[2].SetInt32(hotY)
 
@@ -2712,12 +2750,13 @@ func DragContextStruct() *DragContext {
 		return nil
 	}
 
-	structGo := &DragContext{native: dragContextStruct.Alloc()}
+	structGo := &DragContext{}
+	structGo.Native = dragContextStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDragContext)
 	return structGo
 }
 func finalizeDragContext(obj *DragContext) {
-	dragContextStruct.Free(obj.native)
+	dragContextStruct.Free(obj.Native)
 }
 
 var drawingContextStruct *gi.Struct
@@ -2732,7 +2771,7 @@ func drawingContextStruct_Set() error {
 }
 
 type DrawingContext struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'gdk_drawing_context_get_cairo_context' : return type 'cairo.Context' not supported
@@ -2757,7 +2796,7 @@ func drawingContextGetWindowFunction_Set() error {
 // GetWindow is a representation of the C type gdk_drawing_context_get_window.
 func (recv *DrawingContext) GetWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2766,7 +2805,8 @@ func (recv *DrawingContext) GetWindow() *Window {
 		ret = drawingContextGetWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2789,7 +2829,7 @@ func drawingContextIsValidFunction_Set() error {
 // IsValid is a representation of the C type gdk_drawing_context_is_valid.
 func (recv *DrawingContext) IsValid() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2810,12 +2850,13 @@ func DrawingContextStruct() *DrawingContext {
 		return nil
 	}
 
-	structGo := &DrawingContext{native: drawingContextStruct.Alloc()}
+	structGo := &DrawingContext{}
+	structGo.Native = drawingContextStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDrawingContext)
 	return structGo
 }
 func finalizeDrawingContext(obj *DrawingContext) {
-	drawingContextStruct.Free(obj.native)
+	drawingContextStruct.Free(obj.Native)
 }
 
 var frameClockStruct *gi.Struct
@@ -2830,7 +2871,7 @@ func frameClockStruct_Set() error {
 }
 
 type FrameClock struct {
-	native uintptr
+	gobject.Object
 }
 
 var frameClockBeginUpdatingFunction *gi.Function
@@ -2851,7 +2892,7 @@ func frameClockBeginUpdatingFunction_Set() error {
 // BeginUpdating is a representation of the C type gdk_frame_clock_begin_updating.
 func (recv *FrameClock) BeginUpdating() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := frameClockBeginUpdatingFunction_Set()
 	if err == nil {
@@ -2879,7 +2920,7 @@ func frameClockEndUpdatingFunction_Set() error {
 // EndUpdating is a representation of the C type gdk_frame_clock_end_updating.
 func (recv *FrameClock) EndUpdating() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := frameClockEndUpdatingFunction_Set()
 	if err == nil {
@@ -2907,7 +2948,7 @@ func frameClockGetCurrentTimingsFunction_Set() error {
 // GetCurrentTimings is a representation of the C type gdk_frame_clock_get_current_timings.
 func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2916,7 +2957,8 @@ func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
 		ret = frameClockGetCurrentTimingsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FrameTimings{native: ret.Pointer()}
+	retGo := &FrameTimings{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2939,7 +2981,7 @@ func frameClockGetFrameCounterFunction_Set() error {
 // GetFrameCounter is a representation of the C type gdk_frame_clock_get_frame_counter.
 func (recv *FrameClock) GetFrameCounter() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2971,7 +3013,7 @@ func frameClockGetFrameTimeFunction_Set() error {
 // GetFrameTime is a representation of the C type gdk_frame_clock_get_frame_time.
 func (recv *FrameClock) GetFrameTime() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3003,7 +3045,7 @@ func frameClockGetHistoryStartFunction_Set() error {
 // GetHistoryStart is a representation of the C type gdk_frame_clock_get_history_start.
 func (recv *FrameClock) GetHistoryStart() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3035,7 +3077,7 @@ func frameClockGetRefreshInfoFunction_Set() error {
 // GetRefreshInfo is a representation of the C type gdk_frame_clock_get_refresh_info.
 func (recv *FrameClock) GetRefreshInfo(baseTime int64) (int64, int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(baseTime)
 
 	var outArgs [2]gi.Argument
@@ -3069,7 +3111,7 @@ func frameClockGetTimingsFunction_Set() error {
 // GetTimings is a representation of the C type gdk_frame_clock_get_timings.
 func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(frameCounter)
 
 	var ret gi.Argument
@@ -3079,7 +3121,8 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 		ret = frameClockGetTimingsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FrameTimings{native: ret.Pointer()}
+	retGo := &FrameTimings{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3093,12 +3136,13 @@ func FrameClockStruct() *FrameClock {
 		return nil
 	}
 
-	structGo := &FrameClock{native: frameClockStruct.Alloc()}
+	structGo := &FrameClock{}
+	structGo.Native = frameClockStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFrameClock)
 	return structGo
 }
 func finalizeFrameClock(obj *FrameClock) {
-	frameClockStruct.Free(obj.native)
+	frameClockStruct.Free(obj.Native)
 }
 
 var gLContextStruct *gi.Struct
@@ -3113,7 +3157,7 @@ func gLContextStruct_Set() error {
 }
 
 type GLContext struct {
-	native uintptr
+	gobject.Object
 }
 
 var gLContextGetDebugEnabledFunction *gi.Function
@@ -3134,7 +3178,7 @@ func gLContextGetDebugEnabledFunction_Set() error {
 // GetDebugEnabled is a representation of the C type gdk_gl_context_get_debug_enabled.
 func (recv *GLContext) GetDebugEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3166,7 +3210,7 @@ func gLContextGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_gl_context_get_display.
 func (recv *GLContext) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3175,7 +3219,8 @@ func (recv *GLContext) GetDisplay() *Display {
 		ret = gLContextGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3198,7 +3243,7 @@ func gLContextGetForwardCompatibleFunction_Set() error {
 // GetForwardCompatible is a representation of the C type gdk_gl_context_get_forward_compatible.
 func (recv *GLContext) GetForwardCompatible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3230,7 +3275,7 @@ func gLContextGetRequiredVersionFunction_Set() error {
 // GetRequiredVersion is a representation of the C type gdk_gl_context_get_required_version.
 func (recv *GLContext) GetRequiredVersion() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -3263,7 +3308,7 @@ func gLContextGetSharedContextFunction_Set() error {
 // GetSharedContext is a representation of the C type gdk_gl_context_get_shared_context.
 func (recv *GLContext) GetSharedContext() *GLContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3272,7 +3317,8 @@ func (recv *GLContext) GetSharedContext() *GLContext {
 		ret = gLContextGetSharedContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &GLContext{native: ret.Pointer()}
+	retGo := &GLContext{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3295,7 +3341,7 @@ func gLContextGetUseEsFunction_Set() error {
 // GetUseEs is a representation of the C type gdk_gl_context_get_use_es.
 func (recv *GLContext) GetUseEs() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3327,7 +3373,7 @@ func gLContextGetVersionFunction_Set() error {
 // GetVersion is a representation of the C type gdk_gl_context_get_version.
 func (recv *GLContext) GetVersion() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -3360,7 +3406,7 @@ func gLContextGetWindowFunction_Set() error {
 // GetWindow is a representation of the C type gdk_gl_context_get_window.
 func (recv *GLContext) GetWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3369,7 +3415,8 @@ func (recv *GLContext) GetWindow() *Window {
 		ret = gLContextGetWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3392,7 +3439,7 @@ func gLContextIsLegacyFunction_Set() error {
 // IsLegacy is a representation of the C type gdk_gl_context_is_legacy.
 func (recv *GLContext) IsLegacy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3424,7 +3471,7 @@ func gLContextMakeCurrentFunction_Set() error {
 // MakeCurrent is a representation of the C type gdk_gl_context_make_current.
 func (recv *GLContext) MakeCurrent() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := gLContextMakeCurrentFunction_Set()
 	if err == nil {
@@ -3452,7 +3499,7 @@ func gLContextRealizeFunction_Set() error {
 // Realize is a representation of the C type gdk_gl_context_realize.
 func (recv *GLContext) Realize() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3484,7 +3531,7 @@ func gLContextSetDebugEnabledFunction_Set() error {
 // SetDebugEnabled is a representation of the C type gdk_gl_context_set_debug_enabled.
 func (recv *GLContext) SetDebugEnabled(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(enabled)
 
 	err := gLContextSetDebugEnabledFunction_Set()
@@ -3513,7 +3560,7 @@ func gLContextSetForwardCompatibleFunction_Set() error {
 // SetForwardCompatible is a representation of the C type gdk_gl_context_set_forward_compatible.
 func (recv *GLContext) SetForwardCompatible(compatible bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(compatible)
 
 	err := gLContextSetForwardCompatibleFunction_Set()
@@ -3542,7 +3589,7 @@ func gLContextSetRequiredVersionFunction_Set() error {
 // SetRequiredVersion is a representation of the C type gdk_gl_context_set_required_version.
 func (recv *GLContext) SetRequiredVersion(major int32, minor int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(major)
 	inArgs[2].SetInt32(minor)
 
@@ -3572,7 +3619,7 @@ func gLContextSetUseEsFunction_Set() error {
 // SetUseEs is a representation of the C type gdk_gl_context_set_use_es.
 func (recv *GLContext) SetUseEs(useEs int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(useEs)
 
 	err := gLContextSetUseEsFunction_Set()
@@ -3590,12 +3637,13 @@ func GLContextStruct() *GLContext {
 		return nil
 	}
 
-	structGo := &GLContext{native: gLContextStruct.Alloc()}
+	structGo := &GLContext{}
+	structGo.Native = gLContextStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGLContext)
 	return structGo
 }
 func finalizeGLContext(obj *GLContext) {
-	gLContextStruct.Free(obj.native)
+	gLContextStruct.Free(obj.Native)
 }
 
 var keymapStruct *gi.Struct
@@ -3610,7 +3658,7 @@ func keymapStruct_Set() error {
 }
 
 type Keymap struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'gdk_keymap_add_virtual_modifiers' : parameter 'state' of type 'ModifierType' not supported
@@ -3633,7 +3681,7 @@ func keymapGetCapsLockStateFunction_Set() error {
 // GetCapsLockState is a representation of the C type gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3673,7 +3721,7 @@ func keymapGetModifierStateFunction_Set() error {
 // GetModifierState is a representation of the C type gdk_keymap_get_modifier_state.
 func (recv *Keymap) GetModifierState() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3705,7 +3753,7 @@ func keymapGetNumLockStateFunction_Set() error {
 // GetNumLockState is a representation of the C type gdk_keymap_get_num_lock_state.
 func (recv *Keymap) GetNumLockState() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3737,7 +3785,7 @@ func keymapGetScrollLockStateFunction_Set() error {
 // GetScrollLockState is a representation of the C type gdk_keymap_get_scroll_lock_state.
 func (recv *Keymap) GetScrollLockState() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3769,7 +3817,7 @@ func keymapHaveBidiLayoutsFunction_Set() error {
 // HaveBidiLayouts is a representation of the C type gdk_keymap_have_bidi_layouts.
 func (recv *Keymap) HaveBidiLayouts() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3801,8 +3849,8 @@ func keymapLookupKeyFunction_Set() error {
 // LookupKey is a representation of the C type gdk_keymap_lookup_key.
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(key.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(key.Native)
 
 	var ret gi.Argument
 
@@ -3827,12 +3875,13 @@ func KeymapStruct() *Keymap {
 		return nil
 	}
 
-	structGo := &Keymap{native: keymapStruct.Alloc()}
+	structGo := &Keymap{}
+	structGo.Native = keymapStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeKeymap)
 	return structGo
 }
 func finalizeKeymap(obj *Keymap) {
-	keymapStruct.Free(obj.native)
+	keymapStruct.Free(obj.Native)
 }
 
 var monitorStruct *gi.Struct
@@ -3847,7 +3896,7 @@ func monitorStruct_Set() error {
 }
 
 type Monitor struct {
-	native uintptr
+	gobject.Object
 }
 
 var monitorGetDisplayFunction *gi.Function
@@ -3868,7 +3917,7 @@ func monitorGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3877,7 +3926,8 @@ func (recv *Monitor) GetDisplay() *Display {
 		ret = monitorGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3900,7 +3950,7 @@ func monitorGetGeometryFunction_Set() error {
 // GetGeometry is a representation of the C type gdk_monitor_get_geometry.
 func (recv *Monitor) GetGeometry() *Rectangle {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [1]gi.Argument
 
@@ -3909,7 +3959,8 @@ func (recv *Monitor) GetGeometry() *Rectangle {
 		monitorGetGeometryFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -3932,7 +3983,7 @@ func monitorGetHeightMmFunction_Set() error {
 // GetHeightMm is a representation of the C type gdk_monitor_get_height_mm.
 func (recv *Monitor) GetHeightMm() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3964,7 +4015,7 @@ func monitorGetManufacturerFunction_Set() error {
 // GetManufacturer is a representation of the C type gdk_monitor_get_manufacturer.
 func (recv *Monitor) GetManufacturer() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3996,7 +4047,7 @@ func monitorGetModelFunction_Set() error {
 // GetModel is a representation of the C type gdk_monitor_get_model.
 func (recv *Monitor) GetModel() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4028,7 +4079,7 @@ func monitorGetRefreshRateFunction_Set() error {
 // GetRefreshRate is a representation of the C type gdk_monitor_get_refresh_rate.
 func (recv *Monitor) GetRefreshRate() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4060,7 +4111,7 @@ func monitorGetScaleFactorFunction_Set() error {
 // GetScaleFactor is a representation of the C type gdk_monitor_get_scale_factor.
 func (recv *Monitor) GetScaleFactor() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4094,7 +4145,7 @@ func monitorGetWidthMmFunction_Set() error {
 // GetWidthMm is a representation of the C type gdk_monitor_get_width_mm.
 func (recv *Monitor) GetWidthMm() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4126,7 +4177,7 @@ func monitorGetWorkareaFunction_Set() error {
 // GetWorkarea is a representation of the C type gdk_monitor_get_workarea.
 func (recv *Monitor) GetWorkarea() *Rectangle {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [1]gi.Argument
 
@@ -4135,7 +4186,8 @@ func (recv *Monitor) GetWorkarea() *Rectangle {
 		monitorGetWorkareaFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -4158,7 +4210,7 @@ func monitorIsPrimaryFunction_Set() error {
 // IsPrimary is a representation of the C type gdk_monitor_is_primary.
 func (recv *Monitor) IsPrimary() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4179,12 +4231,13 @@ func MonitorStruct() *Monitor {
 		return nil
 	}
 
-	structGo := &Monitor{native: monitorStruct.Alloc()}
+	structGo := &Monitor{}
+	structGo.Native = monitorStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMonitor)
 	return structGo
 }
 func finalizeMonitor(obj *Monitor) {
-	monitorStruct.Free(obj.native)
+	monitorStruct.Free(obj.Native)
 }
 
 var screenStruct *gi.Struct
@@ -4199,7 +4252,7 @@ func screenStruct_Set() error {
 }
 
 type Screen struct {
-	native uintptr
+	gobject.Object
 }
 
 var screenGetActiveWindowFunction *gi.Function
@@ -4220,7 +4273,7 @@ func screenGetActiveWindowFunction_Set() error {
 // GetActiveWindow is a representation of the C type gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4229,7 +4282,8 @@ func (recv *Screen) GetActiveWindow() *Window {
 		ret = screenGetActiveWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4252,7 +4306,7 @@ func screenGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4261,7 +4315,8 @@ func (recv *Screen) GetDisplay() *Display {
 		ret = screenGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4286,7 +4341,7 @@ func screenGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type gdk_screen_get_height.
 func (recv *Screen) GetHeight() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4318,7 +4373,7 @@ func screenGetHeightMmFunction_Set() error {
 // GetHeightMm is a representation of the C type gdk_screen_get_height_mm.
 func (recv *Screen) GetHeightMm() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4350,7 +4405,7 @@ func screenGetMonitorAtPointFunction_Set() error {
 // GetMonitorAtPoint is a representation of the C type gdk_screen_get_monitor_at_point.
 func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -4384,8 +4439,8 @@ func screenGetMonitorAtWindowFunction_Set() error {
 // GetMonitorAtWindow is a representation of the C type gdk_screen_get_monitor_at_window.
 func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(window.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(window.Native)
 
 	var ret gi.Argument
 
@@ -4417,7 +4472,7 @@ func screenGetMonitorGeometryFunction_Set() error {
 // GetMonitorGeometry is a representation of the C type gdk_screen_get_monitor_geometry.
 func (recv *Screen) GetMonitorGeometry(monitorNum int32) *Rectangle {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var outArgs [1]gi.Argument
@@ -4427,7 +4482,8 @@ func (recv *Screen) GetMonitorGeometry(monitorNum int32) *Rectangle {
 		screenGetMonitorGeometryFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -4450,7 +4506,7 @@ func screenGetMonitorHeightMmFunction_Set() error {
 // GetMonitorHeightMm is a representation of the C type gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var ret gi.Argument
@@ -4483,7 +4539,7 @@ func screenGetMonitorPlugNameFunction_Set() error {
 // GetMonitorPlugName is a representation of the C type gdk_screen_get_monitor_plug_name.
 func (recv *Screen) GetMonitorPlugName(monitorNum int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var ret gi.Argument
@@ -4516,7 +4572,7 @@ func screenGetMonitorScaleFactorFunction_Set() error {
 // GetMonitorScaleFactor is a representation of the C type gdk_screen_get_monitor_scale_factor.
 func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var ret gi.Argument
@@ -4549,7 +4605,7 @@ func screenGetMonitorWidthMmFunction_Set() error {
 // GetMonitorWidthMm is a representation of the C type gdk_screen_get_monitor_width_mm.
 func (recv *Screen) GetMonitorWidthMm(monitorNum int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var ret gi.Argument
@@ -4582,7 +4638,7 @@ func screenGetMonitorWorkareaFunction_Set() error {
 // GetMonitorWorkarea is a representation of the C type gdk_screen_get_monitor_workarea.
 func (recv *Screen) GetMonitorWorkarea(monitorNum int32) *Rectangle {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitorNum)
 
 	var outArgs [1]gi.Argument
@@ -4592,7 +4648,8 @@ func (recv *Screen) GetMonitorWorkarea(monitorNum int32) *Rectangle {
 		screenGetMonitorWorkareaFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -4615,7 +4672,7 @@ func screenGetNMonitorsFunction_Set() error {
 // GetNMonitors is a representation of the C type gdk_screen_get_n_monitors.
 func (recv *Screen) GetNMonitors() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4647,7 +4704,7 @@ func screenGetNumberFunction_Set() error {
 // GetNumber is a representation of the C type gdk_screen_get_number.
 func (recv *Screen) GetNumber() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4679,7 +4736,7 @@ func screenGetPrimaryMonitorFunction_Set() error {
 // GetPrimaryMonitor is a representation of the C type gdk_screen_get_primary_monitor.
 func (recv *Screen) GetPrimaryMonitor() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4711,7 +4768,7 @@ func screenGetResolutionFunction_Set() error {
 // GetResolution is a representation of the C type gdk_screen_get_resolution.
 func (recv *Screen) GetResolution() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4743,7 +4800,7 @@ func screenGetRgbaVisualFunction_Set() error {
 // GetRgbaVisual is a representation of the C type gdk_screen_get_rgba_visual.
 func (recv *Screen) GetRgbaVisual() *Visual {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4752,7 +4809,8 @@ func (recv *Screen) GetRgbaVisual() *Visual {
 		ret = screenGetRgbaVisualFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Visual{native: ret.Pointer()}
+	retGo := &Visual{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4775,7 +4833,7 @@ func screenGetRootWindowFunction_Set() error {
 // GetRootWindow is a representation of the C type gdk_screen_get_root_window.
 func (recv *Screen) GetRootWindow() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4784,7 +4842,8 @@ func (recv *Screen) GetRootWindow() *Window {
 		ret = screenGetRootWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4809,7 +4868,7 @@ func screenGetSystemVisualFunction_Set() error {
 // GetSystemVisual is a representation of the C type gdk_screen_get_system_visual.
 func (recv *Screen) GetSystemVisual() *Visual {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4818,7 +4877,8 @@ func (recv *Screen) GetSystemVisual() *Visual {
 		ret = screenGetSystemVisualFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Visual{native: ret.Pointer()}
+	retGo := &Visual{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4843,7 +4903,7 @@ func screenGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type gdk_screen_get_width.
 func (recv *Screen) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4875,7 +4935,7 @@ func screenGetWidthMmFunction_Set() error {
 // GetWidthMm is a representation of the C type gdk_screen_get_width_mm.
 func (recv *Screen) GetWidthMm() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4909,7 +4969,7 @@ func screenIsCompositedFunction_Set() error {
 // IsComposited is a representation of the C type gdk_screen_is_composited.
 func (recv *Screen) IsComposited() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4943,7 +5003,7 @@ func screenMakeDisplayNameFunction_Set() error {
 // MakeDisplayName is a representation of the C type gdk_screen_make_display_name.
 func (recv *Screen) MakeDisplayName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4977,7 +5037,7 @@ func screenSetResolutionFunction_Set() error {
 // SetResolution is a representation of the C type gdk_screen_set_resolution.
 func (recv *Screen) SetResolution(dpi float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetFloat64(dpi)
 
 	err := screenSetResolutionFunction_Set()
@@ -4995,12 +5055,13 @@ func ScreenStruct() *Screen {
 		return nil
 	}
 
-	structGo := &Screen{native: screenStruct.Alloc()}
+	structGo := &Screen{}
+	structGo.Native = screenStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeScreen)
 	return structGo
 }
 func finalizeScreen(obj *Screen) {
-	screenStruct.Free(obj.native)
+	screenStruct.Free(obj.Native)
 }
 
 var seatStruct *gi.Struct
@@ -5015,7 +5076,7 @@ func seatStruct_Set() error {
 }
 
 type Seat struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -5042,7 +5103,7 @@ func seatGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_seat_get_display.
 func (recv *Seat) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5051,7 +5112,8 @@ func (recv *Seat) GetDisplay() *Display {
 		ret = seatGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -5074,7 +5136,7 @@ func seatGetKeyboardFunction_Set() error {
 // GetKeyboard is a representation of the C type gdk_seat_get_keyboard.
 func (recv *Seat) GetKeyboard() *Device {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5083,7 +5145,8 @@ func (recv *Seat) GetKeyboard() *Device {
 		ret = seatGetKeyboardFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Device{native: ret.Pointer()}
+	retGo := &Device{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -5106,7 +5169,7 @@ func seatGetPointerFunction_Set() error {
 // GetPointer is a representation of the C type gdk_seat_get_pointer.
 func (recv *Seat) GetPointer() *Device {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5115,7 +5178,8 @@ func (recv *Seat) GetPointer() *Device {
 		ret = seatGetPointerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Device{native: ret.Pointer()}
+	retGo := &Device{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -5142,7 +5206,7 @@ func seatUngrabFunction_Set() error {
 // Ungrab is a representation of the C type gdk_seat_ungrab.
 func (recv *Seat) Ungrab() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := seatUngrabFunction_Set()
 	if err == nil {
@@ -5159,12 +5223,13 @@ func SeatStruct() *Seat {
 		return nil
 	}
 
-	structGo := &Seat{native: seatStruct.Alloc()}
+	structGo := &Seat{}
+	structGo.Native = seatStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSeat)
 	return structGo
 }
 func finalizeSeat(obj *Seat) {
-	seatStruct.Free(obj.native)
+	seatStruct.Free(obj.Native)
 }
 
 var visualStruct *gi.Struct
@@ -5179,7 +5244,7 @@ func visualStruct_Set() error {
 }
 
 type Visual struct {
-	native uintptr
+	gobject.Object
 }
 
 var visualGetBitsPerRgbFunction *gi.Function
@@ -5200,7 +5265,7 @@ func visualGetBitsPerRgbFunction_Set() error {
 // GetBitsPerRgb is a representation of the C type gdk_visual_get_bits_per_rgb.
 func (recv *Visual) GetBitsPerRgb() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5232,7 +5297,7 @@ func visualGetBluePixelDetailsFunction_Set() error {
 // GetBluePixelDetails is a representation of the C type gdk_visual_get_blue_pixel_details.
 func (recv *Visual) GetBluePixelDetails() (uint32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 
@@ -5268,7 +5333,7 @@ func visualGetColormapSizeFunction_Set() error {
 // GetColormapSize is a representation of the C type gdk_visual_get_colormap_size.
 func (recv *Visual) GetColormapSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5300,7 +5365,7 @@ func visualGetDepthFunction_Set() error {
 // GetDepth is a representation of the C type gdk_visual_get_depth.
 func (recv *Visual) GetDepth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5332,7 +5397,7 @@ func visualGetGreenPixelDetailsFunction_Set() error {
 // GetGreenPixelDetails is a representation of the C type gdk_visual_get_green_pixel_details.
 func (recv *Visual) GetGreenPixelDetails() (uint32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 
@@ -5366,7 +5431,7 @@ func visualGetRedPixelDetailsFunction_Set() error {
 // GetRedPixelDetails is a representation of the C type gdk_visual_get_red_pixel_details.
 func (recv *Visual) GetRedPixelDetails() (uint32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 
@@ -5400,7 +5465,7 @@ func visualGetScreenFunction_Set() error {
 // GetScreen is a representation of the C type gdk_visual_get_screen.
 func (recv *Visual) GetScreen() *Screen {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5409,7 +5474,8 @@ func (recv *Visual) GetScreen() *Screen {
 		ret = visualGetScreenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Screen{native: ret.Pointer()}
+	retGo := &Screen{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -5423,12 +5489,13 @@ func VisualStruct() *Visual {
 		return nil
 	}
 
-	structGo := &Visual{native: visualStruct.Alloc()}
+	structGo := &Visual{}
+	structGo.Native = visualStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeVisual)
 	return structGo
 }
 func finalizeVisual(obj *Visual) {
-	visualStruct.Free(obj.native)
+	visualStruct.Free(obj.Native)
 }
 
 var windowStruct *gi.Struct
@@ -5443,7 +5510,7 @@ func windowStruct_Set() error {
 }
 
 type Window struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'gdk_window_new' : parameter 'attributes_mask' of type 'WindowAttributesType' not supported
@@ -5468,7 +5535,7 @@ func windowBeepFunction_Set() error {
 // Beep is a representation of the C type gdk_window_beep.
 func (recv *Window) Beep() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowBeepFunction_Set()
 	if err == nil {
@@ -5498,7 +5565,7 @@ func windowBeginMoveDragFunction_Set() error {
 // BeginMoveDrag is a representation of the C type gdk_window_begin_move_drag.
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(button)
 	inArgs[2].SetInt32(rootX)
 	inArgs[3].SetInt32(rootY)
@@ -5530,8 +5597,8 @@ func windowBeginMoveDragForDeviceFunction_Set() error {
 // BeginMoveDragForDevice is a representation of the C type gdk_window_begin_move_drag_for_device.
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	var inArgs [6]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(device.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(device.Native)
 	inArgs[2].SetInt32(button)
 	inArgs[3].SetInt32(rootX)
 	inArgs[4].SetInt32(rootY)
@@ -5563,8 +5630,8 @@ func windowBeginPaintRectFunction_Set() error {
 // BeginPaintRect is a representation of the C type gdk_window_begin_paint_rect.
 func (recv *Window) BeginPaintRect(rectangle *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rectangle.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(rectangle.Native)
 
 	err := windowBeginPaintRectFunction_Set()
 	if err == nil {
@@ -5598,7 +5665,7 @@ func windowConfigureFinishedFunction_Set() error {
 // ConfigureFinished is a representation of the C type gdk_window_configure_finished.
 func (recv *Window) ConfigureFinished() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowConfigureFinishedFunction_Set()
 	if err == nil {
@@ -5626,7 +5693,7 @@ func windowCoordsFromParentFunction_Set() error {
 // CoordsFromParent is a representation of the C type gdk_window_coords_from_parent.
 func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (float64, float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetFloat64(parentX)
 	inArgs[2].SetFloat64(parentY)
 
@@ -5661,7 +5728,7 @@ func windowCoordsToParentFunction_Set() error {
 // CoordsToParent is a representation of the C type gdk_window_coords_to_parent.
 func (recv *Window) CoordsToParent(x float64, y float64) (float64, float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetFloat64(x)
 	inArgs[2].SetFloat64(y)
 
@@ -5696,7 +5763,7 @@ func windowCreateGlContextFunction_Set() error {
 // CreateGlContext is a representation of the C type gdk_window_create_gl_context.
 func (recv *Window) CreateGlContext() *GLContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5705,7 +5772,8 @@ func (recv *Window) CreateGlContext() *GLContext {
 		ret = windowCreateGlContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &GLContext{native: ret.Pointer()}
+	retGo := &GLContext{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -5732,7 +5800,7 @@ func windowDeiconifyFunction_Set() error {
 // Deiconify is a representation of the C type gdk_window_deiconify.
 func (recv *Window) Deiconify() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowDeiconifyFunction_Set()
 	if err == nil {
@@ -5760,7 +5828,7 @@ func windowDestroyFunction_Set() error {
 // Destroy is a representation of the C type gdk_window_destroy.
 func (recv *Window) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowDestroyFunction_Set()
 	if err == nil {
@@ -5788,7 +5856,7 @@ func windowDestroyNotifyFunction_Set() error {
 // DestroyNotify is a representation of the C type gdk_window_destroy_notify.
 func (recv *Window) DestroyNotify() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowDestroyNotifyFunction_Set()
 	if err == nil {
@@ -5816,7 +5884,7 @@ func windowEnableSynchronizedConfigureFunction_Set() error {
 // EnableSynchronizedConfigure is a representation of the C type gdk_window_enable_synchronized_configure.
 func (recv *Window) EnableSynchronizedConfigure() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowEnableSynchronizedConfigureFunction_Set()
 	if err == nil {
@@ -5844,8 +5912,8 @@ func windowEndDrawFrameFunction_Set() error {
 // EndDrawFrame is a representation of the C type gdk_window_end_draw_frame.
 func (recv *Window) EndDrawFrame(context *DrawingContext) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(context.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(context.Native)
 
 	err := windowEndDrawFrameFunction_Set()
 	if err == nil {
@@ -5873,7 +5941,7 @@ func windowEndPaintFunction_Set() error {
 // EndPaint is a representation of the C type gdk_window_end_paint.
 func (recv *Window) EndPaint() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowEndPaintFunction_Set()
 	if err == nil {
@@ -5901,7 +5969,7 @@ func windowEnsureNativeFunction_Set() error {
 // EnsureNative is a representation of the C type gdk_window_ensure_native.
 func (recv *Window) EnsureNative() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -5933,7 +6001,7 @@ func windowFlushFunction_Set() error {
 // Flush is a representation of the C type gdk_window_flush.
 func (recv *Window) Flush() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowFlushFunction_Set()
 	if err == nil {
@@ -5961,7 +6029,7 @@ func windowFocusFunction_Set() error {
 // Focus is a representation of the C type gdk_window_focus.
 func (recv *Window) Focus(timestamp uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(timestamp)
 
 	err := windowFocusFunction_Set()
@@ -5990,7 +6058,7 @@ func windowFreezeToplevelUpdatesLibgtkOnlyFunction_Set() error {
 // FreezeToplevelUpdatesLibgtkOnly is a representation of the C type gdk_window_freeze_toplevel_updates_libgtk_only.
 func (recv *Window) FreezeToplevelUpdatesLibgtkOnly() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowFreezeToplevelUpdatesLibgtkOnlyFunction_Set()
 	if err == nil {
@@ -6018,7 +6086,7 @@ func windowFreezeUpdatesFunction_Set() error {
 // FreezeUpdates is a representation of the C type gdk_window_freeze_updates.
 func (recv *Window) FreezeUpdates() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowFreezeUpdatesFunction_Set()
 	if err == nil {
@@ -6046,7 +6114,7 @@ func windowFullscreenFunction_Set() error {
 // Fullscreen is a representation of the C type gdk_window_fullscreen.
 func (recv *Window) Fullscreen() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowFullscreenFunction_Set()
 	if err == nil {
@@ -6074,7 +6142,7 @@ func windowFullscreenOnMonitorFunction_Set() error {
 // FullscreenOnMonitor is a representation of the C type gdk_window_fullscreen_on_monitor.
 func (recv *Window) FullscreenOnMonitor(monitor int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(monitor)
 
 	err := windowFullscreenOnMonitorFunction_Set()
@@ -6103,7 +6171,7 @@ func windowGeometryChangedFunction_Set() error {
 // GeometryChanged is a representation of the C type gdk_window_geometry_changed.
 func (recv *Window) GeometryChanged() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowGeometryChangedFunction_Set()
 	if err == nil {
@@ -6131,7 +6199,7 @@ func windowGetAcceptFocusFunction_Set() error {
 // GetAcceptFocus is a representation of the C type gdk_window_get_accept_focus.
 func (recv *Window) GetAcceptFocus() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6171,7 +6239,7 @@ func windowGetCompositedFunction_Set() error {
 // GetComposited is a representation of the C type gdk_window_get_composited.
 func (recv *Window) GetComposited() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6203,7 +6271,7 @@ func windowGetCursorFunction_Set() error {
 // GetCursor is a representation of the C type gdk_window_get_cursor.
 func (recv *Window) GetCursor() *Cursor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6212,7 +6280,8 @@ func (recv *Window) GetCursor() *Cursor {
 		ret = windowGetCursorFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cursor{native: ret.Pointer()}
+	retGo := &Cursor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6237,8 +6306,8 @@ func windowGetDeviceCursorFunction_Set() error {
 // GetDeviceCursor is a representation of the C type gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(device.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(device.Native)
 
 	var ret gi.Argument
 
@@ -6247,7 +6316,8 @@ func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 		ret = windowGetDeviceCursorFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cursor{native: ret.Pointer()}
+	retGo := &Cursor{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6276,7 +6346,7 @@ func windowGetDisplayFunction_Set() error {
 // GetDisplay is a representation of the C type gdk_window_get_display.
 func (recv *Window) GetDisplay() *Display {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6285,7 +6355,8 @@ func (recv *Window) GetDisplay() *Display {
 		ret = windowGetDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Display{native: ret.Pointer()}
+	retGo := &Display{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6310,7 +6381,7 @@ func windowGetEffectiveParentFunction_Set() error {
 // GetEffectiveParent is a representation of the C type gdk_window_get_effective_parent.
 func (recv *Window) GetEffectiveParent() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6319,7 +6390,8 @@ func (recv *Window) GetEffectiveParent() *Window {
 		ret = windowGetEffectiveParentFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6342,7 +6414,7 @@ func windowGetEffectiveToplevelFunction_Set() error {
 // GetEffectiveToplevel is a representation of the C type gdk_window_get_effective_toplevel.
 func (recv *Window) GetEffectiveToplevel() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6351,7 +6423,8 @@ func (recv *Window) GetEffectiveToplevel() *Window {
 		ret = windowGetEffectiveToplevelFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6374,7 +6447,7 @@ func windowGetEventCompressionFunction_Set() error {
 // GetEventCompression is a representation of the C type gdk_window_get_event_compression.
 func (recv *Window) GetEventCompression() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6408,7 +6481,7 @@ func windowGetFocusOnMapFunction_Set() error {
 // GetFocusOnMap is a representation of the C type gdk_window_get_focus_on_map.
 func (recv *Window) GetFocusOnMap() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6440,7 +6513,7 @@ func windowGetFrameClockFunction_Set() error {
 // GetFrameClock is a representation of the C type gdk_window_get_frame_clock.
 func (recv *Window) GetFrameClock() *FrameClock {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6449,7 +6522,8 @@ func (recv *Window) GetFrameClock() *FrameClock {
 		ret = windowGetFrameClockFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FrameClock{native: ret.Pointer()}
+	retGo := &FrameClock{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6472,7 +6546,7 @@ func windowGetFrameExtentsFunction_Set() error {
 // GetFrameExtents is a representation of the C type gdk_window_get_frame_extents.
 func (recv *Window) GetFrameExtents() *Rectangle {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [1]gi.Argument
 
@@ -6481,7 +6555,8 @@ func (recv *Window) GetFrameExtents() *Rectangle {
 		windowGetFrameExtentsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -6506,7 +6581,7 @@ func windowGetGeometryFunction_Set() error {
 // GetGeometry is a representation of the C type gdk_window_get_geometry.
 func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [4]gi.Argument
 
@@ -6541,7 +6616,7 @@ func windowGetGroupFunction_Set() error {
 // GetGroup is a representation of the C type gdk_window_get_group.
 func (recv *Window) GetGroup() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6550,7 +6625,8 @@ func (recv *Window) GetGroup() *Window {
 		ret = windowGetGroupFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6573,7 +6649,7 @@ func windowGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type gdk_window_get_height.
 func (recv *Window) GetHeight() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6605,7 +6681,7 @@ func windowGetModalHintFunction_Set() error {
 // GetModalHint is a representation of the C type gdk_window_get_modal_hint.
 func (recv *Window) GetModalHint() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6637,7 +6713,7 @@ func windowGetOriginFunction_Set() error {
 // GetOrigin is a representation of the C type gdk_window_get_origin.
 func (recv *Window) GetOrigin() (int32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -6672,7 +6748,7 @@ func windowGetParentFunction_Set() error {
 // GetParent is a representation of the C type gdk_window_get_parent.
 func (recv *Window) GetParent() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6681,7 +6757,8 @@ func (recv *Window) GetParent() *Window {
 		ret = windowGetParentFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6704,7 +6781,7 @@ func windowGetPassThroughFunction_Set() error {
 // GetPassThrough is a representation of the C type gdk_window_get_pass_through.
 func (recv *Window) GetPassThrough() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6738,7 +6815,7 @@ func windowGetPositionFunction_Set() error {
 // GetPosition is a representation of the C type gdk_window_get_position.
 func (recv *Window) GetPosition() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -6771,7 +6848,7 @@ func windowGetRootCoordsFunction_Set() error {
 // GetRootCoords is a representation of the C type gdk_window_get_root_coords.
 func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -6806,7 +6883,7 @@ func windowGetRootOriginFunction_Set() error {
 // GetRootOrigin is a representation of the C type gdk_window_get_root_origin.
 func (recv *Window) GetRootOrigin() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -6839,7 +6916,7 @@ func windowGetScaleFactorFunction_Set() error {
 // GetScaleFactor is a representation of the C type gdk_window_get_scale_factor.
 func (recv *Window) GetScaleFactor() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6871,7 +6948,7 @@ func windowGetScreenFunction_Set() error {
 // GetScreen is a representation of the C type gdk_window_get_screen.
 func (recv *Window) GetScreen() *Screen {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6880,7 +6957,8 @@ func (recv *Window) GetScreen() *Screen {
 		ret = windowGetScreenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Screen{native: ret.Pointer()}
+	retGo := &Screen{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6907,7 +6985,7 @@ func windowGetSupportMultideviceFunction_Set() error {
 // GetSupportMultidevice is a representation of the C type gdk_window_get_support_multidevice.
 func (recv *Window) GetSupportMultidevice() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6939,7 +7017,7 @@ func windowGetToplevelFunction_Set() error {
 // GetToplevel is a representation of the C type gdk_window_get_toplevel.
 func (recv *Window) GetToplevel() *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6948,7 +7026,8 @@ func (recv *Window) GetToplevel() *Window {
 		ret = windowGetToplevelFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{native: ret.Pointer()}
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6979,7 +7058,7 @@ func windowGetVisualFunction_Set() error {
 // GetVisual is a representation of the C type gdk_window_get_visual.
 func (recv *Window) GetVisual() *Visual {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6988,7 +7067,8 @@ func (recv *Window) GetVisual() *Visual {
 		ret = windowGetVisualFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Visual{native: ret.Pointer()}
+	retGo := &Visual{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -7011,7 +7091,7 @@ func windowGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type gdk_window_get_width.
 func (recv *Window) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7045,7 +7125,7 @@ func windowHasNativeFunction_Set() error {
 // HasNative is a representation of the C type gdk_window_has_native.
 func (recv *Window) HasNative() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7077,7 +7157,7 @@ func windowHideFunction_Set() error {
 // Hide is a representation of the C type gdk_window_hide.
 func (recv *Window) Hide() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowHideFunction_Set()
 	if err == nil {
@@ -7105,7 +7185,7 @@ func windowIconifyFunction_Set() error {
 // Iconify is a representation of the C type gdk_window_iconify.
 func (recv *Window) Iconify() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowIconifyFunction_Set()
 	if err == nil {
@@ -7137,8 +7217,8 @@ func windowInvalidateRectFunction_Set() error {
 // InvalidateRect is a representation of the C type gdk_window_invalidate_rect.
 func (recv *Window) InvalidateRect(rect *Rectangle, invalidateChildren bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rect.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(rect.Native)
 	inArgs[2].SetBoolean(invalidateChildren)
 
 	err := windowInvalidateRectFunction_Set()
@@ -7169,7 +7249,7 @@ func windowIsDestroyedFunction_Set() error {
 // IsDestroyed is a representation of the C type gdk_window_is_destroyed.
 func (recv *Window) IsDestroyed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7201,7 +7281,7 @@ func windowIsInputOnlyFunction_Set() error {
 // IsInputOnly is a representation of the C type gdk_window_is_input_only.
 func (recv *Window) IsInputOnly() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7233,7 +7313,7 @@ func windowIsShapedFunction_Set() error {
 // IsShaped is a representation of the C type gdk_window_is_shaped.
 func (recv *Window) IsShaped() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7265,7 +7345,7 @@ func windowIsViewableFunction_Set() error {
 // IsViewable is a representation of the C type gdk_window_is_viewable.
 func (recv *Window) IsViewable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7297,7 +7377,7 @@ func windowIsVisibleFunction_Set() error {
 // IsVisible is a representation of the C type gdk_window_is_visible.
 func (recv *Window) IsVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -7329,7 +7409,7 @@ func windowLowerFunction_Set() error {
 // Lower is a representation of the C type gdk_window_lower.
 func (recv *Window) Lower() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowLowerFunction_Set()
 	if err == nil {
@@ -7359,7 +7439,7 @@ func windowMaximizeFunction_Set() error {
 // Maximize is a representation of the C type gdk_window_maximize.
 func (recv *Window) Maximize() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowMaximizeFunction_Set()
 	if err == nil {
@@ -7387,7 +7467,7 @@ func windowMergeChildInputShapesFunction_Set() error {
 // MergeChildInputShapes is a representation of the C type gdk_window_merge_child_input_shapes.
 func (recv *Window) MergeChildInputShapes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowMergeChildInputShapesFunction_Set()
 	if err == nil {
@@ -7415,7 +7495,7 @@ func windowMergeChildShapesFunction_Set() error {
 // MergeChildShapes is a representation of the C type gdk_window_merge_child_shapes.
 func (recv *Window) MergeChildShapes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowMergeChildShapesFunction_Set()
 	if err == nil {
@@ -7443,7 +7523,7 @@ func windowMoveFunction_Set() error {
 // Move is a representation of the C type gdk_window_move.
 func (recv *Window) Move(x int32, y int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -7475,7 +7555,7 @@ func windowMoveResizeFunction_Set() error {
 // MoveResize is a representation of the C type gdk_window_move_resize.
 func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 	inArgs[3].SetInt32(width)
@@ -7511,7 +7591,7 @@ func windowProcessUpdatesFunction_Set() error {
 // ProcessUpdates is a representation of the C type gdk_window_process_updates.
 func (recv *Window) ProcessUpdates(updateChildren bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(updateChildren)
 
 	err := windowProcessUpdatesFunction_Set()
@@ -7540,7 +7620,7 @@ func windowRaiseFunction_Set() error {
 // Raise is a representation of the C type gdk_window_raise.
 func (recv *Window) Raise() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowRaiseFunction_Set()
 	if err == nil {
@@ -7568,7 +7648,7 @@ func windowRegisterDndFunction_Set() error {
 // RegisterDnd is a representation of the C type gdk_window_register_dnd.
 func (recv *Window) RegisterDnd() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowRegisterDndFunction_Set()
 	if err == nil {
@@ -7598,8 +7678,8 @@ func windowReparentFunction_Set() error {
 // Reparent is a representation of the C type gdk_window_reparent.
 func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(newParent.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(newParent.Native)
 	inArgs[2].SetInt32(x)
 	inArgs[3].SetInt32(y)
 
@@ -7629,7 +7709,7 @@ func windowResizeFunction_Set() error {
 // Resize is a representation of the C type gdk_window_resize.
 func (recv *Window) Resize(width int32, height int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(width)
 	inArgs[2].SetInt32(height)
 
@@ -7659,8 +7739,8 @@ func windowRestackFunction_Set() error {
 // Restack is a representation of the C type gdk_window_restack.
 func (recv *Window) Restack(sibling *Window, above bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(sibling.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(sibling.Native)
 	inArgs[2].SetBoolean(above)
 
 	err := windowRestackFunction_Set()
@@ -7689,7 +7769,7 @@ func windowScrollFunction_Set() error {
 // Scroll is a representation of the C type gdk_window_scroll.
 func (recv *Window) Scroll(dx int32, dy int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(dx)
 	inArgs[2].SetInt32(dy)
 
@@ -7719,7 +7799,7 @@ func windowSetAcceptFocusFunction_Set() error {
 // SetAcceptFocus is a representation of the C type gdk_window_set_accept_focus.
 func (recv *Window) SetAcceptFocus(acceptFocus bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(acceptFocus)
 
 	err := windowSetAcceptFocusFunction_Set()
@@ -7748,8 +7828,8 @@ func windowSetBackgroundFunction_Set() error {
 // SetBackground is a representation of the C type gdk_window_set_background.
 func (recv *Window) SetBackground(color *Color) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(color.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(color.Native)
 
 	err := windowSetBackgroundFunction_Set()
 	if err == nil {
@@ -7779,8 +7859,8 @@ func windowSetBackgroundRgbaFunction_Set() error {
 // SetBackgroundRgba is a representation of the C type gdk_window_set_background_rgba.
 func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rgba.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(rgba.Native)
 
 	err := windowSetBackgroundRgbaFunction_Set()
 	if err == nil {
@@ -7808,7 +7888,7 @@ func windowSetChildInputShapesFunction_Set() error {
 // SetChildInputShapes is a representation of the C type gdk_window_set_child_input_shapes.
 func (recv *Window) SetChildInputShapes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowSetChildInputShapesFunction_Set()
 	if err == nil {
@@ -7836,7 +7916,7 @@ func windowSetChildShapesFunction_Set() error {
 // SetChildShapes is a representation of the C type gdk_window_set_child_shapes.
 func (recv *Window) SetChildShapes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowSetChildShapesFunction_Set()
 	if err == nil {
@@ -7864,7 +7944,7 @@ func windowSetCompositedFunction_Set() error {
 // SetComposited is a representation of the C type gdk_window_set_composited.
 func (recv *Window) SetComposited(composited bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(composited)
 
 	err := windowSetCompositedFunction_Set()
@@ -7893,8 +7973,8 @@ func windowSetCursorFunction_Set() error {
 // SetCursor is a representation of the C type gdk_window_set_cursor.
 func (recv *Window) SetCursor(cursor *Cursor) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(cursor.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(cursor.Native)
 
 	err := windowSetCursorFunction_Set()
 	if err == nil {
@@ -7924,9 +8004,9 @@ func windowSetDeviceCursorFunction_Set() error {
 // SetDeviceCursor is a representation of the C type gdk_window_set_device_cursor.
 func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(device.native)
-	inArgs[2].SetPointer(cursor.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(device.Native)
+	inArgs[2].SetPointer(cursor.Native)
 
 	err := windowSetDeviceCursorFunction_Set()
 	if err == nil {
@@ -7956,7 +8036,7 @@ func windowSetEventCompressionFunction_Set() error {
 // SetEventCompression is a representation of the C type gdk_window_set_event_compression.
 func (recv *Window) SetEventCompression(eventCompression bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(eventCompression)
 
 	err := windowSetEventCompressionFunction_Set()
@@ -7987,7 +8067,7 @@ func windowSetFocusOnMapFunction_Set() error {
 // SetFocusOnMap is a representation of the C type gdk_window_set_focus_on_map.
 func (recv *Window) SetFocusOnMap(focusOnMap bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(focusOnMap)
 
 	err := windowSetFocusOnMapFunction_Set()
@@ -8022,8 +8102,8 @@ func windowSetGroupFunction_Set() error {
 // SetGroup is a representation of the C type gdk_window_set_group.
 func (recv *Window) SetGroup(leader *Window) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(leader.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(leader.Native)
 
 	err := windowSetGroupFunction_Set()
 	if err == nil {
@@ -8053,7 +8133,7 @@ func windowSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gdk_window_set_icon_name.
 func (recv *Window) SetIconName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	err := windowSetIconNameFunction_Set()
@@ -8084,7 +8164,7 @@ func windowSetKeepAboveFunction_Set() error {
 // SetKeepAbove is a representation of the C type gdk_window_set_keep_above.
 func (recv *Window) SetKeepAbove(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(setting)
 
 	err := windowSetKeepAboveFunction_Set()
@@ -8113,7 +8193,7 @@ func windowSetKeepBelowFunction_Set() error {
 // SetKeepBelow is a representation of the C type gdk_window_set_keep_below.
 func (recv *Window) SetKeepBelow(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(setting)
 
 	err := windowSetKeepBelowFunction_Set()
@@ -8142,7 +8222,7 @@ func windowSetModalHintFunction_Set() error {
 // SetModalHint is a representation of the C type gdk_window_set_modal_hint.
 func (recv *Window) SetModalHint(modal bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(modal)
 
 	err := windowSetModalHintFunction_Set()
@@ -8171,7 +8251,7 @@ func windowSetOpacityFunction_Set() error {
 // SetOpacity is a representation of the C type gdk_window_set_opacity.
 func (recv *Window) SetOpacity(opacity float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetFloat64(opacity)
 
 	err := windowSetOpacityFunction_Set()
@@ -8202,7 +8282,7 @@ func windowSetOverrideRedirectFunction_Set() error {
 // SetOverrideRedirect is a representation of the C type gdk_window_set_override_redirect.
 func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(overrideRedirect)
 
 	err := windowSetOverrideRedirectFunction_Set()
@@ -8231,7 +8311,7 @@ func windowSetPassThroughFunction_Set() error {
 // SetPassThrough is a representation of the C type gdk_window_set_pass_through.
 func (recv *Window) SetPassThrough(passThrough bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(passThrough)
 
 	err := windowSetPassThroughFunction_Set()
@@ -8260,7 +8340,7 @@ func windowSetRoleFunction_Set() error {
 // SetRole is a representation of the C type gdk_window_set_role.
 func (recv *Window) SetRole(role string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(role)
 
 	err := windowSetRoleFunction_Set()
@@ -8289,7 +8369,7 @@ func windowSetShadowWidthFunction_Set() error {
 // SetShadowWidth is a representation of the C type gdk_window_set_shadow_width.
 func (recv *Window) SetShadowWidth(left int32, right int32, top int32, bottom int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(left)
 	inArgs[2].SetInt32(right)
 	inArgs[3].SetInt32(top)
@@ -8321,7 +8401,7 @@ func windowSetSkipPagerHintFunction_Set() error {
 // SetSkipPagerHint is a representation of the C type gdk_window_set_skip_pager_hint.
 func (recv *Window) SetSkipPagerHint(skipsPager bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(skipsPager)
 
 	err := windowSetSkipPagerHintFunction_Set()
@@ -8350,7 +8430,7 @@ func windowSetSkipTaskbarHintFunction_Set() error {
 // SetSkipTaskbarHint is a representation of the C type gdk_window_set_skip_taskbar_hint.
 func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(skipsTaskbar)
 
 	err := windowSetSkipTaskbarHintFunction_Set()
@@ -8381,7 +8461,7 @@ func windowSetStartupIdFunction_Set() error {
 // SetStartupId is a representation of the C type gdk_window_set_startup_id.
 func (recv *Window) SetStartupId(startupId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(startupId)
 
 	err := windowSetStartupIdFunction_Set()
@@ -8410,7 +8490,7 @@ func windowSetStaticGravitiesFunction_Set() error {
 // SetStaticGravities is a representation of the C type gdk_window_set_static_gravities.
 func (recv *Window) SetStaticGravities(useStatic bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(useStatic)
 
 	var ret gi.Argument
@@ -8443,7 +8523,7 @@ func windowSetSupportMultideviceFunction_Set() error {
 // SetSupportMultidevice is a representation of the C type gdk_window_set_support_multidevice.
 func (recv *Window) SetSupportMultidevice(supportMultidevice bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(supportMultidevice)
 
 	err := windowSetSupportMultideviceFunction_Set()
@@ -8472,7 +8552,7 @@ func windowSetTitleFunction_Set() error {
 // SetTitle is a representation of the C type gdk_window_set_title.
 func (recv *Window) SetTitle(title string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(title)
 
 	err := windowSetTitleFunction_Set()
@@ -8501,8 +8581,8 @@ func windowSetTransientForFunction_Set() error {
 // SetTransientFor is a representation of the C type gdk_window_set_transient_for.
 func (recv *Window) SetTransientFor(parent *Window) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(parent.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(parent.Native)
 
 	err := windowSetTransientForFunction_Set()
 	if err == nil {
@@ -8532,7 +8612,7 @@ func windowSetUrgencyHintFunction_Set() error {
 // SetUrgencyHint is a representation of the C type gdk_window_set_urgency_hint.
 func (recv *Window) SetUrgencyHint(urgent bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(urgent)
 
 	err := windowSetUrgencyHintFunction_Set()
@@ -8565,7 +8645,7 @@ func windowShowFunction_Set() error {
 // Show is a representation of the C type gdk_window_show.
 func (recv *Window) Show() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowShowFunction_Set()
 	if err == nil {
@@ -8593,7 +8673,7 @@ func windowShowUnraisedFunction_Set() error {
 // ShowUnraised is a representation of the C type gdk_window_show_unraised.
 func (recv *Window) ShowUnraised() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowShowUnraisedFunction_Set()
 	if err == nil {
@@ -8623,7 +8703,7 @@ func windowStickFunction_Set() error {
 // Stick is a representation of the C type gdk_window_stick.
 func (recv *Window) Stick() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowStickFunction_Set()
 	if err == nil {
@@ -8651,7 +8731,7 @@ func windowThawToplevelUpdatesLibgtkOnlyFunction_Set() error {
 // ThawToplevelUpdatesLibgtkOnly is a representation of the C type gdk_window_thaw_toplevel_updates_libgtk_only.
 func (recv *Window) ThawToplevelUpdatesLibgtkOnly() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowThawToplevelUpdatesLibgtkOnlyFunction_Set()
 	if err == nil {
@@ -8679,7 +8759,7 @@ func windowThawUpdatesFunction_Set() error {
 // ThawUpdates is a representation of the C type gdk_window_thaw_updates.
 func (recv *Window) ThawUpdates() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowThawUpdatesFunction_Set()
 	if err == nil {
@@ -8707,7 +8787,7 @@ func windowUnfullscreenFunction_Set() error {
 // Unfullscreen is a representation of the C type gdk_window_unfullscreen.
 func (recv *Window) Unfullscreen() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowUnfullscreenFunction_Set()
 	if err == nil {
@@ -8735,7 +8815,7 @@ func windowUnmaximizeFunction_Set() error {
 // Unmaximize is a representation of the C type gdk_window_unmaximize.
 func (recv *Window) Unmaximize() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowUnmaximizeFunction_Set()
 	if err == nil {
@@ -8763,7 +8843,7 @@ func windowUnstickFunction_Set() error {
 // Unstick is a representation of the C type gdk_window_unstick.
 func (recv *Window) Unstick() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowUnstickFunction_Set()
 	if err == nil {
@@ -8791,7 +8871,7 @@ func windowWithdrawFunction_Set() error {
 // Withdraw is a representation of the C type gdk_window_withdraw.
 func (recv *Window) Withdraw() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := windowWithdrawFunction_Set()
 	if err == nil {

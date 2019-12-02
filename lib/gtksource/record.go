@@ -20,7 +20,7 @@ func bufferClassStruct_Set() error {
 }
 
 type BufferClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextBufferClass'
@@ -58,12 +58,13 @@ func BufferClassStruct() *BufferClass {
 		return nil
 	}
 
-	structGo := &BufferClass{native: bufferClassStruct.Alloc()}
+	structGo := &BufferClass{}
+	structGo.Native = bufferClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeBufferClass)
 	return structGo
 }
 func finalizeBufferClass(obj *BufferClass) {
-	bufferClassStruct.Free(obj.native)
+	bufferClassStruct.Free(obj.Native)
 }
 
 var bufferPrivateStruct *gi.Struct
@@ -78,7 +79,7 @@ func bufferPrivateStruct_Set() error {
 }
 
 type BufferPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // BufferPrivateStruct creates an uninitialised BufferPrivate.
@@ -88,12 +89,13 @@ func BufferPrivateStruct() *BufferPrivate {
 		return nil
 	}
 
-	structGo := &BufferPrivate{native: bufferPrivateStruct.Alloc()}
+	structGo := &BufferPrivate{}
+	structGo.Native = bufferPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeBufferPrivate)
 	return structGo
 }
 func finalizeBufferPrivate(obj *BufferPrivate) {
-	bufferPrivateStruct.Free(obj.native)
+	bufferPrivateStruct.Free(obj.Native)
 }
 
 var completionClassStruct *gi.Struct
@@ -108,7 +110,7 @@ func completionClassStruct_Set() error {
 }
 
 type CompletionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -150,12 +152,13 @@ func CompletionClassStruct() *CompletionClass {
 		return nil
 	}
 
-	structGo := &CompletionClass{native: completionClassStruct.Alloc()}
+	structGo := &CompletionClass{}
+	structGo.Native = completionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionClass)
 	return structGo
 }
 func finalizeCompletionClass(obj *CompletionClass) {
-	completionClassStruct.Free(obj.native)
+	completionClassStruct.Free(obj.Native)
 }
 
 var completionContextClassStruct *gi.Struct
@@ -170,7 +173,7 @@ func completionContextClassStruct_Set() error {
 }
 
 type CompletionContextClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
@@ -200,12 +203,13 @@ func CompletionContextClassStruct() *CompletionContextClass {
 		return nil
 	}
 
-	structGo := &CompletionContextClass{native: completionContextClassStruct.Alloc()}
+	structGo := &CompletionContextClass{}
+	structGo.Native = completionContextClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionContextClass)
 	return structGo
 }
 func finalizeCompletionContextClass(obj *CompletionContextClass) {
-	completionContextClassStruct.Free(obj.native)
+	completionContextClassStruct.Free(obj.Native)
 }
 
 var completionContextPrivateStruct *gi.Struct
@@ -220,7 +224,7 @@ func completionContextPrivateStruct_Set() error {
 }
 
 type CompletionContextPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CompletionContextPrivateStruct creates an uninitialised CompletionContextPrivate.
@@ -230,12 +234,13 @@ func CompletionContextPrivateStruct() *CompletionContextPrivate {
 		return nil
 	}
 
-	structGo := &CompletionContextPrivate{native: completionContextPrivateStruct.Alloc()}
+	structGo := &CompletionContextPrivate{}
+	structGo.Native = completionContextPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionContextPrivate)
 	return structGo
 }
 func finalizeCompletionContextPrivate(obj *CompletionContextPrivate) {
-	completionContextPrivateStruct.Free(obj.native)
+	completionContextPrivateStruct.Free(obj.Native)
 }
 
 var completionInfoClassStruct *gi.Struct
@@ -250,7 +255,7 @@ func completionInfoClassStruct_Set() error {
 }
 
 type CompletionInfoClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.WindowClass'
@@ -268,12 +273,13 @@ func CompletionInfoClassStruct() *CompletionInfoClass {
 		return nil
 	}
 
-	structGo := &CompletionInfoClass{native: completionInfoClassStruct.Alloc()}
+	structGo := &CompletionInfoClass{}
+	structGo.Native = completionInfoClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionInfoClass)
 	return structGo
 }
 func finalizeCompletionInfoClass(obj *CompletionInfoClass) {
-	completionInfoClassStruct.Free(obj.native)
+	completionInfoClassStruct.Free(obj.Native)
 }
 
 var completionInfoPrivateStruct *gi.Struct
@@ -288,7 +294,7 @@ func completionInfoPrivateStruct_Set() error {
 }
 
 type CompletionInfoPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CompletionInfoPrivateStruct creates an uninitialised CompletionInfoPrivate.
@@ -298,12 +304,13 @@ func CompletionInfoPrivateStruct() *CompletionInfoPrivate {
 		return nil
 	}
 
-	structGo := &CompletionInfoPrivate{native: completionInfoPrivateStruct.Alloc()}
+	structGo := &CompletionInfoPrivate{}
+	structGo.Native = completionInfoPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionInfoPrivate)
 	return structGo
 }
 func finalizeCompletionInfoPrivate(obj *CompletionInfoPrivate) {
-	completionInfoPrivateStruct.Free(obj.native)
+	completionInfoPrivateStruct.Free(obj.Native)
 }
 
 var completionItemClassStruct *gi.Struct
@@ -318,7 +325,7 @@ func completionItemClassStruct_Set() error {
 }
 
 type CompletionItemClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -332,12 +339,13 @@ func CompletionItemClassStruct() *CompletionItemClass {
 		return nil
 	}
 
-	structGo := &CompletionItemClass{native: completionItemClassStruct.Alloc()}
+	structGo := &CompletionItemClass{}
+	structGo.Native = completionItemClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionItemClass)
 	return structGo
 }
 func finalizeCompletionItemClass(obj *CompletionItemClass) {
-	completionItemClassStruct.Free(obj.native)
+	completionItemClassStruct.Free(obj.Native)
 }
 
 var completionItemPrivateStruct *gi.Struct
@@ -352,7 +360,7 @@ func completionItemPrivateStruct_Set() error {
 }
 
 type CompletionItemPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CompletionItemPrivateStruct creates an uninitialised CompletionItemPrivate.
@@ -362,12 +370,13 @@ func CompletionItemPrivateStruct() *CompletionItemPrivate {
 		return nil
 	}
 
-	structGo := &CompletionItemPrivate{native: completionItemPrivateStruct.Alloc()}
+	structGo := &CompletionItemPrivate{}
+	structGo.Native = completionItemPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionItemPrivate)
 	return structGo
 }
 func finalizeCompletionItemPrivate(obj *CompletionItemPrivate) {
-	completionItemPrivateStruct.Free(obj.native)
+	completionItemPrivateStruct.Free(obj.Native)
 }
 
 var completionPrivateStruct *gi.Struct
@@ -382,7 +391,7 @@ func completionPrivateStruct_Set() error {
 }
 
 type CompletionPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CompletionPrivateStruct creates an uninitialised CompletionPrivate.
@@ -392,12 +401,13 @@ func CompletionPrivateStruct() *CompletionPrivate {
 		return nil
 	}
 
-	structGo := &CompletionPrivate{native: completionPrivateStruct.Alloc()}
+	structGo := &CompletionPrivate{}
+	structGo.Native = completionPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionPrivate)
 	return structGo
 }
 func finalizeCompletionPrivate(obj *CompletionPrivate) {
-	completionPrivateStruct.Free(obj.native)
+	completionPrivateStruct.Free(obj.Native)
 }
 
 var completionProposalIfaceStruct *gi.Struct
@@ -412,7 +422,7 @@ func completionProposalIfaceStruct_Set() error {
 }
 
 type CompletionProposalIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -466,12 +476,13 @@ func CompletionProposalIfaceStruct() *CompletionProposalIface {
 		return nil
 	}
 
-	structGo := &CompletionProposalIface{native: completionProposalIfaceStruct.Alloc()}
+	structGo := &CompletionProposalIface{}
+	structGo.Native = completionProposalIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionProposalIface)
 	return structGo
 }
 func finalizeCompletionProposalIface(obj *CompletionProposalIface) {
-	completionProposalIfaceStruct.Free(obj.native)
+	completionProposalIfaceStruct.Free(obj.Native)
 }
 
 var completionProviderIfaceStruct *gi.Struct
@@ -486,7 +497,7 @@ func completionProviderIfaceStruct_Set() error {
 }
 
 type CompletionProviderIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -552,12 +563,13 @@ func CompletionProviderIfaceStruct() *CompletionProviderIface {
 		return nil
 	}
 
-	structGo := &CompletionProviderIface{native: completionProviderIfaceStruct.Alloc()}
+	structGo := &CompletionProviderIface{}
+	structGo.Native = completionProviderIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionProviderIface)
 	return structGo
 }
 func finalizeCompletionProviderIface(obj *CompletionProviderIface) {
-	completionProviderIfaceStruct.Free(obj.native)
+	completionProviderIfaceStruct.Free(obj.Native)
 }
 
 var completionWordsClassStruct *gi.Struct
@@ -572,7 +584,7 @@ func completionWordsClassStruct_Set() error {
 }
 
 type CompletionWordsClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -586,12 +598,13 @@ func CompletionWordsClassStruct() *CompletionWordsClass {
 		return nil
 	}
 
-	structGo := &CompletionWordsClass{native: completionWordsClassStruct.Alloc()}
+	structGo := &CompletionWordsClass{}
+	structGo.Native = completionWordsClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionWordsClass)
 	return structGo
 }
 func finalizeCompletionWordsClass(obj *CompletionWordsClass) {
-	completionWordsClassStruct.Free(obj.native)
+	completionWordsClassStruct.Free(obj.Native)
 }
 
 var completionWordsPrivateStruct *gi.Struct
@@ -606,7 +619,7 @@ func completionWordsPrivateStruct_Set() error {
 }
 
 type CompletionWordsPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CompletionWordsPrivateStruct creates an uninitialised CompletionWordsPrivate.
@@ -616,12 +629,13 @@ func CompletionWordsPrivateStruct() *CompletionWordsPrivate {
 		return nil
 	}
 
-	structGo := &CompletionWordsPrivate{native: completionWordsPrivateStruct.Alloc()}
+	structGo := &CompletionWordsPrivate{}
+	structGo.Native = completionWordsPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCompletionWordsPrivate)
 	return structGo
 }
 func finalizeCompletionWordsPrivate(obj *CompletionWordsPrivate) {
-	completionWordsPrivateStruct.Free(obj.native)
+	completionWordsPrivateStruct.Free(obj.Native)
 }
 
 var encodingStruct *gi.Struct
@@ -636,7 +650,7 @@ func encodingStruct_Set() error {
 }
 
 type Encoding struct {
-	native uintptr
+	Native uintptr
 }
 
 var encodingCopyFunction *gi.Function
@@ -657,7 +671,7 @@ func encodingCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_source_encoding_copy.
 func (recv *Encoding) Copy() *Encoding {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -666,7 +680,8 @@ func (recv *Encoding) Copy() *Encoding {
 		ret = encodingCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -689,7 +704,7 @@ func encodingFreeFunction_Set() error {
 // Free is a representation of the C type gtk_source_encoding_free.
 func (recv *Encoding) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := encodingFreeFunction_Set()
 	if err == nil {
@@ -717,7 +732,7 @@ func encodingGetCharsetFunction_Set() error {
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
 func (recv *Encoding) GetCharset() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -749,7 +764,7 @@ func encodingGetNameFunction_Set() error {
 // GetName is a representation of the C type gtk_source_encoding_get_name.
 func (recv *Encoding) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -781,7 +796,7 @@ func encodingToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_source_encoding_to_string.
 func (recv *Encoding) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -802,12 +817,13 @@ func EncodingStruct() *Encoding {
 		return nil
 	}
 
-	structGo := &Encoding{native: encodingStruct.Alloc()}
+	structGo := &Encoding{}
+	structGo.Native = encodingStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeEncoding)
 	return structGo
 }
 func finalizeEncoding(obj *Encoding) {
-	encodingStruct.Free(obj.native)
+	encodingStruct.Free(obj.Native)
 }
 
 var fileClassStruct *gi.Struct
@@ -822,7 +838,7 @@ func fileClassStruct_Set() error {
 }
 
 type FileClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -840,12 +856,13 @@ func FileClassStruct() *FileClass {
 		return nil
 	}
 
-	structGo := &FileClass{native: fileClassStruct.Alloc()}
+	structGo := &FileClass{}
+	structGo.Native = fileClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFileClass)
 	return structGo
 }
 func finalizeFileClass(obj *FileClass) {
-	fileClassStruct.Free(obj.native)
+	fileClassStruct.Free(obj.Native)
 }
 
 var fileLoaderClassStruct *gi.Struct
@@ -860,7 +877,7 @@ func fileLoaderClassStruct_Set() error {
 }
 
 type FileLoaderClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -878,12 +895,13 @@ func FileLoaderClassStruct() *FileLoaderClass {
 		return nil
 	}
 
-	structGo := &FileLoaderClass{native: fileLoaderClassStruct.Alloc()}
+	structGo := &FileLoaderClass{}
+	structGo.Native = fileLoaderClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFileLoaderClass)
 	return structGo
 }
 func finalizeFileLoaderClass(obj *FileLoaderClass) {
-	fileLoaderClassStruct.Free(obj.native)
+	fileLoaderClassStruct.Free(obj.Native)
 }
 
 var fileLoaderPrivateStruct *gi.Struct
@@ -898,7 +916,7 @@ func fileLoaderPrivateStruct_Set() error {
 }
 
 type FileLoaderPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // FileLoaderPrivateStruct creates an uninitialised FileLoaderPrivate.
@@ -908,12 +926,13 @@ func FileLoaderPrivateStruct() *FileLoaderPrivate {
 		return nil
 	}
 
-	structGo := &FileLoaderPrivate{native: fileLoaderPrivateStruct.Alloc()}
+	structGo := &FileLoaderPrivate{}
+	structGo.Native = fileLoaderPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFileLoaderPrivate)
 	return structGo
 }
 func finalizeFileLoaderPrivate(obj *FileLoaderPrivate) {
-	fileLoaderPrivateStruct.Free(obj.native)
+	fileLoaderPrivateStruct.Free(obj.Native)
 }
 
 var filePrivateStruct *gi.Struct
@@ -928,7 +947,7 @@ func filePrivateStruct_Set() error {
 }
 
 type FilePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // FilePrivateStruct creates an uninitialised FilePrivate.
@@ -938,12 +957,13 @@ func FilePrivateStruct() *FilePrivate {
 		return nil
 	}
 
-	structGo := &FilePrivate{native: filePrivateStruct.Alloc()}
+	structGo := &FilePrivate{}
+	structGo.Native = filePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFilePrivate)
 	return structGo
 }
 func finalizeFilePrivate(obj *FilePrivate) {
-	filePrivateStruct.Free(obj.native)
+	filePrivateStruct.Free(obj.Native)
 }
 
 var fileSaverClassStruct *gi.Struct
@@ -958,7 +978,7 @@ func fileSaverClassStruct_Set() error {
 }
 
 type FileSaverClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -976,12 +996,13 @@ func FileSaverClassStruct() *FileSaverClass {
 		return nil
 	}
 
-	structGo := &FileSaverClass{native: fileSaverClassStruct.Alloc()}
+	structGo := &FileSaverClass{}
+	structGo.Native = fileSaverClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFileSaverClass)
 	return structGo
 }
 func finalizeFileSaverClass(obj *FileSaverClass) {
-	fileSaverClassStruct.Free(obj.native)
+	fileSaverClassStruct.Free(obj.Native)
 }
 
 var fileSaverPrivateStruct *gi.Struct
@@ -996,7 +1017,7 @@ func fileSaverPrivateStruct_Set() error {
 }
 
 type FileSaverPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // FileSaverPrivateStruct creates an uninitialised FileSaverPrivate.
@@ -1006,12 +1027,13 @@ func FileSaverPrivateStruct() *FileSaverPrivate {
 		return nil
 	}
 
-	structGo := &FileSaverPrivate{native: fileSaverPrivateStruct.Alloc()}
+	structGo := &FileSaverPrivate{}
+	structGo.Native = fileSaverPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFileSaverPrivate)
 	return structGo
 }
 func finalizeFileSaverPrivate(obj *FileSaverPrivate) {
-	fileSaverPrivateStruct.Free(obj.native)
+	fileSaverPrivateStruct.Free(obj.Native)
 }
 
 var gutterClassStruct *gi.Struct
@@ -1026,7 +1048,7 @@ func gutterClassStruct_Set() error {
 }
 
 type GutterClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1040,12 +1062,13 @@ func GutterClassStruct() *GutterClass {
 		return nil
 	}
 
-	structGo := &GutterClass{native: gutterClassStruct.Alloc()}
+	structGo := &GutterClass{}
+	structGo.Native = gutterClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterClass)
 	return structGo
 }
 func finalizeGutterClass(obj *GutterClass) {
-	gutterClassStruct.Free(obj.native)
+	gutterClassStruct.Free(obj.Native)
 }
 
 var gutterPrivateStruct *gi.Struct
@@ -1060,7 +1083,7 @@ func gutterPrivateStruct_Set() error {
 }
 
 type GutterPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterPrivateStruct creates an uninitialised GutterPrivate.
@@ -1070,12 +1093,13 @@ func GutterPrivateStruct() *GutterPrivate {
 		return nil
 	}
 
-	structGo := &GutterPrivate{native: gutterPrivateStruct.Alloc()}
+	structGo := &GutterPrivate{}
+	structGo.Native = gutterPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterPrivate)
 	return structGo
 }
 func finalizeGutterPrivate(obj *GutterPrivate) {
-	gutterPrivateStruct.Free(obj.native)
+	gutterPrivateStruct.Free(obj.Native)
 }
 
 var gutterRendererClassStruct *gi.Struct
@@ -1090,7 +1114,7 @@ func gutterRendererClassStruct_Set() error {
 }
 
 type GutterRendererClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
@@ -1144,12 +1168,13 @@ func GutterRendererClassStruct() *GutterRendererClass {
 		return nil
 	}
 
-	structGo := &GutterRendererClass{native: gutterRendererClassStruct.Alloc()}
+	structGo := &GutterRendererClass{}
+	structGo.Native = gutterRendererClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererClass)
 	return structGo
 }
 func finalizeGutterRendererClass(obj *GutterRendererClass) {
-	gutterRendererClassStruct.Free(obj.native)
+	gutterRendererClassStruct.Free(obj.Native)
 }
 
 var gutterRendererPixbufClassStruct *gi.Struct
@@ -1164,7 +1189,7 @@ func gutterRendererPixbufClassStruct_Set() error {
 }
 
 type GutterRendererPixbufClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterRendererPixbufClassStruct creates an uninitialised GutterRendererPixbufClass.
@@ -1174,12 +1199,13 @@ func GutterRendererPixbufClassStruct() *GutterRendererPixbufClass {
 		return nil
 	}
 
-	structGo := &GutterRendererPixbufClass{native: gutterRendererPixbufClassStruct.Alloc()}
+	structGo := &GutterRendererPixbufClass{}
+	structGo.Native = gutterRendererPixbufClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererPixbufClass)
 	return structGo
 }
 func finalizeGutterRendererPixbufClass(obj *GutterRendererPixbufClass) {
-	gutterRendererPixbufClassStruct.Free(obj.native)
+	gutterRendererPixbufClassStruct.Free(obj.Native)
 }
 
 var gutterRendererPixbufPrivateStruct *gi.Struct
@@ -1194,7 +1220,7 @@ func gutterRendererPixbufPrivateStruct_Set() error {
 }
 
 type GutterRendererPixbufPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterRendererPixbufPrivateStruct creates an uninitialised GutterRendererPixbufPrivate.
@@ -1204,12 +1230,13 @@ func GutterRendererPixbufPrivateStruct() *GutterRendererPixbufPrivate {
 		return nil
 	}
 
-	structGo := &GutterRendererPixbufPrivate{native: gutterRendererPixbufPrivateStruct.Alloc()}
+	structGo := &GutterRendererPixbufPrivate{}
+	structGo.Native = gutterRendererPixbufPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererPixbufPrivate)
 	return structGo
 }
 func finalizeGutterRendererPixbufPrivate(obj *GutterRendererPixbufPrivate) {
-	gutterRendererPixbufPrivateStruct.Free(obj.native)
+	gutterRendererPixbufPrivateStruct.Free(obj.Native)
 }
 
 var gutterRendererPrivateStruct *gi.Struct
@@ -1224,7 +1251,7 @@ func gutterRendererPrivateStruct_Set() error {
 }
 
 type GutterRendererPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterRendererPrivateStruct creates an uninitialised GutterRendererPrivate.
@@ -1234,12 +1261,13 @@ func GutterRendererPrivateStruct() *GutterRendererPrivate {
 		return nil
 	}
 
-	structGo := &GutterRendererPrivate{native: gutterRendererPrivateStruct.Alloc()}
+	structGo := &GutterRendererPrivate{}
+	structGo.Native = gutterRendererPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererPrivate)
 	return structGo
 }
 func finalizeGutterRendererPrivate(obj *GutterRendererPrivate) {
-	gutterRendererPrivateStruct.Free(obj.native)
+	gutterRendererPrivateStruct.Free(obj.Native)
 }
 
 var gutterRendererTextClassStruct *gi.Struct
@@ -1254,7 +1282,7 @@ func gutterRendererTextClassStruct_Set() error {
 }
 
 type GutterRendererTextClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterRendererTextClassStruct creates an uninitialised GutterRendererTextClass.
@@ -1264,12 +1292,13 @@ func GutterRendererTextClassStruct() *GutterRendererTextClass {
 		return nil
 	}
 
-	structGo := &GutterRendererTextClass{native: gutterRendererTextClassStruct.Alloc()}
+	structGo := &GutterRendererTextClass{}
+	structGo.Native = gutterRendererTextClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererTextClass)
 	return structGo
 }
 func finalizeGutterRendererTextClass(obj *GutterRendererTextClass) {
-	gutterRendererTextClassStruct.Free(obj.native)
+	gutterRendererTextClassStruct.Free(obj.Native)
 }
 
 var gutterRendererTextPrivateStruct *gi.Struct
@@ -1284,7 +1313,7 @@ func gutterRendererTextPrivateStruct_Set() error {
 }
 
 type GutterRendererTextPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // GutterRendererTextPrivateStruct creates an uninitialised GutterRendererTextPrivate.
@@ -1294,12 +1323,13 @@ func GutterRendererTextPrivateStruct() *GutterRendererTextPrivate {
 		return nil
 	}
 
-	structGo := &GutterRendererTextPrivate{native: gutterRendererTextPrivateStruct.Alloc()}
+	structGo := &GutterRendererTextPrivate{}
+	structGo.Native = gutterRendererTextPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGutterRendererTextPrivate)
 	return structGo
 }
 func finalizeGutterRendererTextPrivate(obj *GutterRendererTextPrivate) {
-	gutterRendererTextPrivateStruct.Free(obj.native)
+	gutterRendererTextPrivateStruct.Free(obj.Native)
 }
 
 var languageClassStruct *gi.Struct
@@ -1314,7 +1344,7 @@ func languageClassStruct_Set() error {
 }
 
 type LanguageClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1336,12 +1366,13 @@ func LanguageClassStruct() *LanguageClass {
 		return nil
 	}
 
-	structGo := &LanguageClass{native: languageClassStruct.Alloc()}
+	structGo := &LanguageClass{}
+	structGo.Native = languageClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeLanguageClass)
 	return structGo
 }
 func finalizeLanguageClass(obj *LanguageClass) {
-	languageClassStruct.Free(obj.native)
+	languageClassStruct.Free(obj.Native)
 }
 
 var languageManagerClassStruct *gi.Struct
@@ -1356,7 +1387,7 @@ func languageManagerClassStruct_Set() error {
 }
 
 type LanguageManagerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1386,12 +1417,13 @@ func LanguageManagerClassStruct() *LanguageManagerClass {
 		return nil
 	}
 
-	structGo := &LanguageManagerClass{native: languageManagerClassStruct.Alloc()}
+	structGo := &LanguageManagerClass{}
+	structGo.Native = languageManagerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeLanguageManagerClass)
 	return structGo
 }
 func finalizeLanguageManagerClass(obj *LanguageManagerClass) {
-	languageManagerClassStruct.Free(obj.native)
+	languageManagerClassStruct.Free(obj.Native)
 }
 
 var languageManagerPrivateStruct *gi.Struct
@@ -1406,7 +1438,7 @@ func languageManagerPrivateStruct_Set() error {
 }
 
 type LanguageManagerPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // LanguageManagerPrivateStruct creates an uninitialised LanguageManagerPrivate.
@@ -1416,12 +1448,13 @@ func LanguageManagerPrivateStruct() *LanguageManagerPrivate {
 		return nil
 	}
 
-	structGo := &LanguageManagerPrivate{native: languageManagerPrivateStruct.Alloc()}
+	structGo := &LanguageManagerPrivate{}
+	structGo.Native = languageManagerPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeLanguageManagerPrivate)
 	return structGo
 }
 func finalizeLanguageManagerPrivate(obj *LanguageManagerPrivate) {
-	languageManagerPrivateStruct.Free(obj.native)
+	languageManagerPrivateStruct.Free(obj.Native)
 }
 
 var languagePrivateStruct *gi.Struct
@@ -1436,7 +1469,7 @@ func languagePrivateStruct_Set() error {
 }
 
 type LanguagePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // LanguagePrivateStruct creates an uninitialised LanguagePrivate.
@@ -1446,12 +1479,13 @@ func LanguagePrivateStruct() *LanguagePrivate {
 		return nil
 	}
 
-	structGo := &LanguagePrivate{native: languagePrivateStruct.Alloc()}
+	structGo := &LanguagePrivate{}
+	structGo.Native = languagePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeLanguagePrivate)
 	return structGo
 }
 func finalizeLanguagePrivate(obj *LanguagePrivate) {
-	languagePrivateStruct.Free(obj.native)
+	languagePrivateStruct.Free(obj.Native)
 }
 
 var mapClassStruct *gi.Struct
@@ -1466,21 +1500,22 @@ func mapClassStruct_Set() error {
 }
 
 type MapClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MapClass) FieldParentClass() *ViewClass {
-	argValue := gi.FieldGet(mapClassStruct, recv.native, "parent_class")
-	value := &ViewClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(mapClassStruct, recv.Native, "parent_class")
+	value := &ViewClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(mapClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(mapClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
@@ -1494,12 +1529,13 @@ func MapClassStruct() *MapClass {
 		return nil
 	}
 
-	structGo := &MapClass{native: mapClassStruct.Alloc()}
+	structGo := &MapClass{}
+	structGo.Native = mapClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMapClass)
 	return structGo
 }
 func finalizeMapClass(obj *MapClass) {
-	mapClassStruct.Free(obj.native)
+	mapClassStruct.Free(obj.Native)
 }
 
 var markAttributesClassStruct *gi.Struct
@@ -1514,7 +1550,7 @@ func markAttributesClassStruct_Set() error {
 }
 
 type MarkAttributesClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // MarkAttributesClassStruct creates an uninitialised MarkAttributesClass.
@@ -1524,12 +1560,13 @@ func MarkAttributesClassStruct() *MarkAttributesClass {
 		return nil
 	}
 
-	structGo := &MarkAttributesClass{native: markAttributesClassStruct.Alloc()}
+	structGo := &MarkAttributesClass{}
+	structGo.Native = markAttributesClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMarkAttributesClass)
 	return structGo
 }
 func finalizeMarkAttributesClass(obj *MarkAttributesClass) {
-	markAttributesClassStruct.Free(obj.native)
+	markAttributesClassStruct.Free(obj.Native)
 }
 
 var markAttributesPrivateStruct *gi.Struct
@@ -1544,7 +1581,7 @@ func markAttributesPrivateStruct_Set() error {
 }
 
 type MarkAttributesPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // MarkAttributesPrivateStruct creates an uninitialised MarkAttributesPrivate.
@@ -1554,12 +1591,13 @@ func MarkAttributesPrivateStruct() *MarkAttributesPrivate {
 		return nil
 	}
 
-	structGo := &MarkAttributesPrivate{native: markAttributesPrivateStruct.Alloc()}
+	structGo := &MarkAttributesPrivate{}
+	structGo.Native = markAttributesPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMarkAttributesPrivate)
 	return structGo
 }
 func finalizeMarkAttributesPrivate(obj *MarkAttributesPrivate) {
-	markAttributesPrivateStruct.Free(obj.native)
+	markAttributesPrivateStruct.Free(obj.Native)
 }
 
 var markClassStruct *gi.Struct
@@ -1574,7 +1612,7 @@ func markClassStruct_Set() error {
 }
 
 type MarkClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextMarkClass'
@@ -1596,12 +1634,13 @@ func MarkClassStruct() *MarkClass {
 		return nil
 	}
 
-	structGo := &MarkClass{native: markClassStruct.Alloc()}
+	structGo := &MarkClass{}
+	structGo.Native = markClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMarkClass)
 	return structGo
 }
 func finalizeMarkClass(obj *MarkClass) {
-	markClassStruct.Free(obj.native)
+	markClassStruct.Free(obj.Native)
 }
 
 var markPrivateStruct *gi.Struct
@@ -1616,7 +1655,7 @@ func markPrivateStruct_Set() error {
 }
 
 type MarkPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // MarkPrivateStruct creates an uninitialised MarkPrivate.
@@ -1626,12 +1665,13 @@ func MarkPrivateStruct() *MarkPrivate {
 		return nil
 	}
 
-	structGo := &MarkPrivate{native: markPrivateStruct.Alloc()}
+	structGo := &MarkPrivate{}
+	structGo.Native = markPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMarkPrivate)
 	return structGo
 }
 func finalizeMarkPrivate(obj *MarkPrivate) {
-	markPrivateStruct.Free(obj.native)
+	markPrivateStruct.Free(obj.Native)
 }
 
 var printCompositorClassStruct *gi.Struct
@@ -1646,7 +1686,7 @@ func printCompositorClassStruct_Set() error {
 }
 
 type PrintCompositorClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1668,12 +1708,13 @@ func PrintCompositorClassStruct() *PrintCompositorClass {
 		return nil
 	}
 
-	structGo := &PrintCompositorClass{native: printCompositorClassStruct.Alloc()}
+	structGo := &PrintCompositorClass{}
+	structGo.Native = printCompositorClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizePrintCompositorClass)
 	return structGo
 }
 func finalizePrintCompositorClass(obj *PrintCompositorClass) {
-	printCompositorClassStruct.Free(obj.native)
+	printCompositorClassStruct.Free(obj.Native)
 }
 
 var printCompositorPrivateStruct *gi.Struct
@@ -1688,7 +1729,7 @@ func printCompositorPrivateStruct_Set() error {
 }
 
 type PrintCompositorPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // PrintCompositorPrivateStruct creates an uninitialised PrintCompositorPrivate.
@@ -1698,12 +1739,13 @@ func PrintCompositorPrivateStruct() *PrintCompositorPrivate {
 		return nil
 	}
 
-	structGo := &PrintCompositorPrivate{native: printCompositorPrivateStruct.Alloc()}
+	structGo := &PrintCompositorPrivate{}
+	structGo.Native = printCompositorPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizePrintCompositorPrivate)
 	return structGo
 }
 func finalizePrintCompositorPrivate(obj *PrintCompositorPrivate) {
-	printCompositorPrivateStruct.Free(obj.native)
+	printCompositorPrivateStruct.Free(obj.Native)
 }
 
 var regionClassStruct *gi.Struct
@@ -1718,7 +1760,7 @@ func regionClassStruct_Set() error {
 }
 
 type RegionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1736,12 +1778,13 @@ func RegionClassStruct() *RegionClass {
 		return nil
 	}
 
-	structGo := &RegionClass{native: regionClassStruct.Alloc()}
+	structGo := &RegionClass{}
+	structGo.Native = regionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRegionClass)
 	return structGo
 }
 func finalizeRegionClass(obj *RegionClass) {
-	regionClassStruct.Free(obj.native)
+	regionClassStruct.Free(obj.Native)
 }
 
 var regionIterStruct *gi.Struct
@@ -1756,7 +1799,7 @@ func regionIterStruct_Set() error {
 }
 
 type RegionIter struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
@@ -1779,7 +1822,7 @@ func regionIterIsEndFunction_Set() error {
 // IsEnd is a representation of the C type gtk_source_region_iter_is_end.
 func (recv *RegionIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1811,7 +1854,7 @@ func regionIterNextFunction_Set() error {
 // Next is a representation of the C type gtk_source_region_iter_next.
 func (recv *RegionIter) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1832,12 +1875,13 @@ func RegionIterStruct() *RegionIter {
 		return nil
 	}
 
-	structGo := &RegionIter{native: regionIterStruct.Alloc()}
+	structGo := &RegionIter{}
+	structGo.Native = regionIterStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRegionIter)
 	return structGo
 }
 func finalizeRegionIter(obj *RegionIter) {
-	regionIterStruct.Free(obj.native)
+	regionIterStruct.Free(obj.Native)
 }
 
 var searchContextClassStruct *gi.Struct
@@ -1852,7 +1896,7 @@ func searchContextClassStruct_Set() error {
 }
 
 type SearchContextClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1870,12 +1914,13 @@ func SearchContextClassStruct() *SearchContextClass {
 		return nil
 	}
 
-	structGo := &SearchContextClass{native: searchContextClassStruct.Alloc()}
+	structGo := &SearchContextClass{}
+	structGo.Native = searchContextClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSearchContextClass)
 	return structGo
 }
 func finalizeSearchContextClass(obj *SearchContextClass) {
-	searchContextClassStruct.Free(obj.native)
+	searchContextClassStruct.Free(obj.Native)
 }
 
 var searchContextPrivateStruct *gi.Struct
@@ -1890,7 +1935,7 @@ func searchContextPrivateStruct_Set() error {
 }
 
 type SearchContextPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // SearchContextPrivateStruct creates an uninitialised SearchContextPrivate.
@@ -1900,12 +1945,13 @@ func SearchContextPrivateStruct() *SearchContextPrivate {
 		return nil
 	}
 
-	structGo := &SearchContextPrivate{native: searchContextPrivateStruct.Alloc()}
+	structGo := &SearchContextPrivate{}
+	structGo.Native = searchContextPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSearchContextPrivate)
 	return structGo
 }
 func finalizeSearchContextPrivate(obj *SearchContextPrivate) {
-	searchContextPrivateStruct.Free(obj.native)
+	searchContextPrivateStruct.Free(obj.Native)
 }
 
 var searchSettingsClassStruct *gi.Struct
@@ -1920,7 +1966,7 @@ func searchSettingsClassStruct_Set() error {
 }
 
 type SearchSettingsClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1938,12 +1984,13 @@ func SearchSettingsClassStruct() *SearchSettingsClass {
 		return nil
 	}
 
-	structGo := &SearchSettingsClass{native: searchSettingsClassStruct.Alloc()}
+	structGo := &SearchSettingsClass{}
+	structGo.Native = searchSettingsClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSearchSettingsClass)
 	return structGo
 }
 func finalizeSearchSettingsClass(obj *SearchSettingsClass) {
-	searchSettingsClassStruct.Free(obj.native)
+	searchSettingsClassStruct.Free(obj.Native)
 }
 
 var searchSettingsPrivateStruct *gi.Struct
@@ -1958,7 +2005,7 @@ func searchSettingsPrivateStruct_Set() error {
 }
 
 type SearchSettingsPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // SearchSettingsPrivateStruct creates an uninitialised SearchSettingsPrivate.
@@ -1968,12 +2015,13 @@ func SearchSettingsPrivateStruct() *SearchSettingsPrivate {
 		return nil
 	}
 
-	structGo := &SearchSettingsPrivate{native: searchSettingsPrivateStruct.Alloc()}
+	structGo := &SearchSettingsPrivate{}
+	structGo.Native = searchSettingsPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSearchSettingsPrivate)
 	return structGo
 }
 func finalizeSearchSettingsPrivate(obj *SearchSettingsPrivate) {
-	searchSettingsPrivateStruct.Free(obj.native)
+	searchSettingsPrivateStruct.Free(obj.Native)
 }
 
 var spaceDrawerClassStruct *gi.Struct
@@ -1988,7 +2036,7 @@ func spaceDrawerClassStruct_Set() error {
 }
 
 type SpaceDrawerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2006,12 +2054,13 @@ func SpaceDrawerClassStruct() *SpaceDrawerClass {
 		return nil
 	}
 
-	structGo := &SpaceDrawerClass{native: spaceDrawerClassStruct.Alloc()}
+	structGo := &SpaceDrawerClass{}
+	structGo.Native = spaceDrawerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSpaceDrawerClass)
 	return structGo
 }
 func finalizeSpaceDrawerClass(obj *SpaceDrawerClass) {
-	spaceDrawerClassStruct.Free(obj.native)
+	spaceDrawerClassStruct.Free(obj.Native)
 }
 
 var spaceDrawerPrivateStruct *gi.Struct
@@ -2026,7 +2075,7 @@ func spaceDrawerPrivateStruct_Set() error {
 }
 
 type SpaceDrawerPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // SpaceDrawerPrivateStruct creates an uninitialised SpaceDrawerPrivate.
@@ -2036,12 +2085,13 @@ func SpaceDrawerPrivateStruct() *SpaceDrawerPrivate {
 		return nil
 	}
 
-	structGo := &SpaceDrawerPrivate{native: spaceDrawerPrivateStruct.Alloc()}
+	structGo := &SpaceDrawerPrivate{}
+	structGo.Native = spaceDrawerPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSpaceDrawerPrivate)
 	return structGo
 }
 func finalizeSpaceDrawerPrivate(obj *SpaceDrawerPrivate) {
-	spaceDrawerPrivateStruct.Free(obj.native)
+	spaceDrawerPrivateStruct.Free(obj.Native)
 }
 
 var styleClassStruct *gi.Struct
@@ -2056,7 +2106,7 @@ func styleClassStruct_Set() error {
 }
 
 type StyleClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // StyleClassStruct creates an uninitialised StyleClass.
@@ -2066,12 +2116,13 @@ func StyleClassStruct() *StyleClass {
 		return nil
 	}
 
-	structGo := &StyleClass{native: styleClassStruct.Alloc()}
+	structGo := &StyleClass{}
+	structGo.Native = styleClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleClass)
 	return structGo
 }
 func finalizeStyleClass(obj *StyleClass) {
-	styleClassStruct.Free(obj.native)
+	styleClassStruct.Free(obj.Native)
 }
 
 var styleSchemeChooserButtonClassStruct *gi.Struct
@@ -2086,7 +2137,7 @@ func styleSchemeChooserButtonClassStruct_Set() error {
 }
 
 type StyleSchemeChooserButtonClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.ButtonClass'
@@ -2100,12 +2151,13 @@ func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
 		return nil
 	}
 
-	structGo := &StyleSchemeChooserButtonClass{native: styleSchemeChooserButtonClassStruct.Alloc()}
+	structGo := &StyleSchemeChooserButtonClass{}
+	structGo.Native = styleSchemeChooserButtonClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserButtonClass)
 	return structGo
 }
 func finalizeStyleSchemeChooserButtonClass(obj *StyleSchemeChooserButtonClass) {
-	styleSchemeChooserButtonClassStruct.Free(obj.native)
+	styleSchemeChooserButtonClassStruct.Free(obj.Native)
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
@@ -2120,7 +2172,7 @@ func styleSchemeChooserInterfaceStruct_Set() error {
 }
 
 type StyleSchemeChooserInterface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'base_interface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2146,12 +2198,13 @@ func StyleSchemeChooserInterfaceStruct() *StyleSchemeChooserInterface {
 		return nil
 	}
 
-	structGo := &StyleSchemeChooserInterface{native: styleSchemeChooserInterfaceStruct.Alloc()}
+	structGo := &StyleSchemeChooserInterface{}
+	structGo.Native = styleSchemeChooserInterfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserInterface)
 	return structGo
 }
 func finalizeStyleSchemeChooserInterface(obj *StyleSchemeChooserInterface) {
-	styleSchemeChooserInterfaceStruct.Free(obj.native)
+	styleSchemeChooserInterfaceStruct.Free(obj.Native)
 }
 
 var styleSchemeChooserWidgetClassStruct *gi.Struct
@@ -2166,7 +2219,7 @@ func styleSchemeChooserWidgetClassStruct_Set() error {
 }
 
 type StyleSchemeChooserWidgetClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.BinClass'
@@ -2180,12 +2233,13 @@ func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
 		return nil
 	}
 
-	structGo := &StyleSchemeChooserWidgetClass{native: styleSchemeChooserWidgetClassStruct.Alloc()}
+	structGo := &StyleSchemeChooserWidgetClass{}
+	structGo.Native = styleSchemeChooserWidgetClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeChooserWidgetClass)
 	return structGo
 }
 func finalizeStyleSchemeChooserWidgetClass(obj *StyleSchemeChooserWidgetClass) {
-	styleSchemeChooserWidgetClassStruct.Free(obj.native)
+	styleSchemeChooserWidgetClassStruct.Free(obj.Native)
 }
 
 var styleSchemeClassStruct *gi.Struct
@@ -2200,7 +2254,7 @@ func styleSchemeClassStruct_Set() error {
 }
 
 type StyleSchemeClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'base_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2222,12 +2276,13 @@ func StyleSchemeClassStruct() *StyleSchemeClass {
 		return nil
 	}
 
-	structGo := &StyleSchemeClass{native: styleSchemeClassStruct.Alloc()}
+	structGo := &StyleSchemeClass{}
+	structGo.Native = styleSchemeClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeClass)
 	return structGo
 }
 func finalizeStyleSchemeClass(obj *StyleSchemeClass) {
-	styleSchemeClassStruct.Free(obj.native)
+	styleSchemeClassStruct.Free(obj.Native)
 }
 
 var styleSchemeManagerClassStruct *gi.Struct
@@ -2242,7 +2297,7 @@ func styleSchemeManagerClassStruct_Set() error {
 }
 
 type StyleSchemeManagerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2272,12 +2327,13 @@ func StyleSchemeManagerClassStruct() *StyleSchemeManagerClass {
 		return nil
 	}
 
-	structGo := &StyleSchemeManagerClass{native: styleSchemeManagerClassStruct.Alloc()}
+	structGo := &StyleSchemeManagerClass{}
+	structGo.Native = styleSchemeManagerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeManagerClass)
 	return structGo
 }
 func finalizeStyleSchemeManagerClass(obj *StyleSchemeManagerClass) {
-	styleSchemeManagerClassStruct.Free(obj.native)
+	styleSchemeManagerClassStruct.Free(obj.Native)
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
@@ -2292,7 +2348,7 @@ func styleSchemeManagerPrivateStruct_Set() error {
 }
 
 type StyleSchemeManagerPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // StyleSchemeManagerPrivateStruct creates an uninitialised StyleSchemeManagerPrivate.
@@ -2302,12 +2358,13 @@ func StyleSchemeManagerPrivateStruct() *StyleSchemeManagerPrivate {
 		return nil
 	}
 
-	structGo := &StyleSchemeManagerPrivate{native: styleSchemeManagerPrivateStruct.Alloc()}
+	structGo := &StyleSchemeManagerPrivate{}
+	structGo.Native = styleSchemeManagerPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemeManagerPrivate)
 	return structGo
 }
 func finalizeStyleSchemeManagerPrivate(obj *StyleSchemeManagerPrivate) {
-	styleSchemeManagerPrivateStruct.Free(obj.native)
+	styleSchemeManagerPrivateStruct.Free(obj.Native)
 }
 
 var styleSchemePrivateStruct *gi.Struct
@@ -2322,7 +2379,7 @@ func styleSchemePrivateStruct_Set() error {
 }
 
 type StyleSchemePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // StyleSchemePrivateStruct creates an uninitialised StyleSchemePrivate.
@@ -2332,12 +2389,13 @@ func StyleSchemePrivateStruct() *StyleSchemePrivate {
 		return nil
 	}
 
-	structGo := &StyleSchemePrivate{native: styleSchemePrivateStruct.Alloc()}
+	structGo := &StyleSchemePrivate{}
+	structGo.Native = styleSchemePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStyleSchemePrivate)
 	return structGo
 }
 func finalizeStyleSchemePrivate(obj *StyleSchemePrivate) {
-	styleSchemePrivateStruct.Free(obj.native)
+	styleSchemePrivateStruct.Free(obj.Native)
 }
 
 var tagClassStruct *gi.Struct
@@ -2352,7 +2410,7 @@ func tagClassStruct_Set() error {
 }
 
 type TagClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextTagClass'
@@ -2370,12 +2428,13 @@ func TagClassStruct() *TagClass {
 		return nil
 	}
 
-	structGo := &TagClass{native: tagClassStruct.Alloc()}
+	structGo := &TagClass{}
+	structGo.Native = tagClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTagClass)
 	return structGo
 }
 func finalizeTagClass(obj *TagClass) {
-	tagClassStruct.Free(obj.native)
+	tagClassStruct.Free(obj.Native)
 }
 
 var undoManagerIfaceStruct *gi.Struct
@@ -2390,7 +2449,7 @@ func undoManagerIfaceStruct_Set() error {
 }
 
 type UndoManagerIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2436,12 +2495,13 @@ func UndoManagerIfaceStruct() *UndoManagerIface {
 		return nil
 	}
 
-	structGo := &UndoManagerIface{native: undoManagerIfaceStruct.Alloc()}
+	structGo := &UndoManagerIface{}
+	structGo.Native = undoManagerIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeUndoManagerIface)
 	return structGo
 }
 func finalizeUndoManagerIface(obj *UndoManagerIface) {
-	undoManagerIfaceStruct.Free(obj.native)
+	undoManagerIfaceStruct.Free(obj.Native)
 }
 
 var viewClassStruct *gi.Struct
@@ -2456,7 +2516,7 @@ func viewClassStruct_Set() error {
 }
 
 type ViewClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextViewClass'
@@ -2494,12 +2554,13 @@ func ViewClassStruct() *ViewClass {
 		return nil
 	}
 
-	structGo := &ViewClass{native: viewClassStruct.Alloc()}
+	structGo := &ViewClass{}
+	structGo.Native = viewClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeViewClass)
 	return structGo
 }
 func finalizeViewClass(obj *ViewClass) {
-	viewClassStruct.Free(obj.native)
+	viewClassStruct.Free(obj.Native)
 }
 
 var viewPrivateStruct *gi.Struct
@@ -2514,7 +2575,7 @@ func viewPrivateStruct_Set() error {
 }
 
 type ViewPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ViewPrivateStruct creates an uninitialised ViewPrivate.
@@ -2524,10 +2585,11 @@ func ViewPrivateStruct() *ViewPrivate {
 		return nil
 	}
 
-	structGo := &ViewPrivate{native: viewPrivateStruct.Alloc()}
+	structGo := &ViewPrivate{}
+	structGo.Native = viewPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeViewPrivate)
 	return structGo
 }
 func finalizeViewPrivate(obj *ViewPrivate) {
-	viewPrivateStruct.Free(obj.native)
+	viewPrivateStruct.Free(obj.Native)
 }

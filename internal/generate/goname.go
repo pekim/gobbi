@@ -6,6 +6,10 @@ import (
 	"unicode"
 )
 
+const (
+	fieldNameNative = "Native"
+)
+
 var goNameReservedWords = map[string]bool{
 	"func":      true,
 	"interface": true,
@@ -48,19 +52,7 @@ func makeGoName(cName string, uppercaseFirstChar bool) string {
 
 	for _, cPart := range cParts {
 		goPart := cPart
-
-		//if i == 0 {
-		//	if len(goPart) > 0 {
-		//		if uppercaseFirstChar {
-		//			goPart = strings.ToUpper(goPart[0:1]) + goPart[1:]
-		//		} else {
-		//			goPart = strings.ToLower(goPart[0:1]) + goPart[1:]
-		//		}
-		//	}
-		//} else {
 		goPart = strings.Title(goPart)
-		//}
-
 		goParts = append(goParts, goPart)
 	}
 

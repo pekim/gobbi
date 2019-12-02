@@ -57,7 +57,8 @@ func EncodingGetCurrent() *Encoding {
 		ret = encodingGetCurrentFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -87,7 +88,8 @@ func EncodingGetFromCharset(charset string) *Encoding {
 		ret = encodingGetFromCharsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -113,7 +115,8 @@ func EncodingGetUtf8() *Encoding {
 		ret = encodingGetUtf8Function.Invoke(nil, nil)
 	}
 
-	retGo := &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }

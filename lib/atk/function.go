@@ -31,7 +31,7 @@ func focusTrackerNotifyFunction_Set() error {
 // FocusTrackerNotify is a representation of the C type atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(object.native)
+	inArgs[0].SetPointer(object.Native)
 
 	err := focusTrackerNotifyFunction_Set()
 	if err == nil {
@@ -88,7 +88,8 @@ func GetDefaultRegistry() *Registry {
 		ret = getDefaultRegistryFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Registry{native: ret.Pointer()}
+	retGo := &Registry{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -114,7 +115,8 @@ func GetFocusObject() *Object {
 		ret = getFocusObjectFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Object{native: ret.Pointer()}
+	retGo := &Object{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -244,7 +246,8 @@ func GetRoot() *Object {
 		ret = getRootFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Object{native: ret.Pointer()}
+	retGo := &Object{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }

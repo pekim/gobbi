@@ -12,8 +12,8 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func (a *Argument) generateValue(argVar *jen.Statement) *jen.Statement {
-	return a.Type.generateOutArgValue(a.transferOwnership(), argVar)
+func (a *Argument) generateValue(g *jen.Group, argName *jen.Statement, argVar *jen.Statement) {
+	a.Type.generateOutArgValue(g, argName, argVar, a.transferOwnership())
 }
 
 func (a *Argument) transferOwnership() *bool {

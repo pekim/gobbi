@@ -20,7 +20,7 @@ func globalContextRefStruct_Set() error {
 }
 
 type GlobalContextRef struct {
-	native uintptr
+	Native uintptr
 }
 
 var globalContextRefRefFunction *gi.Function
@@ -41,7 +41,7 @@ func globalContextRefRefFunction_Set() error {
 // Ref is a representation of the C type JSGlobalContextRetain.
 func (recv *GlobalContextRef) Ref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := globalContextRefRefFunction_Set()
 	if err == nil {
@@ -69,7 +69,7 @@ func globalContextRefUnrefFunction_Set() error {
 // Unref is a representation of the C type JSGlobalContextRelease.
 func (recv *GlobalContextRef) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := globalContextRefUnrefFunction_Set()
 	if err == nil {
@@ -86,12 +86,13 @@ func GlobalContextRefStruct() *GlobalContextRef {
 		return nil
 	}
 
-	structGo := &GlobalContextRef{native: globalContextRefStruct.Alloc()}
+	structGo := &GlobalContextRef{}
+	structGo.Native = globalContextRefStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGlobalContextRef)
 	return structGo
 }
 func finalizeGlobalContextRef(obj *GlobalContextRef) {
-	globalContextRefStruct.Free(obj.native)
+	globalContextRefStruct.Free(obj.Native)
 }
 
 var valueRefStruct *gi.Struct
@@ -106,7 +107,7 @@ func valueRefStruct_Set() error {
 }
 
 type ValueRef struct {
-	native uintptr
+	Native uintptr
 }
 
 // ValueRefStruct creates an uninitialised ValueRef.
@@ -116,12 +117,13 @@ func ValueRefStruct() *ValueRef {
 		return nil
 	}
 
-	structGo := &ValueRef{native: valueRefStruct.Alloc()}
+	structGo := &ValueRef{}
+	structGo.Native = valueRefStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeValueRef)
 	return structGo
 }
 func finalizeValueRef(obj *ValueRef) {
-	valueRefStruct.Free(obj.native)
+	valueRefStruct.Free(obj.Native)
 }
 
 var stringRefStruct *gi.Struct
@@ -136,7 +138,7 @@ func stringRefStruct_Set() error {
 }
 
 type StringRef struct {
-	native uintptr
+	Native uintptr
 }
 
 var stringRefRefFunction *gi.Function
@@ -157,7 +159,7 @@ func stringRefRefFunction_Set() error {
 // Ref is a representation of the C type JSStringRetain.
 func (recv *StringRef) Ref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := stringRefRefFunction_Set()
 	if err == nil {
@@ -185,7 +187,7 @@ func stringRefUnrefFunction_Set() error {
 // Unref is a representation of the C type JSStringRelease.
 func (recv *StringRef) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := stringRefUnrefFunction_Set()
 	if err == nil {
@@ -213,7 +215,7 @@ func stringRefGetMaximumUTF8CStringSizeFunction_Set() error {
 // GetMaximumUTF8CStringSize is a representation of the C type JSStringGetMaximumUTF8CStringSize.
 func (recv *StringRef) GetMaximumUTF8CStringSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -245,7 +247,7 @@ func stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Set() error {
 // GetUTF8CStringJSStringGetUTF8CString is a representation of the C type JSStringGetUTF8CString.
 func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, bufferSize uint64) (uint64, string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(buffer)
 	inArgs[2].SetUint64(bufferSize)
 
@@ -270,12 +272,13 @@ func StringRefStruct() *StringRef {
 		return nil
 	}
 
-	structGo := &StringRef{native: stringRefStruct.Alloc()}
+	structGo := &StringRef{}
+	structGo.Native = stringRefStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStringRef)
 	return structGo
 }
 func finalizeStringRef(obj *StringRef) {
-	stringRefStruct.Free(obj.native)
+	stringRefStruct.Free(obj.Native)
 }
 
 var classClassStruct *gi.Struct
@@ -290,7 +293,7 @@ func classClassStruct_Set() error {
 }
 
 type ClassClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // ClassClassStruct creates an uninitialised ClassClass.
@@ -300,12 +303,13 @@ func ClassClassStruct() *ClassClass {
 		return nil
 	}
 
-	structGo := &ClassClass{native: classClassStruct.Alloc()}
+	structGo := &ClassClass{}
+	structGo.Native = classClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeClassClass)
 	return structGo
 }
 func finalizeClassClass(obj *ClassClass) {
-	classClassStruct.Free(obj.native)
+	classClassStruct.Free(obj.Native)
 }
 
 var classVTableStruct *gi.Struct
@@ -320,7 +324,7 @@ func classVTableStruct_Set() error {
 }
 
 type ClassVTable struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'ClassGetPropertyFunction'
@@ -366,12 +370,13 @@ func ClassVTableStruct() *ClassVTable {
 		return nil
 	}
 
-	structGo := &ClassVTable{native: classVTableStruct.Alloc()}
+	structGo := &ClassVTable{}
+	structGo.Native = classVTableStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeClassVTable)
 	return structGo
 }
 func finalizeClassVTable(obj *ClassVTable) {
-	classVTableStruct.Free(obj.native)
+	classVTableStruct.Free(obj.Native)
 }
 
 var contextClassStruct *gi.Struct
@@ -386,7 +391,7 @@ func contextClassStruct_Set() error {
 }
 
 type ContextClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -416,12 +421,13 @@ func ContextClassStruct() *ContextClass {
 		return nil
 	}
 
-	structGo := &ContextClass{native: contextClassStruct.Alloc()}
+	structGo := &ContextClass{}
+	structGo.Native = contextClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContextClass)
 	return structGo
 }
 func finalizeContextClass(obj *ContextClass) {
-	contextClassStruct.Free(obj.native)
+	contextClassStruct.Free(obj.Native)
 }
 
 var contextPrivateStruct *gi.Struct
@@ -436,7 +442,7 @@ func contextPrivateStruct_Set() error {
 }
 
 type ContextPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ContextPrivateStruct creates an uninitialised ContextPrivate.
@@ -446,12 +452,13 @@ func ContextPrivateStruct() *ContextPrivate {
 		return nil
 	}
 
-	structGo := &ContextPrivate{native: contextPrivateStruct.Alloc()}
+	structGo := &ContextPrivate{}
+	structGo.Native = contextPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContextPrivate)
 	return structGo
 }
 func finalizeContextPrivate(obj *ContextPrivate) {
-	contextPrivateStruct.Free(obj.native)
+	contextPrivateStruct.Free(obj.Native)
 }
 
 var exceptionClassStruct *gi.Struct
@@ -466,7 +473,7 @@ func exceptionClassStruct_Set() error {
 }
 
 type ExceptionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -496,12 +503,13 @@ func ExceptionClassStruct() *ExceptionClass {
 		return nil
 	}
 
-	structGo := &ExceptionClass{native: exceptionClassStruct.Alloc()}
+	structGo := &ExceptionClass{}
+	structGo.Native = exceptionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeExceptionClass)
 	return structGo
 }
 func finalizeExceptionClass(obj *ExceptionClass) {
-	exceptionClassStruct.Free(obj.native)
+	exceptionClassStruct.Free(obj.Native)
 }
 
 var exceptionPrivateStruct *gi.Struct
@@ -516,7 +524,7 @@ func exceptionPrivateStruct_Set() error {
 }
 
 type ExceptionPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ExceptionPrivateStruct creates an uninitialised ExceptionPrivate.
@@ -526,12 +534,13 @@ func ExceptionPrivateStruct() *ExceptionPrivate {
 		return nil
 	}
 
-	structGo := &ExceptionPrivate{native: exceptionPrivateStruct.Alloc()}
+	structGo := &ExceptionPrivate{}
+	structGo.Native = exceptionPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeExceptionPrivate)
 	return structGo
 }
 func finalizeExceptionPrivate(obj *ExceptionPrivate) {
-	exceptionPrivateStruct.Free(obj.native)
+	exceptionPrivateStruct.Free(obj.Native)
 }
 
 var valueClassStruct *gi.Struct
@@ -546,7 +555,7 @@ func valueClassStruct_Set() error {
 }
 
 type ValueClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -576,12 +585,13 @@ func ValueClassStruct() *ValueClass {
 		return nil
 	}
 
-	structGo := &ValueClass{native: valueClassStruct.Alloc()}
+	structGo := &ValueClass{}
+	structGo.Native = valueClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeValueClass)
 	return structGo
 }
 func finalizeValueClass(obj *ValueClass) {
-	valueClassStruct.Free(obj.native)
+	valueClassStruct.Free(obj.Native)
 }
 
 var valuePrivateStruct *gi.Struct
@@ -596,7 +606,7 @@ func valuePrivateStruct_Set() error {
 }
 
 type ValuePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ValuePrivateStruct creates an uninitialised ValuePrivate.
@@ -606,12 +616,13 @@ func ValuePrivateStruct() *ValuePrivate {
 		return nil
 	}
 
-	structGo := &ValuePrivate{native: valuePrivateStruct.Alloc()}
+	structGo := &ValuePrivate{}
+	structGo.Native = valuePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeValuePrivate)
 	return structGo
 }
 func finalizeValuePrivate(obj *ValuePrivate) {
-	valuePrivateStruct.Free(obj.native)
+	valuePrivateStruct.Free(obj.Native)
 }
 
 var virtualMachineClassStruct *gi.Struct
@@ -626,7 +637,7 @@ func virtualMachineClassStruct_Set() error {
 }
 
 type VirtualMachineClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -656,12 +667,13 @@ func VirtualMachineClassStruct() *VirtualMachineClass {
 		return nil
 	}
 
-	structGo := &VirtualMachineClass{native: virtualMachineClassStruct.Alloc()}
+	structGo := &VirtualMachineClass{}
+	structGo.Native = virtualMachineClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeVirtualMachineClass)
 	return structGo
 }
 func finalizeVirtualMachineClass(obj *VirtualMachineClass) {
-	virtualMachineClassStruct.Free(obj.native)
+	virtualMachineClassStruct.Free(obj.Native)
 }
 
 var virtualMachinePrivateStruct *gi.Struct
@@ -676,7 +688,7 @@ func virtualMachinePrivateStruct_Set() error {
 }
 
 type VirtualMachinePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // VirtualMachinePrivateStruct creates an uninitialised VirtualMachinePrivate.
@@ -686,12 +698,13 @@ func VirtualMachinePrivateStruct() *VirtualMachinePrivate {
 		return nil
 	}
 
-	structGo := &VirtualMachinePrivate{native: virtualMachinePrivateStruct.Alloc()}
+	structGo := &VirtualMachinePrivate{}
+	structGo.Native = virtualMachinePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeVirtualMachinePrivate)
 	return structGo
 }
 func finalizeVirtualMachinePrivate(obj *VirtualMachinePrivate) {
-	virtualMachinePrivateStruct.Free(obj.native)
+	virtualMachinePrivateStruct.Free(obj.Native)
 }
 
 var weakValueClassStruct *gi.Struct
@@ -706,7 +719,7 @@ func weakValueClassStruct_Set() error {
 }
 
 type WeakValueClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -736,12 +749,13 @@ func WeakValueClassStruct() *WeakValueClass {
 		return nil
 	}
 
-	structGo := &WeakValueClass{native: weakValueClassStruct.Alloc()}
+	structGo := &WeakValueClass{}
+	structGo.Native = weakValueClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWeakValueClass)
 	return structGo
 }
 func finalizeWeakValueClass(obj *WeakValueClass) {
-	weakValueClassStruct.Free(obj.native)
+	weakValueClassStruct.Free(obj.Native)
 }
 
 var weakValuePrivateStruct *gi.Struct
@@ -756,7 +770,7 @@ func weakValuePrivateStruct_Set() error {
 }
 
 type WeakValuePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // WeakValuePrivateStruct creates an uninitialised WeakValuePrivate.
@@ -766,10 +780,11 @@ func WeakValuePrivateStruct() *WeakValuePrivate {
 		return nil
 	}
 
-	structGo := &WeakValuePrivate{native: weakValuePrivateStruct.Alloc()}
+	structGo := &WeakValuePrivate{}
+	structGo.Native = weakValuePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWeakValuePrivate)
 	return structGo
 }
 func finalizeWeakValuePrivate(obj *WeakValuePrivate) {
-	weakValuePrivateStruct.Free(obj.native)
+	weakValuePrivateStruct.Free(obj.Native)
 }

@@ -247,26 +247,37 @@ func (t *Type) argumentValueSetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s", t.Name))
 }
 
-func (t *Type) createFromOutArgument(argValue *jen.Statement) *jen.Statement {
+func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
 	if t.isClass() {
 		class, _ := t.namespace.Classes.byName(t.Name)
-		return class.createFromArgument(argValue)
+		class.createFromArgument(g, argName, argValue)
+
+		return
 	}
 
 	if t.isRecord() {
 		record, _ := t.namespace.Records.byName(t.Name)
-		return record.createFromArgument(argValue)
+		record.createFromArgument(g, argName, argValue)
+
+		return
 	}
 
 	if t.isQualifiedName() {
 		if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			return jen.
+			g.
+				Add(argName).
+				Op(":=").
 				Qual(t.foreignNamespace.goFullPackageName, t.foreignName).
 				Parens(argValue)
+
+			return
 		}
 	}
 
-	return argValue
+	g.
+		Add(argName).
+		Op(":=").
+		Add(argValue)
 }
 
 func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
@@ -288,7 +299,9 @@ func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
 
 // generateOutArgValue generates a statement that transforms an out
 // argument value to the Type's Go type.
-func (t *Type) generateOutArgValue(transferOwnership *bool, argVar *jen.Statement) *jen.Statement {
+func (t *Type) generateOutArgValue(g *jen.Group,
+	argName *jen.Statement, argVar *jen.Statement, transferOwnership *bool,
+) {
 	resolvedType := t.resolvedType()
 
 	var to *jen.Statement
@@ -306,7 +319,7 @@ func (t *Type) generateOutArgValue(transferOwnership *bool, argVar *jen.Statemen
 			Parens(argValue)
 	}
 
-	return t.createFromOutArgument(argValue)
+	t.createFromOutArgument(g, argName, argValue)
 }
 
 func (t *Type) isString() bool {

@@ -66,17 +66,13 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 		Qual(gi.PackageName, "FieldGet").
 		Call(
 			jen.Id(f.record.structInfoGoName),
-			jen.Id(receiverName).Dot("native"),
+			jen.Id(receiverName).Dot(fieldNameNative),
 			jen.Lit(f.Name),
 		)
 
-	value := f.Type.generateOutArgValue(f.transferOwnership(), jen.Id("argValue"))
-	g.
-		Id("value").
-		Op(":=").
-		Add(value)
-
-	g.Return(jen.Id("value"))
+	value := jen.Id("value")
+	f.Type.generateOutArgValue(g, value, jen.Id("argValue"), f.transferOwnership())
+	g.Return(value)
 }
 
 func (f *Field) generateSetter(fi *file) {
@@ -111,7 +107,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 	}
 
 	if f.Type.isRecord() {
-		jenValue = jenValue.Dot("native")
+		jenValue = jenValue.Dot(fieldNameNative)
 	}
 
 	value := f.Type.createFromInArgument(jenValue)
@@ -133,7 +129,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 		Qual(gi.PackageName, "FieldSet").
 		Call(
 			jen.Id(f.record.structInfoGoName),
-			jen.Id(receiverName).Dot("native"),
+			jen.Id(receiverName).Dot(fieldNameNative),
 			jen.Lit(f.Name),
 			jen.Id("argValue"),
 		)

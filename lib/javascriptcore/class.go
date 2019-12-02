@@ -4,6 +4,7 @@ package javascriptcore
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 )
@@ -20,7 +21,7 @@ func classStruct_Set() error {
 }
 
 type Class struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'jsc_class_add_constructor' : parameter 'callback' of type 'GObject.Callback' not supported
@@ -55,7 +56,7 @@ func classGetNameFunction_Set() error {
 // GetName is a representation of the C type jsc_class_get_name.
 func (recv *Class) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -87,7 +88,7 @@ func classGetParentFunction_Set() error {
 // GetParent is a representation of the C type jsc_class_get_parent.
 func (recv *Class) GetParent() *Class {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -96,7 +97,8 @@ func (recv *Class) GetParent() *Class {
 		ret = classGetParentFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Class{native: ret.Pointer()}
+	retGo := &Class{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -108,12 +110,13 @@ func ClassStruct() *Class {
 		return nil
 	}
 
-	structGo := &Class{native: classStruct.Alloc()}
+	structGo := &Class{}
+	structGo.Native = classStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeClass)
 	return structGo
 }
 func finalizeClass(obj *Class) {
-	classStruct.Free(obj.native)
+	classStruct.Free(obj.Native)
 }
 
 var contextStruct *gi.Struct
@@ -128,7 +131,7 @@ func contextStruct_Set() error {
 }
 
 type Context struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -160,7 +163,8 @@ func ContextNew() *Context {
 		ret = contextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -183,7 +187,7 @@ func contextNewWithVirtualMachineFunction_Set() error {
 // ContextNewWithVirtualMachine is a representation of the C type jsc_context_new_with_virtual_machine.
 func ContextNewWithVirtualMachine(vm *VirtualMachine) *Context {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(vm.native)
+	inArgs[0].SetPointer(vm.Native)
 
 	var ret gi.Argument
 
@@ -192,7 +196,8 @@ func ContextNewWithVirtualMachine(vm *VirtualMachine) *Context {
 		ret = contextNewWithVirtualMachineFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -217,7 +222,7 @@ func contextClearExceptionFunction_Set() error {
 // ClearException is a representation of the C type jsc_context_clear_exception.
 func (recv *Context) ClearException() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := contextClearExceptionFunction_Set()
 	if err == nil {
@@ -245,7 +250,7 @@ func contextEvaluateFunction_Set() error {
 // Evaluate is a representation of the C type jsc_context_evaluate.
 func (recv *Context) Evaluate(code string, length int32) *Value {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(code)
 	inArgs[2].SetInt32(length)
 
@@ -256,7 +261,8 @@ func (recv *Context) Evaluate(code string, length int32) *Value {
 		ret = contextEvaluateFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -281,7 +287,7 @@ func contextEvaluateWithSourceUriFunction_Set() error {
 // EvaluateWithSourceUri is a representation of the C type jsc_context_evaluate_with_source_uri.
 func (recv *Context) EvaluateWithSourceUri(code string, length int32, uri string, lineNumber uint32) *Value {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(code)
 	inArgs[2].SetInt32(length)
 	inArgs[3].SetString(uri)
@@ -294,7 +300,8 @@ func (recv *Context) EvaluateWithSourceUri(code string, length int32, uri string
 		ret = contextEvaluateWithSourceUriFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -317,7 +324,7 @@ func contextGetExceptionFunction_Set() error {
 // GetException is a representation of the C type jsc_context_get_exception.
 func (recv *Context) GetException() *Exception {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -326,7 +333,8 @@ func (recv *Context) GetException() *Exception {
 		ret = contextGetExceptionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Exception{native: ret.Pointer()}
+	retGo := &Exception{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -349,7 +357,7 @@ func contextGetGlobalObjectFunction_Set() error {
 // GetGlobalObject is a representation of the C type jsc_context_get_global_object.
 func (recv *Context) GetGlobalObject() *Value {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -358,7 +366,8 @@ func (recv *Context) GetGlobalObject() *Value {
 		ret = contextGetGlobalObjectFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -381,7 +390,7 @@ func contextGetValueFunction_Set() error {
 // GetValue is a representation of the C type jsc_context_get_value.
 func (recv *Context) GetValue(name string) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -391,7 +400,8 @@ func (recv *Context) GetValue(name string) *Value {
 		ret = contextGetValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -414,7 +424,7 @@ func contextGetVirtualMachineFunction_Set() error {
 // GetVirtualMachine is a representation of the C type jsc_context_get_virtual_machine.
 func (recv *Context) GetVirtualMachine() *VirtualMachine {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -423,7 +433,8 @@ func (recv *Context) GetVirtualMachine() *VirtualMachine {
 		ret = contextGetVirtualMachineFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VirtualMachine{native: ret.Pointer()}
+	retGo := &VirtualMachine{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -446,7 +457,7 @@ func contextPopExceptionHandlerFunction_Set() error {
 // PopExceptionHandler is a representation of the C type jsc_context_pop_exception_handler.
 func (recv *Context) PopExceptionHandler() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := contextPopExceptionHandlerFunction_Set()
 	if err == nil {
@@ -478,9 +489,9 @@ func contextSetValueFunction_Set() error {
 // SetValue is a representation of the C type jsc_context_set_value.
 func (recv *Context) SetValue(name string, value *Value) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
-	inArgs[2].SetPointer(value.native)
+	inArgs[2].SetPointer(value.Native)
 
 	err := contextSetValueFunction_Set()
 	if err == nil {
@@ -508,7 +519,7 @@ func contextThrowFunction_Set() error {
 // Throw is a representation of the C type jsc_context_throw.
 func (recv *Context) Throw(errorMessage string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(errorMessage)
 
 	err := contextThrowFunction_Set()
@@ -537,8 +548,8 @@ func contextThrowExceptionFunction_Set() error {
 // ThrowException is a representation of the C type jsc_context_throw_exception.
 func (recv *Context) ThrowException(exception *Exception) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(exception.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(exception.Native)
 
 	err := contextThrowExceptionFunction_Set()
 	if err == nil {
@@ -568,7 +579,7 @@ func contextThrowWithNameFunction_Set() error {
 // ThrowWithName is a representation of the C type jsc_context_throw_with_name.
 func (recv *Context) ThrowWithName(errorName string, errorMessage string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(errorName)
 	inArgs[2].SetString(errorMessage)
 
@@ -594,7 +605,7 @@ func exceptionStruct_Set() error {
 }
 
 type Exception struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -619,7 +630,7 @@ func exceptionNewFunction_Set() error {
 // ExceptionNew is a representation of the C type jsc_exception_new.
 func ExceptionNew(context *Context, message string) *Exception {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 	inArgs[1].SetString(message)
 
 	var ret gi.Argument
@@ -629,7 +640,8 @@ func ExceptionNew(context *Context, message string) *Exception {
 		ret = exceptionNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Exception{native: ret.Pointer()}
+	retGo := &Exception{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -656,7 +668,7 @@ func exceptionNewWithNameFunction_Set() error {
 // ExceptionNewWithName is a representation of the C type jsc_exception_new_with_name.
 func ExceptionNewWithName(context *Context, name string, message string) *Exception {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(message)
 
@@ -667,7 +679,8 @@ func ExceptionNewWithName(context *Context, name string, message string) *Except
 		ret = exceptionNewWithNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Exception{native: ret.Pointer()}
+	retGo := &Exception{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -694,7 +707,7 @@ func exceptionGetBacktraceStringFunction_Set() error {
 // GetBacktraceString is a representation of the C type jsc_exception_get_backtrace_string.
 func (recv *Exception) GetBacktraceString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -726,7 +739,7 @@ func exceptionGetColumnNumberFunction_Set() error {
 // GetColumnNumber is a representation of the C type jsc_exception_get_column_number.
 func (recv *Exception) GetColumnNumber() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -758,7 +771,7 @@ func exceptionGetLineNumberFunction_Set() error {
 // GetLineNumber is a representation of the C type jsc_exception_get_line_number.
 func (recv *Exception) GetLineNumber() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -790,7 +803,7 @@ func exceptionGetMessageFunction_Set() error {
 // GetMessage is a representation of the C type jsc_exception_get_message.
 func (recv *Exception) GetMessage() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -822,7 +835,7 @@ func exceptionGetNameFunction_Set() error {
 // GetName is a representation of the C type jsc_exception_get_name.
 func (recv *Exception) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -854,7 +867,7 @@ func exceptionGetSourceUriFunction_Set() error {
 // GetSourceUri is a representation of the C type jsc_exception_get_source_uri.
 func (recv *Exception) GetSourceUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -886,7 +899,7 @@ func exceptionReportFunction_Set() error {
 // Report is a representation of the C type jsc_exception_report.
 func (recv *Exception) Report() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -918,7 +931,7 @@ func exceptionToStringFunction_Set() error {
 // ToString is a representation of the C type jsc_exception_to_string.
 func (recv *Exception) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -944,7 +957,7 @@ func valueStruct_Set() error {
 }
 
 type Value struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -975,7 +988,7 @@ func valueNewBooleanFunction_Set() error {
 // ValueNewBoolean is a representation of the C type jsc_value_new_boolean.
 func ValueNewBoolean(context *Context, value bool) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 	inArgs[1].SetBoolean(value)
 
 	var ret gi.Argument
@@ -985,7 +998,8 @@ func ValueNewBoolean(context *Context, value bool) *Value {
 		ret = valueNewBooleanFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1014,7 +1028,7 @@ func valueNewNullFunction_Set() error {
 // ValueNewNull is a representation of the C type jsc_value_new_null.
 func ValueNewNull(context *Context) *Value {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 
 	var ret gi.Argument
 
@@ -1023,7 +1037,8 @@ func ValueNewNull(context *Context) *Value {
 		ret = valueNewNullFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1046,7 +1061,7 @@ func valueNewNumberFunction_Set() error {
 // ValueNewNumber is a representation of the C type jsc_value_new_number.
 func ValueNewNumber(context *Context, number float64) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 	inArgs[1].SetFloat64(number)
 
 	var ret gi.Argument
@@ -1056,7 +1071,8 @@ func ValueNewNumber(context *Context, number float64) *Value {
 		ret = valueNewNumberFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1081,7 +1097,7 @@ func valueNewStringFunction_Set() error {
 // ValueNewString is a representation of the C type jsc_value_new_string.
 func ValueNewString(context *Context, string_ string) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 	inArgs[1].SetString(string_)
 
 	var ret gi.Argument
@@ -1091,7 +1107,8 @@ func ValueNewString(context *Context, string_ string) *Value {
 		ret = valueNewStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1116,7 +1133,7 @@ func valueNewUndefinedFunction_Set() error {
 // ValueNewUndefined is a representation of the C type jsc_value_new_undefined.
 func ValueNewUndefined(context *Context) *Value {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 
 	var ret gi.Argument
 
@@ -1125,7 +1142,8 @@ func ValueNewUndefined(context *Context) *Value {
 		ret = valueNewUndefinedFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1156,7 +1174,7 @@ func valueGetContextFunction_Set() error {
 // GetContext is a representation of the C type jsc_value_get_context.
 func (recv *Value) GetContext() *Context {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1165,7 +1183,8 @@ func (recv *Value) GetContext() *Context {
 		ret = valueGetContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1188,7 +1207,7 @@ func valueIsArrayFunction_Set() error {
 // IsArray is a representation of the C type jsc_value_is_array.
 func (recv *Value) IsArray() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1220,7 +1239,7 @@ func valueIsBooleanFunction_Set() error {
 // IsBoolean is a representation of the C type jsc_value_is_boolean.
 func (recv *Value) IsBoolean() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1252,7 +1271,7 @@ func valueIsConstructorFunction_Set() error {
 // IsConstructor is a representation of the C type jsc_value_is_constructor.
 func (recv *Value) IsConstructor() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1284,7 +1303,7 @@ func valueIsFunctionFunction_Set() error {
 // IsFunction is a representation of the C type jsc_value_is_function.
 func (recv *Value) IsFunction() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1316,7 +1335,7 @@ func valueIsNullFunction_Set() error {
 // IsNull is a representation of the C type jsc_value_is_null.
 func (recv *Value) IsNull() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1348,7 +1367,7 @@ func valueIsNumberFunction_Set() error {
 // IsNumber is a representation of the C type jsc_value_is_number.
 func (recv *Value) IsNumber() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1380,7 +1399,7 @@ func valueIsObjectFunction_Set() error {
 // IsObject is a representation of the C type jsc_value_is_object.
 func (recv *Value) IsObject() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1412,7 +1431,7 @@ func valueIsStringFunction_Set() error {
 // IsString is a representation of the C type jsc_value_is_string.
 func (recv *Value) IsString() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1444,7 +1463,7 @@ func valueIsUndefinedFunction_Set() error {
 // IsUndefined is a representation of the C type jsc_value_is_undefined.
 func (recv *Value) IsUndefined() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1480,7 +1499,7 @@ func valueObjectDeletePropertyFunction_Set() error {
 // ObjectDeleteProperty is a representation of the C type jsc_value_object_delete_property.
 func (recv *Value) ObjectDeleteProperty(name string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -1513,7 +1532,7 @@ func valueObjectEnumeratePropertiesFunction_Set() error {
 // ObjectEnumerateProperties is a representation of the C type jsc_value_object_enumerate_properties.
 func (recv *Value) ObjectEnumerateProperties() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := valueObjectEnumeratePropertiesFunction_Set()
 	if err == nil {
@@ -1541,7 +1560,7 @@ func valueObjectGetPropertyFunction_Set() error {
 // ObjectGetProperty is a representation of the C type jsc_value_object_get_property.
 func (recv *Value) ObjectGetProperty(name string) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -1551,7 +1570,8 @@ func (recv *Value) ObjectGetProperty(name string) *Value {
 		ret = valueObjectGetPropertyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1574,7 +1594,7 @@ func valueObjectGetPropertyAtIndexFunction_Set() error {
 // ObjectGetPropertyAtIndex is a representation of the C type jsc_value_object_get_property_at_index.
 func (recv *Value) ObjectGetPropertyAtIndex(index uint32) *Value {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(index)
 
 	var ret gi.Argument
@@ -1584,7 +1604,8 @@ func (recv *Value) ObjectGetPropertyAtIndex(index uint32) *Value {
 		ret = valueObjectGetPropertyAtIndexFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1607,7 +1628,7 @@ func valueObjectHasPropertyFunction_Set() error {
 // ObjectHasProperty is a representation of the C type jsc_value_object_has_property.
 func (recv *Value) ObjectHasProperty(name string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -1644,7 +1665,7 @@ func valueObjectIsInstanceOfFunction_Set() error {
 // ObjectIsInstanceOf is a representation of the C type jsc_value_object_is_instance_of.
 func (recv *Value) ObjectIsInstanceOf(name string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -1677,9 +1698,9 @@ func valueObjectSetPropertyFunction_Set() error {
 // ObjectSetProperty is a representation of the C type jsc_value_object_set_property.
 func (recv *Value) ObjectSetProperty(name string, property *Value) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
-	inArgs[2].SetPointer(property.native)
+	inArgs[2].SetPointer(property.Native)
 
 	err := valueObjectSetPropertyFunction_Set()
 	if err == nil {
@@ -1707,9 +1728,9 @@ func valueObjectSetPropertyAtIndexFunction_Set() error {
 // ObjectSetPropertyAtIndex is a representation of the C type jsc_value_object_set_property_at_index.
 func (recv *Value) ObjectSetPropertyAtIndex(index uint32, property *Value) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(index)
-	inArgs[2].SetPointer(property.native)
+	inArgs[2].SetPointer(property.Native)
 
 	err := valueObjectSetPropertyAtIndexFunction_Set()
 	if err == nil {
@@ -1737,7 +1758,7 @@ func valueToBooleanFunction_Set() error {
 // ToBoolean is a representation of the C type jsc_value_to_boolean.
 func (recv *Value) ToBoolean() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1769,7 +1790,7 @@ func valueToDoubleFunction_Set() error {
 // ToDouble is a representation of the C type jsc_value_to_double.
 func (recv *Value) ToDouble() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1801,7 +1822,7 @@ func valueToInt32Function_Set() error {
 // ToInt32 is a representation of the C type jsc_value_to_int32.
 func (recv *Value) ToInt32() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1833,7 +1854,7 @@ func valueToStringFunction_Set() error {
 // ToString is a representation of the C type jsc_value_to_string.
 func (recv *Value) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1861,7 +1882,7 @@ func virtualMachineStruct_Set() error {
 }
 
 type VirtualMachine struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1893,7 +1914,8 @@ func VirtualMachineNew() *VirtualMachine {
 		ret = virtualMachineNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &VirtualMachine{native: ret.Pointer()}
+	retGo := &VirtualMachine{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1910,7 +1932,7 @@ func weakValueStruct_Set() error {
 }
 
 type WeakValue struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1935,7 +1957,7 @@ func weakValueNewFunction_Set() error {
 // WeakValueNew is a representation of the C type jsc_weak_value_new.
 func WeakValueNew(value *Value) *WeakValue {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(value.native)
+	inArgs[0].SetPointer(value.Native)
 
 	var ret gi.Argument
 
@@ -1944,7 +1966,8 @@ func WeakValueNew(value *Value) *WeakValue {
 		ret = weakValueNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &WeakValue{native: ret.Pointer()}
+	retGo := &WeakValue{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1967,7 +1990,7 @@ func weakValueGetValueFunction_Set() error {
 // GetValue is a representation of the C type jsc_weak_value_get_value.
 func (recv *WeakValue) GetValue() *Value {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1976,7 +1999,8 @@ func (recv *WeakValue) GetValue() *Value {
 		ret = weakValueGetValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Value{native: ret.Pointer()}
+	retGo := &Value{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }

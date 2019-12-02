@@ -120,22 +120,39 @@ func (r *Record) generateType(f *file) {
 	f.
 		Type().
 		Id(r.goName).
-		Struct(jen.Id("native").Uintptr())
+		StructFunc(r.generateStructContent)
 
 	f.Line()
+}
+
+func (r *Record) generateStructContent(g *jen.Group) {
+	if r.parent != nil {
+		if r.parentNamespace != nil {
+			g.Qual(r.parentNamespace.goFullPackageName, r.parent.Name)
+		} else {
+			g.Id(r.parent.Name)
+		}
+	} else {
+		g.Id(fieldNameNative).Uintptr()
+	}
 }
 
 func (r *Record) supportedAsOutParameter() bool {
 	return true
 }
 
-func (r *Record) createFromArgument(argValue *jen.Statement) *jen.Statement {
-	return jen.
+func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
+	g.
+		Add(argName).
+		Op(":=").
 		Op("&").
 		Id(r.goName).
-		Values(jen.Dict{
-			jen.Id("native"): argValue,
-		})
+		Values()
+
+	g.
+		Add(argName).Dot(fieldNameNative).
+		Op("=").
+		Add(argValue)
 }
 
 func (r *Record) generateStructFinalizer(f *file) {
@@ -150,7 +167,7 @@ func (r *Record) generateStructFinalizer(f *file) {
 			// SomeStuct.Free(obj.native)
 			g.
 				Id(r.structInfoGoName).Dot("Free").
-				Call(jen.Id("obj").Dot("native"))
+				Call(jen.Id("obj").Dot(fieldNameNative))
 		})
 }
 
@@ -184,17 +201,21 @@ func (r *Record) generateStructConstructor(f *file) {
 			g.Line()
 
 			// GEN: structGo := &SomeStruct{native: SomeStruct.Alloc()}
-			g.
-				Id("structGo").
-				Op(":=").
-				Do(func(s *jen.Statement) {
-					// SomeStruct.Alloc()
-					struct_ := jen.
-						Id(r.structInfoGoName).Dot("Alloc").
-						Call()
-
-					s.Add(r.createFromArgument(struct_))
-				})
+			struct_ := jen.
+				Id(r.structInfoGoName).Dot("Alloc").
+				Call()
+			r.createFromArgument(g, jen.Id("structGo"), struct_)
+			//g.
+			//	Id("structGo").
+			//	Op(":=").
+			//	Do(func(s *jen.Statement) {
+			//		// SomeStruct.Alloc()
+			//		struct_ := jen.
+			//			Id(r.structInfoGoName).Dot("Alloc").
+			//			Call()
+			//
+			//		s.Add(r.createFromArgument(struct_))
+			//	})
 
 			// GEN: runtime.SetFinalizer(structGo, finalizeSomeType)
 			g.

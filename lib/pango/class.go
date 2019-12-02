@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 )
@@ -20,7 +21,7 @@ func contextStruct_Set() error {
 }
 
 type Context struct {
-	native uintptr
+	gobject.Object
 }
 
 var contextNewFunction *gi.Function
@@ -48,7 +49,8 @@ func ContextNew() *Context {
 		ret = contextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -71,7 +73,7 @@ func contextChangedFunction_Set() error {
 // Changed is a representation of the C type pango_context_changed.
 func (recv *Context) Changed() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := contextChangedFunction_Set()
 	if err == nil {
@@ -103,7 +105,7 @@ func contextGetFontDescriptionFunction_Set() error {
 // GetFontDescription is a representation of the C type pango_context_get_font_description.
 func (recv *Context) GetFontDescription() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -112,7 +114,8 @@ func (recv *Context) GetFontDescription() *FontDescription {
 		ret = contextGetFontDescriptionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -135,7 +138,7 @@ func contextGetFontMapFunction_Set() error {
 // GetFontMap is a representation of the C type pango_context_get_font_map.
 func (recv *Context) GetFontMap() *FontMap {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -144,7 +147,8 @@ func (recv *Context) GetFontMap() *FontMap {
 		ret = contextGetFontMapFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontMap{native: ret.Pointer()}
+	retGo := &FontMap{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -171,7 +175,7 @@ func contextGetLanguageFunction_Set() error {
 // GetLanguage is a representation of the C type pango_context_get_language.
 func (recv *Context) GetLanguage() *Language {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -180,7 +184,8 @@ func (recv *Context) GetLanguage() *Language {
 		ret = contextGetLanguageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Language{native: ret.Pointer()}
+	retGo := &Language{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -203,7 +208,7 @@ func contextGetMatrixFunction_Set() error {
 // GetMatrix is a representation of the C type pango_context_get_matrix.
 func (recv *Context) GetMatrix() *Matrix {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -212,7 +217,8 @@ func (recv *Context) GetMatrix() *Matrix {
 		ret = contextGetMatrixFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Matrix{native: ret.Pointer()}
+	retGo := &Matrix{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -235,9 +241,9 @@ func contextGetMetricsFunction_Set() error {
 // GetMetrics is a representation of the C type pango_context_get_metrics.
 func (recv *Context) GetMetrics(desc *FontDescription, language *Language) *FontMetrics {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc.native)
-	inArgs[2].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(desc.Native)
+	inArgs[2].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -246,7 +252,8 @@ func (recv *Context) GetMetrics(desc *FontDescription, language *Language) *Font
 		ret = contextGetMetricsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontMetrics{native: ret.Pointer()}
+	retGo := &FontMetrics{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -269,7 +276,7 @@ func contextGetSerialFunction_Set() error {
 // GetSerial is a representation of the C type pango_context_get_serial.
 func (recv *Context) GetSerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -303,8 +310,8 @@ func contextLoadFontFunction_Set() error {
 // LoadFont is a representation of the C type pango_context_load_font.
 func (recv *Context) LoadFont(desc *FontDescription) *Font {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(desc.Native)
 
 	var ret gi.Argument
 
@@ -313,7 +320,8 @@ func (recv *Context) LoadFont(desc *FontDescription) *Font {
 		ret = contextLoadFontFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Font{native: ret.Pointer()}
+	retGo := &Font{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -336,9 +344,9 @@ func contextLoadFontsetFunction_Set() error {
 // LoadFontset is a representation of the C type pango_context_load_fontset.
 func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fontset {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc.native)
-	inArgs[2].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(desc.Native)
+	inArgs[2].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -347,7 +355,8 @@ func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fon
 		ret = contextLoadFontsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Fontset{native: ret.Pointer()}
+	retGo := &Fontset{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -374,8 +383,8 @@ func contextSetFontDescriptionFunction_Set() error {
 // SetFontDescription is a representation of the C type pango_context_set_font_description.
 func (recv *Context) SetFontDescription(desc *FontDescription) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(desc.Native)
 
 	err := contextSetFontDescriptionFunction_Set()
 	if err == nil {
@@ -403,8 +412,8 @@ func contextSetFontMapFunction_Set() error {
 // SetFontMap is a representation of the C type pango_context_set_font_map.
 func (recv *Context) SetFontMap(fontMap *FontMap) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(fontMap.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(fontMap.Native)
 
 	err := contextSetFontMapFunction_Set()
 	if err == nil {
@@ -434,8 +443,8 @@ func contextSetLanguageFunction_Set() error {
 // SetLanguage is a representation of the C type pango_context_set_language.
 func (recv *Context) SetLanguage(language *Language) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(language.Native)
 
 	err := contextSetLanguageFunction_Set()
 	if err == nil {
@@ -463,8 +472,8 @@ func contextSetMatrixFunction_Set() error {
 // SetMatrix is a representation of the C type pango_context_set_matrix.
 func (recv *Context) SetMatrix(matrix *Matrix) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(matrix.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(matrix.Native)
 
 	err := contextSetMatrixFunction_Set()
 	if err == nil {
@@ -486,7 +495,7 @@ func engineStruct_Set() error {
 }
 
 type Engine struct {
-	native uintptr
+	gobject.Object
 }
 
 // EngineStruct creates an uninitialised Engine.
@@ -496,12 +505,13 @@ func EngineStruct() *Engine {
 		return nil
 	}
 
-	structGo := &Engine{native: engineStruct.Alloc()}
+	structGo := &Engine{}
+	structGo.Native = engineStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeEngine)
 	return structGo
 }
 func finalizeEngine(obj *Engine) {
-	engineStruct.Free(obj.native)
+	engineStruct.Free(obj.Native)
 }
 
 var engineLangStruct *gi.Struct
@@ -516,7 +526,7 @@ func engineLangStruct_Set() error {
 }
 
 type EngineLang struct {
-	native uintptr
+	Engine
 }
 
 // EngineLangStruct creates an uninitialised EngineLang.
@@ -526,12 +536,13 @@ func EngineLangStruct() *EngineLang {
 		return nil
 	}
 
-	structGo := &EngineLang{native: engineLangStruct.Alloc()}
+	structGo := &EngineLang{}
+	structGo.Native = engineLangStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeEngineLang)
 	return structGo
 }
 func finalizeEngineLang(obj *EngineLang) {
-	engineLangStruct.Free(obj.native)
+	engineLangStruct.Free(obj.Native)
 }
 
 var engineShapeStruct *gi.Struct
@@ -546,21 +557,22 @@ func engineShapeStruct_Set() error {
 }
 
 type EngineShape struct {
-	native uintptr
+	Engine
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *EngineShape) FieldParentInstance() *Engine {
-	argValue := gi.FieldGet(engineShapeStruct, recv.native, "parent_instance")
-	value := &Engine{native: argValue.Pointer()}
+	argValue := gi.FieldGet(engineShapeStruct, recv.Native, "parent_instance")
+	value := &Engine{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *EngineShape) SetFieldParentInstance(value *Engine) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(engineShapeStruct, recv.native, "parent_instance", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(engineShapeStruct, recv.Native, "parent_instance", argValue)
 }
 
 // EngineShapeStruct creates an uninitialised EngineShape.
@@ -570,12 +582,13 @@ func EngineShapeStruct() *EngineShape {
 		return nil
 	}
 
-	structGo := &EngineShape{native: engineShapeStruct.Alloc()}
+	structGo := &EngineShape{}
+	structGo.Native = engineShapeStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeEngineShape)
 	return structGo
 }
 func finalizeEngineShape(obj *EngineShape) {
-	engineShapeStruct.Free(obj.native)
+	engineShapeStruct.Free(obj.Native)
 }
 
 var fontStruct *gi.Struct
@@ -590,7 +603,7 @@ func fontStruct_Set() error {
 }
 
 type Font struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -615,7 +628,7 @@ func fontDescribeFunction_Set() error {
 // Describe is a representation of the C type pango_font_describe.
 func (recv *Font) Describe() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -624,7 +637,8 @@ func (recv *Font) Describe() *FontDescription {
 		ret = fontDescribeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -647,7 +661,7 @@ func fontDescribeWithAbsoluteSizeFunction_Set() error {
 // DescribeWithAbsoluteSize is a representation of the C type pango_font_describe_with_absolute_size.
 func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -656,7 +670,8 @@ func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
 		ret = fontDescribeWithAbsoluteSizeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -679,8 +694,8 @@ func fontFindShaperFunction_Set() error {
 // FindShaper is a representation of the C type pango_font_find_shaper.
 func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(language.Native)
 	inArgs[2].SetUint32(ch)
 
 	var ret gi.Argument
@@ -690,7 +705,8 @@ func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
 		ret = fontFindShaperFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &EngineShape{native: ret.Pointer()}
+	retGo := &EngineShape{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -713,8 +729,8 @@ func fontGetCoverageFunction_Set() error {
 // GetCoverage is a representation of the C type pango_font_get_coverage.
 func (recv *Font) GetCoverage(language *Language) *Coverage {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -723,7 +739,8 @@ func (recv *Font) GetCoverage(language *Language) *Coverage {
 		ret = fontGetCoverageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Coverage{native: ret.Pointer()}
+	retGo := &Coverage{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -746,7 +763,7 @@ func fontGetFontMapFunction_Set() error {
 // GetFontMap is a representation of the C type pango_font_get_font_map.
 func (recv *Font) GetFontMap() *FontMap {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -755,7 +772,8 @@ func (recv *Font) GetFontMap() *FontMap {
 		ret = fontGetFontMapFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontMap{native: ret.Pointer()}
+	retGo := &FontMap{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -778,7 +796,7 @@ func fontGetGlyphExtentsFunction_Set() error {
 // GetGlyphExtents is a representation of the C type pango_font_get_glyph_extents.
 func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(uint32(glyph))
 
 	var outArgs [2]gi.Argument
@@ -788,8 +806,10 @@ func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 		fontGetGlyphExtentsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
-	out1 := &Rectangle{native: outArgs[1].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := &Rectangle{}
+	out1.Native = outArgs[1].Pointer()
 
 	return out0, out1
 }
@@ -812,8 +832,8 @@ func fontGetMetricsFunction_Set() error {
 // GetMetrics is a representation of the C type pango_font_get_metrics.
 func (recv *Font) GetMetrics(language *Language) *FontMetrics {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -822,7 +842,8 @@ func (recv *Font) GetMetrics(language *Language) *FontMetrics {
 		ret = fontGetMetricsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontMetrics{native: ret.Pointer()}
+	retGo := &FontMetrics{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -834,12 +855,13 @@ func FontStruct() *Font {
 		return nil
 	}
 
-	structGo := &Font{native: fontStruct.Alloc()}
+	structGo := &Font{}
+	structGo.Native = fontStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFont)
 	return structGo
 }
 func finalizeFont(obj *Font) {
-	fontStruct.Free(obj.native)
+	fontStruct.Free(obj.Native)
 }
 
 var fontFaceStruct *gi.Struct
@@ -854,7 +876,7 @@ func fontFaceStruct_Set() error {
 }
 
 type FontFace struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -879,7 +901,7 @@ func fontFaceDescribeFunction_Set() error {
 // Describe is a representation of the C type pango_font_face_describe.
 func (recv *FontFace) Describe() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -888,7 +910,8 @@ func (recv *FontFace) Describe() *FontDescription {
 		ret = fontFaceDescribeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -911,7 +934,7 @@ func fontFaceGetFaceNameFunction_Set() error {
 // GetFaceName is a representation of the C type pango_font_face_get_face_name.
 func (recv *FontFace) GetFaceName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -943,7 +966,7 @@ func fontFaceIsSynthesizedFunction_Set() error {
 // IsSynthesized is a representation of the C type pango_font_face_is_synthesized.
 func (recv *FontFace) IsSynthesized() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -966,12 +989,13 @@ func FontFaceStruct() *FontFace {
 		return nil
 	}
 
-	structGo := &FontFace{native: fontFaceStruct.Alloc()}
+	structGo := &FontFace{}
+	structGo.Native = fontFaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFontFace)
 	return structGo
 }
 func finalizeFontFace(obj *FontFace) {
-	fontFaceStruct.Free(obj.native)
+	fontFaceStruct.Free(obj.Native)
 }
 
 var fontFamilyStruct *gi.Struct
@@ -986,7 +1010,7 @@ func fontFamilyStruct_Set() error {
 }
 
 type FontFamily struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1011,7 +1035,7 @@ func fontFamilyGetNameFunction_Set() error {
 // GetName is a representation of the C type pango_font_family_get_name.
 func (recv *FontFamily) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1043,7 +1067,7 @@ func fontFamilyIsMonospaceFunction_Set() error {
 // IsMonospace is a representation of the C type pango_font_family_is_monospace.
 func (recv *FontFamily) IsMonospace() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1066,12 +1090,13 @@ func FontFamilyStruct() *FontFamily {
 		return nil
 	}
 
-	structGo := &FontFamily{native: fontFamilyStruct.Alloc()}
+	structGo := &FontFamily{}
+	structGo.Native = fontFamilyStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFontFamily)
 	return structGo
 }
 func finalizeFontFamily(obj *FontFamily) {
-	fontFamilyStruct.Free(obj.native)
+	fontFamilyStruct.Free(obj.Native)
 }
 
 var fontMapStruct *gi.Struct
@@ -1086,7 +1111,7 @@ func fontMapStruct_Set() error {
 }
 
 type FontMap struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1111,7 +1136,7 @@ func fontMapChangedFunction_Set() error {
 // Changed is a representation of the C type pango_font_map_changed.
 func (recv *FontMap) Changed() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := fontMapChangedFunction_Set()
 	if err == nil {
@@ -1139,7 +1164,7 @@ func fontMapCreateContextFunction_Set() error {
 // CreateContext is a representation of the C type pango_font_map_create_context.
 func (recv *FontMap) CreateContext() *Context {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1148,7 +1173,8 @@ func (recv *FontMap) CreateContext() *Context {
 		ret = fontMapCreateContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1171,7 +1197,7 @@ func fontMapGetSerialFunction_Set() error {
 // GetSerial is a representation of the C type pango_font_map_get_serial.
 func (recv *FontMap) GetSerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1203,7 +1229,7 @@ func fontMapGetShapeEngineTypeFunction_Set() error {
 // GetShapeEngineType is a representation of the C type pango_font_map_get_shape_engine_type.
 func (recv *FontMap) GetShapeEngineType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1237,9 +1263,9 @@ func fontMapLoadFontFunction_Set() error {
 // LoadFont is a representation of the C type pango_font_map_load_font.
 func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(context.native)
-	inArgs[2].SetPointer(desc.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(context.Native)
+	inArgs[2].SetPointer(desc.Native)
 
 	var ret gi.Argument
 
@@ -1248,7 +1274,8 @@ func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 		ret = fontMapLoadFontFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Font{native: ret.Pointer()}
+	retGo := &Font{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1271,10 +1298,10 @@ func fontMapLoadFontsetFunction_Set() error {
 // LoadFontset is a representation of the C type pango_font_map_load_fontset.
 func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, language *Language) *Fontset {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(context.native)
-	inArgs[2].SetPointer(desc.native)
-	inArgs[3].SetPointer(language.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(context.Native)
+	inArgs[2].SetPointer(desc.Native)
+	inArgs[3].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -1283,7 +1310,8 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 		ret = fontMapLoadFontsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Fontset{native: ret.Pointer()}
+	retGo := &Fontset{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1295,12 +1323,13 @@ func FontMapStruct() *FontMap {
 		return nil
 	}
 
-	structGo := &FontMap{native: fontMapStruct.Alloc()}
+	structGo := &FontMap{}
+	structGo.Native = fontMapStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFontMap)
 	return structGo
 }
 func finalizeFontMap(obj *FontMap) {
-	fontMapStruct.Free(obj.native)
+	fontMapStruct.Free(obj.Native)
 }
 
 var fontsetStruct *gi.Struct
@@ -1315,7 +1344,7 @@ func fontsetStruct_Set() error {
 }
 
 type Fontset struct {
-	native uintptr
+	gobject.Object
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1342,7 +1371,7 @@ func fontsetGetFontFunction_Set() error {
 // GetFont is a representation of the C type pango_fontset_get_font.
 func (recv *Fontset) GetFont(wc uint32) *Font {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(wc)
 
 	var ret gi.Argument
@@ -1352,7 +1381,8 @@ func (recv *Fontset) GetFont(wc uint32) *Font {
 		ret = fontsetGetFontFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Font{native: ret.Pointer()}
+	retGo := &Font{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1375,7 +1405,7 @@ func fontsetGetMetricsFunction_Set() error {
 // GetMetrics is a representation of the C type pango_fontset_get_metrics.
 func (recv *Fontset) GetMetrics() *FontMetrics {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1384,7 +1414,8 @@ func (recv *Fontset) GetMetrics() *FontMetrics {
 		ret = fontsetGetMetricsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontMetrics{native: ret.Pointer()}
+	retGo := &FontMetrics{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1396,12 +1427,13 @@ func FontsetStruct() *Fontset {
 		return nil
 	}
 
-	structGo := &Fontset{native: fontsetStruct.Alloc()}
+	structGo := &Fontset{}
+	structGo.Native = fontsetStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeFontset)
 	return structGo
 }
 func finalizeFontset(obj *Fontset) {
-	fontsetStruct.Free(obj.native)
+	fontsetStruct.Free(obj.Native)
 }
 
 var fontsetSimpleStruct *gi.Struct
@@ -1416,7 +1448,7 @@ func fontsetSimpleStruct_Set() error {
 }
 
 type FontsetSimple struct {
-	native uintptr
+	Fontset
 }
 
 var fontsetSimpleNewFunction *gi.Function
@@ -1437,7 +1469,7 @@ func fontsetSimpleNewFunction_Set() error {
 // FontsetSimpleNew is a representation of the C type pango_fontset_simple_new.
 func FontsetSimpleNew(language *Language) *FontsetSimple {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(language.native)
+	inArgs[0].SetPointer(language.Native)
 
 	var ret gi.Argument
 
@@ -1446,7 +1478,8 @@ func FontsetSimpleNew(language *Language) *FontsetSimple {
 		ret = fontsetSimpleNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontsetSimple{native: ret.Pointer()}
+	retGo := &FontsetSimple{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1469,8 +1502,8 @@ func fontsetSimpleAppendFunction_Set() error {
 // Append is a representation of the C type pango_fontset_simple_append.
 func (recv *FontsetSimple) Append(font *Font) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(font.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(font.Native)
 
 	err := fontsetSimpleAppendFunction_Set()
 	if err == nil {
@@ -1498,7 +1531,7 @@ func fontsetSimpleSizeFunction_Set() error {
 // Size is a representation of the C type pango_fontset_simple_size.
 func (recv *FontsetSimple) Size() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1524,7 +1557,7 @@ func layoutStruct_Set() error {
 }
 
 type Layout struct {
-	native uintptr
+	gobject.Object
 }
 
 var layoutNewFunction *gi.Function
@@ -1545,7 +1578,7 @@ func layoutNewFunction_Set() error {
 // LayoutNew is a representation of the C type pango_layout_new.
 func LayoutNew(context *Context) *Layout {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native)
 
 	var ret gi.Argument
 
@@ -1554,7 +1587,8 @@ func LayoutNew(context *Context) *Layout {
 		ret = layoutNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Layout{native: ret.Pointer()}
+	retGo := &Layout{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1577,7 +1611,7 @@ func layoutContextChangedFunction_Set() error {
 // ContextChanged is a representation of the C type pango_layout_context_changed.
 func (recv *Layout) ContextChanged() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := layoutContextChangedFunction_Set()
 	if err == nil {
@@ -1605,7 +1639,7 @@ func layoutCopyFunction_Set() error {
 // Copy is a representation of the C type pango_layout_copy.
 func (recv *Layout) Copy() *Layout {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1614,7 +1648,8 @@ func (recv *Layout) Copy() *Layout {
 		ret = layoutCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Layout{native: ret.Pointer()}
+	retGo := &Layout{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1639,7 +1674,7 @@ func layoutGetAttributesFunction_Set() error {
 // GetAttributes is a representation of the C type pango_layout_get_attributes.
 func (recv *Layout) GetAttributes() *AttrList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1648,7 +1683,8 @@ func (recv *Layout) GetAttributes() *AttrList {
 		ret = layoutGetAttributesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &AttrList{native: ret.Pointer()}
+	retGo := &AttrList{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1671,7 +1707,7 @@ func layoutGetAutoDirFunction_Set() error {
 // GetAutoDir is a representation of the C type pango_layout_get_auto_dir.
 func (recv *Layout) GetAutoDir() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1703,7 +1739,7 @@ func layoutGetBaselineFunction_Set() error {
 // GetBaseline is a representation of the C type pango_layout_get_baseline.
 func (recv *Layout) GetBaseline() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1735,7 +1771,7 @@ func layoutGetCharacterCountFunction_Set() error {
 // GetCharacterCount is a representation of the C type pango_layout_get_character_count.
 func (recv *Layout) GetCharacterCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1767,7 +1803,7 @@ func layoutGetContextFunction_Set() error {
 // GetContext is a representation of the C type pango_layout_get_context.
 func (recv *Layout) GetContext() *Context {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1776,7 +1812,8 @@ func (recv *Layout) GetContext() *Context {
 		ret = layoutGetContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Context{native: ret.Pointer()}
+	retGo := &Context{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1799,7 +1836,7 @@ func layoutGetCursorPosFunction_Set() error {
 // GetCursorPos is a representation of the C type pango_layout_get_cursor_pos.
 func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(index)
 
 	var outArgs [2]gi.Argument
@@ -1809,8 +1846,10 @@ func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
 		layoutGetCursorPosFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
-	out1 := &Rectangle{native: outArgs[1].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := &Rectangle{}
+	out1.Native = outArgs[1].Pointer()
 
 	return out0, out1
 }
@@ -1835,7 +1874,7 @@ func layoutGetExtentsFunction_Set() error {
 // GetExtents is a representation of the C type pango_layout_get_extents.
 func (recv *Layout) GetExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -1844,8 +1883,10 @@ func (recv *Layout) GetExtents() (*Rectangle, *Rectangle) {
 		layoutGetExtentsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
-	out1 := &Rectangle{native: outArgs[1].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := &Rectangle{}
+	out1.Native = outArgs[1].Pointer()
 
 	return out0, out1
 }
@@ -1868,7 +1909,7 @@ func layoutGetFontDescriptionFunction_Set() error {
 // GetFontDescription is a representation of the C type pango_layout_get_font_description.
 func (recv *Layout) GetFontDescription() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1877,7 +1918,8 @@ func (recv *Layout) GetFontDescription() *FontDescription {
 		ret = layoutGetFontDescriptionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1900,7 +1942,7 @@ func layoutGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type pango_layout_get_height.
 func (recv *Layout) GetHeight() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1932,7 +1974,7 @@ func layoutGetIndentFunction_Set() error {
 // GetIndent is a representation of the C type pango_layout_get_indent.
 func (recv *Layout) GetIndent() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1964,7 +2006,7 @@ func layoutGetIterFunction_Set() error {
 // GetIter is a representation of the C type pango_layout_get_iter.
 func (recv *Layout) GetIter() *LayoutIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1973,7 +2015,8 @@ func (recv *Layout) GetIter() *LayoutIter {
 		ret = layoutGetIterFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &LayoutIter{native: ret.Pointer()}
+	retGo := &LayoutIter{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1996,7 +2039,7 @@ func layoutGetJustifyFunction_Set() error {
 // GetJustify is a representation of the C type pango_layout_get_justify.
 func (recv *Layout) GetJustify() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2028,7 +2071,7 @@ func layoutGetLineFunction_Set() error {
 // GetLine is a representation of the C type pango_layout_get_line.
 func (recv *Layout) GetLine(line int32) *LayoutLine {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(line)
 
 	var ret gi.Argument
@@ -2038,7 +2081,8 @@ func (recv *Layout) GetLine(line int32) *LayoutLine {
 		ret = layoutGetLineFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &LayoutLine{native: ret.Pointer()}
+	retGo := &LayoutLine{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2061,7 +2105,7 @@ func layoutGetLineCountFunction_Set() error {
 // GetLineCount is a representation of the C type pango_layout_get_line_count.
 func (recv *Layout) GetLineCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2093,7 +2137,7 @@ func layoutGetLineReadonlyFunction_Set() error {
 // GetLineReadonly is a representation of the C type pango_layout_get_line_readonly.
 func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(line)
 
 	var ret gi.Argument
@@ -2103,7 +2147,8 @@ func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 		ret = layoutGetLineReadonlyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &LayoutLine{native: ret.Pointer()}
+	retGo := &LayoutLine{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2132,7 +2177,7 @@ func layoutGetLogAttrsReadonlyFunction_Set() error {
 // GetLogAttrsReadonly is a representation of the C type pango_layout_get_log_attrs_readonly.
 func (recv *Layout) GetLogAttrsReadonly() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [1]gi.Argument
 
@@ -2164,7 +2209,7 @@ func layoutGetPixelExtentsFunction_Set() error {
 // GetPixelExtents is a representation of the C type pango_layout_get_pixel_extents.
 func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -2173,8 +2218,10 @@ func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 		layoutGetPixelExtentsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
-	out1 := &Rectangle{native: outArgs[1].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := &Rectangle{}
+	out1.Native = outArgs[1].Pointer()
 
 	return out0, out1
 }
@@ -2197,7 +2244,7 @@ func layoutGetPixelSizeFunction_Set() error {
 // GetPixelSize is a representation of the C type pango_layout_get_pixel_size.
 func (recv *Layout) GetPixelSize() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -2230,7 +2277,7 @@ func layoutGetSerialFunction_Set() error {
 // GetSerial is a representation of the C type pango_layout_get_serial.
 func (recv *Layout) GetSerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2262,7 +2309,7 @@ func layoutGetSingleParagraphModeFunction_Set() error {
 // GetSingleParagraphMode is a representation of the C type pango_layout_get_single_paragraph_mode.
 func (recv *Layout) GetSingleParagraphMode() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2294,7 +2341,7 @@ func layoutGetSizeFunction_Set() error {
 // GetSize is a representation of the C type pango_layout_get_size.
 func (recv *Layout) GetSize() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 
@@ -2327,7 +2374,7 @@ func layoutGetSpacingFunction_Set() error {
 // GetSpacing is a representation of the C type pango_layout_get_spacing.
 func (recv *Layout) GetSpacing() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2359,7 +2406,7 @@ func layoutGetTabsFunction_Set() error {
 // GetTabs is a representation of the C type pango_layout_get_tabs.
 func (recv *Layout) GetTabs() *TabArray {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2368,7 +2415,8 @@ func (recv *Layout) GetTabs() *TabArray {
 		ret = layoutGetTabsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TabArray{native: ret.Pointer()}
+	retGo := &TabArray{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2391,7 +2439,7 @@ func layoutGetTextFunction_Set() error {
 // GetText is a representation of the C type pango_layout_get_text.
 func (recv *Layout) GetText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2423,7 +2471,7 @@ func layoutGetUnknownGlyphsCountFunction_Set() error {
 // GetUnknownGlyphsCount is a representation of the C type pango_layout_get_unknown_glyphs_count.
 func (recv *Layout) GetUnknownGlyphsCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2455,7 +2503,7 @@ func layoutGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type pango_layout_get_width.
 func (recv *Layout) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2489,7 +2537,7 @@ func layoutIndexToLineXFunction_Set() error {
 // IndexToLineX is a representation of the C type pango_layout_index_to_line_x.
 func (recv *Layout) IndexToLineX(index int32, trailing bool) (int32, int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(index)
 	inArgs[2].SetBoolean(trailing)
 
@@ -2524,7 +2572,7 @@ func layoutIndexToPosFunction_Set() error {
 // IndexToPos is a representation of the C type pango_layout_index_to_pos.
 func (recv *Layout) IndexToPos(index int32) *Rectangle {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(index)
 
 	var outArgs [1]gi.Argument
@@ -2534,7 +2582,8 @@ func (recv *Layout) IndexToPos(index int32) *Rectangle {
 		layoutIndexToPosFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out0 := &Rectangle{}
+	out0.Native = outArgs[0].Pointer()
 
 	return out0
 }
@@ -2557,7 +2606,7 @@ func layoutIsEllipsizedFunction_Set() error {
 // IsEllipsized is a representation of the C type pango_layout_is_ellipsized.
 func (recv *Layout) IsEllipsized() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2589,7 +2638,7 @@ func layoutIsWrappedFunction_Set() error {
 // IsWrapped is a representation of the C type pango_layout_is_wrapped.
 func (recv *Layout) IsWrapped() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2621,7 +2670,7 @@ func layoutMoveCursorVisuallyFunction_Set() error {
 // MoveCursorVisually is a representation of the C type pango_layout_move_cursor_visually.
 func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (int32, int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(strong)
 	inArgs[2].SetInt32(oldIndex)
 	inArgs[3].SetInt32(oldTrailing)
@@ -2660,8 +2709,8 @@ func layoutSetAttributesFunction_Set() error {
 // SetAttributes is a representation of the C type pango_layout_set_attributes.
 func (recv *Layout) SetAttributes(attrs *AttrList) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(attrs.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(attrs.Native)
 
 	err := layoutSetAttributesFunction_Set()
 	if err == nil {
@@ -2689,7 +2738,7 @@ func layoutSetAutoDirFunction_Set() error {
 // SetAutoDir is a representation of the C type pango_layout_set_auto_dir.
 func (recv *Layout) SetAutoDir(autoDir bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(autoDir)
 
 	err := layoutSetAutoDirFunction_Set()
@@ -2720,8 +2769,8 @@ func layoutSetFontDescriptionFunction_Set() error {
 // SetFontDescription is a representation of the C type pango_layout_set_font_description.
 func (recv *Layout) SetFontDescription(desc *FontDescription) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(desc.Native)
 
 	err := layoutSetFontDescriptionFunction_Set()
 	if err == nil {
@@ -2749,7 +2798,7 @@ func layoutSetHeightFunction_Set() error {
 // SetHeight is a representation of the C type pango_layout_set_height.
 func (recv *Layout) SetHeight(height int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(height)
 
 	err := layoutSetHeightFunction_Set()
@@ -2778,7 +2827,7 @@ func layoutSetIndentFunction_Set() error {
 // SetIndent is a representation of the C type pango_layout_set_indent.
 func (recv *Layout) SetIndent(indent int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(indent)
 
 	err := layoutSetIndentFunction_Set()
@@ -2807,7 +2856,7 @@ func layoutSetJustifyFunction_Set() error {
 // SetJustify is a representation of the C type pango_layout_set_justify.
 func (recv *Layout) SetJustify(justify bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(justify)
 
 	err := layoutSetJustifyFunction_Set()
@@ -2836,7 +2885,7 @@ func layoutSetMarkupFunction_Set() error {
 // SetMarkup is a representation of the C type pango_layout_set_markup.
 func (recv *Layout) SetMarkup(markup string, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(markup)
 	inArgs[2].SetInt32(length)
 
@@ -2868,7 +2917,7 @@ func layoutSetSingleParagraphModeFunction_Set() error {
 // SetSingleParagraphMode is a representation of the C type pango_layout_set_single_paragraph_mode.
 func (recv *Layout) SetSingleParagraphMode(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(setting)
 
 	err := layoutSetSingleParagraphModeFunction_Set()
@@ -2897,7 +2946,7 @@ func layoutSetSpacingFunction_Set() error {
 // SetSpacing is a representation of the C type pango_layout_set_spacing.
 func (recv *Layout) SetSpacing(spacing int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(spacing)
 
 	err := layoutSetSpacingFunction_Set()
@@ -2926,8 +2975,8 @@ func layoutSetTabsFunction_Set() error {
 // SetTabs is a representation of the C type pango_layout_set_tabs.
 func (recv *Layout) SetTabs(tabs *TabArray) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tabs.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(tabs.Native)
 
 	err := layoutSetTabsFunction_Set()
 	if err == nil {
@@ -2955,7 +3004,7 @@ func layoutSetTextFunction_Set() error {
 // SetText is a representation of the C type pango_layout_set_text.
 func (recv *Layout) SetText(text string, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(length)
 
@@ -2985,7 +3034,7 @@ func layoutSetWidthFunction_Set() error {
 // SetWidth is a representation of the C type pango_layout_set_width.
 func (recv *Layout) SetWidth(width int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(width)
 
 	err := layoutSetWidthFunction_Set()
@@ -3016,7 +3065,7 @@ func layoutXyToIndexFunction_Set() error {
 // XyToIndex is a representation of the C type pango_layout_xy_to_index.
 func (recv *Layout) XyToIndex(x int32, y int32) (bool, int32, int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -3047,21 +3096,22 @@ func rendererStruct_Set() error {
 }
 
 type Renderer struct {
-	native uintptr
+	gobject.Object
 }
 
 // FieldMatrix returns the C field 'matrix'.
 func (recv *Renderer) FieldMatrix() *Matrix {
-	argValue := gi.FieldGet(rendererStruct, recv.native, "matrix")
-	value := &Matrix{native: argValue.Pointer()}
+	argValue := gi.FieldGet(rendererStruct, recv.Native, "matrix")
+	value := &Matrix{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldMatrix sets the value of the C field 'matrix'.
 func (recv *Renderer) SetFieldMatrix(value *Matrix) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(rendererStruct, recv.native, "matrix", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(rendererStruct, recv.Native, "matrix", argValue)
 }
 
 var rendererActivateFunction *gi.Function
@@ -3082,7 +3132,7 @@ func rendererActivateFunction_Set() error {
 // Activate is a representation of the C type pango_renderer_activate.
 func (recv *Renderer) Activate() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := rendererActivateFunction_Set()
 	if err == nil {
@@ -3110,7 +3160,7 @@ func rendererDeactivateFunction_Set() error {
 // Deactivate is a representation of the C type pango_renderer_deactivate.
 func (recv *Renderer) Deactivate() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := rendererDeactivateFunction_Set()
 	if err == nil {
@@ -3138,7 +3188,7 @@ func rendererDrawErrorUnderlineFunction_Set() error {
 // DrawErrorUnderline is a representation of the C type pango_renderer_draw_error_underline.
 func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 	inArgs[3].SetInt32(width)
@@ -3170,8 +3220,8 @@ func rendererDrawGlyphFunction_Set() error {
 // DrawGlyph is a representation of the C type pango_renderer_draw_glyph.
 func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(font.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(font.Native)
 	inArgs[2].SetUint32(uint32(glyph))
 	inArgs[3].SetFloat64(x)
 	inArgs[4].SetFloat64(y)
@@ -3202,9 +3252,9 @@ func rendererDrawGlyphItemFunction_Set() error {
 // DrawGlyphItem is a representation of the C type pango_renderer_draw_glyph_item.
 func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, y int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(text)
-	inArgs[2].SetPointer(glyphItem.native)
+	inArgs[2].SetPointer(glyphItem.Native)
 	inArgs[3].SetInt32(x)
 	inArgs[4].SetInt32(y)
 
@@ -3234,9 +3284,9 @@ func rendererDrawGlyphsFunction_Set() error {
 // DrawGlyphs is a representation of the C type pango_renderer_draw_glyphs.
 func (recv *Renderer) DrawGlyphs(font *Font, glyphs *GlyphString, x int32, y int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(font.native)
-	inArgs[2].SetPointer(glyphs.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(font.Native)
+	inArgs[2].SetPointer(glyphs.Native)
 	inArgs[3].SetInt32(x)
 	inArgs[4].SetInt32(y)
 
@@ -3266,8 +3316,8 @@ func rendererDrawLayoutFunction_Set() error {
 // DrawLayout is a representation of the C type pango_renderer_draw_layout.
 func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(layout.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(layout.Native)
 	inArgs[2].SetInt32(x)
 	inArgs[3].SetInt32(y)
 
@@ -3297,8 +3347,8 @@ func rendererDrawLayoutLineFunction_Set() error {
 // DrawLayoutLine is a representation of the C type pango_renderer_draw_layout_line.
 func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(line.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(line.Native)
 	inArgs[2].SetInt32(x)
 	inArgs[3].SetInt32(y)
 
@@ -3336,7 +3386,7 @@ func rendererGetLayoutFunction_Set() error {
 // GetLayout is a representation of the C type pango_renderer_get_layout.
 func (recv *Renderer) GetLayout() *Layout {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3345,7 +3395,8 @@ func (recv *Renderer) GetLayout() *Layout {
 		ret = rendererGetLayoutFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Layout{native: ret.Pointer()}
+	retGo := &Layout{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3368,7 +3419,7 @@ func rendererGetLayoutLineFunction_Set() error {
 // GetLayoutLine is a representation of the C type pango_renderer_get_layout_line.
 func (recv *Renderer) GetLayoutLine() *LayoutLine {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3377,7 +3428,8 @@ func (recv *Renderer) GetLayoutLine() *LayoutLine {
 		ret = rendererGetLayoutLineFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &LayoutLine{native: ret.Pointer()}
+	retGo := &LayoutLine{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3400,7 +3452,7 @@ func rendererGetMatrixFunction_Set() error {
 // GetMatrix is a representation of the C type pango_renderer_get_matrix.
 func (recv *Renderer) GetMatrix() *Matrix {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3409,7 +3461,8 @@ func (recv *Renderer) GetMatrix() *Matrix {
 		ret = rendererGetMatrixFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Matrix{native: ret.Pointer()}
+	retGo := &Matrix{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3438,8 +3491,8 @@ func rendererSetMatrixFunction_Set() error {
 // SetMatrix is a representation of the C type pango_renderer_set_matrix.
 func (recv *Renderer) SetMatrix(matrix *Matrix) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(matrix.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(matrix.Native)
 
 	err := rendererSetMatrixFunction_Set()
 	if err == nil {
@@ -3456,10 +3509,11 @@ func RendererStruct() *Renderer {
 		return nil
 	}
 
-	structGo := &Renderer{native: rendererStruct.Alloc()}
+	structGo := &Renderer{}
+	structGo.Native = rendererStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRenderer)
 	return structGo
 }
 func finalizeRenderer(obj *Renderer) {
-	rendererStruct.Free(obj.native)
+	rendererStruct.Free(obj.Native)
 }

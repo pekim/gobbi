@@ -20,7 +20,7 @@ func actionIfaceStruct_Set() error {
 }
 
 type ActionIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'do_action' : for field getter : missing Type
@@ -58,12 +58,13 @@ func ActionIfaceStruct() *ActionIface {
 		return nil
 	}
 
-	structGo := &ActionIface{native: actionIfaceStruct.Alloc()}
+	structGo := &ActionIface{}
+	structGo.Native = actionIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeActionIface)
 	return structGo
 }
 func finalizeActionIface(obj *ActionIface) {
-	actionIfaceStruct.Free(obj.native)
+	actionIfaceStruct.Free(obj.Native)
 }
 
 var attributeStruct *gi.Struct
@@ -78,12 +79,12 @@ func attributeStruct_Set() error {
 }
 
 type Attribute struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldName returns the C field 'name'.
 func (recv *Attribute) FieldName() string {
-	argValue := gi.FieldGet(attributeStruct, recv.native, "name")
+	argValue := gi.FieldGet(attributeStruct, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -92,12 +93,12 @@ func (recv *Attribute) FieldName() string {
 func (recv *Attribute) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(attributeStruct, recv.native, "name", argValue)
+	gi.FieldSet(attributeStruct, recv.Native, "name", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *Attribute) FieldValue() string {
-	argValue := gi.FieldGet(attributeStruct, recv.native, "value")
+	argValue := gi.FieldGet(attributeStruct, recv.Native, "value")
 	value := argValue.String(false)
 	return value
 }
@@ -106,7 +107,7 @@ func (recv *Attribute) FieldValue() string {
 func (recv *Attribute) SetFieldValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(attributeStruct, recv.native, "value", argValue)
+	gi.FieldSet(attributeStruct, recv.Native, "value", argValue)
 }
 
 // AttributeStruct creates an uninitialised Attribute.
@@ -116,12 +117,13 @@ func AttributeStruct() *Attribute {
 		return nil
 	}
 
-	structGo := &Attribute{native: attributeStruct.Alloc()}
+	structGo := &Attribute{}
+	structGo.Native = attributeStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAttribute)
 	return structGo
 }
 func finalizeAttribute(obj *Attribute) {
-	attributeStruct.Free(obj.native)
+	attributeStruct.Free(obj.Native)
 }
 
 var componentIfaceStruct *gi.Struct
@@ -136,7 +138,7 @@ func componentIfaceStruct_Set() error {
 }
 
 type ComponentIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'add_focus_handler' : for field getter : missing Type
@@ -214,12 +216,13 @@ func ComponentIfaceStruct() *ComponentIface {
 		return nil
 	}
 
-	structGo := &ComponentIface{native: componentIfaceStruct.Alloc()}
+	structGo := &ComponentIface{}
+	structGo.Native = componentIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeComponentIface)
 	return structGo
 }
 func finalizeComponentIface(obj *ComponentIface) {
-	componentIfaceStruct.Free(obj.native)
+	componentIfaceStruct.Free(obj.Native)
 }
 
 var documentIfaceStruct *gi.Struct
@@ -234,7 +237,7 @@ func documentIfaceStruct_Set() error {
 }
 
 type DocumentIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -280,12 +283,13 @@ func DocumentIfaceStruct() *DocumentIface {
 		return nil
 	}
 
-	structGo := &DocumentIface{native: documentIfaceStruct.Alloc()}
+	structGo := &DocumentIface{}
+	structGo.Native = documentIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDocumentIface)
 	return structGo
 }
 func finalizeDocumentIface(obj *DocumentIface) {
-	documentIfaceStruct.Free(obj.native)
+	documentIfaceStruct.Free(obj.Native)
 }
 
 var editableTextIfaceStruct *gi.Struct
@@ -300,7 +304,7 @@ func editableTextIfaceStruct_Set() error {
 }
 
 type EditableTextIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -342,12 +346,13 @@ func EditableTextIfaceStruct() *EditableTextIface {
 		return nil
 	}
 
-	structGo := &EditableTextIface{native: editableTextIfaceStruct.Alloc()}
+	structGo := &EditableTextIface{}
+	structGo.Native = editableTextIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeEditableTextIface)
 	return structGo
 }
 func finalizeEditableTextIface(obj *EditableTextIface) {
-	editableTextIfaceStruct.Free(obj.native)
+	editableTextIfaceStruct.Free(obj.Native)
 }
 
 var gObjectAccessibleClassStruct *gi.Struct
@@ -362,21 +367,22 @@ func gObjectAccessibleClassStruct_Set() error {
 }
 
 type GObjectAccessibleClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *GObjectAccessibleClass) FieldParentClass() *ObjectClass {
-	argValue := gi.FieldGet(gObjectAccessibleClassStruct, recv.native, "parent_class")
-	value := &ObjectClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(gObjectAccessibleClassStruct, recv.Native, "parent_class")
+	value := &ObjectClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *GObjectAccessibleClass) SetFieldParentClass(value *ObjectClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(gObjectAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(gObjectAccessibleClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
@@ -394,12 +400,13 @@ func GObjectAccessibleClassStruct() *GObjectAccessibleClass {
 		return nil
 	}
 
-	structGo := &GObjectAccessibleClass{native: gObjectAccessibleClassStruct.Alloc()}
+	structGo := &GObjectAccessibleClass{}
+	structGo.Native = gObjectAccessibleClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeGObjectAccessibleClass)
 	return structGo
 }
 func finalizeGObjectAccessibleClass(obj *GObjectAccessibleClass) {
-	gObjectAccessibleClassStruct.Free(obj.native)
+	gObjectAccessibleClassStruct.Free(obj.Native)
 }
 
 var hyperlinkClassStruct *gi.Struct
@@ -414,7 +421,7 @@ func hyperlinkClassStruct_Set() error {
 }
 
 type HyperlinkClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -468,12 +475,13 @@ func HyperlinkClassStruct() *HyperlinkClass {
 		return nil
 	}
 
-	structGo := &HyperlinkClass{native: hyperlinkClassStruct.Alloc()}
+	structGo := &HyperlinkClass{}
+	structGo.Native = hyperlinkClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHyperlinkClass)
 	return structGo
 }
 func finalizeHyperlinkClass(obj *HyperlinkClass) {
-	hyperlinkClassStruct.Free(obj.native)
+	hyperlinkClassStruct.Free(obj.Native)
 }
 
 var hyperlinkImplIfaceStruct *gi.Struct
@@ -488,7 +496,7 @@ func hyperlinkImplIfaceStruct_Set() error {
 }
 
 type HyperlinkImplIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -506,12 +514,13 @@ func HyperlinkImplIfaceStruct() *HyperlinkImplIface {
 		return nil
 	}
 
-	structGo := &HyperlinkImplIface{native: hyperlinkImplIfaceStruct.Alloc()}
+	structGo := &HyperlinkImplIface{}
+	structGo.Native = hyperlinkImplIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHyperlinkImplIface)
 	return structGo
 }
 func finalizeHyperlinkImplIface(obj *HyperlinkImplIface) {
-	hyperlinkImplIfaceStruct.Free(obj.native)
+	hyperlinkImplIfaceStruct.Free(obj.Native)
 }
 
 var hypertextIfaceStruct *gi.Struct
@@ -526,7 +535,7 @@ func hypertextIfaceStruct_Set() error {
 }
 
 type HypertextIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -556,12 +565,13 @@ func HypertextIfaceStruct() *HypertextIface {
 		return nil
 	}
 
-	structGo := &HypertextIface{native: hypertextIfaceStruct.Alloc()}
+	structGo := &HypertextIface{}
+	structGo.Native = hypertextIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHypertextIface)
 	return structGo
 }
 func finalizeHypertextIface(obj *HypertextIface) {
-	hypertextIfaceStruct.Free(obj.native)
+	hypertextIfaceStruct.Free(obj.Native)
 }
 
 var imageIfaceStruct *gi.Struct
@@ -576,7 +586,7 @@ func imageIfaceStruct_Set() error {
 }
 
 type ImageIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -610,12 +620,13 @@ func ImageIfaceStruct() *ImageIface {
 		return nil
 	}
 
-	structGo := &ImageIface{native: imageIfaceStruct.Alloc()}
+	structGo := &ImageIface{}
+	structGo.Native = imageIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeImageIface)
 	return structGo
 }
 func finalizeImageIface(obj *ImageIface) {
-	imageIfaceStruct.Free(obj.native)
+	imageIfaceStruct.Free(obj.Native)
 }
 
 var implementorStruct *gi.Struct
@@ -630,7 +641,7 @@ func implementorStruct_Set() error {
 }
 
 type Implementor struct {
-	native uintptr
+	Native uintptr
 }
 
 var implementorRefAccessibleFunction *gi.Function
@@ -651,7 +662,7 @@ func implementorRefAccessibleFunction_Set() error {
 // RefAccessible is a representation of the C type atk_implementor_ref_accessible.
 func (recv *Implementor) RefAccessible() *Object {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -660,7 +671,8 @@ func (recv *Implementor) RefAccessible() *Object {
 		ret = implementorRefAccessibleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Object{native: ret.Pointer()}
+	retGo := &Object{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -672,12 +684,13 @@ func ImplementorStruct() *Implementor {
 		return nil
 	}
 
-	structGo := &Implementor{native: implementorStruct.Alloc()}
+	structGo := &Implementor{}
+	structGo.Native = implementorStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeImplementor)
 	return structGo
 }
 func finalizeImplementor(obj *Implementor) {
-	implementorStruct.Free(obj.native)
+	implementorStruct.Free(obj.Native)
 }
 
 var keyEventStructStruct *gi.Struct
@@ -692,12 +705,12 @@ func keyEventStructStruct_Set() error {
 }
 
 type KeyEventStruct struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldType returns the C field 'type'.
 func (recv *KeyEventStruct) FieldType() int32 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "type")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "type")
 	value := argValue.Int32()
 	return value
 }
@@ -706,12 +719,12 @@ func (recv *KeyEventStruct) FieldType() int32 {
 func (recv *KeyEventStruct) SetFieldType(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "type", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "type", argValue)
 }
 
 // FieldState returns the C field 'state'.
 func (recv *KeyEventStruct) FieldState() uint32 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "state")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "state")
 	value := argValue.Uint32()
 	return value
 }
@@ -720,12 +733,12 @@ func (recv *KeyEventStruct) FieldState() uint32 {
 func (recv *KeyEventStruct) SetFieldState(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "state", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "state", argValue)
 }
 
 // FieldKeyval returns the C field 'keyval'.
 func (recv *KeyEventStruct) FieldKeyval() uint32 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "keyval")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "keyval")
 	value := argValue.Uint32()
 	return value
 }
@@ -734,12 +747,12 @@ func (recv *KeyEventStruct) FieldKeyval() uint32 {
 func (recv *KeyEventStruct) SetFieldKeyval(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "keyval", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "keyval", argValue)
 }
 
 // FieldLength returns the C field 'length'.
 func (recv *KeyEventStruct) FieldLength() int32 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "length")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "length")
 	value := argValue.Int32()
 	return value
 }
@@ -748,12 +761,12 @@ func (recv *KeyEventStruct) FieldLength() int32 {
 func (recv *KeyEventStruct) SetFieldLength(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "length", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "length", argValue)
 }
 
 // FieldString returns the C field 'string'.
 func (recv *KeyEventStruct) FieldString() string {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "string")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "string")
 	value := argValue.String(false)
 	return value
 }
@@ -762,12 +775,12 @@ func (recv *KeyEventStruct) FieldString() string {
 func (recv *KeyEventStruct) SetFieldString(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "string", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "string", argValue)
 }
 
 // FieldKeycode returns the C field 'keycode'.
 func (recv *KeyEventStruct) FieldKeycode() uint16 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "keycode")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "keycode")
 	value := argValue.Uint16()
 	return value
 }
@@ -776,12 +789,12 @@ func (recv *KeyEventStruct) FieldKeycode() uint16 {
 func (recv *KeyEventStruct) SetFieldKeycode(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "keycode", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "keycode", argValue)
 }
 
 // FieldTimestamp returns the C field 'timestamp'.
 func (recv *KeyEventStruct) FieldTimestamp() uint32 {
-	argValue := gi.FieldGet(keyEventStructStruct, recv.native, "timestamp")
+	argValue := gi.FieldGet(keyEventStructStruct, recv.Native, "timestamp")
 	value := argValue.Uint32()
 	return value
 }
@@ -790,7 +803,7 @@ func (recv *KeyEventStruct) FieldTimestamp() uint32 {
 func (recv *KeyEventStruct) SetFieldTimestamp(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(keyEventStructStruct, recv.native, "timestamp", argValue)
+	gi.FieldSet(keyEventStructStruct, recv.Native, "timestamp", argValue)
 }
 
 // KeyEventStructStruct creates an uninitialised KeyEventStruct.
@@ -800,12 +813,13 @@ func KeyEventStructStruct() *KeyEventStruct {
 		return nil
 	}
 
-	structGo := &KeyEventStruct{native: keyEventStructStruct.Alloc()}
+	structGo := &KeyEventStruct{}
+	structGo.Native = keyEventStructStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeKeyEventStruct)
 	return structGo
 }
 func finalizeKeyEventStruct(obj *KeyEventStruct) {
-	keyEventStructStruct.Free(obj.native)
+	keyEventStructStruct.Free(obj.Native)
 }
 
 var miscClassStruct *gi.Struct
@@ -820,7 +834,7 @@ func miscClassStruct_Set() error {
 }
 
 type MiscClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -846,12 +860,13 @@ func MiscClassStruct() *MiscClass {
 		return nil
 	}
 
-	structGo := &MiscClass{native: miscClassStruct.Alloc()}
+	structGo := &MiscClass{}
+	structGo.Native = miscClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMiscClass)
 	return structGo
 }
 func finalizeMiscClass(obj *MiscClass) {
-	miscClassStruct.Free(obj.native)
+	miscClassStruct.Free(obj.Native)
 }
 
 var noOpObjectClassStruct *gi.Struct
@@ -866,21 +881,22 @@ func noOpObjectClassStruct_Set() error {
 }
 
 type NoOpObjectClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NoOpObjectClass) FieldParentClass() *ObjectClass {
-	argValue := gi.FieldGet(noOpObjectClassStruct, recv.native, "parent_class")
-	value := &ObjectClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(noOpObjectClassStruct, recv.Native, "parent_class")
+	value := &ObjectClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NoOpObjectClass) SetFieldParentClass(value *ObjectClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(noOpObjectClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(noOpObjectClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // NoOpObjectClassStruct creates an uninitialised NoOpObjectClass.
@@ -890,12 +906,13 @@ func NoOpObjectClassStruct() *NoOpObjectClass {
 		return nil
 	}
 
-	structGo := &NoOpObjectClass{native: noOpObjectClassStruct.Alloc()}
+	structGo := &NoOpObjectClass{}
+	structGo.Native = noOpObjectClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeNoOpObjectClass)
 	return structGo
 }
 func finalizeNoOpObjectClass(obj *NoOpObjectClass) {
-	noOpObjectClassStruct.Free(obj.native)
+	noOpObjectClassStruct.Free(obj.Native)
 }
 
 var noOpObjectFactoryClassStruct *gi.Struct
@@ -910,21 +927,22 @@ func noOpObjectFactoryClassStruct_Set() error {
 }
 
 type NoOpObjectFactoryClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NoOpObjectFactoryClass) FieldParentClass() *ObjectFactoryClass {
-	argValue := gi.FieldGet(noOpObjectFactoryClassStruct, recv.native, "parent_class")
-	value := &ObjectFactoryClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(noOpObjectFactoryClassStruct, recv.Native, "parent_class")
+	value := &ObjectFactoryClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NoOpObjectFactoryClass) SetFieldParentClass(value *ObjectFactoryClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(noOpObjectFactoryClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(noOpObjectFactoryClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // NoOpObjectFactoryClassStruct creates an uninitialised NoOpObjectFactoryClass.
@@ -934,12 +952,13 @@ func NoOpObjectFactoryClassStruct() *NoOpObjectFactoryClass {
 		return nil
 	}
 
-	structGo := &NoOpObjectFactoryClass{native: noOpObjectFactoryClassStruct.Alloc()}
+	structGo := &NoOpObjectFactoryClass{}
+	structGo.Native = noOpObjectFactoryClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeNoOpObjectFactoryClass)
 	return structGo
 }
 func finalizeNoOpObjectFactoryClass(obj *NoOpObjectFactoryClass) {
-	noOpObjectFactoryClassStruct.Free(obj.native)
+	noOpObjectFactoryClassStruct.Free(obj.Native)
 }
 
 var objectClassStruct *gi.Struct
@@ -954,7 +973,7 @@ func objectClassStruct_Set() error {
 }
 
 type ObjectClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1076,12 +1095,13 @@ func ObjectClassStruct() *ObjectClass {
 		return nil
 	}
 
-	structGo := &ObjectClass{native: objectClassStruct.Alloc()}
+	structGo := &ObjectClass{}
+	structGo.Native = objectClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeObjectClass)
 	return structGo
 }
 func finalizeObjectClass(obj *ObjectClass) {
-	objectClassStruct.Free(obj.native)
+	objectClassStruct.Free(obj.Native)
 }
 
 var objectFactoryClassStruct *gi.Struct
@@ -1096,7 +1116,7 @@ func objectFactoryClassStruct_Set() error {
 }
 
 type ObjectFactoryClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1130,12 +1150,13 @@ func ObjectFactoryClassStruct() *ObjectFactoryClass {
 		return nil
 	}
 
-	structGo := &ObjectFactoryClass{native: objectFactoryClassStruct.Alloc()}
+	structGo := &ObjectFactoryClass{}
+	structGo.Native = objectFactoryClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeObjectFactoryClass)
 	return structGo
 }
 func finalizeObjectFactoryClass(obj *ObjectFactoryClass) {
-	objectFactoryClassStruct.Free(obj.native)
+	objectFactoryClassStruct.Free(obj.Native)
 }
 
 var plugClassStruct *gi.Struct
@@ -1150,21 +1171,22 @@ func plugClassStruct_Set() error {
 }
 
 type PlugClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PlugClass) FieldParentClass() *ObjectClass {
-	argValue := gi.FieldGet(plugClassStruct, recv.native, "parent_class")
-	value := &ObjectClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(plugClassStruct, recv.Native, "parent_class")
+	value := &ObjectClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PlugClass) SetFieldParentClass(value *ObjectClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(plugClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(plugClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'get_object_id' : for field getter : missing Type
@@ -1178,12 +1200,13 @@ func PlugClassStruct() *PlugClass {
 		return nil
 	}
 
-	structGo := &PlugClass{native: plugClassStruct.Alloc()}
+	structGo := &PlugClass{}
+	structGo.Native = plugClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizePlugClass)
 	return structGo
 }
 func finalizePlugClass(obj *PlugClass) {
-	plugClassStruct.Free(obj.native)
+	plugClassStruct.Free(obj.Native)
 }
 
 var propertyValuesStruct *gi.Struct
@@ -1198,12 +1221,12 @@ func propertyValuesStruct_Set() error {
 }
 
 type PropertyValues struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldPropertyName returns the C field 'property_name'.
 func (recv *PropertyValues) FieldPropertyName() string {
-	argValue := gi.FieldGet(propertyValuesStruct, recv.native, "property_name")
+	argValue := gi.FieldGet(propertyValuesStruct, recv.Native, "property_name")
 	value := argValue.String(false)
 	return value
 }
@@ -1212,7 +1235,7 @@ func (recv *PropertyValues) FieldPropertyName() string {
 func (recv *PropertyValues) SetFieldPropertyName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(propertyValuesStruct, recv.native, "property_name", argValue)
+	gi.FieldSet(propertyValuesStruct, recv.Native, "property_name", argValue)
 }
 
 // UNSUPPORTED : C value 'old_value' : for field getter : no Go type for 'GObject.Value'
@@ -1230,12 +1253,13 @@ func PropertyValuesStruct() *PropertyValues {
 		return nil
 	}
 
-	structGo := &PropertyValues{native: propertyValuesStruct.Alloc()}
+	structGo := &PropertyValues{}
+	structGo.Native = propertyValuesStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizePropertyValues)
 	return structGo
 }
 func finalizePropertyValues(obj *PropertyValues) {
-	propertyValuesStruct.Free(obj.native)
+	propertyValuesStruct.Free(obj.Native)
 }
 
 var rangeStruct *gi.Struct
@@ -1250,7 +1274,7 @@ func rangeStruct_Set() error {
 }
 
 type Range struct {
-	native uintptr
+	Native uintptr
 }
 
 var rangeNewFunction *gi.Function
@@ -1282,7 +1306,8 @@ func RangeNew(lowerLimit float64, upperLimit float64, description string) *Range
 		ret = rangeNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Range{native: ret.Pointer()}
+	retGo := &Range{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1305,7 +1330,7 @@ func rangeCopyFunction_Set() error {
 // Copy is a representation of the C type atk_range_copy.
 func (recv *Range) Copy() *Range {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1314,7 +1339,8 @@ func (recv *Range) Copy() *Range {
 		ret = rangeCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Range{native: ret.Pointer()}
+	retGo := &Range{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1337,7 +1363,7 @@ func rangeFreeFunction_Set() error {
 // Free is a representation of the C type atk_range_free.
 func (recv *Range) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := rangeFreeFunction_Set()
 	if err == nil {
@@ -1365,7 +1391,7 @@ func rangeGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type atk_range_get_description.
 func (recv *Range) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1397,7 +1423,7 @@ func rangeGetLowerLimitFunction_Set() error {
 // GetLowerLimit is a representation of the C type atk_range_get_lower_limit.
 func (recv *Range) GetLowerLimit() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1429,7 +1455,7 @@ func rangeGetUpperLimitFunction_Set() error {
 // GetUpperLimit is a representation of the C type atk_range_get_upper_limit.
 func (recv *Range) GetUpperLimit() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1455,12 +1481,12 @@ func rectangleStruct_Set() error {
 }
 
 type Rectangle struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() int32 {
-	argValue := gi.FieldGet(rectangleStruct, recv.native, "x")
+	argValue := gi.FieldGet(rectangleStruct, recv.Native, "x")
 	value := argValue.Int32()
 	return value
 }
@@ -1469,12 +1495,12 @@ func (recv *Rectangle) FieldX() int32 {
 func (recv *Rectangle) SetFieldX(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(rectangleStruct, recv.native, "x", argValue)
+	gi.FieldSet(rectangleStruct, recv.Native, "x", argValue)
 }
 
 // FieldY returns the C field 'y'.
 func (recv *Rectangle) FieldY() int32 {
-	argValue := gi.FieldGet(rectangleStruct, recv.native, "y")
+	argValue := gi.FieldGet(rectangleStruct, recv.Native, "y")
 	value := argValue.Int32()
 	return value
 }
@@ -1483,12 +1509,12 @@ func (recv *Rectangle) FieldY() int32 {
 func (recv *Rectangle) SetFieldY(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(rectangleStruct, recv.native, "y", argValue)
+	gi.FieldSet(rectangleStruct, recv.Native, "y", argValue)
 }
 
 // FieldWidth returns the C field 'width'.
 func (recv *Rectangle) FieldWidth() int32 {
-	argValue := gi.FieldGet(rectangleStruct, recv.native, "width")
+	argValue := gi.FieldGet(rectangleStruct, recv.Native, "width")
 	value := argValue.Int32()
 	return value
 }
@@ -1497,12 +1523,12 @@ func (recv *Rectangle) FieldWidth() int32 {
 func (recv *Rectangle) SetFieldWidth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(rectangleStruct, recv.native, "width", argValue)
+	gi.FieldSet(rectangleStruct, recv.Native, "width", argValue)
 }
 
 // FieldHeight returns the C field 'height'.
 func (recv *Rectangle) FieldHeight() int32 {
-	argValue := gi.FieldGet(rectangleStruct, recv.native, "height")
+	argValue := gi.FieldGet(rectangleStruct, recv.Native, "height")
 	value := argValue.Int32()
 	return value
 }
@@ -1511,7 +1537,7 @@ func (recv *Rectangle) FieldHeight() int32 {
 func (recv *Rectangle) SetFieldHeight(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(rectangleStruct, recv.native, "height", argValue)
+	gi.FieldSet(rectangleStruct, recv.Native, "height", argValue)
 }
 
 // RectangleStruct creates an uninitialised Rectangle.
@@ -1521,12 +1547,13 @@ func RectangleStruct() *Rectangle {
 		return nil
 	}
 
-	structGo := &Rectangle{native: rectangleStruct.Alloc()}
+	structGo := &Rectangle{}
+	structGo.Native = rectangleStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRectangle)
 	return structGo
 }
 func finalizeRectangle(obj *Rectangle) {
-	rectangleStruct.Free(obj.native)
+	rectangleStruct.Free(obj.Native)
 }
 
 var registryClassStruct *gi.Struct
@@ -1541,7 +1568,7 @@ func registryClassStruct_Set() error {
 }
 
 type RegistryClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1555,12 +1582,13 @@ func RegistryClassStruct() *RegistryClass {
 		return nil
 	}
 
-	structGo := &RegistryClass{native: registryClassStruct.Alloc()}
+	structGo := &RegistryClass{}
+	structGo.Native = registryClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRegistryClass)
 	return structGo
 }
 func finalizeRegistryClass(obj *RegistryClass) {
-	registryClassStruct.Free(obj.native)
+	registryClassStruct.Free(obj.Native)
 }
 
 var relationClassStruct *gi.Struct
@@ -1575,7 +1603,7 @@ func relationClassStruct_Set() error {
 }
 
 type RelationClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1589,12 +1617,13 @@ func RelationClassStruct() *RelationClass {
 		return nil
 	}
 
-	structGo := &RelationClass{native: relationClassStruct.Alloc()}
+	structGo := &RelationClass{}
+	structGo.Native = relationClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRelationClass)
 	return structGo
 }
 func finalizeRelationClass(obj *RelationClass) {
-	relationClassStruct.Free(obj.native)
+	relationClassStruct.Free(obj.Native)
 }
 
 var relationSetClassStruct *gi.Struct
@@ -1609,7 +1638,7 @@ func relationSetClassStruct_Set() error {
 }
 
 type RelationSetClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1631,12 +1660,13 @@ func RelationSetClassStruct() *RelationSetClass {
 		return nil
 	}
 
-	structGo := &RelationSetClass{native: relationSetClassStruct.Alloc()}
+	structGo := &RelationSetClass{}
+	structGo.Native = relationSetClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRelationSetClass)
 	return structGo
 }
 func finalizeRelationSetClass(obj *RelationSetClass) {
-	relationSetClassStruct.Free(obj.native)
+	relationSetClassStruct.Free(obj.Native)
 }
 
 var selectionIfaceStruct *gi.Struct
@@ -1651,7 +1681,7 @@ func selectionIfaceStruct_Set() error {
 }
 
 type SelectionIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -1697,12 +1727,13 @@ func SelectionIfaceStruct() *SelectionIface {
 		return nil
 	}
 
-	structGo := &SelectionIface{native: selectionIfaceStruct.Alloc()}
+	structGo := &SelectionIface{}
+	structGo.Native = selectionIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSelectionIface)
 	return structGo
 }
 func finalizeSelectionIface(obj *SelectionIface) {
-	selectionIfaceStruct.Free(obj.native)
+	selectionIfaceStruct.Free(obj.Native)
 }
 
 var socketClassStruct *gi.Struct
@@ -1717,21 +1748,22 @@ func socketClassStruct_Set() error {
 }
 
 type SocketClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketClass) FieldParentClass() *ObjectClass {
-	argValue := gi.FieldGet(socketClassStruct, recv.native, "parent_class")
-	value := &ObjectClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(socketClassStruct, recv.Native, "parent_class")
+	value := &ObjectClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SocketClass) SetFieldParentClass(value *ObjectClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(socketClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(socketClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'embed' : for field getter : missing Type
@@ -1745,12 +1777,13 @@ func SocketClassStruct() *SocketClass {
 		return nil
 	}
 
-	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	structGo := &SocketClass{}
+	structGo.Native = socketClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
 }
 func finalizeSocketClass(obj *SocketClass) {
-	socketClassStruct.Free(obj.native)
+	socketClassStruct.Free(obj.Native)
 }
 
 var stateSetClassStruct *gi.Struct
@@ -1765,7 +1798,7 @@ func stateSetClassStruct_Set() error {
 }
 
 type StateSetClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1779,12 +1812,13 @@ func StateSetClassStruct() *StateSetClass {
 		return nil
 	}
 
-	structGo := &StateSetClass{native: stateSetClassStruct.Alloc()}
+	structGo := &StateSetClass{}
+	structGo.Native = stateSetClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStateSetClass)
 	return structGo
 }
 func finalizeStateSetClass(obj *StateSetClass) {
-	stateSetClassStruct.Free(obj.native)
+	stateSetClassStruct.Free(obj.Native)
 }
 
 var streamableContentIfaceStruct *gi.Struct
@@ -1799,7 +1833,7 @@ func streamableContentIfaceStruct_Set() error {
 }
 
 type StreamableContentIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -1841,12 +1875,13 @@ func StreamableContentIfaceStruct() *StreamableContentIface {
 		return nil
 	}
 
-	structGo := &StreamableContentIface{native: streamableContentIfaceStruct.Alloc()}
+	structGo := &StreamableContentIface{}
+	structGo.Native = streamableContentIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeStreamableContentIface)
 	return structGo
 }
 func finalizeStreamableContentIface(obj *StreamableContentIface) {
-	streamableContentIfaceStruct.Free(obj.native)
+	streamableContentIfaceStruct.Free(obj.Native)
 }
 
 var tableCellIfaceStruct *gi.Struct
@@ -1861,7 +1896,7 @@ func tableCellIfaceStruct_Set() error {
 }
 
 type TableCellIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'get_column_span' : for field getter : missing Type
@@ -1899,12 +1934,13 @@ func TableCellIfaceStruct() *TableCellIface {
 		return nil
 	}
 
-	structGo := &TableCellIface{native: tableCellIfaceStruct.Alloc()}
+	structGo := &TableCellIface{}
+	structGo.Native = tableCellIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTableCellIface)
 	return structGo
 }
 func finalizeTableCellIface(obj *TableCellIface) {
-	tableCellIfaceStruct.Free(obj.native)
+	tableCellIfaceStruct.Free(obj.Native)
 }
 
 var tableIfaceStruct *gi.Struct
@@ -1919,7 +1955,7 @@ func tableIfaceStruct_Set() error {
 }
 
 type TableIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2077,12 +2113,13 @@ func TableIfaceStruct() *TableIface {
 		return nil
 	}
 
-	structGo := &TableIface{native: tableIfaceStruct.Alloc()}
+	structGo := &TableIface{}
+	structGo.Native = tableIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTableIface)
 	return structGo
 }
 func finalizeTableIface(obj *TableIface) {
-	tableIfaceStruct.Free(obj.native)
+	tableIfaceStruct.Free(obj.Native)
 }
 
 var textIfaceStruct *gi.Struct
@@ -2097,7 +2134,7 @@ func textIfaceStruct_Set() error {
 }
 
 type TextIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2215,12 +2252,13 @@ func TextIfaceStruct() *TextIface {
 		return nil
 	}
 
-	structGo := &TextIface{native: textIfaceStruct.Alloc()}
+	structGo := &TextIface{}
+	structGo.Native = textIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTextIface)
 	return structGo
 }
 func finalizeTextIface(obj *TextIface) {
-	textIfaceStruct.Free(obj.native)
+	textIfaceStruct.Free(obj.Native)
 }
 
 var textRangeStruct *gi.Struct
@@ -2235,26 +2273,27 @@ func textRangeStruct_Set() error {
 }
 
 type TextRange struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldBounds returns the C field 'bounds'.
 func (recv *TextRange) FieldBounds() *TextRectangle {
-	argValue := gi.FieldGet(textRangeStruct, recv.native, "bounds")
-	value := &TextRectangle{native: argValue.Pointer()}
+	argValue := gi.FieldGet(textRangeStruct, recv.Native, "bounds")
+	value := &TextRectangle{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldBounds sets the value of the C field 'bounds'.
 func (recv *TextRange) SetFieldBounds(value *TextRectangle) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(textRangeStruct, recv.native, "bounds", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(textRangeStruct, recv.Native, "bounds", argValue)
 }
 
 // FieldStartOffset returns the C field 'start_offset'.
 func (recv *TextRange) FieldStartOffset() int32 {
-	argValue := gi.FieldGet(textRangeStruct, recv.native, "start_offset")
+	argValue := gi.FieldGet(textRangeStruct, recv.Native, "start_offset")
 	value := argValue.Int32()
 	return value
 }
@@ -2263,12 +2302,12 @@ func (recv *TextRange) FieldStartOffset() int32 {
 func (recv *TextRange) SetFieldStartOffset(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRangeStruct, recv.native, "start_offset", argValue)
+	gi.FieldSet(textRangeStruct, recv.Native, "start_offset", argValue)
 }
 
 // FieldEndOffset returns the C field 'end_offset'.
 func (recv *TextRange) FieldEndOffset() int32 {
-	argValue := gi.FieldGet(textRangeStruct, recv.native, "end_offset")
+	argValue := gi.FieldGet(textRangeStruct, recv.Native, "end_offset")
 	value := argValue.Int32()
 	return value
 }
@@ -2277,12 +2316,12 @@ func (recv *TextRange) FieldEndOffset() int32 {
 func (recv *TextRange) SetFieldEndOffset(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRangeStruct, recv.native, "end_offset", argValue)
+	gi.FieldSet(textRangeStruct, recv.Native, "end_offset", argValue)
 }
 
 // FieldContent returns the C field 'content'.
 func (recv *TextRange) FieldContent() string {
-	argValue := gi.FieldGet(textRangeStruct, recv.native, "content")
+	argValue := gi.FieldGet(textRangeStruct, recv.Native, "content")
 	value := argValue.String(false)
 	return value
 }
@@ -2291,7 +2330,7 @@ func (recv *TextRange) FieldContent() string {
 func (recv *TextRange) SetFieldContent(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(textRangeStruct, recv.native, "content", argValue)
+	gi.FieldSet(textRangeStruct, recv.Native, "content", argValue)
 }
 
 // TextRangeStruct creates an uninitialised TextRange.
@@ -2301,12 +2340,13 @@ func TextRangeStruct() *TextRange {
 		return nil
 	}
 
-	structGo := &TextRange{native: textRangeStruct.Alloc()}
+	structGo := &TextRange{}
+	structGo.Native = textRangeStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTextRange)
 	return structGo
 }
 func finalizeTextRange(obj *TextRange) {
-	textRangeStruct.Free(obj.native)
+	textRangeStruct.Free(obj.Native)
 }
 
 var textRectangleStruct *gi.Struct
@@ -2321,12 +2361,12 @@ func textRectangleStruct_Set() error {
 }
 
 type TextRectangle struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldX returns the C field 'x'.
 func (recv *TextRectangle) FieldX() int32 {
-	argValue := gi.FieldGet(textRectangleStruct, recv.native, "x")
+	argValue := gi.FieldGet(textRectangleStruct, recv.Native, "x")
 	value := argValue.Int32()
 	return value
 }
@@ -2335,12 +2375,12 @@ func (recv *TextRectangle) FieldX() int32 {
 func (recv *TextRectangle) SetFieldX(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRectangleStruct, recv.native, "x", argValue)
+	gi.FieldSet(textRectangleStruct, recv.Native, "x", argValue)
 }
 
 // FieldY returns the C field 'y'.
 func (recv *TextRectangle) FieldY() int32 {
-	argValue := gi.FieldGet(textRectangleStruct, recv.native, "y")
+	argValue := gi.FieldGet(textRectangleStruct, recv.Native, "y")
 	value := argValue.Int32()
 	return value
 }
@@ -2349,12 +2389,12 @@ func (recv *TextRectangle) FieldY() int32 {
 func (recv *TextRectangle) SetFieldY(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRectangleStruct, recv.native, "y", argValue)
+	gi.FieldSet(textRectangleStruct, recv.Native, "y", argValue)
 }
 
 // FieldWidth returns the C field 'width'.
 func (recv *TextRectangle) FieldWidth() int32 {
-	argValue := gi.FieldGet(textRectangleStruct, recv.native, "width")
+	argValue := gi.FieldGet(textRectangleStruct, recv.Native, "width")
 	value := argValue.Int32()
 	return value
 }
@@ -2363,12 +2403,12 @@ func (recv *TextRectangle) FieldWidth() int32 {
 func (recv *TextRectangle) SetFieldWidth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRectangleStruct, recv.native, "width", argValue)
+	gi.FieldSet(textRectangleStruct, recv.Native, "width", argValue)
 }
 
 // FieldHeight returns the C field 'height'.
 func (recv *TextRectangle) FieldHeight() int32 {
-	argValue := gi.FieldGet(textRectangleStruct, recv.native, "height")
+	argValue := gi.FieldGet(textRectangleStruct, recv.Native, "height")
 	value := argValue.Int32()
 	return value
 }
@@ -2377,7 +2417,7 @@ func (recv *TextRectangle) FieldHeight() int32 {
 func (recv *TextRectangle) SetFieldHeight(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(textRectangleStruct, recv.native, "height", argValue)
+	gi.FieldSet(textRectangleStruct, recv.Native, "height", argValue)
 }
 
 // TextRectangleStruct creates an uninitialised TextRectangle.
@@ -2387,12 +2427,13 @@ func TextRectangleStruct() *TextRectangle {
 		return nil
 	}
 
-	structGo := &TextRectangle{native: textRectangleStruct.Alloc()}
+	structGo := &TextRectangle{}
+	structGo.Native = textRectangleStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeTextRectangle)
 	return structGo
 }
 func finalizeTextRectangle(obj *TextRectangle) {
-	textRectangleStruct.Free(obj.native)
+	textRectangleStruct.Free(obj.Native)
 }
 
 var utilClassStruct *gi.Struct
@@ -2407,7 +2448,7 @@ func utilClassStruct_Set() error {
 }
 
 type UtilClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2449,12 +2490,13 @@ func UtilClassStruct() *UtilClass {
 		return nil
 	}
 
-	structGo := &UtilClass{native: utilClassStruct.Alloc()}
+	structGo := &UtilClass{}
+	structGo.Native = utilClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeUtilClass)
 	return structGo
 }
 func finalizeUtilClass(obj *UtilClass) {
-	utilClassStruct.Free(obj.native)
+	utilClassStruct.Free(obj.Native)
 }
 
 var valueIfaceStruct *gi.Struct
@@ -2469,7 +2511,7 @@ func valueIfaceStruct_Set() error {
 }
 
 type ValueIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2523,12 +2565,13 @@ func ValueIfaceStruct() *ValueIface {
 		return nil
 	}
 
-	structGo := &ValueIface{native: valueIfaceStruct.Alloc()}
+	structGo := &ValueIface{}
+	structGo.Native = valueIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeValueIface)
 	return structGo
 }
 func finalizeValueIface(obj *ValueIface) {
-	valueIfaceStruct.Free(obj.native)
+	valueIfaceStruct.Free(obj.Native)
 }
 
 var windowIfaceStruct *gi.Struct
@@ -2543,7 +2586,7 @@ func windowIfaceStruct_Set() error {
 }
 
 type WindowIface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2557,10 +2600,11 @@ func WindowIfaceStruct() *WindowIface {
 		return nil
 	}
 
-	structGo := &WindowIface{native: windowIfaceStruct.Alloc()}
+	structGo := &WindowIface{}
+	structGo.Native = windowIfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWindowIface)
 	return structGo
 }
 func finalizeWindowIface(obj *WindowIface) {
-	windowIfaceStruct.Free(obj.native)
+	windowIfaceStruct.Free(obj.Native)
 }

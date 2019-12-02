@@ -107,7 +107,7 @@ func (pp Parameters) generateInArgs(g *jen.Group, receiver bool) {
 			Id("inArgs").
 			Index(jen.Lit(n)).
 			Dot("SetPointer").
-			Call(jen.Id(receiverName).Dot("native"))
+			Call(jen.Id(receiverName).Dot(fieldNameNative))
 
 		n++
 	}

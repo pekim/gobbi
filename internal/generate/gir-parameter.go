@@ -76,7 +76,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 	}
 
 	if p.Type.isRecord() {
-		goVar = goVar.Dot("native")
+		goVar = goVar.Dot(fieldNameNative)
 	}
 
 	value := p.Type.createFromInArgument(goVar)
@@ -94,12 +94,9 @@ func (p Parameter) generateOutValue(g *jen.Group, varNamePrefix string, index in
 		Id("outArgs").
 		Index(jen.Lit(index))
 
-	value := p.generateValue(arg)
+	name := jen.Id(fmt.Sprintf("%s%d", varNamePrefix, index))
 
-	g.
-		Id(fmt.Sprintf("%s%d", varNamePrefix, index)).
-		Op(":=").
-		Add(value)
+	p.generateValue(g, name, arg)
 }
 
 func (p *Parameter) transferOwnershipJen(g *jen.Group) {

@@ -20,7 +20,7 @@ func addressClassStruct_Set() error {
 }
 
 type AddressClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -50,12 +50,13 @@ func AddressClassStruct() *AddressClass {
 		return nil
 	}
 
-	structGo := &AddressClass{native: addressClassStruct.Alloc()}
+	structGo := &AddressClass{}
+	structGo.Native = addressClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAddressClass)
 	return structGo
 }
 func finalizeAddressClass(obj *AddressClass) {
-	addressClassStruct.Free(obj.native)
+	addressClassStruct.Free(obj.Native)
 }
 
 var authClassStruct *gi.Struct
@@ -70,7 +71,7 @@ func authClassStruct_Set() error {
 }
 
 type AuthClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -79,7 +80,7 @@ type AuthClass struct {
 
 // FieldSchemeName returns the C field 'scheme_name'.
 func (recv *AuthClass) FieldSchemeName() string {
-	argValue := gi.FieldGet(authClassStruct, recv.native, "scheme_name")
+	argValue := gi.FieldGet(authClassStruct, recv.Native, "scheme_name")
 	value := argValue.String(false)
 	return value
 }
@@ -88,12 +89,12 @@ func (recv *AuthClass) FieldSchemeName() string {
 func (recv *AuthClass) SetFieldSchemeName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(authClassStruct, recv.native, "scheme_name", argValue)
+	gi.FieldSet(authClassStruct, recv.Native, "scheme_name", argValue)
 }
 
 // FieldStrength returns the C field 'strength'.
 func (recv *AuthClass) FieldStrength() uint32 {
-	argValue := gi.FieldGet(authClassStruct, recv.native, "strength")
+	argValue := gi.FieldGet(authClassStruct, recv.Native, "strength")
 	value := argValue.Uint32()
 	return value
 }
@@ -102,7 +103,7 @@ func (recv *AuthClass) FieldStrength() uint32 {
 func (recv *AuthClass) SetFieldStrength(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(authClassStruct, recv.native, "strength", argValue)
+	gi.FieldSet(authClassStruct, recv.Native, "strength", argValue)
 }
 
 // UNSUPPORTED : C value 'update' : for field getter : missing Type
@@ -148,12 +149,13 @@ func AuthClassStruct() *AuthClass {
 		return nil
 	}
 
-	structGo := &AuthClass{native: authClassStruct.Alloc()}
+	structGo := &AuthClass{}
+	structGo.Native = authClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthClass)
 	return structGo
 }
 func finalizeAuthClass(obj *AuthClass) {
-	authClassStruct.Free(obj.native)
+	authClassStruct.Free(obj.Native)
 }
 
 var authDomainBasicClassStruct *gi.Struct
@@ -168,21 +170,22 @@ func authDomainBasicClassStruct_Set() error {
 }
 
 type AuthDomainBasicClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) FieldParentClass() *AuthDomainClass {
-	argValue := gi.FieldGet(authDomainBasicClassStruct, recv.native, "parent_class")
-	value := &AuthDomainClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(authDomainBasicClassStruct, recv.Native, "parent_class")
+	value := &AuthDomainClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) SetFieldParentClass(value *AuthDomainClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(authDomainBasicClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(authDomainBasicClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -208,12 +211,13 @@ func AuthDomainBasicClassStruct() *AuthDomainBasicClass {
 		return nil
 	}
 
-	structGo := &AuthDomainBasicClass{native: authDomainBasicClassStruct.Alloc()}
+	structGo := &AuthDomainBasicClass{}
+	structGo.Native = authDomainBasicClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthDomainBasicClass)
 	return structGo
 }
 func finalizeAuthDomainBasicClass(obj *AuthDomainBasicClass) {
-	authDomainBasicClassStruct.Free(obj.native)
+	authDomainBasicClassStruct.Free(obj.Native)
 }
 
 var authDomainClassStruct *gi.Struct
@@ -228,7 +232,7 @@ func authDomainClassStruct_Set() error {
 }
 
 type AuthDomainClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -266,12 +270,13 @@ func AuthDomainClassStruct() *AuthDomainClass {
 		return nil
 	}
 
-	structGo := &AuthDomainClass{native: authDomainClassStruct.Alloc()}
+	structGo := &AuthDomainClass{}
+	structGo.Native = authDomainClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthDomainClass)
 	return structGo
 }
 func finalizeAuthDomainClass(obj *AuthDomainClass) {
-	authDomainClassStruct.Free(obj.native)
+	authDomainClassStruct.Free(obj.Native)
 }
 
 var authDomainDigestClassStruct *gi.Struct
@@ -286,21 +291,22 @@ func authDomainDigestClassStruct_Set() error {
 }
 
 type AuthDomainDigestClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) FieldParentClass() *AuthDomainClass {
-	argValue := gi.FieldGet(authDomainDigestClassStruct, recv.native, "parent_class")
-	value := &AuthDomainClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(authDomainDigestClassStruct, recv.Native, "parent_class")
+	value := &AuthDomainClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) SetFieldParentClass(value *AuthDomainClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(authDomainDigestClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(authDomainDigestClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -326,12 +332,13 @@ func AuthDomainDigestClassStruct() *AuthDomainDigestClass {
 		return nil
 	}
 
-	structGo := &AuthDomainDigestClass{native: authDomainDigestClassStruct.Alloc()}
+	structGo := &AuthDomainDigestClass{}
+	structGo.Native = authDomainDigestClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthDomainDigestClass)
 	return structGo
 }
 func finalizeAuthDomainDigestClass(obj *AuthDomainDigestClass) {
-	authDomainDigestClassStruct.Free(obj.native)
+	authDomainDigestClassStruct.Free(obj.Native)
 }
 
 var authManagerClassStruct *gi.Struct
@@ -346,7 +353,7 @@ func authManagerClassStruct_Set() error {
 }
 
 type AuthManagerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -364,12 +371,13 @@ func AuthManagerClassStruct() *AuthManagerClass {
 		return nil
 	}
 
-	structGo := &AuthManagerClass{native: authManagerClassStruct.Alloc()}
+	structGo := &AuthManagerClass{}
+	structGo.Native = authManagerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthManagerClass)
 	return structGo
 }
 func finalizeAuthManagerClass(obj *AuthManagerClass) {
-	authManagerClassStruct.Free(obj.native)
+	authManagerClassStruct.Free(obj.Native)
 }
 
 var authManagerPrivateStruct *gi.Struct
@@ -384,7 +392,7 @@ func authManagerPrivateStruct_Set() error {
 }
 
 type AuthManagerPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // AuthManagerPrivateStruct creates an uninitialised AuthManagerPrivate.
@@ -394,12 +402,13 @@ func AuthManagerPrivateStruct() *AuthManagerPrivate {
 		return nil
 	}
 
-	structGo := &AuthManagerPrivate{native: authManagerPrivateStruct.Alloc()}
+	structGo := &AuthManagerPrivate{}
+	structGo.Native = authManagerPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeAuthManagerPrivate)
 	return structGo
 }
 func finalizeAuthManagerPrivate(obj *AuthManagerPrivate) {
-	authManagerPrivateStruct.Free(obj.native)
+	authManagerPrivateStruct.Free(obj.Native)
 }
 
 var bufferStruct *gi.Struct
@@ -414,7 +423,7 @@ func bufferStruct_Set() error {
 }
 
 type Buffer struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -423,7 +432,7 @@ type Buffer struct {
 
 // FieldLength returns the C field 'length'.
 func (recv *Buffer) FieldLength() uint64 {
-	argValue := gi.FieldGet(bufferStruct, recv.native, "length")
+	argValue := gi.FieldGet(bufferStruct, recv.Native, "length")
 	value := argValue.Uint64()
 	return value
 }
@@ -432,7 +441,7 @@ func (recv *Buffer) FieldLength() uint64 {
 func (recv *Buffer) SetFieldLength(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(bufferStruct, recv.native, "length", argValue)
+	gi.FieldSet(bufferStruct, recv.Native, "length", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
@@ -459,7 +468,7 @@ func bufferCopyFunction_Set() error {
 // Copy is a representation of the C type soup_buffer_copy.
 func (recv *Buffer) Copy() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -468,7 +477,8 @@ func (recv *Buffer) Copy() *Buffer {
 		ret = bufferCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{native: ret.Pointer()}
+	retGo := &Buffer{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -491,7 +501,7 @@ func bufferFreeFunction_Set() error {
 // Free is a representation of the C type soup_buffer_free.
 func (recv *Buffer) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := bufferFreeFunction_Set()
 	if err == nil {
@@ -525,7 +535,7 @@ func bufferNewSubbufferFunction_Set() error {
 // NewSubbuffer is a representation of the C type soup_buffer_new_subbuffer.
 func (recv *Buffer) NewSubbuffer(offset uint64, length uint64) *Buffer {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint64(offset)
 	inArgs[2].SetUint64(length)
 
@@ -536,7 +546,8 @@ func (recv *Buffer) NewSubbuffer(offset uint64, length uint64) *Buffer {
 		ret = bufferNewSubbufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{native: ret.Pointer()}
+	retGo := &Buffer{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -553,7 +564,7 @@ func cacheClassStruct_Set() error {
 }
 
 type CacheClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -583,12 +594,13 @@ func CacheClassStruct() *CacheClass {
 		return nil
 	}
 
-	structGo := &CacheClass{native: cacheClassStruct.Alloc()}
+	structGo := &CacheClass{}
+	structGo.Native = cacheClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCacheClass)
 	return structGo
 }
 func finalizeCacheClass(obj *CacheClass) {
-	cacheClassStruct.Free(obj.native)
+	cacheClassStruct.Free(obj.Native)
 }
 
 var cachePrivateStruct *gi.Struct
@@ -603,7 +615,7 @@ func cachePrivateStruct_Set() error {
 }
 
 type CachePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // CachePrivateStruct creates an uninitialised CachePrivate.
@@ -613,12 +625,13 @@ func CachePrivateStruct() *CachePrivate {
 		return nil
 	}
 
-	structGo := &CachePrivate{native: cachePrivateStruct.Alloc()}
+	structGo := &CachePrivate{}
+	structGo.Native = cachePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCachePrivate)
 	return structGo
 }
 func finalizeCachePrivate(obj *CachePrivate) {
-	cachePrivateStruct.Free(obj.native)
+	cachePrivateStruct.Free(obj.Native)
 }
 
 var clientContextStruct *gi.Struct
@@ -633,7 +646,7 @@ func clientContextStruct_Set() error {
 }
 
 type ClientContext struct {
-	native uintptr
+	Native uintptr
 }
 
 var clientContextGetAddressFunction *gi.Function
@@ -654,7 +667,7 @@ func clientContextGetAddressFunction_Set() error {
 // GetAddress is a representation of the C type soup_client_context_get_address.
 func (recv *ClientContext) GetAddress() *Address {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -663,7 +676,8 @@ func (recv *ClientContext) GetAddress() *Address {
 		ret = clientContextGetAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Address{native: ret.Pointer()}
+	retGo := &Address{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -686,7 +700,7 @@ func clientContextGetAuthDomainFunction_Set() error {
 // GetAuthDomain is a representation of the C type soup_client_context_get_auth_domain.
 func (recv *ClientContext) GetAuthDomain() *AuthDomain {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -695,7 +709,8 @@ func (recv *ClientContext) GetAuthDomain() *AuthDomain {
 		ret = clientContextGetAuthDomainFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &AuthDomain{native: ret.Pointer()}
+	retGo := &AuthDomain{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -718,7 +733,7 @@ func clientContextGetAuthUserFunction_Set() error {
 // GetAuthUser is a representation of the C type soup_client_context_get_auth_user.
 func (recv *ClientContext) GetAuthUser() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -752,7 +767,7 @@ func clientContextGetHostFunction_Set() error {
 // GetHost is a representation of the C type soup_client_context_get_host.
 func (recv *ClientContext) GetHost() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -788,7 +803,7 @@ func clientContextGetSocketFunction_Set() error {
 // GetSocket is a representation of the C type soup_client_context_get_socket.
 func (recv *ClientContext) GetSocket() *Socket {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -797,7 +812,8 @@ func (recv *ClientContext) GetSocket() *Socket {
 		ret = clientContextGetSocketFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Socket{native: ret.Pointer()}
+	retGo := &Socket{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -811,12 +827,13 @@ func ClientContextStruct() *ClientContext {
 		return nil
 	}
 
-	structGo := &ClientContext{native: clientContextStruct.Alloc()}
+	structGo := &ClientContext{}
+	structGo.Native = clientContextStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeClientContext)
 	return structGo
 }
 func finalizeClientContext(obj *ClientContext) {
-	clientContextStruct.Free(obj.native)
+	clientContextStruct.Free(obj.Native)
 }
 
 var connectionStruct *gi.Struct
@@ -831,7 +848,7 @@ func connectionStruct_Set() error {
 }
 
 type Connection struct {
-	native uintptr
+	Native uintptr
 }
 
 // ConnectionStruct creates an uninitialised Connection.
@@ -841,12 +858,13 @@ func ConnectionStruct() *Connection {
 		return nil
 	}
 
-	structGo := &Connection{native: connectionStruct.Alloc()}
+	structGo := &Connection{}
+	structGo.Native = connectionStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeConnection)
 	return structGo
 }
 func finalizeConnection(obj *Connection) {
-	connectionStruct.Free(obj.native)
+	connectionStruct.Free(obj.Native)
 }
 
 var contentDecoderClassStruct *gi.Struct
@@ -861,7 +879,7 @@ func contentDecoderClassStruct_Set() error {
 }
 
 type ContentDecoderClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -895,12 +913,13 @@ func ContentDecoderClassStruct() *ContentDecoderClass {
 		return nil
 	}
 
-	structGo := &ContentDecoderClass{native: contentDecoderClassStruct.Alloc()}
+	structGo := &ContentDecoderClass{}
+	structGo.Native = contentDecoderClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContentDecoderClass)
 	return structGo
 }
 func finalizeContentDecoderClass(obj *ContentDecoderClass) {
-	contentDecoderClassStruct.Free(obj.native)
+	contentDecoderClassStruct.Free(obj.Native)
 }
 
 var contentDecoderPrivateStruct *gi.Struct
@@ -915,7 +934,7 @@ func contentDecoderPrivateStruct_Set() error {
 }
 
 type ContentDecoderPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ContentDecoderPrivateStruct creates an uninitialised ContentDecoderPrivate.
@@ -925,12 +944,13 @@ func ContentDecoderPrivateStruct() *ContentDecoderPrivate {
 		return nil
 	}
 
-	structGo := &ContentDecoderPrivate{native: contentDecoderPrivateStruct.Alloc()}
+	structGo := &ContentDecoderPrivate{}
+	structGo.Native = contentDecoderPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContentDecoderPrivate)
 	return structGo
 }
 func finalizeContentDecoderPrivate(obj *ContentDecoderPrivate) {
-	contentDecoderPrivateStruct.Free(obj.native)
+	contentDecoderPrivateStruct.Free(obj.Native)
 }
 
 var contentSnifferClassStruct *gi.Struct
@@ -945,7 +965,7 @@ func contentSnifferClassStruct_Set() error {
 }
 
 type ContentSnifferClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -987,12 +1007,13 @@ func ContentSnifferClassStruct() *ContentSnifferClass {
 		return nil
 	}
 
-	structGo := &ContentSnifferClass{native: contentSnifferClassStruct.Alloc()}
+	structGo := &ContentSnifferClass{}
+	structGo.Native = contentSnifferClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContentSnifferClass)
 	return structGo
 }
 func finalizeContentSnifferClass(obj *ContentSnifferClass) {
-	contentSnifferClassStruct.Free(obj.native)
+	contentSnifferClassStruct.Free(obj.Native)
 }
 
 var contentSnifferPrivateStruct *gi.Struct
@@ -1007,7 +1028,7 @@ func contentSnifferPrivateStruct_Set() error {
 }
 
 type ContentSnifferPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // ContentSnifferPrivateStruct creates an uninitialised ContentSnifferPrivate.
@@ -1017,12 +1038,13 @@ func ContentSnifferPrivateStruct() *ContentSnifferPrivate {
 		return nil
 	}
 
-	structGo := &ContentSnifferPrivate{native: contentSnifferPrivateStruct.Alloc()}
+	structGo := &ContentSnifferPrivate{}
+	structGo.Native = contentSnifferPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeContentSnifferPrivate)
 	return structGo
 }
 func finalizeContentSnifferPrivate(obj *ContentSnifferPrivate) {
-	contentSnifferPrivateStruct.Free(obj.native)
+	contentSnifferPrivateStruct.Free(obj.Native)
 }
 
 var cookieStruct *gi.Struct
@@ -1037,12 +1059,12 @@ func cookieStruct_Set() error {
 }
 
 type Cookie struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldName returns the C field 'name'.
 func (recv *Cookie) FieldName() string {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "name")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -1051,12 +1073,12 @@ func (recv *Cookie) FieldName() string {
 func (recv *Cookie) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(cookieStruct, recv.native, "name", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "name", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *Cookie) FieldValue() string {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "value")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "value")
 	value := argValue.String(false)
 	return value
 }
@@ -1065,12 +1087,12 @@ func (recv *Cookie) FieldValue() string {
 func (recv *Cookie) SetFieldValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(cookieStruct, recv.native, "value", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "value", argValue)
 }
 
 // FieldDomain returns the C field 'domain'.
 func (recv *Cookie) FieldDomain() string {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "domain")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "domain")
 	value := argValue.String(false)
 	return value
 }
@@ -1079,12 +1101,12 @@ func (recv *Cookie) FieldDomain() string {
 func (recv *Cookie) SetFieldDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(cookieStruct, recv.native, "domain", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "domain", argValue)
 }
 
 // FieldPath returns the C field 'path'.
 func (recv *Cookie) FieldPath() string {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "path")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "path")
 	value := argValue.String(false)
 	return value
 }
@@ -1093,26 +1115,27 @@ func (recv *Cookie) FieldPath() string {
 func (recv *Cookie) SetFieldPath(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(cookieStruct, recv.native, "path", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "path", argValue)
 }
 
 // FieldExpires returns the C field 'expires'.
 func (recv *Cookie) FieldExpires() *Date {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "expires")
-	value := &Date{native: argValue.Pointer()}
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "expires")
+	value := &Date{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldExpires sets the value of the C field 'expires'.
 func (recv *Cookie) SetFieldExpires(value *Date) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(cookieStruct, recv.native, "expires", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(cookieStruct, recv.Native, "expires", argValue)
 }
 
 // FieldSecure returns the C field 'secure'.
 func (recv *Cookie) FieldSecure() bool {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "secure")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "secure")
 	value := argValue.Boolean()
 	return value
 }
@@ -1121,12 +1144,12 @@ func (recv *Cookie) FieldSecure() bool {
 func (recv *Cookie) SetFieldSecure(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.FieldSet(cookieStruct, recv.native, "secure", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "secure", argValue)
 }
 
 // FieldHttpOnly returns the C field 'http_only'.
 func (recv *Cookie) FieldHttpOnly() bool {
-	argValue := gi.FieldGet(cookieStruct, recv.native, "http_only")
+	argValue := gi.FieldGet(cookieStruct, recv.Native, "http_only")
 	value := argValue.Boolean()
 	return value
 }
@@ -1135,7 +1158,7 @@ func (recv *Cookie) FieldHttpOnly() bool {
 func (recv *Cookie) SetFieldHttpOnly(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.FieldSet(cookieStruct, recv.native, "http_only", argValue)
+	gi.FieldSet(cookieStruct, recv.Native, "http_only", argValue)
 }
 
 var cookieNewFunction *gi.Function
@@ -1169,7 +1192,8 @@ func CookieNew(name string, value string, domain string, path string, maxAge int
 		ret = cookieNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cookie{native: ret.Pointer()}
+	retGo := &Cookie{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1192,8 +1216,8 @@ func cookieAppliesToUriFunction_Set() error {
 // AppliesToUri is a representation of the C type soup_cookie_applies_to_uri.
 func (recv *Cookie) AppliesToUri(uri *URI) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(uri.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(uri.Native)
 
 	var ret gi.Argument
 
@@ -1225,7 +1249,7 @@ func cookieCopyFunction_Set() error {
 // Copy is a representation of the C type soup_cookie_copy.
 func (recv *Cookie) Copy() *Cookie {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1234,7 +1258,8 @@ func (recv *Cookie) Copy() *Cookie {
 		ret = cookieCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cookie{native: ret.Pointer()}
+	retGo := &Cookie{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1257,7 +1282,7 @@ func cookieDomainMatchesFunction_Set() error {
 // DomainMatches is a representation of the C type soup_cookie_domain_matches.
 func (recv *Cookie) DomainMatches(host string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(host)
 
 	var ret gi.Argument
@@ -1290,8 +1315,8 @@ func cookieEqualFunction_Set() error {
 // Equal is a representation of the C type soup_cookie_equal.
 func (recv *Cookie) Equal(cookie2 *Cookie) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(cookie2.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(cookie2.Native)
 
 	var ret gi.Argument
 
@@ -1323,7 +1348,7 @@ func cookieFreeFunction_Set() error {
 // Free is a representation of the C type soup_cookie_free.
 func (recv *Cookie) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := cookieFreeFunction_Set()
 	if err == nil {
@@ -1351,7 +1376,7 @@ func cookieGetDomainFunction_Set() error {
 // GetDomain is a representation of the C type soup_cookie_get_domain.
 func (recv *Cookie) GetDomain() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1383,7 +1408,7 @@ func cookieGetExpiresFunction_Set() error {
 // GetExpires is a representation of the C type soup_cookie_get_expires.
 func (recv *Cookie) GetExpires() *Date {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1392,7 +1417,8 @@ func (recv *Cookie) GetExpires() *Date {
 		ret = cookieGetExpiresFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -1415,7 +1441,7 @@ func cookieGetHttpOnlyFunction_Set() error {
 // GetHttpOnly is a representation of the C type soup_cookie_get_http_only.
 func (recv *Cookie) GetHttpOnly() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1447,7 +1473,7 @@ func cookieGetNameFunction_Set() error {
 // GetName is a representation of the C type soup_cookie_get_name.
 func (recv *Cookie) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1479,7 +1505,7 @@ func cookieGetPathFunction_Set() error {
 // GetPath is a representation of the C type soup_cookie_get_path.
 func (recv *Cookie) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1511,7 +1537,7 @@ func cookieGetSecureFunction_Set() error {
 // GetSecure is a representation of the C type soup_cookie_get_secure.
 func (recv *Cookie) GetSecure() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1543,7 +1569,7 @@ func cookieGetValueFunction_Set() error {
 // GetValue is a representation of the C type soup_cookie_get_value.
 func (recv *Cookie) GetValue() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1575,7 +1601,7 @@ func cookieSetDomainFunction_Set() error {
 // SetDomain is a representation of the C type soup_cookie_set_domain.
 func (recv *Cookie) SetDomain(domain string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(domain)
 
 	err := cookieSetDomainFunction_Set()
@@ -1604,8 +1630,8 @@ func cookieSetExpiresFunction_Set() error {
 // SetExpires is a representation of the C type soup_cookie_set_expires.
 func (recv *Cookie) SetExpires(expires *Date) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(expires.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(expires.Native)
 
 	err := cookieSetExpiresFunction_Set()
 	if err == nil {
@@ -1633,7 +1659,7 @@ func cookieSetHttpOnlyFunction_Set() error {
 // SetHttpOnly is a representation of the C type soup_cookie_set_http_only.
 func (recv *Cookie) SetHttpOnly(httpOnly bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(httpOnly)
 
 	err := cookieSetHttpOnlyFunction_Set()
@@ -1662,7 +1688,7 @@ func cookieSetMaxAgeFunction_Set() error {
 // SetMaxAge is a representation of the C type soup_cookie_set_max_age.
 func (recv *Cookie) SetMaxAge(maxAge int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(maxAge)
 
 	err := cookieSetMaxAgeFunction_Set()
@@ -1691,7 +1717,7 @@ func cookieSetNameFunction_Set() error {
 // SetName is a representation of the C type soup_cookie_set_name.
 func (recv *Cookie) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	err := cookieSetNameFunction_Set()
@@ -1720,7 +1746,7 @@ func cookieSetPathFunction_Set() error {
 // SetPath is a representation of the C type soup_cookie_set_path.
 func (recv *Cookie) SetPath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(path)
 
 	err := cookieSetPathFunction_Set()
@@ -1749,7 +1775,7 @@ func cookieSetSecureFunction_Set() error {
 // SetSecure is a representation of the C type soup_cookie_set_secure.
 func (recv *Cookie) SetSecure(secure bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(secure)
 
 	err := cookieSetSecureFunction_Set()
@@ -1778,7 +1804,7 @@ func cookieSetValueFunction_Set() error {
 // SetValue is a representation of the C type soup_cookie_set_value.
 func (recv *Cookie) SetValue(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(value)
 
 	err := cookieSetValueFunction_Set()
@@ -1807,7 +1833,7 @@ func cookieToCookieHeaderFunction_Set() error {
 // ToCookieHeader is a representation of the C type soup_cookie_to_cookie_header.
 func (recv *Cookie) ToCookieHeader() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1839,7 +1865,7 @@ func cookieToSetCookieHeaderFunction_Set() error {
 // ToSetCookieHeader is a representation of the C type soup_cookie_to_set_cookie_header.
 func (recv *Cookie) ToSetCookieHeader() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -1865,7 +1891,7 @@ func cookieJarClassStruct_Set() error {
 }
 
 type CookieJarClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1899,12 +1925,13 @@ func CookieJarClassStruct() *CookieJarClass {
 		return nil
 	}
 
-	structGo := &CookieJarClass{native: cookieJarClassStruct.Alloc()}
+	structGo := &CookieJarClass{}
+	structGo.Native = cookieJarClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCookieJarClass)
 	return structGo
 }
 func finalizeCookieJarClass(obj *CookieJarClass) {
-	cookieJarClassStruct.Free(obj.native)
+	cookieJarClassStruct.Free(obj.Native)
 }
 
 var cookieJarDBClassStruct *gi.Struct
@@ -1919,21 +1946,22 @@ func cookieJarDBClassStruct_Set() error {
 }
 
 type CookieJarDBClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarDBClass) FieldParentClass() *CookieJarClass {
-	argValue := gi.FieldGet(cookieJarDBClassStruct, recv.native, "parent_class")
-	value := &CookieJarClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(cookieJarDBClassStruct, recv.Native, "parent_class")
+	value := &CookieJarClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarDBClass) SetFieldParentClass(value *CookieJarClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(cookieJarDBClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(cookieJarDBClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -1959,12 +1987,13 @@ func CookieJarDBClassStruct() *CookieJarDBClass {
 		return nil
 	}
 
-	structGo := &CookieJarDBClass{native: cookieJarDBClassStruct.Alloc()}
+	structGo := &CookieJarDBClass{}
+	structGo.Native = cookieJarDBClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCookieJarDBClass)
 	return structGo
 }
 func finalizeCookieJarDBClass(obj *CookieJarDBClass) {
-	cookieJarDBClassStruct.Free(obj.native)
+	cookieJarDBClassStruct.Free(obj.Native)
 }
 
 var cookieJarTextClassStruct *gi.Struct
@@ -1979,21 +2008,22 @@ func cookieJarTextClassStruct_Set() error {
 }
 
 type CookieJarTextClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarTextClass) FieldParentClass() *CookieJarClass {
-	argValue := gi.FieldGet(cookieJarTextClassStruct, recv.native, "parent_class")
-	value := &CookieJarClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(cookieJarTextClassStruct, recv.Native, "parent_class")
+	value := &CookieJarClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarTextClass) SetFieldParentClass(value *CookieJarClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(cookieJarTextClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(cookieJarTextClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -2019,12 +2049,13 @@ func CookieJarTextClassStruct() *CookieJarTextClass {
 		return nil
 	}
 
-	structGo := &CookieJarTextClass{native: cookieJarTextClassStruct.Alloc()}
+	structGo := &CookieJarTextClass{}
+	structGo.Native = cookieJarTextClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeCookieJarTextClass)
 	return structGo
 }
 func finalizeCookieJarTextClass(obj *CookieJarTextClass) {
-	cookieJarTextClassStruct.Free(obj.native)
+	cookieJarTextClassStruct.Free(obj.Native)
 }
 
 var dateStruct *gi.Struct
@@ -2039,12 +2070,12 @@ func dateStruct_Set() error {
 }
 
 type Date struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldYear returns the C field 'year'.
 func (recv *Date) FieldYear() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "year")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "year")
 	value := argValue.Int32()
 	return value
 }
@@ -2053,12 +2084,12 @@ func (recv *Date) FieldYear() int32 {
 func (recv *Date) SetFieldYear(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "year", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "year", argValue)
 }
 
 // FieldMonth returns the C field 'month'.
 func (recv *Date) FieldMonth() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "month")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "month")
 	value := argValue.Int32()
 	return value
 }
@@ -2067,12 +2098,12 @@ func (recv *Date) FieldMonth() int32 {
 func (recv *Date) SetFieldMonth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "month", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "month", argValue)
 }
 
 // FieldDay returns the C field 'day'.
 func (recv *Date) FieldDay() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "day")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "day")
 	value := argValue.Int32()
 	return value
 }
@@ -2081,12 +2112,12 @@ func (recv *Date) FieldDay() int32 {
 func (recv *Date) SetFieldDay(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "day", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "day", argValue)
 }
 
 // FieldHour returns the C field 'hour'.
 func (recv *Date) FieldHour() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "hour")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "hour")
 	value := argValue.Int32()
 	return value
 }
@@ -2095,12 +2126,12 @@ func (recv *Date) FieldHour() int32 {
 func (recv *Date) SetFieldHour(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "hour", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "hour", argValue)
 }
 
 // FieldMinute returns the C field 'minute'.
 func (recv *Date) FieldMinute() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "minute")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "minute")
 	value := argValue.Int32()
 	return value
 }
@@ -2109,12 +2140,12 @@ func (recv *Date) FieldMinute() int32 {
 func (recv *Date) SetFieldMinute(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "minute", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "minute", argValue)
 }
 
 // FieldSecond returns the C field 'second'.
 func (recv *Date) FieldSecond() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "second")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "second")
 	value := argValue.Int32()
 	return value
 }
@@ -2123,12 +2154,12 @@ func (recv *Date) FieldSecond() int32 {
 func (recv *Date) SetFieldSecond(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "second", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "second", argValue)
 }
 
 // FieldUtc returns the C field 'utc'.
 func (recv *Date) FieldUtc() bool {
-	argValue := gi.FieldGet(dateStruct, recv.native, "utc")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "utc")
 	value := argValue.Boolean()
 	return value
 }
@@ -2137,12 +2168,12 @@ func (recv *Date) FieldUtc() bool {
 func (recv *Date) SetFieldUtc(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.FieldSet(dateStruct, recv.native, "utc", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "utc", argValue)
 }
 
 // FieldOffset returns the C field 'offset'.
 func (recv *Date) FieldOffset() int32 {
-	argValue := gi.FieldGet(dateStruct, recv.native, "offset")
+	argValue := gi.FieldGet(dateStruct, recv.Native, "offset")
 	value := argValue.Int32()
 	return value
 }
@@ -2151,7 +2182,7 @@ func (recv *Date) FieldOffset() int32 {
 func (recv *Date) SetFieldOffset(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(dateStruct, recv.native, "offset", argValue)
+	gi.FieldSet(dateStruct, recv.Native, "offset", argValue)
 }
 
 var dateNewFunction *gi.Function
@@ -2186,7 +2217,8 @@ func DateNew(year int32, month int32, day int32, hour int32, minute int32, secon
 		ret = dateNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2218,7 +2250,8 @@ func DateNewFromNow(offsetSeconds int32) *Date {
 		ret = dateNewFromNowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2250,7 +2283,8 @@ func DateNewFromString(dateString string) *Date {
 		ret = dateNewFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2282,7 +2316,8 @@ func DateNewFromTimeT(when int64) *Date {
 		ret = dateNewFromTimeTFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2305,7 +2340,7 @@ func dateCopyFunction_Set() error {
 // Copy is a representation of the C type soup_date_copy.
 func (recv *Date) Copy() *Date {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2314,7 +2349,8 @@ func (recv *Date) Copy() *Date {
 		ret = dateCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{native: ret.Pointer()}
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2337,7 +2373,7 @@ func dateFreeFunction_Set() error {
 // Free is a representation of the C type soup_date_free.
 func (recv *Date) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := dateFreeFunction_Set()
 	if err == nil {
@@ -2365,7 +2401,7 @@ func dateGetDayFunction_Set() error {
 // GetDay is a representation of the C type soup_date_get_day.
 func (recv *Date) GetDay() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2397,7 +2433,7 @@ func dateGetHourFunction_Set() error {
 // GetHour is a representation of the C type soup_date_get_hour.
 func (recv *Date) GetHour() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2429,7 +2465,7 @@ func dateGetMinuteFunction_Set() error {
 // GetMinute is a representation of the C type soup_date_get_minute.
 func (recv *Date) GetMinute() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2461,7 +2497,7 @@ func dateGetMonthFunction_Set() error {
 // GetMonth is a representation of the C type soup_date_get_month.
 func (recv *Date) GetMonth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2493,7 +2529,7 @@ func dateGetOffsetFunction_Set() error {
 // GetOffset is a representation of the C type soup_date_get_offset.
 func (recv *Date) GetOffset() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2525,7 +2561,7 @@ func dateGetSecondFunction_Set() error {
 // GetSecond is a representation of the C type soup_date_get_second.
 func (recv *Date) GetSecond() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2557,7 +2593,7 @@ func dateGetUtcFunction_Set() error {
 // GetUtc is a representation of the C type soup_date_get_utc.
 func (recv *Date) GetUtc() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2589,7 +2625,7 @@ func dateGetYearFunction_Set() error {
 // GetYear is a representation of the C type soup_date_get_year.
 func (recv *Date) GetYear() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2621,7 +2657,7 @@ func dateIsPastFunction_Set() error {
 // IsPast is a representation of the C type soup_date_is_past.
 func (recv *Date) IsPast() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2655,7 +2691,7 @@ func dateToTimeTFunction_Set() error {
 // ToTimeT is a representation of the C type soup_date_to_time_t.
 func (recv *Date) ToTimeT() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -2683,7 +2719,7 @@ func hSTSEnforcerClassStruct_Set() error {
 }
 
 type HSTSEnforcerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2729,12 +2765,13 @@ func HSTSEnforcerClassStruct() *HSTSEnforcerClass {
 		return nil
 	}
 
-	structGo := &HSTSEnforcerClass{native: hSTSEnforcerClassStruct.Alloc()}
+	structGo := &HSTSEnforcerClass{}
+	structGo.Native = hSTSEnforcerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerClass)
 	return structGo
 }
 func finalizeHSTSEnforcerClass(obj *HSTSEnforcerClass) {
-	hSTSEnforcerClassStruct.Free(obj.native)
+	hSTSEnforcerClassStruct.Free(obj.Native)
 }
 
 var hSTSEnforcerDBClassStruct *gi.Struct
@@ -2749,21 +2786,22 @@ func hSTSEnforcerDBClassStruct_Set() error {
 }
 
 type HSTSEnforcerDBClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) FieldParentClass() *HSTSEnforcerClass {
-	argValue := gi.FieldGet(hSTSEnforcerDBClassStruct, recv.native, "parent_class")
-	value := &HSTSEnforcerClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(hSTSEnforcerDBClassStruct, recv.Native, "parent_class")
+	value := &HSTSEnforcerClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) SetFieldParentClass(value *HSTSEnforcerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(hSTSEnforcerDBClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(hSTSEnforcerDBClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -2789,12 +2827,13 @@ func HSTSEnforcerDBClassStruct() *HSTSEnforcerDBClass {
 		return nil
 	}
 
-	structGo := &HSTSEnforcerDBClass{native: hSTSEnforcerDBClassStruct.Alloc()}
+	structGo := &HSTSEnforcerDBClass{}
+	structGo.Native = hSTSEnforcerDBClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerDBClass)
 	return structGo
 }
 func finalizeHSTSEnforcerDBClass(obj *HSTSEnforcerDBClass) {
-	hSTSEnforcerDBClassStruct.Free(obj.native)
+	hSTSEnforcerDBClassStruct.Free(obj.Native)
 }
 
 var hSTSEnforcerDBPrivateStruct *gi.Struct
@@ -2809,7 +2848,7 @@ func hSTSEnforcerDBPrivateStruct_Set() error {
 }
 
 type HSTSEnforcerDBPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // HSTSEnforcerDBPrivateStruct creates an uninitialised HSTSEnforcerDBPrivate.
@@ -2819,12 +2858,13 @@ func HSTSEnforcerDBPrivateStruct() *HSTSEnforcerDBPrivate {
 		return nil
 	}
 
-	structGo := &HSTSEnforcerDBPrivate{native: hSTSEnforcerDBPrivateStruct.Alloc()}
+	structGo := &HSTSEnforcerDBPrivate{}
+	structGo.Native = hSTSEnforcerDBPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerDBPrivate)
 	return structGo
 }
 func finalizeHSTSEnforcerDBPrivate(obj *HSTSEnforcerDBPrivate) {
-	hSTSEnforcerDBPrivateStruct.Free(obj.native)
+	hSTSEnforcerDBPrivateStruct.Free(obj.Native)
 }
 
 var hSTSEnforcerPrivateStruct *gi.Struct
@@ -2839,7 +2879,7 @@ func hSTSEnforcerPrivateStruct_Set() error {
 }
 
 type HSTSEnforcerPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // HSTSEnforcerPrivateStruct creates an uninitialised HSTSEnforcerPrivate.
@@ -2849,12 +2889,13 @@ func HSTSEnforcerPrivateStruct() *HSTSEnforcerPrivate {
 		return nil
 	}
 
-	structGo := &HSTSEnforcerPrivate{native: hSTSEnforcerPrivateStruct.Alloc()}
+	structGo := &HSTSEnforcerPrivate{}
+	structGo.Native = hSTSEnforcerPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeHSTSEnforcerPrivate)
 	return structGo
 }
 func finalizeHSTSEnforcerPrivate(obj *HSTSEnforcerPrivate) {
-	hSTSEnforcerPrivateStruct.Free(obj.native)
+	hSTSEnforcerPrivateStruct.Free(obj.Native)
 }
 
 var hSTSPolicyStruct *gi.Struct
@@ -2869,12 +2910,12 @@ func hSTSPolicyStruct_Set() error {
 }
 
 type HSTSPolicy struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldDomain returns the C field 'domain'.
 func (recv *HSTSPolicy) FieldDomain() string {
-	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "domain")
+	argValue := gi.FieldGet(hSTSPolicyStruct, recv.Native, "domain")
 	value := argValue.String(false)
 	return value
 }
@@ -2883,12 +2924,12 @@ func (recv *HSTSPolicy) FieldDomain() string {
 func (recv *HSTSPolicy) SetFieldDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(hSTSPolicyStruct, recv.native, "domain", argValue)
+	gi.FieldSet(hSTSPolicyStruct, recv.Native, "domain", argValue)
 }
 
 // FieldMaxAge returns the C field 'max_age'.
 func (recv *HSTSPolicy) FieldMaxAge() uint64 {
-	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "max_age")
+	argValue := gi.FieldGet(hSTSPolicyStruct, recv.Native, "max_age")
 	value := argValue.Uint64()
 	return value
 }
@@ -2897,26 +2938,27 @@ func (recv *HSTSPolicy) FieldMaxAge() uint64 {
 func (recv *HSTSPolicy) SetFieldMaxAge(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(hSTSPolicyStruct, recv.native, "max_age", argValue)
+	gi.FieldSet(hSTSPolicyStruct, recv.Native, "max_age", argValue)
 }
 
 // FieldExpires returns the C field 'expires'.
 func (recv *HSTSPolicy) FieldExpires() *Date {
-	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "expires")
-	value := &Date{native: argValue.Pointer()}
+	argValue := gi.FieldGet(hSTSPolicyStruct, recv.Native, "expires")
+	value := &Date{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldExpires sets the value of the C field 'expires'.
 func (recv *HSTSPolicy) SetFieldExpires(value *Date) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(hSTSPolicyStruct, recv.native, "expires", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(hSTSPolicyStruct, recv.Native, "expires", argValue)
 }
 
 // FieldIncludeSubdomains returns the C field 'include_subdomains'.
 func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
-	argValue := gi.FieldGet(hSTSPolicyStruct, recv.native, "include_subdomains")
+	argValue := gi.FieldGet(hSTSPolicyStruct, recv.Native, "include_subdomains")
 	value := argValue.Boolean()
 	return value
 }
@@ -2925,7 +2967,7 @@ func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
 func (recv *HSTSPolicy) SetFieldIncludeSubdomains(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.FieldSet(hSTSPolicyStruct, recv.native, "include_subdomains", argValue)
+	gi.FieldSet(hSTSPolicyStruct, recv.Native, "include_subdomains", argValue)
 }
 
 var hSTSPolicyNewFunction *gi.Function
@@ -2957,7 +2999,8 @@ func HSTSPolicyNew(domain string, maxAge uint64, includeSubdomains bool) *HSTSPo
 		ret = hSTSPolicyNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &HSTSPolicy{native: ret.Pointer()}
+	retGo := &HSTSPolicy{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -2980,7 +3023,7 @@ func hSTSPolicyNewFromResponseFunction_Set() error {
 // HSTSPolicyNewFromResponse is a representation of the C type soup_hsts_policy_new_from_response.
 func HSTSPolicyNewFromResponse(msg *Message) *HSTSPolicy {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(msg.native)
+	inArgs[0].SetPointer(msg.Native)
 
 	var ret gi.Argument
 
@@ -2989,7 +3032,8 @@ func HSTSPolicyNewFromResponse(msg *Message) *HSTSPolicy {
 		ret = hSTSPolicyNewFromResponseFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &HSTSPolicy{native: ret.Pointer()}
+	retGo := &HSTSPolicy{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3014,7 +3058,7 @@ func HSTSPolicyNewFull(domain string, maxAge uint64, expires *Date, includeSubdo
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetUint64(maxAge)
-	inArgs[2].SetPointer(expires.native)
+	inArgs[2].SetPointer(expires.Native)
 	inArgs[3].SetBoolean(includeSubdomains)
 
 	var ret gi.Argument
@@ -3024,7 +3068,8 @@ func HSTSPolicyNewFull(domain string, maxAge uint64, expires *Date, includeSubdo
 		ret = hSTSPolicyNewFullFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &HSTSPolicy{native: ret.Pointer()}
+	retGo := &HSTSPolicy{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3057,7 +3102,8 @@ func HSTSPolicyNewSessionPolicy(domain string, includeSubdomains bool) *HSTSPoli
 		ret = hSTSPolicyNewSessionPolicyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &HSTSPolicy{native: ret.Pointer()}
+	retGo := &HSTSPolicy{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3080,7 +3126,7 @@ func hSTSPolicyCopyFunction_Set() error {
 // Copy is a representation of the C type soup_hsts_policy_copy.
 func (recv *HSTSPolicy) Copy() *HSTSPolicy {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3089,7 +3135,8 @@ func (recv *HSTSPolicy) Copy() *HSTSPolicy {
 		ret = hSTSPolicyCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &HSTSPolicy{native: ret.Pointer()}
+	retGo := &HSTSPolicy{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3112,8 +3159,8 @@ func hSTSPolicyEqualFunction_Set() error {
 // Equal is a representation of the C type soup_hsts_policy_equal.
 func (recv *HSTSPolicy) Equal(policy2 *HSTSPolicy) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(policy2.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(policy2.Native)
 
 	var ret gi.Argument
 
@@ -3145,7 +3192,7 @@ func hSTSPolicyFreeFunction_Set() error {
 // Free is a representation of the C type soup_hsts_policy_free.
 func (recv *HSTSPolicy) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := hSTSPolicyFreeFunction_Set()
 	if err == nil {
@@ -3173,7 +3220,7 @@ func hSTSPolicyGetDomainFunction_Set() error {
 // GetDomain is a representation of the C type soup_hsts_policy_get_domain.
 func (recv *HSTSPolicy) GetDomain() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3205,7 +3252,7 @@ func hSTSPolicyIncludesSubdomainsFunction_Set() error {
 // IncludesSubdomains is a representation of the C type soup_hsts_policy_includes_subdomains.
 func (recv *HSTSPolicy) IncludesSubdomains() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3237,7 +3284,7 @@ func hSTSPolicyIsExpiredFunction_Set() error {
 // IsExpired is a representation of the C type soup_hsts_policy_is_expired.
 func (recv *HSTSPolicy) IsExpired() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3269,7 +3316,7 @@ func hSTSPolicyIsSessionPolicyFunction_Set() error {
 // IsSessionPolicy is a representation of the C type soup_hsts_policy_is_session_policy.
 func (recv *HSTSPolicy) IsSessionPolicy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3295,7 +3342,7 @@ func loggerClassStruct_Set() error {
 }
 
 type LoggerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3325,12 +3372,13 @@ func LoggerClassStruct() *LoggerClass {
 		return nil
 	}
 
-	structGo := &LoggerClass{native: loggerClassStruct.Alloc()}
+	structGo := &LoggerClass{}
+	structGo.Native = loggerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeLoggerClass)
 	return structGo
 }
 func finalizeLoggerClass(obj *LoggerClass) {
-	loggerClassStruct.Free(obj.native)
+	loggerClassStruct.Free(obj.Native)
 }
 
 var messageBodyStruct *gi.Struct
@@ -3345,12 +3393,12 @@ func messageBodyStruct_Set() error {
 }
 
 type MessageBody struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldData returns the C field 'data'.
 func (recv *MessageBody) FieldData() string {
-	argValue := gi.FieldGet(messageBodyStruct, recv.native, "data")
+	argValue := gi.FieldGet(messageBodyStruct, recv.Native, "data")
 	value := argValue.String(false)
 	return value
 }
@@ -3359,12 +3407,12 @@ func (recv *MessageBody) FieldData() string {
 func (recv *MessageBody) SetFieldData(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(messageBodyStruct, recv.native, "data", argValue)
+	gi.FieldSet(messageBodyStruct, recv.Native, "data", argValue)
 }
 
 // FieldLength returns the C field 'length'.
 func (recv *MessageBody) FieldLength() int64 {
-	argValue := gi.FieldGet(messageBodyStruct, recv.native, "length")
+	argValue := gi.FieldGet(messageBodyStruct, recv.Native, "length")
 	value := argValue.Int64()
 	return value
 }
@@ -3373,7 +3421,7 @@ func (recv *MessageBody) FieldLength() int64 {
 func (recv *MessageBody) SetFieldLength(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(messageBodyStruct, recv.native, "length", argValue)
+	gi.FieldSet(messageBodyStruct, recv.Native, "length", argValue)
 }
 
 var messageBodyNewFunction *gi.Function
@@ -3401,7 +3449,8 @@ func MessageBodyNew() *MessageBody {
 		ret = messageBodyNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MessageBody{native: ret.Pointer()}
+	retGo := &MessageBody{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3426,8 +3475,8 @@ func messageBodyAppendBufferFunction_Set() error {
 // AppendBuffer is a representation of the C type soup_message_body_append_buffer.
 func (recv *MessageBody) AppendBuffer(buffer *Buffer) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(buffer.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(buffer.Native)
 
 	err := messageBodyAppendBufferFunction_Set()
 	if err == nil {
@@ -3457,7 +3506,7 @@ func messageBodyCompleteFunction_Set() error {
 // Complete is a representation of the C type soup_message_body_complete.
 func (recv *MessageBody) Complete() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageBodyCompleteFunction_Set()
 	if err == nil {
@@ -3485,7 +3534,7 @@ func messageBodyFlattenFunction_Set() error {
 // Flatten is a representation of the C type soup_message_body_flatten.
 func (recv *MessageBody) Flatten() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3494,7 +3543,8 @@ func (recv *MessageBody) Flatten() *Buffer {
 		ret = messageBodyFlattenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{native: ret.Pointer()}
+	retGo := &Buffer{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3517,7 +3567,7 @@ func messageBodyFreeFunction_Set() error {
 // Free is a representation of the C type soup_message_body_free.
 func (recv *MessageBody) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageBodyFreeFunction_Set()
 	if err == nil {
@@ -3545,7 +3595,7 @@ func messageBodyGetAccumulateFunction_Set() error {
 // GetAccumulate is a representation of the C type soup_message_body_get_accumulate.
 func (recv *MessageBody) GetAccumulate() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -3577,7 +3627,7 @@ func messageBodyGetChunkFunction_Set() error {
 // GetChunk is a representation of the C type soup_message_body_get_chunk.
 func (recv *MessageBody) GetChunk(offset int64) *Buffer {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(offset)
 
 	var ret gi.Argument
@@ -3587,7 +3637,8 @@ func (recv *MessageBody) GetChunk(offset int64) *Buffer {
 		ret = messageBodyGetChunkFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{native: ret.Pointer()}
+	retGo := &Buffer{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -3610,8 +3661,8 @@ func messageBodyGotChunkFunction_Set() error {
 // GotChunk is a representation of the C type soup_message_body_got_chunk.
 func (recv *MessageBody) GotChunk(chunk *Buffer) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(chunk.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(chunk.Native)
 
 	err := messageBodyGotChunkFunction_Set()
 	if err == nil {
@@ -3639,7 +3690,7 @@ func messageBodySetAccumulateFunction_Set() error {
 // SetAccumulate is a representation of the C type soup_message_body_set_accumulate.
 func (recv *MessageBody) SetAccumulate(accumulate bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(accumulate)
 
 	err := messageBodySetAccumulateFunction_Set()
@@ -3668,7 +3719,7 @@ func messageBodyTruncateFunction_Set() error {
 // Truncate is a representation of the C type soup_message_body_truncate.
 func (recv *MessageBody) Truncate() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageBodyTruncateFunction_Set()
 	if err == nil {
@@ -3696,8 +3747,8 @@ func messageBodyWroteChunkFunction_Set() error {
 // WroteChunk is a representation of the C type soup_message_body_wrote_chunk.
 func (recv *MessageBody) WroteChunk(chunk *Buffer) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(chunk.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(chunk.Native)
 
 	err := messageBodyWroteChunkFunction_Set()
 	if err == nil {
@@ -3719,7 +3770,7 @@ func messageClassStruct_Set() error {
 }
 
 type MessageClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3789,12 +3840,13 @@ func MessageClassStruct() *MessageClass {
 		return nil
 	}
 
-	structGo := &MessageClass{native: messageClassStruct.Alloc()}
+	structGo := &MessageClass{}
+	structGo.Native = messageClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMessageClass)
 	return structGo
 }
 func finalizeMessageClass(obj *MessageClass) {
-	messageClassStruct.Free(obj.native)
+	messageClassStruct.Free(obj.Native)
 }
 
 var messageHeadersStruct *gi.Struct
@@ -3809,7 +3861,7 @@ func messageHeadersStruct_Set() error {
 }
 
 type MessageHeaders struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_new' : parameter 'type' of type 'MessageHeadersType' not supported
@@ -3832,7 +3884,7 @@ func messageHeadersAppendFunction_Set() error {
 // Append is a representation of the C type soup_message_headers_append.
 func (recv *MessageHeaders) Append(name string, value string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(value)
 
@@ -3862,7 +3914,7 @@ func messageHeadersCleanConnectionHeadersFunction_Set() error {
 // CleanConnectionHeaders is a representation of the C type soup_message_headers_clean_connection_headers.
 func (recv *MessageHeaders) CleanConnectionHeaders() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageHeadersCleanConnectionHeadersFunction_Set()
 	if err == nil {
@@ -3890,7 +3942,7 @@ func messageHeadersClearFunction_Set() error {
 // Clear is a representation of the C type soup_message_headers_clear.
 func (recv *MessageHeaders) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageHeadersClearFunction_Set()
 	if err == nil {
@@ -3920,7 +3972,7 @@ func messageHeadersFreeFunction_Set() error {
 // Free is a representation of the C type soup_message_headers_free.
 func (recv *MessageHeaders) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := messageHeadersFreeFunction_Set()
 	if err == nil {
@@ -3948,8 +4000,8 @@ func messageHeadersFreeRangesFunction_Set() error {
 // FreeRanges is a representation of the C type soup_message_headers_free_ranges.
 func (recv *MessageHeaders) FreeRanges(ranges *Range) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(ranges.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(ranges.Native)
 
 	err := messageHeadersFreeRangesFunction_Set()
 	if err == nil {
@@ -3977,7 +4029,7 @@ func messageHeadersGetFunction_Set() error {
 // Get is a representation of the C type soup_message_headers_get.
 func (recv *MessageHeaders) Get(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -4012,7 +4064,7 @@ func messageHeadersGetContentLengthFunction_Set() error {
 // GetContentLength is a representation of the C type soup_message_headers_get_content_length.
 func (recv *MessageHeaders) GetContentLength() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4044,7 +4096,7 @@ func messageHeadersGetContentRangeFunction_Set() error {
 // GetContentRange is a representation of the C type soup_message_headers_get_content_range.
 func (recv *MessageHeaders) GetContentRange() (bool, int64, int64, int64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [3]gi.Argument
 	var ret gi.Argument
@@ -4088,7 +4140,7 @@ func messageHeadersGetListFunction_Set() error {
 // GetList is a representation of the C type soup_message_headers_get_list.
 func (recv *MessageHeaders) GetList(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -4121,7 +4173,7 @@ func messageHeadersGetOneFunction_Set() error {
 // GetOne is a representation of the C type soup_message_headers_get_one.
 func (recv *MessageHeaders) GetOne(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -4156,7 +4208,7 @@ func messageHeadersHeaderContainsFunction_Set() error {
 // HeaderContains is a representation of the C type soup_message_headers_header_contains.
 func (recv *MessageHeaders) HeaderContains(name string, token string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(token)
 
@@ -4190,7 +4242,7 @@ func messageHeadersHeaderEqualsFunction_Set() error {
 // HeaderEquals is a representation of the C type soup_message_headers_header_equals.
 func (recv *MessageHeaders) HeaderEquals(name string, value string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(value)
 
@@ -4224,7 +4276,7 @@ func messageHeadersRemoveFunction_Set() error {
 // Remove is a representation of the C type soup_message_headers_remove.
 func (recv *MessageHeaders) Remove(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 
 	err := messageHeadersRemoveFunction_Set()
@@ -4253,7 +4305,7 @@ func messageHeadersReplaceFunction_Set() error {
 // Replace is a representation of the C type soup_message_headers_replace.
 func (recv *MessageHeaders) Replace(name string, value string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(value)
 
@@ -4285,7 +4337,7 @@ func messageHeadersSetContentLengthFunction_Set() error {
 // SetContentLength is a representation of the C type soup_message_headers_set_content_length.
 func (recv *MessageHeaders) SetContentLength(contentLength int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(contentLength)
 
 	err := messageHeadersSetContentLengthFunction_Set()
@@ -4314,7 +4366,7 @@ func messageHeadersSetContentRangeFunction_Set() error {
 // SetContentRange is a representation of the C type soup_message_headers_set_content_range.
 func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength int64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(start)
 	inArgs[2].SetInt64(end)
 	inArgs[3].SetInt64(totalLength)
@@ -4351,7 +4403,7 @@ func messageHeadersSetRangeFunction_Set() error {
 // SetRange is a representation of the C type soup_message_headers_set_range.
 func (recv *MessageHeaders) SetRange(start int64, end int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt64(start)
 	inArgs[2].SetInt64(end)
 
@@ -4381,8 +4433,8 @@ func messageHeadersSetRangesFunction_Set() error {
 // SetRanges is a representation of the C type soup_message_headers_set_ranges.
 func (recv *MessageHeaders) SetRanges(ranges *Range, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(ranges.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(ranges.Native)
 	inArgs[2].SetInt32(length)
 
 	err := messageHeadersSetRangesFunction_Set()
@@ -4405,7 +4457,7 @@ func messageHeadersIterStruct_Set() error {
 }
 
 type MessageHeadersIter struct {
-	native uintptr
+	Native uintptr
 }
 
 var messageHeadersIterNextFunction *gi.Function
@@ -4426,7 +4478,7 @@ func messageHeadersIterNextFunction_Set() error {
 // Next is a representation of the C type soup_message_headers_iter_next.
 func (recv *MessageHeadersIter) Next() (bool, string, string) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -4450,12 +4502,13 @@ func MessageHeadersIterStruct() *MessageHeadersIter {
 		return nil
 	}
 
-	structGo := &MessageHeadersIter{native: messageHeadersIterStruct.Alloc()}
+	structGo := &MessageHeadersIter{}
+	structGo.Native = messageHeadersIterStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMessageHeadersIter)
 	return structGo
 }
 func finalizeMessageHeadersIter(obj *MessageHeadersIter) {
-	messageHeadersIterStruct.Free(obj.native)
+	messageHeadersIterStruct.Free(obj.Native)
 }
 
 var messageQueueStruct *gi.Struct
@@ -4470,7 +4523,7 @@ func messageQueueStruct_Set() error {
 }
 
 type MessageQueue struct {
-	native uintptr
+	Native uintptr
 }
 
 // MessageQueueStruct creates an uninitialised MessageQueue.
@@ -4480,12 +4533,13 @@ func MessageQueueStruct() *MessageQueue {
 		return nil
 	}
 
-	structGo := &MessageQueue{native: messageQueueStruct.Alloc()}
+	structGo := &MessageQueue{}
+	structGo.Native = messageQueueStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMessageQueue)
 	return structGo
 }
 func finalizeMessageQueue(obj *MessageQueue) {
-	messageQueueStruct.Free(obj.native)
+	messageQueueStruct.Free(obj.Native)
 }
 
 var messageQueueItemStruct *gi.Struct
@@ -4500,7 +4554,7 @@ func messageQueueItemStruct_Set() error {
 }
 
 type MessageQueueItem struct {
-	native uintptr
+	Native uintptr
 }
 
 // MessageQueueItemStruct creates an uninitialised MessageQueueItem.
@@ -4510,12 +4564,13 @@ func MessageQueueItemStruct() *MessageQueueItem {
 		return nil
 	}
 
-	structGo := &MessageQueueItem{native: messageQueueItemStruct.Alloc()}
+	structGo := &MessageQueueItem{}
+	structGo.Native = messageQueueItemStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMessageQueueItem)
 	return structGo
 }
 func finalizeMessageQueueItem(obj *MessageQueueItem) {
-	messageQueueItemStruct.Free(obj.native)
+	messageQueueItemStruct.Free(obj.Native)
 }
 
 var multipartStruct *gi.Struct
@@ -4530,7 +4585,7 @@ func multipartStruct_Set() error {
 }
 
 type Multipart struct {
-	native uintptr
+	Native uintptr
 }
 
 var multipartNewFunction *gi.Function
@@ -4560,7 +4615,8 @@ func MultipartNew(mimeType string) *Multipart {
 		ret = multipartNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Multipart{native: ret.Pointer()}
+	retGo := &Multipart{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4583,8 +4639,8 @@ func multipartNewFromMessageFunction_Set() error {
 // MultipartNewFromMessage is a representation of the C type soup_multipart_new_from_message.
 func MultipartNewFromMessage(headers *MessageHeaders, body *MessageBody) *Multipart {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(headers.native)
-	inArgs[1].SetPointer(body.native)
+	inArgs[0].SetPointer(headers.Native)
+	inArgs[1].SetPointer(body.Native)
 
 	var ret gi.Argument
 
@@ -4593,7 +4649,8 @@ func MultipartNewFromMessage(headers *MessageHeaders, body *MessageBody) *Multip
 		ret = multipartNewFromMessageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Multipart{native: ret.Pointer()}
+	retGo := &Multipart{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -4616,11 +4673,11 @@ func multipartAppendFormFileFunction_Set() error {
 // AppendFormFile is a representation of the C type soup_multipart_append_form_file.
 func (recv *Multipart) AppendFormFile(controlName string, filename string, contentType string, body *Buffer) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(controlName)
 	inArgs[2].SetString(filename)
 	inArgs[3].SetString(contentType)
-	inArgs[4].SetPointer(body.native)
+	inArgs[4].SetPointer(body.Native)
 
 	err := multipartAppendFormFileFunction_Set()
 	if err == nil {
@@ -4648,7 +4705,7 @@ func multipartAppendFormStringFunction_Set() error {
 // AppendFormString is a representation of the C type soup_multipart_append_form_string.
 func (recv *Multipart) AppendFormString(controlName string, data string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(controlName)
 	inArgs[2].SetString(data)
 
@@ -4678,9 +4735,9 @@ func multipartAppendPartFunction_Set() error {
 // AppendPart is a representation of the C type soup_multipart_append_part.
 func (recv *Multipart) AppendPart(headers *MessageHeaders, body *Buffer) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(headers.native)
-	inArgs[2].SetPointer(body.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(headers.Native)
+	inArgs[2].SetPointer(body.Native)
 
 	err := multipartAppendPartFunction_Set()
 	if err == nil {
@@ -4708,7 +4765,7 @@ func multipartFreeFunction_Set() error {
 // Free is a representation of the C type soup_multipart_free.
 func (recv *Multipart) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := multipartFreeFunction_Set()
 	if err == nil {
@@ -4736,7 +4793,7 @@ func multipartGetLengthFunction_Set() error {
 // GetLength is a representation of the C type soup_multipart_get_length.
 func (recv *Multipart) GetLength() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -4768,7 +4825,7 @@ func multipartGetPartFunction_Set() error {
 // GetPart is a representation of the C type soup_multipart_get_part.
 func (recv *Multipart) GetPart(part int32) (bool, *MessageHeaders, *Buffer) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetInt32(part)
 
 	var outArgs [2]gi.Argument
@@ -4780,8 +4837,10 @@ func (recv *Multipart) GetPart(part int32) (bool, *MessageHeaders, *Buffer) {
 	}
 
 	retGo := ret.Boolean()
-	out0 := &MessageHeaders{native: outArgs[0].Pointer()}
-	out1 := &Buffer{native: outArgs[1].Pointer()}
+	out0 := &MessageHeaders{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := &Buffer{}
+	out1.Native = outArgs[1].Pointer()
 
 	return retGo, out0, out1
 }
@@ -4804,9 +4863,9 @@ func multipartToMessageFunction_Set() error {
 // ToMessage is a representation of the C type soup_multipart_to_message.
 func (recv *Multipart) ToMessage(destHeaders *MessageHeaders, destBody *MessageBody) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(destHeaders.native)
-	inArgs[2].SetPointer(destBody.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(destHeaders.Native)
+	inArgs[2].SetPointer(destBody.Native)
 
 	err := multipartToMessageFunction_Set()
 	if err == nil {
@@ -4828,7 +4887,7 @@ func multipartInputStreamClassStruct_Set() error {
 }
 
 type MultipartInputStreamClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gio.FilterInputStreamClass'
@@ -4842,12 +4901,13 @@ func MultipartInputStreamClassStruct() *MultipartInputStreamClass {
 		return nil
 	}
 
-	structGo := &MultipartInputStreamClass{native: multipartInputStreamClassStruct.Alloc()}
+	structGo := &MultipartInputStreamClass{}
+	structGo.Native = multipartInputStreamClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMultipartInputStreamClass)
 	return structGo
 }
 func finalizeMultipartInputStreamClass(obj *MultipartInputStreamClass) {
-	multipartInputStreamClassStruct.Free(obj.native)
+	multipartInputStreamClassStruct.Free(obj.Native)
 }
 
 var multipartInputStreamPrivateStruct *gi.Struct
@@ -4862,7 +4922,7 @@ func multipartInputStreamPrivateStruct_Set() error {
 }
 
 type MultipartInputStreamPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // MultipartInputStreamPrivateStruct creates an uninitialised MultipartInputStreamPrivate.
@@ -4872,12 +4932,13 @@ func MultipartInputStreamPrivateStruct() *MultipartInputStreamPrivate {
 		return nil
 	}
 
-	structGo := &MultipartInputStreamPrivate{native: multipartInputStreamPrivateStruct.Alloc()}
+	structGo := &MultipartInputStreamPrivate{}
+	structGo.Native = multipartInputStreamPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeMultipartInputStreamPrivate)
 	return structGo
 }
 func finalizeMultipartInputStreamPrivate(obj *MultipartInputStreamPrivate) {
-	multipartInputStreamPrivateStruct.Free(obj.native)
+	multipartInputStreamPrivateStruct.Free(obj.Native)
 }
 
 var passwordManagerInterfaceStruct *gi.Struct
@@ -4892,7 +4953,7 @@ func passwordManagerInterfaceStruct_Set() error {
 }
 
 type PasswordManagerInterface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -4914,12 +4975,13 @@ func PasswordManagerInterfaceStruct() *PasswordManagerInterface {
 		return nil
 	}
 
-	structGo := &PasswordManagerInterface{native: passwordManagerInterfaceStruct.Alloc()}
+	structGo := &PasswordManagerInterface{}
+	structGo.Native = passwordManagerInterfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizePasswordManagerInterface)
 	return structGo
 }
 func finalizePasswordManagerInterface(obj *PasswordManagerInterface) {
-	passwordManagerInterfaceStruct.Free(obj.native)
+	passwordManagerInterfaceStruct.Free(obj.Native)
 }
 
 var proxyResolverDefaultClassStruct *gi.Struct
@@ -4934,7 +4996,7 @@ func proxyResolverDefaultClassStruct_Set() error {
 }
 
 type ProxyResolverDefaultClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4948,12 +5010,13 @@ func ProxyResolverDefaultClassStruct() *ProxyResolverDefaultClass {
 		return nil
 	}
 
-	structGo := &ProxyResolverDefaultClass{native: proxyResolverDefaultClassStruct.Alloc()}
+	structGo := &ProxyResolverDefaultClass{}
+	structGo.Native = proxyResolverDefaultClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeProxyResolverDefaultClass)
 	return structGo
 }
 func finalizeProxyResolverDefaultClass(obj *ProxyResolverDefaultClass) {
-	proxyResolverDefaultClassStruct.Free(obj.native)
+	proxyResolverDefaultClassStruct.Free(obj.Native)
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
@@ -4968,7 +5031,7 @@ func proxyResolverInterfaceStruct_Set() error {
 }
 
 type ProxyResolverInterface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -4990,12 +5053,13 @@ func ProxyResolverInterfaceStruct() *ProxyResolverInterface {
 		return nil
 	}
 
-	structGo := &ProxyResolverInterface{native: proxyResolverInterfaceStruct.Alloc()}
+	structGo := &ProxyResolverInterface{}
+	structGo.Native = proxyResolverInterfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeProxyResolverInterface)
 	return structGo
 }
 func finalizeProxyResolverInterface(obj *ProxyResolverInterface) {
-	proxyResolverInterfaceStruct.Free(obj.native)
+	proxyResolverInterfaceStruct.Free(obj.Native)
 }
 
 var proxyURIResolverInterfaceStruct *gi.Struct
@@ -5010,7 +5074,7 @@ func proxyURIResolverInterfaceStruct_Set() error {
 }
 
 type ProxyURIResolverInterface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -5048,12 +5112,13 @@ func ProxyURIResolverInterfaceStruct() *ProxyURIResolverInterface {
 		return nil
 	}
 
-	structGo := &ProxyURIResolverInterface{native: proxyURIResolverInterfaceStruct.Alloc()}
+	structGo := &ProxyURIResolverInterface{}
+	structGo.Native = proxyURIResolverInterfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeProxyURIResolverInterface)
 	return structGo
 }
 func finalizeProxyURIResolverInterface(obj *ProxyURIResolverInterface) {
-	proxyURIResolverInterfaceStruct.Free(obj.native)
+	proxyURIResolverInterfaceStruct.Free(obj.Native)
 }
 
 var rangeStruct *gi.Struct
@@ -5068,12 +5133,12 @@ func rangeStruct_Set() error {
 }
 
 type Range struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldStart returns the C field 'start'.
 func (recv *Range) FieldStart() int64 {
-	argValue := gi.FieldGet(rangeStruct, recv.native, "start")
+	argValue := gi.FieldGet(rangeStruct, recv.Native, "start")
 	value := argValue.Int64()
 	return value
 }
@@ -5082,12 +5147,12 @@ func (recv *Range) FieldStart() int64 {
 func (recv *Range) SetFieldStart(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(rangeStruct, recv.native, "start", argValue)
+	gi.FieldSet(rangeStruct, recv.Native, "start", argValue)
 }
 
 // FieldEnd returns the C field 'end'.
 func (recv *Range) FieldEnd() int64 {
-	argValue := gi.FieldGet(rangeStruct, recv.native, "end")
+	argValue := gi.FieldGet(rangeStruct, recv.Native, "end")
 	value := argValue.Int64()
 	return value
 }
@@ -5096,7 +5161,7 @@ func (recv *Range) FieldEnd() int64 {
 func (recv *Range) SetFieldEnd(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(rangeStruct, recv.native, "end", argValue)
+	gi.FieldSet(rangeStruct, recv.Native, "end", argValue)
 }
 
 // RangeStruct creates an uninitialised Range.
@@ -5106,12 +5171,13 @@ func RangeStruct() *Range {
 		return nil
 	}
 
-	structGo := &Range{native: rangeStruct.Alloc()}
+	structGo := &Range{}
+	structGo.Native = rangeStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRange)
 	return structGo
 }
 func finalizeRange(obj *Range) {
-	rangeStruct.Free(obj.native)
+	rangeStruct.Free(obj.Native)
 }
 
 var requestClassStruct *gi.Struct
@@ -5126,7 +5192,7 @@ func requestClassStruct_Set() error {
 }
 
 type RequestClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5135,7 +5201,7 @@ type RequestClass struct {
 
 // FieldSchemes returns the C field 'schemes'.
 func (recv *RequestClass) FieldSchemes() string {
-	argValue := gi.FieldGet(requestClassStruct, recv.native, "schemes")
+	argValue := gi.FieldGet(requestClassStruct, recv.Native, "schemes")
 	value := argValue.String(false)
 	return value
 }
@@ -5144,7 +5210,7 @@ func (recv *RequestClass) FieldSchemes() string {
 func (recv *RequestClass) SetFieldSchemes(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(requestClassStruct, recv.native, "schemes", argValue)
+	gi.FieldSet(requestClassStruct, recv.Native, "schemes", argValue)
 }
 
 // UNSUPPORTED : C value 'check_uri' : for field getter : missing Type
@@ -5178,12 +5244,13 @@ func RequestClassStruct() *RequestClass {
 		return nil
 	}
 
-	structGo := &RequestClass{native: requestClassStruct.Alloc()}
+	structGo := &RequestClass{}
+	structGo.Native = requestClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestClass)
 	return structGo
 }
 func finalizeRequestClass(obj *RequestClass) {
-	requestClassStruct.Free(obj.native)
+	requestClassStruct.Free(obj.Native)
 }
 
 var requestDataClassStruct *gi.Struct
@@ -5198,21 +5265,22 @@ func requestDataClassStruct_Set() error {
 }
 
 type RequestDataClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestDataClass) FieldParent() *RequestClass {
-	argValue := gi.FieldGet(requestDataClassStruct, recv.native, "parent")
-	value := &RequestClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(requestDataClassStruct, recv.Native, "parent")
+	value := &RequestClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestDataClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(requestDataClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(requestDataClassStruct, recv.Native, "parent", argValue)
 }
 
 // RequestDataClassStruct creates an uninitialised RequestDataClass.
@@ -5222,12 +5290,13 @@ func RequestDataClassStruct() *RequestDataClass {
 		return nil
 	}
 
-	structGo := &RequestDataClass{native: requestDataClassStruct.Alloc()}
+	structGo := &RequestDataClass{}
+	structGo.Native = requestDataClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestDataClass)
 	return structGo
 }
 func finalizeRequestDataClass(obj *RequestDataClass) {
-	requestDataClassStruct.Free(obj.native)
+	requestDataClassStruct.Free(obj.Native)
 }
 
 var requestDataPrivateStruct *gi.Struct
@@ -5242,7 +5311,7 @@ func requestDataPrivateStruct_Set() error {
 }
 
 type RequestDataPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // RequestDataPrivateStruct creates an uninitialised RequestDataPrivate.
@@ -5252,12 +5321,13 @@ func RequestDataPrivateStruct() *RequestDataPrivate {
 		return nil
 	}
 
-	structGo := &RequestDataPrivate{native: requestDataPrivateStruct.Alloc()}
+	structGo := &RequestDataPrivate{}
+	structGo.Native = requestDataPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestDataPrivate)
 	return structGo
 }
 func finalizeRequestDataPrivate(obj *RequestDataPrivate) {
-	requestDataPrivateStruct.Free(obj.native)
+	requestDataPrivateStruct.Free(obj.Native)
 }
 
 var requestFileClassStruct *gi.Struct
@@ -5272,21 +5342,22 @@ func requestFileClassStruct_Set() error {
 }
 
 type RequestFileClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestFileClass) FieldParent() *RequestClass {
-	argValue := gi.FieldGet(requestFileClassStruct, recv.native, "parent")
-	value := &RequestClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(requestFileClassStruct, recv.Native, "parent")
+	value := &RequestClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestFileClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(requestFileClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(requestFileClassStruct, recv.Native, "parent", argValue)
 }
 
 // RequestFileClassStruct creates an uninitialised RequestFileClass.
@@ -5296,12 +5367,13 @@ func RequestFileClassStruct() *RequestFileClass {
 		return nil
 	}
 
-	structGo := &RequestFileClass{native: requestFileClassStruct.Alloc()}
+	structGo := &RequestFileClass{}
+	structGo.Native = requestFileClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestFileClass)
 	return structGo
 }
 func finalizeRequestFileClass(obj *RequestFileClass) {
-	requestFileClassStruct.Free(obj.native)
+	requestFileClassStruct.Free(obj.Native)
 }
 
 var requestFilePrivateStruct *gi.Struct
@@ -5316,7 +5388,7 @@ func requestFilePrivateStruct_Set() error {
 }
 
 type RequestFilePrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // RequestFilePrivateStruct creates an uninitialised RequestFilePrivate.
@@ -5326,12 +5398,13 @@ func RequestFilePrivateStruct() *RequestFilePrivate {
 		return nil
 	}
 
-	structGo := &RequestFilePrivate{native: requestFilePrivateStruct.Alloc()}
+	structGo := &RequestFilePrivate{}
+	structGo.Native = requestFilePrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestFilePrivate)
 	return structGo
 }
 func finalizeRequestFilePrivate(obj *RequestFilePrivate) {
-	requestFilePrivateStruct.Free(obj.native)
+	requestFilePrivateStruct.Free(obj.Native)
 }
 
 var requestHTTPClassStruct *gi.Struct
@@ -5346,21 +5419,22 @@ func requestHTTPClassStruct_Set() error {
 }
 
 type RequestHTTPClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestHTTPClass) FieldParent() *RequestClass {
-	argValue := gi.FieldGet(requestHTTPClassStruct, recv.native, "parent")
-	value := &RequestClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(requestHTTPClassStruct, recv.Native, "parent")
+	value := &RequestClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestHTTPClass) SetFieldParent(value *RequestClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(requestHTTPClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(requestHTTPClassStruct, recv.Native, "parent", argValue)
 }
 
 // RequestHTTPClassStruct creates an uninitialised RequestHTTPClass.
@@ -5370,12 +5444,13 @@ func RequestHTTPClassStruct() *RequestHTTPClass {
 		return nil
 	}
 
-	structGo := &RequestHTTPClass{native: requestHTTPClassStruct.Alloc()}
+	structGo := &RequestHTTPClass{}
+	structGo.Native = requestHTTPClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestHTTPClass)
 	return structGo
 }
 func finalizeRequestHTTPClass(obj *RequestHTTPClass) {
-	requestHTTPClassStruct.Free(obj.native)
+	requestHTTPClassStruct.Free(obj.Native)
 }
 
 var requestHTTPPrivateStruct *gi.Struct
@@ -5390,7 +5465,7 @@ func requestHTTPPrivateStruct_Set() error {
 }
 
 type RequestHTTPPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // RequestHTTPPrivateStruct creates an uninitialised RequestHTTPPrivate.
@@ -5400,12 +5475,13 @@ func RequestHTTPPrivateStruct() *RequestHTTPPrivate {
 		return nil
 	}
 
-	structGo := &RequestHTTPPrivate{native: requestHTTPPrivateStruct.Alloc()}
+	structGo := &RequestHTTPPrivate{}
+	structGo.Native = requestHTTPPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestHTTPPrivate)
 	return structGo
 }
 func finalizeRequestHTTPPrivate(obj *RequestHTTPPrivate) {
-	requestHTTPPrivateStruct.Free(obj.native)
+	requestHTTPPrivateStruct.Free(obj.Native)
 }
 
 var requestPrivateStruct *gi.Struct
@@ -5420,7 +5496,7 @@ func requestPrivateStruct_Set() error {
 }
 
 type RequestPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // RequestPrivateStruct creates an uninitialised RequestPrivate.
@@ -5430,12 +5506,13 @@ func RequestPrivateStruct() *RequestPrivate {
 		return nil
 	}
 
-	structGo := &RequestPrivate{native: requestPrivateStruct.Alloc()}
+	structGo := &RequestPrivate{}
+	structGo.Native = requestPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequestPrivate)
 	return structGo
 }
 func finalizeRequestPrivate(obj *RequestPrivate) {
-	requestPrivateStruct.Free(obj.native)
+	requestPrivateStruct.Free(obj.Native)
 }
 
 var requesterClassStruct *gi.Struct
@@ -5450,7 +5527,7 @@ func requesterClassStruct_Set() error {
 }
 
 type RequesterClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5464,12 +5541,13 @@ func RequesterClassStruct() *RequesterClass {
 		return nil
 	}
 
-	structGo := &RequesterClass{native: requesterClassStruct.Alloc()}
+	structGo := &RequesterClass{}
+	structGo.Native = requesterClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequesterClass)
 	return structGo
 }
 func finalizeRequesterClass(obj *RequesterClass) {
-	requesterClassStruct.Free(obj.native)
+	requesterClassStruct.Free(obj.Native)
 }
 
 var requesterPrivateStruct *gi.Struct
@@ -5484,7 +5562,7 @@ func requesterPrivateStruct_Set() error {
 }
 
 type RequesterPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // RequesterPrivateStruct creates an uninitialised RequesterPrivate.
@@ -5494,12 +5572,13 @@ func RequesterPrivateStruct() *RequesterPrivate {
 		return nil
 	}
 
-	structGo := &RequesterPrivate{native: requesterPrivateStruct.Alloc()}
+	structGo := &RequesterPrivate{}
+	structGo.Native = requesterPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeRequesterPrivate)
 	return structGo
 }
 func finalizeRequesterPrivate(obj *RequesterPrivate) {
-	requesterPrivateStruct.Free(obj.native)
+	requesterPrivateStruct.Free(obj.Native)
 }
 
 var serverClassStruct *gi.Struct
@@ -5514,7 +5593,7 @@ func serverClassStruct_Set() error {
 }
 
 type ServerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5560,12 +5639,13 @@ func ServerClassStruct() *ServerClass {
 		return nil
 	}
 
-	structGo := &ServerClass{native: serverClassStruct.Alloc()}
+	structGo := &ServerClass{}
+	structGo.Native = serverClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeServerClass)
 	return structGo
 }
 func finalizeServerClass(obj *ServerClass) {
-	serverClassStruct.Free(obj.native)
+	serverClassStruct.Free(obj.Native)
 }
 
 var sessionAsyncClassStruct *gi.Struct
@@ -5580,21 +5660,22 @@ func sessionAsyncClassStruct_Set() error {
 }
 
 type SessionAsyncClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionAsyncClass) FieldParentClass() *SessionClass {
-	argValue := gi.FieldGet(sessionAsyncClassStruct, recv.native, "parent_class")
-	value := &SessionClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(sessionAsyncClassStruct, recv.Native, "parent_class")
+	value := &SessionClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionAsyncClass) SetFieldParentClass(value *SessionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(sessionAsyncClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(sessionAsyncClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -5620,12 +5701,13 @@ func SessionAsyncClassStruct() *SessionAsyncClass {
 		return nil
 	}
 
-	structGo := &SessionAsyncClass{native: sessionAsyncClassStruct.Alloc()}
+	structGo := &SessionAsyncClass{}
+	structGo.Native = sessionAsyncClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSessionAsyncClass)
 	return structGo
 }
 func finalizeSessionAsyncClass(obj *SessionAsyncClass) {
-	sessionAsyncClassStruct.Free(obj.native)
+	sessionAsyncClassStruct.Free(obj.Native)
 }
 
 var sessionClassStruct *gi.Struct
@@ -5640,7 +5722,7 @@ func sessionClassStruct_Set() error {
 }
 
 type SessionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5694,12 +5776,13 @@ func SessionClassStruct() *SessionClass {
 		return nil
 	}
 
-	structGo := &SessionClass{native: sessionClassStruct.Alloc()}
+	structGo := &SessionClass{}
+	structGo.Native = sessionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSessionClass)
 	return structGo
 }
 func finalizeSessionClass(obj *SessionClass) {
-	sessionClassStruct.Free(obj.native)
+	sessionClassStruct.Free(obj.Native)
 }
 
 var sessionFeatureInterfaceStruct *gi.Struct
@@ -5714,7 +5797,7 @@ func sessionFeatureInterfaceStruct_Set() error {
 }
 
 type SessionFeatureInterface struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -5760,12 +5843,13 @@ func SessionFeatureInterfaceStruct() *SessionFeatureInterface {
 		return nil
 	}
 
-	structGo := &SessionFeatureInterface{native: sessionFeatureInterfaceStruct.Alloc()}
+	structGo := &SessionFeatureInterface{}
+	structGo.Native = sessionFeatureInterfaceStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSessionFeatureInterface)
 	return structGo
 }
 func finalizeSessionFeatureInterface(obj *SessionFeatureInterface) {
-	sessionFeatureInterfaceStruct.Free(obj.native)
+	sessionFeatureInterfaceStruct.Free(obj.Native)
 }
 
 var sessionSyncClassStruct *gi.Struct
@@ -5780,21 +5864,22 @@ func sessionSyncClassStruct_Set() error {
 }
 
 type SessionSyncClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionSyncClass) FieldParentClass() *SessionClass {
-	argValue := gi.FieldGet(sessionSyncClassStruct, recv.native, "parent_class")
-	value := &SessionClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(sessionSyncClassStruct, recv.Native, "parent_class")
+	value := &SessionClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionSyncClass) SetFieldParentClass(value *SessionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(sessionSyncClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(sessionSyncClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_libsoup_reserved1' : for field getter : missing Type
@@ -5820,12 +5905,13 @@ func SessionSyncClassStruct() *SessionSyncClass {
 		return nil
 	}
 
-	structGo := &SessionSyncClass{native: sessionSyncClassStruct.Alloc()}
+	structGo := &SessionSyncClass{}
+	structGo.Native = sessionSyncClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSessionSyncClass)
 	return structGo
 }
 func finalizeSessionSyncClass(obj *SessionSyncClass) {
-	sessionSyncClassStruct.Free(obj.native)
+	sessionSyncClassStruct.Free(obj.Native)
 }
 
 var socketClassStruct *gi.Struct
@@ -5840,7 +5926,7 @@ func socketClassStruct_Set() error {
 }
 
 type SocketClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5886,12 +5972,13 @@ func SocketClassStruct() *SocketClass {
 		return nil
 	}
 
-	structGo := &SocketClass{native: socketClassStruct.Alloc()}
+	structGo := &SocketClass{}
+	structGo.Native = socketClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeSocketClass)
 	return structGo
 }
 func finalizeSocketClass(obj *SocketClass) {
-	socketClassStruct.Free(obj.native)
+	socketClassStruct.Free(obj.Native)
 }
 
 var uRIStruct *gi.Struct
@@ -5906,12 +5993,12 @@ func uRIStruct_Set() error {
 }
 
 type URI struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldScheme returns the C field 'scheme'.
 func (recv *URI) FieldScheme() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "scheme")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "scheme")
 	value := argValue.String(false)
 	return value
 }
@@ -5920,12 +6007,12 @@ func (recv *URI) FieldScheme() string {
 func (recv *URI) SetFieldScheme(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "scheme", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "scheme", argValue)
 }
 
 // FieldUser returns the C field 'user'.
 func (recv *URI) FieldUser() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "user")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "user")
 	value := argValue.String(false)
 	return value
 }
@@ -5934,12 +6021,12 @@ func (recv *URI) FieldUser() string {
 func (recv *URI) SetFieldUser(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "user", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "user", argValue)
 }
 
 // FieldPassword returns the C field 'password'.
 func (recv *URI) FieldPassword() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "password")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "password")
 	value := argValue.String(false)
 	return value
 }
@@ -5948,12 +6035,12 @@ func (recv *URI) FieldPassword() string {
 func (recv *URI) SetFieldPassword(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "password", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "password", argValue)
 }
 
 // FieldHost returns the C field 'host'.
 func (recv *URI) FieldHost() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "host")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "host")
 	value := argValue.String(false)
 	return value
 }
@@ -5962,12 +6049,12 @@ func (recv *URI) FieldHost() string {
 func (recv *URI) SetFieldHost(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "host", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "host", argValue)
 }
 
 // FieldPort returns the C field 'port'.
 func (recv *URI) FieldPort() uint32 {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "port")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "port")
 	value := argValue.Uint32()
 	return value
 }
@@ -5976,12 +6063,12 @@ func (recv *URI) FieldPort() uint32 {
 func (recv *URI) SetFieldPort(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(uRIStruct, recv.native, "port", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "port", argValue)
 }
 
 // FieldPath returns the C field 'path'.
 func (recv *URI) FieldPath() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "path")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "path")
 	value := argValue.String(false)
 	return value
 }
@@ -5990,12 +6077,12 @@ func (recv *URI) FieldPath() string {
 func (recv *URI) SetFieldPath(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "path", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "path", argValue)
 }
 
 // FieldQuery returns the C field 'query'.
 func (recv *URI) FieldQuery() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "query")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "query")
 	value := argValue.String(false)
 	return value
 }
@@ -6004,12 +6091,12 @@ func (recv *URI) FieldQuery() string {
 func (recv *URI) SetFieldQuery(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "query", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "query", argValue)
 }
 
 // FieldFragment returns the C field 'fragment'.
 func (recv *URI) FieldFragment() string {
-	argValue := gi.FieldGet(uRIStruct, recv.native, "fragment")
+	argValue := gi.FieldGet(uRIStruct, recv.Native, "fragment")
 	value := argValue.String(false)
 	return value
 }
@@ -6018,7 +6105,7 @@ func (recv *URI) FieldFragment() string {
 func (recv *URI) SetFieldFragment(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(uRIStruct, recv.native, "fragment", argValue)
+	gi.FieldSet(uRIStruct, recv.Native, "fragment", argValue)
 }
 
 var uRINewFunction *gi.Function
@@ -6048,7 +6135,8 @@ func URINew(uriString string) *URI {
 		ret = uRINewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &URI{native: ret.Pointer()}
+	retGo := &URI{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6071,7 +6159,7 @@ func uRINewWithBaseFunction_Set() error {
 // URINewWithBase is a representation of the C type soup_uri_new_with_base.
 func URINewWithBase(base *URI, uriString string) *URI {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(base.native)
+	inArgs[0].SetPointer(base.Native)
 	inArgs[1].SetString(uriString)
 
 	var ret gi.Argument
@@ -6081,7 +6169,8 @@ func URINewWithBase(base *URI, uriString string) *URI {
 		ret = uRINewWithBaseFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &URI{native: ret.Pointer()}
+	retGo := &URI{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6104,7 +6193,7 @@ func uRICopyFunction_Set() error {
 // Copy is a representation of the C type soup_uri_copy.
 func (recv *URI) Copy() *URI {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6113,7 +6202,8 @@ func (recv *URI) Copy() *URI {
 		ret = uRICopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &URI{native: ret.Pointer()}
+	retGo := &URI{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6136,7 +6226,7 @@ func uRICopyHostFunction_Set() error {
 // CopyHost is a representation of the C type soup_uri_copy_host.
 func (recv *URI) CopyHost() *URI {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6145,7 +6235,8 @@ func (recv *URI) CopyHost() *URI {
 		ret = uRICopyHostFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &URI{native: ret.Pointer()}
+	retGo := &URI{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -6168,8 +6259,8 @@ func uRIEqualFunction_Set() error {
 // Equal is a representation of the C type soup_uri_equal.
 func (recv *URI) Equal(uri2 *URI) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(uri2.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(uri2.Native)
 
 	var ret gi.Argument
 
@@ -6201,7 +6292,7 @@ func uRIFreeFunction_Set() error {
 // Free is a representation of the C type soup_uri_free.
 func (recv *URI) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := uRIFreeFunction_Set()
 	if err == nil {
@@ -6229,7 +6320,7 @@ func uRIGetFragmentFunction_Set() error {
 // GetFragment is a representation of the C type soup_uri_get_fragment.
 func (recv *URI) GetFragment() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6261,7 +6352,7 @@ func uRIGetHostFunction_Set() error {
 // GetHost is a representation of the C type soup_uri_get_host.
 func (recv *URI) GetHost() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6293,7 +6384,7 @@ func uRIGetPasswordFunction_Set() error {
 // GetPassword is a representation of the C type soup_uri_get_password.
 func (recv *URI) GetPassword() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6325,7 +6416,7 @@ func uRIGetPathFunction_Set() error {
 // GetPath is a representation of the C type soup_uri_get_path.
 func (recv *URI) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6357,7 +6448,7 @@ func uRIGetPortFunction_Set() error {
 // GetPort is a representation of the C type soup_uri_get_port.
 func (recv *URI) GetPort() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6389,7 +6480,7 @@ func uRIGetQueryFunction_Set() error {
 // GetQuery is a representation of the C type soup_uri_get_query.
 func (recv *URI) GetQuery() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6421,7 +6512,7 @@ func uRIGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type soup_uri_get_scheme.
 func (recv *URI) GetScheme() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6453,7 +6544,7 @@ func uRIGetUserFunction_Set() error {
 // GetUser is a representation of the C type soup_uri_get_user.
 func (recv *URI) GetUser() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6485,8 +6576,8 @@ func uRIHostEqualFunction_Set() error {
 // HostEqual is a representation of the C type soup_uri_host_equal.
 func (recv *URI) HostEqual(v2 *URI) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(v2.native)
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(v2.Native)
 
 	var ret gi.Argument
 
@@ -6518,7 +6609,7 @@ func uRIHostHashFunction_Set() error {
 // HostHash is a representation of the C type soup_uri_host_hash.
 func (recv *URI) HostHash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6550,7 +6641,7 @@ func uRISetFragmentFunction_Set() error {
 // SetFragment is a representation of the C type soup_uri_set_fragment.
 func (recv *URI) SetFragment(fragment string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(fragment)
 
 	err := uRISetFragmentFunction_Set()
@@ -6579,7 +6670,7 @@ func uRISetHostFunction_Set() error {
 // SetHost is a representation of the C type soup_uri_set_host.
 func (recv *URI) SetHost(host string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(host)
 
 	err := uRISetHostFunction_Set()
@@ -6608,7 +6699,7 @@ func uRISetPasswordFunction_Set() error {
 // SetPassword is a representation of the C type soup_uri_set_password.
 func (recv *URI) SetPassword(password string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(password)
 
 	err := uRISetPasswordFunction_Set()
@@ -6637,7 +6728,7 @@ func uRISetPathFunction_Set() error {
 // SetPath is a representation of the C type soup_uri_set_path.
 func (recv *URI) SetPath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(path)
 
 	err := uRISetPathFunction_Set()
@@ -6666,7 +6757,7 @@ func uRISetPortFunction_Set() error {
 // SetPort is a representation of the C type soup_uri_set_port.
 func (recv *URI) SetPort(port uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetUint32(port)
 
 	err := uRISetPortFunction_Set()
@@ -6695,7 +6786,7 @@ func uRISetQueryFunction_Set() error {
 // SetQuery is a representation of the C type soup_uri_set_query.
 func (recv *URI) SetQuery(query string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(query)
 
 	err := uRISetQueryFunction_Set()
@@ -6728,7 +6819,7 @@ func uRISetSchemeFunction_Set() error {
 // SetScheme is a representation of the C type soup_uri_set_scheme.
 func (recv *URI) SetScheme(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(scheme)
 
 	err := uRISetSchemeFunction_Set()
@@ -6757,7 +6848,7 @@ func uRISetUserFunction_Set() error {
 // SetUser is a representation of the C type soup_uri_set_user.
 func (recv *URI) SetUser(user string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetString(user)
 
 	err := uRISetUserFunction_Set()
@@ -6786,7 +6877,7 @@ func uRIToStringFunction_Set() error {
 // ToString is a representation of the C type soup_uri_to_string.
 func (recv *URI) ToString(justPathAndQuery bool) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 	inArgs[1].SetBoolean(justPathAndQuery)
 
 	var ret gi.Argument
@@ -6819,7 +6910,7 @@ func uRIUsesDefaultPortFunction_Set() error {
 // UsesDefaultPort is a representation of the C type soup_uri_uses_default_port.
 func (recv *URI) UsesDefaultPort() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	var ret gi.Argument
 
@@ -6845,7 +6936,7 @@ func websocketConnectionClassStruct_Set() error {
 }
 
 type WebsocketConnectionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6879,12 +6970,13 @@ func WebsocketConnectionClassStruct() *WebsocketConnectionClass {
 		return nil
 	}
 
-	structGo := &WebsocketConnectionClass{native: websocketConnectionClassStruct.Alloc()}
+	structGo := &WebsocketConnectionClass{}
+	structGo.Native = websocketConnectionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWebsocketConnectionClass)
 	return structGo
 }
 func finalizeWebsocketConnectionClass(obj *WebsocketConnectionClass) {
-	websocketConnectionClassStruct.Free(obj.native)
+	websocketConnectionClassStruct.Free(obj.Native)
 }
 
 var websocketConnectionPrivateStruct *gi.Struct
@@ -6899,7 +6991,7 @@ func websocketConnectionPrivateStruct_Set() error {
 }
 
 type WebsocketConnectionPrivate struct {
-	native uintptr
+	Native uintptr
 }
 
 // WebsocketConnectionPrivateStruct creates an uninitialised WebsocketConnectionPrivate.
@@ -6909,12 +7001,13 @@ func WebsocketConnectionPrivateStruct() *WebsocketConnectionPrivate {
 		return nil
 	}
 
-	structGo := &WebsocketConnectionPrivate{native: websocketConnectionPrivateStruct.Alloc()}
+	structGo := &WebsocketConnectionPrivate{}
+	structGo.Native = websocketConnectionPrivateStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWebsocketConnectionPrivate)
 	return structGo
 }
 func finalizeWebsocketConnectionPrivate(obj *WebsocketConnectionPrivate) {
-	websocketConnectionPrivateStruct.Free(obj.native)
+	websocketConnectionPrivateStruct.Free(obj.Native)
 }
 
 var websocketExtensionClassStruct *gi.Struct
@@ -6929,7 +7022,7 @@ func websocketExtensionClassStruct_Set() error {
 }
 
 type WebsocketExtensionClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6938,7 +7031,7 @@ type WebsocketExtensionClass struct {
 
 // FieldName returns the C field 'name'.
 func (recv *WebsocketExtensionClass) FieldName() string {
-	argValue := gi.FieldGet(websocketExtensionClassStruct, recv.native, "name")
+	argValue := gi.FieldGet(websocketExtensionClassStruct, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -6947,7 +7040,7 @@ func (recv *WebsocketExtensionClass) FieldName() string {
 func (recv *WebsocketExtensionClass) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(websocketExtensionClassStruct, recv.native, "name", argValue)
+	gi.FieldSet(websocketExtensionClassStruct, recv.Native, "name", argValue)
 }
 
 // UNSUPPORTED : C value 'configure' : for field getter : missing Type
@@ -6993,12 +7086,13 @@ func WebsocketExtensionClassStruct() *WebsocketExtensionClass {
 		return nil
 	}
 
-	structGo := &WebsocketExtensionClass{native: websocketExtensionClassStruct.Alloc()}
+	structGo := &WebsocketExtensionClass{}
+	structGo.Native = websocketExtensionClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionClass)
 	return structGo
 }
 func finalizeWebsocketExtensionClass(obj *WebsocketExtensionClass) {
-	websocketExtensionClassStruct.Free(obj.native)
+	websocketExtensionClassStruct.Free(obj.Native)
 }
 
 var websocketExtensionDeflateClassStruct *gi.Struct
@@ -7013,21 +7107,22 @@ func websocketExtensionDeflateClassStruct_Set() error {
 }
 
 type WebsocketExtensionDeflateClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) FieldParentClass() *WebsocketExtensionClass {
-	argValue := gi.FieldGet(websocketExtensionDeflateClassStruct, recv.native, "parent_class")
-	value := &WebsocketExtensionClass{native: argValue.Pointer()}
+	argValue := gi.FieldGet(websocketExtensionDeflateClassStruct, recv.Native, "parent_class")
+	value := &WebsocketExtensionClass{}
+	value.Native = argValue.Pointer()
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) SetFieldParentClass(value *WebsocketExtensionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.FieldSet(websocketExtensionDeflateClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native)
+	gi.FieldSet(websocketExtensionDeflateClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // WebsocketExtensionDeflateClassStruct creates an uninitialised WebsocketExtensionDeflateClass.
@@ -7037,12 +7132,13 @@ func WebsocketExtensionDeflateClassStruct() *WebsocketExtensionDeflateClass {
 		return nil
 	}
 
-	structGo := &WebsocketExtensionDeflateClass{native: websocketExtensionDeflateClassStruct.Alloc()}
+	structGo := &WebsocketExtensionDeflateClass{}
+	structGo.Native = websocketExtensionDeflateClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionDeflateClass)
 	return structGo
 }
 func finalizeWebsocketExtensionDeflateClass(obj *WebsocketExtensionDeflateClass) {
-	websocketExtensionDeflateClassStruct.Free(obj.native)
+	websocketExtensionDeflateClassStruct.Free(obj.Native)
 }
 
 var websocketExtensionManagerClassStruct *gi.Struct
@@ -7057,7 +7153,7 @@ func websocketExtensionManagerClassStruct_Set() error {
 }
 
 type WebsocketExtensionManagerClass struct {
-	native uintptr
+	Native uintptr
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -7071,12 +7167,13 @@ func WebsocketExtensionManagerClassStruct() *WebsocketExtensionManagerClass {
 		return nil
 	}
 
-	structGo := &WebsocketExtensionManagerClass{native: websocketExtensionManagerClassStruct.Alloc()}
+	structGo := &WebsocketExtensionManagerClass{}
+	structGo.Native = websocketExtensionManagerClassStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionManagerClass)
 	return structGo
 }
 func finalizeWebsocketExtensionManagerClass(obj *WebsocketExtensionManagerClass) {
-	websocketExtensionManagerClassStruct.Free(obj.native)
+	websocketExtensionManagerClassStruct.Free(obj.Native)
 }
 
 var xMLRPCParamsStruct *gi.Struct
@@ -7091,7 +7188,7 @@ func xMLRPCParamsStruct_Set() error {
 }
 
 type XMLRPCParams struct {
-	native uintptr
+	Native uintptr
 }
 
 var xMLRPCParamsFreeFunction *gi.Function
@@ -7112,7 +7209,7 @@ func xMLRPCParamsFreeFunction_Set() error {
 // Free is a representation of the C type soup_xmlrpc_params_free.
 func (recv *XMLRPCParams) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native)
 
 	err := xMLRPCParamsFreeFunction_Set()
 	if err == nil {
@@ -7131,10 +7228,11 @@ func XMLRPCParamsStruct() *XMLRPCParams {
 		return nil
 	}
 
-	structGo := &XMLRPCParams{native: xMLRPCParamsStruct.Alloc()}
+	structGo := &XMLRPCParams{}
+	structGo.Native = xMLRPCParamsStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXMLRPCParams)
 	return structGo
 }
 func finalizeXMLRPCParams(obj *XMLRPCParams) {
-	xMLRPCParamsStruct.Free(obj.native)
+	xMLRPCParamsStruct.Free(obj.Native)
 }

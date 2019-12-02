@@ -20,7 +20,7 @@ func displayStruct_Set() error {
 }
 
 type Display struct {
-	native uintptr
+	Native uintptr
 }
 
 // DisplayStruct creates an uninitialised Display.
@@ -30,12 +30,13 @@ func DisplayStruct() *Display {
 		return nil
 	}
 
-	structGo := &Display{native: displayStruct.Alloc()}
+	structGo := &Display{}
+	structGo.Native = displayStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeDisplay)
 	return structGo
 }
 func finalizeDisplay(obj *Display) {
-	displayStruct.Free(obj.native)
+	displayStruct.Free(obj.Native)
 }
 
 var screenStruct *gi.Struct
@@ -50,7 +51,7 @@ func screenStruct_Set() error {
 }
 
 type Screen struct {
-	native uintptr
+	Native uintptr
 }
 
 // ScreenStruct creates an uninitialised Screen.
@@ -60,12 +61,13 @@ func ScreenStruct() *Screen {
 		return nil
 	}
 
-	structGo := &Screen{native: screenStruct.Alloc()}
+	structGo := &Screen{}
+	structGo.Native = screenStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeScreen)
 	return structGo
 }
 func finalizeScreen(obj *Screen) {
-	screenStruct.Free(obj.native)
+	screenStruct.Free(obj.Native)
 }
 
 var visualStruct *gi.Struct
@@ -80,7 +82,7 @@ func visualStruct_Set() error {
 }
 
 type Visual struct {
-	native uintptr
+	Native uintptr
 }
 
 // VisualStruct creates an uninitialised Visual.
@@ -90,12 +92,13 @@ func VisualStruct() *Visual {
 		return nil
 	}
 
-	structGo := &Visual{native: visualStruct.Alloc()}
+	structGo := &Visual{}
+	structGo.Native = visualStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeVisual)
 	return structGo
 }
 func finalizeVisual(obj *Visual) {
-	visualStruct.Free(obj.native)
+	visualStruct.Free(obj.Native)
 }
 
 var xConfigureEventStruct *gi.Struct
@@ -110,7 +113,7 @@ func xConfigureEventStruct_Set() error {
 }
 
 type XConfigureEvent struct {
-	native uintptr
+	Native uintptr
 }
 
 // XConfigureEventStruct creates an uninitialised XConfigureEvent.
@@ -120,12 +123,13 @@ func XConfigureEventStruct() *XConfigureEvent {
 		return nil
 	}
 
-	structGo := &XConfigureEvent{native: xConfigureEventStruct.Alloc()}
+	structGo := &XConfigureEvent{}
+	structGo.Native = xConfigureEventStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXConfigureEvent)
 	return structGo
 }
 func finalizeXConfigureEvent(obj *XConfigureEvent) {
-	xConfigureEventStruct.Free(obj.native)
+	xConfigureEventStruct.Free(obj.Native)
 }
 
 var xImageStruct *gi.Struct
@@ -140,7 +144,7 @@ func xImageStruct_Set() error {
 }
 
 type XImage struct {
-	native uintptr
+	Native uintptr
 }
 
 // XImageStruct creates an uninitialised XImage.
@@ -150,12 +154,13 @@ func XImageStruct() *XImage {
 		return nil
 	}
 
-	structGo := &XImage{native: xImageStruct.Alloc()}
+	structGo := &XImage{}
+	structGo.Native = xImageStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXImage)
 	return structGo
 }
 func finalizeXImage(obj *XImage) {
-	xImageStruct.Free(obj.native)
+	xImageStruct.Free(obj.Native)
 }
 
 var xFontStructStruct *gi.Struct
@@ -170,7 +175,7 @@ func xFontStructStruct_Set() error {
 }
 
 type XFontStruct struct {
-	native uintptr
+	Native uintptr
 }
 
 // XFontStructStruct creates an uninitialised XFontStruct.
@@ -180,12 +185,13 @@ func XFontStructStruct() *XFontStruct {
 		return nil
 	}
 
-	structGo := &XFontStruct{native: xFontStructStruct.Alloc()}
+	structGo := &XFontStruct{}
+	structGo.Native = xFontStructStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXFontStruct)
 	return structGo
 }
 func finalizeXFontStruct(obj *XFontStruct) {
-	xFontStructStruct.Free(obj.native)
+	xFontStructStruct.Free(obj.Native)
 }
 
 var xTrapezoidStruct *gi.Struct
@@ -200,7 +206,7 @@ func xTrapezoidStruct_Set() error {
 }
 
 type XTrapezoid struct {
-	native uintptr
+	Native uintptr
 }
 
 // XTrapezoidStruct creates an uninitialised XTrapezoid.
@@ -210,12 +216,13 @@ func XTrapezoidStruct() *XTrapezoid {
 		return nil
 	}
 
-	structGo := &XTrapezoid{native: xTrapezoidStruct.Alloc()}
+	structGo := &XTrapezoid{}
+	structGo.Native = xTrapezoidStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXTrapezoid)
 	return structGo
 }
 func finalizeXTrapezoid(obj *XTrapezoid) {
-	xTrapezoidStruct.Free(obj.native)
+	xTrapezoidStruct.Free(obj.Native)
 }
 
 var xVisualInfoStruct *gi.Struct
@@ -230,7 +237,7 @@ func xVisualInfoStruct_Set() error {
 }
 
 type XVisualInfo struct {
-	native uintptr
+	Native uintptr
 }
 
 // XVisualInfoStruct creates an uninitialised XVisualInfo.
@@ -240,12 +247,13 @@ func XVisualInfoStruct() *XVisualInfo {
 		return nil
 	}
 
-	structGo := &XVisualInfo{native: xVisualInfoStruct.Alloc()}
+	structGo := &XVisualInfo{}
+	structGo.Native = xVisualInfoStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXVisualInfo)
 	return structGo
 }
 func finalizeXVisualInfo(obj *XVisualInfo) {
-	xVisualInfoStruct.Free(obj.native)
+	xVisualInfoStruct.Free(obj.Native)
 }
 
 var xWindowAttributesStruct *gi.Struct
@@ -260,7 +268,7 @@ func xWindowAttributesStruct_Set() error {
 }
 
 type XWindowAttributes struct {
-	native uintptr
+	Native uintptr
 }
 
 // XWindowAttributesStruct creates an uninitialised XWindowAttributes.
@@ -270,10 +278,11 @@ func XWindowAttributesStruct() *XWindowAttributes {
 		return nil
 	}
 
-	structGo := &XWindowAttributes{native: xWindowAttributesStruct.Alloc()}
+	structGo := &XWindowAttributes{}
+	structGo.Native = xWindowAttributesStruct.Alloc()
 	runtime.SetFinalizer(structGo, finalizeXWindowAttributes)
 	return structGo
 }
 func finalizeXWindowAttributes(obj *XWindowAttributes) {
-	xWindowAttributesStruct.Free(obj.native)
+	xWindowAttributesStruct.Free(obj.Native)
 }

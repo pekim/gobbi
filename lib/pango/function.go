@@ -30,7 +30,8 @@ func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 		ret = attrBackgroundAlphaNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -60,7 +61,8 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 		ret = attrBackgroundNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -88,7 +90,8 @@ func AttrFallbackNew(enableFallback bool) *Attribute {
 		ret = attrFallbackNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -116,7 +119,8 @@ func AttrFamilyNew(family string) *Attribute {
 		ret = attrFamilyNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -144,7 +148,8 @@ func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 		ret = attrForegroundAlphaNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -174,7 +179,8 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 		ret = attrForegroundNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -206,7 +212,8 @@ func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 		ret = attrLetterSpacingNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -234,7 +241,8 @@ func AttrRiseNew(rise int32) *Attribute {
 		ret = attrRiseNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -262,7 +270,8 @@ func AttrScaleNew(scaleFactor float64) *Attribute {
 		ret = attrScaleNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -294,7 +303,8 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 		ret = attrStrikethroughColorNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -322,7 +332,8 @@ func AttrStrikethroughNew(strikethrough bool) *Attribute {
 		ret = attrStrikethroughNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -358,7 +369,8 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 		ret = attrUnderlineColorNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -445,8 +457,8 @@ func DefaultBreak(text string, length int32, analysis *Analysis, attrs *LogAttr,
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
-	inArgs[2].SetPointer(analysis.native)
-	inArgs[3].SetPointer(attrs.native)
+	inArgs[2].SetPointer(analysis.Native)
+	inArgs[3].SetPointer(attrs.Native)
 	inArgs[4].SetInt32(attrsLen)
 
 	err := defaultBreakFunction_Set()
@@ -471,8 +483,8 @@ func extentsToPixelsFunction_Set() error {
 // ExtentsToPixels is a representation of the C type pango_extents_to_pixels.
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(inclusive.native)
-	inArgs[1].SetPointer(nearest.native)
+	inArgs[0].SetPointer(inclusive.Native)
+	inArgs[1].SetPointer(nearest.Native)
 
 	err := extentsToPixelsFunction_Set()
 	if err == nil {
@@ -498,7 +510,7 @@ func findMapFunction_Set() error {
 // FindMap is a representation of the C type pango_find_map.
 func FindMap(language *Language, engineTypeId uint32, renderTypeId uint32) *Map {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(language.native)
+	inArgs[0].SetPointer(language.Native)
 	inArgs[1].SetUint32(engineTypeId)
 	inArgs[2].SetUint32(renderTypeId)
 
@@ -509,7 +521,8 @@ func FindMap(language *Language, engineTypeId uint32, renderTypeId uint32) *Map 
 		ret = findMapFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Map{native: ret.Pointer()}
+	retGo := &Map{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -567,7 +580,8 @@ func FontDescriptionFromString(str string) *FontDescription {
 		ret = fontDescriptionFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -665,7 +679,8 @@ func LanguageFromString(language string) *Language {
 		ret = languageFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Language{native: ret.Pointer()}
+	retGo := &Language{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -691,7 +706,8 @@ func LanguageGetDefault() *Language {
 		ret = languageGetDefaultFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Language{native: ret.Pointer()}
+	retGo := &Language{}
+	retGo.Native = ret.Pointer()
 
 	return retGo
 }
@@ -718,7 +734,7 @@ func moduleRegisterFunction_Set() error {
 // ModuleRegister is a representation of the C type pango_module_register.
 func ModuleRegister(module *IncludedModule) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(module.native)
+	inArgs[0].SetPointer(module.Native)
 
 	err := moduleRegisterFunction_Set()
 	if err == nil {
@@ -829,8 +845,8 @@ func Shape(text string, length int32, analysis *Analysis, glyphs *GlyphString) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
-	inArgs[2].SetPointer(analysis.native)
-	inArgs[3].SetPointer(glyphs.native)
+	inArgs[2].SetPointer(analysis.Native)
+	inArgs[3].SetPointer(glyphs.Native)
 
 	err := shapeFunction_Set()
 	if err == nil {
@@ -858,8 +874,8 @@ func ShapeFull(itemText string, itemLength int32, paragraphText string, paragrap
 	inArgs[1].SetInt32(itemLength)
 	inArgs[2].SetString(paragraphText)
 	inArgs[3].SetInt32(paragraphLength)
-	inArgs[4].SetPointer(analysis.native)
-	inArgs[5].SetPointer(glyphs.native)
+	inArgs[4].SetPointer(analysis.Native)
+	inArgs[5].SetPointer(glyphs.Native)
 
 	err := shapeFullFunction_Set()
 	if err == nil {
