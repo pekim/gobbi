@@ -23,6 +23,7 @@ var libraries = generate.RepositorySpecs{
 	{Version: "1.0", Name: "PangoFT2"},
 	{Version: "2.4", Name: "Soup"},
 	{Version: "4.0", Name: "WebKit2"},
+	{Version: "2.0", Name: "xlib"},
 }
 
 func generateLibraries() {

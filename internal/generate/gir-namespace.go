@@ -23,7 +23,7 @@ type Namespace struct {
 	Aliases             Aliases      `xml:"alias"`
 	Bitfields           Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
-	//	Classes                       Classes      `xml:"class"`
+	Classes      Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
 	Enumerations Enumerations `xml:"enumeration"`
 	Functions    Functions    `xml:"function"`
@@ -51,6 +51,7 @@ func (n *Namespace) init(namespaces namespaces) {
 	n.Enumerations.init(n)
 	n.Functions.init(n)
 	n.Records.init(n)
+	n.Classes.init(n)
 }
 
 func (n *Namespace) generate() {
@@ -64,6 +65,7 @@ func (n *Namespace) generate() {
 	n.generateFile("enumeration", n.Enumerations.generate)
 	n.generateFile("function", n.Functions.generate)
 	n.generateFile("record", n.Records.generate)
+	n.generateFile("class", n.Classes.generate)
 
 	n.setUnsupportedCount()
 }

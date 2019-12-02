@@ -1,0 +1,18133 @@
+// Code generated - DO NOT EDIT.
+
+package gio
+
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
+	"runtime"
+	"sync"
+)
+
+var appInfoMonitorStruct *gi.Struct
+var appInfoMonitorStruct_Once sync.Once
+
+func appInfoMonitorStruct_Set() error {
+	var err error
+	appInfoMonitorStruct_Once.Do(func() {
+		appInfoMonitorStruct, err = gi.StructNew("Gio", "AppInfoMonitor")
+	})
+	return err
+}
+
+type AppInfoMonitor struct {
+	native uintptr
+}
+
+// AppInfoMonitorStruct creates an uninitialised AppInfoMonitor.
+func AppInfoMonitorStruct() *AppInfoMonitor {
+	err := appInfoMonitorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &AppInfoMonitor{native: appInfoMonitorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeAppInfoMonitor)
+	return structGo
+}
+func finalizeAppInfoMonitor(obj *AppInfoMonitor) {
+	appInfoMonitorStruct.Free(obj.native)
+}
+
+var appLaunchContextStruct *gi.Struct
+var appLaunchContextStruct_Once sync.Once
+
+func appLaunchContextStruct_Set() error {
+	var err error
+	appLaunchContextStruct_Once.Do(func() {
+		appLaunchContextStruct, err = gi.StructNew("Gio", "AppLaunchContext")
+	})
+	return err
+}
+
+type AppLaunchContext struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_app_launch_context_new' : return type 'AppLaunchContext' not supported
+
+// UNSUPPORTED : C value 'g_app_launch_context_get_display' : parameter 'info' of type 'AppInfo' not supported
+
+var appLaunchContextGetEnvironmentFunction *gi.Function
+var appLaunchContextGetEnvironmentFunction_Once sync.Once
+
+func appLaunchContextGetEnvironmentFunction_Set() error {
+	var err error
+	appLaunchContextGetEnvironmentFunction_Once.Do(func() {
+		err = appLaunchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		appLaunchContextGetEnvironmentFunction, err = appLaunchContextStruct.InvokerNew("get_environment")
+	})
+	return err
+}
+
+// GetEnvironment is a representation of the C type g_app_launch_context_get_environment.
+func (recv *AppLaunchContext) GetEnvironment() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := appLaunchContextGetEnvironmentFunction_Set()
+	if err == nil {
+		appLaunchContextGetEnvironmentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_app_launch_context_get_startup_notify_id' : parameter 'info' of type 'AppInfo' not supported
+
+var appLaunchContextLaunchFailedFunction *gi.Function
+var appLaunchContextLaunchFailedFunction_Once sync.Once
+
+func appLaunchContextLaunchFailedFunction_Set() error {
+	var err error
+	appLaunchContextLaunchFailedFunction_Once.Do(func() {
+		err = appLaunchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		appLaunchContextLaunchFailedFunction, err = appLaunchContextStruct.InvokerNew("launch_failed")
+	})
+	return err
+}
+
+// LaunchFailed is a representation of the C type g_app_launch_context_launch_failed.
+func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(startupNotifyId)
+
+	err := appLaunchContextLaunchFailedFunction_Set()
+	if err == nil {
+		appLaunchContextLaunchFailedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var appLaunchContextSetenvFunction *gi.Function
+var appLaunchContextSetenvFunction_Once sync.Once
+
+func appLaunchContextSetenvFunction_Set() error {
+	var err error
+	appLaunchContextSetenvFunction_Once.Do(func() {
+		err = appLaunchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		appLaunchContextSetenvFunction, err = appLaunchContextStruct.InvokerNew("setenv")
+	})
+	return err
+}
+
+// Setenv is a representation of the C type g_app_launch_context_setenv.
+func (recv *AppLaunchContext) Setenv(variable string, value string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(variable)
+	inArgs[2].SetString(value)
+
+	err := appLaunchContextSetenvFunction_Set()
+	if err == nil {
+		appLaunchContextSetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var appLaunchContextUnsetenvFunction *gi.Function
+var appLaunchContextUnsetenvFunction_Once sync.Once
+
+func appLaunchContextUnsetenvFunction_Set() error {
+	var err error
+	appLaunchContextUnsetenvFunction_Once.Do(func() {
+		err = appLaunchContextStruct_Set()
+		if err != nil {
+			return
+		}
+		appLaunchContextUnsetenvFunction, err = appLaunchContextStruct.InvokerNew("unsetenv")
+	})
+	return err
+}
+
+// Unsetenv is a representation of the C type g_app_launch_context_unsetenv.
+func (recv *AppLaunchContext) Unsetenv(variable string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(variable)
+
+	err := appLaunchContextUnsetenvFunction_Set()
+	if err == nil {
+		appLaunchContextUnsetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationStruct *gi.Struct
+var applicationStruct_Once sync.Once
+
+func applicationStruct_Set() error {
+	var err error
+	applicationStruct_Once.Do(func() {
+		applicationStruct, err = gi.StructNew("Gio", "Application")
+	})
+	return err
+}
+
+type Application struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_application_new' : parameter 'flags' of type 'ApplicationFlags' not supported
+
+var applicationActivateFunction *gi.Function
+var applicationActivateFunction_Once sync.Once
+
+func applicationActivateFunction_Set() error {
+	var err error
+	applicationActivateFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationActivateFunction, err = applicationStruct.InvokerNew("activate")
+	})
+	return err
+}
+
+// Activate is a representation of the C type g_application_activate.
+func (recv *Application) Activate() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationActivateFunction_Set()
+	if err == nil {
+		applicationActivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_add_main_option' : parameter 'flags' of type 'GLib.OptionFlags' not supported
+
+// UNSUPPORTED : C value 'g_application_add_main_option_entries' : parameter 'entries' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_application_add_option_group' : parameter 'group' of type 'GLib.OptionGroup' not supported
+
+// UNSUPPORTED : C value 'g_application_bind_busy_property' : parameter 'object' of type 'GObject.Object' not supported
+
+var applicationGetApplicationIdFunction *gi.Function
+var applicationGetApplicationIdFunction_Once sync.Once
+
+func applicationGetApplicationIdFunction_Set() error {
+	var err error
+	applicationGetApplicationIdFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetApplicationIdFunction, err = applicationStruct.InvokerNew("get_application_id")
+	})
+	return err
+}
+
+// GetApplicationId is a representation of the C type g_application_get_application_id.
+func (recv *Application) GetApplicationId() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetApplicationIdFunction_Set()
+	if err == nil {
+		ret = applicationGetApplicationIdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_application_get_dbus_connection' : return type 'DBusConnection' not supported
+
+var applicationGetDbusObjectPathFunction *gi.Function
+var applicationGetDbusObjectPathFunction_Once sync.Once
+
+func applicationGetDbusObjectPathFunction_Set() error {
+	var err error
+	applicationGetDbusObjectPathFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetDbusObjectPathFunction, err = applicationStruct.InvokerNew("get_dbus_object_path")
+	})
+	return err
+}
+
+// GetDbusObjectPath is a representation of the C type g_application_get_dbus_object_path.
+func (recv *Application) GetDbusObjectPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetDbusObjectPathFunction_Set()
+	if err == nil {
+		ret = applicationGetDbusObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_application_get_flags' : return type 'ApplicationFlags' not supported
+
+var applicationGetInactivityTimeoutFunction *gi.Function
+var applicationGetInactivityTimeoutFunction_Once sync.Once
+
+func applicationGetInactivityTimeoutFunction_Set() error {
+	var err error
+	applicationGetInactivityTimeoutFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetInactivityTimeoutFunction, err = applicationStruct.InvokerNew("get_inactivity_timeout")
+	})
+	return err
+}
+
+// GetInactivityTimeout is a representation of the C type g_application_get_inactivity_timeout.
+func (recv *Application) GetInactivityTimeout() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetInactivityTimeoutFunction_Set()
+	if err == nil {
+		ret = applicationGetInactivityTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var applicationGetIsBusyFunction *gi.Function
+var applicationGetIsBusyFunction_Once sync.Once
+
+func applicationGetIsBusyFunction_Set() error {
+	var err error
+	applicationGetIsBusyFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetIsBusyFunction, err = applicationStruct.InvokerNew("get_is_busy")
+	})
+	return err
+}
+
+// GetIsBusy is a representation of the C type g_application_get_is_busy.
+func (recv *Application) GetIsBusy() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetIsBusyFunction_Set()
+	if err == nil {
+		ret = applicationGetIsBusyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var applicationGetIsRegisteredFunction *gi.Function
+var applicationGetIsRegisteredFunction_Once sync.Once
+
+func applicationGetIsRegisteredFunction_Set() error {
+	var err error
+	applicationGetIsRegisteredFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetIsRegisteredFunction, err = applicationStruct.InvokerNew("get_is_registered")
+	})
+	return err
+}
+
+// GetIsRegistered is a representation of the C type g_application_get_is_registered.
+func (recv *Application) GetIsRegistered() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetIsRegisteredFunction_Set()
+	if err == nil {
+		ret = applicationGetIsRegisteredFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var applicationGetIsRemoteFunction *gi.Function
+var applicationGetIsRemoteFunction_Once sync.Once
+
+func applicationGetIsRemoteFunction_Set() error {
+	var err error
+	applicationGetIsRemoteFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetIsRemoteFunction, err = applicationStruct.InvokerNew("get_is_remote")
+	})
+	return err
+}
+
+// GetIsRemote is a representation of the C type g_application_get_is_remote.
+func (recv *Application) GetIsRemote() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetIsRemoteFunction_Set()
+	if err == nil {
+		ret = applicationGetIsRemoteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var applicationGetResourceBasePathFunction *gi.Function
+var applicationGetResourceBasePathFunction_Once sync.Once
+
+func applicationGetResourceBasePathFunction_Set() error {
+	var err error
+	applicationGetResourceBasePathFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationGetResourceBasePathFunction, err = applicationStruct.InvokerNew("get_resource_base_path")
+	})
+	return err
+}
+
+// GetResourceBasePath is a representation of the C type g_application_get_resource_base_path.
+func (recv *Application) GetResourceBasePath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationGetResourceBasePathFunction_Set()
+	if err == nil {
+		ret = applicationGetResourceBasePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var applicationHoldFunction *gi.Function
+var applicationHoldFunction_Once sync.Once
+
+func applicationHoldFunction_Set() error {
+	var err error
+	applicationHoldFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationHoldFunction, err = applicationStruct.InvokerNew("hold")
+	})
+	return err
+}
+
+// Hold is a representation of the C type g_application_hold.
+func (recv *Application) Hold() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationHoldFunction_Set()
+	if err == nil {
+		applicationHoldFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationMarkBusyFunction *gi.Function
+var applicationMarkBusyFunction_Once sync.Once
+
+func applicationMarkBusyFunction_Set() error {
+	var err error
+	applicationMarkBusyFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationMarkBusyFunction, err = applicationStruct.InvokerNew("mark_busy")
+	})
+	return err
+}
+
+// MarkBusy is a representation of the C type g_application_mark_busy.
+func (recv *Application) MarkBusy() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationMarkBusyFunction_Set()
+	if err == nil {
+		applicationMarkBusyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_open' : parameter 'files' of type 'nil' not supported
+
+var applicationQuitFunction *gi.Function
+var applicationQuitFunction_Once sync.Once
+
+func applicationQuitFunction_Set() error {
+	var err error
+	applicationQuitFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationQuitFunction, err = applicationStruct.InvokerNew("quit")
+	})
+	return err
+}
+
+// Quit is a representation of the C type g_application_quit.
+func (recv *Application) Quit() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationQuitFunction_Set()
+	if err == nil {
+		applicationQuitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_register' : parameter 'cancellable' of type 'Cancellable' not supported
+
+var applicationReleaseFunction *gi.Function
+var applicationReleaseFunction_Once sync.Once
+
+func applicationReleaseFunction_Set() error {
+	var err error
+	applicationReleaseFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationReleaseFunction, err = applicationStruct.InvokerNew("release")
+	})
+	return err
+}
+
+// Release is a representation of the C type g_application_release.
+func (recv *Application) Release() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationReleaseFunction_Set()
+	if err == nil {
+		applicationReleaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_run' : parameter 'argv' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_application_send_notification' : parameter 'notification' of type 'Notification' not supported
+
+// UNSUPPORTED : C value 'g_application_set_action_group' : parameter 'action_group' of type 'ActionGroup' not supported
+
+var applicationSetApplicationIdFunction *gi.Function
+var applicationSetApplicationIdFunction_Once sync.Once
+
+func applicationSetApplicationIdFunction_Set() error {
+	var err error
+	applicationSetApplicationIdFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetApplicationIdFunction, err = applicationStruct.InvokerNew("set_application_id")
+	})
+	return err
+}
+
+// SetApplicationId is a representation of the C type g_application_set_application_id.
+func (recv *Application) SetApplicationId(applicationId string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(applicationId)
+
+	err := applicationSetApplicationIdFunction_Set()
+	if err == nil {
+		applicationSetApplicationIdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationSetDefaultFunction *gi.Function
+var applicationSetDefaultFunction_Once sync.Once
+
+func applicationSetDefaultFunction_Set() error {
+	var err error
+	applicationSetDefaultFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetDefaultFunction, err = applicationStruct.InvokerNew("set_default")
+	})
+	return err
+}
+
+// SetDefault is a representation of the C type g_application_set_default.
+func (recv *Application) SetDefault() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationSetDefaultFunction_Set()
+	if err == nil {
+		applicationSetDefaultFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_set_flags' : parameter 'flags' of type 'ApplicationFlags' not supported
+
+var applicationSetInactivityTimeoutFunction *gi.Function
+var applicationSetInactivityTimeoutFunction_Once sync.Once
+
+func applicationSetInactivityTimeoutFunction_Set() error {
+	var err error
+	applicationSetInactivityTimeoutFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetInactivityTimeoutFunction, err = applicationStruct.InvokerNew("set_inactivity_timeout")
+	})
+	return err
+}
+
+// SetInactivityTimeout is a representation of the C type g_application_set_inactivity_timeout.
+func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(inactivityTimeout)
+
+	err := applicationSetInactivityTimeoutFunction_Set()
+	if err == nil {
+		applicationSetInactivityTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationSetOptionContextDescriptionFunction *gi.Function
+var applicationSetOptionContextDescriptionFunction_Once sync.Once
+
+func applicationSetOptionContextDescriptionFunction_Set() error {
+	var err error
+	applicationSetOptionContextDescriptionFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetOptionContextDescriptionFunction, err = applicationStruct.InvokerNew("set_option_context_description")
+	})
+	return err
+}
+
+// SetOptionContextDescription is a representation of the C type g_application_set_option_context_description.
+func (recv *Application) SetOptionContextDescription(description string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(description)
+
+	err := applicationSetOptionContextDescriptionFunction_Set()
+	if err == nil {
+		applicationSetOptionContextDescriptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationSetOptionContextParameterStringFunction *gi.Function
+var applicationSetOptionContextParameterStringFunction_Once sync.Once
+
+func applicationSetOptionContextParameterStringFunction_Set() error {
+	var err error
+	applicationSetOptionContextParameterStringFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetOptionContextParameterStringFunction, err = applicationStruct.InvokerNew("set_option_context_parameter_string")
+	})
+	return err
+}
+
+// SetOptionContextParameterString is a representation of the C type g_application_set_option_context_parameter_string.
+func (recv *Application) SetOptionContextParameterString(parameterString string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(parameterString)
+
+	err := applicationSetOptionContextParameterStringFunction_Set()
+	if err == nil {
+		applicationSetOptionContextParameterStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationSetOptionContextSummaryFunction *gi.Function
+var applicationSetOptionContextSummaryFunction_Once sync.Once
+
+func applicationSetOptionContextSummaryFunction_Set() error {
+	var err error
+	applicationSetOptionContextSummaryFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetOptionContextSummaryFunction, err = applicationStruct.InvokerNew("set_option_context_summary")
+	})
+	return err
+}
+
+// SetOptionContextSummary is a representation of the C type g_application_set_option_context_summary.
+func (recv *Application) SetOptionContextSummary(summary string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(summary)
+
+	err := applicationSetOptionContextSummaryFunction_Set()
+	if err == nil {
+		applicationSetOptionContextSummaryFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationSetResourceBasePathFunction *gi.Function
+var applicationSetResourceBasePathFunction_Once sync.Once
+
+func applicationSetResourceBasePathFunction_Set() error {
+	var err error
+	applicationSetResourceBasePathFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationSetResourceBasePathFunction, err = applicationStruct.InvokerNew("set_resource_base_path")
+	})
+	return err
+}
+
+// SetResourceBasePath is a representation of the C type g_application_set_resource_base_path.
+func (recv *Application) SetResourceBasePath(resourcePath string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(resourcePath)
+
+	err := applicationSetResourceBasePathFunction_Set()
+	if err == nil {
+		applicationSetResourceBasePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_application_unbind_busy_property' : parameter 'object' of type 'GObject.Object' not supported
+
+var applicationUnmarkBusyFunction *gi.Function
+var applicationUnmarkBusyFunction_Once sync.Once
+
+func applicationUnmarkBusyFunction_Set() error {
+	var err error
+	applicationUnmarkBusyFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationUnmarkBusyFunction, err = applicationStruct.InvokerNew("unmark_busy")
+	})
+	return err
+}
+
+// UnmarkBusy is a representation of the C type g_application_unmark_busy.
+func (recv *Application) UnmarkBusy() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationUnmarkBusyFunction_Set()
+	if err == nil {
+		applicationUnmarkBusyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationWithdrawNotificationFunction *gi.Function
+var applicationWithdrawNotificationFunction_Once sync.Once
+
+func applicationWithdrawNotificationFunction_Set() error {
+	var err error
+	applicationWithdrawNotificationFunction_Once.Do(func() {
+		err = applicationStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationWithdrawNotificationFunction, err = applicationStruct.InvokerNew("withdraw_notification")
+	})
+	return err
+}
+
+// WithdrawNotification is a representation of the C type g_application_withdraw_notification.
+func (recv *Application) WithdrawNotification(id string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(id)
+
+	err := applicationWithdrawNotificationFunction_Set()
+	if err == nil {
+		applicationWithdrawNotificationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationCommandLineStruct *gi.Struct
+var applicationCommandLineStruct_Once sync.Once
+
+func applicationCommandLineStruct_Set() error {
+	var err error
+	applicationCommandLineStruct_Once.Do(func() {
+		applicationCommandLineStruct, err = gi.StructNew("Gio", "ApplicationCommandLine")
+	})
+	return err
+}
+
+type ApplicationCommandLine struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_application_command_line_create_file_for_arg' : return type 'File' not supported
+
+var applicationCommandLineGetArgumentsFunction *gi.Function
+var applicationCommandLineGetArgumentsFunction_Once sync.Once
+
+func applicationCommandLineGetArgumentsFunction_Set() error {
+	var err error
+	applicationCommandLineGetArgumentsFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetArgumentsFunction, err = applicationCommandLineStruct.InvokerNew("get_arguments")
+	})
+	return err
+}
+
+// GetArguments is a representation of the C type g_application_command_line_get_arguments.
+func (recv *ApplicationCommandLine) GetArguments() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := applicationCommandLineGetArgumentsFunction_Set()
+	if err == nil {
+		applicationCommandLineGetArgumentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+var applicationCommandLineGetCwdFunction *gi.Function
+var applicationCommandLineGetCwdFunction_Once sync.Once
+
+func applicationCommandLineGetCwdFunction_Set() error {
+	var err error
+	applicationCommandLineGetCwdFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetCwdFunction, err = applicationCommandLineStruct.InvokerNew("get_cwd")
+	})
+	return err
+}
+
+// GetCwd is a representation of the C type g_application_command_line_get_cwd.
+func (recv *ApplicationCommandLine) GetCwd() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationCommandLineGetCwdFunction_Set()
+	if err == nil {
+		ret = applicationCommandLineGetCwdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var applicationCommandLineGetEnvironFunction *gi.Function
+var applicationCommandLineGetEnvironFunction_Once sync.Once
+
+func applicationCommandLineGetEnvironFunction_Set() error {
+	var err error
+	applicationCommandLineGetEnvironFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetEnvironFunction, err = applicationCommandLineStruct.InvokerNew("get_environ")
+	})
+	return err
+}
+
+// GetEnviron is a representation of the C type g_application_command_line_get_environ.
+func (recv *ApplicationCommandLine) GetEnviron() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := applicationCommandLineGetEnvironFunction_Set()
+	if err == nil {
+		applicationCommandLineGetEnvironFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var applicationCommandLineGetExitStatusFunction *gi.Function
+var applicationCommandLineGetExitStatusFunction_Once sync.Once
+
+func applicationCommandLineGetExitStatusFunction_Set() error {
+	var err error
+	applicationCommandLineGetExitStatusFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetExitStatusFunction, err = applicationCommandLineStruct.InvokerNew("get_exit_status")
+	})
+	return err
+}
+
+// GetExitStatus is a representation of the C type g_application_command_line_get_exit_status.
+func (recv *ApplicationCommandLine) GetExitStatus() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationCommandLineGetExitStatusFunction_Set()
+	if err == nil {
+		ret = applicationCommandLineGetExitStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var applicationCommandLineGetIsRemoteFunction *gi.Function
+var applicationCommandLineGetIsRemoteFunction_Once sync.Once
+
+func applicationCommandLineGetIsRemoteFunction_Set() error {
+	var err error
+	applicationCommandLineGetIsRemoteFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetIsRemoteFunction, err = applicationCommandLineStruct.InvokerNew("get_is_remote")
+	})
+	return err
+}
+
+// GetIsRemote is a representation of the C type g_application_command_line_get_is_remote.
+func (recv *ApplicationCommandLine) GetIsRemote() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := applicationCommandLineGetIsRemoteFunction_Set()
+	if err == nil {
+		ret = applicationCommandLineGetIsRemoteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_application_command_line_get_options_dict' : return type 'GLib.VariantDict' not supported
+
+// UNSUPPORTED : C value 'g_application_command_line_get_platform_data' : return type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_application_command_line_get_stdin' : return type 'InputStream' not supported
+
+var applicationCommandLineGetenvFunction *gi.Function
+var applicationCommandLineGetenvFunction_Once sync.Once
+
+func applicationCommandLineGetenvFunction_Set() error {
+	var err error
+	applicationCommandLineGetenvFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineGetenvFunction, err = applicationCommandLineStruct.InvokerNew("getenv")
+	})
+	return err
+}
+
+// Getenv is a representation of the C type g_application_command_line_getenv.
+func (recv *ApplicationCommandLine) Getenv(name string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := applicationCommandLineGetenvFunction_Set()
+	if err == nil {
+		ret = applicationCommandLineGetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_application_command_line_print' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_application_command_line_printerr' : parameter '...' of type 'nil' not supported
+
+var applicationCommandLineSetExitStatusFunction *gi.Function
+var applicationCommandLineSetExitStatusFunction_Once sync.Once
+
+func applicationCommandLineSetExitStatusFunction_Set() error {
+	var err error
+	applicationCommandLineSetExitStatusFunction_Once.Do(func() {
+		err = applicationCommandLineStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationCommandLineSetExitStatusFunction, err = applicationCommandLineStruct.InvokerNew("set_exit_status")
+	})
+	return err
+}
+
+// SetExitStatus is a representation of the C type g_application_command_line_set_exit_status.
+func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(exitStatus)
+
+	err := applicationCommandLineSetExitStatusFunction_Set()
+	if err == nil {
+		applicationCommandLineSetExitStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// ApplicationCommandLineStruct creates an uninitialised ApplicationCommandLine.
+func ApplicationCommandLineStruct() *ApplicationCommandLine {
+	err := applicationCommandLineStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ApplicationCommandLine{native: applicationCommandLineStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeApplicationCommandLine)
+	return structGo
+}
+func finalizeApplicationCommandLine(obj *ApplicationCommandLine) {
+	applicationCommandLineStruct.Free(obj.native)
+}
+
+var bufferedInputStreamStruct *gi.Struct
+var bufferedInputStreamStruct_Once sync.Once
+
+func bufferedInputStreamStruct_Set() error {
+	var err error
+	bufferedInputStreamStruct_Once.Do(func() {
+		bufferedInputStreamStruct, err = gi.StructNew("Gio", "BufferedInputStream")
+	})
+	return err
+}
+
+type BufferedInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'FilterInputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'FilterInputStream'
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_new' : parameter 'base_stream' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_new_sized' : parameter 'base_stream' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_fill' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_fill_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_fill_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var bufferedInputStreamGetAvailableFunction *gi.Function
+var bufferedInputStreamGetAvailableFunction_Once sync.Once
+
+func bufferedInputStreamGetAvailableFunction_Set() error {
+	var err error
+	bufferedInputStreamGetAvailableFunction_Once.Do(func() {
+		err = bufferedInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedInputStreamGetAvailableFunction, err = bufferedInputStreamStruct.InvokerNew("get_available")
+	})
+	return err
+}
+
+// GetAvailable is a representation of the C type g_buffered_input_stream_get_available.
+func (recv *BufferedInputStream) GetAvailable() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferedInputStreamGetAvailableFunction_Set()
+	if err == nil {
+		ret = bufferedInputStreamGetAvailableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var bufferedInputStreamGetBufferSizeFunction *gi.Function
+var bufferedInputStreamGetBufferSizeFunction_Once sync.Once
+
+func bufferedInputStreamGetBufferSizeFunction_Set() error {
+	var err error
+	bufferedInputStreamGetBufferSizeFunction_Once.Do(func() {
+		err = bufferedInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedInputStreamGetBufferSizeFunction, err = bufferedInputStreamStruct.InvokerNew("get_buffer_size")
+	})
+	return err
+}
+
+// GetBufferSize is a representation of the C type g_buffered_input_stream_get_buffer_size.
+func (recv *BufferedInputStream) GetBufferSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferedInputStreamGetBufferSizeFunction_Set()
+	if err == nil {
+		ret = bufferedInputStreamGetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_peek' : parameter 'buffer' of type 'nil' not supported
+
+var bufferedInputStreamPeekBufferFunction *gi.Function
+var bufferedInputStreamPeekBufferFunction_Once sync.Once
+
+func bufferedInputStreamPeekBufferFunction_Set() error {
+	var err error
+	bufferedInputStreamPeekBufferFunction_Once.Do(func() {
+		err = bufferedInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedInputStreamPeekBufferFunction, err = bufferedInputStreamStruct.InvokerNew("peek_buffer")
+	})
+	return err
+}
+
+// PeekBuffer is a representation of the C type g_buffered_input_stream_peek_buffer.
+func (recv *BufferedInputStream) PeekBuffer() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := bufferedInputStreamPeekBufferFunction_Set()
+	if err == nil {
+		bufferedInputStreamPeekBufferFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'g_buffered_input_stream_read_byte' : parameter 'cancellable' of type 'Cancellable' not supported
+
+var bufferedInputStreamSetBufferSizeFunction *gi.Function
+var bufferedInputStreamSetBufferSizeFunction_Once sync.Once
+
+func bufferedInputStreamSetBufferSizeFunction_Set() error {
+	var err error
+	bufferedInputStreamSetBufferSizeFunction_Once.Do(func() {
+		err = bufferedInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedInputStreamSetBufferSizeFunction, err = bufferedInputStreamStruct.InvokerNew("set_buffer_size")
+	})
+	return err
+}
+
+// SetBufferSize is a representation of the C type g_buffered_input_stream_set_buffer_size.
+func (recv *BufferedInputStream) SetBufferSize(size uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(size)
+
+	err := bufferedInputStreamSetBufferSizeFunction_Set()
+	if err == nil {
+		bufferedInputStreamSetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var bufferedOutputStreamStruct *gi.Struct
+var bufferedOutputStreamStruct_Once sync.Once
+
+func bufferedOutputStreamStruct_Set() error {
+	var err error
+	bufferedOutputStreamStruct_Once.Do(func() {
+		bufferedOutputStreamStruct, err = gi.StructNew("Gio", "BufferedOutputStream")
+	})
+	return err
+}
+
+type BufferedOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'FilterOutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'FilterOutputStream'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
+	argValue := gi.FieldGet(bufferedOutputStreamStruct, recv.native, "priv")
+	value := &BufferedOutputStreamPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *BufferedOutputStream) SetFieldPriv(value *BufferedOutputStreamPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(bufferedOutputStreamStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_buffered_output_stream_new' : parameter 'base_stream' of type 'OutputStream' not supported
+
+// UNSUPPORTED : C value 'g_buffered_output_stream_new_sized' : parameter 'base_stream' of type 'OutputStream' not supported
+
+var bufferedOutputStreamGetAutoGrowFunction *gi.Function
+var bufferedOutputStreamGetAutoGrowFunction_Once sync.Once
+
+func bufferedOutputStreamGetAutoGrowFunction_Set() error {
+	var err error
+	bufferedOutputStreamGetAutoGrowFunction_Once.Do(func() {
+		err = bufferedOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedOutputStreamGetAutoGrowFunction, err = bufferedOutputStreamStruct.InvokerNew("get_auto_grow")
+	})
+	return err
+}
+
+// GetAutoGrow is a representation of the C type g_buffered_output_stream_get_auto_grow.
+func (recv *BufferedOutputStream) GetAutoGrow() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferedOutputStreamGetAutoGrowFunction_Set()
+	if err == nil {
+		ret = bufferedOutputStreamGetAutoGrowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var bufferedOutputStreamGetBufferSizeFunction *gi.Function
+var bufferedOutputStreamGetBufferSizeFunction_Once sync.Once
+
+func bufferedOutputStreamGetBufferSizeFunction_Set() error {
+	var err error
+	bufferedOutputStreamGetBufferSizeFunction_Once.Do(func() {
+		err = bufferedOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedOutputStreamGetBufferSizeFunction, err = bufferedOutputStreamStruct.InvokerNew("get_buffer_size")
+	})
+	return err
+}
+
+// GetBufferSize is a representation of the C type g_buffered_output_stream_get_buffer_size.
+func (recv *BufferedOutputStream) GetBufferSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bufferedOutputStreamGetBufferSizeFunction_Set()
+	if err == nil {
+		ret = bufferedOutputStreamGetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var bufferedOutputStreamSetAutoGrowFunction *gi.Function
+var bufferedOutputStreamSetAutoGrowFunction_Once sync.Once
+
+func bufferedOutputStreamSetAutoGrowFunction_Set() error {
+	var err error
+	bufferedOutputStreamSetAutoGrowFunction_Once.Do(func() {
+		err = bufferedOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedOutputStreamSetAutoGrowFunction, err = bufferedOutputStreamStruct.InvokerNew("set_auto_grow")
+	})
+	return err
+}
+
+// SetAutoGrow is a representation of the C type g_buffered_output_stream_set_auto_grow.
+func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(autoGrow)
+
+	err := bufferedOutputStreamSetAutoGrowFunction_Set()
+	if err == nil {
+		bufferedOutputStreamSetAutoGrowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var bufferedOutputStreamSetBufferSizeFunction *gi.Function
+var bufferedOutputStreamSetBufferSizeFunction_Once sync.Once
+
+func bufferedOutputStreamSetBufferSizeFunction_Set() error {
+	var err error
+	bufferedOutputStreamSetBufferSizeFunction_Once.Do(func() {
+		err = bufferedOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferedOutputStreamSetBufferSizeFunction, err = bufferedOutputStreamStruct.InvokerNew("set_buffer_size")
+	})
+	return err
+}
+
+// SetBufferSize is a representation of the C type g_buffered_output_stream_set_buffer_size.
+func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(size)
+
+	err := bufferedOutputStreamSetBufferSizeFunction_Set()
+	if err == nil {
+		bufferedOutputStreamSetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var bytesIconStruct *gi.Struct
+var bytesIconStruct_Once sync.Once
+
+func bytesIconStruct_Set() error {
+	var err error
+	bytesIconStruct_Once.Do(func() {
+		bytesIconStruct, err = gi.StructNew("Gio", "BytesIcon")
+	})
+	return err
+}
+
+type BytesIcon struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_bytes_icon_new' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_bytes_icon_get_bytes' : return type 'GLib.Bytes' not supported
+
+var cancellableStruct *gi.Struct
+var cancellableStruct_Once sync.Once
+
+func cancellableStruct_Set() error {
+	var err error
+	cancellableStruct_Once.Do(func() {
+		cancellableStruct, err = gi.StructNew("Gio", "Cancellable")
+	})
+	return err
+}
+
+type Cancellable struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_cancellable_new' : return type 'Cancellable' not supported
+
+var cancellableCancelFunction *gi.Function
+var cancellableCancelFunction_Once sync.Once
+
+func cancellableCancelFunction_Set() error {
+	var err error
+	cancellableCancelFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableCancelFunction, err = cancellableStruct.InvokerNew("cancel")
+	})
+	return err
+}
+
+// Cancel is a representation of the C type g_cancellable_cancel.
+func (recv *Cancellable) Cancel() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := cancellableCancelFunction_Set()
+	if err == nil {
+		cancellableCancelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_cancellable_connect' : parameter 'callback' of type 'GObject.Callback' not supported
+
+var cancellableDisconnectFunction *gi.Function
+var cancellableDisconnectFunction_Once sync.Once
+
+func cancellableDisconnectFunction_Set() error {
+	var err error
+	cancellableDisconnectFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableDisconnectFunction, err = cancellableStruct.InvokerNew("disconnect")
+	})
+	return err
+}
+
+// Disconnect is a representation of the C type g_cancellable_disconnect.
+func (recv *Cancellable) Disconnect(handlerId uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(handlerId)
+
+	err := cancellableDisconnectFunction_Set()
+	if err == nil {
+		cancellableDisconnectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cancellableGetFdFunction *gi.Function
+var cancellableGetFdFunction_Once sync.Once
+
+func cancellableGetFdFunction_Set() error {
+	var err error
+	cancellableGetFdFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableGetFdFunction, err = cancellableStruct.InvokerNew("get_fd")
+	})
+	return err
+}
+
+// GetFd is a representation of the C type g_cancellable_get_fd.
+func (recv *Cancellable) GetFd() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := cancellableGetFdFunction_Set()
+	if err == nil {
+		ret = cancellableGetFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var cancellableIsCancelledFunction *gi.Function
+var cancellableIsCancelledFunction_Once sync.Once
+
+func cancellableIsCancelledFunction_Set() error {
+	var err error
+	cancellableIsCancelledFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableIsCancelledFunction, err = cancellableStruct.InvokerNew("is_cancelled")
+	})
+	return err
+}
+
+// IsCancelled is a representation of the C type g_cancellable_is_cancelled.
+func (recv *Cancellable) IsCancelled() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := cancellableIsCancelledFunction_Set()
+	if err == nil {
+		ret = cancellableIsCancelledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_cancellable_make_pollfd' : parameter 'pollfd' of type 'GLib.PollFD' not supported
+
+var cancellablePopCurrentFunction *gi.Function
+var cancellablePopCurrentFunction_Once sync.Once
+
+func cancellablePopCurrentFunction_Set() error {
+	var err error
+	cancellablePopCurrentFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellablePopCurrentFunction, err = cancellableStruct.InvokerNew("pop_current")
+	})
+	return err
+}
+
+// PopCurrent is a representation of the C type g_cancellable_pop_current.
+func (recv *Cancellable) PopCurrent() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := cancellablePopCurrentFunction_Set()
+	if err == nil {
+		cancellablePopCurrentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cancellablePushCurrentFunction *gi.Function
+var cancellablePushCurrentFunction_Once sync.Once
+
+func cancellablePushCurrentFunction_Set() error {
+	var err error
+	cancellablePushCurrentFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellablePushCurrentFunction, err = cancellableStruct.InvokerNew("push_current")
+	})
+	return err
+}
+
+// PushCurrent is a representation of the C type g_cancellable_push_current.
+func (recv *Cancellable) PushCurrent() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := cancellablePushCurrentFunction_Set()
+	if err == nil {
+		cancellablePushCurrentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cancellableReleaseFdFunction *gi.Function
+var cancellableReleaseFdFunction_Once sync.Once
+
+func cancellableReleaseFdFunction_Set() error {
+	var err error
+	cancellableReleaseFdFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableReleaseFdFunction, err = cancellableStruct.InvokerNew("release_fd")
+	})
+	return err
+}
+
+// ReleaseFd is a representation of the C type g_cancellable_release_fd.
+func (recv *Cancellable) ReleaseFd() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := cancellableReleaseFdFunction_Set()
+	if err == nil {
+		cancellableReleaseFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cancellableResetFunction *gi.Function
+var cancellableResetFunction_Once sync.Once
+
+func cancellableResetFunction_Set() error {
+	var err error
+	cancellableResetFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableResetFunction, err = cancellableStruct.InvokerNew("reset")
+	})
+	return err
+}
+
+// Reset is a representation of the C type g_cancellable_reset.
+func (recv *Cancellable) Reset() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := cancellableResetFunction_Set()
+	if err == nil {
+		cancellableResetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cancellableSetErrorIfCancelledFunction *gi.Function
+var cancellableSetErrorIfCancelledFunction_Once sync.Once
+
+func cancellableSetErrorIfCancelledFunction_Set() error {
+	var err error
+	cancellableSetErrorIfCancelledFunction_Once.Do(func() {
+		err = cancellableStruct_Set()
+		if err != nil {
+			return
+		}
+		cancellableSetErrorIfCancelledFunction, err = cancellableStruct.InvokerNew("set_error_if_cancelled")
+	})
+	return err
+}
+
+// SetErrorIfCancelled is a representation of the C type g_cancellable_set_error_if_cancelled.
+func (recv *Cancellable) SetErrorIfCancelled() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := cancellableSetErrorIfCancelledFunction_Set()
+	if err == nil {
+		ret = cancellableSetErrorIfCancelledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_cancellable_source_new' : return type 'GLib.Source' not supported
+
+var charsetConverterStruct *gi.Struct
+var charsetConverterStruct_Once sync.Once
+
+func charsetConverterStruct_Set() error {
+	var err error
+	charsetConverterStruct_Once.Do(func() {
+		charsetConverterStruct, err = gi.StructNew("Gio", "CharsetConverter")
+	})
+	return err
+}
+
+type CharsetConverter struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_charset_converter_new' : return type 'CharsetConverter' not supported
+
+var charsetConverterGetNumFallbacksFunction *gi.Function
+var charsetConverterGetNumFallbacksFunction_Once sync.Once
+
+func charsetConverterGetNumFallbacksFunction_Set() error {
+	var err error
+	charsetConverterGetNumFallbacksFunction_Once.Do(func() {
+		err = charsetConverterStruct_Set()
+		if err != nil {
+			return
+		}
+		charsetConverterGetNumFallbacksFunction, err = charsetConverterStruct.InvokerNew("get_num_fallbacks")
+	})
+	return err
+}
+
+// GetNumFallbacks is a representation of the C type g_charset_converter_get_num_fallbacks.
+func (recv *CharsetConverter) GetNumFallbacks() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := charsetConverterGetNumFallbacksFunction_Set()
+	if err == nil {
+		ret = charsetConverterGetNumFallbacksFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var charsetConverterGetUseFallbackFunction *gi.Function
+var charsetConverterGetUseFallbackFunction_Once sync.Once
+
+func charsetConverterGetUseFallbackFunction_Set() error {
+	var err error
+	charsetConverterGetUseFallbackFunction_Once.Do(func() {
+		err = charsetConverterStruct_Set()
+		if err != nil {
+			return
+		}
+		charsetConverterGetUseFallbackFunction, err = charsetConverterStruct.InvokerNew("get_use_fallback")
+	})
+	return err
+}
+
+// GetUseFallback is a representation of the C type g_charset_converter_get_use_fallback.
+func (recv *CharsetConverter) GetUseFallback() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := charsetConverterGetUseFallbackFunction_Set()
+	if err == nil {
+		ret = charsetConverterGetUseFallbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var charsetConverterSetUseFallbackFunction *gi.Function
+var charsetConverterSetUseFallbackFunction_Once sync.Once
+
+func charsetConverterSetUseFallbackFunction_Set() error {
+	var err error
+	charsetConverterSetUseFallbackFunction_Once.Do(func() {
+		err = charsetConverterStruct_Set()
+		if err != nil {
+			return
+		}
+		charsetConverterSetUseFallbackFunction, err = charsetConverterStruct.InvokerNew("set_use_fallback")
+	})
+	return err
+}
+
+// SetUseFallback is a representation of the C type g_charset_converter_set_use_fallback.
+func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(useFallback)
+
+	err := charsetConverterSetUseFallbackFunction_Set()
+	if err == nil {
+		charsetConverterSetUseFallbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var converterInputStreamStruct *gi.Struct
+var converterInputStreamStruct_Once sync.Once
+
+func converterInputStreamStruct_Set() error {
+	var err error
+	converterInputStreamStruct_Once.Do(func() {
+		converterInputStreamStruct, err = gi.StructNew("Gio", "ConverterInputStream")
+	})
+	return err
+}
+
+type ConverterInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'FilterInputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'FilterInputStream'
+
+// UNSUPPORTED : C value 'g_converter_input_stream_new' : parameter 'base_stream' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_converter_input_stream_get_converter' : return type 'Converter' not supported
+
+var converterOutputStreamStruct *gi.Struct
+var converterOutputStreamStruct_Once sync.Once
+
+func converterOutputStreamStruct_Set() error {
+	var err error
+	converterOutputStreamStruct_Once.Do(func() {
+		converterOutputStreamStruct, err = gi.StructNew("Gio", "ConverterOutputStream")
+	})
+	return err
+}
+
+type ConverterOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'FilterOutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'FilterOutputStream'
+
+// UNSUPPORTED : C value 'g_converter_output_stream_new' : parameter 'base_stream' of type 'OutputStream' not supported
+
+// UNSUPPORTED : C value 'g_converter_output_stream_get_converter' : return type 'Converter' not supported
+
+var credentialsStruct *gi.Struct
+var credentialsStruct_Once sync.Once
+
+func credentialsStruct_Set() error {
+	var err error
+	credentialsStruct_Once.Do(func() {
+		credentialsStruct, err = gi.StructNew("Gio", "Credentials")
+	})
+	return err
+}
+
+type Credentials struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_credentials_new' : return type 'Credentials' not supported
+
+// UNSUPPORTED : C value 'g_credentials_get_native' : parameter 'native_type' of type 'CredentialsType' not supported
+
+var credentialsGetUnixPidFunction *gi.Function
+var credentialsGetUnixPidFunction_Once sync.Once
+
+func credentialsGetUnixPidFunction_Set() error {
+	var err error
+	credentialsGetUnixPidFunction_Once.Do(func() {
+		err = credentialsStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialsGetUnixPidFunction, err = credentialsStruct.InvokerNew("get_unix_pid")
+	})
+	return err
+}
+
+// GetUnixPid is a representation of the C type g_credentials_get_unix_pid.
+func (recv *Credentials) GetUnixPid() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := credentialsGetUnixPidFunction_Set()
+	if err == nil {
+		ret = credentialsGetUnixPidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var credentialsGetUnixUserFunction *gi.Function
+var credentialsGetUnixUserFunction_Once sync.Once
+
+func credentialsGetUnixUserFunction_Set() error {
+	var err error
+	credentialsGetUnixUserFunction_Once.Do(func() {
+		err = credentialsStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialsGetUnixUserFunction, err = credentialsStruct.InvokerNew("get_unix_user")
+	})
+	return err
+}
+
+// GetUnixUser is a representation of the C type g_credentials_get_unix_user.
+func (recv *Credentials) GetUnixUser() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := credentialsGetUnixUserFunction_Set()
+	if err == nil {
+		ret = credentialsGetUnixUserFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_credentials_is_same_user' : parameter 'other_credentials' of type 'Credentials' not supported
+
+// UNSUPPORTED : C value 'g_credentials_set_native' : parameter 'native_type' of type 'CredentialsType' not supported
+
+var credentialsSetUnixUserFunction *gi.Function
+var credentialsSetUnixUserFunction_Once sync.Once
+
+func credentialsSetUnixUserFunction_Set() error {
+	var err error
+	credentialsSetUnixUserFunction_Once.Do(func() {
+		err = credentialsStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialsSetUnixUserFunction, err = credentialsStruct.InvokerNew("set_unix_user")
+	})
+	return err
+}
+
+// SetUnixUser is a representation of the C type g_credentials_set_unix_user.
+func (recv *Credentials) SetUnixUser(uid uint32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(uid)
+
+	var ret gi.Argument
+
+	err := credentialsSetUnixUserFunction_Set()
+	if err == nil {
+		ret = credentialsSetUnixUserFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var credentialsToStringFunction *gi.Function
+var credentialsToStringFunction_Once sync.Once
+
+func credentialsToStringFunction_Set() error {
+	var err error
+	credentialsToStringFunction_Once.Do(func() {
+		err = credentialsStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialsToStringFunction, err = credentialsStruct.InvokerNew("to_string")
+	})
+	return err
+}
+
+// ToString is a representation of the C type g_credentials_to_string.
+func (recv *Credentials) ToString() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := credentialsToStringFunction_Set()
+	if err == nil {
+		ret = credentialsToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var dBusActionGroupStruct *gi.Struct
+var dBusActionGroupStruct_Once sync.Once
+
+func dBusActionGroupStruct_Set() error {
+	var err error
+	dBusActionGroupStruct_Once.Do(func() {
+		dBusActionGroupStruct, err = gi.StructNew("Gio", "DBusActionGroup")
+	})
+	return err
+}
+
+type DBusActionGroup struct {
+	native uintptr
+}
+
+// DBusActionGroupStruct creates an uninitialised DBusActionGroup.
+func DBusActionGroupStruct() *DBusActionGroup {
+	err := dBusActionGroupStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusActionGroup{native: dBusActionGroupStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusActionGroup)
+	return structGo
+}
+func finalizeDBusActionGroup(obj *DBusActionGroup) {
+	dBusActionGroupStruct.Free(obj.native)
+}
+
+var dBusAuthObserverStruct *gi.Struct
+var dBusAuthObserverStruct_Once sync.Once
+
+func dBusAuthObserverStruct_Set() error {
+	var err error
+	dBusAuthObserverStruct_Once.Do(func() {
+		dBusAuthObserverStruct, err = gi.StructNew("Gio", "DBusAuthObserver")
+	})
+	return err
+}
+
+type DBusAuthObserver struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_auth_observer_new' : return type 'DBusAuthObserver' not supported
+
+var dBusAuthObserverAllowMechanismFunction *gi.Function
+var dBusAuthObserverAllowMechanismFunction_Once sync.Once
+
+func dBusAuthObserverAllowMechanismFunction_Set() error {
+	var err error
+	dBusAuthObserverAllowMechanismFunction_Once.Do(func() {
+		err = dBusAuthObserverStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusAuthObserverAllowMechanismFunction, err = dBusAuthObserverStruct.InvokerNew("allow_mechanism")
+	})
+	return err
+}
+
+// AllowMechanism is a representation of the C type g_dbus_auth_observer_allow_mechanism.
+func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(mechanism)
+
+	var ret gi.Argument
+
+	err := dBusAuthObserverAllowMechanismFunction_Set()
+	if err == nil {
+		ret = dBusAuthObserverAllowMechanismFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_auth_observer_authorize_authenticated_peer' : parameter 'stream' of type 'IOStream' not supported
+
+var dBusConnectionStruct *gi.Struct
+var dBusConnectionStruct_Once sync.Once
+
+func dBusConnectionStruct_Set() error {
+	var err error
+	dBusConnectionStruct_Once.Do(func() {
+		dBusConnectionStruct, err = gi.StructNew("Gio", "DBusConnection")
+	})
+	return err
+}
+
+type DBusConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_new_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_new_for_address_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_new_for_address_sync' : parameter 'flags' of type 'DBusConnectionFlags' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_new_sync' : parameter 'stream' of type 'IOStream' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_add_filter' : parameter 'filter_function' of type 'DBusMessageFilterFunction' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_sync' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list_finish' : parameter 'out_fd_list' of type 'UnixFDList' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list_sync' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_close' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_close_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_close_sync' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_emit_signal' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_export_action_group' : parameter 'action_group' of type 'ActionGroup' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_export_menu_model' : parameter 'menu' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_flush' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_flush_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_flush_sync' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_get_capabilities' : return type 'DBusCapabilityFlags' not supported
+
+var dBusConnectionGetExitOnCloseFunction *gi.Function
+var dBusConnectionGetExitOnCloseFunction_Once sync.Once
+
+func dBusConnectionGetExitOnCloseFunction_Set() error {
+	var err error
+	dBusConnectionGetExitOnCloseFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetExitOnCloseFunction, err = dBusConnectionStruct.InvokerNew("get_exit_on_close")
+	})
+	return err
+}
+
+// GetExitOnClose is a representation of the C type g_dbus_connection_get_exit_on_close.
+func (recv *DBusConnection) GetExitOnClose() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetExitOnCloseFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetExitOnCloseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_get_flags' : return type 'DBusConnectionFlags' not supported
+
+var dBusConnectionGetGuidFunction *gi.Function
+var dBusConnectionGetGuidFunction_Once sync.Once
+
+func dBusConnectionGetGuidFunction_Set() error {
+	var err error
+	dBusConnectionGetGuidFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetGuidFunction, err = dBusConnectionStruct.InvokerNew("get_guid")
+	})
+	return err
+}
+
+// GetGuid is a representation of the C type g_dbus_connection_get_guid.
+func (recv *DBusConnection) GetGuid() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetGuidFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetGuidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusConnectionGetLastSerialFunction *gi.Function
+var dBusConnectionGetLastSerialFunction_Once sync.Once
+
+func dBusConnectionGetLastSerialFunction_Set() error {
+	var err error
+	dBusConnectionGetLastSerialFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetLastSerialFunction, err = dBusConnectionStruct.InvokerNew("get_last_serial")
+	})
+	return err
+}
+
+// GetLastSerial is a representation of the C type g_dbus_connection_get_last_serial.
+func (recv *DBusConnection) GetLastSerial() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetLastSerialFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetLastSerialFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_get_peer_credentials' : return type 'Credentials' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_get_stream' : return type 'IOStream' not supported
+
+var dBusConnectionGetUniqueNameFunction *gi.Function
+var dBusConnectionGetUniqueNameFunction_Once sync.Once
+
+func dBusConnectionGetUniqueNameFunction_Set() error {
+	var err error
+	dBusConnectionGetUniqueNameFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetUniqueNameFunction, err = dBusConnectionStruct.InvokerNew("get_unique_name")
+	})
+	return err
+}
+
+// GetUniqueName is a representation of the C type g_dbus_connection_get_unique_name.
+func (recv *DBusConnection) GetUniqueName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetUniqueNameFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetUniqueNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusConnectionIsClosedFunction *gi.Function
+var dBusConnectionIsClosedFunction_Once sync.Once
+
+func dBusConnectionIsClosedFunction_Set() error {
+	var err error
+	dBusConnectionIsClosedFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionIsClosedFunction, err = dBusConnectionStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_dbus_connection_is_closed.
+func (recv *DBusConnection) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusConnectionIsClosedFunction_Set()
+	if err == nil {
+		ret = dBusConnectionIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_register_object' : parameter 'user_data' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_register_object_with_closures' : parameter 'method_call_closure' of type 'GObject.Closure' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_register_subtree' : parameter 'flags' of type 'DBusSubtreeFlags' not supported
+
+var dBusConnectionRemoveFilterFunction *gi.Function
+var dBusConnectionRemoveFilterFunction_Once sync.Once
+
+func dBusConnectionRemoveFilterFunction_Set() error {
+	var err error
+	dBusConnectionRemoveFilterFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionRemoveFilterFunction, err = dBusConnectionStruct.InvokerNew("remove_filter")
+	})
+	return err
+}
+
+// RemoveFilter is a representation of the C type g_dbus_connection_remove_filter.
+func (recv *DBusConnection) RemoveFilter(filterId uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(filterId)
+
+	err := dBusConnectionRemoveFilterFunction_Set()
+	if err == nil {
+		dBusConnectionRemoveFilterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_send_message' : parameter 'message' of type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply' : parameter 'message' of type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply_sync' : parameter 'message' of type 'DBusMessage' not supported
+
+var dBusConnectionSetExitOnCloseFunction *gi.Function
+var dBusConnectionSetExitOnCloseFunction_Once sync.Once
+
+func dBusConnectionSetExitOnCloseFunction_Set() error {
+	var err error
+	dBusConnectionSetExitOnCloseFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionSetExitOnCloseFunction, err = dBusConnectionStruct.InvokerNew("set_exit_on_close")
+	})
+	return err
+}
+
+// SetExitOnClose is a representation of the C type g_dbus_connection_set_exit_on_close.
+func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(exitOnClose)
+
+	err := dBusConnectionSetExitOnCloseFunction_Set()
+	if err == nil {
+		dBusConnectionSetExitOnCloseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_signal_subscribe' : parameter 'flags' of type 'DBusSignalFlags' not supported
+
+var dBusConnectionSignalUnsubscribeFunction *gi.Function
+var dBusConnectionSignalUnsubscribeFunction_Once sync.Once
+
+func dBusConnectionSignalUnsubscribeFunction_Set() error {
+	var err error
+	dBusConnectionSignalUnsubscribeFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionSignalUnsubscribeFunction, err = dBusConnectionStruct.InvokerNew("signal_unsubscribe")
+	})
+	return err
+}
+
+// SignalUnsubscribe is a representation of the C type g_dbus_connection_signal_unsubscribe.
+func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(subscriptionId)
+
+	err := dBusConnectionSignalUnsubscribeFunction_Set()
+	if err == nil {
+		dBusConnectionSignalUnsubscribeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusConnectionStartMessageProcessingFunction *gi.Function
+var dBusConnectionStartMessageProcessingFunction_Once sync.Once
+
+func dBusConnectionStartMessageProcessingFunction_Set() error {
+	var err error
+	dBusConnectionStartMessageProcessingFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionStartMessageProcessingFunction, err = dBusConnectionStruct.InvokerNew("start_message_processing")
+	})
+	return err
+}
+
+// StartMessageProcessing is a representation of the C type g_dbus_connection_start_message_processing.
+func (recv *DBusConnection) StartMessageProcessing() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusConnectionStartMessageProcessingFunction_Set()
+	if err == nil {
+		dBusConnectionStartMessageProcessingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusConnectionUnexportActionGroupFunction *gi.Function
+var dBusConnectionUnexportActionGroupFunction_Once sync.Once
+
+func dBusConnectionUnexportActionGroupFunction_Set() error {
+	var err error
+	dBusConnectionUnexportActionGroupFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionUnexportActionGroupFunction, err = dBusConnectionStruct.InvokerNew("unexport_action_group")
+	})
+	return err
+}
+
+// UnexportActionGroup is a representation of the C type g_dbus_connection_unexport_action_group.
+func (recv *DBusConnection) UnexportActionGroup(exportId uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(exportId)
+
+	err := dBusConnectionUnexportActionGroupFunction_Set()
+	if err == nil {
+		dBusConnectionUnexportActionGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusConnectionUnexportMenuModelFunction *gi.Function
+var dBusConnectionUnexportMenuModelFunction_Once sync.Once
+
+func dBusConnectionUnexportMenuModelFunction_Set() error {
+	var err error
+	dBusConnectionUnexportMenuModelFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionUnexportMenuModelFunction, err = dBusConnectionStruct.InvokerNew("unexport_menu_model")
+	})
+	return err
+}
+
+// UnexportMenuModel is a representation of the C type g_dbus_connection_unexport_menu_model.
+func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(exportId)
+
+	err := dBusConnectionUnexportMenuModelFunction_Set()
+	if err == nil {
+		dBusConnectionUnexportMenuModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusConnectionUnregisterObjectFunction *gi.Function
+var dBusConnectionUnregisterObjectFunction_Once sync.Once
+
+func dBusConnectionUnregisterObjectFunction_Set() error {
+	var err error
+	dBusConnectionUnregisterObjectFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionUnregisterObjectFunction, err = dBusConnectionStruct.InvokerNew("unregister_object")
+	})
+	return err
+}
+
+// UnregisterObject is a representation of the C type g_dbus_connection_unregister_object.
+func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(registrationId)
+
+	var ret gi.Argument
+
+	err := dBusConnectionUnregisterObjectFunction_Set()
+	if err == nil {
+		ret = dBusConnectionUnregisterObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusConnectionUnregisterSubtreeFunction *gi.Function
+var dBusConnectionUnregisterSubtreeFunction_Once sync.Once
+
+func dBusConnectionUnregisterSubtreeFunction_Set() error {
+	var err error
+	dBusConnectionUnregisterSubtreeFunction_Once.Do(func() {
+		err = dBusConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionUnregisterSubtreeFunction, err = dBusConnectionStruct.InvokerNew("unregister_subtree")
+	})
+	return err
+}
+
+// UnregisterSubtree is a representation of the C type g_dbus_connection_unregister_subtree.
+func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(registrationId)
+
+	var ret gi.Argument
+
+	err := dBusConnectionUnregisterSubtreeFunction_Set()
+	if err == nil {
+		ret = dBusConnectionUnregisterSubtreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusInterfaceSkeletonStruct *gi.Struct
+var dBusInterfaceSkeletonStruct_Once sync.Once
+
+func dBusInterfaceSkeletonStruct_Set() error {
+	var err error
+	dBusInterfaceSkeletonStruct_Once.Do(func() {
+		dBusInterfaceSkeletonStruct, err = gi.StructNew("Gio", "DBusInterfaceSkeleton")
+	})
+	return err
+}
+
+type DBusInterfaceSkeleton struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_export' : parameter 'connection' of type 'DBusConnection' not supported
+
+var dBusInterfaceSkeletonFlushFunction *gi.Function
+var dBusInterfaceSkeletonFlushFunction_Once sync.Once
+
+func dBusInterfaceSkeletonFlushFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonFlushFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonFlushFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("flush")
+	})
+	return err
+}
+
+// Flush is a representation of the C type g_dbus_interface_skeleton_flush.
+func (recv *DBusInterfaceSkeleton) Flush() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusInterfaceSkeletonFlushFunction_Set()
+	if err == nil {
+		dBusInterfaceSkeletonFlushFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_get_connection' : return type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_get_connections' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_get_flags' : return type 'DBusInterfaceSkeletonFlags' not supported
+
+var dBusInterfaceSkeletonGetInfoFunction *gi.Function
+var dBusInterfaceSkeletonGetInfoFunction_Once sync.Once
+
+func dBusInterfaceSkeletonGetInfoFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonGetInfoFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonGetInfoFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_info")
+	})
+	return err
+}
+
+// GetInfo is a representation of the C type g_dbus_interface_skeleton_get_info.
+func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusInterfaceSkeletonGetInfoFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceSkeletonGetInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var dBusInterfaceSkeletonGetObjectPathFunction *gi.Function
+var dBusInterfaceSkeletonGetObjectPathFunction_Once sync.Once
+
+func dBusInterfaceSkeletonGetObjectPathFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonGetObjectPathFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonGetObjectPathFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_object_path")
+	})
+	return err
+}
+
+// GetObjectPath is a representation of the C type g_dbus_interface_skeleton_get_object_path.
+func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusInterfaceSkeletonGetObjectPathFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceSkeletonGetObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_get_properties' : return type 'GLib.Variant' not supported
+
+var dBusInterfaceSkeletonGetVtableFunction *gi.Function
+var dBusInterfaceSkeletonGetVtableFunction_Once sync.Once
+
+func dBusInterfaceSkeletonGetVtableFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonGetVtableFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonGetVtableFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_vtable")
+	})
+	return err
+}
+
+// GetVtable is a representation of the C type g_dbus_interface_skeleton_get_vtable.
+func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusInterfaceSkeletonGetVtableFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceSkeletonGetVtableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusInterfaceVTable{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_has_connection' : parameter 'connection' of type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_set_flags' : parameter 'flags' of type 'DBusInterfaceSkeletonFlags' not supported
+
+var dBusInterfaceSkeletonUnexportFunction *gi.Function
+var dBusInterfaceSkeletonUnexportFunction_Once sync.Once
+
+func dBusInterfaceSkeletonUnexportFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonUnexportFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonUnexportFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("unexport")
+	})
+	return err
+}
+
+// Unexport is a representation of the C type g_dbus_interface_skeleton_unexport.
+func (recv *DBusInterfaceSkeleton) Unexport() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusInterfaceSkeletonUnexportFunction_Set()
+	if err == nil {
+		dBusInterfaceSkeletonUnexportFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_skeleton_unexport_from_connection' : parameter 'connection' of type 'DBusConnection' not supported
+
+// DBusInterfaceSkeletonStruct creates an uninitialised DBusInterfaceSkeleton.
+func DBusInterfaceSkeletonStruct() *DBusInterfaceSkeleton {
+	err := dBusInterfaceSkeletonStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusInterfaceSkeleton{native: dBusInterfaceSkeletonStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusInterfaceSkeleton)
+	return structGo
+}
+func finalizeDBusInterfaceSkeleton(obj *DBusInterfaceSkeleton) {
+	dBusInterfaceSkeletonStruct.Free(obj.native)
+}
+
+var dBusMenuModelStruct *gi.Struct
+var dBusMenuModelStruct_Once sync.Once
+
+func dBusMenuModelStruct_Set() error {
+	var err error
+	dBusMenuModelStruct_Once.Do(func() {
+		dBusMenuModelStruct, err = gi.StructNew("Gio", "DBusMenuModel")
+	})
+	return err
+}
+
+type DBusMenuModel struct {
+	native uintptr
+}
+
+// DBusMenuModelStruct creates an uninitialised DBusMenuModel.
+func DBusMenuModelStruct() *DBusMenuModel {
+	err := dBusMenuModelStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusMenuModel{native: dBusMenuModelStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusMenuModel)
+	return structGo
+}
+func finalizeDBusMenuModel(obj *DBusMenuModel) {
+	dBusMenuModelStruct.Free(obj.native)
+}
+
+var dBusMessageStruct *gi.Struct
+var dBusMessageStruct_Once sync.Once
+
+func dBusMessageStruct_Set() error {
+	var err error
+	dBusMessageStruct_Once.Do(func() {
+		dBusMessageStruct, err = gi.StructNew("Gio", "DBusMessage")
+	})
+	return err
+}
+
+type DBusMessage struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_new' : return type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_from_blob' : parameter 'blob' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_method_call' : return type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_signal' : return type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_copy' : return type 'DBusMessage' not supported
+
+var dBusMessageGetArg0Function *gi.Function
+var dBusMessageGetArg0Function_Once sync.Once
+
+func dBusMessageGetArg0Function_Set() error {
+	var err error
+	dBusMessageGetArg0Function_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetArg0Function, err = dBusMessageStruct.InvokerNew("get_arg0")
+	})
+	return err
+}
+
+// GetArg0 is a representation of the C type g_dbus_message_get_arg0.
+func (recv *DBusMessage) GetArg0() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetArg0Function_Set()
+	if err == nil {
+		ret = dBusMessageGetArg0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_get_body' : return type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_get_byte_order' : return type 'DBusMessageByteOrder' not supported
+
+var dBusMessageGetDestinationFunction *gi.Function
+var dBusMessageGetDestinationFunction_Once sync.Once
+
+func dBusMessageGetDestinationFunction_Set() error {
+	var err error
+	dBusMessageGetDestinationFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetDestinationFunction, err = dBusMessageStruct.InvokerNew("get_destination")
+	})
+	return err
+}
+
+// GetDestination is a representation of the C type g_dbus_message_get_destination.
+func (recv *DBusMessage) GetDestination() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetDestinationFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetDestinationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusMessageGetErrorNameFunction *gi.Function
+var dBusMessageGetErrorNameFunction_Once sync.Once
+
+func dBusMessageGetErrorNameFunction_Set() error {
+	var err error
+	dBusMessageGetErrorNameFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetErrorNameFunction, err = dBusMessageStruct.InvokerNew("get_error_name")
+	})
+	return err
+}
+
+// GetErrorName is a representation of the C type g_dbus_message_get_error_name.
+func (recv *DBusMessage) GetErrorName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetErrorNameFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetErrorNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_get_flags' : return type 'DBusMessageFlags' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_get_header' : parameter 'header_field' of type 'DBusMessageHeaderField' not supported
+
+var dBusMessageGetHeaderFieldsFunction *gi.Function
+var dBusMessageGetHeaderFieldsFunction_Once sync.Once
+
+func dBusMessageGetHeaderFieldsFunction_Set() error {
+	var err error
+	dBusMessageGetHeaderFieldsFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetHeaderFieldsFunction, err = dBusMessageStruct.InvokerNew("get_header_fields")
+	})
+	return err
+}
+
+// GetHeaderFields is a representation of the C type g_dbus_message_get_header_fields.
+func (recv *DBusMessage) GetHeaderFields() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusMessageGetHeaderFieldsFunction_Set()
+	if err == nil {
+		dBusMessageGetHeaderFieldsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageGetInterfaceFunction *gi.Function
+var dBusMessageGetInterfaceFunction_Once sync.Once
+
+func dBusMessageGetInterfaceFunction_Set() error {
+	var err error
+	dBusMessageGetInterfaceFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetInterfaceFunction, err = dBusMessageStruct.InvokerNew("get_interface")
+	})
+	return err
+}
+
+// GetInterface is a representation of the C type g_dbus_message_get_interface.
+func (recv *DBusMessage) GetInterface() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetInterfaceFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetInterfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusMessageGetLockedFunction *gi.Function
+var dBusMessageGetLockedFunction_Once sync.Once
+
+func dBusMessageGetLockedFunction_Set() error {
+	var err error
+	dBusMessageGetLockedFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetLockedFunction, err = dBusMessageStruct.InvokerNew("get_locked")
+	})
+	return err
+}
+
+// GetLocked is a representation of the C type g_dbus_message_get_locked.
+func (recv *DBusMessage) GetLocked() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetLockedFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetLockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusMessageGetMemberFunction *gi.Function
+var dBusMessageGetMemberFunction_Once sync.Once
+
+func dBusMessageGetMemberFunction_Set() error {
+	var err error
+	dBusMessageGetMemberFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetMemberFunction, err = dBusMessageStruct.InvokerNew("get_member")
+	})
+	return err
+}
+
+// GetMember is a representation of the C type g_dbus_message_get_member.
+func (recv *DBusMessage) GetMember() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetMemberFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetMemberFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_get_message_type' : return type 'DBusMessageType' not supported
+
+var dBusMessageGetNumUnixFdsFunction *gi.Function
+var dBusMessageGetNumUnixFdsFunction_Once sync.Once
+
+func dBusMessageGetNumUnixFdsFunction_Set() error {
+	var err error
+	dBusMessageGetNumUnixFdsFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetNumUnixFdsFunction, err = dBusMessageStruct.InvokerNew("get_num_unix_fds")
+	})
+	return err
+}
+
+// GetNumUnixFds is a representation of the C type g_dbus_message_get_num_unix_fds.
+func (recv *DBusMessage) GetNumUnixFds() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetNumUnixFdsFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetNumUnixFdsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var dBusMessageGetPathFunction *gi.Function
+var dBusMessageGetPathFunction_Once sync.Once
+
+func dBusMessageGetPathFunction_Set() error {
+	var err error
+	dBusMessageGetPathFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetPathFunction, err = dBusMessageStruct.InvokerNew("get_path")
+	})
+	return err
+}
+
+// GetPath is a representation of the C type g_dbus_message_get_path.
+func (recv *DBusMessage) GetPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetPathFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusMessageGetReplySerialFunction *gi.Function
+var dBusMessageGetReplySerialFunction_Once sync.Once
+
+func dBusMessageGetReplySerialFunction_Set() error {
+	var err error
+	dBusMessageGetReplySerialFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetReplySerialFunction, err = dBusMessageStruct.InvokerNew("get_reply_serial")
+	})
+	return err
+}
+
+// GetReplySerial is a representation of the C type g_dbus_message_get_reply_serial.
+func (recv *DBusMessage) GetReplySerial() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetReplySerialFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetReplySerialFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var dBusMessageGetSenderFunction *gi.Function
+var dBusMessageGetSenderFunction_Once sync.Once
+
+func dBusMessageGetSenderFunction_Set() error {
+	var err error
+	dBusMessageGetSenderFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetSenderFunction, err = dBusMessageStruct.InvokerNew("get_sender")
+	})
+	return err
+}
+
+// GetSender is a representation of the C type g_dbus_message_get_sender.
+func (recv *DBusMessage) GetSender() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetSenderFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetSenderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusMessageGetSerialFunction *gi.Function
+var dBusMessageGetSerialFunction_Once sync.Once
+
+func dBusMessageGetSerialFunction_Set() error {
+	var err error
+	dBusMessageGetSerialFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetSerialFunction, err = dBusMessageStruct.InvokerNew("get_serial")
+	})
+	return err
+}
+
+// GetSerial is a representation of the C type g_dbus_message_get_serial.
+func (recv *DBusMessage) GetSerial() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetSerialFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetSerialFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var dBusMessageGetSignatureFunction *gi.Function
+var dBusMessageGetSignatureFunction_Once sync.Once
+
+func dBusMessageGetSignatureFunction_Set() error {
+	var err error
+	dBusMessageGetSignatureFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetSignatureFunction, err = dBusMessageStruct.InvokerNew("get_signature")
+	})
+	return err
+}
+
+// GetSignature is a representation of the C type g_dbus_message_get_signature.
+func (recv *DBusMessage) GetSignature() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetSignatureFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetSignatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_get_unix_fd_list' : return type 'UnixFDList' not supported
+
+var dBusMessageLockFunction *gi.Function
+var dBusMessageLockFunction_Once sync.Once
+
+func dBusMessageLockFunction_Set() error {
+	var err error
+	dBusMessageLockFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageLockFunction, err = dBusMessageStruct.InvokerNew("lock")
+	})
+	return err
+}
+
+// Lock is a representation of the C type g_dbus_message_lock.
+func (recv *DBusMessage) Lock() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusMessageLockFunction_Set()
+	if err == nil {
+		dBusMessageLockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_new_method_error' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_method_error_literal' : return type 'DBusMessage' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_method_error_valist' : parameter 'var_args' of type 'va_list' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_new_method_reply' : return type 'DBusMessage' not supported
+
+var dBusMessagePrintFunction *gi.Function
+var dBusMessagePrintFunction_Once sync.Once
+
+func dBusMessagePrintFunction_Set() error {
+	var err error
+	dBusMessagePrintFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessagePrintFunction, err = dBusMessageStruct.InvokerNew("print")
+	})
+	return err
+}
+
+// Print is a representation of the C type g_dbus_message_print.
+func (recv *DBusMessage) Print(indent uint32) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(indent)
+
+	var ret gi.Argument
+
+	err := dBusMessagePrintFunction_Set()
+	if err == nil {
+		ret = dBusMessagePrintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_set_body' : parameter 'body' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_set_byte_order' : parameter 'byte_order' of type 'DBusMessageByteOrder' not supported
+
+var dBusMessageSetDestinationFunction *gi.Function
+var dBusMessageSetDestinationFunction_Once sync.Once
+
+func dBusMessageSetDestinationFunction_Set() error {
+	var err error
+	dBusMessageSetDestinationFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetDestinationFunction, err = dBusMessageStruct.InvokerNew("set_destination")
+	})
+	return err
+}
+
+// SetDestination is a representation of the C type g_dbus_message_set_destination.
+func (recv *DBusMessage) SetDestination(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetDestinationFunction_Set()
+	if err == nil {
+		dBusMessageSetDestinationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetErrorNameFunction *gi.Function
+var dBusMessageSetErrorNameFunction_Once sync.Once
+
+func dBusMessageSetErrorNameFunction_Set() error {
+	var err error
+	dBusMessageSetErrorNameFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetErrorNameFunction, err = dBusMessageStruct.InvokerNew("set_error_name")
+	})
+	return err
+}
+
+// SetErrorName is a representation of the C type g_dbus_message_set_error_name.
+func (recv *DBusMessage) SetErrorName(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetErrorNameFunction_Set()
+	if err == nil {
+		dBusMessageSetErrorNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_set_flags' : parameter 'flags' of type 'DBusMessageFlags' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_set_header' : parameter 'header_field' of type 'DBusMessageHeaderField' not supported
+
+var dBusMessageSetInterfaceFunction *gi.Function
+var dBusMessageSetInterfaceFunction_Once sync.Once
+
+func dBusMessageSetInterfaceFunction_Set() error {
+	var err error
+	dBusMessageSetInterfaceFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetInterfaceFunction, err = dBusMessageStruct.InvokerNew("set_interface")
+	})
+	return err
+}
+
+// SetInterface is a representation of the C type g_dbus_message_set_interface.
+func (recv *DBusMessage) SetInterface(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetInterfaceFunction_Set()
+	if err == nil {
+		dBusMessageSetInterfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetMemberFunction *gi.Function
+var dBusMessageSetMemberFunction_Once sync.Once
+
+func dBusMessageSetMemberFunction_Set() error {
+	var err error
+	dBusMessageSetMemberFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetMemberFunction, err = dBusMessageStruct.InvokerNew("set_member")
+	})
+	return err
+}
+
+// SetMember is a representation of the C type g_dbus_message_set_member.
+func (recv *DBusMessage) SetMember(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetMemberFunction_Set()
+	if err == nil {
+		dBusMessageSetMemberFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_set_message_type' : parameter 'type' of type 'DBusMessageType' not supported
+
+var dBusMessageSetNumUnixFdsFunction *gi.Function
+var dBusMessageSetNumUnixFdsFunction_Once sync.Once
+
+func dBusMessageSetNumUnixFdsFunction_Set() error {
+	var err error
+	dBusMessageSetNumUnixFdsFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetNumUnixFdsFunction, err = dBusMessageStruct.InvokerNew("set_num_unix_fds")
+	})
+	return err
+}
+
+// SetNumUnixFds is a representation of the C type g_dbus_message_set_num_unix_fds.
+func (recv *DBusMessage) SetNumUnixFds(value uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(value)
+
+	err := dBusMessageSetNumUnixFdsFunction_Set()
+	if err == nil {
+		dBusMessageSetNumUnixFdsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetPathFunction *gi.Function
+var dBusMessageSetPathFunction_Once sync.Once
+
+func dBusMessageSetPathFunction_Set() error {
+	var err error
+	dBusMessageSetPathFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetPathFunction, err = dBusMessageStruct.InvokerNew("set_path")
+	})
+	return err
+}
+
+// SetPath is a representation of the C type g_dbus_message_set_path.
+func (recv *DBusMessage) SetPath(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetPathFunction_Set()
+	if err == nil {
+		dBusMessageSetPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetReplySerialFunction *gi.Function
+var dBusMessageSetReplySerialFunction_Once sync.Once
+
+func dBusMessageSetReplySerialFunction_Set() error {
+	var err error
+	dBusMessageSetReplySerialFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetReplySerialFunction, err = dBusMessageStruct.InvokerNew("set_reply_serial")
+	})
+	return err
+}
+
+// SetReplySerial is a representation of the C type g_dbus_message_set_reply_serial.
+func (recv *DBusMessage) SetReplySerial(value uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(value)
+
+	err := dBusMessageSetReplySerialFunction_Set()
+	if err == nil {
+		dBusMessageSetReplySerialFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetSenderFunction *gi.Function
+var dBusMessageSetSenderFunction_Once sync.Once
+
+func dBusMessageSetSenderFunction_Set() error {
+	var err error
+	dBusMessageSetSenderFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetSenderFunction, err = dBusMessageStruct.InvokerNew("set_sender")
+	})
+	return err
+}
+
+// SetSender is a representation of the C type g_dbus_message_set_sender.
+func (recv *DBusMessage) SetSender(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetSenderFunction_Set()
+	if err == nil {
+		dBusMessageSetSenderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetSerialFunction *gi.Function
+var dBusMessageSetSerialFunction_Once sync.Once
+
+func dBusMessageSetSerialFunction_Set() error {
+	var err error
+	dBusMessageSetSerialFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetSerialFunction, err = dBusMessageStruct.InvokerNew("set_serial")
+	})
+	return err
+}
+
+// SetSerial is a representation of the C type g_dbus_message_set_serial.
+func (recv *DBusMessage) SetSerial(serial uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(serial)
+
+	err := dBusMessageSetSerialFunction_Set()
+	if err == nil {
+		dBusMessageSetSerialFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusMessageSetSignatureFunction *gi.Function
+var dBusMessageSetSignatureFunction_Once sync.Once
+
+func dBusMessageSetSignatureFunction_Set() error {
+	var err error
+	dBusMessageSetSignatureFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetSignatureFunction, err = dBusMessageStruct.InvokerNew("set_signature")
+	})
+	return err
+}
+
+// SetSignature is a representation of the C type g_dbus_message_set_signature.
+func (recv *DBusMessage) SetSignature(value string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(value)
+
+	err := dBusMessageSetSignatureFunction_Set()
+	if err == nil {
+		dBusMessageSetSignatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_message_set_unix_fd_list' : parameter 'fd_list' of type 'UnixFDList' not supported
+
+// UNSUPPORTED : C value 'g_dbus_message_to_blob' : parameter 'capabilities' of type 'DBusCapabilityFlags' not supported
+
+var dBusMessageToGerrorFunction *gi.Function
+var dBusMessageToGerrorFunction_Once sync.Once
+
+func dBusMessageToGerrorFunction_Set() error {
+	var err error
+	dBusMessageToGerrorFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageToGerrorFunction, err = dBusMessageStruct.InvokerNew("to_gerror")
+	})
+	return err
+}
+
+// ToGerror is a representation of the C type g_dbus_message_to_gerror.
+func (recv *DBusMessage) ToGerror() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMessageToGerrorFunction_Set()
+	if err == nil {
+		ret = dBusMessageToGerrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusMethodInvocationStruct *gi.Struct
+var dBusMethodInvocationStruct_Once sync.Once
+
+func dBusMethodInvocationStruct_Set() error {
+	var err error
+	dBusMethodInvocationStruct_Once.Do(func() {
+		dBusMethodInvocationStruct, err = gi.StructNew("Gio", "DBusMethodInvocation")
+	})
+	return err
+}
+
+type DBusMethodInvocation struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_get_connection' : return type 'DBusConnection' not supported
+
+var dBusMethodInvocationGetInterfaceNameFunction *gi.Function
+var dBusMethodInvocationGetInterfaceNameFunction_Once sync.Once
+
+func dBusMethodInvocationGetInterfaceNameFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetInterfaceNameFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetInterfaceNameFunction, err = dBusMethodInvocationStruct.InvokerNew("get_interface_name")
+	})
+	return err
+}
+
+// GetInterfaceName is a representation of the C type g_dbus_method_invocation_get_interface_name.
+func (recv *DBusMethodInvocation) GetInterfaceName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetInterfaceNameFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetInterfaceNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_get_message' : return type 'DBusMessage' not supported
+
+var dBusMethodInvocationGetMethodInfoFunction *gi.Function
+var dBusMethodInvocationGetMethodInfoFunction_Once sync.Once
+
+func dBusMethodInvocationGetMethodInfoFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetMethodInfoFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetMethodInfoFunction, err = dBusMethodInvocationStruct.InvokerNew("get_method_info")
+	})
+	return err
+}
+
+// GetMethodInfo is a representation of the C type g_dbus_method_invocation_get_method_info.
+func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetMethodInfoFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetMethodInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusMethodInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var dBusMethodInvocationGetMethodNameFunction *gi.Function
+var dBusMethodInvocationGetMethodNameFunction_Once sync.Once
+
+func dBusMethodInvocationGetMethodNameFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetMethodNameFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetMethodNameFunction, err = dBusMethodInvocationStruct.InvokerNew("get_method_name")
+	})
+	return err
+}
+
+// GetMethodName is a representation of the C type g_dbus_method_invocation_get_method_name.
+func (recv *DBusMethodInvocation) GetMethodName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetMethodNameFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetMethodNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusMethodInvocationGetObjectPathFunction *gi.Function
+var dBusMethodInvocationGetObjectPathFunction_Once sync.Once
+
+func dBusMethodInvocationGetObjectPathFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetObjectPathFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetObjectPathFunction, err = dBusMethodInvocationStruct.InvokerNew("get_object_path")
+	})
+	return err
+}
+
+// GetObjectPath is a representation of the C type g_dbus_method_invocation_get_object_path.
+func (recv *DBusMethodInvocation) GetObjectPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetObjectPathFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_get_parameters' : return type 'GLib.Variant' not supported
+
+var dBusMethodInvocationGetPropertyInfoFunction *gi.Function
+var dBusMethodInvocationGetPropertyInfoFunction_Once sync.Once
+
+func dBusMethodInvocationGetPropertyInfoFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetPropertyInfoFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetPropertyInfoFunction, err = dBusMethodInvocationStruct.InvokerNew("get_property_info")
+	})
+	return err
+}
+
+// GetPropertyInfo is a representation of the C type g_dbus_method_invocation_get_property_info.
+func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetPropertyInfoFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetPropertyInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusPropertyInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var dBusMethodInvocationGetSenderFunction *gi.Function
+var dBusMethodInvocationGetSenderFunction_Once sync.Once
+
+func dBusMethodInvocationGetSenderFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetSenderFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetSenderFunction, err = dBusMethodInvocationStruct.InvokerNew("get_sender")
+	})
+	return err
+}
+
+// GetSender is a representation of the C type g_dbus_method_invocation_get_sender.
+func (recv *DBusMethodInvocation) GetSender() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetSenderFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetSenderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_get_user_data' : return type 'gpointer' not supported
+
+var dBusMethodInvocationReturnDbusErrorFunction *gi.Function
+var dBusMethodInvocationReturnDbusErrorFunction_Once sync.Once
+
+func dBusMethodInvocationReturnDbusErrorFunction_Set() error {
+	var err error
+	dBusMethodInvocationReturnDbusErrorFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationReturnDbusErrorFunction, err = dBusMethodInvocationStruct.InvokerNew("return_dbus_error")
+	})
+	return err
+}
+
+// ReturnDbusError is a representation of the C type g_dbus_method_invocation_return_dbus_error.
+func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(errorName)
+	inArgs[2].SetString(errorMessage)
+
+	err := dBusMethodInvocationReturnDbusErrorFunction_Set()
+	if err == nil {
+		dBusMethodInvocationReturnDbusErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error' : parameter '...' of type 'nil' not supported
+
+var dBusMethodInvocationReturnErrorLiteralFunction *gi.Function
+var dBusMethodInvocationReturnErrorLiteralFunction_Once sync.Once
+
+func dBusMethodInvocationReturnErrorLiteralFunction_Set() error {
+	var err error
+	dBusMethodInvocationReturnErrorLiteralFunction_Once.Do(func() {
+		err = dBusMethodInvocationStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationReturnErrorLiteralFunction, err = dBusMethodInvocationStruct.InvokerNew("return_error_literal")
+	})
+	return err
+}
+
+// ReturnErrorLiteral is a representation of the C type g_dbus_method_invocation_return_error_literal.
+func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(uint32(domain))
+	inArgs[2].SetInt32(code)
+	inArgs[3].SetString(message)
+
+	err := dBusMethodInvocationReturnErrorLiteralFunction_Set()
+	if err == nil {
+		dBusMethodInvocationReturnErrorLiteralFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error_valist' : parameter 'var_args' of type 'va_list' not supported
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_gerror' : parameter 'error' of type 'GLib.Error' not supported
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_value' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_value_with_unix_fd_list' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_method_invocation_take_error' : parameter 'error' of type 'GLib.Error' not supported
+
+// DBusMethodInvocationStruct creates an uninitialised DBusMethodInvocation.
+func DBusMethodInvocationStruct() *DBusMethodInvocation {
+	err := dBusMethodInvocationStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &DBusMethodInvocation{native: dBusMethodInvocationStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeDBusMethodInvocation)
+	return structGo
+}
+func finalizeDBusMethodInvocation(obj *DBusMethodInvocation) {
+	dBusMethodInvocationStruct.Free(obj.native)
+}
+
+var dBusObjectManagerClientStruct *gi.Struct
+var dBusObjectManagerClientStruct_Once sync.Once
+
+func dBusObjectManagerClientStruct_Set() error {
+	var err error
+	dBusObjectManagerClientStruct_Once.Do(func() {
+		dBusObjectManagerClientStruct, err = gi.StructNew("Gio", "DBusObjectManagerClient")
+	})
+	return err
+}
+
+type DBusObjectManagerClient struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_sync' : parameter 'connection' of type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_get_connection' : return type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_get_flags' : return type 'DBusObjectManagerClientFlags' not supported
+
+var dBusObjectManagerClientGetNameFunction *gi.Function
+var dBusObjectManagerClientGetNameFunction_Once sync.Once
+
+func dBusObjectManagerClientGetNameFunction_Set() error {
+	var err error
+	dBusObjectManagerClientGetNameFunction_Once.Do(func() {
+		err = dBusObjectManagerClientStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerClientGetNameFunction, err = dBusObjectManagerClientStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_dbus_object_manager_client_get_name.
+func (recv *DBusObjectManagerClient) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerClientGetNameFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerClientGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusObjectManagerClientGetNameOwnerFunction *gi.Function
+var dBusObjectManagerClientGetNameOwnerFunction_Once sync.Once
+
+func dBusObjectManagerClientGetNameOwnerFunction_Set() error {
+	var err error
+	dBusObjectManagerClientGetNameOwnerFunction_Once.Do(func() {
+		err = dBusObjectManagerClientStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerClientGetNameOwnerFunction, err = dBusObjectManagerClientStruct.InvokerNew("get_name_owner")
+	})
+	return err
+}
+
+// GetNameOwner is a representation of the C type g_dbus_object_manager_client_get_name_owner.
+func (recv *DBusObjectManagerClient) GetNameOwner() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerClientGetNameOwnerFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerClientGetNameOwnerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var dBusObjectManagerServerStruct *gi.Struct
+var dBusObjectManagerServerStruct_Once sync.Once
+
+func dBusObjectManagerServerStruct_Set() error {
+	var err error
+	dBusObjectManagerServerStruct_Once.Do(func() {
+		dBusObjectManagerServerStruct, err = gi.StructNew("Gio", "DBusObjectManagerServer")
+	})
+	return err
+}
+
+type DBusObjectManagerServer struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_new' : return type 'DBusObjectManagerServer' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_export' : parameter 'object' of type 'DBusObjectSkeleton' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_export_uniquely' : parameter 'object' of type 'DBusObjectSkeleton' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_get_connection' : return type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_is_exported' : parameter 'object' of type 'DBusObjectSkeleton' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_manager_server_set_connection' : parameter 'connection' of type 'DBusConnection' not supported
+
+var dBusObjectManagerServerUnexportFunction *gi.Function
+var dBusObjectManagerServerUnexportFunction_Once sync.Once
+
+func dBusObjectManagerServerUnexportFunction_Set() error {
+	var err error
+	dBusObjectManagerServerUnexportFunction_Once.Do(func() {
+		err = dBusObjectManagerServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerServerUnexportFunction, err = dBusObjectManagerServerStruct.InvokerNew("unexport")
+	})
+	return err
+}
+
+// Unexport is a representation of the C type g_dbus_object_manager_server_unexport.
+func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(objectPath)
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerServerUnexportFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerServerUnexportFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusObjectProxyStruct *gi.Struct
+var dBusObjectProxyStruct_Once sync.Once
+
+func dBusObjectProxyStruct_Set() error {
+	var err error
+	dBusObjectProxyStruct_Once.Do(func() {
+		dBusObjectProxyStruct, err = gi.StructNew("Gio", "DBusObjectProxy")
+	})
+	return err
+}
+
+type DBusObjectProxy struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_object_proxy_new' : parameter 'connection' of type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_proxy_get_connection' : return type 'DBusConnection' not supported
+
+var dBusObjectSkeletonStruct *gi.Struct
+var dBusObjectSkeletonStruct_Once sync.Once
+
+func dBusObjectSkeletonStruct_Set() error {
+	var err error
+	dBusObjectSkeletonStruct_Once.Do(func() {
+		dBusObjectSkeletonStruct, err = gi.StructNew("Gio", "DBusObjectSkeleton")
+	})
+	return err
+}
+
+type DBusObjectSkeleton struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_object_skeleton_new' : return type 'DBusObjectSkeleton' not supported
+
+// UNSUPPORTED : C value 'g_dbus_object_skeleton_add_interface' : parameter 'interface_' of type 'DBusInterfaceSkeleton' not supported
+
+var dBusObjectSkeletonFlushFunction *gi.Function
+var dBusObjectSkeletonFlushFunction_Once sync.Once
+
+func dBusObjectSkeletonFlushFunction_Set() error {
+	var err error
+	dBusObjectSkeletonFlushFunction_Once.Do(func() {
+		err = dBusObjectSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectSkeletonFlushFunction, err = dBusObjectSkeletonStruct.InvokerNew("flush")
+	})
+	return err
+}
+
+// Flush is a representation of the C type g_dbus_object_skeleton_flush.
+func (recv *DBusObjectSkeleton) Flush() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusObjectSkeletonFlushFunction_Set()
+	if err == nil {
+		dBusObjectSkeletonFlushFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_object_skeleton_remove_interface' : parameter 'interface_' of type 'DBusInterfaceSkeleton' not supported
+
+var dBusObjectSkeletonRemoveInterfaceByNameFunction *gi.Function
+var dBusObjectSkeletonRemoveInterfaceByNameFunction_Once sync.Once
+
+func dBusObjectSkeletonRemoveInterfaceByNameFunction_Set() error {
+	var err error
+	dBusObjectSkeletonRemoveInterfaceByNameFunction_Once.Do(func() {
+		err = dBusObjectSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectSkeletonRemoveInterfaceByNameFunction, err = dBusObjectSkeletonStruct.InvokerNew("remove_interface_by_name")
+	})
+	return err
+}
+
+// RemoveInterfaceByName is a representation of the C type g_dbus_object_skeleton_remove_interface_by_name.
+func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(interfaceName)
+
+	err := dBusObjectSkeletonRemoveInterfaceByNameFunction_Set()
+	if err == nil {
+		dBusObjectSkeletonRemoveInterfaceByNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusObjectSkeletonSetObjectPathFunction *gi.Function
+var dBusObjectSkeletonSetObjectPathFunction_Once sync.Once
+
+func dBusObjectSkeletonSetObjectPathFunction_Set() error {
+	var err error
+	dBusObjectSkeletonSetObjectPathFunction_Once.Do(func() {
+		err = dBusObjectSkeletonStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectSkeletonSetObjectPathFunction, err = dBusObjectSkeletonStruct.InvokerNew("set_object_path")
+	})
+	return err
+}
+
+// SetObjectPath is a representation of the C type g_dbus_object_skeleton_set_object_path.
+func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(objectPath)
+
+	err := dBusObjectSkeletonSetObjectPathFunction_Set()
+	if err == nil {
+		dBusObjectSkeletonSetObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusProxyStruct *gi.Struct
+var dBusProxyStruct_Once sync.Once
+
+func dBusProxyStruct_Set() error {
+	var err error
+	dBusProxyStruct_Once.Do(func() {
+		dBusProxyStruct, err = gi.StructNew("Gio", "DBusProxy")
+	})
+	return err
+}
+
+type DBusProxy struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_new_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_new_sync' : parameter 'connection' of type 'DBusConnection' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_finish' : parameter 'res' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_sync' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list_finish' : parameter 'out_fd_list' of type 'UnixFDList' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list_sync' : parameter 'parameters' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_dbus_proxy_get_cached_property' : return type 'GLib.Variant' not supported
+
+var dBusProxyGetCachedPropertyNamesFunction *gi.Function
+var dBusProxyGetCachedPropertyNamesFunction_Once sync.Once
+
+func dBusProxyGetCachedPropertyNamesFunction_Set() error {
+	var err error
+	dBusProxyGetCachedPropertyNamesFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetCachedPropertyNamesFunction, err = dBusProxyStruct.InvokerNew("get_cached_property_names")
+	})
+	return err
+}
+
+// GetCachedPropertyNames is a representation of the C type g_dbus_proxy_get_cached_property_names.
+func (recv *DBusProxy) GetCachedPropertyNames() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusProxyGetCachedPropertyNamesFunction_Set()
+	if err == nil {
+		dBusProxyGetCachedPropertyNamesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_get_connection' : return type 'DBusConnection' not supported
+
+var dBusProxyGetDefaultTimeoutFunction *gi.Function
+var dBusProxyGetDefaultTimeoutFunction_Once sync.Once
+
+func dBusProxyGetDefaultTimeoutFunction_Set() error {
+	var err error
+	dBusProxyGetDefaultTimeoutFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetDefaultTimeoutFunction, err = dBusProxyStruct.InvokerNew("get_default_timeout")
+	})
+	return err
+}
+
+// GetDefaultTimeout is a representation of the C type g_dbus_proxy_get_default_timeout.
+func (recv *DBusProxy) GetDefaultTimeout() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetDefaultTimeoutFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetDefaultTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_get_flags' : return type 'DBusProxyFlags' not supported
+
+var dBusProxyGetInterfaceInfoFunction *gi.Function
+var dBusProxyGetInterfaceInfoFunction_Once sync.Once
+
+func dBusProxyGetInterfaceInfoFunction_Set() error {
+	var err error
+	dBusProxyGetInterfaceInfoFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetInterfaceInfoFunction, err = dBusProxyStruct.InvokerNew("get_interface_info")
+	})
+	return err
+}
+
+// GetInterfaceInfo is a representation of the C type g_dbus_proxy_get_interface_info.
+func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetInterfaceInfoFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetInterfaceInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var dBusProxyGetInterfaceNameFunction *gi.Function
+var dBusProxyGetInterfaceNameFunction_Once sync.Once
+
+func dBusProxyGetInterfaceNameFunction_Set() error {
+	var err error
+	dBusProxyGetInterfaceNameFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetInterfaceNameFunction, err = dBusProxyStruct.InvokerNew("get_interface_name")
+	})
+	return err
+}
+
+// GetInterfaceName is a representation of the C type g_dbus_proxy_get_interface_name.
+func (recv *DBusProxy) GetInterfaceName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetInterfaceNameFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetInterfaceNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusProxyGetNameFunction *gi.Function
+var dBusProxyGetNameFunction_Once sync.Once
+
+func dBusProxyGetNameFunction_Set() error {
+	var err error
+	dBusProxyGetNameFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetNameFunction, err = dBusProxyStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_dbus_proxy_get_name.
+func (recv *DBusProxy) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetNameFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusProxyGetNameOwnerFunction *gi.Function
+var dBusProxyGetNameOwnerFunction_Once sync.Once
+
+func dBusProxyGetNameOwnerFunction_Set() error {
+	var err error
+	dBusProxyGetNameOwnerFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetNameOwnerFunction, err = dBusProxyStruct.InvokerNew("get_name_owner")
+	})
+	return err
+}
+
+// GetNameOwner is a representation of the C type g_dbus_proxy_get_name_owner.
+func (recv *DBusProxy) GetNameOwner() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetNameOwnerFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetNameOwnerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var dBusProxyGetObjectPathFunction *gi.Function
+var dBusProxyGetObjectPathFunction_Once sync.Once
+
+func dBusProxyGetObjectPathFunction_Set() error {
+	var err error
+	dBusProxyGetObjectPathFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetObjectPathFunction, err = dBusProxyStruct.InvokerNew("get_object_path")
+	})
+	return err
+}
+
+// GetObjectPath is a representation of the C type g_dbus_proxy_get_object_path.
+func (recv *DBusProxy) GetObjectPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusProxyGetObjectPathFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_set_cached_property' : parameter 'value' of type 'GLib.Variant' not supported
+
+var dBusProxySetDefaultTimeoutFunction *gi.Function
+var dBusProxySetDefaultTimeoutFunction_Once sync.Once
+
+func dBusProxySetDefaultTimeoutFunction_Set() error {
+	var err error
+	dBusProxySetDefaultTimeoutFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxySetDefaultTimeoutFunction, err = dBusProxyStruct.InvokerNew("set_default_timeout")
+	})
+	return err
+}
+
+// SetDefaultTimeout is a representation of the C type g_dbus_proxy_set_default_timeout.
+func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(timeoutMsec)
+
+	err := dBusProxySetDefaultTimeoutFunction_Set()
+	if err == nil {
+		dBusProxySetDefaultTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusProxySetInterfaceInfoFunction *gi.Function
+var dBusProxySetInterfaceInfoFunction_Once sync.Once
+
+func dBusProxySetInterfaceInfoFunction_Set() error {
+	var err error
+	dBusProxySetInterfaceInfoFunction_Once.Do(func() {
+		err = dBusProxyStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusProxySetInterfaceInfoFunction, err = dBusProxyStruct.InvokerNew("set_interface_info")
+	})
+	return err
+}
+
+// SetInterfaceInfo is a representation of the C type g_dbus_proxy_set_interface_info.
+func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(info.native)
+
+	err := dBusProxySetInterfaceInfoFunction_Set()
+	if err == nil {
+		dBusProxySetInterfaceInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusServerStruct *gi.Struct
+var dBusServerStruct_Once sync.Once
+
+func dBusServerStruct_Set() error {
+	var err error
+	dBusServerStruct_Once.Do(func() {
+		dBusServerStruct, err = gi.StructNew("Gio", "DBusServer")
+	})
+	return err
+}
+
+type DBusServer struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_dbus_server_new_sync' : parameter 'flags' of type 'DBusServerFlags' not supported
+
+var dBusServerGetClientAddressFunction *gi.Function
+var dBusServerGetClientAddressFunction_Once sync.Once
+
+func dBusServerGetClientAddressFunction_Set() error {
+	var err error
+	dBusServerGetClientAddressFunction_Once.Do(func() {
+		err = dBusServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusServerGetClientAddressFunction, err = dBusServerStruct.InvokerNew("get_client_address")
+	})
+	return err
+}
+
+// GetClientAddress is a representation of the C type g_dbus_server_get_client_address.
+func (recv *DBusServer) GetClientAddress() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusServerGetClientAddressFunction_Set()
+	if err == nil {
+		ret = dBusServerGetClientAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_server_get_flags' : return type 'DBusServerFlags' not supported
+
+var dBusServerGetGuidFunction *gi.Function
+var dBusServerGetGuidFunction_Once sync.Once
+
+func dBusServerGetGuidFunction_Set() error {
+	var err error
+	dBusServerGetGuidFunction_Once.Do(func() {
+		err = dBusServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusServerGetGuidFunction, err = dBusServerStruct.InvokerNew("get_guid")
+	})
+	return err
+}
+
+// GetGuid is a representation of the C type g_dbus_server_get_guid.
+func (recv *DBusServer) GetGuid() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusServerGetGuidFunction_Set()
+	if err == nil {
+		ret = dBusServerGetGuidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var dBusServerIsActiveFunction *gi.Function
+var dBusServerIsActiveFunction_Once sync.Once
+
+func dBusServerIsActiveFunction_Set() error {
+	var err error
+	dBusServerIsActiveFunction_Once.Do(func() {
+		err = dBusServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusServerIsActiveFunction, err = dBusServerStruct.InvokerNew("is_active")
+	})
+	return err
+}
+
+// IsActive is a representation of the C type g_dbus_server_is_active.
+func (recv *DBusServer) IsActive() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dBusServerIsActiveFunction_Set()
+	if err == nil {
+		ret = dBusServerIsActiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dBusServerStartFunction *gi.Function
+var dBusServerStartFunction_Once sync.Once
+
+func dBusServerStartFunction_Set() error {
+	var err error
+	dBusServerStartFunction_Once.Do(func() {
+		err = dBusServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusServerStartFunction, err = dBusServerStruct.InvokerNew("start")
+	})
+	return err
+}
+
+// Start is a representation of the C type g_dbus_server_start.
+func (recv *DBusServer) Start() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusServerStartFunction_Set()
+	if err == nil {
+		dBusServerStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dBusServerStopFunction *gi.Function
+var dBusServerStopFunction_Once sync.Once
+
+func dBusServerStopFunction_Set() error {
+	var err error
+	dBusServerStopFunction_Once.Do(func() {
+		err = dBusServerStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusServerStopFunction, err = dBusServerStruct.InvokerNew("stop")
+	})
+	return err
+}
+
+// Stop is a representation of the C type g_dbus_server_stop.
+func (recv *DBusServer) Stop() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := dBusServerStopFunction_Set()
+	if err == nil {
+		dBusServerStopFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dataInputStreamStruct *gi.Struct
+var dataInputStreamStruct_Once sync.Once
+
+func dataInputStreamStruct_Set() error {
+	var err error
+	dataInputStreamStruct_Once.Do(func() {
+		dataInputStreamStruct, err = gi.StructNew("Gio", "DataInputStream")
+	})
+	return err
+}
+
+type DataInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'BufferedInputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'BufferedInputStream'
+
+// UNSUPPORTED : C value 'g_data_input_stream_new' : parameter 'base_stream' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_get_byte_order' : return type 'DataStreamByteOrder' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_get_newline_type' : return type 'DataStreamNewlineType' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_byte' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_int16' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_int32' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_int64' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_line' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_line_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_line_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_line_finish_utf8' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_line_utf8' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_uint16' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_uint32' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_uint64' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_until' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_until_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_until_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_upto' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_upto_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_read_upto_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_set_byte_order' : parameter 'order' of type 'DataStreamByteOrder' not supported
+
+// UNSUPPORTED : C value 'g_data_input_stream_set_newline_type' : parameter 'type' of type 'DataStreamNewlineType' not supported
+
+var dataOutputStreamStruct *gi.Struct
+var dataOutputStreamStruct_Once sync.Once
+
+func dataOutputStreamStruct_Set() error {
+	var err error
+	dataOutputStreamStruct_Once.Do(func() {
+		dataOutputStreamStruct, err = gi.StructNew("Gio", "DataOutputStream")
+	})
+	return err
+}
+
+type DataOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'FilterOutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'FilterOutputStream'
+
+// UNSUPPORTED : C value 'g_data_output_stream_new' : parameter 'base_stream' of type 'OutputStream' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_get_byte_order' : return type 'DataStreamByteOrder' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_byte' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_int16' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_int32' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_int64' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_string' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_uint16' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_uint32' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_put_uint64' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_data_output_stream_set_byte_order' : parameter 'order' of type 'DataStreamByteOrder' not supported
+
+var desktopAppInfoStruct *gi.Struct
+var desktopAppInfoStruct_Once sync.Once
+
+func desktopAppInfoStruct_Set() error {
+	var err error
+	desktopAppInfoStruct_Once.Do(func() {
+		desktopAppInfoStruct, err = gi.StructNew("Gio", "DesktopAppInfo")
+	})
+	return err
+}
+
+type DesktopAppInfo struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_desktop_app_info_new' : return type 'DesktopAppInfo' not supported
+
+// UNSUPPORTED : C value 'g_desktop_app_info_new_from_filename' : return type 'DesktopAppInfo' not supported
+
+// UNSUPPORTED : C value 'g_desktop_app_info_new_from_keyfile' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+
+var desktopAppInfoGetActionNameFunction *gi.Function
+var desktopAppInfoGetActionNameFunction_Once sync.Once
+
+func desktopAppInfoGetActionNameFunction_Set() error {
+	var err error
+	desktopAppInfoGetActionNameFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetActionNameFunction, err = desktopAppInfoStruct.InvokerNew("get_action_name")
+	})
+	return err
+}
+
+// GetActionName is a representation of the C type g_desktop_app_info_get_action_name.
+func (recv *DesktopAppInfo) GetActionName(actionName string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetActionNameFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetActionNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var desktopAppInfoGetBooleanFunction *gi.Function
+var desktopAppInfoGetBooleanFunction_Once sync.Once
+
+func desktopAppInfoGetBooleanFunction_Set() error {
+	var err error
+	desktopAppInfoGetBooleanFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetBooleanFunction, err = desktopAppInfoStruct.InvokerNew("get_boolean")
+	})
+	return err
+}
+
+// GetBoolean is a representation of the C type g_desktop_app_info_get_boolean.
+func (recv *DesktopAppInfo) GetBoolean(key string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetBooleanFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var desktopAppInfoGetCategoriesFunction *gi.Function
+var desktopAppInfoGetCategoriesFunction_Once sync.Once
+
+func desktopAppInfoGetCategoriesFunction_Set() error {
+	var err error
+	desktopAppInfoGetCategoriesFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetCategoriesFunction, err = desktopAppInfoStruct.InvokerNew("get_categories")
+	})
+	return err
+}
+
+// GetCategories is a representation of the C type g_desktop_app_info_get_categories.
+func (recv *DesktopAppInfo) GetCategories() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetCategoriesFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetCategoriesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var desktopAppInfoGetFilenameFunction *gi.Function
+var desktopAppInfoGetFilenameFunction_Once sync.Once
+
+func desktopAppInfoGetFilenameFunction_Set() error {
+	var err error
+	desktopAppInfoGetFilenameFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetFilenameFunction, err = desktopAppInfoStruct.InvokerNew("get_filename")
+	})
+	return err
+}
+
+// GetFilename is a representation of the C type g_desktop_app_info_get_filename.
+func (recv *DesktopAppInfo) GetFilename() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetFilenameFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetFilenameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var desktopAppInfoGetGenericNameFunction *gi.Function
+var desktopAppInfoGetGenericNameFunction_Once sync.Once
+
+func desktopAppInfoGetGenericNameFunction_Set() error {
+	var err error
+	desktopAppInfoGetGenericNameFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetGenericNameFunction, err = desktopAppInfoStruct.InvokerNew("get_generic_name")
+	})
+	return err
+}
+
+// GetGenericName is a representation of the C type g_desktop_app_info_get_generic_name.
+func (recv *DesktopAppInfo) GetGenericName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetGenericNameFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetGenericNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var desktopAppInfoGetIsHiddenFunction *gi.Function
+var desktopAppInfoGetIsHiddenFunction_Once sync.Once
+
+func desktopAppInfoGetIsHiddenFunction_Set() error {
+	var err error
+	desktopAppInfoGetIsHiddenFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetIsHiddenFunction, err = desktopAppInfoStruct.InvokerNew("get_is_hidden")
+	})
+	return err
+}
+
+// GetIsHidden is a representation of the C type g_desktop_app_info_get_is_hidden.
+func (recv *DesktopAppInfo) GetIsHidden() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetIsHiddenFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetIsHiddenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var desktopAppInfoGetKeywordsFunction *gi.Function
+var desktopAppInfoGetKeywordsFunction_Once sync.Once
+
+func desktopAppInfoGetKeywordsFunction_Set() error {
+	var err error
+	desktopAppInfoGetKeywordsFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetKeywordsFunction, err = desktopAppInfoStruct.InvokerNew("get_keywords")
+	})
+	return err
+}
+
+// GetKeywords is a representation of the C type g_desktop_app_info_get_keywords.
+func (recv *DesktopAppInfo) GetKeywords() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := desktopAppInfoGetKeywordsFunction_Set()
+	if err == nil {
+		desktopAppInfoGetKeywordsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var desktopAppInfoGetLocaleStringFunction *gi.Function
+var desktopAppInfoGetLocaleStringFunction_Once sync.Once
+
+func desktopAppInfoGetLocaleStringFunction_Set() error {
+	var err error
+	desktopAppInfoGetLocaleStringFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetLocaleStringFunction, err = desktopAppInfoStruct.InvokerNew("get_locale_string")
+	})
+	return err
+}
+
+// GetLocaleString is a representation of the C type g_desktop_app_info_get_locale_string.
+func (recv *DesktopAppInfo) GetLocaleString(key string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetLocaleStringFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetLocaleStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var desktopAppInfoGetNodisplayFunction *gi.Function
+var desktopAppInfoGetNodisplayFunction_Once sync.Once
+
+func desktopAppInfoGetNodisplayFunction_Set() error {
+	var err error
+	desktopAppInfoGetNodisplayFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetNodisplayFunction, err = desktopAppInfoStruct.InvokerNew("get_nodisplay")
+	})
+	return err
+}
+
+// GetNodisplay is a representation of the C type g_desktop_app_info_get_nodisplay.
+func (recv *DesktopAppInfo) GetNodisplay() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetNodisplayFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetNodisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var desktopAppInfoGetShowInFunction *gi.Function
+var desktopAppInfoGetShowInFunction_Once sync.Once
+
+func desktopAppInfoGetShowInFunction_Set() error {
+	var err error
+	desktopAppInfoGetShowInFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetShowInFunction, err = desktopAppInfoStruct.InvokerNew("get_show_in")
+	})
+	return err
+}
+
+// GetShowIn is a representation of the C type g_desktop_app_info_get_show_in.
+func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(desktopEnv)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetShowInFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetShowInFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var desktopAppInfoGetStartupWmClassFunction *gi.Function
+var desktopAppInfoGetStartupWmClassFunction_Once sync.Once
+
+func desktopAppInfoGetStartupWmClassFunction_Set() error {
+	var err error
+	desktopAppInfoGetStartupWmClassFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetStartupWmClassFunction, err = desktopAppInfoStruct.InvokerNew("get_startup_wm_class")
+	})
+	return err
+}
+
+// GetStartupWmClass is a representation of the C type g_desktop_app_info_get_startup_wm_class.
+func (recv *DesktopAppInfo) GetStartupWmClass() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetStartupWmClassFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetStartupWmClassFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var desktopAppInfoGetStringFunction *gi.Function
+var desktopAppInfoGetStringFunction_Once sync.Once
+
+func desktopAppInfoGetStringFunction_Set() error {
+	var err error
+	desktopAppInfoGetStringFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetStringFunction, err = desktopAppInfoStruct.InvokerNew("get_string")
+	})
+	return err
+}
+
+// GetString is a representation of the C type g_desktop_app_info_get_string.
+func (recv *DesktopAppInfo) GetString(key string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoGetStringFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoGetStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var desktopAppInfoGetStringListFunction *gi.Function
+var desktopAppInfoGetStringListFunction_Once sync.Once
+
+func desktopAppInfoGetStringListFunction_Set() error {
+	var err error
+	desktopAppInfoGetStringListFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoGetStringListFunction, err = desktopAppInfoStruct.InvokerNew("get_string_list")
+	})
+	return err
+}
+
+// GetStringList is a representation of the C type g_desktop_app_info_get_string_list.
+func (recv *DesktopAppInfo) GetStringList(key string) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var outArgs [1]gi.Argument
+
+	err := desktopAppInfoGetStringListFunction_Set()
+	if err == nil {
+		desktopAppInfoGetStringListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0
+}
+
+var desktopAppInfoHasKeyFunction *gi.Function
+var desktopAppInfoHasKeyFunction_Once sync.Once
+
+func desktopAppInfoHasKeyFunction_Set() error {
+	var err error
+	desktopAppInfoHasKeyFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoHasKeyFunction, err = desktopAppInfoStruct.InvokerNew("has_key")
+	})
+	return err
+}
+
+// HasKey is a representation of the C type g_desktop_app_info_has_key.
+func (recv *DesktopAppInfo) HasKey(key string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoHasKeyFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoHasKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_desktop_app_info_launch_action' : parameter 'launch_context' of type 'AppLaunchContext' not supported
+
+// UNSUPPORTED : C value 'g_desktop_app_info_launch_uris_as_manager' : parameter 'uris' of type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_desktop_app_info_launch_uris_as_manager_with_fds' : parameter 'uris' of type 'GLib.List' not supported
+
+var desktopAppInfoListActionsFunction *gi.Function
+var desktopAppInfoListActionsFunction_Once sync.Once
+
+func desktopAppInfoListActionsFunction_Set() error {
+	var err error
+	desktopAppInfoListActionsFunction_Once.Do(func() {
+		err = desktopAppInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoListActionsFunction, err = desktopAppInfoStruct.InvokerNew("list_actions")
+	})
+	return err
+}
+
+// ListActions is a representation of the C type g_desktop_app_info_list_actions.
+func (recv *DesktopAppInfo) ListActions() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := desktopAppInfoListActionsFunction_Set()
+	if err == nil {
+		desktopAppInfoListActionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var emblemStruct *gi.Struct
+var emblemStruct_Once sync.Once
+
+func emblemStruct_Set() error {
+	var err error
+	emblemStruct_Once.Do(func() {
+		emblemStruct, err = gi.StructNew("Gio", "Emblem")
+	})
+	return err
+}
+
+type Emblem struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_emblem_new' : parameter 'icon' of type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_emblem_new_with_origin' : parameter 'icon' of type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_emblem_get_icon' : return type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_emblem_get_origin' : return type 'EmblemOrigin' not supported
+
+var emblemedIconStruct *gi.Struct
+var emblemedIconStruct_Once sync.Once
+
+func emblemedIconStruct_Set() error {
+	var err error
+	emblemedIconStruct_Once.Do(func() {
+		emblemedIconStruct, err = gi.StructNew("Gio", "EmblemedIcon")
+	})
+	return err
+}
+
+type EmblemedIcon struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_emblemed_icon_new' : parameter 'icon' of type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_emblemed_icon_add_emblem' : parameter 'emblem' of type 'Emblem' not supported
+
+var emblemedIconClearEmblemsFunction *gi.Function
+var emblemedIconClearEmblemsFunction_Once sync.Once
+
+func emblemedIconClearEmblemsFunction_Set() error {
+	var err error
+	emblemedIconClearEmblemsFunction_Once.Do(func() {
+		err = emblemedIconStruct_Set()
+		if err != nil {
+			return
+		}
+		emblemedIconClearEmblemsFunction, err = emblemedIconStruct.InvokerNew("clear_emblems")
+	})
+	return err
+}
+
+// ClearEmblems is a representation of the C type g_emblemed_icon_clear_emblems.
+func (recv *EmblemedIcon) ClearEmblems() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := emblemedIconClearEmblemsFunction_Set()
+	if err == nil {
+		emblemedIconClearEmblemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_emblemed_icon_get_emblems' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_emblemed_icon_get_icon' : return type 'Icon' not supported
+
+var fileEnumeratorStruct *gi.Struct
+var fileEnumeratorStruct_Once sync.Once
+
+func fileEnumeratorStruct_Set() error {
+	var err error
+	fileEnumeratorStruct_Once.Do(func() {
+		fileEnumeratorStruct, err = gi.StructNew("Gio", "FileEnumerator")
+	})
+	return err
+}
+
+type FileEnumerator struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_file_enumerator_close' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_close_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_close_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_get_child' : parameter 'info' of type 'FileInfo' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_get_container' : return type 'File' not supported
+
+var fileEnumeratorHasPendingFunction *gi.Function
+var fileEnumeratorHasPendingFunction_Once sync.Once
+
+func fileEnumeratorHasPendingFunction_Set() error {
+	var err error
+	fileEnumeratorHasPendingFunction_Once.Do(func() {
+		err = fileEnumeratorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileEnumeratorHasPendingFunction, err = fileEnumeratorStruct.InvokerNew("has_pending")
+	})
+	return err
+}
+
+// HasPending is a representation of the C type g_file_enumerator_has_pending.
+func (recv *FileEnumerator) HasPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileEnumeratorHasPendingFunction_Set()
+	if err == nil {
+		ret = fileEnumeratorHasPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileEnumeratorIsClosedFunction *gi.Function
+var fileEnumeratorIsClosedFunction_Once sync.Once
+
+func fileEnumeratorIsClosedFunction_Set() error {
+	var err error
+	fileEnumeratorIsClosedFunction_Once.Do(func() {
+		err = fileEnumeratorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileEnumeratorIsClosedFunction, err = fileEnumeratorStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_file_enumerator_is_closed.
+func (recv *FileEnumerator) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileEnumeratorIsClosedFunction_Set()
+	if err == nil {
+		ret = fileEnumeratorIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_enumerator_iterate' : parameter 'out_info' of type 'FileInfo' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_next_file' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_next_files_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_enumerator_next_files_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var fileEnumeratorSetPendingFunction *gi.Function
+var fileEnumeratorSetPendingFunction_Once sync.Once
+
+func fileEnumeratorSetPendingFunction_Set() error {
+	var err error
+	fileEnumeratorSetPendingFunction_Once.Do(func() {
+		err = fileEnumeratorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileEnumeratorSetPendingFunction, err = fileEnumeratorStruct.InvokerNew("set_pending")
+	})
+	return err
+}
+
+// SetPending is a representation of the C type g_file_enumerator_set_pending.
+func (recv *FileEnumerator) SetPending(pending bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(pending)
+
+	err := fileEnumeratorSetPendingFunction_Set()
+	if err == nil {
+		fileEnumeratorSetPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// FileEnumeratorStruct creates an uninitialised FileEnumerator.
+func FileEnumeratorStruct() *FileEnumerator {
+	err := fileEnumeratorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileEnumerator{native: fileEnumeratorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileEnumerator)
+	return structGo
+}
+func finalizeFileEnumerator(obj *FileEnumerator) {
+	fileEnumeratorStruct.Free(obj.native)
+}
+
+var fileIOStreamStruct *gi.Struct
+var fileIOStreamStruct_Once sync.Once
+
+func fileIOStreamStruct_Set() error {
+	var err error
+	fileIOStreamStruct_Once.Do(func() {
+		fileIOStreamStruct, err = gi.StructNew("Gio", "FileIOStream")
+	})
+	return err
+}
+
+type FileIOStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'IOStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'IOStream'
+
+var fileIOStreamGetEtagFunction *gi.Function
+var fileIOStreamGetEtagFunction_Once sync.Once
+
+func fileIOStreamGetEtagFunction_Set() error {
+	var err error
+	fileIOStreamGetEtagFunction_Once.Do(func() {
+		err = fileIOStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		fileIOStreamGetEtagFunction, err = fileIOStreamStruct.InvokerNew("get_etag")
+	})
+	return err
+}
+
+// GetEtag is a representation of the C type g_file_io_stream_get_etag.
+func (recv *FileIOStream) GetEtag() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileIOStreamGetEtagFunction_Set()
+	if err == nil {
+		ret = fileIOStreamGetEtagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_io_stream_query_info' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_io_stream_query_info_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_io_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// FileIOStreamStruct creates an uninitialised FileIOStream.
+func FileIOStreamStruct() *FileIOStream {
+	err := fileIOStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileIOStream{native: fileIOStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileIOStream)
+	return structGo
+}
+func finalizeFileIOStream(obj *FileIOStream) {
+	fileIOStreamStruct.Free(obj.native)
+}
+
+var fileIconStruct *gi.Struct
+var fileIconStruct_Once sync.Once
+
+func fileIconStruct_Set() error {
+	var err error
+	fileIconStruct_Once.Do(func() {
+		fileIconStruct, err = gi.StructNew("Gio", "FileIcon")
+	})
+	return err
+}
+
+type FileIcon struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_file_icon_new' : parameter 'file' of type 'File' not supported
+
+// UNSUPPORTED : C value 'g_file_icon_get_file' : return type 'File' not supported
+
+var fileInfoStruct *gi.Struct
+var fileInfoStruct_Once sync.Once
+
+func fileInfoStruct_Set() error {
+	var err error
+	fileInfoStruct_Once.Do(func() {
+		fileInfoStruct, err = gi.StructNew("Gio", "FileInfo")
+	})
+	return err
+}
+
+type FileInfo struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_file_info_new' : return type 'FileInfo' not supported
+
+var fileInfoClearStatusFunction *gi.Function
+var fileInfoClearStatusFunction_Once sync.Once
+
+func fileInfoClearStatusFunction_Set() error {
+	var err error
+	fileInfoClearStatusFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoClearStatusFunction, err = fileInfoStruct.InvokerNew("clear_status")
+	})
+	return err
+}
+
+// ClearStatus is a representation of the C type g_file_info_clear_status.
+func (recv *FileInfo) ClearStatus() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := fileInfoClearStatusFunction_Set()
+	if err == nil {
+		fileInfoClearStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_copy_into' : parameter 'dest_info' of type 'FileInfo' not supported
+
+// UNSUPPORTED : C value 'g_file_info_dup' : return type 'FileInfo' not supported
+
+var fileInfoGetAttributeAsStringFunction *gi.Function
+var fileInfoGetAttributeAsStringFunction_Once sync.Once
+
+func fileInfoGetAttributeAsStringFunction_Set() error {
+	var err error
+	fileInfoGetAttributeAsStringFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeAsStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_as_string")
+	})
+	return err
+}
+
+// GetAttributeAsString is a representation of the C type g_file_info_get_attribute_as_string.
+func (recv *FileInfo) GetAttributeAsString(attribute string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeAsStringFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeAsStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var fileInfoGetAttributeBooleanFunction *gi.Function
+var fileInfoGetAttributeBooleanFunction_Once sync.Once
+
+func fileInfoGetAttributeBooleanFunction_Set() error {
+	var err error
+	fileInfoGetAttributeBooleanFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeBooleanFunction, err = fileInfoStruct.InvokerNew("get_attribute_boolean")
+	})
+	return err
+}
+
+// GetAttributeBoolean is a representation of the C type g_file_info_get_attribute_boolean.
+func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeBooleanFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileInfoGetAttributeByteStringFunction *gi.Function
+var fileInfoGetAttributeByteStringFunction_Once sync.Once
+
+func fileInfoGetAttributeByteStringFunction_Set() error {
+	var err error
+	fileInfoGetAttributeByteStringFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeByteStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_byte_string")
+	})
+	return err
+}
+
+// GetAttributeByteString is a representation of the C type g_file_info_get_attribute_byte_string.
+func (recv *FileInfo) GetAttributeByteString(attribute string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeByteStringFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeByteStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_attribute_data' : parameter 'type' of type 'FileAttributeType' not supported
+
+var fileInfoGetAttributeInt32Function *gi.Function
+var fileInfoGetAttributeInt32Function_Once sync.Once
+
+func fileInfoGetAttributeInt32Function_Set() error {
+	var err error
+	fileInfoGetAttributeInt32Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeInt32Function, err = fileInfoStruct.InvokerNew("get_attribute_int32")
+	})
+	return err
+}
+
+// GetAttributeInt32 is a representation of the C type g_file_info_get_attribute_int32.
+func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeInt32Function_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeInt32Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var fileInfoGetAttributeInt64Function *gi.Function
+var fileInfoGetAttributeInt64Function_Once sync.Once
+
+func fileInfoGetAttributeInt64Function_Set() error {
+	var err error
+	fileInfoGetAttributeInt64Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeInt64Function, err = fileInfoStruct.InvokerNew("get_attribute_int64")
+	})
+	return err
+}
+
+// GetAttributeInt64 is a representation of the C type g_file_info_get_attribute_int64.
+func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeInt64Function_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_attribute_object' : return type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_file_info_get_attribute_status' : return type 'FileAttributeStatus' not supported
+
+var fileInfoGetAttributeStringFunction *gi.Function
+var fileInfoGetAttributeStringFunction_Once sync.Once
+
+func fileInfoGetAttributeStringFunction_Set() error {
+	var err error
+	fileInfoGetAttributeStringFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_string")
+	})
+	return err
+}
+
+// GetAttributeString is a representation of the C type g_file_info_get_attribute_string.
+func (recv *FileInfo) GetAttributeString(attribute string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeStringFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var fileInfoGetAttributeStringvFunction *gi.Function
+var fileInfoGetAttributeStringvFunction_Once sync.Once
+
+func fileInfoGetAttributeStringvFunction_Set() error {
+	var err error
+	fileInfoGetAttributeStringvFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeStringvFunction, err = fileInfoStruct.InvokerNew("get_attribute_stringv")
+	})
+	return err
+}
+
+// GetAttributeStringv is a representation of the C type g_file_info_get_attribute_stringv.
+func (recv *FileInfo) GetAttributeStringv(attribute string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	err := fileInfoGetAttributeStringvFunction_Set()
+	if err == nil {
+		fileInfoGetAttributeStringvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_attribute_type' : return type 'FileAttributeType' not supported
+
+var fileInfoGetAttributeUint32Function *gi.Function
+var fileInfoGetAttributeUint32Function_Once sync.Once
+
+func fileInfoGetAttributeUint32Function_Set() error {
+	var err error
+	fileInfoGetAttributeUint32Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeUint32Function, err = fileInfoStruct.InvokerNew("get_attribute_uint32")
+	})
+	return err
+}
+
+// GetAttributeUint32 is a representation of the C type g_file_info_get_attribute_uint32.
+func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeUint32Function_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeUint32Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var fileInfoGetAttributeUint64Function *gi.Function
+var fileInfoGetAttributeUint64Function_Once sync.Once
+
+func fileInfoGetAttributeUint64Function_Set() error {
+	var err error
+	fileInfoGetAttributeUint64Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeUint64Function, err = fileInfoStruct.InvokerNew("get_attribute_uint64")
+	})
+	return err
+}
+
+// GetAttributeUint64 is a representation of the C type g_file_info_get_attribute_uint64.
+func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeUint64Function_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var fileInfoGetContentTypeFunction *gi.Function
+var fileInfoGetContentTypeFunction_Once sync.Once
+
+func fileInfoGetContentTypeFunction_Set() error {
+	var err error
+	fileInfoGetContentTypeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetContentTypeFunction, err = fileInfoStruct.InvokerNew("get_content_type")
+	})
+	return err
+}
+
+// GetContentType is a representation of the C type g_file_info_get_content_type.
+func (recv *FileInfo) GetContentType() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetContentTypeFunction_Set()
+	if err == nil {
+		ret = fileInfoGetContentTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_deletion_date' : return type 'GLib.DateTime' not supported
+
+var fileInfoGetDisplayNameFunction *gi.Function
+var fileInfoGetDisplayNameFunction_Once sync.Once
+
+func fileInfoGetDisplayNameFunction_Set() error {
+	var err error
+	fileInfoGetDisplayNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetDisplayNameFunction, err = fileInfoStruct.InvokerNew("get_display_name")
+	})
+	return err
+}
+
+// GetDisplayName is a representation of the C type g_file_info_get_display_name.
+func (recv *FileInfo) GetDisplayName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetDisplayNameFunction_Set()
+	if err == nil {
+		ret = fileInfoGetDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var fileInfoGetEditNameFunction *gi.Function
+var fileInfoGetEditNameFunction_Once sync.Once
+
+func fileInfoGetEditNameFunction_Set() error {
+	var err error
+	fileInfoGetEditNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetEditNameFunction, err = fileInfoStruct.InvokerNew("get_edit_name")
+	})
+	return err
+}
+
+// GetEditName is a representation of the C type g_file_info_get_edit_name.
+func (recv *FileInfo) GetEditName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetEditNameFunction_Set()
+	if err == nil {
+		ret = fileInfoGetEditNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var fileInfoGetEtagFunction *gi.Function
+var fileInfoGetEtagFunction_Once sync.Once
+
+func fileInfoGetEtagFunction_Set() error {
+	var err error
+	fileInfoGetEtagFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetEtagFunction, err = fileInfoStruct.InvokerNew("get_etag")
+	})
+	return err
+}
+
+// GetEtag is a representation of the C type g_file_info_get_etag.
+func (recv *FileInfo) GetEtag() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetEtagFunction_Set()
+	if err == nil {
+		ret = fileInfoGetEtagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_file_type' : return type 'FileType' not supported
+
+// UNSUPPORTED : C value 'g_file_info_get_icon' : return type 'Icon' not supported
+
+var fileInfoGetIsBackupFunction *gi.Function
+var fileInfoGetIsBackupFunction_Once sync.Once
+
+func fileInfoGetIsBackupFunction_Set() error {
+	var err error
+	fileInfoGetIsBackupFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetIsBackupFunction, err = fileInfoStruct.InvokerNew("get_is_backup")
+	})
+	return err
+}
+
+// GetIsBackup is a representation of the C type g_file_info_get_is_backup.
+func (recv *FileInfo) GetIsBackup() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetIsBackupFunction_Set()
+	if err == nil {
+		ret = fileInfoGetIsBackupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileInfoGetIsHiddenFunction *gi.Function
+var fileInfoGetIsHiddenFunction_Once sync.Once
+
+func fileInfoGetIsHiddenFunction_Set() error {
+	var err error
+	fileInfoGetIsHiddenFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetIsHiddenFunction, err = fileInfoStruct.InvokerNew("get_is_hidden")
+	})
+	return err
+}
+
+// GetIsHidden is a representation of the C type g_file_info_get_is_hidden.
+func (recv *FileInfo) GetIsHidden() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetIsHiddenFunction_Set()
+	if err == nil {
+		ret = fileInfoGetIsHiddenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileInfoGetIsSymlinkFunction *gi.Function
+var fileInfoGetIsSymlinkFunction_Once sync.Once
+
+func fileInfoGetIsSymlinkFunction_Set() error {
+	var err error
+	fileInfoGetIsSymlinkFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetIsSymlinkFunction, err = fileInfoStruct.InvokerNew("get_is_symlink")
+	})
+	return err
+}
+
+// GetIsSymlink is a representation of the C type g_file_info_get_is_symlink.
+func (recv *FileInfo) GetIsSymlink() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetIsSymlinkFunction_Set()
+	if err == nil {
+		ret = fileInfoGetIsSymlinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_modification_date_time' : return type 'GLib.DateTime' not supported
+
+// UNSUPPORTED : C value 'g_file_info_get_modification_time' : parameter 'result' of type 'GLib.TimeVal' not supported
+
+var fileInfoGetNameFunction *gi.Function
+var fileInfoGetNameFunction_Once sync.Once
+
+func fileInfoGetNameFunction_Set() error {
+	var err error
+	fileInfoGetNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetNameFunction, err = fileInfoStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_file_info_get_name.
+func (recv *FileInfo) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetNameFunction_Set()
+	if err == nil {
+		ret = fileInfoGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var fileInfoGetSizeFunction *gi.Function
+var fileInfoGetSizeFunction_Once sync.Once
+
+func fileInfoGetSizeFunction_Set() error {
+	var err error
+	fileInfoGetSizeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetSizeFunction, err = fileInfoStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type g_file_info_get_size.
+func (recv *FileInfo) GetSize() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetSizeFunction_Set()
+	if err == nil {
+		ret = fileInfoGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var fileInfoGetSortOrderFunction *gi.Function
+var fileInfoGetSortOrderFunction_Once sync.Once
+
+func fileInfoGetSortOrderFunction_Set() error {
+	var err error
+	fileInfoGetSortOrderFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetSortOrderFunction, err = fileInfoStruct.InvokerNew("get_sort_order")
+	})
+	return err
+}
+
+// GetSortOrder is a representation of the C type g_file_info_get_sort_order.
+func (recv *FileInfo) GetSortOrder() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetSortOrderFunction_Set()
+	if err == nil {
+		ret = fileInfoGetSortOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_info_get_symbolic_icon' : return type 'Icon' not supported
+
+var fileInfoGetSymlinkTargetFunction *gi.Function
+var fileInfoGetSymlinkTargetFunction_Once sync.Once
+
+func fileInfoGetSymlinkTargetFunction_Set() error {
+	var err error
+	fileInfoGetSymlinkTargetFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetSymlinkTargetFunction, err = fileInfoStruct.InvokerNew("get_symlink_target")
+	})
+	return err
+}
+
+// GetSymlinkTarget is a representation of the C type g_file_info_get_symlink_target.
+func (recv *FileInfo) GetSymlinkTarget() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetSymlinkTargetFunction_Set()
+	if err == nil {
+		ret = fileInfoGetSymlinkTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var fileInfoHasAttributeFunction *gi.Function
+var fileInfoHasAttributeFunction_Once sync.Once
+
+func fileInfoHasAttributeFunction_Set() error {
+	var err error
+	fileInfoHasAttributeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoHasAttributeFunction, err = fileInfoStruct.InvokerNew("has_attribute")
+	})
+	return err
+}
+
+// HasAttribute is a representation of the C type g_file_info_has_attribute.
+func (recv *FileInfo) HasAttribute(attribute string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoHasAttributeFunction_Set()
+	if err == nil {
+		ret = fileInfoHasAttributeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileInfoHasNamespaceFunction *gi.Function
+var fileInfoHasNamespaceFunction_Once sync.Once
+
+func fileInfoHasNamespaceFunction_Set() error {
+	var err error
+	fileInfoHasNamespaceFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoHasNamespaceFunction, err = fileInfoStruct.InvokerNew("has_namespace")
+	})
+	return err
+}
+
+// HasNamespace is a representation of the C type g_file_info_has_namespace.
+func (recv *FileInfo) HasNamespace(nameSpace string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(nameSpace)
+
+	var ret gi.Argument
+
+	err := fileInfoHasNamespaceFunction_Set()
+	if err == nil {
+		ret = fileInfoHasNamespaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileInfoListAttributesFunction *gi.Function
+var fileInfoListAttributesFunction_Once sync.Once
+
+func fileInfoListAttributesFunction_Set() error {
+	var err error
+	fileInfoListAttributesFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoListAttributesFunction, err = fileInfoStruct.InvokerNew("list_attributes")
+	})
+	return err
+}
+
+// ListAttributes is a representation of the C type g_file_info_list_attributes.
+func (recv *FileInfo) ListAttributes(nameSpace string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(nameSpace)
+
+	err := fileInfoListAttributesFunction_Set()
+	if err == nil {
+		fileInfoListAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoRemoveAttributeFunction *gi.Function
+var fileInfoRemoveAttributeFunction_Once sync.Once
+
+func fileInfoRemoveAttributeFunction_Set() error {
+	var err error
+	fileInfoRemoveAttributeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoRemoveAttributeFunction, err = fileInfoStruct.InvokerNew("remove_attribute")
+	})
+	return err
+}
+
+// RemoveAttribute is a representation of the C type g_file_info_remove_attribute.
+func (recv *FileInfo) RemoveAttribute(attribute string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	err := fileInfoRemoveAttributeFunction_Set()
+	if err == nil {
+		fileInfoRemoveAttributeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_attribute' : parameter 'type' of type 'FileAttributeType' not supported
+
+var fileInfoSetAttributeBooleanFunction *gi.Function
+var fileInfoSetAttributeBooleanFunction_Once sync.Once
+
+func fileInfoSetAttributeBooleanFunction_Set() error {
+	var err error
+	fileInfoSetAttributeBooleanFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeBooleanFunction, err = fileInfoStruct.InvokerNew("set_attribute_boolean")
+	})
+	return err
+}
+
+// SetAttributeBoolean is a representation of the C type g_file_info_set_attribute_boolean.
+func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetBoolean(attrValue)
+
+	err := fileInfoSetAttributeBooleanFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetAttributeByteStringFunction *gi.Function
+var fileInfoSetAttributeByteStringFunction_Once sync.Once
+
+func fileInfoSetAttributeByteStringFunction_Set() error {
+	var err error
+	fileInfoSetAttributeByteStringFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeByteStringFunction, err = fileInfoStruct.InvokerNew("set_attribute_byte_string")
+	})
+	return err
+}
+
+// SetAttributeByteString is a representation of the C type g_file_info_set_attribute_byte_string.
+func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetString(attrValue)
+
+	err := fileInfoSetAttributeByteStringFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeByteStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetAttributeInt32Function *gi.Function
+var fileInfoSetAttributeInt32Function_Once sync.Once
+
+func fileInfoSetAttributeInt32Function_Set() error {
+	var err error
+	fileInfoSetAttributeInt32Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeInt32Function, err = fileInfoStruct.InvokerNew("set_attribute_int32")
+	})
+	return err
+}
+
+// SetAttributeInt32 is a representation of the C type g_file_info_set_attribute_int32.
+func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt32(attrValue)
+
+	err := fileInfoSetAttributeInt32Function_Set()
+	if err == nil {
+		fileInfoSetAttributeInt32Function.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetAttributeInt64Function *gi.Function
+var fileInfoSetAttributeInt64Function_Once sync.Once
+
+func fileInfoSetAttributeInt64Function_Set() error {
+	var err error
+	fileInfoSetAttributeInt64Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeInt64Function, err = fileInfoStruct.InvokerNew("set_attribute_int64")
+	})
+	return err
+}
+
+// SetAttributeInt64 is a representation of the C type g_file_info_set_attribute_int64.
+func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt64(attrValue)
+
+	err := fileInfoSetAttributeInt64Function_Set()
+	if err == nil {
+		fileInfoSetAttributeInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetAttributeMaskFunction *gi.Function
+var fileInfoSetAttributeMaskFunction_Once sync.Once
+
+func fileInfoSetAttributeMaskFunction_Set() error {
+	var err error
+	fileInfoSetAttributeMaskFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeMaskFunction, err = fileInfoStruct.InvokerNew("set_attribute_mask")
+	})
+	return err
+}
+
+// SetAttributeMask is a representation of the C type g_file_info_set_attribute_mask.
+func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mask.native)
+
+	err := fileInfoSetAttributeMaskFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeMaskFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_attribute_object' : parameter 'attr_value' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_file_info_set_attribute_status' : parameter 'status' of type 'FileAttributeStatus' not supported
+
+var fileInfoSetAttributeStringFunction *gi.Function
+var fileInfoSetAttributeStringFunction_Once sync.Once
+
+func fileInfoSetAttributeStringFunction_Set() error {
+	var err error
+	fileInfoSetAttributeStringFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeStringFunction, err = fileInfoStruct.InvokerNew("set_attribute_string")
+	})
+	return err
+}
+
+// SetAttributeString is a representation of the C type g_file_info_set_attribute_string.
+func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetString(attrValue)
+
+	err := fileInfoSetAttributeStringFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_attribute_stringv' : parameter 'attr_value' of type 'nil' not supported
+
+var fileInfoSetAttributeUint32Function *gi.Function
+var fileInfoSetAttributeUint32Function_Once sync.Once
+
+func fileInfoSetAttributeUint32Function_Set() error {
+	var err error
+	fileInfoSetAttributeUint32Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeUint32Function, err = fileInfoStruct.InvokerNew("set_attribute_uint32")
+	})
+	return err
+}
+
+// SetAttributeUint32 is a representation of the C type g_file_info_set_attribute_uint32.
+func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetUint32(attrValue)
+
+	err := fileInfoSetAttributeUint32Function_Set()
+	if err == nil {
+		fileInfoSetAttributeUint32Function.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetAttributeUint64Function *gi.Function
+var fileInfoSetAttributeUint64Function_Once sync.Once
+
+func fileInfoSetAttributeUint64Function_Set() error {
+	var err error
+	fileInfoSetAttributeUint64Function_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeUint64Function, err = fileInfoStruct.InvokerNew("set_attribute_uint64")
+	})
+	return err
+}
+
+// SetAttributeUint64 is a representation of the C type g_file_info_set_attribute_uint64.
+func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetUint64(attrValue)
+
+	err := fileInfoSetAttributeUint64Function_Set()
+	if err == nil {
+		fileInfoSetAttributeUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetContentTypeFunction *gi.Function
+var fileInfoSetContentTypeFunction_Once sync.Once
+
+func fileInfoSetContentTypeFunction_Set() error {
+	var err error
+	fileInfoSetContentTypeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetContentTypeFunction, err = fileInfoStruct.InvokerNew("set_content_type")
+	})
+	return err
+}
+
+// SetContentType is a representation of the C type g_file_info_set_content_type.
+func (recv *FileInfo) SetContentType(contentType string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(contentType)
+
+	err := fileInfoSetContentTypeFunction_Set()
+	if err == nil {
+		fileInfoSetContentTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetDisplayNameFunction *gi.Function
+var fileInfoSetDisplayNameFunction_Once sync.Once
+
+func fileInfoSetDisplayNameFunction_Set() error {
+	var err error
+	fileInfoSetDisplayNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetDisplayNameFunction, err = fileInfoStruct.InvokerNew("set_display_name")
+	})
+	return err
+}
+
+// SetDisplayName is a representation of the C type g_file_info_set_display_name.
+func (recv *FileInfo) SetDisplayName(displayName string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(displayName)
+
+	err := fileInfoSetDisplayNameFunction_Set()
+	if err == nil {
+		fileInfoSetDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetEditNameFunction *gi.Function
+var fileInfoSetEditNameFunction_Once sync.Once
+
+func fileInfoSetEditNameFunction_Set() error {
+	var err error
+	fileInfoSetEditNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetEditNameFunction, err = fileInfoStruct.InvokerNew("set_edit_name")
+	})
+	return err
+}
+
+// SetEditName is a representation of the C type g_file_info_set_edit_name.
+func (recv *FileInfo) SetEditName(editName string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(editName)
+
+	err := fileInfoSetEditNameFunction_Set()
+	if err == nil {
+		fileInfoSetEditNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_file_type' : parameter 'type' of type 'FileType' not supported
+
+// UNSUPPORTED : C value 'g_file_info_set_icon' : parameter 'icon' of type 'Icon' not supported
+
+var fileInfoSetIsHiddenFunction *gi.Function
+var fileInfoSetIsHiddenFunction_Once sync.Once
+
+func fileInfoSetIsHiddenFunction_Set() error {
+	var err error
+	fileInfoSetIsHiddenFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetIsHiddenFunction, err = fileInfoStruct.InvokerNew("set_is_hidden")
+	})
+	return err
+}
+
+// SetIsHidden is a representation of the C type g_file_info_set_is_hidden.
+func (recv *FileInfo) SetIsHidden(isHidden bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(isHidden)
+
+	err := fileInfoSetIsHiddenFunction_Set()
+	if err == nil {
+		fileInfoSetIsHiddenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetIsSymlinkFunction *gi.Function
+var fileInfoSetIsSymlinkFunction_Once sync.Once
+
+func fileInfoSetIsSymlinkFunction_Set() error {
+	var err error
+	fileInfoSetIsSymlinkFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetIsSymlinkFunction, err = fileInfoStruct.InvokerNew("set_is_symlink")
+	})
+	return err
+}
+
+// SetIsSymlink is a representation of the C type g_file_info_set_is_symlink.
+func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(isSymlink)
+
+	err := fileInfoSetIsSymlinkFunction_Set()
+	if err == nil {
+		fileInfoSetIsSymlinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_modification_date_time' : parameter 'mtime' of type 'GLib.DateTime' not supported
+
+// UNSUPPORTED : C value 'g_file_info_set_modification_time' : parameter 'mtime' of type 'GLib.TimeVal' not supported
+
+var fileInfoSetNameFunction *gi.Function
+var fileInfoSetNameFunction_Once sync.Once
+
+func fileInfoSetNameFunction_Set() error {
+	var err error
+	fileInfoSetNameFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetNameFunction, err = fileInfoStruct.InvokerNew("set_name")
+	})
+	return err
+}
+
+// SetName is a representation of the C type g_file_info_set_name.
+func (recv *FileInfo) SetName(name string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	err := fileInfoSetNameFunction_Set()
+	if err == nil {
+		fileInfoSetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetSizeFunction *gi.Function
+var fileInfoSetSizeFunction_Once sync.Once
+
+func fileInfoSetSizeFunction_Set() error {
+	var err error
+	fileInfoSetSizeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetSizeFunction, err = fileInfoStruct.InvokerNew("set_size")
+	})
+	return err
+}
+
+// SetSize is a representation of the C type g_file_info_set_size.
+func (recv *FileInfo) SetSize(size int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt64(size)
+
+	err := fileInfoSetSizeFunction_Set()
+	if err == nil {
+		fileInfoSetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoSetSortOrderFunction *gi.Function
+var fileInfoSetSortOrderFunction_Once sync.Once
+
+func fileInfoSetSortOrderFunction_Set() error {
+	var err error
+	fileInfoSetSortOrderFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetSortOrderFunction, err = fileInfoStruct.InvokerNew("set_sort_order")
+	})
+	return err
+}
+
+// SetSortOrder is a representation of the C type g_file_info_set_sort_order.
+func (recv *FileInfo) SetSortOrder(sortOrder int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(sortOrder)
+
+	err := fileInfoSetSortOrderFunction_Set()
+	if err == nil {
+		fileInfoSetSortOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_file_info_set_symbolic_icon' : parameter 'icon' of type 'Icon' not supported
+
+var fileInfoSetSymlinkTargetFunction *gi.Function
+var fileInfoSetSymlinkTargetFunction_Once sync.Once
+
+func fileInfoSetSymlinkTargetFunction_Set() error {
+	var err error
+	fileInfoSetSymlinkTargetFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetSymlinkTargetFunction, err = fileInfoStruct.InvokerNew("set_symlink_target")
+	})
+	return err
+}
+
+// SetSymlinkTarget is a representation of the C type g_file_info_set_symlink_target.
+func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(symlinkTarget)
+
+	err := fileInfoSetSymlinkTargetFunction_Set()
+	if err == nil {
+		fileInfoSetSymlinkTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInfoUnsetAttributeMaskFunction *gi.Function
+var fileInfoUnsetAttributeMaskFunction_Once sync.Once
+
+func fileInfoUnsetAttributeMaskFunction_Set() error {
+	var err error
+	fileInfoUnsetAttributeMaskFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoUnsetAttributeMaskFunction, err = fileInfoStruct.InvokerNew("unset_attribute_mask")
+	})
+	return err
+}
+
+// UnsetAttributeMask is a representation of the C type g_file_info_unset_attribute_mask.
+func (recv *FileInfo) UnsetAttributeMask() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := fileInfoUnsetAttributeMaskFunction_Set()
+	if err == nil {
+		fileInfoUnsetAttributeMaskFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fileInputStreamStruct *gi.Struct
+var fileInputStreamStruct_Once sync.Once
+
+func fileInputStreamStruct_Set() error {
+	var err error
+	fileInputStreamStruct_Once.Do(func() {
+		fileInputStreamStruct, err = gi.StructNew("Gio", "FileInputStream")
+	})
+	return err
+}
+
+type FileInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'g_file_input_stream_query_info' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_input_stream_query_info_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_input_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// FileInputStreamStruct creates an uninitialised FileInputStream.
+func FileInputStreamStruct() *FileInputStream {
+	err := fileInputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileInputStream{native: fileInputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileInputStream)
+	return structGo
+}
+func finalizeFileInputStream(obj *FileInputStream) {
+	fileInputStreamStruct.Free(obj.native)
+}
+
+var fileMonitorStruct *gi.Struct
+var fileMonitorStruct_Once sync.Once
+
+func fileMonitorStruct_Set() error {
+	var err error
+	fileMonitorStruct_Once.Do(func() {
+		fileMonitorStruct, err = gi.StructNew("Gio", "FileMonitor")
+	})
+	return err
+}
+
+type FileMonitor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+var fileMonitorCancelFunction *gi.Function
+var fileMonitorCancelFunction_Once sync.Once
+
+func fileMonitorCancelFunction_Set() error {
+	var err error
+	fileMonitorCancelFunction_Once.Do(func() {
+		err = fileMonitorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorCancelFunction, err = fileMonitorStruct.InvokerNew("cancel")
+	})
+	return err
+}
+
+// Cancel is a representation of the C type g_file_monitor_cancel.
+func (recv *FileMonitor) Cancel() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileMonitorCancelFunction_Set()
+	if err == nil {
+		ret = fileMonitorCancelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_monitor_emit_event' : parameter 'child' of type 'File' not supported
+
+var fileMonitorIsCancelledFunction *gi.Function
+var fileMonitorIsCancelledFunction_Once sync.Once
+
+func fileMonitorIsCancelledFunction_Set() error {
+	var err error
+	fileMonitorIsCancelledFunction_Once.Do(func() {
+		err = fileMonitorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorIsCancelledFunction, err = fileMonitorStruct.InvokerNew("is_cancelled")
+	})
+	return err
+}
+
+// IsCancelled is a representation of the C type g_file_monitor_is_cancelled.
+func (recv *FileMonitor) IsCancelled() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileMonitorIsCancelledFunction_Set()
+	if err == nil {
+		ret = fileMonitorIsCancelledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileMonitorSetRateLimitFunction *gi.Function
+var fileMonitorSetRateLimitFunction_Once sync.Once
+
+func fileMonitorSetRateLimitFunction_Set() error {
+	var err error
+	fileMonitorSetRateLimitFunction_Once.Do(func() {
+		err = fileMonitorStruct_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorSetRateLimitFunction, err = fileMonitorStruct.InvokerNew("set_rate_limit")
+	})
+	return err
+}
+
+// SetRateLimit is a representation of the C type g_file_monitor_set_rate_limit.
+func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(limitMsecs)
+
+	err := fileMonitorSetRateLimitFunction_Set()
+	if err == nil {
+		fileMonitorSetRateLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// FileMonitorStruct creates an uninitialised FileMonitor.
+func FileMonitorStruct() *FileMonitor {
+	err := fileMonitorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileMonitor{native: fileMonitorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileMonitor)
+	return structGo
+}
+func finalizeFileMonitor(obj *FileMonitor) {
+	fileMonitorStruct.Free(obj.native)
+}
+
+var fileOutputStreamStruct *gi.Struct
+var fileOutputStreamStruct_Once sync.Once
+
+func fileOutputStreamStruct_Set() error {
+	var err error
+	fileOutputStreamStruct_Once.Do(func() {
+		fileOutputStreamStruct, err = gi.StructNew("Gio", "FileOutputStream")
+	})
+	return err
+}
+
+type FileOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'OutputStream'
+
+var fileOutputStreamGetEtagFunction *gi.Function
+var fileOutputStreamGetEtagFunction_Once sync.Once
+
+func fileOutputStreamGetEtagFunction_Set() error {
+	var err error
+	fileOutputStreamGetEtagFunction_Once.Do(func() {
+		err = fileOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		fileOutputStreamGetEtagFunction, err = fileOutputStreamStruct.InvokerNew("get_etag")
+	})
+	return err
+}
+
+// GetEtag is a representation of the C type g_file_output_stream_get_etag.
+func (recv *FileOutputStream) GetEtag() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fileOutputStreamGetEtagFunction_Set()
+	if err == nil {
+		ret = fileOutputStreamGetEtagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_output_stream_query_info' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_output_stream_query_info_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_file_output_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// FileOutputStreamStruct creates an uninitialised FileOutputStream.
+func FileOutputStreamStruct() *FileOutputStream {
+	err := fileOutputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FileOutputStream{native: fileOutputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFileOutputStream)
+	return structGo
+}
+func finalizeFileOutputStream(obj *FileOutputStream) {
+	fileOutputStreamStruct.Free(obj.native)
+}
+
+var filenameCompleterStruct *gi.Struct
+var filenameCompleterStruct_Once sync.Once
+
+func filenameCompleterStruct_Set() error {
+	var err error
+	filenameCompleterStruct_Once.Do(func() {
+		filenameCompleterStruct, err = gi.StructNew("Gio", "FilenameCompleter")
+	})
+	return err
+}
+
+type FilenameCompleter struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_filename_completer_new' : return type 'FilenameCompleter' not supported
+
+var filenameCompleterGetCompletionSuffixFunction *gi.Function
+var filenameCompleterGetCompletionSuffixFunction_Once sync.Once
+
+func filenameCompleterGetCompletionSuffixFunction_Set() error {
+	var err error
+	filenameCompleterGetCompletionSuffixFunction_Once.Do(func() {
+		err = filenameCompleterStruct_Set()
+		if err != nil {
+			return
+		}
+		filenameCompleterGetCompletionSuffixFunction, err = filenameCompleterStruct.InvokerNew("get_completion_suffix")
+	})
+	return err
+}
+
+// GetCompletionSuffix is a representation of the C type g_filename_completer_get_completion_suffix.
+func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(initialText)
+
+	var ret gi.Argument
+
+	err := filenameCompleterGetCompletionSuffixFunction_Set()
+	if err == nil {
+		ret = filenameCompleterGetCompletionSuffixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var filenameCompleterGetCompletionsFunction *gi.Function
+var filenameCompleterGetCompletionsFunction_Once sync.Once
+
+func filenameCompleterGetCompletionsFunction_Set() error {
+	var err error
+	filenameCompleterGetCompletionsFunction_Once.Do(func() {
+		err = filenameCompleterStruct_Set()
+		if err != nil {
+			return
+		}
+		filenameCompleterGetCompletionsFunction, err = filenameCompleterStruct.InvokerNew("get_completions")
+	})
+	return err
+}
+
+// GetCompletions is a representation of the C type g_filename_completer_get_completions.
+func (recv *FilenameCompleter) GetCompletions(initialText string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(initialText)
+
+	err := filenameCompleterGetCompletionsFunction_Set()
+	if err == nil {
+		filenameCompleterGetCompletionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var filenameCompleterSetDirsOnlyFunction *gi.Function
+var filenameCompleterSetDirsOnlyFunction_Once sync.Once
+
+func filenameCompleterSetDirsOnlyFunction_Set() error {
+	var err error
+	filenameCompleterSetDirsOnlyFunction_Once.Do(func() {
+		err = filenameCompleterStruct_Set()
+		if err != nil {
+			return
+		}
+		filenameCompleterSetDirsOnlyFunction, err = filenameCompleterStruct.InvokerNew("set_dirs_only")
+	})
+	return err
+}
+
+// SetDirsOnly is a representation of the C type g_filename_completer_set_dirs_only.
+func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(dirsOnly)
+
+	err := filenameCompleterSetDirsOnlyFunction_Set()
+	if err == nil {
+		filenameCompleterSetDirsOnlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var filterInputStreamStruct *gi.Struct
+var filterInputStreamStruct_Once sync.Once
+
+func filterInputStreamStruct_Set() error {
+	var err error
+	filterInputStreamStruct_Once.Do(func() {
+		filterInputStreamStruct, err = gi.StructNew("Gio", "FilterInputStream")
+	})
+	return err
+}
+
+type FilterInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'base_stream' : for field getter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'base_stream' : for field setter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'g_filter_input_stream_get_base_stream' : return type 'InputStream' not supported
+
+var filterInputStreamGetCloseBaseStreamFunction *gi.Function
+var filterInputStreamGetCloseBaseStreamFunction_Once sync.Once
+
+func filterInputStreamGetCloseBaseStreamFunction_Set() error {
+	var err error
+	filterInputStreamGetCloseBaseStreamFunction_Once.Do(func() {
+		err = filterInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		filterInputStreamGetCloseBaseStreamFunction, err = filterInputStreamStruct.InvokerNew("get_close_base_stream")
+	})
+	return err
+}
+
+// GetCloseBaseStream is a representation of the C type g_filter_input_stream_get_close_base_stream.
+func (recv *FilterInputStream) GetCloseBaseStream() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := filterInputStreamGetCloseBaseStreamFunction_Set()
+	if err == nil {
+		ret = filterInputStreamGetCloseBaseStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var filterInputStreamSetCloseBaseStreamFunction *gi.Function
+var filterInputStreamSetCloseBaseStreamFunction_Once sync.Once
+
+func filterInputStreamSetCloseBaseStreamFunction_Set() error {
+	var err error
+	filterInputStreamSetCloseBaseStreamFunction_Once.Do(func() {
+		err = filterInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		filterInputStreamSetCloseBaseStreamFunction, err = filterInputStreamStruct.InvokerNew("set_close_base_stream")
+	})
+	return err
+}
+
+// SetCloseBaseStream is a representation of the C type g_filter_input_stream_set_close_base_stream.
+func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(closeBase)
+
+	err := filterInputStreamSetCloseBaseStreamFunction_Set()
+	if err == nil {
+		filterInputStreamSetCloseBaseStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// FilterInputStreamStruct creates an uninitialised FilterInputStream.
+func FilterInputStreamStruct() *FilterInputStream {
+	err := filterInputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilterInputStream{native: filterInputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilterInputStream)
+	return structGo
+}
+func finalizeFilterInputStream(obj *FilterInputStream) {
+	filterInputStreamStruct.Free(obj.native)
+}
+
+var filterOutputStreamStruct *gi.Struct
+var filterOutputStreamStruct_Once sync.Once
+
+func filterOutputStreamStruct_Set() error {
+	var err error
+	filterOutputStreamStruct_Once.Do(func() {
+		filterOutputStreamStruct, err = gi.StructNew("Gio", "FilterOutputStream")
+	})
+	return err
+}
+
+type FilterOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'base_stream' : for field getter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'base_stream' : for field setter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'g_filter_output_stream_get_base_stream' : return type 'OutputStream' not supported
+
+var filterOutputStreamGetCloseBaseStreamFunction *gi.Function
+var filterOutputStreamGetCloseBaseStreamFunction_Once sync.Once
+
+func filterOutputStreamGetCloseBaseStreamFunction_Set() error {
+	var err error
+	filterOutputStreamGetCloseBaseStreamFunction_Once.Do(func() {
+		err = filterOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		filterOutputStreamGetCloseBaseStreamFunction, err = filterOutputStreamStruct.InvokerNew("get_close_base_stream")
+	})
+	return err
+}
+
+// GetCloseBaseStream is a representation of the C type g_filter_output_stream_get_close_base_stream.
+func (recv *FilterOutputStream) GetCloseBaseStream() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := filterOutputStreamGetCloseBaseStreamFunction_Set()
+	if err == nil {
+		ret = filterOutputStreamGetCloseBaseStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var filterOutputStreamSetCloseBaseStreamFunction *gi.Function
+var filterOutputStreamSetCloseBaseStreamFunction_Once sync.Once
+
+func filterOutputStreamSetCloseBaseStreamFunction_Set() error {
+	var err error
+	filterOutputStreamSetCloseBaseStreamFunction_Once.Do(func() {
+		err = filterOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		filterOutputStreamSetCloseBaseStreamFunction, err = filterOutputStreamStruct.InvokerNew("set_close_base_stream")
+	})
+	return err
+}
+
+// SetCloseBaseStream is a representation of the C type g_filter_output_stream_set_close_base_stream.
+func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(closeBase)
+
+	err := filterOutputStreamSetCloseBaseStreamFunction_Set()
+	if err == nil {
+		filterOutputStreamSetCloseBaseStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// FilterOutputStreamStruct creates an uninitialised FilterOutputStream.
+func FilterOutputStreamStruct() *FilterOutputStream {
+	err := filterOutputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &FilterOutputStream{native: filterOutputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeFilterOutputStream)
+	return structGo
+}
+func finalizeFilterOutputStream(obj *FilterOutputStream) {
+	filterOutputStreamStruct.Free(obj.native)
+}
+
+var iOModuleStruct *gi.Struct
+var iOModuleStruct_Once sync.Once
+
+func iOModuleStruct_Set() error {
+	var err error
+	iOModuleStruct_Once.Do(func() {
+		iOModuleStruct, err = gi.StructNew("Gio", "IOModule")
+	})
+	return err
+}
+
+type IOModule struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_io_module_new' : return type 'IOModule' not supported
+
+var iOModuleLoadFunction *gi.Function
+var iOModuleLoadFunction_Once sync.Once
+
+func iOModuleLoadFunction_Set() error {
+	var err error
+	iOModuleLoadFunction_Once.Do(func() {
+		err = iOModuleStruct_Set()
+		if err != nil {
+			return
+		}
+		iOModuleLoadFunction, err = iOModuleStruct.InvokerNew("load")
+	})
+	return err
+}
+
+// Load is a representation of the C type g_io_module_load.
+func (recv *IOModule) Load() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := iOModuleLoadFunction_Set()
+	if err == nil {
+		iOModuleLoadFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var iOModuleUnloadFunction *gi.Function
+var iOModuleUnloadFunction_Once sync.Once
+
+func iOModuleUnloadFunction_Set() error {
+	var err error
+	iOModuleUnloadFunction_Once.Do(func() {
+		err = iOModuleStruct_Set()
+		if err != nil {
+			return
+		}
+		iOModuleUnloadFunction, err = iOModuleStruct.InvokerNew("unload")
+	})
+	return err
+}
+
+// Unload is a representation of the C type g_io_module_unload.
+func (recv *IOModule) Unload() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := iOModuleUnloadFunction_Set()
+	if err == nil {
+		iOModuleUnloadFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var iOStreamStruct *gi.Struct
+var iOStreamStruct_Once sync.Once
+
+func iOStreamStruct_Set() error {
+	var err error
+	iOStreamStruct_Once.Do(func() {
+		iOStreamStruct, err = gi.StructNew("Gio", "IOStream")
+	})
+	return err
+}
+
+type IOStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+var iOStreamClearPendingFunction *gi.Function
+var iOStreamClearPendingFunction_Once sync.Once
+
+func iOStreamClearPendingFunction_Set() error {
+	var err error
+	iOStreamClearPendingFunction_Once.Do(func() {
+		err = iOStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		iOStreamClearPendingFunction, err = iOStreamStruct.InvokerNew("clear_pending")
+	})
+	return err
+}
+
+// ClearPending is a representation of the C type g_io_stream_clear_pending.
+func (recv *IOStream) ClearPending() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := iOStreamClearPendingFunction_Set()
+	if err == nil {
+		iOStreamClearPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_io_stream_close' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_io_stream_close_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_io_stream_close_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_io_stream_get_input_stream' : return type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_io_stream_get_output_stream' : return type 'OutputStream' not supported
+
+var iOStreamHasPendingFunction *gi.Function
+var iOStreamHasPendingFunction_Once sync.Once
+
+func iOStreamHasPendingFunction_Set() error {
+	var err error
+	iOStreamHasPendingFunction_Once.Do(func() {
+		err = iOStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		iOStreamHasPendingFunction, err = iOStreamStruct.InvokerNew("has_pending")
+	})
+	return err
+}
+
+// HasPending is a representation of the C type g_io_stream_has_pending.
+func (recv *IOStream) HasPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOStreamHasPendingFunction_Set()
+	if err == nil {
+		ret = iOStreamHasPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var iOStreamIsClosedFunction *gi.Function
+var iOStreamIsClosedFunction_Once sync.Once
+
+func iOStreamIsClosedFunction_Set() error {
+	var err error
+	iOStreamIsClosedFunction_Once.Do(func() {
+		err = iOStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		iOStreamIsClosedFunction, err = iOStreamStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_io_stream_is_closed.
+func (recv *IOStream) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOStreamIsClosedFunction_Set()
+	if err == nil {
+		ret = iOStreamIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var iOStreamSetPendingFunction *gi.Function
+var iOStreamSetPendingFunction_Once sync.Once
+
+func iOStreamSetPendingFunction_Set() error {
+	var err error
+	iOStreamSetPendingFunction_Once.Do(func() {
+		err = iOStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		iOStreamSetPendingFunction, err = iOStreamStruct.InvokerNew("set_pending")
+	})
+	return err
+}
+
+// SetPending is a representation of the C type g_io_stream_set_pending.
+func (recv *IOStream) SetPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOStreamSetPendingFunction_Set()
+	if err == nil {
+		ret = iOStreamSetPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_io_stream_splice_async' : parameter 'stream2' of type 'IOStream' not supported
+
+// IOStreamStruct creates an uninitialised IOStream.
+func IOStreamStruct() *IOStream {
+	err := iOStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &IOStream{native: iOStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeIOStream)
+	return structGo
+}
+func finalizeIOStream(obj *IOStream) {
+	iOStreamStruct.Free(obj.native)
+}
+
+var inetAddressStruct *gi.Struct
+var inetAddressStruct_Once sync.Once
+
+func inetAddressStruct_Set() error {
+	var err error
+	inetAddressStruct_Once.Do(func() {
+		inetAddressStruct, err = gi.StructNew("Gio", "InetAddress")
+	})
+	return err
+}
+
+type InetAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_inet_address_new_any' : parameter 'family' of type 'SocketFamily' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_new_from_bytes' : parameter 'bytes' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_new_from_string' : return type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_new_loopback' : parameter 'family' of type 'SocketFamily' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_equal' : parameter 'other_address' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_get_family' : return type 'SocketFamily' not supported
+
+var inetAddressGetIsAnyFunction *gi.Function
+var inetAddressGetIsAnyFunction_Once sync.Once
+
+func inetAddressGetIsAnyFunction_Set() error {
+	var err error
+	inetAddressGetIsAnyFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsAnyFunction, err = inetAddressStruct.InvokerNew("get_is_any")
+	})
+	return err
+}
+
+// GetIsAny is a representation of the C type g_inet_address_get_is_any.
+func (recv *InetAddress) GetIsAny() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsAnyFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsAnyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsLinkLocalFunction *gi.Function
+var inetAddressGetIsLinkLocalFunction_Once sync.Once
+
+func inetAddressGetIsLinkLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsLinkLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsLinkLocalFunction, err = inetAddressStruct.InvokerNew("get_is_link_local")
+	})
+	return err
+}
+
+// GetIsLinkLocal is a representation of the C type g_inet_address_get_is_link_local.
+func (recv *InetAddress) GetIsLinkLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsLinkLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsLinkLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsLoopbackFunction *gi.Function
+var inetAddressGetIsLoopbackFunction_Once sync.Once
+
+func inetAddressGetIsLoopbackFunction_Set() error {
+	var err error
+	inetAddressGetIsLoopbackFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsLoopbackFunction, err = inetAddressStruct.InvokerNew("get_is_loopback")
+	})
+	return err
+}
+
+// GetIsLoopback is a representation of the C type g_inet_address_get_is_loopback.
+func (recv *InetAddress) GetIsLoopback() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsLoopbackFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsLoopbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMcGlobalFunction *gi.Function
+var inetAddressGetIsMcGlobalFunction_Once sync.Once
+
+func inetAddressGetIsMcGlobalFunction_Set() error {
+	var err error
+	inetAddressGetIsMcGlobalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMcGlobalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_global")
+	})
+	return err
+}
+
+// GetIsMcGlobal is a representation of the C type g_inet_address_get_is_mc_global.
+func (recv *InetAddress) GetIsMcGlobal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMcGlobalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMcGlobalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMcLinkLocalFunction *gi.Function
+var inetAddressGetIsMcLinkLocalFunction_Once sync.Once
+
+func inetAddressGetIsMcLinkLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsMcLinkLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMcLinkLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_link_local")
+	})
+	return err
+}
+
+// GetIsMcLinkLocal is a representation of the C type g_inet_address_get_is_mc_link_local.
+func (recv *InetAddress) GetIsMcLinkLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMcLinkLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMcLinkLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMcNodeLocalFunction *gi.Function
+var inetAddressGetIsMcNodeLocalFunction_Once sync.Once
+
+func inetAddressGetIsMcNodeLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsMcNodeLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMcNodeLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_node_local")
+	})
+	return err
+}
+
+// GetIsMcNodeLocal is a representation of the C type g_inet_address_get_is_mc_node_local.
+func (recv *InetAddress) GetIsMcNodeLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMcNodeLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMcNodeLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMcOrgLocalFunction *gi.Function
+var inetAddressGetIsMcOrgLocalFunction_Once sync.Once
+
+func inetAddressGetIsMcOrgLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsMcOrgLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMcOrgLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_org_local")
+	})
+	return err
+}
+
+// GetIsMcOrgLocal is a representation of the C type g_inet_address_get_is_mc_org_local.
+func (recv *InetAddress) GetIsMcOrgLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMcOrgLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMcOrgLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMcSiteLocalFunction *gi.Function
+var inetAddressGetIsMcSiteLocalFunction_Once sync.Once
+
+func inetAddressGetIsMcSiteLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsMcSiteLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMcSiteLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_site_local")
+	})
+	return err
+}
+
+// GetIsMcSiteLocal is a representation of the C type g_inet_address_get_is_mc_site_local.
+func (recv *InetAddress) GetIsMcSiteLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMcSiteLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMcSiteLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsMulticastFunction *gi.Function
+var inetAddressGetIsMulticastFunction_Once sync.Once
+
+func inetAddressGetIsMulticastFunction_Set() error {
+	var err error
+	inetAddressGetIsMulticastFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsMulticastFunction, err = inetAddressStruct.InvokerNew("get_is_multicast")
+	})
+	return err
+}
+
+// GetIsMulticast is a representation of the C type g_inet_address_get_is_multicast.
+func (recv *InetAddress) GetIsMulticast() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsMulticastFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsMulticastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetIsSiteLocalFunction *gi.Function
+var inetAddressGetIsSiteLocalFunction_Once sync.Once
+
+func inetAddressGetIsSiteLocalFunction_Set() error {
+	var err error
+	inetAddressGetIsSiteLocalFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetIsSiteLocalFunction, err = inetAddressStruct.InvokerNew("get_is_site_local")
+	})
+	return err
+}
+
+// GetIsSiteLocal is a representation of the C type g_inet_address_get_is_site_local.
+func (recv *InetAddress) GetIsSiteLocal() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetIsSiteLocalFunction_Set()
+	if err == nil {
+		ret = inetAddressGetIsSiteLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inetAddressGetNativeSizeFunction *gi.Function
+var inetAddressGetNativeSizeFunction_Once sync.Once
+
+func inetAddressGetNativeSizeFunction_Set() error {
+	var err error
+	inetAddressGetNativeSizeFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetNativeSizeFunction, err = inetAddressStruct.InvokerNew("get_native_size")
+	})
+	return err
+}
+
+// GetNativeSize is a representation of the C type g_inet_address_get_native_size.
+func (recv *InetAddress) GetNativeSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetNativeSizeFunction_Set()
+	if err == nil {
+		ret = inetAddressGetNativeSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var inetAddressToBytesFunction *gi.Function
+var inetAddressToBytesFunction_Once sync.Once
+
+func inetAddressToBytesFunction_Set() error {
+	var err error
+	inetAddressToBytesFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressToBytesFunction, err = inetAddressStruct.InvokerNew("to_bytes")
+	})
+	return err
+}
+
+// ToBytes is a representation of the C type g_inet_address_to_bytes.
+func (recv *InetAddress) ToBytes() uint8 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressToBytesFunction_Set()
+	if err == nil {
+		ret = inetAddressToBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo
+}
+
+var inetAddressToStringFunction *gi.Function
+var inetAddressToStringFunction_Once sync.Once
+
+func inetAddressToStringFunction_Set() error {
+	var err error
+	inetAddressToStringFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressToStringFunction, err = inetAddressStruct.InvokerNew("to_string")
+	})
+	return err
+}
+
+// ToString is a representation of the C type g_inet_address_to_string.
+func (recv *InetAddress) ToString() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressToStringFunction_Set()
+	if err == nil {
+		ret = inetAddressToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var inetAddressMaskStruct *gi.Struct
+var inetAddressMaskStruct_Once sync.Once
+
+func inetAddressMaskStruct_Set() error {
+	var err error
+	inetAddressMaskStruct_Once.Do(func() {
+		inetAddressMaskStruct, err = gi.StructNew("Gio", "InetAddressMask")
+	})
+	return err
+}
+
+type InetAddressMask struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_inet_address_mask_new' : parameter 'addr' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_mask_new_from_string' : return type 'InetAddressMask' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_mask_equal' : parameter 'mask2' of type 'InetAddressMask' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_mask_get_address' : return type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_address_mask_get_family' : return type 'SocketFamily' not supported
+
+var inetAddressMaskGetLengthFunction *gi.Function
+var inetAddressMaskGetLengthFunction_Once sync.Once
+
+func inetAddressMaskGetLengthFunction_Set() error {
+	var err error
+	inetAddressMaskGetLengthFunction_Once.Do(func() {
+		err = inetAddressMaskStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressMaskGetLengthFunction, err = inetAddressMaskStruct.InvokerNew("get_length")
+	})
+	return err
+}
+
+// GetLength is a representation of the C type g_inet_address_mask_get_length.
+func (recv *InetAddressMask) GetLength() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressMaskGetLengthFunction_Set()
+	if err == nil {
+		ret = inetAddressMaskGetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_inet_address_mask_matches' : parameter 'address' of type 'InetAddress' not supported
+
+var inetAddressMaskToStringFunction *gi.Function
+var inetAddressMaskToStringFunction_Once sync.Once
+
+func inetAddressMaskToStringFunction_Set() error {
+	var err error
+	inetAddressMaskToStringFunction_Once.Do(func() {
+		err = inetAddressMaskStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressMaskToStringFunction, err = inetAddressMaskStruct.InvokerNew("to_string")
+	})
+	return err
+}
+
+// ToString is a representation of the C type g_inet_address_mask_to_string.
+func (recv *InetAddressMask) ToString() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetAddressMaskToStringFunction_Set()
+	if err == nil {
+		ret = inetAddressMaskToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var inetSocketAddressStruct *gi.Struct
+var inetSocketAddressStruct_Once sync.Once
+
+func inetSocketAddressStruct_Set() error {
+	var err error
+	inetSocketAddressStruct_Once.Do(func() {
+		inetSocketAddressStruct, err = gi.StructNew("Gio", "InetSocketAddress")
+	})
+	return err
+}
+
+type InetSocketAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'g_inet_socket_address_new' : parameter 'address' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_socket_address_new_from_string' : return type 'InetSocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_inet_socket_address_get_address' : return type 'InetAddress' not supported
+
+var inetSocketAddressGetFlowinfoFunction *gi.Function
+var inetSocketAddressGetFlowinfoFunction_Once sync.Once
+
+func inetSocketAddressGetFlowinfoFunction_Set() error {
+	var err error
+	inetSocketAddressGetFlowinfoFunction_Once.Do(func() {
+		err = inetSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetSocketAddressGetFlowinfoFunction, err = inetSocketAddressStruct.InvokerNew("get_flowinfo")
+	})
+	return err
+}
+
+// GetFlowinfo is a representation of the C type g_inet_socket_address_get_flowinfo.
+func (recv *InetSocketAddress) GetFlowinfo() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetSocketAddressGetFlowinfoFunction_Set()
+	if err == nil {
+		ret = inetSocketAddressGetFlowinfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var inetSocketAddressGetPortFunction *gi.Function
+var inetSocketAddressGetPortFunction_Once sync.Once
+
+func inetSocketAddressGetPortFunction_Set() error {
+	var err error
+	inetSocketAddressGetPortFunction_Once.Do(func() {
+		err = inetSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetSocketAddressGetPortFunction, err = inetSocketAddressStruct.InvokerNew("get_port")
+	})
+	return err
+}
+
+// GetPort is a representation of the C type g_inet_socket_address_get_port.
+func (recv *InetSocketAddress) GetPort() uint16 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetSocketAddressGetPortFunction_Set()
+	if err == nil {
+		ret = inetSocketAddressGetPortFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var inetSocketAddressGetScopeIdFunction *gi.Function
+var inetSocketAddressGetScopeIdFunction_Once sync.Once
+
+func inetSocketAddressGetScopeIdFunction_Set() error {
+	var err error
+	inetSocketAddressGetScopeIdFunction_Once.Do(func() {
+		err = inetSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetSocketAddressGetScopeIdFunction, err = inetSocketAddressStruct.InvokerNew("get_scope_id")
+	})
+	return err
+}
+
+// GetScopeId is a representation of the C type g_inet_socket_address_get_scope_id.
+func (recv *InetSocketAddress) GetScopeId() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inetSocketAddressGetScopeIdFunction_Set()
+	if err == nil {
+		ret = inetSocketAddressGetScopeIdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var inputStreamStruct *gi.Struct
+var inputStreamStruct_Once sync.Once
+
+func inputStreamStruct_Set() error {
+	var err error
+	inputStreamStruct_Once.Do(func() {
+		inputStreamStruct, err = gi.StructNew("Gio", "InputStream")
+	})
+	return err
+}
+
+type InputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+var inputStreamClearPendingFunction *gi.Function
+var inputStreamClearPendingFunction_Once sync.Once
+
+func inputStreamClearPendingFunction_Set() error {
+	var err error
+	inputStreamClearPendingFunction_Once.Do(func() {
+		err = inputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		inputStreamClearPendingFunction, err = inputStreamStruct.InvokerNew("clear_pending")
+	})
+	return err
+}
+
+// ClearPending is a representation of the C type g_input_stream_clear_pending.
+func (recv *InputStream) ClearPending() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := inputStreamClearPendingFunction_Set()
+	if err == nil {
+		inputStreamClearPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_input_stream_close' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_close_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_close_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var inputStreamHasPendingFunction *gi.Function
+var inputStreamHasPendingFunction_Once sync.Once
+
+func inputStreamHasPendingFunction_Set() error {
+	var err error
+	inputStreamHasPendingFunction_Once.Do(func() {
+		err = inputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		inputStreamHasPendingFunction, err = inputStreamStruct.InvokerNew("has_pending")
+	})
+	return err
+}
+
+// HasPending is a representation of the C type g_input_stream_has_pending.
+func (recv *InputStream) HasPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inputStreamHasPendingFunction_Set()
+	if err == nil {
+		ret = inputStreamHasPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var inputStreamIsClosedFunction *gi.Function
+var inputStreamIsClosedFunction_Once sync.Once
+
+func inputStreamIsClosedFunction_Set() error {
+	var err error
+	inputStreamIsClosedFunction_Once.Do(func() {
+		err = inputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		inputStreamIsClosedFunction, err = inputStreamStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_input_stream_is_closed.
+func (recv *InputStream) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inputStreamIsClosedFunction_Set()
+	if err == nil {
+		ret = inputStreamIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_input_stream_read' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_all' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_all_async' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_all_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_async' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_bytes' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_bytes_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_bytes_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_read_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var inputStreamSetPendingFunction *gi.Function
+var inputStreamSetPendingFunction_Once sync.Once
+
+func inputStreamSetPendingFunction_Set() error {
+	var err error
+	inputStreamSetPendingFunction_Once.Do(func() {
+		err = inputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		inputStreamSetPendingFunction, err = inputStreamStruct.InvokerNew("set_pending")
+	})
+	return err
+}
+
+// SetPending is a representation of the C type g_input_stream_set_pending.
+func (recv *InputStream) SetPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := inputStreamSetPendingFunction_Set()
+	if err == nil {
+		ret = inputStreamSetPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_input_stream_skip' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_skip_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_input_stream_skip_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// InputStreamStruct creates an uninitialised InputStream.
+func InputStreamStruct() *InputStream {
+	err := inputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &InputStream{native: inputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeInputStream)
+	return structGo
+}
+func finalizeInputStream(obj *InputStream) {
+	inputStreamStruct.Free(obj.native)
+}
+
+var listStoreStruct *gi.Struct
+var listStoreStruct_Once sync.Once
+
+func listStoreStruct_Set() error {
+	var err error
+	listStoreStruct_Once.Do(func() {
+		listStoreStruct, err = gi.StructNew("Gio", "ListStore")
+	})
+	return err
+}
+
+type ListStore struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_list_store_new' : parameter 'item_type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'g_list_store_append' : parameter 'item' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_list_store_insert' : parameter 'item' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_list_store_insert_sorted' : parameter 'item' of type 'GObject.Object' not supported
+
+var listStoreRemoveFunction *gi.Function
+var listStoreRemoveFunction_Once sync.Once
+
+func listStoreRemoveFunction_Set() error {
+	var err error
+	listStoreRemoveFunction_Once.Do(func() {
+		err = listStoreStruct_Set()
+		if err != nil {
+			return
+		}
+		listStoreRemoveFunction, err = listStoreStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_list_store_remove.
+func (recv *ListStore) Remove(position uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(position)
+
+	err := listStoreRemoveFunction_Set()
+	if err == nil {
+		listStoreRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var listStoreRemoveAllFunction *gi.Function
+var listStoreRemoveAllFunction_Once sync.Once
+
+func listStoreRemoveAllFunction_Set() error {
+	var err error
+	listStoreRemoveAllFunction_Once.Do(func() {
+		err = listStoreStruct_Set()
+		if err != nil {
+			return
+		}
+		listStoreRemoveAllFunction, err = listStoreStruct.InvokerNew("remove_all")
+	})
+	return err
+}
+
+// RemoveAll is a representation of the C type g_list_store_remove_all.
+func (recv *ListStore) RemoveAll() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := listStoreRemoveAllFunction_Set()
+	if err == nil {
+		listStoreRemoveAllFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_list_store_sort' : parameter 'compare_func' of type 'GLib.CompareDataFunc' not supported
+
+// UNSUPPORTED : C value 'g_list_store_splice' : parameter 'additions' of type 'nil' not supported
+
+var memoryInputStreamStruct *gi.Struct
+var memoryInputStreamStruct_Once sync.Once
+
+func memoryInputStreamStruct_Set() error {
+	var err error
+	memoryInputStreamStruct_Once.Do(func() {
+		memoryInputStreamStruct, err = gi.StructNew("Gio", "MemoryInputStream")
+	})
+	return err
+}
+
+type MemoryInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'g_memory_input_stream_new' : return type 'MemoryInputStream' not supported
+
+// UNSUPPORTED : C value 'g_memory_input_stream_new_from_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_memory_input_stream_new_from_data' : parameter 'data' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_memory_input_stream_add_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_memory_input_stream_add_data' : parameter 'data' of type 'nil' not supported
+
+var memoryOutputStreamStruct *gi.Struct
+var memoryOutputStreamStruct_Once sync.Once
+
+func memoryOutputStreamStruct_Set() error {
+	var err error
+	memoryOutputStreamStruct_Once.Do(func() {
+		memoryOutputStreamStruct, err = gi.StructNew("Gio", "MemoryOutputStream")
+	})
+	return err
+}
+
+type MemoryOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'g_memory_output_stream_new' : parameter 'data' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_memory_output_stream_new_resizable' : return type 'MemoryOutputStream' not supported
+
+// UNSUPPORTED : C value 'g_memory_output_stream_get_data' : return type 'gpointer' not supported
+
+var memoryOutputStreamGetDataSizeFunction *gi.Function
+var memoryOutputStreamGetDataSizeFunction_Once sync.Once
+
+func memoryOutputStreamGetDataSizeFunction_Set() error {
+	var err error
+	memoryOutputStreamGetDataSizeFunction_Once.Do(func() {
+		err = memoryOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		memoryOutputStreamGetDataSizeFunction, err = memoryOutputStreamStruct.InvokerNew("get_data_size")
+	})
+	return err
+}
+
+// GetDataSize is a representation of the C type g_memory_output_stream_get_data_size.
+func (recv *MemoryOutputStream) GetDataSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := memoryOutputStreamGetDataSizeFunction_Set()
+	if err == nil {
+		ret = memoryOutputStreamGetDataSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var memoryOutputStreamGetSizeFunction *gi.Function
+var memoryOutputStreamGetSizeFunction_Once sync.Once
+
+func memoryOutputStreamGetSizeFunction_Set() error {
+	var err error
+	memoryOutputStreamGetSizeFunction_Once.Do(func() {
+		err = memoryOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		memoryOutputStreamGetSizeFunction, err = memoryOutputStreamStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type g_memory_output_stream_get_size.
+func (recv *MemoryOutputStream) GetSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := memoryOutputStreamGetSizeFunction_Set()
+	if err == nil {
+		ret = memoryOutputStreamGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_memory_output_stream_steal_as_bytes' : return type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_memory_output_stream_steal_data' : return type 'gpointer' not supported
+
+var menuStruct *gi.Struct
+var menuStruct_Once sync.Once
+
+func menuStruct_Set() error {
+	var err error
+	menuStruct_Once.Do(func() {
+		menuStruct, err = gi.StructNew("Gio", "Menu")
+	})
+	return err
+}
+
+type Menu struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_menu_new' : return type 'Menu' not supported
+
+var menuAppendFunction *gi.Function
+var menuAppendFunction_Once sync.Once
+
+func menuAppendFunction_Set() error {
+	var err error
+	menuAppendFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuAppendFunction, err = menuStruct.InvokerNew("append")
+	})
+	return err
+}
+
+// Append is a representation of the C type g_menu_append.
+func (recv *Menu) Append(label string, detailedAction string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(label)
+	inArgs[2].SetString(detailedAction)
+
+	err := menuAppendFunction_Set()
+	if err == nil {
+		menuAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_append_item' : parameter 'item' of type 'MenuItem' not supported
+
+// UNSUPPORTED : C value 'g_menu_append_section' : parameter 'section' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_append_submenu' : parameter 'submenu' of type 'MenuModel' not supported
+
+var menuFreezeFunction *gi.Function
+var menuFreezeFunction_Once sync.Once
+
+func menuFreezeFunction_Set() error {
+	var err error
+	menuFreezeFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuFreezeFunction, err = menuStruct.InvokerNew("freeze")
+	})
+	return err
+}
+
+// Freeze is a representation of the C type g_menu_freeze.
+func (recv *Menu) Freeze() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := menuFreezeFunction_Set()
+	if err == nil {
+		menuFreezeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var menuInsertFunction *gi.Function
+var menuInsertFunction_Once sync.Once
+
+func menuInsertFunction_Set() error {
+	var err error
+	menuInsertFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuInsertFunction, err = menuStruct.InvokerNew("insert")
+	})
+	return err
+}
+
+// Insert is a representation of the C type g_menu_insert.
+func (recv *Menu) Insert(position int32, label string, detailedAction string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(position)
+	inArgs[2].SetString(label)
+	inArgs[3].SetString(detailedAction)
+
+	err := menuInsertFunction_Set()
+	if err == nil {
+		menuInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_insert_item' : parameter 'item' of type 'MenuItem' not supported
+
+// UNSUPPORTED : C value 'g_menu_insert_section' : parameter 'section' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_insert_submenu' : parameter 'submenu' of type 'MenuModel' not supported
+
+var menuPrependFunction *gi.Function
+var menuPrependFunction_Once sync.Once
+
+func menuPrependFunction_Set() error {
+	var err error
+	menuPrependFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuPrependFunction, err = menuStruct.InvokerNew("prepend")
+	})
+	return err
+}
+
+// Prepend is a representation of the C type g_menu_prepend.
+func (recv *Menu) Prepend(label string, detailedAction string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(label)
+	inArgs[2].SetString(detailedAction)
+
+	err := menuPrependFunction_Set()
+	if err == nil {
+		menuPrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_prepend_item' : parameter 'item' of type 'MenuItem' not supported
+
+// UNSUPPORTED : C value 'g_menu_prepend_section' : parameter 'section' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_prepend_submenu' : parameter 'submenu' of type 'MenuModel' not supported
+
+var menuRemoveFunction *gi.Function
+var menuRemoveFunction_Once sync.Once
+
+func menuRemoveFunction_Set() error {
+	var err error
+	menuRemoveFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuRemoveFunction, err = menuStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_menu_remove.
+func (recv *Menu) Remove(position int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(position)
+
+	err := menuRemoveFunction_Set()
+	if err == nil {
+		menuRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var menuRemoveAllFunction *gi.Function
+var menuRemoveAllFunction_Once sync.Once
+
+func menuRemoveAllFunction_Set() error {
+	var err error
+	menuRemoveAllFunction_Once.Do(func() {
+		err = menuStruct_Set()
+		if err != nil {
+			return
+		}
+		menuRemoveAllFunction, err = menuStruct.InvokerNew("remove_all")
+	})
+	return err
+}
+
+// RemoveAll is a representation of the C type g_menu_remove_all.
+func (recv *Menu) RemoveAll() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := menuRemoveAllFunction_Set()
+	if err == nil {
+		menuRemoveAllFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var menuAttributeIterStruct *gi.Struct
+var menuAttributeIterStruct_Once sync.Once
+
+func menuAttributeIterStruct_Set() error {
+	var err error
+	menuAttributeIterStruct_Once.Do(func() {
+		menuAttributeIterStruct, err = gi.StructNew("Gio", "MenuAttributeIter")
+	})
+	return err
+}
+
+type MenuAttributeIter struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
+	argValue := gi.FieldGet(menuAttributeIterStruct, recv.native, "priv")
+	value := &MenuAttributeIterPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *MenuAttributeIter) SetFieldPriv(value *MenuAttributeIterPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuAttributeIterStruct, recv.native, "priv", argValue)
+}
+
+var menuAttributeIterGetNameFunction *gi.Function
+var menuAttributeIterGetNameFunction_Once sync.Once
+
+func menuAttributeIterGetNameFunction_Set() error {
+	var err error
+	menuAttributeIterGetNameFunction_Once.Do(func() {
+		err = menuAttributeIterStruct_Set()
+		if err != nil {
+			return
+		}
+		menuAttributeIterGetNameFunction, err = menuAttributeIterStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_menu_attribute_iter_get_name.
+func (recv *MenuAttributeIter) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuAttributeIterGetNameFunction_Set()
+	if err == nil {
+		ret = menuAttributeIterGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_menu_attribute_iter_get_next' : parameter 'value' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_menu_attribute_iter_get_value' : return type 'GLib.Variant' not supported
+
+var menuAttributeIterNextFunction *gi.Function
+var menuAttributeIterNextFunction_Once sync.Once
+
+func menuAttributeIterNextFunction_Set() error {
+	var err error
+	menuAttributeIterNextFunction_Once.Do(func() {
+		err = menuAttributeIterStruct_Set()
+		if err != nil {
+			return
+		}
+		menuAttributeIterNextFunction, err = menuAttributeIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type g_menu_attribute_iter_next.
+func (recv *MenuAttributeIter) Next() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuAttributeIterNextFunction_Set()
+	if err == nil {
+		ret = menuAttributeIterNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// MenuAttributeIterStruct creates an uninitialised MenuAttributeIter.
+func MenuAttributeIterStruct() *MenuAttributeIter {
+	err := menuAttributeIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuAttributeIter{native: menuAttributeIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuAttributeIter)
+	return structGo
+}
+func finalizeMenuAttributeIter(obj *MenuAttributeIter) {
+	menuAttributeIterStruct.Free(obj.native)
+}
+
+var menuItemStruct *gi.Struct
+var menuItemStruct_Once sync.Once
+
+func menuItemStruct_Set() error {
+	var err error
+	menuItemStruct_Once.Do(func() {
+		menuItemStruct, err = gi.StructNew("Gio", "MenuItem")
+	})
+	return err
+}
+
+type MenuItem struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_menu_item_new' : return type 'MenuItem' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_new_from_model' : parameter 'model' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_new_section' : parameter 'section' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_new_submenu' : parameter 'submenu' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_get_attribute' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_get_attribute_value' : parameter 'expected_type' of type 'GLib.VariantType' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_get_link' : return type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_action_and_target' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_action_and_target_value' : parameter 'target_value' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_attribute' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_attribute_value' : parameter 'value' of type 'GLib.Variant' not supported
+
+var menuItemSetDetailedActionFunction *gi.Function
+var menuItemSetDetailedActionFunction_Once sync.Once
+
+func menuItemSetDetailedActionFunction_Set() error {
+	var err error
+	menuItemSetDetailedActionFunction_Once.Do(func() {
+		err = menuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		menuItemSetDetailedActionFunction, err = menuItemStruct.InvokerNew("set_detailed_action")
+	})
+	return err
+}
+
+// SetDetailedAction is a representation of the C type g_menu_item_set_detailed_action.
+func (recv *MenuItem) SetDetailedAction(detailedAction string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(detailedAction)
+
+	err := menuItemSetDetailedActionFunction_Set()
+	if err == nil {
+		menuItemSetDetailedActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_item_set_icon' : parameter 'icon' of type 'Icon' not supported
+
+var menuItemSetLabelFunction *gi.Function
+var menuItemSetLabelFunction_Once sync.Once
+
+func menuItemSetLabelFunction_Set() error {
+	var err error
+	menuItemSetLabelFunction_Once.Do(func() {
+		err = menuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		menuItemSetLabelFunction, err = menuItemStruct.InvokerNew("set_label")
+	})
+	return err
+}
+
+// SetLabel is a representation of the C type g_menu_item_set_label.
+func (recv *MenuItem) SetLabel(label string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(label)
+
+	err := menuItemSetLabelFunction_Set()
+	if err == nil {
+		menuItemSetLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_item_set_link' : parameter 'model' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_section' : parameter 'section' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_item_set_submenu' : parameter 'submenu' of type 'MenuModel' not supported
+
+var menuLinkIterStruct *gi.Struct
+var menuLinkIterStruct_Once sync.Once
+
+func menuLinkIterStruct_Set() error {
+	var err error
+	menuLinkIterStruct_Once.Do(func() {
+		menuLinkIterStruct, err = gi.StructNew("Gio", "MenuLinkIter")
+	})
+	return err
+}
+
+type MenuLinkIter struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
+	argValue := gi.FieldGet(menuLinkIterStruct, recv.native, "priv")
+	value := &MenuLinkIterPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *MenuLinkIter) SetFieldPriv(value *MenuLinkIterPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuLinkIterStruct, recv.native, "priv", argValue)
+}
+
+var menuLinkIterGetNameFunction *gi.Function
+var menuLinkIterGetNameFunction_Once sync.Once
+
+func menuLinkIterGetNameFunction_Set() error {
+	var err error
+	menuLinkIterGetNameFunction_Once.Do(func() {
+		err = menuLinkIterStruct_Set()
+		if err != nil {
+			return
+		}
+		menuLinkIterGetNameFunction, err = menuLinkIterStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_menu_link_iter_get_name.
+func (recv *MenuLinkIter) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuLinkIterGetNameFunction_Set()
+	if err == nil {
+		ret = menuLinkIterGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_menu_link_iter_get_next' : parameter 'value' of type 'MenuModel' not supported
+
+// UNSUPPORTED : C value 'g_menu_link_iter_get_value' : return type 'MenuModel' not supported
+
+var menuLinkIterNextFunction *gi.Function
+var menuLinkIterNextFunction_Once sync.Once
+
+func menuLinkIterNextFunction_Set() error {
+	var err error
+	menuLinkIterNextFunction_Once.Do(func() {
+		err = menuLinkIterStruct_Set()
+		if err != nil {
+			return
+		}
+		menuLinkIterNextFunction, err = menuLinkIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type g_menu_link_iter_next.
+func (recv *MenuLinkIter) Next() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuLinkIterNextFunction_Set()
+	if err == nil {
+		ret = menuLinkIterNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// MenuLinkIterStruct creates an uninitialised MenuLinkIter.
+func MenuLinkIterStruct() *MenuLinkIter {
+	err := menuLinkIterStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuLinkIter{native: menuLinkIterStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuLinkIter)
+	return structGo
+}
+func finalizeMenuLinkIter(obj *MenuLinkIter) {
+	menuLinkIterStruct.Free(obj.native)
+}
+
+var menuModelStruct *gi.Struct
+var menuModelStruct_Once sync.Once
+
+func menuModelStruct_Set() error {
+	var err error
+	menuModelStruct_Once.Do(func() {
+		menuModelStruct, err = gi.StructNew("Gio", "MenuModel")
+	})
+	return err
+}
+
+type MenuModel struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
+	argValue := gi.FieldGet(menuModelStruct, recv.native, "priv")
+	value := &MenuModelPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *MenuModel) SetFieldPriv(value *MenuModelPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(menuModelStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_menu_model_get_item_attribute' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_menu_model_get_item_attribute_value' : parameter 'expected_type' of type 'GLib.VariantType' not supported
+
+// UNSUPPORTED : C value 'g_menu_model_get_item_link' : return type 'MenuModel' not supported
+
+var menuModelGetNItemsFunction *gi.Function
+var menuModelGetNItemsFunction_Once sync.Once
+
+func menuModelGetNItemsFunction_Set() error {
+	var err error
+	menuModelGetNItemsFunction_Once.Do(func() {
+		err = menuModelStruct_Set()
+		if err != nil {
+			return
+		}
+		menuModelGetNItemsFunction, err = menuModelStruct.InvokerNew("get_n_items")
+	})
+	return err
+}
+
+// GetNItems is a representation of the C type g_menu_model_get_n_items.
+func (recv *MenuModel) GetNItems() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuModelGetNItemsFunction_Set()
+	if err == nil {
+		ret = menuModelGetNItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var menuModelIsMutableFunction *gi.Function
+var menuModelIsMutableFunction_Once sync.Once
+
+func menuModelIsMutableFunction_Set() error {
+	var err error
+	menuModelIsMutableFunction_Once.Do(func() {
+		err = menuModelStruct_Set()
+		if err != nil {
+			return
+		}
+		menuModelIsMutableFunction, err = menuModelStruct.InvokerNew("is_mutable")
+	})
+	return err
+}
+
+// IsMutable is a representation of the C type g_menu_model_is_mutable.
+func (recv *MenuModel) IsMutable() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := menuModelIsMutableFunction_Set()
+	if err == nil {
+		ret = menuModelIsMutableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var menuModelItemsChangedFunction *gi.Function
+var menuModelItemsChangedFunction_Once sync.Once
+
+func menuModelItemsChangedFunction_Set() error {
+	var err error
+	menuModelItemsChangedFunction_Once.Do(func() {
+		err = menuModelStruct_Set()
+		if err != nil {
+			return
+		}
+		menuModelItemsChangedFunction, err = menuModelStruct.InvokerNew("items_changed")
+	})
+	return err
+}
+
+// ItemsChanged is a representation of the C type g_menu_model_items_changed.
+func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(position)
+	inArgs[2].SetInt32(removed)
+	inArgs[3].SetInt32(added)
+
+	err := menuModelItemsChangedFunction_Set()
+	if err == nil {
+		menuModelItemsChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_menu_model_iterate_item_attributes' : return type 'MenuAttributeIter' not supported
+
+// UNSUPPORTED : C value 'g_menu_model_iterate_item_links' : return type 'MenuLinkIter' not supported
+
+// MenuModelStruct creates an uninitialised MenuModel.
+func MenuModelStruct() *MenuModel {
+	err := menuModelStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &MenuModel{native: menuModelStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeMenuModel)
+	return structGo
+}
+func finalizeMenuModel(obj *MenuModel) {
+	menuModelStruct.Free(obj.native)
+}
+
+var mountOperationStruct *gi.Struct
+var mountOperationStruct_Once sync.Once
+
+func mountOperationStruct_Set() error {
+	var err error
+	mountOperationStruct_Once.Do(func() {
+		mountOperationStruct, err = gi.StructNew("Gio", "MountOperation")
+	})
+	return err
+}
+
+type MountOperation struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
+	argValue := gi.FieldGet(mountOperationStruct, recv.native, "priv")
+	value := &MountOperationPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *MountOperation) SetFieldPriv(value *MountOperationPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(mountOperationStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_mount_operation_new' : return type 'MountOperation' not supported
+
+var mountOperationGetAnonymousFunction *gi.Function
+var mountOperationGetAnonymousFunction_Once sync.Once
+
+func mountOperationGetAnonymousFunction_Set() error {
+	var err error
+	mountOperationGetAnonymousFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetAnonymousFunction, err = mountOperationStruct.InvokerNew("get_anonymous")
+	})
+	return err
+}
+
+// GetAnonymous is a representation of the C type g_mount_operation_get_anonymous.
+func (recv *MountOperation) GetAnonymous() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetAnonymousFunction_Set()
+	if err == nil {
+		ret = mountOperationGetAnonymousFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var mountOperationGetChoiceFunction *gi.Function
+var mountOperationGetChoiceFunction_Once sync.Once
+
+func mountOperationGetChoiceFunction_Set() error {
+	var err error
+	mountOperationGetChoiceFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetChoiceFunction, err = mountOperationStruct.InvokerNew("get_choice")
+	})
+	return err
+}
+
+// GetChoice is a representation of the C type g_mount_operation_get_choice.
+func (recv *MountOperation) GetChoice() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetChoiceFunction_Set()
+	if err == nil {
+		ret = mountOperationGetChoiceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var mountOperationGetDomainFunction *gi.Function
+var mountOperationGetDomainFunction_Once sync.Once
+
+func mountOperationGetDomainFunction_Set() error {
+	var err error
+	mountOperationGetDomainFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetDomainFunction, err = mountOperationStruct.InvokerNew("get_domain")
+	})
+	return err
+}
+
+// GetDomain is a representation of the C type g_mount_operation_get_domain.
+func (recv *MountOperation) GetDomain() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetDomainFunction_Set()
+	if err == nil {
+		ret = mountOperationGetDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var mountOperationGetIsTcryptHiddenVolumeFunction *gi.Function
+var mountOperationGetIsTcryptHiddenVolumeFunction_Once sync.Once
+
+func mountOperationGetIsTcryptHiddenVolumeFunction_Set() error {
+	var err error
+	mountOperationGetIsTcryptHiddenVolumeFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetIsTcryptHiddenVolumeFunction, err = mountOperationStruct.InvokerNew("get_is_tcrypt_hidden_volume")
+	})
+	return err
+}
+
+// GetIsTcryptHiddenVolume is a representation of the C type g_mount_operation_get_is_tcrypt_hidden_volume.
+func (recv *MountOperation) GetIsTcryptHiddenVolume() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetIsTcryptHiddenVolumeFunction_Set()
+	if err == nil {
+		ret = mountOperationGetIsTcryptHiddenVolumeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var mountOperationGetIsTcryptSystemVolumeFunction *gi.Function
+var mountOperationGetIsTcryptSystemVolumeFunction_Once sync.Once
+
+func mountOperationGetIsTcryptSystemVolumeFunction_Set() error {
+	var err error
+	mountOperationGetIsTcryptSystemVolumeFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetIsTcryptSystemVolumeFunction, err = mountOperationStruct.InvokerNew("get_is_tcrypt_system_volume")
+	})
+	return err
+}
+
+// GetIsTcryptSystemVolume is a representation of the C type g_mount_operation_get_is_tcrypt_system_volume.
+func (recv *MountOperation) GetIsTcryptSystemVolume() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetIsTcryptSystemVolumeFunction_Set()
+	if err == nil {
+		ret = mountOperationGetIsTcryptSystemVolumeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var mountOperationGetPasswordFunction *gi.Function
+var mountOperationGetPasswordFunction_Once sync.Once
+
+func mountOperationGetPasswordFunction_Set() error {
+	var err error
+	mountOperationGetPasswordFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetPasswordFunction, err = mountOperationStruct.InvokerNew("get_password")
+	})
+	return err
+}
+
+// GetPassword is a representation of the C type g_mount_operation_get_password.
+func (recv *MountOperation) GetPassword() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetPasswordFunction_Set()
+	if err == nil {
+		ret = mountOperationGetPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_mount_operation_get_password_save' : return type 'PasswordSave' not supported
+
+var mountOperationGetPimFunction *gi.Function
+var mountOperationGetPimFunction_Once sync.Once
+
+func mountOperationGetPimFunction_Set() error {
+	var err error
+	mountOperationGetPimFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetPimFunction, err = mountOperationStruct.InvokerNew("get_pim")
+	})
+	return err
+}
+
+// GetPim is a representation of the C type g_mount_operation_get_pim.
+func (recv *MountOperation) GetPim() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetPimFunction_Set()
+	if err == nil {
+		ret = mountOperationGetPimFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var mountOperationGetUsernameFunction *gi.Function
+var mountOperationGetUsernameFunction_Once sync.Once
+
+func mountOperationGetUsernameFunction_Set() error {
+	var err error
+	mountOperationGetUsernameFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetUsernameFunction, err = mountOperationStruct.InvokerNew("get_username")
+	})
+	return err
+}
+
+// GetUsername is a representation of the C type g_mount_operation_get_username.
+func (recv *MountOperation) GetUsername() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetUsernameFunction_Set()
+	if err == nil {
+		ret = mountOperationGetUsernameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_mount_operation_reply' : parameter 'result' of type 'MountOperationResult' not supported
+
+var mountOperationSetAnonymousFunction *gi.Function
+var mountOperationSetAnonymousFunction_Once sync.Once
+
+func mountOperationSetAnonymousFunction_Set() error {
+	var err error
+	mountOperationSetAnonymousFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetAnonymousFunction, err = mountOperationStruct.InvokerNew("set_anonymous")
+	})
+	return err
+}
+
+// SetAnonymous is a representation of the C type g_mount_operation_set_anonymous.
+func (recv *MountOperation) SetAnonymous(anonymous bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(anonymous)
+
+	err := mountOperationSetAnonymousFunction_Set()
+	if err == nil {
+		mountOperationSetAnonymousFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetChoiceFunction *gi.Function
+var mountOperationSetChoiceFunction_Once sync.Once
+
+func mountOperationSetChoiceFunction_Set() error {
+	var err error
+	mountOperationSetChoiceFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetChoiceFunction, err = mountOperationStruct.InvokerNew("set_choice")
+	})
+	return err
+}
+
+// SetChoice is a representation of the C type g_mount_operation_set_choice.
+func (recv *MountOperation) SetChoice(choice int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(choice)
+
+	err := mountOperationSetChoiceFunction_Set()
+	if err == nil {
+		mountOperationSetChoiceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetDomainFunction *gi.Function
+var mountOperationSetDomainFunction_Once sync.Once
+
+func mountOperationSetDomainFunction_Set() error {
+	var err error
+	mountOperationSetDomainFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetDomainFunction, err = mountOperationStruct.InvokerNew("set_domain")
+	})
+	return err
+}
+
+// SetDomain is a representation of the C type g_mount_operation_set_domain.
+func (recv *MountOperation) SetDomain(domain string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(domain)
+
+	err := mountOperationSetDomainFunction_Set()
+	if err == nil {
+		mountOperationSetDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetIsTcryptHiddenVolumeFunction *gi.Function
+var mountOperationSetIsTcryptHiddenVolumeFunction_Once sync.Once
+
+func mountOperationSetIsTcryptHiddenVolumeFunction_Set() error {
+	var err error
+	mountOperationSetIsTcryptHiddenVolumeFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetIsTcryptHiddenVolumeFunction, err = mountOperationStruct.InvokerNew("set_is_tcrypt_hidden_volume")
+	})
+	return err
+}
+
+// SetIsTcryptHiddenVolume is a representation of the C type g_mount_operation_set_is_tcrypt_hidden_volume.
+func (recv *MountOperation) SetIsTcryptHiddenVolume(hiddenVolume bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(hiddenVolume)
+
+	err := mountOperationSetIsTcryptHiddenVolumeFunction_Set()
+	if err == nil {
+		mountOperationSetIsTcryptHiddenVolumeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetIsTcryptSystemVolumeFunction *gi.Function
+var mountOperationSetIsTcryptSystemVolumeFunction_Once sync.Once
+
+func mountOperationSetIsTcryptSystemVolumeFunction_Set() error {
+	var err error
+	mountOperationSetIsTcryptSystemVolumeFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetIsTcryptSystemVolumeFunction, err = mountOperationStruct.InvokerNew("set_is_tcrypt_system_volume")
+	})
+	return err
+}
+
+// SetIsTcryptSystemVolume is a representation of the C type g_mount_operation_set_is_tcrypt_system_volume.
+func (recv *MountOperation) SetIsTcryptSystemVolume(systemVolume bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(systemVolume)
+
+	err := mountOperationSetIsTcryptSystemVolumeFunction_Set()
+	if err == nil {
+		mountOperationSetIsTcryptSystemVolumeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetPasswordFunction *gi.Function
+var mountOperationSetPasswordFunction_Once sync.Once
+
+func mountOperationSetPasswordFunction_Set() error {
+	var err error
+	mountOperationSetPasswordFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetPasswordFunction, err = mountOperationStruct.InvokerNew("set_password")
+	})
+	return err
+}
+
+// SetPassword is a representation of the C type g_mount_operation_set_password.
+func (recv *MountOperation) SetPassword(password string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(password)
+
+	err := mountOperationSetPasswordFunction_Set()
+	if err == nil {
+		mountOperationSetPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_mount_operation_set_password_save' : parameter 'save' of type 'PasswordSave' not supported
+
+var mountOperationSetPimFunction *gi.Function
+var mountOperationSetPimFunction_Once sync.Once
+
+func mountOperationSetPimFunction_Set() error {
+	var err error
+	mountOperationSetPimFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetPimFunction, err = mountOperationStruct.InvokerNew("set_pim")
+	})
+	return err
+}
+
+// SetPim is a representation of the C type g_mount_operation_set_pim.
+func (recv *MountOperation) SetPim(pim uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(pim)
+
+	err := mountOperationSetPimFunction_Set()
+	if err == nil {
+		mountOperationSetPimFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var mountOperationSetUsernameFunction *gi.Function
+var mountOperationSetUsernameFunction_Once sync.Once
+
+func mountOperationSetUsernameFunction_Set() error {
+	var err error
+	mountOperationSetUsernameFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetUsernameFunction, err = mountOperationStruct.InvokerNew("set_username")
+	})
+	return err
+}
+
+// SetUsername is a representation of the C type g_mount_operation_set_username.
+func (recv *MountOperation) SetUsername(username string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(username)
+
+	err := mountOperationSetUsernameFunction_Set()
+	if err == nil {
+		mountOperationSetUsernameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var nativeSocketAddressStruct *gi.Struct
+var nativeSocketAddressStruct_Once sync.Once
+
+func nativeSocketAddressStruct_Set() error {
+	var err error
+	nativeSocketAddressStruct_Once.Do(func() {
+		nativeSocketAddressStruct, err = gi.StructNew("Gio", "NativeSocketAddress")
+	})
+	return err
+}
+
+type NativeSocketAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'g_native_socket_address_new' : parameter 'native' of type 'gpointer' not supported
+
+var nativeVolumeMonitorStruct *gi.Struct
+var nativeVolumeMonitorStruct_Once sync.Once
+
+func nativeVolumeMonitorStruct_Set() error {
+	var err error
+	nativeVolumeMonitorStruct_Once.Do(func() {
+		nativeVolumeMonitorStruct, err = gi.StructNew("Gio", "NativeVolumeMonitor")
+	})
+	return err
+}
+
+type NativeVolumeMonitor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'VolumeMonitor'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'VolumeMonitor'
+
+// NativeVolumeMonitorStruct creates an uninitialised NativeVolumeMonitor.
+func NativeVolumeMonitorStruct() *NativeVolumeMonitor {
+	err := nativeVolumeMonitorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &NativeVolumeMonitor{native: nativeVolumeMonitorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeNativeVolumeMonitor)
+	return structGo
+}
+func finalizeNativeVolumeMonitor(obj *NativeVolumeMonitor) {
+	nativeVolumeMonitorStruct.Free(obj.native)
+}
+
+var networkAddressStruct *gi.Struct
+var networkAddressStruct_Once sync.Once
+
+func networkAddressStruct_Set() error {
+	var err error
+	networkAddressStruct_Once.Do(func() {
+		networkAddressStruct, err = gi.StructNew("Gio", "NetworkAddress")
+	})
+	return err
+}
+
+type NetworkAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_network_address_new' : return type 'NetworkAddress' not supported
+
+// UNSUPPORTED : C value 'g_network_address_new_loopback' : return type 'NetworkAddress' not supported
+
+var networkAddressGetHostnameFunction *gi.Function
+var networkAddressGetHostnameFunction_Once sync.Once
+
+func networkAddressGetHostnameFunction_Set() error {
+	var err error
+	networkAddressGetHostnameFunction_Once.Do(func() {
+		err = networkAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		networkAddressGetHostnameFunction, err = networkAddressStruct.InvokerNew("get_hostname")
+	})
+	return err
+}
+
+// GetHostname is a representation of the C type g_network_address_get_hostname.
+func (recv *NetworkAddress) GetHostname() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkAddressGetHostnameFunction_Set()
+	if err == nil {
+		ret = networkAddressGetHostnameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkAddressGetPortFunction *gi.Function
+var networkAddressGetPortFunction_Once sync.Once
+
+func networkAddressGetPortFunction_Set() error {
+	var err error
+	networkAddressGetPortFunction_Once.Do(func() {
+		err = networkAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		networkAddressGetPortFunction, err = networkAddressStruct.InvokerNew("get_port")
+	})
+	return err
+}
+
+// GetPort is a representation of the C type g_network_address_get_port.
+func (recv *NetworkAddress) GetPort() uint16 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkAddressGetPortFunction_Set()
+	if err == nil {
+		ret = networkAddressGetPortFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var networkAddressGetSchemeFunction *gi.Function
+var networkAddressGetSchemeFunction_Once sync.Once
+
+func networkAddressGetSchemeFunction_Set() error {
+	var err error
+	networkAddressGetSchemeFunction_Once.Do(func() {
+		err = networkAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		networkAddressGetSchemeFunction, err = networkAddressStruct.InvokerNew("get_scheme")
+	})
+	return err
+}
+
+// GetScheme is a representation of the C type g_network_address_get_scheme.
+func (recv *NetworkAddress) GetScheme() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkAddressGetSchemeFunction_Set()
+	if err == nil {
+		ret = networkAddressGetSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkServiceStruct *gi.Struct
+var networkServiceStruct_Once sync.Once
+
+func networkServiceStruct_Set() error {
+	var err error
+	networkServiceStruct_Once.Do(func() {
+		networkServiceStruct, err = gi.StructNew("Gio", "NetworkService")
+	})
+	return err
+}
+
+type NetworkService struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_network_service_new' : return type 'NetworkService' not supported
+
+var networkServiceGetDomainFunction *gi.Function
+var networkServiceGetDomainFunction_Once sync.Once
+
+func networkServiceGetDomainFunction_Set() error {
+	var err error
+	networkServiceGetDomainFunction_Once.Do(func() {
+		err = networkServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		networkServiceGetDomainFunction, err = networkServiceStruct.InvokerNew("get_domain")
+	})
+	return err
+}
+
+// GetDomain is a representation of the C type g_network_service_get_domain.
+func (recv *NetworkService) GetDomain() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkServiceGetDomainFunction_Set()
+	if err == nil {
+		ret = networkServiceGetDomainFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkServiceGetProtocolFunction *gi.Function
+var networkServiceGetProtocolFunction_Once sync.Once
+
+func networkServiceGetProtocolFunction_Set() error {
+	var err error
+	networkServiceGetProtocolFunction_Once.Do(func() {
+		err = networkServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		networkServiceGetProtocolFunction, err = networkServiceStruct.InvokerNew("get_protocol")
+	})
+	return err
+}
+
+// GetProtocol is a representation of the C type g_network_service_get_protocol.
+func (recv *NetworkService) GetProtocol() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkServiceGetProtocolFunction_Set()
+	if err == nil {
+		ret = networkServiceGetProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkServiceGetSchemeFunction *gi.Function
+var networkServiceGetSchemeFunction_Once sync.Once
+
+func networkServiceGetSchemeFunction_Set() error {
+	var err error
+	networkServiceGetSchemeFunction_Once.Do(func() {
+		err = networkServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		networkServiceGetSchemeFunction, err = networkServiceStruct.InvokerNew("get_scheme")
+	})
+	return err
+}
+
+// GetScheme is a representation of the C type g_network_service_get_scheme.
+func (recv *NetworkService) GetScheme() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkServiceGetSchemeFunction_Set()
+	if err == nil {
+		ret = networkServiceGetSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkServiceGetServiceFunction *gi.Function
+var networkServiceGetServiceFunction_Once sync.Once
+
+func networkServiceGetServiceFunction_Set() error {
+	var err error
+	networkServiceGetServiceFunction_Once.Do(func() {
+		err = networkServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		networkServiceGetServiceFunction, err = networkServiceStruct.InvokerNew("get_service")
+	})
+	return err
+}
+
+// GetService is a representation of the C type g_network_service_get_service.
+func (recv *NetworkService) GetService() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := networkServiceGetServiceFunction_Set()
+	if err == nil {
+		ret = networkServiceGetServiceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var networkServiceSetSchemeFunction *gi.Function
+var networkServiceSetSchemeFunction_Once sync.Once
+
+func networkServiceSetSchemeFunction_Set() error {
+	var err error
+	networkServiceSetSchemeFunction_Once.Do(func() {
+		err = networkServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		networkServiceSetSchemeFunction, err = networkServiceStruct.InvokerNew("set_scheme")
+	})
+	return err
+}
+
+// SetScheme is a representation of the C type g_network_service_set_scheme.
+func (recv *NetworkService) SetScheme(scheme string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(scheme)
+
+	err := networkServiceSetSchemeFunction_Set()
+	if err == nil {
+		networkServiceSetSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var notificationStruct *gi.Struct
+var notificationStruct_Once sync.Once
+
+func notificationStruct_Set() error {
+	var err error
+	notificationStruct_Once.Do(func() {
+		notificationStruct, err = gi.StructNew("Gio", "Notification")
+	})
+	return err
+}
+
+type Notification struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_notification_new' : return type 'Notification' not supported
+
+var notificationAddButtonFunction *gi.Function
+var notificationAddButtonFunction_Once sync.Once
+
+func notificationAddButtonFunction_Set() error {
+	var err error
+	notificationAddButtonFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationAddButtonFunction, err = notificationStruct.InvokerNew("add_button")
+	})
+	return err
+}
+
+// AddButton is a representation of the C type g_notification_add_button.
+func (recv *Notification) AddButton(label string, detailedAction string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(label)
+	inArgs[2].SetString(detailedAction)
+
+	err := notificationAddButtonFunction_Set()
+	if err == nil {
+		notificationAddButtonFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_notification_add_button_with_target' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_notification_add_button_with_target_value' : parameter 'target' of type 'GLib.Variant' not supported
+
+var notificationSetBodyFunction *gi.Function
+var notificationSetBodyFunction_Once sync.Once
+
+func notificationSetBodyFunction_Set() error {
+	var err error
+	notificationSetBodyFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationSetBodyFunction, err = notificationStruct.InvokerNew("set_body")
+	})
+	return err
+}
+
+// SetBody is a representation of the C type g_notification_set_body.
+func (recv *Notification) SetBody(body string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(body)
+
+	err := notificationSetBodyFunction_Set()
+	if err == nil {
+		notificationSetBodyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var notificationSetDefaultActionFunction *gi.Function
+var notificationSetDefaultActionFunction_Once sync.Once
+
+func notificationSetDefaultActionFunction_Set() error {
+	var err error
+	notificationSetDefaultActionFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationSetDefaultActionFunction, err = notificationStruct.InvokerNew("set_default_action")
+	})
+	return err
+}
+
+// SetDefaultAction is a representation of the C type g_notification_set_default_action.
+func (recv *Notification) SetDefaultAction(detailedAction string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(detailedAction)
+
+	err := notificationSetDefaultActionFunction_Set()
+	if err == nil {
+		notificationSetDefaultActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_notification_set_default_action_and_target' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_notification_set_default_action_and_target_value' : parameter 'target' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_notification_set_icon' : parameter 'icon' of type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_notification_set_priority' : parameter 'priority' of type 'NotificationPriority' not supported
+
+var notificationSetTitleFunction *gi.Function
+var notificationSetTitleFunction_Once sync.Once
+
+func notificationSetTitleFunction_Set() error {
+	var err error
+	notificationSetTitleFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationSetTitleFunction, err = notificationStruct.InvokerNew("set_title")
+	})
+	return err
+}
+
+// SetTitle is a representation of the C type g_notification_set_title.
+func (recv *Notification) SetTitle(title string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(title)
+
+	err := notificationSetTitleFunction_Set()
+	if err == nil {
+		notificationSetTitleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var notificationSetUrgentFunction *gi.Function
+var notificationSetUrgentFunction_Once sync.Once
+
+func notificationSetUrgentFunction_Set() error {
+	var err error
+	notificationSetUrgentFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationSetUrgentFunction, err = notificationStruct.InvokerNew("set_urgent")
+	})
+	return err
+}
+
+// SetUrgent is a representation of the C type g_notification_set_urgent.
+func (recv *Notification) SetUrgent(urgent bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(urgent)
+
+	err := notificationSetUrgentFunction_Set()
+	if err == nil {
+		notificationSetUrgentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var outputStreamStruct *gi.Struct
+var outputStreamStruct_Once sync.Once
+
+func outputStreamStruct_Set() error {
+	var err error
+	outputStreamStruct_Once.Do(func() {
+		outputStreamStruct, err = gi.StructNew("Gio", "OutputStream")
+	})
+	return err
+}
+
+type OutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+var outputStreamClearPendingFunction *gi.Function
+var outputStreamClearPendingFunction_Once sync.Once
+
+func outputStreamClearPendingFunction_Set() error {
+	var err error
+	outputStreamClearPendingFunction_Once.Do(func() {
+		err = outputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		outputStreamClearPendingFunction, err = outputStreamStruct.InvokerNew("clear_pending")
+	})
+	return err
+}
+
+// ClearPending is a representation of the C type g_output_stream_clear_pending.
+func (recv *OutputStream) ClearPending() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := outputStreamClearPendingFunction_Set()
+	if err == nil {
+		outputStreamClearPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_output_stream_close' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_close_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_close_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_flush' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_flush_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_flush_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var outputStreamHasPendingFunction *gi.Function
+var outputStreamHasPendingFunction_Once sync.Once
+
+func outputStreamHasPendingFunction_Set() error {
+	var err error
+	outputStreamHasPendingFunction_Once.Do(func() {
+		err = outputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		outputStreamHasPendingFunction, err = outputStreamStruct.InvokerNew("has_pending")
+	})
+	return err
+}
+
+// HasPending is a representation of the C type g_output_stream_has_pending.
+func (recv *OutputStream) HasPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := outputStreamHasPendingFunction_Set()
+	if err == nil {
+		ret = outputStreamHasPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var outputStreamIsClosedFunction *gi.Function
+var outputStreamIsClosedFunction_Once sync.Once
+
+func outputStreamIsClosedFunction_Set() error {
+	var err error
+	outputStreamIsClosedFunction_Once.Do(func() {
+		err = outputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		outputStreamIsClosedFunction, err = outputStreamStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_output_stream_is_closed.
+func (recv *OutputStream) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := outputStreamIsClosedFunction_Set()
+	if err == nil {
+		ret = outputStreamIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var outputStreamIsClosingFunction *gi.Function
+var outputStreamIsClosingFunction_Once sync.Once
+
+func outputStreamIsClosingFunction_Set() error {
+	var err error
+	outputStreamIsClosingFunction_Once.Do(func() {
+		err = outputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		outputStreamIsClosingFunction, err = outputStreamStruct.InvokerNew("is_closing")
+	})
+	return err
+}
+
+// IsClosing is a representation of the C type g_output_stream_is_closing.
+func (recv *OutputStream) IsClosing() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := outputStreamIsClosingFunction_Set()
+	if err == nil {
+		ret = outputStreamIsClosingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_output_stream_printf' : parameter 'cancellable' of type 'Cancellable' not supported
+
+var outputStreamSetPendingFunction *gi.Function
+var outputStreamSetPendingFunction_Once sync.Once
+
+func outputStreamSetPendingFunction_Set() error {
+	var err error
+	outputStreamSetPendingFunction_Once.Do(func() {
+		err = outputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		outputStreamSetPendingFunction, err = outputStreamStruct.InvokerNew("set_pending")
+	})
+	return err
+}
+
+// SetPending is a representation of the C type g_output_stream_set_pending.
+func (recv *OutputStream) SetPending() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := outputStreamSetPendingFunction_Set()
+	if err == nil {
+		ret = outputStreamSetPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_output_stream_splice' : parameter 'source' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_splice_async' : parameter 'source' of type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_splice_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_vprintf' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_all' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_all_async' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_all_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_async' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_bytes_async' : parameter 'bytes' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_bytes_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_write_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev' : parameter 'vectors' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev_all' : parameter 'vectors' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev_all_async' : parameter 'vectors' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev_all_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev_async' : parameter 'vectors' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_output_stream_writev_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// OutputStreamStruct creates an uninitialised OutputStream.
+func OutputStreamStruct() *OutputStream {
+	err := outputStreamStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &OutputStream{native: outputStreamStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeOutputStream)
+	return structGo
+}
+func finalizeOutputStream(obj *OutputStream) {
+	outputStreamStruct.Free(obj.native)
+}
+
+var permissionStruct *gi.Struct
+var permissionStruct_Once sync.Once
+
+func permissionStruct_Set() error {
+	var err error
+	permissionStruct_Once.Do(func() {
+		permissionStruct, err = gi.StructNew("Gio", "Permission")
+	})
+	return err
+}
+
+type Permission struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_permission_acquire' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_permission_acquire_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_permission_acquire_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var permissionGetAllowedFunction *gi.Function
+var permissionGetAllowedFunction_Once sync.Once
+
+func permissionGetAllowedFunction_Set() error {
+	var err error
+	permissionGetAllowedFunction_Once.Do(func() {
+		err = permissionStruct_Set()
+		if err != nil {
+			return
+		}
+		permissionGetAllowedFunction, err = permissionStruct.InvokerNew("get_allowed")
+	})
+	return err
+}
+
+// GetAllowed is a representation of the C type g_permission_get_allowed.
+func (recv *Permission) GetAllowed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := permissionGetAllowedFunction_Set()
+	if err == nil {
+		ret = permissionGetAllowedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var permissionGetCanAcquireFunction *gi.Function
+var permissionGetCanAcquireFunction_Once sync.Once
+
+func permissionGetCanAcquireFunction_Set() error {
+	var err error
+	permissionGetCanAcquireFunction_Once.Do(func() {
+		err = permissionStruct_Set()
+		if err != nil {
+			return
+		}
+		permissionGetCanAcquireFunction, err = permissionStruct.InvokerNew("get_can_acquire")
+	})
+	return err
+}
+
+// GetCanAcquire is a representation of the C type g_permission_get_can_acquire.
+func (recv *Permission) GetCanAcquire() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := permissionGetCanAcquireFunction_Set()
+	if err == nil {
+		ret = permissionGetCanAcquireFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var permissionGetCanReleaseFunction *gi.Function
+var permissionGetCanReleaseFunction_Once sync.Once
+
+func permissionGetCanReleaseFunction_Set() error {
+	var err error
+	permissionGetCanReleaseFunction_Once.Do(func() {
+		err = permissionStruct_Set()
+		if err != nil {
+			return
+		}
+		permissionGetCanReleaseFunction, err = permissionStruct.InvokerNew("get_can_release")
+	})
+	return err
+}
+
+// GetCanRelease is a representation of the C type g_permission_get_can_release.
+func (recv *Permission) GetCanRelease() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := permissionGetCanReleaseFunction_Set()
+	if err == nil {
+		ret = permissionGetCanReleaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var permissionImplUpdateFunction *gi.Function
+var permissionImplUpdateFunction_Once sync.Once
+
+func permissionImplUpdateFunction_Set() error {
+	var err error
+	permissionImplUpdateFunction_Once.Do(func() {
+		err = permissionStruct_Set()
+		if err != nil {
+			return
+		}
+		permissionImplUpdateFunction, err = permissionStruct.InvokerNew("impl_update")
+	})
+	return err
+}
+
+// ImplUpdate is a representation of the C type g_permission_impl_update.
+func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease bool) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(allowed)
+	inArgs[2].SetBoolean(canAcquire)
+	inArgs[3].SetBoolean(canRelease)
+
+	err := permissionImplUpdateFunction_Set()
+	if err == nil {
+		permissionImplUpdateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_permission_release' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_permission_release_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_permission_release_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// PermissionStruct creates an uninitialised Permission.
+func PermissionStruct() *Permission {
+	err := permissionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Permission{native: permissionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizePermission)
+	return structGo
+}
+func finalizePermission(obj *Permission) {
+	permissionStruct.Free(obj.native)
+}
+
+var propertyActionStruct *gi.Struct
+var propertyActionStruct_Once sync.Once
+
+func propertyActionStruct_Set() error {
+	var err error
+	propertyActionStruct_Once.Do(func() {
+		propertyActionStruct, err = gi.StructNew("Gio", "PropertyAction")
+	})
+	return err
+}
+
+type PropertyAction struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_property_action_new' : parameter 'object' of type 'GObject.Object' not supported
+
+var proxyAddressStruct *gi.Struct
+var proxyAddressStruct_Once sync.Once
+
+func proxyAddressStruct_Set() error {
+	var err error
+	proxyAddressStruct_Once.Do(func() {
+		proxyAddressStruct, err = gi.StructNew("Gio", "ProxyAddress")
+	})
+	return err
+}
+
+type ProxyAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'InetSocketAddress'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'InetSocketAddress'
+
+// UNSUPPORTED : C value 'g_proxy_address_new' : parameter 'inetaddr' of type 'InetAddress' not supported
+
+var proxyAddressGetDestinationHostnameFunction *gi.Function
+var proxyAddressGetDestinationHostnameFunction_Once sync.Once
+
+func proxyAddressGetDestinationHostnameFunction_Set() error {
+	var err error
+	proxyAddressGetDestinationHostnameFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetDestinationHostnameFunction, err = proxyAddressStruct.InvokerNew("get_destination_hostname")
+	})
+	return err
+}
+
+// GetDestinationHostname is a representation of the C type g_proxy_address_get_destination_hostname.
+func (recv *ProxyAddress) GetDestinationHostname() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetDestinationHostnameFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetDestinationHostnameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressGetDestinationPortFunction *gi.Function
+var proxyAddressGetDestinationPortFunction_Once sync.Once
+
+func proxyAddressGetDestinationPortFunction_Set() error {
+	var err error
+	proxyAddressGetDestinationPortFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetDestinationPortFunction, err = proxyAddressStruct.InvokerNew("get_destination_port")
+	})
+	return err
+}
+
+// GetDestinationPort is a representation of the C type g_proxy_address_get_destination_port.
+func (recv *ProxyAddress) GetDestinationPort() uint16 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetDestinationPortFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetDestinationPortFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var proxyAddressGetDestinationProtocolFunction *gi.Function
+var proxyAddressGetDestinationProtocolFunction_Once sync.Once
+
+func proxyAddressGetDestinationProtocolFunction_Set() error {
+	var err error
+	proxyAddressGetDestinationProtocolFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetDestinationProtocolFunction, err = proxyAddressStruct.InvokerNew("get_destination_protocol")
+	})
+	return err
+}
+
+// GetDestinationProtocol is a representation of the C type g_proxy_address_get_destination_protocol.
+func (recv *ProxyAddress) GetDestinationProtocol() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetDestinationProtocolFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetDestinationProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressGetPasswordFunction *gi.Function
+var proxyAddressGetPasswordFunction_Once sync.Once
+
+func proxyAddressGetPasswordFunction_Set() error {
+	var err error
+	proxyAddressGetPasswordFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetPasswordFunction, err = proxyAddressStruct.InvokerNew("get_password")
+	})
+	return err
+}
+
+// GetPassword is a representation of the C type g_proxy_address_get_password.
+func (recv *ProxyAddress) GetPassword() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetPasswordFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressGetProtocolFunction *gi.Function
+var proxyAddressGetProtocolFunction_Once sync.Once
+
+func proxyAddressGetProtocolFunction_Set() error {
+	var err error
+	proxyAddressGetProtocolFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetProtocolFunction, err = proxyAddressStruct.InvokerNew("get_protocol")
+	})
+	return err
+}
+
+// GetProtocol is a representation of the C type g_proxy_address_get_protocol.
+func (recv *ProxyAddress) GetProtocol() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetProtocolFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressGetUriFunction *gi.Function
+var proxyAddressGetUriFunction_Once sync.Once
+
+func proxyAddressGetUriFunction_Set() error {
+	var err error
+	proxyAddressGetUriFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetUriFunction, err = proxyAddressStruct.InvokerNew("get_uri")
+	})
+	return err
+}
+
+// GetUri is a representation of the C type g_proxy_address_get_uri.
+func (recv *ProxyAddress) GetUri() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetUriFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressGetUsernameFunction *gi.Function
+var proxyAddressGetUsernameFunction_Once sync.Once
+
+func proxyAddressGetUsernameFunction_Set() error {
+	var err error
+	proxyAddressGetUsernameFunction_Once.Do(func() {
+		err = proxyAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		proxyAddressGetUsernameFunction, err = proxyAddressStruct.InvokerNew("get_username")
+	})
+	return err
+}
+
+// GetUsername is a representation of the C type g_proxy_address_get_username.
+func (recv *ProxyAddress) GetUsername() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := proxyAddressGetUsernameFunction_Set()
+	if err == nil {
+		ret = proxyAddressGetUsernameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var proxyAddressEnumeratorStruct *gi.Struct
+var proxyAddressEnumeratorStruct_Once sync.Once
+
+func proxyAddressEnumeratorStruct_Set() error {
+	var err error
+	proxyAddressEnumeratorStruct_Once.Do(func() {
+		proxyAddressEnumeratorStruct, err = gi.StructNew("Gio", "ProxyAddressEnumerator")
+	})
+	return err
+}
+
+type ProxyAddressEnumerator struct {
+	native uintptr
+}
+
+// ProxyAddressEnumeratorStruct creates an uninitialised ProxyAddressEnumerator.
+func ProxyAddressEnumeratorStruct() *ProxyAddressEnumerator {
+	err := proxyAddressEnumeratorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &ProxyAddressEnumerator{native: proxyAddressEnumeratorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeProxyAddressEnumerator)
+	return structGo
+}
+func finalizeProxyAddressEnumerator(obj *ProxyAddressEnumerator) {
+	proxyAddressEnumeratorStruct.Free(obj.native)
+}
+
+var resolverStruct *gi.Struct
+var resolverStruct_Once sync.Once
+
+func resolverStruct_Set() error {
+	var err error
+	resolverStruct_Once.Do(func() {
+		resolverStruct, err = gi.StructNew("Gio", "Resolver")
+	})
+	return err
+}
+
+type Resolver struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *Resolver) FieldPriv() *ResolverPrivate {
+	argValue := gi.FieldGet(resolverStruct, recv.native, "priv")
+	value := &ResolverPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *Resolver) SetFieldPriv(value *ResolverPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(resolverStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_address' : parameter 'address' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_address_async' : parameter 'address' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_address_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags' : parameter 'flags' of type 'ResolverNameLookupFlags' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_async' : parameter 'flags' of type 'ResolverNameLookupFlags' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_records' : parameter 'record_type' of type 'ResolverRecordType' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_records_async' : parameter 'record_type' of type 'ResolverRecordType' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_records_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_service' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_service_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_resolver_lookup_service_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var resolverSetDefaultFunction *gi.Function
+var resolverSetDefaultFunction_Once sync.Once
+
+func resolverSetDefaultFunction_Set() error {
+	var err error
+	resolverSetDefaultFunction_Once.Do(func() {
+		err = resolverStruct_Set()
+		if err != nil {
+			return
+		}
+		resolverSetDefaultFunction, err = resolverStruct.InvokerNew("set_default")
+	})
+	return err
+}
+
+// SetDefault is a representation of the C type g_resolver_set_default.
+func (recv *Resolver) SetDefault() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := resolverSetDefaultFunction_Set()
+	if err == nil {
+		resolverSetDefaultFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// ResolverStruct creates an uninitialised Resolver.
+func ResolverStruct() *Resolver {
+	err := resolverStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Resolver{native: resolverStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeResolver)
+	return structGo
+}
+func finalizeResolver(obj *Resolver) {
+	resolverStruct.Free(obj.native)
+}
+
+var settingsStruct *gi.Struct
+var settingsStruct_Once sync.Once
+
+func settingsStruct_Set() error {
+	var err error
+	settingsStruct_Once.Do(func() {
+		settingsStruct, err = gi.StructNew("Gio", "Settings")
+	})
+	return err
+}
+
+type Settings struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *Settings) FieldPriv() *SettingsPrivate {
+	argValue := gi.FieldGet(settingsStruct, recv.native, "priv")
+	value := &SettingsPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(settingsStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_settings_new' : return type 'Settings' not supported
+
+// UNSUPPORTED : C value 'g_settings_new_full' : parameter 'backend' of type 'SettingsBackend' not supported
+
+// UNSUPPORTED : C value 'g_settings_new_with_backend' : parameter 'backend' of type 'SettingsBackend' not supported
+
+// UNSUPPORTED : C value 'g_settings_new_with_backend_and_path' : parameter 'backend' of type 'SettingsBackend' not supported
+
+// UNSUPPORTED : C value 'g_settings_new_with_path' : return type 'Settings' not supported
+
+var settingsApplyFunction *gi.Function
+var settingsApplyFunction_Once sync.Once
+
+func settingsApplyFunction_Set() error {
+	var err error
+	settingsApplyFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsApplyFunction, err = settingsStruct.InvokerNew("apply")
+	})
+	return err
+}
+
+// Apply is a representation of the C type g_settings_apply.
+func (recv *Settings) Apply() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := settingsApplyFunction_Set()
+	if err == nil {
+		settingsApplyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_settings_bind' : parameter 'object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_settings_bind_with_mapping' : parameter 'object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_settings_bind_writable' : parameter 'object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_settings_create_action' : return type 'Action' not supported
+
+var settingsDelayFunction *gi.Function
+var settingsDelayFunction_Once sync.Once
+
+func settingsDelayFunction_Set() error {
+	var err error
+	settingsDelayFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsDelayFunction, err = settingsStruct.InvokerNew("delay")
+	})
+	return err
+}
+
+// Delay is a representation of the C type g_settings_delay.
+func (recv *Settings) Delay() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := settingsDelayFunction_Set()
+	if err == nil {
+		settingsDelayFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_settings_get' : parameter '...' of type 'nil' not supported
+
+var settingsGetBooleanFunction *gi.Function
+var settingsGetBooleanFunction_Once sync.Once
+
+func settingsGetBooleanFunction_Set() error {
+	var err error
+	settingsGetBooleanFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetBooleanFunction, err = settingsStruct.InvokerNew("get_boolean")
+	})
+	return err
+}
+
+// GetBoolean is a representation of the C type g_settings_get_boolean.
+func (recv *Settings) GetBoolean(key string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetBooleanFunction_Set()
+	if err == nil {
+		ret = settingsGetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_get_child' : return type 'Settings' not supported
+
+// UNSUPPORTED : C value 'g_settings_get_default_value' : return type 'GLib.Variant' not supported
+
+var settingsGetDoubleFunction *gi.Function
+var settingsGetDoubleFunction_Once sync.Once
+
+func settingsGetDoubleFunction_Set() error {
+	var err error
+	settingsGetDoubleFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetDoubleFunction, err = settingsStruct.InvokerNew("get_double")
+	})
+	return err
+}
+
+// GetDouble is a representation of the C type g_settings_get_double.
+func (recv *Settings) GetDouble(key string) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetDoubleFunction_Set()
+	if err == nil {
+		ret = settingsGetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var settingsGetEnumFunction *gi.Function
+var settingsGetEnumFunction_Once sync.Once
+
+func settingsGetEnumFunction_Set() error {
+	var err error
+	settingsGetEnumFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetEnumFunction, err = settingsStruct.InvokerNew("get_enum")
+	})
+	return err
+}
+
+// GetEnum is a representation of the C type g_settings_get_enum.
+func (recv *Settings) GetEnum(key string) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetEnumFunction_Set()
+	if err == nil {
+		ret = settingsGetEnumFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var settingsGetFlagsFunction *gi.Function
+var settingsGetFlagsFunction_Once sync.Once
+
+func settingsGetFlagsFunction_Set() error {
+	var err error
+	settingsGetFlagsFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetFlagsFunction, err = settingsStruct.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_settings_get_flags.
+func (recv *Settings) GetFlags(key string) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetFlagsFunction_Set()
+	if err == nil {
+		ret = settingsGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var settingsGetHasUnappliedFunction *gi.Function
+var settingsGetHasUnappliedFunction_Once sync.Once
+
+func settingsGetHasUnappliedFunction_Set() error {
+	var err error
+	settingsGetHasUnappliedFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetHasUnappliedFunction, err = settingsStruct.InvokerNew("get_has_unapplied")
+	})
+	return err
+}
+
+// GetHasUnapplied is a representation of the C type g_settings_get_has_unapplied.
+func (recv *Settings) GetHasUnapplied() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := settingsGetHasUnappliedFunction_Set()
+	if err == nil {
+		ret = settingsGetHasUnappliedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsGetIntFunction *gi.Function
+var settingsGetIntFunction_Once sync.Once
+
+func settingsGetIntFunction_Set() error {
+	var err error
+	settingsGetIntFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetIntFunction, err = settingsStruct.InvokerNew("get_int")
+	})
+	return err
+}
+
+// GetInt is a representation of the C type g_settings_get_int.
+func (recv *Settings) GetInt(key string) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetIntFunction_Set()
+	if err == nil {
+		ret = settingsGetIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var settingsGetInt64Function *gi.Function
+var settingsGetInt64Function_Once sync.Once
+
+func settingsGetInt64Function_Set() error {
+	var err error
+	settingsGetInt64Function_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetInt64Function, err = settingsStruct.InvokerNew("get_int64")
+	})
+	return err
+}
+
+// GetInt64 is a representation of the C type g_settings_get_int64.
+func (recv *Settings) GetInt64(key string) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetInt64Function_Set()
+	if err == nil {
+		ret = settingsGetInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_get_mapped' : parameter 'mapping' of type 'SettingsGetMapping' not supported
+
+// UNSUPPORTED : C value 'g_settings_get_range' : return type 'GLib.Variant' not supported
+
+var settingsGetStringFunction *gi.Function
+var settingsGetStringFunction_Once sync.Once
+
+func settingsGetStringFunction_Set() error {
+	var err error
+	settingsGetStringFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetStringFunction, err = settingsStruct.InvokerNew("get_string")
+	})
+	return err
+}
+
+// GetString is a representation of the C type g_settings_get_string.
+func (recv *Settings) GetString(key string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetStringFunction_Set()
+	if err == nil {
+		ret = settingsGetStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var settingsGetStrvFunction *gi.Function
+var settingsGetStrvFunction_Once sync.Once
+
+func settingsGetStrvFunction_Set() error {
+	var err error
+	settingsGetStrvFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetStrvFunction, err = settingsStruct.InvokerNew("get_strv")
+	})
+	return err
+}
+
+// GetStrv is a representation of the C type g_settings_get_strv.
+func (recv *Settings) GetStrv(key string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	err := settingsGetStrvFunction_Set()
+	if err == nil {
+		settingsGetStrvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var settingsGetUintFunction *gi.Function
+var settingsGetUintFunction_Once sync.Once
+
+func settingsGetUintFunction_Set() error {
+	var err error
+	settingsGetUintFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetUintFunction, err = settingsStruct.InvokerNew("get_uint")
+	})
+	return err
+}
+
+// GetUint is a representation of the C type g_settings_get_uint.
+func (recv *Settings) GetUint(key string) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetUintFunction_Set()
+	if err == nil {
+		ret = settingsGetUintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var settingsGetUint64Function *gi.Function
+var settingsGetUint64Function_Once sync.Once
+
+func settingsGetUint64Function_Set() error {
+	var err error
+	settingsGetUint64Function_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetUint64Function, err = settingsStruct.InvokerNew("get_uint64")
+	})
+	return err
+}
+
+// GetUint64 is a representation of the C type g_settings_get_uint64.
+func (recv *Settings) GetUint64(key string) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := settingsGetUint64Function_Set()
+	if err == nil {
+		ret = settingsGetUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_get_user_value' : return type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_settings_get_value' : return type 'GLib.Variant' not supported
+
+var settingsIsWritableFunction *gi.Function
+var settingsIsWritableFunction_Once sync.Once
+
+func settingsIsWritableFunction_Set() error {
+	var err error
+	settingsIsWritableFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsIsWritableFunction, err = settingsStruct.InvokerNew("is_writable")
+	})
+	return err
+}
+
+// IsWritable is a representation of the C type g_settings_is_writable.
+func (recv *Settings) IsWritable(name string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := settingsIsWritableFunction_Set()
+	if err == nil {
+		ret = settingsIsWritableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsListChildrenFunction *gi.Function
+var settingsListChildrenFunction_Once sync.Once
+
+func settingsListChildrenFunction_Set() error {
+	var err error
+	settingsListChildrenFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsListChildrenFunction, err = settingsStruct.InvokerNew("list_children")
+	})
+	return err
+}
+
+// ListChildren is a representation of the C type g_settings_list_children.
+func (recv *Settings) ListChildren() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := settingsListChildrenFunction_Set()
+	if err == nil {
+		settingsListChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var settingsListKeysFunction *gi.Function
+var settingsListKeysFunction_Once sync.Once
+
+func settingsListKeysFunction_Set() error {
+	var err error
+	settingsListKeysFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsListKeysFunction, err = settingsStruct.InvokerNew("list_keys")
+	})
+	return err
+}
+
+// ListKeys is a representation of the C type g_settings_list_keys.
+func (recv *Settings) ListKeys() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := settingsListKeysFunction_Set()
+	if err == nil {
+		settingsListKeysFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_settings_range_check' : parameter 'value' of type 'GLib.Variant' not supported
+
+var settingsResetFunction *gi.Function
+var settingsResetFunction_Once sync.Once
+
+func settingsResetFunction_Set() error {
+	var err error
+	settingsResetFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsResetFunction, err = settingsStruct.InvokerNew("reset")
+	})
+	return err
+}
+
+// Reset is a representation of the C type g_settings_reset.
+func (recv *Settings) Reset(key string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	err := settingsResetFunction_Set()
+	if err == nil {
+		settingsResetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var settingsRevertFunction *gi.Function
+var settingsRevertFunction_Once sync.Once
+
+func settingsRevertFunction_Set() error {
+	var err error
+	settingsRevertFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsRevertFunction, err = settingsStruct.InvokerNew("revert")
+	})
+	return err
+}
+
+// Revert is a representation of the C type g_settings_revert.
+func (recv *Settings) Revert() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := settingsRevertFunction_Set()
+	if err == nil {
+		settingsRevertFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_settings_set' : parameter '...' of type 'nil' not supported
+
+var settingsSetBooleanFunction *gi.Function
+var settingsSetBooleanFunction_Once sync.Once
+
+func settingsSetBooleanFunction_Set() error {
+	var err error
+	settingsSetBooleanFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetBooleanFunction, err = settingsStruct.InvokerNew("set_boolean")
+	})
+	return err
+}
+
+// SetBoolean is a representation of the C type g_settings_set_boolean.
+func (recv *Settings) SetBoolean(key string, value bool) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetBoolean(value)
+
+	var ret gi.Argument
+
+	err := settingsSetBooleanFunction_Set()
+	if err == nil {
+		ret = settingsSetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetDoubleFunction *gi.Function
+var settingsSetDoubleFunction_Once sync.Once
+
+func settingsSetDoubleFunction_Set() error {
+	var err error
+	settingsSetDoubleFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetDoubleFunction, err = settingsStruct.InvokerNew("set_double")
+	})
+	return err
+}
+
+// SetDouble is a representation of the C type g_settings_set_double.
+func (recv *Settings) SetDouble(key string, value float64) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetFloat64(value)
+
+	var ret gi.Argument
+
+	err := settingsSetDoubleFunction_Set()
+	if err == nil {
+		ret = settingsSetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetEnumFunction *gi.Function
+var settingsSetEnumFunction_Once sync.Once
+
+func settingsSetEnumFunction_Set() error {
+	var err error
+	settingsSetEnumFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetEnumFunction, err = settingsStruct.InvokerNew("set_enum")
+	})
+	return err
+}
+
+// SetEnum is a representation of the C type g_settings_set_enum.
+func (recv *Settings) SetEnum(key string, value int32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetInt32(value)
+
+	var ret gi.Argument
+
+	err := settingsSetEnumFunction_Set()
+	if err == nil {
+		ret = settingsSetEnumFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetFlagsFunction *gi.Function
+var settingsSetFlagsFunction_Once sync.Once
+
+func settingsSetFlagsFunction_Set() error {
+	var err error
+	settingsSetFlagsFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetFlagsFunction, err = settingsStruct.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_settings_set_flags.
+func (recv *Settings) SetFlags(key string, value uint32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetUint32(value)
+
+	var ret gi.Argument
+
+	err := settingsSetFlagsFunction_Set()
+	if err == nil {
+		ret = settingsSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetIntFunction *gi.Function
+var settingsSetIntFunction_Once sync.Once
+
+func settingsSetIntFunction_Set() error {
+	var err error
+	settingsSetIntFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetIntFunction, err = settingsStruct.InvokerNew("set_int")
+	})
+	return err
+}
+
+// SetInt is a representation of the C type g_settings_set_int.
+func (recv *Settings) SetInt(key string, value int32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetInt32(value)
+
+	var ret gi.Argument
+
+	err := settingsSetIntFunction_Set()
+	if err == nil {
+		ret = settingsSetIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetInt64Function *gi.Function
+var settingsSetInt64Function_Once sync.Once
+
+func settingsSetInt64Function_Set() error {
+	var err error
+	settingsSetInt64Function_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetInt64Function, err = settingsStruct.InvokerNew("set_int64")
+	})
+	return err
+}
+
+// SetInt64 is a representation of the C type g_settings_set_int64.
+func (recv *Settings) SetInt64(key string, value int64) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetInt64(value)
+
+	var ret gi.Argument
+
+	err := settingsSetInt64Function_Set()
+	if err == nil {
+		ret = settingsSetInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetStringFunction *gi.Function
+var settingsSetStringFunction_Once sync.Once
+
+func settingsSetStringFunction_Set() error {
+	var err error
+	settingsSetStringFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetStringFunction, err = settingsStruct.InvokerNew("set_string")
+	})
+	return err
+}
+
+// SetString is a representation of the C type g_settings_set_string.
+func (recv *Settings) SetString(key string, value string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetString(value)
+
+	var ret gi.Argument
+
+	err := settingsSetStringFunction_Set()
+	if err == nil {
+		ret = settingsSetStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_set_strv' : parameter 'value' of type 'nil' not supported
+
+var settingsSetUintFunction *gi.Function
+var settingsSetUintFunction_Once sync.Once
+
+func settingsSetUintFunction_Set() error {
+	var err error
+	settingsSetUintFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetUintFunction, err = settingsStruct.InvokerNew("set_uint")
+	})
+	return err
+}
+
+// SetUint is a representation of the C type g_settings_set_uint.
+func (recv *Settings) SetUint(key string, value uint32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetUint32(value)
+
+	var ret gi.Argument
+
+	err := settingsSetUintFunction_Set()
+	if err == nil {
+		ret = settingsSetUintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var settingsSetUint64Function *gi.Function
+var settingsSetUint64Function_Once sync.Once
+
+func settingsSetUint64Function_Set() error {
+	var err error
+	settingsSetUint64Function_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetUint64Function, err = settingsStruct.InvokerNew("set_uint64")
+	})
+	return err
+}
+
+// SetUint64 is a representation of the C type g_settings_set_uint64.
+func (recv *Settings) SetUint64(key string, value uint64) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetUint64(value)
+
+	var ret gi.Argument
+
+	err := settingsSetUint64Function_Set()
+	if err == nil {
+		ret = settingsSetUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_set_value' : parameter 'value' of type 'GLib.Variant' not supported
+
+var settingsBackendStruct *gi.Struct
+var settingsBackendStruct_Once sync.Once
+
+func settingsBackendStruct_Set() error {
+	var err error
+	settingsBackendStruct_Once.Do(func() {
+		settingsBackendStruct, err = gi.StructNew("Gio", "SettingsBackend")
+	})
+	return err
+}
+
+type SettingsBackend struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_settings_backend_changed' : parameter 'origin_tag' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_settings_backend_changed_tree' : parameter 'tree' of type 'GLib.Tree' not supported
+
+// UNSUPPORTED : C value 'g_settings_backend_keys_changed' : parameter 'items' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_settings_backend_path_changed' : parameter 'origin_tag' of type 'gpointer' not supported
+
+var settingsBackendPathWritableChangedFunction *gi.Function
+var settingsBackendPathWritableChangedFunction_Once sync.Once
+
+func settingsBackendPathWritableChangedFunction_Set() error {
+	var err error
+	settingsBackendPathWritableChangedFunction_Once.Do(func() {
+		err = settingsBackendStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendPathWritableChangedFunction, err = settingsBackendStruct.InvokerNew("path_writable_changed")
+	})
+	return err
+}
+
+// PathWritableChanged is a representation of the C type g_settings_backend_path_writable_changed.
+func (recv *SettingsBackend) PathWritableChanged(path string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(path)
+
+	err := settingsBackendPathWritableChangedFunction_Set()
+	if err == nil {
+		settingsBackendPathWritableChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var settingsBackendWritableChangedFunction *gi.Function
+var settingsBackendWritableChangedFunction_Once sync.Once
+
+func settingsBackendWritableChangedFunction_Set() error {
+	var err error
+	settingsBackendWritableChangedFunction_Once.Do(func() {
+		err = settingsBackendStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendWritableChangedFunction, err = settingsBackendStruct.InvokerNew("writable_changed")
+	})
+	return err
+}
+
+// WritableChanged is a representation of the C type g_settings_backend_writable_changed.
+func (recv *SettingsBackend) WritableChanged(key string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	err := settingsBackendWritableChangedFunction_Set()
+	if err == nil {
+		settingsBackendWritableChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// SettingsBackendStruct creates an uninitialised SettingsBackend.
+func SettingsBackendStruct() *SettingsBackend {
+	err := settingsBackendStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SettingsBackend{native: settingsBackendStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSettingsBackend)
+	return structGo
+}
+func finalizeSettingsBackend(obj *SettingsBackend) {
+	settingsBackendStruct.Free(obj.native)
+}
+
+var simpleActionStruct *gi.Struct
+var simpleActionStruct_Once sync.Once
+
+func simpleActionStruct_Set() error {
+	var err error
+	simpleActionStruct_Once.Do(func() {
+		simpleActionStruct, err = gi.StructNew("Gio", "SimpleAction")
+	})
+	return err
+}
+
+type SimpleAction struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_simple_action_new' : parameter 'parameter_type' of type 'GLib.VariantType' not supported
+
+// UNSUPPORTED : C value 'g_simple_action_new_stateful' : parameter 'parameter_type' of type 'GLib.VariantType' not supported
+
+var simpleActionSetEnabledFunction *gi.Function
+var simpleActionSetEnabledFunction_Once sync.Once
+
+func simpleActionSetEnabledFunction_Set() error {
+	var err error
+	simpleActionSetEnabledFunction_Once.Do(func() {
+		err = simpleActionStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleActionSetEnabledFunction, err = simpleActionStruct.InvokerNew("set_enabled")
+	})
+	return err
+}
+
+// SetEnabled is a representation of the C type g_simple_action_set_enabled.
+func (recv *SimpleAction) SetEnabled(enabled bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(enabled)
+
+	err := simpleActionSetEnabledFunction_Set()
+	if err == nil {
+		simpleActionSetEnabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_simple_action_set_state' : parameter 'value' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g_simple_action_set_state_hint' : parameter 'state_hint' of type 'GLib.Variant' not supported
+
+var simpleActionGroupStruct *gi.Struct
+var simpleActionGroupStruct_Once sync.Once
+
+func simpleActionGroupStruct_Set() error {
+	var err error
+	simpleActionGroupStruct_Once.Do(func() {
+		simpleActionGroupStruct, err = gi.StructNew("Gio", "SimpleActionGroup")
+	})
+	return err
+}
+
+type SimpleActionGroup struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_simple_action_group_new' : return type 'SimpleActionGroup' not supported
+
+// UNSUPPORTED : C value 'g_simple_action_group_add_entries' : parameter 'entries' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_simple_action_group_insert' : parameter 'action' of type 'Action' not supported
+
+// UNSUPPORTED : C value 'g_simple_action_group_lookup' : return type 'Action' not supported
+
+var simpleActionGroupRemoveFunction *gi.Function
+var simpleActionGroupRemoveFunction_Once sync.Once
+
+func simpleActionGroupRemoveFunction_Set() error {
+	var err error
+	simpleActionGroupRemoveFunction_Once.Do(func() {
+		err = simpleActionGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleActionGroupRemoveFunction, err = simpleActionGroupStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_simple_action_group_remove.
+func (recv *SimpleActionGroup) Remove(actionName string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(actionName)
+
+	err := simpleActionGroupRemoveFunction_Set()
+	if err == nil {
+		simpleActionGroupRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleAsyncResultStruct *gi.Struct
+var simpleAsyncResultStruct_Once sync.Once
+
+func simpleAsyncResultStruct_Set() error {
+	var err error
+	simpleAsyncResultStruct_Once.Do(func() {
+		simpleAsyncResultStruct, err = gi.StructNew("Gio", "SimpleAsyncResult")
+	})
+	return err
+}
+
+type SimpleAsyncResult struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_new' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_new_error' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_new_from_error' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_new_take_error' : parameter 'source_object' of type 'GObject.Object' not supported
+
+var simpleAsyncResultCompleteFunction *gi.Function
+var simpleAsyncResultCompleteFunction_Once sync.Once
+
+func simpleAsyncResultCompleteFunction_Set() error {
+	var err error
+	simpleAsyncResultCompleteFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultCompleteFunction, err = simpleAsyncResultStruct.InvokerNew("complete")
+	})
+	return err
+}
+
+// Complete is a representation of the C type g_simple_async_result_complete.
+func (recv *SimpleAsyncResult) Complete() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := simpleAsyncResultCompleteFunction_Set()
+	if err == nil {
+		simpleAsyncResultCompleteFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleAsyncResultCompleteInIdleFunction *gi.Function
+var simpleAsyncResultCompleteInIdleFunction_Once sync.Once
+
+func simpleAsyncResultCompleteInIdleFunction_Set() error {
+	var err error
+	simpleAsyncResultCompleteInIdleFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultCompleteInIdleFunction, err = simpleAsyncResultStruct.InvokerNew("complete_in_idle")
+	})
+	return err
+}
+
+// CompleteInIdle is a representation of the C type g_simple_async_result_complete_in_idle.
+func (recv *SimpleAsyncResult) CompleteInIdle() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := simpleAsyncResultCompleteInIdleFunction_Set()
+	if err == nil {
+		simpleAsyncResultCompleteInIdleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleAsyncResultGetOpResGbooleanFunction *gi.Function
+var simpleAsyncResultGetOpResGbooleanFunction_Once sync.Once
+
+func simpleAsyncResultGetOpResGbooleanFunction_Set() error {
+	var err error
+	simpleAsyncResultGetOpResGbooleanFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultGetOpResGbooleanFunction, err = simpleAsyncResultStruct.InvokerNew("get_op_res_gboolean")
+	})
+	return err
+}
+
+// GetOpResGboolean is a representation of the C type g_simple_async_result_get_op_res_gboolean.
+func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := simpleAsyncResultGetOpResGbooleanFunction_Set()
+	if err == nil {
+		ret = simpleAsyncResultGetOpResGbooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_get_op_res_gpointer' : return type 'gpointer' not supported
+
+var simpleAsyncResultGetOpResGssizeFunction *gi.Function
+var simpleAsyncResultGetOpResGssizeFunction_Once sync.Once
+
+func simpleAsyncResultGetOpResGssizeFunction_Set() error {
+	var err error
+	simpleAsyncResultGetOpResGssizeFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultGetOpResGssizeFunction, err = simpleAsyncResultStruct.InvokerNew("get_op_res_gssize")
+	})
+	return err
+}
+
+// GetOpResGssize is a representation of the C type g_simple_async_result_get_op_res_gssize.
+func (recv *SimpleAsyncResult) GetOpResGssize() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := simpleAsyncResultGetOpResGssizeFunction_Set()
+	if err == nil {
+		ret = simpleAsyncResultGetOpResGssizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_get_source_tag' : return type 'gpointer' not supported
+
+var simpleAsyncResultPropagateErrorFunction *gi.Function
+var simpleAsyncResultPropagateErrorFunction_Once sync.Once
+
+func simpleAsyncResultPropagateErrorFunction_Set() error {
+	var err error
+	simpleAsyncResultPropagateErrorFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultPropagateErrorFunction, err = simpleAsyncResultStruct.InvokerNew("propagate_error")
+	})
+	return err
+}
+
+// PropagateError is a representation of the C type g_simple_async_result_propagate_error.
+func (recv *SimpleAsyncResult) PropagateError() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := simpleAsyncResultPropagateErrorFunction_Set()
+	if err == nil {
+		ret = simpleAsyncResultPropagateErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_run_in_thread' : parameter 'func' of type 'SimpleAsyncThreadFunc' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_set_check_cancellable' : parameter 'check_cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_set_error' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_set_error_va' : parameter 'args' of type 'va_list' not supported
+
+// UNSUPPORTED : C value 'g_simple_async_result_set_from_error' : parameter 'error' of type 'GLib.Error' not supported
+
+var simpleAsyncResultSetHandleCancellationFunction *gi.Function
+var simpleAsyncResultSetHandleCancellationFunction_Once sync.Once
+
+func simpleAsyncResultSetHandleCancellationFunction_Set() error {
+	var err error
+	simpleAsyncResultSetHandleCancellationFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultSetHandleCancellationFunction, err = simpleAsyncResultStruct.InvokerNew("set_handle_cancellation")
+	})
+	return err
+}
+
+// SetHandleCancellation is a representation of the C type g_simple_async_result_set_handle_cancellation.
+func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(handleCancellation)
+
+	err := simpleAsyncResultSetHandleCancellationFunction_Set()
+	if err == nil {
+		simpleAsyncResultSetHandleCancellationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleAsyncResultSetOpResGbooleanFunction *gi.Function
+var simpleAsyncResultSetOpResGbooleanFunction_Once sync.Once
+
+func simpleAsyncResultSetOpResGbooleanFunction_Set() error {
+	var err error
+	simpleAsyncResultSetOpResGbooleanFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultSetOpResGbooleanFunction, err = simpleAsyncResultStruct.InvokerNew("set_op_res_gboolean")
+	})
+	return err
+}
+
+// SetOpResGboolean is a representation of the C type g_simple_async_result_set_op_res_gboolean.
+func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(opRes)
+
+	err := simpleAsyncResultSetOpResGbooleanFunction_Set()
+	if err == nil {
+		simpleAsyncResultSetOpResGbooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_set_op_res_gpointer' : parameter 'op_res' of type 'gpointer' not supported
+
+var simpleAsyncResultSetOpResGssizeFunction *gi.Function
+var simpleAsyncResultSetOpResGssizeFunction_Once sync.Once
+
+func simpleAsyncResultSetOpResGssizeFunction_Set() error {
+	var err error
+	simpleAsyncResultSetOpResGssizeFunction_Once.Do(func() {
+		err = simpleAsyncResultStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultSetOpResGssizeFunction, err = simpleAsyncResultStruct.InvokerNew("set_op_res_gssize")
+	})
+	return err
+}
+
+// SetOpResGssize is a representation of the C type g_simple_async_result_set_op_res_gssize.
+func (recv *SimpleAsyncResult) SetOpResGssize(opRes int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(opRes)
+
+	err := simpleAsyncResultSetOpResGssizeFunction_Set()
+	if err == nil {
+		simpleAsyncResultSetOpResGssizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_simple_async_result_take_error' : parameter 'error' of type 'GLib.Error' not supported
+
+var simpleIOStreamStruct *gi.Struct
+var simpleIOStreamStruct_Once sync.Once
+
+func simpleIOStreamStruct_Set() error {
+	var err error
+	simpleIOStreamStruct_Once.Do(func() {
+		simpleIOStreamStruct, err = gi.StructNew("Gio", "SimpleIOStream")
+	})
+	return err
+}
+
+type SimpleIOStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_simple_io_stream_new' : parameter 'input_stream' of type 'InputStream' not supported
+
+var simplePermissionStruct *gi.Struct
+var simplePermissionStruct_Once sync.Once
+
+func simplePermissionStruct_Set() error {
+	var err error
+	simplePermissionStruct_Once.Do(func() {
+		simplePermissionStruct, err = gi.StructNew("Gio", "SimplePermission")
+	})
+	return err
+}
+
+type SimplePermission struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_simple_permission_new' : return type 'SimplePermission' not supported
+
+var simpleProxyResolverStruct *gi.Struct
+var simpleProxyResolverStruct_Once sync.Once
+
+func simpleProxyResolverStruct_Set() error {
+	var err error
+	simpleProxyResolverStruct_Once.Do(func() {
+		simpleProxyResolverStruct, err = gi.StructNew("Gio", "SimpleProxyResolver")
+	})
+	return err
+}
+
+type SimpleProxyResolver struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+var simpleProxyResolverSetDefaultProxyFunction *gi.Function
+var simpleProxyResolverSetDefaultProxyFunction_Once sync.Once
+
+func simpleProxyResolverSetDefaultProxyFunction_Set() error {
+	var err error
+	simpleProxyResolverSetDefaultProxyFunction_Once.Do(func() {
+		err = simpleProxyResolverStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleProxyResolverSetDefaultProxyFunction, err = simpleProxyResolverStruct.InvokerNew("set_default_proxy")
+	})
+	return err
+}
+
+// SetDefaultProxy is a representation of the C type g_simple_proxy_resolver_set_default_proxy.
+func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(defaultProxy)
+
+	err := simpleProxyResolverSetDefaultProxyFunction_Set()
+	if err == nil {
+		simpleProxyResolverSetDefaultProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleProxyResolverSetIgnoreHostsFunction *gi.Function
+var simpleProxyResolverSetIgnoreHostsFunction_Once sync.Once
+
+func simpleProxyResolverSetIgnoreHostsFunction_Set() error {
+	var err error
+	simpleProxyResolverSetIgnoreHostsFunction_Once.Do(func() {
+		err = simpleProxyResolverStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleProxyResolverSetIgnoreHostsFunction, err = simpleProxyResolverStruct.InvokerNew("set_ignore_hosts")
+	})
+	return err
+}
+
+// SetIgnoreHosts is a representation of the C type g_simple_proxy_resolver_set_ignore_hosts.
+func (recv *SimpleProxyResolver) SetIgnoreHosts(ignoreHosts string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(ignoreHosts)
+
+	err := simpleProxyResolverSetIgnoreHostsFunction_Set()
+	if err == nil {
+		simpleProxyResolverSetIgnoreHostsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var simpleProxyResolverSetUriProxyFunction *gi.Function
+var simpleProxyResolverSetUriProxyFunction_Once sync.Once
+
+func simpleProxyResolverSetUriProxyFunction_Set() error {
+	var err error
+	simpleProxyResolverSetUriProxyFunction_Once.Do(func() {
+		err = simpleProxyResolverStruct_Set()
+		if err != nil {
+			return
+		}
+		simpleProxyResolverSetUriProxyFunction, err = simpleProxyResolverStruct.InvokerNew("set_uri_proxy")
+	})
+	return err
+}
+
+// SetUriProxy is a representation of the C type g_simple_proxy_resolver_set_uri_proxy.
+func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uriScheme)
+	inArgs[2].SetString(proxy)
+
+	err := simpleProxyResolverSetUriProxyFunction_Set()
+	if err == nil {
+		simpleProxyResolverSetUriProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// SimpleProxyResolverStruct creates an uninitialised SimpleProxyResolver.
+func SimpleProxyResolverStruct() *SimpleProxyResolver {
+	err := simpleProxyResolverStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SimpleProxyResolver{native: simpleProxyResolverStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSimpleProxyResolver)
+	return structGo
+}
+func finalizeSimpleProxyResolver(obj *SimpleProxyResolver) {
+	simpleProxyResolverStruct.Free(obj.native)
+}
+
+var socketStruct *gi.Struct
+var socketStruct_Once sync.Once
+
+func socketStruct_Set() error {
+	var err error
+	socketStruct_Once.Do(func() {
+		socketStruct, err = gi.StructNew("Gio", "Socket")
+	})
+	return err
+}
+
+type Socket struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *Socket) FieldPriv() *SocketPrivate {
+	argValue := gi.FieldGet(socketStruct, recv.native, "priv")
+	value := &SocketPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *Socket) SetFieldPriv(value *SocketPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_socket_new' : parameter 'family' of type 'SocketFamily' not supported
+
+// UNSUPPORTED : C value 'g_socket_new_from_fd' : return type 'Socket' not supported
+
+// UNSUPPORTED : C value 'g_socket_accept' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_bind' : parameter 'address' of type 'SocketAddress' not supported
+
+var socketCheckConnectResultFunction *gi.Function
+var socketCheckConnectResultFunction_Once sync.Once
+
+func socketCheckConnectResultFunction_Set() error {
+	var err error
+	socketCheckConnectResultFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketCheckConnectResultFunction, err = socketStruct.InvokerNew("check_connect_result")
+	})
+	return err
+}
+
+// CheckConnectResult is a representation of the C type g_socket_check_connect_result.
+func (recv *Socket) CheckConnectResult() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketCheckConnectResultFunction_Set()
+	if err == nil {
+		ret = socketCheckConnectResultFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketCloseFunction *gi.Function
+var socketCloseFunction_Once sync.Once
+
+func socketCloseFunction_Set() error {
+	var err error
+	socketCloseFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketCloseFunction, err = socketStruct.InvokerNew("close")
+	})
+	return err
+}
+
+// Close is a representation of the C type g_socket_close.
+func (recv *Socket) Close() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketCloseFunction_Set()
+	if err == nil {
+		ret = socketCloseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_condition_check' : parameter 'condition' of type 'GLib.IOCondition' not supported
+
+// UNSUPPORTED : C value 'g_socket_condition_timed_wait' : parameter 'condition' of type 'GLib.IOCondition' not supported
+
+// UNSUPPORTED : C value 'g_socket_condition_wait' : parameter 'condition' of type 'GLib.IOCondition' not supported
+
+// UNSUPPORTED : C value 'g_socket_connect' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_factory_create_connection' : return type 'SocketConnection' not supported
+
+// UNSUPPORTED : C value 'g_socket_create_source' : parameter 'condition' of type 'GLib.IOCondition' not supported
+
+var socketGetAvailableBytesFunction *gi.Function
+var socketGetAvailableBytesFunction_Once sync.Once
+
+func socketGetAvailableBytesFunction_Set() error {
+	var err error
+	socketGetAvailableBytesFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetAvailableBytesFunction, err = socketStruct.InvokerNew("get_available_bytes")
+	})
+	return err
+}
+
+// GetAvailableBytes is a representation of the C type g_socket_get_available_bytes.
+func (recv *Socket) GetAvailableBytes() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetAvailableBytesFunction_Set()
+	if err == nil {
+		ret = socketGetAvailableBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var socketGetBlockingFunction *gi.Function
+var socketGetBlockingFunction_Once sync.Once
+
+func socketGetBlockingFunction_Set() error {
+	var err error
+	socketGetBlockingFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetBlockingFunction, err = socketStruct.InvokerNew("get_blocking")
+	})
+	return err
+}
+
+// GetBlocking is a representation of the C type g_socket_get_blocking.
+func (recv *Socket) GetBlocking() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetBlockingFunction_Set()
+	if err == nil {
+		ret = socketGetBlockingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketGetBroadcastFunction *gi.Function
+var socketGetBroadcastFunction_Once sync.Once
+
+func socketGetBroadcastFunction_Set() error {
+	var err error
+	socketGetBroadcastFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetBroadcastFunction, err = socketStruct.InvokerNew("get_broadcast")
+	})
+	return err
+}
+
+// GetBroadcast is a representation of the C type g_socket_get_broadcast.
+func (recv *Socket) GetBroadcast() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetBroadcastFunction_Set()
+	if err == nil {
+		ret = socketGetBroadcastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_get_credentials' : return type 'Credentials' not supported
+
+// UNSUPPORTED : C value 'g_socket_get_family' : return type 'SocketFamily' not supported
+
+var socketGetFdFunction *gi.Function
+var socketGetFdFunction_Once sync.Once
+
+func socketGetFdFunction_Set() error {
+	var err error
+	socketGetFdFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetFdFunction, err = socketStruct.InvokerNew("get_fd")
+	})
+	return err
+}
+
+// GetFd is a representation of the C type g_socket_get_fd.
+func (recv *Socket) GetFd() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetFdFunction_Set()
+	if err == nil {
+		ret = socketGetFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var socketGetKeepaliveFunction *gi.Function
+var socketGetKeepaliveFunction_Once sync.Once
+
+func socketGetKeepaliveFunction_Set() error {
+	var err error
+	socketGetKeepaliveFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetKeepaliveFunction, err = socketStruct.InvokerNew("get_keepalive")
+	})
+	return err
+}
+
+// GetKeepalive is a representation of the C type g_socket_get_keepalive.
+func (recv *Socket) GetKeepalive() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetKeepaliveFunction_Set()
+	if err == nil {
+		ret = socketGetKeepaliveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketGetListenBacklogFunction *gi.Function
+var socketGetListenBacklogFunction_Once sync.Once
+
+func socketGetListenBacklogFunction_Set() error {
+	var err error
+	socketGetListenBacklogFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetListenBacklogFunction, err = socketStruct.InvokerNew("get_listen_backlog")
+	})
+	return err
+}
+
+// GetListenBacklog is a representation of the C type g_socket_get_listen_backlog.
+func (recv *Socket) GetListenBacklog() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetListenBacklogFunction_Set()
+	if err == nil {
+		ret = socketGetListenBacklogFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_get_local_address' : return type 'SocketAddress' not supported
+
+var socketGetMulticastLoopbackFunction *gi.Function
+var socketGetMulticastLoopbackFunction_Once sync.Once
+
+func socketGetMulticastLoopbackFunction_Set() error {
+	var err error
+	socketGetMulticastLoopbackFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetMulticastLoopbackFunction, err = socketStruct.InvokerNew("get_multicast_loopback")
+	})
+	return err
+}
+
+// GetMulticastLoopback is a representation of the C type g_socket_get_multicast_loopback.
+func (recv *Socket) GetMulticastLoopback() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetMulticastLoopbackFunction_Set()
+	if err == nil {
+		ret = socketGetMulticastLoopbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketGetMulticastTtlFunction *gi.Function
+var socketGetMulticastTtlFunction_Once sync.Once
+
+func socketGetMulticastTtlFunction_Set() error {
+	var err error
+	socketGetMulticastTtlFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetMulticastTtlFunction, err = socketStruct.InvokerNew("get_multicast_ttl")
+	})
+	return err
+}
+
+// GetMulticastTtl is a representation of the C type g_socket_get_multicast_ttl.
+func (recv *Socket) GetMulticastTtl() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetMulticastTtlFunction_Set()
+	if err == nil {
+		ret = socketGetMulticastTtlFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var socketGetOptionFunction *gi.Function
+var socketGetOptionFunction_Once sync.Once
+
+func socketGetOptionFunction_Set() error {
+	var err error
+	socketGetOptionFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetOptionFunction, err = socketStruct.InvokerNew("get_option")
+	})
+	return err
+}
+
+// GetOption is a representation of the C type g_socket_get_option.
+func (recv *Socket) GetOption(level int32, optname int32) (bool, int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(level)
+	inArgs[2].SetInt32(optname)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := socketGetOptionFunction_Set()
+	if err == nil {
+		ret = socketGetOptionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+
+	return retGo, out0
+}
+
+// UNSUPPORTED : C value 'g_socket_get_protocol' : return type 'SocketProtocol' not supported
+
+// UNSUPPORTED : C value 'g_socket_get_remote_address' : return type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_get_socket_type' : return type 'SocketType' not supported
+
+var socketGetTimeoutFunction *gi.Function
+var socketGetTimeoutFunction_Once sync.Once
+
+func socketGetTimeoutFunction_Set() error {
+	var err error
+	socketGetTimeoutFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetTimeoutFunction, err = socketStruct.InvokerNew("get_timeout")
+	})
+	return err
+}
+
+// GetTimeout is a representation of the C type g_socket_get_timeout.
+func (recv *Socket) GetTimeout() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetTimeoutFunction_Set()
+	if err == nil {
+		ret = socketGetTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var socketGetTtlFunction *gi.Function
+var socketGetTtlFunction_Once sync.Once
+
+func socketGetTtlFunction_Set() error {
+	var err error
+	socketGetTtlFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetTtlFunction, err = socketStruct.InvokerNew("get_ttl")
+	})
+	return err
+}
+
+// GetTtl is a representation of the C type g_socket_get_ttl.
+func (recv *Socket) GetTtl() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketGetTtlFunction_Set()
+	if err == nil {
+		ret = socketGetTtlFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var socketIsClosedFunction *gi.Function
+var socketIsClosedFunction_Once sync.Once
+
+func socketIsClosedFunction_Set() error {
+	var err error
+	socketIsClosedFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketIsClosedFunction, err = socketStruct.InvokerNew("is_closed")
+	})
+	return err
+}
+
+// IsClosed is a representation of the C type g_socket_is_closed.
+func (recv *Socket) IsClosed() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketIsClosedFunction_Set()
+	if err == nil {
+		ret = socketIsClosedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketIsConnectedFunction *gi.Function
+var socketIsConnectedFunction_Once sync.Once
+
+func socketIsConnectedFunction_Set() error {
+	var err error
+	socketIsConnectedFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketIsConnectedFunction, err = socketStruct.InvokerNew("is_connected")
+	})
+	return err
+}
+
+// IsConnected is a representation of the C type g_socket_is_connected.
+func (recv *Socket) IsConnected() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketIsConnectedFunction_Set()
+	if err == nil {
+		ret = socketIsConnectedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_join_multicast_group' : parameter 'group' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_join_multicast_group_ssm' : parameter 'group' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_leave_multicast_group' : parameter 'group' of type 'InetAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_leave_multicast_group_ssm' : parameter 'group' of type 'InetAddress' not supported
+
+var socketListenFunction *gi.Function
+var socketListenFunction_Once sync.Once
+
+func socketListenFunction_Set() error {
+	var err error
+	socketListenFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketListenFunction, err = socketStruct.InvokerNew("listen")
+	})
+	return err
+}
+
+// Listen is a representation of the C type g_socket_listen.
+func (recv *Socket) Listen() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketListenFunction_Set()
+	if err == nil {
+		ret = socketListenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_receive' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_socket_receive_from' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_receive_message' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_receive_messages' : parameter 'messages' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_socket_receive_with_blocking' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_socket_send' : parameter 'buffer' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_socket_send_message' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_send_message_with_timeout' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_send_messages' : parameter 'messages' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_socket_send_to' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_send_with_blocking' : parameter 'buffer' of type 'nil' not supported
+
+var socketSetBlockingFunction *gi.Function
+var socketSetBlockingFunction_Once sync.Once
+
+func socketSetBlockingFunction_Set() error {
+	var err error
+	socketSetBlockingFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetBlockingFunction, err = socketStruct.InvokerNew("set_blocking")
+	})
+	return err
+}
+
+// SetBlocking is a representation of the C type g_socket_set_blocking.
+func (recv *Socket) SetBlocking(blocking bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(blocking)
+
+	err := socketSetBlockingFunction_Set()
+	if err == nil {
+		socketSetBlockingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetBroadcastFunction *gi.Function
+var socketSetBroadcastFunction_Once sync.Once
+
+func socketSetBroadcastFunction_Set() error {
+	var err error
+	socketSetBroadcastFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetBroadcastFunction, err = socketStruct.InvokerNew("set_broadcast")
+	})
+	return err
+}
+
+// SetBroadcast is a representation of the C type g_socket_set_broadcast.
+func (recv *Socket) SetBroadcast(broadcast bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(broadcast)
+
+	err := socketSetBroadcastFunction_Set()
+	if err == nil {
+		socketSetBroadcastFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetKeepaliveFunction *gi.Function
+var socketSetKeepaliveFunction_Once sync.Once
+
+func socketSetKeepaliveFunction_Set() error {
+	var err error
+	socketSetKeepaliveFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetKeepaliveFunction, err = socketStruct.InvokerNew("set_keepalive")
+	})
+	return err
+}
+
+// SetKeepalive is a representation of the C type g_socket_set_keepalive.
+func (recv *Socket) SetKeepalive(keepalive bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(keepalive)
+
+	err := socketSetKeepaliveFunction_Set()
+	if err == nil {
+		socketSetKeepaliveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetListenBacklogFunction *gi.Function
+var socketSetListenBacklogFunction_Once sync.Once
+
+func socketSetListenBacklogFunction_Set() error {
+	var err error
+	socketSetListenBacklogFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetListenBacklogFunction, err = socketStruct.InvokerNew("set_listen_backlog")
+	})
+	return err
+}
+
+// SetListenBacklog is a representation of the C type g_socket_set_listen_backlog.
+func (recv *Socket) SetListenBacklog(backlog int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(backlog)
+
+	err := socketSetListenBacklogFunction_Set()
+	if err == nil {
+		socketSetListenBacklogFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetMulticastLoopbackFunction *gi.Function
+var socketSetMulticastLoopbackFunction_Once sync.Once
+
+func socketSetMulticastLoopbackFunction_Set() error {
+	var err error
+	socketSetMulticastLoopbackFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetMulticastLoopbackFunction, err = socketStruct.InvokerNew("set_multicast_loopback")
+	})
+	return err
+}
+
+// SetMulticastLoopback is a representation of the C type g_socket_set_multicast_loopback.
+func (recv *Socket) SetMulticastLoopback(loopback bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(loopback)
+
+	err := socketSetMulticastLoopbackFunction_Set()
+	if err == nil {
+		socketSetMulticastLoopbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetMulticastTtlFunction *gi.Function
+var socketSetMulticastTtlFunction_Once sync.Once
+
+func socketSetMulticastTtlFunction_Set() error {
+	var err error
+	socketSetMulticastTtlFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetMulticastTtlFunction, err = socketStruct.InvokerNew("set_multicast_ttl")
+	})
+	return err
+}
+
+// SetMulticastTtl is a representation of the C type g_socket_set_multicast_ttl.
+func (recv *Socket) SetMulticastTtl(ttl uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(ttl)
+
+	err := socketSetMulticastTtlFunction_Set()
+	if err == nil {
+		socketSetMulticastTtlFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetOptionFunction *gi.Function
+var socketSetOptionFunction_Once sync.Once
+
+func socketSetOptionFunction_Set() error {
+	var err error
+	socketSetOptionFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetOptionFunction, err = socketStruct.InvokerNew("set_option")
+	})
+	return err
+}
+
+// SetOption is a representation of the C type g_socket_set_option.
+func (recv *Socket) SetOption(level int32, optname int32, value int32) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(level)
+	inArgs[2].SetInt32(optname)
+	inArgs[3].SetInt32(value)
+
+	var ret gi.Argument
+
+	err := socketSetOptionFunction_Set()
+	if err == nil {
+		ret = socketSetOptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketSetTimeoutFunction *gi.Function
+var socketSetTimeoutFunction_Once sync.Once
+
+func socketSetTimeoutFunction_Set() error {
+	var err error
+	socketSetTimeoutFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetTimeoutFunction, err = socketStruct.InvokerNew("set_timeout")
+	})
+	return err
+}
+
+// SetTimeout is a representation of the C type g_socket_set_timeout.
+func (recv *Socket) SetTimeout(timeout uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(timeout)
+
+	err := socketSetTimeoutFunction_Set()
+	if err == nil {
+		socketSetTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketSetTtlFunction *gi.Function
+var socketSetTtlFunction_Once sync.Once
+
+func socketSetTtlFunction_Set() error {
+	var err error
+	socketSetTtlFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSetTtlFunction, err = socketStruct.InvokerNew("set_ttl")
+	})
+	return err
+}
+
+// SetTtl is a representation of the C type g_socket_set_ttl.
+func (recv *Socket) SetTtl(ttl uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(ttl)
+
+	err := socketSetTtlFunction_Set()
+	if err == nil {
+		socketSetTtlFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketShutdownFunction *gi.Function
+var socketShutdownFunction_Once sync.Once
+
+func socketShutdownFunction_Set() error {
+	var err error
+	socketShutdownFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketShutdownFunction, err = socketStruct.InvokerNew("shutdown")
+	})
+	return err
+}
+
+// Shutdown is a representation of the C type g_socket_shutdown.
+func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(shutdownRead)
+	inArgs[2].SetBoolean(shutdownWrite)
+
+	var ret gi.Argument
+
+	err := socketShutdownFunction_Set()
+	if err == nil {
+		ret = socketShutdownFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketSpeaksIpv4Function *gi.Function
+var socketSpeaksIpv4Function_Once sync.Once
+
+func socketSpeaksIpv4Function_Set() error {
+	var err error
+	socketSpeaksIpv4Function_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketSpeaksIpv4Function, err = socketStruct.InvokerNew("speaks_ipv4")
+	})
+	return err
+}
+
+// SpeaksIpv4 is a representation of the C type g_socket_speaks_ipv4.
+func (recv *Socket) SpeaksIpv4() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketSpeaksIpv4Function_Set()
+	if err == nil {
+		ret = socketSpeaksIpv4Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketAddressStruct *gi.Struct
+var socketAddressStruct_Once sync.Once
+
+func socketAddressStruct_Set() error {
+	var err error
+	socketAddressStruct_Once.Do(func() {
+		socketAddressStruct, err = gi.StructNew("Gio", "SocketAddress")
+	})
+	return err
+}
+
+type SocketAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_socket_address_new_from_native' : parameter 'native' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_socket_address_get_family' : return type 'SocketFamily' not supported
+
+var socketAddressGetNativeSizeFunction *gi.Function
+var socketAddressGetNativeSizeFunction_Once sync.Once
+
+func socketAddressGetNativeSizeFunction_Set() error {
+	var err error
+	socketAddressGetNativeSizeFunction_Once.Do(func() {
+		err = socketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		socketAddressGetNativeSizeFunction, err = socketAddressStruct.InvokerNew("get_native_size")
+	})
+	return err
+}
+
+// GetNativeSize is a representation of the C type g_socket_address_get_native_size.
+func (recv *SocketAddress) GetNativeSize() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketAddressGetNativeSizeFunction_Set()
+	if err == nil {
+		ret = socketAddressGetNativeSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_address_to_native' : parameter 'dest' of type 'gpointer' not supported
+
+var socketAddressEnumeratorStruct *gi.Struct
+var socketAddressEnumeratorStruct_Once sync.Once
+
+func socketAddressEnumeratorStruct_Set() error {
+	var err error
+	socketAddressEnumeratorStruct_Once.Do(func() {
+		socketAddressEnumeratorStruct, err = gi.StructNew("Gio", "SocketAddressEnumerator")
+	})
+	return err
+}
+
+type SocketAddressEnumerator struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_socket_address_enumerator_next' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_address_enumerator_next_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_address_enumerator_next_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// SocketAddressEnumeratorStruct creates an uninitialised SocketAddressEnumerator.
+func SocketAddressEnumeratorStruct() *SocketAddressEnumerator {
+	err := socketAddressEnumeratorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketAddressEnumerator{native: socketAddressEnumeratorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketAddressEnumerator)
+	return structGo
+}
+func finalizeSocketAddressEnumerator(obj *SocketAddressEnumerator) {
+	socketAddressEnumeratorStruct.Free(obj.native)
+}
+
+var socketClientStruct *gi.Struct
+var socketClientStruct_Once sync.Once
+
+func socketClientStruct_Set() error {
+	var err error
+	socketClientStruct_Once.Do(func() {
+		socketClientStruct, err = gi.StructNew("Gio", "SocketClient")
+	})
+	return err
+}
+
+type SocketClient struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
+	argValue := gi.FieldGet(socketClientStruct, recv.native, "priv")
+	value := &SocketClientPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *SocketClient) SetFieldPriv(value *SocketClientPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketClientStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_socket_client_new' : return type 'SocketClient' not supported
+
+var socketClientAddApplicationProxyFunction *gi.Function
+var socketClientAddApplicationProxyFunction_Once sync.Once
+
+func socketClientAddApplicationProxyFunction_Set() error {
+	var err error
+	socketClientAddApplicationProxyFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientAddApplicationProxyFunction, err = socketClientStruct.InvokerNew("add_application_proxy")
+	})
+	return err
+}
+
+// AddApplicationProxy is a representation of the C type g_socket_client_add_application_proxy.
+func (recv *SocketClient) AddApplicationProxy(protocol string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(protocol)
+
+	err := socketClientAddApplicationProxyFunction_Set()
+	if err == nil {
+		socketClientAddApplicationProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_socket_client_connect' : parameter 'connectable' of type 'SocketConnectable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_async' : parameter 'connectable' of type 'SocketConnectable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_host' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_host_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_host_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_service' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_service_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_service_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_uri' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_uri_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_connect_to_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var socketClientGetEnableProxyFunction *gi.Function
+var socketClientGetEnableProxyFunction_Once sync.Once
+
+func socketClientGetEnableProxyFunction_Set() error {
+	var err error
+	socketClientGetEnableProxyFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetEnableProxyFunction, err = socketClientStruct.InvokerNew("get_enable_proxy")
+	})
+	return err
+}
+
+// GetEnableProxy is a representation of the C type g_socket_client_get_enable_proxy.
+func (recv *SocketClient) GetEnableProxy() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketClientGetEnableProxyFunction_Set()
+	if err == nil {
+		ret = socketClientGetEnableProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_client_get_family' : return type 'SocketFamily' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_get_local_address' : return type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_get_protocol' : return type 'SocketProtocol' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_get_proxy_resolver' : return type 'ProxyResolver' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_get_socket_type' : return type 'SocketType' not supported
+
+var socketClientGetTimeoutFunction *gi.Function
+var socketClientGetTimeoutFunction_Once sync.Once
+
+func socketClientGetTimeoutFunction_Set() error {
+	var err error
+	socketClientGetTimeoutFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetTimeoutFunction, err = socketClientStruct.InvokerNew("get_timeout")
+	})
+	return err
+}
+
+// GetTimeout is a representation of the C type g_socket_client_get_timeout.
+func (recv *SocketClient) GetTimeout() uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketClientGetTimeoutFunction_Set()
+	if err == nil {
+		ret = socketClientGetTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var socketClientGetTlsFunction *gi.Function
+var socketClientGetTlsFunction_Once sync.Once
+
+func socketClientGetTlsFunction_Set() error {
+	var err error
+	socketClientGetTlsFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetTlsFunction, err = socketClientStruct.InvokerNew("get_tls")
+	})
+	return err
+}
+
+// GetTls is a representation of the C type g_socket_client_get_tls.
+func (recv *SocketClient) GetTls() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketClientGetTlsFunction_Set()
+	if err == nil {
+		ret = socketClientGetTlsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_client_get_tls_validation_flags' : return type 'TlsCertificateFlags' not supported
+
+var socketClientSetEnableProxyFunction *gi.Function
+var socketClientSetEnableProxyFunction_Once sync.Once
+
+func socketClientSetEnableProxyFunction_Set() error {
+	var err error
+	socketClientSetEnableProxyFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetEnableProxyFunction, err = socketClientStruct.InvokerNew("set_enable_proxy")
+	})
+	return err
+}
+
+// SetEnableProxy is a representation of the C type g_socket_client_set_enable_proxy.
+func (recv *SocketClient) SetEnableProxy(enable bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(enable)
+
+	err := socketClientSetEnableProxyFunction_Set()
+	if err == nil {
+		socketClientSetEnableProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_socket_client_set_family' : parameter 'family' of type 'SocketFamily' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_set_local_address' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_set_protocol' : parameter 'protocol' of type 'SocketProtocol' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_set_proxy_resolver' : parameter 'proxy_resolver' of type 'ProxyResolver' not supported
+
+// UNSUPPORTED : C value 'g_socket_client_set_socket_type' : parameter 'type' of type 'SocketType' not supported
+
+var socketClientSetTimeoutFunction *gi.Function
+var socketClientSetTimeoutFunction_Once sync.Once
+
+func socketClientSetTimeoutFunction_Set() error {
+	var err error
+	socketClientSetTimeoutFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetTimeoutFunction, err = socketClientStruct.InvokerNew("set_timeout")
+	})
+	return err
+}
+
+// SetTimeout is a representation of the C type g_socket_client_set_timeout.
+func (recv *SocketClient) SetTimeout(timeout uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(timeout)
+
+	err := socketClientSetTimeoutFunction_Set()
+	if err == nil {
+		socketClientSetTimeoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketClientSetTlsFunction *gi.Function
+var socketClientSetTlsFunction_Once sync.Once
+
+func socketClientSetTlsFunction_Set() error {
+	var err error
+	socketClientSetTlsFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetTlsFunction, err = socketClientStruct.InvokerNew("set_tls")
+	})
+	return err
+}
+
+// SetTls is a representation of the C type g_socket_client_set_tls.
+func (recv *SocketClient) SetTls(tls bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(tls)
+
+	err := socketClientSetTlsFunction_Set()
+	if err == nil {
+		socketClientSetTlsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_socket_client_set_tls_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
+
+var socketConnectionStruct *gi.Struct
+var socketConnectionStruct_Once sync.Once
+
+func socketConnectionStruct_Set() error {
+	var err error
+	socketConnectionStruct_Once.Do(func() {
+		socketConnectionStruct, err = gi.StructNew("Gio", "SocketConnection")
+	})
+	return err
+}
+
+type SocketConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'IOStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'IOStream'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
+	argValue := gi.FieldGet(socketConnectionStruct, recv.native, "priv")
+	value := &SocketConnectionPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *SocketConnection) SetFieldPriv(value *SocketConnectionPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketConnectionStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_socket_connection_connect' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_connect_async' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_connect_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_get_local_address' : return type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_get_remote_address' : return type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_connection_get_socket' : return type 'Socket' not supported
+
+var socketConnectionIsConnectedFunction *gi.Function
+var socketConnectionIsConnectedFunction_Once sync.Once
+
+func socketConnectionIsConnectedFunction_Set() error {
+	var err error
+	socketConnectionIsConnectedFunction_Once.Do(func() {
+		err = socketConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		socketConnectionIsConnectedFunction, err = socketConnectionStruct.InvokerNew("is_connected")
+	})
+	return err
+}
+
+// IsConnected is a representation of the C type g_socket_connection_is_connected.
+func (recv *SocketConnection) IsConnected() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketConnectionIsConnectedFunction_Set()
+	if err == nil {
+		ret = socketConnectionIsConnectedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// SocketConnectionStruct creates an uninitialised SocketConnection.
+func SocketConnectionStruct() *SocketConnection {
+	err := socketConnectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketConnection{native: socketConnectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketConnection)
+	return structGo
+}
+func finalizeSocketConnection(obj *SocketConnection) {
+	socketConnectionStruct.Free(obj.native)
+}
+
+var socketControlMessageStruct *gi.Struct
+var socketControlMessageStruct_Once sync.Once
+
+func socketControlMessageStruct_Set() error {
+	var err error
+	socketControlMessageStruct_Once.Do(func() {
+		socketControlMessageStruct, err = gi.StructNew("Gio", "SocketControlMessage")
+	})
+	return err
+}
+
+type SocketControlMessage struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
+	argValue := gi.FieldGet(socketControlMessageStruct, recv.native, "priv")
+	value := &SocketControlMessagePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *SocketControlMessage) SetFieldPriv(value *SocketControlMessagePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketControlMessageStruct, recv.native, "priv", argValue)
+}
+
+var socketControlMessageGetLevelFunction *gi.Function
+var socketControlMessageGetLevelFunction_Once sync.Once
+
+func socketControlMessageGetLevelFunction_Set() error {
+	var err error
+	socketControlMessageGetLevelFunction_Once.Do(func() {
+		err = socketControlMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		socketControlMessageGetLevelFunction, err = socketControlMessageStruct.InvokerNew("get_level")
+	})
+	return err
+}
+
+// GetLevel is a representation of the C type g_socket_control_message_get_level.
+func (recv *SocketControlMessage) GetLevel() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketControlMessageGetLevelFunction_Set()
+	if err == nil {
+		ret = socketControlMessageGetLevelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var socketControlMessageGetMsgTypeFunction *gi.Function
+var socketControlMessageGetMsgTypeFunction_Once sync.Once
+
+func socketControlMessageGetMsgTypeFunction_Set() error {
+	var err error
+	socketControlMessageGetMsgTypeFunction_Once.Do(func() {
+		err = socketControlMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		socketControlMessageGetMsgTypeFunction, err = socketControlMessageStruct.InvokerNew("get_msg_type")
+	})
+	return err
+}
+
+// GetMsgType is a representation of the C type g_socket_control_message_get_msg_type.
+func (recv *SocketControlMessage) GetMsgType() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketControlMessageGetMsgTypeFunction_Set()
+	if err == nil {
+		ret = socketControlMessageGetMsgTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var socketControlMessageGetSizeFunction *gi.Function
+var socketControlMessageGetSizeFunction_Once sync.Once
+
+func socketControlMessageGetSizeFunction_Set() error {
+	var err error
+	socketControlMessageGetSizeFunction_Once.Do(func() {
+		err = socketControlMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		socketControlMessageGetSizeFunction, err = socketControlMessageStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type g_socket_control_message_get_size.
+func (recv *SocketControlMessage) GetSize() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketControlMessageGetSizeFunction_Set()
+	if err == nil {
+		ret = socketControlMessageGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_socket_control_message_serialize' : parameter 'data' of type 'gpointer' not supported
+
+// SocketControlMessageStruct creates an uninitialised SocketControlMessage.
+func SocketControlMessageStruct() *SocketControlMessage {
+	err := socketControlMessageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &SocketControlMessage{native: socketControlMessageStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeSocketControlMessage)
+	return structGo
+}
+func finalizeSocketControlMessage(obj *SocketControlMessage) {
+	socketControlMessageStruct.Free(obj.native)
+}
+
+var socketListenerStruct *gi.Struct
+var socketListenerStruct_Once sync.Once
+
+func socketListenerStruct_Set() error {
+	var err error
+	socketListenerStruct_Once.Do(func() {
+		socketListenerStruct, err = gi.StructNew("Gio", "SocketListener")
+	})
+	return err
+}
+
+type SocketListener struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
+	argValue := gi.FieldGet(socketListenerStruct, recv.native, "priv")
+	value := &SocketListenerPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *SocketListener) SetFieldPriv(value *SocketListenerPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketListenerStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_socket_listener_new' : return type 'SocketListener' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept_socket' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept_socket_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_accept_socket_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_add_address' : parameter 'address' of type 'SocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_add_any_inet_port' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_add_inet_port' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_socket_listener_add_socket' : parameter 'socket' of type 'Socket' not supported
+
+var socketListenerCloseFunction *gi.Function
+var socketListenerCloseFunction_Once sync.Once
+
+func socketListenerCloseFunction_Set() error {
+	var err error
+	socketListenerCloseFunction_Once.Do(func() {
+		err = socketListenerStruct_Set()
+		if err != nil {
+			return
+		}
+		socketListenerCloseFunction, err = socketListenerStruct.InvokerNew("close")
+	})
+	return err
+}
+
+// Close is a representation of the C type g_socket_listener_close.
+func (recv *SocketListener) Close() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := socketListenerCloseFunction_Set()
+	if err == nil {
+		socketListenerCloseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketListenerSetBacklogFunction *gi.Function
+var socketListenerSetBacklogFunction_Once sync.Once
+
+func socketListenerSetBacklogFunction_Set() error {
+	var err error
+	socketListenerSetBacklogFunction_Once.Do(func() {
+		err = socketListenerStruct_Set()
+		if err != nil {
+			return
+		}
+		socketListenerSetBacklogFunction, err = socketListenerStruct.InvokerNew("set_backlog")
+	})
+	return err
+}
+
+// SetBacklog is a representation of the C type g_socket_listener_set_backlog.
+func (recv *SocketListener) SetBacklog(listenBacklog int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(listenBacklog)
+
+	err := socketListenerSetBacklogFunction_Set()
+	if err == nil {
+		socketListenerSetBacklogFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketServiceStruct *gi.Struct
+var socketServiceStruct_Once sync.Once
+
+func socketServiceStruct_Set() error {
+	var err error
+	socketServiceStruct_Once.Do(func() {
+		socketServiceStruct, err = gi.StructNew("Gio", "SocketService")
+	})
+	return err
+}
+
+type SocketService struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketListener'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketListener'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *SocketService) FieldPriv() *SocketServicePrivate {
+	argValue := gi.FieldGet(socketServiceStruct, recv.native, "priv")
+	value := &SocketServicePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *SocketService) SetFieldPriv(value *SocketServicePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(socketServiceStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_socket_service_new' : return type 'SocketService' not supported
+
+var socketServiceIsActiveFunction *gi.Function
+var socketServiceIsActiveFunction_Once sync.Once
+
+func socketServiceIsActiveFunction_Set() error {
+	var err error
+	socketServiceIsActiveFunction_Once.Do(func() {
+		err = socketServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		socketServiceIsActiveFunction, err = socketServiceStruct.InvokerNew("is_active")
+	})
+	return err
+}
+
+// IsActive is a representation of the C type g_socket_service_is_active.
+func (recv *SocketService) IsActive() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := socketServiceIsActiveFunction_Set()
+	if err == nil {
+		ret = socketServiceIsActiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var socketServiceStartFunction *gi.Function
+var socketServiceStartFunction_Once sync.Once
+
+func socketServiceStartFunction_Set() error {
+	var err error
+	socketServiceStartFunction_Once.Do(func() {
+		err = socketServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		socketServiceStartFunction, err = socketServiceStruct.InvokerNew("start")
+	})
+	return err
+}
+
+// Start is a representation of the C type g_socket_service_start.
+func (recv *SocketService) Start() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := socketServiceStartFunction_Set()
+	if err == nil {
+		socketServiceStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var socketServiceStopFunction *gi.Function
+var socketServiceStopFunction_Once sync.Once
+
+func socketServiceStopFunction_Set() error {
+	var err error
+	socketServiceStopFunction_Once.Do(func() {
+		err = socketServiceStruct_Set()
+		if err != nil {
+			return
+		}
+		socketServiceStopFunction, err = socketServiceStruct.InvokerNew("stop")
+	})
+	return err
+}
+
+// Stop is a representation of the C type g_socket_service_stop.
+func (recv *SocketService) Stop() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := socketServiceStopFunction_Set()
+	if err == nil {
+		socketServiceStopFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessStruct *gi.Struct
+var subprocessStruct_Once sync.Once
+
+func subprocessStruct_Set() error {
+	var err error
+	subprocessStruct_Once.Do(func() {
+		subprocessStruct, err = gi.StructNew("Gio", "Subprocess")
+	})
+	return err
+}
+
+type Subprocess struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_subprocess_new' : parameter 'flags' of type 'SubprocessFlags' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_newv' : parameter 'argv' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate' : parameter 'stdin_buf' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate_async' : parameter 'stdin_buf' of type 'GLib.Bytes' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate_utf8' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate_utf8_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_communicate_utf8_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var subprocessForceExitFunction *gi.Function
+var subprocessForceExitFunction_Once sync.Once
+
+func subprocessForceExitFunction_Set() error {
+	var err error
+	subprocessForceExitFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessForceExitFunction, err = subprocessStruct.InvokerNew("force_exit")
+	})
+	return err
+}
+
+// ForceExit is a representation of the C type g_subprocess_force_exit.
+func (recv *Subprocess) ForceExit() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := subprocessForceExitFunction_Set()
+	if err == nil {
+		subprocessForceExitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessGetExitStatusFunction *gi.Function
+var subprocessGetExitStatusFunction_Once sync.Once
+
+func subprocessGetExitStatusFunction_Set() error {
+	var err error
+	subprocessGetExitStatusFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetExitStatusFunction, err = subprocessStruct.InvokerNew("get_exit_status")
+	})
+	return err
+}
+
+// GetExitStatus is a representation of the C type g_subprocess_get_exit_status.
+func (recv *Subprocess) GetExitStatus() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetExitStatusFunction_Set()
+	if err == nil {
+		ret = subprocessGetExitStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var subprocessGetIdentifierFunction *gi.Function
+var subprocessGetIdentifierFunction_Once sync.Once
+
+func subprocessGetIdentifierFunction_Set() error {
+	var err error
+	subprocessGetIdentifierFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetIdentifierFunction, err = subprocessStruct.InvokerNew("get_identifier")
+	})
+	return err
+}
+
+// GetIdentifier is a representation of the C type g_subprocess_get_identifier.
+func (recv *Subprocess) GetIdentifier() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetIdentifierFunction_Set()
+	if err == nil {
+		ret = subprocessGetIdentifierFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var subprocessGetIfExitedFunction *gi.Function
+var subprocessGetIfExitedFunction_Once sync.Once
+
+func subprocessGetIfExitedFunction_Set() error {
+	var err error
+	subprocessGetIfExitedFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetIfExitedFunction, err = subprocessStruct.InvokerNew("get_if_exited")
+	})
+	return err
+}
+
+// GetIfExited is a representation of the C type g_subprocess_get_if_exited.
+func (recv *Subprocess) GetIfExited() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetIfExitedFunction_Set()
+	if err == nil {
+		ret = subprocessGetIfExitedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var subprocessGetIfSignaledFunction *gi.Function
+var subprocessGetIfSignaledFunction_Once sync.Once
+
+func subprocessGetIfSignaledFunction_Set() error {
+	var err error
+	subprocessGetIfSignaledFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetIfSignaledFunction, err = subprocessStruct.InvokerNew("get_if_signaled")
+	})
+	return err
+}
+
+// GetIfSignaled is a representation of the C type g_subprocess_get_if_signaled.
+func (recv *Subprocess) GetIfSignaled() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetIfSignaledFunction_Set()
+	if err == nil {
+		ret = subprocessGetIfSignaledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var subprocessGetStatusFunction *gi.Function
+var subprocessGetStatusFunction_Once sync.Once
+
+func subprocessGetStatusFunction_Set() error {
+	var err error
+	subprocessGetStatusFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetStatusFunction, err = subprocessStruct.InvokerNew("get_status")
+	})
+	return err
+}
+
+// GetStatus is a representation of the C type g_subprocess_get_status.
+func (recv *Subprocess) GetStatus() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetStatusFunction_Set()
+	if err == nil {
+		ret = subprocessGetStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_subprocess_get_stderr_pipe' : return type 'InputStream' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_get_stdin_pipe' : return type 'OutputStream' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_get_stdout_pipe' : return type 'InputStream' not supported
+
+var subprocessGetSuccessfulFunction *gi.Function
+var subprocessGetSuccessfulFunction_Once sync.Once
+
+func subprocessGetSuccessfulFunction_Set() error {
+	var err error
+	subprocessGetSuccessfulFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetSuccessfulFunction, err = subprocessStruct.InvokerNew("get_successful")
+	})
+	return err
+}
+
+// GetSuccessful is a representation of the C type g_subprocess_get_successful.
+func (recv *Subprocess) GetSuccessful() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetSuccessfulFunction_Set()
+	if err == nil {
+		ret = subprocessGetSuccessfulFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var subprocessGetTermSigFunction *gi.Function
+var subprocessGetTermSigFunction_Once sync.Once
+
+func subprocessGetTermSigFunction_Set() error {
+	var err error
+	subprocessGetTermSigFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessGetTermSigFunction, err = subprocessStruct.InvokerNew("get_term_sig")
+	})
+	return err
+}
+
+// GetTermSig is a representation of the C type g_subprocess_get_term_sig.
+func (recv *Subprocess) GetTermSig() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := subprocessGetTermSigFunction_Set()
+	if err == nil {
+		ret = subprocessGetTermSigFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var subprocessSendSignalFunction *gi.Function
+var subprocessSendSignalFunction_Once sync.Once
+
+func subprocessSendSignalFunction_Set() error {
+	var err error
+	subprocessSendSignalFunction_Once.Do(func() {
+		err = subprocessStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessSendSignalFunction, err = subprocessStruct.InvokerNew("send_signal")
+	})
+	return err
+}
+
+// SendSignal is a representation of the C type g_subprocess_send_signal.
+func (recv *Subprocess) SendSignal(signalNum int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(signalNum)
+
+	err := subprocessSendSignalFunction_Set()
+	if err == nil {
+		subprocessSendSignalFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_subprocess_wait' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_wait_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_wait_check' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_wait_check_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_wait_check_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_wait_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var subprocessLauncherStruct *gi.Struct
+var subprocessLauncherStruct_Once sync.Once
+
+func subprocessLauncherStruct_Set() error {
+	var err error
+	subprocessLauncherStruct_Once.Do(func() {
+		subprocessLauncherStruct, err = gi.StructNew("Gio", "SubprocessLauncher")
+	})
+	return err
+}
+
+type SubprocessLauncher struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_new' : parameter 'flags' of type 'SubprocessFlags' not supported
+
+var subprocessLauncherGetenvFunction *gi.Function
+var subprocessLauncherGetenvFunction_Once sync.Once
+
+func subprocessLauncherGetenvFunction_Set() error {
+	var err error
+	subprocessLauncherGetenvFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherGetenvFunction, err = subprocessLauncherStruct.InvokerNew("getenv")
+	})
+	return err
+}
+
+// Getenv is a representation of the C type g_subprocess_launcher_getenv.
+func (recv *SubprocessLauncher) Getenv(variable string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(variable)
+
+	var ret gi.Argument
+
+	err := subprocessLauncherGetenvFunction_Set()
+	if err == nil {
+		ret = subprocessLauncherGetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_set_child_setup' : parameter 'child_setup' of type 'GLib.SpawnChildSetupFunc' not supported
+
+var subprocessLauncherSetCwdFunction *gi.Function
+var subprocessLauncherSetCwdFunction_Once sync.Once
+
+func subprocessLauncherSetCwdFunction_Set() error {
+	var err error
+	subprocessLauncherSetCwdFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetCwdFunction, err = subprocessLauncherStruct.InvokerNew("set_cwd")
+	})
+	return err
+}
+
+// SetCwd is a representation of the C type g_subprocess_launcher_set_cwd.
+func (recv *SubprocessLauncher) SetCwd(cwd string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(cwd)
+
+	err := subprocessLauncherSetCwdFunction_Set()
+	if err == nil {
+		subprocessLauncherSetCwdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_set_environ' : parameter 'env' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_set_flags' : parameter 'flags' of type 'SubprocessFlags' not supported
+
+var subprocessLauncherSetStderrFilePathFunction *gi.Function
+var subprocessLauncherSetStderrFilePathFunction_Once sync.Once
+
+func subprocessLauncherSetStderrFilePathFunction_Set() error {
+	var err error
+	subprocessLauncherSetStderrFilePathFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetStderrFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stderr_file_path")
+	})
+	return err
+}
+
+// SetStderrFilePath is a representation of the C type g_subprocess_launcher_set_stderr_file_path.
+func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(path)
+
+	err := subprocessLauncherSetStderrFilePathFunction_Set()
+	if err == nil {
+		subprocessLauncherSetStderrFilePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherSetStdinFilePathFunction *gi.Function
+var subprocessLauncherSetStdinFilePathFunction_Once sync.Once
+
+func subprocessLauncherSetStdinFilePathFunction_Set() error {
+	var err error
+	subprocessLauncherSetStdinFilePathFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetStdinFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stdin_file_path")
+	})
+	return err
+}
+
+// SetStdinFilePath is a representation of the C type g_subprocess_launcher_set_stdin_file_path.
+func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(path)
+
+	err := subprocessLauncherSetStdinFilePathFunction_Set()
+	if err == nil {
+		subprocessLauncherSetStdinFilePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherSetStdoutFilePathFunction *gi.Function
+var subprocessLauncherSetStdoutFilePathFunction_Once sync.Once
+
+func subprocessLauncherSetStdoutFilePathFunction_Set() error {
+	var err error
+	subprocessLauncherSetStdoutFilePathFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetStdoutFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stdout_file_path")
+	})
+	return err
+}
+
+// SetStdoutFilePath is a representation of the C type g_subprocess_launcher_set_stdout_file_path.
+func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(path)
+
+	err := subprocessLauncherSetStdoutFilePathFunction_Set()
+	if err == nil {
+		subprocessLauncherSetStdoutFilePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherSetenvFunction *gi.Function
+var subprocessLauncherSetenvFunction_Once sync.Once
+
+func subprocessLauncherSetenvFunction_Set() error {
+	var err error
+	subprocessLauncherSetenvFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetenvFunction, err = subprocessLauncherStruct.InvokerNew("setenv")
+	})
+	return err
+}
+
+// Setenv is a representation of the C type g_subprocess_launcher_setenv.
+func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(variable)
+	inArgs[2].SetString(value)
+	inArgs[3].SetBoolean(overwrite)
+
+	err := subprocessLauncherSetenvFunction_Set()
+	if err == nil {
+		subprocessLauncherSetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_spawn' : parameter 'error' of type 'GLib.Error' not supported
+
+// UNSUPPORTED : C value 'g_subprocess_launcher_spawnv' : parameter 'argv' of type 'nil' not supported
+
+var subprocessLauncherTakeFdFunction *gi.Function
+var subprocessLauncherTakeFdFunction_Once sync.Once
+
+func subprocessLauncherTakeFdFunction_Set() error {
+	var err error
+	subprocessLauncherTakeFdFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherTakeFdFunction, err = subprocessLauncherStruct.InvokerNew("take_fd")
+	})
+	return err
+}
+
+// TakeFd is a representation of the C type g_subprocess_launcher_take_fd.
+func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(sourceFd)
+	inArgs[2].SetInt32(targetFd)
+
+	err := subprocessLauncherTakeFdFunction_Set()
+	if err == nil {
+		subprocessLauncherTakeFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherTakeStderrFdFunction *gi.Function
+var subprocessLauncherTakeStderrFdFunction_Once sync.Once
+
+func subprocessLauncherTakeStderrFdFunction_Set() error {
+	var err error
+	subprocessLauncherTakeStderrFdFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherTakeStderrFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stderr_fd")
+	})
+	return err
+}
+
+// TakeStderrFd is a representation of the C type g_subprocess_launcher_take_stderr_fd.
+func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(fd)
+
+	err := subprocessLauncherTakeStderrFdFunction_Set()
+	if err == nil {
+		subprocessLauncherTakeStderrFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherTakeStdinFdFunction *gi.Function
+var subprocessLauncherTakeStdinFdFunction_Once sync.Once
+
+func subprocessLauncherTakeStdinFdFunction_Set() error {
+	var err error
+	subprocessLauncherTakeStdinFdFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherTakeStdinFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stdin_fd")
+	})
+	return err
+}
+
+// TakeStdinFd is a representation of the C type g_subprocess_launcher_take_stdin_fd.
+func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(fd)
+
+	err := subprocessLauncherTakeStdinFdFunction_Set()
+	if err == nil {
+		subprocessLauncherTakeStdinFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherTakeStdoutFdFunction *gi.Function
+var subprocessLauncherTakeStdoutFdFunction_Once sync.Once
+
+func subprocessLauncherTakeStdoutFdFunction_Set() error {
+	var err error
+	subprocessLauncherTakeStdoutFdFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherTakeStdoutFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stdout_fd")
+	})
+	return err
+}
+
+// TakeStdoutFd is a representation of the C type g_subprocess_launcher_take_stdout_fd.
+func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(fd)
+
+	err := subprocessLauncherTakeStdoutFdFunction_Set()
+	if err == nil {
+		subprocessLauncherTakeStdoutFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var subprocessLauncherUnsetenvFunction *gi.Function
+var subprocessLauncherUnsetenvFunction_Once sync.Once
+
+func subprocessLauncherUnsetenvFunction_Set() error {
+	var err error
+	subprocessLauncherUnsetenvFunction_Once.Do(func() {
+		err = subprocessLauncherStruct_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherUnsetenvFunction, err = subprocessLauncherStruct.InvokerNew("unsetenv")
+	})
+	return err
+}
+
+// Unsetenv is a representation of the C type g_subprocess_launcher_unsetenv.
+func (recv *SubprocessLauncher) Unsetenv(variable string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(variable)
+
+	err := subprocessLauncherUnsetenvFunction_Set()
+	if err == nil {
+		subprocessLauncherUnsetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var taskStruct *gi.Struct
+var taskStruct_Once sync.Once
+
+func taskStruct_Set() error {
+	var err error
+	taskStruct_Once.Do(func() {
+		taskStruct, err = gi.StructNew("Gio", "Task")
+	})
+	return err
+}
+
+type Task struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_task_new' : parameter 'source_object' of type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_task_attach_source' : parameter 'source' of type 'GLib.Source' not supported
+
+// UNSUPPORTED : C value 'g_task_get_cancellable' : return type 'Cancellable' not supported
+
+var taskGetCheckCancellableFunction *gi.Function
+var taskGetCheckCancellableFunction_Once sync.Once
+
+func taskGetCheckCancellableFunction_Set() error {
+	var err error
+	taskGetCheckCancellableFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskGetCheckCancellableFunction, err = taskStruct.InvokerNew("get_check_cancellable")
+	})
+	return err
+}
+
+// GetCheckCancellable is a representation of the C type g_task_get_check_cancellable.
+func (recv *Task) GetCheckCancellable() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskGetCheckCancellableFunction_Set()
+	if err == nil {
+		ret = taskGetCheckCancellableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var taskGetCompletedFunction *gi.Function
+var taskGetCompletedFunction_Once sync.Once
+
+func taskGetCompletedFunction_Set() error {
+	var err error
+	taskGetCompletedFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskGetCompletedFunction, err = taskStruct.InvokerNew("get_completed")
+	})
+	return err
+}
+
+// GetCompleted is a representation of the C type g_task_get_completed.
+func (recv *Task) GetCompleted() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskGetCompletedFunction_Set()
+	if err == nil {
+		ret = taskGetCompletedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_task_get_context' : return type 'GLib.MainContext' not supported
+
+var taskGetNameFunction *gi.Function
+var taskGetNameFunction_Once sync.Once
+
+func taskGetNameFunction_Set() error {
+	var err error
+	taskGetNameFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskGetNameFunction, err = taskStruct.InvokerNew("get_name")
+	})
+	return err
+}
+
+// GetName is a representation of the C type g_task_get_name.
+func (recv *Task) GetName() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskGetNameFunction_Set()
+	if err == nil {
+		ret = taskGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var taskGetPriorityFunction *gi.Function
+var taskGetPriorityFunction_Once sync.Once
+
+func taskGetPriorityFunction_Set() error {
+	var err error
+	taskGetPriorityFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskGetPriorityFunction, err = taskStruct.InvokerNew("get_priority")
+	})
+	return err
+}
+
+// GetPriority is a representation of the C type g_task_get_priority.
+func (recv *Task) GetPriority() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskGetPriorityFunction_Set()
+	if err == nil {
+		ret = taskGetPriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var taskGetReturnOnCancelFunction *gi.Function
+var taskGetReturnOnCancelFunction_Once sync.Once
+
+func taskGetReturnOnCancelFunction_Set() error {
+	var err error
+	taskGetReturnOnCancelFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskGetReturnOnCancelFunction, err = taskStruct.InvokerNew("get_return_on_cancel")
+	})
+	return err
+}
+
+// GetReturnOnCancel is a representation of the C type g_task_get_return_on_cancel.
+func (recv *Task) GetReturnOnCancel() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskGetReturnOnCancelFunction_Set()
+	if err == nil {
+		ret = taskGetReturnOnCancelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_task_get_source_object' : return type 'GObject.Object' not supported
+
+// UNSUPPORTED : C value 'g_task_get_source_tag' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_task_get_task_data' : return type 'gpointer' not supported
+
+var taskHadErrorFunction *gi.Function
+var taskHadErrorFunction_Once sync.Once
+
+func taskHadErrorFunction_Set() error {
+	var err error
+	taskHadErrorFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskHadErrorFunction, err = taskStruct.InvokerNew("had_error")
+	})
+	return err
+}
+
+// HadError is a representation of the C type g_task_had_error.
+func (recv *Task) HadError() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskHadErrorFunction_Set()
+	if err == nil {
+		ret = taskHadErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var taskPropagateBooleanFunction *gi.Function
+var taskPropagateBooleanFunction_Once sync.Once
+
+func taskPropagateBooleanFunction_Set() error {
+	var err error
+	taskPropagateBooleanFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskPropagateBooleanFunction, err = taskStruct.InvokerNew("propagate_boolean")
+	})
+	return err
+}
+
+// PropagateBoolean is a representation of the C type g_task_propagate_boolean.
+func (recv *Task) PropagateBoolean() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskPropagateBooleanFunction_Set()
+	if err == nil {
+		ret = taskPropagateBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var taskPropagateIntFunction *gi.Function
+var taskPropagateIntFunction_Once sync.Once
+
+func taskPropagateIntFunction_Set() error {
+	var err error
+	taskPropagateIntFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskPropagateIntFunction, err = taskStruct.InvokerNew("propagate_int")
+	})
+	return err
+}
+
+// PropagateInt is a representation of the C type g_task_propagate_int.
+func (recv *Task) PropagateInt() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskPropagateIntFunction_Set()
+	if err == nil {
+		ret = taskPropagateIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_task_propagate_pointer' : return type 'gpointer' not supported
+
+var taskReturnBooleanFunction *gi.Function
+var taskReturnBooleanFunction_Once sync.Once
+
+func taskReturnBooleanFunction_Set() error {
+	var err error
+	taskReturnBooleanFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskReturnBooleanFunction, err = taskStruct.InvokerNew("return_boolean")
+	})
+	return err
+}
+
+// ReturnBoolean is a representation of the C type g_task_return_boolean.
+func (recv *Task) ReturnBoolean(result bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(result)
+
+	err := taskReturnBooleanFunction_Set()
+	if err == nil {
+		taskReturnBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_task_return_error' : parameter 'error' of type 'GLib.Error' not supported
+
+var taskReturnErrorIfCancelledFunction *gi.Function
+var taskReturnErrorIfCancelledFunction_Once sync.Once
+
+func taskReturnErrorIfCancelledFunction_Set() error {
+	var err error
+	taskReturnErrorIfCancelledFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskReturnErrorIfCancelledFunction, err = taskStruct.InvokerNew("return_error_if_cancelled")
+	})
+	return err
+}
+
+// ReturnErrorIfCancelled is a representation of the C type g_task_return_error_if_cancelled.
+func (recv *Task) ReturnErrorIfCancelled() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := taskReturnErrorIfCancelledFunction_Set()
+	if err == nil {
+		ret = taskReturnErrorIfCancelledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var taskReturnIntFunction *gi.Function
+var taskReturnIntFunction_Once sync.Once
+
+func taskReturnIntFunction_Set() error {
+	var err error
+	taskReturnIntFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskReturnIntFunction, err = taskStruct.InvokerNew("return_int")
+	})
+	return err
+}
+
+// ReturnInt is a representation of the C type g_task_return_int.
+func (recv *Task) ReturnInt(result int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(result)
+
+	err := taskReturnIntFunction_Set()
+	if err == nil {
+		taskReturnIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_task_return_new_error' : parameter '...' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_task_return_pointer' : parameter 'result' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_task_run_in_thread' : parameter 'task_func' of type 'TaskThreadFunc' not supported
+
+// UNSUPPORTED : C value 'g_task_run_in_thread_sync' : parameter 'task_func' of type 'TaskThreadFunc' not supported
+
+var taskSetCheckCancellableFunction *gi.Function
+var taskSetCheckCancellableFunction_Once sync.Once
+
+func taskSetCheckCancellableFunction_Set() error {
+	var err error
+	taskSetCheckCancellableFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskSetCheckCancellableFunction, err = taskStruct.InvokerNew("set_check_cancellable")
+	})
+	return err
+}
+
+// SetCheckCancellable is a representation of the C type g_task_set_check_cancellable.
+func (recv *Task) SetCheckCancellable(checkCancellable bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(checkCancellable)
+
+	err := taskSetCheckCancellableFunction_Set()
+	if err == nil {
+		taskSetCheckCancellableFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var taskSetNameFunction *gi.Function
+var taskSetNameFunction_Once sync.Once
+
+func taskSetNameFunction_Set() error {
+	var err error
+	taskSetNameFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskSetNameFunction, err = taskStruct.InvokerNew("set_name")
+	})
+	return err
+}
+
+// SetName is a representation of the C type g_task_set_name.
+func (recv *Task) SetName(name string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	err := taskSetNameFunction_Set()
+	if err == nil {
+		taskSetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var taskSetPriorityFunction *gi.Function
+var taskSetPriorityFunction_Once sync.Once
+
+func taskSetPriorityFunction_Set() error {
+	var err error
+	taskSetPriorityFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskSetPriorityFunction, err = taskStruct.InvokerNew("set_priority")
+	})
+	return err
+}
+
+// SetPriority is a representation of the C type g_task_set_priority.
+func (recv *Task) SetPriority(priority int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(priority)
+
+	err := taskSetPriorityFunction_Set()
+	if err == nil {
+		taskSetPriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var taskSetReturnOnCancelFunction *gi.Function
+var taskSetReturnOnCancelFunction_Once sync.Once
+
+func taskSetReturnOnCancelFunction_Set() error {
+	var err error
+	taskSetReturnOnCancelFunction_Once.Do(func() {
+		err = taskStruct_Set()
+		if err != nil {
+			return
+		}
+		taskSetReturnOnCancelFunction, err = taskStruct.InvokerNew("set_return_on_cancel")
+	})
+	return err
+}
+
+// SetReturnOnCancel is a representation of the C type g_task_set_return_on_cancel.
+func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(returnOnCancel)
+
+	var ret gi.Argument
+
+	err := taskSetReturnOnCancelFunction_Set()
+	if err == nil {
+		ret = taskSetReturnOnCancelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_task_set_source_tag' : parameter 'source_tag' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_task_set_task_data' : parameter 'task_data' of type 'gpointer' not supported
+
+var tcpConnectionStruct *gi.Struct
+var tcpConnectionStruct_Once sync.Once
+
+func tcpConnectionStruct_Set() error {
+	var err error
+	tcpConnectionStruct_Once.Do(func() {
+		tcpConnectionStruct, err = gi.StructNew("Gio", "TcpConnection")
+	})
+	return err
+}
+
+type TcpConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketConnection'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketConnection'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
+	argValue := gi.FieldGet(tcpConnectionStruct, recv.native, "priv")
+	value := &TcpConnectionPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TcpConnection) SetFieldPriv(value *TcpConnectionPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tcpConnectionStruct, recv.native, "priv", argValue)
+}
+
+var tcpConnectionGetGracefulDisconnectFunction *gi.Function
+var tcpConnectionGetGracefulDisconnectFunction_Once sync.Once
+
+func tcpConnectionGetGracefulDisconnectFunction_Set() error {
+	var err error
+	tcpConnectionGetGracefulDisconnectFunction_Once.Do(func() {
+		err = tcpConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tcpConnectionGetGracefulDisconnectFunction, err = tcpConnectionStruct.InvokerNew("get_graceful_disconnect")
+	})
+	return err
+}
+
+// GetGracefulDisconnect is a representation of the C type g_tcp_connection_get_graceful_disconnect.
+func (recv *TcpConnection) GetGracefulDisconnect() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tcpConnectionGetGracefulDisconnectFunction_Set()
+	if err == nil {
+		ret = tcpConnectionGetGracefulDisconnectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var tcpConnectionSetGracefulDisconnectFunction *gi.Function
+var tcpConnectionSetGracefulDisconnectFunction_Once sync.Once
+
+func tcpConnectionSetGracefulDisconnectFunction_Set() error {
+	var err error
+	tcpConnectionSetGracefulDisconnectFunction_Once.Do(func() {
+		err = tcpConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tcpConnectionSetGracefulDisconnectFunction, err = tcpConnectionStruct.InvokerNew("set_graceful_disconnect")
+	})
+	return err
+}
+
+// SetGracefulDisconnect is a representation of the C type g_tcp_connection_set_graceful_disconnect.
+func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(gracefulDisconnect)
+
+	err := tcpConnectionSetGracefulDisconnectFunction_Set()
+	if err == nil {
+		tcpConnectionSetGracefulDisconnectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// TcpConnectionStruct creates an uninitialised TcpConnection.
+func TcpConnectionStruct() *TcpConnection {
+	err := tcpConnectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TcpConnection{native: tcpConnectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTcpConnection)
+	return structGo
+}
+func finalizeTcpConnection(obj *TcpConnection) {
+	tcpConnectionStruct.Free(obj.native)
+}
+
+var tcpWrapperConnectionStruct *gi.Struct
+var tcpWrapperConnectionStruct_Once sync.Once
+
+func tcpWrapperConnectionStruct_Set() error {
+	var err error
+	tcpWrapperConnectionStruct_Once.Do(func() {
+		tcpWrapperConnectionStruct, err = gi.StructNew("Gio", "TcpWrapperConnection")
+	})
+	return err
+}
+
+type TcpWrapperConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'TcpConnection'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'TcpConnection'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
+	argValue := gi.FieldGet(tcpWrapperConnectionStruct, recv.native, "priv")
+	value := &TcpWrapperConnectionPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TcpWrapperConnection) SetFieldPriv(value *TcpWrapperConnectionPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tcpWrapperConnectionStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_tcp_wrapper_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
+
+// UNSUPPORTED : C value 'g_tcp_wrapper_connection_get_base_io_stream' : return type 'IOStream' not supported
+
+var testDBusStruct *gi.Struct
+var testDBusStruct_Once sync.Once
+
+func testDBusStruct_Set() error {
+	var err error
+	testDBusStruct_Once.Do(func() {
+		testDBusStruct, err = gi.StructNew("Gio", "TestDBus")
+	})
+	return err
+}
+
+type TestDBus struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_test_dbus_new' : parameter 'flags' of type 'TestDBusFlags' not supported
+
+var testDBusAddServiceDirFunction *gi.Function
+var testDBusAddServiceDirFunction_Once sync.Once
+
+func testDBusAddServiceDirFunction_Set() error {
+	var err error
+	testDBusAddServiceDirFunction_Once.Do(func() {
+		err = testDBusStruct_Set()
+		if err != nil {
+			return
+		}
+		testDBusAddServiceDirFunction, err = testDBusStruct.InvokerNew("add_service_dir")
+	})
+	return err
+}
+
+// AddServiceDir is a representation of the C type g_test_dbus_add_service_dir.
+func (recv *TestDBus) AddServiceDir(path string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(path)
+
+	err := testDBusAddServiceDirFunction_Set()
+	if err == nil {
+		testDBusAddServiceDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var testDBusDownFunction *gi.Function
+var testDBusDownFunction_Once sync.Once
+
+func testDBusDownFunction_Set() error {
+	var err error
+	testDBusDownFunction_Once.Do(func() {
+		err = testDBusStruct_Set()
+		if err != nil {
+			return
+		}
+		testDBusDownFunction, err = testDBusStruct.InvokerNew("down")
+	})
+	return err
+}
+
+// Down is a representation of the C type g_test_dbus_down.
+func (recv *TestDBus) Down() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := testDBusDownFunction_Set()
+	if err == nil {
+		testDBusDownFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var testDBusGetBusAddressFunction *gi.Function
+var testDBusGetBusAddressFunction_Once sync.Once
+
+func testDBusGetBusAddressFunction_Set() error {
+	var err error
+	testDBusGetBusAddressFunction_Once.Do(func() {
+		err = testDBusStruct_Set()
+		if err != nil {
+			return
+		}
+		testDBusGetBusAddressFunction, err = testDBusStruct.InvokerNew("get_bus_address")
+	})
+	return err
+}
+
+// GetBusAddress is a representation of the C type g_test_dbus_get_bus_address.
+func (recv *TestDBus) GetBusAddress() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := testDBusGetBusAddressFunction_Set()
+	if err == nil {
+		ret = testDBusGetBusAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_test_dbus_get_flags' : return type 'TestDBusFlags' not supported
+
+var testDBusStopFunction *gi.Function
+var testDBusStopFunction_Once sync.Once
+
+func testDBusStopFunction_Set() error {
+	var err error
+	testDBusStopFunction_Once.Do(func() {
+		err = testDBusStruct_Set()
+		if err != nil {
+			return
+		}
+		testDBusStopFunction, err = testDBusStruct.InvokerNew("stop")
+	})
+	return err
+}
+
+// Stop is a representation of the C type g_test_dbus_stop.
+func (recv *TestDBus) Stop() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := testDBusStopFunction_Set()
+	if err == nil {
+		testDBusStopFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var testDBusUpFunction *gi.Function
+var testDBusUpFunction_Once sync.Once
+
+func testDBusUpFunction_Set() error {
+	var err error
+	testDBusUpFunction_Once.Do(func() {
+		err = testDBusStruct_Set()
+		if err != nil {
+			return
+		}
+		testDBusUpFunction, err = testDBusStruct.InvokerNew("up")
+	})
+	return err
+}
+
+// Up is a representation of the C type g_test_dbus_up.
+func (recv *TestDBus) Up() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := testDBusUpFunction_Set()
+	if err == nil {
+		testDBusUpFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var themedIconStruct *gi.Struct
+var themedIconStruct_Once sync.Once
+
+func themedIconStruct_Set() error {
+	var err error
+	themedIconStruct_Once.Do(func() {
+		themedIconStruct, err = gi.StructNew("Gio", "ThemedIcon")
+	})
+	return err
+}
+
+type ThemedIcon struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_themed_icon_new' : return type 'ThemedIcon' not supported
+
+// UNSUPPORTED : C value 'g_themed_icon_new_from_names' : parameter 'iconnames' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_themed_icon_new_with_default_fallbacks' : return type 'ThemedIcon' not supported
+
+var themedIconAppendNameFunction *gi.Function
+var themedIconAppendNameFunction_Once sync.Once
+
+func themedIconAppendNameFunction_Set() error {
+	var err error
+	themedIconAppendNameFunction_Once.Do(func() {
+		err = themedIconStruct_Set()
+		if err != nil {
+			return
+		}
+		themedIconAppendNameFunction, err = themedIconStruct.InvokerNew("append_name")
+	})
+	return err
+}
+
+// AppendName is a representation of the C type g_themed_icon_append_name.
+func (recv *ThemedIcon) AppendName(iconname string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(iconname)
+
+	err := themedIconAppendNameFunction_Set()
+	if err == nil {
+		themedIconAppendNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var themedIconGetNamesFunction *gi.Function
+var themedIconGetNamesFunction_Once sync.Once
+
+func themedIconGetNamesFunction_Set() error {
+	var err error
+	themedIconGetNamesFunction_Once.Do(func() {
+		err = themedIconStruct_Set()
+		if err != nil {
+			return
+		}
+		themedIconGetNamesFunction, err = themedIconStruct.InvokerNew("get_names")
+	})
+	return err
+}
+
+// GetNames is a representation of the C type g_themed_icon_get_names.
+func (recv *ThemedIcon) GetNames() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := themedIconGetNamesFunction_Set()
+	if err == nil {
+		themedIconGetNamesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var themedIconPrependNameFunction *gi.Function
+var themedIconPrependNameFunction_Once sync.Once
+
+func themedIconPrependNameFunction_Set() error {
+	var err error
+	themedIconPrependNameFunction_Once.Do(func() {
+		err = themedIconStruct_Set()
+		if err != nil {
+			return
+		}
+		themedIconPrependNameFunction, err = themedIconStruct.InvokerNew("prepend_name")
+	})
+	return err
+}
+
+// PrependName is a representation of the C type g_themed_icon_prepend_name.
+func (recv *ThemedIcon) PrependName(iconname string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(iconname)
+
+	err := themedIconPrependNameFunction_Set()
+	if err == nil {
+		themedIconPrependNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var threadedSocketServiceStruct *gi.Struct
+var threadedSocketServiceStruct_Once sync.Once
+
+func threadedSocketServiceStruct_Set() error {
+	var err error
+	threadedSocketServiceStruct_Once.Do(func() {
+		threadedSocketServiceStruct, err = gi.StructNew("Gio", "ThreadedSocketService")
+	})
+	return err
+}
+
+type ThreadedSocketService struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketService'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketService'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
+	argValue := gi.FieldGet(threadedSocketServiceStruct, recv.native, "priv")
+	value := &ThreadedSocketServicePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *ThreadedSocketService) SetFieldPriv(value *ThreadedSocketServicePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(threadedSocketServiceStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_threaded_socket_service_new' : return type 'ThreadedSocketService' not supported
+
+var tlsCertificateStruct *gi.Struct
+var tlsCertificateStruct_Once sync.Once
+
+func tlsCertificateStruct_Set() error {
+	var err error
+	tlsCertificateStruct_Once.Do(func() {
+		tlsCertificateStruct, err = gi.StructNew("Gio", "TlsCertificate")
+	})
+	return err
+}
+
+type TlsCertificate struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
+	argValue := gi.FieldGet(tlsCertificateStruct, recv.native, "priv")
+	value := &TlsCertificatePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TlsCertificate) SetFieldPriv(value *TlsCertificatePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tlsCertificateStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_tls_certificate_new_from_file' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_certificate_new_from_files' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_certificate_new_from_pem' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_certificate_get_issuer' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_certificate_is_same' : parameter 'cert_two' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_certificate_verify' : parameter 'identity' of type 'SocketConnectable' not supported
+
+var tlsConnectionStruct *gi.Struct
+var tlsConnectionStruct_Once sync.Once
+
+func tlsConnectionStruct_Set() error {
+	var err error
+	tlsConnectionStruct_Once.Do(func() {
+		tlsConnectionStruct, err = gi.StructNew("Gio", "TlsConnection")
+	})
+	return err
+}
+
+type TlsConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'IOStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'IOStream'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
+	argValue := gi.FieldGet(tlsConnectionStruct, recv.native, "priv")
+	value := &TlsConnectionPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TlsConnection) SetFieldPriv(value *TlsConnectionPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tlsConnectionStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_tls_connection_emit_accept_certificate' : parameter 'peer_cert' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_get_certificate' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_get_database' : return type 'TlsDatabase' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_get_interaction' : return type 'TlsInteraction' not supported
+
+var tlsConnectionGetNegotiatedProtocolFunction *gi.Function
+var tlsConnectionGetNegotiatedProtocolFunction_Once sync.Once
+
+func tlsConnectionGetNegotiatedProtocolFunction_Set() error {
+	var err error
+	tlsConnectionGetNegotiatedProtocolFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionGetNegotiatedProtocolFunction, err = tlsConnectionStruct.InvokerNew("get_negotiated_protocol")
+	})
+	return err
+}
+
+// GetNegotiatedProtocol is a representation of the C type g_tls_connection_get_negotiated_protocol.
+func (recv *TlsConnection) GetNegotiatedProtocol() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tlsConnectionGetNegotiatedProtocolFunction_Set()
+	if err == nil {
+		ret = tlsConnectionGetNegotiatedProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_connection_get_peer_certificate' : return type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_get_peer_certificate_errors' : return type 'TlsCertificateFlags' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_get_rehandshake_mode' : return type 'TlsRehandshakeMode' not supported
+
+var tlsConnectionGetRequireCloseNotifyFunction *gi.Function
+var tlsConnectionGetRequireCloseNotifyFunction_Once sync.Once
+
+func tlsConnectionGetRequireCloseNotifyFunction_Set() error {
+	var err error
+	tlsConnectionGetRequireCloseNotifyFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionGetRequireCloseNotifyFunction, err = tlsConnectionStruct.InvokerNew("get_require_close_notify")
+	})
+	return err
+}
+
+// GetRequireCloseNotify is a representation of the C type g_tls_connection_get_require_close_notify.
+func (recv *TlsConnection) GetRequireCloseNotify() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tlsConnectionGetRequireCloseNotifyFunction_Set()
+	if err == nil {
+		ret = tlsConnectionGetRequireCloseNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var tlsConnectionGetUseSystemCertdbFunction *gi.Function
+var tlsConnectionGetUseSystemCertdbFunction_Once sync.Once
+
+func tlsConnectionGetUseSystemCertdbFunction_Set() error {
+	var err error
+	tlsConnectionGetUseSystemCertdbFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionGetUseSystemCertdbFunction, err = tlsConnectionStruct.InvokerNew("get_use_system_certdb")
+	})
+	return err
+}
+
+// GetUseSystemCertdb is a representation of the C type g_tls_connection_get_use_system_certdb.
+func (recv *TlsConnection) GetUseSystemCertdb() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tlsConnectionGetUseSystemCertdbFunction_Set()
+	if err == nil {
+		ret = tlsConnectionGetUseSystemCertdbFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_connection_handshake' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_handshake_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_handshake_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_set_certificate' : parameter 'certificate' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_set_database' : parameter 'database' of type 'TlsDatabase' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_set_interaction' : parameter 'interaction' of type 'TlsInteraction' not supported
+
+// UNSUPPORTED : C value 'g_tls_connection_set_rehandshake_mode' : parameter 'mode' of type 'TlsRehandshakeMode' not supported
+
+var tlsConnectionSetRequireCloseNotifyFunction *gi.Function
+var tlsConnectionSetRequireCloseNotifyFunction_Once sync.Once
+
+func tlsConnectionSetRequireCloseNotifyFunction_Set() error {
+	var err error
+	tlsConnectionSetRequireCloseNotifyFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionSetRequireCloseNotifyFunction, err = tlsConnectionStruct.InvokerNew("set_require_close_notify")
+	})
+	return err
+}
+
+// SetRequireCloseNotify is a representation of the C type g_tls_connection_set_require_close_notify.
+func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(requireCloseNotify)
+
+	err := tlsConnectionSetRequireCloseNotifyFunction_Set()
+	if err == nil {
+		tlsConnectionSetRequireCloseNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var tlsConnectionSetUseSystemCertdbFunction *gi.Function
+var tlsConnectionSetUseSystemCertdbFunction_Once sync.Once
+
+func tlsConnectionSetUseSystemCertdbFunction_Set() error {
+	var err error
+	tlsConnectionSetUseSystemCertdbFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionSetUseSystemCertdbFunction, err = tlsConnectionStruct.InvokerNew("set_use_system_certdb")
+	})
+	return err
+}
+
+// SetUseSystemCertdb is a representation of the C type g_tls_connection_set_use_system_certdb.
+func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(useSystemCertdb)
+
+	err := tlsConnectionSetUseSystemCertdbFunction_Set()
+	if err == nil {
+		tlsConnectionSetUseSystemCertdbFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// TlsConnectionStruct creates an uninitialised TlsConnection.
+func TlsConnectionStruct() *TlsConnection {
+	err := tlsConnectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsConnection{native: tlsConnectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsConnection)
+	return structGo
+}
+func finalizeTlsConnection(obj *TlsConnection) {
+	tlsConnectionStruct.Free(obj.native)
+}
+
+var tlsDatabaseStruct *gi.Struct
+var tlsDatabaseStruct_Once sync.Once
+
+func tlsDatabaseStruct_Set() error {
+	var err error
+	tlsDatabaseStruct_Once.Do(func() {
+		tlsDatabaseStruct, err = gi.StructNew("Gio", "TlsDatabase")
+	})
+	return err
+}
+
+type TlsDatabase struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
+	argValue := gi.FieldGet(tlsDatabaseStruct, recv.native, "priv")
+	value := &TlsDatabasePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TlsDatabase) SetFieldPriv(value *TlsDatabasePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tlsDatabaseStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_tls_database_create_certificate_handle' : parameter 'certificate' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle' : parameter 'interaction' of type 'TlsInteraction' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle_async' : parameter 'interaction' of type 'TlsInteraction' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer' : parameter 'certificate' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer_async' : parameter 'certificate' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by' : parameter 'issuer_raw_dn' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by_async' : parameter 'issuer_raw_dn' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_verify_chain' : parameter 'chain' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_verify_chain_async' : parameter 'chain' of type 'TlsCertificate' not supported
+
+// UNSUPPORTED : C value 'g_tls_database_verify_chain_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// TlsDatabaseStruct creates an uninitialised TlsDatabase.
+func TlsDatabaseStruct() *TlsDatabase {
+	err := tlsDatabaseStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsDatabase{native: tlsDatabaseStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsDatabase)
+	return structGo
+}
+func finalizeTlsDatabase(obj *TlsDatabase) {
+	tlsDatabaseStruct.Free(obj.native)
+}
+
+var tlsInteractionStruct *gi.Struct
+var tlsInteractionStruct_Once sync.Once
+
+func tlsInteractionStruct_Set() error {
+	var err error
+	tlsInteractionStruct_Once.Do(func() {
+		tlsInteractionStruct, err = gi.StructNew("Gio", "TlsInteraction")
+	})
+	return err
+}
+
+type TlsInteraction struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_tls_interaction_ask_password' : parameter 'password' of type 'TlsPassword' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_ask_password_async' : parameter 'password' of type 'TlsPassword' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_ask_password_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_invoke_ask_password' : parameter 'password' of type 'TlsPassword' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_invoke_request_certificate' : parameter 'connection' of type 'TlsConnection' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_request_certificate' : parameter 'connection' of type 'TlsConnection' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_request_certificate_async' : parameter 'connection' of type 'TlsConnection' not supported
+
+// UNSUPPORTED : C value 'g_tls_interaction_request_certificate_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// TlsInteractionStruct creates an uninitialised TlsInteraction.
+func TlsInteractionStruct() *TlsInteraction {
+	err := tlsInteractionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &TlsInteraction{native: tlsInteractionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeTlsInteraction)
+	return structGo
+}
+func finalizeTlsInteraction(obj *TlsInteraction) {
+	tlsInteractionStruct.Free(obj.native)
+}
+
+var tlsPasswordStruct *gi.Struct
+var tlsPasswordStruct_Once sync.Once
+
+func tlsPasswordStruct_Set() error {
+	var err error
+	tlsPasswordStruct_Once.Do(func() {
+		tlsPasswordStruct, err = gi.StructNew("Gio", "TlsPassword")
+	})
+	return err
+}
+
+type TlsPassword struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
+	argValue := gi.FieldGet(tlsPasswordStruct, recv.native, "priv")
+	value := &TlsPasswordPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *TlsPassword) SetFieldPriv(value *TlsPasswordPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(tlsPasswordStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_tls_password_new' : parameter 'flags' of type 'TlsPasswordFlags' not supported
+
+var tlsPasswordGetDescriptionFunction *gi.Function
+var tlsPasswordGetDescriptionFunction_Once sync.Once
+
+func tlsPasswordGetDescriptionFunction_Set() error {
+	var err error
+	tlsPasswordGetDescriptionFunction_Once.Do(func() {
+		err = tlsPasswordStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordGetDescriptionFunction, err = tlsPasswordStruct.InvokerNew("get_description")
+	})
+	return err
+}
+
+// GetDescription is a representation of the C type g_tls_password_get_description.
+func (recv *TlsPassword) GetDescription() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tlsPasswordGetDescriptionFunction_Set()
+	if err == nil {
+		ret = tlsPasswordGetDescriptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_password_get_flags' : return type 'TlsPasswordFlags' not supported
+
+var tlsPasswordGetValueFunction *gi.Function
+var tlsPasswordGetValueFunction_Once sync.Once
+
+func tlsPasswordGetValueFunction_Set() error {
+	var err error
+	tlsPasswordGetValueFunction_Once.Do(func() {
+		err = tlsPasswordStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordGetValueFunction, err = tlsPasswordStruct.InvokerNew("get_value")
+	})
+	return err
+}
+
+// GetValue is a representation of the C type g_tls_password_get_value.
+func (recv *TlsPassword) GetValue(length uint64) uint8 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(length)
+
+	var ret gi.Argument
+
+	err := tlsPasswordGetValueFunction_Set()
+	if err == nil {
+		ret = tlsPasswordGetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo
+}
+
+var tlsPasswordGetWarningFunction *gi.Function
+var tlsPasswordGetWarningFunction_Once sync.Once
+
+func tlsPasswordGetWarningFunction_Set() error {
+	var err error
+	tlsPasswordGetWarningFunction_Once.Do(func() {
+		err = tlsPasswordStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordGetWarningFunction, err = tlsPasswordStruct.InvokerNew("get_warning")
+	})
+	return err
+}
+
+// GetWarning is a representation of the C type g_tls_password_get_warning.
+func (recv *TlsPassword) GetWarning() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tlsPasswordGetWarningFunction_Set()
+	if err == nil {
+		ret = tlsPasswordGetWarningFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var tlsPasswordSetDescriptionFunction *gi.Function
+var tlsPasswordSetDescriptionFunction_Once sync.Once
+
+func tlsPasswordSetDescriptionFunction_Set() error {
+	var err error
+	tlsPasswordSetDescriptionFunction_Once.Do(func() {
+		err = tlsPasswordStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordSetDescriptionFunction, err = tlsPasswordStruct.InvokerNew("set_description")
+	})
+	return err
+}
+
+// SetDescription is a representation of the C type g_tls_password_set_description.
+func (recv *TlsPassword) SetDescription(description string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(description)
+
+	err := tlsPasswordSetDescriptionFunction_Set()
+	if err == nil {
+		tlsPasswordSetDescriptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_tls_password_set_flags' : parameter 'flags' of type 'TlsPasswordFlags' not supported
+
+// UNSUPPORTED : C value 'g_tls_password_set_value' : parameter 'value' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_tls_password_set_value_full' : parameter 'value' of type 'nil' not supported
+
+var tlsPasswordSetWarningFunction *gi.Function
+var tlsPasswordSetWarningFunction_Once sync.Once
+
+func tlsPasswordSetWarningFunction_Set() error {
+	var err error
+	tlsPasswordSetWarningFunction_Once.Do(func() {
+		err = tlsPasswordStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordSetWarningFunction, err = tlsPasswordStruct.InvokerNew("set_warning")
+	})
+	return err
+}
+
+// SetWarning is a representation of the C type g_tls_password_set_warning.
+func (recv *TlsPassword) SetWarning(warning string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(warning)
+
+	err := tlsPasswordSetWarningFunction_Set()
+	if err == nil {
+		tlsPasswordSetWarningFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var unixConnectionStruct *gi.Struct
+var unixConnectionStruct_Once sync.Once
+
+func unixConnectionStruct_Set() error {
+	var err error
+	unixConnectionStruct_Once.Do(func() {
+		unixConnectionStruct, err = gi.StructNew("Gio", "UnixConnection")
+	})
+	return err
+}
+
+type UnixConnection struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketConnection'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketConnection'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
+	argValue := gi.FieldGet(unixConnectionStruct, recv.native, "priv")
+	value := &UnixConnectionPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *UnixConnection) SetFieldPriv(value *UnixConnectionPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixConnectionStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_unix_connection_receive_credentials' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_receive_credentials_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_receive_credentials_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_receive_fd' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_send_credentials' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_send_credentials_async' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_send_credentials_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'g_unix_connection_send_fd' : parameter 'cancellable' of type 'Cancellable' not supported
+
+// UnixConnectionStruct creates an uninitialised UnixConnection.
+func UnixConnectionStruct() *UnixConnection {
+	err := unixConnectionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &UnixConnection{native: unixConnectionStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeUnixConnection)
+	return structGo
+}
+func finalizeUnixConnection(obj *UnixConnection) {
+	unixConnectionStruct.Free(obj.native)
+}
+
+var unixCredentialsMessageStruct *gi.Struct
+var unixCredentialsMessageStruct_Once sync.Once
+
+func unixCredentialsMessageStruct_Set() error {
+	var err error
+	unixCredentialsMessageStruct_Once.Do(func() {
+		unixCredentialsMessageStruct, err = gi.StructNew("Gio", "UnixCredentialsMessage")
+	})
+	return err
+}
+
+type UnixCredentialsMessage struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketControlMessage'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketControlMessage'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
+	argValue := gi.FieldGet(unixCredentialsMessageStruct, recv.native, "priv")
+	value := &UnixCredentialsMessagePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *UnixCredentialsMessage) SetFieldPriv(value *UnixCredentialsMessagePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixCredentialsMessageStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_unix_credentials_message_new' : return type 'UnixCredentialsMessage' not supported
+
+// UNSUPPORTED : C value 'g_unix_credentials_message_new_with_credentials' : parameter 'credentials' of type 'Credentials' not supported
+
+// UNSUPPORTED : C value 'g_unix_credentials_message_get_credentials' : return type 'Credentials' not supported
+
+var unixFDListStruct *gi.Struct
+var unixFDListStruct_Once sync.Once
+
+func unixFDListStruct_Set() error {
+	var err error
+	unixFDListStruct_Once.Do(func() {
+		unixFDListStruct, err = gi.StructNew("Gio", "UnixFDList")
+	})
+	return err
+}
+
+type UnixFDList struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
+	argValue := gi.FieldGet(unixFDListStruct, recv.native, "priv")
+	value := &UnixFDListPrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *UnixFDList) SetFieldPriv(value *UnixFDListPrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixFDListStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_unix_fd_list_new' : return type 'UnixFDList' not supported
+
+// UNSUPPORTED : C value 'g_unix_fd_list_new_from_array' : parameter 'fds' of type 'nil' not supported
+
+var unixFDListAppendFunction *gi.Function
+var unixFDListAppendFunction_Once sync.Once
+
+func unixFDListAppendFunction_Set() error {
+	var err error
+	unixFDListAppendFunction_Once.Do(func() {
+		err = unixFDListStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDListAppendFunction, err = unixFDListStruct.InvokerNew("append")
+	})
+	return err
+}
+
+// Append is a representation of the C type g_unix_fd_list_append.
+func (recv *UnixFDList) Append(fd int32) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(fd)
+
+	var ret gi.Argument
+
+	err := unixFDListAppendFunction_Set()
+	if err == nil {
+		ret = unixFDListAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var unixFDListGetFunction *gi.Function
+var unixFDListGetFunction_Once sync.Once
+
+func unixFDListGetFunction_Set() error {
+	var err error
+	unixFDListGetFunction_Once.Do(func() {
+		err = unixFDListStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDListGetFunction, err = unixFDListStruct.InvokerNew("get")
+	})
+	return err
+}
+
+// Get is a representation of the C type g_unix_fd_list_get.
+func (recv *UnixFDList) Get(index int32) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(index)
+
+	var ret gi.Argument
+
+	err := unixFDListGetFunction_Set()
+	if err == nil {
+		ret = unixFDListGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var unixFDListGetLengthFunction *gi.Function
+var unixFDListGetLengthFunction_Once sync.Once
+
+func unixFDListGetLengthFunction_Set() error {
+	var err error
+	unixFDListGetLengthFunction_Once.Do(func() {
+		err = unixFDListStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDListGetLengthFunction, err = unixFDListStruct.InvokerNew("get_length")
+	})
+	return err
+}
+
+// GetLength is a representation of the C type g_unix_fd_list_get_length.
+func (recv *UnixFDList) GetLength() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixFDListGetLengthFunction_Set()
+	if err == nil {
+		ret = unixFDListGetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var unixFDListPeekFdsFunction *gi.Function
+var unixFDListPeekFdsFunction_Once sync.Once
+
+func unixFDListPeekFdsFunction_Set() error {
+	var err error
+	unixFDListPeekFdsFunction_Once.Do(func() {
+		err = unixFDListStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDListPeekFdsFunction, err = unixFDListStruct.InvokerNew("peek_fds")
+	})
+	return err
+}
+
+// PeekFds is a representation of the C type g_unix_fd_list_peek_fds.
+func (recv *UnixFDList) PeekFds() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := unixFDListPeekFdsFunction_Set()
+	if err == nil {
+		unixFDListPeekFdsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+var unixFDListStealFdsFunction *gi.Function
+var unixFDListStealFdsFunction_Once sync.Once
+
+func unixFDListStealFdsFunction_Set() error {
+	var err error
+	unixFDListStealFdsFunction_Once.Do(func() {
+		err = unixFDListStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDListStealFdsFunction, err = unixFDListStruct.InvokerNew("steal_fds")
+	})
+	return err
+}
+
+// StealFds is a representation of the C type g_unix_fd_list_steal_fds.
+func (recv *UnixFDList) StealFds() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := unixFDListStealFdsFunction_Set()
+	if err == nil {
+		unixFDListStealFdsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+var unixFDMessageStruct *gi.Struct
+var unixFDMessageStruct_Once sync.Once
+
+func unixFDMessageStruct_Set() error {
+	var err error
+	unixFDMessageStruct_Once.Do(func() {
+		unixFDMessageStruct, err = gi.StructNew("Gio", "UnixFDMessage")
+	})
+	return err
+}
+
+type UnixFDMessage struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketControlMessage'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketControlMessage'
+
+// FieldPriv returns the C field 'priv'.
+func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
+	argValue := gi.FieldGet(unixFDMessageStruct, recv.native, "priv")
+	value := &UnixFDMessagePrivate{native: argValue.Pointer()}
+	return value
+}
+
+// SetFieldPriv sets the value of the C field 'priv'.
+func (recv *UnixFDMessage) SetFieldPriv(value *UnixFDMessagePrivate) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.native)
+	gi.FieldSet(unixFDMessageStruct, recv.native, "priv", argValue)
+}
+
+// UNSUPPORTED : C value 'g_unix_fd_message_new' : return type 'UnixFDMessage' not supported
+
+// UNSUPPORTED : C value 'g_unix_fd_message_new_with_fd_list' : parameter 'fd_list' of type 'UnixFDList' not supported
+
+var unixFDMessageAppendFdFunction *gi.Function
+var unixFDMessageAppendFdFunction_Once sync.Once
+
+func unixFDMessageAppendFdFunction_Set() error {
+	var err error
+	unixFDMessageAppendFdFunction_Once.Do(func() {
+		err = unixFDMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDMessageAppendFdFunction, err = unixFDMessageStruct.InvokerNew("append_fd")
+	})
+	return err
+}
+
+// AppendFd is a representation of the C type g_unix_fd_message_append_fd.
+func (recv *UnixFDMessage) AppendFd(fd int32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(fd)
+
+	var ret gi.Argument
+
+	err := unixFDMessageAppendFdFunction_Set()
+	if err == nil {
+		ret = unixFDMessageAppendFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_unix_fd_message_get_fd_list' : return type 'UnixFDList' not supported
+
+var unixFDMessageStealFdsFunction *gi.Function
+var unixFDMessageStealFdsFunction_Once sync.Once
+
+func unixFDMessageStealFdsFunction_Set() error {
+	var err error
+	unixFDMessageStealFdsFunction_Once.Do(func() {
+		err = unixFDMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		unixFDMessageStealFdsFunction, err = unixFDMessageStruct.InvokerNew("steal_fds")
+	})
+	return err
+}
+
+// StealFds is a representation of the C type g_unix_fd_message_steal_fds.
+func (recv *UnixFDMessage) StealFds() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := unixFDMessageStealFdsFunction_Set()
+	if err == nil {
+		unixFDMessageStealFdsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+var unixInputStreamStruct *gi.Struct
+var unixInputStreamStruct_Once sync.Once
+
+func unixInputStreamStruct_Set() error {
+	var err error
+	unixInputStreamStruct_Once.Do(func() {
+		unixInputStreamStruct, err = gi.StructNew("Gio", "UnixInputStream")
+	})
+	return err
+}
+
+type UnixInputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'InputStream'
+
+// UNSUPPORTED : C value 'g_unix_input_stream_new' : return type 'UnixInputStream' not supported
+
+var unixInputStreamGetCloseFdFunction *gi.Function
+var unixInputStreamGetCloseFdFunction_Once sync.Once
+
+func unixInputStreamGetCloseFdFunction_Set() error {
+	var err error
+	unixInputStreamGetCloseFdFunction_Once.Do(func() {
+		err = unixInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixInputStreamGetCloseFdFunction, err = unixInputStreamStruct.InvokerNew("get_close_fd")
+	})
+	return err
+}
+
+// GetCloseFd is a representation of the C type g_unix_input_stream_get_close_fd.
+func (recv *UnixInputStream) GetCloseFd() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixInputStreamGetCloseFdFunction_Set()
+	if err == nil {
+		ret = unixInputStreamGetCloseFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var unixInputStreamGetFdFunction *gi.Function
+var unixInputStreamGetFdFunction_Once sync.Once
+
+func unixInputStreamGetFdFunction_Set() error {
+	var err error
+	unixInputStreamGetFdFunction_Once.Do(func() {
+		err = unixInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixInputStreamGetFdFunction, err = unixInputStreamStruct.InvokerNew("get_fd")
+	})
+	return err
+}
+
+// GetFd is a representation of the C type g_unix_input_stream_get_fd.
+func (recv *UnixInputStream) GetFd() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixInputStreamGetFdFunction_Set()
+	if err == nil {
+		ret = unixInputStreamGetFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var unixInputStreamSetCloseFdFunction *gi.Function
+var unixInputStreamSetCloseFdFunction_Once sync.Once
+
+func unixInputStreamSetCloseFdFunction_Set() error {
+	var err error
+	unixInputStreamSetCloseFdFunction_Once.Do(func() {
+		err = unixInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixInputStreamSetCloseFdFunction, err = unixInputStreamStruct.InvokerNew("set_close_fd")
+	})
+	return err
+}
+
+// SetCloseFd is a representation of the C type g_unix_input_stream_set_close_fd.
+func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(closeFd)
+
+	err := unixInputStreamSetCloseFdFunction_Set()
+	if err == nil {
+		unixInputStreamSetCloseFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var unixMountMonitorStruct *gi.Struct
+var unixMountMonitorStruct_Once sync.Once
+
+func unixMountMonitorStruct_Set() error {
+	var err error
+	unixMountMonitorStruct_Once.Do(func() {
+		unixMountMonitorStruct, err = gi.StructNew("Gio", "UnixMountMonitor")
+	})
+	return err
+}
+
+type UnixMountMonitor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_monitor_new' : return type 'UnixMountMonitor' not supported
+
+var unixMountMonitorSetRateLimitFunction *gi.Function
+var unixMountMonitorSetRateLimitFunction_Once sync.Once
+
+func unixMountMonitorSetRateLimitFunction_Set() error {
+	var err error
+	unixMountMonitorSetRateLimitFunction_Once.Do(func() {
+		err = unixMountMonitorStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountMonitorSetRateLimitFunction, err = unixMountMonitorStruct.InvokerNew("set_rate_limit")
+	})
+	return err
+}
+
+// SetRateLimit is a representation of the C type g_unix_mount_monitor_set_rate_limit.
+func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(limitMsec)
+
+	err := unixMountMonitorSetRateLimitFunction_Set()
+	if err == nil {
+		unixMountMonitorSetRateLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var unixOutputStreamStruct *gi.Struct
+var unixOutputStreamStruct_Once sync.Once
+
+func unixOutputStreamStruct_Set() error {
+	var err error
+	unixOutputStreamStruct_Once.Do(func() {
+		unixOutputStreamStruct, err = gi.StructNew("Gio", "UnixOutputStream")
+	})
+	return err
+}
+
+type UnixOutputStream struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'OutputStream'
+
+// UNSUPPORTED : C value 'g_unix_output_stream_new' : return type 'UnixOutputStream' not supported
+
+var unixOutputStreamGetCloseFdFunction *gi.Function
+var unixOutputStreamGetCloseFdFunction_Once sync.Once
+
+func unixOutputStreamGetCloseFdFunction_Set() error {
+	var err error
+	unixOutputStreamGetCloseFdFunction_Once.Do(func() {
+		err = unixOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixOutputStreamGetCloseFdFunction, err = unixOutputStreamStruct.InvokerNew("get_close_fd")
+	})
+	return err
+}
+
+// GetCloseFd is a representation of the C type g_unix_output_stream_get_close_fd.
+func (recv *UnixOutputStream) GetCloseFd() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixOutputStreamGetCloseFdFunction_Set()
+	if err == nil {
+		ret = unixOutputStreamGetCloseFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var unixOutputStreamGetFdFunction *gi.Function
+var unixOutputStreamGetFdFunction_Once sync.Once
+
+func unixOutputStreamGetFdFunction_Set() error {
+	var err error
+	unixOutputStreamGetFdFunction_Once.Do(func() {
+		err = unixOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixOutputStreamGetFdFunction, err = unixOutputStreamStruct.InvokerNew("get_fd")
+	})
+	return err
+}
+
+// GetFd is a representation of the C type g_unix_output_stream_get_fd.
+func (recv *UnixOutputStream) GetFd() int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixOutputStreamGetFdFunction_Set()
+	if err == nil {
+		ret = unixOutputStreamGetFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var unixOutputStreamSetCloseFdFunction *gi.Function
+var unixOutputStreamSetCloseFdFunction_Once sync.Once
+
+func unixOutputStreamSetCloseFdFunction_Set() error {
+	var err error
+	unixOutputStreamSetCloseFdFunction_Once.Do(func() {
+		err = unixOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		unixOutputStreamSetCloseFdFunction, err = unixOutputStreamStruct.InvokerNew("set_close_fd")
+	})
+	return err
+}
+
+// SetCloseFd is a representation of the C type g_unix_output_stream_set_close_fd.
+func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(closeFd)
+
+	err := unixOutputStreamSetCloseFdFunction_Set()
+	if err == nil {
+		unixOutputStreamSetCloseFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var unixSocketAddressStruct *gi.Struct
+var unixSocketAddressStruct_Once sync.Once
+
+func unixSocketAddressStruct_Set() error {
+	var err error
+	unixSocketAddressStruct_Once.Do(func() {
+		unixSocketAddressStruct, err = gi.StructNew("Gio", "UnixSocketAddress")
+	})
+	return err
+}
+
+type UnixSocketAddress struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'SocketAddress'
+
+// UNSUPPORTED : C value 'g_unix_socket_address_new' : return type 'UnixSocketAddress' not supported
+
+// UNSUPPORTED : C value 'g_unix_socket_address_new_abstract' : parameter 'path' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_unix_socket_address_new_with_type' : parameter 'path' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_unix_socket_address_get_address_type' : return type 'UnixSocketAddressType' not supported
+
+var unixSocketAddressGetIsAbstractFunction *gi.Function
+var unixSocketAddressGetIsAbstractFunction_Once sync.Once
+
+func unixSocketAddressGetIsAbstractFunction_Set() error {
+	var err error
+	unixSocketAddressGetIsAbstractFunction_Once.Do(func() {
+		err = unixSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		unixSocketAddressGetIsAbstractFunction, err = unixSocketAddressStruct.InvokerNew("get_is_abstract")
+	})
+	return err
+}
+
+// GetIsAbstract is a representation of the C type g_unix_socket_address_get_is_abstract.
+func (recv *UnixSocketAddress) GetIsAbstract() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixSocketAddressGetIsAbstractFunction_Set()
+	if err == nil {
+		ret = unixSocketAddressGetIsAbstractFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var unixSocketAddressGetPathFunction *gi.Function
+var unixSocketAddressGetPathFunction_Once sync.Once
+
+func unixSocketAddressGetPathFunction_Set() error {
+	var err error
+	unixSocketAddressGetPathFunction_Once.Do(func() {
+		err = unixSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		unixSocketAddressGetPathFunction, err = unixSocketAddressStruct.InvokerNew("get_path")
+	})
+	return err
+}
+
+// GetPath is a representation of the C type g_unix_socket_address_get_path.
+func (recv *UnixSocketAddress) GetPath() string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixSocketAddressGetPathFunction_Set()
+	if err == nil {
+		ret = unixSocketAddressGetPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var unixSocketAddressGetPathLenFunction *gi.Function
+var unixSocketAddressGetPathLenFunction_Once sync.Once
+
+func unixSocketAddressGetPathLenFunction_Set() error {
+	var err error
+	unixSocketAddressGetPathLenFunction_Once.Do(func() {
+		err = unixSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		unixSocketAddressGetPathLenFunction, err = unixSocketAddressStruct.InvokerNew("get_path_len")
+	})
+	return err
+}
+
+// GetPathLen is a representation of the C type g_unix_socket_address_get_path_len.
+func (recv *UnixSocketAddress) GetPathLen() uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixSocketAddressGetPathLenFunction_Set()
+	if err == nil {
+		ret = unixSocketAddressGetPathLenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var vfsStruct *gi.Struct
+var vfsStruct_Once sync.Once
+
+func vfsStruct_Set() error {
+	var err error
+	vfsStruct_Once.Do(func() {
+		vfsStruct, err = gi.StructNew("Gio", "Vfs")
+	})
+	return err
+}
+
+type Vfs struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_vfs_get_file_for_path' : return type 'File' not supported
+
+// UNSUPPORTED : C value 'g_vfs_get_file_for_uri' : return type 'File' not supported
+
+var vfsGetSupportedUriSchemesFunction *gi.Function
+var vfsGetSupportedUriSchemesFunction_Once sync.Once
+
+func vfsGetSupportedUriSchemesFunction_Set() error {
+	var err error
+	vfsGetSupportedUriSchemesFunction_Once.Do(func() {
+		err = vfsStruct_Set()
+		if err != nil {
+			return
+		}
+		vfsGetSupportedUriSchemesFunction, err = vfsStruct.InvokerNew("get_supported_uri_schemes")
+	})
+	return err
+}
+
+// GetSupportedUriSchemes is a representation of the C type g_vfs_get_supported_uri_schemes.
+func (recv *Vfs) GetSupportedUriSchemes() {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	err := vfsGetSupportedUriSchemesFunction_Set()
+	if err == nil {
+		vfsGetSupportedUriSchemesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var vfsIsActiveFunction *gi.Function
+var vfsIsActiveFunction_Once sync.Once
+
+func vfsIsActiveFunction_Set() error {
+	var err error
+	vfsIsActiveFunction_Once.Do(func() {
+		err = vfsStruct_Set()
+		if err != nil {
+			return
+		}
+		vfsIsActiveFunction, err = vfsStruct.InvokerNew("is_active")
+	})
+	return err
+}
+
+// IsActive is a representation of the C type g_vfs_is_active.
+func (recv *Vfs) IsActive() bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := vfsIsActiveFunction_Set()
+	if err == nil {
+		ret = vfsIsActiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_vfs_parse_name' : return type 'File' not supported
+
+// UNSUPPORTED : C value 'g_vfs_register_uri_scheme' : parameter 'uri_func' of type 'VfsFileLookupFunc' not supported
+
+var vfsUnregisterUriSchemeFunction *gi.Function
+var vfsUnregisterUriSchemeFunction_Once sync.Once
+
+func vfsUnregisterUriSchemeFunction_Set() error {
+	var err error
+	vfsUnregisterUriSchemeFunction_Once.Do(func() {
+		err = vfsStruct_Set()
+		if err != nil {
+			return
+		}
+		vfsUnregisterUriSchemeFunction, err = vfsStruct.InvokerNew("unregister_uri_scheme")
+	})
+	return err
+}
+
+// UnregisterUriScheme is a representation of the C type g_vfs_unregister_uri_scheme.
+func (recv *Vfs) UnregisterUriScheme(scheme string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(scheme)
+
+	var ret gi.Argument
+
+	err := vfsUnregisterUriSchemeFunction_Set()
+	if err == nil {
+		ret = vfsUnregisterUriSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// VfsStruct creates an uninitialised Vfs.
+func VfsStruct() *Vfs {
+	err := vfsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &Vfs{native: vfsStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVfs)
+	return structGo
+}
+func finalizeVfs(obj *Vfs) {
+	vfsStruct.Free(obj.native)
+}
+
+var volumeMonitorStruct *gi.Struct
+var volumeMonitorStruct_Once sync.Once
+
+func volumeMonitorStruct_Set() error {
+	var err error
+	volumeMonitorStruct_Once.Do(func() {
+		volumeMonitorStruct, err = gi.StructNew("Gio", "VolumeMonitor")
+	})
+	return err
+}
+
+type VolumeMonitor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+
+// UNSUPPORTED : C value 'g_volume_monitor_get_connected_drives' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_volume_monitor_get_mount_for_uuid' : return type 'Mount' not supported
+
+// UNSUPPORTED : C value 'g_volume_monitor_get_mounts' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_volume_monitor_get_volume_for_uuid' : return type 'Volume' not supported
+
+// UNSUPPORTED : C value 'g_volume_monitor_get_volumes' : return type 'GLib.List' not supported
+
+// VolumeMonitorStruct creates an uninitialised VolumeMonitor.
+func VolumeMonitorStruct() *VolumeMonitor {
+	err := volumeMonitorStruct_Set()
+	if err != nil {
+		return nil
+	}
+
+	structGo := &VolumeMonitor{native: volumeMonitorStruct.Alloc()}
+	runtime.SetFinalizer(structGo, finalizeVolumeMonitor)
+	return structGo
+}
+func finalizeVolumeMonitor(obj *VolumeMonitor) {
+	volumeMonitorStruct.Free(obj.native)
+}
+
+var zlibCompressorStruct *gi.Struct
+var zlibCompressorStruct_Once sync.Once
+
+func zlibCompressorStruct_Set() error {
+	var err error
+	zlibCompressorStruct_Once.Do(func() {
+		zlibCompressorStruct, err = gi.StructNew("Gio", "ZlibCompressor")
+	})
+	return err
+}
+
+type ZlibCompressor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_zlib_compressor_new' : parameter 'format' of type 'ZlibCompressorFormat' not supported
+
+// UNSUPPORTED : C value 'g_zlib_compressor_get_file_info' : return type 'FileInfo' not supported
+
+// UNSUPPORTED : C value 'g_zlib_compressor_set_file_info' : parameter 'file_info' of type 'FileInfo' not supported
+
+var zlibDecompressorStruct *gi.Struct
+var zlibDecompressorStruct_Once sync.Once
+
+func zlibDecompressorStruct_Set() error {
+	var err error
+	zlibDecompressorStruct_Once.Do(func() {
+		zlibDecompressorStruct, err = gi.StructNew("Gio", "ZlibDecompressor")
+	})
+	return err
+}
+
+type ZlibDecompressor struct {
+	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_zlib_decompressor_new' : parameter 'format' of type 'ZlibCompressorFormat' not supported
+
+// UNSUPPORTED : C value 'g_zlib_decompressor_get_file_info' : return type 'FileInfo' not supported

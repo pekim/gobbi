@@ -8,6 +8,12 @@ func (cc Classes) init(ns *Namespace) {
 	}
 }
 
+func (cc Classes) generate(f *file) {
+	for _, c := range cc {
+		c.generate(f)
+	}
+}
+
 func (cc Classes) forName(name string) *Class {
 	for _, class := range cc {
 		if class.Name == name {

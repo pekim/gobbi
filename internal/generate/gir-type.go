@@ -77,7 +77,7 @@ func (t *Type) analyseName() {
 
 	ns, found := t.namespace.namespaces.byName(parts[0])
 	if !found {
-		panic(fmt.Sprintf("Namespace % referenced in Type name %s not found", parts[0], t.Name))
+		panic(fmt.Sprintf("Namespace %s referenced in Type name %s not found", parts[0], t.Name))
 	}
 	t.foreignNamespace = ns
 	t.foreignName = parts[1]
