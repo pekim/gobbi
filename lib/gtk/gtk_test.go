@@ -18,11 +18,12 @@ func TestFunctionCall(t *testing.T) {
 	assert.Equal(t, uint32(3), v)
 }
 
-//func TestClass(t *testing.T) {
-//	Init()
-//	label := LabelNew("test")
-//	label.SetXalign(0.3)
-//	assert.Equal(t, 0.35, label.GetXalign())
-//	//assert.Equal(t, "text", label.GetText())
-//
-//}
+func TestClass(t *testing.T) {
+	Init()
+
+	label := LabelNew("test")
+	assert.Equal(t, "test", label.GetText())
+
+	label.SetXalign(0.3)
+	assert.Equal(t, float32(0.3), label.GetXalign())
+}
