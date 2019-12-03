@@ -28,7 +28,9 @@ func StructNew(namespace string, structName string) (*Struct, error) {
 		cStructName,
 	)
 	if struct_ == nil {
-		return nil, fmt.Errorf("Failed to find struct '%s' in namespace '%s'", structName, namespace)
+		err := fmt.Errorf("Failed to find struct '%s' in namespace '%s'", structName, namespace)
+		handleError(err)
+		return nil, err
 	}
 
 	return &Struct{
@@ -47,8 +49,10 @@ func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 		cFuncName,
 	)
 	if invoker == nil {
-		return nil, fmt.Errorf("Failed to find function '%s' in struct %s in namespace '%s'",
+		err := fmt.Errorf("Failed to find function '%s' in struct %s in namespace '%s'",
 			funcName, s.structName, s.namespace)
+		handleError(err)
+		return nil, err
 	}
 
 	return &Function{
