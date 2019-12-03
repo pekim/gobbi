@@ -6,17 +6,16 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
-	"runtime"
 	"sync"
 )
 
-var authenticationRequestStruct *gi.Struct
-var authenticationRequestStruct_Once sync.Once
+var authenticationRequestObject *gi.Object
+var authenticationRequestObject_Once sync.Once
 
-func authenticationRequestStruct_Set() error {
+func authenticationRequestObject_Set() error {
 	var err error
-	authenticationRequestStruct_Once.Do(func() {
-		authenticationRequestStruct, err = gi.StructNew("WebKit2", "AuthenticationRequest")
+	authenticationRequestObject_Once.Do(func() {
+		authenticationRequestObject, err = gi.ObjectNew("WebKit2", "AuthenticationRequest")
 	})
 	return err
 }
@@ -35,11 +34,11 @@ var authenticationRequestAuthenticateFunction_Once sync.Once
 func authenticationRequestAuthenticateFunction_Set() error {
 	var err error
 	authenticationRequestAuthenticateFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestAuthenticateFunction, err = authenticationRequestStruct.InvokerNew("authenticate")
+		authenticationRequestAuthenticateFunction, err = authenticationRequestObject.InvokerNew("authenticate")
 	})
 	return err
 }
@@ -64,11 +63,11 @@ var authenticationRequestCanSaveCredentialsFunction_Once sync.Once
 func authenticationRequestCanSaveCredentialsFunction_Set() error {
 	var err error
 	authenticationRequestCanSaveCredentialsFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestCanSaveCredentialsFunction, err = authenticationRequestStruct.InvokerNew("can_save_credentials")
+		authenticationRequestCanSaveCredentialsFunction, err = authenticationRequestObject.InvokerNew("can_save_credentials")
 	})
 	return err
 }
@@ -96,11 +95,11 @@ var authenticationRequestCancelFunction_Once sync.Once
 func authenticationRequestCancelFunction_Set() error {
 	var err error
 	authenticationRequestCancelFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestCancelFunction, err = authenticationRequestStruct.InvokerNew("cancel")
+		authenticationRequestCancelFunction, err = authenticationRequestObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -124,11 +123,11 @@ var authenticationRequestGetHostFunction_Once sync.Once
 func authenticationRequestGetHostFunction_Set() error {
 	var err error
 	authenticationRequestGetHostFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestGetHostFunction, err = authenticationRequestStruct.InvokerNew("get_host")
+		authenticationRequestGetHostFunction, err = authenticationRequestObject.InvokerNew("get_host")
 	})
 	return err
 }
@@ -156,11 +155,11 @@ var authenticationRequestGetPortFunction_Once sync.Once
 func authenticationRequestGetPortFunction_Set() error {
 	var err error
 	authenticationRequestGetPortFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestGetPortFunction, err = authenticationRequestStruct.InvokerNew("get_port")
+		authenticationRequestGetPortFunction, err = authenticationRequestObject.InvokerNew("get_port")
 	})
 	return err
 }
@@ -188,11 +187,11 @@ var authenticationRequestGetProposedCredentialFunction_Once sync.Once
 func authenticationRequestGetProposedCredentialFunction_Set() error {
 	var err error
 	authenticationRequestGetProposedCredentialFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestGetProposedCredentialFunction, err = authenticationRequestStruct.InvokerNew("get_proposed_credential")
+		authenticationRequestGetProposedCredentialFunction, err = authenticationRequestObject.InvokerNew("get_proposed_credential")
 	})
 	return err
 }
@@ -221,11 +220,11 @@ var authenticationRequestGetRealmFunction_Once sync.Once
 func authenticationRequestGetRealmFunction_Set() error {
 	var err error
 	authenticationRequestGetRealmFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestGetRealmFunction, err = authenticationRequestStruct.InvokerNew("get_realm")
+		authenticationRequestGetRealmFunction, err = authenticationRequestObject.InvokerNew("get_realm")
 	})
 	return err
 }
@@ -253,11 +252,11 @@ var authenticationRequestGetSchemeFunction_Once sync.Once
 func authenticationRequestGetSchemeFunction_Set() error {
 	var err error
 	authenticationRequestGetSchemeFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestGetSchemeFunction, err = authenticationRequestStruct.InvokerNew("get_scheme")
+		authenticationRequestGetSchemeFunction, err = authenticationRequestObject.InvokerNew("get_scheme")
 	})
 	return err
 }
@@ -285,11 +284,11 @@ var authenticationRequestIsForProxyFunction_Once sync.Once
 func authenticationRequestIsForProxyFunction_Set() error {
 	var err error
 	authenticationRequestIsForProxyFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestIsForProxyFunction, err = authenticationRequestStruct.InvokerNew("is_for_proxy")
+		authenticationRequestIsForProxyFunction, err = authenticationRequestObject.InvokerNew("is_for_proxy")
 	})
 	return err
 }
@@ -317,11 +316,11 @@ var authenticationRequestIsRetryFunction_Once sync.Once
 func authenticationRequestIsRetryFunction_Set() error {
 	var err error
 	authenticationRequestIsRetryFunction_Once.Do(func() {
-		err = authenticationRequestStruct_Set()
+		err = authenticationRequestObject_Set()
 		if err != nil {
 			return
 		}
-		authenticationRequestIsRetryFunction, err = authenticationRequestStruct.InvokerNew("is_retry")
+		authenticationRequestIsRetryFunction, err = authenticationRequestObject.InvokerNew("is_retry")
 	})
 	return err
 }
@@ -343,29 +342,13 @@ func (recv *AuthenticationRequest) IsRetry() bool {
 	return retGo
 }
 
-// AuthenticationRequestStruct creates an uninitialised AuthenticationRequest.
-func AuthenticationRequestStruct() *AuthenticationRequest {
-	err := authenticationRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var automationSessionObject *gi.Object
+var automationSessionObject_Once sync.Once
 
-	structGo := &AuthenticationRequest{}
-	structGo.Native = authenticationRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthenticationRequest)
-	return structGo
-}
-func finalizeAuthenticationRequest(obj *AuthenticationRequest) {
-	authenticationRequestStruct.Free(obj.Native)
-}
-
-var automationSessionStruct *gi.Struct
-var automationSessionStruct_Once sync.Once
-
-func automationSessionStruct_Set() error {
+func automationSessionObject_Set() error {
 	var err error
-	automationSessionStruct_Once.Do(func() {
-		automationSessionStruct, err = gi.StructNew("WebKit2", "AutomationSession")
+	automationSessionObject_Once.Do(func() {
+		automationSessionObject, err = gi.ObjectNew("WebKit2", "AutomationSession")
 	})
 	return err
 }
@@ -380,7 +363,7 @@ type AutomationSession struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *AutomationSession) FieldPriv() *AutomationSessionPrivate {
-	argValue := gi.FieldGet(automationSessionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(automationSessionObject, recv.Native, "priv")
 	value := &AutomationSessionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -390,7 +373,7 @@ func (recv *AutomationSession) FieldPriv() *AutomationSessionPrivate {
 func (recv *AutomationSession) SetFieldPriv(value *AutomationSessionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(automationSessionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(automationSessionObject, recv.Native, "priv", argValue)
 }
 
 var automationSessionGetApplicationInfoFunction *gi.Function
@@ -399,11 +382,11 @@ var automationSessionGetApplicationInfoFunction_Once sync.Once
 func automationSessionGetApplicationInfoFunction_Set() error {
 	var err error
 	automationSessionGetApplicationInfoFunction_Once.Do(func() {
-		err = automationSessionStruct_Set()
+		err = automationSessionObject_Set()
 		if err != nil {
 			return
 		}
-		automationSessionGetApplicationInfoFunction, err = automationSessionStruct.InvokerNew("get_application_info")
+		automationSessionGetApplicationInfoFunction, err = automationSessionObject.InvokerNew("get_application_info")
 	})
 	return err
 }
@@ -432,11 +415,11 @@ var automationSessionGetIdFunction_Once sync.Once
 func automationSessionGetIdFunction_Set() error {
 	var err error
 	automationSessionGetIdFunction_Once.Do(func() {
-		err = automationSessionStruct_Set()
+		err = automationSessionObject_Set()
 		if err != nil {
 			return
 		}
-		automationSessionGetIdFunction, err = automationSessionStruct.InvokerNew("get_id")
+		automationSessionGetIdFunction, err = automationSessionObject.InvokerNew("get_id")
 	})
 	return err
 }
@@ -464,11 +447,11 @@ var automationSessionSetApplicationInfoFunction_Once sync.Once
 func automationSessionSetApplicationInfoFunction_Set() error {
 	var err error
 	automationSessionSetApplicationInfoFunction_Once.Do(func() {
-		err = automationSessionStruct_Set()
+		err = automationSessionObject_Set()
 		if err != nil {
 			return
 		}
-		automationSessionSetApplicationInfoFunction, err = automationSessionStruct.InvokerNew("set_application_info")
+		automationSessionSetApplicationInfoFunction, err = automationSessionObject.InvokerNew("set_application_info")
 	})
 	return err
 }
@@ -487,29 +470,13 @@ func (recv *AutomationSession) SetApplicationInfo(info *ApplicationInfo) {
 	return
 }
 
-// AutomationSessionStruct creates an uninitialised AutomationSession.
-func AutomationSessionStruct() *AutomationSession {
-	err := automationSessionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var backForwardListObject *gi.Object
+var backForwardListObject_Once sync.Once
 
-	structGo := &AutomationSession{}
-	structGo.Native = automationSessionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAutomationSession)
-	return structGo
-}
-func finalizeAutomationSession(obj *AutomationSession) {
-	automationSessionStruct.Free(obj.Native)
-}
-
-var backForwardListStruct *gi.Struct
-var backForwardListStruct_Once sync.Once
-
-func backForwardListStruct_Set() error {
+func backForwardListObject_Set() error {
 	var err error
-	backForwardListStruct_Once.Do(func() {
-		backForwardListStruct, err = gi.StructNew("WebKit2", "BackForwardList")
+	backForwardListObject_Once.Do(func() {
+		backForwardListObject, err = gi.ObjectNew("WebKit2", "BackForwardList")
 	})
 	return err
 }
@@ -524,7 +491,7 @@ type BackForwardList struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BackForwardList) FieldPriv() *BackForwardListPrivate {
-	argValue := gi.FieldGet(backForwardListStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(backForwardListObject, recv.Native, "priv")
 	value := &BackForwardListPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -534,7 +501,7 @@ func (recv *BackForwardList) FieldPriv() *BackForwardListPrivate {
 func (recv *BackForwardList) SetFieldPriv(value *BackForwardListPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(backForwardListStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(backForwardListObject, recv.Native, "priv", argValue)
 }
 
 var backForwardListGetBackItemFunction *gi.Function
@@ -543,11 +510,11 @@ var backForwardListGetBackItemFunction_Once sync.Once
 func backForwardListGetBackItemFunction_Set() error {
 	var err error
 	backForwardListGetBackItemFunction_Once.Do(func() {
-		err = backForwardListStruct_Set()
+		err = backForwardListObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListGetBackItemFunction, err = backForwardListStruct.InvokerNew("get_back_item")
+		backForwardListGetBackItemFunction, err = backForwardListObject.InvokerNew("get_back_item")
 	})
 	return err
 }
@@ -580,11 +547,11 @@ var backForwardListGetCurrentItemFunction_Once sync.Once
 func backForwardListGetCurrentItemFunction_Set() error {
 	var err error
 	backForwardListGetCurrentItemFunction_Once.Do(func() {
-		err = backForwardListStruct_Set()
+		err = backForwardListObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListGetCurrentItemFunction, err = backForwardListStruct.InvokerNew("get_current_item")
+		backForwardListGetCurrentItemFunction, err = backForwardListObject.InvokerNew("get_current_item")
 	})
 	return err
 }
@@ -613,11 +580,11 @@ var backForwardListGetForwardItemFunction_Once sync.Once
 func backForwardListGetForwardItemFunction_Set() error {
 	var err error
 	backForwardListGetForwardItemFunction_Once.Do(func() {
-		err = backForwardListStruct_Set()
+		err = backForwardListObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListGetForwardItemFunction, err = backForwardListStruct.InvokerNew("get_forward_item")
+		backForwardListGetForwardItemFunction, err = backForwardListObject.InvokerNew("get_forward_item")
 	})
 	return err
 }
@@ -650,11 +617,11 @@ var backForwardListGetLengthFunction_Once sync.Once
 func backForwardListGetLengthFunction_Set() error {
 	var err error
 	backForwardListGetLengthFunction_Once.Do(func() {
-		err = backForwardListStruct_Set()
+		err = backForwardListObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListGetLengthFunction, err = backForwardListStruct.InvokerNew("get_length")
+		backForwardListGetLengthFunction, err = backForwardListObject.InvokerNew("get_length")
 	})
 	return err
 }
@@ -682,11 +649,11 @@ var backForwardListGetNthItemFunction_Once sync.Once
 func backForwardListGetNthItemFunction_Set() error {
 	var err error
 	backForwardListGetNthItemFunction_Once.Do(func() {
-		err = backForwardListStruct_Set()
+		err = backForwardListObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListGetNthItemFunction, err = backForwardListStruct.InvokerNew("get_nth_item")
+		backForwardListGetNthItemFunction, err = backForwardListObject.InvokerNew("get_nth_item")
 	})
 	return err
 }
@@ -710,29 +677,13 @@ func (recv *BackForwardList) GetNthItem(index int32) *BackForwardListItem {
 	return retGo
 }
 
-// BackForwardListStruct creates an uninitialised BackForwardList.
-func BackForwardListStruct() *BackForwardList {
-	err := backForwardListStruct_Set()
-	if err != nil {
-		return nil
-	}
+var backForwardListItemObject *gi.Object
+var backForwardListItemObject_Once sync.Once
 
-	structGo := &BackForwardList{}
-	structGo.Native = backForwardListStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeBackForwardList)
-	return structGo
-}
-func finalizeBackForwardList(obj *BackForwardList) {
-	backForwardListStruct.Free(obj.Native)
-}
-
-var backForwardListItemStruct *gi.Struct
-var backForwardListItemStruct_Once sync.Once
-
-func backForwardListItemStruct_Set() error {
+func backForwardListItemObject_Set() error {
 	var err error
-	backForwardListItemStruct_Once.Do(func() {
-		backForwardListItemStruct, err = gi.StructNew("WebKit2", "BackForwardListItem")
+	backForwardListItemObject_Once.Do(func() {
+		backForwardListItemObject, err = gi.ObjectNew("WebKit2", "BackForwardListItem")
 	})
 	return err
 }
@@ -747,7 +698,7 @@ type BackForwardListItem struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BackForwardListItem) FieldPriv() *BackForwardListItemPrivate {
-	argValue := gi.FieldGet(backForwardListItemStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(backForwardListItemObject, recv.Native, "priv")
 	value := &BackForwardListItemPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -757,7 +708,7 @@ func (recv *BackForwardListItem) FieldPriv() *BackForwardListItemPrivate {
 func (recv *BackForwardListItem) SetFieldPriv(value *BackForwardListItemPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(backForwardListItemStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(backForwardListItemObject, recv.Native, "priv", argValue)
 }
 
 var backForwardListItemGetOriginalUriFunction *gi.Function
@@ -766,11 +717,11 @@ var backForwardListItemGetOriginalUriFunction_Once sync.Once
 func backForwardListItemGetOriginalUriFunction_Set() error {
 	var err error
 	backForwardListItemGetOriginalUriFunction_Once.Do(func() {
-		err = backForwardListItemStruct_Set()
+		err = backForwardListItemObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListItemGetOriginalUriFunction, err = backForwardListItemStruct.InvokerNew("get_original_uri")
+		backForwardListItemGetOriginalUriFunction, err = backForwardListItemObject.InvokerNew("get_original_uri")
 	})
 	return err
 }
@@ -798,11 +749,11 @@ var backForwardListItemGetTitleFunction_Once sync.Once
 func backForwardListItemGetTitleFunction_Set() error {
 	var err error
 	backForwardListItemGetTitleFunction_Once.Do(func() {
-		err = backForwardListItemStruct_Set()
+		err = backForwardListItemObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListItemGetTitleFunction, err = backForwardListItemStruct.InvokerNew("get_title")
+		backForwardListItemGetTitleFunction, err = backForwardListItemObject.InvokerNew("get_title")
 	})
 	return err
 }
@@ -830,11 +781,11 @@ var backForwardListItemGetUriFunction_Once sync.Once
 func backForwardListItemGetUriFunction_Set() error {
 	var err error
 	backForwardListItemGetUriFunction_Once.Do(func() {
-		err = backForwardListItemStruct_Set()
+		err = backForwardListItemObject_Set()
 		if err != nil {
 			return
 		}
-		backForwardListItemGetUriFunction, err = backForwardListItemStruct.InvokerNew("get_uri")
+		backForwardListItemGetUriFunction, err = backForwardListItemObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -856,29 +807,13 @@ func (recv *BackForwardListItem) GetUri() string {
 	return retGo
 }
 
-// BackForwardListItemStruct creates an uninitialised BackForwardListItem.
-func BackForwardListItemStruct() *BackForwardListItem {
-	err := backForwardListItemStruct_Set()
-	if err != nil {
-		return nil
-	}
+var colorChooserRequestObject *gi.Object
+var colorChooserRequestObject_Once sync.Once
 
-	structGo := &BackForwardListItem{}
-	structGo.Native = backForwardListItemStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeBackForwardListItem)
-	return structGo
-}
-func finalizeBackForwardListItem(obj *BackForwardListItem) {
-	backForwardListItemStruct.Free(obj.Native)
-}
-
-var colorChooserRequestStruct *gi.Struct
-var colorChooserRequestStruct_Once sync.Once
-
-func colorChooserRequestStruct_Set() error {
+func colorChooserRequestObject_Set() error {
 	var err error
-	colorChooserRequestStruct_Once.Do(func() {
-		colorChooserRequestStruct, err = gi.StructNew("WebKit2", "ColorChooserRequest")
+	colorChooserRequestObject_Once.Do(func() {
+		colorChooserRequestObject, err = gi.ObjectNew("WebKit2", "ColorChooserRequest")
 	})
 	return err
 }
@@ -897,11 +832,11 @@ var colorChooserRequestCancelFunction_Once sync.Once
 func colorChooserRequestCancelFunction_Set() error {
 	var err error
 	colorChooserRequestCancelFunction_Once.Do(func() {
-		err = colorChooserRequestStruct_Set()
+		err = colorChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		colorChooserRequestCancelFunction, err = colorChooserRequestStruct.InvokerNew("cancel")
+		colorChooserRequestCancelFunction, err = colorChooserRequestObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -925,11 +860,11 @@ var colorChooserRequestFinishFunction_Once sync.Once
 func colorChooserRequestFinishFunction_Set() error {
 	var err error
 	colorChooserRequestFinishFunction_Once.Do(func() {
-		err = colorChooserRequestStruct_Set()
+		err = colorChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		colorChooserRequestFinishFunction, err = colorChooserRequestStruct.InvokerNew("finish")
+		colorChooserRequestFinishFunction, err = colorChooserRequestObject.InvokerNew("finish")
 	})
 	return err
 }
@@ -953,29 +888,13 @@ func (recv *ColorChooserRequest) Finish() {
 
 // UNSUPPORTED : C value 'webkit_color_chooser_request_set_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
 
-// ColorChooserRequestStruct creates an uninitialised ColorChooserRequest.
-func ColorChooserRequestStruct() *ColorChooserRequest {
-	err := colorChooserRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var contextMenuObject *gi.Object
+var contextMenuObject_Once sync.Once
 
-	structGo := &ColorChooserRequest{}
-	structGo.Native = colorChooserRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeColorChooserRequest)
-	return structGo
-}
-func finalizeColorChooserRequest(obj *ColorChooserRequest) {
-	colorChooserRequestStruct.Free(obj.Native)
-}
-
-var contextMenuStruct *gi.Struct
-var contextMenuStruct_Once sync.Once
-
-func contextMenuStruct_Set() error {
+func contextMenuObject_Set() error {
 	var err error
-	contextMenuStruct_Once.Do(func() {
-		contextMenuStruct, err = gi.StructNew("WebKit2", "ContextMenu")
+	contextMenuObject_Once.Do(func() {
+		contextMenuObject, err = gi.ObjectNew("WebKit2", "ContextMenu")
 	})
 	return err
 }
@@ -990,7 +909,7 @@ type ContextMenu struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContextMenu) FieldPriv() *ContextMenuPrivate {
-	argValue := gi.FieldGet(contextMenuStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(contextMenuObject, recv.Native, "priv")
 	value := &ContextMenuPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1000,7 +919,7 @@ func (recv *ContextMenu) FieldPriv() *ContextMenuPrivate {
 func (recv *ContextMenu) SetFieldPriv(value *ContextMenuPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(contextMenuStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(contextMenuObject, recv.Native, "priv", argValue)
 }
 
 var contextMenuNewFunction *gi.Function
@@ -1009,11 +928,11 @@ var contextMenuNewFunction_Once sync.Once
 func contextMenuNewFunction_Set() error {
 	var err error
 	contextMenuNewFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuNewFunction, err = contextMenuStruct.InvokerNew("new")
+		contextMenuNewFunction, err = contextMenuObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1042,11 +961,11 @@ var contextMenuAppendFunction_Once sync.Once
 func contextMenuAppendFunction_Set() error {
 	var err error
 	contextMenuAppendFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuAppendFunction, err = contextMenuStruct.InvokerNew("append")
+		contextMenuAppendFunction, err = contextMenuObject.InvokerNew("append")
 	})
 	return err
 }
@@ -1071,11 +990,11 @@ var contextMenuFirstFunction_Once sync.Once
 func contextMenuFirstFunction_Set() error {
 	var err error
 	contextMenuFirstFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuFirstFunction, err = contextMenuStruct.InvokerNew("first")
+		contextMenuFirstFunction, err = contextMenuObject.InvokerNew("first")
 	})
 	return err
 }
@@ -1104,11 +1023,11 @@ var contextMenuGetItemAtPositionFunction_Once sync.Once
 func contextMenuGetItemAtPositionFunction_Set() error {
 	var err error
 	contextMenuGetItemAtPositionFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuGetItemAtPositionFunction, err = contextMenuStruct.InvokerNew("get_item_at_position")
+		contextMenuGetItemAtPositionFunction, err = contextMenuObject.InvokerNew("get_item_at_position")
 	})
 	return err
 }
@@ -1140,11 +1059,11 @@ var contextMenuGetNItemsFunction_Once sync.Once
 func contextMenuGetNItemsFunction_Set() error {
 	var err error
 	contextMenuGetNItemsFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuGetNItemsFunction, err = contextMenuStruct.InvokerNew("get_n_items")
+		contextMenuGetNItemsFunction, err = contextMenuObject.InvokerNew("get_n_items")
 	})
 	return err
 }
@@ -1174,11 +1093,11 @@ var contextMenuInsertFunction_Once sync.Once
 func contextMenuInsertFunction_Set() error {
 	var err error
 	contextMenuInsertFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuInsertFunction, err = contextMenuStruct.InvokerNew("insert")
+		contextMenuInsertFunction, err = contextMenuObject.InvokerNew("insert")
 	})
 	return err
 }
@@ -1204,11 +1123,11 @@ var contextMenuLastFunction_Once sync.Once
 func contextMenuLastFunction_Set() error {
 	var err error
 	contextMenuLastFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuLastFunction, err = contextMenuStruct.InvokerNew("last")
+		contextMenuLastFunction, err = contextMenuObject.InvokerNew("last")
 	})
 	return err
 }
@@ -1237,11 +1156,11 @@ var contextMenuMoveItemFunction_Once sync.Once
 func contextMenuMoveItemFunction_Set() error {
 	var err error
 	contextMenuMoveItemFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuMoveItemFunction, err = contextMenuStruct.InvokerNew("move_item")
+		contextMenuMoveItemFunction, err = contextMenuObject.InvokerNew("move_item")
 	})
 	return err
 }
@@ -1267,11 +1186,11 @@ var contextMenuPrependFunction_Once sync.Once
 func contextMenuPrependFunction_Set() error {
 	var err error
 	contextMenuPrependFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuPrependFunction, err = contextMenuStruct.InvokerNew("prepend")
+		contextMenuPrependFunction, err = contextMenuObject.InvokerNew("prepend")
 	})
 	return err
 }
@@ -1296,11 +1215,11 @@ var contextMenuRemoveFunction_Once sync.Once
 func contextMenuRemoveFunction_Set() error {
 	var err error
 	contextMenuRemoveFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuRemoveFunction, err = contextMenuStruct.InvokerNew("remove")
+		contextMenuRemoveFunction, err = contextMenuObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -1325,11 +1244,11 @@ var contextMenuRemoveAllFunction_Once sync.Once
 func contextMenuRemoveAllFunction_Set() error {
 	var err error
 	contextMenuRemoveAllFunction_Once.Do(func() {
-		err = contextMenuStruct_Set()
+		err = contextMenuObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuRemoveAllFunction, err = contextMenuStruct.InvokerNew("remove_all")
+		contextMenuRemoveAllFunction, err = contextMenuObject.InvokerNew("remove_all")
 	})
 	return err
 }
@@ -1349,13 +1268,13 @@ func (recv *ContextMenu) RemoveAll() {
 
 // UNSUPPORTED : C value 'webkit_context_menu_set_user_data' : parameter 'user_data' of type 'GLib.Variant' not supported
 
-var contextMenuItemStruct *gi.Struct
-var contextMenuItemStruct_Once sync.Once
+var contextMenuItemObject *gi.Object
+var contextMenuItemObject_Once sync.Once
 
-func contextMenuItemStruct_Set() error {
+func contextMenuItemObject_Set() error {
 	var err error
-	contextMenuItemStruct_Once.Do(func() {
-		contextMenuItemStruct, err = gi.StructNew("WebKit2", "ContextMenuItem")
+	contextMenuItemObject_Once.Do(func() {
+		contextMenuItemObject, err = gi.ObjectNew("WebKit2", "ContextMenuItem")
 	})
 	return err
 }
@@ -1370,7 +1289,7 @@ type ContextMenuItem struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContextMenuItem) FieldPriv() *ContextMenuItemPrivate {
-	argValue := gi.FieldGet(contextMenuItemStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(contextMenuItemObject, recv.Native, "priv")
 	value := &ContextMenuItemPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1380,7 +1299,7 @@ func (recv *ContextMenuItem) FieldPriv() *ContextMenuItemPrivate {
 func (recv *ContextMenuItem) SetFieldPriv(value *ContextMenuItemPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(contextMenuItemStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(contextMenuItemObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_new' : parameter 'action' of type 'Gtk.Action' not supported
@@ -1393,11 +1312,11 @@ var contextMenuItemNewFromStockActionFunction_Once sync.Once
 func contextMenuItemNewFromStockActionFunction_Set() error {
 	var err error
 	contextMenuItemNewFromStockActionFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemNewFromStockActionFunction, err = contextMenuItemStruct.InvokerNew("new_from_stock_action")
+		contextMenuItemNewFromStockActionFunction, err = contextMenuItemObject.InvokerNew("new_from_stock_action")
 	})
 	return err
 }
@@ -1426,11 +1345,11 @@ var contextMenuItemNewFromStockActionWithLabelFunction_Once sync.Once
 func contextMenuItemNewFromStockActionWithLabelFunction_Set() error {
 	var err error
 	contextMenuItemNewFromStockActionWithLabelFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemNewFromStockActionWithLabelFunction, err = contextMenuItemStruct.InvokerNew("new_from_stock_action_with_label")
+		contextMenuItemNewFromStockActionWithLabelFunction, err = contextMenuItemObject.InvokerNew("new_from_stock_action_with_label")
 	})
 	return err
 }
@@ -1460,11 +1379,11 @@ var contextMenuItemNewSeparatorFunction_Once sync.Once
 func contextMenuItemNewSeparatorFunction_Set() error {
 	var err error
 	contextMenuItemNewSeparatorFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemNewSeparatorFunction, err = contextMenuItemStruct.InvokerNew("new_separator")
+		contextMenuItemNewSeparatorFunction, err = contextMenuItemObject.InvokerNew("new_separator")
 	})
 	return err
 }
@@ -1491,11 +1410,11 @@ var contextMenuItemNewWithSubmenuFunction_Once sync.Once
 func contextMenuItemNewWithSubmenuFunction_Set() error {
 	var err error
 	contextMenuItemNewWithSubmenuFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemNewWithSubmenuFunction, err = contextMenuItemStruct.InvokerNew("new_with_submenu")
+		contextMenuItemNewWithSubmenuFunction, err = contextMenuItemObject.InvokerNew("new_with_submenu")
 	})
 	return err
 }
@@ -1529,11 +1448,11 @@ var contextMenuItemGetStockActionFunction_Once sync.Once
 func contextMenuItemGetStockActionFunction_Set() error {
 	var err error
 	contextMenuItemGetStockActionFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemGetStockActionFunction, err = contextMenuItemStruct.InvokerNew("get_stock_action")
+		contextMenuItemGetStockActionFunction, err = contextMenuItemObject.InvokerNew("get_stock_action")
 	})
 	return err
 }
@@ -1561,11 +1480,11 @@ var contextMenuItemGetSubmenuFunction_Once sync.Once
 func contextMenuItemGetSubmenuFunction_Set() error {
 	var err error
 	contextMenuItemGetSubmenuFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemGetSubmenuFunction, err = contextMenuItemStruct.InvokerNew("get_submenu")
+		contextMenuItemGetSubmenuFunction, err = contextMenuItemObject.InvokerNew("get_submenu")
 	})
 	return err
 }
@@ -1594,11 +1513,11 @@ var contextMenuItemIsSeparatorFunction_Once sync.Once
 func contextMenuItemIsSeparatorFunction_Set() error {
 	var err error
 	contextMenuItemIsSeparatorFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemIsSeparatorFunction, err = contextMenuItemStruct.InvokerNew("is_separator")
+		contextMenuItemIsSeparatorFunction, err = contextMenuItemObject.InvokerNew("is_separator")
 	})
 	return err
 }
@@ -1626,11 +1545,11 @@ var contextMenuItemSetSubmenuFunction_Once sync.Once
 func contextMenuItemSetSubmenuFunction_Set() error {
 	var err error
 	contextMenuItemSetSubmenuFunction_Once.Do(func() {
-		err = contextMenuItemStruct_Set()
+		err = contextMenuItemObject_Set()
 		if err != nil {
 			return
 		}
-		contextMenuItemSetSubmenuFunction, err = contextMenuItemStruct.InvokerNew("set_submenu")
+		contextMenuItemSetSubmenuFunction, err = contextMenuItemObject.InvokerNew("set_submenu")
 	})
 	return err
 }
@@ -1649,13 +1568,13 @@ func (recv *ContextMenuItem) SetSubmenu(submenu *ContextMenu) {
 	return
 }
 
-var cookieManagerStruct *gi.Struct
-var cookieManagerStruct_Once sync.Once
+var cookieManagerObject *gi.Object
+var cookieManagerObject_Once sync.Once
 
-func cookieManagerStruct_Set() error {
+func cookieManagerObject_Set() error {
 	var err error
-	cookieManagerStruct_Once.Do(func() {
-		cookieManagerStruct, err = gi.StructNew("WebKit2", "CookieManager")
+	cookieManagerObject_Once.Do(func() {
+		cookieManagerObject, err = gi.ObjectNew("WebKit2", "CookieManager")
 	})
 	return err
 }
@@ -1670,7 +1589,7 @@ type CookieManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CookieManager) FieldPriv() *CookieManagerPrivate {
-	argValue := gi.FieldGet(cookieManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(cookieManagerObject, recv.Native, "priv")
 	value := &CookieManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1680,7 +1599,7 @@ func (recv *CookieManager) FieldPriv() *CookieManagerPrivate {
 func (recv *CookieManager) SetFieldPriv(value *CookieManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(cookieManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(cookieManagerObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie' : parameter 'cookie' of type 'Soup.Cookie' not supported
@@ -1693,11 +1612,11 @@ var cookieManagerDeleteAllCookiesFunction_Once sync.Once
 func cookieManagerDeleteAllCookiesFunction_Set() error {
 	var err error
 	cookieManagerDeleteAllCookiesFunction_Once.Do(func() {
-		err = cookieManagerStruct_Set()
+		err = cookieManagerObject_Set()
 		if err != nil {
 			return
 		}
-		cookieManagerDeleteAllCookiesFunction, err = cookieManagerStruct.InvokerNew("delete_all_cookies")
+		cookieManagerDeleteAllCookiesFunction, err = cookieManagerObject.InvokerNew("delete_all_cookies")
 	})
 	return err
 }
@@ -1725,11 +1644,11 @@ var cookieManagerDeleteCookiesForDomainFunction_Once sync.Once
 func cookieManagerDeleteCookiesForDomainFunction_Set() error {
 	var err error
 	cookieManagerDeleteCookiesForDomainFunction_Once.Do(func() {
-		err = cookieManagerStruct_Set()
+		err = cookieManagerObject_Set()
 		if err != nil {
 			return
 		}
-		cookieManagerDeleteCookiesForDomainFunction, err = cookieManagerStruct.InvokerNew("delete_cookies_for_domain")
+		cookieManagerDeleteCookiesForDomainFunction, err = cookieManagerObject.InvokerNew("delete_cookies_for_domain")
 	})
 	return err
 }
@@ -1766,11 +1685,11 @@ var cookieManagerSetAcceptPolicyFunction_Once sync.Once
 func cookieManagerSetAcceptPolicyFunction_Set() error {
 	var err error
 	cookieManagerSetAcceptPolicyFunction_Once.Do(func() {
-		err = cookieManagerStruct_Set()
+		err = cookieManagerObject_Set()
 		if err != nil {
 			return
 		}
-		cookieManagerSetAcceptPolicyFunction, err = cookieManagerStruct.InvokerNew("set_accept_policy")
+		cookieManagerSetAcceptPolicyFunction, err = cookieManagerObject.InvokerNew("set_accept_policy")
 	})
 	return err
 }
@@ -1795,11 +1714,11 @@ var cookieManagerSetPersistentStorageFunction_Once sync.Once
 func cookieManagerSetPersistentStorageFunction_Set() error {
 	var err error
 	cookieManagerSetPersistentStorageFunction_Once.Do(func() {
-		err = cookieManagerStruct_Set()
+		err = cookieManagerObject_Set()
 		if err != nil {
 			return
 		}
-		cookieManagerSetPersistentStorageFunction, err = cookieManagerStruct.InvokerNew("set_persistent_storage")
+		cookieManagerSetPersistentStorageFunction, err = cookieManagerObject.InvokerNew("set_persistent_storage")
 	})
 	return err
 }
@@ -1819,29 +1738,13 @@ func (recv *CookieManager) SetPersistentStorage(filename string, storage CookieP
 	return
 }
 
-// CookieManagerStruct creates an uninitialised CookieManager.
-func CookieManagerStruct() *CookieManager {
-	err := cookieManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var deviceInfoPermissionRequestObject *gi.Object
+var deviceInfoPermissionRequestObject_Once sync.Once
 
-	structGo := &CookieManager{}
-	structGo.Native = cookieManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeCookieManager)
-	return structGo
-}
-func finalizeCookieManager(obj *CookieManager) {
-	cookieManagerStruct.Free(obj.Native)
-}
-
-var deviceInfoPermissionRequestStruct *gi.Struct
-var deviceInfoPermissionRequestStruct_Once sync.Once
-
-func deviceInfoPermissionRequestStruct_Set() error {
+func deviceInfoPermissionRequestObject_Set() error {
 	var err error
-	deviceInfoPermissionRequestStruct_Once.Do(func() {
-		deviceInfoPermissionRequestStruct, err = gi.StructNew("WebKit2", "DeviceInfoPermissionRequest")
+	deviceInfoPermissionRequestObject_Once.Do(func() {
+		deviceInfoPermissionRequestObject, err = gi.ObjectNew("WebKit2", "DeviceInfoPermissionRequest")
 	})
 	return err
 }
@@ -1854,29 +1757,13 @@ type DeviceInfoPermissionRequest struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// DeviceInfoPermissionRequestStruct creates an uninitialised DeviceInfoPermissionRequest.
-func DeviceInfoPermissionRequestStruct() *DeviceInfoPermissionRequest {
-	err := deviceInfoPermissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var downloadObject *gi.Object
+var downloadObject_Once sync.Once
 
-	structGo := &DeviceInfoPermissionRequest{}
-	structGo.Native = deviceInfoPermissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDeviceInfoPermissionRequest)
-	return structGo
-}
-func finalizeDeviceInfoPermissionRequest(obj *DeviceInfoPermissionRequest) {
-	deviceInfoPermissionRequestStruct.Free(obj.Native)
-}
-
-var downloadStruct *gi.Struct
-var downloadStruct_Once sync.Once
-
-func downloadStruct_Set() error {
+func downloadObject_Set() error {
 	var err error
-	downloadStruct_Once.Do(func() {
-		downloadStruct, err = gi.StructNew("WebKit2", "Download")
+	downloadObject_Once.Do(func() {
+		downloadObject, err = gi.ObjectNew("WebKit2", "Download")
 	})
 	return err
 }
@@ -1891,7 +1778,7 @@ type Download struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Download) FieldPriv() *DownloadPrivate {
-	argValue := gi.FieldGet(downloadStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(downloadObject, recv.Native, "priv")
 	value := &DownloadPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1901,7 +1788,7 @@ func (recv *Download) FieldPriv() *DownloadPrivate {
 func (recv *Download) SetFieldPriv(value *DownloadPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(downloadStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(downloadObject, recv.Native, "priv", argValue)
 }
 
 var downloadCancelFunction *gi.Function
@@ -1910,11 +1797,11 @@ var downloadCancelFunction_Once sync.Once
 func downloadCancelFunction_Set() error {
 	var err error
 	downloadCancelFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadCancelFunction, err = downloadStruct.InvokerNew("cancel")
+		downloadCancelFunction, err = downloadObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -1938,11 +1825,11 @@ var downloadGetAllowOverwriteFunction_Once sync.Once
 func downloadGetAllowOverwriteFunction_Set() error {
 	var err error
 	downloadGetAllowOverwriteFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetAllowOverwriteFunction, err = downloadStruct.InvokerNew("get_allow_overwrite")
+		downloadGetAllowOverwriteFunction, err = downloadObject.InvokerNew("get_allow_overwrite")
 	})
 	return err
 }
@@ -1970,11 +1857,11 @@ var downloadGetDestinationFunction_Once sync.Once
 func downloadGetDestinationFunction_Set() error {
 	var err error
 	downloadGetDestinationFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetDestinationFunction, err = downloadStruct.InvokerNew("get_destination")
+		downloadGetDestinationFunction, err = downloadObject.InvokerNew("get_destination")
 	})
 	return err
 }
@@ -2002,11 +1889,11 @@ var downloadGetElapsedTimeFunction_Once sync.Once
 func downloadGetElapsedTimeFunction_Set() error {
 	var err error
 	downloadGetElapsedTimeFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetElapsedTimeFunction, err = downloadStruct.InvokerNew("get_elapsed_time")
+		downloadGetElapsedTimeFunction, err = downloadObject.InvokerNew("get_elapsed_time")
 	})
 	return err
 }
@@ -2034,11 +1921,11 @@ var downloadGetEstimatedProgressFunction_Once sync.Once
 func downloadGetEstimatedProgressFunction_Set() error {
 	var err error
 	downloadGetEstimatedProgressFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetEstimatedProgressFunction, err = downloadStruct.InvokerNew("get_estimated_progress")
+		downloadGetEstimatedProgressFunction, err = downloadObject.InvokerNew("get_estimated_progress")
 	})
 	return err
 }
@@ -2066,11 +1953,11 @@ var downloadGetReceivedDataLengthFunction_Once sync.Once
 func downloadGetReceivedDataLengthFunction_Set() error {
 	var err error
 	downloadGetReceivedDataLengthFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetReceivedDataLengthFunction, err = downloadStruct.InvokerNew("get_received_data_length")
+		downloadGetReceivedDataLengthFunction, err = downloadObject.InvokerNew("get_received_data_length")
 	})
 	return err
 }
@@ -2098,11 +1985,11 @@ var downloadGetRequestFunction_Once sync.Once
 func downloadGetRequestFunction_Set() error {
 	var err error
 	downloadGetRequestFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetRequestFunction, err = downloadStruct.InvokerNew("get_request")
+		downloadGetRequestFunction, err = downloadObject.InvokerNew("get_request")
 	})
 	return err
 }
@@ -2131,11 +2018,11 @@ var downloadGetResponseFunction_Once sync.Once
 func downloadGetResponseFunction_Set() error {
 	var err error
 	downloadGetResponseFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetResponseFunction, err = downloadStruct.InvokerNew("get_response")
+		downloadGetResponseFunction, err = downloadObject.InvokerNew("get_response")
 	})
 	return err
 }
@@ -2164,11 +2051,11 @@ var downloadGetWebViewFunction_Once sync.Once
 func downloadGetWebViewFunction_Set() error {
 	var err error
 	downloadGetWebViewFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadGetWebViewFunction, err = downloadStruct.InvokerNew("get_web_view")
+		downloadGetWebViewFunction, err = downloadObject.InvokerNew("get_web_view")
 	})
 	return err
 }
@@ -2197,11 +2084,11 @@ var downloadSetAllowOverwriteFunction_Once sync.Once
 func downloadSetAllowOverwriteFunction_Set() error {
 	var err error
 	downloadSetAllowOverwriteFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadSetAllowOverwriteFunction, err = downloadStruct.InvokerNew("set_allow_overwrite")
+		downloadSetAllowOverwriteFunction, err = downloadObject.InvokerNew("set_allow_overwrite")
 	})
 	return err
 }
@@ -2226,11 +2113,11 @@ var downloadSetDestinationFunction_Once sync.Once
 func downloadSetDestinationFunction_Set() error {
 	var err error
 	downloadSetDestinationFunction_Once.Do(func() {
-		err = downloadStruct_Set()
+		err = downloadObject_Set()
 		if err != nil {
 			return
 		}
-		downloadSetDestinationFunction, err = downloadStruct.InvokerNew("set_destination")
+		downloadSetDestinationFunction, err = downloadObject.InvokerNew("set_destination")
 	})
 	return err
 }
@@ -2249,29 +2136,13 @@ func (recv *Download) SetDestination(uri string) {
 	return
 }
 
-// DownloadStruct creates an uninitialised Download.
-func DownloadStruct() *Download {
-	err := downloadStruct_Set()
-	if err != nil {
-		return nil
-	}
+var editorStateObject *gi.Object
+var editorStateObject_Once sync.Once
 
-	structGo := &Download{}
-	structGo.Native = downloadStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDownload)
-	return structGo
-}
-func finalizeDownload(obj *Download) {
-	downloadStruct.Free(obj.Native)
-}
-
-var editorStateStruct *gi.Struct
-var editorStateStruct_Once sync.Once
-
-func editorStateStruct_Set() error {
+func editorStateObject_Set() error {
 	var err error
-	editorStateStruct_Once.Do(func() {
-		editorStateStruct, err = gi.StructNew("WebKit2", "EditorState")
+	editorStateObject_Once.Do(func() {
+		editorStateObject, err = gi.ObjectNew("WebKit2", "EditorState")
 	})
 	return err
 }
@@ -2286,7 +2157,7 @@ type EditorState struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *EditorState) FieldPriv() *EditorStatePrivate {
-	argValue := gi.FieldGet(editorStateStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(editorStateObject, recv.Native, "priv")
 	value := &EditorStatePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2296,7 +2167,7 @@ func (recv *EditorState) FieldPriv() *EditorStatePrivate {
 func (recv *EditorState) SetFieldPriv(value *EditorStatePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(editorStateStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(editorStateObject, recv.Native, "priv", argValue)
 }
 
 var editorStateGetTypingAttributesFunction *gi.Function
@@ -2305,11 +2176,11 @@ var editorStateGetTypingAttributesFunction_Once sync.Once
 func editorStateGetTypingAttributesFunction_Set() error {
 	var err error
 	editorStateGetTypingAttributesFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateGetTypingAttributesFunction, err = editorStateStruct.InvokerNew("get_typing_attributes")
+		editorStateGetTypingAttributesFunction, err = editorStateObject.InvokerNew("get_typing_attributes")
 	})
 	return err
 }
@@ -2337,11 +2208,11 @@ var editorStateIsCopyAvailableFunction_Once sync.Once
 func editorStateIsCopyAvailableFunction_Set() error {
 	var err error
 	editorStateIsCopyAvailableFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateIsCopyAvailableFunction, err = editorStateStruct.InvokerNew("is_copy_available")
+		editorStateIsCopyAvailableFunction, err = editorStateObject.InvokerNew("is_copy_available")
 	})
 	return err
 }
@@ -2369,11 +2240,11 @@ var editorStateIsCutAvailableFunction_Once sync.Once
 func editorStateIsCutAvailableFunction_Set() error {
 	var err error
 	editorStateIsCutAvailableFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateIsCutAvailableFunction, err = editorStateStruct.InvokerNew("is_cut_available")
+		editorStateIsCutAvailableFunction, err = editorStateObject.InvokerNew("is_cut_available")
 	})
 	return err
 }
@@ -2401,11 +2272,11 @@ var editorStateIsPasteAvailableFunction_Once sync.Once
 func editorStateIsPasteAvailableFunction_Set() error {
 	var err error
 	editorStateIsPasteAvailableFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateIsPasteAvailableFunction, err = editorStateStruct.InvokerNew("is_paste_available")
+		editorStateIsPasteAvailableFunction, err = editorStateObject.InvokerNew("is_paste_available")
 	})
 	return err
 }
@@ -2433,11 +2304,11 @@ var editorStateIsRedoAvailableFunction_Once sync.Once
 func editorStateIsRedoAvailableFunction_Set() error {
 	var err error
 	editorStateIsRedoAvailableFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateIsRedoAvailableFunction, err = editorStateStruct.InvokerNew("is_redo_available")
+		editorStateIsRedoAvailableFunction, err = editorStateObject.InvokerNew("is_redo_available")
 	})
 	return err
 }
@@ -2465,11 +2336,11 @@ var editorStateIsUndoAvailableFunction_Once sync.Once
 func editorStateIsUndoAvailableFunction_Set() error {
 	var err error
 	editorStateIsUndoAvailableFunction_Once.Do(func() {
-		err = editorStateStruct_Set()
+		err = editorStateObject_Set()
 		if err != nil {
 			return
 		}
-		editorStateIsUndoAvailableFunction, err = editorStateStruct.InvokerNew("is_undo_available")
+		editorStateIsUndoAvailableFunction, err = editorStateObject.InvokerNew("is_undo_available")
 	})
 	return err
 }
@@ -2491,29 +2362,13 @@ func (recv *EditorState) IsUndoAvailable() bool {
 	return retGo
 }
 
-// EditorStateStruct creates an uninitialised EditorState.
-func EditorStateStruct() *EditorState {
-	err := editorStateStruct_Set()
-	if err != nil {
-		return nil
-	}
+var faviconDatabaseObject *gi.Object
+var faviconDatabaseObject_Once sync.Once
 
-	structGo := &EditorState{}
-	structGo.Native = editorStateStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeEditorState)
-	return structGo
-}
-func finalizeEditorState(obj *EditorState) {
-	editorStateStruct.Free(obj.Native)
-}
-
-var faviconDatabaseStruct *gi.Struct
-var faviconDatabaseStruct_Once sync.Once
-
-func faviconDatabaseStruct_Set() error {
+func faviconDatabaseObject_Set() error {
 	var err error
-	faviconDatabaseStruct_Once.Do(func() {
-		faviconDatabaseStruct, err = gi.StructNew("WebKit2", "FaviconDatabase")
+	faviconDatabaseObject_Once.Do(func() {
+		faviconDatabaseObject, err = gi.ObjectNew("WebKit2", "FaviconDatabase")
 	})
 	return err
 }
@@ -2528,7 +2383,7 @@ type FaviconDatabase struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FaviconDatabase) FieldPriv() *FaviconDatabasePrivate {
-	argValue := gi.FieldGet(faviconDatabaseStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(faviconDatabaseObject, recv.Native, "priv")
 	value := &FaviconDatabasePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2538,7 +2393,7 @@ func (recv *FaviconDatabase) FieldPriv() *FaviconDatabasePrivate {
 func (recv *FaviconDatabase) SetFieldPriv(value *FaviconDatabasePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(faviconDatabaseStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(faviconDatabaseObject, recv.Native, "priv", argValue)
 }
 
 var faviconDatabaseClearFunction *gi.Function
@@ -2547,11 +2402,11 @@ var faviconDatabaseClearFunction_Once sync.Once
 func faviconDatabaseClearFunction_Set() error {
 	var err error
 	faviconDatabaseClearFunction_Once.Do(func() {
-		err = faviconDatabaseStruct_Set()
+		err = faviconDatabaseObject_Set()
 		if err != nil {
 			return
 		}
-		faviconDatabaseClearFunction, err = faviconDatabaseStruct.InvokerNew("clear")
+		faviconDatabaseClearFunction, err = faviconDatabaseObject.InvokerNew("clear")
 	})
 	return err
 }
@@ -2579,11 +2434,11 @@ var faviconDatabaseGetFaviconUriFunction_Once sync.Once
 func faviconDatabaseGetFaviconUriFunction_Set() error {
 	var err error
 	faviconDatabaseGetFaviconUriFunction_Once.Do(func() {
-		err = faviconDatabaseStruct_Set()
+		err = faviconDatabaseObject_Set()
 		if err != nil {
 			return
 		}
-		faviconDatabaseGetFaviconUriFunction, err = faviconDatabaseStruct.InvokerNew("get_favicon_uri")
+		faviconDatabaseGetFaviconUriFunction, err = faviconDatabaseObject.InvokerNew("get_favicon_uri")
 	})
 	return err
 }
@@ -2606,29 +2461,13 @@ func (recv *FaviconDatabase) GetFaviconUri(pageUri string) string {
 	return retGo
 }
 
-// FaviconDatabaseStruct creates an uninitialised FaviconDatabase.
-func FaviconDatabaseStruct() *FaviconDatabase {
-	err := faviconDatabaseStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fileChooserRequestObject *gi.Object
+var fileChooserRequestObject_Once sync.Once
 
-	structGo := &FaviconDatabase{}
-	structGo.Native = faviconDatabaseStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFaviconDatabase)
-	return structGo
-}
-func finalizeFaviconDatabase(obj *FaviconDatabase) {
-	faviconDatabaseStruct.Free(obj.Native)
-}
-
-var fileChooserRequestStruct *gi.Struct
-var fileChooserRequestStruct_Once sync.Once
-
-func fileChooserRequestStruct_Set() error {
+func fileChooserRequestObject_Set() error {
 	var err error
-	fileChooserRequestStruct_Once.Do(func() {
-		fileChooserRequestStruct, err = gi.StructNew("WebKit2", "FileChooserRequest")
+	fileChooserRequestObject_Once.Do(func() {
+		fileChooserRequestObject, err = gi.ObjectNew("WebKit2", "FileChooserRequest")
 	})
 	return err
 }
@@ -2647,11 +2486,11 @@ var fileChooserRequestCancelFunction_Once sync.Once
 func fileChooserRequestCancelFunction_Set() error {
 	var err error
 	fileChooserRequestCancelFunction_Once.Do(func() {
-		err = fileChooserRequestStruct_Set()
+		err = fileChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		fileChooserRequestCancelFunction, err = fileChooserRequestStruct.InvokerNew("cancel")
+		fileChooserRequestCancelFunction, err = fileChooserRequestObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -2675,11 +2514,11 @@ var fileChooserRequestGetMimeTypesFunction_Once sync.Once
 func fileChooserRequestGetMimeTypesFunction_Set() error {
 	var err error
 	fileChooserRequestGetMimeTypesFunction_Once.Do(func() {
-		err = fileChooserRequestStruct_Set()
+		err = fileChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		fileChooserRequestGetMimeTypesFunction, err = fileChooserRequestStruct.InvokerNew("get_mime_types")
+		fileChooserRequestGetMimeTypesFunction, err = fileChooserRequestObject.InvokerNew("get_mime_types")
 	})
 	return err
 }
@@ -2705,11 +2544,11 @@ var fileChooserRequestGetSelectMultipleFunction_Once sync.Once
 func fileChooserRequestGetSelectMultipleFunction_Set() error {
 	var err error
 	fileChooserRequestGetSelectMultipleFunction_Once.Do(func() {
-		err = fileChooserRequestStruct_Set()
+		err = fileChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		fileChooserRequestGetSelectMultipleFunction, err = fileChooserRequestStruct.InvokerNew("get_select_multiple")
+		fileChooserRequestGetSelectMultipleFunction, err = fileChooserRequestObject.InvokerNew("get_select_multiple")
 	})
 	return err
 }
@@ -2737,11 +2576,11 @@ var fileChooserRequestGetSelectedFilesFunction_Once sync.Once
 func fileChooserRequestGetSelectedFilesFunction_Set() error {
 	var err error
 	fileChooserRequestGetSelectedFilesFunction_Once.Do(func() {
-		err = fileChooserRequestStruct_Set()
+		err = fileChooserRequestObject_Set()
 		if err != nil {
 			return
 		}
-		fileChooserRequestGetSelectedFilesFunction, err = fileChooserRequestStruct.InvokerNew("get_selected_files")
+		fileChooserRequestGetSelectedFilesFunction, err = fileChooserRequestObject.InvokerNew("get_selected_files")
 	})
 	return err
 }
@@ -2761,29 +2600,13 @@ func (recv *FileChooserRequest) GetSelectedFiles() {
 
 // UNSUPPORTED : C value 'webkit_file_chooser_request_select_files' : parameter 'files' of type 'nil' not supported
 
-// FileChooserRequestStruct creates an uninitialised FileChooserRequest.
-func FileChooserRequestStruct() *FileChooserRequest {
-	err := fileChooserRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var findControllerObject *gi.Object
+var findControllerObject_Once sync.Once
 
-	structGo := &FileChooserRequest{}
-	structGo.Native = fileChooserRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileChooserRequest)
-	return structGo
-}
-func finalizeFileChooserRequest(obj *FileChooserRequest) {
-	fileChooserRequestStruct.Free(obj.Native)
-}
-
-var findControllerStruct *gi.Struct
-var findControllerStruct_Once sync.Once
-
-func findControllerStruct_Set() error {
+func findControllerObject_Set() error {
 	var err error
-	findControllerStruct_Once.Do(func() {
-		findControllerStruct, err = gi.StructNew("WebKit2", "FindController")
+	findControllerObject_Once.Do(func() {
+		findControllerObject, err = gi.ObjectNew("WebKit2", "FindController")
 	})
 	return err
 }
@@ -2802,11 +2625,11 @@ var findControllerCountMatchesFunction_Once sync.Once
 func findControllerCountMatchesFunction_Set() error {
 	var err error
 	findControllerCountMatchesFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerCountMatchesFunction, err = findControllerStruct.InvokerNew("count_matches")
+		findControllerCountMatchesFunction, err = findControllerObject.InvokerNew("count_matches")
 	})
 	return err
 }
@@ -2833,11 +2656,11 @@ var findControllerGetMaxMatchCountFunction_Once sync.Once
 func findControllerGetMaxMatchCountFunction_Set() error {
 	var err error
 	findControllerGetMaxMatchCountFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerGetMaxMatchCountFunction, err = findControllerStruct.InvokerNew("get_max_match_count")
+		findControllerGetMaxMatchCountFunction, err = findControllerObject.InvokerNew("get_max_match_count")
 	})
 	return err
 }
@@ -2865,11 +2688,11 @@ var findControllerGetOptionsFunction_Once sync.Once
 func findControllerGetOptionsFunction_Set() error {
 	var err error
 	findControllerGetOptionsFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerGetOptionsFunction, err = findControllerStruct.InvokerNew("get_options")
+		findControllerGetOptionsFunction, err = findControllerObject.InvokerNew("get_options")
 	})
 	return err
 }
@@ -2897,11 +2720,11 @@ var findControllerGetSearchTextFunction_Once sync.Once
 func findControllerGetSearchTextFunction_Set() error {
 	var err error
 	findControllerGetSearchTextFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerGetSearchTextFunction, err = findControllerStruct.InvokerNew("get_search_text")
+		findControllerGetSearchTextFunction, err = findControllerObject.InvokerNew("get_search_text")
 	})
 	return err
 }
@@ -2929,11 +2752,11 @@ var findControllerGetWebViewFunction_Once sync.Once
 func findControllerGetWebViewFunction_Set() error {
 	var err error
 	findControllerGetWebViewFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerGetWebViewFunction, err = findControllerStruct.InvokerNew("get_web_view")
+		findControllerGetWebViewFunction, err = findControllerObject.InvokerNew("get_web_view")
 	})
 	return err
 }
@@ -2962,11 +2785,11 @@ var findControllerSearchFunction_Once sync.Once
 func findControllerSearchFunction_Set() error {
 	var err error
 	findControllerSearchFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerSearchFunction, err = findControllerStruct.InvokerNew("search")
+		findControllerSearchFunction, err = findControllerObject.InvokerNew("search")
 	})
 	return err
 }
@@ -2993,11 +2816,11 @@ var findControllerSearchFinishFunction_Once sync.Once
 func findControllerSearchFinishFunction_Set() error {
 	var err error
 	findControllerSearchFinishFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerSearchFinishFunction, err = findControllerStruct.InvokerNew("search_finish")
+		findControllerSearchFinishFunction, err = findControllerObject.InvokerNew("search_finish")
 	})
 	return err
 }
@@ -3021,11 +2844,11 @@ var findControllerSearchNextFunction_Once sync.Once
 func findControllerSearchNextFunction_Set() error {
 	var err error
 	findControllerSearchNextFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerSearchNextFunction, err = findControllerStruct.InvokerNew("search_next")
+		findControllerSearchNextFunction, err = findControllerObject.InvokerNew("search_next")
 	})
 	return err
 }
@@ -3049,11 +2872,11 @@ var findControllerSearchPreviousFunction_Once sync.Once
 func findControllerSearchPreviousFunction_Set() error {
 	var err error
 	findControllerSearchPreviousFunction_Once.Do(func() {
-		err = findControllerStruct_Set()
+		err = findControllerObject_Set()
 		if err != nil {
 			return
 		}
-		findControllerSearchPreviousFunction, err = findControllerStruct.InvokerNew("search_previous")
+		findControllerSearchPreviousFunction, err = findControllerObject.InvokerNew("search_previous")
 	})
 	return err
 }
@@ -3071,29 +2894,13 @@ func (recv *FindController) SearchPrevious() {
 	return
 }
 
-// FindControllerStruct creates an uninitialised FindController.
-func FindControllerStruct() *FindController {
-	err := findControllerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var formSubmissionRequestObject *gi.Object
+var formSubmissionRequestObject_Once sync.Once
 
-	structGo := &FindController{}
-	structGo.Native = findControllerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFindController)
-	return structGo
-}
-func finalizeFindController(obj *FindController) {
-	findControllerStruct.Free(obj.Native)
-}
-
-var formSubmissionRequestStruct *gi.Struct
-var formSubmissionRequestStruct_Once sync.Once
-
-func formSubmissionRequestStruct_Set() error {
+func formSubmissionRequestObject_Set() error {
 	var err error
-	formSubmissionRequestStruct_Once.Do(func() {
-		formSubmissionRequestStruct, err = gi.StructNew("WebKit2", "FormSubmissionRequest")
+	formSubmissionRequestObject_Once.Do(func() {
+		formSubmissionRequestObject, err = gi.ObjectNew("WebKit2", "FormSubmissionRequest")
 	})
 	return err
 }
@@ -3116,11 +2923,11 @@ var formSubmissionRequestSubmitFunction_Once sync.Once
 func formSubmissionRequestSubmitFunction_Set() error {
 	var err error
 	formSubmissionRequestSubmitFunction_Once.Do(func() {
-		err = formSubmissionRequestStruct_Set()
+		err = formSubmissionRequestObject_Set()
 		if err != nil {
 			return
 		}
-		formSubmissionRequestSubmitFunction, err = formSubmissionRequestStruct.InvokerNew("submit")
+		formSubmissionRequestSubmitFunction, err = formSubmissionRequestObject.InvokerNew("submit")
 	})
 	return err
 }
@@ -3138,29 +2945,13 @@ func (recv *FormSubmissionRequest) Submit() {
 	return
 }
 
-// FormSubmissionRequestStruct creates an uninitialised FormSubmissionRequest.
-func FormSubmissionRequestStruct() *FormSubmissionRequest {
-	err := formSubmissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var geolocationManagerObject *gi.Object
+var geolocationManagerObject_Once sync.Once
 
-	structGo := &FormSubmissionRequest{}
-	structGo.Native = formSubmissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFormSubmissionRequest)
-	return structGo
-}
-func finalizeFormSubmissionRequest(obj *FormSubmissionRequest) {
-	formSubmissionRequestStruct.Free(obj.Native)
-}
-
-var geolocationManagerStruct *gi.Struct
-var geolocationManagerStruct_Once sync.Once
-
-func geolocationManagerStruct_Set() error {
+func geolocationManagerObject_Set() error {
 	var err error
-	geolocationManagerStruct_Once.Do(func() {
-		geolocationManagerStruct, err = gi.StructNew("WebKit2", "GeolocationManager")
+	geolocationManagerObject_Once.Do(func() {
+		geolocationManagerObject, err = gi.ObjectNew("WebKit2", "GeolocationManager")
 	})
 	return err
 }
@@ -3179,11 +2970,11 @@ var geolocationManagerFailedFunction_Once sync.Once
 func geolocationManagerFailedFunction_Set() error {
 	var err error
 	geolocationManagerFailedFunction_Once.Do(func() {
-		err = geolocationManagerStruct_Set()
+		err = geolocationManagerObject_Set()
 		if err != nil {
 			return
 		}
-		geolocationManagerFailedFunction, err = geolocationManagerStruct.InvokerNew("failed")
+		geolocationManagerFailedFunction, err = geolocationManagerObject.InvokerNew("failed")
 	})
 	return err
 }
@@ -3208,11 +2999,11 @@ var geolocationManagerGetEnableHighAccuracyFunction_Once sync.Once
 func geolocationManagerGetEnableHighAccuracyFunction_Set() error {
 	var err error
 	geolocationManagerGetEnableHighAccuracyFunction_Once.Do(func() {
-		err = geolocationManagerStruct_Set()
+		err = geolocationManagerObject_Set()
 		if err != nil {
 			return
 		}
-		geolocationManagerGetEnableHighAccuracyFunction, err = geolocationManagerStruct.InvokerNew("get_enable_high_accuracy")
+		geolocationManagerGetEnableHighAccuracyFunction, err = geolocationManagerObject.InvokerNew("get_enable_high_accuracy")
 	})
 	return err
 }
@@ -3240,11 +3031,11 @@ var geolocationManagerUpdatePositionFunction_Once sync.Once
 func geolocationManagerUpdatePositionFunction_Set() error {
 	var err error
 	geolocationManagerUpdatePositionFunction_Once.Do(func() {
-		err = geolocationManagerStruct_Set()
+		err = geolocationManagerObject_Set()
 		if err != nil {
 			return
 		}
-		geolocationManagerUpdatePositionFunction, err = geolocationManagerStruct.InvokerNew("update_position")
+		geolocationManagerUpdatePositionFunction, err = geolocationManagerObject.InvokerNew("update_position")
 	})
 	return err
 }
@@ -3263,29 +3054,13 @@ func (recv *GeolocationManager) UpdatePosition(position *GeolocationPosition) {
 	return
 }
 
-// GeolocationManagerStruct creates an uninitialised GeolocationManager.
-func GeolocationManagerStruct() *GeolocationManager {
-	err := geolocationManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var geolocationPermissionRequestObject *gi.Object
+var geolocationPermissionRequestObject_Once sync.Once
 
-	structGo := &GeolocationManager{}
-	structGo.Native = geolocationManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGeolocationManager)
-	return structGo
-}
-func finalizeGeolocationManager(obj *GeolocationManager) {
-	geolocationManagerStruct.Free(obj.Native)
-}
-
-var geolocationPermissionRequestStruct *gi.Struct
-var geolocationPermissionRequestStruct_Once sync.Once
-
-func geolocationPermissionRequestStruct_Set() error {
+func geolocationPermissionRequestObject_Set() error {
 	var err error
-	geolocationPermissionRequestStruct_Once.Do(func() {
-		geolocationPermissionRequestStruct, err = gi.StructNew("WebKit2", "GeolocationPermissionRequest")
+	geolocationPermissionRequestObject_Once.Do(func() {
+		geolocationPermissionRequestObject, err = gi.ObjectNew("WebKit2", "GeolocationPermissionRequest")
 	})
 	return err
 }
@@ -3298,29 +3073,13 @@ type GeolocationPermissionRequest struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// GeolocationPermissionRequestStruct creates an uninitialised GeolocationPermissionRequest.
-func GeolocationPermissionRequestStruct() *GeolocationPermissionRequest {
-	err := geolocationPermissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var hitTestResultObject *gi.Object
+var hitTestResultObject_Once sync.Once
 
-	structGo := &GeolocationPermissionRequest{}
-	structGo.Native = geolocationPermissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGeolocationPermissionRequest)
-	return structGo
-}
-func finalizeGeolocationPermissionRequest(obj *GeolocationPermissionRequest) {
-	geolocationPermissionRequestStruct.Free(obj.Native)
-}
-
-var hitTestResultStruct *gi.Struct
-var hitTestResultStruct_Once sync.Once
-
-func hitTestResultStruct_Set() error {
+func hitTestResultObject_Set() error {
 	var err error
-	hitTestResultStruct_Once.Do(func() {
-		hitTestResultStruct, err = gi.StructNew("WebKit2", "HitTestResult")
+	hitTestResultObject_Once.Do(func() {
+		hitTestResultObject, err = gi.ObjectNew("WebKit2", "HitTestResult")
 	})
 	return err
 }
@@ -3335,7 +3094,7 @@ type HitTestResult struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *HitTestResult) FieldPriv() *HitTestResultPrivate {
-	argValue := gi.FieldGet(hitTestResultStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(hitTestResultObject, recv.Native, "priv")
 	value := &HitTestResultPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3345,7 +3104,7 @@ func (recv *HitTestResult) FieldPriv() *HitTestResultPrivate {
 func (recv *HitTestResult) SetFieldPriv(value *HitTestResultPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(hitTestResultStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(hitTestResultObject, recv.Native, "priv", argValue)
 }
 
 var hitTestResultContextIsEditableFunction *gi.Function
@@ -3354,11 +3113,11 @@ var hitTestResultContextIsEditableFunction_Once sync.Once
 func hitTestResultContextIsEditableFunction_Set() error {
 	var err error
 	hitTestResultContextIsEditableFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsEditableFunction, err = hitTestResultStruct.InvokerNew("context_is_editable")
+		hitTestResultContextIsEditableFunction, err = hitTestResultObject.InvokerNew("context_is_editable")
 	})
 	return err
 }
@@ -3386,11 +3145,11 @@ var hitTestResultContextIsImageFunction_Once sync.Once
 func hitTestResultContextIsImageFunction_Set() error {
 	var err error
 	hitTestResultContextIsImageFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsImageFunction, err = hitTestResultStruct.InvokerNew("context_is_image")
+		hitTestResultContextIsImageFunction, err = hitTestResultObject.InvokerNew("context_is_image")
 	})
 	return err
 }
@@ -3418,11 +3177,11 @@ var hitTestResultContextIsLinkFunction_Once sync.Once
 func hitTestResultContextIsLinkFunction_Set() error {
 	var err error
 	hitTestResultContextIsLinkFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsLinkFunction, err = hitTestResultStruct.InvokerNew("context_is_link")
+		hitTestResultContextIsLinkFunction, err = hitTestResultObject.InvokerNew("context_is_link")
 	})
 	return err
 }
@@ -3450,11 +3209,11 @@ var hitTestResultContextIsMediaFunction_Once sync.Once
 func hitTestResultContextIsMediaFunction_Set() error {
 	var err error
 	hitTestResultContextIsMediaFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsMediaFunction, err = hitTestResultStruct.InvokerNew("context_is_media")
+		hitTestResultContextIsMediaFunction, err = hitTestResultObject.InvokerNew("context_is_media")
 	})
 	return err
 }
@@ -3482,11 +3241,11 @@ var hitTestResultContextIsScrollbarFunction_Once sync.Once
 func hitTestResultContextIsScrollbarFunction_Set() error {
 	var err error
 	hitTestResultContextIsScrollbarFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsScrollbarFunction, err = hitTestResultStruct.InvokerNew("context_is_scrollbar")
+		hitTestResultContextIsScrollbarFunction, err = hitTestResultObject.InvokerNew("context_is_scrollbar")
 	})
 	return err
 }
@@ -3514,11 +3273,11 @@ var hitTestResultContextIsSelectionFunction_Once sync.Once
 func hitTestResultContextIsSelectionFunction_Set() error {
 	var err error
 	hitTestResultContextIsSelectionFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultContextIsSelectionFunction, err = hitTestResultStruct.InvokerNew("context_is_selection")
+		hitTestResultContextIsSelectionFunction, err = hitTestResultObject.InvokerNew("context_is_selection")
 	})
 	return err
 }
@@ -3546,11 +3305,11 @@ var hitTestResultGetContextFunction_Once sync.Once
 func hitTestResultGetContextFunction_Set() error {
 	var err error
 	hitTestResultGetContextFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetContextFunction, err = hitTestResultStruct.InvokerNew("get_context")
+		hitTestResultGetContextFunction, err = hitTestResultObject.InvokerNew("get_context")
 	})
 	return err
 }
@@ -3578,11 +3337,11 @@ var hitTestResultGetImageUriFunction_Once sync.Once
 func hitTestResultGetImageUriFunction_Set() error {
 	var err error
 	hitTestResultGetImageUriFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetImageUriFunction, err = hitTestResultStruct.InvokerNew("get_image_uri")
+		hitTestResultGetImageUriFunction, err = hitTestResultObject.InvokerNew("get_image_uri")
 	})
 	return err
 }
@@ -3610,11 +3369,11 @@ var hitTestResultGetLinkLabelFunction_Once sync.Once
 func hitTestResultGetLinkLabelFunction_Set() error {
 	var err error
 	hitTestResultGetLinkLabelFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetLinkLabelFunction, err = hitTestResultStruct.InvokerNew("get_link_label")
+		hitTestResultGetLinkLabelFunction, err = hitTestResultObject.InvokerNew("get_link_label")
 	})
 	return err
 }
@@ -3642,11 +3401,11 @@ var hitTestResultGetLinkTitleFunction_Once sync.Once
 func hitTestResultGetLinkTitleFunction_Set() error {
 	var err error
 	hitTestResultGetLinkTitleFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetLinkTitleFunction, err = hitTestResultStruct.InvokerNew("get_link_title")
+		hitTestResultGetLinkTitleFunction, err = hitTestResultObject.InvokerNew("get_link_title")
 	})
 	return err
 }
@@ -3674,11 +3433,11 @@ var hitTestResultGetLinkUriFunction_Once sync.Once
 func hitTestResultGetLinkUriFunction_Set() error {
 	var err error
 	hitTestResultGetLinkUriFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetLinkUriFunction, err = hitTestResultStruct.InvokerNew("get_link_uri")
+		hitTestResultGetLinkUriFunction, err = hitTestResultObject.InvokerNew("get_link_uri")
 	})
 	return err
 }
@@ -3706,11 +3465,11 @@ var hitTestResultGetMediaUriFunction_Once sync.Once
 func hitTestResultGetMediaUriFunction_Set() error {
 	var err error
 	hitTestResultGetMediaUriFunction_Once.Do(func() {
-		err = hitTestResultStruct_Set()
+		err = hitTestResultObject_Set()
 		if err != nil {
 			return
 		}
-		hitTestResultGetMediaUriFunction, err = hitTestResultStruct.InvokerNew("get_media_uri")
+		hitTestResultGetMediaUriFunction, err = hitTestResultObject.InvokerNew("get_media_uri")
 	})
 	return err
 }
@@ -3732,29 +3491,13 @@ func (recv *HitTestResult) GetMediaUri() string {
 	return retGo
 }
 
-// HitTestResultStruct creates an uninitialised HitTestResult.
-func HitTestResultStruct() *HitTestResult {
-	err := hitTestResultStruct_Set()
-	if err != nil {
-		return nil
-	}
+var installMissingMediaPluginsPermissionRequestObject *gi.Object
+var installMissingMediaPluginsPermissionRequestObject_Once sync.Once
 
-	structGo := &HitTestResult{}
-	structGo.Native = hitTestResultStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeHitTestResult)
-	return structGo
-}
-func finalizeHitTestResult(obj *HitTestResult) {
-	hitTestResultStruct.Free(obj.Native)
-}
-
-var installMissingMediaPluginsPermissionRequestStruct *gi.Struct
-var installMissingMediaPluginsPermissionRequestStruct_Once sync.Once
-
-func installMissingMediaPluginsPermissionRequestStruct_Set() error {
+func installMissingMediaPluginsPermissionRequestObject_Set() error {
 	var err error
-	installMissingMediaPluginsPermissionRequestStruct_Once.Do(func() {
-		installMissingMediaPluginsPermissionRequestStruct, err = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequest")
+	installMissingMediaPluginsPermissionRequestObject_Once.Do(func() {
+		installMissingMediaPluginsPermissionRequestObject, err = gi.ObjectNew("WebKit2", "InstallMissingMediaPluginsPermissionRequest")
 	})
 	return err
 }
@@ -3769,7 +3512,7 @@ type InstallMissingMediaPluginsPermissionRequest struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *InstallMissingMediaPluginsPermissionRequest) FieldPriv() *InstallMissingMediaPluginsPermissionRequestPrivate {
-	argValue := gi.FieldGet(installMissingMediaPluginsPermissionRequestStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(installMissingMediaPluginsPermissionRequestObject, recv.Native, "priv")
 	value := &InstallMissingMediaPluginsPermissionRequestPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3779,7 +3522,7 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) FieldPriv() *InstallMis
 func (recv *InstallMissingMediaPluginsPermissionRequest) SetFieldPriv(value *InstallMissingMediaPluginsPermissionRequestPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(installMissingMediaPluginsPermissionRequestStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(installMissingMediaPluginsPermissionRequestObject, recv.Native, "priv", argValue)
 }
 
 var installMissingMediaPluginsPermissionRequestGetDescriptionFunction *gi.Function
@@ -3788,11 +3531,11 @@ var installMissingMediaPluginsPermissionRequestGetDescriptionFunction_Once sync.
 func installMissingMediaPluginsPermissionRequestGetDescriptionFunction_Set() error {
 	var err error
 	installMissingMediaPluginsPermissionRequestGetDescriptionFunction_Once.Do(func() {
-		err = installMissingMediaPluginsPermissionRequestStruct_Set()
+		err = installMissingMediaPluginsPermissionRequestObject_Set()
 		if err != nil {
 			return
 		}
-		installMissingMediaPluginsPermissionRequestGetDescriptionFunction, err = installMissingMediaPluginsPermissionRequestStruct.InvokerNew("get_description")
+		installMissingMediaPluginsPermissionRequestGetDescriptionFunction, err = installMissingMediaPluginsPermissionRequestObject.InvokerNew("get_description")
 	})
 	return err
 }
@@ -3814,29 +3557,13 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) GetDescription() string
 	return retGo
 }
 
-// InstallMissingMediaPluginsPermissionRequestStruct creates an uninitialised InstallMissingMediaPluginsPermissionRequest.
-func InstallMissingMediaPluginsPermissionRequestStruct() *InstallMissingMediaPluginsPermissionRequest {
-	err := installMissingMediaPluginsPermissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var navigationPolicyDecisionObject *gi.Object
+var navigationPolicyDecisionObject_Once sync.Once
 
-	structGo := &InstallMissingMediaPluginsPermissionRequest{}
-	structGo.Native = installMissingMediaPluginsPermissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeInstallMissingMediaPluginsPermissionRequest)
-	return structGo
-}
-func finalizeInstallMissingMediaPluginsPermissionRequest(obj *InstallMissingMediaPluginsPermissionRequest) {
-	installMissingMediaPluginsPermissionRequestStruct.Free(obj.Native)
-}
-
-var navigationPolicyDecisionStruct *gi.Struct
-var navigationPolicyDecisionStruct_Once sync.Once
-
-func navigationPolicyDecisionStruct_Set() error {
+func navigationPolicyDecisionObject_Set() error {
 	var err error
-	navigationPolicyDecisionStruct_Once.Do(func() {
-		navigationPolicyDecisionStruct, err = gi.StructNew("WebKit2", "NavigationPolicyDecision")
+	navigationPolicyDecisionObject_Once.Do(func() {
+		navigationPolicyDecisionObject, err = gi.ObjectNew("WebKit2", "NavigationPolicyDecision")
 	})
 	return err
 }
@@ -3847,7 +3574,7 @@ type NavigationPolicyDecision struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NavigationPolicyDecision) FieldParent() *PolicyDecision {
-	argValue := gi.FieldGet(navigationPolicyDecisionStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(navigationPolicyDecisionObject, recv.Native, "parent")
 	value := &PolicyDecision{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3857,7 +3584,7 @@ func (recv *NavigationPolicyDecision) FieldParent() *PolicyDecision {
 func (recv *NavigationPolicyDecision) SetFieldParent(value *PolicyDecision) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(navigationPolicyDecisionStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(navigationPolicyDecisionObject, recv.Native, "parent", argValue)
 }
 
 var navigationPolicyDecisionGetFrameNameFunction *gi.Function
@@ -3866,11 +3593,11 @@ var navigationPolicyDecisionGetFrameNameFunction_Once sync.Once
 func navigationPolicyDecisionGetFrameNameFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetFrameNameFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetFrameNameFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_frame_name")
+		navigationPolicyDecisionGetFrameNameFunction, err = navigationPolicyDecisionObject.InvokerNew("get_frame_name")
 	})
 	return err
 }
@@ -3898,11 +3625,11 @@ var navigationPolicyDecisionGetModifiersFunction_Once sync.Once
 func navigationPolicyDecisionGetModifiersFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetModifiersFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetModifiersFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_modifiers")
+		navigationPolicyDecisionGetModifiersFunction, err = navigationPolicyDecisionObject.InvokerNew("get_modifiers")
 	})
 	return err
 }
@@ -3930,11 +3657,11 @@ var navigationPolicyDecisionGetMouseButtonFunction_Once sync.Once
 func navigationPolicyDecisionGetMouseButtonFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetMouseButtonFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetMouseButtonFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_mouse_button")
+		navigationPolicyDecisionGetMouseButtonFunction, err = navigationPolicyDecisionObject.InvokerNew("get_mouse_button")
 	})
 	return err
 }
@@ -3962,11 +3689,11 @@ var navigationPolicyDecisionGetNavigationActionFunction_Once sync.Once
 func navigationPolicyDecisionGetNavigationActionFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetNavigationActionFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetNavigationActionFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_navigation_action")
+		navigationPolicyDecisionGetNavigationActionFunction, err = navigationPolicyDecisionObject.InvokerNew("get_navigation_action")
 	})
 	return err
 }
@@ -3995,11 +3722,11 @@ var navigationPolicyDecisionGetNavigationTypeFunction_Once sync.Once
 func navigationPolicyDecisionGetNavigationTypeFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetNavigationTypeFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetNavigationTypeFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_navigation_type")
+		navigationPolicyDecisionGetNavigationTypeFunction, err = navigationPolicyDecisionObject.InvokerNew("get_navigation_type")
 	})
 	return err
 }
@@ -4027,11 +3754,11 @@ var navigationPolicyDecisionGetRequestFunction_Once sync.Once
 func navigationPolicyDecisionGetRequestFunction_Set() error {
 	var err error
 	navigationPolicyDecisionGetRequestFunction_Once.Do(func() {
-		err = navigationPolicyDecisionStruct_Set()
+		err = navigationPolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		navigationPolicyDecisionGetRequestFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_request")
+		navigationPolicyDecisionGetRequestFunction, err = navigationPolicyDecisionObject.InvokerNew("get_request")
 	})
 	return err
 }
@@ -4054,29 +3781,13 @@ func (recv *NavigationPolicyDecision) GetRequest() *URIRequest {
 	return retGo
 }
 
-// NavigationPolicyDecisionStruct creates an uninitialised NavigationPolicyDecision.
-func NavigationPolicyDecisionStruct() *NavigationPolicyDecision {
-	err := navigationPolicyDecisionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var notificationObject *gi.Object
+var notificationObject_Once sync.Once
 
-	structGo := &NavigationPolicyDecision{}
-	structGo.Native = navigationPolicyDecisionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeNavigationPolicyDecision)
-	return structGo
-}
-func finalizeNavigationPolicyDecision(obj *NavigationPolicyDecision) {
-	navigationPolicyDecisionStruct.Free(obj.Native)
-}
-
-var notificationStruct *gi.Struct
-var notificationStruct_Once sync.Once
-
-func notificationStruct_Set() error {
+func notificationObject_Set() error {
 	var err error
-	notificationStruct_Once.Do(func() {
-		notificationStruct, err = gi.StructNew("WebKit2", "Notification")
+	notificationObject_Once.Do(func() {
+		notificationObject, err = gi.ObjectNew("WebKit2", "Notification")
 	})
 	return err
 }
@@ -4091,7 +3802,7 @@ type Notification struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Notification) FieldPriv() *NotificationPrivate {
-	argValue := gi.FieldGet(notificationStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(notificationObject, recv.Native, "priv")
 	value := &NotificationPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4101,7 +3812,7 @@ func (recv *Notification) FieldPriv() *NotificationPrivate {
 func (recv *Notification) SetFieldPriv(value *NotificationPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(notificationStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(notificationObject, recv.Native, "priv", argValue)
 }
 
 var notificationClickedFunction *gi.Function
@@ -4110,11 +3821,11 @@ var notificationClickedFunction_Once sync.Once
 func notificationClickedFunction_Set() error {
 	var err error
 	notificationClickedFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationClickedFunction, err = notificationStruct.InvokerNew("clicked")
+		notificationClickedFunction, err = notificationObject.InvokerNew("clicked")
 	})
 	return err
 }
@@ -4138,11 +3849,11 @@ var notificationCloseFunction_Once sync.Once
 func notificationCloseFunction_Set() error {
 	var err error
 	notificationCloseFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationCloseFunction, err = notificationStruct.InvokerNew("close")
+		notificationCloseFunction, err = notificationObject.InvokerNew("close")
 	})
 	return err
 }
@@ -4166,11 +3877,11 @@ var notificationGetBodyFunction_Once sync.Once
 func notificationGetBodyFunction_Set() error {
 	var err error
 	notificationGetBodyFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationGetBodyFunction, err = notificationStruct.InvokerNew("get_body")
+		notificationGetBodyFunction, err = notificationObject.InvokerNew("get_body")
 	})
 	return err
 }
@@ -4198,11 +3909,11 @@ var notificationGetIdFunction_Once sync.Once
 func notificationGetIdFunction_Set() error {
 	var err error
 	notificationGetIdFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationGetIdFunction, err = notificationStruct.InvokerNew("get_id")
+		notificationGetIdFunction, err = notificationObject.InvokerNew("get_id")
 	})
 	return err
 }
@@ -4230,11 +3941,11 @@ var notificationGetTagFunction_Once sync.Once
 func notificationGetTagFunction_Set() error {
 	var err error
 	notificationGetTagFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationGetTagFunction, err = notificationStruct.InvokerNew("get_tag")
+		notificationGetTagFunction, err = notificationObject.InvokerNew("get_tag")
 	})
 	return err
 }
@@ -4262,11 +3973,11 @@ var notificationGetTitleFunction_Once sync.Once
 func notificationGetTitleFunction_Set() error {
 	var err error
 	notificationGetTitleFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationGetTitleFunction, err = notificationStruct.InvokerNew("get_title")
+		notificationGetTitleFunction, err = notificationObject.InvokerNew("get_title")
 	})
 	return err
 }
@@ -4288,29 +3999,13 @@ func (recv *Notification) GetTitle() string {
 	return retGo
 }
 
-// NotificationStruct creates an uninitialised Notification.
-func NotificationStruct() *Notification {
-	err := notificationStruct_Set()
-	if err != nil {
-		return nil
-	}
+var notificationPermissionRequestObject *gi.Object
+var notificationPermissionRequestObject_Once sync.Once
 
-	structGo := &Notification{}
-	structGo.Native = notificationStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeNotification)
-	return structGo
-}
-func finalizeNotification(obj *Notification) {
-	notificationStruct.Free(obj.Native)
-}
-
-var notificationPermissionRequestStruct *gi.Struct
-var notificationPermissionRequestStruct_Once sync.Once
-
-func notificationPermissionRequestStruct_Set() error {
+func notificationPermissionRequestObject_Set() error {
 	var err error
-	notificationPermissionRequestStruct_Once.Do(func() {
-		notificationPermissionRequestStruct, err = gi.StructNew("WebKit2", "NotificationPermissionRequest")
+	notificationPermissionRequestObject_Once.Do(func() {
+		notificationPermissionRequestObject, err = gi.ObjectNew("WebKit2", "NotificationPermissionRequest")
 	})
 	return err
 }
@@ -4323,29 +4018,13 @@ type NotificationPermissionRequest struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// NotificationPermissionRequestStruct creates an uninitialised NotificationPermissionRequest.
-func NotificationPermissionRequestStruct() *NotificationPermissionRequest {
-	err := notificationPermissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var optionMenuObject *gi.Object
+var optionMenuObject_Once sync.Once
 
-	structGo := &NotificationPermissionRequest{}
-	structGo.Native = notificationPermissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeNotificationPermissionRequest)
-	return structGo
-}
-func finalizeNotificationPermissionRequest(obj *NotificationPermissionRequest) {
-	notificationPermissionRequestStruct.Free(obj.Native)
-}
-
-var optionMenuStruct *gi.Struct
-var optionMenuStruct_Once sync.Once
-
-func optionMenuStruct_Set() error {
+func optionMenuObject_Set() error {
 	var err error
-	optionMenuStruct_Once.Do(func() {
-		optionMenuStruct, err = gi.StructNew("WebKit2", "OptionMenu")
+	optionMenuObject_Once.Do(func() {
+		optionMenuObject, err = gi.ObjectNew("WebKit2", "OptionMenu")
 	})
 	return err
 }
@@ -4360,7 +4039,7 @@ type OptionMenu struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *OptionMenu) FieldPriv() *OptionMenuPrivate {
-	argValue := gi.FieldGet(optionMenuStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(optionMenuObject, recv.Native, "priv")
 	value := &OptionMenuPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4370,7 +4049,7 @@ func (recv *OptionMenu) FieldPriv() *OptionMenuPrivate {
 func (recv *OptionMenu) SetFieldPriv(value *OptionMenuPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(optionMenuStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(optionMenuObject, recv.Native, "priv", argValue)
 }
 
 var optionMenuActivateItemFunction *gi.Function
@@ -4379,11 +4058,11 @@ var optionMenuActivateItemFunction_Once sync.Once
 func optionMenuActivateItemFunction_Set() error {
 	var err error
 	optionMenuActivateItemFunction_Once.Do(func() {
-		err = optionMenuStruct_Set()
+		err = optionMenuObject_Set()
 		if err != nil {
 			return
 		}
-		optionMenuActivateItemFunction, err = optionMenuStruct.InvokerNew("activate_item")
+		optionMenuActivateItemFunction, err = optionMenuObject.InvokerNew("activate_item")
 	})
 	return err
 }
@@ -4408,11 +4087,11 @@ var optionMenuCloseFunction_Once sync.Once
 func optionMenuCloseFunction_Set() error {
 	var err error
 	optionMenuCloseFunction_Once.Do(func() {
-		err = optionMenuStruct_Set()
+		err = optionMenuObject_Set()
 		if err != nil {
 			return
 		}
-		optionMenuCloseFunction, err = optionMenuStruct.InvokerNew("close")
+		optionMenuCloseFunction, err = optionMenuObject.InvokerNew("close")
 	})
 	return err
 }
@@ -4436,11 +4115,11 @@ var optionMenuGetItemFunction_Once sync.Once
 func optionMenuGetItemFunction_Set() error {
 	var err error
 	optionMenuGetItemFunction_Once.Do(func() {
-		err = optionMenuStruct_Set()
+		err = optionMenuObject_Set()
 		if err != nil {
 			return
 		}
-		optionMenuGetItemFunction, err = optionMenuStruct.InvokerNew("get_item")
+		optionMenuGetItemFunction, err = optionMenuObject.InvokerNew("get_item")
 	})
 	return err
 }
@@ -4470,11 +4149,11 @@ var optionMenuGetNItemsFunction_Once sync.Once
 func optionMenuGetNItemsFunction_Set() error {
 	var err error
 	optionMenuGetNItemsFunction_Once.Do(func() {
-		err = optionMenuStruct_Set()
+		err = optionMenuObject_Set()
 		if err != nil {
 			return
 		}
-		optionMenuGetNItemsFunction, err = optionMenuStruct.InvokerNew("get_n_items")
+		optionMenuGetNItemsFunction, err = optionMenuObject.InvokerNew("get_n_items")
 	})
 	return err
 }
@@ -4502,11 +4181,11 @@ var optionMenuSelectItemFunction_Once sync.Once
 func optionMenuSelectItemFunction_Set() error {
 	var err error
 	optionMenuSelectItemFunction_Once.Do(func() {
-		err = optionMenuStruct_Set()
+		err = optionMenuObject_Set()
 		if err != nil {
 			return
 		}
-		optionMenuSelectItemFunction, err = optionMenuStruct.InvokerNew("select_item")
+		optionMenuSelectItemFunction, err = optionMenuObject.InvokerNew("select_item")
 	})
 	return err
 }
@@ -4525,29 +4204,13 @@ func (recv *OptionMenu) SelectItem(index uint32) {
 	return
 }
 
-// OptionMenuStruct creates an uninitialised OptionMenu.
-func OptionMenuStruct() *OptionMenu {
-	err := optionMenuStruct_Set()
-	if err != nil {
-		return nil
-	}
+var pluginObject *gi.Object
+var pluginObject_Once sync.Once
 
-	structGo := &OptionMenu{}
-	structGo.Native = optionMenuStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeOptionMenu)
-	return structGo
-}
-func finalizeOptionMenu(obj *OptionMenu) {
-	optionMenuStruct.Free(obj.Native)
-}
-
-var pluginStruct *gi.Struct
-var pluginStruct_Once sync.Once
-
-func pluginStruct_Set() error {
+func pluginObject_Set() error {
 	var err error
-	pluginStruct_Once.Do(func() {
-		pluginStruct, err = gi.StructNew("WebKit2", "Plugin")
+	pluginObject_Once.Do(func() {
+		pluginObject, err = gi.ObjectNew("WebKit2", "Plugin")
 	})
 	return err
 }
@@ -4562,7 +4225,7 @@ type Plugin struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Plugin) FieldPriv() *PluginPrivate {
-	argValue := gi.FieldGet(pluginStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(pluginObject, recv.Native, "priv")
 	value := &PluginPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4572,7 +4235,7 @@ func (recv *Plugin) FieldPriv() *PluginPrivate {
 func (recv *Plugin) SetFieldPriv(value *PluginPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(pluginStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(pluginObject, recv.Native, "priv", argValue)
 }
 
 var pluginGetDescriptionFunction *gi.Function
@@ -4581,11 +4244,11 @@ var pluginGetDescriptionFunction_Once sync.Once
 func pluginGetDescriptionFunction_Set() error {
 	var err error
 	pluginGetDescriptionFunction_Once.Do(func() {
-		err = pluginStruct_Set()
+		err = pluginObject_Set()
 		if err != nil {
 			return
 		}
-		pluginGetDescriptionFunction, err = pluginStruct.InvokerNew("get_description")
+		pluginGetDescriptionFunction, err = pluginObject.InvokerNew("get_description")
 	})
 	return err
 }
@@ -4615,11 +4278,11 @@ var pluginGetNameFunction_Once sync.Once
 func pluginGetNameFunction_Set() error {
 	var err error
 	pluginGetNameFunction_Once.Do(func() {
-		err = pluginStruct_Set()
+		err = pluginObject_Set()
 		if err != nil {
 			return
 		}
-		pluginGetNameFunction, err = pluginStruct.InvokerNew("get_name")
+		pluginGetNameFunction, err = pluginObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -4647,11 +4310,11 @@ var pluginGetPathFunction_Once sync.Once
 func pluginGetPathFunction_Set() error {
 	var err error
 	pluginGetPathFunction_Once.Do(func() {
-		err = pluginStruct_Set()
+		err = pluginObject_Set()
 		if err != nil {
 			return
 		}
-		pluginGetPathFunction, err = pluginStruct.InvokerNew("get_path")
+		pluginGetPathFunction, err = pluginObject.InvokerNew("get_path")
 	})
 	return err
 }
@@ -4673,29 +4336,13 @@ func (recv *Plugin) GetPath() string {
 	return retGo
 }
 
-// PluginStruct creates an uninitialised Plugin.
-func PluginStruct() *Plugin {
-	err := pluginStruct_Set()
-	if err != nil {
-		return nil
-	}
+var policyDecisionObject *gi.Object
+var policyDecisionObject_Once sync.Once
 
-	structGo := &Plugin{}
-	structGo.Native = pluginStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizePlugin)
-	return structGo
-}
-func finalizePlugin(obj *Plugin) {
-	pluginStruct.Free(obj.Native)
-}
-
-var policyDecisionStruct *gi.Struct
-var policyDecisionStruct_Once sync.Once
-
-func policyDecisionStruct_Set() error {
+func policyDecisionObject_Set() error {
 	var err error
-	policyDecisionStruct_Once.Do(func() {
-		policyDecisionStruct, err = gi.StructNew("WebKit2", "PolicyDecision")
+	policyDecisionObject_Once.Do(func() {
+		policyDecisionObject, err = gi.ObjectNew("WebKit2", "PolicyDecision")
 	})
 	return err
 }
@@ -4714,11 +4361,11 @@ var policyDecisionDownloadFunction_Once sync.Once
 func policyDecisionDownloadFunction_Set() error {
 	var err error
 	policyDecisionDownloadFunction_Once.Do(func() {
-		err = policyDecisionStruct_Set()
+		err = policyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		policyDecisionDownloadFunction, err = policyDecisionStruct.InvokerNew("download")
+		policyDecisionDownloadFunction, err = policyDecisionObject.InvokerNew("download")
 	})
 	return err
 }
@@ -4742,11 +4389,11 @@ var policyDecisionIgnoreFunction_Once sync.Once
 func policyDecisionIgnoreFunction_Set() error {
 	var err error
 	policyDecisionIgnoreFunction_Once.Do(func() {
-		err = policyDecisionStruct_Set()
+		err = policyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		policyDecisionIgnoreFunction, err = policyDecisionStruct.InvokerNew("ignore")
+		policyDecisionIgnoreFunction, err = policyDecisionObject.InvokerNew("ignore")
 	})
 	return err
 }
@@ -4770,11 +4417,11 @@ var policyDecisionUseFunction_Once sync.Once
 func policyDecisionUseFunction_Set() error {
 	var err error
 	policyDecisionUseFunction_Once.Do(func() {
-		err = policyDecisionStruct_Set()
+		err = policyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		policyDecisionUseFunction, err = policyDecisionStruct.InvokerNew("use")
+		policyDecisionUseFunction, err = policyDecisionObject.InvokerNew("use")
 	})
 	return err
 }
@@ -4792,29 +4439,13 @@ func (recv *PolicyDecision) Use() {
 	return
 }
 
-// PolicyDecisionStruct creates an uninitialised PolicyDecision.
-func PolicyDecisionStruct() *PolicyDecision {
-	err := policyDecisionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var printCustomWidgetObject *gi.Object
+var printCustomWidgetObject_Once sync.Once
 
-	structGo := &PolicyDecision{}
-	structGo.Native = policyDecisionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizePolicyDecision)
-	return structGo
-}
-func finalizePolicyDecision(obj *PolicyDecision) {
-	policyDecisionStruct.Free(obj.Native)
-}
-
-var printCustomWidgetStruct *gi.Struct
-var printCustomWidgetStruct_Once sync.Once
-
-func printCustomWidgetStruct_Set() error {
+func printCustomWidgetObject_Set() error {
 	var err error
-	printCustomWidgetStruct_Once.Do(func() {
-		printCustomWidgetStruct, err = gi.StructNew("WebKit2", "PrintCustomWidget")
+	printCustomWidgetObject_Once.Do(func() {
+		printCustomWidgetObject, err = gi.ObjectNew("WebKit2", "PrintCustomWidget")
 	})
 	return err
 }
@@ -4829,7 +4460,7 @@ type PrintCustomWidget struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintCustomWidget) FieldPriv() *PrintCustomWidgetPrivate {
-	argValue := gi.FieldGet(printCustomWidgetStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(printCustomWidgetObject, recv.Native, "priv")
 	value := &PrintCustomWidgetPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4839,7 +4470,7 @@ func (recv *PrintCustomWidget) FieldPriv() *PrintCustomWidgetPrivate {
 func (recv *PrintCustomWidget) SetFieldPriv(value *PrintCustomWidgetPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(printCustomWidgetStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(printCustomWidgetObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_print_custom_widget_new' : parameter 'widget' of type 'Gtk.Widget' not supported
@@ -4850,11 +4481,11 @@ var printCustomWidgetGetTitleFunction_Once sync.Once
 func printCustomWidgetGetTitleFunction_Set() error {
 	var err error
 	printCustomWidgetGetTitleFunction_Once.Do(func() {
-		err = printCustomWidgetStruct_Set()
+		err = printCustomWidgetObject_Set()
 		if err != nil {
 			return
 		}
-		printCustomWidgetGetTitleFunction, err = printCustomWidgetStruct.InvokerNew("get_title")
+		printCustomWidgetGetTitleFunction, err = printCustomWidgetObject.InvokerNew("get_title")
 	})
 	return err
 }
@@ -4878,13 +4509,13 @@ func (recv *PrintCustomWidget) GetTitle() string {
 
 // UNSUPPORTED : C value 'webkit_print_custom_widget_get_widget' : return type 'Gtk.Widget' not supported
 
-var printOperationStruct *gi.Struct
-var printOperationStruct_Once sync.Once
+var printOperationObject *gi.Object
+var printOperationObject_Once sync.Once
 
-func printOperationStruct_Set() error {
+func printOperationObject_Set() error {
 	var err error
-	printOperationStruct_Once.Do(func() {
-		printOperationStruct, err = gi.StructNew("WebKit2", "PrintOperation")
+	printOperationObject_Once.Do(func() {
+		printOperationObject, err = gi.ObjectNew("WebKit2", "PrintOperation")
 	})
 	return err
 }
@@ -4899,7 +4530,7 @@ type PrintOperation struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintOperation) FieldPriv() *PrintOperationPrivate {
-	argValue := gi.FieldGet(printOperationStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(printOperationObject, recv.Native, "priv")
 	value := &PrintOperationPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4909,7 +4540,7 @@ func (recv *PrintOperation) FieldPriv() *PrintOperationPrivate {
 func (recv *PrintOperation) SetFieldPriv(value *PrintOperationPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(printOperationStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(printOperationObject, recv.Native, "priv", argValue)
 }
 
 var printOperationNewFunction *gi.Function
@@ -4918,11 +4549,11 @@ var printOperationNewFunction_Once sync.Once
 func printOperationNewFunction_Set() error {
 	var err error
 	printOperationNewFunction_Once.Do(func() {
-		err = printOperationStruct_Set()
+		err = printOperationObject_Set()
 		if err != nil {
 			return
 		}
-		printOperationNewFunction, err = printOperationStruct.InvokerNew("new")
+		printOperationNewFunction, err = printOperationObject.InvokerNew("new")
 	})
 	return err
 }
@@ -4955,11 +4586,11 @@ var printOperationPrintFunction_Once sync.Once
 func printOperationPrintFunction_Set() error {
 	var err error
 	printOperationPrintFunction_Once.Do(func() {
-		err = printOperationStruct_Set()
+		err = printOperationObject_Set()
 		if err != nil {
 			return
 		}
-		printOperationPrintFunction, err = printOperationStruct.InvokerNew("print")
+		printOperationPrintFunction, err = printOperationObject.InvokerNew("print")
 	})
 	return err
 }
@@ -4983,13 +4614,13 @@ func (recv *PrintOperation) Print() {
 
 // UNSUPPORTED : C value 'webkit_print_operation_set_print_settings' : parameter 'print_settings' of type 'Gtk.PrintSettings' not supported
 
-var responsePolicyDecisionStruct *gi.Struct
-var responsePolicyDecisionStruct_Once sync.Once
+var responsePolicyDecisionObject *gi.Object
+var responsePolicyDecisionObject_Once sync.Once
 
-func responsePolicyDecisionStruct_Set() error {
+func responsePolicyDecisionObject_Set() error {
 	var err error
-	responsePolicyDecisionStruct_Once.Do(func() {
-		responsePolicyDecisionStruct, err = gi.StructNew("WebKit2", "ResponsePolicyDecision")
+	responsePolicyDecisionObject_Once.Do(func() {
+		responsePolicyDecisionObject, err = gi.ObjectNew("WebKit2", "ResponsePolicyDecision")
 	})
 	return err
 }
@@ -5000,7 +4631,7 @@ type ResponsePolicyDecision struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *ResponsePolicyDecision) FieldParent() *PolicyDecision {
-	argValue := gi.FieldGet(responsePolicyDecisionStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(responsePolicyDecisionObject, recv.Native, "parent")
 	value := &PolicyDecision{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5010,7 +4641,7 @@ func (recv *ResponsePolicyDecision) FieldParent() *PolicyDecision {
 func (recv *ResponsePolicyDecision) SetFieldParent(value *PolicyDecision) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(responsePolicyDecisionStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(responsePolicyDecisionObject, recv.Native, "parent", argValue)
 }
 
 var responsePolicyDecisionGetRequestFunction *gi.Function
@@ -5019,11 +4650,11 @@ var responsePolicyDecisionGetRequestFunction_Once sync.Once
 func responsePolicyDecisionGetRequestFunction_Set() error {
 	var err error
 	responsePolicyDecisionGetRequestFunction_Once.Do(func() {
-		err = responsePolicyDecisionStruct_Set()
+		err = responsePolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		responsePolicyDecisionGetRequestFunction, err = responsePolicyDecisionStruct.InvokerNew("get_request")
+		responsePolicyDecisionGetRequestFunction, err = responsePolicyDecisionObject.InvokerNew("get_request")
 	})
 	return err
 }
@@ -5052,11 +4683,11 @@ var responsePolicyDecisionGetResponseFunction_Once sync.Once
 func responsePolicyDecisionGetResponseFunction_Set() error {
 	var err error
 	responsePolicyDecisionGetResponseFunction_Once.Do(func() {
-		err = responsePolicyDecisionStruct_Set()
+		err = responsePolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		responsePolicyDecisionGetResponseFunction, err = responsePolicyDecisionStruct.InvokerNew("get_response")
+		responsePolicyDecisionGetResponseFunction, err = responsePolicyDecisionObject.InvokerNew("get_response")
 	})
 	return err
 }
@@ -5085,11 +4716,11 @@ var responsePolicyDecisionIsMimeTypeSupportedFunction_Once sync.Once
 func responsePolicyDecisionIsMimeTypeSupportedFunction_Set() error {
 	var err error
 	responsePolicyDecisionIsMimeTypeSupportedFunction_Once.Do(func() {
-		err = responsePolicyDecisionStruct_Set()
+		err = responsePolicyDecisionObject_Set()
 		if err != nil {
 			return
 		}
-		responsePolicyDecisionIsMimeTypeSupportedFunction, err = responsePolicyDecisionStruct.InvokerNew("is_mime_type_supported")
+		responsePolicyDecisionIsMimeTypeSupportedFunction, err = responsePolicyDecisionObject.InvokerNew("is_mime_type_supported")
 	})
 	return err
 }
@@ -5111,29 +4742,13 @@ func (recv *ResponsePolicyDecision) IsMimeTypeSupported() bool {
 	return retGo
 }
 
-// ResponsePolicyDecisionStruct creates an uninitialised ResponsePolicyDecision.
-func ResponsePolicyDecisionStruct() *ResponsePolicyDecision {
-	err := responsePolicyDecisionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var securityManagerObject *gi.Object
+var securityManagerObject_Once sync.Once
 
-	structGo := &ResponsePolicyDecision{}
-	structGo.Native = responsePolicyDecisionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeResponsePolicyDecision)
-	return structGo
-}
-func finalizeResponsePolicyDecision(obj *ResponsePolicyDecision) {
-	responsePolicyDecisionStruct.Free(obj.Native)
-}
-
-var securityManagerStruct *gi.Struct
-var securityManagerStruct_Once sync.Once
-
-func securityManagerStruct_Set() error {
+func securityManagerObject_Set() error {
 	var err error
-	securityManagerStruct_Once.Do(func() {
-		securityManagerStruct, err = gi.StructNew("WebKit2", "SecurityManager")
+	securityManagerObject_Once.Do(func() {
+		securityManagerObject, err = gi.ObjectNew("WebKit2", "SecurityManager")
 	})
 	return err
 }
@@ -5148,7 +4763,7 @@ type SecurityManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SecurityManager) FieldPriv() *SecurityManagerPrivate {
-	argValue := gi.FieldGet(securityManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(securityManagerObject, recv.Native, "priv")
 	value := &SecurityManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5158,7 +4773,7 @@ func (recv *SecurityManager) FieldPriv() *SecurityManagerPrivate {
 func (recv *SecurityManager) SetFieldPriv(value *SecurityManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(securityManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(securityManagerObject, recv.Native, "priv", argValue)
 }
 
 var securityManagerRegisterUriSchemeAsCorsEnabledFunction *gi.Function
@@ -5167,11 +4782,11 @@ var securityManagerRegisterUriSchemeAsCorsEnabledFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsCorsEnabledFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsCorsEnabledFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsCorsEnabledFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_cors_enabled")
+		securityManagerRegisterUriSchemeAsCorsEnabledFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_cors_enabled")
 	})
 	return err
 }
@@ -5196,11 +4811,11 @@ var securityManagerRegisterUriSchemeAsDisplayIsolatedFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsDisplayIsolatedFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsDisplayIsolatedFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsDisplayIsolatedFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_display_isolated")
+		securityManagerRegisterUriSchemeAsDisplayIsolatedFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_display_isolated")
 	})
 	return err
 }
@@ -5225,11 +4840,11 @@ var securityManagerRegisterUriSchemeAsEmptyDocumentFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsEmptyDocumentFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsEmptyDocumentFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsEmptyDocumentFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_empty_document")
+		securityManagerRegisterUriSchemeAsEmptyDocumentFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_empty_document")
 	})
 	return err
 }
@@ -5254,11 +4869,11 @@ var securityManagerRegisterUriSchemeAsLocalFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsLocalFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsLocalFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsLocalFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_local")
+		securityManagerRegisterUriSchemeAsLocalFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_local")
 	})
 	return err
 }
@@ -5283,11 +4898,11 @@ var securityManagerRegisterUriSchemeAsNoAccessFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsNoAccessFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsNoAccessFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsNoAccessFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_no_access")
+		securityManagerRegisterUriSchemeAsNoAccessFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_no_access")
 	})
 	return err
 }
@@ -5312,11 +4927,11 @@ var securityManagerRegisterUriSchemeAsSecureFunction_Once sync.Once
 func securityManagerRegisterUriSchemeAsSecureFunction_Set() error {
 	var err error
 	securityManagerRegisterUriSchemeAsSecureFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerRegisterUriSchemeAsSecureFunction, err = securityManagerStruct.InvokerNew("register_uri_scheme_as_secure")
+		securityManagerRegisterUriSchemeAsSecureFunction, err = securityManagerObject.InvokerNew("register_uri_scheme_as_secure")
 	})
 	return err
 }
@@ -5341,11 +4956,11 @@ var securityManagerUriSchemeIsCorsEnabledFunction_Once sync.Once
 func securityManagerUriSchemeIsCorsEnabledFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsCorsEnabledFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsCorsEnabledFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_cors_enabled")
+		securityManagerUriSchemeIsCorsEnabledFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_cors_enabled")
 	})
 	return err
 }
@@ -5374,11 +4989,11 @@ var securityManagerUriSchemeIsDisplayIsolatedFunction_Once sync.Once
 func securityManagerUriSchemeIsDisplayIsolatedFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsDisplayIsolatedFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsDisplayIsolatedFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_display_isolated")
+		securityManagerUriSchemeIsDisplayIsolatedFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_display_isolated")
 	})
 	return err
 }
@@ -5407,11 +5022,11 @@ var securityManagerUriSchemeIsEmptyDocumentFunction_Once sync.Once
 func securityManagerUriSchemeIsEmptyDocumentFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsEmptyDocumentFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsEmptyDocumentFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_empty_document")
+		securityManagerUriSchemeIsEmptyDocumentFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_empty_document")
 	})
 	return err
 }
@@ -5440,11 +5055,11 @@ var securityManagerUriSchemeIsLocalFunction_Once sync.Once
 func securityManagerUriSchemeIsLocalFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsLocalFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsLocalFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_local")
+		securityManagerUriSchemeIsLocalFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_local")
 	})
 	return err
 }
@@ -5473,11 +5088,11 @@ var securityManagerUriSchemeIsNoAccessFunction_Once sync.Once
 func securityManagerUriSchemeIsNoAccessFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsNoAccessFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsNoAccessFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_no_access")
+		securityManagerUriSchemeIsNoAccessFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_no_access")
 	})
 	return err
 }
@@ -5506,11 +5121,11 @@ var securityManagerUriSchemeIsSecureFunction_Once sync.Once
 func securityManagerUriSchemeIsSecureFunction_Set() error {
 	var err error
 	securityManagerUriSchemeIsSecureFunction_Once.Do(func() {
-		err = securityManagerStruct_Set()
+		err = securityManagerObject_Set()
 		if err != nil {
 			return
 		}
-		securityManagerUriSchemeIsSecureFunction, err = securityManagerStruct.InvokerNew("uri_scheme_is_secure")
+		securityManagerUriSchemeIsSecureFunction, err = securityManagerObject.InvokerNew("uri_scheme_is_secure")
 	})
 	return err
 }
@@ -5533,29 +5148,13 @@ func (recv *SecurityManager) UriSchemeIsSecure(scheme string) bool {
 	return retGo
 }
 
-// SecurityManagerStruct creates an uninitialised SecurityManager.
-func SecurityManagerStruct() *SecurityManager {
-	err := securityManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var settingsObject *gi.Object
+var settingsObject_Once sync.Once
 
-	structGo := &SecurityManager{}
-	structGo.Native = securityManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSecurityManager)
-	return structGo
-}
-func finalizeSecurityManager(obj *SecurityManager) {
-	securityManagerStruct.Free(obj.Native)
-}
-
-var settingsStruct *gi.Struct
-var settingsStruct_Once sync.Once
-
-func settingsStruct_Set() error {
+func settingsObject_Set() error {
 	var err error
-	settingsStruct_Once.Do(func() {
-		settingsStruct, err = gi.StructNew("WebKit2", "Settings")
+	settingsObject_Once.Do(func() {
+		settingsObject, err = gi.ObjectNew("WebKit2", "Settings")
 	})
 	return err
 }
@@ -5570,7 +5169,7 @@ type Settings struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Settings) FieldPriv() *SettingsPrivate {
-	argValue := gi.FieldGet(settingsStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(settingsObject, recv.Native, "priv")
 	value := &SettingsPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5580,7 +5179,7 @@ func (recv *Settings) FieldPriv() *SettingsPrivate {
 func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(settingsStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(settingsObject, recv.Native, "priv", argValue)
 }
 
 var settingsNewFunction *gi.Function
@@ -5589,11 +5188,11 @@ var settingsNewFunction_Once sync.Once
 func settingsNewFunction_Set() error {
 	var err error
 	settingsNewFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewFunction, err = settingsStruct.InvokerNew("new")
+		settingsNewFunction, err = settingsObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5622,11 +5221,11 @@ var settingsGetAllowFileAccessFromFileUrlsFunction_Once sync.Once
 func settingsGetAllowFileAccessFromFileUrlsFunction_Set() error {
 	var err error
 	settingsGetAllowFileAccessFromFileUrlsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetAllowFileAccessFromFileUrlsFunction, err = settingsStruct.InvokerNew("get_allow_file_access_from_file_urls")
+		settingsGetAllowFileAccessFromFileUrlsFunction, err = settingsObject.InvokerNew("get_allow_file_access_from_file_urls")
 	})
 	return err
 }
@@ -5654,11 +5253,11 @@ var settingsGetAllowModalDialogsFunction_Once sync.Once
 func settingsGetAllowModalDialogsFunction_Set() error {
 	var err error
 	settingsGetAllowModalDialogsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetAllowModalDialogsFunction, err = settingsStruct.InvokerNew("get_allow_modal_dialogs")
+		settingsGetAllowModalDialogsFunction, err = settingsObject.InvokerNew("get_allow_modal_dialogs")
 	})
 	return err
 }
@@ -5686,11 +5285,11 @@ var settingsGetAllowUniversalAccessFromFileUrlsFunction_Once sync.Once
 func settingsGetAllowUniversalAccessFromFileUrlsFunction_Set() error {
 	var err error
 	settingsGetAllowUniversalAccessFromFileUrlsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetAllowUniversalAccessFromFileUrlsFunction, err = settingsStruct.InvokerNew("get_allow_universal_access_from_file_urls")
+		settingsGetAllowUniversalAccessFromFileUrlsFunction, err = settingsObject.InvokerNew("get_allow_universal_access_from_file_urls")
 	})
 	return err
 }
@@ -5718,11 +5317,11 @@ var settingsGetAutoLoadImagesFunction_Once sync.Once
 func settingsGetAutoLoadImagesFunction_Set() error {
 	var err error
 	settingsGetAutoLoadImagesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetAutoLoadImagesFunction, err = settingsStruct.InvokerNew("get_auto_load_images")
+		settingsGetAutoLoadImagesFunction, err = settingsObject.InvokerNew("get_auto_load_images")
 	})
 	return err
 }
@@ -5750,11 +5349,11 @@ var settingsGetCursiveFontFamilyFunction_Once sync.Once
 func settingsGetCursiveFontFamilyFunction_Set() error {
 	var err error
 	settingsGetCursiveFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetCursiveFontFamilyFunction, err = settingsStruct.InvokerNew("get_cursive_font_family")
+		settingsGetCursiveFontFamilyFunction, err = settingsObject.InvokerNew("get_cursive_font_family")
 	})
 	return err
 }
@@ -5782,11 +5381,11 @@ var settingsGetDefaultCharsetFunction_Once sync.Once
 func settingsGetDefaultCharsetFunction_Set() error {
 	var err error
 	settingsGetDefaultCharsetFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDefaultCharsetFunction, err = settingsStruct.InvokerNew("get_default_charset")
+		settingsGetDefaultCharsetFunction, err = settingsObject.InvokerNew("get_default_charset")
 	})
 	return err
 }
@@ -5814,11 +5413,11 @@ var settingsGetDefaultFontFamilyFunction_Once sync.Once
 func settingsGetDefaultFontFamilyFunction_Set() error {
 	var err error
 	settingsGetDefaultFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDefaultFontFamilyFunction, err = settingsStruct.InvokerNew("get_default_font_family")
+		settingsGetDefaultFontFamilyFunction, err = settingsObject.InvokerNew("get_default_font_family")
 	})
 	return err
 }
@@ -5846,11 +5445,11 @@ var settingsGetDefaultFontSizeFunction_Once sync.Once
 func settingsGetDefaultFontSizeFunction_Set() error {
 	var err error
 	settingsGetDefaultFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDefaultFontSizeFunction, err = settingsStruct.InvokerNew("get_default_font_size")
+		settingsGetDefaultFontSizeFunction, err = settingsObject.InvokerNew("get_default_font_size")
 	})
 	return err
 }
@@ -5878,11 +5477,11 @@ var settingsGetDefaultMonospaceFontSizeFunction_Once sync.Once
 func settingsGetDefaultMonospaceFontSizeFunction_Set() error {
 	var err error
 	settingsGetDefaultMonospaceFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDefaultMonospaceFontSizeFunction, err = settingsStruct.InvokerNew("get_default_monospace_font_size")
+		settingsGetDefaultMonospaceFontSizeFunction, err = settingsObject.InvokerNew("get_default_monospace_font_size")
 	})
 	return err
 }
@@ -5910,11 +5509,11 @@ var settingsGetDrawCompositingIndicatorsFunction_Once sync.Once
 func settingsGetDrawCompositingIndicatorsFunction_Set() error {
 	var err error
 	settingsGetDrawCompositingIndicatorsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDrawCompositingIndicatorsFunction, err = settingsStruct.InvokerNew("get_draw_compositing_indicators")
+		settingsGetDrawCompositingIndicatorsFunction, err = settingsObject.InvokerNew("get_draw_compositing_indicators")
 	})
 	return err
 }
@@ -5942,11 +5541,11 @@ var settingsGetEnableAccelerated2dCanvasFunction_Once sync.Once
 func settingsGetEnableAccelerated2dCanvasFunction_Set() error {
 	var err error
 	settingsGetEnableAccelerated2dCanvasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableAccelerated2dCanvasFunction, err = settingsStruct.InvokerNew("get_enable_accelerated_2d_canvas")
+		settingsGetEnableAccelerated2dCanvasFunction, err = settingsObject.InvokerNew("get_enable_accelerated_2d_canvas")
 	})
 	return err
 }
@@ -5974,11 +5573,11 @@ var settingsGetEnableBackForwardNavigationGesturesFunction_Once sync.Once
 func settingsGetEnableBackForwardNavigationGesturesFunction_Set() error {
 	var err error
 	settingsGetEnableBackForwardNavigationGesturesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableBackForwardNavigationGesturesFunction, err = settingsStruct.InvokerNew("get_enable_back_forward_navigation_gestures")
+		settingsGetEnableBackForwardNavigationGesturesFunction, err = settingsObject.InvokerNew("get_enable_back_forward_navigation_gestures")
 	})
 	return err
 }
@@ -6006,11 +5605,11 @@ var settingsGetEnableCaretBrowsingFunction_Once sync.Once
 func settingsGetEnableCaretBrowsingFunction_Set() error {
 	var err error
 	settingsGetEnableCaretBrowsingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableCaretBrowsingFunction, err = settingsStruct.InvokerNew("get_enable_caret_browsing")
+		settingsGetEnableCaretBrowsingFunction, err = settingsObject.InvokerNew("get_enable_caret_browsing")
 	})
 	return err
 }
@@ -6038,11 +5637,11 @@ var settingsGetEnableDeveloperExtrasFunction_Once sync.Once
 func settingsGetEnableDeveloperExtrasFunction_Set() error {
 	var err error
 	settingsGetEnableDeveloperExtrasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableDeveloperExtrasFunction, err = settingsStruct.InvokerNew("get_enable_developer_extras")
+		settingsGetEnableDeveloperExtrasFunction, err = settingsObject.InvokerNew("get_enable_developer_extras")
 	})
 	return err
 }
@@ -6070,11 +5669,11 @@ var settingsGetEnableDnsPrefetchingFunction_Once sync.Once
 func settingsGetEnableDnsPrefetchingFunction_Set() error {
 	var err error
 	settingsGetEnableDnsPrefetchingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableDnsPrefetchingFunction, err = settingsStruct.InvokerNew("get_enable_dns_prefetching")
+		settingsGetEnableDnsPrefetchingFunction, err = settingsObject.InvokerNew("get_enable_dns_prefetching")
 	})
 	return err
 }
@@ -6102,11 +5701,11 @@ var settingsGetEnableEncryptedMediaFunction_Once sync.Once
 func settingsGetEnableEncryptedMediaFunction_Set() error {
 	var err error
 	settingsGetEnableEncryptedMediaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableEncryptedMediaFunction, err = settingsStruct.InvokerNew("get_enable_encrypted_media")
+		settingsGetEnableEncryptedMediaFunction, err = settingsObject.InvokerNew("get_enable_encrypted_media")
 	})
 	return err
 }
@@ -6134,11 +5733,11 @@ var settingsGetEnableFrameFlatteningFunction_Once sync.Once
 func settingsGetEnableFrameFlatteningFunction_Set() error {
 	var err error
 	settingsGetEnableFrameFlatteningFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableFrameFlatteningFunction, err = settingsStruct.InvokerNew("get_enable_frame_flattening")
+		settingsGetEnableFrameFlatteningFunction, err = settingsObject.InvokerNew("get_enable_frame_flattening")
 	})
 	return err
 }
@@ -6166,11 +5765,11 @@ var settingsGetEnableFullscreenFunction_Once sync.Once
 func settingsGetEnableFullscreenFunction_Set() error {
 	var err error
 	settingsGetEnableFullscreenFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableFullscreenFunction, err = settingsStruct.InvokerNew("get_enable_fullscreen")
+		settingsGetEnableFullscreenFunction, err = settingsObject.InvokerNew("get_enable_fullscreen")
 	})
 	return err
 }
@@ -6198,11 +5797,11 @@ var settingsGetEnableHtml5DatabaseFunction_Once sync.Once
 func settingsGetEnableHtml5DatabaseFunction_Set() error {
 	var err error
 	settingsGetEnableHtml5DatabaseFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableHtml5DatabaseFunction, err = settingsStruct.InvokerNew("get_enable_html5_database")
+		settingsGetEnableHtml5DatabaseFunction, err = settingsObject.InvokerNew("get_enable_html5_database")
 	})
 	return err
 }
@@ -6230,11 +5829,11 @@ var settingsGetEnableHtml5LocalStorageFunction_Once sync.Once
 func settingsGetEnableHtml5LocalStorageFunction_Set() error {
 	var err error
 	settingsGetEnableHtml5LocalStorageFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableHtml5LocalStorageFunction, err = settingsStruct.InvokerNew("get_enable_html5_local_storage")
+		settingsGetEnableHtml5LocalStorageFunction, err = settingsObject.InvokerNew("get_enable_html5_local_storage")
 	})
 	return err
 }
@@ -6262,11 +5861,11 @@ var settingsGetEnableHyperlinkAuditingFunction_Once sync.Once
 func settingsGetEnableHyperlinkAuditingFunction_Set() error {
 	var err error
 	settingsGetEnableHyperlinkAuditingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableHyperlinkAuditingFunction, err = settingsStruct.InvokerNew("get_enable_hyperlink_auditing")
+		settingsGetEnableHyperlinkAuditingFunction, err = settingsObject.InvokerNew("get_enable_hyperlink_auditing")
 	})
 	return err
 }
@@ -6294,11 +5893,11 @@ var settingsGetEnableJavaFunction_Once sync.Once
 func settingsGetEnableJavaFunction_Set() error {
 	var err error
 	settingsGetEnableJavaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableJavaFunction, err = settingsStruct.InvokerNew("get_enable_java")
+		settingsGetEnableJavaFunction, err = settingsObject.InvokerNew("get_enable_java")
 	})
 	return err
 }
@@ -6326,11 +5925,11 @@ var settingsGetEnableJavascriptFunction_Once sync.Once
 func settingsGetEnableJavascriptFunction_Set() error {
 	var err error
 	settingsGetEnableJavascriptFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableJavascriptFunction, err = settingsStruct.InvokerNew("get_enable_javascript")
+		settingsGetEnableJavascriptFunction, err = settingsObject.InvokerNew("get_enable_javascript")
 	})
 	return err
 }
@@ -6358,11 +5957,11 @@ var settingsGetEnableJavascriptMarkupFunction_Once sync.Once
 func settingsGetEnableJavascriptMarkupFunction_Set() error {
 	var err error
 	settingsGetEnableJavascriptMarkupFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableJavascriptMarkupFunction, err = settingsStruct.InvokerNew("get_enable_javascript_markup")
+		settingsGetEnableJavascriptMarkupFunction, err = settingsObject.InvokerNew("get_enable_javascript_markup")
 	})
 	return err
 }
@@ -6390,11 +5989,11 @@ var settingsGetEnableMediaFunction_Once sync.Once
 func settingsGetEnableMediaFunction_Set() error {
 	var err error
 	settingsGetEnableMediaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableMediaFunction, err = settingsStruct.InvokerNew("get_enable_media")
+		settingsGetEnableMediaFunction, err = settingsObject.InvokerNew("get_enable_media")
 	})
 	return err
 }
@@ -6422,11 +6021,11 @@ var settingsGetEnableMediaCapabilitiesFunction_Once sync.Once
 func settingsGetEnableMediaCapabilitiesFunction_Set() error {
 	var err error
 	settingsGetEnableMediaCapabilitiesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableMediaCapabilitiesFunction, err = settingsStruct.InvokerNew("get_enable_media_capabilities")
+		settingsGetEnableMediaCapabilitiesFunction, err = settingsObject.InvokerNew("get_enable_media_capabilities")
 	})
 	return err
 }
@@ -6454,11 +6053,11 @@ var settingsGetEnableMediaStreamFunction_Once sync.Once
 func settingsGetEnableMediaStreamFunction_Set() error {
 	var err error
 	settingsGetEnableMediaStreamFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableMediaStreamFunction, err = settingsStruct.InvokerNew("get_enable_media_stream")
+		settingsGetEnableMediaStreamFunction, err = settingsObject.InvokerNew("get_enable_media_stream")
 	})
 	return err
 }
@@ -6486,11 +6085,11 @@ var settingsGetEnableMediasourceFunction_Once sync.Once
 func settingsGetEnableMediasourceFunction_Set() error {
 	var err error
 	settingsGetEnableMediasourceFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableMediasourceFunction, err = settingsStruct.InvokerNew("get_enable_mediasource")
+		settingsGetEnableMediasourceFunction, err = settingsObject.InvokerNew("get_enable_mediasource")
 	})
 	return err
 }
@@ -6518,11 +6117,11 @@ var settingsGetEnableMockCaptureDevicesFunction_Once sync.Once
 func settingsGetEnableMockCaptureDevicesFunction_Set() error {
 	var err error
 	settingsGetEnableMockCaptureDevicesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableMockCaptureDevicesFunction, err = settingsStruct.InvokerNew("get_enable_mock_capture_devices")
+		settingsGetEnableMockCaptureDevicesFunction, err = settingsObject.InvokerNew("get_enable_mock_capture_devices")
 	})
 	return err
 }
@@ -6550,11 +6149,11 @@ var settingsGetEnableOfflineWebApplicationCacheFunction_Once sync.Once
 func settingsGetEnableOfflineWebApplicationCacheFunction_Set() error {
 	var err error
 	settingsGetEnableOfflineWebApplicationCacheFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableOfflineWebApplicationCacheFunction, err = settingsStruct.InvokerNew("get_enable_offline_web_application_cache")
+		settingsGetEnableOfflineWebApplicationCacheFunction, err = settingsObject.InvokerNew("get_enable_offline_web_application_cache")
 	})
 	return err
 }
@@ -6582,11 +6181,11 @@ var settingsGetEnablePageCacheFunction_Once sync.Once
 func settingsGetEnablePageCacheFunction_Set() error {
 	var err error
 	settingsGetEnablePageCacheFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnablePageCacheFunction, err = settingsStruct.InvokerNew("get_enable_page_cache")
+		settingsGetEnablePageCacheFunction, err = settingsObject.InvokerNew("get_enable_page_cache")
 	})
 	return err
 }
@@ -6614,11 +6213,11 @@ var settingsGetEnablePluginsFunction_Once sync.Once
 func settingsGetEnablePluginsFunction_Set() error {
 	var err error
 	settingsGetEnablePluginsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnablePluginsFunction, err = settingsStruct.InvokerNew("get_enable_plugins")
+		settingsGetEnablePluginsFunction, err = settingsObject.InvokerNew("get_enable_plugins")
 	})
 	return err
 }
@@ -6646,11 +6245,11 @@ var settingsGetEnablePrivateBrowsingFunction_Once sync.Once
 func settingsGetEnablePrivateBrowsingFunction_Set() error {
 	var err error
 	settingsGetEnablePrivateBrowsingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnablePrivateBrowsingFunction, err = settingsStruct.InvokerNew("get_enable_private_browsing")
+		settingsGetEnablePrivateBrowsingFunction, err = settingsObject.InvokerNew("get_enable_private_browsing")
 	})
 	return err
 }
@@ -6678,11 +6277,11 @@ var settingsGetEnableResizableTextAreasFunction_Once sync.Once
 func settingsGetEnableResizableTextAreasFunction_Set() error {
 	var err error
 	settingsGetEnableResizableTextAreasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableResizableTextAreasFunction, err = settingsStruct.InvokerNew("get_enable_resizable_text_areas")
+		settingsGetEnableResizableTextAreasFunction, err = settingsObject.InvokerNew("get_enable_resizable_text_areas")
 	})
 	return err
 }
@@ -6710,11 +6309,11 @@ var settingsGetEnableSiteSpecificQuirksFunction_Once sync.Once
 func settingsGetEnableSiteSpecificQuirksFunction_Set() error {
 	var err error
 	settingsGetEnableSiteSpecificQuirksFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableSiteSpecificQuirksFunction, err = settingsStruct.InvokerNew("get_enable_site_specific_quirks")
+		settingsGetEnableSiteSpecificQuirksFunction, err = settingsObject.InvokerNew("get_enable_site_specific_quirks")
 	})
 	return err
 }
@@ -6742,11 +6341,11 @@ var settingsGetEnableSmoothScrollingFunction_Once sync.Once
 func settingsGetEnableSmoothScrollingFunction_Set() error {
 	var err error
 	settingsGetEnableSmoothScrollingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableSmoothScrollingFunction, err = settingsStruct.InvokerNew("get_enable_smooth_scrolling")
+		settingsGetEnableSmoothScrollingFunction, err = settingsObject.InvokerNew("get_enable_smooth_scrolling")
 	})
 	return err
 }
@@ -6774,11 +6373,11 @@ var settingsGetEnableSpatialNavigationFunction_Once sync.Once
 func settingsGetEnableSpatialNavigationFunction_Set() error {
 	var err error
 	settingsGetEnableSpatialNavigationFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableSpatialNavigationFunction, err = settingsStruct.InvokerNew("get_enable_spatial_navigation")
+		settingsGetEnableSpatialNavigationFunction, err = settingsObject.InvokerNew("get_enable_spatial_navigation")
 	})
 	return err
 }
@@ -6806,11 +6405,11 @@ var settingsGetEnableTabsToLinksFunction_Once sync.Once
 func settingsGetEnableTabsToLinksFunction_Set() error {
 	var err error
 	settingsGetEnableTabsToLinksFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableTabsToLinksFunction, err = settingsStruct.InvokerNew("get_enable_tabs_to_links")
+		settingsGetEnableTabsToLinksFunction, err = settingsObject.InvokerNew("get_enable_tabs_to_links")
 	})
 	return err
 }
@@ -6838,11 +6437,11 @@ var settingsGetEnableWebaudioFunction_Once sync.Once
 func settingsGetEnableWebaudioFunction_Set() error {
 	var err error
 	settingsGetEnableWebaudioFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableWebaudioFunction, err = settingsStruct.InvokerNew("get_enable_webaudio")
+		settingsGetEnableWebaudioFunction, err = settingsObject.InvokerNew("get_enable_webaudio")
 	})
 	return err
 }
@@ -6870,11 +6469,11 @@ var settingsGetEnableWebglFunction_Once sync.Once
 func settingsGetEnableWebglFunction_Set() error {
 	var err error
 	settingsGetEnableWebglFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableWebglFunction, err = settingsStruct.InvokerNew("get_enable_webgl")
+		settingsGetEnableWebglFunction, err = settingsObject.InvokerNew("get_enable_webgl")
 	})
 	return err
 }
@@ -6902,11 +6501,11 @@ var settingsGetEnableWriteConsoleMessagesToStdoutFunction_Once sync.Once
 func settingsGetEnableWriteConsoleMessagesToStdoutFunction_Set() error {
 	var err error
 	settingsGetEnableWriteConsoleMessagesToStdoutFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableWriteConsoleMessagesToStdoutFunction, err = settingsStruct.InvokerNew("get_enable_write_console_messages_to_stdout")
+		settingsGetEnableWriteConsoleMessagesToStdoutFunction, err = settingsObject.InvokerNew("get_enable_write_console_messages_to_stdout")
 	})
 	return err
 }
@@ -6934,11 +6533,11 @@ var settingsGetEnableXssAuditorFunction_Once sync.Once
 func settingsGetEnableXssAuditorFunction_Set() error {
 	var err error
 	settingsGetEnableXssAuditorFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnableXssAuditorFunction, err = settingsStruct.InvokerNew("get_enable_xss_auditor")
+		settingsGetEnableXssAuditorFunction, err = settingsObject.InvokerNew("get_enable_xss_auditor")
 	})
 	return err
 }
@@ -6966,11 +6565,11 @@ var settingsGetFantasyFontFamilyFunction_Once sync.Once
 func settingsGetFantasyFontFamilyFunction_Set() error {
 	var err error
 	settingsGetFantasyFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetFantasyFontFamilyFunction, err = settingsStruct.InvokerNew("get_fantasy_font_family")
+		settingsGetFantasyFontFamilyFunction, err = settingsObject.InvokerNew("get_fantasy_font_family")
 	})
 	return err
 }
@@ -6998,11 +6597,11 @@ var settingsGetHardwareAccelerationPolicyFunction_Once sync.Once
 func settingsGetHardwareAccelerationPolicyFunction_Set() error {
 	var err error
 	settingsGetHardwareAccelerationPolicyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetHardwareAccelerationPolicyFunction, err = settingsStruct.InvokerNew("get_hardware_acceleration_policy")
+		settingsGetHardwareAccelerationPolicyFunction, err = settingsObject.InvokerNew("get_hardware_acceleration_policy")
 	})
 	return err
 }
@@ -7030,11 +6629,11 @@ var settingsGetJavascriptCanAccessClipboardFunction_Once sync.Once
 func settingsGetJavascriptCanAccessClipboardFunction_Set() error {
 	var err error
 	settingsGetJavascriptCanAccessClipboardFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetJavascriptCanAccessClipboardFunction, err = settingsStruct.InvokerNew("get_javascript_can_access_clipboard")
+		settingsGetJavascriptCanAccessClipboardFunction, err = settingsObject.InvokerNew("get_javascript_can_access_clipboard")
 	})
 	return err
 }
@@ -7062,11 +6661,11 @@ var settingsGetJavascriptCanOpenWindowsAutomaticallyFunction_Once sync.Once
 func settingsGetJavascriptCanOpenWindowsAutomaticallyFunction_Set() error {
 	var err error
 	settingsGetJavascriptCanOpenWindowsAutomaticallyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetJavascriptCanOpenWindowsAutomaticallyFunction, err = settingsStruct.InvokerNew("get_javascript_can_open_windows_automatically")
+		settingsGetJavascriptCanOpenWindowsAutomaticallyFunction, err = settingsObject.InvokerNew("get_javascript_can_open_windows_automatically")
 	})
 	return err
 }
@@ -7094,11 +6693,11 @@ var settingsGetLoadIconsIgnoringImageLoadSettingFunction_Once sync.Once
 func settingsGetLoadIconsIgnoringImageLoadSettingFunction_Set() error {
 	var err error
 	settingsGetLoadIconsIgnoringImageLoadSettingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetLoadIconsIgnoringImageLoadSettingFunction, err = settingsStruct.InvokerNew("get_load_icons_ignoring_image_load_setting")
+		settingsGetLoadIconsIgnoringImageLoadSettingFunction, err = settingsObject.InvokerNew("get_load_icons_ignoring_image_load_setting")
 	})
 	return err
 }
@@ -7126,11 +6725,11 @@ var settingsGetMediaPlaybackAllowsInlineFunction_Once sync.Once
 func settingsGetMediaPlaybackAllowsInlineFunction_Set() error {
 	var err error
 	settingsGetMediaPlaybackAllowsInlineFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetMediaPlaybackAllowsInlineFunction, err = settingsStruct.InvokerNew("get_media_playback_allows_inline")
+		settingsGetMediaPlaybackAllowsInlineFunction, err = settingsObject.InvokerNew("get_media_playback_allows_inline")
 	})
 	return err
 }
@@ -7158,11 +6757,11 @@ var settingsGetMediaPlaybackRequiresUserGestureFunction_Once sync.Once
 func settingsGetMediaPlaybackRequiresUserGestureFunction_Set() error {
 	var err error
 	settingsGetMediaPlaybackRequiresUserGestureFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetMediaPlaybackRequiresUserGestureFunction, err = settingsStruct.InvokerNew("get_media_playback_requires_user_gesture")
+		settingsGetMediaPlaybackRequiresUserGestureFunction, err = settingsObject.InvokerNew("get_media_playback_requires_user_gesture")
 	})
 	return err
 }
@@ -7190,11 +6789,11 @@ var settingsGetMinimumFontSizeFunction_Once sync.Once
 func settingsGetMinimumFontSizeFunction_Set() error {
 	var err error
 	settingsGetMinimumFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetMinimumFontSizeFunction, err = settingsStruct.InvokerNew("get_minimum_font_size")
+		settingsGetMinimumFontSizeFunction, err = settingsObject.InvokerNew("get_minimum_font_size")
 	})
 	return err
 }
@@ -7222,11 +6821,11 @@ var settingsGetMonospaceFontFamilyFunction_Once sync.Once
 func settingsGetMonospaceFontFamilyFunction_Set() error {
 	var err error
 	settingsGetMonospaceFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetMonospaceFontFamilyFunction, err = settingsStruct.InvokerNew("get_monospace_font_family")
+		settingsGetMonospaceFontFamilyFunction, err = settingsObject.InvokerNew("get_monospace_font_family")
 	})
 	return err
 }
@@ -7254,11 +6853,11 @@ var settingsGetPictographFontFamilyFunction_Once sync.Once
 func settingsGetPictographFontFamilyFunction_Set() error {
 	var err error
 	settingsGetPictographFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetPictographFontFamilyFunction, err = settingsStruct.InvokerNew("get_pictograph_font_family")
+		settingsGetPictographFontFamilyFunction, err = settingsObject.InvokerNew("get_pictograph_font_family")
 	})
 	return err
 }
@@ -7286,11 +6885,11 @@ var settingsGetPrintBackgroundsFunction_Once sync.Once
 func settingsGetPrintBackgroundsFunction_Set() error {
 	var err error
 	settingsGetPrintBackgroundsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetPrintBackgroundsFunction, err = settingsStruct.InvokerNew("get_print_backgrounds")
+		settingsGetPrintBackgroundsFunction, err = settingsObject.InvokerNew("get_print_backgrounds")
 	})
 	return err
 }
@@ -7318,11 +6917,11 @@ var settingsGetSansSerifFontFamilyFunction_Once sync.Once
 func settingsGetSansSerifFontFamilyFunction_Set() error {
 	var err error
 	settingsGetSansSerifFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetSansSerifFontFamilyFunction, err = settingsStruct.InvokerNew("get_sans_serif_font_family")
+		settingsGetSansSerifFontFamilyFunction, err = settingsObject.InvokerNew("get_sans_serif_font_family")
 	})
 	return err
 }
@@ -7350,11 +6949,11 @@ var settingsGetSerifFontFamilyFunction_Once sync.Once
 func settingsGetSerifFontFamilyFunction_Set() error {
 	var err error
 	settingsGetSerifFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetSerifFontFamilyFunction, err = settingsStruct.InvokerNew("get_serif_font_family")
+		settingsGetSerifFontFamilyFunction, err = settingsObject.InvokerNew("get_serif_font_family")
 	})
 	return err
 }
@@ -7382,11 +6981,11 @@ var settingsGetUserAgentFunction_Once sync.Once
 func settingsGetUserAgentFunction_Set() error {
 	var err error
 	settingsGetUserAgentFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetUserAgentFunction, err = settingsStruct.InvokerNew("get_user_agent")
+		settingsGetUserAgentFunction, err = settingsObject.InvokerNew("get_user_agent")
 	})
 	return err
 }
@@ -7414,11 +7013,11 @@ var settingsGetZoomTextOnlyFunction_Once sync.Once
 func settingsGetZoomTextOnlyFunction_Set() error {
 	var err error
 	settingsGetZoomTextOnlyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetZoomTextOnlyFunction, err = settingsStruct.InvokerNew("get_zoom_text_only")
+		settingsGetZoomTextOnlyFunction, err = settingsObject.InvokerNew("get_zoom_text_only")
 	})
 	return err
 }
@@ -7446,11 +7045,11 @@ var settingsSetAllowFileAccessFromFileUrlsFunction_Once sync.Once
 func settingsSetAllowFileAccessFromFileUrlsFunction_Set() error {
 	var err error
 	settingsSetAllowFileAccessFromFileUrlsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetAllowFileAccessFromFileUrlsFunction, err = settingsStruct.InvokerNew("set_allow_file_access_from_file_urls")
+		settingsSetAllowFileAccessFromFileUrlsFunction, err = settingsObject.InvokerNew("set_allow_file_access_from_file_urls")
 	})
 	return err
 }
@@ -7475,11 +7074,11 @@ var settingsSetAllowModalDialogsFunction_Once sync.Once
 func settingsSetAllowModalDialogsFunction_Set() error {
 	var err error
 	settingsSetAllowModalDialogsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetAllowModalDialogsFunction, err = settingsStruct.InvokerNew("set_allow_modal_dialogs")
+		settingsSetAllowModalDialogsFunction, err = settingsObject.InvokerNew("set_allow_modal_dialogs")
 	})
 	return err
 }
@@ -7504,11 +7103,11 @@ var settingsSetAllowUniversalAccessFromFileUrlsFunction_Once sync.Once
 func settingsSetAllowUniversalAccessFromFileUrlsFunction_Set() error {
 	var err error
 	settingsSetAllowUniversalAccessFromFileUrlsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetAllowUniversalAccessFromFileUrlsFunction, err = settingsStruct.InvokerNew("set_allow_universal_access_from_file_urls")
+		settingsSetAllowUniversalAccessFromFileUrlsFunction, err = settingsObject.InvokerNew("set_allow_universal_access_from_file_urls")
 	})
 	return err
 }
@@ -7533,11 +7132,11 @@ var settingsSetAutoLoadImagesFunction_Once sync.Once
 func settingsSetAutoLoadImagesFunction_Set() error {
 	var err error
 	settingsSetAutoLoadImagesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetAutoLoadImagesFunction, err = settingsStruct.InvokerNew("set_auto_load_images")
+		settingsSetAutoLoadImagesFunction, err = settingsObject.InvokerNew("set_auto_load_images")
 	})
 	return err
 }
@@ -7562,11 +7161,11 @@ var settingsSetCursiveFontFamilyFunction_Once sync.Once
 func settingsSetCursiveFontFamilyFunction_Set() error {
 	var err error
 	settingsSetCursiveFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetCursiveFontFamilyFunction, err = settingsStruct.InvokerNew("set_cursive_font_family")
+		settingsSetCursiveFontFamilyFunction, err = settingsObject.InvokerNew("set_cursive_font_family")
 	})
 	return err
 }
@@ -7591,11 +7190,11 @@ var settingsSetDefaultCharsetFunction_Once sync.Once
 func settingsSetDefaultCharsetFunction_Set() error {
 	var err error
 	settingsSetDefaultCharsetFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDefaultCharsetFunction, err = settingsStruct.InvokerNew("set_default_charset")
+		settingsSetDefaultCharsetFunction, err = settingsObject.InvokerNew("set_default_charset")
 	})
 	return err
 }
@@ -7620,11 +7219,11 @@ var settingsSetDefaultFontFamilyFunction_Once sync.Once
 func settingsSetDefaultFontFamilyFunction_Set() error {
 	var err error
 	settingsSetDefaultFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDefaultFontFamilyFunction, err = settingsStruct.InvokerNew("set_default_font_family")
+		settingsSetDefaultFontFamilyFunction, err = settingsObject.InvokerNew("set_default_font_family")
 	})
 	return err
 }
@@ -7649,11 +7248,11 @@ var settingsSetDefaultFontSizeFunction_Once sync.Once
 func settingsSetDefaultFontSizeFunction_Set() error {
 	var err error
 	settingsSetDefaultFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDefaultFontSizeFunction, err = settingsStruct.InvokerNew("set_default_font_size")
+		settingsSetDefaultFontSizeFunction, err = settingsObject.InvokerNew("set_default_font_size")
 	})
 	return err
 }
@@ -7678,11 +7277,11 @@ var settingsSetDefaultMonospaceFontSizeFunction_Once sync.Once
 func settingsSetDefaultMonospaceFontSizeFunction_Set() error {
 	var err error
 	settingsSetDefaultMonospaceFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDefaultMonospaceFontSizeFunction, err = settingsStruct.InvokerNew("set_default_monospace_font_size")
+		settingsSetDefaultMonospaceFontSizeFunction, err = settingsObject.InvokerNew("set_default_monospace_font_size")
 	})
 	return err
 }
@@ -7707,11 +7306,11 @@ var settingsSetDrawCompositingIndicatorsFunction_Once sync.Once
 func settingsSetDrawCompositingIndicatorsFunction_Set() error {
 	var err error
 	settingsSetDrawCompositingIndicatorsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDrawCompositingIndicatorsFunction, err = settingsStruct.InvokerNew("set_draw_compositing_indicators")
+		settingsSetDrawCompositingIndicatorsFunction, err = settingsObject.InvokerNew("set_draw_compositing_indicators")
 	})
 	return err
 }
@@ -7736,11 +7335,11 @@ var settingsSetEnableAccelerated2dCanvasFunction_Once sync.Once
 func settingsSetEnableAccelerated2dCanvasFunction_Set() error {
 	var err error
 	settingsSetEnableAccelerated2dCanvasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableAccelerated2dCanvasFunction, err = settingsStruct.InvokerNew("set_enable_accelerated_2d_canvas")
+		settingsSetEnableAccelerated2dCanvasFunction, err = settingsObject.InvokerNew("set_enable_accelerated_2d_canvas")
 	})
 	return err
 }
@@ -7765,11 +7364,11 @@ var settingsSetEnableBackForwardNavigationGesturesFunction_Once sync.Once
 func settingsSetEnableBackForwardNavigationGesturesFunction_Set() error {
 	var err error
 	settingsSetEnableBackForwardNavigationGesturesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableBackForwardNavigationGesturesFunction, err = settingsStruct.InvokerNew("set_enable_back_forward_navigation_gestures")
+		settingsSetEnableBackForwardNavigationGesturesFunction, err = settingsObject.InvokerNew("set_enable_back_forward_navigation_gestures")
 	})
 	return err
 }
@@ -7794,11 +7393,11 @@ var settingsSetEnableCaretBrowsingFunction_Once sync.Once
 func settingsSetEnableCaretBrowsingFunction_Set() error {
 	var err error
 	settingsSetEnableCaretBrowsingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableCaretBrowsingFunction, err = settingsStruct.InvokerNew("set_enable_caret_browsing")
+		settingsSetEnableCaretBrowsingFunction, err = settingsObject.InvokerNew("set_enable_caret_browsing")
 	})
 	return err
 }
@@ -7823,11 +7422,11 @@ var settingsSetEnableDeveloperExtrasFunction_Once sync.Once
 func settingsSetEnableDeveloperExtrasFunction_Set() error {
 	var err error
 	settingsSetEnableDeveloperExtrasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableDeveloperExtrasFunction, err = settingsStruct.InvokerNew("set_enable_developer_extras")
+		settingsSetEnableDeveloperExtrasFunction, err = settingsObject.InvokerNew("set_enable_developer_extras")
 	})
 	return err
 }
@@ -7852,11 +7451,11 @@ var settingsSetEnableDnsPrefetchingFunction_Once sync.Once
 func settingsSetEnableDnsPrefetchingFunction_Set() error {
 	var err error
 	settingsSetEnableDnsPrefetchingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableDnsPrefetchingFunction, err = settingsStruct.InvokerNew("set_enable_dns_prefetching")
+		settingsSetEnableDnsPrefetchingFunction, err = settingsObject.InvokerNew("set_enable_dns_prefetching")
 	})
 	return err
 }
@@ -7881,11 +7480,11 @@ var settingsSetEnableEncryptedMediaFunction_Once sync.Once
 func settingsSetEnableEncryptedMediaFunction_Set() error {
 	var err error
 	settingsSetEnableEncryptedMediaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableEncryptedMediaFunction, err = settingsStruct.InvokerNew("set_enable_encrypted_media")
+		settingsSetEnableEncryptedMediaFunction, err = settingsObject.InvokerNew("set_enable_encrypted_media")
 	})
 	return err
 }
@@ -7910,11 +7509,11 @@ var settingsSetEnableFrameFlatteningFunction_Once sync.Once
 func settingsSetEnableFrameFlatteningFunction_Set() error {
 	var err error
 	settingsSetEnableFrameFlatteningFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableFrameFlatteningFunction, err = settingsStruct.InvokerNew("set_enable_frame_flattening")
+		settingsSetEnableFrameFlatteningFunction, err = settingsObject.InvokerNew("set_enable_frame_flattening")
 	})
 	return err
 }
@@ -7939,11 +7538,11 @@ var settingsSetEnableFullscreenFunction_Once sync.Once
 func settingsSetEnableFullscreenFunction_Set() error {
 	var err error
 	settingsSetEnableFullscreenFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableFullscreenFunction, err = settingsStruct.InvokerNew("set_enable_fullscreen")
+		settingsSetEnableFullscreenFunction, err = settingsObject.InvokerNew("set_enable_fullscreen")
 	})
 	return err
 }
@@ -7968,11 +7567,11 @@ var settingsSetEnableHtml5DatabaseFunction_Once sync.Once
 func settingsSetEnableHtml5DatabaseFunction_Set() error {
 	var err error
 	settingsSetEnableHtml5DatabaseFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableHtml5DatabaseFunction, err = settingsStruct.InvokerNew("set_enable_html5_database")
+		settingsSetEnableHtml5DatabaseFunction, err = settingsObject.InvokerNew("set_enable_html5_database")
 	})
 	return err
 }
@@ -7997,11 +7596,11 @@ var settingsSetEnableHtml5LocalStorageFunction_Once sync.Once
 func settingsSetEnableHtml5LocalStorageFunction_Set() error {
 	var err error
 	settingsSetEnableHtml5LocalStorageFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableHtml5LocalStorageFunction, err = settingsStruct.InvokerNew("set_enable_html5_local_storage")
+		settingsSetEnableHtml5LocalStorageFunction, err = settingsObject.InvokerNew("set_enable_html5_local_storage")
 	})
 	return err
 }
@@ -8026,11 +7625,11 @@ var settingsSetEnableHyperlinkAuditingFunction_Once sync.Once
 func settingsSetEnableHyperlinkAuditingFunction_Set() error {
 	var err error
 	settingsSetEnableHyperlinkAuditingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableHyperlinkAuditingFunction, err = settingsStruct.InvokerNew("set_enable_hyperlink_auditing")
+		settingsSetEnableHyperlinkAuditingFunction, err = settingsObject.InvokerNew("set_enable_hyperlink_auditing")
 	})
 	return err
 }
@@ -8055,11 +7654,11 @@ var settingsSetEnableJavaFunction_Once sync.Once
 func settingsSetEnableJavaFunction_Set() error {
 	var err error
 	settingsSetEnableJavaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableJavaFunction, err = settingsStruct.InvokerNew("set_enable_java")
+		settingsSetEnableJavaFunction, err = settingsObject.InvokerNew("set_enable_java")
 	})
 	return err
 }
@@ -8084,11 +7683,11 @@ var settingsSetEnableJavascriptFunction_Once sync.Once
 func settingsSetEnableJavascriptFunction_Set() error {
 	var err error
 	settingsSetEnableJavascriptFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableJavascriptFunction, err = settingsStruct.InvokerNew("set_enable_javascript")
+		settingsSetEnableJavascriptFunction, err = settingsObject.InvokerNew("set_enable_javascript")
 	})
 	return err
 }
@@ -8113,11 +7712,11 @@ var settingsSetEnableJavascriptMarkupFunction_Once sync.Once
 func settingsSetEnableJavascriptMarkupFunction_Set() error {
 	var err error
 	settingsSetEnableJavascriptMarkupFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableJavascriptMarkupFunction, err = settingsStruct.InvokerNew("set_enable_javascript_markup")
+		settingsSetEnableJavascriptMarkupFunction, err = settingsObject.InvokerNew("set_enable_javascript_markup")
 	})
 	return err
 }
@@ -8142,11 +7741,11 @@ var settingsSetEnableMediaFunction_Once sync.Once
 func settingsSetEnableMediaFunction_Set() error {
 	var err error
 	settingsSetEnableMediaFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableMediaFunction, err = settingsStruct.InvokerNew("set_enable_media")
+		settingsSetEnableMediaFunction, err = settingsObject.InvokerNew("set_enable_media")
 	})
 	return err
 }
@@ -8171,11 +7770,11 @@ var settingsSetEnableMediaCapabilitiesFunction_Once sync.Once
 func settingsSetEnableMediaCapabilitiesFunction_Set() error {
 	var err error
 	settingsSetEnableMediaCapabilitiesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableMediaCapabilitiesFunction, err = settingsStruct.InvokerNew("set_enable_media_capabilities")
+		settingsSetEnableMediaCapabilitiesFunction, err = settingsObject.InvokerNew("set_enable_media_capabilities")
 	})
 	return err
 }
@@ -8200,11 +7799,11 @@ var settingsSetEnableMediaStreamFunction_Once sync.Once
 func settingsSetEnableMediaStreamFunction_Set() error {
 	var err error
 	settingsSetEnableMediaStreamFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableMediaStreamFunction, err = settingsStruct.InvokerNew("set_enable_media_stream")
+		settingsSetEnableMediaStreamFunction, err = settingsObject.InvokerNew("set_enable_media_stream")
 	})
 	return err
 }
@@ -8229,11 +7828,11 @@ var settingsSetEnableMediasourceFunction_Once sync.Once
 func settingsSetEnableMediasourceFunction_Set() error {
 	var err error
 	settingsSetEnableMediasourceFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableMediasourceFunction, err = settingsStruct.InvokerNew("set_enable_mediasource")
+		settingsSetEnableMediasourceFunction, err = settingsObject.InvokerNew("set_enable_mediasource")
 	})
 	return err
 }
@@ -8258,11 +7857,11 @@ var settingsSetEnableMockCaptureDevicesFunction_Once sync.Once
 func settingsSetEnableMockCaptureDevicesFunction_Set() error {
 	var err error
 	settingsSetEnableMockCaptureDevicesFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableMockCaptureDevicesFunction, err = settingsStruct.InvokerNew("set_enable_mock_capture_devices")
+		settingsSetEnableMockCaptureDevicesFunction, err = settingsObject.InvokerNew("set_enable_mock_capture_devices")
 	})
 	return err
 }
@@ -8287,11 +7886,11 @@ var settingsSetEnableOfflineWebApplicationCacheFunction_Once sync.Once
 func settingsSetEnableOfflineWebApplicationCacheFunction_Set() error {
 	var err error
 	settingsSetEnableOfflineWebApplicationCacheFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableOfflineWebApplicationCacheFunction, err = settingsStruct.InvokerNew("set_enable_offline_web_application_cache")
+		settingsSetEnableOfflineWebApplicationCacheFunction, err = settingsObject.InvokerNew("set_enable_offline_web_application_cache")
 	})
 	return err
 }
@@ -8316,11 +7915,11 @@ var settingsSetEnablePageCacheFunction_Once sync.Once
 func settingsSetEnablePageCacheFunction_Set() error {
 	var err error
 	settingsSetEnablePageCacheFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnablePageCacheFunction, err = settingsStruct.InvokerNew("set_enable_page_cache")
+		settingsSetEnablePageCacheFunction, err = settingsObject.InvokerNew("set_enable_page_cache")
 	})
 	return err
 }
@@ -8345,11 +7944,11 @@ var settingsSetEnablePluginsFunction_Once sync.Once
 func settingsSetEnablePluginsFunction_Set() error {
 	var err error
 	settingsSetEnablePluginsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnablePluginsFunction, err = settingsStruct.InvokerNew("set_enable_plugins")
+		settingsSetEnablePluginsFunction, err = settingsObject.InvokerNew("set_enable_plugins")
 	})
 	return err
 }
@@ -8374,11 +7973,11 @@ var settingsSetEnablePrivateBrowsingFunction_Once sync.Once
 func settingsSetEnablePrivateBrowsingFunction_Set() error {
 	var err error
 	settingsSetEnablePrivateBrowsingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnablePrivateBrowsingFunction, err = settingsStruct.InvokerNew("set_enable_private_browsing")
+		settingsSetEnablePrivateBrowsingFunction, err = settingsObject.InvokerNew("set_enable_private_browsing")
 	})
 	return err
 }
@@ -8403,11 +8002,11 @@ var settingsSetEnableResizableTextAreasFunction_Once sync.Once
 func settingsSetEnableResizableTextAreasFunction_Set() error {
 	var err error
 	settingsSetEnableResizableTextAreasFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableResizableTextAreasFunction, err = settingsStruct.InvokerNew("set_enable_resizable_text_areas")
+		settingsSetEnableResizableTextAreasFunction, err = settingsObject.InvokerNew("set_enable_resizable_text_areas")
 	})
 	return err
 }
@@ -8432,11 +8031,11 @@ var settingsSetEnableSiteSpecificQuirksFunction_Once sync.Once
 func settingsSetEnableSiteSpecificQuirksFunction_Set() error {
 	var err error
 	settingsSetEnableSiteSpecificQuirksFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableSiteSpecificQuirksFunction, err = settingsStruct.InvokerNew("set_enable_site_specific_quirks")
+		settingsSetEnableSiteSpecificQuirksFunction, err = settingsObject.InvokerNew("set_enable_site_specific_quirks")
 	})
 	return err
 }
@@ -8461,11 +8060,11 @@ var settingsSetEnableSmoothScrollingFunction_Once sync.Once
 func settingsSetEnableSmoothScrollingFunction_Set() error {
 	var err error
 	settingsSetEnableSmoothScrollingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableSmoothScrollingFunction, err = settingsStruct.InvokerNew("set_enable_smooth_scrolling")
+		settingsSetEnableSmoothScrollingFunction, err = settingsObject.InvokerNew("set_enable_smooth_scrolling")
 	})
 	return err
 }
@@ -8490,11 +8089,11 @@ var settingsSetEnableSpatialNavigationFunction_Once sync.Once
 func settingsSetEnableSpatialNavigationFunction_Set() error {
 	var err error
 	settingsSetEnableSpatialNavigationFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableSpatialNavigationFunction, err = settingsStruct.InvokerNew("set_enable_spatial_navigation")
+		settingsSetEnableSpatialNavigationFunction, err = settingsObject.InvokerNew("set_enable_spatial_navigation")
 	})
 	return err
 }
@@ -8519,11 +8118,11 @@ var settingsSetEnableTabsToLinksFunction_Once sync.Once
 func settingsSetEnableTabsToLinksFunction_Set() error {
 	var err error
 	settingsSetEnableTabsToLinksFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableTabsToLinksFunction, err = settingsStruct.InvokerNew("set_enable_tabs_to_links")
+		settingsSetEnableTabsToLinksFunction, err = settingsObject.InvokerNew("set_enable_tabs_to_links")
 	})
 	return err
 }
@@ -8548,11 +8147,11 @@ var settingsSetEnableWebaudioFunction_Once sync.Once
 func settingsSetEnableWebaudioFunction_Set() error {
 	var err error
 	settingsSetEnableWebaudioFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableWebaudioFunction, err = settingsStruct.InvokerNew("set_enable_webaudio")
+		settingsSetEnableWebaudioFunction, err = settingsObject.InvokerNew("set_enable_webaudio")
 	})
 	return err
 }
@@ -8577,11 +8176,11 @@ var settingsSetEnableWebglFunction_Once sync.Once
 func settingsSetEnableWebglFunction_Set() error {
 	var err error
 	settingsSetEnableWebglFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableWebglFunction, err = settingsStruct.InvokerNew("set_enable_webgl")
+		settingsSetEnableWebglFunction, err = settingsObject.InvokerNew("set_enable_webgl")
 	})
 	return err
 }
@@ -8606,11 +8205,11 @@ var settingsSetEnableWriteConsoleMessagesToStdoutFunction_Once sync.Once
 func settingsSetEnableWriteConsoleMessagesToStdoutFunction_Set() error {
 	var err error
 	settingsSetEnableWriteConsoleMessagesToStdoutFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableWriteConsoleMessagesToStdoutFunction, err = settingsStruct.InvokerNew("set_enable_write_console_messages_to_stdout")
+		settingsSetEnableWriteConsoleMessagesToStdoutFunction, err = settingsObject.InvokerNew("set_enable_write_console_messages_to_stdout")
 	})
 	return err
 }
@@ -8635,11 +8234,11 @@ var settingsSetEnableXssAuditorFunction_Once sync.Once
 func settingsSetEnableXssAuditorFunction_Set() error {
 	var err error
 	settingsSetEnableXssAuditorFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnableXssAuditorFunction, err = settingsStruct.InvokerNew("set_enable_xss_auditor")
+		settingsSetEnableXssAuditorFunction, err = settingsObject.InvokerNew("set_enable_xss_auditor")
 	})
 	return err
 }
@@ -8664,11 +8263,11 @@ var settingsSetFantasyFontFamilyFunction_Once sync.Once
 func settingsSetFantasyFontFamilyFunction_Set() error {
 	var err error
 	settingsSetFantasyFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetFantasyFontFamilyFunction, err = settingsStruct.InvokerNew("set_fantasy_font_family")
+		settingsSetFantasyFontFamilyFunction, err = settingsObject.InvokerNew("set_fantasy_font_family")
 	})
 	return err
 }
@@ -8693,11 +8292,11 @@ var settingsSetHardwareAccelerationPolicyFunction_Once sync.Once
 func settingsSetHardwareAccelerationPolicyFunction_Set() error {
 	var err error
 	settingsSetHardwareAccelerationPolicyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetHardwareAccelerationPolicyFunction, err = settingsStruct.InvokerNew("set_hardware_acceleration_policy")
+		settingsSetHardwareAccelerationPolicyFunction, err = settingsObject.InvokerNew("set_hardware_acceleration_policy")
 	})
 	return err
 }
@@ -8722,11 +8321,11 @@ var settingsSetJavascriptCanAccessClipboardFunction_Once sync.Once
 func settingsSetJavascriptCanAccessClipboardFunction_Set() error {
 	var err error
 	settingsSetJavascriptCanAccessClipboardFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetJavascriptCanAccessClipboardFunction, err = settingsStruct.InvokerNew("set_javascript_can_access_clipboard")
+		settingsSetJavascriptCanAccessClipboardFunction, err = settingsObject.InvokerNew("set_javascript_can_access_clipboard")
 	})
 	return err
 }
@@ -8751,11 +8350,11 @@ var settingsSetJavascriptCanOpenWindowsAutomaticallyFunction_Once sync.Once
 func settingsSetJavascriptCanOpenWindowsAutomaticallyFunction_Set() error {
 	var err error
 	settingsSetJavascriptCanOpenWindowsAutomaticallyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetJavascriptCanOpenWindowsAutomaticallyFunction, err = settingsStruct.InvokerNew("set_javascript_can_open_windows_automatically")
+		settingsSetJavascriptCanOpenWindowsAutomaticallyFunction, err = settingsObject.InvokerNew("set_javascript_can_open_windows_automatically")
 	})
 	return err
 }
@@ -8780,11 +8379,11 @@ var settingsSetLoadIconsIgnoringImageLoadSettingFunction_Once sync.Once
 func settingsSetLoadIconsIgnoringImageLoadSettingFunction_Set() error {
 	var err error
 	settingsSetLoadIconsIgnoringImageLoadSettingFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetLoadIconsIgnoringImageLoadSettingFunction, err = settingsStruct.InvokerNew("set_load_icons_ignoring_image_load_setting")
+		settingsSetLoadIconsIgnoringImageLoadSettingFunction, err = settingsObject.InvokerNew("set_load_icons_ignoring_image_load_setting")
 	})
 	return err
 }
@@ -8809,11 +8408,11 @@ var settingsSetMediaPlaybackAllowsInlineFunction_Once sync.Once
 func settingsSetMediaPlaybackAllowsInlineFunction_Set() error {
 	var err error
 	settingsSetMediaPlaybackAllowsInlineFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetMediaPlaybackAllowsInlineFunction, err = settingsStruct.InvokerNew("set_media_playback_allows_inline")
+		settingsSetMediaPlaybackAllowsInlineFunction, err = settingsObject.InvokerNew("set_media_playback_allows_inline")
 	})
 	return err
 }
@@ -8838,11 +8437,11 @@ var settingsSetMediaPlaybackRequiresUserGestureFunction_Once sync.Once
 func settingsSetMediaPlaybackRequiresUserGestureFunction_Set() error {
 	var err error
 	settingsSetMediaPlaybackRequiresUserGestureFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetMediaPlaybackRequiresUserGestureFunction, err = settingsStruct.InvokerNew("set_media_playback_requires_user_gesture")
+		settingsSetMediaPlaybackRequiresUserGestureFunction, err = settingsObject.InvokerNew("set_media_playback_requires_user_gesture")
 	})
 	return err
 }
@@ -8867,11 +8466,11 @@ var settingsSetMinimumFontSizeFunction_Once sync.Once
 func settingsSetMinimumFontSizeFunction_Set() error {
 	var err error
 	settingsSetMinimumFontSizeFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetMinimumFontSizeFunction, err = settingsStruct.InvokerNew("set_minimum_font_size")
+		settingsSetMinimumFontSizeFunction, err = settingsObject.InvokerNew("set_minimum_font_size")
 	})
 	return err
 }
@@ -8896,11 +8495,11 @@ var settingsSetMonospaceFontFamilyFunction_Once sync.Once
 func settingsSetMonospaceFontFamilyFunction_Set() error {
 	var err error
 	settingsSetMonospaceFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetMonospaceFontFamilyFunction, err = settingsStruct.InvokerNew("set_monospace_font_family")
+		settingsSetMonospaceFontFamilyFunction, err = settingsObject.InvokerNew("set_monospace_font_family")
 	})
 	return err
 }
@@ -8925,11 +8524,11 @@ var settingsSetPictographFontFamilyFunction_Once sync.Once
 func settingsSetPictographFontFamilyFunction_Set() error {
 	var err error
 	settingsSetPictographFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetPictographFontFamilyFunction, err = settingsStruct.InvokerNew("set_pictograph_font_family")
+		settingsSetPictographFontFamilyFunction, err = settingsObject.InvokerNew("set_pictograph_font_family")
 	})
 	return err
 }
@@ -8954,11 +8553,11 @@ var settingsSetPrintBackgroundsFunction_Once sync.Once
 func settingsSetPrintBackgroundsFunction_Set() error {
 	var err error
 	settingsSetPrintBackgroundsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetPrintBackgroundsFunction, err = settingsStruct.InvokerNew("set_print_backgrounds")
+		settingsSetPrintBackgroundsFunction, err = settingsObject.InvokerNew("set_print_backgrounds")
 	})
 	return err
 }
@@ -8983,11 +8582,11 @@ var settingsSetSansSerifFontFamilyFunction_Once sync.Once
 func settingsSetSansSerifFontFamilyFunction_Set() error {
 	var err error
 	settingsSetSansSerifFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetSansSerifFontFamilyFunction, err = settingsStruct.InvokerNew("set_sans_serif_font_family")
+		settingsSetSansSerifFontFamilyFunction, err = settingsObject.InvokerNew("set_sans_serif_font_family")
 	})
 	return err
 }
@@ -9012,11 +8611,11 @@ var settingsSetSerifFontFamilyFunction_Once sync.Once
 func settingsSetSerifFontFamilyFunction_Set() error {
 	var err error
 	settingsSetSerifFontFamilyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetSerifFontFamilyFunction, err = settingsStruct.InvokerNew("set_serif_font_family")
+		settingsSetSerifFontFamilyFunction, err = settingsObject.InvokerNew("set_serif_font_family")
 	})
 	return err
 }
@@ -9041,11 +8640,11 @@ var settingsSetUserAgentFunction_Once sync.Once
 func settingsSetUserAgentFunction_Set() error {
 	var err error
 	settingsSetUserAgentFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetUserAgentFunction, err = settingsStruct.InvokerNew("set_user_agent")
+		settingsSetUserAgentFunction, err = settingsObject.InvokerNew("set_user_agent")
 	})
 	return err
 }
@@ -9070,11 +8669,11 @@ var settingsSetUserAgentWithApplicationDetailsFunction_Once sync.Once
 func settingsSetUserAgentWithApplicationDetailsFunction_Set() error {
 	var err error
 	settingsSetUserAgentWithApplicationDetailsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetUserAgentWithApplicationDetailsFunction, err = settingsStruct.InvokerNew("set_user_agent_with_application_details")
+		settingsSetUserAgentWithApplicationDetailsFunction, err = settingsObject.InvokerNew("set_user_agent_with_application_details")
 	})
 	return err
 }
@@ -9100,11 +8699,11 @@ var settingsSetZoomTextOnlyFunction_Once sync.Once
 func settingsSetZoomTextOnlyFunction_Set() error {
 	var err error
 	settingsSetZoomTextOnlyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetZoomTextOnlyFunction, err = settingsStruct.InvokerNew("set_zoom_text_only")
+		settingsSetZoomTextOnlyFunction, err = settingsObject.InvokerNew("set_zoom_text_only")
 	})
 	return err
 }
@@ -9123,13 +8722,13 @@ func (recv *Settings) SetZoomTextOnly(zoomTextOnly bool) {
 	return
 }
 
-var uRIRequestStruct *gi.Struct
-var uRIRequestStruct_Once sync.Once
+var uRIRequestObject *gi.Object
+var uRIRequestObject_Once sync.Once
 
-func uRIRequestStruct_Set() error {
+func uRIRequestObject_Set() error {
 	var err error
-	uRIRequestStruct_Once.Do(func() {
-		uRIRequestStruct, err = gi.StructNew("WebKit2", "URIRequest")
+	uRIRequestObject_Once.Do(func() {
+		uRIRequestObject, err = gi.ObjectNew("WebKit2", "URIRequest")
 	})
 	return err
 }
@@ -9148,11 +8747,11 @@ var uRIRequestNewFunction_Once sync.Once
 func uRIRequestNewFunction_Set() error {
 	var err error
 	uRIRequestNewFunction_Once.Do(func() {
-		err = uRIRequestStruct_Set()
+		err = uRIRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRIRequestNewFunction, err = uRIRequestStruct.InvokerNew("new")
+		uRIRequestNewFunction, err = uRIRequestObject.InvokerNew("new")
 	})
 	return err
 }
@@ -9183,11 +8782,11 @@ var uRIRequestGetHttpMethodFunction_Once sync.Once
 func uRIRequestGetHttpMethodFunction_Set() error {
 	var err error
 	uRIRequestGetHttpMethodFunction_Once.Do(func() {
-		err = uRIRequestStruct_Set()
+		err = uRIRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRIRequestGetHttpMethodFunction, err = uRIRequestStruct.InvokerNew("get_http_method")
+		uRIRequestGetHttpMethodFunction, err = uRIRequestObject.InvokerNew("get_http_method")
 	})
 	return err
 }
@@ -9215,11 +8814,11 @@ var uRIRequestGetUriFunction_Once sync.Once
 func uRIRequestGetUriFunction_Set() error {
 	var err error
 	uRIRequestGetUriFunction_Once.Do(func() {
-		err = uRIRequestStruct_Set()
+		err = uRIRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRIRequestGetUriFunction, err = uRIRequestStruct.InvokerNew("get_uri")
+		uRIRequestGetUriFunction, err = uRIRequestObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -9247,11 +8846,11 @@ var uRIRequestSetUriFunction_Once sync.Once
 func uRIRequestSetUriFunction_Set() error {
 	var err error
 	uRIRequestSetUriFunction_Once.Do(func() {
-		err = uRIRequestStruct_Set()
+		err = uRIRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRIRequestSetUriFunction, err = uRIRequestStruct.InvokerNew("set_uri")
+		uRIRequestSetUriFunction, err = uRIRequestObject.InvokerNew("set_uri")
 	})
 	return err
 }
@@ -9270,13 +8869,13 @@ func (recv *URIRequest) SetUri(uri string) {
 	return
 }
 
-var uRIResponseStruct *gi.Struct
-var uRIResponseStruct_Once sync.Once
+var uRIResponseObject *gi.Object
+var uRIResponseObject_Once sync.Once
 
-func uRIResponseStruct_Set() error {
+func uRIResponseObject_Set() error {
 	var err error
-	uRIResponseStruct_Once.Do(func() {
-		uRIResponseStruct, err = gi.StructNew("WebKit2", "URIResponse")
+	uRIResponseObject_Once.Do(func() {
+		uRIResponseObject, err = gi.ObjectNew("WebKit2", "URIResponse")
 	})
 	return err
 }
@@ -9295,11 +8894,11 @@ var uRIResponseGetContentLengthFunction_Once sync.Once
 func uRIResponseGetContentLengthFunction_Set() error {
 	var err error
 	uRIResponseGetContentLengthFunction_Once.Do(func() {
-		err = uRIResponseStruct_Set()
+		err = uRIResponseObject_Set()
 		if err != nil {
 			return
 		}
-		uRIResponseGetContentLengthFunction, err = uRIResponseStruct.InvokerNew("get_content_length")
+		uRIResponseGetContentLengthFunction, err = uRIResponseObject.InvokerNew("get_content_length")
 	})
 	return err
 }
@@ -9329,11 +8928,11 @@ var uRIResponseGetMimeTypeFunction_Once sync.Once
 func uRIResponseGetMimeTypeFunction_Set() error {
 	var err error
 	uRIResponseGetMimeTypeFunction_Once.Do(func() {
-		err = uRIResponseStruct_Set()
+		err = uRIResponseObject_Set()
 		if err != nil {
 			return
 		}
-		uRIResponseGetMimeTypeFunction, err = uRIResponseStruct.InvokerNew("get_mime_type")
+		uRIResponseGetMimeTypeFunction, err = uRIResponseObject.InvokerNew("get_mime_type")
 	})
 	return err
 }
@@ -9361,11 +8960,11 @@ var uRIResponseGetStatusCodeFunction_Once sync.Once
 func uRIResponseGetStatusCodeFunction_Set() error {
 	var err error
 	uRIResponseGetStatusCodeFunction_Once.Do(func() {
-		err = uRIResponseStruct_Set()
+		err = uRIResponseObject_Set()
 		if err != nil {
 			return
 		}
-		uRIResponseGetStatusCodeFunction, err = uRIResponseStruct.InvokerNew("get_status_code")
+		uRIResponseGetStatusCodeFunction, err = uRIResponseObject.InvokerNew("get_status_code")
 	})
 	return err
 }
@@ -9393,11 +8992,11 @@ var uRIResponseGetSuggestedFilenameFunction_Once sync.Once
 func uRIResponseGetSuggestedFilenameFunction_Set() error {
 	var err error
 	uRIResponseGetSuggestedFilenameFunction_Once.Do(func() {
-		err = uRIResponseStruct_Set()
+		err = uRIResponseObject_Set()
 		if err != nil {
 			return
 		}
-		uRIResponseGetSuggestedFilenameFunction, err = uRIResponseStruct.InvokerNew("get_suggested_filename")
+		uRIResponseGetSuggestedFilenameFunction, err = uRIResponseObject.InvokerNew("get_suggested_filename")
 	})
 	return err
 }
@@ -9425,11 +9024,11 @@ var uRIResponseGetUriFunction_Once sync.Once
 func uRIResponseGetUriFunction_Set() error {
 	var err error
 	uRIResponseGetUriFunction_Once.Do(func() {
-		err = uRIResponseStruct_Set()
+		err = uRIResponseObject_Set()
 		if err != nil {
 			return
 		}
-		uRIResponseGetUriFunction, err = uRIResponseStruct.InvokerNew("get_uri")
+		uRIResponseGetUriFunction, err = uRIResponseObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -9451,29 +9050,13 @@ func (recv *URIResponse) GetUri() string {
 	return retGo
 }
 
-// URIResponseStruct creates an uninitialised URIResponse.
-func URIResponseStruct() *URIResponse {
-	err := uRIResponseStruct_Set()
-	if err != nil {
-		return nil
-	}
+var uRISchemeRequestObject *gi.Object
+var uRISchemeRequestObject_Once sync.Once
 
-	structGo := &URIResponse{}
-	structGo.Native = uRIResponseStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeURIResponse)
-	return structGo
-}
-func finalizeURIResponse(obj *URIResponse) {
-	uRIResponseStruct.Free(obj.Native)
-}
-
-var uRISchemeRequestStruct *gi.Struct
-var uRISchemeRequestStruct_Once sync.Once
-
-func uRISchemeRequestStruct_Set() error {
+func uRISchemeRequestObject_Set() error {
 	var err error
-	uRISchemeRequestStruct_Once.Do(func() {
-		uRISchemeRequestStruct, err = gi.StructNew("WebKit2", "URISchemeRequest")
+	uRISchemeRequestObject_Once.Do(func() {
+		uRISchemeRequestObject, err = gi.ObjectNew("WebKit2", "URISchemeRequest")
 	})
 	return err
 }
@@ -9488,7 +9071,7 @@ type URISchemeRequest struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *URISchemeRequest) FieldPriv() *URISchemeRequestPrivate {
-	argValue := gi.FieldGet(uRISchemeRequestStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(uRISchemeRequestObject, recv.Native, "priv")
 	value := &URISchemeRequestPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -9498,7 +9081,7 @@ func (recv *URISchemeRequest) FieldPriv() *URISchemeRequestPrivate {
 func (recv *URISchemeRequest) SetFieldPriv(value *URISchemeRequestPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(uRISchemeRequestStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(uRISchemeRequestObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_uri_scheme_request_finish' : parameter 'stream' of type 'Gio.InputStream' not supported
@@ -9511,11 +9094,11 @@ var uRISchemeRequestGetPathFunction_Once sync.Once
 func uRISchemeRequestGetPathFunction_Set() error {
 	var err error
 	uRISchemeRequestGetPathFunction_Once.Do(func() {
-		err = uRISchemeRequestStruct_Set()
+		err = uRISchemeRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRISchemeRequestGetPathFunction, err = uRISchemeRequestStruct.InvokerNew("get_path")
+		uRISchemeRequestGetPathFunction, err = uRISchemeRequestObject.InvokerNew("get_path")
 	})
 	return err
 }
@@ -9543,11 +9126,11 @@ var uRISchemeRequestGetSchemeFunction_Once sync.Once
 func uRISchemeRequestGetSchemeFunction_Set() error {
 	var err error
 	uRISchemeRequestGetSchemeFunction_Once.Do(func() {
-		err = uRISchemeRequestStruct_Set()
+		err = uRISchemeRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRISchemeRequestGetSchemeFunction, err = uRISchemeRequestStruct.InvokerNew("get_scheme")
+		uRISchemeRequestGetSchemeFunction, err = uRISchemeRequestObject.InvokerNew("get_scheme")
 	})
 	return err
 }
@@ -9575,11 +9158,11 @@ var uRISchemeRequestGetUriFunction_Once sync.Once
 func uRISchemeRequestGetUriFunction_Set() error {
 	var err error
 	uRISchemeRequestGetUriFunction_Once.Do(func() {
-		err = uRISchemeRequestStruct_Set()
+		err = uRISchemeRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRISchemeRequestGetUriFunction, err = uRISchemeRequestStruct.InvokerNew("get_uri")
+		uRISchemeRequestGetUriFunction, err = uRISchemeRequestObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -9607,11 +9190,11 @@ var uRISchemeRequestGetWebViewFunction_Once sync.Once
 func uRISchemeRequestGetWebViewFunction_Set() error {
 	var err error
 	uRISchemeRequestGetWebViewFunction_Once.Do(func() {
-		err = uRISchemeRequestStruct_Set()
+		err = uRISchemeRequestObject_Set()
 		if err != nil {
 			return
 		}
-		uRISchemeRequestGetWebViewFunction, err = uRISchemeRequestStruct.InvokerNew("get_web_view")
+		uRISchemeRequestGetWebViewFunction, err = uRISchemeRequestObject.InvokerNew("get_web_view")
 	})
 	return err
 }
@@ -9634,29 +9217,13 @@ func (recv *URISchemeRequest) GetWebView() *WebView {
 	return retGo
 }
 
-// URISchemeRequestStruct creates an uninitialised URISchemeRequest.
-func URISchemeRequestStruct() *URISchemeRequest {
-	err := uRISchemeRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var userContentFilterStoreObject *gi.Object
+var userContentFilterStoreObject_Once sync.Once
 
-	structGo := &URISchemeRequest{}
-	structGo.Native = uRISchemeRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeURISchemeRequest)
-	return structGo
-}
-func finalizeURISchemeRequest(obj *URISchemeRequest) {
-	uRISchemeRequestStruct.Free(obj.Native)
-}
-
-var userContentFilterStoreStruct *gi.Struct
-var userContentFilterStoreStruct_Once sync.Once
-
-func userContentFilterStoreStruct_Set() error {
+func userContentFilterStoreObject_Set() error {
 	var err error
-	userContentFilterStoreStruct_Once.Do(func() {
-		userContentFilterStoreStruct, err = gi.StructNew("WebKit2", "UserContentFilterStore")
+	userContentFilterStoreObject_Once.Do(func() {
+		userContentFilterStoreObject, err = gi.ObjectNew("WebKit2", "UserContentFilterStore")
 	})
 	return err
 }
@@ -9675,11 +9242,11 @@ var userContentFilterStoreNewFunction_Once sync.Once
 func userContentFilterStoreNewFunction_Set() error {
 	var err error
 	userContentFilterStoreNewFunction_Once.Do(func() {
-		err = userContentFilterStoreStruct_Set()
+		err = userContentFilterStoreObject_Set()
 		if err != nil {
 			return
 		}
-		userContentFilterStoreNewFunction, err = userContentFilterStoreStruct.InvokerNew("new")
+		userContentFilterStoreNewFunction, err = userContentFilterStoreObject.InvokerNew("new")
 	})
 	return err
 }
@@ -9712,11 +9279,11 @@ var userContentFilterStoreGetPathFunction_Once sync.Once
 func userContentFilterStoreGetPathFunction_Set() error {
 	var err error
 	userContentFilterStoreGetPathFunction_Once.Do(func() {
-		err = userContentFilterStoreStruct_Set()
+		err = userContentFilterStoreObject_Set()
 		if err != nil {
 			return
 		}
-		userContentFilterStoreGetPathFunction, err = userContentFilterStoreStruct.InvokerNew("get_path")
+		userContentFilterStoreGetPathFunction, err = userContentFilterStoreObject.InvokerNew("get_path")
 	})
 	return err
 }
@@ -9754,13 +9321,13 @@ func (recv *UserContentFilterStore) GetPath() string {
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_save_from_file_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-var userContentManagerStruct *gi.Struct
-var userContentManagerStruct_Once sync.Once
+var userContentManagerObject *gi.Object
+var userContentManagerObject_Once sync.Once
 
-func userContentManagerStruct_Set() error {
+func userContentManagerObject_Set() error {
 	var err error
-	userContentManagerStruct_Once.Do(func() {
-		userContentManagerStruct, err = gi.StructNew("WebKit2", "UserContentManager")
+	userContentManagerObject_Once.Do(func() {
+		userContentManagerObject, err = gi.ObjectNew("WebKit2", "UserContentManager")
 	})
 	return err
 }
@@ -9779,11 +9346,11 @@ var userContentManagerNewFunction_Once sync.Once
 func userContentManagerNewFunction_Set() error {
 	var err error
 	userContentManagerNewFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerNewFunction, err = userContentManagerStruct.InvokerNew("new")
+		userContentManagerNewFunction, err = userContentManagerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -9810,11 +9377,11 @@ var userContentManagerAddFilterFunction_Once sync.Once
 func userContentManagerAddFilterFunction_Set() error {
 	var err error
 	userContentManagerAddFilterFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerAddFilterFunction, err = userContentManagerStruct.InvokerNew("add_filter")
+		userContentManagerAddFilterFunction, err = userContentManagerObject.InvokerNew("add_filter")
 	})
 	return err
 }
@@ -9839,11 +9406,11 @@ var userContentManagerAddScriptFunction_Once sync.Once
 func userContentManagerAddScriptFunction_Set() error {
 	var err error
 	userContentManagerAddScriptFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerAddScriptFunction, err = userContentManagerStruct.InvokerNew("add_script")
+		userContentManagerAddScriptFunction, err = userContentManagerObject.InvokerNew("add_script")
 	})
 	return err
 }
@@ -9868,11 +9435,11 @@ var userContentManagerAddStyleSheetFunction_Once sync.Once
 func userContentManagerAddStyleSheetFunction_Set() error {
 	var err error
 	userContentManagerAddStyleSheetFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerAddStyleSheetFunction, err = userContentManagerStruct.InvokerNew("add_style_sheet")
+		userContentManagerAddStyleSheetFunction, err = userContentManagerObject.InvokerNew("add_style_sheet")
 	})
 	return err
 }
@@ -9897,11 +9464,11 @@ var userContentManagerRegisterScriptMessageHandlerFunction_Once sync.Once
 func userContentManagerRegisterScriptMessageHandlerFunction_Set() error {
 	var err error
 	userContentManagerRegisterScriptMessageHandlerFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRegisterScriptMessageHandlerFunction, err = userContentManagerStruct.InvokerNew("register_script_message_handler")
+		userContentManagerRegisterScriptMessageHandlerFunction, err = userContentManagerObject.InvokerNew("register_script_message_handler")
 	})
 	return err
 }
@@ -9930,11 +9497,11 @@ var userContentManagerRegisterScriptMessageHandlerInWorldFunction_Once sync.Once
 func userContentManagerRegisterScriptMessageHandlerInWorldFunction_Set() error {
 	var err error
 	userContentManagerRegisterScriptMessageHandlerInWorldFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRegisterScriptMessageHandlerInWorldFunction, err = userContentManagerStruct.InvokerNew("register_script_message_handler_in_world")
+		userContentManagerRegisterScriptMessageHandlerInWorldFunction, err = userContentManagerObject.InvokerNew("register_script_message_handler_in_world")
 	})
 	return err
 }
@@ -9964,11 +9531,11 @@ var userContentManagerRemoveAllFiltersFunction_Once sync.Once
 func userContentManagerRemoveAllFiltersFunction_Set() error {
 	var err error
 	userContentManagerRemoveAllFiltersFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRemoveAllFiltersFunction, err = userContentManagerStruct.InvokerNew("remove_all_filters")
+		userContentManagerRemoveAllFiltersFunction, err = userContentManagerObject.InvokerNew("remove_all_filters")
 	})
 	return err
 }
@@ -9992,11 +9559,11 @@ var userContentManagerRemoveAllScriptsFunction_Once sync.Once
 func userContentManagerRemoveAllScriptsFunction_Set() error {
 	var err error
 	userContentManagerRemoveAllScriptsFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRemoveAllScriptsFunction, err = userContentManagerStruct.InvokerNew("remove_all_scripts")
+		userContentManagerRemoveAllScriptsFunction, err = userContentManagerObject.InvokerNew("remove_all_scripts")
 	})
 	return err
 }
@@ -10020,11 +9587,11 @@ var userContentManagerRemoveAllStyleSheetsFunction_Once sync.Once
 func userContentManagerRemoveAllStyleSheetsFunction_Set() error {
 	var err error
 	userContentManagerRemoveAllStyleSheetsFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRemoveAllStyleSheetsFunction, err = userContentManagerStruct.InvokerNew("remove_all_style_sheets")
+		userContentManagerRemoveAllStyleSheetsFunction, err = userContentManagerObject.InvokerNew("remove_all_style_sheets")
 	})
 	return err
 }
@@ -10048,11 +9615,11 @@ var userContentManagerRemoveFilterFunction_Once sync.Once
 func userContentManagerRemoveFilterFunction_Set() error {
 	var err error
 	userContentManagerRemoveFilterFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRemoveFilterFunction, err = userContentManagerStruct.InvokerNew("remove_filter")
+		userContentManagerRemoveFilterFunction, err = userContentManagerObject.InvokerNew("remove_filter")
 	})
 	return err
 }
@@ -10077,11 +9644,11 @@ var userContentManagerRemoveFilterByIdFunction_Once sync.Once
 func userContentManagerRemoveFilterByIdFunction_Set() error {
 	var err error
 	userContentManagerRemoveFilterByIdFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerRemoveFilterByIdFunction, err = userContentManagerStruct.InvokerNew("remove_filter_by_id")
+		userContentManagerRemoveFilterByIdFunction, err = userContentManagerObject.InvokerNew("remove_filter_by_id")
 	})
 	return err
 }
@@ -10106,11 +9673,11 @@ var userContentManagerUnregisterScriptMessageHandlerFunction_Once sync.Once
 func userContentManagerUnregisterScriptMessageHandlerFunction_Set() error {
 	var err error
 	userContentManagerUnregisterScriptMessageHandlerFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerUnregisterScriptMessageHandlerFunction, err = userContentManagerStruct.InvokerNew("unregister_script_message_handler")
+		userContentManagerUnregisterScriptMessageHandlerFunction, err = userContentManagerObject.InvokerNew("unregister_script_message_handler")
 	})
 	return err
 }
@@ -10135,11 +9702,11 @@ var userContentManagerUnregisterScriptMessageHandlerInWorldFunction_Once sync.On
 func userContentManagerUnregisterScriptMessageHandlerInWorldFunction_Set() error {
 	var err error
 	userContentManagerUnregisterScriptMessageHandlerInWorldFunction_Once.Do(func() {
-		err = userContentManagerStruct_Set()
+		err = userContentManagerObject_Set()
 		if err != nil {
 			return
 		}
-		userContentManagerUnregisterScriptMessageHandlerInWorldFunction, err = userContentManagerStruct.InvokerNew("unregister_script_message_handler_in_world")
+		userContentManagerUnregisterScriptMessageHandlerInWorldFunction, err = userContentManagerObject.InvokerNew("unregister_script_message_handler_in_world")
 	})
 	return err
 }
@@ -10159,13 +9726,13 @@ func (recv *UserContentManager) UnregisterScriptMessageHandlerInWorld(name strin
 	return
 }
 
-var userMediaPermissionRequestStruct *gi.Struct
-var userMediaPermissionRequestStruct_Once sync.Once
+var userMediaPermissionRequestObject *gi.Object
+var userMediaPermissionRequestObject_Once sync.Once
 
-func userMediaPermissionRequestStruct_Set() error {
+func userMediaPermissionRequestObject_Set() error {
 	var err error
-	userMediaPermissionRequestStruct_Once.Do(func() {
-		userMediaPermissionRequestStruct, err = gi.StructNew("WebKit2", "UserMediaPermissionRequest")
+	userMediaPermissionRequestObject_Once.Do(func() {
+		userMediaPermissionRequestObject, err = gi.ObjectNew("WebKit2", "UserMediaPermissionRequest")
 	})
 	return err
 }
@@ -10178,29 +9745,13 @@ type UserMediaPermissionRequest struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UserMediaPermissionRequestStruct creates an uninitialised UserMediaPermissionRequest.
-func UserMediaPermissionRequestStruct() *UserMediaPermissionRequest {
-	err := userMediaPermissionRequestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var webContextObject *gi.Object
+var webContextObject_Once sync.Once
 
-	structGo := &UserMediaPermissionRequest{}
-	structGo.Native = userMediaPermissionRequestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeUserMediaPermissionRequest)
-	return structGo
-}
-func finalizeUserMediaPermissionRequest(obj *UserMediaPermissionRequest) {
-	userMediaPermissionRequestStruct.Free(obj.Native)
-}
-
-var webContextStruct *gi.Struct
-var webContextStruct_Once sync.Once
-
-func webContextStruct_Set() error {
+func webContextObject_Set() error {
 	var err error
-	webContextStruct_Once.Do(func() {
-		webContextStruct, err = gi.StructNew("WebKit2", "WebContext")
+	webContextObject_Once.Do(func() {
+		webContextObject, err = gi.ObjectNew("WebKit2", "WebContext")
 	})
 	return err
 }
@@ -10219,11 +9770,11 @@ var webContextNewFunction_Once sync.Once
 func webContextNewFunction_Set() error {
 	var err error
 	webContextNewFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextNewFunction, err = webContextStruct.InvokerNew("new")
+		webContextNewFunction, err = webContextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -10250,11 +9801,11 @@ var webContextNewEphemeralFunction_Once sync.Once
 func webContextNewEphemeralFunction_Set() error {
 	var err error
 	webContextNewEphemeralFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextNewEphemeralFunction, err = webContextStruct.InvokerNew("new_ephemeral")
+		webContextNewEphemeralFunction, err = webContextObject.InvokerNew("new_ephemeral")
 	})
 	return err
 }
@@ -10281,11 +9832,11 @@ var webContextNewWithWebsiteDataManagerFunction_Once sync.Once
 func webContextNewWithWebsiteDataManagerFunction_Set() error {
 	var err error
 	webContextNewWithWebsiteDataManagerFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextNewWithWebsiteDataManagerFunction, err = webContextStruct.InvokerNew("new_with_website_data_manager")
+		webContextNewWithWebsiteDataManagerFunction, err = webContextObject.InvokerNew("new_with_website_data_manager")
 	})
 	return err
 }
@@ -10314,11 +9865,11 @@ var webContextAddPathToSandboxFunction_Once sync.Once
 func webContextAddPathToSandboxFunction_Set() error {
 	var err error
 	webContextAddPathToSandboxFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextAddPathToSandboxFunction, err = webContextStruct.InvokerNew("add_path_to_sandbox")
+		webContextAddPathToSandboxFunction, err = webContextObject.InvokerNew("add_path_to_sandbox")
 	})
 	return err
 }
@@ -10346,11 +9897,11 @@ var webContextClearCacheFunction_Once sync.Once
 func webContextClearCacheFunction_Set() error {
 	var err error
 	webContextClearCacheFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextClearCacheFunction, err = webContextStruct.InvokerNew("clear_cache")
+		webContextClearCacheFunction, err = webContextObject.InvokerNew("clear_cache")
 	})
 	return err
 }
@@ -10374,11 +9925,11 @@ var webContextDownloadUriFunction_Once sync.Once
 func webContextDownloadUriFunction_Set() error {
 	var err error
 	webContextDownloadUriFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextDownloadUriFunction, err = webContextStruct.InvokerNew("download_uri")
+		webContextDownloadUriFunction, err = webContextObject.InvokerNew("download_uri")
 	})
 	return err
 }
@@ -10408,11 +9959,11 @@ var webContextGetCacheModelFunction_Once sync.Once
 func webContextGetCacheModelFunction_Set() error {
 	var err error
 	webContextGetCacheModelFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetCacheModelFunction, err = webContextStruct.InvokerNew("get_cache_model")
+		webContextGetCacheModelFunction, err = webContextObject.InvokerNew("get_cache_model")
 	})
 	return err
 }
@@ -10440,11 +9991,11 @@ var webContextGetCookieManagerFunction_Once sync.Once
 func webContextGetCookieManagerFunction_Set() error {
 	var err error
 	webContextGetCookieManagerFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetCookieManagerFunction, err = webContextStruct.InvokerNew("get_cookie_manager")
+		webContextGetCookieManagerFunction, err = webContextObject.InvokerNew("get_cookie_manager")
 	})
 	return err
 }
@@ -10473,11 +10024,11 @@ var webContextGetFaviconDatabaseFunction_Once sync.Once
 func webContextGetFaviconDatabaseFunction_Set() error {
 	var err error
 	webContextGetFaviconDatabaseFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetFaviconDatabaseFunction, err = webContextStruct.InvokerNew("get_favicon_database")
+		webContextGetFaviconDatabaseFunction, err = webContextObject.InvokerNew("get_favicon_database")
 	})
 	return err
 }
@@ -10506,11 +10057,11 @@ var webContextGetFaviconDatabaseDirectoryFunction_Once sync.Once
 func webContextGetFaviconDatabaseDirectoryFunction_Set() error {
 	var err error
 	webContextGetFaviconDatabaseDirectoryFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetFaviconDatabaseDirectoryFunction, err = webContextStruct.InvokerNew("get_favicon_database_directory")
+		webContextGetFaviconDatabaseDirectoryFunction, err = webContextObject.InvokerNew("get_favicon_database_directory")
 	})
 	return err
 }
@@ -10538,11 +10089,11 @@ var webContextGetGeolocationManagerFunction_Once sync.Once
 func webContextGetGeolocationManagerFunction_Set() error {
 	var err error
 	webContextGetGeolocationManagerFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetGeolocationManagerFunction, err = webContextStruct.InvokerNew("get_geolocation_manager")
+		webContextGetGeolocationManagerFunction, err = webContextObject.InvokerNew("get_geolocation_manager")
 	})
 	return err
 }
@@ -10575,11 +10126,11 @@ var webContextGetProcessModelFunction_Once sync.Once
 func webContextGetProcessModelFunction_Set() error {
 	var err error
 	webContextGetProcessModelFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetProcessModelFunction, err = webContextStruct.InvokerNew("get_process_model")
+		webContextGetProcessModelFunction, err = webContextObject.InvokerNew("get_process_model")
 	})
 	return err
 }
@@ -10607,11 +10158,11 @@ var webContextGetSandboxEnabledFunction_Once sync.Once
 func webContextGetSandboxEnabledFunction_Set() error {
 	var err error
 	webContextGetSandboxEnabledFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetSandboxEnabledFunction, err = webContextStruct.InvokerNew("get_sandbox_enabled")
+		webContextGetSandboxEnabledFunction, err = webContextObject.InvokerNew("get_sandbox_enabled")
 	})
 	return err
 }
@@ -10639,11 +10190,11 @@ var webContextGetSecurityManagerFunction_Once sync.Once
 func webContextGetSecurityManagerFunction_Set() error {
 	var err error
 	webContextGetSecurityManagerFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetSecurityManagerFunction, err = webContextStruct.InvokerNew("get_security_manager")
+		webContextGetSecurityManagerFunction, err = webContextObject.InvokerNew("get_security_manager")
 	})
 	return err
 }
@@ -10672,11 +10223,11 @@ var webContextGetSpellCheckingEnabledFunction_Once sync.Once
 func webContextGetSpellCheckingEnabledFunction_Set() error {
 	var err error
 	webContextGetSpellCheckingEnabledFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetSpellCheckingEnabledFunction, err = webContextStruct.InvokerNew("get_spell_checking_enabled")
+		webContextGetSpellCheckingEnabledFunction, err = webContextObject.InvokerNew("get_spell_checking_enabled")
 	})
 	return err
 }
@@ -10704,11 +10255,11 @@ var webContextGetSpellCheckingLanguagesFunction_Once sync.Once
 func webContextGetSpellCheckingLanguagesFunction_Set() error {
 	var err error
 	webContextGetSpellCheckingLanguagesFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetSpellCheckingLanguagesFunction, err = webContextStruct.InvokerNew("get_spell_checking_languages")
+		webContextGetSpellCheckingLanguagesFunction, err = webContextObject.InvokerNew("get_spell_checking_languages")
 	})
 	return err
 }
@@ -10732,11 +10283,11 @@ var webContextGetTlsErrorsPolicyFunction_Once sync.Once
 func webContextGetTlsErrorsPolicyFunction_Set() error {
 	var err error
 	webContextGetTlsErrorsPolicyFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetTlsErrorsPolicyFunction, err = webContextStruct.InvokerNew("get_tls_errors_policy")
+		webContextGetTlsErrorsPolicyFunction, err = webContextObject.InvokerNew("get_tls_errors_policy")
 	})
 	return err
 }
@@ -10764,11 +10315,11 @@ var webContextGetWebProcessCountLimitFunction_Once sync.Once
 func webContextGetWebProcessCountLimitFunction_Set() error {
 	var err error
 	webContextGetWebProcessCountLimitFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetWebProcessCountLimitFunction, err = webContextStruct.InvokerNew("get_web_process_count_limit")
+		webContextGetWebProcessCountLimitFunction, err = webContextObject.InvokerNew("get_web_process_count_limit")
 	})
 	return err
 }
@@ -10796,11 +10347,11 @@ var webContextGetWebsiteDataManagerFunction_Once sync.Once
 func webContextGetWebsiteDataManagerFunction_Set() error {
 	var err error
 	webContextGetWebsiteDataManagerFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextGetWebsiteDataManagerFunction, err = webContextStruct.InvokerNew("get_website_data_manager")
+		webContextGetWebsiteDataManagerFunction, err = webContextObject.InvokerNew("get_website_data_manager")
 	})
 	return err
 }
@@ -10831,11 +10382,11 @@ var webContextIsAutomationAllowedFunction_Once sync.Once
 func webContextIsAutomationAllowedFunction_Set() error {
 	var err error
 	webContextIsAutomationAllowedFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextIsAutomationAllowedFunction, err = webContextStruct.InvokerNew("is_automation_allowed")
+		webContextIsAutomationAllowedFunction, err = webContextObject.InvokerNew("is_automation_allowed")
 	})
 	return err
 }
@@ -10863,11 +10414,11 @@ var webContextIsEphemeralFunction_Once sync.Once
 func webContextIsEphemeralFunction_Set() error {
 	var err error
 	webContextIsEphemeralFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextIsEphemeralFunction, err = webContextStruct.InvokerNew("is_ephemeral")
+		webContextIsEphemeralFunction, err = webContextObject.InvokerNew("is_ephemeral")
 	})
 	return err
 }
@@ -10895,11 +10446,11 @@ var webContextPrefetchDnsFunction_Once sync.Once
 func webContextPrefetchDnsFunction_Set() error {
 	var err error
 	webContextPrefetchDnsFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextPrefetchDnsFunction, err = webContextStruct.InvokerNew("prefetch_dns")
+		webContextPrefetchDnsFunction, err = webContextObject.InvokerNew("prefetch_dns")
 	})
 	return err
 }
@@ -10926,11 +10477,11 @@ var webContextSetAdditionalPluginsDirectoryFunction_Once sync.Once
 func webContextSetAdditionalPluginsDirectoryFunction_Set() error {
 	var err error
 	webContextSetAdditionalPluginsDirectoryFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetAdditionalPluginsDirectoryFunction, err = webContextStruct.InvokerNew("set_additional_plugins_directory")
+		webContextSetAdditionalPluginsDirectoryFunction, err = webContextObject.InvokerNew("set_additional_plugins_directory")
 	})
 	return err
 }
@@ -10955,11 +10506,11 @@ var webContextSetAutomationAllowedFunction_Once sync.Once
 func webContextSetAutomationAllowedFunction_Set() error {
 	var err error
 	webContextSetAutomationAllowedFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetAutomationAllowedFunction, err = webContextStruct.InvokerNew("set_automation_allowed")
+		webContextSetAutomationAllowedFunction, err = webContextObject.InvokerNew("set_automation_allowed")
 	})
 	return err
 }
@@ -10984,11 +10535,11 @@ var webContextSetCacheModelFunction_Once sync.Once
 func webContextSetCacheModelFunction_Set() error {
 	var err error
 	webContextSetCacheModelFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetCacheModelFunction, err = webContextStruct.InvokerNew("set_cache_model")
+		webContextSetCacheModelFunction, err = webContextObject.InvokerNew("set_cache_model")
 	})
 	return err
 }
@@ -11013,11 +10564,11 @@ var webContextSetDiskCacheDirectoryFunction_Once sync.Once
 func webContextSetDiskCacheDirectoryFunction_Set() error {
 	var err error
 	webContextSetDiskCacheDirectoryFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetDiskCacheDirectoryFunction, err = webContextStruct.InvokerNew("set_disk_cache_directory")
+		webContextSetDiskCacheDirectoryFunction, err = webContextObject.InvokerNew("set_disk_cache_directory")
 	})
 	return err
 }
@@ -11042,11 +10593,11 @@ var webContextSetFaviconDatabaseDirectoryFunction_Once sync.Once
 func webContextSetFaviconDatabaseDirectoryFunction_Set() error {
 	var err error
 	webContextSetFaviconDatabaseDirectoryFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetFaviconDatabaseDirectoryFunction, err = webContextStruct.InvokerNew("set_favicon_database_directory")
+		webContextSetFaviconDatabaseDirectoryFunction, err = webContextObject.InvokerNew("set_favicon_database_directory")
 	})
 	return err
 }
@@ -11071,11 +10622,11 @@ var webContextSetNetworkProxySettingsFunction_Once sync.Once
 func webContextSetNetworkProxySettingsFunction_Set() error {
 	var err error
 	webContextSetNetworkProxySettingsFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetNetworkProxySettingsFunction, err = webContextStruct.InvokerNew("set_network_proxy_settings")
+		webContextSetNetworkProxySettingsFunction, err = webContextObject.InvokerNew("set_network_proxy_settings")
 	})
 	return err
 }
@@ -11103,11 +10654,11 @@ var webContextSetProcessModelFunction_Once sync.Once
 func webContextSetProcessModelFunction_Set() error {
 	var err error
 	webContextSetProcessModelFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetProcessModelFunction, err = webContextStruct.InvokerNew("set_process_model")
+		webContextSetProcessModelFunction, err = webContextObject.InvokerNew("set_process_model")
 	})
 	return err
 }
@@ -11132,11 +10683,11 @@ var webContextSetSandboxEnabledFunction_Once sync.Once
 func webContextSetSandboxEnabledFunction_Set() error {
 	var err error
 	webContextSetSandboxEnabledFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetSandboxEnabledFunction, err = webContextStruct.InvokerNew("set_sandbox_enabled")
+		webContextSetSandboxEnabledFunction, err = webContextObject.InvokerNew("set_sandbox_enabled")
 	})
 	return err
 }
@@ -11161,11 +10712,11 @@ var webContextSetSpellCheckingEnabledFunction_Once sync.Once
 func webContextSetSpellCheckingEnabledFunction_Set() error {
 	var err error
 	webContextSetSpellCheckingEnabledFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetSpellCheckingEnabledFunction, err = webContextStruct.InvokerNew("set_spell_checking_enabled")
+		webContextSetSpellCheckingEnabledFunction, err = webContextObject.InvokerNew("set_spell_checking_enabled")
 	})
 	return err
 }
@@ -11192,11 +10743,11 @@ var webContextSetTlsErrorsPolicyFunction_Once sync.Once
 func webContextSetTlsErrorsPolicyFunction_Set() error {
 	var err error
 	webContextSetTlsErrorsPolicyFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetTlsErrorsPolicyFunction, err = webContextStruct.InvokerNew("set_tls_errors_policy")
+		webContextSetTlsErrorsPolicyFunction, err = webContextObject.InvokerNew("set_tls_errors_policy")
 	})
 	return err
 }
@@ -11221,11 +10772,11 @@ var webContextSetWebExtensionsDirectoryFunction_Once sync.Once
 func webContextSetWebExtensionsDirectoryFunction_Set() error {
 	var err error
 	webContextSetWebExtensionsDirectoryFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetWebExtensionsDirectoryFunction, err = webContextStruct.InvokerNew("set_web_extensions_directory")
+		webContextSetWebExtensionsDirectoryFunction, err = webContextObject.InvokerNew("set_web_extensions_directory")
 	})
 	return err
 }
@@ -11252,11 +10803,11 @@ var webContextSetWebProcessCountLimitFunction_Once sync.Once
 func webContextSetWebProcessCountLimitFunction_Set() error {
 	var err error
 	webContextSetWebProcessCountLimitFunction_Once.Do(func() {
-		err = webContextStruct_Set()
+		err = webContextObject_Set()
 		if err != nil {
 			return
 		}
-		webContextSetWebProcessCountLimitFunction, err = webContextStruct.InvokerNew("set_web_process_count_limit")
+		webContextSetWebProcessCountLimitFunction, err = webContextObject.InvokerNew("set_web_process_count_limit")
 	})
 	return err
 }
@@ -11275,13 +10826,13 @@ func (recv *WebContext) SetWebProcessCountLimit(limit uint32) {
 	return
 }
 
-var webInspectorStruct *gi.Struct
-var webInspectorStruct_Once sync.Once
+var webInspectorObject *gi.Object
+var webInspectorObject_Once sync.Once
 
-func webInspectorStruct_Set() error {
+func webInspectorObject_Set() error {
 	var err error
-	webInspectorStruct_Once.Do(func() {
-		webInspectorStruct, err = gi.StructNew("WebKit2", "WebInspector")
+	webInspectorObject_Once.Do(func() {
+		webInspectorObject, err = gi.ObjectNew("WebKit2", "WebInspector")
 	})
 	return err
 }
@@ -11296,7 +10847,7 @@ type WebInspector struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebInspector) FieldPriv() *WebInspectorPrivate {
-	argValue := gi.FieldGet(webInspectorStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(webInspectorObject, recv.Native, "priv")
 	value := &WebInspectorPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -11306,7 +10857,7 @@ func (recv *WebInspector) FieldPriv() *WebInspectorPrivate {
 func (recv *WebInspector) SetFieldPriv(value *WebInspectorPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(webInspectorStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(webInspectorObject, recv.Native, "priv", argValue)
 }
 
 var webInspectorAttachFunction *gi.Function
@@ -11315,11 +10866,11 @@ var webInspectorAttachFunction_Once sync.Once
 func webInspectorAttachFunction_Set() error {
 	var err error
 	webInspectorAttachFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorAttachFunction, err = webInspectorStruct.InvokerNew("attach")
+		webInspectorAttachFunction, err = webInspectorObject.InvokerNew("attach")
 	})
 	return err
 }
@@ -11343,11 +10894,11 @@ var webInspectorCloseFunction_Once sync.Once
 func webInspectorCloseFunction_Set() error {
 	var err error
 	webInspectorCloseFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorCloseFunction, err = webInspectorStruct.InvokerNew("close")
+		webInspectorCloseFunction, err = webInspectorObject.InvokerNew("close")
 	})
 	return err
 }
@@ -11371,11 +10922,11 @@ var webInspectorDetachFunction_Once sync.Once
 func webInspectorDetachFunction_Set() error {
 	var err error
 	webInspectorDetachFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorDetachFunction, err = webInspectorStruct.InvokerNew("detach")
+		webInspectorDetachFunction, err = webInspectorObject.InvokerNew("detach")
 	})
 	return err
 }
@@ -11399,11 +10950,11 @@ var webInspectorGetAttachedHeightFunction_Once sync.Once
 func webInspectorGetAttachedHeightFunction_Set() error {
 	var err error
 	webInspectorGetAttachedHeightFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorGetAttachedHeightFunction, err = webInspectorStruct.InvokerNew("get_attached_height")
+		webInspectorGetAttachedHeightFunction, err = webInspectorObject.InvokerNew("get_attached_height")
 	})
 	return err
 }
@@ -11431,11 +10982,11 @@ var webInspectorGetCanAttachFunction_Once sync.Once
 func webInspectorGetCanAttachFunction_Set() error {
 	var err error
 	webInspectorGetCanAttachFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorGetCanAttachFunction, err = webInspectorStruct.InvokerNew("get_can_attach")
+		webInspectorGetCanAttachFunction, err = webInspectorObject.InvokerNew("get_can_attach")
 	})
 	return err
 }
@@ -11463,11 +11014,11 @@ var webInspectorGetInspectedUriFunction_Once sync.Once
 func webInspectorGetInspectedUriFunction_Set() error {
 	var err error
 	webInspectorGetInspectedUriFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorGetInspectedUriFunction, err = webInspectorStruct.InvokerNew("get_inspected_uri")
+		webInspectorGetInspectedUriFunction, err = webInspectorObject.InvokerNew("get_inspected_uri")
 	})
 	return err
 }
@@ -11495,11 +11046,11 @@ var webInspectorGetWebViewFunction_Once sync.Once
 func webInspectorGetWebViewFunction_Set() error {
 	var err error
 	webInspectorGetWebViewFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorGetWebViewFunction, err = webInspectorStruct.InvokerNew("get_web_view")
+		webInspectorGetWebViewFunction, err = webInspectorObject.InvokerNew("get_web_view")
 	})
 	return err
 }
@@ -11528,11 +11079,11 @@ var webInspectorIsAttachedFunction_Once sync.Once
 func webInspectorIsAttachedFunction_Set() error {
 	var err error
 	webInspectorIsAttachedFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorIsAttachedFunction, err = webInspectorStruct.InvokerNew("is_attached")
+		webInspectorIsAttachedFunction, err = webInspectorObject.InvokerNew("is_attached")
 	})
 	return err
 }
@@ -11560,11 +11111,11 @@ var webInspectorShowFunction_Once sync.Once
 func webInspectorShowFunction_Set() error {
 	var err error
 	webInspectorShowFunction_Once.Do(func() {
-		err = webInspectorStruct_Set()
+		err = webInspectorObject_Set()
 		if err != nil {
 			return
 		}
-		webInspectorShowFunction, err = webInspectorStruct.InvokerNew("show")
+		webInspectorShowFunction, err = webInspectorObject.InvokerNew("show")
 	})
 	return err
 }
@@ -11582,29 +11133,13 @@ func (recv *WebInspector) Show() {
 	return
 }
 
-// WebInspectorStruct creates an uninitialised WebInspector.
-func WebInspectorStruct() *WebInspector {
-	err := webInspectorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var webResourceObject *gi.Object
+var webResourceObject_Once sync.Once
 
-	structGo := &WebInspector{}
-	structGo.Native = webInspectorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebInspector)
-	return structGo
-}
-func finalizeWebInspector(obj *WebInspector) {
-	webInspectorStruct.Free(obj.Native)
-}
-
-var webResourceStruct *gi.Struct
-var webResourceStruct_Once sync.Once
-
-func webResourceStruct_Set() error {
+func webResourceObject_Set() error {
 	var err error
-	webResourceStruct_Once.Do(func() {
-		webResourceStruct, err = gi.StructNew("WebKit2", "WebResource")
+	webResourceObject_Once.Do(func() {
+		webResourceObject, err = gi.ObjectNew("WebKit2", "WebResource")
 	})
 	return err
 }
@@ -11619,7 +11154,7 @@ type WebResource struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebResource) FieldPriv() *WebResourcePrivate {
-	argValue := gi.FieldGet(webResourceStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(webResourceObject, recv.Native, "priv")
 	value := &WebResourcePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -11629,7 +11164,7 @@ func (recv *WebResource) FieldPriv() *WebResourcePrivate {
 func (recv *WebResource) SetFieldPriv(value *WebResourcePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(webResourceStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(webResourceObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_web_resource_get_data' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
@@ -11642,11 +11177,11 @@ var webResourceGetResponseFunction_Once sync.Once
 func webResourceGetResponseFunction_Set() error {
 	var err error
 	webResourceGetResponseFunction_Once.Do(func() {
-		err = webResourceStruct_Set()
+		err = webResourceObject_Set()
 		if err != nil {
 			return
 		}
-		webResourceGetResponseFunction, err = webResourceStruct.InvokerNew("get_response")
+		webResourceGetResponseFunction, err = webResourceObject.InvokerNew("get_response")
 	})
 	return err
 }
@@ -11675,11 +11210,11 @@ var webResourceGetUriFunction_Once sync.Once
 func webResourceGetUriFunction_Set() error {
 	var err error
 	webResourceGetUriFunction_Once.Do(func() {
-		err = webResourceStruct_Set()
+		err = webResourceObject_Set()
 		if err != nil {
 			return
 		}
-		webResourceGetUriFunction, err = webResourceStruct.InvokerNew("get_uri")
+		webResourceGetUriFunction, err = webResourceObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -11701,29 +11236,13 @@ func (recv *WebResource) GetUri() string {
 	return retGo
 }
 
-// WebResourceStruct creates an uninitialised WebResource.
-func WebResourceStruct() *WebResource {
-	err := webResourceStruct_Set()
-	if err != nil {
-		return nil
-	}
+var webViewObject *gi.Object
+var webViewObject_Once sync.Once
 
-	structGo := &WebResource{}
-	structGo.Native = webResourceStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebResource)
-	return structGo
-}
-func finalizeWebResource(obj *WebResource) {
-	webResourceStruct.Free(obj.Native)
-}
-
-var webViewStruct *gi.Struct
-var webViewStruct_Once sync.Once
-
-func webViewStruct_Set() error {
+func webViewObject_Set() error {
 	var err error
-	webViewStruct_Once.Do(func() {
-		webViewStruct, err = gi.StructNew("WebKit2", "WebView")
+	webViewObject_Once.Do(func() {
+		webViewObject, err = gi.ObjectNew("WebKit2", "WebView")
 	})
 	return err
 }
@@ -11734,7 +11253,7 @@ type WebView struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebView) FieldParent() *WebViewBase {
-	argValue := gi.FieldGet(webViewStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(webViewObject, recv.Native, "parent")
 	value := &WebViewBase{}
 	value.Native = argValue.Pointer()
 	return value
@@ -11744,7 +11263,7 @@ func (recv *WebView) FieldParent() *WebViewBase {
 func (recv *WebView) SetFieldParent(value *WebViewBase) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(webViewStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(webViewObject, recv.Native, "parent", argValue)
 }
 
 var webViewNewFunction *gi.Function
@@ -11753,11 +11272,11 @@ var webViewNewFunction_Once sync.Once
 func webViewNewFunction_Set() error {
 	var err error
 	webViewNewFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewNewFunction, err = webViewStruct.InvokerNew("new")
+		webViewNewFunction, err = webViewObject.InvokerNew("new")
 	})
 	return err
 }
@@ -11784,11 +11303,11 @@ var webViewNewWithContextFunction_Once sync.Once
 func webViewNewWithContextFunction_Set() error {
 	var err error
 	webViewNewWithContextFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewNewWithContextFunction, err = webViewStruct.InvokerNew("new_with_context")
+		webViewNewWithContextFunction, err = webViewObject.InvokerNew("new_with_context")
 	})
 	return err
 }
@@ -11817,11 +11336,11 @@ var webViewNewWithRelatedViewFunction_Once sync.Once
 func webViewNewWithRelatedViewFunction_Set() error {
 	var err error
 	webViewNewWithRelatedViewFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewNewWithRelatedViewFunction, err = webViewStruct.InvokerNew("new_with_related_view")
+		webViewNewWithRelatedViewFunction, err = webViewObject.InvokerNew("new_with_related_view")
 	})
 	return err
 }
@@ -11850,11 +11369,11 @@ var webViewNewWithSettingsFunction_Once sync.Once
 func webViewNewWithSettingsFunction_Set() error {
 	var err error
 	webViewNewWithSettingsFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewNewWithSettingsFunction, err = webViewStruct.InvokerNew("new_with_settings")
+		webViewNewWithSettingsFunction, err = webViewObject.InvokerNew("new_with_settings")
 	})
 	return err
 }
@@ -11883,11 +11402,11 @@ var webViewNewWithUserContentManagerFunction_Once sync.Once
 func webViewNewWithUserContentManagerFunction_Set() error {
 	var err error
 	webViewNewWithUserContentManagerFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewNewWithUserContentManagerFunction, err = webViewStruct.InvokerNew("new_with_user_content_manager")
+		webViewNewWithUserContentManagerFunction, err = webViewObject.InvokerNew("new_with_user_content_manager")
 	})
 	return err
 }
@@ -11920,11 +11439,11 @@ var webViewCanGoBackFunction_Once sync.Once
 func webViewCanGoBackFunction_Set() error {
 	var err error
 	webViewCanGoBackFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewCanGoBackFunction, err = webViewStruct.InvokerNew("can_go_back")
+		webViewCanGoBackFunction, err = webViewObject.InvokerNew("can_go_back")
 	})
 	return err
 }
@@ -11952,11 +11471,11 @@ var webViewCanGoForwardFunction_Once sync.Once
 func webViewCanGoForwardFunction_Set() error {
 	var err error
 	webViewCanGoForwardFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewCanGoForwardFunction, err = webViewStruct.InvokerNew("can_go_forward")
+		webViewCanGoForwardFunction, err = webViewObject.InvokerNew("can_go_forward")
 	})
 	return err
 }
@@ -11984,11 +11503,11 @@ var webViewCanShowMimeTypeFunction_Once sync.Once
 func webViewCanShowMimeTypeFunction_Set() error {
 	var err error
 	webViewCanShowMimeTypeFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewCanShowMimeTypeFunction, err = webViewStruct.InvokerNew("can_show_mime_type")
+		webViewCanShowMimeTypeFunction, err = webViewObject.InvokerNew("can_show_mime_type")
 	})
 	return err
 }
@@ -12017,11 +11536,11 @@ var webViewDownloadUriFunction_Once sync.Once
 func webViewDownloadUriFunction_Set() error {
 	var err error
 	webViewDownloadUriFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewDownloadUriFunction, err = webViewStruct.InvokerNew("download_uri")
+		webViewDownloadUriFunction, err = webViewObject.InvokerNew("download_uri")
 	})
 	return err
 }
@@ -12051,11 +11570,11 @@ var webViewExecuteEditingCommandFunction_Once sync.Once
 func webViewExecuteEditingCommandFunction_Set() error {
 	var err error
 	webViewExecuteEditingCommandFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewExecuteEditingCommandFunction, err = webViewStruct.InvokerNew("execute_editing_command")
+		webViewExecuteEditingCommandFunction, err = webViewObject.InvokerNew("execute_editing_command")
 	})
 	return err
 }
@@ -12080,11 +11599,11 @@ var webViewExecuteEditingCommandWithArgumentFunction_Once sync.Once
 func webViewExecuteEditingCommandWithArgumentFunction_Set() error {
 	var err error
 	webViewExecuteEditingCommandWithArgumentFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewExecuteEditingCommandWithArgumentFunction, err = webViewStruct.InvokerNew("execute_editing_command_with_argument")
+		webViewExecuteEditingCommandWithArgumentFunction, err = webViewObject.InvokerNew("execute_editing_command_with_argument")
 	})
 	return err
 }
@@ -12110,11 +11629,11 @@ var webViewGetBackForwardListFunction_Once sync.Once
 func webViewGetBackForwardListFunction_Set() error {
 	var err error
 	webViewGetBackForwardListFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetBackForwardListFunction, err = webViewStruct.InvokerNew("get_back_forward_list")
+		webViewGetBackForwardListFunction, err = webViewObject.InvokerNew("get_back_forward_list")
 	})
 	return err
 }
@@ -12145,11 +11664,11 @@ var webViewGetContextFunction_Once sync.Once
 func webViewGetContextFunction_Set() error {
 	var err error
 	webViewGetContextFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetContextFunction, err = webViewStruct.InvokerNew("get_context")
+		webViewGetContextFunction, err = webViewObject.InvokerNew("get_context")
 	})
 	return err
 }
@@ -12178,11 +11697,11 @@ var webViewGetCustomCharsetFunction_Once sync.Once
 func webViewGetCustomCharsetFunction_Set() error {
 	var err error
 	webViewGetCustomCharsetFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetCustomCharsetFunction, err = webViewStruct.InvokerNew("get_custom_charset")
+		webViewGetCustomCharsetFunction, err = webViewObject.InvokerNew("get_custom_charset")
 	})
 	return err
 }
@@ -12210,11 +11729,11 @@ var webViewGetEditorStateFunction_Once sync.Once
 func webViewGetEditorStateFunction_Set() error {
 	var err error
 	webViewGetEditorStateFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetEditorStateFunction, err = webViewStruct.InvokerNew("get_editor_state")
+		webViewGetEditorStateFunction, err = webViewObject.InvokerNew("get_editor_state")
 	})
 	return err
 }
@@ -12243,11 +11762,11 @@ var webViewGetEstimatedLoadProgressFunction_Once sync.Once
 func webViewGetEstimatedLoadProgressFunction_Set() error {
 	var err error
 	webViewGetEstimatedLoadProgressFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetEstimatedLoadProgressFunction, err = webViewStruct.InvokerNew("get_estimated_load_progress")
+		webViewGetEstimatedLoadProgressFunction, err = webViewObject.InvokerNew("get_estimated_load_progress")
 	})
 	return err
 }
@@ -12277,11 +11796,11 @@ var webViewGetFindControllerFunction_Once sync.Once
 func webViewGetFindControllerFunction_Set() error {
 	var err error
 	webViewGetFindControllerFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetFindControllerFunction, err = webViewStruct.InvokerNew("get_find_controller")
+		webViewGetFindControllerFunction, err = webViewObject.InvokerNew("get_find_controller")
 	})
 	return err
 }
@@ -12310,11 +11829,11 @@ var webViewGetInspectorFunction_Once sync.Once
 func webViewGetInspectorFunction_Set() error {
 	var err error
 	webViewGetInspectorFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetInspectorFunction, err = webViewStruct.InvokerNew("get_inspector")
+		webViewGetInspectorFunction, err = webViewObject.InvokerNew("get_inspector")
 	})
 	return err
 }
@@ -12345,11 +11864,11 @@ var webViewGetMainResourceFunction_Once sync.Once
 func webViewGetMainResourceFunction_Set() error {
 	var err error
 	webViewGetMainResourceFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetMainResourceFunction, err = webViewStruct.InvokerNew("get_main_resource")
+		webViewGetMainResourceFunction, err = webViewObject.InvokerNew("get_main_resource")
 	})
 	return err
 }
@@ -12378,11 +11897,11 @@ var webViewGetPageIdFunction_Once sync.Once
 func webViewGetPageIdFunction_Set() error {
 	var err error
 	webViewGetPageIdFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetPageIdFunction, err = webViewStruct.InvokerNew("get_page_id")
+		webViewGetPageIdFunction, err = webViewObject.InvokerNew("get_page_id")
 	})
 	return err
 }
@@ -12410,11 +11929,11 @@ var webViewGetSessionStateFunction_Once sync.Once
 func webViewGetSessionStateFunction_Set() error {
 	var err error
 	webViewGetSessionStateFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetSessionStateFunction, err = webViewStruct.InvokerNew("get_session_state")
+		webViewGetSessionStateFunction, err = webViewObject.InvokerNew("get_session_state")
 	})
 	return err
 }
@@ -12443,11 +11962,11 @@ var webViewGetSettingsFunction_Once sync.Once
 func webViewGetSettingsFunction_Set() error {
 	var err error
 	webViewGetSettingsFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetSettingsFunction, err = webViewStruct.InvokerNew("get_settings")
+		webViewGetSettingsFunction, err = webViewObject.InvokerNew("get_settings")
 	})
 	return err
 }
@@ -12480,11 +11999,11 @@ var webViewGetTitleFunction_Once sync.Once
 func webViewGetTitleFunction_Set() error {
 	var err error
 	webViewGetTitleFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetTitleFunction, err = webViewStruct.InvokerNew("get_title")
+		webViewGetTitleFunction, err = webViewObject.InvokerNew("get_title")
 	})
 	return err
 }
@@ -12514,11 +12033,11 @@ var webViewGetUriFunction_Once sync.Once
 func webViewGetUriFunction_Set() error {
 	var err error
 	webViewGetUriFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetUriFunction, err = webViewStruct.InvokerNew("get_uri")
+		webViewGetUriFunction, err = webViewObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -12546,11 +12065,11 @@ var webViewGetUserContentManagerFunction_Once sync.Once
 func webViewGetUserContentManagerFunction_Set() error {
 	var err error
 	webViewGetUserContentManagerFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetUserContentManagerFunction, err = webViewStruct.InvokerNew("get_user_content_manager")
+		webViewGetUserContentManagerFunction, err = webViewObject.InvokerNew("get_user_content_manager")
 	})
 	return err
 }
@@ -12579,11 +12098,11 @@ var webViewGetWebsiteDataManagerFunction_Once sync.Once
 func webViewGetWebsiteDataManagerFunction_Set() error {
 	var err error
 	webViewGetWebsiteDataManagerFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetWebsiteDataManagerFunction, err = webViewStruct.InvokerNew("get_website_data_manager")
+		webViewGetWebsiteDataManagerFunction, err = webViewObject.InvokerNew("get_website_data_manager")
 	})
 	return err
 }
@@ -12612,11 +12131,11 @@ var webViewGetWindowPropertiesFunction_Once sync.Once
 func webViewGetWindowPropertiesFunction_Set() error {
 	var err error
 	webViewGetWindowPropertiesFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetWindowPropertiesFunction, err = webViewStruct.InvokerNew("get_window_properties")
+		webViewGetWindowPropertiesFunction, err = webViewObject.InvokerNew("get_window_properties")
 	})
 	return err
 }
@@ -12645,11 +12164,11 @@ var webViewGetZoomLevelFunction_Once sync.Once
 func webViewGetZoomLevelFunction_Set() error {
 	var err error
 	webViewGetZoomLevelFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGetZoomLevelFunction, err = webViewStruct.InvokerNew("get_zoom_level")
+		webViewGetZoomLevelFunction, err = webViewObject.InvokerNew("get_zoom_level")
 	})
 	return err
 }
@@ -12677,11 +12196,11 @@ var webViewGoBackFunction_Once sync.Once
 func webViewGoBackFunction_Set() error {
 	var err error
 	webViewGoBackFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGoBackFunction, err = webViewStruct.InvokerNew("go_back")
+		webViewGoBackFunction, err = webViewObject.InvokerNew("go_back")
 	})
 	return err
 }
@@ -12705,11 +12224,11 @@ var webViewGoForwardFunction_Once sync.Once
 func webViewGoForwardFunction_Set() error {
 	var err error
 	webViewGoForwardFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGoForwardFunction, err = webViewStruct.InvokerNew("go_forward")
+		webViewGoForwardFunction, err = webViewObject.InvokerNew("go_forward")
 	})
 	return err
 }
@@ -12733,11 +12252,11 @@ var webViewGoToBackForwardListItemFunction_Once sync.Once
 func webViewGoToBackForwardListItemFunction_Set() error {
 	var err error
 	webViewGoToBackForwardListItemFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewGoToBackForwardListItemFunction, err = webViewStruct.InvokerNew("go_to_back_forward_list_item")
+		webViewGoToBackForwardListItemFunction, err = webViewObject.InvokerNew("go_to_back_forward_list_item")
 	})
 	return err
 }
@@ -12762,11 +12281,11 @@ var webViewIsControlledByAutomationFunction_Once sync.Once
 func webViewIsControlledByAutomationFunction_Set() error {
 	var err error
 	webViewIsControlledByAutomationFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewIsControlledByAutomationFunction, err = webViewStruct.InvokerNew("is_controlled_by_automation")
+		webViewIsControlledByAutomationFunction, err = webViewObject.InvokerNew("is_controlled_by_automation")
 	})
 	return err
 }
@@ -12794,11 +12313,11 @@ var webViewIsEditableFunction_Once sync.Once
 func webViewIsEditableFunction_Set() error {
 	var err error
 	webViewIsEditableFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewIsEditableFunction, err = webViewStruct.InvokerNew("is_editable")
+		webViewIsEditableFunction, err = webViewObject.InvokerNew("is_editable")
 	})
 	return err
 }
@@ -12826,11 +12345,11 @@ var webViewIsEphemeralFunction_Once sync.Once
 func webViewIsEphemeralFunction_Set() error {
 	var err error
 	webViewIsEphemeralFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewIsEphemeralFunction, err = webViewStruct.InvokerNew("is_ephemeral")
+		webViewIsEphemeralFunction, err = webViewObject.InvokerNew("is_ephemeral")
 	})
 	return err
 }
@@ -12858,11 +12377,11 @@ var webViewIsLoadingFunction_Once sync.Once
 func webViewIsLoadingFunction_Set() error {
 	var err error
 	webViewIsLoadingFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewIsLoadingFunction, err = webViewStruct.InvokerNew("is_loading")
+		webViewIsLoadingFunction, err = webViewObject.InvokerNew("is_loading")
 	})
 	return err
 }
@@ -12890,11 +12409,11 @@ var webViewIsPlayingAudioFunction_Once sync.Once
 func webViewIsPlayingAudioFunction_Set() error {
 	var err error
 	webViewIsPlayingAudioFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewIsPlayingAudioFunction, err = webViewStruct.InvokerNew("is_playing_audio")
+		webViewIsPlayingAudioFunction, err = webViewObject.InvokerNew("is_playing_audio")
 	})
 	return err
 }
@@ -12922,11 +12441,11 @@ var webViewLoadAlternateHtmlFunction_Once sync.Once
 func webViewLoadAlternateHtmlFunction_Set() error {
 	var err error
 	webViewLoadAlternateHtmlFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewLoadAlternateHtmlFunction, err = webViewStruct.InvokerNew("load_alternate_html")
+		webViewLoadAlternateHtmlFunction, err = webViewObject.InvokerNew("load_alternate_html")
 	})
 	return err
 }
@@ -12955,11 +12474,11 @@ var webViewLoadHtmlFunction_Once sync.Once
 func webViewLoadHtmlFunction_Set() error {
 	var err error
 	webViewLoadHtmlFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewLoadHtmlFunction, err = webViewStruct.InvokerNew("load_html")
+		webViewLoadHtmlFunction, err = webViewObject.InvokerNew("load_html")
 	})
 	return err
 }
@@ -12985,11 +12504,11 @@ var webViewLoadPlainTextFunction_Once sync.Once
 func webViewLoadPlainTextFunction_Set() error {
 	var err error
 	webViewLoadPlainTextFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewLoadPlainTextFunction, err = webViewStruct.InvokerNew("load_plain_text")
+		webViewLoadPlainTextFunction, err = webViewObject.InvokerNew("load_plain_text")
 	})
 	return err
 }
@@ -13014,11 +12533,11 @@ var webViewLoadRequestFunction_Once sync.Once
 func webViewLoadRequestFunction_Set() error {
 	var err error
 	webViewLoadRequestFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewLoadRequestFunction, err = webViewStruct.InvokerNew("load_request")
+		webViewLoadRequestFunction, err = webViewObject.InvokerNew("load_request")
 	})
 	return err
 }
@@ -13043,11 +12562,11 @@ var webViewLoadUriFunction_Once sync.Once
 func webViewLoadUriFunction_Set() error {
 	var err error
 	webViewLoadUriFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewLoadUriFunction, err = webViewStruct.InvokerNew("load_uri")
+		webViewLoadUriFunction, err = webViewObject.InvokerNew("load_uri")
 	})
 	return err
 }
@@ -13072,11 +12591,11 @@ var webViewReloadFunction_Once sync.Once
 func webViewReloadFunction_Set() error {
 	var err error
 	webViewReloadFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewReloadFunction, err = webViewStruct.InvokerNew("reload")
+		webViewReloadFunction, err = webViewObject.InvokerNew("reload")
 	})
 	return err
 }
@@ -13100,11 +12619,11 @@ var webViewReloadBypassCacheFunction_Once sync.Once
 func webViewReloadBypassCacheFunction_Set() error {
 	var err error
 	webViewReloadBypassCacheFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewReloadBypassCacheFunction, err = webViewStruct.InvokerNew("reload_bypass_cache")
+		webViewReloadBypassCacheFunction, err = webViewObject.InvokerNew("reload_bypass_cache")
 	})
 	return err
 }
@@ -13128,11 +12647,11 @@ var webViewRestoreSessionStateFunction_Once sync.Once
 func webViewRestoreSessionStateFunction_Set() error {
 	var err error
 	webViewRestoreSessionStateFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewRestoreSessionStateFunction, err = webViewStruct.InvokerNew("restore_session_state")
+		webViewRestoreSessionStateFunction, err = webViewObject.InvokerNew("restore_session_state")
 	})
 	return err
 }
@@ -13179,11 +12698,11 @@ var webViewSetCustomCharsetFunction_Once sync.Once
 func webViewSetCustomCharsetFunction_Set() error {
 	var err error
 	webViewSetCustomCharsetFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewSetCustomCharsetFunction, err = webViewStruct.InvokerNew("set_custom_charset")
+		webViewSetCustomCharsetFunction, err = webViewObject.InvokerNew("set_custom_charset")
 	})
 	return err
 }
@@ -13208,11 +12727,11 @@ var webViewSetEditableFunction_Once sync.Once
 func webViewSetEditableFunction_Set() error {
 	var err error
 	webViewSetEditableFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewSetEditableFunction, err = webViewStruct.InvokerNew("set_editable")
+		webViewSetEditableFunction, err = webViewObject.InvokerNew("set_editable")
 	})
 	return err
 }
@@ -13237,11 +12756,11 @@ var webViewSetSettingsFunction_Once sync.Once
 func webViewSetSettingsFunction_Set() error {
 	var err error
 	webViewSetSettingsFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewSetSettingsFunction, err = webViewStruct.InvokerNew("set_settings")
+		webViewSetSettingsFunction, err = webViewObject.InvokerNew("set_settings")
 	})
 	return err
 }
@@ -13266,11 +12785,11 @@ var webViewSetZoomLevelFunction_Once sync.Once
 func webViewSetZoomLevelFunction_Set() error {
 	var err error
 	webViewSetZoomLevelFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewSetZoomLevelFunction, err = webViewStruct.InvokerNew("set_zoom_level")
+		webViewSetZoomLevelFunction, err = webViewObject.InvokerNew("set_zoom_level")
 	})
 	return err
 }
@@ -13295,11 +12814,11 @@ var webViewStopLoadingFunction_Once sync.Once
 func webViewStopLoadingFunction_Set() error {
 	var err error
 	webViewStopLoadingFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewStopLoadingFunction, err = webViewStruct.InvokerNew("stop_loading")
+		webViewStopLoadingFunction, err = webViewObject.InvokerNew("stop_loading")
 	})
 	return err
 }
@@ -13323,11 +12842,11 @@ var webViewTryCloseFunction_Once sync.Once
 func webViewTryCloseFunction_Set() error {
 	var err error
 	webViewTryCloseFunction_Once.Do(func() {
-		err = webViewStruct_Set()
+		err = webViewObject_Set()
 		if err != nil {
 			return
 		}
-		webViewTryCloseFunction, err = webViewStruct.InvokerNew("try_close")
+		webViewTryCloseFunction, err = webViewObject.InvokerNew("try_close")
 	})
 	return err
 }
@@ -13345,13 +12864,13 @@ func (recv *WebView) TryClose() {
 	return
 }
 
-var webViewBaseStruct *gi.Struct
-var webViewBaseStruct_Once sync.Once
+var webViewBaseObject *gi.Object
+var webViewBaseObject_Once sync.Once
 
-func webViewBaseStruct_Set() error {
+func webViewBaseObject_Set() error {
 	var err error
-	webViewBaseStruct_Once.Do(func() {
-		webViewBaseStruct, err = gi.StructNew("WebKit2", "WebViewBase")
+	webViewBaseObject_Once.Do(func() {
+		webViewBaseObject, err = gi.ObjectNew("WebKit2", "WebViewBase")
 	})
 	return err
 }
@@ -13364,29 +12883,13 @@ type WebViewBase struct {
 
 // UNSUPPORTED : C value 'parentInstance' : for field setter : no Go type for 'Gtk.Container'
 
-// WebViewBaseStruct creates an uninitialised WebViewBase.
-func WebViewBaseStruct() *WebViewBase {
-	err := webViewBaseStruct_Set()
-	if err != nil {
-		return nil
-	}
+var websiteDataManagerObject *gi.Object
+var websiteDataManagerObject_Once sync.Once
 
-	structGo := &WebViewBase{}
-	structGo.Native = webViewBaseStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebViewBase)
-	return structGo
-}
-func finalizeWebViewBase(obj *WebViewBase) {
-	webViewBaseStruct.Free(obj.Native)
-}
-
-var websiteDataManagerStruct *gi.Struct
-var websiteDataManagerStruct_Once sync.Once
-
-func websiteDataManagerStruct_Set() error {
+func websiteDataManagerObject_Set() error {
 	var err error
-	websiteDataManagerStruct_Once.Do(func() {
-		websiteDataManagerStruct, err = gi.StructNew("WebKit2", "WebsiteDataManager")
+	websiteDataManagerObject_Once.Do(func() {
+		websiteDataManagerObject, err = gi.ObjectNew("WebKit2", "WebsiteDataManager")
 	})
 	return err
 }
@@ -13401,7 +12904,7 @@ type WebsiteDataManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebsiteDataManager) FieldPriv() *WebsiteDataManagerPrivate {
-	argValue := gi.FieldGet(websiteDataManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(websiteDataManagerObject, recv.Native, "priv")
 	value := &WebsiteDataManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -13411,7 +12914,7 @@ func (recv *WebsiteDataManager) FieldPriv() *WebsiteDataManagerPrivate {
 func (recv *WebsiteDataManager) SetFieldPriv(value *WebsiteDataManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(websiteDataManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(websiteDataManagerObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_new' : parameter '...' of type 'nil' not supported
@@ -13422,11 +12925,11 @@ var websiteDataManagerNewEphemeralFunction_Once sync.Once
 func websiteDataManagerNewEphemeralFunction_Set() error {
 	var err error
 	websiteDataManagerNewEphemeralFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerNewEphemeralFunction, err = websiteDataManagerStruct.InvokerNew("new_ephemeral")
+		websiteDataManagerNewEphemeralFunction, err = websiteDataManagerObject.InvokerNew("new_ephemeral")
 	})
 	return err
 }
@@ -13461,11 +12964,11 @@ var websiteDataManagerGetBaseCacheDirectoryFunction_Once sync.Once
 func websiteDataManagerGetBaseCacheDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetBaseCacheDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetBaseCacheDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_base_cache_directory")
+		websiteDataManagerGetBaseCacheDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_base_cache_directory")
 	})
 	return err
 }
@@ -13493,11 +12996,11 @@ var websiteDataManagerGetBaseDataDirectoryFunction_Once sync.Once
 func websiteDataManagerGetBaseDataDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetBaseDataDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetBaseDataDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_base_data_directory")
+		websiteDataManagerGetBaseDataDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_base_data_directory")
 	})
 	return err
 }
@@ -13525,11 +13028,11 @@ var websiteDataManagerGetCookieManagerFunction_Once sync.Once
 func websiteDataManagerGetCookieManagerFunction_Set() error {
 	var err error
 	websiteDataManagerGetCookieManagerFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetCookieManagerFunction, err = websiteDataManagerStruct.InvokerNew("get_cookie_manager")
+		websiteDataManagerGetCookieManagerFunction, err = websiteDataManagerObject.InvokerNew("get_cookie_manager")
 	})
 	return err
 }
@@ -13558,11 +13061,11 @@ var websiteDataManagerGetDiskCacheDirectoryFunction_Once sync.Once
 func websiteDataManagerGetDiskCacheDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetDiskCacheDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetDiskCacheDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_disk_cache_directory")
+		websiteDataManagerGetDiskCacheDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_disk_cache_directory")
 	})
 	return err
 }
@@ -13590,11 +13093,11 @@ var websiteDataManagerGetHstsCacheDirectoryFunction_Once sync.Once
 func websiteDataManagerGetHstsCacheDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetHstsCacheDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetHstsCacheDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_hsts_cache_directory")
+		websiteDataManagerGetHstsCacheDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_hsts_cache_directory")
 	})
 	return err
 }
@@ -13622,11 +13125,11 @@ var websiteDataManagerGetIndexeddbDirectoryFunction_Once sync.Once
 func websiteDataManagerGetIndexeddbDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetIndexeddbDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetIndexeddbDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_indexeddb_directory")
+		websiteDataManagerGetIndexeddbDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_indexeddb_directory")
 	})
 	return err
 }
@@ -13654,11 +13157,11 @@ var websiteDataManagerGetLocalStorageDirectoryFunction_Once sync.Once
 func websiteDataManagerGetLocalStorageDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetLocalStorageDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetLocalStorageDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_local_storage_directory")
+		websiteDataManagerGetLocalStorageDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_local_storage_directory")
 	})
 	return err
 }
@@ -13686,11 +13189,11 @@ var websiteDataManagerGetOfflineApplicationCacheDirectoryFunction_Once sync.Once
 func websiteDataManagerGetOfflineApplicationCacheDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetOfflineApplicationCacheDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetOfflineApplicationCacheDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_offline_application_cache_directory")
+		websiteDataManagerGetOfflineApplicationCacheDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_offline_application_cache_directory")
 	})
 	return err
 }
@@ -13718,11 +13221,11 @@ var websiteDataManagerGetWebsqlDirectoryFunction_Once sync.Once
 func websiteDataManagerGetWebsqlDirectoryFunction_Set() error {
 	var err error
 	websiteDataManagerGetWebsqlDirectoryFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerGetWebsqlDirectoryFunction, err = websiteDataManagerStruct.InvokerNew("get_websql_directory")
+		websiteDataManagerGetWebsqlDirectoryFunction, err = websiteDataManagerObject.InvokerNew("get_websql_directory")
 	})
 	return err
 }
@@ -13750,11 +13253,11 @@ var websiteDataManagerIsEphemeralFunction_Once sync.Once
 func websiteDataManagerIsEphemeralFunction_Set() error {
 	var err error
 	websiteDataManagerIsEphemeralFunction_Once.Do(func() {
-		err = websiteDataManagerStruct_Set()
+		err = websiteDataManagerObject_Set()
 		if err != nil {
 			return
 		}
-		websiteDataManagerIsEphemeralFunction, err = websiteDataManagerStruct.InvokerNew("is_ephemeral")
+		websiteDataManagerIsEphemeralFunction, err = websiteDataManagerObject.InvokerNew("is_ephemeral")
 	})
 	return err
 }
@@ -13780,13 +13283,13 @@ func (recv *WebsiteDataManager) IsEphemeral() bool {
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-var windowPropertiesStruct *gi.Struct
-var windowPropertiesStruct_Once sync.Once
+var windowPropertiesObject *gi.Object
+var windowPropertiesObject_Once sync.Once
 
-func windowPropertiesStruct_Set() error {
+func windowPropertiesObject_Set() error {
 	var err error
-	windowPropertiesStruct_Once.Do(func() {
-		windowPropertiesStruct, err = gi.StructNew("WebKit2", "WindowProperties")
+	windowPropertiesObject_Once.Do(func() {
+		windowPropertiesObject, err = gi.ObjectNew("WebKit2", "WindowProperties")
 	})
 	return err
 }
@@ -13805,11 +13308,11 @@ var windowPropertiesGetFullscreenFunction_Once sync.Once
 func windowPropertiesGetFullscreenFunction_Set() error {
 	var err error
 	windowPropertiesGetFullscreenFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetFullscreenFunction, err = windowPropertiesStruct.InvokerNew("get_fullscreen")
+		windowPropertiesGetFullscreenFunction, err = windowPropertiesObject.InvokerNew("get_fullscreen")
 	})
 	return err
 }
@@ -13839,11 +13342,11 @@ var windowPropertiesGetLocationbarVisibleFunction_Once sync.Once
 func windowPropertiesGetLocationbarVisibleFunction_Set() error {
 	var err error
 	windowPropertiesGetLocationbarVisibleFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetLocationbarVisibleFunction, err = windowPropertiesStruct.InvokerNew("get_locationbar_visible")
+		windowPropertiesGetLocationbarVisibleFunction, err = windowPropertiesObject.InvokerNew("get_locationbar_visible")
 	})
 	return err
 }
@@ -13871,11 +13374,11 @@ var windowPropertiesGetMenubarVisibleFunction_Once sync.Once
 func windowPropertiesGetMenubarVisibleFunction_Set() error {
 	var err error
 	windowPropertiesGetMenubarVisibleFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetMenubarVisibleFunction, err = windowPropertiesStruct.InvokerNew("get_menubar_visible")
+		windowPropertiesGetMenubarVisibleFunction, err = windowPropertiesObject.InvokerNew("get_menubar_visible")
 	})
 	return err
 }
@@ -13903,11 +13406,11 @@ var windowPropertiesGetResizableFunction_Once sync.Once
 func windowPropertiesGetResizableFunction_Set() error {
 	var err error
 	windowPropertiesGetResizableFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetResizableFunction, err = windowPropertiesStruct.InvokerNew("get_resizable")
+		windowPropertiesGetResizableFunction, err = windowPropertiesObject.InvokerNew("get_resizable")
 	})
 	return err
 }
@@ -13935,11 +13438,11 @@ var windowPropertiesGetScrollbarsVisibleFunction_Once sync.Once
 func windowPropertiesGetScrollbarsVisibleFunction_Set() error {
 	var err error
 	windowPropertiesGetScrollbarsVisibleFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetScrollbarsVisibleFunction, err = windowPropertiesStruct.InvokerNew("get_scrollbars_visible")
+		windowPropertiesGetScrollbarsVisibleFunction, err = windowPropertiesObject.InvokerNew("get_scrollbars_visible")
 	})
 	return err
 }
@@ -13967,11 +13470,11 @@ var windowPropertiesGetStatusbarVisibleFunction_Once sync.Once
 func windowPropertiesGetStatusbarVisibleFunction_Set() error {
 	var err error
 	windowPropertiesGetStatusbarVisibleFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetStatusbarVisibleFunction, err = windowPropertiesStruct.InvokerNew("get_statusbar_visible")
+		windowPropertiesGetStatusbarVisibleFunction, err = windowPropertiesObject.InvokerNew("get_statusbar_visible")
 	})
 	return err
 }
@@ -13999,11 +13502,11 @@ var windowPropertiesGetToolbarVisibleFunction_Once sync.Once
 func windowPropertiesGetToolbarVisibleFunction_Set() error {
 	var err error
 	windowPropertiesGetToolbarVisibleFunction_Once.Do(func() {
-		err = windowPropertiesStruct_Set()
+		err = windowPropertiesObject_Set()
 		if err != nil {
 			return
 		}
-		windowPropertiesGetToolbarVisibleFunction, err = windowPropertiesStruct.InvokerNew("get_toolbar_visible")
+		windowPropertiesGetToolbarVisibleFunction, err = windowPropertiesObject.InvokerNew("get_toolbar_visible")
 	})
 	return err
 }
@@ -14023,20 +13526,4 @@ func (recv *WindowProperties) GetToolbarVisible() bool {
 	retGo := ret.Boolean()
 
 	return retGo
-}
-
-// WindowPropertiesStruct creates an uninitialised WindowProperties.
-func WindowPropertiesStruct() *WindowProperties {
-	err := windowPropertiesStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &WindowProperties{}
-	structGo.Native = windowPropertiesStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWindowProperties)
-	return structGo
-}
-func finalizeWindowProperties(obj *WindowProperties) {
-	windowPropertiesStruct.Free(obj.Native)
 }

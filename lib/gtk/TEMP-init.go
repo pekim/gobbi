@@ -9,7 +9,7 @@ func Init() {
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(0)
-	inArgs[1].SetPointer(10)
+	inArgs[1].SetPointer(0)
 
 	var outArgs [2]gi.Argument
 

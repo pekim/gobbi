@@ -6,17 +6,16 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var addressStruct *gi.Struct
-var addressStruct_Once sync.Once
+var addressObject *gi.Object
+var addressObject_Once sync.Once
 
-func addressStruct_Set() error {
+func addressObject_Set() error {
 	var err error
-	addressStruct_Once.Do(func() {
-		addressStruct, err = gi.StructNew("Soup", "Address")
+	addressObject_Once.Do(func() {
+		addressObject, err = gi.ObjectNew("Soup", "Address")
 	})
 	return err
 }
@@ -35,11 +34,11 @@ var addressNewFunction_Once sync.Once
 func addressNewFunction_Set() error {
 	var err error
 	addressNewFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressNewFunction, err = addressStruct.InvokerNew("new")
+		addressNewFunction, err = addressObject.InvokerNew("new")
 	})
 	return err
 }
@@ -69,11 +68,11 @@ var addressNewAnyFunction_Once sync.Once
 func addressNewAnyFunction_Set() error {
 	var err error
 	addressNewAnyFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressNewAnyFunction, err = addressStruct.InvokerNew("new_any")
+		addressNewAnyFunction, err = addressObject.InvokerNew("new_any")
 	})
 	return err
 }
@@ -105,11 +104,11 @@ var addressEqualByIpFunction_Once sync.Once
 func addressEqualByIpFunction_Set() error {
 	var err error
 	addressEqualByIpFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressEqualByIpFunction, err = addressStruct.InvokerNew("equal_by_ip")
+		addressEqualByIpFunction, err = addressObject.InvokerNew("equal_by_ip")
 	})
 	return err
 }
@@ -138,11 +137,11 @@ var addressEqualByNameFunction_Once sync.Once
 func addressEqualByNameFunction_Set() error {
 	var err error
 	addressEqualByNameFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressEqualByNameFunction, err = addressStruct.InvokerNew("equal_by_name")
+		addressEqualByNameFunction, err = addressObject.InvokerNew("equal_by_name")
 	})
 	return err
 }
@@ -173,11 +172,11 @@ var addressGetNameFunction_Once sync.Once
 func addressGetNameFunction_Set() error {
 	var err error
 	addressGetNameFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressGetNameFunction, err = addressStruct.InvokerNew("get_name")
+		addressGetNameFunction, err = addressObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -205,11 +204,11 @@ var addressGetPhysicalFunction_Once sync.Once
 func addressGetPhysicalFunction_Set() error {
 	var err error
 	addressGetPhysicalFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressGetPhysicalFunction, err = addressStruct.InvokerNew("get_physical")
+		addressGetPhysicalFunction, err = addressObject.InvokerNew("get_physical")
 	})
 	return err
 }
@@ -237,11 +236,11 @@ var addressGetPortFunction_Once sync.Once
 func addressGetPortFunction_Set() error {
 	var err error
 	addressGetPortFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressGetPortFunction, err = addressStruct.InvokerNew("get_port")
+		addressGetPortFunction, err = addressObject.InvokerNew("get_port")
 	})
 	return err
 }
@@ -271,11 +270,11 @@ var addressHashByIpFunction_Once sync.Once
 func addressHashByIpFunction_Set() error {
 	var err error
 	addressHashByIpFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressHashByIpFunction, err = addressStruct.InvokerNew("hash_by_ip")
+		addressHashByIpFunction, err = addressObject.InvokerNew("hash_by_ip")
 	})
 	return err
 }
@@ -303,11 +302,11 @@ var addressHashByNameFunction_Once sync.Once
 func addressHashByNameFunction_Set() error {
 	var err error
 	addressHashByNameFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressHashByNameFunction, err = addressStruct.InvokerNew("hash_by_name")
+		addressHashByNameFunction, err = addressObject.InvokerNew("hash_by_name")
 	})
 	return err
 }
@@ -335,11 +334,11 @@ var addressIsResolvedFunction_Once sync.Once
 func addressIsResolvedFunction_Set() error {
 	var err error
 	addressIsResolvedFunction_Once.Do(func() {
-		err = addressStruct_Set()
+		err = addressObject_Set()
 		if err != nil {
 			return
 		}
-		addressIsResolvedFunction, err = addressStruct.InvokerNew("is_resolved")
+		addressIsResolvedFunction, err = addressObject.InvokerNew("is_resolved")
 	})
 	return err
 }
@@ -365,13 +364,13 @@ func (recv *Address) IsResolved() bool {
 
 // UNSUPPORTED : C value 'soup_address_resolve_sync' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
-var authStruct *gi.Struct
-var authStruct_Once sync.Once
+var authObject *gi.Object
+var authObject_Once sync.Once
 
-func authStruct_Set() error {
+func authObject_Set() error {
 	var err error
-	authStruct_Once.Do(func() {
-		authStruct, err = gi.StructNew("Soup", "Auth")
+	authObject_Once.Do(func() {
+		authObject, err = gi.ObjectNew("Soup", "Auth")
 	})
 	return err
 }
@@ -386,7 +385,7 @@ type Auth struct {
 
 // FieldRealm returns the C field 'realm'.
 func (recv *Auth) FieldRealm() string {
-	argValue := gi.FieldGet(authStruct, recv.Native, "realm")
+	argValue := gi.ObjectFieldGet(authObject, recv.Native, "realm")
 	value := argValue.String(false)
 	return value
 }
@@ -395,7 +394,7 @@ func (recv *Auth) FieldRealm() string {
 func (recv *Auth) SetFieldRealm(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(authStruct, recv.Native, "realm", argValue)
+	gi.ObjectFieldSet(authObject, recv.Native, "realm", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_auth_new' : parameter 'type' of type 'GType' not supported
@@ -406,11 +405,11 @@ var authAuthenticateFunction_Once sync.Once
 func authAuthenticateFunction_Set() error {
 	var err error
 	authAuthenticateFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authAuthenticateFunction, err = authStruct.InvokerNew("authenticate")
+		authAuthenticateFunction, err = authObject.InvokerNew("authenticate")
 	})
 	return err
 }
@@ -436,11 +435,11 @@ var authCanAuthenticateFunction_Once sync.Once
 func authCanAuthenticateFunction_Set() error {
 	var err error
 	authCanAuthenticateFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authCanAuthenticateFunction, err = authStruct.InvokerNew("can_authenticate")
+		authCanAuthenticateFunction, err = authObject.InvokerNew("can_authenticate")
 	})
 	return err
 }
@@ -470,11 +469,11 @@ var authGetAuthorizationFunction_Once sync.Once
 func authGetAuthorizationFunction_Set() error {
 	var err error
 	authGetAuthorizationFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetAuthorizationFunction, err = authStruct.InvokerNew("get_authorization")
+		authGetAuthorizationFunction, err = authObject.InvokerNew("get_authorization")
 	})
 	return err
 }
@@ -503,11 +502,11 @@ var authGetHostFunction_Once sync.Once
 func authGetHostFunction_Set() error {
 	var err error
 	authGetHostFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetHostFunction, err = authStruct.InvokerNew("get_host")
+		authGetHostFunction, err = authObject.InvokerNew("get_host")
 	})
 	return err
 }
@@ -535,11 +534,11 @@ var authGetInfoFunction_Once sync.Once
 func authGetInfoFunction_Set() error {
 	var err error
 	authGetInfoFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetInfoFunction, err = authStruct.InvokerNew("get_info")
+		authGetInfoFunction, err = authObject.InvokerNew("get_info")
 	})
 	return err
 }
@@ -569,11 +568,11 @@ var authGetRealmFunction_Once sync.Once
 func authGetRealmFunction_Set() error {
 	var err error
 	authGetRealmFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetRealmFunction, err = authStruct.InvokerNew("get_realm")
+		authGetRealmFunction, err = authObject.InvokerNew("get_realm")
 	})
 	return err
 }
@@ -601,11 +600,11 @@ var authGetSavedPasswordFunction_Once sync.Once
 func authGetSavedPasswordFunction_Set() error {
 	var err error
 	authGetSavedPasswordFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetSavedPasswordFunction, err = authStruct.InvokerNew("get_saved_password")
+		authGetSavedPasswordFunction, err = authObject.InvokerNew("get_saved_password")
 	})
 	return err
 }
@@ -636,11 +635,11 @@ var authGetSchemeNameFunction_Once sync.Once
 func authGetSchemeNameFunction_Set() error {
 	var err error
 	authGetSchemeNameFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authGetSchemeNameFunction, err = authStruct.InvokerNew("get_scheme_name")
+		authGetSchemeNameFunction, err = authObject.InvokerNew("get_scheme_name")
 	})
 	return err
 }
@@ -668,11 +667,11 @@ var authHasSavedPasswordFunction_Once sync.Once
 func authHasSavedPasswordFunction_Set() error {
 	var err error
 	authHasSavedPasswordFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authHasSavedPasswordFunction, err = authStruct.InvokerNew("has_saved_password")
+		authHasSavedPasswordFunction, err = authObject.InvokerNew("has_saved_password")
 	})
 	return err
 }
@@ -698,11 +697,11 @@ var authIsAuthenticatedFunction_Once sync.Once
 func authIsAuthenticatedFunction_Set() error {
 	var err error
 	authIsAuthenticatedFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authIsAuthenticatedFunction, err = authStruct.InvokerNew("is_authenticated")
+		authIsAuthenticatedFunction, err = authObject.InvokerNew("is_authenticated")
 	})
 	return err
 }
@@ -730,11 +729,11 @@ var authIsForProxyFunction_Once sync.Once
 func authIsForProxyFunction_Set() error {
 	var err error
 	authIsForProxyFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authIsForProxyFunction, err = authStruct.InvokerNew("is_for_proxy")
+		authIsForProxyFunction, err = authObject.InvokerNew("is_for_proxy")
 	})
 	return err
 }
@@ -762,11 +761,11 @@ var authIsReadyFunction_Once sync.Once
 func authIsReadyFunction_Set() error {
 	var err error
 	authIsReadyFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authIsReadyFunction, err = authStruct.InvokerNew("is_ready")
+		authIsReadyFunction, err = authObject.InvokerNew("is_ready")
 	})
 	return err
 }
@@ -795,11 +794,11 @@ var authSavePasswordFunction_Once sync.Once
 func authSavePasswordFunction_Set() error {
 	var err error
 	authSavePasswordFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authSavePasswordFunction, err = authStruct.InvokerNew("save_password")
+		authSavePasswordFunction, err = authObject.InvokerNew("save_password")
 	})
 	return err
 }
@@ -825,11 +824,11 @@ var authUpdateFunction_Once sync.Once
 func authUpdateFunction_Set() error {
 	var err error
 	authUpdateFunction_Once.Do(func() {
-		err = authStruct_Set()
+		err = authObject_Set()
 		if err != nil {
 			return
 		}
-		authUpdateFunction, err = authStruct.InvokerNew("update")
+		authUpdateFunction, err = authObject.InvokerNew("update")
 	})
 	return err
 }
@@ -853,13 +852,13 @@ func (recv *Auth) Update(msg *Message, authHeader string) bool {
 	return retGo
 }
 
-var authBasicStruct *gi.Struct
-var authBasicStruct_Once sync.Once
+var authBasicObject *gi.Object
+var authBasicObject_Once sync.Once
 
-func authBasicStruct_Set() error {
+func authBasicObject_Set() error {
 	var err error
-	authBasicStruct_Once.Do(func() {
-		authBasicStruct, err = gi.StructNew("Soup", "AuthBasic")
+	authBasicObject_Once.Do(func() {
+		authBasicObject, err = gi.ObjectNew("Soup", "AuthBasic")
 	})
 	return err
 }
@@ -868,29 +867,13 @@ type AuthBasic struct {
 	Auth
 }
 
-// AuthBasicStruct creates an uninitialised AuthBasic.
-func AuthBasicStruct() *AuthBasic {
-	err := authBasicStruct_Set()
-	if err != nil {
-		return nil
-	}
+var authDigestObject *gi.Object
+var authDigestObject_Once sync.Once
 
-	structGo := &AuthBasic{}
-	structGo.Native = authBasicStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthBasic)
-	return structGo
-}
-func finalizeAuthBasic(obj *AuthBasic) {
-	authBasicStruct.Free(obj.Native)
-}
-
-var authDigestStruct *gi.Struct
-var authDigestStruct_Once sync.Once
-
-func authDigestStruct_Set() error {
+func authDigestObject_Set() error {
 	var err error
-	authDigestStruct_Once.Do(func() {
-		authDigestStruct, err = gi.StructNew("Soup", "AuthDigest")
+	authDigestObject_Once.Do(func() {
+		authDigestObject, err = gi.ObjectNew("Soup", "AuthDigest")
 	})
 	return err
 }
@@ -899,29 +882,13 @@ type AuthDigest struct {
 	Auth
 }
 
-// AuthDigestStruct creates an uninitialised AuthDigest.
-func AuthDigestStruct() *AuthDigest {
-	err := authDigestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var authDomainObject *gi.Object
+var authDomainObject_Once sync.Once
 
-	structGo := &AuthDigest{}
-	structGo.Native = authDigestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthDigest)
-	return structGo
-}
-func finalizeAuthDigest(obj *AuthDigest) {
-	authDigestStruct.Free(obj.Native)
-}
-
-var authDomainStruct *gi.Struct
-var authDomainStruct_Once sync.Once
-
-func authDomainStruct_Set() error {
+func authDomainObject_Set() error {
 	var err error
-	authDomainStruct_Once.Do(func() {
-		authDomainStruct, err = gi.StructNew("Soup", "AuthDomain")
+	authDomainObject_Once.Do(func() {
+		authDomainObject, err = gi.ObjectNew("Soup", "AuthDomain")
 	})
 	return err
 }
@@ -940,11 +907,11 @@ var authDomainAcceptsFunction_Once sync.Once
 func authDomainAcceptsFunction_Set() error {
 	var err error
 	authDomainAcceptsFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainAcceptsFunction, err = authDomainStruct.InvokerNew("accepts")
+		authDomainAcceptsFunction, err = authDomainObject.InvokerNew("accepts")
 	})
 	return err
 }
@@ -973,11 +940,11 @@ var authDomainAddPathFunction_Once sync.Once
 func authDomainAddPathFunction_Set() error {
 	var err error
 	authDomainAddPathFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainAddPathFunction, err = authDomainStruct.InvokerNew("add_path")
+		authDomainAddPathFunction, err = authDomainObject.InvokerNew("add_path")
 	})
 	return err
 }
@@ -1002,11 +969,11 @@ var authDomainChallengeFunction_Once sync.Once
 func authDomainChallengeFunction_Set() error {
 	var err error
 	authDomainChallengeFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainChallengeFunction, err = authDomainStruct.InvokerNew("challenge")
+		authDomainChallengeFunction, err = authDomainObject.InvokerNew("challenge")
 	})
 	return err
 }
@@ -1031,11 +998,11 @@ var authDomainCheckPasswordFunction_Once sync.Once
 func authDomainCheckPasswordFunction_Set() error {
 	var err error
 	authDomainCheckPasswordFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainCheckPasswordFunction, err = authDomainStruct.InvokerNew("check_password")
+		authDomainCheckPasswordFunction, err = authDomainObject.InvokerNew("check_password")
 	})
 	return err
 }
@@ -1066,11 +1033,11 @@ var authDomainCoversFunction_Once sync.Once
 func authDomainCoversFunction_Set() error {
 	var err error
 	authDomainCoversFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainCoversFunction, err = authDomainStruct.InvokerNew("covers")
+		authDomainCoversFunction, err = authDomainObject.InvokerNew("covers")
 	})
 	return err
 }
@@ -1099,11 +1066,11 @@ var authDomainGetRealmFunction_Once sync.Once
 func authDomainGetRealmFunction_Set() error {
 	var err error
 	authDomainGetRealmFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainGetRealmFunction, err = authDomainStruct.InvokerNew("get_realm")
+		authDomainGetRealmFunction, err = authDomainObject.InvokerNew("get_realm")
 	})
 	return err
 }
@@ -1131,11 +1098,11 @@ var authDomainRemovePathFunction_Once sync.Once
 func authDomainRemovePathFunction_Set() error {
 	var err error
 	authDomainRemovePathFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainRemovePathFunction, err = authDomainStruct.InvokerNew("remove_path")
+		authDomainRemovePathFunction, err = authDomainObject.InvokerNew("remove_path")
 	})
 	return err
 }
@@ -1164,11 +1131,11 @@ var authDomainTryGenericAuthCallbackFunction_Once sync.Once
 func authDomainTryGenericAuthCallbackFunction_Set() error {
 	var err error
 	authDomainTryGenericAuthCallbackFunction_Once.Do(func() {
-		err = authDomainStruct_Set()
+		err = authDomainObject_Set()
 		if err != nil {
 			return
 		}
-		authDomainTryGenericAuthCallbackFunction, err = authDomainStruct.InvokerNew("try_generic_auth_callback")
+		authDomainTryGenericAuthCallbackFunction, err = authDomainObject.InvokerNew("try_generic_auth_callback")
 	})
 	return err
 }
@@ -1192,29 +1159,13 @@ func (recv *AuthDomain) TryGenericAuthCallback(msg *Message, username string) bo
 	return retGo
 }
 
-// AuthDomainStruct creates an uninitialised AuthDomain.
-func AuthDomainStruct() *AuthDomain {
-	err := authDomainStruct_Set()
-	if err != nil {
-		return nil
-	}
+var authDomainBasicObject *gi.Object
+var authDomainBasicObject_Once sync.Once
 
-	structGo := &AuthDomain{}
-	structGo.Native = authDomainStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthDomain)
-	return structGo
-}
-func finalizeAuthDomain(obj *AuthDomain) {
-	authDomainStruct.Free(obj.Native)
-}
-
-var authDomainBasicStruct *gi.Struct
-var authDomainBasicStruct_Once sync.Once
-
-func authDomainBasicStruct_Set() error {
+func authDomainBasicObject_Set() error {
 	var err error
-	authDomainBasicStruct_Once.Do(func() {
-		authDomainBasicStruct, err = gi.StructNew("Soup", "AuthDomainBasic")
+	authDomainBasicObject_Once.Do(func() {
+		authDomainBasicObject, err = gi.ObjectNew("Soup", "AuthDomainBasic")
 	})
 	return err
 }
@@ -1225,7 +1176,7 @@ type AuthDomainBasic struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *AuthDomainBasic) FieldParent() *AuthDomain {
-	argValue := gi.FieldGet(authDomainBasicStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(authDomainBasicObject, recv.Native, "parent")
 	value := &AuthDomain{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1235,20 +1186,20 @@ func (recv *AuthDomainBasic) FieldParent() *AuthDomain {
 func (recv *AuthDomainBasic) SetFieldParent(value *AuthDomain) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(authDomainBasicStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(authDomainBasicObject, recv.Native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_auth_domain_basic_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_auth_domain_basic_set_auth_callback' : parameter 'callback' of type 'AuthDomainBasicAuthCallback' not supported
 
-var authDomainDigestStruct *gi.Struct
-var authDomainDigestStruct_Once sync.Once
+var authDomainDigestObject *gi.Object
+var authDomainDigestObject_Once sync.Once
 
-func authDomainDigestStruct_Set() error {
+func authDomainDigestObject_Set() error {
 	var err error
-	authDomainDigestStruct_Once.Do(func() {
-		authDomainDigestStruct, err = gi.StructNew("Soup", "AuthDomainDigest")
+	authDomainDigestObject_Once.Do(func() {
+		authDomainDigestObject, err = gi.ObjectNew("Soup", "AuthDomainDigest")
 	})
 	return err
 }
@@ -1259,7 +1210,7 @@ type AuthDomainDigest struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *AuthDomainDigest) FieldParent() *AuthDomain {
-	argValue := gi.FieldGet(authDomainDigestStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(authDomainDigestObject, recv.Native, "parent")
 	value := &AuthDomain{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1269,20 +1220,20 @@ func (recv *AuthDomainDigest) FieldParent() *AuthDomain {
 func (recv *AuthDomainDigest) SetFieldParent(value *AuthDomain) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(authDomainDigestStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(authDomainDigestObject, recv.Native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_auth_domain_digest_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_auth_domain_digest_set_auth_callback' : parameter 'callback' of type 'AuthDomainDigestAuthCallback' not supported
 
-var authManagerStruct *gi.Struct
-var authManagerStruct_Once sync.Once
+var authManagerObject *gi.Object
+var authManagerObject_Once sync.Once
 
-func authManagerStruct_Set() error {
+func authManagerObject_Set() error {
 	var err error
-	authManagerStruct_Once.Do(func() {
-		authManagerStruct, err = gi.StructNew("Soup", "AuthManager")
+	authManagerObject_Once.Do(func() {
+		authManagerObject, err = gi.ObjectNew("Soup", "AuthManager")
 	})
 	return err
 }
@@ -1297,7 +1248,7 @@ type AuthManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *AuthManager) FieldPriv() *AuthManagerPrivate {
-	argValue := gi.FieldGet(authManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(authManagerObject, recv.Native, "priv")
 	value := &AuthManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1307,7 +1258,7 @@ func (recv *AuthManager) FieldPriv() *AuthManagerPrivate {
 func (recv *AuthManager) SetFieldPriv(value *AuthManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(authManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(authManagerObject, recv.Native, "priv", argValue)
 }
 
 var authManagerClearCachedCredentialsFunction *gi.Function
@@ -1316,11 +1267,11 @@ var authManagerClearCachedCredentialsFunction_Once sync.Once
 func authManagerClearCachedCredentialsFunction_Set() error {
 	var err error
 	authManagerClearCachedCredentialsFunction_Once.Do(func() {
-		err = authManagerStruct_Set()
+		err = authManagerObject_Set()
 		if err != nil {
 			return
 		}
-		authManagerClearCachedCredentialsFunction, err = authManagerStruct.InvokerNew("clear_cached_credentials")
+		authManagerClearCachedCredentialsFunction, err = authManagerObject.InvokerNew("clear_cached_credentials")
 	})
 	return err
 }
@@ -1344,11 +1295,11 @@ var authManagerUseAuthFunction_Once sync.Once
 func authManagerUseAuthFunction_Set() error {
 	var err error
 	authManagerUseAuthFunction_Once.Do(func() {
-		err = authManagerStruct_Set()
+		err = authManagerObject_Set()
 		if err != nil {
 			return
 		}
-		authManagerUseAuthFunction, err = authManagerStruct.InvokerNew("use_auth")
+		authManagerUseAuthFunction, err = authManagerObject.InvokerNew("use_auth")
 	})
 	return err
 }
@@ -1368,29 +1319,13 @@ func (recv *AuthManager) UseAuth(uri *URI, auth *Auth) {
 	return
 }
 
-// AuthManagerStruct creates an uninitialised AuthManager.
-func AuthManagerStruct() *AuthManager {
-	err := authManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var authNTLMObject *gi.Object
+var authNTLMObject_Once sync.Once
 
-	structGo := &AuthManager{}
-	structGo.Native = authManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthManager)
-	return structGo
-}
-func finalizeAuthManager(obj *AuthManager) {
-	authManagerStruct.Free(obj.Native)
-}
-
-var authNTLMStruct *gi.Struct
-var authNTLMStruct_Once sync.Once
-
-func authNTLMStruct_Set() error {
+func authNTLMObject_Set() error {
 	var err error
-	authNTLMStruct_Once.Do(func() {
-		authNTLMStruct, err = gi.StructNew("Soup", "AuthNTLM")
+	authNTLMObject_Once.Do(func() {
+		authNTLMObject, err = gi.ObjectNew("Soup", "AuthNTLM")
 	})
 	return err
 }
@@ -1399,29 +1334,13 @@ type AuthNTLM struct {
 	Auth
 }
 
-// AuthNTLMStruct creates an uninitialised AuthNTLM.
-func AuthNTLMStruct() *AuthNTLM {
-	err := authNTLMStruct_Set()
-	if err != nil {
-		return nil
-	}
+var authNegotiateObject *gi.Object
+var authNegotiateObject_Once sync.Once
 
-	structGo := &AuthNTLM{}
-	structGo.Native = authNTLMStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthNTLM)
-	return structGo
-}
-func finalizeAuthNTLM(obj *AuthNTLM) {
-	authNTLMStruct.Free(obj.Native)
-}
-
-var authNegotiateStruct *gi.Struct
-var authNegotiateStruct_Once sync.Once
-
-func authNegotiateStruct_Set() error {
+func authNegotiateObject_Set() error {
 	var err error
-	authNegotiateStruct_Once.Do(func() {
-		authNegotiateStruct, err = gi.StructNew("Soup", "AuthNegotiate")
+	authNegotiateObject_Once.Do(func() {
+		authNegotiateObject, err = gi.ObjectNew("Soup", "AuthNegotiate")
 	})
 	return err
 }
@@ -1430,29 +1349,13 @@ type AuthNegotiate struct {
 	Auth
 }
 
-// AuthNegotiateStruct creates an uninitialised AuthNegotiate.
-func AuthNegotiateStruct() *AuthNegotiate {
-	err := authNegotiateStruct_Set()
-	if err != nil {
-		return nil
-	}
+var cacheObject *gi.Object
+var cacheObject_Once sync.Once
 
-	structGo := &AuthNegotiate{}
-	structGo.Native = authNegotiateStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAuthNegotiate)
-	return structGo
-}
-func finalizeAuthNegotiate(obj *AuthNegotiate) {
-	authNegotiateStruct.Free(obj.Native)
-}
-
-var cacheStruct *gi.Struct
-var cacheStruct_Once sync.Once
-
-func cacheStruct_Set() error {
+func cacheObject_Set() error {
 	var err error
-	cacheStruct_Once.Do(func() {
-		cacheStruct, err = gi.StructNew("Soup", "Cache")
+	cacheObject_Once.Do(func() {
+		cacheObject, err = gi.ObjectNew("Soup", "Cache")
 	})
 	return err
 }
@@ -1467,7 +1370,7 @@ type Cache struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Cache) FieldPriv() *CachePrivate {
-	argValue := gi.FieldGet(cacheStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(cacheObject, recv.Native, "priv")
 	value := &CachePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1477,7 +1380,7 @@ func (recv *Cache) FieldPriv() *CachePrivate {
 func (recv *Cache) SetFieldPriv(value *CachePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(cacheStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(cacheObject, recv.Native, "priv", argValue)
 }
 
 var cacheNewFunction *gi.Function
@@ -1486,11 +1389,11 @@ var cacheNewFunction_Once sync.Once
 func cacheNewFunction_Set() error {
 	var err error
 	cacheNewFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheNewFunction, err = cacheStruct.InvokerNew("new")
+		cacheNewFunction, err = cacheObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1520,11 +1423,11 @@ var cacheClearFunction_Once sync.Once
 func cacheClearFunction_Set() error {
 	var err error
 	cacheClearFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheClearFunction, err = cacheStruct.InvokerNew("clear")
+		cacheClearFunction, err = cacheObject.InvokerNew("clear")
 	})
 	return err
 }
@@ -1548,11 +1451,11 @@ var cacheDumpFunction_Once sync.Once
 func cacheDumpFunction_Set() error {
 	var err error
 	cacheDumpFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheDumpFunction, err = cacheStruct.InvokerNew("dump")
+		cacheDumpFunction, err = cacheObject.InvokerNew("dump")
 	})
 	return err
 }
@@ -1576,11 +1479,11 @@ var cacheFlushFunction_Once sync.Once
 func cacheFlushFunction_Set() error {
 	var err error
 	cacheFlushFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheFlushFunction, err = cacheStruct.InvokerNew("flush")
+		cacheFlushFunction, err = cacheObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -1604,11 +1507,11 @@ var cacheGetMaxSizeFunction_Once sync.Once
 func cacheGetMaxSizeFunction_Set() error {
 	var err error
 	cacheGetMaxSizeFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheGetMaxSizeFunction, err = cacheStruct.InvokerNew("get_max_size")
+		cacheGetMaxSizeFunction, err = cacheObject.InvokerNew("get_max_size")
 	})
 	return err
 }
@@ -1636,11 +1539,11 @@ var cacheLoadFunction_Once sync.Once
 func cacheLoadFunction_Set() error {
 	var err error
 	cacheLoadFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheLoadFunction, err = cacheStruct.InvokerNew("load")
+		cacheLoadFunction, err = cacheObject.InvokerNew("load")
 	})
 	return err
 }
@@ -1664,11 +1567,11 @@ var cacheSetMaxSizeFunction_Once sync.Once
 func cacheSetMaxSizeFunction_Set() error {
 	var err error
 	cacheSetMaxSizeFunction_Once.Do(func() {
-		err = cacheStruct_Set()
+		err = cacheObject_Set()
 		if err != nil {
 			return
 		}
-		cacheSetMaxSizeFunction, err = cacheStruct.InvokerNew("set_max_size")
+		cacheSetMaxSizeFunction, err = cacheObject.InvokerNew("set_max_size")
 	})
 	return err
 }
@@ -1687,13 +1590,13 @@ func (recv *Cache) SetMaxSize(maxSize uint32) {
 	return
 }
 
-var contentDecoderStruct *gi.Struct
-var contentDecoderStruct_Once sync.Once
+var contentDecoderObject *gi.Object
+var contentDecoderObject_Once sync.Once
 
-func contentDecoderStruct_Set() error {
+func contentDecoderObject_Set() error {
 	var err error
-	contentDecoderStruct_Once.Do(func() {
-		contentDecoderStruct, err = gi.StructNew("Soup", "ContentDecoder")
+	contentDecoderObject_Once.Do(func() {
+		contentDecoderObject, err = gi.ObjectNew("Soup", "ContentDecoder")
 	})
 	return err
 }
@@ -1708,7 +1611,7 @@ type ContentDecoder struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContentDecoder) FieldPriv() *ContentDecoderPrivate {
-	argValue := gi.FieldGet(contentDecoderStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(contentDecoderObject, recv.Native, "priv")
 	value := &ContentDecoderPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1718,32 +1621,16 @@ func (recv *ContentDecoder) FieldPriv() *ContentDecoderPrivate {
 func (recv *ContentDecoder) SetFieldPriv(value *ContentDecoderPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(contentDecoderStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(contentDecoderObject, recv.Native, "priv", argValue)
 }
 
-// ContentDecoderStruct creates an uninitialised ContentDecoder.
-func ContentDecoderStruct() *ContentDecoder {
-	err := contentDecoderStruct_Set()
-	if err != nil {
-		return nil
-	}
+var contentSnifferObject *gi.Object
+var contentSnifferObject_Once sync.Once
 
-	structGo := &ContentDecoder{}
-	structGo.Native = contentDecoderStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeContentDecoder)
-	return structGo
-}
-func finalizeContentDecoder(obj *ContentDecoder) {
-	contentDecoderStruct.Free(obj.Native)
-}
-
-var contentSnifferStruct *gi.Struct
-var contentSnifferStruct_Once sync.Once
-
-func contentSnifferStruct_Set() error {
+func contentSnifferObject_Set() error {
 	var err error
-	contentSnifferStruct_Once.Do(func() {
-		contentSnifferStruct, err = gi.StructNew("Soup", "ContentSniffer")
+	contentSnifferObject_Once.Do(func() {
+		contentSnifferObject, err = gi.ObjectNew("Soup", "ContentSniffer")
 	})
 	return err
 }
@@ -1758,7 +1645,7 @@ type ContentSniffer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContentSniffer) FieldPriv() *ContentSnifferPrivate {
-	argValue := gi.FieldGet(contentSnifferStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(contentSnifferObject, recv.Native, "priv")
 	value := &ContentSnifferPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1768,7 +1655,7 @@ func (recv *ContentSniffer) FieldPriv() *ContentSnifferPrivate {
 func (recv *ContentSniffer) SetFieldPriv(value *ContentSnifferPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(contentSnifferStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(contentSnifferObject, recv.Native, "priv", argValue)
 }
 
 var contentSnifferNewFunction *gi.Function
@@ -1777,11 +1664,11 @@ var contentSnifferNewFunction_Once sync.Once
 func contentSnifferNewFunction_Set() error {
 	var err error
 	contentSnifferNewFunction_Once.Do(func() {
-		err = contentSnifferStruct_Set()
+		err = contentSnifferObject_Set()
 		if err != nil {
 			return
 		}
-		contentSnifferNewFunction, err = contentSnifferStruct.InvokerNew("new")
+		contentSnifferNewFunction, err = contentSnifferObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1808,11 +1695,11 @@ var contentSnifferGetBufferSizeFunction_Once sync.Once
 func contentSnifferGetBufferSizeFunction_Set() error {
 	var err error
 	contentSnifferGetBufferSizeFunction_Once.Do(func() {
-		err = contentSnifferStruct_Set()
+		err = contentSnifferObject_Set()
 		if err != nil {
 			return
 		}
-		contentSnifferGetBufferSizeFunction, err = contentSnifferStruct.InvokerNew("get_buffer_size")
+		contentSnifferGetBufferSizeFunction, err = contentSnifferObject.InvokerNew("get_buffer_size")
 	})
 	return err
 }
@@ -1836,13 +1723,13 @@ func (recv *ContentSniffer) GetBufferSize() uint64 {
 
 // UNSUPPORTED : C value 'soup_content_sniffer_sniff' : parameter 'params' of type 'GLib.HashTable' not supported
 
-var cookieJarStruct *gi.Struct
-var cookieJarStruct_Once sync.Once
+var cookieJarObject *gi.Object
+var cookieJarObject_Once sync.Once
 
-func cookieJarStruct_Set() error {
+func cookieJarObject_Set() error {
 	var err error
-	cookieJarStruct_Once.Do(func() {
-		cookieJarStruct, err = gi.StructNew("Soup", "CookieJar")
+	cookieJarObject_Once.Do(func() {
+		cookieJarObject, err = gi.ObjectNew("Soup", "CookieJar")
 	})
 	return err
 }
@@ -1861,11 +1748,11 @@ var cookieJarNewFunction_Once sync.Once
 func cookieJarNewFunction_Set() error {
 	var err error
 	cookieJarNewFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarNewFunction, err = cookieJarStruct.InvokerNew("new")
+		cookieJarNewFunction, err = cookieJarObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1892,11 +1779,11 @@ var cookieJarAddCookieFunction_Once sync.Once
 func cookieJarAddCookieFunction_Set() error {
 	var err error
 	cookieJarAddCookieFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarAddCookieFunction, err = cookieJarStruct.InvokerNew("add_cookie")
+		cookieJarAddCookieFunction, err = cookieJarObject.InvokerNew("add_cookie")
 	})
 	return err
 }
@@ -1921,11 +1808,11 @@ var cookieJarAddCookieFullFunction_Once sync.Once
 func cookieJarAddCookieFullFunction_Set() error {
 	var err error
 	cookieJarAddCookieFullFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarAddCookieFullFunction, err = cookieJarStruct.InvokerNew("add_cookie_full")
+		cookieJarAddCookieFullFunction, err = cookieJarObject.InvokerNew("add_cookie_full")
 	})
 	return err
 }
@@ -1952,11 +1839,11 @@ var cookieJarAddCookieWithFirstPartyFunction_Once sync.Once
 func cookieJarAddCookieWithFirstPartyFunction_Set() error {
 	var err error
 	cookieJarAddCookieWithFirstPartyFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarAddCookieWithFirstPartyFunction, err = cookieJarStruct.InvokerNew("add_cookie_with_first_party")
+		cookieJarAddCookieWithFirstPartyFunction, err = cookieJarObject.InvokerNew("add_cookie_with_first_party")
 	})
 	return err
 }
@@ -1984,11 +1871,11 @@ var cookieJarDeleteCookieFunction_Once sync.Once
 func cookieJarDeleteCookieFunction_Set() error {
 	var err error
 	cookieJarDeleteCookieFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarDeleteCookieFunction, err = cookieJarStruct.InvokerNew("delete_cookie")
+		cookieJarDeleteCookieFunction, err = cookieJarObject.InvokerNew("delete_cookie")
 	})
 	return err
 }
@@ -2013,11 +1900,11 @@ var cookieJarGetAcceptPolicyFunction_Once sync.Once
 func cookieJarGetAcceptPolicyFunction_Set() error {
 	var err error
 	cookieJarGetAcceptPolicyFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarGetAcceptPolicyFunction, err = cookieJarStruct.InvokerNew("get_accept_policy")
+		cookieJarGetAcceptPolicyFunction, err = cookieJarObject.InvokerNew("get_accept_policy")
 	})
 	return err
 }
@@ -2047,11 +1934,11 @@ var cookieJarGetCookiesFunction_Once sync.Once
 func cookieJarGetCookiesFunction_Set() error {
 	var err error
 	cookieJarGetCookiesFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarGetCookiesFunction, err = cookieJarStruct.InvokerNew("get_cookies")
+		cookieJarGetCookiesFunction, err = cookieJarObject.InvokerNew("get_cookies")
 	})
 	return err
 }
@@ -2081,11 +1968,11 @@ var cookieJarIsPersistentFunction_Once sync.Once
 func cookieJarIsPersistentFunction_Set() error {
 	var err error
 	cookieJarIsPersistentFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarIsPersistentFunction, err = cookieJarStruct.InvokerNew("is_persistent")
+		cookieJarIsPersistentFunction, err = cookieJarObject.InvokerNew("is_persistent")
 	})
 	return err
 }
@@ -2113,11 +2000,11 @@ var cookieJarSaveFunction_Once sync.Once
 func cookieJarSaveFunction_Set() error {
 	var err error
 	cookieJarSaveFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarSaveFunction, err = cookieJarStruct.InvokerNew("save")
+		cookieJarSaveFunction, err = cookieJarObject.InvokerNew("save")
 	})
 	return err
 }
@@ -2141,11 +2028,11 @@ var cookieJarSetAcceptPolicyFunction_Once sync.Once
 func cookieJarSetAcceptPolicyFunction_Set() error {
 	var err error
 	cookieJarSetAcceptPolicyFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarSetAcceptPolicyFunction, err = cookieJarStruct.InvokerNew("set_accept_policy")
+		cookieJarSetAcceptPolicyFunction, err = cookieJarObject.InvokerNew("set_accept_policy")
 	})
 	return err
 }
@@ -2170,11 +2057,11 @@ var cookieJarSetCookieFunction_Once sync.Once
 func cookieJarSetCookieFunction_Set() error {
 	var err error
 	cookieJarSetCookieFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarSetCookieFunction, err = cookieJarStruct.InvokerNew("set_cookie")
+		cookieJarSetCookieFunction, err = cookieJarObject.InvokerNew("set_cookie")
 	})
 	return err
 }
@@ -2200,11 +2087,11 @@ var cookieJarSetCookieWithFirstPartyFunction_Once sync.Once
 func cookieJarSetCookieWithFirstPartyFunction_Set() error {
 	var err error
 	cookieJarSetCookieWithFirstPartyFunction_Once.Do(func() {
-		err = cookieJarStruct_Set()
+		err = cookieJarObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarSetCookieWithFirstPartyFunction, err = cookieJarStruct.InvokerNew("set_cookie_with_first_party")
+		cookieJarSetCookieWithFirstPartyFunction, err = cookieJarObject.InvokerNew("set_cookie_with_first_party")
 	})
 	return err
 }
@@ -2225,13 +2112,13 @@ func (recv *CookieJar) SetCookieWithFirstParty(uri *URI, firstParty *URI, cookie
 	return
 }
 
-var cookieJarDBStruct *gi.Struct
-var cookieJarDBStruct_Once sync.Once
+var cookieJarDBObject *gi.Object
+var cookieJarDBObject_Once sync.Once
 
-func cookieJarDBStruct_Set() error {
+func cookieJarDBObject_Set() error {
 	var err error
-	cookieJarDBStruct_Once.Do(func() {
-		cookieJarDBStruct, err = gi.StructNew("Soup", "CookieJarDB")
+	cookieJarDBObject_Once.Do(func() {
+		cookieJarDBObject, err = gi.ObjectNew("Soup", "CookieJarDB")
 	})
 	return err
 }
@@ -2242,7 +2129,7 @@ type CookieJarDB struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CookieJarDB) FieldParent() *CookieJar {
-	argValue := gi.FieldGet(cookieJarDBStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(cookieJarDBObject, recv.Native, "parent")
 	value := &CookieJar{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2252,7 +2139,7 @@ func (recv *CookieJarDB) FieldParent() *CookieJar {
 func (recv *CookieJarDB) SetFieldParent(value *CookieJar) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(cookieJarDBStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(cookieJarDBObject, recv.Native, "parent", argValue)
 }
 
 var cookieJarDBNewFunction *gi.Function
@@ -2261,11 +2148,11 @@ var cookieJarDBNewFunction_Once sync.Once
 func cookieJarDBNewFunction_Set() error {
 	var err error
 	cookieJarDBNewFunction_Once.Do(func() {
-		err = cookieJarDBStruct_Set()
+		err = cookieJarDBObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarDBNewFunction, err = cookieJarDBStruct.InvokerNew("new")
+		cookieJarDBNewFunction, err = cookieJarDBObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2289,13 +2176,13 @@ func CookieJarDBNew(filename string, readOnly bool) *CookieJarDB {
 	return retGo
 }
 
-var cookieJarTextStruct *gi.Struct
-var cookieJarTextStruct_Once sync.Once
+var cookieJarTextObject *gi.Object
+var cookieJarTextObject_Once sync.Once
 
-func cookieJarTextStruct_Set() error {
+func cookieJarTextObject_Set() error {
 	var err error
-	cookieJarTextStruct_Once.Do(func() {
-		cookieJarTextStruct, err = gi.StructNew("Soup", "CookieJarText")
+	cookieJarTextObject_Once.Do(func() {
+		cookieJarTextObject, err = gi.ObjectNew("Soup", "CookieJarText")
 	})
 	return err
 }
@@ -2306,7 +2193,7 @@ type CookieJarText struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CookieJarText) FieldParent() *CookieJar {
-	argValue := gi.FieldGet(cookieJarTextStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(cookieJarTextObject, recv.Native, "parent")
 	value := &CookieJar{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2316,7 +2203,7 @@ func (recv *CookieJarText) FieldParent() *CookieJar {
 func (recv *CookieJarText) SetFieldParent(value *CookieJar) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(cookieJarTextStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(cookieJarTextObject, recv.Native, "parent", argValue)
 }
 
 var cookieJarTextNewFunction *gi.Function
@@ -2325,11 +2212,11 @@ var cookieJarTextNewFunction_Once sync.Once
 func cookieJarTextNewFunction_Set() error {
 	var err error
 	cookieJarTextNewFunction_Once.Do(func() {
-		err = cookieJarTextStruct_Set()
+		err = cookieJarTextObject_Set()
 		if err != nil {
 			return
 		}
-		cookieJarTextNewFunction, err = cookieJarTextStruct.InvokerNew("new")
+		cookieJarTextNewFunction, err = cookieJarTextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2353,13 +2240,13 @@ func CookieJarTextNew(filename string, readOnly bool) *CookieJarText {
 	return retGo
 }
 
-var hSTSEnforcerStruct *gi.Struct
-var hSTSEnforcerStruct_Once sync.Once
+var hSTSEnforcerObject *gi.Object
+var hSTSEnforcerObject_Once sync.Once
 
-func hSTSEnforcerStruct_Set() error {
+func hSTSEnforcerObject_Set() error {
 	var err error
-	hSTSEnforcerStruct_Once.Do(func() {
-		hSTSEnforcerStruct, err = gi.StructNew("Soup", "HSTSEnforcer")
+	hSTSEnforcerObject_Once.Do(func() {
+		hSTSEnforcerObject, err = gi.ObjectNew("Soup", "HSTSEnforcer")
 	})
 	return err
 }
@@ -2374,7 +2261,7 @@ type HSTSEnforcer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *HSTSEnforcer) FieldPriv() *HSTSEnforcerPrivate {
-	argValue := gi.FieldGet(hSTSEnforcerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(hSTSEnforcerObject, recv.Native, "priv")
 	value := &HSTSEnforcerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2384,7 +2271,7 @@ func (recv *HSTSEnforcer) FieldPriv() *HSTSEnforcerPrivate {
 func (recv *HSTSEnforcer) SetFieldPriv(value *HSTSEnforcerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(hSTSEnforcerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(hSTSEnforcerObject, recv.Native, "priv", argValue)
 }
 
 var hSTSEnforcerNewFunction *gi.Function
@@ -2393,11 +2280,11 @@ var hSTSEnforcerNewFunction_Once sync.Once
 func hSTSEnforcerNewFunction_Set() error {
 	var err error
 	hSTSEnforcerNewFunction_Once.Do(func() {
-		err = hSTSEnforcerStruct_Set()
+		err = hSTSEnforcerObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerNewFunction, err = hSTSEnforcerStruct.InvokerNew("new")
+		hSTSEnforcerNewFunction, err = hSTSEnforcerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2428,11 +2315,11 @@ var hSTSEnforcerHasValidPolicyFunction_Once sync.Once
 func hSTSEnforcerHasValidPolicyFunction_Set() error {
 	var err error
 	hSTSEnforcerHasValidPolicyFunction_Once.Do(func() {
-		err = hSTSEnforcerStruct_Set()
+		err = hSTSEnforcerObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerHasValidPolicyFunction, err = hSTSEnforcerStruct.InvokerNew("has_valid_policy")
+		hSTSEnforcerHasValidPolicyFunction, err = hSTSEnforcerObject.InvokerNew("has_valid_policy")
 	})
 	return err
 }
@@ -2461,11 +2348,11 @@ var hSTSEnforcerIsPersistentFunction_Once sync.Once
 func hSTSEnforcerIsPersistentFunction_Set() error {
 	var err error
 	hSTSEnforcerIsPersistentFunction_Once.Do(func() {
-		err = hSTSEnforcerStruct_Set()
+		err = hSTSEnforcerObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerIsPersistentFunction, err = hSTSEnforcerStruct.InvokerNew("is_persistent")
+		hSTSEnforcerIsPersistentFunction, err = hSTSEnforcerObject.InvokerNew("is_persistent")
 	})
 	return err
 }
@@ -2493,11 +2380,11 @@ var hSTSEnforcerSetPolicyFunction_Once sync.Once
 func hSTSEnforcerSetPolicyFunction_Set() error {
 	var err error
 	hSTSEnforcerSetPolicyFunction_Once.Do(func() {
-		err = hSTSEnforcerStruct_Set()
+		err = hSTSEnforcerObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerSetPolicyFunction, err = hSTSEnforcerStruct.InvokerNew("set_policy")
+		hSTSEnforcerSetPolicyFunction, err = hSTSEnforcerObject.InvokerNew("set_policy")
 	})
 	return err
 }
@@ -2522,11 +2409,11 @@ var hSTSEnforcerSetSessionPolicyFunction_Once sync.Once
 func hSTSEnforcerSetSessionPolicyFunction_Set() error {
 	var err error
 	hSTSEnforcerSetSessionPolicyFunction_Once.Do(func() {
-		err = hSTSEnforcerStruct_Set()
+		err = hSTSEnforcerObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerSetSessionPolicyFunction, err = hSTSEnforcerStruct.InvokerNew("set_session_policy")
+		hSTSEnforcerSetSessionPolicyFunction, err = hSTSEnforcerObject.InvokerNew("set_session_policy")
 	})
 	return err
 }
@@ -2546,13 +2433,13 @@ func (recv *HSTSEnforcer) SetSessionPolicy(domain string, includeSubdomains bool
 	return
 }
 
-var hSTSEnforcerDBStruct *gi.Struct
-var hSTSEnforcerDBStruct_Once sync.Once
+var hSTSEnforcerDBObject *gi.Object
+var hSTSEnforcerDBObject_Once sync.Once
 
-func hSTSEnforcerDBStruct_Set() error {
+func hSTSEnforcerDBObject_Set() error {
 	var err error
-	hSTSEnforcerDBStruct_Once.Do(func() {
-		hSTSEnforcerDBStruct, err = gi.StructNew("Soup", "HSTSEnforcerDB")
+	hSTSEnforcerDBObject_Once.Do(func() {
+		hSTSEnforcerDBObject, err = gi.ObjectNew("Soup", "HSTSEnforcerDB")
 	})
 	return err
 }
@@ -2563,7 +2450,7 @@ type HSTSEnforcerDB struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *HSTSEnforcerDB) FieldParent() *HSTSEnforcer {
-	argValue := gi.FieldGet(hSTSEnforcerDBStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(hSTSEnforcerDBObject, recv.Native, "parent")
 	value := &HSTSEnforcer{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2573,12 +2460,12 @@ func (recv *HSTSEnforcerDB) FieldParent() *HSTSEnforcer {
 func (recv *HSTSEnforcerDB) SetFieldParent(value *HSTSEnforcer) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(hSTSEnforcerDBStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(hSTSEnforcerDBObject, recv.Native, "parent", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *HSTSEnforcerDB) FieldPriv() *HSTSEnforcerDBPrivate {
-	argValue := gi.FieldGet(hSTSEnforcerDBStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(hSTSEnforcerDBObject, recv.Native, "priv")
 	value := &HSTSEnforcerDBPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2588,7 +2475,7 @@ func (recv *HSTSEnforcerDB) FieldPriv() *HSTSEnforcerDBPrivate {
 func (recv *HSTSEnforcerDB) SetFieldPriv(value *HSTSEnforcerDBPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(hSTSEnforcerDBStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(hSTSEnforcerDBObject, recv.Native, "priv", argValue)
 }
 
 var hSTSEnforcerDBNewFunction *gi.Function
@@ -2597,11 +2484,11 @@ var hSTSEnforcerDBNewFunction_Once sync.Once
 func hSTSEnforcerDBNewFunction_Set() error {
 	var err error
 	hSTSEnforcerDBNewFunction_Once.Do(func() {
-		err = hSTSEnforcerDBStruct_Set()
+		err = hSTSEnforcerDBObject_Set()
 		if err != nil {
 			return
 		}
-		hSTSEnforcerDBNewFunction, err = hSTSEnforcerDBStruct.InvokerNew("new")
+		hSTSEnforcerDBNewFunction, err = hSTSEnforcerDBObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2624,13 +2511,13 @@ func HSTSEnforcerDBNew(filename string) *HSTSEnforcerDB {
 	return retGo
 }
 
-var loggerStruct *gi.Struct
-var loggerStruct_Once sync.Once
+var loggerObject *gi.Object
+var loggerObject_Once sync.Once
 
-func loggerStruct_Set() error {
+func loggerObject_Set() error {
 	var err error
-	loggerStruct_Once.Do(func() {
-		loggerStruct, err = gi.StructNew("Soup", "Logger")
+	loggerObject_Once.Do(func() {
+		loggerObject, err = gi.ObjectNew("Soup", "Logger")
 	})
 	return err
 }
@@ -2649,11 +2536,11 @@ var loggerNewFunction_Once sync.Once
 func loggerNewFunction_Set() error {
 	var err error
 	loggerNewFunction_Once.Do(func() {
-		err = loggerStruct_Set()
+		err = loggerObject_Set()
 		if err != nil {
 			return
 		}
-		loggerNewFunction, err = loggerStruct.InvokerNew("new")
+		loggerNewFunction, err = loggerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2683,11 +2570,11 @@ var loggerAttachFunction_Once sync.Once
 func loggerAttachFunction_Set() error {
 	var err error
 	loggerAttachFunction_Once.Do(func() {
-		err = loggerStruct_Set()
+		err = loggerObject_Set()
 		if err != nil {
 			return
 		}
-		loggerAttachFunction, err = loggerStruct.InvokerNew("attach")
+		loggerAttachFunction, err = loggerObject.InvokerNew("attach")
 	})
 	return err
 }
@@ -2712,11 +2599,11 @@ var loggerDetachFunction_Once sync.Once
 func loggerDetachFunction_Set() error {
 	var err error
 	loggerDetachFunction_Once.Do(func() {
-		err = loggerStruct_Set()
+		err = loggerObject_Set()
 		if err != nil {
 			return
 		}
-		loggerDetachFunction, err = loggerStruct.InvokerNew("detach")
+		loggerDetachFunction, err = loggerObject.InvokerNew("detach")
 	})
 	return err
 }
@@ -2741,13 +2628,13 @@ func (recv *Logger) Detach(session *Session) {
 
 // UNSUPPORTED : C value 'soup_logger_set_response_filter' : parameter 'response_filter' of type 'LoggerFilter' not supported
 
-var messageStruct *gi.Struct
-var messageStruct_Once sync.Once
+var messageObject *gi.Object
+var messageObject_Once sync.Once
 
-func messageStruct_Set() error {
+func messageObject_Set() error {
 	var err error
-	messageStruct_Once.Do(func() {
-		messageStruct, err = gi.StructNew("Soup", "Message")
+	messageObject_Once.Do(func() {
+		messageObject, err = gi.ObjectNew("Soup", "Message")
 	})
 	return err
 }
@@ -2762,7 +2649,7 @@ type Message struct {
 
 // FieldMethod returns the C field 'method'.
 func (recv *Message) FieldMethod() string {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "method")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "method")
 	value := argValue.String(false)
 	return value
 }
@@ -2771,12 +2658,12 @@ func (recv *Message) FieldMethod() string {
 func (recv *Message) SetFieldMethod(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(messageStruct, recv.Native, "method", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "method", argValue)
 }
 
 // FieldStatusCode returns the C field 'status_code'.
 func (recv *Message) FieldStatusCode() uint32 {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "status_code")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "status_code")
 	value := argValue.Uint32()
 	return value
 }
@@ -2785,12 +2672,12 @@ func (recv *Message) FieldStatusCode() uint32 {
 func (recv *Message) SetFieldStatusCode(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(messageStruct, recv.Native, "status_code", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "status_code", argValue)
 }
 
 // FieldReasonPhrase returns the C field 'reason_phrase'.
 func (recv *Message) FieldReasonPhrase() string {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "reason_phrase")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "reason_phrase")
 	value := argValue.String(false)
 	return value
 }
@@ -2799,12 +2686,12 @@ func (recv *Message) FieldReasonPhrase() string {
 func (recv *Message) SetFieldReasonPhrase(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(messageStruct, recv.Native, "reason_phrase", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "reason_phrase", argValue)
 }
 
 // FieldRequestBody returns the C field 'request_body'.
 func (recv *Message) FieldRequestBody() *MessageBody {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "request_body")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "request_body")
 	value := &MessageBody{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2814,12 +2701,12 @@ func (recv *Message) FieldRequestBody() *MessageBody {
 func (recv *Message) SetFieldRequestBody(value *MessageBody) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(messageStruct, recv.Native, "request_body", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "request_body", argValue)
 }
 
 // FieldRequestHeaders returns the C field 'request_headers'.
 func (recv *Message) FieldRequestHeaders() *MessageHeaders {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "request_headers")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "request_headers")
 	value := &MessageHeaders{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2829,12 +2716,12 @@ func (recv *Message) FieldRequestHeaders() *MessageHeaders {
 func (recv *Message) SetFieldRequestHeaders(value *MessageHeaders) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(messageStruct, recv.Native, "request_headers", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "request_headers", argValue)
 }
 
 // FieldResponseBody returns the C field 'response_body'.
 func (recv *Message) FieldResponseBody() *MessageBody {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "response_body")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "response_body")
 	value := &MessageBody{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2844,12 +2731,12 @@ func (recv *Message) FieldResponseBody() *MessageBody {
 func (recv *Message) SetFieldResponseBody(value *MessageBody) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(messageStruct, recv.Native, "response_body", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "response_body", argValue)
 }
 
 // FieldResponseHeaders returns the C field 'response_headers'.
 func (recv *Message) FieldResponseHeaders() *MessageHeaders {
-	argValue := gi.FieldGet(messageStruct, recv.Native, "response_headers")
+	argValue := gi.ObjectFieldGet(messageObject, recv.Native, "response_headers")
 	value := &MessageHeaders{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2859,7 +2746,7 @@ func (recv *Message) FieldResponseHeaders() *MessageHeaders {
 func (recv *Message) SetFieldResponseHeaders(value *MessageHeaders) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(messageStruct, recv.Native, "response_headers", argValue)
+	gi.ObjectFieldSet(messageObject, recv.Native, "response_headers", argValue)
 }
 
 var messageNewFunction *gi.Function
@@ -2868,11 +2755,11 @@ var messageNewFunction_Once sync.Once
 func messageNewFunction_Set() error {
 	var err error
 	messageNewFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageNewFunction, err = messageStruct.InvokerNew("new")
+		messageNewFunction, err = messageObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2902,11 +2789,11 @@ var messageNewFromUriFunction_Once sync.Once
 func messageNewFromUriFunction_Set() error {
 	var err error
 	messageNewFromUriFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageNewFromUriFunction, err = messageStruct.InvokerNew("new_from_uri")
+		messageNewFromUriFunction, err = messageObject.InvokerNew("new_from_uri")
 	})
 	return err
 }
@@ -2944,11 +2831,11 @@ var messageFinishedFunction_Once sync.Once
 func messageFinishedFunction_Set() error {
 	var err error
 	messageFinishedFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageFinishedFunction, err = messageStruct.InvokerNew("finished")
+		messageFinishedFunction, err = messageObject.InvokerNew("finished")
 	})
 	return err
 }
@@ -2972,11 +2859,11 @@ var messageGetAddressFunction_Once sync.Once
 func messageGetAddressFunction_Set() error {
 	var err error
 	messageGetAddressFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetAddressFunction, err = messageStruct.InvokerNew("get_address")
+		messageGetAddressFunction, err = messageObject.InvokerNew("get_address")
 	})
 	return err
 }
@@ -3005,11 +2892,11 @@ var messageGetFirstPartyFunction_Once sync.Once
 func messageGetFirstPartyFunction_Set() error {
 	var err error
 	messageGetFirstPartyFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetFirstPartyFunction, err = messageStruct.InvokerNew("get_first_party")
+		messageGetFirstPartyFunction, err = messageObject.InvokerNew("get_first_party")
 	})
 	return err
 }
@@ -3040,11 +2927,11 @@ var messageGetHttpVersionFunction_Once sync.Once
 func messageGetHttpVersionFunction_Set() error {
 	var err error
 	messageGetHttpVersionFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetHttpVersionFunction, err = messageStruct.InvokerNew("get_http_version")
+		messageGetHttpVersionFunction, err = messageObject.InvokerNew("get_http_version")
 	})
 	return err
 }
@@ -3074,11 +2961,11 @@ var messageGetPriorityFunction_Once sync.Once
 func messageGetPriorityFunction_Set() error {
 	var err error
 	messageGetPriorityFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetPriorityFunction, err = messageStruct.InvokerNew("get_priority")
+		messageGetPriorityFunction, err = messageObject.InvokerNew("get_priority")
 	})
 	return err
 }
@@ -3106,11 +2993,11 @@ var messageGetSoupRequestFunction_Once sync.Once
 func messageGetSoupRequestFunction_Set() error {
 	var err error
 	messageGetSoupRequestFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetSoupRequestFunction, err = messageStruct.InvokerNew("get_soup_request")
+		messageGetSoupRequestFunction, err = messageObject.InvokerNew("get_soup_request")
 	})
 	return err
 }
@@ -3139,11 +3026,11 @@ var messageGetUriFunction_Once sync.Once
 func messageGetUriFunction_Set() error {
 	var err error
 	messageGetUriFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGetUriFunction, err = messageStruct.InvokerNew("get_uri")
+		messageGetUriFunction, err = messageObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -3172,11 +3059,11 @@ var messageGotBodyFunction_Once sync.Once
 func messageGotBodyFunction_Set() error {
 	var err error
 	messageGotBodyFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGotBodyFunction, err = messageStruct.InvokerNew("got_body")
+		messageGotBodyFunction, err = messageObject.InvokerNew("got_body")
 	})
 	return err
 }
@@ -3200,11 +3087,11 @@ var messageGotChunkFunction_Once sync.Once
 func messageGotChunkFunction_Set() error {
 	var err error
 	messageGotChunkFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGotChunkFunction, err = messageStruct.InvokerNew("got_chunk")
+		messageGotChunkFunction, err = messageObject.InvokerNew("got_chunk")
 	})
 	return err
 }
@@ -3229,11 +3116,11 @@ var messageGotHeadersFunction_Once sync.Once
 func messageGotHeadersFunction_Set() error {
 	var err error
 	messageGotHeadersFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGotHeadersFunction, err = messageStruct.InvokerNew("got_headers")
+		messageGotHeadersFunction, err = messageObject.InvokerNew("got_headers")
 	})
 	return err
 }
@@ -3257,11 +3144,11 @@ var messageGotInformationalFunction_Once sync.Once
 func messageGotInformationalFunction_Set() error {
 	var err error
 	messageGotInformationalFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageGotInformationalFunction, err = messageStruct.InvokerNew("got_informational")
+		messageGotInformationalFunction, err = messageObject.InvokerNew("got_informational")
 	})
 	return err
 }
@@ -3285,11 +3172,11 @@ var messageIsKeepaliveFunction_Once sync.Once
 func messageIsKeepaliveFunction_Set() error {
 	var err error
 	messageIsKeepaliveFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageIsKeepaliveFunction, err = messageStruct.InvokerNew("is_keepalive")
+		messageIsKeepaliveFunction, err = messageObject.InvokerNew("is_keepalive")
 	})
 	return err
 }
@@ -3317,11 +3204,11 @@ var messageRestartedFunction_Once sync.Once
 func messageRestartedFunction_Set() error {
 	var err error
 	messageRestartedFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageRestartedFunction, err = messageStruct.InvokerNew("restarted")
+		messageRestartedFunction, err = messageObject.InvokerNew("restarted")
 	})
 	return err
 }
@@ -3347,11 +3234,11 @@ var messageSetFirstPartyFunction_Once sync.Once
 func messageSetFirstPartyFunction_Set() error {
 	var err error
 	messageSetFirstPartyFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetFirstPartyFunction, err = messageStruct.InvokerNew("set_first_party")
+		messageSetFirstPartyFunction, err = messageObject.InvokerNew("set_first_party")
 	})
 	return err
 }
@@ -3378,11 +3265,11 @@ var messageSetHttpVersionFunction_Once sync.Once
 func messageSetHttpVersionFunction_Set() error {
 	var err error
 	messageSetHttpVersionFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetHttpVersionFunction, err = messageStruct.InvokerNew("set_http_version")
+		messageSetHttpVersionFunction, err = messageObject.InvokerNew("set_http_version")
 	})
 	return err
 }
@@ -3407,11 +3294,11 @@ var messageSetPriorityFunction_Once sync.Once
 func messageSetPriorityFunction_Set() error {
 	var err error
 	messageSetPriorityFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetPriorityFunction, err = messageStruct.InvokerNew("set_priority")
+		messageSetPriorityFunction, err = messageObject.InvokerNew("set_priority")
 	})
 	return err
 }
@@ -3436,11 +3323,11 @@ var messageSetRedirectFunction_Once sync.Once
 func messageSetRedirectFunction_Set() error {
 	var err error
 	messageSetRedirectFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetRedirectFunction, err = messageStruct.InvokerNew("set_redirect")
+		messageSetRedirectFunction, err = messageObject.InvokerNew("set_redirect")
 	})
 	return err
 }
@@ -3470,11 +3357,11 @@ var messageSetStatusFunction_Once sync.Once
 func messageSetStatusFunction_Set() error {
 	var err error
 	messageSetStatusFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetStatusFunction, err = messageStruct.InvokerNew("set_status")
+		messageSetStatusFunction, err = messageObject.InvokerNew("set_status")
 	})
 	return err
 }
@@ -3499,11 +3386,11 @@ var messageSetStatusFullFunction_Once sync.Once
 func messageSetStatusFullFunction_Set() error {
 	var err error
 	messageSetStatusFullFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetStatusFullFunction, err = messageStruct.InvokerNew("set_status_full")
+		messageSetStatusFullFunction, err = messageObject.InvokerNew("set_status_full")
 	})
 	return err
 }
@@ -3529,11 +3416,11 @@ var messageSetUriFunction_Once sync.Once
 func messageSetUriFunction_Set() error {
 	var err error
 	messageSetUriFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageSetUriFunction, err = messageStruct.InvokerNew("set_uri")
+		messageSetUriFunction, err = messageObject.InvokerNew("set_uri")
 	})
 	return err
 }
@@ -3558,11 +3445,11 @@ var messageStartingFunction_Once sync.Once
 func messageStartingFunction_Set() error {
 	var err error
 	messageStartingFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageStartingFunction, err = messageStruct.InvokerNew("starting")
+		messageStartingFunction, err = messageObject.InvokerNew("starting")
 	})
 	return err
 }
@@ -3586,11 +3473,11 @@ var messageWroteBodyFunction_Once sync.Once
 func messageWroteBodyFunction_Set() error {
 	var err error
 	messageWroteBodyFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageWroteBodyFunction, err = messageStruct.InvokerNew("wrote_body")
+		messageWroteBodyFunction, err = messageObject.InvokerNew("wrote_body")
 	})
 	return err
 }
@@ -3614,11 +3501,11 @@ var messageWroteBodyDataFunction_Once sync.Once
 func messageWroteBodyDataFunction_Set() error {
 	var err error
 	messageWroteBodyDataFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageWroteBodyDataFunction, err = messageStruct.InvokerNew("wrote_body_data")
+		messageWroteBodyDataFunction, err = messageObject.InvokerNew("wrote_body_data")
 	})
 	return err
 }
@@ -3643,11 +3530,11 @@ var messageWroteChunkFunction_Once sync.Once
 func messageWroteChunkFunction_Set() error {
 	var err error
 	messageWroteChunkFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageWroteChunkFunction, err = messageStruct.InvokerNew("wrote_chunk")
+		messageWroteChunkFunction, err = messageObject.InvokerNew("wrote_chunk")
 	})
 	return err
 }
@@ -3671,11 +3558,11 @@ var messageWroteHeadersFunction_Once sync.Once
 func messageWroteHeadersFunction_Set() error {
 	var err error
 	messageWroteHeadersFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageWroteHeadersFunction, err = messageStruct.InvokerNew("wrote_headers")
+		messageWroteHeadersFunction, err = messageObject.InvokerNew("wrote_headers")
 	})
 	return err
 }
@@ -3699,11 +3586,11 @@ var messageWroteInformationalFunction_Once sync.Once
 func messageWroteInformationalFunction_Set() error {
 	var err error
 	messageWroteInformationalFunction_Once.Do(func() {
-		err = messageStruct_Set()
+		err = messageObject_Set()
 		if err != nil {
 			return
 		}
-		messageWroteInformationalFunction, err = messageStruct.InvokerNew("wrote_informational")
+		messageWroteInformationalFunction, err = messageObject.InvokerNew("wrote_informational")
 	})
 	return err
 }
@@ -3721,13 +3608,13 @@ func (recv *Message) WroteInformational() {
 	return
 }
 
-var multipartInputStreamStruct *gi.Struct
-var multipartInputStreamStruct_Once sync.Once
+var multipartInputStreamObject *gi.Object
+var multipartInputStreamObject_Once sync.Once
 
-func multipartInputStreamStruct_Set() error {
+func multipartInputStreamObject_Set() error {
 	var err error
-	multipartInputStreamStruct_Once.Do(func() {
-		multipartInputStreamStruct, err = gi.StructNew("Soup", "MultipartInputStream")
+	multipartInputStreamObject_Once.Do(func() {
+		multipartInputStreamObject, err = gi.ObjectNew("Soup", "MultipartInputStream")
 	})
 	return err
 }
@@ -3748,11 +3635,11 @@ var multipartInputStreamGetHeadersFunction_Once sync.Once
 func multipartInputStreamGetHeadersFunction_Set() error {
 	var err error
 	multipartInputStreamGetHeadersFunction_Once.Do(func() {
-		err = multipartInputStreamStruct_Set()
+		err = multipartInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		multipartInputStreamGetHeadersFunction, err = multipartInputStreamStruct.InvokerNew("get_headers")
+		multipartInputStreamGetHeadersFunction, err = multipartInputStreamObject.InvokerNew("get_headers")
 	})
 	return err
 }
@@ -3781,13 +3668,13 @@ func (recv *MultipartInputStream) GetHeaders() *MessageHeaders {
 
 // UNSUPPORTED : C value 'soup_multipart_input_stream_next_part_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-var proxyResolverDefaultStruct *gi.Struct
-var proxyResolverDefaultStruct_Once sync.Once
+var proxyResolverDefaultObject *gi.Object
+var proxyResolverDefaultObject_Once sync.Once
 
-func proxyResolverDefaultStruct_Set() error {
+func proxyResolverDefaultObject_Set() error {
 	var err error
-	proxyResolverDefaultStruct_Once.Do(func() {
-		proxyResolverDefaultStruct, err = gi.StructNew("Soup", "ProxyResolverDefault")
+	proxyResolverDefaultObject_Once.Do(func() {
+		proxyResolverDefaultObject, err = gi.ObjectNew("Soup", "ProxyResolverDefault")
 	})
 	return err
 }
@@ -3800,29 +3687,13 @@ type ProxyResolverDefault struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// ProxyResolverDefaultStruct creates an uninitialised ProxyResolverDefault.
-func ProxyResolverDefaultStruct() *ProxyResolverDefault {
-	err := proxyResolverDefaultStruct_Set()
-	if err != nil {
-		return nil
-	}
+var requestObject *gi.Object
+var requestObject_Once sync.Once
 
-	structGo := &ProxyResolverDefault{}
-	structGo.Native = proxyResolverDefaultStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeProxyResolverDefault)
-	return structGo
-}
-func finalizeProxyResolverDefault(obj *ProxyResolverDefault) {
-	proxyResolverDefaultStruct.Free(obj.Native)
-}
-
-var requestStruct *gi.Struct
-var requestStruct_Once sync.Once
-
-func requestStruct_Set() error {
+func requestObject_Set() error {
 	var err error
-	requestStruct_Once.Do(func() {
-		requestStruct, err = gi.StructNew("Soup", "Request")
+	requestObject_Once.Do(func() {
+		requestObject, err = gi.ObjectNew("Soup", "Request")
 	})
 	return err
 }
@@ -3837,7 +3708,7 @@ type Request struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Request) FieldPriv() *RequestPrivate {
-	argValue := gi.FieldGet(requestStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(requestObject, recv.Native, "priv")
 	value := &RequestPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3847,7 +3718,7 @@ func (recv *Request) FieldPriv() *RequestPrivate {
 func (recv *Request) SetFieldPriv(value *RequestPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(requestObject, recv.Native, "priv", argValue)
 }
 
 var requestGetContentLengthFunction *gi.Function
@@ -3856,11 +3727,11 @@ var requestGetContentLengthFunction_Once sync.Once
 func requestGetContentLengthFunction_Set() error {
 	var err error
 	requestGetContentLengthFunction_Once.Do(func() {
-		err = requestStruct_Set()
+		err = requestObject_Set()
 		if err != nil {
 			return
 		}
-		requestGetContentLengthFunction, err = requestStruct.InvokerNew("get_content_length")
+		requestGetContentLengthFunction, err = requestObject.InvokerNew("get_content_length")
 	})
 	return err
 }
@@ -3888,11 +3759,11 @@ var requestGetContentTypeFunction_Once sync.Once
 func requestGetContentTypeFunction_Set() error {
 	var err error
 	requestGetContentTypeFunction_Once.Do(func() {
-		err = requestStruct_Set()
+		err = requestObject_Set()
 		if err != nil {
 			return
 		}
-		requestGetContentTypeFunction, err = requestStruct.InvokerNew("get_content_type")
+		requestGetContentTypeFunction, err = requestObject.InvokerNew("get_content_type")
 	})
 	return err
 }
@@ -3920,11 +3791,11 @@ var requestGetSessionFunction_Once sync.Once
 func requestGetSessionFunction_Set() error {
 	var err error
 	requestGetSessionFunction_Once.Do(func() {
-		err = requestStruct_Set()
+		err = requestObject_Set()
 		if err != nil {
 			return
 		}
-		requestGetSessionFunction, err = requestStruct.InvokerNew("get_session")
+		requestGetSessionFunction, err = requestObject.InvokerNew("get_session")
 	})
 	return err
 }
@@ -3953,11 +3824,11 @@ var requestGetUriFunction_Once sync.Once
 func requestGetUriFunction_Set() error {
 	var err error
 	requestGetUriFunction_Once.Do(func() {
-		err = requestStruct_Set()
+		err = requestObject_Set()
 		if err != nil {
 			return
 		}
-		requestGetUriFunction, err = requestStruct.InvokerNew("get_uri")
+		requestGetUriFunction, err = requestObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -3986,29 +3857,13 @@ func (recv *Request) GetUri() *URI {
 
 // UNSUPPORTED : C value 'soup_request_send_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// RequestStruct creates an uninitialised Request.
-func RequestStruct() *Request {
-	err := requestStruct_Set()
-	if err != nil {
-		return nil
-	}
+var requestDataObject *gi.Object
+var requestDataObject_Once sync.Once
 
-	structGo := &Request{}
-	structGo.Native = requestStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRequest)
-	return structGo
-}
-func finalizeRequest(obj *Request) {
-	requestStruct.Free(obj.Native)
-}
-
-var requestDataStruct *gi.Struct
-var requestDataStruct_Once sync.Once
-
-func requestDataStruct_Set() error {
+func requestDataObject_Set() error {
 	var err error
-	requestDataStruct_Once.Do(func() {
-		requestDataStruct, err = gi.StructNew("Soup", "RequestData")
+	requestDataObject_Once.Do(func() {
+		requestDataObject, err = gi.ObjectNew("Soup", "RequestData")
 	})
 	return err
 }
@@ -4019,7 +3874,7 @@ type RequestData struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestData) FieldParent() *Request {
-	argValue := gi.FieldGet(requestDataStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(requestDataObject, recv.Native, "parent")
 	value := &Request{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4029,12 +3884,12 @@ func (recv *RequestData) FieldParent() *Request {
 func (recv *RequestData) SetFieldParent(value *Request) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestDataStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(requestDataObject, recv.Native, "parent", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestData) FieldPriv() *RequestDataPrivate {
-	argValue := gi.FieldGet(requestDataStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(requestDataObject, recv.Native, "priv")
 	value := &RequestDataPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4044,32 +3899,16 @@ func (recv *RequestData) FieldPriv() *RequestDataPrivate {
 func (recv *RequestData) SetFieldPriv(value *RequestDataPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestDataStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(requestDataObject, recv.Native, "priv", argValue)
 }
 
-// RequestDataStruct creates an uninitialised RequestData.
-func RequestDataStruct() *RequestData {
-	err := requestDataStruct_Set()
-	if err != nil {
-		return nil
-	}
+var requestFileObject *gi.Object
+var requestFileObject_Once sync.Once
 
-	structGo := &RequestData{}
-	structGo.Native = requestDataStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRequestData)
-	return structGo
-}
-func finalizeRequestData(obj *RequestData) {
-	requestDataStruct.Free(obj.Native)
-}
-
-var requestFileStruct *gi.Struct
-var requestFileStruct_Once sync.Once
-
-func requestFileStruct_Set() error {
+func requestFileObject_Set() error {
 	var err error
-	requestFileStruct_Once.Do(func() {
-		requestFileStruct, err = gi.StructNew("Soup", "RequestFile")
+	requestFileObject_Once.Do(func() {
+		requestFileObject, err = gi.ObjectNew("Soup", "RequestFile")
 	})
 	return err
 }
@@ -4080,7 +3919,7 @@ type RequestFile struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestFile) FieldParent() *Request {
-	argValue := gi.FieldGet(requestFileStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(requestFileObject, recv.Native, "parent")
 	value := &Request{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4090,12 +3929,12 @@ func (recv *RequestFile) FieldParent() *Request {
 func (recv *RequestFile) SetFieldParent(value *Request) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestFileStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(requestFileObject, recv.Native, "parent", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestFile) FieldPriv() *RequestFilePrivate {
-	argValue := gi.FieldGet(requestFileStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(requestFileObject, recv.Native, "priv")
 	value := &RequestFilePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4105,34 +3944,18 @@ func (recv *RequestFile) FieldPriv() *RequestFilePrivate {
 func (recv *RequestFile) SetFieldPriv(value *RequestFilePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestFileStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(requestFileObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'soup_request_file_get_file' : return type 'Gio.File' not supported
 
-// RequestFileStruct creates an uninitialised RequestFile.
-func RequestFileStruct() *RequestFile {
-	err := requestFileStruct_Set()
-	if err != nil {
-		return nil
-	}
+var requestHTTPObject *gi.Object
+var requestHTTPObject_Once sync.Once
 
-	structGo := &RequestFile{}
-	structGo.Native = requestFileStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRequestFile)
-	return structGo
-}
-func finalizeRequestFile(obj *RequestFile) {
-	requestFileStruct.Free(obj.Native)
-}
-
-var requestHTTPStruct *gi.Struct
-var requestHTTPStruct_Once sync.Once
-
-func requestHTTPStruct_Set() error {
+func requestHTTPObject_Set() error {
 	var err error
-	requestHTTPStruct_Once.Do(func() {
-		requestHTTPStruct, err = gi.StructNew("Soup", "RequestHTTP")
+	requestHTTPObject_Once.Do(func() {
+		requestHTTPObject, err = gi.ObjectNew("Soup", "RequestHTTP")
 	})
 	return err
 }
@@ -4143,7 +3966,7 @@ type RequestHTTP struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestHTTP) FieldParent() *Request {
-	argValue := gi.FieldGet(requestHTTPStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(requestHTTPObject, recv.Native, "parent")
 	value := &Request{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4153,12 +3976,12 @@ func (recv *RequestHTTP) FieldParent() *Request {
 func (recv *RequestHTTP) SetFieldParent(value *Request) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestHTTPStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(requestHTTPObject, recv.Native, "parent", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *RequestHTTP) FieldPriv() *RequestHTTPPrivate {
-	argValue := gi.FieldGet(requestHTTPStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(requestHTTPObject, recv.Native, "priv")
 	value := &RequestHTTPPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4168,7 +3991,7 @@ func (recv *RequestHTTP) FieldPriv() *RequestHTTPPrivate {
 func (recv *RequestHTTP) SetFieldPriv(value *RequestHTTPPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requestHTTPStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(requestHTTPObject, recv.Native, "priv", argValue)
 }
 
 var requestHTTPGetMessageFunction *gi.Function
@@ -4177,11 +4000,11 @@ var requestHTTPGetMessageFunction_Once sync.Once
 func requestHTTPGetMessageFunction_Set() error {
 	var err error
 	requestHTTPGetMessageFunction_Once.Do(func() {
-		err = requestHTTPStruct_Set()
+		err = requestHTTPObject_Set()
 		if err != nil {
 			return
 		}
-		requestHTTPGetMessageFunction, err = requestHTTPStruct.InvokerNew("get_message")
+		requestHTTPGetMessageFunction, err = requestHTTPObject.InvokerNew("get_message")
 	})
 	return err
 }
@@ -4204,29 +4027,13 @@ func (recv *RequestHTTP) GetMessage() *Message {
 	return retGo
 }
 
-// RequestHTTPStruct creates an uninitialised RequestHTTP.
-func RequestHTTPStruct() *RequestHTTP {
-	err := requestHTTPStruct_Set()
-	if err != nil {
-		return nil
-	}
+var requesterObject *gi.Object
+var requesterObject_Once sync.Once
 
-	structGo := &RequestHTTP{}
-	structGo.Native = requestHTTPStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRequestHTTP)
-	return structGo
-}
-func finalizeRequestHTTP(obj *RequestHTTP) {
-	requestHTTPStruct.Free(obj.Native)
-}
-
-var requesterStruct *gi.Struct
-var requesterStruct_Once sync.Once
-
-func requesterStruct_Set() error {
+func requesterObject_Set() error {
 	var err error
-	requesterStruct_Once.Do(func() {
-		requesterStruct, err = gi.StructNew("Soup", "Requester")
+	requesterObject_Once.Do(func() {
+		requesterObject, err = gi.ObjectNew("Soup", "Requester")
 	})
 	return err
 }
@@ -4241,7 +4048,7 @@ type Requester struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Requester) FieldPriv() *RequesterPrivate {
-	argValue := gi.FieldGet(requesterStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(requesterObject, recv.Native, "priv")
 	value := &RequesterPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4251,7 +4058,7 @@ func (recv *Requester) FieldPriv() *RequesterPrivate {
 func (recv *Requester) SetFieldPriv(value *RequesterPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(requesterStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(requesterObject, recv.Native, "priv", argValue)
 }
 
 var requesterNewFunction *gi.Function
@@ -4260,11 +4067,11 @@ var requesterNewFunction_Once sync.Once
 func requesterNewFunction_Set() error {
 	var err error
 	requesterNewFunction_Once.Do(func() {
-		err = requesterStruct_Set()
+		err = requesterObject_Set()
 		if err != nil {
 			return
 		}
-		requesterNewFunction, err = requesterStruct.InvokerNew("new")
+		requesterNewFunction, err = requesterObject.InvokerNew("new")
 	})
 	return err
 }
@@ -4291,11 +4098,11 @@ var requesterRequestFunction_Once sync.Once
 func requesterRequestFunction_Set() error {
 	var err error
 	requesterRequestFunction_Once.Do(func() {
-		err = requesterStruct_Set()
+		err = requesterObject_Set()
 		if err != nil {
 			return
 		}
-		requesterRequestFunction, err = requesterStruct.InvokerNew("request")
+		requesterRequestFunction, err = requesterObject.InvokerNew("request")
 	})
 	return err
 }
@@ -4325,11 +4132,11 @@ var requesterRequestUriFunction_Once sync.Once
 func requesterRequestUriFunction_Set() error {
 	var err error
 	requesterRequestUriFunction_Once.Do(func() {
-		err = requesterStruct_Set()
+		err = requesterObject_Set()
 		if err != nil {
 			return
 		}
-		requesterRequestUriFunction, err = requesterStruct.InvokerNew("request_uri")
+		requesterRequestUriFunction, err = requesterObject.InvokerNew("request_uri")
 	})
 	return err
 }
@@ -4353,13 +4160,13 @@ func (recv *Requester) RequestUri(uri *URI) *Request {
 	return retGo
 }
 
-var serverStruct *gi.Struct
-var serverStruct_Once sync.Once
+var serverObject *gi.Object
+var serverObject_Once sync.Once
 
-func serverStruct_Set() error {
+func serverObject_Set() error {
 	var err error
-	serverStruct_Once.Do(func() {
-		serverStruct, err = gi.StructNew("Soup", "Server")
+	serverObject_Once.Do(func() {
+		serverObject, err = gi.ObjectNew("Soup", "Server")
 	})
 	return err
 }
@@ -4382,11 +4189,11 @@ var serverAddAuthDomainFunction_Once sync.Once
 func serverAddAuthDomainFunction_Set() error {
 	var err error
 	serverAddAuthDomainFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverAddAuthDomainFunction, err = serverStruct.InvokerNew("add_auth_domain")
+		serverAddAuthDomainFunction, err = serverObject.InvokerNew("add_auth_domain")
 	})
 	return err
 }
@@ -4419,11 +4226,11 @@ var serverDisconnectFunction_Once sync.Once
 func serverDisconnectFunction_Set() error {
 	var err error
 	serverDisconnectFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverDisconnectFunction, err = serverStruct.InvokerNew("disconnect")
+		serverDisconnectFunction, err = serverObject.InvokerNew("disconnect")
 	})
 	return err
 }
@@ -4449,11 +4256,11 @@ var serverGetListenerFunction_Once sync.Once
 func serverGetListenerFunction_Set() error {
 	var err error
 	serverGetListenerFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverGetListenerFunction, err = serverStruct.InvokerNew("get_listener")
+		serverGetListenerFunction, err = serverObject.InvokerNew("get_listener")
 	})
 	return err
 }
@@ -4484,11 +4291,11 @@ var serverGetPortFunction_Once sync.Once
 func serverGetPortFunction_Set() error {
 	var err error
 	serverGetPortFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverGetPortFunction, err = serverStruct.InvokerNew("get_port")
+		serverGetPortFunction, err = serverObject.InvokerNew("get_port")
 	})
 	return err
 }
@@ -4518,11 +4325,11 @@ var serverIsHttpsFunction_Once sync.Once
 func serverIsHttpsFunction_Set() error {
 	var err error
 	serverIsHttpsFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverIsHttpsFunction, err = serverStruct.InvokerNew("is_https")
+		serverIsHttpsFunction, err = serverObject.InvokerNew("is_https")
 	})
 	return err
 }
@@ -4560,11 +4367,11 @@ var serverPauseMessageFunction_Once sync.Once
 func serverPauseMessageFunction_Set() error {
 	var err error
 	serverPauseMessageFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverPauseMessageFunction, err = serverStruct.InvokerNew("pause_message")
+		serverPauseMessageFunction, err = serverObject.InvokerNew("pause_message")
 	})
 	return err
 }
@@ -4589,11 +4396,11 @@ var serverQuitFunction_Once sync.Once
 func serverQuitFunction_Set() error {
 	var err error
 	serverQuitFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverQuitFunction, err = serverStruct.InvokerNew("quit")
+		serverQuitFunction, err = serverObject.InvokerNew("quit")
 	})
 	return err
 }
@@ -4617,11 +4424,11 @@ var serverRemoveAuthDomainFunction_Once sync.Once
 func serverRemoveAuthDomainFunction_Set() error {
 	var err error
 	serverRemoveAuthDomainFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverRemoveAuthDomainFunction, err = serverStruct.InvokerNew("remove_auth_domain")
+		serverRemoveAuthDomainFunction, err = serverObject.InvokerNew("remove_auth_domain")
 	})
 	return err
 }
@@ -4646,11 +4453,11 @@ var serverRemoveHandlerFunction_Once sync.Once
 func serverRemoveHandlerFunction_Set() error {
 	var err error
 	serverRemoveHandlerFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverRemoveHandlerFunction, err = serverStruct.InvokerNew("remove_handler")
+		serverRemoveHandlerFunction, err = serverObject.InvokerNew("remove_handler")
 	})
 	return err
 }
@@ -4677,11 +4484,11 @@ var serverRunFunction_Once sync.Once
 func serverRunFunction_Set() error {
 	var err error
 	serverRunFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverRunFunction, err = serverStruct.InvokerNew("run")
+		serverRunFunction, err = serverObject.InvokerNew("run")
 	})
 	return err
 }
@@ -4705,11 +4512,11 @@ var serverRunAsyncFunction_Once sync.Once
 func serverRunAsyncFunction_Set() error {
 	var err error
 	serverRunAsyncFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverRunAsyncFunction, err = serverStruct.InvokerNew("run_async")
+		serverRunAsyncFunction, err = serverObject.InvokerNew("run_async")
 	})
 	return err
 }
@@ -4733,11 +4540,11 @@ var serverSetSslCertFileFunction_Once sync.Once
 func serverSetSslCertFileFunction_Set() error {
 	var err error
 	serverSetSslCertFileFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverSetSslCertFileFunction, err = serverStruct.InvokerNew("set_ssl_cert_file")
+		serverSetSslCertFileFunction, err = serverObject.InvokerNew("set_ssl_cert_file")
 	})
 	return err
 }
@@ -4767,11 +4574,11 @@ var serverUnpauseMessageFunction_Once sync.Once
 func serverUnpauseMessageFunction_Set() error {
 	var err error
 	serverUnpauseMessageFunction_Once.Do(func() {
-		err = serverStruct_Set()
+		err = serverObject_Set()
 		if err != nil {
 			return
 		}
-		serverUnpauseMessageFunction, err = serverStruct.InvokerNew("unpause_message")
+		serverUnpauseMessageFunction, err = serverObject.InvokerNew("unpause_message")
 	})
 	return err
 }
@@ -4790,13 +4597,13 @@ func (recv *Server) UnpauseMessage(msg *Message) {
 	return
 }
 
-var sessionStruct *gi.Struct
-var sessionStruct_Once sync.Once
+var sessionObject *gi.Object
+var sessionObject_Once sync.Once
 
-func sessionStruct_Set() error {
+func sessionObject_Set() error {
 	var err error
-	sessionStruct_Once.Do(func() {
-		sessionStruct, err = gi.StructNew("Soup", "Session")
+	sessionObject_Once.Do(func() {
+		sessionObject, err = gi.ObjectNew("Soup", "Session")
 	})
 	return err
 }
@@ -4815,11 +4622,11 @@ var sessionNewFunction_Once sync.Once
 func sessionNewFunction_Set() error {
 	var err error
 	sessionNewFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionNewFunction, err = sessionStruct.InvokerNew("new")
+		sessionNewFunction, err = sessionObject.InvokerNew("new")
 	})
 	return err
 }
@@ -4848,11 +4655,11 @@ var sessionAbortFunction_Once sync.Once
 func sessionAbortFunction_Set() error {
 	var err error
 	sessionAbortFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionAbortFunction, err = sessionStruct.InvokerNew("abort")
+		sessionAbortFunction, err = sessionObject.InvokerNew("abort")
 	})
 	return err
 }
@@ -4880,11 +4687,11 @@ var sessionCancelMessageFunction_Once sync.Once
 func sessionCancelMessageFunction_Set() error {
 	var err error
 	sessionCancelMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionCancelMessageFunction, err = sessionStruct.InvokerNew("cancel_message")
+		sessionCancelMessageFunction, err = sessionObject.InvokerNew("cancel_message")
 	})
 	return err
 }
@@ -4924,11 +4731,11 @@ var sessionPauseMessageFunction_Once sync.Once
 func sessionPauseMessageFunction_Set() error {
 	var err error
 	sessionPauseMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionPauseMessageFunction, err = sessionStruct.InvokerNew("pause_message")
+		sessionPauseMessageFunction, err = sessionObject.InvokerNew("pause_message")
 	})
 	return err
 }
@@ -4955,11 +4762,11 @@ var sessionPrepareForUriFunction_Once sync.Once
 func sessionPrepareForUriFunction_Set() error {
 	var err error
 	sessionPrepareForUriFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionPrepareForUriFunction, err = sessionStruct.InvokerNew("prepare_for_uri")
+		sessionPrepareForUriFunction, err = sessionObject.InvokerNew("prepare_for_uri")
 	})
 	return err
 }
@@ -4986,11 +4793,11 @@ var sessionRedirectMessageFunction_Once sync.Once
 func sessionRedirectMessageFunction_Set() error {
 	var err error
 	sessionRedirectMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRedirectMessageFunction, err = sessionStruct.InvokerNew("redirect_message")
+		sessionRedirectMessageFunction, err = sessionObject.InvokerNew("redirect_message")
 	})
 	return err
 }
@@ -5023,11 +4830,11 @@ var sessionRequestFunction_Once sync.Once
 func sessionRequestFunction_Set() error {
 	var err error
 	sessionRequestFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRequestFunction, err = sessionStruct.InvokerNew("request")
+		sessionRequestFunction, err = sessionObject.InvokerNew("request")
 	})
 	return err
 }
@@ -5057,11 +4864,11 @@ var sessionRequestHttpFunction_Once sync.Once
 func sessionRequestHttpFunction_Set() error {
 	var err error
 	sessionRequestHttpFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRequestHttpFunction, err = sessionStruct.InvokerNew("request_http")
+		sessionRequestHttpFunction, err = sessionObject.InvokerNew("request_http")
 	})
 	return err
 }
@@ -5092,11 +4899,11 @@ var sessionRequestHttpUriFunction_Once sync.Once
 func sessionRequestHttpUriFunction_Set() error {
 	var err error
 	sessionRequestHttpUriFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRequestHttpUriFunction, err = sessionStruct.InvokerNew("request_http_uri")
+		sessionRequestHttpUriFunction, err = sessionObject.InvokerNew("request_http_uri")
 	})
 	return err
 }
@@ -5127,11 +4934,11 @@ var sessionRequestUriFunction_Once sync.Once
 func sessionRequestUriFunction_Set() error {
 	var err error
 	sessionRequestUriFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRequestUriFunction, err = sessionStruct.InvokerNew("request_uri")
+		sessionRequestUriFunction, err = sessionObject.InvokerNew("request_uri")
 	})
 	return err
 }
@@ -5161,11 +4968,11 @@ var sessionRequeueMessageFunction_Once sync.Once
 func sessionRequeueMessageFunction_Set() error {
 	var err error
 	sessionRequeueMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionRequeueMessageFunction, err = sessionStruct.InvokerNew("requeue_message")
+		sessionRequeueMessageFunction, err = sessionObject.InvokerNew("requeue_message")
 	})
 	return err
 }
@@ -5196,11 +5003,11 @@ var sessionSendMessageFunction_Once sync.Once
 func sessionSendMessageFunction_Set() error {
 	var err error
 	sessionSendMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionSendMessageFunction, err = sessionStruct.InvokerNew("send_message")
+		sessionSendMessageFunction, err = sessionObject.InvokerNew("send_message")
 	})
 	return err
 }
@@ -5231,11 +5038,11 @@ var sessionUnpauseMessageFunction_Once sync.Once
 func sessionUnpauseMessageFunction_Set() error {
 	var err error
 	sessionUnpauseMessageFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionUnpauseMessageFunction, err = sessionStruct.InvokerNew("unpause_message")
+		sessionUnpauseMessageFunction, err = sessionObject.InvokerNew("unpause_message")
 	})
 	return err
 }
@@ -5264,11 +5071,11 @@ var sessionWouldRedirectFunction_Once sync.Once
 func sessionWouldRedirectFunction_Set() error {
 	var err error
 	sessionWouldRedirectFunction_Once.Do(func() {
-		err = sessionStruct_Set()
+		err = sessionObject_Set()
 		if err != nil {
 			return
 		}
-		sessionWouldRedirectFunction, err = sessionStruct.InvokerNew("would_redirect")
+		sessionWouldRedirectFunction, err = sessionObject.InvokerNew("would_redirect")
 	})
 	return err
 }
@@ -5291,13 +5098,13 @@ func (recv *Session) WouldRedirect(msg *Message) bool {
 	return retGo
 }
 
-var sessionAsyncStruct *gi.Struct
-var sessionAsyncStruct_Once sync.Once
+var sessionAsyncObject *gi.Object
+var sessionAsyncObject_Once sync.Once
 
-func sessionAsyncStruct_Set() error {
+func sessionAsyncObject_Set() error {
 	var err error
-	sessionAsyncStruct_Once.Do(func() {
-		sessionAsyncStruct, err = gi.StructNew("Soup", "SessionAsync")
+	sessionAsyncObject_Once.Do(func() {
+		sessionAsyncObject, err = gi.ObjectNew("Soup", "SessionAsync")
 	})
 	return err
 }
@@ -5308,7 +5115,7 @@ type SessionAsync struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SessionAsync) FieldParent() *Session {
-	argValue := gi.FieldGet(sessionAsyncStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(sessionAsyncObject, recv.Native, "parent")
 	value := &Session{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5318,7 +5125,7 @@ func (recv *SessionAsync) FieldParent() *Session {
 func (recv *SessionAsync) SetFieldParent(value *Session) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(sessionAsyncStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(sessionAsyncObject, recv.Native, "parent", argValue)
 }
 
 var sessionAsyncNewFunction *gi.Function
@@ -5327,11 +5134,11 @@ var sessionAsyncNewFunction_Once sync.Once
 func sessionAsyncNewFunction_Set() error {
 	var err error
 	sessionAsyncNewFunction_Once.Do(func() {
-		err = sessionAsyncStruct_Set()
+		err = sessionAsyncObject_Set()
 		if err != nil {
 			return
 		}
-		sessionAsyncNewFunction, err = sessionAsyncStruct.InvokerNew("new")
+		sessionAsyncNewFunction, err = sessionAsyncObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5354,13 +5161,13 @@ func SessionAsyncNew() *SessionAsync {
 
 // UNSUPPORTED : C value 'soup_session_async_new_with_options' : parameter '...' of type 'nil' not supported
 
-var sessionSyncStruct *gi.Struct
-var sessionSyncStruct_Once sync.Once
+var sessionSyncObject *gi.Object
+var sessionSyncObject_Once sync.Once
 
-func sessionSyncStruct_Set() error {
+func sessionSyncObject_Set() error {
 	var err error
-	sessionSyncStruct_Once.Do(func() {
-		sessionSyncStruct, err = gi.StructNew("Soup", "SessionSync")
+	sessionSyncObject_Once.Do(func() {
+		sessionSyncObject, err = gi.ObjectNew("Soup", "SessionSync")
 	})
 	return err
 }
@@ -5371,7 +5178,7 @@ type SessionSync struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SessionSync) FieldParent() *Session {
-	argValue := gi.FieldGet(sessionSyncStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(sessionSyncObject, recv.Native, "parent")
 	value := &Session{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5381,7 +5188,7 @@ func (recv *SessionSync) FieldParent() *Session {
 func (recv *SessionSync) SetFieldParent(value *Session) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(sessionSyncStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(sessionSyncObject, recv.Native, "parent", argValue)
 }
 
 var sessionSyncNewFunction *gi.Function
@@ -5390,11 +5197,11 @@ var sessionSyncNewFunction_Once sync.Once
 func sessionSyncNewFunction_Set() error {
 	var err error
 	sessionSyncNewFunction_Once.Do(func() {
-		err = sessionSyncStruct_Set()
+		err = sessionSyncObject_Set()
 		if err != nil {
 			return
 		}
-		sessionSyncNewFunction, err = sessionSyncStruct.InvokerNew("new")
+		sessionSyncNewFunction, err = sessionSyncObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5417,13 +5224,13 @@ func SessionSyncNew() *SessionSync {
 
 // UNSUPPORTED : C value 'soup_session_sync_new_with_options' : parameter '...' of type 'nil' not supported
 
-var socketStruct *gi.Struct
-var socketStruct_Once sync.Once
+var socketObject *gi.Object
+var socketObject_Once sync.Once
 
-func socketStruct_Set() error {
+func socketObject_Set() error {
 	var err error
-	socketStruct_Once.Do(func() {
-		socketStruct, err = gi.StructNew("Soup", "Socket")
+	socketObject_Once.Do(func() {
+		socketObject, err = gi.ObjectNew("Soup", "Socket")
 	})
 	return err
 }
@@ -5448,11 +5255,11 @@ var socketDisconnectFunction_Once sync.Once
 func socketDisconnectFunction_Set() error {
 	var err error
 	socketDisconnectFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketDisconnectFunction, err = socketStruct.InvokerNew("disconnect")
+		socketDisconnectFunction, err = socketObject.InvokerNew("disconnect")
 	})
 	return err
 }
@@ -5476,11 +5283,11 @@ var socketGetFdFunction_Once sync.Once
 func socketGetFdFunction_Set() error {
 	var err error
 	socketGetFdFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetFdFunction, err = socketStruct.InvokerNew("get_fd")
+		socketGetFdFunction, err = socketObject.InvokerNew("get_fd")
 	})
 	return err
 }
@@ -5508,11 +5315,11 @@ var socketGetLocalAddressFunction_Once sync.Once
 func socketGetLocalAddressFunction_Set() error {
 	var err error
 	socketGetLocalAddressFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetLocalAddressFunction, err = socketStruct.InvokerNew("get_local_address")
+		socketGetLocalAddressFunction, err = socketObject.InvokerNew("get_local_address")
 	})
 	return err
 }
@@ -5541,11 +5348,11 @@ var socketGetRemoteAddressFunction_Once sync.Once
 func socketGetRemoteAddressFunction_Set() error {
 	var err error
 	socketGetRemoteAddressFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetRemoteAddressFunction, err = socketStruct.InvokerNew("get_remote_address")
+		socketGetRemoteAddressFunction, err = socketObject.InvokerNew("get_remote_address")
 	})
 	return err
 }
@@ -5574,11 +5381,11 @@ var socketIsConnectedFunction_Once sync.Once
 func socketIsConnectedFunction_Set() error {
 	var err error
 	socketIsConnectedFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketIsConnectedFunction, err = socketStruct.InvokerNew("is_connected")
+		socketIsConnectedFunction, err = socketObject.InvokerNew("is_connected")
 	})
 	return err
 }
@@ -5606,11 +5413,11 @@ var socketIsSslFunction_Once sync.Once
 func socketIsSslFunction_Set() error {
 	var err error
 	socketIsSslFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketIsSslFunction, err = socketStruct.InvokerNew("is_ssl")
+		socketIsSslFunction, err = socketObject.InvokerNew("is_ssl")
 	})
 	return err
 }
@@ -5638,11 +5445,11 @@ var socketListenFunction_Once sync.Once
 func socketListenFunction_Set() error {
 	var err error
 	socketListenFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketListenFunction, err = socketStruct.InvokerNew("listen")
+		socketListenFunction, err = socketObject.InvokerNew("listen")
 	})
 	return err
 }
@@ -5674,13 +5481,13 @@ func (recv *Socket) Listen() bool {
 
 // UNSUPPORTED : C value 'soup_socket_write' : parameter 'buffer' of type 'nil' not supported
 
-var websocketConnectionStruct *gi.Struct
-var websocketConnectionStruct_Once sync.Once
+var websocketConnectionObject *gi.Object
+var websocketConnectionObject_Once sync.Once
 
-func websocketConnectionStruct_Set() error {
+func websocketConnectionObject_Set() error {
 	var err error
-	websocketConnectionStruct_Once.Do(func() {
-		websocketConnectionStruct, err = gi.StructNew("Soup", "WebsocketConnection")
+	websocketConnectionObject_Once.Do(func() {
+		websocketConnectionObject, err = gi.ObjectNew("Soup", "WebsocketConnection")
 	})
 	return err
 }
@@ -5703,11 +5510,11 @@ var websocketConnectionCloseFunction_Once sync.Once
 func websocketConnectionCloseFunction_Set() error {
 	var err error
 	websocketConnectionCloseFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionCloseFunction, err = websocketConnectionStruct.InvokerNew("close")
+		websocketConnectionCloseFunction, err = websocketConnectionObject.InvokerNew("close")
 	})
 	return err
 }
@@ -5733,11 +5540,11 @@ var websocketConnectionGetCloseCodeFunction_Once sync.Once
 func websocketConnectionGetCloseCodeFunction_Set() error {
 	var err error
 	websocketConnectionGetCloseCodeFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetCloseCodeFunction, err = websocketConnectionStruct.InvokerNew("get_close_code")
+		websocketConnectionGetCloseCodeFunction, err = websocketConnectionObject.InvokerNew("get_close_code")
 	})
 	return err
 }
@@ -5765,11 +5572,11 @@ var websocketConnectionGetCloseDataFunction_Once sync.Once
 func websocketConnectionGetCloseDataFunction_Set() error {
 	var err error
 	websocketConnectionGetCloseDataFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetCloseDataFunction, err = websocketConnectionStruct.InvokerNew("get_close_data")
+		websocketConnectionGetCloseDataFunction, err = websocketConnectionObject.InvokerNew("get_close_data")
 	})
 	return err
 }
@@ -5797,11 +5604,11 @@ var websocketConnectionGetConnectionTypeFunction_Once sync.Once
 func websocketConnectionGetConnectionTypeFunction_Set() error {
 	var err error
 	websocketConnectionGetConnectionTypeFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetConnectionTypeFunction, err = websocketConnectionStruct.InvokerNew("get_connection_type")
+		websocketConnectionGetConnectionTypeFunction, err = websocketConnectionObject.InvokerNew("get_connection_type")
 	})
 	return err
 }
@@ -5833,11 +5640,11 @@ var websocketConnectionGetKeepaliveIntervalFunction_Once sync.Once
 func websocketConnectionGetKeepaliveIntervalFunction_Set() error {
 	var err error
 	websocketConnectionGetKeepaliveIntervalFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetKeepaliveIntervalFunction, err = websocketConnectionStruct.InvokerNew("get_keepalive_interval")
+		websocketConnectionGetKeepaliveIntervalFunction, err = websocketConnectionObject.InvokerNew("get_keepalive_interval")
 	})
 	return err
 }
@@ -5865,11 +5672,11 @@ var websocketConnectionGetMaxIncomingPayloadSizeFunction_Once sync.Once
 func websocketConnectionGetMaxIncomingPayloadSizeFunction_Set() error {
 	var err error
 	websocketConnectionGetMaxIncomingPayloadSizeFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetMaxIncomingPayloadSizeFunction, err = websocketConnectionStruct.InvokerNew("get_max_incoming_payload_size")
+		websocketConnectionGetMaxIncomingPayloadSizeFunction, err = websocketConnectionObject.InvokerNew("get_max_incoming_payload_size")
 	})
 	return err
 }
@@ -5897,11 +5704,11 @@ var websocketConnectionGetOriginFunction_Once sync.Once
 func websocketConnectionGetOriginFunction_Set() error {
 	var err error
 	websocketConnectionGetOriginFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetOriginFunction, err = websocketConnectionStruct.InvokerNew("get_origin")
+		websocketConnectionGetOriginFunction, err = websocketConnectionObject.InvokerNew("get_origin")
 	})
 	return err
 }
@@ -5929,11 +5736,11 @@ var websocketConnectionGetProtocolFunction_Once sync.Once
 func websocketConnectionGetProtocolFunction_Set() error {
 	var err error
 	websocketConnectionGetProtocolFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetProtocolFunction, err = websocketConnectionStruct.InvokerNew("get_protocol")
+		websocketConnectionGetProtocolFunction, err = websocketConnectionObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -5961,11 +5768,11 @@ var websocketConnectionGetStateFunction_Once sync.Once
 func websocketConnectionGetStateFunction_Set() error {
 	var err error
 	websocketConnectionGetStateFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetStateFunction, err = websocketConnectionStruct.InvokerNew("get_state")
+		websocketConnectionGetStateFunction, err = websocketConnectionObject.InvokerNew("get_state")
 	})
 	return err
 }
@@ -5993,11 +5800,11 @@ var websocketConnectionGetUriFunction_Once sync.Once
 func websocketConnectionGetUriFunction_Set() error {
 	var err error
 	websocketConnectionGetUriFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionGetUriFunction, err = websocketConnectionStruct.InvokerNew("get_uri")
+		websocketConnectionGetUriFunction, err = websocketConnectionObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -6030,11 +5837,11 @@ var websocketConnectionSendTextFunction_Once sync.Once
 func websocketConnectionSendTextFunction_Set() error {
 	var err error
 	websocketConnectionSendTextFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionSendTextFunction, err = websocketConnectionStruct.InvokerNew("send_text")
+		websocketConnectionSendTextFunction, err = websocketConnectionObject.InvokerNew("send_text")
 	})
 	return err
 }
@@ -6059,11 +5866,11 @@ var websocketConnectionSetKeepaliveIntervalFunction_Once sync.Once
 func websocketConnectionSetKeepaliveIntervalFunction_Set() error {
 	var err error
 	websocketConnectionSetKeepaliveIntervalFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionSetKeepaliveIntervalFunction, err = websocketConnectionStruct.InvokerNew("set_keepalive_interval")
+		websocketConnectionSetKeepaliveIntervalFunction, err = websocketConnectionObject.InvokerNew("set_keepalive_interval")
 	})
 	return err
 }
@@ -6088,11 +5895,11 @@ var websocketConnectionSetMaxIncomingPayloadSizeFunction_Once sync.Once
 func websocketConnectionSetMaxIncomingPayloadSizeFunction_Set() error {
 	var err error
 	websocketConnectionSetMaxIncomingPayloadSizeFunction_Once.Do(func() {
-		err = websocketConnectionStruct_Set()
+		err = websocketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketConnectionSetMaxIncomingPayloadSizeFunction, err = websocketConnectionStruct.InvokerNew("set_max_incoming_payload_size")
+		websocketConnectionSetMaxIncomingPayloadSizeFunction, err = websocketConnectionObject.InvokerNew("set_max_incoming_payload_size")
 	})
 	return err
 }
@@ -6111,13 +5918,13 @@ func (recv *WebsocketConnection) SetMaxIncomingPayloadSize(maxIncomingPayloadSiz
 	return
 }
 
-var websocketExtensionStruct *gi.Struct
-var websocketExtensionStruct_Once sync.Once
+var websocketExtensionObject *gi.Object
+var websocketExtensionObject_Once sync.Once
 
-func websocketExtensionStruct_Set() error {
+func websocketExtensionObject_Set() error {
 	var err error
-	websocketExtensionStruct_Once.Do(func() {
-		websocketExtensionStruct, err = gi.StructNew("Soup", "WebsocketExtension")
+	websocketExtensionObject_Once.Do(func() {
+		websocketExtensionObject, err = gi.ObjectNew("Soup", "WebsocketExtension")
 	})
 	return err
 }
@@ -6138,11 +5945,11 @@ var websocketExtensionGetRequestParamsFunction_Once sync.Once
 func websocketExtensionGetRequestParamsFunction_Set() error {
 	var err error
 	websocketExtensionGetRequestParamsFunction_Once.Do(func() {
-		err = websocketExtensionStruct_Set()
+		err = websocketExtensionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketExtensionGetRequestParamsFunction, err = websocketExtensionStruct.InvokerNew("get_request_params")
+		websocketExtensionGetRequestParamsFunction, err = websocketExtensionObject.InvokerNew("get_request_params")
 	})
 	return err
 }
@@ -6170,11 +5977,11 @@ var websocketExtensionGetResponseParamsFunction_Once sync.Once
 func websocketExtensionGetResponseParamsFunction_Set() error {
 	var err error
 	websocketExtensionGetResponseParamsFunction_Once.Do(func() {
-		err = websocketExtensionStruct_Set()
+		err = websocketExtensionObject_Set()
 		if err != nil {
 			return
 		}
-		websocketExtensionGetResponseParamsFunction, err = websocketExtensionStruct.InvokerNew("get_response_params")
+		websocketExtensionGetResponseParamsFunction, err = websocketExtensionObject.InvokerNew("get_response_params")
 	})
 	return err
 }
@@ -6200,29 +6007,13 @@ func (recv *WebsocketExtension) GetResponseParams() string {
 
 // UNSUPPORTED : C value 'soup_websocket_extension_process_outgoing_message' : parameter 'payload' of type 'GLib.Bytes' not supported
 
-// WebsocketExtensionStruct creates an uninitialised WebsocketExtension.
-func WebsocketExtensionStruct() *WebsocketExtension {
-	err := websocketExtensionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var websocketExtensionDeflateObject *gi.Object
+var websocketExtensionDeflateObject_Once sync.Once
 
-	structGo := &WebsocketExtension{}
-	structGo.Native = websocketExtensionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebsocketExtension)
-	return structGo
-}
-func finalizeWebsocketExtension(obj *WebsocketExtension) {
-	websocketExtensionStruct.Free(obj.Native)
-}
-
-var websocketExtensionDeflateStruct *gi.Struct
-var websocketExtensionDeflateStruct_Once sync.Once
-
-func websocketExtensionDeflateStruct_Set() error {
+func websocketExtensionDeflateObject_Set() error {
 	var err error
-	websocketExtensionDeflateStruct_Once.Do(func() {
-		websocketExtensionDeflateStruct, err = gi.StructNew("Soup", "WebsocketExtensionDeflate")
+	websocketExtensionDeflateObject_Once.Do(func() {
+		websocketExtensionDeflateObject, err = gi.ObjectNew("Soup", "WebsocketExtensionDeflate")
 	})
 	return err
 }
@@ -6233,7 +6024,7 @@ type WebsocketExtensionDeflate struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebsocketExtensionDeflate) FieldParent() *WebsocketExtension {
-	argValue := gi.FieldGet(websocketExtensionDeflateStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(websocketExtensionDeflateObject, recv.Native, "parent")
 	value := &WebsocketExtension{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6243,32 +6034,16 @@ func (recv *WebsocketExtensionDeflate) FieldParent() *WebsocketExtension {
 func (recv *WebsocketExtensionDeflate) SetFieldParent(value *WebsocketExtension) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(websocketExtensionDeflateStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(websocketExtensionDeflateObject, recv.Native, "parent", argValue)
 }
 
-// WebsocketExtensionDeflateStruct creates an uninitialised WebsocketExtensionDeflate.
-func WebsocketExtensionDeflateStruct() *WebsocketExtensionDeflate {
-	err := websocketExtensionDeflateStruct_Set()
-	if err != nil {
-		return nil
-	}
+var websocketExtensionManagerObject *gi.Object
+var websocketExtensionManagerObject_Once sync.Once
 
-	structGo := &WebsocketExtensionDeflate{}
-	structGo.Native = websocketExtensionDeflateStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionDeflate)
-	return structGo
-}
-func finalizeWebsocketExtensionDeflate(obj *WebsocketExtensionDeflate) {
-	websocketExtensionDeflateStruct.Free(obj.Native)
-}
-
-var websocketExtensionManagerStruct *gi.Struct
-var websocketExtensionManagerStruct_Once sync.Once
-
-func websocketExtensionManagerStruct_Set() error {
+func websocketExtensionManagerObject_Set() error {
 	var err error
-	websocketExtensionManagerStruct_Once.Do(func() {
-		websocketExtensionManagerStruct, err = gi.StructNew("Soup", "WebsocketExtensionManager")
+	websocketExtensionManagerObject_Once.Do(func() {
+		websocketExtensionManagerObject, err = gi.ObjectNew("Soup", "WebsocketExtensionManager")
 	})
 	return err
 }
@@ -6280,19 +6055,3 @@ type WebsocketExtensionManager struct {
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
-
-// WebsocketExtensionManagerStruct creates an uninitialised WebsocketExtensionManager.
-func WebsocketExtensionManagerStruct() *WebsocketExtensionManager {
-	err := websocketExtensionManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &WebsocketExtensionManager{}
-	structGo.Native = websocketExtensionManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeWebsocketExtensionManager)
-	return structGo
-}
-func finalizeWebsocketExtensionManager(obj *WebsocketExtensionManager) {
-	websocketExtensionManagerStruct.Free(obj.Native)
-}

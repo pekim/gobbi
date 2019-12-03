@@ -2866,7 +2866,7 @@ type NavigationPolicyDecisionClass struct {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.FieldGet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class")
+	argValue := gi.StructFieldGet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class")
 	value := &PolicyDecisionClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2876,7 +2876,7 @@ func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionCla
 func (recv *NavigationPolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
+	gi.StructFieldSet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -3968,7 +3968,7 @@ type ResponsePolicyDecisionClass struct {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.FieldGet(responsePolicyDecisionClassStruct, recv.Native, "parent_class")
+	argValue := gi.StructFieldGet(responsePolicyDecisionClassStruct, recv.Native, "parent_class")
 	value := &PolicyDecisionClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3978,7 +3978,7 @@ func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass
 func (recv *ResponsePolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(responsePolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
+	gi.StructFieldSet(responsePolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -5923,7 +5923,7 @@ type WebViewClass struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
-	argValue := gi.FieldGet(webViewClassStruct, recv.Native, "parent")
+	argValue := gi.StructFieldGet(webViewClassStruct, recv.Native, "parent")
 	value := &WebViewBaseClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5933,7 +5933,7 @@ func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
 func (recv *WebViewClass) SetFieldParent(value *WebViewBaseClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(webViewClassStruct, recv.Native, "parent", argValue)
+	gi.StructFieldSet(webViewClassStruct, recv.Native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'load_changed' : for field getter : missing Type

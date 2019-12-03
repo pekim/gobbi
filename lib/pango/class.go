@@ -5,17 +5,16 @@ package pango
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var contextStruct *gi.Struct
-var contextStruct_Once sync.Once
+var contextObject *gi.Object
+var contextObject_Once sync.Once
 
-func contextStruct_Set() error {
+func contextObject_Set() error {
 	var err error
-	contextStruct_Once.Do(func() {
-		contextStruct, err = gi.StructNew("Pango", "Context")
+	contextObject_Once.Do(func() {
+		contextObject, err = gi.ObjectNew("Pango", "Context")
 	})
 	return err
 }
@@ -30,11 +29,11 @@ var contextNewFunction_Once sync.Once
 func contextNewFunction_Set() error {
 	var err error
 	contextNewFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextNewFunction, err = contextStruct.InvokerNew("new")
+		contextNewFunction, err = contextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -61,11 +60,11 @@ var contextChangedFunction_Once sync.Once
 func contextChangedFunction_Set() error {
 	var err error
 	contextChangedFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextChangedFunction, err = contextStruct.InvokerNew("changed")
+		contextChangedFunction, err = contextObject.InvokerNew("changed")
 	})
 	return err
 }
@@ -89,11 +88,11 @@ var contextGetBaseDirFunction_Once sync.Once
 func contextGetBaseDirFunction_Set() error {
 	var err error
 	contextGetBaseDirFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetBaseDirFunction, err = contextStruct.InvokerNew("get_base_dir")
+		contextGetBaseDirFunction, err = contextObject.InvokerNew("get_base_dir")
 	})
 	return err
 }
@@ -121,11 +120,11 @@ var contextGetBaseGravityFunction_Once sync.Once
 func contextGetBaseGravityFunction_Set() error {
 	var err error
 	contextGetBaseGravityFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetBaseGravityFunction, err = contextStruct.InvokerNew("get_base_gravity")
+		contextGetBaseGravityFunction, err = contextObject.InvokerNew("get_base_gravity")
 	})
 	return err
 }
@@ -153,11 +152,11 @@ var contextGetFontDescriptionFunction_Once sync.Once
 func contextGetFontDescriptionFunction_Set() error {
 	var err error
 	contextGetFontDescriptionFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetFontDescriptionFunction, err = contextStruct.InvokerNew("get_font_description")
+		contextGetFontDescriptionFunction, err = contextObject.InvokerNew("get_font_description")
 	})
 	return err
 }
@@ -186,11 +185,11 @@ var contextGetFontMapFunction_Once sync.Once
 func contextGetFontMapFunction_Set() error {
 	var err error
 	contextGetFontMapFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetFontMapFunction, err = contextStruct.InvokerNew("get_font_map")
+		contextGetFontMapFunction, err = contextObject.InvokerNew("get_font_map")
 	})
 	return err
 }
@@ -219,11 +218,11 @@ var contextGetGravityFunction_Once sync.Once
 func contextGetGravityFunction_Set() error {
 	var err error
 	contextGetGravityFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetGravityFunction, err = contextStruct.InvokerNew("get_gravity")
+		contextGetGravityFunction, err = contextObject.InvokerNew("get_gravity")
 	})
 	return err
 }
@@ -251,11 +250,11 @@ var contextGetGravityHintFunction_Once sync.Once
 func contextGetGravityHintFunction_Set() error {
 	var err error
 	contextGetGravityHintFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetGravityHintFunction, err = contextStruct.InvokerNew("get_gravity_hint")
+		contextGetGravityHintFunction, err = contextObject.InvokerNew("get_gravity_hint")
 	})
 	return err
 }
@@ -283,11 +282,11 @@ var contextGetLanguageFunction_Once sync.Once
 func contextGetLanguageFunction_Set() error {
 	var err error
 	contextGetLanguageFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetLanguageFunction, err = contextStruct.InvokerNew("get_language")
+		contextGetLanguageFunction, err = contextObject.InvokerNew("get_language")
 	})
 	return err
 }
@@ -316,11 +315,11 @@ var contextGetMatrixFunction_Once sync.Once
 func contextGetMatrixFunction_Set() error {
 	var err error
 	contextGetMatrixFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetMatrixFunction, err = contextStruct.InvokerNew("get_matrix")
+		contextGetMatrixFunction, err = contextObject.InvokerNew("get_matrix")
 	})
 	return err
 }
@@ -349,11 +348,11 @@ var contextGetMetricsFunction_Once sync.Once
 func contextGetMetricsFunction_Set() error {
 	var err error
 	contextGetMetricsFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetMetricsFunction, err = contextStruct.InvokerNew("get_metrics")
+		contextGetMetricsFunction, err = contextObject.InvokerNew("get_metrics")
 	})
 	return err
 }
@@ -384,11 +383,11 @@ var contextGetSerialFunction_Once sync.Once
 func contextGetSerialFunction_Set() error {
 	var err error
 	contextGetSerialFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetSerialFunction, err = contextStruct.InvokerNew("get_serial")
+		contextGetSerialFunction, err = contextObject.InvokerNew("get_serial")
 	})
 	return err
 }
@@ -418,11 +417,11 @@ var contextLoadFontFunction_Once sync.Once
 func contextLoadFontFunction_Set() error {
 	var err error
 	contextLoadFontFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextLoadFontFunction, err = contextStruct.InvokerNew("load_font")
+		contextLoadFontFunction, err = contextObject.InvokerNew("load_font")
 	})
 	return err
 }
@@ -452,11 +451,11 @@ var contextLoadFontsetFunction_Once sync.Once
 func contextLoadFontsetFunction_Set() error {
 	var err error
 	contextLoadFontsetFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextLoadFontsetFunction, err = contextStruct.InvokerNew("load_fontset")
+		contextLoadFontsetFunction, err = contextObject.InvokerNew("load_fontset")
 	})
 	return err
 }
@@ -487,11 +486,11 @@ var contextSetBaseDirFunction_Once sync.Once
 func contextSetBaseDirFunction_Set() error {
 	var err error
 	contextSetBaseDirFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetBaseDirFunction, err = contextStruct.InvokerNew("set_base_dir")
+		contextSetBaseDirFunction, err = contextObject.InvokerNew("set_base_dir")
 	})
 	return err
 }
@@ -516,11 +515,11 @@ var contextSetBaseGravityFunction_Once sync.Once
 func contextSetBaseGravityFunction_Set() error {
 	var err error
 	contextSetBaseGravityFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetBaseGravityFunction, err = contextStruct.InvokerNew("set_base_gravity")
+		contextSetBaseGravityFunction, err = contextObject.InvokerNew("set_base_gravity")
 	})
 	return err
 }
@@ -545,11 +544,11 @@ var contextSetFontDescriptionFunction_Once sync.Once
 func contextSetFontDescriptionFunction_Set() error {
 	var err error
 	contextSetFontDescriptionFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetFontDescriptionFunction, err = contextStruct.InvokerNew("set_font_description")
+		contextSetFontDescriptionFunction, err = contextObject.InvokerNew("set_font_description")
 	})
 	return err
 }
@@ -574,11 +573,11 @@ var contextSetFontMapFunction_Once sync.Once
 func contextSetFontMapFunction_Set() error {
 	var err error
 	contextSetFontMapFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetFontMapFunction, err = contextStruct.InvokerNew("set_font_map")
+		contextSetFontMapFunction, err = contextObject.InvokerNew("set_font_map")
 	})
 	return err
 }
@@ -603,11 +602,11 @@ var contextSetGravityHintFunction_Once sync.Once
 func contextSetGravityHintFunction_Set() error {
 	var err error
 	contextSetGravityHintFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetGravityHintFunction, err = contextStruct.InvokerNew("set_gravity_hint")
+		contextSetGravityHintFunction, err = contextObject.InvokerNew("set_gravity_hint")
 	})
 	return err
 }
@@ -632,11 +631,11 @@ var contextSetLanguageFunction_Once sync.Once
 func contextSetLanguageFunction_Set() error {
 	var err error
 	contextSetLanguageFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetLanguageFunction, err = contextStruct.InvokerNew("set_language")
+		contextSetLanguageFunction, err = contextObject.InvokerNew("set_language")
 	})
 	return err
 }
@@ -661,11 +660,11 @@ var contextSetMatrixFunction_Once sync.Once
 func contextSetMatrixFunction_Set() error {
 	var err error
 	contextSetMatrixFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetMatrixFunction, err = contextStruct.InvokerNew("set_matrix")
+		contextSetMatrixFunction, err = contextObject.InvokerNew("set_matrix")
 	})
 	return err
 }
@@ -684,13 +683,13 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 	return
 }
 
-var engineStruct *gi.Struct
-var engineStruct_Once sync.Once
+var engineObject *gi.Object
+var engineObject_Once sync.Once
 
-func engineStruct_Set() error {
+func engineObject_Set() error {
 	var err error
-	engineStruct_Once.Do(func() {
-		engineStruct, err = gi.StructNew("Pango", "Engine")
+	engineObject_Once.Do(func() {
+		engineObject, err = gi.ObjectNew("Pango", "Engine")
 	})
 	return err
 }
@@ -699,29 +698,13 @@ type Engine struct {
 	gobject.Object
 }
 
-// EngineStruct creates an uninitialised Engine.
-func EngineStruct() *Engine {
-	err := engineStruct_Set()
-	if err != nil {
-		return nil
-	}
+var engineLangObject *gi.Object
+var engineLangObject_Once sync.Once
 
-	structGo := &Engine{}
-	structGo.Native = engineStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeEngine)
-	return structGo
-}
-func finalizeEngine(obj *Engine) {
-	engineStruct.Free(obj.Native)
-}
-
-var engineLangStruct *gi.Struct
-var engineLangStruct_Once sync.Once
-
-func engineLangStruct_Set() error {
+func engineLangObject_Set() error {
 	var err error
-	engineLangStruct_Once.Do(func() {
-		engineLangStruct, err = gi.StructNew("Pango", "EngineLang")
+	engineLangObject_Once.Do(func() {
+		engineLangObject, err = gi.ObjectNew("Pango", "EngineLang")
 	})
 	return err
 }
@@ -730,29 +713,13 @@ type EngineLang struct {
 	Engine
 }
 
-// EngineLangStruct creates an uninitialised EngineLang.
-func EngineLangStruct() *EngineLang {
-	err := engineLangStruct_Set()
-	if err != nil {
-		return nil
-	}
+var engineShapeObject *gi.Object
+var engineShapeObject_Once sync.Once
 
-	structGo := &EngineLang{}
-	structGo.Native = engineLangStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeEngineLang)
-	return structGo
-}
-func finalizeEngineLang(obj *EngineLang) {
-	engineLangStruct.Free(obj.Native)
-}
-
-var engineShapeStruct *gi.Struct
-var engineShapeStruct_Once sync.Once
-
-func engineShapeStruct_Set() error {
+func engineShapeObject_Set() error {
 	var err error
-	engineShapeStruct_Once.Do(func() {
-		engineShapeStruct, err = gi.StructNew("Pango", "EngineShape")
+	engineShapeObject_Once.Do(func() {
+		engineShapeObject, err = gi.ObjectNew("Pango", "EngineShape")
 	})
 	return err
 }
@@ -763,7 +730,7 @@ type EngineShape struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *EngineShape) FieldParentInstance() *Engine {
-	argValue := gi.FieldGet(engineShapeStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(engineShapeObject, recv.Native, "parent_instance")
 	value := &Engine{}
 	value.Native = argValue.Pointer()
 	return value
@@ -773,32 +740,16 @@ func (recv *EngineShape) FieldParentInstance() *Engine {
 func (recv *EngineShape) SetFieldParentInstance(value *Engine) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(engineShapeStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(engineShapeObject, recv.Native, "parent_instance", argValue)
 }
 
-// EngineShapeStruct creates an uninitialised EngineShape.
-func EngineShapeStruct() *EngineShape {
-	err := engineShapeStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontObject *gi.Object
+var fontObject_Once sync.Once
 
-	structGo := &EngineShape{}
-	structGo.Native = engineShapeStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeEngineShape)
-	return structGo
-}
-func finalizeEngineShape(obj *EngineShape) {
-	engineShapeStruct.Free(obj.Native)
-}
-
-var fontStruct *gi.Struct
-var fontStruct_Once sync.Once
-
-func fontStruct_Set() error {
+func fontObject_Set() error {
 	var err error
-	fontStruct_Once.Do(func() {
-		fontStruct, err = gi.StructNew("Pango", "Font")
+	fontObject_Once.Do(func() {
+		fontObject, err = gi.ObjectNew("Pango", "Font")
 	})
 	return err
 }
@@ -817,11 +768,11 @@ var fontDescribeFunction_Once sync.Once
 func fontDescribeFunction_Set() error {
 	var err error
 	fontDescribeFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontDescribeFunction, err = fontStruct.InvokerNew("describe")
+		fontDescribeFunction, err = fontObject.InvokerNew("describe")
 	})
 	return err
 }
@@ -850,11 +801,11 @@ var fontDescribeWithAbsoluteSizeFunction_Once sync.Once
 func fontDescribeWithAbsoluteSizeFunction_Set() error {
 	var err error
 	fontDescribeWithAbsoluteSizeFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontDescribeWithAbsoluteSizeFunction, err = fontStruct.InvokerNew("describe_with_absolute_size")
+		fontDescribeWithAbsoluteSizeFunction, err = fontObject.InvokerNew("describe_with_absolute_size")
 	})
 	return err
 }
@@ -883,11 +834,11 @@ var fontFindShaperFunction_Once sync.Once
 func fontFindShaperFunction_Set() error {
 	var err error
 	fontFindShaperFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontFindShaperFunction, err = fontStruct.InvokerNew("find_shaper")
+		fontFindShaperFunction, err = fontObject.InvokerNew("find_shaper")
 	})
 	return err
 }
@@ -918,11 +869,11 @@ var fontGetCoverageFunction_Once sync.Once
 func fontGetCoverageFunction_Set() error {
 	var err error
 	fontGetCoverageFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontGetCoverageFunction, err = fontStruct.InvokerNew("get_coverage")
+		fontGetCoverageFunction, err = fontObject.InvokerNew("get_coverage")
 	})
 	return err
 }
@@ -952,11 +903,11 @@ var fontGetFontMapFunction_Once sync.Once
 func fontGetFontMapFunction_Set() error {
 	var err error
 	fontGetFontMapFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontGetFontMapFunction, err = fontStruct.InvokerNew("get_font_map")
+		fontGetFontMapFunction, err = fontObject.InvokerNew("get_font_map")
 	})
 	return err
 }
@@ -985,11 +936,11 @@ var fontGetGlyphExtentsFunction_Once sync.Once
 func fontGetGlyphExtentsFunction_Set() error {
 	var err error
 	fontGetGlyphExtentsFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontGetGlyphExtentsFunction, err = fontStruct.InvokerNew("get_glyph_extents")
+		fontGetGlyphExtentsFunction, err = fontObject.InvokerNew("get_glyph_extents")
 	})
 	return err
 }
@@ -1021,11 +972,11 @@ var fontGetMetricsFunction_Once sync.Once
 func fontGetMetricsFunction_Set() error {
 	var err error
 	fontGetMetricsFunction_Once.Do(func() {
-		err = fontStruct_Set()
+		err = fontObject_Set()
 		if err != nil {
 			return
 		}
-		fontGetMetricsFunction, err = fontStruct.InvokerNew("get_metrics")
+		fontGetMetricsFunction, err = fontObject.InvokerNew("get_metrics")
 	})
 	return err
 }
@@ -1049,29 +1000,13 @@ func (recv *Font) GetMetrics(language *Language) *FontMetrics {
 	return retGo
 }
 
-// FontStruct creates an uninitialised Font.
-func FontStruct() *Font {
-	err := fontStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontFaceObject *gi.Object
+var fontFaceObject_Once sync.Once
 
-	structGo := &Font{}
-	structGo.Native = fontStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFont)
-	return structGo
-}
-func finalizeFont(obj *Font) {
-	fontStruct.Free(obj.Native)
-}
-
-var fontFaceStruct *gi.Struct
-var fontFaceStruct_Once sync.Once
-
-func fontFaceStruct_Set() error {
+func fontFaceObject_Set() error {
 	var err error
-	fontFaceStruct_Once.Do(func() {
-		fontFaceStruct, err = gi.StructNew("Pango", "FontFace")
+	fontFaceObject_Once.Do(func() {
+		fontFaceObject, err = gi.ObjectNew("Pango", "FontFace")
 	})
 	return err
 }
@@ -1090,11 +1025,11 @@ var fontFaceDescribeFunction_Once sync.Once
 func fontFaceDescribeFunction_Set() error {
 	var err error
 	fontFaceDescribeFunction_Once.Do(func() {
-		err = fontFaceStruct_Set()
+		err = fontFaceObject_Set()
 		if err != nil {
 			return
 		}
-		fontFaceDescribeFunction, err = fontFaceStruct.InvokerNew("describe")
+		fontFaceDescribeFunction, err = fontFaceObject.InvokerNew("describe")
 	})
 	return err
 }
@@ -1123,11 +1058,11 @@ var fontFaceGetFaceNameFunction_Once sync.Once
 func fontFaceGetFaceNameFunction_Set() error {
 	var err error
 	fontFaceGetFaceNameFunction_Once.Do(func() {
-		err = fontFaceStruct_Set()
+		err = fontFaceObject_Set()
 		if err != nil {
 			return
 		}
-		fontFaceGetFaceNameFunction, err = fontFaceStruct.InvokerNew("get_face_name")
+		fontFaceGetFaceNameFunction, err = fontFaceObject.InvokerNew("get_face_name")
 	})
 	return err
 }
@@ -1155,11 +1090,11 @@ var fontFaceIsSynthesizedFunction_Once sync.Once
 func fontFaceIsSynthesizedFunction_Set() error {
 	var err error
 	fontFaceIsSynthesizedFunction_Once.Do(func() {
-		err = fontFaceStruct_Set()
+		err = fontFaceObject_Set()
 		if err != nil {
 			return
 		}
-		fontFaceIsSynthesizedFunction, err = fontFaceStruct.InvokerNew("is_synthesized")
+		fontFaceIsSynthesizedFunction, err = fontFaceObject.InvokerNew("is_synthesized")
 	})
 	return err
 }
@@ -1183,29 +1118,13 @@ func (recv *FontFace) IsSynthesized() bool {
 
 // UNSUPPORTED : C value 'pango_font_face_list_sizes' : parameter 'sizes' of type 'nil' not supported
 
-// FontFaceStruct creates an uninitialised FontFace.
-func FontFaceStruct() *FontFace {
-	err := fontFaceStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontFamilyObject *gi.Object
+var fontFamilyObject_Once sync.Once
 
-	structGo := &FontFace{}
-	structGo.Native = fontFaceStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFontFace)
-	return structGo
-}
-func finalizeFontFace(obj *FontFace) {
-	fontFaceStruct.Free(obj.Native)
-}
-
-var fontFamilyStruct *gi.Struct
-var fontFamilyStruct_Once sync.Once
-
-func fontFamilyStruct_Set() error {
+func fontFamilyObject_Set() error {
 	var err error
-	fontFamilyStruct_Once.Do(func() {
-		fontFamilyStruct, err = gi.StructNew("Pango", "FontFamily")
+	fontFamilyObject_Once.Do(func() {
+		fontFamilyObject, err = gi.ObjectNew("Pango", "FontFamily")
 	})
 	return err
 }
@@ -1224,11 +1143,11 @@ var fontFamilyGetNameFunction_Once sync.Once
 func fontFamilyGetNameFunction_Set() error {
 	var err error
 	fontFamilyGetNameFunction_Once.Do(func() {
-		err = fontFamilyStruct_Set()
+		err = fontFamilyObject_Set()
 		if err != nil {
 			return
 		}
-		fontFamilyGetNameFunction, err = fontFamilyStruct.InvokerNew("get_name")
+		fontFamilyGetNameFunction, err = fontFamilyObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -1256,11 +1175,11 @@ var fontFamilyIsMonospaceFunction_Once sync.Once
 func fontFamilyIsMonospaceFunction_Set() error {
 	var err error
 	fontFamilyIsMonospaceFunction_Once.Do(func() {
-		err = fontFamilyStruct_Set()
+		err = fontFamilyObject_Set()
 		if err != nil {
 			return
 		}
-		fontFamilyIsMonospaceFunction, err = fontFamilyStruct.InvokerNew("is_monospace")
+		fontFamilyIsMonospaceFunction, err = fontFamilyObject.InvokerNew("is_monospace")
 	})
 	return err
 }
@@ -1284,29 +1203,13 @@ func (recv *FontFamily) IsMonospace() bool {
 
 // UNSUPPORTED : C value 'pango_font_family_list_faces' : parameter 'faces' of type 'nil' not supported
 
-// FontFamilyStruct creates an uninitialised FontFamily.
-func FontFamilyStruct() *FontFamily {
-	err := fontFamilyStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontMapObject *gi.Object
+var fontMapObject_Once sync.Once
 
-	structGo := &FontFamily{}
-	structGo.Native = fontFamilyStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFontFamily)
-	return structGo
-}
-func finalizeFontFamily(obj *FontFamily) {
-	fontFamilyStruct.Free(obj.Native)
-}
-
-var fontMapStruct *gi.Struct
-var fontMapStruct_Once sync.Once
-
-func fontMapStruct_Set() error {
+func fontMapObject_Set() error {
 	var err error
-	fontMapStruct_Once.Do(func() {
-		fontMapStruct, err = gi.StructNew("Pango", "FontMap")
+	fontMapObject_Once.Do(func() {
+		fontMapObject, err = gi.ObjectNew("Pango", "FontMap")
 	})
 	return err
 }
@@ -1325,11 +1228,11 @@ var fontMapChangedFunction_Once sync.Once
 func fontMapChangedFunction_Set() error {
 	var err error
 	fontMapChangedFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapChangedFunction, err = fontMapStruct.InvokerNew("changed")
+		fontMapChangedFunction, err = fontMapObject.InvokerNew("changed")
 	})
 	return err
 }
@@ -1353,11 +1256,11 @@ var fontMapCreateContextFunction_Once sync.Once
 func fontMapCreateContextFunction_Set() error {
 	var err error
 	fontMapCreateContextFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapCreateContextFunction, err = fontMapStruct.InvokerNew("create_context")
+		fontMapCreateContextFunction, err = fontMapObject.InvokerNew("create_context")
 	})
 	return err
 }
@@ -1386,11 +1289,11 @@ var fontMapGetSerialFunction_Once sync.Once
 func fontMapGetSerialFunction_Set() error {
 	var err error
 	fontMapGetSerialFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapGetSerialFunction, err = fontMapStruct.InvokerNew("get_serial")
+		fontMapGetSerialFunction, err = fontMapObject.InvokerNew("get_serial")
 	})
 	return err
 }
@@ -1418,11 +1321,11 @@ var fontMapGetShapeEngineTypeFunction_Once sync.Once
 func fontMapGetShapeEngineTypeFunction_Set() error {
 	var err error
 	fontMapGetShapeEngineTypeFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapGetShapeEngineTypeFunction, err = fontMapStruct.InvokerNew("get_shape_engine_type")
+		fontMapGetShapeEngineTypeFunction, err = fontMapObject.InvokerNew("get_shape_engine_type")
 	})
 	return err
 }
@@ -1452,11 +1355,11 @@ var fontMapLoadFontFunction_Once sync.Once
 func fontMapLoadFontFunction_Set() error {
 	var err error
 	fontMapLoadFontFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapLoadFontFunction, err = fontMapStruct.InvokerNew("load_font")
+		fontMapLoadFontFunction, err = fontMapObject.InvokerNew("load_font")
 	})
 	return err
 }
@@ -1487,11 +1390,11 @@ var fontMapLoadFontsetFunction_Once sync.Once
 func fontMapLoadFontsetFunction_Set() error {
 	var err error
 	fontMapLoadFontsetFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapLoadFontsetFunction, err = fontMapStruct.InvokerNew("load_fontset")
+		fontMapLoadFontsetFunction, err = fontMapObject.InvokerNew("load_fontset")
 	})
 	return err
 }
@@ -1517,29 +1420,13 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
-// FontMapStruct creates an uninitialised FontMap.
-func FontMapStruct() *FontMap {
-	err := fontMapStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontsetObject *gi.Object
+var fontsetObject_Once sync.Once
 
-	structGo := &FontMap{}
-	structGo.Native = fontMapStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFontMap)
-	return structGo
-}
-func finalizeFontMap(obj *FontMap) {
-	fontMapStruct.Free(obj.Native)
-}
-
-var fontsetStruct *gi.Struct
-var fontsetStruct_Once sync.Once
-
-func fontsetStruct_Set() error {
+func fontsetObject_Set() error {
 	var err error
-	fontsetStruct_Once.Do(func() {
-		fontsetStruct, err = gi.StructNew("Pango", "Fontset")
+	fontsetObject_Once.Do(func() {
+		fontsetObject, err = gi.ObjectNew("Pango", "Fontset")
 	})
 	return err
 }
@@ -1560,11 +1447,11 @@ var fontsetGetFontFunction_Once sync.Once
 func fontsetGetFontFunction_Set() error {
 	var err error
 	fontsetGetFontFunction_Once.Do(func() {
-		err = fontsetStruct_Set()
+		err = fontsetObject_Set()
 		if err != nil {
 			return
 		}
-		fontsetGetFontFunction, err = fontsetStruct.InvokerNew("get_font")
+		fontsetGetFontFunction, err = fontsetObject.InvokerNew("get_font")
 	})
 	return err
 }
@@ -1594,11 +1481,11 @@ var fontsetGetMetricsFunction_Once sync.Once
 func fontsetGetMetricsFunction_Set() error {
 	var err error
 	fontsetGetMetricsFunction_Once.Do(func() {
-		err = fontsetStruct_Set()
+		err = fontsetObject_Set()
 		if err != nil {
 			return
 		}
-		fontsetGetMetricsFunction, err = fontsetStruct.InvokerNew("get_metrics")
+		fontsetGetMetricsFunction, err = fontsetObject.InvokerNew("get_metrics")
 	})
 	return err
 }
@@ -1621,29 +1508,13 @@ func (recv *Fontset) GetMetrics() *FontMetrics {
 	return retGo
 }
 
-// FontsetStruct creates an uninitialised Fontset.
-func FontsetStruct() *Fontset {
-	err := fontsetStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fontsetSimpleObject *gi.Object
+var fontsetSimpleObject_Once sync.Once
 
-	structGo := &Fontset{}
-	structGo.Native = fontsetStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFontset)
-	return structGo
-}
-func finalizeFontset(obj *Fontset) {
-	fontsetStruct.Free(obj.Native)
-}
-
-var fontsetSimpleStruct *gi.Struct
-var fontsetSimpleStruct_Once sync.Once
-
-func fontsetSimpleStruct_Set() error {
+func fontsetSimpleObject_Set() error {
 	var err error
-	fontsetSimpleStruct_Once.Do(func() {
-		fontsetSimpleStruct, err = gi.StructNew("Pango", "FontsetSimple")
+	fontsetSimpleObject_Once.Do(func() {
+		fontsetSimpleObject, err = gi.ObjectNew("Pango", "FontsetSimple")
 	})
 	return err
 }
@@ -1658,11 +1529,11 @@ var fontsetSimpleNewFunction_Once sync.Once
 func fontsetSimpleNewFunction_Set() error {
 	var err error
 	fontsetSimpleNewFunction_Once.Do(func() {
-		err = fontsetSimpleStruct_Set()
+		err = fontsetSimpleObject_Set()
 		if err != nil {
 			return
 		}
-		fontsetSimpleNewFunction, err = fontsetSimpleStruct.InvokerNew("new")
+		fontsetSimpleNewFunction, err = fontsetSimpleObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1691,11 +1562,11 @@ var fontsetSimpleAppendFunction_Once sync.Once
 func fontsetSimpleAppendFunction_Set() error {
 	var err error
 	fontsetSimpleAppendFunction_Once.Do(func() {
-		err = fontsetSimpleStruct_Set()
+		err = fontsetSimpleObject_Set()
 		if err != nil {
 			return
 		}
-		fontsetSimpleAppendFunction, err = fontsetSimpleStruct.InvokerNew("append")
+		fontsetSimpleAppendFunction, err = fontsetSimpleObject.InvokerNew("append")
 	})
 	return err
 }
@@ -1720,11 +1591,11 @@ var fontsetSimpleSizeFunction_Once sync.Once
 func fontsetSimpleSizeFunction_Set() error {
 	var err error
 	fontsetSimpleSizeFunction_Once.Do(func() {
-		err = fontsetSimpleStruct_Set()
+		err = fontsetSimpleObject_Set()
 		if err != nil {
 			return
 		}
-		fontsetSimpleSizeFunction, err = fontsetSimpleStruct.InvokerNew("size")
+		fontsetSimpleSizeFunction, err = fontsetSimpleObject.InvokerNew("size")
 	})
 	return err
 }
@@ -1746,13 +1617,13 @@ func (recv *FontsetSimple) Size() int32 {
 	return retGo
 }
 
-var layoutStruct *gi.Struct
-var layoutStruct_Once sync.Once
+var layoutObject *gi.Object
+var layoutObject_Once sync.Once
 
-func layoutStruct_Set() error {
+func layoutObject_Set() error {
 	var err error
-	layoutStruct_Once.Do(func() {
-		layoutStruct, err = gi.StructNew("Pango", "Layout")
+	layoutObject_Once.Do(func() {
+		layoutObject, err = gi.ObjectNew("Pango", "Layout")
 	})
 	return err
 }
@@ -1767,11 +1638,11 @@ var layoutNewFunction_Once sync.Once
 func layoutNewFunction_Set() error {
 	var err error
 	layoutNewFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutNewFunction, err = layoutStruct.InvokerNew("new")
+		layoutNewFunction, err = layoutObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1800,11 +1671,11 @@ var layoutContextChangedFunction_Once sync.Once
 func layoutContextChangedFunction_Set() error {
 	var err error
 	layoutContextChangedFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutContextChangedFunction, err = layoutStruct.InvokerNew("context_changed")
+		layoutContextChangedFunction, err = layoutObject.InvokerNew("context_changed")
 	})
 	return err
 }
@@ -1828,11 +1699,11 @@ var layoutCopyFunction_Once sync.Once
 func layoutCopyFunction_Set() error {
 	var err error
 	layoutCopyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutCopyFunction, err = layoutStruct.InvokerNew("copy")
+		layoutCopyFunction, err = layoutObject.InvokerNew("copy")
 	})
 	return err
 }
@@ -1861,11 +1732,11 @@ var layoutGetAlignmentFunction_Once sync.Once
 func layoutGetAlignmentFunction_Set() error {
 	var err error
 	layoutGetAlignmentFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetAlignmentFunction, err = layoutStruct.InvokerNew("get_alignment")
+		layoutGetAlignmentFunction, err = layoutObject.InvokerNew("get_alignment")
 	})
 	return err
 }
@@ -1893,11 +1764,11 @@ var layoutGetAttributesFunction_Once sync.Once
 func layoutGetAttributesFunction_Set() error {
 	var err error
 	layoutGetAttributesFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetAttributesFunction, err = layoutStruct.InvokerNew("get_attributes")
+		layoutGetAttributesFunction, err = layoutObject.InvokerNew("get_attributes")
 	})
 	return err
 }
@@ -1926,11 +1797,11 @@ var layoutGetAutoDirFunction_Once sync.Once
 func layoutGetAutoDirFunction_Set() error {
 	var err error
 	layoutGetAutoDirFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetAutoDirFunction, err = layoutStruct.InvokerNew("get_auto_dir")
+		layoutGetAutoDirFunction, err = layoutObject.InvokerNew("get_auto_dir")
 	})
 	return err
 }
@@ -1958,11 +1829,11 @@ var layoutGetBaselineFunction_Once sync.Once
 func layoutGetBaselineFunction_Set() error {
 	var err error
 	layoutGetBaselineFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetBaselineFunction, err = layoutStruct.InvokerNew("get_baseline")
+		layoutGetBaselineFunction, err = layoutObject.InvokerNew("get_baseline")
 	})
 	return err
 }
@@ -1990,11 +1861,11 @@ var layoutGetCharacterCountFunction_Once sync.Once
 func layoutGetCharacterCountFunction_Set() error {
 	var err error
 	layoutGetCharacterCountFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetCharacterCountFunction, err = layoutStruct.InvokerNew("get_character_count")
+		layoutGetCharacterCountFunction, err = layoutObject.InvokerNew("get_character_count")
 	})
 	return err
 }
@@ -2022,11 +1893,11 @@ var layoutGetContextFunction_Once sync.Once
 func layoutGetContextFunction_Set() error {
 	var err error
 	layoutGetContextFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetContextFunction, err = layoutStruct.InvokerNew("get_context")
+		layoutGetContextFunction, err = layoutObject.InvokerNew("get_context")
 	})
 	return err
 }
@@ -2055,11 +1926,11 @@ var layoutGetCursorPosFunction_Once sync.Once
 func layoutGetCursorPosFunction_Set() error {
 	var err error
 	layoutGetCursorPosFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetCursorPosFunction, err = layoutStruct.InvokerNew("get_cursor_pos")
+		layoutGetCursorPosFunction, err = layoutObject.InvokerNew("get_cursor_pos")
 	})
 	return err
 }
@@ -2091,11 +1962,11 @@ var layoutGetEllipsizeFunction_Once sync.Once
 func layoutGetEllipsizeFunction_Set() error {
 	var err error
 	layoutGetEllipsizeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetEllipsizeFunction, err = layoutStruct.InvokerNew("get_ellipsize")
+		layoutGetEllipsizeFunction, err = layoutObject.InvokerNew("get_ellipsize")
 	})
 	return err
 }
@@ -2123,11 +1994,11 @@ var layoutGetExtentsFunction_Once sync.Once
 func layoutGetExtentsFunction_Set() error {
 	var err error
 	layoutGetExtentsFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetExtentsFunction, err = layoutStruct.InvokerNew("get_extents")
+		layoutGetExtentsFunction, err = layoutObject.InvokerNew("get_extents")
 	})
 	return err
 }
@@ -2158,11 +2029,11 @@ var layoutGetFontDescriptionFunction_Once sync.Once
 func layoutGetFontDescriptionFunction_Set() error {
 	var err error
 	layoutGetFontDescriptionFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetFontDescriptionFunction, err = layoutStruct.InvokerNew("get_font_description")
+		layoutGetFontDescriptionFunction, err = layoutObject.InvokerNew("get_font_description")
 	})
 	return err
 }
@@ -2191,11 +2062,11 @@ var layoutGetHeightFunction_Once sync.Once
 func layoutGetHeightFunction_Set() error {
 	var err error
 	layoutGetHeightFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetHeightFunction, err = layoutStruct.InvokerNew("get_height")
+		layoutGetHeightFunction, err = layoutObject.InvokerNew("get_height")
 	})
 	return err
 }
@@ -2223,11 +2094,11 @@ var layoutGetIndentFunction_Once sync.Once
 func layoutGetIndentFunction_Set() error {
 	var err error
 	layoutGetIndentFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetIndentFunction, err = layoutStruct.InvokerNew("get_indent")
+		layoutGetIndentFunction, err = layoutObject.InvokerNew("get_indent")
 	})
 	return err
 }
@@ -2255,11 +2126,11 @@ var layoutGetIterFunction_Once sync.Once
 func layoutGetIterFunction_Set() error {
 	var err error
 	layoutGetIterFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetIterFunction, err = layoutStruct.InvokerNew("get_iter")
+		layoutGetIterFunction, err = layoutObject.InvokerNew("get_iter")
 	})
 	return err
 }
@@ -2288,11 +2159,11 @@ var layoutGetJustifyFunction_Once sync.Once
 func layoutGetJustifyFunction_Set() error {
 	var err error
 	layoutGetJustifyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetJustifyFunction, err = layoutStruct.InvokerNew("get_justify")
+		layoutGetJustifyFunction, err = layoutObject.InvokerNew("get_justify")
 	})
 	return err
 }
@@ -2320,11 +2191,11 @@ var layoutGetLineFunction_Once sync.Once
 func layoutGetLineFunction_Set() error {
 	var err error
 	layoutGetLineFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetLineFunction, err = layoutStruct.InvokerNew("get_line")
+		layoutGetLineFunction, err = layoutObject.InvokerNew("get_line")
 	})
 	return err
 }
@@ -2354,11 +2225,11 @@ var layoutGetLineCountFunction_Once sync.Once
 func layoutGetLineCountFunction_Set() error {
 	var err error
 	layoutGetLineCountFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetLineCountFunction, err = layoutStruct.InvokerNew("get_line_count")
+		layoutGetLineCountFunction, err = layoutObject.InvokerNew("get_line_count")
 	})
 	return err
 }
@@ -2386,11 +2257,11 @@ var layoutGetLineReadonlyFunction_Once sync.Once
 func layoutGetLineReadonlyFunction_Set() error {
 	var err error
 	layoutGetLineReadonlyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetLineReadonlyFunction, err = layoutStruct.InvokerNew("get_line_readonly")
+		layoutGetLineReadonlyFunction, err = layoutObject.InvokerNew("get_line_readonly")
 	})
 	return err
 }
@@ -2426,11 +2297,11 @@ var layoutGetLogAttrsReadonlyFunction_Once sync.Once
 func layoutGetLogAttrsReadonlyFunction_Set() error {
 	var err error
 	layoutGetLogAttrsReadonlyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetLogAttrsReadonlyFunction, err = layoutStruct.InvokerNew("get_log_attrs_readonly")
+		layoutGetLogAttrsReadonlyFunction, err = layoutObject.InvokerNew("get_log_attrs_readonly")
 	})
 	return err
 }
@@ -2458,11 +2329,11 @@ var layoutGetPixelExtentsFunction_Once sync.Once
 func layoutGetPixelExtentsFunction_Set() error {
 	var err error
 	layoutGetPixelExtentsFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetPixelExtentsFunction, err = layoutStruct.InvokerNew("get_pixel_extents")
+		layoutGetPixelExtentsFunction, err = layoutObject.InvokerNew("get_pixel_extents")
 	})
 	return err
 }
@@ -2493,11 +2364,11 @@ var layoutGetPixelSizeFunction_Once sync.Once
 func layoutGetPixelSizeFunction_Set() error {
 	var err error
 	layoutGetPixelSizeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetPixelSizeFunction, err = layoutStruct.InvokerNew("get_pixel_size")
+		layoutGetPixelSizeFunction, err = layoutObject.InvokerNew("get_pixel_size")
 	})
 	return err
 }
@@ -2526,11 +2397,11 @@ var layoutGetSerialFunction_Once sync.Once
 func layoutGetSerialFunction_Set() error {
 	var err error
 	layoutGetSerialFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetSerialFunction, err = layoutStruct.InvokerNew("get_serial")
+		layoutGetSerialFunction, err = layoutObject.InvokerNew("get_serial")
 	})
 	return err
 }
@@ -2558,11 +2429,11 @@ var layoutGetSingleParagraphModeFunction_Once sync.Once
 func layoutGetSingleParagraphModeFunction_Set() error {
 	var err error
 	layoutGetSingleParagraphModeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetSingleParagraphModeFunction, err = layoutStruct.InvokerNew("get_single_paragraph_mode")
+		layoutGetSingleParagraphModeFunction, err = layoutObject.InvokerNew("get_single_paragraph_mode")
 	})
 	return err
 }
@@ -2590,11 +2461,11 @@ var layoutGetSizeFunction_Once sync.Once
 func layoutGetSizeFunction_Set() error {
 	var err error
 	layoutGetSizeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetSizeFunction, err = layoutStruct.InvokerNew("get_size")
+		layoutGetSizeFunction, err = layoutObject.InvokerNew("get_size")
 	})
 	return err
 }
@@ -2623,11 +2494,11 @@ var layoutGetSpacingFunction_Once sync.Once
 func layoutGetSpacingFunction_Set() error {
 	var err error
 	layoutGetSpacingFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetSpacingFunction, err = layoutStruct.InvokerNew("get_spacing")
+		layoutGetSpacingFunction, err = layoutObject.InvokerNew("get_spacing")
 	})
 	return err
 }
@@ -2655,11 +2526,11 @@ var layoutGetTabsFunction_Once sync.Once
 func layoutGetTabsFunction_Set() error {
 	var err error
 	layoutGetTabsFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetTabsFunction, err = layoutStruct.InvokerNew("get_tabs")
+		layoutGetTabsFunction, err = layoutObject.InvokerNew("get_tabs")
 	})
 	return err
 }
@@ -2688,11 +2559,11 @@ var layoutGetTextFunction_Once sync.Once
 func layoutGetTextFunction_Set() error {
 	var err error
 	layoutGetTextFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetTextFunction, err = layoutStruct.InvokerNew("get_text")
+		layoutGetTextFunction, err = layoutObject.InvokerNew("get_text")
 	})
 	return err
 }
@@ -2720,11 +2591,11 @@ var layoutGetUnknownGlyphsCountFunction_Once sync.Once
 func layoutGetUnknownGlyphsCountFunction_Set() error {
 	var err error
 	layoutGetUnknownGlyphsCountFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetUnknownGlyphsCountFunction, err = layoutStruct.InvokerNew("get_unknown_glyphs_count")
+		layoutGetUnknownGlyphsCountFunction, err = layoutObject.InvokerNew("get_unknown_glyphs_count")
 	})
 	return err
 }
@@ -2752,11 +2623,11 @@ var layoutGetWidthFunction_Once sync.Once
 func layoutGetWidthFunction_Set() error {
 	var err error
 	layoutGetWidthFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetWidthFunction, err = layoutStruct.InvokerNew("get_width")
+		layoutGetWidthFunction, err = layoutObject.InvokerNew("get_width")
 	})
 	return err
 }
@@ -2784,11 +2655,11 @@ var layoutGetWrapFunction_Once sync.Once
 func layoutGetWrapFunction_Set() error {
 	var err error
 	layoutGetWrapFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutGetWrapFunction, err = layoutStruct.InvokerNew("get_wrap")
+		layoutGetWrapFunction, err = layoutObject.InvokerNew("get_wrap")
 	})
 	return err
 }
@@ -2816,11 +2687,11 @@ var layoutIndexToLineXFunction_Once sync.Once
 func layoutIndexToLineXFunction_Set() error {
 	var err error
 	layoutIndexToLineXFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutIndexToLineXFunction, err = layoutStruct.InvokerNew("index_to_line_x")
+		layoutIndexToLineXFunction, err = layoutObject.InvokerNew("index_to_line_x")
 	})
 	return err
 }
@@ -2851,11 +2722,11 @@ var layoutIndexToPosFunction_Once sync.Once
 func layoutIndexToPosFunction_Set() error {
 	var err error
 	layoutIndexToPosFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutIndexToPosFunction, err = layoutStruct.InvokerNew("index_to_pos")
+		layoutIndexToPosFunction, err = layoutObject.InvokerNew("index_to_pos")
 	})
 	return err
 }
@@ -2885,11 +2756,11 @@ var layoutIsEllipsizedFunction_Once sync.Once
 func layoutIsEllipsizedFunction_Set() error {
 	var err error
 	layoutIsEllipsizedFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutIsEllipsizedFunction, err = layoutStruct.InvokerNew("is_ellipsized")
+		layoutIsEllipsizedFunction, err = layoutObject.InvokerNew("is_ellipsized")
 	})
 	return err
 }
@@ -2917,11 +2788,11 @@ var layoutIsWrappedFunction_Once sync.Once
 func layoutIsWrappedFunction_Set() error {
 	var err error
 	layoutIsWrappedFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutIsWrappedFunction, err = layoutStruct.InvokerNew("is_wrapped")
+		layoutIsWrappedFunction, err = layoutObject.InvokerNew("is_wrapped")
 	})
 	return err
 }
@@ -2949,11 +2820,11 @@ var layoutMoveCursorVisuallyFunction_Once sync.Once
 func layoutMoveCursorVisuallyFunction_Set() error {
 	var err error
 	layoutMoveCursorVisuallyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutMoveCursorVisuallyFunction, err = layoutStruct.InvokerNew("move_cursor_visually")
+		layoutMoveCursorVisuallyFunction, err = layoutObject.InvokerNew("move_cursor_visually")
 	})
 	return err
 }
@@ -2986,11 +2857,11 @@ var layoutSetAlignmentFunction_Once sync.Once
 func layoutSetAlignmentFunction_Set() error {
 	var err error
 	layoutSetAlignmentFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetAlignmentFunction, err = layoutStruct.InvokerNew("set_alignment")
+		layoutSetAlignmentFunction, err = layoutObject.InvokerNew("set_alignment")
 	})
 	return err
 }
@@ -3015,11 +2886,11 @@ var layoutSetAttributesFunction_Once sync.Once
 func layoutSetAttributesFunction_Set() error {
 	var err error
 	layoutSetAttributesFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetAttributesFunction, err = layoutStruct.InvokerNew("set_attributes")
+		layoutSetAttributesFunction, err = layoutObject.InvokerNew("set_attributes")
 	})
 	return err
 }
@@ -3044,11 +2915,11 @@ var layoutSetAutoDirFunction_Once sync.Once
 func layoutSetAutoDirFunction_Set() error {
 	var err error
 	layoutSetAutoDirFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetAutoDirFunction, err = layoutStruct.InvokerNew("set_auto_dir")
+		layoutSetAutoDirFunction, err = layoutObject.InvokerNew("set_auto_dir")
 	})
 	return err
 }
@@ -3073,11 +2944,11 @@ var layoutSetEllipsizeFunction_Once sync.Once
 func layoutSetEllipsizeFunction_Set() error {
 	var err error
 	layoutSetEllipsizeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetEllipsizeFunction, err = layoutStruct.InvokerNew("set_ellipsize")
+		layoutSetEllipsizeFunction, err = layoutObject.InvokerNew("set_ellipsize")
 	})
 	return err
 }
@@ -3102,11 +2973,11 @@ var layoutSetFontDescriptionFunction_Once sync.Once
 func layoutSetFontDescriptionFunction_Set() error {
 	var err error
 	layoutSetFontDescriptionFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetFontDescriptionFunction, err = layoutStruct.InvokerNew("set_font_description")
+		layoutSetFontDescriptionFunction, err = layoutObject.InvokerNew("set_font_description")
 	})
 	return err
 }
@@ -3131,11 +3002,11 @@ var layoutSetHeightFunction_Once sync.Once
 func layoutSetHeightFunction_Set() error {
 	var err error
 	layoutSetHeightFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetHeightFunction, err = layoutStruct.InvokerNew("set_height")
+		layoutSetHeightFunction, err = layoutObject.InvokerNew("set_height")
 	})
 	return err
 }
@@ -3160,11 +3031,11 @@ var layoutSetIndentFunction_Once sync.Once
 func layoutSetIndentFunction_Set() error {
 	var err error
 	layoutSetIndentFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetIndentFunction, err = layoutStruct.InvokerNew("set_indent")
+		layoutSetIndentFunction, err = layoutObject.InvokerNew("set_indent")
 	})
 	return err
 }
@@ -3189,11 +3060,11 @@ var layoutSetJustifyFunction_Once sync.Once
 func layoutSetJustifyFunction_Set() error {
 	var err error
 	layoutSetJustifyFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetJustifyFunction, err = layoutStruct.InvokerNew("set_justify")
+		layoutSetJustifyFunction, err = layoutObject.InvokerNew("set_justify")
 	})
 	return err
 }
@@ -3218,11 +3089,11 @@ var layoutSetMarkupFunction_Once sync.Once
 func layoutSetMarkupFunction_Set() error {
 	var err error
 	layoutSetMarkupFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetMarkupFunction, err = layoutStruct.InvokerNew("set_markup")
+		layoutSetMarkupFunction, err = layoutObject.InvokerNew("set_markup")
 	})
 	return err
 }
@@ -3250,11 +3121,11 @@ var layoutSetSingleParagraphModeFunction_Once sync.Once
 func layoutSetSingleParagraphModeFunction_Set() error {
 	var err error
 	layoutSetSingleParagraphModeFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetSingleParagraphModeFunction, err = layoutStruct.InvokerNew("set_single_paragraph_mode")
+		layoutSetSingleParagraphModeFunction, err = layoutObject.InvokerNew("set_single_paragraph_mode")
 	})
 	return err
 }
@@ -3279,11 +3150,11 @@ var layoutSetSpacingFunction_Once sync.Once
 func layoutSetSpacingFunction_Set() error {
 	var err error
 	layoutSetSpacingFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetSpacingFunction, err = layoutStruct.InvokerNew("set_spacing")
+		layoutSetSpacingFunction, err = layoutObject.InvokerNew("set_spacing")
 	})
 	return err
 }
@@ -3308,11 +3179,11 @@ var layoutSetTabsFunction_Once sync.Once
 func layoutSetTabsFunction_Set() error {
 	var err error
 	layoutSetTabsFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetTabsFunction, err = layoutStruct.InvokerNew("set_tabs")
+		layoutSetTabsFunction, err = layoutObject.InvokerNew("set_tabs")
 	})
 	return err
 }
@@ -3337,11 +3208,11 @@ var layoutSetTextFunction_Once sync.Once
 func layoutSetTextFunction_Set() error {
 	var err error
 	layoutSetTextFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetTextFunction, err = layoutStruct.InvokerNew("set_text")
+		layoutSetTextFunction, err = layoutObject.InvokerNew("set_text")
 	})
 	return err
 }
@@ -3367,11 +3238,11 @@ var layoutSetWidthFunction_Once sync.Once
 func layoutSetWidthFunction_Set() error {
 	var err error
 	layoutSetWidthFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetWidthFunction, err = layoutStruct.InvokerNew("set_width")
+		layoutSetWidthFunction, err = layoutObject.InvokerNew("set_width")
 	})
 	return err
 }
@@ -3396,11 +3267,11 @@ var layoutSetWrapFunction_Once sync.Once
 func layoutSetWrapFunction_Set() error {
 	var err error
 	layoutSetWrapFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutSetWrapFunction, err = layoutStruct.InvokerNew("set_wrap")
+		layoutSetWrapFunction, err = layoutObject.InvokerNew("set_wrap")
 	})
 	return err
 }
@@ -3425,11 +3296,11 @@ var layoutXyToIndexFunction_Once sync.Once
 func layoutXyToIndexFunction_Set() error {
 	var err error
 	layoutXyToIndexFunction_Once.Do(func() {
-		err = layoutStruct_Set()
+		err = layoutObject_Set()
 		if err != nil {
 			return
 		}
-		layoutXyToIndexFunction, err = layoutStruct.InvokerNew("xy_to_index")
+		layoutXyToIndexFunction, err = layoutObject.InvokerNew("xy_to_index")
 	})
 	return err
 }
@@ -3456,13 +3327,13 @@ func (recv *Layout) XyToIndex(x int32, y int32) (bool, int32, int32) {
 	return retGo, out0, out1
 }
 
-var rendererStruct *gi.Struct
-var rendererStruct_Once sync.Once
+var rendererObject *gi.Object
+var rendererObject_Once sync.Once
 
-func rendererStruct_Set() error {
+func rendererObject_Set() error {
 	var err error
-	rendererStruct_Once.Do(func() {
-		rendererStruct, err = gi.StructNew("Pango", "Renderer")
+	rendererObject_Once.Do(func() {
+		rendererObject, err = gi.ObjectNew("Pango", "Renderer")
 	})
 	return err
 }
@@ -3473,7 +3344,7 @@ type Renderer struct {
 
 // FieldMatrix returns the C field 'matrix'.
 func (recv *Renderer) FieldMatrix() *Matrix {
-	argValue := gi.FieldGet(rendererStruct, recv.Native, "matrix")
+	argValue := gi.ObjectFieldGet(rendererObject, recv.Native, "matrix")
 	value := &Matrix{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3483,7 +3354,7 @@ func (recv *Renderer) FieldMatrix() *Matrix {
 func (recv *Renderer) SetFieldMatrix(value *Matrix) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(rendererStruct, recv.Native, "matrix", argValue)
+	gi.ObjectFieldSet(rendererObject, recv.Native, "matrix", argValue)
 }
 
 var rendererActivateFunction *gi.Function
@@ -3492,11 +3363,11 @@ var rendererActivateFunction_Once sync.Once
 func rendererActivateFunction_Set() error {
 	var err error
 	rendererActivateFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererActivateFunction, err = rendererStruct.InvokerNew("activate")
+		rendererActivateFunction, err = rendererObject.InvokerNew("activate")
 	})
 	return err
 }
@@ -3520,11 +3391,11 @@ var rendererDeactivateFunction_Once sync.Once
 func rendererDeactivateFunction_Set() error {
 	var err error
 	rendererDeactivateFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDeactivateFunction, err = rendererStruct.InvokerNew("deactivate")
+		rendererDeactivateFunction, err = rendererObject.InvokerNew("deactivate")
 	})
 	return err
 }
@@ -3548,11 +3419,11 @@ var rendererDrawErrorUnderlineFunction_Once sync.Once
 func rendererDrawErrorUnderlineFunction_Set() error {
 	var err error
 	rendererDrawErrorUnderlineFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawErrorUnderlineFunction, err = rendererStruct.InvokerNew("draw_error_underline")
+		rendererDrawErrorUnderlineFunction, err = rendererObject.InvokerNew("draw_error_underline")
 	})
 	return err
 }
@@ -3580,11 +3451,11 @@ var rendererDrawGlyphFunction_Once sync.Once
 func rendererDrawGlyphFunction_Set() error {
 	var err error
 	rendererDrawGlyphFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawGlyphFunction, err = rendererStruct.InvokerNew("draw_glyph")
+		rendererDrawGlyphFunction, err = rendererObject.InvokerNew("draw_glyph")
 	})
 	return err
 }
@@ -3612,11 +3483,11 @@ var rendererDrawGlyphItemFunction_Once sync.Once
 func rendererDrawGlyphItemFunction_Set() error {
 	var err error
 	rendererDrawGlyphItemFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawGlyphItemFunction, err = rendererStruct.InvokerNew("draw_glyph_item")
+		rendererDrawGlyphItemFunction, err = rendererObject.InvokerNew("draw_glyph_item")
 	})
 	return err
 }
@@ -3644,11 +3515,11 @@ var rendererDrawGlyphsFunction_Once sync.Once
 func rendererDrawGlyphsFunction_Set() error {
 	var err error
 	rendererDrawGlyphsFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawGlyphsFunction, err = rendererStruct.InvokerNew("draw_glyphs")
+		rendererDrawGlyphsFunction, err = rendererObject.InvokerNew("draw_glyphs")
 	})
 	return err
 }
@@ -3676,11 +3547,11 @@ var rendererDrawLayoutFunction_Once sync.Once
 func rendererDrawLayoutFunction_Set() error {
 	var err error
 	rendererDrawLayoutFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawLayoutFunction, err = rendererStruct.InvokerNew("draw_layout")
+		rendererDrawLayoutFunction, err = rendererObject.InvokerNew("draw_layout")
 	})
 	return err
 }
@@ -3707,11 +3578,11 @@ var rendererDrawLayoutLineFunction_Once sync.Once
 func rendererDrawLayoutLineFunction_Set() error {
 	var err error
 	rendererDrawLayoutLineFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawLayoutLineFunction, err = rendererStruct.InvokerNew("draw_layout_line")
+		rendererDrawLayoutLineFunction, err = rendererObject.InvokerNew("draw_layout_line")
 	})
 	return err
 }
@@ -3738,11 +3609,11 @@ var rendererDrawRectangleFunction_Once sync.Once
 func rendererDrawRectangleFunction_Set() error {
 	var err error
 	rendererDrawRectangleFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawRectangleFunction, err = rendererStruct.InvokerNew("draw_rectangle")
+		rendererDrawRectangleFunction, err = rendererObject.InvokerNew("draw_rectangle")
 	})
 	return err
 }
@@ -3771,11 +3642,11 @@ var rendererDrawTrapezoidFunction_Once sync.Once
 func rendererDrawTrapezoidFunction_Set() error {
 	var err error
 	rendererDrawTrapezoidFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererDrawTrapezoidFunction, err = rendererStruct.InvokerNew("draw_trapezoid")
+		rendererDrawTrapezoidFunction, err = rendererObject.InvokerNew("draw_trapezoid")
 	})
 	return err
 }
@@ -3806,11 +3677,11 @@ var rendererGetAlphaFunction_Once sync.Once
 func rendererGetAlphaFunction_Set() error {
 	var err error
 	rendererGetAlphaFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererGetAlphaFunction, err = rendererStruct.InvokerNew("get_alpha")
+		rendererGetAlphaFunction, err = rendererObject.InvokerNew("get_alpha")
 	})
 	return err
 }
@@ -3839,11 +3710,11 @@ var rendererGetColorFunction_Once sync.Once
 func rendererGetColorFunction_Set() error {
 	var err error
 	rendererGetColorFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererGetColorFunction, err = rendererStruct.InvokerNew("get_color")
+		rendererGetColorFunction, err = rendererObject.InvokerNew("get_color")
 	})
 	return err
 }
@@ -3873,11 +3744,11 @@ var rendererGetLayoutFunction_Once sync.Once
 func rendererGetLayoutFunction_Set() error {
 	var err error
 	rendererGetLayoutFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererGetLayoutFunction, err = rendererStruct.InvokerNew("get_layout")
+		rendererGetLayoutFunction, err = rendererObject.InvokerNew("get_layout")
 	})
 	return err
 }
@@ -3906,11 +3777,11 @@ var rendererGetLayoutLineFunction_Once sync.Once
 func rendererGetLayoutLineFunction_Set() error {
 	var err error
 	rendererGetLayoutLineFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererGetLayoutLineFunction, err = rendererStruct.InvokerNew("get_layout_line")
+		rendererGetLayoutLineFunction, err = rendererObject.InvokerNew("get_layout_line")
 	})
 	return err
 }
@@ -3939,11 +3810,11 @@ var rendererGetMatrixFunction_Once sync.Once
 func rendererGetMatrixFunction_Set() error {
 	var err error
 	rendererGetMatrixFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererGetMatrixFunction, err = rendererStruct.InvokerNew("get_matrix")
+		rendererGetMatrixFunction, err = rendererObject.InvokerNew("get_matrix")
 	})
 	return err
 }
@@ -3972,11 +3843,11 @@ var rendererPartChangedFunction_Once sync.Once
 func rendererPartChangedFunction_Set() error {
 	var err error
 	rendererPartChangedFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererPartChangedFunction, err = rendererStruct.InvokerNew("part_changed")
+		rendererPartChangedFunction, err = rendererObject.InvokerNew("part_changed")
 	})
 	return err
 }
@@ -4001,11 +3872,11 @@ var rendererSetAlphaFunction_Once sync.Once
 func rendererSetAlphaFunction_Set() error {
 	var err error
 	rendererSetAlphaFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererSetAlphaFunction, err = rendererStruct.InvokerNew("set_alpha")
+		rendererSetAlphaFunction, err = rendererObject.InvokerNew("set_alpha")
 	})
 	return err
 }
@@ -4031,11 +3902,11 @@ var rendererSetColorFunction_Once sync.Once
 func rendererSetColorFunction_Set() error {
 	var err error
 	rendererSetColorFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererSetColorFunction, err = rendererStruct.InvokerNew("set_color")
+		rendererSetColorFunction, err = rendererObject.InvokerNew("set_color")
 	})
 	return err
 }
@@ -4061,11 +3932,11 @@ var rendererSetMatrixFunction_Once sync.Once
 func rendererSetMatrixFunction_Set() error {
 	var err error
 	rendererSetMatrixFunction_Once.Do(func() {
-		err = rendererStruct_Set()
+		err = rendererObject_Set()
 		if err != nil {
 			return
 		}
-		rendererSetMatrixFunction, err = rendererStruct.InvokerNew("set_matrix")
+		rendererSetMatrixFunction, err = rendererObject.InvokerNew("set_matrix")
 	})
 	return err
 }
@@ -4082,20 +3953,4 @@ func (recv *Renderer) SetMatrix(matrix *Matrix) {
 	}
 
 	return
-}
-
-// RendererStruct creates an uninitialised Renderer.
-func RendererStruct() *Renderer {
-	err := rendererStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Renderer{}
-	structGo.Native = rendererStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRenderer)
-	return structGo
-}
-func finalizeRenderer(obj *Renderer) {
-	rendererStruct.Free(obj.Native)
 }

@@ -5,17 +5,16 @@ package atk
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var gObjectAccessibleStruct *gi.Struct
-var gObjectAccessibleStruct_Once sync.Once
+var gObjectAccessibleObject *gi.Object
+var gObjectAccessibleObject_Once sync.Once
 
-func gObjectAccessibleStruct_Set() error {
+func gObjectAccessibleObject_Set() error {
 	var err error
-	gObjectAccessibleStruct_Once.Do(func() {
-		gObjectAccessibleStruct, err = gi.StructNew("Atk", "GObjectAccessible")
+	gObjectAccessibleObject_Once.Do(func() {
+		gObjectAccessibleObject, err = gi.ObjectNew("Atk", "GObjectAccessible")
 	})
 	return err
 }
@@ -26,7 +25,7 @@ type GObjectAccessible struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *GObjectAccessible) FieldParent() *Object {
-	argValue := gi.FieldGet(gObjectAccessibleStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(gObjectAccessibleObject, recv.Native, "parent")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -36,34 +35,18 @@ func (recv *GObjectAccessible) FieldParent() *Object {
 func (recv *GObjectAccessible) SetFieldParent(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(gObjectAccessibleStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(gObjectAccessibleObject, recv.Native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'atk_gobject_accessible_get_object' : return type 'GObject.Object' not supported
 
-// GObjectAccessibleStruct creates an uninitialised GObjectAccessible.
-func GObjectAccessibleStruct() *GObjectAccessible {
-	err := gObjectAccessibleStruct_Set()
-	if err != nil {
-		return nil
-	}
+var hyperlinkObject *gi.Object
+var hyperlinkObject_Once sync.Once
 
-	structGo := &GObjectAccessible{}
-	structGo.Native = gObjectAccessibleStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGObjectAccessible)
-	return structGo
-}
-func finalizeGObjectAccessible(obj *GObjectAccessible) {
-	gObjectAccessibleStruct.Free(obj.Native)
-}
-
-var hyperlinkStruct *gi.Struct
-var hyperlinkStruct_Once sync.Once
-
-func hyperlinkStruct_Set() error {
+func hyperlinkObject_Set() error {
 	var err error
-	hyperlinkStruct_Once.Do(func() {
-		hyperlinkStruct, err = gi.StructNew("Atk", "Hyperlink")
+	hyperlinkObject_Once.Do(func() {
+		hyperlinkObject, err = gi.ObjectNew("Atk", "Hyperlink")
 	})
 	return err
 }
@@ -82,11 +65,11 @@ var hyperlinkGetEndIndexFunction_Once sync.Once
 func hyperlinkGetEndIndexFunction_Set() error {
 	var err error
 	hyperlinkGetEndIndexFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkGetEndIndexFunction, err = hyperlinkStruct.InvokerNew("get_end_index")
+		hyperlinkGetEndIndexFunction, err = hyperlinkObject.InvokerNew("get_end_index")
 	})
 	return err
 }
@@ -114,11 +97,11 @@ var hyperlinkGetNAnchorsFunction_Once sync.Once
 func hyperlinkGetNAnchorsFunction_Set() error {
 	var err error
 	hyperlinkGetNAnchorsFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkGetNAnchorsFunction, err = hyperlinkStruct.InvokerNew("get_n_anchors")
+		hyperlinkGetNAnchorsFunction, err = hyperlinkObject.InvokerNew("get_n_anchors")
 	})
 	return err
 }
@@ -146,11 +129,11 @@ var hyperlinkGetObjectFunction_Once sync.Once
 func hyperlinkGetObjectFunction_Set() error {
 	var err error
 	hyperlinkGetObjectFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkGetObjectFunction, err = hyperlinkStruct.InvokerNew("get_object")
+		hyperlinkGetObjectFunction, err = hyperlinkObject.InvokerNew("get_object")
 	})
 	return err
 }
@@ -180,11 +163,11 @@ var hyperlinkGetStartIndexFunction_Once sync.Once
 func hyperlinkGetStartIndexFunction_Set() error {
 	var err error
 	hyperlinkGetStartIndexFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkGetStartIndexFunction, err = hyperlinkStruct.InvokerNew("get_start_index")
+		hyperlinkGetStartIndexFunction, err = hyperlinkObject.InvokerNew("get_start_index")
 	})
 	return err
 }
@@ -212,11 +195,11 @@ var hyperlinkGetUriFunction_Once sync.Once
 func hyperlinkGetUriFunction_Set() error {
 	var err error
 	hyperlinkGetUriFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkGetUriFunction, err = hyperlinkStruct.InvokerNew("get_uri")
+		hyperlinkGetUriFunction, err = hyperlinkObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -245,11 +228,11 @@ var hyperlinkIsInlineFunction_Once sync.Once
 func hyperlinkIsInlineFunction_Set() error {
 	var err error
 	hyperlinkIsInlineFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkIsInlineFunction, err = hyperlinkStruct.InvokerNew("is_inline")
+		hyperlinkIsInlineFunction, err = hyperlinkObject.InvokerNew("is_inline")
 	})
 	return err
 }
@@ -277,11 +260,11 @@ var hyperlinkIsSelectedLinkFunction_Once sync.Once
 func hyperlinkIsSelectedLinkFunction_Set() error {
 	var err error
 	hyperlinkIsSelectedLinkFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkIsSelectedLinkFunction, err = hyperlinkStruct.InvokerNew("is_selected_link")
+		hyperlinkIsSelectedLinkFunction, err = hyperlinkObject.InvokerNew("is_selected_link")
 	})
 	return err
 }
@@ -309,11 +292,11 @@ var hyperlinkIsValidFunction_Once sync.Once
 func hyperlinkIsValidFunction_Set() error {
 	var err error
 	hyperlinkIsValidFunction_Once.Do(func() {
-		err = hyperlinkStruct_Set()
+		err = hyperlinkObject_Set()
 		if err != nil {
 			return
 		}
-		hyperlinkIsValidFunction, err = hyperlinkStruct.InvokerNew("is_valid")
+		hyperlinkIsValidFunction, err = hyperlinkObject.InvokerNew("is_valid")
 	})
 	return err
 }
@@ -335,29 +318,13 @@ func (recv *Hyperlink) IsValid() bool {
 	return retGo
 }
 
-// HyperlinkStruct creates an uninitialised Hyperlink.
-func HyperlinkStruct() *Hyperlink {
-	err := hyperlinkStruct_Set()
-	if err != nil {
-		return nil
-	}
+var miscObject *gi.Object
+var miscObject_Once sync.Once
 
-	structGo := &Hyperlink{}
-	structGo.Native = hyperlinkStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeHyperlink)
-	return structGo
-}
-func finalizeHyperlink(obj *Hyperlink) {
-	hyperlinkStruct.Free(obj.Native)
-}
-
-var miscStruct *gi.Struct
-var miscStruct_Once sync.Once
-
-func miscStruct_Set() error {
+func miscObject_Set() error {
 	var err error
-	miscStruct_Once.Do(func() {
-		miscStruct, err = gi.StructNew("Atk", "Misc")
+	miscObject_Once.Do(func() {
+		miscObject, err = gi.ObjectNew("Atk", "Misc")
 	})
 	return err
 }
@@ -376,11 +343,11 @@ var miscThreadsEnterFunction_Once sync.Once
 func miscThreadsEnterFunction_Set() error {
 	var err error
 	miscThreadsEnterFunction_Once.Do(func() {
-		err = miscStruct_Set()
+		err = miscObject_Set()
 		if err != nil {
 			return
 		}
-		miscThreadsEnterFunction, err = miscStruct.InvokerNew("threads_enter")
+		miscThreadsEnterFunction, err = miscObject.InvokerNew("threads_enter")
 	})
 	return err
 }
@@ -404,11 +371,11 @@ var miscThreadsLeaveFunction_Once sync.Once
 func miscThreadsLeaveFunction_Set() error {
 	var err error
 	miscThreadsLeaveFunction_Once.Do(func() {
-		err = miscStruct_Set()
+		err = miscObject_Set()
 		if err != nil {
 			return
 		}
-		miscThreadsLeaveFunction, err = miscStruct.InvokerNew("threads_leave")
+		miscThreadsLeaveFunction, err = miscObject.InvokerNew("threads_leave")
 	})
 	return err
 }
@@ -426,29 +393,13 @@ func (recv *Misc) ThreadsLeave() {
 	return
 }
 
-// MiscStruct creates an uninitialised Misc.
-func MiscStruct() *Misc {
-	err := miscStruct_Set()
-	if err != nil {
-		return nil
-	}
+var noOpObjectObject *gi.Object
+var noOpObjectObject_Once sync.Once
 
-	structGo := &Misc{}
-	structGo.Native = miscStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeMisc)
-	return structGo
-}
-func finalizeMisc(obj *Misc) {
-	miscStruct.Free(obj.Native)
-}
-
-var noOpObjectStruct *gi.Struct
-var noOpObjectStruct_Once sync.Once
-
-func noOpObjectStruct_Set() error {
+func noOpObjectObject_Set() error {
 	var err error
-	noOpObjectStruct_Once.Do(func() {
-		noOpObjectStruct, err = gi.StructNew("Atk", "NoOpObject")
+	noOpObjectObject_Once.Do(func() {
+		noOpObjectObject, err = gi.ObjectNew("Atk", "NoOpObject")
 	})
 	return err
 }
@@ -459,7 +410,7 @@ type NoOpObject struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObject) FieldParent() *Object {
-	argValue := gi.FieldGet(noOpObjectStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(noOpObjectObject, recv.Native, "parent")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -469,18 +420,18 @@ func (recv *NoOpObject) FieldParent() *Object {
 func (recv *NoOpObject) SetFieldParent(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(noOpObjectStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(noOpObjectObject, recv.Native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'atk_no_op_object_new' : parameter 'obj' of type 'GObject.Object' not supported
 
-var noOpObjectFactoryStruct *gi.Struct
-var noOpObjectFactoryStruct_Once sync.Once
+var noOpObjectFactoryObject *gi.Object
+var noOpObjectFactoryObject_Once sync.Once
 
-func noOpObjectFactoryStruct_Set() error {
+func noOpObjectFactoryObject_Set() error {
 	var err error
-	noOpObjectFactoryStruct_Once.Do(func() {
-		noOpObjectFactoryStruct, err = gi.StructNew("Atk", "NoOpObjectFactory")
+	noOpObjectFactoryObject_Once.Do(func() {
+		noOpObjectFactoryObject, err = gi.ObjectNew("Atk", "NoOpObjectFactory")
 	})
 	return err
 }
@@ -491,7 +442,7 @@ type NoOpObjectFactory struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
-	argValue := gi.FieldGet(noOpObjectFactoryStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(noOpObjectFactoryObject, recv.Native, "parent")
 	value := &ObjectFactory{}
 	value.Native = argValue.Pointer()
 	return value
@@ -501,7 +452,7 @@ func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
 func (recv *NoOpObjectFactory) SetFieldParent(value *ObjectFactory) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(noOpObjectFactoryStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(noOpObjectFactoryObject, recv.Native, "parent", argValue)
 }
 
 var noOpObjectFactoryNewFunction *gi.Function
@@ -510,11 +461,11 @@ var noOpObjectFactoryNewFunction_Once sync.Once
 func noOpObjectFactoryNewFunction_Set() error {
 	var err error
 	noOpObjectFactoryNewFunction_Once.Do(func() {
-		err = noOpObjectFactoryStruct_Set()
+		err = noOpObjectFactoryObject_Set()
 		if err != nil {
 			return
 		}
-		noOpObjectFactoryNewFunction, err = noOpObjectFactoryStruct.InvokerNew("new")
+		noOpObjectFactoryNewFunction, err = noOpObjectFactoryObject.InvokerNew("new")
 	})
 	return err
 }
@@ -535,13 +486,13 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	return retGo
 }
 
-var objectStruct *gi.Struct
-var objectStruct_Once sync.Once
+var objectObject *gi.Object
+var objectObject_Once sync.Once
 
-func objectStruct_Set() error {
+func objectObject_Set() error {
 	var err error
-	objectStruct_Once.Do(func() {
-		objectStruct, err = gi.StructNew("Atk", "Object")
+	objectObject_Once.Do(func() {
+		objectObject, err = gi.ObjectNew("Atk", "Object")
 	})
 	return err
 }
@@ -556,7 +507,7 @@ type Object struct {
 
 // FieldDescription returns the C field 'description'.
 func (recv *Object) FieldDescription() string {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "description")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "description")
 	value := argValue.String(false)
 	return value
 }
@@ -565,12 +516,12 @@ func (recv *Object) FieldDescription() string {
 func (recv *Object) SetFieldDescription(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(objectStruct, recv.Native, "description", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "description", argValue)
 }
 
 // FieldName returns the C field 'name'.
 func (recv *Object) FieldName() string {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "name")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -579,12 +530,12 @@ func (recv *Object) FieldName() string {
 func (recv *Object) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(objectStruct, recv.Native, "name", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "name", argValue)
 }
 
 // FieldAccessibleParent returns the C field 'accessible_parent'.
 func (recv *Object) FieldAccessibleParent() *Object {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "accessible_parent")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "accessible_parent")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -594,12 +545,12 @@ func (recv *Object) FieldAccessibleParent() *Object {
 func (recv *Object) SetFieldAccessibleParent(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(objectStruct, recv.Native, "accessible_parent", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "accessible_parent", argValue)
 }
 
 // FieldRole returns the C field 'role'.
 func (recv *Object) FieldRole() Role {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "role")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "role")
 	value := Role(argValue.Int32())
 	return value
 }
@@ -608,12 +559,12 @@ func (recv *Object) FieldRole() Role {
 func (recv *Object) SetFieldRole(value Role) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.FieldSet(objectStruct, recv.Native, "role", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "role", argValue)
 }
 
 // FieldRelationSet returns the C field 'relation_set'.
 func (recv *Object) FieldRelationSet() *RelationSet {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "relation_set")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "relation_set")
 	value := &RelationSet{}
 	value.Native = argValue.Pointer()
 	return value
@@ -623,12 +574,12 @@ func (recv *Object) FieldRelationSet() *RelationSet {
 func (recv *Object) SetFieldRelationSet(value *RelationSet) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(objectStruct, recv.Native, "relation_set", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "relation_set", argValue)
 }
 
 // FieldLayer returns the C field 'layer'.
 func (recv *Object) FieldLayer() Layer {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "layer")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "layer")
 	value := Layer(argValue.Int32())
 	return value
 }
@@ -637,7 +588,7 @@ func (recv *Object) FieldLayer() Layer {
 func (recv *Object) SetFieldLayer(value Layer) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.FieldSet(objectStruct, recv.Native, "layer", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "layer", argValue)
 }
 
 var objectAddRelationshipFunction *gi.Function
@@ -646,11 +597,11 @@ var objectAddRelationshipFunction_Once sync.Once
 func objectAddRelationshipFunction_Set() error {
 	var err error
 	objectAddRelationshipFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectAddRelationshipFunction, err = objectStruct.InvokerNew("add_relationship")
+		objectAddRelationshipFunction, err = objectObject.InvokerNew("add_relationship")
 	})
 	return err
 }
@@ -682,11 +633,11 @@ var objectGetAccessibleIdFunction_Once sync.Once
 func objectGetAccessibleIdFunction_Set() error {
 	var err error
 	objectGetAccessibleIdFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetAccessibleIdFunction, err = objectStruct.InvokerNew("get_accessible_id")
+		objectGetAccessibleIdFunction, err = objectObject.InvokerNew("get_accessible_id")
 	})
 	return err
 }
@@ -716,11 +667,11 @@ var objectGetDescriptionFunction_Once sync.Once
 func objectGetDescriptionFunction_Set() error {
 	var err error
 	objectGetDescriptionFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetDescriptionFunction, err = objectStruct.InvokerNew("get_description")
+		objectGetDescriptionFunction, err = objectObject.InvokerNew("get_description")
 	})
 	return err
 }
@@ -748,11 +699,11 @@ var objectGetIndexInParentFunction_Once sync.Once
 func objectGetIndexInParentFunction_Set() error {
 	var err error
 	objectGetIndexInParentFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetIndexInParentFunction, err = objectStruct.InvokerNew("get_index_in_parent")
+		objectGetIndexInParentFunction, err = objectObject.InvokerNew("get_index_in_parent")
 	})
 	return err
 }
@@ -780,11 +731,11 @@ var objectGetLayerFunction_Once sync.Once
 func objectGetLayerFunction_Set() error {
 	var err error
 	objectGetLayerFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetLayerFunction, err = objectStruct.InvokerNew("get_layer")
+		objectGetLayerFunction, err = objectObject.InvokerNew("get_layer")
 	})
 	return err
 }
@@ -812,11 +763,11 @@ var objectGetMdiZorderFunction_Once sync.Once
 func objectGetMdiZorderFunction_Set() error {
 	var err error
 	objectGetMdiZorderFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetMdiZorderFunction, err = objectStruct.InvokerNew("get_mdi_zorder")
+		objectGetMdiZorderFunction, err = objectObject.InvokerNew("get_mdi_zorder")
 	})
 	return err
 }
@@ -844,11 +795,11 @@ var objectGetNAccessibleChildrenFunction_Once sync.Once
 func objectGetNAccessibleChildrenFunction_Set() error {
 	var err error
 	objectGetNAccessibleChildrenFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetNAccessibleChildrenFunction, err = objectStruct.InvokerNew("get_n_accessible_children")
+		objectGetNAccessibleChildrenFunction, err = objectObject.InvokerNew("get_n_accessible_children")
 	})
 	return err
 }
@@ -876,11 +827,11 @@ var objectGetNameFunction_Once sync.Once
 func objectGetNameFunction_Set() error {
 	var err error
 	objectGetNameFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetNameFunction, err = objectStruct.InvokerNew("get_name")
+		objectGetNameFunction, err = objectObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -908,11 +859,11 @@ var objectGetObjectLocaleFunction_Once sync.Once
 func objectGetObjectLocaleFunction_Set() error {
 	var err error
 	objectGetObjectLocaleFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetObjectLocaleFunction, err = objectStruct.InvokerNew("get_object_locale")
+		objectGetObjectLocaleFunction, err = objectObject.InvokerNew("get_object_locale")
 	})
 	return err
 }
@@ -940,11 +891,11 @@ var objectGetParentFunction_Once sync.Once
 func objectGetParentFunction_Set() error {
 	var err error
 	objectGetParentFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetParentFunction, err = objectStruct.InvokerNew("get_parent")
+		objectGetParentFunction, err = objectObject.InvokerNew("get_parent")
 	})
 	return err
 }
@@ -973,11 +924,11 @@ var objectGetRoleFunction_Once sync.Once
 func objectGetRoleFunction_Set() error {
 	var err error
 	objectGetRoleFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetRoleFunction, err = objectStruct.InvokerNew("get_role")
+		objectGetRoleFunction, err = objectObject.InvokerNew("get_role")
 	})
 	return err
 }
@@ -1007,11 +958,11 @@ var objectNotifyStateChangeFunction_Once sync.Once
 func objectNotifyStateChangeFunction_Set() error {
 	var err error
 	objectNotifyStateChangeFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectNotifyStateChangeFunction, err = objectStruct.InvokerNew("notify_state_change")
+		objectNotifyStateChangeFunction, err = objectObject.InvokerNew("notify_state_change")
 	})
 	return err
 }
@@ -1037,11 +988,11 @@ var objectPeekParentFunction_Once sync.Once
 func objectPeekParentFunction_Set() error {
 	var err error
 	objectPeekParentFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectPeekParentFunction, err = objectStruct.InvokerNew("peek_parent")
+		objectPeekParentFunction, err = objectObject.InvokerNew("peek_parent")
 	})
 	return err
 }
@@ -1070,11 +1021,11 @@ var objectRefAccessibleChildFunction_Once sync.Once
 func objectRefAccessibleChildFunction_Set() error {
 	var err error
 	objectRefAccessibleChildFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRefAccessibleChildFunction, err = objectStruct.InvokerNew("ref_accessible_child")
+		objectRefAccessibleChildFunction, err = objectObject.InvokerNew("ref_accessible_child")
 	})
 	return err
 }
@@ -1104,11 +1055,11 @@ var objectRefRelationSetFunction_Once sync.Once
 func objectRefRelationSetFunction_Set() error {
 	var err error
 	objectRefRelationSetFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRefRelationSetFunction, err = objectStruct.InvokerNew("ref_relation_set")
+		objectRefRelationSetFunction, err = objectObject.InvokerNew("ref_relation_set")
 	})
 	return err
 }
@@ -1137,11 +1088,11 @@ var objectRefStateSetFunction_Once sync.Once
 func objectRefStateSetFunction_Set() error {
 	var err error
 	objectRefStateSetFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRefStateSetFunction, err = objectStruct.InvokerNew("ref_state_set")
+		objectRefStateSetFunction, err = objectObject.InvokerNew("ref_state_set")
 	})
 	return err
 }
@@ -1170,11 +1121,11 @@ var objectRemovePropertyChangeHandlerFunction_Once sync.Once
 func objectRemovePropertyChangeHandlerFunction_Set() error {
 	var err error
 	objectRemovePropertyChangeHandlerFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRemovePropertyChangeHandlerFunction, err = objectStruct.InvokerNew("remove_property_change_handler")
+		objectRemovePropertyChangeHandlerFunction, err = objectObject.InvokerNew("remove_property_change_handler")
 	})
 	return err
 }
@@ -1199,11 +1150,11 @@ var objectRemoveRelationshipFunction_Once sync.Once
 func objectRemoveRelationshipFunction_Set() error {
 	var err error
 	objectRemoveRelationshipFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRemoveRelationshipFunction, err = objectStruct.InvokerNew("remove_relationship")
+		objectRemoveRelationshipFunction, err = objectObject.InvokerNew("remove_relationship")
 	})
 	return err
 }
@@ -1233,11 +1184,11 @@ var objectSetAccessibleIdFunction_Once sync.Once
 func objectSetAccessibleIdFunction_Set() error {
 	var err error
 	objectSetAccessibleIdFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetAccessibleIdFunction, err = objectStruct.InvokerNew("set_accessible_id")
+		objectSetAccessibleIdFunction, err = objectObject.InvokerNew("set_accessible_id")
 	})
 	return err
 }
@@ -1262,11 +1213,11 @@ var objectSetDescriptionFunction_Once sync.Once
 func objectSetDescriptionFunction_Set() error {
 	var err error
 	objectSetDescriptionFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetDescriptionFunction, err = objectStruct.InvokerNew("set_description")
+		objectSetDescriptionFunction, err = objectObject.InvokerNew("set_description")
 	})
 	return err
 }
@@ -1291,11 +1242,11 @@ var objectSetNameFunction_Once sync.Once
 func objectSetNameFunction_Set() error {
 	var err error
 	objectSetNameFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetNameFunction, err = objectStruct.InvokerNew("set_name")
+		objectSetNameFunction, err = objectObject.InvokerNew("set_name")
 	})
 	return err
 }
@@ -1320,11 +1271,11 @@ var objectSetParentFunction_Once sync.Once
 func objectSetParentFunction_Set() error {
 	var err error
 	objectSetParentFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetParentFunction, err = objectStruct.InvokerNew("set_parent")
+		objectSetParentFunction, err = objectObject.InvokerNew("set_parent")
 	})
 	return err
 }
@@ -1349,11 +1300,11 @@ var objectSetRoleFunction_Once sync.Once
 func objectSetRoleFunction_Set() error {
 	var err error
 	objectSetRoleFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetRoleFunction, err = objectStruct.InvokerNew("set_role")
+		objectSetRoleFunction, err = objectObject.InvokerNew("set_role")
 	})
 	return err
 }
@@ -1372,29 +1323,13 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
-// ObjectStruct creates an uninitialised Object.
-func ObjectStruct() *Object {
-	err := objectStruct_Set()
-	if err != nil {
-		return nil
-	}
+var objectFactoryObject *gi.Object
+var objectFactoryObject_Once sync.Once
 
-	structGo := &Object{}
-	structGo.Native = objectStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeObject)
-	return structGo
-}
-func finalizeObject(obj *Object) {
-	objectStruct.Free(obj.Native)
-}
-
-var objectFactoryStruct *gi.Struct
-var objectFactoryStruct_Once sync.Once
-
-func objectFactoryStruct_Set() error {
+func objectFactoryObject_Set() error {
 	var err error
-	objectFactoryStruct_Once.Do(func() {
-		objectFactoryStruct, err = gi.StructNew("Atk", "ObjectFactory")
+	objectFactoryObject_Once.Do(func() {
+		objectFactoryObject, err = gi.ObjectNew("Atk", "ObjectFactory")
 	})
 	return err
 }
@@ -1417,11 +1352,11 @@ var objectFactoryInvalidateFunction_Once sync.Once
 func objectFactoryInvalidateFunction_Set() error {
 	var err error
 	objectFactoryInvalidateFunction_Once.Do(func() {
-		err = objectFactoryStruct_Set()
+		err = objectFactoryObject_Set()
 		if err != nil {
 			return
 		}
-		objectFactoryInvalidateFunction, err = objectFactoryStruct.InvokerNew("invalidate")
+		objectFactoryInvalidateFunction, err = objectFactoryObject.InvokerNew("invalidate")
 	})
 	return err
 }
@@ -1439,29 +1374,13 @@ func (recv *ObjectFactory) Invalidate() {
 	return
 }
 
-// ObjectFactoryStruct creates an uninitialised ObjectFactory.
-func ObjectFactoryStruct() *ObjectFactory {
-	err := objectFactoryStruct_Set()
-	if err != nil {
-		return nil
-	}
+var plugObject *gi.Object
+var plugObject_Once sync.Once
 
-	structGo := &ObjectFactory{}
-	structGo.Native = objectFactoryStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeObjectFactory)
-	return structGo
-}
-func finalizeObjectFactory(obj *ObjectFactory) {
-	objectFactoryStruct.Free(obj.Native)
-}
-
-var plugStruct *gi.Struct
-var plugStruct_Once sync.Once
-
-func plugStruct_Set() error {
+func plugObject_Set() error {
 	var err error
-	plugStruct_Once.Do(func() {
-		plugStruct, err = gi.StructNew("Atk", "Plug")
+	plugObject_Once.Do(func() {
+		plugObject, err = gi.ObjectNew("Atk", "Plug")
 	})
 	return err
 }
@@ -1472,7 +1391,7 @@ type Plug struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Plug) FieldParent() *Object {
-	argValue := gi.FieldGet(plugStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(plugObject, recv.Native, "parent")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1482,7 +1401,7 @@ func (recv *Plug) FieldParent() *Object {
 func (recv *Plug) SetFieldParent(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(plugStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(plugObject, recv.Native, "parent", argValue)
 }
 
 var plugNewFunction *gi.Function
@@ -1491,11 +1410,11 @@ var plugNewFunction_Once sync.Once
 func plugNewFunction_Set() error {
 	var err error
 	plugNewFunction_Once.Do(func() {
-		err = plugStruct_Set()
+		err = plugObject_Set()
 		if err != nil {
 			return
 		}
-		plugNewFunction, err = plugStruct.InvokerNew("new")
+		plugNewFunction, err = plugObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1522,11 +1441,11 @@ var plugGetIdFunction_Once sync.Once
 func plugGetIdFunction_Set() error {
 	var err error
 	plugGetIdFunction_Once.Do(func() {
-		err = plugStruct_Set()
+		err = plugObject_Set()
 		if err != nil {
 			return
 		}
-		plugGetIdFunction, err = plugStruct.InvokerNew("get_id")
+		plugGetIdFunction, err = plugObject.InvokerNew("get_id")
 	})
 	return err
 }
@@ -1548,13 +1467,13 @@ func (recv *Plug) GetId() string {
 	return retGo
 }
 
-var registryStruct *gi.Struct
-var registryStruct_Once sync.Once
+var registryObject *gi.Object
+var registryObject_Once sync.Once
 
-func registryStruct_Set() error {
+func registryObject_Set() error {
 	var err error
-	registryStruct_Once.Do(func() {
-		registryStruct, err = gi.StructNew("Atk", "Registry")
+	registryObject_Once.Do(func() {
+		registryObject, err = gi.ObjectNew("Atk", "Registry")
 	})
 	return err
 }
@@ -1581,29 +1500,13 @@ type Registry struct {
 
 // UNSUPPORTED : C value 'atk_registry_set_factory_type' : parameter 'type' of type 'GType' not supported
 
-// RegistryStruct creates an uninitialised Registry.
-func RegistryStruct() *Registry {
-	err := registryStruct_Set()
-	if err != nil {
-		return nil
-	}
+var relationObject *gi.Object
+var relationObject_Once sync.Once
 
-	structGo := &Registry{}
-	structGo.Native = registryStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeRegistry)
-	return structGo
-}
-func finalizeRegistry(obj *Registry) {
-	registryStruct.Free(obj.Native)
-}
-
-var relationStruct *gi.Struct
-var relationStruct_Once sync.Once
-
-func relationStruct_Set() error {
+func relationObject_Set() error {
 	var err error
-	relationStruct_Once.Do(func() {
-		relationStruct, err = gi.StructNew("Atk", "Relation")
+	relationObject_Once.Do(func() {
+		relationObject, err = gi.ObjectNew("Atk", "Relation")
 	})
 	return err
 }
@@ -1622,7 +1525,7 @@ type Relation struct {
 
 // FieldRelationship returns the C field 'relationship'.
 func (recv *Relation) FieldRelationship() RelationType {
-	argValue := gi.FieldGet(relationStruct, recv.Native, "relationship")
+	argValue := gi.ObjectFieldGet(relationObject, recv.Native, "relationship")
 	value := RelationType(argValue.Int32())
 	return value
 }
@@ -1631,7 +1534,7 @@ func (recv *Relation) FieldRelationship() RelationType {
 func (recv *Relation) SetFieldRelationship(value RelationType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.FieldSet(relationStruct, recv.Native, "relationship", argValue)
+	gi.ObjectFieldSet(relationObject, recv.Native, "relationship", argValue)
 }
 
 // UNSUPPORTED : C value 'atk_relation_new' : parameter 'targets' of type 'nil' not supported
@@ -1642,11 +1545,11 @@ var relationAddTargetFunction_Once sync.Once
 func relationAddTargetFunction_Set() error {
 	var err error
 	relationAddTargetFunction_Once.Do(func() {
-		err = relationStruct_Set()
+		err = relationObject_Set()
 		if err != nil {
 			return
 		}
-		relationAddTargetFunction, err = relationStruct.InvokerNew("add_target")
+		relationAddTargetFunction, err = relationObject.InvokerNew("add_target")
 	})
 	return err
 }
@@ -1671,11 +1574,11 @@ var relationGetRelationTypeFunction_Once sync.Once
 func relationGetRelationTypeFunction_Set() error {
 	var err error
 	relationGetRelationTypeFunction_Once.Do(func() {
-		err = relationStruct_Set()
+		err = relationObject_Set()
 		if err != nil {
 			return
 		}
-		relationGetRelationTypeFunction, err = relationStruct.InvokerNew("get_relation_type")
+		relationGetRelationTypeFunction, err = relationObject.InvokerNew("get_relation_type")
 	})
 	return err
 }
@@ -1703,11 +1606,11 @@ var relationGetTargetFunction_Once sync.Once
 func relationGetTargetFunction_Set() error {
 	var err error
 	relationGetTargetFunction_Once.Do(func() {
-		err = relationStruct_Set()
+		err = relationObject_Set()
 		if err != nil {
 			return
 		}
-		relationGetTargetFunction, err = relationStruct.InvokerNew("get_target")
+		relationGetTargetFunction, err = relationObject.InvokerNew("get_target")
 	})
 	return err
 }
@@ -1731,11 +1634,11 @@ var relationRemoveTargetFunction_Once sync.Once
 func relationRemoveTargetFunction_Set() error {
 	var err error
 	relationRemoveTargetFunction_Once.Do(func() {
-		err = relationStruct_Set()
+		err = relationObject_Set()
 		if err != nil {
 			return
 		}
-		relationRemoveTargetFunction, err = relationStruct.InvokerNew("remove_target")
+		relationRemoveTargetFunction, err = relationObject.InvokerNew("remove_target")
 	})
 	return err
 }
@@ -1758,13 +1661,13 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 	return retGo
 }
 
-var relationSetStruct *gi.Struct
-var relationSetStruct_Once sync.Once
+var relationSetObject *gi.Object
+var relationSetObject_Once sync.Once
 
-func relationSetStruct_Set() error {
+func relationSetObject_Set() error {
 	var err error
-	relationSetStruct_Once.Do(func() {
-		relationSetStruct, err = gi.StructNew("Atk", "RelationSet")
+	relationSetObject_Once.Do(func() {
+		relationSetObject, err = gi.ObjectNew("Atk", "RelationSet")
 	})
 	return err
 }
@@ -1787,11 +1690,11 @@ var relationSetNewFunction_Once sync.Once
 func relationSetNewFunction_Set() error {
 	var err error
 	relationSetNewFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetNewFunction, err = relationSetStruct.InvokerNew("new")
+		relationSetNewFunction, err = relationSetObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1818,11 +1721,11 @@ var relationSetAddFunction_Once sync.Once
 func relationSetAddFunction_Set() error {
 	var err error
 	relationSetAddFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetAddFunction, err = relationSetStruct.InvokerNew("add")
+		relationSetAddFunction, err = relationSetObject.InvokerNew("add")
 	})
 	return err
 }
@@ -1847,11 +1750,11 @@ var relationSetAddRelationByTypeFunction_Once sync.Once
 func relationSetAddRelationByTypeFunction_Set() error {
 	var err error
 	relationSetAddRelationByTypeFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetAddRelationByTypeFunction, err = relationSetStruct.InvokerNew("add_relation_by_type")
+		relationSetAddRelationByTypeFunction, err = relationSetObject.InvokerNew("add_relation_by_type")
 	})
 	return err
 }
@@ -1877,11 +1780,11 @@ var relationSetContainsFunction_Once sync.Once
 func relationSetContainsFunction_Set() error {
 	var err error
 	relationSetContainsFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetContainsFunction, err = relationSetStruct.InvokerNew("contains")
+		relationSetContainsFunction, err = relationSetObject.InvokerNew("contains")
 	})
 	return err
 }
@@ -1910,11 +1813,11 @@ var relationSetContainsTargetFunction_Once sync.Once
 func relationSetContainsTargetFunction_Set() error {
 	var err error
 	relationSetContainsTargetFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetContainsTargetFunction, err = relationSetStruct.InvokerNew("contains_target")
+		relationSetContainsTargetFunction, err = relationSetObject.InvokerNew("contains_target")
 	})
 	return err
 }
@@ -1944,11 +1847,11 @@ var relationSetGetNRelationsFunction_Once sync.Once
 func relationSetGetNRelationsFunction_Set() error {
 	var err error
 	relationSetGetNRelationsFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetGetNRelationsFunction, err = relationSetStruct.InvokerNew("get_n_relations")
+		relationSetGetNRelationsFunction, err = relationSetObject.InvokerNew("get_n_relations")
 	})
 	return err
 }
@@ -1976,11 +1879,11 @@ var relationSetGetRelationFunction_Once sync.Once
 func relationSetGetRelationFunction_Set() error {
 	var err error
 	relationSetGetRelationFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetGetRelationFunction, err = relationSetStruct.InvokerNew("get_relation")
+		relationSetGetRelationFunction, err = relationSetObject.InvokerNew("get_relation")
 	})
 	return err
 }
@@ -2010,11 +1913,11 @@ var relationSetGetRelationByTypeFunction_Once sync.Once
 func relationSetGetRelationByTypeFunction_Set() error {
 	var err error
 	relationSetGetRelationByTypeFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetGetRelationByTypeFunction, err = relationSetStruct.InvokerNew("get_relation_by_type")
+		relationSetGetRelationByTypeFunction, err = relationSetObject.InvokerNew("get_relation_by_type")
 	})
 	return err
 }
@@ -2044,11 +1947,11 @@ var relationSetRemoveFunction_Once sync.Once
 func relationSetRemoveFunction_Set() error {
 	var err error
 	relationSetRemoveFunction_Once.Do(func() {
-		err = relationSetStruct_Set()
+		err = relationSetObject_Set()
 		if err != nil {
 			return
 		}
-		relationSetRemoveFunction, err = relationSetStruct.InvokerNew("remove")
+		relationSetRemoveFunction, err = relationSetObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -2067,13 +1970,13 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
-var socketStruct *gi.Struct
-var socketStruct_Once sync.Once
+var socketObject *gi.Object
+var socketObject_Once sync.Once
 
-func socketStruct_Set() error {
+func socketObject_Set() error {
 	var err error
-	socketStruct_Once.Do(func() {
-		socketStruct, err = gi.StructNew("Atk", "Socket")
+	socketObject_Once.Do(func() {
+		socketObject, err = gi.ObjectNew("Atk", "Socket")
 	})
 	return err
 }
@@ -2084,7 +1987,7 @@ type Socket struct {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Socket) FieldParent() *Object {
-	argValue := gi.FieldGet(socketStruct, recv.Native, "parent")
+	argValue := gi.ObjectFieldGet(socketObject, recv.Native, "parent")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2094,7 +1997,7 @@ func (recv *Socket) FieldParent() *Object {
 func (recv *Socket) SetFieldParent(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketStruct, recv.Native, "parent", argValue)
+	gi.ObjectFieldSet(socketObject, recv.Native, "parent", argValue)
 }
 
 var socketNewFunction *gi.Function
@@ -2103,11 +2006,11 @@ var socketNewFunction_Once sync.Once
 func socketNewFunction_Set() error {
 	var err error
 	socketNewFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketNewFunction, err = socketStruct.InvokerNew("new")
+		socketNewFunction, err = socketObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2134,11 +2037,11 @@ var socketEmbedFunction_Once sync.Once
 func socketEmbedFunction_Set() error {
 	var err error
 	socketEmbedFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketEmbedFunction, err = socketStruct.InvokerNew("embed")
+		socketEmbedFunction, err = socketObject.InvokerNew("embed")
 	})
 	return err
 }
@@ -2163,11 +2066,11 @@ var socketIsOccupiedFunction_Once sync.Once
 func socketIsOccupiedFunction_Set() error {
 	var err error
 	socketIsOccupiedFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketIsOccupiedFunction, err = socketStruct.InvokerNew("is_occupied")
+		socketIsOccupiedFunction, err = socketObject.InvokerNew("is_occupied")
 	})
 	return err
 }
@@ -2189,13 +2092,13 @@ func (recv *Socket) IsOccupied() bool {
 	return retGo
 }
 
-var stateSetStruct *gi.Struct
-var stateSetStruct_Once sync.Once
+var stateSetObject *gi.Object
+var stateSetObject_Once sync.Once
 
-func stateSetStruct_Set() error {
+func stateSetObject_Set() error {
 	var err error
-	stateSetStruct_Once.Do(func() {
-		stateSetStruct, err = gi.StructNew("Atk", "StateSet")
+	stateSetObject_Once.Do(func() {
+		stateSetObject, err = gi.ObjectNew("Atk", "StateSet")
 	})
 	return err
 }
@@ -2214,11 +2117,11 @@ var stateSetNewFunction_Once sync.Once
 func stateSetNewFunction_Set() error {
 	var err error
 	stateSetNewFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetNewFunction, err = stateSetStruct.InvokerNew("new")
+		stateSetNewFunction, err = stateSetObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2245,11 +2148,11 @@ var stateSetAddStateFunction_Once sync.Once
 func stateSetAddStateFunction_Set() error {
 	var err error
 	stateSetAddStateFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetAddStateFunction, err = stateSetStruct.InvokerNew("add_state")
+		stateSetAddStateFunction, err = stateSetObject.InvokerNew("add_state")
 	})
 	return err
 }
@@ -2280,11 +2183,11 @@ var stateSetAndSetsFunction_Once sync.Once
 func stateSetAndSetsFunction_Set() error {
 	var err error
 	stateSetAndSetsFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetAndSetsFunction, err = stateSetStruct.InvokerNew("and_sets")
+		stateSetAndSetsFunction, err = stateSetObject.InvokerNew("and_sets")
 	})
 	return err
 }
@@ -2314,11 +2217,11 @@ var stateSetClearStatesFunction_Once sync.Once
 func stateSetClearStatesFunction_Set() error {
 	var err error
 	stateSetClearStatesFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetClearStatesFunction, err = stateSetStruct.InvokerNew("clear_states")
+		stateSetClearStatesFunction, err = stateSetObject.InvokerNew("clear_states")
 	})
 	return err
 }
@@ -2342,11 +2245,11 @@ var stateSetContainsStateFunction_Once sync.Once
 func stateSetContainsStateFunction_Set() error {
 	var err error
 	stateSetContainsStateFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetContainsStateFunction, err = stateSetStruct.InvokerNew("contains_state")
+		stateSetContainsStateFunction, err = stateSetObject.InvokerNew("contains_state")
 	})
 	return err
 }
@@ -2377,11 +2280,11 @@ var stateSetIsEmptyFunction_Once sync.Once
 func stateSetIsEmptyFunction_Set() error {
 	var err error
 	stateSetIsEmptyFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetIsEmptyFunction, err = stateSetStruct.InvokerNew("is_empty")
+		stateSetIsEmptyFunction, err = stateSetObject.InvokerNew("is_empty")
 	})
 	return err
 }
@@ -2409,11 +2312,11 @@ var stateSetOrSetsFunction_Once sync.Once
 func stateSetOrSetsFunction_Set() error {
 	var err error
 	stateSetOrSetsFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetOrSetsFunction, err = stateSetStruct.InvokerNew("or_sets")
+		stateSetOrSetsFunction, err = stateSetObject.InvokerNew("or_sets")
 	})
 	return err
 }
@@ -2443,11 +2346,11 @@ var stateSetRemoveStateFunction_Once sync.Once
 func stateSetRemoveStateFunction_Set() error {
 	var err error
 	stateSetRemoveStateFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetRemoveStateFunction, err = stateSetStruct.InvokerNew("remove_state")
+		stateSetRemoveStateFunction, err = stateSetObject.InvokerNew("remove_state")
 	})
 	return err
 }
@@ -2476,11 +2379,11 @@ var stateSetXorSetsFunction_Once sync.Once
 func stateSetXorSetsFunction_Set() error {
 	var err error
 	stateSetXorSetsFunction_Once.Do(func() {
-		err = stateSetStruct_Set()
+		err = stateSetObject_Set()
 		if err != nil {
 			return
 		}
-		stateSetXorSetsFunction, err = stateSetStruct.InvokerNew("xor_sets")
+		stateSetXorSetsFunction, err = stateSetObject.InvokerNew("xor_sets")
 	})
 	return err
 }
@@ -2504,13 +2407,13 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-var utilStruct *gi.Struct
-var utilStruct_Once sync.Once
+var utilObject *gi.Object
+var utilObject_Once sync.Once
 
-func utilStruct_Set() error {
+func utilObject_Set() error {
 	var err error
-	utilStruct_Once.Do(func() {
-		utilStruct, err = gi.StructNew("Atk", "Util")
+	utilObject_Once.Do(func() {
+		utilObject, err = gi.ObjectNew("Atk", "Util")
 	})
 	return err
 }
@@ -2522,19 +2425,3 @@ type Util struct {
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
-
-// UtilStruct creates an uninitialised Util.
-func UtilStruct() *Util {
-	err := utilStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &Util{}
-	structGo.Native = utilStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeUtil)
-	return structGo
-}
-func finalizeUtil(obj *Util) {
-	utilStruct.Free(obj.Native)
-}

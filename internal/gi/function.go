@@ -10,10 +10,10 @@ import (
 )
 
 type Function struct {
-	namespace  string
-	structName string
-	funcName   string
-	info       *C.GIFunctionInfo
+	namespace string
+	ownerName string
+	funcName  string
+	info      *C.GIFunctionInfo
 }
 
 func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {

@@ -22,29 +22,34 @@ type Record struct {
 	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
-	goName           string
-	namespace        *Namespace
-	newFromCFuncName string
-	parentNamespace  *Namespace
-	parent           *Class
+	isClass         bool
+	goName          string
+	namespace       *Namespace
+	parentNamespace *Namespace
+	parent          *Class
 
-	structInfoGoName        string
-	structInfoOnceGoName    string
-	structInfoSetFuncGoName string
+	giInfotype          string
+	giInfoGoName        string
+	giInfoOnceGoName    string
+	giInfoSetFuncGoName string
 }
 
-func (r *Record) init(ns *Namespace) {
+func (r *Record) init(ns *Namespace, isClass bool) {
+	r.isClass = isClass
 	r.namespace = ns
 	r.goName = r.Name
 	if r.namespace.Name == "GObject" && r.goName == "SignalQuery" {
 		// avoid name clash with a function of the same name
 		r.goName = "SignalQuery_"
 	}
-	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
-	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name))
-	r.structInfoOnceGoName = fmt.Sprintf("%s_Once", r.structInfoGoName)
-	r.structInfoSetFuncGoName = fmt.Sprintf("%s_Set", r.structInfoGoName)
+	r.giInfotype = "Struct"
+	if r.isClass {
+		r.giInfotype = "Object"
+	}
+	r.giInfoGoName = fmt.Sprintf("%s%s", makeUnexportedGoName(r.Name), r.giInfotype)
+	r.giInfoOnceGoName = fmt.Sprintf("%s_Once", r.giInfoGoName)
+	r.giInfoSetFuncGoName = fmt.Sprintf("%s_Set", r.giInfoGoName)
 
 	r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)
@@ -54,7 +59,7 @@ func (r *Record) init(ns *Namespace) {
 }
 
 func (r *Record) generate(f *file) {
-	r.generateStructInfo(f)
+	r.generateGiInfo(f)
 	r.generateType(f)
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
@@ -67,18 +72,18 @@ func (r *Record) generate(f *file) {
 
 }
 
-func (r *Record) generateStructInfo(f *file) {
+func (r *Record) generateGiInfo(f *file) {
 	// var colorStruct *gi.Struct
 	f.
 		Var().
-		Id(r.structInfoGoName).
+		Id(r.giInfoGoName).
 		Op("*").
-		Qual(gi.PackageName, "Struct")
+		Qual(gi.PackageName, r.giInfotype)
 
 	// var colorStructOnce sync.Once
 	f.
 		Var().
-		Id(r.structInfoOnceGoName).
+		Id(r.giInfoOnceGoName).
 		Qual("sync", "Once")
 
 	// func colorStructSet() error {
@@ -86,28 +91,33 @@ func (r *Record) generateStructInfo(f *file) {
 	// }
 	f.
 		Func().
-		Id(r.structInfoSetFuncGoName).
+		Id(r.giInfoSetFuncGoName).
 		Params().
 		List(jen.Id("error")).
 		BlockFunc(func(g *jen.Group) {
 			// var err error
 			g.Var().Id("err").Id("error")
 
+			newFuncName := "StructNew"
+			if r.isClass {
+				newFuncName = "ObjectNew"
+			}
+
 			//   colorStructOnce.Do(func() {
 			//     colorStruct, err = gi.StructNew("Gdk", "Color")
 			//   })
 			g.
-				Id(r.structInfoOnceGoName).
+				Id(r.giInfoOnceGoName).
 				Dot("Do").
 				Call(jen.
 					Func().
 					Params().
 					Block(jen.
-						Id(r.structInfoGoName).
+						Id(r.giInfoGoName).
 						Op(",").
 						Id("err").
 						Op("=").
-						Qual(gi.PackageName, "StructNew").
+						Qual(gi.PackageName, newFuncName).
 						Call(jen.Lit(r.namespace.Name),
 							jen.Lit(r.Name))))
 
@@ -156,6 +166,10 @@ func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argVal
 }
 
 func (r *Record) generateStructFinalizer(f *file) {
+	if r.isClass {
+		return
+	}
+
 	// func finalizeSomeStruct(obj *SomeStruct) {
 	//   ...
 	// }
@@ -166,12 +180,16 @@ func (r *Record) generateStructFinalizer(f *file) {
 		BlockFunc(func(g *jen.Group) {
 			// SomeStuct.Free(obj.native)
 			g.
-				Id(r.structInfoGoName).Dot("Free").
+				Id(r.giInfoGoName).Dot("Free").
 				Call(jen.Id("obj").Dot(fieldNameNative))
 		})
 }
 
 func (r *Record) generateStructConstructor(f *file) {
+	if r.isClass {
+		return
+	}
+
 	f.Line()
 
 	funcName := r.goName + "Struct"
@@ -187,7 +205,7 @@ func (r *Record) generateStructConstructor(f *file) {
 			g.
 				Id("err").
 				Op(":=").
-				Id(r.structInfoSetFuncGoName).
+				Id(r.giInfoSetFuncGoName).
 				Call()
 
 			// GEN:
@@ -202,7 +220,7 @@ func (r *Record) generateStructConstructor(f *file) {
 
 			// GEN: structGo := &SomeStruct{native: SomeStruct.Alloc()}
 			struct_ := jen.
-				Id(r.structInfoGoName).Dot("Alloc").
+				Id(r.giInfoGoName).Dot("Alloc").
 				Call()
 			r.createFromArgument(g, jen.Id("structGo"), struct_)
 			//g.
@@ -211,7 +229,7 @@ func (r *Record) generateStructConstructor(f *file) {
 			//	Do(func(s *jen.Statement) {
 			//		// SomeStruct.Alloc()
 			//		struct_ := jen.
-			//			Id(r.structInfoGoName).Dot("Alloc").
+			//			Id(r.giInfoGoName).Dot("Alloc").
 			//			Call()
 			//
 			//		s.Add(r.createFromArgument(struct_))

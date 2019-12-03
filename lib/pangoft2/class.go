@@ -8,13 +8,13 @@ import (
 	"sync"
 )
 
-var fontMapStruct *gi.Struct
-var fontMapStruct_Once sync.Once
+var fontMapObject *gi.Object
+var fontMapObject_Once sync.Once
 
-func fontMapStruct_Set() error {
+func fontMapObject_Set() error {
 	var err error
-	fontMapStruct_Once.Do(func() {
-		fontMapStruct, err = gi.StructNew("PangoFT2", "FontMap")
+	fontMapObject_Once.Do(func() {
+		fontMapObject, err = gi.ObjectNew("PangoFT2", "FontMap")
 	})
 	return err
 }
@@ -29,11 +29,11 @@ var fontMapNewFunction_Once sync.Once
 func fontMapNewFunction_Set() error {
 	var err error
 	fontMapNewFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapNewFunction, err = fontMapStruct.InvokerNew("new")
+		fontMapNewFunction, err = fontMapObject.InvokerNew("new")
 	})
 	return err
 }
@@ -64,11 +64,11 @@ var fontMapSetResolutionFunction_Once sync.Once
 func fontMapSetResolutionFunction_Set() error {
 	var err error
 	fontMapSetResolutionFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapSetResolutionFunction, err = fontMapStruct.InvokerNew("set_resolution")
+		fontMapSetResolutionFunction, err = fontMapObject.InvokerNew("set_resolution")
 	})
 	return err
 }
@@ -94,11 +94,11 @@ var fontMapSubstituteChangedFunction_Once sync.Once
 func fontMapSubstituteChangedFunction_Set() error {
 	var err error
 	fontMapSubstituteChangedFunction_Once.Do(func() {
-		err = fontMapStruct_Set()
+		err = fontMapObject_Set()
 		if err != nil {
 			return
 		}
-		fontMapSubstituteChangedFunction, err = fontMapStruct.InvokerNew("substitute_changed")
+		fontMapSubstituteChangedFunction, err = fontMapObject.InvokerNew("substitute_changed")
 	})
 	return err
 }

@@ -5,17 +5,16 @@ package gobject
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
-	"runtime"
 	"sync"
 )
 
-var bindingStruct *gi.Struct
-var bindingStruct_Once sync.Once
+var bindingObject *gi.Object
+var bindingObject_Once sync.Once
 
-func bindingStruct_Set() error {
+func bindingObject_Set() error {
 	var err error
-	bindingStruct_Once.Do(func() {
-		bindingStruct, err = gi.StructNew("GObject", "Binding")
+	bindingObject_Once.Do(func() {
+		bindingObject, err = gi.ObjectNew("GObject", "Binding")
 	})
 	return err
 }
@@ -32,11 +31,11 @@ var bindingGetSourceFunction_Once sync.Once
 func bindingGetSourceFunction_Set() error {
 	var err error
 	bindingGetSourceFunction_Once.Do(func() {
-		err = bindingStruct_Set()
+		err = bindingObject_Set()
 		if err != nil {
 			return
 		}
-		bindingGetSourceFunction, err = bindingStruct.InvokerNew("get_source")
+		bindingGetSourceFunction, err = bindingObject.InvokerNew("get_source")
 	})
 	return err
 }
@@ -65,11 +64,11 @@ var bindingGetSourcePropertyFunction_Once sync.Once
 func bindingGetSourcePropertyFunction_Set() error {
 	var err error
 	bindingGetSourcePropertyFunction_Once.Do(func() {
-		err = bindingStruct_Set()
+		err = bindingObject_Set()
 		if err != nil {
 			return
 		}
-		bindingGetSourcePropertyFunction, err = bindingStruct.InvokerNew("get_source_property")
+		bindingGetSourcePropertyFunction, err = bindingObject.InvokerNew("get_source_property")
 	})
 	return err
 }
@@ -97,11 +96,11 @@ var bindingGetTargetFunction_Once sync.Once
 func bindingGetTargetFunction_Set() error {
 	var err error
 	bindingGetTargetFunction_Once.Do(func() {
-		err = bindingStruct_Set()
+		err = bindingObject_Set()
 		if err != nil {
 			return
 		}
-		bindingGetTargetFunction, err = bindingStruct.InvokerNew("get_target")
+		bindingGetTargetFunction, err = bindingObject.InvokerNew("get_target")
 	})
 	return err
 }
@@ -130,11 +129,11 @@ var bindingGetTargetPropertyFunction_Once sync.Once
 func bindingGetTargetPropertyFunction_Set() error {
 	var err error
 	bindingGetTargetPropertyFunction_Once.Do(func() {
-		err = bindingStruct_Set()
+		err = bindingObject_Set()
 		if err != nil {
 			return
 		}
-		bindingGetTargetPropertyFunction, err = bindingStruct.InvokerNew("get_target_property")
+		bindingGetTargetPropertyFunction, err = bindingObject.InvokerNew("get_target_property")
 	})
 	return err
 }
@@ -162,11 +161,11 @@ var bindingUnbindFunction_Once sync.Once
 func bindingUnbindFunction_Set() error {
 	var err error
 	bindingUnbindFunction_Once.Do(func() {
-		err = bindingStruct_Set()
+		err = bindingObject_Set()
 		if err != nil {
 			return
 		}
-		bindingUnbindFunction, err = bindingStruct.InvokerNew("unbind")
+		bindingUnbindFunction, err = bindingObject.InvokerNew("unbind")
 	})
 	return err
 }
@@ -184,29 +183,13 @@ func (recv *Binding) Unbind() {
 	return
 }
 
-// BindingStruct creates an uninitialised Binding.
-func BindingStruct() *Binding {
-	err := bindingStruct_Set()
-	if err != nil {
-		return nil
-	}
+var initiallyUnownedObject *gi.Object
+var initiallyUnownedObject_Once sync.Once
 
-	structGo := &Binding{}
-	structGo.Native = bindingStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeBinding)
-	return structGo
-}
-func finalizeBinding(obj *Binding) {
-	bindingStruct.Free(obj.Native)
-}
-
-var initiallyUnownedStruct *gi.Struct
-var initiallyUnownedStruct_Once sync.Once
-
-func initiallyUnownedStruct_Set() error {
+func initiallyUnownedObject_Set() error {
 	var err error
-	initiallyUnownedStruct_Once.Do(func() {
-		initiallyUnownedStruct, err = gi.StructNew("GObject", "InitiallyUnowned")
+	initiallyUnownedObject_Once.Do(func() {
+		initiallyUnownedObject, err = gi.ObjectNew("GObject", "InitiallyUnowned")
 	})
 	return err
 }
@@ -217,7 +200,7 @@ type InitiallyUnowned struct {
 
 // FieldGTypeInstance returns the C field 'g_type_instance'.
 func (recv *InitiallyUnowned) FieldGTypeInstance() *TypeInstance {
-	argValue := gi.FieldGet(initiallyUnownedStruct, recv.Native, "g_type_instance")
+	argValue := gi.ObjectFieldGet(initiallyUnownedObject, recv.Native, "g_type_instance")
 	value := &TypeInstance{}
 	value.Native = argValue.Pointer()
 	return value
@@ -227,32 +210,16 @@ func (recv *InitiallyUnowned) FieldGTypeInstance() *TypeInstance {
 func (recv *InitiallyUnowned) SetFieldGTypeInstance(value *TypeInstance) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(initiallyUnownedStruct, recv.Native, "g_type_instance", argValue)
+	gi.ObjectFieldSet(initiallyUnownedObject, recv.Native, "g_type_instance", argValue)
 }
 
-// InitiallyUnownedStruct creates an uninitialised InitiallyUnowned.
-func InitiallyUnownedStruct() *InitiallyUnowned {
-	err := initiallyUnownedStruct_Set()
-	if err != nil {
-		return nil
-	}
+var objectObject *gi.Object
+var objectObject_Once sync.Once
 
-	structGo := &InitiallyUnowned{}
-	structGo.Native = initiallyUnownedStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeInitiallyUnowned)
-	return structGo
-}
-func finalizeInitiallyUnowned(obj *InitiallyUnowned) {
-	initiallyUnownedStruct.Free(obj.Native)
-}
-
-var objectStruct *gi.Struct
-var objectStruct_Once sync.Once
-
-func objectStruct_Set() error {
+func objectObject_Set() error {
 	var err error
-	objectStruct_Once.Do(func() {
-		objectStruct, err = gi.StructNew("GObject", "Object")
+	objectObject_Once.Do(func() {
+		objectObject, err = gi.ObjectNew("GObject", "Object")
 	})
 	return err
 }
@@ -263,7 +230,7 @@ type Object struct {
 
 // FieldGTypeInstance returns the C field 'g_type_instance'.
 func (recv *Object) FieldGTypeInstance() *TypeInstance {
-	argValue := gi.FieldGet(objectStruct, recv.Native, "g_type_instance")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native, "g_type_instance")
 	value := &TypeInstance{}
 	value.Native = argValue.Pointer()
 	return value
@@ -273,7 +240,7 @@ func (recv *Object) FieldGTypeInstance() *TypeInstance {
 func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(objectStruct, recv.Native, "g_type_instance", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native, "g_type_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_object_new' : parameter 'object_type' of type 'GType' not supported
@@ -308,11 +275,11 @@ var objectForceFloatingFunction_Once sync.Once
 func objectForceFloatingFunction_Set() error {
 	var err error
 	objectForceFloatingFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectForceFloatingFunction, err = objectStruct.InvokerNew("force_floating")
+		objectForceFloatingFunction, err = objectObject.InvokerNew("force_floating")
 	})
 	return err
 }
@@ -336,11 +303,11 @@ var objectFreezeNotifyFunction_Once sync.Once
 func objectFreezeNotifyFunction_Set() error {
 	var err error
 	objectFreezeNotifyFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectFreezeNotifyFunction, err = objectStruct.InvokerNew("freeze_notify")
+		objectFreezeNotifyFunction, err = objectObject.InvokerNew("freeze_notify")
 	})
 	return err
 }
@@ -368,11 +335,11 @@ var objectGetPropertyFunction_Once sync.Once
 func objectGetPropertyFunction_Set() error {
 	var err error
 	objectGetPropertyFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectGetPropertyFunction, err = objectStruct.InvokerNew("get_property")
+		objectGetPropertyFunction, err = objectObject.InvokerNew("get_property")
 	})
 	return err
 }
@@ -404,11 +371,11 @@ var objectIsFloatingFunction_Once sync.Once
 func objectIsFloatingFunction_Set() error {
 	var err error
 	objectIsFloatingFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectIsFloatingFunction, err = objectStruct.InvokerNew("is_floating")
+		objectIsFloatingFunction, err = objectObject.InvokerNew("is_floating")
 	})
 	return err
 }
@@ -436,11 +403,11 @@ var objectNotifyFunction_Once sync.Once
 func objectNotifyFunction_Set() error {
 	var err error
 	objectNotifyFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectNotifyFunction, err = objectStruct.InvokerNew("notify")
+		objectNotifyFunction, err = objectObject.InvokerNew("notify")
 	})
 	return err
 }
@@ -465,11 +432,11 @@ var objectNotifyByPspecFunction_Once sync.Once
 func objectNotifyByPspecFunction_Set() error {
 	var err error
 	objectNotifyByPspecFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectNotifyByPspecFunction, err = objectStruct.InvokerNew("notify_by_pspec")
+		objectNotifyByPspecFunction, err = objectObject.InvokerNew("notify_by_pspec")
 	})
 	return err
 }
@@ -494,11 +461,11 @@ var objectRefFunction_Once sync.Once
 func objectRefFunction_Set() error {
 	var err error
 	objectRefFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRefFunction, err = objectStruct.InvokerNew("ref")
+		objectRefFunction, err = objectObject.InvokerNew("ref")
 	})
 	return err
 }
@@ -527,11 +494,11 @@ var objectRefSinkFunction_Once sync.Once
 func objectRefSinkFunction_Set() error {
 	var err error
 	objectRefSinkFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRefSinkFunction, err = objectStruct.InvokerNew("ref_sink")
+		objectRefSinkFunction, err = objectObject.InvokerNew("ref_sink")
 	})
 	return err
 }
@@ -568,11 +535,11 @@ var objectRunDisposeFunction_Once sync.Once
 func objectRunDisposeFunction_Set() error {
 	var err error
 	objectRunDisposeFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectRunDisposeFunction, err = objectStruct.InvokerNew("run_dispose")
+		objectRunDisposeFunction, err = objectObject.InvokerNew("run_dispose")
 	})
 	return err
 }
@@ -602,11 +569,11 @@ var objectSetPropertyFunction_Once sync.Once
 func objectSetPropertyFunction_Set() error {
 	var err error
 	objectSetPropertyFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectSetPropertyFunction, err = objectStruct.InvokerNew("set_property")
+		objectSetPropertyFunction, err = objectObject.InvokerNew("set_property")
 	})
 	return err
 }
@@ -644,11 +611,11 @@ var objectThawNotifyFunction_Once sync.Once
 func objectThawNotifyFunction_Set() error {
 	var err error
 	objectThawNotifyFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectThawNotifyFunction, err = objectStruct.InvokerNew("thaw_notify")
+		objectThawNotifyFunction, err = objectObject.InvokerNew("thaw_notify")
 	})
 	return err
 }
@@ -672,11 +639,11 @@ var objectUnrefFunction_Once sync.Once
 func objectUnrefFunction_Set() error {
 	var err error
 	objectUnrefFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectUnrefFunction, err = objectStruct.InvokerNew("unref")
+		objectUnrefFunction, err = objectObject.InvokerNew("unref")
 	})
 	return err
 }
@@ -700,11 +667,11 @@ var objectWatchClosureFunction_Once sync.Once
 func objectWatchClosureFunction_Set() error {
 	var err error
 	objectWatchClosureFunction_Once.Do(func() {
-		err = objectStruct_Set()
+		err = objectObject_Set()
 		if err != nil {
 			return
 		}
-		objectWatchClosureFunction, err = objectStruct.InvokerNew("watch_closure")
+		objectWatchClosureFunction, err = objectObject.InvokerNew("watch_closure")
 	})
 	return err
 }
@@ -727,13 +694,13 @@ func (recv *Object) WatchClosure(closure *Closure) {
 
 // UNSUPPORTED : C value 'g_object_weak_unref' : parameter 'notify' of type 'WeakNotify' not supported
 
-var paramSpecStruct *gi.Struct
-var paramSpecStruct_Once sync.Once
+var paramSpecObject *gi.Object
+var paramSpecObject_Once sync.Once
 
-func paramSpecStruct_Set() error {
+func paramSpecObject_Set() error {
 	var err error
-	paramSpecStruct_Once.Do(func() {
-		paramSpecStruct, err = gi.StructNew("GObject", "ParamSpec")
+	paramSpecObject_Once.Do(func() {
+		paramSpecObject, err = gi.ObjectNew("GObject", "ParamSpec")
 	})
 	return err
 }
@@ -744,7 +711,7 @@ type ParamSpec struct {
 
 // FieldGTypeInstance returns the C field 'g_type_instance'.
 func (recv *ParamSpec) FieldGTypeInstance() *TypeInstance {
-	argValue := gi.FieldGet(paramSpecStruct, recv.Native, "g_type_instance")
+	argValue := gi.ObjectFieldGet(paramSpecObject, recv.Native, "g_type_instance")
 	value := &TypeInstance{}
 	value.Native = argValue.Pointer()
 	return value
@@ -754,12 +721,12 @@ func (recv *ParamSpec) FieldGTypeInstance() *TypeInstance {
 func (recv *ParamSpec) SetFieldGTypeInstance(value *TypeInstance) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecStruct, recv.Native, "g_type_instance", argValue)
+	gi.ObjectFieldSet(paramSpecObject, recv.Native, "g_type_instance", argValue)
 }
 
 // FieldName returns the C field 'name'.
 func (recv *ParamSpec) FieldName() string {
-	argValue := gi.FieldGet(paramSpecStruct, recv.Native, "name")
+	argValue := gi.ObjectFieldGet(paramSpecObject, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -768,7 +735,7 @@ func (recv *ParamSpec) FieldName() string {
 func (recv *ParamSpec) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(paramSpecStruct, recv.Native, "name", argValue)
+	gi.ObjectFieldSet(paramSpecObject, recv.Native, "name", argValue)
 }
 
 // UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'ParamFlags'
@@ -789,11 +756,11 @@ var paramSpecGetBlurbFunction_Once sync.Once
 func paramSpecGetBlurbFunction_Set() error {
 	var err error
 	paramSpecGetBlurbFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetBlurbFunction, err = paramSpecStruct.InvokerNew("get_blurb")
+		paramSpecGetBlurbFunction, err = paramSpecObject.InvokerNew("get_blurb")
 	})
 	return err
 }
@@ -821,11 +788,11 @@ var paramSpecGetDefaultValueFunction_Once sync.Once
 func paramSpecGetDefaultValueFunction_Set() error {
 	var err error
 	paramSpecGetDefaultValueFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetDefaultValueFunction, err = paramSpecStruct.InvokerNew("get_default_value")
+		paramSpecGetDefaultValueFunction, err = paramSpecObject.InvokerNew("get_default_value")
 	})
 	return err
 }
@@ -854,11 +821,11 @@ var paramSpecGetNameFunction_Once sync.Once
 func paramSpecGetNameFunction_Set() error {
 	var err error
 	paramSpecGetNameFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetNameFunction, err = paramSpecStruct.InvokerNew("get_name")
+		paramSpecGetNameFunction, err = paramSpecObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -886,11 +853,11 @@ var paramSpecGetNameQuarkFunction_Once sync.Once
 func paramSpecGetNameQuarkFunction_Set() error {
 	var err error
 	paramSpecGetNameQuarkFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetNameQuarkFunction, err = paramSpecStruct.InvokerNew("get_name_quark")
+		paramSpecGetNameQuarkFunction, err = paramSpecObject.InvokerNew("get_name_quark")
 	})
 	return err
 }
@@ -918,11 +885,11 @@ var paramSpecGetNickFunction_Once sync.Once
 func paramSpecGetNickFunction_Set() error {
 	var err error
 	paramSpecGetNickFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetNickFunction, err = paramSpecStruct.InvokerNew("get_nick")
+		paramSpecGetNickFunction, err = paramSpecObject.InvokerNew("get_nick")
 	})
 	return err
 }
@@ -952,11 +919,11 @@ var paramSpecGetRedirectTargetFunction_Once sync.Once
 func paramSpecGetRedirectTargetFunction_Set() error {
 	var err error
 	paramSpecGetRedirectTargetFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecGetRedirectTargetFunction, err = paramSpecStruct.InvokerNew("get_redirect_target")
+		paramSpecGetRedirectTargetFunction, err = paramSpecObject.InvokerNew("get_redirect_target")
 	})
 	return err
 }
@@ -985,11 +952,11 @@ var paramSpecRefFunction_Once sync.Once
 func paramSpecRefFunction_Set() error {
 	var err error
 	paramSpecRefFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecRefFunction, err = paramSpecStruct.InvokerNew("ref")
+		paramSpecRefFunction, err = paramSpecObject.InvokerNew("ref")
 	})
 	return err
 }
@@ -1018,11 +985,11 @@ var paramSpecRefSinkFunction_Once sync.Once
 func paramSpecRefSinkFunction_Set() error {
 	var err error
 	paramSpecRefSinkFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecRefSinkFunction, err = paramSpecStruct.InvokerNew("ref_sink")
+		paramSpecRefSinkFunction, err = paramSpecObject.InvokerNew("ref_sink")
 	})
 	return err
 }
@@ -1055,11 +1022,11 @@ var paramSpecSinkFunction_Once sync.Once
 func paramSpecSinkFunction_Set() error {
 	var err error
 	paramSpecSinkFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecSinkFunction, err = paramSpecStruct.InvokerNew("sink")
+		paramSpecSinkFunction, err = paramSpecObject.InvokerNew("sink")
 	})
 	return err
 }
@@ -1085,11 +1052,11 @@ var paramSpecUnrefFunction_Once sync.Once
 func paramSpecUnrefFunction_Set() error {
 	var err error
 	paramSpecUnrefFunction_Once.Do(func() {
-		err = paramSpecStruct_Set()
+		err = paramSpecObject_Set()
 		if err != nil {
 			return
 		}
-		paramSpecUnrefFunction, err = paramSpecStruct.InvokerNew("unref")
+		paramSpecUnrefFunction, err = paramSpecObject.InvokerNew("unref")
 	})
 	return err
 }
@@ -1107,29 +1074,13 @@ func (recv *ParamSpec) Unref() {
 	return
 }
 
-// ParamSpecStruct creates an uninitialised ParamSpec.
-func ParamSpecStruct() *ParamSpec {
-	err := paramSpecStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecBooleanObject *gi.Object
+var paramSpecBooleanObject_Once sync.Once
 
-	structGo := &ParamSpec{}
-	structGo.Native = paramSpecStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpec)
-	return structGo
-}
-func finalizeParamSpec(obj *ParamSpec) {
-	paramSpecStruct.Free(obj.Native)
-}
-
-var paramSpecBooleanStruct *gi.Struct
-var paramSpecBooleanStruct_Once sync.Once
-
-func paramSpecBooleanStruct_Set() error {
+func paramSpecBooleanObject_Set() error {
 	var err error
-	paramSpecBooleanStruct_Once.Do(func() {
-		paramSpecBooleanStruct, err = gi.StructNew("GObject", "ParamSpecBoolean")
+	paramSpecBooleanObject_Once.Do(func() {
+		paramSpecBooleanObject, err = gi.ObjectNew("GObject", "ParamSpecBoolean")
 	})
 	return err
 }
@@ -1140,7 +1091,7 @@ type ParamSpecBoolean struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecBoolean) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecBooleanStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecBooleanObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1150,12 +1101,12 @@ func (recv *ParamSpecBoolean) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecBoolean) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecBooleanStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecBooleanObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecBoolean) FieldDefaultValue() bool {
-	argValue := gi.FieldGet(paramSpecBooleanStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecBooleanObject, recv.Native, "default_value")
 	value := argValue.Boolean()
 	return value
 }
@@ -1164,32 +1115,16 @@ func (recv *ParamSpecBoolean) FieldDefaultValue() bool {
 func (recv *ParamSpecBoolean) SetFieldDefaultValue(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.FieldSet(paramSpecBooleanStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecBooleanObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecBooleanStruct creates an uninitialised ParamSpecBoolean.
-func ParamSpecBooleanStruct() *ParamSpecBoolean {
-	err := paramSpecBooleanStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecBoxedObject *gi.Object
+var paramSpecBoxedObject_Once sync.Once
 
-	structGo := &ParamSpecBoolean{}
-	structGo.Native = paramSpecBooleanStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecBoolean)
-	return structGo
-}
-func finalizeParamSpecBoolean(obj *ParamSpecBoolean) {
-	paramSpecBooleanStruct.Free(obj.Native)
-}
-
-var paramSpecBoxedStruct *gi.Struct
-var paramSpecBoxedStruct_Once sync.Once
-
-func paramSpecBoxedStruct_Set() error {
+func paramSpecBoxedObject_Set() error {
 	var err error
-	paramSpecBoxedStruct_Once.Do(func() {
-		paramSpecBoxedStruct, err = gi.StructNew("GObject", "ParamSpecBoxed")
+	paramSpecBoxedObject_Once.Do(func() {
+		paramSpecBoxedObject, err = gi.ObjectNew("GObject", "ParamSpecBoxed")
 	})
 	return err
 }
@@ -1200,7 +1135,7 @@ type ParamSpecBoxed struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecBoxed) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecBoxedStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecBoxedObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1210,32 +1145,16 @@ func (recv *ParamSpecBoxed) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecBoxed) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecBoxedStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecBoxedObject, recv.Native, "parent_instance", argValue)
 }
 
-// ParamSpecBoxedStruct creates an uninitialised ParamSpecBoxed.
-func ParamSpecBoxedStruct() *ParamSpecBoxed {
-	err := paramSpecBoxedStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecCharObject *gi.Object
+var paramSpecCharObject_Once sync.Once
 
-	structGo := &ParamSpecBoxed{}
-	structGo.Native = paramSpecBoxedStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecBoxed)
-	return structGo
-}
-func finalizeParamSpecBoxed(obj *ParamSpecBoxed) {
-	paramSpecBoxedStruct.Free(obj.Native)
-}
-
-var paramSpecCharStruct *gi.Struct
-var paramSpecCharStruct_Once sync.Once
-
-func paramSpecCharStruct_Set() error {
+func paramSpecCharObject_Set() error {
 	var err error
-	paramSpecCharStruct_Once.Do(func() {
-		paramSpecCharStruct, err = gi.StructNew("GObject", "ParamSpecChar")
+	paramSpecCharObject_Once.Do(func() {
+		paramSpecCharObject, err = gi.ObjectNew("GObject", "ParamSpecChar")
 	})
 	return err
 }
@@ -1246,7 +1165,7 @@ type ParamSpecChar struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecChar) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecCharStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecCharObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1256,12 +1175,12 @@ func (recv *ParamSpecChar) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecChar) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecCharStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecCharObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecChar) FieldMinimum() int8 {
-	argValue := gi.FieldGet(paramSpecCharStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecCharObject, recv.Native, "minimum")
 	value := argValue.Int8()
 	return value
 }
@@ -1270,12 +1189,12 @@ func (recv *ParamSpecChar) FieldMinimum() int8 {
 func (recv *ParamSpecChar) SetFieldMinimum(value int8) {
 	var argValue gi.Argument
 	argValue.SetInt8(value)
-	gi.FieldSet(paramSpecCharStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecCharObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecChar) FieldMaximum() int8 {
-	argValue := gi.FieldGet(paramSpecCharStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecCharObject, recv.Native, "maximum")
 	value := argValue.Int8()
 	return value
 }
@@ -1284,12 +1203,12 @@ func (recv *ParamSpecChar) FieldMaximum() int8 {
 func (recv *ParamSpecChar) SetFieldMaximum(value int8) {
 	var argValue gi.Argument
 	argValue.SetInt8(value)
-	gi.FieldSet(paramSpecCharStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecCharObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecChar) FieldDefaultValue() int8 {
-	argValue := gi.FieldGet(paramSpecCharStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecCharObject, recv.Native, "default_value")
 	value := argValue.Int8()
 	return value
 }
@@ -1298,32 +1217,16 @@ func (recv *ParamSpecChar) FieldDefaultValue() int8 {
 func (recv *ParamSpecChar) SetFieldDefaultValue(value int8) {
 	var argValue gi.Argument
 	argValue.SetInt8(value)
-	gi.FieldSet(paramSpecCharStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecCharObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecCharStruct creates an uninitialised ParamSpecChar.
-func ParamSpecCharStruct() *ParamSpecChar {
-	err := paramSpecCharStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecDoubleObject *gi.Object
+var paramSpecDoubleObject_Once sync.Once
 
-	structGo := &ParamSpecChar{}
-	structGo.Native = paramSpecCharStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecChar)
-	return structGo
-}
-func finalizeParamSpecChar(obj *ParamSpecChar) {
-	paramSpecCharStruct.Free(obj.Native)
-}
-
-var paramSpecDoubleStruct *gi.Struct
-var paramSpecDoubleStruct_Once sync.Once
-
-func paramSpecDoubleStruct_Set() error {
+func paramSpecDoubleObject_Set() error {
 	var err error
-	paramSpecDoubleStruct_Once.Do(func() {
-		paramSpecDoubleStruct, err = gi.StructNew("GObject", "ParamSpecDouble")
+	paramSpecDoubleObject_Once.Do(func() {
+		paramSpecDoubleObject, err = gi.ObjectNew("GObject", "ParamSpecDouble")
 	})
 	return err
 }
@@ -1334,7 +1237,7 @@ type ParamSpecDouble struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecDouble) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecDoubleObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1344,12 +1247,12 @@ func (recv *ParamSpecDouble) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecDouble) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecDoubleStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecDoubleObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecDouble) FieldMinimum() float64 {
-	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecDoubleObject, recv.Native, "minimum")
 	value := argValue.Float64()
 	return value
 }
@@ -1358,12 +1261,12 @@ func (recv *ParamSpecDouble) FieldMinimum() float64 {
 func (recv *ParamSpecDouble) SetFieldMinimum(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.FieldSet(paramSpecDoubleStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecDoubleObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecDouble) FieldMaximum() float64 {
-	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecDoubleObject, recv.Native, "maximum")
 	value := argValue.Float64()
 	return value
 }
@@ -1372,12 +1275,12 @@ func (recv *ParamSpecDouble) FieldMaximum() float64 {
 func (recv *ParamSpecDouble) SetFieldMaximum(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.FieldSet(paramSpecDoubleStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecDoubleObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecDouble) FieldDefaultValue() float64 {
-	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecDoubleObject, recv.Native, "default_value")
 	value := argValue.Float64()
 	return value
 }
@@ -1386,12 +1289,12 @@ func (recv *ParamSpecDouble) FieldDefaultValue() float64 {
 func (recv *ParamSpecDouble) SetFieldDefaultValue(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.FieldSet(paramSpecDoubleStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecDoubleObject, recv.Native, "default_value", argValue)
 }
 
 // FieldEpsilon returns the C field 'epsilon'.
 func (recv *ParamSpecDouble) FieldEpsilon() float64 {
-	argValue := gi.FieldGet(paramSpecDoubleStruct, recv.Native, "epsilon")
+	argValue := gi.ObjectFieldGet(paramSpecDoubleObject, recv.Native, "epsilon")
 	value := argValue.Float64()
 	return value
 }
@@ -1400,32 +1303,16 @@ func (recv *ParamSpecDouble) FieldEpsilon() float64 {
 func (recv *ParamSpecDouble) SetFieldEpsilon(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.FieldSet(paramSpecDoubleStruct, recv.Native, "epsilon", argValue)
+	gi.ObjectFieldSet(paramSpecDoubleObject, recv.Native, "epsilon", argValue)
 }
 
-// ParamSpecDoubleStruct creates an uninitialised ParamSpecDouble.
-func ParamSpecDoubleStruct() *ParamSpecDouble {
-	err := paramSpecDoubleStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecEnumObject *gi.Object
+var paramSpecEnumObject_Once sync.Once
 
-	structGo := &ParamSpecDouble{}
-	structGo.Native = paramSpecDoubleStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecDouble)
-	return structGo
-}
-func finalizeParamSpecDouble(obj *ParamSpecDouble) {
-	paramSpecDoubleStruct.Free(obj.Native)
-}
-
-var paramSpecEnumStruct *gi.Struct
-var paramSpecEnumStruct_Once sync.Once
-
-func paramSpecEnumStruct_Set() error {
+func paramSpecEnumObject_Set() error {
 	var err error
-	paramSpecEnumStruct_Once.Do(func() {
-		paramSpecEnumStruct, err = gi.StructNew("GObject", "ParamSpecEnum")
+	paramSpecEnumObject_Once.Do(func() {
+		paramSpecEnumObject, err = gi.ObjectNew("GObject", "ParamSpecEnum")
 	})
 	return err
 }
@@ -1436,7 +1323,7 @@ type ParamSpecEnum struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecEnum) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecEnumStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecEnumObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1446,12 +1333,12 @@ func (recv *ParamSpecEnum) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecEnum) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecEnumStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecEnumObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldEnumClass returns the C field 'enum_class'.
 func (recv *ParamSpecEnum) FieldEnumClass() *EnumClass {
-	argValue := gi.FieldGet(paramSpecEnumStruct, recv.Native, "enum_class")
+	argValue := gi.ObjectFieldGet(paramSpecEnumObject, recv.Native, "enum_class")
 	value := &EnumClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1461,12 +1348,12 @@ func (recv *ParamSpecEnum) FieldEnumClass() *EnumClass {
 func (recv *ParamSpecEnum) SetFieldEnumClass(value *EnumClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecEnumStruct, recv.Native, "enum_class", argValue)
+	gi.ObjectFieldSet(paramSpecEnumObject, recv.Native, "enum_class", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecEnum) FieldDefaultValue() int32 {
-	argValue := gi.FieldGet(paramSpecEnumStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecEnumObject, recv.Native, "default_value")
 	value := argValue.Int32()
 	return value
 }
@@ -1475,32 +1362,16 @@ func (recv *ParamSpecEnum) FieldDefaultValue() int32 {
 func (recv *ParamSpecEnum) SetFieldDefaultValue(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(paramSpecEnumStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecEnumObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecEnumStruct creates an uninitialised ParamSpecEnum.
-func ParamSpecEnumStruct() *ParamSpecEnum {
-	err := paramSpecEnumStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecFlagsObject *gi.Object
+var paramSpecFlagsObject_Once sync.Once
 
-	structGo := &ParamSpecEnum{}
-	structGo.Native = paramSpecEnumStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecEnum)
-	return structGo
-}
-func finalizeParamSpecEnum(obj *ParamSpecEnum) {
-	paramSpecEnumStruct.Free(obj.Native)
-}
-
-var paramSpecFlagsStruct *gi.Struct
-var paramSpecFlagsStruct_Once sync.Once
-
-func paramSpecFlagsStruct_Set() error {
+func paramSpecFlagsObject_Set() error {
 	var err error
-	paramSpecFlagsStruct_Once.Do(func() {
-		paramSpecFlagsStruct, err = gi.StructNew("GObject", "ParamSpecFlags")
+	paramSpecFlagsObject_Once.Do(func() {
+		paramSpecFlagsObject, err = gi.ObjectNew("GObject", "ParamSpecFlags")
 	})
 	return err
 }
@@ -1511,7 +1382,7 @@ type ParamSpecFlags struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecFlags) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecFlagsStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecFlagsObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1521,12 +1392,12 @@ func (recv *ParamSpecFlags) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecFlags) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecFlagsStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecFlagsObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldFlagsClass returns the C field 'flags_class'.
 func (recv *ParamSpecFlags) FieldFlagsClass() *FlagsClass {
-	argValue := gi.FieldGet(paramSpecFlagsStruct, recv.Native, "flags_class")
+	argValue := gi.ObjectFieldGet(paramSpecFlagsObject, recv.Native, "flags_class")
 	value := &FlagsClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1536,12 +1407,12 @@ func (recv *ParamSpecFlags) FieldFlagsClass() *FlagsClass {
 func (recv *ParamSpecFlags) SetFieldFlagsClass(value *FlagsClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecFlagsStruct, recv.Native, "flags_class", argValue)
+	gi.ObjectFieldSet(paramSpecFlagsObject, recv.Native, "flags_class", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecFlags) FieldDefaultValue() uint32 {
-	argValue := gi.FieldGet(paramSpecFlagsStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecFlagsObject, recv.Native, "default_value")
 	value := argValue.Uint32()
 	return value
 }
@@ -1550,32 +1421,16 @@ func (recv *ParamSpecFlags) FieldDefaultValue() uint32 {
 func (recv *ParamSpecFlags) SetFieldDefaultValue(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecFlagsStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecFlagsObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecFlagsStruct creates an uninitialised ParamSpecFlags.
-func ParamSpecFlagsStruct() *ParamSpecFlags {
-	err := paramSpecFlagsStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecFloatObject *gi.Object
+var paramSpecFloatObject_Once sync.Once
 
-	structGo := &ParamSpecFlags{}
-	structGo.Native = paramSpecFlagsStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecFlags)
-	return structGo
-}
-func finalizeParamSpecFlags(obj *ParamSpecFlags) {
-	paramSpecFlagsStruct.Free(obj.Native)
-}
-
-var paramSpecFloatStruct *gi.Struct
-var paramSpecFloatStruct_Once sync.Once
-
-func paramSpecFloatStruct_Set() error {
+func paramSpecFloatObject_Set() error {
 	var err error
-	paramSpecFloatStruct_Once.Do(func() {
-		paramSpecFloatStruct, err = gi.StructNew("GObject", "ParamSpecFloat")
+	paramSpecFloatObject_Once.Do(func() {
+		paramSpecFloatObject, err = gi.ObjectNew("GObject", "ParamSpecFloat")
 	})
 	return err
 }
@@ -1586,7 +1441,7 @@ type ParamSpecFloat struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecFloat) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecFloatStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecFloatObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1596,12 +1451,12 @@ func (recv *ParamSpecFloat) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecFloat) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecFloatStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecFloatObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecFloat) FieldMinimum() float32 {
-	argValue := gi.FieldGet(paramSpecFloatStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecFloatObject, recv.Native, "minimum")
 	value := argValue.Float32()
 	return value
 }
@@ -1610,12 +1465,12 @@ func (recv *ParamSpecFloat) FieldMinimum() float32 {
 func (recv *ParamSpecFloat) SetFieldMinimum(value float32) {
 	var argValue gi.Argument
 	argValue.SetFloat32(value)
-	gi.FieldSet(paramSpecFloatStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecFloatObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecFloat) FieldMaximum() float32 {
-	argValue := gi.FieldGet(paramSpecFloatStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecFloatObject, recv.Native, "maximum")
 	value := argValue.Float32()
 	return value
 }
@@ -1624,12 +1479,12 @@ func (recv *ParamSpecFloat) FieldMaximum() float32 {
 func (recv *ParamSpecFloat) SetFieldMaximum(value float32) {
 	var argValue gi.Argument
 	argValue.SetFloat32(value)
-	gi.FieldSet(paramSpecFloatStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecFloatObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecFloat) FieldDefaultValue() float32 {
-	argValue := gi.FieldGet(paramSpecFloatStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecFloatObject, recv.Native, "default_value")
 	value := argValue.Float32()
 	return value
 }
@@ -1638,12 +1493,12 @@ func (recv *ParamSpecFloat) FieldDefaultValue() float32 {
 func (recv *ParamSpecFloat) SetFieldDefaultValue(value float32) {
 	var argValue gi.Argument
 	argValue.SetFloat32(value)
-	gi.FieldSet(paramSpecFloatStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecFloatObject, recv.Native, "default_value", argValue)
 }
 
 // FieldEpsilon returns the C field 'epsilon'.
 func (recv *ParamSpecFloat) FieldEpsilon() float32 {
-	argValue := gi.FieldGet(paramSpecFloatStruct, recv.Native, "epsilon")
+	argValue := gi.ObjectFieldGet(paramSpecFloatObject, recv.Native, "epsilon")
 	value := argValue.Float32()
 	return value
 }
@@ -1652,32 +1507,16 @@ func (recv *ParamSpecFloat) FieldEpsilon() float32 {
 func (recv *ParamSpecFloat) SetFieldEpsilon(value float32) {
 	var argValue gi.Argument
 	argValue.SetFloat32(value)
-	gi.FieldSet(paramSpecFloatStruct, recv.Native, "epsilon", argValue)
+	gi.ObjectFieldSet(paramSpecFloatObject, recv.Native, "epsilon", argValue)
 }
 
-// ParamSpecFloatStruct creates an uninitialised ParamSpecFloat.
-func ParamSpecFloatStruct() *ParamSpecFloat {
-	err := paramSpecFloatStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecGTypeObject *gi.Object
+var paramSpecGTypeObject_Once sync.Once
 
-	structGo := &ParamSpecFloat{}
-	structGo.Native = paramSpecFloatStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecFloat)
-	return structGo
-}
-func finalizeParamSpecFloat(obj *ParamSpecFloat) {
-	paramSpecFloatStruct.Free(obj.Native)
-}
-
-var paramSpecGTypeStruct *gi.Struct
-var paramSpecGTypeStruct_Once sync.Once
-
-func paramSpecGTypeStruct_Set() error {
+func paramSpecGTypeObject_Set() error {
 	var err error
-	paramSpecGTypeStruct_Once.Do(func() {
-		paramSpecGTypeStruct, err = gi.StructNew("GObject", "ParamSpecGType")
+	paramSpecGTypeObject_Once.Do(func() {
+		paramSpecGTypeObject, err = gi.ObjectNew("GObject", "ParamSpecGType")
 	})
 	return err
 }
@@ -1688,7 +1527,7 @@ type ParamSpecGType struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecGType) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecGTypeStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecGTypeObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1698,36 +1537,20 @@ func (recv *ParamSpecGType) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecGType) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecGTypeStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecGTypeObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'is_a_type' : for field getter : no Go type for 'GType'
 
 // UNSUPPORTED : C value 'is_a_type' : for field setter : no Go type for 'GType'
 
-// ParamSpecGTypeStruct creates an uninitialised ParamSpecGType.
-func ParamSpecGTypeStruct() *ParamSpecGType {
-	err := paramSpecGTypeStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecIntObject *gi.Object
+var paramSpecIntObject_Once sync.Once
 
-	structGo := &ParamSpecGType{}
-	structGo.Native = paramSpecGTypeStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecGType)
-	return structGo
-}
-func finalizeParamSpecGType(obj *ParamSpecGType) {
-	paramSpecGTypeStruct.Free(obj.Native)
-}
-
-var paramSpecIntStruct *gi.Struct
-var paramSpecIntStruct_Once sync.Once
-
-func paramSpecIntStruct_Set() error {
+func paramSpecIntObject_Set() error {
 	var err error
-	paramSpecIntStruct_Once.Do(func() {
-		paramSpecIntStruct, err = gi.StructNew("GObject", "ParamSpecInt")
+	paramSpecIntObject_Once.Do(func() {
+		paramSpecIntObject, err = gi.ObjectNew("GObject", "ParamSpecInt")
 	})
 	return err
 }
@@ -1738,7 +1561,7 @@ type ParamSpecInt struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecInt) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecIntStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecIntObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1748,12 +1571,12 @@ func (recv *ParamSpecInt) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecInt) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecIntStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecIntObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecInt) FieldMinimum() int32 {
-	argValue := gi.FieldGet(paramSpecIntStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecIntObject, recv.Native, "minimum")
 	value := argValue.Int32()
 	return value
 }
@@ -1762,12 +1585,12 @@ func (recv *ParamSpecInt) FieldMinimum() int32 {
 func (recv *ParamSpecInt) SetFieldMinimum(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(paramSpecIntStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecIntObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecInt) FieldMaximum() int32 {
-	argValue := gi.FieldGet(paramSpecIntStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecIntObject, recv.Native, "maximum")
 	value := argValue.Int32()
 	return value
 }
@@ -1776,12 +1599,12 @@ func (recv *ParamSpecInt) FieldMaximum() int32 {
 func (recv *ParamSpecInt) SetFieldMaximum(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(paramSpecIntStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecIntObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecInt) FieldDefaultValue() int32 {
-	argValue := gi.FieldGet(paramSpecIntStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecIntObject, recv.Native, "default_value")
 	value := argValue.Int32()
 	return value
 }
@@ -1790,32 +1613,16 @@ func (recv *ParamSpecInt) FieldDefaultValue() int32 {
 func (recv *ParamSpecInt) SetFieldDefaultValue(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.FieldSet(paramSpecIntStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecIntObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecIntStruct creates an uninitialised ParamSpecInt.
-func ParamSpecIntStruct() *ParamSpecInt {
-	err := paramSpecIntStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecInt64Object *gi.Object
+var paramSpecInt64Object_Once sync.Once
 
-	structGo := &ParamSpecInt{}
-	structGo.Native = paramSpecIntStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecInt)
-	return structGo
-}
-func finalizeParamSpecInt(obj *ParamSpecInt) {
-	paramSpecIntStruct.Free(obj.Native)
-}
-
-var paramSpecInt64Struct *gi.Struct
-var paramSpecInt64Struct_Once sync.Once
-
-func paramSpecInt64Struct_Set() error {
+func paramSpecInt64Object_Set() error {
 	var err error
-	paramSpecInt64Struct_Once.Do(func() {
-		paramSpecInt64Struct, err = gi.StructNew("GObject", "ParamSpecInt64")
+	paramSpecInt64Object_Once.Do(func() {
+		paramSpecInt64Object, err = gi.ObjectNew("GObject", "ParamSpecInt64")
 	})
 	return err
 }
@@ -1826,7 +1633,7 @@ type ParamSpecInt64 struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecInt64) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecInt64Struct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecInt64Object, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1836,12 +1643,12 @@ func (recv *ParamSpecInt64) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecInt64) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecInt64Struct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecInt64Object, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecInt64) FieldMinimum() int64 {
-	argValue := gi.FieldGet(paramSpecInt64Struct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecInt64Object, recv.Native, "minimum")
 	value := argValue.Int64()
 	return value
 }
@@ -1850,12 +1657,12 @@ func (recv *ParamSpecInt64) FieldMinimum() int64 {
 func (recv *ParamSpecInt64) SetFieldMinimum(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecInt64Struct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecInt64Object, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecInt64) FieldMaximum() int64 {
-	argValue := gi.FieldGet(paramSpecInt64Struct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecInt64Object, recv.Native, "maximum")
 	value := argValue.Int64()
 	return value
 }
@@ -1864,12 +1671,12 @@ func (recv *ParamSpecInt64) FieldMaximum() int64 {
 func (recv *ParamSpecInt64) SetFieldMaximum(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecInt64Struct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecInt64Object, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecInt64) FieldDefaultValue() int64 {
-	argValue := gi.FieldGet(paramSpecInt64Struct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecInt64Object, recv.Native, "default_value")
 	value := argValue.Int64()
 	return value
 }
@@ -1878,32 +1685,16 @@ func (recv *ParamSpecInt64) FieldDefaultValue() int64 {
 func (recv *ParamSpecInt64) SetFieldDefaultValue(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecInt64Struct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecInt64Object, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecInt64Struct creates an uninitialised ParamSpecInt64.
-func ParamSpecInt64Struct() *ParamSpecInt64 {
-	err := paramSpecInt64Struct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecLongObject *gi.Object
+var paramSpecLongObject_Once sync.Once
 
-	structGo := &ParamSpecInt64{}
-	structGo.Native = paramSpecInt64Struct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecInt64)
-	return structGo
-}
-func finalizeParamSpecInt64(obj *ParamSpecInt64) {
-	paramSpecInt64Struct.Free(obj.Native)
-}
-
-var paramSpecLongStruct *gi.Struct
-var paramSpecLongStruct_Once sync.Once
-
-func paramSpecLongStruct_Set() error {
+func paramSpecLongObject_Set() error {
 	var err error
-	paramSpecLongStruct_Once.Do(func() {
-		paramSpecLongStruct, err = gi.StructNew("GObject", "ParamSpecLong")
+	paramSpecLongObject_Once.Do(func() {
+		paramSpecLongObject, err = gi.ObjectNew("GObject", "ParamSpecLong")
 	})
 	return err
 }
@@ -1914,7 +1705,7 @@ type ParamSpecLong struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecLong) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecLongStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecLongObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1924,12 +1715,12 @@ func (recv *ParamSpecLong) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecLong) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecLongStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecLongObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecLong) FieldMinimum() int64 {
-	argValue := gi.FieldGet(paramSpecLongStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecLongObject, recv.Native, "minimum")
 	value := argValue.Int64()
 	return value
 }
@@ -1938,12 +1729,12 @@ func (recv *ParamSpecLong) FieldMinimum() int64 {
 func (recv *ParamSpecLong) SetFieldMinimum(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecLongStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecLongObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecLong) FieldMaximum() int64 {
-	argValue := gi.FieldGet(paramSpecLongStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecLongObject, recv.Native, "maximum")
 	value := argValue.Int64()
 	return value
 }
@@ -1952,12 +1743,12 @@ func (recv *ParamSpecLong) FieldMaximum() int64 {
 func (recv *ParamSpecLong) SetFieldMaximum(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecLongStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecLongObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecLong) FieldDefaultValue() int64 {
-	argValue := gi.FieldGet(paramSpecLongStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecLongObject, recv.Native, "default_value")
 	value := argValue.Int64()
 	return value
 }
@@ -1966,32 +1757,16 @@ func (recv *ParamSpecLong) FieldDefaultValue() int64 {
 func (recv *ParamSpecLong) SetFieldDefaultValue(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.FieldSet(paramSpecLongStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecLongObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecLongStruct creates an uninitialised ParamSpecLong.
-func ParamSpecLongStruct() *ParamSpecLong {
-	err := paramSpecLongStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecObjectObject *gi.Object
+var paramSpecObjectObject_Once sync.Once
 
-	structGo := &ParamSpecLong{}
-	structGo.Native = paramSpecLongStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecLong)
-	return structGo
-}
-func finalizeParamSpecLong(obj *ParamSpecLong) {
-	paramSpecLongStruct.Free(obj.Native)
-}
-
-var paramSpecObjectStruct *gi.Struct
-var paramSpecObjectStruct_Once sync.Once
-
-func paramSpecObjectStruct_Set() error {
+func paramSpecObjectObject_Set() error {
 	var err error
-	paramSpecObjectStruct_Once.Do(func() {
-		paramSpecObjectStruct, err = gi.StructNew("GObject", "ParamSpecObject")
+	paramSpecObjectObject_Once.Do(func() {
+		paramSpecObjectObject, err = gi.ObjectNew("GObject", "ParamSpecObject")
 	})
 	return err
 }
@@ -2002,7 +1777,7 @@ type ParamSpecObject struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecObject) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecObjectStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecObjectObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2012,32 +1787,16 @@ func (recv *ParamSpecObject) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecObject) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecObjectStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecObjectObject, recv.Native, "parent_instance", argValue)
 }
 
-// ParamSpecObjectStruct creates an uninitialised ParamSpecObject.
-func ParamSpecObjectStruct() *ParamSpecObject {
-	err := paramSpecObjectStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecOverrideObject *gi.Object
+var paramSpecOverrideObject_Once sync.Once
 
-	structGo := &ParamSpecObject{}
-	structGo.Native = paramSpecObjectStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecObject)
-	return structGo
-}
-func finalizeParamSpecObject(obj *ParamSpecObject) {
-	paramSpecObjectStruct.Free(obj.Native)
-}
-
-var paramSpecOverrideStruct *gi.Struct
-var paramSpecOverrideStruct_Once sync.Once
-
-func paramSpecOverrideStruct_Set() error {
+func paramSpecOverrideObject_Set() error {
 	var err error
-	paramSpecOverrideStruct_Once.Do(func() {
-		paramSpecOverrideStruct, err = gi.StructNew("GObject", "ParamSpecOverride")
+	paramSpecOverrideObject_Once.Do(func() {
+		paramSpecOverrideObject, err = gi.ObjectNew("GObject", "ParamSpecOverride")
 	})
 	return err
 }
@@ -2046,29 +1805,13 @@ type ParamSpecOverride struct {
 	ParamSpec
 }
 
-// ParamSpecOverrideStruct creates an uninitialised ParamSpecOverride.
-func ParamSpecOverrideStruct() *ParamSpecOverride {
-	err := paramSpecOverrideStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecParamObject *gi.Object
+var paramSpecParamObject_Once sync.Once
 
-	structGo := &ParamSpecOverride{}
-	structGo.Native = paramSpecOverrideStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecOverride)
-	return structGo
-}
-func finalizeParamSpecOverride(obj *ParamSpecOverride) {
-	paramSpecOverrideStruct.Free(obj.Native)
-}
-
-var paramSpecParamStruct *gi.Struct
-var paramSpecParamStruct_Once sync.Once
-
-func paramSpecParamStruct_Set() error {
+func paramSpecParamObject_Set() error {
 	var err error
-	paramSpecParamStruct_Once.Do(func() {
-		paramSpecParamStruct, err = gi.StructNew("GObject", "ParamSpecParam")
+	paramSpecParamObject_Once.Do(func() {
+		paramSpecParamObject, err = gi.ObjectNew("GObject", "ParamSpecParam")
 	})
 	return err
 }
@@ -2079,7 +1822,7 @@ type ParamSpecParam struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecParam) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecParamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecParamObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2089,32 +1832,16 @@ func (recv *ParamSpecParam) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecParam) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecParamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecParamObject, recv.Native, "parent_instance", argValue)
 }
 
-// ParamSpecParamStruct creates an uninitialised ParamSpecParam.
-func ParamSpecParamStruct() *ParamSpecParam {
-	err := paramSpecParamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecPointerObject *gi.Object
+var paramSpecPointerObject_Once sync.Once
 
-	structGo := &ParamSpecParam{}
-	structGo.Native = paramSpecParamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecParam)
-	return structGo
-}
-func finalizeParamSpecParam(obj *ParamSpecParam) {
-	paramSpecParamStruct.Free(obj.Native)
-}
-
-var paramSpecPointerStruct *gi.Struct
-var paramSpecPointerStruct_Once sync.Once
-
-func paramSpecPointerStruct_Set() error {
+func paramSpecPointerObject_Set() error {
 	var err error
-	paramSpecPointerStruct_Once.Do(func() {
-		paramSpecPointerStruct, err = gi.StructNew("GObject", "ParamSpecPointer")
+	paramSpecPointerObject_Once.Do(func() {
+		paramSpecPointerObject, err = gi.ObjectNew("GObject", "ParamSpecPointer")
 	})
 	return err
 }
@@ -2125,7 +1852,7 @@ type ParamSpecPointer struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecPointer) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecPointerStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecPointerObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2135,32 +1862,16 @@ func (recv *ParamSpecPointer) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecPointer) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecPointerStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecPointerObject, recv.Native, "parent_instance", argValue)
 }
 
-// ParamSpecPointerStruct creates an uninitialised ParamSpecPointer.
-func ParamSpecPointerStruct() *ParamSpecPointer {
-	err := paramSpecPointerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecStringObject *gi.Object
+var paramSpecStringObject_Once sync.Once
 
-	structGo := &ParamSpecPointer{}
-	structGo.Native = paramSpecPointerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecPointer)
-	return structGo
-}
-func finalizeParamSpecPointer(obj *ParamSpecPointer) {
-	paramSpecPointerStruct.Free(obj.Native)
-}
-
-var paramSpecStringStruct *gi.Struct
-var paramSpecStringStruct_Once sync.Once
-
-func paramSpecStringStruct_Set() error {
+func paramSpecStringObject_Set() error {
 	var err error
-	paramSpecStringStruct_Once.Do(func() {
-		paramSpecStringStruct, err = gi.StructNew("GObject", "ParamSpecString")
+	paramSpecStringObject_Once.Do(func() {
+		paramSpecStringObject, err = gi.ObjectNew("GObject", "ParamSpecString")
 	})
 	return err
 }
@@ -2171,7 +1882,7 @@ type ParamSpecString struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecString) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2181,12 +1892,12 @@ func (recv *ParamSpecString) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecString) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecString) FieldDefaultValue() string {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "default_value")
 	value := argValue.String(false)
 	return value
 }
@@ -2195,12 +1906,12 @@ func (recv *ParamSpecString) FieldDefaultValue() string {
 func (recv *ParamSpecString) SetFieldDefaultValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "default_value", argValue)
 }
 
 // FieldCsetFirst returns the C field 'cset_first'.
 func (recv *ParamSpecString) FieldCsetFirst() string {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "cset_first")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "cset_first")
 	value := argValue.String(false)
 	return value
 }
@@ -2209,12 +1920,12 @@ func (recv *ParamSpecString) FieldCsetFirst() string {
 func (recv *ParamSpecString) SetFieldCsetFirst(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "cset_first", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "cset_first", argValue)
 }
 
 // FieldCsetNth returns the C field 'cset_nth'.
 func (recv *ParamSpecString) FieldCsetNth() string {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "cset_nth")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "cset_nth")
 	value := argValue.String(false)
 	return value
 }
@@ -2223,12 +1934,12 @@ func (recv *ParamSpecString) FieldCsetNth() string {
 func (recv *ParamSpecString) SetFieldCsetNth(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "cset_nth", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "cset_nth", argValue)
 }
 
 // FieldSubstitutor returns the C field 'substitutor'.
 func (recv *ParamSpecString) FieldSubstitutor() int8 {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "substitutor")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "substitutor")
 	value := argValue.Int8()
 	return value
 }
@@ -2237,12 +1948,12 @@ func (recv *ParamSpecString) FieldSubstitutor() int8 {
 func (recv *ParamSpecString) SetFieldSubstitutor(value int8) {
 	var argValue gi.Argument
 	argValue.SetInt8(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "substitutor", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "substitutor", argValue)
 }
 
 // FieldNullFoldIfEmpty returns the C field 'null_fold_if_empty'.
 func (recv *ParamSpecString) FieldNullFoldIfEmpty() uint32 {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "null_fold_if_empty")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "null_fold_if_empty")
 	value := argValue.Uint32()
 	return value
 }
@@ -2251,12 +1962,12 @@ func (recv *ParamSpecString) FieldNullFoldIfEmpty() uint32 {
 func (recv *ParamSpecString) SetFieldNullFoldIfEmpty(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "null_fold_if_empty", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "null_fold_if_empty", argValue)
 }
 
 // FieldEnsureNonNull returns the C field 'ensure_non_null'.
 func (recv *ParamSpecString) FieldEnsureNonNull() uint32 {
-	argValue := gi.FieldGet(paramSpecStringStruct, recv.Native, "ensure_non_null")
+	argValue := gi.ObjectFieldGet(paramSpecStringObject, recv.Native, "ensure_non_null")
 	value := argValue.Uint32()
 	return value
 }
@@ -2265,32 +1976,16 @@ func (recv *ParamSpecString) FieldEnsureNonNull() uint32 {
 func (recv *ParamSpecString) SetFieldEnsureNonNull(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecStringStruct, recv.Native, "ensure_non_null", argValue)
+	gi.ObjectFieldSet(paramSpecStringObject, recv.Native, "ensure_non_null", argValue)
 }
 
-// ParamSpecStringStruct creates an uninitialised ParamSpecString.
-func ParamSpecStringStruct() *ParamSpecString {
-	err := paramSpecStringStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecUCharObject *gi.Object
+var paramSpecUCharObject_Once sync.Once
 
-	structGo := &ParamSpecString{}
-	structGo.Native = paramSpecStringStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecString)
-	return structGo
-}
-func finalizeParamSpecString(obj *ParamSpecString) {
-	paramSpecStringStruct.Free(obj.Native)
-}
-
-var paramSpecUCharStruct *gi.Struct
-var paramSpecUCharStruct_Once sync.Once
-
-func paramSpecUCharStruct_Set() error {
+func paramSpecUCharObject_Set() error {
 	var err error
-	paramSpecUCharStruct_Once.Do(func() {
-		paramSpecUCharStruct, err = gi.StructNew("GObject", "ParamSpecUChar")
+	paramSpecUCharObject_Once.Do(func() {
+		paramSpecUCharObject, err = gi.ObjectNew("GObject", "ParamSpecUChar")
 	})
 	return err
 }
@@ -2301,7 +1996,7 @@ type ParamSpecUChar struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUChar) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecUCharStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecUCharObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2311,12 +2006,12 @@ func (recv *ParamSpecUChar) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecUChar) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecUCharStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecUCharObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUChar) FieldMinimum() uint8 {
-	argValue := gi.FieldGet(paramSpecUCharStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecUCharObject, recv.Native, "minimum")
 	value := argValue.Uint8()
 	return value
 }
@@ -2325,12 +2020,12 @@ func (recv *ParamSpecUChar) FieldMinimum() uint8 {
 func (recv *ParamSpecUChar) SetFieldMinimum(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.FieldSet(paramSpecUCharStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecUCharObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecUChar) FieldMaximum() uint8 {
-	argValue := gi.FieldGet(paramSpecUCharStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecUCharObject, recv.Native, "maximum")
 	value := argValue.Uint8()
 	return value
 }
@@ -2339,12 +2034,12 @@ func (recv *ParamSpecUChar) FieldMaximum() uint8 {
 func (recv *ParamSpecUChar) SetFieldMaximum(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.FieldSet(paramSpecUCharStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecUCharObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecUChar) FieldDefaultValue() uint8 {
-	argValue := gi.FieldGet(paramSpecUCharStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecUCharObject, recv.Native, "default_value")
 	value := argValue.Uint8()
 	return value
 }
@@ -2353,32 +2048,16 @@ func (recv *ParamSpecUChar) FieldDefaultValue() uint8 {
 func (recv *ParamSpecUChar) SetFieldDefaultValue(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.FieldSet(paramSpecUCharStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecUCharObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecUCharStruct creates an uninitialised ParamSpecUChar.
-func ParamSpecUCharStruct() *ParamSpecUChar {
-	err := paramSpecUCharStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecUIntObject *gi.Object
+var paramSpecUIntObject_Once sync.Once
 
-	structGo := &ParamSpecUChar{}
-	structGo.Native = paramSpecUCharStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecUChar)
-	return structGo
-}
-func finalizeParamSpecUChar(obj *ParamSpecUChar) {
-	paramSpecUCharStruct.Free(obj.Native)
-}
-
-var paramSpecUIntStruct *gi.Struct
-var paramSpecUIntStruct_Once sync.Once
-
-func paramSpecUIntStruct_Set() error {
+func paramSpecUIntObject_Set() error {
 	var err error
-	paramSpecUIntStruct_Once.Do(func() {
-		paramSpecUIntStruct, err = gi.StructNew("GObject", "ParamSpecUInt")
+	paramSpecUIntObject_Once.Do(func() {
+		paramSpecUIntObject, err = gi.ObjectNew("GObject", "ParamSpecUInt")
 	})
 	return err
 }
@@ -2389,7 +2068,7 @@ type ParamSpecUInt struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUInt) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecUIntStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecUIntObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2399,12 +2078,12 @@ func (recv *ParamSpecUInt) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecUInt) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecUIntStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecUIntObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUInt) FieldMinimum() uint32 {
-	argValue := gi.FieldGet(paramSpecUIntStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecUIntObject, recv.Native, "minimum")
 	value := argValue.Uint32()
 	return value
 }
@@ -2413,12 +2092,12 @@ func (recv *ParamSpecUInt) FieldMinimum() uint32 {
 func (recv *ParamSpecUInt) SetFieldMinimum(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecUIntStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecUIntObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecUInt) FieldMaximum() uint32 {
-	argValue := gi.FieldGet(paramSpecUIntStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecUIntObject, recv.Native, "maximum")
 	value := argValue.Uint32()
 	return value
 }
@@ -2427,12 +2106,12 @@ func (recv *ParamSpecUInt) FieldMaximum() uint32 {
 func (recv *ParamSpecUInt) SetFieldMaximum(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecUIntStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecUIntObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecUInt) FieldDefaultValue() uint32 {
-	argValue := gi.FieldGet(paramSpecUIntStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecUIntObject, recv.Native, "default_value")
 	value := argValue.Uint32()
 	return value
 }
@@ -2441,32 +2120,16 @@ func (recv *ParamSpecUInt) FieldDefaultValue() uint32 {
 func (recv *ParamSpecUInt) SetFieldDefaultValue(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecUIntStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecUIntObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecUIntStruct creates an uninitialised ParamSpecUInt.
-func ParamSpecUIntStruct() *ParamSpecUInt {
-	err := paramSpecUIntStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecUInt64Object *gi.Object
+var paramSpecUInt64Object_Once sync.Once
 
-	structGo := &ParamSpecUInt{}
-	structGo.Native = paramSpecUIntStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecUInt)
-	return structGo
-}
-func finalizeParamSpecUInt(obj *ParamSpecUInt) {
-	paramSpecUIntStruct.Free(obj.Native)
-}
-
-var paramSpecUInt64Struct *gi.Struct
-var paramSpecUInt64Struct_Once sync.Once
-
-func paramSpecUInt64Struct_Set() error {
+func paramSpecUInt64Object_Set() error {
 	var err error
-	paramSpecUInt64Struct_Once.Do(func() {
-		paramSpecUInt64Struct, err = gi.StructNew("GObject", "ParamSpecUInt64")
+	paramSpecUInt64Object_Once.Do(func() {
+		paramSpecUInt64Object, err = gi.ObjectNew("GObject", "ParamSpecUInt64")
 	})
 	return err
 }
@@ -2477,7 +2140,7 @@ type ParamSpecUInt64 struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUInt64) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecUInt64Struct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecUInt64Object, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2487,12 +2150,12 @@ func (recv *ParamSpecUInt64) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecUInt64) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecUInt64Struct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecUInt64Object, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecUInt64) FieldMinimum() uint64 {
-	argValue := gi.FieldGet(paramSpecUInt64Struct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecUInt64Object, recv.Native, "minimum")
 	value := argValue.Uint64()
 	return value
 }
@@ -2501,12 +2164,12 @@ func (recv *ParamSpecUInt64) FieldMinimum() uint64 {
 func (recv *ParamSpecUInt64) SetFieldMinimum(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecUInt64Struct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecUInt64Object, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecUInt64) FieldMaximum() uint64 {
-	argValue := gi.FieldGet(paramSpecUInt64Struct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecUInt64Object, recv.Native, "maximum")
 	value := argValue.Uint64()
 	return value
 }
@@ -2515,12 +2178,12 @@ func (recv *ParamSpecUInt64) FieldMaximum() uint64 {
 func (recv *ParamSpecUInt64) SetFieldMaximum(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecUInt64Struct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecUInt64Object, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecUInt64) FieldDefaultValue() uint64 {
-	argValue := gi.FieldGet(paramSpecUInt64Struct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecUInt64Object, recv.Native, "default_value")
 	value := argValue.Uint64()
 	return value
 }
@@ -2529,32 +2192,16 @@ func (recv *ParamSpecUInt64) FieldDefaultValue() uint64 {
 func (recv *ParamSpecUInt64) SetFieldDefaultValue(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecUInt64Struct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecUInt64Object, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecUInt64Struct creates an uninitialised ParamSpecUInt64.
-func ParamSpecUInt64Struct() *ParamSpecUInt64 {
-	err := paramSpecUInt64Struct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecULongObject *gi.Object
+var paramSpecULongObject_Once sync.Once
 
-	structGo := &ParamSpecUInt64{}
-	structGo.Native = paramSpecUInt64Struct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecUInt64)
-	return structGo
-}
-func finalizeParamSpecUInt64(obj *ParamSpecUInt64) {
-	paramSpecUInt64Struct.Free(obj.Native)
-}
-
-var paramSpecULongStruct *gi.Struct
-var paramSpecULongStruct_Once sync.Once
-
-func paramSpecULongStruct_Set() error {
+func paramSpecULongObject_Set() error {
 	var err error
-	paramSpecULongStruct_Once.Do(func() {
-		paramSpecULongStruct, err = gi.StructNew("GObject", "ParamSpecULong")
+	paramSpecULongObject_Once.Do(func() {
+		paramSpecULongObject, err = gi.ObjectNew("GObject", "ParamSpecULong")
 	})
 	return err
 }
@@ -2565,7 +2212,7 @@ type ParamSpecULong struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecULong) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecULongStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecULongObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2575,12 +2222,12 @@ func (recv *ParamSpecULong) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecULong) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecULongStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecULongObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *ParamSpecULong) FieldMinimum() uint64 {
-	argValue := gi.FieldGet(paramSpecULongStruct, recv.Native, "minimum")
+	argValue := gi.ObjectFieldGet(paramSpecULongObject, recv.Native, "minimum")
 	value := argValue.Uint64()
 	return value
 }
@@ -2589,12 +2236,12 @@ func (recv *ParamSpecULong) FieldMinimum() uint64 {
 func (recv *ParamSpecULong) SetFieldMinimum(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecULongStruct, recv.Native, "minimum", argValue)
+	gi.ObjectFieldSet(paramSpecULongObject, recv.Native, "minimum", argValue)
 }
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *ParamSpecULong) FieldMaximum() uint64 {
-	argValue := gi.FieldGet(paramSpecULongStruct, recv.Native, "maximum")
+	argValue := gi.ObjectFieldGet(paramSpecULongObject, recv.Native, "maximum")
 	value := argValue.Uint64()
 	return value
 }
@@ -2603,12 +2250,12 @@ func (recv *ParamSpecULong) FieldMaximum() uint64 {
 func (recv *ParamSpecULong) SetFieldMaximum(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecULongStruct, recv.Native, "maximum", argValue)
+	gi.ObjectFieldSet(paramSpecULongObject, recv.Native, "maximum", argValue)
 }
 
 // FieldDefaultValue returns the C field 'default_value'.
 func (recv *ParamSpecULong) FieldDefaultValue() uint64 {
-	argValue := gi.FieldGet(paramSpecULongStruct, recv.Native, "default_value")
+	argValue := gi.ObjectFieldGet(paramSpecULongObject, recv.Native, "default_value")
 	value := argValue.Uint64()
 	return value
 }
@@ -2617,32 +2264,16 @@ func (recv *ParamSpecULong) FieldDefaultValue() uint64 {
 func (recv *ParamSpecULong) SetFieldDefaultValue(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.FieldSet(paramSpecULongStruct, recv.Native, "default_value", argValue)
+	gi.ObjectFieldSet(paramSpecULongObject, recv.Native, "default_value", argValue)
 }
 
-// ParamSpecULongStruct creates an uninitialised ParamSpecULong.
-func ParamSpecULongStruct() *ParamSpecULong {
-	err := paramSpecULongStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecUnicharObject *gi.Object
+var paramSpecUnicharObject_Once sync.Once
 
-	structGo := &ParamSpecULong{}
-	structGo.Native = paramSpecULongStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecULong)
-	return structGo
-}
-func finalizeParamSpecULong(obj *ParamSpecULong) {
-	paramSpecULongStruct.Free(obj.Native)
-}
-
-var paramSpecUnicharStruct *gi.Struct
-var paramSpecUnicharStruct_Once sync.Once
-
-func paramSpecUnicharStruct_Set() error {
+func paramSpecUnicharObject_Set() error {
 	var err error
-	paramSpecUnicharStruct_Once.Do(func() {
-		paramSpecUnicharStruct, err = gi.StructNew("GObject", "ParamSpecUnichar")
+	paramSpecUnicharObject_Once.Do(func() {
+		paramSpecUnicharObject, err = gi.ObjectNew("GObject", "ParamSpecUnichar")
 	})
 	return err
 }
@@ -2653,7 +2284,7 @@ type ParamSpecUnichar struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUnichar) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecUnicharStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecUnicharObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2663,36 +2294,20 @@ func (recv *ParamSpecUnichar) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecUnichar) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecUnicharStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecUnicharObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'default_value' : for field getter : no Go type for 'gunichar'
 
 // UNSUPPORTED : C value 'default_value' : for field setter : no Go type for 'gunichar'
 
-// ParamSpecUnicharStruct creates an uninitialised ParamSpecUnichar.
-func ParamSpecUnicharStruct() *ParamSpecUnichar {
-	err := paramSpecUnicharStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecValueArrayObject *gi.Object
+var paramSpecValueArrayObject_Once sync.Once
 
-	structGo := &ParamSpecUnichar{}
-	structGo.Native = paramSpecUnicharStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecUnichar)
-	return structGo
-}
-func finalizeParamSpecUnichar(obj *ParamSpecUnichar) {
-	paramSpecUnicharStruct.Free(obj.Native)
-}
-
-var paramSpecValueArrayStruct *gi.Struct
-var paramSpecValueArrayStruct_Once sync.Once
-
-func paramSpecValueArrayStruct_Set() error {
+func paramSpecValueArrayObject_Set() error {
 	var err error
-	paramSpecValueArrayStruct_Once.Do(func() {
-		paramSpecValueArrayStruct, err = gi.StructNew("GObject", "ParamSpecValueArray")
+	paramSpecValueArrayObject_Once.Do(func() {
+		paramSpecValueArrayObject, err = gi.ObjectNew("GObject", "ParamSpecValueArray")
 	})
 	return err
 }
@@ -2703,7 +2318,7 @@ type ParamSpecValueArray struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecValueArray) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecValueArrayStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecValueArrayObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2713,12 +2328,12 @@ func (recv *ParamSpecValueArray) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecValueArray) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecValueArrayStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecValueArrayObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldElementSpec returns the C field 'element_spec'.
 func (recv *ParamSpecValueArray) FieldElementSpec() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecValueArrayStruct, recv.Native, "element_spec")
+	argValue := gi.ObjectFieldGet(paramSpecValueArrayObject, recv.Native, "element_spec")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2728,12 +2343,12 @@ func (recv *ParamSpecValueArray) FieldElementSpec() *ParamSpec {
 func (recv *ParamSpecValueArray) SetFieldElementSpec(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecValueArrayStruct, recv.Native, "element_spec", argValue)
+	gi.ObjectFieldSet(paramSpecValueArrayObject, recv.Native, "element_spec", argValue)
 }
 
 // FieldFixedNElements returns the C field 'fixed_n_elements'.
 func (recv *ParamSpecValueArray) FieldFixedNElements() uint32 {
-	argValue := gi.FieldGet(paramSpecValueArrayStruct, recv.Native, "fixed_n_elements")
+	argValue := gi.ObjectFieldGet(paramSpecValueArrayObject, recv.Native, "fixed_n_elements")
 	value := argValue.Uint32()
 	return value
 }
@@ -2742,32 +2357,16 @@ func (recv *ParamSpecValueArray) FieldFixedNElements() uint32 {
 func (recv *ParamSpecValueArray) SetFieldFixedNElements(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(paramSpecValueArrayStruct, recv.Native, "fixed_n_elements", argValue)
+	gi.ObjectFieldSet(paramSpecValueArrayObject, recv.Native, "fixed_n_elements", argValue)
 }
 
-// ParamSpecValueArrayStruct creates an uninitialised ParamSpecValueArray.
-func ParamSpecValueArrayStruct() *ParamSpecValueArray {
-	err := paramSpecValueArrayStruct_Set()
-	if err != nil {
-		return nil
-	}
+var paramSpecVariantObject *gi.Object
+var paramSpecVariantObject_Once sync.Once
 
-	structGo := &ParamSpecValueArray{}
-	structGo.Native = paramSpecValueArrayStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecValueArray)
-	return structGo
-}
-func finalizeParamSpecValueArray(obj *ParamSpecValueArray) {
-	paramSpecValueArrayStruct.Free(obj.Native)
-}
-
-var paramSpecVariantStruct *gi.Struct
-var paramSpecVariantStruct_Once sync.Once
-
-func paramSpecVariantStruct_Set() error {
+func paramSpecVariantObject_Set() error {
 	var err error
-	paramSpecVariantStruct_Once.Do(func() {
-		paramSpecVariantStruct, err = gi.StructNew("GObject", "ParamSpecVariant")
+	paramSpecVariantObject_Once.Do(func() {
+		paramSpecVariantObject, err = gi.ObjectNew("GObject", "ParamSpecVariant")
 	})
 	return err
 }
@@ -2778,7 +2377,7 @@ type ParamSpecVariant struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecVariant) FieldParentInstance() *ParamSpec {
-	argValue := gi.FieldGet(paramSpecVariantStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(paramSpecVariantObject, recv.Native, "parent_instance")
 	value := &ParamSpec{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2788,7 +2387,7 @@ func (recv *ParamSpecVariant) FieldParentInstance() *ParamSpec {
 func (recv *ParamSpecVariant) SetFieldParentInstance(value *ParamSpec) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(paramSpecVariantStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(paramSpecVariantObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'GLib.VariantType'
@@ -2799,29 +2398,13 @@ func (recv *ParamSpecVariant) SetFieldParentInstance(value *ParamSpec) {
 
 // UNSUPPORTED : C value 'default_value' : for field setter : no Go type for 'GLib.Variant'
 
-// ParamSpecVariantStruct creates an uninitialised ParamSpecVariant.
-func ParamSpecVariantStruct() *ParamSpecVariant {
-	err := paramSpecVariantStruct_Set()
-	if err != nil {
-		return nil
-	}
+var typeModuleObject *gi.Object
+var typeModuleObject_Once sync.Once
 
-	structGo := &ParamSpecVariant{}
-	structGo.Native = paramSpecVariantStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeParamSpecVariant)
-	return structGo
-}
-func finalizeParamSpecVariant(obj *ParamSpecVariant) {
-	paramSpecVariantStruct.Free(obj.Native)
-}
-
-var typeModuleStruct *gi.Struct
-var typeModuleStruct_Once sync.Once
-
-func typeModuleStruct_Set() error {
+func typeModuleObject_Set() error {
 	var err error
-	typeModuleStruct_Once.Do(func() {
-		typeModuleStruct, err = gi.StructNew("GObject", "TypeModule")
+	typeModuleObject_Once.Do(func() {
+		typeModuleObject, err = gi.ObjectNew("GObject", "TypeModule")
 	})
 	return err
 }
@@ -2832,7 +2415,7 @@ type TypeModule struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TypeModule) FieldParentInstance() *Object {
-	argValue := gi.FieldGet(typeModuleStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(typeModuleObject, recv.Native, "parent_instance")
 	value := &Object{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2842,12 +2425,12 @@ func (recv *TypeModule) FieldParentInstance() *Object {
 func (recv *TypeModule) SetFieldParentInstance(value *Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(typeModuleStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(typeModuleObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldUseCount returns the C field 'use_count'.
 func (recv *TypeModule) FieldUseCount() uint32 {
-	argValue := gi.FieldGet(typeModuleStruct, recv.Native, "use_count")
+	argValue := gi.ObjectFieldGet(typeModuleObject, recv.Native, "use_count")
 	value := argValue.Uint32()
 	return value
 }
@@ -2856,7 +2439,7 @@ func (recv *TypeModule) FieldUseCount() uint32 {
 func (recv *TypeModule) SetFieldUseCount(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.FieldSet(typeModuleStruct, recv.Native, "use_count", argValue)
+	gi.ObjectFieldSet(typeModuleObject, recv.Native, "use_count", argValue)
 }
 
 // UNSUPPORTED : C value 'type_infos' : for field getter : no Go type for 'GLib.SList'
@@ -2869,7 +2452,7 @@ func (recv *TypeModule) SetFieldUseCount(value uint32) {
 
 // FieldName returns the C field 'name'.
 func (recv *TypeModule) FieldName() string {
-	argValue := gi.FieldGet(typeModuleStruct, recv.Native, "name")
+	argValue := gi.ObjectFieldGet(typeModuleObject, recv.Native, "name")
 	value := argValue.String(false)
 	return value
 }
@@ -2878,7 +2461,7 @@ func (recv *TypeModule) FieldName() string {
 func (recv *TypeModule) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.FieldSet(typeModuleStruct, recv.Native, "name", argValue)
+	gi.ObjectFieldSet(typeModuleObject, recv.Native, "name", argValue)
 }
 
 // UNSUPPORTED : C value 'g_type_module_add_interface' : parameter 'instance_type' of type 'GType' not supported
@@ -2895,11 +2478,11 @@ var typeModuleSetNameFunction_Once sync.Once
 func typeModuleSetNameFunction_Set() error {
 	var err error
 	typeModuleSetNameFunction_Once.Do(func() {
-		err = typeModuleStruct_Set()
+		err = typeModuleObject_Set()
 		if err != nil {
 			return
 		}
-		typeModuleSetNameFunction, err = typeModuleStruct.InvokerNew("set_name")
+		typeModuleSetNameFunction, err = typeModuleObject.InvokerNew("set_name")
 	})
 	return err
 }
@@ -2924,11 +2507,11 @@ var typeModuleUnuseFunction_Once sync.Once
 func typeModuleUnuseFunction_Set() error {
 	var err error
 	typeModuleUnuseFunction_Once.Do(func() {
-		err = typeModuleStruct_Set()
+		err = typeModuleObject_Set()
 		if err != nil {
 			return
 		}
-		typeModuleUnuseFunction, err = typeModuleStruct.InvokerNew("unuse")
+		typeModuleUnuseFunction, err = typeModuleObject.InvokerNew("unuse")
 	})
 	return err
 }
@@ -2952,11 +2535,11 @@ var typeModuleUseFunction_Once sync.Once
 func typeModuleUseFunction_Set() error {
 	var err error
 	typeModuleUseFunction_Once.Do(func() {
-		err = typeModuleStruct_Set()
+		err = typeModuleObject_Set()
 		if err != nil {
 			return
 		}
-		typeModuleUseFunction, err = typeModuleStruct.InvokerNew("use")
+		typeModuleUseFunction, err = typeModuleObject.InvokerNew("use")
 	})
 	return err
 }
@@ -2976,20 +2559,4 @@ func (recv *TypeModule) Use() bool {
 	retGo := ret.Boolean()
 
 	return retGo
-}
-
-// TypeModuleStruct creates an uninitialised TypeModule.
-func TypeModuleStruct() *TypeModule {
-	err := typeModuleStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &TypeModule{}
-	structGo.Native = typeModuleStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeTypeModule)
-	return structGo
-}
-func finalizeTypeModule(obj *TypeModule) {
-	typeModuleStruct.Free(obj.Native)
 }

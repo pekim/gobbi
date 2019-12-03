@@ -8,7 +8,7 @@ import (
 	"unsafe"
 )
 
-func fieldInfo(structInfo *Struct, name string) (*C.GIFieldInfo, bool) {
+func structFieldInfo(structInfo *Struct, name string) (*C.GIFieldInfo, bool) {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -26,10 +26,10 @@ func fieldInfo(structInfo *Struct, name string) (*C.GIFieldInfo, bool) {
 	return fieldInfo, true
 }
 
-func FieldGet(structInfo *Struct, struct_ uintptr, name string) Argument {
+func StructFieldGet(structInfo *Struct, struct_ uintptr, name string) Argument {
 	var value Argument
 
-	info, gotInfo := fieldInfo(structInfo, name)
+	info, gotInfo := structFieldInfo(structInfo, name)
 	if !gotInfo {
 		return value
 	}
@@ -49,8 +49,8 @@ func FieldGet(structInfo *Struct, struct_ uintptr, name string) Argument {
 	return value
 }
 
-func FieldSet(structInfo *Struct, struct_ uintptr, name string, value Argument) {
-	info, gotInfo := fieldInfo(structInfo, name)
+func StructFieldSet(structInfo *Struct, struct_ uintptr, name string, value Argument) {
+	info, gotInfo := structFieldInfo(structInfo, name)
 	if !gotInfo {
 		return
 	}

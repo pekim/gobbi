@@ -5,17 +5,16 @@ package javascriptcore
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var classStruct *gi.Struct
-var classStruct_Once sync.Once
+var classObject *gi.Object
+var classObject_Once sync.Once
 
-func classStruct_Set() error {
+func classObject_Set() error {
 	var err error
-	classStruct_Once.Do(func() {
-		classStruct, err = gi.StructNew("JavaScriptCore", "Class")
+	classObject_Once.Do(func() {
+		classObject, err = gi.ObjectNew("JavaScriptCore", "Class")
 	})
 	return err
 }
@@ -44,11 +43,11 @@ var classGetNameFunction_Once sync.Once
 func classGetNameFunction_Set() error {
 	var err error
 	classGetNameFunction_Once.Do(func() {
-		err = classStruct_Set()
+		err = classObject_Set()
 		if err != nil {
 			return
 		}
-		classGetNameFunction, err = classStruct.InvokerNew("get_name")
+		classGetNameFunction, err = classObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -76,11 +75,11 @@ var classGetParentFunction_Once sync.Once
 func classGetParentFunction_Set() error {
 	var err error
 	classGetParentFunction_Once.Do(func() {
-		err = classStruct_Set()
+		err = classObject_Set()
 		if err != nil {
 			return
 		}
-		classGetParentFunction, err = classStruct.InvokerNew("get_parent")
+		classGetParentFunction, err = classObject.InvokerNew("get_parent")
 	})
 	return err
 }
@@ -103,29 +102,13 @@ func (recv *Class) GetParent() *Class {
 	return retGo
 }
 
-// ClassStruct creates an uninitialised Class.
-func ClassStruct() *Class {
-	err := classStruct_Set()
-	if err != nil {
-		return nil
-	}
+var contextObject *gi.Object
+var contextObject_Once sync.Once
 
-	structGo := &Class{}
-	structGo.Native = classStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeClass)
-	return structGo
-}
-func finalizeClass(obj *Class) {
-	classStruct.Free(obj.Native)
-}
-
-var contextStruct *gi.Struct
-var contextStruct_Once sync.Once
-
-func contextStruct_Set() error {
+func contextObject_Set() error {
 	var err error
-	contextStruct_Once.Do(func() {
-		contextStruct, err = gi.StructNew("JavaScriptCore", "Context")
+	contextObject_Once.Do(func() {
+		contextObject, err = gi.ObjectNew("JavaScriptCore", "Context")
 	})
 	return err
 }
@@ -144,11 +127,11 @@ var contextNewFunction_Once sync.Once
 func contextNewFunction_Set() error {
 	var err error
 	contextNewFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextNewFunction, err = contextStruct.InvokerNew("new")
+		contextNewFunction, err = contextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -175,11 +158,11 @@ var contextNewWithVirtualMachineFunction_Once sync.Once
 func contextNewWithVirtualMachineFunction_Set() error {
 	var err error
 	contextNewWithVirtualMachineFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextNewWithVirtualMachineFunction, err = contextStruct.InvokerNew("new_with_virtual_machine")
+		contextNewWithVirtualMachineFunction, err = contextObject.InvokerNew("new_with_virtual_machine")
 	})
 	return err
 }
@@ -208,11 +191,11 @@ var contextCheckSyntaxFunction_Once sync.Once
 func contextCheckSyntaxFunction_Set() error {
 	var err error
 	contextCheckSyntaxFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextCheckSyntaxFunction, err = contextStruct.InvokerNew("check_syntax")
+		contextCheckSyntaxFunction, err = contextObject.InvokerNew("check_syntax")
 	})
 	return err
 }
@@ -248,11 +231,11 @@ var contextClearExceptionFunction_Once sync.Once
 func contextClearExceptionFunction_Set() error {
 	var err error
 	contextClearExceptionFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextClearExceptionFunction, err = contextStruct.InvokerNew("clear_exception")
+		contextClearExceptionFunction, err = contextObject.InvokerNew("clear_exception")
 	})
 	return err
 }
@@ -276,11 +259,11 @@ var contextEvaluateFunction_Once sync.Once
 func contextEvaluateFunction_Set() error {
 	var err error
 	contextEvaluateFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextEvaluateFunction, err = contextStruct.InvokerNew("evaluate")
+		contextEvaluateFunction, err = contextObject.InvokerNew("evaluate")
 	})
 	return err
 }
@@ -313,11 +296,11 @@ var contextEvaluateWithSourceUriFunction_Once sync.Once
 func contextEvaluateWithSourceUriFunction_Set() error {
 	var err error
 	contextEvaluateWithSourceUriFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextEvaluateWithSourceUriFunction, err = contextStruct.InvokerNew("evaluate_with_source_uri")
+		contextEvaluateWithSourceUriFunction, err = contextObject.InvokerNew("evaluate_with_source_uri")
 	})
 	return err
 }
@@ -350,11 +333,11 @@ var contextGetExceptionFunction_Once sync.Once
 func contextGetExceptionFunction_Set() error {
 	var err error
 	contextGetExceptionFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetExceptionFunction, err = contextStruct.InvokerNew("get_exception")
+		contextGetExceptionFunction, err = contextObject.InvokerNew("get_exception")
 	})
 	return err
 }
@@ -383,11 +366,11 @@ var contextGetGlobalObjectFunction_Once sync.Once
 func contextGetGlobalObjectFunction_Set() error {
 	var err error
 	contextGetGlobalObjectFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetGlobalObjectFunction, err = contextStruct.InvokerNew("get_global_object")
+		contextGetGlobalObjectFunction, err = contextObject.InvokerNew("get_global_object")
 	})
 	return err
 }
@@ -416,11 +399,11 @@ var contextGetValueFunction_Once sync.Once
 func contextGetValueFunction_Set() error {
 	var err error
 	contextGetValueFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetValueFunction, err = contextStruct.InvokerNew("get_value")
+		contextGetValueFunction, err = contextObject.InvokerNew("get_value")
 	})
 	return err
 }
@@ -450,11 +433,11 @@ var contextGetVirtualMachineFunction_Once sync.Once
 func contextGetVirtualMachineFunction_Set() error {
 	var err error
 	contextGetVirtualMachineFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextGetVirtualMachineFunction, err = contextStruct.InvokerNew("get_virtual_machine")
+		contextGetVirtualMachineFunction, err = contextObject.InvokerNew("get_virtual_machine")
 	})
 	return err
 }
@@ -483,11 +466,11 @@ var contextPopExceptionHandlerFunction_Once sync.Once
 func contextPopExceptionHandlerFunction_Set() error {
 	var err error
 	contextPopExceptionHandlerFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextPopExceptionHandlerFunction, err = contextStruct.InvokerNew("pop_exception_handler")
+		contextPopExceptionHandlerFunction, err = contextObject.InvokerNew("pop_exception_handler")
 	})
 	return err
 }
@@ -515,11 +498,11 @@ var contextSetValueFunction_Once sync.Once
 func contextSetValueFunction_Set() error {
 	var err error
 	contextSetValueFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextSetValueFunction, err = contextStruct.InvokerNew("set_value")
+		contextSetValueFunction, err = contextObject.InvokerNew("set_value")
 	})
 	return err
 }
@@ -545,11 +528,11 @@ var contextThrowFunction_Once sync.Once
 func contextThrowFunction_Set() error {
 	var err error
 	contextThrowFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextThrowFunction, err = contextStruct.InvokerNew("throw")
+		contextThrowFunction, err = contextObject.InvokerNew("throw")
 	})
 	return err
 }
@@ -574,11 +557,11 @@ var contextThrowExceptionFunction_Once sync.Once
 func contextThrowExceptionFunction_Set() error {
 	var err error
 	contextThrowExceptionFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextThrowExceptionFunction, err = contextStruct.InvokerNew("throw_exception")
+		contextThrowExceptionFunction, err = contextObject.InvokerNew("throw_exception")
 	})
 	return err
 }
@@ -605,11 +588,11 @@ var contextThrowWithNameFunction_Once sync.Once
 func contextThrowWithNameFunction_Set() error {
 	var err error
 	contextThrowWithNameFunction_Once.Do(func() {
-		err = contextStruct_Set()
+		err = contextObject_Set()
 		if err != nil {
 			return
 		}
-		contextThrowWithNameFunction, err = contextStruct.InvokerNew("throw_with_name")
+		contextThrowWithNameFunction, err = contextObject.InvokerNew("throw_with_name")
 	})
 	return err
 }
@@ -631,13 +614,13 @@ func (recv *Context) ThrowWithName(errorName string, errorMessage string) {
 
 // UNSUPPORTED : C value 'jsc_context_throw_with_name_printf' : parameter '...' of type 'nil' not supported
 
-var exceptionStruct *gi.Struct
-var exceptionStruct_Once sync.Once
+var exceptionObject *gi.Object
+var exceptionObject_Once sync.Once
 
-func exceptionStruct_Set() error {
+func exceptionObject_Set() error {
 	var err error
-	exceptionStruct_Once.Do(func() {
-		exceptionStruct, err = gi.StructNew("JavaScriptCore", "Exception")
+	exceptionObject_Once.Do(func() {
+		exceptionObject, err = gi.ObjectNew("JavaScriptCore", "Exception")
 	})
 	return err
 }
@@ -656,11 +639,11 @@ var exceptionNewFunction_Once sync.Once
 func exceptionNewFunction_Set() error {
 	var err error
 	exceptionNewFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionNewFunction, err = exceptionStruct.InvokerNew("new")
+		exceptionNewFunction, err = exceptionObject.InvokerNew("new")
 	})
 	return err
 }
@@ -694,11 +677,11 @@ var exceptionNewWithNameFunction_Once sync.Once
 func exceptionNewWithNameFunction_Set() error {
 	var err error
 	exceptionNewWithNameFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionNewWithNameFunction, err = exceptionStruct.InvokerNew("new_with_name")
+		exceptionNewWithNameFunction, err = exceptionObject.InvokerNew("new_with_name")
 	})
 	return err
 }
@@ -733,11 +716,11 @@ var exceptionGetBacktraceStringFunction_Once sync.Once
 func exceptionGetBacktraceStringFunction_Set() error {
 	var err error
 	exceptionGetBacktraceStringFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetBacktraceStringFunction, err = exceptionStruct.InvokerNew("get_backtrace_string")
+		exceptionGetBacktraceStringFunction, err = exceptionObject.InvokerNew("get_backtrace_string")
 	})
 	return err
 }
@@ -765,11 +748,11 @@ var exceptionGetColumnNumberFunction_Once sync.Once
 func exceptionGetColumnNumberFunction_Set() error {
 	var err error
 	exceptionGetColumnNumberFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetColumnNumberFunction, err = exceptionStruct.InvokerNew("get_column_number")
+		exceptionGetColumnNumberFunction, err = exceptionObject.InvokerNew("get_column_number")
 	})
 	return err
 }
@@ -797,11 +780,11 @@ var exceptionGetLineNumberFunction_Once sync.Once
 func exceptionGetLineNumberFunction_Set() error {
 	var err error
 	exceptionGetLineNumberFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetLineNumberFunction, err = exceptionStruct.InvokerNew("get_line_number")
+		exceptionGetLineNumberFunction, err = exceptionObject.InvokerNew("get_line_number")
 	})
 	return err
 }
@@ -829,11 +812,11 @@ var exceptionGetMessageFunction_Once sync.Once
 func exceptionGetMessageFunction_Set() error {
 	var err error
 	exceptionGetMessageFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetMessageFunction, err = exceptionStruct.InvokerNew("get_message")
+		exceptionGetMessageFunction, err = exceptionObject.InvokerNew("get_message")
 	})
 	return err
 }
@@ -861,11 +844,11 @@ var exceptionGetNameFunction_Once sync.Once
 func exceptionGetNameFunction_Set() error {
 	var err error
 	exceptionGetNameFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetNameFunction, err = exceptionStruct.InvokerNew("get_name")
+		exceptionGetNameFunction, err = exceptionObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -893,11 +876,11 @@ var exceptionGetSourceUriFunction_Once sync.Once
 func exceptionGetSourceUriFunction_Set() error {
 	var err error
 	exceptionGetSourceUriFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionGetSourceUriFunction, err = exceptionStruct.InvokerNew("get_source_uri")
+		exceptionGetSourceUriFunction, err = exceptionObject.InvokerNew("get_source_uri")
 	})
 	return err
 }
@@ -925,11 +908,11 @@ var exceptionReportFunction_Once sync.Once
 func exceptionReportFunction_Set() error {
 	var err error
 	exceptionReportFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionReportFunction, err = exceptionStruct.InvokerNew("report")
+		exceptionReportFunction, err = exceptionObject.InvokerNew("report")
 	})
 	return err
 }
@@ -957,11 +940,11 @@ var exceptionToStringFunction_Once sync.Once
 func exceptionToStringFunction_Set() error {
 	var err error
 	exceptionToStringFunction_Once.Do(func() {
-		err = exceptionStruct_Set()
+		err = exceptionObject_Set()
 		if err != nil {
 			return
 		}
-		exceptionToStringFunction, err = exceptionStruct.InvokerNew("to_string")
+		exceptionToStringFunction, err = exceptionObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -983,13 +966,13 @@ func (recv *Exception) ToString() string {
 	return retGo
 }
 
-var valueStruct *gi.Struct
-var valueStruct_Once sync.Once
+var valueObject *gi.Object
+var valueObject_Once sync.Once
 
-func valueStruct_Set() error {
+func valueObject_Set() error {
 	var err error
-	valueStruct_Once.Do(func() {
-		valueStruct, err = gi.StructNew("JavaScriptCore", "Value")
+	valueObject_Once.Do(func() {
+		valueObject, err = gi.ObjectNew("JavaScriptCore", "Value")
 	})
 	return err
 }
@@ -1014,11 +997,11 @@ var valueNewBooleanFunction_Once sync.Once
 func valueNewBooleanFunction_Set() error {
 	var err error
 	valueNewBooleanFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueNewBooleanFunction, err = valueStruct.InvokerNew("new_boolean")
+		valueNewBooleanFunction, err = valueObject.InvokerNew("new_boolean")
 	})
 	return err
 }
@@ -1054,11 +1037,11 @@ var valueNewNullFunction_Once sync.Once
 func valueNewNullFunction_Set() error {
 	var err error
 	valueNewNullFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueNewNullFunction, err = valueStruct.InvokerNew("new_null")
+		valueNewNullFunction, err = valueObject.InvokerNew("new_null")
 	})
 	return err
 }
@@ -1087,11 +1070,11 @@ var valueNewNumberFunction_Once sync.Once
 func valueNewNumberFunction_Set() error {
 	var err error
 	valueNewNumberFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueNewNumberFunction, err = valueStruct.InvokerNew("new_number")
+		valueNewNumberFunction, err = valueObject.InvokerNew("new_number")
 	})
 	return err
 }
@@ -1123,11 +1106,11 @@ var valueNewStringFunction_Once sync.Once
 func valueNewStringFunction_Set() error {
 	var err error
 	valueNewStringFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueNewStringFunction, err = valueStruct.InvokerNew("new_string")
+		valueNewStringFunction, err = valueObject.InvokerNew("new_string")
 	})
 	return err
 }
@@ -1159,11 +1142,11 @@ var valueNewUndefinedFunction_Once sync.Once
 func valueNewUndefinedFunction_Set() error {
 	var err error
 	valueNewUndefinedFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueNewUndefinedFunction, err = valueStruct.InvokerNew("new_undefined")
+		valueNewUndefinedFunction, err = valueObject.InvokerNew("new_undefined")
 	})
 	return err
 }
@@ -1200,11 +1183,11 @@ var valueGetContextFunction_Once sync.Once
 func valueGetContextFunction_Set() error {
 	var err error
 	valueGetContextFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueGetContextFunction, err = valueStruct.InvokerNew("get_context")
+		valueGetContextFunction, err = valueObject.InvokerNew("get_context")
 	})
 	return err
 }
@@ -1233,11 +1216,11 @@ var valueIsArrayFunction_Once sync.Once
 func valueIsArrayFunction_Set() error {
 	var err error
 	valueIsArrayFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsArrayFunction, err = valueStruct.InvokerNew("is_array")
+		valueIsArrayFunction, err = valueObject.InvokerNew("is_array")
 	})
 	return err
 }
@@ -1265,11 +1248,11 @@ var valueIsBooleanFunction_Once sync.Once
 func valueIsBooleanFunction_Set() error {
 	var err error
 	valueIsBooleanFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsBooleanFunction, err = valueStruct.InvokerNew("is_boolean")
+		valueIsBooleanFunction, err = valueObject.InvokerNew("is_boolean")
 	})
 	return err
 }
@@ -1297,11 +1280,11 @@ var valueIsConstructorFunction_Once sync.Once
 func valueIsConstructorFunction_Set() error {
 	var err error
 	valueIsConstructorFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsConstructorFunction, err = valueStruct.InvokerNew("is_constructor")
+		valueIsConstructorFunction, err = valueObject.InvokerNew("is_constructor")
 	})
 	return err
 }
@@ -1329,11 +1312,11 @@ var valueIsFunctionFunction_Once sync.Once
 func valueIsFunctionFunction_Set() error {
 	var err error
 	valueIsFunctionFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsFunctionFunction, err = valueStruct.InvokerNew("is_function")
+		valueIsFunctionFunction, err = valueObject.InvokerNew("is_function")
 	})
 	return err
 }
@@ -1361,11 +1344,11 @@ var valueIsNullFunction_Once sync.Once
 func valueIsNullFunction_Set() error {
 	var err error
 	valueIsNullFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsNullFunction, err = valueStruct.InvokerNew("is_null")
+		valueIsNullFunction, err = valueObject.InvokerNew("is_null")
 	})
 	return err
 }
@@ -1393,11 +1376,11 @@ var valueIsNumberFunction_Once sync.Once
 func valueIsNumberFunction_Set() error {
 	var err error
 	valueIsNumberFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsNumberFunction, err = valueStruct.InvokerNew("is_number")
+		valueIsNumberFunction, err = valueObject.InvokerNew("is_number")
 	})
 	return err
 }
@@ -1425,11 +1408,11 @@ var valueIsObjectFunction_Once sync.Once
 func valueIsObjectFunction_Set() error {
 	var err error
 	valueIsObjectFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsObjectFunction, err = valueStruct.InvokerNew("is_object")
+		valueIsObjectFunction, err = valueObject.InvokerNew("is_object")
 	})
 	return err
 }
@@ -1457,11 +1440,11 @@ var valueIsStringFunction_Once sync.Once
 func valueIsStringFunction_Set() error {
 	var err error
 	valueIsStringFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsStringFunction, err = valueStruct.InvokerNew("is_string")
+		valueIsStringFunction, err = valueObject.InvokerNew("is_string")
 	})
 	return err
 }
@@ -1489,11 +1472,11 @@ var valueIsUndefinedFunction_Once sync.Once
 func valueIsUndefinedFunction_Set() error {
 	var err error
 	valueIsUndefinedFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueIsUndefinedFunction, err = valueStruct.InvokerNew("is_undefined")
+		valueIsUndefinedFunction, err = valueObject.InvokerNew("is_undefined")
 	})
 	return err
 }
@@ -1525,11 +1508,11 @@ var valueObjectDeletePropertyFunction_Once sync.Once
 func valueObjectDeletePropertyFunction_Set() error {
 	var err error
 	valueObjectDeletePropertyFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectDeletePropertyFunction, err = valueStruct.InvokerNew("object_delete_property")
+		valueObjectDeletePropertyFunction, err = valueObject.InvokerNew("object_delete_property")
 	})
 	return err
 }
@@ -1558,11 +1541,11 @@ var valueObjectEnumeratePropertiesFunction_Once sync.Once
 func valueObjectEnumeratePropertiesFunction_Set() error {
 	var err error
 	valueObjectEnumeratePropertiesFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectEnumeratePropertiesFunction, err = valueStruct.InvokerNew("object_enumerate_properties")
+		valueObjectEnumeratePropertiesFunction, err = valueObject.InvokerNew("object_enumerate_properties")
 	})
 	return err
 }
@@ -1586,11 +1569,11 @@ var valueObjectGetPropertyFunction_Once sync.Once
 func valueObjectGetPropertyFunction_Set() error {
 	var err error
 	valueObjectGetPropertyFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectGetPropertyFunction, err = valueStruct.InvokerNew("object_get_property")
+		valueObjectGetPropertyFunction, err = valueObject.InvokerNew("object_get_property")
 	})
 	return err
 }
@@ -1620,11 +1603,11 @@ var valueObjectGetPropertyAtIndexFunction_Once sync.Once
 func valueObjectGetPropertyAtIndexFunction_Set() error {
 	var err error
 	valueObjectGetPropertyAtIndexFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectGetPropertyAtIndexFunction, err = valueStruct.InvokerNew("object_get_property_at_index")
+		valueObjectGetPropertyAtIndexFunction, err = valueObject.InvokerNew("object_get_property_at_index")
 	})
 	return err
 }
@@ -1654,11 +1637,11 @@ var valueObjectHasPropertyFunction_Once sync.Once
 func valueObjectHasPropertyFunction_Set() error {
 	var err error
 	valueObjectHasPropertyFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectHasPropertyFunction, err = valueStruct.InvokerNew("object_has_property")
+		valueObjectHasPropertyFunction, err = valueObject.InvokerNew("object_has_property")
 	})
 	return err
 }
@@ -1691,11 +1674,11 @@ var valueObjectIsInstanceOfFunction_Once sync.Once
 func valueObjectIsInstanceOfFunction_Set() error {
 	var err error
 	valueObjectIsInstanceOfFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectIsInstanceOfFunction, err = valueStruct.InvokerNew("object_is_instance_of")
+		valueObjectIsInstanceOfFunction, err = valueObject.InvokerNew("object_is_instance_of")
 	})
 	return err
 }
@@ -1724,11 +1707,11 @@ var valueObjectSetPropertyFunction_Once sync.Once
 func valueObjectSetPropertyFunction_Set() error {
 	var err error
 	valueObjectSetPropertyFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectSetPropertyFunction, err = valueStruct.InvokerNew("object_set_property")
+		valueObjectSetPropertyFunction, err = valueObject.InvokerNew("object_set_property")
 	})
 	return err
 }
@@ -1754,11 +1737,11 @@ var valueObjectSetPropertyAtIndexFunction_Once sync.Once
 func valueObjectSetPropertyAtIndexFunction_Set() error {
 	var err error
 	valueObjectSetPropertyAtIndexFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueObjectSetPropertyAtIndexFunction, err = valueStruct.InvokerNew("object_set_property_at_index")
+		valueObjectSetPropertyAtIndexFunction, err = valueObject.InvokerNew("object_set_property_at_index")
 	})
 	return err
 }
@@ -1784,11 +1767,11 @@ var valueToBooleanFunction_Once sync.Once
 func valueToBooleanFunction_Set() error {
 	var err error
 	valueToBooleanFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueToBooleanFunction, err = valueStruct.InvokerNew("to_boolean")
+		valueToBooleanFunction, err = valueObject.InvokerNew("to_boolean")
 	})
 	return err
 }
@@ -1816,11 +1799,11 @@ var valueToDoubleFunction_Once sync.Once
 func valueToDoubleFunction_Set() error {
 	var err error
 	valueToDoubleFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueToDoubleFunction, err = valueStruct.InvokerNew("to_double")
+		valueToDoubleFunction, err = valueObject.InvokerNew("to_double")
 	})
 	return err
 }
@@ -1848,11 +1831,11 @@ var valueToInt32Function_Once sync.Once
 func valueToInt32Function_Set() error {
 	var err error
 	valueToInt32Function_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueToInt32Function, err = valueStruct.InvokerNew("to_int32")
+		valueToInt32Function, err = valueObject.InvokerNew("to_int32")
 	})
 	return err
 }
@@ -1880,11 +1863,11 @@ var valueToStringFunction_Once sync.Once
 func valueToStringFunction_Set() error {
 	var err error
 	valueToStringFunction_Once.Do(func() {
-		err = valueStruct_Set()
+		err = valueObject_Set()
 		if err != nil {
 			return
 		}
-		valueToStringFunction, err = valueStruct.InvokerNew("to_string")
+		valueToStringFunction, err = valueObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -1908,13 +1891,13 @@ func (recv *Value) ToString() string {
 
 // UNSUPPORTED : C value 'jsc_value_to_string_as_bytes' : return type 'GLib.Bytes' not supported
 
-var virtualMachineStruct *gi.Struct
-var virtualMachineStruct_Once sync.Once
+var virtualMachineObject *gi.Object
+var virtualMachineObject_Once sync.Once
 
-func virtualMachineStruct_Set() error {
+func virtualMachineObject_Set() error {
 	var err error
-	virtualMachineStruct_Once.Do(func() {
-		virtualMachineStruct, err = gi.StructNew("JavaScriptCore", "VirtualMachine")
+	virtualMachineObject_Once.Do(func() {
+		virtualMachineObject, err = gi.ObjectNew("JavaScriptCore", "VirtualMachine")
 	})
 	return err
 }
@@ -1933,11 +1916,11 @@ var virtualMachineNewFunction_Once sync.Once
 func virtualMachineNewFunction_Set() error {
 	var err error
 	virtualMachineNewFunction_Once.Do(func() {
-		err = virtualMachineStruct_Set()
+		err = virtualMachineObject_Set()
 		if err != nil {
 			return
 		}
-		virtualMachineNewFunction, err = virtualMachineStruct.InvokerNew("new")
+		virtualMachineNewFunction, err = virtualMachineObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1958,13 +1941,13 @@ func VirtualMachineNew() *VirtualMachine {
 	return retGo
 }
 
-var weakValueStruct *gi.Struct
-var weakValueStruct_Once sync.Once
+var weakValueObject *gi.Object
+var weakValueObject_Once sync.Once
 
-func weakValueStruct_Set() error {
+func weakValueObject_Set() error {
 	var err error
-	weakValueStruct_Once.Do(func() {
-		weakValueStruct, err = gi.StructNew("JavaScriptCore", "WeakValue")
+	weakValueObject_Once.Do(func() {
+		weakValueObject, err = gi.ObjectNew("JavaScriptCore", "WeakValue")
 	})
 	return err
 }
@@ -1983,11 +1966,11 @@ var weakValueNewFunction_Once sync.Once
 func weakValueNewFunction_Set() error {
 	var err error
 	weakValueNewFunction_Once.Do(func() {
-		err = weakValueStruct_Set()
+		err = weakValueObject_Set()
 		if err != nil {
 			return
 		}
-		weakValueNewFunction, err = weakValueStruct.InvokerNew("new")
+		weakValueNewFunction, err = weakValueObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2016,11 +1999,11 @@ var weakValueGetValueFunction_Once sync.Once
 func weakValueGetValueFunction_Set() error {
 	var err error
 	weakValueGetValueFunction_Once.Do(func() {
-		err = weakValueStruct_Set()
+		err = weakValueObject_Set()
 		if err != nil {
 			return
 		}
-		weakValueGetValueFunction, err = weakValueStruct.InvokerNew("get_value")
+		weakValueGetValueFunction, err = weakValueObject.InvokerNew("get_value")
 	})
 	return err
 }

@@ -6,17 +6,16 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var appLaunchContextStruct *gi.Struct
-var appLaunchContextStruct_Once sync.Once
+var appLaunchContextObject *gi.Object
+var appLaunchContextObject_Once sync.Once
 
-func appLaunchContextStruct_Set() error {
+func appLaunchContextObject_Set() error {
 	var err error
-	appLaunchContextStruct_Once.Do(func() {
-		appLaunchContextStruct, err = gi.StructNew("Gdk", "AppLaunchContext")
+	appLaunchContextObject_Once.Do(func() {
+		appLaunchContextObject, err = gi.ObjectNew("Gdk", "AppLaunchContext")
 	})
 	return err
 }
@@ -31,11 +30,11 @@ var appLaunchContextNewFunction_Once sync.Once
 func appLaunchContextNewFunction_Set() error {
 	var err error
 	appLaunchContextNewFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextNewFunction, err = appLaunchContextStruct.InvokerNew("new")
+		appLaunchContextNewFunction, err = appLaunchContextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -62,11 +61,11 @@ var appLaunchContextSetDesktopFunction_Once sync.Once
 func appLaunchContextSetDesktopFunction_Set() error {
 	var err error
 	appLaunchContextSetDesktopFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetDesktopFunction, err = appLaunchContextStruct.InvokerNew("set_desktop")
+		appLaunchContextSetDesktopFunction, err = appLaunchContextObject.InvokerNew("set_desktop")
 	})
 	return err
 }
@@ -91,11 +90,11 @@ var appLaunchContextSetDisplayFunction_Once sync.Once
 func appLaunchContextSetDisplayFunction_Set() error {
 	var err error
 	appLaunchContextSetDisplayFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetDisplayFunction, err = appLaunchContextStruct.InvokerNew("set_display")
+		appLaunchContextSetDisplayFunction, err = appLaunchContextObject.InvokerNew("set_display")
 	})
 	return err
 }
@@ -122,11 +121,11 @@ var appLaunchContextSetIconNameFunction_Once sync.Once
 func appLaunchContextSetIconNameFunction_Set() error {
 	var err error
 	appLaunchContextSetIconNameFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetIconNameFunction, err = appLaunchContextStruct.InvokerNew("set_icon_name")
+		appLaunchContextSetIconNameFunction, err = appLaunchContextObject.InvokerNew("set_icon_name")
 	})
 	return err
 }
@@ -151,11 +150,11 @@ var appLaunchContextSetScreenFunction_Once sync.Once
 func appLaunchContextSetScreenFunction_Set() error {
 	var err error
 	appLaunchContextSetScreenFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetScreenFunction, err = appLaunchContextStruct.InvokerNew("set_screen")
+		appLaunchContextSetScreenFunction, err = appLaunchContextObject.InvokerNew("set_screen")
 	})
 	return err
 }
@@ -180,11 +179,11 @@ var appLaunchContextSetTimestampFunction_Once sync.Once
 func appLaunchContextSetTimestampFunction_Set() error {
 	var err error
 	appLaunchContextSetTimestampFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetTimestampFunction, err = appLaunchContextStruct.InvokerNew("set_timestamp")
+		appLaunchContextSetTimestampFunction, err = appLaunchContextObject.InvokerNew("set_timestamp")
 	})
 	return err
 }
@@ -203,13 +202,13 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	return
 }
 
-var cursorStruct *gi.Struct
-var cursorStruct_Once sync.Once
+var cursorObject *gi.Object
+var cursorObject_Once sync.Once
 
-func cursorStruct_Set() error {
+func cursorObject_Set() error {
 	var err error
-	cursorStruct_Once.Do(func() {
-		cursorStruct, err = gi.StructNew("Gdk", "Cursor")
+	cursorObject_Once.Do(func() {
+		cursorObject, err = gi.ObjectNew("Gdk", "Cursor")
 	})
 	return err
 }
@@ -224,11 +223,11 @@ var cursorNewFunction_Once sync.Once
 func cursorNewFunction_Set() error {
 	var err error
 	cursorNewFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorNewFunction, err = cursorStruct.InvokerNew("new")
+		cursorNewFunction, err = cursorObject.InvokerNew("new")
 	})
 	return err
 }
@@ -257,11 +256,11 @@ var cursorNewForDisplayFunction_Once sync.Once
 func cursorNewForDisplayFunction_Set() error {
 	var err error
 	cursorNewForDisplayFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorNewForDisplayFunction, err = cursorStruct.InvokerNew("new_for_display")
+		cursorNewForDisplayFunction, err = cursorObject.InvokerNew("new_for_display")
 	})
 	return err
 }
@@ -291,11 +290,11 @@ var cursorNewFromNameFunction_Once sync.Once
 func cursorNewFromNameFunction_Set() error {
 	var err error
 	cursorNewFromNameFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorNewFromNameFunction, err = cursorStruct.InvokerNew("new_from_name")
+		cursorNewFromNameFunction, err = cursorObject.InvokerNew("new_from_name")
 	})
 	return err
 }
@@ -329,11 +328,11 @@ var cursorGetCursorTypeFunction_Once sync.Once
 func cursorGetCursorTypeFunction_Set() error {
 	var err error
 	cursorGetCursorTypeFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorGetCursorTypeFunction, err = cursorStruct.InvokerNew("get_cursor_type")
+		cursorGetCursorTypeFunction, err = cursorObject.InvokerNew("get_cursor_type")
 	})
 	return err
 }
@@ -361,11 +360,11 @@ var cursorGetDisplayFunction_Once sync.Once
 func cursorGetDisplayFunction_Set() error {
 	var err error
 	cursorGetDisplayFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorGetDisplayFunction, err = cursorStruct.InvokerNew("get_display")
+		cursorGetDisplayFunction, err = cursorObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -398,11 +397,11 @@ var cursorRefFunction_Once sync.Once
 func cursorRefFunction_Set() error {
 	var err error
 	cursorRefFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorRefFunction, err = cursorStruct.InvokerNew("ref")
+		cursorRefFunction, err = cursorObject.InvokerNew("ref")
 	})
 	return err
 }
@@ -431,11 +430,11 @@ var cursorUnrefFunction_Once sync.Once
 func cursorUnrefFunction_Set() error {
 	var err error
 	cursorUnrefFunction_Once.Do(func() {
-		err = cursorStruct_Set()
+		err = cursorObject_Set()
 		if err != nil {
 			return
 		}
-		cursorUnrefFunction, err = cursorStruct.InvokerNew("unref")
+		cursorUnrefFunction, err = cursorObject.InvokerNew("unref")
 	})
 	return err
 }
@@ -453,13 +452,13 @@ func (recv *Cursor) Unref() {
 	return
 }
 
-var deviceStruct *gi.Struct
-var deviceStruct_Once sync.Once
+var deviceObject *gi.Object
+var deviceObject_Once sync.Once
 
-func deviceStruct_Set() error {
+func deviceObject_Set() error {
 	var err error
-	deviceStruct_Once.Do(func() {
-		deviceStruct, err = gi.StructNew("Gdk", "Device")
+	deviceObject_Once.Do(func() {
+		deviceObject, err = gi.ObjectNew("Gdk", "Device")
 	})
 	return err
 }
@@ -474,11 +473,11 @@ var deviceGetAssociatedDeviceFunction_Once sync.Once
 func deviceGetAssociatedDeviceFunction_Set() error {
 	var err error
 	deviceGetAssociatedDeviceFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetAssociatedDeviceFunction, err = deviceStruct.InvokerNew("get_associated_device")
+		deviceGetAssociatedDeviceFunction, err = deviceObject.InvokerNew("get_associated_device")
 	})
 	return err
 }
@@ -511,11 +510,11 @@ var deviceGetAxisUseFunction_Once sync.Once
 func deviceGetAxisUseFunction_Set() error {
 	var err error
 	deviceGetAxisUseFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetAxisUseFunction, err = deviceStruct.InvokerNew("get_axis_use")
+		deviceGetAxisUseFunction, err = deviceObject.InvokerNew("get_axis_use")
 	})
 	return err
 }
@@ -546,11 +545,11 @@ var deviceGetDeviceTypeFunction_Once sync.Once
 func deviceGetDeviceTypeFunction_Set() error {
 	var err error
 	deviceGetDeviceTypeFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetDeviceTypeFunction, err = deviceStruct.InvokerNew("get_device_type")
+		deviceGetDeviceTypeFunction, err = deviceObject.InvokerNew("get_device_type")
 	})
 	return err
 }
@@ -578,11 +577,11 @@ var deviceGetDisplayFunction_Once sync.Once
 func deviceGetDisplayFunction_Set() error {
 	var err error
 	deviceGetDisplayFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetDisplayFunction, err = deviceStruct.InvokerNew("get_display")
+		deviceGetDisplayFunction, err = deviceObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -611,11 +610,11 @@ var deviceGetHasCursorFunction_Once sync.Once
 func deviceGetHasCursorFunction_Set() error {
 	var err error
 	deviceGetHasCursorFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetHasCursorFunction, err = deviceStruct.InvokerNew("get_has_cursor")
+		deviceGetHasCursorFunction, err = deviceObject.InvokerNew("get_has_cursor")
 	})
 	return err
 }
@@ -647,11 +646,11 @@ var deviceGetLastEventWindowFunction_Once sync.Once
 func deviceGetLastEventWindowFunction_Set() error {
 	var err error
 	deviceGetLastEventWindowFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetLastEventWindowFunction, err = deviceStruct.InvokerNew("get_last_event_window")
+		deviceGetLastEventWindowFunction, err = deviceObject.InvokerNew("get_last_event_window")
 	})
 	return err
 }
@@ -680,11 +679,11 @@ var deviceGetModeFunction_Once sync.Once
 func deviceGetModeFunction_Set() error {
 	var err error
 	deviceGetModeFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetModeFunction, err = deviceStruct.InvokerNew("get_mode")
+		deviceGetModeFunction, err = deviceObject.InvokerNew("get_mode")
 	})
 	return err
 }
@@ -712,11 +711,11 @@ var deviceGetNAxesFunction_Once sync.Once
 func deviceGetNAxesFunction_Set() error {
 	var err error
 	deviceGetNAxesFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetNAxesFunction, err = deviceStruct.InvokerNew("get_n_axes")
+		deviceGetNAxesFunction, err = deviceObject.InvokerNew("get_n_axes")
 	})
 	return err
 }
@@ -744,11 +743,11 @@ var deviceGetNKeysFunction_Once sync.Once
 func deviceGetNKeysFunction_Set() error {
 	var err error
 	deviceGetNKeysFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetNKeysFunction, err = deviceStruct.InvokerNew("get_n_keys")
+		deviceGetNKeysFunction, err = deviceObject.InvokerNew("get_n_keys")
 	})
 	return err
 }
@@ -776,11 +775,11 @@ var deviceGetNameFunction_Once sync.Once
 func deviceGetNameFunction_Set() error {
 	var err error
 	deviceGetNameFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetNameFunction, err = deviceStruct.InvokerNew("get_name")
+		deviceGetNameFunction, err = deviceObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -808,11 +807,11 @@ var deviceGetPositionFunction_Once sync.Once
 func deviceGetPositionFunction_Set() error {
 	var err error
 	deviceGetPositionFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetPositionFunction, err = deviceStruct.InvokerNew("get_position")
+		deviceGetPositionFunction, err = deviceObject.InvokerNew("get_position")
 	})
 	return err
 }
@@ -843,11 +842,11 @@ var deviceGetPositionDoubleFunction_Once sync.Once
 func deviceGetPositionDoubleFunction_Set() error {
 	var err error
 	deviceGetPositionDoubleFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetPositionDoubleFunction, err = deviceStruct.InvokerNew("get_position_double")
+		deviceGetPositionDoubleFunction, err = deviceObject.InvokerNew("get_position_double")
 	})
 	return err
 }
@@ -878,11 +877,11 @@ var deviceGetProductIdFunction_Once sync.Once
 func deviceGetProductIdFunction_Set() error {
 	var err error
 	deviceGetProductIdFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetProductIdFunction, err = deviceStruct.InvokerNew("get_product_id")
+		deviceGetProductIdFunction, err = deviceObject.InvokerNew("get_product_id")
 	})
 	return err
 }
@@ -910,11 +909,11 @@ var deviceGetSeatFunction_Once sync.Once
 func deviceGetSeatFunction_Set() error {
 	var err error
 	deviceGetSeatFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetSeatFunction, err = deviceStruct.InvokerNew("get_seat")
+		deviceGetSeatFunction, err = deviceObject.InvokerNew("get_seat")
 	})
 	return err
 }
@@ -943,11 +942,11 @@ var deviceGetSourceFunction_Once sync.Once
 func deviceGetSourceFunction_Set() error {
 	var err error
 	deviceGetSourceFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetSourceFunction, err = deviceStruct.InvokerNew("get_source")
+		deviceGetSourceFunction, err = deviceObject.InvokerNew("get_source")
 	})
 	return err
 }
@@ -977,11 +976,11 @@ var deviceGetVendorIdFunction_Once sync.Once
 func deviceGetVendorIdFunction_Set() error {
 	var err error
 	deviceGetVendorIdFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetVendorIdFunction, err = deviceStruct.InvokerNew("get_vendor_id")
+		deviceGetVendorIdFunction, err = deviceObject.InvokerNew("get_vendor_id")
 	})
 	return err
 }
@@ -1009,11 +1008,11 @@ var deviceGetWindowAtPositionFunction_Once sync.Once
 func deviceGetWindowAtPositionFunction_Set() error {
 	var err error
 	deviceGetWindowAtPositionFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetWindowAtPositionFunction, err = deviceStruct.InvokerNew("get_window_at_position")
+		deviceGetWindowAtPositionFunction, err = deviceObject.InvokerNew("get_window_at_position")
 	})
 	return err
 }
@@ -1045,11 +1044,11 @@ var deviceGetWindowAtPositionDoubleFunction_Once sync.Once
 func deviceGetWindowAtPositionDoubleFunction_Set() error {
 	var err error
 	deviceGetWindowAtPositionDoubleFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceGetWindowAtPositionDoubleFunction, err = deviceStruct.InvokerNew("get_window_at_position_double")
+		deviceGetWindowAtPositionDoubleFunction, err = deviceObject.InvokerNew("get_window_at_position_double")
 	})
 	return err
 }
@@ -1087,11 +1086,11 @@ var deviceSetAxisUseFunction_Once sync.Once
 func deviceSetAxisUseFunction_Set() error {
 	var err error
 	deviceSetAxisUseFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceSetAxisUseFunction, err = deviceStruct.InvokerNew("set_axis_use")
+		deviceSetAxisUseFunction, err = deviceObject.InvokerNew("set_axis_use")
 	})
 	return err
 }
@@ -1119,11 +1118,11 @@ var deviceSetModeFunction_Once sync.Once
 func deviceSetModeFunction_Set() error {
 	var err error
 	deviceSetModeFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceSetModeFunction, err = deviceStruct.InvokerNew("set_mode")
+		deviceSetModeFunction, err = deviceObject.InvokerNew("set_mode")
 	})
 	return err
 }
@@ -1152,11 +1151,11 @@ var deviceUngrabFunction_Once sync.Once
 func deviceUngrabFunction_Set() error {
 	var err error
 	deviceUngrabFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceUngrabFunction, err = deviceStruct.InvokerNew("ungrab")
+		deviceUngrabFunction, err = deviceObject.InvokerNew("ungrab")
 	})
 	return err
 }
@@ -1181,11 +1180,11 @@ var deviceWarpFunction_Once sync.Once
 func deviceWarpFunction_Set() error {
 	var err error
 	deviceWarpFunction_Once.Do(func() {
-		err = deviceStruct_Set()
+		err = deviceObject_Set()
 		if err != nil {
 			return
 		}
-		deviceWarpFunction, err = deviceStruct.InvokerNew("warp")
+		deviceWarpFunction, err = deviceObject.InvokerNew("warp")
 	})
 	return err
 }
@@ -1206,29 +1205,13 @@ func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 	return
 }
 
-// DeviceStruct creates an uninitialised Device.
-func DeviceStruct() *Device {
-	err := deviceStruct_Set()
-	if err != nil {
-		return nil
-	}
+var deviceManagerObject *gi.Object
+var deviceManagerObject_Once sync.Once
 
-	structGo := &Device{}
-	structGo.Native = deviceStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDevice)
-	return structGo
-}
-func finalizeDevice(obj *Device) {
-	deviceStruct.Free(obj.Native)
-}
-
-var deviceManagerStruct *gi.Struct
-var deviceManagerStruct_Once sync.Once
-
-func deviceManagerStruct_Set() error {
+func deviceManagerObject_Set() error {
 	var err error
-	deviceManagerStruct_Once.Do(func() {
-		deviceManagerStruct, err = gi.StructNew("Gdk", "DeviceManager")
+	deviceManagerObject_Once.Do(func() {
+		deviceManagerObject, err = gi.ObjectNew("Gdk", "DeviceManager")
 	})
 	return err
 }
@@ -1243,11 +1226,11 @@ var deviceManagerGetClientPointerFunction_Once sync.Once
 func deviceManagerGetClientPointerFunction_Set() error {
 	var err error
 	deviceManagerGetClientPointerFunction_Once.Do(func() {
-		err = deviceManagerStruct_Set()
+		err = deviceManagerObject_Set()
 		if err != nil {
 			return
 		}
-		deviceManagerGetClientPointerFunction, err = deviceManagerStruct.InvokerNew("get_client_pointer")
+		deviceManagerGetClientPointerFunction, err = deviceManagerObject.InvokerNew("get_client_pointer")
 	})
 	return err
 }
@@ -1276,11 +1259,11 @@ var deviceManagerGetDisplayFunction_Once sync.Once
 func deviceManagerGetDisplayFunction_Set() error {
 	var err error
 	deviceManagerGetDisplayFunction_Once.Do(func() {
-		err = deviceManagerStruct_Set()
+		err = deviceManagerObject_Set()
 		if err != nil {
 			return
 		}
-		deviceManagerGetDisplayFunction, err = deviceManagerStruct.InvokerNew("get_display")
+		deviceManagerGetDisplayFunction, err = deviceManagerObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -1305,29 +1288,13 @@ func (recv *DeviceManager) GetDisplay() *Display {
 
 // UNSUPPORTED : C value 'gdk_device_manager_list_devices' : return type 'GLib.List' not supported
 
-// DeviceManagerStruct creates an uninitialised DeviceManager.
-func DeviceManagerStruct() *DeviceManager {
-	err := deviceManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var deviceToolObject *gi.Object
+var deviceToolObject_Once sync.Once
 
-	structGo := &DeviceManager{}
-	structGo.Native = deviceManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDeviceManager)
-	return structGo
-}
-func finalizeDeviceManager(obj *DeviceManager) {
-	deviceManagerStruct.Free(obj.Native)
-}
-
-var deviceToolStruct *gi.Struct
-var deviceToolStruct_Once sync.Once
-
-func deviceToolStruct_Set() error {
+func deviceToolObject_Set() error {
 	var err error
-	deviceToolStruct_Once.Do(func() {
-		deviceToolStruct, err = gi.StructNew("Gdk", "DeviceTool")
+	deviceToolObject_Once.Do(func() {
+		deviceToolObject, err = gi.ObjectNew("Gdk", "DeviceTool")
 	})
 	return err
 }
@@ -1342,11 +1309,11 @@ var deviceToolGetHardwareIdFunction_Once sync.Once
 func deviceToolGetHardwareIdFunction_Set() error {
 	var err error
 	deviceToolGetHardwareIdFunction_Once.Do(func() {
-		err = deviceToolStruct_Set()
+		err = deviceToolObject_Set()
 		if err != nil {
 			return
 		}
-		deviceToolGetHardwareIdFunction, err = deviceToolStruct.InvokerNew("get_hardware_id")
+		deviceToolGetHardwareIdFunction, err = deviceToolObject.InvokerNew("get_hardware_id")
 	})
 	return err
 }
@@ -1374,11 +1341,11 @@ var deviceToolGetSerialFunction_Once sync.Once
 func deviceToolGetSerialFunction_Set() error {
 	var err error
 	deviceToolGetSerialFunction_Once.Do(func() {
-		err = deviceToolStruct_Set()
+		err = deviceToolObject_Set()
 		if err != nil {
 			return
 		}
-		deviceToolGetSerialFunction, err = deviceToolStruct.InvokerNew("get_serial")
+		deviceToolGetSerialFunction, err = deviceToolObject.InvokerNew("get_serial")
 	})
 	return err
 }
@@ -1406,11 +1373,11 @@ var deviceToolGetToolTypeFunction_Once sync.Once
 func deviceToolGetToolTypeFunction_Set() error {
 	var err error
 	deviceToolGetToolTypeFunction_Once.Do(func() {
-		err = deviceToolStruct_Set()
+		err = deviceToolObject_Set()
 		if err != nil {
 			return
 		}
-		deviceToolGetToolTypeFunction, err = deviceToolStruct.InvokerNew("get_tool_type")
+		deviceToolGetToolTypeFunction, err = deviceToolObject.InvokerNew("get_tool_type")
 	})
 	return err
 }
@@ -1432,29 +1399,13 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 	return retGo
 }
 
-// DeviceToolStruct creates an uninitialised DeviceTool.
-func DeviceToolStruct() *DeviceTool {
-	err := deviceToolStruct_Set()
-	if err != nil {
-		return nil
-	}
+var displayObject *gi.Object
+var displayObject_Once sync.Once
 
-	structGo := &DeviceTool{}
-	structGo.Native = deviceToolStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDeviceTool)
-	return structGo
-}
-func finalizeDeviceTool(obj *DeviceTool) {
-	deviceToolStruct.Free(obj.Native)
-}
-
-var displayStruct *gi.Struct
-var displayStruct_Once sync.Once
-
-func displayStruct_Set() error {
+func displayObject_Set() error {
 	var err error
-	displayStruct_Once.Do(func() {
-		displayStruct, err = gi.StructNew("Gdk", "Display")
+	displayObject_Once.Do(func() {
+		displayObject, err = gi.ObjectNew("Gdk", "Display")
 	})
 	return err
 }
@@ -1469,11 +1420,11 @@ var displayBeepFunction_Once sync.Once
 func displayBeepFunction_Set() error {
 	var err error
 	displayBeepFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayBeepFunction, err = displayStruct.InvokerNew("beep")
+		displayBeepFunction, err = displayObject.InvokerNew("beep")
 	})
 	return err
 }
@@ -1497,11 +1448,11 @@ var displayCloseFunction_Once sync.Once
 func displayCloseFunction_Set() error {
 	var err error
 	displayCloseFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayCloseFunction, err = displayStruct.InvokerNew("close")
+		displayCloseFunction, err = displayObject.InvokerNew("close")
 	})
 	return err
 }
@@ -1525,11 +1476,11 @@ var displayDeviceIsGrabbedFunction_Once sync.Once
 func displayDeviceIsGrabbedFunction_Set() error {
 	var err error
 	displayDeviceIsGrabbedFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayDeviceIsGrabbedFunction, err = displayStruct.InvokerNew("device_is_grabbed")
+		displayDeviceIsGrabbedFunction, err = displayObject.InvokerNew("device_is_grabbed")
 	})
 	return err
 }
@@ -1558,11 +1509,11 @@ var displayFlushFunction_Once sync.Once
 func displayFlushFunction_Set() error {
 	var err error
 	displayFlushFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayFlushFunction, err = displayStruct.InvokerNew("flush")
+		displayFlushFunction, err = displayObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -1586,11 +1537,11 @@ var displayGetAppLaunchContextFunction_Once sync.Once
 func displayGetAppLaunchContextFunction_Set() error {
 	var err error
 	displayGetAppLaunchContextFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetAppLaunchContextFunction, err = displayStruct.InvokerNew("get_app_launch_context")
+		displayGetAppLaunchContextFunction, err = displayObject.InvokerNew("get_app_launch_context")
 	})
 	return err
 }
@@ -1619,11 +1570,11 @@ var displayGetDefaultCursorSizeFunction_Once sync.Once
 func displayGetDefaultCursorSizeFunction_Set() error {
 	var err error
 	displayGetDefaultCursorSizeFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetDefaultCursorSizeFunction, err = displayStruct.InvokerNew("get_default_cursor_size")
+		displayGetDefaultCursorSizeFunction, err = displayObject.InvokerNew("get_default_cursor_size")
 	})
 	return err
 }
@@ -1651,11 +1602,11 @@ var displayGetDefaultGroupFunction_Once sync.Once
 func displayGetDefaultGroupFunction_Set() error {
 	var err error
 	displayGetDefaultGroupFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetDefaultGroupFunction, err = displayStruct.InvokerNew("get_default_group")
+		displayGetDefaultGroupFunction, err = displayObject.InvokerNew("get_default_group")
 	})
 	return err
 }
@@ -1684,11 +1635,11 @@ var displayGetDefaultScreenFunction_Once sync.Once
 func displayGetDefaultScreenFunction_Set() error {
 	var err error
 	displayGetDefaultScreenFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetDefaultScreenFunction, err = displayStruct.InvokerNew("get_default_screen")
+		displayGetDefaultScreenFunction, err = displayObject.InvokerNew("get_default_screen")
 	})
 	return err
 }
@@ -1717,11 +1668,11 @@ var displayGetDefaultSeatFunction_Once sync.Once
 func displayGetDefaultSeatFunction_Set() error {
 	var err error
 	displayGetDefaultSeatFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetDefaultSeatFunction, err = displayStruct.InvokerNew("get_default_seat")
+		displayGetDefaultSeatFunction, err = displayObject.InvokerNew("get_default_seat")
 	})
 	return err
 }
@@ -1750,11 +1701,11 @@ var displayGetDeviceManagerFunction_Once sync.Once
 func displayGetDeviceManagerFunction_Set() error {
 	var err error
 	displayGetDeviceManagerFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetDeviceManagerFunction, err = displayStruct.InvokerNew("get_device_manager")
+		displayGetDeviceManagerFunction, err = displayObject.InvokerNew("get_device_manager")
 	})
 	return err
 }
@@ -1785,11 +1736,11 @@ var displayGetMaximalCursorSizeFunction_Once sync.Once
 func displayGetMaximalCursorSizeFunction_Set() error {
 	var err error
 	displayGetMaximalCursorSizeFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetMaximalCursorSizeFunction, err = displayStruct.InvokerNew("get_maximal_cursor_size")
+		displayGetMaximalCursorSizeFunction, err = displayObject.InvokerNew("get_maximal_cursor_size")
 	})
 	return err
 }
@@ -1818,11 +1769,11 @@ var displayGetMonitorFunction_Once sync.Once
 func displayGetMonitorFunction_Set() error {
 	var err error
 	displayGetMonitorFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetMonitorFunction, err = displayStruct.InvokerNew("get_monitor")
+		displayGetMonitorFunction, err = displayObject.InvokerNew("get_monitor")
 	})
 	return err
 }
@@ -1852,11 +1803,11 @@ var displayGetMonitorAtPointFunction_Once sync.Once
 func displayGetMonitorAtPointFunction_Set() error {
 	var err error
 	displayGetMonitorAtPointFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetMonitorAtPointFunction, err = displayStruct.InvokerNew("get_monitor_at_point")
+		displayGetMonitorAtPointFunction, err = displayObject.InvokerNew("get_monitor_at_point")
 	})
 	return err
 }
@@ -1887,11 +1838,11 @@ var displayGetMonitorAtWindowFunction_Once sync.Once
 func displayGetMonitorAtWindowFunction_Set() error {
 	var err error
 	displayGetMonitorAtWindowFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetMonitorAtWindowFunction, err = displayStruct.InvokerNew("get_monitor_at_window")
+		displayGetMonitorAtWindowFunction, err = displayObject.InvokerNew("get_monitor_at_window")
 	})
 	return err
 }
@@ -1921,11 +1872,11 @@ var displayGetNMonitorsFunction_Once sync.Once
 func displayGetNMonitorsFunction_Set() error {
 	var err error
 	displayGetNMonitorsFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetNMonitorsFunction, err = displayStruct.InvokerNew("get_n_monitors")
+		displayGetNMonitorsFunction, err = displayObject.InvokerNew("get_n_monitors")
 	})
 	return err
 }
@@ -1953,11 +1904,11 @@ var displayGetNScreensFunction_Once sync.Once
 func displayGetNScreensFunction_Set() error {
 	var err error
 	displayGetNScreensFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetNScreensFunction, err = displayStruct.InvokerNew("get_n_screens")
+		displayGetNScreensFunction, err = displayObject.InvokerNew("get_n_screens")
 	})
 	return err
 }
@@ -1985,11 +1936,11 @@ var displayGetNameFunction_Once sync.Once
 func displayGetNameFunction_Set() error {
 	var err error
 	displayGetNameFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetNameFunction, err = displayStruct.InvokerNew("get_name")
+		displayGetNameFunction, err = displayObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -2019,11 +1970,11 @@ var displayGetPrimaryMonitorFunction_Once sync.Once
 func displayGetPrimaryMonitorFunction_Set() error {
 	var err error
 	displayGetPrimaryMonitorFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetPrimaryMonitorFunction, err = displayStruct.InvokerNew("get_primary_monitor")
+		displayGetPrimaryMonitorFunction, err = displayObject.InvokerNew("get_primary_monitor")
 	})
 	return err
 }
@@ -2052,11 +2003,11 @@ var displayGetScreenFunction_Once sync.Once
 func displayGetScreenFunction_Set() error {
 	var err error
 	displayGetScreenFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetScreenFunction, err = displayStruct.InvokerNew("get_screen")
+		displayGetScreenFunction, err = displayObject.InvokerNew("get_screen")
 	})
 	return err
 }
@@ -2086,11 +2037,11 @@ var displayGetWindowAtPointerFunction_Once sync.Once
 func displayGetWindowAtPointerFunction_Set() error {
 	var err error
 	displayGetWindowAtPointerFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayGetWindowAtPointerFunction, err = displayStruct.InvokerNew("get_window_at_pointer")
+		displayGetWindowAtPointerFunction, err = displayObject.InvokerNew("get_window_at_pointer")
 	})
 	return err
 }
@@ -2122,11 +2073,11 @@ var displayHasPendingFunction_Once sync.Once
 func displayHasPendingFunction_Set() error {
 	var err error
 	displayHasPendingFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayHasPendingFunction, err = displayStruct.InvokerNew("has_pending")
+		displayHasPendingFunction, err = displayObject.InvokerNew("has_pending")
 	})
 	return err
 }
@@ -2154,11 +2105,11 @@ var displayIsClosedFunction_Once sync.Once
 func displayIsClosedFunction_Set() error {
 	var err error
 	displayIsClosedFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayIsClosedFunction, err = displayStruct.InvokerNew("is_closed")
+		displayIsClosedFunction, err = displayObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -2186,11 +2137,11 @@ var displayKeyboardUngrabFunction_Once sync.Once
 func displayKeyboardUngrabFunction_Set() error {
 	var err error
 	displayKeyboardUngrabFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayKeyboardUngrabFunction, err = displayStruct.InvokerNew("keyboard_ungrab")
+		displayKeyboardUngrabFunction, err = displayObject.InvokerNew("keyboard_ungrab")
 	})
 	return err
 }
@@ -2219,11 +2170,11 @@ var displayNotifyStartupCompleteFunction_Once sync.Once
 func displayNotifyStartupCompleteFunction_Set() error {
 	var err error
 	displayNotifyStartupCompleteFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayNotifyStartupCompleteFunction, err = displayStruct.InvokerNew("notify_startup_complete")
+		displayNotifyStartupCompleteFunction, err = displayObject.InvokerNew("notify_startup_complete")
 	})
 	return err
 }
@@ -2250,11 +2201,11 @@ var displayPointerIsGrabbedFunction_Once sync.Once
 func displayPointerIsGrabbedFunction_Set() error {
 	var err error
 	displayPointerIsGrabbedFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayPointerIsGrabbedFunction, err = displayStruct.InvokerNew("pointer_is_grabbed")
+		displayPointerIsGrabbedFunction, err = displayObject.InvokerNew("pointer_is_grabbed")
 	})
 	return err
 }
@@ -2282,11 +2233,11 @@ var displayPointerUngrabFunction_Once sync.Once
 func displayPointerUngrabFunction_Set() error {
 	var err error
 	displayPointerUngrabFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayPointerUngrabFunction, err = displayStruct.InvokerNew("pointer_ungrab")
+		displayPointerUngrabFunction, err = displayObject.InvokerNew("pointer_ungrab")
 	})
 	return err
 }
@@ -2313,11 +2264,11 @@ var displayRequestSelectionNotificationFunction_Once sync.Once
 func displayRequestSelectionNotificationFunction_Set() error {
 	var err error
 	displayRequestSelectionNotificationFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayRequestSelectionNotificationFunction, err = displayStruct.InvokerNew("request_selection_notification")
+		displayRequestSelectionNotificationFunction, err = displayObject.InvokerNew("request_selection_notification")
 	})
 	return err
 }
@@ -2346,11 +2297,11 @@ var displaySetDoubleClickDistanceFunction_Once sync.Once
 func displaySetDoubleClickDistanceFunction_Set() error {
 	var err error
 	displaySetDoubleClickDistanceFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySetDoubleClickDistanceFunction, err = displayStruct.InvokerNew("set_double_click_distance")
+		displaySetDoubleClickDistanceFunction, err = displayObject.InvokerNew("set_double_click_distance")
 	})
 	return err
 }
@@ -2375,11 +2326,11 @@ var displaySetDoubleClickTimeFunction_Once sync.Once
 func displaySetDoubleClickTimeFunction_Set() error {
 	var err error
 	displaySetDoubleClickTimeFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySetDoubleClickTimeFunction, err = displayStruct.InvokerNew("set_double_click_time")
+		displaySetDoubleClickTimeFunction, err = displayObject.InvokerNew("set_double_click_time")
 	})
 	return err
 }
@@ -2406,11 +2357,11 @@ var displaySupportsClipboardPersistenceFunction_Once sync.Once
 func displaySupportsClipboardPersistenceFunction_Set() error {
 	var err error
 	displaySupportsClipboardPersistenceFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsClipboardPersistenceFunction, err = displayStruct.InvokerNew("supports_clipboard_persistence")
+		displaySupportsClipboardPersistenceFunction, err = displayObject.InvokerNew("supports_clipboard_persistence")
 	})
 	return err
 }
@@ -2438,11 +2389,11 @@ var displaySupportsCompositeFunction_Once sync.Once
 func displaySupportsCompositeFunction_Set() error {
 	var err error
 	displaySupportsCompositeFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsCompositeFunction, err = displayStruct.InvokerNew("supports_composite")
+		displaySupportsCompositeFunction, err = displayObject.InvokerNew("supports_composite")
 	})
 	return err
 }
@@ -2470,11 +2421,11 @@ var displaySupportsCursorAlphaFunction_Once sync.Once
 func displaySupportsCursorAlphaFunction_Set() error {
 	var err error
 	displaySupportsCursorAlphaFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsCursorAlphaFunction, err = displayStruct.InvokerNew("supports_cursor_alpha")
+		displaySupportsCursorAlphaFunction, err = displayObject.InvokerNew("supports_cursor_alpha")
 	})
 	return err
 }
@@ -2502,11 +2453,11 @@ var displaySupportsCursorColorFunction_Once sync.Once
 func displaySupportsCursorColorFunction_Set() error {
 	var err error
 	displaySupportsCursorColorFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsCursorColorFunction, err = displayStruct.InvokerNew("supports_cursor_color")
+		displaySupportsCursorColorFunction, err = displayObject.InvokerNew("supports_cursor_color")
 	})
 	return err
 }
@@ -2534,11 +2485,11 @@ var displaySupportsInputShapesFunction_Once sync.Once
 func displaySupportsInputShapesFunction_Set() error {
 	var err error
 	displaySupportsInputShapesFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsInputShapesFunction, err = displayStruct.InvokerNew("supports_input_shapes")
+		displaySupportsInputShapesFunction, err = displayObject.InvokerNew("supports_input_shapes")
 	})
 	return err
 }
@@ -2566,11 +2517,11 @@ var displaySupportsSelectionNotificationFunction_Once sync.Once
 func displaySupportsSelectionNotificationFunction_Set() error {
 	var err error
 	displaySupportsSelectionNotificationFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsSelectionNotificationFunction, err = displayStruct.InvokerNew("supports_selection_notification")
+		displaySupportsSelectionNotificationFunction, err = displayObject.InvokerNew("supports_selection_notification")
 	})
 	return err
 }
@@ -2598,11 +2549,11 @@ var displaySupportsShapesFunction_Once sync.Once
 func displaySupportsShapesFunction_Set() error {
 	var err error
 	displaySupportsShapesFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySupportsShapesFunction, err = displayStruct.InvokerNew("supports_shapes")
+		displaySupportsShapesFunction, err = displayObject.InvokerNew("supports_shapes")
 	})
 	return err
 }
@@ -2630,11 +2581,11 @@ var displaySyncFunction_Once sync.Once
 func displaySyncFunction_Set() error {
 	var err error
 	displaySyncFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displaySyncFunction, err = displayStruct.InvokerNew("sync")
+		displaySyncFunction, err = displayObject.InvokerNew("sync")
 	})
 	return err
 }
@@ -2658,11 +2609,11 @@ var displayWarpPointerFunction_Once sync.Once
 func displayWarpPointerFunction_Set() error {
 	var err error
 	displayWarpPointerFunction_Once.Do(func() {
-		err = displayStruct_Set()
+		err = displayObject_Set()
 		if err != nil {
 			return
 		}
-		displayWarpPointerFunction, err = displayStruct.InvokerNew("warp_pointer")
+		displayWarpPointerFunction, err = displayObject.InvokerNew("warp_pointer")
 	})
 	return err
 }
@@ -2683,29 +2634,13 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	return
 }
 
-// DisplayStruct creates an uninitialised Display.
-func DisplayStruct() *Display {
-	err := displayStruct_Set()
-	if err != nil {
-		return nil
-	}
+var displayManagerObject *gi.Object
+var displayManagerObject_Once sync.Once
 
-	structGo := &Display{}
-	structGo.Native = displayStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDisplay)
-	return structGo
-}
-func finalizeDisplay(obj *Display) {
-	displayStruct.Free(obj.Native)
-}
-
-var displayManagerStruct *gi.Struct
-var displayManagerStruct_Once sync.Once
-
-func displayManagerStruct_Set() error {
+func displayManagerObject_Set() error {
 	var err error
-	displayManagerStruct_Once.Do(func() {
-		displayManagerStruct, err = gi.StructNew("Gdk", "DisplayManager")
+	displayManagerObject_Once.Do(func() {
+		displayManagerObject, err = gi.ObjectNew("Gdk", "DisplayManager")
 	})
 	return err
 }
@@ -2720,11 +2655,11 @@ var displayManagerGetDefaultDisplayFunction_Once sync.Once
 func displayManagerGetDefaultDisplayFunction_Set() error {
 	var err error
 	displayManagerGetDefaultDisplayFunction_Once.Do(func() {
-		err = displayManagerStruct_Set()
+		err = displayManagerObject_Set()
 		if err != nil {
 			return
 		}
-		displayManagerGetDefaultDisplayFunction, err = displayManagerStruct.InvokerNew("get_default_display")
+		displayManagerGetDefaultDisplayFunction, err = displayManagerObject.InvokerNew("get_default_display")
 	})
 	return err
 }
@@ -2755,11 +2690,11 @@ var displayManagerOpenDisplayFunction_Once sync.Once
 func displayManagerOpenDisplayFunction_Set() error {
 	var err error
 	displayManagerOpenDisplayFunction_Once.Do(func() {
-		err = displayManagerStruct_Set()
+		err = displayManagerObject_Set()
 		if err != nil {
 			return
 		}
-		displayManagerOpenDisplayFunction, err = displayManagerStruct.InvokerNew("open_display")
+		displayManagerOpenDisplayFunction, err = displayManagerObject.InvokerNew("open_display")
 	})
 	return err
 }
@@ -2789,11 +2724,11 @@ var displayManagerSetDefaultDisplayFunction_Once sync.Once
 func displayManagerSetDefaultDisplayFunction_Set() error {
 	var err error
 	displayManagerSetDefaultDisplayFunction_Once.Do(func() {
-		err = displayManagerStruct_Set()
+		err = displayManagerObject_Set()
 		if err != nil {
 			return
 		}
-		displayManagerSetDefaultDisplayFunction, err = displayManagerStruct.InvokerNew("set_default_display")
+		displayManagerSetDefaultDisplayFunction, err = displayManagerObject.InvokerNew("set_default_display")
 	})
 	return err
 }
@@ -2812,29 +2747,13 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	return
 }
 
-// DisplayManagerStruct creates an uninitialised DisplayManager.
-func DisplayManagerStruct() *DisplayManager {
-	err := displayManagerStruct_Set()
-	if err != nil {
-		return nil
-	}
+var dragContextObject *gi.Object
+var dragContextObject_Once sync.Once
 
-	structGo := &DisplayManager{}
-	structGo.Native = displayManagerStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDisplayManager)
-	return structGo
-}
-func finalizeDisplayManager(obj *DisplayManager) {
-	displayManagerStruct.Free(obj.Native)
-}
-
-var dragContextStruct *gi.Struct
-var dragContextStruct_Once sync.Once
-
-func dragContextStruct_Set() error {
+func dragContextObject_Set() error {
 	var err error
-	dragContextStruct_Once.Do(func() {
-		dragContextStruct, err = gi.StructNew("Gdk", "DragContext")
+	dragContextObject_Once.Do(func() {
+		dragContextObject, err = gi.ObjectNew("Gdk", "DragContext")
 	})
 	return err
 }
@@ -2851,11 +2770,11 @@ var dragContextGetDestWindowFunction_Once sync.Once
 func dragContextGetDestWindowFunction_Set() error {
 	var err error
 	dragContextGetDestWindowFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextGetDestWindowFunction, err = dragContextStruct.InvokerNew("get_dest_window")
+		dragContextGetDestWindowFunction, err = dragContextObject.InvokerNew("get_dest_window")
 	})
 	return err
 }
@@ -2884,11 +2803,11 @@ var dragContextGetDeviceFunction_Once sync.Once
 func dragContextGetDeviceFunction_Set() error {
 	var err error
 	dragContextGetDeviceFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextGetDeviceFunction, err = dragContextStruct.InvokerNew("get_device")
+		dragContextGetDeviceFunction, err = dragContextObject.InvokerNew("get_device")
 	})
 	return err
 }
@@ -2917,11 +2836,11 @@ var dragContextGetDragWindowFunction_Once sync.Once
 func dragContextGetDragWindowFunction_Set() error {
 	var err error
 	dragContextGetDragWindowFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextGetDragWindowFunction, err = dragContextStruct.InvokerNew("get_drag_window")
+		dragContextGetDragWindowFunction, err = dragContextObject.InvokerNew("get_drag_window")
 	})
 	return err
 }
@@ -2950,11 +2869,11 @@ var dragContextGetProtocolFunction_Once sync.Once
 func dragContextGetProtocolFunction_Set() error {
 	var err error
 	dragContextGetProtocolFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextGetProtocolFunction, err = dragContextStruct.InvokerNew("get_protocol")
+		dragContextGetProtocolFunction, err = dragContextObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -2984,11 +2903,11 @@ var dragContextGetSourceWindowFunction_Once sync.Once
 func dragContextGetSourceWindowFunction_Set() error {
 	var err error
 	dragContextGetSourceWindowFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextGetSourceWindowFunction, err = dragContextStruct.InvokerNew("get_source_window")
+		dragContextGetSourceWindowFunction, err = dragContextObject.InvokerNew("get_source_window")
 	})
 	return err
 }
@@ -3023,11 +2942,11 @@ var dragContextSetDeviceFunction_Once sync.Once
 func dragContextSetDeviceFunction_Set() error {
 	var err error
 	dragContextSetDeviceFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextSetDeviceFunction, err = dragContextStruct.InvokerNew("set_device")
+		dragContextSetDeviceFunction, err = dragContextObject.InvokerNew("set_device")
 	})
 	return err
 }
@@ -3052,11 +2971,11 @@ var dragContextSetHotspotFunction_Once sync.Once
 func dragContextSetHotspotFunction_Set() error {
 	var err error
 	dragContextSetHotspotFunction_Once.Do(func() {
-		err = dragContextStruct_Set()
+		err = dragContextObject_Set()
 		if err != nil {
 			return
 		}
-		dragContextSetHotspotFunction, err = dragContextStruct.InvokerNew("set_hotspot")
+		dragContextSetHotspotFunction, err = dragContextObject.InvokerNew("set_hotspot")
 	})
 	return err
 }
@@ -3076,29 +2995,13 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	return
 }
 
-// DragContextStruct creates an uninitialised DragContext.
-func DragContextStruct() *DragContext {
-	err := dragContextStruct_Set()
-	if err != nil {
-		return nil
-	}
+var drawingContextObject *gi.Object
+var drawingContextObject_Once sync.Once
 
-	structGo := &DragContext{}
-	structGo.Native = dragContextStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDragContext)
-	return structGo
-}
-func finalizeDragContext(obj *DragContext) {
-	dragContextStruct.Free(obj.Native)
-}
-
-var drawingContextStruct *gi.Struct
-var drawingContextStruct_Once sync.Once
-
-func drawingContextStruct_Set() error {
+func drawingContextObject_Set() error {
 	var err error
-	drawingContextStruct_Once.Do(func() {
-		drawingContextStruct, err = gi.StructNew("Gdk", "DrawingContext")
+	drawingContextObject_Once.Do(func() {
+		drawingContextObject, err = gi.ObjectNew("Gdk", "DrawingContext")
 	})
 	return err
 }
@@ -3117,11 +3020,11 @@ var drawingContextGetWindowFunction_Once sync.Once
 func drawingContextGetWindowFunction_Set() error {
 	var err error
 	drawingContextGetWindowFunction_Once.Do(func() {
-		err = drawingContextStruct_Set()
+		err = drawingContextObject_Set()
 		if err != nil {
 			return
 		}
-		drawingContextGetWindowFunction, err = drawingContextStruct.InvokerNew("get_window")
+		drawingContextGetWindowFunction, err = drawingContextObject.InvokerNew("get_window")
 	})
 	return err
 }
@@ -3150,11 +3053,11 @@ var drawingContextIsValidFunction_Once sync.Once
 func drawingContextIsValidFunction_Set() error {
 	var err error
 	drawingContextIsValidFunction_Once.Do(func() {
-		err = drawingContextStruct_Set()
+		err = drawingContextObject_Set()
 		if err != nil {
 			return
 		}
-		drawingContextIsValidFunction, err = drawingContextStruct.InvokerNew("is_valid")
+		drawingContextIsValidFunction, err = drawingContextObject.InvokerNew("is_valid")
 	})
 	return err
 }
@@ -3176,29 +3079,13 @@ func (recv *DrawingContext) IsValid() bool {
 	return retGo
 }
 
-// DrawingContextStruct creates an uninitialised DrawingContext.
-func DrawingContextStruct() *DrawingContext {
-	err := drawingContextStruct_Set()
-	if err != nil {
-		return nil
-	}
+var frameClockObject *gi.Object
+var frameClockObject_Once sync.Once
 
-	structGo := &DrawingContext{}
-	structGo.Native = drawingContextStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDrawingContext)
-	return structGo
-}
-func finalizeDrawingContext(obj *DrawingContext) {
-	drawingContextStruct.Free(obj.Native)
-}
-
-var frameClockStruct *gi.Struct
-var frameClockStruct_Once sync.Once
-
-func frameClockStruct_Set() error {
+func frameClockObject_Set() error {
 	var err error
-	frameClockStruct_Once.Do(func() {
-		frameClockStruct, err = gi.StructNew("Gdk", "FrameClock")
+	frameClockObject_Once.Do(func() {
+		frameClockObject, err = gi.ObjectNew("Gdk", "FrameClock")
 	})
 	return err
 }
@@ -3213,11 +3100,11 @@ var frameClockBeginUpdatingFunction_Once sync.Once
 func frameClockBeginUpdatingFunction_Set() error {
 	var err error
 	frameClockBeginUpdatingFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockBeginUpdatingFunction, err = frameClockStruct.InvokerNew("begin_updating")
+		frameClockBeginUpdatingFunction, err = frameClockObject.InvokerNew("begin_updating")
 	})
 	return err
 }
@@ -3241,11 +3128,11 @@ var frameClockEndUpdatingFunction_Once sync.Once
 func frameClockEndUpdatingFunction_Set() error {
 	var err error
 	frameClockEndUpdatingFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockEndUpdatingFunction, err = frameClockStruct.InvokerNew("end_updating")
+		frameClockEndUpdatingFunction, err = frameClockObject.InvokerNew("end_updating")
 	})
 	return err
 }
@@ -3269,11 +3156,11 @@ var frameClockGetCurrentTimingsFunction_Once sync.Once
 func frameClockGetCurrentTimingsFunction_Set() error {
 	var err error
 	frameClockGetCurrentTimingsFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetCurrentTimingsFunction, err = frameClockStruct.InvokerNew("get_current_timings")
+		frameClockGetCurrentTimingsFunction, err = frameClockObject.InvokerNew("get_current_timings")
 	})
 	return err
 }
@@ -3302,11 +3189,11 @@ var frameClockGetFrameCounterFunction_Once sync.Once
 func frameClockGetFrameCounterFunction_Set() error {
 	var err error
 	frameClockGetFrameCounterFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetFrameCounterFunction, err = frameClockStruct.InvokerNew("get_frame_counter")
+		frameClockGetFrameCounterFunction, err = frameClockObject.InvokerNew("get_frame_counter")
 	})
 	return err
 }
@@ -3334,11 +3221,11 @@ var frameClockGetFrameTimeFunction_Once sync.Once
 func frameClockGetFrameTimeFunction_Set() error {
 	var err error
 	frameClockGetFrameTimeFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetFrameTimeFunction, err = frameClockStruct.InvokerNew("get_frame_time")
+		frameClockGetFrameTimeFunction, err = frameClockObject.InvokerNew("get_frame_time")
 	})
 	return err
 }
@@ -3366,11 +3253,11 @@ var frameClockGetHistoryStartFunction_Once sync.Once
 func frameClockGetHistoryStartFunction_Set() error {
 	var err error
 	frameClockGetHistoryStartFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetHistoryStartFunction, err = frameClockStruct.InvokerNew("get_history_start")
+		frameClockGetHistoryStartFunction, err = frameClockObject.InvokerNew("get_history_start")
 	})
 	return err
 }
@@ -3398,11 +3285,11 @@ var frameClockGetRefreshInfoFunction_Once sync.Once
 func frameClockGetRefreshInfoFunction_Set() error {
 	var err error
 	frameClockGetRefreshInfoFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetRefreshInfoFunction, err = frameClockStruct.InvokerNew("get_refresh_info")
+		frameClockGetRefreshInfoFunction, err = frameClockObject.InvokerNew("get_refresh_info")
 	})
 	return err
 }
@@ -3432,11 +3319,11 @@ var frameClockGetTimingsFunction_Once sync.Once
 func frameClockGetTimingsFunction_Set() error {
 	var err error
 	frameClockGetTimingsFunction_Once.Do(func() {
-		err = frameClockStruct_Set()
+		err = frameClockObject_Set()
 		if err != nil {
 			return
 		}
-		frameClockGetTimingsFunction, err = frameClockStruct.InvokerNew("get_timings")
+		frameClockGetTimingsFunction, err = frameClockObject.InvokerNew("get_timings")
 	})
 	return err
 }
@@ -3462,29 +3349,13 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 
 // UNSUPPORTED : C value 'gdk_frame_clock_request_phase' : parameter 'phase' of type 'FrameClockPhase' not supported
 
-// FrameClockStruct creates an uninitialised FrameClock.
-func FrameClockStruct() *FrameClock {
-	err := frameClockStruct_Set()
-	if err != nil {
-		return nil
-	}
+var gLContextObject *gi.Object
+var gLContextObject_Once sync.Once
 
-	structGo := &FrameClock{}
-	structGo.Native = frameClockStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFrameClock)
-	return structGo
-}
-func finalizeFrameClock(obj *FrameClock) {
-	frameClockStruct.Free(obj.Native)
-}
-
-var gLContextStruct *gi.Struct
-var gLContextStruct_Once sync.Once
-
-func gLContextStruct_Set() error {
+func gLContextObject_Set() error {
 	var err error
-	gLContextStruct_Once.Do(func() {
-		gLContextStruct, err = gi.StructNew("Gdk", "GLContext")
+	gLContextObject_Once.Do(func() {
+		gLContextObject, err = gi.ObjectNew("Gdk", "GLContext")
 	})
 	return err
 }
@@ -3499,11 +3370,11 @@ var gLContextGetDebugEnabledFunction_Once sync.Once
 func gLContextGetDebugEnabledFunction_Set() error {
 	var err error
 	gLContextGetDebugEnabledFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetDebugEnabledFunction, err = gLContextStruct.InvokerNew("get_debug_enabled")
+		gLContextGetDebugEnabledFunction, err = gLContextObject.InvokerNew("get_debug_enabled")
 	})
 	return err
 }
@@ -3531,11 +3402,11 @@ var gLContextGetDisplayFunction_Once sync.Once
 func gLContextGetDisplayFunction_Set() error {
 	var err error
 	gLContextGetDisplayFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetDisplayFunction, err = gLContextStruct.InvokerNew("get_display")
+		gLContextGetDisplayFunction, err = gLContextObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -3564,11 +3435,11 @@ var gLContextGetForwardCompatibleFunction_Once sync.Once
 func gLContextGetForwardCompatibleFunction_Set() error {
 	var err error
 	gLContextGetForwardCompatibleFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetForwardCompatibleFunction, err = gLContextStruct.InvokerNew("get_forward_compatible")
+		gLContextGetForwardCompatibleFunction, err = gLContextObject.InvokerNew("get_forward_compatible")
 	})
 	return err
 }
@@ -3596,11 +3467,11 @@ var gLContextGetRequiredVersionFunction_Once sync.Once
 func gLContextGetRequiredVersionFunction_Set() error {
 	var err error
 	gLContextGetRequiredVersionFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetRequiredVersionFunction, err = gLContextStruct.InvokerNew("get_required_version")
+		gLContextGetRequiredVersionFunction, err = gLContextObject.InvokerNew("get_required_version")
 	})
 	return err
 }
@@ -3629,11 +3500,11 @@ var gLContextGetSharedContextFunction_Once sync.Once
 func gLContextGetSharedContextFunction_Set() error {
 	var err error
 	gLContextGetSharedContextFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetSharedContextFunction, err = gLContextStruct.InvokerNew("get_shared_context")
+		gLContextGetSharedContextFunction, err = gLContextObject.InvokerNew("get_shared_context")
 	})
 	return err
 }
@@ -3662,11 +3533,11 @@ var gLContextGetUseEsFunction_Once sync.Once
 func gLContextGetUseEsFunction_Set() error {
 	var err error
 	gLContextGetUseEsFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetUseEsFunction, err = gLContextStruct.InvokerNew("get_use_es")
+		gLContextGetUseEsFunction, err = gLContextObject.InvokerNew("get_use_es")
 	})
 	return err
 }
@@ -3694,11 +3565,11 @@ var gLContextGetVersionFunction_Once sync.Once
 func gLContextGetVersionFunction_Set() error {
 	var err error
 	gLContextGetVersionFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetVersionFunction, err = gLContextStruct.InvokerNew("get_version")
+		gLContextGetVersionFunction, err = gLContextObject.InvokerNew("get_version")
 	})
 	return err
 }
@@ -3727,11 +3598,11 @@ var gLContextGetWindowFunction_Once sync.Once
 func gLContextGetWindowFunction_Set() error {
 	var err error
 	gLContextGetWindowFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextGetWindowFunction, err = gLContextStruct.InvokerNew("get_window")
+		gLContextGetWindowFunction, err = gLContextObject.InvokerNew("get_window")
 	})
 	return err
 }
@@ -3760,11 +3631,11 @@ var gLContextIsLegacyFunction_Once sync.Once
 func gLContextIsLegacyFunction_Set() error {
 	var err error
 	gLContextIsLegacyFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextIsLegacyFunction, err = gLContextStruct.InvokerNew("is_legacy")
+		gLContextIsLegacyFunction, err = gLContextObject.InvokerNew("is_legacy")
 	})
 	return err
 }
@@ -3792,11 +3663,11 @@ var gLContextMakeCurrentFunction_Once sync.Once
 func gLContextMakeCurrentFunction_Set() error {
 	var err error
 	gLContextMakeCurrentFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextMakeCurrentFunction, err = gLContextStruct.InvokerNew("make_current")
+		gLContextMakeCurrentFunction, err = gLContextObject.InvokerNew("make_current")
 	})
 	return err
 }
@@ -3820,11 +3691,11 @@ var gLContextRealizeFunction_Once sync.Once
 func gLContextRealizeFunction_Set() error {
 	var err error
 	gLContextRealizeFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextRealizeFunction, err = gLContextStruct.InvokerNew("realize")
+		gLContextRealizeFunction, err = gLContextObject.InvokerNew("realize")
 	})
 	return err
 }
@@ -3852,11 +3723,11 @@ var gLContextSetDebugEnabledFunction_Once sync.Once
 func gLContextSetDebugEnabledFunction_Set() error {
 	var err error
 	gLContextSetDebugEnabledFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextSetDebugEnabledFunction, err = gLContextStruct.InvokerNew("set_debug_enabled")
+		gLContextSetDebugEnabledFunction, err = gLContextObject.InvokerNew("set_debug_enabled")
 	})
 	return err
 }
@@ -3881,11 +3752,11 @@ var gLContextSetForwardCompatibleFunction_Once sync.Once
 func gLContextSetForwardCompatibleFunction_Set() error {
 	var err error
 	gLContextSetForwardCompatibleFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextSetForwardCompatibleFunction, err = gLContextStruct.InvokerNew("set_forward_compatible")
+		gLContextSetForwardCompatibleFunction, err = gLContextObject.InvokerNew("set_forward_compatible")
 	})
 	return err
 }
@@ -3910,11 +3781,11 @@ var gLContextSetRequiredVersionFunction_Once sync.Once
 func gLContextSetRequiredVersionFunction_Set() error {
 	var err error
 	gLContextSetRequiredVersionFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextSetRequiredVersionFunction, err = gLContextStruct.InvokerNew("set_required_version")
+		gLContextSetRequiredVersionFunction, err = gLContextObject.InvokerNew("set_required_version")
 	})
 	return err
 }
@@ -3940,11 +3811,11 @@ var gLContextSetUseEsFunction_Once sync.Once
 func gLContextSetUseEsFunction_Set() error {
 	var err error
 	gLContextSetUseEsFunction_Once.Do(func() {
-		err = gLContextStruct_Set()
+		err = gLContextObject_Set()
 		if err != nil {
 			return
 		}
-		gLContextSetUseEsFunction, err = gLContextStruct.InvokerNew("set_use_es")
+		gLContextSetUseEsFunction, err = gLContextObject.InvokerNew("set_use_es")
 	})
 	return err
 }
@@ -3963,29 +3834,13 @@ func (recv *GLContext) SetUseEs(useEs int32) {
 	return
 }
 
-// GLContextStruct creates an uninitialised GLContext.
-func GLContextStruct() *GLContext {
-	err := gLContextStruct_Set()
-	if err != nil {
-		return nil
-	}
+var keymapObject *gi.Object
+var keymapObject_Once sync.Once
 
-	structGo := &GLContext{}
-	structGo.Native = gLContextStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGLContext)
-	return structGo
-}
-func finalizeGLContext(obj *GLContext) {
-	gLContextStruct.Free(obj.Native)
-}
-
-var keymapStruct *gi.Struct
-var keymapStruct_Once sync.Once
-
-func keymapStruct_Set() error {
+func keymapObject_Set() error {
 	var err error
-	keymapStruct_Once.Do(func() {
-		keymapStruct, err = gi.StructNew("Gdk", "Keymap")
+	keymapObject_Once.Do(func() {
+		keymapObject, err = gi.ObjectNew("Gdk", "Keymap")
 	})
 	return err
 }
@@ -4002,11 +3857,11 @@ var keymapGetCapsLockStateFunction_Once sync.Once
 func keymapGetCapsLockStateFunction_Set() error {
 	var err error
 	keymapGetCapsLockStateFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapGetCapsLockStateFunction, err = keymapStruct.InvokerNew("get_caps_lock_state")
+		keymapGetCapsLockStateFunction, err = keymapObject.InvokerNew("get_caps_lock_state")
 	})
 	return err
 }
@@ -4042,11 +3897,11 @@ var keymapGetModifierStateFunction_Once sync.Once
 func keymapGetModifierStateFunction_Set() error {
 	var err error
 	keymapGetModifierStateFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapGetModifierStateFunction, err = keymapStruct.InvokerNew("get_modifier_state")
+		keymapGetModifierStateFunction, err = keymapObject.InvokerNew("get_modifier_state")
 	})
 	return err
 }
@@ -4074,11 +3929,11 @@ var keymapGetNumLockStateFunction_Once sync.Once
 func keymapGetNumLockStateFunction_Set() error {
 	var err error
 	keymapGetNumLockStateFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapGetNumLockStateFunction, err = keymapStruct.InvokerNew("get_num_lock_state")
+		keymapGetNumLockStateFunction, err = keymapObject.InvokerNew("get_num_lock_state")
 	})
 	return err
 }
@@ -4106,11 +3961,11 @@ var keymapGetScrollLockStateFunction_Once sync.Once
 func keymapGetScrollLockStateFunction_Set() error {
 	var err error
 	keymapGetScrollLockStateFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapGetScrollLockStateFunction, err = keymapStruct.InvokerNew("get_scroll_lock_state")
+		keymapGetScrollLockStateFunction, err = keymapObject.InvokerNew("get_scroll_lock_state")
 	})
 	return err
 }
@@ -4138,11 +3993,11 @@ var keymapHaveBidiLayoutsFunction_Once sync.Once
 func keymapHaveBidiLayoutsFunction_Set() error {
 	var err error
 	keymapHaveBidiLayoutsFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapHaveBidiLayoutsFunction, err = keymapStruct.InvokerNew("have_bidi_layouts")
+		keymapHaveBidiLayoutsFunction, err = keymapObject.InvokerNew("have_bidi_layouts")
 	})
 	return err
 }
@@ -4170,11 +4025,11 @@ var keymapLookupKeyFunction_Once sync.Once
 func keymapLookupKeyFunction_Set() error {
 	var err error
 	keymapLookupKeyFunction_Once.Do(func() {
-		err = keymapStruct_Set()
+		err = keymapObject_Set()
 		if err != nil {
 			return
 		}
-		keymapLookupKeyFunction, err = keymapStruct.InvokerNew("lookup_key")
+		keymapLookupKeyFunction, err = keymapObject.InvokerNew("lookup_key")
 	})
 	return err
 }
@@ -4201,29 +4056,13 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // UNSUPPORTED : C value 'gdk_keymap_translate_keyboard_state' : parameter 'state' of type 'ModifierType' not supported
 
-// KeymapStruct creates an uninitialised Keymap.
-func KeymapStruct() *Keymap {
-	err := keymapStruct_Set()
-	if err != nil {
-		return nil
-	}
+var monitorObject *gi.Object
+var monitorObject_Once sync.Once
 
-	structGo := &Keymap{}
-	structGo.Native = keymapStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeKeymap)
-	return structGo
-}
-func finalizeKeymap(obj *Keymap) {
-	keymapStruct.Free(obj.Native)
-}
-
-var monitorStruct *gi.Struct
-var monitorStruct_Once sync.Once
-
-func monitorStruct_Set() error {
+func monitorObject_Set() error {
 	var err error
-	monitorStruct_Once.Do(func() {
-		monitorStruct, err = gi.StructNew("Gdk", "Monitor")
+	monitorObject_Once.Do(func() {
+		monitorObject, err = gi.ObjectNew("Gdk", "Monitor")
 	})
 	return err
 }
@@ -4238,11 +4077,11 @@ var monitorGetDisplayFunction_Once sync.Once
 func monitorGetDisplayFunction_Set() error {
 	var err error
 	monitorGetDisplayFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetDisplayFunction, err = monitorStruct.InvokerNew("get_display")
+		monitorGetDisplayFunction, err = monitorObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -4271,11 +4110,11 @@ var monitorGetGeometryFunction_Once sync.Once
 func monitorGetGeometryFunction_Set() error {
 	var err error
 	monitorGetGeometryFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetGeometryFunction, err = monitorStruct.InvokerNew("get_geometry")
+		monitorGetGeometryFunction, err = monitorObject.InvokerNew("get_geometry")
 	})
 	return err
 }
@@ -4304,11 +4143,11 @@ var monitorGetHeightMmFunction_Once sync.Once
 func monitorGetHeightMmFunction_Set() error {
 	var err error
 	monitorGetHeightMmFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetHeightMmFunction, err = monitorStruct.InvokerNew("get_height_mm")
+		monitorGetHeightMmFunction, err = monitorObject.InvokerNew("get_height_mm")
 	})
 	return err
 }
@@ -4336,11 +4175,11 @@ var monitorGetManufacturerFunction_Once sync.Once
 func monitorGetManufacturerFunction_Set() error {
 	var err error
 	monitorGetManufacturerFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetManufacturerFunction, err = monitorStruct.InvokerNew("get_manufacturer")
+		monitorGetManufacturerFunction, err = monitorObject.InvokerNew("get_manufacturer")
 	})
 	return err
 }
@@ -4368,11 +4207,11 @@ var monitorGetModelFunction_Once sync.Once
 func monitorGetModelFunction_Set() error {
 	var err error
 	monitorGetModelFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetModelFunction, err = monitorStruct.InvokerNew("get_model")
+		monitorGetModelFunction, err = monitorObject.InvokerNew("get_model")
 	})
 	return err
 }
@@ -4400,11 +4239,11 @@ var monitorGetRefreshRateFunction_Once sync.Once
 func monitorGetRefreshRateFunction_Set() error {
 	var err error
 	monitorGetRefreshRateFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetRefreshRateFunction, err = monitorStruct.InvokerNew("get_refresh_rate")
+		monitorGetRefreshRateFunction, err = monitorObject.InvokerNew("get_refresh_rate")
 	})
 	return err
 }
@@ -4432,11 +4271,11 @@ var monitorGetScaleFactorFunction_Once sync.Once
 func monitorGetScaleFactorFunction_Set() error {
 	var err error
 	monitorGetScaleFactorFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetScaleFactorFunction, err = monitorStruct.InvokerNew("get_scale_factor")
+		monitorGetScaleFactorFunction, err = monitorObject.InvokerNew("get_scale_factor")
 	})
 	return err
 }
@@ -4464,11 +4303,11 @@ var monitorGetSubpixelLayoutFunction_Once sync.Once
 func monitorGetSubpixelLayoutFunction_Set() error {
 	var err error
 	monitorGetSubpixelLayoutFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetSubpixelLayoutFunction, err = monitorStruct.InvokerNew("get_subpixel_layout")
+		monitorGetSubpixelLayoutFunction, err = monitorObject.InvokerNew("get_subpixel_layout")
 	})
 	return err
 }
@@ -4496,11 +4335,11 @@ var monitorGetWidthMmFunction_Once sync.Once
 func monitorGetWidthMmFunction_Set() error {
 	var err error
 	monitorGetWidthMmFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetWidthMmFunction, err = monitorStruct.InvokerNew("get_width_mm")
+		monitorGetWidthMmFunction, err = monitorObject.InvokerNew("get_width_mm")
 	})
 	return err
 }
@@ -4528,11 +4367,11 @@ var monitorGetWorkareaFunction_Once sync.Once
 func monitorGetWorkareaFunction_Set() error {
 	var err error
 	monitorGetWorkareaFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorGetWorkareaFunction, err = monitorStruct.InvokerNew("get_workarea")
+		monitorGetWorkareaFunction, err = monitorObject.InvokerNew("get_workarea")
 	})
 	return err
 }
@@ -4561,11 +4400,11 @@ var monitorIsPrimaryFunction_Once sync.Once
 func monitorIsPrimaryFunction_Set() error {
 	var err error
 	monitorIsPrimaryFunction_Once.Do(func() {
-		err = monitorStruct_Set()
+		err = monitorObject_Set()
 		if err != nil {
 			return
 		}
-		monitorIsPrimaryFunction, err = monitorStruct.InvokerNew("is_primary")
+		monitorIsPrimaryFunction, err = monitorObject.InvokerNew("is_primary")
 	})
 	return err
 }
@@ -4587,29 +4426,13 @@ func (recv *Monitor) IsPrimary() bool {
 	return retGo
 }
 
-// MonitorStruct creates an uninitialised Monitor.
-func MonitorStruct() *Monitor {
-	err := monitorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var screenObject *gi.Object
+var screenObject_Once sync.Once
 
-	structGo := &Monitor{}
-	structGo.Native = monitorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeMonitor)
-	return structGo
-}
-func finalizeMonitor(obj *Monitor) {
-	monitorStruct.Free(obj.Native)
-}
-
-var screenStruct *gi.Struct
-var screenStruct_Once sync.Once
-
-func screenStruct_Set() error {
+func screenObject_Set() error {
 	var err error
-	screenStruct_Once.Do(func() {
-		screenStruct, err = gi.StructNew("Gdk", "Screen")
+	screenObject_Once.Do(func() {
+		screenObject, err = gi.ObjectNew("Gdk", "Screen")
 	})
 	return err
 }
@@ -4624,11 +4447,11 @@ var screenGetActiveWindowFunction_Once sync.Once
 func screenGetActiveWindowFunction_Set() error {
 	var err error
 	screenGetActiveWindowFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetActiveWindowFunction, err = screenStruct.InvokerNew("get_active_window")
+		screenGetActiveWindowFunction, err = screenObject.InvokerNew("get_active_window")
 	})
 	return err
 }
@@ -4657,11 +4480,11 @@ var screenGetDisplayFunction_Once sync.Once
 func screenGetDisplayFunction_Set() error {
 	var err error
 	screenGetDisplayFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetDisplayFunction, err = screenStruct.InvokerNew("get_display")
+		screenGetDisplayFunction, err = screenObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -4692,11 +4515,11 @@ var screenGetHeightFunction_Once sync.Once
 func screenGetHeightFunction_Set() error {
 	var err error
 	screenGetHeightFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetHeightFunction, err = screenStruct.InvokerNew("get_height")
+		screenGetHeightFunction, err = screenObject.InvokerNew("get_height")
 	})
 	return err
 }
@@ -4724,11 +4547,11 @@ var screenGetHeightMmFunction_Once sync.Once
 func screenGetHeightMmFunction_Set() error {
 	var err error
 	screenGetHeightMmFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetHeightMmFunction, err = screenStruct.InvokerNew("get_height_mm")
+		screenGetHeightMmFunction, err = screenObject.InvokerNew("get_height_mm")
 	})
 	return err
 }
@@ -4756,11 +4579,11 @@ var screenGetMonitorAtPointFunction_Once sync.Once
 func screenGetMonitorAtPointFunction_Set() error {
 	var err error
 	screenGetMonitorAtPointFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorAtPointFunction, err = screenStruct.InvokerNew("get_monitor_at_point")
+		screenGetMonitorAtPointFunction, err = screenObject.InvokerNew("get_monitor_at_point")
 	})
 	return err
 }
@@ -4790,11 +4613,11 @@ var screenGetMonitorAtWindowFunction_Once sync.Once
 func screenGetMonitorAtWindowFunction_Set() error {
 	var err error
 	screenGetMonitorAtWindowFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorAtWindowFunction, err = screenStruct.InvokerNew("get_monitor_at_window")
+		screenGetMonitorAtWindowFunction, err = screenObject.InvokerNew("get_monitor_at_window")
 	})
 	return err
 }
@@ -4823,11 +4646,11 @@ var screenGetMonitorGeometryFunction_Once sync.Once
 func screenGetMonitorGeometryFunction_Set() error {
 	var err error
 	screenGetMonitorGeometryFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorGeometryFunction, err = screenStruct.InvokerNew("get_monitor_geometry")
+		screenGetMonitorGeometryFunction, err = screenObject.InvokerNew("get_monitor_geometry")
 	})
 	return err
 }
@@ -4857,11 +4680,11 @@ var screenGetMonitorHeightMmFunction_Once sync.Once
 func screenGetMonitorHeightMmFunction_Set() error {
 	var err error
 	screenGetMonitorHeightMmFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorHeightMmFunction, err = screenStruct.InvokerNew("get_monitor_height_mm")
+		screenGetMonitorHeightMmFunction, err = screenObject.InvokerNew("get_monitor_height_mm")
 	})
 	return err
 }
@@ -4890,11 +4713,11 @@ var screenGetMonitorPlugNameFunction_Once sync.Once
 func screenGetMonitorPlugNameFunction_Set() error {
 	var err error
 	screenGetMonitorPlugNameFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorPlugNameFunction, err = screenStruct.InvokerNew("get_monitor_plug_name")
+		screenGetMonitorPlugNameFunction, err = screenObject.InvokerNew("get_monitor_plug_name")
 	})
 	return err
 }
@@ -4923,11 +4746,11 @@ var screenGetMonitorScaleFactorFunction_Once sync.Once
 func screenGetMonitorScaleFactorFunction_Set() error {
 	var err error
 	screenGetMonitorScaleFactorFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorScaleFactorFunction, err = screenStruct.InvokerNew("get_monitor_scale_factor")
+		screenGetMonitorScaleFactorFunction, err = screenObject.InvokerNew("get_monitor_scale_factor")
 	})
 	return err
 }
@@ -4956,11 +4779,11 @@ var screenGetMonitorWidthMmFunction_Once sync.Once
 func screenGetMonitorWidthMmFunction_Set() error {
 	var err error
 	screenGetMonitorWidthMmFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorWidthMmFunction, err = screenStruct.InvokerNew("get_monitor_width_mm")
+		screenGetMonitorWidthMmFunction, err = screenObject.InvokerNew("get_monitor_width_mm")
 	})
 	return err
 }
@@ -4989,11 +4812,11 @@ var screenGetMonitorWorkareaFunction_Once sync.Once
 func screenGetMonitorWorkareaFunction_Set() error {
 	var err error
 	screenGetMonitorWorkareaFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetMonitorWorkareaFunction, err = screenStruct.InvokerNew("get_monitor_workarea")
+		screenGetMonitorWorkareaFunction, err = screenObject.InvokerNew("get_monitor_workarea")
 	})
 	return err
 }
@@ -5023,11 +4846,11 @@ var screenGetNMonitorsFunction_Once sync.Once
 func screenGetNMonitorsFunction_Set() error {
 	var err error
 	screenGetNMonitorsFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetNMonitorsFunction, err = screenStruct.InvokerNew("get_n_monitors")
+		screenGetNMonitorsFunction, err = screenObject.InvokerNew("get_n_monitors")
 	})
 	return err
 }
@@ -5055,11 +4878,11 @@ var screenGetNumberFunction_Once sync.Once
 func screenGetNumberFunction_Set() error {
 	var err error
 	screenGetNumberFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetNumberFunction, err = screenStruct.InvokerNew("get_number")
+		screenGetNumberFunction, err = screenObject.InvokerNew("get_number")
 	})
 	return err
 }
@@ -5087,11 +4910,11 @@ var screenGetPrimaryMonitorFunction_Once sync.Once
 func screenGetPrimaryMonitorFunction_Set() error {
 	var err error
 	screenGetPrimaryMonitorFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetPrimaryMonitorFunction, err = screenStruct.InvokerNew("get_primary_monitor")
+		screenGetPrimaryMonitorFunction, err = screenObject.InvokerNew("get_primary_monitor")
 	})
 	return err
 }
@@ -5119,11 +4942,11 @@ var screenGetResolutionFunction_Once sync.Once
 func screenGetResolutionFunction_Set() error {
 	var err error
 	screenGetResolutionFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetResolutionFunction, err = screenStruct.InvokerNew("get_resolution")
+		screenGetResolutionFunction, err = screenObject.InvokerNew("get_resolution")
 	})
 	return err
 }
@@ -5151,11 +4974,11 @@ var screenGetRgbaVisualFunction_Once sync.Once
 func screenGetRgbaVisualFunction_Set() error {
 	var err error
 	screenGetRgbaVisualFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetRgbaVisualFunction, err = screenStruct.InvokerNew("get_rgba_visual")
+		screenGetRgbaVisualFunction, err = screenObject.InvokerNew("get_rgba_visual")
 	})
 	return err
 }
@@ -5184,11 +5007,11 @@ var screenGetRootWindowFunction_Once sync.Once
 func screenGetRootWindowFunction_Set() error {
 	var err error
 	screenGetRootWindowFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetRootWindowFunction, err = screenStruct.InvokerNew("get_root_window")
+		screenGetRootWindowFunction, err = screenObject.InvokerNew("get_root_window")
 	})
 	return err
 }
@@ -5219,11 +5042,11 @@ var screenGetSystemVisualFunction_Once sync.Once
 func screenGetSystemVisualFunction_Set() error {
 	var err error
 	screenGetSystemVisualFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetSystemVisualFunction, err = screenStruct.InvokerNew("get_system_visual")
+		screenGetSystemVisualFunction, err = screenObject.InvokerNew("get_system_visual")
 	})
 	return err
 }
@@ -5254,11 +5077,11 @@ var screenGetWidthFunction_Once sync.Once
 func screenGetWidthFunction_Set() error {
 	var err error
 	screenGetWidthFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetWidthFunction, err = screenStruct.InvokerNew("get_width")
+		screenGetWidthFunction, err = screenObject.InvokerNew("get_width")
 	})
 	return err
 }
@@ -5286,11 +5109,11 @@ var screenGetWidthMmFunction_Once sync.Once
 func screenGetWidthMmFunction_Set() error {
 	var err error
 	screenGetWidthMmFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenGetWidthMmFunction, err = screenStruct.InvokerNew("get_width_mm")
+		screenGetWidthMmFunction, err = screenObject.InvokerNew("get_width_mm")
 	})
 	return err
 }
@@ -5320,11 +5143,11 @@ var screenIsCompositedFunction_Once sync.Once
 func screenIsCompositedFunction_Set() error {
 	var err error
 	screenIsCompositedFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenIsCompositedFunction, err = screenStruct.InvokerNew("is_composited")
+		screenIsCompositedFunction, err = screenObject.InvokerNew("is_composited")
 	})
 	return err
 }
@@ -5354,11 +5177,11 @@ var screenMakeDisplayNameFunction_Once sync.Once
 func screenMakeDisplayNameFunction_Set() error {
 	var err error
 	screenMakeDisplayNameFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenMakeDisplayNameFunction, err = screenStruct.InvokerNew("make_display_name")
+		screenMakeDisplayNameFunction, err = screenObject.InvokerNew("make_display_name")
 	})
 	return err
 }
@@ -5388,11 +5211,11 @@ var screenSetResolutionFunction_Once sync.Once
 func screenSetResolutionFunction_Set() error {
 	var err error
 	screenSetResolutionFunction_Once.Do(func() {
-		err = screenStruct_Set()
+		err = screenObject_Set()
 		if err != nil {
 			return
 		}
-		screenSetResolutionFunction, err = screenStruct.InvokerNew("set_resolution")
+		screenSetResolutionFunction, err = screenObject.InvokerNew("set_resolution")
 	})
 	return err
 }
@@ -5411,29 +5234,13 @@ func (recv *Screen) SetResolution(dpi float64) {
 	return
 }
 
-// ScreenStruct creates an uninitialised Screen.
-func ScreenStruct() *Screen {
-	err := screenStruct_Set()
-	if err != nil {
-		return nil
-	}
+var seatObject *gi.Object
+var seatObject_Once sync.Once
 
-	structGo := &Screen{}
-	structGo.Native = screenStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeScreen)
-	return structGo
-}
-func finalizeScreen(obj *Screen) {
-	screenStruct.Free(obj.Native)
-}
-
-var seatStruct *gi.Struct
-var seatStruct_Once sync.Once
-
-func seatStruct_Set() error {
+func seatObject_Set() error {
 	var err error
-	seatStruct_Once.Do(func() {
-		seatStruct, err = gi.StructNew("Gdk", "Seat")
+	seatObject_Once.Do(func() {
+		seatObject, err = gi.ObjectNew("Gdk", "Seat")
 	})
 	return err
 }
@@ -5454,11 +5261,11 @@ var seatGetDisplayFunction_Once sync.Once
 func seatGetDisplayFunction_Set() error {
 	var err error
 	seatGetDisplayFunction_Once.Do(func() {
-		err = seatStruct_Set()
+		err = seatObject_Set()
 		if err != nil {
 			return
 		}
-		seatGetDisplayFunction, err = seatStruct.InvokerNew("get_display")
+		seatGetDisplayFunction, err = seatObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -5487,11 +5294,11 @@ var seatGetKeyboardFunction_Once sync.Once
 func seatGetKeyboardFunction_Set() error {
 	var err error
 	seatGetKeyboardFunction_Once.Do(func() {
-		err = seatStruct_Set()
+		err = seatObject_Set()
 		if err != nil {
 			return
 		}
-		seatGetKeyboardFunction, err = seatStruct.InvokerNew("get_keyboard")
+		seatGetKeyboardFunction, err = seatObject.InvokerNew("get_keyboard")
 	})
 	return err
 }
@@ -5520,11 +5327,11 @@ var seatGetPointerFunction_Once sync.Once
 func seatGetPointerFunction_Set() error {
 	var err error
 	seatGetPointerFunction_Once.Do(func() {
-		err = seatStruct_Set()
+		err = seatObject_Set()
 		if err != nil {
 			return
 		}
-		seatGetPointerFunction, err = seatStruct.InvokerNew("get_pointer")
+		seatGetPointerFunction, err = seatObject.InvokerNew("get_pointer")
 	})
 	return err
 }
@@ -5557,11 +5364,11 @@ var seatUngrabFunction_Once sync.Once
 func seatUngrabFunction_Set() error {
 	var err error
 	seatUngrabFunction_Once.Do(func() {
-		err = seatStruct_Set()
+		err = seatObject_Set()
 		if err != nil {
 			return
 		}
-		seatUngrabFunction, err = seatStruct.InvokerNew("ungrab")
+		seatUngrabFunction, err = seatObject.InvokerNew("ungrab")
 	})
 	return err
 }
@@ -5579,29 +5386,13 @@ func (recv *Seat) Ungrab() {
 	return
 }
 
-// SeatStruct creates an uninitialised Seat.
-func SeatStruct() *Seat {
-	err := seatStruct_Set()
-	if err != nil {
-		return nil
-	}
+var visualObject *gi.Object
+var visualObject_Once sync.Once
 
-	structGo := &Seat{}
-	structGo.Native = seatStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSeat)
-	return structGo
-}
-func finalizeSeat(obj *Seat) {
-	seatStruct.Free(obj.Native)
-}
-
-var visualStruct *gi.Struct
-var visualStruct_Once sync.Once
-
-func visualStruct_Set() error {
+func visualObject_Set() error {
 	var err error
-	visualStruct_Once.Do(func() {
-		visualStruct, err = gi.StructNew("Gdk", "Visual")
+	visualObject_Once.Do(func() {
+		visualObject, err = gi.ObjectNew("Gdk", "Visual")
 	})
 	return err
 }
@@ -5616,11 +5407,11 @@ var visualGetBitsPerRgbFunction_Once sync.Once
 func visualGetBitsPerRgbFunction_Set() error {
 	var err error
 	visualGetBitsPerRgbFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetBitsPerRgbFunction, err = visualStruct.InvokerNew("get_bits_per_rgb")
+		visualGetBitsPerRgbFunction, err = visualObject.InvokerNew("get_bits_per_rgb")
 	})
 	return err
 }
@@ -5648,11 +5439,11 @@ var visualGetBluePixelDetailsFunction_Once sync.Once
 func visualGetBluePixelDetailsFunction_Set() error {
 	var err error
 	visualGetBluePixelDetailsFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetBluePixelDetailsFunction, err = visualStruct.InvokerNew("get_blue_pixel_details")
+		visualGetBluePixelDetailsFunction, err = visualObject.InvokerNew("get_blue_pixel_details")
 	})
 	return err
 }
@@ -5682,11 +5473,11 @@ var visualGetByteOrderFunction_Once sync.Once
 func visualGetByteOrderFunction_Set() error {
 	var err error
 	visualGetByteOrderFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetByteOrderFunction, err = visualStruct.InvokerNew("get_byte_order")
+		visualGetByteOrderFunction, err = visualObject.InvokerNew("get_byte_order")
 	})
 	return err
 }
@@ -5714,11 +5505,11 @@ var visualGetColormapSizeFunction_Once sync.Once
 func visualGetColormapSizeFunction_Set() error {
 	var err error
 	visualGetColormapSizeFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetColormapSizeFunction, err = visualStruct.InvokerNew("get_colormap_size")
+		visualGetColormapSizeFunction, err = visualObject.InvokerNew("get_colormap_size")
 	})
 	return err
 }
@@ -5746,11 +5537,11 @@ var visualGetDepthFunction_Once sync.Once
 func visualGetDepthFunction_Set() error {
 	var err error
 	visualGetDepthFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetDepthFunction, err = visualStruct.InvokerNew("get_depth")
+		visualGetDepthFunction, err = visualObject.InvokerNew("get_depth")
 	})
 	return err
 }
@@ -5778,11 +5569,11 @@ var visualGetGreenPixelDetailsFunction_Once sync.Once
 func visualGetGreenPixelDetailsFunction_Set() error {
 	var err error
 	visualGetGreenPixelDetailsFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetGreenPixelDetailsFunction, err = visualStruct.InvokerNew("get_green_pixel_details")
+		visualGetGreenPixelDetailsFunction, err = visualObject.InvokerNew("get_green_pixel_details")
 	})
 	return err
 }
@@ -5812,11 +5603,11 @@ var visualGetRedPixelDetailsFunction_Once sync.Once
 func visualGetRedPixelDetailsFunction_Set() error {
 	var err error
 	visualGetRedPixelDetailsFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetRedPixelDetailsFunction, err = visualStruct.InvokerNew("get_red_pixel_details")
+		visualGetRedPixelDetailsFunction, err = visualObject.InvokerNew("get_red_pixel_details")
 	})
 	return err
 }
@@ -5846,11 +5637,11 @@ var visualGetScreenFunction_Once sync.Once
 func visualGetScreenFunction_Set() error {
 	var err error
 	visualGetScreenFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetScreenFunction, err = visualStruct.InvokerNew("get_screen")
+		visualGetScreenFunction, err = visualObject.InvokerNew("get_screen")
 	})
 	return err
 }
@@ -5879,11 +5670,11 @@ var visualGetVisualTypeFunction_Once sync.Once
 func visualGetVisualTypeFunction_Set() error {
 	var err error
 	visualGetVisualTypeFunction_Once.Do(func() {
-		err = visualStruct_Set()
+		err = visualObject_Set()
 		if err != nil {
 			return
 		}
-		visualGetVisualTypeFunction, err = visualStruct.InvokerNew("get_visual_type")
+		visualGetVisualTypeFunction, err = visualObject.InvokerNew("get_visual_type")
 	})
 	return err
 }
@@ -5905,29 +5696,13 @@ func (recv *Visual) GetVisualType() VisualType {
 	return retGo
 }
 
-// VisualStruct creates an uninitialised Visual.
-func VisualStruct() *Visual {
-	err := visualStruct_Set()
-	if err != nil {
-		return nil
-	}
+var windowObject *gi.Object
+var windowObject_Once sync.Once
 
-	structGo := &Visual{}
-	structGo.Native = visualStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeVisual)
-	return structGo
-}
-func finalizeVisual(obj *Visual) {
-	visualStruct.Free(obj.Native)
-}
-
-var windowStruct *gi.Struct
-var windowStruct_Once sync.Once
-
-func windowStruct_Set() error {
+func windowObject_Set() error {
 	var err error
-	windowStruct_Once.Do(func() {
-		windowStruct, err = gi.StructNew("Gdk", "Window")
+	windowObject_Once.Do(func() {
+		windowObject, err = gi.ObjectNew("Gdk", "Window")
 	})
 	return err
 }
@@ -5946,11 +5721,11 @@ var windowBeepFunction_Once sync.Once
 func windowBeepFunction_Set() error {
 	var err error
 	windowBeepFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeepFunction, err = windowStruct.InvokerNew("beep")
+		windowBeepFunction, err = windowObject.InvokerNew("beep")
 	})
 	return err
 }
@@ -5976,11 +5751,11 @@ var windowBeginMoveDragFunction_Once sync.Once
 func windowBeginMoveDragFunction_Set() error {
 	var err error
 	windowBeginMoveDragFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeginMoveDragFunction, err = windowStruct.InvokerNew("begin_move_drag")
+		windowBeginMoveDragFunction, err = windowObject.InvokerNew("begin_move_drag")
 	})
 	return err
 }
@@ -6008,11 +5783,11 @@ var windowBeginMoveDragForDeviceFunction_Once sync.Once
 func windowBeginMoveDragForDeviceFunction_Set() error {
 	var err error
 	windowBeginMoveDragForDeviceFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeginMoveDragForDeviceFunction, err = windowStruct.InvokerNew("begin_move_drag_for_device")
+		windowBeginMoveDragForDeviceFunction, err = windowObject.InvokerNew("begin_move_drag_for_device")
 	})
 	return err
 }
@@ -6041,11 +5816,11 @@ var windowBeginPaintRectFunction_Once sync.Once
 func windowBeginPaintRectFunction_Set() error {
 	var err error
 	windowBeginPaintRectFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeginPaintRectFunction, err = windowStruct.InvokerNew("begin_paint_rect")
+		windowBeginPaintRectFunction, err = windowObject.InvokerNew("begin_paint_rect")
 	})
 	return err
 }
@@ -6072,11 +5847,11 @@ var windowBeginResizeDragFunction_Once sync.Once
 func windowBeginResizeDragFunction_Set() error {
 	var err error
 	windowBeginResizeDragFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeginResizeDragFunction, err = windowStruct.InvokerNew("begin_resize_drag")
+		windowBeginResizeDragFunction, err = windowObject.InvokerNew("begin_resize_drag")
 	})
 	return err
 }
@@ -6105,11 +5880,11 @@ var windowBeginResizeDragForDeviceFunction_Once sync.Once
 func windowBeginResizeDragForDeviceFunction_Set() error {
 	var err error
 	windowBeginResizeDragForDeviceFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowBeginResizeDragForDeviceFunction, err = windowStruct.InvokerNew("begin_resize_drag_for_device")
+		windowBeginResizeDragForDeviceFunction, err = windowObject.InvokerNew("begin_resize_drag_for_device")
 	})
 	return err
 }
@@ -6139,11 +5914,11 @@ var windowConfigureFinishedFunction_Once sync.Once
 func windowConfigureFinishedFunction_Set() error {
 	var err error
 	windowConfigureFinishedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowConfigureFinishedFunction, err = windowStruct.InvokerNew("configure_finished")
+		windowConfigureFinishedFunction, err = windowObject.InvokerNew("configure_finished")
 	})
 	return err
 }
@@ -6167,11 +5942,11 @@ var windowCoordsFromParentFunction_Once sync.Once
 func windowCoordsFromParentFunction_Set() error {
 	var err error
 	windowCoordsFromParentFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowCoordsFromParentFunction, err = windowStruct.InvokerNew("coords_from_parent")
+		windowCoordsFromParentFunction, err = windowObject.InvokerNew("coords_from_parent")
 	})
 	return err
 }
@@ -6202,11 +5977,11 @@ var windowCoordsToParentFunction_Once sync.Once
 func windowCoordsToParentFunction_Set() error {
 	var err error
 	windowCoordsToParentFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowCoordsToParentFunction, err = windowStruct.InvokerNew("coords_to_parent")
+		windowCoordsToParentFunction, err = windowObject.InvokerNew("coords_to_parent")
 	})
 	return err
 }
@@ -6237,11 +6012,11 @@ var windowCreateGlContextFunction_Once sync.Once
 func windowCreateGlContextFunction_Set() error {
 	var err error
 	windowCreateGlContextFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowCreateGlContextFunction, err = windowStruct.InvokerNew("create_gl_context")
+		windowCreateGlContextFunction, err = windowObject.InvokerNew("create_gl_context")
 	})
 	return err
 }
@@ -6274,11 +6049,11 @@ var windowDeiconifyFunction_Once sync.Once
 func windowDeiconifyFunction_Set() error {
 	var err error
 	windowDeiconifyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowDeiconifyFunction, err = windowStruct.InvokerNew("deiconify")
+		windowDeiconifyFunction, err = windowObject.InvokerNew("deiconify")
 	})
 	return err
 }
@@ -6302,11 +6077,11 @@ var windowDestroyFunction_Once sync.Once
 func windowDestroyFunction_Set() error {
 	var err error
 	windowDestroyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowDestroyFunction, err = windowStruct.InvokerNew("destroy")
+		windowDestroyFunction, err = windowObject.InvokerNew("destroy")
 	})
 	return err
 }
@@ -6330,11 +6105,11 @@ var windowDestroyNotifyFunction_Once sync.Once
 func windowDestroyNotifyFunction_Set() error {
 	var err error
 	windowDestroyNotifyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowDestroyNotifyFunction, err = windowStruct.InvokerNew("destroy_notify")
+		windowDestroyNotifyFunction, err = windowObject.InvokerNew("destroy_notify")
 	})
 	return err
 }
@@ -6358,11 +6133,11 @@ var windowEnableSynchronizedConfigureFunction_Once sync.Once
 func windowEnableSynchronizedConfigureFunction_Set() error {
 	var err error
 	windowEnableSynchronizedConfigureFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowEnableSynchronizedConfigureFunction, err = windowStruct.InvokerNew("enable_synchronized_configure")
+		windowEnableSynchronizedConfigureFunction, err = windowObject.InvokerNew("enable_synchronized_configure")
 	})
 	return err
 }
@@ -6386,11 +6161,11 @@ var windowEndDrawFrameFunction_Once sync.Once
 func windowEndDrawFrameFunction_Set() error {
 	var err error
 	windowEndDrawFrameFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowEndDrawFrameFunction, err = windowStruct.InvokerNew("end_draw_frame")
+		windowEndDrawFrameFunction, err = windowObject.InvokerNew("end_draw_frame")
 	})
 	return err
 }
@@ -6415,11 +6190,11 @@ var windowEndPaintFunction_Once sync.Once
 func windowEndPaintFunction_Set() error {
 	var err error
 	windowEndPaintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowEndPaintFunction, err = windowStruct.InvokerNew("end_paint")
+		windowEndPaintFunction, err = windowObject.InvokerNew("end_paint")
 	})
 	return err
 }
@@ -6443,11 +6218,11 @@ var windowEnsureNativeFunction_Once sync.Once
 func windowEnsureNativeFunction_Set() error {
 	var err error
 	windowEnsureNativeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowEnsureNativeFunction, err = windowStruct.InvokerNew("ensure_native")
+		windowEnsureNativeFunction, err = windowObject.InvokerNew("ensure_native")
 	})
 	return err
 }
@@ -6475,11 +6250,11 @@ var windowFlushFunction_Once sync.Once
 func windowFlushFunction_Set() error {
 	var err error
 	windowFlushFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFlushFunction, err = windowStruct.InvokerNew("flush")
+		windowFlushFunction, err = windowObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -6503,11 +6278,11 @@ var windowFocusFunction_Once sync.Once
 func windowFocusFunction_Set() error {
 	var err error
 	windowFocusFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFocusFunction, err = windowStruct.InvokerNew("focus")
+		windowFocusFunction, err = windowObject.InvokerNew("focus")
 	})
 	return err
 }
@@ -6532,11 +6307,11 @@ var windowFreezeToplevelUpdatesLibgtkOnlyFunction_Once sync.Once
 func windowFreezeToplevelUpdatesLibgtkOnlyFunction_Set() error {
 	var err error
 	windowFreezeToplevelUpdatesLibgtkOnlyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFreezeToplevelUpdatesLibgtkOnlyFunction, err = windowStruct.InvokerNew("freeze_toplevel_updates_libgtk_only")
+		windowFreezeToplevelUpdatesLibgtkOnlyFunction, err = windowObject.InvokerNew("freeze_toplevel_updates_libgtk_only")
 	})
 	return err
 }
@@ -6560,11 +6335,11 @@ var windowFreezeUpdatesFunction_Once sync.Once
 func windowFreezeUpdatesFunction_Set() error {
 	var err error
 	windowFreezeUpdatesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFreezeUpdatesFunction, err = windowStruct.InvokerNew("freeze_updates")
+		windowFreezeUpdatesFunction, err = windowObject.InvokerNew("freeze_updates")
 	})
 	return err
 }
@@ -6588,11 +6363,11 @@ var windowFullscreenFunction_Once sync.Once
 func windowFullscreenFunction_Set() error {
 	var err error
 	windowFullscreenFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFullscreenFunction, err = windowStruct.InvokerNew("fullscreen")
+		windowFullscreenFunction, err = windowObject.InvokerNew("fullscreen")
 	})
 	return err
 }
@@ -6616,11 +6391,11 @@ var windowFullscreenOnMonitorFunction_Once sync.Once
 func windowFullscreenOnMonitorFunction_Set() error {
 	var err error
 	windowFullscreenOnMonitorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowFullscreenOnMonitorFunction, err = windowStruct.InvokerNew("fullscreen_on_monitor")
+		windowFullscreenOnMonitorFunction, err = windowObject.InvokerNew("fullscreen_on_monitor")
 	})
 	return err
 }
@@ -6645,11 +6420,11 @@ var windowGeometryChangedFunction_Once sync.Once
 func windowGeometryChangedFunction_Set() error {
 	var err error
 	windowGeometryChangedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGeometryChangedFunction, err = windowStruct.InvokerNew("geometry_changed")
+		windowGeometryChangedFunction, err = windowObject.InvokerNew("geometry_changed")
 	})
 	return err
 }
@@ -6673,11 +6448,11 @@ var windowGetAcceptFocusFunction_Once sync.Once
 func windowGetAcceptFocusFunction_Set() error {
 	var err error
 	windowGetAcceptFocusFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetAcceptFocusFunction, err = windowStruct.InvokerNew("get_accept_focus")
+		windowGetAcceptFocusFunction, err = windowObject.InvokerNew("get_accept_focus")
 	})
 	return err
 }
@@ -6713,11 +6488,11 @@ var windowGetCompositedFunction_Once sync.Once
 func windowGetCompositedFunction_Set() error {
 	var err error
 	windowGetCompositedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetCompositedFunction, err = windowStruct.InvokerNew("get_composited")
+		windowGetCompositedFunction, err = windowObject.InvokerNew("get_composited")
 	})
 	return err
 }
@@ -6745,11 +6520,11 @@ var windowGetCursorFunction_Once sync.Once
 func windowGetCursorFunction_Set() error {
 	var err error
 	windowGetCursorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetCursorFunction, err = windowStruct.InvokerNew("get_cursor")
+		windowGetCursorFunction, err = windowObject.InvokerNew("get_cursor")
 	})
 	return err
 }
@@ -6780,11 +6555,11 @@ var windowGetDeviceCursorFunction_Once sync.Once
 func windowGetDeviceCursorFunction_Set() error {
 	var err error
 	windowGetDeviceCursorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetDeviceCursorFunction, err = windowStruct.InvokerNew("get_device_cursor")
+		windowGetDeviceCursorFunction, err = windowObject.InvokerNew("get_device_cursor")
 	})
 	return err
 }
@@ -6820,11 +6595,11 @@ var windowGetDisplayFunction_Once sync.Once
 func windowGetDisplayFunction_Set() error {
 	var err error
 	windowGetDisplayFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetDisplayFunction, err = windowStruct.InvokerNew("get_display")
+		windowGetDisplayFunction, err = windowObject.InvokerNew("get_display")
 	})
 	return err
 }
@@ -6853,11 +6628,11 @@ var windowGetDragProtocolFunction_Once sync.Once
 func windowGetDragProtocolFunction_Set() error {
 	var err error
 	windowGetDragProtocolFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetDragProtocolFunction, err = windowStruct.InvokerNew("get_drag_protocol")
+		windowGetDragProtocolFunction, err = windowObject.InvokerNew("get_drag_protocol")
 	})
 	return err
 }
@@ -6888,11 +6663,11 @@ var windowGetEffectiveParentFunction_Once sync.Once
 func windowGetEffectiveParentFunction_Set() error {
 	var err error
 	windowGetEffectiveParentFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetEffectiveParentFunction, err = windowStruct.InvokerNew("get_effective_parent")
+		windowGetEffectiveParentFunction, err = windowObject.InvokerNew("get_effective_parent")
 	})
 	return err
 }
@@ -6921,11 +6696,11 @@ var windowGetEffectiveToplevelFunction_Once sync.Once
 func windowGetEffectiveToplevelFunction_Set() error {
 	var err error
 	windowGetEffectiveToplevelFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetEffectiveToplevelFunction, err = windowStruct.InvokerNew("get_effective_toplevel")
+		windowGetEffectiveToplevelFunction, err = windowObject.InvokerNew("get_effective_toplevel")
 	})
 	return err
 }
@@ -6954,11 +6729,11 @@ var windowGetEventCompressionFunction_Once sync.Once
 func windowGetEventCompressionFunction_Set() error {
 	var err error
 	windowGetEventCompressionFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetEventCompressionFunction, err = windowStruct.InvokerNew("get_event_compression")
+		windowGetEventCompressionFunction, err = windowObject.InvokerNew("get_event_compression")
 	})
 	return err
 }
@@ -6988,11 +6763,11 @@ var windowGetFocusOnMapFunction_Once sync.Once
 func windowGetFocusOnMapFunction_Set() error {
 	var err error
 	windowGetFocusOnMapFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetFocusOnMapFunction, err = windowStruct.InvokerNew("get_focus_on_map")
+		windowGetFocusOnMapFunction, err = windowObject.InvokerNew("get_focus_on_map")
 	})
 	return err
 }
@@ -7020,11 +6795,11 @@ var windowGetFrameClockFunction_Once sync.Once
 func windowGetFrameClockFunction_Set() error {
 	var err error
 	windowGetFrameClockFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetFrameClockFunction, err = windowStruct.InvokerNew("get_frame_clock")
+		windowGetFrameClockFunction, err = windowObject.InvokerNew("get_frame_clock")
 	})
 	return err
 }
@@ -7053,11 +6828,11 @@ var windowGetFrameExtentsFunction_Once sync.Once
 func windowGetFrameExtentsFunction_Set() error {
 	var err error
 	windowGetFrameExtentsFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetFrameExtentsFunction, err = windowStruct.InvokerNew("get_frame_extents")
+		windowGetFrameExtentsFunction, err = windowObject.InvokerNew("get_frame_extents")
 	})
 	return err
 }
@@ -7086,11 +6861,11 @@ var windowGetFullscreenModeFunction_Once sync.Once
 func windowGetFullscreenModeFunction_Set() error {
 	var err error
 	windowGetFullscreenModeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetFullscreenModeFunction, err = windowStruct.InvokerNew("get_fullscreen_mode")
+		windowGetFullscreenModeFunction, err = windowObject.InvokerNew("get_fullscreen_mode")
 	})
 	return err
 }
@@ -7118,11 +6893,11 @@ var windowGetGeometryFunction_Once sync.Once
 func windowGetGeometryFunction_Set() error {
 	var err error
 	windowGetGeometryFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetGeometryFunction, err = windowStruct.InvokerNew("get_geometry")
+		windowGetGeometryFunction, err = windowObject.InvokerNew("get_geometry")
 	})
 	return err
 }
@@ -7153,11 +6928,11 @@ var windowGetGroupFunction_Once sync.Once
 func windowGetGroupFunction_Set() error {
 	var err error
 	windowGetGroupFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetGroupFunction, err = windowStruct.InvokerNew("get_group")
+		windowGetGroupFunction, err = windowObject.InvokerNew("get_group")
 	})
 	return err
 }
@@ -7186,11 +6961,11 @@ var windowGetHeightFunction_Once sync.Once
 func windowGetHeightFunction_Set() error {
 	var err error
 	windowGetHeightFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetHeightFunction, err = windowStruct.InvokerNew("get_height")
+		windowGetHeightFunction, err = windowObject.InvokerNew("get_height")
 	})
 	return err
 }
@@ -7218,11 +6993,11 @@ var windowGetModalHintFunction_Once sync.Once
 func windowGetModalHintFunction_Set() error {
 	var err error
 	windowGetModalHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetModalHintFunction, err = windowStruct.InvokerNew("get_modal_hint")
+		windowGetModalHintFunction, err = windowObject.InvokerNew("get_modal_hint")
 	})
 	return err
 }
@@ -7250,11 +7025,11 @@ var windowGetOriginFunction_Once sync.Once
 func windowGetOriginFunction_Set() error {
 	var err error
 	windowGetOriginFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetOriginFunction, err = windowStruct.InvokerNew("get_origin")
+		windowGetOriginFunction, err = windowObject.InvokerNew("get_origin")
 	})
 	return err
 }
@@ -7285,11 +7060,11 @@ var windowGetParentFunction_Once sync.Once
 func windowGetParentFunction_Set() error {
 	var err error
 	windowGetParentFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetParentFunction, err = windowStruct.InvokerNew("get_parent")
+		windowGetParentFunction, err = windowObject.InvokerNew("get_parent")
 	})
 	return err
 }
@@ -7318,11 +7093,11 @@ var windowGetPassThroughFunction_Once sync.Once
 func windowGetPassThroughFunction_Set() error {
 	var err error
 	windowGetPassThroughFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetPassThroughFunction, err = windowStruct.InvokerNew("get_pass_through")
+		windowGetPassThroughFunction, err = windowObject.InvokerNew("get_pass_through")
 	})
 	return err
 }
@@ -7352,11 +7127,11 @@ var windowGetPositionFunction_Once sync.Once
 func windowGetPositionFunction_Set() error {
 	var err error
 	windowGetPositionFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetPositionFunction, err = windowStruct.InvokerNew("get_position")
+		windowGetPositionFunction, err = windowObject.InvokerNew("get_position")
 	})
 	return err
 }
@@ -7385,11 +7160,11 @@ var windowGetRootCoordsFunction_Once sync.Once
 func windowGetRootCoordsFunction_Set() error {
 	var err error
 	windowGetRootCoordsFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetRootCoordsFunction, err = windowStruct.InvokerNew("get_root_coords")
+		windowGetRootCoordsFunction, err = windowObject.InvokerNew("get_root_coords")
 	})
 	return err
 }
@@ -7420,11 +7195,11 @@ var windowGetRootOriginFunction_Once sync.Once
 func windowGetRootOriginFunction_Set() error {
 	var err error
 	windowGetRootOriginFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetRootOriginFunction, err = windowStruct.InvokerNew("get_root_origin")
+		windowGetRootOriginFunction, err = windowObject.InvokerNew("get_root_origin")
 	})
 	return err
 }
@@ -7453,11 +7228,11 @@ var windowGetScaleFactorFunction_Once sync.Once
 func windowGetScaleFactorFunction_Set() error {
 	var err error
 	windowGetScaleFactorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetScaleFactorFunction, err = windowStruct.InvokerNew("get_scale_factor")
+		windowGetScaleFactorFunction, err = windowObject.InvokerNew("get_scale_factor")
 	})
 	return err
 }
@@ -7485,11 +7260,11 @@ var windowGetScreenFunction_Once sync.Once
 func windowGetScreenFunction_Set() error {
 	var err error
 	windowGetScreenFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetScreenFunction, err = windowStruct.InvokerNew("get_screen")
+		windowGetScreenFunction, err = windowObject.InvokerNew("get_screen")
 	})
 	return err
 }
@@ -7522,11 +7297,11 @@ var windowGetSupportMultideviceFunction_Once sync.Once
 func windowGetSupportMultideviceFunction_Set() error {
 	var err error
 	windowGetSupportMultideviceFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetSupportMultideviceFunction, err = windowStruct.InvokerNew("get_support_multidevice")
+		windowGetSupportMultideviceFunction, err = windowObject.InvokerNew("get_support_multidevice")
 	})
 	return err
 }
@@ -7554,11 +7329,11 @@ var windowGetToplevelFunction_Once sync.Once
 func windowGetToplevelFunction_Set() error {
 	var err error
 	windowGetToplevelFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetToplevelFunction, err = windowStruct.InvokerNew("get_toplevel")
+		windowGetToplevelFunction, err = windowObject.InvokerNew("get_toplevel")
 	})
 	return err
 }
@@ -7587,11 +7362,11 @@ var windowGetTypeHintFunction_Once sync.Once
 func windowGetTypeHintFunction_Set() error {
 	var err error
 	windowGetTypeHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetTypeHintFunction, err = windowStruct.InvokerNew("get_type_hint")
+		windowGetTypeHintFunction, err = windowObject.InvokerNew("get_type_hint")
 	})
 	return err
 }
@@ -7625,11 +7400,11 @@ var windowGetVisualFunction_Once sync.Once
 func windowGetVisualFunction_Set() error {
 	var err error
 	windowGetVisualFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetVisualFunction, err = windowStruct.InvokerNew("get_visual")
+		windowGetVisualFunction, err = windowObject.InvokerNew("get_visual")
 	})
 	return err
 }
@@ -7658,11 +7433,11 @@ var windowGetWidthFunction_Once sync.Once
 func windowGetWidthFunction_Set() error {
 	var err error
 	windowGetWidthFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetWidthFunction, err = windowStruct.InvokerNew("get_width")
+		windowGetWidthFunction, err = windowObject.InvokerNew("get_width")
 	})
 	return err
 }
@@ -7690,11 +7465,11 @@ var windowGetWindowTypeFunction_Once sync.Once
 func windowGetWindowTypeFunction_Set() error {
 	var err error
 	windowGetWindowTypeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowGetWindowTypeFunction, err = windowStruct.InvokerNew("get_window_type")
+		windowGetWindowTypeFunction, err = windowObject.InvokerNew("get_window_type")
 	})
 	return err
 }
@@ -7722,11 +7497,11 @@ var windowHasNativeFunction_Once sync.Once
 func windowHasNativeFunction_Set() error {
 	var err error
 	windowHasNativeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowHasNativeFunction, err = windowStruct.InvokerNew("has_native")
+		windowHasNativeFunction, err = windowObject.InvokerNew("has_native")
 	})
 	return err
 }
@@ -7754,11 +7529,11 @@ var windowHideFunction_Once sync.Once
 func windowHideFunction_Set() error {
 	var err error
 	windowHideFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowHideFunction, err = windowStruct.InvokerNew("hide")
+		windowHideFunction, err = windowObject.InvokerNew("hide")
 	})
 	return err
 }
@@ -7782,11 +7557,11 @@ var windowIconifyFunction_Once sync.Once
 func windowIconifyFunction_Set() error {
 	var err error
 	windowIconifyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIconifyFunction, err = windowStruct.InvokerNew("iconify")
+		windowIconifyFunction, err = windowObject.InvokerNew("iconify")
 	})
 	return err
 }
@@ -7814,11 +7589,11 @@ var windowInvalidateRectFunction_Once sync.Once
 func windowInvalidateRectFunction_Set() error {
 	var err error
 	windowInvalidateRectFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowInvalidateRectFunction, err = windowStruct.InvokerNew("invalidate_rect")
+		windowInvalidateRectFunction, err = windowObject.InvokerNew("invalidate_rect")
 	})
 	return err
 }
@@ -7846,11 +7621,11 @@ var windowIsDestroyedFunction_Once sync.Once
 func windowIsDestroyedFunction_Set() error {
 	var err error
 	windowIsDestroyedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIsDestroyedFunction, err = windowStruct.InvokerNew("is_destroyed")
+		windowIsDestroyedFunction, err = windowObject.InvokerNew("is_destroyed")
 	})
 	return err
 }
@@ -7878,11 +7653,11 @@ var windowIsInputOnlyFunction_Once sync.Once
 func windowIsInputOnlyFunction_Set() error {
 	var err error
 	windowIsInputOnlyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIsInputOnlyFunction, err = windowStruct.InvokerNew("is_input_only")
+		windowIsInputOnlyFunction, err = windowObject.InvokerNew("is_input_only")
 	})
 	return err
 }
@@ -7910,11 +7685,11 @@ var windowIsShapedFunction_Once sync.Once
 func windowIsShapedFunction_Set() error {
 	var err error
 	windowIsShapedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIsShapedFunction, err = windowStruct.InvokerNew("is_shaped")
+		windowIsShapedFunction, err = windowObject.InvokerNew("is_shaped")
 	})
 	return err
 }
@@ -7942,11 +7717,11 @@ var windowIsViewableFunction_Once sync.Once
 func windowIsViewableFunction_Set() error {
 	var err error
 	windowIsViewableFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIsViewableFunction, err = windowStruct.InvokerNew("is_viewable")
+		windowIsViewableFunction, err = windowObject.InvokerNew("is_viewable")
 	})
 	return err
 }
@@ -7974,11 +7749,11 @@ var windowIsVisibleFunction_Once sync.Once
 func windowIsVisibleFunction_Set() error {
 	var err error
 	windowIsVisibleFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowIsVisibleFunction, err = windowStruct.InvokerNew("is_visible")
+		windowIsVisibleFunction, err = windowObject.InvokerNew("is_visible")
 	})
 	return err
 }
@@ -8006,11 +7781,11 @@ var windowLowerFunction_Once sync.Once
 func windowLowerFunction_Set() error {
 	var err error
 	windowLowerFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowLowerFunction, err = windowStruct.InvokerNew("lower")
+		windowLowerFunction, err = windowObject.InvokerNew("lower")
 	})
 	return err
 }
@@ -8036,11 +7811,11 @@ var windowMaximizeFunction_Once sync.Once
 func windowMaximizeFunction_Set() error {
 	var err error
 	windowMaximizeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowMaximizeFunction, err = windowStruct.InvokerNew("maximize")
+		windowMaximizeFunction, err = windowObject.InvokerNew("maximize")
 	})
 	return err
 }
@@ -8064,11 +7839,11 @@ var windowMergeChildInputShapesFunction_Once sync.Once
 func windowMergeChildInputShapesFunction_Set() error {
 	var err error
 	windowMergeChildInputShapesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowMergeChildInputShapesFunction, err = windowStruct.InvokerNew("merge_child_input_shapes")
+		windowMergeChildInputShapesFunction, err = windowObject.InvokerNew("merge_child_input_shapes")
 	})
 	return err
 }
@@ -8092,11 +7867,11 @@ var windowMergeChildShapesFunction_Once sync.Once
 func windowMergeChildShapesFunction_Set() error {
 	var err error
 	windowMergeChildShapesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowMergeChildShapesFunction, err = windowStruct.InvokerNew("merge_child_shapes")
+		windowMergeChildShapesFunction, err = windowObject.InvokerNew("merge_child_shapes")
 	})
 	return err
 }
@@ -8120,11 +7895,11 @@ var windowMoveFunction_Once sync.Once
 func windowMoveFunction_Set() error {
 	var err error
 	windowMoveFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowMoveFunction, err = windowStruct.InvokerNew("move")
+		windowMoveFunction, err = windowObject.InvokerNew("move")
 	})
 	return err
 }
@@ -8152,11 +7927,11 @@ var windowMoveResizeFunction_Once sync.Once
 func windowMoveResizeFunction_Set() error {
 	var err error
 	windowMoveResizeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowMoveResizeFunction, err = windowStruct.InvokerNew("move_resize")
+		windowMoveResizeFunction, err = windowObject.InvokerNew("move_resize")
 	})
 	return err
 }
@@ -8188,11 +7963,11 @@ var windowProcessUpdatesFunction_Once sync.Once
 func windowProcessUpdatesFunction_Set() error {
 	var err error
 	windowProcessUpdatesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowProcessUpdatesFunction, err = windowStruct.InvokerNew("process_updates")
+		windowProcessUpdatesFunction, err = windowObject.InvokerNew("process_updates")
 	})
 	return err
 }
@@ -8217,11 +7992,11 @@ var windowRaiseFunction_Once sync.Once
 func windowRaiseFunction_Set() error {
 	var err error
 	windowRaiseFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowRaiseFunction, err = windowStruct.InvokerNew("raise")
+		windowRaiseFunction, err = windowObject.InvokerNew("raise")
 	})
 	return err
 }
@@ -8245,11 +8020,11 @@ var windowRegisterDndFunction_Once sync.Once
 func windowRegisterDndFunction_Set() error {
 	var err error
 	windowRegisterDndFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowRegisterDndFunction, err = windowStruct.InvokerNew("register_dnd")
+		windowRegisterDndFunction, err = windowObject.InvokerNew("register_dnd")
 	})
 	return err
 }
@@ -8275,11 +8050,11 @@ var windowReparentFunction_Once sync.Once
 func windowReparentFunction_Set() error {
 	var err error
 	windowReparentFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowReparentFunction, err = windowStruct.InvokerNew("reparent")
+		windowReparentFunction, err = windowObject.InvokerNew("reparent")
 	})
 	return err
 }
@@ -8306,11 +8081,11 @@ var windowResizeFunction_Once sync.Once
 func windowResizeFunction_Set() error {
 	var err error
 	windowResizeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowResizeFunction, err = windowStruct.InvokerNew("resize")
+		windowResizeFunction, err = windowObject.InvokerNew("resize")
 	})
 	return err
 }
@@ -8336,11 +8111,11 @@ var windowRestackFunction_Once sync.Once
 func windowRestackFunction_Set() error {
 	var err error
 	windowRestackFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowRestackFunction, err = windowStruct.InvokerNew("restack")
+		windowRestackFunction, err = windowObject.InvokerNew("restack")
 	})
 	return err
 }
@@ -8366,11 +8141,11 @@ var windowScrollFunction_Once sync.Once
 func windowScrollFunction_Set() error {
 	var err error
 	windowScrollFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowScrollFunction, err = windowStruct.InvokerNew("scroll")
+		windowScrollFunction, err = windowObject.InvokerNew("scroll")
 	})
 	return err
 }
@@ -8396,11 +8171,11 @@ var windowSetAcceptFocusFunction_Once sync.Once
 func windowSetAcceptFocusFunction_Set() error {
 	var err error
 	windowSetAcceptFocusFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetAcceptFocusFunction, err = windowStruct.InvokerNew("set_accept_focus")
+		windowSetAcceptFocusFunction, err = windowObject.InvokerNew("set_accept_focus")
 	})
 	return err
 }
@@ -8425,11 +8200,11 @@ var windowSetBackgroundFunction_Once sync.Once
 func windowSetBackgroundFunction_Set() error {
 	var err error
 	windowSetBackgroundFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetBackgroundFunction, err = windowStruct.InvokerNew("set_background")
+		windowSetBackgroundFunction, err = windowObject.InvokerNew("set_background")
 	})
 	return err
 }
@@ -8456,11 +8231,11 @@ var windowSetBackgroundRgbaFunction_Once sync.Once
 func windowSetBackgroundRgbaFunction_Set() error {
 	var err error
 	windowSetBackgroundRgbaFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetBackgroundRgbaFunction, err = windowStruct.InvokerNew("set_background_rgba")
+		windowSetBackgroundRgbaFunction, err = windowObject.InvokerNew("set_background_rgba")
 	})
 	return err
 }
@@ -8485,11 +8260,11 @@ var windowSetChildInputShapesFunction_Once sync.Once
 func windowSetChildInputShapesFunction_Set() error {
 	var err error
 	windowSetChildInputShapesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetChildInputShapesFunction, err = windowStruct.InvokerNew("set_child_input_shapes")
+		windowSetChildInputShapesFunction, err = windowObject.InvokerNew("set_child_input_shapes")
 	})
 	return err
 }
@@ -8513,11 +8288,11 @@ var windowSetChildShapesFunction_Once sync.Once
 func windowSetChildShapesFunction_Set() error {
 	var err error
 	windowSetChildShapesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetChildShapesFunction, err = windowStruct.InvokerNew("set_child_shapes")
+		windowSetChildShapesFunction, err = windowObject.InvokerNew("set_child_shapes")
 	})
 	return err
 }
@@ -8541,11 +8316,11 @@ var windowSetCompositedFunction_Once sync.Once
 func windowSetCompositedFunction_Set() error {
 	var err error
 	windowSetCompositedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetCompositedFunction, err = windowStruct.InvokerNew("set_composited")
+		windowSetCompositedFunction, err = windowObject.InvokerNew("set_composited")
 	})
 	return err
 }
@@ -8570,11 +8345,11 @@ var windowSetCursorFunction_Once sync.Once
 func windowSetCursorFunction_Set() error {
 	var err error
 	windowSetCursorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetCursorFunction, err = windowStruct.InvokerNew("set_cursor")
+		windowSetCursorFunction, err = windowObject.InvokerNew("set_cursor")
 	})
 	return err
 }
@@ -8601,11 +8376,11 @@ var windowSetDeviceCursorFunction_Once sync.Once
 func windowSetDeviceCursorFunction_Set() error {
 	var err error
 	windowSetDeviceCursorFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetDeviceCursorFunction, err = windowStruct.InvokerNew("set_device_cursor")
+		windowSetDeviceCursorFunction, err = windowObject.InvokerNew("set_device_cursor")
 	})
 	return err
 }
@@ -8633,11 +8408,11 @@ var windowSetEventCompressionFunction_Once sync.Once
 func windowSetEventCompressionFunction_Set() error {
 	var err error
 	windowSetEventCompressionFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetEventCompressionFunction, err = windowStruct.InvokerNew("set_event_compression")
+		windowSetEventCompressionFunction, err = windowObject.InvokerNew("set_event_compression")
 	})
 	return err
 }
@@ -8664,11 +8439,11 @@ var windowSetFocusOnMapFunction_Once sync.Once
 func windowSetFocusOnMapFunction_Set() error {
 	var err error
 	windowSetFocusOnMapFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetFocusOnMapFunction, err = windowStruct.InvokerNew("set_focus_on_map")
+		windowSetFocusOnMapFunction, err = windowObject.InvokerNew("set_focus_on_map")
 	})
 	return err
 }
@@ -8693,11 +8468,11 @@ var windowSetFullscreenModeFunction_Once sync.Once
 func windowSetFullscreenModeFunction_Set() error {
 	var err error
 	windowSetFullscreenModeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetFullscreenModeFunction, err = windowStruct.InvokerNew("set_fullscreen_mode")
+		windowSetFullscreenModeFunction, err = windowObject.InvokerNew("set_fullscreen_mode")
 	})
 	return err
 }
@@ -8726,11 +8501,11 @@ var windowSetGroupFunction_Once sync.Once
 func windowSetGroupFunction_Set() error {
 	var err error
 	windowSetGroupFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetGroupFunction, err = windowStruct.InvokerNew("set_group")
+		windowSetGroupFunction, err = windowObject.InvokerNew("set_group")
 	})
 	return err
 }
@@ -8757,11 +8532,11 @@ var windowSetIconNameFunction_Once sync.Once
 func windowSetIconNameFunction_Set() error {
 	var err error
 	windowSetIconNameFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetIconNameFunction, err = windowStruct.InvokerNew("set_icon_name")
+		windowSetIconNameFunction, err = windowObject.InvokerNew("set_icon_name")
 	})
 	return err
 }
@@ -8788,11 +8563,11 @@ var windowSetKeepAboveFunction_Once sync.Once
 func windowSetKeepAboveFunction_Set() error {
 	var err error
 	windowSetKeepAboveFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetKeepAboveFunction, err = windowStruct.InvokerNew("set_keep_above")
+		windowSetKeepAboveFunction, err = windowObject.InvokerNew("set_keep_above")
 	})
 	return err
 }
@@ -8817,11 +8592,11 @@ var windowSetKeepBelowFunction_Once sync.Once
 func windowSetKeepBelowFunction_Set() error {
 	var err error
 	windowSetKeepBelowFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetKeepBelowFunction, err = windowStruct.InvokerNew("set_keep_below")
+		windowSetKeepBelowFunction, err = windowObject.InvokerNew("set_keep_below")
 	})
 	return err
 }
@@ -8846,11 +8621,11 @@ var windowSetModalHintFunction_Once sync.Once
 func windowSetModalHintFunction_Set() error {
 	var err error
 	windowSetModalHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetModalHintFunction, err = windowStruct.InvokerNew("set_modal_hint")
+		windowSetModalHintFunction, err = windowObject.InvokerNew("set_modal_hint")
 	})
 	return err
 }
@@ -8875,11 +8650,11 @@ var windowSetOpacityFunction_Once sync.Once
 func windowSetOpacityFunction_Set() error {
 	var err error
 	windowSetOpacityFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetOpacityFunction, err = windowStruct.InvokerNew("set_opacity")
+		windowSetOpacityFunction, err = windowObject.InvokerNew("set_opacity")
 	})
 	return err
 }
@@ -8906,11 +8681,11 @@ var windowSetOverrideRedirectFunction_Once sync.Once
 func windowSetOverrideRedirectFunction_Set() error {
 	var err error
 	windowSetOverrideRedirectFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetOverrideRedirectFunction, err = windowStruct.InvokerNew("set_override_redirect")
+		windowSetOverrideRedirectFunction, err = windowObject.InvokerNew("set_override_redirect")
 	})
 	return err
 }
@@ -8935,11 +8710,11 @@ var windowSetPassThroughFunction_Once sync.Once
 func windowSetPassThroughFunction_Set() error {
 	var err error
 	windowSetPassThroughFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetPassThroughFunction, err = windowStruct.InvokerNew("set_pass_through")
+		windowSetPassThroughFunction, err = windowObject.InvokerNew("set_pass_through")
 	})
 	return err
 }
@@ -8964,11 +8739,11 @@ var windowSetRoleFunction_Once sync.Once
 func windowSetRoleFunction_Set() error {
 	var err error
 	windowSetRoleFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetRoleFunction, err = windowStruct.InvokerNew("set_role")
+		windowSetRoleFunction, err = windowObject.InvokerNew("set_role")
 	})
 	return err
 }
@@ -8993,11 +8768,11 @@ var windowSetShadowWidthFunction_Once sync.Once
 func windowSetShadowWidthFunction_Set() error {
 	var err error
 	windowSetShadowWidthFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetShadowWidthFunction, err = windowStruct.InvokerNew("set_shadow_width")
+		windowSetShadowWidthFunction, err = windowObject.InvokerNew("set_shadow_width")
 	})
 	return err
 }
@@ -9025,11 +8800,11 @@ var windowSetSkipPagerHintFunction_Once sync.Once
 func windowSetSkipPagerHintFunction_Set() error {
 	var err error
 	windowSetSkipPagerHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetSkipPagerHintFunction, err = windowStruct.InvokerNew("set_skip_pager_hint")
+		windowSetSkipPagerHintFunction, err = windowObject.InvokerNew("set_skip_pager_hint")
 	})
 	return err
 }
@@ -9054,11 +8829,11 @@ var windowSetSkipTaskbarHintFunction_Once sync.Once
 func windowSetSkipTaskbarHintFunction_Set() error {
 	var err error
 	windowSetSkipTaskbarHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetSkipTaskbarHintFunction, err = windowStruct.InvokerNew("set_skip_taskbar_hint")
+		windowSetSkipTaskbarHintFunction, err = windowObject.InvokerNew("set_skip_taskbar_hint")
 	})
 	return err
 }
@@ -9085,11 +8860,11 @@ var windowSetStartupIdFunction_Once sync.Once
 func windowSetStartupIdFunction_Set() error {
 	var err error
 	windowSetStartupIdFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetStartupIdFunction, err = windowStruct.InvokerNew("set_startup_id")
+		windowSetStartupIdFunction, err = windowObject.InvokerNew("set_startup_id")
 	})
 	return err
 }
@@ -9114,11 +8889,11 @@ var windowSetStaticGravitiesFunction_Once sync.Once
 func windowSetStaticGravitiesFunction_Set() error {
 	var err error
 	windowSetStaticGravitiesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetStaticGravitiesFunction, err = windowStruct.InvokerNew("set_static_gravities")
+		windowSetStaticGravitiesFunction, err = windowObject.InvokerNew("set_static_gravities")
 	})
 	return err
 }
@@ -9147,11 +8922,11 @@ var windowSetSupportMultideviceFunction_Once sync.Once
 func windowSetSupportMultideviceFunction_Set() error {
 	var err error
 	windowSetSupportMultideviceFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetSupportMultideviceFunction, err = windowStruct.InvokerNew("set_support_multidevice")
+		windowSetSupportMultideviceFunction, err = windowObject.InvokerNew("set_support_multidevice")
 	})
 	return err
 }
@@ -9176,11 +8951,11 @@ var windowSetTitleFunction_Once sync.Once
 func windowSetTitleFunction_Set() error {
 	var err error
 	windowSetTitleFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetTitleFunction, err = windowStruct.InvokerNew("set_title")
+		windowSetTitleFunction, err = windowObject.InvokerNew("set_title")
 	})
 	return err
 }
@@ -9205,11 +8980,11 @@ var windowSetTransientForFunction_Once sync.Once
 func windowSetTransientForFunction_Set() error {
 	var err error
 	windowSetTransientForFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetTransientForFunction, err = windowStruct.InvokerNew("set_transient_for")
+		windowSetTransientForFunction, err = windowObject.InvokerNew("set_transient_for")
 	})
 	return err
 }
@@ -9234,11 +9009,11 @@ var windowSetTypeHintFunction_Once sync.Once
 func windowSetTypeHintFunction_Set() error {
 	var err error
 	windowSetTypeHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetTypeHintFunction, err = windowStruct.InvokerNew("set_type_hint")
+		windowSetTypeHintFunction, err = windowObject.InvokerNew("set_type_hint")
 	})
 	return err
 }
@@ -9263,11 +9038,11 @@ var windowSetUrgencyHintFunction_Once sync.Once
 func windowSetUrgencyHintFunction_Set() error {
 	var err error
 	windowSetUrgencyHintFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowSetUrgencyHintFunction, err = windowStruct.InvokerNew("set_urgency_hint")
+		windowSetUrgencyHintFunction, err = windowObject.InvokerNew("set_urgency_hint")
 	})
 	return err
 }
@@ -9296,11 +9071,11 @@ var windowShowFunction_Once sync.Once
 func windowShowFunction_Set() error {
 	var err error
 	windowShowFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowShowFunction, err = windowStruct.InvokerNew("show")
+		windowShowFunction, err = windowObject.InvokerNew("show")
 	})
 	return err
 }
@@ -9324,11 +9099,11 @@ var windowShowUnraisedFunction_Once sync.Once
 func windowShowUnraisedFunction_Set() error {
 	var err error
 	windowShowUnraisedFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowShowUnraisedFunction, err = windowStruct.InvokerNew("show_unraised")
+		windowShowUnraisedFunction, err = windowObject.InvokerNew("show_unraised")
 	})
 	return err
 }
@@ -9354,11 +9129,11 @@ var windowStickFunction_Once sync.Once
 func windowStickFunction_Set() error {
 	var err error
 	windowStickFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowStickFunction, err = windowStruct.InvokerNew("stick")
+		windowStickFunction, err = windowObject.InvokerNew("stick")
 	})
 	return err
 }
@@ -9382,11 +9157,11 @@ var windowThawToplevelUpdatesLibgtkOnlyFunction_Once sync.Once
 func windowThawToplevelUpdatesLibgtkOnlyFunction_Set() error {
 	var err error
 	windowThawToplevelUpdatesLibgtkOnlyFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowThawToplevelUpdatesLibgtkOnlyFunction, err = windowStruct.InvokerNew("thaw_toplevel_updates_libgtk_only")
+		windowThawToplevelUpdatesLibgtkOnlyFunction, err = windowObject.InvokerNew("thaw_toplevel_updates_libgtk_only")
 	})
 	return err
 }
@@ -9410,11 +9185,11 @@ var windowThawUpdatesFunction_Once sync.Once
 func windowThawUpdatesFunction_Set() error {
 	var err error
 	windowThawUpdatesFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowThawUpdatesFunction, err = windowStruct.InvokerNew("thaw_updates")
+		windowThawUpdatesFunction, err = windowObject.InvokerNew("thaw_updates")
 	})
 	return err
 }
@@ -9438,11 +9213,11 @@ var windowUnfullscreenFunction_Once sync.Once
 func windowUnfullscreenFunction_Set() error {
 	var err error
 	windowUnfullscreenFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowUnfullscreenFunction, err = windowStruct.InvokerNew("unfullscreen")
+		windowUnfullscreenFunction, err = windowObject.InvokerNew("unfullscreen")
 	})
 	return err
 }
@@ -9466,11 +9241,11 @@ var windowUnmaximizeFunction_Once sync.Once
 func windowUnmaximizeFunction_Set() error {
 	var err error
 	windowUnmaximizeFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowUnmaximizeFunction, err = windowStruct.InvokerNew("unmaximize")
+		windowUnmaximizeFunction, err = windowObject.InvokerNew("unmaximize")
 	})
 	return err
 }
@@ -9494,11 +9269,11 @@ var windowUnstickFunction_Once sync.Once
 func windowUnstickFunction_Set() error {
 	var err error
 	windowUnstickFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowUnstickFunction, err = windowStruct.InvokerNew("unstick")
+		windowUnstickFunction, err = windowObject.InvokerNew("unstick")
 	})
 	return err
 }
@@ -9522,11 +9297,11 @@ var windowWithdrawFunction_Once sync.Once
 func windowWithdrawFunction_Set() error {
 	var err error
 	windowWithdrawFunction_Once.Do(func() {
-		err = windowStruct_Set()
+		err = windowObject_Set()
 		if err != nil {
 			return
 		}
-		windowWithdrawFunction, err = windowStruct.InvokerNew("withdraw")
+		windowWithdrawFunction, err = windowObject.InvokerNew("withdraw")
 	})
 	return err
 }

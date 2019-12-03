@@ -56,10 +56,10 @@ func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 	}
 
 	return &Function{
-		namespace:  s.namespace,
-		structName: s.structName,
-		funcName:   funcName,
-		info:       invoker,
+		namespace: s.namespace,
+		ownerName: s.structName,
+		funcName:  funcName,
+		info:      invoker,
 	}, nil
 }
 

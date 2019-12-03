@@ -6,17 +6,16 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var appInfoMonitorStruct *gi.Struct
-var appInfoMonitorStruct_Once sync.Once
+var appInfoMonitorObject *gi.Object
+var appInfoMonitorObject_Once sync.Once
 
-func appInfoMonitorStruct_Set() error {
+func appInfoMonitorObject_Set() error {
 	var err error
-	appInfoMonitorStruct_Once.Do(func() {
-		appInfoMonitorStruct, err = gi.StructNew("Gio", "AppInfoMonitor")
+	appInfoMonitorObject_Once.Do(func() {
+		appInfoMonitorObject, err = gi.ObjectNew("Gio", "AppInfoMonitor")
 	})
 	return err
 }
@@ -25,29 +24,13 @@ type AppInfoMonitor struct {
 	gobject.Object
 }
 
-// AppInfoMonitorStruct creates an uninitialised AppInfoMonitor.
-func AppInfoMonitorStruct() *AppInfoMonitor {
-	err := appInfoMonitorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var appLaunchContextObject *gi.Object
+var appLaunchContextObject_Once sync.Once
 
-	structGo := &AppInfoMonitor{}
-	structGo.Native = appInfoMonitorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeAppInfoMonitor)
-	return structGo
-}
-func finalizeAppInfoMonitor(obj *AppInfoMonitor) {
-	appInfoMonitorStruct.Free(obj.Native)
-}
-
-var appLaunchContextStruct *gi.Struct
-var appLaunchContextStruct_Once sync.Once
-
-func appLaunchContextStruct_Set() error {
+func appLaunchContextObject_Set() error {
 	var err error
-	appLaunchContextStruct_Once.Do(func() {
-		appLaunchContextStruct, err = gi.StructNew("Gio", "AppLaunchContext")
+	appLaunchContextObject_Once.Do(func() {
+		appLaunchContextObject, err = gi.ObjectNew("Gio", "AppLaunchContext")
 	})
 	return err
 }
@@ -66,11 +49,11 @@ var appLaunchContextNewFunction_Once sync.Once
 func appLaunchContextNewFunction_Set() error {
 	var err error
 	appLaunchContextNewFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextNewFunction, err = appLaunchContextStruct.InvokerNew("new")
+		appLaunchContextNewFunction, err = appLaunchContextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -99,11 +82,11 @@ var appLaunchContextGetEnvironmentFunction_Once sync.Once
 func appLaunchContextGetEnvironmentFunction_Set() error {
 	var err error
 	appLaunchContextGetEnvironmentFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextGetEnvironmentFunction, err = appLaunchContextStruct.InvokerNew("get_environment")
+		appLaunchContextGetEnvironmentFunction, err = appLaunchContextObject.InvokerNew("get_environment")
 	})
 	return err
 }
@@ -129,11 +112,11 @@ var appLaunchContextLaunchFailedFunction_Once sync.Once
 func appLaunchContextLaunchFailedFunction_Set() error {
 	var err error
 	appLaunchContextLaunchFailedFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextLaunchFailedFunction, err = appLaunchContextStruct.InvokerNew("launch_failed")
+		appLaunchContextLaunchFailedFunction, err = appLaunchContextObject.InvokerNew("launch_failed")
 	})
 	return err
 }
@@ -158,11 +141,11 @@ var appLaunchContextSetenvFunction_Once sync.Once
 func appLaunchContextSetenvFunction_Set() error {
 	var err error
 	appLaunchContextSetenvFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextSetenvFunction, err = appLaunchContextStruct.InvokerNew("setenv")
+		appLaunchContextSetenvFunction, err = appLaunchContextObject.InvokerNew("setenv")
 	})
 	return err
 }
@@ -188,11 +171,11 @@ var appLaunchContextUnsetenvFunction_Once sync.Once
 func appLaunchContextUnsetenvFunction_Set() error {
 	var err error
 	appLaunchContextUnsetenvFunction_Once.Do(func() {
-		err = appLaunchContextStruct_Set()
+		err = appLaunchContextObject_Set()
 		if err != nil {
 			return
 		}
-		appLaunchContextUnsetenvFunction, err = appLaunchContextStruct.InvokerNew("unsetenv")
+		appLaunchContextUnsetenvFunction, err = appLaunchContextObject.InvokerNew("unsetenv")
 	})
 	return err
 }
@@ -211,13 +194,13 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 	return
 }
 
-var applicationStruct *gi.Struct
-var applicationStruct_Once sync.Once
+var applicationObject *gi.Object
+var applicationObject_Once sync.Once
 
-func applicationStruct_Set() error {
+func applicationObject_Set() error {
 	var err error
-	applicationStruct_Once.Do(func() {
-		applicationStruct, err = gi.StructNew("Gio", "Application")
+	applicationObject_Once.Do(func() {
+		applicationObject, err = gi.ObjectNew("Gio", "Application")
 	})
 	return err
 }
@@ -234,11 +217,11 @@ var applicationActivateFunction_Once sync.Once
 func applicationActivateFunction_Set() error {
 	var err error
 	applicationActivateFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationActivateFunction, err = applicationStruct.InvokerNew("activate")
+		applicationActivateFunction, err = applicationObject.InvokerNew("activate")
 	})
 	return err
 }
@@ -270,11 +253,11 @@ var applicationGetApplicationIdFunction_Once sync.Once
 func applicationGetApplicationIdFunction_Set() error {
 	var err error
 	applicationGetApplicationIdFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetApplicationIdFunction, err = applicationStruct.InvokerNew("get_application_id")
+		applicationGetApplicationIdFunction, err = applicationObject.InvokerNew("get_application_id")
 	})
 	return err
 }
@@ -302,11 +285,11 @@ var applicationGetDbusConnectionFunction_Once sync.Once
 func applicationGetDbusConnectionFunction_Set() error {
 	var err error
 	applicationGetDbusConnectionFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetDbusConnectionFunction, err = applicationStruct.InvokerNew("get_dbus_connection")
+		applicationGetDbusConnectionFunction, err = applicationObject.InvokerNew("get_dbus_connection")
 	})
 	return err
 }
@@ -335,11 +318,11 @@ var applicationGetDbusObjectPathFunction_Once sync.Once
 func applicationGetDbusObjectPathFunction_Set() error {
 	var err error
 	applicationGetDbusObjectPathFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetDbusObjectPathFunction, err = applicationStruct.InvokerNew("get_dbus_object_path")
+		applicationGetDbusObjectPathFunction, err = applicationObject.InvokerNew("get_dbus_object_path")
 	})
 	return err
 }
@@ -369,11 +352,11 @@ var applicationGetInactivityTimeoutFunction_Once sync.Once
 func applicationGetInactivityTimeoutFunction_Set() error {
 	var err error
 	applicationGetInactivityTimeoutFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetInactivityTimeoutFunction, err = applicationStruct.InvokerNew("get_inactivity_timeout")
+		applicationGetInactivityTimeoutFunction, err = applicationObject.InvokerNew("get_inactivity_timeout")
 	})
 	return err
 }
@@ -401,11 +384,11 @@ var applicationGetIsBusyFunction_Once sync.Once
 func applicationGetIsBusyFunction_Set() error {
 	var err error
 	applicationGetIsBusyFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetIsBusyFunction, err = applicationStruct.InvokerNew("get_is_busy")
+		applicationGetIsBusyFunction, err = applicationObject.InvokerNew("get_is_busy")
 	})
 	return err
 }
@@ -433,11 +416,11 @@ var applicationGetIsRegisteredFunction_Once sync.Once
 func applicationGetIsRegisteredFunction_Set() error {
 	var err error
 	applicationGetIsRegisteredFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetIsRegisteredFunction, err = applicationStruct.InvokerNew("get_is_registered")
+		applicationGetIsRegisteredFunction, err = applicationObject.InvokerNew("get_is_registered")
 	})
 	return err
 }
@@ -465,11 +448,11 @@ var applicationGetIsRemoteFunction_Once sync.Once
 func applicationGetIsRemoteFunction_Set() error {
 	var err error
 	applicationGetIsRemoteFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetIsRemoteFunction, err = applicationStruct.InvokerNew("get_is_remote")
+		applicationGetIsRemoteFunction, err = applicationObject.InvokerNew("get_is_remote")
 	})
 	return err
 }
@@ -497,11 +480,11 @@ var applicationGetResourceBasePathFunction_Once sync.Once
 func applicationGetResourceBasePathFunction_Set() error {
 	var err error
 	applicationGetResourceBasePathFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationGetResourceBasePathFunction, err = applicationStruct.InvokerNew("get_resource_base_path")
+		applicationGetResourceBasePathFunction, err = applicationObject.InvokerNew("get_resource_base_path")
 	})
 	return err
 }
@@ -529,11 +512,11 @@ var applicationHoldFunction_Once sync.Once
 func applicationHoldFunction_Set() error {
 	var err error
 	applicationHoldFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationHoldFunction, err = applicationStruct.InvokerNew("hold")
+		applicationHoldFunction, err = applicationObject.InvokerNew("hold")
 	})
 	return err
 }
@@ -557,11 +540,11 @@ var applicationMarkBusyFunction_Once sync.Once
 func applicationMarkBusyFunction_Set() error {
 	var err error
 	applicationMarkBusyFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationMarkBusyFunction, err = applicationStruct.InvokerNew("mark_busy")
+		applicationMarkBusyFunction, err = applicationObject.InvokerNew("mark_busy")
 	})
 	return err
 }
@@ -587,11 +570,11 @@ var applicationQuitFunction_Once sync.Once
 func applicationQuitFunction_Set() error {
 	var err error
 	applicationQuitFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationQuitFunction, err = applicationStruct.InvokerNew("quit")
+		applicationQuitFunction, err = applicationObject.InvokerNew("quit")
 	})
 	return err
 }
@@ -615,11 +598,11 @@ var applicationRegisterFunction_Once sync.Once
 func applicationRegisterFunction_Set() error {
 	var err error
 	applicationRegisterFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationRegisterFunction, err = applicationStruct.InvokerNew("register")
+		applicationRegisterFunction, err = applicationObject.InvokerNew("register")
 	})
 	return err
 }
@@ -648,11 +631,11 @@ var applicationReleaseFunction_Once sync.Once
 func applicationReleaseFunction_Set() error {
 	var err error
 	applicationReleaseFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationReleaseFunction, err = applicationStruct.InvokerNew("release")
+		applicationReleaseFunction, err = applicationObject.InvokerNew("release")
 	})
 	return err
 }
@@ -678,11 +661,11 @@ var applicationSendNotificationFunction_Once sync.Once
 func applicationSendNotificationFunction_Set() error {
 	var err error
 	applicationSendNotificationFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSendNotificationFunction, err = applicationStruct.InvokerNew("send_notification")
+		applicationSendNotificationFunction, err = applicationObject.InvokerNew("send_notification")
 	})
 	return err
 }
@@ -710,11 +693,11 @@ var applicationSetApplicationIdFunction_Once sync.Once
 func applicationSetApplicationIdFunction_Set() error {
 	var err error
 	applicationSetApplicationIdFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetApplicationIdFunction, err = applicationStruct.InvokerNew("set_application_id")
+		applicationSetApplicationIdFunction, err = applicationObject.InvokerNew("set_application_id")
 	})
 	return err
 }
@@ -739,11 +722,11 @@ var applicationSetDefaultFunction_Once sync.Once
 func applicationSetDefaultFunction_Set() error {
 	var err error
 	applicationSetDefaultFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetDefaultFunction, err = applicationStruct.InvokerNew("set_default")
+		applicationSetDefaultFunction, err = applicationObject.InvokerNew("set_default")
 	})
 	return err
 }
@@ -769,11 +752,11 @@ var applicationSetInactivityTimeoutFunction_Once sync.Once
 func applicationSetInactivityTimeoutFunction_Set() error {
 	var err error
 	applicationSetInactivityTimeoutFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetInactivityTimeoutFunction, err = applicationStruct.InvokerNew("set_inactivity_timeout")
+		applicationSetInactivityTimeoutFunction, err = applicationObject.InvokerNew("set_inactivity_timeout")
 	})
 	return err
 }
@@ -798,11 +781,11 @@ var applicationSetOptionContextDescriptionFunction_Once sync.Once
 func applicationSetOptionContextDescriptionFunction_Set() error {
 	var err error
 	applicationSetOptionContextDescriptionFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetOptionContextDescriptionFunction, err = applicationStruct.InvokerNew("set_option_context_description")
+		applicationSetOptionContextDescriptionFunction, err = applicationObject.InvokerNew("set_option_context_description")
 	})
 	return err
 }
@@ -827,11 +810,11 @@ var applicationSetOptionContextParameterStringFunction_Once sync.Once
 func applicationSetOptionContextParameterStringFunction_Set() error {
 	var err error
 	applicationSetOptionContextParameterStringFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetOptionContextParameterStringFunction, err = applicationStruct.InvokerNew("set_option_context_parameter_string")
+		applicationSetOptionContextParameterStringFunction, err = applicationObject.InvokerNew("set_option_context_parameter_string")
 	})
 	return err
 }
@@ -856,11 +839,11 @@ var applicationSetOptionContextSummaryFunction_Once sync.Once
 func applicationSetOptionContextSummaryFunction_Set() error {
 	var err error
 	applicationSetOptionContextSummaryFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetOptionContextSummaryFunction, err = applicationStruct.InvokerNew("set_option_context_summary")
+		applicationSetOptionContextSummaryFunction, err = applicationObject.InvokerNew("set_option_context_summary")
 	})
 	return err
 }
@@ -885,11 +868,11 @@ var applicationSetResourceBasePathFunction_Once sync.Once
 func applicationSetResourceBasePathFunction_Set() error {
 	var err error
 	applicationSetResourceBasePathFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationSetResourceBasePathFunction, err = applicationStruct.InvokerNew("set_resource_base_path")
+		applicationSetResourceBasePathFunction, err = applicationObject.InvokerNew("set_resource_base_path")
 	})
 	return err
 }
@@ -916,11 +899,11 @@ var applicationUnmarkBusyFunction_Once sync.Once
 func applicationUnmarkBusyFunction_Set() error {
 	var err error
 	applicationUnmarkBusyFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationUnmarkBusyFunction, err = applicationStruct.InvokerNew("unmark_busy")
+		applicationUnmarkBusyFunction, err = applicationObject.InvokerNew("unmark_busy")
 	})
 	return err
 }
@@ -944,11 +927,11 @@ var applicationWithdrawNotificationFunction_Once sync.Once
 func applicationWithdrawNotificationFunction_Set() error {
 	var err error
 	applicationWithdrawNotificationFunction_Once.Do(func() {
-		err = applicationStruct_Set()
+		err = applicationObject_Set()
 		if err != nil {
 			return
 		}
-		applicationWithdrawNotificationFunction, err = applicationStruct.InvokerNew("withdraw_notification")
+		applicationWithdrawNotificationFunction, err = applicationObject.InvokerNew("withdraw_notification")
 	})
 	return err
 }
@@ -967,13 +950,13 @@ func (recv *Application) WithdrawNotification(id string) {
 	return
 }
 
-var applicationCommandLineStruct *gi.Struct
-var applicationCommandLineStruct_Once sync.Once
+var applicationCommandLineObject *gi.Object
+var applicationCommandLineObject_Once sync.Once
 
-func applicationCommandLineStruct_Set() error {
+func applicationCommandLineObject_Set() error {
 	var err error
-	applicationCommandLineStruct_Once.Do(func() {
-		applicationCommandLineStruct, err = gi.StructNew("Gio", "ApplicationCommandLine")
+	applicationCommandLineObject_Once.Do(func() {
+		applicationCommandLineObject, err = gi.ObjectNew("Gio", "ApplicationCommandLine")
 	})
 	return err
 }
@@ -990,11 +973,11 @@ var applicationCommandLineGetArgumentsFunction_Once sync.Once
 func applicationCommandLineGetArgumentsFunction_Set() error {
 	var err error
 	applicationCommandLineGetArgumentsFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetArgumentsFunction, err = applicationCommandLineStruct.InvokerNew("get_arguments")
+		applicationCommandLineGetArgumentsFunction, err = applicationCommandLineObject.InvokerNew("get_arguments")
 	})
 	return err
 }
@@ -1022,11 +1005,11 @@ var applicationCommandLineGetCwdFunction_Once sync.Once
 func applicationCommandLineGetCwdFunction_Set() error {
 	var err error
 	applicationCommandLineGetCwdFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetCwdFunction, err = applicationCommandLineStruct.InvokerNew("get_cwd")
+		applicationCommandLineGetCwdFunction, err = applicationCommandLineObject.InvokerNew("get_cwd")
 	})
 	return err
 }
@@ -1054,11 +1037,11 @@ var applicationCommandLineGetEnvironFunction_Once sync.Once
 func applicationCommandLineGetEnvironFunction_Set() error {
 	var err error
 	applicationCommandLineGetEnvironFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetEnvironFunction, err = applicationCommandLineStruct.InvokerNew("get_environ")
+		applicationCommandLineGetEnvironFunction, err = applicationCommandLineObject.InvokerNew("get_environ")
 	})
 	return err
 }
@@ -1082,11 +1065,11 @@ var applicationCommandLineGetExitStatusFunction_Once sync.Once
 func applicationCommandLineGetExitStatusFunction_Set() error {
 	var err error
 	applicationCommandLineGetExitStatusFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetExitStatusFunction, err = applicationCommandLineStruct.InvokerNew("get_exit_status")
+		applicationCommandLineGetExitStatusFunction, err = applicationCommandLineObject.InvokerNew("get_exit_status")
 	})
 	return err
 }
@@ -1114,11 +1097,11 @@ var applicationCommandLineGetIsRemoteFunction_Once sync.Once
 func applicationCommandLineGetIsRemoteFunction_Set() error {
 	var err error
 	applicationCommandLineGetIsRemoteFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetIsRemoteFunction, err = applicationCommandLineStruct.InvokerNew("get_is_remote")
+		applicationCommandLineGetIsRemoteFunction, err = applicationCommandLineObject.InvokerNew("get_is_remote")
 	})
 	return err
 }
@@ -1150,11 +1133,11 @@ var applicationCommandLineGetStdinFunction_Once sync.Once
 func applicationCommandLineGetStdinFunction_Set() error {
 	var err error
 	applicationCommandLineGetStdinFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetStdinFunction, err = applicationCommandLineStruct.InvokerNew("get_stdin")
+		applicationCommandLineGetStdinFunction, err = applicationCommandLineObject.InvokerNew("get_stdin")
 	})
 	return err
 }
@@ -1183,11 +1166,11 @@ var applicationCommandLineGetenvFunction_Once sync.Once
 func applicationCommandLineGetenvFunction_Set() error {
 	var err error
 	applicationCommandLineGetenvFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineGetenvFunction, err = applicationCommandLineStruct.InvokerNew("getenv")
+		applicationCommandLineGetenvFunction, err = applicationCommandLineObject.InvokerNew("getenv")
 	})
 	return err
 }
@@ -1220,11 +1203,11 @@ var applicationCommandLineSetExitStatusFunction_Once sync.Once
 func applicationCommandLineSetExitStatusFunction_Set() error {
 	var err error
 	applicationCommandLineSetExitStatusFunction_Once.Do(func() {
-		err = applicationCommandLineStruct_Set()
+		err = applicationCommandLineObject_Set()
 		if err != nil {
 			return
 		}
-		applicationCommandLineSetExitStatusFunction, err = applicationCommandLineStruct.InvokerNew("set_exit_status")
+		applicationCommandLineSetExitStatusFunction, err = applicationCommandLineObject.InvokerNew("set_exit_status")
 	})
 	return err
 }
@@ -1243,29 +1226,13 @@ func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 	return
 }
 
-// ApplicationCommandLineStruct creates an uninitialised ApplicationCommandLine.
-func ApplicationCommandLineStruct() *ApplicationCommandLine {
-	err := applicationCommandLineStruct_Set()
-	if err != nil {
-		return nil
-	}
+var bufferedInputStreamObject *gi.Object
+var bufferedInputStreamObject_Once sync.Once
 
-	structGo := &ApplicationCommandLine{}
-	structGo.Native = applicationCommandLineStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeApplicationCommandLine)
-	return structGo
-}
-func finalizeApplicationCommandLine(obj *ApplicationCommandLine) {
-	applicationCommandLineStruct.Free(obj.Native)
-}
-
-var bufferedInputStreamStruct *gi.Struct
-var bufferedInputStreamStruct_Once sync.Once
-
-func bufferedInputStreamStruct_Set() error {
+func bufferedInputStreamObject_Set() error {
 	var err error
-	bufferedInputStreamStruct_Once.Do(func() {
-		bufferedInputStreamStruct, err = gi.StructNew("Gio", "BufferedInputStream")
+	bufferedInputStreamObject_Once.Do(func() {
+		bufferedInputStreamObject, err = gi.ObjectNew("Gio", "BufferedInputStream")
 	})
 	return err
 }
@@ -1276,7 +1243,7 @@ type BufferedInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedInputStream) FieldParentInstance() *FilterInputStream {
-	argValue := gi.FieldGet(bufferedInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(bufferedInputStreamObject, recv.Native, "parent_instance")
 	value := &FilterInputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1286,7 +1253,7 @@ func (recv *BufferedInputStream) FieldParentInstance() *FilterInputStream {
 func (recv *BufferedInputStream) SetFieldParentInstance(value *FilterInputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(bufferedInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(bufferedInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var bufferedInputStreamNewFunction *gi.Function
@@ -1295,11 +1262,11 @@ var bufferedInputStreamNewFunction_Once sync.Once
 func bufferedInputStreamNewFunction_Set() error {
 	var err error
 	bufferedInputStreamNewFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamNewFunction, err = bufferedInputStreamStruct.InvokerNew("new")
+		bufferedInputStreamNewFunction, err = bufferedInputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1328,11 +1295,11 @@ var bufferedInputStreamNewSizedFunction_Once sync.Once
 func bufferedInputStreamNewSizedFunction_Set() error {
 	var err error
 	bufferedInputStreamNewSizedFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamNewSizedFunction, err = bufferedInputStreamStruct.InvokerNew("new_sized")
+		bufferedInputStreamNewSizedFunction, err = bufferedInputStreamObject.InvokerNew("new_sized")
 	})
 	return err
 }
@@ -1362,11 +1329,11 @@ var bufferedInputStreamFillFunction_Once sync.Once
 func bufferedInputStreamFillFunction_Set() error {
 	var err error
 	bufferedInputStreamFillFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamFillFunction, err = bufferedInputStreamStruct.InvokerNew("fill")
+		bufferedInputStreamFillFunction, err = bufferedInputStreamObject.InvokerNew("fill")
 	})
 	return err
 }
@@ -1400,11 +1367,11 @@ var bufferedInputStreamGetAvailableFunction_Once sync.Once
 func bufferedInputStreamGetAvailableFunction_Set() error {
 	var err error
 	bufferedInputStreamGetAvailableFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamGetAvailableFunction, err = bufferedInputStreamStruct.InvokerNew("get_available")
+		bufferedInputStreamGetAvailableFunction, err = bufferedInputStreamObject.InvokerNew("get_available")
 	})
 	return err
 }
@@ -1432,11 +1399,11 @@ var bufferedInputStreamGetBufferSizeFunction_Once sync.Once
 func bufferedInputStreamGetBufferSizeFunction_Set() error {
 	var err error
 	bufferedInputStreamGetBufferSizeFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamGetBufferSizeFunction, err = bufferedInputStreamStruct.InvokerNew("get_buffer_size")
+		bufferedInputStreamGetBufferSizeFunction, err = bufferedInputStreamObject.InvokerNew("get_buffer_size")
 	})
 	return err
 }
@@ -1466,11 +1433,11 @@ var bufferedInputStreamPeekBufferFunction_Once sync.Once
 func bufferedInputStreamPeekBufferFunction_Set() error {
 	var err error
 	bufferedInputStreamPeekBufferFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamPeekBufferFunction, err = bufferedInputStreamStruct.InvokerNew("peek_buffer")
+		bufferedInputStreamPeekBufferFunction, err = bufferedInputStreamObject.InvokerNew("peek_buffer")
 	})
 	return err
 }
@@ -1498,11 +1465,11 @@ var bufferedInputStreamReadByteFunction_Once sync.Once
 func bufferedInputStreamReadByteFunction_Set() error {
 	var err error
 	bufferedInputStreamReadByteFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamReadByteFunction, err = bufferedInputStreamStruct.InvokerNew("read_byte")
+		bufferedInputStreamReadByteFunction, err = bufferedInputStreamObject.InvokerNew("read_byte")
 	})
 	return err
 }
@@ -1531,11 +1498,11 @@ var bufferedInputStreamSetBufferSizeFunction_Once sync.Once
 func bufferedInputStreamSetBufferSizeFunction_Set() error {
 	var err error
 	bufferedInputStreamSetBufferSizeFunction_Once.Do(func() {
-		err = bufferedInputStreamStruct_Set()
+		err = bufferedInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedInputStreamSetBufferSizeFunction, err = bufferedInputStreamStruct.InvokerNew("set_buffer_size")
+		bufferedInputStreamSetBufferSizeFunction, err = bufferedInputStreamObject.InvokerNew("set_buffer_size")
 	})
 	return err
 }
@@ -1554,13 +1521,13 @@ func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	return
 }
 
-var bufferedOutputStreamStruct *gi.Struct
-var bufferedOutputStreamStruct_Once sync.Once
+var bufferedOutputStreamObject *gi.Object
+var bufferedOutputStreamObject_Once sync.Once
 
-func bufferedOutputStreamStruct_Set() error {
+func bufferedOutputStreamObject_Set() error {
 	var err error
-	bufferedOutputStreamStruct_Once.Do(func() {
-		bufferedOutputStreamStruct, err = gi.StructNew("Gio", "BufferedOutputStream")
+	bufferedOutputStreamObject_Once.Do(func() {
+		bufferedOutputStreamObject, err = gi.ObjectNew("Gio", "BufferedOutputStream")
 	})
 	return err
 }
@@ -1571,7 +1538,7 @@ type BufferedOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.FieldGet(bufferedOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native, "parent_instance")
 	value := &FilterOutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1581,12 +1548,12 @@ func (recv *BufferedOutputStream) FieldParentInstance() *FilterOutputStream {
 func (recv *BufferedOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(bufferedOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
-	argValue := gi.FieldGet(bufferedOutputStreamStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native, "priv")
 	value := &BufferedOutputStreamPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1596,7 +1563,7 @@ func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
 func (recv *BufferedOutputStream) SetFieldPriv(value *BufferedOutputStreamPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(bufferedOutputStreamStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native, "priv", argValue)
 }
 
 var bufferedOutputStreamNewFunction *gi.Function
@@ -1605,11 +1572,11 @@ var bufferedOutputStreamNewFunction_Once sync.Once
 func bufferedOutputStreamNewFunction_Set() error {
 	var err error
 	bufferedOutputStreamNewFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamNewFunction, err = bufferedOutputStreamStruct.InvokerNew("new")
+		bufferedOutputStreamNewFunction, err = bufferedOutputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1638,11 +1605,11 @@ var bufferedOutputStreamNewSizedFunction_Once sync.Once
 func bufferedOutputStreamNewSizedFunction_Set() error {
 	var err error
 	bufferedOutputStreamNewSizedFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamNewSizedFunction, err = bufferedOutputStreamStruct.InvokerNew("new_sized")
+		bufferedOutputStreamNewSizedFunction, err = bufferedOutputStreamObject.InvokerNew("new_sized")
 	})
 	return err
 }
@@ -1672,11 +1639,11 @@ var bufferedOutputStreamGetAutoGrowFunction_Once sync.Once
 func bufferedOutputStreamGetAutoGrowFunction_Set() error {
 	var err error
 	bufferedOutputStreamGetAutoGrowFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamGetAutoGrowFunction, err = bufferedOutputStreamStruct.InvokerNew("get_auto_grow")
+		bufferedOutputStreamGetAutoGrowFunction, err = bufferedOutputStreamObject.InvokerNew("get_auto_grow")
 	})
 	return err
 }
@@ -1704,11 +1671,11 @@ var bufferedOutputStreamGetBufferSizeFunction_Once sync.Once
 func bufferedOutputStreamGetBufferSizeFunction_Set() error {
 	var err error
 	bufferedOutputStreamGetBufferSizeFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamGetBufferSizeFunction, err = bufferedOutputStreamStruct.InvokerNew("get_buffer_size")
+		bufferedOutputStreamGetBufferSizeFunction, err = bufferedOutputStreamObject.InvokerNew("get_buffer_size")
 	})
 	return err
 }
@@ -1736,11 +1703,11 @@ var bufferedOutputStreamSetAutoGrowFunction_Once sync.Once
 func bufferedOutputStreamSetAutoGrowFunction_Set() error {
 	var err error
 	bufferedOutputStreamSetAutoGrowFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamSetAutoGrowFunction, err = bufferedOutputStreamStruct.InvokerNew("set_auto_grow")
+		bufferedOutputStreamSetAutoGrowFunction, err = bufferedOutputStreamObject.InvokerNew("set_auto_grow")
 	})
 	return err
 }
@@ -1765,11 +1732,11 @@ var bufferedOutputStreamSetBufferSizeFunction_Once sync.Once
 func bufferedOutputStreamSetBufferSizeFunction_Set() error {
 	var err error
 	bufferedOutputStreamSetBufferSizeFunction_Once.Do(func() {
-		err = bufferedOutputStreamStruct_Set()
+		err = bufferedOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		bufferedOutputStreamSetBufferSizeFunction, err = bufferedOutputStreamStruct.InvokerNew("set_buffer_size")
+		bufferedOutputStreamSetBufferSizeFunction, err = bufferedOutputStreamObject.InvokerNew("set_buffer_size")
 	})
 	return err
 }
@@ -1788,13 +1755,13 @@ func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	return
 }
 
-var bytesIconStruct *gi.Struct
-var bytesIconStruct_Once sync.Once
+var bytesIconObject *gi.Object
+var bytesIconObject_Once sync.Once
 
-func bytesIconStruct_Set() error {
+func bytesIconObject_Set() error {
 	var err error
-	bytesIconStruct_Once.Do(func() {
-		bytesIconStruct, err = gi.StructNew("Gio", "BytesIcon")
+	bytesIconObject_Once.Do(func() {
+		bytesIconObject, err = gi.ObjectNew("Gio", "BytesIcon")
 	})
 	return err
 }
@@ -1807,13 +1774,13 @@ type BytesIcon struct {
 
 // UNSUPPORTED : C value 'g_bytes_icon_get_bytes' : return type 'GLib.Bytes' not supported
 
-var cancellableStruct *gi.Struct
-var cancellableStruct_Once sync.Once
+var cancellableObject *gi.Object
+var cancellableObject_Once sync.Once
 
-func cancellableStruct_Set() error {
+func cancellableObject_Set() error {
 	var err error
-	cancellableStruct_Once.Do(func() {
-		cancellableStruct, err = gi.StructNew("Gio", "Cancellable")
+	cancellableObject_Once.Do(func() {
+		cancellableObject, err = gi.ObjectNew("Gio", "Cancellable")
 	})
 	return err
 }
@@ -1832,11 +1799,11 @@ var cancellableNewFunction_Once sync.Once
 func cancellableNewFunction_Set() error {
 	var err error
 	cancellableNewFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableNewFunction, err = cancellableStruct.InvokerNew("new")
+		cancellableNewFunction, err = cancellableObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1863,11 +1830,11 @@ var cancellableCancelFunction_Once sync.Once
 func cancellableCancelFunction_Set() error {
 	var err error
 	cancellableCancelFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableCancelFunction, err = cancellableStruct.InvokerNew("cancel")
+		cancellableCancelFunction, err = cancellableObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -1893,11 +1860,11 @@ var cancellableDisconnectFunction_Once sync.Once
 func cancellableDisconnectFunction_Set() error {
 	var err error
 	cancellableDisconnectFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableDisconnectFunction, err = cancellableStruct.InvokerNew("disconnect")
+		cancellableDisconnectFunction, err = cancellableObject.InvokerNew("disconnect")
 	})
 	return err
 }
@@ -1922,11 +1889,11 @@ var cancellableGetFdFunction_Once sync.Once
 func cancellableGetFdFunction_Set() error {
 	var err error
 	cancellableGetFdFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableGetFdFunction, err = cancellableStruct.InvokerNew("get_fd")
+		cancellableGetFdFunction, err = cancellableObject.InvokerNew("get_fd")
 	})
 	return err
 }
@@ -1954,11 +1921,11 @@ var cancellableIsCancelledFunction_Once sync.Once
 func cancellableIsCancelledFunction_Set() error {
 	var err error
 	cancellableIsCancelledFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableIsCancelledFunction, err = cancellableStruct.InvokerNew("is_cancelled")
+		cancellableIsCancelledFunction, err = cancellableObject.InvokerNew("is_cancelled")
 	})
 	return err
 }
@@ -1988,11 +1955,11 @@ var cancellablePopCurrentFunction_Once sync.Once
 func cancellablePopCurrentFunction_Set() error {
 	var err error
 	cancellablePopCurrentFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellablePopCurrentFunction, err = cancellableStruct.InvokerNew("pop_current")
+		cancellablePopCurrentFunction, err = cancellableObject.InvokerNew("pop_current")
 	})
 	return err
 }
@@ -2016,11 +1983,11 @@ var cancellablePushCurrentFunction_Once sync.Once
 func cancellablePushCurrentFunction_Set() error {
 	var err error
 	cancellablePushCurrentFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellablePushCurrentFunction, err = cancellableStruct.InvokerNew("push_current")
+		cancellablePushCurrentFunction, err = cancellableObject.InvokerNew("push_current")
 	})
 	return err
 }
@@ -2044,11 +2011,11 @@ var cancellableReleaseFdFunction_Once sync.Once
 func cancellableReleaseFdFunction_Set() error {
 	var err error
 	cancellableReleaseFdFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableReleaseFdFunction, err = cancellableStruct.InvokerNew("release_fd")
+		cancellableReleaseFdFunction, err = cancellableObject.InvokerNew("release_fd")
 	})
 	return err
 }
@@ -2072,11 +2039,11 @@ var cancellableResetFunction_Once sync.Once
 func cancellableResetFunction_Set() error {
 	var err error
 	cancellableResetFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableResetFunction, err = cancellableStruct.InvokerNew("reset")
+		cancellableResetFunction, err = cancellableObject.InvokerNew("reset")
 	})
 	return err
 }
@@ -2100,11 +2067,11 @@ var cancellableSetErrorIfCancelledFunction_Once sync.Once
 func cancellableSetErrorIfCancelledFunction_Set() error {
 	var err error
 	cancellableSetErrorIfCancelledFunction_Once.Do(func() {
-		err = cancellableStruct_Set()
+		err = cancellableObject_Set()
 		if err != nil {
 			return
 		}
-		cancellableSetErrorIfCancelledFunction, err = cancellableStruct.InvokerNew("set_error_if_cancelled")
+		cancellableSetErrorIfCancelledFunction, err = cancellableObject.InvokerNew("set_error_if_cancelled")
 	})
 	return err
 }
@@ -2128,13 +2095,13 @@ func (recv *Cancellable) SetErrorIfCancelled() bool {
 
 // UNSUPPORTED : C value 'g_cancellable_source_new' : return type 'GLib.Source' not supported
 
-var charsetConverterStruct *gi.Struct
-var charsetConverterStruct_Once sync.Once
+var charsetConverterObject *gi.Object
+var charsetConverterObject_Once sync.Once
 
-func charsetConverterStruct_Set() error {
+func charsetConverterObject_Set() error {
 	var err error
-	charsetConverterStruct_Once.Do(func() {
-		charsetConverterStruct, err = gi.StructNew("Gio", "CharsetConverter")
+	charsetConverterObject_Once.Do(func() {
+		charsetConverterObject, err = gi.ObjectNew("Gio", "CharsetConverter")
 	})
 	return err
 }
@@ -2149,11 +2116,11 @@ var charsetConverterNewFunction_Once sync.Once
 func charsetConverterNewFunction_Set() error {
 	var err error
 	charsetConverterNewFunction_Once.Do(func() {
-		err = charsetConverterStruct_Set()
+		err = charsetConverterObject_Set()
 		if err != nil {
 			return
 		}
-		charsetConverterNewFunction, err = charsetConverterStruct.InvokerNew("new")
+		charsetConverterNewFunction, err = charsetConverterObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2183,11 +2150,11 @@ var charsetConverterGetNumFallbacksFunction_Once sync.Once
 func charsetConverterGetNumFallbacksFunction_Set() error {
 	var err error
 	charsetConverterGetNumFallbacksFunction_Once.Do(func() {
-		err = charsetConverterStruct_Set()
+		err = charsetConverterObject_Set()
 		if err != nil {
 			return
 		}
-		charsetConverterGetNumFallbacksFunction, err = charsetConverterStruct.InvokerNew("get_num_fallbacks")
+		charsetConverterGetNumFallbacksFunction, err = charsetConverterObject.InvokerNew("get_num_fallbacks")
 	})
 	return err
 }
@@ -2215,11 +2182,11 @@ var charsetConverterGetUseFallbackFunction_Once sync.Once
 func charsetConverterGetUseFallbackFunction_Set() error {
 	var err error
 	charsetConverterGetUseFallbackFunction_Once.Do(func() {
-		err = charsetConverterStruct_Set()
+		err = charsetConverterObject_Set()
 		if err != nil {
 			return
 		}
-		charsetConverterGetUseFallbackFunction, err = charsetConverterStruct.InvokerNew("get_use_fallback")
+		charsetConverterGetUseFallbackFunction, err = charsetConverterObject.InvokerNew("get_use_fallback")
 	})
 	return err
 }
@@ -2247,11 +2214,11 @@ var charsetConverterSetUseFallbackFunction_Once sync.Once
 func charsetConverterSetUseFallbackFunction_Set() error {
 	var err error
 	charsetConverterSetUseFallbackFunction_Once.Do(func() {
-		err = charsetConverterStruct_Set()
+		err = charsetConverterObject_Set()
 		if err != nil {
 			return
 		}
-		charsetConverterSetUseFallbackFunction, err = charsetConverterStruct.InvokerNew("set_use_fallback")
+		charsetConverterSetUseFallbackFunction, err = charsetConverterObject.InvokerNew("set_use_fallback")
 	})
 	return err
 }
@@ -2270,13 +2237,13 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	return
 }
 
-var converterInputStreamStruct *gi.Struct
-var converterInputStreamStruct_Once sync.Once
+var converterInputStreamObject *gi.Object
+var converterInputStreamObject_Once sync.Once
 
-func converterInputStreamStruct_Set() error {
+func converterInputStreamObject_Set() error {
 	var err error
-	converterInputStreamStruct_Once.Do(func() {
-		converterInputStreamStruct, err = gi.StructNew("Gio", "ConverterInputStream")
+	converterInputStreamObject_Once.Do(func() {
+		converterInputStreamObject, err = gi.ObjectNew("Gio", "ConverterInputStream")
 	})
 	return err
 }
@@ -2287,7 +2254,7 @@ type ConverterInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterInputStream) FieldParentInstance() *FilterInputStream {
-	argValue := gi.FieldGet(converterInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(converterInputStreamObject, recv.Native, "parent_instance")
 	value := &FilterInputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2297,20 +2264,20 @@ func (recv *ConverterInputStream) FieldParentInstance() *FilterInputStream {
 func (recv *ConverterInputStream) SetFieldParentInstance(value *FilterInputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(converterInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(converterInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_converter_input_stream_new' : parameter 'converter' of type 'Converter' not supported
 
 // UNSUPPORTED : C value 'g_converter_input_stream_get_converter' : return type 'Converter' not supported
 
-var converterOutputStreamStruct *gi.Struct
-var converterOutputStreamStruct_Once sync.Once
+var converterOutputStreamObject *gi.Object
+var converterOutputStreamObject_Once sync.Once
 
-func converterOutputStreamStruct_Set() error {
+func converterOutputStreamObject_Set() error {
 	var err error
-	converterOutputStreamStruct_Once.Do(func() {
-		converterOutputStreamStruct, err = gi.StructNew("Gio", "ConverterOutputStream")
+	converterOutputStreamObject_Once.Do(func() {
+		converterOutputStreamObject, err = gi.ObjectNew("Gio", "ConverterOutputStream")
 	})
 	return err
 }
@@ -2321,7 +2288,7 @@ type ConverterOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.FieldGet(converterOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(converterOutputStreamObject, recv.Native, "parent_instance")
 	value := &FilterOutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2331,20 +2298,20 @@ func (recv *ConverterOutputStream) FieldParentInstance() *FilterOutputStream {
 func (recv *ConverterOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(converterOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(converterOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_converter_output_stream_new' : parameter 'converter' of type 'Converter' not supported
 
 // UNSUPPORTED : C value 'g_converter_output_stream_get_converter' : return type 'Converter' not supported
 
-var credentialsStruct *gi.Struct
-var credentialsStruct_Once sync.Once
+var credentialsObject *gi.Object
+var credentialsObject_Once sync.Once
 
-func credentialsStruct_Set() error {
+func credentialsObject_Set() error {
 	var err error
-	credentialsStruct_Once.Do(func() {
-		credentialsStruct, err = gi.StructNew("Gio", "Credentials")
+	credentialsObject_Once.Do(func() {
+		credentialsObject, err = gi.ObjectNew("Gio", "Credentials")
 	})
 	return err
 }
@@ -2359,11 +2326,11 @@ var credentialsNewFunction_Once sync.Once
 func credentialsNewFunction_Set() error {
 	var err error
 	credentialsNewFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsNewFunction, err = credentialsStruct.InvokerNew("new")
+		credentialsNewFunction, err = credentialsObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2392,11 +2359,11 @@ var credentialsGetUnixPidFunction_Once sync.Once
 func credentialsGetUnixPidFunction_Set() error {
 	var err error
 	credentialsGetUnixPidFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsGetUnixPidFunction, err = credentialsStruct.InvokerNew("get_unix_pid")
+		credentialsGetUnixPidFunction, err = credentialsObject.InvokerNew("get_unix_pid")
 	})
 	return err
 }
@@ -2424,11 +2391,11 @@ var credentialsGetUnixUserFunction_Once sync.Once
 func credentialsGetUnixUserFunction_Set() error {
 	var err error
 	credentialsGetUnixUserFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsGetUnixUserFunction, err = credentialsStruct.InvokerNew("get_unix_user")
+		credentialsGetUnixUserFunction, err = credentialsObject.InvokerNew("get_unix_user")
 	})
 	return err
 }
@@ -2456,11 +2423,11 @@ var credentialsIsSameUserFunction_Once sync.Once
 func credentialsIsSameUserFunction_Set() error {
 	var err error
 	credentialsIsSameUserFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsIsSameUserFunction, err = credentialsStruct.InvokerNew("is_same_user")
+		credentialsIsSameUserFunction, err = credentialsObject.InvokerNew("is_same_user")
 	})
 	return err
 }
@@ -2491,11 +2458,11 @@ var credentialsSetUnixUserFunction_Once sync.Once
 func credentialsSetUnixUserFunction_Set() error {
 	var err error
 	credentialsSetUnixUserFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsSetUnixUserFunction, err = credentialsStruct.InvokerNew("set_unix_user")
+		credentialsSetUnixUserFunction, err = credentialsObject.InvokerNew("set_unix_user")
 	})
 	return err
 }
@@ -2524,11 +2491,11 @@ var credentialsToStringFunction_Once sync.Once
 func credentialsToStringFunction_Set() error {
 	var err error
 	credentialsToStringFunction_Once.Do(func() {
-		err = credentialsStruct_Set()
+		err = credentialsObject_Set()
 		if err != nil {
 			return
 		}
-		credentialsToStringFunction, err = credentialsStruct.InvokerNew("to_string")
+		credentialsToStringFunction, err = credentialsObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -2550,13 +2517,13 @@ func (recv *Credentials) ToString() string {
 	return retGo
 }
 
-var dBusActionGroupStruct *gi.Struct
-var dBusActionGroupStruct_Once sync.Once
+var dBusActionGroupObject *gi.Object
+var dBusActionGroupObject_Once sync.Once
 
-func dBusActionGroupStruct_Set() error {
+func dBusActionGroupObject_Set() error {
 	var err error
-	dBusActionGroupStruct_Once.Do(func() {
-		dBusActionGroupStruct, err = gi.StructNew("Gio", "DBusActionGroup")
+	dBusActionGroupObject_Once.Do(func() {
+		dBusActionGroupObject, err = gi.ObjectNew("Gio", "DBusActionGroup")
 	})
 	return err
 }
@@ -2565,29 +2532,13 @@ type DBusActionGroup struct {
 	gobject.Object
 }
 
-// DBusActionGroupStruct creates an uninitialised DBusActionGroup.
-func DBusActionGroupStruct() *DBusActionGroup {
-	err := dBusActionGroupStruct_Set()
-	if err != nil {
-		return nil
-	}
+var dBusAuthObserverObject *gi.Object
+var dBusAuthObserverObject_Once sync.Once
 
-	structGo := &DBusActionGroup{}
-	structGo.Native = dBusActionGroupStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDBusActionGroup)
-	return structGo
-}
-func finalizeDBusActionGroup(obj *DBusActionGroup) {
-	dBusActionGroupStruct.Free(obj.Native)
-}
-
-var dBusAuthObserverStruct *gi.Struct
-var dBusAuthObserverStruct_Once sync.Once
-
-func dBusAuthObserverStruct_Set() error {
+func dBusAuthObserverObject_Set() error {
 	var err error
-	dBusAuthObserverStruct_Once.Do(func() {
-		dBusAuthObserverStruct, err = gi.StructNew("Gio", "DBusAuthObserver")
+	dBusAuthObserverObject_Once.Do(func() {
+		dBusAuthObserverObject, err = gi.ObjectNew("Gio", "DBusAuthObserver")
 	})
 	return err
 }
@@ -2602,11 +2553,11 @@ var dBusAuthObserverNewFunction_Once sync.Once
 func dBusAuthObserverNewFunction_Set() error {
 	var err error
 	dBusAuthObserverNewFunction_Once.Do(func() {
-		err = dBusAuthObserverStruct_Set()
+		err = dBusAuthObserverObject_Set()
 		if err != nil {
 			return
 		}
-		dBusAuthObserverNewFunction, err = dBusAuthObserverStruct.InvokerNew("new")
+		dBusAuthObserverNewFunction, err = dBusAuthObserverObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2633,11 +2584,11 @@ var dBusAuthObserverAllowMechanismFunction_Once sync.Once
 func dBusAuthObserverAllowMechanismFunction_Set() error {
 	var err error
 	dBusAuthObserverAllowMechanismFunction_Once.Do(func() {
-		err = dBusAuthObserverStruct_Set()
+		err = dBusAuthObserverObject_Set()
 		if err != nil {
 			return
 		}
-		dBusAuthObserverAllowMechanismFunction, err = dBusAuthObserverStruct.InvokerNew("allow_mechanism")
+		dBusAuthObserverAllowMechanismFunction, err = dBusAuthObserverObject.InvokerNew("allow_mechanism")
 	})
 	return err
 }
@@ -2666,11 +2617,11 @@ var dBusAuthObserverAuthorizeAuthenticatedPeerFunction_Once sync.Once
 func dBusAuthObserverAuthorizeAuthenticatedPeerFunction_Set() error {
 	var err error
 	dBusAuthObserverAuthorizeAuthenticatedPeerFunction_Once.Do(func() {
-		err = dBusAuthObserverStruct_Set()
+		err = dBusAuthObserverObject_Set()
 		if err != nil {
 			return
 		}
-		dBusAuthObserverAuthorizeAuthenticatedPeerFunction, err = dBusAuthObserverStruct.InvokerNew("authorize_authenticated_peer")
+		dBusAuthObserverAuthorizeAuthenticatedPeerFunction, err = dBusAuthObserverObject.InvokerNew("authorize_authenticated_peer")
 	})
 	return err
 }
@@ -2694,13 +2645,13 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 	return retGo
 }
 
-var dBusConnectionStruct *gi.Struct
-var dBusConnectionStruct_Once sync.Once
+var dBusConnectionObject *gi.Object
+var dBusConnectionObject_Once sync.Once
 
-func dBusConnectionStruct_Set() error {
+func dBusConnectionObject_Set() error {
 	var err error
-	dBusConnectionStruct_Once.Do(func() {
-		dBusConnectionStruct, err = gi.StructNew("Gio", "DBusConnection")
+	dBusConnectionObject_Once.Do(func() {
+		dBusConnectionObject, err = gi.ObjectNew("Gio", "DBusConnection")
 	})
 	return err
 }
@@ -2741,11 +2692,11 @@ var dBusConnectionCloseSyncFunction_Once sync.Once
 func dBusConnectionCloseSyncFunction_Set() error {
 	var err error
 	dBusConnectionCloseSyncFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionCloseSyncFunction, err = dBusConnectionStruct.InvokerNew("close_sync")
+		dBusConnectionCloseSyncFunction, err = dBusConnectionObject.InvokerNew("close_sync")
 	})
 	return err
 }
@@ -2778,11 +2729,11 @@ var dBusConnectionExportMenuModelFunction_Once sync.Once
 func dBusConnectionExportMenuModelFunction_Set() error {
 	var err error
 	dBusConnectionExportMenuModelFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionExportMenuModelFunction, err = dBusConnectionStruct.InvokerNew("export_menu_model")
+		dBusConnectionExportMenuModelFunction, err = dBusConnectionObject.InvokerNew("export_menu_model")
 	})
 	return err
 }
@@ -2816,11 +2767,11 @@ var dBusConnectionFlushSyncFunction_Once sync.Once
 func dBusConnectionFlushSyncFunction_Set() error {
 	var err error
 	dBusConnectionFlushSyncFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionFlushSyncFunction, err = dBusConnectionStruct.InvokerNew("flush_sync")
+		dBusConnectionFlushSyncFunction, err = dBusConnectionObject.InvokerNew("flush_sync")
 	})
 	return err
 }
@@ -2851,11 +2802,11 @@ var dBusConnectionGetExitOnCloseFunction_Once sync.Once
 func dBusConnectionGetExitOnCloseFunction_Set() error {
 	var err error
 	dBusConnectionGetExitOnCloseFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetExitOnCloseFunction, err = dBusConnectionStruct.InvokerNew("get_exit_on_close")
+		dBusConnectionGetExitOnCloseFunction, err = dBusConnectionObject.InvokerNew("get_exit_on_close")
 	})
 	return err
 }
@@ -2885,11 +2836,11 @@ var dBusConnectionGetGuidFunction_Once sync.Once
 func dBusConnectionGetGuidFunction_Set() error {
 	var err error
 	dBusConnectionGetGuidFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetGuidFunction, err = dBusConnectionStruct.InvokerNew("get_guid")
+		dBusConnectionGetGuidFunction, err = dBusConnectionObject.InvokerNew("get_guid")
 	})
 	return err
 }
@@ -2917,11 +2868,11 @@ var dBusConnectionGetLastSerialFunction_Once sync.Once
 func dBusConnectionGetLastSerialFunction_Set() error {
 	var err error
 	dBusConnectionGetLastSerialFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetLastSerialFunction, err = dBusConnectionStruct.InvokerNew("get_last_serial")
+		dBusConnectionGetLastSerialFunction, err = dBusConnectionObject.InvokerNew("get_last_serial")
 	})
 	return err
 }
@@ -2949,11 +2900,11 @@ var dBusConnectionGetPeerCredentialsFunction_Once sync.Once
 func dBusConnectionGetPeerCredentialsFunction_Set() error {
 	var err error
 	dBusConnectionGetPeerCredentialsFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetPeerCredentialsFunction, err = dBusConnectionStruct.InvokerNew("get_peer_credentials")
+		dBusConnectionGetPeerCredentialsFunction, err = dBusConnectionObject.InvokerNew("get_peer_credentials")
 	})
 	return err
 }
@@ -2982,11 +2933,11 @@ var dBusConnectionGetStreamFunction_Once sync.Once
 func dBusConnectionGetStreamFunction_Set() error {
 	var err error
 	dBusConnectionGetStreamFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetStreamFunction, err = dBusConnectionStruct.InvokerNew("get_stream")
+		dBusConnectionGetStreamFunction, err = dBusConnectionObject.InvokerNew("get_stream")
 	})
 	return err
 }
@@ -3015,11 +2966,11 @@ var dBusConnectionGetUniqueNameFunction_Once sync.Once
 func dBusConnectionGetUniqueNameFunction_Set() error {
 	var err error
 	dBusConnectionGetUniqueNameFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionGetUniqueNameFunction, err = dBusConnectionStruct.InvokerNew("get_unique_name")
+		dBusConnectionGetUniqueNameFunction, err = dBusConnectionObject.InvokerNew("get_unique_name")
 	})
 	return err
 }
@@ -3047,11 +2998,11 @@ var dBusConnectionIsClosedFunction_Once sync.Once
 func dBusConnectionIsClosedFunction_Set() error {
 	var err error
 	dBusConnectionIsClosedFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionIsClosedFunction, err = dBusConnectionStruct.InvokerNew("is_closed")
+		dBusConnectionIsClosedFunction, err = dBusConnectionObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -3085,11 +3036,11 @@ var dBusConnectionRemoveFilterFunction_Once sync.Once
 func dBusConnectionRemoveFilterFunction_Set() error {
 	var err error
 	dBusConnectionRemoveFilterFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionRemoveFilterFunction, err = dBusConnectionStruct.InvokerNew("remove_filter")
+		dBusConnectionRemoveFilterFunction, err = dBusConnectionObject.InvokerNew("remove_filter")
 	})
 	return err
 }
@@ -3122,11 +3073,11 @@ var dBusConnectionSetExitOnCloseFunction_Once sync.Once
 func dBusConnectionSetExitOnCloseFunction_Set() error {
 	var err error
 	dBusConnectionSetExitOnCloseFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionSetExitOnCloseFunction, err = dBusConnectionStruct.InvokerNew("set_exit_on_close")
+		dBusConnectionSetExitOnCloseFunction, err = dBusConnectionObject.InvokerNew("set_exit_on_close")
 	})
 	return err
 }
@@ -3153,11 +3104,11 @@ var dBusConnectionSignalUnsubscribeFunction_Once sync.Once
 func dBusConnectionSignalUnsubscribeFunction_Set() error {
 	var err error
 	dBusConnectionSignalUnsubscribeFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionSignalUnsubscribeFunction, err = dBusConnectionStruct.InvokerNew("signal_unsubscribe")
+		dBusConnectionSignalUnsubscribeFunction, err = dBusConnectionObject.InvokerNew("signal_unsubscribe")
 	})
 	return err
 }
@@ -3182,11 +3133,11 @@ var dBusConnectionStartMessageProcessingFunction_Once sync.Once
 func dBusConnectionStartMessageProcessingFunction_Set() error {
 	var err error
 	dBusConnectionStartMessageProcessingFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionStartMessageProcessingFunction, err = dBusConnectionStruct.InvokerNew("start_message_processing")
+		dBusConnectionStartMessageProcessingFunction, err = dBusConnectionObject.InvokerNew("start_message_processing")
 	})
 	return err
 }
@@ -3210,11 +3161,11 @@ var dBusConnectionUnexportActionGroupFunction_Once sync.Once
 func dBusConnectionUnexportActionGroupFunction_Set() error {
 	var err error
 	dBusConnectionUnexportActionGroupFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionUnexportActionGroupFunction, err = dBusConnectionStruct.InvokerNew("unexport_action_group")
+		dBusConnectionUnexportActionGroupFunction, err = dBusConnectionObject.InvokerNew("unexport_action_group")
 	})
 	return err
 }
@@ -3239,11 +3190,11 @@ var dBusConnectionUnexportMenuModelFunction_Once sync.Once
 func dBusConnectionUnexportMenuModelFunction_Set() error {
 	var err error
 	dBusConnectionUnexportMenuModelFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionUnexportMenuModelFunction, err = dBusConnectionStruct.InvokerNew("unexport_menu_model")
+		dBusConnectionUnexportMenuModelFunction, err = dBusConnectionObject.InvokerNew("unexport_menu_model")
 	})
 	return err
 }
@@ -3268,11 +3219,11 @@ var dBusConnectionUnregisterObjectFunction_Once sync.Once
 func dBusConnectionUnregisterObjectFunction_Set() error {
 	var err error
 	dBusConnectionUnregisterObjectFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionUnregisterObjectFunction, err = dBusConnectionStruct.InvokerNew("unregister_object")
+		dBusConnectionUnregisterObjectFunction, err = dBusConnectionObject.InvokerNew("unregister_object")
 	})
 	return err
 }
@@ -3301,11 +3252,11 @@ var dBusConnectionUnregisterSubtreeFunction_Once sync.Once
 func dBusConnectionUnregisterSubtreeFunction_Set() error {
 	var err error
 	dBusConnectionUnregisterSubtreeFunction_Once.Do(func() {
-		err = dBusConnectionStruct_Set()
+		err = dBusConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		dBusConnectionUnregisterSubtreeFunction, err = dBusConnectionStruct.InvokerNew("unregister_subtree")
+		dBusConnectionUnregisterSubtreeFunction, err = dBusConnectionObject.InvokerNew("unregister_subtree")
 	})
 	return err
 }
@@ -3328,13 +3279,13 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	return retGo
 }
 
-var dBusInterfaceSkeletonStruct *gi.Struct
-var dBusInterfaceSkeletonStruct_Once sync.Once
+var dBusInterfaceSkeletonObject *gi.Object
+var dBusInterfaceSkeletonObject_Once sync.Once
 
-func dBusInterfaceSkeletonStruct_Set() error {
+func dBusInterfaceSkeletonObject_Set() error {
 	var err error
-	dBusInterfaceSkeletonStruct_Once.Do(func() {
-		dBusInterfaceSkeletonStruct, err = gi.StructNew("Gio", "DBusInterfaceSkeleton")
+	dBusInterfaceSkeletonObject_Once.Do(func() {
+		dBusInterfaceSkeletonObject, err = gi.ObjectNew("Gio", "DBusInterfaceSkeleton")
 	})
 	return err
 }
@@ -3349,11 +3300,11 @@ var dBusInterfaceSkeletonExportFunction_Once sync.Once
 func dBusInterfaceSkeletonExportFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonExportFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonExportFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("export")
+		dBusInterfaceSkeletonExportFunction, err = dBusInterfaceSkeletonObject.InvokerNew("export")
 	})
 	return err
 }
@@ -3383,11 +3334,11 @@ var dBusInterfaceSkeletonFlushFunction_Once sync.Once
 func dBusInterfaceSkeletonFlushFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonFlushFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonFlushFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("flush")
+		dBusInterfaceSkeletonFlushFunction, err = dBusInterfaceSkeletonObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -3411,11 +3362,11 @@ var dBusInterfaceSkeletonGetConnectionFunction_Once sync.Once
 func dBusInterfaceSkeletonGetConnectionFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonGetConnectionFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonGetConnectionFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_connection")
+		dBusInterfaceSkeletonGetConnectionFunction, err = dBusInterfaceSkeletonObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -3448,11 +3399,11 @@ var dBusInterfaceSkeletonGetInfoFunction_Once sync.Once
 func dBusInterfaceSkeletonGetInfoFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonGetInfoFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonGetInfoFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_info")
+		dBusInterfaceSkeletonGetInfoFunction, err = dBusInterfaceSkeletonObject.InvokerNew("get_info")
 	})
 	return err
 }
@@ -3481,11 +3432,11 @@ var dBusInterfaceSkeletonGetObjectPathFunction_Once sync.Once
 func dBusInterfaceSkeletonGetObjectPathFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonGetObjectPathFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonGetObjectPathFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_object_path")
+		dBusInterfaceSkeletonGetObjectPathFunction, err = dBusInterfaceSkeletonObject.InvokerNew("get_object_path")
 	})
 	return err
 }
@@ -3515,11 +3466,11 @@ var dBusInterfaceSkeletonGetVtableFunction_Once sync.Once
 func dBusInterfaceSkeletonGetVtableFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonGetVtableFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonGetVtableFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("get_vtable")
+		dBusInterfaceSkeletonGetVtableFunction, err = dBusInterfaceSkeletonObject.InvokerNew("get_vtable")
 	})
 	return err
 }
@@ -3548,11 +3499,11 @@ var dBusInterfaceSkeletonHasConnectionFunction_Once sync.Once
 func dBusInterfaceSkeletonHasConnectionFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonHasConnectionFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonHasConnectionFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("has_connection")
+		dBusInterfaceSkeletonHasConnectionFunction, err = dBusInterfaceSkeletonObject.InvokerNew("has_connection")
 	})
 	return err
 }
@@ -3583,11 +3534,11 @@ var dBusInterfaceSkeletonUnexportFunction_Once sync.Once
 func dBusInterfaceSkeletonUnexportFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonUnexportFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonUnexportFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("unexport")
+		dBusInterfaceSkeletonUnexportFunction, err = dBusInterfaceSkeletonObject.InvokerNew("unexport")
 	})
 	return err
 }
@@ -3611,11 +3562,11 @@ var dBusInterfaceSkeletonUnexportFromConnectionFunction_Once sync.Once
 func dBusInterfaceSkeletonUnexportFromConnectionFunction_Set() error {
 	var err error
 	dBusInterfaceSkeletonUnexportFromConnectionFunction_Once.Do(func() {
-		err = dBusInterfaceSkeletonStruct_Set()
+		err = dBusInterfaceSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusInterfaceSkeletonUnexportFromConnectionFunction, err = dBusInterfaceSkeletonStruct.InvokerNew("unexport_from_connection")
+		dBusInterfaceSkeletonUnexportFromConnectionFunction, err = dBusInterfaceSkeletonObject.InvokerNew("unexport_from_connection")
 	})
 	return err
 }
@@ -3634,29 +3585,13 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 	return
 }
 
-// DBusInterfaceSkeletonStruct creates an uninitialised DBusInterfaceSkeleton.
-func DBusInterfaceSkeletonStruct() *DBusInterfaceSkeleton {
-	err := dBusInterfaceSkeletonStruct_Set()
-	if err != nil {
-		return nil
-	}
+var dBusMenuModelObject *gi.Object
+var dBusMenuModelObject_Once sync.Once
 
-	structGo := &DBusInterfaceSkeleton{}
-	structGo.Native = dBusInterfaceSkeletonStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDBusInterfaceSkeleton)
-	return structGo
-}
-func finalizeDBusInterfaceSkeleton(obj *DBusInterfaceSkeleton) {
-	dBusInterfaceSkeletonStruct.Free(obj.Native)
-}
-
-var dBusMenuModelStruct *gi.Struct
-var dBusMenuModelStruct_Once sync.Once
-
-func dBusMenuModelStruct_Set() error {
+func dBusMenuModelObject_Set() error {
 	var err error
-	dBusMenuModelStruct_Once.Do(func() {
-		dBusMenuModelStruct, err = gi.StructNew("Gio", "DBusMenuModel")
+	dBusMenuModelObject_Once.Do(func() {
+		dBusMenuModelObject, err = gi.ObjectNew("Gio", "DBusMenuModel")
 	})
 	return err
 }
@@ -3665,29 +3600,13 @@ type DBusMenuModel struct {
 	MenuModel
 }
 
-// DBusMenuModelStruct creates an uninitialised DBusMenuModel.
-func DBusMenuModelStruct() *DBusMenuModel {
-	err := dBusMenuModelStruct_Set()
-	if err != nil {
-		return nil
-	}
+var dBusMessageObject *gi.Object
+var dBusMessageObject_Once sync.Once
 
-	structGo := &DBusMenuModel{}
-	structGo.Native = dBusMenuModelStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDBusMenuModel)
-	return structGo
-}
-func finalizeDBusMenuModel(obj *DBusMenuModel) {
-	dBusMenuModelStruct.Free(obj.Native)
-}
-
-var dBusMessageStruct *gi.Struct
-var dBusMessageStruct_Once sync.Once
-
-func dBusMessageStruct_Set() error {
+func dBusMessageObject_Set() error {
 	var err error
-	dBusMessageStruct_Once.Do(func() {
-		dBusMessageStruct, err = gi.StructNew("Gio", "DBusMessage")
+	dBusMessageObject_Once.Do(func() {
+		dBusMessageObject, err = gi.ObjectNew("Gio", "DBusMessage")
 	})
 	return err
 }
@@ -3702,11 +3621,11 @@ var dBusMessageNewFunction_Once sync.Once
 func dBusMessageNewFunction_Set() error {
 	var err error
 	dBusMessageNewFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageNewFunction, err = dBusMessageStruct.InvokerNew("new")
+		dBusMessageNewFunction, err = dBusMessageObject.InvokerNew("new")
 	})
 	return err
 }
@@ -3735,11 +3654,11 @@ var dBusMessageNewMethodCallFunction_Once sync.Once
 func dBusMessageNewMethodCallFunction_Set() error {
 	var err error
 	dBusMessageNewMethodCallFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageNewMethodCallFunction, err = dBusMessageStruct.InvokerNew("new_method_call")
+		dBusMessageNewMethodCallFunction, err = dBusMessageObject.InvokerNew("new_method_call")
 	})
 	return err
 }
@@ -3771,11 +3690,11 @@ var dBusMessageNewSignalFunction_Once sync.Once
 func dBusMessageNewSignalFunction_Set() error {
 	var err error
 	dBusMessageNewSignalFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageNewSignalFunction, err = dBusMessageStruct.InvokerNew("new_signal")
+		dBusMessageNewSignalFunction, err = dBusMessageObject.InvokerNew("new_signal")
 	})
 	return err
 }
@@ -3806,11 +3725,11 @@ var dBusMessageCopyFunction_Once sync.Once
 func dBusMessageCopyFunction_Set() error {
 	var err error
 	dBusMessageCopyFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageCopyFunction, err = dBusMessageStruct.InvokerNew("copy")
+		dBusMessageCopyFunction, err = dBusMessageObject.InvokerNew("copy")
 	})
 	return err
 }
@@ -3839,11 +3758,11 @@ var dBusMessageGetArg0Function_Once sync.Once
 func dBusMessageGetArg0Function_Set() error {
 	var err error
 	dBusMessageGetArg0Function_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetArg0Function, err = dBusMessageStruct.InvokerNew("get_arg0")
+		dBusMessageGetArg0Function, err = dBusMessageObject.InvokerNew("get_arg0")
 	})
 	return err
 }
@@ -3873,11 +3792,11 @@ var dBusMessageGetByteOrderFunction_Once sync.Once
 func dBusMessageGetByteOrderFunction_Set() error {
 	var err error
 	dBusMessageGetByteOrderFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetByteOrderFunction, err = dBusMessageStruct.InvokerNew("get_byte_order")
+		dBusMessageGetByteOrderFunction, err = dBusMessageObject.InvokerNew("get_byte_order")
 	})
 	return err
 }
@@ -3905,11 +3824,11 @@ var dBusMessageGetDestinationFunction_Once sync.Once
 func dBusMessageGetDestinationFunction_Set() error {
 	var err error
 	dBusMessageGetDestinationFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetDestinationFunction, err = dBusMessageStruct.InvokerNew("get_destination")
+		dBusMessageGetDestinationFunction, err = dBusMessageObject.InvokerNew("get_destination")
 	})
 	return err
 }
@@ -3937,11 +3856,11 @@ var dBusMessageGetErrorNameFunction_Once sync.Once
 func dBusMessageGetErrorNameFunction_Set() error {
 	var err error
 	dBusMessageGetErrorNameFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetErrorNameFunction, err = dBusMessageStruct.InvokerNew("get_error_name")
+		dBusMessageGetErrorNameFunction, err = dBusMessageObject.InvokerNew("get_error_name")
 	})
 	return err
 }
@@ -3973,11 +3892,11 @@ var dBusMessageGetHeaderFieldsFunction_Once sync.Once
 func dBusMessageGetHeaderFieldsFunction_Set() error {
 	var err error
 	dBusMessageGetHeaderFieldsFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetHeaderFieldsFunction, err = dBusMessageStruct.InvokerNew("get_header_fields")
+		dBusMessageGetHeaderFieldsFunction, err = dBusMessageObject.InvokerNew("get_header_fields")
 	})
 	return err
 }
@@ -4001,11 +3920,11 @@ var dBusMessageGetInterfaceFunction_Once sync.Once
 func dBusMessageGetInterfaceFunction_Set() error {
 	var err error
 	dBusMessageGetInterfaceFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetInterfaceFunction, err = dBusMessageStruct.InvokerNew("get_interface")
+		dBusMessageGetInterfaceFunction, err = dBusMessageObject.InvokerNew("get_interface")
 	})
 	return err
 }
@@ -4033,11 +3952,11 @@ var dBusMessageGetLockedFunction_Once sync.Once
 func dBusMessageGetLockedFunction_Set() error {
 	var err error
 	dBusMessageGetLockedFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetLockedFunction, err = dBusMessageStruct.InvokerNew("get_locked")
+		dBusMessageGetLockedFunction, err = dBusMessageObject.InvokerNew("get_locked")
 	})
 	return err
 }
@@ -4065,11 +3984,11 @@ var dBusMessageGetMemberFunction_Once sync.Once
 func dBusMessageGetMemberFunction_Set() error {
 	var err error
 	dBusMessageGetMemberFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetMemberFunction, err = dBusMessageStruct.InvokerNew("get_member")
+		dBusMessageGetMemberFunction, err = dBusMessageObject.InvokerNew("get_member")
 	})
 	return err
 }
@@ -4097,11 +4016,11 @@ var dBusMessageGetMessageTypeFunction_Once sync.Once
 func dBusMessageGetMessageTypeFunction_Set() error {
 	var err error
 	dBusMessageGetMessageTypeFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetMessageTypeFunction, err = dBusMessageStruct.InvokerNew("get_message_type")
+		dBusMessageGetMessageTypeFunction, err = dBusMessageObject.InvokerNew("get_message_type")
 	})
 	return err
 }
@@ -4129,11 +4048,11 @@ var dBusMessageGetNumUnixFdsFunction_Once sync.Once
 func dBusMessageGetNumUnixFdsFunction_Set() error {
 	var err error
 	dBusMessageGetNumUnixFdsFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetNumUnixFdsFunction, err = dBusMessageStruct.InvokerNew("get_num_unix_fds")
+		dBusMessageGetNumUnixFdsFunction, err = dBusMessageObject.InvokerNew("get_num_unix_fds")
 	})
 	return err
 }
@@ -4161,11 +4080,11 @@ var dBusMessageGetPathFunction_Once sync.Once
 func dBusMessageGetPathFunction_Set() error {
 	var err error
 	dBusMessageGetPathFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetPathFunction, err = dBusMessageStruct.InvokerNew("get_path")
+		dBusMessageGetPathFunction, err = dBusMessageObject.InvokerNew("get_path")
 	})
 	return err
 }
@@ -4193,11 +4112,11 @@ var dBusMessageGetReplySerialFunction_Once sync.Once
 func dBusMessageGetReplySerialFunction_Set() error {
 	var err error
 	dBusMessageGetReplySerialFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetReplySerialFunction, err = dBusMessageStruct.InvokerNew("get_reply_serial")
+		dBusMessageGetReplySerialFunction, err = dBusMessageObject.InvokerNew("get_reply_serial")
 	})
 	return err
 }
@@ -4225,11 +4144,11 @@ var dBusMessageGetSenderFunction_Once sync.Once
 func dBusMessageGetSenderFunction_Set() error {
 	var err error
 	dBusMessageGetSenderFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetSenderFunction, err = dBusMessageStruct.InvokerNew("get_sender")
+		dBusMessageGetSenderFunction, err = dBusMessageObject.InvokerNew("get_sender")
 	})
 	return err
 }
@@ -4257,11 +4176,11 @@ var dBusMessageGetSerialFunction_Once sync.Once
 func dBusMessageGetSerialFunction_Set() error {
 	var err error
 	dBusMessageGetSerialFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetSerialFunction, err = dBusMessageStruct.InvokerNew("get_serial")
+		dBusMessageGetSerialFunction, err = dBusMessageObject.InvokerNew("get_serial")
 	})
 	return err
 }
@@ -4289,11 +4208,11 @@ var dBusMessageGetSignatureFunction_Once sync.Once
 func dBusMessageGetSignatureFunction_Set() error {
 	var err error
 	dBusMessageGetSignatureFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetSignatureFunction, err = dBusMessageStruct.InvokerNew("get_signature")
+		dBusMessageGetSignatureFunction, err = dBusMessageObject.InvokerNew("get_signature")
 	})
 	return err
 }
@@ -4321,11 +4240,11 @@ var dBusMessageGetUnixFdListFunction_Once sync.Once
 func dBusMessageGetUnixFdListFunction_Set() error {
 	var err error
 	dBusMessageGetUnixFdListFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageGetUnixFdListFunction, err = dBusMessageStruct.InvokerNew("get_unix_fd_list")
+		dBusMessageGetUnixFdListFunction, err = dBusMessageObject.InvokerNew("get_unix_fd_list")
 	})
 	return err
 }
@@ -4354,11 +4273,11 @@ var dBusMessageLockFunction_Once sync.Once
 func dBusMessageLockFunction_Set() error {
 	var err error
 	dBusMessageLockFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageLockFunction, err = dBusMessageStruct.InvokerNew("lock")
+		dBusMessageLockFunction, err = dBusMessageObject.InvokerNew("lock")
 	})
 	return err
 }
@@ -4384,11 +4303,11 @@ var dBusMessageNewMethodErrorLiteralFunction_Once sync.Once
 func dBusMessageNewMethodErrorLiteralFunction_Set() error {
 	var err error
 	dBusMessageNewMethodErrorLiteralFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageNewMethodErrorLiteralFunction, err = dBusMessageStruct.InvokerNew("new_method_error_literal")
+		dBusMessageNewMethodErrorLiteralFunction, err = dBusMessageObject.InvokerNew("new_method_error_literal")
 	})
 	return err
 }
@@ -4421,11 +4340,11 @@ var dBusMessageNewMethodReplyFunction_Once sync.Once
 func dBusMessageNewMethodReplyFunction_Set() error {
 	var err error
 	dBusMessageNewMethodReplyFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageNewMethodReplyFunction, err = dBusMessageStruct.InvokerNew("new_method_reply")
+		dBusMessageNewMethodReplyFunction, err = dBusMessageObject.InvokerNew("new_method_reply")
 	})
 	return err
 }
@@ -4454,11 +4373,11 @@ var dBusMessagePrintFunction_Once sync.Once
 func dBusMessagePrintFunction_Set() error {
 	var err error
 	dBusMessagePrintFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessagePrintFunction, err = dBusMessageStruct.InvokerNew("print")
+		dBusMessagePrintFunction, err = dBusMessageObject.InvokerNew("print")
 	})
 	return err
 }
@@ -4489,11 +4408,11 @@ var dBusMessageSetByteOrderFunction_Once sync.Once
 func dBusMessageSetByteOrderFunction_Set() error {
 	var err error
 	dBusMessageSetByteOrderFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetByteOrderFunction, err = dBusMessageStruct.InvokerNew("set_byte_order")
+		dBusMessageSetByteOrderFunction, err = dBusMessageObject.InvokerNew("set_byte_order")
 	})
 	return err
 }
@@ -4518,11 +4437,11 @@ var dBusMessageSetDestinationFunction_Once sync.Once
 func dBusMessageSetDestinationFunction_Set() error {
 	var err error
 	dBusMessageSetDestinationFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetDestinationFunction, err = dBusMessageStruct.InvokerNew("set_destination")
+		dBusMessageSetDestinationFunction, err = dBusMessageObject.InvokerNew("set_destination")
 	})
 	return err
 }
@@ -4547,11 +4466,11 @@ var dBusMessageSetErrorNameFunction_Once sync.Once
 func dBusMessageSetErrorNameFunction_Set() error {
 	var err error
 	dBusMessageSetErrorNameFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetErrorNameFunction, err = dBusMessageStruct.InvokerNew("set_error_name")
+		dBusMessageSetErrorNameFunction, err = dBusMessageObject.InvokerNew("set_error_name")
 	})
 	return err
 }
@@ -4580,11 +4499,11 @@ var dBusMessageSetInterfaceFunction_Once sync.Once
 func dBusMessageSetInterfaceFunction_Set() error {
 	var err error
 	dBusMessageSetInterfaceFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetInterfaceFunction, err = dBusMessageStruct.InvokerNew("set_interface")
+		dBusMessageSetInterfaceFunction, err = dBusMessageObject.InvokerNew("set_interface")
 	})
 	return err
 }
@@ -4609,11 +4528,11 @@ var dBusMessageSetMemberFunction_Once sync.Once
 func dBusMessageSetMemberFunction_Set() error {
 	var err error
 	dBusMessageSetMemberFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetMemberFunction, err = dBusMessageStruct.InvokerNew("set_member")
+		dBusMessageSetMemberFunction, err = dBusMessageObject.InvokerNew("set_member")
 	})
 	return err
 }
@@ -4638,11 +4557,11 @@ var dBusMessageSetMessageTypeFunction_Once sync.Once
 func dBusMessageSetMessageTypeFunction_Set() error {
 	var err error
 	dBusMessageSetMessageTypeFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetMessageTypeFunction, err = dBusMessageStruct.InvokerNew("set_message_type")
+		dBusMessageSetMessageTypeFunction, err = dBusMessageObject.InvokerNew("set_message_type")
 	})
 	return err
 }
@@ -4667,11 +4586,11 @@ var dBusMessageSetNumUnixFdsFunction_Once sync.Once
 func dBusMessageSetNumUnixFdsFunction_Set() error {
 	var err error
 	dBusMessageSetNumUnixFdsFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetNumUnixFdsFunction, err = dBusMessageStruct.InvokerNew("set_num_unix_fds")
+		dBusMessageSetNumUnixFdsFunction, err = dBusMessageObject.InvokerNew("set_num_unix_fds")
 	})
 	return err
 }
@@ -4696,11 +4615,11 @@ var dBusMessageSetPathFunction_Once sync.Once
 func dBusMessageSetPathFunction_Set() error {
 	var err error
 	dBusMessageSetPathFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetPathFunction, err = dBusMessageStruct.InvokerNew("set_path")
+		dBusMessageSetPathFunction, err = dBusMessageObject.InvokerNew("set_path")
 	})
 	return err
 }
@@ -4725,11 +4644,11 @@ var dBusMessageSetReplySerialFunction_Once sync.Once
 func dBusMessageSetReplySerialFunction_Set() error {
 	var err error
 	dBusMessageSetReplySerialFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetReplySerialFunction, err = dBusMessageStruct.InvokerNew("set_reply_serial")
+		dBusMessageSetReplySerialFunction, err = dBusMessageObject.InvokerNew("set_reply_serial")
 	})
 	return err
 }
@@ -4754,11 +4673,11 @@ var dBusMessageSetSenderFunction_Once sync.Once
 func dBusMessageSetSenderFunction_Set() error {
 	var err error
 	dBusMessageSetSenderFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetSenderFunction, err = dBusMessageStruct.InvokerNew("set_sender")
+		dBusMessageSetSenderFunction, err = dBusMessageObject.InvokerNew("set_sender")
 	})
 	return err
 }
@@ -4783,11 +4702,11 @@ var dBusMessageSetSerialFunction_Once sync.Once
 func dBusMessageSetSerialFunction_Set() error {
 	var err error
 	dBusMessageSetSerialFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetSerialFunction, err = dBusMessageStruct.InvokerNew("set_serial")
+		dBusMessageSetSerialFunction, err = dBusMessageObject.InvokerNew("set_serial")
 	})
 	return err
 }
@@ -4812,11 +4731,11 @@ var dBusMessageSetSignatureFunction_Once sync.Once
 func dBusMessageSetSignatureFunction_Set() error {
 	var err error
 	dBusMessageSetSignatureFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetSignatureFunction, err = dBusMessageStruct.InvokerNew("set_signature")
+		dBusMessageSetSignatureFunction, err = dBusMessageObject.InvokerNew("set_signature")
 	})
 	return err
 }
@@ -4841,11 +4760,11 @@ var dBusMessageSetUnixFdListFunction_Once sync.Once
 func dBusMessageSetUnixFdListFunction_Set() error {
 	var err error
 	dBusMessageSetUnixFdListFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageSetUnixFdListFunction, err = dBusMessageStruct.InvokerNew("set_unix_fd_list")
+		dBusMessageSetUnixFdListFunction, err = dBusMessageObject.InvokerNew("set_unix_fd_list")
 	})
 	return err
 }
@@ -4872,11 +4791,11 @@ var dBusMessageToGerrorFunction_Once sync.Once
 func dBusMessageToGerrorFunction_Set() error {
 	var err error
 	dBusMessageToGerrorFunction_Once.Do(func() {
-		err = dBusMessageStruct_Set()
+		err = dBusMessageObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMessageToGerrorFunction, err = dBusMessageStruct.InvokerNew("to_gerror")
+		dBusMessageToGerrorFunction, err = dBusMessageObject.InvokerNew("to_gerror")
 	})
 	return err
 }
@@ -4898,13 +4817,13 @@ func (recv *DBusMessage) ToGerror() bool {
 	return retGo
 }
 
-var dBusMethodInvocationStruct *gi.Struct
-var dBusMethodInvocationStruct_Once sync.Once
+var dBusMethodInvocationObject *gi.Object
+var dBusMethodInvocationObject_Once sync.Once
 
-func dBusMethodInvocationStruct_Set() error {
+func dBusMethodInvocationObject_Set() error {
 	var err error
-	dBusMethodInvocationStruct_Once.Do(func() {
-		dBusMethodInvocationStruct, err = gi.StructNew("Gio", "DBusMethodInvocation")
+	dBusMethodInvocationObject_Once.Do(func() {
+		dBusMethodInvocationObject, err = gi.ObjectNew("Gio", "DBusMethodInvocation")
 	})
 	return err
 }
@@ -4919,11 +4838,11 @@ var dBusMethodInvocationGetConnectionFunction_Once sync.Once
 func dBusMethodInvocationGetConnectionFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetConnectionFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetConnectionFunction, err = dBusMethodInvocationStruct.InvokerNew("get_connection")
+		dBusMethodInvocationGetConnectionFunction, err = dBusMethodInvocationObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -4952,11 +4871,11 @@ var dBusMethodInvocationGetInterfaceNameFunction_Once sync.Once
 func dBusMethodInvocationGetInterfaceNameFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetInterfaceNameFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetInterfaceNameFunction, err = dBusMethodInvocationStruct.InvokerNew("get_interface_name")
+		dBusMethodInvocationGetInterfaceNameFunction, err = dBusMethodInvocationObject.InvokerNew("get_interface_name")
 	})
 	return err
 }
@@ -4984,11 +4903,11 @@ var dBusMethodInvocationGetMessageFunction_Once sync.Once
 func dBusMethodInvocationGetMessageFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetMessageFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetMessageFunction, err = dBusMethodInvocationStruct.InvokerNew("get_message")
+		dBusMethodInvocationGetMessageFunction, err = dBusMethodInvocationObject.InvokerNew("get_message")
 	})
 	return err
 }
@@ -5017,11 +4936,11 @@ var dBusMethodInvocationGetMethodInfoFunction_Once sync.Once
 func dBusMethodInvocationGetMethodInfoFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetMethodInfoFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetMethodInfoFunction, err = dBusMethodInvocationStruct.InvokerNew("get_method_info")
+		dBusMethodInvocationGetMethodInfoFunction, err = dBusMethodInvocationObject.InvokerNew("get_method_info")
 	})
 	return err
 }
@@ -5050,11 +4969,11 @@ var dBusMethodInvocationGetMethodNameFunction_Once sync.Once
 func dBusMethodInvocationGetMethodNameFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetMethodNameFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetMethodNameFunction, err = dBusMethodInvocationStruct.InvokerNew("get_method_name")
+		dBusMethodInvocationGetMethodNameFunction, err = dBusMethodInvocationObject.InvokerNew("get_method_name")
 	})
 	return err
 }
@@ -5082,11 +5001,11 @@ var dBusMethodInvocationGetObjectPathFunction_Once sync.Once
 func dBusMethodInvocationGetObjectPathFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetObjectPathFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetObjectPathFunction, err = dBusMethodInvocationStruct.InvokerNew("get_object_path")
+		dBusMethodInvocationGetObjectPathFunction, err = dBusMethodInvocationObject.InvokerNew("get_object_path")
 	})
 	return err
 }
@@ -5116,11 +5035,11 @@ var dBusMethodInvocationGetPropertyInfoFunction_Once sync.Once
 func dBusMethodInvocationGetPropertyInfoFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetPropertyInfoFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetPropertyInfoFunction, err = dBusMethodInvocationStruct.InvokerNew("get_property_info")
+		dBusMethodInvocationGetPropertyInfoFunction, err = dBusMethodInvocationObject.InvokerNew("get_property_info")
 	})
 	return err
 }
@@ -5149,11 +5068,11 @@ var dBusMethodInvocationGetSenderFunction_Once sync.Once
 func dBusMethodInvocationGetSenderFunction_Set() error {
 	var err error
 	dBusMethodInvocationGetSenderFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationGetSenderFunction, err = dBusMethodInvocationStruct.InvokerNew("get_sender")
+		dBusMethodInvocationGetSenderFunction, err = dBusMethodInvocationObject.InvokerNew("get_sender")
 	})
 	return err
 }
@@ -5183,11 +5102,11 @@ var dBusMethodInvocationReturnDbusErrorFunction_Once sync.Once
 func dBusMethodInvocationReturnDbusErrorFunction_Set() error {
 	var err error
 	dBusMethodInvocationReturnDbusErrorFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationReturnDbusErrorFunction, err = dBusMethodInvocationStruct.InvokerNew("return_dbus_error")
+		dBusMethodInvocationReturnDbusErrorFunction, err = dBusMethodInvocationObject.InvokerNew("return_dbus_error")
 	})
 	return err
 }
@@ -5215,11 +5134,11 @@ var dBusMethodInvocationReturnErrorLiteralFunction_Once sync.Once
 func dBusMethodInvocationReturnErrorLiteralFunction_Set() error {
 	var err error
 	dBusMethodInvocationReturnErrorLiteralFunction_Once.Do(func() {
-		err = dBusMethodInvocationStruct_Set()
+		err = dBusMethodInvocationObject_Set()
 		if err != nil {
 			return
 		}
-		dBusMethodInvocationReturnErrorLiteralFunction, err = dBusMethodInvocationStruct.InvokerNew("return_error_literal")
+		dBusMethodInvocationReturnErrorLiteralFunction, err = dBusMethodInvocationObject.InvokerNew("return_error_literal")
 	})
 	return err
 }
@@ -5250,29 +5169,13 @@ func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int
 
 // UNSUPPORTED : C value 'g_dbus_method_invocation_take_error' : parameter 'error' of type 'GLib.Error' not supported
 
-// DBusMethodInvocationStruct creates an uninitialised DBusMethodInvocation.
-func DBusMethodInvocationStruct() *DBusMethodInvocation {
-	err := dBusMethodInvocationStruct_Set()
-	if err != nil {
-		return nil
-	}
+var dBusObjectManagerClientObject *gi.Object
+var dBusObjectManagerClientObject_Once sync.Once
 
-	structGo := &DBusMethodInvocation{}
-	structGo.Native = dBusMethodInvocationStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeDBusMethodInvocation)
-	return structGo
-}
-func finalizeDBusMethodInvocation(obj *DBusMethodInvocation) {
-	dBusMethodInvocationStruct.Free(obj.Native)
-}
-
-var dBusObjectManagerClientStruct *gi.Struct
-var dBusObjectManagerClientStruct_Once sync.Once
-
-func dBusObjectManagerClientStruct_Set() error {
+func dBusObjectManagerClientObject_Set() error {
 	var err error
-	dBusObjectManagerClientStruct_Once.Do(func() {
-		dBusObjectManagerClientStruct, err = gi.StructNew("Gio", "DBusObjectManagerClient")
+	dBusObjectManagerClientObject_Once.Do(func() {
+		dBusObjectManagerClientObject, err = gi.ObjectNew("Gio", "DBusObjectManagerClient")
 	})
 	return err
 }
@@ -5295,11 +5198,11 @@ var dBusObjectManagerClientGetConnectionFunction_Once sync.Once
 func dBusObjectManagerClientGetConnectionFunction_Set() error {
 	var err error
 	dBusObjectManagerClientGetConnectionFunction_Once.Do(func() {
-		err = dBusObjectManagerClientStruct_Set()
+		err = dBusObjectManagerClientObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerClientGetConnectionFunction, err = dBusObjectManagerClientStruct.InvokerNew("get_connection")
+		dBusObjectManagerClientGetConnectionFunction, err = dBusObjectManagerClientObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -5330,11 +5233,11 @@ var dBusObjectManagerClientGetNameFunction_Once sync.Once
 func dBusObjectManagerClientGetNameFunction_Set() error {
 	var err error
 	dBusObjectManagerClientGetNameFunction_Once.Do(func() {
-		err = dBusObjectManagerClientStruct_Set()
+		err = dBusObjectManagerClientObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerClientGetNameFunction, err = dBusObjectManagerClientStruct.InvokerNew("get_name")
+		dBusObjectManagerClientGetNameFunction, err = dBusObjectManagerClientObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -5362,11 +5265,11 @@ var dBusObjectManagerClientGetNameOwnerFunction_Once sync.Once
 func dBusObjectManagerClientGetNameOwnerFunction_Set() error {
 	var err error
 	dBusObjectManagerClientGetNameOwnerFunction_Once.Do(func() {
-		err = dBusObjectManagerClientStruct_Set()
+		err = dBusObjectManagerClientObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerClientGetNameOwnerFunction, err = dBusObjectManagerClientStruct.InvokerNew("get_name_owner")
+		dBusObjectManagerClientGetNameOwnerFunction, err = dBusObjectManagerClientObject.InvokerNew("get_name_owner")
 	})
 	return err
 }
@@ -5388,13 +5291,13 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
-var dBusObjectManagerServerStruct *gi.Struct
-var dBusObjectManagerServerStruct_Once sync.Once
+var dBusObjectManagerServerObject *gi.Object
+var dBusObjectManagerServerObject_Once sync.Once
 
-func dBusObjectManagerServerStruct_Set() error {
+func dBusObjectManagerServerObject_Set() error {
 	var err error
-	dBusObjectManagerServerStruct_Once.Do(func() {
-		dBusObjectManagerServerStruct, err = gi.StructNew("Gio", "DBusObjectManagerServer")
+	dBusObjectManagerServerObject_Once.Do(func() {
+		dBusObjectManagerServerObject, err = gi.ObjectNew("Gio", "DBusObjectManagerServer")
 	})
 	return err
 }
@@ -5409,11 +5312,11 @@ var dBusObjectManagerServerNewFunction_Once sync.Once
 func dBusObjectManagerServerNewFunction_Set() error {
 	var err error
 	dBusObjectManagerServerNewFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerNewFunction, err = dBusObjectManagerServerStruct.InvokerNew("new")
+		dBusObjectManagerServerNewFunction, err = dBusObjectManagerServerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5442,11 +5345,11 @@ var dBusObjectManagerServerExportFunction_Once sync.Once
 func dBusObjectManagerServerExportFunction_Set() error {
 	var err error
 	dBusObjectManagerServerExportFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerExportFunction, err = dBusObjectManagerServerStruct.InvokerNew("export")
+		dBusObjectManagerServerExportFunction, err = dBusObjectManagerServerObject.InvokerNew("export")
 	})
 	return err
 }
@@ -5471,11 +5374,11 @@ var dBusObjectManagerServerExportUniquelyFunction_Once sync.Once
 func dBusObjectManagerServerExportUniquelyFunction_Set() error {
 	var err error
 	dBusObjectManagerServerExportUniquelyFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerExportUniquelyFunction, err = dBusObjectManagerServerStruct.InvokerNew("export_uniquely")
+		dBusObjectManagerServerExportUniquelyFunction, err = dBusObjectManagerServerObject.InvokerNew("export_uniquely")
 	})
 	return err
 }
@@ -5500,11 +5403,11 @@ var dBusObjectManagerServerGetConnectionFunction_Once sync.Once
 func dBusObjectManagerServerGetConnectionFunction_Set() error {
 	var err error
 	dBusObjectManagerServerGetConnectionFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerGetConnectionFunction, err = dBusObjectManagerServerStruct.InvokerNew("get_connection")
+		dBusObjectManagerServerGetConnectionFunction, err = dBusObjectManagerServerObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -5533,11 +5436,11 @@ var dBusObjectManagerServerIsExportedFunction_Once sync.Once
 func dBusObjectManagerServerIsExportedFunction_Set() error {
 	var err error
 	dBusObjectManagerServerIsExportedFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerIsExportedFunction, err = dBusObjectManagerServerStruct.InvokerNew("is_exported")
+		dBusObjectManagerServerIsExportedFunction, err = dBusObjectManagerServerObject.InvokerNew("is_exported")
 	})
 	return err
 }
@@ -5566,11 +5469,11 @@ var dBusObjectManagerServerSetConnectionFunction_Once sync.Once
 func dBusObjectManagerServerSetConnectionFunction_Set() error {
 	var err error
 	dBusObjectManagerServerSetConnectionFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerSetConnectionFunction, err = dBusObjectManagerServerStruct.InvokerNew("set_connection")
+		dBusObjectManagerServerSetConnectionFunction, err = dBusObjectManagerServerObject.InvokerNew("set_connection")
 	})
 	return err
 }
@@ -5595,11 +5498,11 @@ var dBusObjectManagerServerUnexportFunction_Once sync.Once
 func dBusObjectManagerServerUnexportFunction_Set() error {
 	var err error
 	dBusObjectManagerServerUnexportFunction_Once.Do(func() {
-		err = dBusObjectManagerServerStruct_Set()
+		err = dBusObjectManagerServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectManagerServerUnexportFunction, err = dBusObjectManagerServerStruct.InvokerNew("unexport")
+		dBusObjectManagerServerUnexportFunction, err = dBusObjectManagerServerObject.InvokerNew("unexport")
 	})
 	return err
 }
@@ -5622,13 +5525,13 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	return retGo
 }
 
-var dBusObjectProxyStruct *gi.Struct
-var dBusObjectProxyStruct_Once sync.Once
+var dBusObjectProxyObject *gi.Object
+var dBusObjectProxyObject_Once sync.Once
 
-func dBusObjectProxyStruct_Set() error {
+func dBusObjectProxyObject_Set() error {
 	var err error
-	dBusObjectProxyStruct_Once.Do(func() {
-		dBusObjectProxyStruct, err = gi.StructNew("Gio", "DBusObjectProxy")
+	dBusObjectProxyObject_Once.Do(func() {
+		dBusObjectProxyObject, err = gi.ObjectNew("Gio", "DBusObjectProxy")
 	})
 	return err
 }
@@ -5643,11 +5546,11 @@ var dBusObjectProxyNewFunction_Once sync.Once
 func dBusObjectProxyNewFunction_Set() error {
 	var err error
 	dBusObjectProxyNewFunction_Once.Do(func() {
-		err = dBusObjectProxyStruct_Set()
+		err = dBusObjectProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectProxyNewFunction, err = dBusObjectProxyStruct.InvokerNew("new")
+		dBusObjectProxyNewFunction, err = dBusObjectProxyObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5677,11 +5580,11 @@ var dBusObjectProxyGetConnectionFunction_Once sync.Once
 func dBusObjectProxyGetConnectionFunction_Set() error {
 	var err error
 	dBusObjectProxyGetConnectionFunction_Once.Do(func() {
-		err = dBusObjectProxyStruct_Set()
+		err = dBusObjectProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectProxyGetConnectionFunction, err = dBusObjectProxyStruct.InvokerNew("get_connection")
+		dBusObjectProxyGetConnectionFunction, err = dBusObjectProxyObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -5704,13 +5607,13 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	return retGo
 }
 
-var dBusObjectSkeletonStruct *gi.Struct
-var dBusObjectSkeletonStruct_Once sync.Once
+var dBusObjectSkeletonObject *gi.Object
+var dBusObjectSkeletonObject_Once sync.Once
 
-func dBusObjectSkeletonStruct_Set() error {
+func dBusObjectSkeletonObject_Set() error {
 	var err error
-	dBusObjectSkeletonStruct_Once.Do(func() {
-		dBusObjectSkeletonStruct, err = gi.StructNew("Gio", "DBusObjectSkeleton")
+	dBusObjectSkeletonObject_Once.Do(func() {
+		dBusObjectSkeletonObject, err = gi.ObjectNew("Gio", "DBusObjectSkeleton")
 	})
 	return err
 }
@@ -5725,11 +5628,11 @@ var dBusObjectSkeletonNewFunction_Once sync.Once
 func dBusObjectSkeletonNewFunction_Set() error {
 	var err error
 	dBusObjectSkeletonNewFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonNewFunction, err = dBusObjectSkeletonStruct.InvokerNew("new")
+		dBusObjectSkeletonNewFunction, err = dBusObjectSkeletonObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5758,11 +5661,11 @@ var dBusObjectSkeletonAddInterfaceFunction_Once sync.Once
 func dBusObjectSkeletonAddInterfaceFunction_Set() error {
 	var err error
 	dBusObjectSkeletonAddInterfaceFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonAddInterfaceFunction, err = dBusObjectSkeletonStruct.InvokerNew("add_interface")
+		dBusObjectSkeletonAddInterfaceFunction, err = dBusObjectSkeletonObject.InvokerNew("add_interface")
 	})
 	return err
 }
@@ -5787,11 +5690,11 @@ var dBusObjectSkeletonFlushFunction_Once sync.Once
 func dBusObjectSkeletonFlushFunction_Set() error {
 	var err error
 	dBusObjectSkeletonFlushFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonFlushFunction, err = dBusObjectSkeletonStruct.InvokerNew("flush")
+		dBusObjectSkeletonFlushFunction, err = dBusObjectSkeletonObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -5815,11 +5718,11 @@ var dBusObjectSkeletonRemoveInterfaceFunction_Once sync.Once
 func dBusObjectSkeletonRemoveInterfaceFunction_Set() error {
 	var err error
 	dBusObjectSkeletonRemoveInterfaceFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonRemoveInterfaceFunction, err = dBusObjectSkeletonStruct.InvokerNew("remove_interface")
+		dBusObjectSkeletonRemoveInterfaceFunction, err = dBusObjectSkeletonObject.InvokerNew("remove_interface")
 	})
 	return err
 }
@@ -5844,11 +5747,11 @@ var dBusObjectSkeletonRemoveInterfaceByNameFunction_Once sync.Once
 func dBusObjectSkeletonRemoveInterfaceByNameFunction_Set() error {
 	var err error
 	dBusObjectSkeletonRemoveInterfaceByNameFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonRemoveInterfaceByNameFunction, err = dBusObjectSkeletonStruct.InvokerNew("remove_interface_by_name")
+		dBusObjectSkeletonRemoveInterfaceByNameFunction, err = dBusObjectSkeletonObject.InvokerNew("remove_interface_by_name")
 	})
 	return err
 }
@@ -5873,11 +5776,11 @@ var dBusObjectSkeletonSetObjectPathFunction_Once sync.Once
 func dBusObjectSkeletonSetObjectPathFunction_Set() error {
 	var err error
 	dBusObjectSkeletonSetObjectPathFunction_Once.Do(func() {
-		err = dBusObjectSkeletonStruct_Set()
+		err = dBusObjectSkeletonObject_Set()
 		if err != nil {
 			return
 		}
-		dBusObjectSkeletonSetObjectPathFunction, err = dBusObjectSkeletonStruct.InvokerNew("set_object_path")
+		dBusObjectSkeletonSetObjectPathFunction, err = dBusObjectSkeletonObject.InvokerNew("set_object_path")
 	})
 	return err
 }
@@ -5896,13 +5799,13 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	return
 }
 
-var dBusProxyStruct *gi.Struct
-var dBusProxyStruct_Once sync.Once
+var dBusProxyObject *gi.Object
+var dBusProxyObject_Once sync.Once
 
-func dBusProxyStruct_Set() error {
+func dBusProxyObject_Set() error {
 	var err error
-	dBusProxyStruct_Once.Do(func() {
-		dBusProxyStruct, err = gi.StructNew("Gio", "DBusProxy")
+	dBusProxyObject_Once.Do(func() {
+		dBusProxyObject, err = gi.ObjectNew("Gio", "DBusProxy")
 	})
 	return err
 }
@@ -5939,11 +5842,11 @@ var dBusProxyGetCachedPropertyNamesFunction_Once sync.Once
 func dBusProxyGetCachedPropertyNamesFunction_Set() error {
 	var err error
 	dBusProxyGetCachedPropertyNamesFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetCachedPropertyNamesFunction, err = dBusProxyStruct.InvokerNew("get_cached_property_names")
+		dBusProxyGetCachedPropertyNamesFunction, err = dBusProxyObject.InvokerNew("get_cached_property_names")
 	})
 	return err
 }
@@ -5967,11 +5870,11 @@ var dBusProxyGetConnectionFunction_Once sync.Once
 func dBusProxyGetConnectionFunction_Set() error {
 	var err error
 	dBusProxyGetConnectionFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetConnectionFunction, err = dBusProxyStruct.InvokerNew("get_connection")
+		dBusProxyGetConnectionFunction, err = dBusProxyObject.InvokerNew("get_connection")
 	})
 	return err
 }
@@ -6000,11 +5903,11 @@ var dBusProxyGetDefaultTimeoutFunction_Once sync.Once
 func dBusProxyGetDefaultTimeoutFunction_Set() error {
 	var err error
 	dBusProxyGetDefaultTimeoutFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetDefaultTimeoutFunction, err = dBusProxyStruct.InvokerNew("get_default_timeout")
+		dBusProxyGetDefaultTimeoutFunction, err = dBusProxyObject.InvokerNew("get_default_timeout")
 	})
 	return err
 }
@@ -6034,11 +5937,11 @@ var dBusProxyGetInterfaceInfoFunction_Once sync.Once
 func dBusProxyGetInterfaceInfoFunction_Set() error {
 	var err error
 	dBusProxyGetInterfaceInfoFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetInterfaceInfoFunction, err = dBusProxyStruct.InvokerNew("get_interface_info")
+		dBusProxyGetInterfaceInfoFunction, err = dBusProxyObject.InvokerNew("get_interface_info")
 	})
 	return err
 }
@@ -6067,11 +5970,11 @@ var dBusProxyGetInterfaceNameFunction_Once sync.Once
 func dBusProxyGetInterfaceNameFunction_Set() error {
 	var err error
 	dBusProxyGetInterfaceNameFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetInterfaceNameFunction, err = dBusProxyStruct.InvokerNew("get_interface_name")
+		dBusProxyGetInterfaceNameFunction, err = dBusProxyObject.InvokerNew("get_interface_name")
 	})
 	return err
 }
@@ -6099,11 +6002,11 @@ var dBusProxyGetNameFunction_Once sync.Once
 func dBusProxyGetNameFunction_Set() error {
 	var err error
 	dBusProxyGetNameFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetNameFunction, err = dBusProxyStruct.InvokerNew("get_name")
+		dBusProxyGetNameFunction, err = dBusProxyObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -6131,11 +6034,11 @@ var dBusProxyGetNameOwnerFunction_Once sync.Once
 func dBusProxyGetNameOwnerFunction_Set() error {
 	var err error
 	dBusProxyGetNameOwnerFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetNameOwnerFunction, err = dBusProxyStruct.InvokerNew("get_name_owner")
+		dBusProxyGetNameOwnerFunction, err = dBusProxyObject.InvokerNew("get_name_owner")
 	})
 	return err
 }
@@ -6163,11 +6066,11 @@ var dBusProxyGetObjectPathFunction_Once sync.Once
 func dBusProxyGetObjectPathFunction_Set() error {
 	var err error
 	dBusProxyGetObjectPathFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxyGetObjectPathFunction, err = dBusProxyStruct.InvokerNew("get_object_path")
+		dBusProxyGetObjectPathFunction, err = dBusProxyObject.InvokerNew("get_object_path")
 	})
 	return err
 }
@@ -6197,11 +6100,11 @@ var dBusProxySetDefaultTimeoutFunction_Once sync.Once
 func dBusProxySetDefaultTimeoutFunction_Set() error {
 	var err error
 	dBusProxySetDefaultTimeoutFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxySetDefaultTimeoutFunction, err = dBusProxyStruct.InvokerNew("set_default_timeout")
+		dBusProxySetDefaultTimeoutFunction, err = dBusProxyObject.InvokerNew("set_default_timeout")
 	})
 	return err
 }
@@ -6226,11 +6129,11 @@ var dBusProxySetInterfaceInfoFunction_Once sync.Once
 func dBusProxySetInterfaceInfoFunction_Set() error {
 	var err error
 	dBusProxySetInterfaceInfoFunction_Once.Do(func() {
-		err = dBusProxyStruct_Set()
+		err = dBusProxyObject_Set()
 		if err != nil {
 			return
 		}
-		dBusProxySetInterfaceInfoFunction, err = dBusProxyStruct.InvokerNew("set_interface_info")
+		dBusProxySetInterfaceInfoFunction, err = dBusProxyObject.InvokerNew("set_interface_info")
 	})
 	return err
 }
@@ -6249,13 +6152,13 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
-var dBusServerStruct *gi.Struct
-var dBusServerStruct_Once sync.Once
+var dBusServerObject *gi.Object
+var dBusServerObject_Once sync.Once
 
-func dBusServerStruct_Set() error {
+func dBusServerObject_Set() error {
 	var err error
-	dBusServerStruct_Once.Do(func() {
-		dBusServerStruct, err = gi.StructNew("Gio", "DBusServer")
+	dBusServerObject_Once.Do(func() {
+		dBusServerObject, err = gi.ObjectNew("Gio", "DBusServer")
 	})
 	return err
 }
@@ -6272,11 +6175,11 @@ var dBusServerGetClientAddressFunction_Once sync.Once
 func dBusServerGetClientAddressFunction_Set() error {
 	var err error
 	dBusServerGetClientAddressFunction_Once.Do(func() {
-		err = dBusServerStruct_Set()
+		err = dBusServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusServerGetClientAddressFunction, err = dBusServerStruct.InvokerNew("get_client_address")
+		dBusServerGetClientAddressFunction, err = dBusServerObject.InvokerNew("get_client_address")
 	})
 	return err
 }
@@ -6306,11 +6209,11 @@ var dBusServerGetGuidFunction_Once sync.Once
 func dBusServerGetGuidFunction_Set() error {
 	var err error
 	dBusServerGetGuidFunction_Once.Do(func() {
-		err = dBusServerStruct_Set()
+		err = dBusServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusServerGetGuidFunction, err = dBusServerStruct.InvokerNew("get_guid")
+		dBusServerGetGuidFunction, err = dBusServerObject.InvokerNew("get_guid")
 	})
 	return err
 }
@@ -6338,11 +6241,11 @@ var dBusServerIsActiveFunction_Once sync.Once
 func dBusServerIsActiveFunction_Set() error {
 	var err error
 	dBusServerIsActiveFunction_Once.Do(func() {
-		err = dBusServerStruct_Set()
+		err = dBusServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusServerIsActiveFunction, err = dBusServerStruct.InvokerNew("is_active")
+		dBusServerIsActiveFunction, err = dBusServerObject.InvokerNew("is_active")
 	})
 	return err
 }
@@ -6370,11 +6273,11 @@ var dBusServerStartFunction_Once sync.Once
 func dBusServerStartFunction_Set() error {
 	var err error
 	dBusServerStartFunction_Once.Do(func() {
-		err = dBusServerStruct_Set()
+		err = dBusServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusServerStartFunction, err = dBusServerStruct.InvokerNew("start")
+		dBusServerStartFunction, err = dBusServerObject.InvokerNew("start")
 	})
 	return err
 }
@@ -6398,11 +6301,11 @@ var dBusServerStopFunction_Once sync.Once
 func dBusServerStopFunction_Set() error {
 	var err error
 	dBusServerStopFunction_Once.Do(func() {
-		err = dBusServerStruct_Set()
+		err = dBusServerObject_Set()
 		if err != nil {
 			return
 		}
-		dBusServerStopFunction, err = dBusServerStruct.InvokerNew("stop")
+		dBusServerStopFunction, err = dBusServerObject.InvokerNew("stop")
 	})
 	return err
 }
@@ -6420,13 +6323,13 @@ func (recv *DBusServer) Stop() {
 	return
 }
 
-var dataInputStreamStruct *gi.Struct
-var dataInputStreamStruct_Once sync.Once
+var dataInputStreamObject *gi.Object
+var dataInputStreamObject_Once sync.Once
 
-func dataInputStreamStruct_Set() error {
+func dataInputStreamObject_Set() error {
 	var err error
-	dataInputStreamStruct_Once.Do(func() {
-		dataInputStreamStruct, err = gi.StructNew("Gio", "DataInputStream")
+	dataInputStreamObject_Once.Do(func() {
+		dataInputStreamObject, err = gi.ObjectNew("Gio", "DataInputStream")
 	})
 	return err
 }
@@ -6437,7 +6340,7 @@ type DataInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataInputStream) FieldParentInstance() *BufferedInputStream {
-	argValue := gi.FieldGet(dataInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(dataInputStreamObject, recv.Native, "parent_instance")
 	value := &BufferedInputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6447,7 +6350,7 @@ func (recv *DataInputStream) FieldParentInstance() *BufferedInputStream {
 func (recv *DataInputStream) SetFieldParentInstance(value *BufferedInputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(dataInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(dataInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var dataInputStreamNewFunction *gi.Function
@@ -6456,11 +6359,11 @@ var dataInputStreamNewFunction_Once sync.Once
 func dataInputStreamNewFunction_Set() error {
 	var err error
 	dataInputStreamNewFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamNewFunction, err = dataInputStreamStruct.InvokerNew("new")
+		dataInputStreamNewFunction, err = dataInputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6489,11 +6392,11 @@ var dataInputStreamGetByteOrderFunction_Once sync.Once
 func dataInputStreamGetByteOrderFunction_Set() error {
 	var err error
 	dataInputStreamGetByteOrderFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamGetByteOrderFunction, err = dataInputStreamStruct.InvokerNew("get_byte_order")
+		dataInputStreamGetByteOrderFunction, err = dataInputStreamObject.InvokerNew("get_byte_order")
 	})
 	return err
 }
@@ -6521,11 +6424,11 @@ var dataInputStreamGetNewlineTypeFunction_Once sync.Once
 func dataInputStreamGetNewlineTypeFunction_Set() error {
 	var err error
 	dataInputStreamGetNewlineTypeFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamGetNewlineTypeFunction, err = dataInputStreamStruct.InvokerNew("get_newline_type")
+		dataInputStreamGetNewlineTypeFunction, err = dataInputStreamObject.InvokerNew("get_newline_type")
 	})
 	return err
 }
@@ -6553,11 +6456,11 @@ var dataInputStreamReadByteFunction_Once sync.Once
 func dataInputStreamReadByteFunction_Set() error {
 	var err error
 	dataInputStreamReadByteFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadByteFunction, err = dataInputStreamStruct.InvokerNew("read_byte")
+		dataInputStreamReadByteFunction, err = dataInputStreamObject.InvokerNew("read_byte")
 	})
 	return err
 }
@@ -6586,11 +6489,11 @@ var dataInputStreamReadInt16Function_Once sync.Once
 func dataInputStreamReadInt16Function_Set() error {
 	var err error
 	dataInputStreamReadInt16Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadInt16Function, err = dataInputStreamStruct.InvokerNew("read_int16")
+		dataInputStreamReadInt16Function, err = dataInputStreamObject.InvokerNew("read_int16")
 	})
 	return err
 }
@@ -6619,11 +6522,11 @@ var dataInputStreamReadInt32Function_Once sync.Once
 func dataInputStreamReadInt32Function_Set() error {
 	var err error
 	dataInputStreamReadInt32Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadInt32Function, err = dataInputStreamStruct.InvokerNew("read_int32")
+		dataInputStreamReadInt32Function, err = dataInputStreamObject.InvokerNew("read_int32")
 	})
 	return err
 }
@@ -6652,11 +6555,11 @@ var dataInputStreamReadInt64Function_Once sync.Once
 func dataInputStreamReadInt64Function_Set() error {
 	var err error
 	dataInputStreamReadInt64Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadInt64Function, err = dataInputStreamStruct.InvokerNew("read_int64")
+		dataInputStreamReadInt64Function, err = dataInputStreamObject.InvokerNew("read_int64")
 	})
 	return err
 }
@@ -6685,11 +6588,11 @@ var dataInputStreamReadLineFunction_Once sync.Once
 func dataInputStreamReadLineFunction_Set() error {
 	var err error
 	dataInputStreamReadLineFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadLineFunction, err = dataInputStreamStruct.InvokerNew("read_line")
+		dataInputStreamReadLineFunction, err = dataInputStreamObject.InvokerNew("read_line")
 	})
 	return err
 }
@@ -6724,11 +6627,11 @@ var dataInputStreamReadLineUtf8Function_Once sync.Once
 func dataInputStreamReadLineUtf8Function_Set() error {
 	var err error
 	dataInputStreamReadLineUtf8Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadLineUtf8Function, err = dataInputStreamStruct.InvokerNew("read_line_utf8")
+		dataInputStreamReadLineUtf8Function, err = dataInputStreamObject.InvokerNew("read_line_utf8")
 	})
 	return err
 }
@@ -6759,11 +6662,11 @@ var dataInputStreamReadUint16Function_Once sync.Once
 func dataInputStreamReadUint16Function_Set() error {
 	var err error
 	dataInputStreamReadUint16Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadUint16Function, err = dataInputStreamStruct.InvokerNew("read_uint16")
+		dataInputStreamReadUint16Function, err = dataInputStreamObject.InvokerNew("read_uint16")
 	})
 	return err
 }
@@ -6792,11 +6695,11 @@ var dataInputStreamReadUint32Function_Once sync.Once
 func dataInputStreamReadUint32Function_Set() error {
 	var err error
 	dataInputStreamReadUint32Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadUint32Function, err = dataInputStreamStruct.InvokerNew("read_uint32")
+		dataInputStreamReadUint32Function, err = dataInputStreamObject.InvokerNew("read_uint32")
 	})
 	return err
 }
@@ -6825,11 +6728,11 @@ var dataInputStreamReadUint64Function_Once sync.Once
 func dataInputStreamReadUint64Function_Set() error {
 	var err error
 	dataInputStreamReadUint64Function_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadUint64Function, err = dataInputStreamStruct.InvokerNew("read_uint64")
+		dataInputStreamReadUint64Function, err = dataInputStreamObject.InvokerNew("read_uint64")
 	})
 	return err
 }
@@ -6858,11 +6761,11 @@ var dataInputStreamReadUntilFunction_Once sync.Once
 func dataInputStreamReadUntilFunction_Set() error {
 	var err error
 	dataInputStreamReadUntilFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadUntilFunction, err = dataInputStreamStruct.InvokerNew("read_until")
+		dataInputStreamReadUntilFunction, err = dataInputStreamObject.InvokerNew("read_until")
 	})
 	return err
 }
@@ -6898,11 +6801,11 @@ var dataInputStreamReadUptoFunction_Once sync.Once
 func dataInputStreamReadUptoFunction_Set() error {
 	var err error
 	dataInputStreamReadUptoFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamReadUptoFunction, err = dataInputStreamStruct.InvokerNew("read_upto")
+		dataInputStreamReadUptoFunction, err = dataInputStreamObject.InvokerNew("read_upto")
 	})
 	return err
 }
@@ -6939,11 +6842,11 @@ var dataInputStreamSetByteOrderFunction_Once sync.Once
 func dataInputStreamSetByteOrderFunction_Set() error {
 	var err error
 	dataInputStreamSetByteOrderFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamSetByteOrderFunction, err = dataInputStreamStruct.InvokerNew("set_byte_order")
+		dataInputStreamSetByteOrderFunction, err = dataInputStreamObject.InvokerNew("set_byte_order")
 	})
 	return err
 }
@@ -6968,11 +6871,11 @@ var dataInputStreamSetNewlineTypeFunction_Once sync.Once
 func dataInputStreamSetNewlineTypeFunction_Set() error {
 	var err error
 	dataInputStreamSetNewlineTypeFunction_Once.Do(func() {
-		err = dataInputStreamStruct_Set()
+		err = dataInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataInputStreamSetNewlineTypeFunction, err = dataInputStreamStruct.InvokerNew("set_newline_type")
+		dataInputStreamSetNewlineTypeFunction, err = dataInputStreamObject.InvokerNew("set_newline_type")
 	})
 	return err
 }
@@ -6991,13 +6894,13 @@ func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	return
 }
 
-var dataOutputStreamStruct *gi.Struct
-var dataOutputStreamStruct_Once sync.Once
+var dataOutputStreamObject *gi.Object
+var dataOutputStreamObject_Once sync.Once
 
-func dataOutputStreamStruct_Set() error {
+func dataOutputStreamObject_Set() error {
 	var err error
-	dataOutputStreamStruct_Once.Do(func() {
-		dataOutputStreamStruct, err = gi.StructNew("Gio", "DataOutputStream")
+	dataOutputStreamObject_Once.Do(func() {
+		dataOutputStreamObject, err = gi.ObjectNew("Gio", "DataOutputStream")
 	})
 	return err
 }
@@ -7008,7 +6911,7 @@ type DataOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.FieldGet(dataOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(dataOutputStreamObject, recv.Native, "parent_instance")
 	value := &FilterOutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -7018,7 +6921,7 @@ func (recv *DataOutputStream) FieldParentInstance() *FilterOutputStream {
 func (recv *DataOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(dataOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(dataOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var dataOutputStreamNewFunction *gi.Function
@@ -7027,11 +6930,11 @@ var dataOutputStreamNewFunction_Once sync.Once
 func dataOutputStreamNewFunction_Set() error {
 	var err error
 	dataOutputStreamNewFunction_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamNewFunction, err = dataOutputStreamStruct.InvokerNew("new")
+		dataOutputStreamNewFunction, err = dataOutputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -7060,11 +6963,11 @@ var dataOutputStreamGetByteOrderFunction_Once sync.Once
 func dataOutputStreamGetByteOrderFunction_Set() error {
 	var err error
 	dataOutputStreamGetByteOrderFunction_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamGetByteOrderFunction, err = dataOutputStreamStruct.InvokerNew("get_byte_order")
+		dataOutputStreamGetByteOrderFunction, err = dataOutputStreamObject.InvokerNew("get_byte_order")
 	})
 	return err
 }
@@ -7092,11 +6995,11 @@ var dataOutputStreamPutByteFunction_Once sync.Once
 func dataOutputStreamPutByteFunction_Set() error {
 	var err error
 	dataOutputStreamPutByteFunction_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutByteFunction, err = dataOutputStreamStruct.InvokerNew("put_byte")
+		dataOutputStreamPutByteFunction, err = dataOutputStreamObject.InvokerNew("put_byte")
 	})
 	return err
 }
@@ -7126,11 +7029,11 @@ var dataOutputStreamPutInt16Function_Once sync.Once
 func dataOutputStreamPutInt16Function_Set() error {
 	var err error
 	dataOutputStreamPutInt16Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutInt16Function, err = dataOutputStreamStruct.InvokerNew("put_int16")
+		dataOutputStreamPutInt16Function, err = dataOutputStreamObject.InvokerNew("put_int16")
 	})
 	return err
 }
@@ -7160,11 +7063,11 @@ var dataOutputStreamPutInt32Function_Once sync.Once
 func dataOutputStreamPutInt32Function_Set() error {
 	var err error
 	dataOutputStreamPutInt32Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutInt32Function, err = dataOutputStreamStruct.InvokerNew("put_int32")
+		dataOutputStreamPutInt32Function, err = dataOutputStreamObject.InvokerNew("put_int32")
 	})
 	return err
 }
@@ -7194,11 +7097,11 @@ var dataOutputStreamPutInt64Function_Once sync.Once
 func dataOutputStreamPutInt64Function_Set() error {
 	var err error
 	dataOutputStreamPutInt64Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutInt64Function, err = dataOutputStreamStruct.InvokerNew("put_int64")
+		dataOutputStreamPutInt64Function, err = dataOutputStreamObject.InvokerNew("put_int64")
 	})
 	return err
 }
@@ -7228,11 +7131,11 @@ var dataOutputStreamPutStringFunction_Once sync.Once
 func dataOutputStreamPutStringFunction_Set() error {
 	var err error
 	dataOutputStreamPutStringFunction_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutStringFunction, err = dataOutputStreamStruct.InvokerNew("put_string")
+		dataOutputStreamPutStringFunction, err = dataOutputStreamObject.InvokerNew("put_string")
 	})
 	return err
 }
@@ -7262,11 +7165,11 @@ var dataOutputStreamPutUint16Function_Once sync.Once
 func dataOutputStreamPutUint16Function_Set() error {
 	var err error
 	dataOutputStreamPutUint16Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutUint16Function, err = dataOutputStreamStruct.InvokerNew("put_uint16")
+		dataOutputStreamPutUint16Function, err = dataOutputStreamObject.InvokerNew("put_uint16")
 	})
 	return err
 }
@@ -7296,11 +7199,11 @@ var dataOutputStreamPutUint32Function_Once sync.Once
 func dataOutputStreamPutUint32Function_Set() error {
 	var err error
 	dataOutputStreamPutUint32Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutUint32Function, err = dataOutputStreamStruct.InvokerNew("put_uint32")
+		dataOutputStreamPutUint32Function, err = dataOutputStreamObject.InvokerNew("put_uint32")
 	})
 	return err
 }
@@ -7330,11 +7233,11 @@ var dataOutputStreamPutUint64Function_Once sync.Once
 func dataOutputStreamPutUint64Function_Set() error {
 	var err error
 	dataOutputStreamPutUint64Function_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamPutUint64Function, err = dataOutputStreamStruct.InvokerNew("put_uint64")
+		dataOutputStreamPutUint64Function, err = dataOutputStreamObject.InvokerNew("put_uint64")
 	})
 	return err
 }
@@ -7364,11 +7267,11 @@ var dataOutputStreamSetByteOrderFunction_Once sync.Once
 func dataOutputStreamSetByteOrderFunction_Set() error {
 	var err error
 	dataOutputStreamSetByteOrderFunction_Once.Do(func() {
-		err = dataOutputStreamStruct_Set()
+		err = dataOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		dataOutputStreamSetByteOrderFunction, err = dataOutputStreamStruct.InvokerNew("set_byte_order")
+		dataOutputStreamSetByteOrderFunction, err = dataOutputStreamObject.InvokerNew("set_byte_order")
 	})
 	return err
 }
@@ -7387,13 +7290,13 @@ func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	return
 }
 
-var desktopAppInfoStruct *gi.Struct
-var desktopAppInfoStruct_Once sync.Once
+var desktopAppInfoObject *gi.Object
+var desktopAppInfoObject_Once sync.Once
 
-func desktopAppInfoStruct_Set() error {
+func desktopAppInfoObject_Set() error {
 	var err error
-	desktopAppInfoStruct_Once.Do(func() {
-		desktopAppInfoStruct, err = gi.StructNew("Gio", "DesktopAppInfo")
+	desktopAppInfoObject_Once.Do(func() {
+		desktopAppInfoObject, err = gi.ObjectNew("Gio", "DesktopAppInfo")
 	})
 	return err
 }
@@ -7408,11 +7311,11 @@ var desktopAppInfoNewFunction_Once sync.Once
 func desktopAppInfoNewFunction_Set() error {
 	var err error
 	desktopAppInfoNewFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoNewFunction, err = desktopAppInfoStruct.InvokerNew("new")
+		desktopAppInfoNewFunction, err = desktopAppInfoObject.InvokerNew("new")
 	})
 	return err
 }
@@ -7441,11 +7344,11 @@ var desktopAppInfoNewFromFilenameFunction_Once sync.Once
 func desktopAppInfoNewFromFilenameFunction_Set() error {
 	var err error
 	desktopAppInfoNewFromFilenameFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoNewFromFilenameFunction, err = desktopAppInfoStruct.InvokerNew("new_from_filename")
+		desktopAppInfoNewFromFilenameFunction, err = desktopAppInfoObject.InvokerNew("new_from_filename")
 	})
 	return err
 }
@@ -7476,11 +7379,11 @@ var desktopAppInfoGetActionNameFunction_Once sync.Once
 func desktopAppInfoGetActionNameFunction_Set() error {
 	var err error
 	desktopAppInfoGetActionNameFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetActionNameFunction, err = desktopAppInfoStruct.InvokerNew("get_action_name")
+		desktopAppInfoGetActionNameFunction, err = desktopAppInfoObject.InvokerNew("get_action_name")
 	})
 	return err
 }
@@ -7509,11 +7412,11 @@ var desktopAppInfoGetBooleanFunction_Once sync.Once
 func desktopAppInfoGetBooleanFunction_Set() error {
 	var err error
 	desktopAppInfoGetBooleanFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetBooleanFunction, err = desktopAppInfoStruct.InvokerNew("get_boolean")
+		desktopAppInfoGetBooleanFunction, err = desktopAppInfoObject.InvokerNew("get_boolean")
 	})
 	return err
 }
@@ -7542,11 +7445,11 @@ var desktopAppInfoGetCategoriesFunction_Once sync.Once
 func desktopAppInfoGetCategoriesFunction_Set() error {
 	var err error
 	desktopAppInfoGetCategoriesFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetCategoriesFunction, err = desktopAppInfoStruct.InvokerNew("get_categories")
+		desktopAppInfoGetCategoriesFunction, err = desktopAppInfoObject.InvokerNew("get_categories")
 	})
 	return err
 }
@@ -7574,11 +7477,11 @@ var desktopAppInfoGetFilenameFunction_Once sync.Once
 func desktopAppInfoGetFilenameFunction_Set() error {
 	var err error
 	desktopAppInfoGetFilenameFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetFilenameFunction, err = desktopAppInfoStruct.InvokerNew("get_filename")
+		desktopAppInfoGetFilenameFunction, err = desktopAppInfoObject.InvokerNew("get_filename")
 	})
 	return err
 }
@@ -7606,11 +7509,11 @@ var desktopAppInfoGetGenericNameFunction_Once sync.Once
 func desktopAppInfoGetGenericNameFunction_Set() error {
 	var err error
 	desktopAppInfoGetGenericNameFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetGenericNameFunction, err = desktopAppInfoStruct.InvokerNew("get_generic_name")
+		desktopAppInfoGetGenericNameFunction, err = desktopAppInfoObject.InvokerNew("get_generic_name")
 	})
 	return err
 }
@@ -7638,11 +7541,11 @@ var desktopAppInfoGetIsHiddenFunction_Once sync.Once
 func desktopAppInfoGetIsHiddenFunction_Set() error {
 	var err error
 	desktopAppInfoGetIsHiddenFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetIsHiddenFunction, err = desktopAppInfoStruct.InvokerNew("get_is_hidden")
+		desktopAppInfoGetIsHiddenFunction, err = desktopAppInfoObject.InvokerNew("get_is_hidden")
 	})
 	return err
 }
@@ -7670,11 +7573,11 @@ var desktopAppInfoGetKeywordsFunction_Once sync.Once
 func desktopAppInfoGetKeywordsFunction_Set() error {
 	var err error
 	desktopAppInfoGetKeywordsFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetKeywordsFunction, err = desktopAppInfoStruct.InvokerNew("get_keywords")
+		desktopAppInfoGetKeywordsFunction, err = desktopAppInfoObject.InvokerNew("get_keywords")
 	})
 	return err
 }
@@ -7698,11 +7601,11 @@ var desktopAppInfoGetLocaleStringFunction_Once sync.Once
 func desktopAppInfoGetLocaleStringFunction_Set() error {
 	var err error
 	desktopAppInfoGetLocaleStringFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetLocaleStringFunction, err = desktopAppInfoStruct.InvokerNew("get_locale_string")
+		desktopAppInfoGetLocaleStringFunction, err = desktopAppInfoObject.InvokerNew("get_locale_string")
 	})
 	return err
 }
@@ -7731,11 +7634,11 @@ var desktopAppInfoGetNodisplayFunction_Once sync.Once
 func desktopAppInfoGetNodisplayFunction_Set() error {
 	var err error
 	desktopAppInfoGetNodisplayFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetNodisplayFunction, err = desktopAppInfoStruct.InvokerNew("get_nodisplay")
+		desktopAppInfoGetNodisplayFunction, err = desktopAppInfoObject.InvokerNew("get_nodisplay")
 	})
 	return err
 }
@@ -7763,11 +7666,11 @@ var desktopAppInfoGetShowInFunction_Once sync.Once
 func desktopAppInfoGetShowInFunction_Set() error {
 	var err error
 	desktopAppInfoGetShowInFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetShowInFunction, err = desktopAppInfoStruct.InvokerNew("get_show_in")
+		desktopAppInfoGetShowInFunction, err = desktopAppInfoObject.InvokerNew("get_show_in")
 	})
 	return err
 }
@@ -7796,11 +7699,11 @@ var desktopAppInfoGetStartupWmClassFunction_Once sync.Once
 func desktopAppInfoGetStartupWmClassFunction_Set() error {
 	var err error
 	desktopAppInfoGetStartupWmClassFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetStartupWmClassFunction, err = desktopAppInfoStruct.InvokerNew("get_startup_wm_class")
+		desktopAppInfoGetStartupWmClassFunction, err = desktopAppInfoObject.InvokerNew("get_startup_wm_class")
 	})
 	return err
 }
@@ -7828,11 +7731,11 @@ var desktopAppInfoGetStringFunction_Once sync.Once
 func desktopAppInfoGetStringFunction_Set() error {
 	var err error
 	desktopAppInfoGetStringFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetStringFunction, err = desktopAppInfoStruct.InvokerNew("get_string")
+		desktopAppInfoGetStringFunction, err = desktopAppInfoObject.InvokerNew("get_string")
 	})
 	return err
 }
@@ -7861,11 +7764,11 @@ var desktopAppInfoGetStringListFunction_Once sync.Once
 func desktopAppInfoGetStringListFunction_Set() error {
 	var err error
 	desktopAppInfoGetStringListFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoGetStringListFunction, err = desktopAppInfoStruct.InvokerNew("get_string_list")
+		desktopAppInfoGetStringListFunction, err = desktopAppInfoObject.InvokerNew("get_string_list")
 	})
 	return err
 }
@@ -7894,11 +7797,11 @@ var desktopAppInfoHasKeyFunction_Once sync.Once
 func desktopAppInfoHasKeyFunction_Set() error {
 	var err error
 	desktopAppInfoHasKeyFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoHasKeyFunction, err = desktopAppInfoStruct.InvokerNew("has_key")
+		desktopAppInfoHasKeyFunction, err = desktopAppInfoObject.InvokerNew("has_key")
 	})
 	return err
 }
@@ -7927,11 +7830,11 @@ var desktopAppInfoLaunchActionFunction_Once sync.Once
 func desktopAppInfoLaunchActionFunction_Set() error {
 	var err error
 	desktopAppInfoLaunchActionFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoLaunchActionFunction, err = desktopAppInfoStruct.InvokerNew("launch_action")
+		desktopAppInfoLaunchActionFunction, err = desktopAppInfoObject.InvokerNew("launch_action")
 	})
 	return err
 }
@@ -7961,11 +7864,11 @@ var desktopAppInfoListActionsFunction_Once sync.Once
 func desktopAppInfoListActionsFunction_Set() error {
 	var err error
 	desktopAppInfoListActionsFunction_Once.Do(func() {
-		err = desktopAppInfoStruct_Set()
+		err = desktopAppInfoObject_Set()
 		if err != nil {
 			return
 		}
-		desktopAppInfoListActionsFunction, err = desktopAppInfoStruct.InvokerNew("list_actions")
+		desktopAppInfoListActionsFunction, err = desktopAppInfoObject.InvokerNew("list_actions")
 	})
 	return err
 }
@@ -7983,13 +7886,13 @@ func (recv *DesktopAppInfo) ListActions() {
 	return
 }
 
-var emblemStruct *gi.Struct
-var emblemStruct_Once sync.Once
+var emblemObject *gi.Object
+var emblemObject_Once sync.Once
 
-func emblemStruct_Set() error {
+func emblemObject_Set() error {
 	var err error
-	emblemStruct_Once.Do(func() {
-		emblemStruct, err = gi.StructNew("Gio", "Emblem")
+	emblemObject_Once.Do(func() {
+		emblemObject, err = gi.ObjectNew("Gio", "Emblem")
 	})
 	return err
 }
@@ -8010,11 +7913,11 @@ var emblemGetOriginFunction_Once sync.Once
 func emblemGetOriginFunction_Set() error {
 	var err error
 	emblemGetOriginFunction_Once.Do(func() {
-		err = emblemStruct_Set()
+		err = emblemObject_Set()
 		if err != nil {
 			return
 		}
-		emblemGetOriginFunction, err = emblemStruct.InvokerNew("get_origin")
+		emblemGetOriginFunction, err = emblemObject.InvokerNew("get_origin")
 	})
 	return err
 }
@@ -8036,13 +7939,13 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 	return retGo
 }
 
-var emblemedIconStruct *gi.Struct
-var emblemedIconStruct_Once sync.Once
+var emblemedIconObject *gi.Object
+var emblemedIconObject_Once sync.Once
 
-func emblemedIconStruct_Set() error {
+func emblemedIconObject_Set() error {
 	var err error
-	emblemedIconStruct_Once.Do(func() {
-		emblemedIconStruct, err = gi.StructNew("Gio", "EmblemedIcon")
+	emblemedIconObject_Once.Do(func() {
+		emblemedIconObject, err = gi.ObjectNew("Gio", "EmblemedIcon")
 	})
 	return err
 }
@@ -8063,11 +7966,11 @@ var emblemedIconAddEmblemFunction_Once sync.Once
 func emblemedIconAddEmblemFunction_Set() error {
 	var err error
 	emblemedIconAddEmblemFunction_Once.Do(func() {
-		err = emblemedIconStruct_Set()
+		err = emblemedIconObject_Set()
 		if err != nil {
 			return
 		}
-		emblemedIconAddEmblemFunction, err = emblemedIconStruct.InvokerNew("add_emblem")
+		emblemedIconAddEmblemFunction, err = emblemedIconObject.InvokerNew("add_emblem")
 	})
 	return err
 }
@@ -8092,11 +7995,11 @@ var emblemedIconClearEmblemsFunction_Once sync.Once
 func emblemedIconClearEmblemsFunction_Set() error {
 	var err error
 	emblemedIconClearEmblemsFunction_Once.Do(func() {
-		err = emblemedIconStruct_Set()
+		err = emblemedIconObject_Set()
 		if err != nil {
 			return
 		}
-		emblemedIconClearEmblemsFunction, err = emblemedIconStruct.InvokerNew("clear_emblems")
+		emblemedIconClearEmblemsFunction, err = emblemedIconObject.InvokerNew("clear_emblems")
 	})
 	return err
 }
@@ -8118,13 +8021,13 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // UNSUPPORTED : C value 'g_emblemed_icon_get_icon' : return type 'Icon' not supported
 
-var fileEnumeratorStruct *gi.Struct
-var fileEnumeratorStruct_Once sync.Once
+var fileEnumeratorObject *gi.Object
+var fileEnumeratorObject_Once sync.Once
 
-func fileEnumeratorStruct_Set() error {
+func fileEnumeratorObject_Set() error {
 	var err error
-	fileEnumeratorStruct_Once.Do(func() {
-		fileEnumeratorStruct, err = gi.StructNew("Gio", "FileEnumerator")
+	fileEnumeratorObject_Once.Do(func() {
+		fileEnumeratorObject, err = gi.ObjectNew("Gio", "FileEnumerator")
 	})
 	return err
 }
@@ -8143,11 +8046,11 @@ var fileEnumeratorCloseFunction_Once sync.Once
 func fileEnumeratorCloseFunction_Set() error {
 	var err error
 	fileEnumeratorCloseFunction_Once.Do(func() {
-		err = fileEnumeratorStruct_Set()
+		err = fileEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		fileEnumeratorCloseFunction, err = fileEnumeratorStruct.InvokerNew("close")
+		fileEnumeratorCloseFunction, err = fileEnumeratorObject.InvokerNew("close")
 	})
 	return err
 }
@@ -8184,11 +8087,11 @@ var fileEnumeratorHasPendingFunction_Once sync.Once
 func fileEnumeratorHasPendingFunction_Set() error {
 	var err error
 	fileEnumeratorHasPendingFunction_Once.Do(func() {
-		err = fileEnumeratorStruct_Set()
+		err = fileEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		fileEnumeratorHasPendingFunction, err = fileEnumeratorStruct.InvokerNew("has_pending")
+		fileEnumeratorHasPendingFunction, err = fileEnumeratorObject.InvokerNew("has_pending")
 	})
 	return err
 }
@@ -8216,11 +8119,11 @@ var fileEnumeratorIsClosedFunction_Once sync.Once
 func fileEnumeratorIsClosedFunction_Set() error {
 	var err error
 	fileEnumeratorIsClosedFunction_Once.Do(func() {
-		err = fileEnumeratorStruct_Set()
+		err = fileEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		fileEnumeratorIsClosedFunction, err = fileEnumeratorStruct.InvokerNew("is_closed")
+		fileEnumeratorIsClosedFunction, err = fileEnumeratorObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -8250,11 +8153,11 @@ var fileEnumeratorNextFileFunction_Once sync.Once
 func fileEnumeratorNextFileFunction_Set() error {
 	var err error
 	fileEnumeratorNextFileFunction_Once.Do(func() {
-		err = fileEnumeratorStruct_Set()
+		err = fileEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		fileEnumeratorNextFileFunction, err = fileEnumeratorStruct.InvokerNew("next_file")
+		fileEnumeratorNextFileFunction, err = fileEnumeratorObject.InvokerNew("next_file")
 	})
 	return err
 }
@@ -8288,11 +8191,11 @@ var fileEnumeratorSetPendingFunction_Once sync.Once
 func fileEnumeratorSetPendingFunction_Set() error {
 	var err error
 	fileEnumeratorSetPendingFunction_Once.Do(func() {
-		err = fileEnumeratorStruct_Set()
+		err = fileEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		fileEnumeratorSetPendingFunction, err = fileEnumeratorStruct.InvokerNew("set_pending")
+		fileEnumeratorSetPendingFunction, err = fileEnumeratorObject.InvokerNew("set_pending")
 	})
 	return err
 }
@@ -8311,29 +8214,13 @@ func (recv *FileEnumerator) SetPending(pending bool) {
 	return
 }
 
-// FileEnumeratorStruct creates an uninitialised FileEnumerator.
-func FileEnumeratorStruct() *FileEnumerator {
-	err := fileEnumeratorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fileIOStreamObject *gi.Object
+var fileIOStreamObject_Once sync.Once
 
-	structGo := &FileEnumerator{}
-	structGo.Native = fileEnumeratorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileEnumerator)
-	return structGo
-}
-func finalizeFileEnumerator(obj *FileEnumerator) {
-	fileEnumeratorStruct.Free(obj.Native)
-}
-
-var fileIOStreamStruct *gi.Struct
-var fileIOStreamStruct_Once sync.Once
-
-func fileIOStreamStruct_Set() error {
+func fileIOStreamObject_Set() error {
 	var err error
-	fileIOStreamStruct_Once.Do(func() {
-		fileIOStreamStruct, err = gi.StructNew("Gio", "FileIOStream")
+	fileIOStreamObject_Once.Do(func() {
+		fileIOStreamObject, err = gi.ObjectNew("Gio", "FileIOStream")
 	})
 	return err
 }
@@ -8344,7 +8231,7 @@ type FileIOStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileIOStream) FieldParentInstance() *IOStream {
-	argValue := gi.FieldGet(fileIOStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(fileIOStreamObject, recv.Native, "parent_instance")
 	value := &IOStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -8354,7 +8241,7 @@ func (recv *FileIOStream) FieldParentInstance() *IOStream {
 func (recv *FileIOStream) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileIOStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(fileIOStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var fileIOStreamGetEtagFunction *gi.Function
@@ -8363,11 +8250,11 @@ var fileIOStreamGetEtagFunction_Once sync.Once
 func fileIOStreamGetEtagFunction_Set() error {
 	var err error
 	fileIOStreamGetEtagFunction_Once.Do(func() {
-		err = fileIOStreamStruct_Set()
+		err = fileIOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		fileIOStreamGetEtagFunction, err = fileIOStreamStruct.InvokerNew("get_etag")
+		fileIOStreamGetEtagFunction, err = fileIOStreamObject.InvokerNew("get_etag")
 	})
 	return err
 }
@@ -8395,11 +8282,11 @@ var fileIOStreamQueryInfoFunction_Once sync.Once
 func fileIOStreamQueryInfoFunction_Set() error {
 	var err error
 	fileIOStreamQueryInfoFunction_Once.Do(func() {
-		err = fileIOStreamStruct_Set()
+		err = fileIOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		fileIOStreamQueryInfoFunction, err = fileIOStreamStruct.InvokerNew("query_info")
+		fileIOStreamQueryInfoFunction, err = fileIOStreamObject.InvokerNew("query_info")
 	})
 	return err
 }
@@ -8428,29 +8315,13 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 
 // UNSUPPORTED : C value 'g_file_io_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// FileIOStreamStruct creates an uninitialised FileIOStream.
-func FileIOStreamStruct() *FileIOStream {
-	err := fileIOStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fileIconObject *gi.Object
+var fileIconObject_Once sync.Once
 
-	structGo := &FileIOStream{}
-	structGo.Native = fileIOStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileIOStream)
-	return structGo
-}
-func finalizeFileIOStream(obj *FileIOStream) {
-	fileIOStreamStruct.Free(obj.Native)
-}
-
-var fileIconStruct *gi.Struct
-var fileIconStruct_Once sync.Once
-
-func fileIconStruct_Set() error {
+func fileIconObject_Set() error {
 	var err error
-	fileIconStruct_Once.Do(func() {
-		fileIconStruct, err = gi.StructNew("Gio", "FileIcon")
+	fileIconObject_Once.Do(func() {
+		fileIconObject, err = gi.ObjectNew("Gio", "FileIcon")
 	})
 	return err
 }
@@ -8463,13 +8334,13 @@ type FileIcon struct {
 
 // UNSUPPORTED : C value 'g_file_icon_get_file' : return type 'File' not supported
 
-var fileInfoStruct *gi.Struct
-var fileInfoStruct_Once sync.Once
+var fileInfoObject *gi.Object
+var fileInfoObject_Once sync.Once
 
-func fileInfoStruct_Set() error {
+func fileInfoObject_Set() error {
 	var err error
-	fileInfoStruct_Once.Do(func() {
-		fileInfoStruct, err = gi.StructNew("Gio", "FileInfo")
+	fileInfoObject_Once.Do(func() {
+		fileInfoObject, err = gi.ObjectNew("Gio", "FileInfo")
 	})
 	return err
 }
@@ -8484,11 +8355,11 @@ var fileInfoNewFunction_Once sync.Once
 func fileInfoNewFunction_Set() error {
 	var err error
 	fileInfoNewFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoNewFunction, err = fileInfoStruct.InvokerNew("new")
+		fileInfoNewFunction, err = fileInfoObject.InvokerNew("new")
 	})
 	return err
 }
@@ -8515,11 +8386,11 @@ var fileInfoClearStatusFunction_Once sync.Once
 func fileInfoClearStatusFunction_Set() error {
 	var err error
 	fileInfoClearStatusFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoClearStatusFunction, err = fileInfoStruct.InvokerNew("clear_status")
+		fileInfoClearStatusFunction, err = fileInfoObject.InvokerNew("clear_status")
 	})
 	return err
 }
@@ -8543,11 +8414,11 @@ var fileInfoCopyIntoFunction_Once sync.Once
 func fileInfoCopyIntoFunction_Set() error {
 	var err error
 	fileInfoCopyIntoFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoCopyIntoFunction, err = fileInfoStruct.InvokerNew("copy_into")
+		fileInfoCopyIntoFunction, err = fileInfoObject.InvokerNew("copy_into")
 	})
 	return err
 }
@@ -8572,11 +8443,11 @@ var fileInfoDupFunction_Once sync.Once
 func fileInfoDupFunction_Set() error {
 	var err error
 	fileInfoDupFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoDupFunction, err = fileInfoStruct.InvokerNew("dup")
+		fileInfoDupFunction, err = fileInfoObject.InvokerNew("dup")
 	})
 	return err
 }
@@ -8605,11 +8476,11 @@ var fileInfoGetAttributeAsStringFunction_Once sync.Once
 func fileInfoGetAttributeAsStringFunction_Set() error {
 	var err error
 	fileInfoGetAttributeAsStringFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeAsStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_as_string")
+		fileInfoGetAttributeAsStringFunction, err = fileInfoObject.InvokerNew("get_attribute_as_string")
 	})
 	return err
 }
@@ -8638,11 +8509,11 @@ var fileInfoGetAttributeBooleanFunction_Once sync.Once
 func fileInfoGetAttributeBooleanFunction_Set() error {
 	var err error
 	fileInfoGetAttributeBooleanFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeBooleanFunction, err = fileInfoStruct.InvokerNew("get_attribute_boolean")
+		fileInfoGetAttributeBooleanFunction, err = fileInfoObject.InvokerNew("get_attribute_boolean")
 	})
 	return err
 }
@@ -8671,11 +8542,11 @@ var fileInfoGetAttributeByteStringFunction_Once sync.Once
 func fileInfoGetAttributeByteStringFunction_Set() error {
 	var err error
 	fileInfoGetAttributeByteStringFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeByteStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_byte_string")
+		fileInfoGetAttributeByteStringFunction, err = fileInfoObject.InvokerNew("get_attribute_byte_string")
 	})
 	return err
 }
@@ -8706,11 +8577,11 @@ var fileInfoGetAttributeInt32Function_Once sync.Once
 func fileInfoGetAttributeInt32Function_Set() error {
 	var err error
 	fileInfoGetAttributeInt32Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeInt32Function, err = fileInfoStruct.InvokerNew("get_attribute_int32")
+		fileInfoGetAttributeInt32Function, err = fileInfoObject.InvokerNew("get_attribute_int32")
 	})
 	return err
 }
@@ -8739,11 +8610,11 @@ var fileInfoGetAttributeInt64Function_Once sync.Once
 func fileInfoGetAttributeInt64Function_Set() error {
 	var err error
 	fileInfoGetAttributeInt64Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeInt64Function, err = fileInfoStruct.InvokerNew("get_attribute_int64")
+		fileInfoGetAttributeInt64Function, err = fileInfoObject.InvokerNew("get_attribute_int64")
 	})
 	return err
 }
@@ -8774,11 +8645,11 @@ var fileInfoGetAttributeStatusFunction_Once sync.Once
 func fileInfoGetAttributeStatusFunction_Set() error {
 	var err error
 	fileInfoGetAttributeStatusFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeStatusFunction, err = fileInfoStruct.InvokerNew("get_attribute_status")
+		fileInfoGetAttributeStatusFunction, err = fileInfoObject.InvokerNew("get_attribute_status")
 	})
 	return err
 }
@@ -8807,11 +8678,11 @@ var fileInfoGetAttributeStringFunction_Once sync.Once
 func fileInfoGetAttributeStringFunction_Set() error {
 	var err error
 	fileInfoGetAttributeStringFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeStringFunction, err = fileInfoStruct.InvokerNew("get_attribute_string")
+		fileInfoGetAttributeStringFunction, err = fileInfoObject.InvokerNew("get_attribute_string")
 	})
 	return err
 }
@@ -8840,11 +8711,11 @@ var fileInfoGetAttributeStringvFunction_Once sync.Once
 func fileInfoGetAttributeStringvFunction_Set() error {
 	var err error
 	fileInfoGetAttributeStringvFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeStringvFunction, err = fileInfoStruct.InvokerNew("get_attribute_stringv")
+		fileInfoGetAttributeStringvFunction, err = fileInfoObject.InvokerNew("get_attribute_stringv")
 	})
 	return err
 }
@@ -8869,11 +8740,11 @@ var fileInfoGetAttributeTypeFunction_Once sync.Once
 func fileInfoGetAttributeTypeFunction_Set() error {
 	var err error
 	fileInfoGetAttributeTypeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeTypeFunction, err = fileInfoStruct.InvokerNew("get_attribute_type")
+		fileInfoGetAttributeTypeFunction, err = fileInfoObject.InvokerNew("get_attribute_type")
 	})
 	return err
 }
@@ -8902,11 +8773,11 @@ var fileInfoGetAttributeUint32Function_Once sync.Once
 func fileInfoGetAttributeUint32Function_Set() error {
 	var err error
 	fileInfoGetAttributeUint32Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeUint32Function, err = fileInfoStruct.InvokerNew("get_attribute_uint32")
+		fileInfoGetAttributeUint32Function, err = fileInfoObject.InvokerNew("get_attribute_uint32")
 	})
 	return err
 }
@@ -8935,11 +8806,11 @@ var fileInfoGetAttributeUint64Function_Once sync.Once
 func fileInfoGetAttributeUint64Function_Set() error {
 	var err error
 	fileInfoGetAttributeUint64Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetAttributeUint64Function, err = fileInfoStruct.InvokerNew("get_attribute_uint64")
+		fileInfoGetAttributeUint64Function, err = fileInfoObject.InvokerNew("get_attribute_uint64")
 	})
 	return err
 }
@@ -8968,11 +8839,11 @@ var fileInfoGetContentTypeFunction_Once sync.Once
 func fileInfoGetContentTypeFunction_Set() error {
 	var err error
 	fileInfoGetContentTypeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetContentTypeFunction, err = fileInfoStruct.InvokerNew("get_content_type")
+		fileInfoGetContentTypeFunction, err = fileInfoObject.InvokerNew("get_content_type")
 	})
 	return err
 }
@@ -9002,11 +8873,11 @@ var fileInfoGetDisplayNameFunction_Once sync.Once
 func fileInfoGetDisplayNameFunction_Set() error {
 	var err error
 	fileInfoGetDisplayNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetDisplayNameFunction, err = fileInfoStruct.InvokerNew("get_display_name")
+		fileInfoGetDisplayNameFunction, err = fileInfoObject.InvokerNew("get_display_name")
 	})
 	return err
 }
@@ -9034,11 +8905,11 @@ var fileInfoGetEditNameFunction_Once sync.Once
 func fileInfoGetEditNameFunction_Set() error {
 	var err error
 	fileInfoGetEditNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetEditNameFunction, err = fileInfoStruct.InvokerNew("get_edit_name")
+		fileInfoGetEditNameFunction, err = fileInfoObject.InvokerNew("get_edit_name")
 	})
 	return err
 }
@@ -9066,11 +8937,11 @@ var fileInfoGetEtagFunction_Once sync.Once
 func fileInfoGetEtagFunction_Set() error {
 	var err error
 	fileInfoGetEtagFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetEtagFunction, err = fileInfoStruct.InvokerNew("get_etag")
+		fileInfoGetEtagFunction, err = fileInfoObject.InvokerNew("get_etag")
 	})
 	return err
 }
@@ -9098,11 +8969,11 @@ var fileInfoGetFileTypeFunction_Once sync.Once
 func fileInfoGetFileTypeFunction_Set() error {
 	var err error
 	fileInfoGetFileTypeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetFileTypeFunction, err = fileInfoStruct.InvokerNew("get_file_type")
+		fileInfoGetFileTypeFunction, err = fileInfoObject.InvokerNew("get_file_type")
 	})
 	return err
 }
@@ -9132,11 +9003,11 @@ var fileInfoGetIsBackupFunction_Once sync.Once
 func fileInfoGetIsBackupFunction_Set() error {
 	var err error
 	fileInfoGetIsBackupFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetIsBackupFunction, err = fileInfoStruct.InvokerNew("get_is_backup")
+		fileInfoGetIsBackupFunction, err = fileInfoObject.InvokerNew("get_is_backup")
 	})
 	return err
 }
@@ -9164,11 +9035,11 @@ var fileInfoGetIsHiddenFunction_Once sync.Once
 func fileInfoGetIsHiddenFunction_Set() error {
 	var err error
 	fileInfoGetIsHiddenFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetIsHiddenFunction, err = fileInfoStruct.InvokerNew("get_is_hidden")
+		fileInfoGetIsHiddenFunction, err = fileInfoObject.InvokerNew("get_is_hidden")
 	})
 	return err
 }
@@ -9196,11 +9067,11 @@ var fileInfoGetIsSymlinkFunction_Once sync.Once
 func fileInfoGetIsSymlinkFunction_Set() error {
 	var err error
 	fileInfoGetIsSymlinkFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetIsSymlinkFunction, err = fileInfoStruct.InvokerNew("get_is_symlink")
+		fileInfoGetIsSymlinkFunction, err = fileInfoObject.InvokerNew("get_is_symlink")
 	})
 	return err
 }
@@ -9232,11 +9103,11 @@ var fileInfoGetNameFunction_Once sync.Once
 func fileInfoGetNameFunction_Set() error {
 	var err error
 	fileInfoGetNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetNameFunction, err = fileInfoStruct.InvokerNew("get_name")
+		fileInfoGetNameFunction, err = fileInfoObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -9264,11 +9135,11 @@ var fileInfoGetSizeFunction_Once sync.Once
 func fileInfoGetSizeFunction_Set() error {
 	var err error
 	fileInfoGetSizeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetSizeFunction, err = fileInfoStruct.InvokerNew("get_size")
+		fileInfoGetSizeFunction, err = fileInfoObject.InvokerNew("get_size")
 	})
 	return err
 }
@@ -9296,11 +9167,11 @@ var fileInfoGetSortOrderFunction_Once sync.Once
 func fileInfoGetSortOrderFunction_Set() error {
 	var err error
 	fileInfoGetSortOrderFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetSortOrderFunction, err = fileInfoStruct.InvokerNew("get_sort_order")
+		fileInfoGetSortOrderFunction, err = fileInfoObject.InvokerNew("get_sort_order")
 	})
 	return err
 }
@@ -9330,11 +9201,11 @@ var fileInfoGetSymlinkTargetFunction_Once sync.Once
 func fileInfoGetSymlinkTargetFunction_Set() error {
 	var err error
 	fileInfoGetSymlinkTargetFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoGetSymlinkTargetFunction, err = fileInfoStruct.InvokerNew("get_symlink_target")
+		fileInfoGetSymlinkTargetFunction, err = fileInfoObject.InvokerNew("get_symlink_target")
 	})
 	return err
 }
@@ -9362,11 +9233,11 @@ var fileInfoHasAttributeFunction_Once sync.Once
 func fileInfoHasAttributeFunction_Set() error {
 	var err error
 	fileInfoHasAttributeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoHasAttributeFunction, err = fileInfoStruct.InvokerNew("has_attribute")
+		fileInfoHasAttributeFunction, err = fileInfoObject.InvokerNew("has_attribute")
 	})
 	return err
 }
@@ -9395,11 +9266,11 @@ var fileInfoHasNamespaceFunction_Once sync.Once
 func fileInfoHasNamespaceFunction_Set() error {
 	var err error
 	fileInfoHasNamespaceFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoHasNamespaceFunction, err = fileInfoStruct.InvokerNew("has_namespace")
+		fileInfoHasNamespaceFunction, err = fileInfoObject.InvokerNew("has_namespace")
 	})
 	return err
 }
@@ -9428,11 +9299,11 @@ var fileInfoListAttributesFunction_Once sync.Once
 func fileInfoListAttributesFunction_Set() error {
 	var err error
 	fileInfoListAttributesFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoListAttributesFunction, err = fileInfoStruct.InvokerNew("list_attributes")
+		fileInfoListAttributesFunction, err = fileInfoObject.InvokerNew("list_attributes")
 	})
 	return err
 }
@@ -9457,11 +9328,11 @@ var fileInfoRemoveAttributeFunction_Once sync.Once
 func fileInfoRemoveAttributeFunction_Set() error {
 	var err error
 	fileInfoRemoveAttributeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoRemoveAttributeFunction, err = fileInfoStruct.InvokerNew("remove_attribute")
+		fileInfoRemoveAttributeFunction, err = fileInfoObject.InvokerNew("remove_attribute")
 	})
 	return err
 }
@@ -9488,11 +9359,11 @@ var fileInfoSetAttributeBooleanFunction_Once sync.Once
 func fileInfoSetAttributeBooleanFunction_Set() error {
 	var err error
 	fileInfoSetAttributeBooleanFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeBooleanFunction, err = fileInfoStruct.InvokerNew("set_attribute_boolean")
+		fileInfoSetAttributeBooleanFunction, err = fileInfoObject.InvokerNew("set_attribute_boolean")
 	})
 	return err
 }
@@ -9518,11 +9389,11 @@ var fileInfoSetAttributeByteStringFunction_Once sync.Once
 func fileInfoSetAttributeByteStringFunction_Set() error {
 	var err error
 	fileInfoSetAttributeByteStringFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeByteStringFunction, err = fileInfoStruct.InvokerNew("set_attribute_byte_string")
+		fileInfoSetAttributeByteStringFunction, err = fileInfoObject.InvokerNew("set_attribute_byte_string")
 	})
 	return err
 }
@@ -9548,11 +9419,11 @@ var fileInfoSetAttributeInt32Function_Once sync.Once
 func fileInfoSetAttributeInt32Function_Set() error {
 	var err error
 	fileInfoSetAttributeInt32Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeInt32Function, err = fileInfoStruct.InvokerNew("set_attribute_int32")
+		fileInfoSetAttributeInt32Function, err = fileInfoObject.InvokerNew("set_attribute_int32")
 	})
 	return err
 }
@@ -9578,11 +9449,11 @@ var fileInfoSetAttributeInt64Function_Once sync.Once
 func fileInfoSetAttributeInt64Function_Set() error {
 	var err error
 	fileInfoSetAttributeInt64Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeInt64Function, err = fileInfoStruct.InvokerNew("set_attribute_int64")
+		fileInfoSetAttributeInt64Function, err = fileInfoObject.InvokerNew("set_attribute_int64")
 	})
 	return err
 }
@@ -9608,11 +9479,11 @@ var fileInfoSetAttributeMaskFunction_Once sync.Once
 func fileInfoSetAttributeMaskFunction_Set() error {
 	var err error
 	fileInfoSetAttributeMaskFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeMaskFunction, err = fileInfoStruct.InvokerNew("set_attribute_mask")
+		fileInfoSetAttributeMaskFunction, err = fileInfoObject.InvokerNew("set_attribute_mask")
 	})
 	return err
 }
@@ -9639,11 +9510,11 @@ var fileInfoSetAttributeStatusFunction_Once sync.Once
 func fileInfoSetAttributeStatusFunction_Set() error {
 	var err error
 	fileInfoSetAttributeStatusFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeStatusFunction, err = fileInfoStruct.InvokerNew("set_attribute_status")
+		fileInfoSetAttributeStatusFunction, err = fileInfoObject.InvokerNew("set_attribute_status")
 	})
 	return err
 }
@@ -9673,11 +9544,11 @@ var fileInfoSetAttributeStringFunction_Once sync.Once
 func fileInfoSetAttributeStringFunction_Set() error {
 	var err error
 	fileInfoSetAttributeStringFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeStringFunction, err = fileInfoStruct.InvokerNew("set_attribute_string")
+		fileInfoSetAttributeStringFunction, err = fileInfoObject.InvokerNew("set_attribute_string")
 	})
 	return err
 }
@@ -9705,11 +9576,11 @@ var fileInfoSetAttributeUint32Function_Once sync.Once
 func fileInfoSetAttributeUint32Function_Set() error {
 	var err error
 	fileInfoSetAttributeUint32Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeUint32Function, err = fileInfoStruct.InvokerNew("set_attribute_uint32")
+		fileInfoSetAttributeUint32Function, err = fileInfoObject.InvokerNew("set_attribute_uint32")
 	})
 	return err
 }
@@ -9735,11 +9606,11 @@ var fileInfoSetAttributeUint64Function_Once sync.Once
 func fileInfoSetAttributeUint64Function_Set() error {
 	var err error
 	fileInfoSetAttributeUint64Function_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetAttributeUint64Function, err = fileInfoStruct.InvokerNew("set_attribute_uint64")
+		fileInfoSetAttributeUint64Function, err = fileInfoObject.InvokerNew("set_attribute_uint64")
 	})
 	return err
 }
@@ -9765,11 +9636,11 @@ var fileInfoSetContentTypeFunction_Once sync.Once
 func fileInfoSetContentTypeFunction_Set() error {
 	var err error
 	fileInfoSetContentTypeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetContentTypeFunction, err = fileInfoStruct.InvokerNew("set_content_type")
+		fileInfoSetContentTypeFunction, err = fileInfoObject.InvokerNew("set_content_type")
 	})
 	return err
 }
@@ -9794,11 +9665,11 @@ var fileInfoSetDisplayNameFunction_Once sync.Once
 func fileInfoSetDisplayNameFunction_Set() error {
 	var err error
 	fileInfoSetDisplayNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetDisplayNameFunction, err = fileInfoStruct.InvokerNew("set_display_name")
+		fileInfoSetDisplayNameFunction, err = fileInfoObject.InvokerNew("set_display_name")
 	})
 	return err
 }
@@ -9823,11 +9694,11 @@ var fileInfoSetEditNameFunction_Once sync.Once
 func fileInfoSetEditNameFunction_Set() error {
 	var err error
 	fileInfoSetEditNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetEditNameFunction, err = fileInfoStruct.InvokerNew("set_edit_name")
+		fileInfoSetEditNameFunction, err = fileInfoObject.InvokerNew("set_edit_name")
 	})
 	return err
 }
@@ -9852,11 +9723,11 @@ var fileInfoSetFileTypeFunction_Once sync.Once
 func fileInfoSetFileTypeFunction_Set() error {
 	var err error
 	fileInfoSetFileTypeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetFileTypeFunction, err = fileInfoStruct.InvokerNew("set_file_type")
+		fileInfoSetFileTypeFunction, err = fileInfoObject.InvokerNew("set_file_type")
 	})
 	return err
 }
@@ -9883,11 +9754,11 @@ var fileInfoSetIsHiddenFunction_Once sync.Once
 func fileInfoSetIsHiddenFunction_Set() error {
 	var err error
 	fileInfoSetIsHiddenFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetIsHiddenFunction, err = fileInfoStruct.InvokerNew("set_is_hidden")
+		fileInfoSetIsHiddenFunction, err = fileInfoObject.InvokerNew("set_is_hidden")
 	})
 	return err
 }
@@ -9912,11 +9783,11 @@ var fileInfoSetIsSymlinkFunction_Once sync.Once
 func fileInfoSetIsSymlinkFunction_Set() error {
 	var err error
 	fileInfoSetIsSymlinkFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetIsSymlinkFunction, err = fileInfoStruct.InvokerNew("set_is_symlink")
+		fileInfoSetIsSymlinkFunction, err = fileInfoObject.InvokerNew("set_is_symlink")
 	})
 	return err
 }
@@ -9945,11 +9816,11 @@ var fileInfoSetNameFunction_Once sync.Once
 func fileInfoSetNameFunction_Set() error {
 	var err error
 	fileInfoSetNameFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetNameFunction, err = fileInfoStruct.InvokerNew("set_name")
+		fileInfoSetNameFunction, err = fileInfoObject.InvokerNew("set_name")
 	})
 	return err
 }
@@ -9974,11 +9845,11 @@ var fileInfoSetSizeFunction_Once sync.Once
 func fileInfoSetSizeFunction_Set() error {
 	var err error
 	fileInfoSetSizeFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetSizeFunction, err = fileInfoStruct.InvokerNew("set_size")
+		fileInfoSetSizeFunction, err = fileInfoObject.InvokerNew("set_size")
 	})
 	return err
 }
@@ -10003,11 +9874,11 @@ var fileInfoSetSortOrderFunction_Once sync.Once
 func fileInfoSetSortOrderFunction_Set() error {
 	var err error
 	fileInfoSetSortOrderFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetSortOrderFunction, err = fileInfoStruct.InvokerNew("set_sort_order")
+		fileInfoSetSortOrderFunction, err = fileInfoObject.InvokerNew("set_sort_order")
 	})
 	return err
 }
@@ -10034,11 +9905,11 @@ var fileInfoSetSymlinkTargetFunction_Once sync.Once
 func fileInfoSetSymlinkTargetFunction_Set() error {
 	var err error
 	fileInfoSetSymlinkTargetFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoSetSymlinkTargetFunction, err = fileInfoStruct.InvokerNew("set_symlink_target")
+		fileInfoSetSymlinkTargetFunction, err = fileInfoObject.InvokerNew("set_symlink_target")
 	})
 	return err
 }
@@ -10063,11 +9934,11 @@ var fileInfoUnsetAttributeMaskFunction_Once sync.Once
 func fileInfoUnsetAttributeMaskFunction_Set() error {
 	var err error
 	fileInfoUnsetAttributeMaskFunction_Once.Do(func() {
-		err = fileInfoStruct_Set()
+		err = fileInfoObject_Set()
 		if err != nil {
 			return
 		}
-		fileInfoUnsetAttributeMaskFunction, err = fileInfoStruct.InvokerNew("unset_attribute_mask")
+		fileInfoUnsetAttributeMaskFunction, err = fileInfoObject.InvokerNew("unset_attribute_mask")
 	})
 	return err
 }
@@ -10085,13 +9956,13 @@ func (recv *FileInfo) UnsetAttributeMask() {
 	return
 }
 
-var fileInputStreamStruct *gi.Struct
-var fileInputStreamStruct_Once sync.Once
+var fileInputStreamObject *gi.Object
+var fileInputStreamObject_Once sync.Once
 
-func fileInputStreamStruct_Set() error {
+func fileInputStreamObject_Set() error {
 	var err error
-	fileInputStreamStruct_Once.Do(func() {
-		fileInputStreamStruct, err = gi.StructNew("Gio", "FileInputStream")
+	fileInputStreamObject_Once.Do(func() {
+		fileInputStreamObject, err = gi.ObjectNew("Gio", "FileInputStream")
 	})
 	return err
 }
@@ -10102,7 +9973,7 @@ type FileInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.FieldGet(fileInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(fileInputStreamObject, recv.Native, "parent_instance")
 	value := &InputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10112,7 +9983,7 @@ func (recv *FileInputStream) FieldParentInstance() *InputStream {
 func (recv *FileInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(fileInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var fileInputStreamQueryInfoFunction *gi.Function
@@ -10121,11 +9992,11 @@ var fileInputStreamQueryInfoFunction_Once sync.Once
 func fileInputStreamQueryInfoFunction_Set() error {
 	var err error
 	fileInputStreamQueryInfoFunction_Once.Do(func() {
-		err = fileInputStreamStruct_Set()
+		err = fileInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		fileInputStreamQueryInfoFunction, err = fileInputStreamStruct.InvokerNew("query_info")
+		fileInputStreamQueryInfoFunction, err = fileInputStreamObject.InvokerNew("query_info")
 	})
 	return err
 }
@@ -10154,29 +10025,13 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // UNSUPPORTED : C value 'g_file_input_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// FileInputStreamStruct creates an uninitialised FileInputStream.
-func FileInputStreamStruct() *FileInputStream {
-	err := fileInputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fileMonitorObject *gi.Object
+var fileMonitorObject_Once sync.Once
 
-	structGo := &FileInputStream{}
-	structGo.Native = fileInputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileInputStream)
-	return structGo
-}
-func finalizeFileInputStream(obj *FileInputStream) {
-	fileInputStreamStruct.Free(obj.Native)
-}
-
-var fileMonitorStruct *gi.Struct
-var fileMonitorStruct_Once sync.Once
-
-func fileMonitorStruct_Set() error {
+func fileMonitorObject_Set() error {
 	var err error
-	fileMonitorStruct_Once.Do(func() {
-		fileMonitorStruct, err = gi.StructNew("Gio", "FileMonitor")
+	fileMonitorObject_Once.Do(func() {
+		fileMonitorObject, err = gi.ObjectNew("Gio", "FileMonitor")
 	})
 	return err
 }
@@ -10195,11 +10050,11 @@ var fileMonitorCancelFunction_Once sync.Once
 func fileMonitorCancelFunction_Set() error {
 	var err error
 	fileMonitorCancelFunction_Once.Do(func() {
-		err = fileMonitorStruct_Set()
+		err = fileMonitorObject_Set()
 		if err != nil {
 			return
 		}
-		fileMonitorCancelFunction, err = fileMonitorStruct.InvokerNew("cancel")
+		fileMonitorCancelFunction, err = fileMonitorObject.InvokerNew("cancel")
 	})
 	return err
 }
@@ -10229,11 +10084,11 @@ var fileMonitorIsCancelledFunction_Once sync.Once
 func fileMonitorIsCancelledFunction_Set() error {
 	var err error
 	fileMonitorIsCancelledFunction_Once.Do(func() {
-		err = fileMonitorStruct_Set()
+		err = fileMonitorObject_Set()
 		if err != nil {
 			return
 		}
-		fileMonitorIsCancelledFunction, err = fileMonitorStruct.InvokerNew("is_cancelled")
+		fileMonitorIsCancelledFunction, err = fileMonitorObject.InvokerNew("is_cancelled")
 	})
 	return err
 }
@@ -10261,11 +10116,11 @@ var fileMonitorSetRateLimitFunction_Once sync.Once
 func fileMonitorSetRateLimitFunction_Set() error {
 	var err error
 	fileMonitorSetRateLimitFunction_Once.Do(func() {
-		err = fileMonitorStruct_Set()
+		err = fileMonitorObject_Set()
 		if err != nil {
 			return
 		}
-		fileMonitorSetRateLimitFunction, err = fileMonitorStruct.InvokerNew("set_rate_limit")
+		fileMonitorSetRateLimitFunction, err = fileMonitorObject.InvokerNew("set_rate_limit")
 	})
 	return err
 }
@@ -10284,29 +10139,13 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	return
 }
 
-// FileMonitorStruct creates an uninitialised FileMonitor.
-func FileMonitorStruct() *FileMonitor {
-	err := fileMonitorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var fileOutputStreamObject *gi.Object
+var fileOutputStreamObject_Once sync.Once
 
-	structGo := &FileMonitor{}
-	structGo.Native = fileMonitorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileMonitor)
-	return structGo
-}
-func finalizeFileMonitor(obj *FileMonitor) {
-	fileMonitorStruct.Free(obj.Native)
-}
-
-var fileOutputStreamStruct *gi.Struct
-var fileOutputStreamStruct_Once sync.Once
-
-func fileOutputStreamStruct_Set() error {
+func fileOutputStreamObject_Set() error {
 	var err error
-	fileOutputStreamStruct_Once.Do(func() {
-		fileOutputStreamStruct, err = gi.StructNew("Gio", "FileOutputStream")
+	fileOutputStreamObject_Once.Do(func() {
+		fileOutputStreamObject, err = gi.ObjectNew("Gio", "FileOutputStream")
 	})
 	return err
 }
@@ -10317,7 +10156,7 @@ type FileOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.FieldGet(fileOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(fileOutputStreamObject, recv.Native, "parent_instance")
 	value := &OutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10327,7 +10166,7 @@ func (recv *FileOutputStream) FieldParentInstance() *OutputStream {
 func (recv *FileOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(fileOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var fileOutputStreamGetEtagFunction *gi.Function
@@ -10336,11 +10175,11 @@ var fileOutputStreamGetEtagFunction_Once sync.Once
 func fileOutputStreamGetEtagFunction_Set() error {
 	var err error
 	fileOutputStreamGetEtagFunction_Once.Do(func() {
-		err = fileOutputStreamStruct_Set()
+		err = fileOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		fileOutputStreamGetEtagFunction, err = fileOutputStreamStruct.InvokerNew("get_etag")
+		fileOutputStreamGetEtagFunction, err = fileOutputStreamObject.InvokerNew("get_etag")
 	})
 	return err
 }
@@ -10368,11 +10207,11 @@ var fileOutputStreamQueryInfoFunction_Once sync.Once
 func fileOutputStreamQueryInfoFunction_Set() error {
 	var err error
 	fileOutputStreamQueryInfoFunction_Once.Do(func() {
-		err = fileOutputStreamStruct_Set()
+		err = fileOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		fileOutputStreamQueryInfoFunction, err = fileOutputStreamStruct.InvokerNew("query_info")
+		fileOutputStreamQueryInfoFunction, err = fileOutputStreamObject.InvokerNew("query_info")
 	})
 	return err
 }
@@ -10401,29 +10240,13 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 
 // UNSUPPORTED : C value 'g_file_output_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// FileOutputStreamStruct creates an uninitialised FileOutputStream.
-func FileOutputStreamStruct() *FileOutputStream {
-	err := fileOutputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var filenameCompleterObject *gi.Object
+var filenameCompleterObject_Once sync.Once
 
-	structGo := &FileOutputStream{}
-	structGo.Native = fileOutputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFileOutputStream)
-	return structGo
-}
-func finalizeFileOutputStream(obj *FileOutputStream) {
-	fileOutputStreamStruct.Free(obj.Native)
-}
-
-var filenameCompleterStruct *gi.Struct
-var filenameCompleterStruct_Once sync.Once
-
-func filenameCompleterStruct_Set() error {
+func filenameCompleterObject_Set() error {
 	var err error
-	filenameCompleterStruct_Once.Do(func() {
-		filenameCompleterStruct, err = gi.StructNew("Gio", "FilenameCompleter")
+	filenameCompleterObject_Once.Do(func() {
+		filenameCompleterObject, err = gi.ObjectNew("Gio", "FilenameCompleter")
 	})
 	return err
 }
@@ -10438,11 +10261,11 @@ var filenameCompleterNewFunction_Once sync.Once
 func filenameCompleterNewFunction_Set() error {
 	var err error
 	filenameCompleterNewFunction_Once.Do(func() {
-		err = filenameCompleterStruct_Set()
+		err = filenameCompleterObject_Set()
 		if err != nil {
 			return
 		}
-		filenameCompleterNewFunction, err = filenameCompleterStruct.InvokerNew("new")
+		filenameCompleterNewFunction, err = filenameCompleterObject.InvokerNew("new")
 	})
 	return err
 }
@@ -10469,11 +10292,11 @@ var filenameCompleterGetCompletionSuffixFunction_Once sync.Once
 func filenameCompleterGetCompletionSuffixFunction_Set() error {
 	var err error
 	filenameCompleterGetCompletionSuffixFunction_Once.Do(func() {
-		err = filenameCompleterStruct_Set()
+		err = filenameCompleterObject_Set()
 		if err != nil {
 			return
 		}
-		filenameCompleterGetCompletionSuffixFunction, err = filenameCompleterStruct.InvokerNew("get_completion_suffix")
+		filenameCompleterGetCompletionSuffixFunction, err = filenameCompleterObject.InvokerNew("get_completion_suffix")
 	})
 	return err
 }
@@ -10502,11 +10325,11 @@ var filenameCompleterGetCompletionsFunction_Once sync.Once
 func filenameCompleterGetCompletionsFunction_Set() error {
 	var err error
 	filenameCompleterGetCompletionsFunction_Once.Do(func() {
-		err = filenameCompleterStruct_Set()
+		err = filenameCompleterObject_Set()
 		if err != nil {
 			return
 		}
-		filenameCompleterGetCompletionsFunction, err = filenameCompleterStruct.InvokerNew("get_completions")
+		filenameCompleterGetCompletionsFunction, err = filenameCompleterObject.InvokerNew("get_completions")
 	})
 	return err
 }
@@ -10531,11 +10354,11 @@ var filenameCompleterSetDirsOnlyFunction_Once sync.Once
 func filenameCompleterSetDirsOnlyFunction_Set() error {
 	var err error
 	filenameCompleterSetDirsOnlyFunction_Once.Do(func() {
-		err = filenameCompleterStruct_Set()
+		err = filenameCompleterObject_Set()
 		if err != nil {
 			return
 		}
-		filenameCompleterSetDirsOnlyFunction, err = filenameCompleterStruct.InvokerNew("set_dirs_only")
+		filenameCompleterSetDirsOnlyFunction, err = filenameCompleterObject.InvokerNew("set_dirs_only")
 	})
 	return err
 }
@@ -10554,13 +10377,13 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	return
 }
 
-var filterInputStreamStruct *gi.Struct
-var filterInputStreamStruct_Once sync.Once
+var filterInputStreamObject *gi.Object
+var filterInputStreamObject_Once sync.Once
 
-func filterInputStreamStruct_Set() error {
+func filterInputStreamObject_Set() error {
 	var err error
-	filterInputStreamStruct_Once.Do(func() {
-		filterInputStreamStruct, err = gi.StructNew("Gio", "FilterInputStream")
+	filterInputStreamObject_Once.Do(func() {
+		filterInputStreamObject, err = gi.ObjectNew("Gio", "FilterInputStream")
 	})
 	return err
 }
@@ -10571,7 +10394,7 @@ type FilterInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.FieldGet(filterInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native, "parent_instance")
 	value := &InputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10581,12 +10404,12 @@ func (recv *FilterInputStream) FieldParentInstance() *InputStream {
 func (recv *FilterInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(filterInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(filterInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterInputStream) FieldBaseStream() *InputStream {
-	argValue := gi.FieldGet(filterInputStreamStruct, recv.Native, "base_stream")
+	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native, "base_stream")
 	value := &InputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10596,7 +10419,7 @@ func (recv *FilterInputStream) FieldBaseStream() *InputStream {
 func (recv *FilterInputStream) SetFieldBaseStream(value *InputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(filterInputStreamStruct, recv.Native, "base_stream", argValue)
+	gi.ObjectFieldSet(filterInputStreamObject, recv.Native, "base_stream", argValue)
 }
 
 var filterInputStreamGetBaseStreamFunction *gi.Function
@@ -10605,11 +10428,11 @@ var filterInputStreamGetBaseStreamFunction_Once sync.Once
 func filterInputStreamGetBaseStreamFunction_Set() error {
 	var err error
 	filterInputStreamGetBaseStreamFunction_Once.Do(func() {
-		err = filterInputStreamStruct_Set()
+		err = filterInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterInputStreamGetBaseStreamFunction, err = filterInputStreamStruct.InvokerNew("get_base_stream")
+		filterInputStreamGetBaseStreamFunction, err = filterInputStreamObject.InvokerNew("get_base_stream")
 	})
 	return err
 }
@@ -10638,11 +10461,11 @@ var filterInputStreamGetCloseBaseStreamFunction_Once sync.Once
 func filterInputStreamGetCloseBaseStreamFunction_Set() error {
 	var err error
 	filterInputStreamGetCloseBaseStreamFunction_Once.Do(func() {
-		err = filterInputStreamStruct_Set()
+		err = filterInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterInputStreamGetCloseBaseStreamFunction, err = filterInputStreamStruct.InvokerNew("get_close_base_stream")
+		filterInputStreamGetCloseBaseStreamFunction, err = filterInputStreamObject.InvokerNew("get_close_base_stream")
 	})
 	return err
 }
@@ -10670,11 +10493,11 @@ var filterInputStreamSetCloseBaseStreamFunction_Once sync.Once
 func filterInputStreamSetCloseBaseStreamFunction_Set() error {
 	var err error
 	filterInputStreamSetCloseBaseStreamFunction_Once.Do(func() {
-		err = filterInputStreamStruct_Set()
+		err = filterInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterInputStreamSetCloseBaseStreamFunction, err = filterInputStreamStruct.InvokerNew("set_close_base_stream")
+		filterInputStreamSetCloseBaseStreamFunction, err = filterInputStreamObject.InvokerNew("set_close_base_stream")
 	})
 	return err
 }
@@ -10693,29 +10516,13 @@ func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 	return
 }
 
-// FilterInputStreamStruct creates an uninitialised FilterInputStream.
-func FilterInputStreamStruct() *FilterInputStream {
-	err := filterInputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var filterOutputStreamObject *gi.Object
+var filterOutputStreamObject_Once sync.Once
 
-	structGo := &FilterInputStream{}
-	structGo.Native = filterInputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFilterInputStream)
-	return structGo
-}
-func finalizeFilterInputStream(obj *FilterInputStream) {
-	filterInputStreamStruct.Free(obj.Native)
-}
-
-var filterOutputStreamStruct *gi.Struct
-var filterOutputStreamStruct_Once sync.Once
-
-func filterOutputStreamStruct_Set() error {
+func filterOutputStreamObject_Set() error {
 	var err error
-	filterOutputStreamStruct_Once.Do(func() {
-		filterOutputStreamStruct, err = gi.StructNew("Gio", "FilterOutputStream")
+	filterOutputStreamObject_Once.Do(func() {
+		filterOutputStreamObject, err = gi.ObjectNew("Gio", "FilterOutputStream")
 	})
 	return err
 }
@@ -10726,7 +10533,7 @@ type FilterOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.FieldGet(filterOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native, "parent_instance")
 	value := &OutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10736,12 +10543,12 @@ func (recv *FilterOutputStream) FieldParentInstance() *OutputStream {
 func (recv *FilterOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(filterOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterOutputStream) FieldBaseStream() *OutputStream {
-	argValue := gi.FieldGet(filterOutputStreamStruct, recv.Native, "base_stream")
+	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native, "base_stream")
 	value := &OutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -10751,7 +10558,7 @@ func (recv *FilterOutputStream) FieldBaseStream() *OutputStream {
 func (recv *FilterOutputStream) SetFieldBaseStream(value *OutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(filterOutputStreamStruct, recv.Native, "base_stream", argValue)
+	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native, "base_stream", argValue)
 }
 
 var filterOutputStreamGetBaseStreamFunction *gi.Function
@@ -10760,11 +10567,11 @@ var filterOutputStreamGetBaseStreamFunction_Once sync.Once
 func filterOutputStreamGetBaseStreamFunction_Set() error {
 	var err error
 	filterOutputStreamGetBaseStreamFunction_Once.Do(func() {
-		err = filterOutputStreamStruct_Set()
+		err = filterOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterOutputStreamGetBaseStreamFunction, err = filterOutputStreamStruct.InvokerNew("get_base_stream")
+		filterOutputStreamGetBaseStreamFunction, err = filterOutputStreamObject.InvokerNew("get_base_stream")
 	})
 	return err
 }
@@ -10793,11 +10600,11 @@ var filterOutputStreamGetCloseBaseStreamFunction_Once sync.Once
 func filterOutputStreamGetCloseBaseStreamFunction_Set() error {
 	var err error
 	filterOutputStreamGetCloseBaseStreamFunction_Once.Do(func() {
-		err = filterOutputStreamStruct_Set()
+		err = filterOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterOutputStreamGetCloseBaseStreamFunction, err = filterOutputStreamStruct.InvokerNew("get_close_base_stream")
+		filterOutputStreamGetCloseBaseStreamFunction, err = filterOutputStreamObject.InvokerNew("get_close_base_stream")
 	})
 	return err
 }
@@ -10825,11 +10632,11 @@ var filterOutputStreamSetCloseBaseStreamFunction_Once sync.Once
 func filterOutputStreamSetCloseBaseStreamFunction_Set() error {
 	var err error
 	filterOutputStreamSetCloseBaseStreamFunction_Once.Do(func() {
-		err = filterOutputStreamStruct_Set()
+		err = filterOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		filterOutputStreamSetCloseBaseStreamFunction, err = filterOutputStreamStruct.InvokerNew("set_close_base_stream")
+		filterOutputStreamSetCloseBaseStreamFunction, err = filterOutputStreamObject.InvokerNew("set_close_base_stream")
 	})
 	return err
 }
@@ -10848,29 +10655,13 @@ func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	return
 }
 
-// FilterOutputStreamStruct creates an uninitialised FilterOutputStream.
-func FilterOutputStreamStruct() *FilterOutputStream {
-	err := filterOutputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var iOModuleObject *gi.Object
+var iOModuleObject_Once sync.Once
 
-	structGo := &FilterOutputStream{}
-	structGo.Native = filterOutputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeFilterOutputStream)
-	return structGo
-}
-func finalizeFilterOutputStream(obj *FilterOutputStream) {
-	filterOutputStreamStruct.Free(obj.Native)
-}
-
-var iOModuleStruct *gi.Struct
-var iOModuleStruct_Once sync.Once
-
-func iOModuleStruct_Set() error {
+func iOModuleObject_Set() error {
 	var err error
-	iOModuleStruct_Once.Do(func() {
-		iOModuleStruct, err = gi.StructNew("Gio", "IOModule")
+	iOModuleObject_Once.Do(func() {
+		iOModuleObject, err = gi.ObjectNew("Gio", "IOModule")
 	})
 	return err
 }
@@ -10885,11 +10676,11 @@ var iOModuleNewFunction_Once sync.Once
 func iOModuleNewFunction_Set() error {
 	var err error
 	iOModuleNewFunction_Once.Do(func() {
-		err = iOModuleStruct_Set()
+		err = iOModuleObject_Set()
 		if err != nil {
 			return
 		}
-		iOModuleNewFunction, err = iOModuleStruct.InvokerNew("new")
+		iOModuleNewFunction, err = iOModuleObject.InvokerNew("new")
 	})
 	return err
 }
@@ -10918,11 +10709,11 @@ var iOModuleLoadFunction_Once sync.Once
 func iOModuleLoadFunction_Set() error {
 	var err error
 	iOModuleLoadFunction_Once.Do(func() {
-		err = iOModuleStruct_Set()
+		err = iOModuleObject_Set()
 		if err != nil {
 			return
 		}
-		iOModuleLoadFunction, err = iOModuleStruct.InvokerNew("load")
+		iOModuleLoadFunction, err = iOModuleObject.InvokerNew("load")
 	})
 	return err
 }
@@ -10946,11 +10737,11 @@ var iOModuleUnloadFunction_Once sync.Once
 func iOModuleUnloadFunction_Set() error {
 	var err error
 	iOModuleUnloadFunction_Once.Do(func() {
-		err = iOModuleStruct_Set()
+		err = iOModuleObject_Set()
 		if err != nil {
 			return
 		}
-		iOModuleUnloadFunction, err = iOModuleStruct.InvokerNew("unload")
+		iOModuleUnloadFunction, err = iOModuleObject.InvokerNew("unload")
 	})
 	return err
 }
@@ -10968,13 +10759,13 @@ func (recv *IOModule) Unload() {
 	return
 }
 
-var iOStreamStruct *gi.Struct
-var iOStreamStruct_Once sync.Once
+var iOStreamObject *gi.Object
+var iOStreamObject_Once sync.Once
 
-func iOStreamStruct_Set() error {
+func iOStreamObject_Set() error {
 	var err error
-	iOStreamStruct_Once.Do(func() {
-		iOStreamStruct, err = gi.StructNew("Gio", "IOStream")
+	iOStreamObject_Once.Do(func() {
+		iOStreamObject, err = gi.ObjectNew("Gio", "IOStream")
 	})
 	return err
 }
@@ -10993,11 +10784,11 @@ var iOStreamClearPendingFunction_Once sync.Once
 func iOStreamClearPendingFunction_Set() error {
 	var err error
 	iOStreamClearPendingFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamClearPendingFunction, err = iOStreamStruct.InvokerNew("clear_pending")
+		iOStreamClearPendingFunction, err = iOStreamObject.InvokerNew("clear_pending")
 	})
 	return err
 }
@@ -11021,11 +10812,11 @@ var iOStreamCloseFunction_Once sync.Once
 func iOStreamCloseFunction_Set() error {
 	var err error
 	iOStreamCloseFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamCloseFunction, err = iOStreamStruct.InvokerNew("close")
+		iOStreamCloseFunction, err = iOStreamObject.InvokerNew("close")
 	})
 	return err
 }
@@ -11058,11 +10849,11 @@ var iOStreamGetInputStreamFunction_Once sync.Once
 func iOStreamGetInputStreamFunction_Set() error {
 	var err error
 	iOStreamGetInputStreamFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamGetInputStreamFunction, err = iOStreamStruct.InvokerNew("get_input_stream")
+		iOStreamGetInputStreamFunction, err = iOStreamObject.InvokerNew("get_input_stream")
 	})
 	return err
 }
@@ -11091,11 +10882,11 @@ var iOStreamGetOutputStreamFunction_Once sync.Once
 func iOStreamGetOutputStreamFunction_Set() error {
 	var err error
 	iOStreamGetOutputStreamFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamGetOutputStreamFunction, err = iOStreamStruct.InvokerNew("get_output_stream")
+		iOStreamGetOutputStreamFunction, err = iOStreamObject.InvokerNew("get_output_stream")
 	})
 	return err
 }
@@ -11124,11 +10915,11 @@ var iOStreamHasPendingFunction_Once sync.Once
 func iOStreamHasPendingFunction_Set() error {
 	var err error
 	iOStreamHasPendingFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamHasPendingFunction, err = iOStreamStruct.InvokerNew("has_pending")
+		iOStreamHasPendingFunction, err = iOStreamObject.InvokerNew("has_pending")
 	})
 	return err
 }
@@ -11156,11 +10947,11 @@ var iOStreamIsClosedFunction_Once sync.Once
 func iOStreamIsClosedFunction_Set() error {
 	var err error
 	iOStreamIsClosedFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamIsClosedFunction, err = iOStreamStruct.InvokerNew("is_closed")
+		iOStreamIsClosedFunction, err = iOStreamObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -11188,11 +10979,11 @@ var iOStreamSetPendingFunction_Once sync.Once
 func iOStreamSetPendingFunction_Set() error {
 	var err error
 	iOStreamSetPendingFunction_Once.Do(func() {
-		err = iOStreamStruct_Set()
+		err = iOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		iOStreamSetPendingFunction, err = iOStreamStruct.InvokerNew("set_pending")
+		iOStreamSetPendingFunction, err = iOStreamObject.InvokerNew("set_pending")
 	})
 	return err
 }
@@ -11216,29 +11007,13 @@ func (recv *IOStream) SetPending() bool {
 
 // UNSUPPORTED : C value 'g_io_stream_splice_async' : parameter 'flags' of type 'IOStreamSpliceFlags' not supported
 
-// IOStreamStruct creates an uninitialised IOStream.
-func IOStreamStruct() *IOStream {
-	err := iOStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var inetAddressObject *gi.Object
+var inetAddressObject_Once sync.Once
 
-	structGo := &IOStream{}
-	structGo.Native = iOStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeIOStream)
-	return structGo
-}
-func finalizeIOStream(obj *IOStream) {
-	iOStreamStruct.Free(obj.Native)
-}
-
-var inetAddressStruct *gi.Struct
-var inetAddressStruct_Once sync.Once
-
-func inetAddressStruct_Set() error {
+func inetAddressObject_Set() error {
 	var err error
-	inetAddressStruct_Once.Do(func() {
-		inetAddressStruct, err = gi.StructNew("Gio", "InetAddress")
+	inetAddressObject_Once.Do(func() {
+		inetAddressObject, err = gi.ObjectNew("Gio", "InetAddress")
 	})
 	return err
 }
@@ -11257,11 +11032,11 @@ var inetAddressNewAnyFunction_Once sync.Once
 func inetAddressNewAnyFunction_Set() error {
 	var err error
 	inetAddressNewAnyFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressNewAnyFunction, err = inetAddressStruct.InvokerNew("new_any")
+		inetAddressNewAnyFunction, err = inetAddressObject.InvokerNew("new_any")
 	})
 	return err
 }
@@ -11292,11 +11067,11 @@ var inetAddressNewFromStringFunction_Once sync.Once
 func inetAddressNewFromStringFunction_Set() error {
 	var err error
 	inetAddressNewFromStringFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressNewFromStringFunction, err = inetAddressStruct.InvokerNew("new_from_string")
+		inetAddressNewFromStringFunction, err = inetAddressObject.InvokerNew("new_from_string")
 	})
 	return err
 }
@@ -11325,11 +11100,11 @@ var inetAddressNewLoopbackFunction_Once sync.Once
 func inetAddressNewLoopbackFunction_Set() error {
 	var err error
 	inetAddressNewLoopbackFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressNewLoopbackFunction, err = inetAddressStruct.InvokerNew("new_loopback")
+		inetAddressNewLoopbackFunction, err = inetAddressObject.InvokerNew("new_loopback")
 	})
 	return err
 }
@@ -11358,11 +11133,11 @@ var inetAddressEqualFunction_Once sync.Once
 func inetAddressEqualFunction_Set() error {
 	var err error
 	inetAddressEqualFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressEqualFunction, err = inetAddressStruct.InvokerNew("equal")
+		inetAddressEqualFunction, err = inetAddressObject.InvokerNew("equal")
 	})
 	return err
 }
@@ -11391,11 +11166,11 @@ var inetAddressGetFamilyFunction_Once sync.Once
 func inetAddressGetFamilyFunction_Set() error {
 	var err error
 	inetAddressGetFamilyFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetFamilyFunction, err = inetAddressStruct.InvokerNew("get_family")
+		inetAddressGetFamilyFunction, err = inetAddressObject.InvokerNew("get_family")
 	})
 	return err
 }
@@ -11423,11 +11198,11 @@ var inetAddressGetIsAnyFunction_Once sync.Once
 func inetAddressGetIsAnyFunction_Set() error {
 	var err error
 	inetAddressGetIsAnyFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsAnyFunction, err = inetAddressStruct.InvokerNew("get_is_any")
+		inetAddressGetIsAnyFunction, err = inetAddressObject.InvokerNew("get_is_any")
 	})
 	return err
 }
@@ -11455,11 +11230,11 @@ var inetAddressGetIsLinkLocalFunction_Once sync.Once
 func inetAddressGetIsLinkLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsLinkLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsLinkLocalFunction, err = inetAddressStruct.InvokerNew("get_is_link_local")
+		inetAddressGetIsLinkLocalFunction, err = inetAddressObject.InvokerNew("get_is_link_local")
 	})
 	return err
 }
@@ -11487,11 +11262,11 @@ var inetAddressGetIsLoopbackFunction_Once sync.Once
 func inetAddressGetIsLoopbackFunction_Set() error {
 	var err error
 	inetAddressGetIsLoopbackFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsLoopbackFunction, err = inetAddressStruct.InvokerNew("get_is_loopback")
+		inetAddressGetIsLoopbackFunction, err = inetAddressObject.InvokerNew("get_is_loopback")
 	})
 	return err
 }
@@ -11519,11 +11294,11 @@ var inetAddressGetIsMcGlobalFunction_Once sync.Once
 func inetAddressGetIsMcGlobalFunction_Set() error {
 	var err error
 	inetAddressGetIsMcGlobalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMcGlobalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_global")
+		inetAddressGetIsMcGlobalFunction, err = inetAddressObject.InvokerNew("get_is_mc_global")
 	})
 	return err
 }
@@ -11551,11 +11326,11 @@ var inetAddressGetIsMcLinkLocalFunction_Once sync.Once
 func inetAddressGetIsMcLinkLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsMcLinkLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMcLinkLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_link_local")
+		inetAddressGetIsMcLinkLocalFunction, err = inetAddressObject.InvokerNew("get_is_mc_link_local")
 	})
 	return err
 }
@@ -11583,11 +11358,11 @@ var inetAddressGetIsMcNodeLocalFunction_Once sync.Once
 func inetAddressGetIsMcNodeLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsMcNodeLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMcNodeLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_node_local")
+		inetAddressGetIsMcNodeLocalFunction, err = inetAddressObject.InvokerNew("get_is_mc_node_local")
 	})
 	return err
 }
@@ -11615,11 +11390,11 @@ var inetAddressGetIsMcOrgLocalFunction_Once sync.Once
 func inetAddressGetIsMcOrgLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsMcOrgLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMcOrgLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_org_local")
+		inetAddressGetIsMcOrgLocalFunction, err = inetAddressObject.InvokerNew("get_is_mc_org_local")
 	})
 	return err
 }
@@ -11647,11 +11422,11 @@ var inetAddressGetIsMcSiteLocalFunction_Once sync.Once
 func inetAddressGetIsMcSiteLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsMcSiteLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMcSiteLocalFunction, err = inetAddressStruct.InvokerNew("get_is_mc_site_local")
+		inetAddressGetIsMcSiteLocalFunction, err = inetAddressObject.InvokerNew("get_is_mc_site_local")
 	})
 	return err
 }
@@ -11679,11 +11454,11 @@ var inetAddressGetIsMulticastFunction_Once sync.Once
 func inetAddressGetIsMulticastFunction_Set() error {
 	var err error
 	inetAddressGetIsMulticastFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsMulticastFunction, err = inetAddressStruct.InvokerNew("get_is_multicast")
+		inetAddressGetIsMulticastFunction, err = inetAddressObject.InvokerNew("get_is_multicast")
 	})
 	return err
 }
@@ -11711,11 +11486,11 @@ var inetAddressGetIsSiteLocalFunction_Once sync.Once
 func inetAddressGetIsSiteLocalFunction_Set() error {
 	var err error
 	inetAddressGetIsSiteLocalFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetIsSiteLocalFunction, err = inetAddressStruct.InvokerNew("get_is_site_local")
+		inetAddressGetIsSiteLocalFunction, err = inetAddressObject.InvokerNew("get_is_site_local")
 	})
 	return err
 }
@@ -11743,11 +11518,11 @@ var inetAddressGetNativeSizeFunction_Once sync.Once
 func inetAddressGetNativeSizeFunction_Set() error {
 	var err error
 	inetAddressGetNativeSizeFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressGetNativeSizeFunction, err = inetAddressStruct.InvokerNew("get_native_size")
+		inetAddressGetNativeSizeFunction, err = inetAddressObject.InvokerNew("get_native_size")
 	})
 	return err
 }
@@ -11775,11 +11550,11 @@ var inetAddressToBytesFunction_Once sync.Once
 func inetAddressToBytesFunction_Set() error {
 	var err error
 	inetAddressToBytesFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressToBytesFunction, err = inetAddressStruct.InvokerNew("to_bytes")
+		inetAddressToBytesFunction, err = inetAddressObject.InvokerNew("to_bytes")
 	})
 	return err
 }
@@ -11807,11 +11582,11 @@ var inetAddressToStringFunction_Once sync.Once
 func inetAddressToStringFunction_Set() error {
 	var err error
 	inetAddressToStringFunction_Once.Do(func() {
-		err = inetAddressStruct_Set()
+		err = inetAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressToStringFunction, err = inetAddressStruct.InvokerNew("to_string")
+		inetAddressToStringFunction, err = inetAddressObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -11833,13 +11608,13 @@ func (recv *InetAddress) ToString() string {
 	return retGo
 }
 
-var inetAddressMaskStruct *gi.Struct
-var inetAddressMaskStruct_Once sync.Once
+var inetAddressMaskObject *gi.Object
+var inetAddressMaskObject_Once sync.Once
 
-func inetAddressMaskStruct_Set() error {
+func inetAddressMaskObject_Set() error {
 	var err error
-	inetAddressMaskStruct_Once.Do(func() {
-		inetAddressMaskStruct, err = gi.StructNew("Gio", "InetAddressMask")
+	inetAddressMaskObject_Once.Do(func() {
+		inetAddressMaskObject, err = gi.ObjectNew("Gio", "InetAddressMask")
 	})
 	return err
 }
@@ -11858,11 +11633,11 @@ var inetAddressMaskNewFunction_Once sync.Once
 func inetAddressMaskNewFunction_Set() error {
 	var err error
 	inetAddressMaskNewFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskNewFunction, err = inetAddressMaskStruct.InvokerNew("new")
+		inetAddressMaskNewFunction, err = inetAddressMaskObject.InvokerNew("new")
 	})
 	return err
 }
@@ -11892,11 +11667,11 @@ var inetAddressMaskNewFromStringFunction_Once sync.Once
 func inetAddressMaskNewFromStringFunction_Set() error {
 	var err error
 	inetAddressMaskNewFromStringFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskNewFromStringFunction, err = inetAddressMaskStruct.InvokerNew("new_from_string")
+		inetAddressMaskNewFromStringFunction, err = inetAddressMaskObject.InvokerNew("new_from_string")
 	})
 	return err
 }
@@ -11925,11 +11700,11 @@ var inetAddressMaskEqualFunction_Once sync.Once
 func inetAddressMaskEqualFunction_Set() error {
 	var err error
 	inetAddressMaskEqualFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskEqualFunction, err = inetAddressMaskStruct.InvokerNew("equal")
+		inetAddressMaskEqualFunction, err = inetAddressMaskObject.InvokerNew("equal")
 	})
 	return err
 }
@@ -11958,11 +11733,11 @@ var inetAddressMaskGetAddressFunction_Once sync.Once
 func inetAddressMaskGetAddressFunction_Set() error {
 	var err error
 	inetAddressMaskGetAddressFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskGetAddressFunction, err = inetAddressMaskStruct.InvokerNew("get_address")
+		inetAddressMaskGetAddressFunction, err = inetAddressMaskObject.InvokerNew("get_address")
 	})
 	return err
 }
@@ -11991,11 +11766,11 @@ var inetAddressMaskGetFamilyFunction_Once sync.Once
 func inetAddressMaskGetFamilyFunction_Set() error {
 	var err error
 	inetAddressMaskGetFamilyFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskGetFamilyFunction, err = inetAddressMaskStruct.InvokerNew("get_family")
+		inetAddressMaskGetFamilyFunction, err = inetAddressMaskObject.InvokerNew("get_family")
 	})
 	return err
 }
@@ -12023,11 +11798,11 @@ var inetAddressMaskGetLengthFunction_Once sync.Once
 func inetAddressMaskGetLengthFunction_Set() error {
 	var err error
 	inetAddressMaskGetLengthFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskGetLengthFunction, err = inetAddressMaskStruct.InvokerNew("get_length")
+		inetAddressMaskGetLengthFunction, err = inetAddressMaskObject.InvokerNew("get_length")
 	})
 	return err
 }
@@ -12055,11 +11830,11 @@ var inetAddressMaskMatchesFunction_Once sync.Once
 func inetAddressMaskMatchesFunction_Set() error {
 	var err error
 	inetAddressMaskMatchesFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskMatchesFunction, err = inetAddressMaskStruct.InvokerNew("matches")
+		inetAddressMaskMatchesFunction, err = inetAddressMaskObject.InvokerNew("matches")
 	})
 	return err
 }
@@ -12088,11 +11863,11 @@ var inetAddressMaskToStringFunction_Once sync.Once
 func inetAddressMaskToStringFunction_Set() error {
 	var err error
 	inetAddressMaskToStringFunction_Once.Do(func() {
-		err = inetAddressMaskStruct_Set()
+		err = inetAddressMaskObject_Set()
 		if err != nil {
 			return
 		}
-		inetAddressMaskToStringFunction, err = inetAddressMaskStruct.InvokerNew("to_string")
+		inetAddressMaskToStringFunction, err = inetAddressMaskObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -12114,13 +11889,13 @@ func (recv *InetAddressMask) ToString() string {
 	return retGo
 }
 
-var inetSocketAddressStruct *gi.Struct
-var inetSocketAddressStruct_Once sync.Once
+var inetSocketAddressObject *gi.Object
+var inetSocketAddressObject_Once sync.Once
 
-func inetSocketAddressStruct_Set() error {
+func inetSocketAddressObject_Set() error {
 	var err error
-	inetSocketAddressStruct_Once.Do(func() {
-		inetSocketAddressStruct, err = gi.StructNew("Gio", "InetSocketAddress")
+	inetSocketAddressObject_Once.Do(func() {
+		inetSocketAddressObject, err = gi.ObjectNew("Gio", "InetSocketAddress")
 	})
 	return err
 }
@@ -12131,7 +11906,7 @@ type InetSocketAddress struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InetSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.FieldGet(inetSocketAddressStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(inetSocketAddressObject, recv.Native, "parent_instance")
 	value := &SocketAddress{}
 	value.Native = argValue.Pointer()
 	return value
@@ -12141,7 +11916,7 @@ func (recv *InetSocketAddress) FieldParentInstance() *SocketAddress {
 func (recv *InetSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(inetSocketAddressStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(inetSocketAddressObject, recv.Native, "parent_instance", argValue)
 }
 
 var inetSocketAddressNewFunction *gi.Function
@@ -12150,11 +11925,11 @@ var inetSocketAddressNewFunction_Once sync.Once
 func inetSocketAddressNewFunction_Set() error {
 	var err error
 	inetSocketAddressNewFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressNewFunction, err = inetSocketAddressStruct.InvokerNew("new")
+		inetSocketAddressNewFunction, err = inetSocketAddressObject.InvokerNew("new")
 	})
 	return err
 }
@@ -12184,11 +11959,11 @@ var inetSocketAddressNewFromStringFunction_Once sync.Once
 func inetSocketAddressNewFromStringFunction_Set() error {
 	var err error
 	inetSocketAddressNewFromStringFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressNewFromStringFunction, err = inetSocketAddressStruct.InvokerNew("new_from_string")
+		inetSocketAddressNewFromStringFunction, err = inetSocketAddressObject.InvokerNew("new_from_string")
 	})
 	return err
 }
@@ -12218,11 +11993,11 @@ var inetSocketAddressGetAddressFunction_Once sync.Once
 func inetSocketAddressGetAddressFunction_Set() error {
 	var err error
 	inetSocketAddressGetAddressFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressGetAddressFunction, err = inetSocketAddressStruct.InvokerNew("get_address")
+		inetSocketAddressGetAddressFunction, err = inetSocketAddressObject.InvokerNew("get_address")
 	})
 	return err
 }
@@ -12251,11 +12026,11 @@ var inetSocketAddressGetFlowinfoFunction_Once sync.Once
 func inetSocketAddressGetFlowinfoFunction_Set() error {
 	var err error
 	inetSocketAddressGetFlowinfoFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressGetFlowinfoFunction, err = inetSocketAddressStruct.InvokerNew("get_flowinfo")
+		inetSocketAddressGetFlowinfoFunction, err = inetSocketAddressObject.InvokerNew("get_flowinfo")
 	})
 	return err
 }
@@ -12283,11 +12058,11 @@ var inetSocketAddressGetPortFunction_Once sync.Once
 func inetSocketAddressGetPortFunction_Set() error {
 	var err error
 	inetSocketAddressGetPortFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressGetPortFunction, err = inetSocketAddressStruct.InvokerNew("get_port")
+		inetSocketAddressGetPortFunction, err = inetSocketAddressObject.InvokerNew("get_port")
 	})
 	return err
 }
@@ -12315,11 +12090,11 @@ var inetSocketAddressGetScopeIdFunction_Once sync.Once
 func inetSocketAddressGetScopeIdFunction_Set() error {
 	var err error
 	inetSocketAddressGetScopeIdFunction_Once.Do(func() {
-		err = inetSocketAddressStruct_Set()
+		err = inetSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		inetSocketAddressGetScopeIdFunction, err = inetSocketAddressStruct.InvokerNew("get_scope_id")
+		inetSocketAddressGetScopeIdFunction, err = inetSocketAddressObject.InvokerNew("get_scope_id")
 	})
 	return err
 }
@@ -12341,13 +12116,13 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 	return retGo
 }
 
-var inputStreamStruct *gi.Struct
-var inputStreamStruct_Once sync.Once
+var inputStreamObject *gi.Object
+var inputStreamObject_Once sync.Once
 
-func inputStreamStruct_Set() error {
+func inputStreamObject_Set() error {
 	var err error
-	inputStreamStruct_Once.Do(func() {
-		inputStreamStruct, err = gi.StructNew("Gio", "InputStream")
+	inputStreamObject_Once.Do(func() {
+		inputStreamObject, err = gi.ObjectNew("Gio", "InputStream")
 	})
 	return err
 }
@@ -12366,11 +12141,11 @@ var inputStreamClearPendingFunction_Once sync.Once
 func inputStreamClearPendingFunction_Set() error {
 	var err error
 	inputStreamClearPendingFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamClearPendingFunction, err = inputStreamStruct.InvokerNew("clear_pending")
+		inputStreamClearPendingFunction, err = inputStreamObject.InvokerNew("clear_pending")
 	})
 	return err
 }
@@ -12394,11 +12169,11 @@ var inputStreamCloseFunction_Once sync.Once
 func inputStreamCloseFunction_Set() error {
 	var err error
 	inputStreamCloseFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamCloseFunction, err = inputStreamStruct.InvokerNew("close")
+		inputStreamCloseFunction, err = inputStreamObject.InvokerNew("close")
 	})
 	return err
 }
@@ -12431,11 +12206,11 @@ var inputStreamHasPendingFunction_Once sync.Once
 func inputStreamHasPendingFunction_Set() error {
 	var err error
 	inputStreamHasPendingFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamHasPendingFunction, err = inputStreamStruct.InvokerNew("has_pending")
+		inputStreamHasPendingFunction, err = inputStreamObject.InvokerNew("has_pending")
 	})
 	return err
 }
@@ -12463,11 +12238,11 @@ var inputStreamIsClosedFunction_Once sync.Once
 func inputStreamIsClosedFunction_Set() error {
 	var err error
 	inputStreamIsClosedFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamIsClosedFunction, err = inputStreamStruct.InvokerNew("is_closed")
+		inputStreamIsClosedFunction, err = inputStreamObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -12513,11 +12288,11 @@ var inputStreamSetPendingFunction_Once sync.Once
 func inputStreamSetPendingFunction_Set() error {
 	var err error
 	inputStreamSetPendingFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamSetPendingFunction, err = inputStreamStruct.InvokerNew("set_pending")
+		inputStreamSetPendingFunction, err = inputStreamObject.InvokerNew("set_pending")
 	})
 	return err
 }
@@ -12545,11 +12320,11 @@ var inputStreamSkipFunction_Once sync.Once
 func inputStreamSkipFunction_Set() error {
 	var err error
 	inputStreamSkipFunction_Once.Do(func() {
-		err = inputStreamStruct_Set()
+		err = inputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		inputStreamSkipFunction, err = inputStreamStruct.InvokerNew("skip")
+		inputStreamSkipFunction, err = inputStreamObject.InvokerNew("skip")
 	})
 	return err
 }
@@ -12577,29 +12352,13 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) int32 {
 
 // UNSUPPORTED : C value 'g_input_stream_skip_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// InputStreamStruct creates an uninitialised InputStream.
-func InputStreamStruct() *InputStream {
-	err := inputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var listStoreObject *gi.Object
+var listStoreObject_Once sync.Once
 
-	structGo := &InputStream{}
-	structGo.Native = inputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeInputStream)
-	return structGo
-}
-func finalizeInputStream(obj *InputStream) {
-	inputStreamStruct.Free(obj.Native)
-}
-
-var listStoreStruct *gi.Struct
-var listStoreStruct_Once sync.Once
-
-func listStoreStruct_Set() error {
+func listStoreObject_Set() error {
 	var err error
-	listStoreStruct_Once.Do(func() {
-		listStoreStruct, err = gi.StructNew("Gio", "ListStore")
+	listStoreObject_Once.Do(func() {
+		listStoreObject, err = gi.ObjectNew("Gio", "ListStore")
 	})
 	return err
 }
@@ -12622,11 +12381,11 @@ var listStoreRemoveFunction_Once sync.Once
 func listStoreRemoveFunction_Set() error {
 	var err error
 	listStoreRemoveFunction_Once.Do(func() {
-		err = listStoreStruct_Set()
+		err = listStoreObject_Set()
 		if err != nil {
 			return
 		}
-		listStoreRemoveFunction, err = listStoreStruct.InvokerNew("remove")
+		listStoreRemoveFunction, err = listStoreObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -12651,11 +12410,11 @@ var listStoreRemoveAllFunction_Once sync.Once
 func listStoreRemoveAllFunction_Set() error {
 	var err error
 	listStoreRemoveAllFunction_Once.Do(func() {
-		err = listStoreStruct_Set()
+		err = listStoreObject_Set()
 		if err != nil {
 			return
 		}
-		listStoreRemoveAllFunction, err = listStoreStruct.InvokerNew("remove_all")
+		listStoreRemoveAllFunction, err = listStoreObject.InvokerNew("remove_all")
 	})
 	return err
 }
@@ -12677,13 +12436,13 @@ func (recv *ListStore) RemoveAll() {
 
 // UNSUPPORTED : C value 'g_list_store_splice' : parameter 'additions' of type 'nil' not supported
 
-var memoryInputStreamStruct *gi.Struct
-var memoryInputStreamStruct_Once sync.Once
+var memoryInputStreamObject *gi.Object
+var memoryInputStreamObject_Once sync.Once
 
-func memoryInputStreamStruct_Set() error {
+func memoryInputStreamObject_Set() error {
 	var err error
-	memoryInputStreamStruct_Once.Do(func() {
-		memoryInputStreamStruct, err = gi.StructNew("Gio", "MemoryInputStream")
+	memoryInputStreamObject_Once.Do(func() {
+		memoryInputStreamObject, err = gi.ObjectNew("Gio", "MemoryInputStream")
 	})
 	return err
 }
@@ -12694,7 +12453,7 @@ type MemoryInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.FieldGet(memoryInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(memoryInputStreamObject, recv.Native, "parent_instance")
 	value := &InputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -12704,7 +12463,7 @@ func (recv *MemoryInputStream) FieldParentInstance() *InputStream {
 func (recv *MemoryInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(memoryInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(memoryInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var memoryInputStreamNewFunction *gi.Function
@@ -12713,11 +12472,11 @@ var memoryInputStreamNewFunction_Once sync.Once
 func memoryInputStreamNewFunction_Set() error {
 	var err error
 	memoryInputStreamNewFunction_Once.Do(func() {
-		err = memoryInputStreamStruct_Set()
+		err = memoryInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		memoryInputStreamNewFunction, err = memoryInputStreamStruct.InvokerNew("new")
+		memoryInputStreamNewFunction, err = memoryInputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -12746,13 +12505,13 @@ func MemoryInputStreamNew() *MemoryInputStream {
 
 // UNSUPPORTED : C value 'g_memory_input_stream_add_data' : parameter 'data' of type 'nil' not supported
 
-var memoryOutputStreamStruct *gi.Struct
-var memoryOutputStreamStruct_Once sync.Once
+var memoryOutputStreamObject *gi.Object
+var memoryOutputStreamObject_Once sync.Once
 
-func memoryOutputStreamStruct_Set() error {
+func memoryOutputStreamObject_Set() error {
 	var err error
-	memoryOutputStreamStruct_Once.Do(func() {
-		memoryOutputStreamStruct, err = gi.StructNew("Gio", "MemoryOutputStream")
+	memoryOutputStreamObject_Once.Do(func() {
+		memoryOutputStreamObject, err = gi.ObjectNew("Gio", "MemoryOutputStream")
 	})
 	return err
 }
@@ -12763,7 +12522,7 @@ type MemoryOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.FieldGet(memoryOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(memoryOutputStreamObject, recv.Native, "parent_instance")
 	value := &OutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -12773,7 +12532,7 @@ func (recv *MemoryOutputStream) FieldParentInstance() *OutputStream {
 func (recv *MemoryOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(memoryOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(memoryOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_memory_output_stream_new' : parameter 'data' of type 'gpointer' not supported
@@ -12784,11 +12543,11 @@ var memoryOutputStreamNewResizableFunction_Once sync.Once
 func memoryOutputStreamNewResizableFunction_Set() error {
 	var err error
 	memoryOutputStreamNewResizableFunction_Once.Do(func() {
-		err = memoryOutputStreamStruct_Set()
+		err = memoryOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		memoryOutputStreamNewResizableFunction, err = memoryOutputStreamStruct.InvokerNew("new_resizable")
+		memoryOutputStreamNewResizableFunction, err = memoryOutputStreamObject.InvokerNew("new_resizable")
 	})
 	return err
 }
@@ -12817,11 +12576,11 @@ var memoryOutputStreamGetDataSizeFunction_Once sync.Once
 func memoryOutputStreamGetDataSizeFunction_Set() error {
 	var err error
 	memoryOutputStreamGetDataSizeFunction_Once.Do(func() {
-		err = memoryOutputStreamStruct_Set()
+		err = memoryOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		memoryOutputStreamGetDataSizeFunction, err = memoryOutputStreamStruct.InvokerNew("get_data_size")
+		memoryOutputStreamGetDataSizeFunction, err = memoryOutputStreamObject.InvokerNew("get_data_size")
 	})
 	return err
 }
@@ -12849,11 +12608,11 @@ var memoryOutputStreamGetSizeFunction_Once sync.Once
 func memoryOutputStreamGetSizeFunction_Set() error {
 	var err error
 	memoryOutputStreamGetSizeFunction_Once.Do(func() {
-		err = memoryOutputStreamStruct_Set()
+		err = memoryOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		memoryOutputStreamGetSizeFunction, err = memoryOutputStreamStruct.InvokerNew("get_size")
+		memoryOutputStreamGetSizeFunction, err = memoryOutputStreamObject.InvokerNew("get_size")
 	})
 	return err
 }
@@ -12879,13 +12638,13 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 
 // UNSUPPORTED : C value 'g_memory_output_stream_steal_data' : return type 'gpointer' not supported
 
-var menuStruct *gi.Struct
-var menuStruct_Once sync.Once
+var menuObject *gi.Object
+var menuObject_Once sync.Once
 
-func menuStruct_Set() error {
+func menuObject_Set() error {
 	var err error
-	menuStruct_Once.Do(func() {
-		menuStruct, err = gi.StructNew("Gio", "Menu")
+	menuObject_Once.Do(func() {
+		menuObject, err = gi.ObjectNew("Gio", "Menu")
 	})
 	return err
 }
@@ -12900,11 +12659,11 @@ var menuNewFunction_Once sync.Once
 func menuNewFunction_Set() error {
 	var err error
 	menuNewFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuNewFunction, err = menuStruct.InvokerNew("new")
+		menuNewFunction, err = menuObject.InvokerNew("new")
 	})
 	return err
 }
@@ -12931,11 +12690,11 @@ var menuAppendFunction_Once sync.Once
 func menuAppendFunction_Set() error {
 	var err error
 	menuAppendFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuAppendFunction, err = menuStruct.InvokerNew("append")
+		menuAppendFunction, err = menuObject.InvokerNew("append")
 	})
 	return err
 }
@@ -12961,11 +12720,11 @@ var menuAppendItemFunction_Once sync.Once
 func menuAppendItemFunction_Set() error {
 	var err error
 	menuAppendItemFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuAppendItemFunction, err = menuStruct.InvokerNew("append_item")
+		menuAppendItemFunction, err = menuObject.InvokerNew("append_item")
 	})
 	return err
 }
@@ -12990,11 +12749,11 @@ var menuAppendSectionFunction_Once sync.Once
 func menuAppendSectionFunction_Set() error {
 	var err error
 	menuAppendSectionFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuAppendSectionFunction, err = menuStruct.InvokerNew("append_section")
+		menuAppendSectionFunction, err = menuObject.InvokerNew("append_section")
 	})
 	return err
 }
@@ -13020,11 +12779,11 @@ var menuAppendSubmenuFunction_Once sync.Once
 func menuAppendSubmenuFunction_Set() error {
 	var err error
 	menuAppendSubmenuFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuAppendSubmenuFunction, err = menuStruct.InvokerNew("append_submenu")
+		menuAppendSubmenuFunction, err = menuObject.InvokerNew("append_submenu")
 	})
 	return err
 }
@@ -13050,11 +12809,11 @@ var menuFreezeFunction_Once sync.Once
 func menuFreezeFunction_Set() error {
 	var err error
 	menuFreezeFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuFreezeFunction, err = menuStruct.InvokerNew("freeze")
+		menuFreezeFunction, err = menuObject.InvokerNew("freeze")
 	})
 	return err
 }
@@ -13078,11 +12837,11 @@ var menuInsertFunction_Once sync.Once
 func menuInsertFunction_Set() error {
 	var err error
 	menuInsertFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuInsertFunction, err = menuStruct.InvokerNew("insert")
+		menuInsertFunction, err = menuObject.InvokerNew("insert")
 	})
 	return err
 }
@@ -13109,11 +12868,11 @@ var menuInsertItemFunction_Once sync.Once
 func menuInsertItemFunction_Set() error {
 	var err error
 	menuInsertItemFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuInsertItemFunction, err = menuStruct.InvokerNew("insert_item")
+		menuInsertItemFunction, err = menuObject.InvokerNew("insert_item")
 	})
 	return err
 }
@@ -13139,11 +12898,11 @@ var menuInsertSectionFunction_Once sync.Once
 func menuInsertSectionFunction_Set() error {
 	var err error
 	menuInsertSectionFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuInsertSectionFunction, err = menuStruct.InvokerNew("insert_section")
+		menuInsertSectionFunction, err = menuObject.InvokerNew("insert_section")
 	})
 	return err
 }
@@ -13170,11 +12929,11 @@ var menuInsertSubmenuFunction_Once sync.Once
 func menuInsertSubmenuFunction_Set() error {
 	var err error
 	menuInsertSubmenuFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuInsertSubmenuFunction, err = menuStruct.InvokerNew("insert_submenu")
+		menuInsertSubmenuFunction, err = menuObject.InvokerNew("insert_submenu")
 	})
 	return err
 }
@@ -13201,11 +12960,11 @@ var menuPrependFunction_Once sync.Once
 func menuPrependFunction_Set() error {
 	var err error
 	menuPrependFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuPrependFunction, err = menuStruct.InvokerNew("prepend")
+		menuPrependFunction, err = menuObject.InvokerNew("prepend")
 	})
 	return err
 }
@@ -13231,11 +12990,11 @@ var menuPrependItemFunction_Once sync.Once
 func menuPrependItemFunction_Set() error {
 	var err error
 	menuPrependItemFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuPrependItemFunction, err = menuStruct.InvokerNew("prepend_item")
+		menuPrependItemFunction, err = menuObject.InvokerNew("prepend_item")
 	})
 	return err
 }
@@ -13260,11 +13019,11 @@ var menuPrependSectionFunction_Once sync.Once
 func menuPrependSectionFunction_Set() error {
 	var err error
 	menuPrependSectionFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuPrependSectionFunction, err = menuStruct.InvokerNew("prepend_section")
+		menuPrependSectionFunction, err = menuObject.InvokerNew("prepend_section")
 	})
 	return err
 }
@@ -13290,11 +13049,11 @@ var menuPrependSubmenuFunction_Once sync.Once
 func menuPrependSubmenuFunction_Set() error {
 	var err error
 	menuPrependSubmenuFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuPrependSubmenuFunction, err = menuStruct.InvokerNew("prepend_submenu")
+		menuPrependSubmenuFunction, err = menuObject.InvokerNew("prepend_submenu")
 	})
 	return err
 }
@@ -13320,11 +13079,11 @@ var menuRemoveFunction_Once sync.Once
 func menuRemoveFunction_Set() error {
 	var err error
 	menuRemoveFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuRemoveFunction, err = menuStruct.InvokerNew("remove")
+		menuRemoveFunction, err = menuObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -13349,11 +13108,11 @@ var menuRemoveAllFunction_Once sync.Once
 func menuRemoveAllFunction_Set() error {
 	var err error
 	menuRemoveAllFunction_Once.Do(func() {
-		err = menuStruct_Set()
+		err = menuObject_Set()
 		if err != nil {
 			return
 		}
-		menuRemoveAllFunction, err = menuStruct.InvokerNew("remove_all")
+		menuRemoveAllFunction, err = menuObject.InvokerNew("remove_all")
 	})
 	return err
 }
@@ -13371,13 +13130,13 @@ func (recv *Menu) RemoveAll() {
 	return
 }
 
-var menuAttributeIterStruct *gi.Struct
-var menuAttributeIterStruct_Once sync.Once
+var menuAttributeIterObject *gi.Object
+var menuAttributeIterObject_Once sync.Once
 
-func menuAttributeIterStruct_Set() error {
+func menuAttributeIterObject_Set() error {
 	var err error
-	menuAttributeIterStruct_Once.Do(func() {
-		menuAttributeIterStruct, err = gi.StructNew("Gio", "MenuAttributeIter")
+	menuAttributeIterObject_Once.Do(func() {
+		menuAttributeIterObject, err = gi.ObjectNew("Gio", "MenuAttributeIter")
 	})
 	return err
 }
@@ -13392,7 +13151,7 @@ type MenuAttributeIter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
-	argValue := gi.FieldGet(menuAttributeIterStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(menuAttributeIterObject, recv.Native, "priv")
 	value := &MenuAttributeIterPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -13402,7 +13161,7 @@ func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
 func (recv *MenuAttributeIter) SetFieldPriv(value *MenuAttributeIterPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(menuAttributeIterStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(menuAttributeIterObject, recv.Native, "priv", argValue)
 }
 
 var menuAttributeIterGetNameFunction *gi.Function
@@ -13411,11 +13170,11 @@ var menuAttributeIterGetNameFunction_Once sync.Once
 func menuAttributeIterGetNameFunction_Set() error {
 	var err error
 	menuAttributeIterGetNameFunction_Once.Do(func() {
-		err = menuAttributeIterStruct_Set()
+		err = menuAttributeIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuAttributeIterGetNameFunction, err = menuAttributeIterStruct.InvokerNew("get_name")
+		menuAttributeIterGetNameFunction, err = menuAttributeIterObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -13447,11 +13206,11 @@ var menuAttributeIterNextFunction_Once sync.Once
 func menuAttributeIterNextFunction_Set() error {
 	var err error
 	menuAttributeIterNextFunction_Once.Do(func() {
-		err = menuAttributeIterStruct_Set()
+		err = menuAttributeIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuAttributeIterNextFunction, err = menuAttributeIterStruct.InvokerNew("next")
+		menuAttributeIterNextFunction, err = menuAttributeIterObject.InvokerNew("next")
 	})
 	return err
 }
@@ -13473,29 +13232,13 @@ func (recv *MenuAttributeIter) Next() bool {
 	return retGo
 }
 
-// MenuAttributeIterStruct creates an uninitialised MenuAttributeIter.
-func MenuAttributeIterStruct() *MenuAttributeIter {
-	err := menuAttributeIterStruct_Set()
-	if err != nil {
-		return nil
-	}
+var menuItemObject *gi.Object
+var menuItemObject_Once sync.Once
 
-	structGo := &MenuAttributeIter{}
-	structGo.Native = menuAttributeIterStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeMenuAttributeIter)
-	return structGo
-}
-func finalizeMenuAttributeIter(obj *MenuAttributeIter) {
-	menuAttributeIterStruct.Free(obj.Native)
-}
-
-var menuItemStruct *gi.Struct
-var menuItemStruct_Once sync.Once
-
-func menuItemStruct_Set() error {
+func menuItemObject_Set() error {
 	var err error
-	menuItemStruct_Once.Do(func() {
-		menuItemStruct, err = gi.StructNew("Gio", "MenuItem")
+	menuItemObject_Once.Do(func() {
+		menuItemObject, err = gi.ObjectNew("Gio", "MenuItem")
 	})
 	return err
 }
@@ -13510,11 +13253,11 @@ var menuItemNewFunction_Once sync.Once
 func menuItemNewFunction_Set() error {
 	var err error
 	menuItemNewFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemNewFunction, err = menuItemStruct.InvokerNew("new")
+		menuItemNewFunction, err = menuItemObject.InvokerNew("new")
 	})
 	return err
 }
@@ -13544,11 +13287,11 @@ var menuItemNewFromModelFunction_Once sync.Once
 func menuItemNewFromModelFunction_Set() error {
 	var err error
 	menuItemNewFromModelFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemNewFromModelFunction, err = menuItemStruct.InvokerNew("new_from_model")
+		menuItemNewFromModelFunction, err = menuItemObject.InvokerNew("new_from_model")
 	})
 	return err
 }
@@ -13578,11 +13321,11 @@ var menuItemNewSectionFunction_Once sync.Once
 func menuItemNewSectionFunction_Set() error {
 	var err error
 	menuItemNewSectionFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemNewSectionFunction, err = menuItemStruct.InvokerNew("new_section")
+		menuItemNewSectionFunction, err = menuItemObject.InvokerNew("new_section")
 	})
 	return err
 }
@@ -13612,11 +13355,11 @@ var menuItemNewSubmenuFunction_Once sync.Once
 func menuItemNewSubmenuFunction_Set() error {
 	var err error
 	menuItemNewSubmenuFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemNewSubmenuFunction, err = menuItemStruct.InvokerNew("new_submenu")
+		menuItemNewSubmenuFunction, err = menuItemObject.InvokerNew("new_submenu")
 	})
 	return err
 }
@@ -13650,11 +13393,11 @@ var menuItemGetLinkFunction_Once sync.Once
 func menuItemGetLinkFunction_Set() error {
 	var err error
 	menuItemGetLinkFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemGetLinkFunction, err = menuItemStruct.InvokerNew("get_link")
+		menuItemGetLinkFunction, err = menuItemObject.InvokerNew("get_link")
 	})
 	return err
 }
@@ -13692,11 +13435,11 @@ var menuItemSetDetailedActionFunction_Once sync.Once
 func menuItemSetDetailedActionFunction_Set() error {
 	var err error
 	menuItemSetDetailedActionFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemSetDetailedActionFunction, err = menuItemStruct.InvokerNew("set_detailed_action")
+		menuItemSetDetailedActionFunction, err = menuItemObject.InvokerNew("set_detailed_action")
 	})
 	return err
 }
@@ -13723,11 +13466,11 @@ var menuItemSetLabelFunction_Once sync.Once
 func menuItemSetLabelFunction_Set() error {
 	var err error
 	menuItemSetLabelFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemSetLabelFunction, err = menuItemStruct.InvokerNew("set_label")
+		menuItemSetLabelFunction, err = menuItemObject.InvokerNew("set_label")
 	})
 	return err
 }
@@ -13752,11 +13495,11 @@ var menuItemSetLinkFunction_Once sync.Once
 func menuItemSetLinkFunction_Set() error {
 	var err error
 	menuItemSetLinkFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemSetLinkFunction, err = menuItemStruct.InvokerNew("set_link")
+		menuItemSetLinkFunction, err = menuItemObject.InvokerNew("set_link")
 	})
 	return err
 }
@@ -13782,11 +13525,11 @@ var menuItemSetSectionFunction_Once sync.Once
 func menuItemSetSectionFunction_Set() error {
 	var err error
 	menuItemSetSectionFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemSetSectionFunction, err = menuItemStruct.InvokerNew("set_section")
+		menuItemSetSectionFunction, err = menuItemObject.InvokerNew("set_section")
 	})
 	return err
 }
@@ -13811,11 +13554,11 @@ var menuItemSetSubmenuFunction_Once sync.Once
 func menuItemSetSubmenuFunction_Set() error {
 	var err error
 	menuItemSetSubmenuFunction_Once.Do(func() {
-		err = menuItemStruct_Set()
+		err = menuItemObject_Set()
 		if err != nil {
 			return
 		}
-		menuItemSetSubmenuFunction, err = menuItemStruct.InvokerNew("set_submenu")
+		menuItemSetSubmenuFunction, err = menuItemObject.InvokerNew("set_submenu")
 	})
 	return err
 }
@@ -13834,13 +13577,13 @@ func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	return
 }
 
-var menuLinkIterStruct *gi.Struct
-var menuLinkIterStruct_Once sync.Once
+var menuLinkIterObject *gi.Object
+var menuLinkIterObject_Once sync.Once
 
-func menuLinkIterStruct_Set() error {
+func menuLinkIterObject_Set() error {
 	var err error
-	menuLinkIterStruct_Once.Do(func() {
-		menuLinkIterStruct, err = gi.StructNew("Gio", "MenuLinkIter")
+	menuLinkIterObject_Once.Do(func() {
+		menuLinkIterObject, err = gi.ObjectNew("Gio", "MenuLinkIter")
 	})
 	return err
 }
@@ -13855,7 +13598,7 @@ type MenuLinkIter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
-	argValue := gi.FieldGet(menuLinkIterStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(menuLinkIterObject, recv.Native, "priv")
 	value := &MenuLinkIterPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -13865,7 +13608,7 @@ func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
 func (recv *MenuLinkIter) SetFieldPriv(value *MenuLinkIterPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(menuLinkIterStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(menuLinkIterObject, recv.Native, "priv", argValue)
 }
 
 var menuLinkIterGetNameFunction *gi.Function
@@ -13874,11 +13617,11 @@ var menuLinkIterGetNameFunction_Once sync.Once
 func menuLinkIterGetNameFunction_Set() error {
 	var err error
 	menuLinkIterGetNameFunction_Once.Do(func() {
-		err = menuLinkIterStruct_Set()
+		err = menuLinkIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuLinkIterGetNameFunction, err = menuLinkIterStruct.InvokerNew("get_name")
+		menuLinkIterGetNameFunction, err = menuLinkIterObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -13906,11 +13649,11 @@ var menuLinkIterGetNextFunction_Once sync.Once
 func menuLinkIterGetNextFunction_Set() error {
 	var err error
 	menuLinkIterGetNextFunction_Once.Do(func() {
-		err = menuLinkIterStruct_Set()
+		err = menuLinkIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuLinkIterGetNextFunction, err = menuLinkIterStruct.InvokerNew("get_next")
+		menuLinkIterGetNextFunction, err = menuLinkIterObject.InvokerNew("get_next")
 	})
 	return err
 }
@@ -13942,11 +13685,11 @@ var menuLinkIterGetValueFunction_Once sync.Once
 func menuLinkIterGetValueFunction_Set() error {
 	var err error
 	menuLinkIterGetValueFunction_Once.Do(func() {
-		err = menuLinkIterStruct_Set()
+		err = menuLinkIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuLinkIterGetValueFunction, err = menuLinkIterStruct.InvokerNew("get_value")
+		menuLinkIterGetValueFunction, err = menuLinkIterObject.InvokerNew("get_value")
 	})
 	return err
 }
@@ -13975,11 +13718,11 @@ var menuLinkIterNextFunction_Once sync.Once
 func menuLinkIterNextFunction_Set() error {
 	var err error
 	menuLinkIterNextFunction_Once.Do(func() {
-		err = menuLinkIterStruct_Set()
+		err = menuLinkIterObject_Set()
 		if err != nil {
 			return
 		}
-		menuLinkIterNextFunction, err = menuLinkIterStruct.InvokerNew("next")
+		menuLinkIterNextFunction, err = menuLinkIterObject.InvokerNew("next")
 	})
 	return err
 }
@@ -14001,29 +13744,13 @@ func (recv *MenuLinkIter) Next() bool {
 	return retGo
 }
 
-// MenuLinkIterStruct creates an uninitialised MenuLinkIter.
-func MenuLinkIterStruct() *MenuLinkIter {
-	err := menuLinkIterStruct_Set()
-	if err != nil {
-		return nil
-	}
+var menuModelObject *gi.Object
+var menuModelObject_Once sync.Once
 
-	structGo := &MenuLinkIter{}
-	structGo.Native = menuLinkIterStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeMenuLinkIter)
-	return structGo
-}
-func finalizeMenuLinkIter(obj *MenuLinkIter) {
-	menuLinkIterStruct.Free(obj.Native)
-}
-
-var menuModelStruct *gi.Struct
-var menuModelStruct_Once sync.Once
-
-func menuModelStruct_Set() error {
+func menuModelObject_Set() error {
 	var err error
-	menuModelStruct_Once.Do(func() {
-		menuModelStruct, err = gi.StructNew("Gio", "MenuModel")
+	menuModelObject_Once.Do(func() {
+		menuModelObject, err = gi.ObjectNew("Gio", "MenuModel")
 	})
 	return err
 }
@@ -14038,7 +13765,7 @@ type MenuModel struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
-	argValue := gi.FieldGet(menuModelStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(menuModelObject, recv.Native, "priv")
 	value := &MenuModelPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -14048,7 +13775,7 @@ func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
 func (recv *MenuModel) SetFieldPriv(value *MenuModelPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(menuModelStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(menuModelObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_menu_model_get_item_attribute' : parameter '...' of type 'nil' not supported
@@ -14061,11 +13788,11 @@ var menuModelGetItemLinkFunction_Once sync.Once
 func menuModelGetItemLinkFunction_Set() error {
 	var err error
 	menuModelGetItemLinkFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelGetItemLinkFunction, err = menuModelStruct.InvokerNew("get_item_link")
+		menuModelGetItemLinkFunction, err = menuModelObject.InvokerNew("get_item_link")
 	})
 	return err
 }
@@ -14096,11 +13823,11 @@ var menuModelGetNItemsFunction_Once sync.Once
 func menuModelGetNItemsFunction_Set() error {
 	var err error
 	menuModelGetNItemsFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelGetNItemsFunction, err = menuModelStruct.InvokerNew("get_n_items")
+		menuModelGetNItemsFunction, err = menuModelObject.InvokerNew("get_n_items")
 	})
 	return err
 }
@@ -14128,11 +13855,11 @@ var menuModelIsMutableFunction_Once sync.Once
 func menuModelIsMutableFunction_Set() error {
 	var err error
 	menuModelIsMutableFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelIsMutableFunction, err = menuModelStruct.InvokerNew("is_mutable")
+		menuModelIsMutableFunction, err = menuModelObject.InvokerNew("is_mutable")
 	})
 	return err
 }
@@ -14160,11 +13887,11 @@ var menuModelItemsChangedFunction_Once sync.Once
 func menuModelItemsChangedFunction_Set() error {
 	var err error
 	menuModelItemsChangedFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelItemsChangedFunction, err = menuModelStruct.InvokerNew("items_changed")
+		menuModelItemsChangedFunction, err = menuModelObject.InvokerNew("items_changed")
 	})
 	return err
 }
@@ -14191,11 +13918,11 @@ var menuModelIterateItemAttributesFunction_Once sync.Once
 func menuModelIterateItemAttributesFunction_Set() error {
 	var err error
 	menuModelIterateItemAttributesFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelIterateItemAttributesFunction, err = menuModelStruct.InvokerNew("iterate_item_attributes")
+		menuModelIterateItemAttributesFunction, err = menuModelObject.InvokerNew("iterate_item_attributes")
 	})
 	return err
 }
@@ -14225,11 +13952,11 @@ var menuModelIterateItemLinksFunction_Once sync.Once
 func menuModelIterateItemLinksFunction_Set() error {
 	var err error
 	menuModelIterateItemLinksFunction_Once.Do(func() {
-		err = menuModelStruct_Set()
+		err = menuModelObject_Set()
 		if err != nil {
 			return
 		}
-		menuModelIterateItemLinksFunction, err = menuModelStruct.InvokerNew("iterate_item_links")
+		menuModelIterateItemLinksFunction, err = menuModelObject.InvokerNew("iterate_item_links")
 	})
 	return err
 }
@@ -14253,29 +13980,13 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	return retGo
 }
 
-// MenuModelStruct creates an uninitialised MenuModel.
-func MenuModelStruct() *MenuModel {
-	err := menuModelStruct_Set()
-	if err != nil {
-		return nil
-	}
+var mountOperationObject *gi.Object
+var mountOperationObject_Once sync.Once
 
-	structGo := &MenuModel{}
-	structGo.Native = menuModelStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeMenuModel)
-	return structGo
-}
-func finalizeMenuModel(obj *MenuModel) {
-	menuModelStruct.Free(obj.Native)
-}
-
-var mountOperationStruct *gi.Struct
-var mountOperationStruct_Once sync.Once
-
-func mountOperationStruct_Set() error {
+func mountOperationObject_Set() error {
 	var err error
-	mountOperationStruct_Once.Do(func() {
-		mountOperationStruct, err = gi.StructNew("Gio", "MountOperation")
+	mountOperationObject_Once.Do(func() {
+		mountOperationObject, err = gi.ObjectNew("Gio", "MountOperation")
 	})
 	return err
 }
@@ -14290,7 +14001,7 @@ type MountOperation struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
-	argValue := gi.FieldGet(mountOperationStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(mountOperationObject, recv.Native, "priv")
 	value := &MountOperationPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -14300,7 +14011,7 @@ func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
 func (recv *MountOperation) SetFieldPriv(value *MountOperationPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(mountOperationStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(mountOperationObject, recv.Native, "priv", argValue)
 }
 
 var mountOperationNewFunction *gi.Function
@@ -14309,11 +14020,11 @@ var mountOperationNewFunction_Once sync.Once
 func mountOperationNewFunction_Set() error {
 	var err error
 	mountOperationNewFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationNewFunction, err = mountOperationStruct.InvokerNew("new")
+		mountOperationNewFunction, err = mountOperationObject.InvokerNew("new")
 	})
 	return err
 }
@@ -14340,11 +14051,11 @@ var mountOperationGetAnonymousFunction_Once sync.Once
 func mountOperationGetAnonymousFunction_Set() error {
 	var err error
 	mountOperationGetAnonymousFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetAnonymousFunction, err = mountOperationStruct.InvokerNew("get_anonymous")
+		mountOperationGetAnonymousFunction, err = mountOperationObject.InvokerNew("get_anonymous")
 	})
 	return err
 }
@@ -14372,11 +14083,11 @@ var mountOperationGetChoiceFunction_Once sync.Once
 func mountOperationGetChoiceFunction_Set() error {
 	var err error
 	mountOperationGetChoiceFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetChoiceFunction, err = mountOperationStruct.InvokerNew("get_choice")
+		mountOperationGetChoiceFunction, err = mountOperationObject.InvokerNew("get_choice")
 	})
 	return err
 }
@@ -14404,11 +14115,11 @@ var mountOperationGetDomainFunction_Once sync.Once
 func mountOperationGetDomainFunction_Set() error {
 	var err error
 	mountOperationGetDomainFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetDomainFunction, err = mountOperationStruct.InvokerNew("get_domain")
+		mountOperationGetDomainFunction, err = mountOperationObject.InvokerNew("get_domain")
 	})
 	return err
 }
@@ -14436,11 +14147,11 @@ var mountOperationGetIsTcryptHiddenVolumeFunction_Once sync.Once
 func mountOperationGetIsTcryptHiddenVolumeFunction_Set() error {
 	var err error
 	mountOperationGetIsTcryptHiddenVolumeFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetIsTcryptHiddenVolumeFunction, err = mountOperationStruct.InvokerNew("get_is_tcrypt_hidden_volume")
+		mountOperationGetIsTcryptHiddenVolumeFunction, err = mountOperationObject.InvokerNew("get_is_tcrypt_hidden_volume")
 	})
 	return err
 }
@@ -14468,11 +14179,11 @@ var mountOperationGetIsTcryptSystemVolumeFunction_Once sync.Once
 func mountOperationGetIsTcryptSystemVolumeFunction_Set() error {
 	var err error
 	mountOperationGetIsTcryptSystemVolumeFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetIsTcryptSystemVolumeFunction, err = mountOperationStruct.InvokerNew("get_is_tcrypt_system_volume")
+		mountOperationGetIsTcryptSystemVolumeFunction, err = mountOperationObject.InvokerNew("get_is_tcrypt_system_volume")
 	})
 	return err
 }
@@ -14500,11 +14211,11 @@ var mountOperationGetPasswordFunction_Once sync.Once
 func mountOperationGetPasswordFunction_Set() error {
 	var err error
 	mountOperationGetPasswordFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetPasswordFunction, err = mountOperationStruct.InvokerNew("get_password")
+		mountOperationGetPasswordFunction, err = mountOperationObject.InvokerNew("get_password")
 	})
 	return err
 }
@@ -14532,11 +14243,11 @@ var mountOperationGetPasswordSaveFunction_Once sync.Once
 func mountOperationGetPasswordSaveFunction_Set() error {
 	var err error
 	mountOperationGetPasswordSaveFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetPasswordSaveFunction, err = mountOperationStruct.InvokerNew("get_password_save")
+		mountOperationGetPasswordSaveFunction, err = mountOperationObject.InvokerNew("get_password_save")
 	})
 	return err
 }
@@ -14564,11 +14275,11 @@ var mountOperationGetPimFunction_Once sync.Once
 func mountOperationGetPimFunction_Set() error {
 	var err error
 	mountOperationGetPimFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetPimFunction, err = mountOperationStruct.InvokerNew("get_pim")
+		mountOperationGetPimFunction, err = mountOperationObject.InvokerNew("get_pim")
 	})
 	return err
 }
@@ -14596,11 +14307,11 @@ var mountOperationGetUsernameFunction_Once sync.Once
 func mountOperationGetUsernameFunction_Set() error {
 	var err error
 	mountOperationGetUsernameFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationGetUsernameFunction, err = mountOperationStruct.InvokerNew("get_username")
+		mountOperationGetUsernameFunction, err = mountOperationObject.InvokerNew("get_username")
 	})
 	return err
 }
@@ -14628,11 +14339,11 @@ var mountOperationReplyFunction_Once sync.Once
 func mountOperationReplyFunction_Set() error {
 	var err error
 	mountOperationReplyFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationReplyFunction, err = mountOperationStruct.InvokerNew("reply")
+		mountOperationReplyFunction, err = mountOperationObject.InvokerNew("reply")
 	})
 	return err
 }
@@ -14657,11 +14368,11 @@ var mountOperationSetAnonymousFunction_Once sync.Once
 func mountOperationSetAnonymousFunction_Set() error {
 	var err error
 	mountOperationSetAnonymousFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetAnonymousFunction, err = mountOperationStruct.InvokerNew("set_anonymous")
+		mountOperationSetAnonymousFunction, err = mountOperationObject.InvokerNew("set_anonymous")
 	})
 	return err
 }
@@ -14686,11 +14397,11 @@ var mountOperationSetChoiceFunction_Once sync.Once
 func mountOperationSetChoiceFunction_Set() error {
 	var err error
 	mountOperationSetChoiceFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetChoiceFunction, err = mountOperationStruct.InvokerNew("set_choice")
+		mountOperationSetChoiceFunction, err = mountOperationObject.InvokerNew("set_choice")
 	})
 	return err
 }
@@ -14715,11 +14426,11 @@ var mountOperationSetDomainFunction_Once sync.Once
 func mountOperationSetDomainFunction_Set() error {
 	var err error
 	mountOperationSetDomainFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetDomainFunction, err = mountOperationStruct.InvokerNew("set_domain")
+		mountOperationSetDomainFunction, err = mountOperationObject.InvokerNew("set_domain")
 	})
 	return err
 }
@@ -14744,11 +14455,11 @@ var mountOperationSetIsTcryptHiddenVolumeFunction_Once sync.Once
 func mountOperationSetIsTcryptHiddenVolumeFunction_Set() error {
 	var err error
 	mountOperationSetIsTcryptHiddenVolumeFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetIsTcryptHiddenVolumeFunction, err = mountOperationStruct.InvokerNew("set_is_tcrypt_hidden_volume")
+		mountOperationSetIsTcryptHiddenVolumeFunction, err = mountOperationObject.InvokerNew("set_is_tcrypt_hidden_volume")
 	})
 	return err
 }
@@ -14773,11 +14484,11 @@ var mountOperationSetIsTcryptSystemVolumeFunction_Once sync.Once
 func mountOperationSetIsTcryptSystemVolumeFunction_Set() error {
 	var err error
 	mountOperationSetIsTcryptSystemVolumeFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetIsTcryptSystemVolumeFunction, err = mountOperationStruct.InvokerNew("set_is_tcrypt_system_volume")
+		mountOperationSetIsTcryptSystemVolumeFunction, err = mountOperationObject.InvokerNew("set_is_tcrypt_system_volume")
 	})
 	return err
 }
@@ -14802,11 +14513,11 @@ var mountOperationSetPasswordFunction_Once sync.Once
 func mountOperationSetPasswordFunction_Set() error {
 	var err error
 	mountOperationSetPasswordFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetPasswordFunction, err = mountOperationStruct.InvokerNew("set_password")
+		mountOperationSetPasswordFunction, err = mountOperationObject.InvokerNew("set_password")
 	})
 	return err
 }
@@ -14831,11 +14542,11 @@ var mountOperationSetPasswordSaveFunction_Once sync.Once
 func mountOperationSetPasswordSaveFunction_Set() error {
 	var err error
 	mountOperationSetPasswordSaveFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetPasswordSaveFunction, err = mountOperationStruct.InvokerNew("set_password_save")
+		mountOperationSetPasswordSaveFunction, err = mountOperationObject.InvokerNew("set_password_save")
 	})
 	return err
 }
@@ -14860,11 +14571,11 @@ var mountOperationSetPimFunction_Once sync.Once
 func mountOperationSetPimFunction_Set() error {
 	var err error
 	mountOperationSetPimFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetPimFunction, err = mountOperationStruct.InvokerNew("set_pim")
+		mountOperationSetPimFunction, err = mountOperationObject.InvokerNew("set_pim")
 	})
 	return err
 }
@@ -14889,11 +14600,11 @@ var mountOperationSetUsernameFunction_Once sync.Once
 func mountOperationSetUsernameFunction_Set() error {
 	var err error
 	mountOperationSetUsernameFunction_Once.Do(func() {
-		err = mountOperationStruct_Set()
+		err = mountOperationObject_Set()
 		if err != nil {
 			return
 		}
-		mountOperationSetUsernameFunction, err = mountOperationStruct.InvokerNew("set_username")
+		mountOperationSetUsernameFunction, err = mountOperationObject.InvokerNew("set_username")
 	})
 	return err
 }
@@ -14912,13 +14623,13 @@ func (recv *MountOperation) SetUsername(username string) {
 	return
 }
 
-var nativeSocketAddressStruct *gi.Struct
-var nativeSocketAddressStruct_Once sync.Once
+var nativeSocketAddressObject *gi.Object
+var nativeSocketAddressObject_Once sync.Once
 
-func nativeSocketAddressStruct_Set() error {
+func nativeSocketAddressObject_Set() error {
 	var err error
-	nativeSocketAddressStruct_Once.Do(func() {
-		nativeSocketAddressStruct, err = gi.StructNew("Gio", "NativeSocketAddress")
+	nativeSocketAddressObject_Once.Do(func() {
+		nativeSocketAddressObject, err = gi.ObjectNew("Gio", "NativeSocketAddress")
 	})
 	return err
 }
@@ -14929,7 +14640,7 @@ type NativeSocketAddress struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.FieldGet(nativeSocketAddressStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(nativeSocketAddressObject, recv.Native, "parent_instance")
 	value := &SocketAddress{}
 	value.Native = argValue.Pointer()
 	return value
@@ -14939,18 +14650,18 @@ func (recv *NativeSocketAddress) FieldParentInstance() *SocketAddress {
 func (recv *NativeSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(nativeSocketAddressStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(nativeSocketAddressObject, recv.Native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_native_socket_address_new' : parameter 'native' of type 'gpointer' not supported
 
-var nativeVolumeMonitorStruct *gi.Struct
-var nativeVolumeMonitorStruct_Once sync.Once
+var nativeVolumeMonitorObject *gi.Object
+var nativeVolumeMonitorObject_Once sync.Once
 
-func nativeVolumeMonitorStruct_Set() error {
+func nativeVolumeMonitorObject_Set() error {
 	var err error
-	nativeVolumeMonitorStruct_Once.Do(func() {
-		nativeVolumeMonitorStruct, err = gi.StructNew("Gio", "NativeVolumeMonitor")
+	nativeVolumeMonitorObject_Once.Do(func() {
+		nativeVolumeMonitorObject, err = gi.ObjectNew("Gio", "NativeVolumeMonitor")
 	})
 	return err
 }
@@ -14961,7 +14672,7 @@ type NativeVolumeMonitor struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeVolumeMonitor) FieldParentInstance() *VolumeMonitor {
-	argValue := gi.FieldGet(nativeVolumeMonitorStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(nativeVolumeMonitorObject, recv.Native, "parent_instance")
 	value := &VolumeMonitor{}
 	value.Native = argValue.Pointer()
 	return value
@@ -14971,32 +14682,16 @@ func (recv *NativeVolumeMonitor) FieldParentInstance() *VolumeMonitor {
 func (recv *NativeVolumeMonitor) SetFieldParentInstance(value *VolumeMonitor) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(nativeVolumeMonitorStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(nativeVolumeMonitorObject, recv.Native, "parent_instance", argValue)
 }
 
-// NativeVolumeMonitorStruct creates an uninitialised NativeVolumeMonitor.
-func NativeVolumeMonitorStruct() *NativeVolumeMonitor {
-	err := nativeVolumeMonitorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var networkAddressObject *gi.Object
+var networkAddressObject_Once sync.Once
 
-	structGo := &NativeVolumeMonitor{}
-	structGo.Native = nativeVolumeMonitorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeNativeVolumeMonitor)
-	return structGo
-}
-func finalizeNativeVolumeMonitor(obj *NativeVolumeMonitor) {
-	nativeVolumeMonitorStruct.Free(obj.Native)
-}
-
-var networkAddressStruct *gi.Struct
-var networkAddressStruct_Once sync.Once
-
-func networkAddressStruct_Set() error {
+func networkAddressObject_Set() error {
 	var err error
-	networkAddressStruct_Once.Do(func() {
-		networkAddressStruct, err = gi.StructNew("Gio", "NetworkAddress")
+	networkAddressObject_Once.Do(func() {
+		networkAddressObject, err = gi.ObjectNew("Gio", "NetworkAddress")
 	})
 	return err
 }
@@ -15015,11 +14710,11 @@ var networkAddressNewFunction_Once sync.Once
 func networkAddressNewFunction_Set() error {
 	var err error
 	networkAddressNewFunction_Once.Do(func() {
-		err = networkAddressStruct_Set()
+		err = networkAddressObject_Set()
 		if err != nil {
 			return
 		}
-		networkAddressNewFunction, err = networkAddressStruct.InvokerNew("new")
+		networkAddressNewFunction, err = networkAddressObject.InvokerNew("new")
 	})
 	return err
 }
@@ -15049,11 +14744,11 @@ var networkAddressNewLoopbackFunction_Once sync.Once
 func networkAddressNewLoopbackFunction_Set() error {
 	var err error
 	networkAddressNewLoopbackFunction_Once.Do(func() {
-		err = networkAddressStruct_Set()
+		err = networkAddressObject_Set()
 		if err != nil {
 			return
 		}
-		networkAddressNewLoopbackFunction, err = networkAddressStruct.InvokerNew("new_loopback")
+		networkAddressNewLoopbackFunction, err = networkAddressObject.InvokerNew("new_loopback")
 	})
 	return err
 }
@@ -15082,11 +14777,11 @@ var networkAddressGetHostnameFunction_Once sync.Once
 func networkAddressGetHostnameFunction_Set() error {
 	var err error
 	networkAddressGetHostnameFunction_Once.Do(func() {
-		err = networkAddressStruct_Set()
+		err = networkAddressObject_Set()
 		if err != nil {
 			return
 		}
-		networkAddressGetHostnameFunction, err = networkAddressStruct.InvokerNew("get_hostname")
+		networkAddressGetHostnameFunction, err = networkAddressObject.InvokerNew("get_hostname")
 	})
 	return err
 }
@@ -15114,11 +14809,11 @@ var networkAddressGetPortFunction_Once sync.Once
 func networkAddressGetPortFunction_Set() error {
 	var err error
 	networkAddressGetPortFunction_Once.Do(func() {
-		err = networkAddressStruct_Set()
+		err = networkAddressObject_Set()
 		if err != nil {
 			return
 		}
-		networkAddressGetPortFunction, err = networkAddressStruct.InvokerNew("get_port")
+		networkAddressGetPortFunction, err = networkAddressObject.InvokerNew("get_port")
 	})
 	return err
 }
@@ -15146,11 +14841,11 @@ var networkAddressGetSchemeFunction_Once sync.Once
 func networkAddressGetSchemeFunction_Set() error {
 	var err error
 	networkAddressGetSchemeFunction_Once.Do(func() {
-		err = networkAddressStruct_Set()
+		err = networkAddressObject_Set()
 		if err != nil {
 			return
 		}
-		networkAddressGetSchemeFunction, err = networkAddressStruct.InvokerNew("get_scheme")
+		networkAddressGetSchemeFunction, err = networkAddressObject.InvokerNew("get_scheme")
 	})
 	return err
 }
@@ -15172,13 +14867,13 @@ func (recv *NetworkAddress) GetScheme() string {
 	return retGo
 }
 
-var networkServiceStruct *gi.Struct
-var networkServiceStruct_Once sync.Once
+var networkServiceObject *gi.Object
+var networkServiceObject_Once sync.Once
 
-func networkServiceStruct_Set() error {
+func networkServiceObject_Set() error {
 	var err error
-	networkServiceStruct_Once.Do(func() {
-		networkServiceStruct, err = gi.StructNew("Gio", "NetworkService")
+	networkServiceObject_Once.Do(func() {
+		networkServiceObject, err = gi.ObjectNew("Gio", "NetworkService")
 	})
 	return err
 }
@@ -15197,11 +14892,11 @@ var networkServiceNewFunction_Once sync.Once
 func networkServiceNewFunction_Set() error {
 	var err error
 	networkServiceNewFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceNewFunction, err = networkServiceStruct.InvokerNew("new")
+		networkServiceNewFunction, err = networkServiceObject.InvokerNew("new")
 	})
 	return err
 }
@@ -15232,11 +14927,11 @@ var networkServiceGetDomainFunction_Once sync.Once
 func networkServiceGetDomainFunction_Set() error {
 	var err error
 	networkServiceGetDomainFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceGetDomainFunction, err = networkServiceStruct.InvokerNew("get_domain")
+		networkServiceGetDomainFunction, err = networkServiceObject.InvokerNew("get_domain")
 	})
 	return err
 }
@@ -15264,11 +14959,11 @@ var networkServiceGetProtocolFunction_Once sync.Once
 func networkServiceGetProtocolFunction_Set() error {
 	var err error
 	networkServiceGetProtocolFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceGetProtocolFunction, err = networkServiceStruct.InvokerNew("get_protocol")
+		networkServiceGetProtocolFunction, err = networkServiceObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -15296,11 +14991,11 @@ var networkServiceGetSchemeFunction_Once sync.Once
 func networkServiceGetSchemeFunction_Set() error {
 	var err error
 	networkServiceGetSchemeFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceGetSchemeFunction, err = networkServiceStruct.InvokerNew("get_scheme")
+		networkServiceGetSchemeFunction, err = networkServiceObject.InvokerNew("get_scheme")
 	})
 	return err
 }
@@ -15328,11 +15023,11 @@ var networkServiceGetServiceFunction_Once sync.Once
 func networkServiceGetServiceFunction_Set() error {
 	var err error
 	networkServiceGetServiceFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceGetServiceFunction, err = networkServiceStruct.InvokerNew("get_service")
+		networkServiceGetServiceFunction, err = networkServiceObject.InvokerNew("get_service")
 	})
 	return err
 }
@@ -15360,11 +15055,11 @@ var networkServiceSetSchemeFunction_Once sync.Once
 func networkServiceSetSchemeFunction_Set() error {
 	var err error
 	networkServiceSetSchemeFunction_Once.Do(func() {
-		err = networkServiceStruct_Set()
+		err = networkServiceObject_Set()
 		if err != nil {
 			return
 		}
-		networkServiceSetSchemeFunction, err = networkServiceStruct.InvokerNew("set_scheme")
+		networkServiceSetSchemeFunction, err = networkServiceObject.InvokerNew("set_scheme")
 	})
 	return err
 }
@@ -15383,13 +15078,13 @@ func (recv *NetworkService) SetScheme(scheme string) {
 	return
 }
 
-var notificationStruct *gi.Struct
-var notificationStruct_Once sync.Once
+var notificationObject *gi.Object
+var notificationObject_Once sync.Once
 
-func notificationStruct_Set() error {
+func notificationObject_Set() error {
 	var err error
-	notificationStruct_Once.Do(func() {
-		notificationStruct, err = gi.StructNew("Gio", "Notification")
+	notificationObject_Once.Do(func() {
+		notificationObject, err = gi.ObjectNew("Gio", "Notification")
 	})
 	return err
 }
@@ -15404,11 +15099,11 @@ var notificationNewFunction_Once sync.Once
 func notificationNewFunction_Set() error {
 	var err error
 	notificationNewFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationNewFunction, err = notificationStruct.InvokerNew("new")
+		notificationNewFunction, err = notificationObject.InvokerNew("new")
 	})
 	return err
 }
@@ -15437,11 +15132,11 @@ var notificationAddButtonFunction_Once sync.Once
 func notificationAddButtonFunction_Set() error {
 	var err error
 	notificationAddButtonFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationAddButtonFunction, err = notificationStruct.InvokerNew("add_button")
+		notificationAddButtonFunction, err = notificationObject.InvokerNew("add_button")
 	})
 	return err
 }
@@ -15471,11 +15166,11 @@ var notificationSetBodyFunction_Once sync.Once
 func notificationSetBodyFunction_Set() error {
 	var err error
 	notificationSetBodyFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationSetBodyFunction, err = notificationStruct.InvokerNew("set_body")
+		notificationSetBodyFunction, err = notificationObject.InvokerNew("set_body")
 	})
 	return err
 }
@@ -15500,11 +15195,11 @@ var notificationSetDefaultActionFunction_Once sync.Once
 func notificationSetDefaultActionFunction_Set() error {
 	var err error
 	notificationSetDefaultActionFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationSetDefaultActionFunction, err = notificationStruct.InvokerNew("set_default_action")
+		notificationSetDefaultActionFunction, err = notificationObject.InvokerNew("set_default_action")
 	})
 	return err
 }
@@ -15535,11 +15230,11 @@ var notificationSetPriorityFunction_Once sync.Once
 func notificationSetPriorityFunction_Set() error {
 	var err error
 	notificationSetPriorityFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationSetPriorityFunction, err = notificationStruct.InvokerNew("set_priority")
+		notificationSetPriorityFunction, err = notificationObject.InvokerNew("set_priority")
 	})
 	return err
 }
@@ -15564,11 +15259,11 @@ var notificationSetTitleFunction_Once sync.Once
 func notificationSetTitleFunction_Set() error {
 	var err error
 	notificationSetTitleFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationSetTitleFunction, err = notificationStruct.InvokerNew("set_title")
+		notificationSetTitleFunction, err = notificationObject.InvokerNew("set_title")
 	})
 	return err
 }
@@ -15593,11 +15288,11 @@ var notificationSetUrgentFunction_Once sync.Once
 func notificationSetUrgentFunction_Set() error {
 	var err error
 	notificationSetUrgentFunction_Once.Do(func() {
-		err = notificationStruct_Set()
+		err = notificationObject_Set()
 		if err != nil {
 			return
 		}
-		notificationSetUrgentFunction, err = notificationStruct.InvokerNew("set_urgent")
+		notificationSetUrgentFunction, err = notificationObject.InvokerNew("set_urgent")
 	})
 	return err
 }
@@ -15616,13 +15311,13 @@ func (recv *Notification) SetUrgent(urgent bool) {
 	return
 }
 
-var outputStreamStruct *gi.Struct
-var outputStreamStruct_Once sync.Once
+var outputStreamObject *gi.Object
+var outputStreamObject_Once sync.Once
 
-func outputStreamStruct_Set() error {
+func outputStreamObject_Set() error {
 	var err error
-	outputStreamStruct_Once.Do(func() {
-		outputStreamStruct, err = gi.StructNew("Gio", "OutputStream")
+	outputStreamObject_Once.Do(func() {
+		outputStreamObject, err = gi.ObjectNew("Gio", "OutputStream")
 	})
 	return err
 }
@@ -15641,11 +15336,11 @@ var outputStreamClearPendingFunction_Once sync.Once
 func outputStreamClearPendingFunction_Set() error {
 	var err error
 	outputStreamClearPendingFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamClearPendingFunction, err = outputStreamStruct.InvokerNew("clear_pending")
+		outputStreamClearPendingFunction, err = outputStreamObject.InvokerNew("clear_pending")
 	})
 	return err
 }
@@ -15669,11 +15364,11 @@ var outputStreamCloseFunction_Once sync.Once
 func outputStreamCloseFunction_Set() error {
 	var err error
 	outputStreamCloseFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamCloseFunction, err = outputStreamStruct.InvokerNew("close")
+		outputStreamCloseFunction, err = outputStreamObject.InvokerNew("close")
 	})
 	return err
 }
@@ -15706,11 +15401,11 @@ var outputStreamFlushFunction_Once sync.Once
 func outputStreamFlushFunction_Set() error {
 	var err error
 	outputStreamFlushFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamFlushFunction, err = outputStreamStruct.InvokerNew("flush")
+		outputStreamFlushFunction, err = outputStreamObject.InvokerNew("flush")
 	})
 	return err
 }
@@ -15743,11 +15438,11 @@ var outputStreamHasPendingFunction_Once sync.Once
 func outputStreamHasPendingFunction_Set() error {
 	var err error
 	outputStreamHasPendingFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamHasPendingFunction, err = outputStreamStruct.InvokerNew("has_pending")
+		outputStreamHasPendingFunction, err = outputStreamObject.InvokerNew("has_pending")
 	})
 	return err
 }
@@ -15775,11 +15470,11 @@ var outputStreamIsClosedFunction_Once sync.Once
 func outputStreamIsClosedFunction_Set() error {
 	var err error
 	outputStreamIsClosedFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamIsClosedFunction, err = outputStreamStruct.InvokerNew("is_closed")
+		outputStreamIsClosedFunction, err = outputStreamObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -15807,11 +15502,11 @@ var outputStreamIsClosingFunction_Once sync.Once
 func outputStreamIsClosingFunction_Set() error {
 	var err error
 	outputStreamIsClosingFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamIsClosingFunction, err = outputStreamStruct.InvokerNew("is_closing")
+		outputStreamIsClosingFunction, err = outputStreamObject.InvokerNew("is_closing")
 	})
 	return err
 }
@@ -15841,11 +15536,11 @@ var outputStreamSetPendingFunction_Once sync.Once
 func outputStreamSetPendingFunction_Set() error {
 	var err error
 	outputStreamSetPendingFunction_Once.Do(func() {
-		err = outputStreamStruct_Set()
+		err = outputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		outputStreamSetPendingFunction, err = outputStreamStruct.InvokerNew("set_pending")
+		outputStreamSetPendingFunction, err = outputStreamObject.InvokerNew("set_pending")
 	})
 	return err
 }
@@ -15905,29 +15600,13 @@ func (recv *OutputStream) SetPending() bool {
 
 // UNSUPPORTED : C value 'g_output_stream_writev_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// OutputStreamStruct creates an uninitialised OutputStream.
-func OutputStreamStruct() *OutputStream {
-	err := outputStreamStruct_Set()
-	if err != nil {
-		return nil
-	}
+var permissionObject *gi.Object
+var permissionObject_Once sync.Once
 
-	structGo := &OutputStream{}
-	structGo.Native = outputStreamStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeOutputStream)
-	return structGo
-}
-func finalizeOutputStream(obj *OutputStream) {
-	outputStreamStruct.Free(obj.Native)
-}
-
-var permissionStruct *gi.Struct
-var permissionStruct_Once sync.Once
-
-func permissionStruct_Set() error {
+func permissionObject_Set() error {
 	var err error
-	permissionStruct_Once.Do(func() {
-		permissionStruct, err = gi.StructNew("Gio", "Permission")
+	permissionObject_Once.Do(func() {
+		permissionObject, err = gi.ObjectNew("Gio", "Permission")
 	})
 	return err
 }
@@ -15946,11 +15625,11 @@ var permissionAcquireFunction_Once sync.Once
 func permissionAcquireFunction_Set() error {
 	var err error
 	permissionAcquireFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionAcquireFunction, err = permissionStruct.InvokerNew("acquire")
+		permissionAcquireFunction, err = permissionObject.InvokerNew("acquire")
 	})
 	return err
 }
@@ -15983,11 +15662,11 @@ var permissionGetAllowedFunction_Once sync.Once
 func permissionGetAllowedFunction_Set() error {
 	var err error
 	permissionGetAllowedFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionGetAllowedFunction, err = permissionStruct.InvokerNew("get_allowed")
+		permissionGetAllowedFunction, err = permissionObject.InvokerNew("get_allowed")
 	})
 	return err
 }
@@ -16015,11 +15694,11 @@ var permissionGetCanAcquireFunction_Once sync.Once
 func permissionGetCanAcquireFunction_Set() error {
 	var err error
 	permissionGetCanAcquireFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionGetCanAcquireFunction, err = permissionStruct.InvokerNew("get_can_acquire")
+		permissionGetCanAcquireFunction, err = permissionObject.InvokerNew("get_can_acquire")
 	})
 	return err
 }
@@ -16047,11 +15726,11 @@ var permissionGetCanReleaseFunction_Once sync.Once
 func permissionGetCanReleaseFunction_Set() error {
 	var err error
 	permissionGetCanReleaseFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionGetCanReleaseFunction, err = permissionStruct.InvokerNew("get_can_release")
+		permissionGetCanReleaseFunction, err = permissionObject.InvokerNew("get_can_release")
 	})
 	return err
 }
@@ -16079,11 +15758,11 @@ var permissionImplUpdateFunction_Once sync.Once
 func permissionImplUpdateFunction_Set() error {
 	var err error
 	permissionImplUpdateFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionImplUpdateFunction, err = permissionStruct.InvokerNew("impl_update")
+		permissionImplUpdateFunction, err = permissionObject.InvokerNew("impl_update")
 	})
 	return err
 }
@@ -16110,11 +15789,11 @@ var permissionReleaseFunction_Once sync.Once
 func permissionReleaseFunction_Set() error {
 	var err error
 	permissionReleaseFunction_Once.Do(func() {
-		err = permissionStruct_Set()
+		err = permissionObject_Set()
 		if err != nil {
 			return
 		}
-		permissionReleaseFunction, err = permissionStruct.InvokerNew("release")
+		permissionReleaseFunction, err = permissionObject.InvokerNew("release")
 	})
 	return err
 }
@@ -16141,29 +15820,13 @@ func (recv *Permission) Release(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_permission_release_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// PermissionStruct creates an uninitialised Permission.
-func PermissionStruct() *Permission {
-	err := permissionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var propertyActionObject *gi.Object
+var propertyActionObject_Once sync.Once
 
-	structGo := &Permission{}
-	structGo.Native = permissionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizePermission)
-	return structGo
-}
-func finalizePermission(obj *Permission) {
-	permissionStruct.Free(obj.Native)
-}
-
-var propertyActionStruct *gi.Struct
-var propertyActionStruct_Once sync.Once
-
-func propertyActionStruct_Set() error {
+func propertyActionObject_Set() error {
 	var err error
-	propertyActionStruct_Once.Do(func() {
-		propertyActionStruct, err = gi.StructNew("Gio", "PropertyAction")
+	propertyActionObject_Once.Do(func() {
+		propertyActionObject, err = gi.ObjectNew("Gio", "PropertyAction")
 	})
 	return err
 }
@@ -16174,13 +15837,13 @@ type PropertyAction struct {
 
 // UNSUPPORTED : C value 'g_property_action_new' : parameter 'object' of type 'GObject.Object' not supported
 
-var proxyAddressStruct *gi.Struct
-var proxyAddressStruct_Once sync.Once
+var proxyAddressObject *gi.Object
+var proxyAddressObject_Once sync.Once
 
-func proxyAddressStruct_Set() error {
+func proxyAddressObject_Set() error {
 	var err error
-	proxyAddressStruct_Once.Do(func() {
-		proxyAddressStruct, err = gi.StructNew("Gio", "ProxyAddress")
+	proxyAddressObject_Once.Do(func() {
+		proxyAddressObject, err = gi.ObjectNew("Gio", "ProxyAddress")
 	})
 	return err
 }
@@ -16191,7 +15854,7 @@ type ProxyAddress struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ProxyAddress) FieldParentInstance() *InetSocketAddress {
-	argValue := gi.FieldGet(proxyAddressStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(proxyAddressObject, recv.Native, "parent_instance")
 	value := &InetSocketAddress{}
 	value.Native = argValue.Pointer()
 	return value
@@ -16201,7 +15864,7 @@ func (recv *ProxyAddress) FieldParentInstance() *InetSocketAddress {
 func (recv *ProxyAddress) SetFieldParentInstance(value *InetSocketAddress) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(proxyAddressStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(proxyAddressObject, recv.Native, "parent_instance", argValue)
 }
 
 var proxyAddressNewFunction *gi.Function
@@ -16210,11 +15873,11 @@ var proxyAddressNewFunction_Once sync.Once
 func proxyAddressNewFunction_Set() error {
 	var err error
 	proxyAddressNewFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressNewFunction, err = proxyAddressStruct.InvokerNew("new")
+		proxyAddressNewFunction, err = proxyAddressObject.InvokerNew("new")
 	})
 	return err
 }
@@ -16249,11 +15912,11 @@ var proxyAddressGetDestinationHostnameFunction_Once sync.Once
 func proxyAddressGetDestinationHostnameFunction_Set() error {
 	var err error
 	proxyAddressGetDestinationHostnameFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetDestinationHostnameFunction, err = proxyAddressStruct.InvokerNew("get_destination_hostname")
+		proxyAddressGetDestinationHostnameFunction, err = proxyAddressObject.InvokerNew("get_destination_hostname")
 	})
 	return err
 }
@@ -16281,11 +15944,11 @@ var proxyAddressGetDestinationPortFunction_Once sync.Once
 func proxyAddressGetDestinationPortFunction_Set() error {
 	var err error
 	proxyAddressGetDestinationPortFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetDestinationPortFunction, err = proxyAddressStruct.InvokerNew("get_destination_port")
+		proxyAddressGetDestinationPortFunction, err = proxyAddressObject.InvokerNew("get_destination_port")
 	})
 	return err
 }
@@ -16313,11 +15976,11 @@ var proxyAddressGetDestinationProtocolFunction_Once sync.Once
 func proxyAddressGetDestinationProtocolFunction_Set() error {
 	var err error
 	proxyAddressGetDestinationProtocolFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetDestinationProtocolFunction, err = proxyAddressStruct.InvokerNew("get_destination_protocol")
+		proxyAddressGetDestinationProtocolFunction, err = proxyAddressObject.InvokerNew("get_destination_protocol")
 	})
 	return err
 }
@@ -16345,11 +16008,11 @@ var proxyAddressGetPasswordFunction_Once sync.Once
 func proxyAddressGetPasswordFunction_Set() error {
 	var err error
 	proxyAddressGetPasswordFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetPasswordFunction, err = proxyAddressStruct.InvokerNew("get_password")
+		proxyAddressGetPasswordFunction, err = proxyAddressObject.InvokerNew("get_password")
 	})
 	return err
 }
@@ -16377,11 +16040,11 @@ var proxyAddressGetProtocolFunction_Once sync.Once
 func proxyAddressGetProtocolFunction_Set() error {
 	var err error
 	proxyAddressGetProtocolFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetProtocolFunction, err = proxyAddressStruct.InvokerNew("get_protocol")
+		proxyAddressGetProtocolFunction, err = proxyAddressObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -16409,11 +16072,11 @@ var proxyAddressGetUriFunction_Once sync.Once
 func proxyAddressGetUriFunction_Set() error {
 	var err error
 	proxyAddressGetUriFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetUriFunction, err = proxyAddressStruct.InvokerNew("get_uri")
+		proxyAddressGetUriFunction, err = proxyAddressObject.InvokerNew("get_uri")
 	})
 	return err
 }
@@ -16441,11 +16104,11 @@ var proxyAddressGetUsernameFunction_Once sync.Once
 func proxyAddressGetUsernameFunction_Set() error {
 	var err error
 	proxyAddressGetUsernameFunction_Once.Do(func() {
-		err = proxyAddressStruct_Set()
+		err = proxyAddressObject_Set()
 		if err != nil {
 			return
 		}
-		proxyAddressGetUsernameFunction, err = proxyAddressStruct.InvokerNew("get_username")
+		proxyAddressGetUsernameFunction, err = proxyAddressObject.InvokerNew("get_username")
 	})
 	return err
 }
@@ -16467,13 +16130,13 @@ func (recv *ProxyAddress) GetUsername() string {
 	return retGo
 }
 
-var proxyAddressEnumeratorStruct *gi.Struct
-var proxyAddressEnumeratorStruct_Once sync.Once
+var proxyAddressEnumeratorObject *gi.Object
+var proxyAddressEnumeratorObject_Once sync.Once
 
-func proxyAddressEnumeratorStruct_Set() error {
+func proxyAddressEnumeratorObject_Set() error {
 	var err error
-	proxyAddressEnumeratorStruct_Once.Do(func() {
-		proxyAddressEnumeratorStruct, err = gi.StructNew("Gio", "ProxyAddressEnumerator")
+	proxyAddressEnumeratorObject_Once.Do(func() {
+		proxyAddressEnumeratorObject, err = gi.ObjectNew("Gio", "ProxyAddressEnumerator")
 	})
 	return err
 }
@@ -16482,29 +16145,13 @@ type ProxyAddressEnumerator struct {
 	SocketAddressEnumerator
 }
 
-// ProxyAddressEnumeratorStruct creates an uninitialised ProxyAddressEnumerator.
-func ProxyAddressEnumeratorStruct() *ProxyAddressEnumerator {
-	err := proxyAddressEnumeratorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var resolverObject *gi.Object
+var resolverObject_Once sync.Once
 
-	structGo := &ProxyAddressEnumerator{}
-	structGo.Native = proxyAddressEnumeratorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeProxyAddressEnumerator)
-	return structGo
-}
-func finalizeProxyAddressEnumerator(obj *ProxyAddressEnumerator) {
-	proxyAddressEnumeratorStruct.Free(obj.Native)
-}
-
-var resolverStruct *gi.Struct
-var resolverStruct_Once sync.Once
-
-func resolverStruct_Set() error {
+func resolverObject_Set() error {
 	var err error
-	resolverStruct_Once.Do(func() {
-		resolverStruct, err = gi.StructNew("Gio", "Resolver")
+	resolverObject_Once.Do(func() {
+		resolverObject, err = gi.ObjectNew("Gio", "Resolver")
 	})
 	return err
 }
@@ -16519,7 +16166,7 @@ type Resolver struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Resolver) FieldPriv() *ResolverPrivate {
-	argValue := gi.FieldGet(resolverStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(resolverObject, recv.Native, "priv")
 	value := &ResolverPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -16529,7 +16176,7 @@ func (recv *Resolver) FieldPriv() *ResolverPrivate {
 func (recv *Resolver) SetFieldPriv(value *ResolverPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(resolverStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(resolverObject, recv.Native, "priv", argValue)
 }
 
 var resolverLookupByAddressFunction *gi.Function
@@ -16538,11 +16185,11 @@ var resolverLookupByAddressFunction_Once sync.Once
 func resolverLookupByAddressFunction_Set() error {
 	var err error
 	resolverLookupByAddressFunction_Once.Do(func() {
-		err = resolverStruct_Set()
+		err = resolverObject_Set()
 		if err != nil {
 			return
 		}
-		resolverLookupByAddressFunction, err = resolverStruct.InvokerNew("lookup_by_address")
+		resolverLookupByAddressFunction, err = resolverObject.InvokerNew("lookup_by_address")
 	})
 	return err
 }
@@ -16600,11 +16247,11 @@ var resolverSetDefaultFunction_Once sync.Once
 func resolverSetDefaultFunction_Set() error {
 	var err error
 	resolverSetDefaultFunction_Once.Do(func() {
-		err = resolverStruct_Set()
+		err = resolverObject_Set()
 		if err != nil {
 			return
 		}
-		resolverSetDefaultFunction, err = resolverStruct.InvokerNew("set_default")
+		resolverSetDefaultFunction, err = resolverObject.InvokerNew("set_default")
 	})
 	return err
 }
@@ -16622,29 +16269,13 @@ func (recv *Resolver) SetDefault() {
 	return
 }
 
-// ResolverStruct creates an uninitialised Resolver.
-func ResolverStruct() *Resolver {
-	err := resolverStruct_Set()
-	if err != nil {
-		return nil
-	}
+var settingsObject *gi.Object
+var settingsObject_Once sync.Once
 
-	structGo := &Resolver{}
-	structGo.Native = resolverStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeResolver)
-	return structGo
-}
-func finalizeResolver(obj *Resolver) {
-	resolverStruct.Free(obj.Native)
-}
-
-var settingsStruct *gi.Struct
-var settingsStruct_Once sync.Once
-
-func settingsStruct_Set() error {
+func settingsObject_Set() error {
 	var err error
-	settingsStruct_Once.Do(func() {
-		settingsStruct, err = gi.StructNew("Gio", "Settings")
+	settingsObject_Once.Do(func() {
+		settingsObject, err = gi.ObjectNew("Gio", "Settings")
 	})
 	return err
 }
@@ -16659,7 +16290,7 @@ type Settings struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Settings) FieldPriv() *SettingsPrivate {
-	argValue := gi.FieldGet(settingsStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(settingsObject, recv.Native, "priv")
 	value := &SettingsPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -16669,7 +16300,7 @@ func (recv *Settings) FieldPriv() *SettingsPrivate {
 func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(settingsStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(settingsObject, recv.Native, "priv", argValue)
 }
 
 var settingsNewFunction *gi.Function
@@ -16678,11 +16309,11 @@ var settingsNewFunction_Once sync.Once
 func settingsNewFunction_Set() error {
 	var err error
 	settingsNewFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewFunction, err = settingsStruct.InvokerNew("new")
+		settingsNewFunction, err = settingsObject.InvokerNew("new")
 	})
 	return err
 }
@@ -16711,11 +16342,11 @@ var settingsNewFullFunction_Once sync.Once
 func settingsNewFullFunction_Set() error {
 	var err error
 	settingsNewFullFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewFullFunction, err = settingsStruct.InvokerNew("new_full")
+		settingsNewFullFunction, err = settingsObject.InvokerNew("new_full")
 	})
 	return err
 }
@@ -16746,11 +16377,11 @@ var settingsNewWithBackendFunction_Once sync.Once
 func settingsNewWithBackendFunction_Set() error {
 	var err error
 	settingsNewWithBackendFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewWithBackendFunction, err = settingsStruct.InvokerNew("new_with_backend")
+		settingsNewWithBackendFunction, err = settingsObject.InvokerNew("new_with_backend")
 	})
 	return err
 }
@@ -16780,11 +16411,11 @@ var settingsNewWithBackendAndPathFunction_Once sync.Once
 func settingsNewWithBackendAndPathFunction_Set() error {
 	var err error
 	settingsNewWithBackendAndPathFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewWithBackendAndPathFunction, err = settingsStruct.InvokerNew("new_with_backend_and_path")
+		settingsNewWithBackendAndPathFunction, err = settingsObject.InvokerNew("new_with_backend_and_path")
 	})
 	return err
 }
@@ -16815,11 +16446,11 @@ var settingsNewWithPathFunction_Once sync.Once
 func settingsNewWithPathFunction_Set() error {
 	var err error
 	settingsNewWithPathFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsNewWithPathFunction, err = settingsStruct.InvokerNew("new_with_path")
+		settingsNewWithPathFunction, err = settingsObject.InvokerNew("new_with_path")
 	})
 	return err
 }
@@ -16849,11 +16480,11 @@ var settingsApplyFunction_Once sync.Once
 func settingsApplyFunction_Set() error {
 	var err error
 	settingsApplyFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsApplyFunction, err = settingsStruct.InvokerNew("apply")
+		settingsApplyFunction, err = settingsObject.InvokerNew("apply")
 	})
 	return err
 }
@@ -16885,11 +16516,11 @@ var settingsDelayFunction_Once sync.Once
 func settingsDelayFunction_Set() error {
 	var err error
 	settingsDelayFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsDelayFunction, err = settingsStruct.InvokerNew("delay")
+		settingsDelayFunction, err = settingsObject.InvokerNew("delay")
 	})
 	return err
 }
@@ -16915,11 +16546,11 @@ var settingsGetBooleanFunction_Once sync.Once
 func settingsGetBooleanFunction_Set() error {
 	var err error
 	settingsGetBooleanFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetBooleanFunction, err = settingsStruct.InvokerNew("get_boolean")
+		settingsGetBooleanFunction, err = settingsObject.InvokerNew("get_boolean")
 	})
 	return err
 }
@@ -16948,11 +16579,11 @@ var settingsGetChildFunction_Once sync.Once
 func settingsGetChildFunction_Set() error {
 	var err error
 	settingsGetChildFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetChildFunction, err = settingsStruct.InvokerNew("get_child")
+		settingsGetChildFunction, err = settingsObject.InvokerNew("get_child")
 	})
 	return err
 }
@@ -16984,11 +16615,11 @@ var settingsGetDoubleFunction_Once sync.Once
 func settingsGetDoubleFunction_Set() error {
 	var err error
 	settingsGetDoubleFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetDoubleFunction, err = settingsStruct.InvokerNew("get_double")
+		settingsGetDoubleFunction, err = settingsObject.InvokerNew("get_double")
 	})
 	return err
 }
@@ -17017,11 +16648,11 @@ var settingsGetEnumFunction_Once sync.Once
 func settingsGetEnumFunction_Set() error {
 	var err error
 	settingsGetEnumFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetEnumFunction, err = settingsStruct.InvokerNew("get_enum")
+		settingsGetEnumFunction, err = settingsObject.InvokerNew("get_enum")
 	})
 	return err
 }
@@ -17050,11 +16681,11 @@ var settingsGetFlagsFunction_Once sync.Once
 func settingsGetFlagsFunction_Set() error {
 	var err error
 	settingsGetFlagsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetFlagsFunction, err = settingsStruct.InvokerNew("get_flags")
+		settingsGetFlagsFunction, err = settingsObject.InvokerNew("get_flags")
 	})
 	return err
 }
@@ -17083,11 +16714,11 @@ var settingsGetHasUnappliedFunction_Once sync.Once
 func settingsGetHasUnappliedFunction_Set() error {
 	var err error
 	settingsGetHasUnappliedFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetHasUnappliedFunction, err = settingsStruct.InvokerNew("get_has_unapplied")
+		settingsGetHasUnappliedFunction, err = settingsObject.InvokerNew("get_has_unapplied")
 	})
 	return err
 }
@@ -17115,11 +16746,11 @@ var settingsGetIntFunction_Once sync.Once
 func settingsGetIntFunction_Set() error {
 	var err error
 	settingsGetIntFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetIntFunction, err = settingsStruct.InvokerNew("get_int")
+		settingsGetIntFunction, err = settingsObject.InvokerNew("get_int")
 	})
 	return err
 }
@@ -17148,11 +16779,11 @@ var settingsGetInt64Function_Once sync.Once
 func settingsGetInt64Function_Set() error {
 	var err error
 	settingsGetInt64Function_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetInt64Function, err = settingsStruct.InvokerNew("get_int64")
+		settingsGetInt64Function, err = settingsObject.InvokerNew("get_int64")
 	})
 	return err
 }
@@ -17185,11 +16816,11 @@ var settingsGetStringFunction_Once sync.Once
 func settingsGetStringFunction_Set() error {
 	var err error
 	settingsGetStringFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetStringFunction, err = settingsStruct.InvokerNew("get_string")
+		settingsGetStringFunction, err = settingsObject.InvokerNew("get_string")
 	})
 	return err
 }
@@ -17218,11 +16849,11 @@ var settingsGetStrvFunction_Once sync.Once
 func settingsGetStrvFunction_Set() error {
 	var err error
 	settingsGetStrvFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetStrvFunction, err = settingsStruct.InvokerNew("get_strv")
+		settingsGetStrvFunction, err = settingsObject.InvokerNew("get_strv")
 	})
 	return err
 }
@@ -17247,11 +16878,11 @@ var settingsGetUintFunction_Once sync.Once
 func settingsGetUintFunction_Set() error {
 	var err error
 	settingsGetUintFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetUintFunction, err = settingsStruct.InvokerNew("get_uint")
+		settingsGetUintFunction, err = settingsObject.InvokerNew("get_uint")
 	})
 	return err
 }
@@ -17280,11 +16911,11 @@ var settingsGetUint64Function_Once sync.Once
 func settingsGetUint64Function_Set() error {
 	var err error
 	settingsGetUint64Function_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsGetUint64Function, err = settingsStruct.InvokerNew("get_uint64")
+		settingsGetUint64Function, err = settingsObject.InvokerNew("get_uint64")
 	})
 	return err
 }
@@ -17317,11 +16948,11 @@ var settingsIsWritableFunction_Once sync.Once
 func settingsIsWritableFunction_Set() error {
 	var err error
 	settingsIsWritableFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsIsWritableFunction, err = settingsStruct.InvokerNew("is_writable")
+		settingsIsWritableFunction, err = settingsObject.InvokerNew("is_writable")
 	})
 	return err
 }
@@ -17350,11 +16981,11 @@ var settingsListChildrenFunction_Once sync.Once
 func settingsListChildrenFunction_Set() error {
 	var err error
 	settingsListChildrenFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsListChildrenFunction, err = settingsStruct.InvokerNew("list_children")
+		settingsListChildrenFunction, err = settingsObject.InvokerNew("list_children")
 	})
 	return err
 }
@@ -17378,11 +17009,11 @@ var settingsListKeysFunction_Once sync.Once
 func settingsListKeysFunction_Set() error {
 	var err error
 	settingsListKeysFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsListKeysFunction, err = settingsStruct.InvokerNew("list_keys")
+		settingsListKeysFunction, err = settingsObject.InvokerNew("list_keys")
 	})
 	return err
 }
@@ -17408,11 +17039,11 @@ var settingsResetFunction_Once sync.Once
 func settingsResetFunction_Set() error {
 	var err error
 	settingsResetFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsResetFunction, err = settingsStruct.InvokerNew("reset")
+		settingsResetFunction, err = settingsObject.InvokerNew("reset")
 	})
 	return err
 }
@@ -17437,11 +17068,11 @@ var settingsRevertFunction_Once sync.Once
 func settingsRevertFunction_Set() error {
 	var err error
 	settingsRevertFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsRevertFunction, err = settingsStruct.InvokerNew("revert")
+		settingsRevertFunction, err = settingsObject.InvokerNew("revert")
 	})
 	return err
 }
@@ -17467,11 +17098,11 @@ var settingsSetBooleanFunction_Once sync.Once
 func settingsSetBooleanFunction_Set() error {
 	var err error
 	settingsSetBooleanFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetBooleanFunction, err = settingsStruct.InvokerNew("set_boolean")
+		settingsSetBooleanFunction, err = settingsObject.InvokerNew("set_boolean")
 	})
 	return err
 }
@@ -17501,11 +17132,11 @@ var settingsSetDoubleFunction_Once sync.Once
 func settingsSetDoubleFunction_Set() error {
 	var err error
 	settingsSetDoubleFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetDoubleFunction, err = settingsStruct.InvokerNew("set_double")
+		settingsSetDoubleFunction, err = settingsObject.InvokerNew("set_double")
 	})
 	return err
 }
@@ -17535,11 +17166,11 @@ var settingsSetEnumFunction_Once sync.Once
 func settingsSetEnumFunction_Set() error {
 	var err error
 	settingsSetEnumFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetEnumFunction, err = settingsStruct.InvokerNew("set_enum")
+		settingsSetEnumFunction, err = settingsObject.InvokerNew("set_enum")
 	})
 	return err
 }
@@ -17569,11 +17200,11 @@ var settingsSetFlagsFunction_Once sync.Once
 func settingsSetFlagsFunction_Set() error {
 	var err error
 	settingsSetFlagsFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetFlagsFunction, err = settingsStruct.InvokerNew("set_flags")
+		settingsSetFlagsFunction, err = settingsObject.InvokerNew("set_flags")
 	})
 	return err
 }
@@ -17603,11 +17234,11 @@ var settingsSetIntFunction_Once sync.Once
 func settingsSetIntFunction_Set() error {
 	var err error
 	settingsSetIntFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetIntFunction, err = settingsStruct.InvokerNew("set_int")
+		settingsSetIntFunction, err = settingsObject.InvokerNew("set_int")
 	})
 	return err
 }
@@ -17637,11 +17268,11 @@ var settingsSetInt64Function_Once sync.Once
 func settingsSetInt64Function_Set() error {
 	var err error
 	settingsSetInt64Function_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetInt64Function, err = settingsStruct.InvokerNew("set_int64")
+		settingsSetInt64Function, err = settingsObject.InvokerNew("set_int64")
 	})
 	return err
 }
@@ -17671,11 +17302,11 @@ var settingsSetStringFunction_Once sync.Once
 func settingsSetStringFunction_Set() error {
 	var err error
 	settingsSetStringFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetStringFunction, err = settingsStruct.InvokerNew("set_string")
+		settingsSetStringFunction, err = settingsObject.InvokerNew("set_string")
 	})
 	return err
 }
@@ -17707,11 +17338,11 @@ var settingsSetUintFunction_Once sync.Once
 func settingsSetUintFunction_Set() error {
 	var err error
 	settingsSetUintFunction_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetUintFunction, err = settingsStruct.InvokerNew("set_uint")
+		settingsSetUintFunction, err = settingsObject.InvokerNew("set_uint")
 	})
 	return err
 }
@@ -17741,11 +17372,11 @@ var settingsSetUint64Function_Once sync.Once
 func settingsSetUint64Function_Set() error {
 	var err error
 	settingsSetUint64Function_Once.Do(func() {
-		err = settingsStruct_Set()
+		err = settingsObject_Set()
 		if err != nil {
 			return
 		}
-		settingsSetUint64Function, err = settingsStruct.InvokerNew("set_uint64")
+		settingsSetUint64Function, err = settingsObject.InvokerNew("set_uint64")
 	})
 	return err
 }
@@ -17771,13 +17402,13 @@ func (recv *Settings) SetUint64(key string, value uint64) bool {
 
 // UNSUPPORTED : C value 'g_settings_set_value' : parameter 'value' of type 'GLib.Variant' not supported
 
-var settingsBackendStruct *gi.Struct
-var settingsBackendStruct_Once sync.Once
+var settingsBackendObject *gi.Object
+var settingsBackendObject_Once sync.Once
 
-func settingsBackendStruct_Set() error {
+func settingsBackendObject_Set() error {
 	var err error
-	settingsBackendStruct_Once.Do(func() {
-		settingsBackendStruct, err = gi.StructNew("Gio", "SettingsBackend")
+	settingsBackendObject_Once.Do(func() {
+		settingsBackendObject, err = gi.ObjectNew("Gio", "SettingsBackend")
 	})
 	return err
 }
@@ -17804,11 +17435,11 @@ var settingsBackendPathWritableChangedFunction_Once sync.Once
 func settingsBackendPathWritableChangedFunction_Set() error {
 	var err error
 	settingsBackendPathWritableChangedFunction_Once.Do(func() {
-		err = settingsBackendStruct_Set()
+		err = settingsBackendObject_Set()
 		if err != nil {
 			return
 		}
-		settingsBackendPathWritableChangedFunction, err = settingsBackendStruct.InvokerNew("path_writable_changed")
+		settingsBackendPathWritableChangedFunction, err = settingsBackendObject.InvokerNew("path_writable_changed")
 	})
 	return err
 }
@@ -17833,11 +17464,11 @@ var settingsBackendWritableChangedFunction_Once sync.Once
 func settingsBackendWritableChangedFunction_Set() error {
 	var err error
 	settingsBackendWritableChangedFunction_Once.Do(func() {
-		err = settingsBackendStruct_Set()
+		err = settingsBackendObject_Set()
 		if err != nil {
 			return
 		}
-		settingsBackendWritableChangedFunction, err = settingsBackendStruct.InvokerNew("writable_changed")
+		settingsBackendWritableChangedFunction, err = settingsBackendObject.InvokerNew("writable_changed")
 	})
 	return err
 }
@@ -17856,29 +17487,13 @@ func (recv *SettingsBackend) WritableChanged(key string) {
 	return
 }
 
-// SettingsBackendStruct creates an uninitialised SettingsBackend.
-func SettingsBackendStruct() *SettingsBackend {
-	err := settingsBackendStruct_Set()
-	if err != nil {
-		return nil
-	}
+var simpleActionObject *gi.Object
+var simpleActionObject_Once sync.Once
 
-	structGo := &SettingsBackend{}
-	structGo.Native = settingsBackendStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSettingsBackend)
-	return structGo
-}
-func finalizeSettingsBackend(obj *SettingsBackend) {
-	settingsBackendStruct.Free(obj.Native)
-}
-
-var simpleActionStruct *gi.Struct
-var simpleActionStruct_Once sync.Once
-
-func simpleActionStruct_Set() error {
+func simpleActionObject_Set() error {
 	var err error
-	simpleActionStruct_Once.Do(func() {
-		simpleActionStruct, err = gi.StructNew("Gio", "SimpleAction")
+	simpleActionObject_Once.Do(func() {
+		simpleActionObject, err = gi.ObjectNew("Gio", "SimpleAction")
 	})
 	return err
 }
@@ -17897,11 +17512,11 @@ var simpleActionSetEnabledFunction_Once sync.Once
 func simpleActionSetEnabledFunction_Set() error {
 	var err error
 	simpleActionSetEnabledFunction_Once.Do(func() {
-		err = simpleActionStruct_Set()
+		err = simpleActionObject_Set()
 		if err != nil {
 			return
 		}
-		simpleActionSetEnabledFunction, err = simpleActionStruct.InvokerNew("set_enabled")
+		simpleActionSetEnabledFunction, err = simpleActionObject.InvokerNew("set_enabled")
 	})
 	return err
 }
@@ -17924,13 +17539,13 @@ func (recv *SimpleAction) SetEnabled(enabled bool) {
 
 // UNSUPPORTED : C value 'g_simple_action_set_state_hint' : parameter 'state_hint' of type 'GLib.Variant' not supported
 
-var simpleActionGroupStruct *gi.Struct
-var simpleActionGroupStruct_Once sync.Once
+var simpleActionGroupObject *gi.Object
+var simpleActionGroupObject_Once sync.Once
 
-func simpleActionGroupStruct_Set() error {
+func simpleActionGroupObject_Set() error {
 	var err error
-	simpleActionGroupStruct_Once.Do(func() {
-		simpleActionGroupStruct, err = gi.StructNew("Gio", "SimpleActionGroup")
+	simpleActionGroupObject_Once.Do(func() {
+		simpleActionGroupObject, err = gi.ObjectNew("Gio", "SimpleActionGroup")
 	})
 	return err
 }
@@ -17945,11 +17560,11 @@ var simpleActionGroupNewFunction_Once sync.Once
 func simpleActionGroupNewFunction_Set() error {
 	var err error
 	simpleActionGroupNewFunction_Once.Do(func() {
-		err = simpleActionGroupStruct_Set()
+		err = simpleActionGroupObject_Set()
 		if err != nil {
 			return
 		}
-		simpleActionGroupNewFunction, err = simpleActionGroupStruct.InvokerNew("new")
+		simpleActionGroupNewFunction, err = simpleActionGroupObject.InvokerNew("new")
 	})
 	return err
 }
@@ -17982,11 +17597,11 @@ var simpleActionGroupRemoveFunction_Once sync.Once
 func simpleActionGroupRemoveFunction_Set() error {
 	var err error
 	simpleActionGroupRemoveFunction_Once.Do(func() {
-		err = simpleActionGroupStruct_Set()
+		err = simpleActionGroupObject_Set()
 		if err != nil {
 			return
 		}
-		simpleActionGroupRemoveFunction, err = simpleActionGroupStruct.InvokerNew("remove")
+		simpleActionGroupRemoveFunction, err = simpleActionGroupObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -18005,13 +17620,13 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 	return
 }
 
-var simpleAsyncResultStruct *gi.Struct
-var simpleAsyncResultStruct_Once sync.Once
+var simpleAsyncResultObject *gi.Object
+var simpleAsyncResultObject_Once sync.Once
 
-func simpleAsyncResultStruct_Set() error {
+func simpleAsyncResultObject_Set() error {
 	var err error
-	simpleAsyncResultStruct_Once.Do(func() {
-		simpleAsyncResultStruct, err = gi.StructNew("Gio", "SimpleAsyncResult")
+	simpleAsyncResultObject_Once.Do(func() {
+		simpleAsyncResultObject, err = gi.ObjectNew("Gio", "SimpleAsyncResult")
 	})
 	return err
 }
@@ -18034,11 +17649,11 @@ var simpleAsyncResultCompleteFunction_Once sync.Once
 func simpleAsyncResultCompleteFunction_Set() error {
 	var err error
 	simpleAsyncResultCompleteFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultCompleteFunction, err = simpleAsyncResultStruct.InvokerNew("complete")
+		simpleAsyncResultCompleteFunction, err = simpleAsyncResultObject.InvokerNew("complete")
 	})
 	return err
 }
@@ -18062,11 +17677,11 @@ var simpleAsyncResultCompleteInIdleFunction_Once sync.Once
 func simpleAsyncResultCompleteInIdleFunction_Set() error {
 	var err error
 	simpleAsyncResultCompleteInIdleFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultCompleteInIdleFunction, err = simpleAsyncResultStruct.InvokerNew("complete_in_idle")
+		simpleAsyncResultCompleteInIdleFunction, err = simpleAsyncResultObject.InvokerNew("complete_in_idle")
 	})
 	return err
 }
@@ -18090,11 +17705,11 @@ var simpleAsyncResultGetOpResGbooleanFunction_Once sync.Once
 func simpleAsyncResultGetOpResGbooleanFunction_Set() error {
 	var err error
 	simpleAsyncResultGetOpResGbooleanFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultGetOpResGbooleanFunction, err = simpleAsyncResultStruct.InvokerNew("get_op_res_gboolean")
+		simpleAsyncResultGetOpResGbooleanFunction, err = simpleAsyncResultObject.InvokerNew("get_op_res_gboolean")
 	})
 	return err
 }
@@ -18124,11 +17739,11 @@ var simpleAsyncResultGetOpResGssizeFunction_Once sync.Once
 func simpleAsyncResultGetOpResGssizeFunction_Set() error {
 	var err error
 	simpleAsyncResultGetOpResGssizeFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultGetOpResGssizeFunction, err = simpleAsyncResultStruct.InvokerNew("get_op_res_gssize")
+		simpleAsyncResultGetOpResGssizeFunction, err = simpleAsyncResultObject.InvokerNew("get_op_res_gssize")
 	})
 	return err
 }
@@ -18158,11 +17773,11 @@ var simpleAsyncResultPropagateErrorFunction_Once sync.Once
 func simpleAsyncResultPropagateErrorFunction_Set() error {
 	var err error
 	simpleAsyncResultPropagateErrorFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultPropagateErrorFunction, err = simpleAsyncResultStruct.InvokerNew("propagate_error")
+		simpleAsyncResultPropagateErrorFunction, err = simpleAsyncResultObject.InvokerNew("propagate_error")
 	})
 	return err
 }
@@ -18192,11 +17807,11 @@ var simpleAsyncResultSetCheckCancellableFunction_Once sync.Once
 func simpleAsyncResultSetCheckCancellableFunction_Set() error {
 	var err error
 	simpleAsyncResultSetCheckCancellableFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultSetCheckCancellableFunction, err = simpleAsyncResultStruct.InvokerNew("set_check_cancellable")
+		simpleAsyncResultSetCheckCancellableFunction, err = simpleAsyncResultObject.InvokerNew("set_check_cancellable")
 	})
 	return err
 }
@@ -18227,11 +17842,11 @@ var simpleAsyncResultSetHandleCancellationFunction_Once sync.Once
 func simpleAsyncResultSetHandleCancellationFunction_Set() error {
 	var err error
 	simpleAsyncResultSetHandleCancellationFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultSetHandleCancellationFunction, err = simpleAsyncResultStruct.InvokerNew("set_handle_cancellation")
+		simpleAsyncResultSetHandleCancellationFunction, err = simpleAsyncResultObject.InvokerNew("set_handle_cancellation")
 	})
 	return err
 }
@@ -18256,11 +17871,11 @@ var simpleAsyncResultSetOpResGbooleanFunction_Once sync.Once
 func simpleAsyncResultSetOpResGbooleanFunction_Set() error {
 	var err error
 	simpleAsyncResultSetOpResGbooleanFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultSetOpResGbooleanFunction, err = simpleAsyncResultStruct.InvokerNew("set_op_res_gboolean")
+		simpleAsyncResultSetOpResGbooleanFunction, err = simpleAsyncResultObject.InvokerNew("set_op_res_gboolean")
 	})
 	return err
 }
@@ -18287,11 +17902,11 @@ var simpleAsyncResultSetOpResGssizeFunction_Once sync.Once
 func simpleAsyncResultSetOpResGssizeFunction_Set() error {
 	var err error
 	simpleAsyncResultSetOpResGssizeFunction_Once.Do(func() {
-		err = simpleAsyncResultStruct_Set()
+		err = simpleAsyncResultObject_Set()
 		if err != nil {
 			return
 		}
-		simpleAsyncResultSetOpResGssizeFunction, err = simpleAsyncResultStruct.InvokerNew("set_op_res_gssize")
+		simpleAsyncResultSetOpResGssizeFunction, err = simpleAsyncResultObject.InvokerNew("set_op_res_gssize")
 	})
 	return err
 }
@@ -18312,13 +17927,13 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int32) {
 
 // UNSUPPORTED : C value 'g_simple_async_result_take_error' : parameter 'error' of type 'GLib.Error' not supported
 
-var simpleIOStreamStruct *gi.Struct
-var simpleIOStreamStruct_Once sync.Once
+var simpleIOStreamObject *gi.Object
+var simpleIOStreamObject_Once sync.Once
 
-func simpleIOStreamStruct_Set() error {
+func simpleIOStreamObject_Set() error {
 	var err error
-	simpleIOStreamStruct_Once.Do(func() {
-		simpleIOStreamStruct, err = gi.StructNew("Gio", "SimpleIOStream")
+	simpleIOStreamObject_Once.Do(func() {
+		simpleIOStreamObject, err = gi.ObjectNew("Gio", "SimpleIOStream")
 	})
 	return err
 }
@@ -18333,11 +17948,11 @@ var simpleIOStreamNewFunction_Once sync.Once
 func simpleIOStreamNewFunction_Set() error {
 	var err error
 	simpleIOStreamNewFunction_Once.Do(func() {
-		err = simpleIOStreamStruct_Set()
+		err = simpleIOStreamObject_Set()
 		if err != nil {
 			return
 		}
-		simpleIOStreamNewFunction, err = simpleIOStreamStruct.InvokerNew("new")
+		simpleIOStreamNewFunction, err = simpleIOStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -18361,13 +17976,13 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 	return retGo
 }
 
-var simplePermissionStruct *gi.Struct
-var simplePermissionStruct_Once sync.Once
+var simplePermissionObject *gi.Object
+var simplePermissionObject_Once sync.Once
 
-func simplePermissionStruct_Set() error {
+func simplePermissionObject_Set() error {
 	var err error
-	simplePermissionStruct_Once.Do(func() {
-		simplePermissionStruct, err = gi.StructNew("Gio", "SimplePermission")
+	simplePermissionObject_Once.Do(func() {
+		simplePermissionObject, err = gi.ObjectNew("Gio", "SimplePermission")
 	})
 	return err
 }
@@ -18382,11 +17997,11 @@ var simplePermissionNewFunction_Once sync.Once
 func simplePermissionNewFunction_Set() error {
 	var err error
 	simplePermissionNewFunction_Once.Do(func() {
-		err = simplePermissionStruct_Set()
+		err = simplePermissionObject_Set()
 		if err != nil {
 			return
 		}
-		simplePermissionNewFunction, err = simplePermissionStruct.InvokerNew("new")
+		simplePermissionNewFunction, err = simplePermissionObject.InvokerNew("new")
 	})
 	return err
 }
@@ -18409,13 +18024,13 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 	return retGo
 }
 
-var simpleProxyResolverStruct *gi.Struct
-var simpleProxyResolverStruct_Once sync.Once
+var simpleProxyResolverObject *gi.Object
+var simpleProxyResolverObject_Once sync.Once
 
-func simpleProxyResolverStruct_Set() error {
+func simpleProxyResolverObject_Set() error {
 	var err error
-	simpleProxyResolverStruct_Once.Do(func() {
-		simpleProxyResolverStruct, err = gi.StructNew("Gio", "SimpleProxyResolver")
+	simpleProxyResolverObject_Once.Do(func() {
+		simpleProxyResolverObject, err = gi.ObjectNew("Gio", "SimpleProxyResolver")
 	})
 	return err
 }
@@ -18434,11 +18049,11 @@ var simpleProxyResolverSetDefaultProxyFunction_Once sync.Once
 func simpleProxyResolverSetDefaultProxyFunction_Set() error {
 	var err error
 	simpleProxyResolverSetDefaultProxyFunction_Once.Do(func() {
-		err = simpleProxyResolverStruct_Set()
+		err = simpleProxyResolverObject_Set()
 		if err != nil {
 			return
 		}
-		simpleProxyResolverSetDefaultProxyFunction, err = simpleProxyResolverStruct.InvokerNew("set_default_proxy")
+		simpleProxyResolverSetDefaultProxyFunction, err = simpleProxyResolverObject.InvokerNew("set_default_proxy")
 	})
 	return err
 }
@@ -18463,11 +18078,11 @@ var simpleProxyResolverSetIgnoreHostsFunction_Once sync.Once
 func simpleProxyResolverSetIgnoreHostsFunction_Set() error {
 	var err error
 	simpleProxyResolverSetIgnoreHostsFunction_Once.Do(func() {
-		err = simpleProxyResolverStruct_Set()
+		err = simpleProxyResolverObject_Set()
 		if err != nil {
 			return
 		}
-		simpleProxyResolverSetIgnoreHostsFunction, err = simpleProxyResolverStruct.InvokerNew("set_ignore_hosts")
+		simpleProxyResolverSetIgnoreHostsFunction, err = simpleProxyResolverObject.InvokerNew("set_ignore_hosts")
 	})
 	return err
 }
@@ -18492,11 +18107,11 @@ var simpleProxyResolverSetUriProxyFunction_Once sync.Once
 func simpleProxyResolverSetUriProxyFunction_Set() error {
 	var err error
 	simpleProxyResolverSetUriProxyFunction_Once.Do(func() {
-		err = simpleProxyResolverStruct_Set()
+		err = simpleProxyResolverObject_Set()
 		if err != nil {
 			return
 		}
-		simpleProxyResolverSetUriProxyFunction, err = simpleProxyResolverStruct.InvokerNew("set_uri_proxy")
+		simpleProxyResolverSetUriProxyFunction, err = simpleProxyResolverObject.InvokerNew("set_uri_proxy")
 	})
 	return err
 }
@@ -18516,29 +18131,13 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 	return
 }
 
-// SimpleProxyResolverStruct creates an uninitialised SimpleProxyResolver.
-func SimpleProxyResolverStruct() *SimpleProxyResolver {
-	err := simpleProxyResolverStruct_Set()
-	if err != nil {
-		return nil
-	}
+var socketObject *gi.Object
+var socketObject_Once sync.Once
 
-	structGo := &SimpleProxyResolver{}
-	structGo.Native = simpleProxyResolverStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSimpleProxyResolver)
-	return structGo
-}
-func finalizeSimpleProxyResolver(obj *SimpleProxyResolver) {
-	simpleProxyResolverStruct.Free(obj.Native)
-}
-
-var socketStruct *gi.Struct
-var socketStruct_Once sync.Once
-
-func socketStruct_Set() error {
+func socketObject_Set() error {
 	var err error
-	socketStruct_Once.Do(func() {
-		socketStruct, err = gi.StructNew("Gio", "Socket")
+	socketObject_Once.Do(func() {
+		socketObject, err = gi.ObjectNew("Gio", "Socket")
 	})
 	return err
 }
@@ -18553,7 +18152,7 @@ type Socket struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Socket) FieldPriv() *SocketPrivate {
-	argValue := gi.FieldGet(socketStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketObject, recv.Native, "priv")
 	value := &SocketPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -18563,7 +18162,7 @@ func (recv *Socket) FieldPriv() *SocketPrivate {
 func (recv *Socket) SetFieldPriv(value *SocketPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketObject, recv.Native, "priv", argValue)
 }
 
 var socketNewFunction *gi.Function
@@ -18572,11 +18171,11 @@ var socketNewFunction_Once sync.Once
 func socketNewFunction_Set() error {
 	var err error
 	socketNewFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketNewFunction, err = socketStruct.InvokerNew("new")
+		socketNewFunction, err = socketObject.InvokerNew("new")
 	})
 	return err
 }
@@ -18607,11 +18206,11 @@ var socketNewFromFdFunction_Once sync.Once
 func socketNewFromFdFunction_Set() error {
 	var err error
 	socketNewFromFdFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketNewFromFdFunction, err = socketStruct.InvokerNew("new_from_fd")
+		socketNewFromFdFunction, err = socketObject.InvokerNew("new_from_fd")
 	})
 	return err
 }
@@ -18640,11 +18239,11 @@ var socketAcceptFunction_Once sync.Once
 func socketAcceptFunction_Set() error {
 	var err error
 	socketAcceptFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketAcceptFunction, err = socketStruct.InvokerNew("accept")
+		socketAcceptFunction, err = socketObject.InvokerNew("accept")
 	})
 	return err
 }
@@ -18674,11 +18273,11 @@ var socketBindFunction_Once sync.Once
 func socketBindFunction_Set() error {
 	var err error
 	socketBindFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketBindFunction, err = socketStruct.InvokerNew("bind")
+		socketBindFunction, err = socketObject.InvokerNew("bind")
 	})
 	return err
 }
@@ -18708,11 +18307,11 @@ var socketCheckConnectResultFunction_Once sync.Once
 func socketCheckConnectResultFunction_Set() error {
 	var err error
 	socketCheckConnectResultFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketCheckConnectResultFunction, err = socketStruct.InvokerNew("check_connect_result")
+		socketCheckConnectResultFunction, err = socketObject.InvokerNew("check_connect_result")
 	})
 	return err
 }
@@ -18740,11 +18339,11 @@ var socketCloseFunction_Once sync.Once
 func socketCloseFunction_Set() error {
 	var err error
 	socketCloseFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketCloseFunction, err = socketStruct.InvokerNew("close")
+		socketCloseFunction, err = socketObject.InvokerNew("close")
 	})
 	return err
 }
@@ -18778,11 +18377,11 @@ var socketConnectFunction_Once sync.Once
 func socketConnectFunction_Set() error {
 	var err error
 	socketConnectFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectFunction, err = socketStruct.InvokerNew("connect")
+		socketConnectFunction, err = socketObject.InvokerNew("connect")
 	})
 	return err
 }
@@ -18812,11 +18411,11 @@ var socketConnectionFactoryCreateConnectionFunction_Once sync.Once
 func socketConnectionFactoryCreateConnectionFunction_Set() error {
 	var err error
 	socketConnectionFactoryCreateConnectionFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionFactoryCreateConnectionFunction, err = socketStruct.InvokerNew("connection_factory_create_connection")
+		socketConnectionFactoryCreateConnectionFunction, err = socketObject.InvokerNew("connection_factory_create_connection")
 	})
 	return err
 }
@@ -18847,11 +18446,11 @@ var socketGetAvailableBytesFunction_Once sync.Once
 func socketGetAvailableBytesFunction_Set() error {
 	var err error
 	socketGetAvailableBytesFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetAvailableBytesFunction, err = socketStruct.InvokerNew("get_available_bytes")
+		socketGetAvailableBytesFunction, err = socketObject.InvokerNew("get_available_bytes")
 	})
 	return err
 }
@@ -18879,11 +18478,11 @@ var socketGetBlockingFunction_Once sync.Once
 func socketGetBlockingFunction_Set() error {
 	var err error
 	socketGetBlockingFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetBlockingFunction, err = socketStruct.InvokerNew("get_blocking")
+		socketGetBlockingFunction, err = socketObject.InvokerNew("get_blocking")
 	})
 	return err
 }
@@ -18911,11 +18510,11 @@ var socketGetBroadcastFunction_Once sync.Once
 func socketGetBroadcastFunction_Set() error {
 	var err error
 	socketGetBroadcastFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetBroadcastFunction, err = socketStruct.InvokerNew("get_broadcast")
+		socketGetBroadcastFunction, err = socketObject.InvokerNew("get_broadcast")
 	})
 	return err
 }
@@ -18943,11 +18542,11 @@ var socketGetCredentialsFunction_Once sync.Once
 func socketGetCredentialsFunction_Set() error {
 	var err error
 	socketGetCredentialsFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetCredentialsFunction, err = socketStruct.InvokerNew("get_credentials")
+		socketGetCredentialsFunction, err = socketObject.InvokerNew("get_credentials")
 	})
 	return err
 }
@@ -18976,11 +18575,11 @@ var socketGetFamilyFunction_Once sync.Once
 func socketGetFamilyFunction_Set() error {
 	var err error
 	socketGetFamilyFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetFamilyFunction, err = socketStruct.InvokerNew("get_family")
+		socketGetFamilyFunction, err = socketObject.InvokerNew("get_family")
 	})
 	return err
 }
@@ -19008,11 +18607,11 @@ var socketGetFdFunction_Once sync.Once
 func socketGetFdFunction_Set() error {
 	var err error
 	socketGetFdFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetFdFunction, err = socketStruct.InvokerNew("get_fd")
+		socketGetFdFunction, err = socketObject.InvokerNew("get_fd")
 	})
 	return err
 }
@@ -19040,11 +18639,11 @@ var socketGetKeepaliveFunction_Once sync.Once
 func socketGetKeepaliveFunction_Set() error {
 	var err error
 	socketGetKeepaliveFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetKeepaliveFunction, err = socketStruct.InvokerNew("get_keepalive")
+		socketGetKeepaliveFunction, err = socketObject.InvokerNew("get_keepalive")
 	})
 	return err
 }
@@ -19072,11 +18671,11 @@ var socketGetListenBacklogFunction_Once sync.Once
 func socketGetListenBacklogFunction_Set() error {
 	var err error
 	socketGetListenBacklogFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetListenBacklogFunction, err = socketStruct.InvokerNew("get_listen_backlog")
+		socketGetListenBacklogFunction, err = socketObject.InvokerNew("get_listen_backlog")
 	})
 	return err
 }
@@ -19104,11 +18703,11 @@ var socketGetLocalAddressFunction_Once sync.Once
 func socketGetLocalAddressFunction_Set() error {
 	var err error
 	socketGetLocalAddressFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetLocalAddressFunction, err = socketStruct.InvokerNew("get_local_address")
+		socketGetLocalAddressFunction, err = socketObject.InvokerNew("get_local_address")
 	})
 	return err
 }
@@ -19137,11 +18736,11 @@ var socketGetMulticastLoopbackFunction_Once sync.Once
 func socketGetMulticastLoopbackFunction_Set() error {
 	var err error
 	socketGetMulticastLoopbackFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetMulticastLoopbackFunction, err = socketStruct.InvokerNew("get_multicast_loopback")
+		socketGetMulticastLoopbackFunction, err = socketObject.InvokerNew("get_multicast_loopback")
 	})
 	return err
 }
@@ -19169,11 +18768,11 @@ var socketGetMulticastTtlFunction_Once sync.Once
 func socketGetMulticastTtlFunction_Set() error {
 	var err error
 	socketGetMulticastTtlFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetMulticastTtlFunction, err = socketStruct.InvokerNew("get_multicast_ttl")
+		socketGetMulticastTtlFunction, err = socketObject.InvokerNew("get_multicast_ttl")
 	})
 	return err
 }
@@ -19201,11 +18800,11 @@ var socketGetOptionFunction_Once sync.Once
 func socketGetOptionFunction_Set() error {
 	var err error
 	socketGetOptionFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetOptionFunction, err = socketStruct.InvokerNew("get_option")
+		socketGetOptionFunction, err = socketObject.InvokerNew("get_option")
 	})
 	return err
 }
@@ -19237,11 +18836,11 @@ var socketGetProtocolFunction_Once sync.Once
 func socketGetProtocolFunction_Set() error {
 	var err error
 	socketGetProtocolFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetProtocolFunction, err = socketStruct.InvokerNew("get_protocol")
+		socketGetProtocolFunction, err = socketObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -19269,11 +18868,11 @@ var socketGetRemoteAddressFunction_Once sync.Once
 func socketGetRemoteAddressFunction_Set() error {
 	var err error
 	socketGetRemoteAddressFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetRemoteAddressFunction, err = socketStruct.InvokerNew("get_remote_address")
+		socketGetRemoteAddressFunction, err = socketObject.InvokerNew("get_remote_address")
 	})
 	return err
 }
@@ -19302,11 +18901,11 @@ var socketGetSocketTypeFunction_Once sync.Once
 func socketGetSocketTypeFunction_Set() error {
 	var err error
 	socketGetSocketTypeFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetSocketTypeFunction, err = socketStruct.InvokerNew("get_socket_type")
+		socketGetSocketTypeFunction, err = socketObject.InvokerNew("get_socket_type")
 	})
 	return err
 }
@@ -19334,11 +18933,11 @@ var socketGetTimeoutFunction_Once sync.Once
 func socketGetTimeoutFunction_Set() error {
 	var err error
 	socketGetTimeoutFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetTimeoutFunction, err = socketStruct.InvokerNew("get_timeout")
+		socketGetTimeoutFunction, err = socketObject.InvokerNew("get_timeout")
 	})
 	return err
 }
@@ -19366,11 +18965,11 @@ var socketGetTtlFunction_Once sync.Once
 func socketGetTtlFunction_Set() error {
 	var err error
 	socketGetTtlFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketGetTtlFunction, err = socketStruct.InvokerNew("get_ttl")
+		socketGetTtlFunction, err = socketObject.InvokerNew("get_ttl")
 	})
 	return err
 }
@@ -19398,11 +18997,11 @@ var socketIsClosedFunction_Once sync.Once
 func socketIsClosedFunction_Set() error {
 	var err error
 	socketIsClosedFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketIsClosedFunction, err = socketStruct.InvokerNew("is_closed")
+		socketIsClosedFunction, err = socketObject.InvokerNew("is_closed")
 	})
 	return err
 }
@@ -19430,11 +19029,11 @@ var socketIsConnectedFunction_Once sync.Once
 func socketIsConnectedFunction_Set() error {
 	var err error
 	socketIsConnectedFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketIsConnectedFunction, err = socketStruct.InvokerNew("is_connected")
+		socketIsConnectedFunction, err = socketObject.InvokerNew("is_connected")
 	})
 	return err
 }
@@ -19462,11 +19061,11 @@ var socketJoinMulticastGroupFunction_Once sync.Once
 func socketJoinMulticastGroupFunction_Set() error {
 	var err error
 	socketJoinMulticastGroupFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketJoinMulticastGroupFunction, err = socketStruct.InvokerNew("join_multicast_group")
+		socketJoinMulticastGroupFunction, err = socketObject.InvokerNew("join_multicast_group")
 	})
 	return err
 }
@@ -19497,11 +19096,11 @@ var socketJoinMulticastGroupSsmFunction_Once sync.Once
 func socketJoinMulticastGroupSsmFunction_Set() error {
 	var err error
 	socketJoinMulticastGroupSsmFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketJoinMulticastGroupSsmFunction, err = socketStruct.InvokerNew("join_multicast_group_ssm")
+		socketJoinMulticastGroupSsmFunction, err = socketObject.InvokerNew("join_multicast_group_ssm")
 	})
 	return err
 }
@@ -19532,11 +19131,11 @@ var socketLeaveMulticastGroupFunction_Once sync.Once
 func socketLeaveMulticastGroupFunction_Set() error {
 	var err error
 	socketLeaveMulticastGroupFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketLeaveMulticastGroupFunction, err = socketStruct.InvokerNew("leave_multicast_group")
+		socketLeaveMulticastGroupFunction, err = socketObject.InvokerNew("leave_multicast_group")
 	})
 	return err
 }
@@ -19567,11 +19166,11 @@ var socketLeaveMulticastGroupSsmFunction_Once sync.Once
 func socketLeaveMulticastGroupSsmFunction_Set() error {
 	var err error
 	socketLeaveMulticastGroupSsmFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketLeaveMulticastGroupSsmFunction, err = socketStruct.InvokerNew("leave_multicast_group_ssm")
+		socketLeaveMulticastGroupSsmFunction, err = socketObject.InvokerNew("leave_multicast_group_ssm")
 	})
 	return err
 }
@@ -19602,11 +19201,11 @@ var socketListenFunction_Once sync.Once
 func socketListenFunction_Set() error {
 	var err error
 	socketListenFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketListenFunction, err = socketStruct.InvokerNew("listen")
+		socketListenFunction, err = socketObject.InvokerNew("listen")
 	})
 	return err
 }
@@ -19656,11 +19255,11 @@ var socketSetBlockingFunction_Once sync.Once
 func socketSetBlockingFunction_Set() error {
 	var err error
 	socketSetBlockingFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetBlockingFunction, err = socketStruct.InvokerNew("set_blocking")
+		socketSetBlockingFunction, err = socketObject.InvokerNew("set_blocking")
 	})
 	return err
 }
@@ -19685,11 +19284,11 @@ var socketSetBroadcastFunction_Once sync.Once
 func socketSetBroadcastFunction_Set() error {
 	var err error
 	socketSetBroadcastFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetBroadcastFunction, err = socketStruct.InvokerNew("set_broadcast")
+		socketSetBroadcastFunction, err = socketObject.InvokerNew("set_broadcast")
 	})
 	return err
 }
@@ -19714,11 +19313,11 @@ var socketSetKeepaliveFunction_Once sync.Once
 func socketSetKeepaliveFunction_Set() error {
 	var err error
 	socketSetKeepaliveFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetKeepaliveFunction, err = socketStruct.InvokerNew("set_keepalive")
+		socketSetKeepaliveFunction, err = socketObject.InvokerNew("set_keepalive")
 	})
 	return err
 }
@@ -19743,11 +19342,11 @@ var socketSetListenBacklogFunction_Once sync.Once
 func socketSetListenBacklogFunction_Set() error {
 	var err error
 	socketSetListenBacklogFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetListenBacklogFunction, err = socketStruct.InvokerNew("set_listen_backlog")
+		socketSetListenBacklogFunction, err = socketObject.InvokerNew("set_listen_backlog")
 	})
 	return err
 }
@@ -19772,11 +19371,11 @@ var socketSetMulticastLoopbackFunction_Once sync.Once
 func socketSetMulticastLoopbackFunction_Set() error {
 	var err error
 	socketSetMulticastLoopbackFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetMulticastLoopbackFunction, err = socketStruct.InvokerNew("set_multicast_loopback")
+		socketSetMulticastLoopbackFunction, err = socketObject.InvokerNew("set_multicast_loopback")
 	})
 	return err
 }
@@ -19801,11 +19400,11 @@ var socketSetMulticastTtlFunction_Once sync.Once
 func socketSetMulticastTtlFunction_Set() error {
 	var err error
 	socketSetMulticastTtlFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetMulticastTtlFunction, err = socketStruct.InvokerNew("set_multicast_ttl")
+		socketSetMulticastTtlFunction, err = socketObject.InvokerNew("set_multicast_ttl")
 	})
 	return err
 }
@@ -19830,11 +19429,11 @@ var socketSetOptionFunction_Once sync.Once
 func socketSetOptionFunction_Set() error {
 	var err error
 	socketSetOptionFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetOptionFunction, err = socketStruct.InvokerNew("set_option")
+		socketSetOptionFunction, err = socketObject.InvokerNew("set_option")
 	})
 	return err
 }
@@ -19865,11 +19464,11 @@ var socketSetTimeoutFunction_Once sync.Once
 func socketSetTimeoutFunction_Set() error {
 	var err error
 	socketSetTimeoutFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetTimeoutFunction, err = socketStruct.InvokerNew("set_timeout")
+		socketSetTimeoutFunction, err = socketObject.InvokerNew("set_timeout")
 	})
 	return err
 }
@@ -19894,11 +19493,11 @@ var socketSetTtlFunction_Once sync.Once
 func socketSetTtlFunction_Set() error {
 	var err error
 	socketSetTtlFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSetTtlFunction, err = socketStruct.InvokerNew("set_ttl")
+		socketSetTtlFunction, err = socketObject.InvokerNew("set_ttl")
 	})
 	return err
 }
@@ -19923,11 +19522,11 @@ var socketShutdownFunction_Once sync.Once
 func socketShutdownFunction_Set() error {
 	var err error
 	socketShutdownFunction_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketShutdownFunction, err = socketStruct.InvokerNew("shutdown")
+		socketShutdownFunction, err = socketObject.InvokerNew("shutdown")
 	})
 	return err
 }
@@ -19957,11 +19556,11 @@ var socketSpeaksIpv4Function_Once sync.Once
 func socketSpeaksIpv4Function_Set() error {
 	var err error
 	socketSpeaksIpv4Function_Once.Do(func() {
-		err = socketStruct_Set()
+		err = socketObject_Set()
 		if err != nil {
 			return
 		}
-		socketSpeaksIpv4Function, err = socketStruct.InvokerNew("speaks_ipv4")
+		socketSpeaksIpv4Function, err = socketObject.InvokerNew("speaks_ipv4")
 	})
 	return err
 }
@@ -19983,13 +19582,13 @@ func (recv *Socket) SpeaksIpv4() bool {
 	return retGo
 }
 
-var socketAddressStruct *gi.Struct
-var socketAddressStruct_Once sync.Once
+var socketAddressObject *gi.Object
+var socketAddressObject_Once sync.Once
 
-func socketAddressStruct_Set() error {
+func socketAddressObject_Set() error {
 	var err error
-	socketAddressStruct_Once.Do(func() {
-		socketAddressStruct, err = gi.StructNew("Gio", "SocketAddress")
+	socketAddressObject_Once.Do(func() {
+		socketAddressObject, err = gi.ObjectNew("Gio", "SocketAddress")
 	})
 	return err
 }
@@ -20010,11 +19609,11 @@ var socketAddressGetFamilyFunction_Once sync.Once
 func socketAddressGetFamilyFunction_Set() error {
 	var err error
 	socketAddressGetFamilyFunction_Once.Do(func() {
-		err = socketAddressStruct_Set()
+		err = socketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		socketAddressGetFamilyFunction, err = socketAddressStruct.InvokerNew("get_family")
+		socketAddressGetFamilyFunction, err = socketAddressObject.InvokerNew("get_family")
 	})
 	return err
 }
@@ -20042,11 +19641,11 @@ var socketAddressGetNativeSizeFunction_Once sync.Once
 func socketAddressGetNativeSizeFunction_Set() error {
 	var err error
 	socketAddressGetNativeSizeFunction_Once.Do(func() {
-		err = socketAddressStruct_Set()
+		err = socketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		socketAddressGetNativeSizeFunction, err = socketAddressStruct.InvokerNew("get_native_size")
+		socketAddressGetNativeSizeFunction, err = socketAddressObject.InvokerNew("get_native_size")
 	})
 	return err
 }
@@ -20070,13 +19669,13 @@ func (recv *SocketAddress) GetNativeSize() int32 {
 
 // UNSUPPORTED : C value 'g_socket_address_to_native' : parameter 'dest' of type 'gpointer' not supported
 
-var socketAddressEnumeratorStruct *gi.Struct
-var socketAddressEnumeratorStruct_Once sync.Once
+var socketAddressEnumeratorObject *gi.Object
+var socketAddressEnumeratorObject_Once sync.Once
 
-func socketAddressEnumeratorStruct_Set() error {
+func socketAddressEnumeratorObject_Set() error {
 	var err error
-	socketAddressEnumeratorStruct_Once.Do(func() {
-		socketAddressEnumeratorStruct, err = gi.StructNew("Gio", "SocketAddressEnumerator")
+	socketAddressEnumeratorObject_Once.Do(func() {
+		socketAddressEnumeratorObject, err = gi.ObjectNew("Gio", "SocketAddressEnumerator")
 	})
 	return err
 }
@@ -20091,11 +19690,11 @@ var socketAddressEnumeratorNextFunction_Once sync.Once
 func socketAddressEnumeratorNextFunction_Set() error {
 	var err error
 	socketAddressEnumeratorNextFunction_Once.Do(func() {
-		err = socketAddressEnumeratorStruct_Set()
+		err = socketAddressEnumeratorObject_Set()
 		if err != nil {
 			return
 		}
-		socketAddressEnumeratorNextFunction, err = socketAddressEnumeratorStruct.InvokerNew("next")
+		socketAddressEnumeratorNextFunction, err = socketAddressEnumeratorObject.InvokerNew("next")
 	})
 	return err
 }
@@ -20123,29 +19722,13 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) *SocketAddre
 
 // UNSUPPORTED : C value 'g_socket_address_enumerator_next_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// SocketAddressEnumeratorStruct creates an uninitialised SocketAddressEnumerator.
-func SocketAddressEnumeratorStruct() *SocketAddressEnumerator {
-	err := socketAddressEnumeratorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var socketClientObject *gi.Object
+var socketClientObject_Once sync.Once
 
-	structGo := &SocketAddressEnumerator{}
-	structGo.Native = socketAddressEnumeratorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSocketAddressEnumerator)
-	return structGo
-}
-func finalizeSocketAddressEnumerator(obj *SocketAddressEnumerator) {
-	socketAddressEnumeratorStruct.Free(obj.Native)
-}
-
-var socketClientStruct *gi.Struct
-var socketClientStruct_Once sync.Once
-
-func socketClientStruct_Set() error {
+func socketClientObject_Set() error {
 	var err error
-	socketClientStruct_Once.Do(func() {
-		socketClientStruct, err = gi.StructNew("Gio", "SocketClient")
+	socketClientObject_Once.Do(func() {
+		socketClientObject, err = gi.ObjectNew("Gio", "SocketClient")
 	})
 	return err
 }
@@ -20160,7 +19743,7 @@ type SocketClient struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
-	argValue := gi.FieldGet(socketClientStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketClientObject, recv.Native, "priv")
 	value := &SocketClientPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -20170,7 +19753,7 @@ func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
 func (recv *SocketClient) SetFieldPriv(value *SocketClientPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketClientStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketClientObject, recv.Native, "priv", argValue)
 }
 
 var socketClientNewFunction *gi.Function
@@ -20179,11 +19762,11 @@ var socketClientNewFunction_Once sync.Once
 func socketClientNewFunction_Set() error {
 	var err error
 	socketClientNewFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientNewFunction, err = socketClientStruct.InvokerNew("new")
+		socketClientNewFunction, err = socketClientObject.InvokerNew("new")
 	})
 	return err
 }
@@ -20210,11 +19793,11 @@ var socketClientAddApplicationProxyFunction_Once sync.Once
 func socketClientAddApplicationProxyFunction_Set() error {
 	var err error
 	socketClientAddApplicationProxyFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientAddApplicationProxyFunction, err = socketClientStruct.InvokerNew("add_application_proxy")
+		socketClientAddApplicationProxyFunction, err = socketClientObject.InvokerNew("add_application_proxy")
 	})
 	return err
 }
@@ -20245,11 +19828,11 @@ var socketClientConnectToHostFunction_Once sync.Once
 func socketClientConnectToHostFunction_Set() error {
 	var err error
 	socketClientConnectToHostFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientConnectToHostFunction, err = socketClientStruct.InvokerNew("connect_to_host")
+		socketClientConnectToHostFunction, err = socketClientObject.InvokerNew("connect_to_host")
 	})
 	return err
 }
@@ -20285,11 +19868,11 @@ var socketClientConnectToServiceFunction_Once sync.Once
 func socketClientConnectToServiceFunction_Set() error {
 	var err error
 	socketClientConnectToServiceFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientConnectToServiceFunction, err = socketClientStruct.InvokerNew("connect_to_service")
+		socketClientConnectToServiceFunction, err = socketClientObject.InvokerNew("connect_to_service")
 	})
 	return err
 }
@@ -20325,11 +19908,11 @@ var socketClientConnectToUriFunction_Once sync.Once
 func socketClientConnectToUriFunction_Set() error {
 	var err error
 	socketClientConnectToUriFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientConnectToUriFunction, err = socketClientStruct.InvokerNew("connect_to_uri")
+		socketClientConnectToUriFunction, err = socketClientObject.InvokerNew("connect_to_uri")
 	})
 	return err
 }
@@ -20365,11 +19948,11 @@ var socketClientGetEnableProxyFunction_Once sync.Once
 func socketClientGetEnableProxyFunction_Set() error {
 	var err error
 	socketClientGetEnableProxyFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetEnableProxyFunction, err = socketClientStruct.InvokerNew("get_enable_proxy")
+		socketClientGetEnableProxyFunction, err = socketClientObject.InvokerNew("get_enable_proxy")
 	})
 	return err
 }
@@ -20397,11 +19980,11 @@ var socketClientGetFamilyFunction_Once sync.Once
 func socketClientGetFamilyFunction_Set() error {
 	var err error
 	socketClientGetFamilyFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetFamilyFunction, err = socketClientStruct.InvokerNew("get_family")
+		socketClientGetFamilyFunction, err = socketClientObject.InvokerNew("get_family")
 	})
 	return err
 }
@@ -20429,11 +20012,11 @@ var socketClientGetLocalAddressFunction_Once sync.Once
 func socketClientGetLocalAddressFunction_Set() error {
 	var err error
 	socketClientGetLocalAddressFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetLocalAddressFunction, err = socketClientStruct.InvokerNew("get_local_address")
+		socketClientGetLocalAddressFunction, err = socketClientObject.InvokerNew("get_local_address")
 	})
 	return err
 }
@@ -20462,11 +20045,11 @@ var socketClientGetProtocolFunction_Once sync.Once
 func socketClientGetProtocolFunction_Set() error {
 	var err error
 	socketClientGetProtocolFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetProtocolFunction, err = socketClientStruct.InvokerNew("get_protocol")
+		socketClientGetProtocolFunction, err = socketClientObject.InvokerNew("get_protocol")
 	})
 	return err
 }
@@ -20496,11 +20079,11 @@ var socketClientGetSocketTypeFunction_Once sync.Once
 func socketClientGetSocketTypeFunction_Set() error {
 	var err error
 	socketClientGetSocketTypeFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetSocketTypeFunction, err = socketClientStruct.InvokerNew("get_socket_type")
+		socketClientGetSocketTypeFunction, err = socketClientObject.InvokerNew("get_socket_type")
 	})
 	return err
 }
@@ -20528,11 +20111,11 @@ var socketClientGetTimeoutFunction_Once sync.Once
 func socketClientGetTimeoutFunction_Set() error {
 	var err error
 	socketClientGetTimeoutFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetTimeoutFunction, err = socketClientStruct.InvokerNew("get_timeout")
+		socketClientGetTimeoutFunction, err = socketClientObject.InvokerNew("get_timeout")
 	})
 	return err
 }
@@ -20560,11 +20143,11 @@ var socketClientGetTlsFunction_Once sync.Once
 func socketClientGetTlsFunction_Set() error {
 	var err error
 	socketClientGetTlsFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientGetTlsFunction, err = socketClientStruct.InvokerNew("get_tls")
+		socketClientGetTlsFunction, err = socketClientObject.InvokerNew("get_tls")
 	})
 	return err
 }
@@ -20594,11 +20177,11 @@ var socketClientSetEnableProxyFunction_Once sync.Once
 func socketClientSetEnableProxyFunction_Set() error {
 	var err error
 	socketClientSetEnableProxyFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetEnableProxyFunction, err = socketClientStruct.InvokerNew("set_enable_proxy")
+		socketClientSetEnableProxyFunction, err = socketClientObject.InvokerNew("set_enable_proxy")
 	})
 	return err
 }
@@ -20623,11 +20206,11 @@ var socketClientSetFamilyFunction_Once sync.Once
 func socketClientSetFamilyFunction_Set() error {
 	var err error
 	socketClientSetFamilyFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetFamilyFunction, err = socketClientStruct.InvokerNew("set_family")
+		socketClientSetFamilyFunction, err = socketClientObject.InvokerNew("set_family")
 	})
 	return err
 }
@@ -20652,11 +20235,11 @@ var socketClientSetLocalAddressFunction_Once sync.Once
 func socketClientSetLocalAddressFunction_Set() error {
 	var err error
 	socketClientSetLocalAddressFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetLocalAddressFunction, err = socketClientStruct.InvokerNew("set_local_address")
+		socketClientSetLocalAddressFunction, err = socketClientObject.InvokerNew("set_local_address")
 	})
 	return err
 }
@@ -20681,11 +20264,11 @@ var socketClientSetProtocolFunction_Once sync.Once
 func socketClientSetProtocolFunction_Set() error {
 	var err error
 	socketClientSetProtocolFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetProtocolFunction, err = socketClientStruct.InvokerNew("set_protocol")
+		socketClientSetProtocolFunction, err = socketClientObject.InvokerNew("set_protocol")
 	})
 	return err
 }
@@ -20712,11 +20295,11 @@ var socketClientSetSocketTypeFunction_Once sync.Once
 func socketClientSetSocketTypeFunction_Set() error {
 	var err error
 	socketClientSetSocketTypeFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetSocketTypeFunction, err = socketClientStruct.InvokerNew("set_socket_type")
+		socketClientSetSocketTypeFunction, err = socketClientObject.InvokerNew("set_socket_type")
 	})
 	return err
 }
@@ -20741,11 +20324,11 @@ var socketClientSetTimeoutFunction_Once sync.Once
 func socketClientSetTimeoutFunction_Set() error {
 	var err error
 	socketClientSetTimeoutFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetTimeoutFunction, err = socketClientStruct.InvokerNew("set_timeout")
+		socketClientSetTimeoutFunction, err = socketClientObject.InvokerNew("set_timeout")
 	})
 	return err
 }
@@ -20770,11 +20353,11 @@ var socketClientSetTlsFunction_Once sync.Once
 func socketClientSetTlsFunction_Set() error {
 	var err error
 	socketClientSetTlsFunction_Once.Do(func() {
-		err = socketClientStruct_Set()
+		err = socketClientObject_Set()
 		if err != nil {
 			return
 		}
-		socketClientSetTlsFunction, err = socketClientStruct.InvokerNew("set_tls")
+		socketClientSetTlsFunction, err = socketClientObject.InvokerNew("set_tls")
 	})
 	return err
 }
@@ -20795,13 +20378,13 @@ func (recv *SocketClient) SetTls(tls bool) {
 
 // UNSUPPORTED : C value 'g_socket_client_set_tls_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
 
-var socketConnectionStruct *gi.Struct
-var socketConnectionStruct_Once sync.Once
+var socketConnectionObject *gi.Object
+var socketConnectionObject_Once sync.Once
 
-func socketConnectionStruct_Set() error {
+func socketConnectionObject_Set() error {
 	var err error
-	socketConnectionStruct_Once.Do(func() {
-		socketConnectionStruct, err = gi.StructNew("Gio", "SocketConnection")
+	socketConnectionObject_Once.Do(func() {
+		socketConnectionObject, err = gi.ObjectNew("Gio", "SocketConnection")
 	})
 	return err
 }
@@ -20812,7 +20395,7 @@ type SocketConnection struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketConnection) FieldParentInstance() *IOStream {
-	argValue := gi.FieldGet(socketConnectionStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native, "parent_instance")
 	value := &IOStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -20822,12 +20405,12 @@ func (recv *SocketConnection) FieldParentInstance() *IOStream {
 func (recv *SocketConnection) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketConnectionStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(socketConnectionObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
-	argValue := gi.FieldGet(socketConnectionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native, "priv")
 	value := &SocketConnectionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -20837,7 +20420,7 @@ func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
 func (recv *SocketConnection) SetFieldPriv(value *SocketConnectionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketConnectionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketConnectionObject, recv.Native, "priv", argValue)
 }
 
 var socketConnectionConnectFunction *gi.Function
@@ -20846,11 +20429,11 @@ var socketConnectionConnectFunction_Once sync.Once
 func socketConnectionConnectFunction_Set() error {
 	var err error
 	socketConnectionConnectFunction_Once.Do(func() {
-		err = socketConnectionStruct_Set()
+		err = socketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionConnectFunction, err = socketConnectionStruct.InvokerNew("connect")
+		socketConnectionConnectFunction, err = socketConnectionObject.InvokerNew("connect")
 	})
 	return err
 }
@@ -20884,11 +20467,11 @@ var socketConnectionGetLocalAddressFunction_Once sync.Once
 func socketConnectionGetLocalAddressFunction_Set() error {
 	var err error
 	socketConnectionGetLocalAddressFunction_Once.Do(func() {
-		err = socketConnectionStruct_Set()
+		err = socketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionGetLocalAddressFunction, err = socketConnectionStruct.InvokerNew("get_local_address")
+		socketConnectionGetLocalAddressFunction, err = socketConnectionObject.InvokerNew("get_local_address")
 	})
 	return err
 }
@@ -20917,11 +20500,11 @@ var socketConnectionGetRemoteAddressFunction_Once sync.Once
 func socketConnectionGetRemoteAddressFunction_Set() error {
 	var err error
 	socketConnectionGetRemoteAddressFunction_Once.Do(func() {
-		err = socketConnectionStruct_Set()
+		err = socketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionGetRemoteAddressFunction, err = socketConnectionStruct.InvokerNew("get_remote_address")
+		socketConnectionGetRemoteAddressFunction, err = socketConnectionObject.InvokerNew("get_remote_address")
 	})
 	return err
 }
@@ -20950,11 +20533,11 @@ var socketConnectionGetSocketFunction_Once sync.Once
 func socketConnectionGetSocketFunction_Set() error {
 	var err error
 	socketConnectionGetSocketFunction_Once.Do(func() {
-		err = socketConnectionStruct_Set()
+		err = socketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionGetSocketFunction, err = socketConnectionStruct.InvokerNew("get_socket")
+		socketConnectionGetSocketFunction, err = socketConnectionObject.InvokerNew("get_socket")
 	})
 	return err
 }
@@ -20983,11 +20566,11 @@ var socketConnectionIsConnectedFunction_Once sync.Once
 func socketConnectionIsConnectedFunction_Set() error {
 	var err error
 	socketConnectionIsConnectedFunction_Once.Do(func() {
-		err = socketConnectionStruct_Set()
+		err = socketConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		socketConnectionIsConnectedFunction, err = socketConnectionStruct.InvokerNew("is_connected")
+		socketConnectionIsConnectedFunction, err = socketConnectionObject.InvokerNew("is_connected")
 	})
 	return err
 }
@@ -21009,29 +20592,13 @@ func (recv *SocketConnection) IsConnected() bool {
 	return retGo
 }
 
-// SocketConnectionStruct creates an uninitialised SocketConnection.
-func SocketConnectionStruct() *SocketConnection {
-	err := socketConnectionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var socketControlMessageObject *gi.Object
+var socketControlMessageObject_Once sync.Once
 
-	structGo := &SocketConnection{}
-	structGo.Native = socketConnectionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSocketConnection)
-	return structGo
-}
-func finalizeSocketConnection(obj *SocketConnection) {
-	socketConnectionStruct.Free(obj.Native)
-}
-
-var socketControlMessageStruct *gi.Struct
-var socketControlMessageStruct_Once sync.Once
-
-func socketControlMessageStruct_Set() error {
+func socketControlMessageObject_Set() error {
 	var err error
-	socketControlMessageStruct_Once.Do(func() {
-		socketControlMessageStruct, err = gi.StructNew("Gio", "SocketControlMessage")
+	socketControlMessageObject_Once.Do(func() {
+		socketControlMessageObject, err = gi.ObjectNew("Gio", "SocketControlMessage")
 	})
 	return err
 }
@@ -21046,7 +20613,7 @@ type SocketControlMessage struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
-	argValue := gi.FieldGet(socketControlMessageStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketControlMessageObject, recv.Native, "priv")
 	value := &SocketControlMessagePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -21056,7 +20623,7 @@ func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
 func (recv *SocketControlMessage) SetFieldPriv(value *SocketControlMessagePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketControlMessageStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketControlMessageObject, recv.Native, "priv", argValue)
 }
 
 var socketControlMessageGetLevelFunction *gi.Function
@@ -21065,11 +20632,11 @@ var socketControlMessageGetLevelFunction_Once sync.Once
 func socketControlMessageGetLevelFunction_Set() error {
 	var err error
 	socketControlMessageGetLevelFunction_Once.Do(func() {
-		err = socketControlMessageStruct_Set()
+		err = socketControlMessageObject_Set()
 		if err != nil {
 			return
 		}
-		socketControlMessageGetLevelFunction, err = socketControlMessageStruct.InvokerNew("get_level")
+		socketControlMessageGetLevelFunction, err = socketControlMessageObject.InvokerNew("get_level")
 	})
 	return err
 }
@@ -21097,11 +20664,11 @@ var socketControlMessageGetMsgTypeFunction_Once sync.Once
 func socketControlMessageGetMsgTypeFunction_Set() error {
 	var err error
 	socketControlMessageGetMsgTypeFunction_Once.Do(func() {
-		err = socketControlMessageStruct_Set()
+		err = socketControlMessageObject_Set()
 		if err != nil {
 			return
 		}
-		socketControlMessageGetMsgTypeFunction, err = socketControlMessageStruct.InvokerNew("get_msg_type")
+		socketControlMessageGetMsgTypeFunction, err = socketControlMessageObject.InvokerNew("get_msg_type")
 	})
 	return err
 }
@@ -21129,11 +20696,11 @@ var socketControlMessageGetSizeFunction_Once sync.Once
 func socketControlMessageGetSizeFunction_Set() error {
 	var err error
 	socketControlMessageGetSizeFunction_Once.Do(func() {
-		err = socketControlMessageStruct_Set()
+		err = socketControlMessageObject_Set()
 		if err != nil {
 			return
 		}
-		socketControlMessageGetSizeFunction, err = socketControlMessageStruct.InvokerNew("get_size")
+		socketControlMessageGetSizeFunction, err = socketControlMessageObject.InvokerNew("get_size")
 	})
 	return err
 }
@@ -21157,29 +20724,13 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 
 // UNSUPPORTED : C value 'g_socket_control_message_serialize' : parameter 'data' of type 'gpointer' not supported
 
-// SocketControlMessageStruct creates an uninitialised SocketControlMessage.
-func SocketControlMessageStruct() *SocketControlMessage {
-	err := socketControlMessageStruct_Set()
-	if err != nil {
-		return nil
-	}
+var socketListenerObject *gi.Object
+var socketListenerObject_Once sync.Once
 
-	structGo := &SocketControlMessage{}
-	structGo.Native = socketControlMessageStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeSocketControlMessage)
-	return structGo
-}
-func finalizeSocketControlMessage(obj *SocketControlMessage) {
-	socketControlMessageStruct.Free(obj.Native)
-}
-
-var socketListenerStruct *gi.Struct
-var socketListenerStruct_Once sync.Once
-
-func socketListenerStruct_Set() error {
+func socketListenerObject_Set() error {
 	var err error
-	socketListenerStruct_Once.Do(func() {
-		socketListenerStruct, err = gi.StructNew("Gio", "SocketListener")
+	socketListenerObject_Once.Do(func() {
+		socketListenerObject, err = gi.ObjectNew("Gio", "SocketListener")
 	})
 	return err
 }
@@ -21194,7 +20745,7 @@ type SocketListener struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
-	argValue := gi.FieldGet(socketListenerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketListenerObject, recv.Native, "priv")
 	value := &SocketListenerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -21204,7 +20755,7 @@ func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
 func (recv *SocketListener) SetFieldPriv(value *SocketListenerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketListenerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketListenerObject, recv.Native, "priv", argValue)
 }
 
 var socketListenerNewFunction *gi.Function
@@ -21213,11 +20764,11 @@ var socketListenerNewFunction_Once sync.Once
 func socketListenerNewFunction_Set() error {
 	var err error
 	socketListenerNewFunction_Once.Do(func() {
-		err = socketListenerStruct_Set()
+		err = socketListenerObject_Set()
 		if err != nil {
 			return
 		}
-		socketListenerNewFunction, err = socketListenerStruct.InvokerNew("new")
+		socketListenerNewFunction, err = socketListenerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -21264,11 +20815,11 @@ var socketListenerCloseFunction_Once sync.Once
 func socketListenerCloseFunction_Set() error {
 	var err error
 	socketListenerCloseFunction_Once.Do(func() {
-		err = socketListenerStruct_Set()
+		err = socketListenerObject_Set()
 		if err != nil {
 			return
 		}
-		socketListenerCloseFunction, err = socketListenerStruct.InvokerNew("close")
+		socketListenerCloseFunction, err = socketListenerObject.InvokerNew("close")
 	})
 	return err
 }
@@ -21292,11 +20843,11 @@ var socketListenerSetBacklogFunction_Once sync.Once
 func socketListenerSetBacklogFunction_Set() error {
 	var err error
 	socketListenerSetBacklogFunction_Once.Do(func() {
-		err = socketListenerStruct_Set()
+		err = socketListenerObject_Set()
 		if err != nil {
 			return
 		}
-		socketListenerSetBacklogFunction, err = socketListenerStruct.InvokerNew("set_backlog")
+		socketListenerSetBacklogFunction, err = socketListenerObject.InvokerNew("set_backlog")
 	})
 	return err
 }
@@ -21315,13 +20866,13 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	return
 }
 
-var socketServiceStruct *gi.Struct
-var socketServiceStruct_Once sync.Once
+var socketServiceObject *gi.Object
+var socketServiceObject_Once sync.Once
 
-func socketServiceStruct_Set() error {
+func socketServiceObject_Set() error {
 	var err error
-	socketServiceStruct_Once.Do(func() {
-		socketServiceStruct, err = gi.StructNew("Gio", "SocketService")
+	socketServiceObject_Once.Do(func() {
+		socketServiceObject, err = gi.ObjectNew("Gio", "SocketService")
 	})
 	return err
 }
@@ -21332,7 +20883,7 @@ type SocketService struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketService) FieldParentInstance() *SocketListener {
-	argValue := gi.FieldGet(socketServiceStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native, "parent_instance")
 	value := &SocketListener{}
 	value.Native = argValue.Pointer()
 	return value
@@ -21342,12 +20893,12 @@ func (recv *SocketService) FieldParentInstance() *SocketListener {
 func (recv *SocketService) SetFieldParentInstance(value *SocketListener) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketServiceStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(socketServiceObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketService) FieldPriv() *SocketServicePrivate {
-	argValue := gi.FieldGet(socketServiceStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native, "priv")
 	value := &SocketServicePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -21357,7 +20908,7 @@ func (recv *SocketService) FieldPriv() *SocketServicePrivate {
 func (recv *SocketService) SetFieldPriv(value *SocketServicePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(socketServiceStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(socketServiceObject, recv.Native, "priv", argValue)
 }
 
 var socketServiceNewFunction *gi.Function
@@ -21366,11 +20917,11 @@ var socketServiceNewFunction_Once sync.Once
 func socketServiceNewFunction_Set() error {
 	var err error
 	socketServiceNewFunction_Once.Do(func() {
-		err = socketServiceStruct_Set()
+		err = socketServiceObject_Set()
 		if err != nil {
 			return
 		}
-		socketServiceNewFunction, err = socketServiceStruct.InvokerNew("new")
+		socketServiceNewFunction, err = socketServiceObject.InvokerNew("new")
 	})
 	return err
 }
@@ -21397,11 +20948,11 @@ var socketServiceIsActiveFunction_Once sync.Once
 func socketServiceIsActiveFunction_Set() error {
 	var err error
 	socketServiceIsActiveFunction_Once.Do(func() {
-		err = socketServiceStruct_Set()
+		err = socketServiceObject_Set()
 		if err != nil {
 			return
 		}
-		socketServiceIsActiveFunction, err = socketServiceStruct.InvokerNew("is_active")
+		socketServiceIsActiveFunction, err = socketServiceObject.InvokerNew("is_active")
 	})
 	return err
 }
@@ -21429,11 +20980,11 @@ var socketServiceStartFunction_Once sync.Once
 func socketServiceStartFunction_Set() error {
 	var err error
 	socketServiceStartFunction_Once.Do(func() {
-		err = socketServiceStruct_Set()
+		err = socketServiceObject_Set()
 		if err != nil {
 			return
 		}
-		socketServiceStartFunction, err = socketServiceStruct.InvokerNew("start")
+		socketServiceStartFunction, err = socketServiceObject.InvokerNew("start")
 	})
 	return err
 }
@@ -21457,11 +21008,11 @@ var socketServiceStopFunction_Once sync.Once
 func socketServiceStopFunction_Set() error {
 	var err error
 	socketServiceStopFunction_Once.Do(func() {
-		err = socketServiceStruct_Set()
+		err = socketServiceObject_Set()
 		if err != nil {
 			return
 		}
-		socketServiceStopFunction, err = socketServiceStruct.InvokerNew("stop")
+		socketServiceStopFunction, err = socketServiceObject.InvokerNew("stop")
 	})
 	return err
 }
@@ -21479,13 +21030,13 @@ func (recv *SocketService) Stop() {
 	return
 }
 
-var subprocessStruct *gi.Struct
-var subprocessStruct_Once sync.Once
+var subprocessObject *gi.Object
+var subprocessObject_Once sync.Once
 
-func subprocessStruct_Set() error {
+func subprocessObject_Set() error {
 	var err error
-	subprocessStruct_Once.Do(func() {
-		subprocessStruct, err = gi.StructNew("Gio", "Subprocess")
+	subprocessObject_Once.Do(func() {
+		subprocessObject, err = gi.ObjectNew("Gio", "Subprocess")
 	})
 	return err
 }
@@ -21510,11 +21061,11 @@ var subprocessCommunicateUtf8Function_Once sync.Once
 func subprocessCommunicateUtf8Function_Set() error {
 	var err error
 	subprocessCommunicateUtf8Function_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessCommunicateUtf8Function, err = subprocessStruct.InvokerNew("communicate_utf8")
+		subprocessCommunicateUtf8Function, err = subprocessObject.InvokerNew("communicate_utf8")
 	})
 	return err
 }
@@ -21551,11 +21102,11 @@ var subprocessForceExitFunction_Once sync.Once
 func subprocessForceExitFunction_Set() error {
 	var err error
 	subprocessForceExitFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessForceExitFunction, err = subprocessStruct.InvokerNew("force_exit")
+		subprocessForceExitFunction, err = subprocessObject.InvokerNew("force_exit")
 	})
 	return err
 }
@@ -21579,11 +21130,11 @@ var subprocessGetExitStatusFunction_Once sync.Once
 func subprocessGetExitStatusFunction_Set() error {
 	var err error
 	subprocessGetExitStatusFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetExitStatusFunction, err = subprocessStruct.InvokerNew("get_exit_status")
+		subprocessGetExitStatusFunction, err = subprocessObject.InvokerNew("get_exit_status")
 	})
 	return err
 }
@@ -21611,11 +21162,11 @@ var subprocessGetIdentifierFunction_Once sync.Once
 func subprocessGetIdentifierFunction_Set() error {
 	var err error
 	subprocessGetIdentifierFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetIdentifierFunction, err = subprocessStruct.InvokerNew("get_identifier")
+		subprocessGetIdentifierFunction, err = subprocessObject.InvokerNew("get_identifier")
 	})
 	return err
 }
@@ -21643,11 +21194,11 @@ var subprocessGetIfExitedFunction_Once sync.Once
 func subprocessGetIfExitedFunction_Set() error {
 	var err error
 	subprocessGetIfExitedFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetIfExitedFunction, err = subprocessStruct.InvokerNew("get_if_exited")
+		subprocessGetIfExitedFunction, err = subprocessObject.InvokerNew("get_if_exited")
 	})
 	return err
 }
@@ -21675,11 +21226,11 @@ var subprocessGetIfSignaledFunction_Once sync.Once
 func subprocessGetIfSignaledFunction_Set() error {
 	var err error
 	subprocessGetIfSignaledFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetIfSignaledFunction, err = subprocessStruct.InvokerNew("get_if_signaled")
+		subprocessGetIfSignaledFunction, err = subprocessObject.InvokerNew("get_if_signaled")
 	})
 	return err
 }
@@ -21707,11 +21258,11 @@ var subprocessGetStatusFunction_Once sync.Once
 func subprocessGetStatusFunction_Set() error {
 	var err error
 	subprocessGetStatusFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetStatusFunction, err = subprocessStruct.InvokerNew("get_status")
+		subprocessGetStatusFunction, err = subprocessObject.InvokerNew("get_status")
 	})
 	return err
 }
@@ -21739,11 +21290,11 @@ var subprocessGetStderrPipeFunction_Once sync.Once
 func subprocessGetStderrPipeFunction_Set() error {
 	var err error
 	subprocessGetStderrPipeFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetStderrPipeFunction, err = subprocessStruct.InvokerNew("get_stderr_pipe")
+		subprocessGetStderrPipeFunction, err = subprocessObject.InvokerNew("get_stderr_pipe")
 	})
 	return err
 }
@@ -21772,11 +21323,11 @@ var subprocessGetStdinPipeFunction_Once sync.Once
 func subprocessGetStdinPipeFunction_Set() error {
 	var err error
 	subprocessGetStdinPipeFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetStdinPipeFunction, err = subprocessStruct.InvokerNew("get_stdin_pipe")
+		subprocessGetStdinPipeFunction, err = subprocessObject.InvokerNew("get_stdin_pipe")
 	})
 	return err
 }
@@ -21805,11 +21356,11 @@ var subprocessGetStdoutPipeFunction_Once sync.Once
 func subprocessGetStdoutPipeFunction_Set() error {
 	var err error
 	subprocessGetStdoutPipeFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetStdoutPipeFunction, err = subprocessStruct.InvokerNew("get_stdout_pipe")
+		subprocessGetStdoutPipeFunction, err = subprocessObject.InvokerNew("get_stdout_pipe")
 	})
 	return err
 }
@@ -21838,11 +21389,11 @@ var subprocessGetSuccessfulFunction_Once sync.Once
 func subprocessGetSuccessfulFunction_Set() error {
 	var err error
 	subprocessGetSuccessfulFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetSuccessfulFunction, err = subprocessStruct.InvokerNew("get_successful")
+		subprocessGetSuccessfulFunction, err = subprocessObject.InvokerNew("get_successful")
 	})
 	return err
 }
@@ -21870,11 +21421,11 @@ var subprocessGetTermSigFunction_Once sync.Once
 func subprocessGetTermSigFunction_Set() error {
 	var err error
 	subprocessGetTermSigFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessGetTermSigFunction, err = subprocessStruct.InvokerNew("get_term_sig")
+		subprocessGetTermSigFunction, err = subprocessObject.InvokerNew("get_term_sig")
 	})
 	return err
 }
@@ -21902,11 +21453,11 @@ var subprocessSendSignalFunction_Once sync.Once
 func subprocessSendSignalFunction_Set() error {
 	var err error
 	subprocessSendSignalFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessSendSignalFunction, err = subprocessStruct.InvokerNew("send_signal")
+		subprocessSendSignalFunction, err = subprocessObject.InvokerNew("send_signal")
 	})
 	return err
 }
@@ -21931,11 +21482,11 @@ var subprocessWaitFunction_Once sync.Once
 func subprocessWaitFunction_Set() error {
 	var err error
 	subprocessWaitFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessWaitFunction, err = subprocessStruct.InvokerNew("wait")
+		subprocessWaitFunction, err = subprocessObject.InvokerNew("wait")
 	})
 	return err
 }
@@ -21966,11 +21517,11 @@ var subprocessWaitCheckFunction_Once sync.Once
 func subprocessWaitCheckFunction_Set() error {
 	var err error
 	subprocessWaitCheckFunction_Once.Do(func() {
-		err = subprocessStruct_Set()
+		err = subprocessObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessWaitCheckFunction, err = subprocessStruct.InvokerNew("wait_check")
+		subprocessWaitCheckFunction, err = subprocessObject.InvokerNew("wait_check")
 	})
 	return err
 }
@@ -21999,13 +21550,13 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_subprocess_wait_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-var subprocessLauncherStruct *gi.Struct
-var subprocessLauncherStruct_Once sync.Once
+var subprocessLauncherObject *gi.Object
+var subprocessLauncherObject_Once sync.Once
 
-func subprocessLauncherStruct_Set() error {
+func subprocessLauncherObject_Set() error {
 	var err error
-	subprocessLauncherStruct_Once.Do(func() {
-		subprocessLauncherStruct, err = gi.StructNew("Gio", "SubprocessLauncher")
+	subprocessLauncherObject_Once.Do(func() {
+		subprocessLauncherObject, err = gi.ObjectNew("Gio", "SubprocessLauncher")
 	})
 	return err
 }
@@ -22022,11 +21573,11 @@ var subprocessLauncherGetenvFunction_Once sync.Once
 func subprocessLauncherGetenvFunction_Set() error {
 	var err error
 	subprocessLauncherGetenvFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherGetenvFunction, err = subprocessLauncherStruct.InvokerNew("getenv")
+		subprocessLauncherGetenvFunction, err = subprocessLauncherObject.InvokerNew("getenv")
 	})
 	return err
 }
@@ -22057,11 +21608,11 @@ var subprocessLauncherSetCwdFunction_Once sync.Once
 func subprocessLauncherSetCwdFunction_Set() error {
 	var err error
 	subprocessLauncherSetCwdFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherSetCwdFunction, err = subprocessLauncherStruct.InvokerNew("set_cwd")
+		subprocessLauncherSetCwdFunction, err = subprocessLauncherObject.InvokerNew("set_cwd")
 	})
 	return err
 }
@@ -22090,11 +21641,11 @@ var subprocessLauncherSetStderrFilePathFunction_Once sync.Once
 func subprocessLauncherSetStderrFilePathFunction_Set() error {
 	var err error
 	subprocessLauncherSetStderrFilePathFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherSetStderrFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stderr_file_path")
+		subprocessLauncherSetStderrFilePathFunction, err = subprocessLauncherObject.InvokerNew("set_stderr_file_path")
 	})
 	return err
 }
@@ -22119,11 +21670,11 @@ var subprocessLauncherSetStdinFilePathFunction_Once sync.Once
 func subprocessLauncherSetStdinFilePathFunction_Set() error {
 	var err error
 	subprocessLauncherSetStdinFilePathFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherSetStdinFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stdin_file_path")
+		subprocessLauncherSetStdinFilePathFunction, err = subprocessLauncherObject.InvokerNew("set_stdin_file_path")
 	})
 	return err
 }
@@ -22148,11 +21699,11 @@ var subprocessLauncherSetStdoutFilePathFunction_Once sync.Once
 func subprocessLauncherSetStdoutFilePathFunction_Set() error {
 	var err error
 	subprocessLauncherSetStdoutFilePathFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherSetStdoutFilePathFunction, err = subprocessLauncherStruct.InvokerNew("set_stdout_file_path")
+		subprocessLauncherSetStdoutFilePathFunction, err = subprocessLauncherObject.InvokerNew("set_stdout_file_path")
 	})
 	return err
 }
@@ -22177,11 +21728,11 @@ var subprocessLauncherSetenvFunction_Once sync.Once
 func subprocessLauncherSetenvFunction_Set() error {
 	var err error
 	subprocessLauncherSetenvFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherSetenvFunction, err = subprocessLauncherStruct.InvokerNew("setenv")
+		subprocessLauncherSetenvFunction, err = subprocessLauncherObject.InvokerNew("setenv")
 	})
 	return err
 }
@@ -22212,11 +21763,11 @@ var subprocessLauncherTakeFdFunction_Once sync.Once
 func subprocessLauncherTakeFdFunction_Set() error {
 	var err error
 	subprocessLauncherTakeFdFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherTakeFdFunction, err = subprocessLauncherStruct.InvokerNew("take_fd")
+		subprocessLauncherTakeFdFunction, err = subprocessLauncherObject.InvokerNew("take_fd")
 	})
 	return err
 }
@@ -22242,11 +21793,11 @@ var subprocessLauncherTakeStderrFdFunction_Once sync.Once
 func subprocessLauncherTakeStderrFdFunction_Set() error {
 	var err error
 	subprocessLauncherTakeStderrFdFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherTakeStderrFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stderr_fd")
+		subprocessLauncherTakeStderrFdFunction, err = subprocessLauncherObject.InvokerNew("take_stderr_fd")
 	})
 	return err
 }
@@ -22271,11 +21822,11 @@ var subprocessLauncherTakeStdinFdFunction_Once sync.Once
 func subprocessLauncherTakeStdinFdFunction_Set() error {
 	var err error
 	subprocessLauncherTakeStdinFdFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherTakeStdinFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stdin_fd")
+		subprocessLauncherTakeStdinFdFunction, err = subprocessLauncherObject.InvokerNew("take_stdin_fd")
 	})
 	return err
 }
@@ -22300,11 +21851,11 @@ var subprocessLauncherTakeStdoutFdFunction_Once sync.Once
 func subprocessLauncherTakeStdoutFdFunction_Set() error {
 	var err error
 	subprocessLauncherTakeStdoutFdFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherTakeStdoutFdFunction, err = subprocessLauncherStruct.InvokerNew("take_stdout_fd")
+		subprocessLauncherTakeStdoutFdFunction, err = subprocessLauncherObject.InvokerNew("take_stdout_fd")
 	})
 	return err
 }
@@ -22329,11 +21880,11 @@ var subprocessLauncherUnsetenvFunction_Once sync.Once
 func subprocessLauncherUnsetenvFunction_Set() error {
 	var err error
 	subprocessLauncherUnsetenvFunction_Once.Do(func() {
-		err = subprocessLauncherStruct_Set()
+		err = subprocessLauncherObject_Set()
 		if err != nil {
 			return
 		}
-		subprocessLauncherUnsetenvFunction, err = subprocessLauncherStruct.InvokerNew("unsetenv")
+		subprocessLauncherUnsetenvFunction, err = subprocessLauncherObject.InvokerNew("unsetenv")
 	})
 	return err
 }
@@ -22352,13 +21903,13 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	return
 }
 
-var taskStruct *gi.Struct
-var taskStruct_Once sync.Once
+var taskObject *gi.Object
+var taskObject_Once sync.Once
 
-func taskStruct_Set() error {
+func taskObject_Set() error {
 	var err error
-	taskStruct_Once.Do(func() {
-		taskStruct, err = gi.StructNew("Gio", "Task")
+	taskObject_Once.Do(func() {
+		taskObject, err = gi.ObjectNew("Gio", "Task")
 	})
 	return err
 }
@@ -22377,11 +21928,11 @@ var taskGetCancellableFunction_Once sync.Once
 func taskGetCancellableFunction_Set() error {
 	var err error
 	taskGetCancellableFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetCancellableFunction, err = taskStruct.InvokerNew("get_cancellable")
+		taskGetCancellableFunction, err = taskObject.InvokerNew("get_cancellable")
 	})
 	return err
 }
@@ -22410,11 +21961,11 @@ var taskGetCheckCancellableFunction_Once sync.Once
 func taskGetCheckCancellableFunction_Set() error {
 	var err error
 	taskGetCheckCancellableFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetCheckCancellableFunction, err = taskStruct.InvokerNew("get_check_cancellable")
+		taskGetCheckCancellableFunction, err = taskObject.InvokerNew("get_check_cancellable")
 	})
 	return err
 }
@@ -22442,11 +21993,11 @@ var taskGetCompletedFunction_Once sync.Once
 func taskGetCompletedFunction_Set() error {
 	var err error
 	taskGetCompletedFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetCompletedFunction, err = taskStruct.InvokerNew("get_completed")
+		taskGetCompletedFunction, err = taskObject.InvokerNew("get_completed")
 	})
 	return err
 }
@@ -22476,11 +22027,11 @@ var taskGetNameFunction_Once sync.Once
 func taskGetNameFunction_Set() error {
 	var err error
 	taskGetNameFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetNameFunction, err = taskStruct.InvokerNew("get_name")
+		taskGetNameFunction, err = taskObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -22508,11 +22059,11 @@ var taskGetPriorityFunction_Once sync.Once
 func taskGetPriorityFunction_Set() error {
 	var err error
 	taskGetPriorityFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetPriorityFunction, err = taskStruct.InvokerNew("get_priority")
+		taskGetPriorityFunction, err = taskObject.InvokerNew("get_priority")
 	})
 	return err
 }
@@ -22540,11 +22091,11 @@ var taskGetReturnOnCancelFunction_Once sync.Once
 func taskGetReturnOnCancelFunction_Set() error {
 	var err error
 	taskGetReturnOnCancelFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskGetReturnOnCancelFunction, err = taskStruct.InvokerNew("get_return_on_cancel")
+		taskGetReturnOnCancelFunction, err = taskObject.InvokerNew("get_return_on_cancel")
 	})
 	return err
 }
@@ -22578,11 +22129,11 @@ var taskHadErrorFunction_Once sync.Once
 func taskHadErrorFunction_Set() error {
 	var err error
 	taskHadErrorFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskHadErrorFunction, err = taskStruct.InvokerNew("had_error")
+		taskHadErrorFunction, err = taskObject.InvokerNew("had_error")
 	})
 	return err
 }
@@ -22610,11 +22161,11 @@ var taskPropagateBooleanFunction_Once sync.Once
 func taskPropagateBooleanFunction_Set() error {
 	var err error
 	taskPropagateBooleanFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskPropagateBooleanFunction, err = taskStruct.InvokerNew("propagate_boolean")
+		taskPropagateBooleanFunction, err = taskObject.InvokerNew("propagate_boolean")
 	})
 	return err
 }
@@ -22642,11 +22193,11 @@ var taskPropagateIntFunction_Once sync.Once
 func taskPropagateIntFunction_Set() error {
 	var err error
 	taskPropagateIntFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskPropagateIntFunction, err = taskStruct.InvokerNew("propagate_int")
+		taskPropagateIntFunction, err = taskObject.InvokerNew("propagate_int")
 	})
 	return err
 }
@@ -22676,11 +22227,11 @@ var taskReturnBooleanFunction_Once sync.Once
 func taskReturnBooleanFunction_Set() error {
 	var err error
 	taskReturnBooleanFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskReturnBooleanFunction, err = taskStruct.InvokerNew("return_boolean")
+		taskReturnBooleanFunction, err = taskObject.InvokerNew("return_boolean")
 	})
 	return err
 }
@@ -22707,11 +22258,11 @@ var taskReturnErrorIfCancelledFunction_Once sync.Once
 func taskReturnErrorIfCancelledFunction_Set() error {
 	var err error
 	taskReturnErrorIfCancelledFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskReturnErrorIfCancelledFunction, err = taskStruct.InvokerNew("return_error_if_cancelled")
+		taskReturnErrorIfCancelledFunction, err = taskObject.InvokerNew("return_error_if_cancelled")
 	})
 	return err
 }
@@ -22739,11 +22290,11 @@ var taskReturnIntFunction_Once sync.Once
 func taskReturnIntFunction_Set() error {
 	var err error
 	taskReturnIntFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskReturnIntFunction, err = taskStruct.InvokerNew("return_int")
+		taskReturnIntFunction, err = taskObject.InvokerNew("return_int")
 	})
 	return err
 }
@@ -22776,11 +22327,11 @@ var taskSetCheckCancellableFunction_Once sync.Once
 func taskSetCheckCancellableFunction_Set() error {
 	var err error
 	taskSetCheckCancellableFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskSetCheckCancellableFunction, err = taskStruct.InvokerNew("set_check_cancellable")
+		taskSetCheckCancellableFunction, err = taskObject.InvokerNew("set_check_cancellable")
 	})
 	return err
 }
@@ -22805,11 +22356,11 @@ var taskSetNameFunction_Once sync.Once
 func taskSetNameFunction_Set() error {
 	var err error
 	taskSetNameFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskSetNameFunction, err = taskStruct.InvokerNew("set_name")
+		taskSetNameFunction, err = taskObject.InvokerNew("set_name")
 	})
 	return err
 }
@@ -22834,11 +22385,11 @@ var taskSetPriorityFunction_Once sync.Once
 func taskSetPriorityFunction_Set() error {
 	var err error
 	taskSetPriorityFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskSetPriorityFunction, err = taskStruct.InvokerNew("set_priority")
+		taskSetPriorityFunction, err = taskObject.InvokerNew("set_priority")
 	})
 	return err
 }
@@ -22863,11 +22414,11 @@ var taskSetReturnOnCancelFunction_Once sync.Once
 func taskSetReturnOnCancelFunction_Set() error {
 	var err error
 	taskSetReturnOnCancelFunction_Once.Do(func() {
-		err = taskStruct_Set()
+		err = taskObject_Set()
 		if err != nil {
 			return
 		}
-		taskSetReturnOnCancelFunction, err = taskStruct.InvokerNew("set_return_on_cancel")
+		taskSetReturnOnCancelFunction, err = taskObject.InvokerNew("set_return_on_cancel")
 	})
 	return err
 }
@@ -22894,13 +22445,13 @@ func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 
 // UNSUPPORTED : C value 'g_task_set_task_data' : parameter 'task_data' of type 'gpointer' not supported
 
-var tcpConnectionStruct *gi.Struct
-var tcpConnectionStruct_Once sync.Once
+var tcpConnectionObject *gi.Object
+var tcpConnectionObject_Once sync.Once
 
-func tcpConnectionStruct_Set() error {
+func tcpConnectionObject_Set() error {
 	var err error
-	tcpConnectionStruct_Once.Do(func() {
-		tcpConnectionStruct, err = gi.StructNew("Gio", "TcpConnection")
+	tcpConnectionObject_Once.Do(func() {
+		tcpConnectionObject, err = gi.ObjectNew("Gio", "TcpConnection")
 	})
 	return err
 }
@@ -22911,7 +22462,7 @@ type TcpConnection struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpConnection) FieldParentInstance() *SocketConnection {
-	argValue := gi.FieldGet(tcpConnectionStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native, "parent_instance")
 	value := &SocketConnection{}
 	value.Native = argValue.Pointer()
 	return value
@@ -22921,12 +22472,12 @@ func (recv *TcpConnection) FieldParentInstance() *SocketConnection {
 func (recv *TcpConnection) SetFieldParentInstance(value *SocketConnection) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tcpConnectionStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(tcpConnectionObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
-	argValue := gi.FieldGet(tcpConnectionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native, "priv")
 	value := &TcpConnectionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -22936,7 +22487,7 @@ func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
 func (recv *TcpConnection) SetFieldPriv(value *TcpConnectionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tcpConnectionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tcpConnectionObject, recv.Native, "priv", argValue)
 }
 
 var tcpConnectionGetGracefulDisconnectFunction *gi.Function
@@ -22945,11 +22496,11 @@ var tcpConnectionGetGracefulDisconnectFunction_Once sync.Once
 func tcpConnectionGetGracefulDisconnectFunction_Set() error {
 	var err error
 	tcpConnectionGetGracefulDisconnectFunction_Once.Do(func() {
-		err = tcpConnectionStruct_Set()
+		err = tcpConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tcpConnectionGetGracefulDisconnectFunction, err = tcpConnectionStruct.InvokerNew("get_graceful_disconnect")
+		tcpConnectionGetGracefulDisconnectFunction, err = tcpConnectionObject.InvokerNew("get_graceful_disconnect")
 	})
 	return err
 }
@@ -22977,11 +22528,11 @@ var tcpConnectionSetGracefulDisconnectFunction_Once sync.Once
 func tcpConnectionSetGracefulDisconnectFunction_Set() error {
 	var err error
 	tcpConnectionSetGracefulDisconnectFunction_Once.Do(func() {
-		err = tcpConnectionStruct_Set()
+		err = tcpConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tcpConnectionSetGracefulDisconnectFunction, err = tcpConnectionStruct.InvokerNew("set_graceful_disconnect")
+		tcpConnectionSetGracefulDisconnectFunction, err = tcpConnectionObject.InvokerNew("set_graceful_disconnect")
 	})
 	return err
 }
@@ -23000,29 +22551,13 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	return
 }
 
-// TcpConnectionStruct creates an uninitialised TcpConnection.
-func TcpConnectionStruct() *TcpConnection {
-	err := tcpConnectionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var tcpWrapperConnectionObject *gi.Object
+var tcpWrapperConnectionObject_Once sync.Once
 
-	structGo := &TcpConnection{}
-	structGo.Native = tcpConnectionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeTcpConnection)
-	return structGo
-}
-func finalizeTcpConnection(obj *TcpConnection) {
-	tcpConnectionStruct.Free(obj.Native)
-}
-
-var tcpWrapperConnectionStruct *gi.Struct
-var tcpWrapperConnectionStruct_Once sync.Once
-
-func tcpWrapperConnectionStruct_Set() error {
+func tcpWrapperConnectionObject_Set() error {
 	var err error
-	tcpWrapperConnectionStruct_Once.Do(func() {
-		tcpWrapperConnectionStruct, err = gi.StructNew("Gio", "TcpWrapperConnection")
+	tcpWrapperConnectionObject_Once.Do(func() {
+		tcpWrapperConnectionObject, err = gi.ObjectNew("Gio", "TcpWrapperConnection")
 	})
 	return err
 }
@@ -23033,7 +22568,7 @@ type TcpWrapperConnection struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpWrapperConnection) FieldParentInstance() *TcpConnection {
-	argValue := gi.FieldGet(tcpWrapperConnectionStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native, "parent_instance")
 	value := &TcpConnection{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23043,12 +22578,12 @@ func (recv *TcpWrapperConnection) FieldParentInstance() *TcpConnection {
 func (recv *TcpWrapperConnection) SetFieldParentInstance(value *TcpConnection) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tcpWrapperConnectionStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
-	argValue := gi.FieldGet(tcpWrapperConnectionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native, "priv")
 	value := &TcpWrapperConnectionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23058,7 +22593,7 @@ func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
 func (recv *TcpWrapperConnection) SetFieldPriv(value *TcpWrapperConnectionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tcpWrapperConnectionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native, "priv", argValue)
 }
 
 var tcpWrapperConnectionNewFunction *gi.Function
@@ -23067,11 +22602,11 @@ var tcpWrapperConnectionNewFunction_Once sync.Once
 func tcpWrapperConnectionNewFunction_Set() error {
 	var err error
 	tcpWrapperConnectionNewFunction_Once.Do(func() {
-		err = tcpWrapperConnectionStruct_Set()
+		err = tcpWrapperConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tcpWrapperConnectionNewFunction, err = tcpWrapperConnectionStruct.InvokerNew("new")
+		tcpWrapperConnectionNewFunction, err = tcpWrapperConnectionObject.InvokerNew("new")
 	})
 	return err
 }
@@ -23101,11 +22636,11 @@ var tcpWrapperConnectionGetBaseIoStreamFunction_Once sync.Once
 func tcpWrapperConnectionGetBaseIoStreamFunction_Set() error {
 	var err error
 	tcpWrapperConnectionGetBaseIoStreamFunction_Once.Do(func() {
-		err = tcpWrapperConnectionStruct_Set()
+		err = tcpWrapperConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tcpWrapperConnectionGetBaseIoStreamFunction, err = tcpWrapperConnectionStruct.InvokerNew("get_base_io_stream")
+		tcpWrapperConnectionGetBaseIoStreamFunction, err = tcpWrapperConnectionObject.InvokerNew("get_base_io_stream")
 	})
 	return err
 }
@@ -23128,13 +22663,13 @@ func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	return retGo
 }
 
-var testDBusStruct *gi.Struct
-var testDBusStruct_Once sync.Once
+var testDBusObject *gi.Object
+var testDBusObject_Once sync.Once
 
-func testDBusStruct_Set() error {
+func testDBusObject_Set() error {
 	var err error
-	testDBusStruct_Once.Do(func() {
-		testDBusStruct, err = gi.StructNew("Gio", "TestDBus")
+	testDBusObject_Once.Do(func() {
+		testDBusObject, err = gi.ObjectNew("Gio", "TestDBus")
 	})
 	return err
 }
@@ -23151,11 +22686,11 @@ var testDBusAddServiceDirFunction_Once sync.Once
 func testDBusAddServiceDirFunction_Set() error {
 	var err error
 	testDBusAddServiceDirFunction_Once.Do(func() {
-		err = testDBusStruct_Set()
+		err = testDBusObject_Set()
 		if err != nil {
 			return
 		}
-		testDBusAddServiceDirFunction, err = testDBusStruct.InvokerNew("add_service_dir")
+		testDBusAddServiceDirFunction, err = testDBusObject.InvokerNew("add_service_dir")
 	})
 	return err
 }
@@ -23180,11 +22715,11 @@ var testDBusDownFunction_Once sync.Once
 func testDBusDownFunction_Set() error {
 	var err error
 	testDBusDownFunction_Once.Do(func() {
-		err = testDBusStruct_Set()
+		err = testDBusObject_Set()
 		if err != nil {
 			return
 		}
-		testDBusDownFunction, err = testDBusStruct.InvokerNew("down")
+		testDBusDownFunction, err = testDBusObject.InvokerNew("down")
 	})
 	return err
 }
@@ -23208,11 +22743,11 @@ var testDBusGetBusAddressFunction_Once sync.Once
 func testDBusGetBusAddressFunction_Set() error {
 	var err error
 	testDBusGetBusAddressFunction_Once.Do(func() {
-		err = testDBusStruct_Set()
+		err = testDBusObject_Set()
 		if err != nil {
 			return
 		}
-		testDBusGetBusAddressFunction, err = testDBusStruct.InvokerNew("get_bus_address")
+		testDBusGetBusAddressFunction, err = testDBusObject.InvokerNew("get_bus_address")
 	})
 	return err
 }
@@ -23242,11 +22777,11 @@ var testDBusStopFunction_Once sync.Once
 func testDBusStopFunction_Set() error {
 	var err error
 	testDBusStopFunction_Once.Do(func() {
-		err = testDBusStruct_Set()
+		err = testDBusObject_Set()
 		if err != nil {
 			return
 		}
-		testDBusStopFunction, err = testDBusStruct.InvokerNew("stop")
+		testDBusStopFunction, err = testDBusObject.InvokerNew("stop")
 	})
 	return err
 }
@@ -23270,11 +22805,11 @@ var testDBusUpFunction_Once sync.Once
 func testDBusUpFunction_Set() error {
 	var err error
 	testDBusUpFunction_Once.Do(func() {
-		err = testDBusStruct_Set()
+		err = testDBusObject_Set()
 		if err != nil {
 			return
 		}
-		testDBusUpFunction, err = testDBusStruct.InvokerNew("up")
+		testDBusUpFunction, err = testDBusObject.InvokerNew("up")
 	})
 	return err
 }
@@ -23292,13 +22827,13 @@ func (recv *TestDBus) Up() {
 	return
 }
 
-var themedIconStruct *gi.Struct
-var themedIconStruct_Once sync.Once
+var themedIconObject *gi.Object
+var themedIconObject_Once sync.Once
 
-func themedIconStruct_Set() error {
+func themedIconObject_Set() error {
 	var err error
-	themedIconStruct_Once.Do(func() {
-		themedIconStruct, err = gi.StructNew("Gio", "ThemedIcon")
+	themedIconObject_Once.Do(func() {
+		themedIconObject, err = gi.ObjectNew("Gio", "ThemedIcon")
 	})
 	return err
 }
@@ -23313,11 +22848,11 @@ var themedIconNewFunction_Once sync.Once
 func themedIconNewFunction_Set() error {
 	var err error
 	themedIconNewFunction_Once.Do(func() {
-		err = themedIconStruct_Set()
+		err = themedIconObject_Set()
 		if err != nil {
 			return
 		}
-		themedIconNewFunction, err = themedIconStruct.InvokerNew("new")
+		themedIconNewFunction, err = themedIconObject.InvokerNew("new")
 	})
 	return err
 }
@@ -23348,11 +22883,11 @@ var themedIconNewWithDefaultFallbacksFunction_Once sync.Once
 func themedIconNewWithDefaultFallbacksFunction_Set() error {
 	var err error
 	themedIconNewWithDefaultFallbacksFunction_Once.Do(func() {
-		err = themedIconStruct_Set()
+		err = themedIconObject_Set()
 		if err != nil {
 			return
 		}
-		themedIconNewWithDefaultFallbacksFunction, err = themedIconStruct.InvokerNew("new_with_default_fallbacks")
+		themedIconNewWithDefaultFallbacksFunction, err = themedIconObject.InvokerNew("new_with_default_fallbacks")
 	})
 	return err
 }
@@ -23381,11 +22916,11 @@ var themedIconAppendNameFunction_Once sync.Once
 func themedIconAppendNameFunction_Set() error {
 	var err error
 	themedIconAppendNameFunction_Once.Do(func() {
-		err = themedIconStruct_Set()
+		err = themedIconObject_Set()
 		if err != nil {
 			return
 		}
-		themedIconAppendNameFunction, err = themedIconStruct.InvokerNew("append_name")
+		themedIconAppendNameFunction, err = themedIconObject.InvokerNew("append_name")
 	})
 	return err
 }
@@ -23410,11 +22945,11 @@ var themedIconGetNamesFunction_Once sync.Once
 func themedIconGetNamesFunction_Set() error {
 	var err error
 	themedIconGetNamesFunction_Once.Do(func() {
-		err = themedIconStruct_Set()
+		err = themedIconObject_Set()
 		if err != nil {
 			return
 		}
-		themedIconGetNamesFunction, err = themedIconStruct.InvokerNew("get_names")
+		themedIconGetNamesFunction, err = themedIconObject.InvokerNew("get_names")
 	})
 	return err
 }
@@ -23438,11 +22973,11 @@ var themedIconPrependNameFunction_Once sync.Once
 func themedIconPrependNameFunction_Set() error {
 	var err error
 	themedIconPrependNameFunction_Once.Do(func() {
-		err = themedIconStruct_Set()
+		err = themedIconObject_Set()
 		if err != nil {
 			return
 		}
-		themedIconPrependNameFunction, err = themedIconStruct.InvokerNew("prepend_name")
+		themedIconPrependNameFunction, err = themedIconObject.InvokerNew("prepend_name")
 	})
 	return err
 }
@@ -23461,13 +22996,13 @@ func (recv *ThemedIcon) PrependName(iconname string) {
 	return
 }
 
-var threadedSocketServiceStruct *gi.Struct
-var threadedSocketServiceStruct_Once sync.Once
+var threadedSocketServiceObject *gi.Object
+var threadedSocketServiceObject_Once sync.Once
 
-func threadedSocketServiceStruct_Set() error {
+func threadedSocketServiceObject_Set() error {
 	var err error
-	threadedSocketServiceStruct_Once.Do(func() {
-		threadedSocketServiceStruct, err = gi.StructNew("Gio", "ThreadedSocketService")
+	threadedSocketServiceObject_Once.Do(func() {
+		threadedSocketServiceObject, err = gi.ObjectNew("Gio", "ThreadedSocketService")
 	})
 	return err
 }
@@ -23478,7 +23013,7 @@ type ThreadedSocketService struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ThreadedSocketService) FieldParentInstance() *SocketService {
-	argValue := gi.FieldGet(threadedSocketServiceStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native, "parent_instance")
 	value := &SocketService{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23488,12 +23023,12 @@ func (recv *ThreadedSocketService) FieldParentInstance() *SocketService {
 func (recv *ThreadedSocketService) SetFieldParentInstance(value *SocketService) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(threadedSocketServiceStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
-	argValue := gi.FieldGet(threadedSocketServiceStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native, "priv")
 	value := &ThreadedSocketServicePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23503,7 +23038,7 @@ func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
 func (recv *ThreadedSocketService) SetFieldPriv(value *ThreadedSocketServicePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(threadedSocketServiceStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native, "priv", argValue)
 }
 
 var threadedSocketServiceNewFunction *gi.Function
@@ -23512,11 +23047,11 @@ var threadedSocketServiceNewFunction_Once sync.Once
 func threadedSocketServiceNewFunction_Set() error {
 	var err error
 	threadedSocketServiceNewFunction_Once.Do(func() {
-		err = threadedSocketServiceStruct_Set()
+		err = threadedSocketServiceObject_Set()
 		if err != nil {
 			return
 		}
-		threadedSocketServiceNewFunction, err = threadedSocketServiceStruct.InvokerNew("new")
+		threadedSocketServiceNewFunction, err = threadedSocketServiceObject.InvokerNew("new")
 	})
 	return err
 }
@@ -23539,13 +23074,13 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	return retGo
 }
 
-var tlsCertificateStruct *gi.Struct
-var tlsCertificateStruct_Once sync.Once
+var tlsCertificateObject *gi.Object
+var tlsCertificateObject_Once sync.Once
 
-func tlsCertificateStruct_Set() error {
+func tlsCertificateObject_Set() error {
 	var err error
-	tlsCertificateStruct_Once.Do(func() {
-		tlsCertificateStruct, err = gi.StructNew("Gio", "TlsCertificate")
+	tlsCertificateObject_Once.Do(func() {
+		tlsCertificateObject, err = gi.ObjectNew("Gio", "TlsCertificate")
 	})
 	return err
 }
@@ -23560,7 +23095,7 @@ type TlsCertificate struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
-	argValue := gi.FieldGet(tlsCertificateStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tlsCertificateObject, recv.Native, "priv")
 	value := &TlsCertificatePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23570,7 +23105,7 @@ func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
 func (recv *TlsCertificate) SetFieldPriv(value *TlsCertificatePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tlsCertificateStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tlsCertificateObject, recv.Native, "priv", argValue)
 }
 
 var tlsCertificateNewFromFileFunction *gi.Function
@@ -23579,11 +23114,11 @@ var tlsCertificateNewFromFileFunction_Once sync.Once
 func tlsCertificateNewFromFileFunction_Set() error {
 	var err error
 	tlsCertificateNewFromFileFunction_Once.Do(func() {
-		err = tlsCertificateStruct_Set()
+		err = tlsCertificateObject_Set()
 		if err != nil {
 			return
 		}
-		tlsCertificateNewFromFileFunction, err = tlsCertificateStruct.InvokerNew("new_from_file")
+		tlsCertificateNewFromFileFunction, err = tlsCertificateObject.InvokerNew("new_from_file")
 	})
 	return err
 }
@@ -23612,11 +23147,11 @@ var tlsCertificateNewFromFilesFunction_Once sync.Once
 func tlsCertificateNewFromFilesFunction_Set() error {
 	var err error
 	tlsCertificateNewFromFilesFunction_Once.Do(func() {
-		err = tlsCertificateStruct_Set()
+		err = tlsCertificateObject_Set()
 		if err != nil {
 			return
 		}
-		tlsCertificateNewFromFilesFunction, err = tlsCertificateStruct.InvokerNew("new_from_files")
+		tlsCertificateNewFromFilesFunction, err = tlsCertificateObject.InvokerNew("new_from_files")
 	})
 	return err
 }
@@ -23646,11 +23181,11 @@ var tlsCertificateNewFromPemFunction_Once sync.Once
 func tlsCertificateNewFromPemFunction_Set() error {
 	var err error
 	tlsCertificateNewFromPemFunction_Once.Do(func() {
-		err = tlsCertificateStruct_Set()
+		err = tlsCertificateObject_Set()
 		if err != nil {
 			return
 		}
-		tlsCertificateNewFromPemFunction, err = tlsCertificateStruct.InvokerNew("new_from_pem")
+		tlsCertificateNewFromPemFunction, err = tlsCertificateObject.InvokerNew("new_from_pem")
 	})
 	return err
 }
@@ -23680,11 +23215,11 @@ var tlsCertificateGetIssuerFunction_Once sync.Once
 func tlsCertificateGetIssuerFunction_Set() error {
 	var err error
 	tlsCertificateGetIssuerFunction_Once.Do(func() {
-		err = tlsCertificateStruct_Set()
+		err = tlsCertificateObject_Set()
 		if err != nil {
 			return
 		}
-		tlsCertificateGetIssuerFunction, err = tlsCertificateStruct.InvokerNew("get_issuer")
+		tlsCertificateGetIssuerFunction, err = tlsCertificateObject.InvokerNew("get_issuer")
 	})
 	return err
 }
@@ -23713,11 +23248,11 @@ var tlsCertificateIsSameFunction_Once sync.Once
 func tlsCertificateIsSameFunction_Set() error {
 	var err error
 	tlsCertificateIsSameFunction_Once.Do(func() {
-		err = tlsCertificateStruct_Set()
+		err = tlsCertificateObject_Set()
 		if err != nil {
 			return
 		}
-		tlsCertificateIsSameFunction, err = tlsCertificateStruct.InvokerNew("is_same")
+		tlsCertificateIsSameFunction, err = tlsCertificateObject.InvokerNew("is_same")
 	})
 	return err
 }
@@ -23742,13 +23277,13 @@ func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 
 // UNSUPPORTED : C value 'g_tls_certificate_verify' : parameter 'identity' of type 'SocketConnectable' not supported
 
-var tlsConnectionStruct *gi.Struct
-var tlsConnectionStruct_Once sync.Once
+var tlsConnectionObject *gi.Object
+var tlsConnectionObject_Once sync.Once
 
-func tlsConnectionStruct_Set() error {
+func tlsConnectionObject_Set() error {
 	var err error
-	tlsConnectionStruct_Once.Do(func() {
-		tlsConnectionStruct, err = gi.StructNew("Gio", "TlsConnection")
+	tlsConnectionObject_Once.Do(func() {
+		tlsConnectionObject, err = gi.ObjectNew("Gio", "TlsConnection")
 	})
 	return err
 }
@@ -23759,7 +23294,7 @@ type TlsConnection struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsConnection) FieldParentInstance() *IOStream {
-	argValue := gi.FieldGet(tlsConnectionStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native, "parent_instance")
 	value := &IOStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23769,12 +23304,12 @@ func (recv *TlsConnection) FieldParentInstance() *IOStream {
 func (recv *TlsConnection) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tlsConnectionStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(tlsConnectionObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
-	argValue := gi.FieldGet(tlsConnectionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native, "priv")
 	value := &TlsConnectionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -23784,7 +23319,7 @@ func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
 func (recv *TlsConnection) SetFieldPriv(value *TlsConnectionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tlsConnectionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tlsConnectionObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_tls_connection_emit_accept_certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
@@ -23795,11 +23330,11 @@ var tlsConnectionGetCertificateFunction_Once sync.Once
 func tlsConnectionGetCertificateFunction_Set() error {
 	var err error
 	tlsConnectionGetCertificateFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetCertificateFunction, err = tlsConnectionStruct.InvokerNew("get_certificate")
+		tlsConnectionGetCertificateFunction, err = tlsConnectionObject.InvokerNew("get_certificate")
 	})
 	return err
 }
@@ -23828,11 +23363,11 @@ var tlsConnectionGetDatabaseFunction_Once sync.Once
 func tlsConnectionGetDatabaseFunction_Set() error {
 	var err error
 	tlsConnectionGetDatabaseFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetDatabaseFunction, err = tlsConnectionStruct.InvokerNew("get_database")
+		tlsConnectionGetDatabaseFunction, err = tlsConnectionObject.InvokerNew("get_database")
 	})
 	return err
 }
@@ -23861,11 +23396,11 @@ var tlsConnectionGetInteractionFunction_Once sync.Once
 func tlsConnectionGetInteractionFunction_Set() error {
 	var err error
 	tlsConnectionGetInteractionFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetInteractionFunction, err = tlsConnectionStruct.InvokerNew("get_interaction")
+		tlsConnectionGetInteractionFunction, err = tlsConnectionObject.InvokerNew("get_interaction")
 	})
 	return err
 }
@@ -23894,11 +23429,11 @@ var tlsConnectionGetNegotiatedProtocolFunction_Once sync.Once
 func tlsConnectionGetNegotiatedProtocolFunction_Set() error {
 	var err error
 	tlsConnectionGetNegotiatedProtocolFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetNegotiatedProtocolFunction, err = tlsConnectionStruct.InvokerNew("get_negotiated_protocol")
+		tlsConnectionGetNegotiatedProtocolFunction, err = tlsConnectionObject.InvokerNew("get_negotiated_protocol")
 	})
 	return err
 }
@@ -23926,11 +23461,11 @@ var tlsConnectionGetPeerCertificateFunction_Once sync.Once
 func tlsConnectionGetPeerCertificateFunction_Set() error {
 	var err error
 	tlsConnectionGetPeerCertificateFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetPeerCertificateFunction, err = tlsConnectionStruct.InvokerNew("get_peer_certificate")
+		tlsConnectionGetPeerCertificateFunction, err = tlsConnectionObject.InvokerNew("get_peer_certificate")
 	})
 	return err
 }
@@ -23961,11 +23496,11 @@ var tlsConnectionGetRehandshakeModeFunction_Once sync.Once
 func tlsConnectionGetRehandshakeModeFunction_Set() error {
 	var err error
 	tlsConnectionGetRehandshakeModeFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetRehandshakeModeFunction, err = tlsConnectionStruct.InvokerNew("get_rehandshake_mode")
+		tlsConnectionGetRehandshakeModeFunction, err = tlsConnectionObject.InvokerNew("get_rehandshake_mode")
 	})
 	return err
 }
@@ -23993,11 +23528,11 @@ var tlsConnectionGetRequireCloseNotifyFunction_Once sync.Once
 func tlsConnectionGetRequireCloseNotifyFunction_Set() error {
 	var err error
 	tlsConnectionGetRequireCloseNotifyFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetRequireCloseNotifyFunction, err = tlsConnectionStruct.InvokerNew("get_require_close_notify")
+		tlsConnectionGetRequireCloseNotifyFunction, err = tlsConnectionObject.InvokerNew("get_require_close_notify")
 	})
 	return err
 }
@@ -24025,11 +23560,11 @@ var tlsConnectionGetUseSystemCertdbFunction_Once sync.Once
 func tlsConnectionGetUseSystemCertdbFunction_Set() error {
 	var err error
 	tlsConnectionGetUseSystemCertdbFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionGetUseSystemCertdbFunction, err = tlsConnectionStruct.InvokerNew("get_use_system_certdb")
+		tlsConnectionGetUseSystemCertdbFunction, err = tlsConnectionObject.InvokerNew("get_use_system_certdb")
 	})
 	return err
 }
@@ -24057,11 +23592,11 @@ var tlsConnectionHandshakeFunction_Once sync.Once
 func tlsConnectionHandshakeFunction_Set() error {
 	var err error
 	tlsConnectionHandshakeFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionHandshakeFunction, err = tlsConnectionStruct.InvokerNew("handshake")
+		tlsConnectionHandshakeFunction, err = tlsConnectionObject.InvokerNew("handshake")
 	})
 	return err
 }
@@ -24096,11 +23631,11 @@ var tlsConnectionSetCertificateFunction_Once sync.Once
 func tlsConnectionSetCertificateFunction_Set() error {
 	var err error
 	tlsConnectionSetCertificateFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetCertificateFunction, err = tlsConnectionStruct.InvokerNew("set_certificate")
+		tlsConnectionSetCertificateFunction, err = tlsConnectionObject.InvokerNew("set_certificate")
 	})
 	return err
 }
@@ -24125,11 +23660,11 @@ var tlsConnectionSetDatabaseFunction_Once sync.Once
 func tlsConnectionSetDatabaseFunction_Set() error {
 	var err error
 	tlsConnectionSetDatabaseFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetDatabaseFunction, err = tlsConnectionStruct.InvokerNew("set_database")
+		tlsConnectionSetDatabaseFunction, err = tlsConnectionObject.InvokerNew("set_database")
 	})
 	return err
 }
@@ -24154,11 +23689,11 @@ var tlsConnectionSetInteractionFunction_Once sync.Once
 func tlsConnectionSetInteractionFunction_Set() error {
 	var err error
 	tlsConnectionSetInteractionFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetInteractionFunction, err = tlsConnectionStruct.InvokerNew("set_interaction")
+		tlsConnectionSetInteractionFunction, err = tlsConnectionObject.InvokerNew("set_interaction")
 	})
 	return err
 }
@@ -24183,11 +23718,11 @@ var tlsConnectionSetRehandshakeModeFunction_Once sync.Once
 func tlsConnectionSetRehandshakeModeFunction_Set() error {
 	var err error
 	tlsConnectionSetRehandshakeModeFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetRehandshakeModeFunction, err = tlsConnectionStruct.InvokerNew("set_rehandshake_mode")
+		tlsConnectionSetRehandshakeModeFunction, err = tlsConnectionObject.InvokerNew("set_rehandshake_mode")
 	})
 	return err
 }
@@ -24212,11 +23747,11 @@ var tlsConnectionSetRequireCloseNotifyFunction_Once sync.Once
 func tlsConnectionSetRequireCloseNotifyFunction_Set() error {
 	var err error
 	tlsConnectionSetRequireCloseNotifyFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetRequireCloseNotifyFunction, err = tlsConnectionStruct.InvokerNew("set_require_close_notify")
+		tlsConnectionSetRequireCloseNotifyFunction, err = tlsConnectionObject.InvokerNew("set_require_close_notify")
 	})
 	return err
 }
@@ -24241,11 +23776,11 @@ var tlsConnectionSetUseSystemCertdbFunction_Once sync.Once
 func tlsConnectionSetUseSystemCertdbFunction_Set() error {
 	var err error
 	tlsConnectionSetUseSystemCertdbFunction_Once.Do(func() {
-		err = tlsConnectionStruct_Set()
+		err = tlsConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsConnectionSetUseSystemCertdbFunction, err = tlsConnectionStruct.InvokerNew("set_use_system_certdb")
+		tlsConnectionSetUseSystemCertdbFunction, err = tlsConnectionObject.InvokerNew("set_use_system_certdb")
 	})
 	return err
 }
@@ -24264,29 +23799,13 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	return
 }
 
-// TlsConnectionStruct creates an uninitialised TlsConnection.
-func TlsConnectionStruct() *TlsConnection {
-	err := tlsConnectionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var tlsDatabaseObject *gi.Object
+var tlsDatabaseObject_Once sync.Once
 
-	structGo := &TlsConnection{}
-	structGo.Native = tlsConnectionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeTlsConnection)
-	return structGo
-}
-func finalizeTlsConnection(obj *TlsConnection) {
-	tlsConnectionStruct.Free(obj.Native)
-}
-
-var tlsDatabaseStruct *gi.Struct
-var tlsDatabaseStruct_Once sync.Once
-
-func tlsDatabaseStruct_Set() error {
+func tlsDatabaseObject_Set() error {
 	var err error
-	tlsDatabaseStruct_Once.Do(func() {
-		tlsDatabaseStruct, err = gi.StructNew("Gio", "TlsDatabase")
+	tlsDatabaseObject_Once.Do(func() {
+		tlsDatabaseObject, err = gi.ObjectNew("Gio", "TlsDatabase")
 	})
 	return err
 }
@@ -24301,7 +23820,7 @@ type TlsDatabase struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
-	argValue := gi.FieldGet(tlsDatabaseStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tlsDatabaseObject, recv.Native, "priv")
 	value := &TlsDatabasePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -24311,7 +23830,7 @@ func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
 func (recv *TlsDatabase) SetFieldPriv(value *TlsDatabasePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tlsDatabaseStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tlsDatabaseObject, recv.Native, "priv", argValue)
 }
 
 var tlsDatabaseCreateCertificateHandleFunction *gi.Function
@@ -24320,11 +23839,11 @@ var tlsDatabaseCreateCertificateHandleFunction_Once sync.Once
 func tlsDatabaseCreateCertificateHandleFunction_Set() error {
 	var err error
 	tlsDatabaseCreateCertificateHandleFunction_Once.Do(func() {
-		err = tlsDatabaseStruct_Set()
+		err = tlsDatabaseObject_Set()
 		if err != nil {
 			return
 		}
-		tlsDatabaseCreateCertificateHandleFunction, err = tlsDatabaseStruct.InvokerNew("create_certificate_handle")
+		tlsDatabaseCreateCertificateHandleFunction, err = tlsDatabaseObject.InvokerNew("create_certificate_handle")
 	})
 	return err
 }
@@ -24353,11 +23872,11 @@ var tlsDatabaseLookupCertificateForHandleFunction_Once sync.Once
 func tlsDatabaseLookupCertificateForHandleFunction_Set() error {
 	var err error
 	tlsDatabaseLookupCertificateForHandleFunction_Once.Do(func() {
-		err = tlsDatabaseStruct_Set()
+		err = tlsDatabaseObject_Set()
 		if err != nil {
 			return
 		}
-		tlsDatabaseLookupCertificateForHandleFunction, err = tlsDatabaseStruct.InvokerNew("lookup_certificate_for_handle")
+		tlsDatabaseLookupCertificateForHandleFunction, err = tlsDatabaseObject.InvokerNew("lookup_certificate_for_handle")
 	})
 	return err
 }
@@ -24394,11 +23913,11 @@ var tlsDatabaseLookupCertificateIssuerFunction_Once sync.Once
 func tlsDatabaseLookupCertificateIssuerFunction_Set() error {
 	var err error
 	tlsDatabaseLookupCertificateIssuerFunction_Once.Do(func() {
-		err = tlsDatabaseStruct_Set()
+		err = tlsDatabaseObject_Set()
 		if err != nil {
 			return
 		}
-		tlsDatabaseLookupCertificateIssuerFunction, err = tlsDatabaseStruct.InvokerNew("lookup_certificate_issuer")
+		tlsDatabaseLookupCertificateIssuerFunction, err = tlsDatabaseObject.InvokerNew("lookup_certificate_issuer")
 	})
 	return err
 }
@@ -24441,29 +23960,13 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 
 // UNSUPPORTED : C value 'g_tls_database_verify_chain_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// TlsDatabaseStruct creates an uninitialised TlsDatabase.
-func TlsDatabaseStruct() *TlsDatabase {
-	err := tlsDatabaseStruct_Set()
-	if err != nil {
-		return nil
-	}
+var tlsInteractionObject *gi.Object
+var tlsInteractionObject_Once sync.Once
 
-	structGo := &TlsDatabase{}
-	structGo.Native = tlsDatabaseStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeTlsDatabase)
-	return structGo
-}
-func finalizeTlsDatabase(obj *TlsDatabase) {
-	tlsDatabaseStruct.Free(obj.Native)
-}
-
-var tlsInteractionStruct *gi.Struct
-var tlsInteractionStruct_Once sync.Once
-
-func tlsInteractionStruct_Set() error {
+func tlsInteractionObject_Set() error {
 	var err error
-	tlsInteractionStruct_Once.Do(func() {
-		tlsInteractionStruct, err = gi.StructNew("Gio", "TlsInteraction")
+	tlsInteractionObject_Once.Do(func() {
+		tlsInteractionObject, err = gi.ObjectNew("Gio", "TlsInteraction")
 	})
 	return err
 }
@@ -24478,11 +23981,11 @@ var tlsInteractionAskPasswordFunction_Once sync.Once
 func tlsInteractionAskPasswordFunction_Set() error {
 	var err error
 	tlsInteractionAskPasswordFunction_Once.Do(func() {
-		err = tlsInteractionStruct_Set()
+		err = tlsInteractionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsInteractionAskPasswordFunction, err = tlsInteractionStruct.InvokerNew("ask_password")
+		tlsInteractionAskPasswordFunction, err = tlsInteractionObject.InvokerNew("ask_password")
 	})
 	return err
 }
@@ -24516,11 +24019,11 @@ var tlsInteractionInvokeAskPasswordFunction_Once sync.Once
 func tlsInteractionInvokeAskPasswordFunction_Set() error {
 	var err error
 	tlsInteractionInvokeAskPasswordFunction_Once.Do(func() {
-		err = tlsInteractionStruct_Set()
+		err = tlsInteractionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsInteractionInvokeAskPasswordFunction, err = tlsInteractionStruct.InvokerNew("invoke_ask_password")
+		tlsInteractionInvokeAskPasswordFunction, err = tlsInteractionObject.InvokerNew("invoke_ask_password")
 	})
 	return err
 }
@@ -24550,11 +24053,11 @@ var tlsInteractionInvokeRequestCertificateFunction_Once sync.Once
 func tlsInteractionInvokeRequestCertificateFunction_Set() error {
 	var err error
 	tlsInteractionInvokeRequestCertificateFunction_Once.Do(func() {
-		err = tlsInteractionStruct_Set()
+		err = tlsInteractionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsInteractionInvokeRequestCertificateFunction, err = tlsInteractionStruct.InvokerNew("invoke_request_certificate")
+		tlsInteractionInvokeRequestCertificateFunction, err = tlsInteractionObject.InvokerNew("invoke_request_certificate")
 	})
 	return err
 }
@@ -24585,11 +24088,11 @@ var tlsInteractionRequestCertificateFunction_Once sync.Once
 func tlsInteractionRequestCertificateFunction_Set() error {
 	var err error
 	tlsInteractionRequestCertificateFunction_Once.Do(func() {
-		err = tlsInteractionStruct_Set()
+		err = tlsInteractionObject_Set()
 		if err != nil {
 			return
 		}
-		tlsInteractionRequestCertificateFunction, err = tlsInteractionStruct.InvokerNew("request_certificate")
+		tlsInteractionRequestCertificateFunction, err = tlsInteractionObject.InvokerNew("request_certificate")
 	})
 	return err
 }
@@ -24618,29 +24121,13 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 
 // UNSUPPORTED : C value 'g_tls_interaction_request_certificate_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// TlsInteractionStruct creates an uninitialised TlsInteraction.
-func TlsInteractionStruct() *TlsInteraction {
-	err := tlsInteractionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var tlsPasswordObject *gi.Object
+var tlsPasswordObject_Once sync.Once
 
-	structGo := &TlsInteraction{}
-	structGo.Native = tlsInteractionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeTlsInteraction)
-	return structGo
-}
-func finalizeTlsInteraction(obj *TlsInteraction) {
-	tlsInteractionStruct.Free(obj.Native)
-}
-
-var tlsPasswordStruct *gi.Struct
-var tlsPasswordStruct_Once sync.Once
-
-func tlsPasswordStruct_Set() error {
+func tlsPasswordObject_Set() error {
 	var err error
-	tlsPasswordStruct_Once.Do(func() {
-		tlsPasswordStruct, err = gi.StructNew("Gio", "TlsPassword")
+	tlsPasswordObject_Once.Do(func() {
+		tlsPasswordObject, err = gi.ObjectNew("Gio", "TlsPassword")
 	})
 	return err
 }
@@ -24655,7 +24142,7 @@ type TlsPassword struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
-	argValue := gi.FieldGet(tlsPasswordStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(tlsPasswordObject, recv.Native, "priv")
 	value := &TlsPasswordPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -24665,7 +24152,7 @@ func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
 func (recv *TlsPassword) SetFieldPriv(value *TlsPasswordPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(tlsPasswordStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(tlsPasswordObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_tls_password_new' : parameter 'flags' of type 'TlsPasswordFlags' not supported
@@ -24676,11 +24163,11 @@ var tlsPasswordGetDescriptionFunction_Once sync.Once
 func tlsPasswordGetDescriptionFunction_Set() error {
 	var err error
 	tlsPasswordGetDescriptionFunction_Once.Do(func() {
-		err = tlsPasswordStruct_Set()
+		err = tlsPasswordObject_Set()
 		if err != nil {
 			return
 		}
-		tlsPasswordGetDescriptionFunction, err = tlsPasswordStruct.InvokerNew("get_description")
+		tlsPasswordGetDescriptionFunction, err = tlsPasswordObject.InvokerNew("get_description")
 	})
 	return err
 }
@@ -24710,11 +24197,11 @@ var tlsPasswordGetValueFunction_Once sync.Once
 func tlsPasswordGetValueFunction_Set() error {
 	var err error
 	tlsPasswordGetValueFunction_Once.Do(func() {
-		err = tlsPasswordStruct_Set()
+		err = tlsPasswordObject_Set()
 		if err != nil {
 			return
 		}
-		tlsPasswordGetValueFunction, err = tlsPasswordStruct.InvokerNew("get_value")
+		tlsPasswordGetValueFunction, err = tlsPasswordObject.InvokerNew("get_value")
 	})
 	return err
 }
@@ -24743,11 +24230,11 @@ var tlsPasswordGetWarningFunction_Once sync.Once
 func tlsPasswordGetWarningFunction_Set() error {
 	var err error
 	tlsPasswordGetWarningFunction_Once.Do(func() {
-		err = tlsPasswordStruct_Set()
+		err = tlsPasswordObject_Set()
 		if err != nil {
 			return
 		}
-		tlsPasswordGetWarningFunction, err = tlsPasswordStruct.InvokerNew("get_warning")
+		tlsPasswordGetWarningFunction, err = tlsPasswordObject.InvokerNew("get_warning")
 	})
 	return err
 }
@@ -24775,11 +24262,11 @@ var tlsPasswordSetDescriptionFunction_Once sync.Once
 func tlsPasswordSetDescriptionFunction_Set() error {
 	var err error
 	tlsPasswordSetDescriptionFunction_Once.Do(func() {
-		err = tlsPasswordStruct_Set()
+		err = tlsPasswordObject_Set()
 		if err != nil {
 			return
 		}
-		tlsPasswordSetDescriptionFunction, err = tlsPasswordStruct.InvokerNew("set_description")
+		tlsPasswordSetDescriptionFunction, err = tlsPasswordObject.InvokerNew("set_description")
 	})
 	return err
 }
@@ -24810,11 +24297,11 @@ var tlsPasswordSetWarningFunction_Once sync.Once
 func tlsPasswordSetWarningFunction_Set() error {
 	var err error
 	tlsPasswordSetWarningFunction_Once.Do(func() {
-		err = tlsPasswordStruct_Set()
+		err = tlsPasswordObject_Set()
 		if err != nil {
 			return
 		}
-		tlsPasswordSetWarningFunction, err = tlsPasswordStruct.InvokerNew("set_warning")
+		tlsPasswordSetWarningFunction, err = tlsPasswordObject.InvokerNew("set_warning")
 	})
 	return err
 }
@@ -24833,13 +24320,13 @@ func (recv *TlsPassword) SetWarning(warning string) {
 	return
 }
 
-var unixConnectionStruct *gi.Struct
-var unixConnectionStruct_Once sync.Once
+var unixConnectionObject *gi.Object
+var unixConnectionObject_Once sync.Once
 
-func unixConnectionStruct_Set() error {
+func unixConnectionObject_Set() error {
 	var err error
-	unixConnectionStruct_Once.Do(func() {
-		unixConnectionStruct, err = gi.StructNew("Gio", "UnixConnection")
+	unixConnectionObject_Once.Do(func() {
+		unixConnectionObject, err = gi.ObjectNew("Gio", "UnixConnection")
 	})
 	return err
 }
@@ -24850,7 +24337,7 @@ type UnixConnection struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixConnection) FieldParentInstance() *SocketConnection {
-	argValue := gi.FieldGet(unixConnectionStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native, "parent_instance")
 	value := &SocketConnection{}
 	value.Native = argValue.Pointer()
 	return value
@@ -24860,12 +24347,12 @@ func (recv *UnixConnection) FieldParentInstance() *SocketConnection {
 func (recv *UnixConnection) SetFieldParentInstance(value *SocketConnection) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixConnectionStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixConnectionObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
-	argValue := gi.FieldGet(unixConnectionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native, "priv")
 	value := &UnixConnectionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -24875,7 +24362,7 @@ func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
 func (recv *UnixConnection) SetFieldPriv(value *UnixConnectionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixConnectionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(unixConnectionObject, recv.Native, "priv", argValue)
 }
 
 var unixConnectionReceiveCredentialsFunction *gi.Function
@@ -24884,11 +24371,11 @@ var unixConnectionReceiveCredentialsFunction_Once sync.Once
 func unixConnectionReceiveCredentialsFunction_Set() error {
 	var err error
 	unixConnectionReceiveCredentialsFunction_Once.Do(func() {
-		err = unixConnectionStruct_Set()
+		err = unixConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		unixConnectionReceiveCredentialsFunction, err = unixConnectionStruct.InvokerNew("receive_credentials")
+		unixConnectionReceiveCredentialsFunction, err = unixConnectionObject.InvokerNew("receive_credentials")
 	})
 	return err
 }
@@ -24922,11 +24409,11 @@ var unixConnectionReceiveFdFunction_Once sync.Once
 func unixConnectionReceiveFdFunction_Set() error {
 	var err error
 	unixConnectionReceiveFdFunction_Once.Do(func() {
-		err = unixConnectionStruct_Set()
+		err = unixConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		unixConnectionReceiveFdFunction, err = unixConnectionStruct.InvokerNew("receive_fd")
+		unixConnectionReceiveFdFunction, err = unixConnectionObject.InvokerNew("receive_fd")
 	})
 	return err
 }
@@ -24955,11 +24442,11 @@ var unixConnectionSendCredentialsFunction_Once sync.Once
 func unixConnectionSendCredentialsFunction_Set() error {
 	var err error
 	unixConnectionSendCredentialsFunction_Once.Do(func() {
-		err = unixConnectionStruct_Set()
+		err = unixConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		unixConnectionSendCredentialsFunction, err = unixConnectionStruct.InvokerNew("send_credentials")
+		unixConnectionSendCredentialsFunction, err = unixConnectionObject.InvokerNew("send_credentials")
 	})
 	return err
 }
@@ -24992,11 +24479,11 @@ var unixConnectionSendFdFunction_Once sync.Once
 func unixConnectionSendFdFunction_Set() error {
 	var err error
 	unixConnectionSendFdFunction_Once.Do(func() {
-		err = unixConnectionStruct_Set()
+		err = unixConnectionObject_Set()
 		if err != nil {
 			return
 		}
-		unixConnectionSendFdFunction, err = unixConnectionStruct.InvokerNew("send_fd")
+		unixConnectionSendFdFunction, err = unixConnectionObject.InvokerNew("send_fd")
 	})
 	return err
 }
@@ -25020,29 +24507,13 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) bool {
 	return retGo
 }
 
-// UnixConnectionStruct creates an uninitialised UnixConnection.
-func UnixConnectionStruct() *UnixConnection {
-	err := unixConnectionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var unixCredentialsMessageObject *gi.Object
+var unixCredentialsMessageObject_Once sync.Once
 
-	structGo := &UnixConnection{}
-	structGo.Native = unixConnectionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeUnixConnection)
-	return structGo
-}
-func finalizeUnixConnection(obj *UnixConnection) {
-	unixConnectionStruct.Free(obj.Native)
-}
-
-var unixCredentialsMessageStruct *gi.Struct
-var unixCredentialsMessageStruct_Once sync.Once
-
-func unixCredentialsMessageStruct_Set() error {
+func unixCredentialsMessageObject_Set() error {
 	var err error
-	unixCredentialsMessageStruct_Once.Do(func() {
-		unixCredentialsMessageStruct, err = gi.StructNew("Gio", "UnixCredentialsMessage")
+	unixCredentialsMessageObject_Once.Do(func() {
+		unixCredentialsMessageObject, err = gi.ObjectNew("Gio", "UnixCredentialsMessage")
 	})
 	return err
 }
@@ -25053,7 +24524,7 @@ type UnixCredentialsMessage struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixCredentialsMessage) FieldParentInstance() *SocketControlMessage {
-	argValue := gi.FieldGet(unixCredentialsMessageStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native, "parent_instance")
 	value := &SocketControlMessage{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25063,12 +24534,12 @@ func (recv *UnixCredentialsMessage) FieldParentInstance() *SocketControlMessage 
 func (recv *UnixCredentialsMessage) SetFieldParentInstance(value *SocketControlMessage) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixCredentialsMessageStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
-	argValue := gi.FieldGet(unixCredentialsMessageStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native, "priv")
 	value := &UnixCredentialsMessagePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25078,7 +24549,7 @@ func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
 func (recv *UnixCredentialsMessage) SetFieldPriv(value *UnixCredentialsMessagePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixCredentialsMessageStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native, "priv", argValue)
 }
 
 var unixCredentialsMessageNewFunction *gi.Function
@@ -25087,11 +24558,11 @@ var unixCredentialsMessageNewFunction_Once sync.Once
 func unixCredentialsMessageNewFunction_Set() error {
 	var err error
 	unixCredentialsMessageNewFunction_Once.Do(func() {
-		err = unixCredentialsMessageStruct_Set()
+		err = unixCredentialsMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixCredentialsMessageNewFunction, err = unixCredentialsMessageStruct.InvokerNew("new")
+		unixCredentialsMessageNewFunction, err = unixCredentialsMessageObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25118,11 +24589,11 @@ var unixCredentialsMessageNewWithCredentialsFunction_Once sync.Once
 func unixCredentialsMessageNewWithCredentialsFunction_Set() error {
 	var err error
 	unixCredentialsMessageNewWithCredentialsFunction_Once.Do(func() {
-		err = unixCredentialsMessageStruct_Set()
+		err = unixCredentialsMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixCredentialsMessageNewWithCredentialsFunction, err = unixCredentialsMessageStruct.InvokerNew("new_with_credentials")
+		unixCredentialsMessageNewWithCredentialsFunction, err = unixCredentialsMessageObject.InvokerNew("new_with_credentials")
 	})
 	return err
 }
@@ -25151,11 +24622,11 @@ var unixCredentialsMessageGetCredentialsFunction_Once sync.Once
 func unixCredentialsMessageGetCredentialsFunction_Set() error {
 	var err error
 	unixCredentialsMessageGetCredentialsFunction_Once.Do(func() {
-		err = unixCredentialsMessageStruct_Set()
+		err = unixCredentialsMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixCredentialsMessageGetCredentialsFunction, err = unixCredentialsMessageStruct.InvokerNew("get_credentials")
+		unixCredentialsMessageGetCredentialsFunction, err = unixCredentialsMessageObject.InvokerNew("get_credentials")
 	})
 	return err
 }
@@ -25178,13 +24649,13 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	return retGo
 }
 
-var unixFDListStruct *gi.Struct
-var unixFDListStruct_Once sync.Once
+var unixFDListObject *gi.Object
+var unixFDListObject_Once sync.Once
 
-func unixFDListStruct_Set() error {
+func unixFDListObject_Set() error {
 	var err error
-	unixFDListStruct_Once.Do(func() {
-		unixFDListStruct, err = gi.StructNew("Gio", "UnixFDList")
+	unixFDListObject_Once.Do(func() {
+		unixFDListObject, err = gi.ObjectNew("Gio", "UnixFDList")
 	})
 	return err
 }
@@ -25199,7 +24670,7 @@ type UnixFDList struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
-	argValue := gi.FieldGet(unixFDListStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(unixFDListObject, recv.Native, "priv")
 	value := &UnixFDListPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25209,7 +24680,7 @@ func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
 func (recv *UnixFDList) SetFieldPriv(value *UnixFDListPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixFDListStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(unixFDListObject, recv.Native, "priv", argValue)
 }
 
 var unixFDListNewFunction *gi.Function
@@ -25218,11 +24689,11 @@ var unixFDListNewFunction_Once sync.Once
 func unixFDListNewFunction_Set() error {
 	var err error
 	unixFDListNewFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListNewFunction, err = unixFDListStruct.InvokerNew("new")
+		unixFDListNewFunction, err = unixFDListObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25251,11 +24722,11 @@ var unixFDListAppendFunction_Once sync.Once
 func unixFDListAppendFunction_Set() error {
 	var err error
 	unixFDListAppendFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListAppendFunction, err = unixFDListStruct.InvokerNew("append")
+		unixFDListAppendFunction, err = unixFDListObject.InvokerNew("append")
 	})
 	return err
 }
@@ -25284,11 +24755,11 @@ var unixFDListGetFunction_Once sync.Once
 func unixFDListGetFunction_Set() error {
 	var err error
 	unixFDListGetFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListGetFunction, err = unixFDListStruct.InvokerNew("get")
+		unixFDListGetFunction, err = unixFDListObject.InvokerNew("get")
 	})
 	return err
 }
@@ -25317,11 +24788,11 @@ var unixFDListGetLengthFunction_Once sync.Once
 func unixFDListGetLengthFunction_Set() error {
 	var err error
 	unixFDListGetLengthFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListGetLengthFunction, err = unixFDListStruct.InvokerNew("get_length")
+		unixFDListGetLengthFunction, err = unixFDListObject.InvokerNew("get_length")
 	})
 	return err
 }
@@ -25349,11 +24820,11 @@ var unixFDListPeekFdsFunction_Once sync.Once
 func unixFDListPeekFdsFunction_Set() error {
 	var err error
 	unixFDListPeekFdsFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListPeekFdsFunction, err = unixFDListStruct.InvokerNew("peek_fds")
+		unixFDListPeekFdsFunction, err = unixFDListObject.InvokerNew("peek_fds")
 	})
 	return err
 }
@@ -25381,11 +24852,11 @@ var unixFDListStealFdsFunction_Once sync.Once
 func unixFDListStealFdsFunction_Set() error {
 	var err error
 	unixFDListStealFdsFunction_Once.Do(func() {
-		err = unixFDListStruct_Set()
+		err = unixFDListObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDListStealFdsFunction, err = unixFDListStruct.InvokerNew("steal_fds")
+		unixFDListStealFdsFunction, err = unixFDListObject.InvokerNew("steal_fds")
 	})
 	return err
 }
@@ -25407,13 +24878,13 @@ func (recv *UnixFDList) StealFds() int32 {
 	return out0
 }
 
-var unixFDMessageStruct *gi.Struct
-var unixFDMessageStruct_Once sync.Once
+var unixFDMessageObject *gi.Object
+var unixFDMessageObject_Once sync.Once
 
-func unixFDMessageStruct_Set() error {
+func unixFDMessageObject_Set() error {
 	var err error
-	unixFDMessageStruct_Once.Do(func() {
-		unixFDMessageStruct, err = gi.StructNew("Gio", "UnixFDMessage")
+	unixFDMessageObject_Once.Do(func() {
+		unixFDMessageObject, err = gi.ObjectNew("Gio", "UnixFDMessage")
 	})
 	return err
 }
@@ -25424,7 +24895,7 @@ type UnixFDMessage struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixFDMessage) FieldParentInstance() *SocketControlMessage {
-	argValue := gi.FieldGet(unixFDMessageStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native, "parent_instance")
 	value := &SocketControlMessage{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25434,12 +24905,12 @@ func (recv *UnixFDMessage) FieldParentInstance() *SocketControlMessage {
 func (recv *UnixFDMessage) SetFieldParentInstance(value *SocketControlMessage) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixFDMessageStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixFDMessageObject, recv.Native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
-	argValue := gi.FieldGet(unixFDMessageStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native, "priv")
 	value := &UnixFDMessagePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25449,7 +24920,7 @@ func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
 func (recv *UnixFDMessage) SetFieldPriv(value *UnixFDMessagePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixFDMessageStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(unixFDMessageObject, recv.Native, "priv", argValue)
 }
 
 var unixFDMessageNewFunction *gi.Function
@@ -25458,11 +24929,11 @@ var unixFDMessageNewFunction_Once sync.Once
 func unixFDMessageNewFunction_Set() error {
 	var err error
 	unixFDMessageNewFunction_Once.Do(func() {
-		err = unixFDMessageStruct_Set()
+		err = unixFDMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDMessageNewFunction, err = unixFDMessageStruct.InvokerNew("new")
+		unixFDMessageNewFunction, err = unixFDMessageObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25489,11 +24960,11 @@ var unixFDMessageNewWithFdListFunction_Once sync.Once
 func unixFDMessageNewWithFdListFunction_Set() error {
 	var err error
 	unixFDMessageNewWithFdListFunction_Once.Do(func() {
-		err = unixFDMessageStruct_Set()
+		err = unixFDMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDMessageNewWithFdListFunction, err = unixFDMessageStruct.InvokerNew("new_with_fd_list")
+		unixFDMessageNewWithFdListFunction, err = unixFDMessageObject.InvokerNew("new_with_fd_list")
 	})
 	return err
 }
@@ -25522,11 +24993,11 @@ var unixFDMessageAppendFdFunction_Once sync.Once
 func unixFDMessageAppendFdFunction_Set() error {
 	var err error
 	unixFDMessageAppendFdFunction_Once.Do(func() {
-		err = unixFDMessageStruct_Set()
+		err = unixFDMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDMessageAppendFdFunction, err = unixFDMessageStruct.InvokerNew("append_fd")
+		unixFDMessageAppendFdFunction, err = unixFDMessageObject.InvokerNew("append_fd")
 	})
 	return err
 }
@@ -25555,11 +25026,11 @@ var unixFDMessageGetFdListFunction_Once sync.Once
 func unixFDMessageGetFdListFunction_Set() error {
 	var err error
 	unixFDMessageGetFdListFunction_Once.Do(func() {
-		err = unixFDMessageStruct_Set()
+		err = unixFDMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDMessageGetFdListFunction, err = unixFDMessageStruct.InvokerNew("get_fd_list")
+		unixFDMessageGetFdListFunction, err = unixFDMessageObject.InvokerNew("get_fd_list")
 	})
 	return err
 }
@@ -25588,11 +25059,11 @@ var unixFDMessageStealFdsFunction_Once sync.Once
 func unixFDMessageStealFdsFunction_Set() error {
 	var err error
 	unixFDMessageStealFdsFunction_Once.Do(func() {
-		err = unixFDMessageStruct_Set()
+		err = unixFDMessageObject_Set()
 		if err != nil {
 			return
 		}
-		unixFDMessageStealFdsFunction, err = unixFDMessageStruct.InvokerNew("steal_fds")
+		unixFDMessageStealFdsFunction, err = unixFDMessageObject.InvokerNew("steal_fds")
 	})
 	return err
 }
@@ -25614,13 +25085,13 @@ func (recv *UnixFDMessage) StealFds() int32 {
 	return out0
 }
 
-var unixInputStreamStruct *gi.Struct
-var unixInputStreamStruct_Once sync.Once
+var unixInputStreamObject *gi.Object
+var unixInputStreamObject_Once sync.Once
 
-func unixInputStreamStruct_Set() error {
+func unixInputStreamObject_Set() error {
 	var err error
-	unixInputStreamStruct_Once.Do(func() {
-		unixInputStreamStruct, err = gi.StructNew("Gio", "UnixInputStream")
+	unixInputStreamObject_Once.Do(func() {
+		unixInputStreamObject, err = gi.ObjectNew("Gio", "UnixInputStream")
 	})
 	return err
 }
@@ -25631,7 +25102,7 @@ type UnixInputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.FieldGet(unixInputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixInputStreamObject, recv.Native, "parent_instance")
 	value := &InputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25641,7 +25112,7 @@ func (recv *UnixInputStream) FieldParentInstance() *InputStream {
 func (recv *UnixInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixInputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixInputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var unixInputStreamNewFunction *gi.Function
@@ -25650,11 +25121,11 @@ var unixInputStreamNewFunction_Once sync.Once
 func unixInputStreamNewFunction_Set() error {
 	var err error
 	unixInputStreamNewFunction_Once.Do(func() {
-		err = unixInputStreamStruct_Set()
+		err = unixInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixInputStreamNewFunction, err = unixInputStreamStruct.InvokerNew("new")
+		unixInputStreamNewFunction, err = unixInputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25684,11 +25155,11 @@ var unixInputStreamGetCloseFdFunction_Once sync.Once
 func unixInputStreamGetCloseFdFunction_Set() error {
 	var err error
 	unixInputStreamGetCloseFdFunction_Once.Do(func() {
-		err = unixInputStreamStruct_Set()
+		err = unixInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixInputStreamGetCloseFdFunction, err = unixInputStreamStruct.InvokerNew("get_close_fd")
+		unixInputStreamGetCloseFdFunction, err = unixInputStreamObject.InvokerNew("get_close_fd")
 	})
 	return err
 }
@@ -25716,11 +25187,11 @@ var unixInputStreamGetFdFunction_Once sync.Once
 func unixInputStreamGetFdFunction_Set() error {
 	var err error
 	unixInputStreamGetFdFunction_Once.Do(func() {
-		err = unixInputStreamStruct_Set()
+		err = unixInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixInputStreamGetFdFunction, err = unixInputStreamStruct.InvokerNew("get_fd")
+		unixInputStreamGetFdFunction, err = unixInputStreamObject.InvokerNew("get_fd")
 	})
 	return err
 }
@@ -25748,11 +25219,11 @@ var unixInputStreamSetCloseFdFunction_Once sync.Once
 func unixInputStreamSetCloseFdFunction_Set() error {
 	var err error
 	unixInputStreamSetCloseFdFunction_Once.Do(func() {
-		err = unixInputStreamStruct_Set()
+		err = unixInputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixInputStreamSetCloseFdFunction, err = unixInputStreamStruct.InvokerNew("set_close_fd")
+		unixInputStreamSetCloseFdFunction, err = unixInputStreamObject.InvokerNew("set_close_fd")
 	})
 	return err
 }
@@ -25771,13 +25242,13 @@ func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	return
 }
 
-var unixMountMonitorStruct *gi.Struct
-var unixMountMonitorStruct_Once sync.Once
+var unixMountMonitorObject *gi.Object
+var unixMountMonitorObject_Once sync.Once
 
-func unixMountMonitorStruct_Set() error {
+func unixMountMonitorObject_Set() error {
 	var err error
-	unixMountMonitorStruct_Once.Do(func() {
-		unixMountMonitorStruct, err = gi.StructNew("Gio", "UnixMountMonitor")
+	unixMountMonitorObject_Once.Do(func() {
+		unixMountMonitorObject, err = gi.ObjectNew("Gio", "UnixMountMonitor")
 	})
 	return err
 }
@@ -25792,11 +25263,11 @@ var unixMountMonitorNewFunction_Once sync.Once
 func unixMountMonitorNewFunction_Set() error {
 	var err error
 	unixMountMonitorNewFunction_Once.Do(func() {
-		err = unixMountMonitorStruct_Set()
+		err = unixMountMonitorObject_Set()
 		if err != nil {
 			return
 		}
-		unixMountMonitorNewFunction, err = unixMountMonitorStruct.InvokerNew("new")
+		unixMountMonitorNewFunction, err = unixMountMonitorObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25823,11 +25294,11 @@ var unixMountMonitorSetRateLimitFunction_Once sync.Once
 func unixMountMonitorSetRateLimitFunction_Set() error {
 	var err error
 	unixMountMonitorSetRateLimitFunction_Once.Do(func() {
-		err = unixMountMonitorStruct_Set()
+		err = unixMountMonitorObject_Set()
 		if err != nil {
 			return
 		}
-		unixMountMonitorSetRateLimitFunction, err = unixMountMonitorStruct.InvokerNew("set_rate_limit")
+		unixMountMonitorSetRateLimitFunction, err = unixMountMonitorObject.InvokerNew("set_rate_limit")
 	})
 	return err
 }
@@ -25846,13 +25317,13 @@ func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	return
 }
 
-var unixOutputStreamStruct *gi.Struct
-var unixOutputStreamStruct_Once sync.Once
+var unixOutputStreamObject *gi.Object
+var unixOutputStreamObject_Once sync.Once
 
-func unixOutputStreamStruct_Set() error {
+func unixOutputStreamObject_Set() error {
 	var err error
-	unixOutputStreamStruct_Once.Do(func() {
-		unixOutputStreamStruct, err = gi.StructNew("Gio", "UnixOutputStream")
+	unixOutputStreamObject_Once.Do(func() {
+		unixOutputStreamObject, err = gi.ObjectNew("Gio", "UnixOutputStream")
 	})
 	return err
 }
@@ -25863,7 +25334,7 @@ type UnixOutputStream struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.FieldGet(unixOutputStreamStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixOutputStreamObject, recv.Native, "parent_instance")
 	value := &OutputStream{}
 	value.Native = argValue.Pointer()
 	return value
@@ -25873,7 +25344,7 @@ func (recv *UnixOutputStream) FieldParentInstance() *OutputStream {
 func (recv *UnixOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixOutputStreamStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixOutputStreamObject, recv.Native, "parent_instance", argValue)
 }
 
 var unixOutputStreamNewFunction *gi.Function
@@ -25882,11 +25353,11 @@ var unixOutputStreamNewFunction_Once sync.Once
 func unixOutputStreamNewFunction_Set() error {
 	var err error
 	unixOutputStreamNewFunction_Once.Do(func() {
-		err = unixOutputStreamStruct_Set()
+		err = unixOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixOutputStreamNewFunction, err = unixOutputStreamStruct.InvokerNew("new")
+		unixOutputStreamNewFunction, err = unixOutputStreamObject.InvokerNew("new")
 	})
 	return err
 }
@@ -25916,11 +25387,11 @@ var unixOutputStreamGetCloseFdFunction_Once sync.Once
 func unixOutputStreamGetCloseFdFunction_Set() error {
 	var err error
 	unixOutputStreamGetCloseFdFunction_Once.Do(func() {
-		err = unixOutputStreamStruct_Set()
+		err = unixOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixOutputStreamGetCloseFdFunction, err = unixOutputStreamStruct.InvokerNew("get_close_fd")
+		unixOutputStreamGetCloseFdFunction, err = unixOutputStreamObject.InvokerNew("get_close_fd")
 	})
 	return err
 }
@@ -25948,11 +25419,11 @@ var unixOutputStreamGetFdFunction_Once sync.Once
 func unixOutputStreamGetFdFunction_Set() error {
 	var err error
 	unixOutputStreamGetFdFunction_Once.Do(func() {
-		err = unixOutputStreamStruct_Set()
+		err = unixOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixOutputStreamGetFdFunction, err = unixOutputStreamStruct.InvokerNew("get_fd")
+		unixOutputStreamGetFdFunction, err = unixOutputStreamObject.InvokerNew("get_fd")
 	})
 	return err
 }
@@ -25980,11 +25451,11 @@ var unixOutputStreamSetCloseFdFunction_Once sync.Once
 func unixOutputStreamSetCloseFdFunction_Set() error {
 	var err error
 	unixOutputStreamSetCloseFdFunction_Once.Do(func() {
-		err = unixOutputStreamStruct_Set()
+		err = unixOutputStreamObject_Set()
 		if err != nil {
 			return
 		}
-		unixOutputStreamSetCloseFdFunction, err = unixOutputStreamStruct.InvokerNew("set_close_fd")
+		unixOutputStreamSetCloseFdFunction, err = unixOutputStreamObject.InvokerNew("set_close_fd")
 	})
 	return err
 }
@@ -26003,13 +25474,13 @@ func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
 	return
 }
 
-var unixSocketAddressStruct *gi.Struct
-var unixSocketAddressStruct_Once sync.Once
+var unixSocketAddressObject *gi.Object
+var unixSocketAddressObject_Once sync.Once
 
-func unixSocketAddressStruct_Set() error {
+func unixSocketAddressObject_Set() error {
 	var err error
-	unixSocketAddressStruct_Once.Do(func() {
-		unixSocketAddressStruct, err = gi.StructNew("Gio", "UnixSocketAddress")
+	unixSocketAddressObject_Once.Do(func() {
+		unixSocketAddressObject, err = gi.ObjectNew("Gio", "UnixSocketAddress")
 	})
 	return err
 }
@@ -26020,7 +25491,7 @@ type UnixSocketAddress struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.FieldGet(unixSocketAddressStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(unixSocketAddressObject, recv.Native, "parent_instance")
 	value := &SocketAddress{}
 	value.Native = argValue.Pointer()
 	return value
@@ -26030,7 +25501,7 @@ func (recv *UnixSocketAddress) FieldParentInstance() *SocketAddress {
 func (recv *UnixSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(unixSocketAddressStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(unixSocketAddressObject, recv.Native, "parent_instance", argValue)
 }
 
 var unixSocketAddressNewFunction *gi.Function
@@ -26039,11 +25510,11 @@ var unixSocketAddressNewFunction_Once sync.Once
 func unixSocketAddressNewFunction_Set() error {
 	var err error
 	unixSocketAddressNewFunction_Once.Do(func() {
-		err = unixSocketAddressStruct_Set()
+		err = unixSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		unixSocketAddressNewFunction, err = unixSocketAddressStruct.InvokerNew("new")
+		unixSocketAddressNewFunction, err = unixSocketAddressObject.InvokerNew("new")
 	})
 	return err
 }
@@ -26076,11 +25547,11 @@ var unixSocketAddressGetAddressTypeFunction_Once sync.Once
 func unixSocketAddressGetAddressTypeFunction_Set() error {
 	var err error
 	unixSocketAddressGetAddressTypeFunction_Once.Do(func() {
-		err = unixSocketAddressStruct_Set()
+		err = unixSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		unixSocketAddressGetAddressTypeFunction, err = unixSocketAddressStruct.InvokerNew("get_address_type")
+		unixSocketAddressGetAddressTypeFunction, err = unixSocketAddressObject.InvokerNew("get_address_type")
 	})
 	return err
 }
@@ -26108,11 +25579,11 @@ var unixSocketAddressGetIsAbstractFunction_Once sync.Once
 func unixSocketAddressGetIsAbstractFunction_Set() error {
 	var err error
 	unixSocketAddressGetIsAbstractFunction_Once.Do(func() {
-		err = unixSocketAddressStruct_Set()
+		err = unixSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		unixSocketAddressGetIsAbstractFunction, err = unixSocketAddressStruct.InvokerNew("get_is_abstract")
+		unixSocketAddressGetIsAbstractFunction, err = unixSocketAddressObject.InvokerNew("get_is_abstract")
 	})
 	return err
 }
@@ -26140,11 +25611,11 @@ var unixSocketAddressGetPathFunction_Once sync.Once
 func unixSocketAddressGetPathFunction_Set() error {
 	var err error
 	unixSocketAddressGetPathFunction_Once.Do(func() {
-		err = unixSocketAddressStruct_Set()
+		err = unixSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		unixSocketAddressGetPathFunction, err = unixSocketAddressStruct.InvokerNew("get_path")
+		unixSocketAddressGetPathFunction, err = unixSocketAddressObject.InvokerNew("get_path")
 	})
 	return err
 }
@@ -26172,11 +25643,11 @@ var unixSocketAddressGetPathLenFunction_Once sync.Once
 func unixSocketAddressGetPathLenFunction_Set() error {
 	var err error
 	unixSocketAddressGetPathLenFunction_Once.Do(func() {
-		err = unixSocketAddressStruct_Set()
+		err = unixSocketAddressObject_Set()
 		if err != nil {
 			return
 		}
-		unixSocketAddressGetPathLenFunction, err = unixSocketAddressStruct.InvokerNew("get_path_len")
+		unixSocketAddressGetPathLenFunction, err = unixSocketAddressObject.InvokerNew("get_path_len")
 	})
 	return err
 }
@@ -26198,13 +25669,13 @@ func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	return retGo
 }
 
-var vfsStruct *gi.Struct
-var vfsStruct_Once sync.Once
+var vfsObject *gi.Object
+var vfsObject_Once sync.Once
 
-func vfsStruct_Set() error {
+func vfsObject_Set() error {
 	var err error
-	vfsStruct_Once.Do(func() {
-		vfsStruct, err = gi.StructNew("Gio", "Vfs")
+	vfsObject_Once.Do(func() {
+		vfsObject, err = gi.ObjectNew("Gio", "Vfs")
 	})
 	return err
 }
@@ -26227,11 +25698,11 @@ var vfsGetSupportedUriSchemesFunction_Once sync.Once
 func vfsGetSupportedUriSchemesFunction_Set() error {
 	var err error
 	vfsGetSupportedUriSchemesFunction_Once.Do(func() {
-		err = vfsStruct_Set()
+		err = vfsObject_Set()
 		if err != nil {
 			return
 		}
-		vfsGetSupportedUriSchemesFunction, err = vfsStruct.InvokerNew("get_supported_uri_schemes")
+		vfsGetSupportedUriSchemesFunction, err = vfsObject.InvokerNew("get_supported_uri_schemes")
 	})
 	return err
 }
@@ -26255,11 +25726,11 @@ var vfsIsActiveFunction_Once sync.Once
 func vfsIsActiveFunction_Set() error {
 	var err error
 	vfsIsActiveFunction_Once.Do(func() {
-		err = vfsStruct_Set()
+		err = vfsObject_Set()
 		if err != nil {
 			return
 		}
-		vfsIsActiveFunction, err = vfsStruct.InvokerNew("is_active")
+		vfsIsActiveFunction, err = vfsObject.InvokerNew("is_active")
 	})
 	return err
 }
@@ -26291,11 +25762,11 @@ var vfsUnregisterUriSchemeFunction_Once sync.Once
 func vfsUnregisterUriSchemeFunction_Set() error {
 	var err error
 	vfsUnregisterUriSchemeFunction_Once.Do(func() {
-		err = vfsStruct_Set()
+		err = vfsObject_Set()
 		if err != nil {
 			return
 		}
-		vfsUnregisterUriSchemeFunction, err = vfsStruct.InvokerNew("unregister_uri_scheme")
+		vfsUnregisterUriSchemeFunction, err = vfsObject.InvokerNew("unregister_uri_scheme")
 	})
 	return err
 }
@@ -26318,29 +25789,13 @@ func (recv *Vfs) UnregisterUriScheme(scheme string) bool {
 	return retGo
 }
 
-// VfsStruct creates an uninitialised Vfs.
-func VfsStruct() *Vfs {
-	err := vfsStruct_Set()
-	if err != nil {
-		return nil
-	}
+var volumeMonitorObject *gi.Object
+var volumeMonitorObject_Once sync.Once
 
-	structGo := &Vfs{}
-	structGo.Native = vfsStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeVfs)
-	return structGo
-}
-func finalizeVfs(obj *Vfs) {
-	vfsStruct.Free(obj.Native)
-}
-
-var volumeMonitorStruct *gi.Struct
-var volumeMonitorStruct_Once sync.Once
-
-func volumeMonitorStruct_Set() error {
+func volumeMonitorObject_Set() error {
 	var err error
-	volumeMonitorStruct_Once.Do(func() {
-		volumeMonitorStruct, err = gi.StructNew("Gio", "VolumeMonitor")
+	volumeMonitorObject_Once.Do(func() {
+		volumeMonitorObject, err = gi.ObjectNew("Gio", "VolumeMonitor")
 	})
 	return err
 }
@@ -26363,29 +25818,13 @@ type VolumeMonitor struct {
 
 // UNSUPPORTED : C value 'g_volume_monitor_get_volumes' : return type 'GLib.List' not supported
 
-// VolumeMonitorStruct creates an uninitialised VolumeMonitor.
-func VolumeMonitorStruct() *VolumeMonitor {
-	err := volumeMonitorStruct_Set()
-	if err != nil {
-		return nil
-	}
+var zlibCompressorObject *gi.Object
+var zlibCompressorObject_Once sync.Once
 
-	structGo := &VolumeMonitor{}
-	structGo.Native = volumeMonitorStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeVolumeMonitor)
-	return structGo
-}
-func finalizeVolumeMonitor(obj *VolumeMonitor) {
-	volumeMonitorStruct.Free(obj.Native)
-}
-
-var zlibCompressorStruct *gi.Struct
-var zlibCompressorStruct_Once sync.Once
-
-func zlibCompressorStruct_Set() error {
+func zlibCompressorObject_Set() error {
 	var err error
-	zlibCompressorStruct_Once.Do(func() {
-		zlibCompressorStruct, err = gi.StructNew("Gio", "ZlibCompressor")
+	zlibCompressorObject_Once.Do(func() {
+		zlibCompressorObject, err = gi.ObjectNew("Gio", "ZlibCompressor")
 	})
 	return err
 }
@@ -26400,11 +25839,11 @@ var zlibCompressorNewFunction_Once sync.Once
 func zlibCompressorNewFunction_Set() error {
 	var err error
 	zlibCompressorNewFunction_Once.Do(func() {
-		err = zlibCompressorStruct_Set()
+		err = zlibCompressorObject_Set()
 		if err != nil {
 			return
 		}
-		zlibCompressorNewFunction, err = zlibCompressorStruct.InvokerNew("new")
+		zlibCompressorNewFunction, err = zlibCompressorObject.InvokerNew("new")
 	})
 	return err
 }
@@ -26434,11 +25873,11 @@ var zlibCompressorGetFileInfoFunction_Once sync.Once
 func zlibCompressorGetFileInfoFunction_Set() error {
 	var err error
 	zlibCompressorGetFileInfoFunction_Once.Do(func() {
-		err = zlibCompressorStruct_Set()
+		err = zlibCompressorObject_Set()
 		if err != nil {
 			return
 		}
-		zlibCompressorGetFileInfoFunction, err = zlibCompressorStruct.InvokerNew("get_file_info")
+		zlibCompressorGetFileInfoFunction, err = zlibCompressorObject.InvokerNew("get_file_info")
 	})
 	return err
 }
@@ -26467,11 +25906,11 @@ var zlibCompressorSetFileInfoFunction_Once sync.Once
 func zlibCompressorSetFileInfoFunction_Set() error {
 	var err error
 	zlibCompressorSetFileInfoFunction_Once.Do(func() {
-		err = zlibCompressorStruct_Set()
+		err = zlibCompressorObject_Set()
 		if err != nil {
 			return
 		}
-		zlibCompressorSetFileInfoFunction, err = zlibCompressorStruct.InvokerNew("set_file_info")
+		zlibCompressorSetFileInfoFunction, err = zlibCompressorObject.InvokerNew("set_file_info")
 	})
 	return err
 }
@@ -26490,13 +25929,13 @@ func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	return
 }
 
-var zlibDecompressorStruct *gi.Struct
-var zlibDecompressorStruct_Once sync.Once
+var zlibDecompressorObject *gi.Object
+var zlibDecompressorObject_Once sync.Once
 
-func zlibDecompressorStruct_Set() error {
+func zlibDecompressorObject_Set() error {
 	var err error
-	zlibDecompressorStruct_Once.Do(func() {
-		zlibDecompressorStruct, err = gi.StructNew("Gio", "ZlibDecompressor")
+	zlibDecompressorObject_Once.Do(func() {
+		zlibDecompressorObject, err = gi.ObjectNew("Gio", "ZlibDecompressor")
 	})
 	return err
 }
@@ -26511,11 +25950,11 @@ var zlibDecompressorNewFunction_Once sync.Once
 func zlibDecompressorNewFunction_Set() error {
 	var err error
 	zlibDecompressorNewFunction_Once.Do(func() {
-		err = zlibDecompressorStruct_Set()
+		err = zlibDecompressorObject_Set()
 		if err != nil {
 			return
 		}
-		zlibDecompressorNewFunction, err = zlibDecompressorStruct.InvokerNew("new")
+		zlibDecompressorNewFunction, err = zlibDecompressorObject.InvokerNew("new")
 	})
 	return err
 }
@@ -26544,11 +25983,11 @@ var zlibDecompressorGetFileInfoFunction_Once sync.Once
 func zlibDecompressorGetFileInfoFunction_Set() error {
 	var err error
 	zlibDecompressorGetFileInfoFunction_Once.Do(func() {
-		err = zlibDecompressorStruct_Set()
+		err = zlibDecompressorObject_Set()
 		if err != nil {
 			return
 		}
-		zlibDecompressorGetFileInfoFunction, err = zlibDecompressorStruct.InvokerNew("get_file_info")
+		zlibDecompressorGetFileInfoFunction, err = zlibDecompressorObject.InvokerNew("get_file_info")
 	})
 	return err
 }

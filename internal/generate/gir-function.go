@@ -124,7 +124,7 @@ func (f *Function) generateFuncInfo(fi *file) {
 							g.
 								Id("err").
 								Op("=").
-								Id(f.record.structInfoSetFuncGoName).
+								Id(f.record.giInfoSetFuncGoName).
 								Call()
 
 							// if err != nil {
@@ -140,7 +140,7 @@ func (f *Function) generateFuncInfo(fi *file) {
 								Op(",").
 								Id("err").
 								Op("=").
-								Id(f.record.structInfoGoName).
+								Id(f.record.giInfoGoName).
 								Dot("InvokerNew").
 								Call(jen.Lit(f.Name))
 						} else {

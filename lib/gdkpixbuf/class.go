@@ -5,17 +5,16 @@ package gdkpixbuf
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 )
 
-var pixbufStruct *gi.Struct
-var pixbufStruct_Once sync.Once
+var pixbufObject *gi.Object
+var pixbufObject_Once sync.Once
 
-func pixbufStruct_Set() error {
+func pixbufObject_Set() error {
 	var err error
-	pixbufStruct_Once.Do(func() {
-		pixbufStruct, err = gi.StructNew("GdkPixbuf", "Pixbuf")
+	pixbufObject_Once.Do(func() {
+		pixbufObject, err = gi.ObjectNew("GdkPixbuf", "Pixbuf")
 	})
 	return err
 }
@@ -30,11 +29,11 @@ var pixbufNewFunction_Once sync.Once
 func pixbufNewFunction_Set() error {
 	var err error
 	pixbufNewFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFunction, err = pixbufStruct.InvokerNew("new")
+		pixbufNewFunction, err = pixbufObject.InvokerNew("new")
 	})
 	return err
 }
@@ -71,11 +70,11 @@ var pixbufNewFromFileFunction_Once sync.Once
 func pixbufNewFromFileFunction_Set() error {
 	var err error
 	pixbufNewFromFileFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFromFileFunction, err = pixbufStruct.InvokerNew("new_from_file")
+		pixbufNewFromFileFunction, err = pixbufObject.InvokerNew("new_from_file")
 	})
 	return err
 }
@@ -104,11 +103,11 @@ var pixbufNewFromFileAtScaleFunction_Once sync.Once
 func pixbufNewFromFileAtScaleFunction_Set() error {
 	var err error
 	pixbufNewFromFileAtScaleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFromFileAtScaleFunction, err = pixbufStruct.InvokerNew("new_from_file_at_scale")
+		pixbufNewFromFileAtScaleFunction, err = pixbufObject.InvokerNew("new_from_file_at_scale")
 	})
 	return err
 }
@@ -140,11 +139,11 @@ var pixbufNewFromFileAtSizeFunction_Once sync.Once
 func pixbufNewFromFileAtSizeFunction_Set() error {
 	var err error
 	pixbufNewFromFileAtSizeFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFromFileAtSizeFunction, err = pixbufStruct.InvokerNew("new_from_file_at_size")
+		pixbufNewFromFileAtSizeFunction, err = pixbufObject.InvokerNew("new_from_file_at_size")
 	})
 	return err
 }
@@ -177,11 +176,11 @@ var pixbufNewFromResourceFunction_Once sync.Once
 func pixbufNewFromResourceFunction_Set() error {
 	var err error
 	pixbufNewFromResourceFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFromResourceFunction, err = pixbufStruct.InvokerNew("new_from_resource")
+		pixbufNewFromResourceFunction, err = pixbufObject.InvokerNew("new_from_resource")
 	})
 	return err
 }
@@ -210,11 +209,11 @@ var pixbufNewFromResourceAtScaleFunction_Once sync.Once
 func pixbufNewFromResourceAtScaleFunction_Set() error {
 	var err error
 	pixbufNewFromResourceAtScaleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewFromResourceAtScaleFunction, err = pixbufStruct.InvokerNew("new_from_resource_at_scale")
+		pixbufNewFromResourceAtScaleFunction, err = pixbufObject.InvokerNew("new_from_resource_at_scale")
 	})
 	return err
 }
@@ -254,11 +253,11 @@ var pixbufAddAlphaFunction_Once sync.Once
 func pixbufAddAlphaFunction_Set() error {
 	var err error
 	pixbufAddAlphaFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAddAlphaFunction, err = pixbufStruct.InvokerNew("add_alpha")
+		pixbufAddAlphaFunction, err = pixbufObject.InvokerNew("add_alpha")
 	})
 	return err
 }
@@ -291,11 +290,11 @@ var pixbufApplyEmbeddedOrientationFunction_Once sync.Once
 func pixbufApplyEmbeddedOrientationFunction_Set() error {
 	var err error
 	pixbufApplyEmbeddedOrientationFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufApplyEmbeddedOrientationFunction, err = pixbufStruct.InvokerNew("apply_embedded_orientation")
+		pixbufApplyEmbeddedOrientationFunction, err = pixbufObject.InvokerNew("apply_embedded_orientation")
 	})
 	return err
 }
@@ -324,11 +323,11 @@ var pixbufCompositeFunction_Once sync.Once
 func pixbufCompositeFunction_Set() error {
 	var err error
 	pixbufCompositeFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCompositeFunction, err = pixbufStruct.InvokerNew("composite")
+		pixbufCompositeFunction, err = pixbufObject.InvokerNew("composite")
 	})
 	return err
 }
@@ -363,11 +362,11 @@ var pixbufCompositeColorFunction_Once sync.Once
 func pixbufCompositeColorFunction_Set() error {
 	var err error
 	pixbufCompositeColorFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCompositeColorFunction, err = pixbufStruct.InvokerNew("composite_color")
+		pixbufCompositeColorFunction, err = pixbufObject.InvokerNew("composite_color")
 	})
 	return err
 }
@@ -407,11 +406,11 @@ var pixbufCompositeColorSimpleFunction_Once sync.Once
 func pixbufCompositeColorSimpleFunction_Set() error {
 	var err error
 	pixbufCompositeColorSimpleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCompositeColorSimpleFunction, err = pixbufStruct.InvokerNew("composite_color_simple")
+		pixbufCompositeColorSimpleFunction, err = pixbufObject.InvokerNew("composite_color_simple")
 	})
 	return err
 }
@@ -447,11 +446,11 @@ var pixbufCopyFunction_Once sync.Once
 func pixbufCopyFunction_Set() error {
 	var err error
 	pixbufCopyFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCopyFunction, err = pixbufStruct.InvokerNew("copy")
+		pixbufCopyFunction, err = pixbufObject.InvokerNew("copy")
 	})
 	return err
 }
@@ -480,11 +479,11 @@ var pixbufCopyAreaFunction_Once sync.Once
 func pixbufCopyAreaFunction_Set() error {
 	var err error
 	pixbufCopyAreaFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCopyAreaFunction, err = pixbufStruct.InvokerNew("copy_area")
+		pixbufCopyAreaFunction, err = pixbufObject.InvokerNew("copy_area")
 	})
 	return err
 }
@@ -515,11 +514,11 @@ var pixbufCopyOptionsFunction_Once sync.Once
 func pixbufCopyOptionsFunction_Set() error {
 	var err error
 	pixbufCopyOptionsFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufCopyOptionsFunction, err = pixbufStruct.InvokerNew("copy_options")
+		pixbufCopyOptionsFunction, err = pixbufObject.InvokerNew("copy_options")
 	})
 	return err
 }
@@ -548,11 +547,11 @@ var pixbufFillFunction_Once sync.Once
 func pixbufFillFunction_Set() error {
 	var err error
 	pixbufFillFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufFillFunction, err = pixbufStruct.InvokerNew("fill")
+		pixbufFillFunction, err = pixbufObject.InvokerNew("fill")
 	})
 	return err
 }
@@ -577,11 +576,11 @@ var pixbufFlipFunction_Once sync.Once
 func pixbufFlipFunction_Set() error {
 	var err error
 	pixbufFlipFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufFlipFunction, err = pixbufStruct.InvokerNew("flip")
+		pixbufFlipFunction, err = pixbufObject.InvokerNew("flip")
 	})
 	return err
 }
@@ -611,11 +610,11 @@ var pixbufGetBitsPerSampleFunction_Once sync.Once
 func pixbufGetBitsPerSampleFunction_Set() error {
 	var err error
 	pixbufGetBitsPerSampleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetBitsPerSampleFunction, err = pixbufStruct.InvokerNew("get_bits_per_sample")
+		pixbufGetBitsPerSampleFunction, err = pixbufObject.InvokerNew("get_bits_per_sample")
 	})
 	return err
 }
@@ -643,11 +642,11 @@ var pixbufGetByteLengthFunction_Once sync.Once
 func pixbufGetByteLengthFunction_Set() error {
 	var err error
 	pixbufGetByteLengthFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetByteLengthFunction, err = pixbufStruct.InvokerNew("get_byte_length")
+		pixbufGetByteLengthFunction, err = pixbufObject.InvokerNew("get_byte_length")
 	})
 	return err
 }
@@ -675,11 +674,11 @@ var pixbufGetColorspaceFunction_Once sync.Once
 func pixbufGetColorspaceFunction_Set() error {
 	var err error
 	pixbufGetColorspaceFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetColorspaceFunction, err = pixbufStruct.InvokerNew("get_colorspace")
+		pixbufGetColorspaceFunction, err = pixbufObject.InvokerNew("get_colorspace")
 	})
 	return err
 }
@@ -707,11 +706,11 @@ var pixbufGetHasAlphaFunction_Once sync.Once
 func pixbufGetHasAlphaFunction_Set() error {
 	var err error
 	pixbufGetHasAlphaFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetHasAlphaFunction, err = pixbufStruct.InvokerNew("get_has_alpha")
+		pixbufGetHasAlphaFunction, err = pixbufObject.InvokerNew("get_has_alpha")
 	})
 	return err
 }
@@ -739,11 +738,11 @@ var pixbufGetHeightFunction_Once sync.Once
 func pixbufGetHeightFunction_Set() error {
 	var err error
 	pixbufGetHeightFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetHeightFunction, err = pixbufStruct.InvokerNew("get_height")
+		pixbufGetHeightFunction, err = pixbufObject.InvokerNew("get_height")
 	})
 	return err
 }
@@ -771,11 +770,11 @@ var pixbufGetNChannelsFunction_Once sync.Once
 func pixbufGetNChannelsFunction_Set() error {
 	var err error
 	pixbufGetNChannelsFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetNChannelsFunction, err = pixbufStruct.InvokerNew("get_n_channels")
+		pixbufGetNChannelsFunction, err = pixbufObject.InvokerNew("get_n_channels")
 	})
 	return err
 }
@@ -803,11 +802,11 @@ var pixbufGetOptionFunction_Once sync.Once
 func pixbufGetOptionFunction_Set() error {
 	var err error
 	pixbufGetOptionFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetOptionFunction, err = pixbufStruct.InvokerNew("get_option")
+		pixbufGetOptionFunction, err = pixbufObject.InvokerNew("get_option")
 	})
 	return err
 }
@@ -838,11 +837,11 @@ var pixbufGetPixelsFunction_Once sync.Once
 func pixbufGetPixelsFunction_Set() error {
 	var err error
 	pixbufGetPixelsFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetPixelsFunction, err = pixbufStruct.InvokerNew("get_pixels")
+		pixbufGetPixelsFunction, err = pixbufObject.InvokerNew("get_pixels")
 	})
 	return err
 }
@@ -866,11 +865,11 @@ var pixbufGetPixelsWithLengthFunction_Once sync.Once
 func pixbufGetPixelsWithLengthFunction_Set() error {
 	var err error
 	pixbufGetPixelsWithLengthFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetPixelsWithLengthFunction, err = pixbufStruct.InvokerNew("get_pixels_with_length")
+		pixbufGetPixelsWithLengthFunction, err = pixbufObject.InvokerNew("get_pixels_with_length")
 	})
 	return err
 }
@@ -898,11 +897,11 @@ var pixbufGetRowstrideFunction_Once sync.Once
 func pixbufGetRowstrideFunction_Set() error {
 	var err error
 	pixbufGetRowstrideFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetRowstrideFunction, err = pixbufStruct.InvokerNew("get_rowstride")
+		pixbufGetRowstrideFunction, err = pixbufObject.InvokerNew("get_rowstride")
 	})
 	return err
 }
@@ -930,11 +929,11 @@ var pixbufGetWidthFunction_Once sync.Once
 func pixbufGetWidthFunction_Set() error {
 	var err error
 	pixbufGetWidthFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufGetWidthFunction, err = pixbufStruct.InvokerNew("get_width")
+		pixbufGetWidthFunction, err = pixbufObject.InvokerNew("get_width")
 	})
 	return err
 }
@@ -962,11 +961,11 @@ var pixbufNewSubpixbufFunction_Once sync.Once
 func pixbufNewSubpixbufFunction_Set() error {
 	var err error
 	pixbufNewSubpixbufFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufNewSubpixbufFunction, err = pixbufStruct.InvokerNew("new_subpixbuf")
+		pixbufNewSubpixbufFunction, err = pixbufObject.InvokerNew("new_subpixbuf")
 	})
 	return err
 }
@@ -1001,11 +1000,11 @@ var pixbufReadPixelsFunction_Once sync.Once
 func pixbufReadPixelsFunction_Set() error {
 	var err error
 	pixbufReadPixelsFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufReadPixelsFunction, err = pixbufStruct.InvokerNew("read_pixels")
+		pixbufReadPixelsFunction, err = pixbufObject.InvokerNew("read_pixels")
 	})
 	return err
 }
@@ -1033,11 +1032,11 @@ var pixbufRefFunction_Once sync.Once
 func pixbufRefFunction_Set() error {
 	var err error
 	pixbufRefFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufRefFunction, err = pixbufStruct.InvokerNew("ref")
+		pixbufRefFunction, err = pixbufObject.InvokerNew("ref")
 	})
 	return err
 }
@@ -1066,11 +1065,11 @@ var pixbufRemoveOptionFunction_Once sync.Once
 func pixbufRemoveOptionFunction_Set() error {
 	var err error
 	pixbufRemoveOptionFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufRemoveOptionFunction, err = pixbufStruct.InvokerNew("remove_option")
+		pixbufRemoveOptionFunction, err = pixbufObject.InvokerNew("remove_option")
 	})
 	return err
 }
@@ -1099,11 +1098,11 @@ var pixbufRotateSimpleFunction_Once sync.Once
 func pixbufRotateSimpleFunction_Set() error {
 	var err error
 	pixbufRotateSimpleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufRotateSimpleFunction, err = pixbufStruct.InvokerNew("rotate_simple")
+		pixbufRotateSimpleFunction, err = pixbufObject.InvokerNew("rotate_simple")
 	})
 	return err
 }
@@ -1133,11 +1132,11 @@ var pixbufSaturateAndPixelateFunction_Once sync.Once
 func pixbufSaturateAndPixelateFunction_Set() error {
 	var err error
 	pixbufSaturateAndPixelateFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSaturateAndPixelateFunction, err = pixbufStruct.InvokerNew("saturate_and_pixelate")
+		pixbufSaturateAndPixelateFunction, err = pixbufObject.InvokerNew("saturate_and_pixelate")
 	})
 	return err
 }
@@ -1184,11 +1183,11 @@ var pixbufScaleFunction_Once sync.Once
 func pixbufScaleFunction_Set() error {
 	var err error
 	pixbufScaleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufScaleFunction, err = pixbufStruct.InvokerNew("scale")
+		pixbufScaleFunction, err = pixbufObject.InvokerNew("scale")
 	})
 	return err
 }
@@ -1222,11 +1221,11 @@ var pixbufScaleSimpleFunction_Once sync.Once
 func pixbufScaleSimpleFunction_Set() error {
 	var err error
 	pixbufScaleSimpleFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufScaleSimpleFunction, err = pixbufStruct.InvokerNew("scale_simple")
+		pixbufScaleSimpleFunction, err = pixbufObject.InvokerNew("scale_simple")
 	})
 	return err
 }
@@ -1258,11 +1257,11 @@ var pixbufSetOptionFunction_Once sync.Once
 func pixbufSetOptionFunction_Set() error {
 	var err error
 	pixbufSetOptionFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSetOptionFunction, err = pixbufStruct.InvokerNew("set_option")
+		pixbufSetOptionFunction, err = pixbufObject.InvokerNew("set_option")
 	})
 	return err
 }
@@ -1292,11 +1291,11 @@ var pixbufUnrefFunction_Once sync.Once
 func pixbufUnrefFunction_Set() error {
 	var err error
 	pixbufUnrefFunction_Once.Do(func() {
-		err = pixbufStruct_Set()
+		err = pixbufObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufUnrefFunction, err = pixbufStruct.InvokerNew("unref")
+		pixbufUnrefFunction, err = pixbufObject.InvokerNew("unref")
 	})
 	return err
 }
@@ -1314,13 +1313,13 @@ func (recv *Pixbuf) Unref() {
 	return
 }
 
-var pixbufAnimationStruct *gi.Struct
-var pixbufAnimationStruct_Once sync.Once
+var pixbufAnimationObject *gi.Object
+var pixbufAnimationObject_Once sync.Once
 
-func pixbufAnimationStruct_Set() error {
+func pixbufAnimationObject_Set() error {
 	var err error
-	pixbufAnimationStruct_Once.Do(func() {
-		pixbufAnimationStruct, err = gi.StructNew("GdkPixbuf", "PixbufAnimation")
+	pixbufAnimationObject_Once.Do(func() {
+		pixbufAnimationObject, err = gi.ObjectNew("GdkPixbuf", "PixbufAnimation")
 	})
 	return err
 }
@@ -1335,11 +1334,11 @@ var pixbufAnimationNewFromFileFunction_Once sync.Once
 func pixbufAnimationNewFromFileFunction_Set() error {
 	var err error
 	pixbufAnimationNewFromFileFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationNewFromFileFunction, err = pixbufAnimationStruct.InvokerNew("new_from_file")
+		pixbufAnimationNewFromFileFunction, err = pixbufAnimationObject.InvokerNew("new_from_file")
 	})
 	return err
 }
@@ -1368,11 +1367,11 @@ var pixbufAnimationNewFromResourceFunction_Once sync.Once
 func pixbufAnimationNewFromResourceFunction_Set() error {
 	var err error
 	pixbufAnimationNewFromResourceFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationNewFromResourceFunction, err = pixbufAnimationStruct.InvokerNew("new_from_resource")
+		pixbufAnimationNewFromResourceFunction, err = pixbufAnimationObject.InvokerNew("new_from_resource")
 	})
 	return err
 }
@@ -1405,11 +1404,11 @@ var pixbufAnimationGetHeightFunction_Once sync.Once
 func pixbufAnimationGetHeightFunction_Set() error {
 	var err error
 	pixbufAnimationGetHeightFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationGetHeightFunction, err = pixbufAnimationStruct.InvokerNew("get_height")
+		pixbufAnimationGetHeightFunction, err = pixbufAnimationObject.InvokerNew("get_height")
 	})
 	return err
 }
@@ -1439,11 +1438,11 @@ var pixbufAnimationGetStaticImageFunction_Once sync.Once
 func pixbufAnimationGetStaticImageFunction_Set() error {
 	var err error
 	pixbufAnimationGetStaticImageFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationGetStaticImageFunction, err = pixbufAnimationStruct.InvokerNew("get_static_image")
+		pixbufAnimationGetStaticImageFunction, err = pixbufAnimationObject.InvokerNew("get_static_image")
 	})
 	return err
 }
@@ -1472,11 +1471,11 @@ var pixbufAnimationGetWidthFunction_Once sync.Once
 func pixbufAnimationGetWidthFunction_Set() error {
 	var err error
 	pixbufAnimationGetWidthFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationGetWidthFunction, err = pixbufAnimationStruct.InvokerNew("get_width")
+		pixbufAnimationGetWidthFunction, err = pixbufAnimationObject.InvokerNew("get_width")
 	})
 	return err
 }
@@ -1504,11 +1503,11 @@ var pixbufAnimationIsStaticImageFunction_Once sync.Once
 func pixbufAnimationIsStaticImageFunction_Set() error {
 	var err error
 	pixbufAnimationIsStaticImageFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationIsStaticImageFunction, err = pixbufAnimationStruct.InvokerNew("is_static_image")
+		pixbufAnimationIsStaticImageFunction, err = pixbufAnimationObject.InvokerNew("is_static_image")
 	})
 	return err
 }
@@ -1536,11 +1535,11 @@ var pixbufAnimationRefFunction_Once sync.Once
 func pixbufAnimationRefFunction_Set() error {
 	var err error
 	pixbufAnimationRefFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationRefFunction, err = pixbufAnimationStruct.InvokerNew("ref")
+		pixbufAnimationRefFunction, err = pixbufAnimationObject.InvokerNew("ref")
 	})
 	return err
 }
@@ -1569,11 +1568,11 @@ var pixbufAnimationUnrefFunction_Once sync.Once
 func pixbufAnimationUnrefFunction_Set() error {
 	var err error
 	pixbufAnimationUnrefFunction_Once.Do(func() {
-		err = pixbufAnimationStruct_Set()
+		err = pixbufAnimationObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationUnrefFunction, err = pixbufAnimationStruct.InvokerNew("unref")
+		pixbufAnimationUnrefFunction, err = pixbufAnimationObject.InvokerNew("unref")
 	})
 	return err
 }
@@ -1591,13 +1590,13 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
-var pixbufAnimationIterStruct *gi.Struct
-var pixbufAnimationIterStruct_Once sync.Once
+var pixbufAnimationIterObject *gi.Object
+var pixbufAnimationIterObject_Once sync.Once
 
-func pixbufAnimationIterStruct_Set() error {
+func pixbufAnimationIterObject_Set() error {
 	var err error
-	pixbufAnimationIterStruct_Once.Do(func() {
-		pixbufAnimationIterStruct, err = gi.StructNew("GdkPixbuf", "PixbufAnimationIter")
+	pixbufAnimationIterObject_Once.Do(func() {
+		pixbufAnimationIterObject, err = gi.ObjectNew("GdkPixbuf", "PixbufAnimationIter")
 	})
 	return err
 }
@@ -1614,11 +1613,11 @@ var pixbufAnimationIterGetDelayTimeFunction_Once sync.Once
 func pixbufAnimationIterGetDelayTimeFunction_Set() error {
 	var err error
 	pixbufAnimationIterGetDelayTimeFunction_Once.Do(func() {
-		err = pixbufAnimationIterStruct_Set()
+		err = pixbufAnimationIterObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationIterGetDelayTimeFunction, err = pixbufAnimationIterStruct.InvokerNew("get_delay_time")
+		pixbufAnimationIterGetDelayTimeFunction, err = pixbufAnimationIterObject.InvokerNew("get_delay_time")
 	})
 	return err
 }
@@ -1646,11 +1645,11 @@ var pixbufAnimationIterGetPixbufFunction_Once sync.Once
 func pixbufAnimationIterGetPixbufFunction_Set() error {
 	var err error
 	pixbufAnimationIterGetPixbufFunction_Once.Do(func() {
-		err = pixbufAnimationIterStruct_Set()
+		err = pixbufAnimationIterObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationIterGetPixbufFunction, err = pixbufAnimationIterStruct.InvokerNew("get_pixbuf")
+		pixbufAnimationIterGetPixbufFunction, err = pixbufAnimationIterObject.InvokerNew("get_pixbuf")
 	})
 	return err
 }
@@ -1679,11 +1678,11 @@ var pixbufAnimationIterOnCurrentlyLoadingFrameFunction_Once sync.Once
 func pixbufAnimationIterOnCurrentlyLoadingFrameFunction_Set() error {
 	var err error
 	pixbufAnimationIterOnCurrentlyLoadingFrameFunction_Once.Do(func() {
-		err = pixbufAnimationIterStruct_Set()
+		err = pixbufAnimationIterObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufAnimationIterOnCurrentlyLoadingFrameFunction, err = pixbufAnimationIterStruct.InvokerNew("on_currently_loading_frame")
+		pixbufAnimationIterOnCurrentlyLoadingFrameFunction, err = pixbufAnimationIterObject.InvokerNew("on_currently_loading_frame")
 	})
 	return err
 }
@@ -1705,29 +1704,13 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	return retGo
 }
 
-// PixbufAnimationIterStruct creates an uninitialised PixbufAnimationIter.
-func PixbufAnimationIterStruct() *PixbufAnimationIter {
-	err := pixbufAnimationIterStruct_Set()
-	if err != nil {
-		return nil
-	}
+var pixbufLoaderObject *gi.Object
+var pixbufLoaderObject_Once sync.Once
 
-	structGo := &PixbufAnimationIter{}
-	structGo.Native = pixbufAnimationIterStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizePixbufAnimationIter)
-	return structGo
-}
-func finalizePixbufAnimationIter(obj *PixbufAnimationIter) {
-	pixbufAnimationIterStruct.Free(obj.Native)
-}
-
-var pixbufLoaderStruct *gi.Struct
-var pixbufLoaderStruct_Once sync.Once
-
-func pixbufLoaderStruct_Set() error {
+func pixbufLoaderObject_Set() error {
 	var err error
-	pixbufLoaderStruct_Once.Do(func() {
-		pixbufLoaderStruct, err = gi.StructNew("GdkPixbuf", "PixbufLoader")
+	pixbufLoaderObject_Once.Do(func() {
+		pixbufLoaderObject, err = gi.ObjectNew("GdkPixbuf", "PixbufLoader")
 	})
 	return err
 }
@@ -1746,11 +1729,11 @@ var pixbufLoaderNewFunction_Once sync.Once
 func pixbufLoaderNewFunction_Set() error {
 	var err error
 	pixbufLoaderNewFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderNewFunction, err = pixbufLoaderStruct.InvokerNew("new")
+		pixbufLoaderNewFunction, err = pixbufLoaderObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1777,11 +1760,11 @@ var pixbufLoaderNewWithMimeTypeFunction_Once sync.Once
 func pixbufLoaderNewWithMimeTypeFunction_Set() error {
 	var err error
 	pixbufLoaderNewWithMimeTypeFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderNewWithMimeTypeFunction, err = pixbufLoaderStruct.InvokerNew("new_with_mime_type")
+		pixbufLoaderNewWithMimeTypeFunction, err = pixbufLoaderObject.InvokerNew("new_with_mime_type")
 	})
 	return err
 }
@@ -1810,11 +1793,11 @@ var pixbufLoaderNewWithTypeFunction_Once sync.Once
 func pixbufLoaderNewWithTypeFunction_Set() error {
 	var err error
 	pixbufLoaderNewWithTypeFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderNewWithTypeFunction, err = pixbufLoaderStruct.InvokerNew("new_with_type")
+		pixbufLoaderNewWithTypeFunction, err = pixbufLoaderObject.InvokerNew("new_with_type")
 	})
 	return err
 }
@@ -1843,11 +1826,11 @@ var pixbufLoaderCloseFunction_Once sync.Once
 func pixbufLoaderCloseFunction_Set() error {
 	var err error
 	pixbufLoaderCloseFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderCloseFunction, err = pixbufLoaderStruct.InvokerNew("close")
+		pixbufLoaderCloseFunction, err = pixbufLoaderObject.InvokerNew("close")
 	})
 	return err
 }
@@ -1875,11 +1858,11 @@ var pixbufLoaderGetAnimationFunction_Once sync.Once
 func pixbufLoaderGetAnimationFunction_Set() error {
 	var err error
 	pixbufLoaderGetAnimationFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderGetAnimationFunction, err = pixbufLoaderStruct.InvokerNew("get_animation")
+		pixbufLoaderGetAnimationFunction, err = pixbufLoaderObject.InvokerNew("get_animation")
 	})
 	return err
 }
@@ -1908,11 +1891,11 @@ var pixbufLoaderGetFormatFunction_Once sync.Once
 func pixbufLoaderGetFormatFunction_Set() error {
 	var err error
 	pixbufLoaderGetFormatFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderGetFormatFunction, err = pixbufLoaderStruct.InvokerNew("get_format")
+		pixbufLoaderGetFormatFunction, err = pixbufLoaderObject.InvokerNew("get_format")
 	})
 	return err
 }
@@ -1941,11 +1924,11 @@ var pixbufLoaderGetPixbufFunction_Once sync.Once
 func pixbufLoaderGetPixbufFunction_Set() error {
 	var err error
 	pixbufLoaderGetPixbufFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderGetPixbufFunction, err = pixbufLoaderStruct.InvokerNew("get_pixbuf")
+		pixbufLoaderGetPixbufFunction, err = pixbufLoaderObject.InvokerNew("get_pixbuf")
 	})
 	return err
 }
@@ -1974,11 +1957,11 @@ var pixbufLoaderSetSizeFunction_Once sync.Once
 func pixbufLoaderSetSizeFunction_Set() error {
 	var err error
 	pixbufLoaderSetSizeFunction_Once.Do(func() {
-		err = pixbufLoaderStruct_Set()
+		err = pixbufLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufLoaderSetSizeFunction, err = pixbufLoaderStruct.InvokerNew("set_size")
+		pixbufLoaderSetSizeFunction, err = pixbufLoaderObject.InvokerNew("set_size")
 	})
 	return err
 }
@@ -2002,13 +1985,13 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_loader_write_bytes' : parameter 'buffer' of type 'GLib.Bytes' not supported
 
-var pixbufSimpleAnimStruct *gi.Struct
-var pixbufSimpleAnimStruct_Once sync.Once
+var pixbufSimpleAnimObject *gi.Object
+var pixbufSimpleAnimObject_Once sync.Once
 
-func pixbufSimpleAnimStruct_Set() error {
+func pixbufSimpleAnimObject_Set() error {
 	var err error
-	pixbufSimpleAnimStruct_Once.Do(func() {
-		pixbufSimpleAnimStruct, err = gi.StructNew("GdkPixbuf", "PixbufSimpleAnim")
+	pixbufSimpleAnimObject_Once.Do(func() {
+		pixbufSimpleAnimObject, err = gi.ObjectNew("GdkPixbuf", "PixbufSimpleAnim")
 	})
 	return err
 }
@@ -2023,11 +2006,11 @@ var pixbufSimpleAnimNewFunction_Once sync.Once
 func pixbufSimpleAnimNewFunction_Set() error {
 	var err error
 	pixbufSimpleAnimNewFunction_Once.Do(func() {
-		err = pixbufSimpleAnimStruct_Set()
+		err = pixbufSimpleAnimObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSimpleAnimNewFunction, err = pixbufSimpleAnimStruct.InvokerNew("new")
+		pixbufSimpleAnimNewFunction, err = pixbufSimpleAnimObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2058,11 +2041,11 @@ var pixbufSimpleAnimAddFrameFunction_Once sync.Once
 func pixbufSimpleAnimAddFrameFunction_Set() error {
 	var err error
 	pixbufSimpleAnimAddFrameFunction_Once.Do(func() {
-		err = pixbufSimpleAnimStruct_Set()
+		err = pixbufSimpleAnimObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSimpleAnimAddFrameFunction, err = pixbufSimpleAnimStruct.InvokerNew("add_frame")
+		pixbufSimpleAnimAddFrameFunction, err = pixbufSimpleAnimObject.InvokerNew("add_frame")
 	})
 	return err
 }
@@ -2087,11 +2070,11 @@ var pixbufSimpleAnimGetLoopFunction_Once sync.Once
 func pixbufSimpleAnimGetLoopFunction_Set() error {
 	var err error
 	pixbufSimpleAnimGetLoopFunction_Once.Do(func() {
-		err = pixbufSimpleAnimStruct_Set()
+		err = pixbufSimpleAnimObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSimpleAnimGetLoopFunction, err = pixbufSimpleAnimStruct.InvokerNew("get_loop")
+		pixbufSimpleAnimGetLoopFunction, err = pixbufSimpleAnimObject.InvokerNew("get_loop")
 	})
 	return err
 }
@@ -2119,11 +2102,11 @@ var pixbufSimpleAnimSetLoopFunction_Once sync.Once
 func pixbufSimpleAnimSetLoopFunction_Set() error {
 	var err error
 	pixbufSimpleAnimSetLoopFunction_Once.Do(func() {
-		err = pixbufSimpleAnimStruct_Set()
+		err = pixbufSimpleAnimObject_Set()
 		if err != nil {
 			return
 		}
-		pixbufSimpleAnimSetLoopFunction, err = pixbufSimpleAnimStruct.InvokerNew("set_loop")
+		pixbufSimpleAnimSetLoopFunction, err = pixbufSimpleAnimObject.InvokerNew("set_loop")
 	})
 	return err
 }
@@ -2142,33 +2125,17 @@ func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
 	return
 }
 
-var pixbufSimpleAnimIterStruct *gi.Struct
-var pixbufSimpleAnimIterStruct_Once sync.Once
+var pixbufSimpleAnimIterObject *gi.Object
+var pixbufSimpleAnimIterObject_Once sync.Once
 
-func pixbufSimpleAnimIterStruct_Set() error {
+func pixbufSimpleAnimIterObject_Set() error {
 	var err error
-	pixbufSimpleAnimIterStruct_Once.Do(func() {
-		pixbufSimpleAnimIterStruct, err = gi.StructNew("GdkPixbuf", "PixbufSimpleAnimIter")
+	pixbufSimpleAnimIterObject_Once.Do(func() {
+		pixbufSimpleAnimIterObject, err = gi.ObjectNew("GdkPixbuf", "PixbufSimpleAnimIter")
 	})
 	return err
 }
 
 type PixbufSimpleAnimIter struct {
 	PixbufAnimationIter
-}
-
-// PixbufSimpleAnimIterStruct creates an uninitialised PixbufSimpleAnimIter.
-func PixbufSimpleAnimIterStruct() *PixbufSimpleAnimIter {
-	err := pixbufSimpleAnimIterStruct_Set()
-	if err != nil {
-		return nil
-	}
-
-	structGo := &PixbufSimpleAnimIter{}
-	structGo.Native = pixbufSimpleAnimIterStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizePixbufSimpleAnimIter)
-	return structGo
-}
-func finalizePixbufSimpleAnimIter(obj *PixbufSimpleAnimIter) {
-	pixbufSimpleAnimIterStruct.Free(obj.Native)
 }

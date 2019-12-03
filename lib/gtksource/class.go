@@ -6,17 +6,16 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
-	"runtime"
 	"sync"
 )
 
-var bufferStruct *gi.Struct
-var bufferStruct_Once sync.Once
+var bufferObject *gi.Object
+var bufferObject_Once sync.Once
 
-func bufferStruct_Set() error {
+func bufferObject_Set() error {
 	var err error
-	bufferStruct_Once.Do(func() {
-		bufferStruct, err = gi.StructNew("GtkSource", "Buffer")
+	bufferObject_Once.Do(func() {
+		bufferObject, err = gi.ObjectNew("GtkSource", "Buffer")
 	})
 	return err
 }
@@ -31,7 +30,7 @@ type Buffer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Buffer) FieldPriv() *BufferPrivate {
-	argValue := gi.FieldGet(bufferStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(bufferObject, recv.Native, "priv")
 	value := &BufferPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -41,7 +40,7 @@ func (recv *Buffer) FieldPriv() *BufferPrivate {
 func (recv *Buffer) SetFieldPriv(value *BufferPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(bufferStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(bufferObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_buffer_new' : parameter 'table' of type 'Gtk.TextTagTable' not supported
@@ -52,11 +51,11 @@ var bufferNewWithLanguageFunction_Once sync.Once
 func bufferNewWithLanguageFunction_Set() error {
 	var err error
 	bufferNewWithLanguageFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferNewWithLanguageFunction, err = bufferStruct.InvokerNew("new_with_language")
+		bufferNewWithLanguageFunction, err = bufferObject.InvokerNew("new_with_language")
 	})
 	return err
 }
@@ -87,11 +86,11 @@ var bufferBeginNotUndoableActionFunction_Once sync.Once
 func bufferBeginNotUndoableActionFunction_Set() error {
 	var err error
 	bufferBeginNotUndoableActionFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferBeginNotUndoableActionFunction, err = bufferStruct.InvokerNew("begin_not_undoable_action")
+		bufferBeginNotUndoableActionFunction, err = bufferObject.InvokerNew("begin_not_undoable_action")
 	})
 	return err
 }
@@ -115,11 +114,11 @@ var bufferCanRedoFunction_Once sync.Once
 func bufferCanRedoFunction_Set() error {
 	var err error
 	bufferCanRedoFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferCanRedoFunction, err = bufferStruct.InvokerNew("can_redo")
+		bufferCanRedoFunction, err = bufferObject.InvokerNew("can_redo")
 	})
 	return err
 }
@@ -147,11 +146,11 @@ var bufferCanUndoFunction_Once sync.Once
 func bufferCanUndoFunction_Set() error {
 	var err error
 	bufferCanUndoFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferCanUndoFunction, err = bufferStruct.InvokerNew("can_undo")
+		bufferCanUndoFunction, err = bufferObject.InvokerNew("can_undo")
 	})
 	return err
 }
@@ -185,11 +184,11 @@ var bufferEndNotUndoableActionFunction_Once sync.Once
 func bufferEndNotUndoableActionFunction_Set() error {
 	var err error
 	bufferEndNotUndoableActionFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferEndNotUndoableActionFunction, err = bufferStruct.InvokerNew("end_not_undoable_action")
+		bufferEndNotUndoableActionFunction, err = bufferObject.InvokerNew("end_not_undoable_action")
 	})
 	return err
 }
@@ -219,11 +218,11 @@ var bufferGetHighlightMatchingBracketsFunction_Once sync.Once
 func bufferGetHighlightMatchingBracketsFunction_Set() error {
 	var err error
 	bufferGetHighlightMatchingBracketsFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetHighlightMatchingBracketsFunction, err = bufferStruct.InvokerNew("get_highlight_matching_brackets")
+		bufferGetHighlightMatchingBracketsFunction, err = bufferObject.InvokerNew("get_highlight_matching_brackets")
 	})
 	return err
 }
@@ -251,11 +250,11 @@ var bufferGetHighlightSyntaxFunction_Once sync.Once
 func bufferGetHighlightSyntaxFunction_Set() error {
 	var err error
 	bufferGetHighlightSyntaxFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetHighlightSyntaxFunction, err = bufferStruct.InvokerNew("get_highlight_syntax")
+		bufferGetHighlightSyntaxFunction, err = bufferObject.InvokerNew("get_highlight_syntax")
 	})
 	return err
 }
@@ -283,11 +282,11 @@ var bufferGetImplicitTrailingNewlineFunction_Once sync.Once
 func bufferGetImplicitTrailingNewlineFunction_Set() error {
 	var err error
 	bufferGetImplicitTrailingNewlineFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetImplicitTrailingNewlineFunction, err = bufferStruct.InvokerNew("get_implicit_trailing_newline")
+		bufferGetImplicitTrailingNewlineFunction, err = bufferObject.InvokerNew("get_implicit_trailing_newline")
 	})
 	return err
 }
@@ -315,11 +314,11 @@ var bufferGetLanguageFunction_Once sync.Once
 func bufferGetLanguageFunction_Set() error {
 	var err error
 	bufferGetLanguageFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetLanguageFunction, err = bufferStruct.InvokerNew("get_language")
+		bufferGetLanguageFunction, err = bufferObject.InvokerNew("get_language")
 	})
 	return err
 }
@@ -348,11 +347,11 @@ var bufferGetMaxUndoLevelsFunction_Once sync.Once
 func bufferGetMaxUndoLevelsFunction_Set() error {
 	var err error
 	bufferGetMaxUndoLevelsFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetMaxUndoLevelsFunction, err = bufferStruct.InvokerNew("get_max_undo_levels")
+		bufferGetMaxUndoLevelsFunction, err = bufferObject.InvokerNew("get_max_undo_levels")
 	})
 	return err
 }
@@ -384,11 +383,11 @@ var bufferGetStyleSchemeFunction_Once sync.Once
 func bufferGetStyleSchemeFunction_Set() error {
 	var err error
 	bufferGetStyleSchemeFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferGetStyleSchemeFunction, err = bufferStruct.InvokerNew("get_style_scheme")
+		bufferGetStyleSchemeFunction, err = bufferObject.InvokerNew("get_style_scheme")
 	})
 	return err
 }
@@ -427,11 +426,11 @@ var bufferRedoFunction_Once sync.Once
 func bufferRedoFunction_Set() error {
 	var err error
 	bufferRedoFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferRedoFunction, err = bufferStruct.InvokerNew("redo")
+		bufferRedoFunction, err = bufferObject.InvokerNew("redo")
 	})
 	return err
 }
@@ -457,11 +456,11 @@ var bufferSetHighlightMatchingBracketsFunction_Once sync.Once
 func bufferSetHighlightMatchingBracketsFunction_Set() error {
 	var err error
 	bufferSetHighlightMatchingBracketsFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetHighlightMatchingBracketsFunction, err = bufferStruct.InvokerNew("set_highlight_matching_brackets")
+		bufferSetHighlightMatchingBracketsFunction, err = bufferObject.InvokerNew("set_highlight_matching_brackets")
 	})
 	return err
 }
@@ -486,11 +485,11 @@ var bufferSetHighlightSyntaxFunction_Once sync.Once
 func bufferSetHighlightSyntaxFunction_Set() error {
 	var err error
 	bufferSetHighlightSyntaxFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetHighlightSyntaxFunction, err = bufferStruct.InvokerNew("set_highlight_syntax")
+		bufferSetHighlightSyntaxFunction, err = bufferObject.InvokerNew("set_highlight_syntax")
 	})
 	return err
 }
@@ -515,11 +514,11 @@ var bufferSetImplicitTrailingNewlineFunction_Once sync.Once
 func bufferSetImplicitTrailingNewlineFunction_Set() error {
 	var err error
 	bufferSetImplicitTrailingNewlineFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetImplicitTrailingNewlineFunction, err = bufferStruct.InvokerNew("set_implicit_trailing_newline")
+		bufferSetImplicitTrailingNewlineFunction, err = bufferObject.InvokerNew("set_implicit_trailing_newline")
 	})
 	return err
 }
@@ -544,11 +543,11 @@ var bufferSetLanguageFunction_Once sync.Once
 func bufferSetLanguageFunction_Set() error {
 	var err error
 	bufferSetLanguageFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetLanguageFunction, err = bufferStruct.InvokerNew("set_language")
+		bufferSetLanguageFunction, err = bufferObject.InvokerNew("set_language")
 	})
 	return err
 }
@@ -573,11 +572,11 @@ var bufferSetMaxUndoLevelsFunction_Once sync.Once
 func bufferSetMaxUndoLevelsFunction_Set() error {
 	var err error
 	bufferSetMaxUndoLevelsFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetMaxUndoLevelsFunction, err = bufferStruct.InvokerNew("set_max_undo_levels")
+		bufferSetMaxUndoLevelsFunction, err = bufferObject.InvokerNew("set_max_undo_levels")
 	})
 	return err
 }
@@ -602,11 +601,11 @@ var bufferSetStyleSchemeFunction_Once sync.Once
 func bufferSetStyleSchemeFunction_Set() error {
 	var err error
 	bufferSetStyleSchemeFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferSetStyleSchemeFunction, err = bufferStruct.InvokerNew("set_style_scheme")
+		bufferSetStyleSchemeFunction, err = bufferObject.InvokerNew("set_style_scheme")
 	})
 	return err
 }
@@ -635,11 +634,11 @@ var bufferUndoFunction_Once sync.Once
 func bufferUndoFunction_Set() error {
 	var err error
 	bufferUndoFunction_Once.Do(func() {
-		err = bufferStruct_Set()
+		err = bufferObject_Set()
 		if err != nil {
 			return
 		}
-		bufferUndoFunction, err = bufferStruct.InvokerNew("undo")
+		bufferUndoFunction, err = bufferObject.InvokerNew("undo")
 	})
 	return err
 }
@@ -657,13 +656,13 @@ func (recv *Buffer) Undo() {
 	return
 }
 
-var completionStruct *gi.Struct
-var completionStruct_Once sync.Once
+var completionObject *gi.Object
+var completionObject_Once sync.Once
 
-func completionStruct_Set() error {
+func completionObject_Set() error {
 	var err error
-	completionStruct_Once.Do(func() {
-		completionStruct, err = gi.StructNew("GtkSource", "Completion")
+	completionObject_Once.Do(func() {
+		completionObject, err = gi.ObjectNew("GtkSource", "Completion")
 	})
 	return err
 }
@@ -678,7 +677,7 @@ type Completion struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Completion) FieldPriv() *CompletionPrivate {
-	argValue := gi.FieldGet(completionStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(completionObject, recv.Native, "priv")
 	value := &CompletionPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -688,7 +687,7 @@ func (recv *Completion) FieldPriv() *CompletionPrivate {
 func (recv *Completion) SetFieldPriv(value *CompletionPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(completionStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(completionObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_add_provider' : parameter 'provider' of type 'CompletionProvider' not supported
@@ -699,11 +698,11 @@ var completionBlockInteractiveFunction_Once sync.Once
 func completionBlockInteractiveFunction_Set() error {
 	var err error
 	completionBlockInteractiveFunction_Once.Do(func() {
-		err = completionStruct_Set()
+		err = completionObject_Set()
 		if err != nil {
 			return
 		}
-		completionBlockInteractiveFunction, err = completionStruct.InvokerNew("block_interactive")
+		completionBlockInteractiveFunction, err = completionObject.InvokerNew("block_interactive")
 	})
 	return err
 }
@@ -729,11 +728,11 @@ var completionGetInfoWindowFunction_Once sync.Once
 func completionGetInfoWindowFunction_Set() error {
 	var err error
 	completionGetInfoWindowFunction_Once.Do(func() {
-		err = completionStruct_Set()
+		err = completionObject_Set()
 		if err != nil {
 			return
 		}
-		completionGetInfoWindowFunction, err = completionStruct.InvokerNew("get_info_window")
+		completionGetInfoWindowFunction, err = completionObject.InvokerNew("get_info_window")
 	})
 	return err
 }
@@ -764,11 +763,11 @@ var completionGetViewFunction_Once sync.Once
 func completionGetViewFunction_Set() error {
 	var err error
 	completionGetViewFunction_Once.Do(func() {
-		err = completionStruct_Set()
+		err = completionObject_Set()
 		if err != nil {
 			return
 		}
-		completionGetViewFunction, err = completionStruct.InvokerNew("get_view")
+		completionGetViewFunction, err = completionObject.InvokerNew("get_view")
 	})
 	return err
 }
@@ -797,11 +796,11 @@ var completionHideFunction_Once sync.Once
 func completionHideFunction_Set() error {
 	var err error
 	completionHideFunction_Once.Do(func() {
-		err = completionStruct_Set()
+		err = completionObject_Set()
 		if err != nil {
 			return
 		}
-		completionHideFunction, err = completionStruct.InvokerNew("hide")
+		completionHideFunction, err = completionObject.InvokerNew("hide")
 	})
 	return err
 }
@@ -831,11 +830,11 @@ var completionUnblockInteractiveFunction_Once sync.Once
 func completionUnblockInteractiveFunction_Set() error {
 	var err error
 	completionUnblockInteractiveFunction_Once.Do(func() {
-		err = completionStruct_Set()
+		err = completionObject_Set()
 		if err != nil {
 			return
 		}
-		completionUnblockInteractiveFunction, err = completionStruct.InvokerNew("unblock_interactive")
+		completionUnblockInteractiveFunction, err = completionObject.InvokerNew("unblock_interactive")
 	})
 	return err
 }
@@ -853,29 +852,13 @@ func (recv *Completion) UnblockInteractive() {
 	return
 }
 
-// CompletionStruct creates an uninitialised Completion.
-func CompletionStruct() *Completion {
-	err := completionStruct_Set()
-	if err != nil {
-		return nil
-	}
+var completionContextObject *gi.Object
+var completionContextObject_Once sync.Once
 
-	structGo := &Completion{}
-	structGo.Native = completionStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeCompletion)
-	return structGo
-}
-func finalizeCompletion(obj *Completion) {
-	completionStruct.Free(obj.Native)
-}
-
-var completionContextStruct *gi.Struct
-var completionContextStruct_Once sync.Once
-
-func completionContextStruct_Set() error {
+func completionContextObject_Set() error {
 	var err error
-	completionContextStruct_Once.Do(func() {
-		completionContextStruct, err = gi.StructNew("GtkSource", "CompletionContext")
+	completionContextObject_Once.Do(func() {
+		completionContextObject, err = gi.ObjectNew("GtkSource", "CompletionContext")
 	})
 	return err
 }
@@ -890,7 +873,7 @@ type CompletionContext struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionContext) FieldPriv() *CompletionContextPrivate {
-	argValue := gi.FieldGet(completionContextStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(completionContextObject, recv.Native, "priv")
 	value := &CompletionContextPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -900,7 +883,7 @@ func (recv *CompletionContext) FieldPriv() *CompletionContextPrivate {
 func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(completionContextStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(completionContextObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_add_proposals' : parameter 'provider' of type 'CompletionProvider' not supported
@@ -909,29 +892,13 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
 
-// CompletionContextStruct creates an uninitialised CompletionContext.
-func CompletionContextStruct() *CompletionContext {
-	err := completionContextStruct_Set()
-	if err != nil {
-		return nil
-	}
+var completionInfoObject *gi.Object
+var completionInfoObject_Once sync.Once
 
-	structGo := &CompletionContext{}
-	structGo.Native = completionContextStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeCompletionContext)
-	return structGo
-}
-func finalizeCompletionContext(obj *CompletionContext) {
-	completionContextStruct.Free(obj.Native)
-}
-
-var completionInfoStruct *gi.Struct
-var completionInfoStruct_Once sync.Once
-
-func completionInfoStruct_Set() error {
+func completionInfoObject_Set() error {
 	var err error
-	completionInfoStruct_Once.Do(func() {
-		completionInfoStruct, err = gi.StructNew("GtkSource", "CompletionInfo")
+	completionInfoObject_Once.Do(func() {
+		completionInfoObject, err = gi.ObjectNew("GtkSource", "CompletionInfo")
 	})
 	return err
 }
@@ -946,7 +913,7 @@ type CompletionInfo struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionInfo) FieldPriv() *CompletionInfoPrivate {
-	argValue := gi.FieldGet(completionInfoStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(completionInfoObject, recv.Native, "priv")
 	value := &CompletionInfoPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -956,7 +923,7 @@ func (recv *CompletionInfo) FieldPriv() *CompletionInfoPrivate {
 func (recv *CompletionInfo) SetFieldPriv(value *CompletionInfoPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(completionInfoStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(completionInfoObject, recv.Native, "priv", argValue)
 }
 
 var completionInfoNewFunction *gi.Function
@@ -965,11 +932,11 @@ var completionInfoNewFunction_Once sync.Once
 func completionInfoNewFunction_Set() error {
 	var err error
 	completionInfoNewFunction_Once.Do(func() {
-		err = completionInfoStruct_Set()
+		err = completionInfoObject_Set()
 		if err != nil {
 			return
 		}
-		completionInfoNewFunction, err = completionInfoStruct.InvokerNew("new")
+		completionInfoNewFunction, err = completionInfoObject.InvokerNew("new")
 	})
 	return err
 }
@@ -996,13 +963,13 @@ func CompletionInfoNew() *CompletionInfo {
 
 // UNSUPPORTED : C value 'gtk_source_completion_info_set_widget' : parameter 'widget' of type 'Gtk.Widget' not supported
 
-var completionItemStruct *gi.Struct
-var completionItemStruct_Once sync.Once
+var completionItemObject *gi.Object
+var completionItemObject_Once sync.Once
 
-func completionItemStruct_Set() error {
+func completionItemObject_Set() error {
 	var err error
-	completionItemStruct_Once.Do(func() {
-		completionItemStruct, err = gi.StructNew("GtkSource", "CompletionItem")
+	completionItemObject_Once.Do(func() {
+		completionItemObject, err = gi.ObjectNew("GtkSource", "CompletionItem")
 	})
 	return err
 }
@@ -1017,7 +984,7 @@ type CompletionItem struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionItem) FieldPriv() *CompletionItemPrivate {
-	argValue := gi.FieldGet(completionItemStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(completionItemObject, recv.Native, "priv")
 	value := &CompletionItemPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1027,7 +994,7 @@ func (recv *CompletionItem) FieldPriv() *CompletionItemPrivate {
 func (recv *CompletionItem) SetFieldPriv(value *CompletionItemPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(completionItemStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(completionItemObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_item_new' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
@@ -1038,11 +1005,11 @@ var completionItemNewFromStockFunction_Once sync.Once
 func completionItemNewFromStockFunction_Set() error {
 	var err error
 	completionItemNewFromStockFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemNewFromStockFunction, err = completionItemStruct.InvokerNew("new_from_stock")
+		completionItemNewFromStockFunction, err = completionItemObject.InvokerNew("new_from_stock")
 	})
 	return err
 }
@@ -1080,11 +1047,11 @@ var completionItemSetIconNameFunction_Once sync.Once
 func completionItemSetIconNameFunction_Set() error {
 	var err error
 	completionItemSetIconNameFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemSetIconNameFunction, err = completionItemStruct.InvokerNew("set_icon_name")
+		completionItemSetIconNameFunction, err = completionItemObject.InvokerNew("set_icon_name")
 	})
 	return err
 }
@@ -1109,11 +1076,11 @@ var completionItemSetInfoFunction_Once sync.Once
 func completionItemSetInfoFunction_Set() error {
 	var err error
 	completionItemSetInfoFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemSetInfoFunction, err = completionItemStruct.InvokerNew("set_info")
+		completionItemSetInfoFunction, err = completionItemObject.InvokerNew("set_info")
 	})
 	return err
 }
@@ -1138,11 +1105,11 @@ var completionItemSetLabelFunction_Once sync.Once
 func completionItemSetLabelFunction_Set() error {
 	var err error
 	completionItemSetLabelFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemSetLabelFunction, err = completionItemStruct.InvokerNew("set_label")
+		completionItemSetLabelFunction, err = completionItemObject.InvokerNew("set_label")
 	})
 	return err
 }
@@ -1167,11 +1134,11 @@ var completionItemSetMarkupFunction_Once sync.Once
 func completionItemSetMarkupFunction_Set() error {
 	var err error
 	completionItemSetMarkupFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemSetMarkupFunction, err = completionItemStruct.InvokerNew("set_markup")
+		completionItemSetMarkupFunction, err = completionItemObject.InvokerNew("set_markup")
 	})
 	return err
 }
@@ -1196,11 +1163,11 @@ var completionItemSetTextFunction_Once sync.Once
 func completionItemSetTextFunction_Set() error {
 	var err error
 	completionItemSetTextFunction_Once.Do(func() {
-		err = completionItemStruct_Set()
+		err = completionItemObject_Set()
 		if err != nil {
 			return
 		}
-		completionItemSetTextFunction, err = completionItemStruct.InvokerNew("set_text")
+		completionItemSetTextFunction, err = completionItemObject.InvokerNew("set_text")
 	})
 	return err
 }
@@ -1219,13 +1186,13 @@ func (recv *CompletionItem) SetText(text string) {
 	return
 }
 
-var completionWordsStruct *gi.Struct
-var completionWordsStruct_Once sync.Once
+var completionWordsObject *gi.Object
+var completionWordsObject_Once sync.Once
 
-func completionWordsStruct_Set() error {
+func completionWordsObject_Set() error {
 	var err error
-	completionWordsStruct_Once.Do(func() {
-		completionWordsStruct, err = gi.StructNew("GtkSource", "CompletionWords")
+	completionWordsObject_Once.Do(func() {
+		completionWordsObject, err = gi.ObjectNew("GtkSource", "CompletionWords")
 	})
 	return err
 }
@@ -1240,7 +1207,7 @@ type CompletionWords struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionWords) FieldPriv() *CompletionWordsPrivate {
-	argValue := gi.FieldGet(completionWordsStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(completionWordsObject, recv.Native, "priv")
 	value := &CompletionWordsPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1250,7 +1217,7 @@ func (recv *CompletionWords) FieldPriv() *CompletionWordsPrivate {
 func (recv *CompletionWords) SetFieldPriv(value *CompletionWordsPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(completionWordsStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(completionWordsObject, recv.Native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_words_new' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
@@ -1259,13 +1226,13 @@ func (recv *CompletionWords) SetFieldPriv(value *CompletionWordsPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_completion_words_unregister' : parameter 'buffer' of type 'Gtk.TextBuffer' not supported
 
-var fileStruct *gi.Struct
-var fileStruct_Once sync.Once
+var fileObject *gi.Object
+var fileObject_Once sync.Once
 
-func fileStruct_Set() error {
+func fileObject_Set() error {
 	var err error
-	fileStruct_Once.Do(func() {
-		fileStruct, err = gi.StructNew("GtkSource", "File")
+	fileObject_Once.Do(func() {
+		fileObject, err = gi.ObjectNew("GtkSource", "File")
 	})
 	return err
 }
@@ -1280,7 +1247,7 @@ type File struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *File) FieldPriv() *FilePrivate {
-	argValue := gi.FieldGet(fileStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(fileObject, recv.Native, "priv")
 	value := &FilePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1290,7 +1257,7 @@ func (recv *File) FieldPriv() *FilePrivate {
 func (recv *File) SetFieldPriv(value *FilePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(fileObject, recv.Native, "priv", argValue)
 }
 
 var fileNewFunction *gi.Function
@@ -1299,11 +1266,11 @@ var fileNewFunction_Once sync.Once
 func fileNewFunction_Set() error {
 	var err error
 	fileNewFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileNewFunction, err = fileStruct.InvokerNew("new")
+		fileNewFunction, err = fileObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1330,11 +1297,11 @@ var fileCheckFileOnDiskFunction_Once sync.Once
 func fileCheckFileOnDiskFunction_Set() error {
 	var err error
 	fileCheckFileOnDiskFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileCheckFileOnDiskFunction, err = fileStruct.InvokerNew("check_file_on_disk")
+		fileCheckFileOnDiskFunction, err = fileObject.InvokerNew("check_file_on_disk")
 	})
 	return err
 }
@@ -1358,11 +1325,11 @@ var fileGetCompressionTypeFunction_Once sync.Once
 func fileGetCompressionTypeFunction_Set() error {
 	var err error
 	fileGetCompressionTypeFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileGetCompressionTypeFunction, err = fileStruct.InvokerNew("get_compression_type")
+		fileGetCompressionTypeFunction, err = fileObject.InvokerNew("get_compression_type")
 	})
 	return err
 }
@@ -1390,11 +1357,11 @@ var fileGetEncodingFunction_Once sync.Once
 func fileGetEncodingFunction_Set() error {
 	var err error
 	fileGetEncodingFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileGetEncodingFunction, err = fileStruct.InvokerNew("get_encoding")
+		fileGetEncodingFunction, err = fileObject.InvokerNew("get_encoding")
 	})
 	return err
 }
@@ -1425,11 +1392,11 @@ var fileGetNewlineTypeFunction_Once sync.Once
 func fileGetNewlineTypeFunction_Set() error {
 	var err error
 	fileGetNewlineTypeFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileGetNewlineTypeFunction, err = fileStruct.InvokerNew("get_newline_type")
+		fileGetNewlineTypeFunction, err = fileObject.InvokerNew("get_newline_type")
 	})
 	return err
 }
@@ -1457,11 +1424,11 @@ var fileIsDeletedFunction_Once sync.Once
 func fileIsDeletedFunction_Set() error {
 	var err error
 	fileIsDeletedFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileIsDeletedFunction, err = fileStruct.InvokerNew("is_deleted")
+		fileIsDeletedFunction, err = fileObject.InvokerNew("is_deleted")
 	})
 	return err
 }
@@ -1489,11 +1456,11 @@ var fileIsExternallyModifiedFunction_Once sync.Once
 func fileIsExternallyModifiedFunction_Set() error {
 	var err error
 	fileIsExternallyModifiedFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileIsExternallyModifiedFunction, err = fileStruct.InvokerNew("is_externally_modified")
+		fileIsExternallyModifiedFunction, err = fileObject.InvokerNew("is_externally_modified")
 	})
 	return err
 }
@@ -1521,11 +1488,11 @@ var fileIsLocalFunction_Once sync.Once
 func fileIsLocalFunction_Set() error {
 	var err error
 	fileIsLocalFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileIsLocalFunction, err = fileStruct.InvokerNew("is_local")
+		fileIsLocalFunction, err = fileObject.InvokerNew("is_local")
 	})
 	return err
 }
@@ -1553,11 +1520,11 @@ var fileIsReadonlyFunction_Once sync.Once
 func fileIsReadonlyFunction_Set() error {
 	var err error
 	fileIsReadonlyFunction_Once.Do(func() {
-		err = fileStruct_Set()
+		err = fileObject_Set()
 		if err != nil {
 			return
 		}
-		fileIsReadonlyFunction, err = fileStruct.InvokerNew("is_readonly")
+		fileIsReadonlyFunction, err = fileObject.InvokerNew("is_readonly")
 	})
 	return err
 }
@@ -1583,13 +1550,13 @@ func (recv *File) IsReadonly() bool {
 
 // UNSUPPORTED : C value 'gtk_source_file_set_mount_operation_factory' : parameter 'callback' of type 'MountOperationFactory' not supported
 
-var fileLoaderStruct *gi.Struct
-var fileLoaderStruct_Once sync.Once
+var fileLoaderObject *gi.Object
+var fileLoaderObject_Once sync.Once
 
-func fileLoaderStruct_Set() error {
+func fileLoaderObject_Set() error {
 	var err error
-	fileLoaderStruct_Once.Do(func() {
-		fileLoaderStruct, err = gi.StructNew("GtkSource", "FileLoader")
+	fileLoaderObject_Once.Do(func() {
+		fileLoaderObject, err = gi.ObjectNew("GtkSource", "FileLoader")
 	})
 	return err
 }
@@ -1604,7 +1571,7 @@ type FileLoader struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileLoader) FieldPriv() *FileLoaderPrivate {
-	argValue := gi.FieldGet(fileLoaderStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(fileLoaderObject, recv.Native, "priv")
 	value := &FileLoaderPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1614,7 +1581,7 @@ func (recv *FileLoader) FieldPriv() *FileLoaderPrivate {
 func (recv *FileLoader) SetFieldPriv(value *FileLoaderPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileLoaderStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(fileLoaderObject, recv.Native, "priv", argValue)
 }
 
 var fileLoaderNewFunction *gi.Function
@@ -1623,11 +1590,11 @@ var fileLoaderNewFunction_Once sync.Once
 func fileLoaderNewFunction_Set() error {
 	var err error
 	fileLoaderNewFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderNewFunction, err = fileLoaderStruct.InvokerNew("new")
+		fileLoaderNewFunction, err = fileLoaderObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1659,11 +1626,11 @@ var fileLoaderGetBufferFunction_Once sync.Once
 func fileLoaderGetBufferFunction_Set() error {
 	var err error
 	fileLoaderGetBufferFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderGetBufferFunction, err = fileLoaderStruct.InvokerNew("get_buffer")
+		fileLoaderGetBufferFunction, err = fileLoaderObject.InvokerNew("get_buffer")
 	})
 	return err
 }
@@ -1692,11 +1659,11 @@ var fileLoaderGetCompressionTypeFunction_Once sync.Once
 func fileLoaderGetCompressionTypeFunction_Set() error {
 	var err error
 	fileLoaderGetCompressionTypeFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderGetCompressionTypeFunction, err = fileLoaderStruct.InvokerNew("get_compression_type")
+		fileLoaderGetCompressionTypeFunction, err = fileLoaderObject.InvokerNew("get_compression_type")
 	})
 	return err
 }
@@ -1724,11 +1691,11 @@ var fileLoaderGetEncodingFunction_Once sync.Once
 func fileLoaderGetEncodingFunction_Set() error {
 	var err error
 	fileLoaderGetEncodingFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderGetEncodingFunction, err = fileLoaderStruct.InvokerNew("get_encoding")
+		fileLoaderGetEncodingFunction, err = fileLoaderObject.InvokerNew("get_encoding")
 	})
 	return err
 }
@@ -1757,11 +1724,11 @@ var fileLoaderGetFileFunction_Once sync.Once
 func fileLoaderGetFileFunction_Set() error {
 	var err error
 	fileLoaderGetFileFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderGetFileFunction, err = fileLoaderStruct.InvokerNew("get_file")
+		fileLoaderGetFileFunction, err = fileLoaderObject.InvokerNew("get_file")
 	})
 	return err
 }
@@ -1794,11 +1761,11 @@ var fileLoaderGetNewlineTypeFunction_Once sync.Once
 func fileLoaderGetNewlineTypeFunction_Set() error {
 	var err error
 	fileLoaderGetNewlineTypeFunction_Once.Do(func() {
-		err = fileLoaderStruct_Set()
+		err = fileLoaderObject_Set()
 		if err != nil {
 			return
 		}
-		fileLoaderGetNewlineTypeFunction, err = fileLoaderStruct.InvokerNew("get_newline_type")
+		fileLoaderGetNewlineTypeFunction, err = fileLoaderObject.InvokerNew("get_newline_type")
 	})
 	return err
 }
@@ -1826,13 +1793,13 @@ func (recv *FileLoader) GetNewlineType() NewlineType {
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_set_candidate_encodings' : parameter 'candidate_encodings' of type 'GLib.SList' not supported
 
-var fileSaverStruct *gi.Struct
-var fileSaverStruct_Once sync.Once
+var fileSaverObject *gi.Object
+var fileSaverObject_Once sync.Once
 
-func fileSaverStruct_Set() error {
+func fileSaverObject_Set() error {
 	var err error
-	fileSaverStruct_Once.Do(func() {
-		fileSaverStruct, err = gi.StructNew("GtkSource", "FileSaver")
+	fileSaverObject_Once.Do(func() {
+		fileSaverObject, err = gi.ObjectNew("GtkSource", "FileSaver")
 	})
 	return err
 }
@@ -1847,7 +1814,7 @@ type FileSaver struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileSaver) FieldPriv() *FileSaverPrivate {
-	argValue := gi.FieldGet(fileSaverStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(fileSaverObject, recv.Native, "priv")
 	value := &FileSaverPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1857,7 +1824,7 @@ func (recv *FileSaver) FieldPriv() *FileSaverPrivate {
 func (recv *FileSaver) SetFieldPriv(value *FileSaverPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(fileSaverStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(fileSaverObject, recv.Native, "priv", argValue)
 }
 
 var fileSaverNewFunction *gi.Function
@@ -1866,11 +1833,11 @@ var fileSaverNewFunction_Once sync.Once
 func fileSaverNewFunction_Set() error {
 	var err error
 	fileSaverNewFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverNewFunction, err = fileSaverStruct.InvokerNew("new")
+		fileSaverNewFunction, err = fileSaverObject.InvokerNew("new")
 	})
 	return err
 }
@@ -1902,11 +1869,11 @@ var fileSaverGetBufferFunction_Once sync.Once
 func fileSaverGetBufferFunction_Set() error {
 	var err error
 	fileSaverGetBufferFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverGetBufferFunction, err = fileSaverStruct.InvokerNew("get_buffer")
+		fileSaverGetBufferFunction, err = fileSaverObject.InvokerNew("get_buffer")
 	})
 	return err
 }
@@ -1935,11 +1902,11 @@ var fileSaverGetCompressionTypeFunction_Once sync.Once
 func fileSaverGetCompressionTypeFunction_Set() error {
 	var err error
 	fileSaverGetCompressionTypeFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverGetCompressionTypeFunction, err = fileSaverStruct.InvokerNew("get_compression_type")
+		fileSaverGetCompressionTypeFunction, err = fileSaverObject.InvokerNew("get_compression_type")
 	})
 	return err
 }
@@ -1967,11 +1934,11 @@ var fileSaverGetEncodingFunction_Once sync.Once
 func fileSaverGetEncodingFunction_Set() error {
 	var err error
 	fileSaverGetEncodingFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverGetEncodingFunction, err = fileSaverStruct.InvokerNew("get_encoding")
+		fileSaverGetEncodingFunction, err = fileSaverObject.InvokerNew("get_encoding")
 	})
 	return err
 }
@@ -2000,11 +1967,11 @@ var fileSaverGetFileFunction_Once sync.Once
 func fileSaverGetFileFunction_Set() error {
 	var err error
 	fileSaverGetFileFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverGetFileFunction, err = fileSaverStruct.InvokerNew("get_file")
+		fileSaverGetFileFunction, err = fileSaverObject.InvokerNew("get_file")
 	})
 	return err
 }
@@ -2037,11 +2004,11 @@ var fileSaverGetNewlineTypeFunction_Once sync.Once
 func fileSaverGetNewlineTypeFunction_Set() error {
 	var err error
 	fileSaverGetNewlineTypeFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverGetNewlineTypeFunction, err = fileSaverStruct.InvokerNew("get_newline_type")
+		fileSaverGetNewlineTypeFunction, err = fileSaverObject.InvokerNew("get_newline_type")
 	})
 	return err
 }
@@ -2073,11 +2040,11 @@ var fileSaverSetCompressionTypeFunction_Once sync.Once
 func fileSaverSetCompressionTypeFunction_Set() error {
 	var err error
 	fileSaverSetCompressionTypeFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverSetCompressionTypeFunction, err = fileSaverStruct.InvokerNew("set_compression_type")
+		fileSaverSetCompressionTypeFunction, err = fileSaverObject.InvokerNew("set_compression_type")
 	})
 	return err
 }
@@ -2102,11 +2069,11 @@ var fileSaverSetEncodingFunction_Once sync.Once
 func fileSaverSetEncodingFunction_Set() error {
 	var err error
 	fileSaverSetEncodingFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverSetEncodingFunction, err = fileSaverStruct.InvokerNew("set_encoding")
+		fileSaverSetEncodingFunction, err = fileSaverObject.InvokerNew("set_encoding")
 	})
 	return err
 }
@@ -2133,11 +2100,11 @@ var fileSaverSetNewlineTypeFunction_Once sync.Once
 func fileSaverSetNewlineTypeFunction_Set() error {
 	var err error
 	fileSaverSetNewlineTypeFunction_Once.Do(func() {
-		err = fileSaverStruct_Set()
+		err = fileSaverObject_Set()
 		if err != nil {
 			return
 		}
-		fileSaverSetNewlineTypeFunction, err = fileSaverStruct.InvokerNew("set_newline_type")
+		fileSaverSetNewlineTypeFunction, err = fileSaverObject.InvokerNew("set_newline_type")
 	})
 	return err
 }
@@ -2156,13 +2123,13 @@ func (recv *FileSaver) SetNewlineType(newlineType NewlineType) {
 	return
 }
 
-var gutterStruct *gi.Struct
-var gutterStruct_Once sync.Once
+var gutterObject *gi.Object
+var gutterObject_Once sync.Once
 
-func gutterStruct_Set() error {
+func gutterObject_Set() error {
 	var err error
-	gutterStruct_Once.Do(func() {
-		gutterStruct, err = gi.StructNew("GtkSource", "Gutter")
+	gutterObject_Once.Do(func() {
+		gutterObject, err = gi.ObjectNew("GtkSource", "Gutter")
 	})
 	return err
 }
@@ -2177,7 +2144,7 @@ type Gutter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Gutter) FieldPriv() *GutterPrivate {
-	argValue := gi.FieldGet(gutterStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(gutterObject, recv.Native, "priv")
 	value := &GutterPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -2187,7 +2154,7 @@ func (recv *Gutter) FieldPriv() *GutterPrivate {
 func (recv *Gutter) SetFieldPriv(value *GutterPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(gutterStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(gutterObject, recv.Native, "priv", argValue)
 }
 
 var gutterGetPaddingFunction *gi.Function
@@ -2196,11 +2163,11 @@ var gutterGetPaddingFunction_Once sync.Once
 func gutterGetPaddingFunction_Set() error {
 	var err error
 	gutterGetPaddingFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterGetPaddingFunction, err = gutterStruct.InvokerNew("get_padding")
+		gutterGetPaddingFunction, err = gutterObject.InvokerNew("get_padding")
 	})
 	return err
 }
@@ -2226,11 +2193,11 @@ var gutterGetRendererAtPosFunction_Once sync.Once
 func gutterGetRendererAtPosFunction_Set() error {
 	var err error
 	gutterGetRendererAtPosFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterGetRendererAtPosFunction, err = gutterStruct.InvokerNew("get_renderer_at_pos")
+		gutterGetRendererAtPosFunction, err = gutterObject.InvokerNew("get_renderer_at_pos")
 	})
 	return err
 }
@@ -2261,11 +2228,11 @@ var gutterGetViewFunction_Once sync.Once
 func gutterGetViewFunction_Set() error {
 	var err error
 	gutterGetViewFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterGetViewFunction, err = gutterStruct.InvokerNew("get_view")
+		gutterGetViewFunction, err = gutterObject.InvokerNew("get_view")
 	})
 	return err
 }
@@ -2298,11 +2265,11 @@ var gutterInsertFunction_Once sync.Once
 func gutterInsertFunction_Set() error {
 	var err error
 	gutterInsertFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterInsertFunction, err = gutterStruct.InvokerNew("insert")
+		gutterInsertFunction, err = gutterObject.InvokerNew("insert")
 	})
 	return err
 }
@@ -2332,11 +2299,11 @@ var gutterQueueDrawFunction_Once sync.Once
 func gutterQueueDrawFunction_Set() error {
 	var err error
 	gutterQueueDrawFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterQueueDrawFunction, err = gutterStruct.InvokerNew("queue_draw")
+		gutterQueueDrawFunction, err = gutterObject.InvokerNew("queue_draw")
 	})
 	return err
 }
@@ -2360,11 +2327,11 @@ var gutterRemoveFunction_Once sync.Once
 func gutterRemoveFunction_Set() error {
 	var err error
 	gutterRemoveFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRemoveFunction, err = gutterStruct.InvokerNew("remove")
+		gutterRemoveFunction, err = gutterObject.InvokerNew("remove")
 	})
 	return err
 }
@@ -2389,11 +2356,11 @@ var gutterReorderFunction_Once sync.Once
 func gutterReorderFunction_Set() error {
 	var err error
 	gutterReorderFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterReorderFunction, err = gutterStruct.InvokerNew("reorder")
+		gutterReorderFunction, err = gutterObject.InvokerNew("reorder")
 	})
 	return err
 }
@@ -2419,11 +2386,11 @@ var gutterSetPaddingFunction_Once sync.Once
 func gutterSetPaddingFunction_Set() error {
 	var err error
 	gutterSetPaddingFunction_Once.Do(func() {
-		err = gutterStruct_Set()
+		err = gutterObject_Set()
 		if err != nil {
 			return
 		}
-		gutterSetPaddingFunction, err = gutterStruct.InvokerNew("set_padding")
+		gutterSetPaddingFunction, err = gutterObject.InvokerNew("set_padding")
 	})
 	return err
 }
@@ -2443,29 +2410,13 @@ func (recv *Gutter) SetPadding(xpad int32, ypad int32) {
 	return
 }
 
-// GutterStruct creates an uninitialised Gutter.
-func GutterStruct() *Gutter {
-	err := gutterStruct_Set()
-	if err != nil {
-		return nil
-	}
+var gutterRendererObject *gi.Object
+var gutterRendererObject_Once sync.Once
 
-	structGo := &Gutter{}
-	structGo.Native = gutterStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGutter)
-	return structGo
-}
-func finalizeGutter(obj *Gutter) {
-	gutterStruct.Free(obj.Native)
-}
-
-var gutterRendererStruct *gi.Struct
-var gutterRendererStruct_Once sync.Once
-
-func gutterRendererStruct_Set() error {
+func gutterRendererObject_Set() error {
 	var err error
-	gutterRendererStruct_Once.Do(func() {
-		gutterRendererStruct, err = gi.StructNew("GtkSource", "GutterRenderer")
+	gutterRendererObject_Once.Do(func() {
+		gutterRendererObject, err = gi.ObjectNew("GtkSource", "GutterRenderer")
 	})
 	return err
 }
@@ -2490,11 +2441,11 @@ var gutterRendererEndFunction_Once sync.Once
 func gutterRendererEndFunction_Set() error {
 	var err error
 	gutterRendererEndFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererEndFunction, err = gutterRendererStruct.InvokerNew("end")
+		gutterRendererEndFunction, err = gutterRendererObject.InvokerNew("end")
 	})
 	return err
 }
@@ -2518,11 +2469,11 @@ var gutterRendererGetAlignmentFunction_Once sync.Once
 func gutterRendererGetAlignmentFunction_Set() error {
 	var err error
 	gutterRendererGetAlignmentFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererGetAlignmentFunction, err = gutterRendererStruct.InvokerNew("get_alignment")
+		gutterRendererGetAlignmentFunction, err = gutterRendererObject.InvokerNew("get_alignment")
 	})
 	return err
 }
@@ -2551,11 +2502,11 @@ var gutterRendererGetAlignmentModeFunction_Once sync.Once
 func gutterRendererGetAlignmentModeFunction_Set() error {
 	var err error
 	gutterRendererGetAlignmentModeFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererGetAlignmentModeFunction, err = gutterRendererStruct.InvokerNew("get_alignment_mode")
+		gutterRendererGetAlignmentModeFunction, err = gutterRendererObject.InvokerNew("get_alignment_mode")
 	})
 	return err
 }
@@ -2585,11 +2536,11 @@ var gutterRendererGetPaddingFunction_Once sync.Once
 func gutterRendererGetPaddingFunction_Set() error {
 	var err error
 	gutterRendererGetPaddingFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererGetPaddingFunction, err = gutterRendererStruct.InvokerNew("get_padding")
+		gutterRendererGetPaddingFunction, err = gutterRendererObject.InvokerNew("get_padding")
 	})
 	return err
 }
@@ -2618,11 +2569,11 @@ var gutterRendererGetSizeFunction_Once sync.Once
 func gutterRendererGetSizeFunction_Set() error {
 	var err error
 	gutterRendererGetSizeFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererGetSizeFunction, err = gutterRendererStruct.InvokerNew("get_size")
+		gutterRendererGetSizeFunction, err = gutterRendererObject.InvokerNew("get_size")
 	})
 	return err
 }
@@ -2652,11 +2603,11 @@ var gutterRendererGetVisibleFunction_Once sync.Once
 func gutterRendererGetVisibleFunction_Set() error {
 	var err error
 	gutterRendererGetVisibleFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererGetVisibleFunction, err = gutterRendererStruct.InvokerNew("get_visible")
+		gutterRendererGetVisibleFunction, err = gutterRendererObject.InvokerNew("get_visible")
 	})
 	return err
 }
@@ -2692,11 +2643,11 @@ var gutterRendererQueueDrawFunction_Once sync.Once
 func gutterRendererQueueDrawFunction_Set() error {
 	var err error
 	gutterRendererQueueDrawFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererQueueDrawFunction, err = gutterRendererStruct.InvokerNew("queue_draw")
+		gutterRendererQueueDrawFunction, err = gutterRendererObject.InvokerNew("queue_draw")
 	})
 	return err
 }
@@ -2720,11 +2671,11 @@ var gutterRendererSetAlignmentFunction_Once sync.Once
 func gutterRendererSetAlignmentFunction_Set() error {
 	var err error
 	gutterRendererSetAlignmentFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererSetAlignmentFunction, err = gutterRendererStruct.InvokerNew("set_alignment")
+		gutterRendererSetAlignmentFunction, err = gutterRendererObject.InvokerNew("set_alignment")
 	})
 	return err
 }
@@ -2750,11 +2701,11 @@ var gutterRendererSetAlignmentModeFunction_Once sync.Once
 func gutterRendererSetAlignmentModeFunction_Set() error {
 	var err error
 	gutterRendererSetAlignmentModeFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererSetAlignmentModeFunction, err = gutterRendererStruct.InvokerNew("set_alignment_mode")
+		gutterRendererSetAlignmentModeFunction, err = gutterRendererObject.InvokerNew("set_alignment_mode")
 	})
 	return err
 }
@@ -2781,11 +2732,11 @@ var gutterRendererSetPaddingFunction_Once sync.Once
 func gutterRendererSetPaddingFunction_Set() error {
 	var err error
 	gutterRendererSetPaddingFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererSetPaddingFunction, err = gutterRendererStruct.InvokerNew("set_padding")
+		gutterRendererSetPaddingFunction, err = gutterRendererObject.InvokerNew("set_padding")
 	})
 	return err
 }
@@ -2811,11 +2762,11 @@ var gutterRendererSetSizeFunction_Once sync.Once
 func gutterRendererSetSizeFunction_Set() error {
 	var err error
 	gutterRendererSetSizeFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererSetSizeFunction, err = gutterRendererStruct.InvokerNew("set_size")
+		gutterRendererSetSizeFunction, err = gutterRendererObject.InvokerNew("set_size")
 	})
 	return err
 }
@@ -2840,11 +2791,11 @@ var gutterRendererSetVisibleFunction_Once sync.Once
 func gutterRendererSetVisibleFunction_Set() error {
 	var err error
 	gutterRendererSetVisibleFunction_Once.Do(func() {
-		err = gutterRendererStruct_Set()
+		err = gutterRendererObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererSetVisibleFunction, err = gutterRendererStruct.InvokerNew("set_visible")
+		gutterRendererSetVisibleFunction, err = gutterRendererObject.InvokerNew("set_visible")
 	})
 	return err
 }
@@ -2863,29 +2814,13 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 	return
 }
 
-// GutterRendererStruct creates an uninitialised GutterRenderer.
-func GutterRendererStruct() *GutterRenderer {
-	err := gutterRendererStruct_Set()
-	if err != nil {
-		return nil
-	}
+var gutterRendererPixbufObject *gi.Object
+var gutterRendererPixbufObject_Once sync.Once
 
-	structGo := &GutterRenderer{}
-	structGo.Native = gutterRendererStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeGutterRenderer)
-	return structGo
-}
-func finalizeGutterRenderer(obj *GutterRenderer) {
-	gutterRendererStruct.Free(obj.Native)
-}
-
-var gutterRendererPixbufStruct *gi.Struct
-var gutterRendererPixbufStruct_Once sync.Once
-
-func gutterRendererPixbufStruct_Set() error {
+func gutterRendererPixbufObject_Set() error {
 	var err error
-	gutterRendererPixbufStruct_Once.Do(func() {
-		gutterRendererPixbufStruct, err = gi.StructNew("GtkSource", "GutterRendererPixbuf")
+	gutterRendererPixbufObject_Once.Do(func() {
+		gutterRendererPixbufObject, err = gi.ObjectNew("GtkSource", "GutterRendererPixbuf")
 	})
 	return err
 }
@@ -2900,11 +2835,11 @@ var gutterRendererPixbufNewFunction_Once sync.Once
 func gutterRendererPixbufNewFunction_Set() error {
 	var err error
 	gutterRendererPixbufNewFunction_Once.Do(func() {
-		err = gutterRendererPixbufStruct_Set()
+		err = gutterRendererPixbufObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererPixbufNewFunction, err = gutterRendererPixbufStruct.InvokerNew("new")
+		gutterRendererPixbufNewFunction, err = gutterRendererPixbufObject.InvokerNew("new")
 	})
 	return err
 }
@@ -2933,11 +2868,11 @@ var gutterRendererPixbufGetIconNameFunction_Once sync.Once
 func gutterRendererPixbufGetIconNameFunction_Set() error {
 	var err error
 	gutterRendererPixbufGetIconNameFunction_Once.Do(func() {
-		err = gutterRendererPixbufStruct_Set()
+		err = gutterRendererPixbufObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererPixbufGetIconNameFunction, err = gutterRendererPixbufStruct.InvokerNew("get_icon_name")
+		gutterRendererPixbufGetIconNameFunction, err = gutterRendererPixbufObject.InvokerNew("get_icon_name")
 	})
 	return err
 }
@@ -2967,11 +2902,11 @@ var gutterRendererPixbufGetStockIdFunction_Once sync.Once
 func gutterRendererPixbufGetStockIdFunction_Set() error {
 	var err error
 	gutterRendererPixbufGetStockIdFunction_Once.Do(func() {
-		err = gutterRendererPixbufStruct_Set()
+		err = gutterRendererPixbufObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererPixbufGetStockIdFunction, err = gutterRendererPixbufStruct.InvokerNew("get_stock_id")
+		gutterRendererPixbufGetStockIdFunction, err = gutterRendererPixbufObject.InvokerNew("get_stock_id")
 	})
 	return err
 }
@@ -3001,11 +2936,11 @@ var gutterRendererPixbufSetIconNameFunction_Once sync.Once
 func gutterRendererPixbufSetIconNameFunction_Set() error {
 	var err error
 	gutterRendererPixbufSetIconNameFunction_Once.Do(func() {
-		err = gutterRendererPixbufStruct_Set()
+		err = gutterRendererPixbufObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererPixbufSetIconNameFunction, err = gutterRendererPixbufStruct.InvokerNew("set_icon_name")
+		gutterRendererPixbufSetIconNameFunction, err = gutterRendererPixbufObject.InvokerNew("set_icon_name")
 	})
 	return err
 }
@@ -3032,11 +2967,11 @@ var gutterRendererPixbufSetStockIdFunction_Once sync.Once
 func gutterRendererPixbufSetStockIdFunction_Set() error {
 	var err error
 	gutterRendererPixbufSetStockIdFunction_Once.Do(func() {
-		err = gutterRendererPixbufStruct_Set()
+		err = gutterRendererPixbufObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererPixbufSetStockIdFunction, err = gutterRendererPixbufStruct.InvokerNew("set_stock_id")
+		gutterRendererPixbufSetStockIdFunction, err = gutterRendererPixbufObject.InvokerNew("set_stock_id")
 	})
 	return err
 }
@@ -3055,13 +2990,13 @@ func (recv *GutterRendererPixbuf) SetStockId(stockId string) {
 	return
 }
 
-var gutterRendererTextStruct *gi.Struct
-var gutterRendererTextStruct_Once sync.Once
+var gutterRendererTextObject *gi.Object
+var gutterRendererTextObject_Once sync.Once
 
-func gutterRendererTextStruct_Set() error {
+func gutterRendererTextObject_Set() error {
 	var err error
-	gutterRendererTextStruct_Once.Do(func() {
-		gutterRendererTextStruct, err = gi.StructNew("GtkSource", "GutterRendererText")
+	gutterRendererTextObject_Once.Do(func() {
+		gutterRendererTextObject, err = gi.ObjectNew("GtkSource", "GutterRendererText")
 	})
 	return err
 }
@@ -3076,11 +3011,11 @@ var gutterRendererTextNewFunction_Once sync.Once
 func gutterRendererTextNewFunction_Set() error {
 	var err error
 	gutterRendererTextNewFunction_Once.Do(func() {
-		err = gutterRendererTextStruct_Set()
+		err = gutterRendererTextObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererTextNewFunction, err = gutterRendererTextStruct.InvokerNew("new")
+		gutterRendererTextNewFunction, err = gutterRendererTextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -3107,11 +3042,11 @@ var gutterRendererTextMeasureFunction_Once sync.Once
 func gutterRendererTextMeasureFunction_Set() error {
 	var err error
 	gutterRendererTextMeasureFunction_Once.Do(func() {
-		err = gutterRendererTextStruct_Set()
+		err = gutterRendererTextObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererTextMeasureFunction, err = gutterRendererTextStruct.InvokerNew("measure")
+		gutterRendererTextMeasureFunction, err = gutterRendererTextObject.InvokerNew("measure")
 	})
 	return err
 }
@@ -3141,11 +3076,11 @@ var gutterRendererTextMeasureMarkupFunction_Once sync.Once
 func gutterRendererTextMeasureMarkupFunction_Set() error {
 	var err error
 	gutterRendererTextMeasureMarkupFunction_Once.Do(func() {
-		err = gutterRendererTextStruct_Set()
+		err = gutterRendererTextObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererTextMeasureMarkupFunction, err = gutterRendererTextStruct.InvokerNew("measure_markup")
+		gutterRendererTextMeasureMarkupFunction, err = gutterRendererTextObject.InvokerNew("measure_markup")
 	})
 	return err
 }
@@ -3175,11 +3110,11 @@ var gutterRendererTextSetMarkupFunction_Once sync.Once
 func gutterRendererTextSetMarkupFunction_Set() error {
 	var err error
 	gutterRendererTextSetMarkupFunction_Once.Do(func() {
-		err = gutterRendererTextStruct_Set()
+		err = gutterRendererTextObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererTextSetMarkupFunction, err = gutterRendererTextStruct.InvokerNew("set_markup")
+		gutterRendererTextSetMarkupFunction, err = gutterRendererTextObject.InvokerNew("set_markup")
 	})
 	return err
 }
@@ -3205,11 +3140,11 @@ var gutterRendererTextSetTextFunction_Once sync.Once
 func gutterRendererTextSetTextFunction_Set() error {
 	var err error
 	gutterRendererTextSetTextFunction_Once.Do(func() {
-		err = gutterRendererTextStruct_Set()
+		err = gutterRendererTextObject_Set()
 		if err != nil {
 			return
 		}
-		gutterRendererTextSetTextFunction, err = gutterRendererTextStruct.InvokerNew("set_text")
+		gutterRendererTextSetTextFunction, err = gutterRendererTextObject.InvokerNew("set_text")
 	})
 	return err
 }
@@ -3229,13 +3164,13 @@ func (recv *GutterRendererText) SetText(text string, length int32) {
 	return
 }
 
-var languageStruct *gi.Struct
-var languageStruct_Once sync.Once
+var languageObject *gi.Object
+var languageObject_Once sync.Once
 
-func languageStruct_Set() error {
+func languageObject_Set() error {
 	var err error
-	languageStruct_Once.Do(func() {
-		languageStruct, err = gi.StructNew("GtkSource", "Language")
+	languageObject_Once.Do(func() {
+		languageObject, err = gi.ObjectNew("GtkSource", "Language")
 	})
 	return err
 }
@@ -3250,7 +3185,7 @@ type Language struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Language) FieldPriv() *LanguagePrivate {
-	argValue := gi.FieldGet(languageStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(languageObject, recv.Native, "priv")
 	value := &LanguagePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3260,7 +3195,7 @@ func (recv *Language) FieldPriv() *LanguagePrivate {
 func (recv *Language) SetFieldPriv(value *LanguagePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(languageStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(languageObject, recv.Native, "priv", argValue)
 }
 
 var languageGetGlobsFunction *gi.Function
@@ -3269,11 +3204,11 @@ var languageGetGlobsFunction_Once sync.Once
 func languageGetGlobsFunction_Set() error {
 	var err error
 	languageGetGlobsFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetGlobsFunction, err = languageStruct.InvokerNew("get_globs")
+		languageGetGlobsFunction, err = languageObject.InvokerNew("get_globs")
 	})
 	return err
 }
@@ -3297,11 +3232,11 @@ var languageGetHiddenFunction_Once sync.Once
 func languageGetHiddenFunction_Set() error {
 	var err error
 	languageGetHiddenFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetHiddenFunction, err = languageStruct.InvokerNew("get_hidden")
+		languageGetHiddenFunction, err = languageObject.InvokerNew("get_hidden")
 	})
 	return err
 }
@@ -3329,11 +3264,11 @@ var languageGetIdFunction_Once sync.Once
 func languageGetIdFunction_Set() error {
 	var err error
 	languageGetIdFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetIdFunction, err = languageStruct.InvokerNew("get_id")
+		languageGetIdFunction, err = languageObject.InvokerNew("get_id")
 	})
 	return err
 }
@@ -3361,11 +3296,11 @@ var languageGetMetadataFunction_Once sync.Once
 func languageGetMetadataFunction_Set() error {
 	var err error
 	languageGetMetadataFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetMetadataFunction, err = languageStruct.InvokerNew("get_metadata")
+		languageGetMetadataFunction, err = languageObject.InvokerNew("get_metadata")
 	})
 	return err
 }
@@ -3394,11 +3329,11 @@ var languageGetMimeTypesFunction_Once sync.Once
 func languageGetMimeTypesFunction_Set() error {
 	var err error
 	languageGetMimeTypesFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetMimeTypesFunction, err = languageStruct.InvokerNew("get_mime_types")
+		languageGetMimeTypesFunction, err = languageObject.InvokerNew("get_mime_types")
 	})
 	return err
 }
@@ -3422,11 +3357,11 @@ var languageGetNameFunction_Once sync.Once
 func languageGetNameFunction_Set() error {
 	var err error
 	languageGetNameFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetNameFunction, err = languageStruct.InvokerNew("get_name")
+		languageGetNameFunction, err = languageObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -3454,11 +3389,11 @@ var languageGetSectionFunction_Once sync.Once
 func languageGetSectionFunction_Set() error {
 	var err error
 	languageGetSectionFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetSectionFunction, err = languageStruct.InvokerNew("get_section")
+		languageGetSectionFunction, err = languageObject.InvokerNew("get_section")
 	})
 	return err
 }
@@ -3486,11 +3421,11 @@ var languageGetStyleFallbackFunction_Once sync.Once
 func languageGetStyleFallbackFunction_Set() error {
 	var err error
 	languageGetStyleFallbackFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetStyleFallbackFunction, err = languageStruct.InvokerNew("get_style_fallback")
+		languageGetStyleFallbackFunction, err = languageObject.InvokerNew("get_style_fallback")
 	})
 	return err
 }
@@ -3519,11 +3454,11 @@ var languageGetStyleIdsFunction_Once sync.Once
 func languageGetStyleIdsFunction_Set() error {
 	var err error
 	languageGetStyleIdsFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetStyleIdsFunction, err = languageStruct.InvokerNew("get_style_ids")
+		languageGetStyleIdsFunction, err = languageObject.InvokerNew("get_style_ids")
 	})
 	return err
 }
@@ -3547,11 +3482,11 @@ var languageGetStyleNameFunction_Once sync.Once
 func languageGetStyleNameFunction_Set() error {
 	var err error
 	languageGetStyleNameFunction_Once.Do(func() {
-		err = languageStruct_Set()
+		err = languageObject_Set()
 		if err != nil {
 			return
 		}
-		languageGetStyleNameFunction, err = languageStruct.InvokerNew("get_style_name")
+		languageGetStyleNameFunction, err = languageObject.InvokerNew("get_style_name")
 	})
 	return err
 }
@@ -3574,29 +3509,13 @@ func (recv *Language) GetStyleName(styleId string) string {
 	return retGo
 }
 
-// LanguageStruct creates an uninitialised Language.
-func LanguageStruct() *Language {
-	err := languageStruct_Set()
-	if err != nil {
-		return nil
-	}
+var languageManagerObject *gi.Object
+var languageManagerObject_Once sync.Once
 
-	structGo := &Language{}
-	structGo.Native = languageStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeLanguage)
-	return structGo
-}
-func finalizeLanguage(obj *Language) {
-	languageStruct.Free(obj.Native)
-}
-
-var languageManagerStruct *gi.Struct
-var languageManagerStruct_Once sync.Once
-
-func languageManagerStruct_Set() error {
+func languageManagerObject_Set() error {
 	var err error
-	languageManagerStruct_Once.Do(func() {
-		languageManagerStruct, err = gi.StructNew("GtkSource", "LanguageManager")
+	languageManagerObject_Once.Do(func() {
+		languageManagerObject, err = gi.ObjectNew("GtkSource", "LanguageManager")
 	})
 	return err
 }
@@ -3611,7 +3530,7 @@ type LanguageManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *LanguageManager) FieldPriv() *LanguageManagerPrivate {
-	argValue := gi.FieldGet(languageManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(languageManagerObject, recv.Native, "priv")
 	value := &LanguageManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3621,7 +3540,7 @@ func (recv *LanguageManager) FieldPriv() *LanguageManagerPrivate {
 func (recv *LanguageManager) SetFieldPriv(value *LanguageManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(languageManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(languageManagerObject, recv.Native, "priv", argValue)
 }
 
 var languageManagerNewFunction *gi.Function
@@ -3630,11 +3549,11 @@ var languageManagerNewFunction_Once sync.Once
 func languageManagerNewFunction_Set() error {
 	var err error
 	languageManagerNewFunction_Once.Do(func() {
-		err = languageManagerStruct_Set()
+		err = languageManagerObject_Set()
 		if err != nil {
 			return
 		}
-		languageManagerNewFunction, err = languageManagerStruct.InvokerNew("new")
+		languageManagerNewFunction, err = languageManagerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -3661,11 +3580,11 @@ var languageManagerGetLanguageFunction_Once sync.Once
 func languageManagerGetLanguageFunction_Set() error {
 	var err error
 	languageManagerGetLanguageFunction_Once.Do(func() {
-		err = languageManagerStruct_Set()
+		err = languageManagerObject_Set()
 		if err != nil {
 			return
 		}
-		languageManagerGetLanguageFunction, err = languageManagerStruct.InvokerNew("get_language")
+		languageManagerGetLanguageFunction, err = languageManagerObject.InvokerNew("get_language")
 	})
 	return err
 }
@@ -3695,11 +3614,11 @@ var languageManagerGetLanguageIdsFunction_Once sync.Once
 func languageManagerGetLanguageIdsFunction_Set() error {
 	var err error
 	languageManagerGetLanguageIdsFunction_Once.Do(func() {
-		err = languageManagerStruct_Set()
+		err = languageManagerObject_Set()
 		if err != nil {
 			return
 		}
-		languageManagerGetLanguageIdsFunction, err = languageManagerStruct.InvokerNew("get_language_ids")
+		languageManagerGetLanguageIdsFunction, err = languageManagerObject.InvokerNew("get_language_ids")
 	})
 	return err
 }
@@ -3723,11 +3642,11 @@ var languageManagerGetSearchPathFunction_Once sync.Once
 func languageManagerGetSearchPathFunction_Set() error {
 	var err error
 	languageManagerGetSearchPathFunction_Once.Do(func() {
-		err = languageManagerStruct_Set()
+		err = languageManagerObject_Set()
 		if err != nil {
 			return
 		}
-		languageManagerGetSearchPathFunction, err = languageManagerStruct.InvokerNew("get_search_path")
+		languageManagerGetSearchPathFunction, err = languageManagerObject.InvokerNew("get_search_path")
 	})
 	return err
 }
@@ -3751,11 +3670,11 @@ var languageManagerGuessLanguageFunction_Once sync.Once
 func languageManagerGuessLanguageFunction_Set() error {
 	var err error
 	languageManagerGuessLanguageFunction_Once.Do(func() {
-		err = languageManagerStruct_Set()
+		err = languageManagerObject_Set()
 		if err != nil {
 			return
 		}
-		languageManagerGuessLanguageFunction, err = languageManagerStruct.InvokerNew("guess_language")
+		languageManagerGuessLanguageFunction, err = languageManagerObject.InvokerNew("guess_language")
 	})
 	return err
 }
@@ -3782,13 +3701,13 @@ func (recv *LanguageManager) GuessLanguage(filename string, contentType string) 
 
 // UNSUPPORTED : C value 'gtk_source_language_manager_set_search_path' : parameter 'dirs' of type 'nil' not supported
 
-var mapStruct *gi.Struct
-var mapStruct_Once sync.Once
+var mapObject *gi.Object
+var mapObject_Once sync.Once
 
-func mapStruct_Set() error {
+func mapObject_Set() error {
 	var err error
-	mapStruct_Once.Do(func() {
-		mapStruct, err = gi.StructNew("GtkSource", "Map")
+	mapObject_Once.Do(func() {
+		mapObject, err = gi.ObjectNew("GtkSource", "Map")
 	})
 	return err
 }
@@ -3799,7 +3718,7 @@ type Map struct {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Map) FieldParentInstance() *View {
-	argValue := gi.FieldGet(mapStruct, recv.Native, "parent_instance")
+	argValue := gi.ObjectFieldGet(mapObject, recv.Native, "parent_instance")
 	value := &View{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3809,7 +3728,7 @@ func (recv *Map) FieldParentInstance() *View {
 func (recv *Map) SetFieldParentInstance(value *View) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(mapStruct, recv.Native, "parent_instance", argValue)
+	gi.ObjectFieldSet(mapObject, recv.Native, "parent_instance", argValue)
 }
 
 var mapNewFunction *gi.Function
@@ -3818,11 +3737,11 @@ var mapNewFunction_Once sync.Once
 func mapNewFunction_Set() error {
 	var err error
 	mapNewFunction_Once.Do(func() {
-		err = mapStruct_Set()
+		err = mapObject_Set()
 		if err != nil {
 			return
 		}
-		mapNewFunction, err = mapStruct.InvokerNew("new")
+		mapNewFunction, err = mapObject.InvokerNew("new")
 	})
 	return err
 }
@@ -3849,11 +3768,11 @@ var mapGetViewFunction_Once sync.Once
 func mapGetViewFunction_Set() error {
 	var err error
 	mapGetViewFunction_Once.Do(func() {
-		err = mapStruct_Set()
+		err = mapObject_Set()
 		if err != nil {
 			return
 		}
-		mapGetViewFunction, err = mapStruct.InvokerNew("get_view")
+		mapGetViewFunction, err = mapObject.InvokerNew("get_view")
 	})
 	return err
 }
@@ -3882,11 +3801,11 @@ var mapSetViewFunction_Once sync.Once
 func mapSetViewFunction_Set() error {
 	var err error
 	mapSetViewFunction_Once.Do(func() {
-		err = mapStruct_Set()
+		err = mapObject_Set()
 		if err != nil {
 			return
 		}
-		mapSetViewFunction, err = mapStruct.InvokerNew("set_view")
+		mapSetViewFunction, err = mapObject.InvokerNew("set_view")
 	})
 	return err
 }
@@ -3905,13 +3824,13 @@ func (recv *Map) SetView(view *View) {
 	return
 }
 
-var markStruct *gi.Struct
-var markStruct_Once sync.Once
+var markObject *gi.Object
+var markObject_Once sync.Once
 
-func markStruct_Set() error {
+func markObject_Set() error {
 	var err error
-	markStruct_Once.Do(func() {
-		markStruct, err = gi.StructNew("GtkSource", "Mark")
+	markObject_Once.Do(func() {
+		markObject, err = gi.ObjectNew("GtkSource", "Mark")
 	})
 	return err
 }
@@ -3926,7 +3845,7 @@ type Mark struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Mark) FieldPriv() *MarkPrivate {
-	argValue := gi.FieldGet(markStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(markObject, recv.Native, "priv")
 	value := &MarkPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -3936,7 +3855,7 @@ func (recv *Mark) FieldPriv() *MarkPrivate {
 func (recv *Mark) SetFieldPriv(value *MarkPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(markStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(markObject, recv.Native, "priv", argValue)
 }
 
 var markNewFunction *gi.Function
@@ -3945,11 +3864,11 @@ var markNewFunction_Once sync.Once
 func markNewFunction_Set() error {
 	var err error
 	markNewFunction_Once.Do(func() {
-		err = markStruct_Set()
+		err = markObject_Set()
 		if err != nil {
 			return
 		}
-		markNewFunction, err = markStruct.InvokerNew("new")
+		markNewFunction, err = markObject.InvokerNew("new")
 	})
 	return err
 }
@@ -3979,11 +3898,11 @@ var markGetCategoryFunction_Once sync.Once
 func markGetCategoryFunction_Set() error {
 	var err error
 	markGetCategoryFunction_Once.Do(func() {
-		err = markStruct_Set()
+		err = markObject_Set()
 		if err != nil {
 			return
 		}
-		markGetCategoryFunction, err = markStruct.InvokerNew("get_category")
+		markGetCategoryFunction, err = markObject.InvokerNew("get_category")
 	})
 	return err
 }
@@ -4011,11 +3930,11 @@ var markNextFunction_Once sync.Once
 func markNextFunction_Set() error {
 	var err error
 	markNextFunction_Once.Do(func() {
-		err = markStruct_Set()
+		err = markObject_Set()
 		if err != nil {
 			return
 		}
-		markNextFunction, err = markStruct.InvokerNew("next")
+		markNextFunction, err = markObject.InvokerNew("next")
 	})
 	return err
 }
@@ -4045,11 +3964,11 @@ var markPrevFunction_Once sync.Once
 func markPrevFunction_Set() error {
 	var err error
 	markPrevFunction_Once.Do(func() {
-		err = markStruct_Set()
+		err = markObject_Set()
 		if err != nil {
 			return
 		}
-		markPrevFunction, err = markStruct.InvokerNew("prev")
+		markPrevFunction, err = markObject.InvokerNew("prev")
 	})
 	return err
 }
@@ -4073,13 +3992,13 @@ func (recv *Mark) Prev(category string) *Mark {
 	return retGo
 }
 
-var markAttributesStruct *gi.Struct
-var markAttributesStruct_Once sync.Once
+var markAttributesObject *gi.Object
+var markAttributesObject_Once sync.Once
 
-func markAttributesStruct_Set() error {
+func markAttributesObject_Set() error {
 	var err error
-	markAttributesStruct_Once.Do(func() {
-		markAttributesStruct, err = gi.StructNew("GtkSource", "MarkAttributes")
+	markAttributesObject_Once.Do(func() {
+		markAttributesObject, err = gi.ObjectNew("GtkSource", "MarkAttributes")
 	})
 	return err
 }
@@ -4094,11 +4013,11 @@ var markAttributesNewFunction_Once sync.Once
 func markAttributesNewFunction_Set() error {
 	var err error
 	markAttributesNewFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesNewFunction, err = markAttributesStruct.InvokerNew("new")
+		markAttributesNewFunction, err = markAttributesObject.InvokerNew("new")
 	})
 	return err
 }
@@ -4129,11 +4048,11 @@ var markAttributesGetIconNameFunction_Once sync.Once
 func markAttributesGetIconNameFunction_Set() error {
 	var err error
 	markAttributesGetIconNameFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesGetIconNameFunction, err = markAttributesStruct.InvokerNew("get_icon_name")
+		markAttributesGetIconNameFunction, err = markAttributesObject.InvokerNew("get_icon_name")
 	})
 	return err
 }
@@ -4163,11 +4082,11 @@ var markAttributesGetStockIdFunction_Once sync.Once
 func markAttributesGetStockIdFunction_Set() error {
 	var err error
 	markAttributesGetStockIdFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesGetStockIdFunction, err = markAttributesStruct.InvokerNew("get_stock_id")
+		markAttributesGetStockIdFunction, err = markAttributesObject.InvokerNew("get_stock_id")
 	})
 	return err
 }
@@ -4195,11 +4114,11 @@ var markAttributesGetTooltipMarkupFunction_Once sync.Once
 func markAttributesGetTooltipMarkupFunction_Set() error {
 	var err error
 	markAttributesGetTooltipMarkupFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesGetTooltipMarkupFunction, err = markAttributesStruct.InvokerNew("get_tooltip_markup")
+		markAttributesGetTooltipMarkupFunction, err = markAttributesObject.InvokerNew("get_tooltip_markup")
 	})
 	return err
 }
@@ -4228,11 +4147,11 @@ var markAttributesGetTooltipTextFunction_Once sync.Once
 func markAttributesGetTooltipTextFunction_Set() error {
 	var err error
 	markAttributesGetTooltipTextFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesGetTooltipTextFunction, err = markAttributesStruct.InvokerNew("get_tooltip_text")
+		markAttributesGetTooltipTextFunction, err = markAttributesObject.InvokerNew("get_tooltip_text")
 	})
 	return err
 }
@@ -4267,11 +4186,11 @@ var markAttributesSetIconNameFunction_Once sync.Once
 func markAttributesSetIconNameFunction_Set() error {
 	var err error
 	markAttributesSetIconNameFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesSetIconNameFunction, err = markAttributesStruct.InvokerNew("set_icon_name")
+		markAttributesSetIconNameFunction, err = markAttributesObject.InvokerNew("set_icon_name")
 	})
 	return err
 }
@@ -4298,11 +4217,11 @@ var markAttributesSetStockIdFunction_Once sync.Once
 func markAttributesSetStockIdFunction_Set() error {
 	var err error
 	markAttributesSetStockIdFunction_Once.Do(func() {
-		err = markAttributesStruct_Set()
+		err = markAttributesObject_Set()
 		if err != nil {
 			return
 		}
-		markAttributesSetStockIdFunction, err = markAttributesStruct.InvokerNew("set_stock_id")
+		markAttributesSetStockIdFunction, err = markAttributesObject.InvokerNew("set_stock_id")
 	})
 	return err
 }
@@ -4321,13 +4240,13 @@ func (recv *MarkAttributes) SetStockId(stockId string) {
 	return
 }
 
-var printCompositorStruct *gi.Struct
-var printCompositorStruct_Once sync.Once
+var printCompositorObject *gi.Object
+var printCompositorObject_Once sync.Once
 
-func printCompositorStruct_Set() error {
+func printCompositorObject_Set() error {
 	var err error
-	printCompositorStruct_Once.Do(func() {
-		printCompositorStruct, err = gi.StructNew("GtkSource", "PrintCompositor")
+	printCompositorObject_Once.Do(func() {
+		printCompositorObject, err = gi.ObjectNew("GtkSource", "PrintCompositor")
 	})
 	return err
 }
@@ -4342,7 +4261,7 @@ type PrintCompositor struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintCompositor) FieldPriv() *PrintCompositorPrivate {
-	argValue := gi.FieldGet(printCompositorStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(printCompositorObject, recv.Native, "priv")
 	value := &PrintCompositorPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -4352,7 +4271,7 @@ func (recv *PrintCompositor) FieldPriv() *PrintCompositorPrivate {
 func (recv *PrintCompositor) SetFieldPriv(value *PrintCompositorPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(printCompositorStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(printCompositorObject, recv.Native, "priv", argValue)
 }
 
 var printCompositorNewFunction *gi.Function
@@ -4361,11 +4280,11 @@ var printCompositorNewFunction_Once sync.Once
 func printCompositorNewFunction_Set() error {
 	var err error
 	printCompositorNewFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorNewFunction, err = printCompositorStruct.InvokerNew("new")
+		printCompositorNewFunction, err = printCompositorObject.InvokerNew("new")
 	})
 	return err
 }
@@ -4394,11 +4313,11 @@ var printCompositorNewFromViewFunction_Once sync.Once
 func printCompositorNewFromViewFunction_Set() error {
 	var err error
 	printCompositorNewFromViewFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorNewFromViewFunction, err = printCompositorStruct.InvokerNew("new_from_view")
+		printCompositorNewFromViewFunction, err = printCompositorObject.InvokerNew("new_from_view")
 	})
 	return err
 }
@@ -4429,11 +4348,11 @@ var printCompositorGetBodyFontNameFunction_Once sync.Once
 func printCompositorGetBodyFontNameFunction_Set() error {
 	var err error
 	printCompositorGetBodyFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetBodyFontNameFunction, err = printCompositorStruct.InvokerNew("get_body_font_name")
+		printCompositorGetBodyFontNameFunction, err = printCompositorObject.InvokerNew("get_body_font_name")
 	})
 	return err
 }
@@ -4463,11 +4382,11 @@ var printCompositorGetBufferFunction_Once sync.Once
 func printCompositorGetBufferFunction_Set() error {
 	var err error
 	printCompositorGetBufferFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetBufferFunction, err = printCompositorStruct.InvokerNew("get_buffer")
+		printCompositorGetBufferFunction, err = printCompositorObject.InvokerNew("get_buffer")
 	})
 	return err
 }
@@ -4496,11 +4415,11 @@ var printCompositorGetFooterFontNameFunction_Once sync.Once
 func printCompositorGetFooterFontNameFunction_Set() error {
 	var err error
 	printCompositorGetFooterFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetFooterFontNameFunction, err = printCompositorStruct.InvokerNew("get_footer_font_name")
+		printCompositorGetFooterFontNameFunction, err = printCompositorObject.InvokerNew("get_footer_font_name")
 	})
 	return err
 }
@@ -4528,11 +4447,11 @@ var printCompositorGetHeaderFontNameFunction_Once sync.Once
 func printCompositorGetHeaderFontNameFunction_Set() error {
 	var err error
 	printCompositorGetHeaderFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetHeaderFontNameFunction, err = printCompositorStruct.InvokerNew("get_header_font_name")
+		printCompositorGetHeaderFontNameFunction, err = printCompositorObject.InvokerNew("get_header_font_name")
 	})
 	return err
 }
@@ -4560,11 +4479,11 @@ var printCompositorGetHighlightSyntaxFunction_Once sync.Once
 func printCompositorGetHighlightSyntaxFunction_Set() error {
 	var err error
 	printCompositorGetHighlightSyntaxFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetHighlightSyntaxFunction, err = printCompositorStruct.InvokerNew("get_highlight_syntax")
+		printCompositorGetHighlightSyntaxFunction, err = printCompositorObject.InvokerNew("get_highlight_syntax")
 	})
 	return err
 }
@@ -4594,11 +4513,11 @@ var printCompositorGetLineNumbersFontNameFunction_Once sync.Once
 func printCompositorGetLineNumbersFontNameFunction_Set() error {
 	var err error
 	printCompositorGetLineNumbersFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetLineNumbersFontNameFunction, err = printCompositorStruct.InvokerNew("get_line_numbers_font_name")
+		printCompositorGetLineNumbersFontNameFunction, err = printCompositorObject.InvokerNew("get_line_numbers_font_name")
 	})
 	return err
 }
@@ -4626,11 +4545,11 @@ var printCompositorGetNPagesFunction_Once sync.Once
 func printCompositorGetNPagesFunction_Set() error {
 	var err error
 	printCompositorGetNPagesFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetNPagesFunction, err = printCompositorStruct.InvokerNew("get_n_pages")
+		printCompositorGetNPagesFunction, err = printCompositorObject.InvokerNew("get_n_pages")
 	})
 	return err
 }
@@ -4658,11 +4577,11 @@ var printCompositorGetPaginationProgressFunction_Once sync.Once
 func printCompositorGetPaginationProgressFunction_Set() error {
 	var err error
 	printCompositorGetPaginationProgressFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetPaginationProgressFunction, err = printCompositorStruct.InvokerNew("get_pagination_progress")
+		printCompositorGetPaginationProgressFunction, err = printCompositorObject.InvokerNew("get_pagination_progress")
 	})
 	return err
 }
@@ -4690,11 +4609,11 @@ var printCompositorGetPrintFooterFunction_Once sync.Once
 func printCompositorGetPrintFooterFunction_Set() error {
 	var err error
 	printCompositorGetPrintFooterFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetPrintFooterFunction, err = printCompositorStruct.InvokerNew("get_print_footer")
+		printCompositorGetPrintFooterFunction, err = printCompositorObject.InvokerNew("get_print_footer")
 	})
 	return err
 }
@@ -4722,11 +4641,11 @@ var printCompositorGetPrintHeaderFunction_Once sync.Once
 func printCompositorGetPrintHeaderFunction_Set() error {
 	var err error
 	printCompositorGetPrintHeaderFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetPrintHeaderFunction, err = printCompositorStruct.InvokerNew("get_print_header")
+		printCompositorGetPrintHeaderFunction, err = printCompositorObject.InvokerNew("get_print_header")
 	})
 	return err
 }
@@ -4754,11 +4673,11 @@ var printCompositorGetPrintLineNumbersFunction_Once sync.Once
 func printCompositorGetPrintLineNumbersFunction_Set() error {
 	var err error
 	printCompositorGetPrintLineNumbersFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetPrintLineNumbersFunction, err = printCompositorStruct.InvokerNew("get_print_line_numbers")
+		printCompositorGetPrintLineNumbersFunction, err = printCompositorObject.InvokerNew("get_print_line_numbers")
 	})
 	return err
 }
@@ -4788,11 +4707,11 @@ var printCompositorGetTabWidthFunction_Once sync.Once
 func printCompositorGetTabWidthFunction_Set() error {
 	var err error
 	printCompositorGetTabWidthFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorGetTabWidthFunction, err = printCompositorStruct.InvokerNew("get_tab_width")
+		printCompositorGetTabWidthFunction, err = printCompositorObject.InvokerNew("get_tab_width")
 	})
 	return err
 }
@@ -4826,11 +4745,11 @@ var printCompositorSetBodyFontNameFunction_Once sync.Once
 func printCompositorSetBodyFontNameFunction_Set() error {
 	var err error
 	printCompositorSetBodyFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetBodyFontNameFunction, err = printCompositorStruct.InvokerNew("set_body_font_name")
+		printCompositorSetBodyFontNameFunction, err = printCompositorObject.InvokerNew("set_body_font_name")
 	})
 	return err
 }
@@ -4857,11 +4776,11 @@ var printCompositorSetFooterFontNameFunction_Once sync.Once
 func printCompositorSetFooterFontNameFunction_Set() error {
 	var err error
 	printCompositorSetFooterFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetFooterFontNameFunction, err = printCompositorStruct.InvokerNew("set_footer_font_name")
+		printCompositorSetFooterFontNameFunction, err = printCompositorObject.InvokerNew("set_footer_font_name")
 	})
 	return err
 }
@@ -4886,11 +4805,11 @@ var printCompositorSetFooterFormatFunction_Once sync.Once
 func printCompositorSetFooterFormatFunction_Set() error {
 	var err error
 	printCompositorSetFooterFormatFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetFooterFormatFunction, err = printCompositorStruct.InvokerNew("set_footer_format")
+		printCompositorSetFooterFormatFunction, err = printCompositorObject.InvokerNew("set_footer_format")
 	})
 	return err
 }
@@ -4918,11 +4837,11 @@ var printCompositorSetHeaderFontNameFunction_Once sync.Once
 func printCompositorSetHeaderFontNameFunction_Set() error {
 	var err error
 	printCompositorSetHeaderFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetHeaderFontNameFunction, err = printCompositorStruct.InvokerNew("set_header_font_name")
+		printCompositorSetHeaderFontNameFunction, err = printCompositorObject.InvokerNew("set_header_font_name")
 	})
 	return err
 }
@@ -4947,11 +4866,11 @@ var printCompositorSetHeaderFormatFunction_Once sync.Once
 func printCompositorSetHeaderFormatFunction_Set() error {
 	var err error
 	printCompositorSetHeaderFormatFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetHeaderFormatFunction, err = printCompositorStruct.InvokerNew("set_header_format")
+		printCompositorSetHeaderFormatFunction, err = printCompositorObject.InvokerNew("set_header_format")
 	})
 	return err
 }
@@ -4979,11 +4898,11 @@ var printCompositorSetHighlightSyntaxFunction_Once sync.Once
 func printCompositorSetHighlightSyntaxFunction_Set() error {
 	var err error
 	printCompositorSetHighlightSyntaxFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetHighlightSyntaxFunction, err = printCompositorStruct.InvokerNew("set_highlight_syntax")
+		printCompositorSetHighlightSyntaxFunction, err = printCompositorObject.InvokerNew("set_highlight_syntax")
 	})
 	return err
 }
@@ -5010,11 +4929,11 @@ var printCompositorSetLineNumbersFontNameFunction_Once sync.Once
 func printCompositorSetLineNumbersFontNameFunction_Set() error {
 	var err error
 	printCompositorSetLineNumbersFontNameFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetLineNumbersFontNameFunction, err = printCompositorStruct.InvokerNew("set_line_numbers_font_name")
+		printCompositorSetLineNumbersFontNameFunction, err = printCompositorObject.InvokerNew("set_line_numbers_font_name")
 	})
 	return err
 }
@@ -5039,11 +4958,11 @@ var printCompositorSetPrintFooterFunction_Once sync.Once
 func printCompositorSetPrintFooterFunction_Set() error {
 	var err error
 	printCompositorSetPrintFooterFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetPrintFooterFunction, err = printCompositorStruct.InvokerNew("set_print_footer")
+		printCompositorSetPrintFooterFunction, err = printCompositorObject.InvokerNew("set_print_footer")
 	})
 	return err
 }
@@ -5068,11 +4987,11 @@ var printCompositorSetPrintHeaderFunction_Once sync.Once
 func printCompositorSetPrintHeaderFunction_Set() error {
 	var err error
 	printCompositorSetPrintHeaderFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetPrintHeaderFunction, err = printCompositorStruct.InvokerNew("set_print_header")
+		printCompositorSetPrintHeaderFunction, err = printCompositorObject.InvokerNew("set_print_header")
 	})
 	return err
 }
@@ -5097,11 +5016,11 @@ var printCompositorSetPrintLineNumbersFunction_Once sync.Once
 func printCompositorSetPrintLineNumbersFunction_Set() error {
 	var err error
 	printCompositorSetPrintLineNumbersFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetPrintLineNumbersFunction, err = printCompositorStruct.InvokerNew("set_print_line_numbers")
+		printCompositorSetPrintLineNumbersFunction, err = printCompositorObject.InvokerNew("set_print_line_numbers")
 	})
 	return err
 }
@@ -5128,11 +5047,11 @@ var printCompositorSetTabWidthFunction_Once sync.Once
 func printCompositorSetTabWidthFunction_Set() error {
 	var err error
 	printCompositorSetTabWidthFunction_Once.Do(func() {
-		err = printCompositorStruct_Set()
+		err = printCompositorObject_Set()
 		if err != nil {
 			return
 		}
-		printCompositorSetTabWidthFunction, err = printCompositorStruct.InvokerNew("set_tab_width")
+		printCompositorSetTabWidthFunction, err = printCompositorObject.InvokerNew("set_tab_width")
 	})
 	return err
 }
@@ -5155,13 +5074,13 @@ func (recv *PrintCompositor) SetTabWidth(width uint32) {
 
 // UNSUPPORTED : C value 'gtk_source_print_compositor_set_wrap_mode' : parameter 'wrap_mode' of type 'Gtk.WrapMode' not supported
 
-var regionStruct *gi.Struct
-var regionStruct_Once sync.Once
+var regionObject *gi.Object
+var regionObject_Once sync.Once
 
-func regionStruct_Set() error {
+func regionObject_Set() error {
 	var err error
-	regionStruct_Once.Do(func() {
-		regionStruct, err = gi.StructNew("GtkSource", "Region")
+	regionObject_Once.Do(func() {
+		regionObject, err = gi.ObjectNew("GtkSource", "Region")
 	})
 	return err
 }
@@ -5182,11 +5101,11 @@ var regionAddRegionFunction_Once sync.Once
 func regionAddRegionFunction_Set() error {
 	var err error
 	regionAddRegionFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionAddRegionFunction, err = regionStruct.InvokerNew("add_region")
+		regionAddRegionFunction, err = regionObject.InvokerNew("add_region")
 	})
 	return err
 }
@@ -5217,11 +5136,11 @@ var regionGetStartRegionIterFunction_Once sync.Once
 func regionGetStartRegionIterFunction_Set() error {
 	var err error
 	regionGetStartRegionIterFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionGetStartRegionIterFunction, err = regionStruct.InvokerNew("get_start_region_iter")
+		regionGetStartRegionIterFunction, err = regionObject.InvokerNew("get_start_region_iter")
 	})
 	return err
 }
@@ -5250,11 +5169,11 @@ var regionIntersectRegionFunction_Once sync.Once
 func regionIntersectRegionFunction_Set() error {
 	var err error
 	regionIntersectRegionFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionIntersectRegionFunction, err = regionStruct.InvokerNew("intersect_region")
+		regionIntersectRegionFunction, err = regionObject.InvokerNew("intersect_region")
 	})
 	return err
 }
@@ -5286,11 +5205,11 @@ var regionIsEmptyFunction_Once sync.Once
 func regionIsEmptyFunction_Set() error {
 	var err error
 	regionIsEmptyFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionIsEmptyFunction, err = regionStruct.InvokerNew("is_empty")
+		regionIsEmptyFunction, err = regionObject.InvokerNew("is_empty")
 	})
 	return err
 }
@@ -5318,11 +5237,11 @@ var regionSubtractRegionFunction_Once sync.Once
 func regionSubtractRegionFunction_Set() error {
 	var err error
 	regionSubtractRegionFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionSubtractRegionFunction, err = regionStruct.InvokerNew("subtract_region")
+		regionSubtractRegionFunction, err = regionObject.InvokerNew("subtract_region")
 	})
 	return err
 }
@@ -5349,11 +5268,11 @@ var regionToStringFunction_Once sync.Once
 func regionToStringFunction_Set() error {
 	var err error
 	regionToStringFunction_Once.Do(func() {
-		err = regionStruct_Set()
+		err = regionObject_Set()
 		if err != nil {
 			return
 		}
-		regionToStringFunction, err = regionStruct.InvokerNew("to_string")
+		regionToStringFunction, err = regionObject.InvokerNew("to_string")
 	})
 	return err
 }
@@ -5375,13 +5294,13 @@ func (recv *Region) ToString() string {
 	return retGo
 }
 
-var searchContextStruct *gi.Struct
-var searchContextStruct_Once sync.Once
+var searchContextObject *gi.Object
+var searchContextObject_Once sync.Once
 
-func searchContextStruct_Set() error {
+func searchContextObject_Set() error {
 	var err error
-	searchContextStruct_Once.Do(func() {
-		searchContextStruct, err = gi.StructNew("GtkSource", "SearchContext")
+	searchContextObject_Once.Do(func() {
+		searchContextObject, err = gi.ObjectNew("GtkSource", "SearchContext")
 	})
 	return err
 }
@@ -5396,7 +5315,7 @@ type SearchContext struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchContext) FieldPriv() *SearchContextPrivate {
-	argValue := gi.FieldGet(searchContextStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(searchContextObject, recv.Native, "priv")
 	value := &SearchContextPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5406,7 +5325,7 @@ func (recv *SearchContext) FieldPriv() *SearchContextPrivate {
 func (recv *SearchContext) SetFieldPriv(value *SearchContextPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(searchContextStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(searchContextObject, recv.Native, "priv", argValue)
 }
 
 var searchContextNewFunction *gi.Function
@@ -5415,11 +5334,11 @@ var searchContextNewFunction_Once sync.Once
 func searchContextNewFunction_Set() error {
 	var err error
 	searchContextNewFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextNewFunction, err = searchContextStruct.InvokerNew("new")
+		searchContextNewFunction, err = searchContextObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5469,11 +5388,11 @@ var searchContextGetBufferFunction_Once sync.Once
 func searchContextGetBufferFunction_Set() error {
 	var err error
 	searchContextGetBufferFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextGetBufferFunction, err = searchContextStruct.InvokerNew("get_buffer")
+		searchContextGetBufferFunction, err = searchContextObject.InvokerNew("get_buffer")
 	})
 	return err
 }
@@ -5502,11 +5421,11 @@ var searchContextGetHighlightFunction_Once sync.Once
 func searchContextGetHighlightFunction_Set() error {
 	var err error
 	searchContextGetHighlightFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextGetHighlightFunction, err = searchContextStruct.InvokerNew("get_highlight")
+		searchContextGetHighlightFunction, err = searchContextObject.InvokerNew("get_highlight")
 	})
 	return err
 }
@@ -5534,11 +5453,11 @@ var searchContextGetMatchStyleFunction_Once sync.Once
 func searchContextGetMatchStyleFunction_Set() error {
 	var err error
 	searchContextGetMatchStyleFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextGetMatchStyleFunction, err = searchContextStruct.InvokerNew("get_match_style")
+		searchContextGetMatchStyleFunction, err = searchContextObject.InvokerNew("get_match_style")
 	})
 	return err
 }
@@ -5569,11 +5488,11 @@ var searchContextGetOccurrencesCountFunction_Once sync.Once
 func searchContextGetOccurrencesCountFunction_Set() error {
 	var err error
 	searchContextGetOccurrencesCountFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextGetOccurrencesCountFunction, err = searchContextStruct.InvokerNew("get_occurrences_count")
+		searchContextGetOccurrencesCountFunction, err = searchContextObject.InvokerNew("get_occurrences_count")
 	})
 	return err
 }
@@ -5603,11 +5522,11 @@ var searchContextGetSettingsFunction_Once sync.Once
 func searchContextGetSettingsFunction_Set() error {
 	var err error
 	searchContextGetSettingsFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextGetSettingsFunction, err = searchContextStruct.InvokerNew("get_settings")
+		searchContextGetSettingsFunction, err = searchContextObject.InvokerNew("get_settings")
 	})
 	return err
 }
@@ -5640,11 +5559,11 @@ var searchContextReplaceAllFunction_Once sync.Once
 func searchContextReplaceAllFunction_Set() error {
 	var err error
 	searchContextReplaceAllFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextReplaceAllFunction, err = searchContextStruct.InvokerNew("replace_all")
+		searchContextReplaceAllFunction, err = searchContextObject.InvokerNew("replace_all")
 	})
 	return err
 }
@@ -5674,11 +5593,11 @@ var searchContextSetHighlightFunction_Once sync.Once
 func searchContextSetHighlightFunction_Set() error {
 	var err error
 	searchContextSetHighlightFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextSetHighlightFunction, err = searchContextStruct.InvokerNew("set_highlight")
+		searchContextSetHighlightFunction, err = searchContextObject.InvokerNew("set_highlight")
 	})
 	return err
 }
@@ -5703,11 +5622,11 @@ var searchContextSetMatchStyleFunction_Once sync.Once
 func searchContextSetMatchStyleFunction_Set() error {
 	var err error
 	searchContextSetMatchStyleFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextSetMatchStyleFunction, err = searchContextStruct.InvokerNew("set_match_style")
+		searchContextSetMatchStyleFunction, err = searchContextObject.InvokerNew("set_match_style")
 	})
 	return err
 }
@@ -5732,11 +5651,11 @@ var searchContextSetSettingsFunction_Once sync.Once
 func searchContextSetSettingsFunction_Set() error {
 	var err error
 	searchContextSetSettingsFunction_Once.Do(func() {
-		err = searchContextStruct_Set()
+		err = searchContextObject_Set()
 		if err != nil {
 			return
 		}
-		searchContextSetSettingsFunction, err = searchContextStruct.InvokerNew("set_settings")
+		searchContextSetSettingsFunction, err = searchContextObject.InvokerNew("set_settings")
 	})
 	return err
 }
@@ -5755,13 +5674,13 @@ func (recv *SearchContext) SetSettings(settings *SearchSettings) {
 	return
 }
 
-var searchSettingsStruct *gi.Struct
-var searchSettingsStruct_Once sync.Once
+var searchSettingsObject *gi.Object
+var searchSettingsObject_Once sync.Once
 
-func searchSettingsStruct_Set() error {
+func searchSettingsObject_Set() error {
 	var err error
-	searchSettingsStruct_Once.Do(func() {
-		searchSettingsStruct, err = gi.StructNew("GtkSource", "SearchSettings")
+	searchSettingsObject_Once.Do(func() {
+		searchSettingsObject, err = gi.ObjectNew("GtkSource", "SearchSettings")
 	})
 	return err
 }
@@ -5776,7 +5695,7 @@ type SearchSettings struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchSettings) FieldPriv() *SearchSettingsPrivate {
-	argValue := gi.FieldGet(searchSettingsStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(searchSettingsObject, recv.Native, "priv")
 	value := &SearchSettingsPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -5786,7 +5705,7 @@ func (recv *SearchSettings) FieldPriv() *SearchSettingsPrivate {
 func (recv *SearchSettings) SetFieldPriv(value *SearchSettingsPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(searchSettingsStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(searchSettingsObject, recv.Native, "priv", argValue)
 }
 
 var searchSettingsNewFunction *gi.Function
@@ -5795,11 +5714,11 @@ var searchSettingsNewFunction_Once sync.Once
 func searchSettingsNewFunction_Set() error {
 	var err error
 	searchSettingsNewFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsNewFunction, err = searchSettingsStruct.InvokerNew("new")
+		searchSettingsNewFunction, err = searchSettingsObject.InvokerNew("new")
 	})
 	return err
 }
@@ -5826,11 +5745,11 @@ var searchSettingsGetAtWordBoundariesFunction_Once sync.Once
 func searchSettingsGetAtWordBoundariesFunction_Set() error {
 	var err error
 	searchSettingsGetAtWordBoundariesFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsGetAtWordBoundariesFunction, err = searchSettingsStruct.InvokerNew("get_at_word_boundaries")
+		searchSettingsGetAtWordBoundariesFunction, err = searchSettingsObject.InvokerNew("get_at_word_boundaries")
 	})
 	return err
 }
@@ -5858,11 +5777,11 @@ var searchSettingsGetCaseSensitiveFunction_Once sync.Once
 func searchSettingsGetCaseSensitiveFunction_Set() error {
 	var err error
 	searchSettingsGetCaseSensitiveFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsGetCaseSensitiveFunction, err = searchSettingsStruct.InvokerNew("get_case_sensitive")
+		searchSettingsGetCaseSensitiveFunction, err = searchSettingsObject.InvokerNew("get_case_sensitive")
 	})
 	return err
 }
@@ -5890,11 +5809,11 @@ var searchSettingsGetRegexEnabledFunction_Once sync.Once
 func searchSettingsGetRegexEnabledFunction_Set() error {
 	var err error
 	searchSettingsGetRegexEnabledFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsGetRegexEnabledFunction, err = searchSettingsStruct.InvokerNew("get_regex_enabled")
+		searchSettingsGetRegexEnabledFunction, err = searchSettingsObject.InvokerNew("get_regex_enabled")
 	})
 	return err
 }
@@ -5922,11 +5841,11 @@ var searchSettingsGetSearchTextFunction_Once sync.Once
 func searchSettingsGetSearchTextFunction_Set() error {
 	var err error
 	searchSettingsGetSearchTextFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsGetSearchTextFunction, err = searchSettingsStruct.InvokerNew("get_search_text")
+		searchSettingsGetSearchTextFunction, err = searchSettingsObject.InvokerNew("get_search_text")
 	})
 	return err
 }
@@ -5954,11 +5873,11 @@ var searchSettingsGetWrapAroundFunction_Once sync.Once
 func searchSettingsGetWrapAroundFunction_Set() error {
 	var err error
 	searchSettingsGetWrapAroundFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsGetWrapAroundFunction, err = searchSettingsStruct.InvokerNew("get_wrap_around")
+		searchSettingsGetWrapAroundFunction, err = searchSettingsObject.InvokerNew("get_wrap_around")
 	})
 	return err
 }
@@ -5986,11 +5905,11 @@ var searchSettingsSetAtWordBoundariesFunction_Once sync.Once
 func searchSettingsSetAtWordBoundariesFunction_Set() error {
 	var err error
 	searchSettingsSetAtWordBoundariesFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsSetAtWordBoundariesFunction, err = searchSettingsStruct.InvokerNew("set_at_word_boundaries")
+		searchSettingsSetAtWordBoundariesFunction, err = searchSettingsObject.InvokerNew("set_at_word_boundaries")
 	})
 	return err
 }
@@ -6015,11 +5934,11 @@ var searchSettingsSetCaseSensitiveFunction_Once sync.Once
 func searchSettingsSetCaseSensitiveFunction_Set() error {
 	var err error
 	searchSettingsSetCaseSensitiveFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsSetCaseSensitiveFunction, err = searchSettingsStruct.InvokerNew("set_case_sensitive")
+		searchSettingsSetCaseSensitiveFunction, err = searchSettingsObject.InvokerNew("set_case_sensitive")
 	})
 	return err
 }
@@ -6044,11 +5963,11 @@ var searchSettingsSetRegexEnabledFunction_Once sync.Once
 func searchSettingsSetRegexEnabledFunction_Set() error {
 	var err error
 	searchSettingsSetRegexEnabledFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsSetRegexEnabledFunction, err = searchSettingsStruct.InvokerNew("set_regex_enabled")
+		searchSettingsSetRegexEnabledFunction, err = searchSettingsObject.InvokerNew("set_regex_enabled")
 	})
 	return err
 }
@@ -6073,11 +5992,11 @@ var searchSettingsSetSearchTextFunction_Once sync.Once
 func searchSettingsSetSearchTextFunction_Set() error {
 	var err error
 	searchSettingsSetSearchTextFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsSetSearchTextFunction, err = searchSettingsStruct.InvokerNew("set_search_text")
+		searchSettingsSetSearchTextFunction, err = searchSettingsObject.InvokerNew("set_search_text")
 	})
 	return err
 }
@@ -6102,11 +6021,11 @@ var searchSettingsSetWrapAroundFunction_Once sync.Once
 func searchSettingsSetWrapAroundFunction_Set() error {
 	var err error
 	searchSettingsSetWrapAroundFunction_Once.Do(func() {
-		err = searchSettingsStruct_Set()
+		err = searchSettingsObject_Set()
 		if err != nil {
 			return
 		}
-		searchSettingsSetWrapAroundFunction, err = searchSettingsStruct.InvokerNew("set_wrap_around")
+		searchSettingsSetWrapAroundFunction, err = searchSettingsObject.InvokerNew("set_wrap_around")
 	})
 	return err
 }
@@ -6125,13 +6044,13 @@ func (recv *SearchSettings) SetWrapAround(wrapAround bool) {
 	return
 }
 
-var spaceDrawerStruct *gi.Struct
-var spaceDrawerStruct_Once sync.Once
+var spaceDrawerObject *gi.Object
+var spaceDrawerObject_Once sync.Once
 
-func spaceDrawerStruct_Set() error {
+func spaceDrawerObject_Set() error {
 	var err error
-	spaceDrawerStruct_Once.Do(func() {
-		spaceDrawerStruct, err = gi.StructNew("GtkSource", "SpaceDrawer")
+	spaceDrawerObject_Once.Do(func() {
+		spaceDrawerObject, err = gi.ObjectNew("GtkSource", "SpaceDrawer")
 	})
 	return err
 }
@@ -6146,7 +6065,7 @@ type SpaceDrawer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SpaceDrawer) FieldPriv() *SpaceDrawerPrivate {
-	argValue := gi.FieldGet(spaceDrawerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(spaceDrawerObject, recv.Native, "priv")
 	value := &SpaceDrawerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6156,7 +6075,7 @@ func (recv *SpaceDrawer) FieldPriv() *SpaceDrawerPrivate {
 func (recv *SpaceDrawer) SetFieldPriv(value *SpaceDrawerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(spaceDrawerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(spaceDrawerObject, recv.Native, "priv", argValue)
 }
 
 var spaceDrawerNewFunction *gi.Function
@@ -6165,11 +6084,11 @@ var spaceDrawerNewFunction_Once sync.Once
 func spaceDrawerNewFunction_Set() error {
 	var err error
 	spaceDrawerNewFunction_Once.Do(func() {
-		err = spaceDrawerStruct_Set()
+		err = spaceDrawerObject_Set()
 		if err != nil {
 			return
 		}
-		spaceDrawerNewFunction, err = spaceDrawerStruct.InvokerNew("new")
+		spaceDrawerNewFunction, err = spaceDrawerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6198,11 +6117,11 @@ var spaceDrawerGetEnableMatrixFunction_Once sync.Once
 func spaceDrawerGetEnableMatrixFunction_Set() error {
 	var err error
 	spaceDrawerGetEnableMatrixFunction_Once.Do(func() {
-		err = spaceDrawerStruct_Set()
+		err = spaceDrawerObject_Set()
 		if err != nil {
 			return
 		}
-		spaceDrawerGetEnableMatrixFunction, err = spaceDrawerStruct.InvokerNew("get_enable_matrix")
+		spaceDrawerGetEnableMatrixFunction, err = spaceDrawerObject.InvokerNew("get_enable_matrix")
 	})
 	return err
 }
@@ -6234,11 +6153,11 @@ var spaceDrawerSetEnableMatrixFunction_Once sync.Once
 func spaceDrawerSetEnableMatrixFunction_Set() error {
 	var err error
 	spaceDrawerSetEnableMatrixFunction_Once.Do(func() {
-		err = spaceDrawerStruct_Set()
+		err = spaceDrawerObject_Set()
 		if err != nil {
 			return
 		}
-		spaceDrawerSetEnableMatrixFunction, err = spaceDrawerStruct.InvokerNew("set_enable_matrix")
+		spaceDrawerSetEnableMatrixFunction, err = spaceDrawerObject.InvokerNew("set_enable_matrix")
 	})
 	return err
 }
@@ -6261,13 +6180,13 @@ func (recv *SpaceDrawer) SetEnableMatrix(enableMatrix bool) {
 
 // UNSUPPORTED : C value 'gtk_source_space_drawer_set_types_for_locations' : parameter 'locations' of type 'SpaceLocationFlags' not supported
 
-var styleStruct *gi.Struct
-var styleStruct_Once sync.Once
+var styleObject *gi.Object
+var styleObject_Once sync.Once
 
-func styleStruct_Set() error {
+func styleObject_Set() error {
 	var err error
-	styleStruct_Once.Do(func() {
-		styleStruct, err = gi.StructNew("GtkSource", "Style")
+	styleObject_Once.Do(func() {
+		styleObject, err = gi.ObjectNew("GtkSource", "Style")
 	})
 	return err
 }
@@ -6284,11 +6203,11 @@ var styleCopyFunction_Once sync.Once
 func styleCopyFunction_Set() error {
 	var err error
 	styleCopyFunction_Once.Do(func() {
-		err = styleStruct_Set()
+		err = styleObject_Set()
 		if err != nil {
 			return
 		}
-		styleCopyFunction, err = styleStruct.InvokerNew("copy")
+		styleCopyFunction, err = styleObject.InvokerNew("copy")
 	})
 	return err
 }
@@ -6311,29 +6230,13 @@ func (recv *Style) Copy() *Style {
 	return retGo
 }
 
-// StyleStruct creates an uninitialised Style.
-func StyleStruct() *Style {
-	err := styleStruct_Set()
-	if err != nil {
-		return nil
-	}
+var styleSchemeObject *gi.Object
+var styleSchemeObject_Once sync.Once
 
-	structGo := &Style{}
-	structGo.Native = styleStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeStyle)
-	return structGo
-}
-func finalizeStyle(obj *Style) {
-	styleStruct.Free(obj.Native)
-}
-
-var styleSchemeStruct *gi.Struct
-var styleSchemeStruct_Once sync.Once
-
-func styleSchemeStruct_Set() error {
+func styleSchemeObject_Set() error {
 	var err error
-	styleSchemeStruct_Once.Do(func() {
-		styleSchemeStruct, err = gi.StructNew("GtkSource", "StyleScheme")
+	styleSchemeObject_Once.Do(func() {
+		styleSchemeObject, err = gi.ObjectNew("GtkSource", "StyleScheme")
 	})
 	return err
 }
@@ -6348,7 +6251,7 @@ type StyleScheme struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleScheme) FieldPriv() *StyleSchemePrivate {
-	argValue := gi.FieldGet(styleSchemeStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(styleSchemeObject, recv.Native, "priv")
 	value := &StyleSchemePrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6358,7 +6261,7 @@ func (recv *StyleScheme) FieldPriv() *StyleSchemePrivate {
 func (recv *StyleScheme) SetFieldPriv(value *StyleSchemePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(styleSchemeStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(styleSchemeObject, recv.Native, "priv", argValue)
 }
 
 var styleSchemeGetAuthorsFunction *gi.Function
@@ -6367,11 +6270,11 @@ var styleSchemeGetAuthorsFunction_Once sync.Once
 func styleSchemeGetAuthorsFunction_Set() error {
 	var err error
 	styleSchemeGetAuthorsFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetAuthorsFunction, err = styleSchemeStruct.InvokerNew("get_authors")
+		styleSchemeGetAuthorsFunction, err = styleSchemeObject.InvokerNew("get_authors")
 	})
 	return err
 }
@@ -6395,11 +6298,11 @@ var styleSchemeGetDescriptionFunction_Once sync.Once
 func styleSchemeGetDescriptionFunction_Set() error {
 	var err error
 	styleSchemeGetDescriptionFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetDescriptionFunction, err = styleSchemeStruct.InvokerNew("get_description")
+		styleSchemeGetDescriptionFunction, err = styleSchemeObject.InvokerNew("get_description")
 	})
 	return err
 }
@@ -6427,11 +6330,11 @@ var styleSchemeGetFilenameFunction_Once sync.Once
 func styleSchemeGetFilenameFunction_Set() error {
 	var err error
 	styleSchemeGetFilenameFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetFilenameFunction, err = styleSchemeStruct.InvokerNew("get_filename")
+		styleSchemeGetFilenameFunction, err = styleSchemeObject.InvokerNew("get_filename")
 	})
 	return err
 }
@@ -6459,11 +6362,11 @@ var styleSchemeGetIdFunction_Once sync.Once
 func styleSchemeGetIdFunction_Set() error {
 	var err error
 	styleSchemeGetIdFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetIdFunction, err = styleSchemeStruct.InvokerNew("get_id")
+		styleSchemeGetIdFunction, err = styleSchemeObject.InvokerNew("get_id")
 	})
 	return err
 }
@@ -6491,11 +6394,11 @@ var styleSchemeGetNameFunction_Once sync.Once
 func styleSchemeGetNameFunction_Set() error {
 	var err error
 	styleSchemeGetNameFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetNameFunction, err = styleSchemeStruct.InvokerNew("get_name")
+		styleSchemeGetNameFunction, err = styleSchemeObject.InvokerNew("get_name")
 	})
 	return err
 }
@@ -6523,11 +6426,11 @@ var styleSchemeGetStyleFunction_Once sync.Once
 func styleSchemeGetStyleFunction_Set() error {
 	var err error
 	styleSchemeGetStyleFunction_Once.Do(func() {
-		err = styleSchemeStruct_Set()
+		err = styleSchemeObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeGetStyleFunction, err = styleSchemeStruct.InvokerNew("get_style")
+		styleSchemeGetStyleFunction, err = styleSchemeObject.InvokerNew("get_style")
 	})
 	return err
 }
@@ -6551,29 +6454,13 @@ func (recv *StyleScheme) GetStyle(styleId string) *Style {
 	return retGo
 }
 
-// StyleSchemeStruct creates an uninitialised StyleScheme.
-func StyleSchemeStruct() *StyleScheme {
-	err := styleSchemeStruct_Set()
-	if err != nil {
-		return nil
-	}
+var styleSchemeChooserButtonObject *gi.Object
+var styleSchemeChooserButtonObject_Once sync.Once
 
-	structGo := &StyleScheme{}
-	structGo.Native = styleSchemeStruct.Alloc()
-	runtime.SetFinalizer(structGo, finalizeStyleScheme)
-	return structGo
-}
-func finalizeStyleScheme(obj *StyleScheme) {
-	styleSchemeStruct.Free(obj.Native)
-}
-
-var styleSchemeChooserButtonStruct *gi.Struct
-var styleSchemeChooserButtonStruct_Once sync.Once
-
-func styleSchemeChooserButtonStruct_Set() error {
+func styleSchemeChooserButtonObject_Set() error {
 	var err error
-	styleSchemeChooserButtonStruct_Once.Do(func() {
-		styleSchemeChooserButtonStruct, err = gi.StructNew("GtkSource", "StyleSchemeChooserButton")
+	styleSchemeChooserButtonObject_Once.Do(func() {
+		styleSchemeChooserButtonObject, err = gi.ObjectNew("GtkSource", "StyleSchemeChooserButton")
 	})
 	return err
 }
@@ -6592,11 +6479,11 @@ var styleSchemeChooserButtonNewFunction_Once sync.Once
 func styleSchemeChooserButtonNewFunction_Set() error {
 	var err error
 	styleSchemeChooserButtonNewFunction_Once.Do(func() {
-		err = styleSchemeChooserButtonStruct_Set()
+		err = styleSchemeChooserButtonObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeChooserButtonNewFunction, err = styleSchemeChooserButtonStruct.InvokerNew("new")
+		styleSchemeChooserButtonNewFunction, err = styleSchemeChooserButtonObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6617,13 +6504,13 @@ func StyleSchemeChooserButtonNew() *StyleSchemeChooserButton {
 	return retGo
 }
 
-var styleSchemeChooserWidgetStruct *gi.Struct
-var styleSchemeChooserWidgetStruct_Once sync.Once
+var styleSchemeChooserWidgetObject *gi.Object
+var styleSchemeChooserWidgetObject_Once sync.Once
 
-func styleSchemeChooserWidgetStruct_Set() error {
+func styleSchemeChooserWidgetObject_Set() error {
 	var err error
-	styleSchemeChooserWidgetStruct_Once.Do(func() {
-		styleSchemeChooserWidgetStruct, err = gi.StructNew("GtkSource", "StyleSchemeChooserWidget")
+	styleSchemeChooserWidgetObject_Once.Do(func() {
+		styleSchemeChooserWidgetObject, err = gi.ObjectNew("GtkSource", "StyleSchemeChooserWidget")
 	})
 	return err
 }
@@ -6642,11 +6529,11 @@ var styleSchemeChooserWidgetNewFunction_Once sync.Once
 func styleSchemeChooserWidgetNewFunction_Set() error {
 	var err error
 	styleSchemeChooserWidgetNewFunction_Once.Do(func() {
-		err = styleSchemeChooserWidgetStruct_Set()
+		err = styleSchemeChooserWidgetObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeChooserWidgetNewFunction, err = styleSchemeChooserWidgetStruct.InvokerNew("new")
+		styleSchemeChooserWidgetNewFunction, err = styleSchemeChooserWidgetObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6667,13 +6554,13 @@ func StyleSchemeChooserWidgetNew() *StyleSchemeChooserWidget {
 	return retGo
 }
 
-var styleSchemeManagerStruct *gi.Struct
-var styleSchemeManagerStruct_Once sync.Once
+var styleSchemeManagerObject *gi.Object
+var styleSchemeManagerObject_Once sync.Once
 
-func styleSchemeManagerStruct_Set() error {
+func styleSchemeManagerObject_Set() error {
 	var err error
-	styleSchemeManagerStruct_Once.Do(func() {
-		styleSchemeManagerStruct, err = gi.StructNew("GtkSource", "StyleSchemeManager")
+	styleSchemeManagerObject_Once.Do(func() {
+		styleSchemeManagerObject, err = gi.ObjectNew("GtkSource", "StyleSchemeManager")
 	})
 	return err
 }
@@ -6688,7 +6575,7 @@ type StyleSchemeManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleSchemeManager) FieldPriv() *StyleSchemeManagerPrivate {
-	argValue := gi.FieldGet(styleSchemeManagerStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(styleSchemeManagerObject, recv.Native, "priv")
 	value := &StyleSchemeManagerPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6698,7 +6585,7 @@ func (recv *StyleSchemeManager) FieldPriv() *StyleSchemeManagerPrivate {
 func (recv *StyleSchemeManager) SetFieldPriv(value *StyleSchemeManagerPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(styleSchemeManagerStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(styleSchemeManagerObject, recv.Native, "priv", argValue)
 }
 
 var styleSchemeManagerNewFunction *gi.Function
@@ -6707,11 +6594,11 @@ var styleSchemeManagerNewFunction_Once sync.Once
 func styleSchemeManagerNewFunction_Set() error {
 	var err error
 	styleSchemeManagerNewFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerNewFunction, err = styleSchemeManagerStruct.InvokerNew("new")
+		styleSchemeManagerNewFunction, err = styleSchemeManagerObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6738,11 +6625,11 @@ var styleSchemeManagerAppendSearchPathFunction_Once sync.Once
 func styleSchemeManagerAppendSearchPathFunction_Set() error {
 	var err error
 	styleSchemeManagerAppendSearchPathFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerAppendSearchPathFunction, err = styleSchemeManagerStruct.InvokerNew("append_search_path")
+		styleSchemeManagerAppendSearchPathFunction, err = styleSchemeManagerObject.InvokerNew("append_search_path")
 	})
 	return err
 }
@@ -6767,11 +6654,11 @@ var styleSchemeManagerForceRescanFunction_Once sync.Once
 func styleSchemeManagerForceRescanFunction_Set() error {
 	var err error
 	styleSchemeManagerForceRescanFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerForceRescanFunction, err = styleSchemeManagerStruct.InvokerNew("force_rescan")
+		styleSchemeManagerForceRescanFunction, err = styleSchemeManagerObject.InvokerNew("force_rescan")
 	})
 	return err
 }
@@ -6795,11 +6682,11 @@ var styleSchemeManagerGetSchemeFunction_Once sync.Once
 func styleSchemeManagerGetSchemeFunction_Set() error {
 	var err error
 	styleSchemeManagerGetSchemeFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerGetSchemeFunction, err = styleSchemeManagerStruct.InvokerNew("get_scheme")
+		styleSchemeManagerGetSchemeFunction, err = styleSchemeManagerObject.InvokerNew("get_scheme")
 	})
 	return err
 }
@@ -6829,11 +6716,11 @@ var styleSchemeManagerGetSchemeIdsFunction_Once sync.Once
 func styleSchemeManagerGetSchemeIdsFunction_Set() error {
 	var err error
 	styleSchemeManagerGetSchemeIdsFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerGetSchemeIdsFunction, err = styleSchemeManagerStruct.InvokerNew("get_scheme_ids")
+		styleSchemeManagerGetSchemeIdsFunction, err = styleSchemeManagerObject.InvokerNew("get_scheme_ids")
 	})
 	return err
 }
@@ -6857,11 +6744,11 @@ var styleSchemeManagerGetSearchPathFunction_Once sync.Once
 func styleSchemeManagerGetSearchPathFunction_Set() error {
 	var err error
 	styleSchemeManagerGetSearchPathFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerGetSearchPathFunction, err = styleSchemeManagerStruct.InvokerNew("get_search_path")
+		styleSchemeManagerGetSearchPathFunction, err = styleSchemeManagerObject.InvokerNew("get_search_path")
 	})
 	return err
 }
@@ -6885,11 +6772,11 @@ var styleSchemeManagerPrependSearchPathFunction_Once sync.Once
 func styleSchemeManagerPrependSearchPathFunction_Set() error {
 	var err error
 	styleSchemeManagerPrependSearchPathFunction_Once.Do(func() {
-		err = styleSchemeManagerStruct_Set()
+		err = styleSchemeManagerObject_Set()
 		if err != nil {
 			return
 		}
-		styleSchemeManagerPrependSearchPathFunction, err = styleSchemeManagerStruct.InvokerNew("prepend_search_path")
+		styleSchemeManagerPrependSearchPathFunction, err = styleSchemeManagerObject.InvokerNew("prepend_search_path")
 	})
 	return err
 }
@@ -6910,13 +6797,13 @@ func (recv *StyleSchemeManager) PrependSearchPath(path string) {
 
 // UNSUPPORTED : C value 'gtk_source_style_scheme_manager_set_search_path' : parameter 'path' of type 'nil' not supported
 
-var tagStruct *gi.Struct
-var tagStruct_Once sync.Once
+var tagObject *gi.Object
+var tagObject_Once sync.Once
 
-func tagStruct_Set() error {
+func tagObject_Set() error {
 	var err error
-	tagStruct_Once.Do(func() {
-		tagStruct, err = gi.StructNew("GtkSource", "Tag")
+	tagObject_Once.Do(func() {
+		tagObject, err = gi.ObjectNew("GtkSource", "Tag")
 	})
 	return err
 }
@@ -6935,11 +6822,11 @@ var tagNewFunction_Once sync.Once
 func tagNewFunction_Set() error {
 	var err error
 	tagNewFunction_Once.Do(func() {
-		err = tagStruct_Set()
+		err = tagObject_Set()
 		if err != nil {
 			return
 		}
-		tagNewFunction, err = tagStruct.InvokerNew("new")
+		tagNewFunction, err = tagObject.InvokerNew("new")
 	})
 	return err
 }
@@ -6962,13 +6849,13 @@ func TagNew(name string) *Tag {
 	return retGo
 }
 
-var viewStruct *gi.Struct
-var viewStruct_Once sync.Once
+var viewObject *gi.Object
+var viewObject_Once sync.Once
 
-func viewStruct_Set() error {
+func viewObject_Set() error {
 	var err error
-	viewStruct_Once.Do(func() {
-		viewStruct, err = gi.StructNew("GtkSource", "View")
+	viewObject_Once.Do(func() {
+		viewObject, err = gi.ObjectNew("GtkSource", "View")
 	})
 	return err
 }
@@ -6983,7 +6870,7 @@ type View struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *View) FieldPriv() *ViewPrivate {
-	argValue := gi.FieldGet(viewStruct, recv.Native, "priv")
+	argValue := gi.ObjectFieldGet(viewObject, recv.Native, "priv")
 	value := &ViewPrivate{}
 	value.Native = argValue.Pointer()
 	return value
@@ -6993,7 +6880,7 @@ func (recv *View) FieldPriv() *ViewPrivate {
 func (recv *View) SetFieldPriv(value *ViewPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(viewStruct, recv.Native, "priv", argValue)
+	gi.ObjectFieldSet(viewObject, recv.Native, "priv", argValue)
 }
 
 var viewNewFunction *gi.Function
@@ -7002,11 +6889,11 @@ var viewNewFunction_Once sync.Once
 func viewNewFunction_Set() error {
 	var err error
 	viewNewFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewNewFunction, err = viewStruct.InvokerNew("new")
+		viewNewFunction, err = viewObject.InvokerNew("new")
 	})
 	return err
 }
@@ -7033,11 +6920,11 @@ var viewNewWithBufferFunction_Once sync.Once
 func viewNewWithBufferFunction_Set() error {
 	var err error
 	viewNewWithBufferFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewNewWithBufferFunction, err = viewStruct.InvokerNew("new_with_buffer")
+		viewNewWithBufferFunction, err = viewObject.InvokerNew("new_with_buffer")
 	})
 	return err
 }
@@ -7066,11 +6953,11 @@ var viewGetAutoIndentFunction_Once sync.Once
 func viewGetAutoIndentFunction_Set() error {
 	var err error
 	viewGetAutoIndentFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetAutoIndentFunction, err = viewStruct.InvokerNew("get_auto_indent")
+		viewGetAutoIndentFunction, err = viewObject.InvokerNew("get_auto_indent")
 	})
 	return err
 }
@@ -7098,11 +6985,11 @@ var viewGetBackgroundPatternFunction_Once sync.Once
 func viewGetBackgroundPatternFunction_Set() error {
 	var err error
 	viewGetBackgroundPatternFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetBackgroundPatternFunction, err = viewStruct.InvokerNew("get_background_pattern")
+		viewGetBackgroundPatternFunction, err = viewObject.InvokerNew("get_background_pattern")
 	})
 	return err
 }
@@ -7130,11 +7017,11 @@ var viewGetCompletionFunction_Once sync.Once
 func viewGetCompletionFunction_Set() error {
 	var err error
 	viewGetCompletionFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetCompletionFunction, err = viewStruct.InvokerNew("get_completion")
+		viewGetCompletionFunction, err = viewObject.InvokerNew("get_completion")
 	})
 	return err
 }
@@ -7167,11 +7054,11 @@ var viewGetHighlightCurrentLineFunction_Once sync.Once
 func viewGetHighlightCurrentLineFunction_Set() error {
 	var err error
 	viewGetHighlightCurrentLineFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetHighlightCurrentLineFunction, err = viewStruct.InvokerNew("get_highlight_current_line")
+		viewGetHighlightCurrentLineFunction, err = viewObject.InvokerNew("get_highlight_current_line")
 	})
 	return err
 }
@@ -7199,11 +7086,11 @@ var viewGetIndentOnTabFunction_Once sync.Once
 func viewGetIndentOnTabFunction_Set() error {
 	var err error
 	viewGetIndentOnTabFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetIndentOnTabFunction, err = viewStruct.InvokerNew("get_indent_on_tab")
+		viewGetIndentOnTabFunction, err = viewObject.InvokerNew("get_indent_on_tab")
 	})
 	return err
 }
@@ -7231,11 +7118,11 @@ var viewGetIndentWidthFunction_Once sync.Once
 func viewGetIndentWidthFunction_Set() error {
 	var err error
 	viewGetIndentWidthFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetIndentWidthFunction, err = viewStruct.InvokerNew("get_indent_width")
+		viewGetIndentWidthFunction, err = viewObject.InvokerNew("get_indent_width")
 	})
 	return err
 }
@@ -7263,11 +7150,11 @@ var viewGetInsertSpacesInsteadOfTabsFunction_Once sync.Once
 func viewGetInsertSpacesInsteadOfTabsFunction_Set() error {
 	var err error
 	viewGetInsertSpacesInsteadOfTabsFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetInsertSpacesInsteadOfTabsFunction, err = viewStruct.InvokerNew("get_insert_spaces_instead_of_tabs")
+		viewGetInsertSpacesInsteadOfTabsFunction, err = viewObject.InvokerNew("get_insert_spaces_instead_of_tabs")
 	})
 	return err
 }
@@ -7295,11 +7182,11 @@ var viewGetMarkAttributesFunction_Once sync.Once
 func viewGetMarkAttributesFunction_Set() error {
 	var err error
 	viewGetMarkAttributesFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetMarkAttributesFunction, err = viewStruct.InvokerNew("get_mark_attributes")
+		viewGetMarkAttributesFunction, err = viewObject.InvokerNew("get_mark_attributes")
 	})
 	return err
 }
@@ -7330,11 +7217,11 @@ var viewGetRightMarginPositionFunction_Once sync.Once
 func viewGetRightMarginPositionFunction_Set() error {
 	var err error
 	viewGetRightMarginPositionFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetRightMarginPositionFunction, err = viewStruct.InvokerNew("get_right_margin_position")
+		viewGetRightMarginPositionFunction, err = viewObject.InvokerNew("get_right_margin_position")
 	})
 	return err
 }
@@ -7362,11 +7249,11 @@ var viewGetShowLineMarksFunction_Once sync.Once
 func viewGetShowLineMarksFunction_Set() error {
 	var err error
 	viewGetShowLineMarksFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetShowLineMarksFunction, err = viewStruct.InvokerNew("get_show_line_marks")
+		viewGetShowLineMarksFunction, err = viewObject.InvokerNew("get_show_line_marks")
 	})
 	return err
 }
@@ -7394,11 +7281,11 @@ var viewGetShowLineNumbersFunction_Once sync.Once
 func viewGetShowLineNumbersFunction_Set() error {
 	var err error
 	viewGetShowLineNumbersFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetShowLineNumbersFunction, err = viewStruct.InvokerNew("get_show_line_numbers")
+		viewGetShowLineNumbersFunction, err = viewObject.InvokerNew("get_show_line_numbers")
 	})
 	return err
 }
@@ -7426,11 +7313,11 @@ var viewGetShowRightMarginFunction_Once sync.Once
 func viewGetShowRightMarginFunction_Set() error {
 	var err error
 	viewGetShowRightMarginFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetShowRightMarginFunction, err = viewStruct.InvokerNew("get_show_right_margin")
+		viewGetShowRightMarginFunction, err = viewObject.InvokerNew("get_show_right_margin")
 	})
 	return err
 }
@@ -7458,11 +7345,11 @@ var viewGetSmartBackspaceFunction_Once sync.Once
 func viewGetSmartBackspaceFunction_Set() error {
 	var err error
 	viewGetSmartBackspaceFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetSmartBackspaceFunction, err = viewStruct.InvokerNew("get_smart_backspace")
+		viewGetSmartBackspaceFunction, err = viewObject.InvokerNew("get_smart_backspace")
 	})
 	return err
 }
@@ -7490,11 +7377,11 @@ var viewGetSmartHomeEndFunction_Once sync.Once
 func viewGetSmartHomeEndFunction_Set() error {
 	var err error
 	viewGetSmartHomeEndFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetSmartHomeEndFunction, err = viewStruct.InvokerNew("get_smart_home_end")
+		viewGetSmartHomeEndFunction, err = viewObject.InvokerNew("get_smart_home_end")
 	})
 	return err
 }
@@ -7522,11 +7409,11 @@ var viewGetSpaceDrawerFunction_Once sync.Once
 func viewGetSpaceDrawerFunction_Set() error {
 	var err error
 	viewGetSpaceDrawerFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetSpaceDrawerFunction, err = viewStruct.InvokerNew("get_space_drawer")
+		viewGetSpaceDrawerFunction, err = viewObject.InvokerNew("get_space_drawer")
 	})
 	return err
 }
@@ -7555,11 +7442,11 @@ var viewGetTabWidthFunction_Once sync.Once
 func viewGetTabWidthFunction_Set() error {
 	var err error
 	viewGetTabWidthFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewGetTabWidthFunction, err = viewStruct.InvokerNew("get_tab_width")
+		viewGetTabWidthFunction, err = viewObject.InvokerNew("get_tab_width")
 	})
 	return err
 }
@@ -7591,11 +7478,11 @@ var viewSetAutoIndentFunction_Once sync.Once
 func viewSetAutoIndentFunction_Set() error {
 	var err error
 	viewSetAutoIndentFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetAutoIndentFunction, err = viewStruct.InvokerNew("set_auto_indent")
+		viewSetAutoIndentFunction, err = viewObject.InvokerNew("set_auto_indent")
 	})
 	return err
 }
@@ -7620,11 +7507,11 @@ var viewSetBackgroundPatternFunction_Once sync.Once
 func viewSetBackgroundPatternFunction_Set() error {
 	var err error
 	viewSetBackgroundPatternFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetBackgroundPatternFunction, err = viewStruct.InvokerNew("set_background_pattern")
+		viewSetBackgroundPatternFunction, err = viewObject.InvokerNew("set_background_pattern")
 	})
 	return err
 }
@@ -7651,11 +7538,11 @@ var viewSetHighlightCurrentLineFunction_Once sync.Once
 func viewSetHighlightCurrentLineFunction_Set() error {
 	var err error
 	viewSetHighlightCurrentLineFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetHighlightCurrentLineFunction, err = viewStruct.InvokerNew("set_highlight_current_line")
+		viewSetHighlightCurrentLineFunction, err = viewObject.InvokerNew("set_highlight_current_line")
 	})
 	return err
 }
@@ -7680,11 +7567,11 @@ var viewSetIndentOnTabFunction_Once sync.Once
 func viewSetIndentOnTabFunction_Set() error {
 	var err error
 	viewSetIndentOnTabFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetIndentOnTabFunction, err = viewStruct.InvokerNew("set_indent_on_tab")
+		viewSetIndentOnTabFunction, err = viewObject.InvokerNew("set_indent_on_tab")
 	})
 	return err
 }
@@ -7709,11 +7596,11 @@ var viewSetIndentWidthFunction_Once sync.Once
 func viewSetIndentWidthFunction_Set() error {
 	var err error
 	viewSetIndentWidthFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetIndentWidthFunction, err = viewStruct.InvokerNew("set_indent_width")
+		viewSetIndentWidthFunction, err = viewObject.InvokerNew("set_indent_width")
 	})
 	return err
 }
@@ -7738,11 +7625,11 @@ var viewSetInsertSpacesInsteadOfTabsFunction_Once sync.Once
 func viewSetInsertSpacesInsteadOfTabsFunction_Set() error {
 	var err error
 	viewSetInsertSpacesInsteadOfTabsFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetInsertSpacesInsteadOfTabsFunction, err = viewStruct.InvokerNew("set_insert_spaces_instead_of_tabs")
+		viewSetInsertSpacesInsteadOfTabsFunction, err = viewObject.InvokerNew("set_insert_spaces_instead_of_tabs")
 	})
 	return err
 }
@@ -7767,11 +7654,11 @@ var viewSetMarkAttributesFunction_Once sync.Once
 func viewSetMarkAttributesFunction_Set() error {
 	var err error
 	viewSetMarkAttributesFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetMarkAttributesFunction, err = viewStruct.InvokerNew("set_mark_attributes")
+		viewSetMarkAttributesFunction, err = viewObject.InvokerNew("set_mark_attributes")
 	})
 	return err
 }
@@ -7798,11 +7685,11 @@ var viewSetRightMarginPositionFunction_Once sync.Once
 func viewSetRightMarginPositionFunction_Set() error {
 	var err error
 	viewSetRightMarginPositionFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetRightMarginPositionFunction, err = viewStruct.InvokerNew("set_right_margin_position")
+		viewSetRightMarginPositionFunction, err = viewObject.InvokerNew("set_right_margin_position")
 	})
 	return err
 }
@@ -7827,11 +7714,11 @@ var viewSetShowLineMarksFunction_Once sync.Once
 func viewSetShowLineMarksFunction_Set() error {
 	var err error
 	viewSetShowLineMarksFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetShowLineMarksFunction, err = viewStruct.InvokerNew("set_show_line_marks")
+		viewSetShowLineMarksFunction, err = viewObject.InvokerNew("set_show_line_marks")
 	})
 	return err
 }
@@ -7856,11 +7743,11 @@ var viewSetShowLineNumbersFunction_Once sync.Once
 func viewSetShowLineNumbersFunction_Set() error {
 	var err error
 	viewSetShowLineNumbersFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetShowLineNumbersFunction, err = viewStruct.InvokerNew("set_show_line_numbers")
+		viewSetShowLineNumbersFunction, err = viewObject.InvokerNew("set_show_line_numbers")
 	})
 	return err
 }
@@ -7885,11 +7772,11 @@ var viewSetShowRightMarginFunction_Once sync.Once
 func viewSetShowRightMarginFunction_Set() error {
 	var err error
 	viewSetShowRightMarginFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetShowRightMarginFunction, err = viewStruct.InvokerNew("set_show_right_margin")
+		viewSetShowRightMarginFunction, err = viewObject.InvokerNew("set_show_right_margin")
 	})
 	return err
 }
@@ -7914,11 +7801,11 @@ var viewSetSmartBackspaceFunction_Once sync.Once
 func viewSetSmartBackspaceFunction_Set() error {
 	var err error
 	viewSetSmartBackspaceFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetSmartBackspaceFunction, err = viewStruct.InvokerNew("set_smart_backspace")
+		viewSetSmartBackspaceFunction, err = viewObject.InvokerNew("set_smart_backspace")
 	})
 	return err
 }
@@ -7943,11 +7830,11 @@ var viewSetSmartHomeEndFunction_Once sync.Once
 func viewSetSmartHomeEndFunction_Set() error {
 	var err error
 	viewSetSmartHomeEndFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetSmartHomeEndFunction, err = viewStruct.InvokerNew("set_smart_home_end")
+		viewSetSmartHomeEndFunction, err = viewObject.InvokerNew("set_smart_home_end")
 	})
 	return err
 }
@@ -7972,11 +7859,11 @@ var viewSetTabWidthFunction_Once sync.Once
 func viewSetTabWidthFunction_Set() error {
 	var err error
 	viewSetTabWidthFunction_Once.Do(func() {
-		err = viewStruct_Set()
+		err = viewObject_Set()
 		if err != nil {
 			return
 		}
-		viewSetTabWidthFunction, err = viewStruct.InvokerNew("set_tab_width")
+		viewSetTabWidthFunction, err = viewObject.InvokerNew("set_tab_width")
 	})
 	return err
 }

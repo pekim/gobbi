@@ -1505,7 +1505,7 @@ type MapClass struct {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MapClass) FieldParentClass() *ViewClass {
-	argValue := gi.FieldGet(mapClassStruct, recv.Native, "parent_class")
+	argValue := gi.StructFieldGet(mapClassStruct, recv.Native, "parent_class")
 	value := &ViewClass{}
 	value.Native = argValue.Pointer()
 	return value
@@ -1515,7 +1515,7 @@ func (recv *MapClass) FieldParentClass() *ViewClass {
 func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native)
-	gi.FieldSet(mapClassStruct, recv.Native, "parent_class", argValue)
+	gi.StructFieldSet(mapClassStruct, recv.Native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
