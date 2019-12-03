@@ -2384,7 +2384,7 @@ func CredentialsNew() *Credentials {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_credentials_get_native' : parameter 'native_type' of type 'CredentialsType' not supported
+// UNSUPPORTED : C value 'g_credentials_get_native' : return type 'gpointer' not supported
 
 var credentialsGetUnixPidFunction *gi.Function
 var credentialsGetUnixPidFunction_Once sync.Once
@@ -2483,7 +2483,7 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_credentials_set_native' : parameter 'native_type' of type 'CredentialsType' not supported
+// UNSUPPORTED : C value 'g_credentials_set_native' : parameter 'native' of type 'gpointer' not supported
 
 var credentialsSetUnixUserFunction *gi.Function
 var credentialsSetUnixUserFunction_Once sync.Once
@@ -3867,7 +3867,37 @@ func (recv *DBusMessage) GetArg0() string {
 
 // UNSUPPORTED : C value 'g_dbus_message_get_body' : return type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_dbus_message_get_byte_order' : return type 'DBusMessageByteOrder' not supported
+var dBusMessageGetByteOrderFunction *gi.Function
+var dBusMessageGetByteOrderFunction_Once sync.Once
+
+func dBusMessageGetByteOrderFunction_Set() error {
+	var err error
+	dBusMessageGetByteOrderFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetByteOrderFunction, err = dBusMessageStruct.InvokerNew("get_byte_order")
+	})
+	return err
+}
+
+// GetByteOrder is a representation of the C type g_dbus_message_get_byte_order.
+func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetByteOrderFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusMessageByteOrder(ret.Int32())
+
+	return retGo
+}
 
 var dBusMessageGetDestinationFunction *gi.Function
 var dBusMessageGetDestinationFunction_Once sync.Once
@@ -3935,7 +3965,7 @@ func (recv *DBusMessage) GetErrorName() string {
 
 // UNSUPPORTED : C value 'g_dbus_message_get_flags' : return type 'DBusMessageFlags' not supported
 
-// UNSUPPORTED : C value 'g_dbus_message_get_header' : parameter 'header_field' of type 'DBusMessageHeaderField' not supported
+// UNSUPPORTED : C value 'g_dbus_message_get_header' : return type 'GLib.Variant' not supported
 
 var dBusMessageGetHeaderFieldsFunction *gi.Function
 var dBusMessageGetHeaderFieldsFunction_Once sync.Once
@@ -4061,7 +4091,37 @@ func (recv *DBusMessage) GetMember() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_get_message_type' : return type 'DBusMessageType' not supported
+var dBusMessageGetMessageTypeFunction *gi.Function
+var dBusMessageGetMessageTypeFunction_Once sync.Once
+
+func dBusMessageGetMessageTypeFunction_Set() error {
+	var err error
+	dBusMessageGetMessageTypeFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetMessageTypeFunction, err = dBusMessageStruct.InvokerNew("get_message_type")
+	})
+	return err
+}
+
+// GetMessageType is a representation of the C type g_dbus_message_get_message_type.
+func (recv *DBusMessage) GetMessageType() DBusMessageType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dBusMessageGetMessageTypeFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetMessageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusMessageType(ret.Int32())
+
+	return retGo
+}
 
 var dBusMessageGetNumUnixFdsFunction *gi.Function
 var dBusMessageGetNumUnixFdsFunction_Once sync.Once
@@ -4423,7 +4483,34 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // UNSUPPORTED : C value 'g_dbus_message_set_body' : parameter 'body' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_dbus_message_set_byte_order' : parameter 'byte_order' of type 'DBusMessageByteOrder' not supported
+var dBusMessageSetByteOrderFunction *gi.Function
+var dBusMessageSetByteOrderFunction_Once sync.Once
+
+func dBusMessageSetByteOrderFunction_Set() error {
+	var err error
+	dBusMessageSetByteOrderFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetByteOrderFunction, err = dBusMessageStruct.InvokerNew("set_byte_order")
+	})
+	return err
+}
+
+// SetByteOrder is a representation of the C type g_dbus_message_set_byte_order.
+func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(byteOrder))
+
+	err := dBusMessageSetByteOrderFunction_Set()
+	if err == nil {
+		dBusMessageSetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dBusMessageSetDestinationFunction *gi.Function
 var dBusMessageSetDestinationFunction_Once sync.Once
@@ -4485,7 +4572,7 @@ func (recv *DBusMessage) SetErrorName(value string) {
 
 // UNSUPPORTED : C value 'g_dbus_message_set_flags' : parameter 'flags' of type 'DBusMessageFlags' not supported
 
-// UNSUPPORTED : C value 'g_dbus_message_set_header' : parameter 'header_field' of type 'DBusMessageHeaderField' not supported
+// UNSUPPORTED : C value 'g_dbus_message_set_header' : parameter 'value' of type 'GLib.Variant' not supported
 
 var dBusMessageSetInterfaceFunction *gi.Function
 var dBusMessageSetInterfaceFunction_Once sync.Once
@@ -4545,7 +4632,34 @@ func (recv *DBusMessage) SetMember(value string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_set_message_type' : parameter 'type' of type 'DBusMessageType' not supported
+var dBusMessageSetMessageTypeFunction *gi.Function
+var dBusMessageSetMessageTypeFunction_Once sync.Once
+
+func dBusMessageSetMessageTypeFunction_Set() error {
+	var err error
+	dBusMessageSetMessageTypeFunction_Once.Do(func() {
+		err = dBusMessageStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetMessageTypeFunction, err = dBusMessageStruct.InvokerNew("set_message_type")
+	})
+	return err
+}
+
+// SetMessageType is a representation of the C type g_dbus_message_set_message_type.
+func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := dBusMessageSetMessageTypeFunction_Set()
+	if err == nil {
+		dBusMessageSetMessageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dBusMessageSetNumUnixFdsFunction *gi.Function
 var dBusMessageSetNumUnixFdsFunction_Once sync.Once
@@ -5171,7 +5285,7 @@ type DBusObjectManagerClient struct {
 
 // UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_sync' : parameter 'flags' of type 'DBusObjectManagerClientFlags' not supported
 
 // UNSUPPORTED : C value 'g_dbus_object_manager_client_new_sync' : parameter 'flags' of type 'DBusObjectManagerClientFlags' not supported
 
@@ -5801,7 +5915,7 @@ type DBusProxy struct {
 
 // UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_sync' : parameter 'flags' of type 'DBusProxyFlags' not supported
 
 // UNSUPPORTED : C value 'g_dbus_proxy_new_sync' : parameter 'flags' of type 'DBusProxyFlags' not supported
 
@@ -6369,9 +6483,69 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_data_input_stream_get_byte_order' : return type 'DataStreamByteOrder' not supported
+var dataInputStreamGetByteOrderFunction *gi.Function
+var dataInputStreamGetByteOrderFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_data_input_stream_get_newline_type' : return type 'DataStreamNewlineType' not supported
+func dataInputStreamGetByteOrderFunction_Set() error {
+	var err error
+	dataInputStreamGetByteOrderFunction_Once.Do(func() {
+		err = dataInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataInputStreamGetByteOrderFunction, err = dataInputStreamStruct.InvokerNew("get_byte_order")
+	})
+	return err
+}
+
+// GetByteOrder is a representation of the C type g_data_input_stream_get_byte_order.
+func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dataInputStreamGetByteOrderFunction_Set()
+	if err == nil {
+		ret = dataInputStreamGetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DataStreamByteOrder(ret.Int32())
+
+	return retGo
+}
+
+var dataInputStreamGetNewlineTypeFunction *gi.Function
+var dataInputStreamGetNewlineTypeFunction_Once sync.Once
+
+func dataInputStreamGetNewlineTypeFunction_Set() error {
+	var err error
+	dataInputStreamGetNewlineTypeFunction_Once.Do(func() {
+		err = dataInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataInputStreamGetNewlineTypeFunction, err = dataInputStreamStruct.InvokerNew("get_newline_type")
+	})
+	return err
+}
+
+// GetNewlineType is a representation of the C type g_data_input_stream_get_newline_type.
+func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dataInputStreamGetNewlineTypeFunction_Set()
+	if err == nil {
+		ret = dataInputStreamGetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DataStreamNewlineType(ret.Int32())
+
+	return retGo
+}
 
 var dataInputStreamReadByteFunction *gi.Function
 var dataInputStreamReadByteFunction_Once sync.Once
@@ -6759,9 +6933,63 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int32, canc
 
 // UNSUPPORTED : C value 'g_data_input_stream_read_upto_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_data_input_stream_set_byte_order' : parameter 'order' of type 'DataStreamByteOrder' not supported
+var dataInputStreamSetByteOrderFunction *gi.Function
+var dataInputStreamSetByteOrderFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_data_input_stream_set_newline_type' : parameter 'type' of type 'DataStreamNewlineType' not supported
+func dataInputStreamSetByteOrderFunction_Set() error {
+	var err error
+	dataInputStreamSetByteOrderFunction_Once.Do(func() {
+		err = dataInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataInputStreamSetByteOrderFunction, err = dataInputStreamStruct.InvokerNew("set_byte_order")
+	})
+	return err
+}
+
+// SetByteOrder is a representation of the C type g_data_input_stream_set_byte_order.
+func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(order))
+
+	err := dataInputStreamSetByteOrderFunction_Set()
+	if err == nil {
+		dataInputStreamSetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dataInputStreamSetNewlineTypeFunction *gi.Function
+var dataInputStreamSetNewlineTypeFunction_Once sync.Once
+
+func dataInputStreamSetNewlineTypeFunction_Set() error {
+	var err error
+	dataInputStreamSetNewlineTypeFunction_Once.Do(func() {
+		err = dataInputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataInputStreamSetNewlineTypeFunction, err = dataInputStreamStruct.InvokerNew("set_newline_type")
+	})
+	return err
+}
+
+// SetNewlineType is a representation of the C type g_data_input_stream_set_newline_type.
+func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := dataInputStreamSetNewlineTypeFunction_Set()
+	if err == nil {
+		dataInputStreamSetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dataOutputStreamStruct *gi.Struct
 var dataOutputStreamStruct_Once sync.Once
@@ -6826,7 +7054,37 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_data_output_stream_get_byte_order' : return type 'DataStreamByteOrder' not supported
+var dataOutputStreamGetByteOrderFunction *gi.Function
+var dataOutputStreamGetByteOrderFunction_Once sync.Once
+
+func dataOutputStreamGetByteOrderFunction_Set() error {
+	var err error
+	dataOutputStreamGetByteOrderFunction_Once.Do(func() {
+		err = dataOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataOutputStreamGetByteOrderFunction, err = dataOutputStreamStruct.InvokerNew("get_byte_order")
+	})
+	return err
+}
+
+// GetByteOrder is a representation of the C type g_data_output_stream_get_byte_order.
+func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dataOutputStreamGetByteOrderFunction_Set()
+	if err == nil {
+		ret = dataOutputStreamGetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DataStreamByteOrder(ret.Int32())
+
+	return retGo
+}
 
 var dataOutputStreamPutByteFunction *gi.Function
 var dataOutputStreamPutByteFunction_Once sync.Once
@@ -7100,7 +7358,34 @@ func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) b
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_data_output_stream_set_byte_order' : parameter 'order' of type 'DataStreamByteOrder' not supported
+var dataOutputStreamSetByteOrderFunction *gi.Function
+var dataOutputStreamSetByteOrderFunction_Once sync.Once
+
+func dataOutputStreamSetByteOrderFunction_Set() error {
+	var err error
+	dataOutputStreamSetByteOrderFunction_Once.Do(func() {
+		err = dataOutputStreamStruct_Set()
+		if err != nil {
+			return
+		}
+		dataOutputStreamSetByteOrderFunction, err = dataOutputStreamStruct.InvokerNew("set_byte_order")
+	})
+	return err
+}
+
+// SetByteOrder is a representation of the C type g_data_output_stream_set_byte_order.
+func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(order))
+
+	err := dataOutputStreamSetByteOrderFunction_Set()
+	if err == nil {
+		dataOutputStreamSetByteOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var desktopAppInfoStruct *gi.Struct
 var desktopAppInfoStruct_Once sync.Once
@@ -7719,7 +8004,37 @@ type Emblem struct {
 
 // UNSUPPORTED : C value 'g_emblem_get_icon' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_emblem_get_origin' : return type 'EmblemOrigin' not supported
+var emblemGetOriginFunction *gi.Function
+var emblemGetOriginFunction_Once sync.Once
+
+func emblemGetOriginFunction_Set() error {
+	var err error
+	emblemGetOriginFunction_Once.Do(func() {
+		err = emblemStruct_Set()
+		if err != nil {
+			return
+		}
+		emblemGetOriginFunction, err = emblemStruct.InvokerNew("get_origin")
+	})
+	return err
+}
+
+// GetOrigin is a representation of the C type g_emblem_get_origin.
+func (recv *Emblem) GetOrigin() EmblemOrigin {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := emblemGetOriginFunction_Set()
+	if err == nil {
+		ret = emblemGetOriginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EmblemOrigin(ret.Int32())
+
+	return retGo
+}
 
 var emblemedIconStruct *gi.Struct
 var emblemedIconStruct_Once sync.Once
@@ -8383,7 +8698,7 @@ func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_info_get_attribute_data' : parameter 'type' of type 'FileAttributeType' not supported
+// UNSUPPORTED : C value 'g_file_info_get_attribute_data' : parameter 'value_pp' of type 'gpointer' not supported
 
 var fileInfoGetAttributeInt32Function *gi.Function
 var fileInfoGetAttributeInt32Function_Once sync.Once
@@ -8453,7 +8768,38 @@ func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 
 // UNSUPPORTED : C value 'g_file_info_get_attribute_object' : return type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_file_info_get_attribute_status' : return type 'FileAttributeStatus' not supported
+var fileInfoGetAttributeStatusFunction *gi.Function
+var fileInfoGetAttributeStatusFunction_Once sync.Once
+
+func fileInfoGetAttributeStatusFunction_Set() error {
+	var err error
+	fileInfoGetAttributeStatusFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeStatusFunction, err = fileInfoStruct.InvokerNew("get_attribute_status")
+	})
+	return err
+}
+
+// GetAttributeStatus is a representation of the C type g_file_info_get_attribute_status.
+func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeStatusFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileAttributeStatus(ret.Int32())
+
+	return retGo
+}
 
 var fileInfoGetAttributeStringFunction *gi.Function
 var fileInfoGetAttributeStringFunction_Once sync.Once
@@ -8517,7 +8863,38 @@ func (recv *FileInfo) GetAttributeStringv(attribute string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_get_attribute_type' : return type 'FileAttributeType' not supported
+var fileInfoGetAttributeTypeFunction *gi.Function
+var fileInfoGetAttributeTypeFunction_Once sync.Once
+
+func fileInfoGetAttributeTypeFunction_Set() error {
+	var err error
+	fileInfoGetAttributeTypeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeTypeFunction, err = fileInfoStruct.InvokerNew("get_attribute_type")
+	})
+	return err
+}
+
+// GetAttributeType is a representation of the C type g_file_info_get_attribute_type.
+func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeTypeFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileAttributeType(ret.Int32())
+
+	return retGo
+}
 
 var fileInfoGetAttributeUint32Function *gi.Function
 var fileInfoGetAttributeUint32Function_Once sync.Once
@@ -8715,7 +9092,37 @@ func (recv *FileInfo) GetEtag() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_info_get_file_type' : return type 'FileType' not supported
+var fileInfoGetFileTypeFunction *gi.Function
+var fileInfoGetFileTypeFunction_Once sync.Once
+
+func fileInfoGetFileTypeFunction_Set() error {
+	var err error
+	fileInfoGetFileTypeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetFileTypeFunction, err = fileInfoStruct.InvokerNew("get_file_type")
+	})
+	return err
+}
+
+// GetFileType is a representation of the C type g_file_info_get_file_type.
+func (recv *FileInfo) GetFileType() FileType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileInfoGetFileTypeFunction_Set()
+	if err == nil {
+		ret = fileInfoGetFileTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_info_get_icon' : return type 'Icon' not supported
 
@@ -9073,7 +9480,7 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_set_attribute' : parameter 'type' of type 'FileAttributeType' not supported
+// UNSUPPORTED : C value 'g_file_info_set_attribute' : parameter 'value_p' of type 'gpointer' not supported
 
 var fileInfoSetAttributeBooleanFunction *gi.Function
 var fileInfoSetAttributeBooleanFunction_Once sync.Once
@@ -9226,7 +9633,39 @@ func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 
 // UNSUPPORTED : C value 'g_file_info_set_attribute_object' : parameter 'attr_value' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_file_info_set_attribute_status' : parameter 'status' of type 'FileAttributeStatus' not supported
+var fileInfoSetAttributeStatusFunction *gi.Function
+var fileInfoSetAttributeStatusFunction_Once sync.Once
+
+func fileInfoSetAttributeStatusFunction_Set() error {
+	var err error
+	fileInfoSetAttributeStatusFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeStatusFunction, err = fileInfoStruct.InvokerNew("set_attribute_status")
+	})
+	return err
+}
+
+// SetAttributeStatus is a representation of the C type g_file_info_set_attribute_status.
+func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatus) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt32(int32(status))
+
+	var ret gi.Argument
+
+	err := fileInfoSetAttributeStatusFunction_Set()
+	if err == nil {
+		ret = fileInfoSetAttributeStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileInfoSetAttributeStringFunction *gi.Function
 var fileInfoSetAttributeStringFunction_Once sync.Once
@@ -9407,7 +9846,34 @@ func (recv *FileInfo) SetEditName(editName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_set_file_type' : parameter 'type' of type 'FileType' not supported
+var fileInfoSetFileTypeFunction *gi.Function
+var fileInfoSetFileTypeFunction_Once sync.Once
+
+func fileInfoSetFileTypeFunction_Set() error {
+	var err error
+	fileInfoSetFileTypeFunction_Once.Do(func() {
+		err = fileInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetFileTypeFunction, err = fileInfoStruct.InvokerNew("set_file_type")
+	})
+	return err
+}
+
+// SetFileType is a representation of the C type g_file_info_set_file_type.
+func (recv *FileInfo) SetFileType(type_ FileType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := fileInfoSetFileTypeFunction_Set()
+	if err == nil {
+		fileInfoSetFileTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_file_info_set_icon' : parameter 'icon' of type 'Icon' not supported
 
@@ -10785,7 +11251,38 @@ type InetAddress struct {
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'g_inet_address_new_any' : parameter 'family' of type 'SocketFamily' not supported
+var inetAddressNewAnyFunction *gi.Function
+var inetAddressNewAnyFunction_Once sync.Once
+
+func inetAddressNewAnyFunction_Set() error {
+	var err error
+	inetAddressNewAnyFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressNewAnyFunction, err = inetAddressStruct.InvokerNew("new_any")
+	})
+	return err
+}
+
+// InetAddressNewAny is a representation of the C type g_inet_address_new_any.
+func InetAddressNewAny(family SocketFamily) *InetAddress {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(family))
+
+	var ret gi.Argument
+
+	err := inetAddressNewAnyFunction_Set()
+	if err == nil {
+		ret = inetAddressNewAnyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &InetAddress{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_inet_address_new_from_bytes' : parameter 'bytes' of type 'nil' not supported
 
@@ -10822,7 +11319,38 @@ func InetAddressNewFromString(string_ string) *InetAddress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_inet_address_new_loopback' : parameter 'family' of type 'SocketFamily' not supported
+var inetAddressNewLoopbackFunction *gi.Function
+var inetAddressNewLoopbackFunction_Once sync.Once
+
+func inetAddressNewLoopbackFunction_Set() error {
+	var err error
+	inetAddressNewLoopbackFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressNewLoopbackFunction, err = inetAddressStruct.InvokerNew("new_loopback")
+	})
+	return err
+}
+
+// InetAddressNewLoopback is a representation of the C type g_inet_address_new_loopback.
+func InetAddressNewLoopback(family SocketFamily) *InetAddress {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(family))
+
+	var ret gi.Argument
+
+	err := inetAddressNewLoopbackFunction_Set()
+	if err == nil {
+		ret = inetAddressNewLoopbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &InetAddress{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var inetAddressEqualFunction *gi.Function
 var inetAddressEqualFunction_Once sync.Once
@@ -10857,7 +11385,37 @@ func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_inet_address_get_family' : return type 'SocketFamily' not supported
+var inetAddressGetFamilyFunction *gi.Function
+var inetAddressGetFamilyFunction_Once sync.Once
+
+func inetAddressGetFamilyFunction_Set() error {
+	var err error
+	inetAddressGetFamilyFunction_Once.Do(func() {
+		err = inetAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressGetFamilyFunction, err = inetAddressStruct.InvokerNew("get_family")
+	})
+	return err
+}
+
+// GetFamily is a representation of the C type g_inet_address_get_family.
+func (recv *InetAddress) GetFamily() SocketFamily {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := inetAddressGetFamilyFunction_Set()
+	if err == nil {
+		ret = inetAddressGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketFamily(ret.Int32())
+
+	return retGo
+}
 
 var inetAddressGetIsAnyFunction *gi.Function
 var inetAddressGetIsAnyFunction_Once sync.Once
@@ -11427,7 +11985,37 @@ func (recv *InetAddressMask) GetAddress() *InetAddress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_inet_address_mask_get_family' : return type 'SocketFamily' not supported
+var inetAddressMaskGetFamilyFunction *gi.Function
+var inetAddressMaskGetFamilyFunction_Once sync.Once
+
+func inetAddressMaskGetFamilyFunction_Set() error {
+	var err error
+	inetAddressMaskGetFamilyFunction_Once.Do(func() {
+		err = inetAddressMaskStruct_Set()
+		if err != nil {
+			return
+		}
+		inetAddressMaskGetFamilyFunction, err = inetAddressMaskStruct.InvokerNew("get_family")
+	})
+	return err
+}
+
+// GetFamily is a representation of the C type g_inet_address_mask_get_family.
+func (recv *InetAddressMask) GetFamily() SocketFamily {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := inetAddressMaskGetFamilyFunction_Set()
+	if err == nil {
+		ret = inetAddressMaskGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketFamily(ret.Int32())
+
+	return retGo
+}
 
 var inetAddressMaskGetLengthFunction *gi.Function
 var inetAddressMaskGetLengthFunction_Once sync.Once
@@ -13938,7 +14526,37 @@ func (recv *MountOperation) GetPassword() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_operation_get_password_save' : return type 'PasswordSave' not supported
+var mountOperationGetPasswordSaveFunction *gi.Function
+var mountOperationGetPasswordSaveFunction_Once sync.Once
+
+func mountOperationGetPasswordSaveFunction_Set() error {
+	var err error
+	mountOperationGetPasswordSaveFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationGetPasswordSaveFunction, err = mountOperationStruct.InvokerNew("get_password_save")
+	})
+	return err
+}
+
+// GetPasswordSave is a representation of the C type g_mount_operation_get_password_save.
+func (recv *MountOperation) GetPasswordSave() PasswordSave {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := mountOperationGetPasswordSaveFunction_Set()
+	if err == nil {
+		ret = mountOperationGetPasswordSaveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PasswordSave(ret.Int32())
+
+	return retGo
+}
 
 var mountOperationGetPimFunction *gi.Function
 var mountOperationGetPimFunction_Once sync.Once
@@ -14004,7 +14622,34 @@ func (recv *MountOperation) GetUsername() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_operation_reply' : parameter 'result' of type 'MountOperationResult' not supported
+var mountOperationReplyFunction *gi.Function
+var mountOperationReplyFunction_Once sync.Once
+
+func mountOperationReplyFunction_Set() error {
+	var err error
+	mountOperationReplyFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationReplyFunction, err = mountOperationStruct.InvokerNew("reply")
+	})
+	return err
+}
+
+// Reply is a representation of the C type g_mount_operation_reply.
+func (recv *MountOperation) Reply(result MountOperationResult) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(result))
+
+	err := mountOperationReplyFunction_Set()
+	if err == nil {
+		mountOperationReplyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var mountOperationSetAnonymousFunction *gi.Function
 var mountOperationSetAnonymousFunction_Once sync.Once
@@ -14180,7 +14825,34 @@ func (recv *MountOperation) SetPassword(password string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_mount_operation_set_password_save' : parameter 'save' of type 'PasswordSave' not supported
+var mountOperationSetPasswordSaveFunction *gi.Function
+var mountOperationSetPasswordSaveFunction_Once sync.Once
+
+func mountOperationSetPasswordSaveFunction_Set() error {
+	var err error
+	mountOperationSetPasswordSaveFunction_Once.Do(func() {
+		err = mountOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		mountOperationSetPasswordSaveFunction, err = mountOperationStruct.InvokerNew("set_password_save")
+	})
+	return err
+}
+
+// SetPasswordSave is a representation of the C type g_mount_operation_set_password_save.
+func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(save))
+
+	err := mountOperationSetPasswordSaveFunction_Set()
+	if err == nil {
+		mountOperationSetPasswordSaveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var mountOperationSetPimFunction *gi.Function
 var mountOperationSetPimFunction_Once sync.Once
@@ -14857,7 +15529,34 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 
 // UNSUPPORTED : C value 'g_notification_set_icon' : parameter 'icon' of type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_notification_set_priority' : parameter 'priority' of type 'NotificationPriority' not supported
+var notificationSetPriorityFunction *gi.Function
+var notificationSetPriorityFunction_Once sync.Once
+
+func notificationSetPriorityFunction_Set() error {
+	var err error
+	notificationSetPriorityFunction_Once.Do(func() {
+		err = notificationStruct_Set()
+		if err != nil {
+			return
+		}
+		notificationSetPriorityFunction, err = notificationStruct.InvokerNew("set_priority")
+	})
+	return err
+}
+
+// SetPriority is a representation of the C type g_notification_set_priority.
+func (recv *Notification) SetPriority(priority NotificationPriority) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(priority))
+
+	err := notificationSetPriorityFunction_Set()
+	if err == nil {
+		notificationSetPriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var notificationSetTitleFunction *gi.Function
 var notificationSetTitleFunction_Once sync.Once
@@ -15883,9 +16582,9 @@ func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancell
 
 // UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_resolver_lookup_records' : parameter 'record_type' of type 'ResolverRecordType' not supported
+// UNSUPPORTED : C value 'g_resolver_lookup_records' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_resolver_lookup_records_async' : parameter 'record_type' of type 'ResolverRecordType' not supported
+// UNSUPPORTED : C value 'g_resolver_lookup_records_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_resolver_lookup_records_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -17867,7 +18566,40 @@ func (recv *Socket) SetFieldPriv(value *SocketPrivate) {
 	gi.FieldSet(socketStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'g_socket_new' : parameter 'family' of type 'SocketFamily' not supported
+var socketNewFunction *gi.Function
+var socketNewFunction_Once sync.Once
+
+func socketNewFunction_Set() error {
+	var err error
+	socketNewFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketNewFunction, err = socketStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SocketNew is a representation of the C type g_socket_new.
+func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) *Socket {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(family))
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetInt32(int32(protocol))
+
+	var ret gi.Argument
+
+	err := socketNewFunction_Set()
+	if err == nil {
+		ret = socketNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Socket{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var socketNewFromFdFunction *gi.Function
 var socketNewFromFdFunction_Once sync.Once
@@ -18238,7 +18970,37 @@ func (recv *Socket) GetCredentials() *Credentials {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_get_family' : return type 'SocketFamily' not supported
+var socketGetFamilyFunction *gi.Function
+var socketGetFamilyFunction_Once sync.Once
+
+func socketGetFamilyFunction_Set() error {
+	var err error
+	socketGetFamilyFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetFamilyFunction, err = socketStruct.InvokerNew("get_family")
+	})
+	return err
+}
+
+// GetFamily is a representation of the C type g_socket_get_family.
+func (recv *Socket) GetFamily() SocketFamily {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketGetFamilyFunction_Set()
+	if err == nil {
+		ret = socketGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketFamily(ret.Int32())
+
+	return retGo
+}
 
 var socketGetFdFunction *gi.Function
 var socketGetFdFunction_Once sync.Once
@@ -18469,7 +19231,37 @@ func (recv *Socket) GetOption(level int32, optname int32) (bool, int32) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_socket_get_protocol' : return type 'SocketProtocol' not supported
+var socketGetProtocolFunction *gi.Function
+var socketGetProtocolFunction_Once sync.Once
+
+func socketGetProtocolFunction_Set() error {
+	var err error
+	socketGetProtocolFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetProtocolFunction, err = socketStruct.InvokerNew("get_protocol")
+	})
+	return err
+}
+
+// GetProtocol is a representation of the C type g_socket_get_protocol.
+func (recv *Socket) GetProtocol() SocketProtocol {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketGetProtocolFunction_Set()
+	if err == nil {
+		ret = socketGetProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketProtocol(ret.Int32())
+
+	return retGo
+}
 
 var socketGetRemoteAddressFunction *gi.Function
 var socketGetRemoteAddressFunction_Once sync.Once
@@ -18504,7 +19296,37 @@ func (recv *Socket) GetRemoteAddress() *SocketAddress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_get_socket_type' : return type 'SocketType' not supported
+var socketGetSocketTypeFunction *gi.Function
+var socketGetSocketTypeFunction_Once sync.Once
+
+func socketGetSocketTypeFunction_Set() error {
+	var err error
+	socketGetSocketTypeFunction_Once.Do(func() {
+		err = socketStruct_Set()
+		if err != nil {
+			return
+		}
+		socketGetSocketTypeFunction, err = socketStruct.InvokerNew("get_socket_type")
+	})
+	return err
+}
+
+// GetSocketType is a representation of the C type g_socket_get_socket_type.
+func (recv *Socket) GetSocketType() SocketType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketGetSocketTypeFunction_Set()
+	if err == nil {
+		ret = socketGetSocketTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketType(ret.Int32())
+
+	return retGo
+}
 
 var socketGetTimeoutFunction *gi.Function
 var socketGetTimeoutFunction_Once sync.Once
@@ -19182,7 +20004,37 @@ type SocketAddress struct {
 
 // UNSUPPORTED : C value 'g_socket_address_new_from_native' : parameter 'native' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_socket_address_get_family' : return type 'SocketFamily' not supported
+var socketAddressGetFamilyFunction *gi.Function
+var socketAddressGetFamilyFunction_Once sync.Once
+
+func socketAddressGetFamilyFunction_Set() error {
+	var err error
+	socketAddressGetFamilyFunction_Once.Do(func() {
+		err = socketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		socketAddressGetFamilyFunction, err = socketAddressStruct.InvokerNew("get_family")
+	})
+	return err
+}
+
+// GetFamily is a representation of the C type g_socket_address_get_family.
+func (recv *SocketAddress) GetFamily() SocketFamily {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketAddressGetFamilyFunction_Set()
+	if err == nil {
+		ret = socketAddressGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketFamily(ret.Int32())
+
+	return retGo
+}
 
 var socketAddressGetNativeSizeFunction *gi.Function
 var socketAddressGetNativeSizeFunction_Once sync.Once
@@ -19539,7 +20391,37 @@ func (recv *SocketClient) GetEnableProxy() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_client_get_family' : return type 'SocketFamily' not supported
+var socketClientGetFamilyFunction *gi.Function
+var socketClientGetFamilyFunction_Once sync.Once
+
+func socketClientGetFamilyFunction_Set() error {
+	var err error
+	socketClientGetFamilyFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetFamilyFunction, err = socketClientStruct.InvokerNew("get_family")
+	})
+	return err
+}
+
+// GetFamily is a representation of the C type g_socket_client_get_family.
+func (recv *SocketClient) GetFamily() SocketFamily {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketClientGetFamilyFunction_Set()
+	if err == nil {
+		ret = socketClientGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketFamily(ret.Int32())
+
+	return retGo
+}
 
 var socketClientGetLocalAddressFunction *gi.Function
 var socketClientGetLocalAddressFunction_Once sync.Once
@@ -19574,11 +20456,71 @@ func (recv *SocketClient) GetLocalAddress() *SocketAddress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_client_get_protocol' : return type 'SocketProtocol' not supported
+var socketClientGetProtocolFunction *gi.Function
+var socketClientGetProtocolFunction_Once sync.Once
+
+func socketClientGetProtocolFunction_Set() error {
+	var err error
+	socketClientGetProtocolFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetProtocolFunction, err = socketClientStruct.InvokerNew("get_protocol")
+	})
+	return err
+}
+
+// GetProtocol is a representation of the C type g_socket_client_get_protocol.
+func (recv *SocketClient) GetProtocol() SocketProtocol {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketClientGetProtocolFunction_Set()
+	if err == nil {
+		ret = socketClientGetProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketProtocol(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_socket_client_get_proxy_resolver' : return type 'ProxyResolver' not supported
 
-// UNSUPPORTED : C value 'g_socket_client_get_socket_type' : return type 'SocketType' not supported
+var socketClientGetSocketTypeFunction *gi.Function
+var socketClientGetSocketTypeFunction_Once sync.Once
+
+func socketClientGetSocketTypeFunction_Set() error {
+	var err error
+	socketClientGetSocketTypeFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetSocketTypeFunction, err = socketClientStruct.InvokerNew("get_socket_type")
+	})
+	return err
+}
+
+// GetSocketType is a representation of the C type g_socket_client_get_socket_type.
+func (recv *SocketClient) GetSocketType() SocketType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := socketClientGetSocketTypeFunction_Set()
+	if err == nil {
+		ret = socketClientGetSocketTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketType(ret.Int32())
+
+	return retGo
+}
 
 var socketClientGetTimeoutFunction *gi.Function
 var socketClientGetTimeoutFunction_Once sync.Once
@@ -19675,7 +20617,34 @@ func (recv *SocketClient) SetEnableProxy(enable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_socket_client_set_family' : parameter 'family' of type 'SocketFamily' not supported
+var socketClientSetFamilyFunction *gi.Function
+var socketClientSetFamilyFunction_Once sync.Once
+
+func socketClientSetFamilyFunction_Set() error {
+	var err error
+	socketClientSetFamilyFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetFamilyFunction, err = socketClientStruct.InvokerNew("set_family")
+	})
+	return err
+}
+
+// SetFamily is a representation of the C type g_socket_client_set_family.
+func (recv *SocketClient) SetFamily(family SocketFamily) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(family))
+
+	err := socketClientSetFamilyFunction_Set()
+	if err == nil {
+		socketClientSetFamilyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var socketClientSetLocalAddressFunction *gi.Function
 var socketClientSetLocalAddressFunction_Once sync.Once
@@ -19706,11 +20675,65 @@ func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_socket_client_set_protocol' : parameter 'protocol' of type 'SocketProtocol' not supported
+var socketClientSetProtocolFunction *gi.Function
+var socketClientSetProtocolFunction_Once sync.Once
+
+func socketClientSetProtocolFunction_Set() error {
+	var err error
+	socketClientSetProtocolFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetProtocolFunction, err = socketClientStruct.InvokerNew("set_protocol")
+	})
+	return err
+}
+
+// SetProtocol is a representation of the C type g_socket_client_set_protocol.
+func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(protocol))
+
+	err := socketClientSetProtocolFunction_Set()
+	if err == nil {
+		socketClientSetProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_socket_client_set_proxy_resolver' : parameter 'proxy_resolver' of type 'ProxyResolver' not supported
 
-// UNSUPPORTED : C value 'g_socket_client_set_socket_type' : parameter 'type' of type 'SocketType' not supported
+var socketClientSetSocketTypeFunction *gi.Function
+var socketClientSetSocketTypeFunction_Once sync.Once
+
+func socketClientSetSocketTypeFunction_Set() error {
+	var err error
+	socketClientSetSocketTypeFunction_Once.Do(func() {
+		err = socketClientStruct_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetSocketTypeFunction, err = socketClientStruct.InvokerNew("set_socket_type")
+	})
+	return err
+}
+
+// SetSocketType is a representation of the C type g_socket_client_set_socket_type.
+func (recv *SocketClient) SetSocketType(type_ SocketType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := socketClientSetSocketTypeFunction_Set()
+	if err == nil {
+		socketClientSetSocketTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var socketClientSetTimeoutFunction *gi.Function
 var socketClientSetTimeoutFunction_Once sync.Once
@@ -20227,7 +21250,7 @@ func SocketListenerNew() *SocketListener {
 
 // UNSUPPORTED : C value 'g_socket_listener_accept_socket_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_socket_listener_add_address' : parameter 'type' of type 'SocketType' not supported
+// UNSUPPORTED : C value 'g_socket_listener_add_address' : parameter 'source_object' of type 'GObject.Object' not supported
 
 // UNSUPPORTED : C value 'g_socket_listener_add_any_inet_port' : parameter 'source_object' of type 'GObject.Object' not supported
 
@@ -22932,7 +23955,37 @@ func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 
 // UNSUPPORTED : C value 'g_tls_connection_get_peer_certificate_errors' : return type 'TlsCertificateFlags' not supported
 
-// UNSUPPORTED : C value 'g_tls_connection_get_rehandshake_mode' : return type 'TlsRehandshakeMode' not supported
+var tlsConnectionGetRehandshakeModeFunction *gi.Function
+var tlsConnectionGetRehandshakeModeFunction_Once sync.Once
+
+func tlsConnectionGetRehandshakeModeFunction_Set() error {
+	var err error
+	tlsConnectionGetRehandshakeModeFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionGetRehandshakeModeFunction, err = tlsConnectionStruct.InvokerNew("get_rehandshake_mode")
+	})
+	return err
+}
+
+// GetRehandshakeMode is a representation of the C type g_tls_connection_get_rehandshake_mode.
+func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := tlsConnectionGetRehandshakeModeFunction_Set()
+	if err == nil {
+		ret = tlsConnectionGetRehandshakeModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsRehandshakeMode(ret.Int32())
+
+	return retGo
+}
 
 var tlsConnectionGetRequireCloseNotifyFunction *gi.Function
 var tlsConnectionGetRequireCloseNotifyFunction_Once sync.Once
@@ -23124,7 +24177,34 @@ func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_tls_connection_set_rehandshake_mode' : parameter 'mode' of type 'TlsRehandshakeMode' not supported
+var tlsConnectionSetRehandshakeModeFunction *gi.Function
+var tlsConnectionSetRehandshakeModeFunction_Once sync.Once
+
+func tlsConnectionSetRehandshakeModeFunction_Set() error {
+	var err error
+	tlsConnectionSetRehandshakeModeFunction_Once.Do(func() {
+		err = tlsConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionSetRehandshakeModeFunction, err = tlsConnectionStruct.InvokerNew("set_rehandshake_mode")
+	})
+	return err
+}
+
+// SetRehandshakeMode is a representation of the C type g_tls_connection_set_rehandshake_mode.
+func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := tlsConnectionSetRehandshakeModeFunction_Set()
+	if err == nil {
+		tlsConnectionSetRehandshakeModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tlsConnectionSetRequireCloseNotifyFunction *gi.Function
 var tlsConnectionSetRequireCloseNotifyFunction_Once sync.Once
@@ -23267,15 +24347,85 @@ func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) st
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle' : parameter 'flags' of type 'TlsDatabaseLookupFlags' not supported
+var tlsDatabaseLookupCertificateForHandleFunction *gi.Function
+var tlsDatabaseLookupCertificateForHandleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle_async' : parameter 'flags' of type 'TlsDatabaseLookupFlags' not supported
+func tlsDatabaseLookupCertificateForHandleFunction_Set() error {
+	var err error
+	tlsDatabaseLookupCertificateForHandleFunction_Once.Do(func() {
+		err = tlsDatabaseStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsDatabaseLookupCertificateForHandleFunction, err = tlsDatabaseStruct.InvokerNew("lookup_certificate_for_handle")
+	})
+	return err
+}
+
+// LookupCertificateForHandle is a representation of the C type g_tls_database_lookup_certificate_for_handle.
+func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) *TlsCertificate {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(handle)
+	inArgs[2].SetPointer(interaction.Native)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := tlsDatabaseLookupCertificateForHandleFunction_Set()
+	if err == nil {
+		ret = tlsDatabaseLookupCertificateForHandleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &TlsCertificate{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_tls_database_lookup_certificate_for_handle_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer' : parameter 'flags' of type 'TlsDatabaseLookupFlags' not supported
+var tlsDatabaseLookupCertificateIssuerFunction *gi.Function
+var tlsDatabaseLookupCertificateIssuerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer_async' : parameter 'flags' of type 'TlsDatabaseLookupFlags' not supported
+func tlsDatabaseLookupCertificateIssuerFunction_Set() error {
+	var err error
+	tlsDatabaseLookupCertificateIssuerFunction_Once.Do(func() {
+		err = tlsDatabaseStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsDatabaseLookupCertificateIssuerFunction, err = tlsDatabaseStruct.InvokerNew("lookup_certificate_issuer")
+	})
+	return err
+}
+
+// LookupCertificateIssuer is a representation of the C type g_tls_database_lookup_certificate_issuer.
+func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) *TlsCertificate {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(certificate.Native)
+	inArgs[2].SetPointer(interaction.Native)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := tlsDatabaseLookupCertificateIssuerFunction_Set()
+	if err == nil {
+		ret = tlsDatabaseLookupCertificateIssuerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &TlsCertificate{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_tls_database_lookup_certificate_issuer_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -23322,19 +24472,149 @@ type TlsInteraction struct {
 	gobject.Object
 }
 
-// UNSUPPORTED : C value 'g_tls_interaction_ask_password' : return type 'TlsInteractionResult' not supported
+var tlsInteractionAskPasswordFunction *gi.Function
+var tlsInteractionAskPasswordFunction_Once sync.Once
+
+func tlsInteractionAskPasswordFunction_Set() error {
+	var err error
+	tlsInteractionAskPasswordFunction_Once.Do(func() {
+		err = tlsInteractionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsInteractionAskPasswordFunction, err = tlsInteractionStruct.InvokerNew("ask_password")
+	})
+	return err
+}
+
+// AskPassword is a representation of the C type g_tls_interaction_ask_password.
+func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) TlsInteractionResult {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(password.Native)
+	inArgs[2].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := tlsInteractionAskPasswordFunction_Set()
+	if err == nil {
+		ret = tlsInteractionAskPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsInteractionResult(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_tls_interaction_ask_password_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_tls_interaction_ask_password_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_tls_interaction_invoke_ask_password' : return type 'TlsInteractionResult' not supported
+var tlsInteractionInvokeAskPasswordFunction *gi.Function
+var tlsInteractionInvokeAskPasswordFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_interaction_invoke_request_certificate' : parameter 'flags' of type 'TlsCertificateRequestFlags' not supported
+func tlsInteractionInvokeAskPasswordFunction_Set() error {
+	var err error
+	tlsInteractionInvokeAskPasswordFunction_Once.Do(func() {
+		err = tlsInteractionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsInteractionInvokeAskPasswordFunction, err = tlsInteractionStruct.InvokerNew("invoke_ask_password")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_tls_interaction_request_certificate' : parameter 'flags' of type 'TlsCertificateRequestFlags' not supported
+// InvokeAskPassword is a representation of the C type g_tls_interaction_invoke_ask_password.
+func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) TlsInteractionResult {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(password.Native)
+	inArgs[2].SetPointer(cancellable.Native)
 
-// UNSUPPORTED : C value 'g_tls_interaction_request_certificate_async' : parameter 'flags' of type 'TlsCertificateRequestFlags' not supported
+	var ret gi.Argument
+
+	err := tlsInteractionInvokeAskPasswordFunction_Set()
+	if err == nil {
+		ret = tlsInteractionInvokeAskPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsInteractionResult(ret.Int32())
+
+	return retGo
+}
+
+var tlsInteractionInvokeRequestCertificateFunction *gi.Function
+var tlsInteractionInvokeRequestCertificateFunction_Once sync.Once
+
+func tlsInteractionInvokeRequestCertificateFunction_Set() error {
+	var err error
+	tlsInteractionInvokeRequestCertificateFunction_Once.Do(func() {
+		err = tlsInteractionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsInteractionInvokeRequestCertificateFunction, err = tlsInteractionStruct.InvokerNew("invoke_request_certificate")
+	})
+	return err
+}
+
+// InvokeRequestCertificate is a representation of the C type g_tls_interaction_invoke_request_certificate.
+func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) TlsInteractionResult {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(connection.Native)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := tlsInteractionInvokeRequestCertificateFunction_Set()
+	if err == nil {
+		ret = tlsInteractionInvokeRequestCertificateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsInteractionResult(ret.Int32())
+
+	return retGo
+}
+
+var tlsInteractionRequestCertificateFunction *gi.Function
+var tlsInteractionRequestCertificateFunction_Once sync.Once
+
+func tlsInteractionRequestCertificateFunction_Set() error {
+	var err error
+	tlsInteractionRequestCertificateFunction_Once.Do(func() {
+		err = tlsInteractionStruct_Set()
+		if err != nil {
+			return
+		}
+		tlsInteractionRequestCertificateFunction, err = tlsInteractionStruct.InvokerNew("request_certificate")
+	})
+	return err
+}
+
+// RequestCertificate is a representation of the C type g_tls_interaction_request_certificate.
+func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) TlsInteractionResult {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(connection.Native)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := tlsInteractionRequestCertificateFunction_Set()
+	if err == nil {
+		ret = tlsInteractionRequestCertificateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsInteractionResult(ret.Int32())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_tls_interaction_request_certificate_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_tls_interaction_request_certificate_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -24790,7 +26070,37 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 
 // UNSUPPORTED : C value 'g_unix_socket_address_new_with_type' : parameter 'path' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_unix_socket_address_get_address_type' : return type 'UnixSocketAddressType' not supported
+var unixSocketAddressGetAddressTypeFunction *gi.Function
+var unixSocketAddressGetAddressTypeFunction_Once sync.Once
+
+func unixSocketAddressGetAddressTypeFunction_Set() error {
+	var err error
+	unixSocketAddressGetAddressTypeFunction_Once.Do(func() {
+		err = unixSocketAddressStruct_Set()
+		if err != nil {
+			return
+		}
+		unixSocketAddressGetAddressTypeFunction, err = unixSocketAddressStruct.InvokerNew("get_address_type")
+	})
+	return err
+}
+
+// GetAddressType is a representation of the C type g_unix_socket_address_get_address_type.
+func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := unixSocketAddressGetAddressTypeFunction_Set()
+	if err == nil {
+		ret = unixSocketAddressGetAddressTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UnixSocketAddressType(ret.Int32())
+
+	return retGo
+}
 
 var unixSocketAddressGetIsAbstractFunction *gi.Function
 var unixSocketAddressGetIsAbstractFunction_Once sync.Once
@@ -25084,7 +26394,39 @@ type ZlibCompressor struct {
 	gobject.Object
 }
 
-// UNSUPPORTED : C value 'g_zlib_compressor_new' : parameter 'format' of type 'ZlibCompressorFormat' not supported
+var zlibCompressorNewFunction *gi.Function
+var zlibCompressorNewFunction_Once sync.Once
+
+func zlibCompressorNewFunction_Set() error {
+	var err error
+	zlibCompressorNewFunction_Once.Do(func() {
+		err = zlibCompressorStruct_Set()
+		if err != nil {
+			return
+		}
+		zlibCompressorNewFunction, err = zlibCompressorStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ZlibCompressorNew is a representation of the C type g_zlib_compressor_new.
+func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(format))
+	inArgs[1].SetInt32(level)
+
+	var ret gi.Argument
+
+	err := zlibCompressorNewFunction_Set()
+	if err == nil {
+		ret = zlibCompressorNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ZlibCompressor{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var zlibCompressorGetFileInfoFunction *gi.Function
 var zlibCompressorGetFileInfoFunction_Once sync.Once
@@ -25163,7 +26505,38 @@ type ZlibDecompressor struct {
 	gobject.Object
 }
 
-// UNSUPPORTED : C value 'g_zlib_decompressor_new' : parameter 'format' of type 'ZlibCompressorFormat' not supported
+var zlibDecompressorNewFunction *gi.Function
+var zlibDecompressorNewFunction_Once sync.Once
+
+func zlibDecompressorNewFunction_Set() error {
+	var err error
+	zlibDecompressorNewFunction_Once.Do(func() {
+		err = zlibDecompressorStruct_Set()
+		if err != nil {
+			return
+		}
+		zlibDecompressorNewFunction, err = zlibDecompressorStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ZlibDecompressorNew is a representation of the C type g_zlib_decompressor_new.
+func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(format))
+
+	var ret gi.Argument
+
+	err := zlibDecompressorNewFunction_Set()
+	if err == nil {
+		ret = zlibDecompressorNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ZlibDecompressor{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var zlibDecompressorGetFileInfoFunction *gi.Function
 var zlibDecompressorGetFileInfoFunction_Once sync.Once

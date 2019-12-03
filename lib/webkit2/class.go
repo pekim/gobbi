@@ -247,7 +247,37 @@ func (recv *AuthenticationRequest) GetRealm() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_authentication_request_get_scheme' : return type 'AuthenticationScheme' not supported
+var authenticationRequestGetSchemeFunction *gi.Function
+var authenticationRequestGetSchemeFunction_Once sync.Once
+
+func authenticationRequestGetSchemeFunction_Set() error {
+	var err error
+	authenticationRequestGetSchemeFunction_Once.Do(func() {
+		err = authenticationRequestStruct_Set()
+		if err != nil {
+			return
+		}
+		authenticationRequestGetSchemeFunction, err = authenticationRequestStruct.InvokerNew("get_scheme")
+	})
+	return err
+}
+
+// GetScheme is a representation of the C type webkit_authentication_request_get_scheme.
+func (recv *AuthenticationRequest) GetScheme() AuthenticationScheme {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := authenticationRequestGetSchemeFunction_Set()
+	if err == nil {
+		ret = authenticationRequestGetSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AuthenticationScheme(ret.Int32())
+
+	return retGo
+}
 
 var authenticationRequestIsForProxyFunction *gi.Function
 var authenticationRequestIsForProxyFunction_Once sync.Once
@@ -1357,9 +1387,72 @@ func (recv *ContextMenuItem) SetFieldPriv(value *ContextMenuItemPrivate) {
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_new_from_gaction' : parameter 'action' of type 'Gio.Action' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new_from_stock_action' : parameter 'action' of type 'ContextMenuAction' not supported
+var contextMenuItemNewFromStockActionFunction *gi.Function
+var contextMenuItemNewFromStockActionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new_from_stock_action_with_label' : parameter 'action' of type 'ContextMenuAction' not supported
+func contextMenuItemNewFromStockActionFunction_Set() error {
+	var err error
+	contextMenuItemNewFromStockActionFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewFromStockActionFunction, err = contextMenuItemStruct.InvokerNew("new_from_stock_action")
+	})
+	return err
+}
+
+// ContextMenuItemNewFromStockAction is a representation of the C type webkit_context_menu_item_new_from_stock_action.
+func ContextMenuItemNewFromStockAction(action ContextMenuAction) *ContextMenuItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(action))
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewFromStockActionFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewFromStockActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var contextMenuItemNewFromStockActionWithLabelFunction *gi.Function
+var contextMenuItemNewFromStockActionWithLabelFunction_Once sync.Once
+
+func contextMenuItemNewFromStockActionWithLabelFunction_Set() error {
+	var err error
+	contextMenuItemNewFromStockActionWithLabelFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewFromStockActionWithLabelFunction, err = contextMenuItemStruct.InvokerNew("new_from_stock_action_with_label")
+	})
+	return err
+}
+
+// ContextMenuItemNewFromStockActionWithLabel is a representation of the C type webkit_context_menu_item_new_from_stock_action_with_label.
+func ContextMenuItemNewFromStockActionWithLabel(action ContextMenuAction, label string) *ContextMenuItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(action))
+	inArgs[1].SetString(label)
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewFromStockActionWithLabelFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewFromStockActionWithLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ContextMenuItem{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var contextMenuItemNewSeparatorFunction *gi.Function
 var contextMenuItemNewSeparatorFunction_Once sync.Once
@@ -1430,7 +1523,37 @@ func ContextMenuItemNewWithSubmenu(label string, submenu *ContextMenu) *ContextM
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_get_gaction' : return type 'Gio.Action' not supported
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_get_stock_action' : return type 'ContextMenuAction' not supported
+var contextMenuItemGetStockActionFunction *gi.Function
+var contextMenuItemGetStockActionFunction_Once sync.Once
+
+func contextMenuItemGetStockActionFunction_Set() error {
+	var err error
+	contextMenuItemGetStockActionFunction_Once.Do(func() {
+		err = contextMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemGetStockActionFunction, err = contextMenuItemStruct.InvokerNew("get_stock_action")
+	})
+	return err
+}
+
+// GetStockAction is a representation of the C type webkit_context_menu_item_get_stock_action.
+func (recv *ContextMenuItem) GetStockAction() ContextMenuAction {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := contextMenuItemGetStockActionFunction_Set()
+	if err == nil {
+		ret = contextMenuItemGetStockActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ContextMenuAction(ret.Int32())
+
+	return retGo
+}
 
 var contextMenuItemGetSubmenuFunction *gi.Function
 var contextMenuItemGetSubmenuFunction_Once sync.Once
@@ -1637,9 +1760,64 @@ func (recv *CookieManager) DeleteCookiesForDomain(domain string) {
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_set_accept_policy' : parameter 'policy' of type 'CookieAcceptPolicy' not supported
+var cookieManagerSetAcceptPolicyFunction *gi.Function
+var cookieManagerSetAcceptPolicyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_set_persistent_storage' : parameter 'storage' of type 'CookiePersistentStorage' not supported
+func cookieManagerSetAcceptPolicyFunction_Set() error {
+	var err error
+	cookieManagerSetAcceptPolicyFunction_Once.Do(func() {
+		err = cookieManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerSetAcceptPolicyFunction, err = cookieManagerStruct.InvokerNew("set_accept_policy")
+	})
+	return err
+}
+
+// SetAcceptPolicy is a representation of the C type webkit_cookie_manager_set_accept_policy.
+func (recv *CookieManager) SetAcceptPolicy(policy CookieAcceptPolicy) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(policy))
+
+	err := cookieManagerSetAcceptPolicyFunction_Set()
+	if err == nil {
+		cookieManagerSetAcceptPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cookieManagerSetPersistentStorageFunction *gi.Function
+var cookieManagerSetPersistentStorageFunction_Once sync.Once
+
+func cookieManagerSetPersistentStorageFunction_Set() error {
+	var err error
+	cookieManagerSetPersistentStorageFunction_Once.Do(func() {
+		err = cookieManagerStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerSetPersistentStorageFunction, err = cookieManagerStruct.InvokerNew("set_persistent_storage")
+	})
+	return err
+}
+
+// SetPersistentStorage is a representation of the C type webkit_cookie_manager_set_persistent_storage.
+func (recv *CookieManager) SetPersistentStorage(filename string, storage CookiePersistentStorage) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(filename)
+	inArgs[2].SetInt32(int32(storage))
+
+	err := cookieManagerSetPersistentStorageFunction_Set()
+	if err == nil {
+		cookieManagerSetPersistentStorageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // CookieManagerStruct creates an uninitialised CookieManager.
 func CookieManagerStruct() *CookieManager {
@@ -3811,7 +3989,37 @@ func (recv *NavigationPolicyDecision) GetNavigationAction() *NavigationAction {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_navigation_policy_decision_get_navigation_type' : return type 'NavigationType' not supported
+var navigationPolicyDecisionGetNavigationTypeFunction *gi.Function
+var navigationPolicyDecisionGetNavigationTypeFunction_Once sync.Once
+
+func navigationPolicyDecisionGetNavigationTypeFunction_Set() error {
+	var err error
+	navigationPolicyDecisionGetNavigationTypeFunction_Once.Do(func() {
+		err = navigationPolicyDecisionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationPolicyDecisionGetNavigationTypeFunction, err = navigationPolicyDecisionStruct.InvokerNew("get_navigation_type")
+	})
+	return err
+}
+
+// GetNavigationType is a representation of the C type webkit_navigation_policy_decision_get_navigation_type.
+func (recv *NavigationPolicyDecision) GetNavigationType() NavigationType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := navigationPolicyDecisionGetNavigationTypeFunction_Set()
+	if err == nil {
+		ret = navigationPolicyDecisionGetNavigationTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NavigationType(ret.Int32())
+
+	return retGo
+}
 
 var navigationPolicyDecisionGetRequestFunction *gi.Function
 var navigationPolicyDecisionGetRequestFunction_Once sync.Once
@@ -6784,7 +6992,37 @@ func (recv *Settings) GetFantasyFontFamily() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_settings_get_hardware_acceleration_policy' : return type 'HardwareAccelerationPolicy' not supported
+var settingsGetHardwareAccelerationPolicyFunction *gi.Function
+var settingsGetHardwareAccelerationPolicyFunction_Once sync.Once
+
+func settingsGetHardwareAccelerationPolicyFunction_Set() error {
+	var err error
+	settingsGetHardwareAccelerationPolicyFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsGetHardwareAccelerationPolicyFunction, err = settingsStruct.InvokerNew("get_hardware_acceleration_policy")
+	})
+	return err
+}
+
+// GetHardwareAccelerationPolicy is a representation of the C type webkit_settings_get_hardware_acceleration_policy.
+func (recv *Settings) GetHardwareAccelerationPolicy() HardwareAccelerationPolicy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := settingsGetHardwareAccelerationPolicyFunction_Set()
+	if err == nil {
+		ret = settingsGetHardwareAccelerationPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := HardwareAccelerationPolicy(ret.Int32())
+
+	return retGo
+}
 
 var settingsGetJavascriptCanAccessClipboardFunction *gi.Function
 var settingsGetJavascriptCanAccessClipboardFunction_Once sync.Once
@@ -8449,7 +8687,34 @@ func (recv *Settings) SetFantasyFontFamily(fantasyFontFamily string) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_settings_set_hardware_acceleration_policy' : parameter 'policy' of type 'HardwareAccelerationPolicy' not supported
+var settingsSetHardwareAccelerationPolicyFunction *gi.Function
+var settingsSetHardwareAccelerationPolicyFunction_Once sync.Once
+
+func settingsSetHardwareAccelerationPolicyFunction_Set() error {
+	var err error
+	settingsSetHardwareAccelerationPolicyFunction_Once.Do(func() {
+		err = settingsStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSetHardwareAccelerationPolicyFunction, err = settingsStruct.InvokerNew("set_hardware_acceleration_policy")
+	})
+	return err
+}
+
+// SetHardwareAccelerationPolicy is a representation of the C type webkit_settings_set_hardware_acceleration_policy.
+func (recv *Settings) SetHardwareAccelerationPolicy(policy HardwareAccelerationPolicy) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(policy))
+
+	err := settingsSetHardwareAccelerationPolicyFunction_Set()
+	if err == nil {
+		settingsSetHardwareAccelerationPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var settingsSetJavascriptCanAccessClipboardFunction *gi.Function
 var settingsSetJavascriptCanAccessClipboardFunction_Once sync.Once
@@ -10137,7 +10402,37 @@ func (recv *WebContext) DownloadUri(uri string) *Download {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_cache_model' : return type 'CacheModel' not supported
+var webContextGetCacheModelFunction *gi.Function
+var webContextGetCacheModelFunction_Once sync.Once
+
+func webContextGetCacheModelFunction_Set() error {
+	var err error
+	webContextGetCacheModelFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetCacheModelFunction, err = webContextStruct.InvokerNew("get_cache_model")
+	})
+	return err
+}
+
+// GetCacheModel is a representation of the C type webkit_web_context_get_cache_model.
+func (recv *WebContext) GetCacheModel() CacheModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := webContextGetCacheModelFunction_Set()
+	if err == nil {
+		ret = webContextGetCacheModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CacheModel(ret.Int32())
+
+	return retGo
+}
 
 var webContextGetCookieManagerFunction *gi.Function
 var webContextGetCookieManagerFunction_Once sync.Once
@@ -10274,7 +10569,37 @@ func (recv *WebContext) GetGeolocationManager() *GeolocationManager {
 
 // UNSUPPORTED : C value 'webkit_web_context_get_plugins_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_context_get_process_model' : return type 'ProcessModel' not supported
+var webContextGetProcessModelFunction *gi.Function
+var webContextGetProcessModelFunction_Once sync.Once
+
+func webContextGetProcessModelFunction_Set() error {
+	var err error
+	webContextGetProcessModelFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetProcessModelFunction, err = webContextStruct.InvokerNew("get_process_model")
+	})
+	return err
+}
+
+// GetProcessModel is a representation of the C type webkit_web_context_get_process_model.
+func (recv *WebContext) GetProcessModel() ProcessModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := webContextGetProcessModelFunction_Set()
+	if err == nil {
+		ret = webContextGetProcessModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ProcessModel(ret.Int32())
+
+	return retGo
+}
 
 var webContextGetSandboxEnabledFunction *gi.Function
 var webContextGetSandboxEnabledFunction_Once sync.Once
@@ -10401,7 +10726,37 @@ func (recv *WebContext) GetSpellCheckingLanguages() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_tls_errors_policy' : return type 'TLSErrorsPolicy' not supported
+var webContextGetTlsErrorsPolicyFunction *gi.Function
+var webContextGetTlsErrorsPolicyFunction_Once sync.Once
+
+func webContextGetTlsErrorsPolicyFunction_Set() error {
+	var err error
+	webContextGetTlsErrorsPolicyFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextGetTlsErrorsPolicyFunction, err = webContextStruct.InvokerNew("get_tls_errors_policy")
+	})
+	return err
+}
+
+// GetTlsErrorsPolicy is a representation of the C type webkit_web_context_get_tls_errors_policy.
+func (recv *WebContext) GetTlsErrorsPolicy() TLSErrorsPolicy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := webContextGetTlsErrorsPolicyFunction_Set()
+	if err == nil {
+		ret = webContextGetTlsErrorsPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TLSErrorsPolicy(ret.Int32())
+
+	return retGo
+}
 
 var webContextGetWebProcessCountLimitFunction *gi.Function
 var webContextGetWebProcessCountLimitFunction_Once sync.Once
@@ -10623,7 +10978,34 @@ func (recv *WebContext) SetAutomationAllowed(allowed bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_cache_model' : parameter 'cache_model' of type 'CacheModel' not supported
+var webContextSetCacheModelFunction *gi.Function
+var webContextSetCacheModelFunction_Once sync.Once
+
+func webContextSetCacheModelFunction_Set() error {
+	var err error
+	webContextSetCacheModelFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextSetCacheModelFunction, err = webContextStruct.InvokerNew("set_cache_model")
+	})
+	return err
+}
+
+// SetCacheModel is a representation of the C type webkit_web_context_set_cache_model.
+func (recv *WebContext) SetCacheModel(cacheModel CacheModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(cacheModel))
+
+	err := webContextSetCacheModelFunction_Set()
+	if err == nil {
+		webContextSetCacheModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetDiskCacheDirectoryFunction *gi.Function
 var webContextSetDiskCacheDirectoryFunction_Once sync.Once
@@ -10683,11 +11065,66 @@ func (recv *WebContext) SetFaviconDatabaseDirectory(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_network_proxy_settings' : parameter 'proxy_mode' of type 'NetworkProxyMode' not supported
+var webContextSetNetworkProxySettingsFunction *gi.Function
+var webContextSetNetworkProxySettingsFunction_Once sync.Once
+
+func webContextSetNetworkProxySettingsFunction_Set() error {
+	var err error
+	webContextSetNetworkProxySettingsFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextSetNetworkProxySettingsFunction, err = webContextStruct.InvokerNew("set_network_proxy_settings")
+	})
+	return err
+}
+
+// SetNetworkProxySettings is a representation of the C type webkit_web_context_set_network_proxy_settings.
+func (recv *WebContext) SetNetworkProxySettings(proxyMode NetworkProxyMode, proxySettings *NetworkProxySettings) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(proxyMode))
+	inArgs[2].SetPointer(proxySettings.Native)
+
+	err := webContextSetNetworkProxySettingsFunction_Set()
+	if err == nil {
+		webContextSetNetworkProxySettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'webkit_web_context_set_preferred_languages' : parameter 'languages' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'webkit_web_context_set_process_model' : parameter 'process_model' of type 'ProcessModel' not supported
+var webContextSetProcessModelFunction *gi.Function
+var webContextSetProcessModelFunction_Once sync.Once
+
+func webContextSetProcessModelFunction_Set() error {
+	var err error
+	webContextSetProcessModelFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextSetProcessModelFunction, err = webContextStruct.InvokerNew("set_process_model")
+	})
+	return err
+}
+
+// SetProcessModel is a representation of the C type webkit_web_context_set_process_model.
+func (recv *WebContext) SetProcessModel(processModel ProcessModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(processModel))
+
+	err := webContextSetProcessModelFunction_Set()
+	if err == nil {
+		webContextSetProcessModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetSandboxEnabledFunction *gi.Function
 var webContextSetSandboxEnabledFunction_Once sync.Once
@@ -10749,7 +11186,34 @@ func (recv *WebContext) SetSpellCheckingEnabled(enabled bool) {
 
 // UNSUPPORTED : C value 'webkit_web_context_set_spell_checking_languages' : parameter 'languages' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'webkit_web_context_set_tls_errors_policy' : parameter 'policy' of type 'TLSErrorsPolicy' not supported
+var webContextSetTlsErrorsPolicyFunction *gi.Function
+var webContextSetTlsErrorsPolicyFunction_Once sync.Once
+
+func webContextSetTlsErrorsPolicyFunction_Set() error {
+	var err error
+	webContextSetTlsErrorsPolicyFunction_Once.Do(func() {
+		err = webContextStruct_Set()
+		if err != nil {
+			return
+		}
+		webContextSetTlsErrorsPolicyFunction, err = webContextStruct.InvokerNew("set_tls_errors_policy")
+	})
+	return err
+}
+
+// SetTlsErrorsPolicy is a representation of the C type webkit_web_context_set_tls_errors_policy.
+func (recv *WebContext) SetTlsErrorsPolicy(policy TLSErrorsPolicy) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(policy))
+
+	err := webContextSetTlsErrorsPolicyFunction_Set()
+	if err == nil {
+		webContextSetTlsErrorsPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetWebExtensionsDirectoryFunction *gi.Function
 var webContextSetWebExtensionsDirectoryFunction_Once sync.Once
@@ -12006,7 +12470,7 @@ func (recv *WebView) GetSettings() *Settings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'region' of type 'SnapshotRegion' not supported
+// UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'options' of type 'SnapshotOptions' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_get_snapshot_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -12699,7 +13163,7 @@ func (recv *WebView) RestoreSessionState(state *WebViewSessionState) {
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_save' : parameter 'save_mode' of type 'SaveMode' not supported
+// UNSUPPORTED : C value 'webkit_web_view_save' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 

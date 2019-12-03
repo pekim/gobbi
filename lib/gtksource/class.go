@@ -173,7 +173,7 @@ func (recv *Buffer) CanUndo() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_change_case' : parameter 'case_type' of type 'ChangeCaseType' not supported
+// UNSUPPORTED : C value 'gtk_source_buffer_change_case' : parameter 'start' of type 'Gtk.TextIter' not supported
 
 // UNSUPPORTED : C value 'gtk_source_buffer_create_source_mark' : parameter 'where' of type 'Gtk.TextIter' not supported
 
@@ -1352,7 +1352,37 @@ func (recv *File) CheckFileOnDisk() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_get_compression_type' : return type 'CompressionType' not supported
+var fileGetCompressionTypeFunction *gi.Function
+var fileGetCompressionTypeFunction_Once sync.Once
+
+func fileGetCompressionTypeFunction_Set() error {
+	var err error
+	fileGetCompressionTypeFunction_Once.Do(func() {
+		err = fileStruct_Set()
+		if err != nil {
+			return
+		}
+		fileGetCompressionTypeFunction, err = fileStruct.InvokerNew("get_compression_type")
+	})
+	return err
+}
+
+// GetCompressionType is a representation of the C type gtk_source_file_get_compression_type.
+func (recv *File) GetCompressionType() CompressionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileGetCompressionTypeFunction_Set()
+	if err == nil {
+		ret = fileGetCompressionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompressionType(ret.Int32())
+
+	return retGo
+}
 
 var fileGetEncodingFunction *gi.Function
 var fileGetEncodingFunction_Once sync.Once
@@ -1389,7 +1419,37 @@ func (recv *File) GetEncoding() *Encoding {
 
 // UNSUPPORTED : C value 'gtk_source_file_get_location' : return type 'Gio.File' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_get_newline_type' : return type 'NewlineType' not supported
+var fileGetNewlineTypeFunction *gi.Function
+var fileGetNewlineTypeFunction_Once sync.Once
+
+func fileGetNewlineTypeFunction_Set() error {
+	var err error
+	fileGetNewlineTypeFunction_Once.Do(func() {
+		err = fileStruct_Set()
+		if err != nil {
+			return
+		}
+		fileGetNewlineTypeFunction, err = fileStruct.InvokerNew("get_newline_type")
+	})
+	return err
+}
+
+// GetNewlineType is a representation of the C type gtk_source_file_get_newline_type.
+func (recv *File) GetNewlineType() NewlineType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileGetNewlineTypeFunction_Set()
+	if err == nil {
+		ret = fileGetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NewlineType(ret.Int32())
+
+	return retGo
+}
 
 var fileIsDeletedFunction *gi.Function
 var fileIsDeletedFunction_Once sync.Once
@@ -1626,7 +1686,37 @@ func (recv *FileLoader) GetBuffer() *Buffer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_get_compression_type' : return type 'CompressionType' not supported
+var fileLoaderGetCompressionTypeFunction *gi.Function
+var fileLoaderGetCompressionTypeFunction_Once sync.Once
+
+func fileLoaderGetCompressionTypeFunction_Set() error {
+	var err error
+	fileLoaderGetCompressionTypeFunction_Once.Do(func() {
+		err = fileLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderGetCompressionTypeFunction, err = fileLoaderStruct.InvokerNew("get_compression_type")
+	})
+	return err
+}
+
+// GetCompressionType is a representation of the C type gtk_source_file_loader_get_compression_type.
+func (recv *FileLoader) GetCompressionType() CompressionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileLoaderGetCompressionTypeFunction_Set()
+	if err == nil {
+		ret = fileLoaderGetCompressionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompressionType(ret.Int32())
+
+	return retGo
+}
 
 var fileLoaderGetEncodingFunction *gi.Function
 var fileLoaderGetEncodingFunction_Once sync.Once
@@ -1698,7 +1788,37 @@ func (recv *FileLoader) GetFile() *File {
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_get_location' : return type 'Gio.File' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_get_newline_type' : return type 'NewlineType' not supported
+var fileLoaderGetNewlineTypeFunction *gi.Function
+var fileLoaderGetNewlineTypeFunction_Once sync.Once
+
+func fileLoaderGetNewlineTypeFunction_Set() error {
+	var err error
+	fileLoaderGetNewlineTypeFunction_Once.Do(func() {
+		err = fileLoaderStruct_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderGetNewlineTypeFunction, err = fileLoaderStruct.InvokerNew("get_newline_type")
+	})
+	return err
+}
+
+// GetNewlineType is a representation of the C type gtk_source_file_loader_get_newline_type.
+func (recv *FileLoader) GetNewlineType() NewlineType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileLoaderGetNewlineTypeFunction_Set()
+	if err == nil {
+		ret = fileLoaderGetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NewlineType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_load_async' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
@@ -1809,7 +1929,37 @@ func (recv *FileSaver) GetBuffer() *Buffer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_compression_type' : return type 'CompressionType' not supported
+var fileSaverGetCompressionTypeFunction *gi.Function
+var fileSaverGetCompressionTypeFunction_Once sync.Once
+
+func fileSaverGetCompressionTypeFunction_Set() error {
+	var err error
+	fileSaverGetCompressionTypeFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetCompressionTypeFunction, err = fileSaverStruct.InvokerNew("get_compression_type")
+	})
+	return err
+}
+
+// GetCompressionType is a representation of the C type gtk_source_file_saver_get_compression_type.
+func (recv *FileSaver) GetCompressionType() CompressionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileSaverGetCompressionTypeFunction_Set()
+	if err == nil {
+		ret = fileSaverGetCompressionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompressionType(ret.Int32())
+
+	return retGo
+}
 
 var fileSaverGetEncodingFunction *gi.Function
 var fileSaverGetEncodingFunction_Once sync.Once
@@ -1881,13 +2031,70 @@ func (recv *FileSaver) GetFile() *File {
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_get_location' : return type 'Gio.File' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_newline_type' : return type 'NewlineType' not supported
+var fileSaverGetNewlineTypeFunction *gi.Function
+var fileSaverGetNewlineTypeFunction_Once sync.Once
+
+func fileSaverGetNewlineTypeFunction_Set() error {
+	var err error
+	fileSaverGetNewlineTypeFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetNewlineTypeFunction, err = fileSaverStruct.InvokerNew("get_newline_type")
+	})
+	return err
+}
+
+// GetNewlineType is a representation of the C type gtk_source_file_saver_get_newline_type.
+func (recv *FileSaver) GetNewlineType() NewlineType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fileSaverGetNewlineTypeFunction_Set()
+	if err == nil {
+		ret = fileSaverGetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NewlineType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_save_async' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_set_compression_type' : parameter 'compression_type' of type 'CompressionType' not supported
+var fileSaverSetCompressionTypeFunction *gi.Function
+var fileSaverSetCompressionTypeFunction_Once sync.Once
+
+func fileSaverSetCompressionTypeFunction_Set() error {
+	var err error
+	fileSaverSetCompressionTypeFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverSetCompressionTypeFunction, err = fileSaverStruct.InvokerNew("set_compression_type")
+	})
+	return err
+}
+
+// SetCompressionType is a representation of the C type gtk_source_file_saver_set_compression_type.
+func (recv *FileSaver) SetCompressionType(compressionType CompressionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(compressionType))
+
+	err := fileSaverSetCompressionTypeFunction_Set()
+	if err == nil {
+		fileSaverSetCompressionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileSaverSetEncodingFunction *gi.Function
 var fileSaverSetEncodingFunction_Once sync.Once
@@ -1920,7 +2127,34 @@ func (recv *FileSaver) SetEncoding(encoding *Encoding) {
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_set_flags' : parameter 'flags' of type 'FileSaverFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_set_newline_type' : parameter 'newline_type' of type 'NewlineType' not supported
+var fileSaverSetNewlineTypeFunction *gi.Function
+var fileSaverSetNewlineTypeFunction_Once sync.Once
+
+func fileSaverSetNewlineTypeFunction_Set() error {
+	var err error
+	fileSaverSetNewlineTypeFunction_Once.Do(func() {
+		err = fileSaverStruct_Set()
+		if err != nil {
+			return
+		}
+		fileSaverSetNewlineTypeFunction, err = fileSaverStruct.InvokerNew("set_newline_type")
+	})
+	return err
+}
+
+// SetNewlineType is a representation of the C type gtk_source_file_saver_set_newline_type.
+func (recv *FileSaver) SetNewlineType(newlineType NewlineType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(newlineType))
+
+	err := fileSaverSetNewlineTypeFunction_Set()
+	if err == nil {
+		fileSaverSetNewlineTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterStruct *gi.Struct
 var gutterStruct_Once sync.Once
@@ -2311,7 +2545,37 @@ func (recv *GutterRenderer) GetAlignment() (float32, float32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_alignment_mode' : return type 'GutterRendererAlignmentMode' not supported
+var gutterRendererGetAlignmentModeFunction *gi.Function
+var gutterRendererGetAlignmentModeFunction_Once sync.Once
+
+func gutterRendererGetAlignmentModeFunction_Set() error {
+	var err error
+	gutterRendererGetAlignmentModeFunction_Once.Do(func() {
+		err = gutterRendererStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererGetAlignmentModeFunction, err = gutterRendererStruct.InvokerNew("get_alignment_mode")
+	})
+	return err
+}
+
+// GetAlignmentMode is a representation of the C type gtk_source_gutter_renderer_get_alignment_mode.
+func (recv *GutterRenderer) GetAlignmentMode() GutterRendererAlignmentMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := gutterRendererGetAlignmentModeFunction_Set()
+	if err == nil {
+		ret = gutterRendererGetAlignmentModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := GutterRendererAlignmentMode(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_background' : parameter 'color' of type 'Gdk.RGBA' not supported
 
@@ -2480,7 +2744,34 @@ func (recv *GutterRenderer) SetAlignment(xalign float32, yalign float32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_set_alignment_mode' : parameter 'mode' of type 'GutterRendererAlignmentMode' not supported
+var gutterRendererSetAlignmentModeFunction *gi.Function
+var gutterRendererSetAlignmentModeFunction_Once sync.Once
+
+func gutterRendererSetAlignmentModeFunction_Set() error {
+	var err error
+	gutterRendererSetAlignmentModeFunction_Once.Do(func() {
+		err = gutterRendererStruct_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererSetAlignmentModeFunction, err = gutterRendererStruct.InvokerNew("set_alignment_mode")
+	})
+	return err
+}
+
+// SetAlignmentMode is a representation of the C type gtk_source_gutter_renderer_set_alignment_mode.
+func (recv *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := gutterRendererSetAlignmentModeFunction_Set()
+	if err == nil {
+		gutterRendererSetAlignmentModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_set_background' : parameter 'color' of type 'Gdk.RGBA' not supported
 
@@ -6801,7 +7092,37 @@ func (recv *View) GetAutoIndent() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_get_background_pattern' : return type 'BackgroundPatternType' not supported
+var viewGetBackgroundPatternFunction *gi.Function
+var viewGetBackgroundPatternFunction_Once sync.Once
+
+func viewGetBackgroundPatternFunction_Set() error {
+	var err error
+	viewGetBackgroundPatternFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewGetBackgroundPatternFunction, err = viewStruct.InvokerNew("get_background_pattern")
+	})
+	return err
+}
+
+// GetBackgroundPattern is a representation of the C type gtk_source_view_get_background_pattern.
+func (recv *View) GetBackgroundPattern() BackgroundPatternType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := viewGetBackgroundPatternFunction_Set()
+	if err == nil {
+		ret = viewGetBackgroundPatternFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BackgroundPatternType(ret.Int32())
+
+	return retGo
+}
 
 var viewGetCompletionFunction *gi.Function
 var viewGetCompletionFunction_Once sync.Once
@@ -7163,7 +7484,37 @@ func (recv *View) GetSmartBackspace() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_get_smart_home_end' : return type 'SmartHomeEndType' not supported
+var viewGetSmartHomeEndFunction *gi.Function
+var viewGetSmartHomeEndFunction_Once sync.Once
+
+func viewGetSmartHomeEndFunction_Set() error {
+	var err error
+	viewGetSmartHomeEndFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewGetSmartHomeEndFunction, err = viewStruct.InvokerNew("get_smart_home_end")
+	})
+	return err
+}
+
+// GetSmartHomeEnd is a representation of the C type gtk_source_view_get_smart_home_end.
+func (recv *View) GetSmartHomeEnd() SmartHomeEndType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := viewGetSmartHomeEndFunction_Set()
+	if err == nil {
+		ret = viewGetSmartHomeEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SmartHomeEndType(ret.Int32())
+
+	return retGo
+}
 
 var viewGetSpaceDrawerFunction *gi.Function
 var viewGetSpaceDrawerFunction_Once sync.Once
@@ -7263,7 +7614,34 @@ func (recv *View) SetAutoIndent(enable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_set_background_pattern' : parameter 'background_pattern' of type 'BackgroundPatternType' not supported
+var viewSetBackgroundPatternFunction *gi.Function
+var viewSetBackgroundPatternFunction_Once sync.Once
+
+func viewSetBackgroundPatternFunction_Set() error {
+	var err error
+	viewSetBackgroundPatternFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewSetBackgroundPatternFunction, err = viewStruct.InvokerNew("set_background_pattern")
+	})
+	return err
+}
+
+// SetBackgroundPattern is a representation of the C type gtk_source_view_set_background_pattern.
+func (recv *View) SetBackgroundPattern(backgroundPattern BackgroundPatternType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(backgroundPattern))
+
+	err := viewSetBackgroundPatternFunction_Set()
+	if err == nil {
+		viewSetBackgroundPatternFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_view_set_draw_spaces' : parameter 'flags' of type 'DrawSpacesFlags' not supported
 
@@ -7559,7 +7937,34 @@ func (recv *View) SetSmartBackspace(smartBackspace bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_set_smart_home_end' : parameter 'smart_home_end' of type 'SmartHomeEndType' not supported
+var viewSetSmartHomeEndFunction *gi.Function
+var viewSetSmartHomeEndFunction_Once sync.Once
+
+func viewSetSmartHomeEndFunction_Set() error {
+	var err error
+	viewSetSmartHomeEndFunction_Once.Do(func() {
+		err = viewStruct_Set()
+		if err != nil {
+			return
+		}
+		viewSetSmartHomeEndFunction, err = viewStruct.InvokerNew("set_smart_home_end")
+	})
+	return err
+}
+
+// SetSmartHomeEnd is a representation of the C type gtk_source_view_set_smart_home_end.
+func (recv *View) SetSmartHomeEnd(smartHomeEnd SmartHomeEndType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(smartHomeEnd))
+
+	err := viewSetSmartHomeEndFunction_Set()
+	if err == nil {
+		viewSetSmartHomeEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var viewSetTabWidthFunction *gi.Function
 var viewSetTabWidthFunction_Once sync.Once

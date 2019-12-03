@@ -293,11 +293,105 @@ func HeadersParse(str string, len int32, dest *MessageHeaders) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'ver' of type 'HTTPVersion' not supported
+var headersParseRequestFunction *gi.Function
+var headersParseRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_headers_parse_response' : parameter 'ver' of type 'HTTPVersion' not supported
+func headersParseRequestFunction_Set() error {
+	var err error
+	headersParseRequestFunction_Once.Do(func() {
+		headersParseRequestFunction, err = gi.FunctionInvokerNew("Soup", "headers_parse_request")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_headers_parse_status_line' : parameter 'ver' of type 'HTTPVersion' not supported
+// HeadersParseRequest is a representation of the C type soup_headers_parse_request.
+func HeadersParseRequest(str string, len int32, reqHeaders *MessageHeaders) (uint32, string, string, HTTPVersion) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetPointer(reqHeaders.Native)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := headersParseRequestFunction_Set()
+	if err == nil {
+		ret = headersParseRequestFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint32()
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].String(true)
+	out2 := HTTPVersion(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
+
+var headersParseResponseFunction *gi.Function
+var headersParseResponseFunction_Once sync.Once
+
+func headersParseResponseFunction_Set() error {
+	var err error
+	headersParseResponseFunction_Once.Do(func() {
+		headersParseResponseFunction, err = gi.FunctionInvokerNew("Soup", "headers_parse_response")
+	})
+	return err
+}
+
+// HeadersParseResponse is a representation of the C type soup_headers_parse_response.
+func HeadersParseResponse(str string, len int32, headers *MessageHeaders) (bool, HTTPVersion, uint32, string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetPointer(headers.Native)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := headersParseResponseFunction_Set()
+	if err == nil {
+		ret = headersParseResponseFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := HTTPVersion(outArgs[0].Int32())
+	out1 := outArgs[1].Uint32()
+	out2 := outArgs[2].String(true)
+
+	return retGo, out0, out1, out2
+}
+
+var headersParseStatusLineFunction *gi.Function
+var headersParseStatusLineFunction_Once sync.Once
+
+func headersParseStatusLineFunction_Set() error {
+	var err error
+	headersParseStatusLineFunction_Once.Do(func() {
+		headersParseStatusLineFunction, err = gi.FunctionInvokerNew("Soup", "headers_parse_status_line")
+	})
+	return err
+}
+
+// HeadersParseStatusLine is a representation of the C type soup_headers_parse_status_line.
+func HeadersParseStatusLine(statusLine string) (bool, HTTPVersion, uint32, string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(statusLine)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := headersParseStatusLineFunction_Set()
+	if err == nil {
+		ret = headersParseStatusLineFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := HTTPVersion(outArgs[0].Int32())
+	out1 := outArgs[1].Uint32()
+	out2 := outArgs[2].String(true)
+
+	return retGo, out0, out1, out2
+}
 
 var httpErrorQuarkFunction *gi.Function
 var httpErrorQuarkFunction_Once sync.Once

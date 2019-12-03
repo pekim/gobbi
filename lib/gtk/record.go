@@ -2411,7 +2411,36 @@ func (recv *BindingSet) SetFieldParsed(value uint32) {
 
 // UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_add_path' : parameter 'path_type' of type 'PathType' not supported
+var bindingSetAddPathFunction *gi.Function
+var bindingSetAddPathFunction_Once sync.Once
+
+func bindingSetAddPathFunction_Set() error {
+	var err error
+	bindingSetAddPathFunction_Once.Do(func() {
+		err = bindingSetStruct_Set()
+		if err != nil {
+			return
+		}
+		bindingSetAddPathFunction, err = bindingSetStruct.InvokerNew("add_path")
+	})
+	return err
+}
+
+// AddPath is a representation of the C type gtk_binding_set_add_path.
+func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority PathPriorityType) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(pathType))
+	inArgs[2].SetString(pathPattern)
+	inArgs[3].SetInt32(int32(priority))
+
+	err := bindingSetAddPathFunction_Set()
+	if err == nil {
+		bindingSetAddPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // BindingSetStruct creates an uninitialised BindingSet.
 func BindingSetStruct() *BindingSet {
@@ -6725,7 +6754,37 @@ func (recv *CssSection) GetParent() *CssSection {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_css_section_get_section_type' : return type 'CssSectionType' not supported
+var cssSectionGetSectionTypeFunction *gi.Function
+var cssSectionGetSectionTypeFunction_Once sync.Once
+
+func cssSectionGetSectionTypeFunction_Set() error {
+	var err error
+	cssSectionGetSectionTypeFunction_Once.Do(func() {
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetSectionTypeFunction, err = cssSectionStruct.InvokerNew("get_section_type")
+	})
+	return err
+}
+
+// GetSectionType is a representation of the C type gtk_css_section_get_section_type.
+func (recv *CssSection) GetSectionType() CssSectionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := cssSectionGetSectionTypeFunction_Set()
+	if err == nil {
+		ret = cssSectionGetSectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CssSectionType(ret.Int32())
+
+	return retGo
+}
 
 var cssSectionGetStartLineFunction *gi.Function
 var cssSectionGetStartLineFunction_Once sync.Once
@@ -11513,11 +11572,11 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : parameter 'direction' of type 'TextDirection' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : return type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'for_window' of type 'Gdk.Window' not supported
 
 var iconSetUnrefFunction *gi.Function
 var iconSetUnrefFunction_Once sync.Once
@@ -11654,7 +11713,37 @@ func (recv *IconSource) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_direction' : return type 'TextDirection' not supported
+var iconSourceGetDirectionFunction *gi.Function
+var iconSourceGetDirectionFunction_Once sync.Once
+
+func iconSourceGetDirectionFunction_Set() error {
+	var err error
+	iconSourceGetDirectionFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetDirectionFunction, err = iconSourceStruct.InvokerNew("get_direction")
+	})
+	return err
+}
+
+// GetDirection is a representation of the C type gtk_icon_source_get_direction.
+func (recv *IconSource) GetDirection() TextDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetDirectionFunction_Set()
+	if err == nil {
+		ret = iconSourceGetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextDirection(ret.Int32())
+
+	return retGo
+}
 
 var iconSourceGetDirectionWildcardedFunction *gi.Function
 var iconSourceGetDirectionWildcardedFunction_Once sync.Once
@@ -11754,7 +11843,37 @@ func (recv *IconSource) GetIconName() string {
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_size' : return type 'IconSize' not supported
+var iconSourceGetSizeFunction *gi.Function
+var iconSourceGetSizeFunction_Once sync.Once
+
+func iconSourceGetSizeFunction_Set() error {
+	var err error
+	iconSourceGetSizeFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetSizeFunction, err = iconSourceStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type gtk_icon_source_get_size.
+func (recv *IconSource) GetSize() IconSize {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetSizeFunction_Set()
+	if err == nil {
+		ret = iconSourceGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
 
 var iconSourceGetSizeWildcardedFunction *gi.Function
 var iconSourceGetSizeWildcardedFunction_Once sync.Once
@@ -11788,7 +11907,37 @@ func (recv *IconSource) GetSizeWildcarded() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_state' : return type 'StateType' not supported
+var iconSourceGetStateFunction *gi.Function
+var iconSourceGetStateFunction_Once sync.Once
+
+func iconSourceGetStateFunction_Set() error {
+	var err error
+	iconSourceGetStateFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetStateFunction, err = iconSourceStruct.InvokerNew("get_state")
+	})
+	return err
+}
+
+// GetState is a representation of the C type gtk_icon_source_get_state.
+func (recv *IconSource) GetState() StateType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetStateFunction_Set()
+	if err == nil {
+		ret = iconSourceGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StateType(ret.Int32())
+
+	return retGo
+}
 
 var iconSourceGetStateWildcardedFunction *gi.Function
 var iconSourceGetStateWildcardedFunction_Once sync.Once
@@ -11822,7 +11971,34 @@ func (recv *IconSource) GetStateWildcarded() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_direction' : parameter 'direction' of type 'TextDirection' not supported
+var iconSourceSetDirectionFunction *gi.Function
+var iconSourceSetDirectionFunction_Once sync.Once
+
+func iconSourceSetDirectionFunction_Set() error {
+	var err error
+	iconSourceSetDirectionFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetDirectionFunction, err = iconSourceStruct.InvokerNew("set_direction")
+	})
+	return err
+}
+
+// SetDirection is a representation of the C type gtk_icon_source_set_direction.
+func (recv *IconSource) SetDirection(direction TextDirection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	err := iconSourceSetDirectionFunction_Set()
+	if err == nil {
+		iconSourceSetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconSourceSetDirectionWildcardedFunction *gi.Function
 var iconSourceSetDirectionWildcardedFunction_Once sync.Once
@@ -11913,7 +12089,34 @@ func (recv *IconSource) SetIconName(iconName string) {
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_size' : parameter 'size' of type 'IconSize' not supported
+var iconSourceSetSizeFunction *gi.Function
+var iconSourceSetSizeFunction_Once sync.Once
+
+func iconSourceSetSizeFunction_Set() error {
+	var err error
+	iconSourceSetSizeFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetSizeFunction, err = iconSourceStruct.InvokerNew("set_size")
+	})
+	return err
+}
+
+// SetSize is a representation of the C type gtk_icon_source_set_size.
+func (recv *IconSource) SetSize(size IconSize) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(size))
+
+	err := iconSourceSetSizeFunction_Set()
+	if err == nil {
+		iconSourceSetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconSourceSetSizeWildcardedFunction *gi.Function
 var iconSourceSetSizeWildcardedFunction_Once sync.Once
@@ -11944,7 +12147,34 @@ func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_state' : parameter 'state' of type 'StateType' not supported
+var iconSourceSetStateFunction *gi.Function
+var iconSourceSetStateFunction_Once sync.Once
+
+func iconSourceSetStateFunction_Set() error {
+	var err error
+	iconSourceSetStateFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetStateFunction, err = iconSourceStruct.InvokerNew("set_state")
+	})
+	return err
+}
+
+// SetState is a representation of the C type gtk_icon_source_set_state.
+func (recv *IconSource) SetState(state StateType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(state))
+
+	err := iconSourceSetStateFunction_Set()
+	if err == nil {
+		iconSourceSetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconSourceSetStateWildcardedFunction *gi.Function
 var iconSourceSetStateWildcardedFunction_Once sync.Once
@@ -15852,9 +16082,19 @@ type PadActionEntry struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'PadActionType'
+// FieldType returns the C field 'type'.
+func (recv *PadActionEntry) FieldType() PadActionType {
+	argValue := gi.FieldGet(padActionEntryStruct, recv.Native, "type")
+	value := PadActionType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'PadActionType'
+// SetFieldType sets the value of the C field 'type'.
+func (recv *PadActionEntry) SetFieldType(value PadActionType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(padActionEntryStruct, recv.Native, "type", argValue)
+}
 
 // FieldIndex returns the C field 'index'.
 func (recv *PadActionEntry) FieldIndex() int32 {
@@ -16260,7 +16500,42 @@ func PaperSizeNew(name string) *PaperSize {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'unit' of type 'Unit' not supported
+var paperSizeNewCustomFunction *gi.Function
+var paperSizeNewCustomFunction_Once sync.Once
+
+func paperSizeNewCustomFunction_Set() error {
+	var err error
+	paperSizeNewCustomFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeNewCustomFunction, err = paperSizeStruct.InvokerNew("new_custom")
+	})
+	return err
+}
+
+// PaperSizeNewCustom is a representation of the C type gtk_paper_size_new_custom.
+func PaperSizeNewCustom(name string, displayName string, width float64, height float64, unit Unit) *PaperSize {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(displayName)
+	inArgs[2].SetFloat64(width)
+	inArgs[3].SetFloat64(height)
+	inArgs[4].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeNewCustomFunction_Set()
+	if err == nil {
+		ret = paperSizeNewCustomFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PaperSize{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
 
@@ -16398,13 +16673,137 @@ func (recv *PaperSize) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default_bottom_margin' : parameter 'unit' of type 'Unit' not supported
+var paperSizeGetDefaultBottomMarginFunction *gi.Function
+var paperSizeGetDefaultBottomMarginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default_left_margin' : parameter 'unit' of type 'Unit' not supported
+func paperSizeGetDefaultBottomMarginFunction_Set() error {
+	var err error
+	paperSizeGetDefaultBottomMarginFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetDefaultBottomMarginFunction, err = paperSizeStruct.InvokerNew("get_default_bottom_margin")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default_right_margin' : parameter 'unit' of type 'Unit' not supported
+// GetDefaultBottomMargin is a representation of the C type gtk_paper_size_get_default_bottom_margin.
+func (recv *PaperSize) GetDefaultBottomMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default_top_margin' : parameter 'unit' of type 'Unit' not supported
+	var ret gi.Argument
+
+	err := paperSizeGetDefaultBottomMarginFunction_Set()
+	if err == nil {
+		ret = paperSizeGetDefaultBottomMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var paperSizeGetDefaultLeftMarginFunction *gi.Function
+var paperSizeGetDefaultLeftMarginFunction_Once sync.Once
+
+func paperSizeGetDefaultLeftMarginFunction_Set() error {
+	var err error
+	paperSizeGetDefaultLeftMarginFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetDefaultLeftMarginFunction, err = paperSizeStruct.InvokerNew("get_default_left_margin")
+	})
+	return err
+}
+
+// GetDefaultLeftMargin is a representation of the C type gtk_paper_size_get_default_left_margin.
+func (recv *PaperSize) GetDefaultLeftMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeGetDefaultLeftMarginFunction_Set()
+	if err == nil {
+		ret = paperSizeGetDefaultLeftMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var paperSizeGetDefaultRightMarginFunction *gi.Function
+var paperSizeGetDefaultRightMarginFunction_Once sync.Once
+
+func paperSizeGetDefaultRightMarginFunction_Set() error {
+	var err error
+	paperSizeGetDefaultRightMarginFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetDefaultRightMarginFunction, err = paperSizeStruct.InvokerNew("get_default_right_margin")
+	})
+	return err
+}
+
+// GetDefaultRightMargin is a representation of the C type gtk_paper_size_get_default_right_margin.
+func (recv *PaperSize) GetDefaultRightMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeGetDefaultRightMarginFunction_Set()
+	if err == nil {
+		ret = paperSizeGetDefaultRightMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var paperSizeGetDefaultTopMarginFunction *gi.Function
+var paperSizeGetDefaultTopMarginFunction_Once sync.Once
+
+func paperSizeGetDefaultTopMarginFunction_Set() error {
+	var err error
+	paperSizeGetDefaultTopMarginFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetDefaultTopMarginFunction, err = paperSizeStruct.InvokerNew("get_default_top_margin")
+	})
+	return err
+}
+
+// GetDefaultTopMargin is a representation of the C type gtk_paper_size_get_default_top_margin.
+func (recv *PaperSize) GetDefaultTopMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeGetDefaultTopMarginFunction_Set()
+	if err == nil {
+		ret = paperSizeGetDefaultTopMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var paperSizeGetDisplayNameFunction *gi.Function
 var paperSizeGetDisplayNameFunction_Once sync.Once
@@ -16438,7 +16837,38 @@ func (recv *PaperSize) GetDisplayName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_height' : parameter 'unit' of type 'Unit' not supported
+var paperSizeGetHeightFunction *gi.Function
+var paperSizeGetHeightFunction_Once sync.Once
+
+func paperSizeGetHeightFunction_Set() error {
+	var err error
+	paperSizeGetHeightFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetHeightFunction, err = paperSizeStruct.InvokerNew("get_height")
+	})
+	return err
+}
+
+// GetHeight is a representation of the C type gtk_paper_size_get_height.
+func (recv *PaperSize) GetHeight(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeGetHeightFunction_Set()
+	if err == nil {
+		ret = paperSizeGetHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var paperSizeGetNameFunction *gi.Function
 var paperSizeGetNameFunction_Once sync.Once
@@ -16504,7 +16934,38 @@ func (recv *PaperSize) GetPpdName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_width' : parameter 'unit' of type 'Unit' not supported
+var paperSizeGetWidthFunction *gi.Function
+var paperSizeGetWidthFunction_Once sync.Once
+
+func paperSizeGetWidthFunction_Set() error {
+	var err error
+	paperSizeGetWidthFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetWidthFunction, err = paperSizeStruct.InvokerNew("get_width")
+	})
+	return err
+}
+
+// GetWidth is a representation of the C type gtk_paper_size_get_width.
+func (recv *PaperSize) GetWidth(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := paperSizeGetWidthFunction_Set()
+	if err == nil {
+		ret = paperSizeGetWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var paperSizeIsCustomFunction *gi.Function
 var paperSizeIsCustomFunction_Once sync.Once
@@ -16603,7 +17064,36 @@ func (recv *PaperSize) IsIpp() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'unit' of type 'Unit' not supported
+var paperSizeSetSizeFunction *gi.Function
+var paperSizeSetSizeFunction_Once sync.Once
+
+func paperSizeSetSizeFunction_Set() error {
+	var err error
+	paperSizeSetSizeFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeSetSizeFunction, err = paperSizeStruct.InvokerNew("set_size")
+	})
+	return err
+}
+
+// SetSize is a representation of the C type gtk_paper_size_set_size.
+func (recv *PaperSize) SetSize(width float64, height float64, unit Unit) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(width)
+	inArgs[2].SetFloat64(height)
+	inArgs[3].SetInt32(int32(unit))
+
+	err := paperSizeSetSizeFunction_Set()
+	if err == nil {
+		paperSizeSetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_to_gvariant' : return type 'GLib.Variant' not supported
 
@@ -25147,13 +25637,33 @@ func (recv *TextAttributes) SetFieldAppearance(value *TextAppearance) {
 	gi.FieldSet(textAttributesStruct, recv.Native, "appearance", argValue)
 }
 
-// UNSUPPORTED : C value 'justification' : for field getter : no Go type for 'Justification'
+// FieldJustification returns the C field 'justification'.
+func (recv *TextAttributes) FieldJustification() Justification {
+	argValue := gi.FieldGet(textAttributesStruct, recv.Native, "justification")
+	value := Justification(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'justification' : for field setter : no Go type for 'Justification'
+// SetFieldJustification sets the value of the C field 'justification'.
+func (recv *TextAttributes) SetFieldJustification(value Justification) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(textAttributesStruct, recv.Native, "justification", argValue)
+}
 
-// UNSUPPORTED : C value 'direction' : for field getter : no Go type for 'TextDirection'
+// FieldDirection returns the C field 'direction'.
+func (recv *TextAttributes) FieldDirection() TextDirection {
+	argValue := gi.FieldGet(textAttributesStruct, recv.Native, "direction")
+	value := TextDirection(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'direction' : for field setter : no Go type for 'TextDirection'
+// SetFieldDirection sets the value of the C field 'direction'.
+func (recv *TextAttributes) SetFieldDirection(value TextDirection) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(textAttributesStruct, recv.Native, "direction", argValue)
+}
 
 // UNSUPPORTED : C value 'font' : for field getter : no Go type for 'Pango.FontDescription'
 
@@ -25261,9 +25771,19 @@ func (recv *TextAttributes) SetFieldPixelsInsideWrap(value int32) {
 
 // UNSUPPORTED : C value 'tabs' : for field setter : no Go type for 'Pango.TabArray'
 
-// UNSUPPORTED : C value 'wrap_mode' : for field getter : no Go type for 'WrapMode'
+// FieldWrapMode returns the C field 'wrap_mode'.
+func (recv *TextAttributes) FieldWrapMode() WrapMode {
+	argValue := gi.FieldGet(textAttributesStruct, recv.Native, "wrap_mode")
+	value := WrapMode(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'wrap_mode' : for field setter : no Go type for 'WrapMode'
+// SetFieldWrapMode sets the value of the C field 'wrap_mode'.
+func (recv *TextAttributes) SetFieldWrapMode(value WrapMode) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(textAttributesStruct, recv.Native, "wrap_mode", argValue)
+}
 
 // UNSUPPORTED : C value 'language' : for field getter : no Go type for 'Pango.Language'
 

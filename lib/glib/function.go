@@ -1431,7 +1431,33 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
+var checksumTypeGetLengthFunction *gi.Function
+var checksumTypeGetLengthFunction_Once sync.Once
+
+func checksumTypeGetLengthFunction_Set() error {
+	var err error
+	checksumTypeGetLengthFunction_Once.Do(func() {
+		checksumTypeGetLengthFunction, err = gi.FunctionInvokerNew("GLib", "checksum_type_get_length")
+	})
+	return err
+}
+
+// ChecksumTypeGetLength is a representation of the C type g_checksum_type_get_length.
+func ChecksumTypeGetLength(checksumType ChecksumType) int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(checksumType))
+
+	var ret gi.Argument
+
+	err := checksumTypeGetLengthFunction_Set()
+	if err == nil {
+		ret = checksumTypeGetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_child_watch_add' : parameter 'function' of type 'ChildWatchFunc' not supported
 
@@ -1520,17 +1546,100 @@ func Close(fd int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_bytes' : parameter 'checksum_type' of type 'ChecksumType' not supported
+var computeChecksumForBytesFunction *gi.Function
+var computeChecksumForBytesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_data' : parameter 'checksum_type' of type 'ChecksumType' not supported
+func computeChecksumForBytesFunction_Set() error {
+	var err error
+	computeChecksumForBytesFunction_Once.Do(func() {
+		computeChecksumForBytesFunction, err = gi.FunctionInvokerNew("GLib", "compute_checksum_for_bytes")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_string' : parameter 'checksum_type' of type 'ChecksumType' not supported
+// ComputeChecksumForBytes is a representation of the C type g_compute_checksum_for_bytes.
+func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(checksumType))
+	inArgs[1].SetPointer(data.Native)
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_bytes' : parameter 'digest_type' of type 'ChecksumType' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_data' : parameter 'digest_type' of type 'ChecksumType' not supported
+	err := computeChecksumForBytesFunction_Set()
+	if err == nil {
+		ret = computeChecksumForBytesFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'digest_type' of type 'ChecksumType' not supported
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_compute_checksum_for_data' : parameter 'data' of type 'nil' not supported
+
+var computeChecksumForStringFunction *gi.Function
+var computeChecksumForStringFunction_Once sync.Once
+
+func computeChecksumForStringFunction_Set() error {
+	var err error
+	computeChecksumForStringFunction_Once.Do(func() {
+		computeChecksumForStringFunction, err = gi.FunctionInvokerNew("GLib", "compute_checksum_for_string")
+	})
+	return err
+}
+
+// ComputeChecksumForString is a representation of the C type g_compute_checksum_for_string.
+func ComputeChecksumForString(checksumType ChecksumType, str string, length int32) string {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(checksumType))
+	inArgs[1].SetString(str)
+	inArgs[2].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := computeChecksumForStringFunction_Set()
+	if err == nil {
+		ret = computeChecksumForStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var computeHmacForBytesFunction *gi.Function
+var computeHmacForBytesFunction_Once sync.Once
+
+func computeHmacForBytesFunction_Set() error {
+	var err error
+	computeHmacForBytesFunction_Once.Do(func() {
+		computeHmacForBytesFunction, err = gi.FunctionInvokerNew("GLib", "compute_hmac_for_bytes")
+	})
+	return err
+}
+
+// ComputeHmacForBytes is a representation of the C type g_compute_hmac_for_bytes.
+func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(digestType))
+	inArgs[1].SetPointer(key.Native)
+	inArgs[2].SetPointer(data.Native)
+
+	var ret gi.Argument
+
+	err := computeHmacForBytesFunction_Set()
+	if err == nil {
+		ret = computeHmacForBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_compute_hmac_for_data' : parameter 'key' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'key' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_convert' : parameter 'str' of type 'nil' not supported
 
@@ -1714,7 +1823,34 @@ func DatalistUnsetFlags(datalist *Data, flags uint32) {
 
 // UNSUPPORTED : C value 'g_dataset_id_set_data_full' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_get_days_in_month' : parameter 'month' of type 'DateMonth' not supported
+var dateGetDaysInMonthFunction *gi.Function
+var dateGetDaysInMonthFunction_Once sync.Once
+
+func dateGetDaysInMonthFunction_Set() error {
+	var err error
+	dateGetDaysInMonthFunction_Once.Do(func() {
+		dateGetDaysInMonthFunction, err = gi.FunctionInvokerNew("GLib", "date_get_days_in_month")
+	})
+	return err
+}
+
+// DateGetDaysInMonth is a representation of the C type g_date_get_days_in_month.
+func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(month))
+	inArgs[1].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateGetDaysInMonthFunction_Set()
+	if err == nil {
+		ret = dateGetDaysInMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo
+}
 
 var dateGetMondayWeeksInYearFunction *gi.Function
 var dateGetMondayWeeksInYearFunction_Once sync.Once
@@ -1865,7 +2001,35 @@ func DateValidDay(day DateDay) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'month' of type 'DateMonth' not supported
+var dateValidDmyFunction *gi.Function
+var dateValidDmyFunction_Once sync.Once
+
+func dateValidDmyFunction_Set() error {
+	var err error
+	dateValidDmyFunction_Once.Do(func() {
+		dateValidDmyFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_dmy")
+	})
+	return err
+}
+
+// DateValidDmy is a representation of the C type g_date_valid_dmy.
+func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint8(uint8(day))
+	inArgs[1].SetInt32(int32(month))
+	inArgs[2].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateValidDmyFunction_Set()
+	if err == nil {
+		ret = dateValidDmyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dateValidJulianFunction *gi.Function
 var dateValidJulianFunction_Once sync.Once
@@ -1895,9 +2059,61 @@ func DateValidJulian(julianDate uint32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_valid_month' : parameter 'month' of type 'DateMonth' not supported
+var dateValidMonthFunction *gi.Function
+var dateValidMonthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_valid_weekday' : parameter 'weekday' of type 'DateWeekday' not supported
+func dateValidMonthFunction_Set() error {
+	var err error
+	dateValidMonthFunction_Once.Do(func() {
+		dateValidMonthFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_month")
+	})
+	return err
+}
+
+// DateValidMonth is a representation of the C type g_date_valid_month.
+func DateValidMonth(month DateMonth) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(month))
+
+	var ret gi.Argument
+
+	err := dateValidMonthFunction_Set()
+	if err == nil {
+		ret = dateValidMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dateValidWeekdayFunction *gi.Function
+var dateValidWeekdayFunction_Once sync.Once
+
+func dateValidWeekdayFunction_Set() error {
+	var err error
+	dateValidWeekdayFunction_Once.Do(func() {
+		dateValidWeekdayFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_weekday")
+	})
+	return err
+}
+
+// DateValidWeekday is a representation of the C type g_date_valid_weekday.
+func DateValidWeekday(weekday DateWeekday) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(weekday))
+
+	var ret gi.Argument
+
+	err := dateValidWeekdayFunction_Set()
+	if err == nil {
+		ret = dateValidWeekdayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dateValidYearFunction *gi.Function
 var dateValidYearFunction_Once sync.Once
@@ -2119,7 +2335,33 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 // UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_file_error_from_errno' : return type 'FileError' not supported
+var fileErrorFromErrnoFunction *gi.Function
+var fileErrorFromErrnoFunction_Once sync.Once
+
+func fileErrorFromErrnoFunction_Set() error {
+	var err error
+	fileErrorFromErrnoFunction_Once.Do(func() {
+		fileErrorFromErrnoFunction, err = gi.FunctionInvokerNew("GLib", "file_error_from_errno")
+	})
+	return err
+}
+
+// FileErrorFromErrno is a representation of the C type g_file_error_from_errno.
+func FileErrorFromErrno(errNo int32) FileError {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(errNo)
+
+	var ret gi.Argument
+
+	err := fileErrorFromErrnoFunction_Set()
+	if err == nil {
+		ret = fileErrorFromErrnoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileError(ret.Int32())
+
+	return retGo
+}
 
 var fileErrorQuarkFunction *gi.Function
 var fileErrorQuarkFunction_Once sync.Once
@@ -3114,7 +3356,33 @@ func GetUserRuntimeDir() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_get_user_special_dir' : parameter 'directory' of type 'UserDirectory' not supported
+var getUserSpecialDirFunction *gi.Function
+var getUserSpecialDirFunction_Once sync.Once
+
+func getUserSpecialDirFunction_Set() error {
+	var err error
+	getUserSpecialDirFunction_Once.Do(func() {
+		getUserSpecialDirFunction, err = gi.FunctionInvokerNew("GLib", "get_user_special_dir")
+	})
+	return err
+}
+
+// GetUserSpecialDir is a representation of the C type g_get_user_special_dir.
+func GetUserSpecialDir(directory UserDirectory) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(directory))
+
+	var ret gi.Argument
+
+	err := getUserSpecialDirFunction_Set()
+	if err == nil {
+		ret = getUserSpecialDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
 
 var getenvFunction *gi.Function
 var getenvFunction_Once sync.Once
@@ -3630,7 +3898,33 @@ func InternString(string_ string) string {
 
 // UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_error_from_errno' : return type 'IOChannelError' not supported
+var ioChannelErrorFromErrnoFunction *gi.Function
+var ioChannelErrorFromErrnoFunction_Once sync.Once
+
+func ioChannelErrorFromErrnoFunction_Set() error {
+	var err error
+	ioChannelErrorFromErrnoFunction_Once.Do(func() {
+		ioChannelErrorFromErrnoFunction, err = gi.FunctionInvokerNew("GLib", "io_channel_error_from_errno")
+	})
+	return err
+}
+
+// IoChannelErrorFromErrno is a representation of the C type g_io_channel_error_from_errno.
+func IoChannelErrorFromErrno(en int32) IOChannelError {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(en)
+
+	var ret gi.Argument
+
+	err := ioChannelErrorFromErrnoFunction_Set()
+	if err == nil {
+		ret = ioChannelErrorFromErrnoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOChannelError(ret.Int32())
+
+	return retGo
+}
 
 var ioChannelErrorQuarkFunction *gi.Function
 var ioChannelErrorQuarkFunction_Once sync.Once
@@ -5739,11 +6033,88 @@ func ShellUnquote(quotedString string) string {
 
 // UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : parameter 'mem_chain' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_slice_get_config' : parameter 'ckey' of type 'SliceConfig' not supported
+var sliceGetConfigFunction *gi.Function
+var sliceGetConfigFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_slice_get_config_state' : parameter 'ckey' of type 'SliceConfig' not supported
+func sliceGetConfigFunction_Set() error {
+	var err error
+	sliceGetConfigFunction_Once.Do(func() {
+		sliceGetConfigFunction, err = gi.FunctionInvokerNew("GLib", "slice_get_config")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_slice_set_config' : parameter 'ckey' of type 'SliceConfig' not supported
+// SliceGetConfig is a representation of the C type g_slice_get_config.
+func SliceGetConfig(ckey SliceConfig) int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(ckey))
+
+	var ret gi.Argument
+
+	err := sliceGetConfigFunction_Set()
+	if err == nil {
+		ret = sliceGetConfigFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var sliceGetConfigStateFunction *gi.Function
+var sliceGetConfigStateFunction_Once sync.Once
+
+func sliceGetConfigStateFunction_Set() error {
+	var err error
+	sliceGetConfigStateFunction_Once.Do(func() {
+		sliceGetConfigStateFunction, err = gi.FunctionInvokerNew("GLib", "slice_get_config_state")
+	})
+	return err
+}
+
+// SliceGetConfigState is a representation of the C type g_slice_get_config_state.
+func SliceGetConfigState(ckey SliceConfig, address int64, nValues uint32) int64 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(ckey))
+	inArgs[1].SetInt64(address)
+	inArgs[2].SetUint32(nValues)
+
+	var ret gi.Argument
+
+	err := sliceGetConfigStateFunction_Set()
+	if err == nil {
+		ret = sliceGetConfigStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var sliceSetConfigFunction *gi.Function
+var sliceSetConfigFunction_Once sync.Once
+
+func sliceSetConfigFunction_Set() error {
+	var err error
+	sliceSetConfigFunction_Once.Do(func() {
+		sliceSetConfigFunction, err = gi.FunctionInvokerNew("GLib", "slice_set_config")
+	})
+	return err
+}
+
+// SliceSetConfig is a representation of the C type g_slice_set_config.
+func SliceSetConfig(ckey SliceConfig, value int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(ckey))
+	inArgs[1].SetInt64(value)
+
+	err := sliceSetConfigFunction_Set()
+	if err == nil {
+		sliceSetConfigFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_snprintf' : parameter '...' of type 'nil' not supported
 
@@ -7247,7 +7618,7 @@ func TestBugBase(uriPattern string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
+// UNSUPPORTED : C value 'g_test_build_filename' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_test_create_case' : parameter 'test_data' of type 'gpointer' not supported
 
@@ -7330,9 +7701,35 @@ func TestFailed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_test_get_dir' : parameter 'file_type' of type 'TestFileType' not supported
+var testGetDirFunction *gi.Function
+var testGetDirFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_test_get_filename' : parameter 'file_type' of type 'TestFileType' not supported
+func testGetDirFunction_Set() error {
+	var err error
+	testGetDirFunction_Once.Do(func() {
+		testGetDirFunction, err = gi.FunctionInvokerNew("GLib", "test_get_dir")
+	})
+	return err
+}
+
+// TestGetDir is a representation of the C type g_test_get_dir.
+func TestGetDir(fileType TestFileType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(fileType))
+
+	var ret gi.Argument
+
+	err := testGetDirFunction_Set()
+	if err == nil {
+		ret = testGetDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_test_get_filename' : parameter '...' of type 'nil' not supported
 
 var testGetRootFunction *gi.Function
 var testGetRootFunction_Once sync.Once
@@ -7389,7 +7786,33 @@ func TestIncomplete(msg string) {
 
 // UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : parameter 'log_func' of type 'TestLogFatalFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_log_type_name' : parameter 'log_type' of type 'TestLogType' not supported
+var testLogTypeNameFunction *gi.Function
+var testLogTypeNameFunction_Once sync.Once
+
+func testLogTypeNameFunction_Set() error {
+	var err error
+	testLogTypeNameFunction_Once.Do(func() {
+		testLogTypeNameFunction, err = gi.FunctionInvokerNew("GLib", "test_log_type_name")
+	})
+	return err
+}
+
+// TestLogTypeName is a representation of the C type g_test_log_type_name.
+func TestLogTypeName(logType TestLogType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(logType))
+
+	var ret gi.Argument
+
+	err := testLogTypeNameFunction_Set()
+	if err == nil {
+		ret = testLogTypeNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_test_maximized_result' : parameter '...' of type 'nil' not supported
 
@@ -8260,9 +8683,61 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 
 // UNSUPPORTED : C value 'g_unicode_canonical_ordering' : parameter 'string' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unicode_script_from_iso15924' : return type 'UnicodeScript' not supported
+var unicodeScriptFromIso15924Function *gi.Function
+var unicodeScriptFromIso15924Function_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : parameter 'script' of type 'UnicodeScript' not supported
+func unicodeScriptFromIso15924Function_Set() error {
+	var err error
+	unicodeScriptFromIso15924Function_Once.Do(func() {
+		unicodeScriptFromIso15924Function, err = gi.FunctionInvokerNew("GLib", "unicode_script_from_iso15924")
+	})
+	return err
+}
+
+// UnicodeScriptFromIso15924 is a representation of the C type g_unicode_script_from_iso15924.
+func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(iso15924)
+
+	var ret gi.Argument
+
+	err := unicodeScriptFromIso15924Function_Set()
+	if err == nil {
+		ret = unicodeScriptFromIso15924Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UnicodeScript(ret.Int32())
+
+	return retGo
+}
+
+var unicodeScriptToIso15924Function *gi.Function
+var unicodeScriptToIso15924Function_Once sync.Once
+
+func unicodeScriptToIso15924Function_Set() error {
+	var err error
+	unicodeScriptToIso15924Function_Once.Do(func() {
+		unicodeScriptToIso15924Function, err = gi.FunctionInvokerNew("GLib", "unicode_script_to_iso15924")
+	})
+	return err
+}
+
+// UnicodeScriptToIso15924 is a representation of the C type g_unicode_script_to_iso15924.
+func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(script))
+
+	var ret gi.Argument
+
+	err := unicodeScriptToIso15924Function_Set()
+	if err == nil {
+		ret = unicodeScriptToIso15924Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var unixErrorQuarkFunction *gi.Function
 var unixErrorQuarkFunction_Once sync.Once
@@ -8845,7 +9320,35 @@ func Utf8MakeValid(str string, len int32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'mode' of type 'NormalizeMode' not supported
+var utf8NormalizeFunction *gi.Function
+var utf8NormalizeFunction_Once sync.Once
+
+func utf8NormalizeFunction_Set() error {
+	var err error
+	utf8NormalizeFunction_Once.Do(func() {
+		utf8NormalizeFunction, err = gi.FunctionInvokerNew("GLib", "utf8_normalize")
+	})
+	return err
+}
+
+// Utf8Normalize is a representation of the C type g_utf8_normalize.
+func Utf8Normalize(str string, len int32, mode NormalizeMode) string {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetInt32(int32(mode))
+
+	var ret gi.Argument
+
+	err := utf8NormalizeFunction_Set()
+	if err == nil {
+		ret = utf8NormalizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var utf8OffsetToPointerFunction *gi.Function
 var utf8OffsetToPointerFunction_Once sync.Once

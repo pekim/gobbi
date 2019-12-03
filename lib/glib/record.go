@@ -1992,7 +1992,38 @@ type Checksum struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'g_checksum_new' : parameter 'checksum_type' of type 'ChecksumType' not supported
+var checksumNewFunction *gi.Function
+var checksumNewFunction_Once sync.Once
+
+func checksumNewFunction_Set() error {
+	var err error
+	checksumNewFunction_Once.Do(func() {
+		err = checksumStruct_Set()
+		if err != nil {
+			return
+		}
+		checksumNewFunction, err = checksumStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ChecksumNew is a representation of the C type g_checksum_new.
+func ChecksumNew(checksumType ChecksumType) *Checksum {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(checksumType))
+
+	var ret gi.Argument
+
+	err := checksumNewFunction_Set()
+	if err == nil {
+		ret = checksumNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Checksum{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var checksumCopyFunction *gi.Function
 var checksumCopyFunction_Once sync.Once
@@ -2427,7 +2458,40 @@ func DateNew() *Date {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'month' of type 'DateMonth' not supported
+var dateNewDmyFunction *gi.Function
+var dateNewDmyFunction_Once sync.Once
+
+func dateNewDmyFunction_Set() error {
+	var err error
+	dateNewDmyFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateNewDmyFunction, err = dateStruct.InvokerNew("new_dmy")
+	})
+	return err
+}
+
+// DateNewDmy is a representation of the C type g_date_new_dmy.
+func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint8(uint8(day))
+	inArgs[1].SetInt32(int32(month))
+	inArgs[2].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateNewDmyFunction_Set()
+	if err == nil {
+		ret = dateNewDmyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Date{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var dateNewJulianFunction *gi.Function
 var dateNewJulianFunction_Once sync.Once
@@ -2895,7 +2959,37 @@ func (recv *Date) GetMondayWeekOfYear() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_get_month' : return type 'DateMonth' not supported
+var dateGetMonthFunction *gi.Function
+var dateGetMonthFunction_Once sync.Once
+
+func dateGetMonthFunction_Set() error {
+	var err error
+	dateGetMonthFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateGetMonthFunction, err = dateStruct.InvokerNew("get_month")
+	})
+	return err
+}
+
+// GetMonth is a representation of the C type g_date_get_month.
+func (recv *Date) GetMonth() DateMonth {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dateGetMonthFunction_Set()
+	if err == nil {
+		ret = dateGetMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DateMonth(ret.Int32())
+
+	return retGo
+}
 
 var dateGetSundayWeekOfYearFunction *gi.Function
 var dateGetSundayWeekOfYearFunction_Once sync.Once
@@ -2929,7 +3023,37 @@ func (recv *Date) GetSundayWeekOfYear() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_get_weekday' : return type 'DateWeekday' not supported
+var dateGetWeekdayFunction *gi.Function
+var dateGetWeekdayFunction_Once sync.Once
+
+func dateGetWeekdayFunction_Set() error {
+	var err error
+	dateGetWeekdayFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateGetWeekdayFunction, err = dateStruct.InvokerNew("get_weekday")
+	})
+	return err
+}
+
+// GetWeekday is a representation of the C type g_date_get_weekday.
+func (recv *Date) GetWeekday() DateWeekday {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := dateGetWeekdayFunction_Set()
+	if err == nil {
+		ret = dateGetWeekdayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DateWeekday(ret.Int32())
+
+	return retGo
+}
 
 var dateGetYearFunction *gi.Function
 var dateGetYearFunction_Once sync.Once
@@ -3085,7 +3209,36 @@ func (recv *Date) SetDay(day DateDay) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_date_set_dmy' : parameter 'month' of type 'DateMonth' not supported
+var dateSetDmyFunction *gi.Function
+var dateSetDmyFunction_Once sync.Once
+
+func dateSetDmyFunction_Set() error {
+	var err error
+	dateSetDmyFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetDmyFunction, err = dateStruct.InvokerNew("set_dmy")
+	})
+	return err
+}
+
+// SetDmy is a representation of the C type g_date_set_dmy.
+func (recv *Date) SetDmy(day DateDay, month DateMonth, y DateYear) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetUint8(uint8(day))
+	inArgs[2].SetInt32(int32(month))
+	inArgs[3].SetUint16(uint16(y))
+
+	err := dateSetDmyFunction_Set()
+	if err == nil {
+		dateSetDmyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dateSetJulianFunction *gi.Function
 var dateSetJulianFunction_Once sync.Once
@@ -3116,7 +3269,34 @@ func (recv *Date) SetJulian(julianDate uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_date_set_month' : parameter 'month' of type 'DateMonth' not supported
+var dateSetMonthFunction *gi.Function
+var dateSetMonthFunction_Once sync.Once
+
+func dateSetMonthFunction_Set() error {
+	var err error
+	dateSetMonthFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetMonthFunction, err = dateStruct.InvokerNew("set_month")
+	})
+	return err
+}
+
+// SetMonth is a representation of the C type g_date_set_month.
+func (recv *Date) SetMonth(month DateMonth) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(month))
+
+	err := dateSetMonthFunction_Set()
+	if err == nil {
+		dateSetMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dateSetParseFunction *gi.Function
 var dateSetParseFunction_Once sync.Once
@@ -6155,7 +6335,37 @@ func (recv *IOChannel) Close() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_io_channel_flush' : return type 'IOStatus' not supported
+var iOChannelFlushFunction *gi.Function
+var iOChannelFlushFunction_Once sync.Once
+
+func iOChannelFlushFunction_Set() error {
+	var err error
+	iOChannelFlushFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelFlushFunction, err = iOChannelStruct.InvokerNew("flush")
+	})
+	return err
+}
+
+// Flush is a representation of the C type g_io_channel_flush.
+func (recv *IOChannel) Flush() IOStatus {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iOChannelFlushFunction_Set()
+	if err == nil {
+		ret = iOChannelFlushFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_io_channel_get_buffer_condition' : return type 'IOCondition' not supported
 
@@ -6350,13 +6560,112 @@ func (recv *IOChannel) Init() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_io_channel_read' : return type 'IOError' not supported
+var iOChannelReadFunction *gi.Function
+var iOChannelReadFunction_Once sync.Once
+
+func iOChannelReadFunction_Set() error {
+	var err error
+	iOChannelReadFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelReadFunction, err = iOChannelStruct.InvokerNew("read")
+	})
+	return err
+}
+
+// Read is a representation of the C type g_io_channel_read.
+func (recv *IOChannel) Read(buf string, count uint64, bytesRead uint64) IOError {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(buf)
+	inArgs[2].SetUint64(count)
+	inArgs[3].SetUint64(bytesRead)
+
+	var ret gi.Argument
+
+	err := iOChannelReadFunction_Set()
+	if err == nil {
+		ret = iOChannelReadFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOError(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_io_channel_read_chars' : parameter 'buf' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_read_line' : return type 'IOStatus' not supported
+var iOChannelReadLineFunction *gi.Function
+var iOChannelReadLineFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_channel_read_line_string' : return type 'IOStatus' not supported
+func iOChannelReadLineFunction_Set() error {
+	var err error
+	iOChannelReadLineFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelReadLineFunction, err = iOChannelStruct.InvokerNew("read_line")
+	})
+	return err
+}
+
+// ReadLine is a representation of the C type g_io_channel_read_line.
+func (recv *IOChannel) ReadLine() (IOStatus, string, uint64, uint64) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := iOChannelReadLineFunction_Set()
+	if err == nil {
+		ret = iOChannelReadLineFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := IOStatus(ret.Int32())
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Uint64()
+	out2 := outArgs[2].Uint64()
+
+	return retGo, out0, out1, out2
+}
+
+var iOChannelReadLineStringFunction *gi.Function
+var iOChannelReadLineStringFunction_Once sync.Once
+
+func iOChannelReadLineStringFunction_Set() error {
+	var err error
+	iOChannelReadLineStringFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelReadLineStringFunction, err = iOChannelStruct.InvokerNew("read_line_string")
+	})
+	return err
+}
+
+// ReadLineString is a representation of the C type g_io_channel_read_line_string.
+func (recv *IOChannel) ReadLineString(buffer *String, terminatorPos uint64) IOStatus {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(buffer.Native)
+	inArgs[2].SetUint64(terminatorPos)
+
+	var ret gi.Argument
+
+	err := iOChannelReadLineStringFunction_Set()
+	if err == nil {
+		ret = iOChannelReadLineStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_io_channel_read_to_end' : parameter 'str_return' of type 'nil' not supported
 
@@ -6395,9 +6704,73 @@ func (recv *IOChannel) Ref() *IOChannel {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_seek' : parameter 'type' of type 'SeekType' not supported
+var iOChannelSeekFunction *gi.Function
+var iOChannelSeekFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_channel_seek_position' : parameter 'type' of type 'SeekType' not supported
+func iOChannelSeekFunction_Set() error {
+	var err error
+	iOChannelSeekFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSeekFunction, err = iOChannelStruct.InvokerNew("seek")
+	})
+	return err
+}
+
+// Seek is a representation of the C type g_io_channel_seek.
+func (recv *IOChannel) Seek(offset int64, type_ SeekType) IOError {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt64(offset)
+	inArgs[2].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := iOChannelSeekFunction_Set()
+	if err == nil {
+		ret = iOChannelSeekFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOError(ret.Int32())
+
+	return retGo
+}
+
+var iOChannelSeekPositionFunction *gi.Function
+var iOChannelSeekPositionFunction_Once sync.Once
+
+func iOChannelSeekPositionFunction_Set() error {
+	var err error
+	iOChannelSeekPositionFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSeekPositionFunction, err = iOChannelStruct.InvokerNew("seek_position")
+	})
+	return err
+}
+
+// SeekPosition is a representation of the C type g_io_channel_seek_position.
+func (recv *IOChannel) SeekPosition(offset int64, type_ SeekType) IOStatus {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt64(offset)
+	inArgs[2].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := iOChannelSeekPositionFunction_Set()
+	if err == nil {
+		ret = iOChannelSeekPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 var iOChannelSetBufferSizeFunction *gi.Function
 var iOChannelSetBufferSizeFunction_Once sync.Once
@@ -6486,7 +6859,38 @@ func (recv *IOChannel) SetCloseOnUnref(doClose bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_io_channel_set_encoding' : return type 'IOStatus' not supported
+var iOChannelSetEncodingFunction *gi.Function
+var iOChannelSetEncodingFunction_Once sync.Once
+
+func iOChannelSetEncodingFunction_Set() error {
+	var err error
+	iOChannelSetEncodingFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSetEncodingFunction, err = iOChannelStruct.InvokerNew("set_encoding")
+	})
+	return err
+}
+
+// SetEncoding is a representation of the C type g_io_channel_set_encoding.
+func (recv *IOChannel) SetEncoding(encoding string) IOStatus {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(encoding)
+
+	var ret gi.Argument
+
+	err := iOChannelSetEncodingFunction_Set()
+	if err == nil {
+		ret = iOChannelSetEncodingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_io_channel_set_flags' : parameter 'flags' of type 'IOFlags' not supported
 
@@ -6520,7 +6924,38 @@ func (recv *IOChannel) SetLineTerm(lineTerm string, length int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_io_channel_shutdown' : return type 'IOStatus' not supported
+var iOChannelShutdownFunction *gi.Function
+var iOChannelShutdownFunction_Once sync.Once
+
+func iOChannelShutdownFunction_Set() error {
+	var err error
+	iOChannelShutdownFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelShutdownFunction, err = iOChannelStruct.InvokerNew("shutdown")
+	})
+	return err
+}
+
+// Shutdown is a representation of the C type g_io_channel_shutdown.
+func (recv *IOChannel) Shutdown(flush bool) IOStatus {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetBoolean(flush)
+
+	var ret gi.Argument
+
+	err := iOChannelShutdownFunction_Set()
+	if err == nil {
+		ret = iOChannelShutdownFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 var iOChannelUnixGetFdFunction *gi.Function
 var iOChannelUnixGetFdFunction_Once sync.Once
@@ -6582,7 +7017,40 @@ func (recv *IOChannel) Unref() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_io_channel_write' : return type 'IOError' not supported
+var iOChannelWriteFunction *gi.Function
+var iOChannelWriteFunction_Once sync.Once
+
+func iOChannelWriteFunction_Set() error {
+	var err error
+	iOChannelWriteFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelWriteFunction, err = iOChannelStruct.InvokerNew("write")
+	})
+	return err
+}
+
+// Write is a representation of the C type g_io_channel_write.
+func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOError {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(buf)
+	inArgs[2].SetUint64(count)
+	inArgs[3].SetUint64(bytesWritten)
+
+	var ret gi.Argument
+
+	err := iOChannelWriteFunction_Set()
+	if err == nil {
+		ret = iOChannelWriteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOError(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_io_channel_write_chars' : parameter 'buf' of type 'nil' not supported
 
@@ -10162,7 +10630,7 @@ func (recv *Node) Destroy() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_node_find' : parameter 'order' of type 'TraverseType' not supported
+// UNSUPPORTED : C value 'g_node_find' : parameter 'flags' of type 'TraverseFlags' not supported
 
 // UNSUPPORTED : C value 'g_node_find_child' : parameter 'flags' of type 'TraverseFlags' not supported
 
@@ -10598,7 +11066,7 @@ func (recv *Node) ReverseChildren() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_node_traverse' : parameter 'order' of type 'TraverseType' not supported
+// UNSUPPORTED : C value 'g_node_traverse' : parameter 'flags' of type 'TraverseFlags' not supported
 
 var nodeUnlinkFunction *gi.Function
 var nodeUnlinkFunction_Once sync.Once
@@ -10659,9 +11127,19 @@ type Once struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'status' : for field getter : no Go type for 'OnceStatus'
+// FieldStatus returns the C field 'status'.
+func (recv *Once) FieldStatus() OnceStatus {
+	argValue := gi.FieldGet(onceStruct, recv.Native, "status")
+	value := OnceStatus(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'status' : for field setter : no Go type for 'OnceStatus'
+// SetFieldStatus sets the value of the C field 'status'.
+func (recv *Once) SetFieldStatus(value OnceStatus) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(onceStruct, recv.Native, "status", argValue)
+}
 
 // UNSUPPORTED : C value 'retval' : for field getter : no Go type for 'gpointer'
 
@@ -11296,9 +11774,19 @@ func (recv *OptionEntry) SetFieldFlags(value int32) {
 	gi.FieldSet(optionEntryStruct, recv.Native, "flags", argValue)
 }
 
-// UNSUPPORTED : C value 'arg' : for field getter : no Go type for 'OptionArg'
+// FieldArg returns the C field 'arg'.
+func (recv *OptionEntry) FieldArg() OptionArg {
+	argValue := gi.FieldGet(optionEntryStruct, recv.Native, "arg")
+	value := OptionArg(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'arg' : for field setter : no Go type for 'OptionArg'
+// SetFieldArg sets the value of the C field 'arg'.
+func (recv *OptionEntry) SetFieldArg(value OptionArg) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(optionEntryStruct, recv.Native, "arg", argValue)
+}
 
 // UNSUPPORTED : C value 'arg_data' : for field getter : no Go type for 'gpointer'
 
@@ -13245,9 +13733,19 @@ func (recv *Scanner) SetFieldConfig(value *ScannerConfig) {
 	gi.FieldSet(scannerStruct, recv.Native, "config", argValue)
 }
 
-// UNSUPPORTED : C value 'token' : for field getter : no Go type for 'TokenType'
+// FieldToken returns the C field 'token'.
+func (recv *Scanner) FieldToken() TokenType {
+	argValue := gi.FieldGet(scannerStruct, recv.Native, "token")
+	value := TokenType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'token' : for field setter : no Go type for 'TokenType'
+// SetFieldToken sets the value of the C field 'token'.
+func (recv *Scanner) SetFieldToken(value TokenType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(scannerStruct, recv.Native, "token", argValue)
+}
 
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'TokenValue'
 
@@ -13281,9 +13779,19 @@ func (recv *Scanner) SetFieldPosition(value uint32) {
 	gi.FieldSet(scannerStruct, recv.Native, "position", argValue)
 }
 
-// UNSUPPORTED : C value 'next_token' : for field getter : no Go type for 'TokenType'
+// FieldNextToken returns the C field 'next_token'.
+func (recv *Scanner) FieldNextToken() TokenType {
+	argValue := gi.FieldGet(scannerStruct, recv.Native, "next_token")
+	value := TokenType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'next_token' : for field setter : no Go type for 'TokenType'
+// SetFieldNextToken sets the value of the C field 'next_token'.
+func (recv *Scanner) SetFieldNextToken(value TokenType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(scannerStruct, recv.Native, "next_token", argValue)
+}
 
 // UNSUPPORTED : C value 'next_value' : for field getter : no Go type for 'TokenValue'
 
@@ -13385,7 +13893,37 @@ func (recv *Scanner) CurPosition() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_scanner_cur_token' : return type 'TokenType' not supported
+var scannerCurTokenFunction *gi.Function
+var scannerCurTokenFunction_Once sync.Once
+
+func scannerCurTokenFunction_Set() error {
+	var err error
+	scannerCurTokenFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerCurTokenFunction, err = scannerStruct.InvokerNew("cur_token")
+	})
+	return err
+}
+
+// CurToken is a representation of the C type g_scanner_cur_token.
+func (recv *Scanner) CurToken() TokenType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scannerCurTokenFunction_Set()
+	if err == nil {
+		ret = scannerCurTokenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TokenType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_scanner_cur_value' : return type 'TokenValue' not supported
 
@@ -13451,7 +13989,37 @@ func (recv *Scanner) Eof() bool {
 
 // UNSUPPORTED : C value 'g_scanner_error' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_scanner_get_next_token' : return type 'TokenType' not supported
+var scannerGetNextTokenFunction *gi.Function
+var scannerGetNextTokenFunction_Once sync.Once
+
+func scannerGetNextTokenFunction_Set() error {
+	var err error
+	scannerGetNextTokenFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerGetNextTokenFunction, err = scannerStruct.InvokerNew("get_next_token")
+	})
+	return err
+}
+
+// GetNextToken is a representation of the C type g_scanner_get_next_token.
+func (recv *Scanner) GetNextToken() TokenType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scannerGetNextTokenFunction_Set()
+	if err == nil {
+		ret = scannerGetNextTokenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TokenType(ret.Int32())
+
+	return retGo
+}
 
 var scannerInputFileFunction *gi.Function
 var scannerInputFileFunction_Once sync.Once
@@ -13514,7 +14082,37 @@ func (recv *Scanner) InputText(text string, textLen uint32) {
 
 // UNSUPPORTED : C value 'g_scanner_lookup_symbol' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_scanner_peek_next_token' : return type 'TokenType' not supported
+var scannerPeekNextTokenFunction *gi.Function
+var scannerPeekNextTokenFunction_Once sync.Once
+
+func scannerPeekNextTokenFunction_Set() error {
+	var err error
+	scannerPeekNextTokenFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerPeekNextTokenFunction, err = scannerStruct.InvokerNew("peek_next_token")
+	})
+	return err
+}
+
+// PeekNextToken is a representation of the C type g_scanner_peek_next_token.
+func (recv *Scanner) PeekNextToken() TokenType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scannerPeekNextTokenFunction_Set()
+	if err == nil {
+		ret = scannerPeekNextTokenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TokenType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_scanner_scope_add_symbol' : parameter 'value' of type 'gpointer' not supported
 
@@ -13613,7 +14211,39 @@ func (recv *Scanner) SyncFileOffset() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_scanner_unexp_token' : parameter 'expected_token' of type 'TokenType' not supported
+var scannerUnexpTokenFunction *gi.Function
+var scannerUnexpTokenFunction_Once sync.Once
+
+func scannerUnexpTokenFunction_Set() error {
+	var err error
+	scannerUnexpTokenFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerUnexpTokenFunction, err = scannerStruct.InvokerNew("unexp_token")
+	})
+	return err
+}
+
+// UnexpToken is a representation of the C type g_scanner_unexp_token.
+func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, symbolSpec string, symbolName string, message string, isError int32) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(expectedToken))
+	inArgs[2].SetString(identifierSpec)
+	inArgs[3].SetString(symbolSpec)
+	inArgs[4].SetString(symbolName)
+	inArgs[5].SetString(message)
+	inArgs[6].SetInt32(isError)
+
+	err := scannerUnexpTokenFunction_Set()
+	if err == nil {
+		scannerUnexpTokenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_scanner_warn' : parameter '...' of type 'nil' not supported
 
@@ -16824,9 +17454,19 @@ type TestLogMsg struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'log_type' : for field getter : no Go type for 'TestLogType'
+// FieldLogType returns the C field 'log_type'.
+func (recv *TestLogMsg) FieldLogType() TestLogType {
+	argValue := gi.FieldGet(testLogMsgStruct, recv.Native, "log_type")
+	value := TestLogType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'log_type' : for field setter : no Go type for 'TestLogType'
+// SetFieldLogType sets the value of the C field 'log_type'.
+func (recv *TestLogMsg) SetFieldLogType(value TestLogType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(testLogMsgStruct, recv.Native, "log_type", argValue)
+}
 
 // FieldNStrings returns the C field 'n_strings'.
 func (recv *TestLogMsg) FieldNStrings() uint32 {
@@ -17570,9 +18210,73 @@ func TimeZoneNewUtc() *TimeZone {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_time_zone_adjust_time' : parameter 'type' of type 'TimeType' not supported
+var timeZoneAdjustTimeFunction *gi.Function
+var timeZoneAdjustTimeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_time_zone_find_interval' : parameter 'type' of type 'TimeType' not supported
+func timeZoneAdjustTimeFunction_Set() error {
+	var err error
+	timeZoneAdjustTimeFunction_Once.Do(func() {
+		err = timeZoneStruct_Set()
+		if err != nil {
+			return
+		}
+		timeZoneAdjustTimeFunction, err = timeZoneStruct.InvokerNew("adjust_time")
+	})
+	return err
+}
+
+// AdjustTime is a representation of the C type g_time_zone_adjust_time.
+func (recv *TimeZone) AdjustTime(type_ TimeType, time int64) int32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetInt64(time)
+
+	var ret gi.Argument
+
+	err := timeZoneAdjustTimeFunction_Set()
+	if err == nil {
+		ret = timeZoneAdjustTimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var timeZoneFindIntervalFunction *gi.Function
+var timeZoneFindIntervalFunction_Once sync.Once
+
+func timeZoneFindIntervalFunction_Set() error {
+	var err error
+	timeZoneFindIntervalFunction_Once.Do(func() {
+		err = timeZoneStruct_Set()
+		if err != nil {
+			return
+		}
+		timeZoneFindIntervalFunction, err = timeZoneStruct.InvokerNew("find_interval")
+	})
+	return err
+}
+
+// FindInterval is a representation of the C type g_time_zone_find_interval.
+func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetInt64(time)
+
+	var ret gi.Argument
+
+	err := timeZoneFindIntervalFunction_Set()
+	if err == nil {
+		ret = timeZoneFindIntervalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var timeZoneGetAbbreviationFunction *gi.Function
 var timeZoneGetAbbreviationFunction_Once sync.Once
@@ -18956,7 +19660,37 @@ func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) bool 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_classify' : return type 'VariantClass' not supported
+var variantClassifyFunction *gi.Function
+var variantClassifyFunction_Once sync.Once
+
+func variantClassifyFunction_Set() error {
+	var err error
+	variantClassifyFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantClassifyFunction, err = variantStruct.InvokerNew("classify")
+	})
+	return err
+}
+
+// Classify is a representation of the C type g_variant_classify.
+func (recv *Variant) Classify() VariantClass {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := variantClassifyFunction_Set()
+	if err == nil {
+		ret = variantClassifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantClass(ret.Int32())
+
+	return retGo
+}
 
 var variantCompareFunction *gi.Function
 var variantCompareFunction_Once sync.Once

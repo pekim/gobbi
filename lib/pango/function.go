@@ -185,9 +185,63 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_attr_gravity_hint_new' : parameter 'hint' of type 'GravityHint' not supported
+var attrGravityHintNewFunction *gi.Function
+var attrGravityHintNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attr_gravity_new' : parameter 'gravity' of type 'Gravity' not supported
+func attrGravityHintNewFunction_Set() error {
+	var err error
+	attrGravityHintNewFunction_Once.Do(func() {
+		attrGravityHintNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_gravity_hint_new")
+	})
+	return err
+}
+
+// AttrGravityHintNew is a representation of the C type pango_attr_gravity_hint_new.
+func AttrGravityHintNew(hint GravityHint) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(hint))
+
+	var ret gi.Argument
+
+	err := attrGravityHintNewFunction_Set()
+	if err == nil {
+		ret = attrGravityHintNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var attrGravityNewFunction *gi.Function
+var attrGravityNewFunction_Once sync.Once
+
+func attrGravityNewFunction_Set() error {
+	var err error
+	attrGravityNewFunction_Once.Do(func() {
+		attrGravityNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_gravity_new")
+	})
+	return err
+}
+
+// AttrGravityNew is a representation of the C type pango_attr_gravity_new.
+func AttrGravityNew(gravity Gravity) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(gravity))
+
+	var ret gi.Argument
+
+	err := attrGravityNewFunction_Set()
+	if err == nil {
+		ret = attrGravityNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var attrLetterSpacingNewFunction *gi.Function
 var attrLetterSpacingNewFunction_Once sync.Once
@@ -276,7 +330,34 @@ func AttrScaleNew(scaleFactor float64) *Attribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_attr_stretch_new' : parameter 'stretch' of type 'Stretch' not supported
+var attrStretchNewFunction *gi.Function
+var attrStretchNewFunction_Once sync.Once
+
+func attrStretchNewFunction_Set() error {
+	var err error
+	attrStretchNewFunction_Once.Do(func() {
+		attrStretchNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_stretch_new")
+	})
+	return err
+}
+
+// AttrStretchNew is a representation of the C type pango_attr_stretch_new.
+func AttrStretchNew(stretch Stretch) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(stretch))
+
+	var ret gi.Argument
+
+	err := attrStretchNewFunction_Set()
+	if err == nil {
+		ret = attrStretchNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var attrStrikethroughColorNewFunction *gi.Function
 var attrStrikethroughColorNewFunction_Once sync.Once
@@ -338,11 +419,90 @@ func AttrStrikethroughNew(strikethrough bool) *Attribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_attr_style_new' : parameter 'style' of type 'Style' not supported
+var attrStyleNewFunction *gi.Function
+var attrStyleNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attr_type_get_name' : parameter 'type' of type 'AttrType' not supported
+func attrStyleNewFunction_Set() error {
+	var err error
+	attrStyleNewFunction_Once.Do(func() {
+		attrStyleNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_style_new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_attr_type_register' : return type 'AttrType' not supported
+// AttrStyleNew is a representation of the C type pango_attr_style_new.
+func AttrStyleNew(style Style) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(style))
+
+	var ret gi.Argument
+
+	err := attrStyleNewFunction_Set()
+	if err == nil {
+		ret = attrStyleNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var attrTypeGetNameFunction *gi.Function
+var attrTypeGetNameFunction_Once sync.Once
+
+func attrTypeGetNameFunction_Set() error {
+	var err error
+	attrTypeGetNameFunction_Once.Do(func() {
+		attrTypeGetNameFunction, err = gi.FunctionInvokerNew("Pango", "attr_type_get_name")
+	})
+	return err
+}
+
+// AttrTypeGetName is a representation of the C type pango_attr_type_get_name.
+func AttrTypeGetName(type_ AttrType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := attrTypeGetNameFunction_Set()
+	if err == nil {
+		ret = attrTypeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var attrTypeRegisterFunction *gi.Function
+var attrTypeRegisterFunction_Once sync.Once
+
+func attrTypeRegisterFunction_Set() error {
+	var err error
+	attrTypeRegisterFunction_Once.Do(func() {
+		attrTypeRegisterFunction, err = gi.FunctionInvokerNew("Pango", "attr_type_register")
+	})
+	return err
+}
+
+// AttrTypeRegister is a representation of the C type pango_attr_type_register.
+func AttrTypeRegister(name string) AttrType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := attrTypeRegisterFunction_Set()
+	if err == nil {
+		ret = attrTypeRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AttrType(ret.Int32())
+
+	return retGo
+}
 
 var attrUnderlineColorNewFunction *gi.Function
 var attrUnderlineColorNewFunction_Once sync.Once
@@ -375,11 +535,92 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_attr_underline_new' : parameter 'underline' of type 'Underline' not supported
+var attrUnderlineNewFunction *gi.Function
+var attrUnderlineNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attr_variant_new' : parameter 'variant' of type 'Variant' not supported
+func attrUnderlineNewFunction_Set() error {
+	var err error
+	attrUnderlineNewFunction_Once.Do(func() {
+		attrUnderlineNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_underline_new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_attr_weight_new' : parameter 'weight' of type 'Weight' not supported
+// AttrUnderlineNew is a representation of the C type pango_attr_underline_new.
+func AttrUnderlineNew(underline Underline) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(underline))
+
+	var ret gi.Argument
+
+	err := attrUnderlineNewFunction_Set()
+	if err == nil {
+		ret = attrUnderlineNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var attrVariantNewFunction *gi.Function
+var attrVariantNewFunction_Once sync.Once
+
+func attrVariantNewFunction_Set() error {
+	var err error
+	attrVariantNewFunction_Once.Do(func() {
+		attrVariantNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_variant_new")
+	})
+	return err
+}
+
+// AttrVariantNew is a representation of the C type pango_attr_variant_new.
+func AttrVariantNew(variant Variant) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(variant))
+
+	var ret gi.Argument
+
+	err := attrVariantNewFunction_Set()
+	if err == nil {
+		ret = attrVariantNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var attrWeightNewFunction *gi.Function
+var attrWeightNewFunction_Once sync.Once
+
+func attrWeightNewFunction_Set() error {
+	var err error
+	attrWeightNewFunction_Once.Do(func() {
+		attrWeightNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_weight_new")
+	})
+	return err
+}
+
+// AttrWeightNew is a representation of the C type pango_attr_weight_new.
+func AttrWeightNew(weight Weight) *Attribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(weight))
+
+	var ret gi.Argument
+
+	err := attrWeightNewFunction_Set()
+	if err == nil {
+		ret = attrWeightNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_bidi_type_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
@@ -494,7 +735,34 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_find_base_dir' : return type 'Direction' not supported
+var findBaseDirFunction *gi.Function
+var findBaseDirFunction_Once sync.Once
+
+func findBaseDirFunction_Set() error {
+	var err error
+	findBaseDirFunction_Once.Do(func() {
+		findBaseDirFunction, err = gi.FunctionInvokerNew("Pango", "find_base_dir")
+	})
+	return err
+}
+
+// FindBaseDir is a representation of the C type pango_find_base_dir.
+func FindBaseDir(text string, length int32) Direction {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := findBaseDirFunction_Set()
+	if err == nil {
+		ret = findBaseDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Direction(ret.Int32())
+
+	return retGo
+}
 
 var findMapFunction *gi.Function
 var findMapFunction_Once sync.Once
@@ -642,19 +910,128 @@ func GetSysconfSubdirectory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : return type 'Gravity' not supported
+var gravityGetForMatrixFunction *gi.Function
+var gravityGetForMatrixFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_gravity_get_for_script' : parameter 'script' of type 'Script' not supported
+func gravityGetForMatrixFunction_Set() error {
+	var err error
+	gravityGetForMatrixFunction_Once.Do(func() {
+		gravityGetForMatrixFunction, err = gi.FunctionInvokerNew("Pango", "gravity_get_for_matrix")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_gravity_get_for_script_and_width' : parameter 'script' of type 'Script' not supported
+// GravityGetForMatrix is a representation of the C type pango_gravity_get_for_matrix.
+func GravityGetForMatrix(matrix *Matrix) Gravity {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(matrix.Native)
 
-// UNSUPPORTED : C value 'pango_gravity_to_rotation' : parameter 'gravity' of type 'Gravity' not supported
+	var ret gi.Argument
+
+	err := gravityGetForMatrixFunction_Set()
+	if err == nil {
+		ret = gravityGetForMatrixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
+
+var gravityGetForScriptFunction *gi.Function
+var gravityGetForScriptFunction_Once sync.Once
+
+func gravityGetForScriptFunction_Set() error {
+	var err error
+	gravityGetForScriptFunction_Once.Do(func() {
+		gravityGetForScriptFunction, err = gi.FunctionInvokerNew("Pango", "gravity_get_for_script")
+	})
+	return err
+}
+
+// GravityGetForScript is a representation of the C type pango_gravity_get_for_script.
+func GravityGetForScript(script Script, baseGravity Gravity, hint GravityHint) Gravity {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(script))
+	inArgs[1].SetInt32(int32(baseGravity))
+	inArgs[2].SetInt32(int32(hint))
+
+	var ret gi.Argument
+
+	err := gravityGetForScriptFunction_Set()
+	if err == nil {
+		ret = gravityGetForScriptFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
+
+var gravityGetForScriptAndWidthFunction *gi.Function
+var gravityGetForScriptAndWidthFunction_Once sync.Once
+
+func gravityGetForScriptAndWidthFunction_Set() error {
+	var err error
+	gravityGetForScriptAndWidthFunction_Once.Do(func() {
+		gravityGetForScriptAndWidthFunction, err = gi.FunctionInvokerNew("Pango", "gravity_get_for_script_and_width")
+	})
+	return err
+}
+
+// GravityGetForScriptAndWidth is a representation of the C type pango_gravity_get_for_script_and_width.
+func GravityGetForScriptAndWidth(script Script, wide bool, baseGravity Gravity, hint GravityHint) Gravity {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetInt32(int32(script))
+	inArgs[1].SetBoolean(wide)
+	inArgs[2].SetInt32(int32(baseGravity))
+	inArgs[3].SetInt32(int32(hint))
+
+	var ret gi.Argument
+
+	err := gravityGetForScriptAndWidthFunction_Set()
+	if err == nil {
+		ret = gravityGetForScriptAndWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
+
+var gravityToRotationFunction *gi.Function
+var gravityToRotationFunction_Once sync.Once
+
+func gravityToRotationFunction_Set() error {
+	var err error
+	gravityToRotationFunction_Once.Do(func() {
+		gravityToRotationFunction, err = gi.FunctionInvokerNew("Pango", "gravity_to_rotation")
+	})
+	return err
+}
+
+// GravityToRotation is a representation of the C type pango_gravity_to_rotation.
+func GravityToRotation(gravity Gravity) float64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(gravity))
+
+	var ret gi.Argument
+
+	err := gravityToRotationFunction_Set()
+	if err == nil {
+		ret = gravityToRotationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_is_zero_width' : parameter 'ch' of type 'gunichar' not supported
 
 // UNSUPPORTED : C value 'pango_itemize' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'base_dir' of type 'Direction' not supported
+// UNSUPPORTED : C value 'pango_itemize_with_base_dir' : return type 'GLib.List' not supported
 
 var languageFromStringFunction *gi.Function
 var languageFromStringFunction_Once sync.Once
@@ -712,7 +1089,35 @@ func LanguageGetDefault() *Language {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
+var log2visGetEmbeddingLevelsFunction *gi.Function
+var log2visGetEmbeddingLevelsFunction_Once sync.Once
+
+func log2visGetEmbeddingLevelsFunction_Set() error {
+	var err error
+	log2visGetEmbeddingLevelsFunction_Once.Do(func() {
+		log2visGetEmbeddingLevelsFunction, err = gi.FunctionInvokerNew("Pango", "log2vis_get_embedding_levels")
+	})
+	return err
+}
+
+// Log2visGetEmbeddingLevels is a representation of the C type pango_log2vis_get_embedding_levels.
+func Log2visGetEmbeddingLevels(text string, length int32, pbaseDir Direction) uint8 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+	inArgs[2].SetInt32(int32(pbaseDir))
+
+	var ret gi.Argument
+
+	err := log2visGetEmbeddingLevelsFunction_Set()
+	if err == nil {
+		ret = log2visGetEmbeddingLevelsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' of type 'nil' not supported
 
@@ -748,13 +1153,129 @@ func ModuleRegister(module *IncludedModule) {
 
 // UNSUPPORTED : C value 'pango_parse_markup' : parameter 'accel_marker' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_parse_stretch' : parameter 'stretch' of type 'Stretch' not supported
+var parseStretchFunction *gi.Function
+var parseStretchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_parse_style' : parameter 'style' of type 'Style' not supported
+func parseStretchFunction_Set() error {
+	var err error
+	parseStretchFunction_Once.Do(func() {
+		parseStretchFunction, err = gi.FunctionInvokerNew("Pango", "parse_stretch")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_parse_variant' : parameter 'variant' of type 'Variant' not supported
+// ParseStretch is a representation of the C type pango_parse_stretch.
+func ParseStretch(str string, warn bool) (bool, Stretch) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetBoolean(warn)
 
-// UNSUPPORTED : C value 'pango_parse_weight' : parameter 'weight' of type 'Weight' not supported
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := parseStretchFunction_Set()
+	if err == nil {
+		ret = parseStretchFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := Stretch(outArgs[0].Int32())
+
+	return retGo, out0
+}
+
+var parseStyleFunction *gi.Function
+var parseStyleFunction_Once sync.Once
+
+func parseStyleFunction_Set() error {
+	var err error
+	parseStyleFunction_Once.Do(func() {
+		parseStyleFunction, err = gi.FunctionInvokerNew("Pango", "parse_style")
+	})
+	return err
+}
+
+// ParseStyle is a representation of the C type pango_parse_style.
+func ParseStyle(str string, warn bool) (bool, Style) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetBoolean(warn)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := parseStyleFunction_Set()
+	if err == nil {
+		ret = parseStyleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := Style(outArgs[0].Int32())
+
+	return retGo, out0
+}
+
+var parseVariantFunction *gi.Function
+var parseVariantFunction_Once sync.Once
+
+func parseVariantFunction_Set() error {
+	var err error
+	parseVariantFunction_Once.Do(func() {
+		parseVariantFunction, err = gi.FunctionInvokerNew("Pango", "parse_variant")
+	})
+	return err
+}
+
+// ParseVariant is a representation of the C type pango_parse_variant.
+func ParseVariant(str string, warn bool) (bool, Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetBoolean(warn)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := parseVariantFunction_Set()
+	if err == nil {
+		ret = parseVariantFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := Variant(outArgs[0].Int32())
+
+	return retGo, out0
+}
+
+var parseWeightFunction *gi.Function
+var parseWeightFunction_Once sync.Once
+
+func parseWeightFunction_Set() error {
+	var err error
+	parseWeightFunction_Once.Do(func() {
+		parseWeightFunction, err = gi.FunctionInvokerNew("Pango", "parse_weight")
+	})
+	return err
+}
+
+// ParseWeight is a representation of the C type pango_parse_weight.
+func ParseWeight(str string, warn bool) (bool, Weight) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetBoolean(warn)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := parseWeightFunction_Set()
+	if err == nil {
+		ret = parseWeightFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := Weight(outArgs[0].Int32())
+
+	return retGo, out0
+}
 
 var quantizeLineGeometryFunction *gi.Function
 var quantizeLineGeometryFunction_Once sync.Once
@@ -827,7 +1348,34 @@ func ScanInt(pos string) (bool, string, int32) {
 
 // UNSUPPORTED : C value 'pango_script_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_script_get_sample_language' : parameter 'script' of type 'Script' not supported
+var scriptGetSampleLanguageFunction *gi.Function
+var scriptGetSampleLanguageFunction_Once sync.Once
+
+func scriptGetSampleLanguageFunction_Set() error {
+	var err error
+	scriptGetSampleLanguageFunction_Once.Do(func() {
+		scriptGetSampleLanguageFunction, err = gi.FunctionInvokerNew("Pango", "script_get_sample_language")
+	})
+	return err
+}
+
+// ScriptGetSampleLanguage is a representation of the C type pango_script_get_sample_language.
+func ScriptGetSampleLanguage(script Script) *Language {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(script))
+
+	var ret gi.Argument
+
+	err := scriptGetSampleLanguageFunction_Set()
+	if err == nil {
+		ret = scriptGetSampleLanguageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Language{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var shapeFunction *gi.Function
 var shapeFunction_Once sync.Once

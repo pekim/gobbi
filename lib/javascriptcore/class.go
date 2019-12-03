@@ -202,7 +202,45 @@ func ContextNewWithVirtualMachine(vm *VirtualMachine) *Context {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_context_check_syntax' : parameter 'mode' of type 'CheckSyntaxMode' not supported
+var contextCheckSyntaxFunction *gi.Function
+var contextCheckSyntaxFunction_Once sync.Once
+
+func contextCheckSyntaxFunction_Set() error {
+	var err error
+	contextCheckSyntaxFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextCheckSyntaxFunction, err = contextStruct.InvokerNew("check_syntax")
+	})
+	return err
+}
+
+// CheckSyntax is a representation of the C type jsc_context_check_syntax.
+func (recv *Context) CheckSyntax(code string, length int32, mode CheckSyntaxMode, uri string, lineNumber uint32) (CheckSyntaxResult, *Exception) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(code)
+	inArgs[2].SetInt32(length)
+	inArgs[3].SetInt32(int32(mode))
+	inArgs[4].SetString(uri)
+	inArgs[5].SetUint32(lineNumber)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := contextCheckSyntaxFunction_Set()
+	if err == nil {
+		ret = contextCheckSyntaxFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := CheckSyntaxResult(ret.Int32())
+	out0 := &Exception{}
+	out0.Native = outArgs[0].Pointer()
+
+	return retGo, out0
+}
 
 var contextClearExceptionFunction *gi.Function
 var contextClearExceptionFunction_Once sync.Once

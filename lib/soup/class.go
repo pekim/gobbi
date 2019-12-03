@@ -63,7 +63,39 @@ func AddressNew(name string, port uint32) *Address {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_address_new_any' : parameter 'family' of type 'AddressFamily' not supported
+var addressNewAnyFunction *gi.Function
+var addressNewAnyFunction_Once sync.Once
+
+func addressNewAnyFunction_Set() error {
+	var err error
+	addressNewAnyFunction_Once.Do(func() {
+		err = addressStruct_Set()
+		if err != nil {
+			return
+		}
+		addressNewAnyFunction, err = addressStruct.InvokerNew("new_any")
+	})
+	return err
+}
+
+// AddressNewAny is a representation of the C type soup_address_new_any.
+func AddressNewAny(family AddressFamily, port uint32) *Address {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(family))
+	inArgs[1].SetUint32(port)
+
+	var ret gi.Argument
+
+	err := addressNewAnyFunction_Set()
+	if err == nil {
+		ret = addressNewAnyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Address{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_address_new_from_sockaddr' : parameter 'sa' of type 'gpointer' not supported
 
@@ -1448,7 +1480,39 @@ func (recv *Cache) SetFieldPriv(value *CachePrivate) {
 	gi.FieldSet(cacheStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_cache_new' : parameter 'cache_type' of type 'CacheType' not supported
+var cacheNewFunction *gi.Function
+var cacheNewFunction_Once sync.Once
+
+func cacheNewFunction_Set() error {
+	var err error
+	cacheNewFunction_Once.Do(func() {
+		err = cacheStruct_Set()
+		if err != nil {
+			return
+		}
+		cacheNewFunction, err = cacheStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CacheNew is a representation of the C type soup_cache_new.
+func CacheNew(cacheDir string, cacheType CacheType) *Cache {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(cacheDir)
+	inArgs[1].SetInt32(int32(cacheType))
+
+	var ret gi.Argument
+
+	err := cacheNewFunction_Set()
+	if err == nil {
+		ret = cacheNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Cache{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var cacheClearFunction *gi.Function
 var cacheClearFunction_Once sync.Once
@@ -1943,7 +2007,37 @@ func (recv *CookieJar) DeleteCookie(cookie *Cookie) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_cookie_jar_get_accept_policy' : return type 'CookieJarAcceptPolicy' not supported
+var cookieJarGetAcceptPolicyFunction *gi.Function
+var cookieJarGetAcceptPolicyFunction_Once sync.Once
+
+func cookieJarGetAcceptPolicyFunction_Set() error {
+	var err error
+	cookieJarGetAcceptPolicyFunction_Once.Do(func() {
+		err = cookieJarStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieJarGetAcceptPolicyFunction, err = cookieJarStruct.InvokerNew("get_accept_policy")
+	})
+	return err
+}
+
+// GetAcceptPolicy is a representation of the C type soup_cookie_jar_get_accept_policy.
+func (recv *CookieJar) GetAcceptPolicy() CookieJarAcceptPolicy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := cookieJarGetAcceptPolicyFunction_Set()
+	if err == nil {
+		ret = cookieJarGetAcceptPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CookieJarAcceptPolicy(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_cookie_jar_get_cookie_list' : return type 'GLib.SList' not supported
 
@@ -2041,7 +2135,34 @@ func (recv *CookieJar) Save() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_cookie_jar_set_accept_policy' : parameter 'policy' of type 'CookieJarAcceptPolicy' not supported
+var cookieJarSetAcceptPolicyFunction *gi.Function
+var cookieJarSetAcceptPolicyFunction_Once sync.Once
+
+func cookieJarSetAcceptPolicyFunction_Set() error {
+	var err error
+	cookieJarSetAcceptPolicyFunction_Once.Do(func() {
+		err = cookieJarStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieJarSetAcceptPolicyFunction, err = cookieJarStruct.InvokerNew("set_accept_policy")
+	})
+	return err
+}
+
+// SetAcceptPolicy is a representation of the C type soup_cookie_jar_set_accept_policy.
+func (recv *CookieJar) SetAcceptPolicy(policy CookieJarAcceptPolicy) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(policy))
+
+	err := cookieJarSetAcceptPolicyFunction_Set()
+	if err == nil {
+		cookieJarSetAcceptPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cookieJarSetCookieFunction *gi.Function
 var cookieJarSetCookieFunction_Once sync.Once
@@ -2522,7 +2643,39 @@ type Logger struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_logger_new' : parameter 'level' of type 'LoggerLogLevel' not supported
+var loggerNewFunction *gi.Function
+var loggerNewFunction_Once sync.Once
+
+func loggerNewFunction_Set() error {
+	var err error
+	loggerNewFunction_Once.Do(func() {
+		err = loggerStruct_Set()
+		if err != nil {
+			return
+		}
+		loggerNewFunction, err = loggerStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// LoggerNew is a representation of the C type soup_logger_new.
+func LoggerNew(level LoggerLogLevel, maxBodySize int32) *Logger {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(level))
+	inArgs[1].SetInt32(maxBodySize)
+
+	var ret gi.Argument
+
+	err := loggerNewFunction_Set()
+	if err == nil {
+		ret = loggerNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Logger{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var loggerAttachFunction *gi.Function
 var loggerAttachFunction_Once sync.Once
@@ -2881,11 +3034,71 @@ func (recv *Message) GetFirstParty() *URI {
 
 // UNSUPPORTED : C value 'soup_message_get_flags' : return type 'MessageFlags' not supported
 
-// UNSUPPORTED : C value 'soup_message_get_http_version' : return type 'HTTPVersion' not supported
+var messageGetHttpVersionFunction *gi.Function
+var messageGetHttpVersionFunction_Once sync.Once
+
+func messageGetHttpVersionFunction_Set() error {
+	var err error
+	messageGetHttpVersionFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageGetHttpVersionFunction, err = messageStruct.InvokerNew("get_http_version")
+	})
+	return err
+}
+
+// GetHttpVersion is a representation of the C type soup_message_get_http_version.
+func (recv *Message) GetHttpVersion() HTTPVersion {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := messageGetHttpVersionFunction_Set()
+	if err == nil {
+		ret = messageGetHttpVersionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := HTTPVersion(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_message_get_https_status' : parameter 'certificate' of type 'Gio.TlsCertificate' not supported
 
-// UNSUPPORTED : C value 'soup_message_get_priority' : return type 'MessagePriority' not supported
+var messageGetPriorityFunction *gi.Function
+var messageGetPriorityFunction_Once sync.Once
+
+func messageGetPriorityFunction_Set() error {
+	var err error
+	messageGetPriorityFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageGetPriorityFunction, err = messageStruct.InvokerNew("get_priority")
+	})
+	return err
+}
+
+// GetPriority is a representation of the C type soup_message_get_priority.
+func (recv *Message) GetPriority() MessagePriority {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := messageGetPriorityFunction_Set()
+	if err == nil {
+		ret = messageGetPriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessagePriority(ret.Int32())
+
+	return retGo
+}
 
 var messageGetSoupRequestFunction *gi.Function
 var messageGetSoupRequestFunction_Once sync.Once
@@ -3159,9 +3372,63 @@ func (recv *Message) SetFirstParty(firstParty *URI) {
 
 // UNSUPPORTED : C value 'soup_message_set_flags' : parameter 'flags' of type 'MessageFlags' not supported
 
-// UNSUPPORTED : C value 'soup_message_set_http_version' : parameter 'version' of type 'HTTPVersion' not supported
+var messageSetHttpVersionFunction *gi.Function
+var messageSetHttpVersionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_message_set_priority' : parameter 'priority' of type 'MessagePriority' not supported
+func messageSetHttpVersionFunction_Set() error {
+	var err error
+	messageSetHttpVersionFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageSetHttpVersionFunction, err = messageStruct.InvokerNew("set_http_version")
+	})
+	return err
+}
+
+// SetHttpVersion is a representation of the C type soup_message_set_http_version.
+func (recv *Message) SetHttpVersion(version HTTPVersion) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(version))
+
+	err := messageSetHttpVersionFunction_Set()
+	if err == nil {
+		messageSetHttpVersionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var messageSetPriorityFunction *gi.Function
+var messageSetPriorityFunction_Once sync.Once
+
+func messageSetPriorityFunction_Set() error {
+	var err error
+	messageSetPriorityFunction_Once.Do(func() {
+		err = messageStruct_Set()
+		if err != nil {
+			return
+		}
+		messageSetPriorityFunction, err = messageStruct.InvokerNew("set_priority")
+	})
+	return err
+}
+
+// SetPriority is a representation of the C type soup_message_set_priority.
+func (recv *Message) SetPriority(priority MessagePriority) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(priority))
+
+	err := messageSetPriorityFunction_Set()
+	if err == nil {
+		messageSetPriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageSetRedirectFunction *gi.Function
 var messageSetRedirectFunction_Once sync.Once
@@ -3193,9 +3460,9 @@ func (recv *Message) SetRedirect(statusCode uint32, redirectUri string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_set_request' : parameter 'req_use' of type 'MemoryUse' not supported
+// UNSUPPORTED : C value 'soup_message_set_request' : parameter 'req_body' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_message_set_response' : parameter 'resp_use' of type 'MemoryUse' not supported
+// UNSUPPORTED : C value 'soup_message_set_response' : parameter 'resp_body' of type 'nil' not supported
 
 var messageSetStatusFunction *gi.Function
 var messageSetStatusFunction_Once sync.Once
@@ -5524,7 +5791,37 @@ func (recv *WebsocketConnection) GetCloseData() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_connection_get_connection_type' : return type 'WebsocketConnectionType' not supported
+var websocketConnectionGetConnectionTypeFunction *gi.Function
+var websocketConnectionGetConnectionTypeFunction_Once sync.Once
+
+func websocketConnectionGetConnectionTypeFunction_Set() error {
+	var err error
+	websocketConnectionGetConnectionTypeFunction_Once.Do(func() {
+		err = websocketConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		websocketConnectionGetConnectionTypeFunction, err = websocketConnectionStruct.InvokerNew("get_connection_type")
+	})
+	return err
+}
+
+// GetConnectionType is a representation of the C type soup_websocket_connection_get_connection_type.
+func (recv *WebsocketConnection) GetConnectionType() WebsocketConnectionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := websocketConnectionGetConnectionTypeFunction_Set()
+	if err == nil {
+		ret = websocketConnectionGetConnectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebsocketConnectionType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_websocket_connection_get_extensions' : return type 'GLib.List' not supported
 
@@ -5658,7 +5955,37 @@ func (recv *WebsocketConnection) GetProtocol() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_connection_get_state' : return type 'WebsocketState' not supported
+var websocketConnectionGetStateFunction *gi.Function
+var websocketConnectionGetStateFunction_Once sync.Once
+
+func websocketConnectionGetStateFunction_Set() error {
+	var err error
+	websocketConnectionGetStateFunction_Once.Do(func() {
+		err = websocketConnectionStruct_Set()
+		if err != nil {
+			return
+		}
+		websocketConnectionGetStateFunction, err = websocketConnectionStruct.InvokerNew("get_state")
+	})
+	return err
+}
+
+// GetState is a representation of the C type soup_websocket_connection_get_state.
+func (recv *WebsocketConnection) GetState() WebsocketState {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := websocketConnectionGetStateFunction_Set()
+	if err == nil {
+		ret = websocketConnectionGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebsocketState(ret.Int32())
+
+	return retGo
+}
 
 var websocketConnectionGetUriFunction *gi.Function
 var websocketConnectionGetUriFunction_Once sync.Once
@@ -5695,7 +6022,7 @@ func (recv *WebsocketConnection) GetUri() *URI {
 
 // UNSUPPORTED : C value 'soup_websocket_connection_send_binary' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_connection_send_message' : parameter 'type' of type 'WebsocketDataType' not supported
+// UNSUPPORTED : C value 'soup_websocket_connection_send_message' : parameter 'message' of type 'GLib.Bytes' not supported
 
 var websocketConnectionSendTextFunction *gi.Function
 var websocketConnectionSendTextFunction_Once sync.Once
@@ -5803,7 +6130,7 @@ type WebsocketExtension struct {
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'soup_websocket_extension_configure' : parameter 'connection_type' of type 'WebsocketConnectionType' not supported
+// UNSUPPORTED : C value 'soup_websocket_extension_configure' : parameter 'params' of type 'GLib.HashTable' not supported
 
 var websocketExtensionGetRequestParamsFunction *gi.Function
 var websocketExtensionGetRequestParamsFunction_Once sync.Once

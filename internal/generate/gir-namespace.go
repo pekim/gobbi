@@ -99,9 +99,15 @@ func (n *Namespace) haveType(typeName string) bool {
 	if _, found := n.Aliases.byName(typeName); found {
 		return true
 	}
-	if _, found := n.Constants.findByName(typeName); found {
+
+	if _, found := n.Constants.byName(typeName); found {
 		return true
 	}
+
+	if _, found := n.Enumerations.byName(typeName); found {
+		return true
+	}
+
 	return false
 }
 

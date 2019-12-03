@@ -460,7 +460,31 @@ func GetInterfaceAge() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_get_locale_direction' : return type 'TextDirection' not supported
+var getLocaleDirectionFunction *gi.Function
+var getLocaleDirectionFunction_Once sync.Once
+
+func getLocaleDirectionFunction_Set() error {
+	var err error
+	getLocaleDirectionFunction_Once.Do(func() {
+		getLocaleDirectionFunction, err = gi.FunctionInvokerNew("Gtk", "get_locale_direction")
+	})
+	return err
+}
+
+// GetLocaleDirection is a representation of the C type gtk_get_locale_direction.
+func GetLocaleDirection() TextDirection {
+
+	var ret gi.Argument
+
+	err := getLocaleDirectionFunction_Set()
+	if err == nil {
+		ret = getLocaleDirectionFunction.Invoke(nil, nil)
+	}
+
+	retGo := TextDirection(ret.Int32())
+
+	return retGo
+}
 
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
@@ -569,17 +593,179 @@ func GrabGetCurrent() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_size_from_name' : return type 'IconSize' not supported
+var iconSizeFromNameFunction *gi.Function
+var iconSizeFromNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_size_get_name' : parameter 'size' of type 'IconSize' not supported
+func iconSizeFromNameFunction_Set() error {
+	var err error
+	iconSizeFromNameFunction_Once.Do(func() {
+		iconSizeFromNameFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_from_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup' : parameter 'size' of type 'IconSize' not supported
+// IconSizeFromName is a representation of the C type gtk_icon_size_from_name.
+func IconSizeFromName(name string) IconSize {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : parameter 'size' of type 'IconSize' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_icon_size_register' : return type 'IconSize' not supported
+	err := iconSizeFromNameFunction_Set()
+	if err == nil {
+		ret = iconSizeFromNameFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_icon_size_register_alias' : parameter 'target' of type 'IconSize' not supported
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
+
+var iconSizeGetNameFunction *gi.Function
+var iconSizeGetNameFunction_Once sync.Once
+
+func iconSizeGetNameFunction_Set() error {
+	var err error
+	iconSizeGetNameFunction_Once.Do(func() {
+		iconSizeGetNameFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_get_name")
+	})
+	return err
+}
+
+// IconSizeGetName is a representation of the C type gtk_icon_size_get_name.
+func IconSizeGetName(size IconSize) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := iconSizeGetNameFunction_Set()
+	if err == nil {
+		ret = iconSizeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var iconSizeLookupFunction *gi.Function
+var iconSizeLookupFunction_Once sync.Once
+
+func iconSizeLookupFunction_Set() error {
+	var err error
+	iconSizeLookupFunction_Once.Do(func() {
+		iconSizeLookupFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_lookup")
+	})
+	return err
+}
+
+// IconSizeLookup is a representation of the C type gtk_icon_size_lookup.
+func IconSizeLookup(size IconSize) (bool, int32, int32) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(size))
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := iconSizeLookupFunction_Set()
+	if err == nil {
+		ret = iconSizeLookupFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1
+}
+
+var iconSizeLookupForSettingsFunction *gi.Function
+var iconSizeLookupForSettingsFunction_Once sync.Once
+
+func iconSizeLookupForSettingsFunction_Set() error {
+	var err error
+	iconSizeLookupForSettingsFunction_Once.Do(func() {
+		iconSizeLookupForSettingsFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_lookup_for_settings")
+	})
+	return err
+}
+
+// IconSizeLookupForSettings is a representation of the C type gtk_icon_size_lookup_for_settings.
+func IconSizeLookupForSettings(settings *Settings, size IconSize) (bool, int32, int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(settings.Native)
+	inArgs[1].SetInt32(int32(size))
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := iconSizeLookupForSettingsFunction_Set()
+	if err == nil {
+		ret = iconSizeLookupForSettingsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1
+}
+
+var iconSizeRegisterFunction *gi.Function
+var iconSizeRegisterFunction_Once sync.Once
+
+func iconSizeRegisterFunction_Set() error {
+	var err error
+	iconSizeRegisterFunction_Once.Do(func() {
+		iconSizeRegisterFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_register")
+	})
+	return err
+}
+
+// IconSizeRegister is a representation of the C type gtk_icon_size_register.
+func IconSizeRegister(name string, width int32, height int32) IconSize {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := iconSizeRegisterFunction_Set()
+	if err == nil {
+		ret = iconSizeRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
+
+var iconSizeRegisterAliasFunction *gi.Function
+var iconSizeRegisterAliasFunction_Once sync.Once
+
+func iconSizeRegisterAliasFunction_Set() error {
+	var err error
+	iconSizeRegisterAliasFunction_Once.Do(func() {
+		iconSizeRegisterAliasFunction, err = gi.FunctionInvokerNew("Gtk", "icon_size_register_alias")
+	})
+	return err
+}
+
+// IconSizeRegisterAlias is a representation of the C type gtk_icon_size_register_alias.
+func IconSizeRegisterAlias(alias string, target IconSize) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(alias)
+	inArgs[1].SetInt32(int32(target))
+
+	err := iconSizeRegisterAliasFunction_Set()
+	if err == nil {
+		iconSizeRegisterAliasFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconThemeErrorQuarkFunction *gi.Function
 var iconThemeErrorQuarkFunction_Once sync.Once
@@ -1332,7 +1518,7 @@ func RecentManagerErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'gtk_render_icon' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
 
 // UNSUPPORTED : C value 'gtk_render_icon_surface' : parameter 'cr' of type 'cairo.Context' not supported
 

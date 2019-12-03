@@ -75,6 +75,12 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Parens(goVar)
 	}
 
+	if p.Type.isEnumeration() {
+		goVar = jen.
+			Add(jenGoTypes["int"]).
+			Parens(goVar)
+	}
+
 	if p.Type.isRecord() {
 		goVar = goVar.Dot(fieldNameNative)
 	}

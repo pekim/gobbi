@@ -255,7 +255,37 @@ func (recv *AboutDialog) GetLicense() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_get_license_type' : return type 'License' not supported
+var aboutDialogGetLicenseTypeFunction *gi.Function
+var aboutDialogGetLicenseTypeFunction_Once sync.Once
+
+func aboutDialogGetLicenseTypeFunction_Set() error {
+	var err error
+	aboutDialogGetLicenseTypeFunction_Once.Do(func() {
+		err = aboutDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogGetLicenseTypeFunction, err = aboutDialogStruct.InvokerNew("get_license_type")
+	})
+	return err
+}
+
+// GetLicenseType is a representation of the C type gtk_about_dialog_get_license_type.
+func (recv *AboutDialog) GetLicenseType() License {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := aboutDialogGetLicenseTypeFunction_Set()
+	if err == nil {
+		ret = aboutDialogGetLicenseTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := License(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_about_dialog_get_logo' : return type 'GdkPixbuf.Pixbuf' not supported
 
@@ -576,7 +606,34 @@ func (recv *AboutDialog) SetLicense(license string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_license_type' : parameter 'license_type' of type 'License' not supported
+var aboutDialogSetLicenseTypeFunction *gi.Function
+var aboutDialogSetLicenseTypeFunction_Once sync.Once
+
+func aboutDialogSetLicenseTypeFunction_Set() error {
+	var err error
+	aboutDialogSetLicenseTypeFunction_Once.Do(func() {
+		err = aboutDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogSetLicenseTypeFunction, err = aboutDialogStruct.InvokerNew("set_license_type")
+	})
+	return err
+}
+
+// SetLicenseType is a representation of the C type gtk_about_dialog_set_license_type.
+func (recv *AboutDialog) SetLicenseType(licenseType License) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(licenseType))
+
+	err := aboutDialogSetLicenseTypeFunction_Set()
+	if err == nil {
+		aboutDialogSetLicenseTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_about_dialog_set_logo' : parameter 'logo' of type 'GdkPixbuf.Pixbuf' not supported
 
@@ -1457,7 +1514,39 @@ func (recv *Action) ConnectAccelerator() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_action_create_icon' : parameter 'icon_size' of type 'IconSize' not supported
+var actionCreateIconFunction *gi.Function
+var actionCreateIconFunction_Once sync.Once
+
+func actionCreateIconFunction_Set() error {
+	var err error
+	actionCreateIconFunction_Once.Do(func() {
+		err = actionStruct_Set()
+		if err != nil {
+			return
+		}
+		actionCreateIconFunction, err = actionStruct.InvokerNew("create_icon")
+	})
+	return err
+}
+
+// CreateIcon is a representation of the C type gtk_action_create_icon.
+func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconSize))
+
+	var ret gi.Argument
+
+	err := actionCreateIconFunction_Set()
+	if err == nil {
+		ret = actionCreateIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var actionCreateMenuFunction *gi.Function
 var actionCreateMenuFunction_Once sync.Once
@@ -5293,9 +5382,69 @@ func (recv *Arrow) SetFieldMisc(value *Misc) {
 	gi.FieldSet(arrowStruct, recv.Native, "misc", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_arrow_new' : parameter 'arrow_type' of type 'ArrowType' not supported
+var arrowNewFunction *gi.Function
+var arrowNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_arrow_set' : parameter 'arrow_type' of type 'ArrowType' not supported
+func arrowNewFunction_Set() error {
+	var err error
+	arrowNewFunction_Once.Do(func() {
+		err = arrowStruct_Set()
+		if err != nil {
+			return
+		}
+		arrowNewFunction, err = arrowStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ArrowNew is a representation of the C type gtk_arrow_new.
+func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(arrowType))
+	inArgs[1].SetInt32(int32(shadowType))
+
+	var ret gi.Argument
+
+	err := arrowNewFunction_Set()
+	if err == nil {
+		ret = arrowNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Arrow{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var arrowSetFunction *gi.Function
+var arrowSetFunction_Once sync.Once
+
+func arrowSetFunction_Set() error {
+	var err error
+	arrowSetFunction_Once.Do(func() {
+		err = arrowStruct_Set()
+		if err != nil {
+			return
+		}
+		arrowSetFunction, err = arrowStruct.InvokerNew("set")
+	})
+	return err
+}
+
+// Set is a representation of the C type gtk_arrow_set.
+func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(arrowType))
+	inArgs[2].SetInt32(int32(shadowType))
+
+	err := arrowSetFunction_Set()
+	if err == nil {
+		arrowSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var arrowAccessibleStruct *gi.Struct
 var arrowAccessibleStruct_Once sync.Once
@@ -5809,7 +5958,38 @@ func (recv *Assistant) GetPageTitle(page *Widget) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_assistant_get_page_type' : return type 'AssistantPageType' not supported
+var assistantGetPageTypeFunction *gi.Function
+var assistantGetPageTypeFunction_Once sync.Once
+
+func assistantGetPageTypeFunction_Set() error {
+	var err error
+	assistantGetPageTypeFunction_Once.Do(func() {
+		err = assistantStruct_Set()
+		if err != nil {
+			return
+		}
+		assistantGetPageTypeFunction, err = assistantStruct.InvokerNew("get_page_type")
+	})
+	return err
+}
+
+// GetPageType is a representation of the C type gtk_assistant_get_page_type.
+func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(page.Native)
+
+	var ret gi.Argument
+
+	err := assistantGetPageTypeFunction_Set()
+	if err == nil {
+		ret = assistantGetPageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AssistantPageType(ret.Int32())
+
+	return retGo
+}
 
 var assistantInsertPageFunction *gi.Function
 var assistantInsertPageFunction_Once sync.Once
@@ -6117,7 +6297,35 @@ func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_assistant_set_page_type' : parameter 'type' of type 'AssistantPageType' not supported
+var assistantSetPageTypeFunction *gi.Function
+var assistantSetPageTypeFunction_Once sync.Once
+
+func assistantSetPageTypeFunction_Set() error {
+	var err error
+	assistantSetPageTypeFunction_Once.Do(func() {
+		err = assistantStruct_Set()
+		if err != nil {
+			return
+		}
+		assistantSetPageTypeFunction, err = assistantStruct.InvokerNew("set_page_type")
+	})
+	return err
+}
+
+// SetPageType is a representation of the C type gtk_assistant_set_page_type.
+func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(page.Native)
+	inArgs[2].SetInt32(int32(type_))
+
+	err := assistantSetPageTypeFunction_Set()
+	if err == nil {
+		assistantSetPageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var assistantUpdateButtonsStateFunction *gi.Function
 var assistantUpdateButtonsStateFunction_Once sync.Once
@@ -6317,9 +6525,71 @@ func (recv *Box) SetFieldContainer(value *Container) {
 	gi.FieldSet(boxStruct, recv.Native, "container", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_box_new' : parameter 'orientation' of type 'Orientation' not supported
+var boxNewFunction *gi.Function
+var boxNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_box_get_baseline_position' : return type 'BaselinePosition' not supported
+func boxNewFunction_Set() error {
+	var err error
+	boxNewFunction_Once.Do(func() {
+		err = boxStruct_Set()
+		if err != nil {
+			return
+		}
+		boxNewFunction, err = boxStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// BoxNew is a representation of the C type gtk_box_new.
+func BoxNew(orientation Orientation, spacing int32) *Box {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+	inArgs[1].SetInt32(spacing)
+
+	var ret gi.Argument
+
+	err := boxNewFunction_Set()
+	if err == nil {
+		ret = boxNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Box{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var boxGetBaselinePositionFunction *gi.Function
+var boxGetBaselinePositionFunction_Once sync.Once
+
+func boxGetBaselinePositionFunction_Set() error {
+	var err error
+	boxGetBaselinePositionFunction_Once.Do(func() {
+		err = boxStruct_Set()
+		if err != nil {
+			return
+		}
+		boxGetBaselinePositionFunction, err = boxStruct.InvokerNew("get_baseline_position")
+	})
+	return err
+}
+
+// GetBaselinePosition is a representation of the C type gtk_box_get_baseline_position.
+func (recv *Box) GetBaselinePosition() BaselinePosition {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := boxGetBaselinePositionFunction_Set()
+	if err == nil {
+		ret = boxGetBaselinePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BaselinePosition(ret.Int32())
+
+	return retGo
+}
 
 var boxGetCenterWidgetFunction *gi.Function
 var boxGetCenterWidgetFunction_Once sync.Once
@@ -6482,7 +6752,41 @@ func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_box_query_child_packing' : parameter 'pack_type' of type 'PackType' not supported
+var boxQueryChildPackingFunction *gi.Function
+var boxQueryChildPackingFunction_Once sync.Once
+
+func boxQueryChildPackingFunction_Set() error {
+	var err error
+	boxQueryChildPackingFunction_Once.Do(func() {
+		err = boxStruct_Set()
+		if err != nil {
+			return
+		}
+		boxQueryChildPackingFunction, err = boxStruct.InvokerNew("query_child_packing")
+	})
+	return err
+}
+
+// QueryChildPacking is a representation of the C type gtk_box_query_child_packing.
+func (recv *Box) QueryChildPacking(child *Widget) (bool, bool, uint32, PackType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+
+	var outArgs [4]gi.Argument
+
+	err := boxQueryChildPackingFunction_Set()
+	if err == nil {
+		boxQueryChildPackingFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Boolean()
+	out1 := outArgs[1].Boolean()
+	out2 := outArgs[2].Uint32()
+	out3 := PackType(outArgs[3].Int32())
+
+	return out0, out1, out2, out3
+}
 
 var boxReorderChildFunction *gi.Function
 var boxReorderChildFunction_Once sync.Once
@@ -6514,7 +6818,34 @@ func (recv *Box) ReorderChild(child *Widget, position int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_box_set_baseline_position' : parameter 'position' of type 'BaselinePosition' not supported
+var boxSetBaselinePositionFunction *gi.Function
+var boxSetBaselinePositionFunction_Once sync.Once
+
+func boxSetBaselinePositionFunction_Set() error {
+	var err error
+	boxSetBaselinePositionFunction_Once.Do(func() {
+		err = boxStruct_Set()
+		if err != nil {
+			return
+		}
+		boxSetBaselinePositionFunction, err = boxStruct.InvokerNew("set_baseline_position")
+	})
+	return err
+}
+
+// SetBaselinePosition is a representation of the C type gtk_box_set_baseline_position.
+func (recv *Box) SetBaselinePosition(position BaselinePosition) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(position))
+
+	err := boxSetBaselinePositionFunction_Set()
+	if err == nil {
+		boxSetBaselinePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var boxSetCenterWidgetFunction *gi.Function
 var boxSetCenterWidgetFunction_Once sync.Once
@@ -6545,7 +6876,38 @@ func (recv *Box) SetCenterWidget(widget *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_box_set_child_packing' : parameter 'pack_type' of type 'PackType' not supported
+var boxSetChildPackingFunction *gi.Function
+var boxSetChildPackingFunction_Once sync.Once
+
+func boxSetChildPackingFunction_Set() error {
+	var err error
+	boxSetChildPackingFunction_Once.Do(func() {
+		err = boxStruct_Set()
+		if err != nil {
+			return
+		}
+		boxSetChildPackingFunction, err = boxStruct.InvokerNew("set_child_packing")
+	})
+	return err
+}
+
+// SetChildPacking is a representation of the C type gtk_box_set_child_packing.
+func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding uint32, packType PackType) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+	inArgs[2].SetBoolean(expand)
+	inArgs[3].SetBoolean(fill)
+	inArgs[4].SetUint32(padding)
+	inArgs[5].SetInt32(int32(packType))
+
+	err := boxSetChildPackingFunction_Set()
+	if err == nil {
+		boxSetChildPackingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var boxSetHomogeneousFunction *gi.Function
 var boxSetHomogeneousFunction_Once sync.Once
@@ -7069,7 +7431,39 @@ func ButtonNew() *Button {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_button_new_from_icon_name' : parameter 'size' of type 'IconSize' not supported
+var buttonNewFromIconNameFunction *gi.Function
+var buttonNewFromIconNameFunction_Once sync.Once
+
+func buttonNewFromIconNameFunction_Set() error {
+	var err error
+	buttonNewFromIconNameFunction_Once.Do(func() {
+		err = buttonStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonNewFromIconNameFunction, err = buttonStruct.InvokerNew("new_from_icon_name")
+	})
+	return err
+}
+
+// ButtonNewFromIconName is a representation of the C type gtk_button_new_from_icon_name.
+func ButtonNewFromIconName(iconName string, size IconSize) *Button {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(iconName)
+	inArgs[1].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := buttonNewFromIconNameFunction_Set()
+	if err == nil {
+		ret = buttonNewFromIconNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Button{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var buttonNewFromStockFunction *gi.Function
 var buttonNewFromStockFunction_Once sync.Once
@@ -7358,7 +7752,37 @@ func (recv *Button) GetImage() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_button_get_image_position' : return type 'PositionType' not supported
+var buttonGetImagePositionFunction *gi.Function
+var buttonGetImagePositionFunction_Once sync.Once
+
+func buttonGetImagePositionFunction_Set() error {
+	var err error
+	buttonGetImagePositionFunction_Once.Do(func() {
+		err = buttonStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonGetImagePositionFunction, err = buttonStruct.InvokerNew("get_image_position")
+	})
+	return err
+}
+
+// GetImagePosition is a representation of the C type gtk_button_get_image_position.
+func (recv *Button) GetImagePosition() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := buttonGetImagePositionFunction_Set()
+	if err == nil {
+		ret = buttonGetImagePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
 
 var buttonGetLabelFunction *gi.Function
 var buttonGetLabelFunction_Once sync.Once
@@ -7392,7 +7816,37 @@ func (recv *Button) GetLabel() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_button_get_relief' : return type 'ReliefStyle' not supported
+var buttonGetReliefFunction *gi.Function
+var buttonGetReliefFunction_Once sync.Once
+
+func buttonGetReliefFunction_Set() error {
+	var err error
+	buttonGetReliefFunction_Once.Do(func() {
+		err = buttonStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonGetReliefFunction, err = buttonStruct.InvokerNew("get_relief")
+	})
+	return err
+}
+
+// GetRelief is a representation of the C type gtk_button_get_relief.
+func (recv *Button) GetRelief() ReliefStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := buttonGetReliefFunction_Set()
+	if err == nil {
+		ret = buttonGetReliefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ReliefStyle(ret.Int32())
+
+	return retGo
+}
 
 var buttonGetUseStockFunction *gi.Function
 var buttonGetUseStockFunction_Once sync.Once
@@ -7659,7 +8113,34 @@ func (recv *Button) SetImage(image *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_button_set_image_position' : parameter 'position' of type 'PositionType' not supported
+var buttonSetImagePositionFunction *gi.Function
+var buttonSetImagePositionFunction_Once sync.Once
+
+func buttonSetImagePositionFunction_Set() error {
+	var err error
+	buttonSetImagePositionFunction_Once.Do(func() {
+		err = buttonStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonSetImagePositionFunction, err = buttonStruct.InvokerNew("set_image_position")
+	})
+	return err
+}
+
+// SetImagePosition is a representation of the C type gtk_button_set_image_position.
+func (recv *Button) SetImagePosition(position PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(position))
+
+	err := buttonSetImagePositionFunction_Set()
+	if err == nil {
+		buttonSetImagePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var buttonSetLabelFunction *gi.Function
 var buttonSetLabelFunction_Once sync.Once
@@ -7690,7 +8171,34 @@ func (recv *Button) SetLabel(label string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_button_set_relief' : parameter 'relief' of type 'ReliefStyle' not supported
+var buttonSetReliefFunction *gi.Function
+var buttonSetReliefFunction_Once sync.Once
+
+func buttonSetReliefFunction_Set() error {
+	var err error
+	buttonSetReliefFunction_Once.Do(func() {
+		err = buttonStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonSetReliefFunction, err = buttonStruct.InvokerNew("set_relief")
+	})
+	return err
+}
+
+// SetRelief is a representation of the C type gtk_button_set_relief.
+func (recv *Button) SetRelief(relief ReliefStyle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relief))
+
+	err := buttonSetReliefFunction_Set()
+	if err == nil {
+		buttonSetReliefFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var buttonSetUseStockFunction *gi.Function
 var buttonSetUseStockFunction_Once sync.Once
@@ -7841,7 +8349,38 @@ func (recv *ButtonBox) SetFieldBox(value *Box) {
 	gi.FieldSet(buttonBoxStruct, recv.Native, "box", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_button_box_new' : parameter 'orientation' of type 'Orientation' not supported
+var buttonBoxNewFunction *gi.Function
+var buttonBoxNewFunction_Once sync.Once
+
+func buttonBoxNewFunction_Set() error {
+	var err error
+	buttonBoxNewFunction_Once.Do(func() {
+		err = buttonBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonBoxNewFunction, err = buttonBoxStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ButtonBoxNew is a representation of the C type gtk_button_box_new.
+func ButtonBoxNew(orientation Orientation) *ButtonBox {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+
+	var ret gi.Argument
+
+	err := buttonBoxNewFunction_Set()
+	if err == nil {
+		ret = buttonBoxNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ButtonBox{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var buttonBoxGetChildNonHomogeneousFunction *gi.Function
 var buttonBoxGetChildNonHomogeneousFunction_Once sync.Once
@@ -7909,7 +8448,37 @@ func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_button_box_get_layout' : return type 'ButtonBoxStyle' not supported
+var buttonBoxGetLayoutFunction *gi.Function
+var buttonBoxGetLayoutFunction_Once sync.Once
+
+func buttonBoxGetLayoutFunction_Set() error {
+	var err error
+	buttonBoxGetLayoutFunction_Once.Do(func() {
+		err = buttonBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonBoxGetLayoutFunction, err = buttonBoxStruct.InvokerNew("get_layout")
+	})
+	return err
+}
+
+// GetLayout is a representation of the C type gtk_button_box_get_layout.
+func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := buttonBoxGetLayoutFunction_Set()
+	if err == nil {
+		ret = buttonBoxGetLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ButtonBoxStyle(ret.Int32())
+
+	return retGo
+}
 
 var buttonBoxSetChildNonHomogeneousFunction *gi.Function
 var buttonBoxSetChildNonHomogeneousFunction_Once sync.Once
@@ -7971,7 +8540,34 @@ func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_button_box_set_layout' : parameter 'layout_style' of type 'ButtonBoxStyle' not supported
+var buttonBoxSetLayoutFunction *gi.Function
+var buttonBoxSetLayoutFunction_Once sync.Once
+
+func buttonBoxSetLayoutFunction_Set() error {
+	var err error
+	buttonBoxSetLayoutFunction_Once.Do(func() {
+		err = buttonBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		buttonBoxSetLayoutFunction, err = buttonBoxStruct.InvokerNew("set_layout")
+	})
+	return err
+}
+
+// SetLayout is a representation of the C type gtk_button_box_set_layout.
+func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(layoutStyle))
+
+	err := buttonBoxSetLayoutFunction_Set()
+	if err == nil {
+		buttonBoxSetLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var calendarStruct *gi.Struct
 var calendarStruct_Once sync.Once
@@ -8708,7 +9304,38 @@ func (recv *CellArea) CreateContext() *CellAreaContext {
 
 // UNSUPPORTED : C value 'gtk_cell_area_event' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_focus' : parameter 'direction' of type 'DirectionType' not supported
+var cellAreaFocusFunction *gi.Function
+var cellAreaFocusFunction_Once sync.Once
+
+func cellAreaFocusFunction_Set() error {
+	var err error
+	cellAreaFocusFunction_Once.Do(func() {
+		err = cellAreaStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaFocusFunction, err = cellAreaStruct.InvokerNew("focus")
+	})
+	return err
+}
+
+// Focus is a representation of the C type gtk_cell_area_focus.
+func (recv *CellArea) Focus(direction DirectionType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	var ret gi.Argument
+
+	err := cellAreaFocusFunction_Set()
+	if err == nil {
+		ret = cellAreaFocusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_cell_area_foreach' : parameter 'callback' of type 'CellCallback' not supported
 
@@ -8996,7 +9623,37 @@ func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widge
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_get_request_mode' : return type 'SizeRequestMode' not supported
+var cellAreaGetRequestModeFunction *gi.Function
+var cellAreaGetRequestModeFunction_Once sync.Once
+
+func cellAreaGetRequestModeFunction_Set() error {
+	var err error
+	cellAreaGetRequestModeFunction_Once.Do(func() {
+		err = cellAreaStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaGetRequestModeFunction, err = cellAreaStruct.InvokerNew("get_request_mode")
+	})
+	return err
+}
+
+// GetRequestMode is a representation of the C type gtk_cell_area_get_request_mode.
+func (recv *CellArea) GetRequestMode() SizeRequestMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := cellAreaGetRequestModeFunction_Set()
+	if err == nil {
+		ret = cellAreaGetRequestModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SizeRequestMode(ret.Int32())
+
+	return retGo
+}
 
 var cellAreaHasRendererFunction *gi.Function
 var cellAreaHasRendererFunction_Once sync.Once
@@ -9160,7 +9817,42 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 
 // UNSUPPORTED : C value 'gtk_cell_area_render' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_request_renderer' : parameter 'orientation' of type 'Orientation' not supported
+var cellAreaRequestRendererFunction *gi.Function
+var cellAreaRequestRendererFunction_Once sync.Once
+
+func cellAreaRequestRendererFunction_Set() error {
+	var err error
+	cellAreaRequestRendererFunction_Once.Do(func() {
+		err = cellAreaStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaRequestRendererFunction, err = cellAreaStruct.InvokerNew("request_renderer")
+	})
+	return err
+}
+
+// RequestRenderer is a representation of the C type gtk_cell_area_request_renderer.
+func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (int32, int32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(renderer.Native)
+	inArgs[2].SetInt32(int32(orientation))
+	inArgs[3].SetPointer(widget.Native)
+	inArgs[4].SetInt32(forSize)
+
+	var outArgs [2]gi.Argument
+
+	err := cellAreaRequestRendererFunction_Set()
+	if err == nil {
+		cellAreaRequestRendererFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 var cellAreaSetFocusCellFunction *gi.Function
 var cellAreaSetFocusCellFunction_Once sync.Once
@@ -10052,7 +10744,37 @@ func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int3
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_cell_renderer_get_request_mode' : return type 'SizeRequestMode' not supported
+var cellRendererGetRequestModeFunction *gi.Function
+var cellRendererGetRequestModeFunction_Once sync.Once
+
+func cellRendererGetRequestModeFunction_Set() error {
+	var err error
+	cellRendererGetRequestModeFunction_Once.Do(func() {
+		err = cellRendererStruct_Set()
+		if err != nil {
+			return
+		}
+		cellRendererGetRequestModeFunction, err = cellRendererStruct.InvokerNew("get_request_mode")
+	})
+	return err
+}
+
+// GetRequestMode is a representation of the C type gtk_cell_renderer_get_request_mode.
+func (recv *CellRenderer) GetRequestMode() SizeRequestMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := cellRendererGetRequestModeFunction_Set()
+	if err == nil {
+		ret = cellRendererGetRequestModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SizeRequestMode(ret.Int32())
+
+	return retGo
+}
 
 var cellRendererGetSensitiveFunction *gi.Function
 var cellRendererGetSensitiveFunction_Once sync.Once
@@ -13433,7 +14155,37 @@ func (recv *ComboBox) GetAddTearoffs() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_get_button_sensitivity' : return type 'SensitivityType' not supported
+var comboBoxGetButtonSensitivityFunction *gi.Function
+var comboBoxGetButtonSensitivityFunction_Once sync.Once
+
+func comboBoxGetButtonSensitivityFunction_Set() error {
+	var err error
+	comboBoxGetButtonSensitivityFunction_Once.Do(func() {
+		err = comboBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		comboBoxGetButtonSensitivityFunction, err = comboBoxStruct.InvokerNew("get_button_sensitivity")
+	})
+	return err
+}
+
+// GetButtonSensitivity is a representation of the C type gtk_combo_box_get_button_sensitivity.
+func (recv *ComboBox) GetButtonSensitivity() SensitivityType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := comboBoxGetButtonSensitivityFunction_Set()
+	if err == nil {
+		ret = comboBoxGetButtonSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SensitivityType(ret.Int32())
+
+	return retGo
+}
 
 var comboBoxGetColumnSpanColumnFunction *gi.Function
 var comboBoxGetColumnSpanColumnFunction_Once sync.Once
@@ -13907,7 +14659,34 @@ func (recv *ComboBox) SetAddTearoffs(addTearoffs bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_set_button_sensitivity' : parameter 'sensitivity' of type 'SensitivityType' not supported
+var comboBoxSetButtonSensitivityFunction *gi.Function
+var comboBoxSetButtonSensitivityFunction_Once sync.Once
+
+func comboBoxSetButtonSensitivityFunction_Set() error {
+	var err error
+	comboBoxSetButtonSensitivityFunction_Once.Do(func() {
+		err = comboBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		comboBoxSetButtonSensitivityFunction, err = comboBoxStruct.InvokerNew("set_button_sensitivity")
+	})
+	return err
+}
+
+// SetButtonSensitivity is a representation of the C type gtk_combo_box_set_button_sensitivity.
+func (recv *ComboBox) SetButtonSensitivity(sensitivity SensitivityType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(sensitivity))
+
+	err := comboBoxSetButtonSensitivityFunction_Set()
+	if err == nil {
+		comboBoxSetButtonSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var comboBoxSetColumnSpanColumnFunction *gi.Function
 var comboBoxSetColumnSpanColumnFunction_Once sync.Once
@@ -14859,7 +15638,37 @@ func (recv *Container) GetPathForChild(child *Widget) *WidgetPath {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_container_get_resize_mode' : return type 'ResizeMode' not supported
+var containerGetResizeModeFunction *gi.Function
+var containerGetResizeModeFunction_Once sync.Once
+
+func containerGetResizeModeFunction_Set() error {
+	var err error
+	containerGetResizeModeFunction_Once.Do(func() {
+		err = containerStruct_Set()
+		if err != nil {
+			return
+		}
+		containerGetResizeModeFunction, err = containerStruct.InvokerNew("get_resize_mode")
+	})
+	return err
+}
+
+// GetResizeMode is a representation of the C type gtk_container_get_resize_mode.
+func (recv *Container) GetResizeMode() ResizeMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := containerGetResizeModeFunction_Set()
+	if err == nil {
+		ret = containerGetResizeModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ResizeMode(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_container_propagate_draw' : parameter 'cr' of type 'cairo.Context' not supported
 
@@ -15067,7 +15876,34 @@ func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_container_set_resize_mode' : parameter 'resize_mode' of type 'ResizeMode' not supported
+var containerSetResizeModeFunction *gi.Function
+var containerSetResizeModeFunction_Once sync.Once
+
+func containerSetResizeModeFunction_Set() error {
+	var err error
+	containerSetResizeModeFunction_Once.Do(func() {
+		err = containerStruct_Set()
+		if err != nil {
+			return
+		}
+		containerSetResizeModeFunction, err = containerStruct.InvokerNew("set_resize_mode")
+	})
+	return err
+}
+
+// SetResizeMode is a representation of the C type gtk_container_set_resize_mode.
+func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(resizeMode))
+
+	err := containerSetResizeModeFunction_Set()
+	if err == nil {
+		containerSetResizeModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var containerUnsetFocusChainFunction *gi.Function
 var containerUnsetFocusChainFunction_Once sync.Once
@@ -15536,9 +16372,70 @@ func DialogNew() *Dialog {
 
 // UNSUPPORTED : C value 'gtk_dialog_new_with_buttons' : parameter 'flags' of type 'DialogFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_dialog_add_action_widget' : parameter 'response_id' of type 'ResponseType' not supported
+var dialogAddActionWidgetFunction *gi.Function
+var dialogAddActionWidgetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_dialog_add_button' : parameter 'response_id' of type 'ResponseType' not supported
+func dialogAddActionWidgetFunction_Set() error {
+	var err error
+	dialogAddActionWidgetFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogAddActionWidgetFunction, err = dialogStruct.InvokerNew("add_action_widget")
+	})
+	return err
+}
+
+// AddActionWidget is a representation of the C type gtk_dialog_add_action_widget.
+func (recv *Dialog) AddActionWidget(child *Widget, responseId ResponseType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+	inArgs[2].SetInt32(int32(responseId))
+
+	err := dialogAddActionWidgetFunction_Set()
+	if err == nil {
+		dialogAddActionWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dialogAddButtonFunction *gi.Function
+var dialogAddButtonFunction_Once sync.Once
+
+func dialogAddButtonFunction_Set() error {
+	var err error
+	dialogAddButtonFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogAddButtonFunction, err = dialogStruct.InvokerNew("add_button")
+	})
+	return err
+}
+
+// AddButton is a representation of the C type gtk_dialog_add_button.
+func (recv *Dialog) AddButton(buttonText string, responseId ResponseType) *Widget {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(buttonText)
+	inArgs[2].SetInt32(int32(responseId))
+
+	var ret gi.Argument
+
+	err := dialogAddButtonFunction_Set()
+	if err == nil {
+		ret = dialogAddButtonFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_dialog_add_buttons' : parameter '...' of type 'nil' not supported
 
@@ -15674,9 +16571,68 @@ func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_dialog_get_widget_for_response' : parameter 'response_id' of type 'ResponseType' not supported
+var dialogGetWidgetForResponseFunction *gi.Function
+var dialogGetWidgetForResponseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_dialog_response' : parameter 'response_id' of type 'ResponseType' not supported
+func dialogGetWidgetForResponseFunction_Set() error {
+	var err error
+	dialogGetWidgetForResponseFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogGetWidgetForResponseFunction, err = dialogStruct.InvokerNew("get_widget_for_response")
+	})
+	return err
+}
+
+// GetWidgetForResponse is a representation of the C type gtk_dialog_get_widget_for_response.
+func (recv *Dialog) GetWidgetForResponse(responseId ResponseType) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+
+	var ret gi.Argument
+
+	err := dialogGetWidgetForResponseFunction_Set()
+	if err == nil {
+		ret = dialogGetWidgetForResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var dialogResponseFunction *gi.Function
+var dialogResponseFunction_Once sync.Once
+
+func dialogResponseFunction_Set() error {
+	var err error
+	dialogResponseFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogResponseFunction, err = dialogStruct.InvokerNew("response")
+	})
+	return err
+}
+
+// Response is a representation of the C type gtk_dialog_response.
+func (recv *Dialog) Response(responseId ResponseType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+
+	err := dialogResponseFunction_Set()
+	if err == nil {
+		dialogResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dialogRunFunction *gi.Function
 var dialogRunFunction_Once sync.Once
@@ -15714,9 +16670,64 @@ func (recv *Dialog) Run() int32 {
 
 // UNSUPPORTED : C value 'gtk_dialog_set_alternative_button_order_from_array' : parameter 'new_order' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_dialog_set_default_response' : parameter 'response_id' of type 'ResponseType' not supported
+var dialogSetDefaultResponseFunction *gi.Function
+var dialogSetDefaultResponseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_dialog_set_response_sensitive' : parameter 'response_id' of type 'ResponseType' not supported
+func dialogSetDefaultResponseFunction_Set() error {
+	var err error
+	dialogSetDefaultResponseFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogSetDefaultResponseFunction, err = dialogStruct.InvokerNew("set_default_response")
+	})
+	return err
+}
+
+// SetDefaultResponse is a representation of the C type gtk_dialog_set_default_response.
+func (recv *Dialog) SetDefaultResponse(responseId ResponseType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+
+	err := dialogSetDefaultResponseFunction_Set()
+	if err == nil {
+		dialogSetDefaultResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var dialogSetResponseSensitiveFunction *gi.Function
+var dialogSetResponseSensitiveFunction_Once sync.Once
+
+func dialogSetResponseSensitiveFunction_Set() error {
+	var err error
+	dialogSetResponseSensitiveFunction_Once.Do(func() {
+		err = dialogStruct_Set()
+		if err != nil {
+			return
+		}
+		dialogSetResponseSensitiveFunction, err = dialogStruct.InvokerNew("set_response_sensitive")
+	})
+	return err
+}
+
+// SetResponseSensitive is a representation of the C type gtk_dialog_set_response_sensitive.
+func (recv *Dialog) SetResponseSensitive(responseId ResponseType, setting bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+	inArgs[2].SetBoolean(setting)
+
+	err := dialogSetResponseSensitiveFunction_Set()
+	if err == nil {
+		dialogSetResponseSensitiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var drawingAreaStruct *gi.Struct
 var drawingAreaStruct_Once sync.Once
@@ -16087,9 +17098,40 @@ func (recv *Entry) GetHasFrame() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_activatable' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+var entryGetIconActivatableFunction *gi.Function
+var entryGetIconActivatableFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_area' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+func entryGetIconActivatableFunction_Set() error {
+	var err error
+	entryGetIconActivatableFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconActivatableFunction, err = entryStruct.InvokerNew("get_icon_activatable")
+	})
+	return err
+}
+
+// GetIconActivatable is a representation of the C type gtk_entry_get_icon_activatable.
+func (recv *Entry) GetIconActivatable(iconPos EntryIconPosition) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconActivatableFunction_Set()
+	if err == nil {
+		ret = entryGetIconActivatableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_entry_get_icon_area' : parameter 'icon_area' of type 'Gdk.Rectangle' not supported
 
 var entryGetIconAtPosFunction *gi.Function
 var entryGetIconAtPosFunction_Once sync.Once
@@ -16125,21 +17167,207 @@ func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_gicon' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+// UNSUPPORTED : C value 'gtk_entry_get_icon_gicon' : return type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_name' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+var entryGetIconNameFunction *gi.Function
+var entryGetIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_pixbuf' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+func entryGetIconNameFunction_Set() error {
+	var err error
+	entryGetIconNameFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconNameFunction, err = entryStruct.InvokerNew("get_icon_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_sensitive' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+// GetIconName is a representation of the C type gtk_entry_get_icon_name.
+func (recv *Entry) GetIconName(iconPos EntryIconPosition) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_stock' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_storage_type' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	err := entryGetIconNameFunction_Set()
+	if err == nil {
+		ret = entryGetIconNameFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_tooltip_markup' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	retGo := ret.String(false)
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_tooltip_text' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_entry_get_icon_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+
+var entryGetIconSensitiveFunction *gi.Function
+var entryGetIconSensitiveFunction_Once sync.Once
+
+func entryGetIconSensitiveFunction_Set() error {
+	var err error
+	entryGetIconSensitiveFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconSensitiveFunction, err = entryStruct.InvokerNew("get_icon_sensitive")
+	})
+	return err
+}
+
+// GetIconSensitive is a representation of the C type gtk_entry_get_icon_sensitive.
+func (recv *Entry) GetIconSensitive(iconPos EntryIconPosition) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconSensitiveFunction_Set()
+	if err == nil {
+		ret = entryGetIconSensitiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var entryGetIconStockFunction *gi.Function
+var entryGetIconStockFunction_Once sync.Once
+
+func entryGetIconStockFunction_Set() error {
+	var err error
+	entryGetIconStockFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconStockFunction, err = entryStruct.InvokerNew("get_icon_stock")
+	})
+	return err
+}
+
+// GetIconStock is a representation of the C type gtk_entry_get_icon_stock.
+func (recv *Entry) GetIconStock(iconPos EntryIconPosition) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconStockFunction_Set()
+	if err == nil {
+		ret = entryGetIconStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var entryGetIconStorageTypeFunction *gi.Function
+var entryGetIconStorageTypeFunction_Once sync.Once
+
+func entryGetIconStorageTypeFunction_Set() error {
+	var err error
+	entryGetIconStorageTypeFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconStorageTypeFunction, err = entryStruct.InvokerNew("get_icon_storage_type")
+	})
+	return err
+}
+
+// GetIconStorageType is a representation of the C type gtk_entry_get_icon_storage_type.
+func (recv *Entry) GetIconStorageType(iconPos EntryIconPosition) ImageType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconStorageTypeFunction_Set()
+	if err == nil {
+		ret = entryGetIconStorageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ImageType(ret.Int32())
+
+	return retGo
+}
+
+var entryGetIconTooltipMarkupFunction *gi.Function
+var entryGetIconTooltipMarkupFunction_Once sync.Once
+
+func entryGetIconTooltipMarkupFunction_Set() error {
+	var err error
+	entryGetIconTooltipMarkupFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconTooltipMarkupFunction, err = entryStruct.InvokerNew("get_icon_tooltip_markup")
+	})
+	return err
+}
+
+// GetIconTooltipMarkup is a representation of the C type gtk_entry_get_icon_tooltip_markup.
+func (recv *Entry) GetIconTooltipMarkup(iconPos EntryIconPosition) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconTooltipMarkupFunction_Set()
+	if err == nil {
+		ret = entryGetIconTooltipMarkupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var entryGetIconTooltipTextFunction *gi.Function
+var entryGetIconTooltipTextFunction_Once sync.Once
+
+func entryGetIconTooltipTextFunction_Set() error {
+	var err error
+	entryGetIconTooltipTextFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconTooltipTextFunction, err = entryStruct.InvokerNew("get_icon_tooltip_text")
+	})
+	return err
+}
+
+// GetIconTooltipText is a representation of the C type gtk_entry_get_icon_tooltip_text.
+func (recv *Entry) GetIconTooltipText(iconPos EntryIconPosition) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconTooltipTextFunction_Set()
+	if err == nil {
+		ret = entryGetIconTooltipTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var entryGetInnerBorderFunction *gi.Function
 var entryGetInnerBorderFunction_Once sync.Once
@@ -16176,7 +17404,37 @@ func (recv *Entry) GetInnerBorder() *Border {
 
 // UNSUPPORTED : C value 'gtk_entry_get_input_hints' : return type 'InputHints' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_get_input_purpose' : return type 'InputPurpose' not supported
+var entryGetInputPurposeFunction *gi.Function
+var entryGetInputPurposeFunction_Once sync.Once
+
+func entryGetInputPurposeFunction_Set() error {
+	var err error
+	entryGetInputPurposeFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entryGetInputPurposeFunction, err = entryStruct.InvokerNew("get_input_purpose")
+	})
+	return err
+}
+
+// GetInputPurpose is a representation of the C type gtk_entry_get_input_purpose.
+func (recv *Entry) GetInputPurpose() InputPurpose {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := entryGetInputPurposeFunction_Set()
+	if err == nil {
+		ret = entryGetInputPurposeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := InputPurpose(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_entry_get_invisible_char' : return type 'gunichar' not supported
 
@@ -16834,23 +18092,191 @@ func (recv *Entry) SetHasFrame(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_activatable' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+var entrySetIconActivatableFunction *gi.Function
+var entrySetIconActivatableFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_drag_source' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+func entrySetIconActivatableFunction_Set() error {
+	var err error
+	entrySetIconActivatableFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconActivatableFunction, err = entryStruct.InvokerNew("set_icon_activatable")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_from_gicon' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+// SetIconActivatable is a representation of the C type gtk_entry_set_icon_activatable.
+func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetBoolean(activatable)
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_from_icon_name' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	err := entrySetIconActivatableFunction_Set()
+	if err == nil {
+		entrySetIconActivatableFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_from_pixbuf' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_from_stock' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+// UNSUPPORTED : C value 'gtk_entry_set_icon_drag_source' : parameter 'actions' of type 'Gdk.DragAction' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_sensitive' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+// UNSUPPORTED : C value 'gtk_entry_set_icon_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_tooltip_markup' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+var entrySetIconFromIconNameFunction *gi.Function
+var entrySetIconFromIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_tooltip_text' : parameter 'icon_pos' of type 'EntryIconPosition' not supported
+func entrySetIconFromIconNameFunction_Set() error {
+	var err error
+	entrySetIconFromIconNameFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconFromIconNameFunction, err = entryStruct.InvokerNew("set_icon_from_icon_name")
+	})
+	return err
+}
+
+// SetIconFromIconName is a representation of the C type gtk_entry_set_icon_from_icon_name.
+func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetString(iconName)
+
+	err := entrySetIconFromIconNameFunction_Set()
+	if err == nil {
+		entrySetIconFromIconNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gtk_entry_set_icon_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+
+var entrySetIconFromStockFunction *gi.Function
+var entrySetIconFromStockFunction_Once sync.Once
+
+func entrySetIconFromStockFunction_Set() error {
+	var err error
+	entrySetIconFromStockFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconFromStockFunction, err = entryStruct.InvokerNew("set_icon_from_stock")
+	})
+	return err
+}
+
+// SetIconFromStock is a representation of the C type gtk_entry_set_icon_from_stock.
+func (recv *Entry) SetIconFromStock(iconPos EntryIconPosition, stockId string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetString(stockId)
+
+	err := entrySetIconFromStockFunction_Set()
+	if err == nil {
+		entrySetIconFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var entrySetIconSensitiveFunction *gi.Function
+var entrySetIconSensitiveFunction_Once sync.Once
+
+func entrySetIconSensitiveFunction_Set() error {
+	var err error
+	entrySetIconSensitiveFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconSensitiveFunction, err = entryStruct.InvokerNew("set_icon_sensitive")
+	})
+	return err
+}
+
+// SetIconSensitive is a representation of the C type gtk_entry_set_icon_sensitive.
+func (recv *Entry) SetIconSensitive(iconPos EntryIconPosition, sensitive bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetBoolean(sensitive)
+
+	err := entrySetIconSensitiveFunction_Set()
+	if err == nil {
+		entrySetIconSensitiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var entrySetIconTooltipMarkupFunction *gi.Function
+var entrySetIconTooltipMarkupFunction_Once sync.Once
+
+func entrySetIconTooltipMarkupFunction_Set() error {
+	var err error
+	entrySetIconTooltipMarkupFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconTooltipMarkupFunction, err = entryStruct.InvokerNew("set_icon_tooltip_markup")
+	})
+	return err
+}
+
+// SetIconTooltipMarkup is a representation of the C type gtk_entry_set_icon_tooltip_markup.
+func (recv *Entry) SetIconTooltipMarkup(iconPos EntryIconPosition, tooltip string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetString(tooltip)
+
+	err := entrySetIconTooltipMarkupFunction_Set()
+	if err == nil {
+		entrySetIconTooltipMarkupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var entrySetIconTooltipTextFunction *gi.Function
+var entrySetIconTooltipTextFunction_Once sync.Once
+
+func entrySetIconTooltipTextFunction_Set() error {
+	var err error
+	entrySetIconTooltipTextFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconTooltipTextFunction, err = entryStruct.InvokerNew("set_icon_tooltip_text")
+	})
+	return err
+}
+
+// SetIconTooltipText is a representation of the C type gtk_entry_set_icon_tooltip_text.
+func (recv *Entry) SetIconTooltipText(iconPos EntryIconPosition, tooltip string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetString(tooltip)
+
+	err := entrySetIconTooltipTextFunction_Set()
+	if err == nil {
+		entrySetIconTooltipTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var entrySetInnerBorderFunction *gi.Function
 var entrySetInnerBorderFunction_Once sync.Once
@@ -16883,7 +18309,34 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 
 // UNSUPPORTED : C value 'gtk_entry_set_input_hints' : parameter 'hints' of type 'InputHints' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_set_input_purpose' : parameter 'purpose' of type 'InputPurpose' not supported
+var entrySetInputPurposeFunction *gi.Function
+var entrySetInputPurposeFunction_Once sync.Once
+
+func entrySetInputPurposeFunction_Set() error {
+	var err error
+	entrySetInputPurposeFunction_Once.Do(func() {
+		err = entryStruct_Set()
+		if err != nil {
+			return
+		}
+		entrySetInputPurposeFunction, err = entryStruct.InvokerNew("set_input_purpose")
+	})
+	return err
+}
+
+// SetInputPurpose is a representation of the C type gtk_entry_set_input_purpose.
+func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(purpose))
+
+	err := entrySetInputPurposeFunction_Set()
+	if err == nil {
+		entrySetInputPurposeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_entry_set_invisible_char' : parameter 'ch' of type 'gunichar' not supported
 
@@ -18630,7 +20083,37 @@ type EventController struct {
 	gobject.Object
 }
 
-// UNSUPPORTED : C value 'gtk_event_controller_get_propagation_phase' : return type 'PropagationPhase' not supported
+var eventControllerGetPropagationPhaseFunction *gi.Function
+var eventControllerGetPropagationPhaseFunction_Once sync.Once
+
+func eventControllerGetPropagationPhaseFunction_Set() error {
+	var err error
+	eventControllerGetPropagationPhaseFunction_Once.Do(func() {
+		err = eventControllerStruct_Set()
+		if err != nil {
+			return
+		}
+		eventControllerGetPropagationPhaseFunction, err = eventControllerStruct.InvokerNew("get_propagation_phase")
+	})
+	return err
+}
+
+// GetPropagationPhase is a representation of the C type gtk_event_controller_get_propagation_phase.
+func (recv *EventController) GetPropagationPhase() PropagationPhase {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := eventControllerGetPropagationPhaseFunction_Set()
+	if err == nil {
+		ret = eventControllerGetPropagationPhaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PropagationPhase(ret.Int32())
+
+	return retGo
+}
 
 var eventControllerGetWidgetFunction *gi.Function
 var eventControllerGetWidgetFunction_Once sync.Once
@@ -18695,7 +20178,34 @@ func (recv *EventController) Reset() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_event_controller_set_propagation_phase' : parameter 'phase' of type 'PropagationPhase' not supported
+var eventControllerSetPropagationPhaseFunction *gi.Function
+var eventControllerSetPropagationPhaseFunction_Once sync.Once
+
+func eventControllerSetPropagationPhaseFunction_Set() error {
+	var err error
+	eventControllerSetPropagationPhaseFunction_Once.Do(func() {
+		err = eventControllerStruct_Set()
+		if err != nil {
+			return
+		}
+		eventControllerSetPropagationPhaseFunction, err = eventControllerStruct.InvokerNew("set_propagation_phase")
+	})
+	return err
+}
+
+// SetPropagationPhase is a representation of the C type gtk_event_controller_set_propagation_phase.
+func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(phase))
+
+	err := eventControllerSetPropagationPhaseFunction_Set()
+	if err == nil {
+		eventControllerSetPropagationPhaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // EventControllerStruct creates an uninitialised EventController.
 func EventControllerStruct() *EventController {
@@ -19648,7 +21158,39 @@ func (recv *FileChooserButton) SetFieldParent(value *Box) {
 	gi.FieldSet(fileChooserButtonStruct, recv.Native, "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_button_new' : parameter 'action' of type 'FileChooserAction' not supported
+var fileChooserButtonNewFunction *gi.Function
+var fileChooserButtonNewFunction_Once sync.Once
+
+func fileChooserButtonNewFunction_Set() error {
+	var err error
+	fileChooserButtonNewFunction_Once.Do(func() {
+		err = fileChooserButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		fileChooserButtonNewFunction, err = fileChooserButtonStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FileChooserButtonNew is a representation of the C type gtk_file_chooser_button_new.
+func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserButton {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(title)
+	inArgs[1].SetInt32(int32(action))
+
+	var ret gi.Argument
+
+	err := fileChooserButtonNewFunction_Set()
+	if err == nil {
+		ret = fileChooserButtonNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileChooserButton{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var fileChooserButtonNewWithDialogFunction *gi.Function
 var fileChooserButtonNewWithDialogFunction_Once sync.Once
@@ -19911,7 +21453,7 @@ func (recv *FileChooserDialog) SetFieldPriv(value *FileChooserDialogPrivate) {
 	gi.FieldSet(fileChooserDialogStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_dialog_new' : parameter 'action' of type 'FileChooserAction' not supported
+// UNSUPPORTED : C value 'gtk_file_chooser_dialog_new' : parameter '...' of type 'nil' not supported
 
 var fileChooserNativeStruct *gi.Struct
 var fileChooserNativeStruct_Once sync.Once
@@ -19928,7 +21470,42 @@ type FileChooserNative struct {
 	NativeDialog
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_native_new' : parameter 'action' of type 'FileChooserAction' not supported
+var fileChooserNativeNewFunction *gi.Function
+var fileChooserNativeNewFunction_Once sync.Once
+
+func fileChooserNativeNewFunction_Set() error {
+	var err error
+	fileChooserNativeNewFunction_Once.Do(func() {
+		err = fileChooserNativeStruct_Set()
+		if err != nil {
+			return
+		}
+		fileChooserNativeNewFunction, err = fileChooserNativeStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FileChooserNativeNew is a representation of the C type gtk_file_chooser_native_new.
+func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(title)
+	inArgs[1].SetPointer(parent.Native)
+	inArgs[2].SetInt32(int32(action))
+	inArgs[3].SetString(acceptLabel)
+	inArgs[4].SetString(cancelLabel)
+
+	var ret gi.Argument
+
+	err := fileChooserNativeNewFunction_Set()
+	if err == nil {
+		ret = fileChooserNativeNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileChooserNative{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var fileChooserNativeGetAcceptLabelFunction *gi.Function
 var fileChooserNativeGetAcceptLabelFunction_Once sync.Once
@@ -20097,7 +21674,38 @@ func (recv *FileChooserWidget) SetFieldPriv(value *FileChooserWidgetPrivate) {
 	gi.FieldSet(fileChooserWidgetStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_widget_new' : parameter 'action' of type 'FileChooserAction' not supported
+var fileChooserWidgetNewFunction *gi.Function
+var fileChooserWidgetNewFunction_Once sync.Once
+
+func fileChooserWidgetNewFunction_Set() error {
+	var err error
+	fileChooserWidgetNewFunction_Once.Do(func() {
+		err = fileChooserWidgetStruct_Set()
+		if err != nil {
+			return
+		}
+		fileChooserWidgetNewFunction, err = fileChooserWidgetStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// FileChooserWidgetNew is a representation of the C type gtk_file_chooser_widget_new.
+func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(action))
+
+	var ret gi.Argument
+
+	err := fileChooserWidgetNewFunction_Set()
+	if err == nil {
+		ret = fileChooserWidgetNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileChooserWidget{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var fileFilterStruct *gi.Struct
 var fileFilterStruct_Once sync.Once
@@ -20782,7 +22390,37 @@ func (recv *FlowBox) GetRowSpacing() uint32 {
 
 // UNSUPPORTED : C value 'gtk_flow_box_get_selected_children' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gtk_flow_box_get_selection_mode' : return type 'SelectionMode' not supported
+var flowBoxGetSelectionModeFunction *gi.Function
+var flowBoxGetSelectionModeFunction_Once sync.Once
+
+func flowBoxGetSelectionModeFunction_Set() error {
+	var err error
+	flowBoxGetSelectionModeFunction_Once.Do(func() {
+		err = flowBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		flowBoxGetSelectionModeFunction, err = flowBoxStruct.InvokerNew("get_selection_mode")
+	})
+	return err
+}
+
+// GetSelectionMode is a representation of the C type gtk_flow_box_get_selection_mode.
+func (recv *FlowBox) GetSelectionMode() SelectionMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := flowBoxGetSelectionModeFunction_Set()
+	if err == nil {
+		ret = flowBoxGetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SelectionMode(ret.Int32())
+
+	return retGo
+}
 
 var flowBoxInsertFunction *gi.Function
 var flowBoxInsertFunction_Once sync.Once
@@ -21134,7 +22772,34 @@ func (recv *FlowBox) SetRowSpacing(spacing uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_flow_box_set_selection_mode' : parameter 'mode' of type 'SelectionMode' not supported
+var flowBoxSetSelectionModeFunction *gi.Function
+var flowBoxSetSelectionModeFunction_Once sync.Once
+
+func flowBoxSetSelectionModeFunction_Set() error {
+	var err error
+	flowBoxSetSelectionModeFunction_Once.Do(func() {
+		err = flowBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		flowBoxSetSelectionModeFunction, err = flowBoxStruct.InvokerNew("set_selection_mode")
+	})
+	return err
+}
+
+// SetSelectionMode is a representation of the C type gtk_flow_box_set_selection_mode.
+func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := flowBoxSetSelectionModeFunction_Set()
+	if err == nil {
+		flowBoxSetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_flow_box_set_sort_func' : parameter 'sort_func' of type 'FlowBoxSortFunc' not supported
 
@@ -22910,7 +24575,37 @@ func (recv *Frame) GetLabelWidget() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_frame_get_shadow_type' : return type 'ShadowType' not supported
+var frameGetShadowTypeFunction *gi.Function
+var frameGetShadowTypeFunction_Once sync.Once
+
+func frameGetShadowTypeFunction_Set() error {
+	var err error
+	frameGetShadowTypeFunction_Once.Do(func() {
+		err = frameStruct_Set()
+		if err != nil {
+			return
+		}
+		frameGetShadowTypeFunction, err = frameStruct.InvokerNew("get_shadow_type")
+	})
+	return err
+}
+
+// GetShadowType is a representation of the C type gtk_frame_get_shadow_type.
+func (recv *Frame) GetShadowType() ShadowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := frameGetShadowTypeFunction_Set()
+	if err == nil {
+		ret = frameGetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ShadowType(ret.Int32())
+
+	return retGo
+}
 
 var frameSetLabelFunction *gi.Function
 var frameSetLabelFunction_Once sync.Once
@@ -23000,7 +24695,34 @@ func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_frame_set_shadow_type' : parameter 'type' of type 'ShadowType' not supported
+var frameSetShadowTypeFunction *gi.Function
+var frameSetShadowTypeFunction_Once sync.Once
+
+func frameSetShadowTypeFunction_Set() error {
+	var err error
+	frameSetShadowTypeFunction_Once.Do(func() {
+		err = frameStruct_Set()
+		if err != nil {
+			return
+		}
+		frameSetShadowTypeFunction, err = frameStruct.InvokerNew("set_shadow_type")
+	})
+	return err
+}
+
+// SetShadowType is a representation of the C type gtk_frame_set_shadow_type.
+func (recv *Frame) SetShadowType(type_ ShadowType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := frameSetShadowTypeFunction_Set()
+	if err == nil {
+		frameSetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var frameAccessibleStruct *gi.Struct
 var frameAccessibleStruct_Once sync.Once
@@ -23765,7 +25487,38 @@ func (recv *Gesture) IsRecognized() bool {
 
 // UNSUPPORTED : C value 'gtk_gesture_set_sequence_state' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
 
-// UNSUPPORTED : C value 'gtk_gesture_set_state' : parameter 'state' of type 'EventSequenceState' not supported
+var gestureSetStateFunction *gi.Function
+var gestureSetStateFunction_Once sync.Once
+
+func gestureSetStateFunction_Set() error {
+	var err error
+	gestureSetStateFunction_Once.Do(func() {
+		err = gestureStruct_Set()
+		if err != nil {
+			return
+		}
+		gestureSetStateFunction, err = gestureStruct.InvokerNew("set_state")
+	})
+	return err
+}
+
+// SetState is a representation of the C type gtk_gesture_set_state.
+func (recv *Gesture) SetState(state EventSequenceState) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(state))
+
+	var ret gi.Argument
+
+	err := gestureSetStateFunction_Set()
+	if err == nil {
+		ret = gestureSetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_gesture_set_window' : parameter 'window' of type 'Gdk.Window' not supported
 
@@ -24046,11 +25799,100 @@ type GesturePan struct {
 	GestureDrag
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_pan_new' : parameter 'orientation' of type 'Orientation' not supported
+var gesturePanNewFunction *gi.Function
+var gesturePanNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_gesture_pan_get_orientation' : return type 'Orientation' not supported
+func gesturePanNewFunction_Set() error {
+	var err error
+	gesturePanNewFunction_Once.Do(func() {
+		err = gesturePanStruct_Set()
+		if err != nil {
+			return
+		}
+		gesturePanNewFunction, err = gesturePanStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_gesture_pan_set_orientation' : parameter 'orientation' of type 'Orientation' not supported
+// GesturePanNew is a representation of the C type gtk_gesture_pan_new.
+func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	var ret gi.Argument
+
+	err := gesturePanNewFunction_Set()
+	if err == nil {
+		ret = gesturePanNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &GesturePan{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var gesturePanGetOrientationFunction *gi.Function
+var gesturePanGetOrientationFunction_Once sync.Once
+
+func gesturePanGetOrientationFunction_Set() error {
+	var err error
+	gesturePanGetOrientationFunction_Once.Do(func() {
+		err = gesturePanStruct_Set()
+		if err != nil {
+			return
+		}
+		gesturePanGetOrientationFunction, err = gesturePanStruct.InvokerNew("get_orientation")
+	})
+	return err
+}
+
+// GetOrientation is a representation of the C type gtk_gesture_pan_get_orientation.
+func (recv *GesturePan) GetOrientation() Orientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := gesturePanGetOrientationFunction_Set()
+	if err == nil {
+		ret = gesturePanGetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Orientation(ret.Int32())
+
+	return retGo
+}
+
+var gesturePanSetOrientationFunction *gi.Function
+var gesturePanSetOrientationFunction_Once sync.Once
+
+func gesturePanSetOrientationFunction_Set() error {
+	var err error
+	gesturePanSetOrientationFunction_Once.Do(func() {
+		err = gesturePanStruct_Set()
+		if err != nil {
+			return
+		}
+		gesturePanSetOrientationFunction, err = gesturePanStruct.InvokerNew("set_orientation")
+	})
+	return err
+}
+
+// SetOrientation is a representation of the C type gtk_gesture_pan_set_orientation.
+func (recv *GesturePan) SetOrientation(orientation Orientation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	err := gesturePanSetOrientationFunction_Set()
+	if err == nil {
+		gesturePanSetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gestureRotateStruct *gi.Struct
 var gestureRotateStruct_Once sync.Once
@@ -24676,7 +26518,38 @@ func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, heig
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_grid_attach_next_to' : parameter 'side' of type 'PositionType' not supported
+var gridAttachNextToFunction *gi.Function
+var gridAttachNextToFunction_Once sync.Once
+
+func gridAttachNextToFunction_Set() error {
+	var err error
+	gridAttachNextToFunction_Once.Do(func() {
+		err = gridStruct_Set()
+		if err != nil {
+			return
+		}
+		gridAttachNextToFunction, err = gridStruct.InvokerNew("attach_next_to")
+	})
+	return err
+}
+
+// AttachNextTo is a representation of the C type gtk_grid_attach_next_to.
+func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType, width int32, height int32) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+	inArgs[2].SetPointer(sibling.Native)
+	inArgs[3].SetInt32(int32(side))
+	inArgs[4].SetInt32(width)
+	inArgs[5].SetInt32(height)
+
+	err := gridAttachNextToFunction_Set()
+	if err == nil {
+		gridAttachNextToFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gridGetBaselineRowFunction *gi.Function
 var gridGetBaselineRowFunction_Once sync.Once
@@ -24809,7 +26682,38 @@ func (recv *Grid) GetColumnSpacing() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_grid_get_row_baseline_position' : return type 'BaselinePosition' not supported
+var gridGetRowBaselinePositionFunction *gi.Function
+var gridGetRowBaselinePositionFunction_Once sync.Once
+
+func gridGetRowBaselinePositionFunction_Set() error {
+	var err error
+	gridGetRowBaselinePositionFunction_Once.Do(func() {
+		err = gridStruct_Set()
+		if err != nil {
+			return
+		}
+		gridGetRowBaselinePositionFunction, err = gridStruct.InvokerNew("get_row_baseline_position")
+	})
+	return err
+}
+
+// GetRowBaselinePosition is a representation of the C type gtk_grid_get_row_baseline_position.
+func (recv *Grid) GetRowBaselinePosition(row int32) BaselinePosition {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(row)
+
+	var ret gi.Argument
+
+	err := gridGetRowBaselinePositionFunction_Set()
+	if err == nil {
+		ret = gridGetRowBaselinePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BaselinePosition(ret.Int32())
+
+	return retGo
+}
 
 var gridGetRowHomogeneousFunction *gi.Function
 var gridGetRowHomogeneousFunction_Once sync.Once
@@ -24904,7 +26808,35 @@ func (recv *Grid) InsertColumn(position int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_grid_insert_next_to' : parameter 'side' of type 'PositionType' not supported
+var gridInsertNextToFunction *gi.Function
+var gridInsertNextToFunction_Once sync.Once
+
+func gridInsertNextToFunction_Set() error {
+	var err error
+	gridInsertNextToFunction_Once.Do(func() {
+		err = gridStruct_Set()
+		if err != nil {
+			return
+		}
+		gridInsertNextToFunction, err = gridStruct.InvokerNew("insert_next_to")
+	})
+	return err
+}
+
+// InsertNextTo is a representation of the C type gtk_grid_insert_next_to.
+func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(sibling.Native)
+	inArgs[2].SetInt32(int32(side))
+
+	err := gridInsertNextToFunction_Set()
+	if err == nil {
+		gridInsertNextToFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gridInsertRowFunction *gi.Function
 var gridInsertRowFunction_Once sync.Once
@@ -25080,7 +27012,35 @@ func (recv *Grid) SetColumnSpacing(spacing uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_grid_set_row_baseline_position' : parameter 'pos' of type 'BaselinePosition' not supported
+var gridSetRowBaselinePositionFunction *gi.Function
+var gridSetRowBaselinePositionFunction_Once sync.Once
+
+func gridSetRowBaselinePositionFunction_Set() error {
+	var err error
+	gridSetRowBaselinePositionFunction_Once.Do(func() {
+		err = gridStruct_Set()
+		if err != nil {
+			return
+		}
+		gridSetRowBaselinePositionFunction, err = gridStruct.InvokerNew("set_row_baseline_position")
+	})
+	return err
+}
+
+// SetRowBaselinePosition is a representation of the C type gtk_grid_set_row_baseline_position.
+func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(row)
+	inArgs[2].SetInt32(int32(pos))
+
+	err := gridSetRowBaselinePositionFunction_Set()
+	if err == nil {
+		gridSetRowBaselinePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gridSetRowHomogeneousFunction *gi.Function
 var gridSetRowHomogeneousFunction_Once sync.Once
@@ -25862,17 +27822,188 @@ func (recv *HandleBox) GetChildDetached() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_handle_box_get_handle_position' : return type 'PositionType' not supported
+var handleBoxGetHandlePositionFunction *gi.Function
+var handleBoxGetHandlePositionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_handle_box_get_shadow_type' : return type 'ShadowType' not supported
+func handleBoxGetHandlePositionFunction_Set() error {
+	var err error
+	handleBoxGetHandlePositionFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxGetHandlePositionFunction, err = handleBoxStruct.InvokerNew("get_handle_position")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_handle_box_get_snap_edge' : return type 'PositionType' not supported
+// GetHandlePosition is a representation of the C type gtk_handle_box_get_handle_position.
+func (recv *HandleBox) GetHandlePosition() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
 
-// UNSUPPORTED : C value 'gtk_handle_box_set_handle_position' : parameter 'position' of type 'PositionType' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_handle_box_set_shadow_type' : parameter 'type' of type 'ShadowType' not supported
+	err := handleBoxGetHandlePositionFunction_Set()
+	if err == nil {
+		ret = handleBoxGetHandlePositionFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_handle_box_set_snap_edge' : parameter 'edge' of type 'PositionType' not supported
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
+
+var handleBoxGetShadowTypeFunction *gi.Function
+var handleBoxGetShadowTypeFunction_Once sync.Once
+
+func handleBoxGetShadowTypeFunction_Set() error {
+	var err error
+	handleBoxGetShadowTypeFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxGetShadowTypeFunction, err = handleBoxStruct.InvokerNew("get_shadow_type")
+	})
+	return err
+}
+
+// GetShadowType is a representation of the C type gtk_handle_box_get_shadow_type.
+func (recv *HandleBox) GetShadowType() ShadowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := handleBoxGetShadowTypeFunction_Set()
+	if err == nil {
+		ret = handleBoxGetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ShadowType(ret.Int32())
+
+	return retGo
+}
+
+var handleBoxGetSnapEdgeFunction *gi.Function
+var handleBoxGetSnapEdgeFunction_Once sync.Once
+
+func handleBoxGetSnapEdgeFunction_Set() error {
+	var err error
+	handleBoxGetSnapEdgeFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxGetSnapEdgeFunction, err = handleBoxStruct.InvokerNew("get_snap_edge")
+	})
+	return err
+}
+
+// GetSnapEdge is a representation of the C type gtk_handle_box_get_snap_edge.
+func (recv *HandleBox) GetSnapEdge() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := handleBoxGetSnapEdgeFunction_Set()
+	if err == nil {
+		ret = handleBoxGetSnapEdgeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
+
+var handleBoxSetHandlePositionFunction *gi.Function
+var handleBoxSetHandlePositionFunction_Once sync.Once
+
+func handleBoxSetHandlePositionFunction_Set() error {
+	var err error
+	handleBoxSetHandlePositionFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxSetHandlePositionFunction, err = handleBoxStruct.InvokerNew("set_handle_position")
+	})
+	return err
+}
+
+// SetHandlePosition is a representation of the C type gtk_handle_box_set_handle_position.
+func (recv *HandleBox) SetHandlePosition(position PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(position))
+
+	err := handleBoxSetHandlePositionFunction_Set()
+	if err == nil {
+		handleBoxSetHandlePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var handleBoxSetShadowTypeFunction *gi.Function
+var handleBoxSetShadowTypeFunction_Once sync.Once
+
+func handleBoxSetShadowTypeFunction_Set() error {
+	var err error
+	handleBoxSetShadowTypeFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxSetShadowTypeFunction, err = handleBoxStruct.InvokerNew("set_shadow_type")
+	})
+	return err
+}
+
+// SetShadowType is a representation of the C type gtk_handle_box_set_shadow_type.
+func (recv *HandleBox) SetShadowType(type_ ShadowType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := handleBoxSetShadowTypeFunction_Set()
+	if err == nil {
+		handleBoxSetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var handleBoxSetSnapEdgeFunction *gi.Function
+var handleBoxSetSnapEdgeFunction_Once sync.Once
+
+func handleBoxSetSnapEdgeFunction_Set() error {
+	var err error
+	handleBoxSetSnapEdgeFunction_Once.Do(func() {
+		err = handleBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		handleBoxSetSnapEdgeFunction, err = handleBoxStruct.InvokerNew("set_snap_edge")
+	})
+	return err
+}
+
+// SetSnapEdge is a representation of the C type gtk_handle_box_set_snap_edge.
+func (recv *HandleBox) SetSnapEdge(edge PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(edge))
+
+	err := handleBoxSetSnapEdgeFunction_Set()
+	if err == nil {
+		handleBoxSetSnapEdgeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var headerBarStruct *gi.Struct
 var headerBarStruct_Once sync.Once
@@ -27339,7 +29470,7 @@ func (recv *IconInfo) IsSymbolic() bool {
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_for_context_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_for_style' : parameter 'state' of type 'StateType' not supported
+// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_for_style' : return type 'GdkPixbuf.Pixbuf' not supported
 
 var iconInfoSetRawCoordinatesFunction *gi.Function
 var iconInfoSetRawCoordinatesFunction_Once sync.Once
@@ -27958,9 +30089,77 @@ func (recv *IconView) GetCursor() (bool, *TreePath, *CellRenderer) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_dest_item_at_pos' : parameter 'pos' of type 'IconViewDropPosition' not supported
+var iconViewGetDestItemAtPosFunction *gi.Function
+var iconViewGetDestItemAtPosFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_drag_dest_item' : parameter 'pos' of type 'IconViewDropPosition' not supported
+func iconViewGetDestItemAtPosFunction_Set() error {
+	var err error
+	iconViewGetDestItemAtPosFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetDestItemAtPosFunction, err = iconViewStruct.InvokerNew("get_dest_item_at_pos")
+	})
+	return err
+}
+
+// GetDestItemAtPos is a representation of the C type gtk_icon_view_get_dest_item_at_pos.
+func (recv *IconView) GetDestItemAtPos(dragX int32, dragY int32) (bool, *TreePath, IconViewDropPosition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(dragX)
+	inArgs[2].SetInt32(dragY)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := iconViewGetDestItemAtPosFunction_Set()
+	if err == nil {
+		ret = iconViewGetDestItemAtPosFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &TreePath{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := IconViewDropPosition(outArgs[1].Int32())
+
+	return retGo, out0, out1
+}
+
+var iconViewGetDragDestItemFunction *gi.Function
+var iconViewGetDragDestItemFunction_Once sync.Once
+
+func iconViewGetDragDestItemFunction_Set() error {
+	var err error
+	iconViewGetDragDestItemFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetDragDestItemFunction, err = iconViewStruct.InvokerNew("get_drag_dest_item")
+	})
+	return err
+}
+
+// GetDragDestItem is a representation of the C type gtk_icon_view_get_drag_dest_item.
+func (recv *IconView) GetDragDestItem() (*TreePath, IconViewDropPosition) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := iconViewGetDragDestItemFunction_Set()
+	if err == nil {
+		iconViewGetDragDestItemFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &TreePath{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := IconViewDropPosition(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 var iconViewGetItemAtPosFunction *gi.Function
 var iconViewGetItemAtPosFunction_Once sync.Once
@@ -28034,7 +30233,37 @@ func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_item_orientation' : return type 'Orientation' not supported
+var iconViewGetItemOrientationFunction *gi.Function
+var iconViewGetItemOrientationFunction_Once sync.Once
+
+func iconViewGetItemOrientationFunction_Set() error {
+	var err error
+	iconViewGetItemOrientationFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetItemOrientationFunction, err = iconViewStruct.InvokerNew("get_item_orientation")
+	})
+	return err
+}
+
+// GetItemOrientation is a representation of the C type gtk_icon_view_get_item_orientation.
+func (recv *IconView) GetItemOrientation() Orientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iconViewGetItemOrientationFunction_Set()
+	if err == nil {
+		ret = iconViewGetItemOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Orientation(ret.Int32())
+
+	return retGo
+}
 
 var iconViewGetItemPaddingFunction *gi.Function
 var iconViewGetItemPaddingFunction_Once sync.Once
@@ -28332,7 +30561,37 @@ func (recv *IconView) GetRowSpacing() int32 {
 
 // UNSUPPORTED : C value 'gtk_icon_view_get_selected_items' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_selection_mode' : return type 'SelectionMode' not supported
+var iconViewGetSelectionModeFunction *gi.Function
+var iconViewGetSelectionModeFunction_Once sync.Once
+
+func iconViewGetSelectionModeFunction_Set() error {
+	var err error
+	iconViewGetSelectionModeFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetSelectionModeFunction, err = iconViewStruct.InvokerNew("get_selection_mode")
+	})
+	return err
+}
+
+// GetSelectionMode is a representation of the C type gtk_icon_view_get_selection_mode.
+func (recv *IconView) GetSelectionMode() SelectionMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := iconViewGetSelectionModeFunction_Set()
+	if err == nil {
+		ret = iconViewGetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SelectionMode(ret.Int32())
+
+	return retGo
+}
 
 var iconViewGetSpacingFunction *gi.Function
 var iconViewGetSpacingFunction_Once sync.Once
@@ -28740,9 +30999,64 @@ func (recv *IconView) SetCursor(path *TreePath, cell *CellRenderer, startEditing
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_set_drag_dest_item' : parameter 'pos' of type 'IconViewDropPosition' not supported
+var iconViewSetDragDestItemFunction *gi.Function
+var iconViewSetDragDestItemFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_view_set_item_orientation' : parameter 'orientation' of type 'Orientation' not supported
+func iconViewSetDragDestItemFunction_Set() error {
+	var err error
+	iconViewSetDragDestItemFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewSetDragDestItemFunction, err = iconViewStruct.InvokerNew("set_drag_dest_item")
+	})
+	return err
+}
+
+// SetDragDestItem is a representation of the C type gtk_icon_view_set_drag_dest_item.
+func (recv *IconView) SetDragDestItem(path *TreePath, pos IconViewDropPosition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(path.Native)
+	inArgs[2].SetInt32(int32(pos))
+
+	err := iconViewSetDragDestItemFunction_Set()
+	if err == nil {
+		iconViewSetDragDestItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var iconViewSetItemOrientationFunction *gi.Function
+var iconViewSetItemOrientationFunction_Once sync.Once
+
+func iconViewSetItemOrientationFunction_Set() error {
+	var err error
+	iconViewSetItemOrientationFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewSetItemOrientationFunction, err = iconViewStruct.InvokerNew("set_item_orientation")
+	})
+	return err
+}
+
+// SetItemOrientation is a representation of the C type gtk_icon_view_set_item_orientation.
+func (recv *IconView) SetItemOrientation(orientation Orientation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	err := iconViewSetItemOrientationFunction_Set()
+	if err == nil {
+		iconViewSetItemOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconViewSetItemPaddingFunction *gi.Function
 var iconViewSetItemPaddingFunction_Once sync.Once
@@ -28949,7 +31263,34 @@ func (recv *IconView) SetRowSpacing(rowSpacing int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_set_selection_mode' : parameter 'mode' of type 'SelectionMode' not supported
+var iconViewSetSelectionModeFunction *gi.Function
+var iconViewSetSelectionModeFunction_Once sync.Once
+
+func iconViewSetSelectionModeFunction_Set() error {
+	var err error
+	iconViewSetSelectionModeFunction_Once.Do(func() {
+		err = iconViewStruct_Set()
+		if err != nil {
+			return
+		}
+		iconViewSetSelectionModeFunction, err = iconViewStruct.InvokerNew("set_selection_mode")
+	})
+	return err
+}
+
+// SetSelectionMode is a representation of the C type gtk_icon_view_set_selection_mode.
+func (recv *IconView) SetSelectionMode(mode SelectionMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := iconViewSetSelectionModeFunction_Set()
+	if err == nil {
+		iconViewSetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconViewSetSpacingFunction *gi.Function
 var iconViewSetSpacingFunction_Once sync.Once
@@ -29371,9 +31712,73 @@ func ImageNewFromFile(filename string) *Image {
 
 // UNSUPPORTED : C value 'gtk_image_new_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_image_new_from_icon_name' : parameter 'size' of type 'IconSize' not supported
+var imageNewFromIconNameFunction *gi.Function
+var imageNewFromIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_image_new_from_icon_set' : parameter 'size' of type 'IconSize' not supported
+func imageNewFromIconNameFunction_Set() error {
+	var err error
+	imageNewFromIconNameFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageNewFromIconNameFunction, err = imageStruct.InvokerNew("new_from_icon_name")
+	})
+	return err
+}
+
+// ImageNewFromIconName is a representation of the C type gtk_image_new_from_icon_name.
+func ImageNewFromIconName(iconName string, size IconSize) *Image {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(iconName)
+	inArgs[1].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := imageNewFromIconNameFunction_Set()
+	if err == nil {
+		ret = imageNewFromIconNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Image{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var imageNewFromIconSetFunction *gi.Function
+var imageNewFromIconSetFunction_Once sync.Once
+
+func imageNewFromIconSetFunction_Set() error {
+	var err error
+	imageNewFromIconSetFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageNewFromIconSetFunction, err = imageStruct.InvokerNew("new_from_icon_set")
+	})
+	return err
+}
+
+// ImageNewFromIconSet is a representation of the C type gtk_image_new_from_icon_set.
+func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(iconSet.Native)
+	inArgs[1].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := imageNewFromIconSetFunction_Set()
+	if err == nil {
+		ret = imageNewFromIconSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Image{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_image_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
@@ -29410,7 +31815,39 @@ func ImageNewFromResource(resourcePath string) *Image {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_image_new_from_stock' : parameter 'size' of type 'IconSize' not supported
+var imageNewFromStockFunction *gi.Function
+var imageNewFromStockFunction_Once sync.Once
+
+func imageNewFromStockFunction_Set() error {
+	var err error
+	imageNewFromStockFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageNewFromStockFunction, err = imageStruct.InvokerNew("new_from_stock")
+	})
+	return err
+}
+
+// ImageNewFromStock is a representation of the C type gtk_image_new_from_stock.
+func ImageNewFromStock(stockId string, size IconSize) *Image {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(stockId)
+	inArgs[1].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := imageNewFromStockFunction_Set()
+	if err == nil {
+		ret = imageNewFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Image{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_image_new_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
@@ -29446,9 +31883,72 @@ func (recv *Image) Clear() {
 
 // UNSUPPORTED : C value 'gtk_image_get_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_image_get_icon_name' : parameter 'size' of type 'IconSize' not supported
+var imageGetIconNameFunction *gi.Function
+var imageGetIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_image_get_icon_set' : parameter 'size' of type 'IconSize' not supported
+func imageGetIconNameFunction_Set() error {
+	var err error
+	imageGetIconNameFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageGetIconNameFunction, err = imageStruct.InvokerNew("get_icon_name")
+	})
+	return err
+}
+
+// GetIconName is a representation of the C type gtk_image_get_icon_name.
+func (recv *Image) GetIconName() (string, IconSize) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := imageGetIconNameFunction_Set()
+	if err == nil {
+		imageGetIconNameFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].String(false)
+	out1 := IconSize(outArgs[1].Int32())
+
+	return out0, out1
+}
+
+var imageGetIconSetFunction *gi.Function
+var imageGetIconSetFunction_Once sync.Once
+
+func imageGetIconSetFunction_Set() error {
+	var err error
+	imageGetIconSetFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageGetIconSetFunction, err = imageStruct.InvokerNew("get_icon_set")
+	})
+	return err
+}
+
+// GetIconSet is a representation of the C type gtk_image_get_icon_set.
+func (recv *Image) GetIconSet() (*IconSet, IconSize) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := imageGetIconSetFunction_Set()
+	if err == nil {
+		imageGetIconSetFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &IconSet{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := IconSize(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 // UNSUPPORTED : C value 'gtk_image_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
 
@@ -29484,9 +31984,70 @@ func (recv *Image) GetPixelSize() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_image_get_stock' : parameter 'size' of type 'IconSize' not supported
+var imageGetStockFunction *gi.Function
+var imageGetStockFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_image_get_storage_type' : return type 'ImageType' not supported
+func imageGetStockFunction_Set() error {
+	var err error
+	imageGetStockFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageGetStockFunction, err = imageStruct.InvokerNew("get_stock")
+	})
+	return err
+}
+
+// GetStock is a representation of the C type gtk_image_get_stock.
+func (recv *Image) GetStock() (string, IconSize) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := imageGetStockFunction_Set()
+	if err == nil {
+		imageGetStockFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].String(false)
+	out1 := IconSize(outArgs[1].Int32())
+
+	return out0, out1
+}
+
+var imageGetStorageTypeFunction *gi.Function
+var imageGetStorageTypeFunction_Once sync.Once
+
+func imageGetStorageTypeFunction_Set() error {
+	var err error
+	imageGetStorageTypeFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageGetStorageTypeFunction, err = imageStruct.InvokerNew("get_storage_type")
+	})
+	return err
+}
+
+// GetStorageType is a representation of the C type gtk_image_get_storage_type.
+func (recv *Image) GetStorageType() ImageType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := imageGetStorageTypeFunction_Set()
+	if err == nil {
+		ret = imageGetStorageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ImageType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_image_set_from_animation' : parameter 'animation' of type 'GdkPixbuf.PixbufAnimation' not supported
 
@@ -29521,9 +32082,65 @@ func (recv *Image) SetFromFile(filename string) {
 
 // UNSUPPORTED : C value 'gtk_image_set_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_image_set_from_icon_name' : parameter 'size' of type 'IconSize' not supported
+var imageSetFromIconNameFunction *gi.Function
+var imageSetFromIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_image_set_from_icon_set' : parameter 'size' of type 'IconSize' not supported
+func imageSetFromIconNameFunction_Set() error {
+	var err error
+	imageSetFromIconNameFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageSetFromIconNameFunction, err = imageStruct.InvokerNew("set_from_icon_name")
+	})
+	return err
+}
+
+// SetFromIconName is a representation of the C type gtk_image_set_from_icon_name.
+func (recv *Image) SetFromIconName(iconName string, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(iconName)
+	inArgs[2].SetInt32(int32(size))
+
+	err := imageSetFromIconNameFunction_Set()
+	if err == nil {
+		imageSetFromIconNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var imageSetFromIconSetFunction *gi.Function
+var imageSetFromIconSetFunction_Once sync.Once
+
+func imageSetFromIconSetFunction_Set() error {
+	var err error
+	imageSetFromIconSetFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageSetFromIconSetFunction, err = imageStruct.InvokerNew("set_from_icon_set")
+	})
+	return err
+}
+
+// SetFromIconSet is a representation of the C type gtk_image_set_from_icon_set.
+func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(iconSet.Native)
+	inArgs[2].SetInt32(int32(size))
+
+	err := imageSetFromIconSetFunction_Set()
+	if err == nil {
+		imageSetFromIconSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_image_set_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
@@ -29556,7 +32173,35 @@ func (recv *Image) SetFromResource(resourcePath string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_image_set_from_stock' : parameter 'size' of type 'IconSize' not supported
+var imageSetFromStockFunction *gi.Function
+var imageSetFromStockFunction_Once sync.Once
+
+func imageSetFromStockFunction_Set() error {
+	var err error
+	imageSetFromStockFunction_Once.Do(func() {
+		err = imageStruct_Set()
+		if err != nil {
+			return
+		}
+		imageSetFromStockFunction, err = imageStruct.InvokerNew("set_from_stock")
+	})
+	return err
+}
+
+// SetFromStock is a representation of the C type gtk_image_set_from_stock.
+func (recv *Image) SetFromStock(stockId string, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(stockId)
+	inArgs[2].SetInt32(int32(size))
+
+	err := imageSetFromStockFunction_Set()
+	if err == nil {
+		imageSetFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_image_set_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
@@ -30148,9 +32793,70 @@ func InfoBarNew() *InfoBar {
 
 // UNSUPPORTED : C value 'gtk_info_bar_new_with_buttons' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_info_bar_add_action_widget' : parameter 'response_id' of type 'ResponseType' not supported
+var infoBarAddActionWidgetFunction *gi.Function
+var infoBarAddActionWidgetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_info_bar_add_button' : parameter 'response_id' of type 'ResponseType' not supported
+func infoBarAddActionWidgetFunction_Set() error {
+	var err error
+	infoBarAddActionWidgetFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarAddActionWidgetFunction, err = infoBarStruct.InvokerNew("add_action_widget")
+	})
+	return err
+}
+
+// AddActionWidget is a representation of the C type gtk_info_bar_add_action_widget.
+func (recv *InfoBar) AddActionWidget(child *Widget, responseId ResponseType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+	inArgs[2].SetInt32(int32(responseId))
+
+	err := infoBarAddActionWidgetFunction_Set()
+	if err == nil {
+		infoBarAddActionWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var infoBarAddButtonFunction *gi.Function
+var infoBarAddButtonFunction_Once sync.Once
+
+func infoBarAddButtonFunction_Set() error {
+	var err error
+	infoBarAddButtonFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarAddButtonFunction, err = infoBarStruct.InvokerNew("add_button")
+	})
+	return err
+}
+
+// AddButton is a representation of the C type gtk_info_bar_add_button.
+func (recv *InfoBar) AddButton(buttonText string, responseId ResponseType) *Button {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(buttonText)
+	inArgs[2].SetInt32(int32(responseId))
+
+	var ret gi.Argument
+
+	err := infoBarAddButtonFunction_Set()
+	if err == nil {
+		ret = infoBarAddButtonFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Button{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_info_bar_add_buttons' : parameter '...' of type 'nil' not supported
 
@@ -30220,7 +32926,37 @@ func (recv *InfoBar) GetContentArea() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_info_bar_get_message_type' : return type 'MessageType' not supported
+var infoBarGetMessageTypeFunction *gi.Function
+var infoBarGetMessageTypeFunction_Once sync.Once
+
+func infoBarGetMessageTypeFunction_Set() error {
+	var err error
+	infoBarGetMessageTypeFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarGetMessageTypeFunction, err = infoBarStruct.InvokerNew("get_message_type")
+	})
+	return err
+}
+
+// GetMessageType is a representation of the C type gtk_info_bar_get_message_type.
+func (recv *InfoBar) GetMessageType() MessageType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := infoBarGetMessageTypeFunction_Set()
+	if err == nil {
+		ret = infoBarGetMessageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageType(ret.Int32())
+
+	return retGo
+}
 
 var infoBarGetRevealedFunction *gi.Function
 var infoBarGetRevealedFunction_Once sync.Once
@@ -30286,13 +33022,122 @@ func (recv *InfoBar) GetShowCloseButton() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_info_bar_response' : parameter 'response_id' of type 'ResponseType' not supported
+var infoBarResponseFunction *gi.Function
+var infoBarResponseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_info_bar_set_default_response' : parameter 'response_id' of type 'ResponseType' not supported
+func infoBarResponseFunction_Set() error {
+	var err error
+	infoBarResponseFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarResponseFunction, err = infoBarStruct.InvokerNew("response")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_info_bar_set_message_type' : parameter 'message_type' of type 'MessageType' not supported
+// Response is a representation of the C type gtk_info_bar_response.
+func (recv *InfoBar) Response(responseId ResponseType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
 
-// UNSUPPORTED : C value 'gtk_info_bar_set_response_sensitive' : parameter 'response_id' of type 'ResponseType' not supported
+	err := infoBarResponseFunction_Set()
+	if err == nil {
+		infoBarResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var infoBarSetDefaultResponseFunction *gi.Function
+var infoBarSetDefaultResponseFunction_Once sync.Once
+
+func infoBarSetDefaultResponseFunction_Set() error {
+	var err error
+	infoBarSetDefaultResponseFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarSetDefaultResponseFunction, err = infoBarStruct.InvokerNew("set_default_response")
+	})
+	return err
+}
+
+// SetDefaultResponse is a representation of the C type gtk_info_bar_set_default_response.
+func (recv *InfoBar) SetDefaultResponse(responseId ResponseType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+
+	err := infoBarSetDefaultResponseFunction_Set()
+	if err == nil {
+		infoBarSetDefaultResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var infoBarSetMessageTypeFunction *gi.Function
+var infoBarSetMessageTypeFunction_Once sync.Once
+
+func infoBarSetMessageTypeFunction_Set() error {
+	var err error
+	infoBarSetMessageTypeFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarSetMessageTypeFunction, err = infoBarStruct.InvokerNew("set_message_type")
+	})
+	return err
+}
+
+// SetMessageType is a representation of the C type gtk_info_bar_set_message_type.
+func (recv *InfoBar) SetMessageType(messageType MessageType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(messageType))
+
+	err := infoBarSetMessageTypeFunction_Set()
+	if err == nil {
+		infoBarSetMessageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var infoBarSetResponseSensitiveFunction *gi.Function
+var infoBarSetResponseSensitiveFunction_Once sync.Once
+
+func infoBarSetResponseSensitiveFunction_Set() error {
+	var err error
+	infoBarSetResponseSensitiveFunction_Once.Do(func() {
+		err = infoBarStruct_Set()
+		if err != nil {
+			return
+		}
+		infoBarSetResponseSensitiveFunction, err = infoBarStruct.InvokerNew("set_response_sensitive")
+	})
+	return err
+}
+
+// SetResponseSensitive is a representation of the C type gtk_info_bar_set_response_sensitive.
+func (recv *InfoBar) SetResponseSensitive(responseId ResponseType, setting bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(responseId))
+	inArgs[2].SetBoolean(setting)
+
+	err := infoBarSetResponseSensitiveFunction_Set()
+	if err == nil {
+		infoBarSetResponseSensitiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var infoBarSetRevealedFunction *gi.Function
 var infoBarSetRevealedFunction_Once sync.Once
@@ -30583,7 +33428,37 @@ func (recv *Label) GetCurrentUri() string {
 
 // UNSUPPORTED : C value 'gtk_label_get_ellipsize' : return type 'Pango.EllipsizeMode' not supported
 
-// UNSUPPORTED : C value 'gtk_label_get_justify' : return type 'Justification' not supported
+var labelGetJustifyFunction *gi.Function
+var labelGetJustifyFunction_Once sync.Once
+
+func labelGetJustifyFunction_Set() error {
+	var err error
+	labelGetJustifyFunction_Once.Do(func() {
+		err = labelStruct_Set()
+		if err != nil {
+			return
+		}
+		labelGetJustifyFunction, err = labelStruct.InvokerNew("get_justify")
+	})
+	return err
+}
+
+// GetJustify is a representation of the C type gtk_label_get_justify.
+func (recv *Label) GetJustify() Justification {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := labelGetJustifyFunction_Set()
+	if err == nil {
+		ret = labelGetJustifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Justification(ret.Int32())
+
+	return retGo
+}
 
 var labelGetLabelFunction *gi.Function
 var labelGetLabelFunction_Once sync.Once
@@ -31201,7 +34076,34 @@ func (recv *Label) SetAngle(angle float64) {
 
 // UNSUPPORTED : C value 'gtk_label_set_ellipsize' : parameter 'mode' of type 'Pango.EllipsizeMode' not supported
 
-// UNSUPPORTED : C value 'gtk_label_set_justify' : parameter 'jtype' of type 'Justification' not supported
+var labelSetJustifyFunction *gi.Function
+var labelSetJustifyFunction_Once sync.Once
+
+func labelSetJustifyFunction_Set() error {
+	var err error
+	labelSetJustifyFunction_Once.Do(func() {
+		err = labelStruct_Set()
+		if err != nil {
+			return
+		}
+		labelSetJustifyFunction, err = labelStruct.InvokerNew("set_justify")
+	})
+	return err
+}
+
+// SetJustify is a representation of the C type gtk_label_set_justify.
+func (recv *Label) SetJustify(jtype Justification) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(jtype))
+
+	err := labelSetJustifyFunction_Set()
+	if err == nil {
+		labelSetJustifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var labelSetLabelFunction *gi.Function
 var labelSetLabelFunction_Once sync.Once
@@ -32309,7 +35211,37 @@ func (recv *LevelBar) GetMinValue() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_level_bar_get_mode' : return type 'LevelBarMode' not supported
+var levelBarGetModeFunction *gi.Function
+var levelBarGetModeFunction_Once sync.Once
+
+func levelBarGetModeFunction_Set() error {
+	var err error
+	levelBarGetModeFunction_Once.Do(func() {
+		err = levelBarStruct_Set()
+		if err != nil {
+			return
+		}
+		levelBarGetModeFunction, err = levelBarStruct.InvokerNew("get_mode")
+	})
+	return err
+}
+
+// GetMode is a representation of the C type gtk_level_bar_get_mode.
+func (recv *LevelBar) GetMode() LevelBarMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := levelBarGetModeFunction_Set()
+	if err == nil {
+		ret = levelBarGetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := LevelBarMode(ret.Int32())
+
+	return retGo
+}
 
 var levelBarGetOffsetValueFunction *gi.Function
 var levelBarGetOffsetValueFunction_Once sync.Once
@@ -32494,7 +35426,34 @@ func (recv *LevelBar) SetMinValue(value float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_level_bar_set_mode' : parameter 'mode' of type 'LevelBarMode' not supported
+var levelBarSetModeFunction *gi.Function
+var levelBarSetModeFunction_Once sync.Once
+
+func levelBarSetModeFunction_Set() error {
+	var err error
+	levelBarSetModeFunction_Once.Do(func() {
+		err = levelBarStruct_Set()
+		if err != nil {
+			return
+		}
+		levelBarSetModeFunction, err = levelBarStruct.InvokerNew("set_mode")
+	})
+	return err
+}
+
+// SetMode is a representation of the C type gtk_level_bar_set_mode.
+func (recv *LevelBar) SetMode(mode LevelBarMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := levelBarSetModeFunction_Set()
+	if err == nil {
+		levelBarSetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var levelBarSetValueFunction *gi.Function
 var levelBarSetValueFunction_Once sync.Once
@@ -33139,7 +36098,37 @@ func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 
 // UNSUPPORTED : C value 'gtk_list_box_get_selected_rows' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gtk_list_box_get_selection_mode' : return type 'SelectionMode' not supported
+var listBoxGetSelectionModeFunction *gi.Function
+var listBoxGetSelectionModeFunction_Once sync.Once
+
+func listBoxGetSelectionModeFunction_Set() error {
+	var err error
+	listBoxGetSelectionModeFunction_Once.Do(func() {
+		err = listBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		listBoxGetSelectionModeFunction, err = listBoxStruct.InvokerNew("get_selection_mode")
+	})
+	return err
+}
+
+// GetSelectionMode is a representation of the C type gtk_list_box_get_selection_mode.
+func (recv *ListBox) GetSelectionMode() SelectionMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := listBoxGetSelectionModeFunction_Set()
+	if err == nil {
+		ret = listBoxGetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SelectionMode(ret.Int32())
+
+	return retGo
+}
 
 var listBoxInsertFunction *gi.Function
 var listBoxInsertFunction_Once sync.Once
@@ -33434,7 +36423,34 @@ func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_list_box_set_selection_mode' : parameter 'mode' of type 'SelectionMode' not supported
+var listBoxSetSelectionModeFunction *gi.Function
+var listBoxSetSelectionModeFunction_Once sync.Once
+
+func listBoxSetSelectionModeFunction_Set() error {
+	var err error
+	listBoxSetSelectionModeFunction_Once.Do(func() {
+		err = listBoxStruct_Set()
+		if err != nil {
+			return
+		}
+		listBoxSetSelectionModeFunction, err = listBoxStruct.InvokerNew("set_selection_mode")
+	})
+	return err
+}
+
+// SetSelectionMode is a representation of the C type gtk_list_box_set_selection_mode.
+func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := listBoxSetSelectionModeFunction_Set()
+	if err == nil {
+		listBoxSetSelectionModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_list_box_set_sort_func' : parameter 'sort_func' of type 'ListBoxSortFunc' not supported
 
@@ -35254,13 +38270,127 @@ func MenuBarNew() *MenuBar {
 
 // UNSUPPORTED : C value 'gtk_menu_bar_new_from_model' : parameter 'model' of type 'Gio.MenuModel' not supported
 
-// UNSUPPORTED : C value 'gtk_menu_bar_get_child_pack_direction' : return type 'PackDirection' not supported
+var menuBarGetChildPackDirectionFunction *gi.Function
+var menuBarGetChildPackDirectionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_menu_bar_get_pack_direction' : return type 'PackDirection' not supported
+func menuBarGetChildPackDirectionFunction_Set() error {
+	var err error
+	menuBarGetChildPackDirectionFunction_Once.Do(func() {
+		err = menuBarStruct_Set()
+		if err != nil {
+			return
+		}
+		menuBarGetChildPackDirectionFunction, err = menuBarStruct.InvokerNew("get_child_pack_direction")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_menu_bar_set_child_pack_direction' : parameter 'child_pack_dir' of type 'PackDirection' not supported
+// GetChildPackDirection is a representation of the C type gtk_menu_bar_get_child_pack_direction.
+func (recv *MenuBar) GetChildPackDirection() PackDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
 
-// UNSUPPORTED : C value 'gtk_menu_bar_set_pack_direction' : parameter 'pack_dir' of type 'PackDirection' not supported
+	var ret gi.Argument
+
+	err := menuBarGetChildPackDirectionFunction_Set()
+	if err == nil {
+		ret = menuBarGetChildPackDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PackDirection(ret.Int32())
+
+	return retGo
+}
+
+var menuBarGetPackDirectionFunction *gi.Function
+var menuBarGetPackDirectionFunction_Once sync.Once
+
+func menuBarGetPackDirectionFunction_Set() error {
+	var err error
+	menuBarGetPackDirectionFunction_Once.Do(func() {
+		err = menuBarStruct_Set()
+		if err != nil {
+			return
+		}
+		menuBarGetPackDirectionFunction, err = menuBarStruct.InvokerNew("get_pack_direction")
+	})
+	return err
+}
+
+// GetPackDirection is a representation of the C type gtk_menu_bar_get_pack_direction.
+func (recv *MenuBar) GetPackDirection() PackDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := menuBarGetPackDirectionFunction_Set()
+	if err == nil {
+		ret = menuBarGetPackDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PackDirection(ret.Int32())
+
+	return retGo
+}
+
+var menuBarSetChildPackDirectionFunction *gi.Function
+var menuBarSetChildPackDirectionFunction_Once sync.Once
+
+func menuBarSetChildPackDirectionFunction_Set() error {
+	var err error
+	menuBarSetChildPackDirectionFunction_Once.Do(func() {
+		err = menuBarStruct_Set()
+		if err != nil {
+			return
+		}
+		menuBarSetChildPackDirectionFunction, err = menuBarStruct.InvokerNew("set_child_pack_direction")
+	})
+	return err
+}
+
+// SetChildPackDirection is a representation of the C type gtk_menu_bar_set_child_pack_direction.
+func (recv *MenuBar) SetChildPackDirection(childPackDir PackDirection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(childPackDir))
+
+	err := menuBarSetChildPackDirectionFunction_Set()
+	if err == nil {
+		menuBarSetChildPackDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var menuBarSetPackDirectionFunction *gi.Function
+var menuBarSetPackDirectionFunction_Once sync.Once
+
+func menuBarSetPackDirectionFunction_Set() error {
+	var err error
+	menuBarSetPackDirectionFunction_Once.Do(func() {
+		err = menuBarStruct_Set()
+		if err != nil {
+			return
+		}
+		menuBarSetPackDirectionFunction, err = menuBarStruct.InvokerNew("set_pack_direction")
+	})
+	return err
+}
+
+// SetPackDirection is a representation of the C type gtk_menu_bar_set_pack_direction.
+func (recv *MenuBar) SetPackDirection(packDir PackDirection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(packDir))
+
+	err := menuBarSetPackDirectionFunction_Set()
+	if err == nil {
+		menuBarSetPackDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var menuButtonStruct *gi.Struct
 var menuButtonStruct_Once sync.Once
@@ -35356,7 +38486,37 @@ func (recv *MenuButton) GetAlignWidget() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_menu_button_get_direction' : return type 'ArrowType' not supported
+var menuButtonGetDirectionFunction *gi.Function
+var menuButtonGetDirectionFunction_Once sync.Once
+
+func menuButtonGetDirectionFunction_Set() error {
+	var err error
+	menuButtonGetDirectionFunction_Once.Do(func() {
+		err = menuButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		menuButtonGetDirectionFunction, err = menuButtonStruct.InvokerNew("get_direction")
+	})
+	return err
+}
+
+// GetDirection is a representation of the C type gtk_menu_button_get_direction.
+func (recv *MenuButton) GetDirection() ArrowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := menuButtonGetDirectionFunction_Set()
+	if err == nil {
+		ret = menuButtonGetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ArrowType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_menu_button_get_menu_model' : return type 'Gio.MenuModel' not supported
 
@@ -35487,7 +38647,34 @@ func (recv *MenuButton) SetAlignWidget(alignWidget *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_menu_button_set_direction' : parameter 'direction' of type 'ArrowType' not supported
+var menuButtonSetDirectionFunction *gi.Function
+var menuButtonSetDirectionFunction_Once sync.Once
+
+func menuButtonSetDirectionFunction_Set() error {
+	var err error
+	menuButtonSetDirectionFunction_Once.Do(func() {
+		err = menuButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		menuButtonSetDirectionFunction, err = menuButtonStruct.InvokerNew("set_direction")
+	})
+	return err
+}
+
+// SetDirection is a representation of the C type gtk_menu_button_set_direction.
+func (recv *MenuButton) SetDirection(direction ArrowType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	err := menuButtonSetDirectionFunction_Set()
+	if err == nil {
+		menuButtonSetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_menu_button_set_menu_model' : parameter 'menu_model' of type 'Gio.MenuModel' not supported
 
@@ -38109,7 +41296,39 @@ func (recv *Notebook) DetachTab(child *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_notebook_get_action_widget' : parameter 'pack_type' of type 'PackType' not supported
+var notebookGetActionWidgetFunction *gi.Function
+var notebookGetActionWidgetFunction_Once sync.Once
+
+func notebookGetActionWidgetFunction_Set() error {
+	var err error
+	notebookGetActionWidgetFunction_Once.Do(func() {
+		err = notebookStruct_Set()
+		if err != nil {
+			return
+		}
+		notebookGetActionWidgetFunction, err = notebookStruct.InvokerNew("get_action_widget")
+	})
+	return err
+}
+
+// GetActionWidget is a representation of the C type gtk_notebook_get_action_widget.
+func (recv *Notebook) GetActionWidget(packType PackType) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(packType))
+
+	var ret gi.Argument
+
+	err := notebookGetActionWidgetFunction_Set()
+	if err == nil {
+		ret = notebookGetActionWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Widget{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var notebookGetCurrentPageFunction *gi.Function
 var notebookGetCurrentPageFunction_Once sync.Once
@@ -38536,7 +41755,37 @@ func (recv *Notebook) GetTabLabelText(child *Widget) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_notebook_get_tab_pos' : return type 'PositionType' not supported
+var notebookGetTabPosFunction *gi.Function
+var notebookGetTabPosFunction_Once sync.Once
+
+func notebookGetTabPosFunction_Set() error {
+	var err error
+	notebookGetTabPosFunction_Once.Do(func() {
+		err = notebookStruct_Set()
+		if err != nil {
+			return
+		}
+		notebookGetTabPosFunction, err = notebookStruct.InvokerNew("get_tab_pos")
+	})
+	return err
+}
+
+// GetTabPos is a representation of the C type gtk_notebook_get_tab_pos.
+func (recv *Notebook) GetTabPos() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := notebookGetTabPosFunction_Set()
+	if err == nil {
+		ret = notebookGetTabPosFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
 
 var notebookGetTabReorderableFunction *gi.Function
 var notebookGetTabReorderableFunction_Once sync.Once
@@ -38947,7 +42196,35 @@ func (recv *Notebook) ReorderChild(child *Widget, position int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_notebook_set_action_widget' : parameter 'pack_type' of type 'PackType' not supported
+var notebookSetActionWidgetFunction *gi.Function
+var notebookSetActionWidgetFunction_Once sync.Once
+
+func notebookSetActionWidgetFunction_Set() error {
+	var err error
+	notebookSetActionWidgetFunction_Once.Do(func() {
+		err = notebookStruct_Set()
+		if err != nil {
+			return
+		}
+		notebookSetActionWidgetFunction, err = notebookStruct.InvokerNew("set_action_widget")
+	})
+	return err
+}
+
+// SetActionWidget is a representation of the C type gtk_notebook_set_action_widget.
+func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(widget.Native)
+	inArgs[2].SetInt32(int32(packType))
+
+	err := notebookSetActionWidgetFunction_Set()
+	if err == nil {
+		notebookSetActionWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var notebookSetCurrentPageFunction *gi.Function
 var notebookSetCurrentPageFunction_Once sync.Once
@@ -39244,7 +42521,34 @@ func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_notebook_set_tab_pos' : parameter 'pos' of type 'PositionType' not supported
+var notebookSetTabPosFunction *gi.Function
+var notebookSetTabPosFunction_Once sync.Once
+
+func notebookSetTabPosFunction_Set() error {
+	var err error
+	notebookSetTabPosFunction_Once.Do(func() {
+		err = notebookStruct_Set()
+		if err != nil {
+			return
+		}
+		notebookSetTabPosFunction, err = notebookStruct.InvokerNew("set_tab_pos")
+	})
+	return err
+}
+
+// SetTabPos is a representation of the C type gtk_notebook_set_tab_pos.
+func (recv *Notebook) SetTabPos(pos PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(pos))
+
+	err := notebookSetTabPosFunction_Set()
+	if err == nil {
+		notebookSetTabPosFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var notebookSetTabReorderableFunction *gi.Function
 var notebookSetTabReorderableFunction_Once sync.Once
@@ -39997,7 +43301,38 @@ type PadController struct {
 
 // UNSUPPORTED : C value 'gtk_pad_controller_new' : parameter 'group' of type 'Gio.ActionGroup' not supported
 
-// UNSUPPORTED : C value 'gtk_pad_controller_set_action' : parameter 'type' of type 'PadActionType' not supported
+var padControllerSetActionFunction *gi.Function
+var padControllerSetActionFunction_Once sync.Once
+
+func padControllerSetActionFunction_Set() error {
+	var err error
+	padControllerSetActionFunction_Once.Do(func() {
+		err = padControllerStruct_Set()
+		if err != nil {
+			return
+		}
+		padControllerSetActionFunction, err = padControllerStruct.InvokerNew("set_action")
+	})
+	return err
+}
+
+// SetAction is a representation of the C type gtk_pad_controller_set_action.
+func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int32, label string, actionName string) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetInt32(index)
+	inArgs[3].SetInt32(mode)
+	inArgs[4].SetString(label)
+	inArgs[5].SetString(actionName)
+
+	err := padControllerSetActionFunction_Set()
+	if err == nil {
+		padControllerSetActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_pad_controller_set_action_entries' : parameter 'entries' of type 'nil' not supported
 
@@ -40117,17 +43452,202 @@ func (recv *PageSetup) Copy() *PageSetup {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_bottom_margin' : parameter 'unit' of type 'Unit' not supported
+var pageSetupGetBottomMarginFunction *gi.Function
+var pageSetupGetBottomMarginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_left_margin' : parameter 'unit' of type 'Unit' not supported
+func pageSetupGetBottomMarginFunction_Set() error {
+	var err error
+	pageSetupGetBottomMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetBottomMarginFunction, err = pageSetupStruct.InvokerNew("get_bottom_margin")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_orientation' : return type 'PageOrientation' not supported
+// GetBottomMargin is a representation of the C type gtk_page_setup_get_bottom_margin.
+func (recv *PageSetup) GetBottomMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_page_height' : parameter 'unit' of type 'Unit' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_page_width' : parameter 'unit' of type 'Unit' not supported
+	err := pageSetupGetBottomMarginFunction_Set()
+	if err == nil {
+		ret = pageSetupGetBottomMarginFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_paper_height' : parameter 'unit' of type 'Unit' not supported
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetLeftMarginFunction *gi.Function
+var pageSetupGetLeftMarginFunction_Once sync.Once
+
+func pageSetupGetLeftMarginFunction_Set() error {
+	var err error
+	pageSetupGetLeftMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetLeftMarginFunction, err = pageSetupStruct.InvokerNew("get_left_margin")
+	})
+	return err
+}
+
+// GetLeftMargin is a representation of the C type gtk_page_setup_get_left_margin.
+func (recv *PageSetup) GetLeftMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetLeftMarginFunction_Set()
+	if err == nil {
+		ret = pageSetupGetLeftMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetOrientationFunction *gi.Function
+var pageSetupGetOrientationFunction_Once sync.Once
+
+func pageSetupGetOrientationFunction_Set() error {
+	var err error
+	pageSetupGetOrientationFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetOrientationFunction, err = pageSetupStruct.InvokerNew("get_orientation")
+	})
+	return err
+}
+
+// GetOrientation is a representation of the C type gtk_page_setup_get_orientation.
+func (recv *PageSetup) GetOrientation() PageOrientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := pageSetupGetOrientationFunction_Set()
+	if err == nil {
+		ret = pageSetupGetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PageOrientation(ret.Int32())
+
+	return retGo
+}
+
+var pageSetupGetPageHeightFunction *gi.Function
+var pageSetupGetPageHeightFunction_Once sync.Once
+
+func pageSetupGetPageHeightFunction_Set() error {
+	var err error
+	pageSetupGetPageHeightFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetPageHeightFunction, err = pageSetupStruct.InvokerNew("get_page_height")
+	})
+	return err
+}
+
+// GetPageHeight is a representation of the C type gtk_page_setup_get_page_height.
+func (recv *PageSetup) GetPageHeight(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetPageHeightFunction_Set()
+	if err == nil {
+		ret = pageSetupGetPageHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetPageWidthFunction *gi.Function
+var pageSetupGetPageWidthFunction_Once sync.Once
+
+func pageSetupGetPageWidthFunction_Set() error {
+	var err error
+	pageSetupGetPageWidthFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetPageWidthFunction, err = pageSetupStruct.InvokerNew("get_page_width")
+	})
+	return err
+}
+
+// GetPageWidth is a representation of the C type gtk_page_setup_get_page_width.
+func (recv *PageSetup) GetPageWidth(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetPageWidthFunction_Set()
+	if err == nil {
+		ret = pageSetupGetPageWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetPaperHeightFunction *gi.Function
+var pageSetupGetPaperHeightFunction_Once sync.Once
+
+func pageSetupGetPaperHeightFunction_Set() error {
+	var err error
+	pageSetupGetPaperHeightFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetPaperHeightFunction, err = pageSetupStruct.InvokerNew("get_paper_height")
+	})
+	return err
+}
+
+// GetPaperHeight is a representation of the C type gtk_page_setup_get_paper_height.
+func (recv *PageSetup) GetPaperHeight(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetPaperHeightFunction_Set()
+	if err == nil {
+		ret = pageSetupGetPaperHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var pageSetupGetPaperSizeFunction *gi.Function
 var pageSetupGetPaperSizeFunction_Once sync.Once
@@ -40162,11 +43682,104 @@ func (recv *PageSetup) GetPaperSize() *PaperSize {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_paper_width' : parameter 'unit' of type 'Unit' not supported
+var pageSetupGetPaperWidthFunction *gi.Function
+var pageSetupGetPaperWidthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_right_margin' : parameter 'unit' of type 'Unit' not supported
+func pageSetupGetPaperWidthFunction_Set() error {
+	var err error
+	pageSetupGetPaperWidthFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetPaperWidthFunction, err = pageSetupStruct.InvokerNew("get_paper_width")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_page_setup_get_top_margin' : parameter 'unit' of type 'Unit' not supported
+// GetPaperWidth is a representation of the C type gtk_page_setup_get_paper_width.
+func (recv *PageSetup) GetPaperWidth(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetPaperWidthFunction_Set()
+	if err == nil {
+		ret = pageSetupGetPaperWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetRightMarginFunction *gi.Function
+var pageSetupGetRightMarginFunction_Once sync.Once
+
+func pageSetupGetRightMarginFunction_Set() error {
+	var err error
+	pageSetupGetRightMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetRightMarginFunction, err = pageSetupStruct.InvokerNew("get_right_margin")
+	})
+	return err
+}
+
+// GetRightMargin is a representation of the C type gtk_page_setup_get_right_margin.
+func (recv *PageSetup) GetRightMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetRightMarginFunction_Set()
+	if err == nil {
+		ret = pageSetupGetRightMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var pageSetupGetTopMarginFunction *gi.Function
+var pageSetupGetTopMarginFunction_Once sync.Once
+
+func pageSetupGetTopMarginFunction_Set() error {
+	var err error
+	pageSetupGetTopMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupGetTopMarginFunction, err = pageSetupStruct.InvokerNew("get_top_margin")
+	})
+	return err
+}
+
+// GetTopMargin is a representation of the C type gtk_page_setup_get_top_margin.
+func (recv *PageSetup) GetTopMargin(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := pageSetupGetTopMarginFunction_Set()
+	if err == nil {
+		ret = pageSetupGetTopMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var pageSetupLoadFileFunction *gi.Function
 var pageSetupLoadFileFunction_Once sync.Once
@@ -40203,11 +43816,94 @@ func (recv *PageSetup) LoadFile(fileName string) bool {
 
 // UNSUPPORTED : C value 'gtk_page_setup_load_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
 
-// UNSUPPORTED : C value 'gtk_page_setup_set_bottom_margin' : parameter 'unit' of type 'Unit' not supported
+var pageSetupSetBottomMarginFunction *gi.Function
+var pageSetupSetBottomMarginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_set_left_margin' : parameter 'unit' of type 'Unit' not supported
+func pageSetupSetBottomMarginFunction_Set() error {
+	var err error
+	pageSetupSetBottomMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupSetBottomMarginFunction, err = pageSetupStruct.InvokerNew("set_bottom_margin")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_page_setup_set_orientation' : parameter 'orientation' of type 'PageOrientation' not supported
+// SetBottomMargin is a representation of the C type gtk_page_setup_set_bottom_margin.
+func (recv *PageSetup) SetBottomMargin(margin float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(margin)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := pageSetupSetBottomMarginFunction_Set()
+	if err == nil {
+		pageSetupSetBottomMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pageSetupSetLeftMarginFunction *gi.Function
+var pageSetupSetLeftMarginFunction_Once sync.Once
+
+func pageSetupSetLeftMarginFunction_Set() error {
+	var err error
+	pageSetupSetLeftMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupSetLeftMarginFunction, err = pageSetupStruct.InvokerNew("set_left_margin")
+	})
+	return err
+}
+
+// SetLeftMargin is a representation of the C type gtk_page_setup_set_left_margin.
+func (recv *PageSetup) SetLeftMargin(margin float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(margin)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := pageSetupSetLeftMarginFunction_Set()
+	if err == nil {
+		pageSetupSetLeftMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pageSetupSetOrientationFunction *gi.Function
+var pageSetupSetOrientationFunction_Once sync.Once
+
+func pageSetupSetOrientationFunction_Set() error {
+	var err error
+	pageSetupSetOrientationFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupSetOrientationFunction, err = pageSetupStruct.InvokerNew("set_orientation")
+	})
+	return err
+}
+
+// SetOrientation is a representation of the C type gtk_page_setup_set_orientation.
+func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	err := pageSetupSetOrientationFunction_Set()
+	if err == nil {
+		pageSetupSetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var pageSetupSetPaperSizeFunction *gi.Function
 var pageSetupSetPaperSizeFunction_Once sync.Once
@@ -40267,9 +43963,65 @@ func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_set_right_margin' : parameter 'unit' of type 'Unit' not supported
+var pageSetupSetRightMarginFunction *gi.Function
+var pageSetupSetRightMarginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_set_top_margin' : parameter 'unit' of type 'Unit' not supported
+func pageSetupSetRightMarginFunction_Set() error {
+	var err error
+	pageSetupSetRightMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupSetRightMarginFunction, err = pageSetupStruct.InvokerNew("set_right_margin")
+	})
+	return err
+}
+
+// SetRightMargin is a representation of the C type gtk_page_setup_set_right_margin.
+func (recv *PageSetup) SetRightMargin(margin float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(margin)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := pageSetupSetRightMarginFunction_Set()
+	if err == nil {
+		pageSetupSetRightMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pageSetupSetTopMarginFunction *gi.Function
+var pageSetupSetTopMarginFunction_Once sync.Once
+
+func pageSetupSetTopMarginFunction_Set() error {
+	var err error
+	pageSetupSetTopMarginFunction_Once.Do(func() {
+		err = pageSetupStruct_Set()
+		if err != nil {
+			return
+		}
+		pageSetupSetTopMarginFunction, err = pageSetupStruct.InvokerNew("set_top_margin")
+	})
+	return err
+}
+
+// SetTopMargin is a representation of the C type gtk_page_setup_set_top_margin.
+func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(margin)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := pageSetupSetTopMarginFunction_Set()
+	if err == nil {
+		pageSetupSetTopMarginFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var pageSetupToFileFunction *gi.Function
 var pageSetupToFileFunction_Once sync.Once
@@ -40338,7 +44090,38 @@ func (recv *Paned) SetFieldContainer(value *Container) {
 	gi.FieldSet(panedStruct, recv.Native, "container", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_paned_new' : parameter 'orientation' of type 'Orientation' not supported
+var panedNewFunction *gi.Function
+var panedNewFunction_Once sync.Once
+
+func panedNewFunction_Set() error {
+	var err error
+	panedNewFunction_Once.Do(func() {
+		err = panedStruct_Set()
+		if err != nil {
+			return
+		}
+		panedNewFunction, err = panedStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PanedNew is a representation of the C type gtk_paned_new.
+func PanedNew(orientation Orientation) *Paned {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+
+	var ret gi.Argument
+
+	err := panedNewFunction_Set()
+	if err == nil {
+		ret = panedNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Paned{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var panedAdd1Function *gi.Function
 var panedAdd1Function_Once sync.Once
@@ -41507,7 +45290,37 @@ func PopoverNew(relativeTo *Widget) *Popover {
 
 // UNSUPPORTED : C value 'gtk_popover_bind_model' : parameter 'model' of type 'Gio.MenuModel' not supported
 
-// UNSUPPORTED : C value 'gtk_popover_get_constrain_to' : return type 'PopoverConstraint' not supported
+var popoverGetConstrainToFunction *gi.Function
+var popoverGetConstrainToFunction_Once sync.Once
+
+func popoverGetConstrainToFunction_Set() error {
+	var err error
+	popoverGetConstrainToFunction_Once.Do(func() {
+		err = popoverStruct_Set()
+		if err != nil {
+			return
+		}
+		popoverGetConstrainToFunction, err = popoverStruct.InvokerNew("get_constrain_to")
+	})
+	return err
+}
+
+// GetConstrainTo is a representation of the C type gtk_popover_get_constrain_to.
+func (recv *Popover) GetConstrainTo() PopoverConstraint {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := popoverGetConstrainToFunction_Set()
+	if err == nil {
+		ret = popoverGetConstrainToFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PopoverConstraint(ret.Int32())
+
+	return retGo
+}
 
 var popoverGetDefaultWidgetFunction *gi.Function
 var popoverGetDefaultWidgetFunction_Once sync.Once
@@ -41576,7 +45389,37 @@ func (recv *Popover) GetModal() bool {
 
 // UNSUPPORTED : C value 'gtk_popover_get_pointing_to' : parameter 'rect' of type 'Gdk.Rectangle' not supported
 
-// UNSUPPORTED : C value 'gtk_popover_get_position' : return type 'PositionType' not supported
+var popoverGetPositionFunction *gi.Function
+var popoverGetPositionFunction_Once sync.Once
+
+func popoverGetPositionFunction_Set() error {
+	var err error
+	popoverGetPositionFunction_Once.Do(func() {
+		err = popoverStruct_Set()
+		if err != nil {
+			return
+		}
+		popoverGetPositionFunction, err = popoverStruct.InvokerNew("get_position")
+	})
+	return err
+}
+
+// GetPosition is a representation of the C type gtk_popover_get_position.
+func (recv *Popover) GetPosition() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := popoverGetPositionFunction_Set()
+	if err == nil {
+		ret = popoverGetPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
 
 var popoverGetRelativeToFunction *gi.Function
 var popoverGetRelativeToFunction_Once sync.Once
@@ -41699,7 +45542,34 @@ func (recv *Popover) Popup() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_popover_set_constrain_to' : parameter 'constraint' of type 'PopoverConstraint' not supported
+var popoverSetConstrainToFunction *gi.Function
+var popoverSetConstrainToFunction_Once sync.Once
+
+func popoverSetConstrainToFunction_Set() error {
+	var err error
+	popoverSetConstrainToFunction_Once.Do(func() {
+		err = popoverStruct_Set()
+		if err != nil {
+			return
+		}
+		popoverSetConstrainToFunction, err = popoverStruct.InvokerNew("set_constrain_to")
+	})
+	return err
+}
+
+// SetConstrainTo is a representation of the C type gtk_popover_set_constrain_to.
+func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(constraint))
+
+	err := popoverSetConstrainToFunction_Set()
+	if err == nil {
+		popoverSetConstrainToFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var popoverSetDefaultWidgetFunction *gi.Function
 var popoverSetDefaultWidgetFunction_Once sync.Once
@@ -41761,7 +45631,34 @@ func (recv *Popover) SetModal(modal bool) {
 
 // UNSUPPORTED : C value 'gtk_popover_set_pointing_to' : parameter 'rect' of type 'Gdk.Rectangle' not supported
 
-// UNSUPPORTED : C value 'gtk_popover_set_position' : parameter 'position' of type 'PositionType' not supported
+var popoverSetPositionFunction *gi.Function
+var popoverSetPositionFunction_Once sync.Once
+
+func popoverSetPositionFunction_Set() error {
+	var err error
+	popoverSetPositionFunction_Once.Do(func() {
+		err = popoverStruct_Set()
+		if err != nil {
+			return
+		}
+		popoverSetPositionFunction, err = popoverStruct.InvokerNew("set_position")
+	})
+	return err
+}
+
+// SetPosition is a representation of the C type gtk_popover_set_position.
+func (recv *Popover) SetPosition(position PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(position))
+
+	err := popoverSetPositionFunction_Set()
+	if err == nil {
+		popoverSetPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var popoverSetRelativeToFunction *gi.Function
 var popoverSetRelativeToFunction_Once sync.Once
@@ -42477,7 +46374,37 @@ func (recv *PrintOperation) GetPrintSettings() *PrintSettings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_operation_get_status' : return type 'PrintStatus' not supported
+var printOperationGetStatusFunction *gi.Function
+var printOperationGetStatusFunction_Once sync.Once
+
+func printOperationGetStatusFunction_Set() error {
+	var err error
+	printOperationGetStatusFunction_Once.Do(func() {
+		err = printOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		printOperationGetStatusFunction, err = printOperationStruct.InvokerNew("get_status")
+	})
+	return err
+}
+
+// GetStatus is a representation of the C type gtk_print_operation_get_status.
+func (recv *PrintOperation) GetStatus() PrintStatus {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printOperationGetStatusFunction_Set()
+	if err == nil {
+		ret = printOperationGetStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintStatus(ret.Int32())
+
+	return retGo
+}
 
 var printOperationGetStatusStringFunction *gi.Function
 var printOperationGetStatusStringFunction_Once sync.Once
@@ -42575,7 +46502,39 @@ func (recv *PrintOperation) IsFinished() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_operation_run' : parameter 'action' of type 'PrintOperationAction' not supported
+var printOperationRunFunction *gi.Function
+var printOperationRunFunction_Once sync.Once
+
+func printOperationRunFunction_Set() error {
+	var err error
+	printOperationRunFunction_Once.Do(func() {
+		err = printOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		printOperationRunFunction, err = printOperationStruct.InvokerNew("run")
+	})
+	return err
+}
+
+// Run is a representation of the C type gtk_print_operation_run.
+func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) PrintOperationResult {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(action))
+	inArgs[2].SetPointer(parent.Native)
+
+	var ret gi.Argument
+
+	err := printOperationRunFunction_Set()
+	if err == nil {
+		ret = printOperationRunFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintOperationResult(ret.Int32())
+
+	return retGo
+}
 
 var printOperationSetAllowAsyncFunction *gi.Function
 var printOperationSetAllowAsyncFunction_Once sync.Once
@@ -42982,7 +46941,34 @@ func (recv *PrintOperation) SetTrackPrintStatus(trackStatus bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_operation_set_unit' : parameter 'unit' of type 'Unit' not supported
+var printOperationSetUnitFunction *gi.Function
+var printOperationSetUnitFunction_Once sync.Once
+
+func printOperationSetUnitFunction_Set() error {
+	var err error
+	printOperationSetUnitFunction_Once.Do(func() {
+		err = printOperationStruct_Set()
+		if err != nil {
+			return
+		}
+		printOperationSetUnitFunction, err = printOperationStruct.InvokerNew("set_unit")
+	})
+	return err
+}
+
+// SetUnit is a representation of the C type gtk_print_operation_set_unit.
+func (recv *PrintOperation) SetUnit(unit Unit) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	err := printOperationSetUnitFunction_Set()
+	if err == nil {
+		printOperationSetUnitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printOperationSetUseFullPageFunction *gi.Function
 var printOperationSetUseFullPageFunction_Once sync.Once
@@ -43360,7 +47346,37 @@ func (recv *PrintSettings) GetDoubleWithDefault(key string, def float64) float64
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_duplex' : return type 'PrintDuplex' not supported
+var printSettingsGetDuplexFunction *gi.Function
+var printSettingsGetDuplexFunction_Once sync.Once
+
+func printSettingsGetDuplexFunction_Set() error {
+	var err error
+	printSettingsGetDuplexFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetDuplexFunction, err = printSettingsStruct.InvokerNew("get_duplex")
+	})
+	return err
+}
+
+// GetDuplex is a representation of the C type gtk_print_settings_get_duplex.
+func (recv *PrintSettings) GetDuplex() PrintDuplex {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetDuplexFunction_Set()
+	if err == nil {
+		ret = printSettingsGetDuplexFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintDuplex(ret.Int32())
+
+	return retGo
+}
 
 var printSettingsGetFinishingsFunction *gi.Function
 var printSettingsGetFinishingsFunction_Once sync.Once
@@ -43461,7 +47477,39 @@ func (recv *PrintSettings) GetIntWithDefault(key string, def int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_length' : parameter 'unit' of type 'Unit' not supported
+var printSettingsGetLengthFunction *gi.Function
+var printSettingsGetLengthFunction_Once sync.Once
+
+func printSettingsGetLengthFunction_Set() error {
+	var err error
+	printSettingsGetLengthFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetLengthFunction, err = printSettingsStruct.InvokerNew("get_length")
+	})
+	return err
+}
+
+// GetLength is a representation of the C type gtk_print_settings_get_length.
+func (recv *PrintSettings) GetLength(key string, unit Unit) float64 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := printSettingsGetLengthFunction_Set()
+	if err == nil {
+		ret = printSettingsGetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var printSettingsGetMediaTypeFunction *gi.Function
 var printSettingsGetMediaTypeFunction_Once sync.Once
@@ -43559,9 +47607,69 @@ func (recv *PrintSettings) GetNumberUp() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_number_up_layout' : return type 'NumberUpLayout' not supported
+var printSettingsGetNumberUpLayoutFunction *gi.Function
+var printSettingsGetNumberUpLayoutFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_orientation' : return type 'PageOrientation' not supported
+func printSettingsGetNumberUpLayoutFunction_Set() error {
+	var err error
+	printSettingsGetNumberUpLayoutFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetNumberUpLayoutFunction, err = printSettingsStruct.InvokerNew("get_number_up_layout")
+	})
+	return err
+}
+
+// GetNumberUpLayout is a representation of the C type gtk_print_settings_get_number_up_layout.
+func (recv *PrintSettings) GetNumberUpLayout() NumberUpLayout {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetNumberUpLayoutFunction_Set()
+	if err == nil {
+		ret = printSettingsGetNumberUpLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NumberUpLayout(ret.Int32())
+
+	return retGo
+}
+
+var printSettingsGetOrientationFunction *gi.Function
+var printSettingsGetOrientationFunction_Once sync.Once
+
+func printSettingsGetOrientationFunction_Set() error {
+	var err error
+	printSettingsGetOrientationFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetOrientationFunction, err = printSettingsStruct.InvokerNew("get_orientation")
+	})
+	return err
+}
+
+// GetOrientation is a representation of the C type gtk_print_settings_get_orientation.
+func (recv *PrintSettings) GetOrientation() PageOrientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetOrientationFunction_Set()
+	if err == nil {
+		ret = printSettingsGetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PageOrientation(ret.Int32())
+
+	return retGo
+}
 
 var printSettingsGetOutputBinFunction *gi.Function
 var printSettingsGetOutputBinFunction_Once sync.Once
@@ -43627,9 +47735,70 @@ func (recv *PrintSettings) GetPageRanges() int32 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_page_set' : return type 'PageSet' not supported
+var printSettingsGetPageSetFunction *gi.Function
+var printSettingsGetPageSetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_paper_height' : parameter 'unit' of type 'Unit' not supported
+func printSettingsGetPageSetFunction_Set() error {
+	var err error
+	printSettingsGetPageSetFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetPageSetFunction, err = printSettingsStruct.InvokerNew("get_page_set")
+	})
+	return err
+}
+
+// GetPageSet is a representation of the C type gtk_print_settings_get_page_set.
+func (recv *PrintSettings) GetPageSet() PageSet {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetPageSetFunction_Set()
+	if err == nil {
+		ret = printSettingsGetPageSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PageSet(ret.Int32())
+
+	return retGo
+}
+
+var printSettingsGetPaperHeightFunction *gi.Function
+var printSettingsGetPaperHeightFunction_Once sync.Once
+
+func printSettingsGetPaperHeightFunction_Set() error {
+	var err error
+	printSettingsGetPaperHeightFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetPaperHeightFunction, err = printSettingsStruct.InvokerNew("get_paper_height")
+	})
+	return err
+}
+
+// GetPaperHeight is a representation of the C type gtk_print_settings_get_paper_height.
+func (recv *PrintSettings) GetPaperHeight(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := printSettingsGetPaperHeightFunction_Set()
+	if err == nil {
+		ret = printSettingsGetPaperHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
 
 var printSettingsGetPaperSizeFunction *gi.Function
 var printSettingsGetPaperSizeFunction_Once sync.Once
@@ -43664,9 +47833,70 @@ func (recv *PrintSettings) GetPaperSize() *PaperSize {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_paper_width' : parameter 'unit' of type 'Unit' not supported
+var printSettingsGetPaperWidthFunction *gi.Function
+var printSettingsGetPaperWidthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_print_pages' : return type 'PrintPages' not supported
+func printSettingsGetPaperWidthFunction_Set() error {
+	var err error
+	printSettingsGetPaperWidthFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetPaperWidthFunction, err = printSettingsStruct.InvokerNew("get_paper_width")
+	})
+	return err
+}
+
+// GetPaperWidth is a representation of the C type gtk_print_settings_get_paper_width.
+func (recv *PrintSettings) GetPaperWidth(unit Unit) float64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(unit))
+
+	var ret gi.Argument
+
+	err := printSettingsGetPaperWidthFunction_Set()
+	if err == nil {
+		ret = printSettingsGetPaperWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo
+}
+
+var printSettingsGetPrintPagesFunction *gi.Function
+var printSettingsGetPrintPagesFunction_Once sync.Once
+
+func printSettingsGetPrintPagesFunction_Set() error {
+	var err error
+	printSettingsGetPrintPagesFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetPrintPagesFunction, err = printSettingsStruct.InvokerNew("get_print_pages")
+	})
+	return err
+}
+
+// GetPrintPages is a representation of the C type gtk_print_settings_get_print_pages.
+func (recv *PrintSettings) GetPrintPages() PrintPages {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetPrintPagesFunction_Set()
+	if err == nil {
+		ret = printSettingsGetPrintPagesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintPages(ret.Int32())
+
+	return retGo
+}
 
 var printSettingsGetPrinterFunction *gi.Function
 var printSettingsGetPrinterFunction_Once sync.Once
@@ -43732,7 +47962,37 @@ func (recv *PrintSettings) GetPrinterLpi() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_get_quality' : return type 'PrintQuality' not supported
+var printSettingsGetQualityFunction *gi.Function
+var printSettingsGetQualityFunction_Once sync.Once
+
+func printSettingsGetQualityFunction_Set() error {
+	var err error
+	printSettingsGetQualityFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsGetQualityFunction, err = printSettingsStruct.InvokerNew("get_quality")
+	})
+	return err
+}
+
+// GetQuality is a representation of the C type gtk_print_settings_get_quality.
+func (recv *PrintSettings) GetQuality() PrintQuality {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := printSettingsGetQualityFunction_Set()
+	if err == nil {
+		ret = printSettingsGetQualityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintQuality(ret.Int32())
+
+	return retGo
+}
 
 var printSettingsGetResolutionFunction *gi.Function
 var printSettingsGetResolutionFunction_Once sync.Once
@@ -44171,7 +48431,34 @@ func (recv *PrintSettings) SetDouble(key string, value float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_duplex' : parameter 'duplex' of type 'PrintDuplex' not supported
+var printSettingsSetDuplexFunction *gi.Function
+var printSettingsSetDuplexFunction_Once sync.Once
+
+func printSettingsSetDuplexFunction_Set() error {
+	var err error
+	printSettingsSetDuplexFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetDuplexFunction, err = printSettingsStruct.InvokerNew("set_duplex")
+	})
+	return err
+}
+
+// SetDuplex is a representation of the C type gtk_print_settings_set_duplex.
+func (recv *PrintSettings) SetDuplex(duplex PrintDuplex) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(duplex))
+
+	err := printSettingsSetDuplexFunction_Set()
+	if err == nil {
+		printSettingsSetDuplexFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetFinishingsFunction *gi.Function
 var printSettingsSetFinishingsFunction_Once sync.Once
@@ -44232,7 +48519,36 @@ func (recv *PrintSettings) SetInt(key string, value int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_length' : parameter 'unit' of type 'Unit' not supported
+var printSettingsSetLengthFunction *gi.Function
+var printSettingsSetLengthFunction_Once sync.Once
+
+func printSettingsSetLengthFunction_Set() error {
+	var err error
+	printSettingsSetLengthFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetLengthFunction, err = printSettingsStruct.InvokerNew("set_length")
+	})
+	return err
+}
+
+// SetLength is a representation of the C type gtk_print_settings_set_length.
+func (recv *PrintSettings) SetLength(key string, value float64, unit Unit) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetFloat64(value)
+	inArgs[3].SetInt32(int32(unit))
+
+	err := printSettingsSetLengthFunction_Set()
+	if err == nil {
+		printSettingsSetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetMediaTypeFunction *gi.Function
 var printSettingsSetMediaTypeFunction_Once sync.Once
@@ -44321,9 +48637,63 @@ func (recv *PrintSettings) SetNumberUp(numberUp int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_number_up_layout' : parameter 'number_up_layout' of type 'NumberUpLayout' not supported
+var printSettingsSetNumberUpLayoutFunction *gi.Function
+var printSettingsSetNumberUpLayoutFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_orientation' : parameter 'orientation' of type 'PageOrientation' not supported
+func printSettingsSetNumberUpLayoutFunction_Set() error {
+	var err error
+	printSettingsSetNumberUpLayoutFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetNumberUpLayoutFunction, err = printSettingsStruct.InvokerNew("set_number_up_layout")
+	})
+	return err
+}
+
+// SetNumberUpLayout is a representation of the C type gtk_print_settings_set_number_up_layout.
+func (recv *PrintSettings) SetNumberUpLayout(numberUpLayout NumberUpLayout) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(numberUpLayout))
+
+	err := printSettingsSetNumberUpLayoutFunction_Set()
+	if err == nil {
+		printSettingsSetNumberUpLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var printSettingsSetOrientationFunction *gi.Function
+var printSettingsSetOrientationFunction_Once sync.Once
+
+func printSettingsSetOrientationFunction_Set() error {
+	var err error
+	printSettingsSetOrientationFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetOrientationFunction, err = printSettingsStruct.InvokerNew("set_orientation")
+	})
+	return err
+}
+
+// SetOrientation is a representation of the C type gtk_print_settings_set_orientation.
+func (recv *PrintSettings) SetOrientation(orientation PageOrientation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	err := printSettingsSetOrientationFunction_Set()
+	if err == nil {
+		printSettingsSetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetOutputBinFunction *gi.Function
 var printSettingsSetOutputBinFunction_Once sync.Once
@@ -44356,9 +48726,64 @@ func (recv *PrintSettings) SetOutputBin(outputBin string) {
 
 // UNSUPPORTED : C value 'gtk_print_settings_set_page_ranges' : parameter 'page_ranges' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_page_set' : parameter 'page_set' of type 'PageSet' not supported
+var printSettingsSetPageSetFunction *gi.Function
+var printSettingsSetPageSetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_paper_height' : parameter 'unit' of type 'Unit' not supported
+func printSettingsSetPageSetFunction_Set() error {
+	var err error
+	printSettingsSetPageSetFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetPageSetFunction, err = printSettingsStruct.InvokerNew("set_page_set")
+	})
+	return err
+}
+
+// SetPageSet is a representation of the C type gtk_print_settings_set_page_set.
+func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(pageSet))
+
+	err := printSettingsSetPageSetFunction_Set()
+	if err == nil {
+		printSettingsSetPageSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var printSettingsSetPaperHeightFunction *gi.Function
+var printSettingsSetPaperHeightFunction_Once sync.Once
+
+func printSettingsSetPaperHeightFunction_Set() error {
+	var err error
+	printSettingsSetPaperHeightFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetPaperHeightFunction, err = printSettingsStruct.InvokerNew("set_paper_height")
+	})
+	return err
+}
+
+// SetPaperHeight is a representation of the C type gtk_print_settings_set_paper_height.
+func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(height)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := printSettingsSetPaperHeightFunction_Set()
+	if err == nil {
+		printSettingsSetPaperHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetPaperSizeFunction *gi.Function
 var printSettingsSetPaperSizeFunction_Once sync.Once
@@ -44389,9 +48814,64 @@ func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_paper_width' : parameter 'unit' of type 'Unit' not supported
+var printSettingsSetPaperWidthFunction *gi.Function
+var printSettingsSetPaperWidthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_print_pages' : parameter 'pages' of type 'PrintPages' not supported
+func printSettingsSetPaperWidthFunction_Set() error {
+	var err error
+	printSettingsSetPaperWidthFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetPaperWidthFunction, err = printSettingsStruct.InvokerNew("set_paper_width")
+	})
+	return err
+}
+
+// SetPaperWidth is a representation of the C type gtk_print_settings_set_paper_width.
+func (recv *PrintSettings) SetPaperWidth(width float64, unit Unit) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(width)
+	inArgs[2].SetInt32(int32(unit))
+
+	err := printSettingsSetPaperWidthFunction_Set()
+	if err == nil {
+		printSettingsSetPaperWidthFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var printSettingsSetPrintPagesFunction *gi.Function
+var printSettingsSetPrintPagesFunction_Once sync.Once
+
+func printSettingsSetPrintPagesFunction_Set() error {
+	var err error
+	printSettingsSetPrintPagesFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetPrintPagesFunction, err = printSettingsStruct.InvokerNew("set_print_pages")
+	})
+	return err
+}
+
+// SetPrintPages is a representation of the C type gtk_print_settings_set_print_pages.
+func (recv *PrintSettings) SetPrintPages(pages PrintPages) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(pages))
+
+	err := printSettingsSetPrintPagesFunction_Set()
+	if err == nil {
+		printSettingsSetPrintPagesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetPrinterFunction *gi.Function
 var printSettingsSetPrinterFunction_Once sync.Once
@@ -44451,7 +48931,34 @@ func (recv *PrintSettings) SetPrinterLpi(lpi float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_quality' : parameter 'quality' of type 'PrintQuality' not supported
+var printSettingsSetQualityFunction *gi.Function
+var printSettingsSetQualityFunction_Once sync.Once
+
+func printSettingsSetQualityFunction_Set() error {
+	var err error
+	printSettingsSetQualityFunction_Once.Do(func() {
+		err = printSettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		printSettingsSetQualityFunction, err = printSettingsStruct.InvokerNew("set_quality")
+	})
+	return err
+}
+
+// SetQuality is a representation of the C type gtk_print_settings_set_quality.
+func (recv *PrintSettings) SetQuality(quality PrintQuality) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(quality))
+
+	err := printSettingsSetQualityFunction_Set()
+	if err == nil {
+		printSettingsSetQualityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsSetResolutionFunction *gi.Function
 var printSettingsSetResolutionFunction_Once sync.Once
@@ -46026,7 +50533,37 @@ func (recv *Range) GetInverted() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_range_get_lower_stepper_sensitivity' : return type 'SensitivityType' not supported
+var rangeGetLowerStepperSensitivityFunction *gi.Function
+var rangeGetLowerStepperSensitivityFunction_Once sync.Once
+
+func rangeGetLowerStepperSensitivityFunction_Set() error {
+	var err error
+	rangeGetLowerStepperSensitivityFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeGetLowerStepperSensitivityFunction, err = rangeStruct.InvokerNew("get_lower_stepper_sensitivity")
+	})
+	return err
+}
+
+// GetLowerStepperSensitivity is a representation of the C type gtk_range_get_lower_stepper_sensitivity.
+func (recv *Range) GetLowerStepperSensitivity() SensitivityType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := rangeGetLowerStepperSensitivityFunction_Set()
+	if err == nil {
+		ret = rangeGetLowerStepperSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SensitivityType(ret.Int32())
+
+	return retGo
+}
 
 var rangeGetMinSliderSizeFunction *gi.Function
 var rangeGetMinSliderSizeFunction_Once sync.Once
@@ -46223,7 +50760,37 @@ func (recv *Range) GetSliderSizeFixed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_range_get_upper_stepper_sensitivity' : return type 'SensitivityType' not supported
+var rangeGetUpperStepperSensitivityFunction *gi.Function
+var rangeGetUpperStepperSensitivityFunction_Once sync.Once
+
+func rangeGetUpperStepperSensitivityFunction_Set() error {
+	var err error
+	rangeGetUpperStepperSensitivityFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeGetUpperStepperSensitivityFunction, err = rangeStruct.InvokerNew("get_upper_stepper_sensitivity")
+	})
+	return err
+}
+
+// GetUpperStepperSensitivity is a representation of the C type gtk_range_get_upper_stepper_sensitivity.
+func (recv *Range) GetUpperStepperSensitivity() SensitivityType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := rangeGetUpperStepperSensitivityFunction_Set()
+	if err == nil {
+		ret = rangeGetUpperStepperSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SensitivityType(ret.Int32())
+
+	return retGo
+}
 
 var rangeGetValueFunction *gi.Function
 var rangeGetValueFunction_Once sync.Once
@@ -46403,7 +50970,34 @@ func (recv *Range) SetInverted(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_range_set_lower_stepper_sensitivity' : parameter 'sensitivity' of type 'SensitivityType' not supported
+var rangeSetLowerStepperSensitivityFunction *gi.Function
+var rangeSetLowerStepperSensitivityFunction_Once sync.Once
+
+func rangeSetLowerStepperSensitivityFunction_Set() error {
+	var err error
+	rangeSetLowerStepperSensitivityFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeSetLowerStepperSensitivityFunction, err = rangeStruct.InvokerNew("set_lower_stepper_sensitivity")
+	})
+	return err
+}
+
+// SetLowerStepperSensitivity is a representation of the C type gtk_range_set_lower_stepper_sensitivity.
+func (recv *Range) SetLowerStepperSensitivity(sensitivity SensitivityType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(sensitivity))
+
+	err := rangeSetLowerStepperSensitivityFunction_Set()
+	if err == nil {
+		rangeSetLowerStepperSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rangeSetMinSliderSizeFunction *gi.Function
 var rangeSetMinSliderSizeFunction_Once sync.Once
@@ -46580,7 +51174,34 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_range_set_upper_stepper_sensitivity' : parameter 'sensitivity' of type 'SensitivityType' not supported
+var rangeSetUpperStepperSensitivityFunction *gi.Function
+var rangeSetUpperStepperSensitivityFunction_Once sync.Once
+
+func rangeSetUpperStepperSensitivityFunction_Set() error {
+	var err error
+	rangeSetUpperStepperSensitivityFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeSetUpperStepperSensitivityFunction, err = rangeStruct.InvokerNew("set_upper_stepper_sensitivity")
+	})
+	return err
+}
+
+// SetUpperStepperSensitivity is a representation of the C type gtk_range_set_upper_stepper_sensitivity.
+func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(sensitivity))
+
+	err := rangeSetUpperStepperSensitivityFunction_Set()
+	if err == nil {
+		rangeSetUpperStepperSensitivityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rangeSetValueFunction *gi.Function
 var rangeSetValueFunction_Once sync.Once
@@ -48121,7 +52742,37 @@ func (recv *Revealer) GetTransitionDuration() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_revealer_get_transition_type' : return type 'RevealerTransitionType' not supported
+var revealerGetTransitionTypeFunction *gi.Function
+var revealerGetTransitionTypeFunction_Once sync.Once
+
+func revealerGetTransitionTypeFunction_Set() error {
+	var err error
+	revealerGetTransitionTypeFunction_Once.Do(func() {
+		err = revealerStruct_Set()
+		if err != nil {
+			return
+		}
+		revealerGetTransitionTypeFunction, err = revealerStruct.InvokerNew("get_transition_type")
+	})
+	return err
+}
+
+// GetTransitionType is a representation of the C type gtk_revealer_get_transition_type.
+func (recv *Revealer) GetTransitionType() RevealerTransitionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := revealerGetTransitionTypeFunction_Set()
+	if err == nil {
+		ret = revealerGetTransitionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RevealerTransitionType(ret.Int32())
+
+	return retGo
+}
 
 var revealerSetRevealChildFunction *gi.Function
 var revealerSetRevealChildFunction_Once sync.Once
@@ -48181,7 +52832,34 @@ func (recv *Revealer) SetTransitionDuration(duration uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_revealer_set_transition_type' : parameter 'transition' of type 'RevealerTransitionType' not supported
+var revealerSetTransitionTypeFunction *gi.Function
+var revealerSetTransitionTypeFunction_Once sync.Once
+
+func revealerSetTransitionTypeFunction_Set() error {
+	var err error
+	revealerSetTransitionTypeFunction_Once.Do(func() {
+		err = revealerStruct_Set()
+		if err != nil {
+			return
+		}
+		revealerSetTransitionTypeFunction, err = revealerStruct.InvokerNew("set_transition_type")
+	})
+	return err
+}
+
+// SetTransitionType is a representation of the C type gtk_revealer_set_transition_type.
+func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(transition))
+
+	err := revealerSetTransitionTypeFunction_Set()
+	if err == nil {
+		revealerSetTransitionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scaleStruct *gi.Struct
 var scaleStruct_Once sync.Once
@@ -48213,11 +52891,106 @@ func (recv *Scale) SetFieldRange(value *Range) {
 	gi.FieldSet(scaleStruct, recv.Native, "range", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_scale_new' : parameter 'orientation' of type 'Orientation' not supported
+var scaleNewFunction *gi.Function
+var scaleNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_scale_new_with_range' : parameter 'orientation' of type 'Orientation' not supported
+func scaleNewFunction_Set() error {
+	var err error
+	scaleNewFunction_Once.Do(func() {
+		err = scaleStruct_Set()
+		if err != nil {
+			return
+		}
+		scaleNewFunction, err = scaleStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_scale_add_mark' : parameter 'position' of type 'PositionType' not supported
+// ScaleNew is a representation of the C type gtk_scale_new.
+func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+	inArgs[1].SetPointer(adjustment.Native)
+
+	var ret gi.Argument
+
+	err := scaleNewFunction_Set()
+	if err == nil {
+		ret = scaleNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Scale{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var scaleNewWithRangeFunction *gi.Function
+var scaleNewWithRangeFunction_Once sync.Once
+
+func scaleNewWithRangeFunction_Set() error {
+	var err error
+	scaleNewWithRangeFunction_Once.Do(func() {
+		err = scaleStruct_Set()
+		if err != nil {
+			return
+		}
+		scaleNewWithRangeFunction, err = scaleStruct.InvokerNew("new_with_range")
+	})
+	return err
+}
+
+// ScaleNewWithRange is a representation of the C type gtk_scale_new_with_range.
+func ScaleNewWithRange(orientation Orientation, min float64, max float64, step float64) *Scale {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+	inArgs[1].SetFloat64(min)
+	inArgs[2].SetFloat64(max)
+	inArgs[3].SetFloat64(step)
+
+	var ret gi.Argument
+
+	err := scaleNewWithRangeFunction_Set()
+	if err == nil {
+		ret = scaleNewWithRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Scale{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+var scaleAddMarkFunction *gi.Function
+var scaleAddMarkFunction_Once sync.Once
+
+func scaleAddMarkFunction_Set() error {
+	var err error
+	scaleAddMarkFunction_Once.Do(func() {
+		err = scaleStruct_Set()
+		if err != nil {
+			return
+		}
+		scaleAddMarkFunction, err = scaleStruct.InvokerNew("add_mark")
+	})
+	return err
+}
+
+// AddMark is a representation of the C type gtk_scale_add_mark.
+func (recv *Scale) AddMark(value float64, position PositionType, markup string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetFloat64(value)
+	inArgs[2].SetInt32(int32(position))
+	inArgs[3].SetString(markup)
+
+	err := scaleAddMarkFunction_Set()
+	if err == nil {
+		scaleAddMarkFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scaleClearMarksFunction *gi.Function
 var scaleClearMarksFunction_Once sync.Once
@@ -48378,7 +53151,37 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_scale_get_value_pos' : return type 'PositionType' not supported
+var scaleGetValuePosFunction *gi.Function
+var scaleGetValuePosFunction_Once sync.Once
+
+func scaleGetValuePosFunction_Set() error {
+	var err error
+	scaleGetValuePosFunction_Once.Do(func() {
+		err = scaleStruct_Set()
+		if err != nil {
+			return
+		}
+		scaleGetValuePosFunction, err = scaleStruct.InvokerNew("get_value_pos")
+	})
+	return err
+}
+
+// GetValuePos is a representation of the C type gtk_scale_get_value_pos.
+func (recv *Scale) GetValuePos() PositionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scaleGetValuePosFunction_Set()
+	if err == nil {
+		ret = scaleGetValuePosFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PositionType(ret.Int32())
+
+	return retGo
+}
 
 var scaleSetDigitsFunction *gi.Function
 var scaleSetDigitsFunction_Once sync.Once
@@ -48467,7 +53270,34 @@ func (recv *Scale) SetHasOrigin(hasOrigin bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_scale_set_value_pos' : parameter 'pos' of type 'PositionType' not supported
+var scaleSetValuePosFunction *gi.Function
+var scaleSetValuePosFunction_Once sync.Once
+
+func scaleSetValuePosFunction_Set() error {
+	var err error
+	scaleSetValuePosFunction_Once.Do(func() {
+		err = scaleStruct_Set()
+		if err != nil {
+			return
+		}
+		scaleSetValuePosFunction, err = scaleStruct.InvokerNew("set_value_pos")
+	})
+	return err
+}
+
+// SetValuePos is a representation of the C type gtk_scale_set_value_pos.
+func (recv *Scale) SetValuePos(pos PositionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(pos))
+
+	err := scaleSetValuePosFunction_Set()
+	if err == nil {
+		scaleSetValuePosFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scaleAccessibleStruct *gi.Struct
 var scaleAccessibleStruct_Once sync.Once
@@ -48560,7 +53390,7 @@ func (recv *ScaleButton) SetFieldParent(value *Button) {
 	gi.FieldSet(scaleButtonStruct, recv.Native, "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_scale_button_new' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_scale_button_new' : parameter 'icons' of type 'nil' not supported
 
 var scaleButtonGetAdjustmentFunction *gi.Function
 var scaleButtonGetAdjustmentFunction_Once sync.Once
@@ -48877,7 +53707,39 @@ func (recv *Scrollbar) SetFieldRange(value *Range) {
 	gi.FieldSet(scrollbarStruct, recv.Native, "range", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_scrollbar_new' : parameter 'orientation' of type 'Orientation' not supported
+var scrollbarNewFunction *gi.Function
+var scrollbarNewFunction_Once sync.Once
+
+func scrollbarNewFunction_Set() error {
+	var err error
+	scrollbarNewFunction_Once.Do(func() {
+		err = scrollbarStruct_Set()
+		if err != nil {
+			return
+		}
+		scrollbarNewFunction, err = scrollbarStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// ScrollbarNew is a representation of the C type gtk_scrollbar_new.
+func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+	inArgs[1].SetPointer(adjustment.Native)
+
+	var ret gi.Argument
+
+	err := scrollbarNewFunction_Set()
+	if err == nil {
+		ret = scrollbarNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Scrollbar{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var scrolledWindowStruct *gi.Struct
 var scrolledWindowStruct_Once sync.Once
@@ -49277,9 +54139,70 @@ func (recv *ScrolledWindow) GetOverlayScrolling() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_get_placement' : return type 'CornerType' not supported
+var scrolledWindowGetPlacementFunction *gi.Function
+var scrolledWindowGetPlacementFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_get_policy' : parameter 'hscrollbar_policy' of type 'PolicyType' not supported
+func scrolledWindowGetPlacementFunction_Set() error {
+	var err error
+	scrolledWindowGetPlacementFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowGetPlacementFunction, err = scrolledWindowStruct.InvokerNew("get_placement")
+	})
+	return err
+}
+
+// GetPlacement is a representation of the C type gtk_scrolled_window_get_placement.
+func (recv *ScrolledWindow) GetPlacement() CornerType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scrolledWindowGetPlacementFunction_Set()
+	if err == nil {
+		ret = scrolledWindowGetPlacementFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CornerType(ret.Int32())
+
+	return retGo
+}
+
+var scrolledWindowGetPolicyFunction *gi.Function
+var scrolledWindowGetPolicyFunction_Once sync.Once
+
+func scrolledWindowGetPolicyFunction_Set() error {
+	var err error
+	scrolledWindowGetPolicyFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowGetPolicyFunction, err = scrolledWindowStruct.InvokerNew("get_policy")
+	})
+	return err
+}
+
+// GetPolicy is a representation of the C type gtk_scrolled_window_get_policy.
+func (recv *ScrolledWindow) GetPolicy() (PolicyType, PolicyType) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := scrolledWindowGetPolicyFunction_Set()
+	if err == nil {
+		scrolledWindowGetPolicyFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := PolicyType(outArgs[0].Int32())
+	out1 := PolicyType(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 var scrolledWindowGetPropagateNaturalHeightFunction *gi.Function
 var scrolledWindowGetPropagateNaturalHeightFunction_Once sync.Once
@@ -49345,7 +54268,37 @@ func (recv *ScrolledWindow) GetPropagateNaturalWidth() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_get_shadow_type' : return type 'ShadowType' not supported
+var scrolledWindowGetShadowTypeFunction *gi.Function
+var scrolledWindowGetShadowTypeFunction_Once sync.Once
+
+func scrolledWindowGetShadowTypeFunction_Set() error {
+	var err error
+	scrolledWindowGetShadowTypeFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowGetShadowTypeFunction, err = scrolledWindowStruct.InvokerNew("get_shadow_type")
+	})
+	return err
+}
+
+// GetShadowType is a representation of the C type gtk_scrolled_window_get_shadow_type.
+func (recv *ScrolledWindow) GetShadowType() ShadowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scrolledWindowGetShadowTypeFunction_Set()
+	if err == nil {
+		ret = scrolledWindowGetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ShadowType(ret.Int32())
+
+	return retGo
+}
 
 var scrolledWindowGetVadjustmentFunction *gi.Function
 var scrolledWindowGetVadjustmentFunction_Once sync.Once
@@ -49645,9 +54598,64 @@ func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_set_placement' : parameter 'window_placement' of type 'CornerType' not supported
+var scrolledWindowSetPlacementFunction *gi.Function
+var scrolledWindowSetPlacementFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_set_policy' : parameter 'hscrollbar_policy' of type 'PolicyType' not supported
+func scrolledWindowSetPlacementFunction_Set() error {
+	var err error
+	scrolledWindowSetPlacementFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowSetPlacementFunction, err = scrolledWindowStruct.InvokerNew("set_placement")
+	})
+	return err
+}
+
+// SetPlacement is a representation of the C type gtk_scrolled_window_set_placement.
+func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(windowPlacement))
+
+	err := scrolledWindowSetPlacementFunction_Set()
+	if err == nil {
+		scrolledWindowSetPlacementFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var scrolledWindowSetPolicyFunction *gi.Function
+var scrolledWindowSetPolicyFunction_Once sync.Once
+
+func scrolledWindowSetPolicyFunction_Set() error {
+	var err error
+	scrolledWindowSetPolicyFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowSetPolicyFunction, err = scrolledWindowStruct.InvokerNew("set_policy")
+	})
+	return err
+}
+
+// SetPolicy is a representation of the C type gtk_scrolled_window_set_policy.
+func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPolicy PolicyType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(hscrollbarPolicy))
+	inArgs[2].SetInt32(int32(vscrollbarPolicy))
+
+	err := scrolledWindowSetPolicyFunction_Set()
+	if err == nil {
+		scrolledWindowSetPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scrolledWindowSetPropagateNaturalHeightFunction *gi.Function
 var scrolledWindowSetPropagateNaturalHeightFunction_Once sync.Once
@@ -49707,7 +54715,34 @@ func (recv *ScrolledWindow) SetPropagateNaturalWidth(propagate bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_scrolled_window_set_shadow_type' : parameter 'type' of type 'ShadowType' not supported
+var scrolledWindowSetShadowTypeFunction *gi.Function
+var scrolledWindowSetShadowTypeFunction_Once sync.Once
+
+func scrolledWindowSetShadowTypeFunction_Set() error {
+	var err error
+	scrolledWindowSetShadowTypeFunction_Once.Do(func() {
+		err = scrolledWindowStruct_Set()
+		if err != nil {
+			return
+		}
+		scrolledWindowSetShadowTypeFunction, err = scrolledWindowStruct.InvokerNew("set_shadow_type")
+	})
+	return err
+}
+
+// SetShadowType is a representation of the C type gtk_scrolled_window_set_shadow_type.
+func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := scrolledWindowSetShadowTypeFunction_Set()
+	if err == nil {
+		scrolledWindowSetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scrolledWindowSetVadjustmentFunction *gi.Function
 var scrolledWindowSetVadjustmentFunction_Once sync.Once
@@ -50134,7 +55169,38 @@ func (recv *Separator) SetFieldPriv(value *SeparatorPrivate) {
 	gi.FieldSet(separatorStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_separator_new' : parameter 'orientation' of type 'Orientation' not supported
+var separatorNewFunction *gi.Function
+var separatorNewFunction_Once sync.Once
+
+func separatorNewFunction_Set() error {
+	var err error
+	separatorNewFunction_Once.Do(func() {
+		err = separatorStruct_Set()
+		if err != nil {
+			return
+		}
+		separatorNewFunction, err = separatorStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SeparatorNew is a representation of the C type gtk_separator_new.
+func SeparatorNew(orientation Orientation) *Separator {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(orientation))
+
+	var ret gi.Argument
+
+	err := separatorNewFunction_Set()
+	if err == nil {
+		ret = separatorNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Separator{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var separatorMenuItemStruct *gi.Struct
 var separatorMenuItemStruct_Once sync.Once
@@ -50834,7 +55900,38 @@ type SizeGroup struct {
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
 
-// UNSUPPORTED : C value 'gtk_size_group_new' : parameter 'mode' of type 'SizeGroupMode' not supported
+var sizeGroupNewFunction *gi.Function
+var sizeGroupNewFunction_Once sync.Once
+
+func sizeGroupNewFunction_Set() error {
+	var err error
+	sizeGroupNewFunction_Once.Do(func() {
+		err = sizeGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		sizeGroupNewFunction, err = sizeGroupStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// SizeGroupNew is a representation of the C type gtk_size_group_new.
+func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(mode))
+
+	var ret gi.Argument
+
+	err := sizeGroupNewFunction_Set()
+	if err == nil {
+		ret = sizeGroupNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SizeGroup{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var sizeGroupAddWidgetFunction *gi.Function
 var sizeGroupAddWidgetFunction_Once sync.Once
@@ -50897,7 +55994,37 @@ func (recv *SizeGroup) GetIgnoreHidden() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_size_group_get_mode' : return type 'SizeGroupMode' not supported
+var sizeGroupGetModeFunction *gi.Function
+var sizeGroupGetModeFunction_Once sync.Once
+
+func sizeGroupGetModeFunction_Set() error {
+	var err error
+	sizeGroupGetModeFunction_Once.Do(func() {
+		err = sizeGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		sizeGroupGetModeFunction, err = sizeGroupStruct.InvokerNew("get_mode")
+	})
+	return err
+}
+
+// GetMode is a representation of the C type gtk_size_group_get_mode.
+func (recv *SizeGroup) GetMode() SizeGroupMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := sizeGroupGetModeFunction_Set()
+	if err == nil {
+		ret = sizeGroupGetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SizeGroupMode(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_size_group_get_widgets' : return type 'GLib.SList' not supported
 
@@ -50959,7 +56086,34 @@ func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_size_group_set_mode' : parameter 'mode' of type 'SizeGroupMode' not supported
+var sizeGroupSetModeFunction *gi.Function
+var sizeGroupSetModeFunction_Once sync.Once
+
+func sizeGroupSetModeFunction_Set() error {
+	var err error
+	sizeGroupSetModeFunction_Once.Do(func() {
+		err = sizeGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		sizeGroupSetModeFunction, err = sizeGroupStruct.InvokerNew("set_mode")
+	})
+	return err
+}
+
+// SetMode is a representation of the C type gtk_size_group_set_mode.
+func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(mode))
+
+	err := sizeGroupSetModeFunction_Set()
+	if err == nil {
+		sizeGroupSetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var socketStruct *gi.Struct
 var socketStruct_Once sync.Once
@@ -51426,7 +56580,37 @@ func (recv *SpinButton) GetSnapToTicks() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_spin_button_get_update_policy' : return type 'SpinButtonUpdatePolicy' not supported
+var spinButtonGetUpdatePolicyFunction *gi.Function
+var spinButtonGetUpdatePolicyFunction_Once sync.Once
+
+func spinButtonGetUpdatePolicyFunction_Set() error {
+	var err error
+	spinButtonGetUpdatePolicyFunction_Once.Do(func() {
+		err = spinButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		spinButtonGetUpdatePolicyFunction, err = spinButtonStruct.InvokerNew("get_update_policy")
+	})
+	return err
+}
+
+// GetUpdatePolicy is a representation of the C type gtk_spin_button_get_update_policy.
+func (recv *SpinButton) GetUpdatePolicy() SpinButtonUpdatePolicy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := spinButtonGetUpdatePolicyFunction_Set()
+	if err == nil {
+		ret = spinButtonGetUpdatePolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SpinButtonUpdatePolicy(ret.Int32())
+
+	return retGo
+}
 
 var spinButtonGetValueFunction *gi.Function
 var spinButtonGetValueFunction_Once sync.Once
@@ -51700,7 +56884,34 @@ func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_spin_button_set_update_policy' : parameter 'policy' of type 'SpinButtonUpdatePolicy' not supported
+var spinButtonSetUpdatePolicyFunction *gi.Function
+var spinButtonSetUpdatePolicyFunction_Once sync.Once
+
+func spinButtonSetUpdatePolicyFunction_Set() error {
+	var err error
+	spinButtonSetUpdatePolicyFunction_Once.Do(func() {
+		err = spinButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		spinButtonSetUpdatePolicyFunction, err = spinButtonStruct.InvokerNew("set_update_policy")
+	})
+	return err
+}
+
+// SetUpdatePolicy is a representation of the C type gtk_spin_button_set_update_policy.
+func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(policy))
+
+	err := spinButtonSetUpdatePolicyFunction_Set()
+	if err == nil {
+		spinButtonSetUpdatePolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var spinButtonSetValueFunction *gi.Function
 var spinButtonSetValueFunction_Once sync.Once
@@ -51760,7 +56971,35 @@ func (recv *SpinButton) SetWrap(wrap bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_spin_button_spin' : parameter 'direction' of type 'SpinType' not supported
+var spinButtonSpinFunction *gi.Function
+var spinButtonSpinFunction_Once sync.Once
+
+func spinButtonSpinFunction_Set() error {
+	var err error
+	spinButtonSpinFunction_Once.Do(func() {
+		err = spinButtonStruct_Set()
+		if err != nil {
+			return
+		}
+		spinButtonSpinFunction, err = spinButtonStruct.InvokerNew("spin")
+	})
+	return err
+}
+
+// Spin is a representation of the C type gtk_spin_button_spin.
+func (recv *SpinButton) Spin(direction SpinType, increment float64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+	inArgs[2].SetFloat64(increment)
+
+	err := spinButtonSpinFunction_Set()
+	if err == nil {
+		spinButtonSpinFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var spinButtonUpdateFunction *gi.Function
 var spinButtonUpdateFunction_Once sync.Once
@@ -52345,7 +57584,37 @@ func (recv *Stack) GetTransitionRunning() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_stack_get_transition_type' : return type 'StackTransitionType' not supported
+var stackGetTransitionTypeFunction *gi.Function
+var stackGetTransitionTypeFunction_Once sync.Once
+
+func stackGetTransitionTypeFunction_Set() error {
+	var err error
+	stackGetTransitionTypeFunction_Once.Do(func() {
+		err = stackStruct_Set()
+		if err != nil {
+			return
+		}
+		stackGetTransitionTypeFunction, err = stackStruct.InvokerNew("get_transition_type")
+	})
+	return err
+}
+
+// GetTransitionType is a representation of the C type gtk_stack_get_transition_type.
+func (recv *Stack) GetTransitionType() StackTransitionType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := stackGetTransitionTypeFunction_Set()
+	if err == nil {
+		ret = stackGetTransitionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StackTransitionType(ret.Int32())
+
+	return retGo
+}
 
 var stackGetVhomogeneousFunction *gi.Function
 var stackGetVhomogeneousFunction_Once sync.Once
@@ -52560,7 +57829,34 @@ func (recv *Stack) SetTransitionDuration(duration uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_stack_set_transition_type' : parameter 'transition' of type 'StackTransitionType' not supported
+var stackSetTransitionTypeFunction *gi.Function
+var stackSetTransitionTypeFunction_Once sync.Once
+
+func stackSetTransitionTypeFunction_Set() error {
+	var err error
+	stackSetTransitionTypeFunction_Once.Do(func() {
+		err = stackStruct_Set()
+		if err != nil {
+			return
+		}
+		stackSetTransitionTypeFunction, err = stackStruct.InvokerNew("set_transition_type")
+	})
+	return err
+}
+
+// SetTransitionType is a representation of the C type gtk_stack_set_transition_type.
+func (recv *Stack) SetTransitionType(transition StackTransitionType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(transition))
+
+	err := stackSetTransitionTypeFunction_Set()
+	if err == nil {
+		stackSetTransitionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var stackSetVhomogeneousFunction *gi.Function
 var stackSetVhomogeneousFunction_Once sync.Once
@@ -52620,7 +57916,35 @@ func (recv *Stack) SetVisibleChild(child *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_stack_set_visible_child_full' : parameter 'transition' of type 'StackTransitionType' not supported
+var stackSetVisibleChildFullFunction *gi.Function
+var stackSetVisibleChildFullFunction_Once sync.Once
+
+func stackSetVisibleChildFullFunction_Set() error {
+	var err error
+	stackSetVisibleChildFullFunction_Once.Do(func() {
+		err = stackStruct_Set()
+		if err != nil {
+			return
+		}
+		stackSetVisibleChildFullFunction, err = stackStruct.InvokerNew("set_visible_child_full")
+	})
+	return err
+}
+
+// SetVisibleChildFull is a representation of the C type gtk_stack_set_visible_child_full.
+func (recv *Stack) SetVisibleChildFull(name string, transition StackTransitionType) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(transition))
+
+	err := stackSetVisibleChildFullFunction_Set()
+	if err == nil {
+		stackSetVisibleChildFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var stackSetVisibleChildNameFunction *gi.Function
 var stackSetVisibleChildNameFunction_Once sync.Once
@@ -53247,7 +58571,37 @@ func (recv *StatusIcon) GetStock() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_status_icon_get_storage_type' : return type 'ImageType' not supported
+var statusIconGetStorageTypeFunction *gi.Function
+var statusIconGetStorageTypeFunction_Once sync.Once
+
+func statusIconGetStorageTypeFunction_Set() error {
+	var err error
+	statusIconGetStorageTypeFunction_Once.Do(func() {
+		err = statusIconStruct_Set()
+		if err != nil {
+			return
+		}
+		statusIconGetStorageTypeFunction, err = statusIconStruct.InvokerNew("get_storage_type")
+	})
+	return err
+}
+
+// GetStorageType is a representation of the C type gtk_status_icon_get_storage_type.
+func (recv *StatusIcon) GetStorageType() ImageType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := statusIconGetStorageTypeFunction_Set()
+	if err == nil {
+		ret = statusIconGetStorageTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ImageType(ret.Int32())
+
+	return retGo
+}
 
 var statusIconGetTitleFunction *gi.Function
 var statusIconGetTitleFunction_Once sync.Once
@@ -54279,7 +59633,7 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_style_render_icon' : parameter 'direction' of type 'TextDirection' not supported
+// UNSUPPORTED : C value 'gtk_style_render_icon' : return type 'GdkPixbuf.Pixbuf' not supported
 
 // UNSUPPORTED : C value 'gtk_style_set_background' : parameter 'window' of type 'Gdk.Window' not supported
 
@@ -54393,7 +59747,37 @@ func (recv *StyleContext) AddClass(className string) {
 
 // UNSUPPORTED : C value 'gtk_style_context_get_color' : parameter 'state' of type 'StateFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_style_context_get_direction' : return type 'TextDirection' not supported
+var styleContextGetDirectionFunction *gi.Function
+var styleContextGetDirectionFunction_Once sync.Once
+
+func styleContextGetDirectionFunction_Set() error {
+	var err error
+	styleContextGetDirectionFunction_Once.Do(func() {
+		err = styleContextStruct_Set()
+		if err != nil {
+			return
+		}
+		styleContextGetDirectionFunction, err = styleContextStruct.InvokerNew("get_direction")
+	})
+	return err
+}
+
+// GetDirection is a representation of the C type gtk_style_context_get_direction.
+func (recv *StyleContext) GetDirection() TextDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := styleContextGetDirectionFunction_Set()
+	if err == nil {
+		ret = styleContextGetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextDirection(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_style_context_get_font' : parameter 'state' of type 'StateFlags' not supported
 
@@ -54806,7 +60190,34 @@ func (recv *StyleContext) Save() {
 
 // UNSUPPORTED : C value 'gtk_style_context_set_background' : parameter 'window' of type 'Gdk.Window' not supported
 
-// UNSUPPORTED : C value 'gtk_style_context_set_direction' : parameter 'direction' of type 'TextDirection' not supported
+var styleContextSetDirectionFunction *gi.Function
+var styleContextSetDirectionFunction_Once sync.Once
+
+func styleContextSetDirectionFunction_Set() error {
+	var err error
+	styleContextSetDirectionFunction_Once.Do(func() {
+		err = styleContextStruct_Set()
+		if err != nil {
+			return
+		}
+		styleContextSetDirectionFunction, err = styleContextStruct.InvokerNew("set_direction")
+	})
+	return err
+}
+
+// SetDirection is a representation of the C type gtk_style_context_set_direction.
+func (recv *StyleContext) SetDirection(direction TextDirection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	err := styleContextSetDirectionFunction_Set()
+	if err == nil {
+		styleContextSetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_style_context_set_frame_clock' : parameter 'frame_clock' of type 'Gdk.FrameClock' not supported
 
@@ -54903,7 +60314,40 @@ func (recv *StyleContext) SetScale(scale int32) {
 
 // UNSUPPORTED : C value 'gtk_style_context_set_state' : parameter 'flags' of type 'StateFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_style_context_state_is_running' : parameter 'state' of type 'StateType' not supported
+var styleContextStateIsRunningFunction *gi.Function
+var styleContextStateIsRunningFunction_Once sync.Once
+
+func styleContextStateIsRunningFunction_Set() error {
+	var err error
+	styleContextStateIsRunningFunction_Once.Do(func() {
+		err = styleContextStruct_Set()
+		if err != nil {
+			return
+		}
+		styleContextStateIsRunningFunction, err = styleContextStruct.InvokerNew("state_is_running")
+	})
+	return err
+}
+
+// StateIsRunning is a representation of the C type gtk_style_context_state_is_running.
+func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(state))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := styleContextStateIsRunningFunction_Set()
+	if err == nil {
+		ret = styleContextStateIsRunningFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Float64()
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'gtk_style_context_to_string' : parameter 'flags' of type 'StyleContextPrintFlags' not supported
 
@@ -58705,7 +64149,37 @@ func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_add_child_in_window' : parameter 'which_window' of type 'TextWindowType' not supported
+var textViewAddChildInWindowFunction *gi.Function
+var textViewAddChildInWindowFunction_Once sync.Once
+
+func textViewAddChildInWindowFunction_Set() error {
+	var err error
+	textViewAddChildInWindowFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewAddChildInWindowFunction, err = textViewStruct.InvokerNew("add_child_in_window")
+	})
+	return err
+}
+
+// AddChildInWindow is a representation of the C type gtk_text_view_add_child_in_window.
+func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType, xpos int32, ypos int32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(child.Native)
+	inArgs[2].SetInt32(int32(whichWindow))
+	inArgs[3].SetInt32(xpos)
+	inArgs[4].SetInt32(ypos)
+
+	err := textViewAddChildInWindowFunction_Set()
+	if err == nil {
+		textViewAddChildInWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textViewBackwardDisplayLineFunction *gi.Function
 var textViewBackwardDisplayLineFunction_Once sync.Once
@@ -58773,7 +64247,41 @@ func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_buffer_to_window_coords' : parameter 'win' of type 'TextWindowType' not supported
+var textViewBufferToWindowCoordsFunction *gi.Function
+var textViewBufferToWindowCoordsFunction_Once sync.Once
+
+func textViewBufferToWindowCoordsFunction_Set() error {
+	var err error
+	textViewBufferToWindowCoordsFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewBufferToWindowCoordsFunction, err = textViewStruct.InvokerNew("buffer_to_window_coords")
+	})
+	return err
+}
+
+// BufferToWindowCoords is a representation of the C type gtk_text_view_buffer_to_window_coords.
+func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (int32, int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(win))
+	inArgs[2].SetInt32(bufferX)
+	inArgs[3].SetInt32(bufferY)
+
+	var outArgs [2]gi.Argument
+
+	err := textViewBufferToWindowCoordsFunction_Set()
+	if err == nil {
+		textViewBufferToWindowCoordsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 var textViewForwardDisplayLineFunction *gi.Function
 var textViewForwardDisplayLineFunction_Once sync.Once
@@ -58873,7 +64381,38 @@ func (recv *TextView) GetAcceptsTab() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_get_border_window_size' : parameter 'type' of type 'TextWindowType' not supported
+var textViewGetBorderWindowSizeFunction *gi.Function
+var textViewGetBorderWindowSizeFunction_Once sync.Once
+
+func textViewGetBorderWindowSizeFunction_Set() error {
+	var err error
+	textViewGetBorderWindowSizeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewGetBorderWindowSizeFunction, err = textViewStruct.InvokerNew("get_border_window_size")
+	})
+	return err
+}
+
+// GetBorderWindowSize is a representation of the C type gtk_text_view_get_border_window_size.
+func (recv *TextView) GetBorderWindowSize(type_ TextWindowType) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := textViewGetBorderWindowSizeFunction_Set()
+	if err == nil {
+		ret = textViewGetBorderWindowSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var textViewGetBottomMarginFunction *gi.Function
 var textViewGetBottomMarginFunction_Once sync.Once
@@ -59106,7 +64645,37 @@ func (recv *TextView) GetIndent() int32 {
 
 // UNSUPPORTED : C value 'gtk_text_view_get_input_hints' : return type 'InputHints' not supported
 
-// UNSUPPORTED : C value 'gtk_text_view_get_input_purpose' : return type 'InputPurpose' not supported
+var textViewGetInputPurposeFunction *gi.Function
+var textViewGetInputPurposeFunction_Once sync.Once
+
+func textViewGetInputPurposeFunction_Set() error {
+	var err error
+	textViewGetInputPurposeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewGetInputPurposeFunction, err = textViewStruct.InvokerNew("get_input_purpose")
+	})
+	return err
+}
+
+// GetInputPurpose is a representation of the C type gtk_text_view_get_input_purpose.
+func (recv *TextView) GetInputPurpose() InputPurpose {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := textViewGetInputPurposeFunction_Set()
+	if err == nil {
+		ret = textViewGetInputPurposeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := InputPurpose(ret.Int32())
+
+	return retGo
+}
 
 var textViewGetIterAtLocationFunction *gi.Function
 var textViewGetIterAtLocationFunction_Once sync.Once
@@ -59185,7 +64754,37 @@ func (recv *TextView) GetIterAtPosition(x int32, y int32) (bool, *TextIter, int3
 
 // UNSUPPORTED : C value 'gtk_text_view_get_iter_location' : parameter 'location' of type 'Gdk.Rectangle' not supported
 
-// UNSUPPORTED : C value 'gtk_text_view_get_justification' : return type 'Justification' not supported
+var textViewGetJustificationFunction *gi.Function
+var textViewGetJustificationFunction_Once sync.Once
+
+func textViewGetJustificationFunction_Set() error {
+	var err error
+	textViewGetJustificationFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewGetJustificationFunction, err = textViewStruct.InvokerNew("get_justification")
+	})
+	return err
+}
+
+// GetJustification is a representation of the C type gtk_text_view_get_justification.
+func (recv *TextView) GetJustification() Justification {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := textViewGetJustificationFunction_Set()
+	if err == nil {
+		ret = textViewGetJustificationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Justification(ret.Int32())
+
+	return retGo
+}
 
 var textViewGetLeftMarginFunction *gi.Function
 var textViewGetLeftMarginFunction_Once sync.Once
@@ -59549,11 +65148,41 @@ func (recv *TextView) GetVadjustment() *Adjustment {
 
 // UNSUPPORTED : C value 'gtk_text_view_get_visible_rect' : parameter 'visible_rect' of type 'Gdk.Rectangle' not supported
 
-// UNSUPPORTED : C value 'gtk_text_view_get_window' : parameter 'win' of type 'TextWindowType' not supported
+// UNSUPPORTED : C value 'gtk_text_view_get_window' : return type 'Gdk.Window' not supported
 
 // UNSUPPORTED : C value 'gtk_text_view_get_window_type' : parameter 'window' of type 'Gdk.Window' not supported
 
-// UNSUPPORTED : C value 'gtk_text_view_get_wrap_mode' : return type 'WrapMode' not supported
+var textViewGetWrapModeFunction *gi.Function
+var textViewGetWrapModeFunction_Once sync.Once
+
+func textViewGetWrapModeFunction_Set() error {
+	var err error
+	textViewGetWrapModeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewGetWrapModeFunction, err = textViewStruct.InvokerNew("get_wrap_mode")
+	})
+	return err
+}
+
+// GetWrapMode is a representation of the C type gtk_text_view_get_wrap_mode.
+func (recv *TextView) GetWrapMode() WrapMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := textViewGetWrapModeFunction_Set()
+	if err == nil {
+		ret = textViewGetWrapModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WrapMode(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_text_view_im_context_filter_keypress' : parameter 'event' of type 'Gdk.EventKey' not supported
 
@@ -59871,7 +65500,35 @@ func (recv *TextView) SetAcceptsTab(acceptsTab bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_set_border_window_size' : parameter 'type' of type 'TextWindowType' not supported
+var textViewSetBorderWindowSizeFunction *gi.Function
+var textViewSetBorderWindowSizeFunction_Once sync.Once
+
+func textViewSetBorderWindowSizeFunction_Set() error {
+	var err error
+	textViewSetBorderWindowSizeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewSetBorderWindowSizeFunction, err = textViewStruct.InvokerNew("set_border_window_size")
+	})
+	return err
+}
+
+// SetBorderWindowSize is a representation of the C type gtk_text_view_set_border_window_size.
+func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetInt32(size)
+
+	err := textViewSetBorderWindowSizeFunction_Set()
+	if err == nil {
+		textViewSetBorderWindowSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textViewSetBottomMarginFunction *gi.Function
 var textViewSetBottomMarginFunction_Once sync.Once
@@ -60020,9 +65677,63 @@ func (recv *TextView) SetIndent(indent int32) {
 
 // UNSUPPORTED : C value 'gtk_text_view_set_input_hints' : parameter 'hints' of type 'InputHints' not supported
 
-// UNSUPPORTED : C value 'gtk_text_view_set_input_purpose' : parameter 'purpose' of type 'InputPurpose' not supported
+var textViewSetInputPurposeFunction *gi.Function
+var textViewSetInputPurposeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_view_set_justification' : parameter 'justification' of type 'Justification' not supported
+func textViewSetInputPurposeFunction_Set() error {
+	var err error
+	textViewSetInputPurposeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewSetInputPurposeFunction, err = textViewStruct.InvokerNew("set_input_purpose")
+	})
+	return err
+}
+
+// SetInputPurpose is a representation of the C type gtk_text_view_set_input_purpose.
+func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(purpose))
+
+	err := textViewSetInputPurposeFunction_Set()
+	if err == nil {
+		textViewSetInputPurposeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var textViewSetJustificationFunction *gi.Function
+var textViewSetJustificationFunction_Once sync.Once
+
+func textViewSetJustificationFunction_Set() error {
+	var err error
+	textViewSetJustificationFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewSetJustificationFunction, err = textViewStruct.InvokerNew("set_justification")
+	})
+	return err
+}
+
+// SetJustification is a representation of the C type gtk_text_view_set_justification.
+func (recv *TextView) SetJustification(justification Justification) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(justification))
+
+	err := textViewSetJustificationFunction_Set()
+	if err == nil {
+		textViewSetJustificationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textViewSetLeftMarginFunction *gi.Function
 var textViewSetLeftMarginFunction_Once sync.Once
@@ -60258,7 +65969,34 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_set_wrap_mode' : parameter 'wrap_mode' of type 'WrapMode' not supported
+var textViewSetWrapModeFunction *gi.Function
+var textViewSetWrapModeFunction_Once sync.Once
+
+func textViewSetWrapModeFunction_Set() error {
+	var err error
+	textViewSetWrapModeFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewSetWrapModeFunction, err = textViewStruct.InvokerNew("set_wrap_mode")
+	})
+	return err
+}
+
+// SetWrapMode is a representation of the C type gtk_text_view_set_wrap_mode.
+func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(wrapMode))
+
+	err := textViewSetWrapModeFunction_Set()
+	if err == nil {
+		textViewSetWrapModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textViewStartsDisplayLineFunction *gi.Function
 var textViewStartsDisplayLineFunction_Once sync.Once
@@ -60293,7 +66031,41 @@ func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_window_to_buffer_coords' : parameter 'win' of type 'TextWindowType' not supported
+var textViewWindowToBufferCoordsFunction *gi.Function
+var textViewWindowToBufferCoordsFunction_Once sync.Once
+
+func textViewWindowToBufferCoordsFunction_Set() error {
+	var err error
+	textViewWindowToBufferCoordsFunction_Once.Do(func() {
+		err = textViewStruct_Set()
+		if err != nil {
+			return
+		}
+		textViewWindowToBufferCoordsFunction, err = textViewStruct.InvokerNew("window_to_buffer_coords")
+	})
+	return err
+}
+
+// WindowToBufferCoords is a representation of the C type gtk_text_view_window_to_buffer_coords.
+func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (int32, int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(win))
+	inArgs[2].SetInt32(windowX)
+	inArgs[3].SetInt32(windowY)
+
+	var outArgs [2]gi.Argument
+
+	err := textViewWindowToBufferCoordsFunction_Set()
+	if err == nil {
+		textViewWindowToBufferCoordsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 var textViewAccessibleStruct *gi.Struct
 var textViewAccessibleStruct_Once sync.Once
@@ -60400,7 +66172,37 @@ func (recv *ThemingEngine) SetFieldPriv(value *ThemingEnginePrivate) {
 
 // UNSUPPORTED : C value 'gtk_theming_engine_get_color' : parameter 'state' of type 'StateFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_theming_engine_get_direction' : return type 'TextDirection' not supported
+var themingEngineGetDirectionFunction *gi.Function
+var themingEngineGetDirectionFunction_Once sync.Once
+
+func themingEngineGetDirectionFunction_Set() error {
+	var err error
+	themingEngineGetDirectionFunction_Once.Do(func() {
+		err = themingEngineStruct_Set()
+		if err != nil {
+			return
+		}
+		themingEngineGetDirectionFunction, err = themingEngineStruct.InvokerNew("get_direction")
+	})
+	return err
+}
+
+// GetDirection is a representation of the C type gtk_theming_engine_get_direction.
+func (recv *ThemingEngine) GetDirection() TextDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := themingEngineGetDirectionFunction_Set()
+	if err == nil {
+		ret = themingEngineGetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextDirection(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_theming_engine_get_font' : parameter 'state' of type 'StateFlags' not supported
 
@@ -60494,7 +66296,40 @@ func (recv *ThemingEngine) HasClass(styleClass string) bool {
 
 // UNSUPPORTED : C value 'gtk_theming_engine_lookup_color' : parameter 'color' of type 'Gdk.RGBA' not supported
 
-// UNSUPPORTED : C value 'gtk_theming_engine_state_is_running' : parameter 'state' of type 'StateType' not supported
+var themingEngineStateIsRunningFunction *gi.Function
+var themingEngineStateIsRunningFunction_Once sync.Once
+
+func themingEngineStateIsRunningFunction_Set() error {
+	var err error
+	themingEngineStateIsRunningFunction_Once.Do(func() {
+		err = themingEngineStruct_Set()
+		if err != nil {
+			return
+		}
+		themingEngineStateIsRunningFunction, err = themingEngineStruct.InvokerNew("state_is_running")
+	})
+	return err
+}
+
+// StateIsRunning is a representation of the C type gtk_theming_engine_state_is_running.
+func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(state))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := themingEngineStateIsRunningFunction_Set()
+	if err == nil {
+		ret = themingEngineStateIsRunningFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Float64()
+
+	return retGo, out0
+}
 
 // ThemingEngineStruct creates an uninitialised ThemingEngine.
 func ThemingEngineStruct() *ThemingEngine {
@@ -61859,7 +67694,37 @@ func (recv *ToolItem) GetHomogeneous() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_icon_size' : return type 'IconSize' not supported
+var toolItemGetIconSizeFunction *gi.Function
+var toolItemGetIconSizeFunction_Once sync.Once
+
+func toolItemGetIconSizeFunction_Set() error {
+	var err error
+	toolItemGetIconSizeFunction_Once.Do(func() {
+		err = toolItemStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGetIconSizeFunction, err = toolItemStruct.InvokerNew("get_icon_size")
+	})
+	return err
+}
+
+// GetIconSize is a representation of the C type gtk_tool_item_get_icon_size.
+func (recv *ToolItem) GetIconSize() IconSize {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGetIconSizeFunction_Set()
+	if err == nil {
+		ret = toolItemGetIconSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGetIsImportantFunction *gi.Function
 var toolItemGetIsImportantFunction_Once sync.Once
@@ -61893,7 +67758,37 @@ func (recv *ToolItem) GetIsImportant() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_orientation' : return type 'Orientation' not supported
+var toolItemGetOrientationFunction *gi.Function
+var toolItemGetOrientationFunction_Once sync.Once
+
+func toolItemGetOrientationFunction_Set() error {
+	var err error
+	toolItemGetOrientationFunction_Once.Do(func() {
+		err = toolItemStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGetOrientationFunction, err = toolItemStruct.InvokerNew("get_orientation")
+	})
+	return err
+}
+
+// GetOrientation is a representation of the C type gtk_tool_item_get_orientation.
+func (recv *ToolItem) GetOrientation() Orientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGetOrientationFunction_Set()
+	if err == nil {
+		ret = toolItemGetOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Orientation(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGetProxyMenuItemFunction *gi.Function
 var toolItemGetProxyMenuItemFunction_Once sync.Once
@@ -61929,7 +67824,37 @@ func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_relief_style' : return type 'ReliefStyle' not supported
+var toolItemGetReliefStyleFunction *gi.Function
+var toolItemGetReliefStyleFunction_Once sync.Once
+
+func toolItemGetReliefStyleFunction_Set() error {
+	var err error
+	toolItemGetReliefStyleFunction_Once.Do(func() {
+		err = toolItemStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGetReliefStyleFunction, err = toolItemStruct.InvokerNew("get_relief_style")
+	})
+	return err
+}
+
+// GetReliefStyle is a representation of the C type gtk_tool_item_get_relief_style.
+func (recv *ToolItem) GetReliefStyle() ReliefStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGetReliefStyleFunction_Set()
+	if err == nil {
+		ret = toolItemGetReliefStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ReliefStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGetTextAlignmentFunction *gi.Function
 var toolItemGetTextAlignmentFunction_Once sync.Once
@@ -61963,7 +67888,37 @@ func (recv *ToolItem) GetTextAlignment() float32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_text_orientation' : return type 'Orientation' not supported
+var toolItemGetTextOrientationFunction *gi.Function
+var toolItemGetTextOrientationFunction_Once sync.Once
+
+func toolItemGetTextOrientationFunction_Set() error {
+	var err error
+	toolItemGetTextOrientationFunction_Once.Do(func() {
+		err = toolItemStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGetTextOrientationFunction, err = toolItemStruct.InvokerNew("get_text_orientation")
+	})
+	return err
+}
+
+// GetTextOrientation is a representation of the C type gtk_tool_item_get_text_orientation.
+func (recv *ToolItem) GetTextOrientation() Orientation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGetTextOrientationFunction_Set()
+	if err == nil {
+		ret = toolItemGetTextOrientationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Orientation(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGetTextSizeGroupFunction *gi.Function
 var toolItemGetTextSizeGroupFunction_Once sync.Once
@@ -61998,7 +67953,37 @@ func (recv *ToolItem) GetTextSizeGroup() *SizeGroup {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_toolbar_style' : return type 'ToolbarStyle' not supported
+var toolItemGetToolbarStyleFunction *gi.Function
+var toolItemGetToolbarStyleFunction_Once sync.Once
+
+func toolItemGetToolbarStyleFunction_Set() error {
+	var err error
+	toolItemGetToolbarStyleFunction_Once.Do(func() {
+		err = toolItemStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGetToolbarStyleFunction, err = toolItemStruct.InvokerNew("get_toolbar_style")
+	})
+	return err
+}
+
+// GetToolbarStyle is a representation of the C type gtk_tool_item_get_toolbar_style.
+func (recv *ToolItem) GetToolbarStyle() ToolbarStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGetToolbarStyleFunction_Set()
+	if err == nil {
+		ret = toolItemGetToolbarStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ToolbarStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGetUseDragWindowFunction *gi.Function
 var toolItemGetUseDragWindowFunction_Once sync.Once
@@ -62594,7 +68579,37 @@ func (recv *ToolItemGroup) GetDropItem(x int32, y int32) *ToolItem {
 
 // UNSUPPORTED : C value 'gtk_tool_item_group_get_ellipsize' : return type 'Pango.EllipsizeMode' not supported
 
-// UNSUPPORTED : C value 'gtk_tool_item_group_get_header_relief' : return type 'ReliefStyle' not supported
+var toolItemGroupGetHeaderReliefFunction *gi.Function
+var toolItemGroupGetHeaderReliefFunction_Once sync.Once
+
+func toolItemGroupGetHeaderReliefFunction_Set() error {
+	var err error
+	toolItemGroupGetHeaderReliefFunction_Once.Do(func() {
+		err = toolItemGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGroupGetHeaderReliefFunction, err = toolItemGroupStruct.InvokerNew("get_header_relief")
+	})
+	return err
+}
+
+// GetHeaderRelief is a representation of the C type gtk_tool_item_group_get_header_relief.
+func (recv *ToolItemGroup) GetHeaderRelief() ReliefStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolItemGroupGetHeaderReliefFunction_Set()
+	if err == nil {
+		ret = toolItemGroupGetHeaderReliefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ReliefStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolItemGroupGetItemPositionFunction *gi.Function
 var toolItemGroupGetItemPositionFunction_Once sync.Once
@@ -62821,7 +68836,34 @@ func (recv *ToolItemGroup) SetCollapsed(collapsed bool) {
 
 // UNSUPPORTED : C value 'gtk_tool_item_group_set_ellipsize' : parameter 'ellipsize' of type 'Pango.EllipsizeMode' not supported
 
-// UNSUPPORTED : C value 'gtk_tool_item_group_set_header_relief' : parameter 'style' of type 'ReliefStyle' not supported
+var toolItemGroupSetHeaderReliefFunction *gi.Function
+var toolItemGroupSetHeaderReliefFunction_Once sync.Once
+
+func toolItemGroupSetHeaderReliefFunction_Set() error {
+	var err error
+	toolItemGroupSetHeaderReliefFunction_Once.Do(func() {
+		err = toolItemGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		toolItemGroupSetHeaderReliefFunction, err = toolItemGroupStruct.InvokerNew("set_header_relief")
+	})
+	return err
+}
+
+// SetHeaderRelief is a representation of the C type gtk_tool_item_group_set_header_relief.
+func (recv *ToolItemGroup) SetHeaderRelief(style ReliefStyle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(style))
+
+	err := toolItemGroupSetHeaderReliefFunction_Set()
+	if err == nil {
+		toolItemGroupSetHeaderReliefFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var toolItemGroupSetItemPositionFunction *gi.Function
 var toolItemGroupSetItemPositionFunction_Once sync.Once
@@ -63225,9 +69267,69 @@ func (recv *ToolPalette) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_palette_get_icon_size' : return type 'IconSize' not supported
+var toolPaletteGetIconSizeFunction *gi.Function
+var toolPaletteGetIconSizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tool_palette_get_style' : return type 'ToolbarStyle' not supported
+func toolPaletteGetIconSizeFunction_Set() error {
+	var err error
+	toolPaletteGetIconSizeFunction_Once.Do(func() {
+		err = toolPaletteStruct_Set()
+		if err != nil {
+			return
+		}
+		toolPaletteGetIconSizeFunction, err = toolPaletteStruct.InvokerNew("get_icon_size")
+	})
+	return err
+}
+
+// GetIconSize is a representation of the C type gtk_tool_palette_get_icon_size.
+func (recv *ToolPalette) GetIconSize() IconSize {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolPaletteGetIconSizeFunction_Set()
+	if err == nil {
+		ret = toolPaletteGetIconSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
+
+var toolPaletteGetStyleFunction *gi.Function
+var toolPaletteGetStyleFunction_Once sync.Once
+
+func toolPaletteGetStyleFunction_Set() error {
+	var err error
+	toolPaletteGetStyleFunction_Once.Do(func() {
+		err = toolPaletteStruct_Set()
+		if err != nil {
+			return
+		}
+		toolPaletteGetStyleFunction, err = toolPaletteStruct.InvokerNew("get_style")
+	})
+	return err
+}
+
+// GetStyle is a representation of the C type gtk_tool_palette_get_style.
+func (recv *ToolPalette) GetStyle() ToolbarStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolPaletteGetStyleFunction_Set()
+	if err == nil {
+		ret = toolPaletteGetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ToolbarStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolPaletteGetVadjustmentFunction *gi.Function
 var toolPaletteGetVadjustmentFunction_Once sync.Once
@@ -63354,9 +69456,63 @@ func (recv *ToolPalette) SetGroupPosition(group *ToolItemGroup, position int32) 
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tool_palette_set_icon_size' : parameter 'icon_size' of type 'IconSize' not supported
+var toolPaletteSetIconSizeFunction *gi.Function
+var toolPaletteSetIconSizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tool_palette_set_style' : parameter 'style' of type 'ToolbarStyle' not supported
+func toolPaletteSetIconSizeFunction_Set() error {
+	var err error
+	toolPaletteSetIconSizeFunction_Once.Do(func() {
+		err = toolPaletteStruct_Set()
+		if err != nil {
+			return
+		}
+		toolPaletteSetIconSizeFunction, err = toolPaletteStruct.InvokerNew("set_icon_size")
+	})
+	return err
+}
+
+// SetIconSize is a representation of the C type gtk_tool_palette_set_icon_size.
+func (recv *ToolPalette) SetIconSize(iconSize IconSize) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconSize))
+
+	err := toolPaletteSetIconSizeFunction_Set()
+	if err == nil {
+		toolPaletteSetIconSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var toolPaletteSetStyleFunction *gi.Function
+var toolPaletteSetStyleFunction_Once sync.Once
+
+func toolPaletteSetStyleFunction_Set() error {
+	var err error
+	toolPaletteSetStyleFunction_Once.Do(func() {
+		err = toolPaletteStruct_Set()
+		if err != nil {
+			return
+		}
+		toolPaletteSetStyleFunction, err = toolPaletteStruct.InvokerNew("set_style")
+	})
+	return err
+}
+
+// SetStyle is a representation of the C type gtk_tool_palette_set_style.
+func (recv *ToolPalette) SetStyle(style ToolbarStyle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(style))
+
+	err := toolPaletteSetStyleFunction_Set()
+	if err == nil {
+		toolPaletteSetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var toolPaletteUnsetIconSizeFunction *gi.Function
 var toolPaletteUnsetIconSizeFunction_Once sync.Once
@@ -63524,7 +69680,37 @@ func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_toolbar_get_icon_size' : return type 'IconSize' not supported
+var toolbarGetIconSizeFunction *gi.Function
+var toolbarGetIconSizeFunction_Once sync.Once
+
+func toolbarGetIconSizeFunction_Set() error {
+	var err error
+	toolbarGetIconSizeFunction_Once.Do(func() {
+		err = toolbarStruct_Set()
+		if err != nil {
+			return
+		}
+		toolbarGetIconSizeFunction, err = toolbarStruct.InvokerNew("get_icon_size")
+	})
+	return err
+}
+
+// GetIconSize is a representation of the C type gtk_toolbar_get_icon_size.
+func (recv *Toolbar) GetIconSize() IconSize {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolbarGetIconSizeFunction_Set()
+	if err == nil {
+		ret = toolbarGetIconSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSize(ret.Int32())
+
+	return retGo
+}
 
 var toolbarGetItemIndexFunction *gi.Function
 var toolbarGetItemIndexFunction_Once sync.Once
@@ -63625,7 +69811,37 @@ func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_toolbar_get_relief_style' : return type 'ReliefStyle' not supported
+var toolbarGetReliefStyleFunction *gi.Function
+var toolbarGetReliefStyleFunction_Once sync.Once
+
+func toolbarGetReliefStyleFunction_Set() error {
+	var err error
+	toolbarGetReliefStyleFunction_Once.Do(func() {
+		err = toolbarStruct_Set()
+		if err != nil {
+			return
+		}
+		toolbarGetReliefStyleFunction, err = toolbarStruct.InvokerNew("get_relief_style")
+	})
+	return err
+}
+
+// GetReliefStyle is a representation of the C type gtk_toolbar_get_relief_style.
+func (recv *Toolbar) GetReliefStyle() ReliefStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolbarGetReliefStyleFunction_Set()
+	if err == nil {
+		ret = toolbarGetReliefStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ReliefStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolbarGetShowArrowFunction *gi.Function
 var toolbarGetShowArrowFunction_Once sync.Once
@@ -63659,7 +69875,37 @@ func (recv *Toolbar) GetShowArrow() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_toolbar_get_style' : return type 'ToolbarStyle' not supported
+var toolbarGetStyleFunction *gi.Function
+var toolbarGetStyleFunction_Once sync.Once
+
+func toolbarGetStyleFunction_Set() error {
+	var err error
+	toolbarGetStyleFunction_Once.Do(func() {
+		err = toolbarStruct_Set()
+		if err != nil {
+			return
+		}
+		toolbarGetStyleFunction, err = toolbarStruct.InvokerNew("get_style")
+	})
+	return err
+}
+
+// GetStyle is a representation of the C type gtk_toolbar_get_style.
+func (recv *Toolbar) GetStyle() ToolbarStyle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := toolbarGetStyleFunction_Set()
+	if err == nil {
+		ret = toolbarGetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ToolbarStyle(ret.Int32())
+
+	return retGo
+}
 
 var toolbarInsertFunction *gi.Function
 var toolbarInsertFunction_Once sync.Once
@@ -63721,7 +69967,34 @@ func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_toolbar_set_icon_size' : parameter 'icon_size' of type 'IconSize' not supported
+var toolbarSetIconSizeFunction *gi.Function
+var toolbarSetIconSizeFunction_Once sync.Once
+
+func toolbarSetIconSizeFunction_Set() error {
+	var err error
+	toolbarSetIconSizeFunction_Once.Do(func() {
+		err = toolbarStruct_Set()
+		if err != nil {
+			return
+		}
+		toolbarSetIconSizeFunction, err = toolbarStruct.InvokerNew("set_icon_size")
+	})
+	return err
+}
+
+// SetIconSize is a representation of the C type gtk_toolbar_set_icon_size.
+func (recv *Toolbar) SetIconSize(iconSize IconSize) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(iconSize))
+
+	err := toolbarSetIconSizeFunction_Set()
+	if err == nil {
+		toolbarSetIconSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var toolbarSetShowArrowFunction *gi.Function
 var toolbarSetShowArrowFunction_Once sync.Once
@@ -63752,7 +70025,34 @@ func (recv *Toolbar) SetShowArrow(showArrow bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_toolbar_set_style' : parameter 'style' of type 'ToolbarStyle' not supported
+var toolbarSetStyleFunction *gi.Function
+var toolbarSetStyleFunction_Once sync.Once
+
+func toolbarSetStyleFunction_Set() error {
+	var err error
+	toolbarSetStyleFunction_Once.Do(func() {
+		err = toolbarStruct_Set()
+		if err != nil {
+			return
+		}
+		toolbarSetStyleFunction, err = toolbarStruct.InvokerNew("set_style")
+	})
+	return err
+}
+
+// SetStyle is a representation of the C type gtk_toolbar_set_style.
+func (recv *Toolbar) SetStyle(style ToolbarStyle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(style))
+
+	err := toolbarSetStyleFunction_Set()
+	if err == nil {
+		toolbarSetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var toolbarUnsetIconSizeFunction *gi.Function
 var toolbarUnsetIconSizeFunction_Once sync.Once
@@ -63858,9 +70158,65 @@ func (recv *Tooltip) SetCustom(customWidget *Widget) {
 
 // UNSUPPORTED : C value 'gtk_tooltip_set_icon_from_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_tooltip_set_icon_from_icon_name' : parameter 'size' of type 'IconSize' not supported
+var tooltipSetIconFromIconNameFunction *gi.Function
+var tooltipSetIconFromIconNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tooltip_set_icon_from_stock' : parameter 'size' of type 'IconSize' not supported
+func tooltipSetIconFromIconNameFunction_Set() error {
+	var err error
+	tooltipSetIconFromIconNameFunction_Once.Do(func() {
+		err = tooltipStruct_Set()
+		if err != nil {
+			return
+		}
+		tooltipSetIconFromIconNameFunction, err = tooltipStruct.InvokerNew("set_icon_from_icon_name")
+	})
+	return err
+}
+
+// SetIconFromIconName is a representation of the C type gtk_tooltip_set_icon_from_icon_name.
+func (recv *Tooltip) SetIconFromIconName(iconName string, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(iconName)
+	inArgs[2].SetInt32(int32(size))
+
+	err := tooltipSetIconFromIconNameFunction_Set()
+	if err == nil {
+		tooltipSetIconFromIconNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var tooltipSetIconFromStockFunction *gi.Function
+var tooltipSetIconFromStockFunction_Once sync.Once
+
+func tooltipSetIconFromStockFunction_Set() error {
+	var err error
+	tooltipSetIconFromStockFunction_Once.Do(func() {
+		err = tooltipStruct_Set()
+		if err != nil {
+			return
+		}
+		tooltipSetIconFromStockFunction, err = tooltipStruct.InvokerNew("set_icon_from_stock")
+	})
+	return err
+}
+
+// SetIconFromStock is a representation of the C type gtk_tooltip_set_icon_from_stock.
+func (recv *Tooltip) SetIconFromStock(stockId string, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetString(stockId)
+	inArgs[2].SetInt32(int32(size))
+
+	err := tooltipSetIconFromStockFunction_Set()
+	if err == nil {
+		tooltipSetIconFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tooltipSetMarkupFunction *gi.Function
 var tooltipSetMarkupFunction_Once sync.Once
@@ -64565,7 +70921,37 @@ func (recv *TreeSelection) CountSelectedRows() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_selection_get_mode' : return type 'SelectionMode' not supported
+var treeSelectionGetModeFunction *gi.Function
+var treeSelectionGetModeFunction_Once sync.Once
+
+func treeSelectionGetModeFunction_Set() error {
+	var err error
+	treeSelectionGetModeFunction_Once.Do(func() {
+		err = treeSelectionStruct_Set()
+		if err != nil {
+			return
+		}
+		treeSelectionGetModeFunction, err = treeSelectionStruct.InvokerNew("get_mode")
+	})
+	return err
+}
+
+// GetMode is a representation of the C type gtk_tree_selection_get_mode.
+func (recv *TreeSelection) GetMode() SelectionMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := treeSelectionGetModeFunction_Set()
+	if err == nil {
+		ret = treeSelectionGetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SelectionMode(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_tree_selection_get_select_function' : return type 'TreeSelectionFunc' not supported
 
@@ -64792,7 +71178,34 @@ func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 
 // UNSUPPORTED : C value 'gtk_tree_selection_selected_foreach' : parameter 'func' of type 'TreeSelectionForeachFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_selection_set_mode' : parameter 'type' of type 'SelectionMode' not supported
+var treeSelectionSetModeFunction *gi.Function
+var treeSelectionSetModeFunction_Once sync.Once
+
+func treeSelectionSetModeFunction_Set() error {
+	var err error
+	treeSelectionSetModeFunction_Once.Do(func() {
+		err = treeSelectionStruct_Set()
+		if err != nil {
+			return
+		}
+		treeSelectionSetModeFunction, err = treeSelectionStruct.InvokerNew("set_mode")
+	})
+	return err
+}
+
+// SetMode is a representation of the C type gtk_tree_selection_set_mode.
+func (recv *TreeSelection) SetMode(type_ SelectionMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := treeSelectionSetModeFunction_Set()
+	if err == nil {
+		treeSelectionSetModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_tree_selection_set_select_function' : parameter 'func' of type 'TreeSelectionFunc' not supported
 
@@ -66007,9 +72420,77 @@ func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_dest_row_at_pos' : parameter 'pos' of type 'TreeViewDropPosition' not supported
+var treeViewGetDestRowAtPosFunction *gi.Function
+var treeViewGetDestRowAtPosFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_drag_dest_row' : parameter 'pos' of type 'TreeViewDropPosition' not supported
+func treeViewGetDestRowAtPosFunction_Set() error {
+	var err error
+	treeViewGetDestRowAtPosFunction_Once.Do(func() {
+		err = treeViewStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetDestRowAtPosFunction, err = treeViewStruct.InvokerNew("get_dest_row_at_pos")
+	})
+	return err
+}
+
+// GetDestRowAtPos is a representation of the C type gtk_tree_view_get_dest_row_at_pos.
+func (recv *TreeView) GetDestRowAtPos(dragX int32, dragY int32) (bool, *TreePath, TreeViewDropPosition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(dragX)
+	inArgs[2].SetInt32(dragY)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := treeViewGetDestRowAtPosFunction_Set()
+	if err == nil {
+		ret = treeViewGetDestRowAtPosFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &TreePath{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := TreeViewDropPosition(outArgs[1].Int32())
+
+	return retGo, out0, out1
+}
+
+var treeViewGetDragDestRowFunction *gi.Function
+var treeViewGetDragDestRowFunction_Once sync.Once
+
+func treeViewGetDragDestRowFunction_Set() error {
+	var err error
+	treeViewGetDragDestRowFunction_Once.Do(func() {
+		err = treeViewStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetDragDestRowFunction, err = treeViewStruct.InvokerNew("get_drag_dest_row")
+	})
+	return err
+}
+
+// GetDragDestRow is a representation of the C type gtk_tree_view_get_drag_dest_row.
+func (recv *TreeView) GetDragDestRow() (*TreePath, TreeViewDropPosition) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [2]gi.Argument
+
+	err := treeViewGetDragDestRowFunction_Set()
+	if err == nil {
+		treeViewGetDragDestRowFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &TreePath{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := TreeViewDropPosition(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 var treeViewGetEnableSearchFunction *gi.Function
 var treeViewGetEnableSearchFunction_Once sync.Once
@@ -66140,7 +72621,37 @@ func (recv *TreeView) GetFixedHeightMode() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_grid_lines' : return type 'TreeViewGridLines' not supported
+var treeViewGetGridLinesFunction *gi.Function
+var treeViewGetGridLinesFunction_Once sync.Once
+
+func treeViewGetGridLinesFunction_Set() error {
+	var err error
+	treeViewGetGridLinesFunction_Once.Do(func() {
+		err = treeViewStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetGridLinesFunction, err = treeViewStruct.InvokerNew("get_grid_lines")
+	})
+	return err
+}
+
+// GetGridLines is a representation of the C type gtk_tree_view_get_grid_lines.
+func (recv *TreeView) GetGridLines() TreeViewGridLines {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := treeViewGetGridLinesFunction_Set()
+	if err == nil {
+		ret = treeViewGetGridLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeViewGridLines(ret.Int32())
+
+	return retGo
+}
 
 var treeViewGetHadjustmentFunction *gi.Function
 var treeViewGetHadjustmentFunction_Once sync.Once
@@ -67146,7 +73657,35 @@ func (recv *TreeView) SetCursorOnCell(path *TreePath, focusColumn *TreeViewColum
 
 // UNSUPPORTED : C value 'gtk_tree_view_set_destroy_count_func' : parameter 'func' of type 'TreeDestroyCountFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_view_set_drag_dest_row' : parameter 'pos' of type 'TreeViewDropPosition' not supported
+var treeViewSetDragDestRowFunction *gi.Function
+var treeViewSetDragDestRowFunction_Once sync.Once
+
+func treeViewSetDragDestRowFunction_Set() error {
+	var err error
+	treeViewSetDragDestRowFunction_Once.Do(func() {
+		err = treeViewStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewSetDragDestRowFunction, err = treeViewStruct.InvokerNew("set_drag_dest_row")
+	})
+	return err
+}
+
+// SetDragDestRow is a representation of the C type gtk_tree_view_set_drag_dest_row.
+func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(path.Native)
+	inArgs[2].SetInt32(int32(pos))
+
+	err := treeViewSetDragDestRowFunction_Set()
+	if err == nil {
+		treeViewSetDragDestRowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewSetEnableSearchFunction *gi.Function
 var treeViewSetEnableSearchFunction_Once sync.Once
@@ -67264,7 +73803,34 @@ func (recv *TreeView) SetFixedHeightMode(enable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_set_grid_lines' : parameter 'grid_lines' of type 'TreeViewGridLines' not supported
+var treeViewSetGridLinesFunction *gi.Function
+var treeViewSetGridLinesFunction_Once sync.Once
+
+func treeViewSetGridLinesFunction_Set() error {
+	var err error
+	treeViewSetGridLinesFunction_Once.Do(func() {
+		err = treeViewStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewSetGridLinesFunction, err = treeViewStruct.InvokerNew("set_grid_lines")
+	})
+	return err
+}
+
+// SetGridLines is a representation of the C type gtk_tree_view_set_grid_lines.
+func (recv *TreeView) SetGridLines(gridLines TreeViewGridLines) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(gridLines))
+
+	err := treeViewSetGridLinesFunction_Set()
+	if err == nil {
+		treeViewSetGridLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewSetHadjustmentFunction *gi.Function
 var treeViewSetHadjustmentFunction_Once sync.Once
@@ -68465,7 +75031,37 @@ func (recv *TreeViewColumn) GetResizable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_get_sizing' : return type 'TreeViewColumnSizing' not supported
+var treeViewColumnGetSizingFunction *gi.Function
+var treeViewColumnGetSizingFunction_Once sync.Once
+
+func treeViewColumnGetSizingFunction_Set() error {
+	var err error
+	treeViewColumnGetSizingFunction_Once.Do(func() {
+		err = treeViewColumnStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnGetSizingFunction, err = treeViewColumnStruct.InvokerNew("get_sizing")
+	})
+	return err
+}
+
+// GetSizing is a representation of the C type gtk_tree_view_column_get_sizing.
+func (recv *TreeViewColumn) GetSizing() TreeViewColumnSizing {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := treeViewColumnGetSizingFunction_Set()
+	if err == nil {
+		ret = treeViewColumnGetSizingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeViewColumnSizing(ret.Int32())
+
+	return retGo
+}
 
 var treeViewColumnGetSortColumnIdFunction *gi.Function
 var treeViewColumnGetSortColumnIdFunction_Once sync.Once
@@ -68531,7 +75127,37 @@ func (recv *TreeViewColumn) GetSortIndicator() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_get_sort_order' : return type 'SortType' not supported
+var treeViewColumnGetSortOrderFunction *gi.Function
+var treeViewColumnGetSortOrderFunction_Once sync.Once
+
+func treeViewColumnGetSortOrderFunction_Set() error {
+	var err error
+	treeViewColumnGetSortOrderFunction_Once.Do(func() {
+		err = treeViewColumnStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnGetSortOrderFunction, err = treeViewColumnStruct.InvokerNew("get_sort_order")
+	})
+	return err
+}
+
+// GetSortOrder is a representation of the C type gtk_tree_view_column_get_sort_order.
+func (recv *TreeViewColumn) GetSortOrder() SortType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := treeViewColumnGetSortOrderFunction_Set()
+	if err == nil {
+		ret = treeViewColumnGetSortOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SortType(ret.Int32())
+
+	return retGo
+}
 
 var treeViewColumnGetSpacingFunction *gi.Function
 var treeViewColumnGetSpacingFunction_Once sync.Once
@@ -69083,7 +75709,34 @@ func (recv *TreeViewColumn) SetResizable(resizable bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_set_sizing' : parameter 'type' of type 'TreeViewColumnSizing' not supported
+var treeViewColumnSetSizingFunction *gi.Function
+var treeViewColumnSetSizingFunction_Once sync.Once
+
+func treeViewColumnSetSizingFunction_Set() error {
+	var err error
+	treeViewColumnSetSizingFunction_Once.Do(func() {
+		err = treeViewColumnStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnSetSizingFunction, err = treeViewColumnStruct.InvokerNew("set_sizing")
+	})
+	return err
+}
+
+// SetSizing is a representation of the C type gtk_tree_view_column_set_sizing.
+func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := treeViewColumnSetSizingFunction_Set()
+	if err == nil {
+		treeViewColumnSetSizingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewColumnSetSortColumnIdFunction *gi.Function
 var treeViewColumnSetSortColumnIdFunction_Once sync.Once
@@ -69143,7 +75796,34 @@ func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_set_sort_order' : parameter 'order' of type 'SortType' not supported
+var treeViewColumnSetSortOrderFunction *gi.Function
+var treeViewColumnSetSortOrderFunction_Once sync.Once
+
+func treeViewColumnSetSortOrderFunction_Set() error {
+	var err error
+	treeViewColumnSetSortOrderFunction_Once.Do(func() {
+		err = treeViewColumnStruct_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnSetSortOrderFunction, err = treeViewColumnStruct.InvokerNew("set_sort_order")
+	})
+	return err
+}
+
+// SetSortOrder is a representation of the C type gtk_tree_view_column_set_sort_order.
+func (recv *TreeViewColumn) SetSortOrder(order SortType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(order))
+
+	err := treeViewColumnSetSortOrderFunction_Set()
+	if err == nil {
+		treeViewColumnSetSortOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewColumnSetSpacingFunction *gi.Function
 var treeViewColumnSetSpacingFunction_Once sync.Once
@@ -70266,7 +76946,37 @@ func (recv *Viewport) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_viewport_get_shadow_type' : return type 'ShadowType' not supported
+var viewportGetShadowTypeFunction *gi.Function
+var viewportGetShadowTypeFunction_Once sync.Once
+
+func viewportGetShadowTypeFunction_Set() error {
+	var err error
+	viewportGetShadowTypeFunction_Once.Do(func() {
+		err = viewportStruct_Set()
+		if err != nil {
+			return
+		}
+		viewportGetShadowTypeFunction, err = viewportStruct.InvokerNew("get_shadow_type")
+	})
+	return err
+}
+
+// GetShadowType is a representation of the C type gtk_viewport_get_shadow_type.
+func (recv *Viewport) GetShadowType() ShadowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := viewportGetShadowTypeFunction_Set()
+	if err == nil {
+		ret = viewportGetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ShadowType(ret.Int32())
+
+	return retGo
+}
 
 var viewportGetVadjustmentFunction *gi.Function
 var viewportGetVadjustmentFunction_Once sync.Once
@@ -70332,7 +77042,34 @@ func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_viewport_set_shadow_type' : parameter 'type' of type 'ShadowType' not supported
+var viewportSetShadowTypeFunction *gi.Function
+var viewportSetShadowTypeFunction_Once sync.Once
+
+func viewportSetShadowTypeFunction_Set() error {
+	var err error
+	viewportSetShadowTypeFunction_Once.Do(func() {
+		err = viewportStruct_Set()
+		if err != nil {
+			return
+		}
+		viewportSetShadowTypeFunction, err = viewportStruct.InvokerNew("set_shadow_type")
+	})
+	return err
+}
+
+// SetShadowType is a representation of the C type gtk_viewport_set_shadow_type.
+func (recv *Viewport) SetShadowType(type_ ShadowType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	err := viewportSetShadowTypeFunction_Set()
+	if err == nil {
+		viewportSetShadowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var viewportSetVadjustmentFunction *gi.Function
 var viewportSetVadjustmentFunction_Once sync.Once
@@ -70574,7 +77311,38 @@ func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_child_focus' : parameter 'direction' of type 'DirectionType' not supported
+var widgetChildFocusFunction *gi.Function
+var widgetChildFocusFunction_Once sync.Once
+
+func widgetChildFocusFunction_Set() error {
+	var err error
+	widgetChildFocusFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetChildFocusFunction, err = widgetStruct.InvokerNew("child_focus")
+	})
+	return err
+}
+
+// ChildFocus is a representation of the C type gtk_widget_child_focus.
+func (recv *Widget) ChildFocus(direction DirectionType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	var ret gi.Argument
+
+	err := widgetChildFocusFunction_Set()
+	if err == nil {
+		ret = widgetChildFocusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var widgetChildNotifyFunction *gi.Function
 var widgetChildNotifyFunction_Once sync.Once
@@ -70639,7 +77407,38 @@ func (recv *Widget) ClassPath() (uint32, string, string) {
 	return out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'gtk_widget_compute_expand' : parameter 'orientation' of type 'Orientation' not supported
+var widgetComputeExpandFunction *gi.Function
+var widgetComputeExpandFunction_Once sync.Once
+
+func widgetComputeExpandFunction_Set() error {
+	var err error
+	widgetComputeExpandFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetComputeExpandFunction, err = widgetStruct.InvokerNew("compute_expand")
+	})
+	return err
+}
+
+// ComputeExpand is a representation of the C type gtk_widget_compute_expand.
+func (recv *Widget) ComputeExpand(orientation Orientation) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(orientation))
+
+	var ret gi.Argument
+
+	err := widgetComputeExpandFunction_Set()
+	if err == nil {
+		ret = widgetComputeExpandFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_widget_create_pango_context' : return type 'Pango.Context' not supported
 
@@ -71681,7 +78480,37 @@ func (recv *Widget) GetCompositeName() string {
 
 // UNSUPPORTED : C value 'gtk_widget_get_device_events' : parameter 'device' of type 'Gdk.Device' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_get_direction' : return type 'TextDirection' not supported
+var widgetGetDirectionFunction *gi.Function
+var widgetGetDirectionFunction_Once sync.Once
+
+func widgetGetDirectionFunction_Set() error {
+	var err error
+	widgetGetDirectionFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetDirectionFunction, err = widgetStruct.InvokerNew("get_direction")
+	})
+	return err
+}
+
+// GetDirection is a representation of the C type gtk_widget_get_direction.
+func (recv *Widget) GetDirection() TextDirection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetDirectionFunction_Set()
+	if err == nil {
+		ret = widgetGetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextDirection(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_widget_get_display' : return type 'Gdk.Display' not supported
 
@@ -71787,7 +78616,37 @@ func (recv *Widget) GetFocusOnClick() bool {
 
 // UNSUPPORTED : C value 'gtk_widget_get_frame_clock' : return type 'Gdk.FrameClock' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_get_halign' : return type 'Align' not supported
+var widgetGetHalignFunction *gi.Function
+var widgetGetHalignFunction_Once sync.Once
+
+func widgetGetHalignFunction_Set() error {
+	var err error
+	widgetGetHalignFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetHalignFunction, err = widgetStruct.InvokerNew("get_halign")
+	})
+	return err
+}
+
+// GetHalign is a representation of the C type gtk_widget_get_halign.
+func (recv *Widget) GetHalign() Align {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetHalignFunction_Set()
+	if err == nil {
+		ret = widgetGetHalignFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Align(ret.Int32())
+
+	return retGo
+}
 
 var widgetGetHasTooltipFunction *gi.Function
 var widgetGetHasTooltipFunction_Once sync.Once
@@ -72644,7 +79503,37 @@ func (recv *Widget) GetReceivesDefault() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_request_mode' : return type 'SizeRequestMode' not supported
+var widgetGetRequestModeFunction *gi.Function
+var widgetGetRequestModeFunction_Once sync.Once
+
+func widgetGetRequestModeFunction_Set() error {
+	var err error
+	widgetGetRequestModeFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetRequestModeFunction, err = widgetStruct.InvokerNew("get_request_mode")
+	})
+	return err
+}
+
+// GetRequestMode is a representation of the C type gtk_widget_get_request_mode.
+func (recv *Widget) GetRequestMode() SizeRequestMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetRequestModeFunction_Set()
+	if err == nil {
+		ret = widgetGetRequestModeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SizeRequestMode(ret.Int32())
+
+	return retGo
+}
 
 var widgetGetRequisitionFunction *gi.Function
 var widgetGetRequisitionFunction_Once sync.Once
@@ -72813,7 +79702,37 @@ func (recv *Widget) GetSizeRequest() (int32, int32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_state' : return type 'StateType' not supported
+var widgetGetStateFunction *gi.Function
+var widgetGetStateFunction_Once sync.Once
+
+func widgetGetStateFunction_Set() error {
+	var err error
+	widgetGetStateFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetStateFunction, err = widgetStruct.InvokerNew("get_state")
+	})
+	return err
+}
+
+// GetState is a representation of the C type gtk_widget_get_state.
+func (recv *Widget) GetState() StateType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetStateFunction_Set()
+	if err == nil {
+		ret = widgetGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StateType(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_widget_get_state_flags' : return type 'StateFlags' not supported
 
@@ -73047,9 +79966,69 @@ func (recv *Widget) GetToplevel() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_valign' : return type 'Align' not supported
+var widgetGetValignFunction *gi.Function
+var widgetGetValignFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_get_valign_with_baseline' : return type 'Align' not supported
+func widgetGetValignFunction_Set() error {
+	var err error
+	widgetGetValignFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetValignFunction, err = widgetStruct.InvokerNew("get_valign")
+	})
+	return err
+}
+
+// GetValign is a representation of the C type gtk_widget_get_valign.
+func (recv *Widget) GetValign() Align {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetValignFunction_Set()
+	if err == nil {
+		ret = widgetGetValignFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Align(ret.Int32())
+
+	return retGo
+}
+
+var widgetGetValignWithBaselineFunction *gi.Function
+var widgetGetValignWithBaselineFunction_Once sync.Once
+
+func widgetGetValignWithBaselineFunction_Set() error {
+	var err error
+	widgetGetValignWithBaselineFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetGetValignWithBaselineFunction, err = widgetStruct.InvokerNew("get_valign_with_baseline")
+	})
+	return err
+}
+
+// GetValignWithBaseline is a representation of the C type gtk_widget_get_valign_with_baseline.
+func (recv *Widget) GetValignWithBaseline() Align {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := widgetGetValignWithBaselineFunction_Set()
+	if err == nil {
+		ret = widgetGetValignWithBaselineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Align(ret.Int32())
+
+	return retGo
+}
 
 var widgetGetVexpandFunction *gi.Function
 var widgetGetVexpandFunction_Once sync.Once
@@ -73806,7 +80785,38 @@ func (recv *Widget) IsVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_keynav_failed' : parameter 'direction' of type 'DirectionType' not supported
+var widgetKeynavFailedFunction *gi.Function
+var widgetKeynavFailedFunction_Once sync.Once
+
+func widgetKeynavFailedFunction_Set() error {
+	var err error
+	widgetKeynavFailedFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetKeynavFailedFunction, err = widgetStruct.InvokerNew("keynav_failed")
+	})
+	return err
+}
+
+// KeynavFailed is a representation of the C type gtk_widget_keynav_failed.
+func (recv *Widget) KeynavFailed(direction DirectionType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	var ret gi.Argument
+
+	err := widgetKeynavFailedFunction_Set()
+	if err == nil {
+		ret = widgetKeynavFailedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_widget_list_accel_closures' : return type 'GLib.List' not supported
 
@@ -73901,13 +80911,13 @@ func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_modify_base' : parameter 'state' of type 'StateType' not supported
+// UNSUPPORTED : C value 'gtk_widget_modify_base' : parameter 'color' of type 'Gdk.Color' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_modify_bg' : parameter 'state' of type 'StateType' not supported
+// UNSUPPORTED : C value 'gtk_widget_modify_bg' : parameter 'color' of type 'Gdk.Color' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_modify_cursor' : parameter 'primary' of type 'Gdk.Color' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_modify_fg' : parameter 'state' of type 'StateType' not supported
+// UNSUPPORTED : C value 'gtk_widget_modify_fg' : parameter 'color' of type 'Gdk.Color' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_modify_font' : parameter 'font_desc' of type 'Pango.FontDescription' not supported
 
@@ -73940,7 +80950,7 @@ func (recv *Widget) ModifyStyle(style *RcStyle) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_modify_text' : parameter 'state' of type 'StateType' not supported
+// UNSUPPORTED : C value 'gtk_widget_modify_text' : parameter 'color' of type 'Gdk.Color' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_override_background_color' : parameter 'state' of type 'StateFlags' not supported
 
@@ -74252,9 +81262,9 @@ func (recv *Widget) RemoveTickCallback(id uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_render_icon' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_widget_render_icon' : return type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_render_icon_pixbuf' : parameter 'size' of type 'IconSize' not supported
+// UNSUPPORTED : C value 'gtk_widget_render_icon_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
 
 var widgetReparentFunction *gi.Function
 var widgetReparentFunction_Once sync.Once
@@ -74528,7 +81538,34 @@ func (recv *Widget) SetCompositeName(name string) {
 
 // UNSUPPORTED : C value 'gtk_widget_set_device_events' : parameter 'device' of type 'Gdk.Device' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_set_direction' : parameter 'dir' of type 'TextDirection' not supported
+var widgetSetDirectionFunction *gi.Function
+var widgetSetDirectionFunction_Once sync.Once
+
+func widgetSetDirectionFunction_Set() error {
+	var err error
+	widgetSetDirectionFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetSetDirectionFunction, err = widgetStruct.InvokerNew("set_direction")
+	})
+	return err
+}
+
+// SetDirection is a representation of the C type gtk_widget_set_direction.
+func (recv *Widget) SetDirection(dir TextDirection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(dir))
+
+	err := widgetSetDirectionFunction_Set()
+	if err == nil {
+		widgetSetDirectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetDoubleBufferedFunction *gi.Function
 var widgetSetDoubleBufferedFunction_Once sync.Once
@@ -74621,7 +81658,34 @@ func (recv *Widget) SetFocusOnClick(focusOnClick bool) {
 
 // UNSUPPORTED : C value 'gtk_widget_set_font_options' : parameter 'options' of type 'cairo.FontOptions' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_set_halign' : parameter 'align' of type 'Align' not supported
+var widgetSetHalignFunction *gi.Function
+var widgetSetHalignFunction_Once sync.Once
+
+func widgetSetHalignFunction_Set() error {
+	var err error
+	widgetSetHalignFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetSetHalignFunction, err = widgetStruct.InvokerNew("set_halign")
+	})
+	return err
+}
+
+// SetHalign is a representation of the C type gtk_widget_set_halign.
+func (recv *Widget) SetHalign(align Align) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(align))
+
+	err := widgetSetHalignFunction_Set()
+	if err == nil {
+		widgetSetHalignFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetHasTooltipFunction *gi.Function
 var widgetSetHasTooltipFunction_Once sync.Once
@@ -75206,7 +82270,34 @@ func (recv *Widget) SetSizeRequest(width int32, height int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_set_state' : parameter 'state' of type 'StateType' not supported
+var widgetSetStateFunction *gi.Function
+var widgetSetStateFunction_Once sync.Once
+
+func widgetSetStateFunction_Set() error {
+	var err error
+	widgetSetStateFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetSetStateFunction, err = widgetStruct.InvokerNew("set_state")
+	})
+	return err
+}
+
+// SetState is a representation of the C type gtk_widget_set_state.
+func (recv *Widget) SetState(state StateType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(state))
+
+	err := widgetSetStateFunction_Set()
+	if err == nil {
+		widgetSetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_widget_set_state_flags' : parameter 'flags' of type 'StateFlags' not supported
 
@@ -75355,7 +82446,34 @@ func (recv *Widget) SetTooltipWindow(customWindow *Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_set_valign' : parameter 'align' of type 'Align' not supported
+var widgetSetValignFunction *gi.Function
+var widgetSetValignFunction_Once sync.Once
+
+func widgetSetValignFunction_Set() error {
+	var err error
+	widgetSetValignFunction_Once.Do(func() {
+		err = widgetStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetSetValignFunction, err = widgetStruct.InvokerNew("set_valign")
+	})
+	return err
+}
+
+// SetValign is a representation of the C type gtk_widget_set_valign.
+func (recv *Widget) SetValign(align Align) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(align))
+
+	err := widgetSetValignFunction_Set()
+	if err == nil {
+		widgetSetValignFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetVexpandFunction *gi.Function
 var widgetSetVexpandFunction_Once sync.Once
@@ -75893,7 +83011,38 @@ func (recv *Window) SetFieldPriv(value *WindowPrivate) {
 	gi.FieldSet(windowStruct, recv.Native, "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_window_new' : parameter 'type' of type 'WindowType' not supported
+var windowNewFunction *gi.Function
+var windowNewFunction_Once sync.Once
+
+func windowNewFunction_Set() error {
+	var err error
+	windowNewFunction_Once.Do(func() {
+		err = windowStruct_Set()
+		if err != nil {
+			return
+		}
+		windowNewFunction, err = windowStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// WindowNew is a representation of the C type gtk_window_new.
+func WindowNew(type_ WindowType) *Window {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := windowNewFunction_Set()
+	if err == nil {
+		ret = windowNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Window{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var windowActivateDefaultFunction *gi.Function
 var windowActivateDefaultFunction_Once sync.Once
@@ -77060,7 +84209,37 @@ func (recv *Window) GetUrgencyHint() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_window_type' : return type 'WindowType' not supported
+var windowGetWindowTypeFunction *gi.Function
+var windowGetWindowTypeFunction_Once sync.Once
+
+func windowGetWindowTypeFunction_Set() error {
+	var err error
+	windowGetWindowTypeFunction_Once.Do(func() {
+		err = windowStruct_Set()
+		if err != nil {
+			return
+		}
+		windowGetWindowTypeFunction, err = windowStruct.InvokerNew("get_window_type")
+	})
+	return err
+}
+
+// GetWindowType is a representation of the C type gtk_window_get_window_type.
+func (recv *Window) GetWindowType() WindowType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := windowGetWindowTypeFunction_Set()
+	if err == nil {
+		ret = windowGetWindowTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WindowType(ret.Int32())
+
+	return retGo
+}
 
 var windowHasGroupFunction *gi.Function
 var windowHasGroupFunction_Once sync.Once
@@ -78203,7 +85382,34 @@ func (recv *Window) SetOpacity(opacity float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_window_set_position' : parameter 'position' of type 'WindowPosition' not supported
+var windowSetPositionFunction *gi.Function
+var windowSetPositionFunction_Once sync.Once
+
+func windowSetPositionFunction_Set() error {
+	var err error
+	windowSetPositionFunction_Once.Do(func() {
+		err = windowStruct_Set()
+		if err != nil {
+			return
+		}
+		windowSetPositionFunction, err = windowStruct.InvokerNew("set_position")
+	})
+	return err
+}
+
+// SetPosition is a representation of the C type gtk_window_set_position.
+func (recv *Window) SetPosition(position WindowPosition) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(position))
+
+	err := windowSetPositionFunction_Set()
+	if err == nil {
+		windowSetPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetResizableFunction *gi.Function
 var windowSetResizableFunction_Once sync.Once

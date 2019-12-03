@@ -896,7 +896,40 @@ type Credential struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_credential_new' : parameter 'persistence' of type 'CredentialPersistence' not supported
+var credentialNewFunction *gi.Function
+var credentialNewFunction_Once sync.Once
+
+func credentialNewFunction_Set() error {
+	var err error
+	credentialNewFunction_Once.Do(func() {
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialNewFunction, err = credentialStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// CredentialNew is a representation of the C type webkit_credential_new.
+func CredentialNew(username string, password string, persistence CredentialPersistence) *Credential {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(username)
+	inArgs[1].SetString(password)
+	inArgs[2].SetInt32(int32(persistence))
+
+	var ret gi.Argument
+
+	err := credentialNewFunction_Set()
+	if err == nil {
+		ret = credentialNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Credential{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var credentialCopyFunction *gi.Function
 var credentialCopyFunction_Once sync.Once
@@ -991,7 +1024,37 @@ func (recv *Credential) GetPassword() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_credential_get_persistence' : return type 'CredentialPersistence' not supported
+var credentialGetPersistenceFunction *gi.Function
+var credentialGetPersistenceFunction_Once sync.Once
+
+func credentialGetPersistenceFunction_Set() error {
+	var err error
+	credentialGetPersistenceFunction_Once.Do(func() {
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialGetPersistenceFunction, err = credentialStruct.InvokerNew("get_persistence")
+	})
+	return err
+}
+
+// GetPersistence is a representation of the C type webkit_credential_get_persistence.
+func (recv *Credential) GetPersistence() CredentialPersistence {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := credentialGetPersistenceFunction_Set()
+	if err == nil {
+		ret = credentialGetPersistenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CredentialPersistence(ret.Int32())
+
+	return retGo
+}
 
 var credentialGetUsernameFunction *gi.Function
 var credentialGetUsernameFunction_Once sync.Once
@@ -2641,7 +2704,37 @@ func (recv *NavigationAction) GetMouseButton() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_navigation_action_get_navigation_type' : return type 'NavigationType' not supported
+var navigationActionGetNavigationTypeFunction *gi.Function
+var navigationActionGetNavigationTypeFunction_Once sync.Once
+
+func navigationActionGetNavigationTypeFunction_Set() error {
+	var err error
+	navigationActionGetNavigationTypeFunction_Once.Do(func() {
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionGetNavigationTypeFunction, err = navigationActionStruct.InvokerNew("get_navigation_type")
+	})
+	return err
+}
+
+// GetNavigationType is a representation of the C type webkit_navigation_action_get_navigation_type.
+func (recv *NavigationAction) GetNavigationType() NavigationType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := navigationActionGetNavigationTypeFunction_Set()
+	if err == nil {
+		ret = navigationActionGetNavigationTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NavigationType(ret.Int32())
+
+	return retGo
+}
 
 var navigationActionGetRequestFunction *gi.Function
 var navigationActionGetRequestFunction_Once sync.Once
@@ -4023,7 +4116,37 @@ func (recv *ScriptDialog) ConfirmSetConfirmed(confirmed bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_script_dialog_get_dialog_type' : return type 'ScriptDialogType' not supported
+var scriptDialogGetDialogTypeFunction *gi.Function
+var scriptDialogGetDialogTypeFunction_Once sync.Once
+
+func scriptDialogGetDialogTypeFunction_Set() error {
+	var err error
+	scriptDialogGetDialogTypeFunction_Once.Do(func() {
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogGetDialogTypeFunction, err = scriptDialogStruct.InvokerNew("get_dialog_type")
+	})
+	return err
+}
+
+// GetDialogType is a representation of the C type webkit_script_dialog_get_dialog_type.
+func (recv *ScriptDialog) GetDialogType() ScriptDialogType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := scriptDialogGetDialogTypeFunction_Set()
+	if err == nil {
+		ret = scriptDialogGetDialogTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ScriptDialogType(ret.Int32())
+
+	return retGo
+}
 
 var scriptDialogGetMessageFunction *gi.Function
 var scriptDialogGetMessageFunction_Once sync.Once
@@ -5294,9 +5417,9 @@ type UserScript struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+// UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'whitelist' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : parameter 'whitelist' of type 'nil' not supported
 
 var userScriptRefFunction *gi.Function
 var userScriptRefFunction_Once sync.Once
@@ -5374,9 +5497,9 @@ type UserStyleSheet struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'whitelist' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : parameter 'whitelist' of type 'nil' not supported
 
 var userStyleSheetRefFunction *gi.Function
 var userStyleSheetRefFunction_Once sync.Once

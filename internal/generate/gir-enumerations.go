@@ -13,3 +13,13 @@ func (ee Enumerations) generate(f *file) {
 		enum.generate(f)
 	}
 }
+
+func (ee Enumerations) byName(name string) (*Enumeration, bool) {
+	for _, enum := range ee {
+		if enum.Name == name {
+			return enum, true
+		}
+	}
+
+	return nil, false
+}

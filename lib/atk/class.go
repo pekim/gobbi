@@ -597,9 +597,19 @@ func (recv *Object) SetFieldAccessibleParent(value *Object) {
 	gi.FieldSet(objectStruct, recv.Native, "accessible_parent", argValue)
 }
 
-// UNSUPPORTED : C value 'role' : for field getter : no Go type for 'Role'
+// FieldRole returns the C field 'role'.
+func (recv *Object) FieldRole() Role {
+	argValue := gi.FieldGet(objectStruct, recv.Native, "role")
+	value := Role(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'role' : for field setter : no Go type for 'Role'
+// SetFieldRole sets the value of the C field 'role'.
+func (recv *Object) SetFieldRole(value Role) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(objectStruct, recv.Native, "role", argValue)
+}
 
 // FieldRelationSet returns the C field 'relation_set'.
 func (recv *Object) FieldRelationSet() *RelationSet {
@@ -616,11 +626,53 @@ func (recv *Object) SetFieldRelationSet(value *RelationSet) {
 	gi.FieldSet(objectStruct, recv.Native, "relation_set", argValue)
 }
 
-// UNSUPPORTED : C value 'layer' : for field getter : no Go type for 'Layer'
+// FieldLayer returns the C field 'layer'.
+func (recv *Object) FieldLayer() Layer {
+	argValue := gi.FieldGet(objectStruct, recv.Native, "layer")
+	value := Layer(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'layer' : for field setter : no Go type for 'Layer'
+// SetFieldLayer sets the value of the C field 'layer'.
+func (recv *Object) SetFieldLayer(value Layer) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(objectStruct, recv.Native, "layer", argValue)
+}
 
-// UNSUPPORTED : C value 'atk_object_add_relationship' : parameter 'relationship' of type 'RelationType' not supported
+var objectAddRelationshipFunction *gi.Function
+var objectAddRelationshipFunction_Once sync.Once
+
+func objectAddRelationshipFunction_Set() error {
+	var err error
+	objectAddRelationshipFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectAddRelationshipFunction, err = objectStruct.InvokerNew("add_relationship")
+	})
+	return err
+}
+
+// AddRelationship is a representation of the C type atk_object_add_relationship.
+func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+	inArgs[2].SetPointer(target.Native)
+
+	var ret gi.Argument
+
+	err := objectAddRelationshipFunction_Set()
+	if err == nil {
+		ret = objectAddRelationshipFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_object_connect_property_change_handler' : parameter 'handler' of type 'PropertyChangeHandler' not supported
 
@@ -722,7 +774,37 @@ func (recv *Object) GetIndexInParent() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_get_layer' : return type 'Layer' not supported
+var objectGetLayerFunction *gi.Function
+var objectGetLayerFunction_Once sync.Once
+
+func objectGetLayerFunction_Set() error {
+	var err error
+	objectGetLayerFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectGetLayerFunction, err = objectStruct.InvokerNew("get_layer")
+	})
+	return err
+}
+
+// GetLayer is a representation of the C type atk_object_get_layer.
+func (recv *Object) GetLayer() Layer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := objectGetLayerFunction_Set()
+	if err == nil {
+		ret = objectGetLayerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Layer(ret.Int32())
+
+	return retGo
+}
 
 var objectGetMdiZorderFunction *gi.Function
 var objectGetMdiZorderFunction_Once sync.Once
@@ -885,7 +967,37 @@ func (recv *Object) GetParent() *Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_get_role' : return type 'Role' not supported
+var objectGetRoleFunction *gi.Function
+var objectGetRoleFunction_Once sync.Once
+
+func objectGetRoleFunction_Set() error {
+	var err error
+	objectGetRoleFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectGetRoleFunction, err = objectStruct.InvokerNew("get_role")
+	})
+	return err
+}
+
+// GetRole is a representation of the C type atk_object_get_role.
+func (recv *Object) GetRole() Role {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := objectGetRoleFunction_Set()
+	if err == nil {
+		ret = objectGetRoleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Role(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_object_initialize' : parameter 'data' of type 'gpointer' not supported
 
@@ -1081,7 +1193,39 @@ func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_object_remove_relationship' : parameter 'relationship' of type 'RelationType' not supported
+var objectRemoveRelationshipFunction *gi.Function
+var objectRemoveRelationshipFunction_Once sync.Once
+
+func objectRemoveRelationshipFunction_Set() error {
+	var err error
+	objectRemoveRelationshipFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectRemoveRelationshipFunction, err = objectStruct.InvokerNew("remove_relationship")
+	})
+	return err
+}
+
+// RemoveRelationship is a representation of the C type atk_object_remove_relationship.
+func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+	inArgs[2].SetPointer(target.Native)
+
+	var ret gi.Argument
+
+	err := objectRemoveRelationshipFunction_Set()
+	if err == nil {
+		ret = objectRemoveRelationshipFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var objectSetAccessibleIdFunction *gi.Function
 var objectSetAccessibleIdFunction_Once sync.Once
@@ -1199,7 +1343,34 @@ func (recv *Object) SetParent(parent *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_object_set_role' : parameter 'role' of type 'Role' not supported
+var objectSetRoleFunction *gi.Function
+var objectSetRoleFunction_Once sync.Once
+
+func objectSetRoleFunction_Set() error {
+	var err error
+	objectSetRoleFunction_Once.Do(func() {
+		err = objectStruct_Set()
+		if err != nil {
+			return
+		}
+		objectSetRoleFunction, err = objectStruct.InvokerNew("set_role")
+	})
+	return err
+}
+
+// SetRole is a representation of the C type atk_object_set_role.
+func (recv *Object) SetRole(role Role) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(role))
+
+	err := objectSetRoleFunction_Set()
+	if err == nil {
+		objectSetRoleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // ObjectStruct creates an uninitialised Object.
 func ObjectStruct() *Object {
@@ -1449,9 +1620,19 @@ type Relation struct {
 
 // UNSUPPORTED : C value 'target' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'relationship' : for field getter : no Go type for 'RelationType'
+// FieldRelationship returns the C field 'relationship'.
+func (recv *Relation) FieldRelationship() RelationType {
+	argValue := gi.FieldGet(relationStruct, recv.Native, "relationship")
+	value := RelationType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'relationship' : for field setter : no Go type for 'RelationType'
+// SetFieldRelationship sets the value of the C field 'relationship'.
+func (recv *Relation) SetFieldRelationship(value RelationType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(relationStruct, recv.Native, "relationship", argValue)
+}
 
 // UNSUPPORTED : C value 'atk_relation_new' : parameter 'targets' of type 'nil' not supported
 
@@ -1484,7 +1665,37 @@ func (recv *Relation) AddTarget(target *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_relation_get_relation_type' : return type 'RelationType' not supported
+var relationGetRelationTypeFunction *gi.Function
+var relationGetRelationTypeFunction_Once sync.Once
+
+func relationGetRelationTypeFunction_Set() error {
+	var err error
+	relationGetRelationTypeFunction_Once.Do(func() {
+		err = relationStruct_Set()
+		if err != nil {
+			return
+		}
+		relationGetRelationTypeFunction, err = relationStruct.InvokerNew("get_relation_type")
+	})
+	return err
+}
+
+// GetRelationType is a representation of the C type atk_relation_get_relation_type.
+func (recv *Relation) GetRelationType() RelationType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := relationGetRelationTypeFunction_Set()
+	if err == nil {
+		ret = relationGetRelationTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RelationType(ret.Int32())
+
+	return retGo
+}
 
 var relationGetTargetFunction *gi.Function
 var relationGetTargetFunction_Once sync.Once
@@ -1630,11 +1841,102 @@ func (recv *RelationSet) Add(relation *Relation) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_relation_set_add_relation_by_type' : parameter 'relationship' of type 'RelationType' not supported
+var relationSetAddRelationByTypeFunction *gi.Function
+var relationSetAddRelationByTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_relation_set_contains' : parameter 'relationship' of type 'RelationType' not supported
+func relationSetAddRelationByTypeFunction_Set() error {
+	var err error
+	relationSetAddRelationByTypeFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetAddRelationByTypeFunction, err = relationSetStruct.InvokerNew("add_relation_by_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_relation_set_contains_target' : parameter 'relationship' of type 'RelationType' not supported
+// AddRelationByType is a representation of the C type atk_relation_set_add_relation_by_type.
+func (recv *RelationSet) AddRelationByType(relationship RelationType, target *Object) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+	inArgs[2].SetPointer(target.Native)
+
+	err := relationSetAddRelationByTypeFunction_Set()
+	if err == nil {
+		relationSetAddRelationByTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var relationSetContainsFunction *gi.Function
+var relationSetContainsFunction_Once sync.Once
+
+func relationSetContainsFunction_Set() error {
+	var err error
+	relationSetContainsFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetContainsFunction, err = relationSetStruct.InvokerNew("contains")
+	})
+	return err
+}
+
+// Contains is a representation of the C type atk_relation_set_contains.
+func (recv *RelationSet) Contains(relationship RelationType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+
+	var ret gi.Argument
+
+	err := relationSetContainsFunction_Set()
+	if err == nil {
+		ret = relationSetContainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var relationSetContainsTargetFunction *gi.Function
+var relationSetContainsTargetFunction_Once sync.Once
+
+func relationSetContainsTargetFunction_Set() error {
+	var err error
+	relationSetContainsTargetFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetContainsTargetFunction, err = relationSetStruct.InvokerNew("contains_target")
+	})
+	return err
+}
+
+// ContainsTarget is a representation of the C type atk_relation_set_contains_target.
+func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+	inArgs[2].SetPointer(target.Native)
+
+	var ret gi.Argument
+
+	err := relationSetContainsTargetFunction_Set()
+	if err == nil {
+		ret = relationSetContainsTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var relationSetGetNRelationsFunction *gi.Function
 var relationSetGetNRelationsFunction_Once sync.Once
@@ -1702,7 +2004,39 @@ func (recv *RelationSet) GetRelation(i int32) *Relation {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_relation_set_get_relation_by_type' : parameter 'relationship' of type 'RelationType' not supported
+var relationSetGetRelationByTypeFunction *gi.Function
+var relationSetGetRelationByTypeFunction_Once sync.Once
+
+func relationSetGetRelationByTypeFunction_Set() error {
+	var err error
+	relationSetGetRelationByTypeFunction_Once.Do(func() {
+		err = relationSetStruct_Set()
+		if err != nil {
+			return
+		}
+		relationSetGetRelationByTypeFunction, err = relationSetStruct.InvokerNew("get_relation_by_type")
+	})
+	return err
+}
+
+// GetRelationByType is a representation of the C type atk_relation_set_get_relation_by_type.
+func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(relationship))
+
+	var ret gi.Argument
+
+	err := relationSetGetRelationByTypeFunction_Set()
+	if err == nil {
+		ret = relationSetGetRelationByTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Relation{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var relationSetRemoveFunction *gi.Function
 var relationSetRemoveFunction_Once sync.Once
@@ -1905,7 +2239,38 @@ func StateSetNew() *StateSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_state_set_add_state' : parameter 'type' of type 'StateType' not supported
+var stateSetAddStateFunction *gi.Function
+var stateSetAddStateFunction_Once sync.Once
+
+func stateSetAddStateFunction_Set() error {
+	var err error
+	stateSetAddStateFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetAddStateFunction, err = stateSetStruct.InvokerNew("add_state")
+	})
+	return err
+}
+
+// AddState is a representation of the C type atk_state_set_add_state.
+func (recv *StateSet) AddState(type_ StateType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := stateSetAddStateFunction_Set()
+	if err == nil {
+		ret = stateSetAddStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_state_set_add_states' : parameter 'types' of type 'nil' not supported
 
@@ -1971,7 +2336,38 @@ func (recv *StateSet) ClearStates() {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_state_set_contains_state' : parameter 'type' of type 'StateType' not supported
+var stateSetContainsStateFunction *gi.Function
+var stateSetContainsStateFunction_Once sync.Once
+
+func stateSetContainsStateFunction_Set() error {
+	var err error
+	stateSetContainsStateFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetContainsStateFunction, err = stateSetStruct.InvokerNew("contains_state")
+	})
+	return err
+}
+
+// ContainsState is a representation of the C type atk_state_set_contains_state.
+func (recv *StateSet) ContainsState(type_ StateType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := stateSetContainsStateFunction_Set()
+	if err == nil {
+		ret = stateSetContainsStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_state_set_contains_states' : parameter 'types' of type 'nil' not supported
 
@@ -2041,7 +2437,38 @@ func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_state_set_remove_state' : parameter 'type' of type 'StateType' not supported
+var stateSetRemoveStateFunction *gi.Function
+var stateSetRemoveStateFunction_Once sync.Once
+
+func stateSetRemoveStateFunction_Set() error {
+	var err error
+	stateSetRemoveStateFunction_Once.Do(func() {
+		err = stateSetStruct_Set()
+		if err != nil {
+			return
+		}
+		stateSetRemoveStateFunction, err = stateSetStruct.InvokerNew("remove_state")
+	})
+	return err
+}
+
+// RemoveState is a representation of the C type atk_state_set_remove_state.
+func (recv *StateSet) RemoveState(type_ StateType) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := stateSetRemoveStateFunction_Set()
+	if err == nil {
+		ret = stateSetRemoveStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var stateSetXorSetsFunction *gi.Function
 var stateSetXorSetsFunction_Once sync.Once

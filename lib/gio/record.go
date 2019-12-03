@@ -4062,9 +4062,19 @@ func (recv *FileAttributeInfo) SetFieldName(value string) {
 	gi.FieldSet(fileAttributeInfoStruct, recv.Native, "name", argValue)
 }
 
-// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'FileAttributeType'
+// FieldType returns the C field 'type'.
+func (recv *FileAttributeInfo) FieldType() FileAttributeType {
+	argValue := gi.FieldGet(fileAttributeInfoStruct, recv.Native, "type")
+	value := FileAttributeType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'FileAttributeType'
+// SetFieldType sets the value of the C field 'type'.
+func (recv *FileAttributeInfo) SetFieldType(value FileAttributeType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(fileAttributeInfoStruct, recv.Native, "type", argValue)
+}
 
 // UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'FileAttributeInfoFlags'
 
@@ -4161,7 +4171,7 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_info_list_add' : parameter 'type' of type 'FileAttributeType' not supported
+// UNSUPPORTED : C value 'g_file_attribute_info_list_add' : parameter 'flags' of type 'FileAttributeInfoFlags' not supported
 
 var fileAttributeInfoListDupFunction *gi.Function
 var fileAttributeInfoListDupFunction_Once sync.Once

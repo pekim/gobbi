@@ -198,6 +198,10 @@ func (t *Type) argumentValueGetFunctionName() string {
 		return getFunctionName
 	}
 
+	if t.isEnumeration() {
+		return argumentGetFunctionNames["int"]
+	}
+
 	if t.isQualifiedName() {
 		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
 			if getFunctionName, ok := argumentGetFunctionNames[alias.Type.Name]; ok {
@@ -230,6 +234,10 @@ func (t *Type) argumentValueSetFunctionName() string {
 
 	if setFunctionName, ok := argumentSetFunctionNames[name]; ok {
 		return setFunctionName
+	}
+
+	if t.isEnumeration() {
+		return argumentSetFunctionNames["int"]
 	}
 
 	if t.isQualifiedName() {
@@ -319,6 +327,12 @@ func (t *Type) generateOutArgValue(g *jen.Group,
 			Parens(argValue)
 	}
 
+	if t.isEnumeration() {
+		argValue = jen.
+			Id(t.Name).
+			Parens(argValue)
+	}
+
 	t.createFromOutArgument(g, argName, argValue)
 }
 
@@ -328,6 +342,11 @@ func (t *Type) isString() bool {
 
 func (t *Type) isAlias() bool {
 	_, found := t.namespace.Aliases.byName(t.Name)
+	return found
+}
+
+func (t *Type) isEnumeration() bool {
+	_, found := t.namespace.Enumerations.byName(t.Name)
 	return found
 }
 

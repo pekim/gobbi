@@ -444,7 +444,7 @@ func (recv *Buffer) SetFieldLength(value uint64) {
 	gi.FieldSet(bufferStruct, recv.Native, "length", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
+// UNSUPPORTED : C value 'soup_buffer_new' : parameter 'data' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' of type 'nil' not supported
 
@@ -2671,7 +2671,38 @@ func (recv *Date) IsPast() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_date_to_string' : parameter 'format' of type 'DateFormat' not supported
+var dateToStringFunction *gi.Function
+var dateToStringFunction_Once sync.Once
+
+func dateToStringFunction_Set() error {
+	var err error
+	dateToStringFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateToStringFunction, err = dateStruct.InvokerNew("to_string")
+	})
+	return err
+}
+
+// ToString is a representation of the C type soup_date_to_string.
+func (recv *Date) ToString(format DateFormat) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(format))
+
+	var ret gi.Argument
+
+	err := dateToStringFunction_Set()
+	if err == nil {
+		ret = dateToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var dateToTimeTFunction *gi.Function
 var dateToTimeTFunction_Once sync.Once
@@ -3455,7 +3486,7 @@ func MessageBodyNew() *MessageBody {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_body_append' : parameter 'use' of type 'MemoryUse' not supported
+// UNSUPPORTED : C value 'soup_message_body_append' : parameter 'data' of type 'nil' not supported
 
 var messageBodyAppendBufferFunction *gi.Function
 var messageBodyAppendBufferFunction_Once sync.Once
@@ -3864,7 +3895,38 @@ type MessageHeaders struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_new' : parameter 'type' of type 'MessageHeadersType' not supported
+var messageHeadersNewFunction *gi.Function
+var messageHeadersNewFunction_Once sync.Once
+
+func messageHeadersNewFunction_Set() error {
+	var err error
+	messageHeadersNewFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersNewFunction, err = messageHeadersStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MessageHeadersNew is a representation of the C type soup_message_headers_new.
+func MessageHeadersNew(type_ MessageHeadersType) *MessageHeaders {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := messageHeadersNewFunction_Set()
+	if err == nil {
+		ret = messageHeadersNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &MessageHeaders{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var messageHeadersAppendFunction *gi.Function
 var messageHeadersAppendFunction_Once sync.Once
@@ -4116,11 +4178,71 @@ func (recv *MessageHeaders) GetContentRange() (bool, int64, int64, int64) {
 
 // UNSUPPORTED : C value 'soup_message_headers_get_content_type' : parameter 'params' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_message_headers_get_encoding' : return type 'Encoding' not supported
+var messageHeadersGetEncodingFunction *gi.Function
+var messageHeadersGetEncodingFunction_Once sync.Once
+
+func messageHeadersGetEncodingFunction_Set() error {
+	var err error
+	messageHeadersGetEncodingFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersGetEncodingFunction, err = messageHeadersStruct.InvokerNew("get_encoding")
+	})
+	return err
+}
+
+// GetEncoding is a representation of the C type soup_message_headers_get_encoding.
+func (recv *MessageHeaders) GetEncoding() Encoding {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := messageHeadersGetEncodingFunction_Set()
+	if err == nil {
+		ret = messageHeadersGetEncodingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Encoding(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_message_headers_get_expectations' : return type 'Expectation' not supported
 
-// UNSUPPORTED : C value 'soup_message_headers_get_headers_type' : return type 'MessageHeadersType' not supported
+var messageHeadersGetHeadersTypeFunction *gi.Function
+var messageHeadersGetHeadersTypeFunction_Once sync.Once
+
+func messageHeadersGetHeadersTypeFunction_Set() error {
+	var err error
+	messageHeadersGetHeadersTypeFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersGetHeadersTypeFunction, err = messageHeadersStruct.InvokerNew("get_headers_type")
+	})
+	return err
+}
+
+// GetHeadersType is a representation of the C type soup_message_headers_get_headers_type.
+func (recv *MessageHeaders) GetHeadersType() MessageHeadersType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := messageHeadersGetHeadersTypeFunction_Set()
+	if err == nil {
+		ret = messageHeadersGetHeadersTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageHeadersType(ret.Int32())
+
+	return retGo
+}
 
 var messageHeadersGetListFunction *gi.Function
 var messageHeadersGetListFunction_Once sync.Once
@@ -4381,7 +4503,34 @@ func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength 
 
 // UNSUPPORTED : C value 'soup_message_headers_set_content_type' : parameter 'params' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_message_headers_set_encoding' : parameter 'encoding' of type 'Encoding' not supported
+var messageHeadersSetEncodingFunction *gi.Function
+var messageHeadersSetEncodingFunction_Once sync.Once
+
+func messageHeadersSetEncodingFunction_Set() error {
+	var err error
+	messageHeadersSetEncodingFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersSetEncodingFunction, err = messageHeadersStruct.InvokerNew("set_encoding")
+	})
+	return err
+}
+
+// SetEncoding is a representation of the C type soup_message_headers_set_encoding.
+func (recv *MessageHeaders) SetEncoding(encoding Encoding) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(encoding))
+
+	err := messageHeadersSetEncodingFunction_Set()
+	if err == nil {
+		messageHeadersSetEncodingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_message_headers_set_expectations' : parameter 'expectations' of type 'Expectation' not supported
 

@@ -14,7 +14,7 @@ func (cc Constants) generate(f *file) {
 	}
 }
 
-func (cc Constants) findByName(name string) (*Constant, bool) {
+func (cc Constants) byName(name string) (*Constant, bool) {
 	for _, constant := range cc {
 		if constant.Name == name {
 			return constant, true

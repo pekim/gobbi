@@ -174,9 +174,19 @@ type AttrClass struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'AttrType'
+// FieldType returns the C field 'type'.
+func (recv *AttrClass) FieldType() AttrType {
+	argValue := gi.FieldGet(attrClassStruct, recv.Native, "type")
+	value := AttrType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'AttrType'
+// SetFieldType sets the value of the C field 'type'.
+func (recv *AttrClass) SetFieldType(value AttrType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(attrClassStruct, recv.Native, "type", argValue)
+}
 
 // UNSUPPORTED : C value 'copy' : for field getter : missing Type
 
@@ -584,7 +594,39 @@ func (recv *AttrIterator) Destroy() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_attr_iterator_get' : parameter 'type' of type 'AttrType' not supported
+var attrIteratorGetFunction *gi.Function
+var attrIteratorGetFunction_Once sync.Once
+
+func attrIteratorGetFunction_Set() error {
+	var err error
+	attrIteratorGetFunction_Once.Do(func() {
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorGetFunction, err = attrIteratorStruct.InvokerNew("get")
+	})
+	return err
+}
+
+// Get is a representation of the C type pango_attr_iterator_get.
+func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := attrIteratorGetFunction_Set()
+	if err == nil {
+		ret = attrIteratorGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_attr_iterator_get_attrs' : return type 'GLib.SList' not supported
 
@@ -1722,7 +1764,38 @@ func (recv *Coverage) Copy() *Coverage {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_coverage_get' : return type 'CoverageLevel' not supported
+var coverageGetFunction *gi.Function
+var coverageGetFunction_Once sync.Once
+
+func coverageGetFunction_Set() error {
+	var err error
+	coverageGetFunction_Once.Do(func() {
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageGetFunction, err = coverageStruct.InvokerNew("get")
+	})
+	return err
+}
+
+// Get is a representation of the C type pango_coverage_get.
+func (recv *Coverage) Get(index int32) CoverageLevel {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(index)
+
+	var ret gi.Argument
+
+	err := coverageGetFunction_Set()
+	if err == nil {
+		ret = coverageGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CoverageLevel(ret.Int32())
+
+	return retGo
+}
 
 var coverageMaxFunction *gi.Function
 var coverageMaxFunction_Once sync.Once
@@ -1786,7 +1859,35 @@ func (recv *Coverage) Ref() *Coverage {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_coverage_set' : parameter 'level' of type 'CoverageLevel' not supported
+var coverageSetFunction *gi.Function
+var coverageSetFunction_Once sync.Once
+
+func coverageSetFunction_Set() error {
+	var err error
+	coverageSetFunction_Once.Do(func() {
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageSetFunction, err = coverageStruct.InvokerNew("set")
+	})
+	return err
+}
+
+// Set is a representation of the C type pango_coverage_set.
+func (recv *Coverage) Set(index int32, level CoverageLevel) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(index)
+	inArgs[2].SetInt32(int32(level))
+
+	err := coverageSetFunction_Set()
+	if err == nil {
+		coverageSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'pango_coverage_to_bytes' : parameter 'bytes' of type 'nil' not supported
 
@@ -2017,9 +2118,19 @@ type EngineScriptInfo struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'script' : for field getter : no Go type for 'Script'
+// FieldScript returns the C field 'script'.
+func (recv *EngineScriptInfo) FieldScript() Script {
+	argValue := gi.FieldGet(engineScriptInfoStruct, recv.Native, "script")
+	value := Script(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'script' : for field setter : no Go type for 'Script'
+// SetFieldScript sets the value of the C field 'script'.
+func (recv *EngineScriptInfo) SetFieldScript(value Script) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.FieldSet(engineScriptInfoStruct, recv.Native, "script", argValue)
+}
 
 // FieldLangs returns the C field 'langs'.
 func (recv *EngineScriptInfo) FieldLangs() string {
@@ -2400,7 +2511,37 @@ func (recv *FontDescription) GetFamily() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_description_get_gravity' : return type 'Gravity' not supported
+var fontDescriptionGetGravityFunction *gi.Function
+var fontDescriptionGetGravityFunction_Once sync.Once
+
+func fontDescriptionGetGravityFunction_Set() error {
+	var err error
+	fontDescriptionGetGravityFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetGravityFunction, err = fontDescriptionStruct.InvokerNew("get_gravity")
+	})
+	return err
+}
+
+// GetGravity is a representation of the C type pango_font_description_get_gravity.
+func (recv *FontDescription) GetGravity() Gravity {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetGravityFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetGravityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_font_description_get_set_fields' : return type 'FontMask' not supported
 
@@ -2468,11 +2609,101 @@ func (recv *FontDescription) GetSizeIsAbsolute() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_description_get_stretch' : return type 'Stretch' not supported
+var fontDescriptionGetStretchFunction *gi.Function
+var fontDescriptionGetStretchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_font_description_get_style' : return type 'Style' not supported
+func fontDescriptionGetStretchFunction_Set() error {
+	var err error
+	fontDescriptionGetStretchFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetStretchFunction, err = fontDescriptionStruct.InvokerNew("get_stretch")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_font_description_get_variant' : return type 'Variant' not supported
+// GetStretch is a representation of the C type pango_font_description_get_stretch.
+func (recv *FontDescription) GetStretch() Stretch {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetStretchFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetStretchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Stretch(ret.Int32())
+
+	return retGo
+}
+
+var fontDescriptionGetStyleFunction *gi.Function
+var fontDescriptionGetStyleFunction_Once sync.Once
+
+func fontDescriptionGetStyleFunction_Set() error {
+	var err error
+	fontDescriptionGetStyleFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetStyleFunction, err = fontDescriptionStruct.InvokerNew("get_style")
+	})
+	return err
+}
+
+// GetStyle is a representation of the C type pango_font_description_get_style.
+func (recv *FontDescription) GetStyle() Style {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetStyleFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Style(ret.Int32())
+
+	return retGo
+}
+
+var fontDescriptionGetVariantFunction *gi.Function
+var fontDescriptionGetVariantFunction_Once sync.Once
+
+func fontDescriptionGetVariantFunction_Set() error {
+	var err error
+	fontDescriptionGetVariantFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetVariantFunction, err = fontDescriptionStruct.InvokerNew("get_variant")
+	})
+	return err
+}
+
+// GetVariant is a representation of the C type pango_font_description_get_variant.
+func (recv *FontDescription) GetVariant() Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetVariantFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Variant(ret.Int32())
+
+	return retGo
+}
 
 var fontDescriptionGetVariationsFunction *gi.Function
 var fontDescriptionGetVariationsFunction_Once sync.Once
@@ -2506,7 +2737,37 @@ func (recv *FontDescription) GetVariations() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_description_get_weight' : return type 'Weight' not supported
+var fontDescriptionGetWeightFunction *gi.Function
+var fontDescriptionGetWeightFunction_Once sync.Once
+
+func fontDescriptionGetWeightFunction_Set() error {
+	var err error
+	fontDescriptionGetWeightFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetWeightFunction, err = fontDescriptionStruct.InvokerNew("get_weight")
+	})
+	return err
+}
+
+// GetWeight is a representation of the C type pango_font_description_get_weight.
+func (recv *FontDescription) GetWeight() Weight {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetWeightFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetWeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Weight(ret.Int32())
+
+	return retGo
+}
 
 var fontDescriptionHashFunction *gi.Function
 var fontDescriptionHashFunction_Once sync.Once
@@ -2687,7 +2948,34 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_font_description_set_gravity' : parameter 'gravity' of type 'Gravity' not supported
+var fontDescriptionSetGravityFunction *gi.Function
+var fontDescriptionSetGravityFunction_Once sync.Once
+
+func fontDescriptionSetGravityFunction_Set() error {
+	var err error
+	fontDescriptionSetGravityFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetGravityFunction, err = fontDescriptionStruct.InvokerNew("set_gravity")
+	})
+	return err
+}
+
+// SetGravity is a representation of the C type pango_font_description_set_gravity.
+func (recv *FontDescription) SetGravity(gravity Gravity) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(gravity))
+
+	err := fontDescriptionSetGravityFunction_Set()
+	if err == nil {
+		fontDescriptionSetGravityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontDescriptionSetSizeFunction *gi.Function
 var fontDescriptionSetSizeFunction_Once sync.Once
@@ -2718,11 +3006,92 @@ func (recv *FontDescription) SetSize(size int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_font_description_set_stretch' : parameter 'stretch' of type 'Stretch' not supported
+var fontDescriptionSetStretchFunction *gi.Function
+var fontDescriptionSetStretchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_font_description_set_style' : parameter 'style' of type 'Style' not supported
+func fontDescriptionSetStretchFunction_Set() error {
+	var err error
+	fontDescriptionSetStretchFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetStretchFunction, err = fontDescriptionStruct.InvokerNew("set_stretch")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_font_description_set_variant' : parameter 'variant' of type 'Variant' not supported
+// SetStretch is a representation of the C type pango_font_description_set_stretch.
+func (recv *FontDescription) SetStretch(stretch Stretch) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(stretch))
+
+	err := fontDescriptionSetStretchFunction_Set()
+	if err == nil {
+		fontDescriptionSetStretchFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fontDescriptionSetStyleFunction *gi.Function
+var fontDescriptionSetStyleFunction_Once sync.Once
+
+func fontDescriptionSetStyleFunction_Set() error {
+	var err error
+	fontDescriptionSetStyleFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetStyleFunction, err = fontDescriptionStruct.InvokerNew("set_style")
+	})
+	return err
+}
+
+// SetStyle is a representation of the C type pango_font_description_set_style.
+func (recv *FontDescription) SetStyle(style Style) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(style))
+
+	err := fontDescriptionSetStyleFunction_Set()
+	if err == nil {
+		fontDescriptionSetStyleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var fontDescriptionSetVariantFunction *gi.Function
+var fontDescriptionSetVariantFunction_Once sync.Once
+
+func fontDescriptionSetVariantFunction_Set() error {
+	var err error
+	fontDescriptionSetVariantFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetVariantFunction, err = fontDescriptionStruct.InvokerNew("set_variant")
+	})
+	return err
+}
+
+// SetVariant is a representation of the C type pango_font_description_set_variant.
+func (recv *FontDescription) SetVariant(variant Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(variant))
+
+	err := fontDescriptionSetVariantFunction_Set()
+	if err == nil {
+		fontDescriptionSetVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontDescriptionSetVariationsFunction *gi.Function
 var fontDescriptionSetVariationsFunction_Once sync.Once
@@ -2782,7 +3151,34 @@ func (recv *FontDescription) SetVariationsStatic(settings string) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_font_description_set_weight' : parameter 'weight' of type 'Weight' not supported
+var fontDescriptionSetWeightFunction *gi.Function
+var fontDescriptionSetWeightFunction_Once sync.Once
+
+func fontDescriptionSetWeightFunction_Set() error {
+	var err error
+	fontDescriptionSetWeightFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetWeightFunction, err = fontDescriptionStruct.InvokerNew("set_weight")
+	})
+	return err
+}
+
+// SetWeight is a representation of the C type pango_font_description_set_weight.
+func (recv *FontDescription) SetWeight(weight Weight) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(weight))
+
+	err := fontDescriptionSetWeightFunction_Set()
+	if err == nil {
+		fontDescriptionSetWeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontDescriptionToFilenameFunction *gi.Function
 var fontDescriptionToFilenameFunction_Once sync.Once
@@ -4874,7 +5270,38 @@ func (recv *Language) GetScripts() int32 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'pango_language_includes_script' : parameter 'script' of type 'Script' not supported
+var languageIncludesScriptFunction *gi.Function
+var languageIncludesScriptFunction_Once sync.Once
+
+func languageIncludesScriptFunction_Set() error {
+	var err error
+	languageIncludesScriptFunction_Once.Do(func() {
+		err = languageStruct_Set()
+		if err != nil {
+			return
+		}
+		languageIncludesScriptFunction, err = languageStruct.InvokerNew("includes_script")
+	})
+	return err
+}
+
+// IncludesScript is a representation of the C type pango_language_includes_script.
+func (recv *Language) IncludesScript(script Script) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(script))
+
+	var ret gi.Argument
+
+	err := languageIncludesScriptFunction_Set()
+	if err == nil {
+		ret = languageIncludesScriptFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var languageMatchesFunction *gi.Function
 var languageMatchesFunction_Once sync.Once
@@ -6150,9 +6577,41 @@ type Map struct {
 	Native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_map_get_engine' : parameter 'script' of type 'Script' not supported
+var mapGetEngineFunction *gi.Function
+var mapGetEngineFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'script' of type 'Script' not supported
+func mapGetEngineFunction_Set() error {
+	var err error
+	mapGetEngineFunction_Once.Do(func() {
+		err = mapStruct_Set()
+		if err != nil {
+			return
+		}
+		mapGetEngineFunction, err = mapStruct.InvokerNew("get_engine")
+	})
+	return err
+}
+
+// GetEngine is a representation of the C type pango_map_get_engine.
+func (recv *Map) GetEngine(script Script) *Engine {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(script))
+
+	var ret gi.Argument
+
+	err := mapGetEngineFunction_Set()
+	if err == nil {
+		ret = mapGetEngineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Engine{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'exact_engines' of type 'GLib.SList' not supported
 
 // MapStruct creates an uninitialised Map.
 func MapStruct() *Map {
@@ -6946,7 +7405,39 @@ func (recv *ScriptIter) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_script_iter_get_range' : parameter 'script' of type 'Script' not supported
+var scriptIterGetRangeFunction *gi.Function
+var scriptIterGetRangeFunction_Once sync.Once
+
+func scriptIterGetRangeFunction_Set() error {
+	var err error
+	scriptIterGetRangeFunction_Once.Do(func() {
+		err = scriptIterStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptIterGetRangeFunction, err = scriptIterStruct.InvokerNew("get_range")
+	})
+	return err
+}
+
+// GetRange is a representation of the C type pango_script_iter_get_range.
+func (recv *ScriptIter) GetRange() (string, string, Script) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var outArgs [3]gi.Argument
+
+	err := scriptIterGetRangeFunction_Set()
+	if err == nil {
+		scriptIterGetRangeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].String(true)
+	out2 := Script(outArgs[2].Int32())
+
+	return out0, out1, out2
+}
 
 var scriptIterNextFunction *gi.Function
 var scriptIterNextFunction_Once sync.Once
@@ -7045,7 +7536,7 @@ func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter 'first_alignment' of type 'TabAlign' not supported
+// UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter '...' of type 'nil' not supported
 
 var tabArrayCopyFunction *gi.Function
 var tabArrayCopyFunction_Once sync.Once
@@ -7172,9 +7663,41 @@ func (recv *TabArray) GetSize() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_get_tab' : parameter 'alignment' of type 'TabAlign' not supported
+var tabArrayGetTabFunction *gi.Function
+var tabArrayGetTabFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_tab_array_get_tabs' : parameter 'alignments' of type 'TabAlign' not supported
+func tabArrayGetTabFunction_Set() error {
+	var err error
+	tabArrayGetTabFunction_Once.Do(func() {
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayGetTabFunction, err = tabArrayStruct.InvokerNew("get_tab")
+	})
+	return err
+}
+
+// GetTab is a representation of the C type pango_tab_array_get_tab.
+func (recv *TabArray) GetTab(tabIndex int32) (TabAlign, int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(tabIndex)
+
+	var outArgs [2]gi.Argument
+
+	err := tabArrayGetTabFunction_Set()
+	if err == nil {
+		tabArrayGetTabFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := TabAlign(outArgs[0].Int32())
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
+
+// UNSUPPORTED : C value 'pango_tab_array_get_tabs' : parameter 'locations' of type 'nil' not supported
 
 var tabArrayResizeFunction *gi.Function
 var tabArrayResizeFunction_Once sync.Once
@@ -7205,4 +7728,33 @@ func (recv *TabArray) Resize(newSize int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_set_tab' : parameter 'alignment' of type 'TabAlign' not supported
+var tabArraySetTabFunction *gi.Function
+var tabArraySetTabFunction_Once sync.Once
+
+func tabArraySetTabFunction_Set() error {
+	var err error
+	tabArraySetTabFunction_Once.Do(func() {
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArraySetTabFunction, err = tabArrayStruct.InvokerNew("set_tab")
+	})
+	return err
+}
+
+// SetTab is a representation of the C type pango_tab_array_set_tab.
+func (recv *TabArray) SetTab(tabIndex int32, alignment TabAlign, location int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(tabIndex)
+	inArgs[2].SetInt32(int32(alignment))
+	inArgs[3].SetInt32(location)
+
+	err := tabArraySetTabFunction_Set()
+	if err == nil {
+		tabArraySetTabFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}

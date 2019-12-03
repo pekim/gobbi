@@ -106,6 +106,12 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 			Parens(jenValue)
 	}
 
+	if f.Type.isEnumeration() {
+		jenValue = jen.
+			Add(jenGoTypes["int"]).
+			Parens(jenValue)
+	}
+
 	if f.Type.isRecord() {
 		jenValue = jenValue.Dot(fieldNameNative)
 	}

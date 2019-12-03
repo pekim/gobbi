@@ -83,9 +83,69 @@ func (recv *Context) Changed() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_context_get_base_dir' : return type 'Direction' not supported
+var contextGetBaseDirFunction *gi.Function
+var contextGetBaseDirFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_context_get_base_gravity' : return type 'Gravity' not supported
+func contextGetBaseDirFunction_Set() error {
+	var err error
+	contextGetBaseDirFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetBaseDirFunction, err = contextStruct.InvokerNew("get_base_dir")
+	})
+	return err
+}
+
+// GetBaseDir is a representation of the C type pango_context_get_base_dir.
+func (recv *Context) GetBaseDir() Direction {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := contextGetBaseDirFunction_Set()
+	if err == nil {
+		ret = contextGetBaseDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Direction(ret.Int32())
+
+	return retGo
+}
+
+var contextGetBaseGravityFunction *gi.Function
+var contextGetBaseGravityFunction_Once sync.Once
+
+func contextGetBaseGravityFunction_Set() error {
+	var err error
+	contextGetBaseGravityFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetBaseGravityFunction, err = contextStruct.InvokerNew("get_base_gravity")
+	})
+	return err
+}
+
+// GetBaseGravity is a representation of the C type pango_context_get_base_gravity.
+func (recv *Context) GetBaseGravity() Gravity {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := contextGetBaseGravityFunction_Set()
+	if err == nil {
+		ret = contextGetBaseGravityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
 
 var contextGetFontDescriptionFunction *gi.Function
 var contextGetFontDescriptionFunction_Once sync.Once
@@ -153,9 +213,69 @@ func (recv *Context) GetFontMap() *FontMap {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_context_get_gravity' : return type 'Gravity' not supported
+var contextGetGravityFunction *gi.Function
+var contextGetGravityFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_context_get_gravity_hint' : return type 'GravityHint' not supported
+func contextGetGravityFunction_Set() error {
+	var err error
+	contextGetGravityFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetGravityFunction, err = contextStruct.InvokerNew("get_gravity")
+	})
+	return err
+}
+
+// GetGravity is a representation of the C type pango_context_get_gravity.
+func (recv *Context) GetGravity() Gravity {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := contextGetGravityFunction_Set()
+	if err == nil {
+		ret = contextGetGravityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Gravity(ret.Int32())
+
+	return retGo
+}
+
+var contextGetGravityHintFunction *gi.Function
+var contextGetGravityHintFunction_Once sync.Once
+
+func contextGetGravityHintFunction_Set() error {
+	var err error
+	contextGetGravityHintFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextGetGravityHintFunction, err = contextStruct.InvokerNew("get_gravity_hint")
+	})
+	return err
+}
+
+// GetGravityHint is a representation of the C type pango_context_get_gravity_hint.
+func (recv *Context) GetGravityHint() GravityHint {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := contextGetGravityHintFunction_Set()
+	if err == nil {
+		ret = contextGetGravityHintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := GravityHint(ret.Int32())
+
+	return retGo
+}
 
 var contextGetLanguageFunction *gi.Function
 var contextGetLanguageFunction_Once sync.Once
@@ -361,9 +481,63 @@ func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fon
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_context_set_base_dir' : parameter 'direction' of type 'Direction' not supported
+var contextSetBaseDirFunction *gi.Function
+var contextSetBaseDirFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_context_set_base_gravity' : parameter 'gravity' of type 'Gravity' not supported
+func contextSetBaseDirFunction_Set() error {
+	var err error
+	contextSetBaseDirFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextSetBaseDirFunction, err = contextStruct.InvokerNew("set_base_dir")
+	})
+	return err
+}
+
+// SetBaseDir is a representation of the C type pango_context_set_base_dir.
+func (recv *Context) SetBaseDir(direction Direction) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(direction))
+
+	err := contextSetBaseDirFunction_Set()
+	if err == nil {
+		contextSetBaseDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var contextSetBaseGravityFunction *gi.Function
+var contextSetBaseGravityFunction_Once sync.Once
+
+func contextSetBaseGravityFunction_Set() error {
+	var err error
+	contextSetBaseGravityFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextSetBaseGravityFunction, err = contextStruct.InvokerNew("set_base_gravity")
+	})
+	return err
+}
+
+// SetBaseGravity is a representation of the C type pango_context_set_base_gravity.
+func (recv *Context) SetBaseGravity(gravity Gravity) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(gravity))
+
+	err := contextSetBaseGravityFunction_Set()
+	if err == nil {
+		contextSetBaseGravityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contextSetFontDescriptionFunction *gi.Function
 var contextSetFontDescriptionFunction_Once sync.Once
@@ -423,7 +597,34 @@ func (recv *Context) SetFontMap(fontMap *FontMap) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_context_set_gravity_hint' : parameter 'hint' of type 'GravityHint' not supported
+var contextSetGravityHintFunction *gi.Function
+var contextSetGravityHintFunction_Once sync.Once
+
+func contextSetGravityHintFunction_Set() error {
+	var err error
+	contextSetGravityHintFunction_Once.Do(func() {
+		err = contextStruct_Set()
+		if err != nil {
+			return
+		}
+		contextSetGravityHintFunction, err = contextStruct.InvokerNew("set_gravity_hint")
+	})
+	return err
+}
+
+// SetGravityHint is a representation of the C type pango_context_set_gravity_hint.
+func (recv *Context) SetGravityHint(hint GravityHint) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(hint))
+
+	err := contextSetGravityHintFunction_Set()
+	if err == nil {
+		contextSetGravityHintFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contextSetLanguageFunction *gi.Function
 var contextSetLanguageFunction_Once sync.Once
@@ -1654,7 +1855,37 @@ func (recv *Layout) Copy() *Layout {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_alignment' : return type 'Alignment' not supported
+var layoutGetAlignmentFunction *gi.Function
+var layoutGetAlignmentFunction_Once sync.Once
+
+func layoutGetAlignmentFunction_Set() error {
+	var err error
+	layoutGetAlignmentFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutGetAlignmentFunction, err = layoutStruct.InvokerNew("get_alignment")
+	})
+	return err
+}
+
+// GetAlignment is a representation of the C type pango_layout_get_alignment.
+func (recv *Layout) GetAlignment() Alignment {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := layoutGetAlignmentFunction_Set()
+	if err == nil {
+		ret = layoutGetAlignmentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Alignment(ret.Int32())
+
+	return retGo
+}
 
 var layoutGetAttributesFunction *gi.Function
 var layoutGetAttributesFunction_Once sync.Once
@@ -1854,7 +2085,37 @@ func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_ellipsize' : return type 'EllipsizeMode' not supported
+var layoutGetEllipsizeFunction *gi.Function
+var layoutGetEllipsizeFunction_Once sync.Once
+
+func layoutGetEllipsizeFunction_Set() error {
+	var err error
+	layoutGetEllipsizeFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutGetEllipsizeFunction, err = layoutStruct.InvokerNew("get_ellipsize")
+	})
+	return err
+}
+
+// GetEllipsize is a representation of the C type pango_layout_get_ellipsize.
+func (recv *Layout) GetEllipsize() EllipsizeMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := layoutGetEllipsizeFunction_Set()
+	if err == nil {
+		ret = layoutGetEllipsizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EllipsizeMode(ret.Int32())
+
+	return retGo
+}
 
 var layoutGetExtentsFunction *gi.Function
 var layoutGetExtentsFunction_Once sync.Once
@@ -2517,7 +2778,37 @@ func (recv *Layout) GetWidth() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_wrap' : return type 'WrapMode' not supported
+var layoutGetWrapFunction *gi.Function
+var layoutGetWrapFunction_Once sync.Once
+
+func layoutGetWrapFunction_Set() error {
+	var err error
+	layoutGetWrapFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutGetWrapFunction, err = layoutStruct.InvokerNew("get_wrap")
+	})
+	return err
+}
+
+// GetWrap is a representation of the C type pango_layout_get_wrap.
+func (recv *Layout) GetWrap() WrapMode {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := layoutGetWrapFunction_Set()
+	if err == nil {
+		ret = layoutGetWrapFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WrapMode(ret.Int32())
+
+	return retGo
+}
 
 var layoutIndexToLineXFunction *gi.Function
 var layoutIndexToLineXFunction_Once sync.Once
@@ -2689,7 +2980,34 @@ func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing 
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_set_alignment' : parameter 'alignment' of type 'Alignment' not supported
+var layoutSetAlignmentFunction *gi.Function
+var layoutSetAlignmentFunction_Once sync.Once
+
+func layoutSetAlignmentFunction_Set() error {
+	var err error
+	layoutSetAlignmentFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutSetAlignmentFunction, err = layoutStruct.InvokerNew("set_alignment")
+	})
+	return err
+}
+
+// SetAlignment is a representation of the C type pango_layout_set_alignment.
+func (recv *Layout) SetAlignment(alignment Alignment) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(alignment))
+
+	err := layoutSetAlignmentFunction_Set()
+	if err == nil {
+		layoutSetAlignmentFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var layoutSetAttributesFunction *gi.Function
 var layoutSetAttributesFunction_Once sync.Once
@@ -2749,7 +3067,34 @@ func (recv *Layout) SetAutoDir(autoDir bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_layout_set_ellipsize' : parameter 'ellipsize' of type 'EllipsizeMode' not supported
+var layoutSetEllipsizeFunction *gi.Function
+var layoutSetEllipsizeFunction_Once sync.Once
+
+func layoutSetEllipsizeFunction_Set() error {
+	var err error
+	layoutSetEllipsizeFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutSetEllipsizeFunction, err = layoutStruct.InvokerNew("set_ellipsize")
+	})
+	return err
+}
+
+// SetEllipsize is a representation of the C type pango_layout_set_ellipsize.
+func (recv *Layout) SetEllipsize(ellipsize EllipsizeMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(ellipsize))
+
+	err := layoutSetEllipsizeFunction_Set()
+	if err == nil {
+		layoutSetEllipsizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var layoutSetFontDescriptionFunction *gi.Function
 var layoutSetFontDescriptionFunction_Once sync.Once
@@ -3045,7 +3390,34 @@ func (recv *Layout) SetWidth(width int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_layout_set_wrap' : parameter 'wrap' of type 'WrapMode' not supported
+var layoutSetWrapFunction *gi.Function
+var layoutSetWrapFunction_Once sync.Once
+
+func layoutSetWrapFunction_Set() error {
+	var err error
+	layoutSetWrapFunction_Once.Do(func() {
+		err = layoutStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutSetWrapFunction, err = layoutStruct.InvokerNew("set_wrap")
+	})
+	return err
+}
+
+// SetWrap is a representation of the C type pango_layout_set_wrap.
+func (recv *Layout) SetWrap(wrap WrapMode) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(wrap))
+
+	err := layoutSetWrapFunction_Set()
+	if err == nil {
+		layoutSetWrapFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var layoutXyToIndexFunction *gi.Function
 var layoutXyToIndexFunction_Once sync.Once
@@ -3360,13 +3732,140 @@ func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_renderer_draw_rectangle' : parameter 'part' of type 'RenderPart' not supported
+var rendererDrawRectangleFunction *gi.Function
+var rendererDrawRectangleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_renderer_draw_trapezoid' : parameter 'part' of type 'RenderPart' not supported
+func rendererDrawRectangleFunction_Set() error {
+	var err error
+	rendererDrawRectangleFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererDrawRectangleFunction, err = rendererStruct.InvokerNew("draw_rectangle")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_renderer_get_alpha' : parameter 'part' of type 'RenderPart' not supported
+// DrawRectangle is a representation of the C type pango_renderer_draw_rectangle.
+func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int32, height int32) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+	inArgs[2].SetInt32(x)
+	inArgs[3].SetInt32(y)
+	inArgs[4].SetInt32(width)
+	inArgs[5].SetInt32(height)
 
-// UNSUPPORTED : C value 'pango_renderer_get_color' : parameter 'part' of type 'RenderPart' not supported
+	err := rendererDrawRectangleFunction_Set()
+	if err == nil {
+		rendererDrawRectangleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var rendererDrawTrapezoidFunction *gi.Function
+var rendererDrawTrapezoidFunction_Once sync.Once
+
+func rendererDrawTrapezoidFunction_Set() error {
+	var err error
+	rendererDrawTrapezoidFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererDrawTrapezoidFunction, err = rendererStruct.InvokerNew("draw_trapezoid")
+	})
+	return err
+}
+
+// DrawTrapezoid is a representation of the C type pango_renderer_draw_trapezoid.
+func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+	inArgs[2].SetFloat64(y1)
+	inArgs[3].SetFloat64(x11)
+	inArgs[4].SetFloat64(x21)
+	inArgs[5].SetFloat64(y2)
+	inArgs[6].SetFloat64(x12)
+	inArgs[7].SetFloat64(x22)
+
+	err := rendererDrawTrapezoidFunction_Set()
+	if err == nil {
+		rendererDrawTrapezoidFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var rendererGetAlphaFunction *gi.Function
+var rendererGetAlphaFunction_Once sync.Once
+
+func rendererGetAlphaFunction_Set() error {
+	var err error
+	rendererGetAlphaFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererGetAlphaFunction, err = rendererStruct.InvokerNew("get_alpha")
+	})
+	return err
+}
+
+// GetAlpha is a representation of the C type pango_renderer_get_alpha.
+func (recv *Renderer) GetAlpha(part RenderPart) uint16 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+
+	var ret gi.Argument
+
+	err := rendererGetAlphaFunction_Set()
+	if err == nil {
+		ret = rendererGetAlphaFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var rendererGetColorFunction *gi.Function
+var rendererGetColorFunction_Once sync.Once
+
+func rendererGetColorFunction_Set() error {
+	var err error
+	rendererGetColorFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererGetColorFunction, err = rendererStruct.InvokerNew("get_color")
+	})
+	return err
+}
+
+// GetColor is a representation of the C type pango_renderer_get_color.
+func (recv *Renderer) GetColor(part RenderPart) *Color {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+
+	var ret gi.Argument
+
+	err := rendererGetColorFunction_Set()
+	if err == nil {
+		ret = rendererGetColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Color{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var rendererGetLayoutFunction *gi.Function
 var rendererGetLayoutFunction_Once sync.Once
@@ -3467,11 +3966,94 @@ func (recv *Renderer) GetMatrix() *Matrix {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_renderer_part_changed' : parameter 'part' of type 'RenderPart' not supported
+var rendererPartChangedFunction *gi.Function
+var rendererPartChangedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_renderer_set_alpha' : parameter 'part' of type 'RenderPart' not supported
+func rendererPartChangedFunction_Set() error {
+	var err error
+	rendererPartChangedFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererPartChangedFunction, err = rendererStruct.InvokerNew("part_changed")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_renderer_set_color' : parameter 'part' of type 'RenderPart' not supported
+// PartChanged is a representation of the C type pango_renderer_part_changed.
+func (recv *Renderer) PartChanged(part RenderPart) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+
+	err := rendererPartChangedFunction_Set()
+	if err == nil {
+		rendererPartChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var rendererSetAlphaFunction *gi.Function
+var rendererSetAlphaFunction_Once sync.Once
+
+func rendererSetAlphaFunction_Set() error {
+	var err error
+	rendererSetAlphaFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererSetAlphaFunction, err = rendererStruct.InvokerNew("set_alpha")
+	})
+	return err
+}
+
+// SetAlpha is a representation of the C type pango_renderer_set_alpha.
+func (recv *Renderer) SetAlpha(part RenderPart, alpha uint16) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+	inArgs[2].SetUint16(alpha)
+
+	err := rendererSetAlphaFunction_Set()
+	if err == nil {
+		rendererSetAlphaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var rendererSetColorFunction *gi.Function
+var rendererSetColorFunction_Once sync.Once
+
+func rendererSetColorFunction_Set() error {
+	var err error
+	rendererSetColorFunction_Once.Do(func() {
+		err = rendererStruct_Set()
+		if err != nil {
+			return
+		}
+		rendererSetColorFunction, err = rendererStruct.InvokerNew("set_color")
+	})
+	return err
+}
+
+// SetColor is a representation of the C type pango_renderer_set_color.
+func (recv *Renderer) SetColor(part RenderPart, color *Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(part))
+	inArgs[2].SetPointer(color.Native)
+
+	err := rendererSetColorFunction_Set()
+	if err == nil {
+		rendererSetColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rendererSetMatrixFunction *gi.Function
 var rendererSetMatrixFunction_Once sync.Once

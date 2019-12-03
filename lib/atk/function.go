@@ -330,11 +330,89 @@ func GetVersion() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_relation_type_for_name' : return type 'RelationType' not supported
+var relationTypeForNameFunction *gi.Function
+var relationTypeForNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_relation_type_get_name' : parameter 'type' of type 'RelationType' not supported
+func relationTypeForNameFunction_Set() error {
+	var err error
+	relationTypeForNameFunction_Once.Do(func() {
+		relationTypeForNameFunction, err = gi.FunctionInvokerNew("Atk", "relation_type_for_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_relation_type_register' : return type 'RelationType' not supported
+// RelationTypeForName is a representation of the C type atk_relation_type_for_name.
+func RelationTypeForName(name string) RelationType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := relationTypeForNameFunction_Set()
+	if err == nil {
+		ret = relationTypeForNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RelationType(ret.Int32())
+
+	return retGo
+}
+
+var relationTypeGetNameFunction *gi.Function
+var relationTypeGetNameFunction_Once sync.Once
+
+func relationTypeGetNameFunction_Set() error {
+	var err error
+	relationTypeGetNameFunction_Once.Do(func() {
+		relationTypeGetNameFunction, err = gi.FunctionInvokerNew("Atk", "relation_type_get_name")
+	})
+	return err
+}
+
+// RelationTypeGetName is a representation of the C type atk_relation_type_get_name.
+func RelationTypeGetName(type_ RelationType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := relationTypeGetNameFunction_Set()
+	if err == nil {
+		ret = relationTypeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var relationTypeRegisterFunction *gi.Function
+var relationTypeRegisterFunction_Once sync.Once
+
+func relationTypeRegisterFunction_Set() error {
+	var err error
+	relationTypeRegisterFunction_Once.Do(func() {
+		relationTypeRegisterFunction, err = gi.FunctionInvokerNew("Atk", "relation_type_register")
+	})
+	return err
+}
+
+// RelationTypeRegister is a representation of the C type atk_relation_type_register.
+func RelationTypeRegister(name string) RelationType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := relationTypeRegisterFunction_Set()
+	if err == nil {
+		ret = relationTypeRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RelationType(ret.Int32())
+
+	return retGo
+}
 
 var removeFocusTrackerFunction *gi.Function
 var removeFocusTrackerFunction_Once sync.Once
@@ -408,30 +486,369 @@ func RemoveKeyEventListener(listenerId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_role_for_name' : return type 'Role' not supported
+var roleForNameFunction *gi.Function
+var roleForNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_role_get_localized_name' : parameter 'role' of type 'Role' not supported
+func roleForNameFunction_Set() error {
+	var err error
+	roleForNameFunction_Once.Do(func() {
+		roleForNameFunction, err = gi.FunctionInvokerNew("Atk", "role_for_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_role_get_name' : parameter 'role' of type 'Role' not supported
+// RoleForName is a representation of the C type atk_role_for_name.
+func RoleForName(name string) Role {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
 
-// UNSUPPORTED : C value 'atk_role_register' : return type 'Role' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'atk_state_type_for_name' : return type 'StateType' not supported
+	err := roleForNameFunction_Set()
+	if err == nil {
+		ret = roleForNameFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'atk_state_type_get_name' : parameter 'type' of type 'StateType' not supported
+	retGo := Role(ret.Int32())
 
-// UNSUPPORTED : C value 'atk_state_type_register' : return type 'StateType' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'atk_text_attribute_for_name' : return type 'TextAttribute' not supported
+var roleGetLocalizedNameFunction *gi.Function
+var roleGetLocalizedNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_text_attribute_get_name' : parameter 'attr' of type 'TextAttribute' not supported
+func roleGetLocalizedNameFunction_Set() error {
+	var err error
+	roleGetLocalizedNameFunction_Once.Do(func() {
+		roleGetLocalizedNameFunction, err = gi.FunctionInvokerNew("Atk", "role_get_localized_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_text_attribute_get_value' : parameter 'attr' of type 'TextAttribute' not supported
+// RoleGetLocalizedName is a representation of the C type atk_role_get_localized_name.
+func RoleGetLocalizedName(role Role) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(role))
 
-// UNSUPPORTED : C value 'atk_text_attribute_register' : return type 'TextAttribute' not supported
+	var ret gi.Argument
+
+	err := roleGetLocalizedNameFunction_Set()
+	if err == nil {
+		ret = roleGetLocalizedNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var roleGetNameFunction *gi.Function
+var roleGetNameFunction_Once sync.Once
+
+func roleGetNameFunction_Set() error {
+	var err error
+	roleGetNameFunction_Once.Do(func() {
+		roleGetNameFunction, err = gi.FunctionInvokerNew("Atk", "role_get_name")
+	})
+	return err
+}
+
+// RoleGetName is a representation of the C type atk_role_get_name.
+func RoleGetName(role Role) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(role))
+
+	var ret gi.Argument
+
+	err := roleGetNameFunction_Set()
+	if err == nil {
+		ret = roleGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var roleRegisterFunction *gi.Function
+var roleRegisterFunction_Once sync.Once
+
+func roleRegisterFunction_Set() error {
+	var err error
+	roleRegisterFunction_Once.Do(func() {
+		roleRegisterFunction, err = gi.FunctionInvokerNew("Atk", "role_register")
+	})
+	return err
+}
+
+// RoleRegister is a representation of the C type atk_role_register.
+func RoleRegister(name string) Role {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := roleRegisterFunction_Set()
+	if err == nil {
+		ret = roleRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Role(ret.Int32())
+
+	return retGo
+}
+
+var stateTypeForNameFunction *gi.Function
+var stateTypeForNameFunction_Once sync.Once
+
+func stateTypeForNameFunction_Set() error {
+	var err error
+	stateTypeForNameFunction_Once.Do(func() {
+		stateTypeForNameFunction, err = gi.FunctionInvokerNew("Atk", "state_type_for_name")
+	})
+	return err
+}
+
+// StateTypeForName is a representation of the C type atk_state_type_for_name.
+func StateTypeForName(name string) StateType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := stateTypeForNameFunction_Set()
+	if err == nil {
+		ret = stateTypeForNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StateType(ret.Int32())
+
+	return retGo
+}
+
+var stateTypeGetNameFunction *gi.Function
+var stateTypeGetNameFunction_Once sync.Once
+
+func stateTypeGetNameFunction_Set() error {
+	var err error
+	stateTypeGetNameFunction_Once.Do(func() {
+		stateTypeGetNameFunction, err = gi.FunctionInvokerNew("Atk", "state_type_get_name")
+	})
+	return err
+}
+
+// StateTypeGetName is a representation of the C type atk_state_type_get_name.
+func StateTypeGetName(type_ StateType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(type_))
+
+	var ret gi.Argument
+
+	err := stateTypeGetNameFunction_Set()
+	if err == nil {
+		ret = stateTypeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var stateTypeRegisterFunction *gi.Function
+var stateTypeRegisterFunction_Once sync.Once
+
+func stateTypeRegisterFunction_Set() error {
+	var err error
+	stateTypeRegisterFunction_Once.Do(func() {
+		stateTypeRegisterFunction, err = gi.FunctionInvokerNew("Atk", "state_type_register")
+	})
+	return err
+}
+
+// StateTypeRegister is a representation of the C type atk_state_type_register.
+func StateTypeRegister(name string) StateType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := stateTypeRegisterFunction_Set()
+	if err == nil {
+		ret = stateTypeRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StateType(ret.Int32())
+
+	return retGo
+}
+
+var textAttributeForNameFunction *gi.Function
+var textAttributeForNameFunction_Once sync.Once
+
+func textAttributeForNameFunction_Set() error {
+	var err error
+	textAttributeForNameFunction_Once.Do(func() {
+		textAttributeForNameFunction, err = gi.FunctionInvokerNew("Atk", "text_attribute_for_name")
+	})
+	return err
+}
+
+// TextAttributeForName is a representation of the C type atk_text_attribute_for_name.
+func TextAttributeForName(name string) TextAttribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := textAttributeForNameFunction_Set()
+	if err == nil {
+		ret = textAttributeForNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextAttribute(ret.Int32())
+
+	return retGo
+}
+
+var textAttributeGetNameFunction *gi.Function
+var textAttributeGetNameFunction_Once sync.Once
+
+func textAttributeGetNameFunction_Set() error {
+	var err error
+	textAttributeGetNameFunction_Once.Do(func() {
+		textAttributeGetNameFunction, err = gi.FunctionInvokerNew("Atk", "text_attribute_get_name")
+	})
+	return err
+}
+
+// TextAttributeGetName is a representation of the C type atk_text_attribute_get_name.
+func TextAttributeGetName(attr TextAttribute) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(attr))
+
+	var ret gi.Argument
+
+	err := textAttributeGetNameFunction_Set()
+	if err == nil {
+		ret = textAttributeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var textAttributeGetValueFunction *gi.Function
+var textAttributeGetValueFunction_Once sync.Once
+
+func textAttributeGetValueFunction_Set() error {
+	var err error
+	textAttributeGetValueFunction_Once.Do(func() {
+		textAttributeGetValueFunction, err = gi.FunctionInvokerNew("Atk", "text_attribute_get_value")
+	})
+	return err
+}
+
+// TextAttributeGetValue is a representation of the C type atk_text_attribute_get_value.
+func TextAttributeGetValue(attr TextAttribute, index int32) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(attr))
+	inArgs[1].SetInt32(index)
+
+	var ret gi.Argument
+
+	err := textAttributeGetValueFunction_Set()
+	if err == nil {
+		ret = textAttributeGetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var textAttributeRegisterFunction *gi.Function
+var textAttributeRegisterFunction_Once sync.Once
+
+func textAttributeRegisterFunction_Set() error {
+	var err error
+	textAttributeRegisterFunction_Once.Do(func() {
+		textAttributeRegisterFunction, err = gi.FunctionInvokerNew("Atk", "text_attribute_register")
+	})
+	return err
+}
+
+// TextAttributeRegister is a representation of the C type atk_text_attribute_register.
+func TextAttributeRegister(name string) TextAttribute {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := textAttributeRegisterFunction_Set()
+	if err == nil {
+		ret = textAttributeRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TextAttribute(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'atk_value_type_get_localized_name' : parameter 'value_type' of type 'ValueType' not supported
+var valueTypeGetLocalizedNameFunction *gi.Function
+var valueTypeGetLocalizedNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_value_type_get_name' : parameter 'value_type' of type 'ValueType' not supported
+func valueTypeGetLocalizedNameFunction_Set() error {
+	var err error
+	valueTypeGetLocalizedNameFunction_Once.Do(func() {
+		valueTypeGetLocalizedNameFunction, err = gi.FunctionInvokerNew("Atk", "value_type_get_localized_name")
+	})
+	return err
+}
+
+// ValueTypeGetLocalizedName is a representation of the C type atk_value_type_get_localized_name.
+func ValueTypeGetLocalizedName(valueType ValueType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(valueType))
+
+	var ret gi.Argument
+
+	err := valueTypeGetLocalizedNameFunction_Set()
+	if err == nil {
+		ret = valueTypeGetLocalizedNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var valueTypeGetNameFunction *gi.Function
+var valueTypeGetNameFunction_Once sync.Once
+
+func valueTypeGetNameFunction_Set() error {
+	var err error
+	valueTypeGetNameFunction_Once.Do(func() {
+		valueTypeGetNameFunction, err = gi.FunctionInvokerNew("Atk", "value_type_get_name")
+	})
+	return err
+}
+
+// ValueTypeGetName is a representation of the C type atk_value_type_get_name.
+func ValueTypeGetName(valueType ValueType) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(valueType))
+
+	var ret gi.Argument
+
+	err := valueTypeGetNameFunction_Set()
+	if err == nil {
+		ret = valueTypeGetNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}

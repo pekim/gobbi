@@ -277,7 +277,39 @@ func DragDropSucceeded(context *DragContext) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : parameter 'protocol' of type 'DragProtocol' not supported
+var dragFindWindowForScreenFunction *gi.Function
+var dragFindWindowForScreenFunction_Once sync.Once
+
+func dragFindWindowForScreenFunction_Set() error {
+	var err error
+	dragFindWindowForScreenFunction_Once.Do(func() {
+		dragFindWindowForScreenFunction, err = gi.FunctionInvokerNew("Gdk", "drag_find_window_for_screen")
+	})
+	return err
+}
+
+// DragFindWindowForScreen is a representation of the C type gdk_drag_find_window_for_screen.
+func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int32, yRoot int32) (*Window, DragProtocol) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(context.Native)
+	inArgs[1].SetPointer(dragWindow.Native)
+	inArgs[2].SetPointer(screen.Native)
+	inArgs[3].SetInt32(xRoot)
+	inArgs[4].SetInt32(yRoot)
+
+	var outArgs [2]gi.Argument
+
+	err := dragFindWindowForScreenFunction_Set()
+	if err == nil {
+		dragFindWindowForScreenFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Window{}
+	out0.Native = outArgs[0].Pointer()
+	out1 := DragProtocol(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 var dragGetSelectionFunction *gi.Function
 var dragGetSelectionFunction_Once sync.Once
@@ -308,7 +340,7 @@ func DragGetSelection(context *DragContext) *Atom {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'protocol' of type 'DragProtocol' not supported
+// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'suggested_action' of type 'DragAction' not supported
 
 // UNSUPPORTED : C value 'gdk_drag_status' : parameter 'action' of type 'DragAction' not supported
 
@@ -679,7 +711,35 @@ func GlErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_keyboard_grab' : return type 'GrabStatus' not supported
+var keyboardGrabFunction *gi.Function
+var keyboardGrabFunction_Once sync.Once
+
+func keyboardGrabFunction_Set() error {
+	var err error
+	keyboardGrabFunction_Once.Do(func() {
+		keyboardGrabFunction, err = gi.FunctionInvokerNew("Gdk", "keyboard_grab")
+	})
+	return err
+}
+
+// KeyboardGrab is a representation of the C type gdk_keyboard_grab.
+func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(window.Native)
+	inArgs[1].SetBoolean(ownerEvents)
+	inArgs[2].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := keyboardGrabFunction_Set()
+	if err == nil {
+		ret = keyboardGrabFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := GrabStatus(ret.Int32())
+
+	return retGo
+}
 
 var keyboardUngrabFunction *gi.Function
 var keyboardUngrabFunction_Once sync.Once
@@ -1124,7 +1184,35 @@ func PreParseLibgtkOnly() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_property_change' : parameter 'mode' of type 'PropMode' not supported
+var propertyChangeFunction *gi.Function
+var propertyChangeFunction_Once sync.Once
+
+func propertyChangeFunction_Set() error {
+	var err error
+	propertyChangeFunction_Once.Do(func() {
+		propertyChangeFunction, err = gi.FunctionInvokerNew("Gdk", "property_change")
+	})
+	return err
+}
+
+// PropertyChange is a representation of the C type gdk_property_change.
+func PropertyChange(window *Window, property *Atom, type_ *Atom, format int32, mode PropMode, data uint8, nelements int32) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(window.Native)
+	inArgs[1].SetPointer(property.Native)
+	inArgs[2].SetPointer(type_.Native)
+	inArgs[3].SetInt32(format)
+	inArgs[4].SetInt32(int32(mode))
+	inArgs[5].SetUint8(data)
+	inArgs[6].SetInt32(nelements)
+
+	err := propertyChangeFunction_Set()
+	if err == nil {
+		propertyChangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var propertyDeleteFunction *gi.Function
 var propertyDeleteFunction_Once sync.Once

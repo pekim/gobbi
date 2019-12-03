@@ -113,19 +113,47 @@ func AppInfoResetTypeAssociations(contentType string) {
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_bus_get' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_bus_get' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_bus_get_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_bus_get_sync' : parameter 'bus_type' of type 'BusType' not supported
+var busGetSyncFunction *gi.Function
+var busGetSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bus_own_name' : parameter 'bus_type' of type 'BusType' not supported
+func busGetSyncFunction_Set() error {
+	var err error
+	busGetSyncFunction_Once.Do(func() {
+		busGetSyncFunction, err = gi.FunctionInvokerNew("Gio", "bus_get_sync")
+	})
+	return err
+}
+
+// BusGetSync is a representation of the C type g_bus_get_sync.
+func BusGetSync(busType BusType, cancellable *Cancellable) *DBusConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(busType))
+	inArgs[1].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := busGetSyncFunction_Set()
+	if err == nil {
+		ret = busGetSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DBusConnection{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_bus_own_name' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
 
 var busUnownNameFunction *gi.Function
 var busUnownNameFunction_Once sync.Once
@@ -175,13 +203,13 @@ func BusUnwatchName(watcherId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
 // UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
 
 var contentTypeCanBeExecutableFunction *gi.Function
 var contentTypeCanBeExecutableFunction_Once sync.Once
@@ -500,7 +528,34 @@ func DbusAddressEscapeValue(string_ string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
+var dbusAddressGetForBusSyncFunction *gi.Function
+var dbusAddressGetForBusSyncFunction_Once sync.Once
+
+func dbusAddressGetForBusSyncFunction_Set() error {
+	var err error
+	dbusAddressGetForBusSyncFunction_Once.Do(func() {
+		dbusAddressGetForBusSyncFunction, err = gi.FunctionInvokerNew("Gio", "dbus_address_get_for_bus_sync")
+	})
+	return err
+}
+
+// DbusAddressGetForBusSync is a representation of the C type g_dbus_address_get_for_bus_sync.
+func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(busType))
+	inArgs[1].SetPointer(cancellable.Native)
+
+	var ret gi.Argument
+
+	err := dbusAddressGetForBusSyncFunction_Set()
+	if err == nil {
+		ret = dbusAddressGetForBusSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
@@ -888,7 +943,33 @@ func DbusIsUniqueName(string_ string) bool {
 
 // UNSUPPORTED : C value 'g_initable_newv' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_io_error_from_errno' : return type 'IOErrorEnum' not supported
+var ioErrorFromErrnoFunction *gi.Function
+var ioErrorFromErrnoFunction_Once sync.Once
+
+func ioErrorFromErrnoFunction_Set() error {
+	var err error
+	ioErrorFromErrnoFunction_Once.Do(func() {
+		ioErrorFromErrnoFunction, err = gi.FunctionInvokerNew("Gio", "io_error_from_errno")
+	})
+	return err
+}
+
+// IoErrorFromErrno is a representation of the C type g_io_error_from_errno.
+func IoErrorFromErrno(errNo int32) IOErrorEnum {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(errNo)
+
+	var ret gi.Argument
+
+	err := ioErrorFromErrnoFunction_Set()
+	if err == nil {
+		ret = ioErrorFromErrnoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOErrorEnum(ret.Int32())
+
+	return retGo
+}
 
 var ioErrorQuarkFunction *gi.Function
 var ioErrorQuarkFunction_Once sync.Once

@@ -24,7 +24,42 @@ type Pixbuf struct {
 	gobject.Object
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new' : parameter 'colorspace' of type 'Colorspace' not supported
+var pixbufNewFunction *gi.Function
+var pixbufNewFunction_Once sync.Once
+
+func pixbufNewFunction_Set() error {
+	var err error
+	pixbufNewFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFunction, err = pixbufStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// PixbufNew is a representation of the C type gdk_pixbuf_new.
+func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt32(int32(colorspace))
+	inArgs[1].SetBoolean(hasAlpha)
+	inArgs[2].SetInt32(bitsPerSample)
+	inArgs[3].SetInt32(width)
+	inArgs[4].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := pixbufNewFunction_Set()
+	if err == nil {
+		ret = pixbufNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_bytes' : parameter 'data' of type 'GLib.Bytes' not supported
 
@@ -283,11 +318,128 @@ func (recv *Pixbuf) ApplyEmbeddedOrientation() *Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_composite' : parameter 'interp_type' of type 'InterpType' not supported
+var pixbufCompositeFunction *gi.Function
+var pixbufCompositeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_composite_color' : parameter 'interp_type' of type 'InterpType' not supported
+func pixbufCompositeFunction_Set() error {
+	var err error
+	pixbufCompositeFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCompositeFunction, err = pixbufStruct.InvokerNew("composite")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_composite_color_simple' : parameter 'interp_type' of type 'InterpType' not supported
+// Composite is a representation of the C type gdk_pixbuf_composite.
+func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
+	var inArgs [12]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(dest.Native)
+	inArgs[2].SetInt32(destX)
+	inArgs[3].SetInt32(destY)
+	inArgs[4].SetInt32(destWidth)
+	inArgs[5].SetInt32(destHeight)
+	inArgs[6].SetFloat64(offsetX)
+	inArgs[7].SetFloat64(offsetY)
+	inArgs[8].SetFloat64(scaleX)
+	inArgs[9].SetFloat64(scaleY)
+	inArgs[10].SetInt32(int32(interpType))
+	inArgs[11].SetInt32(overallAlpha)
+
+	err := pixbufCompositeFunction_Set()
+	if err == nil {
+		pixbufCompositeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pixbufCompositeColorFunction *gi.Function
+var pixbufCompositeColorFunction_Once sync.Once
+
+func pixbufCompositeColorFunction_Set() error {
+	var err error
+	pixbufCompositeColorFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCompositeColorFunction, err = pixbufStruct.InvokerNew("composite_color")
+	})
+	return err
+}
+
+// CompositeColor is a representation of the C type gdk_pixbuf_composite_color.
+func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
+	var inArgs [17]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(dest.Native)
+	inArgs[2].SetInt32(destX)
+	inArgs[3].SetInt32(destY)
+	inArgs[4].SetInt32(destWidth)
+	inArgs[5].SetInt32(destHeight)
+	inArgs[6].SetFloat64(offsetX)
+	inArgs[7].SetFloat64(offsetY)
+	inArgs[8].SetFloat64(scaleX)
+	inArgs[9].SetFloat64(scaleY)
+	inArgs[10].SetInt32(int32(interpType))
+	inArgs[11].SetInt32(overallAlpha)
+	inArgs[12].SetInt32(checkX)
+	inArgs[13].SetInt32(checkY)
+	inArgs[14].SetInt32(checkSize)
+	inArgs[15].SetUint32(color1)
+	inArgs[16].SetUint32(color2)
+
+	err := pixbufCompositeColorFunction_Set()
+	if err == nil {
+		pixbufCompositeColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pixbufCompositeColorSimpleFunction *gi.Function
+var pixbufCompositeColorSimpleFunction_Once sync.Once
+
+func pixbufCompositeColorSimpleFunction_Set() error {
+	var err error
+	pixbufCompositeColorSimpleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufCompositeColorSimpleFunction, err = pixbufStruct.InvokerNew("composite_color_simple")
+	})
+	return err
+}
+
+// CompositeColorSimple is a representation of the C type gdk_pixbuf_composite_color_simple.
+func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, interpType InterpType, overallAlpha int32, checkSize int32, color1 uint32, color2 uint32) *Pixbuf {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(destWidth)
+	inArgs[2].SetInt32(destHeight)
+	inArgs[3].SetInt32(int32(interpType))
+	inArgs[4].SetInt32(overallAlpha)
+	inArgs[5].SetInt32(checkSize)
+	inArgs[6].SetUint32(color1)
+	inArgs[7].SetUint32(color2)
+
+	var ret gi.Argument
+
+	err := pixbufCompositeColorSimpleFunction_Set()
+	if err == nil {
+		ret = pixbufCompositeColorSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var pixbufCopyFunction *gi.Function
 var pixbufCopyFunction_Once sync.Once
@@ -517,7 +669,37 @@ func (recv *Pixbuf) GetByteLength() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_colorspace' : return type 'Colorspace' not supported
+var pixbufGetColorspaceFunction *gi.Function
+var pixbufGetColorspaceFunction_Once sync.Once
+
+func pixbufGetColorspaceFunction_Set() error {
+	var err error
+	pixbufGetColorspaceFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufGetColorspaceFunction, err = pixbufStruct.InvokerNew("get_colorspace")
+	})
+	return err
+}
+
+// GetColorspace is a representation of the C type gdk_pixbuf_get_colorspace.
+func (recv *Pixbuf) GetColorspace() Colorspace {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+
+	var ret gi.Argument
+
+	err := pixbufGetColorspaceFunction_Set()
+	if err == nil {
+		ret = pixbufGetColorspaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Colorspace(ret.Int32())
+
+	return retGo
+}
 
 var pixbufGetHasAlphaFunction *gi.Function
 var pixbufGetHasAlphaFunction_Once sync.Once
@@ -911,7 +1093,39 @@ func (recv *Pixbuf) RemoveOption(key string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_rotate_simple' : parameter 'angle' of type 'PixbufRotation' not supported
+var pixbufRotateSimpleFunction *gi.Function
+var pixbufRotateSimpleFunction_Once sync.Once
+
+func pixbufRotateSimpleFunction_Set() error {
+	var err error
+	pixbufRotateSimpleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufRotateSimpleFunction, err = pixbufStruct.InvokerNew("rotate_simple")
+	})
+	return err
+}
+
+// RotateSimple is a representation of the C type gdk_pixbuf_rotate_simple.
+func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(int32(angle))
+
+	var ret gi.Argument
+
+	err := pixbufRotateSimpleFunction_Set()
+	if err == nil {
+		ret = pixbufRotateSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var pixbufSaturateAndPixelateFunction *gi.Function
 var pixbufSaturateAndPixelateFunction_Once sync.Once
@@ -964,9 +1178,79 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_savev' : parameter 'option_keys' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_scale' : parameter 'interp_type' of type 'InterpType' not supported
+var pixbufScaleFunction *gi.Function
+var pixbufScaleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_scale_simple' : parameter 'interp_type' of type 'InterpType' not supported
+func pixbufScaleFunction_Set() error {
+	var err error
+	pixbufScaleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufScaleFunction, err = pixbufStruct.InvokerNew("scale")
+	})
+	return err
+}
+
+// Scale is a representation of the C type gdk_pixbuf_scale.
+func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
+	var inArgs [11]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetPointer(dest.Native)
+	inArgs[2].SetInt32(destX)
+	inArgs[3].SetInt32(destY)
+	inArgs[4].SetInt32(destWidth)
+	inArgs[5].SetInt32(destHeight)
+	inArgs[6].SetFloat64(offsetX)
+	inArgs[7].SetFloat64(offsetY)
+	inArgs[8].SetFloat64(scaleX)
+	inArgs[9].SetFloat64(scaleY)
+	inArgs[10].SetInt32(int32(interpType))
+
+	err := pixbufScaleFunction_Set()
+	if err == nil {
+		pixbufScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pixbufScaleSimpleFunction *gi.Function
+var pixbufScaleSimpleFunction_Once sync.Once
+
+func pixbufScaleSimpleFunction_Set() error {
+	var err error
+	pixbufScaleSimpleFunction_Once.Do(func() {
+		err = pixbufStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufScaleSimpleFunction, err = pixbufStruct.InvokerNew("scale_simple")
+	})
+	return err
+}
+
+// ScaleSimple is a representation of the C type gdk_pixbuf_scale_simple.
+func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType InterpType) *Pixbuf {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native)
+	inArgs[1].SetInt32(destWidth)
+	inArgs[2].SetInt32(destHeight)
+	inArgs[3].SetInt32(int32(interpType))
+
+	var ret gi.Argument
+
+	err := pixbufScaleSimpleFunction_Set()
+	if err == nil {
+		ret = pixbufScaleSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Pixbuf{}
+	retGo.Native = ret.Pointer()
+
+	return retGo
+}
 
 var pixbufSetOptionFunction *gi.Function
 var pixbufSetOptionFunction_Once sync.Once
