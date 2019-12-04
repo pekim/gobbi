@@ -49,9 +49,9 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 
 func (fi *Function) initTracing() {
 	if fi.ownerName != "" {
-		fi.fullName = fmt.Sprintf("%s.%s.%s", fi.namespace, fi.ownerName, fi.funcName)
+		fi.fullName = fmt.Sprintf("%s  %s  %s", fi.namespace, fi.ownerName, fi.funcName)
 	} else {
-		fi.fullName = fmt.Sprintf("%s.%s", fi.namespace, fi.funcName)
+		fi.fullName = fmt.Sprintf("%s  %s", fi.namespace, fi.funcName)
 	}
 
 	returnTypeInfo := C.g_callable_info_get_return_type(fi.info)
@@ -107,21 +107,18 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 }
 
 func (fi *Function) trace(in []Argument, out []Argument, returnValue Argument) {
-	inFormatted := ""
-	if len(in) > 0 {
-		inFormatted = fmt.Sprintf("  in  %v\n", in)
+	trace(fmt.Sprintf("%s\n%s%s%s\n",
+		fi.fullName,
+		fi.formatTraceData(in, "in", len(in) > 0),
+		fi.formatTraceData(out, "out", len(out) > 0),
+		fi.formatTraceData(returnValue, "ret", fi.hasReturnValue),
+	))
+}
+
+func (fi *Function) formatTraceData(data interface{}, name string, include bool) string {
+	if include {
+		return fmt.Sprintf("  %3s %v\n", name, data)
 	}
 
-	outFormatted := ""
-	if len(out) > 0 {
-		outFormatted = fmt.Sprintf("  out %v\n", out)
-	}
-
-	returnValueFormated := ""
-	if fi.hasReturnValue {
-		returnValueFormated = fmt.Sprintf("  ret %v\n", returnValue)
-	}
-
-	trace(fmt.Sprintf("%s\n%s%s%s",
-		fi.fullName, inFormatted, outFormatted, returnValueFormated))
+	return ""
 }
