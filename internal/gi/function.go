@@ -10,11 +10,12 @@ import (
 )
 
 type Function struct {
-	namespace string
-	ownerName string
-	funcName  string
-	fullName  string
-	info      *C.GIFunctionInfo
+	namespace      string
+	ownerName      string
+	funcName       string
+	fullName       string
+	hasReturnValue bool
+	info           *C.GIFunctionInfo
 }
 
 func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
@@ -36,14 +37,26 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 		return nil, err
 	}
 
-	fullName := fmt.Sprintf("%s.%s", namespace, funcName)
-
-	return &Function{
+	fi := &Function{
 		namespace: namespace,
 		funcName:  funcName,
-		fullName:  fullName,
 		info:      invoker,
-	}, nil
+	}
+	fi.initTracing()
+
+	return fi, nil
+}
+
+func (fi *Function) initTracing() {
+	if fi.ownerName != "" {
+		fi.fullName = fmt.Sprintf("%s.%s.%s", fi.namespace, fi.ownerName, fi.funcName)
+	} else {
+		fi.fullName = fmt.Sprintf("%s.%s", fi.namespace, fi.funcName)
+	}
+
+	returnTypeInfo := C.g_callable_info_get_return_type(fi.info)
+	returnTypeTag := C.g_type_info_get_tag(returnTypeInfo)
+	fi.hasReturnValue = returnTypeTag != C.GI_TYPE_TAG_VOID
 }
 
 func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
@@ -76,8 +89,7 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 	) == C.TRUE
 
 	if tracing() {
-		trace(fmt.Sprintf("%s\n  in  %v\n  out %v\n  ret %v\n",
-			fi.fullName, in, out, returnValue))
+		fi.trace(in, out, returnValue)
 	}
 
 	// check error
@@ -92,4 +104,24 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 	}
 
 	return returnValue
+}
+
+func (fi *Function) trace(in []Argument, out []Argument, returnValue Argument) {
+	inFormatted := ""
+	if len(in) > 0 {
+		inFormatted = fmt.Sprintf("  in  %v\n", in)
+	}
+
+	outFormatted := ""
+	if len(out) > 0 {
+		outFormatted = fmt.Sprintf("  out %v\n", out)
+	}
+
+	returnValueFormated := ""
+	if fi.hasReturnValue {
+		returnValueFormated = fmt.Sprintf("  ret %v\n", returnValue)
+	}
+
+	trace(fmt.Sprintf("%s\n%s%s%s",
+		fi.fullName, inFormatted, outFormatted, returnValueFormated))
 }
