@@ -13,6 +13,7 @@ type Function struct {
 	namespace string
 	ownerName string
 	funcName  string
+	fullName  string
 	info      *C.GIFunctionInfo
 }
 
@@ -35,9 +36,12 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 		return nil, err
 	}
 
+	fullName := fmt.Sprintf("%s.%s", namespace, funcName)
+
 	return &Function{
 		namespace: namespace,
 		funcName:  funcName,
+		fullName:  fullName,
 		info:      invoker,
 	}, nil
 }
@@ -70,6 +74,11 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 		(*C.GIArgument)(&returnValue),
 		&err,
 	) == C.TRUE
+
+	if tracing() {
+		trace(fmt.Sprintf("%s\n  in  %v\n  out %v\n  ret %v\n",
+			fi.fullName, in, out, returnValue))
+	}
 
 	// check error
 	if err != nil {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/pekim/gobbi"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
@@ -16,10 +17,14 @@ func main() {
 		panic(err)
 	})
 
+	gobbi.SetTraceHandler(func(message string) {
+		fmt.Print(message)
+	})
+
 	gtk.Init()
 
 	window := gtk.WindowNew(gtk.WindowType_Toplevel)
-	window.SetTitle("qaz")
+	window.SetTitle("gobbi")
 	window.SetDefaultSize(400, 300)
 	window.ShowAll()
 

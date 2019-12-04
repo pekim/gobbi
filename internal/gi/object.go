@@ -55,10 +55,13 @@ func (s *Object) InvokerNew(funcName string) (*Function, error) {
 		return nil, err
 	}
 
+	fullName := fmt.Sprintf("%s.%s.%s", s.namespace, s.objectName, funcName)
+
 	return &Function{
 		namespace: s.namespace,
 		ownerName: s.objectName,
 		funcName:  funcName,
+		fullName:  fullName,
 		info:      invoker,
 	}, nil
 }

@@ -11,7 +11,8 @@ import "github.com/pekim/gobbi/internal/gi"
 	A library is not installed.
 	A function is not available in the installed version of a library.
 	A record or class is not available in the installed version of a library.
-*/
+
+	Pass nil to remove a previous set handler.*/
 func SetErrorHandler(handler gi.ErrorHandler) {
 	gi.SetErrorHandler(handler)
 }
