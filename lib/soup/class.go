@@ -7,6 +7,7 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var addressObject *gi.Object
@@ -21,10 +22,10 @@ func addressObject_Set() error {
 }
 
 type Address struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AddressNewFromNative(native uintptr) *Address {
+func AddressNewFromNative(native unsafe.Pointer) *Address {
 	return &Address{native: native}
 }
 func (recv *Address) Object() *gobject.Object {
@@ -381,10 +382,10 @@ func authObject_Set() error {
 }
 
 type Auth struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthNewFromNative(native uintptr) *Auth {
+func AuthNewFromNative(native unsafe.Pointer) *Auth {
 	return &Auth{native: native}
 }
 func (recv *Auth) Object() *gobject.Object {
@@ -876,10 +877,10 @@ func authBasicObject_Set() error {
 }
 
 type AuthBasic struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthBasicNewFromNative(native uintptr) *AuthBasic {
+func AuthBasicNewFromNative(native unsafe.Pointer) *AuthBasic {
 	return &AuthBasic{native: native}
 }
 func (recv *AuthBasic) Auth() *Auth {
@@ -901,10 +902,10 @@ func authDigestObject_Set() error {
 }
 
 type AuthDigest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthDigestNewFromNative(native uintptr) *AuthDigest {
+func AuthDigestNewFromNative(native unsafe.Pointer) *AuthDigest {
 	return &AuthDigest{native: native}
 }
 func (recv *AuthDigest) Auth() *Auth {
@@ -926,10 +927,10 @@ func authDomainObject_Set() error {
 }
 
 type AuthDomain struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthDomainNewFromNative(native uintptr) *AuthDomain {
+func AuthDomainNewFromNative(native unsafe.Pointer) *AuthDomain {
 	return &AuthDomain{native: native}
 }
 func (recv *AuthDomain) Object() *gobject.Object {
@@ -1210,10 +1211,10 @@ func authDomainBasicObject_Set() error {
 }
 
 type AuthDomainBasic struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthDomainBasicNewFromNative(native uintptr) *AuthDomainBasic {
+func AuthDomainBasicNewFromNative(native unsafe.Pointer) *AuthDomainBasic {
 	return &AuthDomainBasic{native: native}
 }
 func (recv *AuthDomainBasic) AuthDomain() *AuthDomain {
@@ -1253,10 +1254,10 @@ func authDomainDigestObject_Set() error {
 }
 
 type AuthDomainDigest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthDomainDigestNewFromNative(native uintptr) *AuthDomainDigest {
+func AuthDomainDigestNewFromNative(native unsafe.Pointer) *AuthDomainDigest {
 	return &AuthDomainDigest{native: native}
 }
 func (recv *AuthDomainDigest) AuthDomain() *AuthDomain {
@@ -1296,10 +1297,10 @@ func authManagerObject_Set() error {
 }
 
 type AuthManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthManagerNewFromNative(native uintptr) *AuthManager {
+func AuthManagerNewFromNative(native unsafe.Pointer) *AuthManager {
 	return &AuthManager{native: native}
 }
 func (recv *AuthManager) Object() *gobject.Object {
@@ -1394,10 +1395,10 @@ func authNTLMObject_Set() error {
 }
 
 type AuthNTLM struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthNTLMNewFromNative(native uintptr) *AuthNTLM {
+func AuthNTLMNewFromNative(native unsafe.Pointer) *AuthNTLM {
 	return &AuthNTLM{native: native}
 }
 func (recv *AuthNTLM) Auth() *Auth {
@@ -1419,10 +1420,10 @@ func authNegotiateObject_Set() error {
 }
 
 type AuthNegotiate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthNegotiateNewFromNative(native uintptr) *AuthNegotiate {
+func AuthNegotiateNewFromNative(native unsafe.Pointer) *AuthNegotiate {
 	return &AuthNegotiate{native: native}
 }
 func (recv *AuthNegotiate) Auth() *Auth {
@@ -1444,10 +1445,10 @@ func cacheObject_Set() error {
 }
 
 type Cache struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CacheNewFromNative(native uintptr) *Cache {
+func CacheNewFromNative(native unsafe.Pointer) *Cache {
 	return &Cache{native: native}
 }
 func (recv *Cache) Object() *gobject.Object {
@@ -1690,10 +1691,10 @@ func contentDecoderObject_Set() error {
 }
 
 type ContentDecoder struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContentDecoderNewFromNative(native uintptr) *ContentDecoder {
+func ContentDecoderNewFromNative(native unsafe.Pointer) *ContentDecoder {
 	return &ContentDecoder{native: native}
 }
 func (recv *ContentDecoder) Object() *gobject.Object {
@@ -1730,10 +1731,10 @@ func contentSnifferObject_Set() error {
 }
 
 type ContentSniffer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContentSnifferNewFromNative(native uintptr) *ContentSniffer {
+func ContentSnifferNewFromNative(native unsafe.Pointer) *ContentSniffer {
 	return &ContentSniffer{native: native}
 }
 func (recv *ContentSniffer) Object() *gobject.Object {
@@ -1834,10 +1835,10 @@ func cookieJarObject_Set() error {
 }
 
 type CookieJar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CookieJarNewFromNative(native uintptr) *CookieJar {
+func CookieJarNewFromNative(native unsafe.Pointer) *CookieJar {
 	return &CookieJar{native: native}
 }
 func (recv *CookieJar) Object() *gobject.Object {
@@ -2229,10 +2230,10 @@ func cookieJarDBObject_Set() error {
 }
 
 type CookieJarDB struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CookieJarDBNewFromNative(native uintptr) *CookieJarDB {
+func CookieJarDBNewFromNative(native unsafe.Pointer) *CookieJarDB {
 	return &CookieJarDB{native: native}
 }
 func (recv *CookieJarDB) CookieJar() *CookieJar {
@@ -2301,10 +2302,10 @@ func cookieJarTextObject_Set() error {
 }
 
 type CookieJarText struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CookieJarTextNewFromNative(native uintptr) *CookieJarText {
+func CookieJarTextNewFromNative(native unsafe.Pointer) *CookieJarText {
 	return &CookieJarText{native: native}
 }
 func (recv *CookieJarText) CookieJar() *CookieJar {
@@ -2373,10 +2374,10 @@ func hSTSEnforcerObject_Set() error {
 }
 
 type HSTSEnforcer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HSTSEnforcerNewFromNative(native uintptr) *HSTSEnforcer {
+func HSTSEnforcerNewFromNative(native unsafe.Pointer) *HSTSEnforcer {
 	return &HSTSEnforcer{native: native}
 }
 func (recv *HSTSEnforcer) Object() *gobject.Object {
@@ -2571,10 +2572,10 @@ func hSTSEnforcerDBObject_Set() error {
 }
 
 type HSTSEnforcerDB struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HSTSEnforcerDBNewFromNative(native uintptr) *HSTSEnforcerDB {
+func HSTSEnforcerDBNewFromNative(native unsafe.Pointer) *HSTSEnforcerDB {
 	return &HSTSEnforcerDB{native: native}
 }
 func (recv *HSTSEnforcerDB) HSTSEnforcer() *HSTSEnforcer {
@@ -2656,10 +2657,10 @@ func loggerObject_Set() error {
 }
 
 type Logger struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LoggerNewFromNative(native uintptr) *Logger {
+func LoggerNewFromNative(native unsafe.Pointer) *Logger {
 	return &Logger{native: native}
 }
 func (recv *Logger) Object() *gobject.Object {
@@ -2779,10 +2780,10 @@ func messageObject_Set() error {
 }
 
 type Message struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MessageNewFromNative(native uintptr) *Message {
+func MessageNewFromNative(native unsafe.Pointer) *Message {
 	return &Message{native: native}
 }
 func (recv *Message) Object() *gobject.Object {
@@ -3756,10 +3757,10 @@ func multipartInputStreamObject_Set() error {
 }
 
 type MultipartInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MultipartInputStreamNewFromNative(native uintptr) *MultipartInputStream {
+func MultipartInputStreamNewFromNative(native unsafe.Pointer) *MultipartInputStream {
 	return &MultipartInputStream{native: native}
 }
 func (recv *MultipartInputStream) FilterInputStream() *gio.FilterInputStream {
@@ -3828,10 +3829,10 @@ func proxyResolverDefaultObject_Set() error {
 }
 
 type ProxyResolverDefault struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyResolverDefaultNewFromNative(native uintptr) *ProxyResolverDefault {
+func ProxyResolverDefaultNewFromNative(native unsafe.Pointer) *ProxyResolverDefault {
 	return &ProxyResolverDefault{native: native}
 }
 func (recv *ProxyResolverDefault) Object() *gobject.Object {
@@ -3854,10 +3855,10 @@ func requestObject_Set() error {
 }
 
 type Request struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RequestNewFromNative(native uintptr) *Request {
+func RequestNewFromNative(native unsafe.Pointer) *Request {
 	return &Request{native: native}
 }
 func (recv *Request) Object() *gobject.Object {
@@ -4028,10 +4029,10 @@ func requestDataObject_Set() error {
 }
 
 type RequestData struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RequestDataNewFromNative(native uintptr) *RequestData {
+func RequestDataNewFromNative(native unsafe.Pointer) *RequestData {
 	return &RequestData{native: native}
 }
 func (recv *RequestData) Request() *Request {
@@ -4081,10 +4082,10 @@ func requestFileObject_Set() error {
 }
 
 type RequestFile struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RequestFileNewFromNative(native uintptr) *RequestFile {
+func RequestFileNewFromNative(native unsafe.Pointer) *RequestFile {
 	return &RequestFile{native: native}
 }
 func (recv *RequestFile) Request() *Request {
@@ -4136,10 +4137,10 @@ func requestHTTPObject_Set() error {
 }
 
 type RequestHTTP struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RequestHTTPNewFromNative(native uintptr) *RequestHTTP {
+func RequestHTTPNewFromNative(native unsafe.Pointer) *RequestHTTP {
 	return &RequestHTTP{native: native}
 }
 func (recv *RequestHTTP) Request() *Request {
@@ -4221,10 +4222,10 @@ func requesterObject_Set() error {
 }
 
 type Requester struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RequesterNewFromNative(native uintptr) *Requester {
+func RequesterNewFromNative(native unsafe.Pointer) *Requester {
 	return &Requester{native: native}
 }
 func (recv *Requester) Object() *gobject.Object {
@@ -4357,10 +4358,10 @@ func serverObject_Set() error {
 }
 
 type Server struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ServerNewFromNative(native uintptr) *Server {
+func ServerNewFromNative(native unsafe.Pointer) *Server {
 	return &Server{native: native}
 }
 func (recv *Server) Object() *gobject.Object {
@@ -4800,10 +4801,10 @@ func sessionObject_Set() error {
 }
 
 type Session struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SessionNewFromNative(native uintptr) *Session {
+func SessionNewFromNative(native unsafe.Pointer) *Session {
 	return &Session{native: native}
 }
 func (recv *Session) Object() *gobject.Object {
@@ -5303,10 +5304,10 @@ func sessionAsyncObject_Set() error {
 }
 
 type SessionAsync struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SessionAsyncNewFromNative(native uintptr) *SessionAsync {
+func SessionAsyncNewFromNative(native unsafe.Pointer) *SessionAsync {
 	return &SessionAsync{native: native}
 }
 func (recv *SessionAsync) Session() *Session {
@@ -5374,10 +5375,10 @@ func sessionSyncObject_Set() error {
 }
 
 type SessionSync struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SessionSyncNewFromNative(native uintptr) *SessionSync {
+func SessionSyncNewFromNative(native unsafe.Pointer) *SessionSync {
 	return &SessionSync{native: native}
 }
 func (recv *SessionSync) Session() *Session {
@@ -5445,10 +5446,10 @@ func socketObject_Set() error {
 }
 
 type Socket struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketNewFromNative(native uintptr) *Socket {
+func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
 func (recv *Socket) Object() *gobject.Object {
@@ -5707,10 +5708,10 @@ func websocketConnectionObject_Set() error {
 }
 
 type WebsocketConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebsocketConnectionNewFromNative(native uintptr) *WebsocketConnection {
+func WebsocketConnectionNewFromNative(native unsafe.Pointer) *WebsocketConnection {
 	return &WebsocketConnection{native: native}
 }
 func (recv *WebsocketConnection) Object() *gobject.Object {
@@ -6150,10 +6151,10 @@ func websocketExtensionObject_Set() error {
 }
 
 type WebsocketExtension struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebsocketExtensionNewFromNative(native uintptr) *WebsocketExtension {
+func WebsocketExtensionNewFromNative(native unsafe.Pointer) *WebsocketExtension {
 	return &WebsocketExtension{native: native}
 }
 func (recv *WebsocketExtension) Object() *gobject.Object {
@@ -6246,10 +6247,10 @@ func websocketExtensionDeflateObject_Set() error {
 }
 
 type WebsocketExtensionDeflate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebsocketExtensionDeflateNewFromNative(native uintptr) *WebsocketExtensionDeflate {
+func WebsocketExtensionDeflateNewFromNative(native unsafe.Pointer) *WebsocketExtensionDeflate {
 	return &WebsocketExtensionDeflate{native: native}
 }
 func (recv *WebsocketExtensionDeflate) WebsocketExtension() *WebsocketExtension {
@@ -6285,10 +6286,10 @@ func websocketExtensionManagerObject_Set() error {
 }
 
 type WebsocketExtensionManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebsocketExtensionManagerNewFromNative(native uintptr) *WebsocketExtensionManager {
+func WebsocketExtensionManagerNewFromNative(native unsafe.Pointer) *WebsocketExtensionManager {
 	return &WebsocketExtensionManager{native: native}
 }
 func (recv *WebsocketExtensionManager) Object() *gobject.Object {

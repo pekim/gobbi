@@ -7,6 +7,7 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
+	"unsafe"
 )
 
 var fontMapObject *gi.Object
@@ -21,10 +22,10 @@ func fontMapObject_Set() error {
 }
 
 type FontMap struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontMapNewFromNative(native uintptr) *FontMap {
+func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 	return &FontMap{native: native}
 }
 func (recv *FontMap) FontMap() *pango.FontMap {

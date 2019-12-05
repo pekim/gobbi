@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var analysisStruct *gi.Struct
@@ -20,10 +21,10 @@ func analysisStruct_Set() error {
 }
 
 type Analysis struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AnalysisNewFromNative(native uintptr) *Analysis {
+func AnalysisNewFromNative(native unsafe.Pointer) *Analysis {
 	return &Analysis{native: native}
 }
 
@@ -170,10 +171,10 @@ func attrClassStruct_Set() error {
 }
 
 type AttrClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrClassNewFromNative(native uintptr) *AttrClass {
+func AttrClassNewFromNative(native unsafe.Pointer) *AttrClass {
 	return &AttrClass{native: native}
 }
 
@@ -230,10 +231,10 @@ func attrColorStruct_Set() error {
 }
 
 type AttrColor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrColorNewFromNative(native uintptr) *AttrColor {
+func AttrColorNewFromNative(native unsafe.Pointer) *AttrColor {
 	return &AttrColor{native: native}
 }
 
@@ -292,10 +293,10 @@ func attrFloatStruct_Set() error {
 }
 
 type AttrFloat struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrFloatNewFromNative(native uintptr) *AttrFloat {
+func AttrFloatNewFromNative(native unsafe.Pointer) *AttrFloat {
 	return &AttrFloat{native: native}
 }
 
@@ -354,10 +355,10 @@ func attrFontDescStruct_Set() error {
 }
 
 type AttrFontDesc struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrFontDescNewFromNative(native uintptr) *AttrFontDesc {
+func AttrFontDescNewFromNative(native unsafe.Pointer) *AttrFontDesc {
 	return &AttrFontDesc{native: native}
 }
 
@@ -416,10 +417,10 @@ func attrFontFeaturesStruct_Set() error {
 }
 
 type AttrFontFeatures struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrFontFeaturesNewFromNative(native uintptr) *AttrFontFeatures {
+func AttrFontFeaturesNewFromNative(native unsafe.Pointer) *AttrFontFeatures {
 	return &AttrFontFeatures{native: native}
 }
 
@@ -478,10 +479,10 @@ func attrIntStruct_Set() error {
 }
 
 type AttrInt struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrIntNewFromNative(native uintptr) *AttrInt {
+func AttrIntNewFromNative(native unsafe.Pointer) *AttrInt {
 	return &AttrInt{native: native}
 }
 
@@ -540,10 +541,10 @@ func attrIteratorStruct_Set() error {
 }
 
 type AttrIterator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrIteratorNewFromNative(native uintptr) *AttrIterator {
+func AttrIteratorNewFromNative(native unsafe.Pointer) *AttrIterator {
 	return &AttrIterator{native: native}
 }
 
@@ -736,10 +737,10 @@ func attrLanguageStruct_Set() error {
 }
 
 type AttrLanguage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrLanguageNewFromNative(native uintptr) *AttrLanguage {
+func AttrLanguageNewFromNative(native unsafe.Pointer) *AttrLanguage {
 	return &AttrLanguage{native: native}
 }
 
@@ -798,10 +799,10 @@ func attrListStruct_Set() error {
 }
 
 type AttrList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrListNewFromNative(native uintptr) *AttrList {
+func AttrListNewFromNative(native unsafe.Pointer) *AttrList {
 	return &AttrList{native: native}
 }
 
@@ -1091,10 +1092,10 @@ func attrShapeStruct_Set() error {
 }
 
 type AttrShape struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrShapeNewFromNative(native uintptr) *AttrShape {
+func AttrShapeNewFromNative(native unsafe.Pointer) *AttrShape {
 	return &AttrShape{native: native}
 }
 
@@ -1179,10 +1180,10 @@ func attrSizeStruct_Set() error {
 }
 
 type AttrSize struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrSizeNewFromNative(native uintptr) *AttrSize {
+func AttrSizeNewFromNative(native unsafe.Pointer) *AttrSize {
 	return &AttrSize{native: native}
 }
 
@@ -1255,10 +1256,10 @@ func attrStringStruct_Set() error {
 }
 
 type AttrString struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttrStringNewFromNative(native uintptr) *AttrString {
+func AttrStringNewFromNative(native unsafe.Pointer) *AttrString {
 	return &AttrString{native: native}
 }
 
@@ -1317,10 +1318,10 @@ func attributeStruct_Set() error {
 }
 
 type Attribute struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttributeNewFromNative(native uintptr) *Attribute {
+func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
 	return &Attribute{native: native}
 }
 
@@ -1515,10 +1516,10 @@ func colorStruct_Set() error {
 }
 
 type Color struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorNewFromNative(native uintptr) *Color {
+func ColorNewFromNative(native unsafe.Pointer) *Color {
 	return &Color{native: native}
 }
 
@@ -1716,10 +1717,10 @@ func contextClassStruct_Set() error {
 }
 
 type ContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextClassNewFromNative(native uintptr) *ContextClass {
+func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
 	return &ContextClass{native: native}
 }
 
@@ -1750,10 +1751,10 @@ func coverageStruct_Set() error {
 }
 
 type Coverage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CoverageNewFromNative(native uintptr) *Coverage {
+func CoverageNewFromNative(native unsafe.Pointer) *Coverage {
 	return &Coverage{native: native}
 }
 
@@ -1970,10 +1971,10 @@ func engineClassStruct_Set() error {
 }
 
 type EngineClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineClassNewFromNative(native uintptr) *EngineClass {
+func EngineClassNewFromNative(native unsafe.Pointer) *EngineClass {
 	return &EngineClass{native: native}
 }
 
@@ -2004,10 +2005,10 @@ func engineInfoStruct_Set() error {
 }
 
 type EngineInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineInfoNewFromNative(native uintptr) *EngineInfo {
+func EngineInfoNewFromNative(native unsafe.Pointer) *EngineInfo {
 	return &EngineInfo{native: native}
 }
 
@@ -2108,10 +2109,10 @@ func engineLangClassStruct_Set() error {
 }
 
 type EngineLangClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineLangClassNewFromNative(native uintptr) *EngineLangClass {
+func EngineLangClassNewFromNative(native unsafe.Pointer) *EngineLangClass {
 	return &EngineLangClass{native: native}
 }
 
@@ -2146,10 +2147,10 @@ func engineScriptInfoStruct_Set() error {
 }
 
 type EngineScriptInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineScriptInfoNewFromNative(native uintptr) *EngineScriptInfo {
+func EngineScriptInfoNewFromNative(native unsafe.Pointer) *EngineScriptInfo {
 	return &EngineScriptInfo{native: native}
 }
 
@@ -2208,10 +2209,10 @@ func engineShapeClassStruct_Set() error {
 }
 
 type EngineShapeClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineShapeClassNewFromNative(native uintptr) *EngineShapeClass {
+func EngineShapeClassNewFromNative(native unsafe.Pointer) *EngineShapeClass {
 	return &EngineShapeClass{native: native}
 }
 
@@ -2250,10 +2251,10 @@ func fontClassStruct_Set() error {
 }
 
 type FontClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontClassNewFromNative(native uintptr) *FontClass {
+func FontClassNewFromNative(native unsafe.Pointer) *FontClass {
 	return &FontClass{native: native}
 }
 
@@ -2324,10 +2325,10 @@ func fontDescriptionStruct_Set() error {
 }
 
 type FontDescription struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontDescriptionNewFromNative(native uintptr) *FontDescription {
+func FontDescriptionNewFromNative(native unsafe.Pointer) *FontDescription {
 	return &FontDescription{native: native}
 }
 
@@ -3299,10 +3300,10 @@ func fontFaceClassStruct_Set() error {
 }
 
 type FontFaceClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontFaceClassNewFromNative(native uintptr) *FontFaceClass {
+func FontFaceClassNewFromNative(native unsafe.Pointer) *FontFaceClass {
 	return &FontFaceClass{native: native}
 }
 
@@ -3361,10 +3362,10 @@ func fontFamilyClassStruct_Set() error {
 }
 
 type FontFamilyClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontFamilyClassNewFromNative(native uintptr) *FontFamilyClass {
+func FontFamilyClassNewFromNative(native unsafe.Pointer) *FontFamilyClass {
 	return &FontFamilyClass{native: native}
 }
 
@@ -3423,10 +3424,10 @@ func fontMapClassStruct_Set() error {
 }
 
 type FontMapClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontMapClassNewFromNative(native uintptr) *FontMapClass {
+func FontMapClassNewFromNative(native unsafe.Pointer) *FontMapClass {
 	return &FontMapClass{native: native}
 }
 
@@ -3503,10 +3504,10 @@ func fontMetricsStruct_Set() error {
 }
 
 type FontMetrics struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontMetricsNewFromNative(native uintptr) *FontMetrics {
+func FontMetricsNewFromNative(native unsafe.Pointer) *FontMetrics {
 	return &FontMetrics{native: native}
 }
 
@@ -3868,10 +3869,10 @@ func fontsetClassStruct_Set() error {
 }
 
 type FontsetClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontsetClassNewFromNative(native uintptr) *FontsetClass {
+func FontsetClassNewFromNative(native unsafe.Pointer) *FontsetClass {
 	return &FontsetClass{native: native}
 }
 
@@ -3938,10 +3939,10 @@ func fontsetSimpleClassStruct_Set() error {
 }
 
 type FontsetSimpleClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontsetSimpleClassNewFromNative(native uintptr) *FontsetSimpleClass {
+func FontsetSimpleClassNewFromNative(native unsafe.Pointer) *FontsetSimpleClass {
 	return &FontsetSimpleClass{native: native}
 }
 
@@ -3972,10 +3973,10 @@ func glyphGeometryStruct_Set() error {
 }
 
 type GlyphGeometry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphGeometryNewFromNative(native uintptr) *GlyphGeometry {
+func GlyphGeometryNewFromNative(native unsafe.Pointer) *GlyphGeometry {
 	return &GlyphGeometry{native: native}
 }
 
@@ -4048,10 +4049,10 @@ func glyphInfoStruct_Set() error {
 }
 
 type GlyphInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphInfoNewFromNative(native uintptr) *GlyphInfo {
+func GlyphInfoNewFromNative(native unsafe.Pointer) *GlyphInfo {
 	return &GlyphInfo{native: native}
 }
 
@@ -4124,10 +4125,10 @@ func glyphItemStruct_Set() error {
 }
 
 type GlyphItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphItemNewFromNative(native uintptr) *GlyphItem {
+func GlyphItemNewFromNative(native unsafe.Pointer) *GlyphItem {
 	return &GlyphItem{native: native}
 }
 
@@ -4286,10 +4287,10 @@ func glyphItemIterStruct_Set() error {
 }
 
 type GlyphItemIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphItemIterNewFromNative(native uintptr) *GlyphItemIter {
+func GlyphItemIterNewFromNative(native unsafe.Pointer) *GlyphItemIter {
 	return &GlyphItemIter{native: native}
 }
 
@@ -4624,10 +4625,10 @@ func glyphStringStruct_Set() error {
 }
 
 type GlyphString struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphStringNewFromNative(native uintptr) *GlyphString {
+func GlyphStringNewFromNative(native unsafe.Pointer) *GlyphString {
 	return &GlyphString{native: native}
 }
 
@@ -4972,10 +4973,10 @@ func glyphVisAttrStruct_Set() error {
 }
 
 type GlyphVisAttr struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlyphVisAttrNewFromNative(native uintptr) *GlyphVisAttr {
+func GlyphVisAttrNewFromNative(native unsafe.Pointer) *GlyphVisAttr {
 	return &GlyphVisAttr{native: native}
 }
 
@@ -5020,10 +5021,10 @@ func includedModuleStruct_Set() error {
 }
 
 type IncludedModule struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IncludedModuleNewFromNative(native uintptr) *IncludedModule {
+func IncludedModuleNewFromNative(native unsafe.Pointer) *IncludedModule {
 	return &IncludedModule{native: native}
 }
 
@@ -5070,10 +5071,10 @@ func itemStruct_Set() error {
 }
 
 type Item struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ItemNewFromNative(native uintptr) *Item {
+func ItemNewFromNative(native unsafe.Pointer) *Item {
 	return &Item{native: native}
 }
 
@@ -5269,10 +5270,10 @@ func languageStruct_Set() error {
 }
 
 type Language struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageNewFromNative(native uintptr) *Language {
+func LanguageNewFromNative(native unsafe.Pointer) *Language {
 	return &Language{native: native}
 }
 
@@ -5465,10 +5466,10 @@ func layoutClassStruct_Set() error {
 }
 
 type LayoutClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LayoutClassNewFromNative(native uintptr) *LayoutClass {
+func LayoutClassNewFromNative(native unsafe.Pointer) *LayoutClass {
 	return &LayoutClass{native: native}
 }
 
@@ -5499,10 +5500,10 @@ func layoutIterStruct_Set() error {
 }
 
 type LayoutIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LayoutIterNewFromNative(native uintptr) *LayoutIter {
+func LayoutIterNewFromNative(native unsafe.Pointer) *LayoutIter {
 	return &LayoutIter{native: native}
 }
 
@@ -6114,10 +6115,10 @@ func layoutLineStruct_Set() error {
 }
 
 type LayoutLine struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LayoutLineNewFromNative(native uintptr) *LayoutLine {
+func LayoutLineNewFromNative(native unsafe.Pointer) *LayoutLine {
 	return &LayoutLine{native: native}
 }
 
@@ -6420,10 +6421,10 @@ func logAttrStruct_Set() error {
 }
 
 type LogAttr struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LogAttrNewFromNative(native uintptr) *LogAttr {
+func LogAttrNewFromNative(native unsafe.Pointer) *LogAttr {
 	return &LogAttr{native: native}
 }
 
@@ -6636,10 +6637,10 @@ func mapStruct_Set() error {
 }
 
 type Map struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MapNewFromNative(native uintptr) *Map {
+func MapNewFromNative(native unsafe.Pointer) *Map {
 	return &Map{native: native}
 }
 
@@ -6705,10 +6706,10 @@ func mapEntryStruct_Set() error {
 }
 
 type MapEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MapEntryNewFromNative(native uintptr) *MapEntry {
+func MapEntryNewFromNative(native unsafe.Pointer) *MapEntry {
 	return &MapEntry{native: native}
 }
 
@@ -6739,10 +6740,10 @@ func matrixStruct_Set() error {
 }
 
 type Matrix struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MatrixNewFromNative(native uintptr) *Matrix {
+func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
 	return &Matrix{native: native}
 }
 
@@ -7236,10 +7237,10 @@ func rectangleStruct_Set() error {
 }
 
 type Rectangle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RectangleNewFromNative(native uintptr) *Rectangle {
+func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
@@ -7326,10 +7327,10 @@ func rendererClassStruct_Set() error {
 }
 
 type RendererClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RendererClassNewFromNative(native uintptr) *RendererClass {
+func RendererClassNewFromNative(native unsafe.Pointer) *RendererClass {
 	return &RendererClass{native: native}
 }
 
@@ -7416,10 +7417,10 @@ func rendererPrivateStruct_Set() error {
 }
 
 type RendererPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RendererPrivateNewFromNative(native uintptr) *RendererPrivate {
+func RendererPrivateNewFromNative(native unsafe.Pointer) *RendererPrivate {
 	return &RendererPrivate{native: native}
 }
 
@@ -7450,10 +7451,10 @@ func scriptIterStruct_Set() error {
 }
 
 type ScriptIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScriptIterNewFromNative(native uintptr) *ScriptIter {
+func ScriptIterNewFromNative(native unsafe.Pointer) *ScriptIter {
 	return &ScriptIter{native: native}
 }
 
@@ -7578,10 +7579,10 @@ func tabArrayStruct_Set() error {
 }
 
 type TabArray struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TabArrayNewFromNative(native uintptr) *TabArray {
+func TabArrayNewFromNative(native unsafe.Pointer) *TabArray {
 	return &TabArray{native: native}
 }
 

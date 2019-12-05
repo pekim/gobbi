@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var bitmapStruct *gi.Struct
@@ -20,10 +21,10 @@ func bitmapStruct_Set() error {
 }
 
 type Bitmap struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BitmapNewFromNative(native uintptr) *Bitmap {
+func BitmapNewFromNative(native unsafe.Pointer) *Bitmap {
 	return &Bitmap{native: native}
 }
 
@@ -54,10 +55,10 @@ func faceStruct_Set() error {
 }
 
 type Face struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FaceNewFromNative(native uintptr) *Face {
+func FaceNewFromNative(native unsafe.Pointer) *Face {
 	return &Face{native: native}
 }
 
@@ -88,10 +89,10 @@ func libraryStruct_Set() error {
 }
 
 type Library struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LibraryNewFromNative(native uintptr) *Library {
+func LibraryNewFromNative(native unsafe.Pointer) *Library {
 	return &Library{native: native}
 }
 

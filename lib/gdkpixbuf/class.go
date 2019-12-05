@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var pixbufObject *gi.Object
@@ -20,10 +21,10 @@ func pixbufObject_Set() error {
 }
 
 type Pixbuf struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufNewFromNative(native uintptr) *Pixbuf {
+func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
 	return &Pixbuf{native: native}
 }
 func (recv *Pixbuf) Object() *gobject.Object {
@@ -1317,10 +1318,10 @@ func pixbufAnimationObject_Set() error {
 }
 
 type PixbufAnimation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufAnimationNewFromNative(native uintptr) *PixbufAnimation {
+func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
 	return &PixbufAnimation{native: native}
 }
 func (recv *PixbufAnimation) Object() *gobject.Object {
@@ -1597,10 +1598,10 @@ func pixbufAnimationIterObject_Set() error {
 }
 
 type PixbufAnimationIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufAnimationIterNewFromNative(native uintptr) *PixbufAnimationIter {
+func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIter {
 	return &PixbufAnimationIter{native: native}
 }
 func (recv *PixbufAnimationIter) Object() *gobject.Object {
@@ -1717,10 +1718,10 @@ func pixbufLoaderObject_Set() error {
 }
 
 type PixbufLoader struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufLoaderNewFromNative(native uintptr) *PixbufLoader {
+func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
 	return &PixbufLoader{native: native}
 }
 func (recv *PixbufLoader) Object() *gobject.Object {
@@ -1999,10 +2000,10 @@ func pixbufSimpleAnimObject_Set() error {
 }
 
 type PixbufSimpleAnim struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufSimpleAnimNewFromNative(native uintptr) *PixbufSimpleAnim {
+func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
 	return &PixbufSimpleAnim{native: native}
 }
 func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
@@ -2148,10 +2149,10 @@ func pixbufSimpleAnimIterObject_Set() error {
 }
 
 type PixbufSimpleAnimIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufSimpleAnimIterNewFromNative(native uintptr) *PixbufSimpleAnimIter {
+func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimIter {
 	return &PixbufSimpleAnimIter{native: native}
 }
 func (recv *PixbufSimpleAnimIter) PixbufAnimationIter() *PixbufAnimationIter {

@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var contextStruct *gi.Struct
@@ -20,10 +21,10 @@ func contextStruct_Set() error {
 }
 
 type Context struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextNewFromNative(native uintptr) *Context {
+func ContextNewFromNative(native unsafe.Pointer) *Context {
 	return &Context{native: native}
 }
 
@@ -54,10 +55,10 @@ func deviceStruct_Set() error {
 }
 
 type Device struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DeviceNewFromNative(native uintptr) *Device {
+func DeviceNewFromNative(native unsafe.Pointer) *Device {
 	return &Device{native: native}
 }
 
@@ -88,10 +89,10 @@ func surfaceStruct_Set() error {
 }
 
 type Surface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SurfaceNewFromNative(native uintptr) *Surface {
+func SurfaceNewFromNative(native unsafe.Pointer) *Surface {
 	return &Surface{native: native}
 }
 
@@ -122,10 +123,10 @@ func matrixStruct_Set() error {
 }
 
 type Matrix struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MatrixNewFromNative(native uintptr) *Matrix {
+func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
 	return &Matrix{native: native}
 }
 
@@ -156,10 +157,10 @@ func patternStruct_Set() error {
 }
 
 type Pattern struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PatternNewFromNative(native uintptr) *Pattern {
+func PatternNewFromNative(native unsafe.Pointer) *Pattern {
 	return &Pattern{native: native}
 }
 
@@ -190,10 +191,10 @@ func regionStruct_Set() error {
 }
 
 type Region struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegionNewFromNative(native uintptr) *Region {
+func RegionNewFromNative(native unsafe.Pointer) *Region {
 	return &Region{native: native}
 }
 
@@ -224,10 +225,10 @@ func fontOptionsStruct_Set() error {
 }
 
 type FontOptions struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontOptionsNewFromNative(native uintptr) *FontOptions {
+func FontOptionsNewFromNative(native unsafe.Pointer) *FontOptions {
 	return &FontOptions{native: native}
 }
 
@@ -258,10 +259,10 @@ func fontFaceStruct_Set() error {
 }
 
 type FontFace struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontFaceNewFromNative(native uintptr) *FontFace {
+func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
 	return &FontFace{native: native}
 }
 
@@ -292,10 +293,10 @@ func scaledFontStruct_Set() error {
 }
 
 type ScaledFont struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScaledFontNewFromNative(native uintptr) *ScaledFont {
+func ScaledFontNewFromNative(native unsafe.Pointer) *ScaledFont {
 	return &ScaledFont{native: native}
 }
 
@@ -326,10 +327,10 @@ func pathStruct_Set() error {
 }
 
 type Path struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PathNewFromNative(native uintptr) *Path {
+func PathNewFromNative(native unsafe.Pointer) *Path {
 	return &Path{native: native}
 }
 
@@ -360,10 +361,10 @@ func rectangleStruct_Set() error {
 }
 
 type Rectangle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RectangleNewFromNative(native uintptr) *Rectangle {
+func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
@@ -450,10 +451,10 @@ func rectangleIntStruct_Set() error {
 }
 
 type RectangleInt struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RectangleIntNewFromNative(native uintptr) *RectangleInt {
+func RectangleIntNewFromNative(native unsafe.Pointer) *RectangleInt {
 	return &RectangleInt{native: native}
 }
 

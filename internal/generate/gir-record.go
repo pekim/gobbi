@@ -125,17 +125,17 @@ func (r *Record) generateType(f *file) {
 	f.
 		Type().
 		Id(r.goName).
-		Struct(jen.Id(fieldNameNative).Uintptr())
+		Struct(jen.Id(fieldNameNative).Qual("unsafe", "Pointer"))
 
 	f.Line()
 }
 
 func (r *Record) generateNewFromNative(f *file) {
-	// GEN: func SomeClassNewFromNative(native uintptr) *SomeClass {...}
+	// GEN: func SomeClassNewFromNative(native unsafe.Pointer) *SomeClass {...}
 	f.
 		Func().
 		Id(r.newFromNativeName).
-		Params(jen.Id(fieldNameNative).Uintptr()).
+		Params(jen.Id(fieldNameNative).Qual("unsafe", "Pointer")).
 		Params(jen.Op("*").Id(r.goName)).
 		BlockFunc(r.generateNewFromNativeBody)
 }

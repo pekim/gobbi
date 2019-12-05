@@ -7,6 +7,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var cClosureStruct *gi.Struct
@@ -21,10 +22,10 @@ func cClosureStruct_Set() error {
 }
 
 type CClosure struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CClosureNewFromNative(native uintptr) *CClosure {
+func CClosureNewFromNative(native unsafe.Pointer) *CClosure {
 	return &CClosure{native: native}
 }
 
@@ -73,10 +74,10 @@ func closureStruct_Set() error {
 }
 
 type Closure struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClosureNewFromNative(native uintptr) *Closure {
+func ClosureNewFromNative(native unsafe.Pointer) *Closure {
 	return &Closure{native: native}
 }
 
@@ -291,10 +292,10 @@ func closureNotifyDataStruct_Set() error {
 }
 
 type ClosureNotifyData struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClosureNotifyDataNewFromNative(native uintptr) *ClosureNotifyData {
+func ClosureNotifyDataNewFromNative(native unsafe.Pointer) *ClosureNotifyData {
 	return &ClosureNotifyData{native: native}
 }
 
@@ -333,10 +334,10 @@ func enumClassStruct_Set() error {
 }
 
 type EnumClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EnumClassNewFromNative(native uintptr) *EnumClass {
+func EnumClassNewFromNative(native unsafe.Pointer) *EnumClass {
 	return &EnumClass{native: native}
 }
 
@@ -437,10 +438,10 @@ func enumValueStruct_Set() error {
 }
 
 type EnumValue struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EnumValueNewFromNative(native uintptr) *EnumValue {
+func EnumValueNewFromNative(native unsafe.Pointer) *EnumValue {
 	return &EnumValue{native: native}
 }
 
@@ -513,10 +514,10 @@ func flagsClassStruct_Set() error {
 }
 
 type FlagsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlagsClassNewFromNative(native uintptr) *FlagsClass {
+func FlagsClassNewFromNative(native unsafe.Pointer) *FlagsClass {
 	return &FlagsClass{native: native}
 }
 
@@ -603,10 +604,10 @@ func flagsValueStruct_Set() error {
 }
 
 type FlagsValue struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlagsValueNewFromNative(native uintptr) *FlagsValue {
+func FlagsValueNewFromNative(native unsafe.Pointer) *FlagsValue {
 	return &FlagsValue{native: native}
 }
 
@@ -679,10 +680,10 @@ func initiallyUnownedClassStruct_Set() error {
 }
 
 type InitiallyUnownedClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InitiallyUnownedClassNewFromNative(native uintptr) *InitiallyUnownedClass {
+func InitiallyUnownedClassNewFromNative(native unsafe.Pointer) *InitiallyUnownedClass {
 	return &InitiallyUnownedClass{native: native}
 }
 
@@ -759,10 +760,10 @@ func interfaceInfoStruct_Set() error {
 }
 
 type InterfaceInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InterfaceInfoNewFromNative(native uintptr) *InterfaceInfo {
+func InterfaceInfoNewFromNative(native unsafe.Pointer) *InterfaceInfo {
 	return &InterfaceInfo{native: native}
 }
 
@@ -805,10 +806,10 @@ func objectClassStruct_Set() error {
 }
 
 type ObjectClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectClassNewFromNative(native uintptr) *ObjectClass {
+func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
 	return &ObjectClass{native: native}
 }
 
@@ -1012,10 +1013,10 @@ func objectConstructParamStruct_Set() error {
 }
 
 type ObjectConstructParam struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectConstructParamNewFromNative(native uintptr) *ObjectConstructParam {
+func ObjectConstructParamNewFromNative(native unsafe.Pointer) *ObjectConstructParam {
 	return &ObjectConstructParam{native: native}
 }
 
@@ -1074,10 +1075,10 @@ func paramSpecClassStruct_Set() error {
 }
 
 type ParamSpecClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecClassNewFromNative(native uintptr) *ParamSpecClass {
+func ParamSpecClassNewFromNative(native unsafe.Pointer) *ParamSpecClass {
 	return &ParamSpecClass{native: native}
 }
 
@@ -1142,10 +1143,10 @@ func paramSpecPoolStruct_Set() error {
 }
 
 type ParamSpecPool struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecPoolNewFromNative(native uintptr) *ParamSpecPool {
+func ParamSpecPoolNewFromNative(native unsafe.Pointer) *ParamSpecPool {
 	return &ParamSpecPool{native: native}
 }
 
@@ -1213,10 +1214,10 @@ func paramSpecTypeInfoStruct_Set() error {
 }
 
 type ParamSpecTypeInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecTypeInfoNewFromNative(native uintptr) *ParamSpecTypeInfo {
+func ParamSpecTypeInfoNewFromNative(native unsafe.Pointer) *ParamSpecTypeInfo {
 	return &ParamSpecTypeInfo{native: native}
 }
 
@@ -1299,10 +1300,10 @@ func parameterStruct_Set() error {
 }
 
 type Parameter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParameterNewFromNative(native uintptr) *Parameter {
+func ParameterNewFromNative(native unsafe.Pointer) *Parameter {
 	return &Parameter{native: native}
 }
 
@@ -1361,10 +1362,10 @@ func signalInvocationHintStruct_Set() error {
 }
 
 type SignalInvocationHint struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SignalInvocationHintNewFromNative(native uintptr) *SignalInvocationHint {
+func SignalInvocationHintNewFromNative(native unsafe.Pointer) *SignalInvocationHint {
 	return &SignalInvocationHint{native: native}
 }
 
@@ -1427,10 +1428,10 @@ func signalQueryStruct_Set() error {
 }
 
 type SignalQuery_ struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SignalQuery_NewFromNative(native uintptr) *SignalQuery_ {
+func SignalQuery_NewFromNative(native unsafe.Pointer) *SignalQuery_ {
 	return &SignalQuery_{native: native}
 }
 
@@ -1519,10 +1520,10 @@ func typeClassStruct_Set() error {
 }
 
 type TypeClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeClassNewFromNative(native uintptr) *TypeClass {
+func TypeClassNewFromNative(native unsafe.Pointer) *TypeClass {
 	return &TypeClass{native: native}
 }
 
@@ -1704,10 +1705,10 @@ func typeFundamentalInfoStruct_Set() error {
 }
 
 type TypeFundamentalInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeFundamentalInfoNewFromNative(native uintptr) *TypeFundamentalInfo {
+func TypeFundamentalInfoNewFromNative(native unsafe.Pointer) *TypeFundamentalInfo {
 	return &TypeFundamentalInfo{native: native}
 }
 
@@ -1742,10 +1743,10 @@ func typeInfoStruct_Set() error {
 }
 
 type TypeInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeInfoNewFromNative(native uintptr) *TypeInfo {
+func TypeInfoNewFromNative(native unsafe.Pointer) *TypeInfo {
 	return &TypeInfo{native: native}
 }
 
@@ -1856,10 +1857,10 @@ func typeInstanceStruct_Set() error {
 }
 
 type TypeInstance struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeInstanceNewFromNative(native uintptr) *TypeInstance {
+func TypeInstanceNewFromNative(native unsafe.Pointer) *TypeInstance {
 	return &TypeInstance{native: native}
 }
 
@@ -1892,10 +1893,10 @@ func typeInterfaceStruct_Set() error {
 }
 
 type TypeInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeInterfaceNewFromNative(native uintptr) *TypeInterface {
+func TypeInterfaceNewFromNative(native unsafe.Pointer) *TypeInterface {
 	return &TypeInterface{native: native}
 }
 
@@ -1958,10 +1959,10 @@ func typeModuleClassStruct_Set() error {
 }
 
 type TypeModuleClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeModuleClassNewFromNative(native uintptr) *TypeModuleClass {
+func TypeModuleClassNewFromNative(native unsafe.Pointer) *TypeModuleClass {
 	return &TypeModuleClass{native: native}
 }
 
@@ -2030,10 +2031,10 @@ func typePluginClassStruct_Set() error {
 }
 
 type TypePluginClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypePluginClassNewFromNative(native uintptr) *TypePluginClass {
+func TypePluginClassNewFromNative(native unsafe.Pointer) *TypePluginClass {
 	return &TypePluginClass{native: native}
 }
 
@@ -2080,10 +2081,10 @@ func typeQueryStruct_Set() error {
 }
 
 type TypeQuery struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeQueryNewFromNative(native uintptr) *TypeQuery {
+func TypeQueryNewFromNative(native unsafe.Pointer) *TypeQuery {
 	return &TypeQuery{native: native}
 }
 
@@ -2160,10 +2161,10 @@ func typeValueTableStruct_Set() error {
 }
 
 type TypeValueTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeValueTableNewFromNative(native uintptr) *TypeValueTable {
+func TypeValueTableNewFromNative(native unsafe.Pointer) *TypeValueTable {
 	return &TypeValueTable{native: native}
 }
 
@@ -2246,10 +2247,10 @@ func valueStruct_Set() error {
 }
 
 type Value struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueNewFromNative(native uintptr) *Value {
+func ValueNewFromNative(native unsafe.Pointer) *Value {
 	return &Value{native: native}
 }
 
@@ -3783,10 +3784,10 @@ func valueArrayStruct_Set() error {
 }
 
 type ValueArray struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueArrayNewFromNative(native uintptr) *ValueArray {
+func ValueArrayNewFromNative(native unsafe.Pointer) *ValueArray {
 	return &ValueArray{native: native}
 }
 
@@ -4092,10 +4093,10 @@ func weakRefStruct_Set() error {
 }
 
 type WeakRef struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WeakRefNewFromNative(native uintptr) *WeakRef {
+func WeakRefNewFromNative(native unsafe.Pointer) *WeakRef {
 	return &WeakRef{native: native}
 }
 

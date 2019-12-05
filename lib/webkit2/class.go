@@ -7,6 +7,7 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
 	"sync"
+	"unsafe"
 )
 
 var authenticationRequestObject *gi.Object
@@ -21,10 +22,10 @@ func authenticationRequestObject_Set() error {
 }
 
 type AuthenticationRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AuthenticationRequestNewFromNative(native uintptr) *AuthenticationRequest {
+func AuthenticationRequestNewFromNative(native unsafe.Pointer) *AuthenticationRequest {
 	return &AuthenticationRequest{native: native}
 }
 func (recv *AuthenticationRequest) Object() *gobject.Object {
@@ -360,10 +361,10 @@ func automationSessionObject_Set() error {
 }
 
 type AutomationSession struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AutomationSessionNewFromNative(native uintptr) *AutomationSession {
+func AutomationSessionNewFromNative(native unsafe.Pointer) *AutomationSession {
 	return &AutomationSession{native: native}
 }
 func (recv *AutomationSession) Object() *gobject.Object {
@@ -493,10 +494,10 @@ func backForwardListObject_Set() error {
 }
 
 type BackForwardList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BackForwardListNewFromNative(native uintptr) *BackForwardList {
+func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
 	return &BackForwardList{native: native}
 }
 func (recv *BackForwardList) Object() *gobject.Object {
@@ -702,10 +703,10 @@ func backForwardListItemObject_Set() error {
 }
 
 type BackForwardListItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BackForwardListItemNewFromNative(native uintptr) *BackForwardListItem {
+func BackForwardListItemNewFromNative(native unsafe.Pointer) *BackForwardListItem {
 	return &BackForwardListItem{native: native}
 }
 func (recv *BackForwardListItem) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -841,10 +842,10 @@ func colorChooserRequestObject_Set() error {
 }
 
 type ColorChooserRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorChooserRequestNewFromNative(native uintptr) *ColorChooserRequest {
+func ColorChooserRequestNewFromNative(native unsafe.Pointer) *ColorChooserRequest {
 	return &ColorChooserRequest{native: native}
 }
 func (recv *ColorChooserRequest) Object() *gobject.Object {
@@ -929,10 +930,10 @@ func contextMenuObject_Set() error {
 }
 
 type ContextMenu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextMenuNewFromNative(native uintptr) *ContextMenu {
+func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
 	return &ContextMenu{native: native}
 }
 func (recv *ContextMenu) Object() *gobject.Object {
@@ -1311,10 +1312,10 @@ func contextMenuItemObject_Set() error {
 }
 
 type ContextMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextMenuItemNewFromNative(native uintptr) *ContextMenuItem {
+func ContextMenuItemNewFromNative(native unsafe.Pointer) *ContextMenuItem {
 	return &ContextMenuItem{native: native}
 }
 func (recv *ContextMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -1615,10 +1616,10 @@ func cookieManagerObject_Set() error {
 }
 
 type CookieManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CookieManagerNewFromNative(native uintptr) *CookieManager {
+func CookieManagerNewFromNative(native unsafe.Pointer) *CookieManager {
 	return &CookieManager{native: native}
 }
 func (recv *CookieManager) Object() *gobject.Object {
@@ -1791,10 +1792,10 @@ func deviceInfoPermissionRequestObject_Set() error {
 }
 
 type DeviceInfoPermissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DeviceInfoPermissionRequestNewFromNative(native uintptr) *DeviceInfoPermissionRequest {
+func DeviceInfoPermissionRequestNewFromNative(native unsafe.Pointer) *DeviceInfoPermissionRequest {
 	return &DeviceInfoPermissionRequest{native: native}
 }
 func (recv *DeviceInfoPermissionRequest) Object() *gobject.Object {
@@ -1817,10 +1818,10 @@ func downloadObject_Set() error {
 }
 
 type Download struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DownloadNewFromNative(native uintptr) *Download {
+func DownloadNewFromNative(native unsafe.Pointer) *Download {
 	return &Download{native: native}
 }
 func (recv *Download) Object() *gobject.Object {
@@ -2199,10 +2200,10 @@ func editorStateObject_Set() error {
 }
 
 type EditorState struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EditorStateNewFromNative(native uintptr) *EditorState {
+func EditorStateNewFromNative(native unsafe.Pointer) *EditorState {
 	return &EditorState{native: native}
 }
 func (recv *EditorState) Object() *gobject.Object {
@@ -2431,10 +2432,10 @@ func faviconDatabaseObject_Set() error {
 }
 
 type FaviconDatabase struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FaviconDatabaseNewFromNative(native uintptr) *FaviconDatabase {
+func FaviconDatabaseNewFromNative(native unsafe.Pointer) *FaviconDatabase {
 	return &FaviconDatabase{native: native}
 }
 func (recv *FaviconDatabase) Object() *gobject.Object {
@@ -2536,10 +2537,10 @@ func fileChooserRequestObject_Set() error {
 }
 
 type FileChooserRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileChooserRequestNewFromNative(native uintptr) *FileChooserRequest {
+func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest {
 	return &FileChooserRequest{native: native}
 }
 func (recv *FileChooserRequest) Object() *gobject.Object {
@@ -2682,10 +2683,10 @@ func findControllerObject_Set() error {
 }
 
 type FindController struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FindControllerNewFromNative(native uintptr) *FindController {
+func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
 	return &FindController{native: native}
 }
 func (recv *FindController) Object() *gobject.Object {
@@ -2982,10 +2983,10 @@ func formSubmissionRequestObject_Set() error {
 }
 
 type FormSubmissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FormSubmissionRequestNewFromNative(native uintptr) *FormSubmissionRequest {
+func FormSubmissionRequestNewFromNative(native unsafe.Pointer) *FormSubmissionRequest {
 	return &FormSubmissionRequest{native: native}
 }
 func (recv *FormSubmissionRequest) Object() *gobject.Object {
@@ -3040,10 +3041,10 @@ func geolocationManagerObject_Set() error {
 }
 
 type GeolocationManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GeolocationManagerNewFromNative(native uintptr) *GeolocationManager {
+func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager {
 	return &GeolocationManager{native: native}
 }
 func (recv *GeolocationManager) Object() *gobject.Object {
@@ -3156,10 +3157,10 @@ func geolocationPermissionRequestObject_Set() error {
 }
 
 type GeolocationPermissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GeolocationPermissionRequestNewFromNative(native uintptr) *GeolocationPermissionRequest {
+func GeolocationPermissionRequestNewFromNative(native unsafe.Pointer) *GeolocationPermissionRequest {
 	return &GeolocationPermissionRequest{native: native}
 }
 func (recv *GeolocationPermissionRequest) Object() *gobject.Object {
@@ -3182,10 +3183,10 @@ func hitTestResultObject_Set() error {
 }
 
 type HitTestResult struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HitTestResultNewFromNative(native uintptr) *HitTestResult {
+func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
 	return &HitTestResult{native: native}
 }
 func (recv *HitTestResult) Object() *gobject.Object {
@@ -3606,10 +3607,10 @@ func installMissingMediaPluginsPermissionRequestObject_Set() error {
 }
 
 type InstallMissingMediaPluginsPermissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InstallMissingMediaPluginsPermissionRequestNewFromNative(native uintptr) *InstallMissingMediaPluginsPermissionRequest {
+func InstallMissingMediaPluginsPermissionRequestNewFromNative(native unsafe.Pointer) *InstallMissingMediaPluginsPermissionRequest {
 	return &InstallMissingMediaPluginsPermissionRequest{native: native}
 }
 func (recv *InstallMissingMediaPluginsPermissionRequest) Object() *gobject.Object {
@@ -3678,10 +3679,10 @@ func navigationPolicyDecisionObject_Set() error {
 }
 
 type NavigationPolicyDecision struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NavigationPolicyDecisionNewFromNative(native uintptr) *NavigationPolicyDecision {
+func NavigationPolicyDecisionNewFromNative(native unsafe.Pointer) *NavigationPolicyDecision {
 	return &NavigationPolicyDecision{native: native}
 }
 func (recv *NavigationPolicyDecision) PolicyDecision() *PolicyDecision {
@@ -3909,10 +3910,10 @@ func notificationObject_Set() error {
 }
 
 type Notification struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotificationNewFromNative(native uintptr) *Notification {
+func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 	return &Notification{native: native}
 }
 func (recv *Notification) Object() *gobject.Object {
@@ -4133,10 +4134,10 @@ func notificationPermissionRequestObject_Set() error {
 }
 
 type NotificationPermissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotificationPermissionRequestNewFromNative(native uintptr) *NotificationPermissionRequest {
+func NotificationPermissionRequestNewFromNative(native unsafe.Pointer) *NotificationPermissionRequest {
 	return &NotificationPermissionRequest{native: native}
 }
 func (recv *NotificationPermissionRequest) Object() *gobject.Object {
@@ -4159,10 +4160,10 @@ func optionMenuObject_Set() error {
 }
 
 type OptionMenu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OptionMenuNewFromNative(native uintptr) *OptionMenu {
+func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
 	return &OptionMenu{native: native}
 }
 func (recv *OptionMenu) Object() *gobject.Object {
@@ -4350,10 +4351,10 @@ func pluginObject_Set() error {
 }
 
 type Plugin struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PluginNewFromNative(native uintptr) *Plugin {
+func PluginNewFromNative(native unsafe.Pointer) *Plugin {
 	return &Plugin{native: native}
 }
 func (recv *Plugin) Object() *gobject.Object {
@@ -4488,10 +4489,10 @@ func policyDecisionObject_Set() error {
 }
 
 type PolicyDecision struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PolicyDecisionNewFromNative(native uintptr) *PolicyDecision {
+func PolicyDecisionNewFromNative(native unsafe.Pointer) *PolicyDecision {
 	return &PolicyDecision{native: native}
 }
 func (recv *PolicyDecision) Object() *gobject.Object {
@@ -4598,10 +4599,10 @@ func printCustomWidgetObject_Set() error {
 }
 
 type PrintCustomWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintCustomWidgetNewFromNative(native uintptr) *PrintCustomWidget {
+func PrintCustomWidgetNewFromNative(native unsafe.Pointer) *PrintCustomWidget {
 	return &PrintCustomWidget{native: native}
 }
 func (recv *PrintCustomWidget) Object() *gobject.Object {
@@ -4674,10 +4675,10 @@ func printOperationObject_Set() error {
 }
 
 type PrintOperation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintOperationNewFromNative(native uintptr) *PrintOperation {
+func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	return &PrintOperation{native: native}
 }
 func (recv *PrintOperation) Object() *gobject.Object {
@@ -4784,10 +4785,10 @@ func responsePolicyDecisionObject_Set() error {
 }
 
 type ResponsePolicyDecision struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ResponsePolicyDecisionNewFromNative(native uintptr) *ResponsePolicyDecision {
+func ResponsePolicyDecisionNewFromNative(native unsafe.Pointer) *ResponsePolicyDecision {
 	return &ResponsePolicyDecision{native: native}
 }
 func (recv *ResponsePolicyDecision) PolicyDecision() *PolicyDecision {
@@ -4919,10 +4920,10 @@ func securityManagerObject_Set() error {
 }
 
 type SecurityManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SecurityManagerNewFromNative(native uintptr) *SecurityManager {
+func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
 	return &SecurityManager{native: native}
 }
 func (recv *SecurityManager) Object() *gobject.Object {
@@ -5331,10 +5332,10 @@ func settingsObject_Set() error {
 }
 
 type Settings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsNewFromNative(native uintptr) *Settings {
+func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
 func (recv *Settings) Object() *gobject.Object {
@@ -8910,10 +8911,10 @@ func uRIRequestObject_Set() error {
 }
 
 type URIRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func URIRequestNewFromNative(native uintptr) *URIRequest {
+func URIRequestNewFromNative(native unsafe.Pointer) *URIRequest {
 	return &URIRequest{native: native}
 }
 func (recv *URIRequest) Object() *gobject.Object {
@@ -9063,10 +9064,10 @@ func uRIResponseObject_Set() error {
 }
 
 type URIResponse struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func URIResponseNewFromNative(native uintptr) *URIResponse {
+func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
 	return &URIResponse{native: native}
 }
 func (recv *URIResponse) Object() *gobject.Object {
@@ -9251,10 +9252,10 @@ func uRISchemeRequestObject_Set() error {
 }
 
 type URISchemeRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func URISchemeRequestNewFromNative(native uintptr) *URISchemeRequest {
+func URISchemeRequestNewFromNative(native unsafe.Pointer) *URISchemeRequest {
 	return &URISchemeRequest{native: native}
 }
 func (recv *URISchemeRequest) Object() *gobject.Object {
@@ -9423,10 +9424,10 @@ func userContentFilterStoreObject_Set() error {
 }
 
 type UserContentFilterStore struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UserContentFilterStoreNewFromNative(native uintptr) *UserContentFilterStore {
+func UserContentFilterStoreNewFromNative(native unsafe.Pointer) *UserContentFilterStore {
 	return &UserContentFilterStore{native: native}
 }
 func (recv *UserContentFilterStore) Object() *gobject.Object {
@@ -9533,10 +9534,10 @@ func userContentManagerObject_Set() error {
 }
 
 type UserContentManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UserContentManagerNewFromNative(native uintptr) *UserContentManager {
+func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager {
 	return &UserContentManager{native: native}
 }
 func (recv *UserContentManager) Object() *gobject.Object {
@@ -9944,10 +9945,10 @@ func userMediaPermissionRequestObject_Set() error {
 }
 
 type UserMediaPermissionRequest struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UserMediaPermissionRequestNewFromNative(native uintptr) *UserMediaPermissionRequest {
+func UserMediaPermissionRequestNewFromNative(native unsafe.Pointer) *UserMediaPermissionRequest {
 	return &UserMediaPermissionRequest{native: native}
 }
 func (recv *UserMediaPermissionRequest) Object() *gobject.Object {
@@ -9970,10 +9971,10 @@ func webContextObject_Set() error {
 }
 
 type WebContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebContextNewFromNative(native uintptr) *WebContext {
+func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
 	return &WebContext{native: native}
 }
 func (recv *WebContext) Object() *gobject.Object {
@@ -11049,10 +11050,10 @@ func webInspectorObject_Set() error {
 }
 
 type WebInspector struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebInspectorNewFromNative(native uintptr) *WebInspector {
+func WebInspectorNewFromNative(native unsafe.Pointer) *WebInspector {
 	return &WebInspector{native: native}
 }
 func (recv *WebInspector) Object() *gobject.Object {
@@ -11361,10 +11362,10 @@ func webResourceObject_Set() error {
 }
 
 type WebResource struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebResourceNewFromNative(native uintptr) *WebResource {
+func WebResourceNewFromNative(native unsafe.Pointer) *WebResource {
 	return &WebResource{native: native}
 }
 func (recv *WebResource) Object() *gobject.Object {
@@ -11469,10 +11470,10 @@ func webViewObject_Set() error {
 }
 
 type WebView struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebViewNewFromNative(native uintptr) *WebView {
+func WebViewNewFromNative(native unsafe.Pointer) *WebView {
 	return &WebView{native: native}
 }
 func (recv *WebView) WebViewBase() *WebViewBase {
@@ -13098,10 +13099,10 @@ func webViewBaseObject_Set() error {
 }
 
 type WebViewBase struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebViewBaseNewFromNative(native uintptr) *WebViewBase {
+func WebViewBaseNewFromNative(native unsafe.Pointer) *WebViewBase {
 	return &WebViewBase{native: native}
 }
 func (recv *WebViewBase) Container() *gtk.Container {
@@ -13133,10 +13134,10 @@ func websiteDataManagerObject_Set() error {
 }
 
 type WebsiteDataManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WebsiteDataManagerNewFromNative(native uintptr) *WebsiteDataManager {
+func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager {
 	return &WebsiteDataManager{native: native}
 }
 func (recv *WebsiteDataManager) Object() *gobject.Object {
@@ -13537,10 +13538,10 @@ func windowPropertiesObject_Set() error {
 }
 
 type WindowProperties struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowPropertiesNewFromNative(native uintptr) *WindowProperties {
+func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
 	return &WindowProperties{native: native}
 }
 func (recv *WindowProperties) Object() *gobject.Object {

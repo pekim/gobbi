@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var actionEntryStruct *gi.Struct
@@ -20,10 +21,10 @@ func actionEntryStruct_Set() error {
 }
 
 type ActionEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionEntryNewFromNative(native uintptr) *ActionEntry {
+func ActionEntryNewFromNative(native unsafe.Pointer) *ActionEntry {
 	return &ActionEntry{native: native}
 }
 
@@ -104,10 +105,10 @@ func actionGroupInterfaceStruct_Set() error {
 }
 
 type ActionGroupInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionGroupInterfaceNewFromNative(native uintptr) *ActionGroupInterface {
+func ActionGroupInterfaceNewFromNative(native unsafe.Pointer) *ActionGroupInterface {
 	return &ActionGroupInterface{native: native}
 }
 
@@ -198,10 +199,10 @@ func actionInterfaceStruct_Set() error {
 }
 
 type ActionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionInterfaceNewFromNative(native uintptr) *ActionInterface {
+func ActionInterfaceNewFromNative(native unsafe.Pointer) *ActionInterface {
 	return &ActionInterface{native: native}
 }
 
@@ -268,10 +269,10 @@ func actionMapInterfaceStruct_Set() error {
 }
 
 type ActionMapInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionMapInterfaceNewFromNative(native uintptr) *ActionMapInterface {
+func ActionMapInterfaceNewFromNative(native unsafe.Pointer) *ActionMapInterface {
 	return &ActionMapInterface{native: native}
 }
 
@@ -318,10 +319,10 @@ func appInfoIfaceStruct_Set() error {
 }
 
 type AppInfoIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppInfoIfaceNewFromNative(native uintptr) *AppInfoIface {
+func AppInfoIfaceNewFromNative(native unsafe.Pointer) *AppInfoIface {
 	return &AppInfoIface{native: native}
 }
 
@@ -456,10 +457,10 @@ func appLaunchContextClassStruct_Set() error {
 }
 
 type AppLaunchContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppLaunchContextClassNewFromNative(native uintptr) *AppLaunchContextClass {
+func AppLaunchContextClassNewFromNative(native unsafe.Pointer) *AppLaunchContextClass {
 	return &AppLaunchContextClass{native: native}
 }
 
@@ -526,10 +527,10 @@ func appLaunchContextPrivateStruct_Set() error {
 }
 
 type AppLaunchContextPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppLaunchContextPrivateNewFromNative(native uintptr) *AppLaunchContextPrivate {
+func AppLaunchContextPrivateNewFromNative(native unsafe.Pointer) *AppLaunchContextPrivate {
 	return &AppLaunchContextPrivate{native: native}
 }
 
@@ -560,10 +561,10 @@ func applicationClassStruct_Set() error {
 }
 
 type ApplicationClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationClassNewFromNative(native uintptr) *ApplicationClass {
+func ApplicationClassNewFromNative(native unsafe.Pointer) *ApplicationClass {
 	return &ApplicationClass{native: native}
 }
 
@@ -654,10 +655,10 @@ func applicationCommandLineClassStruct_Set() error {
 }
 
 type ApplicationCommandLineClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationCommandLineClassNewFromNative(native uintptr) *ApplicationCommandLineClass {
+func ApplicationCommandLineClassNewFromNative(native unsafe.Pointer) *ApplicationCommandLineClass {
 	return &ApplicationCommandLineClass{native: native}
 }
 
@@ -700,10 +701,10 @@ func applicationCommandLinePrivateStruct_Set() error {
 }
 
 type ApplicationCommandLinePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationCommandLinePrivateNewFromNative(native uintptr) *ApplicationCommandLinePrivate {
+func ApplicationCommandLinePrivateNewFromNative(native unsafe.Pointer) *ApplicationCommandLinePrivate {
 	return &ApplicationCommandLinePrivate{native: native}
 }
 
@@ -734,10 +735,10 @@ func applicationPrivateStruct_Set() error {
 }
 
 type ApplicationPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationPrivateNewFromNative(native uintptr) *ApplicationPrivate {
+func ApplicationPrivateNewFromNative(native unsafe.Pointer) *ApplicationPrivate {
 	return &ApplicationPrivate{native: native}
 }
 
@@ -768,10 +769,10 @@ func asyncInitableIfaceStruct_Set() error {
 }
 
 type AsyncInitableIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AsyncInitableIfaceNewFromNative(native uintptr) *AsyncInitableIface {
+func AsyncInitableIfaceNewFromNative(native unsafe.Pointer) *AsyncInitableIface {
 	return &AsyncInitableIface{native: native}
 }
 
@@ -814,10 +815,10 @@ func asyncResultIfaceStruct_Set() error {
 }
 
 type AsyncResultIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AsyncResultIfaceNewFromNative(native uintptr) *AsyncResultIface {
+func AsyncResultIfaceNewFromNative(native unsafe.Pointer) *AsyncResultIface {
 	return &AsyncResultIface{native: native}
 }
 
@@ -864,10 +865,10 @@ func bufferedInputStreamClassStruct_Set() error {
 }
 
 type BufferedInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedInputStreamClassNewFromNative(native uintptr) *BufferedInputStreamClass {
+func BufferedInputStreamClassNewFromNative(native unsafe.Pointer) *BufferedInputStreamClass {
 	return &BufferedInputStreamClass{native: native}
 }
 
@@ -944,10 +945,10 @@ func bufferedInputStreamPrivateStruct_Set() error {
 }
 
 type BufferedInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedInputStreamPrivateNewFromNative(native uintptr) *BufferedInputStreamPrivate {
+func BufferedInputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedInputStreamPrivate {
 	return &BufferedInputStreamPrivate{native: native}
 }
 
@@ -978,10 +979,10 @@ func bufferedOutputStreamClassStruct_Set() error {
 }
 
 type BufferedOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedOutputStreamClassNewFromNative(native uintptr) *BufferedOutputStreamClass {
+func BufferedOutputStreamClassNewFromNative(native unsafe.Pointer) *BufferedOutputStreamClass {
 	return &BufferedOutputStreamClass{native: native}
 }
 
@@ -1034,10 +1035,10 @@ func bufferedOutputStreamPrivateStruct_Set() error {
 }
 
 type BufferedOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedOutputStreamPrivateNewFromNative(native uintptr) *BufferedOutputStreamPrivate {
+func BufferedOutputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedOutputStreamPrivate {
 	return &BufferedOutputStreamPrivate{native: native}
 }
 
@@ -1068,10 +1069,10 @@ func cancellableClassStruct_Set() error {
 }
 
 type CancellableClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CancellableClassNewFromNative(native uintptr) *CancellableClass {
+func CancellableClassNewFromNative(native unsafe.Pointer) *CancellableClass {
 	return &CancellableClass{native: native}
 }
 
@@ -1130,10 +1131,10 @@ func cancellablePrivateStruct_Set() error {
 }
 
 type CancellablePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CancellablePrivateNewFromNative(native uintptr) *CancellablePrivate {
+func CancellablePrivateNewFromNative(native unsafe.Pointer) *CancellablePrivate {
 	return &CancellablePrivate{native: native}
 }
 
@@ -1164,10 +1165,10 @@ func charsetConverterClassStruct_Set() error {
 }
 
 type CharsetConverterClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CharsetConverterClassNewFromNative(native uintptr) *CharsetConverterClass {
+func CharsetConverterClassNewFromNative(native unsafe.Pointer) *CharsetConverterClass {
 	return &CharsetConverterClass{native: native}
 }
 
@@ -1202,10 +1203,10 @@ func converterIfaceStruct_Set() error {
 }
 
 type ConverterIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterIfaceNewFromNative(native uintptr) *ConverterIface {
+func ConverterIfaceNewFromNative(native unsafe.Pointer) *ConverterIface {
 	return &ConverterIface{native: native}
 }
 
@@ -1248,10 +1249,10 @@ func converterInputStreamClassStruct_Set() error {
 }
 
 type ConverterInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterInputStreamClassNewFromNative(native uintptr) *ConverterInputStreamClass {
+func ConverterInputStreamClassNewFromNative(native unsafe.Pointer) *ConverterInputStreamClass {
 	return &ConverterInputStreamClass{native: native}
 }
 
@@ -1316,10 +1317,10 @@ func converterInputStreamPrivateStruct_Set() error {
 }
 
 type ConverterInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterInputStreamPrivateNewFromNative(native uintptr) *ConverterInputStreamPrivate {
+func ConverterInputStreamPrivateNewFromNative(native unsafe.Pointer) *ConverterInputStreamPrivate {
 	return &ConverterInputStreamPrivate{native: native}
 }
 
@@ -1350,10 +1351,10 @@ func converterOutputStreamClassStruct_Set() error {
 }
 
 type ConverterOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterOutputStreamClassNewFromNative(native uintptr) *ConverterOutputStreamClass {
+func ConverterOutputStreamClassNewFromNative(native unsafe.Pointer) *ConverterOutputStreamClass {
 	return &ConverterOutputStreamClass{native: native}
 }
 
@@ -1418,10 +1419,10 @@ func converterOutputStreamPrivateStruct_Set() error {
 }
 
 type ConverterOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterOutputStreamPrivateNewFromNative(native uintptr) *ConverterOutputStreamPrivate {
+func ConverterOutputStreamPrivateNewFromNative(native unsafe.Pointer) *ConverterOutputStreamPrivate {
 	return &ConverterOutputStreamPrivate{native: native}
 }
 
@@ -1452,10 +1453,10 @@ func credentialsClassStruct_Set() error {
 }
 
 type CredentialsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CredentialsClassNewFromNative(native uintptr) *CredentialsClass {
+func CredentialsClassNewFromNative(native unsafe.Pointer) *CredentialsClass {
 	return &CredentialsClass{native: native}
 }
 
@@ -1486,10 +1487,10 @@ func dBusAnnotationInfoStruct_Set() error {
 }
 
 type DBusAnnotationInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusAnnotationInfoNewFromNative(native uintptr) *DBusAnnotationInfo {
+func DBusAnnotationInfoNewFromNative(native unsafe.Pointer) *DBusAnnotationInfo {
 	return &DBusAnnotationInfo{native: native}
 }
 
@@ -1626,10 +1627,10 @@ func dBusArgInfoStruct_Set() error {
 }
 
 type DBusArgInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusArgInfoNewFromNative(native uintptr) *DBusArgInfo {
+func DBusArgInfoNewFromNative(native unsafe.Pointer) *DBusArgInfo {
 	return &DBusArgInfo{native: native}
 }
 
@@ -1766,10 +1767,10 @@ func dBusErrorEntryStruct_Set() error {
 }
 
 type DBusErrorEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusErrorEntryNewFromNative(native uintptr) *DBusErrorEntry {
+func DBusErrorEntryNewFromNative(native unsafe.Pointer) *DBusErrorEntry {
 	return &DBusErrorEntry{native: native}
 }
 
@@ -1828,10 +1829,10 @@ func dBusInterfaceIfaceStruct_Set() error {
 }
 
 type DBusInterfaceIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceIfaceNewFromNative(native uintptr) *DBusInterfaceIface {
+func DBusInterfaceIfaceNewFromNative(native unsafe.Pointer) *DBusInterfaceIface {
 	return &DBusInterfaceIface{native: native}
 }
 
@@ -1882,10 +1883,10 @@ func dBusInterfaceInfoStruct_Set() error {
 }
 
 type DBusInterfaceInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceInfoNewFromNative(native uintptr) *DBusInterfaceInfo {
+func DBusInterfaceInfoNewFromNative(native unsafe.Pointer) *DBusInterfaceInfo {
 	return &DBusInterfaceInfo{native: native}
 }
 
@@ -2177,10 +2178,10 @@ func dBusInterfaceSkeletonClassStruct_Set() error {
 }
 
 type DBusInterfaceSkeletonClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceSkeletonClassNewFromNative(native uintptr) *DBusInterfaceSkeletonClass {
+func DBusInterfaceSkeletonClassNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeletonClass {
 	return &DBusInterfaceSkeletonClass{native: native}
 }
 
@@ -2235,10 +2236,10 @@ func dBusInterfaceSkeletonPrivateStruct_Set() error {
 }
 
 type DBusInterfaceSkeletonPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceSkeletonPrivateNewFromNative(native uintptr) *DBusInterfaceSkeletonPrivate {
+func DBusInterfaceSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeletonPrivate {
 	return &DBusInterfaceSkeletonPrivate{native: native}
 }
 
@@ -2269,10 +2270,10 @@ func dBusInterfaceVTableStruct_Set() error {
 }
 
 type DBusInterfaceVTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceVTableNewFromNative(native uintptr) *DBusInterfaceVTable {
+func DBusInterfaceVTableNewFromNative(native unsafe.Pointer) *DBusInterfaceVTable {
 	return &DBusInterfaceVTable{native: native}
 }
 
@@ -2315,10 +2316,10 @@ func dBusMethodInfoStruct_Set() error {
 }
 
 type DBusMethodInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusMethodInfoNewFromNative(native uintptr) *DBusMethodInfo {
+func DBusMethodInfoNewFromNative(native unsafe.Pointer) *DBusMethodInfo {
 	return &DBusMethodInfo{native: native}
 }
 
@@ -2449,10 +2450,10 @@ func dBusNodeInfoStruct_Set() error {
 }
 
 type DBusNodeInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusNodeInfoNewFromNative(native uintptr) *DBusNodeInfo {
+func DBusNodeInfoNewFromNative(native unsafe.Pointer) *DBusNodeInfo {
 	return &DBusNodeInfo{native: native}
 }
 
@@ -2635,10 +2636,10 @@ func dBusObjectIfaceStruct_Set() error {
 }
 
 type DBusObjectIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectIfaceNewFromNative(native uintptr) *DBusObjectIface {
+func DBusObjectIfaceNewFromNative(native unsafe.Pointer) *DBusObjectIface {
 	return &DBusObjectIface{native: native}
 }
 
@@ -2693,10 +2694,10 @@ func dBusObjectManagerClientClassStruct_Set() error {
 }
 
 type DBusObjectManagerClientClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerClientClassNewFromNative(native uintptr) *DBusObjectManagerClientClass {
+func DBusObjectManagerClientClassNewFromNative(native unsafe.Pointer) *DBusObjectManagerClientClass {
 	return &DBusObjectManagerClientClass{native: native}
 }
 
@@ -2739,10 +2740,10 @@ func dBusObjectManagerClientPrivateStruct_Set() error {
 }
 
 type DBusObjectManagerClientPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerClientPrivateNewFromNative(native uintptr) *DBusObjectManagerClientPrivate {
+func DBusObjectManagerClientPrivateNewFromNative(native unsafe.Pointer) *DBusObjectManagerClientPrivate {
 	return &DBusObjectManagerClientPrivate{native: native}
 }
 
@@ -2773,10 +2774,10 @@ func dBusObjectManagerIfaceStruct_Set() error {
 }
 
 type DBusObjectManagerIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerIfaceNewFromNative(native uintptr) *DBusObjectManagerIface {
+func DBusObjectManagerIfaceNewFromNative(native unsafe.Pointer) *DBusObjectManagerIface {
 	return &DBusObjectManagerIface{native: native}
 }
 
@@ -2843,10 +2844,10 @@ func dBusObjectManagerServerClassStruct_Set() error {
 }
 
 type DBusObjectManagerServerClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerServerClassNewFromNative(native uintptr) *DBusObjectManagerServerClass {
+func DBusObjectManagerServerClassNewFromNative(native unsafe.Pointer) *DBusObjectManagerServerClass {
 	return &DBusObjectManagerServerClass{native: native}
 }
 
@@ -2881,10 +2882,10 @@ func dBusObjectManagerServerPrivateStruct_Set() error {
 }
 
 type DBusObjectManagerServerPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerServerPrivateNewFromNative(native uintptr) *DBusObjectManagerServerPrivate {
+func DBusObjectManagerServerPrivateNewFromNative(native unsafe.Pointer) *DBusObjectManagerServerPrivate {
 	return &DBusObjectManagerServerPrivate{native: native}
 }
 
@@ -2915,10 +2916,10 @@ func dBusObjectProxyClassStruct_Set() error {
 }
 
 type DBusObjectProxyClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectProxyClassNewFromNative(native uintptr) *DBusObjectProxyClass {
+func DBusObjectProxyClassNewFromNative(native unsafe.Pointer) *DBusObjectProxyClass {
 	return &DBusObjectProxyClass{native: native}
 }
 
@@ -2953,10 +2954,10 @@ func dBusObjectProxyPrivateStruct_Set() error {
 }
 
 type DBusObjectProxyPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectProxyPrivateNewFromNative(native uintptr) *DBusObjectProxyPrivate {
+func DBusObjectProxyPrivateNewFromNative(native unsafe.Pointer) *DBusObjectProxyPrivate {
 	return &DBusObjectProxyPrivate{native: native}
 }
 
@@ -2987,10 +2988,10 @@ func dBusObjectSkeletonClassStruct_Set() error {
 }
 
 type DBusObjectSkeletonClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectSkeletonClassNewFromNative(native uintptr) *DBusObjectSkeletonClass {
+func DBusObjectSkeletonClassNewFromNative(native unsafe.Pointer) *DBusObjectSkeletonClass {
 	return &DBusObjectSkeletonClass{native: native}
 }
 
@@ -3029,10 +3030,10 @@ func dBusObjectSkeletonPrivateStruct_Set() error {
 }
 
 type DBusObjectSkeletonPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectSkeletonPrivateNewFromNative(native uintptr) *DBusObjectSkeletonPrivate {
+func DBusObjectSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusObjectSkeletonPrivate {
 	return &DBusObjectSkeletonPrivate{native: native}
 }
 
@@ -3063,10 +3064,10 @@ func dBusPropertyInfoStruct_Set() error {
 }
 
 type DBusPropertyInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusPropertyInfoNewFromNative(native uintptr) *DBusPropertyInfo {
+func DBusPropertyInfoNewFromNative(native unsafe.Pointer) *DBusPropertyInfo {
 	return &DBusPropertyInfo{native: native}
 }
 
@@ -3207,10 +3208,10 @@ func dBusProxyClassStruct_Set() error {
 }
 
 type DBusProxyClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusProxyClassNewFromNative(native uintptr) *DBusProxyClass {
+func DBusProxyClassNewFromNative(native unsafe.Pointer) *DBusProxyClass {
 	return &DBusProxyClass{native: native}
 }
 
@@ -3249,10 +3250,10 @@ func dBusProxyPrivateStruct_Set() error {
 }
 
 type DBusProxyPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusProxyPrivateNewFromNative(native uintptr) *DBusProxyPrivate {
+func DBusProxyPrivateNewFromNative(native unsafe.Pointer) *DBusProxyPrivate {
 	return &DBusProxyPrivate{native: native}
 }
 
@@ -3283,10 +3284,10 @@ func dBusSignalInfoStruct_Set() error {
 }
 
 type DBusSignalInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusSignalInfoNewFromNative(native uintptr) *DBusSignalInfo {
+func DBusSignalInfoNewFromNative(native unsafe.Pointer) *DBusSignalInfo {
 	return &DBusSignalInfo{native: native}
 }
 
@@ -3413,10 +3414,10 @@ func dBusSubtreeVTableStruct_Set() error {
 }
 
 type DBusSubtreeVTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusSubtreeVTableNewFromNative(native uintptr) *DBusSubtreeVTable {
+func DBusSubtreeVTableNewFromNative(native unsafe.Pointer) *DBusSubtreeVTable {
 	return &DBusSubtreeVTable{native: native}
 }
 
@@ -3459,10 +3460,10 @@ func dataInputStreamClassStruct_Set() error {
 }
 
 type DataInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataInputStreamClassNewFromNative(native uintptr) *DataInputStreamClass {
+func DataInputStreamClassNewFromNative(native unsafe.Pointer) *DataInputStreamClass {
 	return &DataInputStreamClass{native: native}
 }
 
@@ -3527,10 +3528,10 @@ func dataInputStreamPrivateStruct_Set() error {
 }
 
 type DataInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataInputStreamPrivateNewFromNative(native uintptr) *DataInputStreamPrivate {
+func DataInputStreamPrivateNewFromNative(native unsafe.Pointer) *DataInputStreamPrivate {
 	return &DataInputStreamPrivate{native: native}
 }
 
@@ -3561,10 +3562,10 @@ func dataOutputStreamClassStruct_Set() error {
 }
 
 type DataOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataOutputStreamClassNewFromNative(native uintptr) *DataOutputStreamClass {
+func DataOutputStreamClassNewFromNative(native unsafe.Pointer) *DataOutputStreamClass {
 	return &DataOutputStreamClass{native: native}
 }
 
@@ -3629,10 +3630,10 @@ func dataOutputStreamPrivateStruct_Set() error {
 }
 
 type DataOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataOutputStreamPrivateNewFromNative(native uintptr) *DataOutputStreamPrivate {
+func DataOutputStreamPrivateNewFromNative(native unsafe.Pointer) *DataOutputStreamPrivate {
 	return &DataOutputStreamPrivate{native: native}
 }
 
@@ -3663,10 +3664,10 @@ func datagramBasedInterfaceStruct_Set() error {
 }
 
 type DatagramBasedInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DatagramBasedInterfaceNewFromNative(native uintptr) *DatagramBasedInterface {
+func DatagramBasedInterfaceNewFromNative(native unsafe.Pointer) *DatagramBasedInterface {
 	return &DatagramBasedInterface{native: native}
 }
 
@@ -3721,10 +3722,10 @@ func desktopAppInfoClassStruct_Set() error {
 }
 
 type DesktopAppInfoClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DesktopAppInfoClassNewFromNative(native uintptr) *DesktopAppInfoClass {
+func DesktopAppInfoClassNewFromNative(native unsafe.Pointer) *DesktopAppInfoClass {
 	return &DesktopAppInfoClass{native: native}
 }
 
@@ -3759,10 +3760,10 @@ func desktopAppInfoLookupIfaceStruct_Set() error {
 }
 
 type DesktopAppInfoLookupIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DesktopAppInfoLookupIfaceNewFromNative(native uintptr) *DesktopAppInfoLookupIface {
+func DesktopAppInfoLookupIfaceNewFromNative(native unsafe.Pointer) *DesktopAppInfoLookupIface {
 	return &DesktopAppInfoLookupIface{native: native}
 }
 
@@ -3801,10 +3802,10 @@ func driveIfaceStruct_Set() error {
 }
 
 type DriveIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DriveIfaceNewFromNative(native uintptr) *DriveIface {
+func DriveIfaceNewFromNative(native unsafe.Pointer) *DriveIface {
 	return &DriveIface{native: native}
 }
 
@@ -3967,10 +3968,10 @@ func dtlsClientConnectionInterfaceStruct_Set() error {
 }
 
 type DtlsClientConnectionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DtlsClientConnectionInterfaceNewFromNative(native uintptr) *DtlsClientConnectionInterface {
+func DtlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsClientConnectionInterface {
 	return &DtlsClientConnectionInterface{native: native}
 }
 
@@ -4005,10 +4006,10 @@ func dtlsConnectionInterfaceStruct_Set() error {
 }
 
 type DtlsConnectionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DtlsConnectionInterfaceNewFromNative(native uintptr) *DtlsConnectionInterface {
+func DtlsConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsConnectionInterface {
 	return &DtlsConnectionInterface{native: native}
 }
 
@@ -4079,10 +4080,10 @@ func dtlsServerConnectionInterfaceStruct_Set() error {
 }
 
 type DtlsServerConnectionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DtlsServerConnectionInterfaceNewFromNative(native uintptr) *DtlsServerConnectionInterface {
+func DtlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsServerConnectionInterface {
 	return &DtlsServerConnectionInterface{native: native}
 }
 
@@ -4117,10 +4118,10 @@ func emblemClassStruct_Set() error {
 }
 
 type EmblemClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EmblemClassNewFromNative(native uintptr) *EmblemClass {
+func EmblemClassNewFromNative(native unsafe.Pointer) *EmblemClass {
 	return &EmblemClass{native: native}
 }
 
@@ -4151,10 +4152,10 @@ func emblemedIconClassStruct_Set() error {
 }
 
 type EmblemedIconClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EmblemedIconClassNewFromNative(native uintptr) *EmblemedIconClass {
+func EmblemedIconClassNewFromNative(native unsafe.Pointer) *EmblemedIconClass {
 	return &EmblemedIconClass{native: native}
 }
 
@@ -4189,10 +4190,10 @@ func emblemedIconPrivateStruct_Set() error {
 }
 
 type EmblemedIconPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EmblemedIconPrivateNewFromNative(native uintptr) *EmblemedIconPrivate {
+func EmblemedIconPrivateNewFromNative(native unsafe.Pointer) *EmblemedIconPrivate {
 	return &EmblemedIconPrivate{native: native}
 }
 
@@ -4223,10 +4224,10 @@ func fileAttributeInfoStruct_Set() error {
 }
 
 type FileAttributeInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileAttributeInfoNewFromNative(native uintptr) *FileAttributeInfo {
+func FileAttributeInfoNewFromNative(native unsafe.Pointer) *FileAttributeInfo {
 	return &FileAttributeInfo{native: native}
 }
 
@@ -4289,10 +4290,10 @@ func fileAttributeInfoListStruct_Set() error {
 }
 
 type FileAttributeInfoList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileAttributeInfoListNewFromNative(native uintptr) *FileAttributeInfoList {
+func FileAttributeInfoListNewFromNative(native unsafe.Pointer) *FileAttributeInfoList {
 	return &FileAttributeInfoList{native: native}
 }
 
@@ -4493,10 +4494,10 @@ func fileAttributeMatcherStruct_Set() error {
 }
 
 type FileAttributeMatcher struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileAttributeMatcherNewFromNative(native uintptr) *FileAttributeMatcher {
+func FileAttributeMatcherNewFromNative(native unsafe.Pointer) *FileAttributeMatcher {
 	return &FileAttributeMatcher{native: native}
 }
 
@@ -4800,10 +4801,10 @@ func fileDescriptorBasedIfaceStruct_Set() error {
 }
 
 type FileDescriptorBasedIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileDescriptorBasedIfaceNewFromNative(native uintptr) *FileDescriptorBasedIface {
+func FileDescriptorBasedIfaceNewFromNative(native unsafe.Pointer) *FileDescriptorBasedIface {
 	return &FileDescriptorBasedIface{native: native}
 }
 
@@ -4842,10 +4843,10 @@ func fileEnumeratorClassStruct_Set() error {
 }
 
 type FileEnumeratorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileEnumeratorClassNewFromNative(native uintptr) *FileEnumeratorClass {
+func FileEnumeratorClassNewFromNative(native unsafe.Pointer) *FileEnumeratorClass {
 	return &FileEnumeratorClass{native: native}
 }
 
@@ -4932,10 +4933,10 @@ func fileEnumeratorPrivateStruct_Set() error {
 }
 
 type FileEnumeratorPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileEnumeratorPrivateNewFromNative(native uintptr) *FileEnumeratorPrivate {
+func FileEnumeratorPrivateNewFromNative(native unsafe.Pointer) *FileEnumeratorPrivate {
 	return &FileEnumeratorPrivate{native: native}
 }
 
@@ -4966,10 +4967,10 @@ func fileIOStreamClassStruct_Set() error {
 }
 
 type FileIOStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIOStreamClassNewFromNative(native uintptr) *FileIOStreamClass {
+func FileIOStreamClassNewFromNative(native unsafe.Pointer) *FileIOStreamClass {
 	return &FileIOStreamClass{native: native}
 }
 
@@ -5070,10 +5071,10 @@ func fileIOStreamPrivateStruct_Set() error {
 }
 
 type FileIOStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIOStreamPrivateNewFromNative(native uintptr) *FileIOStreamPrivate {
+func FileIOStreamPrivateNewFromNative(native unsafe.Pointer) *FileIOStreamPrivate {
 	return &FileIOStreamPrivate{native: native}
 }
 
@@ -5104,10 +5105,10 @@ func fileIconClassStruct_Set() error {
 }
 
 type FileIconClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIconClassNewFromNative(native uintptr) *FileIconClass {
+func FileIconClassNewFromNative(native unsafe.Pointer) *FileIconClass {
 	return &FileIconClass{native: native}
 }
 
@@ -5138,10 +5139,10 @@ func fileIfaceStruct_Set() error {
 }
 
 type FileIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIfaceNewFromNative(native uintptr) *FileIface {
+func FileIfaceNewFromNative(native unsafe.Pointer) *FileIface {
 	return &FileIface{native: native}
 }
 
@@ -5598,10 +5599,10 @@ func fileInfoClassStruct_Set() error {
 }
 
 type FileInfoClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileInfoClassNewFromNative(native uintptr) *FileInfoClass {
+func FileInfoClassNewFromNative(native unsafe.Pointer) *FileInfoClass {
 	return &FileInfoClass{native: native}
 }
 
@@ -5632,10 +5633,10 @@ func fileInputStreamClassStruct_Set() error {
 }
 
 type FileInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileInputStreamClassNewFromNative(native uintptr) *FileInputStreamClass {
+func FileInputStreamClassNewFromNative(native unsafe.Pointer) *FileInputStreamClass {
 	return &FileInputStreamClass{native: native}
 }
 
@@ -5724,10 +5725,10 @@ func fileInputStreamPrivateStruct_Set() error {
 }
 
 type FileInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileInputStreamPrivateNewFromNative(native uintptr) *FileInputStreamPrivate {
+func FileInputStreamPrivateNewFromNative(native unsafe.Pointer) *FileInputStreamPrivate {
 	return &FileInputStreamPrivate{native: native}
 }
 
@@ -5758,10 +5759,10 @@ func fileMonitorClassStruct_Set() error {
 }
 
 type FileMonitorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileMonitorClassNewFromNative(native uintptr) *FileMonitorClass {
+func FileMonitorClassNewFromNative(native unsafe.Pointer) *FileMonitorClass {
 	return &FileMonitorClass{native: native}
 }
 
@@ -5824,10 +5825,10 @@ func fileMonitorPrivateStruct_Set() error {
 }
 
 type FileMonitorPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileMonitorPrivateNewFromNative(native uintptr) *FileMonitorPrivate {
+func FileMonitorPrivateNewFromNative(native unsafe.Pointer) *FileMonitorPrivate {
 	return &FileMonitorPrivate{native: native}
 }
 
@@ -5858,10 +5859,10 @@ func fileOutputStreamClassStruct_Set() error {
 }
 
 type FileOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileOutputStreamClassNewFromNative(native uintptr) *FileOutputStreamClass {
+func FileOutputStreamClassNewFromNative(native unsafe.Pointer) *FileOutputStreamClass {
 	return &FileOutputStreamClass{native: native}
 }
 
@@ -5962,10 +5963,10 @@ func fileOutputStreamPrivateStruct_Set() error {
 }
 
 type FileOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileOutputStreamPrivateNewFromNative(native uintptr) *FileOutputStreamPrivate {
+func FileOutputStreamPrivateNewFromNative(native unsafe.Pointer) *FileOutputStreamPrivate {
 	return &FileOutputStreamPrivate{native: native}
 }
 
@@ -5996,10 +5997,10 @@ func filenameCompleterClassStruct_Set() error {
 }
 
 type FilenameCompleterClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilenameCompleterClassNewFromNative(native uintptr) *FilenameCompleterClass {
+func FilenameCompleterClassNewFromNative(native unsafe.Pointer) *FilenameCompleterClass {
 	return &FilenameCompleterClass{native: native}
 }
 
@@ -6050,10 +6051,10 @@ func filterInputStreamClassStruct_Set() error {
 }
 
 type FilterInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilterInputStreamClassNewFromNative(native uintptr) *FilterInputStreamClass {
+func FilterInputStreamClassNewFromNative(native unsafe.Pointer) *FilterInputStreamClass {
 	return &FilterInputStreamClass{native: native}
 }
 
@@ -6110,10 +6111,10 @@ func filterOutputStreamClassStruct_Set() error {
 }
 
 type FilterOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilterOutputStreamClassNewFromNative(native uintptr) *FilterOutputStreamClass {
+func FilterOutputStreamClassNewFromNative(native unsafe.Pointer) *FilterOutputStreamClass {
 	return &FilterOutputStreamClass{native: native}
 }
 
@@ -6170,10 +6171,10 @@ func iOExtensionStruct_Set() error {
 }
 
 type IOExtension struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOExtensionNewFromNative(native uintptr) *IOExtension {
+func IOExtensionNewFromNative(native unsafe.Pointer) *IOExtension {
 	return &IOExtension{native: native}
 }
 
@@ -6272,10 +6273,10 @@ func iOExtensionPointStruct_Set() error {
 }
 
 type IOExtensionPoint struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOExtensionPointNewFromNative(native uintptr) *IOExtensionPoint {
+func IOExtensionPointNewFromNative(native unsafe.Pointer) *IOExtensionPoint {
 	return &IOExtensionPoint{native: native}
 }
 
@@ -6345,10 +6346,10 @@ func iOModuleClassStruct_Set() error {
 }
 
 type IOModuleClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOModuleClassNewFromNative(native uintptr) *IOModuleClass {
+func IOModuleClassNewFromNative(native unsafe.Pointer) *IOModuleClass {
 	return &IOModuleClass{native: native}
 }
 
@@ -6379,10 +6380,10 @@ func iOModuleScopeStruct_Set() error {
 }
 
 type IOModuleScope struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOModuleScopeNewFromNative(native uintptr) *IOModuleScope {
+func IOModuleScopeNewFromNative(native unsafe.Pointer) *IOModuleScope {
 	return &IOModuleScope{native: native}
 }
 
@@ -6470,10 +6471,10 @@ func iOSchedulerJobStruct_Set() error {
 }
 
 type IOSchedulerJob struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOSchedulerJobNewFromNative(native uintptr) *IOSchedulerJob {
+func IOSchedulerJobNewFromNative(native unsafe.Pointer) *IOSchedulerJob {
 	return &IOSchedulerJob{native: native}
 }
 
@@ -6508,10 +6509,10 @@ func iOStreamAdapterStruct_Set() error {
 }
 
 type IOStreamAdapter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOStreamAdapterNewFromNative(native uintptr) *IOStreamAdapter {
+func IOStreamAdapterNewFromNative(native unsafe.Pointer) *IOStreamAdapter {
 	return &IOStreamAdapter{native: native}
 }
 
@@ -6542,10 +6543,10 @@ func iOStreamClassStruct_Set() error {
 }
 
 type IOStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOStreamClassNewFromNative(native uintptr) *IOStreamClass {
+func IOStreamClassNewFromNative(native unsafe.Pointer) *IOStreamClass {
 	return &IOStreamClass{native: native}
 }
 
@@ -6640,10 +6641,10 @@ func iOStreamPrivateStruct_Set() error {
 }
 
 type IOStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOStreamPrivateNewFromNative(native uintptr) *IOStreamPrivate {
+func IOStreamPrivateNewFromNative(native unsafe.Pointer) *IOStreamPrivate {
 	return &IOStreamPrivate{native: native}
 }
 
@@ -6674,10 +6675,10 @@ func iconIfaceStruct_Set() error {
 }
 
 type IconIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconIfaceNewFromNative(native uintptr) *IconIface {
+func IconIfaceNewFromNative(native unsafe.Pointer) *IconIface {
 	return &IconIface{native: native}
 }
 
@@ -6732,10 +6733,10 @@ func inetAddressClassStruct_Set() error {
 }
 
 type InetAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressClassNewFromNative(native uintptr) *InetAddressClass {
+func InetAddressClassNewFromNative(native unsafe.Pointer) *InetAddressClass {
 	return &InetAddressClass{native: native}
 }
 
@@ -6778,10 +6779,10 @@ func inetAddressMaskClassStruct_Set() error {
 }
 
 type InetAddressMaskClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressMaskClassNewFromNative(native uintptr) *InetAddressMaskClass {
+func InetAddressMaskClassNewFromNative(native unsafe.Pointer) *InetAddressMaskClass {
 	return &InetAddressMaskClass{native: native}
 }
 
@@ -6816,10 +6817,10 @@ func inetAddressMaskPrivateStruct_Set() error {
 }
 
 type InetAddressMaskPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressMaskPrivateNewFromNative(native uintptr) *InetAddressMaskPrivate {
+func InetAddressMaskPrivateNewFromNative(native unsafe.Pointer) *InetAddressMaskPrivate {
 	return &InetAddressMaskPrivate{native: native}
 }
 
@@ -6850,10 +6851,10 @@ func inetAddressPrivateStruct_Set() error {
 }
 
 type InetAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressPrivateNewFromNative(native uintptr) *InetAddressPrivate {
+func InetAddressPrivateNewFromNative(native unsafe.Pointer) *InetAddressPrivate {
 	return &InetAddressPrivate{native: native}
 }
 
@@ -6884,10 +6885,10 @@ func inetSocketAddressClassStruct_Set() error {
 }
 
 type InetSocketAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetSocketAddressClassNewFromNative(native uintptr) *InetSocketAddressClass {
+func InetSocketAddressClassNewFromNative(native unsafe.Pointer) *InetSocketAddressClass {
 	return &InetSocketAddressClass{native: native}
 }
 
@@ -6932,10 +6933,10 @@ func inetSocketAddressPrivateStruct_Set() error {
 }
 
 type InetSocketAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetSocketAddressPrivateNewFromNative(native uintptr) *InetSocketAddressPrivate {
+func InetSocketAddressPrivateNewFromNative(native unsafe.Pointer) *InetSocketAddressPrivate {
 	return &InetSocketAddressPrivate{native: native}
 }
 
@@ -6966,10 +6967,10 @@ func initableIfaceStruct_Set() error {
 }
 
 type InitableIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InitableIfaceNewFromNative(native uintptr) *InitableIface {
+func InitableIfaceNewFromNative(native unsafe.Pointer) *InitableIface {
 	return &InitableIface{native: native}
 }
 
@@ -7008,10 +7009,10 @@ func inputMessageStruct_Set() error {
 }
 
 type InputMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InputMessageNewFromNative(native uintptr) *InputMessage {
+func InputMessageNewFromNative(native unsafe.Pointer) *InputMessage {
 	return &InputMessage{native: native}
 }
 
@@ -7120,10 +7121,10 @@ func inputStreamClassStruct_Set() error {
 }
 
 type InputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InputStreamClassNewFromNative(native uintptr) *InputStreamClass {
+func InputStreamClassNewFromNative(native unsafe.Pointer) *InputStreamClass {
 	return &InputStreamClass{native: native}
 }
 
@@ -7214,10 +7215,10 @@ func inputStreamPrivateStruct_Set() error {
 }
 
 type InputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InputStreamPrivateNewFromNative(native uintptr) *InputStreamPrivate {
+func InputStreamPrivateNewFromNative(native unsafe.Pointer) *InputStreamPrivate {
 	return &InputStreamPrivate{native: native}
 }
 
@@ -7248,10 +7249,10 @@ func inputVectorStruct_Set() error {
 }
 
 type InputVector struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InputVectorNewFromNative(native uintptr) *InputVector {
+func InputVectorNewFromNative(native unsafe.Pointer) *InputVector {
 	return &InputVector{native: native}
 }
 
@@ -7300,10 +7301,10 @@ func listModelInterfaceStruct_Set() error {
 }
 
 type ListModelInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListModelInterfaceNewFromNative(native uintptr) *ListModelInterface {
+func ListModelInterfaceNewFromNative(native unsafe.Pointer) *ListModelInterface {
 	return &ListModelInterface{native: native}
 }
 
@@ -7350,10 +7351,10 @@ func listStoreClassStruct_Set() error {
 }
 
 type ListStoreClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListStoreClassNewFromNative(native uintptr) *ListStoreClass {
+func ListStoreClassNewFromNative(native unsafe.Pointer) *ListStoreClass {
 	return &ListStoreClass{native: native}
 }
 
@@ -7388,10 +7389,10 @@ func loadableIconIfaceStruct_Set() error {
 }
 
 type LoadableIconIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LoadableIconIfaceNewFromNative(native uintptr) *LoadableIconIface {
+func LoadableIconIfaceNewFromNative(native unsafe.Pointer) *LoadableIconIface {
 	return &LoadableIconIface{native: native}
 }
 
@@ -7438,10 +7439,10 @@ func memoryInputStreamClassStruct_Set() error {
 }
 
 type MemoryInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryInputStreamClassNewFromNative(native uintptr) *MemoryInputStreamClass {
+func MemoryInputStreamClassNewFromNative(native unsafe.Pointer) *MemoryInputStreamClass {
 	return &MemoryInputStreamClass{native: native}
 }
 
@@ -7506,10 +7507,10 @@ func memoryInputStreamPrivateStruct_Set() error {
 }
 
 type MemoryInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryInputStreamPrivateNewFromNative(native uintptr) *MemoryInputStreamPrivate {
+func MemoryInputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryInputStreamPrivate {
 	return &MemoryInputStreamPrivate{native: native}
 }
 
@@ -7540,10 +7541,10 @@ func memoryOutputStreamClassStruct_Set() error {
 }
 
 type MemoryOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryOutputStreamClassNewFromNative(native uintptr) *MemoryOutputStreamClass {
+func MemoryOutputStreamClassNewFromNative(native unsafe.Pointer) *MemoryOutputStreamClass {
 	return &MemoryOutputStreamClass{native: native}
 }
 
@@ -7608,10 +7609,10 @@ func memoryOutputStreamPrivateStruct_Set() error {
 }
 
 type MemoryOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryOutputStreamPrivateNewFromNative(native uintptr) *MemoryOutputStreamPrivate {
+func MemoryOutputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryOutputStreamPrivate {
 	return &MemoryOutputStreamPrivate{native: native}
 }
 
@@ -7642,10 +7643,10 @@ func menuAttributeIterClassStruct_Set() error {
 }
 
 type MenuAttributeIterClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuAttributeIterClassNewFromNative(native uintptr) *MenuAttributeIterClass {
+func MenuAttributeIterClassNewFromNative(native unsafe.Pointer) *MenuAttributeIterClass {
 	return &MenuAttributeIterClass{native: native}
 }
 
@@ -7684,10 +7685,10 @@ func menuAttributeIterPrivateStruct_Set() error {
 }
 
 type MenuAttributeIterPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuAttributeIterPrivateNewFromNative(native uintptr) *MenuAttributeIterPrivate {
+func MenuAttributeIterPrivateNewFromNative(native unsafe.Pointer) *MenuAttributeIterPrivate {
 	return &MenuAttributeIterPrivate{native: native}
 }
 
@@ -7718,10 +7719,10 @@ func menuLinkIterClassStruct_Set() error {
 }
 
 type MenuLinkIterClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuLinkIterClassNewFromNative(native uintptr) *MenuLinkIterClass {
+func MenuLinkIterClassNewFromNative(native unsafe.Pointer) *MenuLinkIterClass {
 	return &MenuLinkIterClass{native: native}
 }
 
@@ -7760,10 +7761,10 @@ func menuLinkIterPrivateStruct_Set() error {
 }
 
 type MenuLinkIterPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuLinkIterPrivateNewFromNative(native uintptr) *MenuLinkIterPrivate {
+func MenuLinkIterPrivateNewFromNative(native unsafe.Pointer) *MenuLinkIterPrivate {
 	return &MenuLinkIterPrivate{native: native}
 }
 
@@ -7794,10 +7795,10 @@ func menuModelClassStruct_Set() error {
 }
 
 type MenuModelClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuModelClassNewFromNative(native uintptr) *MenuModelClass {
+func MenuModelClassNewFromNative(native unsafe.Pointer) *MenuModelClass {
 	return &MenuModelClass{native: native}
 }
 
@@ -7864,10 +7865,10 @@ func menuModelPrivateStruct_Set() error {
 }
 
 type MenuModelPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuModelPrivateNewFromNative(native uintptr) *MenuModelPrivate {
+func MenuModelPrivateNewFromNative(native unsafe.Pointer) *MenuModelPrivate {
 	return &MenuModelPrivate{native: native}
 }
 
@@ -7898,10 +7899,10 @@ func mountIfaceStruct_Set() error {
 }
 
 type MountIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MountIfaceNewFromNative(native uintptr) *MountIface {
+func MountIfaceNewFromNative(native unsafe.Pointer) *MountIface {
 	return &MountIface{native: native}
 }
 
@@ -8044,10 +8045,10 @@ func mountOperationClassStruct_Set() error {
 }
 
 type MountOperationClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MountOperationClassNewFromNative(native uintptr) *MountOperationClass {
+func MountOperationClassNewFromNative(native unsafe.Pointer) *MountOperationClass {
 	return &MountOperationClass{native: native}
 }
 
@@ -8142,10 +8143,10 @@ func mountOperationPrivateStruct_Set() error {
 }
 
 type MountOperationPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MountOperationPrivateNewFromNative(native uintptr) *MountOperationPrivate {
+func MountOperationPrivateNewFromNative(native unsafe.Pointer) *MountOperationPrivate {
 	return &MountOperationPrivate{native: native}
 }
 
@@ -8176,10 +8177,10 @@ func nativeSocketAddressClassStruct_Set() error {
 }
 
 type NativeSocketAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeSocketAddressClassNewFromNative(native uintptr) *NativeSocketAddressClass {
+func NativeSocketAddressClassNewFromNative(native unsafe.Pointer) *NativeSocketAddressClass {
 	return &NativeSocketAddressClass{native: native}
 }
 
@@ -8224,10 +8225,10 @@ func nativeSocketAddressPrivateStruct_Set() error {
 }
 
 type NativeSocketAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeSocketAddressPrivateNewFromNative(native uintptr) *NativeSocketAddressPrivate {
+func NativeSocketAddressPrivateNewFromNative(native unsafe.Pointer) *NativeSocketAddressPrivate {
 	return &NativeSocketAddressPrivate{native: native}
 }
 
@@ -8258,10 +8259,10 @@ func nativeVolumeMonitorClassStruct_Set() error {
 }
 
 type NativeVolumeMonitorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeVolumeMonitorClassNewFromNative(native uintptr) *NativeVolumeMonitorClass {
+func NativeVolumeMonitorClassNewFromNative(native unsafe.Pointer) *NativeVolumeMonitorClass {
 	return &NativeVolumeMonitorClass{native: native}
 }
 
@@ -8310,10 +8311,10 @@ func networkAddressClassStruct_Set() error {
 }
 
 type NetworkAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkAddressClassNewFromNative(native uintptr) *NetworkAddressClass {
+func NetworkAddressClassNewFromNative(native unsafe.Pointer) *NetworkAddressClass {
 	return &NetworkAddressClass{native: native}
 }
 
@@ -8348,10 +8349,10 @@ func networkAddressPrivateStruct_Set() error {
 }
 
 type NetworkAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkAddressPrivateNewFromNative(native uintptr) *NetworkAddressPrivate {
+func NetworkAddressPrivateNewFromNative(native unsafe.Pointer) *NetworkAddressPrivate {
 	return &NetworkAddressPrivate{native: native}
 }
 
@@ -8382,10 +8383,10 @@ func networkMonitorInterfaceStruct_Set() error {
 }
 
 type NetworkMonitorInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkMonitorInterfaceNewFromNative(native uintptr) *NetworkMonitorInterface {
+func NetworkMonitorInterfaceNewFromNative(native unsafe.Pointer) *NetworkMonitorInterface {
 	return &NetworkMonitorInterface{native: native}
 }
 
@@ -8436,10 +8437,10 @@ func networkServiceClassStruct_Set() error {
 }
 
 type NetworkServiceClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkServiceClassNewFromNative(native uintptr) *NetworkServiceClass {
+func NetworkServiceClassNewFromNative(native unsafe.Pointer) *NetworkServiceClass {
 	return &NetworkServiceClass{native: native}
 }
 
@@ -8474,10 +8475,10 @@ func networkServicePrivateStruct_Set() error {
 }
 
 type NetworkServicePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkServicePrivateNewFromNative(native uintptr) *NetworkServicePrivate {
+func NetworkServicePrivateNewFromNative(native unsafe.Pointer) *NetworkServicePrivate {
 	return &NetworkServicePrivate{native: native}
 }
 
@@ -8508,10 +8509,10 @@ func outputMessageStruct_Set() error {
 }
 
 type OutputMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OutputMessageNewFromNative(native uintptr) *OutputMessage {
+func OutputMessageNewFromNative(native unsafe.Pointer) *OutputMessage {
 	return &OutputMessage{native: native}
 }
 
@@ -8616,10 +8617,10 @@ func outputStreamClassStruct_Set() error {
 }
 
 type OutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OutputStreamClassNewFromNative(native uintptr) *OutputStreamClass {
+func OutputStreamClassNewFromNative(native unsafe.Pointer) *OutputStreamClass {
 	return &OutputStreamClass{native: native}
 }
 
@@ -8734,10 +8735,10 @@ func outputStreamPrivateStruct_Set() error {
 }
 
 type OutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OutputStreamPrivateNewFromNative(native uintptr) *OutputStreamPrivate {
+func OutputStreamPrivateNewFromNative(native unsafe.Pointer) *OutputStreamPrivate {
 	return &OutputStreamPrivate{native: native}
 }
 
@@ -8768,10 +8769,10 @@ func outputVectorStruct_Set() error {
 }
 
 type OutputVector struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OutputVectorNewFromNative(native uintptr) *OutputVector {
+func OutputVectorNewFromNative(native unsafe.Pointer) *OutputVector {
 	return &OutputVector{native: native}
 }
 
@@ -8820,10 +8821,10 @@ func permissionClassStruct_Set() error {
 }
 
 type PermissionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PermissionClassNewFromNative(native uintptr) *PermissionClass {
+func PermissionClassNewFromNative(native unsafe.Pointer) *PermissionClass {
 	return &PermissionClass{native: native}
 }
 
@@ -8886,10 +8887,10 @@ func permissionPrivateStruct_Set() error {
 }
 
 type PermissionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PermissionPrivateNewFromNative(native uintptr) *PermissionPrivate {
+func PermissionPrivateNewFromNative(native unsafe.Pointer) *PermissionPrivate {
 	return &PermissionPrivate{native: native}
 }
 
@@ -8920,10 +8921,10 @@ func pollableInputStreamInterfaceStruct_Set() error {
 }
 
 type PollableInputStreamInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PollableInputStreamInterfaceNewFromNative(native uintptr) *PollableInputStreamInterface {
+func PollableInputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableInputStreamInterface {
 	return &PollableInputStreamInterface{native: native}
 }
 
@@ -8974,10 +8975,10 @@ func pollableOutputStreamInterfaceStruct_Set() error {
 }
 
 type PollableOutputStreamInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PollableOutputStreamInterfaceNewFromNative(native uintptr) *PollableOutputStreamInterface {
+func PollableOutputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableOutputStreamInterface {
 	return &PollableOutputStreamInterface{native: native}
 }
 
@@ -9032,10 +9033,10 @@ func proxyAddressClassStruct_Set() error {
 }
 
 type ProxyAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressClassNewFromNative(native uintptr) *ProxyAddressClass {
+func ProxyAddressClassNewFromNative(native unsafe.Pointer) *ProxyAddressClass {
 	return &ProxyAddressClass{native: native}
 }
 
@@ -9080,10 +9081,10 @@ func proxyAddressEnumeratorClassStruct_Set() error {
 }
 
 type ProxyAddressEnumeratorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressEnumeratorClassNewFromNative(native uintptr) *ProxyAddressEnumeratorClass {
+func ProxyAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *ProxyAddressEnumeratorClass {
 	return &ProxyAddressEnumeratorClass{native: native}
 }
 
@@ -9142,10 +9143,10 @@ func proxyAddressEnumeratorPrivateStruct_Set() error {
 }
 
 type ProxyAddressEnumeratorPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressEnumeratorPrivateNewFromNative(native uintptr) *ProxyAddressEnumeratorPrivate {
+func ProxyAddressEnumeratorPrivateNewFromNative(native unsafe.Pointer) *ProxyAddressEnumeratorPrivate {
 	return &ProxyAddressEnumeratorPrivate{native: native}
 }
 
@@ -9176,10 +9177,10 @@ func proxyAddressPrivateStruct_Set() error {
 }
 
 type ProxyAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressPrivateNewFromNative(native uintptr) *ProxyAddressPrivate {
+func ProxyAddressPrivateNewFromNative(native unsafe.Pointer) *ProxyAddressPrivate {
 	return &ProxyAddressPrivate{native: native}
 }
 
@@ -9210,10 +9211,10 @@ func proxyInterfaceStruct_Set() error {
 }
 
 type ProxyInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyInterfaceNewFromNative(native uintptr) *ProxyInterface {
+func ProxyInterfaceNewFromNative(native unsafe.Pointer) *ProxyInterface {
 	return &ProxyInterface{native: native}
 }
 
@@ -9264,10 +9265,10 @@ func proxyResolverInterfaceStruct_Set() error {
 }
 
 type ProxyResolverInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyResolverInterfaceNewFromNative(native uintptr) *ProxyResolverInterface {
+func ProxyResolverInterfaceNewFromNative(native unsafe.Pointer) *ProxyResolverInterface {
 	return &ProxyResolverInterface{native: native}
 }
 
@@ -9318,10 +9319,10 @@ func remoteActionGroupInterfaceStruct_Set() error {
 }
 
 type RemoteActionGroupInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RemoteActionGroupInterfaceNewFromNative(native uintptr) *RemoteActionGroupInterface {
+func RemoteActionGroupInterfaceNewFromNative(native unsafe.Pointer) *RemoteActionGroupInterface {
 	return &RemoteActionGroupInterface{native: native}
 }
 
@@ -9364,10 +9365,10 @@ func resolverClassStruct_Set() error {
 }
 
 type ResolverClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ResolverClassNewFromNative(native uintptr) *ResolverClass {
+func ResolverClassNewFromNative(native unsafe.Pointer) *ResolverClass {
 	return &ResolverClass{native: native}
 }
 
@@ -9466,10 +9467,10 @@ func resolverPrivateStruct_Set() error {
 }
 
 type ResolverPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ResolverPrivateNewFromNative(native uintptr) *ResolverPrivate {
+func ResolverPrivateNewFromNative(native unsafe.Pointer) *ResolverPrivate {
 	return &ResolverPrivate{native: native}
 }
 
@@ -9500,10 +9501,10 @@ func resourceStruct_Set() error {
 }
 
 type Resource struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ResourceNewFromNative(native uintptr) *Resource {
+func ResourceNewFromNative(native unsafe.Pointer) *Resource {
 	return &Resource{native: native}
 }
 
@@ -9645,10 +9646,10 @@ func seekableIfaceStruct_Set() error {
 }
 
 type SeekableIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SeekableIfaceNewFromNative(native uintptr) *SeekableIface {
+func SeekableIfaceNewFromNative(native unsafe.Pointer) *SeekableIface {
 	return &SeekableIface{native: native}
 }
 
@@ -9703,10 +9704,10 @@ func settingsBackendClassStruct_Set() error {
 }
 
 type SettingsBackendClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsBackendClassNewFromNative(native uintptr) *SettingsBackendClass {
+func SettingsBackendClassNewFromNative(native unsafe.Pointer) *SettingsBackendClass {
 	return &SettingsBackendClass{native: native}
 }
 
@@ -9781,10 +9782,10 @@ func settingsBackendPrivateStruct_Set() error {
 }
 
 type SettingsBackendPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsBackendPrivateNewFromNative(native uintptr) *SettingsBackendPrivate {
+func SettingsBackendPrivateNewFromNative(native unsafe.Pointer) *SettingsBackendPrivate {
 	return &SettingsBackendPrivate{native: native}
 }
 
@@ -9815,10 +9816,10 @@ func settingsClassStruct_Set() error {
 }
 
 type SettingsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsClassNewFromNative(native uintptr) *SettingsClass {
+func SettingsClassNewFromNative(native unsafe.Pointer) *SettingsClass {
 	return &SettingsClass{native: native}
 }
 
@@ -9873,10 +9874,10 @@ func settingsPrivateStruct_Set() error {
 }
 
 type SettingsPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsPrivateNewFromNative(native uintptr) *SettingsPrivate {
+func SettingsPrivateNewFromNative(native unsafe.Pointer) *SettingsPrivate {
 	return &SettingsPrivate{native: native}
 }
 
@@ -9907,10 +9908,10 @@ func settingsSchemaStruct_Set() error {
 }
 
 type SettingsSchema struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsSchemaNewFromNative(native uintptr) *SettingsSchema {
+func SettingsSchemaNewFromNative(native unsafe.Pointer) *SettingsSchema {
 	return &SettingsSchema{native: native}
 }
 
@@ -10187,10 +10188,10 @@ func settingsSchemaKeyStruct_Set() error {
 }
 
 type SettingsSchemaKey struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsSchemaKeyNewFromNative(native uintptr) *SettingsSchemaKey {
+func SettingsSchemaKeyNewFromNative(native unsafe.Pointer) *SettingsSchemaKey {
 	return &SettingsSchemaKey{native: native}
 }
 
@@ -10385,10 +10386,10 @@ func settingsSchemaSourceStruct_Set() error {
 }
 
 type SettingsSchemaSource struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsSchemaSourceNewFromNative(native uintptr) *SettingsSchemaSource {
+func SettingsSchemaSourceNewFromNative(native unsafe.Pointer) *SettingsSchemaSource {
 	return &SettingsSchemaSource{native: native}
 }
 
@@ -10534,10 +10535,10 @@ func simpleActionGroupClassStruct_Set() error {
 }
 
 type SimpleActionGroupClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleActionGroupClassNewFromNative(native uintptr) *SimpleActionGroupClass {
+func SimpleActionGroupClassNewFromNative(native unsafe.Pointer) *SimpleActionGroupClass {
 	return &SimpleActionGroupClass{native: native}
 }
 
@@ -10568,10 +10569,10 @@ func simpleActionGroupPrivateStruct_Set() error {
 }
 
 type SimpleActionGroupPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleActionGroupPrivateNewFromNative(native uintptr) *SimpleActionGroupPrivate {
+func SimpleActionGroupPrivateNewFromNative(native unsafe.Pointer) *SimpleActionGroupPrivate {
 	return &SimpleActionGroupPrivate{native: native}
 }
 
@@ -10602,10 +10603,10 @@ func simpleAsyncResultClassStruct_Set() error {
 }
 
 type SimpleAsyncResultClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleAsyncResultClassNewFromNative(native uintptr) *SimpleAsyncResultClass {
+func SimpleAsyncResultClassNewFromNative(native unsafe.Pointer) *SimpleAsyncResultClass {
 	return &SimpleAsyncResultClass{native: native}
 }
 
@@ -10636,10 +10637,10 @@ func simpleProxyResolverClassStruct_Set() error {
 }
 
 type SimpleProxyResolverClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleProxyResolverClassNewFromNative(native uintptr) *SimpleProxyResolverClass {
+func SimpleProxyResolverClassNewFromNative(native unsafe.Pointer) *SimpleProxyResolverClass {
 	return &SimpleProxyResolverClass{native: native}
 }
 
@@ -10694,10 +10695,10 @@ func simpleProxyResolverPrivateStruct_Set() error {
 }
 
 type SimpleProxyResolverPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleProxyResolverPrivateNewFromNative(native uintptr) *SimpleProxyResolverPrivate {
+func SimpleProxyResolverPrivateNewFromNative(native unsafe.Pointer) *SimpleProxyResolverPrivate {
 	return &SimpleProxyResolverPrivate{native: native}
 }
 
@@ -10728,10 +10729,10 @@ func socketAddressClassStruct_Set() error {
 }
 
 type SocketAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketAddressClassNewFromNative(native uintptr) *SocketAddressClass {
+func SocketAddressClassNewFromNative(native unsafe.Pointer) *SocketAddressClass {
 	return &SocketAddressClass{native: native}
 }
 
@@ -10778,10 +10779,10 @@ func socketAddressEnumeratorClassStruct_Set() error {
 }
 
 type SocketAddressEnumeratorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketAddressEnumeratorClassNewFromNative(native uintptr) *SocketAddressEnumeratorClass {
+func SocketAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *SocketAddressEnumeratorClass {
 	return &SocketAddressEnumeratorClass{native: native}
 }
 
@@ -10824,10 +10825,10 @@ func socketClassStruct_Set() error {
 }
 
 type SocketClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketClassNewFromNative(native uintptr) *SocketClass {
+func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
 	return &SocketClass{native: native}
 }
 
@@ -10902,10 +10903,10 @@ func socketClientClassStruct_Set() error {
 }
 
 type SocketClientClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketClientClassNewFromNative(native uintptr) *SocketClientClass {
+func SocketClientClassNewFromNative(native unsafe.Pointer) *SocketClientClass {
 	return &SocketClientClass{native: native}
 }
 
@@ -10960,10 +10961,10 @@ func socketClientPrivateStruct_Set() error {
 }
 
 type SocketClientPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketClientPrivateNewFromNative(native uintptr) *SocketClientPrivate {
+func SocketClientPrivateNewFromNative(native unsafe.Pointer) *SocketClientPrivate {
 	return &SocketClientPrivate{native: native}
 }
 
@@ -10994,10 +10995,10 @@ func socketConnectableIfaceStruct_Set() error {
 }
 
 type SocketConnectableIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketConnectableIfaceNewFromNative(native uintptr) *SocketConnectableIface {
+func SocketConnectableIfaceNewFromNative(native unsafe.Pointer) *SocketConnectableIface {
 	return &SocketConnectableIface{native: native}
 }
 
@@ -11044,10 +11045,10 @@ func socketConnectionClassStruct_Set() error {
 }
 
 type SocketConnectionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketConnectionClassNewFromNative(native uintptr) *SocketConnectionClass {
+func SocketConnectionClassNewFromNative(native unsafe.Pointer) *SocketConnectionClass {
 	return &SocketConnectionClass{native: native}
 }
 
@@ -11116,10 +11117,10 @@ func socketConnectionPrivateStruct_Set() error {
 }
 
 type SocketConnectionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketConnectionPrivateNewFromNative(native uintptr) *SocketConnectionPrivate {
+func SocketConnectionPrivateNewFromNative(native unsafe.Pointer) *SocketConnectionPrivate {
 	return &SocketConnectionPrivate{native: native}
 }
 
@@ -11150,10 +11151,10 @@ func socketControlMessageClassStruct_Set() error {
 }
 
 type SocketControlMessageClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketControlMessageClassNewFromNative(native uintptr) *SocketControlMessageClass {
+func SocketControlMessageClassNewFromNative(native unsafe.Pointer) *SocketControlMessageClass {
 	return &SocketControlMessageClass{native: native}
 }
 
@@ -11228,10 +11229,10 @@ func socketControlMessagePrivateStruct_Set() error {
 }
 
 type SocketControlMessagePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketControlMessagePrivateNewFromNative(native uintptr) *SocketControlMessagePrivate {
+func SocketControlMessagePrivateNewFromNative(native unsafe.Pointer) *SocketControlMessagePrivate {
 	return &SocketControlMessagePrivate{native: native}
 }
 
@@ -11262,10 +11263,10 @@ func socketListenerClassStruct_Set() error {
 }
 
 type SocketListenerClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketListenerClassNewFromNative(native uintptr) *SocketListenerClass {
+func SocketListenerClassNewFromNative(native unsafe.Pointer) *SocketListenerClass {
 	return &SocketListenerClass{native: native}
 }
 
@@ -11328,10 +11329,10 @@ func socketListenerPrivateStruct_Set() error {
 }
 
 type SocketListenerPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketListenerPrivateNewFromNative(native uintptr) *SocketListenerPrivate {
+func SocketListenerPrivateNewFromNative(native unsafe.Pointer) *SocketListenerPrivate {
 	return &SocketListenerPrivate{native: native}
 }
 
@@ -11362,10 +11363,10 @@ func socketPrivateStruct_Set() error {
 }
 
 type SocketPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketPrivateNewFromNative(native uintptr) *SocketPrivate {
+func SocketPrivateNewFromNative(native unsafe.Pointer) *SocketPrivate {
 	return &SocketPrivate{native: native}
 }
 
@@ -11396,10 +11397,10 @@ func socketServiceClassStruct_Set() error {
 }
 
 type SocketServiceClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketServiceClassNewFromNative(native uintptr) *SocketServiceClass {
+func SocketServiceClassNewFromNative(native unsafe.Pointer) *SocketServiceClass {
 	return &SocketServiceClass{native: native}
 }
 
@@ -11472,10 +11473,10 @@ func socketServicePrivateStruct_Set() error {
 }
 
 type SocketServicePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketServicePrivateNewFromNative(native uintptr) *SocketServicePrivate {
+func SocketServicePrivateNewFromNative(native unsafe.Pointer) *SocketServicePrivate {
 	return &SocketServicePrivate{native: native}
 }
 
@@ -11506,10 +11507,10 @@ func srvTargetStruct_Set() error {
 }
 
 type SrvTarget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SrvTargetNewFromNative(native uintptr) *SrvTarget {
+func SrvTargetNewFromNative(native unsafe.Pointer) *SrvTarget {
 	return &SrvTarget{native: native}
 }
 
@@ -11748,10 +11749,10 @@ func staticResourceStruct_Set() error {
 }
 
 type StaticResource struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StaticResourceNewFromNative(native uintptr) *StaticResource {
+func StaticResourceNewFromNative(native unsafe.Pointer) *StaticResource {
 	return &StaticResource{native: native}
 }
 
@@ -11870,10 +11871,10 @@ func taskClassStruct_Set() error {
 }
 
 type TaskClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TaskClassNewFromNative(native uintptr) *TaskClass {
+func TaskClassNewFromNative(native unsafe.Pointer) *TaskClass {
 	return &TaskClass{native: native}
 }
 
@@ -11904,10 +11905,10 @@ func tcpConnectionClassStruct_Set() error {
 }
 
 type TcpConnectionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpConnectionClassNewFromNative(native uintptr) *TcpConnectionClass {
+func TcpConnectionClassNewFromNative(native unsafe.Pointer) *TcpConnectionClass {
 	return &TcpConnectionClass{native: native}
 }
 
@@ -11952,10 +11953,10 @@ func tcpConnectionPrivateStruct_Set() error {
 }
 
 type TcpConnectionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpConnectionPrivateNewFromNative(native uintptr) *TcpConnectionPrivate {
+func TcpConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpConnectionPrivate {
 	return &TcpConnectionPrivate{native: native}
 }
 
@@ -11986,10 +11987,10 @@ func tcpWrapperConnectionClassStruct_Set() error {
 }
 
 type TcpWrapperConnectionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpWrapperConnectionClassNewFromNative(native uintptr) *TcpWrapperConnectionClass {
+func TcpWrapperConnectionClassNewFromNative(native unsafe.Pointer) *TcpWrapperConnectionClass {
 	return &TcpWrapperConnectionClass{native: native}
 }
 
@@ -12034,10 +12035,10 @@ func tcpWrapperConnectionPrivateStruct_Set() error {
 }
 
 type TcpWrapperConnectionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpWrapperConnectionPrivateNewFromNative(native uintptr) *TcpWrapperConnectionPrivate {
+func TcpWrapperConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpWrapperConnectionPrivate {
 	return &TcpWrapperConnectionPrivate{native: native}
 }
 
@@ -12068,10 +12069,10 @@ func themedIconClassStruct_Set() error {
 }
 
 type ThemedIconClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThemedIconClassNewFromNative(native uintptr) *ThemedIconClass {
+func ThemedIconClassNewFromNative(native unsafe.Pointer) *ThemedIconClass {
 	return &ThemedIconClass{native: native}
 }
 
@@ -12102,10 +12103,10 @@ func threadedSocketServiceClassStruct_Set() error {
 }
 
 type ThreadedSocketServiceClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThreadedSocketServiceClassNewFromNative(native uintptr) *ThreadedSocketServiceClass {
+func ThreadedSocketServiceClassNewFromNative(native unsafe.Pointer) *ThreadedSocketServiceClass {
 	return &ThreadedSocketServiceClass{native: native}
 }
 
@@ -12174,10 +12175,10 @@ func threadedSocketServicePrivateStruct_Set() error {
 }
 
 type ThreadedSocketServicePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThreadedSocketServicePrivateNewFromNative(native uintptr) *ThreadedSocketServicePrivate {
+func ThreadedSocketServicePrivateNewFromNative(native unsafe.Pointer) *ThreadedSocketServicePrivate {
 	return &ThreadedSocketServicePrivate{native: native}
 }
 
@@ -12208,10 +12209,10 @@ func tlsBackendInterfaceStruct_Set() error {
 }
 
 type TlsBackendInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsBackendInterfaceNewFromNative(native uintptr) *TlsBackendInterface {
+func TlsBackendInterfaceNewFromNative(native unsafe.Pointer) *TlsBackendInterface {
 	return &TlsBackendInterface{native: native}
 }
 
@@ -12282,10 +12283,10 @@ func tlsCertificateClassStruct_Set() error {
 }
 
 type TlsCertificateClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsCertificateClassNewFromNative(native uintptr) *TlsCertificateClass {
+func TlsCertificateClassNewFromNative(native unsafe.Pointer) *TlsCertificateClass {
 	return &TlsCertificateClass{native: native}
 }
 
@@ -12324,10 +12325,10 @@ func tlsCertificatePrivateStruct_Set() error {
 }
 
 type TlsCertificatePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsCertificatePrivateNewFromNative(native uintptr) *TlsCertificatePrivate {
+func TlsCertificatePrivateNewFromNative(native unsafe.Pointer) *TlsCertificatePrivate {
 	return &TlsCertificatePrivate{native: native}
 }
 
@@ -12358,10 +12359,10 @@ func tlsClientConnectionInterfaceStruct_Set() error {
 }
 
 type TlsClientConnectionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsClientConnectionInterfaceNewFromNative(native uintptr) *TlsClientConnectionInterface {
+func TlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsClientConnectionInterface {
 	return &TlsClientConnectionInterface{native: native}
 }
 
@@ -12400,10 +12401,10 @@ func tlsConnectionClassStruct_Set() error {
 }
 
 type TlsConnectionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsConnectionClassNewFromNative(native uintptr) *TlsConnectionClass {
+func TlsConnectionClassNewFromNative(native unsafe.Pointer) *TlsConnectionClass {
 	return &TlsConnectionClass{native: native}
 }
 
@@ -12464,10 +12465,10 @@ func tlsConnectionPrivateStruct_Set() error {
 }
 
 type TlsConnectionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsConnectionPrivateNewFromNative(native uintptr) *TlsConnectionPrivate {
+func TlsConnectionPrivateNewFromNative(native unsafe.Pointer) *TlsConnectionPrivate {
 	return &TlsConnectionPrivate{native: native}
 }
 
@@ -12498,10 +12499,10 @@ func tlsDatabaseClassStruct_Set() error {
 }
 
 type TlsDatabaseClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsDatabaseClassNewFromNative(native uintptr) *TlsDatabaseClass {
+func TlsDatabaseClassNewFromNative(native unsafe.Pointer) *TlsDatabaseClass {
 	return &TlsDatabaseClass{native: native}
 }
 
@@ -12588,10 +12589,10 @@ func tlsDatabasePrivateStruct_Set() error {
 }
 
 type TlsDatabasePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsDatabasePrivateNewFromNative(native uintptr) *TlsDatabasePrivate {
+func TlsDatabasePrivateNewFromNative(native unsafe.Pointer) *TlsDatabasePrivate {
 	return &TlsDatabasePrivate{native: native}
 }
 
@@ -12622,10 +12623,10 @@ func tlsFileDatabaseInterfaceStruct_Set() error {
 }
 
 type TlsFileDatabaseInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsFileDatabaseInterfaceNewFromNative(native uintptr) *TlsFileDatabaseInterface {
+func TlsFileDatabaseInterfaceNewFromNative(native unsafe.Pointer) *TlsFileDatabaseInterface {
 	return &TlsFileDatabaseInterface{native: native}
 }
 
@@ -12660,10 +12661,10 @@ func tlsInteractionClassStruct_Set() error {
 }
 
 type TlsInteractionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsInteractionClassNewFromNative(native uintptr) *TlsInteractionClass {
+func TlsInteractionClassNewFromNative(native unsafe.Pointer) *TlsInteractionClass {
 	return &TlsInteractionClass{native: native}
 }
 
@@ -12718,10 +12719,10 @@ func tlsInteractionPrivateStruct_Set() error {
 }
 
 type TlsInteractionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsInteractionPrivateNewFromNative(native uintptr) *TlsInteractionPrivate {
+func TlsInteractionPrivateNewFromNative(native unsafe.Pointer) *TlsInteractionPrivate {
 	return &TlsInteractionPrivate{native: native}
 }
 
@@ -12752,10 +12753,10 @@ func tlsPasswordClassStruct_Set() error {
 }
 
 type TlsPasswordClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsPasswordClassNewFromNative(native uintptr) *TlsPasswordClass {
+func TlsPasswordClassNewFromNative(native unsafe.Pointer) *TlsPasswordClass {
 	return &TlsPasswordClass{native: native}
 }
 
@@ -12802,10 +12803,10 @@ func tlsPasswordPrivateStruct_Set() error {
 }
 
 type TlsPasswordPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsPasswordPrivateNewFromNative(native uintptr) *TlsPasswordPrivate {
+func TlsPasswordPrivateNewFromNative(native unsafe.Pointer) *TlsPasswordPrivate {
 	return &TlsPasswordPrivate{native: native}
 }
 
@@ -12836,10 +12837,10 @@ func tlsServerConnectionInterfaceStruct_Set() error {
 }
 
 type TlsServerConnectionInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsServerConnectionInterfaceNewFromNative(native uintptr) *TlsServerConnectionInterface {
+func TlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsServerConnectionInterface {
 	return &TlsServerConnectionInterface{native: native}
 }
 
@@ -12874,10 +12875,10 @@ func unixConnectionClassStruct_Set() error {
 }
 
 type UnixConnectionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixConnectionClassNewFromNative(native uintptr) *UnixConnectionClass {
+func UnixConnectionClassNewFromNative(native unsafe.Pointer) *UnixConnectionClass {
 	return &UnixConnectionClass{native: native}
 }
 
@@ -12922,10 +12923,10 @@ func unixConnectionPrivateStruct_Set() error {
 }
 
 type UnixConnectionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixConnectionPrivateNewFromNative(native uintptr) *UnixConnectionPrivate {
+func UnixConnectionPrivateNewFromNative(native unsafe.Pointer) *UnixConnectionPrivate {
 	return &UnixConnectionPrivate{native: native}
 }
 
@@ -12956,10 +12957,10 @@ func unixCredentialsMessageClassStruct_Set() error {
 }
 
 type UnixCredentialsMessageClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixCredentialsMessageClassNewFromNative(native uintptr) *UnixCredentialsMessageClass {
+func UnixCredentialsMessageClassNewFromNative(native unsafe.Pointer) *UnixCredentialsMessageClass {
 	return &UnixCredentialsMessageClass{native: native}
 }
 
@@ -13012,10 +13013,10 @@ func unixCredentialsMessagePrivateStruct_Set() error {
 }
 
 type UnixCredentialsMessagePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixCredentialsMessagePrivateNewFromNative(native uintptr) *UnixCredentialsMessagePrivate {
+func UnixCredentialsMessagePrivateNewFromNative(native unsafe.Pointer) *UnixCredentialsMessagePrivate {
 	return &UnixCredentialsMessagePrivate{native: native}
 }
 
@@ -13046,10 +13047,10 @@ func unixFDListClassStruct_Set() error {
 }
 
 type UnixFDListClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDListClassNewFromNative(native uintptr) *UnixFDListClass {
+func UnixFDListClassNewFromNative(native unsafe.Pointer) *UnixFDListClass {
 	return &UnixFDListClass{native: native}
 }
 
@@ -13104,10 +13105,10 @@ func unixFDListPrivateStruct_Set() error {
 }
 
 type UnixFDListPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDListPrivateNewFromNative(native uintptr) *UnixFDListPrivate {
+func UnixFDListPrivateNewFromNative(native unsafe.Pointer) *UnixFDListPrivate {
 	return &UnixFDListPrivate{native: native}
 }
 
@@ -13138,10 +13139,10 @@ func unixFDMessageClassStruct_Set() error {
 }
 
 type UnixFDMessageClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDMessageClassNewFromNative(native uintptr) *UnixFDMessageClass {
+func UnixFDMessageClassNewFromNative(native unsafe.Pointer) *UnixFDMessageClass {
 	return &UnixFDMessageClass{native: native}
 }
 
@@ -13194,10 +13195,10 @@ func unixFDMessagePrivateStruct_Set() error {
 }
 
 type UnixFDMessagePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDMessagePrivateNewFromNative(native uintptr) *UnixFDMessagePrivate {
+func UnixFDMessagePrivateNewFromNative(native unsafe.Pointer) *UnixFDMessagePrivate {
 	return &UnixFDMessagePrivate{native: native}
 }
 
@@ -13228,10 +13229,10 @@ func unixInputStreamClassStruct_Set() error {
 }
 
 type UnixInputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixInputStreamClassNewFromNative(native uintptr) *UnixInputStreamClass {
+func UnixInputStreamClassNewFromNative(native unsafe.Pointer) *UnixInputStreamClass {
 	return &UnixInputStreamClass{native: native}
 }
 
@@ -13296,10 +13297,10 @@ func unixInputStreamPrivateStruct_Set() error {
 }
 
 type UnixInputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixInputStreamPrivateNewFromNative(native uintptr) *UnixInputStreamPrivate {
+func UnixInputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixInputStreamPrivate {
 	return &UnixInputStreamPrivate{native: native}
 }
 
@@ -13330,10 +13331,10 @@ func unixMountEntryStruct_Set() error {
 }
 
 type UnixMountEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixMountEntryNewFromNative(native uintptr) *UnixMountEntry {
+func UnixMountEntryNewFromNative(native unsafe.Pointer) *UnixMountEntry {
 	return &UnixMountEntry{native: native}
 }
 
@@ -13364,10 +13365,10 @@ func unixMountMonitorClassStruct_Set() error {
 }
 
 type UnixMountMonitorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixMountMonitorClassNewFromNative(native uintptr) *UnixMountMonitorClass {
+func UnixMountMonitorClassNewFromNative(native unsafe.Pointer) *UnixMountMonitorClass {
 	return &UnixMountMonitorClass{native: native}
 }
 
@@ -13398,10 +13399,10 @@ func unixMountPointStruct_Set() error {
 }
 
 type UnixMountPoint struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixMountPointNewFromNative(native uintptr) *UnixMountPoint {
+func UnixMountPointNewFromNative(native unsafe.Pointer) *UnixMountPoint {
 	return &UnixMountPoint{native: native}
 }
 
@@ -13817,10 +13818,10 @@ func unixOutputStreamClassStruct_Set() error {
 }
 
 type UnixOutputStreamClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixOutputStreamClassNewFromNative(native uintptr) *UnixOutputStreamClass {
+func UnixOutputStreamClassNewFromNative(native unsafe.Pointer) *UnixOutputStreamClass {
 	return &UnixOutputStreamClass{native: native}
 }
 
@@ -13885,10 +13886,10 @@ func unixOutputStreamPrivateStruct_Set() error {
 }
 
 type UnixOutputStreamPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixOutputStreamPrivateNewFromNative(native uintptr) *UnixOutputStreamPrivate {
+func UnixOutputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixOutputStreamPrivate {
 	return &UnixOutputStreamPrivate{native: native}
 }
 
@@ -13919,10 +13920,10 @@ func unixSocketAddressClassStruct_Set() error {
 }
 
 type UnixSocketAddressClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixSocketAddressClassNewFromNative(native uintptr) *UnixSocketAddressClass {
+func UnixSocketAddressClassNewFromNative(native unsafe.Pointer) *UnixSocketAddressClass {
 	return &UnixSocketAddressClass{native: native}
 }
 
@@ -13967,10 +13968,10 @@ func unixSocketAddressPrivateStruct_Set() error {
 }
 
 type UnixSocketAddressPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixSocketAddressPrivateNewFromNative(native uintptr) *UnixSocketAddressPrivate {
+func UnixSocketAddressPrivateNewFromNative(native unsafe.Pointer) *UnixSocketAddressPrivate {
 	return &UnixSocketAddressPrivate{native: native}
 }
 
@@ -14001,10 +14002,10 @@ func vfsClassStruct_Set() error {
 }
 
 type VfsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VfsClassNewFromNative(native uintptr) *VfsClass {
+func VfsClassNewFromNative(native unsafe.Pointer) *VfsClass {
 	return &VfsClass{native: native}
 }
 
@@ -14107,10 +14108,10 @@ func volumeIfaceStruct_Set() error {
 }
 
 type VolumeIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VolumeIfaceNewFromNative(native uintptr) *VolumeIface {
+func VolumeIfaceNewFromNative(native unsafe.Pointer) *VolumeIface {
 	return &VolumeIface{native: native}
 }
 
@@ -14229,10 +14230,10 @@ func volumeMonitorClassStruct_Set() error {
 }
 
 type VolumeMonitorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VolumeMonitorClassNewFromNative(native uintptr) *VolumeMonitorClass {
+func VolumeMonitorClassNewFromNative(native unsafe.Pointer) *VolumeMonitorClass {
 	return &VolumeMonitorClass{native: native}
 }
 
@@ -14367,10 +14368,10 @@ func zlibCompressorClassStruct_Set() error {
 }
 
 type ZlibCompressorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ZlibCompressorClassNewFromNative(native uintptr) *ZlibCompressorClass {
+func ZlibCompressorClassNewFromNative(native unsafe.Pointer) *ZlibCompressorClass {
 	return &ZlibCompressorClass{native: native}
 }
 
@@ -14405,10 +14406,10 @@ func zlibDecompressorClassStruct_Set() error {
 }
 
 type ZlibDecompressorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ZlibDecompressorClassNewFromNative(native uintptr) *ZlibDecompressorClass {
+func ZlibDecompressorClassNewFromNative(native unsafe.Pointer) *ZlibDecompressorClass {
 	return &ZlibDecompressorClass{native: native}
 }
 

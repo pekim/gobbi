@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
+	"unsafe"
 )
 
 var bindingObject *gi.Object
@@ -20,10 +21,10 @@ func bindingObject_Set() error {
 }
 
 type Binding struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BindingNewFromNative(native uintptr) *Binding {
+func BindingNewFromNative(native unsafe.Pointer) *Binding {
 	return &Binding{native: native}
 }
 func (recv *Binding) Object() *Object {
@@ -200,10 +201,10 @@ func initiallyUnownedObject_Set() error {
 }
 
 type InitiallyUnowned struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InitiallyUnownedNewFromNative(native uintptr) *InitiallyUnowned {
+func InitiallyUnownedNewFromNative(native unsafe.Pointer) *InitiallyUnowned {
 	return &InitiallyUnowned{native: native}
 }
 func (recv *InitiallyUnowned) Object() *Object {
@@ -236,10 +237,10 @@ func objectObject_Set() error {
 }
 
 type Object struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectNewFromNative(native uintptr) *Object {
+func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	return &Object{native: native}
 }
 
@@ -718,10 +719,10 @@ func paramSpecObject_Set() error {
 }
 
 type ParamSpec struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecNewFromNative(native uintptr) *ParamSpec {
+func ParamSpecNewFromNative(native unsafe.Pointer) *ParamSpec {
 	return &ParamSpec{native: native}
 }
 
@@ -1097,10 +1098,10 @@ func paramSpecBooleanObject_Set() error {
 }
 
 type ParamSpecBoolean struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecBooleanNewFromNative(native uintptr) *ParamSpecBoolean {
+func ParamSpecBooleanNewFromNative(native unsafe.Pointer) *ParamSpecBoolean {
 	return &ParamSpecBoolean{native: native}
 }
 func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {
@@ -1147,10 +1148,10 @@ func paramSpecBoxedObject_Set() error {
 }
 
 type ParamSpecBoxed struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecBoxedNewFromNative(native uintptr) *ParamSpecBoxed {
+func ParamSpecBoxedNewFromNative(native unsafe.Pointer) *ParamSpecBoxed {
 	return &ParamSpecBoxed{native: native}
 }
 func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {
@@ -1183,10 +1184,10 @@ func paramSpecCharObject_Set() error {
 }
 
 type ParamSpecChar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecCharNewFromNative(native uintptr) *ParamSpecChar {
+func ParamSpecCharNewFromNative(native unsafe.Pointer) *ParamSpecChar {
 	return &ParamSpecChar{native: native}
 }
 func (recv *ParamSpecChar) ParamSpec() *ParamSpec {
@@ -1261,10 +1262,10 @@ func paramSpecDoubleObject_Set() error {
 }
 
 type ParamSpecDouble struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecDoubleNewFromNative(native uintptr) *ParamSpecDouble {
+func ParamSpecDoubleNewFromNative(native unsafe.Pointer) *ParamSpecDouble {
 	return &ParamSpecDouble{native: native}
 }
 func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {
@@ -1353,10 +1354,10 @@ func paramSpecEnumObject_Set() error {
 }
 
 type ParamSpecEnum struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecEnumNewFromNative(native uintptr) *ParamSpecEnum {
+func ParamSpecEnumNewFromNative(native unsafe.Pointer) *ParamSpecEnum {
 	return &ParamSpecEnum{native: native}
 }
 func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {
@@ -1417,10 +1418,10 @@ func paramSpecFlagsObject_Set() error {
 }
 
 type ParamSpecFlags struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecFlagsNewFromNative(native uintptr) *ParamSpecFlags {
+func ParamSpecFlagsNewFromNative(native unsafe.Pointer) *ParamSpecFlags {
 	return &ParamSpecFlags{native: native}
 }
 func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {
@@ -1481,10 +1482,10 @@ func paramSpecFloatObject_Set() error {
 }
 
 type ParamSpecFloat struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecFloatNewFromNative(native uintptr) *ParamSpecFloat {
+func ParamSpecFloatNewFromNative(native unsafe.Pointer) *ParamSpecFloat {
 	return &ParamSpecFloat{native: native}
 }
 func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {
@@ -1573,10 +1574,10 @@ func paramSpecGTypeObject_Set() error {
 }
 
 type ParamSpecGType struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecGTypeNewFromNative(native uintptr) *ParamSpecGType {
+func ParamSpecGTypeNewFromNative(native unsafe.Pointer) *ParamSpecGType {
 	return &ParamSpecGType{native: native}
 }
 func (recv *ParamSpecGType) ParamSpec() *ParamSpec {
@@ -1613,10 +1614,10 @@ func paramSpecIntObject_Set() error {
 }
 
 type ParamSpecInt struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecIntNewFromNative(native uintptr) *ParamSpecInt {
+func ParamSpecIntNewFromNative(native unsafe.Pointer) *ParamSpecInt {
 	return &ParamSpecInt{native: native}
 }
 func (recv *ParamSpecInt) ParamSpec() *ParamSpec {
@@ -1691,10 +1692,10 @@ func paramSpecInt64Object_Set() error {
 }
 
 type ParamSpecInt64 struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecInt64NewFromNative(native uintptr) *ParamSpecInt64 {
+func ParamSpecInt64NewFromNative(native unsafe.Pointer) *ParamSpecInt64 {
 	return &ParamSpecInt64{native: native}
 }
 func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {
@@ -1769,10 +1770,10 @@ func paramSpecLongObject_Set() error {
 }
 
 type ParamSpecLong struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecLongNewFromNative(native uintptr) *ParamSpecLong {
+func ParamSpecLongNewFromNative(native unsafe.Pointer) *ParamSpecLong {
 	return &ParamSpecLong{native: native}
 }
 func (recv *ParamSpecLong) ParamSpec() *ParamSpec {
@@ -1847,10 +1848,10 @@ func paramSpecObjectObject_Set() error {
 }
 
 type ParamSpecObject struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecObjectNewFromNative(native uintptr) *ParamSpecObject {
+func ParamSpecObjectNewFromNative(native unsafe.Pointer) *ParamSpecObject {
 	return &ParamSpecObject{native: native}
 }
 func (recv *ParamSpecObject) ParamSpec() *ParamSpec {
@@ -1883,10 +1884,10 @@ func paramSpecOverrideObject_Set() error {
 }
 
 type ParamSpecOverride struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecOverrideNewFromNative(native uintptr) *ParamSpecOverride {
+func ParamSpecOverrideNewFromNative(native unsafe.Pointer) *ParamSpecOverride {
 	return &ParamSpecOverride{native: native}
 }
 func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
@@ -1905,10 +1906,10 @@ func paramSpecParamObject_Set() error {
 }
 
 type ParamSpecParam struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecParamNewFromNative(native uintptr) *ParamSpecParam {
+func ParamSpecParamNewFromNative(native unsafe.Pointer) *ParamSpecParam {
 	return &ParamSpecParam{native: native}
 }
 func (recv *ParamSpecParam) ParamSpec() *ParamSpec {
@@ -1941,10 +1942,10 @@ func paramSpecPointerObject_Set() error {
 }
 
 type ParamSpecPointer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecPointerNewFromNative(native uintptr) *ParamSpecPointer {
+func ParamSpecPointerNewFromNative(native unsafe.Pointer) *ParamSpecPointer {
 	return &ParamSpecPointer{native: native}
 }
 func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {
@@ -1977,10 +1978,10 @@ func paramSpecStringObject_Set() error {
 }
 
 type ParamSpecString struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecStringNewFromNative(native uintptr) *ParamSpecString {
+func ParamSpecStringNewFromNative(native unsafe.Pointer) *ParamSpecString {
 	return &ParamSpecString{native: native}
 }
 func (recv *ParamSpecString) ParamSpec() *ParamSpec {
@@ -2097,10 +2098,10 @@ func paramSpecUCharObject_Set() error {
 }
 
 type ParamSpecUChar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecUCharNewFromNative(native uintptr) *ParamSpecUChar {
+func ParamSpecUCharNewFromNative(native unsafe.Pointer) *ParamSpecUChar {
 	return &ParamSpecUChar{native: native}
 }
 func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {
@@ -2175,10 +2176,10 @@ func paramSpecUIntObject_Set() error {
 }
 
 type ParamSpecUInt struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecUIntNewFromNative(native uintptr) *ParamSpecUInt {
+func ParamSpecUIntNewFromNative(native unsafe.Pointer) *ParamSpecUInt {
 	return &ParamSpecUInt{native: native}
 }
 func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {
@@ -2253,10 +2254,10 @@ func paramSpecUInt64Object_Set() error {
 }
 
 type ParamSpecUInt64 struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecUInt64NewFromNative(native uintptr) *ParamSpecUInt64 {
+func ParamSpecUInt64NewFromNative(native unsafe.Pointer) *ParamSpecUInt64 {
 	return &ParamSpecUInt64{native: native}
 }
 func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {
@@ -2331,10 +2332,10 @@ func paramSpecULongObject_Set() error {
 }
 
 type ParamSpecULong struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecULongNewFromNative(native uintptr) *ParamSpecULong {
+func ParamSpecULongNewFromNative(native unsafe.Pointer) *ParamSpecULong {
 	return &ParamSpecULong{native: native}
 }
 func (recv *ParamSpecULong) ParamSpec() *ParamSpec {
@@ -2409,10 +2410,10 @@ func paramSpecUnicharObject_Set() error {
 }
 
 type ParamSpecUnichar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecUnicharNewFromNative(native uintptr) *ParamSpecUnichar {
+func ParamSpecUnicharNewFromNative(native unsafe.Pointer) *ParamSpecUnichar {
 	return &ParamSpecUnichar{native: native}
 }
 func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {
@@ -2449,10 +2450,10 @@ func paramSpecValueArrayObject_Set() error {
 }
 
 type ParamSpecValueArray struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecValueArrayNewFromNative(native uintptr) *ParamSpecValueArray {
+func ParamSpecValueArrayNewFromNative(native unsafe.Pointer) *ParamSpecValueArray {
 	return &ParamSpecValueArray{native: native}
 }
 func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {
@@ -2513,10 +2514,10 @@ func paramSpecVariantObject_Set() error {
 }
 
 type ParamSpecVariant struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ParamSpecVariantNewFromNative(native uintptr) *ParamSpecVariant {
+func ParamSpecVariantNewFromNative(native unsafe.Pointer) *ParamSpecVariant {
 	return &ParamSpecVariant{native: native}
 }
 func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
@@ -2557,10 +2558,10 @@ func typeModuleObject_Set() error {
 }
 
 type TypeModule struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TypeModuleNewFromNative(native uintptr) *TypeModule {
+func TypeModuleNewFromNative(native unsafe.Pointer) *TypeModule {
 	return &TypeModule{native: native}
 }
 func (recv *TypeModule) Object() *Object {

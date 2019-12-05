@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var gObjectAccessibleObject *gi.Object
@@ -20,10 +21,10 @@ func gObjectAccessibleObject_Set() error {
 }
 
 type GObjectAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GObjectAccessibleNewFromNative(native uintptr) *GObjectAccessible {
+func GObjectAccessibleNewFromNative(native unsafe.Pointer) *GObjectAccessible {
 	return &GObjectAccessible{native: native}
 }
 func (recv *GObjectAccessible) ObjectAtk() *Object {
@@ -61,10 +62,10 @@ func hyperlinkObject_Set() error {
 }
 
 type Hyperlink struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HyperlinkNewFromNative(native uintptr) *Hyperlink {
+func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
 	return &Hyperlink{native: native}
 }
 func (recv *Hyperlink) Object() *gobject.Object {
@@ -345,10 +346,10 @@ func miscObject_Set() error {
 }
 
 type Misc struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MiscNewFromNative(native uintptr) *Misc {
+func MiscNewFromNative(native unsafe.Pointer) *Misc {
 	return &Misc{native: native}
 }
 func (recv *Misc) Object() *gobject.Object {
@@ -427,10 +428,10 @@ func noOpObjectObject_Set() error {
 }
 
 type NoOpObject struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NoOpObjectNewFromNative(native uintptr) *NoOpObject {
+func NoOpObjectNewFromNative(native unsafe.Pointer) *NoOpObject {
 	return &NoOpObject{native: native}
 }
 func (recv *NoOpObject) ObjectAtk() *Object {
@@ -468,10 +469,10 @@ func noOpObjectFactoryObject_Set() error {
 }
 
 type NoOpObjectFactory struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NoOpObjectFactoryNewFromNative(native uintptr) *NoOpObjectFactory {
+func NoOpObjectFactoryNewFromNative(native unsafe.Pointer) *NoOpObjectFactory {
 	return &NoOpObjectFactory{native: native}
 }
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
@@ -537,10 +538,10 @@ func objectObject_Set() error {
 }
 
 type Object struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectNewFromNative(native uintptr) *Object {
+func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	return &Object{native: native}
 }
 func (recv *Object) Object() *gobject.Object {
@@ -1374,10 +1375,10 @@ func objectFactoryObject_Set() error {
 }
 
 type ObjectFactory struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectFactoryNewFromNative(native uintptr) *ObjectFactory {
+func ObjectFactoryNewFromNative(native unsafe.Pointer) *ObjectFactory {
 	return &ObjectFactory{native: native}
 }
 func (recv *ObjectFactory) Object() *gobject.Object {
@@ -1432,10 +1433,10 @@ func plugObject_Set() error {
 }
 
 type Plug struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PlugNewFromNative(native uintptr) *Plug {
+func PlugNewFromNative(native unsafe.Pointer) *Plug {
 	return &Plug{native: native}
 }
 func (recv *Plug) ObjectAtk() *Object {
@@ -1533,10 +1534,10 @@ func registryObject_Set() error {
 }
 
 type Registry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegistryNewFromNative(native uintptr) *Registry {
+func RegistryNewFromNative(native unsafe.Pointer) *Registry {
 	return &Registry{native: native}
 }
 func (recv *Registry) Object() *gobject.Object {
@@ -1573,10 +1574,10 @@ func relationObject_Set() error {
 }
 
 type Relation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RelationNewFromNative(native uintptr) *Relation {
+func RelationNewFromNative(native unsafe.Pointer) *Relation {
 	return &Relation{native: native}
 }
 func (recv *Relation) Object() *gobject.Object {
@@ -1741,10 +1742,10 @@ func relationSetObject_Set() error {
 }
 
 type RelationSet struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RelationSetNewFromNative(native uintptr) *RelationSet {
+func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
 	return &RelationSet{native: native}
 }
 func (recv *RelationSet) Object() *gobject.Object {
@@ -2054,10 +2055,10 @@ func socketObject_Set() error {
 }
 
 type Socket struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketNewFromNative(native uintptr) *Socket {
+func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
 func (recv *Socket) ObjectAtk() *Object {
@@ -2184,10 +2185,10 @@ func stateSetObject_Set() error {
 }
 
 type StateSet struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StateSetNewFromNative(native uintptr) *StateSet {
+func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
 	return &StateSet{native: native}
 }
 func (recv *StateSet) Object() *gobject.Object {
@@ -2502,10 +2503,10 @@ func utilObject_Set() error {
 }
 
 type Util struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UtilNewFromNative(native uintptr) *Util {
+func UtilNewFromNative(native unsafe.Pointer) *Util {
 	return &Util{native: native}
 }
 func (recv *Util) Object() *gobject.Object {

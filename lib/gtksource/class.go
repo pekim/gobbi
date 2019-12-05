@@ -7,6 +7,7 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
 	"sync"
+	"unsafe"
 )
 
 var bufferObject *gi.Object
@@ -21,10 +22,10 @@ func bufferObject_Set() error {
 }
 
 type Buffer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferNewFromNative(native uintptr) *Buffer {
+func BufferNewFromNative(native unsafe.Pointer) *Buffer {
 	return &Buffer{native: native}
 }
 func (recv *Buffer) TextBuffer() *gtk.TextBuffer {
@@ -674,10 +675,10 @@ func completionObject_Set() error {
 }
 
 type Completion struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionNewFromNative(native uintptr) *Completion {
+func CompletionNewFromNative(native unsafe.Pointer) *Completion {
 	return &Completion{native: native}
 }
 func (recv *Completion) Object() *gobject.Object {
@@ -874,10 +875,10 @@ func completionContextObject_Set() error {
 }
 
 type CompletionContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionContextNewFromNative(native uintptr) *CompletionContext {
+func CompletionContextNewFromNative(native unsafe.Pointer) *CompletionContext {
 	return &CompletionContext{native: native}
 }
 func (recv *CompletionContext) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -923,10 +924,10 @@ func completionInfoObject_Set() error {
 }
 
 type CompletionInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionInfoNewFromNative(native uintptr) *CompletionInfo {
+func CompletionInfoNewFromNative(native unsafe.Pointer) *CompletionInfo {
 	return &CompletionInfo{native: native}
 }
 func (recv *CompletionInfo) Window() *gtk.Window {
@@ -1014,10 +1015,10 @@ func completionItemObject_Set() error {
 }
 
 type CompletionItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionItemNewFromNative(native uintptr) *CompletionItem {
+func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
 	return &CompletionItem{native: native}
 }
 func (recv *CompletionItem) Object() *gobject.Object {
@@ -1242,10 +1243,10 @@ func completionWordsObject_Set() error {
 }
 
 type CompletionWords struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionWordsNewFromNative(native uintptr) *CompletionWords {
+func CompletionWordsNewFromNative(native unsafe.Pointer) *CompletionWords {
 	return &CompletionWords{native: native}
 }
 func (recv *CompletionWords) Object() *gobject.Object {
@@ -1288,10 +1289,10 @@ func fileObject_Set() error {
 }
 
 type File struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileNewFromNative(native uintptr) *File {
+func FileNewFromNative(native unsafe.Pointer) *File {
 	return &File{native: native}
 }
 func (recv *File) Object() *gobject.Object {
@@ -1616,10 +1617,10 @@ func fileLoaderObject_Set() error {
 }
 
 type FileLoader struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileLoaderNewFromNative(native uintptr) *FileLoader {
+func FileLoaderNewFromNative(native unsafe.Pointer) *FileLoader {
 	return &FileLoader{native: native}
 }
 func (recv *FileLoader) Object() *gobject.Object {
@@ -1861,10 +1862,10 @@ func fileSaverObject_Set() error {
 }
 
 type FileSaver struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileSaverNewFromNative(native uintptr) *FileSaver {
+func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
 	return &FileSaver{native: native}
 }
 func (recv *FileSaver) Object() *gobject.Object {
@@ -2193,10 +2194,10 @@ func gutterObject_Set() error {
 }
 
 type Gutter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterNewFromNative(native uintptr) *Gutter {
+func GutterNewFromNative(native unsafe.Pointer) *Gutter {
 	return &Gutter{native: native}
 }
 func (recv *Gutter) Object() *gobject.Object {
@@ -2484,10 +2485,10 @@ func gutterRendererObject_Set() error {
 }
 
 type GutterRenderer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererNewFromNative(native uintptr) *GutterRenderer {
+func GutterRendererNewFromNative(native unsafe.Pointer) *GutterRenderer {
 	return &GutterRenderer{native: native}
 }
 func (recv *GutterRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -2898,10 +2899,10 @@ func gutterRendererPixbufObject_Set() error {
 }
 
 type GutterRendererPixbuf struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererPixbufNewFromNative(native uintptr) *GutterRendererPixbuf {
+func GutterRendererPixbufNewFromNative(native unsafe.Pointer) *GutterRendererPixbuf {
 	return &GutterRendererPixbuf{native: native}
 }
 func (recv *GutterRendererPixbuf) GutterRenderer() *GutterRenderer {
@@ -3086,10 +3087,10 @@ func gutterRendererTextObject_Set() error {
 }
 
 type GutterRendererText struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererTextNewFromNative(native uintptr) *GutterRendererText {
+func GutterRendererTextNewFromNative(native unsafe.Pointer) *GutterRendererText {
 	return &GutterRendererText{native: native}
 }
 func (recv *GutterRendererText) GutterRenderer() *GutterRenderer {
@@ -3272,10 +3273,10 @@ func languageObject_Set() error {
 }
 
 type Language struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageNewFromNative(native uintptr) *Language {
+func LanguageNewFromNative(native unsafe.Pointer) *Language {
 	return &Language{native: native}
 }
 func (recv *Language) Object() *gobject.Object {
@@ -3623,10 +3624,10 @@ func languageManagerObject_Set() error {
 }
 
 type LanguageManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageManagerNewFromNative(native uintptr) *LanguageManager {
+func LanguageManagerNewFromNative(native unsafe.Pointer) *LanguageManager {
 	return &LanguageManager{native: native}
 }
 func (recv *LanguageManager) Object() *gobject.Object {
@@ -3818,10 +3819,10 @@ func mapObject_Set() error {
 }
 
 type Map struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MapNewFromNative(native uintptr) *Map {
+func MapNewFromNative(native unsafe.Pointer) *Map {
 	return &Map{native: native}
 }
 func (recv *Map) View() *View {
@@ -3960,10 +3961,10 @@ func markObject_Set() error {
 }
 
 type Mark struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkNewFromNative(native uintptr) *Mark {
+func MarkNewFromNative(native unsafe.Pointer) *Mark {
 	return &Mark{native: native}
 }
 func (recv *Mark) TextMark() *gtk.TextMark {
@@ -4134,10 +4135,10 @@ func markAttributesObject_Set() error {
 }
 
 type MarkAttributes struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkAttributesNewFromNative(native uintptr) *MarkAttributes {
+func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
 	return &MarkAttributes{native: native}
 }
 func (recv *MarkAttributes) Object() *gobject.Object {
@@ -4388,10 +4389,10 @@ func printCompositorObject_Set() error {
 }
 
 type PrintCompositor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintCompositorNewFromNative(native uintptr) *PrintCompositor {
+func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
 	return &PrintCompositor{native: native}
 }
 func (recv *PrintCompositor) Object() *gobject.Object {
@@ -5225,10 +5226,10 @@ func regionObject_Set() error {
 }
 
 type Region struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegionNewFromNative(native uintptr) *Region {
+func RegionNewFromNative(native unsafe.Pointer) *Region {
 	return &Region{native: native}
 }
 func (recv *Region) Object() *gobject.Object {
@@ -5450,10 +5451,10 @@ func searchContextObject_Set() error {
 }
 
 type SearchContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchContextNewFromNative(native uintptr) *SearchContext {
+func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
 	return &SearchContext{native: native}
 }
 func (recv *SearchContext) Object() *gobject.Object {
@@ -5832,10 +5833,10 @@ func searchSettingsObject_Set() error {
 }
 
 type SearchSettings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchSettingsNewFromNative(native uintptr) *SearchSettings {
+func SearchSettingsNewFromNative(native unsafe.Pointer) *SearchSettings {
 	return &SearchSettings{native: native}
 }
 func (recv *SearchSettings) Object() *gobject.Object {
@@ -6207,10 +6208,10 @@ func spaceDrawerObject_Set() error {
 }
 
 type SpaceDrawer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpaceDrawerNewFromNative(native uintptr) *SpaceDrawer {
+func SpaceDrawerNewFromNative(native unsafe.Pointer) *SpaceDrawer {
 	return &SpaceDrawer{native: native}
 }
 func (recv *SpaceDrawer) Object() *gobject.Object {
@@ -6348,10 +6349,10 @@ func styleObject_Set() error {
 }
 
 type Style struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleNewFromNative(native uintptr) *Style {
+func StyleNewFromNative(native unsafe.Pointer) *Style {
 	return &Style{native: native}
 }
 func (recv *Style) Object() *gobject.Object {
@@ -6404,10 +6405,10 @@ func styleSchemeObject_Set() error {
 }
 
 type StyleScheme struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeNewFromNative(native uintptr) *StyleScheme {
+func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
 	return &StyleScheme{native: native}
 }
 func (recv *StyleScheme) Object() *gobject.Object {
@@ -6633,10 +6634,10 @@ func styleSchemeChooserButtonObject_Set() error {
 }
 
 type StyleSchemeChooserButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeChooserButtonNewFromNative(native uintptr) *StyleSchemeChooserButton {
+func StyleSchemeChooserButtonNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButton {
 	return &StyleSchemeChooserButton{native: native}
 }
 func (recv *StyleSchemeChooserButton) Button() *gtk.Button {
@@ -6704,10 +6705,10 @@ func styleSchemeChooserWidgetObject_Set() error {
 }
 
 type StyleSchemeChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeChooserWidgetNewFromNative(native uintptr) *StyleSchemeChooserWidget {
+func StyleSchemeChooserWidgetNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidget {
 	return &StyleSchemeChooserWidget{native: native}
 }
 func (recv *StyleSchemeChooserWidget) Bin() *gtk.Bin {
@@ -6772,10 +6773,10 @@ func styleSchemeManagerObject_Set() error {
 }
 
 type StyleSchemeManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeManagerNewFromNative(native uintptr) *StyleSchemeManager {
+func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager {
 	return &StyleSchemeManager{native: native}
 }
 func (recv *StyleSchemeManager) Object() *gobject.Object {
@@ -7019,10 +7020,10 @@ func tagObject_Set() error {
 }
 
 type Tag struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TagNewFromNative(native uintptr) *Tag {
+func TagNewFromNative(native unsafe.Pointer) *Tag {
 	return &Tag{native: native}
 }
 func (recv *Tag) TextTag() *gtk.TextTag {
@@ -7080,10 +7081,10 @@ func viewObject_Set() error {
 }
 
 type View struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ViewNewFromNative(native uintptr) *View {
+func ViewNewFromNative(native unsafe.Pointer) *View {
 	return &View{native: native}
 }
 func (recv *View) TextView() *gtk.TextView {

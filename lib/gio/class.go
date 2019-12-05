@@ -7,6 +7,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var appInfoMonitorObject *gi.Object
@@ -21,10 +22,10 @@ func appInfoMonitorObject_Set() error {
 }
 
 type AppInfoMonitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppInfoMonitorNewFromNative(native uintptr) *AppInfoMonitor {
+func AppInfoMonitorNewFromNative(native unsafe.Pointer) *AppInfoMonitor {
 	return &AppInfoMonitor{native: native}
 }
 func (recv *AppInfoMonitor) Object() *gobject.Object {
@@ -43,10 +44,10 @@ func appLaunchContextObject_Set() error {
 }
 
 type AppLaunchContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppLaunchContextNewFromNative(native uintptr) *AppLaunchContext {
+func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	return &AppLaunchContext{native: native}
 }
 func (recv *AppLaunchContext) Object() *gobject.Object {
@@ -219,10 +220,10 @@ func applicationObject_Set() error {
 }
 
 type Application struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationNewFromNative(native uintptr) *Application {
+func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 	return &Application{native: native}
 }
 func (recv *Application) Object() *gobject.Object {
@@ -981,10 +982,10 @@ func applicationCommandLineObject_Set() error {
 }
 
 type ApplicationCommandLine struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationCommandLineNewFromNative(native uintptr) *ApplicationCommandLine {
+func ApplicationCommandLineNewFromNative(native unsafe.Pointer) *ApplicationCommandLine {
 	return &ApplicationCommandLine{native: native}
 }
 func (recv *ApplicationCommandLine) Object() *gobject.Object {
@@ -1263,10 +1264,10 @@ func bufferedInputStreamObject_Set() error {
 }
 
 type BufferedInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedInputStreamNewFromNative(native uintptr) *BufferedInputStream {
+func BufferedInputStreamNewFromNative(native unsafe.Pointer) *BufferedInputStream {
 	return &BufferedInputStream{native: native}
 }
 func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {
@@ -1568,10 +1569,10 @@ func bufferedOutputStreamObject_Set() error {
 }
 
 type BufferedOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferedOutputStreamNewFromNative(native uintptr) *BufferedOutputStream {
+func BufferedOutputStreamNewFromNative(native unsafe.Pointer) *BufferedOutputStream {
 	return &BufferedOutputStream{native: native}
 }
 func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
@@ -1811,10 +1812,10 @@ func bytesIconObject_Set() error {
 }
 
 type BytesIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BytesIconNewFromNative(native uintptr) *BytesIcon {
+func BytesIconNewFromNative(native unsafe.Pointer) *BytesIcon {
 	return &BytesIcon{native: native}
 }
 func (recv *BytesIcon) Object() *gobject.Object {
@@ -1837,10 +1838,10 @@ func cancellableObject_Set() error {
 }
 
 type Cancellable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CancellableNewFromNative(native uintptr) *Cancellable {
+func CancellableNewFromNative(native unsafe.Pointer) *Cancellable {
 	return &Cancellable{native: native}
 }
 func (recv *Cancellable) Object() *gobject.Object {
@@ -2164,10 +2165,10 @@ func charsetConverterObject_Set() error {
 }
 
 type CharsetConverter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CharsetConverterNewFromNative(native uintptr) *CharsetConverter {
+func CharsetConverterNewFromNative(native unsafe.Pointer) *CharsetConverter {
 	return &CharsetConverter{native: native}
 }
 func (recv *CharsetConverter) Object() *gobject.Object {
@@ -2312,10 +2313,10 @@ func converterInputStreamObject_Set() error {
 }
 
 type ConverterInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterInputStreamNewFromNative(native uintptr) *ConverterInputStream {
+func ConverterInputStreamNewFromNative(native unsafe.Pointer) *ConverterInputStream {
 	return &ConverterInputStream{native: native}
 }
 func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {
@@ -2358,10 +2359,10 @@ func converterOutputStreamObject_Set() error {
 }
 
 type ConverterOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ConverterOutputStreamNewFromNative(native uintptr) *ConverterOutputStream {
+func ConverterOutputStreamNewFromNative(native unsafe.Pointer) *ConverterOutputStream {
 	return &ConverterOutputStream{native: native}
 }
 func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
@@ -2404,10 +2405,10 @@ func credentialsObject_Set() error {
 }
 
 type Credentials struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CredentialsNewFromNative(native uintptr) *Credentials {
+func CredentialsNewFromNative(native unsafe.Pointer) *Credentials {
 	return &Credentials{native: native}
 }
 func (recv *Credentials) Object() *gobject.Object {
@@ -2622,10 +2623,10 @@ func dBusActionGroupObject_Set() error {
 }
 
 type DBusActionGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusActionGroupNewFromNative(native uintptr) *DBusActionGroup {
+func DBusActionGroupNewFromNative(native unsafe.Pointer) *DBusActionGroup {
 	return &DBusActionGroup{native: native}
 }
 func (recv *DBusActionGroup) Object() *gobject.Object {
@@ -2644,10 +2645,10 @@ func dBusAuthObserverObject_Set() error {
 }
 
 type DBusAuthObserver struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusAuthObserverNewFromNative(native uintptr) *DBusAuthObserver {
+func DBusAuthObserverNewFromNative(native unsafe.Pointer) *DBusAuthObserver {
 	return &DBusAuthObserver{native: native}
 }
 func (recv *DBusAuthObserver) Object() *gobject.Object {
@@ -2763,10 +2764,10 @@ func dBusConnectionObject_Set() error {
 }
 
 type DBusConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusConnectionNewFromNative(native uintptr) *DBusConnection {
+func DBusConnectionNewFromNative(native unsafe.Pointer) *DBusConnection {
 	return &DBusConnection{native: native}
 }
 func (recv *DBusConnection) Object() *gobject.Object {
@@ -3402,10 +3403,10 @@ func dBusInterfaceSkeletonObject_Set() error {
 }
 
 type DBusInterfaceSkeleton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusInterfaceSkeletonNewFromNative(native uintptr) *DBusInterfaceSkeleton {
+func DBusInterfaceSkeletonNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeleton {
 	return &DBusInterfaceSkeleton{native: native}
 }
 func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
@@ -3712,10 +3713,10 @@ func dBusMenuModelObject_Set() error {
 }
 
 type DBusMenuModel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusMenuModelNewFromNative(native uintptr) *DBusMenuModel {
+func DBusMenuModelNewFromNative(native unsafe.Pointer) *DBusMenuModel {
 	return &DBusMenuModel{native: native}
 }
 func (recv *DBusMenuModel) MenuModel() *MenuModel {
@@ -3737,10 +3738,10 @@ func dBusMessageObject_Set() error {
 }
 
 type DBusMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusMessageNewFromNative(native uintptr) *DBusMessage {
+func DBusMessageNewFromNative(native unsafe.Pointer) *DBusMessage {
 	return &DBusMessage{native: native}
 }
 func (recv *DBusMessage) Object() *gobject.Object {
@@ -4954,10 +4955,10 @@ func dBusMethodInvocationObject_Set() error {
 }
 
 type DBusMethodInvocation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusMethodInvocationNewFromNative(native uintptr) *DBusMethodInvocation {
+func DBusMethodInvocationNewFromNative(native unsafe.Pointer) *DBusMethodInvocation {
 	return &DBusMethodInvocation{native: native}
 }
 func (recv *DBusMethodInvocation) Object() *gobject.Object {
@@ -5309,10 +5310,10 @@ func dBusObjectManagerClientObject_Set() error {
 }
 
 type DBusObjectManagerClient struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerClientNewFromNative(native uintptr) *DBusObjectManagerClient {
+func DBusObjectManagerClientNewFromNative(native unsafe.Pointer) *DBusObjectManagerClient {
 	return &DBusObjectManagerClient{native: native}
 }
 func (recv *DBusObjectManagerClient) Object() *gobject.Object {
@@ -5437,10 +5438,10 @@ func dBusObjectManagerServerObject_Set() error {
 }
 
 type DBusObjectManagerServer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectManagerServerNewFromNative(native uintptr) *DBusObjectManagerServer {
+func DBusObjectManagerServerNewFromNative(native unsafe.Pointer) *DBusObjectManagerServer {
 	return &DBusObjectManagerServer{native: native}
 }
 func (recv *DBusObjectManagerServer) Object() *gobject.Object {
@@ -5676,10 +5677,10 @@ func dBusObjectProxyObject_Set() error {
 }
 
 type DBusObjectProxy struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectProxyNewFromNative(native uintptr) *DBusObjectProxy {
+func DBusObjectProxyNewFromNative(native unsafe.Pointer) *DBusObjectProxy {
 	return &DBusObjectProxy{native: native}
 }
 func (recv *DBusObjectProxy) Object() *gobject.Object {
@@ -5763,10 +5764,10 @@ func dBusObjectSkeletonObject_Set() error {
 }
 
 type DBusObjectSkeleton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusObjectSkeletonNewFromNative(native uintptr) *DBusObjectSkeleton {
+func DBusObjectSkeletonNewFromNative(native unsafe.Pointer) *DBusObjectSkeleton {
 	return &DBusObjectSkeleton{native: native}
 }
 func (recv *DBusObjectSkeleton) Object() *gobject.Object {
@@ -5961,10 +5962,10 @@ func dBusProxyObject_Set() error {
 }
 
 type DBusProxy struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusProxyNewFromNative(native uintptr) *DBusProxy {
+func DBusProxyNewFromNative(native unsafe.Pointer) *DBusProxy {
 	return &DBusProxy{native: native}
 }
 func (recv *DBusProxy) Object() *gobject.Object {
@@ -6319,10 +6320,10 @@ func dBusServerObject_Set() error {
 }
 
 type DBusServer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DBusServerNewFromNative(native uintptr) *DBusServer {
+func DBusServerNewFromNative(native unsafe.Pointer) *DBusServer {
 	return &DBusServer{native: native}
 }
 func (recv *DBusServer) Object() *gobject.Object {
@@ -6497,10 +6498,10 @@ func dataInputStreamObject_Set() error {
 }
 
 type DataInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataInputStreamNewFromNative(native uintptr) *DataInputStream {
+func DataInputStreamNewFromNative(native unsafe.Pointer) *DataInputStream {
 	return &DataInputStream{native: native}
 }
 func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {
@@ -7082,10 +7083,10 @@ func dataOutputStreamObject_Set() error {
 }
 
 type DataOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataOutputStreamNewFromNative(native uintptr) *DataOutputStream {
+func DataOutputStreamNewFromNative(native unsafe.Pointer) *DataOutputStream {
 	return &DataOutputStream{native: native}
 }
 func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
@@ -7489,10 +7490,10 @@ func desktopAppInfoObject_Set() error {
 }
 
 type DesktopAppInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DesktopAppInfoNewFromNative(native uintptr) *DesktopAppInfo {
+func DesktopAppInfoNewFromNative(native unsafe.Pointer) *DesktopAppInfo {
 	return &DesktopAppInfo{native: native}
 }
 func (recv *DesktopAppInfo) Object() *gobject.Object {
@@ -8090,10 +8091,10 @@ func emblemObject_Set() error {
 }
 
 type Emblem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EmblemNewFromNative(native uintptr) *Emblem {
+func EmblemNewFromNative(native unsafe.Pointer) *Emblem {
 	return &Emblem{native: native}
 }
 func (recv *Emblem) Object() *gobject.Object {
@@ -8150,10 +8151,10 @@ func emblemedIconObject_Set() error {
 }
 
 type EmblemedIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EmblemedIconNewFromNative(native uintptr) *EmblemedIcon {
+func EmblemedIconNewFromNative(native unsafe.Pointer) *EmblemedIcon {
 	return &EmblemedIcon{native: native}
 }
 func (recv *EmblemedIcon) Object() *gobject.Object {
@@ -8239,10 +8240,10 @@ func fileEnumeratorObject_Set() error {
 }
 
 type FileEnumerator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileEnumeratorNewFromNative(native uintptr) *FileEnumerator {
+func FileEnumeratorNewFromNative(native unsafe.Pointer) *FileEnumerator {
 	return &FileEnumerator{native: native}
 }
 func (recv *FileEnumerator) Object() *gobject.Object {
@@ -8438,10 +8439,10 @@ func fileIOStreamObject_Set() error {
 }
 
 type FileIOStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIOStreamNewFromNative(native uintptr) *FileIOStream {
+func FileIOStreamNewFromNative(native unsafe.Pointer) *FileIOStream {
 	return &FileIOStream{native: native}
 }
 func (recv *FileIOStream) IOStream() *IOStream {
@@ -8547,10 +8548,10 @@ func fileIconObject_Set() error {
 }
 
 type FileIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileIconNewFromNative(native uintptr) *FileIcon {
+func FileIconNewFromNative(native unsafe.Pointer) *FileIcon {
 	return &FileIcon{native: native}
 }
 func (recv *FileIcon) Object() *gobject.Object {
@@ -8573,10 +8574,10 @@ func fileInfoObject_Set() error {
 }
 
 type FileInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileInfoNewFromNative(native uintptr) *FileInfo {
+func FileInfoNewFromNative(native unsafe.Pointer) *FileInfo {
 	return &FileInfo{native: native}
 }
 func (recv *FileInfo) Object() *gobject.Object {
@@ -10200,10 +10201,10 @@ func fileInputStreamObject_Set() error {
 }
 
 type FileInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileInputStreamNewFromNative(native uintptr) *FileInputStream {
+func FileInputStreamNewFromNative(native unsafe.Pointer) *FileInputStream {
 	return &FileInputStream{native: native}
 }
 func (recv *FileInputStream) InputStream() *InputStream {
@@ -10277,10 +10278,10 @@ func fileMonitorObject_Set() error {
 }
 
 type FileMonitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileMonitorNewFromNative(native uintptr) *FileMonitor {
+func FileMonitorNewFromNative(native unsafe.Pointer) *FileMonitor {
 	return &FileMonitor{native: native}
 }
 func (recv *FileMonitor) Object() *gobject.Object {
@@ -10398,10 +10399,10 @@ func fileOutputStreamObject_Set() error {
 }
 
 type FileOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileOutputStreamNewFromNative(native uintptr) *FileOutputStream {
+func FileOutputStreamNewFromNative(native unsafe.Pointer) *FileOutputStream {
 	return &FileOutputStream{native: native}
 }
 func (recv *FileOutputStream) OutputStream() *OutputStream {
@@ -10507,10 +10508,10 @@ func filenameCompleterObject_Set() error {
 }
 
 type FilenameCompleter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilenameCompleterNewFromNative(native uintptr) *FilenameCompleter {
+func FilenameCompleterNewFromNative(native unsafe.Pointer) *FilenameCompleter {
 	return &FilenameCompleter{native: native}
 }
 func (recv *FilenameCompleter) Object() *gobject.Object {
@@ -10650,10 +10651,10 @@ func filterInputStreamObject_Set() error {
 }
 
 type FilterInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilterInputStreamNewFromNative(native uintptr) *FilterInputStream {
+func FilterInputStreamNewFromNative(native unsafe.Pointer) *FilterInputStream {
 	return &FilterInputStream{native: native}
 }
 func (recv *FilterInputStream) InputStream() *InputStream {
@@ -10796,10 +10797,10 @@ func filterOutputStreamObject_Set() error {
 }
 
 type FilterOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilterOutputStreamNewFromNative(native uintptr) *FilterOutputStream {
+func FilterOutputStreamNewFromNative(native unsafe.Pointer) *FilterOutputStream {
 	return &FilterOutputStream{native: native}
 }
 func (recv *FilterOutputStream) OutputStream() *OutputStream {
@@ -10942,10 +10943,10 @@ func iOModuleObject_Set() error {
 }
 
 type IOModule struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOModuleNewFromNative(native uintptr) *IOModule {
+func IOModuleNewFromNative(native unsafe.Pointer) *IOModule {
 	return &IOModule{native: native}
 }
 func (recv *IOModule) TypeModule() *gobject.TypeModule {
@@ -11055,10 +11056,10 @@ func iOStreamObject_Set() error {
 }
 
 type IOStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOStreamNewFromNative(native uintptr) *IOStream {
+func IOStreamNewFromNative(native unsafe.Pointer) *IOStream {
 	return &IOStream{native: native}
 }
 func (recv *IOStream) Object() *gobject.Object {
@@ -11308,10 +11309,10 @@ func inetAddressObject_Set() error {
 }
 
 type InetAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressNewFromNative(native uintptr) *InetAddress {
+func InetAddressNewFromNative(native unsafe.Pointer) *InetAddress {
 	return &InetAddress{native: native}
 }
 func (recv *InetAddress) Object() *gobject.Object {
@@ -11913,10 +11914,10 @@ func inetAddressMaskObject_Set() error {
 }
 
 type InetAddressMask struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetAddressMaskNewFromNative(native uintptr) *InetAddressMask {
+func InetAddressMaskNewFromNative(native unsafe.Pointer) *InetAddressMask {
 	return &InetAddressMask{native: native}
 }
 func (recv *InetAddressMask) Object() *gobject.Object {
@@ -12198,10 +12199,10 @@ func inetSocketAddressObject_Set() error {
 }
 
 type InetSocketAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InetSocketAddressNewFromNative(native uintptr) *InetSocketAddress {
+func InetSocketAddressNewFromNative(native unsafe.Pointer) *InetSocketAddress {
 	return &InetSocketAddress{native: native}
 }
 func (recv *InetSocketAddress) SocketAddress() *SocketAddress {
@@ -12431,10 +12432,10 @@ func inputStreamObject_Set() error {
 }
 
 type InputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InputStreamNewFromNative(native uintptr) *InputStream {
+func InputStreamNewFromNative(native unsafe.Pointer) *InputStream {
 	return &InputStream{native: native}
 }
 func (recv *InputStream) Object() *gobject.Object {
@@ -12674,10 +12675,10 @@ func listStoreObject_Set() error {
 }
 
 type ListStore struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListStoreNewFromNative(native uintptr) *ListStore {
+func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 	return &ListStore{native: native}
 }
 func (recv *ListStore) Object() *gobject.Object {
@@ -12765,10 +12766,10 @@ func memoryInputStreamObject_Set() error {
 }
 
 type MemoryInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryInputStreamNewFromNative(native uintptr) *MemoryInputStream {
+func MemoryInputStreamNewFromNative(native unsafe.Pointer) *MemoryInputStream {
 	return &MemoryInputStream{native: native}
 }
 func (recv *MemoryInputStream) InputStream() *InputStream {
@@ -12842,10 +12843,10 @@ func memoryOutputStreamObject_Set() error {
 }
 
 type MemoryOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemoryOutputStreamNewFromNative(native uintptr) *MemoryOutputStream {
+func MemoryOutputStreamNewFromNative(native unsafe.Pointer) *MemoryOutputStream {
 	return &MemoryOutputStream{native: native}
 }
 func (recv *MemoryOutputStream) OutputStream() *OutputStream {
@@ -12983,10 +12984,10 @@ func menuObject_Set() error {
 }
 
 type Menu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuNewFromNative(native uintptr) *Menu {
+func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	return &Menu{native: native}
 }
 func (recv *Menu) MenuModel() *MenuModel {
@@ -13484,10 +13485,10 @@ func menuAttributeIterObject_Set() error {
 }
 
 type MenuAttributeIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuAttributeIterNewFromNative(native uintptr) *MenuAttributeIter {
+func MenuAttributeIterNewFromNative(native unsafe.Pointer) *MenuAttributeIter {
 	return &MenuAttributeIter{native: native}
 }
 func (recv *MenuAttributeIter) Object() *gobject.Object {
@@ -13592,10 +13593,10 @@ func menuItemObject_Set() error {
 }
 
 type MenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuItemNewFromNative(native uintptr) *MenuItem {
+func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	return &MenuItem{native: native}
 }
 func (recv *MenuItem) Object() *gobject.Object {
@@ -13939,10 +13940,10 @@ func menuLinkIterObject_Set() error {
 }
 
 type MenuLinkIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuLinkIterNewFromNative(native uintptr) *MenuLinkIter {
+func MenuLinkIterNewFromNative(native unsafe.Pointer) *MenuLinkIter {
 	return &MenuLinkIter{native: native}
 }
 func (recv *MenuLinkIter) Object() *gobject.Object {
@@ -14110,10 +14111,10 @@ func menuModelObject_Set() error {
 }
 
 type MenuModel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuModelNewFromNative(native uintptr) *MenuModel {
+func MenuModelNewFromNative(native unsafe.Pointer) *MenuModel {
 	return &MenuModel{native: native}
 }
 func (recv *MenuModel) Object() *gobject.Object {
@@ -14349,10 +14350,10 @@ func mountOperationObject_Set() error {
 }
 
 type MountOperation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MountOperationNewFromNative(native uintptr) *MountOperation {
+func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	return &MountOperation{native: native}
 }
 func (recv *MountOperation) Object() *gobject.Object {
@@ -14997,10 +14998,10 @@ func nativeSocketAddressObject_Set() error {
 }
 
 type NativeSocketAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeSocketAddressNewFromNative(native uintptr) *NativeSocketAddress {
+func NativeSocketAddressNewFromNative(native unsafe.Pointer) *NativeSocketAddress {
 	return &NativeSocketAddress{native: native}
 }
 func (recv *NativeSocketAddress) SocketAddress() *SocketAddress {
@@ -15038,10 +15039,10 @@ func nativeVolumeMonitorObject_Set() error {
 }
 
 type NativeVolumeMonitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeVolumeMonitorNewFromNative(native uintptr) *NativeVolumeMonitor {
+func NativeVolumeMonitorNewFromNative(native unsafe.Pointer) *NativeVolumeMonitor {
 	return &NativeVolumeMonitor{native: native}
 }
 func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
@@ -15077,10 +15078,10 @@ func networkAddressObject_Set() error {
 }
 
 type NetworkAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkAddressNewFromNative(native uintptr) *NetworkAddress {
+func NetworkAddressNewFromNative(native unsafe.Pointer) *NetworkAddress {
 	return &NetworkAddress{native: native}
 }
 func (recv *NetworkAddress) Object() *gobject.Object {
@@ -15264,10 +15265,10 @@ func networkServiceObject_Set() error {
 }
 
 type NetworkService struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NetworkServiceNewFromNative(native uintptr) *NetworkService {
+func NetworkServiceNewFromNative(native unsafe.Pointer) *NetworkService {
 	return &NetworkService{native: native}
 }
 func (recv *NetworkService) Object() *gobject.Object {
@@ -15481,10 +15482,10 @@ func notificationObject_Set() error {
 }
 
 type Notification struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotificationNewFromNative(native uintptr) *Notification {
+func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 	return &Notification{native: native}
 }
 func (recv *Notification) Object() *gobject.Object {
@@ -15720,10 +15721,10 @@ func outputStreamObject_Set() error {
 }
 
 type OutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OutputStreamNewFromNative(native uintptr) *OutputStream {
+func OutputStreamNewFromNative(native unsafe.Pointer) *OutputStream {
 	return &OutputStream{native: native}
 }
 func (recv *OutputStream) Object() *gobject.Object {
@@ -16016,10 +16017,10 @@ func permissionObject_Set() error {
 }
 
 type Permission struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PermissionNewFromNative(native uintptr) *Permission {
+func PermissionNewFromNative(native unsafe.Pointer) *Permission {
 	return &Permission{native: native}
 }
 func (recv *Permission) Object() *gobject.Object {
@@ -16243,10 +16244,10 @@ func propertyActionObject_Set() error {
 }
 
 type PropertyAction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PropertyActionNewFromNative(native uintptr) *PropertyAction {
+func PropertyActionNewFromNative(native unsafe.Pointer) *PropertyAction {
 	return &PropertyAction{native: native}
 }
 func (recv *PropertyAction) Object() *gobject.Object {
@@ -16267,10 +16268,10 @@ func proxyAddressObject_Set() error {
 }
 
 type ProxyAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressNewFromNative(native uintptr) *ProxyAddress {
+func ProxyAddressNewFromNative(native unsafe.Pointer) *ProxyAddress {
 	return &ProxyAddress{native: native}
 }
 func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {
@@ -16571,10 +16572,10 @@ func proxyAddressEnumeratorObject_Set() error {
 }
 
 type ProxyAddressEnumerator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProxyAddressEnumeratorNewFromNative(native uintptr) *ProxyAddressEnumerator {
+func ProxyAddressEnumeratorNewFromNative(native unsafe.Pointer) *ProxyAddressEnumerator {
 	return &ProxyAddressEnumerator{native: native}
 }
 func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {
@@ -16596,10 +16597,10 @@ func resolverObject_Set() error {
 }
 
 type Resolver struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ResolverNewFromNative(native uintptr) *Resolver {
+func ResolverNewFromNative(native unsafe.Pointer) *Resolver {
 	return &Resolver{native: native}
 }
 func (recv *Resolver) Object() *gobject.Object {
@@ -16726,10 +16727,10 @@ func settingsObject_Set() error {
 }
 
 type Settings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsNewFromNative(native uintptr) *Settings {
+func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
 func (recv *Settings) Object() *gobject.Object {
@@ -17859,10 +17860,10 @@ func settingsBackendObject_Set() error {
 }
 
 type SettingsBackend struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsBackendNewFromNative(native uintptr) *SettingsBackend {
+func SettingsBackendNewFromNative(native unsafe.Pointer) *SettingsBackend {
 	return &SettingsBackend{native: native}
 }
 func (recv *SettingsBackend) Object() *gobject.Object {
@@ -17951,10 +17952,10 @@ func simpleActionObject_Set() error {
 }
 
 type SimpleAction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleActionNewFromNative(native uintptr) *SimpleAction {
+func SimpleActionNewFromNative(native unsafe.Pointer) *SimpleAction {
 	return &SimpleAction{native: native}
 }
 func (recv *SimpleAction) Object() *gobject.Object {
@@ -18010,10 +18011,10 @@ func simpleActionGroupObject_Set() error {
 }
 
 type SimpleActionGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleActionGroupNewFromNative(native uintptr) *SimpleActionGroup {
+func SimpleActionGroupNewFromNative(native unsafe.Pointer) *SimpleActionGroup {
 	return &SimpleActionGroup{native: native}
 }
 func (recv *SimpleActionGroup) Object() *gobject.Object {
@@ -18097,10 +18098,10 @@ func simpleAsyncResultObject_Set() error {
 }
 
 type SimpleAsyncResult struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleAsyncResultNewFromNative(native uintptr) *SimpleAsyncResult {
+func SimpleAsyncResultNewFromNative(native unsafe.Pointer) *SimpleAsyncResult {
 	return &SimpleAsyncResult{native: native}
 }
 func (recv *SimpleAsyncResult) Object() *gobject.Object {
@@ -18411,10 +18412,10 @@ func simpleIOStreamObject_Set() error {
 }
 
 type SimpleIOStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleIOStreamNewFromNative(native uintptr) *SimpleIOStream {
+func SimpleIOStreamNewFromNative(native unsafe.Pointer) *SimpleIOStream {
 	return &SimpleIOStream{native: native}
 }
 func (recv *SimpleIOStream) IOStream() *IOStream {
@@ -18469,10 +18470,10 @@ func simplePermissionObject_Set() error {
 }
 
 type SimplePermission struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimplePermissionNewFromNative(native uintptr) *SimplePermission {
+func SimplePermissionNewFromNative(native unsafe.Pointer) *SimplePermission {
 	return &SimplePermission{native: native}
 }
 func (recv *SimplePermission) Permission() *Permission {
@@ -18526,10 +18527,10 @@ func simpleProxyResolverObject_Set() error {
 }
 
 type SimpleProxyResolver struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SimpleProxyResolverNewFromNative(native uintptr) *SimpleProxyResolver {
+func SimpleProxyResolverNewFromNative(native unsafe.Pointer) *SimpleProxyResolver {
 	return &SimpleProxyResolver{native: native}
 }
 func (recv *SimpleProxyResolver) Object() *gobject.Object {
@@ -18640,10 +18641,10 @@ func socketObject_Set() error {
 }
 
 type Socket struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketNewFromNative(native uintptr) *Socket {
+func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
 func (recv *Socket) Object() *gobject.Object {
@@ -20090,10 +20091,10 @@ func socketAddressObject_Set() error {
 }
 
 type SocketAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketAddressNewFromNative(native uintptr) *SocketAddress {
+func SocketAddressNewFromNative(native unsafe.Pointer) *SocketAddress {
 	return &SocketAddress{native: native}
 }
 func (recv *SocketAddress) Object() *gobject.Object {
@@ -20184,10 +20185,10 @@ func socketAddressEnumeratorObject_Set() error {
 }
 
 type SocketAddressEnumerator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketAddressEnumeratorNewFromNative(native uintptr) *SocketAddressEnumerator {
+func SocketAddressEnumeratorNewFromNative(native unsafe.Pointer) *SocketAddressEnumerator {
 	return &SocketAddressEnumerator{native: native}
 }
 func (recv *SocketAddressEnumerator) Object() *gobject.Object {
@@ -20243,10 +20244,10 @@ func socketClientObject_Set() error {
 }
 
 type SocketClient struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketClientNewFromNative(native uintptr) *SocketClient {
+func SocketClientNewFromNative(native unsafe.Pointer) *SocketClient {
 	return &SocketClient{native: native}
 }
 func (recv *SocketClient) Object() *gobject.Object {
@@ -20900,10 +20901,10 @@ func socketConnectionObject_Set() error {
 }
 
 type SocketConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketConnectionNewFromNative(native uintptr) *SocketConnection {
+func SocketConnectionNewFromNative(native unsafe.Pointer) *SocketConnection {
 	return &SocketConnection{native: native}
 }
 func (recv *SocketConnection) IOStream() *IOStream {
@@ -21119,10 +21120,10 @@ func socketControlMessageObject_Set() error {
 }
 
 type SocketControlMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketControlMessageNewFromNative(native uintptr) *SocketControlMessage {
+func SocketControlMessageNewFromNative(native unsafe.Pointer) *SocketControlMessage {
 	return &SocketControlMessage{native: native}
 }
 func (recv *SocketControlMessage) Object() *gobject.Object {
@@ -21257,10 +21258,10 @@ func socketListenerObject_Set() error {
 }
 
 type SocketListener struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketListenerNewFromNative(native uintptr) *SocketListener {
+func SocketListenerNewFromNative(native unsafe.Pointer) *SocketListener {
 	return &SocketListener{native: native}
 }
 func (recv *SocketListener) Object() *gobject.Object {
@@ -21404,10 +21405,10 @@ func socketServiceObject_Set() error {
 }
 
 type SocketService struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketServiceNewFromNative(native uintptr) *SocketService {
+func SocketServiceNewFromNative(native unsafe.Pointer) *SocketService {
 	return &SocketService{native: native}
 }
 func (recv *SocketService) SocketListener() *SocketListener {
@@ -21575,10 +21576,10 @@ func subprocessObject_Set() error {
 }
 
 type Subprocess struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SubprocessNewFromNative(native uintptr) *Subprocess {
+func SubprocessNewFromNative(native unsafe.Pointer) *Subprocess {
 	return &Subprocess{native: native}
 }
 func (recv *Subprocess) Object() *gobject.Object {
@@ -22099,10 +22100,10 @@ func subprocessLauncherObject_Set() error {
 }
 
 type SubprocessLauncher struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SubprocessLauncherNewFromNative(native uintptr) *SubprocessLauncher {
+func SubprocessLauncherNewFromNative(native unsafe.Pointer) *SubprocessLauncher {
 	return &SubprocessLauncher{native: native}
 }
 func (recv *SubprocessLauncher) Object() *gobject.Object {
@@ -22459,10 +22460,10 @@ func taskObject_Set() error {
 }
 
 type Task struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TaskNewFromNative(native uintptr) *Task {
+func TaskNewFromNative(native unsafe.Pointer) *Task {
 	return &Task{native: native}
 }
 func (recv *Task) Object() *gobject.Object {
@@ -23007,10 +23008,10 @@ func tcpConnectionObject_Set() error {
 }
 
 type TcpConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpConnectionNewFromNative(native uintptr) *TcpConnection {
+func TcpConnectionNewFromNative(native unsafe.Pointer) *TcpConnection {
 	return &TcpConnection{native: native}
 }
 func (recv *TcpConnection) SocketConnection() *SocketConnection {
@@ -23124,10 +23125,10 @@ func tcpWrapperConnectionObject_Set() error {
 }
 
 type TcpWrapperConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TcpWrapperConnectionNewFromNative(native uintptr) *TcpWrapperConnection {
+func TcpWrapperConnectionNewFromNative(native unsafe.Pointer) *TcpWrapperConnection {
 	return &TcpWrapperConnection{native: native}
 }
 func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {
@@ -23248,10 +23249,10 @@ func testDBusObject_Set() error {
 }
 
 type TestDBus struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestDBusNewFromNative(native uintptr) *TestDBus {
+func TestDBusNewFromNative(native unsafe.Pointer) *TestDBus {
 	return &TestDBus{native: native}
 }
 func (recv *TestDBus) Object() *gobject.Object {
@@ -23419,10 +23420,10 @@ func themedIconObject_Set() error {
 }
 
 type ThemedIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThemedIconNewFromNative(native uintptr) *ThemedIcon {
+func ThemedIconNewFromNative(native unsafe.Pointer) *ThemedIcon {
 	return &ThemedIcon{native: native}
 }
 func (recv *ThemedIcon) Object() *gobject.Object {
@@ -23593,10 +23594,10 @@ func threadedSocketServiceObject_Set() error {
 }
 
 type ThreadedSocketService struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThreadedSocketServiceNewFromNative(native uintptr) *ThreadedSocketService {
+func ThreadedSocketServiceNewFromNative(native unsafe.Pointer) *ThreadedSocketService {
 	return &ThreadedSocketService{native: native}
 }
 func (recv *ThreadedSocketService) SocketService() *SocketService {
@@ -23681,10 +23682,10 @@ func tlsCertificateObject_Set() error {
 }
 
 type TlsCertificate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsCertificateNewFromNative(native uintptr) *TlsCertificate {
+func TlsCertificateNewFromNative(native unsafe.Pointer) *TlsCertificate {
 	return &TlsCertificate{native: native}
 }
 func (recv *TlsCertificate) Object() *gobject.Object {
@@ -23886,10 +23887,10 @@ func tlsConnectionObject_Set() error {
 }
 
 type TlsConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsConnectionNewFromNative(native uintptr) *TlsConnection {
+func TlsConnectionNewFromNative(native unsafe.Pointer) *TlsConnection {
 	return &TlsConnection{native: native}
 }
 func (recv *TlsConnection) IOStream() *IOStream {
@@ -24412,10 +24413,10 @@ func tlsDatabaseObject_Set() error {
 }
 
 type TlsDatabase struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsDatabaseNewFromNative(native uintptr) *TlsDatabase {
+func TlsDatabaseNewFromNative(native unsafe.Pointer) *TlsDatabase {
 	return &TlsDatabase{native: native}
 }
 func (recv *TlsDatabase) Object() *gobject.Object {
@@ -24577,10 +24578,10 @@ func tlsInteractionObject_Set() error {
 }
 
 type TlsInteraction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsInteractionNewFromNative(native uintptr) *TlsInteraction {
+func TlsInteractionNewFromNative(native unsafe.Pointer) *TlsInteraction {
 	return &TlsInteraction{native: native}
 }
 func (recv *TlsInteraction) Object() *gobject.Object {
@@ -24745,10 +24746,10 @@ func tlsPasswordObject_Set() error {
 }
 
 type TlsPassword struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TlsPasswordNewFromNative(native uintptr) *TlsPassword {
+func TlsPasswordNewFromNative(native unsafe.Pointer) *TlsPassword {
 	return &TlsPassword{native: native}
 }
 func (recv *TlsPassword) Object() *gobject.Object {
@@ -24950,10 +24951,10 @@ func unixConnectionObject_Set() error {
 }
 
 type UnixConnection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixConnectionNewFromNative(native uintptr) *UnixConnection {
+func UnixConnectionNewFromNative(native unsafe.Pointer) *UnixConnection {
 	return &UnixConnection{native: native}
 }
 func (recv *UnixConnection) SocketConnection() *SocketConnection {
@@ -25147,10 +25148,10 @@ func unixCredentialsMessageObject_Set() error {
 }
 
 type UnixCredentialsMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixCredentialsMessageNewFromNative(native uintptr) *UnixCredentialsMessage {
+func UnixCredentialsMessageNewFromNative(native unsafe.Pointer) *UnixCredentialsMessage {
 	return &UnixCredentialsMessage{native: native}
 }
 func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {
@@ -25294,10 +25295,10 @@ func unixFDListObject_Set() error {
 }
 
 type UnixFDList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDListNewFromNative(native uintptr) *UnixFDList {
+func UnixFDListNewFromNative(native unsafe.Pointer) *UnixFDList {
 	return &UnixFDList{native: native}
 }
 func (recv *UnixFDList) Object() *gobject.Object {
@@ -25528,10 +25529,10 @@ func unixFDMessageObject_Set() error {
 }
 
 type UnixFDMessage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixFDMessageNewFromNative(native uintptr) *UnixFDMessage {
+func UnixFDMessageNewFromNative(native unsafe.Pointer) *UnixFDMessage {
 	return &UnixFDMessage{native: native}
 }
 func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {
@@ -25740,10 +25741,10 @@ func unixInputStreamObject_Set() error {
 }
 
 type UnixInputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixInputStreamNewFromNative(native uintptr) *UnixInputStream {
+func UnixInputStreamNewFromNative(native unsafe.Pointer) *UnixInputStream {
 	return &UnixInputStream{native: native}
 }
 func (recv *UnixInputStream) InputStream() *InputStream {
@@ -25905,10 +25906,10 @@ func unixMountMonitorObject_Set() error {
 }
 
 type UnixMountMonitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixMountMonitorNewFromNative(native uintptr) *UnixMountMonitor {
+func UnixMountMonitorNewFromNative(native unsafe.Pointer) *UnixMountMonitor {
 	return &UnixMountMonitor{native: native}
 }
 func (recv *UnixMountMonitor) Object() *gobject.Object {
@@ -25986,10 +25987,10 @@ func unixOutputStreamObject_Set() error {
 }
 
 type UnixOutputStream struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixOutputStreamNewFromNative(native uintptr) *UnixOutputStream {
+func UnixOutputStreamNewFromNative(native unsafe.Pointer) *UnixOutputStream {
 	return &UnixOutputStream{native: native}
 }
 func (recv *UnixOutputStream) OutputStream() *OutputStream {
@@ -26151,10 +26152,10 @@ func unixSocketAddressObject_Set() error {
 }
 
 type UnixSocketAddress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UnixSocketAddressNewFromNative(native uintptr) *UnixSocketAddress {
+func UnixSocketAddressNewFromNative(native unsafe.Pointer) *UnixSocketAddress {
 	return &UnixSocketAddress{native: native}
 }
 func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
@@ -26354,10 +26355,10 @@ func vfsObject_Set() error {
 }
 
 type Vfs struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VfsNewFromNative(native uintptr) *Vfs {
+func VfsNewFromNative(native unsafe.Pointer) *Vfs {
 	return &Vfs{native: native}
 }
 func (recv *Vfs) Object() *gobject.Object {
@@ -26481,10 +26482,10 @@ func volumeMonitorObject_Set() error {
 }
 
 type VolumeMonitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VolumeMonitorNewFromNative(native uintptr) *VolumeMonitor {
+func VolumeMonitorNewFromNative(native unsafe.Pointer) *VolumeMonitor {
 	return &VolumeMonitor{native: native}
 }
 func (recv *VolumeMonitor) Object() *gobject.Object {
@@ -26517,10 +26518,10 @@ func zlibCompressorObject_Set() error {
 }
 
 type ZlibCompressor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ZlibCompressorNewFromNative(native uintptr) *ZlibCompressor {
+func ZlibCompressorNewFromNative(native unsafe.Pointer) *ZlibCompressor {
 	return &ZlibCompressor{native: native}
 }
 func (recv *ZlibCompressor) Object() *gobject.Object {
@@ -26633,10 +26634,10 @@ func zlibDecompressorObject_Set() error {
 }
 
 type ZlibDecompressor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ZlibDecompressorNewFromNative(native uintptr) *ZlibDecompressor {
+func ZlibDecompressorNewFromNative(native unsafe.Pointer) *ZlibDecompressor {
 	return &ZlibDecompressor{native: native}
 }
 func (recv *ZlibDecompressor) Object() *gobject.Object {

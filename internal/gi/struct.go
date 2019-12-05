@@ -63,12 +63,12 @@ func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 	}, nil
 }
 
-func (s *Struct) Alloc() uintptr {
+func (s *Struct) Alloc() unsafe.Pointer {
 	size := C.g_struct_info_get_size(s.info)
 	struct_ := C.malloc(size)
-	return uintptr(struct_)
+	return unsafe.Pointer(struct_)
 }
 
-func (s *Struct) Free(struct_ uintptr) {
-	C.free(unsafe.Pointer(struct_))
+func (s *Struct) Free(struct_ unsafe.Pointer) {
+	C.free(struct_)
 }

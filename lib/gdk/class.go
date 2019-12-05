@@ -7,6 +7,7 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var appLaunchContextObject *gi.Object
@@ -21,10 +22,10 @@ func appLaunchContextObject_Set() error {
 }
 
 type AppLaunchContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppLaunchContextNewFromNative(native uintptr) *AppLaunchContext {
+func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	return &AppLaunchContext{native: native}
 }
 func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
@@ -223,10 +224,10 @@ func cursorObject_Set() error {
 }
 
 type Cursor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CursorNewFromNative(native uintptr) *Cursor {
+func CursorNewFromNative(native unsafe.Pointer) *Cursor {
 	return &Cursor{native: native}
 }
 func (recv *Cursor) Object() *gobject.Object {
@@ -475,10 +476,10 @@ func deviceObject_Set() error {
 }
 
 type Device struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DeviceNewFromNative(native uintptr) *Device {
+func DeviceNewFromNative(native unsafe.Pointer) *Device {
 	return &Device{native: native}
 }
 func (recv *Device) Object() *gobject.Object {
@@ -1227,10 +1228,10 @@ func deviceManagerObject_Set() error {
 }
 
 type DeviceManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DeviceManagerNewFromNative(native uintptr) *DeviceManager {
+func DeviceManagerNewFromNative(native unsafe.Pointer) *DeviceManager {
 	return &DeviceManager{native: native}
 }
 func (recv *DeviceManager) Object() *gobject.Object {
@@ -1315,10 +1316,10 @@ func deviceToolObject_Set() error {
 }
 
 type DeviceTool struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DeviceToolNewFromNative(native uintptr) *DeviceTool {
+func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
 	return &DeviceTool{native: native}
 }
 func (recv *DeviceTool) Object() *gobject.Object {
@@ -1433,10 +1434,10 @@ func displayObject_Set() error {
 }
 
 type Display struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DisplayNewFromNative(native uintptr) *Display {
+func DisplayNewFromNative(native unsafe.Pointer) *Display {
 	return &Display{native: native}
 }
 func (recv *Display) Object() *gobject.Object {
@@ -2664,10 +2665,10 @@ func displayManagerObject_Set() error {
 }
 
 type DisplayManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DisplayManagerNewFromNative(native uintptr) *DisplayManager {
+func DisplayManagerNewFromNative(native unsafe.Pointer) *DisplayManager {
 	return &DisplayManager{native: native}
 }
 func (recv *DisplayManager) Object() *gobject.Object {
@@ -2782,10 +2783,10 @@ func dragContextObject_Set() error {
 }
 
 type DragContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DragContextNewFromNative(native uintptr) *DragContext {
+func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
 	return &DragContext{native: native}
 }
 func (recv *DragContext) Object() *gobject.Object {
@@ -3033,10 +3034,10 @@ func drawingContextObject_Set() error {
 }
 
 type DrawingContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DrawingContextNewFromNative(native uintptr) *DrawingContext {
+func DrawingContextNewFromNative(native unsafe.Pointer) *DrawingContext {
 	return &DrawingContext{native: native}
 }
 func (recv *DrawingContext) Object() *gobject.Object {
@@ -3123,10 +3124,10 @@ func frameClockObject_Set() error {
 }
 
 type FrameClock struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameClockNewFromNative(native uintptr) *FrameClock {
+func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
 	return &FrameClock{native: native}
 }
 func (recv *FrameClock) Object() *gobject.Object {
@@ -3398,10 +3399,10 @@ func gLContextObject_Set() error {
 }
 
 type GLContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GLContextNewFromNative(native uintptr) *GLContext {
+func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
 	return &GLContext{native: native}
 }
 func (recv *GLContext) Object() *gobject.Object {
@@ -3887,10 +3888,10 @@ func keymapObject_Set() error {
 }
 
 type Keymap struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func KeymapNewFromNative(native uintptr) *Keymap {
+func KeymapNewFromNative(native unsafe.Pointer) *Keymap {
 	return &Keymap{native: native}
 }
 func (recv *Keymap) Object() *gobject.Object {
@@ -4116,10 +4117,10 @@ func monitorObject_Set() error {
 }
 
 type Monitor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MonitorNewFromNative(native uintptr) *Monitor {
+func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
 	return &Monitor{native: native}
 }
 func (recv *Monitor) Object() *gobject.Object {
@@ -4490,10 +4491,10 @@ func screenObject_Set() error {
 }
 
 type Screen struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScreenNewFromNative(native uintptr) *Screen {
+func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 	return &Screen{native: native}
 }
 func (recv *Screen) Object() *gobject.Object {
@@ -5298,10 +5299,10 @@ func seatObject_Set() error {
 }
 
 type Seat struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SeatNewFromNative(native uintptr) *Seat {
+func SeatNewFromNative(native unsafe.Pointer) *Seat {
 	return &Seat{native: native}
 }
 func (recv *Seat) Object() *gobject.Object {
@@ -5454,10 +5455,10 @@ func visualObject_Set() error {
 }
 
 type Visual struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VisualNewFromNative(native uintptr) *Visual {
+func VisualNewFromNative(native unsafe.Pointer) *Visual {
 	return &Visual{native: native}
 }
 func (recv *Visual) Object() *gobject.Object {
@@ -5770,10 +5771,10 @@ func windowObject_Set() error {
 }
 
 type Window struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowNewFromNative(native uintptr) *Window {
+func WindowNewFromNative(native unsafe.Pointer) *Window {
 	return &Window{native: native}
 }
 func (recv *Window) Object() *gobject.Object {

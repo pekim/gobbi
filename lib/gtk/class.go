@@ -9,6 +9,7 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	xlib "github.com/pekim/gobbi/lib/xlib"
 	"sync"
+	"unsafe"
 )
 
 var aboutDialogObject *gi.Object
@@ -23,10 +24,10 @@ func aboutDialogObject_Set() error {
 }
 
 type AboutDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AboutDialogNewFromNative(native uintptr) *AboutDialog {
+func AboutDialogNewFromNative(native unsafe.Pointer) *AboutDialog {
 	return &AboutDialog{native: native}
 }
 func (recv *AboutDialog) Dialog() *Dialog {
@@ -874,10 +875,10 @@ func accelGroupObject_Set() error {
 }
 
 type AccelGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AccelGroupNewFromNative(native uintptr) *AccelGroup {
+func AccelGroupNewFromNative(native unsafe.Pointer) *AccelGroup {
 	return &AccelGroup{native: native}
 }
 func (recv *AccelGroup) Object() *gobject.Object {
@@ -1048,10 +1049,10 @@ func accelLabelObject_Set() error {
 }
 
 type AccelLabel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AccelLabelNewFromNative(native uintptr) *AccelLabel {
+func AccelLabelNewFromNative(native unsafe.Pointer) *AccelLabel {
 	return &AccelLabel{native: native}
 }
 func (recv *AccelLabel) Label() *Label {
@@ -1273,10 +1274,10 @@ func accelMapObject_Set() error {
 }
 
 type AccelMap struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AccelMapNewFromNative(native uintptr) *AccelMap {
+func AccelMapNewFromNative(native unsafe.Pointer) *AccelMap {
 	return &AccelMap{native: native}
 }
 func (recv *AccelMap) Object() *gobject.Object {
@@ -1295,10 +1296,10 @@ func accessibleObject_Set() error {
 }
 
 type Accessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AccessibleNewFromNative(native uintptr) *Accessible {
+func AccessibleNewFromNative(native unsafe.Pointer) *Accessible {
 	return &Accessible{native: native}
 }
 func (recv *Accessible) ObjectAtk() *atk.Object {
@@ -1413,10 +1414,10 @@ func actionObject_Set() error {
 }
 
 type Action struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionNewFromNative(native uintptr) *Action {
+func ActionNewFromNative(native unsafe.Pointer) *Action {
 	return &Action{native: native}
 }
 func (recv *Action) Object() *gobject.Object {
@@ -2608,10 +2609,10 @@ func actionBarObject_Set() error {
 }
 
 type ActionBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionBarNewFromNative(native uintptr) *ActionBar {
+func ActionBarNewFromNative(native unsafe.Pointer) *ActionBar {
 	return &ActionBar{native: native}
 }
 func (recv *ActionBar) Bin() *Bin {
@@ -2791,10 +2792,10 @@ func actionGroupObject_Set() error {
 }
 
 type ActionGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionGroupNewFromNative(native uintptr) *ActionGroup {
+func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
 	return &ActionGroup{native: native}
 }
 func (recv *ActionGroup) Object() *gobject.Object {
@@ -3263,10 +3264,10 @@ func adjustmentObject_Set() error {
 }
 
 type Adjustment struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AdjustmentNewFromNative(native uintptr) *Adjustment {
+func AdjustmentNewFromNative(native unsafe.Pointer) *Adjustment {
 	return &Adjustment{native: native}
 }
 func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -3861,10 +3862,10 @@ func alignmentObject_Set() error {
 }
 
 type Alignment struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AlignmentNewFromNative(native uintptr) *Alignment {
+func AlignmentNewFromNative(native unsafe.Pointer) *Alignment {
 	return &Alignment{native: native}
 }
 func (recv *Alignment) Bin() *Bin {
@@ -4043,10 +4044,10 @@ func appChooserButtonObject_Set() error {
 }
 
 type AppChooserButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppChooserButtonNewFromNative(native uintptr) *AppChooserButton {
+func AppChooserButtonNewFromNative(native unsafe.Pointer) *AppChooserButton {
 	return &AppChooserButton{native: native}
 }
 func (recv *AppChooserButton) ComboBox() *ComboBox {
@@ -4368,10 +4369,10 @@ func appChooserDialogObject_Set() error {
 }
 
 type AppChooserDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppChooserDialogNewFromNative(native uintptr) *AppChooserDialog {
+func AppChooserDialogNewFromNative(native unsafe.Pointer) *AppChooserDialog {
 	return &AppChooserDialog{native: native}
 }
 func (recv *AppChooserDialog) Dialog() *Dialog {
@@ -4519,10 +4520,10 @@ func appChooserWidgetObject_Set() error {
 }
 
 type AppChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AppChooserWidgetNewFromNative(native uintptr) *AppChooserWidget {
+func AppChooserWidgetNewFromNative(native unsafe.Pointer) *AppChooserWidget {
 	return &AppChooserWidget{native: native}
 }
 func (recv *AppChooserWidget) Box() *Box {
@@ -4965,10 +4966,10 @@ func applicationObject_Set() error {
 }
 
 type Application struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationNewFromNative(native uintptr) *Application {
+func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 	return &Application{native: native}
 }
 func (recv *Application) Application() *gio.Application {
@@ -5288,10 +5289,10 @@ func applicationWindowObject_Set() error {
 }
 
 type ApplicationWindow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ApplicationWindowNewFromNative(native uintptr) *ApplicationWindow {
+func ApplicationWindowNewFromNative(native unsafe.Pointer) *ApplicationWindow {
 	return &ApplicationWindow{native: native}
 }
 func (recv *ApplicationWindow) Window() *Window {
@@ -5525,10 +5526,10 @@ func arrowObject_Set() error {
 }
 
 type Arrow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ArrowNewFromNative(native uintptr) *Arrow {
+func ArrowNewFromNative(native unsafe.Pointer) *Arrow {
 	return &Arrow{native: native}
 }
 func (recv *Arrow) Misc() *Misc {
@@ -5633,10 +5634,10 @@ func arrowAccessibleObject_Set() error {
 }
 
 type ArrowAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ArrowAccessibleNewFromNative(native uintptr) *ArrowAccessible {
+func ArrowAccessibleNewFromNative(native unsafe.Pointer) *ArrowAccessible {
 	return &ArrowAccessible{native: native}
 }
 func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {
@@ -5692,10 +5693,10 @@ func aspectFrameObject_Set() error {
 }
 
 type AspectFrame struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AspectFrameNewFromNative(native uintptr) *AspectFrame {
+func AspectFrameNewFromNative(native unsafe.Pointer) *AspectFrame {
 	return &AspectFrame{native: native}
 }
 func (recv *AspectFrame) Frame() *Frame {
@@ -5811,10 +5812,10 @@ func assistantObject_Set() error {
 }
 
 type Assistant struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AssistantNewFromNative(native uintptr) *Assistant {
+func AssistantNewFromNative(native unsafe.Pointer) *Assistant {
 	return &Assistant{native: native}
 }
 func (recv *Assistant) Window() *Window {
@@ -6579,10 +6580,10 @@ func binObject_Set() error {
 }
 
 type Bin struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BinNewFromNative(native uintptr) *Bin {
+func BinNewFromNative(native unsafe.Pointer) *Bin {
 	return &Bin{native: native}
 }
 func (recv *Bin) Container() *Container {
@@ -6656,10 +6657,10 @@ func booleanCellAccessibleObject_Set() error {
 }
 
 type BooleanCellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BooleanCellAccessibleNewFromNative(native uintptr) *BooleanCellAccessible {
+func BooleanCellAccessibleNewFromNative(native unsafe.Pointer) *BooleanCellAccessible {
 	return &BooleanCellAccessible{native: native}
 }
 func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessible {
@@ -6718,10 +6719,10 @@ func boxObject_Set() error {
 }
 
 type Box struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BoxNewFromNative(native uintptr) *Box {
+func BoxNewFromNative(native unsafe.Pointer) *Box {
 	return &Box{native: native}
 }
 func (recv *Box) Container() *Container {
@@ -7203,10 +7204,10 @@ func builderObject_Set() error {
 }
 
 type Builder struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BuilderNewFromNative(native uintptr) *Builder {
+func BuilderNewFromNative(native unsafe.Pointer) *Builder {
 	return &Builder{native: native}
 }
 func (recv *Builder) Object() *gobject.Object {
@@ -7622,10 +7623,10 @@ func buttonObject_Set() error {
 }
 
 type Button struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ButtonNewFromNative(native uintptr) *Button {
+func ButtonNewFromNative(native unsafe.Pointer) *Button {
 	return &Button{native: native}
 }
 func (recv *Button) Bin() *Bin {
@@ -8508,10 +8509,10 @@ func buttonAccessibleObject_Set() error {
 }
 
 type ButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ButtonAccessibleNewFromNative(native uintptr) *ButtonAccessible {
+func ButtonAccessibleNewFromNative(native unsafe.Pointer) *ButtonAccessible {
 	return &ButtonAccessible{native: native}
 }
 func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {
@@ -8570,10 +8571,10 @@ func buttonBoxObject_Set() error {
 }
 
 type ButtonBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ButtonBoxNewFromNative(native uintptr) *ButtonBox {
+func ButtonBoxNewFromNative(native unsafe.Pointer) *ButtonBox {
 	return &ButtonBox{native: native}
 }
 func (recv *ButtonBox) Box() *Box {
@@ -8837,10 +8838,10 @@ func calendarObject_Set() error {
 }
 
 type Calendar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CalendarNewFromNative(native uintptr) *Calendar {
+func CalendarNewFromNative(native unsafe.Pointer) *Calendar {
 	return &Calendar{native: native}
 }
 func (recv *Calendar) Widget() *Widget {
@@ -9263,10 +9264,10 @@ func cellAccessibleObject_Set() error {
 }
 
 type CellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellAccessibleNewFromNative(native uintptr) *CellAccessible {
+func CellAccessibleNewFromNative(native unsafe.Pointer) *CellAccessible {
 	return &CellAccessible{native: native}
 }
 func (recv *CellAccessible) Accessible() *Accessible {
@@ -9319,10 +9320,10 @@ func cellAreaObject_Set() error {
 }
 
 type CellArea struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellAreaNewFromNative(native uintptr) *CellArea {
+func CellAreaNewFromNative(native unsafe.Pointer) *CellArea {
 	return &CellArea{native: native}
 }
 func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -10190,10 +10191,10 @@ func cellAreaBoxObject_Set() error {
 }
 
 type CellAreaBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellAreaBoxNewFromNative(native uintptr) *CellAreaBox {
+func CellAreaBoxNewFromNative(native unsafe.Pointer) *CellAreaBox {
 	return &CellAreaBox{native: native}
 }
 func (recv *CellAreaBox) CellArea() *CellArea {
@@ -10373,10 +10374,10 @@ func cellAreaContextObject_Set() error {
 }
 
 type CellAreaContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellAreaContextNewFromNative(native uintptr) *CellAreaContext {
+func CellAreaContextNewFromNative(native unsafe.Pointer) *CellAreaContext {
 	return &CellAreaContext{native: native}
 }
 func (recv *CellAreaContext) Object() *gobject.Object {
@@ -10712,10 +10713,10 @@ func cellRendererObject_Set() error {
 }
 
 type CellRenderer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererNewFromNative(native uintptr) *CellRenderer {
+func CellRendererNewFromNative(native unsafe.Pointer) *CellRenderer {
 	return &CellRenderer{native: native}
 }
 func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -11329,10 +11330,10 @@ func cellRendererAccelObject_Set() error {
 }
 
 type CellRendererAccel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererAccelNewFromNative(native uintptr) *CellRendererAccel {
+func CellRendererAccelNewFromNative(native unsafe.Pointer) *CellRendererAccel {
 	return &CellRendererAccel{native: native}
 }
 func (recv *CellRendererAccel) CellRendererText() *CellRendererText {
@@ -11404,10 +11405,10 @@ func cellRendererComboObject_Set() error {
 }
 
 type CellRendererCombo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererComboNewFromNative(native uintptr) *CellRendererCombo {
+func CellRendererComboNewFromNative(native unsafe.Pointer) *CellRendererCombo {
 	return &CellRendererCombo{native: native}
 }
 func (recv *CellRendererCombo) CellRendererText() *CellRendererText {
@@ -11479,10 +11480,10 @@ func cellRendererPixbufObject_Set() error {
 }
 
 type CellRendererPixbuf struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererPixbufNewFromNative(native uintptr) *CellRendererPixbuf {
+func CellRendererPixbufNewFromNative(native unsafe.Pointer) *CellRendererPixbuf {
 	return &CellRendererPixbuf{native: native}
 }
 func (recv *CellRendererPixbuf) CellRenderer() *CellRenderer {
@@ -11551,10 +11552,10 @@ func cellRendererProgressObject_Set() error {
 }
 
 type CellRendererProgress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererProgressNewFromNative(native uintptr) *CellRendererProgress {
+func CellRendererProgressNewFromNative(native unsafe.Pointer) *CellRendererProgress {
 	return &CellRendererProgress{native: native}
 }
 func (recv *CellRendererProgress) CellRenderer() *CellRenderer {
@@ -11623,10 +11624,10 @@ func cellRendererSpinObject_Set() error {
 }
 
 type CellRendererSpin struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererSpinNewFromNative(native uintptr) *CellRendererSpin {
+func CellRendererSpinNewFromNative(native unsafe.Pointer) *CellRendererSpin {
 	return &CellRendererSpin{native: native}
 }
 func (recv *CellRendererSpin) CellRendererText() *CellRendererText {
@@ -11698,10 +11699,10 @@ func cellRendererSpinnerObject_Set() error {
 }
 
 type CellRendererSpinner struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererSpinnerNewFromNative(native uintptr) *CellRendererSpinner {
+func CellRendererSpinnerNewFromNative(native unsafe.Pointer) *CellRendererSpinner {
 	return &CellRendererSpinner{native: native}
 }
 func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {
@@ -11770,10 +11771,10 @@ func cellRendererTextObject_Set() error {
 }
 
 type CellRendererText struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererTextNewFromNative(native uintptr) *CellRendererText {
+func CellRendererTextNewFromNative(native unsafe.Pointer) *CellRendererText {
 	return &CellRendererText{native: native}
 }
 func (recv *CellRendererText) CellRenderer() *CellRenderer {
@@ -11871,10 +11872,10 @@ func cellRendererToggleObject_Set() error {
 }
 
 type CellRendererToggle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellRendererToggleNewFromNative(native uintptr) *CellRendererToggle {
+func CellRendererToggleNewFromNative(native unsafe.Pointer) *CellRendererToggle {
 	return &CellRendererToggle{native: native}
 }
 func (recv *CellRendererToggle) CellRenderer() *CellRenderer {
@@ -12126,10 +12127,10 @@ func cellViewObject_Set() error {
 }
 
 type CellView struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CellViewNewFromNative(native uintptr) *CellView {
+func CellViewNewFromNative(native unsafe.Pointer) *CellView {
 	return &CellView{native: native}
 }
 func (recv *CellView) Widget() *Widget {
@@ -12523,10 +12524,10 @@ func checkButtonObject_Set() error {
 }
 
 type CheckButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CheckButtonNewFromNative(native uintptr) *CheckButton {
+func CheckButtonNewFromNative(native unsafe.Pointer) *CheckButton {
 	return &CheckButton{native: native}
 }
 func (recv *CheckButton) ToggleButton() *ToggleButton {
@@ -12671,10 +12672,10 @@ func checkMenuItemObject_Set() error {
 }
 
 type CheckMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CheckMenuItemNewFromNative(native uintptr) *CheckMenuItem {
+func CheckMenuItemNewFromNative(native unsafe.Pointer) *CheckMenuItem {
 	return &CheckMenuItem{native: native}
 }
 func (recv *CheckMenuItem) MenuItem() *MenuItem {
@@ -13027,10 +13028,10 @@ func checkMenuItemAccessibleObject_Set() error {
 }
 
 type CheckMenuItemAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CheckMenuItemAccessibleNewFromNative(native uintptr) *CheckMenuItemAccessible {
+func CheckMenuItemAccessibleNewFromNative(native unsafe.Pointer) *CheckMenuItemAccessible {
 	return &CheckMenuItemAccessible{native: native}
 }
 func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
@@ -13092,10 +13093,10 @@ func clipboardObject_Set() error {
 }
 
 type Clipboard struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClipboardNewFromNative(native uintptr) *Clipboard {
+func ClipboardNewFromNative(native unsafe.Pointer) *Clipboard {
 	return &Clipboard{native: native}
 }
 func (recv *Clipboard) Object() *gobject.Object {
@@ -13425,10 +13426,10 @@ func colorButtonObject_Set() error {
 }
 
 type ColorButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorButtonNewFromNative(native uintptr) *ColorButton {
+func ColorButtonNewFromNative(native unsafe.Pointer) *ColorButton {
 	return &ColorButton{native: native}
 }
 func (recv *ColorButton) Button() *Button {
@@ -13701,10 +13702,10 @@ func colorChooserDialogObject_Set() error {
 }
 
 type ColorChooserDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorChooserDialogNewFromNative(native uintptr) *ColorChooserDialog {
+func ColorChooserDialogNewFromNative(native unsafe.Pointer) *ColorChooserDialog {
 	return &ColorChooserDialog{native: native}
 }
 func (recv *ColorChooserDialog) Dialog() *Dialog {
@@ -13788,10 +13789,10 @@ func colorChooserWidgetObject_Set() error {
 }
 
 type ColorChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorChooserWidgetNewFromNative(native uintptr) *ColorChooserWidget {
+func ColorChooserWidgetNewFromNative(native unsafe.Pointer) *ColorChooserWidget {
 	return &ColorChooserWidget{native: native}
 }
 func (recv *ColorChooserWidget) Box() *Box {
@@ -13866,10 +13867,10 @@ func colorSelectionObject_Set() error {
 }
 
 type ColorSelection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorSelectionNewFromNative(native uintptr) *ColorSelection {
+func ColorSelectionNewFromNative(native unsafe.Pointer) *ColorSelection {
 	return &ColorSelection{native: native}
 }
 func (recv *ColorSelection) Box() *Box {
@@ -14236,10 +14237,10 @@ func colorSelectionDialogObject_Set() error {
 }
 
 type ColorSelectionDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorSelectionDialogNewFromNative(native uintptr) *ColorSelectionDialog {
+func ColorSelectionDialogNewFromNative(native unsafe.Pointer) *ColorSelectionDialog {
 	return &ColorSelectionDialog{native: native}
 }
 func (recv *ColorSelectionDialog) Dialog() *Dialog {
@@ -14354,10 +14355,10 @@ func comboBoxObject_Set() error {
 }
 
 type ComboBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ComboBoxNewFromNative(native uintptr) *ComboBox {
+func ComboBoxNewFromNative(native unsafe.Pointer) *ComboBox {
 	return &ComboBox{native: native}
 }
 func (recv *ComboBox) Bin() *Bin {
@@ -15429,10 +15430,10 @@ func comboBoxAccessibleObject_Set() error {
 }
 
 type ComboBoxAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ComboBoxAccessibleNewFromNative(native uintptr) *ComboBoxAccessible {
+func ComboBoxAccessibleNewFromNative(native unsafe.Pointer) *ComboBoxAccessible {
 	return &ComboBoxAccessible{native: native}
 }
 func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {
@@ -15491,10 +15492,10 @@ func comboBoxTextObject_Set() error {
 }
 
 type ComboBoxText struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ComboBoxTextNewFromNative(native uintptr) *ComboBoxText {
+func ComboBoxTextNewFromNative(native unsafe.Pointer) *ComboBoxText {
 	return &ComboBoxText{native: native}
 }
 func (recv *ComboBoxText) ComboBox() *ComboBox {
@@ -15856,10 +15857,10 @@ func containerObject_Set() error {
 }
 
 type Container struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContainerNewFromNative(native uintptr) *Container {
+func ContainerNewFromNative(native unsafe.Pointer) *Container {
 	return &Container{native: native}
 }
 func (recv *Container) Widget() *Widget {
@@ -16467,10 +16468,10 @@ func containerAccessibleObject_Set() error {
 }
 
 type ContainerAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContainerAccessibleNewFromNative(native uintptr) *ContainerAccessible {
+func ContainerAccessibleNewFromNative(native unsafe.Pointer) *ContainerAccessible {
 	return &ContainerAccessible{native: native}
 }
 func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {
@@ -16526,10 +16527,10 @@ func containerCellAccessibleObject_Set() error {
 }
 
 type ContainerCellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContainerCellAccessibleNewFromNative(native uintptr) *ContainerCellAccessible {
+func ContainerCellAccessibleNewFromNative(native unsafe.Pointer) *ContainerCellAccessible {
 	return &ContainerCellAccessible{native: native}
 }
 func (recv *ContainerCellAccessible) CellAccessible() *CellAccessible {
@@ -16675,10 +16676,10 @@ func cssProviderObject_Set() error {
 }
 
 type CssProvider struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CssProviderNewFromNative(native uintptr) *CssProvider {
+func CssProviderNewFromNative(native unsafe.Pointer) *CssProvider {
 	return &CssProvider{native: native}
 }
 func (recv *CssProvider) Object() *gobject.Object {
@@ -16843,10 +16844,10 @@ func dialogObject_Set() error {
 }
 
 type Dialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DialogNewFromNative(native uintptr) *Dialog {
+func DialogNewFromNative(native unsafe.Pointer) *Dialog {
 	return &Dialog{native: native}
 }
 func (recv *Dialog) Window() *Window {
@@ -17278,10 +17279,10 @@ func drawingAreaObject_Set() error {
 }
 
 type DrawingArea struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DrawingAreaNewFromNative(native uintptr) *DrawingArea {
+func DrawingAreaNewFromNative(native unsafe.Pointer) *DrawingArea {
 	return &DrawingArea{native: native}
 }
 func (recv *DrawingArea) Widget() *Widget {
@@ -17350,10 +17351,10 @@ func entryObject_Set() error {
 }
 
 type Entry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EntryNewFromNative(native uintptr) *Entry {
+func EntryNewFromNative(native unsafe.Pointer) *Entry {
 	return &Entry{native: native}
 }
 func (recv *Entry) Widget() *Widget {
@@ -19231,10 +19232,10 @@ func entryAccessibleObject_Set() error {
 }
 
 type EntryAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EntryAccessibleNewFromNative(native uintptr) *EntryAccessible {
+func EntryAccessibleNewFromNative(native unsafe.Pointer) *EntryAccessible {
 	return &EntryAccessible{native: native}
 }
 func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {
@@ -19290,10 +19291,10 @@ func entryBufferObject_Set() error {
 }
 
 type EntryBuffer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EntryBufferNewFromNative(native uintptr) *EntryBuffer {
+func EntryBufferNewFromNative(native unsafe.Pointer) *EntryBuffer {
 	return &EntryBuffer{native: native}
 }
 func (recv *EntryBuffer) Object() *gobject.Object {
@@ -19666,10 +19667,10 @@ func entryCompletionObject_Set() error {
 }
 
 type EntryCompletion struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EntryCompletionNewFromNative(native uintptr) *EntryCompletion {
+func EntryCompletionNewFromNative(native unsafe.Pointer) *EntryCompletion {
 	return &EntryCompletion{native: native}
 }
 func (recv *EntryCompletion) Object() *gobject.Object {
@@ -20429,10 +20430,10 @@ func entryIconAccessibleObject_Set() error {
 }
 
 type EntryIconAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EntryIconAccessibleNewFromNative(native uintptr) *EntryIconAccessible {
+func EntryIconAccessibleNewFromNative(native unsafe.Pointer) *EntryIconAccessible {
 	return &EntryIconAccessible{native: native}
 }
 func (recv *EntryIconAccessible) ObjectAtk() *atk.Object {
@@ -20454,10 +20455,10 @@ func eventBoxObject_Set() error {
 }
 
 type EventBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventBoxNewFromNative(native uintptr) *EventBox {
+func EventBoxNewFromNative(native unsafe.Pointer) *EventBox {
 	return &EventBox{native: native}
 }
 func (recv *EventBox) Bin() *Bin {
@@ -20654,10 +20655,10 @@ func eventControllerObject_Set() error {
 }
 
 type EventController struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventControllerNewFromNative(native uintptr) *EventController {
+func EventControllerNewFromNative(native unsafe.Pointer) *EventController {
 	return &EventController{native: native}
 }
 func (recv *EventController) Object() *gobject.Object {
@@ -20799,10 +20800,10 @@ func eventControllerKeyObject_Set() error {
 }
 
 type EventControllerKey struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventControllerKeyNewFromNative(native uintptr) *EventControllerKey {
+func EventControllerKeyNewFromNative(native unsafe.Pointer) *EventControllerKey {
 	return &EventControllerKey{native: native}
 }
 func (recv *EventControllerKey) EventController() *EventController {
@@ -20982,10 +20983,10 @@ func eventControllerMotionObject_Set() error {
 }
 
 type EventControllerMotion struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventControllerMotionNewFromNative(native uintptr) *EventControllerMotion {
+func EventControllerMotionNewFromNative(native unsafe.Pointer) *EventControllerMotion {
 	return &EventControllerMotion{native: native}
 }
 func (recv *EventControllerMotion) EventController() *EventController {
@@ -21039,10 +21040,10 @@ func eventControllerScrollObject_Set() error {
 }
 
 type EventControllerScroll struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventControllerScrollNewFromNative(native uintptr) *EventControllerScroll {
+func EventControllerScrollNewFromNative(native unsafe.Pointer) *EventControllerScroll {
 	return &EventControllerScroll{native: native}
 }
 func (recv *EventControllerScroll) EventController() *EventController {
@@ -21070,10 +21071,10 @@ func expanderObject_Set() error {
 }
 
 type Expander struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ExpanderNewFromNative(native uintptr) *Expander {
+func ExpanderNewFromNative(native unsafe.Pointer) *Expander {
 	return &Expander{native: native}
 }
 func (recv *Expander) Bin() *Bin {
@@ -21684,10 +21685,10 @@ func expanderAccessibleObject_Set() error {
 }
 
 type ExpanderAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ExpanderAccessibleNewFromNative(native uintptr) *ExpanderAccessible {
+func ExpanderAccessibleNewFromNative(native unsafe.Pointer) *ExpanderAccessible {
 	return &ExpanderAccessible{native: native}
 }
 func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {
@@ -21746,10 +21747,10 @@ func fileChooserButtonObject_Set() error {
 }
 
 type FileChooserButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileChooserButtonNewFromNative(native uintptr) *FileChooserButton {
+func FileChooserButtonNewFromNative(native unsafe.Pointer) *FileChooserButton {
 	return &FileChooserButton{native: native}
 }
 func (recv *FileChooserButton) Box() *Box {
@@ -22042,10 +22043,10 @@ func fileChooserDialogObject_Set() error {
 }
 
 type FileChooserDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileChooserDialogNewFromNative(native uintptr) *FileChooserDialog {
+func FileChooserDialogNewFromNative(native unsafe.Pointer) *FileChooserDialog {
 	return &FileChooserDialog{native: native}
 }
 func (recv *FileChooserDialog) Dialog() *Dialog {
@@ -22112,10 +22113,10 @@ func fileChooserNativeObject_Set() error {
 }
 
 type FileChooserNative struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileChooserNativeNewFromNative(native uintptr) *FileChooserNative {
+func FileChooserNativeNewFromNative(native unsafe.Pointer) *FileChooserNative {
 	return &FileChooserNative{native: native}
 }
 func (recv *FileChooserNative) NativeDialog() *NativeDialog {
@@ -22295,10 +22296,10 @@ func fileChooserWidgetObject_Set() error {
 }
 
 type FileChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileChooserWidgetNewFromNative(native uintptr) *FileChooserWidget {
+func FileChooserWidgetNewFromNative(native unsafe.Pointer) *FileChooserWidget {
 	return &FileChooserWidget{native: native}
 }
 func (recv *FileChooserWidget) Box() *Box {
@@ -22389,10 +22390,10 @@ func fileFilterObject_Set() error {
 }
 
 type FileFilter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileFilterNewFromNative(native uintptr) *FileFilter {
+func FileFilterNewFromNative(native unsafe.Pointer) *FileFilter {
 	return &FileFilter{native: native}
 }
 func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -22632,10 +22633,10 @@ func fixedObject_Set() error {
 }
 
 type Fixed struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FixedNewFromNative(native uintptr) *Fixed {
+func FixedNewFromNative(native unsafe.Pointer) *Fixed {
 	return &Fixed{native: native}
 }
 func (recv *Fixed) Container() *Container {
@@ -22769,10 +22770,10 @@ func flowBoxObject_Set() error {
 }
 
 type FlowBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlowBoxNewFromNative(native uintptr) *FlowBox {
+func FlowBoxNewFromNative(native unsafe.Pointer) *FlowBox {
 	return &FlowBox{native: native}
 }
 func (recv *FlowBox) Container() *Container {
@@ -23606,10 +23607,10 @@ func flowBoxAccessibleObject_Set() error {
 }
 
 type FlowBoxAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlowBoxAccessibleNewFromNative(native uintptr) *FlowBoxAccessible {
+func FlowBoxAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxAccessible {
 	return &FlowBoxAccessible{native: native}
 }
 func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {
@@ -23668,10 +23669,10 @@ func flowBoxChildObject_Set() error {
 }
 
 type FlowBoxChild struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlowBoxChildNewFromNative(native uintptr) *FlowBoxChild {
+func FlowBoxChildNewFromNative(native unsafe.Pointer) *FlowBoxChild {
 	return &FlowBoxChild{native: native}
 }
 func (recv *FlowBoxChild) Bin() *Bin {
@@ -23838,10 +23839,10 @@ func flowBoxChildAccessibleObject_Set() error {
 }
 
 type FlowBoxChildAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FlowBoxChildAccessibleNewFromNative(native uintptr) *FlowBoxChildAccessible {
+func FlowBoxChildAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxChildAccessible {
 	return &FlowBoxChildAccessible{native: native}
 }
 func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {
@@ -23886,10 +23887,10 @@ func fontButtonObject_Set() error {
 }
 
 type FontButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontButtonNewFromNative(native uintptr) *FontButton {
+func FontButtonNewFromNative(native unsafe.Pointer) *FontButton {
 	return &FontButton{native: native}
 }
 func (recv *FontButton) Button() *Button {
@@ -24369,10 +24370,10 @@ func fontChooserDialogObject_Set() error {
 }
 
 type FontChooserDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontChooserDialogNewFromNative(native uintptr) *FontChooserDialog {
+func FontChooserDialogNewFromNative(native unsafe.Pointer) *FontChooserDialog {
 	return &FontChooserDialog{native: native}
 }
 func (recv *FontChooserDialog) Dialog() *Dialog {
@@ -24456,10 +24457,10 @@ func fontChooserWidgetObject_Set() error {
 }
 
 type FontChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontChooserWidgetNewFromNative(native uintptr) *FontChooserWidget {
+func FontChooserWidgetNewFromNative(native unsafe.Pointer) *FontChooserWidget {
 	return &FontChooserWidget{native: native}
 }
 func (recv *FontChooserWidget) Box() *Box {
@@ -24534,10 +24535,10 @@ func fontSelectionObject_Set() error {
 }
 
 type FontSelection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontSelectionNewFromNative(native uintptr) *FontSelection {
+func FontSelectionNewFromNative(native unsafe.Pointer) *FontSelection {
 	return &FontSelection{native: native}
 }
 func (recv *FontSelection) Box() *Box {
@@ -24934,10 +24935,10 @@ func fontSelectionDialogObject_Set() error {
 }
 
 type FontSelectionDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontSelectionDialogNewFromNative(native uintptr) *FontSelectionDialog {
+func FontSelectionDialogNewFromNative(native unsafe.Pointer) *FontSelectionDialog {
 	return &FontSelectionDialog{native: native}
 }
 func (recv *FontSelectionDialog) Dialog() *Dialog {
@@ -25242,10 +25243,10 @@ func frameObject_Set() error {
 }
 
 type Frame struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameNewFromNative(native uintptr) *Frame {
+func FrameNewFromNative(native unsafe.Pointer) *Frame {
 	return &Frame{native: native}
 }
 func (recv *Frame) Bin() *Bin {
@@ -25568,10 +25569,10 @@ func frameAccessibleObject_Set() error {
 }
 
 type FrameAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameAccessibleNewFromNative(native uintptr) *FrameAccessible {
+func FrameAccessibleNewFromNative(native unsafe.Pointer) *FrameAccessible {
 	return &FrameAccessible{native: native}
 }
 func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {
@@ -25630,10 +25631,10 @@ func gLAreaObject_Set() error {
 }
 
 type GLArea struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GLAreaNewFromNative(native uintptr) *GLArea {
+func GLAreaNewFromNative(native unsafe.Pointer) *GLArea {
 	return &GLArea{native: native}
 }
 func (recv *GLArea) Widget() *Widget {
@@ -26146,10 +26147,10 @@ func gestureObject_Set() error {
 }
 
 type Gesture struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureNewFromNative(native uintptr) *Gesture {
+func GestureNewFromNative(native unsafe.Pointer) *Gesture {
 	return &Gesture{native: native}
 }
 func (recv *Gesture) EventController() *EventController {
@@ -26417,10 +26418,10 @@ func gestureDragObject_Set() error {
 }
 
 type GestureDrag struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureDragNewFromNative(native uintptr) *GestureDrag {
+func GestureDragNewFromNative(native unsafe.Pointer) *GestureDrag {
 	return &GestureDrag{native: native}
 }
 func (recv *GestureDrag) GestureSingle() *GestureSingle {
@@ -26550,10 +26551,10 @@ func gestureLongPressObject_Set() error {
 }
 
 type GestureLongPress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureLongPressNewFromNative(native uintptr) *GestureLongPress {
+func GestureLongPressNewFromNative(native unsafe.Pointer) *GestureLongPress {
 	return &GestureLongPress{native: native}
 }
 func (recv *GestureLongPress) GestureSingle() *GestureSingle {
@@ -26613,10 +26614,10 @@ func gestureMultiPressObject_Set() error {
 }
 
 type GestureMultiPress struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureMultiPressNewFromNative(native uintptr) *GestureMultiPress {
+func GestureMultiPressNewFromNative(native unsafe.Pointer) *GestureMultiPress {
 	return &GestureMultiPress{native: native}
 }
 func (recv *GestureMultiPress) GestureSingle() *GestureSingle {
@@ -26680,10 +26681,10 @@ func gesturePanObject_Set() error {
 }
 
 type GesturePan struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GesturePanNewFromNative(native uintptr) *GesturePan {
+func GesturePanNewFromNative(native unsafe.Pointer) *GesturePan {
 	return &GesturePan{native: native}
 }
 func (recv *GesturePan) GestureDrag() *GestureDrag {
@@ -26808,10 +26809,10 @@ func gestureRotateObject_Set() error {
 }
 
 type GestureRotate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureRotateNewFromNative(native uintptr) *GestureRotate {
+func GestureRotateNewFromNative(native unsafe.Pointer) *GestureRotate {
 	return &GestureRotate{native: native}
 }
 func (recv *GestureRotate) Gesture() *Gesture {
@@ -26900,10 +26901,10 @@ func gestureSingleObject_Set() error {
 }
 
 type GestureSingle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureSingleNewFromNative(native uintptr) *GestureSingle {
+func GestureSingleNewFromNative(native unsafe.Pointer) *GestureSingle {
 	return &GestureSingle{native: native}
 }
 func (recv *GestureSingle) Gesture() *Gesture {
@@ -27145,10 +27146,10 @@ func gestureStylusObject_Set() error {
 }
 
 type GestureStylus struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureStylusNewFromNative(native uintptr) *GestureStylus {
+func GestureStylusNewFromNative(native unsafe.Pointer) *GestureStylus {
 	return &GestureStylus{native: native}
 }
 func (recv *GestureStylus) GestureSingle() *GestureSingle {
@@ -27214,10 +27215,10 @@ func gestureSwipeObject_Set() error {
 }
 
 type GestureSwipe struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureSwipeNewFromNative(native uintptr) *GestureSwipe {
+func GestureSwipeNewFromNative(native unsafe.Pointer) *GestureSwipe {
 	return &GestureSwipe{native: native}
 }
 func (recv *GestureSwipe) GestureSingle() *GestureSingle {
@@ -27312,10 +27313,10 @@ func gestureZoomObject_Set() error {
 }
 
 type GestureZoom struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GestureZoomNewFromNative(native uintptr) *GestureZoom {
+func GestureZoomNewFromNative(native unsafe.Pointer) *GestureZoom {
 	return &GestureZoom{native: native}
 }
 func (recv *GestureZoom) Gesture() *Gesture {
@@ -27404,10 +27405,10 @@ func gridObject_Set() error {
 }
 
 type Grid struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GridNewFromNative(native uintptr) *Grid {
+func GridNewFromNative(native unsafe.Pointer) *Grid {
 	return &Grid{native: native}
 }
 func (recv *Grid) Container() *Container {
@@ -28079,10 +28080,10 @@ func hBoxObject_Set() error {
 }
 
 type HBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HBoxNewFromNative(native uintptr) *HBox {
+func HBoxNewFromNative(native unsafe.Pointer) *HBox {
 	return &HBox{native: native}
 }
 func (recv *HBox) Box() *Box {
@@ -28160,10 +28161,10 @@ func hButtonBoxObject_Set() error {
 }
 
 type HButtonBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HButtonBoxNewFromNative(native uintptr) *HButtonBox {
+func HButtonBoxNewFromNative(native unsafe.Pointer) *HButtonBox {
 	return &HButtonBox{native: native}
 }
 func (recv *HButtonBox) ButtonBox() *ButtonBox {
@@ -28241,10 +28242,10 @@ func hPanedObject_Set() error {
 }
 
 type HPaned struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HPanedNewFromNative(native uintptr) *HPaned {
+func HPanedNewFromNative(native unsafe.Pointer) *HPaned {
 	return &HPaned{native: native}
 }
 func (recv *HPaned) Paned() *Paned {
@@ -28319,10 +28320,10 @@ func hSVObject_Set() error {
 }
 
 type HSV struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HSVNewFromNative(native uintptr) *HSV {
+func HSVNewFromNative(native unsafe.Pointer) *HSV {
 	return &HSV{native: native}
 }
 func (recv *HSV) Widget() *Widget {
@@ -28551,10 +28552,10 @@ func hScaleObject_Set() error {
 }
 
 type HScale struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HScaleNewFromNative(native uintptr) *HScale {
+func HScaleNewFromNative(native unsafe.Pointer) *HScale {
 	return &HScale{native: native}
 }
 func (recv *HScale) Scale() *Scale {
@@ -28665,10 +28666,10 @@ func hScrollbarObject_Set() error {
 }
 
 type HScrollbar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HScrollbarNewFromNative(native uintptr) *HScrollbar {
+func HScrollbarNewFromNative(native unsafe.Pointer) *HScrollbar {
 	return &HScrollbar{native: native}
 }
 func (recv *HScrollbar) Scrollbar() *Scrollbar {
@@ -28745,10 +28746,10 @@ func hSeparatorObject_Set() error {
 }
 
 type HSeparator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HSeparatorNewFromNative(native uintptr) *HSeparator {
+func HSeparatorNewFromNative(native unsafe.Pointer) *HSeparator {
 	return &HSeparator{native: native}
 }
 func (recv *HSeparator) Separator() *Separator {
@@ -28820,10 +28821,10 @@ func handleBoxObject_Set() error {
 }
 
 type HandleBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HandleBoxNewFromNative(native uintptr) *HandleBox {
+func HandleBoxNewFromNative(native unsafe.Pointer) *HandleBox {
 	return &HandleBox{native: native}
 }
 func (recv *HandleBox) Bin() *Bin {
@@ -29113,10 +29114,10 @@ func headerBarObject_Set() error {
 }
 
 type HeaderBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HeaderBarNewFromNative(native uintptr) *HeaderBar {
+func HeaderBarNewFromNative(native unsafe.Pointer) *HeaderBar {
 	return &HeaderBar{native: native}
 }
 func (recv *HeaderBar) Container() *Container {
@@ -29612,10 +29613,10 @@ func headerBarAccessibleObject_Set() error {
 }
 
 type HeaderBarAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HeaderBarAccessibleNewFromNative(native uintptr) *HeaderBarAccessible {
+func HeaderBarAccessibleNewFromNative(native unsafe.Pointer) *HeaderBarAccessible {
 	return &HeaderBarAccessible{native: native}
 }
 func (recv *HeaderBarAccessible) ContainerAccessible() *ContainerAccessible {
@@ -29660,10 +29661,10 @@ func iMContextObject_Set() error {
 }
 
 type IMContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IMContextNewFromNative(native uintptr) *IMContext {
+func IMContextNewFromNative(native unsafe.Pointer) *IMContext {
 	return &IMContext{native: native}
 }
 func (recv *IMContext) Object() *gobject.Object {
@@ -29907,10 +29908,10 @@ func iMContextSimpleObject_Set() error {
 }
 
 type IMContextSimple struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IMContextSimpleNewFromNative(native uintptr) *IMContextSimple {
+func IMContextSimpleNewFromNative(native unsafe.Pointer) *IMContextSimple {
 	return &IMContextSimple{native: native}
 }
 func (recv *IMContextSimple) IMContext() *IMContext {
@@ -30007,10 +30008,10 @@ func iMMulticontextObject_Set() error {
 }
 
 type IMMulticontext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IMMulticontextNewFromNative(native uintptr) *IMMulticontext {
+func IMMulticontextNewFromNative(native unsafe.Pointer) *IMMulticontext {
 	return &IMMulticontext{native: native}
 }
 func (recv *IMMulticontext) IMContext() *IMContext {
@@ -30166,10 +30167,10 @@ func iconFactoryObject_Set() error {
 }
 
 type IconFactory struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconFactoryNewFromNative(native uintptr) *IconFactory {
+func IconFactoryNewFromNative(native unsafe.Pointer) *IconFactory {
 	return &IconFactory{native: native}
 }
 func (recv *IconFactory) Object() *gobject.Object {
@@ -30341,10 +30342,10 @@ func iconInfoObject_Set() error {
 }
 
 type IconInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconInfoNewFromNative(native uintptr) *IconInfo {
+func IconInfoNewFromNative(native unsafe.Pointer) *IconInfo {
 	return &IconInfo{native: native}
 }
 func (recv *IconInfo) Object() *gobject.Object {
@@ -30642,10 +30643,10 @@ func iconThemeObject_Set() error {
 }
 
 type IconTheme struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconThemeNewFromNative(native uintptr) *IconTheme {
+func IconThemeNewFromNative(native unsafe.Pointer) *IconTheme {
 	return &IconTheme{native: native}
 }
 func (recv *IconTheme) Object() *gobject.Object {
@@ -30964,10 +30965,10 @@ func iconViewObject_Set() error {
 }
 
 type IconView struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconViewNewFromNative(native uintptr) *IconView {
+func IconViewNewFromNative(native unsafe.Pointer) *IconView {
 	return &IconView{native: native}
 }
 func (recv *IconView) Container() *Container {
@@ -32704,10 +32705,10 @@ func iconViewAccessibleObject_Set() error {
 }
 
 type IconViewAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IconViewAccessibleNewFromNative(native uintptr) *IconViewAccessible {
+func IconViewAccessibleNewFromNative(native unsafe.Pointer) *IconViewAccessible {
 	return &IconViewAccessible{native: native}
 }
 func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {
@@ -32766,10 +32767,10 @@ func imageObject_Set() error {
 }
 
 type Image struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImageNewFromNative(native uintptr) *Image {
+func ImageNewFromNative(native unsafe.Pointer) *Image {
 	return &Image{native: native}
 }
 func (recv *Image) Misc() *Misc {
@@ -33394,10 +33395,10 @@ func imageAccessibleObject_Set() error {
 }
 
 type ImageAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImageAccessibleNewFromNative(native uintptr) *ImageAccessible {
+func ImageAccessibleNewFromNative(native unsafe.Pointer) *ImageAccessible {
 	return &ImageAccessible{native: native}
 }
 func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {
@@ -33453,10 +33454,10 @@ func imageCellAccessibleObject_Set() error {
 }
 
 type ImageCellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImageCellAccessibleNewFromNative(native uintptr) *ImageCellAccessible {
+func ImageCellAccessibleNewFromNative(native unsafe.Pointer) *ImageCellAccessible {
 	return &ImageCellAccessible{native: native}
 }
 func (recv *ImageCellAccessible) RendererCellAccessible() *RendererCellAccessible {
@@ -33515,10 +33516,10 @@ func imageMenuItemObject_Set() error {
 }
 
 type ImageMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImageMenuItemNewFromNative(native uintptr) *ImageMenuItem {
+func ImageMenuItemNewFromNative(native unsafe.Pointer) *ImageMenuItem {
 	return &ImageMenuItem{native: native}
 }
 func (recv *ImageMenuItem) MenuItem() *MenuItem {
@@ -33905,10 +33906,10 @@ func infoBarObject_Set() error {
 }
 
 type InfoBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InfoBarNewFromNative(native uintptr) *InfoBar {
+func InfoBarNewFromNative(native unsafe.Pointer) *InfoBar {
 	return &InfoBar{native: native}
 }
 func (recv *InfoBar) Box() *Box {
@@ -34386,10 +34387,10 @@ func invisibleObject_Set() error {
 }
 
 type Invisible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func InvisibleNewFromNative(native uintptr) *Invisible {
+func InvisibleNewFromNative(native unsafe.Pointer) *Invisible {
 	return &Invisible{native: native}
 }
 func (recv *Invisible) Widget() *Widget {
@@ -34464,10 +34465,10 @@ func labelObject_Set() error {
 }
 
 type Label struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LabelNewFromNative(native uintptr) *Label {
+func LabelNewFromNative(native unsafe.Pointer) *Label {
 	return &Label{native: native}
 }
 func (recv *Label) Misc() *Misc {
@@ -35841,10 +35842,10 @@ func labelAccessibleObject_Set() error {
 }
 
 type LabelAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LabelAccessibleNewFromNative(native uintptr) *LabelAccessible {
+func LabelAccessibleNewFromNative(native unsafe.Pointer) *LabelAccessible {
 	return &LabelAccessible{native: native}
 }
 func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {
@@ -35900,10 +35901,10 @@ func layoutObject_Set() error {
 }
 
 type Layout struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LayoutNewFromNative(native uintptr) *Layout {
+func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	return &Layout{native: native}
 }
 func (recv *Layout) Container() *Container {
@@ -36227,10 +36228,10 @@ func levelBarObject_Set() error {
 }
 
 type LevelBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LevelBarNewFromNative(native uintptr) *LevelBar {
+func LevelBarNewFromNative(native unsafe.Pointer) *LevelBar {
 	return &LevelBar{native: native}
 }
 func (recv *LevelBar) Widget() *Widget {
@@ -36717,10 +36718,10 @@ func levelBarAccessibleObject_Set() error {
 }
 
 type LevelBarAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LevelBarAccessibleNewFromNative(native uintptr) *LevelBarAccessible {
+func LevelBarAccessibleNewFromNative(native unsafe.Pointer) *LevelBarAccessible {
 	return &LevelBarAccessible{native: native}
 }
 func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {
@@ -36776,10 +36777,10 @@ func linkButtonObject_Set() error {
 }
 
 type LinkButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LinkButtonNewFromNative(native uintptr) *LinkButton {
+func LinkButtonNewFromNative(native unsafe.Pointer) *LinkButton {
 	return &LinkButton{native: native}
 }
 func (recv *LinkButton) Button() *Button {
@@ -37000,10 +37001,10 @@ func linkButtonAccessibleObject_Set() error {
 }
 
 type LinkButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LinkButtonAccessibleNewFromNative(native uintptr) *LinkButtonAccessible {
+func LinkButtonAccessibleNewFromNative(native unsafe.Pointer) *LinkButtonAccessible {
 	return &LinkButtonAccessible{native: native}
 }
 func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {
@@ -37065,10 +37066,10 @@ func listBoxObject_Set() error {
 }
 
 type ListBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListBoxNewFromNative(native uintptr) *ListBox {
+func ListBoxNewFromNative(native unsafe.Pointer) *ListBox {
 	return &ListBox{native: native}
 }
 func (recv *ListBox) Container() *Container {
@@ -37776,10 +37777,10 @@ func listBoxAccessibleObject_Set() error {
 }
 
 type ListBoxAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListBoxAccessibleNewFromNative(native uintptr) *ListBoxAccessible {
+func ListBoxAccessibleNewFromNative(native unsafe.Pointer) *ListBoxAccessible {
 	return &ListBoxAccessible{native: native}
 }
 func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {
@@ -37838,10 +37839,10 @@ func listBoxRowObject_Set() error {
 }
 
 type ListBoxRow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListBoxRowNewFromNative(native uintptr) *ListBoxRow {
+func ListBoxRowNewFromNative(native unsafe.Pointer) *ListBoxRow {
 	return &ListBoxRow{native: native}
 }
 func (recv *ListBoxRow) Bin() *Bin {
@@ -38191,10 +38192,10 @@ func listBoxRowAccessibleObject_Set() error {
 }
 
 type ListBoxRowAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListBoxRowAccessibleNewFromNative(native uintptr) *ListBoxRowAccessible {
+func ListBoxRowAccessibleNewFromNative(native unsafe.Pointer) *ListBoxRowAccessible {
 	return &ListBoxRowAccessible{native: native}
 }
 func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {
@@ -38239,10 +38240,10 @@ func listStoreObject_Set() error {
 }
 
 type ListStore struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListStoreNewFromNative(native uintptr) *ListStore {
+func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 	return &ListStore{native: native}
 }
 func (recv *ListStore) Object() *gobject.Object {
@@ -38632,10 +38633,10 @@ func lockButtonObject_Set() error {
 }
 
 type LockButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LockButtonNewFromNative(native uintptr) *LockButton {
+func LockButtonNewFromNative(native unsafe.Pointer) *LockButton {
 	return &LockButton{native: native}
 }
 func (recv *LockButton) Button() *Button {
@@ -38703,10 +38704,10 @@ func lockButtonAccessibleObject_Set() error {
 }
 
 type LockButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LockButtonAccessibleNewFromNative(native uintptr) *LockButtonAccessible {
+func LockButtonAccessibleNewFromNative(native unsafe.Pointer) *LockButtonAccessible {
 	return &LockButtonAccessible{native: native}
 }
 func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {
@@ -38768,10 +38769,10 @@ func menuObject_Set() error {
 }
 
 type Menu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuNewFromNative(native uintptr) *Menu {
+func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	return &Menu{native: native}
 }
 func (recv *Menu) MenuShell() *MenuShell {
@@ -39470,10 +39471,10 @@ func menuAccessibleObject_Set() error {
 }
 
 type MenuAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuAccessibleNewFromNative(native uintptr) *MenuAccessible {
+func MenuAccessibleNewFromNative(native unsafe.Pointer) *MenuAccessible {
 	return &MenuAccessible{native: native}
 }
 func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {
@@ -39535,10 +39536,10 @@ func menuBarObject_Set() error {
 }
 
 type MenuBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuBarNewFromNative(native uintptr) *MenuBar {
+func MenuBarNewFromNative(native unsafe.Pointer) *MenuBar {
 	return &MenuBar{native: native}
 }
 func (recv *MenuBar) MenuShell() *MenuShell {
@@ -39737,10 +39738,10 @@ func menuButtonObject_Set() error {
 }
 
 type MenuButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuButtonNewFromNative(native uintptr) *MenuButton {
+func MenuButtonNewFromNative(native unsafe.Pointer) *MenuButton {
 	return &MenuButton{native: native}
 }
 func (recv *MenuButton) ToggleButton() *ToggleButton {
@@ -40130,10 +40131,10 @@ func menuButtonAccessibleObject_Set() error {
 }
 
 type MenuButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuButtonAccessibleNewFromNative(native uintptr) *MenuButtonAccessible {
+func MenuButtonAccessibleNewFromNative(native unsafe.Pointer) *MenuButtonAccessible {
 	return &MenuButtonAccessible{native: native}
 }
 func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
@@ -40198,10 +40199,10 @@ func menuItemObject_Set() error {
 }
 
 type MenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuItemNewFromNative(native uintptr) *MenuItem {
+func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	return &MenuItem{native: native}
 }
 func (recv *MenuItem) Bin() *Bin {
@@ -40852,10 +40853,10 @@ func menuItemAccessibleObject_Set() error {
 }
 
 type MenuItemAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuItemAccessibleNewFromNative(native uintptr) *MenuItemAccessible {
+func MenuItemAccessibleNewFromNative(native unsafe.Pointer) *MenuItemAccessible {
 	return &MenuItemAccessible{native: native}
 }
 func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {
@@ -40914,10 +40915,10 @@ func menuShellObject_Set() error {
 }
 
 type MenuShell struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuShellNewFromNative(native uintptr) *MenuShell {
+func MenuShellNewFromNative(native unsafe.Pointer) *MenuShell {
 	return &MenuShell{native: native}
 }
 func (recv *MenuShell) Container() *Container {
@@ -41346,10 +41347,10 @@ func menuShellAccessibleObject_Set() error {
 }
 
 type MenuShellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuShellAccessibleNewFromNative(native uintptr) *MenuShellAccessible {
+func MenuShellAccessibleNewFromNative(native unsafe.Pointer) *MenuShellAccessible {
 	return &MenuShellAccessible{native: native}
 }
 func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {
@@ -41408,10 +41409,10 @@ func menuToolButtonObject_Set() error {
 }
 
 type MenuToolButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MenuToolButtonNewFromNative(native uintptr) *MenuToolButton {
+func MenuToolButtonNewFromNative(native unsafe.Pointer) *MenuToolButton {
 	return &MenuToolButton{native: native}
 }
 func (recv *MenuToolButton) ToolButton() *ToolButton {
@@ -41646,10 +41647,10 @@ func messageDialogObject_Set() error {
 }
 
 type MessageDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MessageDialogNewFromNative(native uintptr) *MessageDialog {
+func MessageDialogNewFromNative(native unsafe.Pointer) *MessageDialog {
 	return &MessageDialog{native: native}
 }
 func (recv *MessageDialog) Dialog() *Dialog {
@@ -41830,10 +41831,10 @@ func miscObject_Set() error {
 }
 
 type Misc struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MiscNewFromNative(native uintptr) *Misc {
+func MiscNewFromNative(native unsafe.Pointer) *Misc {
 	return &Misc{native: native}
 }
 func (recv *Misc) Widget() *Widget {
@@ -41998,10 +41999,10 @@ func modelButtonObject_Set() error {
 }
 
 type ModelButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ModelButtonNewFromNative(native uintptr) *ModelButton {
+func ModelButtonNewFromNative(native unsafe.Pointer) *ModelButton {
 	return &ModelButton{native: native}
 }
 func (recv *ModelButton) Button() *Button {
@@ -42065,10 +42066,10 @@ func mountOperationObject_Set() error {
 }
 
 type MountOperation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MountOperationNewFromNative(native uintptr) *MountOperation {
+func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	return &MountOperation{native: native}
 }
 func (recv *MountOperation) MountOperation() *gio.MountOperation {
@@ -42237,10 +42238,10 @@ func nativeDialogObject_Set() error {
 }
 
 type NativeDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NativeDialogNewFromNative(native uintptr) *NativeDialog {
+func NativeDialogNewFromNative(native unsafe.Pointer) *NativeDialog {
 	return &NativeDialog{native: native}
 }
 func (recv *NativeDialog) Object() *gobject.Object {
@@ -42594,10 +42595,10 @@ func notebookObject_Set() error {
 }
 
 type Notebook struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotebookNewFromNative(native uintptr) *Notebook {
+func NotebookNewFromNative(native unsafe.Pointer) *Notebook {
 	return &Notebook{native: native}
 }
 func (recv *Notebook) Container() *Container {
@@ -44033,10 +44034,10 @@ func notebookAccessibleObject_Set() error {
 }
 
 type NotebookAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotebookAccessibleNewFromNative(native uintptr) *NotebookAccessible {
+func NotebookAccessibleNewFromNative(native unsafe.Pointer) *NotebookAccessible {
 	return &NotebookAccessible{native: native}
 }
 func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {
@@ -44095,10 +44096,10 @@ func notebookPageAccessibleObject_Set() error {
 }
 
 type NotebookPageAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NotebookPageAccessibleNewFromNative(native uintptr) *NotebookPageAccessible {
+func NotebookPageAccessibleNewFromNative(native unsafe.Pointer) *NotebookPageAccessible {
 	return &NotebookPageAccessible{native: native}
 }
 func (recv *NotebookPageAccessible) ObjectAtk() *atk.Object {
@@ -44199,10 +44200,10 @@ func numerableIconObject_Set() error {
 }
 
 type NumerableIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NumerableIconNewFromNative(native uintptr) *NumerableIcon {
+func NumerableIconNewFromNative(native unsafe.Pointer) *NumerableIcon {
 	return &NumerableIcon{native: native}
 }
 func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
@@ -44476,10 +44477,10 @@ func offscreenWindowObject_Set() error {
 }
 
 type OffscreenWindow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OffscreenWindowNewFromNative(native uintptr) *OffscreenWindow {
+func OffscreenWindowNewFromNative(native unsafe.Pointer) *OffscreenWindow {
 	return &OffscreenWindow{native: native}
 }
 func (recv *OffscreenWindow) Window() *Window {
@@ -44561,10 +44562,10 @@ func overlayObject_Set() error {
 }
 
 type Overlay struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OverlayNewFromNative(native uintptr) *Overlay {
+func OverlayNewFromNative(native unsafe.Pointer) *Overlay {
 	return &Overlay{native: native}
 }
 func (recv *Overlay) Bin() *Bin {
@@ -44775,10 +44776,10 @@ func padControllerObject_Set() error {
 }
 
 type PadController struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PadControllerNewFromNative(native uintptr) *PadController {
+func PadControllerNewFromNative(native unsafe.Pointer) *PadController {
 	return &PadController{native: native}
 }
 func (recv *PadController) EventController() *EventController {
@@ -44837,10 +44838,10 @@ func pageSetupObject_Set() error {
 }
 
 type PageSetup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PageSetupNewFromNative(native uintptr) *PageSetup {
+func PageSetupNewFromNative(native unsafe.Pointer) *PageSetup {
 	return &PageSetup{native: native}
 }
 func (recv *PageSetup) Object() *gobject.Object {
@@ -45564,10 +45565,10 @@ func panedObject_Set() error {
 }
 
 type Paned struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PanedNewFromNative(native uintptr) *Paned {
+func PanedNewFromNative(native unsafe.Pointer) *Paned {
 	return &Paned{native: native}
 }
 func (recv *Paned) Container() *Container {
@@ -45949,10 +45950,10 @@ func panedAccessibleObject_Set() error {
 }
 
 type PanedAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PanedAccessibleNewFromNative(native uintptr) *PanedAccessible {
+func PanedAccessibleNewFromNative(native unsafe.Pointer) *PanedAccessible {
 	return &PanedAccessible{native: native}
 }
 func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {
@@ -46011,10 +46012,10 @@ func placesSidebarObject_Set() error {
 }
 
 type PlacesSidebar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PlacesSidebarNewFromNative(native uintptr) *PlacesSidebar {
+func PlacesSidebarNewFromNative(native unsafe.Pointer) *PlacesSidebar {
 	return &PlacesSidebar{native: native}
 }
 func (recv *PlacesSidebar) ScrolledWindow() *ScrolledWindow {
@@ -46584,10 +46585,10 @@ func plugObject_Set() error {
 }
 
 type Plug struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PlugNewFromNative(native uintptr) *Plug {
+func PlugNewFromNative(native unsafe.Pointer) *Plug {
 	return &Plug{native: native}
 }
 func (recv *Plug) Window() *Window {
@@ -46780,10 +46781,10 @@ func popoverObject_Set() error {
 }
 
 type Popover struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PopoverNewFromNative(native uintptr) *Popover {
+func PopoverNewFromNative(native unsafe.Pointer) *Popover {
 	return &Popover{native: native}
 }
 func (recv *Popover) Bin() *Bin {
@@ -47290,10 +47291,10 @@ func popoverAccessibleObject_Set() error {
 }
 
 type PopoverAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PopoverAccessibleNewFromNative(native uintptr) *PopoverAccessible {
+func PopoverAccessibleNewFromNative(native unsafe.Pointer) *PopoverAccessible {
 	return &PopoverAccessible{native: native}
 }
 func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {
@@ -47338,10 +47339,10 @@ func popoverMenuObject_Set() error {
 }
 
 type PopoverMenu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PopoverMenuNewFromNative(native uintptr) *PopoverMenu {
+func PopoverMenuNewFromNative(native unsafe.Pointer) *PopoverMenu {
 	return &PopoverMenu{native: native}
 }
 func (recv *PopoverMenu) Popover() *Popover {
@@ -47434,10 +47435,10 @@ func printContextObject_Set() error {
 }
 
 type PrintContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintContextNewFromNative(native uintptr) *PrintContext {
+func PrintContextNewFromNative(native unsafe.Pointer) *PrintContext {
 	return &PrintContext{native: native}
 }
 func (recv *PrintContext) Object() *gobject.Object {
@@ -47663,10 +47664,10 @@ func printOperationObject_Set() error {
 }
 
 type PrintOperation struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintOperationNewFromNative(native uintptr) *PrintOperation {
+func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	return &PrintOperation{native: native}
 }
 func (recv *PrintOperation) Object() *gobject.Object {
@@ -48588,10 +48589,10 @@ func printSettingsObject_Set() error {
 }
 
 type PrintSettings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintSettingsNewFromNative(native uintptr) *PrintSettings {
+func PrintSettingsNewFromNative(native unsafe.Pointer) *PrintSettings {
 	return &PrintSettings{native: native}
 }
 func (recv *PrintSettings) Object() *gobject.Object {
@@ -50764,10 +50765,10 @@ func progressBarObject_Set() error {
 }
 
 type ProgressBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProgressBarNewFromNative(native uintptr) *ProgressBar {
+func ProgressBarNewFromNative(native unsafe.Pointer) *ProgressBar {
 	return &ProgressBar{native: native}
 }
 func (recv *ProgressBar) Widget() *Widget {
@@ -51173,10 +51174,10 @@ func progressBarAccessibleObject_Set() error {
 }
 
 type ProgressBarAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ProgressBarAccessibleNewFromNative(native uintptr) *ProgressBarAccessible {
+func ProgressBarAccessibleNewFromNative(native unsafe.Pointer) *ProgressBarAccessible {
 	return &ProgressBarAccessible{native: native}
 }
 func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {
@@ -51232,10 +51233,10 @@ func radioActionObject_Set() error {
 }
 
 type RadioAction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioActionNewFromNative(native uintptr) *RadioAction {
+func RadioActionNewFromNative(native unsafe.Pointer) *RadioAction {
 	return &RadioAction{native: native}
 }
 func (recv *RadioAction) ToggleAction() *ToggleAction {
@@ -51404,10 +51405,10 @@ func radioButtonObject_Set() error {
 }
 
 type RadioButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioButtonNewFromNative(native uintptr) *RadioButton {
+func RadioButtonNewFromNative(native unsafe.Pointer) *RadioButton {
 	return &RadioButton{native: native}
 }
 func (recv *RadioButton) CheckButton() *CheckButton {
@@ -51598,10 +51599,10 @@ func radioButtonAccessibleObject_Set() error {
 }
 
 type RadioButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioButtonAccessibleNewFromNative(native uintptr) *RadioButtonAccessible {
+func RadioButtonAccessibleNewFromNative(native unsafe.Pointer) *RadioButtonAccessible {
 	return &RadioButtonAccessible{native: native}
 }
 func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
@@ -51666,10 +51667,10 @@ func radioMenuItemObject_Set() error {
 }
 
 type RadioMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioMenuItemNewFromNative(native uintptr) *RadioMenuItem {
+func RadioMenuItemNewFromNative(native unsafe.Pointer) *RadioMenuItem {
 	return &RadioMenuItem{native: native}
 }
 func (recv *RadioMenuItem) CheckMenuItem() *CheckMenuItem {
@@ -51857,10 +51858,10 @@ func radioMenuItemAccessibleObject_Set() error {
 }
 
 type RadioMenuItemAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioMenuItemAccessibleNewFromNative(native uintptr) *RadioMenuItemAccessible {
+func RadioMenuItemAccessibleNewFromNative(native unsafe.Pointer) *RadioMenuItemAccessible {
 	return &RadioMenuItemAccessible{native: native}
 }
 func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAccessible {
@@ -51925,10 +51926,10 @@ func radioToolButtonObject_Set() error {
 }
 
 type RadioToolButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RadioToolButtonNewFromNative(native uintptr) *RadioToolButton {
+func RadioToolButtonNewFromNative(native unsafe.Pointer) *RadioToolButton {
 	return &RadioToolButton{native: native}
 }
 func (recv *RadioToolButton) ToggleToolButton() *ToggleToolButton {
@@ -52055,10 +52056,10 @@ func rangeObject_Set() error {
 }
 
 type Range struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RangeNewFromNative(native uintptr) *Range {
+func RangeNewFromNative(native unsafe.Pointer) *Range {
 	return &Range{native: native}
 }
 func (recv *Range) Widget() *Widget {
@@ -52938,10 +52939,10 @@ func rangeAccessibleObject_Set() error {
 }
 
 type RangeAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RangeAccessibleNewFromNative(native uintptr) *RangeAccessible {
+func RangeAccessibleNewFromNative(native unsafe.Pointer) *RangeAccessible {
 	return &RangeAccessible{native: native}
 }
 func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {
@@ -52997,10 +52998,10 @@ func rcStyleObject_Set() error {
 }
 
 type RcStyle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RcStyleNewFromNative(native uintptr) *RcStyle {
+func RcStyleNewFromNative(native unsafe.Pointer) *RcStyle {
 	return &RcStyle{native: native}
 }
 func (recv *RcStyle) Object() *gobject.Object {
@@ -53155,10 +53156,10 @@ func recentActionObject_Set() error {
 }
 
 type RecentAction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentActionNewFromNative(native uintptr) *RecentAction {
+func RecentActionNewFromNative(native unsafe.Pointer) *RecentAction {
 	return &RecentAction{native: native}
 }
 func (recv *RecentAction) Action() *Action {
@@ -53326,10 +53327,10 @@ func recentChooserDialogObject_Set() error {
 }
 
 type RecentChooserDialog struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentChooserDialogNewFromNative(native uintptr) *RecentChooserDialog {
+func RecentChooserDialogNewFromNative(native unsafe.Pointer) *RecentChooserDialog {
 	return &RecentChooserDialog{native: native}
 }
 func (recv *RecentChooserDialog) Dialog() *Dialog {
@@ -53384,10 +53385,10 @@ func recentChooserMenuObject_Set() error {
 }
 
 type RecentChooserMenu struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentChooserMenuNewFromNative(native uintptr) *RecentChooserMenu {
+func RecentChooserMenuNewFromNative(native unsafe.Pointer) *RecentChooserMenu {
 	return &RecentChooserMenu{native: native}
 }
 func (recv *RecentChooserMenu) Menu() *Menu {
@@ -53558,10 +53559,10 @@ func recentChooserWidgetObject_Set() error {
 }
 
 type RecentChooserWidget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentChooserWidgetNewFromNative(native uintptr) *RecentChooserWidget {
+func RecentChooserWidgetNewFromNative(native unsafe.Pointer) *RecentChooserWidget {
 	return &RecentChooserWidget{native: native}
 }
 func (recv *RecentChooserWidget) Box() *Box {
@@ -53668,10 +53669,10 @@ func recentFilterObject_Set() error {
 }
 
 type RecentFilter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentFilterNewFromNative(native uintptr) *RecentFilter {
+func RecentFilterNewFromNative(native unsafe.Pointer) *RecentFilter {
 	return &RecentFilter{native: native}
 }
 func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -53994,10 +53995,10 @@ func recentManagerObject_Set() error {
 }
 
 type RecentManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecentManagerNewFromNative(native uintptr) *RecentManager {
+func RecentManagerNewFromNative(native unsafe.Pointer) *RecentManager {
 	return &RecentManager{native: native}
 }
 func (recv *RecentManager) Object() *gobject.Object {
@@ -54280,10 +54281,10 @@ func rendererCellAccessibleObject_Set() error {
 }
 
 type RendererCellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RendererCellAccessibleNewFromNative(native uintptr) *RendererCellAccessible {
+func RendererCellAccessibleNewFromNative(native unsafe.Pointer) *RendererCellAccessible {
 	return &RendererCellAccessible{native: native}
 }
 func (recv *RendererCellAccessible) CellAccessible() *CellAccessible {
@@ -54371,10 +54372,10 @@ func revealerObject_Set() error {
 }
 
 type Revealer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RevealerNewFromNative(native uintptr) *Revealer {
+func RevealerNewFromNative(native unsafe.Pointer) *Revealer {
 	return &Revealer{native: native}
 }
 func (recv *Revealer) Bin() *Bin {
@@ -54664,10 +54665,10 @@ func scaleObject_Set() error {
 }
 
 type Scale struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScaleNewFromNative(native uintptr) *Scale {
+func ScaleNewFromNative(native unsafe.Pointer) *Scale {
 	return &Scale{native: native}
 }
 func (recv *Scale) Range() *Range {
@@ -55115,10 +55116,10 @@ func scaleAccessibleObject_Set() error {
 }
 
 type ScaleAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScaleAccessibleNewFromNative(native uintptr) *ScaleAccessible {
+func ScaleAccessibleNewFromNative(native unsafe.Pointer) *ScaleAccessible {
 	return &ScaleAccessible{native: native}
 }
 func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {
@@ -55177,10 +55178,10 @@ func scaleButtonObject_Set() error {
 }
 
 type ScaleButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScaleButtonNewFromNative(native uintptr) *ScaleButton {
+func ScaleButtonNewFromNative(native unsafe.Pointer) *ScaleButton {
 	return &ScaleButton{native: native}
 }
 func (recv *ScaleButton) Button() *Button {
@@ -55450,10 +55451,10 @@ func scaleButtonAccessibleObject_Set() error {
 }
 
 type ScaleButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScaleButtonAccessibleNewFromNative(native uintptr) *ScaleButtonAccessible {
+func ScaleButtonAccessibleNewFromNative(native unsafe.Pointer) *ScaleButtonAccessible {
 	return &ScaleButtonAccessible{native: native}
 }
 func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {
@@ -55515,10 +55516,10 @@ func scrollbarObject_Set() error {
 }
 
 type Scrollbar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScrollbarNewFromNative(native uintptr) *Scrollbar {
+func ScrollbarNewFromNative(native unsafe.Pointer) *Scrollbar {
 	return &Scrollbar{native: native}
 }
 func (recv *Scrollbar) Range() *Range {
@@ -55593,10 +55594,10 @@ func scrolledWindowObject_Set() error {
 }
 
 type ScrolledWindow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScrolledWindowNewFromNative(native uintptr) *ScrolledWindow {
+func ScrolledWindowNewFromNative(native unsafe.Pointer) *ScrolledWindow {
 	return &ScrolledWindow{native: native}
 }
 func (recv *ScrolledWindow) Bin() *Bin {
@@ -56665,10 +56666,10 @@ func scrolledWindowAccessibleObject_Set() error {
 }
 
 type ScrolledWindowAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScrolledWindowAccessibleNewFromNative(native uintptr) *ScrolledWindowAccessible {
+func ScrolledWindowAccessibleNewFromNative(native unsafe.Pointer) *ScrolledWindowAccessible {
 	return &ScrolledWindowAccessible{native: native}
 }
 func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible {
@@ -56727,10 +56728,10 @@ func searchBarObject_Set() error {
 }
 
 type SearchBar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchBarNewFromNative(native uintptr) *SearchBar {
+func SearchBarNewFromNative(native unsafe.Pointer) *SearchBar {
 	return &SearchBar{native: native}
 }
 func (recv *SearchBar) Bin() *Bin {
@@ -56944,10 +56945,10 @@ func searchEntryObject_Set() error {
 }
 
 type SearchEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchEntryNewFromNative(native uintptr) *SearchEntry {
+func SearchEntryNewFromNative(native unsafe.Pointer) *SearchEntry {
 	return &SearchEntry{native: native}
 }
 func (recv *SearchEntry) Entry() *Entry {
@@ -57021,10 +57022,10 @@ func separatorObject_Set() error {
 }
 
 type Separator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SeparatorNewFromNative(native uintptr) *Separator {
+func SeparatorNewFromNative(native unsafe.Pointer) *Separator {
 	return &Separator{native: native}
 }
 func (recv *Separator) Widget() *Widget {
@@ -57109,10 +57110,10 @@ func separatorMenuItemObject_Set() error {
 }
 
 type SeparatorMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SeparatorMenuItemNewFromNative(native uintptr) *SeparatorMenuItem {
+func SeparatorMenuItemNewFromNative(native unsafe.Pointer) *SeparatorMenuItem {
 	return &SeparatorMenuItem{native: native}
 }
 func (recv *SeparatorMenuItem) MenuItem() *MenuItem {
@@ -57190,10 +57191,10 @@ func separatorToolItemObject_Set() error {
 }
 
 type SeparatorToolItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SeparatorToolItemNewFromNative(native uintptr) *SeparatorToolItem {
+func SeparatorToolItemNewFromNative(native unsafe.Pointer) *SeparatorToolItem {
 	return &SeparatorToolItem{native: native}
 }
 func (recv *SeparatorToolItem) ToolItem() *ToolItem {
@@ -57332,10 +57333,10 @@ func settingsObject_Set() error {
 }
 
 type Settings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SettingsNewFromNative(native uintptr) *Settings {
+func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
 func (recv *Settings) Object() *gobject.Object {
@@ -57510,10 +57511,10 @@ func shortcutLabelObject_Set() error {
 }
 
 type ShortcutLabel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ShortcutLabelNewFromNative(native uintptr) *ShortcutLabel {
+func ShortcutLabelNewFromNative(native unsafe.Pointer) *ShortcutLabel {
 	return &ShortcutLabel{native: native}
 }
 func (recv *ShortcutLabel) Box() *Box {
@@ -57698,10 +57699,10 @@ func shortcutsGroupObject_Set() error {
 }
 
 type ShortcutsGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ShortcutsGroupNewFromNative(native uintptr) *ShortcutsGroup {
+func ShortcutsGroupNewFromNative(native unsafe.Pointer) *ShortcutsGroup {
 	return &ShortcutsGroup{native: native}
 }
 func (recv *ShortcutsGroup) Box() *Box {
@@ -57732,10 +57733,10 @@ func shortcutsSectionObject_Set() error {
 }
 
 type ShortcutsSection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ShortcutsSectionNewFromNative(native uintptr) *ShortcutsSection {
+func ShortcutsSectionNewFromNative(native unsafe.Pointer) *ShortcutsSection {
 	return &ShortcutsSection{native: native}
 }
 func (recv *ShortcutsSection) Box() *Box {
@@ -57766,10 +57767,10 @@ func shortcutsShortcutObject_Set() error {
 }
 
 type ShortcutsShortcut struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ShortcutsShortcutNewFromNative(native uintptr) *ShortcutsShortcut {
+func ShortcutsShortcutNewFromNative(native unsafe.Pointer) *ShortcutsShortcut {
 	return &ShortcutsShortcut{native: native}
 }
 func (recv *ShortcutsShortcut) Box() *Box {
@@ -57800,10 +57801,10 @@ func shortcutsWindowObject_Set() error {
 }
 
 type ShortcutsWindow struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ShortcutsWindowNewFromNative(native uintptr) *ShortcutsWindow {
+func ShortcutsWindowNewFromNative(native unsafe.Pointer) *ShortcutsWindow {
 	return &ShortcutsWindow{native: native}
 }
 func (recv *ShortcutsWindow) Window() *Window {
@@ -57851,10 +57852,10 @@ func sizeGroupObject_Set() error {
 }
 
 type SizeGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SizeGroupNewFromNative(native uintptr) *SizeGroup {
+func SizeGroupNewFromNative(native unsafe.Pointer) *SizeGroup {
 	return &SizeGroup{native: native}
 }
 func (recv *SizeGroup) Object() *gobject.Object {
@@ -58091,10 +58092,10 @@ func socketObject_Set() error {
 }
 
 type Socket struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketNewFromNative(native uintptr) *Socket {
+func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
 func (recv *Socket) Container() *Container {
@@ -58243,10 +58244,10 @@ func spinButtonObject_Set() error {
 }
 
 type SpinButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpinButtonNewFromNative(native uintptr) *SpinButton {
+func SpinButtonNewFromNative(native unsafe.Pointer) *SpinButton {
 	return &SpinButton{native: native}
 }
 func (recv *SpinButton) Entry() *Entry {
@@ -59030,10 +59031,10 @@ func spinButtonAccessibleObject_Set() error {
 }
 
 type SpinButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpinButtonAccessibleNewFromNative(native uintptr) *SpinButtonAccessible {
+func SpinButtonAccessibleNewFromNative(native unsafe.Pointer) *SpinButtonAccessible {
 	return &SpinButtonAccessible{native: native}
 }
 func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {
@@ -59092,10 +59093,10 @@ func spinnerObject_Set() error {
 }
 
 type Spinner struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpinnerNewFromNative(native uintptr) *Spinner {
+func SpinnerNewFromNative(native unsafe.Pointer) *Spinner {
 	return &Spinner{native: native}
 }
 func (recv *Spinner) Widget() *Widget {
@@ -59220,10 +59221,10 @@ func spinnerAccessibleObject_Set() error {
 }
 
 type SpinnerAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpinnerAccessibleNewFromNative(native uintptr) *SpinnerAccessible {
+func SpinnerAccessibleNewFromNative(native unsafe.Pointer) *SpinnerAccessible {
 	return &SpinnerAccessible{native: native}
 }
 func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {
@@ -59279,10 +59280,10 @@ func stackObject_Set() error {
 }
 
 type Stack struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StackNewFromNative(native uintptr) *Stack {
+func StackNewFromNative(native unsafe.Pointer) *Stack {
 	return &Stack{native: native}
 }
 func (recv *Stack) Container() *Container {
@@ -59998,10 +59999,10 @@ func stackAccessibleObject_Set() error {
 }
 
 type StackAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StackAccessibleNewFromNative(native uintptr) *StackAccessible {
+func StackAccessibleNewFromNative(native unsafe.Pointer) *StackAccessible {
 	return &StackAccessible{native: native}
 }
 func (recv *StackAccessible) ContainerAccessible() *ContainerAccessible {
@@ -60046,10 +60047,10 @@ func stackSidebarObject_Set() error {
 }
 
 type StackSidebar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StackSidebarNewFromNative(native uintptr) *StackSidebar {
+func StackSidebarNewFromNative(native unsafe.Pointer) *StackSidebar {
 	return &StackSidebar{native: native}
 }
 func (recv *StackSidebar) Bin() *Bin {
@@ -60185,10 +60186,10 @@ func stackSwitcherObject_Set() error {
 }
 
 type StackSwitcher struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StackSwitcherNewFromNative(native uintptr) *StackSwitcher {
+func StackSwitcherNewFromNative(native unsafe.Pointer) *StackSwitcher {
 	return &StackSwitcher{native: native}
 }
 func (recv *StackSwitcher) Box() *Box {
@@ -60324,10 +60325,10 @@ func statusIconObject_Set() error {
 }
 
 type StatusIcon struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StatusIconNewFromNative(native uintptr) *StatusIcon {
+func StatusIconNewFromNative(native unsafe.Pointer) *StatusIcon {
 	return &StatusIcon{native: native}
 }
 func (recv *StatusIcon) Object() *gobject.Object {
@@ -61121,10 +61122,10 @@ func statusbarObject_Set() error {
 }
 
 type Statusbar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StatusbarNewFromNative(native uintptr) *Statusbar {
+func StatusbarNewFromNative(native unsafe.Pointer) *Statusbar {
 	return &Statusbar{native: native}
 }
 func (recv *Statusbar) Box() *Box {
@@ -61386,10 +61387,10 @@ func statusbarAccessibleObject_Set() error {
 }
 
 type StatusbarAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StatusbarAccessibleNewFromNative(native uintptr) *StatusbarAccessible {
+func StatusbarAccessibleNewFromNative(native unsafe.Pointer) *StatusbarAccessible {
 	return &StatusbarAccessible{native: native}
 }
 func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {
@@ -61448,10 +61449,10 @@ func styleObject_Set() error {
 }
 
 type Style struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleNewFromNative(native uintptr) *Style {
+func StyleNewFromNative(native unsafe.Pointer) *Style {
 	return &Style{native: native}
 }
 func (recv *Style) Object() *gobject.Object {
@@ -61717,10 +61718,10 @@ func styleContextObject_Set() error {
 }
 
 type StyleContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleContextNewFromNative(native uintptr) *StyleContext {
+func StyleContextNewFromNative(native unsafe.Pointer) *StyleContext {
 	return &StyleContext{native: native}
 }
 func (recv *StyleContext) Object() *gobject.Object {
@@ -62432,10 +62433,10 @@ func stylePropertiesObject_Set() error {
 }
 
 type StyleProperties struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StylePropertiesNewFromNative(native uintptr) *StyleProperties {
+func StylePropertiesNewFromNative(native unsafe.Pointer) *StyleProperties {
 	return &StyleProperties{native: native}
 }
 func (recv *StyleProperties) Object() *gobject.Object {
@@ -62619,10 +62620,10 @@ func switchObject_Set() error {
 }
 
 type Switch struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SwitchNewFromNative(native uintptr) *Switch {
+func SwitchNewFromNative(native unsafe.Pointer) *Switch {
 	return &Switch{native: native}
 }
 func (recv *Switch) Widget() *Widget {
@@ -62799,10 +62800,10 @@ func switchAccessibleObject_Set() error {
 }
 
 type SwitchAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SwitchAccessibleNewFromNative(native uintptr) *SwitchAccessible {
+func SwitchAccessibleNewFromNative(native unsafe.Pointer) *SwitchAccessible {
 	return &SwitchAccessible{native: native}
 }
 func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {
@@ -62858,10 +62859,10 @@ func tableObject_Set() error {
 }
 
 type Table struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TableNewFromNative(native uintptr) *Table {
+func TableNewFromNative(native unsafe.Pointer) *Table {
 	return &Table{native: native}
 }
 func (recv *Table) Container() *Container {
@@ -63344,10 +63345,10 @@ func tearoffMenuItemObject_Set() error {
 }
 
 type TearoffMenuItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TearoffMenuItemNewFromNative(native uintptr) *TearoffMenuItem {
+func TearoffMenuItemNewFromNative(native unsafe.Pointer) *TearoffMenuItem {
 	return &TearoffMenuItem{native: native}
 }
 func (recv *TearoffMenuItem) MenuItem() *MenuItem {
@@ -63425,10 +63426,10 @@ func textBufferObject_Set() error {
 }
 
 type TextBuffer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextBufferNewFromNative(native uintptr) *TextBuffer {
+func TextBufferNewFromNative(native unsafe.Pointer) *TextBuffer {
 	return &TextBuffer{native: native}
 }
 func (recv *TextBuffer) Object() *gobject.Object {
@@ -65398,10 +65399,10 @@ func textCellAccessibleObject_Set() error {
 }
 
 type TextCellAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextCellAccessibleNewFromNative(native uintptr) *TextCellAccessible {
+func TextCellAccessibleNewFromNative(native unsafe.Pointer) *TextCellAccessible {
 	return &TextCellAccessible{native: native}
 }
 func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible {
@@ -65460,10 +65461,10 @@ func textChildAnchorObject_Set() error {
 }
 
 type TextChildAnchor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextChildAnchorNewFromNative(native uintptr) *TextChildAnchor {
+func TextChildAnchorNewFromNative(native unsafe.Pointer) *TextChildAnchor {
 	return &TextChildAnchor{native: native}
 }
 func (recv *TextChildAnchor) Object() *gobject.Object {
@@ -65550,10 +65551,10 @@ func textMarkObject_Set() error {
 }
 
 type TextMark struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextMarkNewFromNative(native uintptr) *TextMark {
+func TextMarkNewFromNative(native unsafe.Pointer) *TextMark {
 	return &TextMark{native: native}
 }
 func (recv *TextMark) Object() *gobject.Object {
@@ -65798,10 +65799,10 @@ func textTagObject_Set() error {
 }
 
 type TextTag struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextTagNewFromNative(native uintptr) *TextTag {
+func TextTagNewFromNative(native unsafe.Pointer) *TextTag {
 	return &TextTag{native: native}
 }
 func (recv *TextTag) Object() *gobject.Object {
@@ -65962,10 +65963,10 @@ func textTagTableObject_Set() error {
 }
 
 type TextTagTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextTagTableNewFromNative(native uintptr) *TextTagTable {
+func TextTagTableNewFromNative(native unsafe.Pointer) *TextTagTable {
 	return &TextTagTable{native: native}
 }
 func (recv *TextTagTable) Object() *gobject.Object {
@@ -66161,10 +66162,10 @@ func textViewObject_Set() error {
 }
 
 type TextView struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextViewNewFromNative(native uintptr) *TextView {
+func TextViewNewFromNative(native unsafe.Pointer) *TextView {
 	return &TextView{native: native}
 }
 func (recv *TextView) Container() *Container {
@@ -68209,10 +68210,10 @@ func textViewAccessibleObject_Set() error {
 }
 
 type TextViewAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextViewAccessibleNewFromNative(native uintptr) *TextViewAccessible {
+func TextViewAccessibleNewFromNative(native unsafe.Pointer) *TextViewAccessible {
 	return &TextViewAccessible{native: native}
 }
 func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {
@@ -68271,10 +68272,10 @@ func themingEngineObject_Set() error {
 }
 
 type ThemingEngine struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThemingEngineNewFromNative(native uintptr) *ThemingEngine {
+func ThemingEngineNewFromNative(native unsafe.Pointer) *ThemingEngine {
 	return &ThemingEngine{native: native}
 }
 func (recv *ThemingEngine) Object() *gobject.Object {
@@ -68479,10 +68480,10 @@ func toggleActionObject_Set() error {
 }
 
 type ToggleAction struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToggleActionNewFromNative(native uintptr) *ToggleAction {
+func ToggleActionNewFromNative(native unsafe.Pointer) *ToggleAction {
 	return &ToggleAction{native: native}
 }
 func (recv *ToggleAction) Action() *Action {
@@ -68703,10 +68704,10 @@ func toggleButtonObject_Set() error {
 }
 
 type ToggleButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToggleButtonNewFromNative(native uintptr) *ToggleButton {
+func ToggleButtonNewFromNative(native unsafe.Pointer) *ToggleButton {
 	return &ToggleButton{native: native}
 }
 func (recv *ToggleButton) Button() *Button {
@@ -69045,10 +69046,10 @@ func toggleButtonAccessibleObject_Set() error {
 }
 
 type ToggleButtonAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToggleButtonAccessibleNewFromNative(native uintptr) *ToggleButtonAccessible {
+func ToggleButtonAccessibleNewFromNative(native unsafe.Pointer) *ToggleButtonAccessible {
 	return &ToggleButtonAccessible{native: native}
 }
 func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {
@@ -69110,10 +69111,10 @@ func toggleToolButtonObject_Set() error {
 }
 
 type ToggleToolButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToggleToolButtonNewFromNative(native uintptr) *ToggleToolButton {
+func ToggleToolButtonNewFromNative(native unsafe.Pointer) *ToggleToolButton {
 	return &ToggleToolButton{native: native}
 }
 func (recv *ToggleToolButton) ToolButton() *ToolButton {
@@ -69287,10 +69288,10 @@ func toolButtonObject_Set() error {
 }
 
 type ToolButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToolButtonNewFromNative(native uintptr) *ToolButton {
+func ToolButtonNewFromNative(native unsafe.Pointer) *ToolButton {
 	return &ToolButton{native: native}
 }
 func (recv *ToolButton) ToolItem() *ToolItem {
@@ -69769,10 +69770,10 @@ func toolItemObject_Set() error {
 }
 
 type ToolItem struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToolItemNewFromNative(native uintptr) *ToolItem {
+func ToolItemNewFromNative(native unsafe.Pointer) *ToolItem {
 	return &ToolItem{native: native}
 }
 func (recv *ToolItem) Bin() *Bin {
@@ -70648,10 +70649,10 @@ func toolItemGroupObject_Set() error {
 }
 
 type ToolItemGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToolItemGroupNewFromNative(native uintptr) *ToolItemGroup {
+func ToolItemGroupNewFromNative(native unsafe.Pointer) *ToolItemGroup {
 	return &ToolItemGroup{native: native}
 }
 func (recv *ToolItemGroup) Container() *Container {
@@ -71179,10 +71180,10 @@ func toolPaletteObject_Set() error {
 }
 
 type ToolPalette struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToolPaletteNewFromNative(native uintptr) *ToolPalette {
+func ToolPaletteNewFromNative(native unsafe.Pointer) *ToolPalette {
 	return &ToolPalette{native: native}
 }
 func (recv *ToolPalette) Container() *Container {
@@ -71804,10 +71805,10 @@ func toolbarObject_Set() error {
 }
 
 type Toolbar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToolbarNewFromNative(native uintptr) *Toolbar {
+func ToolbarNewFromNative(native unsafe.Pointer) *Toolbar {
 	return &Toolbar{native: native}
 }
 func (recv *Toolbar) Container() *Container {
@@ -72356,10 +72357,10 @@ func tooltipObject_Set() error {
 }
 
 type Tooltip struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TooltipNewFromNative(native uintptr) *Tooltip {
+func TooltipNewFromNative(native unsafe.Pointer) *Tooltip {
 	return &Tooltip{native: native}
 }
 func (recv *Tooltip) Object() *gobject.Object {
@@ -72531,10 +72532,10 @@ func toplevelAccessibleObject_Set() error {
 }
 
 type ToplevelAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ToplevelAccessibleNewFromNative(native uintptr) *ToplevelAccessible {
+func ToplevelAccessibleNewFromNative(native unsafe.Pointer) *ToplevelAccessible {
 	return &ToplevelAccessible{native: native}
 }
 func (recv *ToplevelAccessible) ObjectAtk() *atk.Object {
@@ -72576,10 +72577,10 @@ func treeModelFilterObject_Set() error {
 }
 
 type TreeModelFilter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeModelFilterNewFromNative(native uintptr) *TreeModelFilter {
+func TreeModelFilterNewFromNative(native unsafe.Pointer) *TreeModelFilter {
 	return &TreeModelFilter{native: native}
 }
 func (recv *TreeModelFilter) Object() *gobject.Object {
@@ -72827,10 +72828,10 @@ func treeModelSortObject_Set() error {
 }
 
 type TreeModelSort struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeModelSortNewFromNative(native uintptr) *TreeModelSort {
+func TreeModelSortNewFromNative(native unsafe.Pointer) *TreeModelSort {
 	return &TreeModelSort{native: native}
 }
 func (recv *TreeModelSort) Object() *gobject.Object {
@@ -73078,10 +73079,10 @@ func treeSelectionObject_Set() error {
 }
 
 type TreeSelection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeSelectionNewFromNative(native uintptr) *TreeSelection {
+func TreeSelectionNewFromNative(native unsafe.Pointer) *TreeSelection {
 	return &TreeSelection{native: native}
 }
 func (recv *TreeSelection) Object() *gobject.Object {
@@ -73535,10 +73536,10 @@ func treeStoreObject_Set() error {
 }
 
 type TreeStore struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeStoreNewFromNative(native uintptr) *TreeStore {
+func TreeStoreNewFromNative(native unsafe.Pointer) *TreeStore {
 	return &TreeStore{native: native}
 }
 func (recv *TreeStore) Object() *gobject.Object {
@@ -74014,10 +74015,10 @@ func treeViewObject_Set() error {
 }
 
 type TreeView struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeViewNewFromNative(native uintptr) *TreeView {
+func TreeViewNewFromNative(native unsafe.Pointer) *TreeView {
 	return &TreeView{native: native}
 }
 func (recv *TreeView) Container() *Container {
@@ -76557,10 +76558,10 @@ func treeViewAccessibleObject_Set() error {
 }
 
 type TreeViewAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeViewAccessibleNewFromNative(native uintptr) *TreeViewAccessible {
+func TreeViewAccessibleNewFromNative(native unsafe.Pointer) *TreeViewAccessible {
 	return &TreeViewAccessible{native: native}
 }
 func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {
@@ -76619,10 +76620,10 @@ func treeViewColumnObject_Set() error {
 }
 
 type TreeViewColumn struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeViewColumnNewFromNative(native uintptr) *TreeViewColumn {
+func TreeViewColumnNewFromNative(native unsafe.Pointer) *TreeViewColumn {
 	return &TreeViewColumn{native: native}
 }
 func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -78139,10 +78140,10 @@ func uIManagerObject_Set() error {
 }
 
 type UIManager struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UIManagerNewFromNative(native uintptr) *UIManager {
+func UIManagerNewFromNative(native unsafe.Pointer) *UIManager {
 	return &UIManager{native: native}
 }
 func (recv *UIManager) Object() *gobject.Object {
@@ -78640,10 +78641,10 @@ func vBoxObject_Set() error {
 }
 
 type VBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VBoxNewFromNative(native uintptr) *VBox {
+func VBoxNewFromNative(native unsafe.Pointer) *VBox {
 	return &VBox{native: native}
 }
 func (recv *VBox) Box() *Box {
@@ -78721,10 +78722,10 @@ func vButtonBoxObject_Set() error {
 }
 
 type VButtonBox struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VButtonBoxNewFromNative(native uintptr) *VButtonBox {
+func VButtonBoxNewFromNative(native unsafe.Pointer) *VButtonBox {
 	return &VButtonBox{native: native}
 }
 func (recv *VButtonBox) ButtonBox() *ButtonBox {
@@ -78802,10 +78803,10 @@ func vPanedObject_Set() error {
 }
 
 type VPaned struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VPanedNewFromNative(native uintptr) *VPaned {
+func VPanedNewFromNative(native unsafe.Pointer) *VPaned {
 	return &VPaned{native: native}
 }
 func (recv *VPaned) Paned() *Paned {
@@ -78880,10 +78881,10 @@ func vScaleObject_Set() error {
 }
 
 type VScale struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VScaleNewFromNative(native uintptr) *VScale {
+func VScaleNewFromNative(native unsafe.Pointer) *VScale {
 	return &VScale{native: native}
 }
 func (recv *VScale) Scale() *Scale {
@@ -78994,10 +78995,10 @@ func vScrollbarObject_Set() error {
 }
 
 type VScrollbar struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VScrollbarNewFromNative(native uintptr) *VScrollbar {
+func VScrollbarNewFromNative(native unsafe.Pointer) *VScrollbar {
 	return &VScrollbar{native: native}
 }
 func (recv *VScrollbar) Scrollbar() *Scrollbar {
@@ -79074,10 +79075,10 @@ func vSeparatorObject_Set() error {
 }
 
 type VSeparator struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VSeparatorNewFromNative(native uintptr) *VSeparator {
+func VSeparatorNewFromNative(native unsafe.Pointer) *VSeparator {
 	return &VSeparator{native: native}
 }
 func (recv *VSeparator) Separator() *Separator {
@@ -79149,10 +79150,10 @@ func viewportObject_Set() error {
 }
 
 type Viewport struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ViewportNewFromNative(native uintptr) *Viewport {
+func ViewportNewFromNative(native unsafe.Pointer) *Viewport {
 	return &Viewport{native: native}
 }
 func (recv *Viewport) Bin() *Bin {
@@ -79417,10 +79418,10 @@ func volumeButtonObject_Set() error {
 }
 
 type VolumeButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VolumeButtonNewFromNative(native uintptr) *VolumeButton {
+func VolumeButtonNewFromNative(native unsafe.Pointer) *VolumeButton {
 	return &VolumeButton{native: native}
 }
 func (recv *VolumeButton) ScaleButton() *ScaleButton {
@@ -79501,10 +79502,10 @@ func widgetObject_Set() error {
 }
 
 type Widget struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WidgetNewFromNative(native uintptr) *Widget {
+func WidgetNewFromNative(native unsafe.Pointer) *Widget {
 	return &Widget{native: native}
 }
 func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
@@ -85239,10 +85240,10 @@ func widgetAccessibleObject_Set() error {
 }
 
 type WidgetAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WidgetAccessibleNewFromNative(native uintptr) *WidgetAccessible {
+func WidgetAccessibleNewFromNative(native unsafe.Pointer) *WidgetAccessible {
 	return &WidgetAccessible{native: native}
 }
 func (recv *WidgetAccessible) Accessible() *Accessible {
@@ -85295,10 +85296,10 @@ func windowObject_Set() error {
 }
 
 type Window struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowNewFromNative(native uintptr) *Window {
+func WindowNewFromNative(native unsafe.Pointer) *Window {
 	return &Window{native: native}
 }
 func (recv *Window) Bin() *Bin {
@@ -88156,10 +88157,10 @@ func windowAccessibleObject_Set() error {
 }
 
 type WindowAccessible struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowAccessibleNewFromNative(native uintptr) *WindowAccessible {
+func WindowAccessibleNewFromNative(native unsafe.Pointer) *WindowAccessible {
 	return &WindowAccessible{native: native}
 }
 func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {
@@ -88218,10 +88219,10 @@ func windowGroupObject_Set() error {
 }
 
 type WindowGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowGroupNewFromNative(native uintptr) *WindowGroup {
+func WindowGroupNewFromNative(native unsafe.Pointer) *WindowGroup {
 	return &WindowGroup{native: native}
 }
 func (recv *WindowGroup) Object() *gobject.Object {

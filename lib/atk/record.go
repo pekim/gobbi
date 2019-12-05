@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var actionIfaceStruct *gi.Struct
@@ -20,10 +21,10 @@ func actionIfaceStruct_Set() error {
 }
 
 type ActionIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ActionIfaceNewFromNative(native uintptr) *ActionIface {
+func ActionIfaceNewFromNative(native unsafe.Pointer) *ActionIface {
 	return &ActionIface{native: native}
 }
 
@@ -82,10 +83,10 @@ func attributeStruct_Set() error {
 }
 
 type Attribute struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AttributeNewFromNative(native uintptr) *Attribute {
+func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
 	return &Attribute{native: native}
 }
 
@@ -144,10 +145,10 @@ func componentIfaceStruct_Set() error {
 }
 
 type ComponentIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ComponentIfaceNewFromNative(native uintptr) *ComponentIface {
+func ComponentIfaceNewFromNative(native unsafe.Pointer) *ComponentIface {
 	return &ComponentIface{native: native}
 }
 
@@ -246,10 +247,10 @@ func documentIfaceStruct_Set() error {
 }
 
 type DocumentIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DocumentIfaceNewFromNative(native uintptr) *DocumentIface {
+func DocumentIfaceNewFromNative(native unsafe.Pointer) *DocumentIface {
 	return &DocumentIface{native: native}
 }
 
@@ -316,10 +317,10 @@ func editableTextIfaceStruct_Set() error {
 }
 
 type EditableTextIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EditableTextIfaceNewFromNative(native uintptr) *EditableTextIface {
+func EditableTextIfaceNewFromNative(native unsafe.Pointer) *EditableTextIface {
 	return &EditableTextIface{native: native}
 }
 
@@ -382,10 +383,10 @@ func gObjectAccessibleClassStruct_Set() error {
 }
 
 type GObjectAccessibleClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GObjectAccessibleClassNewFromNative(native uintptr) *GObjectAccessibleClass {
+func GObjectAccessibleClassNewFromNative(native unsafe.Pointer) *GObjectAccessibleClass {
 	return &GObjectAccessibleClass{native: native}
 }
 
@@ -438,10 +439,10 @@ func hyperlinkClassStruct_Set() error {
 }
 
 type HyperlinkClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HyperlinkClassNewFromNative(native uintptr) *HyperlinkClass {
+func HyperlinkClassNewFromNative(native unsafe.Pointer) *HyperlinkClass {
 	return &HyperlinkClass{native: native}
 }
 
@@ -516,10 +517,10 @@ func hyperlinkImplIfaceStruct_Set() error {
 }
 
 type HyperlinkImplIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HyperlinkImplIfaceNewFromNative(native uintptr) *HyperlinkImplIface {
+func HyperlinkImplIfaceNewFromNative(native unsafe.Pointer) *HyperlinkImplIface {
 	return &HyperlinkImplIface{native: native}
 }
 
@@ -558,10 +559,10 @@ func hypertextIfaceStruct_Set() error {
 }
 
 type HypertextIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HypertextIfaceNewFromNative(native uintptr) *HypertextIface {
+func HypertextIfaceNewFromNative(native unsafe.Pointer) *HypertextIface {
 	return &HypertextIface{native: native}
 }
 
@@ -612,10 +613,10 @@ func imageIfaceStruct_Set() error {
 }
 
 type ImageIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImageIfaceNewFromNative(native uintptr) *ImageIface {
+func ImageIfaceNewFromNative(native unsafe.Pointer) *ImageIface {
 	return &ImageIface{native: native}
 }
 
@@ -670,10 +671,10 @@ func implementorStruct_Set() error {
 }
 
 type Implementor struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ImplementorNewFromNative(native uintptr) *Implementor {
+func ImplementorNewFromNative(native unsafe.Pointer) *Implementor {
 	return &Implementor{native: native}
 }
 
@@ -736,10 +737,10 @@ func keyEventStructStruct_Set() error {
 }
 
 type KeyEventStruct struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func KeyEventStructNewFromNative(native uintptr) *KeyEventStruct {
+func KeyEventStructNewFromNative(native unsafe.Pointer) *KeyEventStruct {
 	return &KeyEventStruct{native: native}
 }
 
@@ -868,10 +869,10 @@ func miscClassStruct_Set() error {
 }
 
 type MiscClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MiscClassNewFromNative(native uintptr) *MiscClass {
+func MiscClassNewFromNative(native unsafe.Pointer) *MiscClass {
 	return &MiscClass{native: native}
 }
 
@@ -918,10 +919,10 @@ func noOpObjectClassStruct_Set() error {
 }
 
 type NoOpObjectClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NoOpObjectClassNewFromNative(native uintptr) *NoOpObjectClass {
+func NoOpObjectClassNewFromNative(native unsafe.Pointer) *NoOpObjectClass {
 	return &NoOpObjectClass{native: native}
 }
 
@@ -966,10 +967,10 @@ func noOpObjectFactoryClassStruct_Set() error {
 }
 
 type NoOpObjectFactoryClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NoOpObjectFactoryClassNewFromNative(native uintptr) *NoOpObjectFactoryClass {
+func NoOpObjectFactoryClassNewFromNative(native unsafe.Pointer) *NoOpObjectFactoryClass {
 	return &NoOpObjectFactoryClass{native: native}
 }
 
@@ -1014,10 +1015,10 @@ func objectClassStruct_Set() error {
 }
 
 type ObjectClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectClassNewFromNative(native uintptr) *ObjectClass {
+func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
 	return &ObjectClass{native: native}
 }
 
@@ -1160,10 +1161,10 @@ func objectFactoryClassStruct_Set() error {
 }
 
 type ObjectFactoryClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ObjectFactoryClassNewFromNative(native uintptr) *ObjectFactoryClass {
+func ObjectFactoryClassNewFromNative(native unsafe.Pointer) *ObjectFactoryClass {
 	return &ObjectFactoryClass{native: native}
 }
 
@@ -1218,10 +1219,10 @@ func plugClassStruct_Set() error {
 }
 
 type PlugClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PlugClassNewFromNative(native uintptr) *PlugClass {
+func PlugClassNewFromNative(native unsafe.Pointer) *PlugClass {
 	return &PlugClass{native: native}
 }
 
@@ -1270,10 +1271,10 @@ func propertyValuesStruct_Set() error {
 }
 
 type PropertyValues struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PropertyValuesNewFromNative(native uintptr) *PropertyValues {
+func PropertyValuesNewFromNative(native unsafe.Pointer) *PropertyValues {
 	return &PropertyValues{native: native}
 }
 
@@ -1326,10 +1327,10 @@ func rangeStruct_Set() error {
 }
 
 type Range struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RangeNewFromNative(native uintptr) *Range {
+func RangeNewFromNative(native unsafe.Pointer) *Range {
 	return &Range{native: native}
 }
 
@@ -1535,10 +1536,10 @@ func rectangleStruct_Set() error {
 }
 
 type Rectangle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RectangleNewFromNative(native uintptr) *Rectangle {
+func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
@@ -1625,10 +1626,10 @@ func registryClassStruct_Set() error {
 }
 
 type RegistryClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegistryClassNewFromNative(native uintptr) *RegistryClass {
+func RegistryClassNewFromNative(native unsafe.Pointer) *RegistryClass {
 	return &RegistryClass{native: native}
 }
 
@@ -1663,10 +1664,10 @@ func relationClassStruct_Set() error {
 }
 
 type RelationClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RelationClassNewFromNative(native uintptr) *RelationClass {
+func RelationClassNewFromNative(native unsafe.Pointer) *RelationClass {
 	return &RelationClass{native: native}
 }
 
@@ -1701,10 +1702,10 @@ func relationSetClassStruct_Set() error {
 }
 
 type RelationSetClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RelationSetClassNewFromNative(native uintptr) *RelationSetClass {
+func RelationSetClassNewFromNative(native unsafe.Pointer) *RelationSetClass {
 	return &RelationSetClass{native: native}
 }
 
@@ -1747,10 +1748,10 @@ func selectionIfaceStruct_Set() error {
 }
 
 type SelectionIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SelectionIfaceNewFromNative(native uintptr) *SelectionIface {
+func SelectionIfaceNewFromNative(native unsafe.Pointer) *SelectionIface {
 	return &SelectionIface{native: native}
 }
 
@@ -1817,10 +1818,10 @@ func socketClassStruct_Set() error {
 }
 
 type SocketClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SocketClassNewFromNative(native uintptr) *SocketClass {
+func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
 	return &SocketClass{native: native}
 }
 
@@ -1869,10 +1870,10 @@ func stateSetClassStruct_Set() error {
 }
 
 type StateSetClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StateSetClassNewFromNative(native uintptr) *StateSetClass {
+func StateSetClassNewFromNative(native unsafe.Pointer) *StateSetClass {
 	return &StateSetClass{native: native}
 }
 
@@ -1907,10 +1908,10 @@ func streamableContentIfaceStruct_Set() error {
 }
 
 type StreamableContentIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StreamableContentIfaceNewFromNative(native uintptr) *StreamableContentIface {
+func StreamableContentIfaceNewFromNative(native unsafe.Pointer) *StreamableContentIface {
 	return &StreamableContentIface{native: native}
 }
 
@@ -1973,10 +1974,10 @@ func tableCellIfaceStruct_Set() error {
 }
 
 type TableCellIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TableCellIfaceNewFromNative(native uintptr) *TableCellIface {
+func TableCellIfaceNewFromNative(native unsafe.Pointer) *TableCellIface {
 	return &TableCellIface{native: native}
 }
 
@@ -2035,10 +2036,10 @@ func tableIfaceStruct_Set() error {
 }
 
 type TableIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TableIfaceNewFromNative(native uintptr) *TableIface {
+func TableIfaceNewFromNative(native unsafe.Pointer) *TableIface {
 	return &TableIface{native: native}
 }
 
@@ -2217,10 +2218,10 @@ func textIfaceStruct_Set() error {
 }
 
 type TextIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextIfaceNewFromNative(native uintptr) *TextIface {
+func TextIfaceNewFromNative(native unsafe.Pointer) *TextIface {
 	return &TextIface{native: native}
 }
 
@@ -2359,10 +2360,10 @@ func textRangeStruct_Set() error {
 }
 
 type TextRange struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextRangeNewFromNative(native uintptr) *TextRange {
+func TextRangeNewFromNative(native unsafe.Pointer) *TextRange {
 	return &TextRange{native: native}
 }
 
@@ -2449,10 +2450,10 @@ func textRectangleStruct_Set() error {
 }
 
 type TextRectangle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TextRectangleNewFromNative(native uintptr) *TextRectangle {
+func TextRectangleNewFromNative(native unsafe.Pointer) *TextRectangle {
 	return &TextRectangle{native: native}
 }
 
@@ -2539,10 +2540,10 @@ func utilClassStruct_Set() error {
 }
 
 type UtilClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UtilClassNewFromNative(native uintptr) *UtilClass {
+func UtilClassNewFromNative(native unsafe.Pointer) *UtilClass {
 	return &UtilClass{native: native}
 }
 
@@ -2605,10 +2606,10 @@ func valueIfaceStruct_Set() error {
 }
 
 type ValueIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueIfaceNewFromNative(native uintptr) *ValueIface {
+func ValueIfaceNewFromNative(native unsafe.Pointer) *ValueIface {
 	return &ValueIface{native: native}
 }
 
@@ -2683,10 +2684,10 @@ func windowIfaceStruct_Set() error {
 }
 
 type WindowIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowIfaceNewFromNative(native uintptr) *WindowIface {
+func WindowIfaceNewFromNative(native unsafe.Pointer) *WindowIface {
 	return &WindowIface{native: native}
 }
 

@@ -26,7 +26,7 @@ func structFieldInfo(structInfo *Struct, name string) (*C.GIFieldInfo, bool) {
 	return fieldInfo, true
 }
 
-func StructFieldGet(structInfo *Struct, struct_ uintptr, name string) Argument {
+func StructFieldGet(structInfo *Struct, struct_ unsafe.Pointer, name string) Argument {
 	var value Argument
 
 	info, gotInfo := structFieldInfo(structInfo, name)
@@ -49,7 +49,7 @@ func StructFieldGet(structInfo *Struct, struct_ uintptr, name string) Argument {
 	return value
 }
 
-func StructFieldSet(structInfo *Struct, struct_ uintptr, name string, value Argument) {
+func StructFieldSet(structInfo *Struct, struct_ unsafe.Pointer, name string, value Argument) {
 	info, gotInfo := structFieldInfo(structInfo, name)
 	if !gotInfo {
 		return

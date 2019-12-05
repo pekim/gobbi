@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var contextObject *gi.Object
@@ -20,10 +21,10 @@ func contextObject_Set() error {
 }
 
 type Context struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextNewFromNative(native uintptr) *Context {
+func ContextNewFromNative(native unsafe.Pointer) *Context {
 	return &Context{native: native}
 }
 func (recv *Context) Object() *gobject.Object {
@@ -694,10 +695,10 @@ func engineObject_Set() error {
 }
 
 type Engine struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineNewFromNative(native uintptr) *Engine {
+func EngineNewFromNative(native unsafe.Pointer) *Engine {
 	return &Engine{native: native}
 }
 func (recv *Engine) Object() *gobject.Object {
@@ -716,10 +717,10 @@ func engineLangObject_Set() error {
 }
 
 type EngineLang struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineLangNewFromNative(native uintptr) *EngineLang {
+func EngineLangNewFromNative(native unsafe.Pointer) *EngineLang {
 	return &EngineLang{native: native}
 }
 func (recv *EngineLang) Engine() *Engine {
@@ -741,10 +742,10 @@ func engineShapeObject_Set() error {
 }
 
 type EngineShape struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EngineShapeNewFromNative(native uintptr) *EngineShape {
+func EngineShapeNewFromNative(native unsafe.Pointer) *EngineShape {
 	return &EngineShape{native: native}
 }
 func (recv *EngineShape) Engine() *Engine {
@@ -780,10 +781,10 @@ func fontObject_Set() error {
 }
 
 type Font struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontNewFromNative(native uintptr) *Font {
+func FontNewFromNative(native unsafe.Pointer) *Font {
 	return &Font{native: native}
 }
 func (recv *Font) Object() *gobject.Object {
@@ -1036,10 +1037,10 @@ func fontFaceObject_Set() error {
 }
 
 type FontFace struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontFaceNewFromNative(native uintptr) *FontFace {
+func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
 	return &FontFace{native: native}
 }
 func (recv *FontFace) Object() *gobject.Object {
@@ -1160,10 +1161,10 @@ func fontFamilyObject_Set() error {
 }
 
 type FontFamily struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontFamilyNewFromNative(native uintptr) *FontFamily {
+func FontFamilyNewFromNative(native unsafe.Pointer) *FontFamily {
 	return &FontFamily{native: native}
 }
 func (recv *FontFamily) Object() *gobject.Object {
@@ -1252,10 +1253,10 @@ func fontMapObject_Set() error {
 }
 
 type FontMap struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontMapNewFromNative(native uintptr) *FontMap {
+func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 	return &FontMap{native: native}
 }
 func (recv *FontMap) Object() *gobject.Object {
@@ -1473,10 +1474,10 @@ func fontsetObject_Set() error {
 }
 
 type Fontset struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontsetNewFromNative(native uintptr) *Fontset {
+func FontsetNewFromNative(native unsafe.Pointer) *Fontset {
 	return &Fontset{native: native}
 }
 func (recv *Fontset) Object() *gobject.Object {
@@ -1566,10 +1567,10 @@ func fontsetSimpleObject_Set() error {
 }
 
 type FontsetSimple struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FontsetSimpleNewFromNative(native uintptr) *FontsetSimple {
+func FontsetSimpleNewFromNative(native unsafe.Pointer) *FontsetSimple {
 	return &FontsetSimple{native: native}
 }
 func (recv *FontsetSimple) Fontset() *Fontset {
@@ -1684,10 +1685,10 @@ func layoutObject_Set() error {
 }
 
 type Layout struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LayoutNewFromNative(native uintptr) *Layout {
+func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	return &Layout{native: native}
 }
 func (recv *Layout) Object() *gobject.Object {
@@ -3385,10 +3386,10 @@ func rendererObject_Set() error {
 }
 
 type Renderer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RendererNewFromNative(native uintptr) *Renderer {
+func RendererNewFromNative(native unsafe.Pointer) *Renderer {
 	return &Renderer{native: native}
 }
 func (recv *Renderer) Object() *gobject.Object {

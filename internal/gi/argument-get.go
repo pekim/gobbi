@@ -63,6 +63,6 @@ func (a Argument) String(transferOwnership bool) string {
 	return goString
 }
 
-func (a Argument) Pointer() uintptr {
-	return (uintptr)(*(*C.gpointer)(unsafe.Pointer(&a)))
+func (a Argument) Pointer() unsafe.Pointer {
+	return unsafe.Pointer(*(*C.gpointer)(unsafe.Pointer(&a)))
 }

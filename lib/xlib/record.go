@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var displayStruct *gi.Struct
@@ -20,10 +21,10 @@ func displayStruct_Set() error {
 }
 
 type Display struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DisplayNewFromNative(native uintptr) *Display {
+func DisplayNewFromNative(native unsafe.Pointer) *Display {
 	return &Display{native: native}
 }
 
@@ -54,10 +55,10 @@ func screenStruct_Set() error {
 }
 
 type Screen struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScreenNewFromNative(native uintptr) *Screen {
+func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 	return &Screen{native: native}
 }
 
@@ -88,10 +89,10 @@ func visualStruct_Set() error {
 }
 
 type Visual struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VisualNewFromNative(native uintptr) *Visual {
+func VisualNewFromNative(native unsafe.Pointer) *Visual {
 	return &Visual{native: native}
 }
 
@@ -122,10 +123,10 @@ func xConfigureEventStruct_Set() error {
 }
 
 type XConfigureEvent struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XConfigureEventNewFromNative(native uintptr) *XConfigureEvent {
+func XConfigureEventNewFromNative(native unsafe.Pointer) *XConfigureEvent {
 	return &XConfigureEvent{native: native}
 }
 
@@ -156,10 +157,10 @@ func xImageStruct_Set() error {
 }
 
 type XImage struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XImageNewFromNative(native uintptr) *XImage {
+func XImageNewFromNative(native unsafe.Pointer) *XImage {
 	return &XImage{native: native}
 }
 
@@ -190,10 +191,10 @@ func xFontStructStruct_Set() error {
 }
 
 type XFontStruct struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XFontStructNewFromNative(native uintptr) *XFontStruct {
+func XFontStructNewFromNative(native unsafe.Pointer) *XFontStruct {
 	return &XFontStruct{native: native}
 }
 
@@ -224,10 +225,10 @@ func xTrapezoidStruct_Set() error {
 }
 
 type XTrapezoid struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XTrapezoidNewFromNative(native uintptr) *XTrapezoid {
+func XTrapezoidNewFromNative(native unsafe.Pointer) *XTrapezoid {
 	return &XTrapezoid{native: native}
 }
 
@@ -258,10 +259,10 @@ func xVisualInfoStruct_Set() error {
 }
 
 type XVisualInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XVisualInfoNewFromNative(native uintptr) *XVisualInfo {
+func XVisualInfoNewFromNative(native unsafe.Pointer) *XVisualInfo {
 	return &XVisualInfo{native: native}
 }
 
@@ -292,10 +293,10 @@ func xWindowAttributesStruct_Set() error {
 }
 
 type XWindowAttributes struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func XWindowAttributesNewFromNative(native uintptr) *XWindowAttributes {
+func XWindowAttributesNewFromNative(native unsafe.Pointer) *XWindowAttributes {
 	return &XWindowAttributes{native: native}
 }
 

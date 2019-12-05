@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var atomStruct *gi.Struct
@@ -20,10 +21,10 @@ func atomStruct_Set() error {
 }
 
 type Atom struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AtomNewFromNative(native uintptr) *Atom {
+func AtomNewFromNative(native unsafe.Pointer) *Atom {
 	return &Atom{native: native}
 }
 
@@ -86,10 +87,10 @@ func colorStruct_Set() error {
 }
 
 type Color struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ColorNewFromNative(native uintptr) *Color {
+func ColorNewFromNative(native unsafe.Pointer) *Color {
 	return &Color{native: native}
 }
 
@@ -333,10 +334,10 @@ func devicePadInterfaceStruct_Set() error {
 }
 
 type DevicePadInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DevicePadInterfaceNewFromNative(native uintptr) *DevicePadInterface {
+func DevicePadInterfaceNewFromNative(native unsafe.Pointer) *DevicePadInterface {
 	return &DevicePadInterface{native: native}
 }
 
@@ -367,10 +368,10 @@ func drawingContextClassStruct_Set() error {
 }
 
 type DrawingContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DrawingContextClassNewFromNative(native uintptr) *DrawingContextClass {
+func DrawingContextClassNewFromNative(native unsafe.Pointer) *DrawingContextClass {
 	return &DrawingContextClass{native: native}
 }
 
@@ -401,10 +402,10 @@ func eventAnyStruct_Set() error {
 }
 
 type EventAny struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventAnyNewFromNative(native uintptr) *EventAny {
+func EventAnyNewFromNative(native unsafe.Pointer) *EventAny {
 	return &EventAny{native: native}
 }
 
@@ -477,10 +478,10 @@ func eventButtonStruct_Set() error {
 }
 
 type EventButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventButtonNewFromNative(native uintptr) *EventButton {
+func EventButtonNewFromNative(native unsafe.Pointer) *EventButton {
 	return &EventButton{native: native}
 }
 
@@ -669,10 +670,10 @@ func eventConfigureStruct_Set() error {
 }
 
 type EventConfigure struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventConfigureNewFromNative(native uintptr) *EventConfigure {
+func EventConfigureNewFromNative(native unsafe.Pointer) *EventConfigure {
 	return &EventConfigure{native: native}
 }
 
@@ -801,10 +802,10 @@ func eventCrossingStruct_Set() error {
 }
 
 type EventCrossing struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventCrossingNewFromNative(native uintptr) *EventCrossing {
+func EventCrossingNewFromNative(native unsafe.Pointer) *EventCrossing {
 	return &EventCrossing{native: native}
 }
 
@@ -1007,10 +1008,10 @@ func eventDNDStruct_Set() error {
 }
 
 type EventDND struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventDNDNewFromNative(native uintptr) *EventDND {
+func EventDNDNewFromNative(native unsafe.Pointer) *EventDND {
 	return &EventDND{native: native}
 }
 
@@ -1139,10 +1140,10 @@ func eventExposeStruct_Set() error {
 }
 
 type EventExpose struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventExposeNewFromNative(native uintptr) *EventExpose {
+func EventExposeNewFromNative(native unsafe.Pointer) *EventExpose {
 	return &EventExpose{native: native}
 }
 
@@ -1247,10 +1248,10 @@ func eventFocusStruct_Set() error {
 }
 
 type EventFocus struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventFocusNewFromNative(native uintptr) *EventFocus {
+func EventFocusNewFromNative(native unsafe.Pointer) *EventFocus {
 	return &EventFocus{native: native}
 }
 
@@ -1337,10 +1338,10 @@ func eventGrabBrokenStruct_Set() error {
 }
 
 type EventGrabBroken struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventGrabBrokenNewFromNative(native uintptr) *EventGrabBroken {
+func EventGrabBrokenNewFromNative(native unsafe.Pointer) *EventGrabBroken {
 	return &EventGrabBroken{native: native}
 }
 
@@ -1455,10 +1456,10 @@ func eventKeyStruct_Set() error {
 }
 
 type EventKey struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventKeyNewFromNative(native uintptr) *EventKey {
+func EventKeyNewFromNative(native unsafe.Pointer) *EventKey {
 	return &EventKey{native: native}
 }
 
@@ -1633,10 +1634,10 @@ func eventMotionStruct_Set() error {
 }
 
 type EventMotion struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventMotionNewFromNative(native uintptr) *EventMotion {
+func EventMotionNewFromNative(native unsafe.Pointer) *EventMotion {
 	return &EventMotion{native: native}
 }
 
@@ -1825,10 +1826,10 @@ func eventOwnerChangeStruct_Set() error {
 }
 
 type EventOwnerChange struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventOwnerChangeNewFromNative(native uintptr) *EventOwnerChange {
+func EventOwnerChangeNewFromNative(native unsafe.Pointer) *EventOwnerChange {
 	return &EventOwnerChange{native: native}
 }
 
@@ -1971,10 +1972,10 @@ func eventPadAxisStruct_Set() error {
 }
 
 type EventPadAxis struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventPadAxisNewFromNative(native uintptr) *EventPadAxis {
+func EventPadAxisNewFromNative(native unsafe.Pointer) *EventPadAxis {
 	return &EventPadAxis{native: native}
 }
 
@@ -2117,10 +2118,10 @@ func eventPadButtonStruct_Set() error {
 }
 
 type EventPadButton struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventPadButtonNewFromNative(native uintptr) *EventPadButton {
+func EventPadButtonNewFromNative(native unsafe.Pointer) *EventPadButton {
 	return &EventPadButton{native: native}
 }
 
@@ -2249,10 +2250,10 @@ func eventPadGroupModeStruct_Set() error {
 }
 
 type EventPadGroupMode struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventPadGroupModeNewFromNative(native uintptr) *EventPadGroupMode {
+func EventPadGroupModeNewFromNative(native unsafe.Pointer) *EventPadGroupMode {
 	return &EventPadGroupMode{native: native}
 }
 
@@ -2367,10 +2368,10 @@ func eventPropertyStruct_Set() error {
 }
 
 type EventProperty struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventPropertyNewFromNative(native uintptr) *EventProperty {
+func EventPropertyNewFromNative(native unsafe.Pointer) *EventProperty {
 	return &EventProperty{native: native}
 }
 
@@ -2485,10 +2486,10 @@ func eventProximityStruct_Set() error {
 }
 
 type EventProximity struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventProximityNewFromNative(native uintptr) *EventProximity {
+func EventProximityNewFromNative(native unsafe.Pointer) *EventProximity {
 	return &EventProximity{native: native}
 }
 
@@ -2589,10 +2590,10 @@ func eventScrollStruct_Set() error {
 }
 
 type EventScroll struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventScrollNewFromNative(native uintptr) *EventScroll {
+func EventScrollNewFromNative(native unsafe.Pointer) *EventScroll {
 	return &EventScroll{native: native}
 }
 
@@ -2809,10 +2810,10 @@ func eventSelectionStruct_Set() error {
 }
 
 type EventSelection struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventSelectionNewFromNative(native uintptr) *EventSelection {
+func EventSelectionNewFromNative(native unsafe.Pointer) *EventSelection {
 	return &EventSelection{native: native}
 }
 
@@ -2955,10 +2956,10 @@ func eventSequenceStruct_Set() error {
 }
 
 type EventSequence struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventSequenceNewFromNative(native uintptr) *EventSequence {
+func EventSequenceNewFromNative(native unsafe.Pointer) *EventSequence {
 	return &EventSequence{native: native}
 }
 
@@ -2989,10 +2990,10 @@ func eventSettingStruct_Set() error {
 }
 
 type EventSetting struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventSettingNewFromNative(native uintptr) *EventSetting {
+func EventSettingNewFromNative(native unsafe.Pointer) *EventSetting {
 	return &EventSetting{native: native}
 }
 
@@ -3093,10 +3094,10 @@ func eventTouchStruct_Set() error {
 }
 
 type EventTouch struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventTouchNewFromNative(native uintptr) *EventTouch {
+func EventTouchNewFromNative(native unsafe.Pointer) *EventTouch {
 	return &EventTouch{native: native}
 }
 
@@ -3299,10 +3300,10 @@ func eventTouchpadPinchStruct_Set() error {
 }
 
 type EventTouchpadPinch struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventTouchpadPinchNewFromNative(native uintptr) *EventTouchpadPinch {
+func EventTouchpadPinchNewFromNative(native unsafe.Pointer) *EventTouchpadPinch {
 	return &EventTouchpadPinch{native: native}
 }
 
@@ -3533,10 +3534,10 @@ func eventTouchpadSwipeStruct_Set() error {
 }
 
 type EventTouchpadSwipe struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventTouchpadSwipeNewFromNative(native uintptr) *EventTouchpadSwipe {
+func EventTouchpadSwipeNewFromNative(native unsafe.Pointer) *EventTouchpadSwipe {
 	return &EventTouchpadSwipe{native: native}
 }
 
@@ -3739,10 +3740,10 @@ func eventVisibilityStruct_Set() error {
 }
 
 type EventVisibility struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventVisibilityNewFromNative(native uintptr) *EventVisibility {
+func EventVisibilityNewFromNative(native unsafe.Pointer) *EventVisibility {
 	return &EventVisibility{native: native}
 }
 
@@ -3829,10 +3830,10 @@ func eventWindowStateStruct_Set() error {
 }
 
 type EventWindowState struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EventWindowStateNewFromNative(native uintptr) *EventWindowState {
+func EventWindowStateNewFromNative(native unsafe.Pointer) *EventWindowState {
 	return &EventWindowState{native: native}
 }
 
@@ -3913,10 +3914,10 @@ func frameClockClassStruct_Set() error {
 }
 
 type FrameClockClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameClockClassNewFromNative(native uintptr) *FrameClockClass {
+func FrameClockClassNewFromNative(native unsafe.Pointer) *FrameClockClass {
 	return &FrameClockClass{native: native}
 }
 
@@ -3947,10 +3948,10 @@ func frameClockPrivateStruct_Set() error {
 }
 
 type FrameClockPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameClockPrivateNewFromNative(native uintptr) *FrameClockPrivate {
+func FrameClockPrivateNewFromNative(native unsafe.Pointer) *FrameClockPrivate {
 	return &FrameClockPrivate{native: native}
 }
 
@@ -3981,10 +3982,10 @@ func frameTimingsStruct_Set() error {
 }
 
 type FrameTimings struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FrameTimingsNewFromNative(native uintptr) *FrameTimings {
+func FrameTimingsNewFromNative(native unsafe.Pointer) *FrameTimings {
 	return &FrameTimings{native: native}
 }
 
@@ -4267,10 +4268,10 @@ func geometryStruct_Set() error {
 }
 
 type Geometry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GeometryNewFromNative(native uintptr) *Geometry {
+func GeometryNewFromNative(native unsafe.Pointer) *Geometry {
 	return &Geometry{native: native}
 }
 
@@ -4455,10 +4456,10 @@ func keymapKeyStruct_Set() error {
 }
 
 type KeymapKey struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func KeymapKeyNewFromNative(native uintptr) *KeymapKey {
+func KeymapKeyNewFromNative(native unsafe.Pointer) *KeymapKey {
 	return &KeymapKey{native: native}
 }
 
@@ -4531,10 +4532,10 @@ func monitorClassStruct_Set() error {
 }
 
 type MonitorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MonitorClassNewFromNative(native uintptr) *MonitorClass {
+func MonitorClassNewFromNative(native unsafe.Pointer) *MonitorClass {
 	return &MonitorClass{native: native}
 }
 
@@ -4565,10 +4566,10 @@ func pointStruct_Set() error {
 }
 
 type Point struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PointNewFromNative(native uintptr) *Point {
+func PointNewFromNative(native unsafe.Pointer) *Point {
 	return &Point{native: native}
 }
 
@@ -4627,10 +4628,10 @@ func rGBAStruct_Set() error {
 }
 
 type RGBA struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RGBANewFromNative(native uintptr) *RGBA {
+func RGBANewFromNative(native unsafe.Pointer) *RGBA {
 	return &RGBA{native: native}
 }
 
@@ -4907,10 +4908,10 @@ func rectangleStruct_Set() error {
 }
 
 type Rectangle struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RectangleNewFromNative(native uintptr) *Rectangle {
+func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
@@ -5098,10 +5099,10 @@ func timeCoordStruct_Set() error {
 }
 
 type TimeCoord struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TimeCoordNewFromNative(native uintptr) *TimeCoord {
+func TimeCoordNewFromNative(native unsafe.Pointer) *TimeCoord {
 	return &TimeCoord{native: native}
 }
 
@@ -5150,10 +5151,10 @@ func windowAttrStruct_Set() error {
 }
 
 type WindowAttr struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowAttrNewFromNative(native uintptr) *WindowAttr {
+func WindowAttrNewFromNative(native unsafe.Pointer) *WindowAttr {
 	return &WindowAttr{native: native}
 }
 
@@ -5380,10 +5381,10 @@ func windowClassStruct_Set() error {
 }
 
 type WindowClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowClassNewFromNative(native uintptr) *WindowClass {
+func WindowClassNewFromNative(native unsafe.Pointer) *WindowClass {
 	return &WindowClass{native: native}
 }
 
@@ -5466,10 +5467,10 @@ func windowRedirectStruct_Set() error {
 }
 
 type WindowRedirect struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WindowRedirectNewFromNative(native uintptr) *WindowRedirect {
+func WindowRedirectNewFromNative(native unsafe.Pointer) *WindowRedirect {
 	return &WindowRedirect{native: native}
 }
 

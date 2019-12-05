@@ -61,6 +61,6 @@ func (a *Argument) SetString(value string) {
 	*(**C.gchar)(unsafe.Pointer(a)) = cString
 }
 
-func (a *Argument) SetPointer(value uintptr) {
-	(*(*uintptr)(unsafe.Pointer(a))) = value
+func (a *Argument) SetPointer(value unsafe.Pointer) {
+	(*(*uintptr)(unsafe.Pointer(a))) = uintptr(value)
 }

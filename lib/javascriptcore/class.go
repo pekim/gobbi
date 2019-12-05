@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var classObject *gi.Object
@@ -20,10 +21,10 @@ func classObject_Set() error {
 }
 
 type Class struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClassNewFromNative(native uintptr) *Class {
+func ClassNewFromNative(native unsafe.Pointer) *Class {
 	return &Class{native: native}
 }
 func (recv *Class) Object() *gobject.Object {
@@ -120,10 +121,10 @@ func contextObject_Set() error {
 }
 
 type Context struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextNewFromNative(native uintptr) *Context {
+func ContextNewFromNative(native unsafe.Pointer) *Context {
 	return &Context{native: native}
 }
 func (recv *Context) Object() *gobject.Object {
@@ -630,10 +631,10 @@ func exceptionObject_Set() error {
 }
 
 type Exception struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ExceptionNewFromNative(native uintptr) *Exception {
+func ExceptionNewFromNative(native unsafe.Pointer) *Exception {
 	return &Exception{native: native}
 }
 func (recv *Exception) Object() *gobject.Object {
@@ -987,10 +988,10 @@ func valueObject_Set() error {
 }
 
 type Value struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueNewFromNative(native uintptr) *Value {
+func ValueNewFromNative(native unsafe.Pointer) *Value {
 	return &Value{native: native}
 }
 func (recv *Value) Object() *gobject.Object {
@@ -1911,10 +1912,10 @@ func virtualMachineObject_Set() error {
 }
 
 type VirtualMachine struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VirtualMachineNewFromNative(native uintptr) *VirtualMachine {
+func VirtualMachineNewFromNative(native unsafe.Pointer) *VirtualMachine {
 	return &VirtualMachine{native: native}
 }
 func (recv *VirtualMachine) Object() *gobject.Object {
@@ -1967,10 +1968,10 @@ func weakValueObject_Set() error {
 }
 
 type WeakValue struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WeakValueNewFromNative(native uintptr) *WeakValue {
+func WeakValueNewFromNative(native unsafe.Pointer) *WeakValue {
 	return &WeakValue{native: native}
 }
 func (recv *WeakValue) Object() *gobject.Object {

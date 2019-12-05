@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var pixbufFormatStruct *gi.Struct
@@ -20,10 +21,10 @@ func pixbufFormatStruct_Set() error {
 }
 
 type PixbufFormat struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufFormatNewFromNative(native uintptr) *PixbufFormat {
+func PixbufFormatNewFromNative(native unsafe.Pointer) *PixbufFormat {
 	return &PixbufFormat{native: native}
 }
 
@@ -424,10 +425,10 @@ func pixbufLoaderClassStruct_Set() error {
 }
 
 type PixbufLoaderClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufLoaderClassNewFromNative(native uintptr) *PixbufLoaderClass {
+func PixbufLoaderClassNewFromNative(native unsafe.Pointer) *PixbufLoaderClass {
 	return &PixbufLoaderClass{native: native}
 }
 
@@ -478,10 +479,10 @@ func pixbufSimpleAnimClassStruct_Set() error {
 }
 
 type PixbufSimpleAnimClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PixbufSimpleAnimClassNewFromNative(native uintptr) *PixbufSimpleAnimClass {
+func PixbufSimpleAnimClassNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimClass {
 	return &PixbufSimpleAnimClass{native: native}
 }
 

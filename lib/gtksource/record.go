@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var bufferClassStruct *gi.Struct
@@ -20,10 +21,10 @@ func bufferClassStruct_Set() error {
 }
 
 type BufferClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferClassNewFromNative(native uintptr) *BufferClass {
+func BufferClassNewFromNative(native unsafe.Pointer) *BufferClass {
 	return &BufferClass{native: native}
 }
 
@@ -82,10 +83,10 @@ func bufferPrivateStruct_Set() error {
 }
 
 type BufferPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BufferPrivateNewFromNative(native uintptr) *BufferPrivate {
+func BufferPrivateNewFromNative(native unsafe.Pointer) *BufferPrivate {
 	return &BufferPrivate{native: native}
 }
 
@@ -116,10 +117,10 @@ func completionClassStruct_Set() error {
 }
 
 type CompletionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionClassNewFromNative(native uintptr) *CompletionClass {
+func CompletionClassNewFromNative(native unsafe.Pointer) *CompletionClass {
 	return &CompletionClass{native: native}
 }
 
@@ -182,10 +183,10 @@ func completionContextClassStruct_Set() error {
 }
 
 type CompletionContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionContextClassNewFromNative(native uintptr) *CompletionContextClass {
+func CompletionContextClassNewFromNative(native unsafe.Pointer) *CompletionContextClass {
 	return &CompletionContextClass{native: native}
 }
 
@@ -236,10 +237,10 @@ func completionContextPrivateStruct_Set() error {
 }
 
 type CompletionContextPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionContextPrivateNewFromNative(native uintptr) *CompletionContextPrivate {
+func CompletionContextPrivateNewFromNative(native unsafe.Pointer) *CompletionContextPrivate {
 	return &CompletionContextPrivate{native: native}
 }
 
@@ -270,10 +271,10 @@ func completionInfoClassStruct_Set() error {
 }
 
 type CompletionInfoClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionInfoClassNewFromNative(native uintptr) *CompletionInfoClass {
+func CompletionInfoClassNewFromNative(native unsafe.Pointer) *CompletionInfoClass {
 	return &CompletionInfoClass{native: native}
 }
 
@@ -312,10 +313,10 @@ func completionInfoPrivateStruct_Set() error {
 }
 
 type CompletionInfoPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionInfoPrivateNewFromNative(native uintptr) *CompletionInfoPrivate {
+func CompletionInfoPrivateNewFromNative(native unsafe.Pointer) *CompletionInfoPrivate {
 	return &CompletionInfoPrivate{native: native}
 }
 
@@ -346,10 +347,10 @@ func completionItemClassStruct_Set() error {
 }
 
 type CompletionItemClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionItemClassNewFromNative(native uintptr) *CompletionItemClass {
+func CompletionItemClassNewFromNative(native unsafe.Pointer) *CompletionItemClass {
 	return &CompletionItemClass{native: native}
 }
 
@@ -384,10 +385,10 @@ func completionItemPrivateStruct_Set() error {
 }
 
 type CompletionItemPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionItemPrivateNewFromNative(native uintptr) *CompletionItemPrivate {
+func CompletionItemPrivateNewFromNative(native unsafe.Pointer) *CompletionItemPrivate {
 	return &CompletionItemPrivate{native: native}
 }
 
@@ -418,10 +419,10 @@ func completionPrivateStruct_Set() error {
 }
 
 type CompletionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionPrivateNewFromNative(native uintptr) *CompletionPrivate {
+func CompletionPrivateNewFromNative(native unsafe.Pointer) *CompletionPrivate {
 	return &CompletionPrivate{native: native}
 }
 
@@ -452,10 +453,10 @@ func completionProposalIfaceStruct_Set() error {
 }
 
 type CompletionProposalIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionProposalIfaceNewFromNative(native uintptr) *CompletionProposalIface {
+func CompletionProposalIfaceNewFromNative(native unsafe.Pointer) *CompletionProposalIface {
 	return &CompletionProposalIface{native: native}
 }
 
@@ -530,10 +531,10 @@ func completionProviderIfaceStruct_Set() error {
 }
 
 type CompletionProviderIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionProviderIfaceNewFromNative(native uintptr) *CompletionProviderIface {
+func CompletionProviderIfaceNewFromNative(native unsafe.Pointer) *CompletionProviderIface {
 	return &CompletionProviderIface{native: native}
 }
 
@@ -620,10 +621,10 @@ func completionWordsClassStruct_Set() error {
 }
 
 type CompletionWordsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionWordsClassNewFromNative(native uintptr) *CompletionWordsClass {
+func CompletionWordsClassNewFromNative(native unsafe.Pointer) *CompletionWordsClass {
 	return &CompletionWordsClass{native: native}
 }
 
@@ -658,10 +659,10 @@ func completionWordsPrivateStruct_Set() error {
 }
 
 type CompletionWordsPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CompletionWordsPrivateNewFromNative(native uintptr) *CompletionWordsPrivate {
+func CompletionWordsPrivateNewFromNative(native unsafe.Pointer) *CompletionWordsPrivate {
 	return &CompletionWordsPrivate{native: native}
 }
 
@@ -692,10 +693,10 @@ func encodingStruct_Set() error {
 }
 
 type Encoding struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func EncodingNewFromNative(native uintptr) *Encoding {
+func EncodingNewFromNative(native unsafe.Pointer) *Encoding {
 	return &Encoding{native: native}
 }
 
@@ -882,10 +883,10 @@ func fileClassStruct_Set() error {
 }
 
 type FileClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileClassNewFromNative(native uintptr) *FileClass {
+func FileClassNewFromNative(native unsafe.Pointer) *FileClass {
 	return &FileClass{native: native}
 }
 
@@ -924,10 +925,10 @@ func fileLoaderClassStruct_Set() error {
 }
 
 type FileLoaderClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileLoaderClassNewFromNative(native uintptr) *FileLoaderClass {
+func FileLoaderClassNewFromNative(native unsafe.Pointer) *FileLoaderClass {
 	return &FileLoaderClass{native: native}
 }
 
@@ -966,10 +967,10 @@ func fileLoaderPrivateStruct_Set() error {
 }
 
 type FileLoaderPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileLoaderPrivateNewFromNative(native uintptr) *FileLoaderPrivate {
+func FileLoaderPrivateNewFromNative(native unsafe.Pointer) *FileLoaderPrivate {
 	return &FileLoaderPrivate{native: native}
 }
 
@@ -1000,10 +1001,10 @@ func filePrivateStruct_Set() error {
 }
 
 type FilePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FilePrivateNewFromNative(native uintptr) *FilePrivate {
+func FilePrivateNewFromNative(native unsafe.Pointer) *FilePrivate {
 	return &FilePrivate{native: native}
 }
 
@@ -1034,10 +1035,10 @@ func fileSaverClassStruct_Set() error {
 }
 
 type FileSaverClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileSaverClassNewFromNative(native uintptr) *FileSaverClass {
+func FileSaverClassNewFromNative(native unsafe.Pointer) *FileSaverClass {
 	return &FileSaverClass{native: native}
 }
 
@@ -1076,10 +1077,10 @@ func fileSaverPrivateStruct_Set() error {
 }
 
 type FileSaverPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func FileSaverPrivateNewFromNative(native uintptr) *FileSaverPrivate {
+func FileSaverPrivateNewFromNative(native unsafe.Pointer) *FileSaverPrivate {
 	return &FileSaverPrivate{native: native}
 }
 
@@ -1110,10 +1111,10 @@ func gutterClassStruct_Set() error {
 }
 
 type GutterClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterClassNewFromNative(native uintptr) *GutterClass {
+func GutterClassNewFromNative(native unsafe.Pointer) *GutterClass {
 	return &GutterClass{native: native}
 }
 
@@ -1148,10 +1149,10 @@ func gutterPrivateStruct_Set() error {
 }
 
 type GutterPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterPrivateNewFromNative(native uintptr) *GutterPrivate {
+func GutterPrivateNewFromNative(native unsafe.Pointer) *GutterPrivate {
 	return &GutterPrivate{native: native}
 }
 
@@ -1182,10 +1183,10 @@ func gutterRendererClassStruct_Set() error {
 }
 
 type GutterRendererClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererClassNewFromNative(native uintptr) *GutterRendererClass {
+func GutterRendererClassNewFromNative(native unsafe.Pointer) *GutterRendererClass {
 	return &GutterRendererClass{native: native}
 }
 
@@ -1260,10 +1261,10 @@ func gutterRendererPixbufClassStruct_Set() error {
 }
 
 type GutterRendererPixbufClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererPixbufClassNewFromNative(native uintptr) *GutterRendererPixbufClass {
+func GutterRendererPixbufClassNewFromNative(native unsafe.Pointer) *GutterRendererPixbufClass {
 	return &GutterRendererPixbufClass{native: native}
 }
 
@@ -1294,10 +1295,10 @@ func gutterRendererPixbufPrivateStruct_Set() error {
 }
 
 type GutterRendererPixbufPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererPixbufPrivateNewFromNative(native uintptr) *GutterRendererPixbufPrivate {
+func GutterRendererPixbufPrivateNewFromNative(native unsafe.Pointer) *GutterRendererPixbufPrivate {
 	return &GutterRendererPixbufPrivate{native: native}
 }
 
@@ -1328,10 +1329,10 @@ func gutterRendererPrivateStruct_Set() error {
 }
 
 type GutterRendererPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererPrivateNewFromNative(native uintptr) *GutterRendererPrivate {
+func GutterRendererPrivateNewFromNative(native unsafe.Pointer) *GutterRendererPrivate {
 	return &GutterRendererPrivate{native: native}
 }
 
@@ -1362,10 +1363,10 @@ func gutterRendererTextClassStruct_Set() error {
 }
 
 type GutterRendererTextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererTextClassNewFromNative(native uintptr) *GutterRendererTextClass {
+func GutterRendererTextClassNewFromNative(native unsafe.Pointer) *GutterRendererTextClass {
 	return &GutterRendererTextClass{native: native}
 }
 
@@ -1396,10 +1397,10 @@ func gutterRendererTextPrivateStruct_Set() error {
 }
 
 type GutterRendererTextPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GutterRendererTextPrivateNewFromNative(native uintptr) *GutterRendererTextPrivate {
+func GutterRendererTextPrivateNewFromNative(native unsafe.Pointer) *GutterRendererTextPrivate {
 	return &GutterRendererTextPrivate{native: native}
 }
 
@@ -1430,10 +1431,10 @@ func languageClassStruct_Set() error {
 }
 
 type LanguageClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageClassNewFromNative(native uintptr) *LanguageClass {
+func LanguageClassNewFromNative(native unsafe.Pointer) *LanguageClass {
 	return &LanguageClass{native: native}
 }
 
@@ -1476,10 +1477,10 @@ func languageManagerClassStruct_Set() error {
 }
 
 type LanguageManagerClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageManagerClassNewFromNative(native uintptr) *LanguageManagerClass {
+func LanguageManagerClassNewFromNative(native unsafe.Pointer) *LanguageManagerClass {
 	return &LanguageManagerClass{native: native}
 }
 
@@ -1530,10 +1531,10 @@ func languageManagerPrivateStruct_Set() error {
 }
 
 type LanguageManagerPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguageManagerPrivateNewFromNative(native uintptr) *LanguageManagerPrivate {
+func LanguageManagerPrivateNewFromNative(native unsafe.Pointer) *LanguageManagerPrivate {
 	return &LanguageManagerPrivate{native: native}
 }
 
@@ -1564,10 +1565,10 @@ func languagePrivateStruct_Set() error {
 }
 
 type LanguagePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LanguagePrivateNewFromNative(native uintptr) *LanguagePrivate {
+func LanguagePrivateNewFromNative(native unsafe.Pointer) *LanguagePrivate {
 	return &LanguagePrivate{native: native}
 }
 
@@ -1598,10 +1599,10 @@ func mapClassStruct_Set() error {
 }
 
 type MapClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MapClassNewFromNative(native uintptr) *MapClass {
+func MapClassNewFromNative(native unsafe.Pointer) *MapClass {
 	return &MapClass{native: native}
 }
 
@@ -1650,10 +1651,10 @@ func markAttributesClassStruct_Set() error {
 }
 
 type MarkAttributesClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkAttributesClassNewFromNative(native uintptr) *MarkAttributesClass {
+func MarkAttributesClassNewFromNative(native unsafe.Pointer) *MarkAttributesClass {
 	return &MarkAttributesClass{native: native}
 }
 
@@ -1684,10 +1685,10 @@ func markAttributesPrivateStruct_Set() error {
 }
 
 type MarkAttributesPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkAttributesPrivateNewFromNative(native uintptr) *MarkAttributesPrivate {
+func MarkAttributesPrivateNewFromNative(native unsafe.Pointer) *MarkAttributesPrivate {
 	return &MarkAttributesPrivate{native: native}
 }
 
@@ -1718,10 +1719,10 @@ func markClassStruct_Set() error {
 }
 
 type MarkClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkClassNewFromNative(native uintptr) *MarkClass {
+func MarkClassNewFromNative(native unsafe.Pointer) *MarkClass {
 	return &MarkClass{native: native}
 }
 
@@ -1764,10 +1765,10 @@ func markPrivateStruct_Set() error {
 }
 
 type MarkPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkPrivateNewFromNative(native uintptr) *MarkPrivate {
+func MarkPrivateNewFromNative(native unsafe.Pointer) *MarkPrivate {
 	return &MarkPrivate{native: native}
 }
 
@@ -1798,10 +1799,10 @@ func printCompositorClassStruct_Set() error {
 }
 
 type PrintCompositorClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintCompositorClassNewFromNative(native uintptr) *PrintCompositorClass {
+func PrintCompositorClassNewFromNative(native unsafe.Pointer) *PrintCompositorClass {
 	return &PrintCompositorClass{native: native}
 }
 
@@ -1844,10 +1845,10 @@ func printCompositorPrivateStruct_Set() error {
 }
 
 type PrintCompositorPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrintCompositorPrivateNewFromNative(native uintptr) *PrintCompositorPrivate {
+func PrintCompositorPrivateNewFromNative(native unsafe.Pointer) *PrintCompositorPrivate {
 	return &PrintCompositorPrivate{native: native}
 }
 
@@ -1878,10 +1879,10 @@ func regionClassStruct_Set() error {
 }
 
 type RegionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegionClassNewFromNative(native uintptr) *RegionClass {
+func RegionClassNewFromNative(native unsafe.Pointer) *RegionClass {
 	return &RegionClass{native: native}
 }
 
@@ -1920,10 +1921,10 @@ func regionIterStruct_Set() error {
 }
 
 type RegionIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegionIterNewFromNative(native uintptr) *RegionIter {
+func RegionIterNewFromNative(native unsafe.Pointer) *RegionIter {
 	return &RegionIter{native: native}
 }
 
@@ -2020,10 +2021,10 @@ func searchContextClassStruct_Set() error {
 }
 
 type SearchContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchContextClassNewFromNative(native uintptr) *SearchContextClass {
+func SearchContextClassNewFromNative(native unsafe.Pointer) *SearchContextClass {
 	return &SearchContextClass{native: native}
 }
 
@@ -2062,10 +2063,10 @@ func searchContextPrivateStruct_Set() error {
 }
 
 type SearchContextPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchContextPrivateNewFromNative(native uintptr) *SearchContextPrivate {
+func SearchContextPrivateNewFromNative(native unsafe.Pointer) *SearchContextPrivate {
 	return &SearchContextPrivate{native: native}
 }
 
@@ -2096,10 +2097,10 @@ func searchSettingsClassStruct_Set() error {
 }
 
 type SearchSettingsClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchSettingsClassNewFromNative(native uintptr) *SearchSettingsClass {
+func SearchSettingsClassNewFromNative(native unsafe.Pointer) *SearchSettingsClass {
 	return &SearchSettingsClass{native: native}
 }
 
@@ -2138,10 +2139,10 @@ func searchSettingsPrivateStruct_Set() error {
 }
 
 type SearchSettingsPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SearchSettingsPrivateNewFromNative(native uintptr) *SearchSettingsPrivate {
+func SearchSettingsPrivateNewFromNative(native unsafe.Pointer) *SearchSettingsPrivate {
 	return &SearchSettingsPrivate{native: native}
 }
 
@@ -2172,10 +2173,10 @@ func spaceDrawerClassStruct_Set() error {
 }
 
 type SpaceDrawerClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpaceDrawerClassNewFromNative(native uintptr) *SpaceDrawerClass {
+func SpaceDrawerClassNewFromNative(native unsafe.Pointer) *SpaceDrawerClass {
 	return &SpaceDrawerClass{native: native}
 }
 
@@ -2214,10 +2215,10 @@ func spaceDrawerPrivateStruct_Set() error {
 }
 
 type SpaceDrawerPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SpaceDrawerPrivateNewFromNative(native uintptr) *SpaceDrawerPrivate {
+func SpaceDrawerPrivateNewFromNative(native unsafe.Pointer) *SpaceDrawerPrivate {
 	return &SpaceDrawerPrivate{native: native}
 }
 
@@ -2248,10 +2249,10 @@ func styleClassStruct_Set() error {
 }
 
 type StyleClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleClassNewFromNative(native uintptr) *StyleClass {
+func StyleClassNewFromNative(native unsafe.Pointer) *StyleClass {
 	return &StyleClass{native: native}
 }
 
@@ -2282,10 +2283,10 @@ func styleSchemeChooserButtonClassStruct_Set() error {
 }
 
 type StyleSchemeChooserButtonClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeChooserButtonClassNewFromNative(native uintptr) *StyleSchemeChooserButtonClass {
+func StyleSchemeChooserButtonClassNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButtonClass {
 	return &StyleSchemeChooserButtonClass{native: native}
 }
 
@@ -2320,10 +2321,10 @@ func styleSchemeChooserInterfaceStruct_Set() error {
 }
 
 type StyleSchemeChooserInterface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeChooserInterfaceNewFromNative(native uintptr) *StyleSchemeChooserInterface {
+func StyleSchemeChooserInterfaceNewFromNative(native unsafe.Pointer) *StyleSchemeChooserInterface {
 	return &StyleSchemeChooserInterface{native: native}
 }
 
@@ -2370,10 +2371,10 @@ func styleSchemeChooserWidgetClassStruct_Set() error {
 }
 
 type StyleSchemeChooserWidgetClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeChooserWidgetClassNewFromNative(native uintptr) *StyleSchemeChooserWidgetClass {
+func StyleSchemeChooserWidgetClassNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidgetClass {
 	return &StyleSchemeChooserWidgetClass{native: native}
 }
 
@@ -2408,10 +2409,10 @@ func styleSchemeClassStruct_Set() error {
 }
 
 type StyleSchemeClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeClassNewFromNative(native uintptr) *StyleSchemeClass {
+func StyleSchemeClassNewFromNative(native unsafe.Pointer) *StyleSchemeClass {
 	return &StyleSchemeClass{native: native}
 }
 
@@ -2454,10 +2455,10 @@ func styleSchemeManagerClassStruct_Set() error {
 }
 
 type StyleSchemeManagerClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeManagerClassNewFromNative(native uintptr) *StyleSchemeManagerClass {
+func StyleSchemeManagerClassNewFromNative(native unsafe.Pointer) *StyleSchemeManagerClass {
 	return &StyleSchemeManagerClass{native: native}
 }
 
@@ -2508,10 +2509,10 @@ func styleSchemeManagerPrivateStruct_Set() error {
 }
 
 type StyleSchemeManagerPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemeManagerPrivateNewFromNative(native uintptr) *StyleSchemeManagerPrivate {
+func StyleSchemeManagerPrivateNewFromNative(native unsafe.Pointer) *StyleSchemeManagerPrivate {
 	return &StyleSchemeManagerPrivate{native: native}
 }
 
@@ -2542,10 +2543,10 @@ func styleSchemePrivateStruct_Set() error {
 }
 
 type StyleSchemePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StyleSchemePrivateNewFromNative(native uintptr) *StyleSchemePrivate {
+func StyleSchemePrivateNewFromNative(native unsafe.Pointer) *StyleSchemePrivate {
 	return &StyleSchemePrivate{native: native}
 }
 
@@ -2576,10 +2577,10 @@ func tagClassStruct_Set() error {
 }
 
 type TagClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TagClassNewFromNative(native uintptr) *TagClass {
+func TagClassNewFromNative(native unsafe.Pointer) *TagClass {
 	return &TagClass{native: native}
 }
 
@@ -2618,10 +2619,10 @@ func undoManagerIfaceStruct_Set() error {
 }
 
 type UndoManagerIface struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func UndoManagerIfaceNewFromNative(native uintptr) *UndoManagerIface {
+func UndoManagerIfaceNewFromNative(native unsafe.Pointer) *UndoManagerIface {
 	return &UndoManagerIface{native: native}
 }
 
@@ -2688,10 +2689,10 @@ func viewClassStruct_Set() error {
 }
 
 type ViewClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ViewClassNewFromNative(native uintptr) *ViewClass {
+func ViewClassNewFromNative(native unsafe.Pointer) *ViewClass {
 	return &ViewClass{native: native}
 }
 
@@ -2750,10 +2751,10 @@ func viewPrivateStruct_Set() error {
 }
 
 type ViewPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ViewPrivateNewFromNative(native uintptr) *ViewPrivate {
+func ViewPrivateNewFromNative(native unsafe.Pointer) *ViewPrivate {
 	return &ViewPrivate{native: native}
 }
 

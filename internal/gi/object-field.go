@@ -35,7 +35,7 @@ func objectFieldInfo(objectInfo *Object, name string) (*C.GIFieldInfo, bool) {
 	return fieldInfo, true
 }
 
-func ObjectFieldGet(objectInfo *Object, object uintptr, name string) Argument {
+func ObjectFieldGet(objectInfo *Object, object unsafe.Pointer, name string) Argument {
 	var value Argument
 
 	info, gotInfo := objectFieldInfo(objectInfo, name)
@@ -58,7 +58,7 @@ func ObjectFieldGet(objectInfo *Object, object uintptr, name string) Argument {
 	return value
 }
 
-func ObjectFieldSet(objectInfo *Object, object uintptr, name string, value Argument) {
+func ObjectFieldSet(objectInfo *Object, object unsafe.Pointer, name string, value Argument) {
 	info, gotInfo := objectFieldInfo(objectInfo, name)
 	if !gotInfo {
 		return

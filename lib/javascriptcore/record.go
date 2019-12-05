@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var globalContextRefStruct *gi.Struct
@@ -20,10 +21,10 @@ func globalContextRefStruct_Set() error {
 }
 
 type GlobalContextRef struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func GlobalContextRefNewFromNative(native uintptr) *GlobalContextRef {
+func GlobalContextRefNewFromNative(native unsafe.Pointer) *GlobalContextRef {
 	return &GlobalContextRef{native: native}
 }
 
@@ -110,10 +111,10 @@ func valueRefStruct_Set() error {
 }
 
 type ValueRef struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueRefNewFromNative(native uintptr) *ValueRef {
+func ValueRefNewFromNative(native unsafe.Pointer) *ValueRef {
 	return &ValueRef{native: native}
 }
 
@@ -144,10 +145,10 @@ func stringRefStruct_Set() error {
 }
 
 type StringRef struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StringRefNewFromNative(native uintptr) *StringRef {
+func StringRefNewFromNative(native unsafe.Pointer) *StringRef {
 	return &StringRef{native: native}
 }
 
@@ -302,10 +303,10 @@ func classClassStruct_Set() error {
 }
 
 type ClassClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClassClassNewFromNative(native uintptr) *ClassClass {
+func ClassClassNewFromNative(native unsafe.Pointer) *ClassClass {
 	return &ClassClass{native: native}
 }
 
@@ -336,10 +337,10 @@ func classVTableStruct_Set() error {
 }
 
 type ClassVTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ClassVTableNewFromNative(native uintptr) *ClassVTable {
+func ClassVTableNewFromNative(native unsafe.Pointer) *ClassVTable {
 	return &ClassVTable{native: native}
 }
 
@@ -406,10 +407,10 @@ func contextClassStruct_Set() error {
 }
 
 type ContextClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextClassNewFromNative(native uintptr) *ContextClass {
+func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
 	return &ContextClass{native: native}
 }
 
@@ -460,10 +461,10 @@ func contextPrivateStruct_Set() error {
 }
 
 type ContextPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ContextPrivateNewFromNative(native uintptr) *ContextPrivate {
+func ContextPrivateNewFromNative(native unsafe.Pointer) *ContextPrivate {
 	return &ContextPrivate{native: native}
 }
 
@@ -494,10 +495,10 @@ func exceptionClassStruct_Set() error {
 }
 
 type ExceptionClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ExceptionClassNewFromNative(native uintptr) *ExceptionClass {
+func ExceptionClassNewFromNative(native unsafe.Pointer) *ExceptionClass {
 	return &ExceptionClass{native: native}
 }
 
@@ -548,10 +549,10 @@ func exceptionPrivateStruct_Set() error {
 }
 
 type ExceptionPrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ExceptionPrivateNewFromNative(native uintptr) *ExceptionPrivate {
+func ExceptionPrivateNewFromNative(native unsafe.Pointer) *ExceptionPrivate {
 	return &ExceptionPrivate{native: native}
 }
 
@@ -582,10 +583,10 @@ func valueClassStruct_Set() error {
 }
 
 type ValueClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValueClassNewFromNative(native uintptr) *ValueClass {
+func ValueClassNewFromNative(native unsafe.Pointer) *ValueClass {
 	return &ValueClass{native: native}
 }
 
@@ -636,10 +637,10 @@ func valuePrivateStruct_Set() error {
 }
 
 type ValuePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ValuePrivateNewFromNative(native uintptr) *ValuePrivate {
+func ValuePrivateNewFromNative(native unsafe.Pointer) *ValuePrivate {
 	return &ValuePrivate{native: native}
 }
 
@@ -670,10 +671,10 @@ func virtualMachineClassStruct_Set() error {
 }
 
 type VirtualMachineClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VirtualMachineClassNewFromNative(native uintptr) *VirtualMachineClass {
+func VirtualMachineClassNewFromNative(native unsafe.Pointer) *VirtualMachineClass {
 	return &VirtualMachineClass{native: native}
 }
 
@@ -724,10 +725,10 @@ func virtualMachinePrivateStruct_Set() error {
 }
 
 type VirtualMachinePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VirtualMachinePrivateNewFromNative(native uintptr) *VirtualMachinePrivate {
+func VirtualMachinePrivateNewFromNative(native unsafe.Pointer) *VirtualMachinePrivate {
 	return &VirtualMachinePrivate{native: native}
 }
 
@@ -758,10 +759,10 @@ func weakValueClassStruct_Set() error {
 }
 
 type WeakValueClass struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WeakValueClassNewFromNative(native uintptr) *WeakValueClass {
+func WeakValueClassNewFromNative(native unsafe.Pointer) *WeakValueClass {
 	return &WeakValueClass{native: native}
 }
 
@@ -812,10 +813,10 @@ func weakValuePrivateStruct_Set() error {
 }
 
 type WeakValuePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func WeakValuePrivateNewFromNative(native uintptr) *WeakValuePrivate {
+func WeakValuePrivateNewFromNative(native unsafe.Pointer) *WeakValuePrivate {
 	return &WeakValuePrivate{native: native}
 }
 

@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	"runtime"
 	"sync"
+	"unsafe"
 )
 
 var arrayStruct *gi.Struct
@@ -20,10 +21,10 @@ func arrayStruct_Set() error {
 }
 
 type Array struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ArrayNewFromNative(native uintptr) *Array {
+func ArrayNewFromNative(native unsafe.Pointer) *Array {
 	return &Array{native: native}
 }
 
@@ -82,10 +83,10 @@ func asyncQueueStruct_Set() error {
 }
 
 type AsyncQueue struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func AsyncQueueNewFromNative(native uintptr) *AsyncQueue {
+func AsyncQueueNewFromNative(native unsafe.Pointer) *AsyncQueue {
 	return &AsyncQueue{native: native}
 }
 
@@ -388,10 +389,10 @@ func bookmarkFileStruct_Set() error {
 }
 
 type BookmarkFile struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BookmarkFileNewFromNative(native uintptr) *BookmarkFile {
+func BookmarkFileNewFromNative(native unsafe.Pointer) *BookmarkFile {
 	return &BookmarkFile{native: native}
 }
 
@@ -1597,10 +1598,10 @@ func byteArrayStruct_Set() error {
 }
 
 type ByteArray struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ByteArrayNewFromNative(native uintptr) *ByteArray {
+func ByteArrayNewFromNative(native unsafe.Pointer) *ByteArray {
 	return &ByteArray{native: native}
 }
 
@@ -1659,10 +1660,10 @@ func bytesStruct_Set() error {
 }
 
 type Bytes struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func BytesNewFromNative(native uintptr) *Bytes {
+func BytesNewFromNative(native unsafe.Pointer) *Bytes {
 	return &Bytes{native: native}
 }
 
@@ -2002,10 +2003,10 @@ func checksumStruct_Set() error {
 }
 
 type Checksum struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ChecksumNewFromNative(native uintptr) *Checksum {
+func ChecksumNewFromNative(native unsafe.Pointer) *Checksum {
 	return &Checksum{native: native}
 }
 
@@ -2177,10 +2178,10 @@ func condStruct_Set() error {
 }
 
 type Cond struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func CondNewFromNative(native uintptr) *Cond {
+func CondNewFromNative(native unsafe.Pointer) *Cond {
 	return &Cond{native: native}
 }
 
@@ -2327,10 +2328,10 @@ func dataStruct_Set() error {
 }
 
 type Data struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DataNewFromNative(native uintptr) *Data {
+func DataNewFromNative(native unsafe.Pointer) *Data {
 	return &Data{native: native}
 }
 
@@ -2361,10 +2362,10 @@ func dateStruct_Set() error {
 }
 
 type Date struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DateNewFromNative(native uintptr) *Date {
+func DateNewFromNative(native unsafe.Pointer) *Date {
 	return &Date{native: native}
 }
 
@@ -3597,10 +3598,10 @@ func dateTimeStruct_Set() error {
 }
 
 type DateTime struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DateTimeNewFromNative(native uintptr) *DateTime {
+func DateTimeNewFromNative(native unsafe.Pointer) *DateTime {
 	return &DateTime{native: native}
 }
 
@@ -5149,10 +5150,10 @@ func debugKeyStruct_Set() error {
 }
 
 type DebugKey struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DebugKeyNewFromNative(native uintptr) *DebugKey {
+func DebugKeyNewFromNative(native unsafe.Pointer) *DebugKey {
 	return &DebugKey{native: native}
 }
 
@@ -5211,10 +5212,10 @@ func dirStruct_Set() error {
 }
 
 type Dir struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func DirNewFromNative(native uintptr) *Dir {
+func DirNewFromNative(native unsafe.Pointer) *Dir {
 	return &Dir{native: native}
 }
 
@@ -5333,10 +5334,10 @@ func errorStruct_Set() error {
 }
 
 type Error struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ErrorNewFromNative(native uintptr) *Error {
+func ErrorNewFromNative(native unsafe.Pointer) *Error {
 	return &Error{native: native}
 }
 
@@ -5526,10 +5527,10 @@ func hashTableStruct_Set() error {
 }
 
 type HashTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HashTableNewFromNative(native uintptr) *HashTable {
+func HashTableNewFromNative(native unsafe.Pointer) *HashTable {
 	return &HashTable{native: native}
 }
 
@@ -5560,10 +5561,10 @@ func hashTableIterStruct_Set() error {
 }
 
 type HashTableIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HashTableIterNewFromNative(native uintptr) *HashTableIter {
+func HashTableIterNewFromNative(native unsafe.Pointer) *HashTableIter {
 	return &HashTableIter{native: native}
 }
 
@@ -5658,10 +5659,10 @@ func hmacStruct_Set() error {
 }
 
 type Hmac struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HmacNewFromNative(native uintptr) *Hmac {
+func HmacNewFromNative(native unsafe.Pointer) *Hmac {
 	return &Hmac{native: native}
 }
 
@@ -5820,10 +5821,10 @@ func hookStruct_Set() error {
 }
 
 type Hook struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HookNewFromNative(native uintptr) *Hook {
+func HookNewFromNative(native unsafe.Pointer) *Hook {
 	return &Hook{native: native}
 }
 
@@ -5969,10 +5970,10 @@ func hookListStruct_Set() error {
 }
 
 type HookList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func HookListNewFromNative(native uintptr) *HookList {
+func HookListNewFromNative(native unsafe.Pointer) *HookList {
 	return &HookList{native: native}
 }
 
@@ -6190,10 +6191,10 @@ func iConvStruct_Set() error {
 }
 
 type IConv struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IConvNewFromNative(native uintptr) *IConv {
+func IConvNewFromNative(native unsafe.Pointer) *IConv {
 	return &IConv{native: native}
 }
 
@@ -6258,10 +6259,10 @@ func iOChannelStruct_Set() error {
 }
 
 type IOChannel struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOChannelNewFromNative(native uintptr) *IOChannel {
+func IOChannelNewFromNative(native unsafe.Pointer) *IOChannel {
 	return &IOChannel{native: native}
 }
 
@@ -7090,10 +7091,10 @@ func iOFuncsStruct_Set() error {
 }
 
 type IOFuncs struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func IOFuncsNewFromNative(native uintptr) *IOFuncs {
+func IOFuncsNewFromNative(native unsafe.Pointer) *IOFuncs {
 	return &IOFuncs{native: native}
 }
 
@@ -7156,10 +7157,10 @@ func keyFileStruct_Set() error {
 }
 
 type KeyFile struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func KeyFileNewFromNative(native uintptr) *KeyFile {
+func KeyFileNewFromNative(native unsafe.Pointer) *KeyFile {
 	return &KeyFile{native: native}
 }
 
@@ -8471,10 +8472,10 @@ func listStruct_Set() error {
 }
 
 type List struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ListNewFromNative(native uintptr) *List {
+func ListNewFromNative(native unsafe.Pointer) *List {
 	return &List{native: native}
 }
 
@@ -8517,10 +8518,10 @@ func logFieldStruct_Set() error {
 }
 
 type LogField struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func LogFieldNewFromNative(native uintptr) *LogField {
+func LogFieldNewFromNative(native unsafe.Pointer) *LogField {
 	return &LogField{native: native}
 }
 
@@ -8583,10 +8584,10 @@ func mainContextStruct_Set() error {
 }
 
 type MainContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MainContextNewFromNative(native uintptr) *MainContext {
+func MainContextNewFromNative(native unsafe.Pointer) *MainContext {
 	return &MainContext{native: native}
 }
 
@@ -9105,10 +9106,10 @@ func mainLoopStruct_Set() error {
 }
 
 type MainLoop struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MainLoopNewFromNative(native uintptr) *MainLoop {
+func MainLoopNewFromNative(native unsafe.Pointer) *MainLoop {
 	return &MainLoop{native: native}
 }
 
@@ -9337,10 +9338,10 @@ func mappedFileStruct_Set() error {
 }
 
 type MappedFile struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MappedFileNewFromNative(native uintptr) *MappedFile {
+func MappedFileNewFromNative(native unsafe.Pointer) *MappedFile {
 	return &MappedFile{native: native}
 }
 
@@ -9606,10 +9607,10 @@ func markupParseContextStruct_Set() error {
 }
 
 type MarkupParseContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkupParseContextNewFromNative(native uintptr) *MarkupParseContext {
+func MarkupParseContextNewFromNative(native unsafe.Pointer) *MarkupParseContext {
 	return &MarkupParseContext{native: native}
 }
 
@@ -9851,10 +9852,10 @@ func markupParserStruct_Set() error {
 }
 
 type MarkupParser struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MarkupParserNewFromNative(native uintptr) *MarkupParser {
+func MarkupParserNewFromNative(native unsafe.Pointer) *MarkupParser {
 	return &MarkupParser{native: native}
 }
 
@@ -9905,10 +9906,10 @@ func matchInfoStruct_Set() error {
 }
 
 type MatchInfo struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MatchInfoNewFromNative(native uintptr) *MatchInfo {
+func MatchInfoNewFromNative(native unsafe.Pointer) *MatchInfo {
 	return &MatchInfo{native: native}
 }
 
@@ -10418,10 +10419,10 @@ func memVTableStruct_Set() error {
 }
 
 type MemVTable struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func MemVTableNewFromNative(native uintptr) *MemVTable {
+func MemVTableNewFromNative(native unsafe.Pointer) *MemVTable {
 	return &MemVTable{native: native}
 }
 
@@ -10476,10 +10477,10 @@ func nodeStruct_Set() error {
 }
 
 type Node struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func NodeNewFromNative(native uintptr) *Node {
+func NodeNewFromNative(native unsafe.Pointer) *Node {
 	return &Node{native: native}
 }
 
@@ -11158,10 +11159,10 @@ func onceStruct_Set() error {
 }
 
 type Once struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OnceNewFromNative(native uintptr) *Once {
+func OnceNewFromNative(native unsafe.Pointer) *Once {
 	return &Once{native: native}
 }
 
@@ -11212,10 +11213,10 @@ func optionContextStruct_Set() error {
 }
 
 type OptionContext struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OptionContextNewFromNative(native uintptr) *OptionContext {
+func OptionContextNewFromNative(native unsafe.Pointer) *OptionContext {
 	return &OptionContext{native: native}
 }
 
@@ -11768,10 +11769,10 @@ func optionEntryStruct_Set() error {
 }
 
 type OptionEntry struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OptionEntryNewFromNative(native uintptr) *OptionEntry {
+func OptionEntryNewFromNative(native unsafe.Pointer) *OptionEntry {
 	return &OptionEntry{native: native}
 }
 
@@ -11890,10 +11891,10 @@ func optionGroupStruct_Set() error {
 }
 
 type OptionGroup struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func OptionGroupNewFromNative(native uintptr) *OptionGroup {
+func OptionGroupNewFromNative(native unsafe.Pointer) *OptionGroup {
 	return &OptionGroup{native: native}
 }
 
@@ -12063,10 +12064,10 @@ func patternSpecStruct_Set() error {
 }
 
 type PatternSpec struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PatternSpecNewFromNative(native uintptr) *PatternSpec {
+func PatternSpecNewFromNative(native unsafe.Pointer) *PatternSpec {
 	return &PatternSpec{native: native}
 }
 
@@ -12158,10 +12159,10 @@ func pollFDStruct_Set() error {
 }
 
 type PollFD struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PollFDNewFromNative(native uintptr) *PollFD {
+func PollFDNewFromNative(native unsafe.Pointer) *PollFD {
 	return &PollFD{native: native}
 }
 
@@ -12234,10 +12235,10 @@ func privateStruct_Set() error {
 }
 
 type Private struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PrivateNewFromNative(native uintptr) *Private {
+func PrivateNewFromNative(native unsafe.Pointer) *Private {
 	return &Private{native: native}
 }
 
@@ -12274,10 +12275,10 @@ func ptrArrayStruct_Set() error {
 }
 
 type PtrArray struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func PtrArrayNewFromNative(native uintptr) *PtrArray {
+func PtrArrayNewFromNative(native unsafe.Pointer) *PtrArray {
 	return &PtrArray{native: native}
 }
 
@@ -12326,10 +12327,10 @@ func queueStruct_Set() error {
 }
 
 type Queue struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func QueueNewFromNative(native uintptr) *Queue {
+func QueueNewFromNative(native unsafe.Pointer) *Queue {
 	return &Queue{native: native}
 }
 
@@ -12660,10 +12661,10 @@ func rWLockStruct_Set() error {
 }
 
 type RWLock struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RWLockNewFromNative(native uintptr) *RWLock {
+func RWLockNewFromNative(native unsafe.Pointer) *RWLock {
 	return &RWLock{native: native}
 }
 
@@ -12926,10 +12927,10 @@ func randStruct_Set() error {
 }
 
 type Rand struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RandNewFromNative(native uintptr) *Rand {
+func RandNewFromNative(native unsafe.Pointer) *Rand {
 	return &Rand{native: native}
 }
 
@@ -13211,10 +13212,10 @@ func recMutexStruct_Set() error {
 }
 
 type RecMutex struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RecMutexNewFromNative(native uintptr) *RecMutex {
+func RecMutexNewFromNative(native unsafe.Pointer) *RecMutex {
 	return &RecMutex{native: native}
 }
 
@@ -13389,10 +13390,10 @@ func regexStruct_Set() error {
 }
 
 type Regex struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func RegexNewFromNative(native uintptr) *Regex {
+func RegexNewFromNative(native unsafe.Pointer) *Regex {
 	return &Regex{native: native}
 }
 
@@ -13685,10 +13686,10 @@ func sListStruct_Set() error {
 }
 
 type SList struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SListNewFromNative(native uintptr) *SList {
+func SListNewFromNative(native unsafe.Pointer) *SList {
 	return &SList{native: native}
 }
 
@@ -13727,10 +13728,10 @@ func scannerStruct_Set() error {
 }
 
 type Scanner struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScannerNewFromNative(native uintptr) *Scanner {
+func ScannerNewFromNative(native unsafe.Pointer) *Scanner {
 	return &Scanner{native: native}
 }
 
@@ -14349,10 +14350,10 @@ func scannerConfigStruct_Set() error {
 }
 
 type ScannerConfig struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ScannerConfigNewFromNative(native uintptr) *ScannerConfig {
+func ScannerConfigNewFromNative(native unsafe.Pointer) *ScannerConfig {
 	return &ScannerConfig{native: native}
 }
 
@@ -14747,10 +14748,10 @@ func sequenceStruct_Set() error {
 }
 
 type Sequence struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SequenceNewFromNative(native uintptr) *Sequence {
+func SequenceNewFromNative(native unsafe.Pointer) *Sequence {
 	return &Sequence{native: native}
 }
 
@@ -14992,10 +14993,10 @@ func sequenceIterStruct_Set() error {
 }
 
 type SequenceIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SequenceIterNewFromNative(native uintptr) *SequenceIter {
+func SequenceIterNewFromNative(native unsafe.Pointer) *SequenceIter {
 	return &SequenceIter{native: native}
 }
 
@@ -15284,10 +15285,10 @@ func sourceStruct_Set() error {
 }
 
 type Source struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SourceNewFromNative(native uintptr) *Source {
+func SourceNewFromNative(native unsafe.Pointer) *Source {
 	return &Source{native: native}
 }
 
@@ -16015,10 +16016,10 @@ func sourceCallbackFuncsStruct_Set() error {
 }
 
 type SourceCallbackFuncs struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SourceCallbackFuncsNewFromNative(native uintptr) *SourceCallbackFuncs {
+func SourceCallbackFuncsNewFromNative(native unsafe.Pointer) *SourceCallbackFuncs {
 	return &SourceCallbackFuncs{native: native}
 }
 
@@ -16061,10 +16062,10 @@ func sourceFuncsStruct_Set() error {
 }
 
 type SourceFuncs struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SourceFuncsNewFromNative(native uintptr) *SourceFuncs {
+func SourceFuncsNewFromNative(native unsafe.Pointer) *SourceFuncs {
 	return &SourceFuncs{native: native}
 }
 
@@ -16111,10 +16112,10 @@ func sourcePrivateStruct_Set() error {
 }
 
 type SourcePrivate struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func SourcePrivateNewFromNative(native uintptr) *SourcePrivate {
+func SourcePrivateNewFromNative(native unsafe.Pointer) *SourcePrivate {
 	return &SourcePrivate{native: native}
 }
 
@@ -16145,10 +16146,10 @@ func statBufStruct_Set() error {
 }
 
 type StatBuf struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StatBufNewFromNative(native uintptr) *StatBuf {
+func StatBufNewFromNative(native unsafe.Pointer) *StatBuf {
 	return &StatBuf{native: native}
 }
 
@@ -16179,10 +16180,10 @@ func string_Struct_Set() error {
 }
 
 type String struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StringNewFromNative(native uintptr) *String {
+func StringNewFromNative(native unsafe.Pointer) *String {
 	return &String{native: native}
 }
 
@@ -17067,10 +17068,10 @@ func stringChunkStruct_Set() error {
 }
 
 type StringChunk struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func StringChunkNewFromNative(native uintptr) *StringChunk {
+func StringChunkNewFromNative(native unsafe.Pointer) *StringChunk {
 	return &StringChunk{native: native}
 }
 
@@ -17257,10 +17258,10 @@ func testCaseStruct_Set() error {
 }
 
 type TestCase struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestCaseNewFromNative(native uintptr) *TestCase {
+func TestCaseNewFromNative(native unsafe.Pointer) *TestCase {
 	return &TestCase{native: native}
 }
 
@@ -17291,10 +17292,10 @@ func testConfigStruct_Set() error {
 }
 
 type TestConfig struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestConfigNewFromNative(native uintptr) *TestConfig {
+func TestConfigNewFromNative(native unsafe.Pointer) *TestConfig {
 	return &TestConfig{native: native}
 }
 
@@ -17409,10 +17410,10 @@ func testLogBufferStruct_Set() error {
 }
 
 type TestLogBuffer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestLogBufferNewFromNative(native uintptr) *TestLogBuffer {
+func TestLogBufferNewFromNative(native unsafe.Pointer) *TestLogBuffer {
 	return &TestLogBuffer{native: native}
 }
 
@@ -17533,10 +17534,10 @@ func testLogMsgStruct_Set() error {
 }
 
 type TestLogMsg struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestLogMsgNewFromNative(native uintptr) *TestLogMsg {
+func TestLogMsgNewFromNative(native unsafe.Pointer) *TestLogMsg {
 	return &TestLogMsg{native: native}
 }
 
@@ -17655,10 +17656,10 @@ func testSuiteStruct_Set() error {
 }
 
 type TestSuite struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TestSuiteNewFromNative(native uintptr) *TestSuite {
+func TestSuiteNewFromNative(native unsafe.Pointer) *TestSuite {
 	return &TestSuite{native: native}
 }
 
@@ -17747,10 +17748,10 @@ func threadStruct_Set() error {
 }
 
 type Thread struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThreadNewFromNative(native uintptr) *Thread {
+func ThreadNewFromNative(native unsafe.Pointer) *Thread {
 	return &Thread{native: native}
 }
 
@@ -17832,10 +17833,10 @@ func threadPoolStruct_Set() error {
 }
 
 type ThreadPool struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func ThreadPoolNewFromNative(native uintptr) *ThreadPool {
+func ThreadPoolNewFromNative(native unsafe.Pointer) *ThreadPool {
 	return &ThreadPool{native: native}
 }
 
@@ -18053,10 +18054,10 @@ func timeValStruct_Set() error {
 }
 
 type TimeVal struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TimeValNewFromNative(native uintptr) *TimeVal {
+func TimeValNewFromNative(native unsafe.Pointer) *TimeVal {
 	return &TimeVal{native: native}
 }
 
@@ -18176,10 +18177,10 @@ func timeZoneStruct_Set() error {
 }
 
 type TimeZone struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TimeZoneNewFromNative(native uintptr) *TimeZone {
+func TimeZoneNewFromNative(native unsafe.Pointer) *TimeZone {
 	return &TimeZone{native: native}
 }
 
@@ -18578,10 +18579,10 @@ func timerStruct_Set() error {
 }
 
 type Timer struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TimerNewFromNative(native uintptr) *Timer {
+func TimerNewFromNative(native unsafe.Pointer) *Timer {
 	return &Timer{native: native}
 }
 
@@ -18817,10 +18818,10 @@ func trashStackStruct_Set() error {
 }
 
 type TrashStack struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TrashStackNewFromNative(native uintptr) *TrashStack {
+func TrashStackNewFromNative(native unsafe.Pointer) *TrashStack {
 	return &TrashStack{native: native}
 }
 
@@ -18865,10 +18866,10 @@ func treeStruct_Set() error {
 }
 
 type Tree struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func TreeNewFromNative(native uintptr) *Tree {
+func TreeNewFromNative(native unsafe.Pointer) *Tree {
 	return &Tree{native: native}
 }
 
@@ -19069,10 +19070,10 @@ func variantStruct_Set() error {
 }
 
 type Variant struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VariantNewFromNative(native uintptr) *Variant {
+func VariantNewFromNative(native unsafe.Pointer) *Variant {
 	return &Variant{native: native}
 }
 
@@ -21250,10 +21251,10 @@ func variantBuilderStruct_Set() error {
 }
 
 type VariantBuilder struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VariantBuilderNewFromNative(native uintptr) *VariantBuilder {
+func VariantBuilderNewFromNative(native unsafe.Pointer) *VariantBuilder {
 	return &VariantBuilder{native: native}
 }
 
@@ -21540,10 +21541,10 @@ func variantDictStruct_Set() error {
 }
 
 type VariantDict struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VariantDictNewFromNative(native uintptr) *VariantDict {
+func VariantDictNewFromNative(native unsafe.Pointer) *VariantDict {
 	return &VariantDict{native: native}
 }
 
@@ -21874,10 +21875,10 @@ func variantIterStruct_Set() error {
 }
 
 type VariantIter struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VariantIterNewFromNative(native uintptr) *VariantIter {
+func VariantIterNewFromNative(native unsafe.Pointer) *VariantIter {
 	return &VariantIter{native: native}
 }
 
@@ -22069,10 +22070,10 @@ func variantTypeStruct_Set() error {
 }
 
 type VariantType struct {
-	native uintptr
+	native unsafe.Pointer
 }
 
-func VariantTypeNewFromNative(native uintptr) *VariantType {
+func VariantTypeNewFromNative(native unsafe.Pointer) *VariantType {
 	return &VariantType{native: native}
 }
 
