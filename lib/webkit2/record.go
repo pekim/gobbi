@@ -20,7 +20,11 @@ func applicationInfoStruct_Set() error {
 }
 
 type ApplicationInfo struct {
-	Native uintptr
+	native uintptr
+}
+
+func ApplicationInfoNewFromNative(native uintptr) *ApplicationInfo {
+	return &ApplicationInfo{native: native}
 }
 
 var applicationInfoNewFunction *gi.Function
@@ -48,8 +52,7 @@ func ApplicationInfoNew() *ApplicationInfo {
 		ret = applicationInfoNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &ApplicationInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := ApplicationInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -72,7 +75,7 @@ func applicationInfoGetNameFunction_Set() error {
 // GetName is a representation of the C type webkit_application_info_get_name.
 func (recv *ApplicationInfo) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -104,7 +107,7 @@ func applicationInfoGetVersionFunction_Set() error {
 // GetVersion is a representation of the C type webkit_application_info_get_version.
 func (recv *ApplicationInfo) GetVersion() (uint64, uint64, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [3]gi.Argument
 
@@ -138,7 +141,7 @@ func applicationInfoRefFunction_Set() error {
 // Ref is a representation of the C type webkit_application_info_ref.
 func (recv *ApplicationInfo) Ref() *ApplicationInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -147,8 +150,7 @@ func (recv *ApplicationInfo) Ref() *ApplicationInfo {
 		ret = applicationInfoRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ApplicationInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := ApplicationInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -171,7 +173,7 @@ func applicationInfoSetNameFunction_Set() error {
 // SetName is a representation of the C type webkit_application_info_set_name.
 func (recv *ApplicationInfo) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	err := applicationInfoSetNameFunction_Set()
@@ -200,7 +202,7 @@ func applicationInfoSetVersionFunction_Set() error {
 // SetVersion is a representation of the C type webkit_application_info_set_version.
 func (recv *ApplicationInfo) SetVersion(major uint64, minor uint64, micro uint64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(major)
 	inArgs[2].SetUint64(minor)
 	inArgs[3].SetUint64(micro)
@@ -231,7 +233,7 @@ func applicationInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_application_info_unref.
 func (recv *ApplicationInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationInfoUnrefFunction_Set()
 	if err == nil {
@@ -253,7 +255,11 @@ func authenticationRequestClassStruct_Set() error {
 }
 
 type AuthenticationRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func AuthenticationRequestClassNewFromNative(native uintptr) *AuthenticationRequestClass {
+	return &AuthenticationRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -283,13 +289,12 @@ func AuthenticationRequestClassStruct() *AuthenticationRequestClass {
 		return nil
 	}
 
-	structGo := &AuthenticationRequestClass{}
-	structGo.Native = authenticationRequestClassStruct.Alloc()
+	structGo := AuthenticationRequestClassNewFromNative(authenticationRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeAuthenticationRequestClass)
 	return structGo
 }
 func finalizeAuthenticationRequestClass(obj *AuthenticationRequestClass) {
-	authenticationRequestClassStruct.Free(obj.Native)
+	authenticationRequestClassStruct.Free(obj.native)
 }
 
 var authenticationRequestPrivateStruct *gi.Struct
@@ -304,7 +309,11 @@ func authenticationRequestPrivateStruct_Set() error {
 }
 
 type AuthenticationRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func AuthenticationRequestPrivateNewFromNative(native uintptr) *AuthenticationRequestPrivate {
+	return &AuthenticationRequestPrivate{native: native}
 }
 
 // AuthenticationRequestPrivateStruct creates an uninitialised AuthenticationRequestPrivate.
@@ -314,13 +323,12 @@ func AuthenticationRequestPrivateStruct() *AuthenticationRequestPrivate {
 		return nil
 	}
 
-	structGo := &AuthenticationRequestPrivate{}
-	structGo.Native = authenticationRequestPrivateStruct.Alloc()
+	structGo := AuthenticationRequestPrivateNewFromNative(authenticationRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeAuthenticationRequestPrivate)
 	return structGo
 }
 func finalizeAuthenticationRequestPrivate(obj *AuthenticationRequestPrivate) {
-	authenticationRequestPrivateStruct.Free(obj.Native)
+	authenticationRequestPrivateStruct.Free(obj.native)
 }
 
 var automationSessionClassStruct *gi.Struct
@@ -335,7 +343,11 @@ func automationSessionClassStruct_Set() error {
 }
 
 type AutomationSessionClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func AutomationSessionClassNewFromNative(native uintptr) *AutomationSessionClass {
+	return &AutomationSessionClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -365,13 +377,12 @@ func AutomationSessionClassStruct() *AutomationSessionClass {
 		return nil
 	}
 
-	structGo := &AutomationSessionClass{}
-	structGo.Native = automationSessionClassStruct.Alloc()
+	structGo := AutomationSessionClassNewFromNative(automationSessionClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeAutomationSessionClass)
 	return structGo
 }
 func finalizeAutomationSessionClass(obj *AutomationSessionClass) {
-	automationSessionClassStruct.Free(obj.Native)
+	automationSessionClassStruct.Free(obj.native)
 }
 
 var automationSessionPrivateStruct *gi.Struct
@@ -386,7 +397,11 @@ func automationSessionPrivateStruct_Set() error {
 }
 
 type AutomationSessionPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func AutomationSessionPrivateNewFromNative(native uintptr) *AutomationSessionPrivate {
+	return &AutomationSessionPrivate{native: native}
 }
 
 // AutomationSessionPrivateStruct creates an uninitialised AutomationSessionPrivate.
@@ -396,13 +411,12 @@ func AutomationSessionPrivateStruct() *AutomationSessionPrivate {
 		return nil
 	}
 
-	structGo := &AutomationSessionPrivate{}
-	structGo.Native = automationSessionPrivateStruct.Alloc()
+	structGo := AutomationSessionPrivateNewFromNative(automationSessionPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeAutomationSessionPrivate)
 	return structGo
 }
 func finalizeAutomationSessionPrivate(obj *AutomationSessionPrivate) {
-	automationSessionPrivateStruct.Free(obj.Native)
+	automationSessionPrivateStruct.Free(obj.native)
 }
 
 var backForwardListClassStruct *gi.Struct
@@ -417,7 +431,11 @@ func backForwardListClassStruct_Set() error {
 }
 
 type BackForwardListClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func BackForwardListClassNewFromNative(native uintptr) *BackForwardListClass {
+	return &BackForwardListClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -447,13 +465,12 @@ func BackForwardListClassStruct() *BackForwardListClass {
 		return nil
 	}
 
-	structGo := &BackForwardListClass{}
-	structGo.Native = backForwardListClassStruct.Alloc()
+	structGo := BackForwardListClassNewFromNative(backForwardListClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBackForwardListClass)
 	return structGo
 }
 func finalizeBackForwardListClass(obj *BackForwardListClass) {
-	backForwardListClassStruct.Free(obj.Native)
+	backForwardListClassStruct.Free(obj.native)
 }
 
 var backForwardListItemClassStruct *gi.Struct
@@ -468,7 +485,11 @@ func backForwardListItemClassStruct_Set() error {
 }
 
 type BackForwardListItemClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func BackForwardListItemClassNewFromNative(native uintptr) *BackForwardListItemClass {
+	return &BackForwardListItemClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
@@ -498,13 +519,12 @@ func BackForwardListItemClassStruct() *BackForwardListItemClass {
 		return nil
 	}
 
-	structGo := &BackForwardListItemClass{}
-	structGo.Native = backForwardListItemClassStruct.Alloc()
+	structGo := BackForwardListItemClassNewFromNative(backForwardListItemClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBackForwardListItemClass)
 	return structGo
 }
 func finalizeBackForwardListItemClass(obj *BackForwardListItemClass) {
-	backForwardListItemClassStruct.Free(obj.Native)
+	backForwardListItemClassStruct.Free(obj.native)
 }
 
 var backForwardListItemPrivateStruct *gi.Struct
@@ -519,7 +539,11 @@ func backForwardListItemPrivateStruct_Set() error {
 }
 
 type BackForwardListItemPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func BackForwardListItemPrivateNewFromNative(native uintptr) *BackForwardListItemPrivate {
+	return &BackForwardListItemPrivate{native: native}
 }
 
 // BackForwardListItemPrivateStruct creates an uninitialised BackForwardListItemPrivate.
@@ -529,13 +553,12 @@ func BackForwardListItemPrivateStruct() *BackForwardListItemPrivate {
 		return nil
 	}
 
-	structGo := &BackForwardListItemPrivate{}
-	structGo.Native = backForwardListItemPrivateStruct.Alloc()
+	structGo := BackForwardListItemPrivateNewFromNative(backForwardListItemPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBackForwardListItemPrivate)
 	return structGo
 }
 func finalizeBackForwardListItemPrivate(obj *BackForwardListItemPrivate) {
-	backForwardListItemPrivateStruct.Free(obj.Native)
+	backForwardListItemPrivateStruct.Free(obj.native)
 }
 
 var backForwardListPrivateStruct *gi.Struct
@@ -550,7 +573,11 @@ func backForwardListPrivateStruct_Set() error {
 }
 
 type BackForwardListPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func BackForwardListPrivateNewFromNative(native uintptr) *BackForwardListPrivate {
+	return &BackForwardListPrivate{native: native}
 }
 
 // BackForwardListPrivateStruct creates an uninitialised BackForwardListPrivate.
@@ -560,13 +587,12 @@ func BackForwardListPrivateStruct() *BackForwardListPrivate {
 		return nil
 	}
 
-	structGo := &BackForwardListPrivate{}
-	structGo.Native = backForwardListPrivateStruct.Alloc()
+	structGo := BackForwardListPrivateNewFromNative(backForwardListPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBackForwardListPrivate)
 	return structGo
 }
 func finalizeBackForwardListPrivate(obj *BackForwardListPrivate) {
-	backForwardListPrivateStruct.Free(obj.Native)
+	backForwardListPrivateStruct.Free(obj.native)
 }
 
 var colorChooserRequestClassStruct *gi.Struct
@@ -581,7 +607,11 @@ func colorChooserRequestClassStruct_Set() error {
 }
 
 type ColorChooserRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func ColorChooserRequestClassNewFromNative(native uintptr) *ColorChooserRequestClass {
+	return &ColorChooserRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -595,13 +625,12 @@ func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
 		return nil
 	}
 
-	structGo := &ColorChooserRequestClass{}
-	structGo.Native = colorChooserRequestClassStruct.Alloc()
+	structGo := ColorChooserRequestClassNewFromNative(colorChooserRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeColorChooserRequestClass)
 	return structGo
 }
 func finalizeColorChooserRequestClass(obj *ColorChooserRequestClass) {
-	colorChooserRequestClassStruct.Free(obj.Native)
+	colorChooserRequestClassStruct.Free(obj.native)
 }
 
 var colorChooserRequestPrivateStruct *gi.Struct
@@ -616,7 +645,11 @@ func colorChooserRequestPrivateStruct_Set() error {
 }
 
 type ColorChooserRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func ColorChooserRequestPrivateNewFromNative(native uintptr) *ColorChooserRequestPrivate {
+	return &ColorChooserRequestPrivate{native: native}
 }
 
 // ColorChooserRequestPrivateStruct creates an uninitialised ColorChooserRequestPrivate.
@@ -626,13 +659,12 @@ func ColorChooserRequestPrivateStruct() *ColorChooserRequestPrivate {
 		return nil
 	}
 
-	structGo := &ColorChooserRequestPrivate{}
-	structGo.Native = colorChooserRequestPrivateStruct.Alloc()
+	structGo := ColorChooserRequestPrivateNewFromNative(colorChooserRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeColorChooserRequestPrivate)
 	return structGo
 }
 func finalizeColorChooserRequestPrivate(obj *ColorChooserRequestPrivate) {
-	colorChooserRequestPrivateStruct.Free(obj.Native)
+	colorChooserRequestPrivateStruct.Free(obj.native)
 }
 
 var contextMenuClassStruct *gi.Struct
@@ -647,7 +679,11 @@ func contextMenuClassStruct_Set() error {
 }
 
 type ContextMenuClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func ContextMenuClassNewFromNative(native uintptr) *ContextMenuClass {
+	return &ContextMenuClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -677,13 +713,12 @@ func ContextMenuClassStruct() *ContextMenuClass {
 		return nil
 	}
 
-	structGo := &ContextMenuClass{}
-	structGo.Native = contextMenuClassStruct.Alloc()
+	structGo := ContextMenuClassNewFromNative(contextMenuClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeContextMenuClass)
 	return structGo
 }
 func finalizeContextMenuClass(obj *ContextMenuClass) {
-	contextMenuClassStruct.Free(obj.Native)
+	contextMenuClassStruct.Free(obj.native)
 }
 
 var contextMenuItemClassStruct *gi.Struct
@@ -698,7 +733,11 @@ func contextMenuItemClassStruct_Set() error {
 }
 
 type ContextMenuItemClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func ContextMenuItemClassNewFromNative(native uintptr) *ContextMenuItemClass {
+	return &ContextMenuItemClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
@@ -728,13 +767,12 @@ func ContextMenuItemClassStruct() *ContextMenuItemClass {
 		return nil
 	}
 
-	structGo := &ContextMenuItemClass{}
-	structGo.Native = contextMenuItemClassStruct.Alloc()
+	structGo := ContextMenuItemClassNewFromNative(contextMenuItemClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeContextMenuItemClass)
 	return structGo
 }
 func finalizeContextMenuItemClass(obj *ContextMenuItemClass) {
-	contextMenuItemClassStruct.Free(obj.Native)
+	contextMenuItemClassStruct.Free(obj.native)
 }
 
 var contextMenuItemPrivateStruct *gi.Struct
@@ -749,7 +787,11 @@ func contextMenuItemPrivateStruct_Set() error {
 }
 
 type ContextMenuItemPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func ContextMenuItemPrivateNewFromNative(native uintptr) *ContextMenuItemPrivate {
+	return &ContextMenuItemPrivate{native: native}
 }
 
 // ContextMenuItemPrivateStruct creates an uninitialised ContextMenuItemPrivate.
@@ -759,13 +801,12 @@ func ContextMenuItemPrivateStruct() *ContextMenuItemPrivate {
 		return nil
 	}
 
-	structGo := &ContextMenuItemPrivate{}
-	structGo.Native = contextMenuItemPrivateStruct.Alloc()
+	structGo := ContextMenuItemPrivateNewFromNative(contextMenuItemPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeContextMenuItemPrivate)
 	return structGo
 }
 func finalizeContextMenuItemPrivate(obj *ContextMenuItemPrivate) {
-	contextMenuItemPrivateStruct.Free(obj.Native)
+	contextMenuItemPrivateStruct.Free(obj.native)
 }
 
 var contextMenuPrivateStruct *gi.Struct
@@ -780,7 +821,11 @@ func contextMenuPrivateStruct_Set() error {
 }
 
 type ContextMenuPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func ContextMenuPrivateNewFromNative(native uintptr) *ContextMenuPrivate {
+	return &ContextMenuPrivate{native: native}
 }
 
 // ContextMenuPrivateStruct creates an uninitialised ContextMenuPrivate.
@@ -790,13 +835,12 @@ func ContextMenuPrivateStruct() *ContextMenuPrivate {
 		return nil
 	}
 
-	structGo := &ContextMenuPrivate{}
-	structGo.Native = contextMenuPrivateStruct.Alloc()
+	structGo := ContextMenuPrivateNewFromNative(contextMenuPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeContextMenuPrivate)
 	return structGo
 }
 func finalizeContextMenuPrivate(obj *ContextMenuPrivate) {
-	contextMenuPrivateStruct.Free(obj.Native)
+	contextMenuPrivateStruct.Free(obj.native)
 }
 
 var cookieManagerClassStruct *gi.Struct
@@ -811,7 +855,11 @@ func cookieManagerClassStruct_Set() error {
 }
 
 type CookieManagerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func CookieManagerClassNewFromNative(native uintptr) *CookieManagerClass {
+	return &CookieManagerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -841,13 +889,12 @@ func CookieManagerClassStruct() *CookieManagerClass {
 		return nil
 	}
 
-	structGo := &CookieManagerClass{}
-	structGo.Native = cookieManagerClassStruct.Alloc()
+	structGo := CookieManagerClassNewFromNative(cookieManagerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeCookieManagerClass)
 	return structGo
 }
 func finalizeCookieManagerClass(obj *CookieManagerClass) {
-	cookieManagerClassStruct.Free(obj.Native)
+	cookieManagerClassStruct.Free(obj.native)
 }
 
 var cookieManagerPrivateStruct *gi.Struct
@@ -862,7 +909,11 @@ func cookieManagerPrivateStruct_Set() error {
 }
 
 type CookieManagerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func CookieManagerPrivateNewFromNative(native uintptr) *CookieManagerPrivate {
+	return &CookieManagerPrivate{native: native}
 }
 
 // CookieManagerPrivateStruct creates an uninitialised CookieManagerPrivate.
@@ -872,13 +923,12 @@ func CookieManagerPrivateStruct() *CookieManagerPrivate {
 		return nil
 	}
 
-	structGo := &CookieManagerPrivate{}
-	structGo.Native = cookieManagerPrivateStruct.Alloc()
+	structGo := CookieManagerPrivateNewFromNative(cookieManagerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeCookieManagerPrivate)
 	return structGo
 }
 func finalizeCookieManagerPrivate(obj *CookieManagerPrivate) {
-	cookieManagerPrivateStruct.Free(obj.Native)
+	cookieManagerPrivateStruct.Free(obj.native)
 }
 
 var credentialStruct *gi.Struct
@@ -893,7 +943,11 @@ func credentialStruct_Set() error {
 }
 
 type Credential struct {
-	Native uintptr
+	native uintptr
+}
+
+func CredentialNewFromNative(native uintptr) *Credential {
+	return &Credential{native: native}
 }
 
 var credentialNewFunction *gi.Function
@@ -925,8 +979,7 @@ func CredentialNew(username string, password string, persistence CredentialPersi
 		ret = credentialNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credential{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -949,7 +1002,7 @@ func credentialCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_credential_copy.
 func (recv *Credential) Copy() *Credential {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -958,8 +1011,7 @@ func (recv *Credential) Copy() *Credential {
 		ret = credentialCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credential{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -982,7 +1034,7 @@ func credentialFreeFunction_Set() error {
 // Free is a representation of the C type webkit_credential_free.
 func (recv *Credential) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := credentialFreeFunction_Set()
 	if err == nil {
@@ -1010,7 +1062,7 @@ func credentialGetPasswordFunction_Set() error {
 // GetPassword is a representation of the C type webkit_credential_get_password.
 func (recv *Credential) GetPassword() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1042,7 +1094,7 @@ func credentialGetPersistenceFunction_Set() error {
 // GetPersistence is a representation of the C type webkit_credential_get_persistence.
 func (recv *Credential) GetPersistence() CredentialPersistence {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1074,7 +1126,7 @@ func credentialGetUsernameFunction_Set() error {
 // GetUsername is a representation of the C type webkit_credential_get_username.
 func (recv *Credential) GetUsername() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1106,7 +1158,7 @@ func credentialHasPasswordFunction_Set() error {
 // HasPassword is a representation of the C type webkit_credential_has_password.
 func (recv *Credential) HasPassword() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1132,7 +1184,11 @@ func deviceInfoPermissionRequestClassStruct_Set() error {
 }
 
 type DeviceInfoPermissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func DeviceInfoPermissionRequestClassNewFromNative(native uintptr) *DeviceInfoPermissionRequestClass {
+	return &DeviceInfoPermissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1162,13 +1218,12 @@ func DeviceInfoPermissionRequestClassStruct() *DeviceInfoPermissionRequestClass 
 		return nil
 	}
 
-	structGo := &DeviceInfoPermissionRequestClass{}
-	structGo.Native = deviceInfoPermissionRequestClassStruct.Alloc()
+	structGo := DeviceInfoPermissionRequestClassNewFromNative(deviceInfoPermissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDeviceInfoPermissionRequestClass)
 	return structGo
 }
 func finalizeDeviceInfoPermissionRequestClass(obj *DeviceInfoPermissionRequestClass) {
-	deviceInfoPermissionRequestClassStruct.Free(obj.Native)
+	deviceInfoPermissionRequestClassStruct.Free(obj.native)
 }
 
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
@@ -1183,7 +1238,11 @@ func deviceInfoPermissionRequestPrivateStruct_Set() error {
 }
 
 type DeviceInfoPermissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func DeviceInfoPermissionRequestPrivateNewFromNative(native uintptr) *DeviceInfoPermissionRequestPrivate {
+	return &DeviceInfoPermissionRequestPrivate{native: native}
 }
 
 // DeviceInfoPermissionRequestPrivateStruct creates an uninitialised DeviceInfoPermissionRequestPrivate.
@@ -1193,13 +1252,12 @@ func DeviceInfoPermissionRequestPrivateStruct() *DeviceInfoPermissionRequestPriv
 		return nil
 	}
 
-	structGo := &DeviceInfoPermissionRequestPrivate{}
-	structGo.Native = deviceInfoPermissionRequestPrivateStruct.Alloc()
+	structGo := DeviceInfoPermissionRequestPrivateNewFromNative(deviceInfoPermissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDeviceInfoPermissionRequestPrivate)
 	return structGo
 }
 func finalizeDeviceInfoPermissionRequestPrivate(obj *DeviceInfoPermissionRequestPrivate) {
-	deviceInfoPermissionRequestPrivateStruct.Free(obj.Native)
+	deviceInfoPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var downloadClassStruct *gi.Struct
@@ -1214,7 +1272,11 @@ func downloadClassStruct_Set() error {
 }
 
 type DownloadClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func DownloadClassNewFromNative(native uintptr) *DownloadClass {
+	return &DownloadClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1248,13 +1310,12 @@ func DownloadClassStruct() *DownloadClass {
 		return nil
 	}
 
-	structGo := &DownloadClass{}
-	structGo.Native = downloadClassStruct.Alloc()
+	structGo := DownloadClassNewFromNative(downloadClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDownloadClass)
 	return structGo
 }
 func finalizeDownloadClass(obj *DownloadClass) {
-	downloadClassStruct.Free(obj.Native)
+	downloadClassStruct.Free(obj.native)
 }
 
 var downloadPrivateStruct *gi.Struct
@@ -1269,7 +1330,11 @@ func downloadPrivateStruct_Set() error {
 }
 
 type DownloadPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func DownloadPrivateNewFromNative(native uintptr) *DownloadPrivate {
+	return &DownloadPrivate{native: native}
 }
 
 // DownloadPrivateStruct creates an uninitialised DownloadPrivate.
@@ -1279,13 +1344,12 @@ func DownloadPrivateStruct() *DownloadPrivate {
 		return nil
 	}
 
-	structGo := &DownloadPrivate{}
-	structGo.Native = downloadPrivateStruct.Alloc()
+	structGo := DownloadPrivateNewFromNative(downloadPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDownloadPrivate)
 	return structGo
 }
 func finalizeDownloadPrivate(obj *DownloadPrivate) {
-	downloadPrivateStruct.Free(obj.Native)
+	downloadPrivateStruct.Free(obj.native)
 }
 
 var editorStateClassStruct *gi.Struct
@@ -1300,7 +1364,11 @@ func editorStateClassStruct_Set() error {
 }
 
 type EditorStateClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func EditorStateClassNewFromNative(native uintptr) *EditorStateClass {
+	return &EditorStateClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1330,13 +1398,12 @@ func EditorStateClassStruct() *EditorStateClass {
 		return nil
 	}
 
-	structGo := &EditorStateClass{}
-	structGo.Native = editorStateClassStruct.Alloc()
+	structGo := EditorStateClassNewFromNative(editorStateClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeEditorStateClass)
 	return structGo
 }
 func finalizeEditorStateClass(obj *EditorStateClass) {
-	editorStateClassStruct.Free(obj.Native)
+	editorStateClassStruct.Free(obj.native)
 }
 
 var editorStatePrivateStruct *gi.Struct
@@ -1351,7 +1418,11 @@ func editorStatePrivateStruct_Set() error {
 }
 
 type EditorStatePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func EditorStatePrivateNewFromNative(native uintptr) *EditorStatePrivate {
+	return &EditorStatePrivate{native: native}
 }
 
 // EditorStatePrivateStruct creates an uninitialised EditorStatePrivate.
@@ -1361,13 +1432,12 @@ func EditorStatePrivateStruct() *EditorStatePrivate {
 		return nil
 	}
 
-	structGo := &EditorStatePrivate{}
-	structGo.Native = editorStatePrivateStruct.Alloc()
+	structGo := EditorStatePrivateNewFromNative(editorStatePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeEditorStatePrivate)
 	return structGo
 }
 func finalizeEditorStatePrivate(obj *EditorStatePrivate) {
-	editorStatePrivateStruct.Free(obj.Native)
+	editorStatePrivateStruct.Free(obj.native)
 }
 
 var faviconDatabaseClassStruct *gi.Struct
@@ -1382,7 +1452,11 @@ func faviconDatabaseClassStruct_Set() error {
 }
 
 type FaviconDatabaseClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func FaviconDatabaseClassNewFromNative(native uintptr) *FaviconDatabaseClass {
+	return &FaviconDatabaseClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1412,13 +1486,12 @@ func FaviconDatabaseClassStruct() *FaviconDatabaseClass {
 		return nil
 	}
 
-	structGo := &FaviconDatabaseClass{}
-	structGo.Native = faviconDatabaseClassStruct.Alloc()
+	structGo := FaviconDatabaseClassNewFromNative(faviconDatabaseClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFaviconDatabaseClass)
 	return structGo
 }
 func finalizeFaviconDatabaseClass(obj *FaviconDatabaseClass) {
-	faviconDatabaseClassStruct.Free(obj.Native)
+	faviconDatabaseClassStruct.Free(obj.native)
 }
 
 var faviconDatabasePrivateStruct *gi.Struct
@@ -1433,7 +1506,11 @@ func faviconDatabasePrivateStruct_Set() error {
 }
 
 type FaviconDatabasePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func FaviconDatabasePrivateNewFromNative(native uintptr) *FaviconDatabasePrivate {
+	return &FaviconDatabasePrivate{native: native}
 }
 
 // FaviconDatabasePrivateStruct creates an uninitialised FaviconDatabasePrivate.
@@ -1443,13 +1520,12 @@ func FaviconDatabasePrivateStruct() *FaviconDatabasePrivate {
 		return nil
 	}
 
-	structGo := &FaviconDatabasePrivate{}
-	structGo.Native = faviconDatabasePrivateStruct.Alloc()
+	structGo := FaviconDatabasePrivateNewFromNative(faviconDatabasePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFaviconDatabasePrivate)
 	return structGo
 }
 func finalizeFaviconDatabasePrivate(obj *FaviconDatabasePrivate) {
-	faviconDatabasePrivateStruct.Free(obj.Native)
+	faviconDatabasePrivateStruct.Free(obj.native)
 }
 
 var fileChooserRequestClassStruct *gi.Struct
@@ -1464,7 +1540,11 @@ func fileChooserRequestClassStruct_Set() error {
 }
 
 type FileChooserRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func FileChooserRequestClassNewFromNative(native uintptr) *FileChooserRequestClass {
+	return &FileChooserRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1494,13 +1574,12 @@ func FileChooserRequestClassStruct() *FileChooserRequestClass {
 		return nil
 	}
 
-	structGo := &FileChooserRequestClass{}
-	structGo.Native = fileChooserRequestClassStruct.Alloc()
+	structGo := FileChooserRequestClassNewFromNative(fileChooserRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFileChooserRequestClass)
 	return structGo
 }
 func finalizeFileChooserRequestClass(obj *FileChooserRequestClass) {
-	fileChooserRequestClassStruct.Free(obj.Native)
+	fileChooserRequestClassStruct.Free(obj.native)
 }
 
 var fileChooserRequestPrivateStruct *gi.Struct
@@ -1515,7 +1594,11 @@ func fileChooserRequestPrivateStruct_Set() error {
 }
 
 type FileChooserRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func FileChooserRequestPrivateNewFromNative(native uintptr) *FileChooserRequestPrivate {
+	return &FileChooserRequestPrivate{native: native}
 }
 
 // FileChooserRequestPrivateStruct creates an uninitialised FileChooserRequestPrivate.
@@ -1525,13 +1608,12 @@ func FileChooserRequestPrivateStruct() *FileChooserRequestPrivate {
 		return nil
 	}
 
-	structGo := &FileChooserRequestPrivate{}
-	structGo.Native = fileChooserRequestPrivateStruct.Alloc()
+	structGo := FileChooserRequestPrivateNewFromNative(fileChooserRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFileChooserRequestPrivate)
 	return structGo
 }
 func finalizeFileChooserRequestPrivate(obj *FileChooserRequestPrivate) {
-	fileChooserRequestPrivateStruct.Free(obj.Native)
+	fileChooserRequestPrivateStruct.Free(obj.native)
 }
 
 var findControllerClassStruct *gi.Struct
@@ -1546,7 +1628,11 @@ func findControllerClassStruct_Set() error {
 }
 
 type FindControllerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func FindControllerClassNewFromNative(native uintptr) *FindControllerClass {
+	return &FindControllerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1576,13 +1662,12 @@ func FindControllerClassStruct() *FindControllerClass {
 		return nil
 	}
 
-	structGo := &FindControllerClass{}
-	structGo.Native = findControllerClassStruct.Alloc()
+	structGo := FindControllerClassNewFromNative(findControllerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFindControllerClass)
 	return structGo
 }
 func finalizeFindControllerClass(obj *FindControllerClass) {
-	findControllerClassStruct.Free(obj.Native)
+	findControllerClassStruct.Free(obj.native)
 }
 
 var findControllerPrivateStruct *gi.Struct
@@ -1597,7 +1682,11 @@ func findControllerPrivateStruct_Set() error {
 }
 
 type FindControllerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func FindControllerPrivateNewFromNative(native uintptr) *FindControllerPrivate {
+	return &FindControllerPrivate{native: native}
 }
 
 // FindControllerPrivateStruct creates an uninitialised FindControllerPrivate.
@@ -1607,13 +1696,12 @@ func FindControllerPrivateStruct() *FindControllerPrivate {
 		return nil
 	}
 
-	structGo := &FindControllerPrivate{}
-	structGo.Native = findControllerPrivateStruct.Alloc()
+	structGo := FindControllerPrivateNewFromNative(findControllerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFindControllerPrivate)
 	return structGo
 }
 func finalizeFindControllerPrivate(obj *FindControllerPrivate) {
-	findControllerPrivateStruct.Free(obj.Native)
+	findControllerPrivateStruct.Free(obj.native)
 }
 
 var formSubmissionRequestClassStruct *gi.Struct
@@ -1628,7 +1716,11 @@ func formSubmissionRequestClassStruct_Set() error {
 }
 
 type FormSubmissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func FormSubmissionRequestClassNewFromNative(native uintptr) *FormSubmissionRequestClass {
+	return &FormSubmissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1658,13 +1750,12 @@ func FormSubmissionRequestClassStruct() *FormSubmissionRequestClass {
 		return nil
 	}
 
-	structGo := &FormSubmissionRequestClass{}
-	structGo.Native = formSubmissionRequestClassStruct.Alloc()
+	structGo := FormSubmissionRequestClassNewFromNative(formSubmissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFormSubmissionRequestClass)
 	return structGo
 }
 func finalizeFormSubmissionRequestClass(obj *FormSubmissionRequestClass) {
-	formSubmissionRequestClassStruct.Free(obj.Native)
+	formSubmissionRequestClassStruct.Free(obj.native)
 }
 
 var formSubmissionRequestPrivateStruct *gi.Struct
@@ -1679,7 +1770,11 @@ func formSubmissionRequestPrivateStruct_Set() error {
 }
 
 type FormSubmissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func FormSubmissionRequestPrivateNewFromNative(native uintptr) *FormSubmissionRequestPrivate {
+	return &FormSubmissionRequestPrivate{native: native}
 }
 
 // FormSubmissionRequestPrivateStruct creates an uninitialised FormSubmissionRequestPrivate.
@@ -1689,13 +1784,12 @@ func FormSubmissionRequestPrivateStruct() *FormSubmissionRequestPrivate {
 		return nil
 	}
 
-	structGo := &FormSubmissionRequestPrivate{}
-	structGo.Native = formSubmissionRequestPrivateStruct.Alloc()
+	structGo := FormSubmissionRequestPrivateNewFromNative(formSubmissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFormSubmissionRequestPrivate)
 	return structGo
 }
 func finalizeFormSubmissionRequestPrivate(obj *FormSubmissionRequestPrivate) {
-	formSubmissionRequestPrivateStruct.Free(obj.Native)
+	formSubmissionRequestPrivateStruct.Free(obj.native)
 }
 
 var geolocationManagerClassStruct *gi.Struct
@@ -1710,7 +1804,11 @@ func geolocationManagerClassStruct_Set() error {
 }
 
 type GeolocationManagerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func GeolocationManagerClassNewFromNative(native uintptr) *GeolocationManagerClass {
+	return &GeolocationManagerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1740,13 +1838,12 @@ func GeolocationManagerClassStruct() *GeolocationManagerClass {
 		return nil
 	}
 
-	structGo := &GeolocationManagerClass{}
-	structGo.Native = geolocationManagerClassStruct.Alloc()
+	structGo := GeolocationManagerClassNewFromNative(geolocationManagerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeGeolocationManagerClass)
 	return structGo
 }
 func finalizeGeolocationManagerClass(obj *GeolocationManagerClass) {
-	geolocationManagerClassStruct.Free(obj.Native)
+	geolocationManagerClassStruct.Free(obj.native)
 }
 
 var geolocationManagerPrivateStruct *gi.Struct
@@ -1761,7 +1858,11 @@ func geolocationManagerPrivateStruct_Set() error {
 }
 
 type GeolocationManagerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func GeolocationManagerPrivateNewFromNative(native uintptr) *GeolocationManagerPrivate {
+	return &GeolocationManagerPrivate{native: native}
 }
 
 // GeolocationManagerPrivateStruct creates an uninitialised GeolocationManagerPrivate.
@@ -1771,13 +1872,12 @@ func GeolocationManagerPrivateStruct() *GeolocationManagerPrivate {
 		return nil
 	}
 
-	structGo := &GeolocationManagerPrivate{}
-	structGo.Native = geolocationManagerPrivateStruct.Alloc()
+	structGo := GeolocationManagerPrivateNewFromNative(geolocationManagerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeGeolocationManagerPrivate)
 	return structGo
 }
 func finalizeGeolocationManagerPrivate(obj *GeolocationManagerPrivate) {
-	geolocationManagerPrivateStruct.Free(obj.Native)
+	geolocationManagerPrivateStruct.Free(obj.native)
 }
 
 var geolocationPermissionRequestClassStruct *gi.Struct
@@ -1792,7 +1892,11 @@ func geolocationPermissionRequestClassStruct_Set() error {
 }
 
 type GeolocationPermissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func GeolocationPermissionRequestClassNewFromNative(native uintptr) *GeolocationPermissionRequestClass {
+	return &GeolocationPermissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1822,13 +1926,12 @@ func GeolocationPermissionRequestClassStruct() *GeolocationPermissionRequestClas
 		return nil
 	}
 
-	structGo := &GeolocationPermissionRequestClass{}
-	structGo.Native = geolocationPermissionRequestClassStruct.Alloc()
+	structGo := GeolocationPermissionRequestClassNewFromNative(geolocationPermissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeGeolocationPermissionRequestClass)
 	return structGo
 }
 func finalizeGeolocationPermissionRequestClass(obj *GeolocationPermissionRequestClass) {
-	geolocationPermissionRequestClassStruct.Free(obj.Native)
+	geolocationPermissionRequestClassStruct.Free(obj.native)
 }
 
 var geolocationPermissionRequestPrivateStruct *gi.Struct
@@ -1843,7 +1946,11 @@ func geolocationPermissionRequestPrivateStruct_Set() error {
 }
 
 type GeolocationPermissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func GeolocationPermissionRequestPrivateNewFromNative(native uintptr) *GeolocationPermissionRequestPrivate {
+	return &GeolocationPermissionRequestPrivate{native: native}
 }
 
 // GeolocationPermissionRequestPrivateStruct creates an uninitialised GeolocationPermissionRequestPrivate.
@@ -1853,13 +1960,12 @@ func GeolocationPermissionRequestPrivateStruct() *GeolocationPermissionRequestPr
 		return nil
 	}
 
-	structGo := &GeolocationPermissionRequestPrivate{}
-	structGo.Native = geolocationPermissionRequestPrivateStruct.Alloc()
+	structGo := GeolocationPermissionRequestPrivateNewFromNative(geolocationPermissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeGeolocationPermissionRequestPrivate)
 	return structGo
 }
 func finalizeGeolocationPermissionRequestPrivate(obj *GeolocationPermissionRequestPrivate) {
-	geolocationPermissionRequestPrivateStruct.Free(obj.Native)
+	geolocationPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var geolocationPositionStruct *gi.Struct
@@ -1874,7 +1980,11 @@ func geolocationPositionStruct_Set() error {
 }
 
 type GeolocationPosition struct {
-	Native uintptr
+	native uintptr
+}
+
+func GeolocationPositionNewFromNative(native uintptr) *GeolocationPosition {
+	return &GeolocationPosition{native: native}
 }
 
 var geolocationPositionNewFunction *gi.Function
@@ -1906,8 +2016,7 @@ func GeolocationPositionNew(latitude float64, longitude float64, accuracy float6
 		ret = geolocationPositionNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &GeolocationPosition{}
-	retGo.Native = ret.Pointer()
+	retGo := GeolocationPositionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1930,7 +2039,7 @@ func geolocationPositionCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_geolocation_position_copy.
 func (recv *GeolocationPosition) Copy() *GeolocationPosition {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1939,8 +2048,7 @@ func (recv *GeolocationPosition) Copy() *GeolocationPosition {
 		ret = geolocationPositionCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &GeolocationPosition{}
-	retGo.Native = ret.Pointer()
+	retGo := GeolocationPositionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1963,7 +2071,7 @@ func geolocationPositionFreeFunction_Set() error {
 // Free is a representation of the C type webkit_geolocation_position_free.
 func (recv *GeolocationPosition) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := geolocationPositionFreeFunction_Set()
 	if err == nil {
@@ -1991,7 +2099,7 @@ func geolocationPositionSetAltitudeFunction_Set() error {
 // SetAltitude is a representation of the C type webkit_geolocation_position_set_altitude.
 func (recv *GeolocationPosition) SetAltitude(altitude float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(altitude)
 
 	err := geolocationPositionSetAltitudeFunction_Set()
@@ -2020,7 +2128,7 @@ func geolocationPositionSetAltitudeAccuracyFunction_Set() error {
 // SetAltitudeAccuracy is a representation of the C type webkit_geolocation_position_set_altitude_accuracy.
 func (recv *GeolocationPosition) SetAltitudeAccuracy(altitudeAccuracy float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(altitudeAccuracy)
 
 	err := geolocationPositionSetAltitudeAccuracyFunction_Set()
@@ -2049,7 +2157,7 @@ func geolocationPositionSetHeadingFunction_Set() error {
 // SetHeading is a representation of the C type webkit_geolocation_position_set_heading.
 func (recv *GeolocationPosition) SetHeading(heading float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(heading)
 
 	err := geolocationPositionSetHeadingFunction_Set()
@@ -2078,7 +2186,7 @@ func geolocationPositionSetSpeedFunction_Set() error {
 // SetSpeed is a representation of the C type webkit_geolocation_position_set_speed.
 func (recv *GeolocationPosition) SetSpeed(speed float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(speed)
 
 	err := geolocationPositionSetSpeedFunction_Set()
@@ -2107,7 +2215,7 @@ func geolocationPositionSetTimestampFunction_Set() error {
 // SetTimestamp is a representation of the C type webkit_geolocation_position_set_timestamp.
 func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(timestamp)
 
 	err := geolocationPositionSetTimestampFunction_Set()
@@ -2130,7 +2238,11 @@ func hitTestResultClassStruct_Set() error {
 }
 
 type HitTestResultClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func HitTestResultClassNewFromNative(native uintptr) *HitTestResultClass {
+	return &HitTestResultClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2160,13 +2272,12 @@ func HitTestResultClassStruct() *HitTestResultClass {
 		return nil
 	}
 
-	structGo := &HitTestResultClass{}
-	structGo.Native = hitTestResultClassStruct.Alloc()
+	structGo := HitTestResultClassNewFromNative(hitTestResultClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHitTestResultClass)
 	return structGo
 }
 func finalizeHitTestResultClass(obj *HitTestResultClass) {
-	hitTestResultClassStruct.Free(obj.Native)
+	hitTestResultClassStruct.Free(obj.native)
 }
 
 var hitTestResultPrivateStruct *gi.Struct
@@ -2181,7 +2292,11 @@ func hitTestResultPrivateStruct_Set() error {
 }
 
 type HitTestResultPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func HitTestResultPrivateNewFromNative(native uintptr) *HitTestResultPrivate {
+	return &HitTestResultPrivate{native: native}
 }
 
 // HitTestResultPrivateStruct creates an uninitialised HitTestResultPrivate.
@@ -2191,13 +2306,12 @@ func HitTestResultPrivateStruct() *HitTestResultPrivate {
 		return nil
 	}
 
-	structGo := &HitTestResultPrivate{}
-	structGo.Native = hitTestResultPrivateStruct.Alloc()
+	structGo := HitTestResultPrivateNewFromNative(hitTestResultPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHitTestResultPrivate)
 	return structGo
 }
 func finalizeHitTestResultPrivate(obj *HitTestResultPrivate) {
-	hitTestResultPrivateStruct.Free(obj.Native)
+	hitTestResultPrivateStruct.Free(obj.native)
 }
 
 var installMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
@@ -2212,7 +2326,11 @@ func installMissingMediaPluginsPermissionRequestClassStruct_Set() error {
 }
 
 type InstallMissingMediaPluginsPermissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func InstallMissingMediaPluginsPermissionRequestClassNewFromNative(native uintptr) *InstallMissingMediaPluginsPermissionRequestClass {
+	return &InstallMissingMediaPluginsPermissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2242,13 +2360,12 @@ func InstallMissingMediaPluginsPermissionRequestClassStruct() *InstallMissingMed
 		return nil
 	}
 
-	structGo := &InstallMissingMediaPluginsPermissionRequestClass{}
-	structGo.Native = installMissingMediaPluginsPermissionRequestClassStruct.Alloc()
+	structGo := InstallMissingMediaPluginsPermissionRequestClassNewFromNative(installMissingMediaPluginsPermissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeInstallMissingMediaPluginsPermissionRequestClass)
 	return structGo
 }
 func finalizeInstallMissingMediaPluginsPermissionRequestClass(obj *InstallMissingMediaPluginsPermissionRequestClass) {
-	installMissingMediaPluginsPermissionRequestClassStruct.Free(obj.Native)
+	installMissingMediaPluginsPermissionRequestClassStruct.Free(obj.native)
 }
 
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
@@ -2263,7 +2380,11 @@ func installMissingMediaPluginsPermissionRequestPrivateStruct_Set() error {
 }
 
 type InstallMissingMediaPluginsPermissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func InstallMissingMediaPluginsPermissionRequestPrivateNewFromNative(native uintptr) *InstallMissingMediaPluginsPermissionRequestPrivate {
+	return &InstallMissingMediaPluginsPermissionRequestPrivate{native: native}
 }
 
 // InstallMissingMediaPluginsPermissionRequestPrivateStruct creates an uninitialised InstallMissingMediaPluginsPermissionRequestPrivate.
@@ -2273,13 +2394,12 @@ func InstallMissingMediaPluginsPermissionRequestPrivateStruct() *InstallMissingM
 		return nil
 	}
 
-	structGo := &InstallMissingMediaPluginsPermissionRequestPrivate{}
-	structGo.Native = installMissingMediaPluginsPermissionRequestPrivateStruct.Alloc()
+	structGo := InstallMissingMediaPluginsPermissionRequestPrivateNewFromNative(installMissingMediaPluginsPermissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeInstallMissingMediaPluginsPermissionRequestPrivate)
 	return structGo
 }
 func finalizeInstallMissingMediaPluginsPermissionRequestPrivate(obj *InstallMissingMediaPluginsPermissionRequestPrivate) {
-	installMissingMediaPluginsPermissionRequestPrivateStruct.Free(obj.Native)
+	installMissingMediaPluginsPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var javascriptResultStruct *gi.Struct
@@ -2294,7 +2414,11 @@ func javascriptResultStruct_Set() error {
 }
 
 type JavascriptResult struct {
-	Native uintptr
+	native uintptr
+}
+
+func JavascriptResultNewFromNative(native uintptr) *JavascriptResult {
+	return &JavascriptResult{native: native}
 }
 
 // UNSUPPORTED : C value 'webkit_javascript_result_get_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
@@ -2321,7 +2445,7 @@ func javascriptResultRefFunction_Set() error {
 // Ref is a representation of the C type webkit_javascript_result_ref.
 func (recv *JavascriptResult) Ref() *JavascriptResult {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2330,8 +2454,7 @@ func (recv *JavascriptResult) Ref() *JavascriptResult {
 		ret = javascriptResultRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &JavascriptResult{}
-	retGo.Native = ret.Pointer()
+	retGo := JavascriptResultNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2354,7 +2477,7 @@ func javascriptResultUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_javascript_result_unref.
 func (recv *JavascriptResult) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := javascriptResultUnrefFunction_Set()
 	if err == nil {
@@ -2371,13 +2494,12 @@ func JavascriptResultStruct() *JavascriptResult {
 		return nil
 	}
 
-	structGo := &JavascriptResult{}
-	structGo.Native = javascriptResultStruct.Alloc()
+	structGo := JavascriptResultNewFromNative(javascriptResultStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeJavascriptResult)
 	return structGo
 }
 func finalizeJavascriptResult(obj *JavascriptResult) {
-	javascriptResultStruct.Free(obj.Native)
+	javascriptResultStruct.Free(obj.native)
 }
 
 var mimeInfoStruct *gi.Struct
@@ -2392,7 +2514,11 @@ func mimeInfoStruct_Set() error {
 }
 
 type MimeInfo struct {
-	Native uintptr
+	native uintptr
+}
+
+func MimeInfoNewFromNative(native uintptr) *MimeInfo {
+	return &MimeInfo{native: native}
 }
 
 var mimeInfoGetDescriptionFunction *gi.Function
@@ -2413,7 +2539,7 @@ func mimeInfoGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type webkit_mime_info_get_description.
 func (recv *MimeInfo) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2445,7 +2571,7 @@ func mimeInfoGetExtensionsFunction_Set() error {
 // GetExtensions is a representation of the C type webkit_mime_info_get_extensions.
 func (recv *MimeInfo) GetExtensions() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mimeInfoGetExtensionsFunction_Set()
 	if err == nil {
@@ -2473,7 +2599,7 @@ func mimeInfoGetMimeTypeFunction_Set() error {
 // GetMimeType is a representation of the C type webkit_mime_info_get_mime_type.
 func (recv *MimeInfo) GetMimeType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2505,7 +2631,7 @@ func mimeInfoRefFunction_Set() error {
 // Ref is a representation of the C type webkit_mime_info_ref.
 func (recv *MimeInfo) Ref() *MimeInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2514,8 +2640,7 @@ func (recv *MimeInfo) Ref() *MimeInfo {
 		ret = mimeInfoRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MimeInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := MimeInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2538,7 +2663,7 @@ func mimeInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_mime_info_unref.
 func (recv *MimeInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mimeInfoUnrefFunction_Set()
 	if err == nil {
@@ -2555,13 +2680,12 @@ func MimeInfoStruct() *MimeInfo {
 		return nil
 	}
 
-	structGo := &MimeInfo{}
-	structGo.Native = mimeInfoStruct.Alloc()
+	structGo := MimeInfoNewFromNative(mimeInfoStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeMimeInfo)
 	return structGo
 }
 func finalizeMimeInfo(obj *MimeInfo) {
-	mimeInfoStruct.Free(obj.Native)
+	mimeInfoStruct.Free(obj.native)
 }
 
 var navigationActionStruct *gi.Struct
@@ -2576,7 +2700,11 @@ func navigationActionStruct_Set() error {
 }
 
 type NavigationAction struct {
-	Native uintptr
+	native uintptr
+}
+
+func NavigationActionNewFromNative(native uintptr) *NavigationAction {
+	return &NavigationAction{native: native}
 }
 
 var navigationActionCopyFunction *gi.Function
@@ -2597,7 +2725,7 @@ func navigationActionCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_navigation_action_copy.
 func (recv *NavigationAction) Copy() *NavigationAction {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2606,8 +2734,7 @@ func (recv *NavigationAction) Copy() *NavigationAction {
 		ret = navigationActionCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &NavigationAction{}
-	retGo.Native = ret.Pointer()
+	retGo := NavigationActionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2630,7 +2757,7 @@ func navigationActionFreeFunction_Set() error {
 // Free is a representation of the C type webkit_navigation_action_free.
 func (recv *NavigationAction) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := navigationActionFreeFunction_Set()
 	if err == nil {
@@ -2658,7 +2785,7 @@ func navigationActionGetModifiersFunction_Set() error {
 // GetModifiers is a representation of the C type webkit_navigation_action_get_modifiers.
 func (recv *NavigationAction) GetModifiers() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2690,7 +2817,7 @@ func navigationActionGetMouseButtonFunction_Set() error {
 // GetMouseButton is a representation of the C type webkit_navigation_action_get_mouse_button.
 func (recv *NavigationAction) GetMouseButton() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2722,7 +2849,7 @@ func navigationActionGetNavigationTypeFunction_Set() error {
 // GetNavigationType is a representation of the C type webkit_navigation_action_get_navigation_type.
 func (recv *NavigationAction) GetNavigationType() NavigationType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2754,7 +2881,7 @@ func navigationActionGetRequestFunction_Set() error {
 // GetRequest is a representation of the C type webkit_navigation_action_get_request.
 func (recv *NavigationAction) GetRequest() *URIRequest {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2763,8 +2890,7 @@ func (recv *NavigationAction) GetRequest() *URIRequest {
 		ret = navigationActionGetRequestFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &URIRequest{}
-	retGo.Native = ret.Pointer()
+	retGo := URIRequestNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2787,7 +2913,7 @@ func navigationActionIsRedirectFunction_Set() error {
 // IsRedirect is a representation of the C type webkit_navigation_action_is_redirect.
 func (recv *NavigationAction) IsRedirect() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2819,7 +2945,7 @@ func navigationActionIsUserGestureFunction_Set() error {
 // IsUserGesture is a representation of the C type webkit_navigation_action_is_user_gesture.
 func (recv *NavigationAction) IsUserGesture() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2840,13 +2966,12 @@ func NavigationActionStruct() *NavigationAction {
 		return nil
 	}
 
-	structGo := &NavigationAction{}
-	structGo.Native = navigationActionStruct.Alloc()
+	structGo := NavigationActionNewFromNative(navigationActionStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNavigationAction)
 	return structGo
 }
 func finalizeNavigationAction(obj *NavigationAction) {
-	navigationActionStruct.Free(obj.Native)
+	navigationActionStruct.Free(obj.native)
 }
 
 var navigationPolicyDecisionClassStruct *gi.Struct
@@ -2861,22 +2986,25 @@ func navigationPolicyDecisionClassStruct_Set() error {
 }
 
 type NavigationPolicyDecisionClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func NavigationPolicyDecisionClassNewFromNative(native uintptr) *NavigationPolicyDecisionClass {
+	return &NavigationPolicyDecisionClass{native: native}
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.StructFieldGet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class")
-	value := &PolicyDecisionClass{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(navigationPolicyDecisionClassStruct, recv.native, "parent_class")
+	value := PolicyDecisionClassNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(navigationPolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(navigationPolicyDecisionClassStruct, recv.native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -2902,13 +3030,12 @@ func NavigationPolicyDecisionClassStruct() *NavigationPolicyDecisionClass {
 		return nil
 	}
 
-	structGo := &NavigationPolicyDecisionClass{}
-	structGo.Native = navigationPolicyDecisionClassStruct.Alloc()
+	structGo := NavigationPolicyDecisionClassNewFromNative(navigationPolicyDecisionClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNavigationPolicyDecisionClass)
 	return structGo
 }
 func finalizeNavigationPolicyDecisionClass(obj *NavigationPolicyDecisionClass) {
-	navigationPolicyDecisionClassStruct.Free(obj.Native)
+	navigationPolicyDecisionClassStruct.Free(obj.native)
 }
 
 var navigationPolicyDecisionPrivateStruct *gi.Struct
@@ -2923,7 +3050,11 @@ func navigationPolicyDecisionPrivateStruct_Set() error {
 }
 
 type NavigationPolicyDecisionPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func NavigationPolicyDecisionPrivateNewFromNative(native uintptr) *NavigationPolicyDecisionPrivate {
+	return &NavigationPolicyDecisionPrivate{native: native}
 }
 
 // NavigationPolicyDecisionPrivateStruct creates an uninitialised NavigationPolicyDecisionPrivate.
@@ -2933,13 +3064,12 @@ func NavigationPolicyDecisionPrivateStruct() *NavigationPolicyDecisionPrivate {
 		return nil
 	}
 
-	structGo := &NavigationPolicyDecisionPrivate{}
-	structGo.Native = navigationPolicyDecisionPrivateStruct.Alloc()
+	structGo := NavigationPolicyDecisionPrivateNewFromNative(navigationPolicyDecisionPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNavigationPolicyDecisionPrivate)
 	return structGo
 }
 func finalizeNavigationPolicyDecisionPrivate(obj *NavigationPolicyDecisionPrivate) {
-	navigationPolicyDecisionPrivateStruct.Free(obj.Native)
+	navigationPolicyDecisionPrivateStruct.Free(obj.native)
 }
 
 var networkProxySettingsStruct *gi.Struct
@@ -2954,7 +3084,11 @@ func networkProxySettingsStruct_Set() error {
 }
 
 type NetworkProxySettings struct {
-	Native uintptr
+	native uintptr
+}
+
+func NetworkProxySettingsNewFromNative(native uintptr) *NetworkProxySettings {
+	return &NetworkProxySettings{native: native}
 }
 
 // UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' of type 'nil' not supported
@@ -2977,7 +3111,7 @@ func networkProxySettingsAddProxyForSchemeFunction_Set() error {
 // AddProxyForScheme is a representation of the C type webkit_network_proxy_settings_add_proxy_for_scheme.
 func (recv *NetworkProxySettings) AddProxyForScheme(scheme string, proxyUri string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(scheme)
 	inArgs[2].SetString(proxyUri)
 
@@ -3007,7 +3141,7 @@ func networkProxySettingsCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_network_proxy_settings_copy.
 func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3016,8 +3150,7 @@ func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
 		ret = networkProxySettingsCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &NetworkProxySettings{}
-	retGo.Native = ret.Pointer()
+	retGo := NetworkProxySettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3040,7 +3173,7 @@ func networkProxySettingsFreeFunction_Set() error {
 // Free is a representation of the C type webkit_network_proxy_settings_free.
 func (recv *NetworkProxySettings) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := networkProxySettingsFreeFunction_Set()
 	if err == nil {
@@ -3062,7 +3195,11 @@ func notificationClassStruct_Set() error {
 }
 
 type NotificationClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func NotificationClassNewFromNative(native uintptr) *NotificationClass {
+	return &NotificationClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3100,13 +3237,12 @@ func NotificationClassStruct() *NotificationClass {
 		return nil
 	}
 
-	structGo := &NotificationClass{}
-	structGo.Native = notificationClassStruct.Alloc()
+	structGo := NotificationClassNewFromNative(notificationClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNotificationClass)
 	return structGo
 }
 func finalizeNotificationClass(obj *NotificationClass) {
-	notificationClassStruct.Free(obj.Native)
+	notificationClassStruct.Free(obj.native)
 }
 
 var notificationPermissionRequestClassStruct *gi.Struct
@@ -3121,7 +3257,11 @@ func notificationPermissionRequestClassStruct_Set() error {
 }
 
 type NotificationPermissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func NotificationPermissionRequestClassNewFromNative(native uintptr) *NotificationPermissionRequestClass {
+	return &NotificationPermissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3135,13 +3275,12 @@ func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestCl
 		return nil
 	}
 
-	structGo := &NotificationPermissionRequestClass{}
-	structGo.Native = notificationPermissionRequestClassStruct.Alloc()
+	structGo := NotificationPermissionRequestClassNewFromNative(notificationPermissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNotificationPermissionRequestClass)
 	return structGo
 }
 func finalizeNotificationPermissionRequestClass(obj *NotificationPermissionRequestClass) {
-	notificationPermissionRequestClassStruct.Free(obj.Native)
+	notificationPermissionRequestClassStruct.Free(obj.native)
 }
 
 var notificationPermissionRequestPrivateStruct *gi.Struct
@@ -3156,7 +3295,11 @@ func notificationPermissionRequestPrivateStruct_Set() error {
 }
 
 type NotificationPermissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func NotificationPermissionRequestPrivateNewFromNative(native uintptr) *NotificationPermissionRequestPrivate {
+	return &NotificationPermissionRequestPrivate{native: native}
 }
 
 // NotificationPermissionRequestPrivateStruct creates an uninitialised NotificationPermissionRequestPrivate.
@@ -3166,13 +3309,12 @@ func NotificationPermissionRequestPrivateStruct() *NotificationPermissionRequest
 		return nil
 	}
 
-	structGo := &NotificationPermissionRequestPrivate{}
-	structGo.Native = notificationPermissionRequestPrivateStruct.Alloc()
+	structGo := NotificationPermissionRequestPrivateNewFromNative(notificationPermissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNotificationPermissionRequestPrivate)
 	return structGo
 }
 func finalizeNotificationPermissionRequestPrivate(obj *NotificationPermissionRequestPrivate) {
-	notificationPermissionRequestPrivateStruct.Free(obj.Native)
+	notificationPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var notificationPrivateStruct *gi.Struct
@@ -3187,7 +3329,11 @@ func notificationPrivateStruct_Set() error {
 }
 
 type NotificationPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func NotificationPrivateNewFromNative(native uintptr) *NotificationPrivate {
+	return &NotificationPrivate{native: native}
 }
 
 // NotificationPrivateStruct creates an uninitialised NotificationPrivate.
@@ -3197,13 +3343,12 @@ func NotificationPrivateStruct() *NotificationPrivate {
 		return nil
 	}
 
-	structGo := &NotificationPrivate{}
-	structGo.Native = notificationPrivateStruct.Alloc()
+	structGo := NotificationPrivateNewFromNative(notificationPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNotificationPrivate)
 	return structGo
 }
 func finalizeNotificationPrivate(obj *NotificationPrivate) {
-	notificationPrivateStruct.Free(obj.Native)
+	notificationPrivateStruct.Free(obj.native)
 }
 
 var optionMenuClassStruct *gi.Struct
@@ -3218,7 +3363,11 @@ func optionMenuClassStruct_Set() error {
 }
 
 type OptionMenuClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionMenuClassNewFromNative(native uintptr) *OptionMenuClass {
+	return &OptionMenuClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3248,13 +3397,12 @@ func OptionMenuClassStruct() *OptionMenuClass {
 		return nil
 	}
 
-	structGo := &OptionMenuClass{}
-	structGo.Native = optionMenuClassStruct.Alloc()
+	structGo := OptionMenuClassNewFromNative(optionMenuClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOptionMenuClass)
 	return structGo
 }
 func finalizeOptionMenuClass(obj *OptionMenuClass) {
-	optionMenuClassStruct.Free(obj.Native)
+	optionMenuClassStruct.Free(obj.native)
 }
 
 var optionMenuItemStruct *gi.Struct
@@ -3269,7 +3417,11 @@ func optionMenuItemStruct_Set() error {
 }
 
 type OptionMenuItem struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionMenuItemNewFromNative(native uintptr) *OptionMenuItem {
+	return &OptionMenuItem{native: native}
 }
 
 var optionMenuItemCopyFunction *gi.Function
@@ -3290,7 +3442,7 @@ func optionMenuItemCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_option_menu_item_copy.
 func (recv *OptionMenuItem) Copy() *OptionMenuItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3299,8 +3451,7 @@ func (recv *OptionMenuItem) Copy() *OptionMenuItem {
 		ret = optionMenuItemCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OptionMenuItem{}
-	retGo.Native = ret.Pointer()
+	retGo := OptionMenuItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3323,7 +3474,7 @@ func optionMenuItemFreeFunction_Set() error {
 // Free is a representation of the C type webkit_option_menu_item_free.
 func (recv *OptionMenuItem) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := optionMenuItemFreeFunction_Set()
 	if err == nil {
@@ -3351,7 +3502,7 @@ func optionMenuItemGetLabelFunction_Set() error {
 // GetLabel is a representation of the C type webkit_option_menu_item_get_label.
 func (recv *OptionMenuItem) GetLabel() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3383,7 +3534,7 @@ func optionMenuItemGetTooltipFunction_Set() error {
 // GetTooltip is a representation of the C type webkit_option_menu_item_get_tooltip.
 func (recv *OptionMenuItem) GetTooltip() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3415,7 +3566,7 @@ func optionMenuItemIsEnabledFunction_Set() error {
 // IsEnabled is a representation of the C type webkit_option_menu_item_is_enabled.
 func (recv *OptionMenuItem) IsEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3447,7 +3598,7 @@ func optionMenuItemIsGroupChildFunction_Set() error {
 // IsGroupChild is a representation of the C type webkit_option_menu_item_is_group_child.
 func (recv *OptionMenuItem) IsGroupChild() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3479,7 +3630,7 @@ func optionMenuItemIsGroupLabelFunction_Set() error {
 // IsGroupLabel is a representation of the C type webkit_option_menu_item_is_group_label.
 func (recv *OptionMenuItem) IsGroupLabel() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3511,7 +3662,7 @@ func optionMenuItemIsSelectedFunction_Set() error {
 // IsSelected is a representation of the C type webkit_option_menu_item_is_selected.
 func (recv *OptionMenuItem) IsSelected() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3532,13 +3683,12 @@ func OptionMenuItemStruct() *OptionMenuItem {
 		return nil
 	}
 
-	structGo := &OptionMenuItem{}
-	structGo.Native = optionMenuItemStruct.Alloc()
+	structGo := OptionMenuItemNewFromNative(optionMenuItemStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOptionMenuItem)
 	return structGo
 }
 func finalizeOptionMenuItem(obj *OptionMenuItem) {
-	optionMenuItemStruct.Free(obj.Native)
+	optionMenuItemStruct.Free(obj.native)
 }
 
 var optionMenuPrivateStruct *gi.Struct
@@ -3553,7 +3703,11 @@ func optionMenuPrivateStruct_Set() error {
 }
 
 type OptionMenuPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionMenuPrivateNewFromNative(native uintptr) *OptionMenuPrivate {
+	return &OptionMenuPrivate{native: native}
 }
 
 // OptionMenuPrivateStruct creates an uninitialised OptionMenuPrivate.
@@ -3563,13 +3717,12 @@ func OptionMenuPrivateStruct() *OptionMenuPrivate {
 		return nil
 	}
 
-	structGo := &OptionMenuPrivate{}
-	structGo.Native = optionMenuPrivateStruct.Alloc()
+	structGo := OptionMenuPrivateNewFromNative(optionMenuPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOptionMenuPrivate)
 	return structGo
 }
 func finalizeOptionMenuPrivate(obj *OptionMenuPrivate) {
-	optionMenuPrivateStruct.Free(obj.Native)
+	optionMenuPrivateStruct.Free(obj.native)
 }
 
 var permissionRequestIfaceStruct *gi.Struct
@@ -3584,7 +3737,11 @@ func permissionRequestIfaceStruct_Set() error {
 }
 
 type PermissionRequestIface struct {
-	Native uintptr
+	native uintptr
+}
+
+func PermissionRequestIfaceNewFromNative(native uintptr) *PermissionRequestIface {
+	return &PermissionRequestIface{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -3606,13 +3763,12 @@ func PermissionRequestIfaceStruct() *PermissionRequestIface {
 		return nil
 	}
 
-	structGo := &PermissionRequestIface{}
-	structGo.Native = permissionRequestIfaceStruct.Alloc()
+	structGo := PermissionRequestIfaceNewFromNative(permissionRequestIfaceStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePermissionRequestIface)
 	return structGo
 }
 func finalizePermissionRequestIface(obj *PermissionRequestIface) {
-	permissionRequestIfaceStruct.Free(obj.Native)
+	permissionRequestIfaceStruct.Free(obj.native)
 }
 
 var pluginClassStruct *gi.Struct
@@ -3627,7 +3783,11 @@ func pluginClassStruct_Set() error {
 }
 
 type PluginClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PluginClassNewFromNative(native uintptr) *PluginClass {
+	return &PluginClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3657,13 +3817,12 @@ func PluginClassStruct() *PluginClass {
 		return nil
 	}
 
-	structGo := &PluginClass{}
-	structGo.Native = pluginClassStruct.Alloc()
+	structGo := PluginClassNewFromNative(pluginClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePluginClass)
 	return structGo
 }
 func finalizePluginClass(obj *PluginClass) {
-	pluginClassStruct.Free(obj.Native)
+	pluginClassStruct.Free(obj.native)
 }
 
 var pluginPrivateStruct *gi.Struct
@@ -3678,7 +3837,11 @@ func pluginPrivateStruct_Set() error {
 }
 
 type PluginPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func PluginPrivateNewFromNative(native uintptr) *PluginPrivate {
+	return &PluginPrivate{native: native}
 }
 
 // PluginPrivateStruct creates an uninitialised PluginPrivate.
@@ -3688,13 +3851,12 @@ func PluginPrivateStruct() *PluginPrivate {
 		return nil
 	}
 
-	structGo := &PluginPrivate{}
-	structGo.Native = pluginPrivateStruct.Alloc()
+	structGo := PluginPrivateNewFromNative(pluginPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePluginPrivate)
 	return structGo
 }
 func finalizePluginPrivate(obj *PluginPrivate) {
-	pluginPrivateStruct.Free(obj.Native)
+	pluginPrivateStruct.Free(obj.native)
 }
 
 var policyDecisionClassStruct *gi.Struct
@@ -3709,7 +3871,11 @@ func policyDecisionClassStruct_Set() error {
 }
 
 type PolicyDecisionClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PolicyDecisionClassNewFromNative(native uintptr) *PolicyDecisionClass {
+	return &PolicyDecisionClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3739,13 +3905,12 @@ func PolicyDecisionClassStruct() *PolicyDecisionClass {
 		return nil
 	}
 
-	structGo := &PolicyDecisionClass{}
-	structGo.Native = policyDecisionClassStruct.Alloc()
+	structGo := PolicyDecisionClassNewFromNative(policyDecisionClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePolicyDecisionClass)
 	return structGo
 }
 func finalizePolicyDecisionClass(obj *PolicyDecisionClass) {
-	policyDecisionClassStruct.Free(obj.Native)
+	policyDecisionClassStruct.Free(obj.native)
 }
 
 var policyDecisionPrivateStruct *gi.Struct
@@ -3760,7 +3925,11 @@ func policyDecisionPrivateStruct_Set() error {
 }
 
 type PolicyDecisionPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func PolicyDecisionPrivateNewFromNative(native uintptr) *PolicyDecisionPrivate {
+	return &PolicyDecisionPrivate{native: native}
 }
 
 // PolicyDecisionPrivateStruct creates an uninitialised PolicyDecisionPrivate.
@@ -3770,13 +3939,12 @@ func PolicyDecisionPrivateStruct() *PolicyDecisionPrivate {
 		return nil
 	}
 
-	structGo := &PolicyDecisionPrivate{}
-	structGo.Native = policyDecisionPrivateStruct.Alloc()
+	structGo := PolicyDecisionPrivateNewFromNative(policyDecisionPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePolicyDecisionPrivate)
 	return structGo
 }
 func finalizePolicyDecisionPrivate(obj *PolicyDecisionPrivate) {
-	policyDecisionPrivateStruct.Free(obj.Native)
+	policyDecisionPrivateStruct.Free(obj.native)
 }
 
 var printCustomWidgetClassStruct *gi.Struct
@@ -3791,7 +3959,11 @@ func printCustomWidgetClassStruct_Set() error {
 }
 
 type PrintCustomWidgetClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PrintCustomWidgetClassNewFromNative(native uintptr) *PrintCustomWidgetClass {
+	return &PrintCustomWidgetClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3829,13 +4001,12 @@ func PrintCustomWidgetClassStruct() *PrintCustomWidgetClass {
 		return nil
 	}
 
-	structGo := &PrintCustomWidgetClass{}
-	structGo.Native = printCustomWidgetClassStruct.Alloc()
+	structGo := PrintCustomWidgetClassNewFromNative(printCustomWidgetClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePrintCustomWidgetClass)
 	return structGo
 }
 func finalizePrintCustomWidgetClass(obj *PrintCustomWidgetClass) {
-	printCustomWidgetClassStruct.Free(obj.Native)
+	printCustomWidgetClassStruct.Free(obj.native)
 }
 
 var printCustomWidgetPrivateStruct *gi.Struct
@@ -3850,7 +4021,11 @@ func printCustomWidgetPrivateStruct_Set() error {
 }
 
 type PrintCustomWidgetPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func PrintCustomWidgetPrivateNewFromNative(native uintptr) *PrintCustomWidgetPrivate {
+	return &PrintCustomWidgetPrivate{native: native}
 }
 
 // PrintCustomWidgetPrivateStruct creates an uninitialised PrintCustomWidgetPrivate.
@@ -3860,13 +4035,12 @@ func PrintCustomWidgetPrivateStruct() *PrintCustomWidgetPrivate {
 		return nil
 	}
 
-	structGo := &PrintCustomWidgetPrivate{}
-	structGo.Native = printCustomWidgetPrivateStruct.Alloc()
+	structGo := PrintCustomWidgetPrivateNewFromNative(printCustomWidgetPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePrintCustomWidgetPrivate)
 	return structGo
 }
 func finalizePrintCustomWidgetPrivate(obj *PrintCustomWidgetPrivate) {
-	printCustomWidgetPrivateStruct.Free(obj.Native)
+	printCustomWidgetPrivateStruct.Free(obj.native)
 }
 
 var printOperationClassStruct *gi.Struct
@@ -3881,7 +4055,11 @@ func printOperationClassStruct_Set() error {
 }
 
 type PrintOperationClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PrintOperationClassNewFromNative(native uintptr) *PrintOperationClass {
+	return &PrintOperationClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3911,13 +4089,12 @@ func PrintOperationClassStruct() *PrintOperationClass {
 		return nil
 	}
 
-	structGo := &PrintOperationClass{}
-	structGo.Native = printOperationClassStruct.Alloc()
+	structGo := PrintOperationClassNewFromNative(printOperationClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePrintOperationClass)
 	return structGo
 }
 func finalizePrintOperationClass(obj *PrintOperationClass) {
-	printOperationClassStruct.Free(obj.Native)
+	printOperationClassStruct.Free(obj.native)
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -3932,7 +4109,11 @@ func printOperationPrivateStruct_Set() error {
 }
 
 type PrintOperationPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func PrintOperationPrivateNewFromNative(native uintptr) *PrintOperationPrivate {
+	return &PrintOperationPrivate{native: native}
 }
 
 // PrintOperationPrivateStruct creates an uninitialised PrintOperationPrivate.
@@ -3942,13 +4123,12 @@ func PrintOperationPrivateStruct() *PrintOperationPrivate {
 		return nil
 	}
 
-	structGo := &PrintOperationPrivate{}
-	structGo.Native = printOperationPrivateStruct.Alloc()
+	structGo := PrintOperationPrivateNewFromNative(printOperationPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePrintOperationPrivate)
 	return structGo
 }
 func finalizePrintOperationPrivate(obj *PrintOperationPrivate) {
-	printOperationPrivateStruct.Free(obj.Native)
+	printOperationPrivateStruct.Free(obj.native)
 }
 
 var responsePolicyDecisionClassStruct *gi.Struct
@@ -3963,22 +4143,25 @@ func responsePolicyDecisionClassStruct_Set() error {
 }
 
 type ResponsePolicyDecisionClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func ResponsePolicyDecisionClassNewFromNative(native uintptr) *ResponsePolicyDecisionClass {
+	return &ResponsePolicyDecisionClass{native: native}
 }
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.StructFieldGet(responsePolicyDecisionClassStruct, recv.Native, "parent_class")
-	value := &PolicyDecisionClass{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(responsePolicyDecisionClassStruct, recv.native, "parent_class")
+	value := PolicyDecisionClassNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(responsePolicyDecisionClassStruct, recv.Native, "parent_class", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(responsePolicyDecisionClassStruct, recv.native, "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -4004,13 +4187,12 @@ func ResponsePolicyDecisionClassStruct() *ResponsePolicyDecisionClass {
 		return nil
 	}
 
-	structGo := &ResponsePolicyDecisionClass{}
-	structGo.Native = responsePolicyDecisionClassStruct.Alloc()
+	structGo := ResponsePolicyDecisionClassNewFromNative(responsePolicyDecisionClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeResponsePolicyDecisionClass)
 	return structGo
 }
 func finalizeResponsePolicyDecisionClass(obj *ResponsePolicyDecisionClass) {
-	responsePolicyDecisionClassStruct.Free(obj.Native)
+	responsePolicyDecisionClassStruct.Free(obj.native)
 }
 
 var responsePolicyDecisionPrivateStruct *gi.Struct
@@ -4025,7 +4207,11 @@ func responsePolicyDecisionPrivateStruct_Set() error {
 }
 
 type ResponsePolicyDecisionPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func ResponsePolicyDecisionPrivateNewFromNative(native uintptr) *ResponsePolicyDecisionPrivate {
+	return &ResponsePolicyDecisionPrivate{native: native}
 }
 
 // ResponsePolicyDecisionPrivateStruct creates an uninitialised ResponsePolicyDecisionPrivate.
@@ -4035,13 +4221,12 @@ func ResponsePolicyDecisionPrivateStruct() *ResponsePolicyDecisionPrivate {
 		return nil
 	}
 
-	structGo := &ResponsePolicyDecisionPrivate{}
-	structGo.Native = responsePolicyDecisionPrivateStruct.Alloc()
+	structGo := ResponsePolicyDecisionPrivateNewFromNative(responsePolicyDecisionPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeResponsePolicyDecisionPrivate)
 	return structGo
 }
 func finalizeResponsePolicyDecisionPrivate(obj *ResponsePolicyDecisionPrivate) {
-	responsePolicyDecisionPrivateStruct.Free(obj.Native)
+	responsePolicyDecisionPrivateStruct.Free(obj.native)
 }
 
 var scriptDialogStruct *gi.Struct
@@ -4056,7 +4241,11 @@ func scriptDialogStruct_Set() error {
 }
 
 type ScriptDialog struct {
-	Native uintptr
+	native uintptr
+}
+
+func ScriptDialogNewFromNative(native uintptr) *ScriptDialog {
+	return &ScriptDialog{native: native}
 }
 
 var scriptDialogCloseFunction *gi.Function
@@ -4077,7 +4266,7 @@ func scriptDialogCloseFunction_Set() error {
 // Close is a representation of the C type webkit_script_dialog_close.
 func (recv *ScriptDialog) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := scriptDialogCloseFunction_Set()
 	if err == nil {
@@ -4105,7 +4294,7 @@ func scriptDialogConfirmSetConfirmedFunction_Set() error {
 // ConfirmSetConfirmed is a representation of the C type webkit_script_dialog_confirm_set_confirmed.
 func (recv *ScriptDialog) ConfirmSetConfirmed(confirmed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(confirmed)
 
 	err := scriptDialogConfirmSetConfirmedFunction_Set()
@@ -4134,7 +4323,7 @@ func scriptDialogGetDialogTypeFunction_Set() error {
 // GetDialogType is a representation of the C type webkit_script_dialog_get_dialog_type.
 func (recv *ScriptDialog) GetDialogType() ScriptDialogType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4166,7 +4355,7 @@ func scriptDialogGetMessageFunction_Set() error {
 // GetMessage is a representation of the C type webkit_script_dialog_get_message.
 func (recv *ScriptDialog) GetMessage() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4198,7 +4387,7 @@ func scriptDialogPromptGetDefaultTextFunction_Set() error {
 // PromptGetDefaultText is a representation of the C type webkit_script_dialog_prompt_get_default_text.
 func (recv *ScriptDialog) PromptGetDefaultText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4230,7 +4419,7 @@ func scriptDialogPromptSetTextFunction_Set() error {
 // PromptSetText is a representation of the C type webkit_script_dialog_prompt_set_text.
 func (recv *ScriptDialog) PromptSetText(text string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 
 	err := scriptDialogPromptSetTextFunction_Set()
@@ -4259,7 +4448,7 @@ func scriptDialogRefFunction_Set() error {
 // Ref is a representation of the C type webkit_script_dialog_ref.
 func (recv *ScriptDialog) Ref() *ScriptDialog {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4268,8 +4457,7 @@ func (recv *ScriptDialog) Ref() *ScriptDialog {
 		ret = scriptDialogRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ScriptDialog{}
-	retGo.Native = ret.Pointer()
+	retGo := ScriptDialogNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4292,7 +4480,7 @@ func scriptDialogUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_script_dialog_unref.
 func (recv *ScriptDialog) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := scriptDialogUnrefFunction_Set()
 	if err == nil {
@@ -4309,13 +4497,12 @@ func ScriptDialogStruct() *ScriptDialog {
 		return nil
 	}
 
-	structGo := &ScriptDialog{}
-	structGo.Native = scriptDialogStruct.Alloc()
+	structGo := ScriptDialogNewFromNative(scriptDialogStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeScriptDialog)
 	return structGo
 }
 func finalizeScriptDialog(obj *ScriptDialog) {
-	scriptDialogStruct.Free(obj.Native)
+	scriptDialogStruct.Free(obj.native)
 }
 
 var securityManagerClassStruct *gi.Struct
@@ -4330,7 +4517,11 @@ func securityManagerClassStruct_Set() error {
 }
 
 type SecurityManagerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func SecurityManagerClassNewFromNative(native uintptr) *SecurityManagerClass {
+	return &SecurityManagerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4360,13 +4551,12 @@ func SecurityManagerClassStruct() *SecurityManagerClass {
 		return nil
 	}
 
-	structGo := &SecurityManagerClass{}
-	structGo.Native = securityManagerClassStruct.Alloc()
+	structGo := SecurityManagerClassNewFromNative(securityManagerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSecurityManagerClass)
 	return structGo
 }
 func finalizeSecurityManagerClass(obj *SecurityManagerClass) {
-	securityManagerClassStruct.Free(obj.Native)
+	securityManagerClassStruct.Free(obj.native)
 }
 
 var securityManagerPrivateStruct *gi.Struct
@@ -4381,7 +4571,11 @@ func securityManagerPrivateStruct_Set() error {
 }
 
 type SecurityManagerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func SecurityManagerPrivateNewFromNative(native uintptr) *SecurityManagerPrivate {
+	return &SecurityManagerPrivate{native: native}
 }
 
 // SecurityManagerPrivateStruct creates an uninitialised SecurityManagerPrivate.
@@ -4391,13 +4585,12 @@ func SecurityManagerPrivateStruct() *SecurityManagerPrivate {
 		return nil
 	}
 
-	structGo := &SecurityManagerPrivate{}
-	structGo.Native = securityManagerPrivateStruct.Alloc()
+	structGo := SecurityManagerPrivateNewFromNative(securityManagerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSecurityManagerPrivate)
 	return structGo
 }
 func finalizeSecurityManagerPrivate(obj *SecurityManagerPrivate) {
-	securityManagerPrivateStruct.Free(obj.Native)
+	securityManagerPrivateStruct.Free(obj.native)
 }
 
 var securityOriginStruct *gi.Struct
@@ -4412,7 +4605,11 @@ func securityOriginStruct_Set() error {
 }
 
 type SecurityOrigin struct {
-	Native uintptr
+	native uintptr
+}
+
+func SecurityOriginNewFromNative(native uintptr) *SecurityOrigin {
+	return &SecurityOrigin{native: native}
 }
 
 var securityOriginNewFunction *gi.Function
@@ -4444,8 +4641,7 @@ func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigi
 		ret = securityOriginNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SecurityOrigin{}
-	retGo.Native = ret.Pointer()
+	retGo := SecurityOriginNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4477,8 +4673,7 @@ func SecurityOriginNewForUri(uri string) *SecurityOrigin {
 		ret = securityOriginNewForUriFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SecurityOrigin{}
-	retGo.Native = ret.Pointer()
+	retGo := SecurityOriginNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4501,7 +4696,7 @@ func securityOriginGetHostFunction_Set() error {
 // GetHost is a representation of the C type webkit_security_origin_get_host.
 func (recv *SecurityOrigin) GetHost() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4533,7 +4728,7 @@ func securityOriginGetPortFunction_Set() error {
 // GetPort is a representation of the C type webkit_security_origin_get_port.
 func (recv *SecurityOrigin) GetPort() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4565,7 +4760,7 @@ func securityOriginGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type webkit_security_origin_get_protocol.
 func (recv *SecurityOrigin) GetProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4597,7 +4792,7 @@ func securityOriginIsOpaqueFunction_Set() error {
 // IsOpaque is a representation of the C type webkit_security_origin_is_opaque.
 func (recv *SecurityOrigin) IsOpaque() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4629,7 +4824,7 @@ func securityOriginRefFunction_Set() error {
 // Ref is a representation of the C type webkit_security_origin_ref.
 func (recv *SecurityOrigin) Ref() *SecurityOrigin {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4638,8 +4833,7 @@ func (recv *SecurityOrigin) Ref() *SecurityOrigin {
 		ret = securityOriginRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SecurityOrigin{}
-	retGo.Native = ret.Pointer()
+	retGo := SecurityOriginNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4662,7 +4856,7 @@ func securityOriginToStringFunction_Set() error {
 // ToString is a representation of the C type webkit_security_origin_to_string.
 func (recv *SecurityOrigin) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4694,7 +4888,7 @@ func securityOriginUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_security_origin_unref.
 func (recv *SecurityOrigin) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := securityOriginUnrefFunction_Set()
 	if err == nil {
@@ -4716,7 +4910,11 @@ func settingsClassStruct_Set() error {
 }
 
 type SettingsClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func SettingsClassNewFromNative(native uintptr) *SettingsClass {
+	return &SettingsClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4746,13 +4944,12 @@ func SettingsClassStruct() *SettingsClass {
 		return nil
 	}
 
-	structGo := &SettingsClass{}
-	structGo.Native = settingsClassStruct.Alloc()
+	structGo := SettingsClassNewFromNative(settingsClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSettingsClass)
 	return structGo
 }
 func finalizeSettingsClass(obj *SettingsClass) {
-	settingsClassStruct.Free(obj.Native)
+	settingsClassStruct.Free(obj.native)
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -4767,7 +4964,11 @@ func settingsPrivateStruct_Set() error {
 }
 
 type SettingsPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func SettingsPrivateNewFromNative(native uintptr) *SettingsPrivate {
+	return &SettingsPrivate{native: native}
 }
 
 // SettingsPrivateStruct creates an uninitialised SettingsPrivate.
@@ -4777,13 +4978,12 @@ func SettingsPrivateStruct() *SettingsPrivate {
 		return nil
 	}
 
-	structGo := &SettingsPrivate{}
-	structGo.Native = settingsPrivateStruct.Alloc()
+	structGo := SettingsPrivateNewFromNative(settingsPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSettingsPrivate)
 	return structGo
 }
 func finalizeSettingsPrivate(obj *SettingsPrivate) {
-	settingsPrivateStruct.Free(obj.Native)
+	settingsPrivateStruct.Free(obj.native)
 }
 
 var uRIRequestClassStruct *gi.Struct
@@ -4798,7 +4998,11 @@ func uRIRequestClassStruct_Set() error {
 }
 
 type URIRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func URIRequestClassNewFromNative(native uintptr) *URIRequestClass {
+	return &URIRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4828,13 +5032,12 @@ func URIRequestClassStruct() *URIRequestClass {
 		return nil
 	}
 
-	structGo := &URIRequestClass{}
-	structGo.Native = uRIRequestClassStruct.Alloc()
+	structGo := URIRequestClassNewFromNative(uRIRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURIRequestClass)
 	return structGo
 }
 func finalizeURIRequestClass(obj *URIRequestClass) {
-	uRIRequestClassStruct.Free(obj.Native)
+	uRIRequestClassStruct.Free(obj.native)
 }
 
 var uRIRequestPrivateStruct *gi.Struct
@@ -4849,7 +5052,11 @@ func uRIRequestPrivateStruct_Set() error {
 }
 
 type URIRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func URIRequestPrivateNewFromNative(native uintptr) *URIRequestPrivate {
+	return &URIRequestPrivate{native: native}
 }
 
 // URIRequestPrivateStruct creates an uninitialised URIRequestPrivate.
@@ -4859,13 +5066,12 @@ func URIRequestPrivateStruct() *URIRequestPrivate {
 		return nil
 	}
 
-	structGo := &URIRequestPrivate{}
-	structGo.Native = uRIRequestPrivateStruct.Alloc()
+	structGo := URIRequestPrivateNewFromNative(uRIRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURIRequestPrivate)
 	return structGo
 }
 func finalizeURIRequestPrivate(obj *URIRequestPrivate) {
-	uRIRequestPrivateStruct.Free(obj.Native)
+	uRIRequestPrivateStruct.Free(obj.native)
 }
 
 var uRIResponseClassStruct *gi.Struct
@@ -4880,7 +5086,11 @@ func uRIResponseClassStruct_Set() error {
 }
 
 type URIResponseClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func URIResponseClassNewFromNative(native uintptr) *URIResponseClass {
+	return &URIResponseClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4910,13 +5120,12 @@ func URIResponseClassStruct() *URIResponseClass {
 		return nil
 	}
 
-	structGo := &URIResponseClass{}
-	structGo.Native = uRIResponseClassStruct.Alloc()
+	structGo := URIResponseClassNewFromNative(uRIResponseClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURIResponseClass)
 	return structGo
 }
 func finalizeURIResponseClass(obj *URIResponseClass) {
-	uRIResponseClassStruct.Free(obj.Native)
+	uRIResponseClassStruct.Free(obj.native)
 }
 
 var uRIResponsePrivateStruct *gi.Struct
@@ -4931,7 +5140,11 @@ func uRIResponsePrivateStruct_Set() error {
 }
 
 type URIResponsePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func URIResponsePrivateNewFromNative(native uintptr) *URIResponsePrivate {
+	return &URIResponsePrivate{native: native}
 }
 
 // URIResponsePrivateStruct creates an uninitialised URIResponsePrivate.
@@ -4941,13 +5154,12 @@ func URIResponsePrivateStruct() *URIResponsePrivate {
 		return nil
 	}
 
-	structGo := &URIResponsePrivate{}
-	structGo.Native = uRIResponsePrivateStruct.Alloc()
+	structGo := URIResponsePrivateNewFromNative(uRIResponsePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURIResponsePrivate)
 	return structGo
 }
 func finalizeURIResponsePrivate(obj *URIResponsePrivate) {
-	uRIResponsePrivateStruct.Free(obj.Native)
+	uRIResponsePrivateStruct.Free(obj.native)
 }
 
 var uRISchemeRequestClassStruct *gi.Struct
@@ -4962,7 +5174,11 @@ func uRISchemeRequestClassStruct_Set() error {
 }
 
 type URISchemeRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func URISchemeRequestClassNewFromNative(native uintptr) *URISchemeRequestClass {
+	return &URISchemeRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4992,13 +5208,12 @@ func URISchemeRequestClassStruct() *URISchemeRequestClass {
 		return nil
 	}
 
-	structGo := &URISchemeRequestClass{}
-	structGo.Native = uRISchemeRequestClassStruct.Alloc()
+	structGo := URISchemeRequestClassNewFromNative(uRISchemeRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURISchemeRequestClass)
 	return structGo
 }
 func finalizeURISchemeRequestClass(obj *URISchemeRequestClass) {
-	uRISchemeRequestClassStruct.Free(obj.Native)
+	uRISchemeRequestClassStruct.Free(obj.native)
 }
 
 var uRISchemeRequestPrivateStruct *gi.Struct
@@ -5013,7 +5228,11 @@ func uRISchemeRequestPrivateStruct_Set() error {
 }
 
 type URISchemeRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func URISchemeRequestPrivateNewFromNative(native uintptr) *URISchemeRequestPrivate {
+	return &URISchemeRequestPrivate{native: native}
 }
 
 // URISchemeRequestPrivateStruct creates an uninitialised URISchemeRequestPrivate.
@@ -5023,13 +5242,12 @@ func URISchemeRequestPrivateStruct() *URISchemeRequestPrivate {
 		return nil
 	}
 
-	structGo := &URISchemeRequestPrivate{}
-	structGo.Native = uRISchemeRequestPrivateStruct.Alloc()
+	structGo := URISchemeRequestPrivateNewFromNative(uRISchemeRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeURISchemeRequestPrivate)
 	return structGo
 }
 func finalizeURISchemeRequestPrivate(obj *URISchemeRequestPrivate) {
-	uRISchemeRequestPrivateStruct.Free(obj.Native)
+	uRISchemeRequestPrivateStruct.Free(obj.native)
 }
 
 var userContentFilterStruct *gi.Struct
@@ -5044,7 +5262,11 @@ func userContentFilterStruct_Set() error {
 }
 
 type UserContentFilter struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserContentFilterNewFromNative(native uintptr) *UserContentFilter {
+	return &UserContentFilter{native: native}
 }
 
 var userContentFilterGetIdentifierFunction *gi.Function
@@ -5065,7 +5287,7 @@ func userContentFilterGetIdentifierFunction_Set() error {
 // GetIdentifier is a representation of the C type webkit_user_content_filter_get_identifier.
 func (recv *UserContentFilter) GetIdentifier() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5097,7 +5319,7 @@ func userContentFilterRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_content_filter_ref.
 func (recv *UserContentFilter) Ref() *UserContentFilter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5106,8 +5328,7 @@ func (recv *UserContentFilter) Ref() *UserContentFilter {
 		ret = userContentFilterRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UserContentFilter{}
-	retGo.Native = ret.Pointer()
+	retGo := UserContentFilterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5130,7 +5351,7 @@ func userContentFilterUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_content_filter_unref.
 func (recv *UserContentFilter) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := userContentFilterUnrefFunction_Set()
 	if err == nil {
@@ -5147,13 +5368,12 @@ func UserContentFilterStruct() *UserContentFilter {
 		return nil
 	}
 
-	structGo := &UserContentFilter{}
-	structGo.Native = userContentFilterStruct.Alloc()
+	structGo := UserContentFilterNewFromNative(userContentFilterStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserContentFilter)
 	return structGo
 }
 func finalizeUserContentFilter(obj *UserContentFilter) {
-	userContentFilterStruct.Free(obj.Native)
+	userContentFilterStruct.Free(obj.native)
 }
 
 var userContentFilterStoreClassStruct *gi.Struct
@@ -5168,7 +5388,11 @@ func userContentFilterStoreClassStruct_Set() error {
 }
 
 type UserContentFilterStoreClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserContentFilterStoreClassNewFromNative(native uintptr) *UserContentFilterStoreClass {
+	return &UserContentFilterStoreClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5198,13 +5422,12 @@ func UserContentFilterStoreClassStruct() *UserContentFilterStoreClass {
 		return nil
 	}
 
-	structGo := &UserContentFilterStoreClass{}
-	structGo.Native = userContentFilterStoreClassStruct.Alloc()
+	structGo := UserContentFilterStoreClassNewFromNative(userContentFilterStoreClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserContentFilterStoreClass)
 	return structGo
 }
 func finalizeUserContentFilterStoreClass(obj *UserContentFilterStoreClass) {
-	userContentFilterStoreClassStruct.Free(obj.Native)
+	userContentFilterStoreClassStruct.Free(obj.native)
 }
 
 var userContentFilterStorePrivateStruct *gi.Struct
@@ -5219,7 +5442,11 @@ func userContentFilterStorePrivateStruct_Set() error {
 }
 
 type UserContentFilterStorePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserContentFilterStorePrivateNewFromNative(native uintptr) *UserContentFilterStorePrivate {
+	return &UserContentFilterStorePrivate{native: native}
 }
 
 // UserContentFilterStorePrivateStruct creates an uninitialised UserContentFilterStorePrivate.
@@ -5229,13 +5456,12 @@ func UserContentFilterStorePrivateStruct() *UserContentFilterStorePrivate {
 		return nil
 	}
 
-	structGo := &UserContentFilterStorePrivate{}
-	structGo.Native = userContentFilterStorePrivateStruct.Alloc()
+	structGo := UserContentFilterStorePrivateNewFromNative(userContentFilterStorePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserContentFilterStorePrivate)
 	return structGo
 }
 func finalizeUserContentFilterStorePrivate(obj *UserContentFilterStorePrivate) {
-	userContentFilterStorePrivateStruct.Free(obj.Native)
+	userContentFilterStorePrivateStruct.Free(obj.native)
 }
 
 var userContentManagerClassStruct *gi.Struct
@@ -5250,7 +5476,11 @@ func userContentManagerClassStruct_Set() error {
 }
 
 type UserContentManagerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserContentManagerClassNewFromNative(native uintptr) *UserContentManagerClass {
+	return &UserContentManagerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5280,13 +5510,12 @@ func UserContentManagerClassStruct() *UserContentManagerClass {
 		return nil
 	}
 
-	structGo := &UserContentManagerClass{}
-	structGo.Native = userContentManagerClassStruct.Alloc()
+	structGo := UserContentManagerClassNewFromNative(userContentManagerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserContentManagerClass)
 	return structGo
 }
 func finalizeUserContentManagerClass(obj *UserContentManagerClass) {
-	userContentManagerClassStruct.Free(obj.Native)
+	userContentManagerClassStruct.Free(obj.native)
 }
 
 var userContentManagerPrivateStruct *gi.Struct
@@ -5301,7 +5530,11 @@ func userContentManagerPrivateStruct_Set() error {
 }
 
 type UserContentManagerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserContentManagerPrivateNewFromNative(native uintptr) *UserContentManagerPrivate {
+	return &UserContentManagerPrivate{native: native}
 }
 
 // UserContentManagerPrivateStruct creates an uninitialised UserContentManagerPrivate.
@@ -5311,13 +5544,12 @@ func UserContentManagerPrivateStruct() *UserContentManagerPrivate {
 		return nil
 	}
 
-	structGo := &UserContentManagerPrivate{}
-	structGo.Native = userContentManagerPrivateStruct.Alloc()
+	structGo := UserContentManagerPrivateNewFromNative(userContentManagerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserContentManagerPrivate)
 	return structGo
 }
 func finalizeUserContentManagerPrivate(obj *UserContentManagerPrivate) {
-	userContentManagerPrivateStruct.Free(obj.Native)
+	userContentManagerPrivateStruct.Free(obj.native)
 }
 
 var userMediaPermissionRequestClassStruct *gi.Struct
@@ -5332,7 +5564,11 @@ func userMediaPermissionRequestClassStruct_Set() error {
 }
 
 type UserMediaPermissionRequestClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserMediaPermissionRequestClassNewFromNative(native uintptr) *UserMediaPermissionRequestClass {
+	return &UserMediaPermissionRequestClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5362,13 +5598,12 @@ func UserMediaPermissionRequestClassStruct() *UserMediaPermissionRequestClass {
 		return nil
 	}
 
-	structGo := &UserMediaPermissionRequestClass{}
-	structGo.Native = userMediaPermissionRequestClassStruct.Alloc()
+	structGo := UserMediaPermissionRequestClassNewFromNative(userMediaPermissionRequestClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserMediaPermissionRequestClass)
 	return structGo
 }
 func finalizeUserMediaPermissionRequestClass(obj *UserMediaPermissionRequestClass) {
-	userMediaPermissionRequestClassStruct.Free(obj.Native)
+	userMediaPermissionRequestClassStruct.Free(obj.native)
 }
 
 var userMediaPermissionRequestPrivateStruct *gi.Struct
@@ -5383,7 +5618,11 @@ func userMediaPermissionRequestPrivateStruct_Set() error {
 }
 
 type UserMediaPermissionRequestPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserMediaPermissionRequestPrivateNewFromNative(native uintptr) *UserMediaPermissionRequestPrivate {
+	return &UserMediaPermissionRequestPrivate{native: native}
 }
 
 // UserMediaPermissionRequestPrivateStruct creates an uninitialised UserMediaPermissionRequestPrivate.
@@ -5393,13 +5632,12 @@ func UserMediaPermissionRequestPrivateStruct() *UserMediaPermissionRequestPrivat
 		return nil
 	}
 
-	structGo := &UserMediaPermissionRequestPrivate{}
-	structGo.Native = userMediaPermissionRequestPrivateStruct.Alloc()
+	structGo := UserMediaPermissionRequestPrivateNewFromNative(userMediaPermissionRequestPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeUserMediaPermissionRequestPrivate)
 	return structGo
 }
 func finalizeUserMediaPermissionRequestPrivate(obj *UserMediaPermissionRequestPrivate) {
-	userMediaPermissionRequestPrivateStruct.Free(obj.Native)
+	userMediaPermissionRequestPrivateStruct.Free(obj.native)
 }
 
 var userScriptStruct *gi.Struct
@@ -5414,7 +5652,11 @@ func userScriptStruct_Set() error {
 }
 
 type UserScript struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserScriptNewFromNative(native uintptr) *UserScript {
+	return &UserScript{native: native}
 }
 
 // UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'whitelist' of type 'nil' not supported
@@ -5439,7 +5681,7 @@ func userScriptRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_script_ref.
 func (recv *UserScript) Ref() *UserScript {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5448,8 +5690,7 @@ func (recv *UserScript) Ref() *UserScript {
 		ret = userScriptRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UserScript{}
-	retGo.Native = ret.Pointer()
+	retGo := UserScriptNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5472,7 +5713,7 @@ func userScriptUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_script_unref.
 func (recv *UserScript) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := userScriptUnrefFunction_Set()
 	if err == nil {
@@ -5494,7 +5735,11 @@ func userStyleSheetStruct_Set() error {
 }
 
 type UserStyleSheet struct {
-	Native uintptr
+	native uintptr
+}
+
+func UserStyleSheetNewFromNative(native uintptr) *UserStyleSheet {
+	return &UserStyleSheet{native: native}
 }
 
 // UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'whitelist' of type 'nil' not supported
@@ -5519,7 +5764,7 @@ func userStyleSheetRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_style_sheet_ref.
 func (recv *UserStyleSheet) Ref() *UserStyleSheet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5528,8 +5773,7 @@ func (recv *UserStyleSheet) Ref() *UserStyleSheet {
 		ret = userStyleSheetRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UserStyleSheet{}
-	retGo.Native = ret.Pointer()
+	retGo := UserStyleSheetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5552,7 +5796,7 @@ func userStyleSheetUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_style_sheet_unref.
 func (recv *UserStyleSheet) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := userStyleSheetUnrefFunction_Set()
 	if err == nil {
@@ -5574,7 +5818,11 @@ func webContextClassStruct_Set() error {
 }
 
 type WebContextClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebContextClassNewFromNative(native uintptr) *WebContextClass {
+	return &WebContextClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5620,13 +5868,12 @@ func WebContextClassStruct() *WebContextClass {
 		return nil
 	}
 
-	structGo := &WebContextClass{}
-	structGo.Native = webContextClassStruct.Alloc()
+	structGo := WebContextClassNewFromNative(webContextClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebContextClass)
 	return structGo
 }
 func finalizeWebContextClass(obj *WebContextClass) {
-	webContextClassStruct.Free(obj.Native)
+	webContextClassStruct.Free(obj.native)
 }
 
 var webContextPrivateStruct *gi.Struct
@@ -5641,7 +5888,11 @@ func webContextPrivateStruct_Set() error {
 }
 
 type WebContextPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebContextPrivateNewFromNative(native uintptr) *WebContextPrivate {
+	return &WebContextPrivate{native: native}
 }
 
 // WebContextPrivateStruct creates an uninitialised WebContextPrivate.
@@ -5651,13 +5902,12 @@ func WebContextPrivateStruct() *WebContextPrivate {
 		return nil
 	}
 
-	structGo := &WebContextPrivate{}
-	structGo.Native = webContextPrivateStruct.Alloc()
+	structGo := WebContextPrivateNewFromNative(webContextPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebContextPrivate)
 	return structGo
 }
 func finalizeWebContextPrivate(obj *WebContextPrivate) {
-	webContextPrivateStruct.Free(obj.Native)
+	webContextPrivateStruct.Free(obj.native)
 }
 
 var webInspectorClassStruct *gi.Struct
@@ -5672,7 +5922,11 @@ func webInspectorClassStruct_Set() error {
 }
 
 type WebInspectorClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebInspectorClassNewFromNative(native uintptr) *WebInspectorClass {
+	return &WebInspectorClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5702,13 +5956,12 @@ func WebInspectorClassStruct() *WebInspectorClass {
 		return nil
 	}
 
-	structGo := &WebInspectorClass{}
-	structGo.Native = webInspectorClassStruct.Alloc()
+	structGo := WebInspectorClassNewFromNative(webInspectorClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebInspectorClass)
 	return structGo
 }
 func finalizeWebInspectorClass(obj *WebInspectorClass) {
-	webInspectorClassStruct.Free(obj.Native)
+	webInspectorClassStruct.Free(obj.native)
 }
 
 var webInspectorPrivateStruct *gi.Struct
@@ -5723,7 +5976,11 @@ func webInspectorPrivateStruct_Set() error {
 }
 
 type WebInspectorPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebInspectorPrivateNewFromNative(native uintptr) *WebInspectorPrivate {
+	return &WebInspectorPrivate{native: native}
 }
 
 // WebInspectorPrivateStruct creates an uninitialised WebInspectorPrivate.
@@ -5733,13 +5990,12 @@ func WebInspectorPrivateStruct() *WebInspectorPrivate {
 		return nil
 	}
 
-	structGo := &WebInspectorPrivate{}
-	structGo.Native = webInspectorPrivateStruct.Alloc()
+	structGo := WebInspectorPrivateNewFromNative(webInspectorPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebInspectorPrivate)
 	return structGo
 }
 func finalizeWebInspectorPrivate(obj *WebInspectorPrivate) {
-	webInspectorPrivateStruct.Free(obj.Native)
+	webInspectorPrivateStruct.Free(obj.native)
 }
 
 var webResourceClassStruct *gi.Struct
@@ -5754,7 +6010,11 @@ func webResourceClassStruct_Set() error {
 }
 
 type WebResourceClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebResourceClassNewFromNative(native uintptr) *WebResourceClass {
+	return &WebResourceClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5784,13 +6044,12 @@ func WebResourceClassStruct() *WebResourceClass {
 		return nil
 	}
 
-	structGo := &WebResourceClass{}
-	structGo.Native = webResourceClassStruct.Alloc()
+	structGo := WebResourceClassNewFromNative(webResourceClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebResourceClass)
 	return structGo
 }
 func finalizeWebResourceClass(obj *WebResourceClass) {
-	webResourceClassStruct.Free(obj.Native)
+	webResourceClassStruct.Free(obj.native)
 }
 
 var webResourcePrivateStruct *gi.Struct
@@ -5805,7 +6064,11 @@ func webResourcePrivateStruct_Set() error {
 }
 
 type WebResourcePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebResourcePrivateNewFromNative(native uintptr) *WebResourcePrivate {
+	return &WebResourcePrivate{native: native}
 }
 
 // WebResourcePrivateStruct creates an uninitialised WebResourcePrivate.
@@ -5815,13 +6078,12 @@ func WebResourcePrivateStruct() *WebResourcePrivate {
 		return nil
 	}
 
-	structGo := &WebResourcePrivate{}
-	structGo.Native = webResourcePrivateStruct.Alloc()
+	structGo := WebResourcePrivateNewFromNative(webResourcePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebResourcePrivate)
 	return structGo
 }
 func finalizeWebResourcePrivate(obj *WebResourcePrivate) {
-	webResourcePrivateStruct.Free(obj.Native)
+	webResourcePrivateStruct.Free(obj.native)
 }
 
 var webViewBaseClassStruct *gi.Struct
@@ -5836,7 +6098,11 @@ func webViewBaseClassStruct_Set() error {
 }
 
 type WebViewBaseClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebViewBaseClassNewFromNative(native uintptr) *WebViewBaseClass {
+	return &WebViewBaseClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parentClass' : for field getter : no Go type for 'Gtk.ContainerClass'
@@ -5866,13 +6132,12 @@ func WebViewBaseClassStruct() *WebViewBaseClass {
 		return nil
 	}
 
-	structGo := &WebViewBaseClass{}
-	structGo.Native = webViewBaseClassStruct.Alloc()
+	structGo := WebViewBaseClassNewFromNative(webViewBaseClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebViewBaseClass)
 	return structGo
 }
 func finalizeWebViewBaseClass(obj *WebViewBaseClass) {
-	webViewBaseClassStruct.Free(obj.Native)
+	webViewBaseClassStruct.Free(obj.native)
 }
 
 var webViewBasePrivateStruct *gi.Struct
@@ -5887,7 +6152,11 @@ func webViewBasePrivateStruct_Set() error {
 }
 
 type WebViewBasePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebViewBasePrivateNewFromNative(native uintptr) *WebViewBasePrivate {
+	return &WebViewBasePrivate{native: native}
 }
 
 // WebViewBasePrivateStruct creates an uninitialised WebViewBasePrivate.
@@ -5897,13 +6166,12 @@ func WebViewBasePrivateStruct() *WebViewBasePrivate {
 		return nil
 	}
 
-	structGo := &WebViewBasePrivate{}
-	structGo.Native = webViewBasePrivateStruct.Alloc()
+	structGo := WebViewBasePrivateNewFromNative(webViewBasePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebViewBasePrivate)
 	return structGo
 }
 func finalizeWebViewBasePrivate(obj *WebViewBasePrivate) {
-	webViewBasePrivateStruct.Free(obj.Native)
+	webViewBasePrivateStruct.Free(obj.native)
 }
 
 var webViewClassStruct *gi.Struct
@@ -5918,22 +6186,25 @@ func webViewClassStruct_Set() error {
 }
 
 type WebViewClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebViewClassNewFromNative(native uintptr) *WebViewClass {
+	return &WebViewClass{native: native}
 }
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
-	argValue := gi.StructFieldGet(webViewClassStruct, recv.Native, "parent")
-	value := &WebViewBaseClass{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(webViewClassStruct, recv.native, "parent")
+	value := WebViewBaseClassNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *WebViewClass) SetFieldParent(value *WebViewBaseClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(webViewClassStruct, recv.Native, "parent", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(webViewClassStruct, recv.native, "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'load_changed' : for field getter : missing Type
@@ -6055,13 +6326,12 @@ func WebViewClassStruct() *WebViewClass {
 		return nil
 	}
 
-	structGo := &WebViewClass{}
-	structGo.Native = webViewClassStruct.Alloc()
+	structGo := WebViewClassNewFromNative(webViewClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebViewClass)
 	return structGo
 }
 func finalizeWebViewClass(obj *WebViewClass) {
-	webViewClassStruct.Free(obj.Native)
+	webViewClassStruct.Free(obj.native)
 }
 
 var webViewPrivateStruct *gi.Struct
@@ -6076,7 +6346,11 @@ func webViewPrivateStruct_Set() error {
 }
 
 type WebViewPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebViewPrivateNewFromNative(native uintptr) *WebViewPrivate {
+	return &WebViewPrivate{native: native}
 }
 
 // WebViewPrivateStruct creates an uninitialised WebViewPrivate.
@@ -6086,13 +6360,12 @@ func WebViewPrivateStruct() *WebViewPrivate {
 		return nil
 	}
 
-	structGo := &WebViewPrivate{}
-	structGo.Native = webViewPrivateStruct.Alloc()
+	structGo := WebViewPrivateNewFromNative(webViewPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebViewPrivate)
 	return structGo
 }
 func finalizeWebViewPrivate(obj *WebViewPrivate) {
-	webViewPrivateStruct.Free(obj.Native)
+	webViewPrivateStruct.Free(obj.native)
 }
 
 var webViewSessionStateStruct *gi.Struct
@@ -6107,7 +6380,11 @@ func webViewSessionStateStruct_Set() error {
 }
 
 type WebViewSessionState struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebViewSessionStateNewFromNative(native uintptr) *WebViewSessionState {
+	return &WebViewSessionState{native: native}
 }
 
 // UNSUPPORTED : C value 'webkit_web_view_session_state_new' : parameter 'data' of type 'GLib.Bytes' not supported
@@ -6130,7 +6407,7 @@ func webViewSessionStateRefFunction_Set() error {
 // Ref is a representation of the C type webkit_web_view_session_state_ref.
 func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6139,8 +6416,7 @@ func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 		ret = webViewSessionStateRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &WebViewSessionState{}
-	retGo.Native = ret.Pointer()
+	retGo := WebViewSessionStateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6165,7 +6441,7 @@ func webViewSessionStateUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_web_view_session_state_unref.
 func (recv *WebViewSessionState) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := webViewSessionStateUnrefFunction_Set()
 	if err == nil {
@@ -6187,7 +6463,11 @@ func websiteDataStruct_Set() error {
 }
 
 type WebsiteData struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebsiteDataNewFromNative(native uintptr) *WebsiteData {
+	return &WebsiteData{native: native}
 }
 
 var websiteDataGetNameFunction *gi.Function
@@ -6208,7 +6488,7 @@ func websiteDataGetNameFunction_Set() error {
 // GetName is a representation of the C type webkit_website_data_get_name.
 func (recv *WebsiteData) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6244,7 +6524,7 @@ func websiteDataRefFunction_Set() error {
 // Ref is a representation of the C type webkit_website_data_ref.
 func (recv *WebsiteData) Ref() *WebsiteData {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6253,8 +6533,7 @@ func (recv *WebsiteData) Ref() *WebsiteData {
 		ret = websiteDataRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &WebsiteData{}
-	retGo.Native = ret.Pointer()
+	retGo := WebsiteDataNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6277,7 +6556,7 @@ func websiteDataUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_website_data_unref.
 func (recv *WebsiteData) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := websiteDataUnrefFunction_Set()
 	if err == nil {
@@ -6294,13 +6573,12 @@ func WebsiteDataStruct() *WebsiteData {
 		return nil
 	}
 
-	structGo := &WebsiteData{}
-	structGo.Native = websiteDataStruct.Alloc()
+	structGo := WebsiteDataNewFromNative(websiteDataStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebsiteData)
 	return structGo
 }
 func finalizeWebsiteData(obj *WebsiteData) {
-	websiteDataStruct.Free(obj.Native)
+	websiteDataStruct.Free(obj.native)
 }
 
 var websiteDataManagerClassStruct *gi.Struct
@@ -6315,7 +6593,11 @@ func websiteDataManagerClassStruct_Set() error {
 }
 
 type WebsiteDataManagerClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebsiteDataManagerClassNewFromNative(native uintptr) *WebsiteDataManagerClass {
+	return &WebsiteDataManagerClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6345,13 +6627,12 @@ func WebsiteDataManagerClassStruct() *WebsiteDataManagerClass {
 		return nil
 	}
 
-	structGo := &WebsiteDataManagerClass{}
-	structGo.Native = websiteDataManagerClassStruct.Alloc()
+	structGo := WebsiteDataManagerClassNewFromNative(websiteDataManagerClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebsiteDataManagerClass)
 	return structGo
 }
 func finalizeWebsiteDataManagerClass(obj *WebsiteDataManagerClass) {
-	websiteDataManagerClassStruct.Free(obj.Native)
+	websiteDataManagerClassStruct.Free(obj.native)
 }
 
 var websiteDataManagerPrivateStruct *gi.Struct
@@ -6366,7 +6647,11 @@ func websiteDataManagerPrivateStruct_Set() error {
 }
 
 type WebsiteDataManagerPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WebsiteDataManagerPrivateNewFromNative(native uintptr) *WebsiteDataManagerPrivate {
+	return &WebsiteDataManagerPrivate{native: native}
 }
 
 // WebsiteDataManagerPrivateStruct creates an uninitialised WebsiteDataManagerPrivate.
@@ -6376,13 +6661,12 @@ func WebsiteDataManagerPrivateStruct() *WebsiteDataManagerPrivate {
 		return nil
 	}
 
-	structGo := &WebsiteDataManagerPrivate{}
-	structGo.Native = websiteDataManagerPrivateStruct.Alloc()
+	structGo := WebsiteDataManagerPrivateNewFromNative(websiteDataManagerPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWebsiteDataManagerPrivate)
 	return structGo
 }
 func finalizeWebsiteDataManagerPrivate(obj *WebsiteDataManagerPrivate) {
-	websiteDataManagerPrivateStruct.Free(obj.Native)
+	websiteDataManagerPrivateStruct.Free(obj.native)
 }
 
 var windowPropertiesClassStruct *gi.Struct
@@ -6397,7 +6681,11 @@ func windowPropertiesClassStruct_Set() error {
 }
 
 type WindowPropertiesClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func WindowPropertiesClassNewFromNative(native uintptr) *WindowPropertiesClass {
+	return &WindowPropertiesClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6427,13 +6715,12 @@ func WindowPropertiesClassStruct() *WindowPropertiesClass {
 		return nil
 	}
 
-	structGo := &WindowPropertiesClass{}
-	structGo.Native = windowPropertiesClassStruct.Alloc()
+	structGo := WindowPropertiesClassNewFromNative(windowPropertiesClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWindowPropertiesClass)
 	return structGo
 }
 func finalizeWindowPropertiesClass(obj *WindowPropertiesClass) {
-	windowPropertiesClassStruct.Free(obj.Native)
+	windowPropertiesClassStruct.Free(obj.native)
 }
 
 var windowPropertiesPrivateStruct *gi.Struct
@@ -6448,7 +6735,11 @@ func windowPropertiesPrivateStruct_Set() error {
 }
 
 type WindowPropertiesPrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func WindowPropertiesPrivateNewFromNative(native uintptr) *WindowPropertiesPrivate {
+	return &WindowPropertiesPrivate{native: native}
 }
 
 // WindowPropertiesPrivateStruct creates an uninitialised WindowPropertiesPrivate.
@@ -6458,11 +6749,10 @@ func WindowPropertiesPrivateStruct() *WindowPropertiesPrivate {
 		return nil
 	}
 
-	structGo := &WindowPropertiesPrivate{}
-	structGo.Native = windowPropertiesPrivateStruct.Alloc()
+	structGo := WindowPropertiesPrivateNewFromNative(windowPropertiesPrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeWindowPropertiesPrivate)
 	return structGo
 }
 func finalizeWindowPropertiesPrivate(obj *WindowPropertiesPrivate) {
-	windowPropertiesPrivateStruct.Free(obj.Native)
+	windowPropertiesPrivateStruct.Free(obj.native)
 }

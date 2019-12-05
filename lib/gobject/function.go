@@ -82,7 +82,7 @@ func clearObjectFunction_Set() error {
 // ClearObject is a representation of the C type g_clear_object.
 func ClearObject(objectPtr *Object) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(objectPtr.Native)
+	inArgs[0].SetPointer(objectPtr.native)
 
 	err := clearObjectFunction_Set()
 	if err == nil {
@@ -107,7 +107,7 @@ func clearSignalHandlerFunction_Set() error {
 func ClearSignalHandler(handlerIdPtr uint64, instance *Object) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint64(handlerIdPtr)
-	inArgs[1].SetPointer(instance.Native)
+	inArgs[1].SetPointer(instance.native)
 
 	err := clearSignalHandlerFunction_Set()
 	if err == nil {
@@ -133,7 +133,7 @@ func enumGetValueFunction_Set() error {
 // EnumGetValue is a representation of the C type g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(enumClass.Native)
+	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetInt32(value)
 
 	var ret gi.Argument
@@ -143,8 +143,7 @@ func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 		ret = enumGetValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &EnumValue{}
-	retGo.Native = ret.Pointer()
+	retGo := EnumValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -163,7 +162,7 @@ func enumGetValueByNameFunction_Set() error {
 // EnumGetValueByName is a representation of the C type g_enum_get_value_by_name.
 func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(enumClass.Native)
+	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -173,8 +172,7 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 		ret = enumGetValueByNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &EnumValue{}
-	retGo.Native = ret.Pointer()
+	retGo := EnumValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -193,7 +191,7 @@ func enumGetValueByNickFunction_Set() error {
 // EnumGetValueByNick is a representation of the C type g_enum_get_value_by_nick.
 func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(enumClass.Native)
+	inArgs[0].SetPointer(enumClass.native)
 	inArgs[1].SetString(nick)
 
 	var ret gi.Argument
@@ -203,8 +201,7 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 		ret = enumGetValueByNickFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &EnumValue{}
-	retGo.Native = ret.Pointer()
+	retGo := EnumValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -229,7 +226,7 @@ func flagsGetFirstValueFunction_Set() error {
 // FlagsGetFirstValue is a representation of the C type g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(flagsClass.Native)
+	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetUint32(value)
 
 	var ret gi.Argument
@@ -239,8 +236,7 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 		ret = flagsGetFirstValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FlagsValue{}
-	retGo.Native = ret.Pointer()
+	retGo := FlagsValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -259,7 +255,7 @@ func flagsGetValueByNameFunction_Set() error {
 // FlagsGetValueByName is a representation of the C type g_flags_get_value_by_name.
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(flagsClass.Native)
+	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -269,8 +265,7 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 		ret = flagsGetValueByNameFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FlagsValue{}
-	retGo.Native = ret.Pointer()
+	retGo := FlagsValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -289,7 +284,7 @@ func flagsGetValueByNickFunction_Set() error {
 // FlagsGetValueByNick is a representation of the C type g_flags_get_value_by_nick.
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(flagsClass.Native)
+	inArgs[0].SetPointer(flagsClass.native)
 	inArgs[1].SetString(nick)
 
 	var ret gi.Argument
@@ -299,8 +294,7 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 		ret = flagsGetValueByNickFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FlagsValue{}
-	retGo.Native = ret.Pointer()
+	retGo := FlagsValueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -350,7 +344,7 @@ func paramSpecOverrideFunction_Set() error {
 func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(name)
-	inArgs[1].SetPointer(overridden.Native)
+	inArgs[1].SetPointer(overridden.native)
 
 	var ret gi.Argument
 
@@ -359,8 +353,7 @@ func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 		ret = paramSpecOverrideFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ParamSpec{}
-	retGo.Native = ret.Pointer()
+	retGo := ParamSpecNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -392,8 +385,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 		ret = paramSpecPoolNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ParamSpecPool{}
-	retGo.Native = ret.Pointer()
+	retGo := ParamSpecPoolNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -430,9 +422,9 @@ func paramValueConvertFunction_Set() error {
 // ParamValueConvert is a representation of the C type g_param_value_convert.
 func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(pspec.Native)
-	inArgs[1].SetPointer(srcValue.Native)
-	inArgs[2].SetPointer(destValue.Native)
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(srcValue.native)
+	inArgs[2].SetPointer(destValue.native)
 	inArgs[3].SetBoolean(strictValidation)
 
 	var ret gi.Argument
@@ -461,8 +453,8 @@ func paramValueDefaultsFunction_Set() error {
 // ParamValueDefaults is a representation of the C type g_param_value_defaults.
 func ParamValueDefaults(pspec *ParamSpec, value *Value) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(pspec.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -490,8 +482,8 @@ func paramValueSetDefaultFunction_Set() error {
 // ParamValueSetDefault is a representation of the C type g_param_value_set_default.
 func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(pspec.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
 
 	err := paramValueSetDefaultFunction_Set()
 	if err == nil {
@@ -515,8 +507,8 @@ func paramValueValidateFunction_Set() error {
 // ParamValueValidate is a representation of the C type g_param_value_validate.
 func ParamValueValidate(pspec *ParamSpec, value *Value) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(pspec.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -544,9 +536,9 @@ func paramValuesCmpFunction_Set() error {
 // ParamValuesCmp is a representation of the C type g_param_values_cmp.
 func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(pspec.Native)
-	inArgs[1].SetPointer(value1.Native)
-	inArgs[2].SetPointer(value2.Native)
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetPointer(value1.native)
+	inArgs[2].SetPointer(value2.native)
 
 	var ret gi.Argument
 
@@ -586,9 +578,9 @@ func signalConnectClosureFunction_Set() error {
 // SignalConnectClosure is a representation of the C type g_signal_connect_closure.
 func SignalConnectClosure(instance *Object, detailedSignal string, closure *Closure, after bool) uint64 {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetString(detailedSignal)
-	inArgs[2].SetPointer(closure.Native)
+	inArgs[2].SetPointer(closure.native)
 	inArgs[3].SetBoolean(after)
 
 	var ret gi.Argument
@@ -617,10 +609,10 @@ func signalConnectClosureByIdFunction_Set() error {
 // SignalConnectClosureById is a representation of the C type g_signal_connect_closure_by_id.
 func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint32(signalId)
 	inArgs[2].SetUint32(uint32(detail))
-	inArgs[3].SetPointer(closure.Native)
+	inArgs[3].SetPointer(closure.native)
 	inArgs[4].SetBoolean(after)
 
 	var ret gi.Argument
@@ -661,7 +653,7 @@ func signalGetInvocationHintFunction_Set() error {
 // SignalGetInvocationHint is a representation of the C type g_signal_get_invocation_hint.
 func SignalGetInvocationHint(instance *Object) *SignalInvocationHint {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 
 	var ret gi.Argument
 
@@ -670,8 +662,7 @@ func SignalGetInvocationHint(instance *Object) *SignalInvocationHint {
 		ret = signalGetInvocationHintFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SignalInvocationHint{}
-	retGo.Native = ret.Pointer()
+	retGo := SignalInvocationHintNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -690,7 +681,7 @@ func signalHandlerBlockFunction_Set() error {
 // SignalHandlerBlock is a representation of the C type g_signal_handler_block.
 func SignalHandlerBlock(instance *Object, handlerId uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint64(handlerId)
 
 	err := signalHandlerBlockFunction_Set()
@@ -715,7 +706,7 @@ func signalHandlerDisconnectFunction_Set() error {
 // SignalHandlerDisconnect is a representation of the C type g_signal_handler_disconnect.
 func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint64(handlerId)
 
 	err := signalHandlerDisconnectFunction_Set()
@@ -742,7 +733,7 @@ func signalHandlerIsConnectedFunction_Set() error {
 // SignalHandlerIsConnected is a representation of the C type g_signal_handler_is_connected.
 func SignalHandlerIsConnected(instance *Object, handlerId uint64) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint64(handlerId)
 
 	var ret gi.Argument
@@ -771,7 +762,7 @@ func signalHandlerUnblockFunction_Set() error {
 // SignalHandlerUnblock is a representation of the C type g_signal_handler_unblock.
 func SignalHandlerUnblock(instance *Object, handlerId uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint64(handlerId)
 
 	err := signalHandlerUnblockFunction_Set()
@@ -798,7 +789,7 @@ func signalHandlersDestroyFunction_Set() error {
 // SignalHandlersDestroy is a representation of the C type g_signal_handlers_destroy.
 func SignalHandlersDestroy(instance *Object) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 
 	err := signalHandlersDestroyFunction_Set()
 	if err == nil {
@@ -826,7 +817,7 @@ func signalHasHandlerPendingFunction_Set() error {
 // SignalHasHandlerPending is a representation of the C type g_signal_has_handler_pending.
 func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint32(signalId)
 	inArgs[2].SetUint32(uint32(detail))
 	inArgs[3].SetBoolean(mayBeBlocked)
@@ -912,8 +903,7 @@ func SignalQuery(signalId uint32) *SignalQuery_ {
 		signalQueryFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &SignalQuery_{}
-	out0.Native = outArgs[0].Pointer()
+	out0 := SignalQuery_NewFromNative(outArgs[0].Pointer())
 
 	return out0
 }
@@ -959,7 +949,7 @@ func signalStopEmissionFunction_Set() error {
 // SignalStopEmission is a representation of the C type g_signal_stop_emission.
 func SignalStopEmission(instance *Object, signalId uint32, detail glib.Quark) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetUint32(signalId)
 	inArgs[2].SetUint32(uint32(detail))
 
@@ -985,7 +975,7 @@ func signalStopEmissionByNameFunction_Set() error {
 // SignalStopEmissionByName is a representation of the C type g_signal_stop_emission_by_name.
 func SignalStopEmissionByName(instance *Object, detailedSignal string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 	inArgs[1].SetString(detailedSignal)
 
 	err := signalStopEmissionByNameFunction_Set()
@@ -1016,7 +1006,7 @@ func strdupValueContentsFunction_Set() error {
 // StrdupValueContents is a representation of the C type g_strdup_value_contents.
 func StrdupValueContents(value *Value) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(value.Native)
+	inArgs[0].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -1060,7 +1050,7 @@ func typeCheckInstanceFunction_Set() error {
 // TypeCheckInstance is a representation of the C type g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 
 	var ret gi.Argument
 
@@ -1096,7 +1086,7 @@ func typeCheckValueFunction_Set() error {
 // TypeCheckValue is a representation of the C type g_type_check_value.
 func TypeCheckValue(value *Value) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(value.Native)
+	inArgs[0].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -1142,7 +1132,7 @@ func typeDefaultInterfaceUnrefFunction_Set() error {
 // TypeDefaultInterfaceUnref is a representation of the C type g_type_default_interface_unref.
 func TypeDefaultInterfaceUnref(gIface *TypeInterface) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(gIface.Native)
+	inArgs[0].SetPointer(gIface.native)
 
 	err := typeDefaultInterfaceUnrefFunction_Set()
 	if err == nil {
@@ -1170,7 +1160,7 @@ func typeFreeInstanceFunction_Set() error {
 // TypeFreeInstance is a representation of the C type g_type_free_instance.
 func TypeFreeInstance(instance *TypeInstance) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 
 	err := typeFreeInstanceFunction_Set()
 	if err == nil {
@@ -1270,7 +1260,7 @@ func typeNameFromClassFunction_Set() error {
 // TypeNameFromClass is a representation of the C type g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(gClass.Native)
+	inArgs[0].SetPointer(gClass.native)
 
 	var ret gi.Argument
 
@@ -1298,7 +1288,7 @@ func typeNameFromInstanceFunction_Set() error {
 // TypeNameFromInstance is a representation of the C type g_type_name_from_instance.
 func TypeNameFromInstance(instance *TypeInstance) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(instance.Native)
+	inArgs[0].SetPointer(instance.native)
 
 	var ret gi.Argument
 

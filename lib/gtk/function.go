@@ -65,8 +65,7 @@ func BindingSetFind(setName string) *BindingSet {
 		ret = bindingSetFindFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BindingSet{}
-	retGo.Native = ret.Pointer()
+	retGo := BindingSetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -94,8 +93,7 @@ func BindingSetNew(setName string) *BindingSet {
 		ret = bindingSetNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BindingSet{}
-	retGo.Native = ret.Pointer()
+	retGo := BindingSetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -232,7 +230,7 @@ func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes
 	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(extraSpace)
 	inArgs[1].SetUint32(nRequestedSizes)
-	inArgs[2].SetPointer(sizes.Native)
+	inArgs[2].SetPointer(sizes.native)
 
 	var ret gi.Argument
 
@@ -587,8 +585,7 @@ func GrabGetCurrent() *Widget {
 		ret = grabGetCurrentFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Widget{}
-	retGo.Native = ret.Pointer()
+	retGo := WidgetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -694,7 +691,7 @@ func iconSizeLookupForSettingsFunction_Set() error {
 // IconSizeLookupForSettings is a representation of the C type gtk_icon_size_lookup_for_settings.
 func IconSizeLookupForSettings(settings *Settings, size IconSize) (bool, int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(settings.Native)
+	inArgs[0].SetPointer(settings.native)
 	inArgs[1].SetInt32(int32(size))
 
 	var outArgs [2]gi.Argument
@@ -1061,9 +1058,9 @@ func printRunPageSetupDialogFunction_Set() error {
 // PrintRunPageSetupDialog is a representation of the C type gtk_print_run_page_setup_dialog.
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(parent.Native)
-	inArgs[1].SetPointer(pageSetup.Native)
-	inArgs[2].SetPointer(settings.Native)
+	inArgs[0].SetPointer(parent.native)
+	inArgs[1].SetPointer(pageSetup.native)
+	inArgs[2].SetPointer(settings.native)
 
 	var ret gi.Argument
 
@@ -1072,8 +1069,7 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 		ret = printRunPageSetupDialogFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &PageSetup{}
-	retGo.Native = ret.Pointer()
+	retGo := PageSetupNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1250,7 +1246,7 @@ func rcGetStyleFunction_Set() error {
 // RcGetStyle is a representation of the C type gtk_rc_get_style.
 func RcGetStyle(widget *Widget) *Style {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 
 	var ret gi.Argument
 
@@ -1259,8 +1255,7 @@ func RcGetStyle(widget *Widget) *Style {
 		ret = rcGetStyleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Style{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1399,7 +1394,7 @@ func rcReparseAllForSettingsFunction_Set() error {
 // RcReparseAllForSettings is a representation of the C type gtk_rc_reparse_all_for_settings.
 func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(settings.Native)
+	inArgs[0].SetPointer(settings.native)
 	inArgs[1].SetBoolean(forceLoad)
 
 	var ret gi.Argument
@@ -1428,7 +1423,7 @@ func rcResetStylesFunction_Set() error {
 // RcResetStyles is a representation of the C type gtk_rc_reset_styles.
 func RcResetStyles(settings *Settings) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(settings.Native)
+	inArgs[0].SetPointer(settings.native)
 
 	err := rcResetStylesFunction_Set()
 	if err == nil {
@@ -1590,7 +1585,7 @@ func selectionRemoveAllFunction_Set() error {
 // SelectionRemoveAll is a representation of the C type gtk_selection_remove_all.
 func SelectionRemoveAll(widget *Widget) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 
 	err := selectionRemoveAllFunction_Set()
 	if err == nil {
@@ -1642,7 +1637,7 @@ func showUriOnWindowFunction_Set() error {
 // ShowUriOnWindow is a representation of the C type gtk_show_uri_on_window.
 func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(parent.Native)
+	inArgs[0].SetPointer(parent.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetUint32(timestamp)
 
@@ -1689,8 +1684,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	}
 
 	retGo := ret.Boolean()
-	out0 := &StockItem{}
-	out0.Native = outArgs[0].Pointer()
+	out0 := StockItemNewFromNative(outArgs[0].Pointer())
 
 	return retGo, out0
 }
@@ -1713,7 +1707,7 @@ func targetTableNewFromListFunction_Set() error {
 // TargetTableNewFromList is a representation of the C type gtk_target_table_new_from_list.
 func TargetTableNewFromList(list *TargetList) int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(list.Native)
+	inArgs[0].SetPointer(list.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1759,8 +1753,7 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 		ret = testCreateSimpleWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Widget{}
-	retGo.Native = ret.Pointer()
+	retGo := WidgetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1783,7 +1776,7 @@ func testFindLabelFunction_Set() error {
 // TestFindLabel is a representation of the C type gtk_test_find_label.
 func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 	inArgs[1].SetString(labelPattern)
 
 	var ret gi.Argument
@@ -1793,8 +1786,7 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 		ret = testFindLabelFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Widget{}
-	retGo.Native = ret.Pointer()
+	retGo := WidgetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1867,7 +1859,7 @@ func testSliderGetValueFunction_Set() error {
 // TestSliderGetValue is a representation of the C type gtk_test_slider_get_value.
 func TestSliderGetValue(widget *Widget) float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 
 	var ret gi.Argument
 
@@ -1895,7 +1887,7 @@ func testSliderSetPercFunction_Set() error {
 // TestSliderSetPerc is a representation of the C type gtk_test_slider_set_perc.
 func TestSliderSetPerc(widget *Widget, percentage float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 	inArgs[1].SetFloat64(percentage)
 
 	err := testSliderSetPercFunction_Set()
@@ -1920,7 +1912,7 @@ func testSpinButtonClickFunction_Set() error {
 // TestSpinButtonClick is a representation of the C type gtk_test_spin_button_click.
 func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(spinner.Native)
+	inArgs[0].SetPointer(spinner.native)
 	inArgs[1].SetUint32(button)
 	inArgs[2].SetBoolean(upwards)
 
@@ -1950,7 +1942,7 @@ func testTextGetFunction_Set() error {
 // TestTextGet is a representation of the C type gtk_test_text_get.
 func TestTextGet(widget *Widget) string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 
 	var ret gi.Argument
 
@@ -1978,7 +1970,7 @@ func testTextSetFunction_Set() error {
 // TestTextSet is a representation of the C type gtk_test_text_set.
 func TestTextSet(widget *Widget, string_ string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 	inArgs[1].SetString(string_)
 
 	err := testTextSetFunction_Set()
@@ -2007,7 +1999,7 @@ func testWidgetWaitForDrawFunction_Set() error {
 // TestWidgetWaitForDraw is a representation of the C type gtk_test_widget_wait_for_draw.
 func TestWidgetWaitForDraw(widget *Widget) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(widget.Native)
+	inArgs[0].SetPointer(widget.native)
 
 	err := testWidgetWaitForDrawFunction_Set()
 	if err == nil {

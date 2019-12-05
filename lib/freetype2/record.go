@@ -20,7 +20,11 @@ func bitmapStruct_Set() error {
 }
 
 type Bitmap struct {
-	Native uintptr
+	native uintptr
+}
+
+func BitmapNewFromNative(native uintptr) *Bitmap {
+	return &Bitmap{native: native}
 }
 
 // BitmapStruct creates an uninitialised Bitmap.
@@ -30,13 +34,12 @@ func BitmapStruct() *Bitmap {
 		return nil
 	}
 
-	structGo := &Bitmap{}
-	structGo.Native = bitmapStruct.Alloc()
+	structGo := BitmapNewFromNative(bitmapStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBitmap)
 	return structGo
 }
 func finalizeBitmap(obj *Bitmap) {
-	bitmapStruct.Free(obj.Native)
+	bitmapStruct.Free(obj.native)
 }
 
 var faceStruct *gi.Struct
@@ -51,7 +54,11 @@ func faceStruct_Set() error {
 }
 
 type Face struct {
-	Native uintptr
+	native uintptr
+}
+
+func FaceNewFromNative(native uintptr) *Face {
+	return &Face{native: native}
 }
 
 // FaceStruct creates an uninitialised Face.
@@ -61,13 +68,12 @@ func FaceStruct() *Face {
 		return nil
 	}
 
-	structGo := &Face{}
-	structGo.Native = faceStruct.Alloc()
+	structGo := FaceNewFromNative(faceStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeFace)
 	return structGo
 }
 func finalizeFace(obj *Face) {
-	faceStruct.Free(obj.Native)
+	faceStruct.Free(obj.native)
 }
 
 var libraryStruct *gi.Struct
@@ -82,7 +88,11 @@ func libraryStruct_Set() error {
 }
 
 type Library struct {
-	Native uintptr
+	native uintptr
+}
+
+func LibraryNewFromNative(native uintptr) *Library {
+	return &Library{native: native}
 }
 
 // LibraryStruct creates an uninitialised Library.
@@ -92,11 +102,10 @@ func LibraryStruct() *Library {
 		return nil
 	}
 
-	structGo := &Library{}
-	structGo.Native = libraryStruct.Alloc()
+	structGo := LibraryNewFromNative(libraryStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeLibrary)
 	return structGo
 }
 func finalizeLibrary(obj *Library) {
-	libraryStruct.Free(obj.Native)
+	libraryStruct.Free(obj.native)
 }

@@ -21,7 +21,17 @@ func bufferObject_Set() error {
 }
 
 type Buffer struct {
-	gtk.TextBuffer
+	native uintptr
+}
+
+func BufferNewFromNative(native uintptr) *Buffer {
+	return &Buffer{native: native}
+}
+func (recv *Buffer) TextBuffer() *gtk.TextBuffer {
+	return gtk.TextBufferNewFromNative(recv.native)
+}
+func (recv *Buffer) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextBuffer'
@@ -30,17 +40,16 @@ type Buffer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Buffer) FieldPriv() *BufferPrivate {
-	argValue := gi.ObjectFieldGet(bufferObject, recv.Native, "priv")
-	value := &BufferPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(bufferObject, recv.native, "priv")
+	value := BufferPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Buffer) SetFieldPriv(value *BufferPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(bufferObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(bufferObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_buffer_new' : parameter 'table' of type 'Gtk.TextTagTable' not supported
@@ -63,7 +72,7 @@ func bufferNewWithLanguageFunction_Set() error {
 // BufferNewWithLanguage is a representation of the C type gtk_source_buffer_new_with_language.
 func BufferNewWithLanguage(language *Language) *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(language.Native)
+	inArgs[0].SetPointer(language.native)
 
 	var ret gi.Argument
 
@@ -72,8 +81,7 @@ func BufferNewWithLanguage(language *Language) *Buffer {
 		ret = bufferNewWithLanguageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -98,7 +106,7 @@ func bufferBeginNotUndoableActionFunction_Set() error {
 // BeginNotUndoableAction is a representation of the C type gtk_source_buffer_begin_not_undoable_action.
 func (recv *Buffer) BeginNotUndoableAction() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bufferBeginNotUndoableActionFunction_Set()
 	if err == nil {
@@ -126,7 +134,7 @@ func bufferCanRedoFunction_Set() error {
 // CanRedo is a representation of the C type gtk_source_buffer_can_redo.
 func (recv *Buffer) CanRedo() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -158,7 +166,7 @@ func bufferCanUndoFunction_Set() error {
 // CanUndo is a representation of the C type gtk_source_buffer_can_undo.
 func (recv *Buffer) CanUndo() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -196,7 +204,7 @@ func bufferEndNotUndoableActionFunction_Set() error {
 // EndNotUndoableAction is a representation of the C type gtk_source_buffer_end_not_undoable_action.
 func (recv *Buffer) EndNotUndoableAction() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bufferEndNotUndoableActionFunction_Set()
 	if err == nil {
@@ -230,7 +238,7 @@ func bufferGetHighlightMatchingBracketsFunction_Set() error {
 // GetHighlightMatchingBrackets is a representation of the C type gtk_source_buffer_get_highlight_matching_brackets.
 func (recv *Buffer) GetHighlightMatchingBrackets() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -262,7 +270,7 @@ func bufferGetHighlightSyntaxFunction_Set() error {
 // GetHighlightSyntax is a representation of the C type gtk_source_buffer_get_highlight_syntax.
 func (recv *Buffer) GetHighlightSyntax() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -294,7 +302,7 @@ func bufferGetImplicitTrailingNewlineFunction_Set() error {
 // GetImplicitTrailingNewline is a representation of the C type gtk_source_buffer_get_implicit_trailing_newline.
 func (recv *Buffer) GetImplicitTrailingNewline() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -326,7 +334,7 @@ func bufferGetLanguageFunction_Set() error {
 // GetLanguage is a representation of the C type gtk_source_buffer_get_language.
 func (recv *Buffer) GetLanguage() *Language {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -335,8 +343,7 @@ func (recv *Buffer) GetLanguage() *Language {
 		ret = bufferGetLanguageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Language{}
-	retGo.Native = ret.Pointer()
+	retGo := LanguageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -359,7 +366,7 @@ func bufferGetMaxUndoLevelsFunction_Set() error {
 // GetMaxUndoLevels is a representation of the C type gtk_source_buffer_get_max_undo_levels.
 func (recv *Buffer) GetMaxUndoLevels() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -395,7 +402,7 @@ func bufferGetStyleSchemeFunction_Set() error {
 // GetStyleScheme is a representation of the C type gtk_source_buffer_get_style_scheme.
 func (recv *Buffer) GetStyleScheme() *StyleScheme {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -404,8 +411,7 @@ func (recv *Buffer) GetStyleScheme() *StyleScheme {
 		ret = bufferGetStyleSchemeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &StyleScheme{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleSchemeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -438,7 +444,7 @@ func bufferRedoFunction_Set() error {
 // Redo is a representation of the C type gtk_source_buffer_redo.
 func (recv *Buffer) Redo() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bufferRedoFunction_Set()
 	if err == nil {
@@ -468,7 +474,7 @@ func bufferSetHighlightMatchingBracketsFunction_Set() error {
 // SetHighlightMatchingBrackets is a representation of the C type gtk_source_buffer_set_highlight_matching_brackets.
 func (recv *Buffer) SetHighlightMatchingBrackets(highlight bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(highlight)
 
 	err := bufferSetHighlightMatchingBracketsFunction_Set()
@@ -497,7 +503,7 @@ func bufferSetHighlightSyntaxFunction_Set() error {
 // SetHighlightSyntax is a representation of the C type gtk_source_buffer_set_highlight_syntax.
 func (recv *Buffer) SetHighlightSyntax(highlight bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(highlight)
 
 	err := bufferSetHighlightSyntaxFunction_Set()
@@ -526,7 +532,7 @@ func bufferSetImplicitTrailingNewlineFunction_Set() error {
 // SetImplicitTrailingNewline is a representation of the C type gtk_source_buffer_set_implicit_trailing_newline.
 func (recv *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(implicitTrailingNewline)
 
 	err := bufferSetImplicitTrailingNewlineFunction_Set()
@@ -555,8 +561,8 @@ func bufferSetLanguageFunction_Set() error {
 // SetLanguage is a representation of the C type gtk_source_buffer_set_language.
 func (recv *Buffer) SetLanguage(language *Language) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(language.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(language.native)
 
 	err := bufferSetLanguageFunction_Set()
 	if err == nil {
@@ -584,7 +590,7 @@ func bufferSetMaxUndoLevelsFunction_Set() error {
 // SetMaxUndoLevels is a representation of the C type gtk_source_buffer_set_max_undo_levels.
 func (recv *Buffer) SetMaxUndoLevels(maxUndoLevels int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(maxUndoLevels)
 
 	err := bufferSetMaxUndoLevelsFunction_Set()
@@ -613,8 +619,8 @@ func bufferSetStyleSchemeFunction_Set() error {
 // SetStyleScheme is a representation of the C type gtk_source_buffer_set_style_scheme.
 func (recv *Buffer) SetStyleScheme(scheme *StyleScheme) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(scheme.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(scheme.native)
 
 	err := bufferSetStyleSchemeFunction_Set()
 	if err == nil {
@@ -646,7 +652,7 @@ func bufferUndoFunction_Set() error {
 // Undo is a representation of the C type gtk_source_buffer_undo.
 func (recv *Buffer) Undo() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bufferUndoFunction_Set()
 	if err == nil {
@@ -668,7 +674,14 @@ func completionObject_Set() error {
 }
 
 type Completion struct {
-	gobject.Object
+	native uintptr
+}
+
+func CompletionNewFromNative(native uintptr) *Completion {
+	return &Completion{native: native}
+}
+func (recv *Completion) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -677,17 +690,16 @@ type Completion struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Completion) FieldPriv() *CompletionPrivate {
-	argValue := gi.ObjectFieldGet(completionObject, recv.Native, "priv")
-	value := &CompletionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(completionObject, recv.native, "priv")
+	value := CompletionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Completion) SetFieldPriv(value *CompletionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(completionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(completionObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_add_provider' : parameter 'provider' of type 'CompletionProvider' not supported
@@ -710,7 +722,7 @@ func completionBlockInteractiveFunction_Set() error {
 // BlockInteractive is a representation of the C type gtk_source_completion_block_interactive.
 func (recv *Completion) BlockInteractive() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := completionBlockInteractiveFunction_Set()
 	if err == nil {
@@ -740,7 +752,7 @@ func completionGetInfoWindowFunction_Set() error {
 // GetInfoWindow is a representation of the C type gtk_source_completion_get_info_window.
 func (recv *Completion) GetInfoWindow() *CompletionInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -749,8 +761,7 @@ func (recv *Completion) GetInfoWindow() *CompletionInfo {
 		ret = completionGetInfoWindowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &CompletionInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := CompletionInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -775,7 +786,7 @@ func completionGetViewFunction_Set() error {
 // GetView is a representation of the C type gtk_source_completion_get_view.
 func (recv *Completion) GetView() *View {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -784,8 +795,7 @@ func (recv *Completion) GetView() *View {
 		ret = completionGetViewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &View{}
-	retGo.Native = ret.Pointer()
+	retGo := ViewNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -808,7 +818,7 @@ func completionHideFunction_Set() error {
 // Hide is a representation of the C type gtk_source_completion_hide.
 func (recv *Completion) Hide() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := completionHideFunction_Set()
 	if err == nil {
@@ -842,7 +852,7 @@ func completionUnblockInteractiveFunction_Set() error {
 // UnblockInteractive is a representation of the C type gtk_source_completion_unblock_interactive.
 func (recv *Completion) UnblockInteractive() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := completionUnblockInteractiveFunction_Set()
 	if err == nil {
@@ -864,7 +874,17 @@ func completionContextObject_Set() error {
 }
 
 type CompletionContext struct {
-	gobject.InitiallyUnowned
+	native uintptr
+}
+
+func CompletionContextNewFromNative(native uintptr) *CompletionContext {
+	return &CompletionContext{native: native}
+}
+func (recv *CompletionContext) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *CompletionContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -873,17 +893,16 @@ type CompletionContext struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionContext) FieldPriv() *CompletionContextPrivate {
-	argValue := gi.ObjectFieldGet(completionContextObject, recv.Native, "priv")
-	value := &CompletionContextPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(completionContextObject, recv.native, "priv")
+	value := CompletionContextPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(completionContextObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(completionContextObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_add_proposals' : parameter 'provider' of type 'CompletionProvider' not supported
@@ -904,7 +923,29 @@ func completionInfoObject_Set() error {
 }
 
 type CompletionInfo struct {
-	gtk.Window
+	native uintptr
+}
+
+func CompletionInfoNewFromNative(native uintptr) *CompletionInfo {
+	return &CompletionInfo{native: native}
+}
+func (recv *CompletionInfo) Window() *gtk.Window {
+	return gtk.WindowNewFromNative(recv.native)
+}
+func (recv *CompletionInfo) Bin() *gtk.Bin {
+	return gtk.BinNewFromNative(recv.native)
+}
+func (recv *CompletionInfo) Container() *gtk.Container {
+	return gtk.ContainerNewFromNative(recv.native)
+}
+func (recv *CompletionInfo) Widget() *gtk.Widget {
+	return gtk.WidgetNewFromNative(recv.native)
+}
+func (recv *CompletionInfo) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *CompletionInfo) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Window'
@@ -913,17 +954,16 @@ type CompletionInfo struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionInfo) FieldPriv() *CompletionInfoPrivate {
-	argValue := gi.ObjectFieldGet(completionInfoObject, recv.Native, "priv")
-	value := &CompletionInfoPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(completionInfoObject, recv.native, "priv")
+	value := CompletionInfoPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionInfo) SetFieldPriv(value *CompletionInfoPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(completionInfoObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(completionInfoObject, recv.native, "priv", argValue)
 }
 
 var completionInfoNewFunction *gi.Function
@@ -951,8 +991,7 @@ func CompletionInfoNew() *CompletionInfo {
 		ret = completionInfoNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &CompletionInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := CompletionInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -975,7 +1014,14 @@ func completionItemObject_Set() error {
 }
 
 type CompletionItem struct {
-	gobject.Object
+	native uintptr
+}
+
+func CompletionItemNewFromNative(native uintptr) *CompletionItem {
+	return &CompletionItem{native: native}
+}
+func (recv *CompletionItem) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -984,17 +1030,16 @@ type CompletionItem struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionItem) FieldPriv() *CompletionItemPrivate {
-	argValue := gi.ObjectFieldGet(completionItemObject, recv.Native, "priv")
-	value := &CompletionItemPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(completionItemObject, recv.native, "priv")
+	value := CompletionItemPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionItem) SetFieldPriv(value *CompletionItemPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(completionItemObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(completionItemObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_item_new' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
@@ -1029,8 +1074,7 @@ func CompletionItemNewFromStock(label string, text string, stock string, info st
 		ret = completionItemNewFromStockFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &CompletionItem{}
-	retGo.Native = ret.Pointer()
+	retGo := CompletionItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1059,7 +1103,7 @@ func completionItemSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gtk_source_completion_item_set_icon_name.
 func (recv *CompletionItem) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconName)
 
 	err := completionItemSetIconNameFunction_Set()
@@ -1088,7 +1132,7 @@ func completionItemSetInfoFunction_Set() error {
 // SetInfo is a representation of the C type gtk_source_completion_item_set_info.
 func (recv *CompletionItem) SetInfo(info string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(info)
 
 	err := completionItemSetInfoFunction_Set()
@@ -1117,7 +1161,7 @@ func completionItemSetLabelFunction_Set() error {
 // SetLabel is a representation of the C type gtk_source_completion_item_set_label.
 func (recv *CompletionItem) SetLabel(label string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
 
 	err := completionItemSetLabelFunction_Set()
@@ -1146,7 +1190,7 @@ func completionItemSetMarkupFunction_Set() error {
 // SetMarkup is a representation of the C type gtk_source_completion_item_set_markup.
 func (recv *CompletionItem) SetMarkup(markup string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(markup)
 
 	err := completionItemSetMarkupFunction_Set()
@@ -1175,7 +1219,7 @@ func completionItemSetTextFunction_Set() error {
 // SetText is a representation of the C type gtk_source_completion_item_set_text.
 func (recv *CompletionItem) SetText(text string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 
 	err := completionItemSetTextFunction_Set()
@@ -1198,7 +1242,14 @@ func completionWordsObject_Set() error {
 }
 
 type CompletionWords struct {
-	gobject.Object
+	native uintptr
+}
+
+func CompletionWordsNewFromNative(native uintptr) *CompletionWords {
+	return &CompletionWords{native: native}
+}
+func (recv *CompletionWords) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1207,17 +1258,16 @@ type CompletionWords struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionWords) FieldPriv() *CompletionWordsPrivate {
-	argValue := gi.ObjectFieldGet(completionWordsObject, recv.Native, "priv")
-	value := &CompletionWordsPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(completionWordsObject, recv.native, "priv")
+	value := CompletionWordsPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionWords) SetFieldPriv(value *CompletionWordsPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(completionWordsObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(completionWordsObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_source_completion_words_new' : parameter 'icon' of type 'GdkPixbuf.Pixbuf' not supported
@@ -1238,7 +1288,14 @@ func fileObject_Set() error {
 }
 
 type File struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileNewFromNative(native uintptr) *File {
+	return &File{native: native}
+}
+func (recv *File) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1247,17 +1304,16 @@ type File struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *File) FieldPriv() *FilePrivate {
-	argValue := gi.ObjectFieldGet(fileObject, recv.Native, "priv")
-	value := &FilePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileObject, recv.native, "priv")
+	value := FilePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *File) SetFieldPriv(value *FilePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileObject, recv.native, "priv", argValue)
 }
 
 var fileNewFunction *gi.Function
@@ -1285,8 +1341,7 @@ func FileNew() *File {
 		ret = fileNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &File{}
-	retGo.Native = ret.Pointer()
+	retGo := FileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1309,7 +1364,7 @@ func fileCheckFileOnDiskFunction_Set() error {
 // CheckFileOnDisk is a representation of the C type gtk_source_file_check_file_on_disk.
 func (recv *File) CheckFileOnDisk() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := fileCheckFileOnDiskFunction_Set()
 	if err == nil {
@@ -1337,7 +1392,7 @@ func fileGetCompressionTypeFunction_Set() error {
 // GetCompressionType is a representation of the C type gtk_source_file_get_compression_type.
 func (recv *File) GetCompressionType() CompressionType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1369,7 +1424,7 @@ func fileGetEncodingFunction_Set() error {
 // GetEncoding is a representation of the C type gtk_source_file_get_encoding.
 func (recv *File) GetEncoding() *Encoding {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1378,8 +1433,7 @@ func (recv *File) GetEncoding() *Encoding {
 		ret = fileGetEncodingFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Encoding{}
-	retGo.Native = ret.Pointer()
+	retGo := EncodingNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1404,7 +1458,7 @@ func fileGetNewlineTypeFunction_Set() error {
 // GetNewlineType is a representation of the C type gtk_source_file_get_newline_type.
 func (recv *File) GetNewlineType() NewlineType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1436,7 +1490,7 @@ func fileIsDeletedFunction_Set() error {
 // IsDeleted is a representation of the C type gtk_source_file_is_deleted.
 func (recv *File) IsDeleted() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1468,7 +1522,7 @@ func fileIsExternallyModifiedFunction_Set() error {
 // IsExternallyModified is a representation of the C type gtk_source_file_is_externally_modified.
 func (recv *File) IsExternallyModified() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1500,7 +1554,7 @@ func fileIsLocalFunction_Set() error {
 // IsLocal is a representation of the C type gtk_source_file_is_local.
 func (recv *File) IsLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1532,7 +1586,7 @@ func fileIsReadonlyFunction_Set() error {
 // IsReadonly is a representation of the C type gtk_source_file_is_readonly.
 func (recv *File) IsReadonly() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1562,7 +1616,14 @@ func fileLoaderObject_Set() error {
 }
 
 type FileLoader struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileLoaderNewFromNative(native uintptr) *FileLoader {
+	return &FileLoader{native: native}
+}
+func (recv *FileLoader) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1571,17 +1632,16 @@ type FileLoader struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileLoader) FieldPriv() *FileLoaderPrivate {
-	argValue := gi.ObjectFieldGet(fileLoaderObject, recv.Native, "priv")
-	value := &FileLoaderPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileLoaderObject, recv.native, "priv")
+	value := FileLoaderPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *FileLoader) SetFieldPriv(value *FileLoaderPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileLoaderObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileLoaderObject, recv.native, "priv", argValue)
 }
 
 var fileLoaderNewFunction *gi.Function
@@ -1602,8 +1662,8 @@ func fileLoaderNewFunction_Set() error {
 // FileLoaderNew is a representation of the C type gtk_source_file_loader_new.
 func FileLoaderNew(buffer *Buffer, file *File) *FileLoader {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(buffer.Native)
-	inArgs[1].SetPointer(file.Native)
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(file.native)
 
 	var ret gi.Argument
 
@@ -1612,8 +1672,7 @@ func FileLoaderNew(buffer *Buffer, file *File) *FileLoader {
 		ret = fileLoaderNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileLoader{}
-	retGo.Native = ret.Pointer()
+	retGo := FileLoaderNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1638,7 +1697,7 @@ func fileLoaderGetBufferFunction_Set() error {
 // GetBuffer is a representation of the C type gtk_source_file_loader_get_buffer.
 func (recv *FileLoader) GetBuffer() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1647,8 +1706,7 @@ func (recv *FileLoader) GetBuffer() *Buffer {
 		ret = fileLoaderGetBufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1671,7 +1729,7 @@ func fileLoaderGetCompressionTypeFunction_Set() error {
 // GetCompressionType is a representation of the C type gtk_source_file_loader_get_compression_type.
 func (recv *FileLoader) GetCompressionType() CompressionType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1703,7 +1761,7 @@ func fileLoaderGetEncodingFunction_Set() error {
 // GetEncoding is a representation of the C type gtk_source_file_loader_get_encoding.
 func (recv *FileLoader) GetEncoding() *Encoding {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1712,8 +1770,7 @@ func (recv *FileLoader) GetEncoding() *Encoding {
 		ret = fileLoaderGetEncodingFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Encoding{}
-	retGo.Native = ret.Pointer()
+	retGo := EncodingNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1736,7 +1793,7 @@ func fileLoaderGetFileFunction_Set() error {
 // GetFile is a representation of the C type gtk_source_file_loader_get_file.
 func (recv *FileLoader) GetFile() *File {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1745,8 +1802,7 @@ func (recv *FileLoader) GetFile() *File {
 		ret = fileLoaderGetFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &File{}
-	retGo.Native = ret.Pointer()
+	retGo := FileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1773,7 +1829,7 @@ func fileLoaderGetNewlineTypeFunction_Set() error {
 // GetNewlineType is a representation of the C type gtk_source_file_loader_get_newline_type.
 func (recv *FileLoader) GetNewlineType() NewlineType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1805,7 +1861,14 @@ func fileSaverObject_Set() error {
 }
 
 type FileSaver struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileSaverNewFromNative(native uintptr) *FileSaver {
+	return &FileSaver{native: native}
+}
+func (recv *FileSaver) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'object' : for field getter : no Go type for 'GObject.Object'
@@ -1814,17 +1877,16 @@ type FileSaver struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileSaver) FieldPriv() *FileSaverPrivate {
-	argValue := gi.ObjectFieldGet(fileSaverObject, recv.Native, "priv")
-	value := &FileSaverPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileSaverObject, recv.native, "priv")
+	value := FileSaverPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *FileSaver) SetFieldPriv(value *FileSaverPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileSaverObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileSaverObject, recv.native, "priv", argValue)
 }
 
 var fileSaverNewFunction *gi.Function
@@ -1845,8 +1907,8 @@ func fileSaverNewFunction_Set() error {
 // FileSaverNew is a representation of the C type gtk_source_file_saver_new.
 func FileSaverNew(buffer *Buffer, file *File) *FileSaver {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(buffer.Native)
-	inArgs[1].SetPointer(file.Native)
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(file.native)
 
 	var ret gi.Argument
 
@@ -1855,8 +1917,7 @@ func FileSaverNew(buffer *Buffer, file *File) *FileSaver {
 		ret = fileSaverNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileSaver{}
-	retGo.Native = ret.Pointer()
+	retGo := FileSaverNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1881,7 +1942,7 @@ func fileSaverGetBufferFunction_Set() error {
 // GetBuffer is a representation of the C type gtk_source_file_saver_get_buffer.
 func (recv *FileSaver) GetBuffer() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1890,8 +1951,7 @@ func (recv *FileSaver) GetBuffer() *Buffer {
 		ret = fileSaverGetBufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1914,7 +1974,7 @@ func fileSaverGetCompressionTypeFunction_Set() error {
 // GetCompressionType is a representation of the C type gtk_source_file_saver_get_compression_type.
 func (recv *FileSaver) GetCompressionType() CompressionType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1946,7 +2006,7 @@ func fileSaverGetEncodingFunction_Set() error {
 // GetEncoding is a representation of the C type gtk_source_file_saver_get_encoding.
 func (recv *FileSaver) GetEncoding() *Encoding {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1955,8 +2015,7 @@ func (recv *FileSaver) GetEncoding() *Encoding {
 		ret = fileSaverGetEncodingFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Encoding{}
-	retGo.Native = ret.Pointer()
+	retGo := EncodingNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1979,7 +2038,7 @@ func fileSaverGetFileFunction_Set() error {
 // GetFile is a representation of the C type gtk_source_file_saver_get_file.
 func (recv *FileSaver) GetFile() *File {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1988,8 +2047,7 @@ func (recv *FileSaver) GetFile() *File {
 		ret = fileSaverGetFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &File{}
-	retGo.Native = ret.Pointer()
+	retGo := FileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2016,7 +2074,7 @@ func fileSaverGetNewlineTypeFunction_Set() error {
 // GetNewlineType is a representation of the C type gtk_source_file_saver_get_newline_type.
 func (recv *FileSaver) GetNewlineType() NewlineType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2052,7 +2110,7 @@ func fileSaverSetCompressionTypeFunction_Set() error {
 // SetCompressionType is a representation of the C type gtk_source_file_saver_set_compression_type.
 func (recv *FileSaver) SetCompressionType(compressionType CompressionType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(compressionType))
 
 	err := fileSaverSetCompressionTypeFunction_Set()
@@ -2081,8 +2139,8 @@ func fileSaverSetEncodingFunction_Set() error {
 // SetEncoding is a representation of the C type gtk_source_file_saver_set_encoding.
 func (recv *FileSaver) SetEncoding(encoding *Encoding) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(encoding.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(encoding.native)
 
 	err := fileSaverSetEncodingFunction_Set()
 	if err == nil {
@@ -2112,7 +2170,7 @@ func fileSaverSetNewlineTypeFunction_Set() error {
 // SetNewlineType is a representation of the C type gtk_source_file_saver_set_newline_type.
 func (recv *FileSaver) SetNewlineType(newlineType NewlineType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(newlineType))
 
 	err := fileSaverSetNewlineTypeFunction_Set()
@@ -2135,7 +2193,14 @@ func gutterObject_Set() error {
 }
 
 type Gutter struct {
-	gobject.Object
+	native uintptr
+}
+
+func GutterNewFromNative(native uintptr) *Gutter {
+	return &Gutter{native: native}
+}
+func (recv *Gutter) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2144,17 +2209,16 @@ type Gutter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Gutter) FieldPriv() *GutterPrivate {
-	argValue := gi.ObjectFieldGet(gutterObject, recv.Native, "priv")
-	value := &GutterPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(gutterObject, recv.native, "priv")
+	value := GutterPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Gutter) SetFieldPriv(value *GutterPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(gutterObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(gutterObject, recv.native, "priv", argValue)
 }
 
 var gutterGetPaddingFunction *gi.Function
@@ -2175,7 +2239,7 @@ func gutterGetPaddingFunction_Set() error {
 // GetPadding is a representation of the C type gtk_source_gutter_get_padding.
 func (recv *Gutter) GetPadding(xpad int32, ypad int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(xpad)
 	inArgs[2].SetInt32(ypad)
 
@@ -2205,7 +2269,7 @@ func gutterGetRendererAtPosFunction_Set() error {
 // GetRendererAtPos is a representation of the C type gtk_source_gutter_get_renderer_at_pos.
 func (recv *Gutter) GetRendererAtPos(x int32, y int32) *GutterRenderer {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(x)
 	inArgs[2].SetInt32(y)
 
@@ -2216,8 +2280,7 @@ func (recv *Gutter) GetRendererAtPos(x int32, y int32) *GutterRenderer {
 		ret = gutterGetRendererAtPosFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &GutterRenderer{}
-	retGo.Native = ret.Pointer()
+	retGo := GutterRendererNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2240,7 +2303,7 @@ func gutterGetViewFunction_Set() error {
 // GetView is a representation of the C type gtk_source_gutter_get_view.
 func (recv *Gutter) GetView() *View {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2249,8 +2312,7 @@ func (recv *Gutter) GetView() *View {
 		ret = gutterGetViewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &View{}
-	retGo.Native = ret.Pointer()
+	retGo := ViewNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2277,8 +2339,8 @@ func gutterInsertFunction_Set() error {
 // Insert is a representation of the C type gtk_source_gutter_insert.
 func (recv *Gutter) Insert(renderer *GutterRenderer, position int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(renderer.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
 	inArgs[2].SetInt32(position)
 
 	var ret gi.Argument
@@ -2311,7 +2373,7 @@ func gutterQueueDrawFunction_Set() error {
 // QueueDraw is a representation of the C type gtk_source_gutter_queue_draw.
 func (recv *Gutter) QueueDraw() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := gutterQueueDrawFunction_Set()
 	if err == nil {
@@ -2339,8 +2401,8 @@ func gutterRemoveFunction_Set() error {
 // Remove is a representation of the C type gtk_source_gutter_remove.
 func (recv *Gutter) Remove(renderer *GutterRenderer) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(renderer.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
 
 	err := gutterRemoveFunction_Set()
 	if err == nil {
@@ -2368,8 +2430,8 @@ func gutterReorderFunction_Set() error {
 // Reorder is a representation of the C type gtk_source_gutter_reorder.
 func (recv *Gutter) Reorder(renderer *GutterRenderer, position int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(renderer.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(renderer.native)
 	inArgs[2].SetInt32(position)
 
 	err := gutterReorderFunction_Set()
@@ -2398,7 +2460,7 @@ func gutterSetPaddingFunction_Set() error {
 // SetPadding is a representation of the C type gtk_source_gutter_set_padding.
 func (recv *Gutter) SetPadding(xpad int32, ypad int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(xpad)
 	inArgs[2].SetInt32(ypad)
 
@@ -2422,7 +2484,17 @@ func gutterRendererObject_Set() error {
 }
 
 type GutterRenderer struct {
-	gobject.InitiallyUnowned
+	native uintptr
+}
+
+func GutterRendererNewFromNative(native uintptr) *GutterRenderer {
+	return &GutterRenderer{native: native}
+}
+func (recv *GutterRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *GutterRenderer) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -2453,7 +2525,7 @@ func gutterRendererEndFunction_Set() error {
 // End is a representation of the C type gtk_source_gutter_renderer_end.
 func (recv *GutterRenderer) End() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := gutterRendererEndFunction_Set()
 	if err == nil {
@@ -2481,7 +2553,7 @@ func gutterRendererGetAlignmentFunction_Set() error {
 // GetAlignment is a representation of the C type gtk_source_gutter_renderer_get_alignment.
 func (recv *GutterRenderer) GetAlignment() (float32, float32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [2]gi.Argument
 
@@ -2514,7 +2586,7 @@ func gutterRendererGetAlignmentModeFunction_Set() error {
 // GetAlignmentMode is a representation of the C type gtk_source_gutter_renderer_get_alignment_mode.
 func (recv *GutterRenderer) GetAlignmentMode() GutterRendererAlignmentMode {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2548,7 +2620,7 @@ func gutterRendererGetPaddingFunction_Set() error {
 // GetPadding is a representation of the C type gtk_source_gutter_renderer_get_padding.
 func (recv *GutterRenderer) GetPadding() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [2]gi.Argument
 
@@ -2581,7 +2653,7 @@ func gutterRendererGetSizeFunction_Set() error {
 // GetSize is a representation of the C type gtk_source_gutter_renderer_get_size.
 func (recv *GutterRenderer) GetSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2615,7 +2687,7 @@ func gutterRendererGetVisibleFunction_Set() error {
 // GetVisible is a representation of the C type gtk_source_gutter_renderer_get_visible.
 func (recv *GutterRenderer) GetVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2655,7 +2727,7 @@ func gutterRendererQueueDrawFunction_Set() error {
 // QueueDraw is a representation of the C type gtk_source_gutter_renderer_queue_draw.
 func (recv *GutterRenderer) QueueDraw() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := gutterRendererQueueDrawFunction_Set()
 	if err == nil {
@@ -2683,7 +2755,7 @@ func gutterRendererSetAlignmentFunction_Set() error {
 // SetAlignment is a representation of the C type gtk_source_gutter_renderer_set_alignment.
 func (recv *GutterRenderer) SetAlignment(xalign float32, yalign float32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat32(xalign)
 	inArgs[2].SetFloat32(yalign)
 
@@ -2713,7 +2785,7 @@ func gutterRendererSetAlignmentModeFunction_Set() error {
 // SetAlignmentMode is a representation of the C type gtk_source_gutter_renderer_set_alignment_mode.
 func (recv *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMode) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(mode))
 
 	err := gutterRendererSetAlignmentModeFunction_Set()
@@ -2744,7 +2816,7 @@ func gutterRendererSetPaddingFunction_Set() error {
 // SetPadding is a representation of the C type gtk_source_gutter_renderer_set_padding.
 func (recv *GutterRenderer) SetPadding(xpad int32, ypad int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(xpad)
 	inArgs[2].SetInt32(ypad)
 
@@ -2774,7 +2846,7 @@ func gutterRendererSetSizeFunction_Set() error {
 // SetSize is a representation of the C type gtk_source_gutter_renderer_set_size.
 func (recv *GutterRenderer) SetSize(size int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(size)
 
 	err := gutterRendererSetSizeFunction_Set()
@@ -2803,7 +2875,7 @@ func gutterRendererSetVisibleFunction_Set() error {
 // SetVisible is a representation of the C type gtk_source_gutter_renderer_set_visible.
 func (recv *GutterRenderer) SetVisible(visible bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(visible)
 
 	err := gutterRendererSetVisibleFunction_Set()
@@ -2826,7 +2898,20 @@ func gutterRendererPixbufObject_Set() error {
 }
 
 type GutterRendererPixbuf struct {
-	GutterRenderer
+	native uintptr
+}
+
+func GutterRendererPixbufNewFromNative(native uintptr) *GutterRendererPixbuf {
+	return &GutterRendererPixbuf{native: native}
+}
+func (recv *GutterRendererPixbuf) GutterRenderer() *GutterRenderer {
+	return GutterRendererNewFromNative(recv.native)
+}
+func (recv *GutterRendererPixbuf) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *GutterRendererPixbuf) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var gutterRendererPixbufNewFunction *gi.Function
@@ -2854,8 +2939,7 @@ func GutterRendererPixbufNew() *GutterRendererPixbuf {
 		ret = gutterRendererPixbufNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &GutterRendererPixbuf{}
-	retGo.Native = ret.Pointer()
+	retGo := GutterRendererPixbufNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2880,7 +2964,7 @@ func gutterRendererPixbufGetIconNameFunction_Set() error {
 // GetIconName is a representation of the C type gtk_source_gutter_renderer_pixbuf_get_icon_name.
 func (recv *GutterRendererPixbuf) GetIconName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2914,7 +2998,7 @@ func gutterRendererPixbufGetStockIdFunction_Set() error {
 // GetStockId is a representation of the C type gtk_source_gutter_renderer_pixbuf_get_stock_id.
 func (recv *GutterRendererPixbuf) GetStockId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2948,7 +3032,7 @@ func gutterRendererPixbufSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gtk_source_gutter_renderer_pixbuf_set_icon_name.
 func (recv *GutterRendererPixbuf) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconName)
 
 	err := gutterRendererPixbufSetIconNameFunction_Set()
@@ -2979,7 +3063,7 @@ func gutterRendererPixbufSetStockIdFunction_Set() error {
 // SetStockId is a representation of the C type gtk_source_gutter_renderer_pixbuf_set_stock_id.
 func (recv *GutterRendererPixbuf) SetStockId(stockId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stockId)
 
 	err := gutterRendererPixbufSetStockIdFunction_Set()
@@ -3002,7 +3086,20 @@ func gutterRendererTextObject_Set() error {
 }
 
 type GutterRendererText struct {
-	GutterRenderer
+	native uintptr
+}
+
+func GutterRendererTextNewFromNative(native uintptr) *GutterRendererText {
+	return &GutterRendererText{native: native}
+}
+func (recv *GutterRendererText) GutterRenderer() *GutterRenderer {
+	return GutterRendererNewFromNative(recv.native)
+}
+func (recv *GutterRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *GutterRendererText) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var gutterRendererTextNewFunction *gi.Function
@@ -3030,8 +3127,7 @@ func GutterRendererTextNew() *GutterRendererText {
 		ret = gutterRendererTextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &GutterRendererText{}
-	retGo.Native = ret.Pointer()
+	retGo := GutterRendererTextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3054,7 +3150,7 @@ func gutterRendererTextMeasureFunction_Set() error {
 // Measure is a representation of the C type gtk_source_gutter_renderer_text_measure.
 func (recv *GutterRendererText) Measure(text string) (int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 
 	var outArgs [2]gi.Argument
@@ -3088,7 +3184,7 @@ func gutterRendererTextMeasureMarkupFunction_Set() error {
 // MeasureMarkup is a representation of the C type gtk_source_gutter_renderer_text_measure_markup.
 func (recv *GutterRendererText) MeasureMarkup(markup string) (int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(markup)
 
 	var outArgs [2]gi.Argument
@@ -3122,7 +3218,7 @@ func gutterRendererTextSetMarkupFunction_Set() error {
 // SetMarkup is a representation of the C type gtk_source_gutter_renderer_text_set_markup.
 func (recv *GutterRendererText) SetMarkup(markup string, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(markup)
 	inArgs[2].SetInt32(length)
 
@@ -3152,7 +3248,7 @@ func gutterRendererTextSetTextFunction_Set() error {
 // SetText is a representation of the C type gtk_source_gutter_renderer_text_set_text.
 func (recv *GutterRendererText) SetText(text string, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(length)
 
@@ -3176,7 +3272,14 @@ func languageObject_Set() error {
 }
 
 type Language struct {
-	gobject.Object
+	native uintptr
+}
+
+func LanguageNewFromNative(native uintptr) *Language {
+	return &Language{native: native}
+}
+func (recv *Language) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -3185,17 +3288,16 @@ type Language struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Language) FieldPriv() *LanguagePrivate {
-	argValue := gi.ObjectFieldGet(languageObject, recv.Native, "priv")
-	value := &LanguagePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(languageObject, recv.native, "priv")
+	value := LanguagePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Language) SetFieldPriv(value *LanguagePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(languageObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(languageObject, recv.native, "priv", argValue)
 }
 
 var languageGetGlobsFunction *gi.Function
@@ -3216,7 +3318,7 @@ func languageGetGlobsFunction_Set() error {
 // GetGlobs is a representation of the C type gtk_source_language_get_globs.
 func (recv *Language) GetGlobs() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := languageGetGlobsFunction_Set()
 	if err == nil {
@@ -3244,7 +3346,7 @@ func languageGetHiddenFunction_Set() error {
 // GetHidden is a representation of the C type gtk_source_language_get_hidden.
 func (recv *Language) GetHidden() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3276,7 +3378,7 @@ func languageGetIdFunction_Set() error {
 // GetId is a representation of the C type gtk_source_language_get_id.
 func (recv *Language) GetId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3308,7 +3410,7 @@ func languageGetMetadataFunction_Set() error {
 // GetMetadata is a representation of the C type gtk_source_language_get_metadata.
 func (recv *Language) GetMetadata(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -3341,7 +3443,7 @@ func languageGetMimeTypesFunction_Set() error {
 // GetMimeTypes is a representation of the C type gtk_source_language_get_mime_types.
 func (recv *Language) GetMimeTypes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := languageGetMimeTypesFunction_Set()
 	if err == nil {
@@ -3369,7 +3471,7 @@ func languageGetNameFunction_Set() error {
 // GetName is a representation of the C type gtk_source_language_get_name.
 func (recv *Language) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3401,7 +3503,7 @@ func languageGetSectionFunction_Set() error {
 // GetSection is a representation of the C type gtk_source_language_get_section.
 func (recv *Language) GetSection() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3433,7 +3535,7 @@ func languageGetStyleFallbackFunction_Set() error {
 // GetStyleFallback is a representation of the C type gtk_source_language_get_style_fallback.
 func (recv *Language) GetStyleFallback(styleId string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(styleId)
 
 	var ret gi.Argument
@@ -3466,7 +3568,7 @@ func languageGetStyleIdsFunction_Set() error {
 // GetStyleIds is a representation of the C type gtk_source_language_get_style_ids.
 func (recv *Language) GetStyleIds() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := languageGetStyleIdsFunction_Set()
 	if err == nil {
@@ -3494,7 +3596,7 @@ func languageGetStyleNameFunction_Set() error {
 // GetStyleName is a representation of the C type gtk_source_language_get_style_name.
 func (recv *Language) GetStyleName(styleId string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(styleId)
 
 	var ret gi.Argument
@@ -3521,7 +3623,14 @@ func languageManagerObject_Set() error {
 }
 
 type LanguageManager struct {
-	gobject.Object
+	native uintptr
+}
+
+func LanguageManagerNewFromNative(native uintptr) *LanguageManager {
+	return &LanguageManager{native: native}
+}
+func (recv *LanguageManager) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -3530,17 +3639,16 @@ type LanguageManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *LanguageManager) FieldPriv() *LanguageManagerPrivate {
-	argValue := gi.ObjectFieldGet(languageManagerObject, recv.Native, "priv")
-	value := &LanguageManagerPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(languageManagerObject, recv.native, "priv")
+	value := LanguageManagerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *LanguageManager) SetFieldPriv(value *LanguageManagerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(languageManagerObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(languageManagerObject, recv.native, "priv", argValue)
 }
 
 var languageManagerNewFunction *gi.Function
@@ -3568,8 +3676,7 @@ func LanguageManagerNew() *LanguageManager {
 		ret = languageManagerNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &LanguageManager{}
-	retGo.Native = ret.Pointer()
+	retGo := LanguageManagerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3592,7 +3699,7 @@ func languageManagerGetLanguageFunction_Set() error {
 // GetLanguage is a representation of the C type gtk_source_language_manager_get_language.
 func (recv *LanguageManager) GetLanguage(id string) *Language {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(id)
 
 	var ret gi.Argument
@@ -3602,8 +3709,7 @@ func (recv *LanguageManager) GetLanguage(id string) *Language {
 		ret = languageManagerGetLanguageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Language{}
-	retGo.Native = ret.Pointer()
+	retGo := LanguageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3626,7 +3732,7 @@ func languageManagerGetLanguageIdsFunction_Set() error {
 // GetLanguageIds is a representation of the C type gtk_source_language_manager_get_language_ids.
 func (recv *LanguageManager) GetLanguageIds() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := languageManagerGetLanguageIdsFunction_Set()
 	if err == nil {
@@ -3654,7 +3760,7 @@ func languageManagerGetSearchPathFunction_Set() error {
 // GetSearchPath is a representation of the C type gtk_source_language_manager_get_search_path.
 func (recv *LanguageManager) GetSearchPath() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := languageManagerGetSearchPathFunction_Set()
 	if err == nil {
@@ -3682,7 +3788,7 @@ func languageManagerGuessLanguageFunction_Set() error {
 // GuessLanguage is a representation of the C type gtk_source_language_manager_guess_language.
 func (recv *LanguageManager) GuessLanguage(filename string, contentType string) *Language {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(filename)
 	inArgs[2].SetString(contentType)
 
@@ -3693,8 +3799,7 @@ func (recv *LanguageManager) GuessLanguage(filename string, contentType string) 
 		ret = languageManagerGuessLanguageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Language{}
-	retGo.Native = ret.Pointer()
+	retGo := LanguageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3713,22 +3818,43 @@ func mapObject_Set() error {
 }
 
 type Map struct {
-	View
+	native uintptr
+}
+
+func MapNewFromNative(native uintptr) *Map {
+	return &Map{native: native}
+}
+func (recv *Map) View() *View {
+	return ViewNewFromNative(recv.native)
+}
+func (recv *Map) TextView() *gtk.TextView {
+	return gtk.TextViewNewFromNative(recv.native)
+}
+func (recv *Map) Container() *gtk.Container {
+	return gtk.ContainerNewFromNative(recv.native)
+}
+func (recv *Map) Widget() *gtk.Widget {
+	return gtk.WidgetNewFromNative(recv.native)
+}
+func (recv *Map) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *Map) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Map) FieldParentInstance() *View {
-	argValue := gi.ObjectFieldGet(mapObject, recv.Native, "parent_instance")
-	value := &View{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(mapObject, recv.native, "parent_instance")
+	value := ViewNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Map) SetFieldParentInstance(value *View) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(mapObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(mapObject, recv.native, "parent_instance", argValue)
 }
 
 var mapNewFunction *gi.Function
@@ -3756,8 +3882,7 @@ func MapNew() *Map {
 		ret = mapNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Map{}
-	retGo.Native = ret.Pointer()
+	retGo := MapNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3780,7 +3905,7 @@ func mapGetViewFunction_Set() error {
 // GetView is a representation of the C type gtk_source_map_get_view.
 func (recv *Map) GetView() *View {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3789,8 +3914,7 @@ func (recv *Map) GetView() *View {
 		ret = mapGetViewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &View{}
-	retGo.Native = ret.Pointer()
+	retGo := ViewNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3813,8 +3937,8 @@ func mapSetViewFunction_Set() error {
 // SetView is a representation of the C type gtk_source_map_set_view.
 func (recv *Map) SetView(view *View) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(view.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(view.native)
 
 	err := mapSetViewFunction_Set()
 	if err == nil {
@@ -3836,7 +3960,17 @@ func markObject_Set() error {
 }
 
 type Mark struct {
-	gtk.TextMark
+	native uintptr
+}
+
+func MarkNewFromNative(native uintptr) *Mark {
+	return &Mark{native: native}
+}
+func (recv *Mark) TextMark() *gtk.TextMark {
+	return gtk.TextMarkNewFromNative(recv.native)
+}
+func (recv *Mark) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextMark'
@@ -3845,17 +3979,16 @@ type Mark struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Mark) FieldPriv() *MarkPrivate {
-	argValue := gi.ObjectFieldGet(markObject, recv.Native, "priv")
-	value := &MarkPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(markObject, recv.native, "priv")
+	value := MarkPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Mark) SetFieldPriv(value *MarkPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(markObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(markObject, recv.native, "priv", argValue)
 }
 
 var markNewFunction *gi.Function
@@ -3886,8 +4019,7 @@ func MarkNew(name string, category string) *Mark {
 		ret = markNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Mark{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3910,7 +4042,7 @@ func markGetCategoryFunction_Set() error {
 // GetCategory is a representation of the C type gtk_source_mark_get_category.
 func (recv *Mark) GetCategory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3942,7 +4074,7 @@ func markNextFunction_Set() error {
 // Next is a representation of the C type gtk_source_mark_next.
 func (recv *Mark) Next(category string) *Mark {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(category)
 
 	var ret gi.Argument
@@ -3952,8 +4084,7 @@ func (recv *Mark) Next(category string) *Mark {
 		ret = markNextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Mark{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3976,7 +4107,7 @@ func markPrevFunction_Set() error {
 // Prev is a representation of the C type gtk_source_mark_prev.
 func (recv *Mark) Prev(category string) *Mark {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(category)
 
 	var ret gi.Argument
@@ -3986,8 +4117,7 @@ func (recv *Mark) Prev(category string) *Mark {
 		ret = markPrevFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Mark{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4004,7 +4134,14 @@ func markAttributesObject_Set() error {
 }
 
 type MarkAttributes struct {
-	gobject.Object
+	native uintptr
+}
+
+func MarkAttributesNewFromNative(native uintptr) *MarkAttributes {
+	return &MarkAttributes{native: native}
+}
+func (recv *MarkAttributes) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var markAttributesNewFunction *gi.Function
@@ -4032,8 +4169,7 @@ func MarkAttributesNew() *MarkAttributes {
 		ret = markAttributesNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MarkAttributes{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkAttributesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4060,7 +4196,7 @@ func markAttributesGetIconNameFunction_Set() error {
 // GetIconName is a representation of the C type gtk_source_mark_attributes_get_icon_name.
 func (recv *MarkAttributes) GetIconName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4094,7 +4230,7 @@ func markAttributesGetStockIdFunction_Set() error {
 // GetStockId is a representation of the C type gtk_source_mark_attributes_get_stock_id.
 func (recv *MarkAttributes) GetStockId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4126,8 +4262,8 @@ func markAttributesGetTooltipMarkupFunction_Set() error {
 // GetTooltipMarkup is a representation of the C type gtk_source_mark_attributes_get_tooltip_markup.
 func (recv *MarkAttributes) GetTooltipMarkup(mark *Mark) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(mark.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mark.native)
 
 	var ret gi.Argument
 
@@ -4159,8 +4295,8 @@ func markAttributesGetTooltipTextFunction_Set() error {
 // GetTooltipText is a representation of the C type gtk_source_mark_attributes_get_tooltip_text.
 func (recv *MarkAttributes) GetTooltipText(mark *Mark) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(mark.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mark.native)
 
 	var ret gi.Argument
 
@@ -4198,7 +4334,7 @@ func markAttributesSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gtk_source_mark_attributes_set_icon_name.
 func (recv *MarkAttributes) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconName)
 
 	err := markAttributesSetIconNameFunction_Set()
@@ -4229,7 +4365,7 @@ func markAttributesSetStockIdFunction_Set() error {
 // SetStockId is a representation of the C type gtk_source_mark_attributes_set_stock_id.
 func (recv *MarkAttributes) SetStockId(stockId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stockId)
 
 	err := markAttributesSetStockIdFunction_Set()
@@ -4252,7 +4388,14 @@ func printCompositorObject_Set() error {
 }
 
 type PrintCompositor struct {
-	gobject.Object
+	native uintptr
+}
+
+func PrintCompositorNewFromNative(native uintptr) *PrintCompositor {
+	return &PrintCompositor{native: native}
+}
+func (recv *PrintCompositor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -4261,17 +4404,16 @@ type PrintCompositor struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintCompositor) FieldPriv() *PrintCompositorPrivate {
-	argValue := gi.ObjectFieldGet(printCompositorObject, recv.Native, "priv")
-	value := &PrintCompositorPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(printCompositorObject, recv.native, "priv")
+	value := PrintCompositorPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *PrintCompositor) SetFieldPriv(value *PrintCompositorPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(printCompositorObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(printCompositorObject, recv.native, "priv", argValue)
 }
 
 var printCompositorNewFunction *gi.Function
@@ -4292,7 +4434,7 @@ func printCompositorNewFunction_Set() error {
 // PrintCompositorNew is a representation of the C type gtk_source_print_compositor_new.
 func PrintCompositorNew(buffer *Buffer) *PrintCompositor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(buffer.Native)
+	inArgs[0].SetPointer(buffer.native)
 
 	var ret gi.Argument
 
@@ -4301,8 +4443,7 @@ func PrintCompositorNew(buffer *Buffer) *PrintCompositor {
 		ret = printCompositorNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &PrintCompositor{}
-	retGo.Native = ret.Pointer()
+	retGo := PrintCompositorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4325,7 +4466,7 @@ func printCompositorNewFromViewFunction_Set() error {
 // PrintCompositorNewFromView is a representation of the C type gtk_source_print_compositor_new_from_view.
 func PrintCompositorNewFromView(view *View) *PrintCompositor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(view.Native)
+	inArgs[0].SetPointer(view.native)
 
 	var ret gi.Argument
 
@@ -4334,8 +4475,7 @@ func PrintCompositorNewFromView(view *View) *PrintCompositor {
 		ret = printCompositorNewFromViewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &PrintCompositor{}
-	retGo.Native = ret.Pointer()
+	retGo := PrintCompositorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4360,7 +4500,7 @@ func printCompositorGetBodyFontNameFunction_Set() error {
 // GetBodyFontName is a representation of the C type gtk_source_print_compositor_get_body_font_name.
 func (recv *PrintCompositor) GetBodyFontName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4394,7 +4534,7 @@ func printCompositorGetBufferFunction_Set() error {
 // GetBuffer is a representation of the C type gtk_source_print_compositor_get_buffer.
 func (recv *PrintCompositor) GetBuffer() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4403,8 +4543,7 @@ func (recv *PrintCompositor) GetBuffer() *Buffer {
 		ret = printCompositorGetBufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4427,7 +4566,7 @@ func printCompositorGetFooterFontNameFunction_Set() error {
 // GetFooterFontName is a representation of the C type gtk_source_print_compositor_get_footer_font_name.
 func (recv *PrintCompositor) GetFooterFontName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4459,7 +4598,7 @@ func printCompositorGetHeaderFontNameFunction_Set() error {
 // GetHeaderFontName is a representation of the C type gtk_source_print_compositor_get_header_font_name.
 func (recv *PrintCompositor) GetHeaderFontName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4491,7 +4630,7 @@ func printCompositorGetHighlightSyntaxFunction_Set() error {
 // GetHighlightSyntax is a representation of the C type gtk_source_print_compositor_get_highlight_syntax.
 func (recv *PrintCompositor) GetHighlightSyntax() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4525,7 +4664,7 @@ func printCompositorGetLineNumbersFontNameFunction_Set() error {
 // GetLineNumbersFontName is a representation of the C type gtk_source_print_compositor_get_line_numbers_font_name.
 func (recv *PrintCompositor) GetLineNumbersFontName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4557,7 +4696,7 @@ func printCompositorGetNPagesFunction_Set() error {
 // GetNPages is a representation of the C type gtk_source_print_compositor_get_n_pages.
 func (recv *PrintCompositor) GetNPages() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4589,7 +4728,7 @@ func printCompositorGetPaginationProgressFunction_Set() error {
 // GetPaginationProgress is a representation of the C type gtk_source_print_compositor_get_pagination_progress.
 func (recv *PrintCompositor) GetPaginationProgress() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4621,7 +4760,7 @@ func printCompositorGetPrintFooterFunction_Set() error {
 // GetPrintFooter is a representation of the C type gtk_source_print_compositor_get_print_footer.
 func (recv *PrintCompositor) GetPrintFooter() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4653,7 +4792,7 @@ func printCompositorGetPrintHeaderFunction_Set() error {
 // GetPrintHeader is a representation of the C type gtk_source_print_compositor_get_print_header.
 func (recv *PrintCompositor) GetPrintHeader() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4685,7 +4824,7 @@ func printCompositorGetPrintLineNumbersFunction_Set() error {
 // GetPrintLineNumbers is a representation of the C type gtk_source_print_compositor_get_print_line_numbers.
 func (recv *PrintCompositor) GetPrintLineNumbers() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4719,7 +4858,7 @@ func printCompositorGetTabWidthFunction_Set() error {
 // GetTabWidth is a representation of the C type gtk_source_print_compositor_get_tab_width.
 func (recv *PrintCompositor) GetTabWidth() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4757,7 +4896,7 @@ func printCompositorSetBodyFontNameFunction_Set() error {
 // SetBodyFontName is a representation of the C type gtk_source_print_compositor_set_body_font_name.
 func (recv *PrintCompositor) SetBodyFontName(fontName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(fontName)
 
 	err := printCompositorSetBodyFontNameFunction_Set()
@@ -4788,7 +4927,7 @@ func printCompositorSetFooterFontNameFunction_Set() error {
 // SetFooterFontName is a representation of the C type gtk_source_print_compositor_set_footer_font_name.
 func (recv *PrintCompositor) SetFooterFontName(fontName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(fontName)
 
 	err := printCompositorSetFooterFontNameFunction_Set()
@@ -4817,7 +4956,7 @@ func printCompositorSetFooterFormatFunction_Set() error {
 // SetFooterFormat is a representation of the C type gtk_source_print_compositor_set_footer_format.
 func (recv *PrintCompositor) SetFooterFormat(separator bool, left string, center string, right string) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(separator)
 	inArgs[2].SetString(left)
 	inArgs[3].SetString(center)
@@ -4849,7 +4988,7 @@ func printCompositorSetHeaderFontNameFunction_Set() error {
 // SetHeaderFontName is a representation of the C type gtk_source_print_compositor_set_header_font_name.
 func (recv *PrintCompositor) SetHeaderFontName(fontName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(fontName)
 
 	err := printCompositorSetHeaderFontNameFunction_Set()
@@ -4878,7 +5017,7 @@ func printCompositorSetHeaderFormatFunction_Set() error {
 // SetHeaderFormat is a representation of the C type gtk_source_print_compositor_set_header_format.
 func (recv *PrintCompositor) SetHeaderFormat(separator bool, left string, center string, right string) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(separator)
 	inArgs[2].SetString(left)
 	inArgs[3].SetString(center)
@@ -4910,7 +5049,7 @@ func printCompositorSetHighlightSyntaxFunction_Set() error {
 // SetHighlightSyntax is a representation of the C type gtk_source_print_compositor_set_highlight_syntax.
 func (recv *PrintCompositor) SetHighlightSyntax(highlight bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(highlight)
 
 	err := printCompositorSetHighlightSyntaxFunction_Set()
@@ -4941,7 +5080,7 @@ func printCompositorSetLineNumbersFontNameFunction_Set() error {
 // SetLineNumbersFontName is a representation of the C type gtk_source_print_compositor_set_line_numbers_font_name.
 func (recv *PrintCompositor) SetLineNumbersFontName(fontName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(fontName)
 
 	err := printCompositorSetLineNumbersFontNameFunction_Set()
@@ -4970,7 +5109,7 @@ func printCompositorSetPrintFooterFunction_Set() error {
 // SetPrintFooter is a representation of the C type gtk_source_print_compositor_set_print_footer.
 func (recv *PrintCompositor) SetPrintFooter(print bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(print)
 
 	err := printCompositorSetPrintFooterFunction_Set()
@@ -4999,7 +5138,7 @@ func printCompositorSetPrintHeaderFunction_Set() error {
 // SetPrintHeader is a representation of the C type gtk_source_print_compositor_set_print_header.
 func (recv *PrintCompositor) SetPrintHeader(print bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(print)
 
 	err := printCompositorSetPrintHeaderFunction_Set()
@@ -5028,7 +5167,7 @@ func printCompositorSetPrintLineNumbersFunction_Set() error {
 // SetPrintLineNumbers is a representation of the C type gtk_source_print_compositor_set_print_line_numbers.
 func (recv *PrintCompositor) SetPrintLineNumbers(interval uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(interval)
 
 	err := printCompositorSetPrintLineNumbersFunction_Set()
@@ -5059,7 +5198,7 @@ func printCompositorSetTabWidthFunction_Set() error {
 // SetTabWidth is a representation of the C type gtk_source_print_compositor_set_tab_width.
 func (recv *PrintCompositor) SetTabWidth(width uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(width)
 
 	err := printCompositorSetTabWidthFunction_Set()
@@ -5086,7 +5225,14 @@ func regionObject_Set() error {
 }
 
 type Region struct {
-	gobject.Object
+	native uintptr
+}
+
+func RegionNewFromNative(native uintptr) *Region {
+	return &Region{native: native}
+}
+func (recv *Region) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -5113,8 +5259,8 @@ func regionAddRegionFunction_Set() error {
 // AddRegion is a representation of the C type gtk_source_region_add_region.
 func (recv *Region) AddRegion(regionToAdd *Region) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(regionToAdd.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(regionToAdd.native)
 
 	err := regionAddRegionFunction_Set()
 	if err == nil {
@@ -5148,7 +5294,7 @@ func regionGetStartRegionIterFunction_Set() error {
 // GetStartRegionIter is a representation of the C type gtk_source_region_get_start_region_iter.
 func (recv *Region) GetStartRegionIter() *RegionIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -5157,8 +5303,7 @@ func (recv *Region) GetStartRegionIter() *RegionIter {
 		regionGetStartRegionIterFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &RegionIter{}
-	out0.Native = outArgs[0].Pointer()
+	out0 := RegionIterNewFromNative(outArgs[0].Pointer())
 
 	return out0
 }
@@ -5181,8 +5326,8 @@ func regionIntersectRegionFunction_Set() error {
 // IntersectRegion is a representation of the C type gtk_source_region_intersect_region.
 func (recv *Region) IntersectRegion(region2 *Region) *Region {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(region2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(region2.native)
 
 	var ret gi.Argument
 
@@ -5191,8 +5336,7 @@ func (recv *Region) IntersectRegion(region2 *Region) *Region {
 		ret = regionIntersectRegionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Region{}
-	retGo.Native = ret.Pointer()
+	retGo := RegionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5217,7 +5361,7 @@ func regionIsEmptyFunction_Set() error {
 // IsEmpty is a representation of the C type gtk_source_region_is_empty.
 func (recv *Region) IsEmpty() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5249,8 +5393,8 @@ func regionSubtractRegionFunction_Set() error {
 // SubtractRegion is a representation of the C type gtk_source_region_subtract_region.
 func (recv *Region) SubtractRegion(regionToSubtract *Region) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(regionToSubtract.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(regionToSubtract.native)
 
 	err := regionSubtractRegionFunction_Set()
 	if err == nil {
@@ -5280,7 +5424,7 @@ func regionToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_source_region_to_string.
 func (recv *Region) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5306,7 +5450,14 @@ func searchContextObject_Set() error {
 }
 
 type SearchContext struct {
-	gobject.Object
+	native uintptr
+}
+
+func SearchContextNewFromNative(native uintptr) *SearchContext {
+	return &SearchContext{native: native}
+}
+func (recv *SearchContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5315,17 +5466,16 @@ type SearchContext struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchContext) FieldPriv() *SearchContextPrivate {
-	argValue := gi.ObjectFieldGet(searchContextObject, recv.Native, "priv")
-	value := &SearchContextPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(searchContextObject, recv.native, "priv")
+	value := SearchContextPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SearchContext) SetFieldPriv(value *SearchContextPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(searchContextObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(searchContextObject, recv.native, "priv", argValue)
 }
 
 var searchContextNewFunction *gi.Function
@@ -5346,8 +5496,8 @@ func searchContextNewFunction_Set() error {
 // SearchContextNew is a representation of the C type gtk_source_search_context_new.
 func SearchContextNew(buffer *Buffer, settings *SearchSettings) *SearchContext {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(buffer.Native)
-	inArgs[1].SetPointer(settings.Native)
+	inArgs[0].SetPointer(buffer.native)
+	inArgs[1].SetPointer(settings.native)
 
 	var ret gi.Argument
 
@@ -5356,8 +5506,7 @@ func SearchContextNew(buffer *Buffer, settings *SearchSettings) *SearchContext {
 		ret = searchContextNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SearchContext{}
-	retGo.Native = ret.Pointer()
+	retGo := SearchContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5400,7 +5549,7 @@ func searchContextGetBufferFunction_Set() error {
 // GetBuffer is a representation of the C type gtk_source_search_context_get_buffer.
 func (recv *SearchContext) GetBuffer() *Buffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5409,8 +5558,7 @@ func (recv *SearchContext) GetBuffer() *Buffer {
 		ret = searchContextGetBufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Buffer{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5433,7 +5581,7 @@ func searchContextGetHighlightFunction_Set() error {
 // GetHighlight is a representation of the C type gtk_source_search_context_get_highlight.
 func (recv *SearchContext) GetHighlight() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5465,7 +5613,7 @@ func searchContextGetMatchStyleFunction_Set() error {
 // GetMatchStyle is a representation of the C type gtk_source_search_context_get_match_style.
 func (recv *SearchContext) GetMatchStyle() *Style {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5474,8 +5622,7 @@ func (recv *SearchContext) GetMatchStyle() *Style {
 		ret = searchContextGetMatchStyleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Style{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5500,7 +5647,7 @@ func searchContextGetOccurrencesCountFunction_Set() error {
 // GetOccurrencesCount is a representation of the C type gtk_source_search_context_get_occurrences_count.
 func (recv *SearchContext) GetOccurrencesCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5534,7 +5681,7 @@ func searchContextGetSettingsFunction_Set() error {
 // GetSettings is a representation of the C type gtk_source_search_context_get_settings.
 func (recv *SearchContext) GetSettings() *SearchSettings {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5543,8 +5690,7 @@ func (recv *SearchContext) GetSettings() *SearchSettings {
 		ret = searchContextGetSettingsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SearchSettings{}
-	retGo.Native = ret.Pointer()
+	retGo := SearchSettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5571,7 +5717,7 @@ func searchContextReplaceAllFunction_Set() error {
 // ReplaceAll is a representation of the C type gtk_source_search_context_replace_all.
 func (recv *SearchContext) ReplaceAll(replace string, replaceLength int32) uint32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(replace)
 	inArgs[2].SetInt32(replaceLength)
 
@@ -5605,7 +5751,7 @@ func searchContextSetHighlightFunction_Set() error {
 // SetHighlight is a representation of the C type gtk_source_search_context_set_highlight.
 func (recv *SearchContext) SetHighlight(highlight bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(highlight)
 
 	err := searchContextSetHighlightFunction_Set()
@@ -5634,8 +5780,8 @@ func searchContextSetMatchStyleFunction_Set() error {
 // SetMatchStyle is a representation of the C type gtk_source_search_context_set_match_style.
 func (recv *SearchContext) SetMatchStyle(matchStyle *Style) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(matchStyle.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(matchStyle.native)
 
 	err := searchContextSetMatchStyleFunction_Set()
 	if err == nil {
@@ -5663,8 +5809,8 @@ func searchContextSetSettingsFunction_Set() error {
 // SetSettings is a representation of the C type gtk_source_search_context_set_settings.
 func (recv *SearchContext) SetSettings(settings *SearchSettings) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(settings.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(settings.native)
 
 	err := searchContextSetSettingsFunction_Set()
 	if err == nil {
@@ -5686,7 +5832,14 @@ func searchSettingsObject_Set() error {
 }
 
 type SearchSettings struct {
-	gobject.Object
+	native uintptr
+}
+
+func SearchSettingsNewFromNative(native uintptr) *SearchSettings {
+	return &SearchSettings{native: native}
+}
+func (recv *SearchSettings) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5695,17 +5848,16 @@ type SearchSettings struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchSettings) FieldPriv() *SearchSettingsPrivate {
-	argValue := gi.ObjectFieldGet(searchSettingsObject, recv.Native, "priv")
-	value := &SearchSettingsPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(searchSettingsObject, recv.native, "priv")
+	value := SearchSettingsPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SearchSettings) SetFieldPriv(value *SearchSettingsPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(searchSettingsObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(searchSettingsObject, recv.native, "priv", argValue)
 }
 
 var searchSettingsNewFunction *gi.Function
@@ -5733,8 +5885,7 @@ func SearchSettingsNew() *SearchSettings {
 		ret = searchSettingsNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SearchSettings{}
-	retGo.Native = ret.Pointer()
+	retGo := SearchSettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5757,7 +5908,7 @@ func searchSettingsGetAtWordBoundariesFunction_Set() error {
 // GetAtWordBoundaries is a representation of the C type gtk_source_search_settings_get_at_word_boundaries.
 func (recv *SearchSettings) GetAtWordBoundaries() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5789,7 +5940,7 @@ func searchSettingsGetCaseSensitiveFunction_Set() error {
 // GetCaseSensitive is a representation of the C type gtk_source_search_settings_get_case_sensitive.
 func (recv *SearchSettings) GetCaseSensitive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5821,7 +5972,7 @@ func searchSettingsGetRegexEnabledFunction_Set() error {
 // GetRegexEnabled is a representation of the C type gtk_source_search_settings_get_regex_enabled.
 func (recv *SearchSettings) GetRegexEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5853,7 +6004,7 @@ func searchSettingsGetSearchTextFunction_Set() error {
 // GetSearchText is a representation of the C type gtk_source_search_settings_get_search_text.
 func (recv *SearchSettings) GetSearchText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5885,7 +6036,7 @@ func searchSettingsGetWrapAroundFunction_Set() error {
 // GetWrapAround is a representation of the C type gtk_source_search_settings_get_wrap_around.
 func (recv *SearchSettings) GetWrapAround() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5917,7 +6068,7 @@ func searchSettingsSetAtWordBoundariesFunction_Set() error {
 // SetAtWordBoundaries is a representation of the C type gtk_source_search_settings_set_at_word_boundaries.
 func (recv *SearchSettings) SetAtWordBoundaries(atWordBoundaries bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(atWordBoundaries)
 
 	err := searchSettingsSetAtWordBoundariesFunction_Set()
@@ -5946,7 +6097,7 @@ func searchSettingsSetCaseSensitiveFunction_Set() error {
 // SetCaseSensitive is a representation of the C type gtk_source_search_settings_set_case_sensitive.
 func (recv *SearchSettings) SetCaseSensitive(caseSensitive bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(caseSensitive)
 
 	err := searchSettingsSetCaseSensitiveFunction_Set()
@@ -5975,7 +6126,7 @@ func searchSettingsSetRegexEnabledFunction_Set() error {
 // SetRegexEnabled is a representation of the C type gtk_source_search_settings_set_regex_enabled.
 func (recv *SearchSettings) SetRegexEnabled(regexEnabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(regexEnabled)
 
 	err := searchSettingsSetRegexEnabledFunction_Set()
@@ -6004,7 +6155,7 @@ func searchSettingsSetSearchTextFunction_Set() error {
 // SetSearchText is a representation of the C type gtk_source_search_settings_set_search_text.
 func (recv *SearchSettings) SetSearchText(searchText string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(searchText)
 
 	err := searchSettingsSetSearchTextFunction_Set()
@@ -6033,7 +6184,7 @@ func searchSettingsSetWrapAroundFunction_Set() error {
 // SetWrapAround is a representation of the C type gtk_source_search_settings_set_wrap_around.
 func (recv *SearchSettings) SetWrapAround(wrapAround bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(wrapAround)
 
 	err := searchSettingsSetWrapAroundFunction_Set()
@@ -6056,7 +6207,14 @@ func spaceDrawerObject_Set() error {
 }
 
 type SpaceDrawer struct {
-	gobject.Object
+	native uintptr
+}
+
+func SpaceDrawerNewFromNative(native uintptr) *SpaceDrawer {
+	return &SpaceDrawer{native: native}
+}
+func (recv *SpaceDrawer) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -6065,17 +6223,16 @@ type SpaceDrawer struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SpaceDrawer) FieldPriv() *SpaceDrawerPrivate {
-	argValue := gi.ObjectFieldGet(spaceDrawerObject, recv.Native, "priv")
-	value := &SpaceDrawerPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(spaceDrawerObject, recv.native, "priv")
+	value := SpaceDrawerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SpaceDrawer) SetFieldPriv(value *SpaceDrawerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(spaceDrawerObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(spaceDrawerObject, recv.native, "priv", argValue)
 }
 
 var spaceDrawerNewFunction *gi.Function
@@ -6103,8 +6260,7 @@ func SpaceDrawerNew() *SpaceDrawer {
 		ret = spaceDrawerNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SpaceDrawer{}
-	retGo.Native = ret.Pointer()
+	retGo := SpaceDrawerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6129,7 +6285,7 @@ func spaceDrawerGetEnableMatrixFunction_Set() error {
 // GetEnableMatrix is a representation of the C type gtk_source_space_drawer_get_enable_matrix.
 func (recv *SpaceDrawer) GetEnableMatrix() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6165,7 +6321,7 @@ func spaceDrawerSetEnableMatrixFunction_Set() error {
 // SetEnableMatrix is a representation of the C type gtk_source_space_drawer_set_enable_matrix.
 func (recv *SpaceDrawer) SetEnableMatrix(enableMatrix bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enableMatrix)
 
 	err := spaceDrawerSetEnableMatrixFunction_Set()
@@ -6192,7 +6348,14 @@ func styleObject_Set() error {
 }
 
 type Style struct {
-	gobject.Object
+	native uintptr
+}
+
+func StyleNewFromNative(native uintptr) *Style {
+	return &Style{native: native}
+}
+func (recv *Style) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'gtk_source_style_apply' : parameter 'tag' of type 'Gtk.TextTag' not supported
@@ -6215,7 +6378,7 @@ func styleCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_source_style_copy.
 func (recv *Style) Copy() *Style {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6224,8 +6387,7 @@ func (recv *Style) Copy() *Style {
 		ret = styleCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Style{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6242,7 +6404,14 @@ func styleSchemeObject_Set() error {
 }
 
 type StyleScheme struct {
-	gobject.Object
+	native uintptr
+}
+
+func StyleSchemeNewFromNative(native uintptr) *StyleScheme {
+	return &StyleScheme{native: native}
+}
+func (recv *StyleScheme) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.Object'
@@ -6251,17 +6420,16 @@ type StyleScheme struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleScheme) FieldPriv() *StyleSchemePrivate {
-	argValue := gi.ObjectFieldGet(styleSchemeObject, recv.Native, "priv")
-	value := &StyleSchemePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(styleSchemeObject, recv.native, "priv")
+	value := StyleSchemePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *StyleScheme) SetFieldPriv(value *StyleSchemePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(styleSchemeObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(styleSchemeObject, recv.native, "priv", argValue)
 }
 
 var styleSchemeGetAuthorsFunction *gi.Function
@@ -6282,7 +6450,7 @@ func styleSchemeGetAuthorsFunction_Set() error {
 // GetAuthors is a representation of the C type gtk_source_style_scheme_get_authors.
 func (recv *StyleScheme) GetAuthors() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := styleSchemeGetAuthorsFunction_Set()
 	if err == nil {
@@ -6310,7 +6478,7 @@ func styleSchemeGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type gtk_source_style_scheme_get_description.
 func (recv *StyleScheme) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6342,7 +6510,7 @@ func styleSchemeGetFilenameFunction_Set() error {
 // GetFilename is a representation of the C type gtk_source_style_scheme_get_filename.
 func (recv *StyleScheme) GetFilename() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6374,7 +6542,7 @@ func styleSchemeGetIdFunction_Set() error {
 // GetId is a representation of the C type gtk_source_style_scheme_get_id.
 func (recv *StyleScheme) GetId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6406,7 +6574,7 @@ func styleSchemeGetNameFunction_Set() error {
 // GetName is a representation of the C type gtk_source_style_scheme_get_name.
 func (recv *StyleScheme) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6438,7 +6606,7 @@ func styleSchemeGetStyleFunction_Set() error {
 // GetStyle is a representation of the C type gtk_source_style_scheme_get_style.
 func (recv *StyleScheme) GetStyle(styleId string) *Style {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(styleId)
 
 	var ret gi.Argument
@@ -6448,8 +6616,7 @@ func (recv *StyleScheme) GetStyle(styleId string) *Style {
 		ret = styleSchemeGetStyleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Style{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6466,7 +6633,29 @@ func styleSchemeChooserButtonObject_Set() error {
 }
 
 type StyleSchemeChooserButton struct {
-	gtk.Button
+	native uintptr
+}
+
+func StyleSchemeChooserButtonNewFromNative(native uintptr) *StyleSchemeChooserButton {
+	return &StyleSchemeChooserButton{native: native}
+}
+func (recv *StyleSchemeChooserButton) Button() *gtk.Button {
+	return gtk.ButtonNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserButton) Bin() *gtk.Bin {
+	return gtk.BinNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserButton) Container() *gtk.Container {
+	return gtk.ContainerNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserButton) Widget() *gtk.Widget {
+	return gtk.WidgetNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserButton) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Button'
@@ -6498,8 +6687,7 @@ func StyleSchemeChooserButtonNew() *StyleSchemeChooserButton {
 		ret = styleSchemeChooserButtonNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &StyleSchemeChooserButton{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleSchemeChooserButtonNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6516,7 +6704,26 @@ func styleSchemeChooserWidgetObject_Set() error {
 }
 
 type StyleSchemeChooserWidget struct {
-	gtk.Bin
+	native uintptr
+}
+
+func StyleSchemeChooserWidgetNewFromNative(native uintptr) *StyleSchemeChooserWidget {
+	return &StyleSchemeChooserWidget{native: native}
+}
+func (recv *StyleSchemeChooserWidget) Bin() *gtk.Bin {
+	return gtk.BinNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserWidget) Container() *gtk.Container {
+	return gtk.ContainerNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserWidget) Widget() *gtk.Widget {
+	return gtk.WidgetNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *StyleSchemeChooserWidget) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Bin'
@@ -6548,8 +6755,7 @@ func StyleSchemeChooserWidgetNew() *StyleSchemeChooserWidget {
 		ret = styleSchemeChooserWidgetNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &StyleSchemeChooserWidget{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleSchemeChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6566,7 +6772,14 @@ func styleSchemeManagerObject_Set() error {
 }
 
 type StyleSchemeManager struct {
-	gobject.Object
+	native uintptr
+}
+
+func StyleSchemeManagerNewFromNative(native uintptr) *StyleSchemeManager {
+	return &StyleSchemeManager{native: native}
+}
+func (recv *StyleSchemeManager) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -6575,17 +6788,16 @@ type StyleSchemeManager struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleSchemeManager) FieldPriv() *StyleSchemeManagerPrivate {
-	argValue := gi.ObjectFieldGet(styleSchemeManagerObject, recv.Native, "priv")
-	value := &StyleSchemeManagerPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(styleSchemeManagerObject, recv.native, "priv")
+	value := StyleSchemeManagerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *StyleSchemeManager) SetFieldPriv(value *StyleSchemeManagerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(styleSchemeManagerObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(styleSchemeManagerObject, recv.native, "priv", argValue)
 }
 
 var styleSchemeManagerNewFunction *gi.Function
@@ -6613,8 +6825,7 @@ func StyleSchemeManagerNew() *StyleSchemeManager {
 		ret = styleSchemeManagerNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &StyleSchemeManager{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleSchemeManagerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6637,7 +6848,7 @@ func styleSchemeManagerAppendSearchPathFunction_Set() error {
 // AppendSearchPath is a representation of the C type gtk_source_style_scheme_manager_append_search_path.
 func (recv *StyleSchemeManager) AppendSearchPath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := styleSchemeManagerAppendSearchPathFunction_Set()
@@ -6666,7 +6877,7 @@ func styleSchemeManagerForceRescanFunction_Set() error {
 // ForceRescan is a representation of the C type gtk_source_style_scheme_manager_force_rescan.
 func (recv *StyleSchemeManager) ForceRescan() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := styleSchemeManagerForceRescanFunction_Set()
 	if err == nil {
@@ -6694,7 +6905,7 @@ func styleSchemeManagerGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type gtk_source_style_scheme_manager_get_scheme.
 func (recv *StyleSchemeManager) GetScheme(schemeId string) *StyleScheme {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(schemeId)
 
 	var ret gi.Argument
@@ -6704,8 +6915,7 @@ func (recv *StyleSchemeManager) GetScheme(schemeId string) *StyleScheme {
 		ret = styleSchemeManagerGetSchemeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &StyleScheme{}
-	retGo.Native = ret.Pointer()
+	retGo := StyleSchemeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6728,7 +6938,7 @@ func styleSchemeManagerGetSchemeIdsFunction_Set() error {
 // GetSchemeIds is a representation of the C type gtk_source_style_scheme_manager_get_scheme_ids.
 func (recv *StyleSchemeManager) GetSchemeIds() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := styleSchemeManagerGetSchemeIdsFunction_Set()
 	if err == nil {
@@ -6756,7 +6966,7 @@ func styleSchemeManagerGetSearchPathFunction_Set() error {
 // GetSearchPath is a representation of the C type gtk_source_style_scheme_manager_get_search_path.
 func (recv *StyleSchemeManager) GetSearchPath() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := styleSchemeManagerGetSearchPathFunction_Set()
 	if err == nil {
@@ -6784,7 +6994,7 @@ func styleSchemeManagerPrependSearchPathFunction_Set() error {
 // PrependSearchPath is a representation of the C type gtk_source_style_scheme_manager_prepend_search_path.
 func (recv *StyleSchemeManager) PrependSearchPath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := styleSchemeManagerPrependSearchPathFunction_Set()
@@ -6809,7 +7019,17 @@ func tagObject_Set() error {
 }
 
 type Tag struct {
-	gtk.TextTag
+	native uintptr
+}
+
+func TagNewFromNative(native uintptr) *Tag {
+	return &Tag{native: native}
+}
+func (recv *Tag) TextTag() *gtk.TextTag {
+	return gtk.TextTagNewFromNative(recv.native)
+}
+func (recv *Tag) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextTag'
@@ -6843,8 +7063,7 @@ func TagNew(name string) *Tag {
 		ret = tagNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Tag{}
-	retGo.Native = ret.Pointer()
+	retGo := TagNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6861,7 +7080,26 @@ func viewObject_Set() error {
 }
 
 type View struct {
-	gtk.TextView
+	native uintptr
+}
+
+func ViewNewFromNative(native uintptr) *View {
+	return &View{native: native}
+}
+func (recv *View) TextView() *gtk.TextView {
+	return gtk.TextViewNewFromNative(recv.native)
+}
+func (recv *View) Container() *gtk.Container {
+	return gtk.ContainerNewFromNative(recv.native)
+}
+func (recv *View) Widget() *gtk.Widget {
+	return gtk.WidgetNewFromNative(recv.native)
+}
+func (recv *View) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return gobject.InitiallyUnownedNewFromNative(recv.native)
+}
+func (recv *View) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.TextView'
@@ -6870,17 +7108,16 @@ type View struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *View) FieldPriv() *ViewPrivate {
-	argValue := gi.ObjectFieldGet(viewObject, recv.Native, "priv")
-	value := &ViewPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(viewObject, recv.native, "priv")
+	value := ViewPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *View) SetFieldPriv(value *ViewPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(viewObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(viewObject, recv.native, "priv", argValue)
 }
 
 var viewNewFunction *gi.Function
@@ -6908,8 +7145,7 @@ func ViewNew() *View {
 		ret = viewNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &View{}
-	retGo.Native = ret.Pointer()
+	retGo := ViewNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6932,7 +7168,7 @@ func viewNewWithBufferFunction_Set() error {
 // ViewNewWithBuffer is a representation of the C type gtk_source_view_new_with_buffer.
 func ViewNewWithBuffer(buffer *Buffer) *View {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(buffer.Native)
+	inArgs[0].SetPointer(buffer.native)
 
 	var ret gi.Argument
 
@@ -6941,8 +7177,7 @@ func ViewNewWithBuffer(buffer *Buffer) *View {
 		ret = viewNewWithBufferFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &View{}
-	retGo.Native = ret.Pointer()
+	retGo := ViewNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6965,7 +7200,7 @@ func viewGetAutoIndentFunction_Set() error {
 // GetAutoIndent is a representation of the C type gtk_source_view_get_auto_indent.
 func (recv *View) GetAutoIndent() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6997,7 +7232,7 @@ func viewGetBackgroundPatternFunction_Set() error {
 // GetBackgroundPattern is a representation of the C type gtk_source_view_get_background_pattern.
 func (recv *View) GetBackgroundPattern() BackgroundPatternType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7029,7 +7264,7 @@ func viewGetCompletionFunction_Set() error {
 // GetCompletion is a representation of the C type gtk_source_view_get_completion.
 func (recv *View) GetCompletion() *Completion {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7038,8 +7273,7 @@ func (recv *View) GetCompletion() *Completion {
 		ret = viewGetCompletionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Completion{}
-	retGo.Native = ret.Pointer()
+	retGo := CompletionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7066,7 +7300,7 @@ func viewGetHighlightCurrentLineFunction_Set() error {
 // GetHighlightCurrentLine is a representation of the C type gtk_source_view_get_highlight_current_line.
 func (recv *View) GetHighlightCurrentLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7098,7 +7332,7 @@ func viewGetIndentOnTabFunction_Set() error {
 // GetIndentOnTab is a representation of the C type gtk_source_view_get_indent_on_tab.
 func (recv *View) GetIndentOnTab() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7130,7 +7364,7 @@ func viewGetIndentWidthFunction_Set() error {
 // GetIndentWidth is a representation of the C type gtk_source_view_get_indent_width.
 func (recv *View) GetIndentWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7162,7 +7396,7 @@ func viewGetInsertSpacesInsteadOfTabsFunction_Set() error {
 // GetInsertSpacesInsteadOfTabs is a representation of the C type gtk_source_view_get_insert_spaces_instead_of_tabs.
 func (recv *View) GetInsertSpacesInsteadOfTabs() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7194,7 +7428,7 @@ func viewGetMarkAttributesFunction_Set() error {
 // GetMarkAttributes is a representation of the C type gtk_source_view_get_mark_attributes.
 func (recv *View) GetMarkAttributes(category string, priority int32) *MarkAttributes {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(category)
 	inArgs[2].SetInt32(priority)
 
@@ -7205,8 +7439,7 @@ func (recv *View) GetMarkAttributes(category string, priority int32) *MarkAttrib
 		ret = viewGetMarkAttributesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MarkAttributes{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkAttributesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7229,7 +7462,7 @@ func viewGetRightMarginPositionFunction_Set() error {
 // GetRightMarginPosition is a representation of the C type gtk_source_view_get_right_margin_position.
 func (recv *View) GetRightMarginPosition() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7261,7 +7494,7 @@ func viewGetShowLineMarksFunction_Set() error {
 // GetShowLineMarks is a representation of the C type gtk_source_view_get_show_line_marks.
 func (recv *View) GetShowLineMarks() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7293,7 +7526,7 @@ func viewGetShowLineNumbersFunction_Set() error {
 // GetShowLineNumbers is a representation of the C type gtk_source_view_get_show_line_numbers.
 func (recv *View) GetShowLineNumbers() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7325,7 +7558,7 @@ func viewGetShowRightMarginFunction_Set() error {
 // GetShowRightMargin is a representation of the C type gtk_source_view_get_show_right_margin.
 func (recv *View) GetShowRightMargin() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7357,7 +7590,7 @@ func viewGetSmartBackspaceFunction_Set() error {
 // GetSmartBackspace is a representation of the C type gtk_source_view_get_smart_backspace.
 func (recv *View) GetSmartBackspace() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7389,7 +7622,7 @@ func viewGetSmartHomeEndFunction_Set() error {
 // GetSmartHomeEnd is a representation of the C type gtk_source_view_get_smart_home_end.
 func (recv *View) GetSmartHomeEnd() SmartHomeEndType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7421,7 +7654,7 @@ func viewGetSpaceDrawerFunction_Set() error {
 // GetSpaceDrawer is a representation of the C type gtk_source_view_get_space_drawer.
 func (recv *View) GetSpaceDrawer() *SpaceDrawer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7430,8 +7663,7 @@ func (recv *View) GetSpaceDrawer() *SpaceDrawer {
 		ret = viewGetSpaceDrawerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SpaceDrawer{}
-	retGo.Native = ret.Pointer()
+	retGo := SpaceDrawerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7454,7 +7686,7 @@ func viewGetTabWidthFunction_Set() error {
 // GetTabWidth is a representation of the C type gtk_source_view_get_tab_width.
 func (recv *View) GetTabWidth() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7490,7 +7722,7 @@ func viewSetAutoIndentFunction_Set() error {
 // SetAutoIndent is a representation of the C type gtk_source_view_set_auto_indent.
 func (recv *View) SetAutoIndent(enable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enable)
 
 	err := viewSetAutoIndentFunction_Set()
@@ -7519,7 +7751,7 @@ func viewSetBackgroundPatternFunction_Set() error {
 // SetBackgroundPattern is a representation of the C type gtk_source_view_set_background_pattern.
 func (recv *View) SetBackgroundPattern(backgroundPattern BackgroundPatternType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(backgroundPattern))
 
 	err := viewSetBackgroundPatternFunction_Set()
@@ -7550,7 +7782,7 @@ func viewSetHighlightCurrentLineFunction_Set() error {
 // SetHighlightCurrentLine is a representation of the C type gtk_source_view_set_highlight_current_line.
 func (recv *View) SetHighlightCurrentLine(highlight bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(highlight)
 
 	err := viewSetHighlightCurrentLineFunction_Set()
@@ -7579,7 +7811,7 @@ func viewSetIndentOnTabFunction_Set() error {
 // SetIndentOnTab is a representation of the C type gtk_source_view_set_indent_on_tab.
 func (recv *View) SetIndentOnTab(enable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enable)
 
 	err := viewSetIndentOnTabFunction_Set()
@@ -7608,7 +7840,7 @@ func viewSetIndentWidthFunction_Set() error {
 // SetIndentWidth is a representation of the C type gtk_source_view_set_indent_width.
 func (recv *View) SetIndentWidth(width int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(width)
 
 	err := viewSetIndentWidthFunction_Set()
@@ -7637,7 +7869,7 @@ func viewSetInsertSpacesInsteadOfTabsFunction_Set() error {
 // SetInsertSpacesInsteadOfTabs is a representation of the C type gtk_source_view_set_insert_spaces_instead_of_tabs.
 func (recv *View) SetInsertSpacesInsteadOfTabs(enable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enable)
 
 	err := viewSetInsertSpacesInsteadOfTabsFunction_Set()
@@ -7666,9 +7898,9 @@ func viewSetMarkAttributesFunction_Set() error {
 // SetMarkAttributes is a representation of the C type gtk_source_view_set_mark_attributes.
 func (recv *View) SetMarkAttributes(category string, attributes *MarkAttributes, priority int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(category)
-	inArgs[2].SetPointer(attributes.Native)
+	inArgs[2].SetPointer(attributes.native)
 	inArgs[3].SetInt32(priority)
 
 	err := viewSetMarkAttributesFunction_Set()
@@ -7697,7 +7929,7 @@ func viewSetRightMarginPositionFunction_Set() error {
 // SetRightMarginPosition is a representation of the C type gtk_source_view_set_right_margin_position.
 func (recv *View) SetRightMarginPosition(pos uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(pos)
 
 	err := viewSetRightMarginPositionFunction_Set()
@@ -7726,7 +7958,7 @@ func viewSetShowLineMarksFunction_Set() error {
 // SetShowLineMarks is a representation of the C type gtk_source_view_set_show_line_marks.
 func (recv *View) SetShowLineMarks(show bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(show)
 
 	err := viewSetShowLineMarksFunction_Set()
@@ -7755,7 +7987,7 @@ func viewSetShowLineNumbersFunction_Set() error {
 // SetShowLineNumbers is a representation of the C type gtk_source_view_set_show_line_numbers.
 func (recv *View) SetShowLineNumbers(show bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(show)
 
 	err := viewSetShowLineNumbersFunction_Set()
@@ -7784,7 +8016,7 @@ func viewSetShowRightMarginFunction_Set() error {
 // SetShowRightMargin is a representation of the C type gtk_source_view_set_show_right_margin.
 func (recv *View) SetShowRightMargin(show bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(show)
 
 	err := viewSetShowRightMarginFunction_Set()
@@ -7813,7 +8045,7 @@ func viewSetSmartBackspaceFunction_Set() error {
 // SetSmartBackspace is a representation of the C type gtk_source_view_set_smart_backspace.
 func (recv *View) SetSmartBackspace(smartBackspace bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(smartBackspace)
 
 	err := viewSetSmartBackspaceFunction_Set()
@@ -7842,7 +8074,7 @@ func viewSetSmartHomeEndFunction_Set() error {
 // SetSmartHomeEnd is a representation of the C type gtk_source_view_set_smart_home_end.
 func (recv *View) SetSmartHomeEnd(smartHomeEnd SmartHomeEndType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(smartHomeEnd))
 
 	err := viewSetSmartHomeEndFunction_Set()
@@ -7871,7 +8103,7 @@ func viewSetTabWidthFunction_Set() error {
 // SetTabWidth is a representation of the C type gtk_source_view_set_tab_width.
 func (recv *View) SetTabWidth(width uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(width)
 
 	err := viewSetTabWidthFunction_Set()

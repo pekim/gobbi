@@ -21,7 +21,14 @@ func appInfoMonitorObject_Set() error {
 }
 
 type AppInfoMonitor struct {
-	gobject.Object
+	native uintptr
+}
+
+func AppInfoMonitorNewFromNative(native uintptr) *AppInfoMonitor {
+	return &AppInfoMonitor{native: native}
+}
+func (recv *AppInfoMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var appLaunchContextObject *gi.Object
@@ -36,7 +43,14 @@ func appLaunchContextObject_Set() error {
 }
 
 type AppLaunchContext struct {
-	gobject.Object
+	native uintptr
+}
+
+func AppLaunchContextNewFromNative(native uintptr) *AppLaunchContext {
+	return &AppLaunchContext{native: native}
+}
+func (recv *AppLaunchContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -68,8 +82,7 @@ func AppLaunchContextNew() *AppLaunchContext {
 		ret = appLaunchContextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &AppLaunchContext{}
-	retGo.Native = ret.Pointer()
+	retGo := AppLaunchContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -94,7 +107,7 @@ func appLaunchContextGetEnvironmentFunction_Set() error {
 // GetEnvironment is a representation of the C type g_app_launch_context_get_environment.
 func (recv *AppLaunchContext) GetEnvironment() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := appLaunchContextGetEnvironmentFunction_Set()
 	if err == nil {
@@ -124,7 +137,7 @@ func appLaunchContextLaunchFailedFunction_Set() error {
 // LaunchFailed is a representation of the C type g_app_launch_context_launch_failed.
 func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(startupNotifyId)
 
 	err := appLaunchContextLaunchFailedFunction_Set()
@@ -153,7 +166,7 @@ func appLaunchContextSetenvFunction_Set() error {
 // Setenv is a representation of the C type g_app_launch_context_setenv.
 func (recv *AppLaunchContext) Setenv(variable string, value string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(variable)
 	inArgs[2].SetString(value)
 
@@ -183,7 +196,7 @@ func appLaunchContextUnsetenvFunction_Set() error {
 // Unsetenv is a representation of the C type g_app_launch_context_unsetenv.
 func (recv *AppLaunchContext) Unsetenv(variable string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(variable)
 
 	err := appLaunchContextUnsetenvFunction_Set()
@@ -206,7 +219,14 @@ func applicationObject_Set() error {
 }
 
 type Application struct {
-	gobject.Object
+	native uintptr
+}
+
+func ApplicationNewFromNative(native uintptr) *Application {
+	return &Application{native: native}
+}
+func (recv *Application) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_application_new' : parameter 'flags' of type 'ApplicationFlags' not supported
@@ -229,7 +249,7 @@ func applicationActivateFunction_Set() error {
 // Activate is a representation of the C type g_application_activate.
 func (recv *Application) Activate() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationActivateFunction_Set()
 	if err == nil {
@@ -265,7 +285,7 @@ func applicationGetApplicationIdFunction_Set() error {
 // GetApplicationId is a representation of the C type g_application_get_application_id.
 func (recv *Application) GetApplicationId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -297,7 +317,7 @@ func applicationGetDbusConnectionFunction_Set() error {
 // GetDbusConnection is a representation of the C type g_application_get_dbus_connection.
 func (recv *Application) GetDbusConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -306,8 +326,7 @@ func (recv *Application) GetDbusConnection() *DBusConnection {
 		ret = applicationGetDbusConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -330,7 +349,7 @@ func applicationGetDbusObjectPathFunction_Set() error {
 // GetDbusObjectPath is a representation of the C type g_application_get_dbus_object_path.
 func (recv *Application) GetDbusObjectPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -364,7 +383,7 @@ func applicationGetInactivityTimeoutFunction_Set() error {
 // GetInactivityTimeout is a representation of the C type g_application_get_inactivity_timeout.
 func (recv *Application) GetInactivityTimeout() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -396,7 +415,7 @@ func applicationGetIsBusyFunction_Set() error {
 // GetIsBusy is a representation of the C type g_application_get_is_busy.
 func (recv *Application) GetIsBusy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -428,7 +447,7 @@ func applicationGetIsRegisteredFunction_Set() error {
 // GetIsRegistered is a representation of the C type g_application_get_is_registered.
 func (recv *Application) GetIsRegistered() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -460,7 +479,7 @@ func applicationGetIsRemoteFunction_Set() error {
 // GetIsRemote is a representation of the C type g_application_get_is_remote.
 func (recv *Application) GetIsRemote() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -492,7 +511,7 @@ func applicationGetResourceBasePathFunction_Set() error {
 // GetResourceBasePath is a representation of the C type g_application_get_resource_base_path.
 func (recv *Application) GetResourceBasePath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -524,7 +543,7 @@ func applicationHoldFunction_Set() error {
 // Hold is a representation of the C type g_application_hold.
 func (recv *Application) Hold() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationHoldFunction_Set()
 	if err == nil {
@@ -552,7 +571,7 @@ func applicationMarkBusyFunction_Set() error {
 // MarkBusy is a representation of the C type g_application_mark_busy.
 func (recv *Application) MarkBusy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationMarkBusyFunction_Set()
 	if err == nil {
@@ -582,7 +601,7 @@ func applicationQuitFunction_Set() error {
 // Quit is a representation of the C type g_application_quit.
 func (recv *Application) Quit() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationQuitFunction_Set()
 	if err == nil {
@@ -610,8 +629,8 @@ func applicationRegisterFunction_Set() error {
 // Register is a representation of the C type g_application_register.
 func (recv *Application) Register(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -643,7 +662,7 @@ func applicationReleaseFunction_Set() error {
 // Release is a representation of the C type g_application_release.
 func (recv *Application) Release() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationReleaseFunction_Set()
 	if err == nil {
@@ -673,9 +692,9 @@ func applicationSendNotificationFunction_Set() error {
 // SendNotification is a representation of the C type g_application_send_notification.
 func (recv *Application) SendNotification(id string, notification *Notification) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(id)
-	inArgs[2].SetPointer(notification.Native)
+	inArgs[2].SetPointer(notification.native)
 
 	err := applicationSendNotificationFunction_Set()
 	if err == nil {
@@ -705,7 +724,7 @@ func applicationSetApplicationIdFunction_Set() error {
 // SetApplicationId is a representation of the C type g_application_set_application_id.
 func (recv *Application) SetApplicationId(applicationId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(applicationId)
 
 	err := applicationSetApplicationIdFunction_Set()
@@ -734,7 +753,7 @@ func applicationSetDefaultFunction_Set() error {
 // SetDefault is a representation of the C type g_application_set_default.
 func (recv *Application) SetDefault() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationSetDefaultFunction_Set()
 	if err == nil {
@@ -764,7 +783,7 @@ func applicationSetInactivityTimeoutFunction_Set() error {
 // SetInactivityTimeout is a representation of the C type g_application_set_inactivity_timeout.
 func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(inactivityTimeout)
 
 	err := applicationSetInactivityTimeoutFunction_Set()
@@ -793,7 +812,7 @@ func applicationSetOptionContextDescriptionFunction_Set() error {
 // SetOptionContextDescription is a representation of the C type g_application_set_option_context_description.
 func (recv *Application) SetOptionContextDescription(description string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(description)
 
 	err := applicationSetOptionContextDescriptionFunction_Set()
@@ -822,7 +841,7 @@ func applicationSetOptionContextParameterStringFunction_Set() error {
 // SetOptionContextParameterString is a representation of the C type g_application_set_option_context_parameter_string.
 func (recv *Application) SetOptionContextParameterString(parameterString string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(parameterString)
 
 	err := applicationSetOptionContextParameterStringFunction_Set()
@@ -851,7 +870,7 @@ func applicationSetOptionContextSummaryFunction_Set() error {
 // SetOptionContextSummary is a representation of the C type g_application_set_option_context_summary.
 func (recv *Application) SetOptionContextSummary(summary string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(summary)
 
 	err := applicationSetOptionContextSummaryFunction_Set()
@@ -880,7 +899,7 @@ func applicationSetResourceBasePathFunction_Set() error {
 // SetResourceBasePath is a representation of the C type g_application_set_resource_base_path.
 func (recv *Application) SetResourceBasePath(resourcePath string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(resourcePath)
 
 	err := applicationSetResourceBasePathFunction_Set()
@@ -911,7 +930,7 @@ func applicationUnmarkBusyFunction_Set() error {
 // UnmarkBusy is a representation of the C type g_application_unmark_busy.
 func (recv *Application) UnmarkBusy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationUnmarkBusyFunction_Set()
 	if err == nil {
@@ -939,7 +958,7 @@ func applicationWithdrawNotificationFunction_Set() error {
 // WithdrawNotification is a representation of the C type g_application_withdraw_notification.
 func (recv *Application) WithdrawNotification(id string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(id)
 
 	err := applicationWithdrawNotificationFunction_Set()
@@ -962,7 +981,14 @@ func applicationCommandLineObject_Set() error {
 }
 
 type ApplicationCommandLine struct {
-	gobject.Object
+	native uintptr
+}
+
+func ApplicationCommandLineNewFromNative(native uintptr) *ApplicationCommandLine {
+	return &ApplicationCommandLine{native: native}
+}
+func (recv *ApplicationCommandLine) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_application_command_line_create_file_for_arg' : return type 'File' not supported
@@ -985,7 +1011,7 @@ func applicationCommandLineGetArgumentsFunction_Set() error {
 // GetArguments is a representation of the C type g_application_command_line_get_arguments.
 func (recv *ApplicationCommandLine) GetArguments() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1017,7 +1043,7 @@ func applicationCommandLineGetCwdFunction_Set() error {
 // GetCwd is a representation of the C type g_application_command_line_get_cwd.
 func (recv *ApplicationCommandLine) GetCwd() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1049,7 +1075,7 @@ func applicationCommandLineGetEnvironFunction_Set() error {
 // GetEnviron is a representation of the C type g_application_command_line_get_environ.
 func (recv *ApplicationCommandLine) GetEnviron() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := applicationCommandLineGetEnvironFunction_Set()
 	if err == nil {
@@ -1077,7 +1103,7 @@ func applicationCommandLineGetExitStatusFunction_Set() error {
 // GetExitStatus is a representation of the C type g_application_command_line_get_exit_status.
 func (recv *ApplicationCommandLine) GetExitStatus() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1109,7 +1135,7 @@ func applicationCommandLineGetIsRemoteFunction_Set() error {
 // GetIsRemote is a representation of the C type g_application_command_line_get_is_remote.
 func (recv *ApplicationCommandLine) GetIsRemote() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1145,7 +1171,7 @@ func applicationCommandLineGetStdinFunction_Set() error {
 // GetStdin is a representation of the C type g_application_command_line_get_stdin.
 func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1154,8 +1180,7 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 		ret = applicationCommandLineGetStdinFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := InputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1178,7 +1203,7 @@ func applicationCommandLineGetenvFunction_Set() error {
 // Getenv is a representation of the C type g_application_command_line_getenv.
 func (recv *ApplicationCommandLine) Getenv(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -1215,7 +1240,7 @@ func applicationCommandLineSetExitStatusFunction_Set() error {
 // SetExitStatus is a representation of the C type g_application_command_line_set_exit_status.
 func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(exitStatus)
 
 	err := applicationCommandLineSetExitStatusFunction_Set()
@@ -1238,22 +1263,34 @@ func bufferedInputStreamObject_Set() error {
 }
 
 type BufferedInputStream struct {
-	FilterInputStream
+	native uintptr
+}
+
+func BufferedInputStreamNewFromNative(native uintptr) *BufferedInputStream {
+	return &BufferedInputStream{native: native}
+}
+func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {
+	return FilterInputStreamNewFromNative(recv.native)
+}
+func (recv *BufferedInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *BufferedInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedInputStream) FieldParentInstance() *FilterInputStream {
-	argValue := gi.ObjectFieldGet(bufferedInputStreamObject, recv.Native, "parent_instance")
-	value := &FilterInputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(bufferedInputStreamObject, recv.native, "parent_instance")
+	value := FilterInputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *BufferedInputStream) SetFieldParentInstance(value *FilterInputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(bufferedInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(bufferedInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var bufferedInputStreamNewFunction *gi.Function
@@ -1274,7 +1311,7 @@ func bufferedInputStreamNewFunction_Set() error {
 // BufferedInputStreamNew is a representation of the C type g_buffered_input_stream_new.
 func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 
 	var ret gi.Argument
 
@@ -1283,8 +1320,7 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 		ret = bufferedInputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BufferedInputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferedInputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1307,7 +1343,7 @@ func bufferedInputStreamNewSizedFunction_Set() error {
 // BufferedInputStreamNewSized is a representation of the C type g_buffered_input_stream_new_sized.
 func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 	inArgs[1].SetUint64(size)
 
 	var ret gi.Argument
@@ -1317,8 +1353,7 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 		ret = bufferedInputStreamNewSizedFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BufferedInputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferedInputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1341,9 +1376,9 @@ func bufferedInputStreamFillFunction_Set() error {
 // Fill is a representation of the C type g_buffered_input_stream_fill.
 func (recv *BufferedInputStream) Fill(count int32, cancellable *Cancellable) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(count)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -1379,7 +1414,7 @@ func bufferedInputStreamGetAvailableFunction_Set() error {
 // GetAvailable is a representation of the C type g_buffered_input_stream_get_available.
 func (recv *BufferedInputStream) GetAvailable() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1411,7 +1446,7 @@ func bufferedInputStreamGetBufferSizeFunction_Set() error {
 // GetBufferSize is a representation of the C type g_buffered_input_stream_get_buffer_size.
 func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1445,7 +1480,7 @@ func bufferedInputStreamPeekBufferFunction_Set() error {
 // PeekBuffer is a representation of the C type g_buffered_input_stream_peek_buffer.
 func (recv *BufferedInputStream) PeekBuffer() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1477,8 +1512,8 @@ func bufferedInputStreamReadByteFunction_Set() error {
 // ReadByte is a representation of the C type g_buffered_input_stream_read_byte.
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -1510,7 +1545,7 @@ func bufferedInputStreamSetBufferSizeFunction_Set() error {
 // SetBufferSize is a representation of the C type g_buffered_input_stream_set_buffer_size.
 func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(size)
 
 	err := bufferedInputStreamSetBufferSizeFunction_Set()
@@ -1533,37 +1568,48 @@ func bufferedOutputStreamObject_Set() error {
 }
 
 type BufferedOutputStream struct {
-	FilterOutputStream
+	native uintptr
+}
+
+func BufferedOutputStreamNewFromNative(native uintptr) *BufferedOutputStream {
+	return &BufferedOutputStream{native: native}
+}
+func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromNative(recv.native)
+}
+func (recv *BufferedOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *BufferedOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native, "parent_instance")
-	value := &FilterOutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.native, "parent_instance")
+	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *BufferedOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
-	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native, "priv")
-	value := &BufferedOutputStreamPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.native, "priv")
+	value := BufferedOutputStreamPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *BufferedOutputStream) SetFieldPriv(value *BufferedOutputStreamPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.native, "priv", argValue)
 }
 
 var bufferedOutputStreamNewFunction *gi.Function
@@ -1584,7 +1630,7 @@ func bufferedOutputStreamNewFunction_Set() error {
 // BufferedOutputStreamNew is a representation of the C type g_buffered_output_stream_new.
 func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 
 	var ret gi.Argument
 
@@ -1593,8 +1639,7 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 		ret = bufferedOutputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BufferedOutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferedOutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1617,7 +1662,7 @@ func bufferedOutputStreamNewSizedFunction_Set() error {
 // BufferedOutputStreamNewSized is a representation of the C type g_buffered_output_stream_new_sized.
 func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 	inArgs[1].SetUint64(size)
 
 	var ret gi.Argument
@@ -1627,8 +1672,7 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 		ret = bufferedOutputStreamNewSizedFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &BufferedOutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := BufferedOutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1651,7 +1695,7 @@ func bufferedOutputStreamGetAutoGrowFunction_Set() error {
 // GetAutoGrow is a representation of the C type g_buffered_output_stream_get_auto_grow.
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1683,7 +1727,7 @@ func bufferedOutputStreamGetBufferSizeFunction_Set() error {
 // GetBufferSize is a representation of the C type g_buffered_output_stream_get_buffer_size.
 func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1715,7 +1759,7 @@ func bufferedOutputStreamSetAutoGrowFunction_Set() error {
 // SetAutoGrow is a representation of the C type g_buffered_output_stream_set_auto_grow.
 func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(autoGrow)
 
 	err := bufferedOutputStreamSetAutoGrowFunction_Set()
@@ -1744,7 +1788,7 @@ func bufferedOutputStreamSetBufferSizeFunction_Set() error {
 // SetBufferSize is a representation of the C type g_buffered_output_stream_set_buffer_size.
 func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(size)
 
 	err := bufferedOutputStreamSetBufferSizeFunction_Set()
@@ -1767,7 +1811,14 @@ func bytesIconObject_Set() error {
 }
 
 type BytesIcon struct {
-	gobject.Object
+	native uintptr
+}
+
+func BytesIconNewFromNative(native uintptr) *BytesIcon {
+	return &BytesIcon{native: native}
+}
+func (recv *BytesIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_bytes_icon_new' : parameter 'bytes' of type 'GLib.Bytes' not supported
@@ -1786,7 +1837,14 @@ func cancellableObject_Set() error {
 }
 
 type Cancellable struct {
-	gobject.Object
+	native uintptr
+}
+
+func CancellableNewFromNative(native uintptr) *Cancellable {
+	return &Cancellable{native: native}
+}
+func (recv *Cancellable) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1818,8 +1876,7 @@ func CancellableNew() *Cancellable {
 		ret = cancellableNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Cancellable{}
-	retGo.Native = ret.Pointer()
+	retGo := CancellableNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1842,7 +1899,7 @@ func cancellableCancelFunction_Set() error {
 // Cancel is a representation of the C type g_cancellable_cancel.
 func (recv *Cancellable) Cancel() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := cancellableCancelFunction_Set()
 	if err == nil {
@@ -1872,7 +1929,7 @@ func cancellableDisconnectFunction_Set() error {
 // Disconnect is a representation of the C type g_cancellable_disconnect.
 func (recv *Cancellable) Disconnect(handlerId uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(handlerId)
 
 	err := cancellableDisconnectFunction_Set()
@@ -1901,7 +1958,7 @@ func cancellableGetFdFunction_Set() error {
 // GetFd is a representation of the C type g_cancellable_get_fd.
 func (recv *Cancellable) GetFd() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1933,7 +1990,7 @@ func cancellableIsCancelledFunction_Set() error {
 // IsCancelled is a representation of the C type g_cancellable_is_cancelled.
 func (recv *Cancellable) IsCancelled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1967,7 +2024,7 @@ func cancellablePopCurrentFunction_Set() error {
 // PopCurrent is a representation of the C type g_cancellable_pop_current.
 func (recv *Cancellable) PopCurrent() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := cancellablePopCurrentFunction_Set()
 	if err == nil {
@@ -1995,7 +2052,7 @@ func cancellablePushCurrentFunction_Set() error {
 // PushCurrent is a representation of the C type g_cancellable_push_current.
 func (recv *Cancellable) PushCurrent() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := cancellablePushCurrentFunction_Set()
 	if err == nil {
@@ -2023,7 +2080,7 @@ func cancellableReleaseFdFunction_Set() error {
 // ReleaseFd is a representation of the C type g_cancellable_release_fd.
 func (recv *Cancellable) ReleaseFd() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := cancellableReleaseFdFunction_Set()
 	if err == nil {
@@ -2051,7 +2108,7 @@ func cancellableResetFunction_Set() error {
 // Reset is a representation of the C type g_cancellable_reset.
 func (recv *Cancellable) Reset() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := cancellableResetFunction_Set()
 	if err == nil {
@@ -2079,7 +2136,7 @@ func cancellableSetErrorIfCancelledFunction_Set() error {
 // SetErrorIfCancelled is a representation of the C type g_cancellable_set_error_if_cancelled.
 func (recv *Cancellable) SetErrorIfCancelled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2107,7 +2164,14 @@ func charsetConverterObject_Set() error {
 }
 
 type CharsetConverter struct {
-	gobject.Object
+	native uintptr
+}
+
+func CharsetConverterNewFromNative(native uintptr) *CharsetConverter {
+	return &CharsetConverter{native: native}
+}
+func (recv *CharsetConverter) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var charsetConverterNewFunction *gi.Function
@@ -2138,8 +2202,7 @@ func CharsetConverterNew(toCharset string, fromCharset string) *CharsetConverter
 		ret = charsetConverterNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &CharsetConverter{}
-	retGo.Native = ret.Pointer()
+	retGo := CharsetConverterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2162,7 +2225,7 @@ func charsetConverterGetNumFallbacksFunction_Set() error {
 // GetNumFallbacks is a representation of the C type g_charset_converter_get_num_fallbacks.
 func (recv *CharsetConverter) GetNumFallbacks() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2194,7 +2257,7 @@ func charsetConverterGetUseFallbackFunction_Set() error {
 // GetUseFallback is a representation of the C type g_charset_converter_get_use_fallback.
 func (recv *CharsetConverter) GetUseFallback() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2226,7 +2289,7 @@ func charsetConverterSetUseFallbackFunction_Set() error {
 // SetUseFallback is a representation of the C type g_charset_converter_set_use_fallback.
 func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(useFallback)
 
 	err := charsetConverterSetUseFallbackFunction_Set()
@@ -2249,22 +2312,34 @@ func converterInputStreamObject_Set() error {
 }
 
 type ConverterInputStream struct {
-	FilterInputStream
+	native uintptr
+}
+
+func ConverterInputStreamNewFromNative(native uintptr) *ConverterInputStream {
+	return &ConverterInputStream{native: native}
+}
+func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {
+	return FilterInputStreamNewFromNative(recv.native)
+}
+func (recv *ConverterInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *ConverterInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterInputStream) FieldParentInstance() *FilterInputStream {
-	argValue := gi.ObjectFieldGet(converterInputStreamObject, recv.Native, "parent_instance")
-	value := &FilterInputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(converterInputStreamObject, recv.native, "parent_instance")
+	value := FilterInputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ConverterInputStream) SetFieldParentInstance(value *FilterInputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(converterInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(converterInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_converter_input_stream_new' : parameter 'converter' of type 'Converter' not supported
@@ -2283,22 +2358,34 @@ func converterOutputStreamObject_Set() error {
 }
 
 type ConverterOutputStream struct {
-	FilterOutputStream
+	native uintptr
+}
+
+func ConverterOutputStreamNewFromNative(native uintptr) *ConverterOutputStream {
+	return &ConverterOutputStream{native: native}
+}
+func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromNative(recv.native)
+}
+func (recv *ConverterOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *ConverterOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.ObjectFieldGet(converterOutputStreamObject, recv.Native, "parent_instance")
-	value := &FilterOutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(converterOutputStreamObject, recv.native, "parent_instance")
+	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ConverterOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(converterOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(converterOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_converter_output_stream_new' : parameter 'converter' of type 'Converter' not supported
@@ -2317,7 +2404,14 @@ func credentialsObject_Set() error {
 }
 
 type Credentials struct {
-	gobject.Object
+	native uintptr
+}
+
+func CredentialsNewFromNative(native uintptr) *Credentials {
+	return &Credentials{native: native}
+}
+func (recv *Credentials) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var credentialsNewFunction *gi.Function
@@ -2345,8 +2439,7 @@ func CredentialsNew() *Credentials {
 		ret = credentialsNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Credentials{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2371,7 +2464,7 @@ func credentialsGetUnixPidFunction_Set() error {
 // GetUnixPid is a representation of the C type g_credentials_get_unix_pid.
 func (recv *Credentials) GetUnixPid() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2403,7 +2496,7 @@ func credentialsGetUnixUserFunction_Set() error {
 // GetUnixUser is a representation of the C type g_credentials_get_unix_user.
 func (recv *Credentials) GetUnixUser() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2435,8 +2528,8 @@ func credentialsIsSameUserFunction_Set() error {
 // IsSameUser is a representation of the C type g_credentials_is_same_user.
 func (recv *Credentials) IsSameUser(otherCredentials *Credentials) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(otherCredentials.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(otherCredentials.native)
 
 	var ret gi.Argument
 
@@ -2470,7 +2563,7 @@ func credentialsSetUnixUserFunction_Set() error {
 // SetUnixUser is a representation of the C type g_credentials_set_unix_user.
 func (recv *Credentials) SetUnixUser(uid uint32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(uid)
 
 	var ret gi.Argument
@@ -2503,7 +2596,7 @@ func credentialsToStringFunction_Set() error {
 // ToString is a representation of the C type g_credentials_to_string.
 func (recv *Credentials) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2529,7 +2622,14 @@ func dBusActionGroupObject_Set() error {
 }
 
 type DBusActionGroup struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusActionGroupNewFromNative(native uintptr) *DBusActionGroup {
+	return &DBusActionGroup{native: native}
+}
+func (recv *DBusActionGroup) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusAuthObserverObject *gi.Object
@@ -2544,7 +2644,14 @@ func dBusAuthObserverObject_Set() error {
 }
 
 type DBusAuthObserver struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusAuthObserverNewFromNative(native uintptr) *DBusAuthObserver {
+	return &DBusAuthObserver{native: native}
+}
+func (recv *DBusAuthObserver) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusAuthObserverNewFunction *gi.Function
@@ -2572,8 +2679,7 @@ func DBusAuthObserverNew() *DBusAuthObserver {
 		ret = dBusAuthObserverNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &DBusAuthObserver{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusAuthObserverNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2596,7 +2702,7 @@ func dBusAuthObserverAllowMechanismFunction_Set() error {
 // AllowMechanism is a representation of the C type g_dbus_auth_observer_allow_mechanism.
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(mechanism)
 
 	var ret gi.Argument
@@ -2629,9 +2735,9 @@ func dBusAuthObserverAuthorizeAuthenticatedPeerFunction_Set() error {
 // AuthorizeAuthenticatedPeer is a representation of the C type g_dbus_auth_observer_authorize_authenticated_peer.
 func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, credentials *Credentials) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(stream.Native)
-	inArgs[2].SetPointer(credentials.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(stream.native)
+	inArgs[2].SetPointer(credentials.native)
 
 	var ret gi.Argument
 
@@ -2657,7 +2763,14 @@ func dBusConnectionObject_Set() error {
 }
 
 type DBusConnection struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusConnectionNewFromNative(native uintptr) *DBusConnection {
+	return &DBusConnection{native: native}
+}
+func (recv *DBusConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_dbus_connection_new_finish' : parameter 'res' of type 'AsyncResult' not supported
@@ -2704,8 +2817,8 @@ func dBusConnectionCloseSyncFunction_Set() error {
 // CloseSync is a representation of the C type g_dbus_connection_close_sync.
 func (recv *DBusConnection) CloseSync(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -2741,9 +2854,9 @@ func dBusConnectionExportMenuModelFunction_Set() error {
 // ExportMenuModel is a representation of the C type g_dbus_connection_export_menu_model.
 func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) uint32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(objectPath)
-	inArgs[2].SetPointer(menu.Native)
+	inArgs[2].SetPointer(menu.native)
 
 	var ret gi.Argument
 
@@ -2779,8 +2892,8 @@ func dBusConnectionFlushSyncFunction_Set() error {
 // FlushSync is a representation of the C type g_dbus_connection_flush_sync.
 func (recv *DBusConnection) FlushSync(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -2814,7 +2927,7 @@ func dBusConnectionGetExitOnCloseFunction_Set() error {
 // GetExitOnClose is a representation of the C type g_dbus_connection_get_exit_on_close.
 func (recv *DBusConnection) GetExitOnClose() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2848,7 +2961,7 @@ func dBusConnectionGetGuidFunction_Set() error {
 // GetGuid is a representation of the C type g_dbus_connection_get_guid.
 func (recv *DBusConnection) GetGuid() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2880,7 +2993,7 @@ func dBusConnectionGetLastSerialFunction_Set() error {
 // GetLastSerial is a representation of the C type g_dbus_connection_get_last_serial.
 func (recv *DBusConnection) GetLastSerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2912,7 +3025,7 @@ func dBusConnectionGetPeerCredentialsFunction_Set() error {
 // GetPeerCredentials is a representation of the C type g_dbus_connection_get_peer_credentials.
 func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2921,8 +3034,7 @@ func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 		ret = dBusConnectionGetPeerCredentialsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credentials{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2945,7 +3057,7 @@ func dBusConnectionGetStreamFunction_Set() error {
 // GetStream is a representation of the C type g_dbus_connection_get_stream.
 func (recv *DBusConnection) GetStream() *IOStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2954,8 +3066,7 @@ func (recv *DBusConnection) GetStream() *IOStream {
 		ret = dBusConnectionGetStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOStream{}
-	retGo.Native = ret.Pointer()
+	retGo := IOStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2978,7 +3089,7 @@ func dBusConnectionGetUniqueNameFunction_Set() error {
 // GetUniqueName is a representation of the C type g_dbus_connection_get_unique_name.
 func (recv *DBusConnection) GetUniqueName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3010,7 +3121,7 @@ func dBusConnectionIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_dbus_connection_is_closed.
 func (recv *DBusConnection) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3048,7 +3159,7 @@ func dBusConnectionRemoveFilterFunction_Set() error {
 // RemoveFilter is a representation of the C type g_dbus_connection_remove_filter.
 func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(filterId)
 
 	err := dBusConnectionRemoveFilterFunction_Set()
@@ -3085,7 +3196,7 @@ func dBusConnectionSetExitOnCloseFunction_Set() error {
 // SetExitOnClose is a representation of the C type g_dbus_connection_set_exit_on_close.
 func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(exitOnClose)
 
 	err := dBusConnectionSetExitOnCloseFunction_Set()
@@ -3116,7 +3227,7 @@ func dBusConnectionSignalUnsubscribeFunction_Set() error {
 // SignalUnsubscribe is a representation of the C type g_dbus_connection_signal_unsubscribe.
 func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(subscriptionId)
 
 	err := dBusConnectionSignalUnsubscribeFunction_Set()
@@ -3145,7 +3256,7 @@ func dBusConnectionStartMessageProcessingFunction_Set() error {
 // StartMessageProcessing is a representation of the C type g_dbus_connection_start_message_processing.
 func (recv *DBusConnection) StartMessageProcessing() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusConnectionStartMessageProcessingFunction_Set()
 	if err == nil {
@@ -3173,7 +3284,7 @@ func dBusConnectionUnexportActionGroupFunction_Set() error {
 // UnexportActionGroup is a representation of the C type g_dbus_connection_unexport_action_group.
 func (recv *DBusConnection) UnexportActionGroup(exportId uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(exportId)
 
 	err := dBusConnectionUnexportActionGroupFunction_Set()
@@ -3202,7 +3313,7 @@ func dBusConnectionUnexportMenuModelFunction_Set() error {
 // UnexportMenuModel is a representation of the C type g_dbus_connection_unexport_menu_model.
 func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(exportId)
 
 	err := dBusConnectionUnexportMenuModelFunction_Set()
@@ -3231,7 +3342,7 @@ func dBusConnectionUnregisterObjectFunction_Set() error {
 // UnregisterObject is a representation of the C type g_dbus_connection_unregister_object.
 func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(registrationId)
 
 	var ret gi.Argument
@@ -3264,7 +3375,7 @@ func dBusConnectionUnregisterSubtreeFunction_Set() error {
 // UnregisterSubtree is a representation of the C type g_dbus_connection_unregister_subtree.
 func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(registrationId)
 
 	var ret gi.Argument
@@ -3291,7 +3402,14 @@ func dBusInterfaceSkeletonObject_Set() error {
 }
 
 type DBusInterfaceSkeleton struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusInterfaceSkeletonNewFromNative(native uintptr) *DBusInterfaceSkeleton {
+	return &DBusInterfaceSkeleton{native: native}
+}
+func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusInterfaceSkeletonExportFunction *gi.Function
@@ -3312,8 +3430,8 @@ func dBusInterfaceSkeletonExportFunction_Set() error {
 // Export is a representation of the C type g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 	inArgs[2].SetString(objectPath)
 
 	var ret gi.Argument
@@ -3346,7 +3464,7 @@ func dBusInterfaceSkeletonFlushFunction_Set() error {
 // Flush is a representation of the C type g_dbus_interface_skeleton_flush.
 func (recv *DBusInterfaceSkeleton) Flush() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusInterfaceSkeletonFlushFunction_Set()
 	if err == nil {
@@ -3374,7 +3492,7 @@ func dBusInterfaceSkeletonGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_interface_skeleton_get_connection.
 func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3383,8 +3501,7 @@ func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
 		ret = dBusInterfaceSkeletonGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3411,7 +3528,7 @@ func dBusInterfaceSkeletonGetInfoFunction_Set() error {
 // GetInfo is a representation of the C type g_dbus_interface_skeleton_get_info.
 func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3420,8 +3537,7 @@ func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
 		ret = dBusInterfaceSkeletonGetInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusInterfaceInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusInterfaceInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3444,7 +3560,7 @@ func dBusInterfaceSkeletonGetObjectPathFunction_Set() error {
 // GetObjectPath is a representation of the C type g_dbus_interface_skeleton_get_object_path.
 func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3478,7 +3594,7 @@ func dBusInterfaceSkeletonGetVtableFunction_Set() error {
 // GetVtable is a representation of the C type g_dbus_interface_skeleton_get_vtable.
 func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3487,8 +3603,7 @@ func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 		ret = dBusInterfaceSkeletonGetVtableFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusInterfaceVTable{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusInterfaceVTableNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3511,8 +3626,8 @@ func dBusInterfaceSkeletonHasConnectionFunction_Set() error {
 // HasConnection is a representation of the C type g_dbus_interface_skeleton_has_connection.
 func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 
 	var ret gi.Argument
 
@@ -3546,7 +3661,7 @@ func dBusInterfaceSkeletonUnexportFunction_Set() error {
 // Unexport is a representation of the C type g_dbus_interface_skeleton_unexport.
 func (recv *DBusInterfaceSkeleton) Unexport() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusInterfaceSkeletonUnexportFunction_Set()
 	if err == nil {
@@ -3574,8 +3689,8 @@ func dBusInterfaceSkeletonUnexportFromConnectionFunction_Set() error {
 // UnexportFromConnection is a representation of the C type g_dbus_interface_skeleton_unexport_from_connection.
 func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnection) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 
 	err := dBusInterfaceSkeletonUnexportFromConnectionFunction_Set()
 	if err == nil {
@@ -3597,7 +3712,17 @@ func dBusMenuModelObject_Set() error {
 }
 
 type DBusMenuModel struct {
-	MenuModel
+	native uintptr
+}
+
+func DBusMenuModelNewFromNative(native uintptr) *DBusMenuModel {
+	return &DBusMenuModel{native: native}
+}
+func (recv *DBusMenuModel) MenuModel() *MenuModel {
+	return MenuModelNewFromNative(recv.native)
+}
+func (recv *DBusMenuModel) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusMessageObject *gi.Object
@@ -3612,7 +3737,14 @@ func dBusMessageObject_Set() error {
 }
 
 type DBusMessage struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusMessageNewFromNative(native uintptr) *DBusMessage {
+	return &DBusMessage{native: native}
+}
+func (recv *DBusMessage) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusMessageNewFunction *gi.Function
@@ -3640,8 +3772,7 @@ func DBusMessageNew() *DBusMessage {
 		ret = dBusMessageNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3678,8 +3809,7 @@ func DBusMessageNewMethodCall(name string, path string, interface_ string, metho
 		ret = dBusMessageNewMethodCallFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3713,8 +3843,7 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 		ret = dBusMessageNewSignalFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3737,7 +3866,7 @@ func dBusMessageCopyFunction_Set() error {
 // Copy is a representation of the C type g_dbus_message_copy.
 func (recv *DBusMessage) Copy() *DBusMessage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3746,8 +3875,7 @@ func (recv *DBusMessage) Copy() *DBusMessage {
 		ret = dBusMessageCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3770,7 +3898,7 @@ func dBusMessageGetArg0Function_Set() error {
 // GetArg0 is a representation of the C type g_dbus_message_get_arg0.
 func (recv *DBusMessage) GetArg0() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3804,7 +3932,7 @@ func dBusMessageGetByteOrderFunction_Set() error {
 // GetByteOrder is a representation of the C type g_dbus_message_get_byte_order.
 func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3836,7 +3964,7 @@ func dBusMessageGetDestinationFunction_Set() error {
 // GetDestination is a representation of the C type g_dbus_message_get_destination.
 func (recv *DBusMessage) GetDestination() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3868,7 +3996,7 @@ func dBusMessageGetErrorNameFunction_Set() error {
 // GetErrorName is a representation of the C type g_dbus_message_get_error_name.
 func (recv *DBusMessage) GetErrorName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3904,7 +4032,7 @@ func dBusMessageGetHeaderFieldsFunction_Set() error {
 // GetHeaderFields is a representation of the C type g_dbus_message_get_header_fields.
 func (recv *DBusMessage) GetHeaderFields() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusMessageGetHeaderFieldsFunction_Set()
 	if err == nil {
@@ -3932,7 +4060,7 @@ func dBusMessageGetInterfaceFunction_Set() error {
 // GetInterface is a representation of the C type g_dbus_message_get_interface.
 func (recv *DBusMessage) GetInterface() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3964,7 +4092,7 @@ func dBusMessageGetLockedFunction_Set() error {
 // GetLocked is a representation of the C type g_dbus_message_get_locked.
 func (recv *DBusMessage) GetLocked() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3996,7 +4124,7 @@ func dBusMessageGetMemberFunction_Set() error {
 // GetMember is a representation of the C type g_dbus_message_get_member.
 func (recv *DBusMessage) GetMember() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4028,7 +4156,7 @@ func dBusMessageGetMessageTypeFunction_Set() error {
 // GetMessageType is a representation of the C type g_dbus_message_get_message_type.
 func (recv *DBusMessage) GetMessageType() DBusMessageType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4060,7 +4188,7 @@ func dBusMessageGetNumUnixFdsFunction_Set() error {
 // GetNumUnixFds is a representation of the C type g_dbus_message_get_num_unix_fds.
 func (recv *DBusMessage) GetNumUnixFds() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4092,7 +4220,7 @@ func dBusMessageGetPathFunction_Set() error {
 // GetPath is a representation of the C type g_dbus_message_get_path.
 func (recv *DBusMessage) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4124,7 +4252,7 @@ func dBusMessageGetReplySerialFunction_Set() error {
 // GetReplySerial is a representation of the C type g_dbus_message_get_reply_serial.
 func (recv *DBusMessage) GetReplySerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4156,7 +4284,7 @@ func dBusMessageGetSenderFunction_Set() error {
 // GetSender is a representation of the C type g_dbus_message_get_sender.
 func (recv *DBusMessage) GetSender() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4188,7 +4316,7 @@ func dBusMessageGetSerialFunction_Set() error {
 // GetSerial is a representation of the C type g_dbus_message_get_serial.
 func (recv *DBusMessage) GetSerial() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4220,7 +4348,7 @@ func dBusMessageGetSignatureFunction_Set() error {
 // GetSignature is a representation of the C type g_dbus_message_get_signature.
 func (recv *DBusMessage) GetSignature() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4252,7 +4380,7 @@ func dBusMessageGetUnixFdListFunction_Set() error {
 // GetUnixFdList is a representation of the C type g_dbus_message_get_unix_fd_list.
 func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4261,8 +4389,7 @@ func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 		ret = dBusMessageGetUnixFdListFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixFDList{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixFDListNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4285,7 +4412,7 @@ func dBusMessageLockFunction_Set() error {
 // Lock is a representation of the C type g_dbus_message_lock.
 func (recv *DBusMessage) Lock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusMessageLockFunction_Set()
 	if err == nil {
@@ -4315,7 +4442,7 @@ func dBusMessageNewMethodErrorLiteralFunction_Set() error {
 // NewMethodErrorLiteral is a representation of the C type g_dbus_message_new_method_error_literal.
 func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage string) *DBusMessage {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(errorName)
 	inArgs[2].SetString(errorMessage)
 
@@ -4326,8 +4453,7 @@ func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage st
 		ret = dBusMessageNewMethodErrorLiteralFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4352,7 +4478,7 @@ func dBusMessageNewMethodReplyFunction_Set() error {
 // NewMethodReply is a representation of the C type g_dbus_message_new_method_reply.
 func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4361,8 +4487,7 @@ func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 		ret = dBusMessageNewMethodReplyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4385,7 +4510,7 @@ func dBusMessagePrintFunction_Set() error {
 // Print is a representation of the C type g_dbus_message_print.
 func (recv *DBusMessage) Print(indent uint32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(indent)
 
 	var ret gi.Argument
@@ -4420,7 +4545,7 @@ func dBusMessageSetByteOrderFunction_Set() error {
 // SetByteOrder is a representation of the C type g_dbus_message_set_byte_order.
 func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(byteOrder))
 
 	err := dBusMessageSetByteOrderFunction_Set()
@@ -4449,7 +4574,7 @@ func dBusMessageSetDestinationFunction_Set() error {
 // SetDestination is a representation of the C type g_dbus_message_set_destination.
 func (recv *DBusMessage) SetDestination(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetDestinationFunction_Set()
@@ -4478,7 +4603,7 @@ func dBusMessageSetErrorNameFunction_Set() error {
 // SetErrorName is a representation of the C type g_dbus_message_set_error_name.
 func (recv *DBusMessage) SetErrorName(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetErrorNameFunction_Set()
@@ -4511,7 +4636,7 @@ func dBusMessageSetInterfaceFunction_Set() error {
 // SetInterface is a representation of the C type g_dbus_message_set_interface.
 func (recv *DBusMessage) SetInterface(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetInterfaceFunction_Set()
@@ -4540,7 +4665,7 @@ func dBusMessageSetMemberFunction_Set() error {
 // SetMember is a representation of the C type g_dbus_message_set_member.
 func (recv *DBusMessage) SetMember(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetMemberFunction_Set()
@@ -4569,7 +4694,7 @@ func dBusMessageSetMessageTypeFunction_Set() error {
 // SetMessageType is a representation of the C type g_dbus_message_set_message_type.
 func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 
 	err := dBusMessageSetMessageTypeFunction_Set()
@@ -4598,7 +4723,7 @@ func dBusMessageSetNumUnixFdsFunction_Set() error {
 // SetNumUnixFds is a representation of the C type g_dbus_message_set_num_unix_fds.
 func (recv *DBusMessage) SetNumUnixFds(value uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(value)
 
 	err := dBusMessageSetNumUnixFdsFunction_Set()
@@ -4627,7 +4752,7 @@ func dBusMessageSetPathFunction_Set() error {
 // SetPath is a representation of the C type g_dbus_message_set_path.
 func (recv *DBusMessage) SetPath(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetPathFunction_Set()
@@ -4656,7 +4781,7 @@ func dBusMessageSetReplySerialFunction_Set() error {
 // SetReplySerial is a representation of the C type g_dbus_message_set_reply_serial.
 func (recv *DBusMessage) SetReplySerial(value uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(value)
 
 	err := dBusMessageSetReplySerialFunction_Set()
@@ -4685,7 +4810,7 @@ func dBusMessageSetSenderFunction_Set() error {
 // SetSender is a representation of the C type g_dbus_message_set_sender.
 func (recv *DBusMessage) SetSender(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetSenderFunction_Set()
@@ -4714,7 +4839,7 @@ func dBusMessageSetSerialFunction_Set() error {
 // SetSerial is a representation of the C type g_dbus_message_set_serial.
 func (recv *DBusMessage) SetSerial(serial uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(serial)
 
 	err := dBusMessageSetSerialFunction_Set()
@@ -4743,7 +4868,7 @@ func dBusMessageSetSignatureFunction_Set() error {
 // SetSignature is a representation of the C type g_dbus_message_set_signature.
 func (recv *DBusMessage) SetSignature(value string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
 
 	err := dBusMessageSetSignatureFunction_Set()
@@ -4772,8 +4897,8 @@ func dBusMessageSetUnixFdListFunction_Set() error {
 // SetUnixFdList is a representation of the C type g_dbus_message_set_unix_fd_list.
 func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fdList.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fdList.native)
 
 	err := dBusMessageSetUnixFdListFunction_Set()
 	if err == nil {
@@ -4803,7 +4928,7 @@ func dBusMessageToGerrorFunction_Set() error {
 // ToGerror is a representation of the C type g_dbus_message_to_gerror.
 func (recv *DBusMessage) ToGerror() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4829,7 +4954,14 @@ func dBusMethodInvocationObject_Set() error {
 }
 
 type DBusMethodInvocation struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusMethodInvocationNewFromNative(native uintptr) *DBusMethodInvocation {
+	return &DBusMethodInvocation{native: native}
+}
+func (recv *DBusMethodInvocation) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusMethodInvocationGetConnectionFunction *gi.Function
@@ -4850,7 +4982,7 @@ func dBusMethodInvocationGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_method_invocation_get_connection.
 func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4859,8 +4991,7 @@ func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 		ret = dBusMethodInvocationGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4883,7 +5014,7 @@ func dBusMethodInvocationGetInterfaceNameFunction_Set() error {
 // GetInterfaceName is a representation of the C type g_dbus_method_invocation_get_interface_name.
 func (recv *DBusMethodInvocation) GetInterfaceName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4915,7 +5046,7 @@ func dBusMethodInvocationGetMessageFunction_Set() error {
 // GetMessage is a representation of the C type g_dbus_method_invocation_get_message.
 func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4924,8 +5055,7 @@ func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 		ret = dBusMethodInvocationGetMessageFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4948,7 +5078,7 @@ func dBusMethodInvocationGetMethodInfoFunction_Set() error {
 // GetMethodInfo is a representation of the C type g_dbus_method_invocation_get_method_info.
 func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4957,8 +5087,7 @@ func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 		ret = dBusMethodInvocationGetMethodInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusMethodInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusMethodInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4981,7 +5110,7 @@ func dBusMethodInvocationGetMethodNameFunction_Set() error {
 // GetMethodName is a representation of the C type g_dbus_method_invocation_get_method_name.
 func (recv *DBusMethodInvocation) GetMethodName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5013,7 +5142,7 @@ func dBusMethodInvocationGetObjectPathFunction_Set() error {
 // GetObjectPath is a representation of the C type g_dbus_method_invocation_get_object_path.
 func (recv *DBusMethodInvocation) GetObjectPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5047,7 +5176,7 @@ func dBusMethodInvocationGetPropertyInfoFunction_Set() error {
 // GetPropertyInfo is a representation of the C type g_dbus_method_invocation_get_property_info.
 func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5056,8 +5185,7 @@ func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
 		ret = dBusMethodInvocationGetPropertyInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusPropertyInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusPropertyInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5080,7 +5208,7 @@ func dBusMethodInvocationGetSenderFunction_Set() error {
 // GetSender is a representation of the C type g_dbus_method_invocation_get_sender.
 func (recv *DBusMethodInvocation) GetSender() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5114,7 +5242,7 @@ func dBusMethodInvocationReturnDbusErrorFunction_Set() error {
 // ReturnDbusError is a representation of the C type g_dbus_method_invocation_return_dbus_error.
 func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(errorName)
 	inArgs[2].SetString(errorMessage)
 
@@ -5146,7 +5274,7 @@ func dBusMethodInvocationReturnErrorLiteralFunction_Set() error {
 // ReturnErrorLiteral is a representation of the C type g_dbus_method_invocation_return_error_literal.
 func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(uint32(domain))
 	inArgs[2].SetInt32(code)
 	inArgs[3].SetString(message)
@@ -5181,7 +5309,14 @@ func dBusObjectManagerClientObject_Set() error {
 }
 
 type DBusObjectManagerClient struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusObjectManagerClientNewFromNative(native uintptr) *DBusObjectManagerClient {
+	return &DBusObjectManagerClient{native: native}
+}
+func (recv *DBusObjectManagerClient) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_dbus_object_manager_client_new_finish' : parameter 'res' of type 'AsyncResult' not supported
@@ -5210,7 +5345,7 @@ func dBusObjectManagerClientGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_object_manager_client_get_connection.
 func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5219,8 +5354,7 @@ func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 		ret = dBusObjectManagerClientGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5245,7 +5379,7 @@ func dBusObjectManagerClientGetNameFunction_Set() error {
 // GetName is a representation of the C type g_dbus_object_manager_client_get_name.
 func (recv *DBusObjectManagerClient) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5277,7 +5411,7 @@ func dBusObjectManagerClientGetNameOwnerFunction_Set() error {
 // GetNameOwner is a representation of the C type g_dbus_object_manager_client_get_name_owner.
 func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5303,7 +5437,14 @@ func dBusObjectManagerServerObject_Set() error {
 }
 
 type DBusObjectManagerServer struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusObjectManagerServerNewFromNative(native uintptr) *DBusObjectManagerServer {
+	return &DBusObjectManagerServer{native: native}
+}
+func (recv *DBusObjectManagerServer) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusObjectManagerServerNewFunction *gi.Function
@@ -5333,8 +5474,7 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 		ret = dBusObjectManagerServerNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusObjectManagerServer{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusObjectManagerServerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5357,8 +5497,8 @@ func dBusObjectManagerServerExportFunction_Set() error {
 // Export is a representation of the C type g_dbus_object_manager_server_export.
 func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(object.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(object.native)
 
 	err := dBusObjectManagerServerExportFunction_Set()
 	if err == nil {
@@ -5386,8 +5526,8 @@ func dBusObjectManagerServerExportUniquelyFunction_Set() error {
 // ExportUniquely is a representation of the C type g_dbus_object_manager_server_export_uniquely.
 func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(object.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(object.native)
 
 	err := dBusObjectManagerServerExportUniquelyFunction_Set()
 	if err == nil {
@@ -5415,7 +5555,7 @@ func dBusObjectManagerServerGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_object_manager_server_get_connection.
 func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5424,8 +5564,7 @@ func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 		ret = dBusObjectManagerServerGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5448,8 +5587,8 @@ func dBusObjectManagerServerIsExportedFunction_Set() error {
 // IsExported is a representation of the C type g_dbus_object_manager_server_is_exported.
 func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(object.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(object.native)
 
 	var ret gi.Argument
 
@@ -5481,8 +5620,8 @@ func dBusObjectManagerServerSetConnectionFunction_Set() error {
 // SetConnection is a representation of the C type g_dbus_object_manager_server_set_connection.
 func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 
 	err := dBusObjectManagerServerSetConnectionFunction_Set()
 	if err == nil {
@@ -5510,7 +5649,7 @@ func dBusObjectManagerServerUnexportFunction_Set() error {
 // Unexport is a representation of the C type g_dbus_object_manager_server_unexport.
 func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(objectPath)
 
 	var ret gi.Argument
@@ -5537,7 +5676,14 @@ func dBusObjectProxyObject_Set() error {
 }
 
 type DBusObjectProxy struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusObjectProxyNewFromNative(native uintptr) *DBusObjectProxy {
+	return &DBusObjectProxy{native: native}
+}
+func (recv *DBusObjectProxy) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusObjectProxyNewFunction *gi.Function
@@ -5558,7 +5704,7 @@ func dBusObjectProxyNewFunction_Set() error {
 // DBusObjectProxyNew is a representation of the C type g_dbus_object_proxy_new.
 func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(connection.Native)
+	inArgs[0].SetPointer(connection.native)
 	inArgs[1].SetString(objectPath)
 
 	var ret gi.Argument
@@ -5568,8 +5714,7 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 		ret = dBusObjectProxyNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusObjectProxy{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusObjectProxyNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5592,7 +5737,7 @@ func dBusObjectProxyGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_object_proxy_get_connection.
 func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5601,8 +5746,7 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 		ret = dBusObjectProxyGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5619,7 +5763,14 @@ func dBusObjectSkeletonObject_Set() error {
 }
 
 type DBusObjectSkeleton struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusObjectSkeletonNewFromNative(native uintptr) *DBusObjectSkeleton {
+	return &DBusObjectSkeleton{native: native}
+}
+func (recv *DBusObjectSkeleton) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var dBusObjectSkeletonNewFunction *gi.Function
@@ -5649,8 +5800,7 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 		ret = dBusObjectSkeletonNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusObjectSkeleton{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusObjectSkeletonNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5673,8 +5823,8 @@ func dBusObjectSkeletonAddInterfaceFunction_Set() error {
 // AddInterface is a representation of the C type g_dbus_object_skeleton_add_interface.
 func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(interface_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(interface_.native)
 
 	err := dBusObjectSkeletonAddInterfaceFunction_Set()
 	if err == nil {
@@ -5702,7 +5852,7 @@ func dBusObjectSkeletonFlushFunction_Set() error {
 // Flush is a representation of the C type g_dbus_object_skeleton_flush.
 func (recv *DBusObjectSkeleton) Flush() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusObjectSkeletonFlushFunction_Set()
 	if err == nil {
@@ -5730,8 +5880,8 @@ func dBusObjectSkeletonRemoveInterfaceFunction_Set() error {
 // RemoveInterface is a representation of the C type g_dbus_object_skeleton_remove_interface.
 func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleton) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(interface_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(interface_.native)
 
 	err := dBusObjectSkeletonRemoveInterfaceFunction_Set()
 	if err == nil {
@@ -5759,7 +5909,7 @@ func dBusObjectSkeletonRemoveInterfaceByNameFunction_Set() error {
 // RemoveInterfaceByName is a representation of the C type g_dbus_object_skeleton_remove_interface_by_name.
 func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(interfaceName)
 
 	err := dBusObjectSkeletonRemoveInterfaceByNameFunction_Set()
@@ -5788,7 +5938,7 @@ func dBusObjectSkeletonSetObjectPathFunction_Set() error {
 // SetObjectPath is a representation of the C type g_dbus_object_skeleton_set_object_path.
 func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(objectPath)
 
 	err := dBusObjectSkeletonSetObjectPathFunction_Set()
@@ -5811,7 +5961,14 @@ func dBusProxyObject_Set() error {
 }
 
 type DBusProxy struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusProxyNewFromNative(native uintptr) *DBusProxy {
+	return &DBusProxy{native: native}
+}
+func (recv *DBusProxy) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_dbus_proxy_new_finish' : parameter 'res' of type 'AsyncResult' not supported
@@ -5854,7 +6011,7 @@ func dBusProxyGetCachedPropertyNamesFunction_Set() error {
 // GetCachedPropertyNames is a representation of the C type g_dbus_proxy_get_cached_property_names.
 func (recv *DBusProxy) GetCachedPropertyNames() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusProxyGetCachedPropertyNamesFunction_Set()
 	if err == nil {
@@ -5882,7 +6039,7 @@ func dBusProxyGetConnectionFunction_Set() error {
 // GetConnection is a representation of the C type g_dbus_proxy_get_connection.
 func (recv *DBusProxy) GetConnection() *DBusConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5891,8 +6048,7 @@ func (recv *DBusProxy) GetConnection() *DBusConnection {
 		ret = dBusProxyGetConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5915,7 +6071,7 @@ func dBusProxyGetDefaultTimeoutFunction_Set() error {
 // GetDefaultTimeout is a representation of the C type g_dbus_proxy_get_default_timeout.
 func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5949,7 +6105,7 @@ func dBusProxyGetInterfaceInfoFunction_Set() error {
 // GetInterfaceInfo is a representation of the C type g_dbus_proxy_get_interface_info.
 func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5958,8 +6114,7 @@ func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 		ret = dBusProxyGetInterfaceInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DBusInterfaceInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DBusInterfaceInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5982,7 +6137,7 @@ func dBusProxyGetInterfaceNameFunction_Set() error {
 // GetInterfaceName is a representation of the C type g_dbus_proxy_get_interface_name.
 func (recv *DBusProxy) GetInterfaceName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6014,7 +6169,7 @@ func dBusProxyGetNameFunction_Set() error {
 // GetName is a representation of the C type g_dbus_proxy_get_name.
 func (recv *DBusProxy) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6046,7 +6201,7 @@ func dBusProxyGetNameOwnerFunction_Set() error {
 // GetNameOwner is a representation of the C type g_dbus_proxy_get_name_owner.
 func (recv *DBusProxy) GetNameOwner() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6078,7 +6233,7 @@ func dBusProxyGetObjectPathFunction_Set() error {
 // GetObjectPath is a representation of the C type g_dbus_proxy_get_object_path.
 func (recv *DBusProxy) GetObjectPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6112,7 +6267,7 @@ func dBusProxySetDefaultTimeoutFunction_Set() error {
 // SetDefaultTimeout is a representation of the C type g_dbus_proxy_set_default_timeout.
 func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(timeoutMsec)
 
 	err := dBusProxySetDefaultTimeoutFunction_Set()
@@ -6141,8 +6296,8 @@ func dBusProxySetInterfaceInfoFunction_Set() error {
 // SetInterfaceInfo is a representation of the C type g_dbus_proxy_set_interface_info.
 func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(info.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(info.native)
 
 	err := dBusProxySetInterfaceInfoFunction_Set()
 	if err == nil {
@@ -6164,7 +6319,14 @@ func dBusServerObject_Set() error {
 }
 
 type DBusServer struct {
-	gobject.Object
+	native uintptr
+}
+
+func DBusServerNewFromNative(native uintptr) *DBusServer {
+	return &DBusServer{native: native}
+}
+func (recv *DBusServer) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_dbus_server_new_sync' : parameter 'flags' of type 'DBusServerFlags' not supported
@@ -6187,7 +6349,7 @@ func dBusServerGetClientAddressFunction_Set() error {
 // GetClientAddress is a representation of the C type g_dbus_server_get_client_address.
 func (recv *DBusServer) GetClientAddress() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6221,7 +6383,7 @@ func dBusServerGetGuidFunction_Set() error {
 // GetGuid is a representation of the C type g_dbus_server_get_guid.
 func (recv *DBusServer) GetGuid() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6253,7 +6415,7 @@ func dBusServerIsActiveFunction_Set() error {
 // IsActive is a representation of the C type g_dbus_server_is_active.
 func (recv *DBusServer) IsActive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6285,7 +6447,7 @@ func dBusServerStartFunction_Set() error {
 // Start is a representation of the C type g_dbus_server_start.
 func (recv *DBusServer) Start() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusServerStartFunction_Set()
 	if err == nil {
@@ -6313,7 +6475,7 @@ func dBusServerStopFunction_Set() error {
 // Stop is a representation of the C type g_dbus_server_stop.
 func (recv *DBusServer) Stop() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dBusServerStopFunction_Set()
 	if err == nil {
@@ -6335,22 +6497,37 @@ func dataInputStreamObject_Set() error {
 }
 
 type DataInputStream struct {
-	BufferedInputStream
+	native uintptr
+}
+
+func DataInputStreamNewFromNative(native uintptr) *DataInputStream {
+	return &DataInputStream{native: native}
+}
+func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {
+	return BufferedInputStreamNewFromNative(recv.native)
+}
+func (recv *DataInputStream) FilterInputStream() *FilterInputStream {
+	return FilterInputStreamNewFromNative(recv.native)
+}
+func (recv *DataInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *DataInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataInputStream) FieldParentInstance() *BufferedInputStream {
-	argValue := gi.ObjectFieldGet(dataInputStreamObject, recv.Native, "parent_instance")
-	value := &BufferedInputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(dataInputStreamObject, recv.native, "parent_instance")
+	value := BufferedInputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *DataInputStream) SetFieldParentInstance(value *BufferedInputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(dataInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(dataInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var dataInputStreamNewFunction *gi.Function
@@ -6371,7 +6548,7 @@ func dataInputStreamNewFunction_Set() error {
 // DataInputStreamNew is a representation of the C type g_data_input_stream_new.
 func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 
 	var ret gi.Argument
 
@@ -6380,8 +6557,7 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 		ret = dataInputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DataInputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := DataInputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6404,7 +6580,7 @@ func dataInputStreamGetByteOrderFunction_Set() error {
 // GetByteOrder is a representation of the C type g_data_input_stream_get_byte_order.
 func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6436,7 +6612,7 @@ func dataInputStreamGetNewlineTypeFunction_Set() error {
 // GetNewlineType is a representation of the C type g_data_input_stream_get_newline_type.
 func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6468,8 +6644,8 @@ func dataInputStreamReadByteFunction_Set() error {
 // ReadByte is a representation of the C type g_data_input_stream_read_byte.
 func (recv *DataInputStream) ReadByte(cancellable *Cancellable) uint8 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6501,8 +6677,8 @@ func dataInputStreamReadInt16Function_Set() error {
 // ReadInt16 is a representation of the C type g_data_input_stream_read_int16.
 func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) int16 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6534,8 +6710,8 @@ func dataInputStreamReadInt32Function_Set() error {
 // ReadInt32 is a representation of the C type g_data_input_stream_read_int32.
 func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6567,8 +6743,8 @@ func dataInputStreamReadInt64Function_Set() error {
 // ReadInt64 is a representation of the C type g_data_input_stream_read_int64.
 func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6600,8 +6776,8 @@ func dataInputStreamReadLineFunction_Set() error {
 // ReadLine is a representation of the C type g_data_input_stream_read_line.
 func (recv *DataInputStream) ReadLine(cancellable *Cancellable) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var outArgs [1]gi.Argument
 
@@ -6639,8 +6815,8 @@ func dataInputStreamReadLineUtf8Function_Set() error {
 // ReadLineUtf8 is a representation of the C type g_data_input_stream_read_line_utf8.
 func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -6674,8 +6850,8 @@ func dataInputStreamReadUint16Function_Set() error {
 // ReadUint16 is a representation of the C type g_data_input_stream_read_uint16.
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) uint16 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6707,8 +6883,8 @@ func dataInputStreamReadUint32Function_Set() error {
 // ReadUint32 is a representation of the C type g_data_input_stream_read_uint32.
 func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6740,8 +6916,8 @@ func dataInputStreamReadUint64Function_Set() error {
 // ReadUint64 is a representation of the C type g_data_input_stream_read_uint64.
 func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -6773,9 +6949,9 @@ func dataInputStreamReadUntilFunction_Set() error {
 // ReadUntil is a representation of the C type g_data_input_stream_read_until.
 func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellable) (string, uint64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stopChars)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -6813,10 +6989,10 @@ func dataInputStreamReadUptoFunction_Set() error {
 // ReadUpto is a representation of the C type g_data_input_stream_read_upto.
 func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int32, cancellable *Cancellable) (string, uint64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stopChars)
 	inArgs[2].SetInt32(stopCharsLen)
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -6854,7 +7030,7 @@ func dataInputStreamSetByteOrderFunction_Set() error {
 // SetByteOrder is a representation of the C type g_data_input_stream_set_byte_order.
 func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(order))
 
 	err := dataInputStreamSetByteOrderFunction_Set()
@@ -6883,7 +7059,7 @@ func dataInputStreamSetNewlineTypeFunction_Set() error {
 // SetNewlineType is a representation of the C type g_data_input_stream_set_newline_type.
 func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 
 	err := dataInputStreamSetNewlineTypeFunction_Set()
@@ -6906,22 +7082,34 @@ func dataOutputStreamObject_Set() error {
 }
 
 type DataOutputStream struct {
-	FilterOutputStream
+	native uintptr
+}
+
+func DataOutputStreamNewFromNative(native uintptr) *DataOutputStream {
+	return &DataOutputStream{native: native}
+}
+func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromNative(recv.native)
+}
+func (recv *DataOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *DataOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataOutputStream) FieldParentInstance() *FilterOutputStream {
-	argValue := gi.ObjectFieldGet(dataOutputStreamObject, recv.Native, "parent_instance")
-	value := &FilterOutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(dataOutputStreamObject, recv.native, "parent_instance")
+	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *DataOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(dataOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(dataOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var dataOutputStreamNewFunction *gi.Function
@@ -6942,7 +7130,7 @@ func dataOutputStreamNewFunction_Set() error {
 // DataOutputStreamNew is a representation of the C type g_data_output_stream_new.
 func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(baseStream.Native)
+	inArgs[0].SetPointer(baseStream.native)
 
 	var ret gi.Argument
 
@@ -6951,8 +7139,7 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 		ret = dataOutputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DataOutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := DataOutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6975,7 +7162,7 @@ func dataOutputStreamGetByteOrderFunction_Set() error {
 // GetByteOrder is a representation of the C type g_data_output_stream_get_byte_order.
 func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7007,9 +7194,9 @@ func dataOutputStreamPutByteFunction_Set() error {
 // PutByte is a representation of the C type g_data_output_stream_put_byte.
 func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint8(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7041,9 +7228,9 @@ func dataOutputStreamPutInt16Function_Set() error {
 // PutInt16 is a representation of the C type g_data_output_stream_put_int16.
 func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt16(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7075,9 +7262,9 @@ func dataOutputStreamPutInt32Function_Set() error {
 // PutInt32 is a representation of the C type g_data_output_stream_put_int32.
 func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7109,9 +7296,9 @@ func dataOutputStreamPutInt64Function_Set() error {
 // PutInt64 is a representation of the C type g_data_output_stream_put_int64.
 func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7143,9 +7330,9 @@ func dataOutputStreamPutStringFunction_Set() error {
 // PutString is a representation of the C type g_data_output_stream_put_string.
 func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(str)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7177,9 +7364,9 @@ func dataOutputStreamPutUint16Function_Set() error {
 // PutUint16 is a representation of the C type g_data_output_stream_put_uint16.
 func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint16(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7211,9 +7398,9 @@ func dataOutputStreamPutUint32Function_Set() error {
 // PutUint32 is a representation of the C type g_data_output_stream_put_uint32.
 func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7245,9 +7432,9 @@ func dataOutputStreamPutUint64Function_Set() error {
 // PutUint64 is a representation of the C type g_data_output_stream_put_uint64.
 func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(data)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -7279,7 +7466,7 @@ func dataOutputStreamSetByteOrderFunction_Set() error {
 // SetByteOrder is a representation of the C type g_data_output_stream_set_byte_order.
 func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(order))
 
 	err := dataOutputStreamSetByteOrderFunction_Set()
@@ -7302,7 +7489,14 @@ func desktopAppInfoObject_Set() error {
 }
 
 type DesktopAppInfo struct {
-	gobject.Object
+	native uintptr
+}
+
+func DesktopAppInfoNewFromNative(native uintptr) *DesktopAppInfo {
+	return &DesktopAppInfo{native: native}
+}
+func (recv *DesktopAppInfo) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var desktopAppInfoNewFunction *gi.Function
@@ -7332,8 +7526,7 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 		ret = desktopAppInfoNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DesktopAppInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DesktopAppInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7365,8 +7558,7 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 		ret = desktopAppInfoNewFromFilenameFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DesktopAppInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := DesktopAppInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7391,7 +7583,7 @@ func desktopAppInfoGetActionNameFunction_Set() error {
 // GetActionName is a representation of the C type g_desktop_app_info_get_action_name.
 func (recv *DesktopAppInfo) GetActionName(actionName string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(actionName)
 
 	var ret gi.Argument
@@ -7424,7 +7616,7 @@ func desktopAppInfoGetBooleanFunction_Set() error {
 // GetBoolean is a representation of the C type g_desktop_app_info_get_boolean.
 func (recv *DesktopAppInfo) GetBoolean(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -7457,7 +7649,7 @@ func desktopAppInfoGetCategoriesFunction_Set() error {
 // GetCategories is a representation of the C type g_desktop_app_info_get_categories.
 func (recv *DesktopAppInfo) GetCategories() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7489,7 +7681,7 @@ func desktopAppInfoGetFilenameFunction_Set() error {
 // GetFilename is a representation of the C type g_desktop_app_info_get_filename.
 func (recv *DesktopAppInfo) GetFilename() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7521,7 +7713,7 @@ func desktopAppInfoGetGenericNameFunction_Set() error {
 // GetGenericName is a representation of the C type g_desktop_app_info_get_generic_name.
 func (recv *DesktopAppInfo) GetGenericName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7553,7 +7745,7 @@ func desktopAppInfoGetIsHiddenFunction_Set() error {
 // GetIsHidden is a representation of the C type g_desktop_app_info_get_is_hidden.
 func (recv *DesktopAppInfo) GetIsHidden() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7585,7 +7777,7 @@ func desktopAppInfoGetKeywordsFunction_Set() error {
 // GetKeywords is a representation of the C type g_desktop_app_info_get_keywords.
 func (recv *DesktopAppInfo) GetKeywords() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := desktopAppInfoGetKeywordsFunction_Set()
 	if err == nil {
@@ -7613,7 +7805,7 @@ func desktopAppInfoGetLocaleStringFunction_Set() error {
 // GetLocaleString is a representation of the C type g_desktop_app_info_get_locale_string.
 func (recv *DesktopAppInfo) GetLocaleString(key string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -7646,7 +7838,7 @@ func desktopAppInfoGetNodisplayFunction_Set() error {
 // GetNodisplay is a representation of the C type g_desktop_app_info_get_nodisplay.
 func (recv *DesktopAppInfo) GetNodisplay() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7678,7 +7870,7 @@ func desktopAppInfoGetShowInFunction_Set() error {
 // GetShowIn is a representation of the C type g_desktop_app_info_get_show_in.
 func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(desktopEnv)
 
 	var ret gi.Argument
@@ -7711,7 +7903,7 @@ func desktopAppInfoGetStartupWmClassFunction_Set() error {
 // GetStartupWmClass is a representation of the C type g_desktop_app_info_get_startup_wm_class.
 func (recv *DesktopAppInfo) GetStartupWmClass() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7743,7 +7935,7 @@ func desktopAppInfoGetStringFunction_Set() error {
 // GetString is a representation of the C type g_desktop_app_info_get_string.
 func (recv *DesktopAppInfo) GetString(key string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -7776,7 +7968,7 @@ func desktopAppInfoGetStringListFunction_Set() error {
 // GetStringList is a representation of the C type g_desktop_app_info_get_string_list.
 func (recv *DesktopAppInfo) GetStringList(key string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var outArgs [1]gi.Argument
@@ -7809,7 +8001,7 @@ func desktopAppInfoHasKeyFunction_Set() error {
 // HasKey is a representation of the C type g_desktop_app_info_has_key.
 func (recv *DesktopAppInfo) HasKey(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -7842,9 +8034,9 @@ func desktopAppInfoLaunchActionFunction_Set() error {
 // LaunchAction is a representation of the C type g_desktop_app_info_launch_action.
 func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLaunchContext) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(actionName)
-	inArgs[2].SetPointer(launchContext.Native)
+	inArgs[2].SetPointer(launchContext.native)
 
 	err := desktopAppInfoLaunchActionFunction_Set()
 	if err == nil {
@@ -7876,7 +8068,7 @@ func desktopAppInfoListActionsFunction_Set() error {
 // ListActions is a representation of the C type g_desktop_app_info_list_actions.
 func (recv *DesktopAppInfo) ListActions() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := desktopAppInfoListActionsFunction_Set()
 	if err == nil {
@@ -7898,7 +8090,14 @@ func emblemObject_Set() error {
 }
 
 type Emblem struct {
-	gobject.Object
+	native uintptr
+}
+
+func EmblemNewFromNative(native uintptr) *Emblem {
+	return &Emblem{native: native}
+}
+func (recv *Emblem) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_emblem_new' : parameter 'icon' of type 'Icon' not supported
@@ -7925,7 +8124,7 @@ func emblemGetOriginFunction_Set() error {
 // GetOrigin is a representation of the C type g_emblem_get_origin.
 func (recv *Emblem) GetOrigin() EmblemOrigin {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7951,7 +8150,14 @@ func emblemedIconObject_Set() error {
 }
 
 type EmblemedIcon struct {
-	gobject.Object
+	native uintptr
+}
+
+func EmblemedIconNewFromNative(native uintptr) *EmblemedIcon {
+	return &EmblemedIcon{native: native}
+}
+func (recv *EmblemedIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -7978,8 +8184,8 @@ func emblemedIconAddEmblemFunction_Set() error {
 // AddEmblem is a representation of the C type g_emblemed_icon_add_emblem.
 func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(emblem.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(emblem.native)
 
 	err := emblemedIconAddEmblemFunction_Set()
 	if err == nil {
@@ -8007,7 +8213,7 @@ func emblemedIconClearEmblemsFunction_Set() error {
 // ClearEmblems is a representation of the C type g_emblemed_icon_clear_emblems.
 func (recv *EmblemedIcon) ClearEmblems() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := emblemedIconClearEmblemsFunction_Set()
 	if err == nil {
@@ -8033,7 +8239,14 @@ func fileEnumeratorObject_Set() error {
 }
 
 type FileEnumerator struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileEnumeratorNewFromNative(native uintptr) *FileEnumerator {
+	return &FileEnumerator{native: native}
+}
+func (recv *FileEnumerator) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -8058,8 +8271,8 @@ func fileEnumeratorCloseFunction_Set() error {
 // Close is a representation of the C type g_file_enumerator_close.
 func (recv *FileEnumerator) Close(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -8099,7 +8312,7 @@ func fileEnumeratorHasPendingFunction_Set() error {
 // HasPending is a representation of the C type g_file_enumerator_has_pending.
 func (recv *FileEnumerator) HasPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8131,7 +8344,7 @@ func fileEnumeratorIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_file_enumerator_is_closed.
 func (recv *FileEnumerator) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8165,8 +8378,8 @@ func fileEnumeratorNextFileFunction_Set() error {
 // NextFile is a representation of the C type g_file_enumerator_next_file.
 func (recv *FileEnumerator) NextFile(cancellable *Cancellable) *FileInfo {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -8175,8 +8388,7 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) *FileInfo {
 		ret = fileEnumeratorNextFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8203,7 +8415,7 @@ func fileEnumeratorSetPendingFunction_Set() error {
 // SetPending is a representation of the C type g_file_enumerator_set_pending.
 func (recv *FileEnumerator) SetPending(pending bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(pending)
 
 	err := fileEnumeratorSetPendingFunction_Set()
@@ -8226,22 +8438,31 @@ func fileIOStreamObject_Set() error {
 }
 
 type FileIOStream struct {
-	IOStream
+	native uintptr
+}
+
+func FileIOStreamNewFromNative(native uintptr) *FileIOStream {
+	return &FileIOStream{native: native}
+}
+func (recv *FileIOStream) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *FileIOStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileIOStream) FieldParentInstance() *IOStream {
-	argValue := gi.ObjectFieldGet(fileIOStreamObject, recv.Native, "parent_instance")
-	value := &IOStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileIOStreamObject, recv.native, "parent_instance")
+	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileIOStream) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileIOStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileIOStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var fileIOStreamGetEtagFunction *gi.Function
@@ -8262,7 +8483,7 @@ func fileIOStreamGetEtagFunction_Set() error {
 // GetEtag is a representation of the C type g_file_io_stream_get_etag.
 func (recv *FileIOStream) GetEtag() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8294,9 +8515,9 @@ func fileIOStreamQueryInfoFunction_Set() error {
 // QueryInfo is a representation of the C type g_file_io_stream_query_info.
 func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable) *FileInfo {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attributes)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -8305,8 +8526,7 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 		ret = fileIOStreamQueryInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8327,7 +8547,14 @@ func fileIconObject_Set() error {
 }
 
 type FileIcon struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileIconNewFromNative(native uintptr) *FileIcon {
+	return &FileIcon{native: native}
+}
+func (recv *FileIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_file_icon_new' : parameter 'file' of type 'File' not supported
@@ -8346,7 +8573,14 @@ func fileInfoObject_Set() error {
 }
 
 type FileInfo struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileInfoNewFromNative(native uintptr) *FileInfo {
+	return &FileInfo{native: native}
+}
+func (recv *FileInfo) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var fileInfoNewFunction *gi.Function
@@ -8374,8 +8608,7 @@ func FileInfoNew() *FileInfo {
 		ret = fileInfoNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8398,7 +8631,7 @@ func fileInfoClearStatusFunction_Set() error {
 // ClearStatus is a representation of the C type g_file_info_clear_status.
 func (recv *FileInfo) ClearStatus() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := fileInfoClearStatusFunction_Set()
 	if err == nil {
@@ -8426,8 +8659,8 @@ func fileInfoCopyIntoFunction_Set() error {
 // CopyInto is a representation of the C type g_file_info_copy_into.
 func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(destInfo.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(destInfo.native)
 
 	err := fileInfoCopyIntoFunction_Set()
 	if err == nil {
@@ -8455,7 +8688,7 @@ func fileInfoDupFunction_Set() error {
 // Dup is a representation of the C type g_file_info_dup.
 func (recv *FileInfo) Dup() *FileInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8464,8 +8697,7 @@ func (recv *FileInfo) Dup() *FileInfo {
 		ret = fileInfoDupFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8488,7 +8720,7 @@ func fileInfoGetAttributeAsStringFunction_Set() error {
 // GetAttributeAsString is a representation of the C type g_file_info_get_attribute_as_string.
 func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8521,7 +8753,7 @@ func fileInfoGetAttributeBooleanFunction_Set() error {
 // GetAttributeBoolean is a representation of the C type g_file_info_get_attribute_boolean.
 func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8554,7 +8786,7 @@ func fileInfoGetAttributeByteStringFunction_Set() error {
 // GetAttributeByteString is a representation of the C type g_file_info_get_attribute_byte_string.
 func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8589,7 +8821,7 @@ func fileInfoGetAttributeInt32Function_Set() error {
 // GetAttributeInt32 is a representation of the C type g_file_info_get_attribute_int32.
 func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8622,7 +8854,7 @@ func fileInfoGetAttributeInt64Function_Set() error {
 // GetAttributeInt64 is a representation of the C type g_file_info_get_attribute_int64.
 func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8657,7 +8889,7 @@ func fileInfoGetAttributeStatusFunction_Set() error {
 // GetAttributeStatus is a representation of the C type g_file_info_get_attribute_status.
 func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8690,7 +8922,7 @@ func fileInfoGetAttributeStringFunction_Set() error {
 // GetAttributeString is a representation of the C type g_file_info_get_attribute_string.
 func (recv *FileInfo) GetAttributeString(attribute string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8723,7 +8955,7 @@ func fileInfoGetAttributeStringvFunction_Set() error {
 // GetAttributeStringv is a representation of the C type g_file_info_get_attribute_stringv.
 func (recv *FileInfo) GetAttributeStringv(attribute string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	err := fileInfoGetAttributeStringvFunction_Set()
@@ -8752,7 +8984,7 @@ func fileInfoGetAttributeTypeFunction_Set() error {
 // GetAttributeType is a representation of the C type g_file_info_get_attribute_type.
 func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8785,7 +9017,7 @@ func fileInfoGetAttributeUint32Function_Set() error {
 // GetAttributeUint32 is a representation of the C type g_file_info_get_attribute_uint32.
 func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8818,7 +9050,7 @@ func fileInfoGetAttributeUint64Function_Set() error {
 // GetAttributeUint64 is a representation of the C type g_file_info_get_attribute_uint64.
 func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -8851,7 +9083,7 @@ func fileInfoGetContentTypeFunction_Set() error {
 // GetContentType is a representation of the C type g_file_info_get_content_type.
 func (recv *FileInfo) GetContentType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8885,7 +9117,7 @@ func fileInfoGetDisplayNameFunction_Set() error {
 // GetDisplayName is a representation of the C type g_file_info_get_display_name.
 func (recv *FileInfo) GetDisplayName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8917,7 +9149,7 @@ func fileInfoGetEditNameFunction_Set() error {
 // GetEditName is a representation of the C type g_file_info_get_edit_name.
 func (recv *FileInfo) GetEditName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8949,7 +9181,7 @@ func fileInfoGetEtagFunction_Set() error {
 // GetEtag is a representation of the C type g_file_info_get_etag.
 func (recv *FileInfo) GetEtag() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8981,7 +9213,7 @@ func fileInfoGetFileTypeFunction_Set() error {
 // GetFileType is a representation of the C type g_file_info_get_file_type.
 func (recv *FileInfo) GetFileType() FileType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9015,7 +9247,7 @@ func fileInfoGetIsBackupFunction_Set() error {
 // GetIsBackup is a representation of the C type g_file_info_get_is_backup.
 func (recv *FileInfo) GetIsBackup() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9047,7 +9279,7 @@ func fileInfoGetIsHiddenFunction_Set() error {
 // GetIsHidden is a representation of the C type g_file_info_get_is_hidden.
 func (recv *FileInfo) GetIsHidden() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9079,7 +9311,7 @@ func fileInfoGetIsSymlinkFunction_Set() error {
 // GetIsSymlink is a representation of the C type g_file_info_get_is_symlink.
 func (recv *FileInfo) GetIsSymlink() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9115,7 +9347,7 @@ func fileInfoGetNameFunction_Set() error {
 // GetName is a representation of the C type g_file_info_get_name.
 func (recv *FileInfo) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9147,7 +9379,7 @@ func fileInfoGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_file_info_get_size.
 func (recv *FileInfo) GetSize() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9179,7 +9411,7 @@ func fileInfoGetSortOrderFunction_Set() error {
 // GetSortOrder is a representation of the C type g_file_info_get_sort_order.
 func (recv *FileInfo) GetSortOrder() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9213,7 +9445,7 @@ func fileInfoGetSymlinkTargetFunction_Set() error {
 // GetSymlinkTarget is a representation of the C type g_file_info_get_symlink_target.
 func (recv *FileInfo) GetSymlinkTarget() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9245,7 +9477,7 @@ func fileInfoHasAttributeFunction_Set() error {
 // HasAttribute is a representation of the C type g_file_info_has_attribute.
 func (recv *FileInfo) HasAttribute(attribute string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	var ret gi.Argument
@@ -9278,7 +9510,7 @@ func fileInfoHasNamespaceFunction_Set() error {
 // HasNamespace is a representation of the C type g_file_info_has_namespace.
 func (recv *FileInfo) HasNamespace(nameSpace string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(nameSpace)
 
 	var ret gi.Argument
@@ -9311,7 +9543,7 @@ func fileInfoListAttributesFunction_Set() error {
 // ListAttributes is a representation of the C type g_file_info_list_attributes.
 func (recv *FileInfo) ListAttributes(nameSpace string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(nameSpace)
 
 	err := fileInfoListAttributesFunction_Set()
@@ -9340,7 +9572,7 @@ func fileInfoRemoveAttributeFunction_Set() error {
 // RemoveAttribute is a representation of the C type g_file_info_remove_attribute.
 func (recv *FileInfo) RemoveAttribute(attribute string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 
 	err := fileInfoRemoveAttributeFunction_Set()
@@ -9371,7 +9603,7 @@ func fileInfoSetAttributeBooleanFunction_Set() error {
 // SetAttributeBoolean is a representation of the C type g_file_info_set_attribute_boolean.
 func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetBoolean(attrValue)
 
@@ -9401,7 +9633,7 @@ func fileInfoSetAttributeByteStringFunction_Set() error {
 // SetAttributeByteString is a representation of the C type g_file_info_set_attribute_byte_string.
 func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetString(attrValue)
 
@@ -9431,7 +9663,7 @@ func fileInfoSetAttributeInt32Function_Set() error {
 // SetAttributeInt32 is a representation of the C type g_file_info_set_attribute_int32.
 func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetInt32(attrValue)
 
@@ -9461,7 +9693,7 @@ func fileInfoSetAttributeInt64Function_Set() error {
 // SetAttributeInt64 is a representation of the C type g_file_info_set_attribute_int64.
 func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetInt64(attrValue)
 
@@ -9491,8 +9723,8 @@ func fileInfoSetAttributeMaskFunction_Set() error {
 // SetAttributeMask is a representation of the C type g_file_info_set_attribute_mask.
 func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(mask.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mask.native)
 
 	err := fileInfoSetAttributeMaskFunction_Set()
 	if err == nil {
@@ -9522,7 +9754,7 @@ func fileInfoSetAttributeStatusFunction_Set() error {
 // SetAttributeStatus is a representation of the C type g_file_info_set_attribute_status.
 func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatus) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetInt32(int32(status))
 
@@ -9556,7 +9788,7 @@ func fileInfoSetAttributeStringFunction_Set() error {
 // SetAttributeString is a representation of the C type g_file_info_set_attribute_string.
 func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetString(attrValue)
 
@@ -9588,7 +9820,7 @@ func fileInfoSetAttributeUint32Function_Set() error {
 // SetAttributeUint32 is a representation of the C type g_file_info_set_attribute_uint32.
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetUint32(attrValue)
 
@@ -9618,7 +9850,7 @@ func fileInfoSetAttributeUint64Function_Set() error {
 // SetAttributeUint64 is a representation of the C type g_file_info_set_attribute_uint64.
 func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attribute)
 	inArgs[2].SetUint64(attrValue)
 
@@ -9648,7 +9880,7 @@ func fileInfoSetContentTypeFunction_Set() error {
 // SetContentType is a representation of the C type g_file_info_set_content_type.
 func (recv *FileInfo) SetContentType(contentType string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(contentType)
 
 	err := fileInfoSetContentTypeFunction_Set()
@@ -9677,7 +9909,7 @@ func fileInfoSetDisplayNameFunction_Set() error {
 // SetDisplayName is a representation of the C type g_file_info_set_display_name.
 func (recv *FileInfo) SetDisplayName(displayName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(displayName)
 
 	err := fileInfoSetDisplayNameFunction_Set()
@@ -9706,7 +9938,7 @@ func fileInfoSetEditNameFunction_Set() error {
 // SetEditName is a representation of the C type g_file_info_set_edit_name.
 func (recv *FileInfo) SetEditName(editName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(editName)
 
 	err := fileInfoSetEditNameFunction_Set()
@@ -9735,7 +9967,7 @@ func fileInfoSetFileTypeFunction_Set() error {
 // SetFileType is a representation of the C type g_file_info_set_file_type.
 func (recv *FileInfo) SetFileType(type_ FileType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 
 	err := fileInfoSetFileTypeFunction_Set()
@@ -9766,7 +9998,7 @@ func fileInfoSetIsHiddenFunction_Set() error {
 // SetIsHidden is a representation of the C type g_file_info_set_is_hidden.
 func (recv *FileInfo) SetIsHidden(isHidden bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(isHidden)
 
 	err := fileInfoSetIsHiddenFunction_Set()
@@ -9795,7 +10027,7 @@ func fileInfoSetIsSymlinkFunction_Set() error {
 // SetIsSymlink is a representation of the C type g_file_info_set_is_symlink.
 func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(isSymlink)
 
 	err := fileInfoSetIsSymlinkFunction_Set()
@@ -9828,7 +10060,7 @@ func fileInfoSetNameFunction_Set() error {
 // SetName is a representation of the C type g_file_info_set_name.
 func (recv *FileInfo) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	err := fileInfoSetNameFunction_Set()
@@ -9857,7 +10089,7 @@ func fileInfoSetSizeFunction_Set() error {
 // SetSize is a representation of the C type g_file_info_set_size.
 func (recv *FileInfo) SetSize(size int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(size)
 
 	err := fileInfoSetSizeFunction_Set()
@@ -9886,7 +10118,7 @@ func fileInfoSetSortOrderFunction_Set() error {
 // SetSortOrder is a representation of the C type g_file_info_set_sort_order.
 func (recv *FileInfo) SetSortOrder(sortOrder int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(sortOrder)
 
 	err := fileInfoSetSortOrderFunction_Set()
@@ -9917,7 +10149,7 @@ func fileInfoSetSymlinkTargetFunction_Set() error {
 // SetSymlinkTarget is a representation of the C type g_file_info_set_symlink_target.
 func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(symlinkTarget)
 
 	err := fileInfoSetSymlinkTargetFunction_Set()
@@ -9946,7 +10178,7 @@ func fileInfoUnsetAttributeMaskFunction_Set() error {
 // UnsetAttributeMask is a representation of the C type g_file_info_unset_attribute_mask.
 func (recv *FileInfo) UnsetAttributeMask() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := fileInfoUnsetAttributeMaskFunction_Set()
 	if err == nil {
@@ -9968,22 +10200,31 @@ func fileInputStreamObject_Set() error {
 }
 
 type FileInputStream struct {
-	InputStream
+	native uintptr
+}
+
+func FileInputStreamNewFromNative(native uintptr) *FileInputStream {
+	return &FileInputStream{native: native}
+}
+func (recv *FileInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *FileInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.ObjectFieldGet(fileInputStreamObject, recv.Native, "parent_instance")
-	value := &InputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileInputStreamObject, recv.native, "parent_instance")
+	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var fileInputStreamQueryInfoFunction *gi.Function
@@ -10004,9 +10245,9 @@ func fileInputStreamQueryInfoFunction_Set() error {
 // QueryInfo is a representation of the C type g_file_input_stream_query_info.
 func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) *FileInfo {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attributes)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -10015,8 +10256,7 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 		ret = fileInputStreamQueryInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10037,7 +10277,14 @@ func fileMonitorObject_Set() error {
 }
 
 type FileMonitor struct {
-	gobject.Object
+	native uintptr
+}
+
+func FileMonitorNewFromNative(native uintptr) *FileMonitor {
+	return &FileMonitor{native: native}
+}
+func (recv *FileMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -10062,7 +10309,7 @@ func fileMonitorCancelFunction_Set() error {
 // Cancel is a representation of the C type g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10096,7 +10343,7 @@ func fileMonitorIsCancelledFunction_Set() error {
 // IsCancelled is a representation of the C type g_file_monitor_is_cancelled.
 func (recv *FileMonitor) IsCancelled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10128,7 +10375,7 @@ func fileMonitorSetRateLimitFunction_Set() error {
 // SetRateLimit is a representation of the C type g_file_monitor_set_rate_limit.
 func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(limitMsecs)
 
 	err := fileMonitorSetRateLimitFunction_Set()
@@ -10151,22 +10398,31 @@ func fileOutputStreamObject_Set() error {
 }
 
 type FileOutputStream struct {
-	OutputStream
+	native uintptr
+}
+
+func FileOutputStreamNewFromNative(native uintptr) *FileOutputStream {
+	return &FileOutputStream{native: native}
+}
+func (recv *FileOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *FileOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.ObjectFieldGet(fileOutputStreamObject, recv.Native, "parent_instance")
-	value := &OutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(fileOutputStreamObject, recv.native, "parent_instance")
+	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(fileOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(fileOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var fileOutputStreamGetEtagFunction *gi.Function
@@ -10187,7 +10443,7 @@ func fileOutputStreamGetEtagFunction_Set() error {
 // GetEtag is a representation of the C type g_file_output_stream_get_etag.
 func (recv *FileOutputStream) GetEtag() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10219,9 +10475,9 @@ func fileOutputStreamQueryInfoFunction_Set() error {
 // QueryInfo is a representation of the C type g_file_output_stream_query_info.
 func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancellable) *FileInfo {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(attributes)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -10230,8 +10486,7 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 		ret = fileOutputStreamQueryInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10252,7 +10507,14 @@ func filenameCompleterObject_Set() error {
 }
 
 type FilenameCompleter struct {
-	gobject.Object
+	native uintptr
+}
+
+func FilenameCompleterNewFromNative(native uintptr) *FilenameCompleter {
+	return &FilenameCompleter{native: native}
+}
+func (recv *FilenameCompleter) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var filenameCompleterNewFunction *gi.Function
@@ -10280,8 +10542,7 @@ func FilenameCompleterNew() *FilenameCompleter {
 		ret = filenameCompleterNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &FilenameCompleter{}
-	retGo.Native = ret.Pointer()
+	retGo := FilenameCompleterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10304,7 +10565,7 @@ func filenameCompleterGetCompletionSuffixFunction_Set() error {
 // GetCompletionSuffix is a representation of the C type g_filename_completer_get_completion_suffix.
 func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(initialText)
 
 	var ret gi.Argument
@@ -10337,7 +10598,7 @@ func filenameCompleterGetCompletionsFunction_Set() error {
 // GetCompletions is a representation of the C type g_filename_completer_get_completions.
 func (recv *FilenameCompleter) GetCompletions(initialText string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(initialText)
 
 	err := filenameCompleterGetCompletionsFunction_Set()
@@ -10366,7 +10627,7 @@ func filenameCompleterSetDirsOnlyFunction_Set() error {
 // SetDirsOnly is a representation of the C type g_filename_completer_set_dirs_only.
 func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(dirsOnly)
 
 	err := filenameCompleterSetDirsOnlyFunction_Set()
@@ -10389,37 +10650,45 @@ func filterInputStreamObject_Set() error {
 }
 
 type FilterInputStream struct {
-	InputStream
+	native uintptr
+}
+
+func FilterInputStreamNewFromNative(native uintptr) *FilterInputStream {
+	return &FilterInputStream{native: native}
+}
+func (recv *FilterInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *FilterInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native, "parent_instance")
-	value := &InputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.native, "parent_instance")
+	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FilterInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(filterInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(filterInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterInputStream) FieldBaseStream() *InputStream {
-	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native, "base_stream")
-	value := &InputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.native, "base_stream")
+	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldBaseStream sets the value of the C field 'base_stream'.
 func (recv *FilterInputStream) SetFieldBaseStream(value *InputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(filterInputStreamObject, recv.Native, "base_stream", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(filterInputStreamObject, recv.native, "base_stream", argValue)
 }
 
 var filterInputStreamGetBaseStreamFunction *gi.Function
@@ -10440,7 +10709,7 @@ func filterInputStreamGetBaseStreamFunction_Set() error {
 // GetBaseStream is a representation of the C type g_filter_input_stream_get_base_stream.
 func (recv *FilterInputStream) GetBaseStream() *InputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10449,8 +10718,7 @@ func (recv *FilterInputStream) GetBaseStream() *InputStream {
 		ret = filterInputStreamGetBaseStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := InputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10473,7 +10741,7 @@ func filterInputStreamGetCloseBaseStreamFunction_Set() error {
 // GetCloseBaseStream is a representation of the C type g_filter_input_stream_get_close_base_stream.
 func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10505,7 +10773,7 @@ func filterInputStreamSetCloseBaseStreamFunction_Set() error {
 // SetCloseBaseStream is a representation of the C type g_filter_input_stream_set_close_base_stream.
 func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(closeBase)
 
 	err := filterInputStreamSetCloseBaseStreamFunction_Set()
@@ -10528,37 +10796,45 @@ func filterOutputStreamObject_Set() error {
 }
 
 type FilterOutputStream struct {
-	OutputStream
+	native uintptr
+}
+
+func FilterOutputStreamNewFromNative(native uintptr) *FilterOutputStream {
+	return &FilterOutputStream{native: native}
+}
+func (recv *FilterOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *FilterOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native, "parent_instance")
-	value := &OutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.native, "parent_instance")
+	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FilterOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(filterOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterOutputStream) FieldBaseStream() *OutputStream {
-	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native, "base_stream")
-	value := &OutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.native, "base_stream")
+	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldBaseStream sets the value of the C field 'base_stream'.
 func (recv *FilterOutputStream) SetFieldBaseStream(value *OutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native, "base_stream", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(filterOutputStreamObject, recv.native, "base_stream", argValue)
 }
 
 var filterOutputStreamGetBaseStreamFunction *gi.Function
@@ -10579,7 +10855,7 @@ func filterOutputStreamGetBaseStreamFunction_Set() error {
 // GetBaseStream is a representation of the C type g_filter_output_stream_get_base_stream.
 func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10588,8 +10864,7 @@ func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 		ret = filterOutputStreamGetBaseStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := OutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10612,7 +10887,7 @@ func filterOutputStreamGetCloseBaseStreamFunction_Set() error {
 // GetCloseBaseStream is a representation of the C type g_filter_output_stream_get_close_base_stream.
 func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10644,7 +10919,7 @@ func filterOutputStreamSetCloseBaseStreamFunction_Set() error {
 // SetCloseBaseStream is a representation of the C type g_filter_output_stream_set_close_base_stream.
 func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(closeBase)
 
 	err := filterOutputStreamSetCloseBaseStreamFunction_Set()
@@ -10667,7 +10942,17 @@ func iOModuleObject_Set() error {
 }
 
 type IOModule struct {
-	gobject.TypeModule
+	native uintptr
+}
+
+func IOModuleNewFromNative(native uintptr) *IOModule {
+	return &IOModule{native: native}
+}
+func (recv *IOModule) TypeModule() *gobject.TypeModule {
+	return gobject.TypeModuleNewFromNative(recv.native)
+}
+func (recv *IOModule) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var iOModuleNewFunction *gi.Function
@@ -10697,8 +10982,7 @@ func IOModuleNew(filename string) *IOModule {
 		ret = iOModuleNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOModule{}
-	retGo.Native = ret.Pointer()
+	retGo := IOModuleNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10721,7 +11005,7 @@ func iOModuleLoadFunction_Set() error {
 // Load is a representation of the C type g_io_module_load.
 func (recv *IOModule) Load() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOModuleLoadFunction_Set()
 	if err == nil {
@@ -10749,7 +11033,7 @@ func iOModuleUnloadFunction_Set() error {
 // Unload is a representation of the C type g_io_module_unload.
 func (recv *IOModule) Unload() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOModuleUnloadFunction_Set()
 	if err == nil {
@@ -10771,7 +11055,14 @@ func iOStreamObject_Set() error {
 }
 
 type IOStream struct {
-	gobject.Object
+	native uintptr
+}
+
+func IOStreamNewFromNative(native uintptr) *IOStream {
+	return &IOStream{native: native}
+}
+func (recv *IOStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -10796,7 +11087,7 @@ func iOStreamClearPendingFunction_Set() error {
 // ClearPending is a representation of the C type g_io_stream_clear_pending.
 func (recv *IOStream) ClearPending() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOStreamClearPendingFunction_Set()
 	if err == nil {
@@ -10824,8 +11115,8 @@ func iOStreamCloseFunction_Set() error {
 // Close is a representation of the C type g_io_stream_close.
 func (recv *IOStream) Close(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -10861,7 +11152,7 @@ func iOStreamGetInputStreamFunction_Set() error {
 // GetInputStream is a representation of the C type g_io_stream_get_input_stream.
 func (recv *IOStream) GetInputStream() *InputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10870,8 +11161,7 @@ func (recv *IOStream) GetInputStream() *InputStream {
 		ret = iOStreamGetInputStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := InputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10894,7 +11184,7 @@ func iOStreamGetOutputStreamFunction_Set() error {
 // GetOutputStream is a representation of the C type g_io_stream_get_output_stream.
 func (recv *IOStream) GetOutputStream() *OutputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10903,8 +11193,7 @@ func (recv *IOStream) GetOutputStream() *OutputStream {
 		ret = iOStreamGetOutputStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := OutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10927,7 +11216,7 @@ func iOStreamHasPendingFunction_Set() error {
 // HasPending is a representation of the C type g_io_stream_has_pending.
 func (recv *IOStream) HasPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10959,7 +11248,7 @@ func iOStreamIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_io_stream_is_closed.
 func (recv *IOStream) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10991,7 +11280,7 @@ func iOStreamSetPendingFunction_Set() error {
 // SetPending is a representation of the C type g_io_stream_set_pending.
 func (recv *IOStream) SetPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11019,7 +11308,14 @@ func inetAddressObject_Set() error {
 }
 
 type InetAddress struct {
-	gobject.Object
+	native uintptr
+}
+
+func InetAddressNewFromNative(native uintptr) *InetAddress {
+	return &InetAddress{native: native}
+}
+func (recv *InetAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -11053,8 +11349,7 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 		ret = inetAddressNewAnyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11088,8 +11383,7 @@ func InetAddressNewFromString(string_ string) *InetAddress {
 		ret = inetAddressNewFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11121,8 +11415,7 @@ func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 		ret = inetAddressNewLoopbackFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11145,8 +11438,8 @@ func inetAddressEqualFunction_Set() error {
 // Equal is a representation of the C type g_inet_address_equal.
 func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(otherAddress.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(otherAddress.native)
 
 	var ret gi.Argument
 
@@ -11178,7 +11471,7 @@ func inetAddressGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type g_inet_address_get_family.
 func (recv *InetAddress) GetFamily() SocketFamily {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11210,7 +11503,7 @@ func inetAddressGetIsAnyFunction_Set() error {
 // GetIsAny is a representation of the C type g_inet_address_get_is_any.
 func (recv *InetAddress) GetIsAny() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11242,7 +11535,7 @@ func inetAddressGetIsLinkLocalFunction_Set() error {
 // GetIsLinkLocal is a representation of the C type g_inet_address_get_is_link_local.
 func (recv *InetAddress) GetIsLinkLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11274,7 +11567,7 @@ func inetAddressGetIsLoopbackFunction_Set() error {
 // GetIsLoopback is a representation of the C type g_inet_address_get_is_loopback.
 func (recv *InetAddress) GetIsLoopback() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11306,7 +11599,7 @@ func inetAddressGetIsMcGlobalFunction_Set() error {
 // GetIsMcGlobal is a representation of the C type g_inet_address_get_is_mc_global.
 func (recv *InetAddress) GetIsMcGlobal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11338,7 +11631,7 @@ func inetAddressGetIsMcLinkLocalFunction_Set() error {
 // GetIsMcLinkLocal is a representation of the C type g_inet_address_get_is_mc_link_local.
 func (recv *InetAddress) GetIsMcLinkLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11370,7 +11663,7 @@ func inetAddressGetIsMcNodeLocalFunction_Set() error {
 // GetIsMcNodeLocal is a representation of the C type g_inet_address_get_is_mc_node_local.
 func (recv *InetAddress) GetIsMcNodeLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11402,7 +11695,7 @@ func inetAddressGetIsMcOrgLocalFunction_Set() error {
 // GetIsMcOrgLocal is a representation of the C type g_inet_address_get_is_mc_org_local.
 func (recv *InetAddress) GetIsMcOrgLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11434,7 +11727,7 @@ func inetAddressGetIsMcSiteLocalFunction_Set() error {
 // GetIsMcSiteLocal is a representation of the C type g_inet_address_get_is_mc_site_local.
 func (recv *InetAddress) GetIsMcSiteLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11466,7 +11759,7 @@ func inetAddressGetIsMulticastFunction_Set() error {
 // GetIsMulticast is a representation of the C type g_inet_address_get_is_multicast.
 func (recv *InetAddress) GetIsMulticast() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11498,7 +11791,7 @@ func inetAddressGetIsSiteLocalFunction_Set() error {
 // GetIsSiteLocal is a representation of the C type g_inet_address_get_is_site_local.
 func (recv *InetAddress) GetIsSiteLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11530,7 +11823,7 @@ func inetAddressGetNativeSizeFunction_Set() error {
 // GetNativeSize is a representation of the C type g_inet_address_get_native_size.
 func (recv *InetAddress) GetNativeSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11562,7 +11855,7 @@ func inetAddressToBytesFunction_Set() error {
 // ToBytes is a representation of the C type g_inet_address_to_bytes.
 func (recv *InetAddress) ToBytes() uint8 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11594,7 +11887,7 @@ func inetAddressToStringFunction_Set() error {
 // ToString is a representation of the C type g_inet_address_to_string.
 func (recv *InetAddress) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11620,7 +11913,14 @@ func inetAddressMaskObject_Set() error {
 }
 
 type InetAddressMask struct {
-	gobject.Object
+	native uintptr
+}
+
+func InetAddressMaskNewFromNative(native uintptr) *InetAddressMask {
+	return &InetAddressMask{native: native}
+}
+func (recv *InetAddressMask) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -11645,7 +11945,7 @@ func inetAddressMaskNewFunction_Set() error {
 // InetAddressMaskNew is a representation of the C type g_inet_address_mask_new.
 func InetAddressMaskNew(addr *InetAddress, length uint32) *InetAddressMask {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(addr.Native)
+	inArgs[0].SetPointer(addr.native)
 	inArgs[1].SetUint32(length)
 
 	var ret gi.Argument
@@ -11655,8 +11955,7 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) *InetAddressMask {
 		ret = inetAddressMaskNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddressMask{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressMaskNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11688,8 +11987,7 @@ func InetAddressMaskNewFromString(maskString string) *InetAddressMask {
 		ret = inetAddressMaskNewFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddressMask{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressMaskNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11712,8 +12010,8 @@ func inetAddressMaskEqualFunction_Set() error {
 // Equal is a representation of the C type g_inet_address_mask_equal.
 func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(mask2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mask2.native)
 
 	var ret gi.Argument
 
@@ -11745,7 +12043,7 @@ func inetAddressMaskGetAddressFunction_Set() error {
 // GetAddress is a representation of the C type g_inet_address_mask_get_address.
 func (recv *InetAddressMask) GetAddress() *InetAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11754,8 +12052,7 @@ func (recv *InetAddressMask) GetAddress() *InetAddress {
 		ret = inetAddressMaskGetAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11778,7 +12075,7 @@ func inetAddressMaskGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type g_inet_address_mask_get_family.
 func (recv *InetAddressMask) GetFamily() SocketFamily {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11810,7 +12107,7 @@ func inetAddressMaskGetLengthFunction_Set() error {
 // GetLength is a representation of the C type g_inet_address_mask_get_length.
 func (recv *InetAddressMask) GetLength() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11842,8 +12139,8 @@ func inetAddressMaskMatchesFunction_Set() error {
 // Matches is a representation of the C type g_inet_address_mask_matches.
 func (recv *InetAddressMask) Matches(address *InetAddress) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
 
 	var ret gi.Argument
 
@@ -11875,7 +12172,7 @@ func inetAddressMaskToStringFunction_Set() error {
 // ToString is a representation of the C type g_inet_address_mask_to_string.
 func (recv *InetAddressMask) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11901,22 +12198,31 @@ func inetSocketAddressObject_Set() error {
 }
 
 type InetSocketAddress struct {
-	SocketAddress
+	native uintptr
+}
+
+func InetSocketAddressNewFromNative(native uintptr) *InetSocketAddress {
+	return &InetSocketAddress{native: native}
+}
+func (recv *InetSocketAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromNative(recv.native)
+}
+func (recv *InetSocketAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InetSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.ObjectFieldGet(inetSocketAddressObject, recv.Native, "parent_instance")
-	value := &SocketAddress{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(inetSocketAddressObject, recv.native, "parent_instance")
+	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *InetSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(inetSocketAddressObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(inetSocketAddressObject, recv.native, "parent_instance", argValue)
 }
 
 var inetSocketAddressNewFunction *gi.Function
@@ -11937,7 +12243,7 @@ func inetSocketAddressNewFunction_Set() error {
 // InetSocketAddressNew is a representation of the C type g_inet_socket_address_new.
 func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(address.Native)
+	inArgs[0].SetPointer(address.native)
 	inArgs[1].SetUint16(port)
 
 	var ret gi.Argument
@@ -11947,8 +12253,7 @@ func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress 
 		ret = inetSocketAddressNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetSocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetSocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11981,8 +12286,7 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 		ret = inetSocketAddressNewFromStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetSocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetSocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12005,7 +12309,7 @@ func inetSocketAddressGetAddressFunction_Set() error {
 // GetAddress is a representation of the C type g_inet_socket_address_get_address.
 func (recv *InetSocketAddress) GetAddress() *InetAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12014,8 +12318,7 @@ func (recv *InetSocketAddress) GetAddress() *InetAddress {
 		ret = inetSocketAddressGetAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InetAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := InetAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12038,7 +12341,7 @@ func inetSocketAddressGetFlowinfoFunction_Set() error {
 // GetFlowinfo is a representation of the C type g_inet_socket_address_get_flowinfo.
 func (recv *InetSocketAddress) GetFlowinfo() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12070,7 +12373,7 @@ func inetSocketAddressGetPortFunction_Set() error {
 // GetPort is a representation of the C type g_inet_socket_address_get_port.
 func (recv *InetSocketAddress) GetPort() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12102,7 +12405,7 @@ func inetSocketAddressGetScopeIdFunction_Set() error {
 // GetScopeId is a representation of the C type g_inet_socket_address_get_scope_id.
 func (recv *InetSocketAddress) GetScopeId() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12128,7 +12431,14 @@ func inputStreamObject_Set() error {
 }
 
 type InputStream struct {
-	gobject.Object
+	native uintptr
+}
+
+func InputStreamNewFromNative(native uintptr) *InputStream {
+	return &InputStream{native: native}
+}
+func (recv *InputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -12153,7 +12463,7 @@ func inputStreamClearPendingFunction_Set() error {
 // ClearPending is a representation of the C type g_input_stream_clear_pending.
 func (recv *InputStream) ClearPending() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := inputStreamClearPendingFunction_Set()
 	if err == nil {
@@ -12181,8 +12491,8 @@ func inputStreamCloseFunction_Set() error {
 // Close is a representation of the C type g_input_stream_close.
 func (recv *InputStream) Close(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -12218,7 +12528,7 @@ func inputStreamHasPendingFunction_Set() error {
 // HasPending is a representation of the C type g_input_stream_has_pending.
 func (recv *InputStream) HasPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12250,7 +12560,7 @@ func inputStreamIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_input_stream_is_closed.
 func (recv *InputStream) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12300,7 +12610,7 @@ func inputStreamSetPendingFunction_Set() error {
 // SetPending is a representation of the C type g_input_stream_set_pending.
 func (recv *InputStream) SetPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12332,9 +12642,9 @@ func inputStreamSkipFunction_Set() error {
 // Skip is a representation of the C type g_input_stream_skip.
 func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(count)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -12364,7 +12674,14 @@ func listStoreObject_Set() error {
 }
 
 type ListStore struct {
-	gobject.Object
+	native uintptr
+}
+
+func ListStoreNewFromNative(native uintptr) *ListStore {
+	return &ListStore{native: native}
+}
+func (recv *ListStore) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_list_store_new' : parameter 'item_type' of type 'GType' not supported
@@ -12393,7 +12710,7 @@ func listStoreRemoveFunction_Set() error {
 // Remove is a representation of the C type g_list_store_remove.
 func (recv *ListStore) Remove(position uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(position)
 
 	err := listStoreRemoveFunction_Set()
@@ -12422,7 +12739,7 @@ func listStoreRemoveAllFunction_Set() error {
 // RemoveAll is a representation of the C type g_list_store_remove_all.
 func (recv *ListStore) RemoveAll() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := listStoreRemoveAllFunction_Set()
 	if err == nil {
@@ -12448,22 +12765,31 @@ func memoryInputStreamObject_Set() error {
 }
 
 type MemoryInputStream struct {
-	InputStream
+	native uintptr
+}
+
+func MemoryInputStreamNewFromNative(native uintptr) *MemoryInputStream {
+	return &MemoryInputStream{native: native}
+}
+func (recv *MemoryInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *MemoryInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.ObjectFieldGet(memoryInputStreamObject, recv.Native, "parent_instance")
-	value := &InputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(memoryInputStreamObject, recv.native, "parent_instance")
+	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MemoryInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(memoryInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(memoryInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var memoryInputStreamNewFunction *gi.Function
@@ -12491,8 +12817,7 @@ func MemoryInputStreamNew() *MemoryInputStream {
 		ret = memoryInputStreamNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MemoryInputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := MemoryInputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12517,22 +12842,31 @@ func memoryOutputStreamObject_Set() error {
 }
 
 type MemoryOutputStream struct {
-	OutputStream
+	native uintptr
+}
+
+func MemoryOutputStreamNewFromNative(native uintptr) *MemoryOutputStream {
+	return &MemoryOutputStream{native: native}
+}
+func (recv *MemoryOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *MemoryOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.ObjectFieldGet(memoryOutputStreamObject, recv.Native, "parent_instance")
-	value := &OutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(memoryOutputStreamObject, recv.native, "parent_instance")
+	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MemoryOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(memoryOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(memoryOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_memory_output_stream_new' : parameter 'data' of type 'gpointer' not supported
@@ -12562,8 +12896,7 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 		ret = memoryOutputStreamNewResizableFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MemoryOutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := MemoryOutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12588,7 +12921,7 @@ func memoryOutputStreamGetDataSizeFunction_Set() error {
 // GetDataSize is a representation of the C type g_memory_output_stream_get_data_size.
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12620,7 +12953,7 @@ func memoryOutputStreamGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_memory_output_stream_get_size.
 func (recv *MemoryOutputStream) GetSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12650,7 +12983,17 @@ func menuObject_Set() error {
 }
 
 type Menu struct {
-	MenuModel
+	native uintptr
+}
+
+func MenuNewFromNative(native uintptr) *Menu {
+	return &Menu{native: native}
+}
+func (recv *Menu) MenuModel() *MenuModel {
+	return MenuModelNewFromNative(recv.native)
+}
+func (recv *Menu) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var menuNewFunction *gi.Function
@@ -12678,8 +13021,7 @@ func MenuNew() *Menu {
 		ret = menuNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Menu{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12702,7 +13044,7 @@ func menuAppendFunction_Set() error {
 // Append is a representation of the C type g_menu_append.
 func (recv *Menu) Append(label string, detailedAction string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
 	inArgs[2].SetString(detailedAction)
 
@@ -12732,8 +13074,8 @@ func menuAppendItemFunction_Set() error {
 // AppendItem is a representation of the C type g_menu_append_item.
 func (recv *Menu) AppendItem(item *MenuItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(item.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
 
 	err := menuAppendItemFunction_Set()
 	if err == nil {
@@ -12761,9 +13103,9 @@ func menuAppendSectionFunction_Set() error {
 // AppendSection is a representation of the C type g_menu_append_section.
 func (recv *Menu) AppendSection(label string, section *MenuModel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
-	inArgs[2].SetPointer(section.Native)
+	inArgs[2].SetPointer(section.native)
 
 	err := menuAppendSectionFunction_Set()
 	if err == nil {
@@ -12791,9 +13133,9 @@ func menuAppendSubmenuFunction_Set() error {
 // AppendSubmenu is a representation of the C type g_menu_append_submenu.
 func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
-	inArgs[2].SetPointer(submenu.Native)
+	inArgs[2].SetPointer(submenu.native)
 
 	err := menuAppendSubmenuFunction_Set()
 	if err == nil {
@@ -12821,7 +13163,7 @@ func menuFreezeFunction_Set() error {
 // Freeze is a representation of the C type g_menu_freeze.
 func (recv *Menu) Freeze() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := menuFreezeFunction_Set()
 	if err == nil {
@@ -12849,7 +13191,7 @@ func menuInsertFunction_Set() error {
 // Insert is a representation of the C type g_menu_insert.
 func (recv *Menu) Insert(position int32, label string, detailedAction string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
 	inArgs[2].SetString(label)
 	inArgs[3].SetString(detailedAction)
@@ -12880,9 +13222,9 @@ func menuInsertItemFunction_Set() error {
 // InsertItem is a representation of the C type g_menu_insert_item.
 func (recv *Menu) InsertItem(position int32, item *MenuItem) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
-	inArgs[2].SetPointer(item.Native)
+	inArgs[2].SetPointer(item.native)
 
 	err := menuInsertItemFunction_Set()
 	if err == nil {
@@ -12910,10 +13252,10 @@ func menuInsertSectionFunction_Set() error {
 // InsertSection is a representation of the C type g_menu_insert_section.
 func (recv *Menu) InsertSection(position int32, label string, section *MenuModel) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
 	inArgs[2].SetString(label)
-	inArgs[3].SetPointer(section.Native)
+	inArgs[3].SetPointer(section.native)
 
 	err := menuInsertSectionFunction_Set()
 	if err == nil {
@@ -12941,10 +13283,10 @@ func menuInsertSubmenuFunction_Set() error {
 // InsertSubmenu is a representation of the C type g_menu_insert_submenu.
 func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
 	inArgs[2].SetString(label)
-	inArgs[3].SetPointer(submenu.Native)
+	inArgs[3].SetPointer(submenu.native)
 
 	err := menuInsertSubmenuFunction_Set()
 	if err == nil {
@@ -12972,7 +13314,7 @@ func menuPrependFunction_Set() error {
 // Prepend is a representation of the C type g_menu_prepend.
 func (recv *Menu) Prepend(label string, detailedAction string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
 	inArgs[2].SetString(detailedAction)
 
@@ -13002,8 +13344,8 @@ func menuPrependItemFunction_Set() error {
 // PrependItem is a representation of the C type g_menu_prepend_item.
 func (recv *Menu) PrependItem(item *MenuItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(item.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(item.native)
 
 	err := menuPrependItemFunction_Set()
 	if err == nil {
@@ -13031,9 +13373,9 @@ func menuPrependSectionFunction_Set() error {
 // PrependSection is a representation of the C type g_menu_prepend_section.
 func (recv *Menu) PrependSection(label string, section *MenuModel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
-	inArgs[2].SetPointer(section.Native)
+	inArgs[2].SetPointer(section.native)
 
 	err := menuPrependSectionFunction_Set()
 	if err == nil {
@@ -13061,9 +13403,9 @@ func menuPrependSubmenuFunction_Set() error {
 // PrependSubmenu is a representation of the C type g_menu_prepend_submenu.
 func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
-	inArgs[2].SetPointer(submenu.Native)
+	inArgs[2].SetPointer(submenu.native)
 
 	err := menuPrependSubmenuFunction_Set()
 	if err == nil {
@@ -13091,7 +13433,7 @@ func menuRemoveFunction_Set() error {
 // Remove is a representation of the C type g_menu_remove.
 func (recv *Menu) Remove(position int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
 
 	err := menuRemoveFunction_Set()
@@ -13120,7 +13462,7 @@ func menuRemoveAllFunction_Set() error {
 // RemoveAll is a representation of the C type g_menu_remove_all.
 func (recv *Menu) RemoveAll() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := menuRemoveAllFunction_Set()
 	if err == nil {
@@ -13142,7 +13484,14 @@ func menuAttributeIterObject_Set() error {
 }
 
 type MenuAttributeIter struct {
-	gobject.Object
+	native uintptr
+}
+
+func MenuAttributeIterNewFromNative(native uintptr) *MenuAttributeIter {
+	return &MenuAttributeIter{native: native}
+}
+func (recv *MenuAttributeIter) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -13151,17 +13500,16 @@ type MenuAttributeIter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
-	argValue := gi.ObjectFieldGet(menuAttributeIterObject, recv.Native, "priv")
-	value := &MenuAttributeIterPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(menuAttributeIterObject, recv.native, "priv")
+	value := MenuAttributeIterPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuAttributeIter) SetFieldPriv(value *MenuAttributeIterPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(menuAttributeIterObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(menuAttributeIterObject, recv.native, "priv", argValue)
 }
 
 var menuAttributeIterGetNameFunction *gi.Function
@@ -13182,7 +13530,7 @@ func menuAttributeIterGetNameFunction_Set() error {
 // GetName is a representation of the C type g_menu_attribute_iter_get_name.
 func (recv *MenuAttributeIter) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13218,7 +13566,7 @@ func menuAttributeIterNextFunction_Set() error {
 // Next is a representation of the C type g_menu_attribute_iter_next.
 func (recv *MenuAttributeIter) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13244,7 +13592,14 @@ func menuItemObject_Set() error {
 }
 
 type MenuItem struct {
-	gobject.Object
+	native uintptr
+}
+
+func MenuItemNewFromNative(native uintptr) *MenuItem {
+	return &MenuItem{native: native}
+}
+func (recv *MenuItem) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var menuItemNewFunction *gi.Function
@@ -13275,8 +13630,7 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 		ret = menuItemNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuItem{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13299,7 +13653,7 @@ func menuItemNewFromModelFunction_Set() error {
 // MenuItemNewFromModel is a representation of the C type g_menu_item_new_from_model.
 func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(model.Native)
+	inArgs[0].SetPointer(model.native)
 	inArgs[1].SetInt32(itemIndex)
 
 	var ret gi.Argument
@@ -13309,8 +13663,7 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 		ret = menuItemNewFromModelFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuItem{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13334,7 +13687,7 @@ func menuItemNewSectionFunction_Set() error {
 func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(label)
-	inArgs[1].SetPointer(section.Native)
+	inArgs[1].SetPointer(section.native)
 
 	var ret gi.Argument
 
@@ -13343,8 +13696,7 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 		ret = menuItemNewSectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuItem{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13368,7 +13720,7 @@ func menuItemNewSubmenuFunction_Set() error {
 func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(label)
-	inArgs[1].SetPointer(submenu.Native)
+	inArgs[1].SetPointer(submenu.native)
 
 	var ret gi.Argument
 
@@ -13377,8 +13729,7 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 		ret = menuItemNewSubmenuFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuItem{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuItemNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13405,7 +13756,7 @@ func menuItemGetLinkFunction_Set() error {
 // GetLink is a representation of the C type g_menu_item_get_link.
 func (recv *MenuItem) GetLink(link string) *MenuModel {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(link)
 
 	var ret gi.Argument
@@ -13415,8 +13766,7 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 		ret = menuItemGetLinkFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuModel{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuModelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13447,7 +13797,7 @@ func menuItemSetDetailedActionFunction_Set() error {
 // SetDetailedAction is a representation of the C type g_menu_item_set_detailed_action.
 func (recv *MenuItem) SetDetailedAction(detailedAction string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(detailedAction)
 
 	err := menuItemSetDetailedActionFunction_Set()
@@ -13478,7 +13828,7 @@ func menuItemSetLabelFunction_Set() error {
 // SetLabel is a representation of the C type g_menu_item_set_label.
 func (recv *MenuItem) SetLabel(label string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
 
 	err := menuItemSetLabelFunction_Set()
@@ -13507,9 +13857,9 @@ func menuItemSetLinkFunction_Set() error {
 // SetLink is a representation of the C type g_menu_item_set_link.
 func (recv *MenuItem) SetLink(link string, model *MenuModel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(link)
-	inArgs[2].SetPointer(model.Native)
+	inArgs[2].SetPointer(model.native)
 
 	err := menuItemSetLinkFunction_Set()
 	if err == nil {
@@ -13537,8 +13887,8 @@ func menuItemSetSectionFunction_Set() error {
 // SetSection is a representation of the C type g_menu_item_set_section.
 func (recv *MenuItem) SetSection(section *MenuModel) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(section.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(section.native)
 
 	err := menuItemSetSectionFunction_Set()
 	if err == nil {
@@ -13566,8 +13916,8 @@ func menuItemSetSubmenuFunction_Set() error {
 // SetSubmenu is a representation of the C type g_menu_item_set_submenu.
 func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(submenu.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(submenu.native)
 
 	err := menuItemSetSubmenuFunction_Set()
 	if err == nil {
@@ -13589,7 +13939,14 @@ func menuLinkIterObject_Set() error {
 }
 
 type MenuLinkIter struct {
-	gobject.Object
+	native uintptr
+}
+
+func MenuLinkIterNewFromNative(native uintptr) *MenuLinkIter {
+	return &MenuLinkIter{native: native}
+}
+func (recv *MenuLinkIter) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -13598,17 +13955,16 @@ type MenuLinkIter struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
-	argValue := gi.ObjectFieldGet(menuLinkIterObject, recv.Native, "priv")
-	value := &MenuLinkIterPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(menuLinkIterObject, recv.native, "priv")
+	value := MenuLinkIterPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuLinkIter) SetFieldPriv(value *MenuLinkIterPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(menuLinkIterObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(menuLinkIterObject, recv.native, "priv", argValue)
 }
 
 var menuLinkIterGetNameFunction *gi.Function
@@ -13629,7 +13985,7 @@ func menuLinkIterGetNameFunction_Set() error {
 // GetName is a representation of the C type g_menu_link_iter_get_name.
 func (recv *MenuLinkIter) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13661,7 +14017,7 @@ func menuLinkIterGetNextFunction_Set() error {
 // GetNext is a representation of the C type g_menu_link_iter_get_next.
 func (recv *MenuLinkIter) GetNext() (bool, string, *MenuModel) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -13673,8 +14029,7 @@ func (recv *MenuLinkIter) GetNext() (bool, string, *MenuModel) {
 
 	retGo := ret.Boolean()
 	out0 := outArgs[0].String(false)
-	out1 := &MenuModel{}
-	out1.Native = outArgs[1].Pointer()
+	out1 := MenuModelNewFromNative(outArgs[1].Pointer())
 
 	return retGo, out0, out1
 }
@@ -13697,7 +14052,7 @@ func menuLinkIterGetValueFunction_Set() error {
 // GetValue is a representation of the C type g_menu_link_iter_get_value.
 func (recv *MenuLinkIter) GetValue() *MenuModel {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13706,8 +14061,7 @@ func (recv *MenuLinkIter) GetValue() *MenuModel {
 		ret = menuLinkIterGetValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuModel{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuModelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13730,7 +14084,7 @@ func menuLinkIterNextFunction_Set() error {
 // Next is a representation of the C type g_menu_link_iter_next.
 func (recv *MenuLinkIter) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13756,7 +14110,14 @@ func menuModelObject_Set() error {
 }
 
 type MenuModel struct {
-	gobject.Object
+	native uintptr
+}
+
+func MenuModelNewFromNative(native uintptr) *MenuModel {
+	return &MenuModel{native: native}
+}
+func (recv *MenuModel) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -13765,17 +14126,16 @@ type MenuModel struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
-	argValue := gi.ObjectFieldGet(menuModelObject, recv.Native, "priv")
-	value := &MenuModelPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(menuModelObject, recv.native, "priv")
+	value := MenuModelPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuModel) SetFieldPriv(value *MenuModelPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(menuModelObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(menuModelObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_menu_model_get_item_attribute' : parameter '...' of type 'nil' not supported
@@ -13800,7 +14160,7 @@ func menuModelGetItemLinkFunction_Set() error {
 // GetItemLink is a representation of the C type g_menu_model_get_item_link.
 func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(itemIndex)
 	inArgs[2].SetString(link)
 
@@ -13811,8 +14171,7 @@ func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
 		ret = menuModelGetItemLinkFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuModel{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuModelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13835,7 +14194,7 @@ func menuModelGetNItemsFunction_Set() error {
 // GetNItems is a representation of the C type g_menu_model_get_n_items.
 func (recv *MenuModel) GetNItems() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13867,7 +14226,7 @@ func menuModelIsMutableFunction_Set() error {
 // IsMutable is a representation of the C type g_menu_model_is_mutable.
 func (recv *MenuModel) IsMutable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13899,7 +14258,7 @@ func menuModelItemsChangedFunction_Set() error {
 // ItemsChanged is a representation of the C type g_menu_model_items_changed.
 func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
 	inArgs[2].SetInt32(removed)
 	inArgs[3].SetInt32(added)
@@ -13930,7 +14289,7 @@ func menuModelIterateItemAttributesFunction_Set() error {
 // IterateItemAttributes is a representation of the C type g_menu_model_iterate_item_attributes.
 func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(itemIndex)
 
 	var ret gi.Argument
@@ -13940,8 +14299,7 @@ func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter
 		ret = menuModelIterateItemAttributesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuAttributeIter{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuAttributeIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13964,7 +14322,7 @@ func menuModelIterateItemLinksFunction_Set() error {
 // IterateItemLinks is a representation of the C type g_menu_model_iterate_item_links.
 func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(itemIndex)
 
 	var ret gi.Argument
@@ -13974,8 +14332,7 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 		ret = menuModelIterateItemLinksFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MenuLinkIter{}
-	retGo.Native = ret.Pointer()
+	retGo := MenuLinkIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13992,7 +14349,14 @@ func mountOperationObject_Set() error {
 }
 
 type MountOperation struct {
-	gobject.Object
+	native uintptr
+}
+
+func MountOperationNewFromNative(native uintptr) *MountOperation {
+	return &MountOperation{native: native}
+}
+func (recv *MountOperation) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -14001,17 +14365,16 @@ type MountOperation struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
-	argValue := gi.ObjectFieldGet(mountOperationObject, recv.Native, "priv")
-	value := &MountOperationPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(mountOperationObject, recv.native, "priv")
+	value := MountOperationPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MountOperation) SetFieldPriv(value *MountOperationPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(mountOperationObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(mountOperationObject, recv.native, "priv", argValue)
 }
 
 var mountOperationNewFunction *gi.Function
@@ -14039,8 +14402,7 @@ func MountOperationNew() *MountOperation {
 		ret = mountOperationNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MountOperation{}
-	retGo.Native = ret.Pointer()
+	retGo := MountOperationNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14063,7 +14425,7 @@ func mountOperationGetAnonymousFunction_Set() error {
 // GetAnonymous is a representation of the C type g_mount_operation_get_anonymous.
 func (recv *MountOperation) GetAnonymous() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14095,7 +14457,7 @@ func mountOperationGetChoiceFunction_Set() error {
 // GetChoice is a representation of the C type g_mount_operation_get_choice.
 func (recv *MountOperation) GetChoice() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14127,7 +14489,7 @@ func mountOperationGetDomainFunction_Set() error {
 // GetDomain is a representation of the C type g_mount_operation_get_domain.
 func (recv *MountOperation) GetDomain() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14159,7 +14521,7 @@ func mountOperationGetIsTcryptHiddenVolumeFunction_Set() error {
 // GetIsTcryptHiddenVolume is a representation of the C type g_mount_operation_get_is_tcrypt_hidden_volume.
 func (recv *MountOperation) GetIsTcryptHiddenVolume() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14191,7 +14553,7 @@ func mountOperationGetIsTcryptSystemVolumeFunction_Set() error {
 // GetIsTcryptSystemVolume is a representation of the C type g_mount_operation_get_is_tcrypt_system_volume.
 func (recv *MountOperation) GetIsTcryptSystemVolume() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14223,7 +14585,7 @@ func mountOperationGetPasswordFunction_Set() error {
 // GetPassword is a representation of the C type g_mount_operation_get_password.
 func (recv *MountOperation) GetPassword() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14255,7 +14617,7 @@ func mountOperationGetPasswordSaveFunction_Set() error {
 // GetPasswordSave is a representation of the C type g_mount_operation_get_password_save.
 func (recv *MountOperation) GetPasswordSave() PasswordSave {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14287,7 +14649,7 @@ func mountOperationGetPimFunction_Set() error {
 // GetPim is a representation of the C type g_mount_operation_get_pim.
 func (recv *MountOperation) GetPim() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14319,7 +14681,7 @@ func mountOperationGetUsernameFunction_Set() error {
 // GetUsername is a representation of the C type g_mount_operation_get_username.
 func (recv *MountOperation) GetUsername() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14351,7 +14713,7 @@ func mountOperationReplyFunction_Set() error {
 // Reply is a representation of the C type g_mount_operation_reply.
 func (recv *MountOperation) Reply(result MountOperationResult) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(result))
 
 	err := mountOperationReplyFunction_Set()
@@ -14380,7 +14742,7 @@ func mountOperationSetAnonymousFunction_Set() error {
 // SetAnonymous is a representation of the C type g_mount_operation_set_anonymous.
 func (recv *MountOperation) SetAnonymous(anonymous bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(anonymous)
 
 	err := mountOperationSetAnonymousFunction_Set()
@@ -14409,7 +14771,7 @@ func mountOperationSetChoiceFunction_Set() error {
 // SetChoice is a representation of the C type g_mount_operation_set_choice.
 func (recv *MountOperation) SetChoice(choice int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(choice)
 
 	err := mountOperationSetChoiceFunction_Set()
@@ -14438,7 +14800,7 @@ func mountOperationSetDomainFunction_Set() error {
 // SetDomain is a representation of the C type g_mount_operation_set_domain.
 func (recv *MountOperation) SetDomain(domain string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
 
 	err := mountOperationSetDomainFunction_Set()
@@ -14467,7 +14829,7 @@ func mountOperationSetIsTcryptHiddenVolumeFunction_Set() error {
 // SetIsTcryptHiddenVolume is a representation of the C type g_mount_operation_set_is_tcrypt_hidden_volume.
 func (recv *MountOperation) SetIsTcryptHiddenVolume(hiddenVolume bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(hiddenVolume)
 
 	err := mountOperationSetIsTcryptHiddenVolumeFunction_Set()
@@ -14496,7 +14858,7 @@ func mountOperationSetIsTcryptSystemVolumeFunction_Set() error {
 // SetIsTcryptSystemVolume is a representation of the C type g_mount_operation_set_is_tcrypt_system_volume.
 func (recv *MountOperation) SetIsTcryptSystemVolume(systemVolume bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(systemVolume)
 
 	err := mountOperationSetIsTcryptSystemVolumeFunction_Set()
@@ -14525,7 +14887,7 @@ func mountOperationSetPasswordFunction_Set() error {
 // SetPassword is a representation of the C type g_mount_operation_set_password.
 func (recv *MountOperation) SetPassword(password string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(password)
 
 	err := mountOperationSetPasswordFunction_Set()
@@ -14554,7 +14916,7 @@ func mountOperationSetPasswordSaveFunction_Set() error {
 // SetPasswordSave is a representation of the C type g_mount_operation_set_password_save.
 func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(save))
 
 	err := mountOperationSetPasswordSaveFunction_Set()
@@ -14583,7 +14945,7 @@ func mountOperationSetPimFunction_Set() error {
 // SetPim is a representation of the C type g_mount_operation_set_pim.
 func (recv *MountOperation) SetPim(pim uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(pim)
 
 	err := mountOperationSetPimFunction_Set()
@@ -14612,7 +14974,7 @@ func mountOperationSetUsernameFunction_Set() error {
 // SetUsername is a representation of the C type g_mount_operation_set_username.
 func (recv *MountOperation) SetUsername(username string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(username)
 
 	err := mountOperationSetUsernameFunction_Set()
@@ -14635,22 +14997,31 @@ func nativeSocketAddressObject_Set() error {
 }
 
 type NativeSocketAddress struct {
-	SocketAddress
+	native uintptr
+}
+
+func NativeSocketAddressNewFromNative(native uintptr) *NativeSocketAddress {
+	return &NativeSocketAddress{native: native}
+}
+func (recv *NativeSocketAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromNative(recv.native)
+}
+func (recv *NativeSocketAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.ObjectFieldGet(nativeSocketAddressObject, recv.Native, "parent_instance")
-	value := &SocketAddress{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(nativeSocketAddressObject, recv.native, "parent_instance")
+	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NativeSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(nativeSocketAddressObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(nativeSocketAddressObject, recv.native, "parent_instance", argValue)
 }
 
 // UNSUPPORTED : C value 'g_native_socket_address_new' : parameter 'native' of type 'gpointer' not supported
@@ -14667,22 +15038,31 @@ func nativeVolumeMonitorObject_Set() error {
 }
 
 type NativeVolumeMonitor struct {
-	VolumeMonitor
+	native uintptr
+}
+
+func NativeVolumeMonitorNewFromNative(native uintptr) *NativeVolumeMonitor {
+	return &NativeVolumeMonitor{native: native}
+}
+func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
+	return VolumeMonitorNewFromNative(recv.native)
+}
+func (recv *NativeVolumeMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeVolumeMonitor) FieldParentInstance() *VolumeMonitor {
-	argValue := gi.ObjectFieldGet(nativeVolumeMonitorObject, recv.Native, "parent_instance")
-	value := &VolumeMonitor{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(nativeVolumeMonitorObject, recv.native, "parent_instance")
+	value := VolumeMonitorNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NativeVolumeMonitor) SetFieldParentInstance(value *VolumeMonitor) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(nativeVolumeMonitorObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(nativeVolumeMonitorObject, recv.native, "parent_instance", argValue)
 }
 
 var networkAddressObject *gi.Object
@@ -14697,7 +15077,14 @@ func networkAddressObject_Set() error {
 }
 
 type NetworkAddress struct {
-	gobject.Object
+	native uintptr
+}
+
+func NetworkAddressNewFromNative(native uintptr) *NetworkAddress {
+	return &NetworkAddress{native: native}
+}
+func (recv *NetworkAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -14732,8 +15119,7 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 		ret = networkAddressNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &NetworkAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := NetworkAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14765,8 +15151,7 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 		ret = networkAddressNewLoopbackFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &NetworkAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := NetworkAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14789,7 +15174,7 @@ func networkAddressGetHostnameFunction_Set() error {
 // GetHostname is a representation of the C type g_network_address_get_hostname.
 func (recv *NetworkAddress) GetHostname() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14821,7 +15206,7 @@ func networkAddressGetPortFunction_Set() error {
 // GetPort is a representation of the C type g_network_address_get_port.
 func (recv *NetworkAddress) GetPort() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14853,7 +15238,7 @@ func networkAddressGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type g_network_address_get_scheme.
 func (recv *NetworkAddress) GetScheme() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14879,7 +15264,14 @@ func networkServiceObject_Set() error {
 }
 
 type NetworkService struct {
-	gobject.Object
+	native uintptr
+}
+
+func NetworkServiceNewFromNative(native uintptr) *NetworkService {
+	return &NetworkService{native: native}
+}
+func (recv *NetworkService) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -14915,8 +15307,7 @@ func NetworkServiceNew(service string, protocol string, domain string) *NetworkS
 		ret = networkServiceNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &NetworkService{}
-	retGo.Native = ret.Pointer()
+	retGo := NetworkServiceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14939,7 +15330,7 @@ func networkServiceGetDomainFunction_Set() error {
 // GetDomain is a representation of the C type g_network_service_get_domain.
 func (recv *NetworkService) GetDomain() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14971,7 +15362,7 @@ func networkServiceGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type g_network_service_get_protocol.
 func (recv *NetworkService) GetProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15003,7 +15394,7 @@ func networkServiceGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type g_network_service_get_scheme.
 func (recv *NetworkService) GetScheme() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15035,7 +15426,7 @@ func networkServiceGetServiceFunction_Set() error {
 // GetService is a representation of the C type g_network_service_get_service.
 func (recv *NetworkService) GetService() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15067,7 +15458,7 @@ func networkServiceSetSchemeFunction_Set() error {
 // SetScheme is a representation of the C type g_network_service_set_scheme.
 func (recv *NetworkService) SetScheme(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(scheme)
 
 	err := networkServiceSetSchemeFunction_Set()
@@ -15090,7 +15481,14 @@ func notificationObject_Set() error {
 }
 
 type Notification struct {
-	gobject.Object
+	native uintptr
+}
+
+func NotificationNewFromNative(native uintptr) *Notification {
+	return &Notification{native: native}
+}
+func (recv *Notification) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var notificationNewFunction *gi.Function
@@ -15120,8 +15518,7 @@ func NotificationNew(title string) *Notification {
 		ret = notificationNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Notification{}
-	retGo.Native = ret.Pointer()
+	retGo := NotificationNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15144,7 +15541,7 @@ func notificationAddButtonFunction_Set() error {
 // AddButton is a representation of the C type g_notification_add_button.
 func (recv *Notification) AddButton(label string, detailedAction string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(label)
 	inArgs[2].SetString(detailedAction)
 
@@ -15178,7 +15575,7 @@ func notificationSetBodyFunction_Set() error {
 // SetBody is a representation of the C type g_notification_set_body.
 func (recv *Notification) SetBody(body string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(body)
 
 	err := notificationSetBodyFunction_Set()
@@ -15207,7 +15604,7 @@ func notificationSetDefaultActionFunction_Set() error {
 // SetDefaultAction is a representation of the C type g_notification_set_default_action.
 func (recv *Notification) SetDefaultAction(detailedAction string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(detailedAction)
 
 	err := notificationSetDefaultActionFunction_Set()
@@ -15242,7 +15639,7 @@ func notificationSetPriorityFunction_Set() error {
 // SetPriority is a representation of the C type g_notification_set_priority.
 func (recv *Notification) SetPriority(priority NotificationPriority) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(priority))
 
 	err := notificationSetPriorityFunction_Set()
@@ -15271,7 +15668,7 @@ func notificationSetTitleFunction_Set() error {
 // SetTitle is a representation of the C type g_notification_set_title.
 func (recv *Notification) SetTitle(title string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(title)
 
 	err := notificationSetTitleFunction_Set()
@@ -15300,7 +15697,7 @@ func notificationSetUrgentFunction_Set() error {
 // SetUrgent is a representation of the C type g_notification_set_urgent.
 func (recv *Notification) SetUrgent(urgent bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(urgent)
 
 	err := notificationSetUrgentFunction_Set()
@@ -15323,7 +15720,14 @@ func outputStreamObject_Set() error {
 }
 
 type OutputStream struct {
-	gobject.Object
+	native uintptr
+}
+
+func OutputStreamNewFromNative(native uintptr) *OutputStream {
+	return &OutputStream{native: native}
+}
+func (recv *OutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -15348,7 +15752,7 @@ func outputStreamClearPendingFunction_Set() error {
 // ClearPending is a representation of the C type g_output_stream_clear_pending.
 func (recv *OutputStream) ClearPending() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := outputStreamClearPendingFunction_Set()
 	if err == nil {
@@ -15376,8 +15780,8 @@ func outputStreamCloseFunction_Set() error {
 // Close is a representation of the C type g_output_stream_close.
 func (recv *OutputStream) Close(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -15413,8 +15817,8 @@ func outputStreamFlushFunction_Set() error {
 // Flush is a representation of the C type g_output_stream_flush.
 func (recv *OutputStream) Flush(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -15450,7 +15854,7 @@ func outputStreamHasPendingFunction_Set() error {
 // HasPending is a representation of the C type g_output_stream_has_pending.
 func (recv *OutputStream) HasPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15482,7 +15886,7 @@ func outputStreamIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_output_stream_is_closed.
 func (recv *OutputStream) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15514,7 +15918,7 @@ func outputStreamIsClosingFunction_Set() error {
 // IsClosing is a representation of the C type g_output_stream_is_closing.
 func (recv *OutputStream) IsClosing() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15548,7 +15952,7 @@ func outputStreamSetPendingFunction_Set() error {
 // SetPending is a representation of the C type g_output_stream_set_pending.
 func (recv *OutputStream) SetPending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15612,7 +16016,14 @@ func permissionObject_Set() error {
 }
 
 type Permission struct {
-	gobject.Object
+	native uintptr
+}
+
+func PermissionNewFromNative(native uintptr) *Permission {
+	return &Permission{native: native}
+}
+func (recv *Permission) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -15637,8 +16048,8 @@ func permissionAcquireFunction_Set() error {
 // Acquire is a representation of the C type g_permission_acquire.
 func (recv *Permission) Acquire(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -15674,7 +16085,7 @@ func permissionGetAllowedFunction_Set() error {
 // GetAllowed is a representation of the C type g_permission_get_allowed.
 func (recv *Permission) GetAllowed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15706,7 +16117,7 @@ func permissionGetCanAcquireFunction_Set() error {
 // GetCanAcquire is a representation of the C type g_permission_get_can_acquire.
 func (recv *Permission) GetCanAcquire() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15738,7 +16149,7 @@ func permissionGetCanReleaseFunction_Set() error {
 // GetCanRelease is a representation of the C type g_permission_get_can_release.
 func (recv *Permission) GetCanRelease() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15770,7 +16181,7 @@ func permissionImplUpdateFunction_Set() error {
 // ImplUpdate is a representation of the C type g_permission_impl_update.
 func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease bool) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(allowed)
 	inArgs[2].SetBoolean(canAcquire)
 	inArgs[3].SetBoolean(canRelease)
@@ -15801,8 +16212,8 @@ func permissionReleaseFunction_Set() error {
 // Release is a representation of the C type g_permission_release.
 func (recv *Permission) Release(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -15832,7 +16243,14 @@ func propertyActionObject_Set() error {
 }
 
 type PropertyAction struct {
-	gobject.Object
+	native uintptr
+}
+
+func PropertyActionNewFromNative(native uintptr) *PropertyAction {
+	return &PropertyAction{native: native}
+}
+func (recv *PropertyAction) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_property_action_new' : parameter 'object' of type 'GObject.Object' not supported
@@ -15849,22 +16267,34 @@ func proxyAddressObject_Set() error {
 }
 
 type ProxyAddress struct {
-	InetSocketAddress
+	native uintptr
+}
+
+func ProxyAddressNewFromNative(native uintptr) *ProxyAddress {
+	return &ProxyAddress{native: native}
+}
+func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {
+	return InetSocketAddressNewFromNative(recv.native)
+}
+func (recv *ProxyAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromNative(recv.native)
+}
+func (recv *ProxyAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ProxyAddress) FieldParentInstance() *InetSocketAddress {
-	argValue := gi.ObjectFieldGet(proxyAddressObject, recv.Native, "parent_instance")
-	value := &InetSocketAddress{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(proxyAddressObject, recv.native, "parent_instance")
+	value := InetSocketAddressNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ProxyAddress) SetFieldParentInstance(value *InetSocketAddress) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(proxyAddressObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(proxyAddressObject, recv.native, "parent_instance", argValue)
 }
 
 var proxyAddressNewFunction *gi.Function
@@ -15885,7 +16315,7 @@ func proxyAddressNewFunction_Set() error {
 // ProxyAddressNew is a representation of the C type g_proxy_address_new.
 func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(inetaddr.Native)
+	inArgs[0].SetPointer(inetaddr.native)
 	inArgs[1].SetUint16(port)
 	inArgs[2].SetString(protocol)
 	inArgs[3].SetString(destHostname)
@@ -15900,8 +16330,7 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 		ret = proxyAddressNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ProxyAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := ProxyAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15924,7 +16353,7 @@ func proxyAddressGetDestinationHostnameFunction_Set() error {
 // GetDestinationHostname is a representation of the C type g_proxy_address_get_destination_hostname.
 func (recv *ProxyAddress) GetDestinationHostname() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15956,7 +16385,7 @@ func proxyAddressGetDestinationPortFunction_Set() error {
 // GetDestinationPort is a representation of the C type g_proxy_address_get_destination_port.
 func (recv *ProxyAddress) GetDestinationPort() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15988,7 +16417,7 @@ func proxyAddressGetDestinationProtocolFunction_Set() error {
 // GetDestinationProtocol is a representation of the C type g_proxy_address_get_destination_protocol.
 func (recv *ProxyAddress) GetDestinationProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16020,7 +16449,7 @@ func proxyAddressGetPasswordFunction_Set() error {
 // GetPassword is a representation of the C type g_proxy_address_get_password.
 func (recv *ProxyAddress) GetPassword() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16052,7 +16481,7 @@ func proxyAddressGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type g_proxy_address_get_protocol.
 func (recv *ProxyAddress) GetProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16084,7 +16513,7 @@ func proxyAddressGetUriFunction_Set() error {
 // GetUri is a representation of the C type g_proxy_address_get_uri.
 func (recv *ProxyAddress) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16116,7 +16545,7 @@ func proxyAddressGetUsernameFunction_Set() error {
 // GetUsername is a representation of the C type g_proxy_address_get_username.
 func (recv *ProxyAddress) GetUsername() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16142,7 +16571,17 @@ func proxyAddressEnumeratorObject_Set() error {
 }
 
 type ProxyAddressEnumerator struct {
-	SocketAddressEnumerator
+	native uintptr
+}
+
+func ProxyAddressEnumeratorNewFromNative(native uintptr) *ProxyAddressEnumerator {
+	return &ProxyAddressEnumerator{native: native}
+}
+func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {
+	return SocketAddressEnumeratorNewFromNative(recv.native)
+}
+func (recv *ProxyAddressEnumerator) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var resolverObject *gi.Object
@@ -16157,7 +16596,14 @@ func resolverObject_Set() error {
 }
 
 type Resolver struct {
-	gobject.Object
+	native uintptr
+}
+
+func ResolverNewFromNative(native uintptr) *Resolver {
+	return &Resolver{native: native}
+}
+func (recv *Resolver) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -16166,17 +16612,16 @@ type Resolver struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Resolver) FieldPriv() *ResolverPrivate {
-	argValue := gi.ObjectFieldGet(resolverObject, recv.Native, "priv")
-	value := &ResolverPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(resolverObject, recv.native, "priv")
+	value := ResolverPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Resolver) SetFieldPriv(value *ResolverPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(resolverObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(resolverObject, recv.native, "priv", argValue)
 }
 
 var resolverLookupByAddressFunction *gi.Function
@@ -16197,9 +16642,9 @@ func resolverLookupByAddressFunction_Set() error {
 // LookupByAddress is a representation of the C type g_resolver_lookup_by_address.
 func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancellable) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -16259,7 +16704,7 @@ func resolverSetDefaultFunction_Set() error {
 // SetDefault is a representation of the C type g_resolver_set_default.
 func (recv *Resolver) SetDefault() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := resolverSetDefaultFunction_Set()
 	if err == nil {
@@ -16281,7 +16726,14 @@ func settingsObject_Set() error {
 }
 
 type Settings struct {
-	gobject.Object
+	native uintptr
+}
+
+func SettingsNewFromNative(native uintptr) *Settings {
+	return &Settings{native: native}
+}
+func (recv *Settings) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -16290,17 +16742,16 @@ type Settings struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Settings) FieldPriv() *SettingsPrivate {
-	argValue := gi.ObjectFieldGet(settingsObject, recv.Native, "priv")
-	value := &SettingsPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(settingsObject, recv.native, "priv")
+	value := SettingsPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(settingsObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(settingsObject, recv.native, "priv", argValue)
 }
 
 var settingsNewFunction *gi.Function
@@ -16330,8 +16781,7 @@ func SettingsNew(schemaId string) *Settings {
 		ret = settingsNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16354,8 +16804,8 @@ func settingsNewFullFunction_Set() error {
 // SettingsNewFull is a representation of the C type g_settings_new_full.
 func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(schema.Native)
-	inArgs[1].SetPointer(backend.Native)
+	inArgs[0].SetPointer(schema.native)
+	inArgs[1].SetPointer(backend.native)
 	inArgs[2].SetString(path)
 
 	var ret gi.Argument
@@ -16365,8 +16815,7 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 		ret = settingsNewFullFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16390,7 +16839,7 @@ func settingsNewWithBackendFunction_Set() error {
 func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(schemaId)
-	inArgs[1].SetPointer(backend.Native)
+	inArgs[1].SetPointer(backend.native)
 
 	var ret gi.Argument
 
@@ -16399,8 +16848,7 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 		ret = settingsNewWithBackendFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16424,7 +16872,7 @@ func settingsNewWithBackendAndPathFunction_Set() error {
 func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, path string) *Settings {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(schemaId)
-	inArgs[1].SetPointer(backend.Native)
+	inArgs[1].SetPointer(backend.native)
 	inArgs[2].SetString(path)
 
 	var ret gi.Argument
@@ -16434,8 +16882,7 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 		ret = settingsNewWithBackendAndPathFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16468,8 +16915,7 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 		ret = settingsNewWithPathFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16492,7 +16938,7 @@ func settingsApplyFunction_Set() error {
 // Apply is a representation of the C type g_settings_apply.
 func (recv *Settings) Apply() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := settingsApplyFunction_Set()
 	if err == nil {
@@ -16528,7 +16974,7 @@ func settingsDelayFunction_Set() error {
 // Delay is a representation of the C type g_settings_delay.
 func (recv *Settings) Delay() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := settingsDelayFunction_Set()
 	if err == nil {
@@ -16558,7 +17004,7 @@ func settingsGetBooleanFunction_Set() error {
 // GetBoolean is a representation of the C type g_settings_get_boolean.
 func (recv *Settings) GetBoolean(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16591,7 +17037,7 @@ func settingsGetChildFunction_Set() error {
 // GetChild is a representation of the C type g_settings_get_child.
 func (recv *Settings) GetChild(name string) *Settings {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -16601,8 +17047,7 @@ func (recv *Settings) GetChild(name string) *Settings {
 		ret = settingsGetChildFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Settings{}
-	retGo.Native = ret.Pointer()
+	retGo := SettingsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16627,7 +17072,7 @@ func settingsGetDoubleFunction_Set() error {
 // GetDouble is a representation of the C type g_settings_get_double.
 func (recv *Settings) GetDouble(key string) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16660,7 +17105,7 @@ func settingsGetEnumFunction_Set() error {
 // GetEnum is a representation of the C type g_settings_get_enum.
 func (recv *Settings) GetEnum(key string) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16693,7 +17138,7 @@ func settingsGetFlagsFunction_Set() error {
 // GetFlags is a representation of the C type g_settings_get_flags.
 func (recv *Settings) GetFlags(key string) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16726,7 +17171,7 @@ func settingsGetHasUnappliedFunction_Set() error {
 // GetHasUnapplied is a representation of the C type g_settings_get_has_unapplied.
 func (recv *Settings) GetHasUnapplied() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16758,7 +17203,7 @@ func settingsGetIntFunction_Set() error {
 // GetInt is a representation of the C type g_settings_get_int.
 func (recv *Settings) GetInt(key string) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16791,7 +17236,7 @@ func settingsGetInt64Function_Set() error {
 // GetInt64 is a representation of the C type g_settings_get_int64.
 func (recv *Settings) GetInt64(key string) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16828,7 +17273,7 @@ func settingsGetStringFunction_Set() error {
 // GetString is a representation of the C type g_settings_get_string.
 func (recv *Settings) GetString(key string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16861,7 +17306,7 @@ func settingsGetStrvFunction_Set() error {
 // GetStrv is a representation of the C type g_settings_get_strv.
 func (recv *Settings) GetStrv(key string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	err := settingsGetStrvFunction_Set()
@@ -16890,7 +17335,7 @@ func settingsGetUintFunction_Set() error {
 // GetUint is a representation of the C type g_settings_get_uint.
 func (recv *Settings) GetUint(key string) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16923,7 +17368,7 @@ func settingsGetUint64Function_Set() error {
 // GetUint64 is a representation of the C type g_settings_get_uint64.
 func (recv *Settings) GetUint64(key string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -16960,7 +17405,7 @@ func settingsIsWritableFunction_Set() error {
 // IsWritable is a representation of the C type g_settings_is_writable.
 func (recv *Settings) IsWritable(name string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -16993,7 +17438,7 @@ func settingsListChildrenFunction_Set() error {
 // ListChildren is a representation of the C type g_settings_list_children.
 func (recv *Settings) ListChildren() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := settingsListChildrenFunction_Set()
 	if err == nil {
@@ -17021,7 +17466,7 @@ func settingsListKeysFunction_Set() error {
 // ListKeys is a representation of the C type g_settings_list_keys.
 func (recv *Settings) ListKeys() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := settingsListKeysFunction_Set()
 	if err == nil {
@@ -17051,7 +17496,7 @@ func settingsResetFunction_Set() error {
 // Reset is a representation of the C type g_settings_reset.
 func (recv *Settings) Reset(key string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	err := settingsResetFunction_Set()
@@ -17080,7 +17525,7 @@ func settingsRevertFunction_Set() error {
 // Revert is a representation of the C type g_settings_revert.
 func (recv *Settings) Revert() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := settingsRevertFunction_Set()
 	if err == nil {
@@ -17110,7 +17555,7 @@ func settingsSetBooleanFunction_Set() error {
 // SetBoolean is a representation of the C type g_settings_set_boolean.
 func (recv *Settings) SetBoolean(key string, value bool) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetBoolean(value)
 
@@ -17144,7 +17589,7 @@ func settingsSetDoubleFunction_Set() error {
 // SetDouble is a representation of the C type g_settings_set_double.
 func (recv *Settings) SetDouble(key string, value float64) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetFloat64(value)
 
@@ -17178,7 +17623,7 @@ func settingsSetEnumFunction_Set() error {
 // SetEnum is a representation of the C type g_settings_set_enum.
 func (recv *Settings) SetEnum(key string, value int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetInt32(value)
 
@@ -17212,7 +17657,7 @@ func settingsSetFlagsFunction_Set() error {
 // SetFlags is a representation of the C type g_settings_set_flags.
 func (recv *Settings) SetFlags(key string, value uint32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetUint32(value)
 
@@ -17246,7 +17691,7 @@ func settingsSetIntFunction_Set() error {
 // SetInt is a representation of the C type g_settings_set_int.
 func (recv *Settings) SetInt(key string, value int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetInt32(value)
 
@@ -17280,7 +17725,7 @@ func settingsSetInt64Function_Set() error {
 // SetInt64 is a representation of the C type g_settings_set_int64.
 func (recv *Settings) SetInt64(key string, value int64) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetInt64(value)
 
@@ -17314,7 +17759,7 @@ func settingsSetStringFunction_Set() error {
 // SetString is a representation of the C type g_settings_set_string.
 func (recv *Settings) SetString(key string, value string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetString(value)
 
@@ -17350,7 +17795,7 @@ func settingsSetUintFunction_Set() error {
 // SetUint is a representation of the C type g_settings_set_uint.
 func (recv *Settings) SetUint(key string, value uint32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetUint32(value)
 
@@ -17384,7 +17829,7 @@ func settingsSetUint64Function_Set() error {
 // SetUint64 is a representation of the C type g_settings_set_uint64.
 func (recv *Settings) SetUint64(key string, value uint64) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 	inArgs[2].SetUint64(value)
 
@@ -17414,7 +17859,14 @@ func settingsBackendObject_Set() error {
 }
 
 type SettingsBackend struct {
-	gobject.Object
+	native uintptr
+}
+
+func SettingsBackendNewFromNative(native uintptr) *SettingsBackend {
+	return &SettingsBackend{native: native}
+}
+func (recv *SettingsBackend) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -17447,7 +17899,7 @@ func settingsBackendPathWritableChangedFunction_Set() error {
 // PathWritableChanged is a representation of the C type g_settings_backend_path_writable_changed.
 func (recv *SettingsBackend) PathWritableChanged(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := settingsBackendPathWritableChangedFunction_Set()
@@ -17476,7 +17928,7 @@ func settingsBackendWritableChangedFunction_Set() error {
 // WritableChanged is a representation of the C type g_settings_backend_writable_changed.
 func (recv *SettingsBackend) WritableChanged(key string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	err := settingsBackendWritableChangedFunction_Set()
@@ -17499,7 +17951,14 @@ func simpleActionObject_Set() error {
 }
 
 type SimpleAction struct {
-	gobject.Object
+	native uintptr
+}
+
+func SimpleActionNewFromNative(native uintptr) *SimpleAction {
+	return &SimpleAction{native: native}
+}
+func (recv *SimpleAction) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_simple_action_new' : parameter 'parameter_type' of type 'GLib.VariantType' not supported
@@ -17524,7 +17983,7 @@ func simpleActionSetEnabledFunction_Set() error {
 // SetEnabled is a representation of the C type g_simple_action_set_enabled.
 func (recv *SimpleAction) SetEnabled(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enabled)
 
 	err := simpleActionSetEnabledFunction_Set()
@@ -17551,7 +18010,14 @@ func simpleActionGroupObject_Set() error {
 }
 
 type SimpleActionGroup struct {
-	gobject.Object
+	native uintptr
+}
+
+func SimpleActionGroupNewFromNative(native uintptr) *SimpleActionGroup {
+	return &SimpleActionGroup{native: native}
+}
+func (recv *SimpleActionGroup) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var simpleActionGroupNewFunction *gi.Function
@@ -17579,8 +18045,7 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 		ret = simpleActionGroupNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SimpleActionGroup{}
-	retGo.Native = ret.Pointer()
+	retGo := SimpleActionGroupNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -17609,7 +18074,7 @@ func simpleActionGroupRemoveFunction_Set() error {
 // Remove is a representation of the C type g_simple_action_group_remove.
 func (recv *SimpleActionGroup) Remove(actionName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(actionName)
 
 	err := simpleActionGroupRemoveFunction_Set()
@@ -17632,7 +18097,14 @@ func simpleAsyncResultObject_Set() error {
 }
 
 type SimpleAsyncResult struct {
-	gobject.Object
+	native uintptr
+}
+
+func SimpleAsyncResultNewFromNative(native uintptr) *SimpleAsyncResult {
+	return &SimpleAsyncResult{native: native}
+}
+func (recv *SimpleAsyncResult) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_simple_async_result_new' : parameter 'source_object' of type 'GObject.Object' not supported
@@ -17661,7 +18133,7 @@ func simpleAsyncResultCompleteFunction_Set() error {
 // Complete is a representation of the C type g_simple_async_result_complete.
 func (recv *SimpleAsyncResult) Complete() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := simpleAsyncResultCompleteFunction_Set()
 	if err == nil {
@@ -17689,7 +18161,7 @@ func simpleAsyncResultCompleteInIdleFunction_Set() error {
 // CompleteInIdle is a representation of the C type g_simple_async_result_complete_in_idle.
 func (recv *SimpleAsyncResult) CompleteInIdle() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := simpleAsyncResultCompleteInIdleFunction_Set()
 	if err == nil {
@@ -17717,7 +18189,7 @@ func simpleAsyncResultGetOpResGbooleanFunction_Set() error {
 // GetOpResGboolean is a representation of the C type g_simple_async_result_get_op_res_gboolean.
 func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17751,7 +18223,7 @@ func simpleAsyncResultGetOpResGssizeFunction_Set() error {
 // GetOpResGssize is a representation of the C type g_simple_async_result_get_op_res_gssize.
 func (recv *SimpleAsyncResult) GetOpResGssize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17785,7 +18257,7 @@ func simpleAsyncResultPropagateErrorFunction_Set() error {
 // PropagateError is a representation of the C type g_simple_async_result_propagate_error.
 func (recv *SimpleAsyncResult) PropagateError() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17819,8 +18291,8 @@ func simpleAsyncResultSetCheckCancellableFunction_Set() error {
 // SetCheckCancellable is a representation of the C type g_simple_async_result_set_check_cancellable.
 func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(checkCancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(checkCancellable.native)
 
 	err := simpleAsyncResultSetCheckCancellableFunction_Set()
 	if err == nil {
@@ -17854,7 +18326,7 @@ func simpleAsyncResultSetHandleCancellationFunction_Set() error {
 // SetHandleCancellation is a representation of the C type g_simple_async_result_set_handle_cancellation.
 func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(handleCancellation)
 
 	err := simpleAsyncResultSetHandleCancellationFunction_Set()
@@ -17883,7 +18355,7 @@ func simpleAsyncResultSetOpResGbooleanFunction_Set() error {
 // SetOpResGboolean is a representation of the C type g_simple_async_result_set_op_res_gboolean.
 func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(opRes)
 
 	err := simpleAsyncResultSetOpResGbooleanFunction_Set()
@@ -17914,7 +18386,7 @@ func simpleAsyncResultSetOpResGssizeFunction_Set() error {
 // SetOpResGssize is a representation of the C type g_simple_async_result_set_op_res_gssize.
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(opRes)
 
 	err := simpleAsyncResultSetOpResGssizeFunction_Set()
@@ -17939,7 +18411,17 @@ func simpleIOStreamObject_Set() error {
 }
 
 type SimpleIOStream struct {
-	IOStream
+	native uintptr
+}
+
+func SimpleIOStreamNewFromNative(native uintptr) *SimpleIOStream {
+	return &SimpleIOStream{native: native}
+}
+func (recv *SimpleIOStream) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *SimpleIOStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var simpleIOStreamNewFunction *gi.Function
@@ -17960,8 +18442,8 @@ func simpleIOStreamNewFunction_Set() error {
 // SimpleIOStreamNew is a representation of the C type g_simple_io_stream_new.
 func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(inputStream.Native)
-	inArgs[1].SetPointer(outputStream.Native)
+	inArgs[0].SetPointer(inputStream.native)
+	inArgs[1].SetPointer(outputStream.native)
 
 	var ret gi.Argument
 
@@ -17970,8 +18452,7 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 		ret = simpleIOStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SimpleIOStream{}
-	retGo.Native = ret.Pointer()
+	retGo := SimpleIOStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -17988,7 +18469,17 @@ func simplePermissionObject_Set() error {
 }
 
 type SimplePermission struct {
-	Permission
+	native uintptr
+}
+
+func SimplePermissionNewFromNative(native uintptr) *SimplePermission {
+	return &SimplePermission{native: native}
+}
+func (recv *SimplePermission) Permission() *Permission {
+	return PermissionNewFromNative(recv.native)
+}
+func (recv *SimplePermission) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var simplePermissionNewFunction *gi.Function
@@ -18018,8 +18509,7 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 		ret = simplePermissionNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SimplePermission{}
-	retGo.Native = ret.Pointer()
+	retGo := SimplePermissionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18036,7 +18526,14 @@ func simpleProxyResolverObject_Set() error {
 }
 
 type SimpleProxyResolver struct {
-	gobject.Object
+	native uintptr
+}
+
+func SimpleProxyResolverNewFromNative(native uintptr) *SimpleProxyResolver {
+	return &SimpleProxyResolver{native: native}
+}
+func (recv *SimpleProxyResolver) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -18061,7 +18558,7 @@ func simpleProxyResolverSetDefaultProxyFunction_Set() error {
 // SetDefaultProxy is a representation of the C type g_simple_proxy_resolver_set_default_proxy.
 func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(defaultProxy)
 
 	err := simpleProxyResolverSetDefaultProxyFunction_Set()
@@ -18090,7 +18587,7 @@ func simpleProxyResolverSetIgnoreHostsFunction_Set() error {
 // SetIgnoreHosts is a representation of the C type g_simple_proxy_resolver_set_ignore_hosts.
 func (recv *SimpleProxyResolver) SetIgnoreHosts(ignoreHosts string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(ignoreHosts)
 
 	err := simpleProxyResolverSetIgnoreHostsFunction_Set()
@@ -18119,7 +18616,7 @@ func simpleProxyResolverSetUriProxyFunction_Set() error {
 // SetUriProxy is a representation of the C type g_simple_proxy_resolver_set_uri_proxy.
 func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uriScheme)
 	inArgs[2].SetString(proxy)
 
@@ -18143,7 +18640,14 @@ func socketObject_Set() error {
 }
 
 type Socket struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketNewFromNative(native uintptr) *Socket {
+	return &Socket{native: native}
+}
+func (recv *Socket) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -18152,17 +18656,16 @@ type Socket struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Socket) FieldPriv() *SocketPrivate {
-	argValue := gi.ObjectFieldGet(socketObject, recv.Native, "priv")
-	value := &SocketPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketObject, recv.native, "priv")
+	value := SocketPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Socket) SetFieldPriv(value *SocketPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketObject, recv.native, "priv", argValue)
 }
 
 var socketNewFunction *gi.Function
@@ -18194,8 +18697,7 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) *
 		ret = socketNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Socket{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18227,8 +18729,7 @@ func SocketNewFromFd(fd int32) *Socket {
 		ret = socketNewFromFdFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Socket{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18251,8 +18752,8 @@ func socketAcceptFunction_Set() error {
 // Accept is a representation of the C type g_socket_accept.
 func (recv *Socket) Accept(cancellable *Cancellable) *Socket {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -18261,8 +18762,7 @@ func (recv *Socket) Accept(cancellable *Cancellable) *Socket {
 		ret = socketAcceptFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Socket{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18285,8 +18785,8 @@ func socketBindFunction_Set() error {
 // Bind is a representation of the C type g_socket_bind.
 func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
 	inArgs[2].SetBoolean(allowReuse)
 
 	var ret gi.Argument
@@ -18319,7 +18819,7 @@ func socketCheckConnectResultFunction_Set() error {
 // CheckConnectResult is a representation of the C type g_socket_check_connect_result.
 func (recv *Socket) CheckConnectResult() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18351,7 +18851,7 @@ func socketCloseFunction_Set() error {
 // Close is a representation of the C type g_socket_close.
 func (recv *Socket) Close() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18389,9 +18889,9 @@ func socketConnectFunction_Set() error {
 // Connect is a representation of the C type g_socket_connect.
 func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -18423,7 +18923,7 @@ func socketConnectionFactoryCreateConnectionFunction_Set() error {
 // ConnectionFactoryCreateConnection is a representation of the C type g_socket_connection_factory_create_connection.
 func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18432,8 +18932,7 @@ func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
 		ret = socketConnectionFactoryCreateConnectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18458,7 +18957,7 @@ func socketGetAvailableBytesFunction_Set() error {
 // GetAvailableBytes is a representation of the C type g_socket_get_available_bytes.
 func (recv *Socket) GetAvailableBytes() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18490,7 +18989,7 @@ func socketGetBlockingFunction_Set() error {
 // GetBlocking is a representation of the C type g_socket_get_blocking.
 func (recv *Socket) GetBlocking() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18522,7 +19021,7 @@ func socketGetBroadcastFunction_Set() error {
 // GetBroadcast is a representation of the C type g_socket_get_broadcast.
 func (recv *Socket) GetBroadcast() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18554,7 +19053,7 @@ func socketGetCredentialsFunction_Set() error {
 // GetCredentials is a representation of the C type g_socket_get_credentials.
 func (recv *Socket) GetCredentials() *Credentials {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18563,8 +19062,7 @@ func (recv *Socket) GetCredentials() *Credentials {
 		ret = socketGetCredentialsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credentials{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18587,7 +19085,7 @@ func socketGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type g_socket_get_family.
 func (recv *Socket) GetFamily() SocketFamily {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18619,7 +19117,7 @@ func socketGetFdFunction_Set() error {
 // GetFd is a representation of the C type g_socket_get_fd.
 func (recv *Socket) GetFd() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18651,7 +19149,7 @@ func socketGetKeepaliveFunction_Set() error {
 // GetKeepalive is a representation of the C type g_socket_get_keepalive.
 func (recv *Socket) GetKeepalive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18683,7 +19181,7 @@ func socketGetListenBacklogFunction_Set() error {
 // GetListenBacklog is a representation of the C type g_socket_get_listen_backlog.
 func (recv *Socket) GetListenBacklog() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18715,7 +19213,7 @@ func socketGetLocalAddressFunction_Set() error {
 // GetLocalAddress is a representation of the C type g_socket_get_local_address.
 func (recv *Socket) GetLocalAddress() *SocketAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18724,8 +19222,7 @@ func (recv *Socket) GetLocalAddress() *SocketAddress {
 		ret = socketGetLocalAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18748,7 +19245,7 @@ func socketGetMulticastLoopbackFunction_Set() error {
 // GetMulticastLoopback is a representation of the C type g_socket_get_multicast_loopback.
 func (recv *Socket) GetMulticastLoopback() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18780,7 +19277,7 @@ func socketGetMulticastTtlFunction_Set() error {
 // GetMulticastTtl is a representation of the C type g_socket_get_multicast_ttl.
 func (recv *Socket) GetMulticastTtl() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18812,7 +19309,7 @@ func socketGetOptionFunction_Set() error {
 // GetOption is a representation of the C type g_socket_get_option.
 func (recv *Socket) GetOption(level int32, optname int32) (bool, int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(level)
 	inArgs[2].SetInt32(optname)
 
@@ -18848,7 +19345,7 @@ func socketGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type g_socket_get_protocol.
 func (recv *Socket) GetProtocol() SocketProtocol {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18880,7 +19377,7 @@ func socketGetRemoteAddressFunction_Set() error {
 // GetRemoteAddress is a representation of the C type g_socket_get_remote_address.
 func (recv *Socket) GetRemoteAddress() *SocketAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18889,8 +19386,7 @@ func (recv *Socket) GetRemoteAddress() *SocketAddress {
 		ret = socketGetRemoteAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18913,7 +19409,7 @@ func socketGetSocketTypeFunction_Set() error {
 // GetSocketType is a representation of the C type g_socket_get_socket_type.
 func (recv *Socket) GetSocketType() SocketType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18945,7 +19441,7 @@ func socketGetTimeoutFunction_Set() error {
 // GetTimeout is a representation of the C type g_socket_get_timeout.
 func (recv *Socket) GetTimeout() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18977,7 +19473,7 @@ func socketGetTtlFunction_Set() error {
 // GetTtl is a representation of the C type g_socket_get_ttl.
 func (recv *Socket) GetTtl() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19009,7 +19505,7 @@ func socketIsClosedFunction_Set() error {
 // IsClosed is a representation of the C type g_socket_is_closed.
 func (recv *Socket) IsClosed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19041,7 +19537,7 @@ func socketIsConnectedFunction_Set() error {
 // IsConnected is a representation of the C type g_socket_is_connected.
 func (recv *Socket) IsConnected() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19073,8 +19569,8 @@ func socketJoinMulticastGroupFunction_Set() error {
 // JoinMulticastGroup is a representation of the C type g_socket_join_multicast_group.
 func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
 	inArgs[2].SetBoolean(sourceSpecific)
 	inArgs[3].SetString(iface)
 
@@ -19108,9 +19604,9 @@ func socketJoinMulticastGroupSsmFunction_Set() error {
 // JoinMulticastGroupSsm is a representation of the C type g_socket_join_multicast_group_ssm.
 func (recv *Socket) JoinMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
-	inArgs[2].SetPointer(sourceSpecific.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
+	inArgs[2].SetPointer(sourceSpecific.native)
 	inArgs[3].SetString(iface)
 
 	var ret gi.Argument
@@ -19143,8 +19639,8 @@ func socketLeaveMulticastGroupFunction_Set() error {
 // LeaveMulticastGroup is a representation of the C type g_socket_leave_multicast_group.
 func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
 	inArgs[2].SetBoolean(sourceSpecific)
 	inArgs[3].SetString(iface)
 
@@ -19178,9 +19674,9 @@ func socketLeaveMulticastGroupSsmFunction_Set() error {
 // LeaveMulticastGroupSsm is a representation of the C type g_socket_leave_multicast_group_ssm.
 func (recv *Socket) LeaveMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
-	inArgs[2].SetPointer(sourceSpecific.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
+	inArgs[2].SetPointer(sourceSpecific.native)
 	inArgs[3].SetString(iface)
 
 	var ret gi.Argument
@@ -19213,7 +19709,7 @@ func socketListenFunction_Set() error {
 // Listen is a representation of the C type g_socket_listen.
 func (recv *Socket) Listen() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19267,7 +19763,7 @@ func socketSetBlockingFunction_Set() error {
 // SetBlocking is a representation of the C type g_socket_set_blocking.
 func (recv *Socket) SetBlocking(blocking bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(blocking)
 
 	err := socketSetBlockingFunction_Set()
@@ -19296,7 +19792,7 @@ func socketSetBroadcastFunction_Set() error {
 // SetBroadcast is a representation of the C type g_socket_set_broadcast.
 func (recv *Socket) SetBroadcast(broadcast bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(broadcast)
 
 	err := socketSetBroadcastFunction_Set()
@@ -19325,7 +19821,7 @@ func socketSetKeepaliveFunction_Set() error {
 // SetKeepalive is a representation of the C type g_socket_set_keepalive.
 func (recv *Socket) SetKeepalive(keepalive bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(keepalive)
 
 	err := socketSetKeepaliveFunction_Set()
@@ -19354,7 +19850,7 @@ func socketSetListenBacklogFunction_Set() error {
 // SetListenBacklog is a representation of the C type g_socket_set_listen_backlog.
 func (recv *Socket) SetListenBacklog(backlog int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(backlog)
 
 	err := socketSetListenBacklogFunction_Set()
@@ -19383,7 +19879,7 @@ func socketSetMulticastLoopbackFunction_Set() error {
 // SetMulticastLoopback is a representation of the C type g_socket_set_multicast_loopback.
 func (recv *Socket) SetMulticastLoopback(loopback bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(loopback)
 
 	err := socketSetMulticastLoopbackFunction_Set()
@@ -19412,7 +19908,7 @@ func socketSetMulticastTtlFunction_Set() error {
 // SetMulticastTtl is a representation of the C type g_socket_set_multicast_ttl.
 func (recv *Socket) SetMulticastTtl(ttl uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(ttl)
 
 	err := socketSetMulticastTtlFunction_Set()
@@ -19441,7 +19937,7 @@ func socketSetOptionFunction_Set() error {
 // SetOption is a representation of the C type g_socket_set_option.
 func (recv *Socket) SetOption(level int32, optname int32, value int32) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(level)
 	inArgs[2].SetInt32(optname)
 	inArgs[3].SetInt32(value)
@@ -19476,7 +19972,7 @@ func socketSetTimeoutFunction_Set() error {
 // SetTimeout is a representation of the C type g_socket_set_timeout.
 func (recv *Socket) SetTimeout(timeout uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(timeout)
 
 	err := socketSetTimeoutFunction_Set()
@@ -19505,7 +20001,7 @@ func socketSetTtlFunction_Set() error {
 // SetTtl is a representation of the C type g_socket_set_ttl.
 func (recv *Socket) SetTtl(ttl uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(ttl)
 
 	err := socketSetTtlFunction_Set()
@@ -19534,7 +20030,7 @@ func socketShutdownFunction_Set() error {
 // Shutdown is a representation of the C type g_socket_shutdown.
 func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(shutdownRead)
 	inArgs[2].SetBoolean(shutdownWrite)
 
@@ -19568,7 +20064,7 @@ func socketSpeaksIpv4Function_Set() error {
 // SpeaksIpv4 is a representation of the C type g_socket_speaks_ipv4.
 func (recv *Socket) SpeaksIpv4() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19594,7 +20090,14 @@ func socketAddressObject_Set() error {
 }
 
 type SocketAddress struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketAddressNewFromNative(native uintptr) *SocketAddress {
+	return &SocketAddress{native: native}
+}
+func (recv *SocketAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -19621,7 +20124,7 @@ func socketAddressGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type g_socket_address_get_family.
 func (recv *SocketAddress) GetFamily() SocketFamily {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19653,7 +20156,7 @@ func socketAddressGetNativeSizeFunction_Set() error {
 // GetNativeSize is a representation of the C type g_socket_address_get_native_size.
 func (recv *SocketAddress) GetNativeSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19681,7 +20184,14 @@ func socketAddressEnumeratorObject_Set() error {
 }
 
 type SocketAddressEnumerator struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketAddressEnumeratorNewFromNative(native uintptr) *SocketAddressEnumerator {
+	return &SocketAddressEnumerator{native: native}
+}
+func (recv *SocketAddressEnumerator) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var socketAddressEnumeratorNextFunction *gi.Function
@@ -19702,8 +20212,8 @@ func socketAddressEnumeratorNextFunction_Set() error {
 // Next is a representation of the C type g_socket_address_enumerator_next.
 func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) *SocketAddress {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -19712,8 +20222,7 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) *SocketAddre
 		ret = socketAddressEnumeratorNextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19734,7 +20243,14 @@ func socketClientObject_Set() error {
 }
 
 type SocketClient struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketClientNewFromNative(native uintptr) *SocketClient {
+	return &SocketClient{native: native}
+}
+func (recv *SocketClient) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -19743,17 +20259,16 @@ type SocketClient struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
-	argValue := gi.ObjectFieldGet(socketClientObject, recv.Native, "priv")
-	value := &SocketClientPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketClientObject, recv.native, "priv")
+	value := SocketClientPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketClient) SetFieldPriv(value *SocketClientPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketClientObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketClientObject, recv.native, "priv", argValue)
 }
 
 var socketClientNewFunction *gi.Function
@@ -19781,8 +20296,7 @@ func SocketClientNew() *SocketClient {
 		ret = socketClientNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SocketClient{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketClientNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19805,7 +20319,7 @@ func socketClientAddApplicationProxyFunction_Set() error {
 // AddApplicationProxy is a representation of the C type g_socket_client_add_application_proxy.
 func (recv *SocketClient) AddApplicationProxy(protocol string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(protocol)
 
 	err := socketClientAddApplicationProxyFunction_Set()
@@ -19840,10 +20354,10 @@ func socketClientConnectToHostFunction_Set() error {
 // ConnectToHost is a representation of the C type g_socket_client_connect_to_host.
 func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, cancellable *Cancellable) *SocketConnection {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(hostAndPort)
 	inArgs[2].SetUint16(defaultPort)
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -19852,8 +20366,7 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 		ret = socketClientConnectToHostFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19880,10 +20393,10 @@ func socketClientConnectToServiceFunction_Set() error {
 // ConnectToService is a representation of the C type g_socket_client_connect_to_service.
 func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) *SocketConnection {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
 	inArgs[2].SetString(service)
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -19892,8 +20405,7 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 		ret = socketClientConnectToServiceFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19920,10 +20432,10 @@ func socketClientConnectToUriFunction_Set() error {
 // ConnectToUri is a representation of the C type g_socket_client_connect_to_uri.
 func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellable *Cancellable) *SocketConnection {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetUint16(defaultPort)
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -19932,8 +20444,7 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 		ret = socketClientConnectToUriFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19960,7 +20471,7 @@ func socketClientGetEnableProxyFunction_Set() error {
 // GetEnableProxy is a representation of the C type g_socket_client_get_enable_proxy.
 func (recv *SocketClient) GetEnableProxy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19992,7 +20503,7 @@ func socketClientGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type g_socket_client_get_family.
 func (recv *SocketClient) GetFamily() SocketFamily {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20024,7 +20535,7 @@ func socketClientGetLocalAddressFunction_Set() error {
 // GetLocalAddress is a representation of the C type g_socket_client_get_local_address.
 func (recv *SocketClient) GetLocalAddress() *SocketAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20033,8 +20544,7 @@ func (recv *SocketClient) GetLocalAddress() *SocketAddress {
 		ret = socketClientGetLocalAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20057,7 +20567,7 @@ func socketClientGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type g_socket_client_get_protocol.
 func (recv *SocketClient) GetProtocol() SocketProtocol {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20091,7 +20601,7 @@ func socketClientGetSocketTypeFunction_Set() error {
 // GetSocketType is a representation of the C type g_socket_client_get_socket_type.
 func (recv *SocketClient) GetSocketType() SocketType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20123,7 +20633,7 @@ func socketClientGetTimeoutFunction_Set() error {
 // GetTimeout is a representation of the C type g_socket_client_get_timeout.
 func (recv *SocketClient) GetTimeout() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20155,7 +20665,7 @@ func socketClientGetTlsFunction_Set() error {
 // GetTls is a representation of the C type g_socket_client_get_tls.
 func (recv *SocketClient) GetTls() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20189,7 +20699,7 @@ func socketClientSetEnableProxyFunction_Set() error {
 // SetEnableProxy is a representation of the C type g_socket_client_set_enable_proxy.
 func (recv *SocketClient) SetEnableProxy(enable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(enable)
 
 	err := socketClientSetEnableProxyFunction_Set()
@@ -20218,7 +20728,7 @@ func socketClientSetFamilyFunction_Set() error {
 // SetFamily is a representation of the C type g_socket_client_set_family.
 func (recv *SocketClient) SetFamily(family SocketFamily) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(family))
 
 	err := socketClientSetFamilyFunction_Set()
@@ -20247,8 +20757,8 @@ func socketClientSetLocalAddressFunction_Set() error {
 // SetLocalAddress is a representation of the C type g_socket_client_set_local_address.
 func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
 
 	err := socketClientSetLocalAddressFunction_Set()
 	if err == nil {
@@ -20276,7 +20786,7 @@ func socketClientSetProtocolFunction_Set() error {
 // SetProtocol is a representation of the C type g_socket_client_set_protocol.
 func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(protocol))
 
 	err := socketClientSetProtocolFunction_Set()
@@ -20307,7 +20817,7 @@ func socketClientSetSocketTypeFunction_Set() error {
 // SetSocketType is a representation of the C type g_socket_client_set_socket_type.
 func (recv *SocketClient) SetSocketType(type_ SocketType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 
 	err := socketClientSetSocketTypeFunction_Set()
@@ -20336,7 +20846,7 @@ func socketClientSetTimeoutFunction_Set() error {
 // SetTimeout is a representation of the C type g_socket_client_set_timeout.
 func (recv *SocketClient) SetTimeout(timeout uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(timeout)
 
 	err := socketClientSetTimeoutFunction_Set()
@@ -20365,7 +20875,7 @@ func socketClientSetTlsFunction_Set() error {
 // SetTls is a representation of the C type g_socket_client_set_tls.
 func (recv *SocketClient) SetTls(tls bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(tls)
 
 	err := socketClientSetTlsFunction_Set()
@@ -20390,37 +20900,45 @@ func socketConnectionObject_Set() error {
 }
 
 type SocketConnection struct {
-	IOStream
+	native uintptr
+}
+
+func SocketConnectionNewFromNative(native uintptr) *SocketConnection {
+	return &SocketConnection{native: native}
+}
+func (recv *SocketConnection) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *SocketConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketConnection) FieldParentInstance() *IOStream {
-	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native, "parent_instance")
-	value := &IOStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.native, "parent_instance")
+	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketConnection) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketConnectionObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketConnectionObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
-	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native, "priv")
-	value := &SocketConnectionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.native, "priv")
+	value := SocketConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketConnection) SetFieldPriv(value *SocketConnectionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketConnectionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketConnectionObject, recv.native, "priv", argValue)
 }
 
 var socketConnectionConnectFunction *gi.Function
@@ -20441,9 +20959,9 @@ func socketConnectionConnectFunction_Set() error {
 // Connect is a representation of the C type g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(address.Native)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(address.native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -20479,7 +20997,7 @@ func socketConnectionGetLocalAddressFunction_Set() error {
 // GetLocalAddress is a representation of the C type g_socket_connection_get_local_address.
 func (recv *SocketConnection) GetLocalAddress() *SocketAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20488,8 +21006,7 @@ func (recv *SocketConnection) GetLocalAddress() *SocketAddress {
 		ret = socketConnectionGetLocalAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20512,7 +21029,7 @@ func socketConnectionGetRemoteAddressFunction_Set() error {
 // GetRemoteAddress is a representation of the C type g_socket_connection_get_remote_address.
 func (recv *SocketConnection) GetRemoteAddress() *SocketAddress {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20521,8 +21038,7 @@ func (recv *SocketConnection) GetRemoteAddress() *SocketAddress {
 		ret = socketConnectionGetRemoteAddressFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20545,7 +21061,7 @@ func socketConnectionGetSocketFunction_Set() error {
 // GetSocket is a representation of the C type g_socket_connection_get_socket.
 func (recv *SocketConnection) GetSocket() *Socket {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20554,8 +21070,7 @@ func (recv *SocketConnection) GetSocket() *Socket {
 		ret = socketConnectionGetSocketFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Socket{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20578,7 +21093,7 @@ func socketConnectionIsConnectedFunction_Set() error {
 // IsConnected is a representation of the C type g_socket_connection_is_connected.
 func (recv *SocketConnection) IsConnected() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20604,7 +21119,14 @@ func socketControlMessageObject_Set() error {
 }
 
 type SocketControlMessage struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketControlMessageNewFromNative(native uintptr) *SocketControlMessage {
+	return &SocketControlMessage{native: native}
+}
+func (recv *SocketControlMessage) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -20613,17 +21135,16 @@ type SocketControlMessage struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
-	argValue := gi.ObjectFieldGet(socketControlMessageObject, recv.Native, "priv")
-	value := &SocketControlMessagePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketControlMessageObject, recv.native, "priv")
+	value := SocketControlMessagePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketControlMessage) SetFieldPriv(value *SocketControlMessagePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketControlMessageObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketControlMessageObject, recv.native, "priv", argValue)
 }
 
 var socketControlMessageGetLevelFunction *gi.Function
@@ -20644,7 +21165,7 @@ func socketControlMessageGetLevelFunction_Set() error {
 // GetLevel is a representation of the C type g_socket_control_message_get_level.
 func (recv *SocketControlMessage) GetLevel() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20676,7 +21197,7 @@ func socketControlMessageGetMsgTypeFunction_Set() error {
 // GetMsgType is a representation of the C type g_socket_control_message_get_msg_type.
 func (recv *SocketControlMessage) GetMsgType() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20708,7 +21229,7 @@ func socketControlMessageGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_socket_control_message_get_size.
 func (recv *SocketControlMessage) GetSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20736,7 +21257,14 @@ func socketListenerObject_Set() error {
 }
 
 type SocketListener struct {
-	gobject.Object
+	native uintptr
+}
+
+func SocketListenerNewFromNative(native uintptr) *SocketListener {
+	return &SocketListener{native: native}
+}
+func (recv *SocketListener) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -20745,17 +21273,16 @@ type SocketListener struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
-	argValue := gi.ObjectFieldGet(socketListenerObject, recv.Native, "priv")
-	value := &SocketListenerPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketListenerObject, recv.native, "priv")
+	value := SocketListenerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketListener) SetFieldPriv(value *SocketListenerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketListenerObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketListenerObject, recv.native, "priv", argValue)
 }
 
 var socketListenerNewFunction *gi.Function
@@ -20783,8 +21310,7 @@ func SocketListenerNew() *SocketListener {
 		ret = socketListenerNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SocketListener{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketListenerNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20827,7 +21353,7 @@ func socketListenerCloseFunction_Set() error {
 // Close is a representation of the C type g_socket_listener_close.
 func (recv *SocketListener) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := socketListenerCloseFunction_Set()
 	if err == nil {
@@ -20855,7 +21381,7 @@ func socketListenerSetBacklogFunction_Set() error {
 // SetBacklog is a representation of the C type g_socket_listener_set_backlog.
 func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(listenBacklog)
 
 	err := socketListenerSetBacklogFunction_Set()
@@ -20878,37 +21404,45 @@ func socketServiceObject_Set() error {
 }
 
 type SocketService struct {
-	SocketListener
+	native uintptr
+}
+
+func SocketServiceNewFromNative(native uintptr) *SocketService {
+	return &SocketService{native: native}
+}
+func (recv *SocketService) SocketListener() *SocketListener {
+	return SocketListenerNewFromNative(recv.native)
+}
+func (recv *SocketService) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketService) FieldParentInstance() *SocketListener {
-	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native, "parent_instance")
-	value := &SocketListener{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketServiceObject, recv.native, "parent_instance")
+	value := SocketListenerNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketService) SetFieldParentInstance(value *SocketListener) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketServiceObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketServiceObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketService) FieldPriv() *SocketServicePrivate {
-	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native, "priv")
-	value := &SocketServicePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(socketServiceObject, recv.native, "priv")
+	value := SocketServicePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketService) SetFieldPriv(value *SocketServicePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(socketServiceObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(socketServiceObject, recv.native, "priv", argValue)
 }
 
 var socketServiceNewFunction *gi.Function
@@ -20936,8 +21470,7 @@ func SocketServiceNew() *SocketService {
 		ret = socketServiceNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &SocketService{}
-	retGo.Native = ret.Pointer()
+	retGo := SocketServiceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20960,7 +21493,7 @@ func socketServiceIsActiveFunction_Set() error {
 // IsActive is a representation of the C type g_socket_service_is_active.
 func (recv *SocketService) IsActive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20992,7 +21525,7 @@ func socketServiceStartFunction_Set() error {
 // Start is a representation of the C type g_socket_service_start.
 func (recv *SocketService) Start() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := socketServiceStartFunction_Set()
 	if err == nil {
@@ -21020,7 +21553,7 @@ func socketServiceStopFunction_Set() error {
 // Stop is a representation of the C type g_socket_service_stop.
 func (recv *SocketService) Stop() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := socketServiceStopFunction_Set()
 	if err == nil {
@@ -21042,7 +21575,14 @@ func subprocessObject_Set() error {
 }
 
 type Subprocess struct {
-	gobject.Object
+	native uintptr
+}
+
+func SubprocessNewFromNative(native uintptr) *Subprocess {
+	return &Subprocess{native: native}
+}
+func (recv *Subprocess) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_subprocess_new' : parameter 'flags' of type 'SubprocessFlags' not supported
@@ -21073,9 +21613,9 @@ func subprocessCommunicateUtf8Function_Set() error {
 // CommunicateUtf8 is a representation of the C type g_subprocess_communicate_utf8.
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stdinBuf)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -21114,7 +21654,7 @@ func subprocessForceExitFunction_Set() error {
 // ForceExit is a representation of the C type g_subprocess_force_exit.
 func (recv *Subprocess) ForceExit() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := subprocessForceExitFunction_Set()
 	if err == nil {
@@ -21142,7 +21682,7 @@ func subprocessGetExitStatusFunction_Set() error {
 // GetExitStatus is a representation of the C type g_subprocess_get_exit_status.
 func (recv *Subprocess) GetExitStatus() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21174,7 +21714,7 @@ func subprocessGetIdentifierFunction_Set() error {
 // GetIdentifier is a representation of the C type g_subprocess_get_identifier.
 func (recv *Subprocess) GetIdentifier() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21206,7 +21746,7 @@ func subprocessGetIfExitedFunction_Set() error {
 // GetIfExited is a representation of the C type g_subprocess_get_if_exited.
 func (recv *Subprocess) GetIfExited() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21238,7 +21778,7 @@ func subprocessGetIfSignaledFunction_Set() error {
 // GetIfSignaled is a representation of the C type g_subprocess_get_if_signaled.
 func (recv *Subprocess) GetIfSignaled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21270,7 +21810,7 @@ func subprocessGetStatusFunction_Set() error {
 // GetStatus is a representation of the C type g_subprocess_get_status.
 func (recv *Subprocess) GetStatus() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21302,7 +21842,7 @@ func subprocessGetStderrPipeFunction_Set() error {
 // GetStderrPipe is a representation of the C type g_subprocess_get_stderr_pipe.
 func (recv *Subprocess) GetStderrPipe() *InputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21311,8 +21851,7 @@ func (recv *Subprocess) GetStderrPipe() *InputStream {
 		ret = subprocessGetStderrPipeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := InputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21335,7 +21874,7 @@ func subprocessGetStdinPipeFunction_Set() error {
 // GetStdinPipe is a representation of the C type g_subprocess_get_stdin_pipe.
 func (recv *Subprocess) GetStdinPipe() *OutputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21344,8 +21883,7 @@ func (recv *Subprocess) GetStdinPipe() *OutputStream {
 		ret = subprocessGetStdinPipeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := OutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21368,7 +21906,7 @@ func subprocessGetStdoutPipeFunction_Set() error {
 // GetStdoutPipe is a representation of the C type g_subprocess_get_stdout_pipe.
 func (recv *Subprocess) GetStdoutPipe() *InputStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21377,8 +21915,7 @@ func (recv *Subprocess) GetStdoutPipe() *InputStream {
 		ret = subprocessGetStdoutPipeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &InputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := InputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21401,7 +21938,7 @@ func subprocessGetSuccessfulFunction_Set() error {
 // GetSuccessful is a representation of the C type g_subprocess_get_successful.
 func (recv *Subprocess) GetSuccessful() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21433,7 +21970,7 @@ func subprocessGetTermSigFunction_Set() error {
 // GetTermSig is a representation of the C type g_subprocess_get_term_sig.
 func (recv *Subprocess) GetTermSig() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21465,7 +22002,7 @@ func subprocessSendSignalFunction_Set() error {
 // SendSignal is a representation of the C type g_subprocess_send_signal.
 func (recv *Subprocess) SendSignal(signalNum int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(signalNum)
 
 	err := subprocessSendSignalFunction_Set()
@@ -21494,8 +22031,8 @@ func subprocessWaitFunction_Set() error {
 // Wait is a representation of the C type g_subprocess_wait.
 func (recv *Subprocess) Wait(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -21529,8 +22066,8 @@ func subprocessWaitCheckFunction_Set() error {
 // WaitCheck is a representation of the C type g_subprocess_wait_check.
 func (recv *Subprocess) WaitCheck(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -21562,7 +22099,14 @@ func subprocessLauncherObject_Set() error {
 }
 
 type SubprocessLauncher struct {
-	gobject.Object
+	native uintptr
+}
+
+func SubprocessLauncherNewFromNative(native uintptr) *SubprocessLauncher {
+	return &SubprocessLauncher{native: native}
+}
+func (recv *SubprocessLauncher) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_subprocess_launcher_new' : parameter 'flags' of type 'SubprocessFlags' not supported
@@ -21585,7 +22129,7 @@ func subprocessLauncherGetenvFunction_Set() error {
 // Getenv is a representation of the C type g_subprocess_launcher_getenv.
 func (recv *SubprocessLauncher) Getenv(variable string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(variable)
 
 	var ret gi.Argument
@@ -21620,7 +22164,7 @@ func subprocessLauncherSetCwdFunction_Set() error {
 // SetCwd is a representation of the C type g_subprocess_launcher_set_cwd.
 func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(cwd)
 
 	err := subprocessLauncherSetCwdFunction_Set()
@@ -21653,7 +22197,7 @@ func subprocessLauncherSetStderrFilePathFunction_Set() error {
 // SetStderrFilePath is a representation of the C type g_subprocess_launcher_set_stderr_file_path.
 func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := subprocessLauncherSetStderrFilePathFunction_Set()
@@ -21682,7 +22226,7 @@ func subprocessLauncherSetStdinFilePathFunction_Set() error {
 // SetStdinFilePath is a representation of the C type g_subprocess_launcher_set_stdin_file_path.
 func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := subprocessLauncherSetStdinFilePathFunction_Set()
@@ -21711,7 +22255,7 @@ func subprocessLauncherSetStdoutFilePathFunction_Set() error {
 // SetStdoutFilePath is a representation of the C type g_subprocess_launcher_set_stdout_file_path.
 func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := subprocessLauncherSetStdoutFilePathFunction_Set()
@@ -21740,7 +22284,7 @@ func subprocessLauncherSetenvFunction_Set() error {
 // Setenv is a representation of the C type g_subprocess_launcher_setenv.
 func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(variable)
 	inArgs[2].SetString(value)
 	inArgs[3].SetBoolean(overwrite)
@@ -21775,7 +22319,7 @@ func subprocessLauncherTakeFdFunction_Set() error {
 // TakeFd is a representation of the C type g_subprocess_launcher_take_fd.
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(sourceFd)
 	inArgs[2].SetInt32(targetFd)
 
@@ -21805,7 +22349,7 @@ func subprocessLauncherTakeStderrFdFunction_Set() error {
 // TakeStderrFd is a representation of the C type g_subprocess_launcher_take_stderr_fd.
 func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
 
 	err := subprocessLauncherTakeStderrFdFunction_Set()
@@ -21834,7 +22378,7 @@ func subprocessLauncherTakeStdinFdFunction_Set() error {
 // TakeStdinFd is a representation of the C type g_subprocess_launcher_take_stdin_fd.
 func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
 
 	err := subprocessLauncherTakeStdinFdFunction_Set()
@@ -21863,7 +22407,7 @@ func subprocessLauncherTakeStdoutFdFunction_Set() error {
 // TakeStdoutFd is a representation of the C type g_subprocess_launcher_take_stdout_fd.
 func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
 
 	err := subprocessLauncherTakeStdoutFdFunction_Set()
@@ -21892,7 +22436,7 @@ func subprocessLauncherUnsetenvFunction_Set() error {
 // Unsetenv is a representation of the C type g_subprocess_launcher_unsetenv.
 func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(variable)
 
 	err := subprocessLauncherUnsetenvFunction_Set()
@@ -21915,7 +22459,14 @@ func taskObject_Set() error {
 }
 
 type Task struct {
-	gobject.Object
+	native uintptr
+}
+
+func TaskNewFromNative(native uintptr) *Task {
+	return &Task{native: native}
+}
+func (recv *Task) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_task_new' : parameter 'source_object' of type 'GObject.Object' not supported
@@ -21940,7 +22491,7 @@ func taskGetCancellableFunction_Set() error {
 // GetCancellable is a representation of the C type g_task_get_cancellable.
 func (recv *Task) GetCancellable() *Cancellable {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21949,8 +22500,7 @@ func (recv *Task) GetCancellable() *Cancellable {
 		ret = taskGetCancellableFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Cancellable{}
-	retGo.Native = ret.Pointer()
+	retGo := CancellableNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21973,7 +22523,7 @@ func taskGetCheckCancellableFunction_Set() error {
 // GetCheckCancellable is a representation of the C type g_task_get_check_cancellable.
 func (recv *Task) GetCheckCancellable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22005,7 +22555,7 @@ func taskGetCompletedFunction_Set() error {
 // GetCompleted is a representation of the C type g_task_get_completed.
 func (recv *Task) GetCompleted() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22039,7 +22589,7 @@ func taskGetNameFunction_Set() error {
 // GetName is a representation of the C type g_task_get_name.
 func (recv *Task) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22071,7 +22621,7 @@ func taskGetPriorityFunction_Set() error {
 // GetPriority is a representation of the C type g_task_get_priority.
 func (recv *Task) GetPriority() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22103,7 +22653,7 @@ func taskGetReturnOnCancelFunction_Set() error {
 // GetReturnOnCancel is a representation of the C type g_task_get_return_on_cancel.
 func (recv *Task) GetReturnOnCancel() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22141,7 +22691,7 @@ func taskHadErrorFunction_Set() error {
 // HadError is a representation of the C type g_task_had_error.
 func (recv *Task) HadError() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22173,7 +22723,7 @@ func taskPropagateBooleanFunction_Set() error {
 // PropagateBoolean is a representation of the C type g_task_propagate_boolean.
 func (recv *Task) PropagateBoolean() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22205,7 +22755,7 @@ func taskPropagateIntFunction_Set() error {
 // PropagateInt is a representation of the C type g_task_propagate_int.
 func (recv *Task) PropagateInt() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22239,7 +22789,7 @@ func taskReturnBooleanFunction_Set() error {
 // ReturnBoolean is a representation of the C type g_task_return_boolean.
 func (recv *Task) ReturnBoolean(result bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(result)
 
 	err := taskReturnBooleanFunction_Set()
@@ -22270,7 +22820,7 @@ func taskReturnErrorIfCancelledFunction_Set() error {
 // ReturnErrorIfCancelled is a representation of the C type g_task_return_error_if_cancelled.
 func (recv *Task) ReturnErrorIfCancelled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22302,7 +22852,7 @@ func taskReturnIntFunction_Set() error {
 // ReturnInt is a representation of the C type g_task_return_int.
 func (recv *Task) ReturnInt(result int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(result)
 
 	err := taskReturnIntFunction_Set()
@@ -22339,7 +22889,7 @@ func taskSetCheckCancellableFunction_Set() error {
 // SetCheckCancellable is a representation of the C type g_task_set_check_cancellable.
 func (recv *Task) SetCheckCancellable(checkCancellable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(checkCancellable)
 
 	err := taskSetCheckCancellableFunction_Set()
@@ -22368,7 +22918,7 @@ func taskSetNameFunction_Set() error {
 // SetName is a representation of the C type g_task_set_name.
 func (recv *Task) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	err := taskSetNameFunction_Set()
@@ -22397,7 +22947,7 @@ func taskSetPriorityFunction_Set() error {
 // SetPriority is a representation of the C type g_task_set_priority.
 func (recv *Task) SetPriority(priority int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(priority)
 
 	err := taskSetPriorityFunction_Set()
@@ -22426,7 +22976,7 @@ func taskSetReturnOnCancelFunction_Set() error {
 // SetReturnOnCancel is a representation of the C type g_task_set_return_on_cancel.
 func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(returnOnCancel)
 
 	var ret gi.Argument
@@ -22457,37 +23007,48 @@ func tcpConnectionObject_Set() error {
 }
 
 type TcpConnection struct {
-	SocketConnection
+	native uintptr
+}
+
+func TcpConnectionNewFromNative(native uintptr) *TcpConnection {
+	return &TcpConnection{native: native}
+}
+func (recv *TcpConnection) SocketConnection() *SocketConnection {
+	return SocketConnectionNewFromNative(recv.native)
+}
+func (recv *TcpConnection) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *TcpConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpConnection) FieldParentInstance() *SocketConnection {
-	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native, "parent_instance")
-	value := &SocketConnection{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.native, "parent_instance")
+	value := SocketConnectionNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TcpConnection) SetFieldParentInstance(value *SocketConnection) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tcpConnectionObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tcpConnectionObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
-	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native, "priv")
-	value := &TcpConnectionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.native, "priv")
+	value := TcpConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TcpConnection) SetFieldPriv(value *TcpConnectionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tcpConnectionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tcpConnectionObject, recv.native, "priv", argValue)
 }
 
 var tcpConnectionGetGracefulDisconnectFunction *gi.Function
@@ -22508,7 +23069,7 @@ func tcpConnectionGetGracefulDisconnectFunction_Set() error {
 // GetGracefulDisconnect is a representation of the C type g_tcp_connection_get_graceful_disconnect.
 func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22540,7 +23101,7 @@ func tcpConnectionSetGracefulDisconnectFunction_Set() error {
 // SetGracefulDisconnect is a representation of the C type g_tcp_connection_set_graceful_disconnect.
 func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(gracefulDisconnect)
 
 	err := tcpConnectionSetGracefulDisconnectFunction_Set()
@@ -22563,37 +23124,51 @@ func tcpWrapperConnectionObject_Set() error {
 }
 
 type TcpWrapperConnection struct {
-	TcpConnection
+	native uintptr
+}
+
+func TcpWrapperConnectionNewFromNative(native uintptr) *TcpWrapperConnection {
+	return &TcpWrapperConnection{native: native}
+}
+func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {
+	return TcpConnectionNewFromNative(recv.native)
+}
+func (recv *TcpWrapperConnection) SocketConnection() *SocketConnection {
+	return SocketConnectionNewFromNative(recv.native)
+}
+func (recv *TcpWrapperConnection) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *TcpWrapperConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpWrapperConnection) FieldParentInstance() *TcpConnection {
-	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native, "parent_instance")
-	value := &TcpConnection{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.native, "parent_instance")
+	value := TcpConnectionNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TcpWrapperConnection) SetFieldParentInstance(value *TcpConnection) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
-	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native, "priv")
-	value := &TcpWrapperConnectionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.native, "priv")
+	value := TcpWrapperConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TcpWrapperConnection) SetFieldPriv(value *TcpWrapperConnectionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.native, "priv", argValue)
 }
 
 var tcpWrapperConnectionNewFunction *gi.Function
@@ -22614,8 +23189,8 @@ func tcpWrapperConnectionNewFunction_Set() error {
 // TcpWrapperConnectionNew is a representation of the C type g_tcp_wrapper_connection_new.
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(baseIoStream.Native)
-	inArgs[1].SetPointer(socket.Native)
+	inArgs[0].SetPointer(baseIoStream.native)
+	inArgs[1].SetPointer(socket.native)
 
 	var ret gi.Argument
 
@@ -22624,8 +23199,7 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 		ret = tcpWrapperConnectionNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TcpWrapperConnection{}
-	retGo.Native = ret.Pointer()
+	retGo := TcpWrapperConnectionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22648,7 +23222,7 @@ func tcpWrapperConnectionGetBaseIoStreamFunction_Set() error {
 // GetBaseIoStream is a representation of the C type g_tcp_wrapper_connection_get_base_io_stream.
 func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22657,8 +23231,7 @@ func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 		ret = tcpWrapperConnectionGetBaseIoStreamFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOStream{}
-	retGo.Native = ret.Pointer()
+	retGo := IOStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22675,7 +23248,14 @@ func testDBusObject_Set() error {
 }
 
 type TestDBus struct {
-	gobject.Object
+	native uintptr
+}
+
+func TestDBusNewFromNative(native uintptr) *TestDBus {
+	return &TestDBus{native: native}
+}
+func (recv *TestDBus) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'g_test_dbus_new' : parameter 'flags' of type 'TestDBusFlags' not supported
@@ -22698,7 +23278,7 @@ func testDBusAddServiceDirFunction_Set() error {
 // AddServiceDir is a representation of the C type g_test_dbus_add_service_dir.
 func (recv *TestDBus) AddServiceDir(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
 
 	err := testDBusAddServiceDirFunction_Set()
@@ -22727,7 +23307,7 @@ func testDBusDownFunction_Set() error {
 // Down is a representation of the C type g_test_dbus_down.
 func (recv *TestDBus) Down() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := testDBusDownFunction_Set()
 	if err == nil {
@@ -22755,7 +23335,7 @@ func testDBusGetBusAddressFunction_Set() error {
 // GetBusAddress is a representation of the C type g_test_dbus_get_bus_address.
 func (recv *TestDBus) GetBusAddress() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22789,7 +23369,7 @@ func testDBusStopFunction_Set() error {
 // Stop is a representation of the C type g_test_dbus_stop.
 func (recv *TestDBus) Stop() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := testDBusStopFunction_Set()
 	if err == nil {
@@ -22817,7 +23397,7 @@ func testDBusUpFunction_Set() error {
 // Up is a representation of the C type g_test_dbus_up.
 func (recv *TestDBus) Up() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := testDBusUpFunction_Set()
 	if err == nil {
@@ -22839,7 +23419,14 @@ func themedIconObject_Set() error {
 }
 
 type ThemedIcon struct {
-	gobject.Object
+	native uintptr
+}
+
+func ThemedIconNewFromNative(native uintptr) *ThemedIcon {
+	return &ThemedIcon{native: native}
+}
+func (recv *ThemedIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var themedIconNewFunction *gi.Function
@@ -22869,8 +23456,7 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 		ret = themedIconNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ThemedIcon{}
-	retGo.Native = ret.Pointer()
+	retGo := ThemedIconNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22904,8 +23490,7 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 		ret = themedIconNewWithDefaultFallbacksFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ThemedIcon{}
-	retGo.Native = ret.Pointer()
+	retGo := ThemedIconNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22928,7 +23513,7 @@ func themedIconAppendNameFunction_Set() error {
 // AppendName is a representation of the C type g_themed_icon_append_name.
 func (recv *ThemedIcon) AppendName(iconname string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconname)
 
 	err := themedIconAppendNameFunction_Set()
@@ -22957,7 +23542,7 @@ func themedIconGetNamesFunction_Set() error {
 // GetNames is a representation of the C type g_themed_icon_get_names.
 func (recv *ThemedIcon) GetNames() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := themedIconGetNamesFunction_Set()
 	if err == nil {
@@ -22985,7 +23570,7 @@ func themedIconPrependNameFunction_Set() error {
 // PrependName is a representation of the C type g_themed_icon_prepend_name.
 func (recv *ThemedIcon) PrependName(iconname string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconname)
 
 	err := themedIconPrependNameFunction_Set()
@@ -23008,37 +23593,48 @@ func threadedSocketServiceObject_Set() error {
 }
 
 type ThreadedSocketService struct {
-	SocketService
+	native uintptr
+}
+
+func ThreadedSocketServiceNewFromNative(native uintptr) *ThreadedSocketService {
+	return &ThreadedSocketService{native: native}
+}
+func (recv *ThreadedSocketService) SocketService() *SocketService {
+	return SocketServiceNewFromNative(recv.native)
+}
+func (recv *ThreadedSocketService) SocketListener() *SocketListener {
+	return SocketListenerNewFromNative(recv.native)
+}
+func (recv *ThreadedSocketService) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ThreadedSocketService) FieldParentInstance() *SocketService {
-	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native, "parent_instance")
-	value := &SocketService{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.native, "parent_instance")
+	value := SocketServiceNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ThreadedSocketService) SetFieldParentInstance(value *SocketService) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(threadedSocketServiceObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
-	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native, "priv")
-	value := &ThreadedSocketServicePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.native, "priv")
+	value := ThreadedSocketServicePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *ThreadedSocketService) SetFieldPriv(value *ThreadedSocketServicePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(threadedSocketServiceObject, recv.native, "priv", argValue)
 }
 
 var threadedSocketServiceNewFunction *gi.Function
@@ -23068,8 +23664,7 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 		ret = threadedSocketServiceNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ThreadedSocketService{}
-	retGo.Native = ret.Pointer()
+	retGo := ThreadedSocketServiceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23086,7 +23681,14 @@ func tlsCertificateObject_Set() error {
 }
 
 type TlsCertificate struct {
-	gobject.Object
+	native uintptr
+}
+
+func TlsCertificateNewFromNative(native uintptr) *TlsCertificate {
+	return &TlsCertificate{native: native}
+}
+func (recv *TlsCertificate) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -23095,17 +23697,16 @@ type TlsCertificate struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
-	argValue := gi.ObjectFieldGet(tlsCertificateObject, recv.Native, "priv")
-	value := &TlsCertificatePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tlsCertificateObject, recv.native, "priv")
+	value := TlsCertificatePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsCertificate) SetFieldPriv(value *TlsCertificatePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tlsCertificateObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tlsCertificateObject, recv.native, "priv", argValue)
 }
 
 var tlsCertificateNewFromFileFunction *gi.Function
@@ -23135,8 +23736,7 @@ func TlsCertificateNewFromFile(file string) *TlsCertificate {
 		ret = tlsCertificateNewFromFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23169,8 +23769,7 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) *TlsCertificate
 		ret = tlsCertificateNewFromFilesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23203,8 +23802,7 @@ func TlsCertificateNewFromPem(data string, length int32) *TlsCertificate {
 		ret = tlsCertificateNewFromPemFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23227,7 +23825,7 @@ func tlsCertificateGetIssuerFunction_Set() error {
 // GetIssuer is a representation of the C type g_tls_certificate_get_issuer.
 func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23236,8 +23834,7 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 		ret = tlsCertificateGetIssuerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23260,8 +23857,8 @@ func tlsCertificateIsSameFunction_Set() error {
 // IsSame is a representation of the C type g_tls_certificate_is_same.
 func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(certTwo.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(certTwo.native)
 
 	var ret gi.Argument
 
@@ -23289,37 +23886,45 @@ func tlsConnectionObject_Set() error {
 }
 
 type TlsConnection struct {
-	IOStream
+	native uintptr
+}
+
+func TlsConnectionNewFromNative(native uintptr) *TlsConnection {
+	return &TlsConnection{native: native}
+}
+func (recv *TlsConnection) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *TlsConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsConnection) FieldParentInstance() *IOStream {
-	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native, "parent_instance")
-	value := &IOStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.native, "parent_instance")
+	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TlsConnection) SetFieldParentInstance(value *IOStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tlsConnectionObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tlsConnectionObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
-	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native, "priv")
-	value := &TlsConnectionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.native, "priv")
+	value := TlsConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsConnection) SetFieldPriv(value *TlsConnectionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tlsConnectionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tlsConnectionObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_tls_connection_emit_accept_certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
@@ -23342,7 +23947,7 @@ func tlsConnectionGetCertificateFunction_Set() error {
 // GetCertificate is a representation of the C type g_tls_connection_get_certificate.
 func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23351,8 +23956,7 @@ func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 		ret = tlsConnectionGetCertificateFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23375,7 +23979,7 @@ func tlsConnectionGetDatabaseFunction_Set() error {
 // GetDatabase is a representation of the C type g_tls_connection_get_database.
 func (recv *TlsConnection) GetDatabase() *TlsDatabase {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23384,8 +23988,7 @@ func (recv *TlsConnection) GetDatabase() *TlsDatabase {
 		ret = tlsConnectionGetDatabaseFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsDatabase{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsDatabaseNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23408,7 +24011,7 @@ func tlsConnectionGetInteractionFunction_Set() error {
 // GetInteraction is a representation of the C type g_tls_connection_get_interaction.
 func (recv *TlsConnection) GetInteraction() *TlsInteraction {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23417,8 +24020,7 @@ func (recv *TlsConnection) GetInteraction() *TlsInteraction {
 		ret = tlsConnectionGetInteractionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsInteraction{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsInteractionNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23441,7 +24043,7 @@ func tlsConnectionGetNegotiatedProtocolFunction_Set() error {
 // GetNegotiatedProtocol is a representation of the C type g_tls_connection_get_negotiated_protocol.
 func (recv *TlsConnection) GetNegotiatedProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23473,7 +24075,7 @@ func tlsConnectionGetPeerCertificateFunction_Set() error {
 // GetPeerCertificate is a representation of the C type g_tls_connection_get_peer_certificate.
 func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23482,8 +24084,7 @@ func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 		ret = tlsConnectionGetPeerCertificateFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23508,7 +24109,7 @@ func tlsConnectionGetRehandshakeModeFunction_Set() error {
 // GetRehandshakeMode is a representation of the C type g_tls_connection_get_rehandshake_mode.
 func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23540,7 +24141,7 @@ func tlsConnectionGetRequireCloseNotifyFunction_Set() error {
 // GetRequireCloseNotify is a representation of the C type g_tls_connection_get_require_close_notify.
 func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23572,7 +24173,7 @@ func tlsConnectionGetUseSystemCertdbFunction_Set() error {
 // GetUseSystemCertdb is a representation of the C type g_tls_connection_get_use_system_certdb.
 func (recv *TlsConnection) GetUseSystemCertdb() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -23604,8 +24205,8 @@ func tlsConnectionHandshakeFunction_Set() error {
 // Handshake is a representation of the C type g_tls_connection_handshake.
 func (recv *TlsConnection) Handshake(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -23643,8 +24244,8 @@ func tlsConnectionSetCertificateFunction_Set() error {
 // SetCertificate is a representation of the C type g_tls_connection_set_certificate.
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(certificate.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(certificate.native)
 
 	err := tlsConnectionSetCertificateFunction_Set()
 	if err == nil {
@@ -23672,8 +24273,8 @@ func tlsConnectionSetDatabaseFunction_Set() error {
 // SetDatabase is a representation of the C type g_tls_connection_set_database.
 func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(database.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(database.native)
 
 	err := tlsConnectionSetDatabaseFunction_Set()
 	if err == nil {
@@ -23701,8 +24302,8 @@ func tlsConnectionSetInteractionFunction_Set() error {
 // SetInteraction is a representation of the C type g_tls_connection_set_interaction.
 func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(interaction.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(interaction.native)
 
 	err := tlsConnectionSetInteractionFunction_Set()
 	if err == nil {
@@ -23730,7 +24331,7 @@ func tlsConnectionSetRehandshakeModeFunction_Set() error {
 // SetRehandshakeMode is a representation of the C type g_tls_connection_set_rehandshake_mode.
 func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(mode))
 
 	err := tlsConnectionSetRehandshakeModeFunction_Set()
@@ -23759,7 +24360,7 @@ func tlsConnectionSetRequireCloseNotifyFunction_Set() error {
 // SetRequireCloseNotify is a representation of the C type g_tls_connection_set_require_close_notify.
 func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(requireCloseNotify)
 
 	err := tlsConnectionSetRequireCloseNotifyFunction_Set()
@@ -23788,7 +24389,7 @@ func tlsConnectionSetUseSystemCertdbFunction_Set() error {
 // SetUseSystemCertdb is a representation of the C type g_tls_connection_set_use_system_certdb.
 func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(useSystemCertdb)
 
 	err := tlsConnectionSetUseSystemCertdbFunction_Set()
@@ -23811,7 +24412,14 @@ func tlsDatabaseObject_Set() error {
 }
 
 type TlsDatabase struct {
-	gobject.Object
+	native uintptr
+}
+
+func TlsDatabaseNewFromNative(native uintptr) *TlsDatabase {
+	return &TlsDatabase{native: native}
+}
+func (recv *TlsDatabase) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -23820,17 +24428,16 @@ type TlsDatabase struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
-	argValue := gi.ObjectFieldGet(tlsDatabaseObject, recv.Native, "priv")
-	value := &TlsDatabasePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tlsDatabaseObject, recv.native, "priv")
+	value := TlsDatabasePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsDatabase) SetFieldPriv(value *TlsDatabasePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tlsDatabaseObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tlsDatabaseObject, recv.native, "priv", argValue)
 }
 
 var tlsDatabaseCreateCertificateHandleFunction *gi.Function
@@ -23851,8 +24458,8 @@ func tlsDatabaseCreateCertificateHandleFunction_Set() error {
 // CreateCertificateHandle is a representation of the C type g_tls_database_create_certificate_handle.
 func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(certificate.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(certificate.native)
 
 	var ret gi.Argument
 
@@ -23884,11 +24491,11 @@ func tlsDatabaseLookupCertificateForHandleFunction_Set() error {
 // LookupCertificateForHandle is a representation of the C type g_tls_database_lookup_certificate_for_handle.
 func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) *TlsCertificate {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(handle)
-	inArgs[2].SetPointer(interaction.Native)
+	inArgs[2].SetPointer(interaction.native)
 	inArgs[3].SetInt32(int32(flags))
-	inArgs[4].SetPointer(cancellable.Native)
+	inArgs[4].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -23897,8 +24504,7 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 		ret = tlsDatabaseLookupCertificateForHandleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23925,11 +24531,11 @@ func tlsDatabaseLookupCertificateIssuerFunction_Set() error {
 // LookupCertificateIssuer is a representation of the C type g_tls_database_lookup_certificate_issuer.
 func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) *TlsCertificate {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(certificate.Native)
-	inArgs[2].SetPointer(interaction.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(certificate.native)
+	inArgs[2].SetPointer(interaction.native)
 	inArgs[3].SetInt32(int32(flags))
-	inArgs[4].SetPointer(cancellable.Native)
+	inArgs[4].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -23938,8 +24544,7 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 		ret = tlsDatabaseLookupCertificateIssuerFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TlsCertificate{}
-	retGo.Native = ret.Pointer()
+	retGo := TlsCertificateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -23972,7 +24577,14 @@ func tlsInteractionObject_Set() error {
 }
 
 type TlsInteraction struct {
-	gobject.Object
+	native uintptr
+}
+
+func TlsInteractionNewFromNative(native uintptr) *TlsInteraction {
+	return &TlsInteraction{native: native}
+}
+func (recv *TlsInteraction) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var tlsInteractionAskPasswordFunction *gi.Function
@@ -23993,9 +24605,9 @@ func tlsInteractionAskPasswordFunction_Set() error {
 // AskPassword is a representation of the C type g_tls_interaction_ask_password.
 func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) TlsInteractionResult {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(password.Native)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(password.native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24031,9 +24643,9 @@ func tlsInteractionInvokeAskPasswordFunction_Set() error {
 // InvokeAskPassword is a representation of the C type g_tls_interaction_invoke_ask_password.
 func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) TlsInteractionResult {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(password.Native)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(password.native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24065,10 +24677,10 @@ func tlsInteractionInvokeRequestCertificateFunction_Set() error {
 // InvokeRequestCertificate is a representation of the C type g_tls_interaction_invoke_request_certificate.
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) TlsInteractionResult {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 	inArgs[2].SetInt32(int32(flags))
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24100,10 +24712,10 @@ func tlsInteractionRequestCertificateFunction_Set() error {
 // RequestCertificate is a representation of the C type g_tls_interaction_request_certificate.
 func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) TlsInteractionResult {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(connection.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(connection.native)
 	inArgs[2].SetInt32(int32(flags))
-	inArgs[3].SetPointer(cancellable.Native)
+	inArgs[3].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24133,7 +24745,14 @@ func tlsPasswordObject_Set() error {
 }
 
 type TlsPassword struct {
-	gobject.Object
+	native uintptr
+}
+
+func TlsPasswordNewFromNative(native uintptr) *TlsPassword {
+	return &TlsPassword{native: native}
+}
+func (recv *TlsPassword) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -24142,17 +24761,16 @@ type TlsPassword struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
-	argValue := gi.ObjectFieldGet(tlsPasswordObject, recv.Native, "priv")
-	value := &TlsPasswordPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(tlsPasswordObject, recv.native, "priv")
+	value := TlsPasswordPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsPassword) SetFieldPriv(value *TlsPasswordPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(tlsPasswordObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(tlsPasswordObject, recv.native, "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'g_tls_password_new' : parameter 'flags' of type 'TlsPasswordFlags' not supported
@@ -24175,7 +24793,7 @@ func tlsPasswordGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type g_tls_password_get_description.
 func (recv *TlsPassword) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -24209,7 +24827,7 @@ func tlsPasswordGetValueFunction_Set() error {
 // GetValue is a representation of the C type g_tls_password_get_value.
 func (recv *TlsPassword) GetValue(length uint64) uint8 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(length)
 
 	var ret gi.Argument
@@ -24242,7 +24860,7 @@ func tlsPasswordGetWarningFunction_Set() error {
 // GetWarning is a representation of the C type g_tls_password_get_warning.
 func (recv *TlsPassword) GetWarning() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -24274,7 +24892,7 @@ func tlsPasswordSetDescriptionFunction_Set() error {
 // SetDescription is a representation of the C type g_tls_password_set_description.
 func (recv *TlsPassword) SetDescription(description string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(description)
 
 	err := tlsPasswordSetDescriptionFunction_Set()
@@ -24309,7 +24927,7 @@ func tlsPasswordSetWarningFunction_Set() error {
 // SetWarning is a representation of the C type g_tls_password_set_warning.
 func (recv *TlsPassword) SetWarning(warning string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(warning)
 
 	err := tlsPasswordSetWarningFunction_Set()
@@ -24332,37 +24950,48 @@ func unixConnectionObject_Set() error {
 }
 
 type UnixConnection struct {
-	SocketConnection
+	native uintptr
+}
+
+func UnixConnectionNewFromNative(native uintptr) *UnixConnection {
+	return &UnixConnection{native: native}
+}
+func (recv *UnixConnection) SocketConnection() *SocketConnection {
+	return SocketConnectionNewFromNative(recv.native)
+}
+func (recv *UnixConnection) IOStream() *IOStream {
+	return IOStreamNewFromNative(recv.native)
+}
+func (recv *UnixConnection) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixConnection) FieldParentInstance() *SocketConnection {
-	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native, "parent_instance")
-	value := &SocketConnection{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.native, "parent_instance")
+	value := SocketConnectionNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixConnection) SetFieldParentInstance(value *SocketConnection) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixConnectionObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixConnectionObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
-	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native, "priv")
-	value := &UnixConnectionPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.native, "priv")
+	value := UnixConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixConnection) SetFieldPriv(value *UnixConnectionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixConnectionObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixConnectionObject, recv.native, "priv", argValue)
 }
 
 var unixConnectionReceiveCredentialsFunction *gi.Function
@@ -24383,8 +25012,8 @@ func unixConnectionReceiveCredentialsFunction_Set() error {
 // ReceiveCredentials is a representation of the C type g_unix_connection_receive_credentials.
 func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) *Credentials {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24393,8 +25022,7 @@ func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) *Creden
 		ret = unixConnectionReceiveCredentialsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credentials{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24421,8 +25049,8 @@ func unixConnectionReceiveFdFunction_Set() error {
 // ReceiveFd is a representation of the C type g_unix_connection_receive_fd.
 func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24454,8 +25082,8 @@ func unixConnectionSendCredentialsFunction_Set() error {
 // SendCredentials is a representation of the C type g_unix_connection_send_credentials.
 func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(cancellable.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24491,9 +25119,9 @@ func unixConnectionSendFdFunction_Set() error {
 // SendFd is a representation of the C type g_unix_connection_send_fd.
 func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
-	inArgs[2].SetPointer(cancellable.Native)
+	inArgs[2].SetPointer(cancellable.native)
 
 	var ret gi.Argument
 
@@ -24519,37 +25147,45 @@ func unixCredentialsMessageObject_Set() error {
 }
 
 type UnixCredentialsMessage struct {
-	SocketControlMessage
+	native uintptr
+}
+
+func UnixCredentialsMessageNewFromNative(native uintptr) *UnixCredentialsMessage {
+	return &UnixCredentialsMessage{native: native}
+}
+func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {
+	return SocketControlMessageNewFromNative(recv.native)
+}
+func (recv *UnixCredentialsMessage) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixCredentialsMessage) FieldParentInstance() *SocketControlMessage {
-	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native, "parent_instance")
-	value := &SocketControlMessage{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.native, "parent_instance")
+	value := SocketControlMessageNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixCredentialsMessage) SetFieldParentInstance(value *SocketControlMessage) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
-	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native, "priv")
-	value := &UnixCredentialsMessagePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.native, "priv")
+	value := UnixCredentialsMessagePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixCredentialsMessage) SetFieldPriv(value *UnixCredentialsMessagePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.native, "priv", argValue)
 }
 
 var unixCredentialsMessageNewFunction *gi.Function
@@ -24577,8 +25213,7 @@ func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 		ret = unixCredentialsMessageNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &UnixCredentialsMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixCredentialsMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24601,7 +25236,7 @@ func unixCredentialsMessageNewWithCredentialsFunction_Set() error {
 // UnixCredentialsMessageNewWithCredentials is a representation of the C type g_unix_credentials_message_new_with_credentials.
 func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(credentials.Native)
+	inArgs[0].SetPointer(credentials.native)
 
 	var ret gi.Argument
 
@@ -24610,8 +25245,7 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 		ret = unixCredentialsMessageNewWithCredentialsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixCredentialsMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixCredentialsMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24634,7 +25268,7 @@ func unixCredentialsMessageGetCredentialsFunction_Set() error {
 // GetCredentials is a representation of the C type g_unix_credentials_message_get_credentials.
 func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -24643,8 +25277,7 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 		ret = unixCredentialsMessageGetCredentialsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Credentials{}
-	retGo.Native = ret.Pointer()
+	retGo := CredentialsNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24661,7 +25294,14 @@ func unixFDListObject_Set() error {
 }
 
 type UnixFDList struct {
-	gobject.Object
+	native uintptr
+}
+
+func UnixFDListNewFromNative(native uintptr) *UnixFDList {
+	return &UnixFDList{native: native}
+}
+func (recv *UnixFDList) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -24670,17 +25310,16 @@ type UnixFDList struct {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
-	argValue := gi.ObjectFieldGet(unixFDListObject, recv.Native, "priv")
-	value := &UnixFDListPrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixFDListObject, recv.native, "priv")
+	value := UnixFDListPrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixFDList) SetFieldPriv(value *UnixFDListPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixFDListObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixFDListObject, recv.native, "priv", argValue)
 }
 
 var unixFDListNewFunction *gi.Function
@@ -24708,8 +25347,7 @@ func UnixFDListNew() *UnixFDList {
 		ret = unixFDListNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &UnixFDList{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixFDListNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24734,7 +25372,7 @@ func unixFDListAppendFunction_Set() error {
 // Append is a representation of the C type g_unix_fd_list_append.
 func (recv *UnixFDList) Append(fd int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
 
 	var ret gi.Argument
@@ -24767,7 +25405,7 @@ func unixFDListGetFunction_Set() error {
 // Get is a representation of the C type g_unix_fd_list_get.
 func (recv *UnixFDList) Get(index int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(index)
 
 	var ret gi.Argument
@@ -24800,7 +25438,7 @@ func unixFDListGetLengthFunction_Set() error {
 // GetLength is a representation of the C type g_unix_fd_list_get_length.
 func (recv *UnixFDList) GetLength() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -24832,7 +25470,7 @@ func unixFDListPeekFdsFunction_Set() error {
 // PeekFds is a representation of the C type g_unix_fd_list_peek_fds.
 func (recv *UnixFDList) PeekFds() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -24864,7 +25502,7 @@ func unixFDListStealFdsFunction_Set() error {
 // StealFds is a representation of the C type g_unix_fd_list_steal_fds.
 func (recv *UnixFDList) StealFds() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -24890,37 +25528,45 @@ func unixFDMessageObject_Set() error {
 }
 
 type UnixFDMessage struct {
-	SocketControlMessage
+	native uintptr
+}
+
+func UnixFDMessageNewFromNative(native uintptr) *UnixFDMessage {
+	return &UnixFDMessage{native: native}
+}
+func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {
+	return SocketControlMessageNewFromNative(recv.native)
+}
+func (recv *UnixFDMessage) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixFDMessage) FieldParentInstance() *SocketControlMessage {
-	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native, "parent_instance")
-	value := &SocketControlMessage{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.native, "parent_instance")
+	value := SocketControlMessageNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixFDMessage) SetFieldParentInstance(value *SocketControlMessage) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixFDMessageObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixFDMessageObject, recv.native, "parent_instance", argValue)
 }
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
-	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native, "priv")
-	value := &UnixFDMessagePrivate{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.native, "priv")
+	value := UnixFDMessagePrivateNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixFDMessage) SetFieldPriv(value *UnixFDMessagePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixFDMessageObject, recv.Native, "priv", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixFDMessageObject, recv.native, "priv", argValue)
 }
 
 var unixFDMessageNewFunction *gi.Function
@@ -24948,8 +25594,7 @@ func UnixFDMessageNew() *UnixFDMessage {
 		ret = unixFDMessageNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &UnixFDMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixFDMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -24972,7 +25617,7 @@ func unixFDMessageNewWithFdListFunction_Set() error {
 // UnixFDMessageNewWithFdList is a representation of the C type g_unix_fd_message_new_with_fd_list.
 func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(fdList.Native)
+	inArgs[0].SetPointer(fdList.native)
 
 	var ret gi.Argument
 
@@ -24981,8 +25626,7 @@ func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 		ret = unixFDMessageNewWithFdListFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixFDMessage{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixFDMessageNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25005,7 +25649,7 @@ func unixFDMessageAppendFdFunction_Set() error {
 // AppendFd is a representation of the C type g_unix_fd_message_append_fd.
 func (recv *UnixFDMessage) AppendFd(fd int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(fd)
 
 	var ret gi.Argument
@@ -25038,7 +25682,7 @@ func unixFDMessageGetFdListFunction_Set() error {
 // GetFdList is a representation of the C type g_unix_fd_message_get_fd_list.
 func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25047,8 +25691,7 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 		ret = unixFDMessageGetFdListFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixFDList{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixFDListNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25071,7 +25714,7 @@ func unixFDMessageStealFdsFunction_Set() error {
 // StealFds is a representation of the C type g_unix_fd_message_steal_fds.
 func (recv *UnixFDMessage) StealFds() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -25097,22 +25740,31 @@ func unixInputStreamObject_Set() error {
 }
 
 type UnixInputStream struct {
-	InputStream
+	native uintptr
+}
+
+func UnixInputStreamNewFromNative(native uintptr) *UnixInputStream {
+	return &UnixInputStream{native: native}
+}
+func (recv *UnixInputStream) InputStream() *InputStream {
+	return InputStreamNewFromNative(recv.native)
+}
+func (recv *UnixInputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixInputStream) FieldParentInstance() *InputStream {
-	argValue := gi.ObjectFieldGet(unixInputStreamObject, recv.Native, "parent_instance")
-	value := &InputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixInputStreamObject, recv.native, "parent_instance")
+	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixInputStream) SetFieldParentInstance(value *InputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixInputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixInputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var unixInputStreamNewFunction *gi.Function
@@ -25143,8 +25795,7 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 		ret = unixInputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixInputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixInputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25167,7 +25818,7 @@ func unixInputStreamGetCloseFdFunction_Set() error {
 // GetCloseFd is a representation of the C type g_unix_input_stream_get_close_fd.
 func (recv *UnixInputStream) GetCloseFd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25199,7 +25850,7 @@ func unixInputStreamGetFdFunction_Set() error {
 // GetFd is a representation of the C type g_unix_input_stream_get_fd.
 func (recv *UnixInputStream) GetFd() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25231,7 +25882,7 @@ func unixInputStreamSetCloseFdFunction_Set() error {
 // SetCloseFd is a representation of the C type g_unix_input_stream_set_close_fd.
 func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(closeFd)
 
 	err := unixInputStreamSetCloseFdFunction_Set()
@@ -25254,7 +25905,14 @@ func unixMountMonitorObject_Set() error {
 }
 
 type UnixMountMonitor struct {
-	gobject.Object
+	native uintptr
+}
+
+func UnixMountMonitorNewFromNative(native uintptr) *UnixMountMonitor {
+	return &UnixMountMonitor{native: native}
+}
+func (recv *UnixMountMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var unixMountMonitorNewFunction *gi.Function
@@ -25282,8 +25940,7 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 		ret = unixMountMonitorNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &UnixMountMonitor{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixMountMonitorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25306,7 +25963,7 @@ func unixMountMonitorSetRateLimitFunction_Set() error {
 // SetRateLimit is a representation of the C type g_unix_mount_monitor_set_rate_limit.
 func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(limitMsec)
 
 	err := unixMountMonitorSetRateLimitFunction_Set()
@@ -25329,22 +25986,31 @@ func unixOutputStreamObject_Set() error {
 }
 
 type UnixOutputStream struct {
-	OutputStream
+	native uintptr
+}
+
+func UnixOutputStreamNewFromNative(native uintptr) *UnixOutputStream {
+	return &UnixOutputStream{native: native}
+}
+func (recv *UnixOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromNative(recv.native)
+}
+func (recv *UnixOutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixOutputStream) FieldParentInstance() *OutputStream {
-	argValue := gi.ObjectFieldGet(unixOutputStreamObject, recv.Native, "parent_instance")
-	value := &OutputStream{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixOutputStreamObject, recv.native, "parent_instance")
+	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixOutputStream) SetFieldParentInstance(value *OutputStream) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixOutputStreamObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixOutputStreamObject, recv.native, "parent_instance", argValue)
 }
 
 var unixOutputStreamNewFunction *gi.Function
@@ -25375,8 +26041,7 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 		ret = unixOutputStreamNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixOutputStream{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixOutputStreamNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25399,7 +26064,7 @@ func unixOutputStreamGetCloseFdFunction_Set() error {
 // GetCloseFd is a representation of the C type g_unix_output_stream_get_close_fd.
 func (recv *UnixOutputStream) GetCloseFd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25431,7 +26096,7 @@ func unixOutputStreamGetFdFunction_Set() error {
 // GetFd is a representation of the C type g_unix_output_stream_get_fd.
 func (recv *UnixOutputStream) GetFd() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25463,7 +26128,7 @@ func unixOutputStreamSetCloseFdFunction_Set() error {
 // SetCloseFd is a representation of the C type g_unix_output_stream_set_close_fd.
 func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(closeFd)
 
 	err := unixOutputStreamSetCloseFdFunction_Set()
@@ -25486,22 +26151,31 @@ func unixSocketAddressObject_Set() error {
 }
 
 type UnixSocketAddress struct {
-	SocketAddress
+	native uintptr
+}
+
+func UnixSocketAddressNewFromNative(native uintptr) *UnixSocketAddress {
+	return &UnixSocketAddress{native: native}
+}
+func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromNative(recv.native)
+}
+func (recv *UnixSocketAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixSocketAddress) FieldParentInstance() *SocketAddress {
-	argValue := gi.ObjectFieldGet(unixSocketAddressObject, recv.Native, "parent_instance")
-	value := &SocketAddress{}
-	value.Native = argValue.Pointer()
+	argValue := gi.ObjectFieldGet(unixSocketAddressObject, recv.native, "parent_instance")
+	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.ObjectFieldSet(unixSocketAddressObject, recv.Native, "parent_instance", argValue)
+	argValue.SetPointer(value.native)
+	gi.ObjectFieldSet(unixSocketAddressObject, recv.native, "parent_instance", argValue)
 }
 
 var unixSocketAddressNewFunction *gi.Function
@@ -25531,8 +26205,7 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 		ret = unixSocketAddressNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &UnixSocketAddress{}
-	retGo.Native = ret.Pointer()
+	retGo := UnixSocketAddressNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25559,7 +26232,7 @@ func unixSocketAddressGetAddressTypeFunction_Set() error {
 // GetAddressType is a representation of the C type g_unix_socket_address_get_address_type.
 func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25591,7 +26264,7 @@ func unixSocketAddressGetIsAbstractFunction_Set() error {
 // GetIsAbstract is a representation of the C type g_unix_socket_address_get_is_abstract.
 func (recv *UnixSocketAddress) GetIsAbstract() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25623,7 +26296,7 @@ func unixSocketAddressGetPathFunction_Set() error {
 // GetPath is a representation of the C type g_unix_socket_address_get_path.
 func (recv *UnixSocketAddress) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25655,7 +26328,7 @@ func unixSocketAddressGetPathLenFunction_Set() error {
 // GetPathLen is a representation of the C type g_unix_socket_address_get_path_len.
 func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25681,7 +26354,14 @@ func vfsObject_Set() error {
 }
 
 type Vfs struct {
-	gobject.Object
+	native uintptr
+}
+
+func VfsNewFromNative(native uintptr) *Vfs {
+	return &Vfs{native: native}
+}
+func (recv *Vfs) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -25710,7 +26390,7 @@ func vfsGetSupportedUriSchemesFunction_Set() error {
 // GetSupportedUriSchemes is a representation of the C type g_vfs_get_supported_uri_schemes.
 func (recv *Vfs) GetSupportedUriSchemes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := vfsGetSupportedUriSchemesFunction_Set()
 	if err == nil {
@@ -25738,7 +26418,7 @@ func vfsIsActiveFunction_Set() error {
 // IsActive is a representation of the C type g_vfs_is_active.
 func (recv *Vfs) IsActive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25774,7 +26454,7 @@ func vfsUnregisterUriSchemeFunction_Set() error {
 // UnregisterUriScheme is a representation of the C type g_vfs_unregister_uri_scheme.
 func (recv *Vfs) UnregisterUriScheme(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -25801,7 +26481,14 @@ func volumeMonitorObject_Set() error {
 }
 
 type VolumeMonitor struct {
-	gobject.Object
+	native uintptr
+}
+
+func VolumeMonitorNewFromNative(native uintptr) *VolumeMonitor {
+	return &VolumeMonitor{native: native}
+}
+func (recv *VolumeMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -25830,7 +26517,14 @@ func zlibCompressorObject_Set() error {
 }
 
 type ZlibCompressor struct {
-	gobject.Object
+	native uintptr
+}
+
+func ZlibCompressorNewFromNative(native uintptr) *ZlibCompressor {
+	return &ZlibCompressor{native: native}
+}
+func (recv *ZlibCompressor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var zlibCompressorNewFunction *gi.Function
@@ -25861,8 +26555,7 @@ func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor
 		ret = zlibCompressorNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ZlibCompressor{}
-	retGo.Native = ret.Pointer()
+	retGo := ZlibCompressorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25885,7 +26578,7 @@ func zlibCompressorGetFileInfoFunction_Set() error {
 // GetFileInfo is a representation of the C type g_zlib_compressor_get_file_info.
 func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -25894,8 +26587,7 @@ func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 		ret = zlibCompressorGetFileInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25918,8 +26610,8 @@ func zlibCompressorSetFileInfoFunction_Set() error {
 // SetFileInfo is a representation of the C type g_zlib_compressor_set_file_info.
 func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fileInfo.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fileInfo.native)
 
 	err := zlibCompressorSetFileInfoFunction_Set()
 	if err == nil {
@@ -25941,7 +26633,14 @@ func zlibDecompressorObject_Set() error {
 }
 
 type ZlibDecompressor struct {
-	gobject.Object
+	native uintptr
+}
+
+func ZlibDecompressorNewFromNative(native uintptr) *ZlibDecompressor {
+	return &ZlibDecompressor{native: native}
+}
+func (recv *ZlibDecompressor) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var zlibDecompressorNewFunction *gi.Function
@@ -25971,8 +26670,7 @@ func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
 		ret = zlibDecompressorNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &ZlibDecompressor{}
-	retGo.Native = ret.Pointer()
+	retGo := ZlibDecompressorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -25995,7 +26693,7 @@ func zlibDecompressorGetFileInfoFunction_Set() error {
 // GetFileInfo is a representation of the C type g_zlib_decompressor_get_file_info.
 func (recv *ZlibDecompressor) GetFileInfo() *FileInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -26004,8 +26702,7 @@ func (recv *ZlibDecompressor) GetFileInfo() *FileInfo {
 		ret = zlibDecompressorGetFileInfoFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &FileInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }

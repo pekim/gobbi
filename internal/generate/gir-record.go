@@ -22,11 +22,12 @@ type Record struct {
 	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
-	isClass         bool
-	goName          string
-	namespace       *Namespace
-	parentNamespace *Namespace
-	parent          *Class
+	isClass           bool
+	goName            string
+	newFromNativeName string
+	namespace         *Namespace
+	parentNamespace   *Namespace
+	parent            *Class
 
 	giInfotype          string
 	giInfoGoName        string
@@ -37,11 +38,14 @@ type Record struct {
 func (r *Record) init(ns *Namespace, isClass bool) {
 	r.isClass = isClass
 	r.namespace = ns
+
 	r.goName = r.Name
 	if r.namespace.Name == "GObject" && r.goName == "SignalQuery" {
 		// avoid name clash with a function of the same name
 		r.goName = "SignalQuery_"
 	}
+
+	r.newFromNativeName = fmt.Sprintf("%sNewFromNative", r.goName)
 
 	r.giInfotype = "Struct"
 	if r.isClass {
@@ -61,6 +65,8 @@ func (r *Record) init(ns *Namespace, isClass bool) {
 func (r *Record) generate(f *file) {
 	r.generateGiInfo(f)
 	r.generateType(f)
+	r.generateNewFromNative(f)
+	r.generateAncestorAccessors(f)
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
@@ -130,39 +136,84 @@ func (r *Record) generateType(f *file) {
 	f.
 		Type().
 		Id(r.goName).
-		StructFunc(r.generateStructContent)
+		Struct(jen.Id(fieldNameNative).Uintptr())
 
 	f.Line()
 }
 
-func (r *Record) generateStructContent(g *jen.Group) {
-	if r.parent != nil {
-		if r.parentNamespace != nil {
-			g.Qual(r.parentNamespace.goFullPackageName, r.parent.Name)
-		} else {
-			g.Id(r.parent.Name)
+func (r *Record) generateNewFromNative(f *file) {
+	// GEN: func SomeClassNewFromNative(native uintptr) *SomeClass {...}
+	f.
+		Func().
+		Id(r.newFromNativeName).
+		Params(jen.Id(fieldNameNative).Uintptr()).
+		Params(jen.Op("*").Id(r.goName)).
+		BlockFunc(r.generateNewFromNativeBody)
+}
+
+func (r *Record) generateNewFromNativeBody(g *jen.Group) {
+	g.
+		Return(jen.
+			Op("&").
+			Id(r.goName).
+			Values(jen.Dict{
+				jen.Id(fieldNameNative): jen.Id(fieldNameNative),
+			}),
+		)
+}
+
+func (r *Record) generateAncestorAccessors(f *file) {
+	ancestort := r.parent
+
+	for ancestort != nil {
+		accessorName := ancestort.goName
+		if ancestort.goName == "Object" && ancestort.namespace.Name != "GObject" {
+			// avoid name clash
+			accessorName += ancestort.namespace.Name
 		}
-	} else {
-		g.Id(fieldNameNative).Uintptr()
+
+		parentType := jen.Op("*").Id(ancestort.goName)
+		if ancestort.namespace != r.namespace {
+			parentType = jen.Op("*").Qual(ancestort.namespace.goFullPackageName, ancestort.goName)
+		}
+
+		// GEN: func (recv *SomeClass) AncestorName() *AncestorName {...}
+		f.
+			Func().
+			Params(jen.Id(receiverName).Op("*").Id(r.goName)).
+			Id(accessorName).
+			Params().
+			Params(parentType).
+			BlockFunc(func(g *jen.Group) {
+				r.generateAncestorAccessorBody(g, ancestort)
+			})
+
+		ancestort = ancestort.parent
 	}
 }
 
-func (r *Record) supportedAsOutParameter() bool {
-	return true
+func (r *Record) generateAncestorAccessorBody(g *jen.Group, ancestor *Class) {
+	// recv.native
+	native := jen.Id(receiverName).Dot(fieldNameNative)
+
+	// SomeClassNewFromNative
+	//	OR
+	// other.SomeClassNewFromNative
+	ancestorNewFromNative := jen.Id(ancestor.newFromNativeName)
+	if ancestor.namespace != r.namespace {
+		ancestorNewFromNative = jen.Qual(ancestor.namespace.goFullPackageName, ancestor.newFromNativeName)
+	}
+
+	// GEN: return SomeClassNewFromNative(native)
+	g.Return(ancestorNewFromNative.Call(native))
 }
 
 func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
 	g.
 		Add(argName).
 		Op(":=").
-		Op("&").
-		Id(r.goName).
-		Values()
-
-	g.
-		Add(argName).Dot(fieldNameNative).
-		Op("=").
-		Add(argValue)
+		Id(r.newFromNativeName).
+		Call(argValue)
 }
 
 func (r *Record) generateStructFinalizer(f *file) {
@@ -223,17 +274,6 @@ func (r *Record) generateStructConstructor(f *file) {
 				Id(r.giInfoGoName).Dot("Alloc").
 				Call()
 			r.createFromArgument(g, jen.Id("structGo"), struct_)
-			//g.
-			//	Id("structGo").
-			//	Op(":=").
-			//	Do(func(s *jen.Statement) {
-			//		// SomeStruct.Alloc()
-			//		struct_ := jen.
-			//			Id(r.giInfoGoName).Dot("Alloc").
-			//			Call()
-			//
-			//		s.Add(r.createFromArgument(struct_))
-			//	})
 
 			// GEN: runtime.SetFinalizer(structGo, finalizeSomeType)
 			g.

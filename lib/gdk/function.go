@@ -34,8 +34,7 @@ func AtomIntern(atomName string, onlyIfExists bool) *Atom {
 		ret = atomInternFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Atom{}
-	retGo.Native = ret.Pointer()
+	retGo := AtomNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -63,8 +62,7 @@ func AtomInternStaticString(atomName string) *Atom {
 		ret = atomInternStaticStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Atom{}
-	retGo.Native = ret.Pointer()
+	retGo := AtomNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -140,8 +138,7 @@ func ColorParse(spec string) (bool, *Color) {
 	}
 
 	retGo := ret.Boolean()
-	out0 := &Color{}
-	out0.Native = outArgs[0].Pointer()
+	out0 := ColorNewFromNative(outArgs[0].Pointer())
 
 	return retGo, out0
 }
@@ -182,7 +179,7 @@ func dragAbortFunction_Set() error {
 // DragAbort is a representation of the C type gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetUint32(time)
 
 	err := dragAbortFunction_Set()
@@ -213,7 +210,7 @@ func dragDropFunction_Set() error {
 // DragDrop is a representation of the C type gdk_drag_drop.
 func DragDrop(context *DragContext, time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetUint32(time)
 
 	err := dragDropFunction_Set()
@@ -238,7 +235,7 @@ func dragDropDoneFunction_Set() error {
 // DragDropDone is a representation of the C type gdk_drag_drop_done.
 func DragDropDone(context *DragContext, success bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetBoolean(success)
 
 	err := dragDropDoneFunction_Set()
@@ -263,7 +260,7 @@ func dragDropSucceededFunction_Set() error {
 // DragDropSucceeded is a representation of the C type gdk_drag_drop_succeeded.
 func DragDropSucceeded(context *DragContext) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 
 	var ret gi.Argument
 
@@ -291,9 +288,9 @@ func dragFindWindowForScreenFunction_Set() error {
 // DragFindWindowForScreen is a representation of the C type gdk_drag_find_window_for_screen.
 func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int32, yRoot int32) (*Window, DragProtocol) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(context.Native)
-	inArgs[1].SetPointer(dragWindow.Native)
-	inArgs[2].SetPointer(screen.Native)
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetPointer(dragWindow.native)
+	inArgs[2].SetPointer(screen.native)
 	inArgs[3].SetInt32(xRoot)
 	inArgs[4].SetInt32(yRoot)
 
@@ -304,8 +301,7 @@ func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *S
 		dragFindWindowForScreenFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := &Window{}
-	out0.Native = outArgs[0].Pointer()
+	out0 := WindowNewFromNative(outArgs[0].Pointer())
 	out1 := DragProtocol(outArgs[1].Int32())
 
 	return out0, out1
@@ -325,7 +321,7 @@ func dragGetSelectionFunction_Set() error {
 // DragGetSelection is a representation of the C type gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) *Atom {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 
 	var ret gi.Argument
 
@@ -334,8 +330,7 @@ func DragGetSelection(context *DragContext) *Atom {
 		ret = dragGetSelectionFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Atom{}
-	retGo.Native = ret.Pointer()
+	retGo := AtomNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -358,7 +353,7 @@ func dropFinishFunction_Set() error {
 // DropFinish is a representation of the C type gdk_drop_finish.
 func DropFinish(context *DragContext, success bool, time uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetBoolean(success)
 	inArgs[2].SetUint32(time)
 
@@ -384,7 +379,7 @@ func dropReplyFunction_Set() error {
 // DropReply is a representation of the C type gdk_drop_reply.
 func DropReply(context *DragContext, accepted bool, time uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetBoolean(accepted)
 	inArgs[2].SetUint32(time)
 
@@ -486,7 +481,7 @@ func eventRequestMotionsFunction_Set() error {
 // EventRequestMotions is a representation of the C type gdk_event_request_motions.
 func EventRequestMotions(event *EventMotion) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(event.Native)
+	inArgs[0].SetPointer(event.native)
 
 	err := eventRequestMotionsFunction_Set()
 	if err == nil {
@@ -571,8 +566,7 @@ func GetDefaultRootWindow() *Window {
 		ret = getDefaultRootWindowFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Window{}
-	retGo.Native = ret.Pointer()
+	retGo := WindowNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -725,7 +719,7 @@ func keyboardGrabFunction_Set() error {
 // KeyboardGrab is a representation of the C type gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(window.Native)
+	inArgs[0].SetPointer(window.native)
 	inArgs[1].SetBoolean(ownerEvents)
 	inArgs[2].SetUint32(time)
 
@@ -1052,7 +1046,7 @@ func offscreenWindowGetEmbedderFunction_Set() error {
 // OffscreenWindowGetEmbedder is a representation of the C type gdk_offscreen_window_get_embedder.
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(window.Native)
+	inArgs[0].SetPointer(window.native)
 
 	var ret gi.Argument
 
@@ -1061,8 +1055,7 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 		ret = offscreenWindowGetEmbedderFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{}
-	retGo.Native = ret.Pointer()
+	retGo := WindowNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1083,8 +1076,8 @@ func offscreenWindowSetEmbedderFunction_Set() error {
 // OffscreenWindowSetEmbedder is a representation of the C type gdk_offscreen_window_set_embedder.
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(window.Native)
-	inArgs[1].SetPointer(embedder.Native)
+	inArgs[0].SetPointer(window.native)
+	inArgs[1].SetPointer(embedder.native)
 
 	err := offscreenWindowSetEmbedderFunction_Set()
 	if err == nil {
@@ -1198,9 +1191,9 @@ func propertyChangeFunction_Set() error {
 // PropertyChange is a representation of the C type gdk_property_change.
 func PropertyChange(window *Window, property *Atom, type_ *Atom, format int32, mode PropMode, data uint8, nelements int32) {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(window.Native)
-	inArgs[1].SetPointer(property.Native)
-	inArgs[2].SetPointer(type_.Native)
+	inArgs[0].SetPointer(window.native)
+	inArgs[1].SetPointer(property.native)
+	inArgs[2].SetPointer(type_.native)
 	inArgs[3].SetInt32(format)
 	inArgs[4].SetInt32(int32(mode))
 	inArgs[5].SetUint8(data)
@@ -1228,8 +1221,8 @@ func propertyDeleteFunction_Set() error {
 // PropertyDelete is a representation of the C type gdk_property_delete.
 func PropertyDelete(window *Window, property *Atom) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(window.Native)
-	inArgs[1].SetPointer(property.Native)
+	inArgs[0].SetPointer(window.native)
+	inArgs[1].SetPointer(property.native)
 
 	err := propertyDeleteFunction_Set()
 	if err == nil {
@@ -1259,9 +1252,9 @@ func selectionConvertFunction_Set() error {
 // SelectionConvert is a representation of the C type gdk_selection_convert.
 func SelectionConvert(requestor *Window, selection *Atom, target *Atom, time uint32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(requestor.Native)
-	inArgs[1].SetPointer(selection.Native)
-	inArgs[2].SetPointer(target.Native)
+	inArgs[0].SetPointer(requestor.native)
+	inArgs[1].SetPointer(selection.native)
+	inArgs[2].SetPointer(target.native)
 	inArgs[3].SetUint32(time)
 
 	err := selectionConvertFunction_Set()
@@ -1286,7 +1279,7 @@ func selectionOwnerGetFunction_Set() error {
 // SelectionOwnerGet is a representation of the C type gdk_selection_owner_get.
 func SelectionOwnerGet(selection *Atom) *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(selection.Native)
+	inArgs[0].SetPointer(selection.native)
 
 	var ret gi.Argument
 
@@ -1295,8 +1288,7 @@ func SelectionOwnerGet(selection *Atom) *Window {
 		ret = selectionOwnerGetFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{}
-	retGo.Native = ret.Pointer()
+	retGo := WindowNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1315,8 +1307,8 @@ func selectionOwnerGetForDisplayFunction_Set() error {
 // SelectionOwnerGetForDisplay is a representation of the C type gdk_selection_owner_get_for_display.
 func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(display.Native)
-	inArgs[1].SetPointer(selection.Native)
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(selection.native)
 
 	var ret gi.Argument
 
@@ -1325,8 +1317,7 @@ func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
 		ret = selectionOwnerGetForDisplayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Window{}
-	retGo.Native = ret.Pointer()
+	retGo := WindowNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1345,8 +1336,8 @@ func selectionOwnerSetFunction_Set() error {
 // SelectionOwnerSet is a representation of the C type gdk_selection_owner_set.
 func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(owner.Native)
-	inArgs[1].SetPointer(selection.Native)
+	inArgs[0].SetPointer(owner.native)
+	inArgs[1].SetPointer(selection.native)
 	inArgs[2].SetUint32(time)
 	inArgs[3].SetBoolean(sendEvent)
 
@@ -1376,9 +1367,9 @@ func selectionOwnerSetForDisplayFunction_Set() error {
 // SelectionOwnerSetForDisplay is a representation of the C type gdk_selection_owner_set_for_display.
 func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(display.Native)
-	inArgs[1].SetPointer(owner.Native)
-	inArgs[2].SetPointer(selection.Native)
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(owner.native)
+	inArgs[2].SetPointer(selection.native)
 	inArgs[3].SetUint32(time)
 	inArgs[4].SetBoolean(sendEvent)
 
@@ -1408,9 +1399,9 @@ func selectionPropertyGetFunction_Set() error {
 // SelectionPropertyGet is a representation of the C type gdk_selection_property_get.
 func SelectionPropertyGet(requestor *Window, data uint8, propType *Atom, propFormat int32) int32 {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(requestor.Native)
+	inArgs[0].SetPointer(requestor.native)
 	inArgs[1].SetUint8(data)
-	inArgs[2].SetPointer(propType.Native)
+	inArgs[2].SetPointer(propType.native)
 	inArgs[3].SetInt32(propFormat)
 
 	var ret gi.Argument
@@ -1439,10 +1430,10 @@ func selectionSendNotifyFunction_Set() error {
 // SelectionSendNotify is a representation of the C type gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(requestor.Native)
-	inArgs[1].SetPointer(selection.Native)
-	inArgs[2].SetPointer(target.Native)
-	inArgs[3].SetPointer(property.Native)
+	inArgs[0].SetPointer(requestor.native)
+	inArgs[1].SetPointer(selection.native)
+	inArgs[2].SetPointer(target.native)
+	inArgs[3].SetPointer(property.native)
 	inArgs[4].SetUint32(time)
 
 	err := selectionSendNotifyFunction_Set()
@@ -1467,11 +1458,11 @@ func selectionSendNotifyForDisplayFunction_Set() error {
 // SelectionSendNotifyForDisplay is a representation of the C type gdk_selection_send_notify_for_display.
 func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
 	var inArgs [6]gi.Argument
-	inArgs[0].SetPointer(display.Native)
-	inArgs[1].SetPointer(requestor.Native)
-	inArgs[2].SetPointer(selection.Native)
-	inArgs[3].SetPointer(target.Native)
-	inArgs[4].SetPointer(property.Native)
+	inArgs[0].SetPointer(display.native)
+	inArgs[1].SetPointer(requestor.native)
+	inArgs[2].SetPointer(selection.native)
+	inArgs[3].SetPointer(target.native)
+	inArgs[4].SetPointer(property.native)
 	inArgs[5].SetUint32(time)
 
 	err := selectionSendNotifyForDisplayFunction_Set()
@@ -1596,7 +1587,7 @@ func testRenderSyncFunction_Set() error {
 // TestRenderSync is a representation of the C type gdk_test_render_sync.
 func TestRenderSync(window *Window) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(window.Native)
+	inArgs[0].SetPointer(window.native)
 
 	err := testRenderSyncFunction_Set()
 	if err == nil {

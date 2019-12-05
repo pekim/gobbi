@@ -20,12 +20,16 @@ func arrayStruct_Set() error {
 }
 
 type Array struct {
-	Native uintptr
+	native uintptr
+}
+
+func ArrayNewFromNative(native uintptr) *Array {
+	return &Array{native: native}
 }
 
 // FieldData returns the C field 'data'.
 func (recv *Array) FieldData() string {
-	argValue := gi.StructFieldGet(arrayStruct, recv.Native, "data")
+	argValue := gi.StructFieldGet(arrayStruct, recv.native, "data")
 	value := argValue.String(false)
 	return value
 }
@@ -34,12 +38,12 @@ func (recv *Array) FieldData() string {
 func (recv *Array) SetFieldData(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(arrayStruct, recv.Native, "data", argValue)
+	gi.StructFieldSet(arrayStruct, recv.native, "data", argValue)
 }
 
 // FieldLen returns the C field 'len'.
 func (recv *Array) FieldLen() uint32 {
-	argValue := gi.StructFieldGet(arrayStruct, recv.Native, "len")
+	argValue := gi.StructFieldGet(arrayStruct, recv.native, "len")
 	value := argValue.Uint32()
 	return value
 }
@@ -48,7 +52,7 @@ func (recv *Array) FieldLen() uint32 {
 func (recv *Array) SetFieldLen(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(arrayStruct, recv.Native, "len", argValue)
+	gi.StructFieldSet(arrayStruct, recv.native, "len", argValue)
 }
 
 // ArrayStruct creates an uninitialised Array.
@@ -58,13 +62,12 @@ func ArrayStruct() *Array {
 		return nil
 	}
 
-	structGo := &Array{}
-	structGo.Native = arrayStruct.Alloc()
+	structGo := ArrayNewFromNative(arrayStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeArray)
 	return structGo
 }
 func finalizeArray(obj *Array) {
-	arrayStruct.Free(obj.Native)
+	arrayStruct.Free(obj.native)
 }
 
 var asyncQueueStruct *gi.Struct
@@ -79,7 +82,11 @@ func asyncQueueStruct_Set() error {
 }
 
 type AsyncQueue struct {
-	Native uintptr
+	native uintptr
+}
+
+func AsyncQueueNewFromNative(native uintptr) *AsyncQueue {
+	return &AsyncQueue{native: native}
 }
 
 var asyncQueueLengthFunction *gi.Function
@@ -100,7 +107,7 @@ func asyncQueueLengthFunction_Set() error {
 // Length is a representation of the C type g_async_queue_length.
 func (recv *AsyncQueue) Length() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -132,7 +139,7 @@ func asyncQueueLengthUnlockedFunction_Set() error {
 // LengthUnlocked is a representation of the C type g_async_queue_length_unlocked.
 func (recv *AsyncQueue) LengthUnlocked() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -164,7 +171,7 @@ func asyncQueueLockFunction_Set() error {
 // Lock is a representation of the C type g_async_queue_lock.
 func (recv *AsyncQueue) Lock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := asyncQueueLockFunction_Set()
 	if err == nil {
@@ -208,7 +215,7 @@ func asyncQueueRefFunction_Set() error {
 // Ref is a representation of the C type g_async_queue_ref.
 func (recv *AsyncQueue) Ref() *AsyncQueue {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -217,8 +224,7 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 		ret = asyncQueueRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &AsyncQueue{}
-	retGo.Native = ret.Pointer()
+	retGo := AsyncQueueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -241,7 +247,7 @@ func asyncQueueRefUnlockedFunction_Set() error {
 // RefUnlocked is a representation of the C type g_async_queue_ref_unlocked.
 func (recv *AsyncQueue) RefUnlocked() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := asyncQueueRefUnlockedFunction_Set()
 	if err == nil {
@@ -289,7 +295,7 @@ func asyncQueueUnlockFunction_Set() error {
 // Unlock is a representation of the C type g_async_queue_unlock.
 func (recv *AsyncQueue) Unlock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := asyncQueueUnlockFunction_Set()
 	if err == nil {
@@ -317,7 +323,7 @@ func asyncQueueUnrefFunction_Set() error {
 // Unref is a representation of the C type g_async_queue_unref.
 func (recv *AsyncQueue) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := asyncQueueUnrefFunction_Set()
 	if err == nil {
@@ -345,7 +351,7 @@ func asyncQueueUnrefAndUnlockFunction_Set() error {
 // UnrefAndUnlock is a representation of the C type g_async_queue_unref_and_unlock.
 func (recv *AsyncQueue) UnrefAndUnlock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := asyncQueueUnrefAndUnlockFunction_Set()
 	if err == nil {
@@ -362,13 +368,12 @@ func AsyncQueueStruct() *AsyncQueue {
 		return nil
 	}
 
-	structGo := &AsyncQueue{}
-	structGo.Native = asyncQueueStruct.Alloc()
+	structGo := AsyncQueueNewFromNative(asyncQueueStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeAsyncQueue)
 	return structGo
 }
 func finalizeAsyncQueue(obj *AsyncQueue) {
-	asyncQueueStruct.Free(obj.Native)
+	asyncQueueStruct.Free(obj.native)
 }
 
 var bookmarkFileStruct *gi.Struct
@@ -383,7 +388,11 @@ func bookmarkFileStruct_Set() error {
 }
 
 type BookmarkFile struct {
-	Native uintptr
+	native uintptr
+}
+
+func BookmarkFileNewFromNative(native uintptr) *BookmarkFile {
+	return &BookmarkFile{native: native}
 }
 
 var bookmarkFileAddApplicationFunction *gi.Function
@@ -404,7 +413,7 @@ func bookmarkFileAddApplicationFunction_Set() error {
 // AddApplication is a representation of the C type g_bookmark_file_add_application.
 func (recv *BookmarkFile) AddApplication(uri string, name string, exec string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 	inArgs[3].SetString(exec)
@@ -435,7 +444,7 @@ func bookmarkFileAddGroupFunction_Set() error {
 // AddGroup is a representation of the C type g_bookmark_file_add_group.
 func (recv *BookmarkFile) AddGroup(uri string, group string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(group)
 
@@ -465,7 +474,7 @@ func bookmarkFileFreeFunction_Set() error {
 // Free is a representation of the C type g_bookmark_file_free.
 func (recv *BookmarkFile) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bookmarkFileFreeFunction_Set()
 	if err == nil {
@@ -493,7 +502,7 @@ func bookmarkFileGetAddedFunction_Set() error {
 // GetAdded is a representation of the C type g_bookmark_file_get_added.
 func (recv *BookmarkFile) GetAdded(uri string) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -526,7 +535,7 @@ func bookmarkFileGetAppInfoFunction_Set() error {
 // GetAppInfo is a representation of the C type g_bookmark_file_get_app_info.
 func (recv *BookmarkFile) GetAppInfo(uri string, name string) (bool, string, uint32, int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 
@@ -564,7 +573,7 @@ func bookmarkFileGetApplicationsFunction_Set() error {
 // GetApplications is a representation of the C type g_bookmark_file_get_applications.
 func (recv *BookmarkFile) GetApplications(uri string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var outArgs [1]gi.Argument
@@ -597,7 +606,7 @@ func bookmarkFileGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type g_bookmark_file_get_description.
 func (recv *BookmarkFile) GetDescription(uri string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -630,7 +639,7 @@ func bookmarkFileGetGroupsFunction_Set() error {
 // GetGroups is a representation of the C type g_bookmark_file_get_groups.
 func (recv *BookmarkFile) GetGroups(uri string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var outArgs [1]gi.Argument
@@ -663,7 +672,7 @@ func bookmarkFileGetIconFunction_Set() error {
 // GetIcon is a representation of the C type g_bookmark_file_get_icon.
 func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var outArgs [2]gi.Argument
@@ -699,7 +708,7 @@ func bookmarkFileGetIsPrivateFunction_Set() error {
 // GetIsPrivate is a representation of the C type g_bookmark_file_get_is_private.
 func (recv *BookmarkFile) GetIsPrivate(uri string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -732,7 +741,7 @@ func bookmarkFileGetMimeTypeFunction_Set() error {
 // GetMimeType is a representation of the C type g_bookmark_file_get_mime_type.
 func (recv *BookmarkFile) GetMimeType(uri string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -765,7 +774,7 @@ func bookmarkFileGetModifiedFunction_Set() error {
 // GetModified is a representation of the C type g_bookmark_file_get_modified.
 func (recv *BookmarkFile) GetModified(uri string) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -798,7 +807,7 @@ func bookmarkFileGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_bookmark_file_get_size.
 func (recv *BookmarkFile) GetSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -830,7 +839,7 @@ func bookmarkFileGetTitleFunction_Set() error {
 // GetTitle is a representation of the C type g_bookmark_file_get_title.
 func (recv *BookmarkFile) GetTitle(uri string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -863,7 +872,7 @@ func bookmarkFileGetUrisFunction_Set() error {
 // GetUris is a representation of the C type g_bookmark_file_get_uris.
 func (recv *BookmarkFile) GetUris() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -895,7 +904,7 @@ func bookmarkFileGetVisitedFunction_Set() error {
 // GetVisited is a representation of the C type g_bookmark_file_get_visited.
 func (recv *BookmarkFile) GetVisited(uri string) int64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -928,7 +937,7 @@ func bookmarkFileHasApplicationFunction_Set() error {
 // HasApplication is a representation of the C type g_bookmark_file_has_application.
 func (recv *BookmarkFile) HasApplication(uri string, name string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 
@@ -962,7 +971,7 @@ func bookmarkFileHasGroupFunction_Set() error {
 // HasGroup is a representation of the C type g_bookmark_file_has_group.
 func (recv *BookmarkFile) HasGroup(uri string, group string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(group)
 
@@ -996,7 +1005,7 @@ func bookmarkFileHasItemFunction_Set() error {
 // HasItem is a representation of the C type g_bookmark_file_has_item.
 func (recv *BookmarkFile) HasItem(uri string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -1031,7 +1040,7 @@ func bookmarkFileLoadFromDataDirsFunction_Set() error {
 // LoadFromDataDirs is a representation of the C type g_bookmark_file_load_from_data_dirs.
 func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(file)
 
 	var outArgs [1]gi.Argument
@@ -1066,7 +1075,7 @@ func bookmarkFileLoadFromFileFunction_Set() error {
 // LoadFromFile is a representation of the C type g_bookmark_file_load_from_file.
 func (recv *BookmarkFile) LoadFromFile(filename string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(filename)
 
 	var ret gi.Argument
@@ -1099,7 +1108,7 @@ func bookmarkFileMoveItemFunction_Set() error {
 // MoveItem is a representation of the C type g_bookmark_file_move_item.
 func (recv *BookmarkFile) MoveItem(oldUri string, newUri string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(oldUri)
 	inArgs[2].SetString(newUri)
 
@@ -1133,7 +1142,7 @@ func bookmarkFileRemoveApplicationFunction_Set() error {
 // RemoveApplication is a representation of the C type g_bookmark_file_remove_application.
 func (recv *BookmarkFile) RemoveApplication(uri string, name string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 
@@ -1167,7 +1176,7 @@ func bookmarkFileRemoveGroupFunction_Set() error {
 // RemoveGroup is a representation of the C type g_bookmark_file_remove_group.
 func (recv *BookmarkFile) RemoveGroup(uri string, group string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(group)
 
@@ -1201,7 +1210,7 @@ func bookmarkFileRemoveItemFunction_Set() error {
 // RemoveItem is a representation of the C type g_bookmark_file_remove_item.
 func (recv *BookmarkFile) RemoveItem(uri string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -1234,7 +1243,7 @@ func bookmarkFileSetAddedFunction_Set() error {
 // SetAdded is a representation of the C type g_bookmark_file_set_added.
 func (recv *BookmarkFile) SetAdded(uri string, added int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(added)
 
@@ -1264,7 +1273,7 @@ func bookmarkFileSetAppInfoFunction_Set() error {
 // SetAppInfo is a representation of the C type g_bookmark_file_set_app_info.
 func (recv *BookmarkFile) SetAppInfo(uri string, name string, exec string, count int32, stamp int64) bool {
 	var inArgs [6]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 	inArgs[3].SetString(exec)
@@ -1301,7 +1310,7 @@ func bookmarkFileSetDescriptionFunction_Set() error {
 // SetDescription is a representation of the C type g_bookmark_file_set_description.
 func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(description)
 
@@ -1333,7 +1342,7 @@ func bookmarkFileSetIconFunction_Set() error {
 // SetIcon is a representation of the C type g_bookmark_file_set_icon.
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(href)
 	inArgs[3].SetString(mimeType)
@@ -1364,7 +1373,7 @@ func bookmarkFileSetIsPrivateFunction_Set() error {
 // SetIsPrivate is a representation of the C type g_bookmark_file_set_is_private.
 func (recv *BookmarkFile) SetIsPrivate(uri string, isPrivate bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetBoolean(isPrivate)
 
@@ -1394,7 +1403,7 @@ func bookmarkFileSetMimeTypeFunction_Set() error {
 // SetMimeType is a representation of the C type g_bookmark_file_set_mime_type.
 func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(mimeType)
 
@@ -1424,7 +1433,7 @@ func bookmarkFileSetModifiedFunction_Set() error {
 // SetModified is a representation of the C type g_bookmark_file_set_modified.
 func (recv *BookmarkFile) SetModified(uri string, modified int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(modified)
 
@@ -1454,7 +1463,7 @@ func bookmarkFileSetTitleFunction_Set() error {
 // SetTitle is a representation of the C type g_bookmark_file_set_title.
 func (recv *BookmarkFile) SetTitle(uri string, title string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(title)
 
@@ -1484,7 +1493,7 @@ func bookmarkFileSetVisitedFunction_Set() error {
 // SetVisited is a representation of the C type g_bookmark_file_set_visited.
 func (recv *BookmarkFile) SetVisited(uri string, visited int64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(visited)
 
@@ -1514,7 +1523,7 @@ func bookmarkFileToDataFunction_Set() error {
 // ToData is a representation of the C type g_bookmark_file_to_data.
 func (recv *BookmarkFile) ToData() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1546,7 +1555,7 @@ func bookmarkFileToFileFunction_Set() error {
 // ToFile is a representation of the C type g_bookmark_file_to_file.
 func (recv *BookmarkFile) ToFile(filename string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(filename)
 
 	var ret gi.Argument
@@ -1568,13 +1577,12 @@ func BookmarkFileStruct() *BookmarkFile {
 		return nil
 	}
 
-	structGo := &BookmarkFile{}
-	structGo.Native = bookmarkFileStruct.Alloc()
+	structGo := BookmarkFileNewFromNative(bookmarkFileStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeBookmarkFile)
 	return structGo
 }
 func finalizeBookmarkFile(obj *BookmarkFile) {
-	bookmarkFileStruct.Free(obj.Native)
+	bookmarkFileStruct.Free(obj.native)
 }
 
 var byteArrayStruct *gi.Struct
@@ -1589,12 +1597,16 @@ func byteArrayStruct_Set() error {
 }
 
 type ByteArray struct {
-	Native uintptr
+	native uintptr
+}
+
+func ByteArrayNewFromNative(native uintptr) *ByteArray {
+	return &ByteArray{native: native}
 }
 
 // FieldData returns the C field 'data'.
 func (recv *ByteArray) FieldData() uint8 {
-	argValue := gi.StructFieldGet(byteArrayStruct, recv.Native, "data")
+	argValue := gi.StructFieldGet(byteArrayStruct, recv.native, "data")
 	value := argValue.Uint8()
 	return value
 }
@@ -1603,12 +1615,12 @@ func (recv *ByteArray) FieldData() uint8 {
 func (recv *ByteArray) SetFieldData(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.StructFieldSet(byteArrayStruct, recv.Native, "data", argValue)
+	gi.StructFieldSet(byteArrayStruct, recv.native, "data", argValue)
 }
 
 // FieldLen returns the C field 'len'.
 func (recv *ByteArray) FieldLen() uint32 {
-	argValue := gi.StructFieldGet(byteArrayStruct, recv.Native, "len")
+	argValue := gi.StructFieldGet(byteArrayStruct, recv.native, "len")
 	value := argValue.Uint32()
 	return value
 }
@@ -1617,7 +1629,7 @@ func (recv *ByteArray) FieldLen() uint32 {
 func (recv *ByteArray) SetFieldLen(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(byteArrayStruct, recv.Native, "len", argValue)
+	gi.StructFieldSet(byteArrayStruct, recv.native, "len", argValue)
 }
 
 // ByteArrayStruct creates an uninitialised ByteArray.
@@ -1627,13 +1639,12 @@ func ByteArrayStruct() *ByteArray {
 		return nil
 	}
 
-	structGo := &ByteArray{}
-	structGo.Native = byteArrayStruct.Alloc()
+	structGo := ByteArrayNewFromNative(byteArrayStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeByteArray)
 	return structGo
 }
 func finalizeByteArray(obj *ByteArray) {
-	byteArrayStruct.Free(obj.Native)
+	byteArrayStruct.Free(obj.native)
 }
 
 var bytesStruct *gi.Struct
@@ -1648,7 +1659,11 @@ func bytesStruct_Set() error {
 }
 
 type Bytes struct {
-	Native uintptr
+	native uintptr
+}
+
+func BytesNewFromNative(native uintptr) *Bytes {
+	return &Bytes{native: native}
 }
 
 // UNSUPPORTED : C value 'g_bytes_new' : parameter 'data' of type 'nil' not supported
@@ -1677,8 +1692,8 @@ func bytesCompareFunction_Set() error {
 // Compare is a representation of the C type g_bytes_compare.
 func (recv *Bytes) Compare(bytes2 *Bytes) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(bytes2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(bytes2.native)
 
 	var ret gi.Argument
 
@@ -1710,8 +1725,8 @@ func bytesEqualFunction_Set() error {
 // Equal is a representation of the C type g_bytes_equal.
 func (recv *Bytes) Equal(bytes2 *Bytes) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(bytes2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(bytes2.native)
 
 	var ret gi.Argument
 
@@ -1743,7 +1758,7 @@ func bytesGetDataFunction_Set() error {
 // GetData is a representation of the C type g_bytes_get_data.
 func (recv *Bytes) GetData() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1775,7 +1790,7 @@ func bytesGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_bytes_get_size.
 func (recv *Bytes) GetSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1807,7 +1822,7 @@ func bytesHashFunction_Set() error {
 // Hash is a representation of the C type g_bytes_hash.
 func (recv *Bytes) Hash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1839,7 +1854,7 @@ func bytesNewFromBytesFunction_Set() error {
 // NewFromBytes is a representation of the C type g_bytes_new_from_bytes.
 func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(offset)
 	inArgs[2].SetUint64(length)
 
@@ -1850,8 +1865,7 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 		ret = bytesNewFromBytesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Bytes{}
-	retGo.Native = ret.Pointer()
+	retGo := BytesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1874,7 +1888,7 @@ func bytesRefFunction_Set() error {
 // Ref is a representation of the C type g_bytes_ref.
 func (recv *Bytes) Ref() *Bytes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -1883,8 +1897,7 @@ func (recv *Bytes) Ref() *Bytes {
 		ret = bytesRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Bytes{}
-	retGo.Native = ret.Pointer()
+	retGo := BytesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -1907,7 +1920,7 @@ func bytesUnrefFunction_Set() error {
 // Unref is a representation of the C type g_bytes_unref.
 func (recv *Bytes) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bytesUnrefFunction_Set()
 	if err == nil {
@@ -1935,7 +1948,7 @@ func bytesUnrefToArrayFunction_Set() error {
 // UnrefToArray is a representation of the C type g_bytes_unref_to_array.
 func (recv *Bytes) UnrefToArray() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := bytesUnrefToArrayFunction_Set()
 	if err == nil {
@@ -1963,7 +1976,7 @@ func bytesUnrefToDataFunction_Set() error {
 // UnrefToData is a representation of the C type g_bytes_unref_to_data.
 func (recv *Bytes) UnrefToData() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -1989,7 +2002,11 @@ func checksumStruct_Set() error {
 }
 
 type Checksum struct {
-	Native uintptr
+	native uintptr
+}
+
+func ChecksumNewFromNative(native uintptr) *Checksum {
+	return &Checksum{native: native}
 }
 
 var checksumNewFunction *gi.Function
@@ -2019,8 +2036,7 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 		ret = checksumNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Checksum{}
-	retGo.Native = ret.Pointer()
+	retGo := ChecksumNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2043,7 +2059,7 @@ func checksumCopyFunction_Set() error {
 // Copy is a representation of the C type g_checksum_copy.
 func (recv *Checksum) Copy() *Checksum {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2052,8 +2068,7 @@ func (recv *Checksum) Copy() *Checksum {
 		ret = checksumCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Checksum{}
-	retGo.Native = ret.Pointer()
+	retGo := ChecksumNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2076,7 +2091,7 @@ func checksumFreeFunction_Set() error {
 // Free is a representation of the C type g_checksum_free.
 func (recv *Checksum) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := checksumFreeFunction_Set()
 	if err == nil {
@@ -2106,7 +2121,7 @@ func checksumGetStringFunction_Set() error {
 // GetString is a representation of the C type g_checksum_get_string.
 func (recv *Checksum) GetString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2138,7 +2153,7 @@ func checksumResetFunction_Set() error {
 // Reset is a representation of the C type g_checksum_reset.
 func (recv *Checksum) Reset() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := checksumResetFunction_Set()
 	if err == nil {
@@ -2162,7 +2177,11 @@ func condStruct_Set() error {
 }
 
 type Cond struct {
-	Native uintptr
+	native uintptr
+}
+
+func CondNewFromNative(native uintptr) *Cond {
+	return &Cond{native: native}
 }
 
 var condBroadcastFunction *gi.Function
@@ -2183,7 +2202,7 @@ func condBroadcastFunction_Set() error {
 // Broadcast is a representation of the C type g_cond_broadcast.
 func (recv *Cond) Broadcast() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := condBroadcastFunction_Set()
 	if err == nil {
@@ -2211,7 +2230,7 @@ func condClearFunction_Set() error {
 // Clear is a representation of the C type g_cond_clear.
 func (recv *Cond) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := condClearFunction_Set()
 	if err == nil {
@@ -2239,7 +2258,7 @@ func condInitFunction_Set() error {
 // Init is a representation of the C type g_cond_init.
 func (recv *Cond) Init() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := condInitFunction_Set()
 	if err == nil {
@@ -2267,7 +2286,7 @@ func condSignalFunction_Set() error {
 // Signal is a representation of the C type g_cond_signal.
 func (recv *Cond) Signal() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := condSignalFunction_Set()
 	if err == nil {
@@ -2288,13 +2307,12 @@ func CondStruct() *Cond {
 		return nil
 	}
 
-	structGo := &Cond{}
-	structGo.Native = condStruct.Alloc()
+	structGo := CondNewFromNative(condStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeCond)
 	return structGo
 }
 func finalizeCond(obj *Cond) {
-	condStruct.Free(obj.Native)
+	condStruct.Free(obj.native)
 }
 
 var dataStruct *gi.Struct
@@ -2309,7 +2327,11 @@ func dataStruct_Set() error {
 }
 
 type Data struct {
-	Native uintptr
+	native uintptr
+}
+
+func DataNewFromNative(native uintptr) *Data {
+	return &Data{native: native}
 }
 
 // DataStruct creates an uninitialised Data.
@@ -2319,13 +2341,12 @@ func DataStruct() *Data {
 		return nil
 	}
 
-	structGo := &Data{}
-	structGo.Native = dataStruct.Alloc()
+	structGo := DataNewFromNative(dataStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeData)
 	return structGo
 }
 func finalizeData(obj *Data) {
-	dataStruct.Free(obj.Native)
+	dataStruct.Free(obj.native)
 }
 
 var dateStruct *gi.Struct
@@ -2340,12 +2361,16 @@ func dateStruct_Set() error {
 }
 
 type Date struct {
-	Native uintptr
+	native uintptr
+}
+
+func DateNewFromNative(native uintptr) *Date {
+	return &Date{native: native}
 }
 
 // FieldJulianDays returns the C field 'julian_days'.
 func (recv *Date) FieldJulianDays() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "julian_days")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "julian_days")
 	value := argValue.Uint32()
 	return value
 }
@@ -2354,12 +2379,12 @@ func (recv *Date) FieldJulianDays() uint32 {
 func (recv *Date) SetFieldJulianDays(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "julian_days", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "julian_days", argValue)
 }
 
 // FieldJulian returns the C field 'julian'.
 func (recv *Date) FieldJulian() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "julian")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "julian")
 	value := argValue.Uint32()
 	return value
 }
@@ -2368,12 +2393,12 @@ func (recv *Date) FieldJulian() uint32 {
 func (recv *Date) SetFieldJulian(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "julian", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "julian", argValue)
 }
 
 // FieldDmy returns the C field 'dmy'.
 func (recv *Date) FieldDmy() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "dmy")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "dmy")
 	value := argValue.Uint32()
 	return value
 }
@@ -2382,12 +2407,12 @@ func (recv *Date) FieldDmy() uint32 {
 func (recv *Date) SetFieldDmy(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "dmy", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "dmy", argValue)
 }
 
 // FieldDay returns the C field 'day'.
 func (recv *Date) FieldDay() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "day")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "day")
 	value := argValue.Uint32()
 	return value
 }
@@ -2396,12 +2421,12 @@ func (recv *Date) FieldDay() uint32 {
 func (recv *Date) SetFieldDay(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "day", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "day", argValue)
 }
 
 // FieldMonth returns the C field 'month'.
 func (recv *Date) FieldMonth() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "month")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "month")
 	value := argValue.Uint32()
 	return value
 }
@@ -2410,12 +2435,12 @@ func (recv *Date) FieldMonth() uint32 {
 func (recv *Date) SetFieldMonth(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "month", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "month", argValue)
 }
 
 // FieldYear returns the C field 'year'.
 func (recv *Date) FieldYear() uint32 {
-	argValue := gi.StructFieldGet(dateStruct, recv.Native, "year")
+	argValue := gi.StructFieldGet(dateStruct, recv.native, "year")
 	value := argValue.Uint32()
 	return value
 }
@@ -2424,7 +2449,7 @@ func (recv *Date) FieldYear() uint32 {
 func (recv *Date) SetFieldYear(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(dateStruct, recv.Native, "year", argValue)
+	gi.StructFieldSet(dateStruct, recv.native, "year", argValue)
 }
 
 var dateNewFunction *gi.Function
@@ -2452,8 +2477,7 @@ func DateNew() *Date {
 		ret = dateNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &Date{}
-	retGo.Native = ret.Pointer()
+	retGo := DateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2487,8 +2511,7 @@ func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
 		ret = dateNewDmyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{}
-	retGo.Native = ret.Pointer()
+	retGo := DateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2520,8 +2543,7 @@ func DateNewJulian(julianDay uint32) *Date {
 		ret = dateNewJulianFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{}
-	retGo.Native = ret.Pointer()
+	retGo := DateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2544,7 +2566,7 @@ func dateAddDaysFunction_Set() error {
 // AddDays is a representation of the C type g_date_add_days.
 func (recv *Date) AddDays(nDays uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDays)
 
 	err := dateAddDaysFunction_Set()
@@ -2573,7 +2595,7 @@ func dateAddMonthsFunction_Set() error {
 // AddMonths is a representation of the C type g_date_add_months.
 func (recv *Date) AddMonths(nMonths uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nMonths)
 
 	err := dateAddMonthsFunction_Set()
@@ -2602,7 +2624,7 @@ func dateAddYearsFunction_Set() error {
 // AddYears is a representation of the C type g_date_add_years.
 func (recv *Date) AddYears(nYears uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nYears)
 
 	err := dateAddYearsFunction_Set()
@@ -2631,9 +2653,9 @@ func dateClampFunction_Set() error {
 // Clamp is a representation of the C type g_date_clamp.
 func (recv *Date) Clamp(minDate *Date, maxDate *Date) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(minDate.Native)
-	inArgs[2].SetPointer(maxDate.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(minDate.native)
+	inArgs[2].SetPointer(maxDate.native)
 
 	err := dateClampFunction_Set()
 	if err == nil {
@@ -2661,7 +2683,7 @@ func dateClearFunction_Set() error {
 // Clear is a representation of the C type g_date_clear.
 func (recv *Date) Clear(nDates uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDates)
 
 	err := dateClearFunction_Set()
@@ -2690,8 +2712,8 @@ func dateCompareFunction_Set() error {
 // Compare is a representation of the C type g_date_compare.
 func (recv *Date) Compare(rhs *Date) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(rhs.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(rhs.native)
 
 	var ret gi.Argument
 
@@ -2723,7 +2745,7 @@ func dateCopyFunction_Set() error {
 // Copy is a representation of the C type g_date_copy.
 func (recv *Date) Copy() *Date {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2732,8 +2754,7 @@ func (recv *Date) Copy() *Date {
 		ret = dateCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Date{}
-	retGo.Native = ret.Pointer()
+	retGo := DateNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -2756,8 +2777,8 @@ func dateDaysBetweenFunction_Set() error {
 // DaysBetween is a representation of the C type g_date_days_between.
 func (recv *Date) DaysBetween(date2 *Date) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(date2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(date2.native)
 
 	var ret gi.Argument
 
@@ -2789,7 +2810,7 @@ func dateFreeFunction_Set() error {
 // Free is a representation of the C type g_date_free.
 func (recv *Date) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dateFreeFunction_Set()
 	if err == nil {
@@ -2817,7 +2838,7 @@ func dateGetDayFunction_Set() error {
 // GetDay is a representation of the C type g_date_get_day.
 func (recv *Date) GetDay() DateDay {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2849,7 +2870,7 @@ func dateGetDayOfYearFunction_Set() error {
 // GetDayOfYear is a representation of the C type g_date_get_day_of_year.
 func (recv *Date) GetDayOfYear() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2881,7 +2902,7 @@ func dateGetIso8601WeekOfYearFunction_Set() error {
 // GetIso8601WeekOfYear is a representation of the C type g_date_get_iso8601_week_of_year.
 func (recv *Date) GetIso8601WeekOfYear() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2913,7 +2934,7 @@ func dateGetJulianFunction_Set() error {
 // GetJulian is a representation of the C type g_date_get_julian.
 func (recv *Date) GetJulian() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2945,7 +2966,7 @@ func dateGetMondayWeekOfYearFunction_Set() error {
 // GetMondayWeekOfYear is a representation of the C type g_date_get_monday_week_of_year.
 func (recv *Date) GetMondayWeekOfYear() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -2977,7 +2998,7 @@ func dateGetMonthFunction_Set() error {
 // GetMonth is a representation of the C type g_date_get_month.
 func (recv *Date) GetMonth() DateMonth {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3009,7 +3030,7 @@ func dateGetSundayWeekOfYearFunction_Set() error {
 // GetSundayWeekOfYear is a representation of the C type g_date_get_sunday_week_of_year.
 func (recv *Date) GetSundayWeekOfYear() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3041,7 +3062,7 @@ func dateGetWeekdayFunction_Set() error {
 // GetWeekday is a representation of the C type g_date_get_weekday.
 func (recv *Date) GetWeekday() DateWeekday {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3073,7 +3094,7 @@ func dateGetYearFunction_Set() error {
 // GetYear is a representation of the C type g_date_get_year.
 func (recv *Date) GetYear() DateYear {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3105,7 +3126,7 @@ func dateIsFirstOfMonthFunction_Set() error {
 // IsFirstOfMonth is a representation of the C type g_date_is_first_of_month.
 func (recv *Date) IsFirstOfMonth() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3137,7 +3158,7 @@ func dateIsLastOfMonthFunction_Set() error {
 // IsLastOfMonth is a representation of the C type g_date_is_last_of_month.
 func (recv *Date) IsLastOfMonth() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3169,8 +3190,8 @@ func dateOrderFunction_Set() error {
 // Order is a representation of the C type g_date_order.
 func (recv *Date) Order(date2 *Date) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(date2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(date2.native)
 
 	err := dateOrderFunction_Set()
 	if err == nil {
@@ -3198,7 +3219,7 @@ func dateSetDayFunction_Set() error {
 // SetDay is a representation of the C type g_date_set_day.
 func (recv *Date) SetDay(day DateDay) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint8(uint8(day))
 
 	err := dateSetDayFunction_Set()
@@ -3227,7 +3248,7 @@ func dateSetDmyFunction_Set() error {
 // SetDmy is a representation of the C type g_date_set_dmy.
 func (recv *Date) SetDmy(day DateDay, month DateMonth, y DateYear) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint8(uint8(day))
 	inArgs[2].SetInt32(int32(month))
 	inArgs[3].SetUint16(uint16(y))
@@ -3258,7 +3279,7 @@ func dateSetJulianFunction_Set() error {
 // SetJulian is a representation of the C type g_date_set_julian.
 func (recv *Date) SetJulian(julianDate uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(julianDate)
 
 	err := dateSetJulianFunction_Set()
@@ -3287,7 +3308,7 @@ func dateSetMonthFunction_Set() error {
 // SetMonth is a representation of the C type g_date_set_month.
 func (recv *Date) SetMonth(month DateMonth) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(month))
 
 	err := dateSetMonthFunction_Set()
@@ -3316,7 +3337,7 @@ func dateSetParseFunction_Set() error {
 // SetParse is a representation of the C type g_date_set_parse.
 func (recv *Date) SetParse(str string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(str)
 
 	err := dateSetParseFunction_Set()
@@ -3345,7 +3366,7 @@ func dateSetTimeFunction_Set() error {
 // SetTime is a representation of the C type g_date_set_time.
 func (recv *Date) SetTime(time Time) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(time))
 
 	err := dateSetTimeFunction_Set()
@@ -3374,7 +3395,7 @@ func dateSetTimeTFunction_Set() error {
 // SetTimeT is a representation of the C type g_date_set_time_t.
 func (recv *Date) SetTimeT(timet int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(timet)
 
 	err := dateSetTimeTFunction_Set()
@@ -3403,8 +3424,8 @@ func dateSetTimeValFunction_Set() error {
 // SetTimeVal is a representation of the C type g_date_set_time_val.
 func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(timeval.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(timeval.native)
 
 	err := dateSetTimeValFunction_Set()
 	if err == nil {
@@ -3432,7 +3453,7 @@ func dateSetYearFunction_Set() error {
 // SetYear is a representation of the C type g_date_set_year.
 func (recv *Date) SetYear(year DateYear) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint16(uint16(year))
 
 	err := dateSetYearFunction_Set()
@@ -3461,7 +3482,7 @@ func dateSubtractDaysFunction_Set() error {
 // SubtractDays is a representation of the C type g_date_subtract_days.
 func (recv *Date) SubtractDays(nDays uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDays)
 
 	err := dateSubtractDaysFunction_Set()
@@ -3490,7 +3511,7 @@ func dateSubtractMonthsFunction_Set() error {
 // SubtractMonths is a representation of the C type g_date_subtract_months.
 func (recv *Date) SubtractMonths(nMonths uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nMonths)
 
 	err := dateSubtractMonthsFunction_Set()
@@ -3519,7 +3540,7 @@ func dateSubtractYearsFunction_Set() error {
 // SubtractYears is a representation of the C type g_date_subtract_years.
 func (recv *Date) SubtractYears(nYears uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nYears)
 
 	err := dateSubtractYearsFunction_Set()
@@ -3550,7 +3571,7 @@ func dateValidFunction_Set() error {
 // Valid is a representation of the C type g_date_valid.
 func (recv *Date) Valid() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -3576,7 +3597,11 @@ func dateTimeStruct_Set() error {
 }
 
 type DateTime struct {
-	Native uintptr
+	native uintptr
+}
+
+func DateTimeNewFromNative(native uintptr) *DateTime {
+	return &DateTime{native: native}
 }
 
 var dateTimeNewFunction *gi.Function
@@ -3597,7 +3622,7 @@ func dateTimeNewFunction_Set() error {
 // DateTimeNew is a representation of the C type g_date_time_new.
 func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(tz.Native)
+	inArgs[0].SetPointer(tz.native)
 	inArgs[1].SetInt32(year)
 	inArgs[2].SetInt32(month)
 	inArgs[3].SetInt32(day)
@@ -3612,8 +3637,7 @@ func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, m
 		ret = dateTimeNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3637,7 +3661,7 @@ func dateTimeNewFromIso8601Function_Set() error {
 func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
-	inArgs[1].SetPointer(defaultTz.Native)
+	inArgs[1].SetPointer(defaultTz.native)
 
 	var ret gi.Argument
 
@@ -3646,8 +3670,7 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 		ret = dateTimeNewFromIso8601Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3670,7 +3693,7 @@ func dateTimeNewFromTimevalLocalFunction_Set() error {
 // DateTimeNewFromTimevalLocal is a representation of the C type g_date_time_new_from_timeval_local.
 func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(tv.Native)
+	inArgs[0].SetPointer(tv.native)
 
 	var ret gi.Argument
 
@@ -3679,8 +3702,7 @@ func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 		ret = dateTimeNewFromTimevalLocalFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3703,7 +3725,7 @@ func dateTimeNewFromTimevalUtcFunction_Set() error {
 // DateTimeNewFromTimevalUtc is a representation of the C type g_date_time_new_from_timeval_utc.
 func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(tv.Native)
+	inArgs[0].SetPointer(tv.native)
 
 	var ret gi.Argument
 
@@ -3712,8 +3734,7 @@ func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
 		ret = dateTimeNewFromTimevalUtcFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3745,8 +3766,7 @@ func DateTimeNewFromUnixLocal(t int64) *DateTime {
 		ret = dateTimeNewFromUnixLocalFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3778,8 +3798,7 @@ func DateTimeNewFromUnixUtc(t int64) *DateTime {
 		ret = dateTimeNewFromUnixUtcFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3816,8 +3835,7 @@ func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int
 		ret = dateTimeNewLocalFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3840,7 +3858,7 @@ func dateTimeNewNowFunction_Set() error {
 // DateTimeNewNow is a representation of the C type g_date_time_new_now.
 func DateTimeNewNow(tz *TimeZone) *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(tz.Native)
+	inArgs[0].SetPointer(tz.native)
 
 	var ret gi.Argument
 
@@ -3849,8 +3867,7 @@ func DateTimeNewNow(tz *TimeZone) *DateTime {
 		ret = dateTimeNewNowFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3880,8 +3897,7 @@ func DateTimeNewNowLocal() *DateTime {
 		ret = dateTimeNewNowLocalFunction.Invoke(nil, nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3911,8 +3927,7 @@ func DateTimeNewNowUtc() *DateTime {
 		ret = dateTimeNewNowUtcFunction.Invoke(nil, nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3949,8 +3964,7 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 		ret = dateTimeNewUtcFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -3973,7 +3987,7 @@ func dateTimeAddFunction_Set() error {
 // Add is a representation of the C type g_date_time_add.
 func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(int64(timespan))
 
 	var ret gi.Argument
@@ -3983,8 +3997,7 @@ func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 		ret = dateTimeAddFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4007,7 +4020,7 @@ func dateTimeAddDaysFunction_Set() error {
 // AddDays is a representation of the C type g_date_time_add_days.
 func (recv *DateTime) AddDays(days int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(days)
 
 	var ret gi.Argument
@@ -4017,8 +4030,7 @@ func (recv *DateTime) AddDays(days int32) *DateTime {
 		ret = dateTimeAddDaysFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4041,7 +4053,7 @@ func dateTimeAddFullFunction_Set() error {
 // AddFull is a representation of the C type g_date_time_add_full.
 func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) *DateTime {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(years)
 	inArgs[2].SetInt32(months)
 	inArgs[3].SetInt32(days)
@@ -4056,8 +4068,7 @@ func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32
 		ret = dateTimeAddFullFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4080,7 +4091,7 @@ func dateTimeAddHoursFunction_Set() error {
 // AddHours is a representation of the C type g_date_time_add_hours.
 func (recv *DateTime) AddHours(hours int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(hours)
 
 	var ret gi.Argument
@@ -4090,8 +4101,7 @@ func (recv *DateTime) AddHours(hours int32) *DateTime {
 		ret = dateTimeAddHoursFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4114,7 +4124,7 @@ func dateTimeAddMinutesFunction_Set() error {
 // AddMinutes is a representation of the C type g_date_time_add_minutes.
 func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(minutes)
 
 	var ret gi.Argument
@@ -4124,8 +4134,7 @@ func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 		ret = dateTimeAddMinutesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4148,7 +4157,7 @@ func dateTimeAddMonthsFunction_Set() error {
 // AddMonths is a representation of the C type g_date_time_add_months.
 func (recv *DateTime) AddMonths(months int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(months)
 
 	var ret gi.Argument
@@ -4158,8 +4167,7 @@ func (recv *DateTime) AddMonths(months int32) *DateTime {
 		ret = dateTimeAddMonthsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4182,7 +4190,7 @@ func dateTimeAddSecondsFunction_Set() error {
 // AddSeconds is a representation of the C type g_date_time_add_seconds.
 func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(seconds)
 
 	var ret gi.Argument
@@ -4192,8 +4200,7 @@ func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 		ret = dateTimeAddSecondsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4216,7 +4223,7 @@ func dateTimeAddWeeksFunction_Set() error {
 // AddWeeks is a representation of the C type g_date_time_add_weeks.
 func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(weeks)
 
 	var ret gi.Argument
@@ -4226,8 +4233,7 @@ func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 		ret = dateTimeAddWeeksFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4250,7 +4256,7 @@ func dateTimeAddYearsFunction_Set() error {
 // AddYears is a representation of the C type g_date_time_add_years.
 func (recv *DateTime) AddYears(years int32) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(years)
 
 	var ret gi.Argument
@@ -4260,8 +4266,7 @@ func (recv *DateTime) AddYears(years int32) *DateTime {
 		ret = dateTimeAddYearsFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4284,8 +4289,8 @@ func dateTimeDifferenceFunction_Set() error {
 // Difference is a representation of the C type g_date_time_difference.
 func (recv *DateTime) Difference(begin *DateTime) TimeSpan {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(begin.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(begin.native)
 
 	var ret gi.Argument
 
@@ -4317,7 +4322,7 @@ func dateTimeFormatFunction_Set() error {
 // Format is a representation of the C type g_date_time_format.
 func (recv *DateTime) Format(format string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(format)
 
 	var ret gi.Argument
@@ -4350,7 +4355,7 @@ func dateTimeFormatIso8601Function_Set() error {
 // FormatIso8601 is a representation of the C type g_date_time_format_iso8601.
 func (recv *DateTime) FormatIso8601() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4382,7 +4387,7 @@ func dateTimeGetDayOfMonthFunction_Set() error {
 // GetDayOfMonth is a representation of the C type g_date_time_get_day_of_month.
 func (recv *DateTime) GetDayOfMonth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4414,7 +4419,7 @@ func dateTimeGetDayOfWeekFunction_Set() error {
 // GetDayOfWeek is a representation of the C type g_date_time_get_day_of_week.
 func (recv *DateTime) GetDayOfWeek() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4446,7 +4451,7 @@ func dateTimeGetDayOfYearFunction_Set() error {
 // GetDayOfYear is a representation of the C type g_date_time_get_day_of_year.
 func (recv *DateTime) GetDayOfYear() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4478,7 +4483,7 @@ func dateTimeGetHourFunction_Set() error {
 // GetHour is a representation of the C type g_date_time_get_hour.
 func (recv *DateTime) GetHour() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4510,7 +4515,7 @@ func dateTimeGetMicrosecondFunction_Set() error {
 // GetMicrosecond is a representation of the C type g_date_time_get_microsecond.
 func (recv *DateTime) GetMicrosecond() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4542,7 +4547,7 @@ func dateTimeGetMinuteFunction_Set() error {
 // GetMinute is a representation of the C type g_date_time_get_minute.
 func (recv *DateTime) GetMinute() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4574,7 +4579,7 @@ func dateTimeGetMonthFunction_Set() error {
 // GetMonth is a representation of the C type g_date_time_get_month.
 func (recv *DateTime) GetMonth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4606,7 +4611,7 @@ func dateTimeGetSecondFunction_Set() error {
 // GetSecond is a representation of the C type g_date_time_get_second.
 func (recv *DateTime) GetSecond() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4638,7 +4643,7 @@ func dateTimeGetSecondsFunction_Set() error {
 // GetSeconds is a representation of the C type g_date_time_get_seconds.
 func (recv *DateTime) GetSeconds() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4670,7 +4675,7 @@ func dateTimeGetTimezoneFunction_Set() error {
 // GetTimezone is a representation of the C type g_date_time_get_timezone.
 func (recv *DateTime) GetTimezone() *TimeZone {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4679,8 +4684,7 @@ func (recv *DateTime) GetTimezone() *TimeZone {
 		ret = dateTimeGetTimezoneFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4703,7 +4707,7 @@ func dateTimeGetTimezoneAbbreviationFunction_Set() error {
 // GetTimezoneAbbreviation is a representation of the C type g_date_time_get_timezone_abbreviation.
 func (recv *DateTime) GetTimezoneAbbreviation() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4735,7 +4739,7 @@ func dateTimeGetUtcOffsetFunction_Set() error {
 // GetUtcOffset is a representation of the C type g_date_time_get_utc_offset.
 func (recv *DateTime) GetUtcOffset() TimeSpan {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4767,7 +4771,7 @@ func dateTimeGetWeekNumberingYearFunction_Set() error {
 // GetWeekNumberingYear is a representation of the C type g_date_time_get_week_numbering_year.
 func (recv *DateTime) GetWeekNumberingYear() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4799,7 +4803,7 @@ func dateTimeGetWeekOfYearFunction_Set() error {
 // GetWeekOfYear is a representation of the C type g_date_time_get_week_of_year.
 func (recv *DateTime) GetWeekOfYear() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4831,7 +4835,7 @@ func dateTimeGetYearFunction_Set() error {
 // GetYear is a representation of the C type g_date_time_get_year.
 func (recv *DateTime) GetYear() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4863,7 +4867,7 @@ func dateTimeGetYmdFunction_Set() error {
 // GetYmd is a representation of the C type g_date_time_get_ymd.
 func (recv *DateTime) GetYmd() (int32, int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [3]gi.Argument
 
@@ -4897,7 +4901,7 @@ func dateTimeIsDaylightSavingsFunction_Set() error {
 // IsDaylightSavings is a representation of the C type g_date_time_is_daylight_savings.
 func (recv *DateTime) IsDaylightSavings() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4929,7 +4933,7 @@ func dateTimeRefFunction_Set() error {
 // Ref is a representation of the C type g_date_time_ref.
 func (recv *DateTime) Ref() *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4938,8 +4942,7 @@ func (recv *DateTime) Ref() *DateTime {
 		ret = dateTimeRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4962,7 +4965,7 @@ func dateTimeToLocalFunction_Set() error {
 // ToLocal is a representation of the C type g_date_time_to_local.
 func (recv *DateTime) ToLocal() *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -4971,8 +4974,7 @@ func (recv *DateTime) ToLocal() *DateTime {
 		ret = dateTimeToLocalFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -4995,8 +4997,8 @@ func dateTimeToTimevalFunction_Set() error {
 // ToTimeval is a representation of the C type g_date_time_to_timeval.
 func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(tv.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tv.native)
 
 	var ret gi.Argument
 
@@ -5028,8 +5030,8 @@ func dateTimeToTimezoneFunction_Set() error {
 // ToTimezone is a representation of the C type g_date_time_to_timezone.
 func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(tz.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tz.native)
 
 	var ret gi.Argument
 
@@ -5038,8 +5040,7 @@ func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
 		ret = dateTimeToTimezoneFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5062,7 +5063,7 @@ func dateTimeToUnixFunction_Set() error {
 // ToUnix is a representation of the C type g_date_time_to_unix.
 func (recv *DateTime) ToUnix() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5094,7 +5095,7 @@ func dateTimeToUtcFunction_Set() error {
 // ToUtc is a representation of the C type g_date_time_to_utc.
 func (recv *DateTime) ToUtc() *DateTime {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5103,8 +5104,7 @@ func (recv *DateTime) ToUtc() *DateTime {
 		ret = dateTimeToUtcFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &DateTime{}
-	retGo.Native = ret.Pointer()
+	retGo := DateTimeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5127,7 +5127,7 @@ func dateTimeUnrefFunction_Set() error {
 // Unref is a representation of the C type g_date_time_unref.
 func (recv *DateTime) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dateTimeUnrefFunction_Set()
 	if err == nil {
@@ -5149,12 +5149,16 @@ func debugKeyStruct_Set() error {
 }
 
 type DebugKey struct {
-	Native uintptr
+	native uintptr
+}
+
+func DebugKeyNewFromNative(native uintptr) *DebugKey {
+	return &DebugKey{native: native}
 }
 
 // FieldKey returns the C field 'key'.
 func (recv *DebugKey) FieldKey() string {
-	argValue := gi.StructFieldGet(debugKeyStruct, recv.Native, "key")
+	argValue := gi.StructFieldGet(debugKeyStruct, recv.native, "key")
 	value := argValue.String(false)
 	return value
 }
@@ -5163,12 +5167,12 @@ func (recv *DebugKey) FieldKey() string {
 func (recv *DebugKey) SetFieldKey(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(debugKeyStruct, recv.Native, "key", argValue)
+	gi.StructFieldSet(debugKeyStruct, recv.native, "key", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *DebugKey) FieldValue() uint32 {
-	argValue := gi.StructFieldGet(debugKeyStruct, recv.Native, "value")
+	argValue := gi.StructFieldGet(debugKeyStruct, recv.native, "value")
 	value := argValue.Uint32()
 	return value
 }
@@ -5177,7 +5181,7 @@ func (recv *DebugKey) FieldValue() uint32 {
 func (recv *DebugKey) SetFieldValue(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(debugKeyStruct, recv.Native, "value", argValue)
+	gi.StructFieldSet(debugKeyStruct, recv.native, "value", argValue)
 }
 
 // DebugKeyStruct creates an uninitialised DebugKey.
@@ -5187,13 +5191,12 @@ func DebugKeyStruct() *DebugKey {
 		return nil
 	}
 
-	structGo := &DebugKey{}
-	structGo.Native = debugKeyStruct.Alloc()
+	structGo := DebugKeyNewFromNative(debugKeyStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDebugKey)
 	return structGo
 }
 func finalizeDebugKey(obj *DebugKey) {
-	debugKeyStruct.Free(obj.Native)
+	debugKeyStruct.Free(obj.native)
 }
 
 var dirStruct *gi.Struct
@@ -5208,7 +5211,11 @@ func dirStruct_Set() error {
 }
 
 type Dir struct {
-	Native uintptr
+	native uintptr
+}
+
+func DirNewFromNative(native uintptr) *Dir {
+	return &Dir{native: native}
 }
 
 var dirCloseFunction *gi.Function
@@ -5229,7 +5236,7 @@ func dirCloseFunction_Set() error {
 // Close is a representation of the C type g_dir_close.
 func (recv *Dir) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dirCloseFunction_Set()
 	if err == nil {
@@ -5257,7 +5264,7 @@ func dirReadNameFunction_Set() error {
 // ReadName is a representation of the C type g_dir_read_name.
 func (recv *Dir) ReadName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5289,7 +5296,7 @@ func dirRewindFunction_Set() error {
 // Rewind is a representation of the C type g_dir_rewind.
 func (recv *Dir) Rewind() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := dirRewindFunction_Set()
 	if err == nil {
@@ -5306,13 +5313,12 @@ func DirStruct() *Dir {
 		return nil
 	}
 
-	structGo := &Dir{}
-	structGo.Native = dirStruct.Alloc()
+	structGo := DirNewFromNative(dirStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeDir)
 	return structGo
 }
 func finalizeDir(obj *Dir) {
-	dirStruct.Free(obj.Native)
+	dirStruct.Free(obj.native)
 }
 
 var errorStruct *gi.Struct
@@ -5327,12 +5333,16 @@ func errorStruct_Set() error {
 }
 
 type Error struct {
-	Native uintptr
+	native uintptr
+}
+
+func ErrorNewFromNative(native uintptr) *Error {
+	return &Error{native: native}
 }
 
 // FieldDomain returns the C field 'domain'.
 func (recv *Error) FieldDomain() Quark {
-	argValue := gi.StructFieldGet(errorStruct, recv.Native, "domain")
+	argValue := gi.StructFieldGet(errorStruct, recv.native, "domain")
 	value := Quark(argValue.Uint32())
 	return value
 }
@@ -5341,12 +5351,12 @@ func (recv *Error) FieldDomain() Quark {
 func (recv *Error) SetFieldDomain(value Quark) {
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(errorStruct, recv.Native, "domain", argValue)
+	gi.StructFieldSet(errorStruct, recv.native, "domain", argValue)
 }
 
 // FieldCode returns the C field 'code'.
 func (recv *Error) FieldCode() int32 {
-	argValue := gi.StructFieldGet(errorStruct, recv.Native, "code")
+	argValue := gi.StructFieldGet(errorStruct, recv.native, "code")
 	value := argValue.Int32()
 	return value
 }
@@ -5355,12 +5365,12 @@ func (recv *Error) FieldCode() int32 {
 func (recv *Error) SetFieldCode(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(errorStruct, recv.Native, "code", argValue)
+	gi.StructFieldSet(errorStruct, recv.native, "code", argValue)
 }
 
 // FieldMessage returns the C field 'message'.
 func (recv *Error) FieldMessage() string {
-	argValue := gi.StructFieldGet(errorStruct, recv.Native, "message")
+	argValue := gi.StructFieldGet(errorStruct, recv.native, "message")
 	value := argValue.String(false)
 	return value
 }
@@ -5369,7 +5379,7 @@ func (recv *Error) FieldMessage() string {
 func (recv *Error) SetFieldMessage(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(errorStruct, recv.Native, "message", argValue)
+	gi.StructFieldSet(errorStruct, recv.native, "message", argValue)
 }
 
 // UNSUPPORTED : C value 'g_error_new' : parameter '...' of type 'nil' not supported
@@ -5403,8 +5413,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 		ret = errorNewLiteralFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Error{}
-	retGo.Native = ret.Pointer()
+	retGo := ErrorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5429,7 +5438,7 @@ func errorCopyFunction_Set() error {
 // Copy is a representation of the C type g_error_copy.
 func (recv *Error) Copy() *Error {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5438,8 +5447,7 @@ func (recv *Error) Copy() *Error {
 		ret = errorCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Error{}
-	retGo.Native = ret.Pointer()
+	retGo := ErrorNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5462,7 +5470,7 @@ func errorFreeFunction_Set() error {
 // Free is a representation of the C type g_error_free.
 func (recv *Error) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := errorFreeFunction_Set()
 	if err == nil {
@@ -5490,7 +5498,7 @@ func errorMatchesFunction_Set() error {
 // Matches is a representation of the C type g_error_matches.
 func (recv *Error) Matches(domain Quark, code int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(uint32(domain))
 	inArgs[2].SetInt32(code)
 
@@ -5518,7 +5526,11 @@ func hashTableStruct_Set() error {
 }
 
 type HashTable struct {
-	Native uintptr
+	native uintptr
+}
+
+func HashTableNewFromNative(native uintptr) *HashTable {
+	return &HashTable{native: native}
 }
 
 // HashTableStruct creates an uninitialised HashTable.
@@ -5528,13 +5540,12 @@ func HashTableStruct() *HashTable {
 		return nil
 	}
 
-	structGo := &HashTable{}
-	structGo.Native = hashTableStruct.Alloc()
+	structGo := HashTableNewFromNative(hashTableStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHashTable)
 	return structGo
 }
 func finalizeHashTable(obj *HashTable) {
-	hashTableStruct.Free(obj.Native)
+	hashTableStruct.Free(obj.native)
 }
 
 var hashTableIterStruct *gi.Struct
@@ -5549,7 +5560,11 @@ func hashTableIterStruct_Set() error {
 }
 
 type HashTableIter struct {
-	Native uintptr
+	native uintptr
+}
+
+func HashTableIterNewFromNative(native uintptr) *HashTableIter {
+	return &HashTableIter{native: native}
 }
 
 // UNSUPPORTED : C value 'g_hash_table_iter_get_hash_table' : return type 'GLib.HashTable' not supported
@@ -5576,7 +5591,7 @@ func hashTableIterRemoveFunction_Set() error {
 // Remove is a representation of the C type g_hash_table_iter_remove.
 func (recv *HashTableIter) Remove() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := hashTableIterRemoveFunction_Set()
 	if err == nil {
@@ -5606,7 +5621,7 @@ func hashTableIterStealFunction_Set() error {
 // Steal is a representation of the C type g_hash_table_iter_steal.
 func (recv *HashTableIter) Steal() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := hashTableIterStealFunction_Set()
 	if err == nil {
@@ -5623,13 +5638,12 @@ func HashTableIterStruct() *HashTableIter {
 		return nil
 	}
 
-	structGo := &HashTableIter{}
-	structGo.Native = hashTableIterStruct.Alloc()
+	structGo := HashTableIterNewFromNative(hashTableIterStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHashTableIter)
 	return structGo
 }
 func finalizeHashTableIter(obj *HashTableIter) {
-	hashTableIterStruct.Free(obj.Native)
+	hashTableIterStruct.Free(obj.native)
 }
 
 var hmacStruct *gi.Struct
@@ -5644,7 +5658,11 @@ func hmacStruct_Set() error {
 }
 
 type Hmac struct {
-	Native uintptr
+	native uintptr
+}
+
+func HmacNewFromNative(native uintptr) *Hmac {
+	return &Hmac{native: native}
 }
 
 var hmacCopyFunction *gi.Function
@@ -5665,7 +5683,7 @@ func hmacCopyFunction_Set() error {
 // Copy is a representation of the C type g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5674,8 +5692,7 @@ func (recv *Hmac) Copy() *Hmac {
 		ret = hmacCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Hmac{}
-	retGo.Native = ret.Pointer()
+	retGo := HmacNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5700,7 +5717,7 @@ func hmacGetStringFunction_Set() error {
 // GetString is a representation of the C type g_hmac_get_string.
 func (recv *Hmac) GetString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5732,7 +5749,7 @@ func hmacRefFunction_Set() error {
 // Ref is a representation of the C type g_hmac_ref.
 func (recv *Hmac) Ref() *Hmac {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -5741,8 +5758,7 @@ func (recv *Hmac) Ref() *Hmac {
 		ret = hmacRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Hmac{}
-	retGo.Native = ret.Pointer()
+	retGo := HmacNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -5765,7 +5781,7 @@ func hmacUnrefFunction_Set() error {
 // Unref is a representation of the C type g_hmac_unref.
 func (recv *Hmac) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := hmacUnrefFunction_Set()
 	if err == nil {
@@ -5784,13 +5800,12 @@ func HmacStruct() *Hmac {
 		return nil
 	}
 
-	structGo := &Hmac{}
-	structGo.Native = hmacStruct.Alloc()
+	structGo := HmacNewFromNative(hmacStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHmac)
 	return structGo
 }
 func finalizeHmac(obj *Hmac) {
-	hmacStruct.Free(obj.Native)
+	hmacStruct.Free(obj.native)
 }
 
 var hookStruct *gi.Struct
@@ -5805,7 +5820,11 @@ func hookStruct_Set() error {
 }
 
 type Hook struct {
-	Native uintptr
+	native uintptr
+}
+
+func HookNewFromNative(native uintptr) *Hook {
+	return &Hook{native: native}
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -5814,37 +5833,35 @@ type Hook struct {
 
 // FieldNext returns the C field 'next'.
 func (recv *Hook) FieldNext() *Hook {
-	argValue := gi.StructFieldGet(hookStruct, recv.Native, "next")
-	value := &Hook{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(hookStruct, recv.native, "next")
+	value := HookNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldNext sets the value of the C field 'next'.
 func (recv *Hook) SetFieldNext(value *Hook) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(hookStruct, recv.Native, "next", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(hookStruct, recv.native, "next", argValue)
 }
 
 // FieldPrev returns the C field 'prev'.
 func (recv *Hook) FieldPrev() *Hook {
-	argValue := gi.StructFieldGet(hookStruct, recv.Native, "prev")
-	value := &Hook{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(hookStruct, recv.native, "prev")
+	value := HookNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPrev sets the value of the C field 'prev'.
 func (recv *Hook) SetFieldPrev(value *Hook) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(hookStruct, recv.Native, "prev", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(hookStruct, recv.native, "prev", argValue)
 }
 
 // FieldRefCount returns the C field 'ref_count'.
 func (recv *Hook) FieldRefCount() uint32 {
-	argValue := gi.StructFieldGet(hookStruct, recv.Native, "ref_count")
+	argValue := gi.StructFieldGet(hookStruct, recv.native, "ref_count")
 	value := argValue.Uint32()
 	return value
 }
@@ -5853,12 +5870,12 @@ func (recv *Hook) FieldRefCount() uint32 {
 func (recv *Hook) SetFieldRefCount(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(hookStruct, recv.Native, "ref_count", argValue)
+	gi.StructFieldSet(hookStruct, recv.native, "ref_count", argValue)
 }
 
 // FieldHookId returns the C field 'hook_id'.
 func (recv *Hook) FieldHookId() uint64 {
-	argValue := gi.StructFieldGet(hookStruct, recv.Native, "hook_id")
+	argValue := gi.StructFieldGet(hookStruct, recv.native, "hook_id")
 	value := argValue.Uint64()
 	return value
 }
@@ -5867,12 +5884,12 @@ func (recv *Hook) FieldHookId() uint64 {
 func (recv *Hook) SetFieldHookId(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.StructFieldSet(hookStruct, recv.Native, "hook_id", argValue)
+	gi.StructFieldSet(hookStruct, recv.native, "hook_id", argValue)
 }
 
 // FieldFlags returns the C field 'flags'.
 func (recv *Hook) FieldFlags() uint32 {
-	argValue := gi.StructFieldGet(hookStruct, recv.Native, "flags")
+	argValue := gi.StructFieldGet(hookStruct, recv.native, "flags")
 	value := argValue.Uint32()
 	return value
 }
@@ -5881,7 +5898,7 @@ func (recv *Hook) FieldFlags() uint32 {
 func (recv *Hook) SetFieldFlags(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(hookStruct, recv.Native, "flags", argValue)
+	gi.StructFieldSet(hookStruct, recv.native, "flags", argValue)
 }
 
 // UNSUPPORTED : C value 'func' : for field getter : no Go type for 'gpointer'
@@ -5910,8 +5927,8 @@ func hookCompareIdsFunction_Set() error {
 // CompareIds is a representation of the C type g_hook_compare_ids.
 func (recv *Hook) CompareIds(sibling *Hook) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(sibling.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
 
 	var ret gi.Argument
 
@@ -5932,13 +5949,12 @@ func HookStruct() *Hook {
 		return nil
 	}
 
-	structGo := &Hook{}
-	structGo.Native = hookStruct.Alloc()
+	structGo := HookNewFromNative(hookStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHook)
 	return structGo
 }
 func finalizeHook(obj *Hook) {
-	hookStruct.Free(obj.Native)
+	hookStruct.Free(obj.native)
 }
 
 var hookListStruct *gi.Struct
@@ -5953,12 +5969,16 @@ func hookListStruct_Set() error {
 }
 
 type HookList struct {
-	Native uintptr
+	native uintptr
+}
+
+func HookListNewFromNative(native uintptr) *HookList {
+	return &HookList{native: native}
 }
 
 // FieldSeqId returns the C field 'seq_id'.
 func (recv *HookList) FieldSeqId() uint64 {
-	argValue := gi.StructFieldGet(hookListStruct, recv.Native, "seq_id")
+	argValue := gi.StructFieldGet(hookListStruct, recv.native, "seq_id")
 	value := argValue.Uint64()
 	return value
 }
@@ -5967,12 +5987,12 @@ func (recv *HookList) FieldSeqId() uint64 {
 func (recv *HookList) SetFieldSeqId(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.StructFieldSet(hookListStruct, recv.Native, "seq_id", argValue)
+	gi.StructFieldSet(hookListStruct, recv.native, "seq_id", argValue)
 }
 
 // FieldHookSize returns the C field 'hook_size'.
 func (recv *HookList) FieldHookSize() uint32 {
-	argValue := gi.StructFieldGet(hookListStruct, recv.Native, "hook_size")
+	argValue := gi.StructFieldGet(hookListStruct, recv.native, "hook_size")
 	value := argValue.Uint32()
 	return value
 }
@@ -5981,12 +6001,12 @@ func (recv *HookList) FieldHookSize() uint32 {
 func (recv *HookList) SetFieldHookSize(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(hookListStruct, recv.Native, "hook_size", argValue)
+	gi.StructFieldSet(hookListStruct, recv.native, "hook_size", argValue)
 }
 
 // FieldIsSetup returns the C field 'is_setup'.
 func (recv *HookList) FieldIsSetup() uint32 {
-	argValue := gi.StructFieldGet(hookListStruct, recv.Native, "is_setup")
+	argValue := gi.StructFieldGet(hookListStruct, recv.native, "is_setup")
 	value := argValue.Uint32()
 	return value
 }
@@ -5995,22 +6015,21 @@ func (recv *HookList) FieldIsSetup() uint32 {
 func (recv *HookList) SetFieldIsSetup(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(hookListStruct, recv.Native, "is_setup", argValue)
+	gi.StructFieldSet(hookListStruct, recv.native, "is_setup", argValue)
 }
 
 // FieldHooks returns the C field 'hooks'.
 func (recv *HookList) FieldHooks() *Hook {
-	argValue := gi.StructFieldGet(hookListStruct, recv.Native, "hooks")
-	value := &Hook{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(hookListStruct, recv.native, "hooks")
+	value := HookNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldHooks sets the value of the C field 'hooks'.
 func (recv *HookList) SetFieldHooks(value *Hook) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(hookListStruct, recv.Native, "hooks", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(hookListStruct, recv.native, "hooks", argValue)
 }
 
 // UNSUPPORTED : C value 'dummy3' : for field getter : no Go type for 'gpointer'
@@ -6043,7 +6062,7 @@ func hookListClearFunction_Set() error {
 // Clear is a representation of the C type g_hook_list_clear.
 func (recv *HookList) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := hookListClearFunction_Set()
 	if err == nil {
@@ -6071,7 +6090,7 @@ func hookListInitFunction_Set() error {
 // Init is a representation of the C type g_hook_list_init.
 func (recv *HookList) Init(hookSize uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(hookSize)
 
 	err := hookListInitFunction_Set()
@@ -6100,7 +6119,7 @@ func hookListInvokeFunction_Set() error {
 // Invoke is a representation of the C type g_hook_list_invoke.
 func (recv *HookList) Invoke(mayRecurse bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(mayRecurse)
 
 	err := hookListInvokeFunction_Set()
@@ -6129,7 +6148,7 @@ func hookListInvokeCheckFunction_Set() error {
 // InvokeCheck is a representation of the C type g_hook_list_invoke_check.
 func (recv *HookList) InvokeCheck(mayRecurse bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(mayRecurse)
 
 	err := hookListInvokeCheckFunction_Set()
@@ -6151,13 +6170,12 @@ func HookListStruct() *HookList {
 		return nil
 	}
 
-	structGo := &HookList{}
-	structGo.Native = hookListStruct.Alloc()
+	structGo := HookListNewFromNative(hookListStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeHookList)
 	return structGo
 }
 func finalizeHookList(obj *HookList) {
-	hookListStruct.Free(obj.Native)
+	hookListStruct.Free(obj.native)
 }
 
 var iConvStruct *gi.Struct
@@ -6172,7 +6190,11 @@ func iConvStruct_Set() error {
 }
 
 type IConv struct {
-	Native uintptr
+	native uintptr
+}
+
+func IConvNewFromNative(native uintptr) *IConv {
+	return &IConv{native: native}
 }
 
 // UNSUPPORTED : C value 'g_iconv' : moved to iconv
@@ -6195,7 +6217,7 @@ func iConvCloseFunction_Set() error {
 // Close is a representation of the C type g_iconv_close.
 func (recv *IConv) Close() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6216,13 +6238,12 @@ func IConvStruct() *IConv {
 		return nil
 	}
 
-	structGo := &IConv{}
-	structGo.Native = iConvStruct.Alloc()
+	structGo := IConvNewFromNative(iConvStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeIConv)
 	return structGo
 }
 func finalizeIConv(obj *IConv) {
-	iConvStruct.Free(obj.Native)
+	iConvStruct.Free(obj.native)
 }
 
 var iOChannelStruct *gi.Struct
@@ -6237,7 +6258,11 @@ func iOChannelStruct_Set() error {
 }
 
 type IOChannel struct {
-	Native uintptr
+	native uintptr
+}
+
+func IOChannelNewFromNative(native uintptr) *IOChannel {
+	return &IOChannel{native: native}
 }
 
 var iOChannelNewFileFunction *gi.Function
@@ -6268,8 +6293,7 @@ func IOChannelNewFile(filename string, mode string) *IOChannel {
 		ret = iOChannelNewFileFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOChannel{}
-	retGo.Native = ret.Pointer()
+	retGo := IOChannelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6301,8 +6325,7 @@ func IOChannelUnixNew(fd int32) *IOChannel {
 		ret = iOChannelUnixNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOChannel{}
-	retGo.Native = ret.Pointer()
+	retGo := IOChannelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6325,7 +6348,7 @@ func iOChannelCloseFunction_Set() error {
 // Close is a representation of the C type g_io_channel_close.
 func (recv *IOChannel) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOChannelCloseFunction_Set()
 	if err == nil {
@@ -6353,7 +6376,7 @@ func iOChannelFlushFunction_Set() error {
 // Flush is a representation of the C type g_io_channel_flush.
 func (recv *IOChannel) Flush() IOStatus {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6387,7 +6410,7 @@ func iOChannelGetBufferSizeFunction_Set() error {
 // GetBufferSize is a representation of the C type g_io_channel_get_buffer_size.
 func (recv *IOChannel) GetBufferSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6419,7 +6442,7 @@ func iOChannelGetBufferedFunction_Set() error {
 // GetBuffered is a representation of the C type g_io_channel_get_buffered.
 func (recv *IOChannel) GetBuffered() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6451,7 +6474,7 @@ func iOChannelGetCloseOnUnrefFunction_Set() error {
 // GetCloseOnUnref is a representation of the C type g_io_channel_get_close_on_unref.
 func (recv *IOChannel) GetCloseOnUnref() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6483,7 +6506,7 @@ func iOChannelGetEncodingFunction_Set() error {
 // GetEncoding is a representation of the C type g_io_channel_get_encoding.
 func (recv *IOChannel) GetEncoding() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6517,7 +6540,7 @@ func iOChannelGetLineTermFunction_Set() error {
 // GetLineTerm is a representation of the C type g_io_channel_get_line_term.
 func (recv *IOChannel) GetLineTerm(length int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(length)
 
 	var ret gi.Argument
@@ -6550,7 +6573,7 @@ func iOChannelInitFunction_Set() error {
 // Init is a representation of the C type g_io_channel_init.
 func (recv *IOChannel) Init() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOChannelInitFunction_Set()
 	if err == nil {
@@ -6578,7 +6601,7 @@ func iOChannelReadFunction_Set() error {
 // Read is a representation of the C type g_io_channel_read.
 func (recv *IOChannel) Read(buf string, count uint64, bytesRead uint64) IOError {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(buf)
 	inArgs[2].SetUint64(count)
 	inArgs[3].SetUint64(bytesRead)
@@ -6615,7 +6638,7 @@ func iOChannelReadLineFunction_Set() error {
 // ReadLine is a representation of the C type g_io_channel_read_line.
 func (recv *IOChannel) ReadLine() (IOStatus, string, uint64, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [3]gi.Argument
 	var ret gi.Argument
@@ -6651,8 +6674,8 @@ func iOChannelReadLineStringFunction_Set() error {
 // ReadLineString is a representation of the C type g_io_channel_read_line_string.
 func (recv *IOChannel) ReadLineString(buffer *String, terminatorPos uint64) IOStatus {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(buffer.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(buffer.native)
 	inArgs[2].SetUint64(terminatorPos)
 
 	var ret gi.Argument
@@ -6689,7 +6712,7 @@ func iOChannelRefFunction_Set() error {
 // Ref is a representation of the C type g_io_channel_ref.
 func (recv *IOChannel) Ref() *IOChannel {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -6698,8 +6721,7 @@ func (recv *IOChannel) Ref() *IOChannel {
 		ret = iOChannelRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &IOChannel{}
-	retGo.Native = ret.Pointer()
+	retGo := IOChannelNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -6722,7 +6744,7 @@ func iOChannelSeekFunction_Set() error {
 // Seek is a representation of the C type g_io_channel_seek.
 func (recv *IOChannel) Seek(offset int64, type_ SeekType) IOError {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(offset)
 	inArgs[2].SetInt32(int32(type_))
 
@@ -6756,7 +6778,7 @@ func iOChannelSeekPositionFunction_Set() error {
 // SeekPosition is a representation of the C type g_io_channel_seek_position.
 func (recv *IOChannel) SeekPosition(offset int64, type_ SeekType) IOStatus {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(offset)
 	inArgs[2].SetInt32(int32(type_))
 
@@ -6790,7 +6812,7 @@ func iOChannelSetBufferSizeFunction_Set() error {
 // SetBufferSize is a representation of the C type g_io_channel_set_buffer_size.
 func (recv *IOChannel) SetBufferSize(size uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(size)
 
 	err := iOChannelSetBufferSizeFunction_Set()
@@ -6819,7 +6841,7 @@ func iOChannelSetBufferedFunction_Set() error {
 // SetBuffered is a representation of the C type g_io_channel_set_buffered.
 func (recv *IOChannel) SetBuffered(buffered bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(buffered)
 
 	err := iOChannelSetBufferedFunction_Set()
@@ -6848,7 +6870,7 @@ func iOChannelSetCloseOnUnrefFunction_Set() error {
 // SetCloseOnUnref is a representation of the C type g_io_channel_set_close_on_unref.
 func (recv *IOChannel) SetCloseOnUnref(doClose bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(doClose)
 
 	err := iOChannelSetCloseOnUnrefFunction_Set()
@@ -6877,7 +6899,7 @@ func iOChannelSetEncodingFunction_Set() error {
 // SetEncoding is a representation of the C type g_io_channel_set_encoding.
 func (recv *IOChannel) SetEncoding(encoding string) IOStatus {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(encoding)
 
 	var ret gi.Argument
@@ -6912,7 +6934,7 @@ func iOChannelSetLineTermFunction_Set() error {
 // SetLineTerm is a representation of the C type g_io_channel_set_line_term.
 func (recv *IOChannel) SetLineTerm(lineTerm string, length int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(lineTerm)
 	inArgs[2].SetInt32(length)
 
@@ -6942,7 +6964,7 @@ func iOChannelShutdownFunction_Set() error {
 // Shutdown is a representation of the C type g_io_channel_shutdown.
 func (recv *IOChannel) Shutdown(flush bool) IOStatus {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(flush)
 
 	var ret gi.Argument
@@ -6975,7 +6997,7 @@ func iOChannelUnixGetFdFunction_Set() error {
 // UnixGetFd is a representation of the C type g_io_channel_unix_get_fd.
 func (recv *IOChannel) UnixGetFd() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7007,7 +7029,7 @@ func iOChannelUnrefFunction_Set() error {
 // Unref is a representation of the C type g_io_channel_unref.
 func (recv *IOChannel) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := iOChannelUnrefFunction_Set()
 	if err == nil {
@@ -7035,7 +7057,7 @@ func iOChannelWriteFunction_Set() error {
 // Write is a representation of the C type g_io_channel_write.
 func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOError {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(buf)
 	inArgs[2].SetUint64(count)
 	inArgs[3].SetUint64(bytesWritten)
@@ -7068,7 +7090,11 @@ func iOFuncsStruct_Set() error {
 }
 
 type IOFuncs struct {
-	Native uintptr
+	native uintptr
+}
+
+func IOFuncsNewFromNative(native uintptr) *IOFuncs {
+	return &IOFuncs{native: native}
 }
 
 // UNSUPPORTED : C value 'io_read' : for field getter : missing Type
@@ -7110,13 +7136,12 @@ func IOFuncsStruct() *IOFuncs {
 		return nil
 	}
 
-	structGo := &IOFuncs{}
-	structGo.Native = iOFuncsStruct.Alloc()
+	structGo := IOFuncsNewFromNative(iOFuncsStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeIOFuncs)
 	return structGo
 }
 func finalizeIOFuncs(obj *IOFuncs) {
-	iOFuncsStruct.Free(obj.Native)
+	iOFuncsStruct.Free(obj.native)
 }
 
 var keyFileStruct *gi.Struct
@@ -7131,7 +7156,11 @@ func keyFileStruct_Set() error {
 }
 
 type KeyFile struct {
-	Native uintptr
+	native uintptr
+}
+
+func KeyFileNewFromNative(native uintptr) *KeyFile {
+	return &KeyFile{native: native}
 }
 
 var keyFileNewFunction *gi.Function
@@ -7159,8 +7188,7 @@ func KeyFileNew() *KeyFile {
 		ret = keyFileNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &KeyFile{}
-	retGo.Native = ret.Pointer()
+	retGo := KeyFileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7183,7 +7211,7 @@ func keyFileFreeFunction_Set() error {
 // Free is a representation of the C type g_key_file_free.
 func (recv *KeyFile) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := keyFileFreeFunction_Set()
 	if err == nil {
@@ -7211,7 +7239,7 @@ func keyFileGetBooleanFunction_Set() error {
 // GetBoolean is a representation of the C type g_key_file_get_boolean.
 func (recv *KeyFile) GetBoolean(groupName string, key string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7245,7 +7273,7 @@ func keyFileGetBooleanListFunction_Set() error {
 // GetBooleanList is a representation of the C type g_key_file_get_boolean_list.
 func (recv *KeyFile) GetBooleanList(groupName string, key string) uint64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7279,7 +7307,7 @@ func keyFileGetCommentFunction_Set() error {
 // GetComment is a representation of the C type g_key_file_get_comment.
 func (recv *KeyFile) GetComment(groupName string, key string) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7313,7 +7341,7 @@ func keyFileGetDoubleFunction_Set() error {
 // GetDouble is a representation of the C type g_key_file_get_double.
 func (recv *KeyFile) GetDouble(groupName string, key string) float64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7347,7 +7375,7 @@ func keyFileGetDoubleListFunction_Set() error {
 // GetDoubleList is a representation of the C type g_key_file_get_double_list.
 func (recv *KeyFile) GetDoubleList(groupName string, key string) uint64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7381,7 +7409,7 @@ func keyFileGetGroupsFunction_Set() error {
 // GetGroups is a representation of the C type g_key_file_get_groups.
 func (recv *KeyFile) GetGroups() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -7413,7 +7441,7 @@ func keyFileGetInt64Function_Set() error {
 // GetInt64 is a representation of the C type g_key_file_get_int64.
 func (recv *KeyFile) GetInt64(groupName string, key string) int64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7447,7 +7475,7 @@ func keyFileGetIntegerFunction_Set() error {
 // GetInteger is a representation of the C type g_key_file_get_integer.
 func (recv *KeyFile) GetInteger(groupName string, key string) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7481,7 +7509,7 @@ func keyFileGetIntegerListFunction_Set() error {
 // GetIntegerList is a representation of the C type g_key_file_get_integer_list.
 func (recv *KeyFile) GetIntegerList(groupName string, key string) uint64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7515,7 +7543,7 @@ func keyFileGetKeysFunction_Set() error {
 // GetKeys is a representation of the C type g_key_file_get_keys.
 func (recv *KeyFile) GetKeys(groupName string) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 
 	var outArgs [1]gi.Argument
@@ -7548,7 +7576,7 @@ func keyFileGetLocaleForKeyFunction_Set() error {
 // GetLocaleForKey is a representation of the C type g_key_file_get_locale_for_key.
 func (recv *KeyFile) GetLocaleForKey(groupName string, key string, locale string) string {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
@@ -7583,7 +7611,7 @@ func keyFileGetLocaleStringFunction_Set() error {
 // GetLocaleString is a representation of the C type g_key_file_get_locale_string.
 func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string) string {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
@@ -7618,7 +7646,7 @@ func keyFileGetLocaleStringListFunction_Set() error {
 // GetLocaleStringList is a representation of the C type g_key_file_get_locale_string_list.
 func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale string) uint64 {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
@@ -7653,7 +7681,7 @@ func keyFileGetStartGroupFunction_Set() error {
 // GetStartGroup is a representation of the C type g_key_file_get_start_group.
 func (recv *KeyFile) GetStartGroup() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7685,7 +7713,7 @@ func keyFileGetStringFunction_Set() error {
 // GetString is a representation of the C type g_key_file_get_string.
 func (recv *KeyFile) GetString(groupName string, key string) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7719,7 +7747,7 @@ func keyFileGetStringListFunction_Set() error {
 // GetStringList is a representation of the C type g_key_file_get_string_list.
 func (recv *KeyFile) GetStringList(groupName string, key string) uint64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7753,7 +7781,7 @@ func keyFileGetUint64Function_Set() error {
 // GetUint64 is a representation of the C type g_key_file_get_uint64.
 func (recv *KeyFile) GetUint64(groupName string, key string) uint64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7787,7 +7815,7 @@ func keyFileGetValueFunction_Set() error {
 // GetValue is a representation of the C type g_key_file_get_value.
 func (recv *KeyFile) GetValue(groupName string, key string) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7821,7 +7849,7 @@ func keyFileHasGroupFunction_Set() error {
 // HasGroup is a representation of the C type g_key_file_has_group.
 func (recv *KeyFile) HasGroup(groupName string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 
 	var ret gi.Argument
@@ -7854,7 +7882,7 @@ func keyFileHasKeyFunction_Set() error {
 // HasKey is a representation of the C type g_key_file_has_key.
 func (recv *KeyFile) HasKey(groupName string, key string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7898,7 +7926,7 @@ func keyFileRefFunction_Set() error {
 // Ref is a representation of the C type g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -7907,8 +7935,7 @@ func (recv *KeyFile) Ref() *KeyFile {
 		ret = keyFileRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &KeyFile{}
-	retGo.Native = ret.Pointer()
+	retGo := KeyFileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -7931,7 +7958,7 @@ func keyFileRemoveCommentFunction_Set() error {
 // RemoveComment is a representation of the C type g_key_file_remove_comment.
 func (recv *KeyFile) RemoveComment(groupName string, key string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -7965,7 +7992,7 @@ func keyFileRemoveGroupFunction_Set() error {
 // RemoveGroup is a representation of the C type g_key_file_remove_group.
 func (recv *KeyFile) RemoveGroup(groupName string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 
 	var ret gi.Argument
@@ -7998,7 +8025,7 @@ func keyFileRemoveKeyFunction_Set() error {
 // RemoveKey is a representation of the C type g_key_file_remove_key.
 func (recv *KeyFile) RemoveKey(groupName string, key string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
@@ -8032,7 +8059,7 @@ func keyFileSaveToFileFunction_Set() error {
 // SaveToFile is a representation of the C type g_key_file_save_to_file.
 func (recv *KeyFile) SaveToFile(filename string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(filename)
 
 	var ret gi.Argument
@@ -8065,7 +8092,7 @@ func keyFileSetBooleanFunction_Set() error {
 // SetBoolean is a representation of the C type g_key_file_set_boolean.
 func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetBoolean(value)
@@ -8098,7 +8125,7 @@ func keyFileSetCommentFunction_Set() error {
 // SetComment is a representation of the C type g_key_file_set_comment.
 func (recv *KeyFile) SetComment(groupName string, key string, comment string) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(comment)
@@ -8133,7 +8160,7 @@ func keyFileSetDoubleFunction_Set() error {
 // SetDouble is a representation of the C type g_key_file_set_double.
 func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetFloat64(value)
@@ -8166,7 +8193,7 @@ func keyFileSetInt64Function_Set() error {
 // SetInt64 is a representation of the C type g_key_file_set_int64.
 func (recv *KeyFile) SetInt64(groupName string, key string, value int64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetInt64(value)
@@ -8197,7 +8224,7 @@ func keyFileSetIntegerFunction_Set() error {
 // SetInteger is a representation of the C type g_key_file_set_integer.
 func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetInt32(value)
@@ -8230,7 +8257,7 @@ func keyFileSetListSeparatorFunction_Set() error {
 // SetListSeparator is a representation of the C type g_key_file_set_list_separator.
 func (recv *KeyFile) SetListSeparator(separator int8) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(separator)
 
 	err := keyFileSetListSeparatorFunction_Set()
@@ -8259,7 +8286,7 @@ func keyFileSetLocaleStringFunction_Set() error {
 // SetLocaleString is a representation of the C type g_key_file_set_locale_string.
 func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string, string_ string) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
@@ -8293,7 +8320,7 @@ func keyFileSetStringFunction_Set() error {
 // SetString is a representation of the C type g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(string_)
@@ -8326,7 +8353,7 @@ func keyFileSetUint64Function_Set() error {
 // SetUint64 is a representation of the C type g_key_file_set_uint64.
 func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetUint64(value)
@@ -8357,7 +8384,7 @@ func keyFileSetValueFunction_Set() error {
 // SetValue is a representation of the C type g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(value)
@@ -8388,7 +8415,7 @@ func keyFileToDataFunction_Set() error {
 // ToData is a representation of the C type g_key_file_to_data.
 func (recv *KeyFile) ToData() (string, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -8422,7 +8449,7 @@ func keyFileUnrefFunction_Set() error {
 // Unref is a representation of the C type g_key_file_unref.
 func (recv *KeyFile) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := keyFileUnrefFunction_Set()
 	if err == nil {
@@ -8444,7 +8471,11 @@ func listStruct_Set() error {
 }
 
 type List struct {
-	Native uintptr
+	native uintptr
+}
+
+func ListNewFromNative(native uintptr) *List {
+	return &List{native: native}
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -8466,13 +8497,12 @@ func ListStruct() *List {
 		return nil
 	}
 
-	structGo := &List{}
-	structGo.Native = listStruct.Alloc()
+	structGo := ListNewFromNative(listStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeList)
 	return structGo
 }
 func finalizeList(obj *List) {
-	listStruct.Free(obj.Native)
+	listStruct.Free(obj.native)
 }
 
 var logFieldStruct *gi.Struct
@@ -8487,12 +8517,16 @@ func logFieldStruct_Set() error {
 }
 
 type LogField struct {
-	Native uintptr
+	native uintptr
+}
+
+func LogFieldNewFromNative(native uintptr) *LogField {
+	return &LogField{native: native}
 }
 
 // FieldKey returns the C field 'key'.
 func (recv *LogField) FieldKey() string {
-	argValue := gi.StructFieldGet(logFieldStruct, recv.Native, "key")
+	argValue := gi.StructFieldGet(logFieldStruct, recv.native, "key")
 	value := argValue.String(false)
 	return value
 }
@@ -8501,7 +8535,7 @@ func (recv *LogField) FieldKey() string {
 func (recv *LogField) SetFieldKey(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(logFieldStruct, recv.Native, "key", argValue)
+	gi.StructFieldSet(logFieldStruct, recv.native, "key", argValue)
 }
 
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'gpointer'
@@ -8510,7 +8544,7 @@ func (recv *LogField) SetFieldKey(value string) {
 
 // FieldLength returns the C field 'length'.
 func (recv *LogField) FieldLength() int32 {
-	argValue := gi.StructFieldGet(logFieldStruct, recv.Native, "length")
+	argValue := gi.StructFieldGet(logFieldStruct, recv.native, "length")
 	value := argValue.Int32()
 	return value
 }
@@ -8519,7 +8553,7 @@ func (recv *LogField) FieldLength() int32 {
 func (recv *LogField) SetFieldLength(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(logFieldStruct, recv.Native, "length", argValue)
+	gi.StructFieldSet(logFieldStruct, recv.native, "length", argValue)
 }
 
 // LogFieldStruct creates an uninitialised LogField.
@@ -8529,13 +8563,12 @@ func LogFieldStruct() *LogField {
 		return nil
 	}
 
-	structGo := &LogField{}
-	structGo.Native = logFieldStruct.Alloc()
+	structGo := LogFieldNewFromNative(logFieldStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeLogField)
 	return structGo
 }
 func finalizeLogField(obj *LogField) {
-	logFieldStruct.Free(obj.Native)
+	logFieldStruct.Free(obj.native)
 }
 
 var mainContextStruct *gi.Struct
@@ -8550,7 +8583,11 @@ func mainContextStruct_Set() error {
 }
 
 type MainContext struct {
-	Native uintptr
+	native uintptr
+}
+
+func MainContextNewFromNative(native uintptr) *MainContext {
+	return &MainContext{native: native}
 }
 
 var mainContextNewFunction *gi.Function
@@ -8578,8 +8615,7 @@ func MainContextNew() *MainContext {
 		ret = mainContextNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &MainContext{}
-	retGo.Native = ret.Pointer()
+	retGo := MainContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8602,7 +8638,7 @@ func mainContextAcquireFunction_Set() error {
 // Acquire is a representation of the C type g_main_context_acquire.
 func (recv *MainContext) Acquire() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8634,8 +8670,8 @@ func mainContextAddPollFunction_Set() error {
 // AddPoll is a representation of the C type g_main_context_add_poll.
 func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fd.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
 	inArgs[2].SetInt32(priority)
 
 	err := mainContextAddPollFunction_Set()
@@ -8666,7 +8702,7 @@ func mainContextDispatchFunction_Set() error {
 // Dispatch is a representation of the C type g_main_context_dispatch.
 func (recv *MainContext) Dispatch() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextDispatchFunction_Set()
 	if err == nil {
@@ -8696,7 +8732,7 @@ func mainContextFindSourceByIdFunction_Set() error {
 // FindSourceById is a representation of the C type g_main_context_find_source_by_id.
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(sourceId)
 
 	var ret gi.Argument
@@ -8706,8 +8742,7 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 		ret = mainContextFindSourceByIdFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Source{}
-	retGo.Native = ret.Pointer()
+	retGo := SourceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8738,7 +8773,7 @@ func mainContextIsOwnerFunction_Set() error {
 // IsOwner is a representation of the C type g_main_context_is_owner.
 func (recv *MainContext) IsOwner() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8770,7 +8805,7 @@ func mainContextIterationFunction_Set() error {
 // Iteration is a representation of the C type g_main_context_iteration.
 func (recv *MainContext) Iteration(mayBlock bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(mayBlock)
 
 	var ret gi.Argument
@@ -8803,7 +8838,7 @@ func mainContextPendingFunction_Set() error {
 // Pending is a representation of the C type g_main_context_pending.
 func (recv *MainContext) Pending() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8835,7 +8870,7 @@ func mainContextPopThreadDefaultFunction_Set() error {
 // PopThreadDefault is a representation of the C type g_main_context_pop_thread_default.
 func (recv *MainContext) PopThreadDefault() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextPopThreadDefaultFunction_Set()
 	if err == nil {
@@ -8863,7 +8898,7 @@ func mainContextPrepareFunction_Set() error {
 // Prepare is a representation of the C type g_main_context_prepare.
 func (recv *MainContext) Prepare() (bool, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -8897,7 +8932,7 @@ func mainContextPushThreadDefaultFunction_Set() error {
 // PushThreadDefault is a representation of the C type g_main_context_push_thread_default.
 func (recv *MainContext) PushThreadDefault() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextPushThreadDefaultFunction_Set()
 	if err == nil {
@@ -8927,7 +8962,7 @@ func mainContextRefFunction_Set() error {
 // Ref is a representation of the C type g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -8936,8 +8971,7 @@ func (recv *MainContext) Ref() *MainContext {
 		ret = mainContextRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MainContext{}
-	retGo.Native = ret.Pointer()
+	retGo := MainContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -8960,7 +8994,7 @@ func mainContextReleaseFunction_Set() error {
 // Release is a representation of the C type g_main_context_release.
 func (recv *MainContext) Release() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextReleaseFunction_Set()
 	if err == nil {
@@ -8988,8 +9022,8 @@ func mainContextRemovePollFunction_Set() error {
 // RemovePoll is a representation of the C type g_main_context_remove_poll.
 func (recv *MainContext) RemovePoll(fd *PollFD) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fd.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
 
 	err := mainContextRemovePollFunction_Set()
 	if err == nil {
@@ -9019,7 +9053,7 @@ func mainContextUnrefFunction_Set() error {
 // Unref is a representation of the C type g_main_context_unref.
 func (recv *MainContext) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextUnrefFunction_Set()
 	if err == nil {
@@ -9049,7 +9083,7 @@ func mainContextWakeupFunction_Set() error {
 // Wakeup is a representation of the C type g_main_context_wakeup.
 func (recv *MainContext) Wakeup() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainContextWakeupFunction_Set()
 	if err == nil {
@@ -9071,7 +9105,11 @@ func mainLoopStruct_Set() error {
 }
 
 type MainLoop struct {
-	Native uintptr
+	native uintptr
+}
+
+func MainLoopNewFromNative(native uintptr) *MainLoop {
+	return &MainLoop{native: native}
 }
 
 var mainLoopNewFunction *gi.Function
@@ -9092,7 +9130,7 @@ func mainLoopNewFunction_Set() error {
 // MainLoopNew is a representation of the C type g_main_loop_new.
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.Native)
+	inArgs[0].SetPointer(context.native)
 	inArgs[1].SetBoolean(isRunning)
 
 	var ret gi.Argument
@@ -9102,8 +9140,7 @@ func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 		ret = mainLoopNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MainLoop{}
-	retGo.Native = ret.Pointer()
+	retGo := MainLoopNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9126,7 +9163,7 @@ func mainLoopGetContextFunction_Set() error {
 // GetContext is a representation of the C type g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9135,8 +9172,7 @@ func (recv *MainLoop) GetContext() *MainContext {
 		ret = mainLoopGetContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MainContext{}
-	retGo.Native = ret.Pointer()
+	retGo := MainContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9159,7 +9195,7 @@ func mainLoopIsRunningFunction_Set() error {
 // IsRunning is a representation of the C type g_main_loop_is_running.
 func (recv *MainLoop) IsRunning() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9191,7 +9227,7 @@ func mainLoopQuitFunction_Set() error {
 // Quit is a representation of the C type g_main_loop_quit.
 func (recv *MainLoop) Quit() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainLoopQuitFunction_Set()
 	if err == nil {
@@ -9219,7 +9255,7 @@ func mainLoopRefFunction_Set() error {
 // Ref is a representation of the C type g_main_loop_ref.
 func (recv *MainLoop) Ref() *MainLoop {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9228,8 +9264,7 @@ func (recv *MainLoop) Ref() *MainLoop {
 		ret = mainLoopRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MainLoop{}
-	retGo.Native = ret.Pointer()
+	retGo := MainLoopNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9252,7 +9287,7 @@ func mainLoopRunFunction_Set() error {
 // Run is a representation of the C type g_main_loop_run.
 func (recv *MainLoop) Run() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainLoopRunFunction_Set()
 	if err == nil {
@@ -9280,7 +9315,7 @@ func mainLoopUnrefFunction_Set() error {
 // Unref is a representation of the C type g_main_loop_unref.
 func (recv *MainLoop) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mainLoopUnrefFunction_Set()
 	if err == nil {
@@ -9302,7 +9337,11 @@ func mappedFileStruct_Set() error {
 }
 
 type MappedFile struct {
-	Native uintptr
+	native uintptr
+}
+
+func MappedFileNewFromNative(native uintptr) *MappedFile {
+	return &MappedFile{native: native}
 }
 
 var mappedFileNewFunction *gi.Function
@@ -9333,8 +9372,7 @@ func MappedFileNew(filename string, writable bool) *MappedFile {
 		ret = mappedFileNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MappedFile{}
-	retGo.Native = ret.Pointer()
+	retGo := MappedFileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9367,8 +9405,7 @@ func MappedFileNewFromFd(fd int32, writable bool) *MappedFile {
 		ret = mappedFileNewFromFdFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MappedFile{}
-	retGo.Native = ret.Pointer()
+	retGo := MappedFileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9391,7 +9428,7 @@ func mappedFileFreeFunction_Set() error {
 // Free is a representation of the C type g_mapped_file_free.
 func (recv *MappedFile) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mappedFileFreeFunction_Set()
 	if err == nil {
@@ -9419,7 +9456,7 @@ func mappedFileGetBytesFunction_Set() error {
 // GetBytes is a representation of the C type g_mapped_file_get_bytes.
 func (recv *MappedFile) GetBytes() *Bytes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9428,8 +9465,7 @@ func (recv *MappedFile) GetBytes() *Bytes {
 		ret = mappedFileGetBytesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Bytes{}
-	retGo.Native = ret.Pointer()
+	retGo := BytesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9452,7 +9488,7 @@ func mappedFileGetContentsFunction_Set() error {
 // GetContents is a representation of the C type g_mapped_file_get_contents.
 func (recv *MappedFile) GetContents() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9484,7 +9520,7 @@ func mappedFileGetLengthFunction_Set() error {
 // GetLength is a representation of the C type g_mapped_file_get_length.
 func (recv *MappedFile) GetLength() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9516,7 +9552,7 @@ func mappedFileRefFunction_Set() error {
 // Ref is a representation of the C type g_mapped_file_ref.
 func (recv *MappedFile) Ref() *MappedFile {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9525,8 +9561,7 @@ func (recv *MappedFile) Ref() *MappedFile {
 		ret = mappedFileRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MappedFile{}
-	retGo.Native = ret.Pointer()
+	retGo := MappedFileNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9549,7 +9584,7 @@ func mappedFileUnrefFunction_Set() error {
 // Unref is a representation of the C type g_mapped_file_unref.
 func (recv *MappedFile) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := mappedFileUnrefFunction_Set()
 	if err == nil {
@@ -9571,7 +9606,11 @@ func markupParseContextStruct_Set() error {
 }
 
 type MarkupParseContext struct {
-	Native uintptr
+	native uintptr
+}
+
+func MarkupParseContextNewFromNative(native uintptr) *MarkupParseContext {
+	return &MarkupParseContext{native: native}
 }
 
 // UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'flags' of type 'MarkupParseFlags' not supported
@@ -9594,7 +9633,7 @@ func markupParseContextEndParseFunction_Set() error {
 // EndParse is a representation of the C type g_markup_parse_context_end_parse.
 func (recv *MarkupParseContext) EndParse() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9626,7 +9665,7 @@ func markupParseContextFreeFunction_Set() error {
 // Free is a representation of the C type g_markup_parse_context_free.
 func (recv *MarkupParseContext) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := markupParseContextFreeFunction_Set()
 	if err == nil {
@@ -9654,7 +9693,7 @@ func markupParseContextGetElementFunction_Set() error {
 // GetElement is a representation of the C type g_markup_parse_context_get_element.
 func (recv *MarkupParseContext) GetElement() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9688,7 +9727,7 @@ func markupParseContextGetPositionFunction_Set() error {
 // GetPosition is a representation of the C type g_markup_parse_context_get_position.
 func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(lineNumber)
 	inArgs[2].SetInt32(charNumber)
 
@@ -9720,7 +9759,7 @@ func markupParseContextParseFunction_Set() error {
 // Parse is a representation of the C type g_markup_parse_context_parse.
 func (recv *MarkupParseContext) Parse(text string, textLen int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(textLen)
 
@@ -9758,7 +9797,7 @@ func markupParseContextRefFunction_Set() error {
 // Ref is a representation of the C type g_markup_parse_context_ref.
 func (recv *MarkupParseContext) Ref() *MarkupParseContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -9767,8 +9806,7 @@ func (recv *MarkupParseContext) Ref() *MarkupParseContext {
 		ret = markupParseContextRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MarkupParseContext{}
-	retGo.Native = ret.Pointer()
+	retGo := MarkupParseContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -9791,7 +9829,7 @@ func markupParseContextUnrefFunction_Set() error {
 // Unref is a representation of the C type g_markup_parse_context_unref.
 func (recv *MarkupParseContext) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := markupParseContextUnrefFunction_Set()
 	if err == nil {
@@ -9813,7 +9851,11 @@ func markupParserStruct_Set() error {
 }
 
 type MarkupParser struct {
-	Native uintptr
+	native uintptr
+}
+
+func MarkupParserNewFromNative(native uintptr) *MarkupParser {
+	return &MarkupParser{native: native}
 }
 
 // UNSUPPORTED : C value 'start_element' : for field getter : missing Type
@@ -9843,13 +9885,12 @@ func MarkupParserStruct() *MarkupParser {
 		return nil
 	}
 
-	structGo := &MarkupParser{}
-	structGo.Native = markupParserStruct.Alloc()
+	structGo := MarkupParserNewFromNative(markupParserStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeMarkupParser)
 	return structGo
 }
 func finalizeMarkupParser(obj *MarkupParser) {
-	markupParserStruct.Free(obj.Native)
+	markupParserStruct.Free(obj.native)
 }
 
 var matchInfoStruct *gi.Struct
@@ -9864,7 +9905,11 @@ func matchInfoStruct_Set() error {
 }
 
 type MatchInfo struct {
-	Native uintptr
+	native uintptr
+}
+
+func MatchInfoNewFromNative(native uintptr) *MatchInfo {
+	return &MatchInfo{native: native}
 }
 
 var matchInfoExpandReferencesFunction *gi.Function
@@ -9885,7 +9930,7 @@ func matchInfoExpandReferencesFunction_Set() error {
 // ExpandReferences is a representation of the C type g_match_info_expand_references.
 func (recv *MatchInfo) ExpandReferences(stringToExpand string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stringToExpand)
 
 	var ret gi.Argument
@@ -9918,7 +9963,7 @@ func matchInfoFetchFunction_Set() error {
 // Fetch is a representation of the C type g_match_info_fetch.
 func (recv *MatchInfo) Fetch(matchNum int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(matchNum)
 
 	var ret gi.Argument
@@ -9951,7 +9996,7 @@ func matchInfoFetchAllFunction_Set() error {
 // FetchAll is a representation of the C type g_match_info_fetch_all.
 func (recv *MatchInfo) FetchAll() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := matchInfoFetchAllFunction_Set()
 	if err == nil {
@@ -9979,7 +10024,7 @@ func matchInfoFetchNamedFunction_Set() error {
 // FetchNamed is a representation of the C type g_match_info_fetch_named.
 func (recv *MatchInfo) FetchNamed(name string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -10012,7 +10057,7 @@ func matchInfoFetchNamedPosFunction_Set() error {
 // FetchNamedPos is a representation of the C type g_match_info_fetch_named_pos.
 func (recv *MatchInfo) FetchNamedPos(name string) (bool, int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var outArgs [2]gi.Argument
@@ -10048,7 +10093,7 @@ func matchInfoFetchPosFunction_Set() error {
 // FetchPos is a representation of the C type g_match_info_fetch_pos.
 func (recv *MatchInfo) FetchPos(matchNum int32) (bool, int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(matchNum)
 
 	var outArgs [2]gi.Argument
@@ -10084,7 +10129,7 @@ func matchInfoFreeFunction_Set() error {
 // Free is a representation of the C type g_match_info_free.
 func (recv *MatchInfo) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := matchInfoFreeFunction_Set()
 	if err == nil {
@@ -10112,7 +10157,7 @@ func matchInfoGetMatchCountFunction_Set() error {
 // GetMatchCount is a representation of the C type g_match_info_get_match_count.
 func (recv *MatchInfo) GetMatchCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10144,7 +10189,7 @@ func matchInfoGetRegexFunction_Set() error {
 // GetRegex is a representation of the C type g_match_info_get_regex.
 func (recv *MatchInfo) GetRegex() *Regex {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10153,8 +10198,7 @@ func (recv *MatchInfo) GetRegex() *Regex {
 		ret = matchInfoGetRegexFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Regex{}
-	retGo.Native = ret.Pointer()
+	retGo := RegexNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10177,7 +10221,7 @@ func matchInfoGetStringFunction_Set() error {
 // GetString is a representation of the C type g_match_info_get_string.
 func (recv *MatchInfo) GetString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10209,7 +10253,7 @@ func matchInfoIsPartialMatchFunction_Set() error {
 // IsPartialMatch is a representation of the C type g_match_info_is_partial_match.
 func (recv *MatchInfo) IsPartialMatch() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10241,7 +10285,7 @@ func matchInfoMatchesFunction_Set() error {
 // Matches is a representation of the C type g_match_info_matches.
 func (recv *MatchInfo) Matches() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10273,7 +10317,7 @@ func matchInfoNextFunction_Set() error {
 // Next is a representation of the C type g_match_info_next.
 func (recv *MatchInfo) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10305,7 +10349,7 @@ func matchInfoRefFunction_Set() error {
 // Ref is a representation of the C type g_match_info_ref.
 func (recv *MatchInfo) Ref() *MatchInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10314,8 +10358,7 @@ func (recv *MatchInfo) Ref() *MatchInfo {
 		ret = matchInfoRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MatchInfo{}
-	retGo.Native = ret.Pointer()
+	retGo := MatchInfoNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10338,7 +10381,7 @@ func matchInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type g_match_info_unref.
 func (recv *MatchInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := matchInfoUnrefFunction_Set()
 	if err == nil {
@@ -10355,13 +10398,12 @@ func MatchInfoStruct() *MatchInfo {
 		return nil
 	}
 
-	structGo := &MatchInfo{}
-	structGo.Native = matchInfoStruct.Alloc()
+	structGo := MatchInfoNewFromNative(matchInfoStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeMatchInfo)
 	return structGo
 }
 func finalizeMatchInfo(obj *MatchInfo) {
-	matchInfoStruct.Free(obj.Native)
+	matchInfoStruct.Free(obj.native)
 }
 
 var memVTableStruct *gi.Struct
@@ -10376,7 +10418,11 @@ func memVTableStruct_Set() error {
 }
 
 type MemVTable struct {
-	Native uintptr
+	native uintptr
+}
+
+func MemVTableNewFromNative(native uintptr) *MemVTable {
+	return &MemVTable{native: native}
 }
 
 // UNSUPPORTED : C value 'malloc' : for field getter : missing Type
@@ -10410,13 +10456,12 @@ func MemVTableStruct() *MemVTable {
 		return nil
 	}
 
-	structGo := &MemVTable{}
-	structGo.Native = memVTableStruct.Alloc()
+	structGo := MemVTableNewFromNative(memVTableStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeMemVTable)
 	return structGo
 }
 func finalizeMemVTable(obj *MemVTable) {
-	memVTableStruct.Free(obj.Native)
+	memVTableStruct.Free(obj.native)
 }
 
 var nodeStruct *gi.Struct
@@ -10431,7 +10476,11 @@ func nodeStruct_Set() error {
 }
 
 type Node struct {
-	Native uintptr
+	native uintptr
+}
+
+func NodeNewFromNative(native uintptr) *Node {
+	return &Node{native: native}
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -10440,62 +10489,58 @@ type Node struct {
 
 // FieldNext returns the C field 'next'.
 func (recv *Node) FieldNext() *Node {
-	argValue := gi.StructFieldGet(nodeStruct, recv.Native, "next")
-	value := &Node{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(nodeStruct, recv.native, "next")
+	value := NodeNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldNext sets the value of the C field 'next'.
 func (recv *Node) SetFieldNext(value *Node) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(nodeStruct, recv.Native, "next", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(nodeStruct, recv.native, "next", argValue)
 }
 
 // FieldPrev returns the C field 'prev'.
 func (recv *Node) FieldPrev() *Node {
-	argValue := gi.StructFieldGet(nodeStruct, recv.Native, "prev")
-	value := &Node{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(nodeStruct, recv.native, "prev")
+	value := NodeNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldPrev sets the value of the C field 'prev'.
 func (recv *Node) SetFieldPrev(value *Node) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(nodeStruct, recv.Native, "prev", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(nodeStruct, recv.native, "prev", argValue)
 }
 
 // FieldParent returns the C field 'parent'.
 func (recv *Node) FieldParent() *Node {
-	argValue := gi.StructFieldGet(nodeStruct, recv.Native, "parent")
-	value := &Node{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(nodeStruct, recv.native, "parent")
+	value := NodeNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Node) SetFieldParent(value *Node) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(nodeStruct, recv.Native, "parent", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(nodeStruct, recv.native, "parent", argValue)
 }
 
 // FieldChildren returns the C field 'children'.
 func (recv *Node) FieldChildren() *Node {
-	argValue := gi.StructFieldGet(nodeStruct, recv.Native, "children")
-	value := &Node{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(nodeStruct, recv.native, "children")
+	value := NodeNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldChildren sets the value of the C field 'children'.
 func (recv *Node) SetFieldChildren(value *Node) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(nodeStruct, recv.Native, "children", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(nodeStruct, recv.native, "children", argValue)
 }
 
 // UNSUPPORTED : C value 'g_node_child_index' : parameter 'data' of type 'gpointer' not supported
@@ -10518,8 +10563,8 @@ func nodeChildPositionFunction_Set() error {
 // ChildPosition is a representation of the C type g_node_child_position.
 func (recv *Node) ChildPosition(child *Node) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(child.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(child.native)
 
 	var ret gi.Argument
 
@@ -10553,7 +10598,7 @@ func nodeCopyFunction_Set() error {
 // Copy is a representation of the C type g_node_copy.
 func (recv *Node) Copy() *Node {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10562,8 +10607,7 @@ func (recv *Node) Copy() *Node {
 		ret = nodeCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10588,7 +10632,7 @@ func nodeDepthFunction_Set() error {
 // Depth is a representation of the C type g_node_depth.
 func (recv *Node) Depth() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10620,7 +10664,7 @@ func nodeDestroyFunction_Set() error {
 // Destroy is a representation of the C type g_node_destroy.
 func (recv *Node) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := nodeDestroyFunction_Set()
 	if err == nil {
@@ -10652,7 +10696,7 @@ func nodeFirstSiblingFunction_Set() error {
 // FirstSibling is a representation of the C type g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10661,8 +10705,7 @@ func (recv *Node) FirstSibling() *Node {
 		ret = nodeFirstSiblingFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10685,7 +10728,7 @@ func nodeGetRootFunction_Set() error {
 // GetRoot is a representation of the C type g_node_get_root.
 func (recv *Node) GetRoot() *Node {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10694,8 +10737,7 @@ func (recv *Node) GetRoot() *Node {
 		ret = nodeGetRootFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10718,9 +10760,9 @@ func nodeInsertFunction_Set() error {
 // Insert is a representation of the C type g_node_insert.
 func (recv *Node) Insert(position int32, node *Node) *Node {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(position)
-	inArgs[2].SetPointer(node.Native)
+	inArgs[2].SetPointer(node.native)
 
 	var ret gi.Argument
 
@@ -10729,8 +10771,7 @@ func (recv *Node) Insert(position int32, node *Node) *Node {
 		ret = nodeInsertFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10753,9 +10794,9 @@ func nodeInsertAfterFunction_Set() error {
 // InsertAfter is a representation of the C type g_node_insert_after.
 func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(sibling.Native)
-	inArgs[2].SetPointer(node.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
+	inArgs[2].SetPointer(node.native)
 
 	var ret gi.Argument
 
@@ -10764,8 +10805,7 @@ func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 		ret = nodeInsertAfterFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10788,9 +10828,9 @@ func nodeInsertBeforeFunction_Set() error {
 // InsertBefore is a representation of the C type g_node_insert_before.
 func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(sibling.Native)
-	inArgs[2].SetPointer(node.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
+	inArgs[2].SetPointer(node.native)
 
 	var ret gi.Argument
 
@@ -10799,8 +10839,7 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 		ret = nodeInsertBeforeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10823,8 +10862,8 @@ func nodeIsAncestorFunction_Set() error {
 // IsAncestor is a representation of the C type g_node_is_ancestor.
 func (recv *Node) IsAncestor(descendant *Node) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(descendant.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(descendant.native)
 
 	var ret gi.Argument
 
@@ -10856,7 +10895,7 @@ func nodeLastChildFunction_Set() error {
 // LastChild is a representation of the C type g_node_last_child.
 func (recv *Node) LastChild() *Node {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10865,8 +10904,7 @@ func (recv *Node) LastChild() *Node {
 		ret = nodeLastChildFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10889,7 +10927,7 @@ func nodeLastSiblingFunction_Set() error {
 // LastSibling is a representation of the C type g_node_last_sibling.
 func (recv *Node) LastSibling() *Node {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10898,8 +10936,7 @@ func (recv *Node) LastSibling() *Node {
 		ret = nodeLastSiblingFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -10922,7 +10959,7 @@ func nodeMaxHeightFunction_Set() error {
 // MaxHeight is a representation of the C type g_node_max_height.
 func (recv *Node) MaxHeight() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10954,7 +10991,7 @@ func nodeNChildrenFunction_Set() error {
 // NChildren is a representation of the C type g_node_n_children.
 func (recv *Node) NChildren() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -10988,7 +11025,7 @@ func nodeNthChildFunction_Set() error {
 // NthChild is a representation of the C type g_node_nth_child.
 func (recv *Node) NthChild(n uint32) *Node {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(n)
 
 	var ret gi.Argument
@@ -10998,8 +11035,7 @@ func (recv *Node) NthChild(n uint32) *Node {
 		ret = nodeNthChildFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11022,8 +11058,8 @@ func nodePrependFunction_Set() error {
 // Prepend is a representation of the C type g_node_prepend.
 func (recv *Node) Prepend(node *Node) *Node {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(node.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(node.native)
 
 	var ret gi.Argument
 
@@ -11032,8 +11068,7 @@ func (recv *Node) Prepend(node *Node) *Node {
 		ret = nodePrependFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Node{}
-	retGo.Native = ret.Pointer()
+	retGo := NodeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11056,7 +11091,7 @@ func nodeReverseChildrenFunction_Set() error {
 // ReverseChildren is a representation of the C type g_node_reverse_children.
 func (recv *Node) ReverseChildren() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := nodeReverseChildrenFunction_Set()
 	if err == nil {
@@ -11086,7 +11121,7 @@ func nodeUnlinkFunction_Set() error {
 // Unlink is a representation of the C type g_node_unlink.
 func (recv *Node) Unlink() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := nodeUnlinkFunction_Set()
 	if err == nil {
@@ -11103,13 +11138,12 @@ func NodeStruct() *Node {
 		return nil
 	}
 
-	structGo := &Node{}
-	structGo.Native = nodeStruct.Alloc()
+	structGo := NodeNewFromNative(nodeStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeNode)
 	return structGo
 }
 func finalizeNode(obj *Node) {
-	nodeStruct.Free(obj.Native)
+	nodeStruct.Free(obj.native)
 }
 
 var onceStruct *gi.Struct
@@ -11124,12 +11158,16 @@ func onceStruct_Set() error {
 }
 
 type Once struct {
-	Native uintptr
+	native uintptr
+}
+
+func OnceNewFromNative(native uintptr) *Once {
+	return &Once{native: native}
 }
 
 // FieldStatus returns the C field 'status'.
 func (recv *Once) FieldStatus() OnceStatus {
-	argValue := gi.StructFieldGet(onceStruct, recv.Native, "status")
+	argValue := gi.StructFieldGet(onceStruct, recv.native, "status")
 	value := OnceStatus(argValue.Int32())
 	return value
 }
@@ -11138,7 +11176,7 @@ func (recv *Once) FieldStatus() OnceStatus {
 func (recv *Once) SetFieldStatus(value OnceStatus) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(onceStruct, recv.Native, "status", argValue)
+	gi.StructFieldSet(onceStruct, recv.native, "status", argValue)
 }
 
 // UNSUPPORTED : C value 'retval' : for field getter : no Go type for 'gpointer'
@@ -11154,13 +11192,12 @@ func OnceStruct() *Once {
 		return nil
 	}
 
-	structGo := &Once{}
-	structGo.Native = onceStruct.Alloc()
+	structGo := OnceNewFromNative(onceStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOnce)
 	return structGo
 }
 func finalizeOnce(obj *Once) {
-	onceStruct.Free(obj.Native)
+	onceStruct.Free(obj.native)
 }
 
 var optionContextStruct *gi.Struct
@@ -11175,7 +11212,11 @@ func optionContextStruct_Set() error {
 }
 
 type OptionContext struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionContextNewFromNative(native uintptr) *OptionContext {
+	return &OptionContext{native: native}
 }
 
 var optionContextAddGroupFunction *gi.Function
@@ -11196,8 +11237,8 @@ func optionContextAddGroupFunction_Set() error {
 // AddGroup is a representation of the C type g_option_context_add_group.
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
 
 	err := optionContextAddGroupFunction_Set()
 	if err == nil {
@@ -11225,8 +11266,8 @@ func optionContextAddMainEntriesFunction_Set() error {
 // AddMainEntries is a representation of the C type g_option_context_add_main_entries.
 func (recv *OptionContext) AddMainEntries(entries *OptionEntry, translationDomain string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(entries.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(entries.native)
 	inArgs[2].SetString(translationDomain)
 
 	err := optionContextAddMainEntriesFunction_Set()
@@ -11255,7 +11296,7 @@ func optionContextFreeFunction_Set() error {
 // Free is a representation of the C type g_option_context_free.
 func (recv *OptionContext) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := optionContextFreeFunction_Set()
 	if err == nil {
@@ -11283,7 +11324,7 @@ func optionContextGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type g_option_context_get_description.
 func (recv *OptionContext) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11315,9 +11356,9 @@ func optionContextGetHelpFunction_Set() error {
 // GetHelp is a representation of the C type g_option_context_get_help.
 func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(mainHelp)
-	inArgs[2].SetPointer(group.Native)
+	inArgs[2].SetPointer(group.native)
 
 	var ret gi.Argument
 
@@ -11349,7 +11390,7 @@ func optionContextGetHelpEnabledFunction_Set() error {
 // GetHelpEnabled is a representation of the C type g_option_context_get_help_enabled.
 func (recv *OptionContext) GetHelpEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11381,7 +11422,7 @@ func optionContextGetIgnoreUnknownOptionsFunction_Set() error {
 // GetIgnoreUnknownOptions is a representation of the C type g_option_context_get_ignore_unknown_options.
 func (recv *OptionContext) GetIgnoreUnknownOptions() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11413,7 +11454,7 @@ func optionContextGetMainGroupFunction_Set() error {
 // GetMainGroup is a representation of the C type g_option_context_get_main_group.
 func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11422,8 +11463,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 		ret = optionContextGetMainGroupFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OptionGroup{}
-	retGo.Native = ret.Pointer()
+	retGo := OptionGroupNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11446,7 +11486,7 @@ func optionContextGetStrictPosixFunction_Set() error {
 // GetStrictPosix is a representation of the C type g_option_context_get_strict_posix.
 func (recv *OptionContext) GetStrictPosix() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11478,7 +11518,7 @@ func optionContextGetSummaryFunction_Set() error {
 // GetSummary is a representation of the C type g_option_context_get_summary.
 func (recv *OptionContext) GetSummary() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11514,7 +11554,7 @@ func optionContextSetDescriptionFunction_Set() error {
 // SetDescription is a representation of the C type g_option_context_set_description.
 func (recv *OptionContext) SetDescription(description string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(description)
 
 	err := optionContextSetDescriptionFunction_Set()
@@ -11543,7 +11583,7 @@ func optionContextSetHelpEnabledFunction_Set() error {
 // SetHelpEnabled is a representation of the C type g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(helpEnabled)
 
 	err := optionContextSetHelpEnabledFunction_Set()
@@ -11572,7 +11612,7 @@ func optionContextSetIgnoreUnknownOptionsFunction_Set() error {
 // SetIgnoreUnknownOptions is a representation of the C type g_option_context_set_ignore_unknown_options.
 func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(ignoreUnknown)
 
 	err := optionContextSetIgnoreUnknownOptionsFunction_Set()
@@ -11601,8 +11641,8 @@ func optionContextSetMainGroupFunction_Set() error {
 // SetMainGroup is a representation of the C type g_option_context_set_main_group.
 func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(group.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
 
 	err := optionContextSetMainGroupFunction_Set()
 	if err == nil {
@@ -11630,7 +11670,7 @@ func optionContextSetStrictPosixFunction_Set() error {
 // SetStrictPosix is a representation of the C type g_option_context_set_strict_posix.
 func (recv *OptionContext) SetStrictPosix(strictPosix bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(strictPosix)
 
 	err := optionContextSetStrictPosixFunction_Set()
@@ -11659,7 +11699,7 @@ func optionContextSetSummaryFunction_Set() error {
 // SetSummary is a representation of the C type g_option_context_set_summary.
 func (recv *OptionContext) SetSummary(summary string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(summary)
 
 	err := optionContextSetSummaryFunction_Set()
@@ -11690,7 +11730,7 @@ func optionContextSetTranslationDomainFunction_Set() error {
 // SetTranslationDomain is a representation of the C type g_option_context_set_translation_domain.
 func (recv *OptionContext) SetTranslationDomain(domain string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
 
 	err := optionContextSetTranslationDomainFunction_Set()
@@ -11708,13 +11748,12 @@ func OptionContextStruct() *OptionContext {
 		return nil
 	}
 
-	structGo := &OptionContext{}
-	structGo.Native = optionContextStruct.Alloc()
+	structGo := OptionContextNewFromNative(optionContextStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOptionContext)
 	return structGo
 }
 func finalizeOptionContext(obj *OptionContext) {
-	optionContextStruct.Free(obj.Native)
+	optionContextStruct.Free(obj.native)
 }
 
 var optionEntryStruct *gi.Struct
@@ -11729,12 +11768,16 @@ func optionEntryStruct_Set() error {
 }
 
 type OptionEntry struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionEntryNewFromNative(native uintptr) *OptionEntry {
+	return &OptionEntry{native: native}
 }
 
 // FieldLongName returns the C field 'long_name'.
 func (recv *OptionEntry) FieldLongName() string {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "long_name")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "long_name")
 	value := argValue.String(false)
 	return value
 }
@@ -11743,12 +11786,12 @@ func (recv *OptionEntry) FieldLongName() string {
 func (recv *OptionEntry) SetFieldLongName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "long_name", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "long_name", argValue)
 }
 
 // FieldShortName returns the C field 'short_name'.
 func (recv *OptionEntry) FieldShortName() int8 {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "short_name")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "short_name")
 	value := argValue.Int8()
 	return value
 }
@@ -11757,12 +11800,12 @@ func (recv *OptionEntry) FieldShortName() int8 {
 func (recv *OptionEntry) SetFieldShortName(value int8) {
 	var argValue gi.Argument
 	argValue.SetInt8(value)
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "short_name", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "short_name", argValue)
 }
 
 // FieldFlags returns the C field 'flags'.
 func (recv *OptionEntry) FieldFlags() int32 {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "flags")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "flags")
 	value := argValue.Int32()
 	return value
 }
@@ -11771,12 +11814,12 @@ func (recv *OptionEntry) FieldFlags() int32 {
 func (recv *OptionEntry) SetFieldFlags(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "flags", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "flags", argValue)
 }
 
 // FieldArg returns the C field 'arg'.
 func (recv *OptionEntry) FieldArg() OptionArg {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "arg")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "arg")
 	value := OptionArg(argValue.Int32())
 	return value
 }
@@ -11785,7 +11828,7 @@ func (recv *OptionEntry) FieldArg() OptionArg {
 func (recv *OptionEntry) SetFieldArg(value OptionArg) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "arg", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "arg", argValue)
 }
 
 // UNSUPPORTED : C value 'arg_data' : for field getter : no Go type for 'gpointer'
@@ -11794,7 +11837,7 @@ func (recv *OptionEntry) SetFieldArg(value OptionArg) {
 
 // FieldDescription returns the C field 'description'.
 func (recv *OptionEntry) FieldDescription() string {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "description")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "description")
 	value := argValue.String(false)
 	return value
 }
@@ -11803,12 +11846,12 @@ func (recv *OptionEntry) FieldDescription() string {
 func (recv *OptionEntry) SetFieldDescription(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "description", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "description", argValue)
 }
 
 // FieldArgDescription returns the C field 'arg_description'.
 func (recv *OptionEntry) FieldArgDescription() string {
-	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native, "arg_description")
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "arg_description")
 	value := argValue.String(false)
 	return value
 }
@@ -11817,7 +11860,7 @@ func (recv *OptionEntry) FieldArgDescription() string {
 func (recv *OptionEntry) SetFieldArgDescription(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(optionEntryStruct, recv.Native, "arg_description", argValue)
+	gi.StructFieldSet(optionEntryStruct, recv.native, "arg_description", argValue)
 }
 
 // OptionEntryStruct creates an uninitialised OptionEntry.
@@ -11827,13 +11870,12 @@ func OptionEntryStruct() *OptionEntry {
 		return nil
 	}
 
-	structGo := &OptionEntry{}
-	structGo.Native = optionEntryStruct.Alloc()
+	structGo := OptionEntryNewFromNative(optionEntryStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeOptionEntry)
 	return structGo
 }
 func finalizeOptionEntry(obj *OptionEntry) {
-	optionEntryStruct.Free(obj.Native)
+	optionEntryStruct.Free(obj.native)
 }
 
 var optionGroupStruct *gi.Struct
@@ -11848,7 +11890,11 @@ func optionGroupStruct_Set() error {
 }
 
 type OptionGroup struct {
-	Native uintptr
+	native uintptr
+}
+
+func OptionGroupNewFromNative(native uintptr) *OptionGroup {
+	return &OptionGroup{native: native}
 }
 
 // UNSUPPORTED : C value 'g_option_group_new' : parameter 'user_data' of type 'gpointer' not supported
@@ -11871,8 +11917,8 @@ func optionGroupAddEntriesFunction_Set() error {
 // AddEntries is a representation of the C type g_option_group_add_entries.
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(entries.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(entries.native)
 
 	err := optionGroupAddEntriesFunction_Set()
 	if err == nil {
@@ -11900,7 +11946,7 @@ func optionGroupFreeFunction_Set() error {
 // Free is a representation of the C type g_option_group_free.
 func (recv *OptionGroup) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := optionGroupFreeFunction_Set()
 	if err == nil {
@@ -11928,7 +11974,7 @@ func optionGroupRefFunction_Set() error {
 // Ref is a representation of the C type g_option_group_ref.
 func (recv *OptionGroup) Ref() *OptionGroup {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -11937,8 +11983,7 @@ func (recv *OptionGroup) Ref() *OptionGroup {
 		ret = optionGroupRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &OptionGroup{}
-	retGo.Native = ret.Pointer()
+	retGo := OptionGroupNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -11967,7 +12012,7 @@ func optionGroupSetTranslationDomainFunction_Set() error {
 // SetTranslationDomain is a representation of the C type g_option_group_set_translation_domain.
 func (recv *OptionGroup) SetTranslationDomain(domain string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
 
 	err := optionGroupSetTranslationDomainFunction_Set()
@@ -11996,7 +12041,7 @@ func optionGroupUnrefFunction_Set() error {
 // Unref is a representation of the C type g_option_group_unref.
 func (recv *OptionGroup) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := optionGroupUnrefFunction_Set()
 	if err == nil {
@@ -12018,7 +12063,11 @@ func patternSpecStruct_Set() error {
 }
 
 type PatternSpec struct {
-	Native uintptr
+	native uintptr
+}
+
+func PatternSpecNewFromNative(native uintptr) *PatternSpec {
+	return &PatternSpec{native: native}
 }
 
 var patternSpecEqualFunction *gi.Function
@@ -12039,8 +12088,8 @@ func patternSpecEqualFunction_Set() error {
 // Equal is a representation of the C type g_pattern_spec_equal.
 func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(pspec2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(pspec2.native)
 
 	var ret gi.Argument
 
@@ -12072,7 +12121,7 @@ func patternSpecFreeFunction_Set() error {
 // Free is a representation of the C type g_pattern_spec_free.
 func (recv *PatternSpec) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := patternSpecFreeFunction_Set()
 	if err == nil {
@@ -12089,13 +12138,12 @@ func PatternSpecStruct() *PatternSpec {
 		return nil
 	}
 
-	structGo := &PatternSpec{}
-	structGo.Native = patternSpecStruct.Alloc()
+	structGo := PatternSpecNewFromNative(patternSpecStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePatternSpec)
 	return structGo
 }
 func finalizePatternSpec(obj *PatternSpec) {
-	patternSpecStruct.Free(obj.Native)
+	patternSpecStruct.Free(obj.native)
 }
 
 var pollFDStruct *gi.Struct
@@ -12110,12 +12158,16 @@ func pollFDStruct_Set() error {
 }
 
 type PollFD struct {
-	Native uintptr
+	native uintptr
+}
+
+func PollFDNewFromNative(native uintptr) *PollFD {
+	return &PollFD{native: native}
 }
 
 // FieldFd returns the C field 'fd'.
 func (recv *PollFD) FieldFd() int32 {
-	argValue := gi.StructFieldGet(pollFDStruct, recv.Native, "fd")
+	argValue := gi.StructFieldGet(pollFDStruct, recv.native, "fd")
 	value := argValue.Int32()
 	return value
 }
@@ -12124,12 +12176,12 @@ func (recv *PollFD) FieldFd() int32 {
 func (recv *PollFD) SetFieldFd(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(pollFDStruct, recv.Native, "fd", argValue)
+	gi.StructFieldSet(pollFDStruct, recv.native, "fd", argValue)
 }
 
 // FieldEvents returns the C field 'events'.
 func (recv *PollFD) FieldEvents() uint16 {
-	argValue := gi.StructFieldGet(pollFDStruct, recv.Native, "events")
+	argValue := gi.StructFieldGet(pollFDStruct, recv.native, "events")
 	value := argValue.Uint16()
 	return value
 }
@@ -12138,12 +12190,12 @@ func (recv *PollFD) FieldEvents() uint16 {
 func (recv *PollFD) SetFieldEvents(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(pollFDStruct, recv.Native, "events", argValue)
+	gi.StructFieldSet(pollFDStruct, recv.native, "events", argValue)
 }
 
 // FieldRevents returns the C field 'revents'.
 func (recv *PollFD) FieldRevents() uint16 {
-	argValue := gi.StructFieldGet(pollFDStruct, recv.Native, "revents")
+	argValue := gi.StructFieldGet(pollFDStruct, recv.native, "revents")
 	value := argValue.Uint16()
 	return value
 }
@@ -12152,7 +12204,7 @@ func (recv *PollFD) FieldRevents() uint16 {
 func (recv *PollFD) SetFieldRevents(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(pollFDStruct, recv.Native, "revents", argValue)
+	gi.StructFieldSet(pollFDStruct, recv.native, "revents", argValue)
 }
 
 // PollFDStruct creates an uninitialised PollFD.
@@ -12162,13 +12214,12 @@ func PollFDStruct() *PollFD {
 		return nil
 	}
 
-	structGo := &PollFD{}
-	structGo.Native = pollFDStruct.Alloc()
+	structGo := PollFDNewFromNative(pollFDStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePollFD)
 	return structGo
 }
 func finalizePollFD(obj *PollFD) {
-	pollFDStruct.Free(obj.Native)
+	pollFDStruct.Free(obj.native)
 }
 
 var privateStruct *gi.Struct
@@ -12183,7 +12234,11 @@ func privateStruct_Set() error {
 }
 
 type Private struct {
-	Native uintptr
+	native uintptr
+}
+
+func PrivateNewFromNative(native uintptr) *Private {
+	return &Private{native: native}
 }
 
 // UNSUPPORTED : C value 'g_private_get' : return type 'gpointer' not supported
@@ -12199,13 +12254,12 @@ func PrivateStruct() *Private {
 		return nil
 	}
 
-	structGo := &Private{}
-	structGo.Native = privateStruct.Alloc()
+	structGo := PrivateNewFromNative(privateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePrivate)
 	return structGo
 }
 func finalizePrivate(obj *Private) {
-	privateStruct.Free(obj.Native)
+	privateStruct.Free(obj.native)
 }
 
 var ptrArrayStruct *gi.Struct
@@ -12220,7 +12274,11 @@ func ptrArrayStruct_Set() error {
 }
 
 type PtrArray struct {
-	Native uintptr
+	native uintptr
+}
+
+func PtrArrayNewFromNative(native uintptr) *PtrArray {
+	return &PtrArray{native: native}
 }
 
 // UNSUPPORTED : C value 'pdata' : for field getter : no Go type for 'gpointer'
@@ -12229,7 +12287,7 @@ type PtrArray struct {
 
 // FieldLen returns the C field 'len'.
 func (recv *PtrArray) FieldLen() uint32 {
-	argValue := gi.StructFieldGet(ptrArrayStruct, recv.Native, "len")
+	argValue := gi.StructFieldGet(ptrArrayStruct, recv.native, "len")
 	value := argValue.Uint32()
 	return value
 }
@@ -12238,7 +12296,7 @@ func (recv *PtrArray) FieldLen() uint32 {
 func (recv *PtrArray) SetFieldLen(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(ptrArrayStruct, recv.Native, "len", argValue)
+	gi.StructFieldSet(ptrArrayStruct, recv.native, "len", argValue)
 }
 
 // PtrArrayStruct creates an uninitialised PtrArray.
@@ -12248,13 +12306,12 @@ func PtrArrayStruct() *PtrArray {
 		return nil
 	}
 
-	structGo := &PtrArray{}
-	structGo.Native = ptrArrayStruct.Alloc()
+	structGo := PtrArrayNewFromNative(ptrArrayStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePtrArray)
 	return structGo
 }
 func finalizePtrArray(obj *PtrArray) {
-	ptrArrayStruct.Free(obj.Native)
+	ptrArrayStruct.Free(obj.native)
 }
 
 var queueStruct *gi.Struct
@@ -12269,7 +12326,11 @@ func queueStruct_Set() error {
 }
 
 type Queue struct {
-	Native uintptr
+	native uintptr
+}
+
+func QueueNewFromNative(native uintptr) *Queue {
+	return &Queue{native: native}
 }
 
 // UNSUPPORTED : C value 'head' : for field getter : no Go type for 'GLib.List'
@@ -12282,7 +12343,7 @@ type Queue struct {
 
 // FieldLength returns the C field 'length'.
 func (recv *Queue) FieldLength() uint32 {
-	argValue := gi.StructFieldGet(queueStruct, recv.Native, "length")
+	argValue := gi.StructFieldGet(queueStruct, recv.native, "length")
 	value := argValue.Uint32()
 	return value
 }
@@ -12291,7 +12352,7 @@ func (recv *Queue) FieldLength() uint32 {
 func (recv *Queue) SetFieldLength(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(queueStruct, recv.Native, "length", argValue)
+	gi.StructFieldSet(queueStruct, recv.native, "length", argValue)
 }
 
 var queueClearFunction *gi.Function
@@ -12312,7 +12373,7 @@ func queueClearFunction_Set() error {
 // Clear is a representation of the C type g_queue_clear.
 func (recv *Queue) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := queueClearFunction_Set()
 	if err == nil {
@@ -12342,7 +12403,7 @@ func queueCopyFunction_Set() error {
 // Copy is a representation of the C type g_queue_copy.
 func (recv *Queue) Copy() *Queue {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12351,8 +12412,7 @@ func (recv *Queue) Copy() *Queue {
 		ret = queueCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Queue{}
-	retGo.Native = ret.Pointer()
+	retGo := QueueNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12383,7 +12443,7 @@ func queueFreeFunction_Set() error {
 // Free is a representation of the C type g_queue_free.
 func (recv *Queue) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := queueFreeFunction_Set()
 	if err == nil {
@@ -12413,7 +12473,7 @@ func queueGetLengthFunction_Set() error {
 // GetLength is a representation of the C type g_queue_get_length.
 func (recv *Queue) GetLength() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12447,7 +12507,7 @@ func queueInitFunction_Set() error {
 // Init is a representation of the C type g_queue_init.
 func (recv *Queue) Init() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := queueInitFunction_Set()
 	if err == nil {
@@ -12485,7 +12545,7 @@ func queueIsEmptyFunction_Set() error {
 // IsEmpty is a representation of the C type g_queue_is_empty.
 func (recv *Queue) IsEmpty() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12559,7 +12619,7 @@ func queueReverseFunction_Set() error {
 // Reverse is a representation of the C type g_queue_reverse.
 func (recv *Queue) Reverse() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := queueReverseFunction_Set()
 	if err == nil {
@@ -12580,13 +12640,12 @@ func QueueStruct() *Queue {
 		return nil
 	}
 
-	structGo := &Queue{}
-	structGo.Native = queueStruct.Alloc()
+	structGo := QueueNewFromNative(queueStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeQueue)
 	return structGo
 }
 func finalizeQueue(obj *Queue) {
-	queueStruct.Free(obj.Native)
+	queueStruct.Free(obj.native)
 }
 
 var rWLockStruct *gi.Struct
@@ -12601,7 +12660,11 @@ func rWLockStruct_Set() error {
 }
 
 type RWLock struct {
-	Native uintptr
+	native uintptr
+}
+
+func RWLockNewFromNative(native uintptr) *RWLock {
+	return &RWLock{native: native}
 }
 
 var rWLockClearFunction *gi.Function
@@ -12622,7 +12685,7 @@ func rWLockClearFunction_Set() error {
 // Clear is a representation of the C type g_rw_lock_clear.
 func (recv *RWLock) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockClearFunction_Set()
 	if err == nil {
@@ -12650,7 +12713,7 @@ func rWLockInitFunction_Set() error {
 // Init is a representation of the C type g_rw_lock_init.
 func (recv *RWLock) Init() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockInitFunction_Set()
 	if err == nil {
@@ -12678,7 +12741,7 @@ func rWLockReaderLockFunction_Set() error {
 // ReaderLock is a representation of the C type g_rw_lock_reader_lock.
 func (recv *RWLock) ReaderLock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockReaderLockFunction_Set()
 	if err == nil {
@@ -12706,7 +12769,7 @@ func rWLockReaderTrylockFunction_Set() error {
 // ReaderTrylock is a representation of the C type g_rw_lock_reader_trylock.
 func (recv *RWLock) ReaderTrylock() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12738,7 +12801,7 @@ func rWLockReaderUnlockFunction_Set() error {
 // ReaderUnlock is a representation of the C type g_rw_lock_reader_unlock.
 func (recv *RWLock) ReaderUnlock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockReaderUnlockFunction_Set()
 	if err == nil {
@@ -12766,7 +12829,7 @@ func rWLockWriterLockFunction_Set() error {
 // WriterLock is a representation of the C type g_rw_lock_writer_lock.
 func (recv *RWLock) WriterLock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockWriterLockFunction_Set()
 	if err == nil {
@@ -12794,7 +12857,7 @@ func rWLockWriterTrylockFunction_Set() error {
 // WriterTrylock is a representation of the C type g_rw_lock_writer_trylock.
 func (recv *RWLock) WriterTrylock() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12826,7 +12889,7 @@ func rWLockWriterUnlockFunction_Set() error {
 // WriterUnlock is a representation of the C type g_rw_lock_writer_unlock.
 func (recv *RWLock) WriterUnlock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := rWLockWriterUnlockFunction_Set()
 	if err == nil {
@@ -12843,13 +12906,12 @@ func RWLockStruct() *RWLock {
 		return nil
 	}
 
-	structGo := &RWLock{}
-	structGo.Native = rWLockStruct.Alloc()
+	structGo := RWLockNewFromNative(rWLockStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeRWLock)
 	return structGo
 }
 func finalizeRWLock(obj *RWLock) {
-	rWLockStruct.Free(obj.Native)
+	rWLockStruct.Free(obj.native)
 }
 
 var randStruct *gi.Struct
@@ -12864,7 +12926,11 @@ func randStruct_Set() error {
 }
 
 type Rand struct {
-	Native uintptr
+	native uintptr
+}
+
+func RandNewFromNative(native uintptr) *Rand {
+	return &Rand{native: native}
 }
 
 var randCopyFunction *gi.Function
@@ -12885,7 +12951,7 @@ func randCopyFunction_Set() error {
 // Copy is a representation of the C type g_rand_copy.
 func (recv *Rand) Copy() *Rand {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12894,8 +12960,7 @@ func (recv *Rand) Copy() *Rand {
 		ret = randCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Rand{}
-	retGo.Native = ret.Pointer()
+	retGo := RandNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -12918,7 +12983,7 @@ func randDoubleFunction_Set() error {
 // Double is a representation of the C type g_rand_double.
 func (recv *Rand) Double() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -12950,7 +13015,7 @@ func randDoubleRangeFunction_Set() error {
 // DoubleRange is a representation of the C type g_rand_double_range.
 func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(begin)
 	inArgs[2].SetFloat64(end)
 
@@ -12984,7 +13049,7 @@ func randFreeFunction_Set() error {
 // Free is a representation of the C type g_rand_free.
 func (recv *Rand) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := randFreeFunction_Set()
 	if err == nil {
@@ -13012,7 +13077,7 @@ func randIntFunction_Set() error {
 // Int is a representation of the C type g_rand_int.
 func (recv *Rand) Int() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13044,7 +13109,7 @@ func randIntRangeFunction_Set() error {
 // IntRange is a representation of the C type g_rand_int_range.
 func (recv *Rand) IntRange(begin int32, end int32) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(begin)
 	inArgs[2].SetInt32(end)
 
@@ -13078,7 +13143,7 @@ func randSetSeedFunction_Set() error {
 // SetSeed is a representation of the C type g_rand_set_seed.
 func (recv *Rand) SetSeed(seed uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(seed)
 
 	err := randSetSeedFunction_Set()
@@ -13107,7 +13172,7 @@ func randSetSeedArrayFunction_Set() error {
 // SetSeedArray is a representation of the C type g_rand_set_seed_array.
 func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(seed)
 	inArgs[2].SetUint32(seedLength)
 
@@ -13126,13 +13191,12 @@ func RandStruct() *Rand {
 		return nil
 	}
 
-	structGo := &Rand{}
-	structGo.Native = randStruct.Alloc()
+	structGo := RandNewFromNative(randStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeRand)
 	return structGo
 }
 func finalizeRand(obj *Rand) {
-	randStruct.Free(obj.Native)
+	randStruct.Free(obj.native)
 }
 
 var recMutexStruct *gi.Struct
@@ -13147,7 +13211,11 @@ func recMutexStruct_Set() error {
 }
 
 type RecMutex struct {
-	Native uintptr
+	native uintptr
+}
+
+func RecMutexNewFromNative(native uintptr) *RecMutex {
+	return &RecMutex{native: native}
 }
 
 var recMutexClearFunction *gi.Function
@@ -13168,7 +13236,7 @@ func recMutexClearFunction_Set() error {
 // Clear is a representation of the C type g_rec_mutex_clear.
 func (recv *RecMutex) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := recMutexClearFunction_Set()
 	if err == nil {
@@ -13196,7 +13264,7 @@ func recMutexInitFunction_Set() error {
 // Init is a representation of the C type g_rec_mutex_init.
 func (recv *RecMutex) Init() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := recMutexInitFunction_Set()
 	if err == nil {
@@ -13224,7 +13292,7 @@ func recMutexLockFunction_Set() error {
 // Lock is a representation of the C type g_rec_mutex_lock.
 func (recv *RecMutex) Lock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := recMutexLockFunction_Set()
 	if err == nil {
@@ -13252,7 +13320,7 @@ func recMutexTrylockFunction_Set() error {
 // Trylock is a representation of the C type g_rec_mutex_trylock.
 func (recv *RecMutex) Trylock() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13284,7 +13352,7 @@ func recMutexUnlockFunction_Set() error {
 // Unlock is a representation of the C type g_rec_mutex_unlock.
 func (recv *RecMutex) Unlock() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := recMutexUnlockFunction_Set()
 	if err == nil {
@@ -13301,13 +13369,12 @@ func RecMutexStruct() *RecMutex {
 		return nil
 	}
 
-	structGo := &RecMutex{}
-	structGo.Native = recMutexStruct.Alloc()
+	structGo := RecMutexNewFromNative(recMutexStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeRecMutex)
 	return structGo
 }
 func finalizeRecMutex(obj *RecMutex) {
-	recMutexStruct.Free(obj.Native)
+	recMutexStruct.Free(obj.native)
 }
 
 var regexStruct *gi.Struct
@@ -13322,7 +13389,11 @@ func regexStruct_Set() error {
 }
 
 type Regex struct {
-	Native uintptr
+	native uintptr
+}
+
+func RegexNewFromNative(native uintptr) *Regex {
+	return &Regex{native: native}
 }
 
 // UNSUPPORTED : C value 'g_regex_new' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
@@ -13345,7 +13416,7 @@ func regexGetCaptureCountFunction_Set() error {
 // GetCaptureCount is a representation of the C type g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13379,7 +13450,7 @@ func regexGetHasCrOrLfFunction_Set() error {
 // GetHasCrOrLf is a representation of the C type g_regex_get_has_cr_or_lf.
 func (recv *Regex) GetHasCrOrLf() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13413,7 +13484,7 @@ func regexGetMaxBackrefFunction_Set() error {
 // GetMaxBackref is a representation of the C type g_regex_get_max_backref.
 func (recv *Regex) GetMaxBackref() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13445,7 +13516,7 @@ func regexGetMaxLookbehindFunction_Set() error {
 // GetMaxLookbehind is a representation of the C type g_regex_get_max_lookbehind.
 func (recv *Regex) GetMaxLookbehind() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13477,7 +13548,7 @@ func regexGetPatternFunction_Set() error {
 // GetPattern is a representation of the C type g_regex_get_pattern.
 func (recv *Regex) GetPattern() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13509,7 +13580,7 @@ func regexGetStringNumberFunction_Set() error {
 // GetStringNumber is a representation of the C type g_regex_get_string_number.
 func (recv *Regex) GetStringNumber(name string) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -13550,7 +13621,7 @@ func regexRefFunction_Set() error {
 // Ref is a representation of the C type g_regex_ref.
 func (recv *Regex) Ref() *Regex {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13559,8 +13630,7 @@ func (recv *Regex) Ref() *Regex {
 		ret = regexRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Regex{}
-	retGo.Native = ret.Pointer()
+	retGo := RegexNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -13593,7 +13663,7 @@ func regexUnrefFunction_Set() error {
 // Unref is a representation of the C type g_regex_unref.
 func (recv *Regex) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := regexUnrefFunction_Set()
 	if err == nil {
@@ -13615,7 +13685,11 @@ func sListStruct_Set() error {
 }
 
 type SList struct {
-	Native uintptr
+	native uintptr
+}
+
+func SListNewFromNative(native uintptr) *SList {
+	return &SList{native: native}
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -13633,13 +13707,12 @@ func SListStruct() *SList {
 		return nil
 	}
 
-	structGo := &SList{}
-	structGo.Native = sListStruct.Alloc()
+	structGo := SListNewFromNative(sListStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSList)
 	return structGo
 }
 func finalizeSList(obj *SList) {
-	sListStruct.Free(obj.Native)
+	sListStruct.Free(obj.native)
 }
 
 var scannerStruct *gi.Struct
@@ -13654,7 +13727,11 @@ func scannerStruct_Set() error {
 }
 
 type Scanner struct {
-	Native uintptr
+	native uintptr
+}
+
+func ScannerNewFromNative(native uintptr) *Scanner {
+	return &Scanner{native: native}
 }
 
 // UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
@@ -13663,7 +13740,7 @@ type Scanner struct {
 
 // FieldMaxParseErrors returns the C field 'max_parse_errors'.
 func (recv *Scanner) FieldMaxParseErrors() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "max_parse_errors")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "max_parse_errors")
 	value := argValue.Uint32()
 	return value
 }
@@ -13672,12 +13749,12 @@ func (recv *Scanner) FieldMaxParseErrors() uint32 {
 func (recv *Scanner) SetFieldMaxParseErrors(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "max_parse_errors", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "max_parse_errors", argValue)
 }
 
 // FieldParseErrors returns the C field 'parse_errors'.
 func (recv *Scanner) FieldParseErrors() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "parse_errors")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "parse_errors")
 	value := argValue.Uint32()
 	return value
 }
@@ -13686,12 +13763,12 @@ func (recv *Scanner) FieldParseErrors() uint32 {
 func (recv *Scanner) SetFieldParseErrors(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "parse_errors", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "parse_errors", argValue)
 }
 
 // FieldInputName returns the C field 'input_name'.
 func (recv *Scanner) FieldInputName() string {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "input_name")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "input_name")
 	value := argValue.String(false)
 	return value
 }
@@ -13700,42 +13777,40 @@ func (recv *Scanner) FieldInputName() string {
 func (recv *Scanner) SetFieldInputName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "input_name", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "input_name", argValue)
 }
 
 // FieldQdata returns the C field 'qdata'.
 func (recv *Scanner) FieldQdata() *Data {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "qdata")
-	value := &Data{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "qdata")
+	value := DataNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldQdata sets the value of the C field 'qdata'.
 func (recv *Scanner) SetFieldQdata(value *Data) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(scannerStruct, recv.Native, "qdata", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(scannerStruct, recv.native, "qdata", argValue)
 }
 
 // FieldConfig returns the C field 'config'.
 func (recv *Scanner) FieldConfig() *ScannerConfig {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "config")
-	value := &ScannerConfig{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "config")
+	value := ScannerConfigNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldConfig sets the value of the C field 'config'.
 func (recv *Scanner) SetFieldConfig(value *ScannerConfig) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(scannerStruct, recv.Native, "config", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(scannerStruct, recv.native, "config", argValue)
 }
 
 // FieldToken returns the C field 'token'.
 func (recv *Scanner) FieldToken() TokenType {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "token")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "token")
 	value := TokenType(argValue.Int32())
 	return value
 }
@@ -13744,7 +13819,7 @@ func (recv *Scanner) FieldToken() TokenType {
 func (recv *Scanner) SetFieldToken(value TokenType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(scannerStruct, recv.Native, "token", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "token", argValue)
 }
 
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'TokenValue'
@@ -13753,7 +13828,7 @@ func (recv *Scanner) SetFieldToken(value TokenType) {
 
 // FieldLine returns the C field 'line'.
 func (recv *Scanner) FieldLine() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "line")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "line")
 	value := argValue.Uint32()
 	return value
 }
@@ -13762,12 +13837,12 @@ func (recv *Scanner) FieldLine() uint32 {
 func (recv *Scanner) SetFieldLine(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "line", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "line", argValue)
 }
 
 // FieldPosition returns the C field 'position'.
 func (recv *Scanner) FieldPosition() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "position")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "position")
 	value := argValue.Uint32()
 	return value
 }
@@ -13776,12 +13851,12 @@ func (recv *Scanner) FieldPosition() uint32 {
 func (recv *Scanner) SetFieldPosition(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "position", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "position", argValue)
 }
 
 // FieldNextToken returns the C field 'next_token'.
 func (recv *Scanner) FieldNextToken() TokenType {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "next_token")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "next_token")
 	value := TokenType(argValue.Int32())
 	return value
 }
@@ -13790,7 +13865,7 @@ func (recv *Scanner) FieldNextToken() TokenType {
 func (recv *Scanner) SetFieldNextToken(value TokenType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(scannerStruct, recv.Native, "next_token", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "next_token", argValue)
 }
 
 // UNSUPPORTED : C value 'next_value' : for field getter : no Go type for 'TokenValue'
@@ -13799,7 +13874,7 @@ func (recv *Scanner) SetFieldNextToken(value TokenType) {
 
 // FieldNextLine returns the C field 'next_line'.
 func (recv *Scanner) FieldNextLine() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "next_line")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "next_line")
 	value := argValue.Uint32()
 	return value
 }
@@ -13808,12 +13883,12 @@ func (recv *Scanner) FieldNextLine() uint32 {
 func (recv *Scanner) SetFieldNextLine(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "next_line", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "next_line", argValue)
 }
 
 // FieldNextPosition returns the C field 'next_position'.
 func (recv *Scanner) FieldNextPosition() uint32 {
-	argValue := gi.StructFieldGet(scannerStruct, recv.Native, "next_position")
+	argValue := gi.StructFieldGet(scannerStruct, recv.native, "next_position")
 	value := argValue.Uint32()
 	return value
 }
@@ -13822,7 +13897,7 @@ func (recv *Scanner) FieldNextPosition() uint32 {
 func (recv *Scanner) SetFieldNextPosition(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerStruct, recv.Native, "next_position", argValue)
+	gi.StructFieldSet(scannerStruct, recv.native, "next_position", argValue)
 }
 
 // UNSUPPORTED : C value 'msg_handler' : for field getter : no Go type for 'ScannerMsgFunc'
@@ -13847,7 +13922,7 @@ func scannerCurLineFunction_Set() error {
 // CurLine is a representation of the C type g_scanner_cur_line.
 func (recv *Scanner) CurLine() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13879,7 +13954,7 @@ func scannerCurPositionFunction_Set() error {
 // CurPosition is a representation of the C type g_scanner_cur_position.
 func (recv *Scanner) CurPosition() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13911,7 +13986,7 @@ func scannerCurTokenFunction_Set() error {
 // CurToken is a representation of the C type g_scanner_cur_token.
 func (recv *Scanner) CurToken() TokenType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -13945,7 +14020,7 @@ func scannerDestroyFunction_Set() error {
 // Destroy is a representation of the C type g_scanner_destroy.
 func (recv *Scanner) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := scannerDestroyFunction_Set()
 	if err == nil {
@@ -13973,7 +14048,7 @@ func scannerEofFunction_Set() error {
 // Eof is a representation of the C type g_scanner_eof.
 func (recv *Scanner) Eof() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14007,7 +14082,7 @@ func scannerGetNextTokenFunction_Set() error {
 // GetNextToken is a representation of the C type g_scanner_get_next_token.
 func (recv *Scanner) GetNextToken() TokenType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14039,7 +14114,7 @@ func scannerInputFileFunction_Set() error {
 // InputFile is a representation of the C type g_scanner_input_file.
 func (recv *Scanner) InputFile(inputFd int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(inputFd)
 
 	err := scannerInputFileFunction_Set()
@@ -14068,7 +14143,7 @@ func scannerInputTextFunction_Set() error {
 // InputText is a representation of the C type g_scanner_input_text.
 func (recv *Scanner) InputText(text string, textLen uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 	inArgs[2].SetUint32(textLen)
 
@@ -14100,7 +14175,7 @@ func scannerPeekNextTokenFunction_Set() error {
 // PeekNextToken is a representation of the C type g_scanner_peek_next_token.
 func (recv *Scanner) PeekNextToken() TokenType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14138,7 +14213,7 @@ func scannerScopeRemoveSymbolFunction_Set() error {
 // ScopeRemoveSymbol is a representation of the C type g_scanner_scope_remove_symbol.
 func (recv *Scanner) ScopeRemoveSymbol(scopeId uint32, symbol string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(scopeId)
 	inArgs[2].SetString(symbol)
 
@@ -14168,7 +14243,7 @@ func scannerSetScopeFunction_Set() error {
 // SetScope is a representation of the C type g_scanner_set_scope.
 func (recv *Scanner) SetScope(scopeId uint32) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(scopeId)
 
 	var ret gi.Argument
@@ -14201,7 +14276,7 @@ func scannerSyncFileOffsetFunction_Set() error {
 // SyncFileOffset is a representation of the C type g_scanner_sync_file_offset.
 func (recv *Scanner) SyncFileOffset() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := scannerSyncFileOffsetFunction_Set()
 	if err == nil {
@@ -14229,7 +14304,7 @@ func scannerUnexpTokenFunction_Set() error {
 // UnexpToken is a representation of the C type g_scanner_unexp_token.
 func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, symbolSpec string, symbolName string, message string, isError int32) {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(expectedToken))
 	inArgs[2].SetString(identifierSpec)
 	inArgs[3].SetString(symbolSpec)
@@ -14254,13 +14329,12 @@ func ScannerStruct() *Scanner {
 		return nil
 	}
 
-	structGo := &Scanner{}
-	structGo.Native = scannerStruct.Alloc()
+	structGo := ScannerNewFromNative(scannerStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeScanner)
 	return structGo
 }
 func finalizeScanner(obj *Scanner) {
-	scannerStruct.Free(obj.Native)
+	scannerStruct.Free(obj.native)
 }
 
 var scannerConfigStruct *gi.Struct
@@ -14275,12 +14349,16 @@ func scannerConfigStruct_Set() error {
 }
 
 type ScannerConfig struct {
-	Native uintptr
+	native uintptr
+}
+
+func ScannerConfigNewFromNative(native uintptr) *ScannerConfig {
+	return &ScannerConfig{native: native}
 }
 
 // FieldCsetSkipCharacters returns the C field 'cset_skip_characters'.
 func (recv *ScannerConfig) FieldCsetSkipCharacters() string {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "cset_skip_characters")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "cset_skip_characters")
 	value := argValue.String(false)
 	return value
 }
@@ -14289,12 +14367,12 @@ func (recv *ScannerConfig) FieldCsetSkipCharacters() string {
 func (recv *ScannerConfig) SetFieldCsetSkipCharacters(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "cset_skip_characters", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "cset_skip_characters", argValue)
 }
 
 // FieldCsetIdentifierFirst returns the C field 'cset_identifier_first'.
 func (recv *ScannerConfig) FieldCsetIdentifierFirst() string {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "cset_identifier_first")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "cset_identifier_first")
 	value := argValue.String(false)
 	return value
 }
@@ -14303,12 +14381,12 @@ func (recv *ScannerConfig) FieldCsetIdentifierFirst() string {
 func (recv *ScannerConfig) SetFieldCsetIdentifierFirst(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "cset_identifier_first", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "cset_identifier_first", argValue)
 }
 
 // FieldCsetIdentifierNth returns the C field 'cset_identifier_nth'.
 func (recv *ScannerConfig) FieldCsetIdentifierNth() string {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "cset_identifier_nth")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "cset_identifier_nth")
 	value := argValue.String(false)
 	return value
 }
@@ -14317,12 +14395,12 @@ func (recv *ScannerConfig) FieldCsetIdentifierNth() string {
 func (recv *ScannerConfig) SetFieldCsetIdentifierNth(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "cset_identifier_nth", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "cset_identifier_nth", argValue)
 }
 
 // FieldCpairCommentSingle returns the C field 'cpair_comment_single'.
 func (recv *ScannerConfig) FieldCpairCommentSingle() string {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "cpair_comment_single")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "cpair_comment_single")
 	value := argValue.String(false)
 	return value
 }
@@ -14331,12 +14409,12 @@ func (recv *ScannerConfig) FieldCpairCommentSingle() string {
 func (recv *ScannerConfig) SetFieldCpairCommentSingle(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "cpair_comment_single", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "cpair_comment_single", argValue)
 }
 
 // FieldCaseSensitive returns the C field 'case_sensitive'.
 func (recv *ScannerConfig) FieldCaseSensitive() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "case_sensitive")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "case_sensitive")
 	value := argValue.Uint32()
 	return value
 }
@@ -14345,12 +14423,12 @@ func (recv *ScannerConfig) FieldCaseSensitive() uint32 {
 func (recv *ScannerConfig) SetFieldCaseSensitive(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "case_sensitive", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "case_sensitive", argValue)
 }
 
 // FieldSkipCommentMulti returns the C field 'skip_comment_multi'.
 func (recv *ScannerConfig) FieldSkipCommentMulti() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "skip_comment_multi")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "skip_comment_multi")
 	value := argValue.Uint32()
 	return value
 }
@@ -14359,12 +14437,12 @@ func (recv *ScannerConfig) FieldSkipCommentMulti() uint32 {
 func (recv *ScannerConfig) SetFieldSkipCommentMulti(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "skip_comment_multi", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "skip_comment_multi", argValue)
 }
 
 // FieldSkipCommentSingle returns the C field 'skip_comment_single'.
 func (recv *ScannerConfig) FieldSkipCommentSingle() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "skip_comment_single")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "skip_comment_single")
 	value := argValue.Uint32()
 	return value
 }
@@ -14373,12 +14451,12 @@ func (recv *ScannerConfig) FieldSkipCommentSingle() uint32 {
 func (recv *ScannerConfig) SetFieldSkipCommentSingle(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "skip_comment_single", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "skip_comment_single", argValue)
 }
 
 // FieldScanCommentMulti returns the C field 'scan_comment_multi'.
 func (recv *ScannerConfig) FieldScanCommentMulti() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_comment_multi")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_comment_multi")
 	value := argValue.Uint32()
 	return value
 }
@@ -14387,12 +14465,12 @@ func (recv *ScannerConfig) FieldScanCommentMulti() uint32 {
 func (recv *ScannerConfig) SetFieldScanCommentMulti(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_comment_multi", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_comment_multi", argValue)
 }
 
 // FieldScanIdentifier returns the C field 'scan_identifier'.
 func (recv *ScannerConfig) FieldScanIdentifier() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_identifier")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_identifier")
 	value := argValue.Uint32()
 	return value
 }
@@ -14401,12 +14479,12 @@ func (recv *ScannerConfig) FieldScanIdentifier() uint32 {
 func (recv *ScannerConfig) SetFieldScanIdentifier(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_identifier", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_identifier", argValue)
 }
 
 // FieldScanIdentifier1char returns the C field 'scan_identifier_1char'.
 func (recv *ScannerConfig) FieldScanIdentifier1char() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_identifier_1char")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_identifier_1char")
 	value := argValue.Uint32()
 	return value
 }
@@ -14415,12 +14493,12 @@ func (recv *ScannerConfig) FieldScanIdentifier1char() uint32 {
 func (recv *ScannerConfig) SetFieldScanIdentifier1char(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_identifier_1char", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_identifier_1char", argValue)
 }
 
 // FieldScanIdentifierNULL returns the C field 'scan_identifier_NULL'.
 func (recv *ScannerConfig) FieldScanIdentifierNULL() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_identifier_NULL")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_identifier_NULL")
 	value := argValue.Uint32()
 	return value
 }
@@ -14429,12 +14507,12 @@ func (recv *ScannerConfig) FieldScanIdentifierNULL() uint32 {
 func (recv *ScannerConfig) SetFieldScanIdentifierNULL(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_identifier_NULL", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_identifier_NULL", argValue)
 }
 
 // FieldScanSymbols returns the C field 'scan_symbols'.
 func (recv *ScannerConfig) FieldScanSymbols() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_symbols")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_symbols")
 	value := argValue.Uint32()
 	return value
 }
@@ -14443,12 +14521,12 @@ func (recv *ScannerConfig) FieldScanSymbols() uint32 {
 func (recv *ScannerConfig) SetFieldScanSymbols(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_symbols", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_symbols", argValue)
 }
 
 // FieldScanBinary returns the C field 'scan_binary'.
 func (recv *ScannerConfig) FieldScanBinary() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_binary")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_binary")
 	value := argValue.Uint32()
 	return value
 }
@@ -14457,12 +14535,12 @@ func (recv *ScannerConfig) FieldScanBinary() uint32 {
 func (recv *ScannerConfig) SetFieldScanBinary(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_binary", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_binary", argValue)
 }
 
 // FieldScanOctal returns the C field 'scan_octal'.
 func (recv *ScannerConfig) FieldScanOctal() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_octal")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_octal")
 	value := argValue.Uint32()
 	return value
 }
@@ -14471,12 +14549,12 @@ func (recv *ScannerConfig) FieldScanOctal() uint32 {
 func (recv *ScannerConfig) SetFieldScanOctal(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_octal", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_octal", argValue)
 }
 
 // FieldScanFloat returns the C field 'scan_float'.
 func (recv *ScannerConfig) FieldScanFloat() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_float")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_float")
 	value := argValue.Uint32()
 	return value
 }
@@ -14485,12 +14563,12 @@ func (recv *ScannerConfig) FieldScanFloat() uint32 {
 func (recv *ScannerConfig) SetFieldScanFloat(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_float", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_float", argValue)
 }
 
 // FieldScanHex returns the C field 'scan_hex'.
 func (recv *ScannerConfig) FieldScanHex() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_hex")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_hex")
 	value := argValue.Uint32()
 	return value
 }
@@ -14499,12 +14577,12 @@ func (recv *ScannerConfig) FieldScanHex() uint32 {
 func (recv *ScannerConfig) SetFieldScanHex(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_hex", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_hex", argValue)
 }
 
 // FieldScanHexDollar returns the C field 'scan_hex_dollar'.
 func (recv *ScannerConfig) FieldScanHexDollar() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_hex_dollar")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_hex_dollar")
 	value := argValue.Uint32()
 	return value
 }
@@ -14513,12 +14591,12 @@ func (recv *ScannerConfig) FieldScanHexDollar() uint32 {
 func (recv *ScannerConfig) SetFieldScanHexDollar(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_hex_dollar", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_hex_dollar", argValue)
 }
 
 // FieldScanStringSq returns the C field 'scan_string_sq'.
 func (recv *ScannerConfig) FieldScanStringSq() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_string_sq")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_string_sq")
 	value := argValue.Uint32()
 	return value
 }
@@ -14527,12 +14605,12 @@ func (recv *ScannerConfig) FieldScanStringSq() uint32 {
 func (recv *ScannerConfig) SetFieldScanStringSq(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_string_sq", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_string_sq", argValue)
 }
 
 // FieldScanStringDq returns the C field 'scan_string_dq'.
 func (recv *ScannerConfig) FieldScanStringDq() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scan_string_dq")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scan_string_dq")
 	value := argValue.Uint32()
 	return value
 }
@@ -14541,12 +14619,12 @@ func (recv *ScannerConfig) FieldScanStringDq() uint32 {
 func (recv *ScannerConfig) SetFieldScanStringDq(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scan_string_dq", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scan_string_dq", argValue)
 }
 
 // FieldNumbers2Int returns the C field 'numbers_2_int'.
 func (recv *ScannerConfig) FieldNumbers2Int() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "numbers_2_int")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "numbers_2_int")
 	value := argValue.Uint32()
 	return value
 }
@@ -14555,12 +14633,12 @@ func (recv *ScannerConfig) FieldNumbers2Int() uint32 {
 func (recv *ScannerConfig) SetFieldNumbers2Int(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "numbers_2_int", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "numbers_2_int", argValue)
 }
 
 // FieldInt2Float returns the C field 'int_2_float'.
 func (recv *ScannerConfig) FieldInt2Float() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "int_2_float")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "int_2_float")
 	value := argValue.Uint32()
 	return value
 }
@@ -14569,12 +14647,12 @@ func (recv *ScannerConfig) FieldInt2Float() uint32 {
 func (recv *ScannerConfig) SetFieldInt2Float(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "int_2_float", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "int_2_float", argValue)
 }
 
 // FieldIdentifier2String returns the C field 'identifier_2_string'.
 func (recv *ScannerConfig) FieldIdentifier2String() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "identifier_2_string")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "identifier_2_string")
 	value := argValue.Uint32()
 	return value
 }
@@ -14583,12 +14661,12 @@ func (recv *ScannerConfig) FieldIdentifier2String() uint32 {
 func (recv *ScannerConfig) SetFieldIdentifier2String(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "identifier_2_string", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "identifier_2_string", argValue)
 }
 
 // FieldChar2Token returns the C field 'char_2_token'.
 func (recv *ScannerConfig) FieldChar2Token() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "char_2_token")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "char_2_token")
 	value := argValue.Uint32()
 	return value
 }
@@ -14597,12 +14675,12 @@ func (recv *ScannerConfig) FieldChar2Token() uint32 {
 func (recv *ScannerConfig) SetFieldChar2Token(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "char_2_token", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "char_2_token", argValue)
 }
 
 // FieldSymbol2Token returns the C field 'symbol_2_token'.
 func (recv *ScannerConfig) FieldSymbol2Token() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "symbol_2_token")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "symbol_2_token")
 	value := argValue.Uint32()
 	return value
 }
@@ -14611,12 +14689,12 @@ func (recv *ScannerConfig) FieldSymbol2Token() uint32 {
 func (recv *ScannerConfig) SetFieldSymbol2Token(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "symbol_2_token", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "symbol_2_token", argValue)
 }
 
 // FieldScope0Fallback returns the C field 'scope_0_fallback'.
 func (recv *ScannerConfig) FieldScope0Fallback() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "scope_0_fallback")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "scope_0_fallback")
 	value := argValue.Uint32()
 	return value
 }
@@ -14625,12 +14703,12 @@ func (recv *ScannerConfig) FieldScope0Fallback() uint32 {
 func (recv *ScannerConfig) SetFieldScope0Fallback(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "scope_0_fallback", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "scope_0_fallback", argValue)
 }
 
 // FieldStoreInt64 returns the C field 'store_int64'.
 func (recv *ScannerConfig) FieldStoreInt64() uint32 {
-	argValue := gi.StructFieldGet(scannerConfigStruct, recv.Native, "store_int64")
+	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "store_int64")
 	value := argValue.Uint32()
 	return value
 }
@@ -14639,7 +14717,7 @@ func (recv *ScannerConfig) FieldStoreInt64() uint32 {
 func (recv *ScannerConfig) SetFieldStoreInt64(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(scannerConfigStruct, recv.Native, "store_int64", argValue)
+	gi.StructFieldSet(scannerConfigStruct, recv.native, "store_int64", argValue)
 }
 
 // ScannerConfigStruct creates an uninitialised ScannerConfig.
@@ -14649,13 +14727,12 @@ func ScannerConfigStruct() *ScannerConfig {
 		return nil
 	}
 
-	structGo := &ScannerConfig{}
-	structGo.Native = scannerConfigStruct.Alloc()
+	structGo := ScannerConfigNewFromNative(scannerConfigStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeScannerConfig)
 	return structGo
 }
 func finalizeScannerConfig(obj *ScannerConfig) {
-	scannerConfigStruct.Free(obj.Native)
+	scannerConfigStruct.Free(obj.native)
 }
 
 var sequenceStruct *gi.Struct
@@ -14670,7 +14747,11 @@ func sequenceStruct_Set() error {
 }
 
 type Sequence struct {
-	Native uintptr
+	native uintptr
+}
+
+func SequenceNewFromNative(native uintptr) *Sequence {
+	return &Sequence{native: native}
 }
 
 // UNSUPPORTED : C value 'g_sequence_append' : parameter 'data' of type 'gpointer' not supported
@@ -14695,7 +14776,7 @@ func sequenceFreeFunction_Set() error {
 // Free is a representation of the C type g_sequence_free.
 func (recv *Sequence) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := sequenceFreeFunction_Set()
 	if err == nil {
@@ -14723,7 +14804,7 @@ func sequenceGetBeginIterFunction_Set() error {
 // GetBeginIter is a representation of the C type g_sequence_get_begin_iter.
 func (recv *Sequence) GetBeginIter() *SequenceIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14732,8 +14813,7 @@ func (recv *Sequence) GetBeginIter() *SequenceIter {
 		ret = sequenceGetBeginIterFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14756,7 +14836,7 @@ func sequenceGetEndIterFunction_Set() error {
 // GetEndIter is a representation of the C type g_sequence_get_end_iter.
 func (recv *Sequence) GetEndIter() *SequenceIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14765,8 +14845,7 @@ func (recv *Sequence) GetEndIter() *SequenceIter {
 		ret = sequenceGetEndIterFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14789,7 +14868,7 @@ func sequenceGetIterAtPosFunction_Set() error {
 // GetIterAtPos is a representation of the C type g_sequence_get_iter_at_pos.
 func (recv *Sequence) GetIterAtPos(pos int32) *SequenceIter {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 
 	var ret gi.Argument
@@ -14799,8 +14878,7 @@ func (recv *Sequence) GetIterAtPos(pos int32) *SequenceIter {
 		ret = sequenceGetIterAtPosFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -14823,7 +14901,7 @@ func sequenceGetLengthFunction_Set() error {
 // GetLength is a representation of the C type g_sequence_get_length.
 func (recv *Sequence) GetLength() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14859,7 +14937,7 @@ func sequenceIsEmptyFunction_Set() error {
 // IsEmpty is a representation of the C type g_sequence_is_empty.
 func (recv *Sequence) IsEmpty() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -14894,13 +14972,12 @@ func SequenceStruct() *Sequence {
 		return nil
 	}
 
-	structGo := &Sequence{}
-	structGo.Native = sequenceStruct.Alloc()
+	structGo := SequenceNewFromNative(sequenceStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSequence)
 	return structGo
 }
 func finalizeSequence(obj *Sequence) {
-	sequenceStruct.Free(obj.Native)
+	sequenceStruct.Free(obj.native)
 }
 
 var sequenceIterStruct *gi.Struct
@@ -14915,7 +14992,11 @@ func sequenceIterStruct_Set() error {
 }
 
 type SequenceIter struct {
-	Native uintptr
+	native uintptr
+}
+
+func SequenceIterNewFromNative(native uintptr) *SequenceIter {
+	return &SequenceIter{native: native}
 }
 
 var sequenceIterCompareFunction *gi.Function
@@ -14936,8 +15017,8 @@ func sequenceIterCompareFunction_Set() error {
 // Compare is a representation of the C type g_sequence_iter_compare.
 func (recv *SequenceIter) Compare(b *SequenceIter) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(b.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(b.native)
 
 	var ret gi.Argument
 
@@ -14969,7 +15050,7 @@ func sequenceIterGetPositionFunction_Set() error {
 // GetPosition is a representation of the C type g_sequence_iter_get_position.
 func (recv *SequenceIter) GetPosition() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15001,7 +15082,7 @@ func sequenceIterGetSequenceFunction_Set() error {
 // GetSequence is a representation of the C type g_sequence_iter_get_sequence.
 func (recv *SequenceIter) GetSequence() *Sequence {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15010,8 +15091,7 @@ func (recv *SequenceIter) GetSequence() *Sequence {
 		ret = sequenceIterGetSequenceFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Sequence{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15034,7 +15114,7 @@ func sequenceIterIsBeginFunction_Set() error {
 // IsBegin is a representation of the C type g_sequence_iter_is_begin.
 func (recv *SequenceIter) IsBegin() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15066,7 +15146,7 @@ func sequenceIterIsEndFunction_Set() error {
 // IsEnd is a representation of the C type g_sequence_iter_is_end.
 func (recv *SequenceIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15098,7 +15178,7 @@ func sequenceIterMoveFunction_Set() error {
 // Move is a representation of the C type g_sequence_iter_move.
 func (recv *SequenceIter) Move(delta int32) *SequenceIter {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(delta)
 
 	var ret gi.Argument
@@ -15108,8 +15188,7 @@ func (recv *SequenceIter) Move(delta int32) *SequenceIter {
 		ret = sequenceIterMoveFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15132,7 +15211,7 @@ func sequenceIterNextFunction_Set() error {
 // Next is a representation of the C type g_sequence_iter_next.
 func (recv *SequenceIter) Next() *SequenceIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15141,8 +15220,7 @@ func (recv *SequenceIter) Next() *SequenceIter {
 		ret = sequenceIterNextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15165,7 +15243,7 @@ func sequenceIterPrevFunction_Set() error {
 // Prev is a representation of the C type g_sequence_iter_prev.
 func (recv *SequenceIter) Prev() *SequenceIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15174,8 +15252,7 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 		ret = sequenceIterPrevFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &SequenceIter{}
-	retGo.Native = ret.Pointer()
+	retGo := SequenceIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15187,13 +15264,12 @@ func SequenceIterStruct() *SequenceIter {
 		return nil
 	}
 
-	structGo := &SequenceIter{}
-	structGo.Native = sequenceIterStruct.Alloc()
+	structGo := SequenceIterNewFromNative(sequenceIterStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSequenceIter)
 	return structGo
 }
 func finalizeSequenceIter(obj *SequenceIter) {
-	sequenceIterStruct.Free(obj.Native)
+	sequenceIterStruct.Free(obj.native)
 }
 
 var sourceStruct *gi.Struct
@@ -15208,7 +15284,11 @@ func sourceStruct_Set() error {
 }
 
 type Source struct {
-	Native uintptr
+	native uintptr
+}
+
+func SourceNewFromNative(native uintptr) *Source {
+	return &Source{native: native}
 }
 
 var sourceNewFunction *gi.Function
@@ -15229,7 +15309,7 @@ func sourceNewFunction_Set() error {
 // SourceNew is a representation of the C type g_source_new.
 func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(sourceFuncs.Native)
+	inArgs[0].SetPointer(sourceFuncs.native)
 	inArgs[1].SetUint32(structSize)
 
 	var ret gi.Argument
@@ -15239,8 +15319,7 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 		ret = sourceNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Source{}
-	retGo.Native = ret.Pointer()
+	retGo := SourceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15263,8 +15342,8 @@ func sourceAddChildSourceFunction_Set() error {
 // AddChildSource is a representation of the C type g_source_add_child_source.
 func (recv *Source) AddChildSource(childSource *Source) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(childSource.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(childSource.native)
 
 	err := sourceAddChildSourceFunction_Set()
 	if err == nil {
@@ -15292,8 +15371,8 @@ func sourceAddPollFunction_Set() error {
 // AddPoll is a representation of the C type g_source_add_poll.
 func (recv *Source) AddPoll(fd *PollFD) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fd.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
 
 	err := sourceAddPollFunction_Set()
 	if err == nil {
@@ -15323,8 +15402,8 @@ func sourceAttachFunction_Set() error {
 // Attach is a representation of the C type g_source_attach.
 func (recv *Source) Attach(context *MainContext) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(context.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(context.native)
 
 	var ret gi.Argument
 
@@ -15356,7 +15435,7 @@ func sourceDestroyFunction_Set() error {
 // Destroy is a representation of the C type g_source_destroy.
 func (recv *Source) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := sourceDestroyFunction_Set()
 	if err == nil {
@@ -15384,7 +15463,7 @@ func sourceGetCanRecurseFunction_Set() error {
 // GetCanRecurse is a representation of the C type g_source_get_can_recurse.
 func (recv *Source) GetCanRecurse() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15416,7 +15495,7 @@ func sourceGetContextFunction_Set() error {
 // GetContext is a representation of the C type g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15425,8 +15504,7 @@ func (recv *Source) GetContext() *MainContext {
 		ret = sourceGetContextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &MainContext{}
-	retGo.Native = ret.Pointer()
+	retGo := MainContextNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15449,8 +15527,8 @@ func sourceGetCurrentTimeFunction_Set() error {
 // GetCurrentTime is a representation of the C type g_source_get_current_time.
 func (recv *Source) GetCurrentTime(timeval *TimeVal) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(timeval.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(timeval.native)
 
 	err := sourceGetCurrentTimeFunction_Set()
 	if err == nil {
@@ -15478,7 +15556,7 @@ func sourceGetIdFunction_Set() error {
 // GetId is a representation of the C type g_source_get_id.
 func (recv *Source) GetId() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15510,7 +15588,7 @@ func sourceGetNameFunction_Set() error {
 // GetName is a representation of the C type g_source_get_name.
 func (recv *Source) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15542,7 +15620,7 @@ func sourceGetPriorityFunction_Set() error {
 // GetPriority is a representation of the C type g_source_get_priority.
 func (recv *Source) GetPriority() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15574,7 +15652,7 @@ func sourceGetReadyTimeFunction_Set() error {
 // GetReadyTime is a representation of the C type g_source_get_ready_time.
 func (recv *Source) GetReadyTime() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15606,7 +15684,7 @@ func sourceGetTimeFunction_Set() error {
 // GetTime is a representation of the C type g_source_get_time.
 func (recv *Source) GetTime() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15638,7 +15716,7 @@ func sourceIsDestroyedFunction_Set() error {
 // IsDestroyed is a representation of the C type g_source_is_destroyed.
 func (recv *Source) IsDestroyed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15674,7 +15752,7 @@ func sourceRefFunction_Set() error {
 // Ref is a representation of the C type g_source_ref.
 func (recv *Source) Ref() *Source {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -15683,8 +15761,7 @@ func (recv *Source) Ref() *Source {
 		ret = sourceRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Source{}
-	retGo.Native = ret.Pointer()
+	retGo := SourceNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -15707,8 +15784,8 @@ func sourceRemoveChildSourceFunction_Set() error {
 // RemoveChildSource is a representation of the C type g_source_remove_child_source.
 func (recv *Source) RemoveChildSource(childSource *Source) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(childSource.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(childSource.native)
 
 	err := sourceRemoveChildSourceFunction_Set()
 	if err == nil {
@@ -15736,8 +15813,8 @@ func sourceRemovePollFunction_Set() error {
 // RemovePoll is a representation of the C type g_source_remove_poll.
 func (recv *Source) RemovePoll(fd *PollFD) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fd.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
 
 	err := sourceRemovePollFunction_Set()
 	if err == nil {
@@ -15771,7 +15848,7 @@ func sourceSetCanRecurseFunction_Set() error {
 // SetCanRecurse is a representation of the C type g_source_set_can_recurse.
 func (recv *Source) SetCanRecurse(canRecurse bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(canRecurse)
 
 	err := sourceSetCanRecurseFunction_Set()
@@ -15800,8 +15877,8 @@ func sourceSetFuncsFunction_Set() error {
 // SetFuncs is a representation of the C type g_source_set_funcs.
 func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(funcs.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(funcs.native)
 
 	err := sourceSetFuncsFunction_Set()
 	if err == nil {
@@ -15829,7 +15906,7 @@ func sourceSetNameFunction_Set() error {
 // SetName is a representation of the C type g_source_set_name.
 func (recv *Source) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
 	err := sourceSetNameFunction_Set()
@@ -15858,7 +15935,7 @@ func sourceSetPriorityFunction_Set() error {
 // SetPriority is a representation of the C type g_source_set_priority.
 func (recv *Source) SetPriority(priority int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(priority)
 
 	err := sourceSetPriorityFunction_Set()
@@ -15887,7 +15964,7 @@ func sourceSetReadyTimeFunction_Set() error {
 // SetReadyTime is a representation of the C type g_source_set_ready_time.
 func (recv *Source) SetReadyTime(readyTime int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(readyTime)
 
 	err := sourceSetReadyTimeFunction_Set()
@@ -15916,7 +15993,7 @@ func sourceUnrefFunction_Set() error {
 // Unref is a representation of the C type g_source_unref.
 func (recv *Source) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := sourceUnrefFunction_Set()
 	if err == nil {
@@ -15938,7 +16015,11 @@ func sourceCallbackFuncsStruct_Set() error {
 }
 
 type SourceCallbackFuncs struct {
-	Native uintptr
+	native uintptr
+}
+
+func SourceCallbackFuncsNewFromNative(native uintptr) *SourceCallbackFuncs {
+	return &SourceCallbackFuncs{native: native}
 }
 
 // UNSUPPORTED : C value 'ref' : for field getter : missing Type
@@ -15960,13 +16041,12 @@ func SourceCallbackFuncsStruct() *SourceCallbackFuncs {
 		return nil
 	}
 
-	structGo := &SourceCallbackFuncs{}
-	structGo.Native = sourceCallbackFuncsStruct.Alloc()
+	structGo := SourceCallbackFuncsNewFromNative(sourceCallbackFuncsStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSourceCallbackFuncs)
 	return structGo
 }
 func finalizeSourceCallbackFuncs(obj *SourceCallbackFuncs) {
-	sourceCallbackFuncsStruct.Free(obj.Native)
+	sourceCallbackFuncsStruct.Free(obj.native)
 }
 
 var sourceFuncsStruct *gi.Struct
@@ -15981,7 +16061,11 @@ func sourceFuncsStruct_Set() error {
 }
 
 type SourceFuncs struct {
-	Native uintptr
+	native uintptr
+}
+
+func SourceFuncsNewFromNative(native uintptr) *SourceFuncs {
+	return &SourceFuncs{native: native}
 }
 
 // UNSUPPORTED : C value 'prepare' : for field getter : missing Type
@@ -16007,13 +16091,12 @@ func SourceFuncsStruct() *SourceFuncs {
 		return nil
 	}
 
-	structGo := &SourceFuncs{}
-	structGo.Native = sourceFuncsStruct.Alloc()
+	structGo := SourceFuncsNewFromNative(sourceFuncsStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSourceFuncs)
 	return structGo
 }
 func finalizeSourceFuncs(obj *SourceFuncs) {
-	sourceFuncsStruct.Free(obj.Native)
+	sourceFuncsStruct.Free(obj.native)
 }
 
 var sourcePrivateStruct *gi.Struct
@@ -16028,7 +16111,11 @@ func sourcePrivateStruct_Set() error {
 }
 
 type SourcePrivate struct {
-	Native uintptr
+	native uintptr
+}
+
+func SourcePrivateNewFromNative(native uintptr) *SourcePrivate {
+	return &SourcePrivate{native: native}
 }
 
 // SourcePrivateStruct creates an uninitialised SourcePrivate.
@@ -16038,13 +16125,12 @@ func SourcePrivateStruct() *SourcePrivate {
 		return nil
 	}
 
-	structGo := &SourcePrivate{}
-	structGo.Native = sourcePrivateStruct.Alloc()
+	structGo := SourcePrivateNewFromNative(sourcePrivateStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeSourcePrivate)
 	return structGo
 }
 func finalizeSourcePrivate(obj *SourcePrivate) {
-	sourcePrivateStruct.Free(obj.Native)
+	sourcePrivateStruct.Free(obj.native)
 }
 
 var statBufStruct *gi.Struct
@@ -16059,7 +16145,11 @@ func statBufStruct_Set() error {
 }
 
 type StatBuf struct {
-	Native uintptr
+	native uintptr
+}
+
+func StatBufNewFromNative(native uintptr) *StatBuf {
+	return &StatBuf{native: native}
 }
 
 // StatBufStruct creates an uninitialised StatBuf.
@@ -16069,13 +16159,12 @@ func StatBufStruct() *StatBuf {
 		return nil
 	}
 
-	structGo := &StatBuf{}
-	structGo.Native = statBufStruct.Alloc()
+	structGo := StatBufNewFromNative(statBufStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeStatBuf)
 	return structGo
 }
 func finalizeStatBuf(obj *StatBuf) {
-	statBufStruct.Free(obj.Native)
+	statBufStruct.Free(obj.native)
 }
 
 var string_Struct *gi.Struct
@@ -16090,12 +16179,16 @@ func string_Struct_Set() error {
 }
 
 type String struct {
-	Native uintptr
+	native uintptr
+}
+
+func StringNewFromNative(native uintptr) *String {
+	return &String{native: native}
 }
 
 // FieldStr returns the C field 'str'.
 func (recv *String) FieldStr() string {
-	argValue := gi.StructFieldGet(string_Struct, recv.Native, "str")
+	argValue := gi.StructFieldGet(string_Struct, recv.native, "str")
 	value := argValue.String(false)
 	return value
 }
@@ -16104,12 +16197,12 @@ func (recv *String) FieldStr() string {
 func (recv *String) SetFieldStr(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(string_Struct, recv.Native, "str", argValue)
+	gi.StructFieldSet(string_Struct, recv.native, "str", argValue)
 }
 
 // FieldLen returns the C field 'len'.
 func (recv *String) FieldLen() uint64 {
-	argValue := gi.StructFieldGet(string_Struct, recv.Native, "len")
+	argValue := gi.StructFieldGet(string_Struct, recv.native, "len")
 	value := argValue.Uint64()
 	return value
 }
@@ -16118,12 +16211,12 @@ func (recv *String) FieldLen() uint64 {
 func (recv *String) SetFieldLen(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.StructFieldSet(string_Struct, recv.Native, "len", argValue)
+	gi.StructFieldSet(string_Struct, recv.native, "len", argValue)
 }
 
 // FieldAllocatedLen returns the C field 'allocated_len'.
 func (recv *String) FieldAllocatedLen() uint64 {
-	argValue := gi.StructFieldGet(string_Struct, recv.Native, "allocated_len")
+	argValue := gi.StructFieldGet(string_Struct, recv.native, "allocated_len")
 	value := argValue.Uint64()
 	return value
 }
@@ -16132,7 +16225,7 @@ func (recv *String) FieldAllocatedLen() uint64 {
 func (recv *String) SetFieldAllocatedLen(value uint64) {
 	var argValue gi.Argument
 	argValue.SetUint64(value)
-	gi.StructFieldSet(string_Struct, recv.Native, "allocated_len", argValue)
+	gi.StructFieldSet(string_Struct, recv.native, "allocated_len", argValue)
 }
 
 var stringAppendFunction *gi.Function
@@ -16153,7 +16246,7 @@ func stringAppendFunction_Set() error {
 // Append is a representation of the C type g_string_append.
 func (recv *String) Append(val string) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 
 	var ret gi.Argument
@@ -16163,8 +16256,7 @@ func (recv *String) Append(val string) *String {
 		ret = stringAppendFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16187,7 +16279,7 @@ func stringAppendCFunction_Set() error {
 // AppendC is a representation of the C type g_string_append_c.
 func (recv *String) AppendC(c int8) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(c)
 
 	var ret gi.Argument
@@ -16197,8 +16289,7 @@ func (recv *String) AppendC(c int8) *String {
 		ret = stringAppendCFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16221,7 +16312,7 @@ func stringAppendLenFunction_Set() error {
 // AppendLen is a representation of the C type g_string_append_len.
 func (recv *String) AppendLen(val string, len int32) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 	inArgs[2].SetInt32(len)
 
@@ -16232,8 +16323,7 @@ func (recv *String) AppendLen(val string, len int32) *String {
 		ret = stringAppendLenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16260,7 +16350,7 @@ func stringAppendUriEscapedFunction_Set() error {
 // AppendUriEscaped is a representation of the C type g_string_append_uri_escaped.
 func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) *String {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(unescaped)
 	inArgs[2].SetString(reservedCharsAllowed)
 	inArgs[3].SetBoolean(allowUtf8)
@@ -16272,8 +16362,7 @@ func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed stri
 		ret = stringAppendUriEscapedFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16298,7 +16387,7 @@ func stringAsciiDownFunction_Set() error {
 // AsciiDown is a representation of the C type g_string_ascii_down.
 func (recv *String) AsciiDown() *String {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16307,8 +16396,7 @@ func (recv *String) AsciiDown() *String {
 		ret = stringAsciiDownFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16331,7 +16419,7 @@ func stringAsciiUpFunction_Set() error {
 // AsciiUp is a representation of the C type g_string_ascii_up.
 func (recv *String) AsciiUp() *String {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16340,8 +16428,7 @@ func (recv *String) AsciiUp() *String {
 		ret = stringAsciiUpFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16364,7 +16451,7 @@ func stringAssignFunction_Set() error {
 // Assign is a representation of the C type g_string_assign.
 func (recv *String) Assign(rval string) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(rval)
 
 	var ret gi.Argument
@@ -16374,8 +16461,7 @@ func (recv *String) Assign(rval string) *String {
 		ret = stringAssignFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16398,7 +16484,7 @@ func stringDownFunction_Set() error {
 // Down is a representation of the C type g_string_down.
 func (recv *String) Down() *String {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16407,8 +16493,7 @@ func (recv *String) Down() *String {
 		ret = stringDownFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16431,8 +16516,8 @@ func stringEqualFunction_Set() error {
 // Equal is a representation of the C type g_string_equal.
 func (recv *String) Equal(v2 *String) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(v2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(v2.native)
 
 	var ret gi.Argument
 
@@ -16464,7 +16549,7 @@ func stringEraseFunction_Set() error {
 // Erase is a representation of the C type g_string_erase.
 func (recv *String) Erase(pos int32, len int32) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetInt32(len)
 
@@ -16475,8 +16560,7 @@ func (recv *String) Erase(pos int32, len int32) *String {
 		ret = stringEraseFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16499,7 +16583,7 @@ func stringFreeFunction_Set() error {
 // Free is a representation of the C type g_string_free.
 func (recv *String) Free(freeSegment bool) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(freeSegment)
 
 	var ret gi.Argument
@@ -16532,7 +16616,7 @@ func stringFreeToBytesFunction_Set() error {
 // FreeToBytes is a representation of the C type g_string_free_to_bytes.
 func (recv *String) FreeToBytes() *Bytes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16541,8 +16625,7 @@ func (recv *String) FreeToBytes() *Bytes {
 		ret = stringFreeToBytesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Bytes{}
-	retGo.Native = ret.Pointer()
+	retGo := BytesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16565,7 +16648,7 @@ func stringHashFunction_Set() error {
 // Hash is a representation of the C type g_string_hash.
 func (recv *String) Hash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16597,7 +16680,7 @@ func stringInsertFunction_Set() error {
 // Insert is a representation of the C type g_string_insert.
 func (recv *String) Insert(pos int32, val string) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(val)
 
@@ -16608,8 +16691,7 @@ func (recv *String) Insert(pos int32, val string) *String {
 		ret = stringInsertFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16632,7 +16714,7 @@ func stringInsertCFunction_Set() error {
 // InsertC is a representation of the C type g_string_insert_c.
 func (recv *String) InsertC(pos int32, c int8) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetInt8(c)
 
@@ -16643,8 +16725,7 @@ func (recv *String) InsertC(pos int32, c int8) *String {
 		ret = stringInsertCFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16667,7 +16748,7 @@ func stringInsertLenFunction_Set() error {
 // InsertLen is a representation of the C type g_string_insert_len.
 func (recv *String) InsertLen(pos int32, val string, len int32) *String {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(val)
 	inArgs[3].SetInt32(len)
@@ -16679,8 +16760,7 @@ func (recv *String) InsertLen(pos int32, val string, len int32) *String {
 		ret = stringInsertLenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16705,7 +16785,7 @@ func stringOverwriteFunction_Set() error {
 // Overwrite is a representation of the C type g_string_overwrite.
 func (recv *String) Overwrite(pos uint64, val string) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(pos)
 	inArgs[2].SetString(val)
 
@@ -16716,8 +16796,7 @@ func (recv *String) Overwrite(pos uint64, val string) *String {
 		ret = stringOverwriteFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16740,7 +16819,7 @@ func stringOverwriteLenFunction_Set() error {
 // OverwriteLen is a representation of the C type g_string_overwrite_len.
 func (recv *String) OverwriteLen(pos uint64, val string, len int32) *String {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(pos)
 	inArgs[2].SetString(val)
 	inArgs[3].SetInt32(len)
@@ -16752,8 +16831,7 @@ func (recv *String) OverwriteLen(pos uint64, val string, len int32) *String {
 		ret = stringOverwriteLenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16776,7 +16854,7 @@ func stringPrependFunction_Set() error {
 // Prepend is a representation of the C type g_string_prepend.
 func (recv *String) Prepend(val string) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 
 	var ret gi.Argument
@@ -16786,8 +16864,7 @@ func (recv *String) Prepend(val string) *String {
 		ret = stringPrependFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16810,7 +16887,7 @@ func stringPrependCFunction_Set() error {
 // PrependC is a representation of the C type g_string_prepend_c.
 func (recv *String) PrependC(c int8) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(c)
 
 	var ret gi.Argument
@@ -16820,8 +16897,7 @@ func (recv *String) PrependC(c int8) *String {
 		ret = stringPrependCFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16844,7 +16920,7 @@ func stringPrependLenFunction_Set() error {
 // PrependLen is a representation of the C type g_string_prepend_len.
 func (recv *String) PrependLen(val string, len int32) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 	inArgs[2].SetInt32(len)
 
@@ -16855,8 +16931,7 @@ func (recv *String) PrependLen(val string, len int32) *String {
 		ret = stringPrependLenFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16883,7 +16958,7 @@ func stringSetSizeFunction_Set() error {
 // SetSize is a representation of the C type g_string_set_size.
 func (recv *String) SetSize(len uint64) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(len)
 
 	var ret gi.Argument
@@ -16893,8 +16968,7 @@ func (recv *String) SetSize(len uint64) *String {
 		ret = stringSetSizeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16917,7 +16991,7 @@ func stringTruncateFunction_Set() error {
 // Truncate is a representation of the C type g_string_truncate.
 func (recv *String) Truncate(len uint64) *String {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(len)
 
 	var ret gi.Argument
@@ -16927,8 +17001,7 @@ func (recv *String) Truncate(len uint64) *String {
 		ret = stringTruncateFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16951,7 +17024,7 @@ func stringUpFunction_Set() error {
 // Up is a representation of the C type g_string_up.
 func (recv *String) Up() *String {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -16960,8 +17033,7 @@ func (recv *String) Up() *String {
 		ret = stringUpFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -16975,13 +17047,12 @@ func StringStruct() *String {
 		return nil
 	}
 
-	structGo := &String{}
-	structGo.Native = string_Struct.Alloc()
+	structGo := StringNewFromNative(string_Struct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeString)
 	return structGo
 }
 func finalizeString(obj *String) {
-	string_Struct.Free(obj.Native)
+	string_Struct.Free(obj.native)
 }
 
 var stringChunkStruct *gi.Struct
@@ -16996,7 +17067,11 @@ func stringChunkStruct_Set() error {
 }
 
 type StringChunk struct {
-	Native uintptr
+	native uintptr
+}
+
+func StringChunkNewFromNative(native uintptr) *StringChunk {
+	return &StringChunk{native: native}
 }
 
 var stringChunkClearFunction *gi.Function
@@ -17017,7 +17092,7 @@ func stringChunkClearFunction_Set() error {
 // Clear is a representation of the C type g_string_chunk_clear.
 func (recv *StringChunk) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := stringChunkClearFunction_Set()
 	if err == nil {
@@ -17045,7 +17120,7 @@ func stringChunkFreeFunction_Set() error {
 // Free is a representation of the C type g_string_chunk_free.
 func (recv *StringChunk) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := stringChunkFreeFunction_Set()
 	if err == nil {
@@ -17073,7 +17148,7 @@ func stringChunkInsertFunction_Set() error {
 // Insert is a representation of the C type g_string_chunk_insert.
 func (recv *StringChunk) Insert(string_ string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 
 	var ret gi.Argument
@@ -17106,7 +17181,7 @@ func stringChunkInsertConstFunction_Set() error {
 // InsertConst is a representation of the C type g_string_chunk_insert_const.
 func (recv *StringChunk) InsertConst(string_ string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 
 	var ret gi.Argument
@@ -17139,7 +17214,7 @@ func stringChunkInsertLenFunction_Set() error {
 // InsertLen is a representation of the C type g_string_chunk_insert_len.
 func (recv *StringChunk) InsertLen(string_ string, len int32) string {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 	inArgs[2].SetInt32(len)
 
@@ -17162,13 +17237,12 @@ func StringChunkStruct() *StringChunk {
 		return nil
 	}
 
-	structGo := &StringChunk{}
-	structGo.Native = stringChunkStruct.Alloc()
+	structGo := StringChunkNewFromNative(stringChunkStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeStringChunk)
 	return structGo
 }
 func finalizeStringChunk(obj *StringChunk) {
-	stringChunkStruct.Free(obj.Native)
+	stringChunkStruct.Free(obj.native)
 }
 
 var testCaseStruct *gi.Struct
@@ -17183,7 +17257,11 @@ func testCaseStruct_Set() error {
 }
 
 type TestCase struct {
-	Native uintptr
+	native uintptr
+}
+
+func TestCaseNewFromNative(native uintptr) *TestCase {
+	return &TestCase{native: native}
 }
 
 // TestCaseStruct creates an uninitialised TestCase.
@@ -17193,13 +17271,12 @@ func TestCaseStruct() *TestCase {
 		return nil
 	}
 
-	structGo := &TestCase{}
-	structGo.Native = testCaseStruct.Alloc()
+	structGo := TestCaseNewFromNative(testCaseStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTestCase)
 	return structGo
 }
 func finalizeTestCase(obj *TestCase) {
-	testCaseStruct.Free(obj.Native)
+	testCaseStruct.Free(obj.native)
 }
 
 var testConfigStruct *gi.Struct
@@ -17214,12 +17291,16 @@ func testConfigStruct_Set() error {
 }
 
 type TestConfig struct {
-	Native uintptr
+	native uintptr
+}
+
+func TestConfigNewFromNative(native uintptr) *TestConfig {
+	return &TestConfig{native: native}
 }
 
 // FieldTestInitialized returns the C field 'test_initialized'.
 func (recv *TestConfig) FieldTestInitialized() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_initialized")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_initialized")
 	value := argValue.Boolean()
 	return value
 }
@@ -17228,12 +17309,12 @@ func (recv *TestConfig) FieldTestInitialized() bool {
 func (recv *TestConfig) SetFieldTestInitialized(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_initialized", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_initialized", argValue)
 }
 
 // FieldTestQuick returns the C field 'test_quick'.
 func (recv *TestConfig) FieldTestQuick() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_quick")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_quick")
 	value := argValue.Boolean()
 	return value
 }
@@ -17242,12 +17323,12 @@ func (recv *TestConfig) FieldTestQuick() bool {
 func (recv *TestConfig) SetFieldTestQuick(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_quick", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_quick", argValue)
 }
 
 // FieldTestPerf returns the C field 'test_perf'.
 func (recv *TestConfig) FieldTestPerf() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_perf")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_perf")
 	value := argValue.Boolean()
 	return value
 }
@@ -17256,12 +17337,12 @@ func (recv *TestConfig) FieldTestPerf() bool {
 func (recv *TestConfig) SetFieldTestPerf(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_perf", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_perf", argValue)
 }
 
 // FieldTestVerbose returns the C field 'test_verbose'.
 func (recv *TestConfig) FieldTestVerbose() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_verbose")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_verbose")
 	value := argValue.Boolean()
 	return value
 }
@@ -17270,12 +17351,12 @@ func (recv *TestConfig) FieldTestVerbose() bool {
 func (recv *TestConfig) SetFieldTestVerbose(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_verbose", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_verbose", argValue)
 }
 
 // FieldTestQuiet returns the C field 'test_quiet'.
 func (recv *TestConfig) FieldTestQuiet() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_quiet")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_quiet")
 	value := argValue.Boolean()
 	return value
 }
@@ -17284,12 +17365,12 @@ func (recv *TestConfig) FieldTestQuiet() bool {
 func (recv *TestConfig) SetFieldTestQuiet(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_quiet", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_quiet", argValue)
 }
 
 // FieldTestUndefined returns the C field 'test_undefined'.
 func (recv *TestConfig) FieldTestUndefined() bool {
-	argValue := gi.StructFieldGet(testConfigStruct, recv.Native, "test_undefined")
+	argValue := gi.StructFieldGet(testConfigStruct, recv.native, "test_undefined")
 	value := argValue.Boolean()
 	return value
 }
@@ -17298,7 +17379,7 @@ func (recv *TestConfig) FieldTestUndefined() bool {
 func (recv *TestConfig) SetFieldTestUndefined(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(testConfigStruct, recv.Native, "test_undefined", argValue)
+	gi.StructFieldSet(testConfigStruct, recv.native, "test_undefined", argValue)
 }
 
 // TestConfigStruct creates an uninitialised TestConfig.
@@ -17308,13 +17389,12 @@ func TestConfigStruct() *TestConfig {
 		return nil
 	}
 
-	structGo := &TestConfig{}
-	structGo.Native = testConfigStruct.Alloc()
+	structGo := TestConfigNewFromNative(testConfigStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTestConfig)
 	return structGo
 }
 func finalizeTestConfig(obj *TestConfig) {
-	testConfigStruct.Free(obj.Native)
+	testConfigStruct.Free(obj.native)
 }
 
 var testLogBufferStruct *gi.Struct
@@ -17329,7 +17409,11 @@ func testLogBufferStruct_Set() error {
 }
 
 type TestLogBuffer struct {
-	Native uintptr
+	native uintptr
+}
+
+func TestLogBufferNewFromNative(native uintptr) *TestLogBuffer {
+	return &TestLogBuffer{native: native}
 }
 
 var testLogBufferFreeFunction *gi.Function
@@ -17350,7 +17434,7 @@ func testLogBufferFreeFunction_Set() error {
 // Free is a representation of the C type g_test_log_buffer_free.
 func (recv *TestLogBuffer) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := testLogBufferFreeFunction_Set()
 	if err == nil {
@@ -17378,7 +17462,7 @@ func testLogBufferPopFunction_Set() error {
 // Pop is a representation of the C type g_test_log_buffer_pop.
 func (recv *TestLogBuffer) Pop() *TestLogMsg {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17387,8 +17471,7 @@ func (recv *TestLogBuffer) Pop() *TestLogMsg {
 		ret = testLogBufferPopFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TestLogMsg{}
-	retGo.Native = ret.Pointer()
+	retGo := TestLogMsgNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -17411,7 +17494,7 @@ func testLogBufferPushFunction_Set() error {
 // Push is a representation of the C type g_test_log_buffer_push.
 func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nBytes)
 	inArgs[2].SetUint8(bytes)
 
@@ -17430,13 +17513,12 @@ func TestLogBufferStruct() *TestLogBuffer {
 		return nil
 	}
 
-	structGo := &TestLogBuffer{}
-	structGo.Native = testLogBufferStruct.Alloc()
+	structGo := TestLogBufferNewFromNative(testLogBufferStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTestLogBuffer)
 	return structGo
 }
 func finalizeTestLogBuffer(obj *TestLogBuffer) {
-	testLogBufferStruct.Free(obj.Native)
+	testLogBufferStruct.Free(obj.native)
 }
 
 var testLogMsgStruct *gi.Struct
@@ -17451,12 +17533,16 @@ func testLogMsgStruct_Set() error {
 }
 
 type TestLogMsg struct {
-	Native uintptr
+	native uintptr
+}
+
+func TestLogMsgNewFromNative(native uintptr) *TestLogMsg {
+	return &TestLogMsg{native: native}
 }
 
 // FieldLogType returns the C field 'log_type'.
 func (recv *TestLogMsg) FieldLogType() TestLogType {
-	argValue := gi.StructFieldGet(testLogMsgStruct, recv.Native, "log_type")
+	argValue := gi.StructFieldGet(testLogMsgStruct, recv.native, "log_type")
 	value := TestLogType(argValue.Int32())
 	return value
 }
@@ -17465,12 +17551,12 @@ func (recv *TestLogMsg) FieldLogType() TestLogType {
 func (recv *TestLogMsg) SetFieldLogType(value TestLogType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(testLogMsgStruct, recv.Native, "log_type", argValue)
+	gi.StructFieldSet(testLogMsgStruct, recv.native, "log_type", argValue)
 }
 
 // FieldNStrings returns the C field 'n_strings'.
 func (recv *TestLogMsg) FieldNStrings() uint32 {
-	argValue := gi.StructFieldGet(testLogMsgStruct, recv.Native, "n_strings")
+	argValue := gi.StructFieldGet(testLogMsgStruct, recv.native, "n_strings")
 	value := argValue.Uint32()
 	return value
 }
@@ -17479,12 +17565,12 @@ func (recv *TestLogMsg) FieldNStrings() uint32 {
 func (recv *TestLogMsg) SetFieldNStrings(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(testLogMsgStruct, recv.Native, "n_strings", argValue)
+	gi.StructFieldSet(testLogMsgStruct, recv.native, "n_strings", argValue)
 }
 
 // FieldStrings returns the C field 'strings'.
 func (recv *TestLogMsg) FieldStrings() string {
-	argValue := gi.StructFieldGet(testLogMsgStruct, recv.Native, "strings")
+	argValue := gi.StructFieldGet(testLogMsgStruct, recv.native, "strings")
 	value := argValue.String(false)
 	return value
 }
@@ -17493,12 +17579,12 @@ func (recv *TestLogMsg) FieldStrings() string {
 func (recv *TestLogMsg) SetFieldStrings(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(testLogMsgStruct, recv.Native, "strings", argValue)
+	gi.StructFieldSet(testLogMsgStruct, recv.native, "strings", argValue)
 }
 
 // FieldNNums returns the C field 'n_nums'.
 func (recv *TestLogMsg) FieldNNums() uint32 {
-	argValue := gi.StructFieldGet(testLogMsgStruct, recv.Native, "n_nums")
+	argValue := gi.StructFieldGet(testLogMsgStruct, recv.native, "n_nums")
 	value := argValue.Uint32()
 	return value
 }
@@ -17507,7 +17593,7 @@ func (recv *TestLogMsg) FieldNNums() uint32 {
 func (recv *TestLogMsg) SetFieldNNums(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(testLogMsgStruct, recv.Native, "n_nums", argValue)
+	gi.StructFieldSet(testLogMsgStruct, recv.native, "n_nums", argValue)
 }
 
 // UNSUPPORTED : C value 'nums' : for field getter : no Go type for 'long double'
@@ -17532,7 +17618,7 @@ func testLogMsgFreeFunction_Set() error {
 // Free is a representation of the C type g_test_log_msg_free.
 func (recv *TestLogMsg) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := testLogMsgFreeFunction_Set()
 	if err == nil {
@@ -17549,13 +17635,12 @@ func TestLogMsgStruct() *TestLogMsg {
 		return nil
 	}
 
-	structGo := &TestLogMsg{}
-	structGo.Native = testLogMsgStruct.Alloc()
+	structGo := TestLogMsgNewFromNative(testLogMsgStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTestLogMsg)
 	return structGo
 }
 func finalizeTestLogMsg(obj *TestLogMsg) {
-	testLogMsgStruct.Free(obj.Native)
+	testLogMsgStruct.Free(obj.native)
 }
 
 var testSuiteStruct *gi.Struct
@@ -17570,7 +17655,11 @@ func testSuiteStruct_Set() error {
 }
 
 type TestSuite struct {
-	Native uintptr
+	native uintptr
+}
+
+func TestSuiteNewFromNative(native uintptr) *TestSuite {
+	return &TestSuite{native: native}
 }
 
 var testSuiteAddFunction *gi.Function
@@ -17591,8 +17680,8 @@ func testSuiteAddFunction_Set() error {
 // Add is a representation of the C type g_test_suite_add.
 func (recv *TestSuite) Add(testCase *TestCase) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(testCase.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(testCase.native)
 
 	err := testSuiteAddFunction_Set()
 	if err == nil {
@@ -17620,8 +17709,8 @@ func testSuiteAddSuiteFunction_Set() error {
 // AddSuite is a representation of the C type g_test_suite_add_suite.
 func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(nestedsuite.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(nestedsuite.native)
 
 	err := testSuiteAddSuiteFunction_Set()
 	if err == nil {
@@ -17638,13 +17727,12 @@ func TestSuiteStruct() *TestSuite {
 		return nil
 	}
 
-	structGo := &TestSuite{}
-	structGo.Native = testSuiteStruct.Alloc()
+	structGo := TestSuiteNewFromNative(testSuiteStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTestSuite)
 	return structGo
 }
 func finalizeTestSuite(obj *TestSuite) {
-	testSuiteStruct.Free(obj.Native)
+	testSuiteStruct.Free(obj.native)
 }
 
 var threadStruct *gi.Struct
@@ -17659,7 +17747,11 @@ func threadStruct_Set() error {
 }
 
 type Thread struct {
-	Native uintptr
+	native uintptr
+}
+
+func ThreadNewFromNative(native uintptr) *Thread {
+	return &Thread{native: native}
 }
 
 // UNSUPPORTED : C value 'g_thread_new' : parameter 'func' of type 'ThreadFunc' not supported
@@ -17686,7 +17778,7 @@ func threadRefFunction_Set() error {
 // Ref is a representation of the C type g_thread_ref.
 func (recv *Thread) Ref() *Thread {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17695,8 +17787,7 @@ func (recv *Thread) Ref() *Thread {
 		ret = threadRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Thread{}
-	retGo.Native = ret.Pointer()
+	retGo := ThreadNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -17719,7 +17810,7 @@ func threadUnrefFunction_Set() error {
 // Unref is a representation of the C type g_thread_unref.
 func (recv *Thread) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := threadUnrefFunction_Set()
 	if err == nil {
@@ -17741,7 +17832,11 @@ func threadPoolStruct_Set() error {
 }
 
 type ThreadPool struct {
-	Native uintptr
+	native uintptr
+}
+
+func ThreadPoolNewFromNative(native uintptr) *ThreadPool {
+	return &ThreadPool{native: native}
 }
 
 // UNSUPPORTED : C value 'func' : for field getter : no Go type for 'Func'
@@ -17754,7 +17849,7 @@ type ThreadPool struct {
 
 // FieldExclusive returns the C field 'exclusive'.
 func (recv *ThreadPool) FieldExclusive() bool {
-	argValue := gi.StructFieldGet(threadPoolStruct, recv.Native, "exclusive")
+	argValue := gi.StructFieldGet(threadPoolStruct, recv.native, "exclusive")
 	value := argValue.Boolean()
 	return value
 }
@@ -17763,7 +17858,7 @@ func (recv *ThreadPool) FieldExclusive() bool {
 func (recv *ThreadPool) SetFieldExclusive(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(threadPoolStruct, recv.Native, "exclusive", argValue)
+	gi.StructFieldSet(threadPoolStruct, recv.native, "exclusive", argValue)
 }
 
 var threadPoolFreeFunction *gi.Function
@@ -17784,7 +17879,7 @@ func threadPoolFreeFunction_Set() error {
 // Free is a representation of the C type g_thread_pool_free.
 func (recv *ThreadPool) Free(immediate bool, wait bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(immediate)
 	inArgs[2].SetBoolean(wait)
 
@@ -17814,7 +17909,7 @@ func threadPoolGetMaxThreadsFunction_Set() error {
 // GetMaxThreads is a representation of the C type g_thread_pool_get_max_threads.
 func (recv *ThreadPool) GetMaxThreads() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17846,7 +17941,7 @@ func threadPoolGetNumThreadsFunction_Set() error {
 // GetNumThreads is a representation of the C type g_thread_pool_get_num_threads.
 func (recv *ThreadPool) GetNumThreads() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17882,7 +17977,7 @@ func threadPoolSetMaxThreadsFunction_Set() error {
 // SetMaxThreads is a representation of the C type g_thread_pool_set_max_threads.
 func (recv *ThreadPool) SetMaxThreads(maxThreads int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(maxThreads)
 
 	var ret gi.Argument
@@ -17917,7 +18012,7 @@ func threadPoolUnprocessedFunction_Set() error {
 // Unprocessed is a representation of the C type g_thread_pool_unprocessed.
 func (recv *ThreadPool) Unprocessed() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -17938,13 +18033,12 @@ func ThreadPoolStruct() *ThreadPool {
 		return nil
 	}
 
-	structGo := &ThreadPool{}
-	structGo.Native = threadPoolStruct.Alloc()
+	structGo := ThreadPoolNewFromNative(threadPoolStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeThreadPool)
 	return structGo
 }
 func finalizeThreadPool(obj *ThreadPool) {
-	threadPoolStruct.Free(obj.Native)
+	threadPoolStruct.Free(obj.native)
 }
 
 var timeValStruct *gi.Struct
@@ -17959,12 +18053,16 @@ func timeValStruct_Set() error {
 }
 
 type TimeVal struct {
-	Native uintptr
+	native uintptr
+}
+
+func TimeValNewFromNative(native uintptr) *TimeVal {
+	return &TimeVal{native: native}
 }
 
 // FieldTvSec returns the C field 'tv_sec'.
 func (recv *TimeVal) FieldTvSec() int64 {
-	argValue := gi.StructFieldGet(timeValStruct, recv.Native, "tv_sec")
+	argValue := gi.StructFieldGet(timeValStruct, recv.native, "tv_sec")
 	value := argValue.Int64()
 	return value
 }
@@ -17973,12 +18071,12 @@ func (recv *TimeVal) FieldTvSec() int64 {
 func (recv *TimeVal) SetFieldTvSec(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.StructFieldSet(timeValStruct, recv.Native, "tv_sec", argValue)
+	gi.StructFieldSet(timeValStruct, recv.native, "tv_sec", argValue)
 }
 
 // FieldTvUsec returns the C field 'tv_usec'.
 func (recv *TimeVal) FieldTvUsec() int64 {
-	argValue := gi.StructFieldGet(timeValStruct, recv.Native, "tv_usec")
+	argValue := gi.StructFieldGet(timeValStruct, recv.native, "tv_usec")
 	value := argValue.Int64()
 	return value
 }
@@ -17987,7 +18085,7 @@ func (recv *TimeVal) FieldTvUsec() int64 {
 func (recv *TimeVal) SetFieldTvUsec(value int64) {
 	var argValue gi.Argument
 	argValue.SetInt64(value)
-	gi.StructFieldSet(timeValStruct, recv.Native, "tv_usec", argValue)
+	gi.StructFieldSet(timeValStruct, recv.native, "tv_usec", argValue)
 }
 
 var timeValAddFunction *gi.Function
@@ -18008,7 +18106,7 @@ func timeValAddFunction_Set() error {
 // Add is a representation of the C type g_time_val_add.
 func (recv *TimeVal) Add(microseconds int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(microseconds)
 
 	err := timeValAddFunction_Set()
@@ -18037,7 +18135,7 @@ func timeValToIso8601Function_Set() error {
 // ToIso8601 is a representation of the C type g_time_val_to_iso8601.
 func (recv *TimeVal) ToIso8601() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18058,13 +18156,12 @@ func TimeValStruct() *TimeVal {
 		return nil
 	}
 
-	structGo := &TimeVal{}
-	structGo.Native = timeValStruct.Alloc()
+	structGo := TimeValNewFromNative(timeValStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTimeVal)
 	return structGo
 }
 func finalizeTimeVal(obj *TimeVal) {
-	timeValStruct.Free(obj.Native)
+	timeValStruct.Free(obj.native)
 }
 
 var timeZoneStruct *gi.Struct
@@ -18079,7 +18176,11 @@ func timeZoneStruct_Set() error {
 }
 
 type TimeZone struct {
-	Native uintptr
+	native uintptr
+}
+
+func TimeZoneNewFromNative(native uintptr) *TimeZone {
+	return &TimeZone{native: native}
 }
 
 var timeZoneNewFunction *gi.Function
@@ -18109,8 +18210,7 @@ func TimeZoneNew(identifier string) *TimeZone {
 		ret = timeZoneNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18140,8 +18240,7 @@ func TimeZoneNewLocal() *TimeZone {
 		ret = timeZoneNewLocalFunction.Invoke(nil, nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18173,8 +18272,7 @@ func TimeZoneNewOffset(seconds int32) *TimeZone {
 		ret = timeZoneNewOffsetFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18204,8 +18302,7 @@ func TimeZoneNewUtc() *TimeZone {
 		ret = timeZoneNewUtcFunction.Invoke(nil, nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18228,7 +18325,7 @@ func timeZoneAdjustTimeFunction_Set() error {
 // AdjustTime is a representation of the C type g_time_zone_adjust_time.
 func (recv *TimeZone) AdjustTime(type_ TimeType, time int64) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 	inArgs[2].SetInt64(time)
 
@@ -18262,7 +18359,7 @@ func timeZoneFindIntervalFunction_Set() error {
 // FindInterval is a representation of the C type g_time_zone_find_interval.
 func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(int32(type_))
 	inArgs[2].SetInt64(time)
 
@@ -18296,7 +18393,7 @@ func timeZoneGetAbbreviationFunction_Set() error {
 // GetAbbreviation is a representation of the C type g_time_zone_get_abbreviation.
 func (recv *TimeZone) GetAbbreviation(interval int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(interval)
 
 	var ret gi.Argument
@@ -18329,7 +18426,7 @@ func timeZoneGetIdentifierFunction_Set() error {
 // GetIdentifier is a representation of the C type g_time_zone_get_identifier.
 func (recv *TimeZone) GetIdentifier() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18361,7 +18458,7 @@ func timeZoneGetOffsetFunction_Set() error {
 // GetOffset is a representation of the C type g_time_zone_get_offset.
 func (recv *TimeZone) GetOffset(interval int32) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(interval)
 
 	var ret gi.Argument
@@ -18394,7 +18491,7 @@ func timeZoneIsDstFunction_Set() error {
 // IsDst is a representation of the C type g_time_zone_is_dst.
 func (recv *TimeZone) IsDst(interval int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(interval)
 
 	var ret gi.Argument
@@ -18427,7 +18524,7 @@ func timeZoneRefFunction_Set() error {
 // Ref is a representation of the C type g_time_zone_ref.
 func (recv *TimeZone) Ref() *TimeZone {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18436,8 +18533,7 @@ func (recv *TimeZone) Ref() *TimeZone {
 		ret = timeZoneRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &TimeZone{}
-	retGo.Native = ret.Pointer()
+	retGo := TimeZoneNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18460,7 +18556,7 @@ func timeZoneUnrefFunction_Set() error {
 // Unref is a representation of the C type g_time_zone_unref.
 func (recv *TimeZone) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timeZoneUnrefFunction_Set()
 	if err == nil {
@@ -18482,7 +18578,11 @@ func timerStruct_Set() error {
 }
 
 type Timer struct {
-	Native uintptr
+	native uintptr
+}
+
+func TimerNewFromNative(native uintptr) *Timer {
+	return &Timer{native: native}
 }
 
 var timerContinueFunction *gi.Function
@@ -18503,7 +18603,7 @@ func timerContinueFunction_Set() error {
 // Continue is a representation of the C type g_timer_continue.
 func (recv *Timer) Continue() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timerContinueFunction_Set()
 	if err == nil {
@@ -18531,7 +18631,7 @@ func timerDestroyFunction_Set() error {
 // Destroy is a representation of the C type g_timer_destroy.
 func (recv *Timer) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timerDestroyFunction_Set()
 	if err == nil {
@@ -18559,7 +18659,7 @@ func timerElapsedFunction_Set() error {
 // Elapsed is a representation of the C type g_timer_elapsed.
 func (recv *Timer) Elapsed(microseconds uint64) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(microseconds)
 
 	var ret gi.Argument
@@ -18592,7 +18692,7 @@ func timerIsActiveFunction_Set() error {
 // IsActive is a representation of the C type g_timer_is_active.
 func (recv *Timer) IsActive() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18624,7 +18724,7 @@ func timerResetFunction_Set() error {
 // Reset is a representation of the C type g_timer_reset.
 func (recv *Timer) Reset() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timerResetFunction_Set()
 	if err == nil {
@@ -18652,7 +18752,7 @@ func timerStartFunction_Set() error {
 // Start is a representation of the C type g_timer_start.
 func (recv *Timer) Start() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timerStartFunction_Set()
 	if err == nil {
@@ -18680,7 +18780,7 @@ func timerStopFunction_Set() error {
 // Stop is a representation of the C type g_timer_stop.
 func (recv *Timer) Stop() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := timerStopFunction_Set()
 	if err == nil {
@@ -18697,13 +18797,12 @@ func TimerStruct() *Timer {
 		return nil
 	}
 
-	structGo := &Timer{}
-	structGo.Native = timerStruct.Alloc()
+	structGo := TimerNewFromNative(timerStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTimer)
 	return structGo
 }
 func finalizeTimer(obj *Timer) {
-	timerStruct.Free(obj.Native)
+	timerStruct.Free(obj.native)
 }
 
 var trashStackStruct *gi.Struct
@@ -18718,22 +18817,25 @@ func trashStackStruct_Set() error {
 }
 
 type TrashStack struct {
-	Native uintptr
+	native uintptr
+}
+
+func TrashStackNewFromNative(native uintptr) *TrashStack {
+	return &TrashStack{native: native}
 }
 
 // FieldNext returns the C field 'next'.
 func (recv *TrashStack) FieldNext() *TrashStack {
-	argValue := gi.StructFieldGet(trashStackStruct, recv.Native, "next")
-	value := &TrashStack{}
-	value.Native = argValue.Pointer()
+	argValue := gi.StructFieldGet(trashStackStruct, recv.native, "next")
+	value := TrashStackNewFromNative(argValue.Pointer())
 	return value
 }
 
 // SetFieldNext sets the value of the C field 'next'.
 func (recv *TrashStack) SetFieldNext(value *TrashStack) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.Native)
-	gi.StructFieldSet(trashStackStruct, recv.Native, "next", argValue)
+	argValue.SetPointer(value.native)
+	gi.StructFieldSet(trashStackStruct, recv.native, "next", argValue)
 }
 
 // TrashStackStruct creates an uninitialised TrashStack.
@@ -18743,13 +18845,12 @@ func TrashStackStruct() *TrashStack {
 		return nil
 	}
 
-	structGo := &TrashStack{}
-	structGo.Native = trashStackStruct.Alloc()
+	structGo := TrashStackNewFromNative(trashStackStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTrashStack)
 	return structGo
 }
 func finalizeTrashStack(obj *TrashStack) {
-	trashStackStruct.Free(obj.Native)
+	trashStackStruct.Free(obj.native)
 }
 
 var treeStruct *gi.Struct
@@ -18764,7 +18865,11 @@ func treeStruct_Set() error {
 }
 
 type Tree struct {
-	Native uintptr
+	native uintptr
+}
+
+func TreeNewFromNative(native uintptr) *Tree {
+	return &Tree{native: native}
 }
 
 var treeDestroyFunction *gi.Function
@@ -18785,7 +18890,7 @@ func treeDestroyFunction_Set() error {
 // Destroy is a representation of the C type g_tree_destroy.
 func (recv *Tree) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := treeDestroyFunction_Set()
 	if err == nil {
@@ -18815,7 +18920,7 @@ func treeHeightFunction_Set() error {
 // Height is a representation of the C type g_tree_height.
 func (recv *Tree) Height() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18853,7 +18958,7 @@ func treeNnodesFunction_Set() error {
 // Nnodes is a representation of the C type g_tree_nnodes.
 func (recv *Tree) Nnodes() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18885,7 +18990,7 @@ func treeRefFunction_Set() error {
 // Ref is a representation of the C type g_tree_ref.
 func (recv *Tree) Ref() *Tree {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -18894,8 +18999,7 @@ func (recv *Tree) Ref() *Tree {
 		ret = treeRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Tree{}
-	retGo.Native = ret.Pointer()
+	retGo := TreeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -18928,7 +19032,7 @@ func treeUnrefFunction_Set() error {
 // Unref is a representation of the C type g_tree_unref.
 func (recv *Tree) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := treeUnrefFunction_Set()
 	if err == nil {
@@ -18945,13 +19049,12 @@ func TreeStruct() *Tree {
 		return nil
 	}
 
-	structGo := &Tree{}
-	structGo.Native = treeStruct.Alloc()
+	structGo := TreeNewFromNative(treeStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeTree)
 	return structGo
 }
 func finalizeTree(obj *Tree) {
-	treeStruct.Free(obj.Native)
+	treeStruct.Free(obj.native)
 }
 
 var variantStruct *gi.Struct
@@ -18966,7 +19069,11 @@ func variantStruct_Set() error {
 }
 
 type Variant struct {
-	Native uintptr
+	native uintptr
+}
+
+func VariantNewFromNative(native uintptr) *Variant {
+	return &Variant{native: native}
 }
 
 // UNSUPPORTED : C value 'g_variant_new' : parameter '...' of type 'nil' not supported
@@ -19000,8 +19107,7 @@ func VariantNewBoolean(value bool) *Variant {
 		ret = variantNewBooleanFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19033,8 +19139,7 @@ func VariantNewByte(value uint8) *Variant {
 		ret = variantNewByteFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19061,8 +19166,8 @@ func variantNewDictEntryFunction_Set() error {
 // VariantNewDictEntry is a representation of the C type g_variant_new_dict_entry.
 func VariantNewDictEntry(key *Variant, value *Variant) *Variant {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(key.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(key.native)
+	inArgs[1].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -19071,8 +19176,7 @@ func VariantNewDictEntry(key *Variant, value *Variant) *Variant {
 		ret = variantNewDictEntryFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19104,8 +19208,7 @@ func VariantNewDouble(value float64) *Variant {
 		ret = variantNewDoubleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19130,8 +19233,8 @@ func variantNewFromBytesFunction_Set() error {
 // VariantNewFromBytes is a representation of the C type g_variant_new_from_bytes.
 func VariantNewFromBytes(type_ *VariantType, bytes *Bytes, trusted bool) *Variant {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(type_.Native)
-	inArgs[1].SetPointer(bytes.Native)
+	inArgs[0].SetPointer(type_.native)
+	inArgs[1].SetPointer(bytes.native)
 	inArgs[2].SetBoolean(trusted)
 
 	var ret gi.Argument
@@ -19141,8 +19244,7 @@ func VariantNewFromBytes(type_ *VariantType, bytes *Bytes, trusted bool) *Varian
 		ret = variantNewFromBytesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19176,8 +19278,7 @@ func VariantNewHandle(value int32) *Variant {
 		ret = variantNewHandleFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19209,8 +19310,7 @@ func VariantNewInt16(value int16) *Variant {
 		ret = variantNewInt16Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19242,8 +19342,7 @@ func VariantNewInt32(value int32) *Variant {
 		ret = variantNewInt32Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19275,8 +19374,7 @@ func VariantNewInt64(value int64) *Variant {
 		ret = variantNewInt64Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19299,8 +19397,8 @@ func variantNewMaybeFunction_Set() error {
 // VariantNewMaybe is a representation of the C type g_variant_new_maybe.
 func VariantNewMaybe(childType *VariantType, child *Variant) *Variant {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(childType.Native)
-	inArgs[1].SetPointer(child.Native)
+	inArgs[0].SetPointer(childType.native)
+	inArgs[1].SetPointer(child.native)
 
 	var ret gi.Argument
 
@@ -19309,8 +19407,7 @@ func VariantNewMaybe(childType *VariantType, child *Variant) *Variant {
 		ret = variantNewMaybeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19342,8 +19439,7 @@ func VariantNewObjectPath(objectPath string) *Variant {
 		ret = variantNewObjectPathFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19383,8 +19479,7 @@ func VariantNewSignature(signature string) *Variant {
 		ret = variantNewSignatureFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19416,8 +19511,7 @@ func VariantNewString(string_ string) *Variant {
 		ret = variantNewStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19451,8 +19545,7 @@ func VariantNewTakeString(string_ string) *Variant {
 		ret = variantNewTakeStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19486,8 +19579,7 @@ func VariantNewUint16(value uint16) *Variant {
 		ret = variantNewUint16Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19519,8 +19611,7 @@ func VariantNewUint32(value uint32) *Variant {
 		ret = variantNewUint32Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19552,8 +19643,7 @@ func VariantNewUint64(value uint64) *Variant {
 		ret = variantNewUint64Function.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19578,7 +19668,7 @@ func variantNewVariantFunction_Set() error {
 // VariantNewVariant is a representation of the C type g_variant_new_variant.
 func VariantNewVariant(value *Variant) *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(value.Native)
+	inArgs[0].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -19587,8 +19677,7 @@ func VariantNewVariant(value *Variant) *Variant {
 		ret = variantNewVariantFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19611,7 +19700,7 @@ func variantByteswapFunction_Set() error {
 // Byteswap is a representation of the C type g_variant_byteswap.
 func (recv *Variant) Byteswap() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19620,8 +19709,7 @@ func (recv *Variant) Byteswap() *Variant {
 		ret = variantByteswapFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -19644,7 +19732,7 @@ func variantCheckFormatStringFunction_Set() error {
 // CheckFormatString is a representation of the C type g_variant_check_format_string.
 func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(formatString)
 	inArgs[2].SetBoolean(copyOnly)
 
@@ -19678,7 +19766,7 @@ func variantClassifyFunction_Set() error {
 // Classify is a representation of the C type g_variant_classify.
 func (recv *Variant) Classify() VariantClass {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19710,8 +19798,8 @@ func variantCompareFunction_Set() error {
 // Compare is a representation of the C type g_variant_compare.
 func (recv *Variant) Compare(two *Variant) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(two.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(two.native)
 
 	var ret gi.Argument
 
@@ -19743,7 +19831,7 @@ func variantDupBytestringFunction_Set() error {
 // DupBytestring is a representation of the C type g_variant_dup_bytestring.
 func (recv *Variant) DupBytestring() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -19775,7 +19863,7 @@ func variantDupBytestringArrayFunction_Set() error {
 // DupBytestringArray is a representation of the C type g_variant_dup_bytestring_array.
 func (recv *Variant) DupBytestringArray() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -19807,7 +19895,7 @@ func variantDupObjvFunction_Set() error {
 // DupObjv is a representation of the C type g_variant_dup_objv.
 func (recv *Variant) DupObjv() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -19839,7 +19927,7 @@ func variantDupStringFunction_Set() error {
 // DupString is a representation of the C type g_variant_dup_string.
 func (recv *Variant) DupString() (string, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -19873,7 +19961,7 @@ func variantDupStrvFunction_Set() error {
 // DupStrv is a representation of the C type g_variant_dup_strv.
 func (recv *Variant) DupStrv() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -19905,8 +19993,8 @@ func variantEqualFunction_Set() error {
 // Equal is a representation of the C type g_variant_equal.
 func (recv *Variant) Equal(two *Variant) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(two.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(two.native)
 
 	var ret gi.Argument
 
@@ -19940,7 +20028,7 @@ func variantGetBooleanFunction_Set() error {
 // GetBoolean is a representation of the C type g_variant_get_boolean.
 func (recv *Variant) GetBoolean() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -19972,7 +20060,7 @@ func variantGetByteFunction_Set() error {
 // GetByte is a representation of the C type g_variant_get_byte.
 func (recv *Variant) GetByte() uint8 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20004,7 +20092,7 @@ func variantGetBytestringFunction_Set() error {
 // GetBytestring is a representation of the C type g_variant_get_bytestring.
 func (recv *Variant) GetBytestring() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantGetBytestringFunction_Set()
 	if err == nil {
@@ -20032,7 +20120,7 @@ func variantGetBytestringArrayFunction_Set() error {
 // GetBytestringArray is a representation of the C type g_variant_get_bytestring_array.
 func (recv *Variant) GetBytestringArray() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -20066,7 +20154,7 @@ func variantGetChildValueFunction_Set() error {
 // GetChildValue is a representation of the C type g_variant_get_child_value.
 func (recv *Variant) GetChildValue(index uint64) *Variant {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(index)
 
 	var ret gi.Argument
@@ -20076,8 +20164,7 @@ func (recv *Variant) GetChildValue(index uint64) *Variant {
 		ret = variantGetChildValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20102,7 +20189,7 @@ func variantGetDataAsBytesFunction_Set() error {
 // GetDataAsBytes is a representation of the C type g_variant_get_data_as_bytes.
 func (recv *Variant) GetDataAsBytes() *Bytes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20111,8 +20198,7 @@ func (recv *Variant) GetDataAsBytes() *Bytes {
 		ret = variantGetDataAsBytesFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Bytes{}
-	retGo.Native = ret.Pointer()
+	retGo := BytesNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20135,7 +20221,7 @@ func variantGetDoubleFunction_Set() error {
 // GetDouble is a representation of the C type g_variant_get_double.
 func (recv *Variant) GetDouble() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20167,7 +20253,7 @@ func variantGetFixedArrayFunction_Set() error {
 // GetFixedArray is a representation of the C type g_variant_get_fixed_array.
 func (recv *Variant) GetFixedArray(elementSize uint64) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(elementSize)
 
 	var outArgs [1]gi.Argument
@@ -20200,7 +20286,7 @@ func variantGetHandleFunction_Set() error {
 // GetHandle is a representation of the C type g_variant_get_handle.
 func (recv *Variant) GetHandle() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20232,7 +20318,7 @@ func variantGetInt16Function_Set() error {
 // GetInt16 is a representation of the C type g_variant_get_int16.
 func (recv *Variant) GetInt16() int16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20264,7 +20350,7 @@ func variantGetInt32Function_Set() error {
 // GetInt32 is a representation of the C type g_variant_get_int32.
 func (recv *Variant) GetInt32() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20296,7 +20382,7 @@ func variantGetInt64Function_Set() error {
 // GetInt64 is a representation of the C type g_variant_get_int64.
 func (recv *Variant) GetInt64() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20328,7 +20414,7 @@ func variantGetMaybeFunction_Set() error {
 // GetMaybe is a representation of the C type g_variant_get_maybe.
 func (recv *Variant) GetMaybe() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20337,8 +20423,7 @@ func (recv *Variant) GetMaybe() *Variant {
 		ret = variantGetMaybeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20361,7 +20446,7 @@ func variantGetNormalFormFunction_Set() error {
 // GetNormalForm is a representation of the C type g_variant_get_normal_form.
 func (recv *Variant) GetNormalForm() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20370,8 +20455,7 @@ func (recv *Variant) GetNormalForm() *Variant {
 		ret = variantGetNormalFormFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20394,7 +20478,7 @@ func variantGetObjvFunction_Set() error {
 // GetObjv is a representation of the C type g_variant_get_objv.
 func (recv *Variant) GetObjv() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -20426,7 +20510,7 @@ func variantGetSizeFunction_Set() error {
 // GetSize is a representation of the C type g_variant_get_size.
 func (recv *Variant) GetSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20458,7 +20542,7 @@ func variantGetStringFunction_Set() error {
 // GetString is a representation of the C type g_variant_get_string.
 func (recv *Variant) GetString() (string, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -20492,7 +20576,7 @@ func variantGetStrvFunction_Set() error {
 // GetStrv is a representation of the C type g_variant_get_strv.
 func (recv *Variant) GetStrv() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
@@ -20524,7 +20608,7 @@ func variantGetTypeFunction_Set() error {
 // GetType is a representation of the C type g_variant_get_type.
 func (recv *Variant) GetType() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20533,8 +20617,7 @@ func (recv *Variant) GetType() *VariantType {
 		ret = variantGetTypeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20557,7 +20640,7 @@ func variantGetTypeStringFunction_Set() error {
 // GetTypeString is a representation of the C type g_variant_get_type_string.
 func (recv *Variant) GetTypeString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20589,7 +20672,7 @@ func variantGetUint16Function_Set() error {
 // GetUint16 is a representation of the C type g_variant_get_uint16.
 func (recv *Variant) GetUint16() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20621,7 +20704,7 @@ func variantGetUint32Function_Set() error {
 // GetUint32 is a representation of the C type g_variant_get_uint32.
 func (recv *Variant) GetUint32() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20653,7 +20736,7 @@ func variantGetUint64Function_Set() error {
 // GetUint64 is a representation of the C type g_variant_get_uint64.
 func (recv *Variant) GetUint64() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20687,7 +20770,7 @@ func variantGetVariantFunction_Set() error {
 // GetVariant is a representation of the C type g_variant_get_variant.
 func (recv *Variant) GetVariant() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20696,8 +20779,7 @@ func (recv *Variant) GetVariant() *Variant {
 		ret = variantGetVariantFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20720,7 +20802,7 @@ func variantHashFunction_Set() error {
 // Hash is a representation of the C type g_variant_hash.
 func (recv *Variant) Hash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20752,7 +20834,7 @@ func variantIsContainerFunction_Set() error {
 // IsContainer is a representation of the C type g_variant_is_container.
 func (recv *Variant) IsContainer() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20784,7 +20866,7 @@ func variantIsFloatingFunction_Set() error {
 // IsFloating is a representation of the C type g_variant_is_floating.
 func (recv *Variant) IsFloating() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20816,7 +20898,7 @@ func variantIsNormalFormFunction_Set() error {
 // IsNormalForm is a representation of the C type g_variant_is_normal_form.
 func (recv *Variant) IsNormalForm() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20848,8 +20930,8 @@ func variantIsOfTypeFunction_Set() error {
 // IsOfType is a representation of the C type g_variant_is_of_type.
 func (recv *Variant) IsOfType(type_ *VariantType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(type_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
 
 	var ret gi.Argument
 
@@ -20881,7 +20963,7 @@ func variantIterNewFunction_Set() error {
 // IterNew is a representation of the C type g_variant_iter_new.
 func (recv *Variant) IterNew() *VariantIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20890,8 +20972,7 @@ func (recv *Variant) IterNew() *VariantIter {
 		ret = variantIterNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantIter{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20916,9 +20997,9 @@ func variantLookupValueFunction_Set() error {
 // LookupValue is a representation of the C type g_variant_lookup_value.
 func (recv *Variant) LookupValue(key string, expectedType *VariantType) *Variant {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
-	inArgs[2].SetPointer(expectedType.Native)
+	inArgs[2].SetPointer(expectedType.native)
 
 	var ret gi.Argument
 
@@ -20927,8 +21008,7 @@ func (recv *Variant) LookupValue(key string, expectedType *VariantType) *Variant
 		ret = variantLookupValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -20951,7 +21031,7 @@ func variantNChildrenFunction_Set() error {
 // NChildren is a representation of the C type g_variant_n_children.
 func (recv *Variant) NChildren() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -20983,7 +21063,7 @@ func variantPrintFunction_Set() error {
 // Print is a representation of the C type g_variant_print.
 func (recv *Variant) Print(typeAnnotate bool) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(typeAnnotate)
 
 	var ret gi.Argument
@@ -21016,8 +21096,8 @@ func variantPrintStringFunction_Set() error {
 // PrintString is a representation of the C type g_variant_print_string.
 func (recv *Variant) PrintString(string_ *String, typeAnnotate bool) *String {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(string_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(string_.native)
 	inArgs[2].SetBoolean(typeAnnotate)
 
 	var ret gi.Argument
@@ -21027,8 +21107,7 @@ func (recv *Variant) PrintString(string_ *String, typeAnnotate bool) *String {
 		ret = variantPrintStringFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &String{}
-	retGo.Native = ret.Pointer()
+	retGo := StringNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21051,7 +21130,7 @@ func variantRefFunction_Set() error {
 // Ref is a representation of the C type g_variant_ref.
 func (recv *Variant) Ref() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21060,8 +21139,7 @@ func (recv *Variant) Ref() *Variant {
 		ret = variantRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21084,7 +21162,7 @@ func variantRefSinkFunction_Set() error {
 // RefSink is a representation of the C type g_variant_ref_sink.
 func (recv *Variant) RefSink() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21093,8 +21171,7 @@ func (recv *Variant) RefSink() *Variant {
 		ret = variantRefSinkFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21119,7 +21196,7 @@ func variantTakeRefFunction_Set() error {
 // TakeRef is a representation of the C type g_variant_take_ref.
 func (recv *Variant) TakeRef() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21128,8 +21205,7 @@ func (recv *Variant) TakeRef() *Variant {
 		ret = variantTakeRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21152,7 +21228,7 @@ func variantUnrefFunction_Set() error {
 // Unref is a representation of the C type g_variant_unref.
 func (recv *Variant) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantUnrefFunction_Set()
 	if err == nil {
@@ -21174,7 +21250,11 @@ func variantBuilderStruct_Set() error {
 }
 
 type VariantBuilder struct {
-	Native uintptr
+	native uintptr
+}
+
+func VariantBuilderNewFromNative(native uintptr) *VariantBuilder {
+	return &VariantBuilder{native: native}
 }
 
 var variantBuilderNewFunction *gi.Function
@@ -21195,7 +21275,7 @@ func variantBuilderNewFunction_Set() error {
 // VariantBuilderNew is a representation of the C type g_variant_builder_new.
 func VariantBuilderNew(type_ *VariantType) *VariantBuilder {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(type_.Native)
+	inArgs[0].SetPointer(type_.native)
 
 	var ret gi.Argument
 
@@ -21204,8 +21284,7 @@ func VariantBuilderNew(type_ *VariantType) *VariantBuilder {
 		ret = variantBuilderNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantBuilder{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantBuilderNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21232,8 +21311,8 @@ func variantBuilderAddValueFunction_Set() error {
 // AddValue is a representation of the C type g_variant_builder_add_value.
 func (recv *VariantBuilder) AddValue(value *Variant) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
 
 	err := variantBuilderAddValueFunction_Set()
 	if err == nil {
@@ -21261,7 +21340,7 @@ func variantBuilderClearFunction_Set() error {
 // Clear is a representation of the C type g_variant_builder_clear.
 func (recv *VariantBuilder) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantBuilderClearFunction_Set()
 	if err == nil {
@@ -21289,7 +21368,7 @@ func variantBuilderCloseFunction_Set() error {
 // Close is a representation of the C type g_variant_builder_close.
 func (recv *VariantBuilder) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantBuilderCloseFunction_Set()
 	if err == nil {
@@ -21317,7 +21396,7 @@ func variantBuilderEndFunction_Set() error {
 // End is a representation of the C type g_variant_builder_end.
 func (recv *VariantBuilder) End() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21326,8 +21405,7 @@ func (recv *VariantBuilder) End() *Variant {
 		ret = variantBuilderEndFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21350,8 +21428,8 @@ func variantBuilderInitFunction_Set() error {
 // Init is a representation of the C type g_variant_builder_init.
 func (recv *VariantBuilder) Init(type_ *VariantType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(type_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
 
 	err := variantBuilderInitFunction_Set()
 	if err == nil {
@@ -21379,8 +21457,8 @@ func variantBuilderOpenFunction_Set() error {
 // Open is a representation of the C type g_variant_builder_open.
 func (recv *VariantBuilder) Open(type_ *VariantType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(type_.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
 
 	err := variantBuilderOpenFunction_Set()
 	if err == nil {
@@ -21408,7 +21486,7 @@ func variantBuilderRefFunction_Set() error {
 // Ref is a representation of the C type g_variant_builder_ref.
 func (recv *VariantBuilder) Ref() *VariantBuilder {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21417,8 +21495,7 @@ func (recv *VariantBuilder) Ref() *VariantBuilder {
 		ret = variantBuilderRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantBuilder{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantBuilderNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21441,7 +21518,7 @@ func variantBuilderUnrefFunction_Set() error {
 // Unref is a representation of the C type g_variant_builder_unref.
 func (recv *VariantBuilder) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantBuilderUnrefFunction_Set()
 	if err == nil {
@@ -21463,7 +21540,11 @@ func variantDictStruct_Set() error {
 }
 
 type VariantDict struct {
-	Native uintptr
+	native uintptr
+}
+
+func VariantDictNewFromNative(native uintptr) *VariantDict {
+	return &VariantDict{native: native}
 }
 
 var variantDictNewFunction *gi.Function
@@ -21484,7 +21565,7 @@ func variantDictNewFunction_Set() error {
 // VariantDictNew is a representation of the C type g_variant_dict_new.
 func VariantDictNew(fromAsv *Variant) *VariantDict {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(fromAsv.Native)
+	inArgs[0].SetPointer(fromAsv.native)
 
 	var ret gi.Argument
 
@@ -21493,8 +21574,7 @@ func VariantDictNew(fromAsv *Variant) *VariantDict {
 		ret = variantDictNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantDict{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantDictNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21517,7 +21597,7 @@ func variantDictClearFunction_Set() error {
 // Clear is a representation of the C type g_variant_dict_clear.
 func (recv *VariantDict) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantDictClearFunction_Set()
 	if err == nil {
@@ -21545,7 +21625,7 @@ func variantDictContainsFunction_Set() error {
 // Contains is a representation of the C type g_variant_dict_contains.
 func (recv *VariantDict) Contains(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -21578,7 +21658,7 @@ func variantDictEndFunction_Set() error {
 // End is a representation of the C type g_variant_dict_end.
 func (recv *VariantDict) End() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21587,8 +21667,7 @@ func (recv *VariantDict) End() *Variant {
 		ret = variantDictEndFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21611,8 +21690,8 @@ func variantDictInitFunction_Set() error {
 // Init is a representation of the C type g_variant_dict_init.
 func (recv *VariantDict) Init(fromAsv *Variant) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(fromAsv.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fromAsv.native)
 
 	err := variantDictInitFunction_Set()
 	if err == nil {
@@ -21642,9 +21721,9 @@ func variantDictInsertValueFunction_Set() error {
 // InsertValue is a representation of the C type g_variant_dict_insert_value.
 func (recv *VariantDict) InsertValue(key string, value *Variant) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
-	inArgs[2].SetPointer(value.Native)
+	inArgs[2].SetPointer(value.native)
 
 	err := variantDictInsertValueFunction_Set()
 	if err == nil {
@@ -21674,9 +21753,9 @@ func variantDictLookupValueFunction_Set() error {
 // LookupValue is a representation of the C type g_variant_dict_lookup_value.
 func (recv *VariantDict) LookupValue(key string, expectedType *VariantType) *Variant {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
-	inArgs[2].SetPointer(expectedType.Native)
+	inArgs[2].SetPointer(expectedType.native)
 
 	var ret gi.Argument
 
@@ -21685,8 +21764,7 @@ func (recv *VariantDict) LookupValue(key string, expectedType *VariantType) *Var
 		ret = variantDictLookupValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21709,7 +21787,7 @@ func variantDictRefFunction_Set() error {
 // Ref is a representation of the C type g_variant_dict_ref.
 func (recv *VariantDict) Ref() *VariantDict {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21718,8 +21796,7 @@ func (recv *VariantDict) Ref() *VariantDict {
 		ret = variantDictRefFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantDict{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantDictNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21742,7 +21819,7 @@ func variantDictRemoveFunction_Set() error {
 // Remove is a representation of the C type g_variant_dict_remove.
 func (recv *VariantDict) Remove(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -21775,7 +21852,7 @@ func variantDictUnrefFunction_Set() error {
 // Unref is a representation of the C type g_variant_dict_unref.
 func (recv *VariantDict) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantDictUnrefFunction_Set()
 	if err == nil {
@@ -21797,7 +21874,11 @@ func variantIterStruct_Set() error {
 }
 
 type VariantIter struct {
-	Native uintptr
+	native uintptr
+}
+
+func VariantIterNewFromNative(native uintptr) *VariantIter {
+	return &VariantIter{native: native}
 }
 
 var variantIterCopyFunction *gi.Function
@@ -21818,7 +21899,7 @@ func variantIterCopyFunction_Set() error {
 // Copy is a representation of the C type g_variant_iter_copy.
 func (recv *VariantIter) Copy() *VariantIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21827,8 +21908,7 @@ func (recv *VariantIter) Copy() *VariantIter {
 		ret = variantIterCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantIter{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantIterNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21851,7 +21931,7 @@ func variantIterFreeFunction_Set() error {
 // Free is a representation of the C type g_variant_iter_free.
 func (recv *VariantIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantIterFreeFunction_Set()
 	if err == nil {
@@ -21879,8 +21959,8 @@ func variantIterInitFunction_Set() error {
 // Init is a representation of the C type g_variant_iter_init.
 func (recv *VariantIter) Init(value *Variant) uint64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -21914,7 +21994,7 @@ func variantIterNChildrenFunction_Set() error {
 // NChildren is a representation of the C type g_variant_iter_n_children.
 func (recv *VariantIter) NChildren() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21948,7 +22028,7 @@ func variantIterNextValueFunction_Set() error {
 // NextValue is a representation of the C type g_variant_iter_next_value.
 func (recv *VariantIter) NextValue() *Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -21957,8 +22037,7 @@ func (recv *VariantIter) NextValue() *Variant {
 		ret = variantIterNextValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &Variant{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -21970,13 +22049,12 @@ func VariantIterStruct() *VariantIter {
 		return nil
 	}
 
-	structGo := &VariantIter{}
-	structGo.Native = variantIterStruct.Alloc()
+	structGo := VariantIterNewFromNative(variantIterStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizeVariantIter)
 	return structGo
 }
 func finalizeVariantIter(obj *VariantIter) {
-	variantIterStruct.Free(obj.Native)
+	variantIterStruct.Free(obj.native)
 }
 
 var variantTypeStruct *gi.Struct
@@ -21991,7 +22069,11 @@ func variantTypeStruct_Set() error {
 }
 
 type VariantType struct {
-	Native uintptr
+	native uintptr
+}
+
+func VariantTypeNewFromNative(native uintptr) *VariantType {
+	return &VariantType{native: native}
 }
 
 var variantTypeNewFunction *gi.Function
@@ -22021,8 +22103,7 @@ func VariantTypeNew(typeString string) *VariantType {
 		ret = variantTypeNewFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22045,7 +22126,7 @@ func variantTypeNewArrayFunction_Set() error {
 // VariantTypeNewArray is a representation of the C type g_variant_type_new_array.
 func VariantTypeNewArray(element *VariantType) *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(element.Native)
+	inArgs[0].SetPointer(element.native)
 
 	var ret gi.Argument
 
@@ -22054,8 +22135,7 @@ func VariantTypeNewArray(element *VariantType) *VariantType {
 		ret = variantTypeNewArrayFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22078,8 +22158,8 @@ func variantTypeNewDictEntryFunction_Set() error {
 // VariantTypeNewDictEntry is a representation of the C type g_variant_type_new_dict_entry.
 func VariantTypeNewDictEntry(key *VariantType, value *VariantType) *VariantType {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(key.Native)
-	inArgs[1].SetPointer(value.Native)
+	inArgs[0].SetPointer(key.native)
+	inArgs[1].SetPointer(value.native)
 
 	var ret gi.Argument
 
@@ -22088,8 +22168,7 @@ func VariantTypeNewDictEntry(key *VariantType, value *VariantType) *VariantType 
 		ret = variantTypeNewDictEntryFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22112,7 +22191,7 @@ func variantTypeNewMaybeFunction_Set() error {
 // VariantTypeNewMaybe is a representation of the C type g_variant_type_new_maybe.
 func VariantTypeNewMaybe(element *VariantType) *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(element.Native)
+	inArgs[0].SetPointer(element.native)
 
 	var ret gi.Argument
 
@@ -22121,8 +22200,7 @@ func VariantTypeNewMaybe(element *VariantType) *VariantType {
 		ret = variantTypeNewMaybeFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22147,7 +22225,7 @@ func variantTypeCopyFunction_Set() error {
 // Copy is a representation of the C type g_variant_type_copy.
 func (recv *VariantType) Copy() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22156,8 +22234,7 @@ func (recv *VariantType) Copy() *VariantType {
 		ret = variantTypeCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22180,7 +22257,7 @@ func variantTypeDupStringFunction_Set() error {
 // DupString is a representation of the C type g_variant_type_dup_string.
 func (recv *VariantType) DupString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22212,7 +22289,7 @@ func variantTypeElementFunction_Set() error {
 // Element is a representation of the C type g_variant_type_element.
 func (recv *VariantType) Element() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22221,8 +22298,7 @@ func (recv *VariantType) Element() *VariantType {
 		ret = variantTypeElementFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22245,8 +22321,8 @@ func variantTypeEqualFunction_Set() error {
 // Equal is a representation of the C type g_variant_type_equal.
 func (recv *VariantType) Equal(type2 *VariantType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(type2.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type2.native)
 
 	var ret gi.Argument
 
@@ -22278,7 +22354,7 @@ func variantTypeFirstFunction_Set() error {
 // First is a representation of the C type g_variant_type_first.
 func (recv *VariantType) First() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22287,8 +22363,7 @@ func (recv *VariantType) First() *VariantType {
 		ret = variantTypeFirstFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22311,7 +22386,7 @@ func variantTypeFreeFunction_Set() error {
 // Free is a representation of the C type g_variant_type_free.
 func (recv *VariantType) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := variantTypeFreeFunction_Set()
 	if err == nil {
@@ -22339,7 +22414,7 @@ func variantTypeGetStringLengthFunction_Set() error {
 // GetStringLength is a representation of the C type g_variant_type_get_string_length.
 func (recv *VariantType) GetStringLength() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22371,7 +22446,7 @@ func variantTypeHashFunction_Set() error {
 // Hash is a representation of the C type g_variant_type_hash.
 func (recv *VariantType) Hash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22403,7 +22478,7 @@ func variantTypeIsArrayFunction_Set() error {
 // IsArray is a representation of the C type g_variant_type_is_array.
 func (recv *VariantType) IsArray() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22435,7 +22510,7 @@ func variantTypeIsBasicFunction_Set() error {
 // IsBasic is a representation of the C type g_variant_type_is_basic.
 func (recv *VariantType) IsBasic() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22467,7 +22542,7 @@ func variantTypeIsContainerFunction_Set() error {
 // IsContainer is a representation of the C type g_variant_type_is_container.
 func (recv *VariantType) IsContainer() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22499,7 +22574,7 @@ func variantTypeIsDefiniteFunction_Set() error {
 // IsDefinite is a representation of the C type g_variant_type_is_definite.
 func (recv *VariantType) IsDefinite() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22531,7 +22606,7 @@ func variantTypeIsDictEntryFunction_Set() error {
 // IsDictEntry is a representation of the C type g_variant_type_is_dict_entry.
 func (recv *VariantType) IsDictEntry() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22563,7 +22638,7 @@ func variantTypeIsMaybeFunction_Set() error {
 // IsMaybe is a representation of the C type g_variant_type_is_maybe.
 func (recv *VariantType) IsMaybe() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22595,8 +22670,8 @@ func variantTypeIsSubtypeOfFunction_Set() error {
 // IsSubtypeOf is a representation of the C type g_variant_type_is_subtype_of.
 func (recv *VariantType) IsSubtypeOf(supertype *VariantType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
-	inArgs[1].SetPointer(supertype.Native)
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(supertype.native)
 
 	var ret gi.Argument
 
@@ -22628,7 +22703,7 @@ func variantTypeIsTupleFunction_Set() error {
 // IsTuple is a representation of the C type g_variant_type_is_tuple.
 func (recv *VariantType) IsTuple() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22660,7 +22735,7 @@ func variantTypeIsVariantFunction_Set() error {
 // IsVariant is a representation of the C type g_variant_type_is_variant.
 func (recv *VariantType) IsVariant() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22692,7 +22767,7 @@ func variantTypeKeyFunction_Set() error {
 // Key is a representation of the C type g_variant_type_key.
 func (recv *VariantType) Key() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22701,8 +22776,7 @@ func (recv *VariantType) Key() *VariantType {
 		ret = variantTypeKeyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22725,7 +22799,7 @@ func variantTypeNItemsFunction_Set() error {
 // NItems is a representation of the C type g_variant_type_n_items.
 func (recv *VariantType) NItems() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22757,7 +22831,7 @@ func variantTypeNextFunction_Set() error {
 // Next is a representation of the C type g_variant_type_next.
 func (recv *VariantType) Next() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22766,8 +22840,7 @@ func (recv *VariantType) Next() *VariantType {
 		ret = variantTypeNextFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -22790,7 +22863,7 @@ func variantTypePeekStringFunction_Set() error {
 // PeekString is a representation of the C type g_variant_type_peek_string.
 func (recv *VariantType) PeekString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22822,7 +22895,7 @@ func variantTypeValueFunction_Set() error {
 // Value is a representation of the C type g_variant_type_value.
 func (recv *VariantType) Value() *VariantType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -22831,8 +22904,7 @@ func (recv *VariantType) Value() *VariantType {
 		ret = variantTypeValueFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &VariantType{}
-	retGo.Native = ret.Pointer()
+	retGo := VariantTypeNewFromNative(ret.Pointer())
 
 	return retGo
 }

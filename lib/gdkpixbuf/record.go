@@ -20,7 +20,11 @@ func pixbufFormatStruct_Set() error {
 }
 
 type PixbufFormat struct {
-	Native uintptr
+	native uintptr
+}
+
+func PixbufFormatNewFromNative(native uintptr) *PixbufFormat {
+	return &PixbufFormat{native: native}
 }
 
 var pixbufFormatCopyFunction *gi.Function
@@ -41,7 +45,7 @@ func pixbufFormatCopyFunction_Set() error {
 // Copy is a representation of the C type gdk_pixbuf_format_copy.
 func (recv *PixbufFormat) Copy() *PixbufFormat {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -50,8 +54,7 @@ func (recv *PixbufFormat) Copy() *PixbufFormat {
 		ret = pixbufFormatCopyFunction.Invoke(inArgs[:], nil)
 	}
 
-	retGo := &PixbufFormat{}
-	retGo.Native = ret.Pointer()
+	retGo := PixbufFormatNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -74,7 +77,7 @@ func pixbufFormatFreeFunction_Set() error {
 // Free is a representation of the C type gdk_pixbuf_format_free.
 func (recv *PixbufFormat) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := pixbufFormatFreeFunction_Set()
 	if err == nil {
@@ -102,7 +105,7 @@ func pixbufFormatGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type gdk_pixbuf_format_get_description.
 func (recv *PixbufFormat) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -134,7 +137,7 @@ func pixbufFormatGetExtensionsFunction_Set() error {
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
 func (recv *PixbufFormat) GetExtensions() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := pixbufFormatGetExtensionsFunction_Set()
 	if err == nil {
@@ -162,7 +165,7 @@ func pixbufFormatGetLicenseFunction_Set() error {
 // GetLicense is a representation of the C type gdk_pixbuf_format_get_license.
 func (recv *PixbufFormat) GetLicense() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -194,7 +197,7 @@ func pixbufFormatGetMimeTypesFunction_Set() error {
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
 func (recv *PixbufFormat) GetMimeTypes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := pixbufFormatGetMimeTypesFunction_Set()
 	if err == nil {
@@ -222,7 +225,7 @@ func pixbufFormatGetNameFunction_Set() error {
 // GetName is a representation of the C type gdk_pixbuf_format_get_name.
 func (recv *PixbufFormat) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -254,7 +257,7 @@ func pixbufFormatIsDisabledFunction_Set() error {
 // IsDisabled is a representation of the C type gdk_pixbuf_format_is_disabled.
 func (recv *PixbufFormat) IsDisabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -286,7 +289,7 @@ func pixbufFormatIsSaveOptionSupportedFunction_Set() error {
 // IsSaveOptionSupported is a representation of the C type gdk_pixbuf_format_is_save_option_supported.
 func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(optionKey)
 
 	var ret gi.Argument
@@ -319,7 +322,7 @@ func pixbufFormatIsScalableFunction_Set() error {
 // IsScalable is a representation of the C type gdk_pixbuf_format_is_scalable.
 func (recv *PixbufFormat) IsScalable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -351,7 +354,7 @@ func pixbufFormatIsWritableFunction_Set() error {
 // IsWritable is a representation of the C type gdk_pixbuf_format_is_writable.
 func (recv *PixbufFormat) IsWritable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	var ret gi.Argument
 
@@ -383,7 +386,7 @@ func pixbufFormatSetDisabledFunction_Set() error {
 // SetDisabled is a representation of the C type gdk_pixbuf_format_set_disabled.
 func (recv *PixbufFormat) SetDisabled(disabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetBoolean(disabled)
 
 	err := pixbufFormatSetDisabledFunction_Set()
@@ -401,13 +404,12 @@ func PixbufFormatStruct() *PixbufFormat {
 		return nil
 	}
 
-	structGo := &PixbufFormat{}
-	structGo.Native = pixbufFormatStruct.Alloc()
+	structGo := PixbufFormatNewFromNative(pixbufFormatStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePixbufFormat)
 	return structGo
 }
 func finalizePixbufFormat(obj *PixbufFormat) {
-	pixbufFormatStruct.Free(obj.Native)
+	pixbufFormatStruct.Free(obj.native)
 }
 
 var pixbufLoaderClassStruct *gi.Struct
@@ -422,7 +424,11 @@ func pixbufLoaderClassStruct_Set() error {
 }
 
 type PixbufLoaderClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PixbufLoaderClassNewFromNative(native uintptr) *PixbufLoaderClass {
+	return &PixbufLoaderClass{native: native}
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -452,13 +458,12 @@ func PixbufLoaderClassStruct() *PixbufLoaderClass {
 		return nil
 	}
 
-	structGo := &PixbufLoaderClass{}
-	structGo.Native = pixbufLoaderClassStruct.Alloc()
+	structGo := PixbufLoaderClassNewFromNative(pixbufLoaderClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePixbufLoaderClass)
 	return structGo
 }
 func finalizePixbufLoaderClass(obj *PixbufLoaderClass) {
-	pixbufLoaderClassStruct.Free(obj.Native)
+	pixbufLoaderClassStruct.Free(obj.native)
 }
 
 var pixbufSimpleAnimClassStruct *gi.Struct
@@ -473,7 +478,11 @@ func pixbufSimpleAnimClassStruct_Set() error {
 }
 
 type PixbufSimpleAnimClass struct {
-	Native uintptr
+	native uintptr
+}
+
+func PixbufSimpleAnimClassNewFromNative(native uintptr) *PixbufSimpleAnimClass {
+	return &PixbufSimpleAnimClass{native: native}
 }
 
 // PixbufSimpleAnimClassStruct creates an uninitialised PixbufSimpleAnimClass.
@@ -483,11 +492,10 @@ func PixbufSimpleAnimClassStruct() *PixbufSimpleAnimClass {
 		return nil
 	}
 
-	structGo := &PixbufSimpleAnimClass{}
-	structGo.Native = pixbufSimpleAnimClassStruct.Alloc()
+	structGo := PixbufSimpleAnimClassNewFromNative(pixbufSimpleAnimClassStruct.Alloc())
 	runtime.SetFinalizer(structGo, finalizePixbufSimpleAnimClass)
 	return structGo
 }
 func finalizePixbufSimpleAnimClass(obj *PixbufSimpleAnimClass) {
-	pixbufSimpleAnimClassStruct.Free(obj.Native)
+	pixbufSimpleAnimClassStruct.Free(obj.native)
 }

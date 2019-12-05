@@ -4,6 +4,7 @@ package pangoft2
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 )
@@ -20,7 +21,17 @@ func fontMapObject_Set() error {
 }
 
 type FontMap struct {
-	pango.FontMap
+	native uintptr
+}
+
+func FontMapNewFromNative(native uintptr) *FontMap {
+	return &FontMap{native: native}
+}
+func (recv *FontMap) FontMap() *pango.FontMap {
+	return pango.FontMapNewFromNative(recv.native)
+}
+func (recv *FontMap) Object() *gobject.Object {
+	return gobject.ObjectNewFromNative(recv.native)
 }
 
 var fontMapNewFunction *gi.Function
@@ -48,8 +59,7 @@ func FontMapNew() *FontMap {
 		ret = fontMapNewFunction.Invoke(nil, nil)
 	}
 
-	retGo := &FontMap{}
-	retGo.Native = ret.Pointer()
+	retGo := FontMapNewFromNative(ret.Pointer())
 
 	return retGo
 }
@@ -76,7 +86,7 @@ func fontMapSetResolutionFunction_Set() error {
 // SetResolution is a representation of the C type pango_ft2_font_map_set_resolution.
 func (recv *FontMap) SetResolution(dpiX float64, dpiY float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetFloat64(dpiX)
 	inArgs[2].SetFloat64(dpiY)
 
@@ -106,7 +116,7 @@ func fontMapSubstituteChangedFunction_Set() error {
 // SubstituteChanged is a representation of the C type pango_ft2_font_map_substitute_changed.
 func (recv *FontMap) SubstituteChanged() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native)
+	inArgs[0].SetPointer(recv.native)
 
 	err := fontMapSubstituteChangedFunction_Set()
 	if err == nil {
