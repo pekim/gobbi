@@ -11,7 +11,7 @@ type Class struct {
 }
 
 func (c *Class) init(ns *Namespace) {
-	c.Record.init(ns, true)
+	c.Record.init(ns, "Object")
 	c.setParent()
 }
 

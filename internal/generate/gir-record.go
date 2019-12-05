@@ -22,7 +22,6 @@ type Record struct {
 	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
-	isClass           bool
 	goName            string
 	newFromNativeName string
 	namespace         *Namespace
@@ -35,8 +34,7 @@ type Record struct {
 	giInfoSetFuncGoName string
 }
 
-func (r *Record) init(ns *Namespace, isClass bool) {
-	r.isClass = isClass
+func (r *Record) init(ns *Namespace, giInfoType string) {
 	r.namespace = ns
 
 	r.goName = r.Name
@@ -47,10 +45,7 @@ func (r *Record) init(ns *Namespace, isClass bool) {
 
 	r.newFromNativeName = fmt.Sprintf("%sNewFromNative", r.goName)
 
-	r.giInfotype = "Struct"
-	if r.isClass {
-		r.giInfotype = "Object"
-	}
+	r.giInfotype = giInfoType
 	r.giInfoGoName = fmt.Sprintf("%s%s", makeUnexportedGoName(r.Name), r.giInfotype)
 	r.giInfoOnceGoName = fmt.Sprintf("%s_Once", r.giInfoGoName)
 	r.giInfoSetFuncGoName = fmt.Sprintf("%s_Set", r.giInfoGoName)
@@ -71,11 +66,10 @@ func (r *Record) generate(f *file) {
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
 
-	if len(r.Constructors) == 0 {
+	if r.giInfotype == "Struct" && len(r.Constructors) == 0 {
 		r.generateStructConstructor(f)
 		r.generateStructFinalizer(f)
 	}
-
 }
 
 func (r *Record) generateGiInfo(f *file) {
@@ -104,11 +98,6 @@ func (r *Record) generateGiInfo(f *file) {
 			// var err error
 			g.Var().Id("err").Id("error")
 
-			newFuncName := "StructNew"
-			if r.isClass {
-				newFuncName = "ObjectNew"
-			}
-
 			//   colorStructOnce.Do(func() {
 			//     colorStruct, err = gi.StructNew("Gdk", "Color")
 			//   })
@@ -123,7 +112,7 @@ func (r *Record) generateGiInfo(f *file) {
 						Op(",").
 						Id("err").
 						Op("=").
-						Qual(gi.PackageName, newFuncName).
+						Qual(gi.PackageName, r.giInfotype+"New").
 						Call(jen.Lit(r.namespace.Name),
 							jen.Lit(r.Name))))
 
@@ -217,10 +206,6 @@ func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argVal
 }
 
 func (r *Record) generateStructFinalizer(f *file) {
-	if r.isClass {
-		return
-	}
-
 	// func finalizeSomeStruct(obj *SomeStruct) {
 	//   ...
 	// }
@@ -237,10 +222,6 @@ func (r *Record) generateStructFinalizer(f *file) {
 }
 
 func (r *Record) generateStructConstructor(f *file) {
-	if r.isClass {
-		return
-	}
-
 	f.Line()
 
 	funcName := r.goName + "Struct"

@@ -4,7 +4,7 @@ type Records []*Record
 
 func (rr Records) init(ns *Namespace) {
 	for _, record := range rr {
-		record.init(ns, false)
+		record.init(ns, "Struct")
 	}
 }
 

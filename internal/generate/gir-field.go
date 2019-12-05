@@ -59,16 +59,11 @@ func (f *Field) generateGetter(fi *file) {
 }
 
 func (f *Field) generateGetterBody(g *jen.Group) {
-	fieldGetFuncName := "StructFieldGet"
-	if f.record.isClass {
-		fieldGetFuncName = "ObjectFieldGet"
-	}
-
 	// GEN: argValue := gi.StructFieldGet(someStruct, recv.native, "field-name")
 	g.
 		Id("argValue").
 		Op(":=").
-		Qual(gi.PackageName, fieldGetFuncName).
+		Qual(gi.PackageName, f.record.giInfotype+"FieldGet").
 		Call(
 			jen.Id(f.record.giInfoGoName),
 			jen.Id(receiverName).Dot(fieldNameNative),
@@ -101,11 +96,6 @@ func (f *Field) generateSetter(fi *file) {
 }
 
 func (f *Field) generateSetterBody(g *jen.Group) {
-	fieldSetFuncName := "StructFieldSet"
-	if f.record.isClass {
-		fieldSetFuncName = "ObjectFieldSet"
-	}
-
 	jenValue := jen.Id("value")
 
 	if f.Type.isAlias() {
@@ -142,7 +132,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 		Call(value)
 
 	g.
-		Qual(gi.PackageName, fieldSetFuncName).
+		Qual(gi.PackageName, f.record.giInfotype+"FieldSet").
 		Call(
 			jen.Id(f.record.giInfoGoName),
 			jen.Id(receiverName).Dot(fieldNameNative),
