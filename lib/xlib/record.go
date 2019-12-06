@@ -4,6 +4,7 @@ package xlib
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type Display struct {
 
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
 	return &Display{native: native}
+}
+
+/*
+CastToDisplay down casts any arbitrary Object to Display.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Display.
+*/
+func (recv *Display) CastToDisplay(object *gobject.Object) *Display {
+	return DisplayNewFromNative(object.Native())
+}
+
+func (recv *Display) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // DisplayStruct creates an uninitialised Display.
@@ -62,6 +76,19 @@ func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 	return &Screen{native: native}
 }
 
+/*
+CastToScreen down casts any arbitrary Object to Screen.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Screen.
+*/
+func (recv *Screen) CastToScreen(object *gobject.Object) *Screen {
+	return ScreenNewFromNative(object.Native())
+}
+
+func (recv *Screen) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ScreenStruct creates an uninitialised Screen.
 func ScreenStruct() *Screen {
 	err := screenStruct_Set()
@@ -94,6 +121,19 @@ type Visual struct {
 
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
 	return &Visual{native: native}
+}
+
+/*
+CastToVisual down casts any arbitrary Object to Visual.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Visual.
+*/
+func (recv *Visual) CastToVisual(object *gobject.Object) *Visual {
+	return VisualNewFromNative(object.Native())
+}
+
+func (recv *Visual) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // VisualStruct creates an uninitialised Visual.
@@ -130,6 +170,19 @@ func XConfigureEventNewFromNative(native unsafe.Pointer) *XConfigureEvent {
 	return &XConfigureEvent{native: native}
 }
 
+/*
+CastToXConfigureEvent down casts any arbitrary Object to XConfigureEvent.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XConfigureEvent.
+*/
+func (recv *XConfigureEvent) CastToXConfigureEvent(object *gobject.Object) *XConfigureEvent {
+	return XConfigureEventNewFromNative(object.Native())
+}
+
+func (recv *XConfigureEvent) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // XConfigureEventStruct creates an uninitialised XConfigureEvent.
 func XConfigureEventStruct() *XConfigureEvent {
 	err := xConfigureEventStruct_Set()
@@ -162,6 +215,19 @@ type XImage struct {
 
 func XImageNewFromNative(native unsafe.Pointer) *XImage {
 	return &XImage{native: native}
+}
+
+/*
+CastToXImage down casts any arbitrary Object to XImage.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XImage.
+*/
+func (recv *XImage) CastToXImage(object *gobject.Object) *XImage {
+	return XImageNewFromNative(object.Native())
+}
+
+func (recv *XImage) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // XImageStruct creates an uninitialised XImage.
@@ -198,6 +264,19 @@ func XFontStructNewFromNative(native unsafe.Pointer) *XFontStruct {
 	return &XFontStruct{native: native}
 }
 
+/*
+CastToXFontStruct down casts any arbitrary Object to XFontStruct.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XFontStruct.
+*/
+func (recv *XFontStruct) CastToXFontStruct(object *gobject.Object) *XFontStruct {
+	return XFontStructNewFromNative(object.Native())
+}
+
+func (recv *XFontStruct) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // XFontStructStruct creates an uninitialised XFontStruct.
 func XFontStructStruct() *XFontStruct {
 	err := xFontStructStruct_Set()
@@ -230,6 +309,19 @@ type XTrapezoid struct {
 
 func XTrapezoidNewFromNative(native unsafe.Pointer) *XTrapezoid {
 	return &XTrapezoid{native: native}
+}
+
+/*
+CastToXTrapezoid down casts any arbitrary Object to XTrapezoid.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XTrapezoid.
+*/
+func (recv *XTrapezoid) CastToXTrapezoid(object *gobject.Object) *XTrapezoid {
+	return XTrapezoidNewFromNative(object.Native())
+}
+
+func (recv *XTrapezoid) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // XTrapezoidStruct creates an uninitialised XTrapezoid.
@@ -266,6 +358,19 @@ func XVisualInfoNewFromNative(native unsafe.Pointer) *XVisualInfo {
 	return &XVisualInfo{native: native}
 }
 
+/*
+CastToXVisualInfo down casts any arbitrary Object to XVisualInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XVisualInfo.
+*/
+func (recv *XVisualInfo) CastToXVisualInfo(object *gobject.Object) *XVisualInfo {
+	return XVisualInfoNewFromNative(object.Native())
+}
+
+func (recv *XVisualInfo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // XVisualInfoStruct creates an uninitialised XVisualInfo.
 func XVisualInfoStruct() *XVisualInfo {
 	err := xVisualInfoStruct_Set()
@@ -298,6 +403,19 @@ type XWindowAttributes struct {
 
 func XWindowAttributesNewFromNative(native unsafe.Pointer) *XWindowAttributes {
 	return &XWindowAttributes{native: native}
+}
+
+/*
+CastToXWindowAttributes down casts any arbitrary Object to XWindowAttributes.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a XWindowAttributes.
+*/
+func (recv *XWindowAttributes) CastToXWindowAttributes(object *gobject.Object) *XWindowAttributes {
+	return XWindowAttributesNewFromNative(object.Native())
+}
+
+func (recv *XWindowAttributes) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // XWindowAttributesStruct creates an uninitialised XWindowAttributes.

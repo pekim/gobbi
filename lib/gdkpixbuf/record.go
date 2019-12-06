@@ -4,6 +4,7 @@ package gdkpixbuf
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type PixbufFormat struct {
 
 func PixbufFormatNewFromNative(native unsafe.Pointer) *PixbufFormat {
 	return &PixbufFormat{native: native}
+}
+
+/*
+CastToPixbufFormat down casts any arbitrary Object to PixbufFormat.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufFormat.
+*/
+func (recv *PixbufFormat) CastToPixbufFormat(object *gobject.Object) *PixbufFormat {
+	return PixbufFormatNewFromNative(object.Native())
+}
+
+func (recv *PixbufFormat) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var pixbufFormatCopyFunction *gi.Function
@@ -432,6 +446,19 @@ func PixbufLoaderClassNewFromNative(native unsafe.Pointer) *PixbufLoaderClass {
 	return &PixbufLoaderClass{native: native}
 }
 
+/*
+CastToPixbufLoaderClass down casts any arbitrary Object to PixbufLoaderClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufLoaderClass.
+*/
+func (recv *PixbufLoaderClass) CastToPixbufLoaderClass(object *gobject.Object) *PixbufLoaderClass {
+	return PixbufLoaderClassNewFromNative(object.Native())
+}
+
+func (recv *PixbufLoaderClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -484,6 +511,19 @@ type PixbufSimpleAnimClass struct {
 
 func PixbufSimpleAnimClassNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimClass {
 	return &PixbufSimpleAnimClass{native: native}
+}
+
+/*
+CastToPixbufSimpleAnimClass down casts any arbitrary Object to PixbufSimpleAnimClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufSimpleAnimClass.
+*/
+func (recv *PixbufSimpleAnimClass) CastToPixbufSimpleAnimClass(object *gobject.Object) *PixbufSimpleAnimClass {
+	return PixbufSimpleAnimClassNewFromNative(object.Native())
+}
+
+func (recv *PixbufSimpleAnimClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // PixbufSimpleAnimClassStruct creates an uninitialised PixbufSimpleAnimClass.

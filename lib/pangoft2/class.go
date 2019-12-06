@@ -39,6 +39,19 @@ func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontMap down casts any arbitrary Object to FontMap.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontMap.
+*/
+func (recv *FontMap) CastToFontMap(object *gobject.Object) *FontMap {
+	return FontMapNewFromNative(object.Native())
+}
+
+func (recv *FontMap) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var fontMapNewFunction *gi.Function
 var fontMapNewFunction_Once sync.Once
 

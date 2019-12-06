@@ -29,6 +29,10 @@ func CClosureNewFromNative(native unsafe.Pointer) *CClosure {
 	return &CClosure{native: native}
 }
 
+func (recv *CClosure) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldClosure returns the C field 'closure'.
 func (recv *CClosure) FieldClosure() *Closure {
 	argValue := gi.StructFieldGet(cClosureStruct, recv.native, "closure")
@@ -79,6 +83,10 @@ type Closure struct {
 
 func ClosureNewFromNative(native unsafe.Pointer) *Closure {
 	return &Closure{native: native}
+}
+
+func (recv *Closure) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldInMarshal returns the C field 'in_marshal'.
@@ -299,6 +307,10 @@ func ClosureNotifyDataNewFromNative(native unsafe.Pointer) *ClosureNotifyData {
 	return &ClosureNotifyData{native: native}
 }
 
+func (recv *ClosureNotifyData) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
@@ -339,6 +351,10 @@ type EnumClass struct {
 
 func EnumClassNewFromNative(native unsafe.Pointer) *EnumClass {
 	return &EnumClass{native: native}
+}
+
+func (recv *EnumClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeClass returns the C field 'g_type_class'.
@@ -445,6 +461,10 @@ func EnumValueNewFromNative(native unsafe.Pointer) *EnumValue {
 	return &EnumValue{native: native}
 }
 
+func (recv *EnumValue) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldValue returns the C field 'value'.
 func (recv *EnumValue) FieldValue() int32 {
 	argValue := gi.StructFieldGet(enumValueStruct, recv.native, "value")
@@ -519,6 +539,10 @@ type FlagsClass struct {
 
 func FlagsClassNewFromNative(native unsafe.Pointer) *FlagsClass {
 	return &FlagsClass{native: native}
+}
+
+func (recv *FlagsClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeClass returns the C field 'g_type_class'.
@@ -611,6 +635,10 @@ func FlagsValueNewFromNative(native unsafe.Pointer) *FlagsValue {
 	return &FlagsValue{native: native}
 }
 
+func (recv *FlagsValue) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldValue returns the C field 'value'.
 func (recv *FlagsValue) FieldValue() uint32 {
 	argValue := gi.StructFieldGet(flagsValueStruct, recv.native, "value")
@@ -685,6 +713,10 @@ type InitiallyUnownedClass struct {
 
 func InitiallyUnownedClassNewFromNative(native unsafe.Pointer) *InitiallyUnownedClass {
 	return &InitiallyUnownedClass{native: native}
+}
+
+func (recv *InitiallyUnownedClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeClass returns the C field 'g_type_class'.
@@ -767,6 +799,10 @@ func InterfaceInfoNewFromNative(native unsafe.Pointer) *InterfaceInfo {
 	return &InterfaceInfo{native: native}
 }
 
+func (recv *InterfaceInfo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'interface_init' : for field getter : no Go type for 'InterfaceInitFunc'
 
 // UNSUPPORTED : C value 'interface_init' : for field setter : no Go type for 'InterfaceInitFunc'
@@ -811,6 +847,10 @@ type ObjectClass struct {
 
 func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
 	return &ObjectClass{native: native}
+}
+
+func (recv *ObjectClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeClass returns the C field 'g_type_class'.
@@ -1020,6 +1060,10 @@ func ObjectConstructParamNewFromNative(native unsafe.Pointer) *ObjectConstructPa
 	return &ObjectConstructParam{native: native}
 }
 
+func (recv *ObjectConstructParam) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldPspec returns the C field 'pspec'.
 func (recv *ObjectConstructParam) FieldPspec() *ParamSpec {
 	argValue := gi.StructFieldGet(objectConstructParamStruct, recv.native, "pspec")
@@ -1080,6 +1124,10 @@ type ParamSpecClass struct {
 
 func ParamSpecClassNewFromNative(native unsafe.Pointer) *ParamSpecClass {
 	return &ParamSpecClass{native: native}
+}
+
+func (recv *ParamSpecClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeClass returns the C field 'g_type_class'.
@@ -1148,6 +1196,10 @@ type ParamSpecPool struct {
 
 func ParamSpecPoolNewFromNative(native unsafe.Pointer) *ParamSpecPool {
 	return &ParamSpecPool{native: native}
+}
+
+func (recv *ParamSpecPool) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_param_spec_pool_insert' : parameter 'owner_type' of type 'GType' not supported
@@ -1219,6 +1271,10 @@ type ParamSpecTypeInfo struct {
 
 func ParamSpecTypeInfoNewFromNative(native unsafe.Pointer) *ParamSpecTypeInfo {
 	return &ParamSpecTypeInfo{native: native}
+}
+
+func (recv *ParamSpecTypeInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldInstanceSize returns the C field 'instance_size'.
@@ -1307,6 +1363,10 @@ func ParameterNewFromNative(native unsafe.Pointer) *Parameter {
 	return &Parameter{native: native}
 }
 
+func (recv *Parameter) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldName returns the C field 'name'.
 func (recv *Parameter) FieldName() string {
 	argValue := gi.StructFieldGet(parameterStruct, recv.native, "name")
@@ -1367,6 +1427,10 @@ type SignalInvocationHint struct {
 
 func SignalInvocationHintNewFromNative(native unsafe.Pointer) *SignalInvocationHint {
 	return &SignalInvocationHint{native: native}
+}
+
+func (recv *SignalInvocationHint) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldSignalId returns the C field 'signal_id'.
@@ -1433,6 +1497,10 @@ type SignalQuery_ struct {
 
 func SignalQuery_NewFromNative(native unsafe.Pointer) *SignalQuery_ {
 	return &SignalQuery_{native: native}
+}
+
+func (recv *SignalQuery_) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldSignalId returns the C field 'signal_id'.
@@ -1525,6 +1593,10 @@ type TypeClass struct {
 
 func TypeClassNewFromNative(native unsafe.Pointer) *TypeClass {
 	return &TypeClass{native: native}
+}
+
+func (recv *TypeClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var typeClassAddPrivateFunction *gi.Function
@@ -1712,6 +1784,10 @@ func TypeFundamentalInfoNewFromNative(native unsafe.Pointer) *TypeFundamentalInf
 	return &TypeFundamentalInfo{native: native}
 }
 
+func (recv *TypeFundamentalInfo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'type_flags' : for field getter : no Go type for 'TypeFundamentalFlags'
 
 // UNSUPPORTED : C value 'type_flags' : for field setter : no Go type for 'TypeFundamentalFlags'
@@ -1748,6 +1824,10 @@ type TypeInfo struct {
 
 func TypeInfoNewFromNative(native unsafe.Pointer) *TypeInfo {
 	return &TypeInfo{native: native}
+}
+
+func (recv *TypeInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldClassSize returns the C field 'class_size'.
@@ -1864,6 +1944,10 @@ func TypeInstanceNewFromNative(native unsafe.Pointer) *TypeInstance {
 	return &TypeInstance{native: native}
 }
 
+func (recv *TypeInstance) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_type_instance_get_private' : parameter 'private_type' of type 'GType' not supported
 
 // TypeInstanceStruct creates an uninitialised TypeInstance.
@@ -1898,6 +1982,10 @@ type TypeInterface struct {
 
 func TypeInterfaceNewFromNative(native unsafe.Pointer) *TypeInterface {
 	return &TypeInterface{native: native}
+}
+
+func (recv *TypeInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var typeInterfacePeekParentFunction *gi.Function
@@ -1964,6 +2052,10 @@ type TypeModuleClass struct {
 
 func TypeModuleClassNewFromNative(native unsafe.Pointer) *TypeModuleClass {
 	return &TypeModuleClass{native: native}
+}
+
+func (recv *TypeModuleClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -2038,6 +2130,10 @@ func TypePluginClassNewFromNative(native unsafe.Pointer) *TypePluginClass {
 	return &TypePluginClass{native: native}
 }
 
+func (recv *TypePluginClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'use_plugin' : for field getter : no Go type for 'TypePluginUse'
 
 // UNSUPPORTED : C value 'use_plugin' : for field setter : no Go type for 'TypePluginUse'
@@ -2086,6 +2182,10 @@ type TypeQuery struct {
 
 func TypeQueryNewFromNative(native unsafe.Pointer) *TypeQuery {
 	return &TypeQuery{native: native}
+}
+
+func (recv *TypeQuery) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'type' : for field getter : no Go type for 'GType'
@@ -2166,6 +2266,10 @@ type TypeValueTable struct {
 
 func TypeValueTableNewFromNative(native unsafe.Pointer) *TypeValueTable {
 	return &TypeValueTable{native: native}
+}
+
+func (recv *TypeValueTable) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'value_init' : for field getter : missing Type
@@ -2252,6 +2356,10 @@ type Value struct {
 
 func ValueNewFromNative(native unsafe.Pointer) *Value {
 	return &Value{native: native}
+}
+
+func (recv *Value) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : missing Type
@@ -3791,6 +3899,10 @@ func ValueArrayNewFromNative(native unsafe.Pointer) *ValueArray {
 	return &ValueArray{native: native}
 }
 
+func (recv *ValueArray) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldNValues returns the C field 'n_values'.
 func (recv *ValueArray) FieldNValues() uint32 {
 	argValue := gi.StructFieldGet(valueArrayStruct, recv.native, "n_values")
@@ -4098,6 +4210,10 @@ type WeakRef struct {
 
 func WeakRefNewFromNative(native unsafe.Pointer) *WeakRef {
 	return &WeakRef{native: native}
+}
+
+func (recv *WeakRef) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var weakRefClearFunction *gi.Function

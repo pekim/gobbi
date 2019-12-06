@@ -4,6 +4,7 @@ package javascriptcore
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type GlobalContextRef struct {
 
 func GlobalContextRefNewFromNative(native unsafe.Pointer) *GlobalContextRef {
 	return &GlobalContextRef{native: native}
+}
+
+/*
+CastToGlobalContextRef down casts any arbitrary Object to GlobalContextRef.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlobalContextRef.
+*/
+func (recv *GlobalContextRef) CastToGlobalContextRef(object *gobject.Object) *GlobalContextRef {
+	return GlobalContextRefNewFromNative(object.Native())
+}
+
+func (recv *GlobalContextRef) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var globalContextRefRefFunction *gi.Function
@@ -118,6 +132,19 @@ func ValueRefNewFromNative(native unsafe.Pointer) *ValueRef {
 	return &ValueRef{native: native}
 }
 
+/*
+CastToValueRef down casts any arbitrary Object to ValueRef.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ValueRef.
+*/
+func (recv *ValueRef) CastToValueRef(object *gobject.Object) *ValueRef {
+	return ValueRefNewFromNative(object.Native())
+}
+
+func (recv *ValueRef) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ValueRefStruct creates an uninitialised ValueRef.
 func ValueRefStruct() *ValueRef {
 	err := valueRefStruct_Set()
@@ -150,6 +177,19 @@ type StringRef struct {
 
 func StringRefNewFromNative(native unsafe.Pointer) *StringRef {
 	return &StringRef{native: native}
+}
+
+/*
+CastToStringRef down casts any arbitrary Object to StringRef.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StringRef.
+*/
+func (recv *StringRef) CastToStringRef(object *gobject.Object) *StringRef {
+	return StringRefNewFromNative(object.Native())
+}
+
+func (recv *StringRef) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var stringRefRefFunction *gi.Function
@@ -310,6 +350,19 @@ func ClassClassNewFromNative(native unsafe.Pointer) *ClassClass {
 	return &ClassClass{native: native}
 }
 
+/*
+CastToClassClass down casts any arbitrary Object to ClassClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ClassClass.
+*/
+func (recv *ClassClass) CastToClassClass(object *gobject.Object) *ClassClass {
+	return ClassClassNewFromNative(object.Native())
+}
+
+func (recv *ClassClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ClassClassStruct creates an uninitialised ClassClass.
 func ClassClassStruct() *ClassClass {
 	err := classClassStruct_Set()
@@ -342,6 +395,19 @@ type ClassVTable struct {
 
 func ClassVTableNewFromNative(native unsafe.Pointer) *ClassVTable {
 	return &ClassVTable{native: native}
+}
+
+/*
+CastToClassVTable down casts any arbitrary Object to ClassVTable.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ClassVTable.
+*/
+func (recv *ClassVTable) CastToClassVTable(object *gobject.Object) *ClassVTable {
+	return ClassVTableNewFromNative(object.Native())
+}
+
+func (recv *ClassVTable) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'get_property' : for field getter : no Go type for 'ClassGetPropertyFunction'
@@ -414,6 +480,19 @@ func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
 	return &ContextClass{native: native}
 }
 
+/*
+CastToContextClass down casts any arbitrary Object to ContextClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContextClass.
+*/
+func (recv *ContextClass) CastToContextClass(object *gobject.Object) *ContextClass {
+	return ContextClassNewFromNative(object.Native())
+}
+
+func (recv *ContextClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -468,6 +547,19 @@ func ContextPrivateNewFromNative(native unsafe.Pointer) *ContextPrivate {
 	return &ContextPrivate{native: native}
 }
 
+/*
+CastToContextPrivate down casts any arbitrary Object to ContextPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContextPrivate.
+*/
+func (recv *ContextPrivate) CastToContextPrivate(object *gobject.Object) *ContextPrivate {
+	return ContextPrivateNewFromNative(object.Native())
+}
+
+func (recv *ContextPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ContextPrivateStruct creates an uninitialised ContextPrivate.
 func ContextPrivateStruct() *ContextPrivate {
 	err := contextPrivateStruct_Set()
@@ -500,6 +592,19 @@ type ExceptionClass struct {
 
 func ExceptionClassNewFromNative(native unsafe.Pointer) *ExceptionClass {
 	return &ExceptionClass{native: native}
+}
+
+/*
+CastToExceptionClass down casts any arbitrary Object to ExceptionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ExceptionClass.
+*/
+func (recv *ExceptionClass) CastToExceptionClass(object *gobject.Object) *ExceptionClass {
+	return ExceptionClassNewFromNative(object.Native())
+}
+
+func (recv *ExceptionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -556,6 +661,19 @@ func ExceptionPrivateNewFromNative(native unsafe.Pointer) *ExceptionPrivate {
 	return &ExceptionPrivate{native: native}
 }
 
+/*
+CastToExceptionPrivate down casts any arbitrary Object to ExceptionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ExceptionPrivate.
+*/
+func (recv *ExceptionPrivate) CastToExceptionPrivate(object *gobject.Object) *ExceptionPrivate {
+	return ExceptionPrivateNewFromNative(object.Native())
+}
+
+func (recv *ExceptionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ExceptionPrivateStruct creates an uninitialised ExceptionPrivate.
 func ExceptionPrivateStruct() *ExceptionPrivate {
 	err := exceptionPrivateStruct_Set()
@@ -588,6 +706,19 @@ type ValueClass struct {
 
 func ValueClassNewFromNative(native unsafe.Pointer) *ValueClass {
 	return &ValueClass{native: native}
+}
+
+/*
+CastToValueClass down casts any arbitrary Object to ValueClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ValueClass.
+*/
+func (recv *ValueClass) CastToValueClass(object *gobject.Object) *ValueClass {
+	return ValueClassNewFromNative(object.Native())
+}
+
+func (recv *ValueClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -644,6 +775,19 @@ func ValuePrivateNewFromNative(native unsafe.Pointer) *ValuePrivate {
 	return &ValuePrivate{native: native}
 }
 
+/*
+CastToValuePrivate down casts any arbitrary Object to ValuePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ValuePrivate.
+*/
+func (recv *ValuePrivate) CastToValuePrivate(object *gobject.Object) *ValuePrivate {
+	return ValuePrivateNewFromNative(object.Native())
+}
+
+func (recv *ValuePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ValuePrivateStruct creates an uninitialised ValuePrivate.
 func ValuePrivateStruct() *ValuePrivate {
 	err := valuePrivateStruct_Set()
@@ -676,6 +820,19 @@ type VirtualMachineClass struct {
 
 func VirtualMachineClassNewFromNative(native unsafe.Pointer) *VirtualMachineClass {
 	return &VirtualMachineClass{native: native}
+}
+
+/*
+CastToVirtualMachineClass down casts any arbitrary Object to VirtualMachineClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VirtualMachineClass.
+*/
+func (recv *VirtualMachineClass) CastToVirtualMachineClass(object *gobject.Object) *VirtualMachineClass {
+	return VirtualMachineClassNewFromNative(object.Native())
+}
+
+func (recv *VirtualMachineClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -732,6 +889,19 @@ func VirtualMachinePrivateNewFromNative(native unsafe.Pointer) *VirtualMachinePr
 	return &VirtualMachinePrivate{native: native}
 }
 
+/*
+CastToVirtualMachinePrivate down casts any arbitrary Object to VirtualMachinePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VirtualMachinePrivate.
+*/
+func (recv *VirtualMachinePrivate) CastToVirtualMachinePrivate(object *gobject.Object) *VirtualMachinePrivate {
+	return VirtualMachinePrivateNewFromNative(object.Native())
+}
+
+func (recv *VirtualMachinePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // VirtualMachinePrivateStruct creates an uninitialised VirtualMachinePrivate.
 func VirtualMachinePrivateStruct() *VirtualMachinePrivate {
 	err := virtualMachinePrivateStruct_Set()
@@ -764,6 +934,19 @@ type WeakValueClass struct {
 
 func WeakValueClassNewFromNative(native unsafe.Pointer) *WeakValueClass {
 	return &WeakValueClass{native: native}
+}
+
+/*
+CastToWeakValueClass down casts any arbitrary Object to WeakValueClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WeakValueClass.
+*/
+func (recv *WeakValueClass) CastToWeakValueClass(object *gobject.Object) *WeakValueClass {
+	return WeakValueClassNewFromNative(object.Native())
+}
+
+func (recv *WeakValueClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -818,6 +1001,19 @@ type WeakValuePrivate struct {
 
 func WeakValuePrivateNewFromNative(native unsafe.Pointer) *WeakValuePrivate {
 	return &WeakValuePrivate{native: native}
+}
+
+/*
+CastToWeakValuePrivate down casts any arbitrary Object to WeakValuePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WeakValuePrivate.
+*/
+func (recv *WeakValuePrivate) CastToWeakValuePrivate(object *gobject.Object) *WeakValuePrivate {
+	return WeakValuePrivateNewFromNative(object.Native())
+}
+
+func (recv *WeakValuePrivate) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // WeakValuePrivateStruct creates an uninitialised WeakValuePrivate.

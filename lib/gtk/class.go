@@ -66,6 +66,19 @@ func (recv *AboutDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAboutDialog down casts any arbitrary Object to AboutDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AboutDialog.
+*/
+func (recv *AboutDialog) CastToAboutDialog(object *gobject.Object) *AboutDialog {
+	return AboutDialogNewFromNative(object.Native())
+}
+
+func (recv *AboutDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *AboutDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(aboutDialogObject, recv.native, "parent_instance")
@@ -901,6 +914,19 @@ func (recv *AccelGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAccelGroup down casts any arbitrary Object to AccelGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AccelGroup.
+*/
+func (recv *AccelGroup) CastToAccelGroup(object *gobject.Object) *AccelGroup {
+	return AccelGroupNewFromNative(object.Native())
+}
+
+func (recv *AccelGroup) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1095,6 +1121,19 @@ func (recv *AccelLabel) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *AccelLabel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAccelLabel down casts any arbitrary Object to AccelLabel.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AccelLabel.
+*/
+func (recv *AccelLabel) CastToAccelLabel(object *gobject.Object) *AccelLabel {
+	return AccelLabelNewFromNative(object.Native())
+}
+
+func (recv *AccelLabel) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldLabel returns the C field 'label'.
@@ -1312,6 +1351,19 @@ func (recv *AccelMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAccelMap down casts any arbitrary Object to AccelMap.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AccelMap.
+*/
+func (recv *AccelMap) CastToAccelMap(object *gobject.Object) *AccelMap {
+	return AccelMapNewFromNative(object.Native())
+}
+
+func (recv *AccelMap) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var accessibleObject *gi.Object
 var accessibleObject_Once sync.Once
 
@@ -1339,6 +1391,19 @@ func (recv *Accessible) ObjectAtk() *atk.Object {
 // Object upcasts to *Object
 func (recv *Accessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAccessible down casts any arbitrary Object to Accessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Accessible.
+*/
+func (recv *Accessible) CastToAccessible(object *gobject.Object) *Accessible {
+	return AccessibleNewFromNative(object.Native())
+}
+
+func (recv *Accessible) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Atk.Object'
@@ -1456,6 +1521,19 @@ func ActionNewFromNative(native unsafe.Pointer) *Action {
 // Object upcasts to *Object
 func (recv *Action) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAction down casts any arbitrary Object to Action.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Action.
+*/
+func (recv *Action) CastToAction(object *gobject.Object) *Action {
+	return ActionNewFromNative(object.Native())
+}
+
+func (recv *Action) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'object' : for field getter : no Go type for 'GObject.Object'
@@ -2675,6 +2753,19 @@ func (recv *ActionBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToActionBar down casts any arbitrary Object to ActionBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionBar.
+*/
+func (recv *ActionBar) CastToActionBar(object *gobject.Object) *ActionBar {
+	return ActionBarNewFromNative(object.Native())
+}
+
+func (recv *ActionBar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var actionBarNewFunction *gi.Function
 var actionBarNewFunction_Once sync.Once
 
@@ -2846,6 +2937,19 @@ func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
 // Object upcasts to *Object
 func (recv *ActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToActionGroup down casts any arbitrary Object to ActionGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionGroup.
+*/
+func (recv *ActionGroup) CastToActionGroup(object *gobject.Object) *ActionGroup {
+	return ActionGroupNewFromNative(object.Native())
+}
+
+func (recv *ActionGroup) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -3325,6 +3429,19 @@ func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Adjustment) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAdjustment down casts any arbitrary Object to Adjustment.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Adjustment.
+*/
+func (recv *Adjustment) CastToAdjustment(object *gobject.Object) *Adjustment {
+	return AdjustmentNewFromNative(object.Native())
+}
+
+func (recv *Adjustment) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -3944,6 +4061,19 @@ func (recv *Alignment) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAlignment down casts any arbitrary Object to Alignment.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Alignment.
+*/
+func (recv *Alignment) CastToAlignment(object *gobject.Object) *Alignment {
+	return AlignmentNewFromNative(object.Native())
+}
+
+func (recv *Alignment) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldBin returns the C field 'bin'.
 func (recv *Alignment) FieldBin() *Bin {
 	argValue := gi.ObjectFieldGet(alignmentObject, recv.native, "bin")
@@ -4139,6 +4269,19 @@ func (recv *AppChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *AppChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAppChooserButton down casts any arbitrary Object to AppChooserButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppChooserButton.
+*/
+func (recv *AppChooserButton) CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
+	return AppChooserButtonNewFromNative(object.Native())
+}
+
+func (recv *AppChooserButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -4483,6 +4626,19 @@ func (recv *AppChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAppChooserDialog down casts any arbitrary Object to AppChooserDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppChooserDialog.
+*/
+func (recv *AppChooserDialog) CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
+	return AppChooserDialogNewFromNative(object.Native())
+}
+
+func (recv *AppChooserDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *AppChooserDialog) FieldParent() *Dialog {
 	argValue := gi.ObjectFieldGet(appChooserDialogObject, recv.native, "parent")
@@ -4636,6 +4792,19 @@ func (recv *AppChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *AppChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAppChooserWidget down casts any arbitrary Object to AppChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppChooserWidget.
+*/
+func (recv *AppChooserWidget) CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
+	return AppChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *AppChooserWidget) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -5079,6 +5248,19 @@ func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToApplication down casts any arbitrary Object to Application.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Application.
+*/
+func (recv *Application) CastToApplication(object *gobject.Object) *Application {
+	return ApplicationNewFromNative(object.Native())
+}
+
+func (recv *Application) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gio.Application'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gio.Application'
@@ -5426,6 +5608,19 @@ func (recv *ApplicationWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToApplicationWindow down casts any arbitrary Object to ApplicationWindow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ApplicationWindow.
+*/
+func (recv *ApplicationWindow) CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
+	return ApplicationWindowNewFromNative(object.Native())
+}
+
+func (recv *ApplicationWindow) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ApplicationWindow) FieldParentInstance() *Window {
 	argValue := gi.ObjectFieldGet(applicationWindowObject, recv.native, "parent_instance")
@@ -5665,6 +5860,19 @@ func (recv *Arrow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToArrow down casts any arbitrary Object to Arrow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Arrow.
+*/
+func (recv *Arrow) CastToArrow(object *gobject.Object) *Arrow {
+	return ArrowNewFromNative(object.Native())
+}
+
+func (recv *Arrow) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldMisc returns the C field 'misc'.
 func (recv *Arrow) FieldMisc() *Misc {
 	argValue := gi.ObjectFieldGet(arrowObject, recv.native, "misc")
@@ -5781,6 +5989,19 @@ func (recv *ArrowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToArrowAccessible down casts any arbitrary Object to ArrowAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ArrowAccessible.
+*/
+func (recv *ArrowAccessible) CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
+	return ArrowAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ArrowAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ArrowAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(arrowAccessibleObject, recv.native, "parent")
@@ -5856,6 +6077,19 @@ func (recv *AspectFrame) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *AspectFrame) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAspectFrame down casts any arbitrary Object to AspectFrame.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AspectFrame.
+*/
+func (recv *AspectFrame) CastToAspectFrame(object *gobject.Object) *AspectFrame {
+	return AspectFrameNewFromNative(object.Native())
+}
+
+func (recv *AspectFrame) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldFrame returns the C field 'frame'.
@@ -5987,6 +6221,19 @@ func (recv *Assistant) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Assistant) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAssistant down casts any arbitrary Object to Assistant.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Assistant.
+*/
+func (recv *Assistant) CastToAssistant(object *gobject.Object) *Assistant {
+	return AssistantNewFromNative(object.Native())
+}
+
+func (recv *Assistant) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -6759,6 +7006,19 @@ func (recv *Bin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToBin down casts any arbitrary Object to Bin.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Bin.
+*/
+func (recv *Bin) CastToBin(object *gobject.Object) *Bin {
+	return BinNewFromNative(object.Native())
+}
+
+func (recv *Bin) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldContainer returns the C field 'container'.
 func (recv *Bin) FieldContainer() *Container {
 	argValue := gi.ObjectFieldGet(binObject, recv.native, "container")
@@ -6849,6 +7109,19 @@ func (recv *BooleanCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToBooleanCellAccessible down casts any arbitrary Object to BooleanCellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BooleanCellAccessible.
+*/
+func (recv *BooleanCellAccessible) CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
+	return BooleanCellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *BooleanCellAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *BooleanCellAccessible) FieldParent() *RendererCellAccessible {
 	argValue := gi.ObjectFieldGet(booleanCellAccessibleObject, recv.native, "parent")
@@ -6914,6 +7187,19 @@ func (recv *Box) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Box) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToBox down casts any arbitrary Object to Box.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Box.
+*/
+func (recv *Box) CastToBox(object *gobject.Object) *Box {
+	return BoxNewFromNative(object.Native())
+}
+
+func (recv *Box) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -7394,6 +7680,19 @@ func (recv *Builder) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToBuilder down casts any arbitrary Object to Builder.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Builder.
+*/
+func (recv *Builder) CastToBuilder(object *gobject.Object) *Builder {
+	return BuilderNewFromNative(object.Native())
+}
+
+func (recv *Builder) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -7833,6 +8132,19 @@ func (recv *Button) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Button) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToButton down casts any arbitrary Object to Button.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Button.
+*/
+func (recv *Button) CastToButton(object *gobject.Object) *Button {
+	return ButtonNewFromNative(object.Native())
+}
+
+func (recv *Button) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var buttonNewFunction *gi.Function
@@ -8731,6 +9043,19 @@ func (recv *ButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToButtonAccessible down casts any arbitrary Object to ButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ButtonAccessible.
+*/
+func (recv *ButtonAccessible) CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
+	return ButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ButtonAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(buttonAccessibleObject, recv.native, "parent")
@@ -8801,6 +9126,19 @@ func (recv *ButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToButtonBox down casts any arbitrary Object to ButtonBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ButtonBox.
+*/
+func (recv *ButtonBox) CastToButtonBox(object *gobject.Object) *ButtonBox {
+	return ButtonBoxNewFromNative(object.Native())
+}
+
+func (recv *ButtonBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBox returns the C field 'box'.
@@ -9068,6 +9406,19 @@ func (recv *Calendar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Calendar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCalendar down casts any arbitrary Object to Calendar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Calendar.
+*/
+func (recv *Calendar) CastToCalendar(object *gobject.Object) *Calendar {
+	return CalendarNewFromNative(object.Native())
+}
+
+func (recv *Calendar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidget returns the C field 'widget'.
@@ -9502,6 +9853,19 @@ func (recv *CellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellAccessible down casts any arbitrary Object to CellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellAccessible.
+*/
+func (recv *CellAccessible) CastToCellAccessible(object *gobject.Object) *CellAccessible {
+	return CellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *CellAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellAccessible) FieldParent() *Accessible {
 	argValue := gi.ObjectFieldGet(cellAccessibleObject, recv.native, "parent")
@@ -9557,6 +9921,19 @@ func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellArea down casts any arbitrary Object to CellArea.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellArea.
+*/
+func (recv *CellArea) CastToCellArea(object *gobject.Object) *CellArea {
+	return CellAreaNewFromNative(object.Native())
+}
+
+func (recv *CellArea) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'gtk_cell_area_activate' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
@@ -10439,6 +10816,19 @@ func (recv *CellAreaBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellAreaBox down casts any arbitrary Object to CellAreaBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellAreaBox.
+*/
+func (recv *CellAreaBox) CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
+	return CellAreaBoxNewFromNative(object.Native())
+}
+
+func (recv *CellAreaBox) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var cellAreaBoxNewFunction *gi.Function
 var cellAreaBoxNewFunction_Once sync.Once
 
@@ -10616,6 +11006,19 @@ func CellAreaContextNewFromNative(native unsafe.Pointer) *CellAreaContext {
 // Object upcasts to *Object
 func (recv *CellAreaContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellAreaContext down casts any arbitrary Object to CellAreaContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellAreaContext.
+*/
+func (recv *CellAreaContext) CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
+	return CellAreaContextNewFromNative(object.Native())
+}
+
+func (recv *CellAreaContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var cellAreaContextAllocateFunction *gi.Function
@@ -10962,6 +11365,19 @@ func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRenderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellRenderer down casts any arbitrary Object to CellRenderer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRenderer.
+*/
+func (recv *CellRenderer) CastToCellRenderer(object *gobject.Object) *CellRenderer {
+	return CellRendererNewFromNative(object.Native())
+}
+
+func (recv *CellRenderer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -11595,6 +12011,19 @@ func (recv *CellRendererAccel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellRendererAccel down casts any arbitrary Object to CellRendererAccel.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererAccel.
+*/
+func (recv *CellRendererAccel) CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
+	return CellRendererAccelNewFromNative(object.Native())
+}
+
+func (recv *CellRendererAccel) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererAccel) FieldParent() *CellRendererText {
 	argValue := gi.ObjectFieldGet(cellRendererAccelObject, recv.native, "parent")
@@ -11678,6 +12107,19 @@ func (recv *CellRendererCombo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellRendererCombo down casts any arbitrary Object to CellRendererCombo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererCombo.
+*/
+func (recv *CellRendererCombo) CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
+	return CellRendererComboNewFromNative(object.Native())
+}
+
+func (recv *CellRendererCombo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererCombo) FieldParent() *CellRendererText {
 	argValue := gi.ObjectFieldGet(cellRendererComboObject, recv.native, "parent")
@@ -11756,6 +12198,19 @@ func (recv *CellRendererPixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellRendererPixbuf down casts any arbitrary Object to CellRendererPixbuf.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererPixbuf.
+*/
+func (recv *CellRendererPixbuf) CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
+	return CellRendererPixbufNewFromNative(object.Native())
+}
+
+func (recv *CellRendererPixbuf) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererPixbuf) FieldParent() *CellRenderer {
 	argValue := gi.ObjectFieldGet(cellRendererPixbufObject, recv.native, "parent")
@@ -11832,6 +12287,19 @@ func (recv *CellRendererProgress) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererProgress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellRendererProgress down casts any arbitrary Object to CellRendererProgress.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererProgress.
+*/
+func (recv *CellRendererProgress) CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
+	return CellRendererProgressNewFromNative(object.Native())
+}
+
+func (recv *CellRendererProgress) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -11917,6 +12385,19 @@ func (recv *CellRendererSpin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellRendererSpin down casts any arbitrary Object to CellRendererSpin.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererSpin.
+*/
+func (recv *CellRendererSpin) CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
+	return CellRendererSpinNewFromNative(object.Native())
+}
+
+func (recv *CellRendererSpin) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererSpin) FieldParent() *CellRendererText {
 	argValue := gi.ObjectFieldGet(cellRendererSpinObject, recv.native, "parent")
@@ -11995,6 +12476,19 @@ func (recv *CellRendererSpinner) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCellRendererSpinner down casts any arbitrary Object to CellRendererSpinner.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererSpinner.
+*/
+func (recv *CellRendererSpinner) CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
+	return CellRendererSpinnerNewFromNative(object.Native())
+}
+
+func (recv *CellRendererSpinner) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererSpinner) FieldParent() *CellRenderer {
 	argValue := gi.ObjectFieldGet(cellRendererSpinnerObject, recv.native, "parent")
@@ -12071,6 +12565,19 @@ func (recv *CellRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellRendererText down casts any arbitrary Object to CellRendererText.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererText.
+*/
+func (recv *CellRendererText) CastToCellRendererText(object *gobject.Object) *CellRendererText {
+	return CellRendererTextNewFromNative(object.Native())
+}
+
+func (recv *CellRendererText) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -12178,6 +12685,19 @@ func (recv *CellRendererToggle) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererToggle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellRendererToggle down casts any arbitrary Object to CellRendererToggle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellRendererToggle.
+*/
+func (recv *CellRendererToggle) CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
+	return CellRendererToggleNewFromNative(object.Native())
+}
+
+func (recv *CellRendererToggle) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -12439,6 +12959,19 @@ func (recv *CellView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCellView down casts any arbitrary Object to CellView.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CellView.
+*/
+func (recv *CellView) CastToCellView(object *gobject.Object) *CellView {
+	return CellViewNewFromNative(object.Native())
+}
+
+func (recv *CellView) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -12864,6 +13397,19 @@ func (recv *CheckButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCheckButton down casts any arbitrary Object to CheckButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CheckButton.
+*/
+func (recv *CheckButton) CastToCheckButton(object *gobject.Object) *CheckButton {
+	return CheckButtonNewFromNative(object.Native())
+}
+
+func (recv *CheckButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldToggleButton returns the C field 'toggle_button'.
 func (recv *CheckButton) FieldToggleButton() *ToggleButton {
 	argValue := gi.ObjectFieldGet(checkButtonObject, recv.native, "toggle_button")
@@ -13019,6 +13565,19 @@ func (recv *CheckMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CheckMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCheckMenuItem down casts any arbitrary Object to CheckMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CheckMenuItem.
+*/
+func (recv *CheckMenuItem) CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
+	return CheckMenuItemNewFromNative(object.Native())
+}
+
+func (recv *CheckMenuItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMenuItem returns the C field 'menu_item'.
@@ -13389,6 +13948,19 @@ func (recv *CheckMenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCheckMenuItemAccessible down casts any arbitrary Object to CheckMenuItemAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CheckMenuItemAccessible.
+*/
+func (recv *CheckMenuItemAccessible) CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
+	return CheckMenuItemAccessibleNewFromNative(object.Native())
+}
+
+func (recv *CheckMenuItemAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CheckMenuItemAccessible) FieldParent() *MenuItemAccessible {
 	argValue := gi.ObjectFieldGet(checkMenuItemAccessibleObject, recv.native, "parent")
@@ -13439,6 +14011,19 @@ func ClipboardNewFromNative(native unsafe.Pointer) *Clipboard {
 // Object upcasts to *Object
 func (recv *Clipboard) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToClipboard down casts any arbitrary Object to Clipboard.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Clipboard.
+*/
+func (recv *Clipboard) CastToClipboard(object *gobject.Object) *Clipboard {
+	return ClipboardNewFromNative(object.Native())
+}
+
+func (recv *Clipboard) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var clipboardClearFunction *gi.Function
@@ -13801,6 +14386,19 @@ func (recv *ColorButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToColorButton down casts any arbitrary Object to ColorButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorButton.
+*/
+func (recv *ColorButton) CastToColorButton(object *gobject.Object) *ColorButton {
+	return ColorButtonNewFromNative(object.Native())
+}
+
+func (recv *ColorButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldButton returns the C field 'button'.
 func (recv *ColorButton) FieldButton() *Button {
 	argValue := gi.ObjectFieldGet(colorButtonObject, recv.native, "button")
@@ -14094,6 +14692,19 @@ func (recv *ColorChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToColorChooserDialog down casts any arbitrary Object to ColorChooserDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorChooserDialog.
+*/
+func (recv *ColorChooserDialog) CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
+	return ColorChooserDialogNewFromNative(object.Native())
+}
+
+func (recv *ColorChooserDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ColorChooserDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(colorChooserDialogObject, recv.native, "parent_instance")
@@ -14185,6 +14796,19 @@ func (recv *ColorChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToColorChooserWidget down casts any arbitrary Object to ColorChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorChooserWidget.
+*/
+func (recv *ColorChooserWidget) CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
+	return ColorChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *ColorChooserWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ColorChooserWidget) FieldParentInstance() *Box {
 	argValue := gi.ObjectFieldGet(colorChooserWidgetObject, recv.native, "parent_instance")
@@ -14271,6 +14895,19 @@ func (recv *ColorSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ColorSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToColorSelection down casts any arbitrary Object to ColorSelection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorSelection.
+*/
+func (recv *ColorSelection) CastToColorSelection(object *gobject.Object) *ColorSelection {
+	return ColorSelectionNewFromNative(object.Native())
+}
+
+func (recv *ColorSelection) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -14663,6 +15300,19 @@ func (recv *ColorSelectionDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToColorSelectionDialog down casts any arbitrary Object to ColorSelectionDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorSelectionDialog.
+*/
+func (recv *ColorSelectionDialog) CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
+	return ColorSelectionDialogNewFromNative(object.Native())
+}
+
+func (recv *ColorSelectionDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ColorSelectionDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(colorSelectionDialogObject, recv.native, "parent_instance")
@@ -14783,6 +15433,19 @@ func (recv *ComboBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ComboBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToComboBox down casts any arbitrary Object to ComboBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ComboBox.
+*/
+func (recv *ComboBox) CastToComboBox(object *gobject.Object) *ComboBox {
+	return ComboBoxNewFromNative(object.Native())
+}
+
+func (recv *ComboBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -15870,6 +16533,19 @@ func (recv *ComboBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToComboBoxAccessible down casts any arbitrary Object to ComboBoxAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ComboBoxAccessible.
+*/
+func (recv *ComboBoxAccessible) CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
+	return ComboBoxAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ComboBoxAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ComboBoxAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(comboBoxAccessibleObject, recv.native, "parent")
@@ -15945,6 +16621,19 @@ func (recv *ComboBoxText) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ComboBoxText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToComboBoxText down casts any arbitrary Object to ComboBoxText.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ComboBoxText.
+*/
+func (recv *ComboBoxText) CastToComboBoxText(object *gobject.Object) *ComboBoxText {
+	return ComboBoxTextNewFromNative(object.Native())
+}
+
+func (recv *ComboBoxText) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var comboBoxTextNewFunction *gi.Function
@@ -16307,6 +16996,19 @@ func (recv *Container) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Container) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToContainer down casts any arbitrary Object to Container.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Container.
+*/
+func (recv *Container) CastToContainer(object *gobject.Object) *Container {
+	return ContainerNewFromNative(object.Native())
+}
+
+func (recv *Container) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidget returns the C field 'widget'.
@@ -16931,6 +17633,19 @@ func (recv *ContainerAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToContainerAccessible down casts any arbitrary Object to ContainerAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContainerAccessible.
+*/
+func (recv *ContainerAccessible) CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
+	return ContainerAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ContainerAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ContainerAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(containerAccessibleObject, recv.native, "parent")
@@ -16996,6 +17711,19 @@ func (recv *ContainerCellAccessible) ObjectAtk() *atk.Object {
 // Object upcasts to *Object
 func (recv *ContainerCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToContainerCellAccessible down casts any arbitrary Object to ContainerCellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContainerCellAccessible.
+*/
+func (recv *ContainerCellAccessible) CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessible {
+	return ContainerCellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ContainerCellAccessible) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -17138,6 +17866,19 @@ func CssProviderNewFromNative(native unsafe.Pointer) *CssProvider {
 // Object upcasts to *Object
 func (recv *CssProvider) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCssProvider down casts any arbitrary Object to CssProvider.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CssProvider.
+*/
+func (recv *CssProvider) CastToCssProvider(object *gobject.Object) *CssProvider {
+	return CssProviderNewFromNative(object.Native())
+}
+
+func (recv *CssProvider) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -17333,6 +18074,19 @@ func (recv *Dialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Dialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDialog down casts any arbitrary Object to Dialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Dialog.
+*/
+func (recv *Dialog) CastToDialog(object *gobject.Object) *Dialog {
+	return DialogNewFromNative(object.Native())
+}
+
+func (recv *Dialog) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWindow returns the C field 'window'.
@@ -17767,6 +18521,19 @@ func (recv *DrawingArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToDrawingArea down casts any arbitrary Object to DrawingArea.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DrawingArea.
+*/
+func (recv *DrawingArea) CastToDrawingArea(object *gobject.Object) *DrawingArea {
+	return DrawingAreaNewFromNative(object.Native())
+}
+
+func (recv *DrawingArea) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldWidget returns the C field 'widget'.
 func (recv *DrawingArea) FieldWidget() *Widget {
 	argValue := gi.ObjectFieldGet(drawingAreaObject, recv.native, "widget")
@@ -17843,6 +18610,19 @@ func (recv *Entry) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Entry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEntry down casts any arbitrary Object to Entry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Entry.
+*/
+func (recv *Entry) CastToEntry(object *gobject.Object) *Entry {
+	return EntryNewFromNative(object.Native())
+}
+
+func (recv *Entry) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var entryNewFunction *gi.Function
@@ -19737,6 +20517,19 @@ func (recv *EntryAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEntryAccessible down casts any arbitrary Object to EntryAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EntryAccessible.
+*/
+func (recv *EntryAccessible) CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
+	return EntryAccessibleNewFromNative(object.Native())
+}
+
+func (recv *EntryAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *EntryAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(entryAccessibleObject, recv.native, "parent")
@@ -19787,6 +20580,19 @@ func EntryBufferNewFromNative(native unsafe.Pointer) *EntryBuffer {
 // Object upcasts to *Object
 func (recv *EntryBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEntryBuffer down casts any arbitrary Object to EntryBuffer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EntryBuffer.
+*/
+func (recv *EntryBuffer) CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
+	return EntryBufferNewFromNative(object.Native())
+}
+
+func (recv *EntryBuffer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -20165,6 +20971,19 @@ func EntryCompletionNewFromNative(native unsafe.Pointer) *EntryCompletion {
 // Object upcasts to *Object
 func (recv *EntryCompletion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEntryCompletion down casts any arbitrary Object to EntryCompletion.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EntryCompletion.
+*/
+func (recv *EntryCompletion) CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
+	return EntryCompletionNewFromNative(object.Native())
+}
+
+func (recv *EntryCompletion) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -20937,6 +21756,19 @@ func (recv *EntryIconAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEntryIconAccessible down casts any arbitrary Object to EntryIconAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EntryIconAccessible.
+*/
+func (recv *EntryIconAccessible) CastToEntryIconAccessible(object *gobject.Object) *EntryIconAccessible {
+	return EntryIconAccessibleNewFromNative(object.Native())
+}
+
+func (recv *EntryIconAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var eventBoxObject *gi.Object
 var eventBoxObject_Once sync.Once
 
@@ -20979,6 +21811,19 @@ func (recv *EventBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *EventBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEventBox down casts any arbitrary Object to EventBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventBox.
+*/
+func (recv *EventBox) CastToEventBox(object *gobject.Object) *EventBox {
+	return EventBoxNewFromNative(object.Native())
+}
+
+func (recv *EventBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -21171,6 +22016,19 @@ func (recv *EventController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEventController down casts any arbitrary Object to EventController.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventController.
+*/
+func (recv *EventController) CastToEventController(object *gobject.Object) *EventController {
+	return EventControllerNewFromNative(object.Native())
+}
+
+func (recv *EventController) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var eventControllerGetPropagationPhaseFunction *gi.Function
 var eventControllerGetPropagationPhaseFunction_Once sync.Once
 
@@ -21321,6 +22179,19 @@ func (recv *EventControllerKey) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *EventControllerKey) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEventControllerKey down casts any arbitrary Object to EventControllerKey.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventControllerKey.
+*/
+func (recv *EventControllerKey) CastToEventControllerKey(object *gobject.Object) *EventControllerKey {
+	return EventControllerKeyNewFromNative(object.Native())
+}
+
+func (recv *EventControllerKey) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var eventControllerKeyNewFunction *gi.Function
@@ -21510,6 +22381,19 @@ func (recv *EventControllerMotion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEventControllerMotion down casts any arbitrary Object to EventControllerMotion.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventControllerMotion.
+*/
+func (recv *EventControllerMotion) CastToEventControllerMotion(object *gobject.Object) *EventControllerMotion {
+	return EventControllerMotionNewFromNative(object.Native())
+}
+
+func (recv *EventControllerMotion) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var eventControllerMotionNewFunction *gi.Function
 var eventControllerMotionNewFunction_Once sync.Once
 
@@ -21571,6 +22455,19 @@ func (recv *EventControllerScroll) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEventControllerScroll down casts any arbitrary Object to EventControllerScroll.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventControllerScroll.
+*/
+func (recv *EventControllerScroll) CastToEventControllerScroll(object *gobject.Object) *EventControllerScroll {
+	return EventControllerScrollNewFromNative(object.Native())
+}
+
+func (recv *EventControllerScroll) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_new' : parameter 'flags' of type 'EventControllerScrollFlags' not supported
 
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_get_flags' : return type 'EventControllerScrollFlags' not supported
@@ -21619,6 +22516,19 @@ func (recv *Expander) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Expander) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToExpander down casts any arbitrary Object to Expander.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Expander.
+*/
+func (recv *Expander) CastToExpander(object *gobject.Object) *Expander {
+	return ExpanderNewFromNative(object.Native())
+}
+
+func (recv *Expander) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -22245,6 +23155,19 @@ func (recv *ExpanderAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToExpanderAccessible down casts any arbitrary Object to ExpanderAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ExpanderAccessible.
+*/
+func (recv *ExpanderAccessible) CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
+	return ExpanderAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ExpanderAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ExpanderAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(expanderAccessibleObject, recv.native, "parent")
@@ -22315,6 +23238,19 @@ func (recv *FileChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FileChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFileChooserButton down casts any arbitrary Object to FileChooserButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileChooserButton.
+*/
+func (recv *FileChooserButton) CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
+	return FileChooserButtonNewFromNative(object.Native())
+}
+
+func (recv *FileChooserButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -22633,6 +23569,19 @@ func (recv *FileChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFileChooserDialog down casts any arbitrary Object to FileChooserDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileChooserDialog.
+*/
+func (recv *FileChooserDialog) CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
+	return FileChooserDialogNewFromNative(object.Native())
+}
+
+func (recv *FileChooserDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileChooserDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(fileChooserDialogObject, recv.native, "parent_instance")
@@ -22690,6 +23639,19 @@ func (recv *FileChooserNative) NativeDialog() *NativeDialog {
 // Object upcasts to *Object
 func (recv *FileChooserNative) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFileChooserNative down casts any arbitrary Object to FileChooserNative.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileChooserNative.
+*/
+func (recv *FileChooserNative) CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
+	return FileChooserNativeNewFromNative(object.Native())
+}
+
+func (recv *FileChooserNative) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fileChooserNativeNewFunction *gi.Function
@@ -22894,6 +23856,19 @@ func (recv *FileChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFileChooserWidget down casts any arbitrary Object to FileChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileChooserWidget.
+*/
+func (recv *FileChooserWidget) CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
+	return FileChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *FileChooserWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileChooserWidget) FieldParentInstance() *Box {
 	argValue := gi.ObjectFieldGet(fileChooserWidgetObject, recv.native, "parent_instance")
@@ -22981,6 +23956,19 @@ func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FileFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFileFilter down casts any arbitrary Object to FileFilter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileFilter.
+*/
+func (recv *FileFilter) CastToFileFilter(object *gobject.Object) *FileFilter {
+	return FileFilterNewFromNative(object.Native())
+}
+
+func (recv *FileFilter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fileFilterNewFunction *gi.Function
@@ -23240,6 +24228,19 @@ func (recv *Fixed) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFixed down casts any arbitrary Object to Fixed.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Fixed.
+*/
+func (recv *Fixed) CastToFixed(object *gobject.Object) *Fixed {
+	return FixedNewFromNative(object.Native())
+}
+
+func (recv *Fixed) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldContainer returns the C field 'container'.
 func (recv *Fixed) FieldContainer() *Container {
 	argValue := gi.ObjectFieldGet(fixedObject, recv.native, "container")
@@ -23383,6 +24384,19 @@ func (recv *FlowBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FlowBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFlowBox down casts any arbitrary Object to FlowBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FlowBox.
+*/
+func (recv *FlowBox) CastToFlowBox(object *gobject.Object) *FlowBox {
+	return FlowBoxNewFromNative(object.Native())
+}
+
+func (recv *FlowBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -24235,6 +25249,19 @@ func (recv *FlowBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFlowBoxAccessible down casts any arbitrary Object to FlowBoxAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FlowBoxAccessible.
+*/
+func (recv *FlowBoxAccessible) CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
+	return FlowBoxAccessibleNewFromNative(object.Native())
+}
+
+func (recv *FlowBoxAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *FlowBoxAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(flowBoxAccessibleObject, recv.native, "parent")
@@ -24305,6 +25332,19 @@ func (recv *FlowBoxChild) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FlowBoxChild) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFlowBoxChild down casts any arbitrary Object to FlowBoxChild.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FlowBoxChild.
+*/
+func (recv *FlowBoxChild) CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
+	return FlowBoxChildNewFromNative(object.Native())
+}
+
+func (recv *FlowBoxChild) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -24487,6 +25527,19 @@ func (recv *FlowBoxChildAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFlowBoxChildAccessible down casts any arbitrary Object to FlowBoxChildAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FlowBoxChildAccessible.
+*/
+func (recv *FlowBoxChildAccessible) CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
+	return FlowBoxChildAccessibleNewFromNative(object.Native())
+}
+
+func (recv *FlowBoxChildAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *FlowBoxChildAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(flowBoxChildAccessibleObject, recv.native, "parent")
@@ -24548,6 +25601,19 @@ func (recv *FontButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FontButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFontButton down casts any arbitrary Object to FontButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontButton.
+*/
+func (recv *FontButton) CastToFontButton(object *gobject.Object) *FontButton {
+	return FontButtonNewFromNative(object.Native())
+}
+
+func (recv *FontButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldButton returns the C field 'button'.
@@ -25050,6 +26116,19 @@ func (recv *FontChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontChooserDialog down casts any arbitrary Object to FontChooserDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontChooserDialog.
+*/
+func (recv *FontChooserDialog) CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
+	return FontChooserDialogNewFromNative(object.Native())
+}
+
+func (recv *FontChooserDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontChooserDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(fontChooserDialogObject, recv.native, "parent_instance")
@@ -25141,6 +26220,19 @@ func (recv *FontChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontChooserWidget down casts any arbitrary Object to FontChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontChooserWidget.
+*/
+func (recv *FontChooserWidget) CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
+	return FontChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *FontChooserWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontChooserWidget) FieldParentInstance() *Box {
 	argValue := gi.ObjectFieldGet(fontChooserWidgetObject, recv.native, "parent_instance")
@@ -25227,6 +26319,19 @@ func (recv *FontSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FontSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFontSelection down casts any arbitrary Object to FontSelection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontSelection.
+*/
+func (recv *FontSelection) CastToFontSelection(object *gobject.Object) *FontSelection {
+	return FontSelectionNewFromNative(object.Native())
+}
+
+func (recv *FontSelection) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -25649,6 +26754,19 @@ func (recv *FontSelectionDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontSelectionDialog down casts any arbitrary Object to FontSelectionDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontSelectionDialog.
+*/
+func (recv *FontSelectionDialog) CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
+	return FontSelectionDialogNewFromNative(object.Native())
+}
+
+func (recv *FontSelectionDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontSelectionDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(fontSelectionDialogObject, recv.native, "parent_instance")
@@ -25959,6 +27077,19 @@ func (recv *Frame) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Frame) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFrame down casts any arbitrary Object to Frame.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Frame.
+*/
+func (recv *Frame) CastToFrame(object *gobject.Object) *Frame {
+	return FrameNewFromNative(object.Native())
+}
+
+func (recv *Frame) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -26297,6 +27428,19 @@ func (recv *FrameAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFrameAccessible down casts any arbitrary Object to FrameAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FrameAccessible.
+*/
+func (recv *FrameAccessible) CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
+	return FrameAccessibleNewFromNative(object.Native())
+}
+
+func (recv *FrameAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *FrameAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(frameAccessibleObject, recv.native, "parent")
@@ -26357,6 +27501,19 @@ func (recv *GLArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *GLArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGLArea down casts any arbitrary Object to GLArea.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GLArea.
+*/
+func (recv *GLArea) CastToGLArea(object *gobject.Object) *GLArea {
+	return GLAreaNewFromNative(object.Native())
+}
+
+func (recv *GLArea) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gLAreaNewFunction *gi.Function
@@ -26876,6 +28033,19 @@ func (recv *Gesture) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGesture down casts any arbitrary Object to Gesture.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Gesture.
+*/
+func (recv *Gesture) CastToGesture(object *gobject.Object) *Gesture {
+	return GestureNewFromNative(object.Native())
+}
+
+func (recv *Gesture) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gtk_gesture_get_bounding_box' : parameter 'rect' of type 'Gdk.Rectangle' not supported
 
 var gestureGetBoundingBoxCenterFunction *gi.Function
@@ -27161,6 +28331,19 @@ func (recv *GestureDrag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGestureDrag down casts any arbitrary Object to GestureDrag.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureDrag.
+*/
+func (recv *GestureDrag) CastToGestureDrag(object *gobject.Object) *GestureDrag {
+	return GestureDragNewFromNative(object.Native())
+}
+
+func (recv *GestureDrag) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gestureDragNewFunction *gi.Function
 var gestureDragNewFunction_Once sync.Once
 
@@ -27302,6 +28485,19 @@ func (recv *GestureLongPress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGestureLongPress down casts any arbitrary Object to GestureLongPress.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureLongPress.
+*/
+func (recv *GestureLongPress) CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
+	return GestureLongPressNewFromNative(object.Native())
+}
+
+func (recv *GestureLongPress) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gestureLongPressNewFunction *gi.Function
 var gestureLongPressNewFunction_Once sync.Once
 
@@ -27371,6 +28567,19 @@ func (recv *GestureMultiPress) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureMultiPress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGestureMultiPress down casts any arbitrary Object to GestureMultiPress.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureMultiPress.
+*/
+func (recv *GestureMultiPress) CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
+	return GestureMultiPressNewFromNative(object.Native())
+}
+
+func (recv *GestureMultiPress) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gestureMultiPressNewFunction *gi.Function
@@ -27451,6 +28660,19 @@ func (recv *GesturePan) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GesturePan) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGesturePan down casts any arbitrary Object to GesturePan.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GesturePan.
+*/
+func (recv *GesturePan) CastToGesturePan(object *gobject.Object) *GesturePan {
+	return GesturePanNewFromNative(object.Native())
+}
+
+func (recv *GesturePan) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gesturePanNewFunction *gi.Function
@@ -27581,6 +28803,19 @@ func (recv *GestureRotate) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGestureRotate down casts any arbitrary Object to GestureRotate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureRotate.
+*/
+func (recv *GestureRotate) CastToGestureRotate(object *gobject.Object) *GestureRotate {
+	return GestureRotateNewFromNative(object.Native())
+}
+
+func (recv *GestureRotate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gestureRotateNewFunction *gi.Function
 var gestureRotateNewFunction_Once sync.Once
 
@@ -27677,6 +28912,19 @@ func (recv *GestureSingle) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureSingle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGestureSingle down casts any arbitrary Object to GestureSingle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureSingle.
+*/
+func (recv *GestureSingle) CastToGestureSingle(object *gobject.Object) *GestureSingle {
+	return GestureSingleNewFromNative(object.Native())
+}
+
+func (recv *GestureSingle) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gestureSingleGetButtonFunction *gi.Function
@@ -27935,6 +29183,19 @@ func (recv *GestureStylus) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGestureStylus down casts any arbitrary Object to GestureStylus.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureStylus.
+*/
+func (recv *GestureStylus) CastToGestureStylus(object *gobject.Object) *GestureStylus {
+	return GestureStylusNewFromNative(object.Native())
+}
+
+func (recv *GestureStylus) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gestureStylusNewFunction *gi.Function
 var gestureStylusNewFunction_Once sync.Once
 
@@ -28010,6 +29271,19 @@ func (recv *GestureSwipe) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureSwipe) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGestureSwipe down casts any arbitrary Object to GestureSwipe.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureSwipe.
+*/
+func (recv *GestureSwipe) CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
+	return GestureSwipeNewFromNative(object.Native())
+}
+
+func (recv *GestureSwipe) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gestureSwipeNewFunction *gi.Function
@@ -28113,6 +29387,19 @@ func (recv *GestureZoom) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGestureZoom down casts any arbitrary Object to GestureZoom.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GestureZoom.
+*/
+func (recv *GestureZoom) CastToGestureZoom(object *gobject.Object) *GestureZoom {
+	return GestureZoomNewFromNative(object.Native())
+}
+
+func (recv *GestureZoom) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gestureZoomNewFunction *gi.Function
 var gestureZoomNewFunction_Once sync.Once
 
@@ -28214,6 +29501,19 @@ func (recv *Grid) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Grid) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGrid down casts any arbitrary Object to Grid.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Grid.
+*/
+func (recv *Grid) CastToGrid(object *gobject.Object) *Grid {
+	return GridNewFromNative(object.Native())
+}
+
+func (recv *Grid) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gridNewFunction *gi.Function
@@ -28904,6 +30204,19 @@ func (recv *HBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHBox down casts any arbitrary Object to HBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HBox.
+*/
+func (recv *HBox) CastToHBox(object *gobject.Object) *HBox {
+	return HBoxNewFromNative(object.Native())
+}
+
+func (recv *HBox) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldBox returns the C field 'box'.
 func (recv *HBox) FieldBox() *Box {
 	argValue := gi.ObjectFieldGet(hBoxObject, recv.native, "box")
@@ -29000,6 +30313,19 @@ func (recv *HButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHButtonBox down casts any arbitrary Object to HButtonBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HButtonBox.
+*/
+func (recv *HButtonBox) CastToHButtonBox(object *gobject.Object) *HButtonBox {
+	return HButtonBoxNewFromNative(object.Native())
+}
+
+func (recv *HButtonBox) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldButtonBox returns the C field 'button_box'.
 func (recv *HButtonBox) FieldButtonBox() *ButtonBox {
 	argValue := gi.ObjectFieldGet(hButtonBoxObject, recv.native, "button_box")
@@ -29088,6 +30414,19 @@ func (recv *HPaned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHPaned down casts any arbitrary Object to HPaned.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HPaned.
+*/
+func (recv *HPaned) CastToHPaned(object *gobject.Object) *HPaned {
+	return HPanedNewFromNative(object.Native())
+}
+
+func (recv *HPaned) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldPaned returns the C field 'paned'.
 func (recv *HPaned) FieldPaned() *Paned {
 	argValue := gi.ObjectFieldGet(hPanedObject, recv.native, "paned")
@@ -29164,6 +30503,19 @@ func (recv *HSV) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HSV) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHSV down casts any arbitrary Object to HSV.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HSV.
+*/
+func (recv *HSV) CastToHSV(object *gobject.Object) *HSV {
+	return HSVNewFromNative(object.Native())
+}
+
+func (recv *HSV) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -29414,6 +30766,19 @@ func (recv *HScale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHScale down casts any arbitrary Object to HScale.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HScale.
+*/
+func (recv *HScale) CastToHScale(object *gobject.Object) *HScale {
+	return HScaleNewFromNative(object.Native())
+}
+
+func (recv *HScale) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldScale returns the C field 'scale'.
 func (recv *HScale) FieldScale() *Scale {
 	argValue := gi.ObjectFieldGet(hScaleObject, recv.native, "scale")
@@ -29538,6 +30903,19 @@ func (recv *HScrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHScrollbar down casts any arbitrary Object to HScrollbar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HScrollbar.
+*/
+func (recv *HScrollbar) CastToHScrollbar(object *gobject.Object) *HScrollbar {
+	return HScrollbarNewFromNative(object.Native())
+}
+
+func (recv *HScrollbar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldScrollbar returns the C field 'scrollbar'.
 func (recv *HScrollbar) FieldScrollbar() *Scrollbar {
 	argValue := gi.ObjectFieldGet(hScrollbarObject, recv.native, "scrollbar")
@@ -29621,6 +30999,19 @@ func (recv *HSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HSeparator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHSeparator down casts any arbitrary Object to HSeparator.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HSeparator.
+*/
+func (recv *HSeparator) CastToHSeparator(object *gobject.Object) *HSeparator {
+	return HSeparatorNewFromNative(object.Native())
+}
+
+func (recv *HSeparator) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldSeparator returns the C field 'separator'.
@@ -29709,6 +31100,19 @@ func (recv *HandleBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HandleBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHandleBox down casts any arbitrary Object to HandleBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HandleBox.
+*/
+func (recv *HandleBox) CastToHandleBox(object *gobject.Object) *HandleBox {
+	return HandleBoxNewFromNative(object.Native())
+}
+
+func (recv *HandleBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -30007,6 +31411,19 @@ func (recv *HeaderBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HeaderBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHeaderBar down casts any arbitrary Object to HeaderBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HeaderBar.
+*/
+func (recv *HeaderBar) CastToHeaderBar(object *gobject.Object) *HeaderBar {
+	return HeaderBarNewFromNative(object.Native())
+}
+
+func (recv *HeaderBar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -30521,6 +31938,19 @@ func (recv *HeaderBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHeaderBarAccessible down casts any arbitrary Object to HeaderBarAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HeaderBarAccessible.
+*/
+func (recv *HeaderBarAccessible) CastToHeaderBarAccessible(object *gobject.Object) *HeaderBarAccessible {
+	return HeaderBarAccessibleNewFromNative(object.Native())
+}
+
+func (recv *HeaderBarAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *HeaderBarAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(headerBarAccessibleObject, recv.native, "parent")
@@ -30557,6 +31987,19 @@ func IMContextNewFromNative(native unsafe.Pointer) *IMContext {
 // Object upcasts to *Object
 func (recv *IMContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIMContext down casts any arbitrary Object to IMContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IMContext.
+*/
+func (recv *IMContext) CastToIMContext(object *gobject.Object) *IMContext {
+	return IMContextNewFromNative(object.Native())
+}
+
+func (recv *IMContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -30813,6 +32256,19 @@ func (recv *IMContextSimple) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToIMContextSimple down casts any arbitrary Object to IMContextSimple.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IMContextSimple.
+*/
+func (recv *IMContextSimple) CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
+	return IMContextSimpleNewFromNative(object.Native())
+}
+
+func (recv *IMContextSimple) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldObject returns the C field 'object'.
 func (recv *IMContextSimple) FieldObject() *IMContext {
 	argValue := gi.ObjectFieldGet(iMContextSimpleObject, recv.native, "object")
@@ -30915,6 +32371,19 @@ func (recv *IMMulticontext) IMContext() *IMContext {
 // Object upcasts to *Object
 func (recv *IMMulticontext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIMMulticontext down casts any arbitrary Object to IMMulticontext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IMMulticontext.
+*/
+func (recv *IMMulticontext) CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
+	return IMMulticontextNewFromNative(object.Native())
+}
+
+func (recv *IMMulticontext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldObject returns the C field 'object'.
@@ -31073,6 +32542,19 @@ func IconFactoryNewFromNative(native unsafe.Pointer) *IconFactory {
 // Object upcasts to *Object
 func (recv *IconFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIconFactory down casts any arbitrary Object to IconFactory.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconFactory.
+*/
+func (recv *IconFactory) CastToIconFactory(object *gobject.Object) *IconFactory {
+	return IconFactoryNewFromNative(object.Native())
+}
+
+func (recv *IconFactory) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -31250,6 +32732,19 @@ func IconInfoNewFromNative(native unsafe.Pointer) *IconInfo {
 // Object upcasts to *Object
 func (recv *IconInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIconInfo down casts any arbitrary Object to IconInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconInfo.
+*/
+func (recv *IconInfo) CastToIconInfo(object *gobject.Object) *IconInfo {
+	return IconInfoNewFromNative(object.Native())
+}
+
+func (recv *IconInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'gtk_icon_info_new_for_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
@@ -31553,6 +33048,19 @@ func IconThemeNewFromNative(native unsafe.Pointer) *IconTheme {
 // Object upcasts to *Object
 func (recv *IconTheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIconTheme down casts any arbitrary Object to IconTheme.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconTheme.
+*/
+func (recv *IconTheme) CastToIconTheme(object *gobject.Object) *IconTheme {
+	return IconThemeNewFromNative(object.Native())
+}
+
+func (recv *IconTheme) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var iconThemeNewFunction *gi.Function
@@ -31892,6 +33400,19 @@ func (recv *IconView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *IconView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToIconView down casts any arbitrary Object to IconView.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconView.
+*/
+func (recv *IconView) CastToIconView(object *gobject.Object) *IconView {
+	return IconViewNewFromNative(object.Native())
+}
+
+func (recv *IconView) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -33647,6 +35168,19 @@ func (recv *IconViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToIconViewAccessible down casts any arbitrary Object to IconViewAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconViewAccessible.
+*/
+func (recv *IconViewAccessible) CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
+	return IconViewAccessibleNewFromNative(object.Native())
+}
+
+func (recv *IconViewAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *IconViewAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(iconViewAccessibleObject, recv.native, "parent")
@@ -33712,6 +35246,19 @@ func (recv *Image) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Image) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToImage down casts any arbitrary Object to Image.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Image.
+*/
+func (recv *Image) CastToImage(object *gobject.Object) *Image {
+	return ImageNewFromNative(object.Native())
+}
+
+func (recv *Image) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMisc returns the C field 'misc'.
@@ -34350,6 +35897,19 @@ func (recv *ImageAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToImageAccessible down casts any arbitrary Object to ImageAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ImageAccessible.
+*/
+func (recv *ImageAccessible) CastToImageAccessible(object *gobject.Object) *ImageAccessible {
+	return ImageAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ImageAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ImageAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(imageAccessibleObject, recv.native, "parent")
@@ -34420,6 +35980,19 @@ func (recv *ImageCellAccessible) ObjectAtk() *atk.Object {
 // Object upcasts to *Object
 func (recv *ImageCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToImageCellAccessible down casts any arbitrary Object to ImageCellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ImageCellAccessible.
+*/
+func (recv *ImageCellAccessible) CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
+	return ImageCellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ImageCellAccessible) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -34497,6 +36070,19 @@ func (recv *ImageMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ImageMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToImageMenuItem down casts any arbitrary Object to ImageMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ImageMenuItem.
+*/
+func (recv *ImageMenuItem) CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
+	return ImageMenuItemNewFromNative(object.Native())
+}
+
+func (recv *ImageMenuItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMenuItem returns the C field 'menu_item'.
@@ -34894,6 +36480,19 @@ func (recv *InfoBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *InfoBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToInfoBar down casts any arbitrary Object to InfoBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InfoBar.
+*/
+func (recv *InfoBar) CastToInfoBar(object *gobject.Object) *InfoBar {
+	return InfoBarNewFromNative(object.Native())
+}
+
+func (recv *InfoBar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -35377,6 +36976,19 @@ func (recv *Invisible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToInvisible down casts any arbitrary Object to Invisible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Invisible.
+*/
+func (recv *Invisible) CastToInvisible(object *gobject.Object) *Invisible {
+	return InvisibleNewFromNative(object.Native())
+}
+
+func (recv *Invisible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldWidget returns the C field 'widget'.
 func (recv *Invisible) FieldWidget() *Widget {
 	argValue := gi.ObjectFieldGet(invisibleObject, recv.native, "widget")
@@ -35464,6 +37076,19 @@ func (recv *Label) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Label) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLabel down casts any arbitrary Object to Label.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Label.
+*/
+func (recv *Label) CastToLabel(object *gobject.Object) *Label {
+	return LabelNewFromNative(object.Native())
+}
+
+func (recv *Label) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMisc returns the C field 'misc'.
@@ -36851,6 +38476,19 @@ func (recv *LabelAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLabelAccessible down casts any arbitrary Object to LabelAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LabelAccessible.
+*/
+func (recv *LabelAccessible) CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
+	return LabelAccessibleNewFromNative(object.Native())
+}
+
+func (recv *LabelAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *LabelAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(labelAccessibleObject, recv.native, "parent")
@@ -36916,6 +38554,19 @@ func (recv *Layout) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLayout down casts any arbitrary Object to Layout.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Layout.
+*/
+func (recv *Layout) CastToLayout(object *gobject.Object) *Layout {
+	return LayoutNewFromNative(object.Native())
+}
+
+func (recv *Layout) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -37246,6 +38897,19 @@ func (recv *LevelBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *LevelBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLevelBar down casts any arbitrary Object to LevelBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LevelBar.
+*/
+func (recv *LevelBar) CastToLevelBar(object *gobject.Object) *LevelBar {
+	return LevelBarNewFromNative(object.Native())
+}
+
+func (recv *LevelBar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var levelBarNewFunction *gi.Function
@@ -37749,6 +39413,19 @@ func (recv *LevelBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLevelBarAccessible down casts any arbitrary Object to LevelBarAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LevelBarAccessible.
+*/
+func (recv *LevelBarAccessible) CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
+	return LevelBarAccessibleNewFromNative(object.Native())
+}
+
+func (recv *LevelBarAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *LevelBarAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(levelBarAccessibleObject, recv.native, "parent")
@@ -37824,6 +39501,19 @@ func (recv *LinkButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *LinkButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLinkButton down casts any arbitrary Object to LinkButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LinkButton.
+*/
+func (recv *LinkButton) CastToLinkButton(object *gobject.Object) *LinkButton {
+	return LinkButtonNewFromNative(object.Native())
+}
+
+func (recv *LinkButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var linkButtonNewFunction *gi.Function
@@ -38062,6 +39752,19 @@ func (recv *LinkButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLinkButtonAccessible down casts any arbitrary Object to LinkButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LinkButtonAccessible.
+*/
+func (recv *LinkButtonAccessible) CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
+	return LinkButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *LinkButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *LinkButtonAccessible) FieldParent() *ButtonAccessible {
 	argValue := gi.ObjectFieldGet(linkButtonAccessibleObject, recv.native, "parent")
@@ -38127,6 +39830,19 @@ func (recv *ListBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ListBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToListBox down casts any arbitrary Object to ListBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListBox.
+*/
+func (recv *ListBox) CastToListBox(object *gobject.Object) *ListBox {
+	return ListBoxNewFromNative(object.Native())
+}
+
+func (recv *ListBox) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -38853,6 +40569,19 @@ func (recv *ListBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToListBoxAccessible down casts any arbitrary Object to ListBoxAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListBoxAccessible.
+*/
+func (recv *ListBoxAccessible) CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
+	return ListBoxAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ListBoxAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ListBoxAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(listBoxAccessibleObject, recv.native, "parent")
@@ -38923,6 +40652,19 @@ func (recv *ListBoxRow) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ListBoxRow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToListBoxRow down casts any arbitrary Object to ListBoxRow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListBoxRow.
+*/
+func (recv *ListBoxRow) CastToListBoxRow(object *gobject.Object) *ListBoxRow {
+	return ListBoxRowNewFromNative(object.Native())
+}
+
+func (recv *ListBoxRow) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -39288,6 +41030,19 @@ func (recv *ListBoxRowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToListBoxRowAccessible down casts any arbitrary Object to ListBoxRowAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListBoxRowAccessible.
+*/
+func (recv *ListBoxRowAccessible) CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
+	return ListBoxRowAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ListBoxRowAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ListBoxRowAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(listBoxRowAccessibleObject, recv.native, "parent")
@@ -39324,6 +41079,19 @@ func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 // Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToListStore down casts any arbitrary Object to ListStore.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListStore.
+*/
+func (recv *ListStore) CastToListStore(object *gobject.Object) *ListStore {
+	return ListStoreNewFromNative(object.Native())
+}
+
+func (recv *ListStore) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -39746,6 +41514,19 @@ func (recv *LockButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLockButton down casts any arbitrary Object to LockButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LockButton.
+*/
+func (recv *LockButton) CastToLockButton(object *gobject.Object) *LockButton {
+	return LockButtonNewFromNative(object.Native())
+}
+
+func (recv *LockButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *LockButton) FieldParent() *Button {
 	argValue := gi.ObjectFieldGet(lockButtonObject, recv.native, "parent")
@@ -39829,6 +41610,19 @@ func (recv *LockButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLockButtonAccessible down casts any arbitrary Object to LockButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LockButtonAccessible.
+*/
+func (recv *LockButtonAccessible) CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
+	return LockButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *LockButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *LockButtonAccessible) FieldParent() *ButtonAccessible {
 	argValue := gi.ObjectFieldGet(lockButtonAccessibleObject, recv.native, "parent")
@@ -39899,6 +41693,19 @@ func (recv *Menu) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Menu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenu down casts any arbitrary Object to Menu.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Menu.
+*/
+func (recv *Menu) CastToMenu(object *gobject.Object) *Menu {
+	return MenuNewFromNative(object.Native())
+}
+
+func (recv *Menu) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMenuShell returns the C field 'menu_shell'.
@@ -40618,6 +42425,19 @@ func (recv *MenuAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMenuAccessible down casts any arbitrary Object to MenuAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuAccessible.
+*/
+func (recv *MenuAccessible) CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
+	return MenuAccessibleNewFromNative(object.Native())
+}
+
+func (recv *MenuAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *MenuAccessible) FieldParent() *MenuShellAccessible {
 	argValue := gi.ObjectFieldGet(menuAccessibleObject, recv.native, "parent")
@@ -40688,6 +42508,19 @@ func (recv *MenuBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenuBar down casts any arbitrary Object to MenuBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuBar.
+*/
+func (recv *MenuBar) CastToMenuBar(object *gobject.Object) *MenuBar {
+	return MenuBarNewFromNative(object.Native())
+}
+
+func (recv *MenuBar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMenuShell returns the C field 'menu_shell'.
@@ -40910,6 +42743,19 @@ func (recv *MenuButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenuButton down casts any arbitrary Object to MenuButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuButton.
+*/
+func (recv *MenuButton) CastToMenuButton(object *gobject.Object) *MenuButton {
+	return MenuButtonNewFromNative(object.Native())
+}
+
+func (recv *MenuButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -41319,6 +43165,19 @@ func (recv *MenuButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMenuButtonAccessible down casts any arbitrary Object to MenuButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuButtonAccessible.
+*/
+func (recv *MenuButtonAccessible) CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
+	return MenuButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *MenuButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *MenuButtonAccessible) FieldParent() *ToggleButtonAccessible {
 	argValue := gi.ObjectFieldGet(menuButtonAccessibleObject, recv.native, "parent")
@@ -41389,6 +43248,19 @@ func (recv *MenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenuItem down casts any arbitrary Object to MenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuItem.
+*/
+func (recv *MenuItem) CastToMenuItem(object *gobject.Object) *MenuItem {
+	return MenuItemNewFromNative(object.Native())
+}
+
+func (recv *MenuItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -42055,6 +43927,19 @@ func (recv *MenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMenuItemAccessible down casts any arbitrary Object to MenuItemAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuItemAccessible.
+*/
+func (recv *MenuItemAccessible) CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
+	return MenuItemAccessibleNewFromNative(object.Native())
+}
+
+func (recv *MenuItemAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *MenuItemAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(menuItemAccessibleObject, recv.native, "parent")
@@ -42120,6 +44005,19 @@ func (recv *MenuShell) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuShell) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenuShell down casts any arbitrary Object to MenuShell.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuShell.
+*/
+func (recv *MenuShell) CastToMenuShell(object *gobject.Object) *MenuShell {
+	return MenuShellNewFromNative(object.Native())
+}
+
+func (recv *MenuShell) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -42567,6 +44465,19 @@ func (recv *MenuShellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMenuShellAccessible down casts any arbitrary Object to MenuShellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuShellAccessible.
+*/
+func (recv *MenuShellAccessible) CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
+	return MenuShellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *MenuShellAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *MenuShellAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(menuShellAccessibleObject, recv.native, "parent")
@@ -42647,6 +44558,19 @@ func (recv *MenuToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMenuToolButton down casts any arbitrary Object to MenuToolButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuToolButton.
+*/
+func (recv *MenuToolButton) CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
+	return MenuToolButtonNewFromNative(object.Native())
+}
+
+func (recv *MenuToolButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -42901,6 +44825,19 @@ func (recv *MessageDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMessageDialog down casts any arbitrary Object to MessageDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MessageDialog.
+*/
+func (recv *MessageDialog) CastToMessageDialog(object *gobject.Object) *MessageDialog {
+	return MessageDialogNewFromNative(object.Native())
+}
+
+func (recv *MessageDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MessageDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(messageDialogObject, recv.native, "parent_instance")
@@ -43077,6 +45014,19 @@ func (recv *Misc) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMisc down casts any arbitrary Object to Misc.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Misc.
+*/
+func (recv *Misc) CastToMisc(object *gobject.Object) *Misc {
+	return MiscNewFromNative(object.Native())
+}
+
+func (recv *Misc) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidget returns the C field 'widget'.
@@ -43268,6 +45218,19 @@ func (recv *ModelButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToModelButton down casts any arbitrary Object to ModelButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ModelButton.
+*/
+func (recv *ModelButton) CastToModelButton(object *gobject.Object) *ModelButton {
+	return ModelButtonNewFromNative(object.Native())
+}
+
+func (recv *ModelButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var modelButtonNewFunction *gi.Function
 var modelButtonNewFunction_Once sync.Once
 
@@ -43325,6 +45288,19 @@ func (recv *MountOperation) MountOperation() *gio.MountOperation {
 // Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMountOperation down casts any arbitrary Object to MountOperation.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MountOperation.
+*/
+func (recv *MountOperation) CastToMountOperation(object *gobject.Object) *MountOperation {
+	return MountOperationNewFromNative(object.Native())
+}
+
+func (recv *MountOperation) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gio.MountOperation'
@@ -43496,6 +45472,19 @@ func NativeDialogNewFromNative(native unsafe.Pointer) *NativeDialog {
 // Object upcasts to *Object
 func (recv *NativeDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNativeDialog down casts any arbitrary Object to NativeDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NativeDialog.
+*/
+func (recv *NativeDialog) CastToNativeDialog(object *gobject.Object) *NativeDialog {
+	return NativeDialogNewFromNative(object.Native())
+}
+
+func (recv *NativeDialog) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -43870,6 +45859,19 @@ func (recv *Notebook) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Notebook) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNotebook down casts any arbitrary Object to Notebook.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Notebook.
+*/
+func (recv *Notebook) CastToNotebook(object *gobject.Object) *Notebook {
+	return NotebookNewFromNative(object.Native())
+}
+
+func (recv *Notebook) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var notebookNewFunction *gi.Function
@@ -45324,6 +47326,19 @@ func (recv *NotebookAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToNotebookAccessible down casts any arbitrary Object to NotebookAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NotebookAccessible.
+*/
+func (recv *NotebookAccessible) CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
+	return NotebookAccessibleNewFromNative(object.Native())
+}
+
+func (recv *NotebookAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *NotebookAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(notebookAccessibleObject, recv.native, "parent")
@@ -45379,6 +47394,19 @@ func (recv *NotebookPageAccessible) ObjectAtk() *atk.Object {
 // Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNotebookPageAccessible down casts any arbitrary Object to NotebookPageAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NotebookPageAccessible.
+*/
+func (recv *NotebookPageAccessible) CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
+	return NotebookPageAccessibleNewFromNative(object.Native())
+}
+
+func (recv *NotebookPageAccessible) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Atk.Object'
@@ -45487,6 +47515,19 @@ func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
 // Object upcasts to *Object
 func (recv *NumerableIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNumerableIcon down casts any arbitrary Object to NumerableIcon.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NumerableIcon.
+*/
+func (recv *NumerableIcon) CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
+	return NumerableIconNewFromNative(object.Native())
+}
+
+func (recv *NumerableIcon) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gio.EmblemedIcon'
@@ -45790,6 +47831,19 @@ func (recv *OffscreenWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToOffscreenWindow down casts any arbitrary Object to OffscreenWindow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OffscreenWindow.
+*/
+func (recv *OffscreenWindow) CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
+	return OffscreenWindowNewFromNative(object.Native())
+}
+
+func (recv *OffscreenWindow) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentObject returns the C field 'parent_object'.
 func (recv *OffscreenWindow) FieldParentObject() *Window {
 	argValue := gi.ObjectFieldGet(offscreenWindowObject, recv.native, "parent_object")
@@ -45880,6 +47934,19 @@ func (recv *Overlay) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Overlay) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToOverlay down casts any arbitrary Object to Overlay.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Overlay.
+*/
+func (recv *Overlay) CastToOverlay(object *gobject.Object) *Overlay {
+	return OverlayNewFromNative(object.Native())
+}
+
+func (recv *Overlay) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -46091,6 +48158,19 @@ func (recv *PadController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPadController down casts any arbitrary Object to PadController.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PadController.
+*/
+func (recv *PadController) CastToPadController(object *gobject.Object) *PadController {
+	return PadControllerNewFromNative(object.Native())
+}
+
+func (recv *PadController) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gtk_pad_controller_new' : parameter 'group' of type 'Gio.ActionGroup' not supported
 
 var padControllerSetActionFunction *gi.Function
@@ -46150,6 +48230,19 @@ func PageSetupNewFromNative(native unsafe.Pointer) *PageSetup {
 // Object upcasts to *Object
 func (recv *PageSetup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPageSetup down casts any arbitrary Object to PageSetup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PageSetup.
+*/
+func (recv *PageSetup) CastToPageSetup(object *gobject.Object) *PageSetup {
+	return PageSetupNewFromNative(object.Native())
+}
+
+func (recv *PageSetup) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var pageSetupNewFunction *gi.Function
@@ -46896,6 +48989,19 @@ func (recv *Paned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPaned down casts any arbitrary Object to Paned.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Paned.
+*/
+func (recv *Paned) CastToPaned(object *gobject.Object) *Paned {
+	return PanedNewFromNative(object.Native())
+}
+
+func (recv *Paned) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldContainer returns the C field 'container'.
 func (recv *Paned) FieldContainer() *Container {
 	argValue := gi.ObjectFieldGet(panedObject, recv.native, "container")
@@ -47294,6 +49400,19 @@ func (recv *PanedAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPanedAccessible down casts any arbitrary Object to PanedAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PanedAccessible.
+*/
+func (recv *PanedAccessible) CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
+	return PanedAccessibleNewFromNative(object.Native())
+}
+
+func (recv *PanedAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *PanedAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(panedAccessibleObject, recv.native, "parent")
@@ -47369,6 +49488,19 @@ func (recv *PlacesSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *PlacesSidebar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPlacesSidebar down casts any arbitrary Object to PlacesSidebar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PlacesSidebar.
+*/
+func (recv *PlacesSidebar) CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
+	return PlacesSidebarNewFromNative(object.Native())
+}
+
+func (recv *PlacesSidebar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var placesSidebarNewFunction *gi.Function
@@ -47956,6 +50088,19 @@ func (recv *Plug) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPlug down casts any arbitrary Object to Plug.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Plug.
+*/
+func (recv *Plug) CastToPlug(object *gobject.Object) *Plug {
+	return PlugNewFromNative(object.Native())
+}
+
+func (recv *Plug) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldWindow returns the C field 'window'.
 func (recv *Plug) FieldWindow() *Window {
 	argValue := gi.ObjectFieldGet(plugObject, recv.native, "window")
@@ -48157,6 +50302,19 @@ func (recv *Popover) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Popover) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPopover down casts any arbitrary Object to Popover.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Popover.
+*/
+func (recv *Popover) CastToPopover(object *gobject.Object) *Popover {
+	return PopoverNewFromNative(object.Native())
+}
+
+func (recv *Popover) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -48679,6 +50837,19 @@ func (recv *PopoverAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPopoverAccessible down casts any arbitrary Object to PopoverAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PopoverAccessible.
+*/
+func (recv *PopoverAccessible) CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
+	return PopoverAccessibleNewFromNative(object.Native())
+}
+
+func (recv *PopoverAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *PopoverAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(popoverAccessibleObject, recv.native, "parent")
@@ -48740,6 +50911,19 @@ func (recv *PopoverMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *PopoverMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPopoverMenu down casts any arbitrary Object to PopoverMenu.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PopoverMenu.
+*/
+func (recv *PopoverMenu) CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
+	return PopoverMenuNewFromNative(object.Native())
+}
+
+func (recv *PopoverMenu) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var popoverMenuNewFunction *gi.Function
@@ -48823,6 +51007,19 @@ func PrintContextNewFromNative(native unsafe.Pointer) *PrintContext {
 // Object upcasts to *Object
 func (recv *PrintContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPrintContext down casts any arbitrary Object to PrintContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintContext.
+*/
+func (recv *PrintContext) CastToPrintContext(object *gobject.Object) *PrintContext {
+	return PrintContextNewFromNative(object.Native())
+}
+
+func (recv *PrintContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'gtk_print_context_create_pango_context' : return type 'Pango.Context' not supported
@@ -49054,6 +51251,19 @@ func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 // Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPrintOperation down casts any arbitrary Object to PrintOperation.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintOperation.
+*/
+func (recv *PrintOperation) CastToPrintOperation(object *gobject.Object) *PrintOperation {
+	return PrintOperationNewFromNative(object.Native())
+}
+
+func (recv *PrintOperation) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -49981,6 +52191,19 @@ func PrintSettingsNewFromNative(native unsafe.Pointer) *PrintSettings {
 // Object upcasts to *Object
 func (recv *PrintSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPrintSettings down casts any arbitrary Object to PrintSettings.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintSettings.
+*/
+func (recv *PrintSettings) CastToPrintSettings(object *gobject.Object) *PrintSettings {
+	return PrintSettingsNewFromNative(object.Native())
+}
+
+func (recv *PrintSettings) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var printSettingsNewFunction *gi.Function
@@ -52171,6 +54394,19 @@ func (recv *ProgressBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToProgressBar down casts any arbitrary Object to ProgressBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProgressBar.
+*/
+func (recv *ProgressBar) CastToProgressBar(object *gobject.Object) *ProgressBar {
+	return ProgressBarNewFromNative(object.Native())
+}
+
+func (recv *ProgressBar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ProgressBar) FieldParent() *Widget {
 	argValue := gi.ObjectFieldGet(progressBarObject, recv.native, "parent")
@@ -52591,6 +54827,19 @@ func (recv *ProgressBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToProgressBarAccessible down casts any arbitrary Object to ProgressBarAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProgressBarAccessible.
+*/
+func (recv *ProgressBarAccessible) CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible {
+	return ProgressBarAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ProgressBarAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ProgressBarAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(progressBarAccessibleObject, recv.native, "parent")
@@ -52651,6 +54900,19 @@ func (recv *RadioAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *RadioAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRadioAction down casts any arbitrary Object to RadioAction.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioAction.
+*/
+func (recv *RadioAction) CastToRadioAction(object *gobject.Object) *RadioAction {
+	return RadioActionNewFromNative(object.Native())
+}
+
+func (recv *RadioAction) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -52854,6 +55116,19 @@ func (recv *RadioButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RadioButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRadioButton down casts any arbitrary Object to RadioButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioButton.
+*/
+func (recv *RadioButton) CastToRadioButton(object *gobject.Object) *RadioButton {
+	return RadioButtonNewFromNative(object.Native())
+}
+
+func (recv *RadioButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldCheckButton returns the C field 'check_button'.
@@ -53061,6 +55336,19 @@ func (recv *RadioButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRadioButtonAccessible down casts any arbitrary Object to RadioButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioButtonAccessible.
+*/
+func (recv *RadioButtonAccessible) CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
+	return RadioButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *RadioButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *RadioButtonAccessible) FieldParent() *ToggleButtonAccessible {
 	argValue := gi.ObjectFieldGet(radioButtonAccessibleObject, recv.native, "parent")
@@ -53141,6 +55429,19 @@ func (recv *RadioMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RadioMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRadioMenuItem down casts any arbitrary Object to RadioMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioMenuItem.
+*/
+func (recv *RadioMenuItem) CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
+	return RadioMenuItemNewFromNative(object.Native())
+}
+
+func (recv *RadioMenuItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldCheckMenuItem returns the C field 'check_menu_item'.
@@ -53348,6 +55649,19 @@ func (recv *RadioMenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRadioMenuItemAccessible down casts any arbitrary Object to RadioMenuItemAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioMenuItemAccessible.
+*/
+func (recv *RadioMenuItemAccessible) CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
+	return RadioMenuItemAccessibleNewFromNative(object.Native())
+}
+
+func (recv *RadioMenuItemAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *RadioMenuItemAccessible) FieldParent() *CheckMenuItemAccessible {
 	argValue := gi.ObjectFieldGet(radioMenuItemAccessibleObject, recv.native, "parent")
@@ -53433,6 +55747,19 @@ func (recv *RadioToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RadioToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRadioToolButton down casts any arbitrary Object to RadioToolButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RadioToolButton.
+*/
+func (recv *RadioToolButton) CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
+	return RadioToolButtonNewFromNative(object.Native())
+}
+
+func (recv *RadioToolButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -53554,6 +55881,19 @@ func (recv *Range) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Range) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRange down casts any arbitrary Object to Range.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Range.
+*/
+func (recv *Range) CastToRange(object *gobject.Object) *Range {
+	return RangeNewFromNative(object.Native())
+}
+
+func (recv *Range) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidget returns the C field 'widget'.
@@ -54450,6 +56790,19 @@ func (recv *RangeAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRangeAccessible down casts any arbitrary Object to RangeAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RangeAccessible.
+*/
+func (recv *RangeAccessible) CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
+	return RangeAccessibleNewFromNative(object.Native())
+}
+
+func (recv *RangeAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *RangeAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(rangeAccessibleObject, recv.native, "parent")
@@ -54500,6 +56853,19 @@ func RcStyleNewFromNative(native unsafe.Pointer) *RcStyle {
 // Object upcasts to *Object
 func (recv *RcStyle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRcStyle down casts any arbitrary Object to RcStyle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RcStyle.
+*/
+func (recv *RcStyle) CastToRcStyle(object *gobject.Object) *RcStyle {
+	return RcStyleNewFromNative(object.Native())
+}
+
+func (recv *RcStyle) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -54665,6 +57031,19 @@ func (recv *RecentAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *RecentAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRecentAction down casts any arbitrary Object to RecentAction.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentAction.
+*/
+func (recv *RecentAction) CastToRecentAction(object *gobject.Object) *RecentAction {
+	return RecentActionNewFromNative(object.Native())
+}
+
+func (recv *RecentAction) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -54867,6 +57246,19 @@ func (recv *RecentChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRecentChooserDialog down casts any arbitrary Object to RecentChooserDialog.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentChooserDialog.
+*/
+func (recv *RecentChooserDialog) CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
+	return RecentChooserDialogNewFromNative(object.Native())
+}
+
+func (recv *RecentChooserDialog) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *RecentChooserDialog) FieldParentInstance() *Dialog {
 	argValue := gi.ObjectFieldGet(recentChooserDialogObject, recv.native, "parent_instance")
@@ -54932,6 +57324,19 @@ func (recv *RecentChooserMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RecentChooserMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRecentChooserMenu down casts any arbitrary Object to RecentChooserMenu.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentChooserMenu.
+*/
+func (recv *RecentChooserMenu) CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
+	return RecentChooserMenuNewFromNative(object.Native())
+}
+
+func (recv *RecentChooserMenu) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -55115,6 +57520,19 @@ func (recv *RecentChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRecentChooserWidget down casts any arbitrary Object to RecentChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentChooserWidget.
+*/
+func (recv *RecentChooserWidget) CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
+	return RecentChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *RecentChooserWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *RecentChooserWidget) FieldParentInstance() *Box {
 	argValue := gi.ObjectFieldGet(recentChooserWidgetObject, recv.native, "parent_instance")
@@ -55218,6 +57636,19 @@ func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RecentFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRecentFilter down casts any arbitrary Object to RecentFilter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentFilter.
+*/
+func (recv *RecentFilter) CastToRecentFilter(object *gobject.Object) *RecentFilter {
+	return RecentFilterNewFromNative(object.Native())
+}
+
+func (recv *RecentFilter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var recentFilterNewFunction *gi.Function
@@ -55545,6 +57976,19 @@ func (recv *RecentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRecentManager down casts any arbitrary Object to RecentManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RecentManager.
+*/
+func (recv *RecentManager) CastToRecentManager(object *gobject.Object) *RecentManager {
+	return RecentManagerNewFromNative(object.Native())
+}
+
+func (recv *RecentManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var recentManagerNewFunction *gi.Function
 var recentManagerNewFunction_Once sync.Once
 
@@ -55848,6 +58292,19 @@ func (recv *RendererCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRendererCellAccessible down casts any arbitrary Object to RendererCellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RendererCellAccessible.
+*/
+func (recv *RendererCellAccessible) CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
+	return RendererCellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *RendererCellAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *RendererCellAccessible) FieldParent() *CellAccessible {
 	argValue := gi.ObjectFieldGet(rendererCellAccessibleObject, recv.native, "parent")
@@ -55950,6 +58407,19 @@ func (recv *Revealer) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Revealer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRevealer down casts any arbitrary Object to Revealer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Revealer.
+*/
+func (recv *Revealer) CastToRevealer(object *gobject.Object) *Revealer {
+	return RevealerNewFromNative(object.Native())
+}
+
+func (recv *Revealer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -56248,6 +58718,19 @@ func (recv *Scale) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Scale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToScale down casts any arbitrary Object to Scale.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Scale.
+*/
+func (recv *Scale) CastToScale(object *gobject.Object) *Scale {
+	return ScaleNewFromNative(object.Native())
+}
+
+func (recv *Scale) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRange returns the C field 'range'.
@@ -56714,6 +59197,19 @@ func (recv *ScaleAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToScaleAccessible down casts any arbitrary Object to ScaleAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScaleAccessible.
+*/
+func (recv *ScaleAccessible) CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
+	return ScaleAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ScaleAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ScaleAccessible) FieldParent() *RangeAccessible {
 	argValue := gi.ObjectFieldGet(scaleAccessibleObject, recv.native, "parent")
@@ -56789,6 +59285,19 @@ func (recv *ScaleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ScaleButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToScaleButton down casts any arbitrary Object to ScaleButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScaleButton.
+*/
+func (recv *ScaleButton) CastToScaleButton(object *gobject.Object) *ScaleButton {
+	return ScaleButtonNewFromNative(object.Native())
+}
+
+func (recv *ScaleButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -57076,6 +59585,19 @@ func (recv *ScaleButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToScaleButtonAccessible down casts any arbitrary Object to ScaleButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScaleButtonAccessible.
+*/
+func (recv *ScaleButtonAccessible) CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible {
+	return ScaleButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ScaleButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ScaleButtonAccessible) FieldParent() *ButtonAccessible {
 	argValue := gi.ObjectFieldGet(scaleButtonAccessibleObject, recv.native, "parent")
@@ -57141,6 +59663,19 @@ func (recv *Scrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Scrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToScrollbar down casts any arbitrary Object to Scrollbar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Scrollbar.
+*/
+func (recv *Scrollbar) CastToScrollbar(object *gobject.Object) *Scrollbar {
+	return ScrollbarNewFromNative(object.Native())
+}
+
+func (recv *Scrollbar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRange returns the C field 'range'.
@@ -57232,6 +59767,19 @@ func (recv *ScrolledWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ScrolledWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToScrolledWindow down casts any arbitrary Object to ScrolledWindow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScrolledWindow.
+*/
+func (recv *ScrolledWindow) CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
+	return ScrolledWindowNewFromNative(object.Native())
+}
+
+func (recv *ScrolledWindow) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -58316,6 +60864,19 @@ func (recv *ScrolledWindowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToScrolledWindowAccessible down casts any arbitrary Object to ScrolledWindowAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScrolledWindowAccessible.
+*/
+func (recv *ScrolledWindowAccessible) CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
+	return ScrolledWindowAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ScrolledWindowAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ScrolledWindowAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(scrolledWindowAccessibleObject, recv.native, "parent")
@@ -58386,6 +60947,19 @@ func (recv *SearchBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *SearchBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSearchBar down casts any arbitrary Object to SearchBar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SearchBar.
+*/
+func (recv *SearchBar) CastToSearchBar(object *gobject.Object) *SearchBar {
+	return SearchBarNewFromNative(object.Native())
+}
+
+func (recv *SearchBar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var searchBarNewFunction *gi.Function
@@ -58610,6 +61184,19 @@ func (recv *SearchEntry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSearchEntry down casts any arbitrary Object to SearchEntry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SearchEntry.
+*/
+func (recv *SearchEntry) CastToSearchEntry(object *gobject.Object) *SearchEntry {
+	return SearchEntryNewFromNative(object.Native())
+}
+
+func (recv *SearchEntry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SearchEntry) FieldParent() *Entry {
 	argValue := gi.ObjectFieldGet(searchEntryObject, recv.native, "parent")
@@ -58688,6 +61275,19 @@ func (recv *Separator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Separator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSeparator down casts any arbitrary Object to Separator.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Separator.
+*/
+func (recv *Separator) CastToSeparator(object *gobject.Object) *Separator {
+	return SeparatorNewFromNative(object.Native())
+}
+
+func (recv *Separator) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidget returns the C field 'widget'.
@@ -58799,6 +61399,19 @@ func (recv *SeparatorMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSeparatorMenuItem down casts any arbitrary Object to SeparatorMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SeparatorMenuItem.
+*/
+func (recv *SeparatorMenuItem) CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
+	return SeparatorMenuItemNewFromNative(object.Native())
+}
+
+func (recv *SeparatorMenuItem) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldMenuItem returns the C field 'menu_item'.
 func (recv *SeparatorMenuItem) FieldMenuItem() *MenuItem {
 	argValue := gi.ObjectFieldGet(separatorMenuItemObject, recv.native, "menu_item")
@@ -58890,6 +61503,19 @@ func (recv *SeparatorToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *SeparatorToolItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSeparatorToolItem down casts any arbitrary Object to SeparatorToolItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SeparatorToolItem.
+*/
+func (recv *SeparatorToolItem) CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
+	return SeparatorToolItemNewFromNative(object.Native())
+}
+
+func (recv *SeparatorToolItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -59019,6 +61645,19 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSettings down casts any arbitrary Object to Settings.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Settings.
+*/
+func (recv *Settings) CastToSettings(object *gobject.Object) *Settings {
+	return SettingsNewFromNative(object.Native())
+}
+
+func (recv *Settings) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -59221,6 +61860,19 @@ func (recv *ShortcutLabel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToShortcutLabel down casts any arbitrary Object to ShortcutLabel.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ShortcutLabel.
+*/
+func (recv *ShortcutLabel) CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
+	return ShortcutLabelNewFromNative(object.Native())
+}
+
+func (recv *ShortcutLabel) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var shortcutLabelNewFunction *gi.Function
 var shortcutLabelNewFunction_Once sync.Once
 
@@ -59419,6 +62071,19 @@ func (recv *ShortcutsGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToShortcutsGroup down casts any arbitrary Object to ShortcutsGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ShortcutsGroup.
+*/
+func (recv *ShortcutsGroup) CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
+	return ShortcutsGroupNewFromNative(object.Native())
+}
+
+func (recv *ShortcutsGroup) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var shortcutsSectionObject *gi.Object
 var shortcutsSectionObject_Once sync.Once
 
@@ -59463,6 +62128,19 @@ func (recv *ShortcutsSection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToShortcutsSection down casts any arbitrary Object to ShortcutsSection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ShortcutsSection.
+*/
+func (recv *ShortcutsSection) CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
+	return ShortcutsSectionNewFromNative(object.Native())
+}
+
+func (recv *ShortcutsSection) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var shortcutsShortcutObject *gi.Object
 var shortcutsShortcutObject_Once sync.Once
 
@@ -59505,6 +62183,19 @@ func (recv *ShortcutsShortcut) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ShortcutsShortcut) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToShortcutsShortcut down casts any arbitrary Object to ShortcutsShortcut.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ShortcutsShortcut.
+*/
+func (recv *ShortcutsShortcut) CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
+	return ShortcutsShortcutNewFromNative(object.Native())
+}
+
+func (recv *ShortcutsShortcut) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var shortcutsWindowObject *gi.Object
@@ -59556,6 +62247,19 @@ func (recv *ShortcutsWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToShortcutsWindow down casts any arbitrary Object to ShortcutsWindow.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ShortcutsWindow.
+*/
+func (recv *ShortcutsWindow) CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
+	return ShortcutsWindowNewFromNative(object.Native())
+}
+
+func (recv *ShortcutsWindow) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldWindow returns the C field 'window'.
 func (recv *ShortcutsWindow) FieldWindow() *Window {
 	argValue := gi.ObjectFieldGet(shortcutsWindowObject, recv.native, "window")
@@ -59592,6 +62296,19 @@ func SizeGroupNewFromNative(native unsafe.Pointer) *SizeGroup {
 // Object upcasts to *Object
 func (recv *SizeGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSizeGroup down casts any arbitrary Object to SizeGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SizeGroup.
+*/
+func (recv *SizeGroup) CastToSizeGroup(object *gobject.Object) *SizeGroup {
+	return SizeGroupNewFromNative(object.Native())
+}
+
+func (recv *SizeGroup) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -59851,6 +62568,19 @@ func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSocket down casts any arbitrary Object to Socket.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Socket.
+*/
+func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+	return SocketNewFromNative(object.Native())
+}
+
+func (recv *Socket) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldContainer returns the C field 'container'.
 func (recv *Socket) FieldContainer() *Container {
 	argValue := gi.ObjectFieldGet(socketObject, recv.native, "container")
@@ -60009,6 +62739,19 @@ func (recv *SpinButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *SpinButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSpinButton down casts any arbitrary Object to SpinButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SpinButton.
+*/
+func (recv *SpinButton) CastToSpinButton(object *gobject.Object) *SpinButton {
+	return SpinButtonNewFromNative(object.Native())
+}
+
+func (recv *SpinButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldEntry returns the C field 'entry'.
@@ -60811,6 +63554,19 @@ func (recv *SpinButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSpinButtonAccessible down casts any arbitrary Object to SpinButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SpinButtonAccessible.
+*/
+func (recv *SpinButtonAccessible) CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
+	return SpinButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *SpinButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SpinButtonAccessible) FieldParent() *EntryAccessible {
 	argValue := gi.ObjectFieldGet(spinButtonAccessibleObject, recv.native, "parent")
@@ -60871,6 +63627,19 @@ func (recv *Spinner) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Spinner) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSpinner down casts any arbitrary Object to Spinner.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Spinner.
+*/
+func (recv *Spinner) CastToSpinner(object *gobject.Object) *Spinner {
+	return SpinnerNewFromNative(object.Native())
+}
+
+func (recv *Spinner) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -61012,6 +63781,19 @@ func (recv *SpinnerAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSpinnerAccessible down casts any arbitrary Object to SpinnerAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SpinnerAccessible.
+*/
+func (recv *SpinnerAccessible) CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
+	return SpinnerAccessibleNewFromNative(object.Native())
+}
+
+func (recv *SpinnerAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SpinnerAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(spinnerAccessibleObject, recv.native, "parent")
@@ -61077,6 +63859,19 @@ func (recv *Stack) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Stack) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStack down casts any arbitrary Object to Stack.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Stack.
+*/
+func (recv *Stack) CastToStack(object *gobject.Object) *Stack {
+	return StackNewFromNative(object.Native())
+}
+
+func (recv *Stack) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -61811,6 +64606,19 @@ func (recv *StackAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStackAccessible down casts any arbitrary Object to StackAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StackAccessible.
+*/
+func (recv *StackAccessible) CastToStackAccessible(object *gobject.Object) *StackAccessible {
+	return StackAccessibleNewFromNative(object.Native())
+}
+
+func (recv *StackAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *StackAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(stackAccessibleObject, recv.native, "parent")
@@ -61867,6 +64675,19 @@ func (recv *StackSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *StackSidebar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStackSidebar down casts any arbitrary Object to StackSidebar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StackSidebar.
+*/
+func (recv *StackSidebar) CastToStackSidebar(object *gobject.Object) *StackSidebar {
+	return StackSidebarNewFromNative(object.Native())
+}
+
+func (recv *StackSidebar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -62018,6 +64839,19 @@ func (recv *StackSwitcher) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStackSwitcher down casts any arbitrary Object to StackSwitcher.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StackSwitcher.
+*/
+func (recv *StackSwitcher) CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
+	return StackSwitcherNewFromNative(object.Native())
+}
+
+func (recv *StackSwitcher) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldWidget returns the C field 'widget'.
 func (recv *StackSwitcher) FieldWidget() *Box {
 	argValue := gi.ObjectFieldGet(stackSwitcherObject, recv.native, "widget")
@@ -62145,6 +64979,19 @@ func StatusIconNewFromNative(native unsafe.Pointer) *StatusIcon {
 // Object upcasts to *Object
 func (recv *StatusIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStatusIcon down casts any arbitrary Object to StatusIcon.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StatusIcon.
+*/
+func (recv *StatusIcon) CastToStatusIcon(object *gobject.Object) *StatusIcon {
+	return StatusIconNewFromNative(object.Native())
+}
+
+func (recv *StatusIcon) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -62966,6 +65813,19 @@ func (recv *Statusbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStatusbar down casts any arbitrary Object to Statusbar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Statusbar.
+*/
+func (recv *Statusbar) CastToStatusbar(object *gobject.Object) *Statusbar {
+	return StatusbarNewFromNative(object.Native())
+}
+
+func (recv *Statusbar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentWidget returns the C field 'parent_widget'.
 func (recv *Statusbar) FieldParentWidget() *Box {
 	argValue := gi.ObjectFieldGet(statusbarObject, recv.native, "parent_widget")
@@ -63241,6 +66101,19 @@ func (recv *StatusbarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStatusbarAccessible down casts any arbitrary Object to StatusbarAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StatusbarAccessible.
+*/
+func (recv *StatusbarAccessible) CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
+	return StatusbarAccessibleNewFromNative(object.Native())
+}
+
+func (recv *StatusbarAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *StatusbarAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(statusbarAccessibleObject, recv.native, "parent")
@@ -63291,6 +66164,19 @@ func StyleNewFromNative(native unsafe.Pointer) *Style {
 // Object upcasts to *Object
 func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStyle down casts any arbitrary Object to Style.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Style.
+*/
+func (recv *Style) CastToStyle(object *gobject.Object) *Style {
+	return StyleNewFromNative(object.Native())
+}
+
+func (recv *Style) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'fg' : for field getter : missing Type
@@ -63562,6 +66448,19 @@ func StyleContextNewFromNative(native unsafe.Pointer) *StyleContext {
 // Object upcasts to *Object
 func (recv *StyleContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStyleContext down casts any arbitrary Object to StyleContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleContext.
+*/
+func (recv *StyleContext) CastToStyleContext(object *gobject.Object) *StyleContext {
+	return StyleContextNewFromNative(object.Native())
+}
+
+func (recv *StyleContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_object' : for field getter : no Go type for 'GObject.Object'
@@ -64281,6 +67180,19 @@ func (recv *StyleProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStyleProperties down casts any arbitrary Object to StyleProperties.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleProperties.
+*/
+func (recv *StyleProperties) CastToStyleProperties(object *gobject.Object) *StyleProperties {
+	return StylePropertiesNewFromNative(object.Native())
+}
+
+func (recv *StyleProperties) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var stylePropertiesNewFunction *gi.Function
 var stylePropertiesNewFunction_Once sync.Once
 
@@ -64480,6 +67392,19 @@ func (recv *Switch) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSwitch down casts any arbitrary Object to Switch.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Switch.
+*/
+func (recv *Switch) CastToSwitch(object *gobject.Object) *Switch {
+	return SwitchNewFromNative(object.Native())
+}
+
+func (recv *Switch) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var switchNewFunction *gi.Function
 var switchNewFunction_Once sync.Once
 
@@ -64671,6 +67596,19 @@ func (recv *SwitchAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSwitchAccessible down casts any arbitrary Object to SwitchAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SwitchAccessible.
+*/
+func (recv *SwitchAccessible) CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
+	return SwitchAccessibleNewFromNative(object.Native())
+}
+
+func (recv *SwitchAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SwitchAccessible) FieldParent() *WidgetAccessible {
 	argValue := gi.ObjectFieldGet(switchAccessibleObject, recv.native, "parent")
@@ -64736,6 +67674,19 @@ func (recv *Table) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Table) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTable down casts any arbitrary Object to Table.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Table.
+*/
+func (recv *Table) CastToTable(object *gobject.Object) *Table {
+	return TableNewFromNative(object.Native())
+}
+
+func (recv *Table) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldContainer returns the C field 'container'.
@@ -65242,6 +68193,19 @@ func (recv *TearoffMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTearoffMenuItem down casts any arbitrary Object to TearoffMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TearoffMenuItem.
+*/
+func (recv *TearoffMenuItem) CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
+	return TearoffMenuItemNewFromNative(object.Native())
+}
+
+func (recv *TearoffMenuItem) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldMenuItem returns the C field 'menu_item'.
 func (recv *TearoffMenuItem) FieldMenuItem() *MenuItem {
 	argValue := gi.ObjectFieldGet(tearoffMenuItemObject, recv.native, "menu_item")
@@ -65308,6 +68272,19 @@ func TextBufferNewFromNative(native unsafe.Pointer) *TextBuffer {
 // Object upcasts to *Object
 func (recv *TextBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTextBuffer down casts any arbitrary Object to TextBuffer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextBuffer.
+*/
+func (recv *TextBuffer) CastToTextBuffer(object *gobject.Object) *TextBuffer {
+	return TextBufferNewFromNative(object.Native())
+}
+
+func (recv *TextBuffer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -67305,6 +70282,19 @@ func (recv *TextCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTextCellAccessible down casts any arbitrary Object to TextCellAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextCellAccessible.
+*/
+func (recv *TextCellAccessible) CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
+	return TextCellAccessibleNewFromNative(object.Native())
+}
+
+func (recv *TextCellAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *TextCellAccessible) FieldParent() *RendererCellAccessible {
 	argValue := gi.ObjectFieldGet(textCellAccessibleObject, recv.native, "parent")
@@ -67355,6 +70345,19 @@ func TextChildAnchorNewFromNative(native unsafe.Pointer) *TextChildAnchor {
 // Object upcasts to *Object
 func (recv *TextChildAnchor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTextChildAnchor down casts any arbitrary Object to TextChildAnchor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextChildAnchor.
+*/
+func (recv *TextChildAnchor) CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
+	return TextChildAnchorNewFromNative(object.Native())
+}
+
+func (recv *TextChildAnchor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -67447,6 +70450,19 @@ func TextMarkNewFromNative(native unsafe.Pointer) *TextMark {
 // Object upcasts to *Object
 func (recv *TextMark) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTextMark down casts any arbitrary Object to TextMark.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextMark.
+*/
+func (recv *TextMark) CastToTextMark(object *gobject.Object) *TextMark {
+	return TextMarkNewFromNative(object.Native())
+}
+
+func (recv *TextMark) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -67699,6 +70715,19 @@ func (recv *TextTag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTextTag down casts any arbitrary Object to TextTag.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextTag.
+*/
+func (recv *TextTag) CastToTextTag(object *gobject.Object) *TextTag {
+	return TextTagNewFromNative(object.Native())
+}
+
+func (recv *TextTag) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -67863,6 +70892,19 @@ func TextTagTableNewFromNative(native unsafe.Pointer) *TextTagTable {
 // Object upcasts to *Object
 func (recv *TextTagTable) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTextTagTable down casts any arbitrary Object to TextTagTable.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextTagTable.
+*/
+func (recv *TextTagTable) CastToTextTagTable(object *gobject.Object) *TextTagTable {
+	return TextTagTableNewFromNative(object.Native())
+}
+
+func (recv *TextTagTable) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -68079,6 +71121,19 @@ func (recv *TextView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TextView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTextView down casts any arbitrary Object to TextView.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextView.
+*/
+func (recv *TextView) CastToTextView(object *gobject.Object) *TextView {
+	return TextViewNewFromNative(object.Native())
+}
+
+func (recv *TextView) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -70142,6 +73197,19 @@ func (recv *TextViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTextViewAccessible down casts any arbitrary Object to TextViewAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextViewAccessible.
+*/
+func (recv *TextViewAccessible) CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
+	return TextViewAccessibleNewFromNative(object.Native())
+}
+
+func (recv *TextViewAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *TextViewAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(textViewAccessibleObject, recv.native, "parent")
@@ -70192,6 +73260,19 @@ func ThemingEngineNewFromNative(native unsafe.Pointer) *ThemingEngine {
 // Object upcasts to *Object
 func (recv *ThemingEngine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToThemingEngine down casts any arbitrary Object to ThemingEngine.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ThemingEngine.
+*/
+func (recv *ThemingEngine) CastToThemingEngine(object *gobject.Object) *ThemingEngine {
+	return ThemingEngineNewFromNative(object.Native())
+}
+
+func (recv *ThemingEngine) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_object' : for field getter : no Go type for 'GObject.Object'
@@ -70407,6 +73488,19 @@ func (recv *ToggleAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *ToggleAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToggleAction down casts any arbitrary Object to ToggleAction.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToggleAction.
+*/
+func (recv *ToggleAction) CastToToggleAction(object *gobject.Object) *ToggleAction {
+	return ToggleActionNewFromNative(object.Native())
+}
+
+func (recv *ToggleAction) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -70655,6 +73749,19 @@ func (recv *ToggleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToggleButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToggleButton down casts any arbitrary Object to ToggleButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToggleButton.
+*/
+func (recv *ToggleButton) CastToToggleButton(object *gobject.Object) *ToggleButton {
+	return ToggleButtonNewFromNative(object.Native())
+}
+
+func (recv *ToggleButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var toggleButtonNewFunction *gi.Function
@@ -71011,6 +74118,19 @@ func (recv *ToggleButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToToggleButtonAccessible down casts any arbitrary Object to ToggleButtonAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToggleButtonAccessible.
+*/
+func (recv *ToggleButtonAccessible) CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
+	return ToggleButtonAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ToggleButtonAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *ToggleButtonAccessible) FieldParent() *ButtonAccessible {
 	argValue := gi.ObjectFieldGet(toggleButtonAccessibleObject, recv.native, "parent")
@@ -71091,6 +74211,19 @@ func (recv *ToggleToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToggleToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToggleToolButton down casts any arbitrary Object to ToggleToolButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToggleToolButton.
+*/
+func (recv *ToggleToolButton) CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
+	return ToggleToolButtonNewFromNative(object.Native())
+}
+
+func (recv *ToggleToolButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -71277,6 +74410,19 @@ func (recv *ToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToolButton down casts any arbitrary Object to ToolButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToolButton.
+*/
+func (recv *ToolButton) CastToToolButton(object *gobject.Object) *ToolButton {
+	return ToolButtonNewFromNative(object.Native())
+}
+
+func (recv *ToolButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -71766,6 +74912,19 @@ func (recv *ToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToolItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToolItem down casts any arbitrary Object to ToolItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToolItem.
+*/
+func (recv *ToolItem) CastToToolItem(object *gobject.Object) *ToolItem {
+	return ToolItemNewFromNative(object.Native())
+}
+
+func (recv *ToolItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -72652,6 +75811,19 @@ func (recv *ToolItemGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToToolItemGroup down casts any arbitrary Object to ToolItemGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToolItemGroup.
+*/
+func (recv *ToolItemGroup) CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
+	return ToolItemGroupNewFromNative(object.Native())
+}
+
+func (recv *ToolItemGroup) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ToolItemGroup) FieldParentInstance() *Container {
 	argValue := gi.ObjectFieldGet(toolItemGroupObject, recv.native, "parent_instance")
@@ -73189,6 +76361,19 @@ func (recv *ToolPalette) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToolPalette) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToToolPalette down casts any arbitrary Object to ToolPalette.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToolPalette.
+*/
+func (recv *ToolPalette) CastToToolPalette(object *gobject.Object) *ToolPalette {
+	return ToolPaletteNewFromNative(object.Native())
+}
+
+func (recv *ToolPalette) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -73824,6 +77009,19 @@ func (recv *Toolbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToToolbar down casts any arbitrary Object to Toolbar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Toolbar.
+*/
+func (recv *Toolbar) CastToToolbar(object *gobject.Object) *Toolbar {
+	return ToolbarNewFromNative(object.Native())
+}
+
+func (recv *Toolbar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldContainer returns the C field 'container'.
 func (recv *Toolbar) FieldContainer() *Container {
 	argValue := gi.ObjectFieldGet(toolbarObject, recv.native, "container")
@@ -74369,6 +77567,19 @@ func (recv *Tooltip) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTooltip down casts any arbitrary Object to Tooltip.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Tooltip.
+*/
+func (recv *Tooltip) CastToTooltip(object *gobject.Object) *Tooltip {
+	return TooltipNewFromNative(object.Native())
+}
+
+func (recv *Tooltip) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var tooltipSetCustomFunction *gi.Function
 var tooltipSetCustomFunction_Once sync.Once
 
@@ -74551,6 +77762,19 @@ func (recv *ToplevelAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToToplevelAccessible down casts any arbitrary Object to ToplevelAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ToplevelAccessible.
+*/
+func (recv *ToplevelAccessible) CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
+	return ToplevelAccessibleNewFromNative(object.Native())
+}
+
+func (recv *ToplevelAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Atk.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Atk.Object'
@@ -74593,6 +77817,19 @@ func TreeModelFilterNewFromNative(native unsafe.Pointer) *TreeModelFilter {
 // Object upcasts to *Object
 func (recv *TreeModelFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTreeModelFilter down casts any arbitrary Object to TreeModelFilter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeModelFilter.
+*/
+func (recv *TreeModelFilter) CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
+	return TreeModelFilterNewFromNative(object.Native())
+}
+
+func (recv *TreeModelFilter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -74848,6 +78085,19 @@ func (recv *TreeModelSort) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTreeModelSort down casts any arbitrary Object to TreeModelSort.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeModelSort.
+*/
+func (recv *TreeModelSort) CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
+	return TreeModelSortNewFromNative(object.Native())
+}
+
+func (recv *TreeModelSort) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -75099,6 +78349,19 @@ func TreeSelectionNewFromNative(native unsafe.Pointer) *TreeSelection {
 // Object upcasts to *Object
 func (recv *TreeSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTreeSelection down casts any arbitrary Object to TreeSelection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeSelection.
+*/
+func (recv *TreeSelection) CastToTreeSelection(object *gobject.Object) *TreeSelection {
+	return TreeSelectionNewFromNative(object.Native())
+}
+
+func (recv *TreeSelection) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var treeSelectionCountSelectedRowsFunction *gi.Function
@@ -75558,6 +78821,19 @@ func TreeStoreNewFromNative(native unsafe.Pointer) *TreeStore {
 // Object upcasts to *Object
 func (recv *TreeStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTreeStore down casts any arbitrary Object to TreeStore.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeStore.
+*/
+func (recv *TreeStore) CastToTreeStore(object *gobject.Object) *TreeStore {
+	return TreeStoreNewFromNative(object.Native())
+}
+
+func (recv *TreeStore) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -76054,6 +79330,19 @@ func (recv *TreeView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TreeView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTreeView down casts any arbitrary Object to TreeView.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeView.
+*/
+func (recv *TreeView) CastToTreeView(object *gobject.Object) *TreeView {
+	return TreeViewNewFromNative(object.Native())
+}
+
+func (recv *TreeView) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -78612,6 +81901,19 @@ func (recv *TreeViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTreeViewAccessible down casts any arbitrary Object to TreeViewAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeViewAccessible.
+*/
+func (recv *TreeViewAccessible) CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
+	return TreeViewAccessibleNewFromNative(object.Native())
+}
+
+func (recv *TreeViewAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *TreeViewAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(treeViewAccessibleObject, recv.native, "parent")
@@ -78667,6 +81969,19 @@ func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TreeViewColumn) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToTreeViewColumn down casts any arbitrary Object to TreeViewColumn.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TreeViewColumn.
+*/
+func (recv *TreeViewColumn) CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
+	return TreeViewColumnNewFromNative(object.Native())
+}
+
+func (recv *TreeViewColumn) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -80188,6 +83503,19 @@ func (recv *UIManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToUIManager down casts any arbitrary Object to UIManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UIManager.
+*/
+func (recv *UIManager) CastToUIManager(object *gobject.Object) *UIManager {
+	return UIManagerNewFromNative(object.Native())
+}
+
+func (recv *UIManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -80711,6 +84039,19 @@ func (recv *VBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVBox down casts any arbitrary Object to VBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VBox.
+*/
+func (recv *VBox) CastToVBox(object *gobject.Object) *VBox {
+	return VBoxNewFromNative(object.Native())
+}
+
+func (recv *VBox) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldBox returns the C field 'box'.
 func (recv *VBox) FieldBox() *Box {
 	argValue := gi.ObjectFieldGet(vBoxObject, recv.native, "box")
@@ -80807,6 +84148,19 @@ func (recv *VButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVButtonBox down casts any arbitrary Object to VButtonBox.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VButtonBox.
+*/
+func (recv *VButtonBox) CastToVButtonBox(object *gobject.Object) *VButtonBox {
+	return VButtonBoxNewFromNative(object.Native())
+}
+
+func (recv *VButtonBox) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldButtonBox returns the C field 'button_box'.
 func (recv *VButtonBox) FieldButtonBox() *ButtonBox {
 	argValue := gi.ObjectFieldGet(vButtonBoxObject, recv.native, "button_box")
@@ -80895,6 +84249,19 @@ func (recv *VPaned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVPaned down casts any arbitrary Object to VPaned.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VPaned.
+*/
+func (recv *VPaned) CastToVPaned(object *gobject.Object) *VPaned {
+	return VPanedNewFromNative(object.Native())
+}
+
+func (recv *VPaned) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldPaned returns the C field 'paned'.
 func (recv *VPaned) FieldPaned() *Paned {
 	argValue := gi.ObjectFieldGet(vPanedObject, recv.native, "paned")
@@ -80981,6 +84348,19 @@ func (recv *VScale) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *VScale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToVScale down casts any arbitrary Object to VScale.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VScale.
+*/
+func (recv *VScale) CastToVScale(object *gobject.Object) *VScale {
+	return VScaleNewFromNative(object.Native())
+}
+
+func (recv *VScale) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldScale returns the C field 'scale'.
@@ -81107,6 +84487,19 @@ func (recv *VScrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVScrollbar down casts any arbitrary Object to VScrollbar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VScrollbar.
+*/
+func (recv *VScrollbar) CastToVScrollbar(object *gobject.Object) *VScrollbar {
+	return VScrollbarNewFromNative(object.Native())
+}
+
+func (recv *VScrollbar) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldScrollbar returns the C field 'scrollbar'.
 func (recv *VScrollbar) FieldScrollbar() *Scrollbar {
 	argValue := gi.ObjectFieldGet(vScrollbarObject, recv.native, "scrollbar")
@@ -81190,6 +84583,19 @@ func (recv *VSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *VSeparator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToVSeparator down casts any arbitrary Object to VSeparator.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VSeparator.
+*/
+func (recv *VSeparator) CastToVSeparator(object *gobject.Object) *VSeparator {
+	return VSeparatorNewFromNative(object.Native())
+}
+
+func (recv *VSeparator) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldSeparator returns the C field 'separator'.
@@ -81278,6 +84684,19 @@ func (recv *Viewport) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Viewport) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToViewport down casts any arbitrary Object to Viewport.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Viewport.
+*/
+func (recv *Viewport) CastToViewport(object *gobject.Object) *Viewport {
+	return ViewportNewFromNative(object.Native())
+}
+
+func (recv *Viewport) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -81568,6 +84987,19 @@ func (recv *VolumeButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVolumeButton down casts any arbitrary Object to VolumeButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VolumeButton.
+*/
+func (recv *VolumeButton) CastToVolumeButton(object *gobject.Object) *VolumeButton {
+	return VolumeButtonNewFromNative(object.Native())
+}
+
+func (recv *VolumeButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *VolumeButton) FieldParent() *ScaleButton {
 	argValue := gi.ObjectFieldGet(volumeButtonObject, recv.native, "parent")
@@ -81639,6 +85071,19 @@ func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Widget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWidget down casts any arbitrary Object to Widget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Widget.
+*/
+func (recv *Widget) CastToWidget(object *gobject.Object) *Widget {
+	return WidgetNewFromNative(object.Native())
+}
+
+func (recv *Widget) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -87388,6 +90833,19 @@ func (recv *WidgetAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWidgetAccessible down casts any arbitrary Object to WidgetAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WidgetAccessible.
+*/
+func (recv *WidgetAccessible) CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
+	return WidgetAccessibleNewFromNative(object.Native())
+}
+
+func (recv *WidgetAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *WidgetAccessible) FieldParent() *Accessible {
 	argValue := gi.ObjectFieldGet(widgetAccessibleObject, recv.native, "parent")
@@ -87458,6 +90916,19 @@ func (recv *Window) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWindow down casts any arbitrary Object to Window.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Window.
+*/
+func (recv *Window) CastToWindow(object *gobject.Object) *Window {
+	return WindowNewFromNative(object.Native())
+}
+
+func (recv *Window) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldBin returns the C field 'bin'.
@@ -90331,6 +93802,19 @@ func (recv *WindowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWindowAccessible down casts any arbitrary Object to WindowAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowAccessible.
+*/
+func (recv *WindowAccessible) CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
+	return WindowAccessibleNewFromNative(object.Native())
+}
+
+func (recv *WindowAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *WindowAccessible) FieldParent() *ContainerAccessible {
 	argValue := gi.ObjectFieldGet(windowAccessibleObject, recv.native, "parent")
@@ -90381,6 +93865,19 @@ func WindowGroupNewFromNative(native unsafe.Pointer) *WindowGroup {
 // Object upcasts to *Object
 func (recv *WindowGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWindowGroup down casts any arbitrary Object to WindowGroup.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowGroup.
+*/
+func (recv *WindowGroup) CastToWindowGroup(object *gobject.Object) *WindowGroup {
+	return WindowGroupNewFromNative(object.Native())
+}
+
+func (recv *WindowGroup) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'

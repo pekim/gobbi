@@ -34,6 +34,19 @@ func (recv *Address) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAddress down casts any arbitrary Object to Address.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Address.
+*/
+func (recv *Address) CastToAddress(object *gobject.Object) *Address {
+	return AddressNewFromNative(object.Native())
+}
+
+func (recv *Address) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -394,6 +407,19 @@ func AuthNewFromNative(native unsafe.Pointer) *Auth {
 // Object upcasts to *Object
 func (recv *Auth) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAuth down casts any arbitrary Object to Auth.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Auth.
+*/
+func (recv *Auth) CastToAuth(object *gobject.Object) *Auth {
+	return AuthNewFromNative(object.Native())
+}
+
+func (recv *Auth) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -898,6 +924,19 @@ func (recv *AuthBasic) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthBasic down casts any arbitrary Object to AuthBasic.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthBasic.
+*/
+func (recv *AuthBasic) CastToAuthBasic(object *gobject.Object) *AuthBasic {
+	return AuthBasicNewFromNative(object.Native())
+}
+
+func (recv *AuthBasic) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var authDigestObject *gi.Object
 var authDigestObject_Once sync.Once
 
@@ -927,6 +966,19 @@ func (recv *AuthDigest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthDigest down casts any arbitrary Object to AuthDigest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthDigest.
+*/
+func (recv *AuthDigest) CastToAuthDigest(object *gobject.Object) *AuthDigest {
+	return AuthDigestNewFromNative(object.Native())
+}
+
+func (recv *AuthDigest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var authDomainObject *gi.Object
 var authDomainObject_Once sync.Once
 
@@ -949,6 +1001,19 @@ func AuthDomainNewFromNative(native unsafe.Pointer) *AuthDomain {
 // Object upcasts to *Object
 func (recv *AuthDomain) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAuthDomain down casts any arbitrary Object to AuthDomain.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthDomain.
+*/
+func (recv *AuthDomain) CastToAuthDomain(object *gobject.Object) *AuthDomain {
+	return AuthDomainNewFromNative(object.Native())
+}
+
+func (recv *AuthDomain) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1242,6 +1307,19 @@ func (recv *AuthDomainBasic) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthDomainBasic down casts any arbitrary Object to AuthDomainBasic.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthDomainBasic.
+*/
+func (recv *AuthDomainBasic) CastToAuthDomainBasic(object *gobject.Object) *AuthDomainBasic {
+	return AuthDomainBasicNewFromNative(object.Native())
+}
+
+func (recv *AuthDomainBasic) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *AuthDomainBasic) FieldParent() *AuthDomain {
 	argValue := gi.ObjectFieldGet(authDomainBasicObject, recv.native, "parent")
@@ -1289,6 +1367,19 @@ func (recv *AuthDomainDigest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthDomainDigest down casts any arbitrary Object to AuthDomainDigest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthDomainDigest.
+*/
+func (recv *AuthDomainDigest) CastToAuthDomainDigest(object *gobject.Object) *AuthDomainDigest {
+	return AuthDomainDigestNewFromNative(object.Native())
+}
+
+func (recv *AuthDomainDigest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *AuthDomainDigest) FieldParent() *AuthDomain {
 	argValue := gi.ObjectFieldGet(authDomainDigestObject, recv.native, "parent")
@@ -1329,6 +1420,19 @@ func AuthManagerNewFromNative(native unsafe.Pointer) *AuthManager {
 // Object upcasts to *Object
 func (recv *AuthManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToAuthManager down casts any arbitrary Object to AuthManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthManager.
+*/
+func (recv *AuthManager) CastToAuthManager(object *gobject.Object) *AuthManager {
+	return AuthManagerNewFromNative(object.Native())
+}
+
+func (recv *AuthManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1436,6 +1540,19 @@ func (recv *AuthNTLM) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthNTLM down casts any arbitrary Object to AuthNTLM.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthNTLM.
+*/
+func (recv *AuthNTLM) CastToAuthNTLM(object *gobject.Object) *AuthNTLM {
+	return AuthNTLMNewFromNative(object.Native())
+}
+
+func (recv *AuthNTLM) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var authNegotiateObject *gi.Object
 var authNegotiateObject_Once sync.Once
 
@@ -1465,6 +1582,19 @@ func (recv *AuthNegotiate) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthNegotiate down casts any arbitrary Object to AuthNegotiate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthNegotiate.
+*/
+func (recv *AuthNegotiate) CastToAuthNegotiate(object *gobject.Object) *AuthNegotiate {
+	return AuthNegotiateNewFromNative(object.Native())
+}
+
+func (recv *AuthNegotiate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var cacheObject *gi.Object
 var cacheObject_Once sync.Once
 
@@ -1487,6 +1617,19 @@ func CacheNewFromNative(native unsafe.Pointer) *Cache {
 // Object upcasts to *Object
 func (recv *Cache) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCache down casts any arbitrary Object to Cache.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Cache.
+*/
+func (recv *Cache) CastToCache(object *gobject.Object) *Cache {
+	return CacheNewFromNative(object.Native())
+}
+
+func (recv *Cache) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1737,6 +1880,19 @@ func (recv *ContentDecoder) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToContentDecoder down casts any arbitrary Object to ContentDecoder.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContentDecoder.
+*/
+func (recv *ContentDecoder) CastToContentDecoder(object *gobject.Object) *ContentDecoder {
+	return ContentDecoderNewFromNative(object.Native())
+}
+
+func (recv *ContentDecoder) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1777,6 +1933,19 @@ func ContentSnifferNewFromNative(native unsafe.Pointer) *ContentSniffer {
 // Object upcasts to *Object
 func (recv *ContentSniffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToContentSniffer down casts any arbitrary Object to ContentSniffer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContentSniffer.
+*/
+func (recv *ContentSniffer) CastToContentSniffer(object *gobject.Object) *ContentSniffer {
+	return ContentSnifferNewFromNative(object.Native())
+}
+
+func (recv *ContentSniffer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1883,6 +2052,19 @@ func CookieJarNewFromNative(native unsafe.Pointer) *CookieJar {
 // Object upcasts to *Object
 func (recv *CookieJar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCookieJar down casts any arbitrary Object to CookieJar.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CookieJar.
+*/
+func (recv *CookieJar) CastToCookieJar(object *gobject.Object) *CookieJar {
+	return CookieJarNewFromNative(object.Native())
+}
+
+func (recv *CookieJar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2287,6 +2469,19 @@ func (recv *CookieJarDB) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCookieJarDB down casts any arbitrary Object to CookieJarDB.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CookieJarDB.
+*/
+func (recv *CookieJarDB) CastToCookieJarDB(object *gobject.Object) *CookieJarDB {
+	return CookieJarDBNewFromNative(object.Native())
+}
+
+func (recv *CookieJarDB) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CookieJarDB) FieldParent() *CookieJar {
 	argValue := gi.ObjectFieldGet(cookieJarDBObject, recv.native, "parent")
@@ -2363,6 +2558,19 @@ func (recv *CookieJarText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCookieJarText down casts any arbitrary Object to CookieJarText.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CookieJarText.
+*/
+func (recv *CookieJarText) CastToCookieJarText(object *gobject.Object) *CookieJarText {
+	return CookieJarTextNewFromNative(object.Native())
+}
+
+func (recv *CookieJarText) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *CookieJarText) FieldParent() *CookieJar {
 	argValue := gi.ObjectFieldGet(cookieJarTextObject, recv.native, "parent")
@@ -2432,6 +2640,19 @@ func HSTSEnforcerNewFromNative(native unsafe.Pointer) *HSTSEnforcer {
 // Object upcasts to *Object
 func (recv *HSTSEnforcer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHSTSEnforcer down casts any arbitrary Object to HSTSEnforcer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HSTSEnforcer.
+*/
+func (recv *HSTSEnforcer) CastToHSTSEnforcer(object *gobject.Object) *HSTSEnforcer {
+	return HSTSEnforcerNewFromNative(object.Native())
+}
+
+func (recv *HSTSEnforcer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2639,6 +2860,19 @@ func (recv *HSTSEnforcerDB) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToHSTSEnforcerDB down casts any arbitrary Object to HSTSEnforcerDB.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HSTSEnforcerDB.
+*/
+func (recv *HSTSEnforcerDB) CastToHSTSEnforcerDB(object *gobject.Object) *HSTSEnforcerDB {
+	return HSTSEnforcerDBNewFromNative(object.Native())
+}
+
+func (recv *HSTSEnforcerDB) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *HSTSEnforcerDB) FieldParent() *HSTSEnforcer {
 	argValue := gi.ObjectFieldGet(hSTSEnforcerDBObject, recv.native, "parent")
@@ -2721,6 +2955,19 @@ func LoggerNewFromNative(native unsafe.Pointer) *Logger {
 // Object upcasts to *Object
 func (recv *Logger) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLogger down casts any arbitrary Object to Logger.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Logger.
+*/
+func (recv *Logger) CastToLogger(object *gobject.Object) *Logger {
+	return LoggerNewFromNative(object.Native())
+}
+
+func (recv *Logger) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2846,6 +3093,19 @@ func MessageNewFromNative(native unsafe.Pointer) *Message {
 // Object upcasts to *Object
 func (recv *Message) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMessage down casts any arbitrary Object to Message.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Message.
+*/
+func (recv *Message) CastToMessage(object *gobject.Object) *Message {
+	return MessageNewFromNative(object.Native())
+}
+
+func (recv *Message) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -3837,6 +4097,19 @@ func (recv *MultipartInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMultipartInputStream down casts any arbitrary Object to MultipartInputStream.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MultipartInputStream.
+*/
+func (recv *MultipartInputStream) CastToMultipartInputStream(object *gobject.Object) *MultipartInputStream {
+	return MultipartInputStreamNewFromNative(object.Native())
+}
+
+func (recv *MultipartInputStream) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gio.FilterInputStream'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Gio.FilterInputStream'
@@ -3905,6 +4178,19 @@ func (recv *ProxyResolverDefault) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToProxyResolverDefault down casts any arbitrary Object to ProxyResolverDefault.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyResolverDefault.
+*/
+func (recv *ProxyResolverDefault) CastToProxyResolverDefault(object *gobject.Object) *ProxyResolverDefault {
+	return ProxyResolverDefaultNewFromNative(object.Native())
+}
+
+func (recv *ProxyResolverDefault) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -3931,6 +4217,19 @@ func RequestNewFromNative(native unsafe.Pointer) *Request {
 // Object upcasts to *Object
 func (recv *Request) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRequest down casts any arbitrary Object to Request.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Request.
+*/
+func (recv *Request) CastToRequest(object *gobject.Object) *Request {
+	return RequestNewFromNative(object.Native())
+}
+
+func (recv *Request) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -4114,6 +4413,19 @@ func (recv *RequestData) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRequestData down casts any arbitrary Object to RequestData.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RequestData.
+*/
+func (recv *RequestData) CastToRequestData(object *gobject.Object) *RequestData {
+	return RequestDataNewFromNative(object.Native())
+}
+
+func (recv *RequestData) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *RequestData) FieldParent() *Request {
 	argValue := gi.ObjectFieldGet(requestDataObject, recv.native, "parent")
@@ -4169,6 +4481,19 @@ func (recv *RequestFile) Request() *Request {
 // Object upcasts to *Object
 func (recv *RequestFile) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRequestFile down casts any arbitrary Object to RequestFile.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RequestFile.
+*/
+func (recv *RequestFile) CastToRequestFile(object *gobject.Object) *RequestFile {
+	return RequestFileNewFromNative(object.Native())
+}
+
+func (recv *RequestFile) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -4228,6 +4553,19 @@ func (recv *RequestHTTP) Request() *Request {
 // Object upcasts to *Object
 func (recv *RequestHTTP) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRequestHTTP down casts any arbitrary Object to RequestHTTP.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RequestHTTP.
+*/
+func (recv *RequestHTTP) CastToRequestHTTP(object *gobject.Object) *RequestHTTP {
+	return RequestHTTPNewFromNative(object.Native())
+}
+
+func (recv *RequestHTTP) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -4312,6 +4650,19 @@ func RequesterNewFromNative(native unsafe.Pointer) *Requester {
 // Object upcasts to *Object
 func (recv *Requester) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRequester down casts any arbitrary Object to Requester.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Requester.
+*/
+func (recv *Requester) CastToRequester(object *gobject.Object) *Requester {
+	return RequesterNewFromNative(object.Native())
+}
+
+func (recv *Requester) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -4450,6 +4801,19 @@ func ServerNewFromNative(native unsafe.Pointer) *Server {
 // Object upcasts to *Object
 func (recv *Server) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToServer down casts any arbitrary Object to Server.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Server.
+*/
+func (recv *Server) CastToServer(object *gobject.Object) *Server {
+	return ServerNewFromNative(object.Native())
+}
+
+func (recv *Server) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -4895,6 +5259,19 @@ func SessionNewFromNative(native unsafe.Pointer) *Session {
 // Object upcasts to *Object
 func (recv *Session) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSession down casts any arbitrary Object to Session.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Session.
+*/
+func (recv *Session) CastToSession(object *gobject.Object) *Session {
+	return SessionNewFromNative(object.Native())
+}
+
+func (recv *Session) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5407,6 +5784,19 @@ func (recv *SessionAsync) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSessionAsync down casts any arbitrary Object to SessionAsync.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SessionAsync.
+*/
+func (recv *SessionAsync) CastToSessionAsync(object *gobject.Object) *SessionAsync {
+	return SessionAsyncNewFromNative(object.Native())
+}
+
+func (recv *SessionAsync) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SessionAsync) FieldParent() *Session {
 	argValue := gi.ObjectFieldGet(sessionAsyncObject, recv.native, "parent")
@@ -5482,6 +5872,19 @@ func (recv *SessionSync) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSessionSync down casts any arbitrary Object to SessionSync.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SessionSync.
+*/
+func (recv *SessionSync) CastToSessionSync(object *gobject.Object) *SessionSync {
+	return SessionSyncNewFromNative(object.Native())
+}
+
+func (recv *SessionSync) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *SessionSync) FieldParent() *Session {
 	argValue := gi.ObjectFieldGet(sessionSyncObject, recv.native, "parent")
@@ -5550,6 +5953,19 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 // Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSocket down casts any arbitrary Object to Socket.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Socket.
+*/
+func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+	return SocketNewFromNative(object.Native())
+}
+
+func (recv *Socket) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5814,6 +6230,19 @@ func WebsocketConnectionNewFromNative(native unsafe.Pointer) *WebsocketConnectio
 // Object upcasts to *Object
 func (recv *WebsocketConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWebsocketConnection down casts any arbitrary Object to WebsocketConnection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebsocketConnection.
+*/
+func (recv *WebsocketConnection) CastToWebsocketConnection(object *gobject.Object) *WebsocketConnection {
+	return WebsocketConnectionNewFromNative(object.Native())
+}
+
+func (recv *WebsocketConnection) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -6261,6 +6690,19 @@ func (recv *WebsocketExtension) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWebsocketExtension down casts any arbitrary Object to WebsocketExtension.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebsocketExtension.
+*/
+func (recv *WebsocketExtension) CastToWebsocketExtension(object *gobject.Object) *WebsocketExtension {
+	return WebsocketExtensionNewFromNative(object.Native())
+}
+
+func (recv *WebsocketExtension) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -6364,6 +6806,19 @@ func (recv *WebsocketExtensionDeflate) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWebsocketExtensionDeflate down casts any arbitrary Object to WebsocketExtensionDeflate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebsocketExtensionDeflate.
+*/
+func (recv *WebsocketExtensionDeflate) CastToWebsocketExtensionDeflate(object *gobject.Object) *WebsocketExtensionDeflate {
+	return WebsocketExtensionDeflateNewFromNative(object.Native())
+}
+
+func (recv *WebsocketExtensionDeflate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *WebsocketExtensionDeflate) FieldParent() *WebsocketExtension {
 	argValue := gi.ObjectFieldGet(websocketExtensionDeflateObject, recv.native, "parent")
@@ -6400,6 +6855,19 @@ func WebsocketExtensionManagerNewFromNative(native unsafe.Pointer) *WebsocketExt
 // Object upcasts to *Object
 func (recv *WebsocketExtensionManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWebsocketExtensionManager down casts any arbitrary Object to WebsocketExtensionManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebsocketExtensionManager.
+*/
+func (recv *WebsocketExtensionManager) CastToWebsocketExtensionManager(object *gobject.Object) *WebsocketExtensionManager {
+	return WebsocketExtensionManagerNewFromNative(object.Native())
+}
+
+func (recv *WebsocketExtensionManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'

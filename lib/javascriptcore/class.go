@@ -33,6 +33,19 @@ func (recv *Class) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToClass down casts any arbitrary Object to Class.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Class.
+*/
+func (recv *Class) CastToClass(object *gobject.Object) *Class {
+	return ClassNewFromNative(object.Native())
+}
+
+func (recv *Class) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'jsc_class_add_constructor' : parameter 'callback' of type 'GObject.Callback' not supported
 
 // UNSUPPORTED : C value 'jsc_class_add_constructor_variadic' : parameter 'callback' of type 'Constructor' not supported
@@ -133,6 +146,19 @@ func ContextNewFromNative(native unsafe.Pointer) *Context {
 // Object upcasts to *Object
 func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToContext down casts any arbitrary Object to Context.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Context.
+*/
+func (recv *Context) CastToContext(object *gobject.Object) *Context {
+	return ContextNewFromNative(object.Native())
+}
+
+func (recv *Context) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -647,6 +673,19 @@ func (recv *Exception) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToException down casts any arbitrary Object to Exception.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Exception.
+*/
+func (recv *Exception) CastToException(object *gobject.Object) *Exception {
+	return ExceptionNewFromNative(object.Native())
+}
+
+func (recv *Exception) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1004,6 +1043,19 @@ func ValueNewFromNative(native unsafe.Pointer) *Value {
 // Object upcasts to *Object
 func (recv *Value) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToValue down casts any arbitrary Object to Value.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Value.
+*/
+func (recv *Value) CastToValue(object *gobject.Object) *Value {
+	return ValueNewFromNative(object.Native())
+}
+
+func (recv *Value) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1932,6 +1984,19 @@ func (recv *VirtualMachine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToVirtualMachine down casts any arbitrary Object to VirtualMachine.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VirtualMachine.
+*/
+func (recv *VirtualMachine) CastToVirtualMachine(object *gobject.Object) *VirtualMachine {
+	return VirtualMachineNewFromNative(object.Native())
+}
+
+func (recv *VirtualMachine) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1988,6 +2053,19 @@ func WeakValueNewFromNative(native unsafe.Pointer) *WeakValue {
 // Object upcasts to *Object
 func (recv *WeakValue) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWeakValue down casts any arbitrary Object to WeakValue.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WeakValue.
+*/
+func (recv *WeakValue) CastToWeakValue(object *gobject.Object) *WeakValue {
+	return WeakValueNewFromNative(object.Native())
+}
+
+func (recv *WeakValue) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'

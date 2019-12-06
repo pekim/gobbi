@@ -38,6 +38,19 @@ func (recv *GObjectAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGObjectAccessible down casts any arbitrary Object to GObjectAccessible.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GObjectAccessible.
+*/
+func (recv *GObjectAccessible) CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
+	return GObjectAccessibleNewFromNative(object.Native())
+}
+
+func (recv *GObjectAccessible) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *GObjectAccessible) FieldParent() *Object {
 	argValue := gi.ObjectFieldGet(gObjectAccessibleObject, recv.native, "parent")
@@ -76,6 +89,19 @@ func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
 // Object upcasts to *Object
 func (recv *Hyperlink) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHyperlink down casts any arbitrary Object to Hyperlink.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Hyperlink.
+*/
+func (recv *Hyperlink) CastToHyperlink(object *gobject.Object) *Hyperlink {
+	return HyperlinkNewFromNative(object.Native())
+}
+
+func (recv *Hyperlink) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -364,6 +390,19 @@ func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMisc down casts any arbitrary Object to Misc.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Misc.
+*/
+func (recv *Misc) CastToMisc(object *gobject.Object) *Misc {
+	return MiscNewFromNative(object.Native())
+}
+
+func (recv *Misc) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -453,6 +492,19 @@ func (recv *NoOpObject) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToNoOpObject down casts any arbitrary Object to NoOpObject.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NoOpObject.
+*/
+func (recv *NoOpObject) CastToNoOpObject(object *gobject.Object) *NoOpObject {
+	return NoOpObjectNewFromNative(object.Native())
+}
+
+func (recv *NoOpObject) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObject) FieldParent() *Object {
 	argValue := gi.ObjectFieldGet(noOpObjectObject, recv.native, "parent")
@@ -496,6 +548,19 @@ func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
 // Object upcasts to *Object
 func (recv *NoOpObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNoOpObjectFactory down casts any arbitrary Object to NoOpObjectFactory.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NoOpObjectFactory.
+*/
+func (recv *NoOpObjectFactory) CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
+	return NoOpObjectFactoryNewFromNative(object.Native())
+}
+
+func (recv *NoOpObjectFactory) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -564,6 +629,19 @@ func ObjectNewFromNative(native unsafe.Pointer) *Object {
 // Object upcasts to *Object
 func (recv *Object) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToObject down casts any arbitrary Object to Object.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Object.
+*/
+func (recv *Object) CastToObject(object *gobject.Object) *Object {
+	return ObjectNewFromNative(object.Native())
+}
+
+func (recv *Object) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1405,6 +1483,19 @@ func (recv *ObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToObjectFactory down casts any arbitrary Object to ObjectFactory.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ObjectFactory.
+*/
+func (recv *ObjectFactory) CastToObjectFactory(object *gobject.Object) *ObjectFactory {
+	return ObjectFactoryNewFromNative(object.Native())
+}
+
+func (recv *ObjectFactory) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1468,6 +1559,19 @@ func (recv *Plug) ObjectAtk() *Object {
 // Object upcasts to *Object
 func (recv *Plug) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPlug down casts any arbitrary Object to Plug.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Plug.
+*/
+func (recv *Plug) CastToPlug(object *gobject.Object) *Plug {
+	return PlugNewFromNative(object.Native())
+}
+
+func (recv *Plug) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -1570,6 +1674,19 @@ func (recv *Registry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRegistry down casts any arbitrary Object to Registry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Registry.
+*/
+func (recv *Registry) CastToRegistry(object *gobject.Object) *Registry {
+	return RegistryNewFromNative(object.Native())
+}
+
+func (recv *Registry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1610,6 +1727,19 @@ func RelationNewFromNative(native unsafe.Pointer) *Relation {
 // Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRelation down casts any arbitrary Object to Relation.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Relation.
+*/
+func (recv *Relation) CastToRelation(object *gobject.Object) *Relation {
+	return RelationNewFromNative(object.Native())
+}
+
+func (recv *Relation) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1780,6 +1910,19 @@ func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
 // Object upcasts to *Object
 func (recv *RelationSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRelationSet down casts any arbitrary Object to RelationSet.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RelationSet.
+*/
+func (recv *RelationSet) CastToRelationSet(object *gobject.Object) *RelationSet {
+	return RelationSetNewFromNative(object.Native())
+}
+
+func (recv *RelationSet) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2102,6 +2245,19 @@ func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSocket down casts any arbitrary Object to Socket.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Socket.
+*/
+func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+	return SocketNewFromNative(object.Native())
+}
+
+func (recv *Socket) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParent returns the C field 'parent'.
 func (recv *Socket) FieldParent() *Object {
 	argValue := gi.ObjectFieldGet(socketObject, recv.native, "parent")
@@ -2229,6 +2385,19 @@ func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
 // Object upcasts to *Object
 func (recv *StateSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStateSet down casts any arbitrary Object to StateSet.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StateSet.
+*/
+func (recv *StateSet) CastToStateSet(object *gobject.Object) *StateSet {
+	return StateSetNewFromNative(object.Native())
+}
+
+func (recv *StateSet) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2549,6 +2718,19 @@ func UtilNewFromNative(native unsafe.Pointer) *Util {
 // Object upcasts to *Object
 func (recv *Util) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToUtil down casts any arbitrary Object to Util.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Util.
+*/
+func (recv *Util) CastToUtil(object *gobject.Object) *Util {
+	return UtilNewFromNative(object.Native())
+}
+
+func (recv *Util) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'

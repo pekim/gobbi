@@ -4,6 +4,7 @@ package gio
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type ActionEntry struct {
 
 func ActionEntryNewFromNative(native unsafe.Pointer) *ActionEntry {
 	return &ActionEntry{native: native}
+}
+
+/*
+CastToActionEntry down casts any arbitrary Object to ActionEntry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionEntry.
+*/
+func (recv *ActionEntry) CastToActionEntry(object *gobject.Object) *ActionEntry {
+	return ActionEntryNewFromNative(object.Native())
+}
+
+func (recv *ActionEntry) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldName returns the C field 'name'.
@@ -110,6 +124,19 @@ type ActionGroupInterface struct {
 
 func ActionGroupInterfaceNewFromNative(native unsafe.Pointer) *ActionGroupInterface {
 	return &ActionGroupInterface{native: native}
+}
+
+/*
+CastToActionGroupInterface down casts any arbitrary Object to ActionGroupInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionGroupInterface.
+*/
+func (recv *ActionGroupInterface) CastToActionGroupInterface(object *gobject.Object) *ActionGroupInterface {
+	return ActionGroupInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ActionGroupInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -206,6 +233,19 @@ func ActionInterfaceNewFromNative(native unsafe.Pointer) *ActionInterface {
 	return &ActionInterface{native: native}
 }
 
+/*
+CastToActionInterface down casts any arbitrary Object to ActionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionInterface.
+*/
+func (recv *ActionInterface) CastToActionInterface(object *gobject.Object) *ActionInterface {
+	return ActionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ActionInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -276,6 +316,19 @@ func ActionMapInterfaceNewFromNative(native unsafe.Pointer) *ActionMapInterface 
 	return &ActionMapInterface{native: native}
 }
 
+/*
+CastToActionMapInterface down casts any arbitrary Object to ActionMapInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionMapInterface.
+*/
+func (recv *ActionMapInterface) CastToActionMapInterface(object *gobject.Object) *ActionMapInterface {
+	return ActionMapInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ActionMapInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -324,6 +377,19 @@ type AppInfoIface struct {
 
 func AppInfoIfaceNewFromNative(native unsafe.Pointer) *AppInfoIface {
 	return &AppInfoIface{native: native}
+}
+
+/*
+CastToAppInfoIface down casts any arbitrary Object to AppInfoIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppInfoIface.
+*/
+func (recv *AppInfoIface) CastToAppInfoIface(object *gobject.Object) *AppInfoIface {
+	return AppInfoIfaceNewFromNative(object.Native())
+}
+
+func (recv *AppInfoIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -464,6 +530,19 @@ func AppLaunchContextClassNewFromNative(native unsafe.Pointer) *AppLaunchContext
 	return &AppLaunchContextClass{native: native}
 }
 
+/*
+CastToAppLaunchContextClass down casts any arbitrary Object to AppLaunchContextClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppLaunchContextClass.
+*/
+func (recv *AppLaunchContextClass) CastToAppLaunchContextClass(object *gobject.Object) *AppLaunchContextClass {
+	return AppLaunchContextClassNewFromNative(object.Native())
+}
+
+func (recv *AppLaunchContextClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -534,6 +613,19 @@ func AppLaunchContextPrivateNewFromNative(native unsafe.Pointer) *AppLaunchConte
 	return &AppLaunchContextPrivate{native: native}
 }
 
+/*
+CastToAppLaunchContextPrivate down casts any arbitrary Object to AppLaunchContextPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppLaunchContextPrivate.
+*/
+func (recv *AppLaunchContextPrivate) CastToAppLaunchContextPrivate(object *gobject.Object) *AppLaunchContextPrivate {
+	return AppLaunchContextPrivateNewFromNative(object.Native())
+}
+
+func (recv *AppLaunchContextPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // AppLaunchContextPrivateStruct creates an uninitialised AppLaunchContextPrivate.
 func AppLaunchContextPrivateStruct() *AppLaunchContextPrivate {
 	err := appLaunchContextPrivateStruct_Set()
@@ -566,6 +658,19 @@ type ApplicationClass struct {
 
 func ApplicationClassNewFromNative(native unsafe.Pointer) *ApplicationClass {
 	return &ApplicationClass{native: native}
+}
+
+/*
+CastToApplicationClass down casts any arbitrary Object to ApplicationClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ApplicationClass.
+*/
+func (recv *ApplicationClass) CastToApplicationClass(object *gobject.Object) *ApplicationClass {
+	return ApplicationClassNewFromNative(object.Native())
+}
+
+func (recv *ApplicationClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'startup' : for field getter : missing Type
@@ -662,6 +767,19 @@ func ApplicationCommandLineClassNewFromNative(native unsafe.Pointer) *Applicatio
 	return &ApplicationCommandLineClass{native: native}
 }
 
+/*
+CastToApplicationCommandLineClass down casts any arbitrary Object to ApplicationCommandLineClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ApplicationCommandLineClass.
+*/
+func (recv *ApplicationCommandLineClass) CastToApplicationCommandLineClass(object *gobject.Object) *ApplicationCommandLineClass {
+	return ApplicationCommandLineClassNewFromNative(object.Native())
+}
+
+func (recv *ApplicationCommandLineClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'print_literal' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'print_literal' : for field setter : missing Type
@@ -708,6 +826,19 @@ func ApplicationCommandLinePrivateNewFromNative(native unsafe.Pointer) *Applicat
 	return &ApplicationCommandLinePrivate{native: native}
 }
 
+/*
+CastToApplicationCommandLinePrivate down casts any arbitrary Object to ApplicationCommandLinePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ApplicationCommandLinePrivate.
+*/
+func (recv *ApplicationCommandLinePrivate) CastToApplicationCommandLinePrivate(object *gobject.Object) *ApplicationCommandLinePrivate {
+	return ApplicationCommandLinePrivateNewFromNative(object.Native())
+}
+
+func (recv *ApplicationCommandLinePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationCommandLinePrivateStruct creates an uninitialised ApplicationCommandLinePrivate.
 func ApplicationCommandLinePrivateStruct() *ApplicationCommandLinePrivate {
 	err := applicationCommandLinePrivateStruct_Set()
@@ -742,6 +873,19 @@ func ApplicationPrivateNewFromNative(native unsafe.Pointer) *ApplicationPrivate 
 	return &ApplicationPrivate{native: native}
 }
 
+/*
+CastToApplicationPrivate down casts any arbitrary Object to ApplicationPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ApplicationPrivate.
+*/
+func (recv *ApplicationPrivate) CastToApplicationPrivate(object *gobject.Object) *ApplicationPrivate {
+	return ApplicationPrivateNewFromNative(object.Native())
+}
+
+func (recv *ApplicationPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationPrivateStruct creates an uninitialised ApplicationPrivate.
 func ApplicationPrivateStruct() *ApplicationPrivate {
 	err := applicationPrivateStruct_Set()
@@ -774,6 +918,19 @@ type AsyncInitableIface struct {
 
 func AsyncInitableIfaceNewFromNative(native unsafe.Pointer) *AsyncInitableIface {
 	return &AsyncInitableIface{native: native}
+}
+
+/*
+CastToAsyncInitableIface down casts any arbitrary Object to AsyncInitableIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AsyncInitableIface.
+*/
+func (recv *AsyncInitableIface) CastToAsyncInitableIface(object *gobject.Object) *AsyncInitableIface {
+	return AsyncInitableIfaceNewFromNative(object.Native())
+}
+
+func (recv *AsyncInitableIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -820,6 +977,19 @@ type AsyncResultIface struct {
 
 func AsyncResultIfaceNewFromNative(native unsafe.Pointer) *AsyncResultIface {
 	return &AsyncResultIface{native: native}
+}
+
+/*
+CastToAsyncResultIface down casts any arbitrary Object to AsyncResultIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AsyncResultIface.
+*/
+func (recv *AsyncResultIface) CastToAsyncResultIface(object *gobject.Object) *AsyncResultIface {
+	return AsyncResultIfaceNewFromNative(object.Native())
+}
+
+func (recv *AsyncResultIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -870,6 +1040,19 @@ type BufferedInputStreamClass struct {
 
 func BufferedInputStreamClassNewFromNative(native unsafe.Pointer) *BufferedInputStreamClass {
 	return &BufferedInputStreamClass{native: native}
+}
+
+/*
+CastToBufferedInputStreamClass down casts any arbitrary Object to BufferedInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BufferedInputStreamClass.
+*/
+func (recv *BufferedInputStreamClass) CastToBufferedInputStreamClass(object *gobject.Object) *BufferedInputStreamClass {
+	return BufferedInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *BufferedInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -952,6 +1135,19 @@ func BufferedInputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedInp
 	return &BufferedInputStreamPrivate{native: native}
 }
 
+/*
+CastToBufferedInputStreamPrivate down casts any arbitrary Object to BufferedInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BufferedInputStreamPrivate.
+*/
+func (recv *BufferedInputStreamPrivate) CastToBufferedInputStreamPrivate(object *gobject.Object) *BufferedInputStreamPrivate {
+	return BufferedInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *BufferedInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // BufferedInputStreamPrivateStruct creates an uninitialised BufferedInputStreamPrivate.
 func BufferedInputStreamPrivateStruct() *BufferedInputStreamPrivate {
 	err := bufferedInputStreamPrivateStruct_Set()
@@ -984,6 +1180,19 @@ type BufferedOutputStreamClass struct {
 
 func BufferedOutputStreamClassNewFromNative(native unsafe.Pointer) *BufferedOutputStreamClass {
 	return &BufferedOutputStreamClass{native: native}
+}
+
+/*
+CastToBufferedOutputStreamClass down casts any arbitrary Object to BufferedOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BufferedOutputStreamClass.
+*/
+func (recv *BufferedOutputStreamClass) CastToBufferedOutputStreamClass(object *gobject.Object) *BufferedOutputStreamClass {
+	return BufferedOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *BufferedOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -1042,6 +1251,19 @@ func BufferedOutputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedOu
 	return &BufferedOutputStreamPrivate{native: native}
 }
 
+/*
+CastToBufferedOutputStreamPrivate down casts any arbitrary Object to BufferedOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BufferedOutputStreamPrivate.
+*/
+func (recv *BufferedOutputStreamPrivate) CastToBufferedOutputStreamPrivate(object *gobject.Object) *BufferedOutputStreamPrivate {
+	return BufferedOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *BufferedOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // BufferedOutputStreamPrivateStruct creates an uninitialised BufferedOutputStreamPrivate.
 func BufferedOutputStreamPrivateStruct() *BufferedOutputStreamPrivate {
 	err := bufferedOutputStreamPrivateStruct_Set()
@@ -1074,6 +1296,19 @@ type CancellableClass struct {
 
 func CancellableClassNewFromNative(native unsafe.Pointer) *CancellableClass {
 	return &CancellableClass{native: native}
+}
+
+/*
+CastToCancellableClass down casts any arbitrary Object to CancellableClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CancellableClass.
+*/
+func (recv *CancellableClass) CastToCancellableClass(object *gobject.Object) *CancellableClass {
+	return CancellableClassNewFromNative(object.Native())
+}
+
+func (recv *CancellableClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1138,6 +1373,19 @@ func CancellablePrivateNewFromNative(native unsafe.Pointer) *CancellablePrivate 
 	return &CancellablePrivate{native: native}
 }
 
+/*
+CastToCancellablePrivate down casts any arbitrary Object to CancellablePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CancellablePrivate.
+*/
+func (recv *CancellablePrivate) CastToCancellablePrivate(object *gobject.Object) *CancellablePrivate {
+	return CancellablePrivateNewFromNative(object.Native())
+}
+
+func (recv *CancellablePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // CancellablePrivateStruct creates an uninitialised CancellablePrivate.
 func CancellablePrivateStruct() *CancellablePrivate {
 	err := cancellablePrivateStruct_Set()
@@ -1170,6 +1418,19 @@ type CharsetConverterClass struct {
 
 func CharsetConverterClassNewFromNative(native unsafe.Pointer) *CharsetConverterClass {
 	return &CharsetConverterClass{native: native}
+}
+
+/*
+CastToCharsetConverterClass down casts any arbitrary Object to CharsetConverterClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CharsetConverterClass.
+*/
+func (recv *CharsetConverterClass) CastToCharsetConverterClass(object *gobject.Object) *CharsetConverterClass {
+	return CharsetConverterClassNewFromNative(object.Native())
+}
+
+func (recv *CharsetConverterClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1208,6 +1469,19 @@ type ConverterIface struct {
 
 func ConverterIfaceNewFromNative(native unsafe.Pointer) *ConverterIface {
 	return &ConverterIface{native: native}
+}
+
+/*
+CastToConverterIface down casts any arbitrary Object to ConverterIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ConverterIface.
+*/
+func (recv *ConverterIface) CastToConverterIface(object *gobject.Object) *ConverterIface {
+	return ConverterIfaceNewFromNative(object.Native())
+}
+
+func (recv *ConverterIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -1254,6 +1528,19 @@ type ConverterInputStreamClass struct {
 
 func ConverterInputStreamClassNewFromNative(native unsafe.Pointer) *ConverterInputStreamClass {
 	return &ConverterInputStreamClass{native: native}
+}
+
+/*
+CastToConverterInputStreamClass down casts any arbitrary Object to ConverterInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ConverterInputStreamClass.
+*/
+func (recv *ConverterInputStreamClass) CastToConverterInputStreamClass(object *gobject.Object) *ConverterInputStreamClass {
+	return ConverterInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *ConverterInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -1324,6 +1611,19 @@ func ConverterInputStreamPrivateNewFromNative(native unsafe.Pointer) *ConverterI
 	return &ConverterInputStreamPrivate{native: native}
 }
 
+/*
+CastToConverterInputStreamPrivate down casts any arbitrary Object to ConverterInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ConverterInputStreamPrivate.
+*/
+func (recv *ConverterInputStreamPrivate) CastToConverterInputStreamPrivate(object *gobject.Object) *ConverterInputStreamPrivate {
+	return ConverterInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *ConverterInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterInputStreamPrivateStruct creates an uninitialised ConverterInputStreamPrivate.
 func ConverterInputStreamPrivateStruct() *ConverterInputStreamPrivate {
 	err := converterInputStreamPrivateStruct_Set()
@@ -1356,6 +1656,19 @@ type ConverterOutputStreamClass struct {
 
 func ConverterOutputStreamClassNewFromNative(native unsafe.Pointer) *ConverterOutputStreamClass {
 	return &ConverterOutputStreamClass{native: native}
+}
+
+/*
+CastToConverterOutputStreamClass down casts any arbitrary Object to ConverterOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ConverterOutputStreamClass.
+*/
+func (recv *ConverterOutputStreamClass) CastToConverterOutputStreamClass(object *gobject.Object) *ConverterOutputStreamClass {
+	return ConverterOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *ConverterOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -1426,6 +1739,19 @@ func ConverterOutputStreamPrivateNewFromNative(native unsafe.Pointer) *Converter
 	return &ConverterOutputStreamPrivate{native: native}
 }
 
+/*
+CastToConverterOutputStreamPrivate down casts any arbitrary Object to ConverterOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ConverterOutputStreamPrivate.
+*/
+func (recv *ConverterOutputStreamPrivate) CastToConverterOutputStreamPrivate(object *gobject.Object) *ConverterOutputStreamPrivate {
+	return ConverterOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *ConverterOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterOutputStreamPrivateStruct creates an uninitialised ConverterOutputStreamPrivate.
 func ConverterOutputStreamPrivateStruct() *ConverterOutputStreamPrivate {
 	err := converterOutputStreamPrivateStruct_Set()
@@ -1460,6 +1786,19 @@ func CredentialsClassNewFromNative(native unsafe.Pointer) *CredentialsClass {
 	return &CredentialsClass{native: native}
 }
 
+/*
+CastToCredentialsClass down casts any arbitrary Object to CredentialsClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CredentialsClass.
+*/
+func (recv *CredentialsClass) CastToCredentialsClass(object *gobject.Object) *CredentialsClass {
+	return CredentialsClassNewFromNative(object.Native())
+}
+
+func (recv *CredentialsClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // CredentialsClassStruct creates an uninitialised CredentialsClass.
 func CredentialsClassStruct() *CredentialsClass {
 	err := credentialsClassStruct_Set()
@@ -1492,6 +1831,19 @@ type DBusAnnotationInfo struct {
 
 func DBusAnnotationInfoNewFromNative(native unsafe.Pointer) *DBusAnnotationInfo {
 	return &DBusAnnotationInfo{native: native}
+}
+
+/*
+CastToDBusAnnotationInfo down casts any arbitrary Object to DBusAnnotationInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusAnnotationInfo.
+*/
+func (recv *DBusAnnotationInfo) CastToDBusAnnotationInfo(object *gobject.Object) *DBusAnnotationInfo {
+	return DBusAnnotationInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusAnnotationInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -1634,6 +1986,19 @@ func DBusArgInfoNewFromNative(native unsafe.Pointer) *DBusArgInfo {
 	return &DBusArgInfo{native: native}
 }
 
+/*
+CastToDBusArgInfo down casts any arbitrary Object to DBusArgInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusArgInfo.
+*/
+func (recv *DBusArgInfo) CastToDBusArgInfo(object *gobject.Object) *DBusArgInfo {
+	return DBusArgInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusArgInfo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldRefCount returns the C field 'ref_count'.
 func (recv *DBusArgInfo) FieldRefCount() int32 {
 	argValue := gi.StructFieldGet(dBusArgInfoStruct, recv.native, "ref_count")
@@ -1774,6 +2139,19 @@ func DBusErrorEntryNewFromNative(native unsafe.Pointer) *DBusErrorEntry {
 	return &DBusErrorEntry{native: native}
 }
 
+/*
+CastToDBusErrorEntry down casts any arbitrary Object to DBusErrorEntry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusErrorEntry.
+*/
+func (recv *DBusErrorEntry) CastToDBusErrorEntry(object *gobject.Object) *DBusErrorEntry {
+	return DBusErrorEntryNewFromNative(object.Native())
+}
+
+func (recv *DBusErrorEntry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldErrorCode returns the C field 'error_code'.
 func (recv *DBusErrorEntry) FieldErrorCode() int32 {
 	argValue := gi.StructFieldGet(dBusErrorEntryStruct, recv.native, "error_code")
@@ -1836,6 +2214,19 @@ func DBusInterfaceIfaceNewFromNative(native unsafe.Pointer) *DBusInterfaceIface 
 	return &DBusInterfaceIface{native: native}
 }
 
+/*
+CastToDBusInterfaceIface down casts any arbitrary Object to DBusInterfaceIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusInterfaceIface.
+*/
+func (recv *DBusInterfaceIface) CastToDBusInterfaceIface(object *gobject.Object) *DBusInterfaceIface {
+	return DBusInterfaceIfaceNewFromNative(object.Native())
+}
+
+func (recv *DBusInterfaceIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -1888,6 +2279,19 @@ type DBusInterfaceInfo struct {
 
 func DBusInterfaceInfoNewFromNative(native unsafe.Pointer) *DBusInterfaceInfo {
 	return &DBusInterfaceInfo{native: native}
+}
+
+/*
+CastToDBusInterfaceInfo down casts any arbitrary Object to DBusInterfaceInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusInterfaceInfo.
+*/
+func (recv *DBusInterfaceInfo) CastToDBusInterfaceInfo(object *gobject.Object) *DBusInterfaceInfo {
+	return DBusInterfaceInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusInterfaceInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -2185,6 +2589,19 @@ func DBusInterfaceSkeletonClassNewFromNative(native unsafe.Pointer) *DBusInterfa
 	return &DBusInterfaceSkeletonClass{native: native}
 }
 
+/*
+CastToDBusInterfaceSkeletonClass down casts any arbitrary Object to DBusInterfaceSkeletonClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusInterfaceSkeletonClass.
+*/
+func (recv *DBusInterfaceSkeletonClass) CastToDBusInterfaceSkeletonClass(object *gobject.Object) *DBusInterfaceSkeletonClass {
+	return DBusInterfaceSkeletonClassNewFromNative(object.Native())
+}
+
+func (recv *DBusInterfaceSkeletonClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -2243,6 +2660,19 @@ func DBusInterfaceSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusInter
 	return &DBusInterfaceSkeletonPrivate{native: native}
 }
 
+/*
+CastToDBusInterfaceSkeletonPrivate down casts any arbitrary Object to DBusInterfaceSkeletonPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusInterfaceSkeletonPrivate.
+*/
+func (recv *DBusInterfaceSkeletonPrivate) CastToDBusInterfaceSkeletonPrivate(object *gobject.Object) *DBusInterfaceSkeletonPrivate {
+	return DBusInterfaceSkeletonPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusInterfaceSkeletonPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusInterfaceSkeletonPrivateStruct creates an uninitialised DBusInterfaceSkeletonPrivate.
 func DBusInterfaceSkeletonPrivateStruct() *DBusInterfaceSkeletonPrivate {
 	err := dBusInterfaceSkeletonPrivateStruct_Set()
@@ -2275,6 +2705,19 @@ type DBusInterfaceVTable struct {
 
 func DBusInterfaceVTableNewFromNative(native unsafe.Pointer) *DBusInterfaceVTable {
 	return &DBusInterfaceVTable{native: native}
+}
+
+/*
+CastToDBusInterfaceVTable down casts any arbitrary Object to DBusInterfaceVTable.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusInterfaceVTable.
+*/
+func (recv *DBusInterfaceVTable) CastToDBusInterfaceVTable(object *gobject.Object) *DBusInterfaceVTable {
+	return DBusInterfaceVTableNewFromNative(object.Native())
+}
+
+func (recv *DBusInterfaceVTable) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'method_call' : for field getter : no Go type for 'DBusInterfaceMethodCallFunc'
@@ -2321,6 +2764,19 @@ type DBusMethodInfo struct {
 
 func DBusMethodInfoNewFromNative(native unsafe.Pointer) *DBusMethodInfo {
 	return &DBusMethodInfo{native: native}
+}
+
+/*
+CastToDBusMethodInfo down casts any arbitrary Object to DBusMethodInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusMethodInfo.
+*/
+func (recv *DBusMethodInfo) CastToDBusMethodInfo(object *gobject.Object) *DBusMethodInfo {
+	return DBusMethodInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusMethodInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -2455,6 +2911,19 @@ type DBusNodeInfo struct {
 
 func DBusNodeInfoNewFromNative(native unsafe.Pointer) *DBusNodeInfo {
 	return &DBusNodeInfo{native: native}
+}
+
+/*
+CastToDBusNodeInfo down casts any arbitrary Object to DBusNodeInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusNodeInfo.
+*/
+func (recv *DBusNodeInfo) CastToDBusNodeInfo(object *gobject.Object) *DBusNodeInfo {
+	return DBusNodeInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusNodeInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -2643,6 +3112,19 @@ func DBusObjectIfaceNewFromNative(native unsafe.Pointer) *DBusObjectIface {
 	return &DBusObjectIface{native: native}
 }
 
+/*
+CastToDBusObjectIface down casts any arbitrary Object to DBusObjectIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectIface.
+*/
+func (recv *DBusObjectIface) CastToDBusObjectIface(object *gobject.Object) *DBusObjectIface {
+	return DBusObjectIfaceNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -2701,6 +3183,19 @@ func DBusObjectManagerClientClassNewFromNative(native unsafe.Pointer) *DBusObjec
 	return &DBusObjectManagerClientClass{native: native}
 }
 
+/*
+CastToDBusObjectManagerClientClass down casts any arbitrary Object to DBusObjectManagerClientClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectManagerClientClass.
+*/
+func (recv *DBusObjectManagerClientClass) CastToDBusObjectManagerClientClass(object *gobject.Object) *DBusObjectManagerClientClass {
+	return DBusObjectManagerClientClassNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectManagerClientClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -2747,6 +3242,19 @@ func DBusObjectManagerClientPrivateNewFromNative(native unsafe.Pointer) *DBusObj
 	return &DBusObjectManagerClientPrivate{native: native}
 }
 
+/*
+CastToDBusObjectManagerClientPrivate down casts any arbitrary Object to DBusObjectManagerClientPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectManagerClientPrivate.
+*/
+func (recv *DBusObjectManagerClientPrivate) CastToDBusObjectManagerClientPrivate(object *gobject.Object) *DBusObjectManagerClientPrivate {
+	return DBusObjectManagerClientPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectManagerClientPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectManagerClientPrivateStruct creates an uninitialised DBusObjectManagerClientPrivate.
 func DBusObjectManagerClientPrivateStruct() *DBusObjectManagerClientPrivate {
 	err := dBusObjectManagerClientPrivateStruct_Set()
@@ -2779,6 +3287,19 @@ type DBusObjectManagerIface struct {
 
 func DBusObjectManagerIfaceNewFromNative(native unsafe.Pointer) *DBusObjectManagerIface {
 	return &DBusObjectManagerIface{native: native}
+}
+
+/*
+CastToDBusObjectManagerIface down casts any arbitrary Object to DBusObjectManagerIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectManagerIface.
+*/
+func (recv *DBusObjectManagerIface) CastToDBusObjectManagerIface(object *gobject.Object) *DBusObjectManagerIface {
+	return DBusObjectManagerIfaceNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectManagerIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2851,6 +3372,19 @@ func DBusObjectManagerServerClassNewFromNative(native unsafe.Pointer) *DBusObjec
 	return &DBusObjectManagerServerClass{native: native}
 }
 
+/*
+CastToDBusObjectManagerServerClass down casts any arbitrary Object to DBusObjectManagerServerClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectManagerServerClass.
+*/
+func (recv *DBusObjectManagerServerClass) CastToDBusObjectManagerServerClass(object *gobject.Object) *DBusObjectManagerServerClass {
+	return DBusObjectManagerServerClassNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectManagerServerClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -2889,6 +3423,19 @@ func DBusObjectManagerServerPrivateNewFromNative(native unsafe.Pointer) *DBusObj
 	return &DBusObjectManagerServerPrivate{native: native}
 }
 
+/*
+CastToDBusObjectManagerServerPrivate down casts any arbitrary Object to DBusObjectManagerServerPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectManagerServerPrivate.
+*/
+func (recv *DBusObjectManagerServerPrivate) CastToDBusObjectManagerServerPrivate(object *gobject.Object) *DBusObjectManagerServerPrivate {
+	return DBusObjectManagerServerPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectManagerServerPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectManagerServerPrivateStruct creates an uninitialised DBusObjectManagerServerPrivate.
 func DBusObjectManagerServerPrivateStruct() *DBusObjectManagerServerPrivate {
 	err := dBusObjectManagerServerPrivateStruct_Set()
@@ -2921,6 +3468,19 @@ type DBusObjectProxyClass struct {
 
 func DBusObjectProxyClassNewFromNative(native unsafe.Pointer) *DBusObjectProxyClass {
 	return &DBusObjectProxyClass{native: native}
+}
+
+/*
+CastToDBusObjectProxyClass down casts any arbitrary Object to DBusObjectProxyClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectProxyClass.
+*/
+func (recv *DBusObjectProxyClass) CastToDBusObjectProxyClass(object *gobject.Object) *DBusObjectProxyClass {
+	return DBusObjectProxyClassNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectProxyClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2961,6 +3521,19 @@ func DBusObjectProxyPrivateNewFromNative(native unsafe.Pointer) *DBusObjectProxy
 	return &DBusObjectProxyPrivate{native: native}
 }
 
+/*
+CastToDBusObjectProxyPrivate down casts any arbitrary Object to DBusObjectProxyPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectProxyPrivate.
+*/
+func (recv *DBusObjectProxyPrivate) CastToDBusObjectProxyPrivate(object *gobject.Object) *DBusObjectProxyPrivate {
+	return DBusObjectProxyPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectProxyPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectProxyPrivateStruct creates an uninitialised DBusObjectProxyPrivate.
 func DBusObjectProxyPrivateStruct() *DBusObjectProxyPrivate {
 	err := dBusObjectProxyPrivateStruct_Set()
@@ -2993,6 +3566,19 @@ type DBusObjectSkeletonClass struct {
 
 func DBusObjectSkeletonClassNewFromNative(native unsafe.Pointer) *DBusObjectSkeletonClass {
 	return &DBusObjectSkeletonClass{native: native}
+}
+
+/*
+CastToDBusObjectSkeletonClass down casts any arbitrary Object to DBusObjectSkeletonClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectSkeletonClass.
+*/
+func (recv *DBusObjectSkeletonClass) CastToDBusObjectSkeletonClass(object *gobject.Object) *DBusObjectSkeletonClass {
+	return DBusObjectSkeletonClassNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectSkeletonClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3037,6 +3623,19 @@ func DBusObjectSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusObjectSk
 	return &DBusObjectSkeletonPrivate{native: native}
 }
 
+/*
+CastToDBusObjectSkeletonPrivate down casts any arbitrary Object to DBusObjectSkeletonPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusObjectSkeletonPrivate.
+*/
+func (recv *DBusObjectSkeletonPrivate) CastToDBusObjectSkeletonPrivate(object *gobject.Object) *DBusObjectSkeletonPrivate {
+	return DBusObjectSkeletonPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusObjectSkeletonPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectSkeletonPrivateStruct creates an uninitialised DBusObjectSkeletonPrivate.
 func DBusObjectSkeletonPrivateStruct() *DBusObjectSkeletonPrivate {
 	err := dBusObjectSkeletonPrivateStruct_Set()
@@ -3069,6 +3668,19 @@ type DBusPropertyInfo struct {
 
 func DBusPropertyInfoNewFromNative(native unsafe.Pointer) *DBusPropertyInfo {
 	return &DBusPropertyInfo{native: native}
+}
+
+/*
+CastToDBusPropertyInfo down casts any arbitrary Object to DBusPropertyInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusPropertyInfo.
+*/
+func (recv *DBusPropertyInfo) CastToDBusPropertyInfo(object *gobject.Object) *DBusPropertyInfo {
+	return DBusPropertyInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusPropertyInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -3215,6 +3827,19 @@ func DBusProxyClassNewFromNative(native unsafe.Pointer) *DBusProxyClass {
 	return &DBusProxyClass{native: native}
 }
 
+/*
+CastToDBusProxyClass down casts any arbitrary Object to DBusProxyClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusProxyClass.
+*/
+func (recv *DBusProxyClass) CastToDBusProxyClass(object *gobject.Object) *DBusProxyClass {
+	return DBusProxyClassNewFromNative(object.Native())
+}
+
+func (recv *DBusProxyClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_properties_changed' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'g_properties_changed' : for field setter : missing Type
@@ -3257,6 +3882,19 @@ func DBusProxyPrivateNewFromNative(native unsafe.Pointer) *DBusProxyPrivate {
 	return &DBusProxyPrivate{native: native}
 }
 
+/*
+CastToDBusProxyPrivate down casts any arbitrary Object to DBusProxyPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusProxyPrivate.
+*/
+func (recv *DBusProxyPrivate) CastToDBusProxyPrivate(object *gobject.Object) *DBusProxyPrivate {
+	return DBusProxyPrivateNewFromNative(object.Native())
+}
+
+func (recv *DBusProxyPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusProxyPrivateStruct creates an uninitialised DBusProxyPrivate.
 func DBusProxyPrivateStruct() *DBusProxyPrivate {
 	err := dBusProxyPrivateStruct_Set()
@@ -3289,6 +3927,19 @@ type DBusSignalInfo struct {
 
 func DBusSignalInfoNewFromNative(native unsafe.Pointer) *DBusSignalInfo {
 	return &DBusSignalInfo{native: native}
+}
+
+/*
+CastToDBusSignalInfo down casts any arbitrary Object to DBusSignalInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusSignalInfo.
+*/
+func (recv *DBusSignalInfo) CastToDBusSignalInfo(object *gobject.Object) *DBusSignalInfo {
+	return DBusSignalInfoNewFromNative(object.Native())
+}
+
+func (recv *DBusSignalInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRefCount returns the C field 'ref_count'.
@@ -3421,6 +4072,19 @@ func DBusSubtreeVTableNewFromNative(native unsafe.Pointer) *DBusSubtreeVTable {
 	return &DBusSubtreeVTable{native: native}
 }
 
+/*
+CastToDBusSubtreeVTable down casts any arbitrary Object to DBusSubtreeVTable.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DBusSubtreeVTable.
+*/
+func (recv *DBusSubtreeVTable) CastToDBusSubtreeVTable(object *gobject.Object) *DBusSubtreeVTable {
+	return DBusSubtreeVTableNewFromNative(object.Native())
+}
+
+func (recv *DBusSubtreeVTable) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'enumerate' : for field getter : no Go type for 'DBusSubtreeEnumerateFunc'
 
 // UNSUPPORTED : C value 'enumerate' : for field setter : no Go type for 'DBusSubtreeEnumerateFunc'
@@ -3465,6 +4129,19 @@ type DataInputStreamClass struct {
 
 func DataInputStreamClassNewFromNative(native unsafe.Pointer) *DataInputStreamClass {
 	return &DataInputStreamClass{native: native}
+}
+
+/*
+CastToDataInputStreamClass down casts any arbitrary Object to DataInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DataInputStreamClass.
+*/
+func (recv *DataInputStreamClass) CastToDataInputStreamClass(object *gobject.Object) *DataInputStreamClass {
+	return DataInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *DataInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -3535,6 +4212,19 @@ func DataInputStreamPrivateNewFromNative(native unsafe.Pointer) *DataInputStream
 	return &DataInputStreamPrivate{native: native}
 }
 
+/*
+CastToDataInputStreamPrivate down casts any arbitrary Object to DataInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DataInputStreamPrivate.
+*/
+func (recv *DataInputStreamPrivate) CastToDataInputStreamPrivate(object *gobject.Object) *DataInputStreamPrivate {
+	return DataInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *DataInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DataInputStreamPrivateStruct creates an uninitialised DataInputStreamPrivate.
 func DataInputStreamPrivateStruct() *DataInputStreamPrivate {
 	err := dataInputStreamPrivateStruct_Set()
@@ -3567,6 +4257,19 @@ type DataOutputStreamClass struct {
 
 func DataOutputStreamClassNewFromNative(native unsafe.Pointer) *DataOutputStreamClass {
 	return &DataOutputStreamClass{native: native}
+}
+
+/*
+CastToDataOutputStreamClass down casts any arbitrary Object to DataOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DataOutputStreamClass.
+*/
+func (recv *DataOutputStreamClass) CastToDataOutputStreamClass(object *gobject.Object) *DataOutputStreamClass {
+	return DataOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *DataOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -3637,6 +4340,19 @@ func DataOutputStreamPrivateNewFromNative(native unsafe.Pointer) *DataOutputStre
 	return &DataOutputStreamPrivate{native: native}
 }
 
+/*
+CastToDataOutputStreamPrivate down casts any arbitrary Object to DataOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DataOutputStreamPrivate.
+*/
+func (recv *DataOutputStreamPrivate) CastToDataOutputStreamPrivate(object *gobject.Object) *DataOutputStreamPrivate {
+	return DataOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *DataOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DataOutputStreamPrivateStruct creates an uninitialised DataOutputStreamPrivate.
 func DataOutputStreamPrivateStruct() *DataOutputStreamPrivate {
 	err := dataOutputStreamPrivateStruct_Set()
@@ -3669,6 +4385,19 @@ type DatagramBasedInterface struct {
 
 func DatagramBasedInterfaceNewFromNative(native unsafe.Pointer) *DatagramBasedInterface {
 	return &DatagramBasedInterface{native: native}
+}
+
+/*
+CastToDatagramBasedInterface down casts any arbitrary Object to DatagramBasedInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DatagramBasedInterface.
+*/
+func (recv *DatagramBasedInterface) CastToDatagramBasedInterface(object *gobject.Object) *DatagramBasedInterface {
+	return DatagramBasedInterfaceNewFromNative(object.Native())
+}
+
+func (recv *DatagramBasedInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -3729,6 +4458,19 @@ func DesktopAppInfoClassNewFromNative(native unsafe.Pointer) *DesktopAppInfoClas
 	return &DesktopAppInfoClass{native: native}
 }
 
+/*
+CastToDesktopAppInfoClass down casts any arbitrary Object to DesktopAppInfoClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DesktopAppInfoClass.
+*/
+func (recv *DesktopAppInfoClass) CastToDesktopAppInfoClass(object *gobject.Object) *DesktopAppInfoClass {
+	return DesktopAppInfoClassNewFromNative(object.Native())
+}
+
+func (recv *DesktopAppInfoClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -3765,6 +4507,19 @@ type DesktopAppInfoLookupIface struct {
 
 func DesktopAppInfoLookupIfaceNewFromNative(native unsafe.Pointer) *DesktopAppInfoLookupIface {
 	return &DesktopAppInfoLookupIface{native: native}
+}
+
+/*
+CastToDesktopAppInfoLookupIface down casts any arbitrary Object to DesktopAppInfoLookupIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DesktopAppInfoLookupIface.
+*/
+func (recv *DesktopAppInfoLookupIface) CastToDesktopAppInfoLookupIface(object *gobject.Object) *DesktopAppInfoLookupIface {
+	return DesktopAppInfoLookupIfaceNewFromNative(object.Native())
+}
+
+func (recv *DesktopAppInfoLookupIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -3807,6 +4562,19 @@ type DriveIface struct {
 
 func DriveIfaceNewFromNative(native unsafe.Pointer) *DriveIface {
 	return &DriveIface{native: native}
+}
+
+/*
+CastToDriveIface down casts any arbitrary Object to DriveIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DriveIface.
+*/
+func (recv *DriveIface) CastToDriveIface(object *gobject.Object) *DriveIface {
+	return DriveIfaceNewFromNative(object.Native())
+}
+
+func (recv *DriveIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -3975,6 +4743,19 @@ func DtlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsClie
 	return &DtlsClientConnectionInterface{native: native}
 }
 
+/*
+CastToDtlsClientConnectionInterface down casts any arbitrary Object to DtlsClientConnectionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DtlsClientConnectionInterface.
+*/
+func (recv *DtlsClientConnectionInterface) CastToDtlsClientConnectionInterface(object *gobject.Object) *DtlsClientConnectionInterface {
+	return DtlsClientConnectionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *DtlsClientConnectionInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -4011,6 +4792,19 @@ type DtlsConnectionInterface struct {
 
 func DtlsConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsConnectionInterface {
 	return &DtlsConnectionInterface{native: native}
+}
+
+/*
+CastToDtlsConnectionInterface down casts any arbitrary Object to DtlsConnectionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DtlsConnectionInterface.
+*/
+func (recv *DtlsConnectionInterface) CastToDtlsConnectionInterface(object *gobject.Object) *DtlsConnectionInterface {
+	return DtlsConnectionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *DtlsConnectionInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -4087,6 +4881,19 @@ func DtlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsServ
 	return &DtlsServerConnectionInterface{native: native}
 }
 
+/*
+CastToDtlsServerConnectionInterface down casts any arbitrary Object to DtlsServerConnectionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DtlsServerConnectionInterface.
+*/
+func (recv *DtlsServerConnectionInterface) CastToDtlsServerConnectionInterface(object *gobject.Object) *DtlsServerConnectionInterface {
+	return DtlsServerConnectionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *DtlsServerConnectionInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -4125,6 +4932,19 @@ func EmblemClassNewFromNative(native unsafe.Pointer) *EmblemClass {
 	return &EmblemClass{native: native}
 }
 
+/*
+CastToEmblemClass down casts any arbitrary Object to EmblemClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EmblemClass.
+*/
+func (recv *EmblemClass) CastToEmblemClass(object *gobject.Object) *EmblemClass {
+	return EmblemClassNewFromNative(object.Native())
+}
+
+func (recv *EmblemClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // EmblemClassStruct creates an uninitialised EmblemClass.
 func EmblemClassStruct() *EmblemClass {
 	err := emblemClassStruct_Set()
@@ -4157,6 +4977,19 @@ type EmblemedIconClass struct {
 
 func EmblemedIconClassNewFromNative(native unsafe.Pointer) *EmblemedIconClass {
 	return &EmblemedIconClass{native: native}
+}
+
+/*
+CastToEmblemedIconClass down casts any arbitrary Object to EmblemedIconClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EmblemedIconClass.
+*/
+func (recv *EmblemedIconClass) CastToEmblemedIconClass(object *gobject.Object) *EmblemedIconClass {
+	return EmblemedIconClassNewFromNative(object.Native())
+}
+
+func (recv *EmblemedIconClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4197,6 +5030,19 @@ func EmblemedIconPrivateNewFromNative(native unsafe.Pointer) *EmblemedIconPrivat
 	return &EmblemedIconPrivate{native: native}
 }
 
+/*
+CastToEmblemedIconPrivate down casts any arbitrary Object to EmblemedIconPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EmblemedIconPrivate.
+*/
+func (recv *EmblemedIconPrivate) CastToEmblemedIconPrivate(object *gobject.Object) *EmblemedIconPrivate {
+	return EmblemedIconPrivateNewFromNative(object.Native())
+}
+
+func (recv *EmblemedIconPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // EmblemedIconPrivateStruct creates an uninitialised EmblemedIconPrivate.
 func EmblemedIconPrivateStruct() *EmblemedIconPrivate {
 	err := emblemedIconPrivateStruct_Set()
@@ -4229,6 +5075,19 @@ type FileAttributeInfo struct {
 
 func FileAttributeInfoNewFromNative(native unsafe.Pointer) *FileAttributeInfo {
 	return &FileAttributeInfo{native: native}
+}
+
+/*
+CastToFileAttributeInfo down casts any arbitrary Object to FileAttributeInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileAttributeInfo.
+*/
+func (recv *FileAttributeInfo) CastToFileAttributeInfo(object *gobject.Object) *FileAttributeInfo {
+	return FileAttributeInfoNewFromNative(object.Native())
+}
+
+func (recv *FileAttributeInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldName returns the C field 'name'.
@@ -4295,6 +5154,19 @@ type FileAttributeInfoList struct {
 
 func FileAttributeInfoListNewFromNative(native unsafe.Pointer) *FileAttributeInfoList {
 	return &FileAttributeInfoList{native: native}
+}
+
+/*
+CastToFileAttributeInfoList down casts any arbitrary Object to FileAttributeInfoList.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileAttributeInfoList.
+*/
+func (recv *FileAttributeInfoList) CastToFileAttributeInfoList(object *gobject.Object) *FileAttributeInfoList {
+	return FileAttributeInfoListNewFromNative(object.Native())
+}
+
+func (recv *FileAttributeInfoList) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldInfos returns the C field 'infos'.
@@ -4499,6 +5371,19 @@ type FileAttributeMatcher struct {
 
 func FileAttributeMatcherNewFromNative(native unsafe.Pointer) *FileAttributeMatcher {
 	return &FileAttributeMatcher{native: native}
+}
+
+/*
+CastToFileAttributeMatcher down casts any arbitrary Object to FileAttributeMatcher.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileAttributeMatcher.
+*/
+func (recv *FileAttributeMatcher) CastToFileAttributeMatcher(object *gobject.Object) *FileAttributeMatcher {
+	return FileAttributeMatcherNewFromNative(object.Native())
+}
+
+func (recv *FileAttributeMatcher) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fileAttributeMatcherNewFunction *gi.Function
@@ -4808,6 +5693,19 @@ func FileDescriptorBasedIfaceNewFromNative(native unsafe.Pointer) *FileDescripto
 	return &FileDescriptorBasedIface{native: native}
 }
 
+/*
+CastToFileDescriptorBasedIface down casts any arbitrary Object to FileDescriptorBasedIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileDescriptorBasedIface.
+*/
+func (recv *FileDescriptorBasedIface) CastToFileDescriptorBasedIface(object *gobject.Object) *FileDescriptorBasedIface {
+	return FileDescriptorBasedIfaceNewFromNative(object.Native())
+}
+
+func (recv *FileDescriptorBasedIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -4848,6 +5746,19 @@ type FileEnumeratorClass struct {
 
 func FileEnumeratorClassNewFromNative(native unsafe.Pointer) *FileEnumeratorClass {
 	return &FileEnumeratorClass{native: native}
+}
+
+/*
+CastToFileEnumeratorClass down casts any arbitrary Object to FileEnumeratorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileEnumeratorClass.
+*/
+func (recv *FileEnumeratorClass) CastToFileEnumeratorClass(object *gobject.Object) *FileEnumeratorClass {
+	return FileEnumeratorClassNewFromNative(object.Native())
+}
+
+func (recv *FileEnumeratorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -4940,6 +5851,19 @@ func FileEnumeratorPrivateNewFromNative(native unsafe.Pointer) *FileEnumeratorPr
 	return &FileEnumeratorPrivate{native: native}
 }
 
+/*
+CastToFileEnumeratorPrivate down casts any arbitrary Object to FileEnumeratorPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileEnumeratorPrivate.
+*/
+func (recv *FileEnumeratorPrivate) CastToFileEnumeratorPrivate(object *gobject.Object) *FileEnumeratorPrivate {
+	return FileEnumeratorPrivateNewFromNative(object.Native())
+}
+
+func (recv *FileEnumeratorPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileEnumeratorPrivateStruct creates an uninitialised FileEnumeratorPrivate.
 func FileEnumeratorPrivateStruct() *FileEnumeratorPrivate {
 	err := fileEnumeratorPrivateStruct_Set()
@@ -4972,6 +5896,19 @@ type FileIOStreamClass struct {
 
 func FileIOStreamClassNewFromNative(native unsafe.Pointer) *FileIOStreamClass {
 	return &FileIOStreamClass{native: native}
+}
+
+/*
+CastToFileIOStreamClass down casts any arbitrary Object to FileIOStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileIOStreamClass.
+*/
+func (recv *FileIOStreamClass) CastToFileIOStreamClass(object *gobject.Object) *FileIOStreamClass {
+	return FileIOStreamClassNewFromNative(object.Native())
+}
+
+func (recv *FileIOStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -5078,6 +6015,19 @@ func FileIOStreamPrivateNewFromNative(native unsafe.Pointer) *FileIOStreamPrivat
 	return &FileIOStreamPrivate{native: native}
 }
 
+/*
+CastToFileIOStreamPrivate down casts any arbitrary Object to FileIOStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileIOStreamPrivate.
+*/
+func (recv *FileIOStreamPrivate) CastToFileIOStreamPrivate(object *gobject.Object) *FileIOStreamPrivate {
+	return FileIOStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *FileIOStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileIOStreamPrivateStruct creates an uninitialised FileIOStreamPrivate.
 func FileIOStreamPrivateStruct() *FileIOStreamPrivate {
 	err := fileIOStreamPrivateStruct_Set()
@@ -5112,6 +6062,19 @@ func FileIconClassNewFromNative(native unsafe.Pointer) *FileIconClass {
 	return &FileIconClass{native: native}
 }
 
+/*
+CastToFileIconClass down casts any arbitrary Object to FileIconClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileIconClass.
+*/
+func (recv *FileIconClass) CastToFileIconClass(object *gobject.Object) *FileIconClass {
+	return FileIconClassNewFromNative(object.Native())
+}
+
+func (recv *FileIconClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileIconClassStruct creates an uninitialised FileIconClass.
 func FileIconClassStruct() *FileIconClass {
 	err := fileIconClassStruct_Set()
@@ -5144,6 +6107,19 @@ type FileIface struct {
 
 func FileIfaceNewFromNative(native unsafe.Pointer) *FileIface {
 	return &FileIface{native: native}
+}
+
+/*
+CastToFileIface down casts any arbitrary Object to FileIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileIface.
+*/
+func (recv *FileIface) CastToFileIface(object *gobject.Object) *FileIface {
+	return FileIfaceNewFromNative(object.Native())
+}
+
+func (recv *FileIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -5606,6 +6582,19 @@ func FileInfoClassNewFromNative(native unsafe.Pointer) *FileInfoClass {
 	return &FileInfoClass{native: native}
 }
 
+/*
+CastToFileInfoClass down casts any arbitrary Object to FileInfoClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileInfoClass.
+*/
+func (recv *FileInfoClass) CastToFileInfoClass(object *gobject.Object) *FileInfoClass {
+	return FileInfoClassNewFromNative(object.Native())
+}
+
+func (recv *FileInfoClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileInfoClassStruct creates an uninitialised FileInfoClass.
 func FileInfoClassStruct() *FileInfoClass {
 	err := fileInfoClassStruct_Set()
@@ -5638,6 +6627,19 @@ type FileInputStreamClass struct {
 
 func FileInputStreamClassNewFromNative(native unsafe.Pointer) *FileInputStreamClass {
 	return &FileInputStreamClass{native: native}
+}
+
+/*
+CastToFileInputStreamClass down casts any arbitrary Object to FileInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileInputStreamClass.
+*/
+func (recv *FileInputStreamClass) CastToFileInputStreamClass(object *gobject.Object) *FileInputStreamClass {
+	return FileInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *FileInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -5732,6 +6734,19 @@ func FileInputStreamPrivateNewFromNative(native unsafe.Pointer) *FileInputStream
 	return &FileInputStreamPrivate{native: native}
 }
 
+/*
+CastToFileInputStreamPrivate down casts any arbitrary Object to FileInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileInputStreamPrivate.
+*/
+func (recv *FileInputStreamPrivate) CastToFileInputStreamPrivate(object *gobject.Object) *FileInputStreamPrivate {
+	return FileInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *FileInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileInputStreamPrivateStruct creates an uninitialised FileInputStreamPrivate.
 func FileInputStreamPrivateStruct() *FileInputStreamPrivate {
 	err := fileInputStreamPrivateStruct_Set()
@@ -5764,6 +6779,19 @@ type FileMonitorClass struct {
 
 func FileMonitorClassNewFromNative(native unsafe.Pointer) *FileMonitorClass {
 	return &FileMonitorClass{native: native}
+}
+
+/*
+CastToFileMonitorClass down casts any arbitrary Object to FileMonitorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileMonitorClass.
+*/
+func (recv *FileMonitorClass) CastToFileMonitorClass(object *gobject.Object) *FileMonitorClass {
+	return FileMonitorClassNewFromNative(object.Native())
+}
+
+func (recv *FileMonitorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -5832,6 +6860,19 @@ func FileMonitorPrivateNewFromNative(native unsafe.Pointer) *FileMonitorPrivate 
 	return &FileMonitorPrivate{native: native}
 }
 
+/*
+CastToFileMonitorPrivate down casts any arbitrary Object to FileMonitorPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileMonitorPrivate.
+*/
+func (recv *FileMonitorPrivate) CastToFileMonitorPrivate(object *gobject.Object) *FileMonitorPrivate {
+	return FileMonitorPrivateNewFromNative(object.Native())
+}
+
+func (recv *FileMonitorPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileMonitorPrivateStruct creates an uninitialised FileMonitorPrivate.
 func FileMonitorPrivateStruct() *FileMonitorPrivate {
 	err := fileMonitorPrivateStruct_Set()
@@ -5864,6 +6905,19 @@ type FileOutputStreamClass struct {
 
 func FileOutputStreamClassNewFromNative(native unsafe.Pointer) *FileOutputStreamClass {
 	return &FileOutputStreamClass{native: native}
+}
+
+/*
+CastToFileOutputStreamClass down casts any arbitrary Object to FileOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileOutputStreamClass.
+*/
+func (recv *FileOutputStreamClass) CastToFileOutputStreamClass(object *gobject.Object) *FileOutputStreamClass {
+	return FileOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *FileOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -5970,6 +7024,19 @@ func FileOutputStreamPrivateNewFromNative(native unsafe.Pointer) *FileOutputStre
 	return &FileOutputStreamPrivate{native: native}
 }
 
+/*
+CastToFileOutputStreamPrivate down casts any arbitrary Object to FileOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileOutputStreamPrivate.
+*/
+func (recv *FileOutputStreamPrivate) CastToFileOutputStreamPrivate(object *gobject.Object) *FileOutputStreamPrivate {
+	return FileOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *FileOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FileOutputStreamPrivateStruct creates an uninitialised FileOutputStreamPrivate.
 func FileOutputStreamPrivateStruct() *FileOutputStreamPrivate {
 	err := fileOutputStreamPrivateStruct_Set()
@@ -6002,6 +7069,19 @@ type FilenameCompleterClass struct {
 
 func FilenameCompleterClassNewFromNative(native unsafe.Pointer) *FilenameCompleterClass {
 	return &FilenameCompleterClass{native: native}
+}
+
+/*
+CastToFilenameCompleterClass down casts any arbitrary Object to FilenameCompleterClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FilenameCompleterClass.
+*/
+func (recv *FilenameCompleterClass) CastToFilenameCompleterClass(object *gobject.Object) *FilenameCompleterClass {
+	return FilenameCompleterClassNewFromNative(object.Native())
+}
+
+func (recv *FilenameCompleterClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6056,6 +7136,19 @@ type FilterInputStreamClass struct {
 
 func FilterInputStreamClassNewFromNative(native unsafe.Pointer) *FilterInputStreamClass {
 	return &FilterInputStreamClass{native: native}
+}
+
+/*
+CastToFilterInputStreamClass down casts any arbitrary Object to FilterInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FilterInputStreamClass.
+*/
+func (recv *FilterInputStreamClass) CastToFilterInputStreamClass(object *gobject.Object) *FilterInputStreamClass {
+	return FilterInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *FilterInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -6118,6 +7211,19 @@ func FilterOutputStreamClassNewFromNative(native unsafe.Pointer) *FilterOutputSt
 	return &FilterOutputStreamClass{native: native}
 }
 
+/*
+CastToFilterOutputStreamClass down casts any arbitrary Object to FilterOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FilterOutputStreamClass.
+*/
+func (recv *FilterOutputStreamClass) CastToFilterOutputStreamClass(object *gobject.Object) *FilterOutputStreamClass {
+	return FilterOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *FilterOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FilterOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.StructFieldGet(filterOutputStreamClassStruct, recv.native, "parent_class")
@@ -6176,6 +7282,19 @@ type IOExtension struct {
 
 func IOExtensionNewFromNative(native unsafe.Pointer) *IOExtension {
 	return &IOExtension{native: native}
+}
+
+/*
+CastToIOExtension down casts any arbitrary Object to IOExtension.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOExtension.
+*/
+func (recv *IOExtension) CastToIOExtension(object *gobject.Object) *IOExtension {
+	return IOExtensionNewFromNative(object.Native())
+}
+
+func (recv *IOExtension) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var iOExtensionGetNameFunction *gi.Function
@@ -6280,6 +7399,19 @@ func IOExtensionPointNewFromNative(native unsafe.Pointer) *IOExtensionPoint {
 	return &IOExtensionPoint{native: native}
 }
 
+/*
+CastToIOExtensionPoint down casts any arbitrary Object to IOExtensionPoint.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOExtensionPoint.
+*/
+func (recv *IOExtensionPoint) CastToIOExtensionPoint(object *gobject.Object) *IOExtensionPoint {
+	return IOExtensionPointNewFromNative(object.Native())
+}
+
+func (recv *IOExtensionPoint) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var iOExtensionPointGetExtensionByNameFunction *gi.Function
 var iOExtensionPointGetExtensionByNameFunction_Once sync.Once
 
@@ -6353,6 +7485,19 @@ func IOModuleClassNewFromNative(native unsafe.Pointer) *IOModuleClass {
 	return &IOModuleClass{native: native}
 }
 
+/*
+CastToIOModuleClass down casts any arbitrary Object to IOModuleClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOModuleClass.
+*/
+func (recv *IOModuleClass) CastToIOModuleClass(object *gobject.Object) *IOModuleClass {
+	return IOModuleClassNewFromNative(object.Native())
+}
+
+func (recv *IOModuleClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // IOModuleClassStruct creates an uninitialised IOModuleClass.
 func IOModuleClassStruct() *IOModuleClass {
 	err := iOModuleClassStruct_Set()
@@ -6385,6 +7530,19 @@ type IOModuleScope struct {
 
 func IOModuleScopeNewFromNative(native unsafe.Pointer) *IOModuleScope {
 	return &IOModuleScope{native: native}
+}
+
+/*
+CastToIOModuleScope down casts any arbitrary Object to IOModuleScope.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOModuleScope.
+*/
+func (recv *IOModuleScope) CastToIOModuleScope(object *gobject.Object) *IOModuleScope {
+	return IOModuleScopeNewFromNative(object.Native())
+}
+
+func (recv *IOModuleScope) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var iOModuleScopeBlockFunction *gi.Function
@@ -6478,6 +7636,19 @@ func IOSchedulerJobNewFromNative(native unsafe.Pointer) *IOSchedulerJob {
 	return &IOSchedulerJob{native: native}
 }
 
+/*
+CastToIOSchedulerJob down casts any arbitrary Object to IOSchedulerJob.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOSchedulerJob.
+*/
+func (recv *IOSchedulerJob) CastToIOSchedulerJob(object *gobject.Object) *IOSchedulerJob {
+	return IOSchedulerJobNewFromNative(object.Native())
+}
+
+func (recv *IOSchedulerJob) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop' : parameter 'func' of type 'GLib.SourceFunc' not supported
 
 // UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
@@ -6516,6 +7687,19 @@ func IOStreamAdapterNewFromNative(native unsafe.Pointer) *IOStreamAdapter {
 	return &IOStreamAdapter{native: native}
 }
 
+/*
+CastToIOStreamAdapter down casts any arbitrary Object to IOStreamAdapter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOStreamAdapter.
+*/
+func (recv *IOStreamAdapter) CastToIOStreamAdapter(object *gobject.Object) *IOStreamAdapter {
+	return IOStreamAdapterNewFromNative(object.Native())
+}
+
+func (recv *IOStreamAdapter) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // IOStreamAdapterStruct creates an uninitialised IOStreamAdapter.
 func IOStreamAdapterStruct() *IOStreamAdapter {
 	err := iOStreamAdapterStruct_Set()
@@ -6548,6 +7732,19 @@ type IOStreamClass struct {
 
 func IOStreamClassNewFromNative(native unsafe.Pointer) *IOStreamClass {
 	return &IOStreamClass{native: native}
+}
+
+/*
+CastToIOStreamClass down casts any arbitrary Object to IOStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOStreamClass.
+*/
+func (recv *IOStreamClass) CastToIOStreamClass(object *gobject.Object) *IOStreamClass {
+	return IOStreamClassNewFromNative(object.Native())
+}
+
+func (recv *IOStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -6648,6 +7845,19 @@ func IOStreamPrivateNewFromNative(native unsafe.Pointer) *IOStreamPrivate {
 	return &IOStreamPrivate{native: native}
 }
 
+/*
+CastToIOStreamPrivate down casts any arbitrary Object to IOStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IOStreamPrivate.
+*/
+func (recv *IOStreamPrivate) CastToIOStreamPrivate(object *gobject.Object) *IOStreamPrivate {
+	return IOStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *IOStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // IOStreamPrivateStruct creates an uninitialised IOStreamPrivate.
 func IOStreamPrivateStruct() *IOStreamPrivate {
 	err := iOStreamPrivateStruct_Set()
@@ -6680,6 +7890,19 @@ type IconIface struct {
 
 func IconIfaceNewFromNative(native unsafe.Pointer) *IconIface {
 	return &IconIface{native: native}
+}
+
+/*
+CastToIconIface down casts any arbitrary Object to IconIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IconIface.
+*/
+func (recv *IconIface) CastToIconIface(object *gobject.Object) *IconIface {
+	return IconIfaceNewFromNative(object.Native())
+}
+
+func (recv *IconIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -6740,6 +7963,19 @@ func InetAddressClassNewFromNative(native unsafe.Pointer) *InetAddressClass {
 	return &InetAddressClass{native: native}
 }
 
+/*
+CastToInetAddressClass down casts any arbitrary Object to InetAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetAddressClass.
+*/
+func (recv *InetAddressClass) CastToInetAddressClass(object *gobject.Object) *InetAddressClass {
+	return InetAddressClassNewFromNative(object.Native())
+}
+
+func (recv *InetAddressClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -6786,6 +8022,19 @@ func InetAddressMaskClassNewFromNative(native unsafe.Pointer) *InetAddressMaskCl
 	return &InetAddressMaskClass{native: native}
 }
 
+/*
+CastToInetAddressMaskClass down casts any arbitrary Object to InetAddressMaskClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetAddressMaskClass.
+*/
+func (recv *InetAddressMaskClass) CastToInetAddressMaskClass(object *gobject.Object) *InetAddressMaskClass {
+	return InetAddressMaskClassNewFromNative(object.Native())
+}
+
+func (recv *InetAddressMaskClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -6824,6 +8073,19 @@ func InetAddressMaskPrivateNewFromNative(native unsafe.Pointer) *InetAddressMask
 	return &InetAddressMaskPrivate{native: native}
 }
 
+/*
+CastToInetAddressMaskPrivate down casts any arbitrary Object to InetAddressMaskPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetAddressMaskPrivate.
+*/
+func (recv *InetAddressMaskPrivate) CastToInetAddressMaskPrivate(object *gobject.Object) *InetAddressMaskPrivate {
+	return InetAddressMaskPrivateNewFromNative(object.Native())
+}
+
+func (recv *InetAddressMaskPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // InetAddressMaskPrivateStruct creates an uninitialised InetAddressMaskPrivate.
 func InetAddressMaskPrivateStruct() *InetAddressMaskPrivate {
 	err := inetAddressMaskPrivateStruct_Set()
@@ -6858,6 +8120,19 @@ func InetAddressPrivateNewFromNative(native unsafe.Pointer) *InetAddressPrivate 
 	return &InetAddressPrivate{native: native}
 }
 
+/*
+CastToInetAddressPrivate down casts any arbitrary Object to InetAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetAddressPrivate.
+*/
+func (recv *InetAddressPrivate) CastToInetAddressPrivate(object *gobject.Object) *InetAddressPrivate {
+	return InetAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *InetAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // InetAddressPrivateStruct creates an uninitialised InetAddressPrivate.
 func InetAddressPrivateStruct() *InetAddressPrivate {
 	err := inetAddressPrivateStruct_Set()
@@ -6890,6 +8165,19 @@ type InetSocketAddressClass struct {
 
 func InetSocketAddressClassNewFromNative(native unsafe.Pointer) *InetSocketAddressClass {
 	return &InetSocketAddressClass{native: native}
+}
+
+/*
+CastToInetSocketAddressClass down casts any arbitrary Object to InetSocketAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetSocketAddressClass.
+*/
+func (recv *InetSocketAddressClass) CastToInetSocketAddressClass(object *gobject.Object) *InetSocketAddressClass {
+	return InetSocketAddressClassNewFromNative(object.Native())
+}
+
+func (recv *InetSocketAddressClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -6940,6 +8228,19 @@ func InetSocketAddressPrivateNewFromNative(native unsafe.Pointer) *InetSocketAdd
 	return &InetSocketAddressPrivate{native: native}
 }
 
+/*
+CastToInetSocketAddressPrivate down casts any arbitrary Object to InetSocketAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InetSocketAddressPrivate.
+*/
+func (recv *InetSocketAddressPrivate) CastToInetSocketAddressPrivate(object *gobject.Object) *InetSocketAddressPrivate {
+	return InetSocketAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *InetSocketAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // InetSocketAddressPrivateStruct creates an uninitialised InetSocketAddressPrivate.
 func InetSocketAddressPrivateStruct() *InetSocketAddressPrivate {
 	err := inetSocketAddressPrivateStruct_Set()
@@ -6972,6 +8273,19 @@ type InitableIface struct {
 
 func InitableIfaceNewFromNative(native unsafe.Pointer) *InitableIface {
 	return &InitableIface{native: native}
+}
+
+/*
+CastToInitableIface down casts any arbitrary Object to InitableIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InitableIface.
+*/
+func (recv *InitableIface) CastToInitableIface(object *gobject.Object) *InitableIface {
+	return InitableIfaceNewFromNative(object.Native())
+}
+
+func (recv *InitableIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -7014,6 +8328,19 @@ type InputMessage struct {
 
 func InputMessageNewFromNative(native unsafe.Pointer) *InputMessage {
 	return &InputMessage{native: native}
+}
+
+/*
+CastToInputMessage down casts any arbitrary Object to InputMessage.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InputMessage.
+*/
+func (recv *InputMessage) CastToInputMessage(object *gobject.Object) *InputMessage {
+	return InputMessageNewFromNative(object.Native())
+}
+
+func (recv *InputMessage) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldAddress returns the C field 'address'.
@@ -7128,6 +8455,19 @@ func InputStreamClassNewFromNative(native unsafe.Pointer) *InputStreamClass {
 	return &InputStreamClass{native: native}
 }
 
+/*
+CastToInputStreamClass down casts any arbitrary Object to InputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InputStreamClass.
+*/
+func (recv *InputStreamClass) CastToInputStreamClass(object *gobject.Object) *InputStreamClass {
+	return InputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *InputStreamClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -7222,6 +8562,19 @@ func InputStreamPrivateNewFromNative(native unsafe.Pointer) *InputStreamPrivate 
 	return &InputStreamPrivate{native: native}
 }
 
+/*
+CastToInputStreamPrivate down casts any arbitrary Object to InputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InputStreamPrivate.
+*/
+func (recv *InputStreamPrivate) CastToInputStreamPrivate(object *gobject.Object) *InputStreamPrivate {
+	return InputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *InputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // InputStreamPrivateStruct creates an uninitialised InputStreamPrivate.
 func InputStreamPrivateStruct() *InputStreamPrivate {
 	err := inputStreamPrivateStruct_Set()
@@ -7254,6 +8607,19 @@ type InputVector struct {
 
 func InputVectorNewFromNative(native unsafe.Pointer) *InputVector {
 	return &InputVector{native: native}
+}
+
+/*
+CastToInputVector down casts any arbitrary Object to InputVector.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InputVector.
+*/
+func (recv *InputVector) CastToInputVector(object *gobject.Object) *InputVector {
+	return InputVectorNewFromNative(object.Native())
+}
+
+func (recv *InputVector) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
@@ -7308,6 +8674,19 @@ func ListModelInterfaceNewFromNative(native unsafe.Pointer) *ListModelInterface 
 	return &ListModelInterface{native: native}
 }
 
+/*
+CastToListModelInterface down casts any arbitrary Object to ListModelInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListModelInterface.
+*/
+func (recv *ListModelInterface) CastToListModelInterface(object *gobject.Object) *ListModelInterface {
+	return ListModelInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ListModelInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -7358,6 +8737,19 @@ func ListStoreClassNewFromNative(native unsafe.Pointer) *ListStoreClass {
 	return &ListStoreClass{native: native}
 }
 
+/*
+CastToListStoreClass down casts any arbitrary Object to ListStoreClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ListStoreClass.
+*/
+func (recv *ListStoreClass) CastToListStoreClass(object *gobject.Object) *ListStoreClass {
+	return ListStoreClassNewFromNative(object.Native())
+}
+
+func (recv *ListStoreClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -7394,6 +8786,19 @@ type LoadableIconIface struct {
 
 func LoadableIconIfaceNewFromNative(native unsafe.Pointer) *LoadableIconIface {
 	return &LoadableIconIface{native: native}
+}
+
+/*
+CastToLoadableIconIface down casts any arbitrary Object to LoadableIconIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LoadableIconIface.
+*/
+func (recv *LoadableIconIface) CastToLoadableIconIface(object *gobject.Object) *LoadableIconIface {
+	return LoadableIconIfaceNewFromNative(object.Native())
+}
+
+func (recv *LoadableIconIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -7444,6 +8849,19 @@ type MemoryInputStreamClass struct {
 
 func MemoryInputStreamClassNewFromNative(native unsafe.Pointer) *MemoryInputStreamClass {
 	return &MemoryInputStreamClass{native: native}
+}
+
+/*
+CastToMemoryInputStreamClass down casts any arbitrary Object to MemoryInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MemoryInputStreamClass.
+*/
+func (recv *MemoryInputStreamClass) CastToMemoryInputStreamClass(object *gobject.Object) *MemoryInputStreamClass {
+	return MemoryInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *MemoryInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -7514,6 +8932,19 @@ func MemoryInputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryInputSt
 	return &MemoryInputStreamPrivate{native: native}
 }
 
+/*
+CastToMemoryInputStreamPrivate down casts any arbitrary Object to MemoryInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MemoryInputStreamPrivate.
+*/
+func (recv *MemoryInputStreamPrivate) CastToMemoryInputStreamPrivate(object *gobject.Object) *MemoryInputStreamPrivate {
+	return MemoryInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *MemoryInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MemoryInputStreamPrivateStruct creates an uninitialised MemoryInputStreamPrivate.
 func MemoryInputStreamPrivateStruct() *MemoryInputStreamPrivate {
 	err := memoryInputStreamPrivateStruct_Set()
@@ -7546,6 +8977,19 @@ type MemoryOutputStreamClass struct {
 
 func MemoryOutputStreamClassNewFromNative(native unsafe.Pointer) *MemoryOutputStreamClass {
 	return &MemoryOutputStreamClass{native: native}
+}
+
+/*
+CastToMemoryOutputStreamClass down casts any arbitrary Object to MemoryOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MemoryOutputStreamClass.
+*/
+func (recv *MemoryOutputStreamClass) CastToMemoryOutputStreamClass(object *gobject.Object) *MemoryOutputStreamClass {
+	return MemoryOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *MemoryOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -7616,6 +9060,19 @@ func MemoryOutputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryOutput
 	return &MemoryOutputStreamPrivate{native: native}
 }
 
+/*
+CastToMemoryOutputStreamPrivate down casts any arbitrary Object to MemoryOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MemoryOutputStreamPrivate.
+*/
+func (recv *MemoryOutputStreamPrivate) CastToMemoryOutputStreamPrivate(object *gobject.Object) *MemoryOutputStreamPrivate {
+	return MemoryOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *MemoryOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MemoryOutputStreamPrivateStruct creates an uninitialised MemoryOutputStreamPrivate.
 func MemoryOutputStreamPrivateStruct() *MemoryOutputStreamPrivate {
 	err := memoryOutputStreamPrivateStruct_Set()
@@ -7648,6 +9105,19 @@ type MenuAttributeIterClass struct {
 
 func MenuAttributeIterClassNewFromNative(native unsafe.Pointer) *MenuAttributeIterClass {
 	return &MenuAttributeIterClass{native: native}
+}
+
+/*
+CastToMenuAttributeIterClass down casts any arbitrary Object to MenuAttributeIterClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuAttributeIterClass.
+*/
+func (recv *MenuAttributeIterClass) CastToMenuAttributeIterClass(object *gobject.Object) *MenuAttributeIterClass {
+	return MenuAttributeIterClassNewFromNative(object.Native())
+}
+
+func (recv *MenuAttributeIterClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -7692,6 +9162,19 @@ func MenuAttributeIterPrivateNewFromNative(native unsafe.Pointer) *MenuAttribute
 	return &MenuAttributeIterPrivate{native: native}
 }
 
+/*
+CastToMenuAttributeIterPrivate down casts any arbitrary Object to MenuAttributeIterPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuAttributeIterPrivate.
+*/
+func (recv *MenuAttributeIterPrivate) CastToMenuAttributeIterPrivate(object *gobject.Object) *MenuAttributeIterPrivate {
+	return MenuAttributeIterPrivateNewFromNative(object.Native())
+}
+
+func (recv *MenuAttributeIterPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuAttributeIterPrivateStruct creates an uninitialised MenuAttributeIterPrivate.
 func MenuAttributeIterPrivateStruct() *MenuAttributeIterPrivate {
 	err := menuAttributeIterPrivateStruct_Set()
@@ -7724,6 +9207,19 @@ type MenuLinkIterClass struct {
 
 func MenuLinkIterClassNewFromNative(native unsafe.Pointer) *MenuLinkIterClass {
 	return &MenuLinkIterClass{native: native}
+}
+
+/*
+CastToMenuLinkIterClass down casts any arbitrary Object to MenuLinkIterClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuLinkIterClass.
+*/
+func (recv *MenuLinkIterClass) CastToMenuLinkIterClass(object *gobject.Object) *MenuLinkIterClass {
+	return MenuLinkIterClassNewFromNative(object.Native())
+}
+
+func (recv *MenuLinkIterClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -7768,6 +9264,19 @@ func MenuLinkIterPrivateNewFromNative(native unsafe.Pointer) *MenuLinkIterPrivat
 	return &MenuLinkIterPrivate{native: native}
 }
 
+/*
+CastToMenuLinkIterPrivate down casts any arbitrary Object to MenuLinkIterPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuLinkIterPrivate.
+*/
+func (recv *MenuLinkIterPrivate) CastToMenuLinkIterPrivate(object *gobject.Object) *MenuLinkIterPrivate {
+	return MenuLinkIterPrivateNewFromNative(object.Native())
+}
+
+func (recv *MenuLinkIterPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuLinkIterPrivateStruct creates an uninitialised MenuLinkIterPrivate.
 func MenuLinkIterPrivateStruct() *MenuLinkIterPrivate {
 	err := menuLinkIterPrivateStruct_Set()
@@ -7800,6 +9309,19 @@ type MenuModelClass struct {
 
 func MenuModelClassNewFromNative(native unsafe.Pointer) *MenuModelClass {
 	return &MenuModelClass{native: native}
+}
+
+/*
+CastToMenuModelClass down casts any arbitrary Object to MenuModelClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuModelClass.
+*/
+func (recv *MenuModelClass) CastToMenuModelClass(object *gobject.Object) *MenuModelClass {
+	return MenuModelClassNewFromNative(object.Native())
+}
+
+func (recv *MenuModelClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -7872,6 +9394,19 @@ func MenuModelPrivateNewFromNative(native unsafe.Pointer) *MenuModelPrivate {
 	return &MenuModelPrivate{native: native}
 }
 
+/*
+CastToMenuModelPrivate down casts any arbitrary Object to MenuModelPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MenuModelPrivate.
+*/
+func (recv *MenuModelPrivate) CastToMenuModelPrivate(object *gobject.Object) *MenuModelPrivate {
+	return MenuModelPrivateNewFromNative(object.Native())
+}
+
+func (recv *MenuModelPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuModelPrivateStruct creates an uninitialised MenuModelPrivate.
 func MenuModelPrivateStruct() *MenuModelPrivate {
 	err := menuModelPrivateStruct_Set()
@@ -7904,6 +9439,19 @@ type MountIface struct {
 
 func MountIfaceNewFromNative(native unsafe.Pointer) *MountIface {
 	return &MountIface{native: native}
+}
+
+/*
+CastToMountIface down casts any arbitrary Object to MountIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MountIface.
+*/
+func (recv *MountIface) CastToMountIface(object *gobject.Object) *MountIface {
+	return MountIfaceNewFromNative(object.Native())
+}
+
+func (recv *MountIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -8052,6 +9600,19 @@ func MountOperationClassNewFromNative(native unsafe.Pointer) *MountOperationClas
 	return &MountOperationClass{native: native}
 }
 
+/*
+CastToMountOperationClass down casts any arbitrary Object to MountOperationClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MountOperationClass.
+*/
+func (recv *MountOperationClass) CastToMountOperationClass(object *gobject.Object) *MountOperationClass {
+	return MountOperationClassNewFromNative(object.Native())
+}
+
+func (recv *MountOperationClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -8150,6 +9711,19 @@ func MountOperationPrivateNewFromNative(native unsafe.Pointer) *MountOperationPr
 	return &MountOperationPrivate{native: native}
 }
 
+/*
+CastToMountOperationPrivate down casts any arbitrary Object to MountOperationPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MountOperationPrivate.
+*/
+func (recv *MountOperationPrivate) CastToMountOperationPrivate(object *gobject.Object) *MountOperationPrivate {
+	return MountOperationPrivateNewFromNative(object.Native())
+}
+
+func (recv *MountOperationPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MountOperationPrivateStruct creates an uninitialised MountOperationPrivate.
 func MountOperationPrivateStruct() *MountOperationPrivate {
 	err := mountOperationPrivateStruct_Set()
@@ -8182,6 +9756,19 @@ type NativeSocketAddressClass struct {
 
 func NativeSocketAddressClassNewFromNative(native unsafe.Pointer) *NativeSocketAddressClass {
 	return &NativeSocketAddressClass{native: native}
+}
+
+/*
+CastToNativeSocketAddressClass down casts any arbitrary Object to NativeSocketAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NativeSocketAddressClass.
+*/
+func (recv *NativeSocketAddressClass) CastToNativeSocketAddressClass(object *gobject.Object) *NativeSocketAddressClass {
+	return NativeSocketAddressClassNewFromNative(object.Native())
+}
+
+func (recv *NativeSocketAddressClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -8232,6 +9819,19 @@ func NativeSocketAddressPrivateNewFromNative(native unsafe.Pointer) *NativeSocke
 	return &NativeSocketAddressPrivate{native: native}
 }
 
+/*
+CastToNativeSocketAddressPrivate down casts any arbitrary Object to NativeSocketAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NativeSocketAddressPrivate.
+*/
+func (recv *NativeSocketAddressPrivate) CastToNativeSocketAddressPrivate(object *gobject.Object) *NativeSocketAddressPrivate {
+	return NativeSocketAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *NativeSocketAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // NativeSocketAddressPrivateStruct creates an uninitialised NativeSocketAddressPrivate.
 func NativeSocketAddressPrivateStruct() *NativeSocketAddressPrivate {
 	err := nativeSocketAddressPrivateStruct_Set()
@@ -8264,6 +9864,19 @@ type NativeVolumeMonitorClass struct {
 
 func NativeVolumeMonitorClassNewFromNative(native unsafe.Pointer) *NativeVolumeMonitorClass {
 	return &NativeVolumeMonitorClass{native: native}
+}
+
+/*
+CastToNativeVolumeMonitorClass down casts any arbitrary Object to NativeVolumeMonitorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NativeVolumeMonitorClass.
+*/
+func (recv *NativeVolumeMonitorClass) CastToNativeVolumeMonitorClass(object *gobject.Object) *NativeVolumeMonitorClass {
+	return NativeVolumeMonitorClassNewFromNative(object.Native())
+}
+
+func (recv *NativeVolumeMonitorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -8318,6 +9931,19 @@ func NetworkAddressClassNewFromNative(native unsafe.Pointer) *NetworkAddressClas
 	return &NetworkAddressClass{native: native}
 }
 
+/*
+CastToNetworkAddressClass down casts any arbitrary Object to NetworkAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NetworkAddressClass.
+*/
+func (recv *NetworkAddressClass) CastToNetworkAddressClass(object *gobject.Object) *NetworkAddressClass {
+	return NetworkAddressClassNewFromNative(object.Native())
+}
+
+func (recv *NetworkAddressClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -8356,6 +9982,19 @@ func NetworkAddressPrivateNewFromNative(native unsafe.Pointer) *NetworkAddressPr
 	return &NetworkAddressPrivate{native: native}
 }
 
+/*
+CastToNetworkAddressPrivate down casts any arbitrary Object to NetworkAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NetworkAddressPrivate.
+*/
+func (recv *NetworkAddressPrivate) CastToNetworkAddressPrivate(object *gobject.Object) *NetworkAddressPrivate {
+	return NetworkAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *NetworkAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // NetworkAddressPrivateStruct creates an uninitialised NetworkAddressPrivate.
 func NetworkAddressPrivateStruct() *NetworkAddressPrivate {
 	err := networkAddressPrivateStruct_Set()
@@ -8388,6 +10027,19 @@ type NetworkMonitorInterface struct {
 
 func NetworkMonitorInterfaceNewFromNative(native unsafe.Pointer) *NetworkMonitorInterface {
 	return &NetworkMonitorInterface{native: native}
+}
+
+/*
+CastToNetworkMonitorInterface down casts any arbitrary Object to NetworkMonitorInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NetworkMonitorInterface.
+*/
+func (recv *NetworkMonitorInterface) CastToNetworkMonitorInterface(object *gobject.Object) *NetworkMonitorInterface {
+	return NetworkMonitorInterfaceNewFromNative(object.Native())
+}
+
+func (recv *NetworkMonitorInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -8444,6 +10096,19 @@ func NetworkServiceClassNewFromNative(native unsafe.Pointer) *NetworkServiceClas
 	return &NetworkServiceClass{native: native}
 }
 
+/*
+CastToNetworkServiceClass down casts any arbitrary Object to NetworkServiceClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NetworkServiceClass.
+*/
+func (recv *NetworkServiceClass) CastToNetworkServiceClass(object *gobject.Object) *NetworkServiceClass {
+	return NetworkServiceClassNewFromNative(object.Native())
+}
+
+func (recv *NetworkServiceClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -8482,6 +10147,19 @@ func NetworkServicePrivateNewFromNative(native unsafe.Pointer) *NetworkServicePr
 	return &NetworkServicePrivate{native: native}
 }
 
+/*
+CastToNetworkServicePrivate down casts any arbitrary Object to NetworkServicePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NetworkServicePrivate.
+*/
+func (recv *NetworkServicePrivate) CastToNetworkServicePrivate(object *gobject.Object) *NetworkServicePrivate {
+	return NetworkServicePrivateNewFromNative(object.Native())
+}
+
+func (recv *NetworkServicePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // NetworkServicePrivateStruct creates an uninitialised NetworkServicePrivate.
 func NetworkServicePrivateStruct() *NetworkServicePrivate {
 	err := networkServicePrivateStruct_Set()
@@ -8514,6 +10192,19 @@ type OutputMessage struct {
 
 func OutputMessageNewFromNative(native unsafe.Pointer) *OutputMessage {
 	return &OutputMessage{native: native}
+}
+
+/*
+CastToOutputMessage down casts any arbitrary Object to OutputMessage.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OutputMessage.
+*/
+func (recv *OutputMessage) CastToOutputMessage(object *gobject.Object) *OutputMessage {
+	return OutputMessageNewFromNative(object.Native())
+}
+
+func (recv *OutputMessage) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldAddress returns the C field 'address'.
@@ -8622,6 +10313,19 @@ type OutputStreamClass struct {
 
 func OutputStreamClassNewFromNative(native unsafe.Pointer) *OutputStreamClass {
 	return &OutputStreamClass{native: native}
+}
+
+/*
+CastToOutputStreamClass down casts any arbitrary Object to OutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OutputStreamClass.
+*/
+func (recv *OutputStreamClass) CastToOutputStreamClass(object *gobject.Object) *OutputStreamClass {
+	return OutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *OutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -8742,6 +10446,19 @@ func OutputStreamPrivateNewFromNative(native unsafe.Pointer) *OutputStreamPrivat
 	return &OutputStreamPrivate{native: native}
 }
 
+/*
+CastToOutputStreamPrivate down casts any arbitrary Object to OutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OutputStreamPrivate.
+*/
+func (recv *OutputStreamPrivate) CastToOutputStreamPrivate(object *gobject.Object) *OutputStreamPrivate {
+	return OutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *OutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // OutputStreamPrivateStruct creates an uninitialised OutputStreamPrivate.
 func OutputStreamPrivateStruct() *OutputStreamPrivate {
 	err := outputStreamPrivateStruct_Set()
@@ -8774,6 +10491,19 @@ type OutputVector struct {
 
 func OutputVectorNewFromNative(native unsafe.Pointer) *OutputVector {
 	return &OutputVector{native: native}
+}
+
+/*
+CastToOutputVector down casts any arbitrary Object to OutputVector.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OutputVector.
+*/
+func (recv *OutputVector) CastToOutputVector(object *gobject.Object) *OutputVector {
+	return OutputVectorNewFromNative(object.Native())
+}
+
+func (recv *OutputVector) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
@@ -8826,6 +10556,19 @@ type PermissionClass struct {
 
 func PermissionClassNewFromNative(native unsafe.Pointer) *PermissionClass {
 	return &PermissionClass{native: native}
+}
+
+/*
+CastToPermissionClass down casts any arbitrary Object to PermissionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PermissionClass.
+*/
+func (recv *PermissionClass) CastToPermissionClass(object *gobject.Object) *PermissionClass {
+	return PermissionClassNewFromNative(object.Native())
+}
+
+func (recv *PermissionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -8894,6 +10637,19 @@ func PermissionPrivateNewFromNative(native unsafe.Pointer) *PermissionPrivate {
 	return &PermissionPrivate{native: native}
 }
 
+/*
+CastToPermissionPrivate down casts any arbitrary Object to PermissionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PermissionPrivate.
+*/
+func (recv *PermissionPrivate) CastToPermissionPrivate(object *gobject.Object) *PermissionPrivate {
+	return PermissionPrivateNewFromNative(object.Native())
+}
+
+func (recv *PermissionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // PermissionPrivateStruct creates an uninitialised PermissionPrivate.
 func PermissionPrivateStruct() *PermissionPrivate {
 	err := permissionPrivateStruct_Set()
@@ -8926,6 +10682,19 @@ type PollableInputStreamInterface struct {
 
 func PollableInputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableInputStreamInterface {
 	return &PollableInputStreamInterface{native: native}
+}
+
+/*
+CastToPollableInputStreamInterface down casts any arbitrary Object to PollableInputStreamInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PollableInputStreamInterface.
+*/
+func (recv *PollableInputStreamInterface) CastToPollableInputStreamInterface(object *gobject.Object) *PollableInputStreamInterface {
+	return PollableInputStreamInterfaceNewFromNative(object.Native())
+}
+
+func (recv *PollableInputStreamInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -8980,6 +10749,19 @@ type PollableOutputStreamInterface struct {
 
 func PollableOutputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableOutputStreamInterface {
 	return &PollableOutputStreamInterface{native: native}
+}
+
+/*
+CastToPollableOutputStreamInterface down casts any arbitrary Object to PollableOutputStreamInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PollableOutputStreamInterface.
+*/
+func (recv *PollableOutputStreamInterface) CastToPollableOutputStreamInterface(object *gobject.Object) *PollableOutputStreamInterface {
+	return PollableOutputStreamInterfaceNewFromNative(object.Native())
+}
+
+func (recv *PollableOutputStreamInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -9040,6 +10822,19 @@ func ProxyAddressClassNewFromNative(native unsafe.Pointer) *ProxyAddressClass {
 	return &ProxyAddressClass{native: native}
 }
 
+/*
+CastToProxyAddressClass down casts any arbitrary Object to ProxyAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyAddressClass.
+*/
+func (recv *ProxyAddressClass) CastToProxyAddressClass(object *gobject.Object) *ProxyAddressClass {
+	return ProxyAddressClassNewFromNative(object.Native())
+}
+
+func (recv *ProxyAddressClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ProxyAddressClass) FieldParentClass() *InetSocketAddressClass {
 	argValue := gi.StructFieldGet(proxyAddressClassStruct, recv.native, "parent_class")
@@ -9086,6 +10881,19 @@ type ProxyAddressEnumeratorClass struct {
 
 func ProxyAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *ProxyAddressEnumeratorClass {
 	return &ProxyAddressEnumeratorClass{native: native}
+}
+
+/*
+CastToProxyAddressEnumeratorClass down casts any arbitrary Object to ProxyAddressEnumeratorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyAddressEnumeratorClass.
+*/
+func (recv *ProxyAddressEnumeratorClass) CastToProxyAddressEnumeratorClass(object *gobject.Object) *ProxyAddressEnumeratorClass {
+	return ProxyAddressEnumeratorClassNewFromNative(object.Native())
+}
+
+func (recv *ProxyAddressEnumeratorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value '_g_reserved1' : for field getter : missing Type
@@ -9150,6 +10958,19 @@ func ProxyAddressEnumeratorPrivateNewFromNative(native unsafe.Pointer) *ProxyAdd
 	return &ProxyAddressEnumeratorPrivate{native: native}
 }
 
+/*
+CastToProxyAddressEnumeratorPrivate down casts any arbitrary Object to ProxyAddressEnumeratorPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyAddressEnumeratorPrivate.
+*/
+func (recv *ProxyAddressEnumeratorPrivate) CastToProxyAddressEnumeratorPrivate(object *gobject.Object) *ProxyAddressEnumeratorPrivate {
+	return ProxyAddressEnumeratorPrivateNewFromNative(object.Native())
+}
+
+func (recv *ProxyAddressEnumeratorPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyAddressEnumeratorPrivateStruct creates an uninitialised ProxyAddressEnumeratorPrivate.
 func ProxyAddressEnumeratorPrivateStruct() *ProxyAddressEnumeratorPrivate {
 	err := proxyAddressEnumeratorPrivateStruct_Set()
@@ -9184,6 +11005,19 @@ func ProxyAddressPrivateNewFromNative(native unsafe.Pointer) *ProxyAddressPrivat
 	return &ProxyAddressPrivate{native: native}
 }
 
+/*
+CastToProxyAddressPrivate down casts any arbitrary Object to ProxyAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyAddressPrivate.
+*/
+func (recv *ProxyAddressPrivate) CastToProxyAddressPrivate(object *gobject.Object) *ProxyAddressPrivate {
+	return ProxyAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *ProxyAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyAddressPrivateStruct creates an uninitialised ProxyAddressPrivate.
 func ProxyAddressPrivateStruct() *ProxyAddressPrivate {
 	err := proxyAddressPrivateStruct_Set()
@@ -9216,6 +11050,19 @@ type ProxyInterface struct {
 
 func ProxyInterfaceNewFromNative(native unsafe.Pointer) *ProxyInterface {
 	return &ProxyInterface{native: native}
+}
+
+/*
+CastToProxyInterface down casts any arbitrary Object to ProxyInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyInterface.
+*/
+func (recv *ProxyInterface) CastToProxyInterface(object *gobject.Object) *ProxyInterface {
+	return ProxyInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ProxyInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -9272,6 +11119,19 @@ func ProxyResolverInterfaceNewFromNative(native unsafe.Pointer) *ProxyResolverIn
 	return &ProxyResolverInterface{native: native}
 }
 
+/*
+CastToProxyResolverInterface down casts any arbitrary Object to ProxyResolverInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ProxyResolverInterface.
+*/
+func (recv *ProxyResolverInterface) CastToProxyResolverInterface(object *gobject.Object) *ProxyResolverInterface {
+	return ProxyResolverInterfaceNewFromNative(object.Native())
+}
+
+func (recv *ProxyResolverInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -9326,6 +11186,19 @@ func RemoteActionGroupInterfaceNewFromNative(native unsafe.Pointer) *RemoteActio
 	return &RemoteActionGroupInterface{native: native}
 }
 
+/*
+CastToRemoteActionGroupInterface down casts any arbitrary Object to RemoteActionGroupInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RemoteActionGroupInterface.
+*/
+func (recv *RemoteActionGroupInterface) CastToRemoteActionGroupInterface(object *gobject.Object) *RemoteActionGroupInterface {
+	return RemoteActionGroupInterfaceNewFromNative(object.Native())
+}
+
+func (recv *RemoteActionGroupInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -9370,6 +11243,19 @@ type ResolverClass struct {
 
 func ResolverClassNewFromNative(native unsafe.Pointer) *ResolverClass {
 	return &ResolverClass{native: native}
+}
+
+/*
+CastToResolverClass down casts any arbitrary Object to ResolverClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ResolverClass.
+*/
+func (recv *ResolverClass) CastToResolverClass(object *gobject.Object) *ResolverClass {
+	return ResolverClassNewFromNative(object.Native())
+}
+
+func (recv *ResolverClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -9474,6 +11360,19 @@ func ResolverPrivateNewFromNative(native unsafe.Pointer) *ResolverPrivate {
 	return &ResolverPrivate{native: native}
 }
 
+/*
+CastToResolverPrivate down casts any arbitrary Object to ResolverPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ResolverPrivate.
+*/
+func (recv *ResolverPrivate) CastToResolverPrivate(object *gobject.Object) *ResolverPrivate {
+	return ResolverPrivateNewFromNative(object.Native())
+}
+
+func (recv *ResolverPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ResolverPrivateStruct creates an uninitialised ResolverPrivate.
 func ResolverPrivateStruct() *ResolverPrivate {
 	err := resolverPrivateStruct_Set()
@@ -9506,6 +11405,19 @@ type Resource struct {
 
 func ResourceNewFromNative(native unsafe.Pointer) *Resource {
 	return &Resource{native: native}
+}
+
+/*
+CastToResource down casts any arbitrary Object to Resource.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Resource.
+*/
+func (recv *Resource) CastToResource(object *gobject.Object) *Resource {
+	return ResourceNewFromNative(object.Native())
+}
+
+func (recv *Resource) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_resource_new_from_data' : parameter 'data' of type 'GLib.Bytes' not supported
@@ -9653,6 +11565,19 @@ func SeekableIfaceNewFromNative(native unsafe.Pointer) *SeekableIface {
 	return &SeekableIface{native: native}
 }
 
+/*
+CastToSeekableIface down casts any arbitrary Object to SeekableIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SeekableIface.
+*/
+func (recv *SeekableIface) CastToSeekableIface(object *gobject.Object) *SeekableIface {
+	return SeekableIfaceNewFromNative(object.Native())
+}
+
+func (recv *SeekableIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -9709,6 +11634,19 @@ type SettingsBackendClass struct {
 
 func SettingsBackendClassNewFromNative(native unsafe.Pointer) *SettingsBackendClass {
 	return &SettingsBackendClass{native: native}
+}
+
+/*
+CastToSettingsBackendClass down casts any arbitrary Object to SettingsBackendClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsBackendClass.
+*/
+func (recv *SettingsBackendClass) CastToSettingsBackendClass(object *gobject.Object) *SettingsBackendClass {
+	return SettingsBackendClassNewFromNative(object.Native())
+}
+
+func (recv *SettingsBackendClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -9789,6 +11727,19 @@ func SettingsBackendPrivateNewFromNative(native unsafe.Pointer) *SettingsBackend
 	return &SettingsBackendPrivate{native: native}
 }
 
+/*
+CastToSettingsBackendPrivate down casts any arbitrary Object to SettingsBackendPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsBackendPrivate.
+*/
+func (recv *SettingsBackendPrivate) CastToSettingsBackendPrivate(object *gobject.Object) *SettingsBackendPrivate {
+	return SettingsBackendPrivateNewFromNative(object.Native())
+}
+
+func (recv *SettingsBackendPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SettingsBackendPrivateStruct creates an uninitialised SettingsBackendPrivate.
 func SettingsBackendPrivateStruct() *SettingsBackendPrivate {
 	err := settingsBackendPrivateStruct_Set()
@@ -9821,6 +11772,19 @@ type SettingsClass struct {
 
 func SettingsClassNewFromNative(native unsafe.Pointer) *SettingsClass {
 	return &SettingsClass{native: native}
+}
+
+/*
+CastToSettingsClass down casts any arbitrary Object to SettingsClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsClass.
+*/
+func (recv *SettingsClass) CastToSettingsClass(object *gobject.Object) *SettingsClass {
+	return SettingsClassNewFromNative(object.Native())
+}
+
+func (recv *SettingsClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -9881,6 +11845,19 @@ func SettingsPrivateNewFromNative(native unsafe.Pointer) *SettingsPrivate {
 	return &SettingsPrivate{native: native}
 }
 
+/*
+CastToSettingsPrivate down casts any arbitrary Object to SettingsPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsPrivate.
+*/
+func (recv *SettingsPrivate) CastToSettingsPrivate(object *gobject.Object) *SettingsPrivate {
+	return SettingsPrivateNewFromNative(object.Native())
+}
+
+func (recv *SettingsPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SettingsPrivateStruct creates an uninitialised SettingsPrivate.
 func SettingsPrivateStruct() *SettingsPrivate {
 	err := settingsPrivateStruct_Set()
@@ -9913,6 +11890,19 @@ type SettingsSchema struct {
 
 func SettingsSchemaNewFromNative(native unsafe.Pointer) *SettingsSchema {
 	return &SettingsSchema{native: native}
+}
+
+/*
+CastToSettingsSchema down casts any arbitrary Object to SettingsSchema.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsSchema.
+*/
+func (recv *SettingsSchema) CastToSettingsSchema(object *gobject.Object) *SettingsSchema {
+	return SettingsSchemaNewFromNative(object.Native())
+}
+
+func (recv *SettingsSchema) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var settingsSchemaGetIdFunction *gi.Function
@@ -10195,6 +12185,19 @@ func SettingsSchemaKeyNewFromNative(native unsafe.Pointer) *SettingsSchemaKey {
 	return &SettingsSchemaKey{native: native}
 }
 
+/*
+CastToSettingsSchemaKey down casts any arbitrary Object to SettingsSchemaKey.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsSchemaKey.
+*/
+func (recv *SettingsSchemaKey) CastToSettingsSchemaKey(object *gobject.Object) *SettingsSchemaKey {
+	return SettingsSchemaKeyNewFromNative(object.Native())
+}
+
+func (recv *SettingsSchemaKey) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_settings_schema_key_get_default_value' : return type 'GLib.Variant' not supported
 
 var settingsSchemaKeyGetDescriptionFunction *gi.Function
@@ -10393,6 +12396,19 @@ func SettingsSchemaSourceNewFromNative(native unsafe.Pointer) *SettingsSchemaSou
 	return &SettingsSchemaSource{native: native}
 }
 
+/*
+CastToSettingsSchemaSource down casts any arbitrary Object to SettingsSchemaSource.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SettingsSchemaSource.
+*/
+func (recv *SettingsSchemaSource) CastToSettingsSchemaSource(object *gobject.Object) *SettingsSchemaSource {
+	return SettingsSchemaSourceNewFromNative(object.Native())
+}
+
+func (recv *SettingsSchemaSource) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var settingsSchemaSourceNewFromDirectoryFunction *gi.Function
 var settingsSchemaSourceNewFromDirectoryFunction_Once sync.Once
 
@@ -10542,6 +12558,19 @@ func SimpleActionGroupClassNewFromNative(native unsafe.Pointer) *SimpleActionGro
 	return &SimpleActionGroupClass{native: native}
 }
 
+/*
+CastToSimpleActionGroupClass down casts any arbitrary Object to SimpleActionGroupClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SimpleActionGroupClass.
+*/
+func (recv *SimpleActionGroupClass) CastToSimpleActionGroupClass(object *gobject.Object) *SimpleActionGroupClass {
+	return SimpleActionGroupClassNewFromNative(object.Native())
+}
+
+func (recv *SimpleActionGroupClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleActionGroupClassStruct creates an uninitialised SimpleActionGroupClass.
 func SimpleActionGroupClassStruct() *SimpleActionGroupClass {
 	err := simpleActionGroupClassStruct_Set()
@@ -10574,6 +12603,19 @@ type SimpleActionGroupPrivate struct {
 
 func SimpleActionGroupPrivateNewFromNative(native unsafe.Pointer) *SimpleActionGroupPrivate {
 	return &SimpleActionGroupPrivate{native: native}
+}
+
+/*
+CastToSimpleActionGroupPrivate down casts any arbitrary Object to SimpleActionGroupPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SimpleActionGroupPrivate.
+*/
+func (recv *SimpleActionGroupPrivate) CastToSimpleActionGroupPrivate(object *gobject.Object) *SimpleActionGroupPrivate {
+	return SimpleActionGroupPrivateNewFromNative(object.Native())
+}
+
+func (recv *SimpleActionGroupPrivate) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // SimpleActionGroupPrivateStruct creates an uninitialised SimpleActionGroupPrivate.
@@ -10610,6 +12652,19 @@ func SimpleAsyncResultClassNewFromNative(native unsafe.Pointer) *SimpleAsyncResu
 	return &SimpleAsyncResultClass{native: native}
 }
 
+/*
+CastToSimpleAsyncResultClass down casts any arbitrary Object to SimpleAsyncResultClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SimpleAsyncResultClass.
+*/
+func (recv *SimpleAsyncResultClass) CastToSimpleAsyncResultClass(object *gobject.Object) *SimpleAsyncResultClass {
+	return SimpleAsyncResultClassNewFromNative(object.Native())
+}
+
+func (recv *SimpleAsyncResultClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleAsyncResultClassStruct creates an uninitialised SimpleAsyncResultClass.
 func SimpleAsyncResultClassStruct() *SimpleAsyncResultClass {
 	err := simpleAsyncResultClassStruct_Set()
@@ -10642,6 +12697,19 @@ type SimpleProxyResolverClass struct {
 
 func SimpleProxyResolverClassNewFromNative(native unsafe.Pointer) *SimpleProxyResolverClass {
 	return &SimpleProxyResolverClass{native: native}
+}
+
+/*
+CastToSimpleProxyResolverClass down casts any arbitrary Object to SimpleProxyResolverClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SimpleProxyResolverClass.
+*/
+func (recv *SimpleProxyResolverClass) CastToSimpleProxyResolverClass(object *gobject.Object) *SimpleProxyResolverClass {
+	return SimpleProxyResolverClassNewFromNative(object.Native())
+}
+
+func (recv *SimpleProxyResolverClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -10702,6 +12770,19 @@ func SimpleProxyResolverPrivateNewFromNative(native unsafe.Pointer) *SimpleProxy
 	return &SimpleProxyResolverPrivate{native: native}
 }
 
+/*
+CastToSimpleProxyResolverPrivate down casts any arbitrary Object to SimpleProxyResolverPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SimpleProxyResolverPrivate.
+*/
+func (recv *SimpleProxyResolverPrivate) CastToSimpleProxyResolverPrivate(object *gobject.Object) *SimpleProxyResolverPrivate {
+	return SimpleProxyResolverPrivateNewFromNative(object.Native())
+}
+
+func (recv *SimpleProxyResolverPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleProxyResolverPrivateStruct creates an uninitialised SimpleProxyResolverPrivate.
 func SimpleProxyResolverPrivateStruct() *SimpleProxyResolverPrivate {
 	err := simpleProxyResolverPrivateStruct_Set()
@@ -10734,6 +12815,19 @@ type SocketAddressClass struct {
 
 func SocketAddressClassNewFromNative(native unsafe.Pointer) *SocketAddressClass {
 	return &SocketAddressClass{native: native}
+}
+
+/*
+CastToSocketAddressClass down casts any arbitrary Object to SocketAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketAddressClass.
+*/
+func (recv *SocketAddressClass) CastToSocketAddressClass(object *gobject.Object) *SocketAddressClass {
+	return SocketAddressClassNewFromNative(object.Native())
+}
+
+func (recv *SocketAddressClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -10786,6 +12880,19 @@ func SocketAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *SocketAdd
 	return &SocketAddressEnumeratorClass{native: native}
 }
 
+/*
+CastToSocketAddressEnumeratorClass down casts any arbitrary Object to SocketAddressEnumeratorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketAddressEnumeratorClass.
+*/
+func (recv *SocketAddressEnumeratorClass) CastToSocketAddressEnumeratorClass(object *gobject.Object) *SocketAddressEnumeratorClass {
+	return SocketAddressEnumeratorClassNewFromNative(object.Native())
+}
+
+func (recv *SocketAddressEnumeratorClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'next' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'next' : for field setter : missing Type
@@ -10830,6 +12937,19 @@ type SocketClass struct {
 
 func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
 	return &SocketClass{native: native}
+}
+
+/*
+CastToSocketClass down casts any arbitrary Object to SocketClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketClass.
+*/
+func (recv *SocketClass) CastToSocketClass(object *gobject.Object) *SocketClass {
+	return SocketClassNewFromNative(object.Native())
+}
+
+func (recv *SocketClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -10910,6 +13030,19 @@ func SocketClientClassNewFromNative(native unsafe.Pointer) *SocketClientClass {
 	return &SocketClientClass{native: native}
 }
 
+/*
+CastToSocketClientClass down casts any arbitrary Object to SocketClientClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketClientClass.
+*/
+func (recv *SocketClientClass) CastToSocketClientClass(object *gobject.Object) *SocketClientClass {
+	return SocketClientClassNewFromNative(object.Native())
+}
+
+func (recv *SocketClientClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -10968,6 +13101,19 @@ func SocketClientPrivateNewFromNative(native unsafe.Pointer) *SocketClientPrivat
 	return &SocketClientPrivate{native: native}
 }
 
+/*
+CastToSocketClientPrivate down casts any arbitrary Object to SocketClientPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketClientPrivate.
+*/
+func (recv *SocketClientPrivate) CastToSocketClientPrivate(object *gobject.Object) *SocketClientPrivate {
+	return SocketClientPrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketClientPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketClientPrivateStruct creates an uninitialised SocketClientPrivate.
 func SocketClientPrivateStruct() *SocketClientPrivate {
 	err := socketClientPrivateStruct_Set()
@@ -11000,6 +13146,19 @@ type SocketConnectableIface struct {
 
 func SocketConnectableIfaceNewFromNative(native unsafe.Pointer) *SocketConnectableIface {
 	return &SocketConnectableIface{native: native}
+}
+
+/*
+CastToSocketConnectableIface down casts any arbitrary Object to SocketConnectableIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketConnectableIface.
+*/
+func (recv *SocketConnectableIface) CastToSocketConnectableIface(object *gobject.Object) *SocketConnectableIface {
+	return SocketConnectableIfaceNewFromNative(object.Native())
+}
+
+func (recv *SocketConnectableIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -11050,6 +13209,19 @@ type SocketConnectionClass struct {
 
 func SocketConnectionClassNewFromNative(native unsafe.Pointer) *SocketConnectionClass {
 	return &SocketConnectionClass{native: native}
+}
+
+/*
+CastToSocketConnectionClass down casts any arbitrary Object to SocketConnectionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketConnectionClass.
+*/
+func (recv *SocketConnectionClass) CastToSocketConnectionClass(object *gobject.Object) *SocketConnectionClass {
+	return SocketConnectionClassNewFromNative(object.Native())
+}
+
+func (recv *SocketConnectionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -11124,6 +13296,19 @@ func SocketConnectionPrivateNewFromNative(native unsafe.Pointer) *SocketConnecti
 	return &SocketConnectionPrivate{native: native}
 }
 
+/*
+CastToSocketConnectionPrivate down casts any arbitrary Object to SocketConnectionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketConnectionPrivate.
+*/
+func (recv *SocketConnectionPrivate) CastToSocketConnectionPrivate(object *gobject.Object) *SocketConnectionPrivate {
+	return SocketConnectionPrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketConnectionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketConnectionPrivateStruct creates an uninitialised SocketConnectionPrivate.
 func SocketConnectionPrivateStruct() *SocketConnectionPrivate {
 	err := socketConnectionPrivateStruct_Set()
@@ -11156,6 +13341,19 @@ type SocketControlMessageClass struct {
 
 func SocketControlMessageClassNewFromNative(native unsafe.Pointer) *SocketControlMessageClass {
 	return &SocketControlMessageClass{native: native}
+}
+
+/*
+CastToSocketControlMessageClass down casts any arbitrary Object to SocketControlMessageClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketControlMessageClass.
+*/
+func (recv *SocketControlMessageClass) CastToSocketControlMessageClass(object *gobject.Object) *SocketControlMessageClass {
+	return SocketControlMessageClassNewFromNative(object.Native())
+}
+
+func (recv *SocketControlMessageClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -11236,6 +13434,19 @@ func SocketControlMessagePrivateNewFromNative(native unsafe.Pointer) *SocketCont
 	return &SocketControlMessagePrivate{native: native}
 }
 
+/*
+CastToSocketControlMessagePrivate down casts any arbitrary Object to SocketControlMessagePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketControlMessagePrivate.
+*/
+func (recv *SocketControlMessagePrivate) CastToSocketControlMessagePrivate(object *gobject.Object) *SocketControlMessagePrivate {
+	return SocketControlMessagePrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketControlMessagePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketControlMessagePrivateStruct creates an uninitialised SocketControlMessagePrivate.
 func SocketControlMessagePrivateStruct() *SocketControlMessagePrivate {
 	err := socketControlMessagePrivateStruct_Set()
@@ -11268,6 +13479,19 @@ type SocketListenerClass struct {
 
 func SocketListenerClassNewFromNative(native unsafe.Pointer) *SocketListenerClass {
 	return &SocketListenerClass{native: native}
+}
+
+/*
+CastToSocketListenerClass down casts any arbitrary Object to SocketListenerClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketListenerClass.
+*/
+func (recv *SocketListenerClass) CastToSocketListenerClass(object *gobject.Object) *SocketListenerClass {
+	return SocketListenerClassNewFromNative(object.Native())
+}
+
+func (recv *SocketListenerClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -11336,6 +13560,19 @@ func SocketListenerPrivateNewFromNative(native unsafe.Pointer) *SocketListenerPr
 	return &SocketListenerPrivate{native: native}
 }
 
+/*
+CastToSocketListenerPrivate down casts any arbitrary Object to SocketListenerPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketListenerPrivate.
+*/
+func (recv *SocketListenerPrivate) CastToSocketListenerPrivate(object *gobject.Object) *SocketListenerPrivate {
+	return SocketListenerPrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketListenerPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketListenerPrivateStruct creates an uninitialised SocketListenerPrivate.
 func SocketListenerPrivateStruct() *SocketListenerPrivate {
 	err := socketListenerPrivateStruct_Set()
@@ -11370,6 +13607,19 @@ func SocketPrivateNewFromNative(native unsafe.Pointer) *SocketPrivate {
 	return &SocketPrivate{native: native}
 }
 
+/*
+CastToSocketPrivate down casts any arbitrary Object to SocketPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketPrivate.
+*/
+func (recv *SocketPrivate) CastToSocketPrivate(object *gobject.Object) *SocketPrivate {
+	return SocketPrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketPrivateStruct creates an uninitialised SocketPrivate.
 func SocketPrivateStruct() *SocketPrivate {
 	err := socketPrivateStruct_Set()
@@ -11402,6 +13652,19 @@ type SocketServiceClass struct {
 
 func SocketServiceClassNewFromNative(native unsafe.Pointer) *SocketServiceClass {
 	return &SocketServiceClass{native: native}
+}
+
+/*
+CastToSocketServiceClass down casts any arbitrary Object to SocketServiceClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketServiceClass.
+*/
+func (recv *SocketServiceClass) CastToSocketServiceClass(object *gobject.Object) *SocketServiceClass {
+	return SocketServiceClassNewFromNative(object.Native())
+}
+
+func (recv *SocketServiceClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -11480,6 +13743,19 @@ func SocketServicePrivateNewFromNative(native unsafe.Pointer) *SocketServicePriv
 	return &SocketServicePrivate{native: native}
 }
 
+/*
+CastToSocketServicePrivate down casts any arbitrary Object to SocketServicePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketServicePrivate.
+*/
+func (recv *SocketServicePrivate) CastToSocketServicePrivate(object *gobject.Object) *SocketServicePrivate {
+	return SocketServicePrivateNewFromNative(object.Native())
+}
+
+func (recv *SocketServicePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketServicePrivateStruct creates an uninitialised SocketServicePrivate.
 func SocketServicePrivateStruct() *SocketServicePrivate {
 	err := socketServicePrivateStruct_Set()
@@ -11512,6 +13788,19 @@ type SrvTarget struct {
 
 func SrvTargetNewFromNative(native unsafe.Pointer) *SrvTarget {
 	return &SrvTarget{native: native}
+}
+
+/*
+CastToSrvTarget down casts any arbitrary Object to SrvTarget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SrvTarget.
+*/
+func (recv *SrvTarget) CastToSrvTarget(object *gobject.Object) *SrvTarget {
+	return SrvTargetNewFromNative(object.Native())
+}
+
+func (recv *SrvTarget) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var srvTargetNewFunction *gi.Function
@@ -11756,6 +14045,19 @@ func StaticResourceNewFromNative(native unsafe.Pointer) *StaticResource {
 	return &StaticResource{native: native}
 }
 
+/*
+CastToStaticResource down casts any arbitrary Object to StaticResource.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StaticResource.
+*/
+func (recv *StaticResource) CastToStaticResource(object *gobject.Object) *StaticResource {
+	return StaticResourceNewFromNative(object.Native())
+}
+
+func (recv *StaticResource) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var staticResourceFiniFunction *gi.Function
 var staticResourceFiniFunction_Once sync.Once
 
@@ -11878,6 +14180,19 @@ func TaskClassNewFromNative(native unsafe.Pointer) *TaskClass {
 	return &TaskClass{native: native}
 }
 
+/*
+CastToTaskClass down casts any arbitrary Object to TaskClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TaskClass.
+*/
+func (recv *TaskClass) CastToTaskClass(object *gobject.Object) *TaskClass {
+	return TaskClassNewFromNative(object.Native())
+}
+
+func (recv *TaskClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TaskClassStruct creates an uninitialised TaskClass.
 func TaskClassStruct() *TaskClass {
 	err := taskClassStruct_Set()
@@ -11910,6 +14225,19 @@ type TcpConnectionClass struct {
 
 func TcpConnectionClassNewFromNative(native unsafe.Pointer) *TcpConnectionClass {
 	return &TcpConnectionClass{native: native}
+}
+
+/*
+CastToTcpConnectionClass down casts any arbitrary Object to TcpConnectionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TcpConnectionClass.
+*/
+func (recv *TcpConnectionClass) CastToTcpConnectionClass(object *gobject.Object) *TcpConnectionClass {
+	return TcpConnectionClassNewFromNative(object.Native())
+}
+
+func (recv *TcpConnectionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -11960,6 +14288,19 @@ func TcpConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpConnectionPriv
 	return &TcpConnectionPrivate{native: native}
 }
 
+/*
+CastToTcpConnectionPrivate down casts any arbitrary Object to TcpConnectionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TcpConnectionPrivate.
+*/
+func (recv *TcpConnectionPrivate) CastToTcpConnectionPrivate(object *gobject.Object) *TcpConnectionPrivate {
+	return TcpConnectionPrivateNewFromNative(object.Native())
+}
+
+func (recv *TcpConnectionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TcpConnectionPrivateStruct creates an uninitialised TcpConnectionPrivate.
 func TcpConnectionPrivateStruct() *TcpConnectionPrivate {
 	err := tcpConnectionPrivateStruct_Set()
@@ -11992,6 +14333,19 @@ type TcpWrapperConnectionClass struct {
 
 func TcpWrapperConnectionClassNewFromNative(native unsafe.Pointer) *TcpWrapperConnectionClass {
 	return &TcpWrapperConnectionClass{native: native}
+}
+
+/*
+CastToTcpWrapperConnectionClass down casts any arbitrary Object to TcpWrapperConnectionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TcpWrapperConnectionClass.
+*/
+func (recv *TcpWrapperConnectionClass) CastToTcpWrapperConnectionClass(object *gobject.Object) *TcpWrapperConnectionClass {
+	return TcpWrapperConnectionClassNewFromNative(object.Native())
+}
+
+func (recv *TcpWrapperConnectionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -12042,6 +14396,19 @@ func TcpWrapperConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpWrapper
 	return &TcpWrapperConnectionPrivate{native: native}
 }
 
+/*
+CastToTcpWrapperConnectionPrivate down casts any arbitrary Object to TcpWrapperConnectionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TcpWrapperConnectionPrivate.
+*/
+func (recv *TcpWrapperConnectionPrivate) CastToTcpWrapperConnectionPrivate(object *gobject.Object) *TcpWrapperConnectionPrivate {
+	return TcpWrapperConnectionPrivateNewFromNative(object.Native())
+}
+
+func (recv *TcpWrapperConnectionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TcpWrapperConnectionPrivateStruct creates an uninitialised TcpWrapperConnectionPrivate.
 func TcpWrapperConnectionPrivateStruct() *TcpWrapperConnectionPrivate {
 	err := tcpWrapperConnectionPrivateStruct_Set()
@@ -12076,6 +14443,19 @@ func ThemedIconClassNewFromNative(native unsafe.Pointer) *ThemedIconClass {
 	return &ThemedIconClass{native: native}
 }
 
+/*
+CastToThemedIconClass down casts any arbitrary Object to ThemedIconClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ThemedIconClass.
+*/
+func (recv *ThemedIconClass) CastToThemedIconClass(object *gobject.Object) *ThemedIconClass {
+	return ThemedIconClassNewFromNative(object.Native())
+}
+
+func (recv *ThemedIconClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ThemedIconClassStruct creates an uninitialised ThemedIconClass.
 func ThemedIconClassStruct() *ThemedIconClass {
 	err := themedIconClassStruct_Set()
@@ -12108,6 +14488,19 @@ type ThreadedSocketServiceClass struct {
 
 func ThreadedSocketServiceClassNewFromNative(native unsafe.Pointer) *ThreadedSocketServiceClass {
 	return &ThreadedSocketServiceClass{native: native}
+}
+
+/*
+CastToThreadedSocketServiceClass down casts any arbitrary Object to ThreadedSocketServiceClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ThreadedSocketServiceClass.
+*/
+func (recv *ThreadedSocketServiceClass) CastToThreadedSocketServiceClass(object *gobject.Object) *ThreadedSocketServiceClass {
+	return ThreadedSocketServiceClassNewFromNative(object.Native())
+}
+
+func (recv *ThreadedSocketServiceClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -12182,6 +14575,19 @@ func ThreadedSocketServicePrivateNewFromNative(native unsafe.Pointer) *ThreadedS
 	return &ThreadedSocketServicePrivate{native: native}
 }
 
+/*
+CastToThreadedSocketServicePrivate down casts any arbitrary Object to ThreadedSocketServicePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ThreadedSocketServicePrivate.
+*/
+func (recv *ThreadedSocketServicePrivate) CastToThreadedSocketServicePrivate(object *gobject.Object) *ThreadedSocketServicePrivate {
+	return ThreadedSocketServicePrivateNewFromNative(object.Native())
+}
+
+func (recv *ThreadedSocketServicePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ThreadedSocketServicePrivateStruct creates an uninitialised ThreadedSocketServicePrivate.
 func ThreadedSocketServicePrivateStruct() *ThreadedSocketServicePrivate {
 	err := threadedSocketServicePrivateStruct_Set()
@@ -12214,6 +14620,19 @@ type TlsBackendInterface struct {
 
 func TlsBackendInterfaceNewFromNative(native unsafe.Pointer) *TlsBackendInterface {
 	return &TlsBackendInterface{native: native}
+}
+
+/*
+CastToTlsBackendInterface down casts any arbitrary Object to TlsBackendInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsBackendInterface.
+*/
+func (recv *TlsBackendInterface) CastToTlsBackendInterface(object *gobject.Object) *TlsBackendInterface {
+	return TlsBackendInterfaceNewFromNative(object.Native())
+}
+
+func (recv *TlsBackendInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -12290,6 +14709,19 @@ func TlsCertificateClassNewFromNative(native unsafe.Pointer) *TlsCertificateClas
 	return &TlsCertificateClass{native: native}
 }
 
+/*
+CastToTlsCertificateClass down casts any arbitrary Object to TlsCertificateClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsCertificateClass.
+*/
+func (recv *TlsCertificateClass) CastToTlsCertificateClass(object *gobject.Object) *TlsCertificateClass {
+	return TlsCertificateClassNewFromNative(object.Native())
+}
+
+func (recv *TlsCertificateClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -12332,6 +14764,19 @@ func TlsCertificatePrivateNewFromNative(native unsafe.Pointer) *TlsCertificatePr
 	return &TlsCertificatePrivate{native: native}
 }
 
+/*
+CastToTlsCertificatePrivate down casts any arbitrary Object to TlsCertificatePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsCertificatePrivate.
+*/
+func (recv *TlsCertificatePrivate) CastToTlsCertificatePrivate(object *gobject.Object) *TlsCertificatePrivate {
+	return TlsCertificatePrivateNewFromNative(object.Native())
+}
+
+func (recv *TlsCertificatePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsCertificatePrivateStruct creates an uninitialised TlsCertificatePrivate.
 func TlsCertificatePrivateStruct() *TlsCertificatePrivate {
 	err := tlsCertificatePrivateStruct_Set()
@@ -12364,6 +14809,19 @@ type TlsClientConnectionInterface struct {
 
 func TlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsClientConnectionInterface {
 	return &TlsClientConnectionInterface{native: native}
+}
+
+/*
+CastToTlsClientConnectionInterface down casts any arbitrary Object to TlsClientConnectionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsClientConnectionInterface.
+*/
+func (recv *TlsClientConnectionInterface) CastToTlsClientConnectionInterface(object *gobject.Object) *TlsClientConnectionInterface {
+	return TlsClientConnectionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *TlsClientConnectionInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -12406,6 +14864,19 @@ type TlsConnectionClass struct {
 
 func TlsConnectionClassNewFromNative(native unsafe.Pointer) *TlsConnectionClass {
 	return &TlsConnectionClass{native: native}
+}
+
+/*
+CastToTlsConnectionClass down casts any arbitrary Object to TlsConnectionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsConnectionClass.
+*/
+func (recv *TlsConnectionClass) CastToTlsConnectionClass(object *gobject.Object) *TlsConnectionClass {
+	return TlsConnectionClassNewFromNative(object.Native())
+}
+
+func (recv *TlsConnectionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -12472,6 +14943,19 @@ func TlsConnectionPrivateNewFromNative(native unsafe.Pointer) *TlsConnectionPriv
 	return &TlsConnectionPrivate{native: native}
 }
 
+/*
+CastToTlsConnectionPrivate down casts any arbitrary Object to TlsConnectionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsConnectionPrivate.
+*/
+func (recv *TlsConnectionPrivate) CastToTlsConnectionPrivate(object *gobject.Object) *TlsConnectionPrivate {
+	return TlsConnectionPrivateNewFromNative(object.Native())
+}
+
+func (recv *TlsConnectionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsConnectionPrivateStruct creates an uninitialised TlsConnectionPrivate.
 func TlsConnectionPrivateStruct() *TlsConnectionPrivate {
 	err := tlsConnectionPrivateStruct_Set()
@@ -12504,6 +14988,19 @@ type TlsDatabaseClass struct {
 
 func TlsDatabaseClassNewFromNative(native unsafe.Pointer) *TlsDatabaseClass {
 	return &TlsDatabaseClass{native: native}
+}
+
+/*
+CastToTlsDatabaseClass down casts any arbitrary Object to TlsDatabaseClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsDatabaseClass.
+*/
+func (recv *TlsDatabaseClass) CastToTlsDatabaseClass(object *gobject.Object) *TlsDatabaseClass {
+	return TlsDatabaseClassNewFromNative(object.Native())
+}
+
+func (recv *TlsDatabaseClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -12596,6 +15093,19 @@ func TlsDatabasePrivateNewFromNative(native unsafe.Pointer) *TlsDatabasePrivate 
 	return &TlsDatabasePrivate{native: native}
 }
 
+/*
+CastToTlsDatabasePrivate down casts any arbitrary Object to TlsDatabasePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsDatabasePrivate.
+*/
+func (recv *TlsDatabasePrivate) CastToTlsDatabasePrivate(object *gobject.Object) *TlsDatabasePrivate {
+	return TlsDatabasePrivateNewFromNative(object.Native())
+}
+
+func (recv *TlsDatabasePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsDatabasePrivateStruct creates an uninitialised TlsDatabasePrivate.
 func TlsDatabasePrivateStruct() *TlsDatabasePrivate {
 	err := tlsDatabasePrivateStruct_Set()
@@ -12628,6 +15138,19 @@ type TlsFileDatabaseInterface struct {
 
 func TlsFileDatabaseInterfaceNewFromNative(native unsafe.Pointer) *TlsFileDatabaseInterface {
 	return &TlsFileDatabaseInterface{native: native}
+}
+
+/*
+CastToTlsFileDatabaseInterface down casts any arbitrary Object to TlsFileDatabaseInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsFileDatabaseInterface.
+*/
+func (recv *TlsFileDatabaseInterface) CastToTlsFileDatabaseInterface(object *gobject.Object) *TlsFileDatabaseInterface {
+	return TlsFileDatabaseInterfaceNewFromNative(object.Native())
+}
+
+func (recv *TlsFileDatabaseInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -12666,6 +15189,19 @@ type TlsInteractionClass struct {
 
 func TlsInteractionClassNewFromNative(native unsafe.Pointer) *TlsInteractionClass {
 	return &TlsInteractionClass{native: native}
+}
+
+/*
+CastToTlsInteractionClass down casts any arbitrary Object to TlsInteractionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsInteractionClass.
+*/
+func (recv *TlsInteractionClass) CastToTlsInteractionClass(object *gobject.Object) *TlsInteractionClass {
+	return TlsInteractionClassNewFromNative(object.Native())
+}
+
+func (recv *TlsInteractionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'ask_password' : for field getter : missing Type
@@ -12726,6 +15262,19 @@ func TlsInteractionPrivateNewFromNative(native unsafe.Pointer) *TlsInteractionPr
 	return &TlsInteractionPrivate{native: native}
 }
 
+/*
+CastToTlsInteractionPrivate down casts any arbitrary Object to TlsInteractionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsInteractionPrivate.
+*/
+func (recv *TlsInteractionPrivate) CastToTlsInteractionPrivate(object *gobject.Object) *TlsInteractionPrivate {
+	return TlsInteractionPrivateNewFromNative(object.Native())
+}
+
+func (recv *TlsInteractionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsInteractionPrivateStruct creates an uninitialised TlsInteractionPrivate.
 func TlsInteractionPrivateStruct() *TlsInteractionPrivate {
 	err := tlsInteractionPrivateStruct_Set()
@@ -12758,6 +15307,19 @@ type TlsPasswordClass struct {
 
 func TlsPasswordClassNewFromNative(native unsafe.Pointer) *TlsPasswordClass {
 	return &TlsPasswordClass{native: native}
+}
+
+/*
+CastToTlsPasswordClass down casts any arbitrary Object to TlsPasswordClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsPasswordClass.
+*/
+func (recv *TlsPasswordClass) CastToTlsPasswordClass(object *gobject.Object) *TlsPasswordClass {
+	return TlsPasswordClassNewFromNative(object.Native())
+}
+
+func (recv *TlsPasswordClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -12810,6 +15372,19 @@ func TlsPasswordPrivateNewFromNative(native unsafe.Pointer) *TlsPasswordPrivate 
 	return &TlsPasswordPrivate{native: native}
 }
 
+/*
+CastToTlsPasswordPrivate down casts any arbitrary Object to TlsPasswordPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsPasswordPrivate.
+*/
+func (recv *TlsPasswordPrivate) CastToTlsPasswordPrivate(object *gobject.Object) *TlsPasswordPrivate {
+	return TlsPasswordPrivateNewFromNative(object.Native())
+}
+
+func (recv *TlsPasswordPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsPasswordPrivateStruct creates an uninitialised TlsPasswordPrivate.
 func TlsPasswordPrivateStruct() *TlsPasswordPrivate {
 	err := tlsPasswordPrivateStruct_Set()
@@ -12842,6 +15417,19 @@ type TlsServerConnectionInterface struct {
 
 func TlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsServerConnectionInterface {
 	return &TlsServerConnectionInterface{native: native}
+}
+
+/*
+CastToTlsServerConnectionInterface down casts any arbitrary Object to TlsServerConnectionInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TlsServerConnectionInterface.
+*/
+func (recv *TlsServerConnectionInterface) CastToTlsServerConnectionInterface(object *gobject.Object) *TlsServerConnectionInterface {
+	return TlsServerConnectionInterfaceNewFromNative(object.Native())
+}
+
+func (recv *TlsServerConnectionInterface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -12880,6 +15468,19 @@ type UnixConnectionClass struct {
 
 func UnixConnectionClassNewFromNative(native unsafe.Pointer) *UnixConnectionClass {
 	return &UnixConnectionClass{native: native}
+}
+
+/*
+CastToUnixConnectionClass down casts any arbitrary Object to UnixConnectionClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixConnectionClass.
+*/
+func (recv *UnixConnectionClass) CastToUnixConnectionClass(object *gobject.Object) *UnixConnectionClass {
+	return UnixConnectionClassNewFromNative(object.Native())
+}
+
+func (recv *UnixConnectionClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -12930,6 +15531,19 @@ func UnixConnectionPrivateNewFromNative(native unsafe.Pointer) *UnixConnectionPr
 	return &UnixConnectionPrivate{native: native}
 }
 
+/*
+CastToUnixConnectionPrivate down casts any arbitrary Object to UnixConnectionPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixConnectionPrivate.
+*/
+func (recv *UnixConnectionPrivate) CastToUnixConnectionPrivate(object *gobject.Object) *UnixConnectionPrivate {
+	return UnixConnectionPrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixConnectionPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixConnectionPrivateStruct creates an uninitialised UnixConnectionPrivate.
 func UnixConnectionPrivateStruct() *UnixConnectionPrivate {
 	err := unixConnectionPrivateStruct_Set()
@@ -12962,6 +15576,19 @@ type UnixCredentialsMessageClass struct {
 
 func UnixCredentialsMessageClassNewFromNative(native unsafe.Pointer) *UnixCredentialsMessageClass {
 	return &UnixCredentialsMessageClass{native: native}
+}
+
+/*
+CastToUnixCredentialsMessageClass down casts any arbitrary Object to UnixCredentialsMessageClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixCredentialsMessageClass.
+*/
+func (recv *UnixCredentialsMessageClass) CastToUnixCredentialsMessageClass(object *gobject.Object) *UnixCredentialsMessageClass {
+	return UnixCredentialsMessageClassNewFromNative(object.Native())
+}
+
+func (recv *UnixCredentialsMessageClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -13020,6 +15647,19 @@ func UnixCredentialsMessagePrivateNewFromNative(native unsafe.Pointer) *UnixCred
 	return &UnixCredentialsMessagePrivate{native: native}
 }
 
+/*
+CastToUnixCredentialsMessagePrivate down casts any arbitrary Object to UnixCredentialsMessagePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixCredentialsMessagePrivate.
+*/
+func (recv *UnixCredentialsMessagePrivate) CastToUnixCredentialsMessagePrivate(object *gobject.Object) *UnixCredentialsMessagePrivate {
+	return UnixCredentialsMessagePrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixCredentialsMessagePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixCredentialsMessagePrivateStruct creates an uninitialised UnixCredentialsMessagePrivate.
 func UnixCredentialsMessagePrivateStruct() *UnixCredentialsMessagePrivate {
 	err := unixCredentialsMessagePrivateStruct_Set()
@@ -13052,6 +15692,19 @@ type UnixFDListClass struct {
 
 func UnixFDListClassNewFromNative(native unsafe.Pointer) *UnixFDListClass {
 	return &UnixFDListClass{native: native}
+}
+
+/*
+CastToUnixFDListClass down casts any arbitrary Object to UnixFDListClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixFDListClass.
+*/
+func (recv *UnixFDListClass) CastToUnixFDListClass(object *gobject.Object) *UnixFDListClass {
+	return UnixFDListClassNewFromNative(object.Native())
+}
+
+func (recv *UnixFDListClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -13112,6 +15765,19 @@ func UnixFDListPrivateNewFromNative(native unsafe.Pointer) *UnixFDListPrivate {
 	return &UnixFDListPrivate{native: native}
 }
 
+/*
+CastToUnixFDListPrivate down casts any arbitrary Object to UnixFDListPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixFDListPrivate.
+*/
+func (recv *UnixFDListPrivate) CastToUnixFDListPrivate(object *gobject.Object) *UnixFDListPrivate {
+	return UnixFDListPrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixFDListPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixFDListPrivateStruct creates an uninitialised UnixFDListPrivate.
 func UnixFDListPrivateStruct() *UnixFDListPrivate {
 	err := unixFDListPrivateStruct_Set()
@@ -13144,6 +15810,19 @@ type UnixFDMessageClass struct {
 
 func UnixFDMessageClassNewFromNative(native unsafe.Pointer) *UnixFDMessageClass {
 	return &UnixFDMessageClass{native: native}
+}
+
+/*
+CastToUnixFDMessageClass down casts any arbitrary Object to UnixFDMessageClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixFDMessageClass.
+*/
+func (recv *UnixFDMessageClass) CastToUnixFDMessageClass(object *gobject.Object) *UnixFDMessageClass {
+	return UnixFDMessageClassNewFromNative(object.Native())
+}
+
+func (recv *UnixFDMessageClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -13202,6 +15881,19 @@ func UnixFDMessagePrivateNewFromNative(native unsafe.Pointer) *UnixFDMessagePriv
 	return &UnixFDMessagePrivate{native: native}
 }
 
+/*
+CastToUnixFDMessagePrivate down casts any arbitrary Object to UnixFDMessagePrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixFDMessagePrivate.
+*/
+func (recv *UnixFDMessagePrivate) CastToUnixFDMessagePrivate(object *gobject.Object) *UnixFDMessagePrivate {
+	return UnixFDMessagePrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixFDMessagePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixFDMessagePrivateStruct creates an uninitialised UnixFDMessagePrivate.
 func UnixFDMessagePrivateStruct() *UnixFDMessagePrivate {
 	err := unixFDMessagePrivateStruct_Set()
@@ -13234,6 +15926,19 @@ type UnixInputStreamClass struct {
 
 func UnixInputStreamClassNewFromNative(native unsafe.Pointer) *UnixInputStreamClass {
 	return &UnixInputStreamClass{native: native}
+}
+
+/*
+CastToUnixInputStreamClass down casts any arbitrary Object to UnixInputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixInputStreamClass.
+*/
+func (recv *UnixInputStreamClass) CastToUnixInputStreamClass(object *gobject.Object) *UnixInputStreamClass {
+	return UnixInputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *UnixInputStreamClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -13304,6 +16009,19 @@ func UnixInputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixInputStream
 	return &UnixInputStreamPrivate{native: native}
 }
 
+/*
+CastToUnixInputStreamPrivate down casts any arbitrary Object to UnixInputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixInputStreamPrivate.
+*/
+func (recv *UnixInputStreamPrivate) CastToUnixInputStreamPrivate(object *gobject.Object) *UnixInputStreamPrivate {
+	return UnixInputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixInputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixInputStreamPrivateStruct creates an uninitialised UnixInputStreamPrivate.
 func UnixInputStreamPrivateStruct() *UnixInputStreamPrivate {
 	err := unixInputStreamPrivateStruct_Set()
@@ -13336,6 +16054,19 @@ type UnixMountEntry struct {
 
 func UnixMountEntryNewFromNative(native unsafe.Pointer) *UnixMountEntry {
 	return &UnixMountEntry{native: native}
+}
+
+/*
+CastToUnixMountEntry down casts any arbitrary Object to UnixMountEntry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixMountEntry.
+*/
+func (recv *UnixMountEntry) CastToUnixMountEntry(object *gobject.Object) *UnixMountEntry {
+	return UnixMountEntryNewFromNative(object.Native())
+}
+
+func (recv *UnixMountEntry) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixMountEntryStruct creates an uninitialised UnixMountEntry.
@@ -13372,6 +16103,19 @@ func UnixMountMonitorClassNewFromNative(native unsafe.Pointer) *UnixMountMonitor
 	return &UnixMountMonitorClass{native: native}
 }
 
+/*
+CastToUnixMountMonitorClass down casts any arbitrary Object to UnixMountMonitorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixMountMonitorClass.
+*/
+func (recv *UnixMountMonitorClass) CastToUnixMountMonitorClass(object *gobject.Object) *UnixMountMonitorClass {
+	return UnixMountMonitorClassNewFromNative(object.Native())
+}
+
+func (recv *UnixMountMonitorClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixMountMonitorClassStruct creates an uninitialised UnixMountMonitorClass.
 func UnixMountMonitorClassStruct() *UnixMountMonitorClass {
 	err := unixMountMonitorClassStruct_Set()
@@ -13404,6 +16148,19 @@ type UnixMountPoint struct {
 
 func UnixMountPointNewFromNative(native unsafe.Pointer) *UnixMountPoint {
 	return &UnixMountPoint{native: native}
+}
+
+/*
+CastToUnixMountPoint down casts any arbitrary Object to UnixMountPoint.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixMountPoint.
+*/
+func (recv *UnixMountPoint) CastToUnixMountPoint(object *gobject.Object) *UnixMountPoint {
+	return UnixMountPointNewFromNative(object.Native())
+}
+
+func (recv *UnixMountPoint) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var unixMountPointCompareFunction *gi.Function
@@ -13825,6 +16582,19 @@ func UnixOutputStreamClassNewFromNative(native unsafe.Pointer) *UnixOutputStream
 	return &UnixOutputStreamClass{native: native}
 }
 
+/*
+CastToUnixOutputStreamClass down casts any arbitrary Object to UnixOutputStreamClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixOutputStreamClass.
+*/
+func (recv *UnixOutputStreamClass) CastToUnixOutputStreamClass(object *gobject.Object) *UnixOutputStreamClass {
+	return UnixOutputStreamClassNewFromNative(object.Native())
+}
+
+func (recv *UnixOutputStreamClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *UnixOutputStreamClass) FieldParentClass() *OutputStreamClass {
 	argValue := gi.StructFieldGet(unixOutputStreamClassStruct, recv.native, "parent_class")
@@ -13893,6 +16663,19 @@ func UnixOutputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixOutputStre
 	return &UnixOutputStreamPrivate{native: native}
 }
 
+/*
+CastToUnixOutputStreamPrivate down casts any arbitrary Object to UnixOutputStreamPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixOutputStreamPrivate.
+*/
+func (recv *UnixOutputStreamPrivate) CastToUnixOutputStreamPrivate(object *gobject.Object) *UnixOutputStreamPrivate {
+	return UnixOutputStreamPrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixOutputStreamPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixOutputStreamPrivateStruct creates an uninitialised UnixOutputStreamPrivate.
 func UnixOutputStreamPrivateStruct() *UnixOutputStreamPrivate {
 	err := unixOutputStreamPrivateStruct_Set()
@@ -13925,6 +16708,19 @@ type UnixSocketAddressClass struct {
 
 func UnixSocketAddressClassNewFromNative(native unsafe.Pointer) *UnixSocketAddressClass {
 	return &UnixSocketAddressClass{native: native}
+}
+
+/*
+CastToUnixSocketAddressClass down casts any arbitrary Object to UnixSocketAddressClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixSocketAddressClass.
+*/
+func (recv *UnixSocketAddressClass) CastToUnixSocketAddressClass(object *gobject.Object) *UnixSocketAddressClass {
+	return UnixSocketAddressClassNewFromNative(object.Native())
+}
+
+func (recv *UnixSocketAddressClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentClass returns the C field 'parent_class'.
@@ -13975,6 +16771,19 @@ func UnixSocketAddressPrivateNewFromNative(native unsafe.Pointer) *UnixSocketAdd
 	return &UnixSocketAddressPrivate{native: native}
 }
 
+/*
+CastToUnixSocketAddressPrivate down casts any arbitrary Object to UnixSocketAddressPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UnixSocketAddressPrivate.
+*/
+func (recv *UnixSocketAddressPrivate) CastToUnixSocketAddressPrivate(object *gobject.Object) *UnixSocketAddressPrivate {
+	return UnixSocketAddressPrivateNewFromNative(object.Native())
+}
+
+func (recv *UnixSocketAddressPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixSocketAddressPrivateStruct creates an uninitialised UnixSocketAddressPrivate.
 func UnixSocketAddressPrivateStruct() *UnixSocketAddressPrivate {
 	err := unixSocketAddressPrivateStruct_Set()
@@ -14007,6 +16816,19 @@ type VfsClass struct {
 
 func VfsClassNewFromNative(native unsafe.Pointer) *VfsClass {
 	return &VfsClass{native: native}
+}
+
+/*
+CastToVfsClass down casts any arbitrary Object to VfsClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VfsClass.
+*/
+func (recv *VfsClass) CastToVfsClass(object *gobject.Object) *VfsClass {
+	return VfsClassNewFromNative(object.Native())
+}
+
+func (recv *VfsClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -14113,6 +16935,19 @@ type VolumeIface struct {
 
 func VolumeIfaceNewFromNative(native unsafe.Pointer) *VolumeIface {
 	return &VolumeIface{native: native}
+}
+
+/*
+CastToVolumeIface down casts any arbitrary Object to VolumeIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VolumeIface.
+*/
+func (recv *VolumeIface) CastToVolumeIface(object *gobject.Object) *VolumeIface {
+	return VolumeIfaceNewFromNative(object.Native())
+}
+
+func (recv *VolumeIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -14235,6 +17070,19 @@ type VolumeMonitorClass struct {
 
 func VolumeMonitorClassNewFromNative(native unsafe.Pointer) *VolumeMonitorClass {
 	return &VolumeMonitorClass{native: native}
+}
+
+/*
+CastToVolumeMonitorClass down casts any arbitrary Object to VolumeMonitorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a VolumeMonitorClass.
+*/
+func (recv *VolumeMonitorClass) CastToVolumeMonitorClass(object *gobject.Object) *VolumeMonitorClass {
+	return VolumeMonitorClassNewFromNative(object.Native())
+}
+
+func (recv *VolumeMonitorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -14375,6 +17223,19 @@ func ZlibCompressorClassNewFromNative(native unsafe.Pointer) *ZlibCompressorClas
 	return &ZlibCompressorClass{native: native}
 }
 
+/*
+CastToZlibCompressorClass down casts any arbitrary Object to ZlibCompressorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ZlibCompressorClass.
+*/
+func (recv *ZlibCompressorClass) CastToZlibCompressorClass(object *gobject.Object) *ZlibCompressorClass {
+	return ZlibCompressorClassNewFromNative(object.Native())
+}
+
+func (recv *ZlibCompressorClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -14411,6 +17272,19 @@ type ZlibDecompressorClass struct {
 
 func ZlibDecompressorClassNewFromNative(native unsafe.Pointer) *ZlibDecompressorClass {
 	return &ZlibDecompressorClass{native: native}
+}
+
+/*
+CastToZlibDecompressorClass down casts any arbitrary Object to ZlibDecompressorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ZlibDecompressorClass.
+*/
+func (recv *ZlibDecompressorClass) CastToZlibDecompressorClass(object *gobject.Object) *ZlibDecompressorClass {
+	return ZlibDecompressorClassNewFromNative(object.Native())
+}
+
+func (recv *ZlibDecompressorClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'

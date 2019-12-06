@@ -33,6 +33,19 @@ func (recv *Pixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPixbuf down casts any arbitrary Object to Pixbuf.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Pixbuf.
+*/
+func (recv *Pixbuf) CastToPixbuf(object *gobject.Object) *Pixbuf {
+	return PixbufNewFromNative(object.Native())
+}
+
+func (recv *Pixbuf) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var pixbufNewFunction *gi.Function
 var pixbufNewFunction_Once sync.Once
 
@@ -1332,6 +1345,19 @@ func (recv *PixbufAnimation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPixbufAnimation down casts any arbitrary Object to PixbufAnimation.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufAnimation.
+*/
+func (recv *PixbufAnimation) CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
+	return PixbufAnimationNewFromNative(object.Native())
+}
+
+func (recv *PixbufAnimation) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var pixbufAnimationNewFromFileFunction *gi.Function
 var pixbufAnimationNewFromFileFunction_Once sync.Once
 
@@ -1614,6 +1640,19 @@ func (recv *PixbufAnimationIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPixbufAnimationIter down casts any arbitrary Object to PixbufAnimationIter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufAnimationIter.
+*/
+func (recv *PixbufAnimationIter) CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
+	return PixbufAnimationIterNewFromNative(object.Native())
+}
+
+func (recv *PixbufAnimationIter) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gdk_pixbuf_animation_iter_advance' : parameter 'current_time' of type 'GLib.TimeVal' not supported
 
 var pixbufAnimationIterGetDelayTimeFunction *gi.Function
@@ -1734,6 +1773,19 @@ func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
 // Object upcasts to *Object
 func (recv *PixbufLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPixbufLoader down casts any arbitrary Object to PixbufLoader.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufLoader.
+*/
+func (recv *PixbufLoader) CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
+	return PixbufLoaderNewFromNative(object.Native())
+}
+
+func (recv *PixbufLoader) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -2025,6 +2077,19 @@ func (recv *PixbufSimpleAnim) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPixbufSimpleAnim down casts any arbitrary Object to PixbufSimpleAnim.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufSimpleAnim.
+*/
+func (recv *PixbufSimpleAnim) CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
+	return PixbufSimpleAnimNewFromNative(object.Native())
+}
+
+func (recv *PixbufSimpleAnim) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var pixbufSimpleAnimNewFunction *gi.Function
 var pixbufSimpleAnimNewFunction_Once sync.Once
 
@@ -2176,4 +2241,17 @@ func (recv *PixbufSimpleAnimIter) PixbufAnimationIter() *PixbufAnimationIter {
 // Object upcasts to *Object
 func (recv *PixbufSimpleAnimIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPixbufSimpleAnimIter down casts any arbitrary Object to PixbufSimpleAnimIter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PixbufSimpleAnimIter.
+*/
+func (recv *PixbufSimpleAnimIter) CastToPixbufSimpleAnimIter(object *gobject.Object) *PixbufSimpleAnimIter {
+	return PixbufSimpleAnimIterNewFromNative(object.Native())
+}
+
+func (recv *PixbufSimpleAnimIter) Native() unsafe.Pointer {
+	return recv.native
 }

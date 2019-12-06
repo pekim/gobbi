@@ -32,6 +32,9 @@ func BindingNewFromNative(native unsafe.Pointer) *Binding {
 func (recv *Binding) Object() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+func (recv *Binding) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // UNSUPPORTED : C value 'g_binding_get_flags' : return type 'BindingFlags' not supported
 
@@ -214,6 +217,9 @@ func InitiallyUnownedNewFromNative(native unsafe.Pointer) *InitiallyUnowned {
 func (recv *InitiallyUnowned) Object() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+func (recv *InitiallyUnowned) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldGTypeInstance returns the C field 'g_type_instance'.
 func (recv *InitiallyUnowned) FieldGTypeInstance() *TypeInstance {
@@ -246,6 +252,10 @@ type Object struct {
 
 func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	return &Object{native: native}
+}
+
+func (recv *Object) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGTypeInstance returns the C field 'g_type_instance'.
@@ -730,6 +740,10 @@ func ParamSpecNewFromNative(native unsafe.Pointer) *ParamSpec {
 	return &ParamSpec{native: native}
 }
 
+func (recv *ParamSpec) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldGTypeInstance returns the C field 'g_type_instance'.
 func (recv *ParamSpec) FieldGTypeInstance() *TypeInstance {
 	argValue := gi.ObjectFieldGet(paramSpecObject, recv.native, "g_type_instance")
@@ -1113,6 +1127,9 @@ func ParamSpecBooleanNewFromNative(native unsafe.Pointer) *ParamSpecBoolean {
 func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecBoolean) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecBoolean) FieldParentInstance() *ParamSpec {
@@ -1165,6 +1182,9 @@ func ParamSpecBoxedNewFromNative(native unsafe.Pointer) *ParamSpecBoxed {
 func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecBoxed) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecBoxed) FieldParentInstance() *ParamSpec {
@@ -1202,6 +1222,9 @@ func ParamSpecCharNewFromNative(native unsafe.Pointer) *ParamSpecChar {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecChar) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1282,6 +1305,9 @@ func ParamSpecDoubleNewFromNative(native unsafe.Pointer) *ParamSpecDouble {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecDouble) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1377,6 +1403,9 @@ func ParamSpecEnumNewFromNative(native unsafe.Pointer) *ParamSpecEnum {
 func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecEnum) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecEnum) FieldParentInstance() *ParamSpec {
@@ -1443,6 +1472,9 @@ func ParamSpecFlagsNewFromNative(native unsafe.Pointer) *ParamSpecFlags {
 func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecFlags) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecFlags) FieldParentInstance() *ParamSpec {
@@ -1508,6 +1540,9 @@ func ParamSpecFloatNewFromNative(native unsafe.Pointer) *ParamSpecFloat {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecFloat) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1603,6 +1638,9 @@ func ParamSpecGTypeNewFromNative(native unsafe.Pointer) *ParamSpecGType {
 func (recv *ParamSpecGType) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecGType) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecGType) FieldParentInstance() *ParamSpec {
@@ -1644,6 +1682,9 @@ func ParamSpecIntNewFromNative(native unsafe.Pointer) *ParamSpecInt {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecInt) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1725,6 +1766,9 @@ func ParamSpecInt64NewFromNative(native unsafe.Pointer) *ParamSpecInt64 {
 func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecInt64) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecInt64) FieldParentInstance() *ParamSpec {
@@ -1804,6 +1848,9 @@ func ParamSpecLongNewFromNative(native unsafe.Pointer) *ParamSpecLong {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecLong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecLong) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1885,6 +1932,9 @@ func ParamSpecObjectNewFromNative(native unsafe.Pointer) *ParamSpecObject {
 func (recv *ParamSpecObject) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecObject) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecObject) FieldParentInstance() *ParamSpec {
@@ -1923,6 +1973,9 @@ func ParamSpecOverrideNewFromNative(native unsafe.Pointer) *ParamSpecOverride {
 func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecOverride) Native() unsafe.Pointer {
+	return recv.native
+}
 
 var paramSpecParamObject *gi.Object
 var paramSpecParamObject_Once sync.Once
@@ -1946,6 +1999,9 @@ func ParamSpecParamNewFromNative(native unsafe.Pointer) *ParamSpecParam {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecParam) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecParam) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -1985,6 +2041,9 @@ func ParamSpecPointerNewFromNative(native unsafe.Pointer) *ParamSpecPointer {
 func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecPointer) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecPointer) FieldParentInstance() *ParamSpec {
@@ -2022,6 +2081,9 @@ func ParamSpecStringNewFromNative(native unsafe.Pointer) *ParamSpecString {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecString) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecString) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -2145,6 +2207,9 @@ func ParamSpecUCharNewFromNative(native unsafe.Pointer) *ParamSpecUChar {
 func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecUChar) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUChar) FieldParentInstance() *ParamSpec {
@@ -2224,6 +2289,9 @@ func ParamSpecUIntNewFromNative(native unsafe.Pointer) *ParamSpecUInt {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecUInt) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -2305,6 +2373,9 @@ func ParamSpecUInt64NewFromNative(native unsafe.Pointer) *ParamSpecUInt64 {
 func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecUInt64) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUInt64) FieldParentInstance() *ParamSpec {
@@ -2384,6 +2455,9 @@ func ParamSpecULongNewFromNative(native unsafe.Pointer) *ParamSpecULong {
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecULong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecULong) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -2465,6 +2539,9 @@ func ParamSpecUnicharNewFromNative(native unsafe.Pointer) *ParamSpecUnichar {
 func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecUnichar) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecUnichar) FieldParentInstance() *ParamSpec {
@@ -2506,6 +2583,9 @@ func ParamSpecValueArrayNewFromNative(native unsafe.Pointer) *ParamSpecValueArra
 // ParamSpec upcasts to *ParamSpec
 func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
+}
+func (recv *ParamSpecValueArray) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -2573,6 +2653,9 @@ func ParamSpecVariantNewFromNative(native unsafe.Pointer) *ParamSpecVariant {
 func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.native)
 }
+func (recv *ParamSpecVariant) Native() unsafe.Pointer {
+	return recv.native
+}
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ParamSpecVariant) FieldParentInstance() *ParamSpec {
@@ -2618,6 +2701,9 @@ func TypeModuleNewFromNative(native unsafe.Pointer) *TypeModule {
 // Object upcasts to *Object
 func (recv *TypeModule) Object() *Object {
 	return ObjectNewFromNative(recv.native)
+}
+func (recv *TypeModule) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.

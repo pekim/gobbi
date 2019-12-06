@@ -33,6 +33,19 @@ func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToContext down casts any arbitrary Object to Context.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Context.
+*/
+func (recv *Context) CastToContext(object *gobject.Object) *Context {
+	return ContextNewFromNative(object.Native())
+}
+
+func (recv *Context) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var contextNewFunction *gi.Function
 var contextNewFunction_Once sync.Once
 
@@ -709,6 +722,19 @@ func (recv *Engine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEngine down casts any arbitrary Object to Engine.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Engine.
+*/
+func (recv *Engine) CastToEngine(object *gobject.Object) *Engine {
+	return EngineNewFromNative(object.Native())
+}
+
+func (recv *Engine) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var engineLangObject *gi.Object
 var engineLangObject_Once sync.Once
 
@@ -738,6 +764,19 @@ func (recv *EngineLang) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEngineLang down casts any arbitrary Object to EngineLang.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineLang.
+*/
+func (recv *EngineLang) CastToEngineLang(object *gobject.Object) *EngineLang {
+	return EngineLangNewFromNative(object.Native())
+}
+
+func (recv *EngineLang) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var engineShapeObject *gi.Object
 var engineShapeObject_Once sync.Once
 
@@ -765,6 +804,19 @@ func (recv *EngineShape) Engine() *Engine {
 // Object upcasts to *Object
 func (recv *EngineShape) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToEngineShape down casts any arbitrary Object to EngineShape.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineShape.
+*/
+func (recv *EngineShape) CastToEngineShape(object *gobject.Object) *EngineShape {
+	return EngineShapeNewFromNative(object.Native())
+}
+
+func (recv *EngineShape) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParentInstance returns the C field 'parent_instance'.
@@ -803,6 +855,19 @@ func FontNewFromNative(native unsafe.Pointer) *Font {
 // Object upcasts to *Object
 func (recv *Font) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFont down casts any arbitrary Object to Font.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Font.
+*/
+func (recv *Font) CastToFont(object *gobject.Object) *Font {
+	return FontNewFromNative(object.Native())
+}
+
+func (recv *Font) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1063,6 +1128,19 @@ func (recv *FontFace) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontFace down casts any arbitrary Object to FontFace.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontFace.
+*/
+func (recv *FontFace) CastToFontFace(object *gobject.Object) *FontFace {
+	return FontFaceNewFromNative(object.Native())
+}
+
+func (recv *FontFace) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -1189,6 +1267,19 @@ func (recv *FontFamily) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontFamily down casts any arbitrary Object to FontFamily.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontFamily.
+*/
+func (recv *FontFamily) CastToFontFamily(object *gobject.Object) *FontFamily {
+	return FontFamilyNewFromNative(object.Native())
+}
+
+func (recv *FontFamily) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -1281,6 +1372,19 @@ func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 // Object upcasts to *Object
 func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFontMap down casts any arbitrary Object to FontMap.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontMap.
+*/
+func (recv *FontMap) CastToFontMap(object *gobject.Object) *FontMap {
+	return FontMapNewFromNative(object.Native())
+}
+
+func (recv *FontMap) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -1506,6 +1610,19 @@ func (recv *Fontset) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFontset down casts any arbitrary Object to Fontset.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Fontset.
+*/
+func (recv *Fontset) CastToFontset(object *gobject.Object) *Fontset {
+	return FontsetNewFromNative(object.Native())
+}
+
+func (recv *Fontset) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -1604,6 +1721,19 @@ func (recv *FontsetSimple) Fontset() *Fontset {
 // Object upcasts to *Object
 func (recv *FontsetSimple) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFontsetSimple down casts any arbitrary Object to FontsetSimple.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontsetSimple.
+*/
+func (recv *FontsetSimple) CastToFontsetSimple(object *gobject.Object) *FontsetSimple {
+	return FontsetSimpleNewFromNative(object.Native())
+}
+
+func (recv *FontsetSimple) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fontsetSimpleNewFunction *gi.Function
@@ -1721,6 +1851,19 @@ func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 // Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLayout down casts any arbitrary Object to Layout.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Layout.
+*/
+func (recv *Layout) CastToLayout(object *gobject.Object) *Layout {
+	return LayoutNewFromNative(object.Native())
+}
+
+func (recv *Layout) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var layoutNewFunction *gi.Function
@@ -3424,6 +3567,19 @@ func RendererNewFromNative(native unsafe.Pointer) *Renderer {
 // Object upcasts to *Object
 func (recv *Renderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToRenderer down casts any arbitrary Object to Renderer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Renderer.
+*/
+func (recv *Renderer) CastToRenderer(object *gobject.Object) *Renderer {
+	return RendererNewFromNative(object.Native())
+}
+
+func (recv *Renderer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldMatrix returns the C field 'matrix'.

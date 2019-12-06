@@ -4,6 +4,7 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type Atom struct {
 
 func AtomNewFromNative(native unsafe.Pointer) *Atom {
 	return &Atom{native: native}
+}
+
+/*
+CastToAtom down casts any arbitrary Object to Atom.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Atom.
+*/
+func (recv *Atom) CastToAtom(object *gobject.Object) *Atom {
+	return AtomNewFromNative(object.Native())
+}
+
+func (recv *Atom) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var atomNameFunction *gi.Function
@@ -92,6 +106,19 @@ type Color struct {
 
 func ColorNewFromNative(native unsafe.Pointer) *Color {
 	return &Color{native: native}
+}
+
+/*
+CastToColor down casts any arbitrary Object to Color.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Color.
+*/
+func (recv *Color) CastToColor(object *gobject.Object) *Color {
+	return ColorNewFromNative(object.Native())
+}
+
+func (recv *Color) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldPixel returns the C field 'pixel'.
@@ -341,6 +368,19 @@ func DevicePadInterfaceNewFromNative(native unsafe.Pointer) *DevicePadInterface 
 	return &DevicePadInterface{native: native}
 }
 
+/*
+CastToDevicePadInterface down casts any arbitrary Object to DevicePadInterface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DevicePadInterface.
+*/
+func (recv *DevicePadInterface) CastToDevicePadInterface(object *gobject.Object) *DevicePadInterface {
+	return DevicePadInterfaceNewFromNative(object.Native())
+}
+
+func (recv *DevicePadInterface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DevicePadInterfaceStruct creates an uninitialised DevicePadInterface.
 func DevicePadInterfaceStruct() *DevicePadInterface {
 	err := devicePadInterfaceStruct_Set()
@@ -375,6 +415,19 @@ func DrawingContextClassNewFromNative(native unsafe.Pointer) *DrawingContextClas
 	return &DrawingContextClass{native: native}
 }
 
+/*
+CastToDrawingContextClass down casts any arbitrary Object to DrawingContextClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DrawingContextClass.
+*/
+func (recv *DrawingContextClass) CastToDrawingContextClass(object *gobject.Object) *DrawingContextClass {
+	return DrawingContextClassNewFromNative(object.Native())
+}
+
+func (recv *DrawingContextClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DrawingContextClassStruct creates an uninitialised DrawingContextClass.
 func DrawingContextClassStruct() *DrawingContextClass {
 	err := drawingContextClassStruct_Set()
@@ -407,6 +460,19 @@ type EventAny struct {
 
 func EventAnyNewFromNative(native unsafe.Pointer) *EventAny {
 	return &EventAny{native: native}
+}
+
+/*
+CastToEventAny down casts any arbitrary Object to EventAny.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventAny.
+*/
+func (recv *EventAny) CastToEventAny(object *gobject.Object) *EventAny {
+	return EventAnyNewFromNative(object.Native())
+}
+
+func (recv *EventAny) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -483,6 +549,19 @@ type EventButton struct {
 
 func EventButtonNewFromNative(native unsafe.Pointer) *EventButton {
 	return &EventButton{native: native}
+}
+
+/*
+CastToEventButton down casts any arbitrary Object to EventButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventButton.
+*/
+func (recv *EventButton) CastToEventButton(object *gobject.Object) *EventButton {
+	return EventButtonNewFromNative(object.Native())
+}
+
+func (recv *EventButton) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -677,6 +756,19 @@ func EventConfigureNewFromNative(native unsafe.Pointer) *EventConfigure {
 	return &EventConfigure{native: native}
 }
 
+/*
+CastToEventConfigure down casts any arbitrary Object to EventConfigure.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventConfigure.
+*/
+func (recv *EventConfigure) CastToEventConfigure(object *gobject.Object) *EventConfigure {
+	return EventConfigureNewFromNative(object.Native())
+}
+
+func (recv *EventConfigure) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventConfigure) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventConfigureStruct, recv.native, "type")
@@ -807,6 +899,19 @@ type EventCrossing struct {
 
 func EventCrossingNewFromNative(native unsafe.Pointer) *EventCrossing {
 	return &EventCrossing{native: native}
+}
+
+/*
+CastToEventCrossing down casts any arbitrary Object to EventCrossing.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventCrossing.
+*/
+func (recv *EventCrossing) CastToEventCrossing(object *gobject.Object) *EventCrossing {
+	return EventCrossingNewFromNative(object.Native())
+}
+
+func (recv *EventCrossing) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -1015,6 +1120,19 @@ func EventDNDNewFromNative(native unsafe.Pointer) *EventDND {
 	return &EventDND{native: native}
 }
 
+/*
+CastToEventDND down casts any arbitrary Object to EventDND.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventDND.
+*/
+func (recv *EventDND) CastToEventDND(object *gobject.Object) *EventDND {
+	return EventDNDNewFromNative(object.Native())
+}
+
+func (recv *EventDND) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventDND) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventDNDStruct, recv.native, "type")
@@ -1147,6 +1265,19 @@ func EventExposeNewFromNative(native unsafe.Pointer) *EventExpose {
 	return &EventExpose{native: native}
 }
 
+/*
+CastToEventExpose down casts any arbitrary Object to EventExpose.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventExpose.
+*/
+func (recv *EventExpose) CastToEventExpose(object *gobject.Object) *EventExpose {
+	return EventExposeNewFromNative(object.Native())
+}
+
+func (recv *EventExpose) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventExpose) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventExposeStruct, recv.native, "type")
@@ -1255,6 +1386,19 @@ func EventFocusNewFromNative(native unsafe.Pointer) *EventFocus {
 	return &EventFocus{native: native}
 }
 
+/*
+CastToEventFocus down casts any arbitrary Object to EventFocus.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventFocus.
+*/
+func (recv *EventFocus) CastToEventFocus(object *gobject.Object) *EventFocus {
+	return EventFocusNewFromNative(object.Native())
+}
+
+func (recv *EventFocus) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventFocus) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventFocusStruct, recv.native, "type")
@@ -1343,6 +1487,19 @@ type EventGrabBroken struct {
 
 func EventGrabBrokenNewFromNative(native unsafe.Pointer) *EventGrabBroken {
 	return &EventGrabBroken{native: native}
+}
+
+/*
+CastToEventGrabBroken down casts any arbitrary Object to EventGrabBroken.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventGrabBroken.
+*/
+func (recv *EventGrabBroken) CastToEventGrabBroken(object *gobject.Object) *EventGrabBroken {
+	return EventGrabBrokenNewFromNative(object.Native())
+}
+
+func (recv *EventGrabBroken) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -1461,6 +1618,19 @@ type EventKey struct {
 
 func EventKeyNewFromNative(native unsafe.Pointer) *EventKey {
 	return &EventKey{native: native}
+}
+
+/*
+CastToEventKey down casts any arbitrary Object to EventKey.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventKey.
+*/
+func (recv *EventKey) CastToEventKey(object *gobject.Object) *EventKey {
+	return EventKeyNewFromNative(object.Native())
+}
+
+func (recv *EventKey) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -1639,6 +1809,19 @@ type EventMotion struct {
 
 func EventMotionNewFromNative(native unsafe.Pointer) *EventMotion {
 	return &EventMotion{native: native}
+}
+
+/*
+CastToEventMotion down casts any arbitrary Object to EventMotion.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventMotion.
+*/
+func (recv *EventMotion) CastToEventMotion(object *gobject.Object) *EventMotion {
+	return EventMotionNewFromNative(object.Native())
+}
+
+func (recv *EventMotion) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -1833,6 +2016,19 @@ func EventOwnerChangeNewFromNative(native unsafe.Pointer) *EventOwnerChange {
 	return &EventOwnerChange{native: native}
 }
 
+/*
+CastToEventOwnerChange down casts any arbitrary Object to EventOwnerChange.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventOwnerChange.
+*/
+func (recv *EventOwnerChange) CastToEventOwnerChange(object *gobject.Object) *EventOwnerChange {
+	return EventOwnerChangeNewFromNative(object.Native())
+}
+
+func (recv *EventOwnerChange) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventOwnerChange) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventOwnerChangeStruct, recv.native, "type")
@@ -1977,6 +2173,19 @@ type EventPadAxis struct {
 
 func EventPadAxisNewFromNative(native unsafe.Pointer) *EventPadAxis {
 	return &EventPadAxis{native: native}
+}
+
+/*
+CastToEventPadAxis down casts any arbitrary Object to EventPadAxis.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventPadAxis.
+*/
+func (recv *EventPadAxis) CastToEventPadAxis(object *gobject.Object) *EventPadAxis {
+	return EventPadAxisNewFromNative(object.Native())
+}
+
+func (recv *EventPadAxis) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -2125,6 +2334,19 @@ func EventPadButtonNewFromNative(native unsafe.Pointer) *EventPadButton {
 	return &EventPadButton{native: native}
 }
 
+/*
+CastToEventPadButton down casts any arbitrary Object to EventPadButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventPadButton.
+*/
+func (recv *EventPadButton) CastToEventPadButton(object *gobject.Object) *EventPadButton {
+	return EventPadButtonNewFromNative(object.Native())
+}
+
+func (recv *EventPadButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventPadButton) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventPadButtonStruct, recv.native, "type")
@@ -2257,6 +2479,19 @@ func EventPadGroupModeNewFromNative(native unsafe.Pointer) *EventPadGroupMode {
 	return &EventPadGroupMode{native: native}
 }
 
+/*
+CastToEventPadGroupMode down casts any arbitrary Object to EventPadGroupMode.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventPadGroupMode.
+*/
+func (recv *EventPadGroupMode) CastToEventPadGroupMode(object *gobject.Object) *EventPadGroupMode {
+	return EventPadGroupModeNewFromNative(object.Native())
+}
+
+func (recv *EventPadGroupMode) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventPadGroupMode) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventPadGroupModeStruct, recv.native, "type")
@@ -2373,6 +2608,19 @@ type EventProperty struct {
 
 func EventPropertyNewFromNative(native unsafe.Pointer) *EventProperty {
 	return &EventProperty{native: native}
+}
+
+/*
+CastToEventProperty down casts any arbitrary Object to EventProperty.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventProperty.
+*/
+func (recv *EventProperty) CastToEventProperty(object *gobject.Object) *EventProperty {
+	return EventPropertyNewFromNative(object.Native())
+}
+
+func (recv *EventProperty) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -2493,6 +2741,19 @@ func EventProximityNewFromNative(native unsafe.Pointer) *EventProximity {
 	return &EventProximity{native: native}
 }
 
+/*
+CastToEventProximity down casts any arbitrary Object to EventProximity.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventProximity.
+*/
+func (recv *EventProximity) CastToEventProximity(object *gobject.Object) *EventProximity {
+	return EventProximityNewFromNative(object.Native())
+}
+
+func (recv *EventProximity) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventProximity) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventProximityStruct, recv.native, "type")
@@ -2595,6 +2856,19 @@ type EventScroll struct {
 
 func EventScrollNewFromNative(native unsafe.Pointer) *EventScroll {
 	return &EventScroll{native: native}
+}
+
+/*
+CastToEventScroll down casts any arbitrary Object to EventScroll.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventScroll.
+*/
+func (recv *EventScroll) CastToEventScroll(object *gobject.Object) *EventScroll {
+	return EventScrollNewFromNative(object.Native())
+}
+
+func (recv *EventScroll) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -2817,6 +3091,19 @@ func EventSelectionNewFromNative(native unsafe.Pointer) *EventSelection {
 	return &EventSelection{native: native}
 }
 
+/*
+CastToEventSelection down casts any arbitrary Object to EventSelection.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventSelection.
+*/
+func (recv *EventSelection) CastToEventSelection(object *gobject.Object) *EventSelection {
+	return EventSelectionNewFromNative(object.Native())
+}
+
+func (recv *EventSelection) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventSelection) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventSelectionStruct, recv.native, "type")
@@ -2963,6 +3250,19 @@ func EventSequenceNewFromNative(native unsafe.Pointer) *EventSequence {
 	return &EventSequence{native: native}
 }
 
+/*
+CastToEventSequence down casts any arbitrary Object to EventSequence.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventSequence.
+*/
+func (recv *EventSequence) CastToEventSequence(object *gobject.Object) *EventSequence {
+	return EventSequenceNewFromNative(object.Native())
+}
+
+func (recv *EventSequence) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // EventSequenceStruct creates an uninitialised EventSequence.
 func EventSequenceStruct() *EventSequence {
 	err := eventSequenceStruct_Set()
@@ -2995,6 +3295,19 @@ type EventSetting struct {
 
 func EventSettingNewFromNative(native unsafe.Pointer) *EventSetting {
 	return &EventSetting{native: native}
+}
+
+/*
+CastToEventSetting down casts any arbitrary Object to EventSetting.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventSetting.
+*/
+func (recv *EventSetting) CastToEventSetting(object *gobject.Object) *EventSetting {
+	return EventSettingNewFromNative(object.Native())
+}
+
+func (recv *EventSetting) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -3099,6 +3412,19 @@ type EventTouch struct {
 
 func EventTouchNewFromNative(native unsafe.Pointer) *EventTouch {
 	return &EventTouch{native: native}
+}
+
+/*
+CastToEventTouch down casts any arbitrary Object to EventTouch.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventTouch.
+*/
+func (recv *EventTouch) CastToEventTouch(object *gobject.Object) *EventTouch {
+	return EventTouchNewFromNative(object.Native())
+}
+
+func (recv *EventTouch) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -3305,6 +3631,19 @@ type EventTouchpadPinch struct {
 
 func EventTouchpadPinchNewFromNative(native unsafe.Pointer) *EventTouchpadPinch {
 	return &EventTouchpadPinch{native: native}
+}
+
+/*
+CastToEventTouchpadPinch down casts any arbitrary Object to EventTouchpadPinch.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventTouchpadPinch.
+*/
+func (recv *EventTouchpadPinch) CastToEventTouchpadPinch(object *gobject.Object) *EventTouchpadPinch {
+	return EventTouchpadPinchNewFromNative(object.Native())
+}
+
+func (recv *EventTouchpadPinch) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -3541,6 +3880,19 @@ func EventTouchpadSwipeNewFromNative(native unsafe.Pointer) *EventTouchpadSwipe 
 	return &EventTouchpadSwipe{native: native}
 }
 
+/*
+CastToEventTouchpadSwipe down casts any arbitrary Object to EventTouchpadSwipe.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventTouchpadSwipe.
+*/
+func (recv *EventTouchpadSwipe) CastToEventTouchpadSwipe(object *gobject.Object) *EventTouchpadSwipe {
+	return EventTouchpadSwipeNewFromNative(object.Native())
+}
+
+func (recv *EventTouchpadSwipe) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventTouchpadSwipe) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventTouchpadSwipeStruct, recv.native, "type")
@@ -3747,6 +4099,19 @@ func EventVisibilityNewFromNative(native unsafe.Pointer) *EventVisibility {
 	return &EventVisibility{native: native}
 }
 
+/*
+CastToEventVisibility down casts any arbitrary Object to EventVisibility.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventVisibility.
+*/
+func (recv *EventVisibility) CastToEventVisibility(object *gobject.Object) *EventVisibility {
+	return EventVisibilityNewFromNative(object.Native())
+}
+
+func (recv *EventVisibility) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventVisibility) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventVisibilityStruct, recv.native, "type")
@@ -3837,6 +4202,19 @@ func EventWindowStateNewFromNative(native unsafe.Pointer) *EventWindowState {
 	return &EventWindowState{native: native}
 }
 
+/*
+CastToEventWindowState down casts any arbitrary Object to EventWindowState.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EventWindowState.
+*/
+func (recv *EventWindowState) CastToEventWindowState(object *gobject.Object) *EventWindowState {
+	return EventWindowStateNewFromNative(object.Native())
+}
+
+func (recv *EventWindowState) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *EventWindowState) FieldType() EventType {
 	argValue := gi.StructFieldGet(eventWindowStateStruct, recv.native, "type")
@@ -3921,6 +4299,19 @@ func FrameClockClassNewFromNative(native unsafe.Pointer) *FrameClockClass {
 	return &FrameClockClass{native: native}
 }
 
+/*
+CastToFrameClockClass down casts any arbitrary Object to FrameClockClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FrameClockClass.
+*/
+func (recv *FrameClockClass) CastToFrameClockClass(object *gobject.Object) *FrameClockClass {
+	return FrameClockClassNewFromNative(object.Native())
+}
+
+func (recv *FrameClockClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FrameClockClassStruct creates an uninitialised FrameClockClass.
 func FrameClockClassStruct() *FrameClockClass {
 	err := frameClockClassStruct_Set()
@@ -3955,6 +4346,19 @@ func FrameClockPrivateNewFromNative(native unsafe.Pointer) *FrameClockPrivate {
 	return &FrameClockPrivate{native: native}
 }
 
+/*
+CastToFrameClockPrivate down casts any arbitrary Object to FrameClockPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FrameClockPrivate.
+*/
+func (recv *FrameClockPrivate) CastToFrameClockPrivate(object *gobject.Object) *FrameClockPrivate {
+	return FrameClockPrivateNewFromNative(object.Native())
+}
+
+func (recv *FrameClockPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FrameClockPrivateStruct creates an uninitialised FrameClockPrivate.
 func FrameClockPrivateStruct() *FrameClockPrivate {
 	err := frameClockPrivateStruct_Set()
@@ -3987,6 +4391,19 @@ type FrameTimings struct {
 
 func FrameTimingsNewFromNative(native unsafe.Pointer) *FrameTimings {
 	return &FrameTimings{native: native}
+}
+
+/*
+CastToFrameTimings down casts any arbitrary Object to FrameTimings.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FrameTimings.
+*/
+func (recv *FrameTimings) CastToFrameTimings(object *gobject.Object) *FrameTimings {
+	return FrameTimingsNewFromNative(object.Native())
+}
+
+func (recv *FrameTimings) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var frameTimingsGetCompleteFunction *gi.Function
@@ -4275,6 +4692,19 @@ func GeometryNewFromNative(native unsafe.Pointer) *Geometry {
 	return &Geometry{native: native}
 }
 
+/*
+CastToGeometry down casts any arbitrary Object to Geometry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Geometry.
+*/
+func (recv *Geometry) CastToGeometry(object *gobject.Object) *Geometry {
+	return GeometryNewFromNative(object.Native())
+}
+
+func (recv *Geometry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldMinWidth returns the C field 'min_width'.
 func (recv *Geometry) FieldMinWidth() int32 {
 	argValue := gi.StructFieldGet(geometryStruct, recv.native, "min_width")
@@ -4463,6 +4893,19 @@ func KeymapKeyNewFromNative(native unsafe.Pointer) *KeymapKey {
 	return &KeymapKey{native: native}
 }
 
+/*
+CastToKeymapKey down casts any arbitrary Object to KeymapKey.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a KeymapKey.
+*/
+func (recv *KeymapKey) CastToKeymapKey(object *gobject.Object) *KeymapKey {
+	return KeymapKeyNewFromNative(object.Native())
+}
+
+func (recv *KeymapKey) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldKeycode returns the C field 'keycode'.
 func (recv *KeymapKey) FieldKeycode() uint32 {
 	argValue := gi.StructFieldGet(keymapKeyStruct, recv.native, "keycode")
@@ -4539,6 +4982,19 @@ func MonitorClassNewFromNative(native unsafe.Pointer) *MonitorClass {
 	return &MonitorClass{native: native}
 }
 
+/*
+CastToMonitorClass down casts any arbitrary Object to MonitorClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MonitorClass.
+*/
+func (recv *MonitorClass) CastToMonitorClass(object *gobject.Object) *MonitorClass {
+	return MonitorClassNewFromNative(object.Native())
+}
+
+func (recv *MonitorClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MonitorClassStruct creates an uninitialised MonitorClass.
 func MonitorClassStruct() *MonitorClass {
 	err := monitorClassStruct_Set()
@@ -4571,6 +5027,19 @@ type Point struct {
 
 func PointNewFromNative(native unsafe.Pointer) *Point {
 	return &Point{native: native}
+}
+
+/*
+CastToPoint down casts any arbitrary Object to Point.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Point.
+*/
+func (recv *Point) CastToPoint(object *gobject.Object) *Point {
+	return PointNewFromNative(object.Native())
+}
+
+func (recv *Point) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldX returns the C field 'x'.
@@ -4633,6 +5102,19 @@ type RGBA struct {
 
 func RGBANewFromNative(native unsafe.Pointer) *RGBA {
 	return &RGBA{native: native}
+}
+
+/*
+CastToRGBA down casts any arbitrary Object to RGBA.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RGBA.
+*/
+func (recv *RGBA) CastToRGBA(object *gobject.Object) *RGBA {
+	return RGBANewFromNative(object.Native())
+}
+
+func (recv *RGBA) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRed returns the C field 'red'.
@@ -4915,6 +5397,19 @@ func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
+/*
+CastToRectangle down casts any arbitrary Object to Rectangle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Rectangle.
+*/
+func (recv *Rectangle) CastToRectangle(object *gobject.Object) *Rectangle {
+	return RectangleNewFromNative(object.Native())
+}
+
+func (recv *Rectangle) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "x")
@@ -5106,6 +5601,19 @@ func TimeCoordNewFromNative(native unsafe.Pointer) *TimeCoord {
 	return &TimeCoord{native: native}
 }
 
+/*
+CastToTimeCoord down casts any arbitrary Object to TimeCoord.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TimeCoord.
+*/
+func (recv *TimeCoord) CastToTimeCoord(object *gobject.Object) *TimeCoord {
+	return TimeCoordNewFromNative(object.Native())
+}
+
+func (recv *TimeCoord) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldTime returns the C field 'time'.
 func (recv *TimeCoord) FieldTime() uint32 {
 	argValue := gi.StructFieldGet(timeCoordStruct, recv.native, "time")
@@ -5156,6 +5664,19 @@ type WindowAttr struct {
 
 func WindowAttrNewFromNative(native unsafe.Pointer) *WindowAttr {
 	return &WindowAttr{native: native}
+}
+
+/*
+CastToWindowAttr down casts any arbitrary Object to WindowAttr.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowAttr.
+*/
+func (recv *WindowAttr) CastToWindowAttr(object *gobject.Object) *WindowAttr {
+	return WindowAttrNewFromNative(object.Native())
+}
+
+func (recv *WindowAttr) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldTitle returns the C field 'title'.
@@ -5388,6 +5909,19 @@ func WindowClassNewFromNative(native unsafe.Pointer) *WindowClass {
 	return &WindowClass{native: native}
 }
 
+/*
+CastToWindowClass down casts any arbitrary Object to WindowClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowClass.
+*/
+func (recv *WindowClass) CastToWindowClass(object *gobject.Object) *WindowClass {
+	return WindowClassNewFromNative(object.Native())
+}
+
+func (recv *WindowClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -5472,6 +6006,19 @@ type WindowRedirect struct {
 
 func WindowRedirectNewFromNative(native unsafe.Pointer) *WindowRedirect {
 	return &WindowRedirect{native: native}
+}
+
+/*
+CastToWindowRedirect down casts any arbitrary Object to WindowRedirect.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowRedirect.
+*/
+func (recv *WindowRedirect) CastToWindowRedirect(object *gobject.Object) *WindowRedirect {
+	return WindowRedirectNewFromNative(object.Native())
+}
+
+func (recv *WindowRedirect) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowRedirectStruct creates an uninitialised WindowRedirect.

@@ -39,6 +39,19 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAppLaunchContext down casts any arbitrary Object to AppLaunchContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AppLaunchContext.
+*/
+func (recv *AppLaunchContext) CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
+	return AppLaunchContextNewFromNative(object.Native())
+}
+
+func (recv *AppLaunchContext) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var appLaunchContextNewFunction *gi.Function
 var appLaunchContextNewFunction_Once sync.Once
 
@@ -238,6 +251,19 @@ func CursorNewFromNative(native unsafe.Pointer) *Cursor {
 // Object upcasts to *Object
 func (recv *Cursor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCursor down casts any arbitrary Object to Cursor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Cursor.
+*/
+func (recv *Cursor) CastToCursor(object *gobject.Object) *Cursor {
+	return CursorNewFromNative(object.Native())
+}
+
+func (recv *Cursor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var cursorNewFunction *gi.Function
@@ -492,6 +518,19 @@ func DeviceNewFromNative(native unsafe.Pointer) *Device {
 // Object upcasts to *Object
 func (recv *Device) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDevice down casts any arbitrary Object to Device.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Device.
+*/
+func (recv *Device) CastToDevice(object *gobject.Object) *Device {
+	return DeviceNewFromNative(object.Native())
+}
+
+func (recv *Device) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var deviceGetAssociatedDeviceFunction *gi.Function
@@ -1248,6 +1287,19 @@ func (recv *DeviceManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToDeviceManager down casts any arbitrary Object to DeviceManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DeviceManager.
+*/
+func (recv *DeviceManager) CastToDeviceManager(object *gobject.Object) *DeviceManager {
+	return DeviceManagerNewFromNative(object.Native())
+}
+
+func (recv *DeviceManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var deviceManagerGetClientPointerFunction *gi.Function
 var deviceManagerGetClientPointerFunction_Once sync.Once
 
@@ -1336,6 +1388,19 @@ func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
 // Object upcasts to *Object
 func (recv *DeviceTool) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDeviceTool down casts any arbitrary Object to DeviceTool.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DeviceTool.
+*/
+func (recv *DeviceTool) CastToDeviceTool(object *gobject.Object) *DeviceTool {
+	return DeviceToolNewFromNative(object.Native())
+}
+
+func (recv *DeviceTool) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var deviceToolGetHardwareIdFunction *gi.Function
@@ -1456,6 +1521,19 @@ func DisplayNewFromNative(native unsafe.Pointer) *Display {
 // Object upcasts to *Object
 func (recv *Display) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDisplay down casts any arbitrary Object to Display.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Display.
+*/
+func (recv *Display) CastToDisplay(object *gobject.Object) *Display {
+	return DisplayNewFromNative(object.Native())
+}
+
+func (recv *Display) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var displayBeepFunction *gi.Function
@@ -2691,6 +2769,19 @@ func (recv *DisplayManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToDisplayManager down casts any arbitrary Object to DisplayManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DisplayManager.
+*/
+func (recv *DisplayManager) CastToDisplayManager(object *gobject.Object) *DisplayManager {
+	return DisplayManagerNewFromNative(object.Native())
+}
+
+func (recv *DisplayManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var displayManagerGetDefaultDisplayFunction *gi.Function
 var displayManagerGetDefaultDisplayFunction_Once sync.Once
 
@@ -2809,6 +2900,19 @@ func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
 // Object upcasts to *Object
 func (recv *DragContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDragContext down casts any arbitrary Object to DragContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DragContext.
+*/
+func (recv *DragContext) CastToDragContext(object *gobject.Object) *DragContext {
+	return DragContextNewFromNative(object.Native())
+}
+
+func (recv *DragContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'gdk_drag_context_get_actions' : return type 'DragAction' not supported
@@ -3064,6 +3168,19 @@ func (recv *DrawingContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToDrawingContext down casts any arbitrary Object to DrawingContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DrawingContext.
+*/
+func (recv *DrawingContext) CastToDrawingContext(object *gobject.Object) *DrawingContext {
+	return DrawingContextNewFromNative(object.Native())
+}
+
+func (recv *DrawingContext) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gdk_drawing_context_get_cairo_context' : return type 'cairo.Context' not supported
 
 // UNSUPPORTED : C value 'gdk_drawing_context_get_clip' : return type 'cairo.Region' not supported
@@ -3154,6 +3271,19 @@ func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
 // Object upcasts to *Object
 func (recv *FrameClock) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFrameClock down casts any arbitrary Object to FrameClock.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FrameClock.
+*/
+func (recv *FrameClock) CastToFrameClock(object *gobject.Object) *FrameClock {
+	return FrameClockNewFromNative(object.Native())
+}
+
+func (recv *FrameClock) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var frameClockBeginUpdatingFunction *gi.Function
@@ -3431,6 +3561,19 @@ func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
 // Object upcasts to *Object
 func (recv *GLContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGLContext down casts any arbitrary Object to GLContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GLContext.
+*/
+func (recv *GLContext) CastToGLContext(object *gobject.Object) *GLContext {
+	return GLContextNewFromNative(object.Native())
+}
+
+func (recv *GLContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var gLContextGetDebugEnabledFunction *gi.Function
@@ -3924,6 +4067,19 @@ func (recv *Keymap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToKeymap down casts any arbitrary Object to Keymap.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Keymap.
+*/
+func (recv *Keymap) CastToKeymap(object *gobject.Object) *Keymap {
+	return KeymapNewFromNative(object.Native())
+}
+
+func (recv *Keymap) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gdk_keymap_add_virtual_modifiers' : parameter 'state' of type 'ModifierType' not supported
 
 var keymapGetCapsLockStateFunction *gi.Function
@@ -4153,6 +4309,19 @@ func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
 // Object upcasts to *Object
 func (recv *Monitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMonitor down casts any arbitrary Object to Monitor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Monitor.
+*/
+func (recv *Monitor) CastToMonitor(object *gobject.Object) *Monitor {
+	return MonitorNewFromNative(object.Native())
+}
+
+func (recv *Monitor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var monitorGetDisplayFunction *gi.Function
@@ -4529,6 +4698,19 @@ func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 // Object upcasts to *Object
 func (recv *Screen) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToScreen down casts any arbitrary Object to Screen.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Screen.
+*/
+func (recv *Screen) CastToScreen(object *gobject.Object) *Screen {
+	return ScreenNewFromNative(object.Native())
+}
+
+func (recv *Screen) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var screenGetActiveWindowFunction *gi.Function
@@ -5341,6 +5523,19 @@ func (recv *Seat) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSeat down casts any arbitrary Object to Seat.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Seat.
+*/
+func (recv *Seat) CastToSeat(object *gobject.Object) *Seat {
+	return SeatNewFromNative(object.Native())
+}
+
+func (recv *Seat) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -5497,6 +5692,19 @@ func VisualNewFromNative(native unsafe.Pointer) *Visual {
 // Object upcasts to *Object
 func (recv *Visual) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToVisual down casts any arbitrary Object to Visual.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Visual.
+*/
+func (recv *Visual) CastToVisual(object *gobject.Object) *Visual {
+	return VisualNewFromNative(object.Native())
+}
+
+func (recv *Visual) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var visualGetBitsPerRgbFunction *gi.Function
@@ -5815,6 +6023,19 @@ func WindowNewFromNative(native unsafe.Pointer) *Window {
 // Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWindow down casts any arbitrary Object to Window.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Window.
+*/
+func (recv *Window) CastToWindow(object *gobject.Object) *Window {
+	return WindowNewFromNative(object.Native())
+}
+
+func (recv *Window) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'gdk_window_new' : parameter 'attributes_mask' of type 'WindowAttributesType' not supported

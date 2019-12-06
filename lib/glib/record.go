@@ -28,6 +28,10 @@ func ArrayNewFromNative(native unsafe.Pointer) *Array {
 	return &Array{native: native}
 }
 
+func (recv *Array) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldData returns the C field 'data'.
 func (recv *Array) FieldData() string {
 	argValue := gi.StructFieldGet(arrayStruct, recv.native, "data")
@@ -88,6 +92,10 @@ type AsyncQueue struct {
 
 func AsyncQueueNewFromNative(native unsafe.Pointer) *AsyncQueue {
 	return &AsyncQueue{native: native}
+}
+
+func (recv *AsyncQueue) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var asyncQueueLengthFunction *gi.Function
@@ -394,6 +402,10 @@ type BookmarkFile struct {
 
 func BookmarkFileNewFromNative(native unsafe.Pointer) *BookmarkFile {
 	return &BookmarkFile{native: native}
+}
+
+func (recv *BookmarkFile) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var bookmarkFileAddApplicationFunction *gi.Function
@@ -1605,6 +1617,10 @@ func ByteArrayNewFromNative(native unsafe.Pointer) *ByteArray {
 	return &ByteArray{native: native}
 }
 
+func (recv *ByteArray) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldData returns the C field 'data'.
 func (recv *ByteArray) FieldData() uint8 {
 	argValue := gi.StructFieldGet(byteArrayStruct, recv.native, "data")
@@ -1665,6 +1681,10 @@ type Bytes struct {
 
 func BytesNewFromNative(native unsafe.Pointer) *Bytes {
 	return &Bytes{native: native}
+}
+
+func (recv *Bytes) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_bytes_new' : parameter 'data' of type 'nil' not supported
@@ -2010,6 +2030,10 @@ func ChecksumNewFromNative(native unsafe.Pointer) *Checksum {
 	return &Checksum{native: native}
 }
 
+func (recv *Checksum) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var checksumNewFunction *gi.Function
 var checksumNewFunction_Once sync.Once
 
@@ -2185,6 +2209,10 @@ func CondNewFromNative(native unsafe.Pointer) *Cond {
 	return &Cond{native: native}
 }
 
+func (recv *Cond) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var condBroadcastFunction *gi.Function
 var condBroadcastFunction_Once sync.Once
 
@@ -2335,6 +2363,10 @@ func DataNewFromNative(native unsafe.Pointer) *Data {
 	return &Data{native: native}
 }
 
+func (recv *Data) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // DataStruct creates an uninitialised Data.
 func DataStruct() *Data {
 	err := dataStruct_Set()
@@ -2367,6 +2399,10 @@ type Date struct {
 
 func DateNewFromNative(native unsafe.Pointer) *Date {
 	return &Date{native: native}
+}
+
+func (recv *Date) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldJulianDays returns the C field 'julian_days'.
@@ -3603,6 +3639,10 @@ type DateTime struct {
 
 func DateTimeNewFromNative(native unsafe.Pointer) *DateTime {
 	return &DateTime{native: native}
+}
+
+func (recv *DateTime) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var dateTimeNewFunction *gi.Function
@@ -5157,6 +5197,10 @@ func DebugKeyNewFromNative(native unsafe.Pointer) *DebugKey {
 	return &DebugKey{native: native}
 }
 
+func (recv *DebugKey) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldKey returns the C field 'key'.
 func (recv *DebugKey) FieldKey() string {
 	argValue := gi.StructFieldGet(debugKeyStruct, recv.native, "key")
@@ -5217,6 +5261,10 @@ type Dir struct {
 
 func DirNewFromNative(native unsafe.Pointer) *Dir {
 	return &Dir{native: native}
+}
+
+func (recv *Dir) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var dirCloseFunction *gi.Function
@@ -5339,6 +5387,10 @@ type Error struct {
 
 func ErrorNewFromNative(native unsafe.Pointer) *Error {
 	return &Error{native: native}
+}
+
+func (recv *Error) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldDomain returns the C field 'domain'.
@@ -5534,6 +5586,10 @@ func HashTableNewFromNative(native unsafe.Pointer) *HashTable {
 	return &HashTable{native: native}
 }
 
+func (recv *HashTable) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // HashTableStruct creates an uninitialised HashTable.
 func HashTableStruct() *HashTable {
 	err := hashTableStruct_Set()
@@ -5566,6 +5622,10 @@ type HashTableIter struct {
 
 func HashTableIterNewFromNative(native unsafe.Pointer) *HashTableIter {
 	return &HashTableIter{native: native}
+}
+
+func (recv *HashTableIter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_hash_table_iter_get_hash_table' : return type 'GLib.HashTable' not supported
@@ -5664,6 +5724,10 @@ type Hmac struct {
 
 func HmacNewFromNative(native unsafe.Pointer) *Hmac {
 	return &Hmac{native: native}
+}
+
+func (recv *Hmac) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var hmacCopyFunction *gi.Function
@@ -5828,6 +5892,10 @@ func HookNewFromNative(native unsafe.Pointer) *Hook {
 	return &Hook{native: native}
 }
 
+func (recv *Hook) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
@@ -5975,6 +6043,10 @@ type HookList struct {
 
 func HookListNewFromNative(native unsafe.Pointer) *HookList {
 	return &HookList{native: native}
+}
+
+func (recv *HookList) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldSeqId returns the C field 'seq_id'.
@@ -6198,6 +6270,10 @@ func IConvNewFromNative(native unsafe.Pointer) *IConv {
 	return &IConv{native: native}
 }
 
+func (recv *IConv) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_iconv' : moved to iconv
 
 var iConvCloseFunction *gi.Function
@@ -6264,6 +6340,10 @@ type IOChannel struct {
 
 func IOChannelNewFromNative(native unsafe.Pointer) *IOChannel {
 	return &IOChannel{native: native}
+}
+
+func (recv *IOChannel) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var iOChannelNewFileFunction *gi.Function
@@ -7098,6 +7178,10 @@ func IOFuncsNewFromNative(native unsafe.Pointer) *IOFuncs {
 	return &IOFuncs{native: native}
 }
 
+func (recv *IOFuncs) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'io_read' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'io_read' : for field setter : missing Type
@@ -7162,6 +7246,10 @@ type KeyFile struct {
 
 func KeyFileNewFromNative(native unsafe.Pointer) *KeyFile {
 	return &KeyFile{native: native}
+}
+
+func (recv *KeyFile) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var keyFileNewFunction *gi.Function
@@ -8479,6 +8567,10 @@ func ListNewFromNative(native unsafe.Pointer) *List {
 	return &List{native: native}
 }
 
+func (recv *List) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
@@ -8523,6 +8615,10 @@ type LogField struct {
 
 func LogFieldNewFromNative(native unsafe.Pointer) *LogField {
 	return &LogField{native: native}
+}
+
+func (recv *LogField) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldKey returns the C field 'key'.
@@ -8589,6 +8685,10 @@ type MainContext struct {
 
 func MainContextNewFromNative(native unsafe.Pointer) *MainContext {
 	return &MainContext{native: native}
+}
+
+func (recv *MainContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var mainContextNewFunction *gi.Function
@@ -9113,6 +9213,10 @@ func MainLoopNewFromNative(native unsafe.Pointer) *MainLoop {
 	return &MainLoop{native: native}
 }
 
+func (recv *MainLoop) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var mainLoopNewFunction *gi.Function
 var mainLoopNewFunction_Once sync.Once
 
@@ -9343,6 +9447,10 @@ type MappedFile struct {
 
 func MappedFileNewFromNative(native unsafe.Pointer) *MappedFile {
 	return &MappedFile{native: native}
+}
+
+func (recv *MappedFile) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var mappedFileNewFunction *gi.Function
@@ -9614,6 +9722,10 @@ func MarkupParseContextNewFromNative(native unsafe.Pointer) *MarkupParseContext 
 	return &MarkupParseContext{native: native}
 }
 
+func (recv *MarkupParseContext) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'flags' of type 'MarkupParseFlags' not supported
 
 var markupParseContextEndParseFunction *gi.Function
@@ -9859,6 +9971,10 @@ func MarkupParserNewFromNative(native unsafe.Pointer) *MarkupParser {
 	return &MarkupParser{native: native}
 }
 
+func (recv *MarkupParser) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'start_element' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'start_element' : for field setter : missing Type
@@ -9911,6 +10027,10 @@ type MatchInfo struct {
 
 func MatchInfoNewFromNative(native unsafe.Pointer) *MatchInfo {
 	return &MatchInfo{native: native}
+}
+
+func (recv *MatchInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var matchInfoExpandReferencesFunction *gi.Function
@@ -10426,6 +10546,10 @@ func MemVTableNewFromNative(native unsafe.Pointer) *MemVTable {
 	return &MemVTable{native: native}
 }
 
+func (recv *MemVTable) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'malloc' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'malloc' : for field setter : missing Type
@@ -10482,6 +10606,10 @@ type Node struct {
 
 func NodeNewFromNative(native unsafe.Pointer) *Node {
 	return &Node{native: native}
+}
+
+func (recv *Node) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -11166,6 +11294,10 @@ func OnceNewFromNative(native unsafe.Pointer) *Once {
 	return &Once{native: native}
 }
 
+func (recv *Once) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldStatus returns the C field 'status'.
 func (recv *Once) FieldStatus() OnceStatus {
 	argValue := gi.StructFieldGet(onceStruct, recv.native, "status")
@@ -11218,6 +11350,10 @@ type OptionContext struct {
 
 func OptionContextNewFromNative(native unsafe.Pointer) *OptionContext {
 	return &OptionContext{native: native}
+}
+
+func (recv *OptionContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var optionContextAddGroupFunction *gi.Function
@@ -11776,6 +11912,10 @@ func OptionEntryNewFromNative(native unsafe.Pointer) *OptionEntry {
 	return &OptionEntry{native: native}
 }
 
+func (recv *OptionEntry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldLongName returns the C field 'long_name'.
 func (recv *OptionEntry) FieldLongName() string {
 	argValue := gi.StructFieldGet(optionEntryStruct, recv.native, "long_name")
@@ -11896,6 +12036,10 @@ type OptionGroup struct {
 
 func OptionGroupNewFromNative(native unsafe.Pointer) *OptionGroup {
 	return &OptionGroup{native: native}
+}
+
+func (recv *OptionGroup) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_option_group_new' : parameter 'user_data' of type 'gpointer' not supported
@@ -12071,6 +12215,10 @@ func PatternSpecNewFromNative(native unsafe.Pointer) *PatternSpec {
 	return &PatternSpec{native: native}
 }
 
+func (recv *PatternSpec) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var patternSpecEqualFunction *gi.Function
 var patternSpecEqualFunction_Once sync.Once
 
@@ -12166,6 +12314,10 @@ func PollFDNewFromNative(native unsafe.Pointer) *PollFD {
 	return &PollFD{native: native}
 }
 
+func (recv *PollFD) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldFd returns the C field 'fd'.
 func (recv *PollFD) FieldFd() int32 {
 	argValue := gi.StructFieldGet(pollFDStruct, recv.native, "fd")
@@ -12242,6 +12394,10 @@ func PrivateNewFromNative(native unsafe.Pointer) *Private {
 	return &Private{native: native}
 }
 
+func (recv *Private) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_private_get' : return type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_private_replace' : parameter 'value' of type 'gpointer' not supported
@@ -12280,6 +12436,10 @@ type PtrArray struct {
 
 func PtrArrayNewFromNative(native unsafe.Pointer) *PtrArray {
 	return &PtrArray{native: native}
+}
+
+func (recv *PtrArray) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'pdata' : for field getter : no Go type for 'gpointer'
@@ -12332,6 +12492,10 @@ type Queue struct {
 
 func QueueNewFromNative(native unsafe.Pointer) *Queue {
 	return &Queue{native: native}
+}
+
+func (recv *Queue) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'head' : for field getter : no Go type for 'GLib.List'
@@ -12668,6 +12832,10 @@ func RWLockNewFromNative(native unsafe.Pointer) *RWLock {
 	return &RWLock{native: native}
 }
 
+func (recv *RWLock) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var rWLockClearFunction *gi.Function
 var rWLockClearFunction_Once sync.Once
 
@@ -12932,6 +13100,10 @@ type Rand struct {
 
 func RandNewFromNative(native unsafe.Pointer) *Rand {
 	return &Rand{native: native}
+}
+
+func (recv *Rand) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var randCopyFunction *gi.Function
@@ -13219,6 +13391,10 @@ func RecMutexNewFromNative(native unsafe.Pointer) *RecMutex {
 	return &RecMutex{native: native}
 }
 
+func (recv *RecMutex) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var recMutexClearFunction *gi.Function
 var recMutexClearFunction_Once sync.Once
 
@@ -13395,6 +13571,10 @@ type Regex struct {
 
 func RegexNewFromNative(native unsafe.Pointer) *Regex {
 	return &Regex{native: native}
+}
+
+func (recv *Regex) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_regex_new' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
@@ -13693,6 +13873,10 @@ func SListNewFromNative(native unsafe.Pointer) *SList {
 	return &SList{native: native}
 }
 
+func (recv *SList) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
 
 // UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
@@ -13733,6 +13917,10 @@ type Scanner struct {
 
 func ScannerNewFromNative(native unsafe.Pointer) *Scanner {
 	return &Scanner{native: native}
+}
+
+func (recv *Scanner) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
@@ -14357,6 +14545,10 @@ func ScannerConfigNewFromNative(native unsafe.Pointer) *ScannerConfig {
 	return &ScannerConfig{native: native}
 }
 
+func (recv *ScannerConfig) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldCsetSkipCharacters returns the C field 'cset_skip_characters'.
 func (recv *ScannerConfig) FieldCsetSkipCharacters() string {
 	argValue := gi.StructFieldGet(scannerConfigStruct, recv.native, "cset_skip_characters")
@@ -14755,6 +14947,10 @@ func SequenceNewFromNative(native unsafe.Pointer) *Sequence {
 	return &Sequence{native: native}
 }
 
+func (recv *Sequence) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_sequence_append' : parameter 'data' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_sequence_foreach' : parameter 'func' of type 'Func' not supported
@@ -14998,6 +15194,10 @@ type SequenceIter struct {
 
 func SequenceIterNewFromNative(native unsafe.Pointer) *SequenceIter {
 	return &SequenceIter{native: native}
+}
+
+func (recv *SequenceIter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var sequenceIterCompareFunction *gi.Function
@@ -15290,6 +15490,10 @@ type Source struct {
 
 func SourceNewFromNative(native unsafe.Pointer) *Source {
 	return &Source{native: native}
+}
+
+func (recv *Source) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var sourceNewFunction *gi.Function
@@ -16023,6 +16227,10 @@ func SourceCallbackFuncsNewFromNative(native unsafe.Pointer) *SourceCallbackFunc
 	return &SourceCallbackFuncs{native: native}
 }
 
+func (recv *SourceCallbackFuncs) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'ref' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'ref' : for field setter : missing Type
@@ -16067,6 +16275,10 @@ type SourceFuncs struct {
 
 func SourceFuncsNewFromNative(native unsafe.Pointer) *SourceFuncs {
 	return &SourceFuncs{native: native}
+}
+
+func (recv *SourceFuncs) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'prepare' : for field getter : missing Type
@@ -16119,6 +16331,10 @@ func SourcePrivateNewFromNative(native unsafe.Pointer) *SourcePrivate {
 	return &SourcePrivate{native: native}
 }
 
+func (recv *SourcePrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // SourcePrivateStruct creates an uninitialised SourcePrivate.
 func SourcePrivateStruct() *SourcePrivate {
 	err := sourcePrivateStruct_Set()
@@ -16153,6 +16369,10 @@ func StatBufNewFromNative(native unsafe.Pointer) *StatBuf {
 	return &StatBuf{native: native}
 }
 
+func (recv *StatBuf) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // StatBufStruct creates an uninitialised StatBuf.
 func StatBufStruct() *StatBuf {
 	err := statBufStruct_Set()
@@ -16185,6 +16405,10 @@ type String struct {
 
 func StringNewFromNative(native unsafe.Pointer) *String {
 	return &String{native: native}
+}
+
+func (recv *String) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldStr returns the C field 'str'.
@@ -17075,6 +17299,10 @@ func StringChunkNewFromNative(native unsafe.Pointer) *StringChunk {
 	return &StringChunk{native: native}
 }
 
+func (recv *StringChunk) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var stringChunkClearFunction *gi.Function
 var stringChunkClearFunction_Once sync.Once
 
@@ -17265,6 +17493,10 @@ func TestCaseNewFromNative(native unsafe.Pointer) *TestCase {
 	return &TestCase{native: native}
 }
 
+func (recv *TestCase) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // TestCaseStruct creates an uninitialised TestCase.
 func TestCaseStruct() *TestCase {
 	err := testCaseStruct_Set()
@@ -17297,6 +17529,10 @@ type TestConfig struct {
 
 func TestConfigNewFromNative(native unsafe.Pointer) *TestConfig {
 	return &TestConfig{native: native}
+}
+
+func (recv *TestConfig) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldTestInitialized returns the C field 'test_initialized'.
@@ -17415,6 +17651,10 @@ type TestLogBuffer struct {
 
 func TestLogBufferNewFromNative(native unsafe.Pointer) *TestLogBuffer {
 	return &TestLogBuffer{native: native}
+}
+
+func (recv *TestLogBuffer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var testLogBufferFreeFunction *gi.Function
@@ -17541,6 +17781,10 @@ func TestLogMsgNewFromNative(native unsafe.Pointer) *TestLogMsg {
 	return &TestLogMsg{native: native}
 }
 
+func (recv *TestLogMsg) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldLogType returns the C field 'log_type'.
 func (recv *TestLogMsg) FieldLogType() TestLogType {
 	argValue := gi.StructFieldGet(testLogMsgStruct, recv.native, "log_type")
@@ -17663,6 +17907,10 @@ func TestSuiteNewFromNative(native unsafe.Pointer) *TestSuite {
 	return &TestSuite{native: native}
 }
 
+func (recv *TestSuite) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var testSuiteAddFunction *gi.Function
 var testSuiteAddFunction_Once sync.Once
 
@@ -17755,6 +18003,10 @@ func ThreadNewFromNative(native unsafe.Pointer) *Thread {
 	return &Thread{native: native}
 }
 
+func (recv *Thread) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'g_thread_new' : parameter 'func' of type 'ThreadFunc' not supported
 
 // UNSUPPORTED : C value 'g_thread_try_new' : parameter 'func' of type 'ThreadFunc' not supported
@@ -17838,6 +18090,10 @@ type ThreadPool struct {
 
 func ThreadPoolNewFromNative(native unsafe.Pointer) *ThreadPool {
 	return &ThreadPool{native: native}
+}
+
+func (recv *ThreadPool) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'func' : for field getter : no Go type for 'Func'
@@ -18061,6 +18317,10 @@ func TimeValNewFromNative(native unsafe.Pointer) *TimeVal {
 	return &TimeVal{native: native}
 }
 
+func (recv *TimeVal) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldTvSec returns the C field 'tv_sec'.
 func (recv *TimeVal) FieldTvSec() int64 {
 	argValue := gi.StructFieldGet(timeValStruct, recv.native, "tv_sec")
@@ -18182,6 +18442,10 @@ type TimeZone struct {
 
 func TimeZoneNewFromNative(native unsafe.Pointer) *TimeZone {
 	return &TimeZone{native: native}
+}
+
+func (recv *TimeZone) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var timeZoneNewFunction *gi.Function
@@ -18586,6 +18850,10 @@ func TimerNewFromNative(native unsafe.Pointer) *Timer {
 	return &Timer{native: native}
 }
 
+func (recv *Timer) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var timerContinueFunction *gi.Function
 var timerContinueFunction_Once sync.Once
 
@@ -18825,6 +19093,10 @@ func TrashStackNewFromNative(native unsafe.Pointer) *TrashStack {
 	return &TrashStack{native: native}
 }
 
+func (recv *TrashStack) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldNext returns the C field 'next'.
 func (recv *TrashStack) FieldNext() *TrashStack {
 	argValue := gi.StructFieldGet(trashStackStruct, recv.native, "next")
@@ -18871,6 +19143,10 @@ type Tree struct {
 
 func TreeNewFromNative(native unsafe.Pointer) *Tree {
 	return &Tree{native: native}
+}
+
+func (recv *Tree) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var treeDestroyFunction *gi.Function
@@ -19075,6 +19351,10 @@ type Variant struct {
 
 func VariantNewFromNative(native unsafe.Pointer) *Variant {
 	return &Variant{native: native}
+}
+
+func (recv *Variant) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'g_variant_new' : parameter '...' of type 'nil' not supported
@@ -21258,6 +21538,10 @@ func VariantBuilderNewFromNative(native unsafe.Pointer) *VariantBuilder {
 	return &VariantBuilder{native: native}
 }
 
+func (recv *VariantBuilder) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var variantBuilderNewFunction *gi.Function
 var variantBuilderNewFunction_Once sync.Once
 
@@ -21546,6 +21830,10 @@ type VariantDict struct {
 
 func VariantDictNewFromNative(native unsafe.Pointer) *VariantDict {
 	return &VariantDict{native: native}
+}
+
+func (recv *VariantDict) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var variantDictNewFunction *gi.Function
@@ -21882,6 +22170,10 @@ func VariantIterNewFromNative(native unsafe.Pointer) *VariantIter {
 	return &VariantIter{native: native}
 }
 
+func (recv *VariantIter) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var variantIterCopyFunction *gi.Function
 var variantIterCopyFunction_Once sync.Once
 
@@ -22075,6 +22367,10 @@ type VariantType struct {
 
 func VariantTypeNewFromNative(native unsafe.Pointer) *VariantType {
 	return &VariantType{native: native}
+}
+
+func (recv *VariantType) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var variantTypeNewFunction *gi.Function

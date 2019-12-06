@@ -34,6 +34,19 @@ func (recv *AuthenticationRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAuthenticationRequest down casts any arbitrary Object to AuthenticationRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AuthenticationRequest.
+*/
+func (recv *AuthenticationRequest) CastToAuthenticationRequest(object *gobject.Object) *AuthenticationRequest {
+	return AuthenticationRequestNewFromNative(object.Native())
+}
+
+func (recv *AuthenticationRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -375,6 +388,19 @@ func (recv *AutomationSession) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToAutomationSession down casts any arbitrary Object to AutomationSession.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AutomationSession.
+*/
+func (recv *AutomationSession) CastToAutomationSession(object *gobject.Object) *AutomationSession {
+	return AutomationSessionNewFromNative(object.Native())
+}
+
+func (recv *AutomationSession) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -508,6 +534,19 @@ func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
 // Object upcasts to *Object
 func (recv *BackForwardList) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToBackForwardList down casts any arbitrary Object to BackForwardList.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BackForwardList.
+*/
+func (recv *BackForwardList) CastToBackForwardList(object *gobject.Object) *BackForwardList {
+	return BackForwardListNewFromNative(object.Native())
+}
+
+func (recv *BackForwardList) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -726,6 +765,19 @@ func (recv *BackForwardListItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToBackForwardListItem down casts any arbitrary Object to BackForwardListItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a BackForwardListItem.
+*/
+func (recv *BackForwardListItem) CastToBackForwardListItem(object *gobject.Object) *BackForwardListItem {
+	return BackForwardListItemNewFromNative(object.Native())
+}
+
+func (recv *BackForwardListItem) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.InitiallyUnowned'
@@ -864,6 +916,19 @@ func (recv *ColorChooserRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToColorChooserRequest down casts any arbitrary Object to ColorChooserRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ColorChooserRequest.
+*/
+func (recv *ColorChooserRequest) CastToColorChooserRequest(object *gobject.Object) *ColorChooserRequest {
+	return ColorChooserRequestNewFromNative(object.Native())
+}
+
+func (recv *ColorChooserRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -952,6 +1017,19 @@ func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
 // Object upcasts to *Object
 func (recv *ContextMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToContextMenu down casts any arbitrary Object to ContextMenu.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContextMenu.
+*/
+func (recv *ContextMenu) CastToContextMenu(object *gobject.Object) *ContextMenu {
+	return ContextMenuNewFromNative(object.Native())
+}
+
+func (recv *ContextMenu) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1343,6 +1421,19 @@ func (recv *ContextMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToContextMenuItem down casts any arbitrary Object to ContextMenuItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContextMenuItem.
+*/
+func (recv *ContextMenuItem) CastToContextMenuItem(object *gobject.Object) *ContextMenuItem {
+	return ContextMenuItemNewFromNative(object.Native())
+}
+
+func (recv *ContextMenuItem) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.InitiallyUnowned'
@@ -1646,6 +1737,19 @@ func (recv *CookieManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCookieManager down casts any arbitrary Object to CookieManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CookieManager.
+*/
+func (recv *CookieManager) CastToCookieManager(object *gobject.Object) *CookieManager {
+	return CookieManagerNewFromNative(object.Native())
+}
+
+func (recv *CookieManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1824,6 +1928,19 @@ func (recv *DeviceInfoPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToDeviceInfoPermissionRequest down casts any arbitrary Object to DeviceInfoPermissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DeviceInfoPermissionRequest.
+*/
+func (recv *DeviceInfoPermissionRequest) CastToDeviceInfoPermissionRequest(object *gobject.Object) *DeviceInfoPermissionRequest {
+	return DeviceInfoPermissionRequestNewFromNative(object.Native())
+}
+
+func (recv *DeviceInfoPermissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1850,6 +1967,19 @@ func DownloadNewFromNative(native unsafe.Pointer) *Download {
 // Object upcasts to *Object
 func (recv *Download) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToDownload down casts any arbitrary Object to Download.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Download.
+*/
+func (recv *Download) CastToDownload(object *gobject.Object) *Download {
+	return DownloadNewFromNative(object.Native())
+}
+
+func (recv *Download) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2236,6 +2366,19 @@ func (recv *EditorState) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToEditorState down casts any arbitrary Object to EditorState.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EditorState.
+*/
+func (recv *EditorState) CastToEditorState(object *gobject.Object) *EditorState {
+	return EditorStateNewFromNative(object.Native())
+}
+
+func (recv *EditorState) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -2470,6 +2613,19 @@ func (recv *FaviconDatabase) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFaviconDatabase down casts any arbitrary Object to FaviconDatabase.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FaviconDatabase.
+*/
+func (recv *FaviconDatabase) CastToFaviconDatabase(object *gobject.Object) *FaviconDatabase {
+	return FaviconDatabaseNewFromNative(object.Native())
+}
+
+func (recv *FaviconDatabase) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -2575,6 +2731,19 @@ func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest 
 // Object upcasts to *Object
 func (recv *FileChooserRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFileChooserRequest down casts any arbitrary Object to FileChooserRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileChooserRequest.
+*/
+func (recv *FileChooserRequest) CastToFileChooserRequest(object *gobject.Object) *FileChooserRequest {
+	return FileChooserRequestNewFromNative(object.Native())
+}
+
+func (recv *FileChooserRequest) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -2723,6 +2892,19 @@ func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
 // Object upcasts to *Object
 func (recv *FindController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFindController down casts any arbitrary Object to FindController.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FindController.
+*/
+func (recv *FindController) CastToFindController(object *gobject.Object) *FindController {
+	return FindControllerNewFromNative(object.Native())
+}
+
+func (recv *FindController) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -3027,6 +3209,19 @@ func (recv *FormSubmissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFormSubmissionRequest down casts any arbitrary Object to FormSubmissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FormSubmissionRequest.
+*/
+func (recv *FormSubmissionRequest) CastToFormSubmissionRequest(object *gobject.Object) *FormSubmissionRequest {
+	return FormSubmissionRequestNewFromNative(object.Native())
+}
+
+func (recv *FormSubmissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -3085,6 +3280,19 @@ func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager 
 // Object upcasts to *Object
 func (recv *GeolocationManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGeolocationManager down casts any arbitrary Object to GeolocationManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GeolocationManager.
+*/
+func (recv *GeolocationManager) CastToGeolocationManager(object *gobject.Object) *GeolocationManager {
+	return GeolocationManagerNewFromNative(object.Native())
+}
+
+func (recv *GeolocationManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -3205,6 +3413,19 @@ func (recv *GeolocationPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGeolocationPermissionRequest down casts any arbitrary Object to GeolocationPermissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GeolocationPermissionRequest.
+*/
+func (recv *GeolocationPermissionRequest) CastToGeolocationPermissionRequest(object *gobject.Object) *GeolocationPermissionRequest {
+	return GeolocationPermissionRequestNewFromNative(object.Native())
+}
+
+func (recv *GeolocationPermissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -3231,6 +3452,19 @@ func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
 // Object upcasts to *Object
 func (recv *HitTestResult) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToHitTestResult down casts any arbitrary Object to HitTestResult.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HitTestResult.
+*/
+func (recv *HitTestResult) CastToHitTestResult(object *gobject.Object) *HitTestResult {
+	return HitTestResultNewFromNative(object.Native())
+}
+
+func (recv *HitTestResult) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -3659,6 +3893,19 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) Object() *gobject.Objec
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToInstallMissingMediaPluginsPermissionRequest down casts any arbitrary Object to InstallMissingMediaPluginsPermissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a InstallMissingMediaPluginsPermissionRequest.
+*/
+func (recv *InstallMissingMediaPluginsPermissionRequest) CastToInstallMissingMediaPluginsPermissionRequest(object *gobject.Object) *InstallMissingMediaPluginsPermissionRequest {
+	return InstallMissingMediaPluginsPermissionRequestNewFromNative(object.Native())
+}
+
+func (recv *InstallMissingMediaPluginsPermissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -3736,6 +3983,19 @@ func (recv *NavigationPolicyDecision) PolicyDecision() *PolicyDecision {
 // Object upcasts to *Object
 func (recv *NavigationPolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToNavigationPolicyDecision down casts any arbitrary Object to NavigationPolicyDecision.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NavigationPolicyDecision.
+*/
+func (recv *NavigationPolicyDecision) CastToNavigationPolicyDecision(object *gobject.Object) *NavigationPolicyDecision {
+	return NavigationPolicyDecisionNewFromNative(object.Native())
+}
+
+func (recv *NavigationPolicyDecision) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -3968,6 +4228,19 @@ func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToNotification down casts any arbitrary Object to Notification.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Notification.
+*/
+func (recv *Notification) CastToNotification(object *gobject.Object) *Notification {
+	return NotificationNewFromNative(object.Native())
+}
+
+func (recv *Notification) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -4194,6 +4467,19 @@ func (recv *NotificationPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToNotificationPermissionRequest down casts any arbitrary Object to NotificationPermissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NotificationPermissionRequest.
+*/
+func (recv *NotificationPermissionRequest) CastToNotificationPermissionRequest(object *gobject.Object) *NotificationPermissionRequest {
+	return NotificationPermissionRequestNewFromNative(object.Native())
+}
+
+func (recv *NotificationPermissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -4220,6 +4506,19 @@ func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
 // Object upcasts to *Object
 func (recv *OptionMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToOptionMenu down casts any arbitrary Object to OptionMenu.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a OptionMenu.
+*/
+func (recv *OptionMenu) CastToOptionMenu(object *gobject.Object) *OptionMenu {
+	return OptionMenuNewFromNative(object.Native())
+}
+
+func (recv *OptionMenu) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -4415,6 +4714,19 @@ func (recv *Plugin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPlugin down casts any arbitrary Object to Plugin.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Plugin.
+*/
+func (recv *Plugin) CastToPlugin(object *gobject.Object) *Plugin {
+	return PluginNewFromNative(object.Native())
+}
+
+func (recv *Plugin) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -4555,6 +4867,19 @@ func (recv *PolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPolicyDecision down casts any arbitrary Object to PolicyDecision.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PolicyDecision.
+*/
+func (recv *PolicyDecision) CastToPolicyDecision(object *gobject.Object) *PolicyDecision {
+	return PolicyDecisionNewFromNative(object.Native())
+}
+
+func (recv *PolicyDecision) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -4667,6 +4992,19 @@ func (recv *PrintCustomWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToPrintCustomWidget down casts any arbitrary Object to PrintCustomWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintCustomWidget.
+*/
+func (recv *PrintCustomWidget) CastToPrintCustomWidget(object *gobject.Object) *PrintCustomWidget {
+	return PrintCustomWidgetNewFromNative(object.Native())
+}
+
+func (recv *PrintCustomWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -4743,6 +5081,19 @@ func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 // Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPrintOperation down casts any arbitrary Object to PrintOperation.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintOperation.
+*/
+func (recv *PrintOperation) CastToPrintOperation(object *gobject.Object) *PrintOperation {
+	return PrintOperationNewFromNative(object.Native())
+}
+
+func (recv *PrintOperation) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -4860,6 +5211,19 @@ func (recv *ResponsePolicyDecision) PolicyDecision() *PolicyDecision {
 // Object upcasts to *Object
 func (recv *ResponsePolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToResponsePolicyDecision down casts any arbitrary Object to ResponsePolicyDecision.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ResponsePolicyDecision.
+*/
+func (recv *ResponsePolicyDecision) CastToResponsePolicyDecision(object *gobject.Object) *ResponsePolicyDecision {
+	return ResponsePolicyDecisionNewFromNative(object.Native())
+}
+
+func (recv *ResponsePolicyDecision) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -4994,6 +5358,19 @@ func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
 // Object upcasts to *Object
 func (recv *SecurityManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSecurityManager down casts any arbitrary Object to SecurityManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SecurityManager.
+*/
+func (recv *SecurityManager) CastToSecurityManager(object *gobject.Object) *SecurityManager {
+	return SecurityManagerNewFromNative(object.Native())
+}
+
+func (recv *SecurityManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5408,6 +5785,19 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSettings down casts any arbitrary Object to Settings.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Settings.
+*/
+func (recv *Settings) CastToSettings(object *gobject.Object) *Settings {
+	return SettingsNewFromNative(object.Native())
+}
+
+func (recv *Settings) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -8991,6 +9381,19 @@ func (recv *URIRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToURIRequest down casts any arbitrary Object to URIRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a URIRequest.
+*/
+func (recv *URIRequest) CastToURIRequest(object *gobject.Object) *URIRequest {
+	return URIRequestNewFromNative(object.Native())
+}
+
+func (recv *URIRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -9144,6 +9547,19 @@ func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
 // Object upcasts to *Object
 func (recv *URIResponse) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToURIResponse down casts any arbitrary Object to URIResponse.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a URIResponse.
+*/
+func (recv *URIResponse) CastToURIResponse(object *gobject.Object) *URIResponse {
+	return URIResponseNewFromNative(object.Native())
+}
+
+func (recv *URIResponse) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -9336,6 +9752,19 @@ func (recv *URISchemeRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToURISchemeRequest down casts any arbitrary Object to URISchemeRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a URISchemeRequest.
+*/
+func (recv *URISchemeRequest) CastToURISchemeRequest(object *gobject.Object) *URISchemeRequest {
+	return URISchemeRequestNewFromNative(object.Native())
+}
+
+func (recv *URISchemeRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -9510,6 +9939,19 @@ func (recv *UserContentFilterStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToUserContentFilterStore down casts any arbitrary Object to UserContentFilterStore.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UserContentFilterStore.
+*/
+func (recv *UserContentFilterStore) CastToUserContentFilterStore(object *gobject.Object) *UserContentFilterStore {
+	return UserContentFilterStoreNewFromNative(object.Native())
+}
+
+func (recv *UserContentFilterStore) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -9620,6 +10062,19 @@ func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager 
 // Object upcasts to *Object
 func (recv *UserContentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToUserContentManager down casts any arbitrary Object to UserContentManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UserContentManager.
+*/
+func (recv *UserContentManager) CastToUserContentManager(object *gobject.Object) *UserContentManager {
+	return UserContentManagerNewFromNative(object.Native())
+}
+
+func (recv *UserContentManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -10035,6 +10490,19 @@ func (recv *UserMediaPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToUserMediaPermissionRequest down casts any arbitrary Object to UserMediaPermissionRequest.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UserMediaPermissionRequest.
+*/
+func (recv *UserMediaPermissionRequest) CastToUserMediaPermissionRequest(object *gobject.Object) *UserMediaPermissionRequest {
+	return UserMediaPermissionRequestNewFromNative(object.Native())
+}
+
+func (recv *UserMediaPermissionRequest) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -10061,6 +10529,19 @@ func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
 // Object upcasts to *Object
 func (recv *WebContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWebContext down casts any arbitrary Object to WebContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebContext.
+*/
+func (recv *WebContext) CastToWebContext(object *gobject.Object) *WebContext {
+	return WebContextNewFromNative(object.Native())
+}
+
+func (recv *WebContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -11144,6 +11625,19 @@ func (recv *WebInspector) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWebInspector down casts any arbitrary Object to WebInspector.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebInspector.
+*/
+func (recv *WebInspector) CastToWebInspector(object *gobject.Object) *WebInspector {
+	return WebInspectorNewFromNative(object.Native())
+}
+
+func (recv *WebInspector) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -11458,6 +11952,19 @@ func (recv *WebResource) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWebResource down casts any arbitrary Object to WebResource.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebResource.
+*/
+func (recv *WebResource) CastToWebResource(object *gobject.Object) *WebResource {
+	return WebResourceNewFromNative(object.Native())
+}
+
+func (recv *WebResource) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -11586,6 +12093,19 @@ func (recv *WebView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *WebView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWebView down casts any arbitrary Object to WebView.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebView.
+*/
+func (recv *WebView) CastToWebView(object *gobject.Object) *WebView {
+	return WebViewNewFromNative(object.Native())
+}
+
+func (recv *WebView) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldParent returns the C field 'parent'.
@@ -13222,6 +13742,19 @@ func (recv *WebViewBase) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToWebViewBase down casts any arbitrary Object to WebViewBase.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebViewBase.
+*/
+func (recv *WebViewBase) CastToWebViewBase(object *gobject.Object) *WebViewBase {
+	return WebViewBaseNewFromNative(object.Native())
+}
+
+func (recv *WebViewBase) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parentInstance' : for field getter : no Go type for 'Gtk.Container'
 
 // UNSUPPORTED : C value 'parentInstance' : for field setter : no Go type for 'Gtk.Container'
@@ -13248,6 +13781,19 @@ func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager 
 // Object upcasts to *Object
 func (recv *WebsiteDataManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWebsiteDataManager down casts any arbitrary Object to WebsiteDataManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WebsiteDataManager.
+*/
+func (recv *WebsiteDataManager) CastToWebsiteDataManager(object *gobject.Object) *WebsiteDataManager {
+	return WebsiteDataManagerNewFromNative(object.Native())
+}
+
+func (recv *WebsiteDataManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -13654,6 +14200,19 @@ func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
 // Object upcasts to *Object
 func (recv *WindowProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToWindowProperties down casts any arbitrary Object to WindowProperties.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowProperties.
+*/
+func (recv *WindowProperties) CastToWindowProperties(object *gobject.Object) *WindowProperties {
+	return WindowPropertiesNewFromNative(object.Native())
+}
+
+func (recv *WindowProperties) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'

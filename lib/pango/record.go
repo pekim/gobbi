@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type Analysis struct {
 
 func AnalysisNewFromNative(native unsafe.Pointer) *Analysis {
 	return &Analysis{native: native}
+}
+
+/*
+CastToAnalysis down casts any arbitrary Object to Analysis.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Analysis.
+*/
+func (recv *Analysis) CastToAnalysis(object *gobject.Object) *Analysis {
+	return AnalysisNewFromNative(object.Native())
+}
+
+func (recv *Analysis) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldShapeEngine returns the C field 'shape_engine'.
@@ -178,6 +192,19 @@ func AttrClassNewFromNative(native unsafe.Pointer) *AttrClass {
 	return &AttrClass{native: native}
 }
 
+/*
+CastToAttrClass down casts any arbitrary Object to AttrClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrClass.
+*/
+func (recv *AttrClass) CastToAttrClass(object *gobject.Object) *AttrClass {
+	return AttrClassNewFromNative(object.Native())
+}
+
+func (recv *AttrClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldType returns the C field 'type'.
 func (recv *AttrClass) FieldType() AttrType {
 	argValue := gi.StructFieldGet(attrClassStruct, recv.native, "type")
@@ -236,6 +263,19 @@ type AttrColor struct {
 
 func AttrColorNewFromNative(native unsafe.Pointer) *AttrColor {
 	return &AttrColor{native: native}
+}
+
+/*
+CastToAttrColor down casts any arbitrary Object to AttrColor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrColor.
+*/
+func (recv *AttrColor) CastToAttrColor(object *gobject.Object) *AttrColor {
+	return AttrColorNewFromNative(object.Native())
+}
+
+func (recv *AttrColor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldAttr returns the C field 'attr'.
@@ -300,6 +340,19 @@ func AttrFloatNewFromNative(native unsafe.Pointer) *AttrFloat {
 	return &AttrFloat{native: native}
 }
 
+/*
+CastToAttrFloat down casts any arbitrary Object to AttrFloat.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrFloat.
+*/
+func (recv *AttrFloat) CastToAttrFloat(object *gobject.Object) *AttrFloat {
+	return AttrFloatNewFromNative(object.Native())
+}
+
+func (recv *AttrFloat) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrFloat) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrFloatStruct, recv.native, "attr")
@@ -360,6 +413,19 @@ type AttrFontDesc struct {
 
 func AttrFontDescNewFromNative(native unsafe.Pointer) *AttrFontDesc {
 	return &AttrFontDesc{native: native}
+}
+
+/*
+CastToAttrFontDesc down casts any arbitrary Object to AttrFontDesc.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrFontDesc.
+*/
+func (recv *AttrFontDesc) CastToAttrFontDesc(object *gobject.Object) *AttrFontDesc {
+	return AttrFontDescNewFromNative(object.Native())
+}
+
+func (recv *AttrFontDesc) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldAttr returns the C field 'attr'.
@@ -424,6 +490,19 @@ func AttrFontFeaturesNewFromNative(native unsafe.Pointer) *AttrFontFeatures {
 	return &AttrFontFeatures{native: native}
 }
 
+/*
+CastToAttrFontFeatures down casts any arbitrary Object to AttrFontFeatures.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrFontFeatures.
+*/
+func (recv *AttrFontFeatures) CastToAttrFontFeatures(object *gobject.Object) *AttrFontFeatures {
+	return AttrFontFeaturesNewFromNative(object.Native())
+}
+
+func (recv *AttrFontFeatures) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrFontFeatures) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrFontFeaturesStruct, recv.native, "attr")
@@ -486,6 +565,19 @@ func AttrIntNewFromNative(native unsafe.Pointer) *AttrInt {
 	return &AttrInt{native: native}
 }
 
+/*
+CastToAttrInt down casts any arbitrary Object to AttrInt.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrInt.
+*/
+func (recv *AttrInt) CastToAttrInt(object *gobject.Object) *AttrInt {
+	return AttrIntNewFromNative(object.Native())
+}
+
+func (recv *AttrInt) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrInt) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrIntStruct, recv.native, "attr")
@@ -546,6 +638,19 @@ type AttrIterator struct {
 
 func AttrIteratorNewFromNative(native unsafe.Pointer) *AttrIterator {
 	return &AttrIterator{native: native}
+}
+
+/*
+CastToAttrIterator down casts any arbitrary Object to AttrIterator.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrIterator.
+*/
+func (recv *AttrIterator) CastToAttrIterator(object *gobject.Object) *AttrIterator {
+	return AttrIteratorNewFromNative(object.Native())
+}
+
+func (recv *AttrIterator) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var attrIteratorCopyFunction *gi.Function
@@ -744,6 +849,19 @@ func AttrLanguageNewFromNative(native unsafe.Pointer) *AttrLanguage {
 	return &AttrLanguage{native: native}
 }
 
+/*
+CastToAttrLanguage down casts any arbitrary Object to AttrLanguage.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrLanguage.
+*/
+func (recv *AttrLanguage) CastToAttrLanguage(object *gobject.Object) *AttrLanguage {
+	return AttrLanguageNewFromNative(object.Native())
+}
+
+func (recv *AttrLanguage) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrLanguage) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrLanguageStruct, recv.native, "attr")
@@ -804,6 +922,19 @@ type AttrList struct {
 
 func AttrListNewFromNative(native unsafe.Pointer) *AttrList {
 	return &AttrList{native: native}
+}
+
+/*
+CastToAttrList down casts any arbitrary Object to AttrList.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrList.
+*/
+func (recv *AttrList) CastToAttrList(object *gobject.Object) *AttrList {
+	return AttrListNewFromNative(object.Native())
+}
+
+func (recv *AttrList) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var attrListNewFunction *gi.Function
@@ -1099,6 +1230,19 @@ func AttrShapeNewFromNative(native unsafe.Pointer) *AttrShape {
 	return &AttrShape{native: native}
 }
 
+/*
+CastToAttrShape down casts any arbitrary Object to AttrShape.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrShape.
+*/
+func (recv *AttrShape) CastToAttrShape(object *gobject.Object) *AttrShape {
+	return AttrShapeNewFromNative(object.Native())
+}
+
+func (recv *AttrShape) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrShape) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrShapeStruct, recv.native, "attr")
@@ -1187,6 +1331,19 @@ func AttrSizeNewFromNative(native unsafe.Pointer) *AttrSize {
 	return &AttrSize{native: native}
 }
 
+/*
+CastToAttrSize down casts any arbitrary Object to AttrSize.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrSize.
+*/
+func (recv *AttrSize) CastToAttrSize(object *gobject.Object) *AttrSize {
+	return AttrSizeNewFromNative(object.Native())
+}
+
+func (recv *AttrSize) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrSize) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrSizeStruct, recv.native, "attr")
@@ -1263,6 +1420,19 @@ func AttrStringNewFromNative(native unsafe.Pointer) *AttrString {
 	return &AttrString{native: native}
 }
 
+/*
+CastToAttrString down casts any arbitrary Object to AttrString.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a AttrString.
+*/
+func (recv *AttrString) CastToAttrString(object *gobject.Object) *AttrString {
+	return AttrStringNewFromNative(object.Native())
+}
+
+func (recv *AttrString) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrString) FieldAttr() *Attribute {
 	argValue := gi.StructFieldGet(attrStringStruct, recv.native, "attr")
@@ -1323,6 +1493,19 @@ type Attribute struct {
 
 func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
 	return &Attribute{native: native}
+}
+
+/*
+CastToAttribute down casts any arbitrary Object to Attribute.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Attribute.
+*/
+func (recv *Attribute) CastToAttribute(object *gobject.Object) *Attribute {
+	return AttributeNewFromNative(object.Native())
+}
+
+func (recv *Attribute) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldKlass returns the C field 'klass'.
@@ -1521,6 +1704,19 @@ type Color struct {
 
 func ColorNewFromNative(native unsafe.Pointer) *Color {
 	return &Color{native: native}
+}
+
+/*
+CastToColor down casts any arbitrary Object to Color.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Color.
+*/
+func (recv *Color) CastToColor(object *gobject.Object) *Color {
+	return ColorNewFromNative(object.Native())
+}
+
+func (recv *Color) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldRed returns the C field 'red'.
@@ -1724,6 +1920,19 @@ func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
 	return &ContextClass{native: native}
 }
 
+/*
+CastToContextClass down casts any arbitrary Object to ContextClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ContextClass.
+*/
+func (recv *ContextClass) CastToContextClass(object *gobject.Object) *ContextClass {
+	return ContextClassNewFromNative(object.Native())
+}
+
+func (recv *ContextClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // ContextClassStruct creates an uninitialised ContextClass.
 func ContextClassStruct() *ContextClass {
 	err := contextClassStruct_Set()
@@ -1756,6 +1965,19 @@ type Coverage struct {
 
 func CoverageNewFromNative(native unsafe.Pointer) *Coverage {
 	return &Coverage{native: native}
+}
+
+/*
+CastToCoverage down casts any arbitrary Object to Coverage.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Coverage.
+*/
+func (recv *Coverage) CastToCoverage(object *gobject.Object) *Coverage {
+	return CoverageNewFromNative(object.Native())
+}
+
+func (recv *Coverage) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var coverageCopyFunction *gi.Function
@@ -1978,6 +2200,19 @@ func EngineClassNewFromNative(native unsafe.Pointer) *EngineClass {
 	return &EngineClass{native: native}
 }
 
+/*
+CastToEngineClass down casts any arbitrary Object to EngineClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineClass.
+*/
+func (recv *EngineClass) CastToEngineClass(object *gobject.Object) *EngineClass {
+	return EngineClassNewFromNative(object.Native())
+}
+
+func (recv *EngineClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // EngineClassStruct creates an uninitialised EngineClass.
 func EngineClassStruct() *EngineClass {
 	err := engineClassStruct_Set()
@@ -2010,6 +2245,19 @@ type EngineInfo struct {
 
 func EngineInfoNewFromNative(native unsafe.Pointer) *EngineInfo {
 	return &EngineInfo{native: native}
+}
+
+/*
+CastToEngineInfo down casts any arbitrary Object to EngineInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineInfo.
+*/
+func (recv *EngineInfo) CastToEngineInfo(object *gobject.Object) *EngineInfo {
+	return EngineInfoNewFromNative(object.Native())
+}
+
+func (recv *EngineInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldId returns the C field 'id'.
@@ -2116,6 +2364,19 @@ func EngineLangClassNewFromNative(native unsafe.Pointer) *EngineLangClass {
 	return &EngineLangClass{native: native}
 }
 
+/*
+CastToEngineLangClass down casts any arbitrary Object to EngineLangClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineLangClass.
+*/
+func (recv *EngineLangClass) CastToEngineLangClass(object *gobject.Object) *EngineLangClass {
+	return EngineLangClassNewFromNative(object.Native())
+}
+
+func (recv *EngineLangClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'script_break' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'script_break' : for field setter : missing Type
@@ -2152,6 +2413,19 @@ type EngineScriptInfo struct {
 
 func EngineScriptInfoNewFromNative(native unsafe.Pointer) *EngineScriptInfo {
 	return &EngineScriptInfo{native: native}
+}
+
+/*
+CastToEngineScriptInfo down casts any arbitrary Object to EngineScriptInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineScriptInfo.
+*/
+func (recv *EngineScriptInfo) CastToEngineScriptInfo(object *gobject.Object) *EngineScriptInfo {
+	return EngineScriptInfoNewFromNative(object.Native())
+}
+
+func (recv *EngineScriptInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldScript returns the C field 'script'.
@@ -2216,6 +2490,19 @@ func EngineShapeClassNewFromNative(native unsafe.Pointer) *EngineShapeClass {
 	return &EngineShapeClass{native: native}
 }
 
+/*
+CastToEngineShapeClass down casts any arbitrary Object to EngineShapeClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EngineShapeClass.
+*/
+func (recv *EngineShapeClass) CastToEngineShapeClass(object *gobject.Object) *EngineShapeClass {
+	return EngineShapeClassNewFromNative(object.Native())
+}
+
+func (recv *EngineShapeClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'script_shape' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'script_shape' : for field setter : missing Type
@@ -2256,6 +2543,19 @@ type FontClass struct {
 
 func FontClassNewFromNative(native unsafe.Pointer) *FontClass {
 	return &FontClass{native: native}
+}
+
+/*
+CastToFontClass down casts any arbitrary Object to FontClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontClass.
+*/
+func (recv *FontClass) CastToFontClass(object *gobject.Object) *FontClass {
+	return FontClassNewFromNative(object.Native())
+}
+
+func (recv *FontClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -2330,6 +2630,19 @@ type FontDescription struct {
 
 func FontDescriptionNewFromNative(native unsafe.Pointer) *FontDescription {
 	return &FontDescription{native: native}
+}
+
+/*
+CastToFontDescription down casts any arbitrary Object to FontDescription.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontDescription.
+*/
+func (recv *FontDescription) CastToFontDescription(object *gobject.Object) *FontDescription {
+	return FontDescriptionNewFromNative(object.Native())
+}
+
+func (recv *FontDescription) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fontDescriptionNewFunction *gi.Function
@@ -3307,6 +3620,19 @@ func FontFaceClassNewFromNative(native unsafe.Pointer) *FontFaceClass {
 	return &FontFaceClass{native: native}
 }
 
+/*
+CastToFontFaceClass down casts any arbitrary Object to FontFaceClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontFaceClass.
+*/
+func (recv *FontFaceClass) CastToFontFaceClass(object *gobject.Object) *FontFaceClass {
+	return FontFaceClassNewFromNative(object.Native())
+}
+
+func (recv *FontFaceClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -3369,6 +3695,19 @@ func FontFamilyClassNewFromNative(native unsafe.Pointer) *FontFamilyClass {
 	return &FontFamilyClass{native: native}
 }
 
+/*
+CastToFontFamilyClass down casts any arbitrary Object to FontFamilyClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontFamilyClass.
+*/
+func (recv *FontFamilyClass) CastToFontFamilyClass(object *gobject.Object) *FontFamilyClass {
+	return FontFamilyClassNewFromNative(object.Native())
+}
+
+func (recv *FontFamilyClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -3429,6 +3768,19 @@ type FontMapClass struct {
 
 func FontMapClassNewFromNative(native unsafe.Pointer) *FontMapClass {
 	return &FontMapClass{native: native}
+}
+
+/*
+CastToFontMapClass down casts any arbitrary Object to FontMapClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontMapClass.
+*/
+func (recv *FontMapClass) CastToFontMapClass(object *gobject.Object) *FontMapClass {
+	return FontMapClassNewFromNative(object.Native())
+}
+
+func (recv *FontMapClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -3509,6 +3861,19 @@ type FontMetrics struct {
 
 func FontMetricsNewFromNative(native unsafe.Pointer) *FontMetrics {
 	return &FontMetrics{native: native}
+}
+
+/*
+CastToFontMetrics down casts any arbitrary Object to FontMetrics.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontMetrics.
+*/
+func (recv *FontMetrics) CastToFontMetrics(object *gobject.Object) *FontMetrics {
+	return FontMetricsNewFromNative(object.Native())
+}
+
+func (recv *FontMetrics) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var fontMetricsNewFunction *gi.Function
@@ -3876,6 +4241,19 @@ func FontsetClassNewFromNative(native unsafe.Pointer) *FontsetClass {
 	return &FontsetClass{native: native}
 }
 
+/*
+CastToFontsetClass down casts any arbitrary Object to FontsetClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontsetClass.
+*/
+func (recv *FontsetClass) CastToFontsetClass(object *gobject.Object) *FontsetClass {
+	return FontsetClassNewFromNative(object.Native())
+}
+
+func (recv *FontsetClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -3946,6 +4324,19 @@ func FontsetSimpleClassNewFromNative(native unsafe.Pointer) *FontsetSimpleClass 
 	return &FontsetSimpleClass{native: native}
 }
 
+/*
+CastToFontsetSimpleClass down casts any arbitrary Object to FontsetSimpleClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FontsetSimpleClass.
+*/
+func (recv *FontsetSimpleClass) CastToFontsetSimpleClass(object *gobject.Object) *FontsetSimpleClass {
+	return FontsetSimpleClassNewFromNative(object.Native())
+}
+
+func (recv *FontsetSimpleClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FontsetSimpleClassStruct creates an uninitialised FontsetSimpleClass.
 func FontsetSimpleClassStruct() *FontsetSimpleClass {
 	err := fontsetSimpleClassStruct_Set()
@@ -3978,6 +4369,19 @@ type GlyphGeometry struct {
 
 func GlyphGeometryNewFromNative(native unsafe.Pointer) *GlyphGeometry {
 	return &GlyphGeometry{native: native}
+}
+
+/*
+CastToGlyphGeometry down casts any arbitrary Object to GlyphGeometry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphGeometry.
+*/
+func (recv *GlyphGeometry) CastToGlyphGeometry(object *gobject.Object) *GlyphGeometry {
+	return GlyphGeometryNewFromNative(object.Native())
+}
+
+func (recv *GlyphGeometry) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldWidth returns the C field 'width'.
@@ -4056,6 +4460,19 @@ func GlyphInfoNewFromNative(native unsafe.Pointer) *GlyphInfo {
 	return &GlyphInfo{native: native}
 }
 
+/*
+CastToGlyphInfo down casts any arbitrary Object to GlyphInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphInfo.
+*/
+func (recv *GlyphInfo) CastToGlyphInfo(object *gobject.Object) *GlyphInfo {
+	return GlyphInfoNewFromNative(object.Native())
+}
+
+func (recv *GlyphInfo) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldGlyph returns the C field 'glyph'.
 func (recv *GlyphInfo) FieldGlyph() Glyph {
 	argValue := gi.StructFieldGet(glyphInfoStruct, recv.native, "glyph")
@@ -4130,6 +4547,19 @@ type GlyphItem struct {
 
 func GlyphItemNewFromNative(native unsafe.Pointer) *GlyphItem {
 	return &GlyphItem{native: native}
+}
+
+/*
+CastToGlyphItem down casts any arbitrary Object to GlyphItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphItem.
+*/
+func (recv *GlyphItem) CastToGlyphItem(object *gobject.Object) *GlyphItem {
+	return GlyphItemNewFromNative(object.Native())
+}
+
+func (recv *GlyphItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldItem returns the C field 'item'.
@@ -4292,6 +4722,19 @@ type GlyphItemIter struct {
 
 func GlyphItemIterNewFromNative(native unsafe.Pointer) *GlyphItemIter {
 	return &GlyphItemIter{native: native}
+}
+
+/*
+CastToGlyphItemIter down casts any arbitrary Object to GlyphItemIter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphItemIter.
+*/
+func (recv *GlyphItemIter) CastToGlyphItemIter(object *gobject.Object) *GlyphItemIter {
+	return GlyphItemIterNewFromNative(object.Native())
+}
+
+func (recv *GlyphItemIter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldGlyphItem returns the C field 'glyph_item'.
@@ -4630,6 +5073,19 @@ type GlyphString struct {
 
 func GlyphStringNewFromNative(native unsafe.Pointer) *GlyphString {
 	return &GlyphString{native: native}
+}
+
+/*
+CastToGlyphString down casts any arbitrary Object to GlyphString.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphString.
+*/
+func (recv *GlyphString) CastToGlyphString(object *gobject.Object) *GlyphString {
+	return GlyphStringNewFromNative(object.Native())
+}
+
+func (recv *GlyphString) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldNumGlyphs returns the C field 'num_glyphs'.
@@ -4980,6 +5436,19 @@ func GlyphVisAttrNewFromNative(native unsafe.Pointer) *GlyphVisAttr {
 	return &GlyphVisAttr{native: native}
 }
 
+/*
+CastToGlyphVisAttr down casts any arbitrary Object to GlyphVisAttr.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GlyphVisAttr.
+*/
+func (recv *GlyphVisAttr) CastToGlyphVisAttr(object *gobject.Object) *GlyphVisAttr {
+	return GlyphVisAttrNewFromNative(object.Native())
+}
+
+func (recv *GlyphVisAttr) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldIsClusterStart returns the C field 'is_cluster_start'.
 func (recv *GlyphVisAttr) FieldIsClusterStart() uint32 {
 	argValue := gi.StructFieldGet(glyphVisAttrStruct, recv.native, "is_cluster_start")
@@ -5026,6 +5495,19 @@ type IncludedModule struct {
 
 func IncludedModuleNewFromNative(native unsafe.Pointer) *IncludedModule {
 	return &IncludedModule{native: native}
+}
+
+/*
+CastToIncludedModule down casts any arbitrary Object to IncludedModule.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a IncludedModule.
+*/
+func (recv *IncludedModule) CastToIncludedModule(object *gobject.Object) *IncludedModule {
+	return IncludedModuleNewFromNative(object.Native())
+}
+
+func (recv *IncludedModule) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'list' : for field getter : missing Type
@@ -5076,6 +5558,19 @@ type Item struct {
 
 func ItemNewFromNative(native unsafe.Pointer) *Item {
 	return &Item{native: native}
+}
+
+/*
+CastToItem down casts any arbitrary Object to Item.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Item.
+*/
+func (recv *Item) CastToItem(object *gobject.Object) *Item {
+	return ItemNewFromNative(object.Native())
+}
+
+func (recv *Item) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldOffset returns the C field 'offset'.
@@ -5277,6 +5772,19 @@ func LanguageNewFromNative(native unsafe.Pointer) *Language {
 	return &Language{native: native}
 }
 
+/*
+CastToLanguage down casts any arbitrary Object to Language.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Language.
+*/
+func (recv *Language) CastToLanguage(object *gobject.Object) *Language {
+	return LanguageNewFromNative(object.Native())
+}
+
+func (recv *Language) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var languageGetSampleStringFunction *gi.Function
 var languageGetSampleStringFunction_Once sync.Once
 
@@ -5473,6 +5981,19 @@ func LayoutClassNewFromNative(native unsafe.Pointer) *LayoutClass {
 	return &LayoutClass{native: native}
 }
 
+/*
+CastToLayoutClass down casts any arbitrary Object to LayoutClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LayoutClass.
+*/
+func (recv *LayoutClass) CastToLayoutClass(object *gobject.Object) *LayoutClass {
+	return LayoutClassNewFromNative(object.Native())
+}
+
+func (recv *LayoutClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // LayoutClassStruct creates an uninitialised LayoutClass.
 func LayoutClassStruct() *LayoutClass {
 	err := layoutClassStruct_Set()
@@ -5505,6 +6026,19 @@ type LayoutIter struct {
 
 func LayoutIterNewFromNative(native unsafe.Pointer) *LayoutIter {
 	return &LayoutIter{native: native}
+}
+
+/*
+CastToLayoutIter down casts any arbitrary Object to LayoutIter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LayoutIter.
+*/
+func (recv *LayoutIter) CastToLayoutIter(object *gobject.Object) *LayoutIter {
+	return LayoutIterNewFromNative(object.Native())
+}
+
+func (recv *LayoutIter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var layoutIterAtLastLineFunction *gi.Function
@@ -6122,6 +6656,19 @@ func LayoutLineNewFromNative(native unsafe.Pointer) *LayoutLine {
 	return &LayoutLine{native: native}
 }
 
+/*
+CastToLayoutLine down casts any arbitrary Object to LayoutLine.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LayoutLine.
+*/
+func (recv *LayoutLine) CastToLayoutLine(object *gobject.Object) *LayoutLine {
+	return LayoutLineNewFromNative(object.Native())
+}
+
+func (recv *LayoutLine) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldLayout returns the C field 'layout'.
 func (recv *LayoutLine) FieldLayout() *Layout {
 	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "layout")
@@ -6428,6 +6975,19 @@ func LogAttrNewFromNative(native unsafe.Pointer) *LogAttr {
 	return &LogAttr{native: native}
 }
 
+/*
+CastToLogAttr down casts any arbitrary Object to LogAttr.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LogAttr.
+*/
+func (recv *LogAttr) CastToLogAttr(object *gobject.Object) *LogAttr {
+	return LogAttrNewFromNative(object.Native())
+}
+
+func (recv *LogAttr) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldIsLineBreak returns the C field 'is_line_break'.
 func (recv *LogAttr) FieldIsLineBreak() uint32 {
 	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_line_break")
@@ -6644,6 +7204,19 @@ func MapNewFromNative(native unsafe.Pointer) *Map {
 	return &Map{native: native}
 }
 
+/*
+CastToMap down casts any arbitrary Object to Map.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Map.
+*/
+func (recv *Map) CastToMap(object *gobject.Object) *Map {
+	return MapNewFromNative(object.Native())
+}
+
+func (recv *Map) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var mapGetEngineFunction *gi.Function
 var mapGetEngineFunction_Once sync.Once
 
@@ -6713,6 +7286,19 @@ func MapEntryNewFromNative(native unsafe.Pointer) *MapEntry {
 	return &MapEntry{native: native}
 }
 
+/*
+CastToMapEntry down casts any arbitrary Object to MapEntry.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MapEntry.
+*/
+func (recv *MapEntry) CastToMapEntry(object *gobject.Object) *MapEntry {
+	return MapEntryNewFromNative(object.Native())
+}
+
+func (recv *MapEntry) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // MapEntryStruct creates an uninitialised MapEntry.
 func MapEntryStruct() *MapEntry {
 	err := mapEntryStruct_Set()
@@ -6745,6 +7331,19 @@ type Matrix struct {
 
 func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
 	return &Matrix{native: native}
+}
+
+/*
+CastToMatrix down casts any arbitrary Object to Matrix.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Matrix.
+*/
+func (recv *Matrix) CastToMatrix(object *gobject.Object) *Matrix {
+	return MatrixNewFromNative(object.Native())
+}
+
+func (recv *Matrix) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldXx returns the C field 'xx'.
@@ -7244,6 +7843,19 @@ func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
+/*
+CastToRectangle down casts any arbitrary Object to Rectangle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Rectangle.
+*/
+func (recv *Rectangle) CastToRectangle(object *gobject.Object) *Rectangle {
+	return RectangleNewFromNative(object.Native())
+}
+
+func (recv *Rectangle) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "x")
@@ -7332,6 +7944,19 @@ type RendererClass struct {
 
 func RendererClassNewFromNative(native unsafe.Pointer) *RendererClass {
 	return &RendererClass{native: native}
+}
+
+/*
+CastToRendererClass down casts any arbitrary Object to RendererClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RendererClass.
+*/
+func (recv *RendererClass) CastToRendererClass(object *gobject.Object) *RendererClass {
+	return RendererClassNewFromNative(object.Native())
+}
+
+func (recv *RendererClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'draw_glyphs' : for field getter : missing Type
@@ -7424,6 +8049,19 @@ func RendererPrivateNewFromNative(native unsafe.Pointer) *RendererPrivate {
 	return &RendererPrivate{native: native}
 }
 
+/*
+CastToRendererPrivate down casts any arbitrary Object to RendererPrivate.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RendererPrivate.
+*/
+func (recv *RendererPrivate) CastToRendererPrivate(object *gobject.Object) *RendererPrivate {
+	return RendererPrivateNewFromNative(object.Native())
+}
+
+func (recv *RendererPrivate) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // RendererPrivateStruct creates an uninitialised RendererPrivate.
 func RendererPrivateStruct() *RendererPrivate {
 	err := rendererPrivateStruct_Set()
@@ -7456,6 +8094,19 @@ type ScriptIter struct {
 
 func ScriptIterNewFromNative(native unsafe.Pointer) *ScriptIter {
 	return &ScriptIter{native: native}
+}
+
+/*
+CastToScriptIter down casts any arbitrary Object to ScriptIter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ScriptIter.
+*/
+func (recv *ScriptIter) CastToScriptIter(object *gobject.Object) *ScriptIter {
+	return ScriptIterNewFromNative(object.Native())
+}
+
+func (recv *ScriptIter) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var scriptIterFreeFunction *gi.Function
@@ -7584,6 +8235,19 @@ type TabArray struct {
 
 func TabArrayNewFromNative(native unsafe.Pointer) *TabArray {
 	return &TabArray{native: native}
+}
+
+/*
+CastToTabArray down casts any arbitrary Object to TabArray.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TabArray.
+*/
+func (recv *TabArray) CastToTabArray(object *gobject.Object) *TabArray {
+	return TabArrayNewFromNative(object.Native())
+}
+
+func (recv *TabArray) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var tabArrayNewFunction *gi.Function

@@ -4,6 +4,7 @@ package atk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type ActionIface struct {
 
 func ActionIfaceNewFromNative(native unsafe.Pointer) *ActionIface {
 	return &ActionIface{native: native}
+}
+
+/*
+CastToActionIface down casts any arbitrary Object to ActionIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ActionIface.
+*/
+func (recv *ActionIface) CastToActionIface(object *gobject.Object) *ActionIface {
+	return ActionIfaceNewFromNative(object.Native())
+}
+
+func (recv *ActionIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'do_action' : for field getter : missing Type
@@ -90,6 +104,19 @@ func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
 	return &Attribute{native: native}
 }
 
+/*
+CastToAttribute down casts any arbitrary Object to Attribute.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Attribute.
+*/
+func (recv *Attribute) CastToAttribute(object *gobject.Object) *Attribute {
+	return AttributeNewFromNative(object.Native())
+}
+
+func (recv *Attribute) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldName returns the C field 'name'.
 func (recv *Attribute) FieldName() string {
 	argValue := gi.StructFieldGet(attributeStruct, recv.native, "name")
@@ -150,6 +177,19 @@ type ComponentIface struct {
 
 func ComponentIfaceNewFromNative(native unsafe.Pointer) *ComponentIface {
 	return &ComponentIface{native: native}
+}
+
+/*
+CastToComponentIface down casts any arbitrary Object to ComponentIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ComponentIface.
+*/
+func (recv *ComponentIface) CastToComponentIface(object *gobject.Object) *ComponentIface {
+	return ComponentIfaceNewFromNative(object.Native())
+}
+
+func (recv *ComponentIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'add_focus_handler' : for field getter : missing Type
@@ -254,6 +294,19 @@ func DocumentIfaceNewFromNative(native unsafe.Pointer) *DocumentIface {
 	return &DocumentIface{native: native}
 }
 
+/*
+CastToDocumentIface down casts any arbitrary Object to DocumentIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a DocumentIface.
+*/
+func (recv *DocumentIface) CastToDocumentIface(object *gobject.Object) *DocumentIface {
+	return DocumentIfaceNewFromNative(object.Native())
+}
+
+func (recv *DocumentIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -324,6 +377,19 @@ func EditableTextIfaceNewFromNative(native unsafe.Pointer) *EditableTextIface {
 	return &EditableTextIface{native: native}
 }
 
+/*
+CastToEditableTextIface down casts any arbitrary Object to EditableTextIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a EditableTextIface.
+*/
+func (recv *EditableTextIface) CastToEditableTextIface(object *gobject.Object) *EditableTextIface {
+	return EditableTextIfaceNewFromNative(object.Native())
+}
+
+func (recv *EditableTextIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent_interface' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -390,6 +456,19 @@ func GObjectAccessibleClassNewFromNative(native unsafe.Pointer) *GObjectAccessib
 	return &GObjectAccessibleClass{native: native}
 }
 
+/*
+CastToGObjectAccessibleClass down casts any arbitrary Object to GObjectAccessibleClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GObjectAccessibleClass.
+*/
+func (recv *GObjectAccessibleClass) CastToGObjectAccessibleClass(object *gobject.Object) *GObjectAccessibleClass {
+	return GObjectAccessibleClassNewFromNative(object.Native())
+}
+
+func (recv *GObjectAccessibleClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *GObjectAccessibleClass) FieldParentClass() *ObjectClass {
 	argValue := gi.StructFieldGet(gObjectAccessibleClassStruct, recv.native, "parent_class")
@@ -444,6 +523,19 @@ type HyperlinkClass struct {
 
 func HyperlinkClassNewFromNative(native unsafe.Pointer) *HyperlinkClass {
 	return &HyperlinkClass{native: native}
+}
+
+/*
+CastToHyperlinkClass down casts any arbitrary Object to HyperlinkClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HyperlinkClass.
+*/
+func (recv *HyperlinkClass) CastToHyperlinkClass(object *gobject.Object) *HyperlinkClass {
+	return HyperlinkClassNewFromNative(object.Native())
+}
+
+func (recv *HyperlinkClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -524,6 +616,19 @@ func HyperlinkImplIfaceNewFromNative(native unsafe.Pointer) *HyperlinkImplIface 
 	return &HyperlinkImplIface{native: native}
 }
 
+/*
+CastToHyperlinkImplIface down casts any arbitrary Object to HyperlinkImplIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HyperlinkImplIface.
+*/
+func (recv *HyperlinkImplIface) CastToHyperlinkImplIface(object *gobject.Object) *HyperlinkImplIface {
+	return HyperlinkImplIfaceNewFromNative(object.Native())
+}
+
+func (recv *HyperlinkImplIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -564,6 +669,19 @@ type HypertextIface struct {
 
 func HypertextIfaceNewFromNative(native unsafe.Pointer) *HypertextIface {
 	return &HypertextIface{native: native}
+}
+
+/*
+CastToHypertextIface down casts any arbitrary Object to HypertextIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a HypertextIface.
+*/
+func (recv *HypertextIface) CastToHypertextIface(object *gobject.Object) *HypertextIface {
+	return HypertextIfaceNewFromNative(object.Native())
+}
+
+func (recv *HypertextIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -618,6 +736,19 @@ type ImageIface struct {
 
 func ImageIfaceNewFromNative(native unsafe.Pointer) *ImageIface {
 	return &ImageIface{native: native}
+}
+
+/*
+CastToImageIface down casts any arbitrary Object to ImageIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ImageIface.
+*/
+func (recv *ImageIface) CastToImageIface(object *gobject.Object) *ImageIface {
+	return ImageIfaceNewFromNative(object.Native())
+}
+
+func (recv *ImageIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -676,6 +807,19 @@ type Implementor struct {
 
 func ImplementorNewFromNative(native unsafe.Pointer) *Implementor {
 	return &Implementor{native: native}
+}
+
+/*
+CastToImplementor down casts any arbitrary Object to Implementor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Implementor.
+*/
+func (recv *Implementor) CastToImplementor(object *gobject.Object) *Implementor {
+	return ImplementorNewFromNative(object.Native())
+}
+
+func (recv *Implementor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var implementorRefAccessibleFunction *gi.Function
@@ -742,6 +886,19 @@ type KeyEventStruct struct {
 
 func KeyEventStructNewFromNative(native unsafe.Pointer) *KeyEventStruct {
 	return &KeyEventStruct{native: native}
+}
+
+/*
+CastToKeyEventStruct down casts any arbitrary Object to KeyEventStruct.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a KeyEventStruct.
+*/
+func (recv *KeyEventStruct) CastToKeyEventStruct(object *gobject.Object) *KeyEventStruct {
+	return KeyEventStructNewFromNative(object.Native())
+}
+
+func (recv *KeyEventStruct) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldType returns the C field 'type'.
@@ -876,6 +1033,19 @@ func MiscClassNewFromNative(native unsafe.Pointer) *MiscClass {
 	return &MiscClass{native: native}
 }
 
+/*
+CastToMiscClass down casts any arbitrary Object to MiscClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MiscClass.
+*/
+func (recv *MiscClass) CastToMiscClass(object *gobject.Object) *MiscClass {
+	return MiscClassNewFromNative(object.Native())
+}
+
+func (recv *MiscClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -926,6 +1096,19 @@ func NoOpObjectClassNewFromNative(native unsafe.Pointer) *NoOpObjectClass {
 	return &NoOpObjectClass{native: native}
 }
 
+/*
+CastToNoOpObjectClass down casts any arbitrary Object to NoOpObjectClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NoOpObjectClass.
+*/
+func (recv *NoOpObjectClass) CastToNoOpObjectClass(object *gobject.Object) *NoOpObjectClass {
+	return NoOpObjectClassNewFromNative(object.Native())
+}
+
+func (recv *NoOpObjectClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NoOpObjectClass) FieldParentClass() *ObjectClass {
 	argValue := gi.StructFieldGet(noOpObjectClassStruct, recv.native, "parent_class")
@@ -974,6 +1157,19 @@ func NoOpObjectFactoryClassNewFromNative(native unsafe.Pointer) *NoOpObjectFacto
 	return &NoOpObjectFactoryClass{native: native}
 }
 
+/*
+CastToNoOpObjectFactoryClass down casts any arbitrary Object to NoOpObjectFactoryClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a NoOpObjectFactoryClass.
+*/
+func (recv *NoOpObjectFactoryClass) CastToNoOpObjectFactoryClass(object *gobject.Object) *NoOpObjectFactoryClass {
+	return NoOpObjectFactoryClassNewFromNative(object.Native())
+}
+
+func (recv *NoOpObjectFactoryClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NoOpObjectFactoryClass) FieldParentClass() *ObjectFactoryClass {
 	argValue := gi.StructFieldGet(noOpObjectFactoryClassStruct, recv.native, "parent_class")
@@ -1020,6 +1216,19 @@ type ObjectClass struct {
 
 func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
 	return &ObjectClass{native: native}
+}
+
+/*
+CastToObjectClass down casts any arbitrary Object to ObjectClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ObjectClass.
+*/
+func (recv *ObjectClass) CastToObjectClass(object *gobject.Object) *ObjectClass {
+	return ObjectClassNewFromNative(object.Native())
+}
+
+func (recv *ObjectClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1168,6 +1377,19 @@ func ObjectFactoryClassNewFromNative(native unsafe.Pointer) *ObjectFactoryClass 
 	return &ObjectFactoryClass{native: native}
 }
 
+/*
+CastToObjectFactoryClass down casts any arbitrary Object to ObjectFactoryClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ObjectFactoryClass.
+*/
+func (recv *ObjectFactoryClass) CastToObjectFactoryClass(object *gobject.Object) *ObjectFactoryClass {
+	return ObjectFactoryClassNewFromNative(object.Native())
+}
+
+func (recv *ObjectFactoryClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -1226,6 +1448,19 @@ func PlugClassNewFromNative(native unsafe.Pointer) *PlugClass {
 	return &PlugClass{native: native}
 }
 
+/*
+CastToPlugClass down casts any arbitrary Object to PlugClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PlugClass.
+*/
+func (recv *PlugClass) CastToPlugClass(object *gobject.Object) *PlugClass {
+	return PlugClassNewFromNative(object.Native())
+}
+
+func (recv *PlugClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PlugClass) FieldParentClass() *ObjectClass {
 	argValue := gi.StructFieldGet(plugClassStruct, recv.native, "parent_class")
@@ -1276,6 +1511,19 @@ type PropertyValues struct {
 
 func PropertyValuesNewFromNative(native unsafe.Pointer) *PropertyValues {
 	return &PropertyValues{native: native}
+}
+
+/*
+CastToPropertyValues down casts any arbitrary Object to PropertyValues.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PropertyValues.
+*/
+func (recv *PropertyValues) CastToPropertyValues(object *gobject.Object) *PropertyValues {
+	return PropertyValuesNewFromNative(object.Native())
+}
+
+func (recv *PropertyValues) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldPropertyName returns the C field 'property_name'.
@@ -1332,6 +1580,19 @@ type Range struct {
 
 func RangeNewFromNative(native unsafe.Pointer) *Range {
 	return &Range{native: native}
+}
+
+/*
+CastToRange down casts any arbitrary Object to Range.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Range.
+*/
+func (recv *Range) CastToRange(object *gobject.Object) *Range {
+	return RangeNewFromNative(object.Native())
+}
+
+func (recv *Range) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var rangeNewFunction *gi.Function
@@ -1543,6 +1804,19 @@ func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
 	return &Rectangle{native: native}
 }
 
+/*
+CastToRectangle down casts any arbitrary Object to Rectangle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Rectangle.
+*/
+func (recv *Rectangle) CastToRectangle(object *gobject.Object) *Rectangle {
+	return RectangleNewFromNative(object.Native())
+}
+
+func (recv *Rectangle) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() int32 {
 	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "x")
@@ -1633,6 +1907,19 @@ func RegistryClassNewFromNative(native unsafe.Pointer) *RegistryClass {
 	return &RegistryClass{native: native}
 }
 
+/*
+CastToRegistryClass down casts any arbitrary Object to RegistryClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RegistryClass.
+*/
+func (recv *RegistryClass) CastToRegistryClass(object *gobject.Object) *RegistryClass {
+	return RegistryClassNewFromNative(object.Native())
+}
+
+func (recv *RegistryClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -1671,6 +1958,19 @@ func RelationClassNewFromNative(native unsafe.Pointer) *RelationClass {
 	return &RelationClass{native: native}
 }
 
+/*
+CastToRelationClass down casts any arbitrary Object to RelationClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RelationClass.
+*/
+func (recv *RelationClass) CastToRelationClass(object *gobject.Object) *RelationClass {
+	return RelationClassNewFromNative(object.Native())
+}
+
+func (recv *RelationClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -1707,6 +2007,19 @@ type RelationSetClass struct {
 
 func RelationSetClassNewFromNative(native unsafe.Pointer) *RelationSetClass {
 	return &RelationSetClass{native: native}
+}
+
+/*
+CastToRelationSetClass down casts any arbitrary Object to RelationSetClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a RelationSetClass.
+*/
+func (recv *RelationSetClass) CastToRelationSetClass(object *gobject.Object) *RelationSetClass {
+	return RelationSetClassNewFromNative(object.Native())
+}
+
+func (recv *RelationSetClass) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
@@ -1753,6 +2066,19 @@ type SelectionIface struct {
 
 func SelectionIfaceNewFromNative(native unsafe.Pointer) *SelectionIface {
 	return &SelectionIface{native: native}
+}
+
+/*
+CastToSelectionIface down casts any arbitrary Object to SelectionIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SelectionIface.
+*/
+func (recv *SelectionIface) CastToSelectionIface(object *gobject.Object) *SelectionIface {
+	return SelectionIfaceNewFromNative(object.Native())
+}
+
+func (recv *SelectionIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -1825,6 +2151,19 @@ func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
 	return &SocketClass{native: native}
 }
 
+/*
+CastToSocketClass down casts any arbitrary Object to SocketClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SocketClass.
+*/
+func (recv *SocketClass) CastToSocketClass(object *gobject.Object) *SocketClass {
+	return SocketClassNewFromNative(object.Native())
+}
+
+func (recv *SocketClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketClass) FieldParentClass() *ObjectClass {
 	argValue := gi.StructFieldGet(socketClassStruct, recv.native, "parent_class")
@@ -1877,6 +2216,19 @@ func StateSetClassNewFromNative(native unsafe.Pointer) *StateSetClass {
 	return &StateSetClass{native: native}
 }
 
+/*
+CastToStateSetClass down casts any arbitrary Object to StateSetClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StateSetClass.
+*/
+func (recv *StateSetClass) CastToStateSetClass(object *gobject.Object) *StateSetClass {
+	return StateSetClassNewFromNative(object.Native())
+}
+
+func (recv *StateSetClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -1913,6 +2265,19 @@ type StreamableContentIface struct {
 
 func StreamableContentIfaceNewFromNative(native unsafe.Pointer) *StreamableContentIface {
 	return &StreamableContentIface{native: native}
+}
+
+/*
+CastToStreamableContentIface down casts any arbitrary Object to StreamableContentIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StreamableContentIface.
+*/
+func (recv *StreamableContentIface) CastToStreamableContentIface(object *gobject.Object) *StreamableContentIface {
+	return StreamableContentIfaceNewFromNative(object.Native())
+}
+
+func (recv *StreamableContentIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -1981,6 +2346,19 @@ func TableCellIfaceNewFromNative(native unsafe.Pointer) *TableCellIface {
 	return &TableCellIface{native: native}
 }
 
+/*
+CastToTableCellIface down casts any arbitrary Object to TableCellIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TableCellIface.
+*/
+func (recv *TableCellIface) CastToTableCellIface(object *gobject.Object) *TableCellIface {
+	return TableCellIfaceNewFromNative(object.Native())
+}
+
+func (recv *TableCellIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'get_column_span' : for field getter : missing Type
 
 // UNSUPPORTED : C value 'get_column_span' : for field setter : missing Type
@@ -2041,6 +2419,19 @@ type TableIface struct {
 
 func TableIfaceNewFromNative(native unsafe.Pointer) *TableIface {
 	return &TableIface{native: native}
+}
+
+/*
+CastToTableIface down casts any arbitrary Object to TableIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TableIface.
+*/
+func (recv *TableIface) CastToTableIface(object *gobject.Object) *TableIface {
+	return TableIfaceNewFromNative(object.Native())
+}
+
+func (recv *TableIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2225,6 +2616,19 @@ func TextIfaceNewFromNative(native unsafe.Pointer) *TextIface {
 	return &TextIface{native: native}
 }
 
+/*
+CastToTextIface down casts any arbitrary Object to TextIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextIface.
+*/
+func (recv *TextIface) CastToTextIface(object *gobject.Object) *TextIface {
+	return TextIfaceNewFromNative(object.Native())
+}
+
+func (recv *TextIface) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
@@ -2367,6 +2771,19 @@ func TextRangeNewFromNative(native unsafe.Pointer) *TextRange {
 	return &TextRange{native: native}
 }
 
+/*
+CastToTextRange down casts any arbitrary Object to TextRange.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextRange.
+*/
+func (recv *TextRange) CastToTextRange(object *gobject.Object) *TextRange {
+	return TextRangeNewFromNative(object.Native())
+}
+
+func (recv *TextRange) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldBounds returns the C field 'bounds'.
 func (recv *TextRange) FieldBounds() *TextRectangle {
 	argValue := gi.StructFieldGet(textRangeStruct, recv.native, "bounds")
@@ -2455,6 +2872,19 @@ type TextRectangle struct {
 
 func TextRectangleNewFromNative(native unsafe.Pointer) *TextRectangle {
 	return &TextRectangle{native: native}
+}
+
+/*
+CastToTextRectangle down casts any arbitrary Object to TextRectangle.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a TextRectangle.
+*/
+func (recv *TextRectangle) CastToTextRectangle(object *gobject.Object) *TextRectangle {
+	return TextRectangleNewFromNative(object.Native())
+}
+
+func (recv *TextRectangle) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // FieldX returns the C field 'x'.
@@ -2547,6 +2977,19 @@ func UtilClassNewFromNative(native unsafe.Pointer) *UtilClass {
 	return &UtilClass{native: native}
 }
 
+/*
+CastToUtilClass down casts any arbitrary Object to UtilClass.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a UtilClass.
+*/
+func (recv *UtilClass) CastToUtilClass(object *gobject.Object) *UtilClass {
+	return UtilClassNewFromNative(object.Native())
+}
+
+func (recv *UtilClass) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
@@ -2611,6 +3054,19 @@ type ValueIface struct {
 
 func ValueIfaceNewFromNative(native unsafe.Pointer) *ValueIface {
 	return &ValueIface{native: native}
+}
+
+/*
+CastToValueIface down casts any arbitrary Object to ValueIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a ValueIface.
+*/
+func (recv *ValueIface) CastToValueIface(object *gobject.Object) *ValueIface {
+	return ValueIfaceNewFromNative(object.Native())
+}
+
+func (recv *ValueIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
@@ -2689,6 +3145,19 @@ type WindowIface struct {
 
 func WindowIfaceNewFromNative(native unsafe.Pointer) *WindowIface {
 	return &WindowIface{native: native}
+}
+
+/*
+CastToWindowIface down casts any arbitrary Object to WindowIface.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a WindowIface.
+*/
+func (recv *WindowIface) CastToWindowIface(object *gobject.Object) *WindowIface {
+	return WindowIfaceNewFromNative(object.Native())
+}
+
+func (recv *WindowIface) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'

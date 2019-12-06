@@ -4,6 +4,7 @@ package freetype2
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -26,6 +27,19 @@ type Bitmap struct {
 
 func BitmapNewFromNative(native unsafe.Pointer) *Bitmap {
 	return &Bitmap{native: native}
+}
+
+/*
+CastToBitmap down casts any arbitrary Object to Bitmap.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Bitmap.
+*/
+func (recv *Bitmap) CastToBitmap(object *gobject.Object) *Bitmap {
+	return BitmapNewFromNative(object.Native())
+}
+
+func (recv *Bitmap) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // BitmapStruct creates an uninitialised Bitmap.
@@ -62,6 +76,19 @@ func FaceNewFromNative(native unsafe.Pointer) *Face {
 	return &Face{native: native}
 }
 
+/*
+CastToFace down casts any arbitrary Object to Face.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Face.
+*/
+func (recv *Face) CastToFace(object *gobject.Object) *Face {
+	return FaceNewFromNative(object.Native())
+}
+
+func (recv *Face) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FaceStruct creates an uninitialised Face.
 func FaceStruct() *Face {
 	err := faceStruct_Set()
@@ -94,6 +121,19 @@ type Library struct {
 
 func LibraryNewFromNative(native unsafe.Pointer) *Library {
 	return &Library{native: native}
+}
+
+/*
+CastToLibrary down casts any arbitrary Object to Library.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Library.
+*/
+func (recv *Library) CastToLibrary(object *gobject.Object) *Library {
+	return LibraryNewFromNative(object.Native())
+}
+
+func (recv *Library) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // LibraryStruct creates an uninitialised Library.

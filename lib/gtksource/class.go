@@ -39,6 +39,19 @@ func (recv *Buffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToBuffer down casts any arbitrary Object to Buffer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Buffer.
+*/
+func (recv *Buffer) CastToBuffer(object *gobject.Object) *Buffer {
+	return BufferNewFromNative(object.Native())
+}
+
+func (recv *Buffer) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextBuffer'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Gtk.TextBuffer'
@@ -691,6 +704,19 @@ func (recv *Completion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCompletion down casts any arbitrary Object to Completion.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Completion.
+*/
+func (recv *Completion) CastToCompletion(object *gobject.Object) *Completion {
+	return CompletionNewFromNative(object.Native())
+}
+
+func (recv *Completion) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -898,6 +924,19 @@ func (recv *CompletionContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCompletionContext down casts any arbitrary Object to CompletionContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CompletionContext.
+*/
+func (recv *CompletionContext) CastToCompletionContext(object *gobject.Object) *CompletionContext {
+	return CompletionContextNewFromNative(object.Native())
+}
+
+func (recv *CompletionContext) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.InitiallyUnowned'
@@ -969,6 +1008,19 @@ func (recv *CompletionInfo) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CompletionInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCompletionInfo down casts any arbitrary Object to CompletionInfo.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CompletionInfo.
+*/
+func (recv *CompletionInfo) CastToCompletionInfo(object *gobject.Object) *CompletionInfo {
+	return CompletionInfoNewFromNative(object.Native())
+}
+
+func (recv *CompletionInfo) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Window'
@@ -1047,6 +1099,19 @@ func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
 // Object upcasts to *Object
 func (recv *CompletionItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToCompletionItem down casts any arbitrary Object to CompletionItem.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CompletionItem.
+*/
+func (recv *CompletionItem) CastToCompletionItem(object *gobject.Object) *CompletionItem {
+	return CompletionItemNewFromNative(object.Native())
+}
+
+func (recv *CompletionItem) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1279,6 +1344,19 @@ func (recv *CompletionWords) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToCompletionWords down casts any arbitrary Object to CompletionWords.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a CompletionWords.
+*/
+func (recv *CompletionWords) CastToCompletionWords(object *gobject.Object) *CompletionWords {
+	return CompletionWordsNewFromNative(object.Native())
+}
+
+func (recv *CompletionWords) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1325,6 +1403,19 @@ func FileNewFromNative(native unsafe.Pointer) *File {
 // Object upcasts to *Object
 func (recv *File) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFile down casts any arbitrary Object to File.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a File.
+*/
+func (recv *File) CastToFile(object *gobject.Object) *File {
+	return FileNewFromNative(object.Native())
+}
+
+func (recv *File) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -1657,6 +1748,19 @@ func (recv *FileLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToFileLoader down casts any arbitrary Object to FileLoader.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileLoader.
+*/
+func (recv *FileLoader) CastToFileLoader(object *gobject.Object) *FileLoader {
+	return FileLoaderNewFromNative(object.Native())
+}
+
+func (recv *FileLoader) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -1902,6 +2006,19 @@ func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
 // Object upcasts to *Object
 func (recv *FileSaver) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToFileSaver down casts any arbitrary Object to FileSaver.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a FileSaver.
+*/
+func (recv *FileSaver) CastToFileSaver(object *gobject.Object) *FileSaver {
+	return FileSaverNewFromNative(object.Native())
+}
+
+func (recv *FileSaver) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'object' : for field getter : no Go type for 'GObject.Object'
@@ -2238,6 +2355,19 @@ func (recv *Gutter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGutter down casts any arbitrary Object to Gutter.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Gutter.
+*/
+func (recv *Gutter) CastToGutter(object *gobject.Object) *Gutter {
+	return GutterNewFromNative(object.Native())
+}
+
+func (recv *Gutter) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -2534,6 +2664,19 @@ func (recv *GutterRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *GutterRenderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToGutterRenderer down casts any arbitrary Object to GutterRenderer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GutterRenderer.
+*/
+func (recv *GutterRenderer) CastToGutterRenderer(object *gobject.Object) *GutterRenderer {
+	return GutterRendererNewFromNative(object.Native())
+}
+
+func (recv *GutterRenderer) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
@@ -2959,6 +3102,19 @@ func (recv *GutterRendererPixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGutterRendererPixbuf down casts any arbitrary Object to GutterRendererPixbuf.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GutterRendererPixbuf.
+*/
+func (recv *GutterRendererPixbuf) CastToGutterRendererPixbuf(object *gobject.Object) *GutterRendererPixbuf {
+	return GutterRendererPixbufNewFromNative(object.Native())
+}
+
+func (recv *GutterRendererPixbuf) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gutterRendererPixbufNewFunction *gi.Function
 var gutterRendererPixbufNewFunction_Once sync.Once
 
@@ -3153,6 +3309,19 @@ func (recv *GutterRendererText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToGutterRendererText down casts any arbitrary Object to GutterRendererText.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a GutterRendererText.
+*/
+func (recv *GutterRendererText) CastToGutterRendererText(object *gobject.Object) *GutterRendererText {
+	return GutterRendererTextNewFromNative(object.Native())
+}
+
+func (recv *GutterRendererText) Native() unsafe.Pointer {
+	return recv.native
+}
+
 var gutterRendererTextNewFunction *gi.Function
 var gutterRendererTextNewFunction_Once sync.Once
 
@@ -3333,6 +3502,19 @@ func LanguageNewFromNative(native unsafe.Pointer) *Language {
 // Object upcasts to *Object
 func (recv *Language) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToLanguage down casts any arbitrary Object to Language.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Language.
+*/
+func (recv *Language) CastToLanguage(object *gobject.Object) *Language {
+	return LanguageNewFromNative(object.Native())
+}
+
+func (recv *Language) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -3688,6 +3870,19 @@ func (recv *LanguageManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToLanguageManager down casts any arbitrary Object to LanguageManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a LanguageManager.
+*/
+func (recv *LanguageManager) CastToLanguageManager(object *gobject.Object) *LanguageManager {
+	return LanguageManagerNewFromNative(object.Native())
+}
+
+func (recv *LanguageManager) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -3910,6 +4105,19 @@ func (recv *Map) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToMap down casts any arbitrary Object to Map.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Map.
+*/
+func (recv *Map) CastToMap(object *gobject.Object) *Map {
+	return MapNewFromNative(object.Native())
+}
+
+func (recv *Map) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Map) FieldParentInstance() *View {
 	argValue := gi.ObjectFieldGet(mapObject, recv.native, "parent_instance")
@@ -4042,6 +4250,19 @@ func (recv *Mark) TextMark() *gtk.TextMark {
 // Object upcasts to *Object
 func (recv *Mark) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMark down casts any arbitrary Object to Mark.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Mark.
+*/
+func (recv *Mark) CastToMark(object *gobject.Object) *Mark {
+	return MarkNewFromNative(object.Native())
+}
+
+func (recv *Mark) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextMark'
@@ -4215,6 +4436,19 @@ func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
 // Object upcasts to *Object
 func (recv *MarkAttributes) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToMarkAttributes down casts any arbitrary Object to MarkAttributes.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a MarkAttributes.
+*/
+func (recv *MarkAttributes) CastToMarkAttributes(object *gobject.Object) *MarkAttributes {
+	return MarkAttributesNewFromNative(object.Native())
+}
+
+func (recv *MarkAttributes) Native() unsafe.Pointer {
+	return recv.native
 }
 
 var markAttributesNewFunction *gi.Function
@@ -4471,6 +4705,19 @@ func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
 // Object upcasts to *Object
 func (recv *PrintCompositor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToPrintCompositor down casts any arbitrary Object to PrintCompositor.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a PrintCompositor.
+*/
+func (recv *PrintCompositor) CastToPrintCompositor(object *gobject.Object) *PrintCompositor {
+	return PrintCompositorNewFromNative(object.Native())
+}
+
+func (recv *PrintCompositor) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
@@ -5312,6 +5559,19 @@ func (recv *Region) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToRegion down casts any arbitrary Object to Region.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Region.
+*/
+func (recv *Region) CastToRegion(object *gobject.Object) *Region {
+	return RegionNewFromNative(object.Native())
+}
+
+func (recv *Region) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
@@ -5537,6 +5797,19 @@ func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
 // Object upcasts to *Object
 func (recv *SearchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToSearchContext down casts any arbitrary Object to SearchContext.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SearchContext.
+*/
+func (recv *SearchContext) CastToSearchContext(object *gobject.Object) *SearchContext {
+	return SearchContextNewFromNative(object.Native())
+}
+
+func (recv *SearchContext) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -5923,6 +6196,19 @@ func (recv *SearchSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSearchSettings down casts any arbitrary Object to SearchSettings.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SearchSettings.
+*/
+func (recv *SearchSettings) CastToSearchSettings(object *gobject.Object) *SearchSettings {
+	return SearchSettingsNewFromNative(object.Native())
+}
+
+func (recv *SearchSettings) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -6300,6 +6586,19 @@ func (recv *SpaceDrawer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToSpaceDrawer down casts any arbitrary Object to SpaceDrawer.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a SpaceDrawer.
+*/
+func (recv *SpaceDrawer) CastToSpaceDrawer(object *gobject.Object) *SpaceDrawer {
+	return SpaceDrawerNewFromNative(object.Native())
+}
+
+func (recv *SpaceDrawer) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
@@ -6443,6 +6742,19 @@ func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStyle down casts any arbitrary Object to Style.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Style.
+*/
+func (recv *Style) CastToStyle(object *gobject.Object) *Style {
+	return StyleNewFromNative(object.Native())
+}
+
+func (recv *Style) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'gtk_source_style_apply' : parameter 'tag' of type 'Gtk.TextTag' not supported
 
 var styleCopyFunction *gi.Function
@@ -6499,6 +6811,19 @@ func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
 // Object upcasts to *Object
 func (recv *StyleScheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStyleScheme down casts any arbitrary Object to StyleScheme.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleScheme.
+*/
+func (recv *StyleScheme) CastToStyleScheme(object *gobject.Object) *StyleScheme {
+	return StyleSchemeNewFromNative(object.Native())
+}
+
+func (recv *StyleScheme) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'base' : for field getter : no Go type for 'GObject.Object'
@@ -6757,6 +7082,19 @@ func (recv *StyleSchemeChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStyleSchemeChooserButton down casts any arbitrary Object to StyleSchemeChooserButton.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleSchemeChooserButton.
+*/
+func (recv *StyleSchemeChooserButton) CastToStyleSchemeChooserButton(object *gobject.Object) *StyleSchemeChooserButton {
+	return StyleSchemeChooserButtonNewFromNative(object.Native())
+}
+
+func (recv *StyleSchemeChooserButton) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Button'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.Button'
@@ -6835,6 +7173,19 @@ func (recv *StyleSchemeChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToStyleSchemeChooserWidget down casts any arbitrary Object to StyleSchemeChooserWidget.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleSchemeChooserWidget.
+*/
+func (recv *StyleSchemeChooserWidget) CastToStyleSchemeChooserWidget(object *gobject.Object) *StyleSchemeChooserWidget {
+	return StyleSchemeChooserWidgetNewFromNative(object.Native())
+}
+
+func (recv *StyleSchemeChooserWidget) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.Bin'
 
 // UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.Bin'
@@ -6891,6 +7242,19 @@ func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager 
 // Object upcasts to *Object
 func (recv *StyleSchemeManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToStyleSchemeManager down casts any arbitrary Object to StyleSchemeManager.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a StyleSchemeManager.
+*/
+func (recv *StyleSchemeManager) CastToStyleSchemeManager(object *gobject.Object) *StyleSchemeManager {
+	return StyleSchemeManagerNewFromNative(object.Native())
+}
+
+func (recv *StyleSchemeManager) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
@@ -7147,6 +7511,19 @@ func (recv *Tag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
 
+/*
+CastToTag down casts any arbitrary Object to Tag.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a Tag.
+*/
+func (recv *Tag) CastToTag(object *gobject.Object) *Tag {
+	return TagNewFromNative(object.Native())
+}
+
+func (recv *Tag) Native() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'Gtk.TextTag'
 
 // UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'Gtk.TextTag'
@@ -7225,6 +7602,19 @@ func (recv *View) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *View) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
+}
+
+/*
+CastToView down casts any arbitrary Object to View.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a View.
+*/
+func (recv *View) CastToView(object *gobject.Object) *View {
+	return ViewNewFromNative(object.Native())
+}
+
+func (recv *View) Native() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.TextView'

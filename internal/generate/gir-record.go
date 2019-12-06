@@ -62,6 +62,8 @@ func (r *Record) generate(f *file) {
 	r.generateType(f)
 	r.generateNewFromNative(f)
 	r.generateAncestorAccessors(f)
+	r.generateDownCast(f)
+	r.generateNativeAccessor(f)
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
@@ -138,6 +140,8 @@ func (r *Record) generateNewFromNative(f *file) {
 		Params(jen.Id(fieldNameNative).Qual("unsafe", "Pointer")).
 		Params(jen.Op("*").Id(r.goName)).
 		BlockFunc(r.generateNewFromNativeBody)
+
+	f.Line()
 }
 
 func (r *Record) generateNewFromNativeBody(g *jen.Group) {
@@ -197,6 +201,49 @@ func (r *Record) generateAncestorAccessorBody(g *jen.Group, ancestor *Class) {
 
 	// GEN: return SomeClassNewFromNative(native)
 	g.Return(ancestorNewFromNative.Call(native))
+}
+
+func (r *Record) generateDownCast(f *file) {
+	if r.namespace.Name == "GObject" || r.namespace.Name == "GLib" {
+		return
+	}
+
+	methodName := "CastTo" + r.goName
+	gobjectNs, _ := r.namespace.namespaces.byName("GObject")
+
+	f.Commentf(`%s down casts any arbitrary Object to %s.
+Exercise care, as this is a potentially dangerous function
+if the Object is not a %s.`,
+		methodName, r.goName, r.goName)
+
+	f.
+		Func().
+		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
+		Id(methodName).
+		Params(jen.
+			Id("object").
+			Op("*").Qual(gobjectNs.goFullPackageName, "Object")).
+		Params(jen.Op("*").Id(r.goName)).
+		BlockFunc(func(g *jen.Group) {
+			native := jen.Id("object").Dot("Native").Call()
+			g.Return(jen.Id(r.newFromNativeName).Call(native))
+		})
+
+	f.Line()
+}
+
+func (r *Record) generateNativeAccessor(f *file) {
+	f.
+		Func().
+		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
+		Id("Native").
+		Params().
+		Params(jen.Qual("unsafe", "Pointer")).
+		Block(jen.
+			Return().
+			Id(receiverName).Dot(fieldNameNative))
+
+	f.Line()
 }
 
 func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
