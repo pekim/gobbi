@@ -26,7 +26,16 @@ type AppLaunchContext struct {
 }
 
 func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
-	return &AppLaunchContext{native: native}
+	instance := &AppLaunchContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // AppLaunchContext upcasts to *AppLaunchContext
@@ -245,7 +254,16 @@ type Cursor struct {
 }
 
 func CursorNewFromNative(native unsafe.Pointer) *Cursor {
-	return &Cursor{native: native}
+	instance := &Cursor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -512,7 +530,16 @@ type Device struct {
 }
 
 func DeviceNewFromNative(native unsafe.Pointer) *Device {
-	return &Device{native: native}
+	instance := &Device{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1279,7 +1306,16 @@ type DeviceManager struct {
 }
 
 func DeviceManagerNewFromNative(native unsafe.Pointer) *DeviceManager {
-	return &DeviceManager{native: native}
+	instance := &DeviceManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1382,7 +1418,16 @@ type DeviceTool struct {
 }
 
 func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
-	return &DeviceTool{native: native}
+	instance := &DeviceTool{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1515,7 +1560,16 @@ type Display struct {
 }
 
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
-	return &Display{native: native}
+	instance := &Display{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2761,7 +2815,16 @@ type DisplayManager struct {
 }
 
 func DisplayManagerNewFromNative(native unsafe.Pointer) *DisplayManager {
-	return &DisplayManager{native: native}
+	instance := &DisplayManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2894,7 +2957,16 @@ type DragContext struct {
 }
 
 func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
-	return &DragContext{native: native}
+	instance := &DragContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3160,7 +3232,16 @@ type DrawingContext struct {
 }
 
 func DrawingContextNewFromNative(native unsafe.Pointer) *DrawingContext {
-	return &DrawingContext{native: native}
+	instance := &DrawingContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3265,7 +3346,16 @@ type FrameClock struct {
 }
 
 func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
-	return &FrameClock{native: native}
+	instance := &FrameClock{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3555,7 +3645,16 @@ type GLContext struct {
 }
 
 func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
-	return &GLContext{native: native}
+	instance := &GLContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4059,7 +4158,16 @@ type Keymap struct {
 }
 
 func KeymapNewFromNative(native unsafe.Pointer) *Keymap {
-	return &Keymap{native: native}
+	instance := &Keymap{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4303,7 +4411,16 @@ type Monitor struct {
 }
 
 func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
-	return &Monitor{native: native}
+	instance := &Monitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4692,7 +4809,16 @@ type Screen struct {
 }
 
 func ScreenNewFromNative(native unsafe.Pointer) *Screen {
-	return &Screen{native: native}
+	instance := &Screen{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5515,7 +5641,16 @@ type Seat struct {
 }
 
 func SeatNewFromNative(native unsafe.Pointer) *Seat {
-	return &Seat{native: native}
+	instance := &Seat{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5686,7 +5821,16 @@ type Visual struct {
 }
 
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
-	return &Visual{native: native}
+	instance := &Visual{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6017,7 +6161,16 @@ type Window struct {
 }
 
 func WindowNewFromNative(native unsafe.Pointer) *Window {
-	return &Window{native: native}
+	instance := &Window{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

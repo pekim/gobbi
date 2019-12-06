@@ -25,7 +25,9 @@ type Array struct {
 }
 
 func ArrayNewFromNative(native unsafe.Pointer) *Array {
-	return &Array{native: native}
+	instance := &Array{native: native}
+
+	return instance
 }
 
 func (recv *Array) Native() unsafe.Pointer {
@@ -91,7 +93,9 @@ type AsyncQueue struct {
 }
 
 func AsyncQueueNewFromNative(native unsafe.Pointer) *AsyncQueue {
-	return &AsyncQueue{native: native}
+	instance := &AsyncQueue{native: native}
+
+	return instance
 }
 
 func (recv *AsyncQueue) Native() unsafe.Pointer {
@@ -401,7 +405,9 @@ type BookmarkFile struct {
 }
 
 func BookmarkFileNewFromNative(native unsafe.Pointer) *BookmarkFile {
-	return &BookmarkFile{native: native}
+	instance := &BookmarkFile{native: native}
+
+	return instance
 }
 
 func (recv *BookmarkFile) Native() unsafe.Pointer {
@@ -1614,7 +1620,9 @@ type ByteArray struct {
 }
 
 func ByteArrayNewFromNative(native unsafe.Pointer) *ByteArray {
-	return &ByteArray{native: native}
+	instance := &ByteArray{native: native}
+
+	return instance
 }
 
 func (recv *ByteArray) Native() unsafe.Pointer {
@@ -1680,7 +1688,9 @@ type Bytes struct {
 }
 
 func BytesNewFromNative(native unsafe.Pointer) *Bytes {
-	return &Bytes{native: native}
+	instance := &Bytes{native: native}
+
+	return instance
 }
 
 func (recv *Bytes) Native() unsafe.Pointer {
@@ -2027,7 +2037,9 @@ type Checksum struct {
 }
 
 func ChecksumNewFromNative(native unsafe.Pointer) *Checksum {
-	return &Checksum{native: native}
+	instance := &Checksum{native: native}
+
+	return instance
 }
 
 func (recv *Checksum) Native() unsafe.Pointer {
@@ -2206,7 +2218,9 @@ type Cond struct {
 }
 
 func CondNewFromNative(native unsafe.Pointer) *Cond {
-	return &Cond{native: native}
+	instance := &Cond{native: native}
+
+	return instance
 }
 
 func (recv *Cond) Native() unsafe.Pointer {
@@ -2360,7 +2374,9 @@ type Data struct {
 }
 
 func DataNewFromNative(native unsafe.Pointer) *Data {
-	return &Data{native: native}
+	instance := &Data{native: native}
+
+	return instance
 }
 
 func (recv *Data) Native() unsafe.Pointer {
@@ -2398,7 +2414,9 @@ type Date struct {
 }
 
 func DateNewFromNative(native unsafe.Pointer) *Date {
-	return &Date{native: native}
+	instance := &Date{native: native}
+
+	return instance
 }
 
 func (recv *Date) Native() unsafe.Pointer {
@@ -3638,7 +3656,9 @@ type DateTime struct {
 }
 
 func DateTimeNewFromNative(native unsafe.Pointer) *DateTime {
-	return &DateTime{native: native}
+	instance := &DateTime{native: native}
+
+	return instance
 }
 
 func (recv *DateTime) Native() unsafe.Pointer {
@@ -5194,7 +5214,9 @@ type DebugKey struct {
 }
 
 func DebugKeyNewFromNative(native unsafe.Pointer) *DebugKey {
-	return &DebugKey{native: native}
+	instance := &DebugKey{native: native}
+
+	return instance
 }
 
 func (recv *DebugKey) Native() unsafe.Pointer {
@@ -5260,7 +5282,9 @@ type Dir struct {
 }
 
 func DirNewFromNative(native unsafe.Pointer) *Dir {
-	return &Dir{native: native}
+	instance := &Dir{native: native}
+
+	return instance
 }
 
 func (recv *Dir) Native() unsafe.Pointer {
@@ -5386,7 +5410,9 @@ type Error struct {
 }
 
 func ErrorNewFromNative(native unsafe.Pointer) *Error {
-	return &Error{native: native}
+	instance := &Error{native: native}
+
+	return instance
 }
 
 func (recv *Error) Native() unsafe.Pointer {
@@ -5583,7 +5609,9 @@ type HashTable struct {
 }
 
 func HashTableNewFromNative(native unsafe.Pointer) *HashTable {
-	return &HashTable{native: native}
+	instance := &HashTable{native: native}
+
+	return instance
 }
 
 func (recv *HashTable) Native() unsafe.Pointer {
@@ -5621,7 +5649,9 @@ type HashTableIter struct {
 }
 
 func HashTableIterNewFromNative(native unsafe.Pointer) *HashTableIter {
-	return &HashTableIter{native: native}
+	instance := &HashTableIter{native: native}
+
+	return instance
 }
 
 func (recv *HashTableIter) Native() unsafe.Pointer {
@@ -5723,7 +5753,9 @@ type Hmac struct {
 }
 
 func HmacNewFromNative(native unsafe.Pointer) *Hmac {
-	return &Hmac{native: native}
+	instance := &Hmac{native: native}
+
+	return instance
 }
 
 func (recv *Hmac) Native() unsafe.Pointer {
@@ -5889,7 +5921,9 @@ type Hook struct {
 }
 
 func HookNewFromNative(native unsafe.Pointer) *Hook {
-	return &Hook{native: native}
+	instance := &Hook{native: native}
+
+	return instance
 }
 
 func (recv *Hook) Native() unsafe.Pointer {
@@ -6042,7 +6076,9 @@ type HookList struct {
 }
 
 func HookListNewFromNative(native unsafe.Pointer) *HookList {
-	return &HookList{native: native}
+	instance := &HookList{native: native}
+
+	return instance
 }
 
 func (recv *HookList) Native() unsafe.Pointer {
@@ -6267,7 +6303,9 @@ type IConv struct {
 }
 
 func IConvNewFromNative(native unsafe.Pointer) *IConv {
-	return &IConv{native: native}
+	instance := &IConv{native: native}
+
+	return instance
 }
 
 func (recv *IConv) Native() unsafe.Pointer {
@@ -6339,7 +6377,9 @@ type IOChannel struct {
 }
 
 func IOChannelNewFromNative(native unsafe.Pointer) *IOChannel {
-	return &IOChannel{native: native}
+	instance := &IOChannel{native: native}
+
+	return instance
 }
 
 func (recv *IOChannel) Native() unsafe.Pointer {
@@ -7175,7 +7215,9 @@ type IOFuncs struct {
 }
 
 func IOFuncsNewFromNative(native unsafe.Pointer) *IOFuncs {
-	return &IOFuncs{native: native}
+	instance := &IOFuncs{native: native}
+
+	return instance
 }
 
 func (recv *IOFuncs) Native() unsafe.Pointer {
@@ -7245,7 +7287,9 @@ type KeyFile struct {
 }
 
 func KeyFileNewFromNative(native unsafe.Pointer) *KeyFile {
-	return &KeyFile{native: native}
+	instance := &KeyFile{native: native}
+
+	return instance
 }
 
 func (recv *KeyFile) Native() unsafe.Pointer {
@@ -8564,7 +8608,9 @@ type List struct {
 }
 
 func ListNewFromNative(native unsafe.Pointer) *List {
-	return &List{native: native}
+	instance := &List{native: native}
+
+	return instance
 }
 
 func (recv *List) Native() unsafe.Pointer {
@@ -8614,7 +8660,9 @@ type LogField struct {
 }
 
 func LogFieldNewFromNative(native unsafe.Pointer) *LogField {
-	return &LogField{native: native}
+	instance := &LogField{native: native}
+
+	return instance
 }
 
 func (recv *LogField) Native() unsafe.Pointer {
@@ -8684,7 +8732,9 @@ type MainContext struct {
 }
 
 func MainContextNewFromNative(native unsafe.Pointer) *MainContext {
-	return &MainContext{native: native}
+	instance := &MainContext{native: native}
+
+	return instance
 }
 
 func (recv *MainContext) Native() unsafe.Pointer {
@@ -9210,7 +9260,9 @@ type MainLoop struct {
 }
 
 func MainLoopNewFromNative(native unsafe.Pointer) *MainLoop {
-	return &MainLoop{native: native}
+	instance := &MainLoop{native: native}
+
+	return instance
 }
 
 func (recv *MainLoop) Native() unsafe.Pointer {
@@ -9446,7 +9498,9 @@ type MappedFile struct {
 }
 
 func MappedFileNewFromNative(native unsafe.Pointer) *MappedFile {
-	return &MappedFile{native: native}
+	instance := &MappedFile{native: native}
+
+	return instance
 }
 
 func (recv *MappedFile) Native() unsafe.Pointer {
@@ -9719,7 +9773,9 @@ type MarkupParseContext struct {
 }
 
 func MarkupParseContextNewFromNative(native unsafe.Pointer) *MarkupParseContext {
-	return &MarkupParseContext{native: native}
+	instance := &MarkupParseContext{native: native}
+
+	return instance
 }
 
 func (recv *MarkupParseContext) Native() unsafe.Pointer {
@@ -9968,7 +10024,9 @@ type MarkupParser struct {
 }
 
 func MarkupParserNewFromNative(native unsafe.Pointer) *MarkupParser {
-	return &MarkupParser{native: native}
+	instance := &MarkupParser{native: native}
+
+	return instance
 }
 
 func (recv *MarkupParser) Native() unsafe.Pointer {
@@ -10026,7 +10084,9 @@ type MatchInfo struct {
 }
 
 func MatchInfoNewFromNative(native unsafe.Pointer) *MatchInfo {
-	return &MatchInfo{native: native}
+	instance := &MatchInfo{native: native}
+
+	return instance
 }
 
 func (recv *MatchInfo) Native() unsafe.Pointer {
@@ -10543,7 +10603,9 @@ type MemVTable struct {
 }
 
 func MemVTableNewFromNative(native unsafe.Pointer) *MemVTable {
-	return &MemVTable{native: native}
+	instance := &MemVTable{native: native}
+
+	return instance
 }
 
 func (recv *MemVTable) Native() unsafe.Pointer {
@@ -10605,7 +10667,9 @@ type Node struct {
 }
 
 func NodeNewFromNative(native unsafe.Pointer) *Node {
-	return &Node{native: native}
+	instance := &Node{native: native}
+
+	return instance
 }
 
 func (recv *Node) Native() unsafe.Pointer {
@@ -11291,7 +11355,9 @@ type Once struct {
 }
 
 func OnceNewFromNative(native unsafe.Pointer) *Once {
-	return &Once{native: native}
+	instance := &Once{native: native}
+
+	return instance
 }
 
 func (recv *Once) Native() unsafe.Pointer {
@@ -11349,7 +11415,9 @@ type OptionContext struct {
 }
 
 func OptionContextNewFromNative(native unsafe.Pointer) *OptionContext {
-	return &OptionContext{native: native}
+	instance := &OptionContext{native: native}
+
+	return instance
 }
 
 func (recv *OptionContext) Native() unsafe.Pointer {
@@ -11909,7 +11977,9 @@ type OptionEntry struct {
 }
 
 func OptionEntryNewFromNative(native unsafe.Pointer) *OptionEntry {
-	return &OptionEntry{native: native}
+	instance := &OptionEntry{native: native}
+
+	return instance
 }
 
 func (recv *OptionEntry) Native() unsafe.Pointer {
@@ -12035,7 +12105,9 @@ type OptionGroup struct {
 }
 
 func OptionGroupNewFromNative(native unsafe.Pointer) *OptionGroup {
-	return &OptionGroup{native: native}
+	instance := &OptionGroup{native: native}
+
+	return instance
 }
 
 func (recv *OptionGroup) Native() unsafe.Pointer {
@@ -12212,7 +12284,9 @@ type PatternSpec struct {
 }
 
 func PatternSpecNewFromNative(native unsafe.Pointer) *PatternSpec {
-	return &PatternSpec{native: native}
+	instance := &PatternSpec{native: native}
+
+	return instance
 }
 
 func (recv *PatternSpec) Native() unsafe.Pointer {
@@ -12311,7 +12385,9 @@ type PollFD struct {
 }
 
 func PollFDNewFromNative(native unsafe.Pointer) *PollFD {
-	return &PollFD{native: native}
+	instance := &PollFD{native: native}
+
+	return instance
 }
 
 func (recv *PollFD) Native() unsafe.Pointer {
@@ -12391,7 +12467,9 @@ type Private struct {
 }
 
 func PrivateNewFromNative(native unsafe.Pointer) *Private {
-	return &Private{native: native}
+	instance := &Private{native: native}
+
+	return instance
 }
 
 func (recv *Private) Native() unsafe.Pointer {
@@ -12435,7 +12513,9 @@ type PtrArray struct {
 }
 
 func PtrArrayNewFromNative(native unsafe.Pointer) *PtrArray {
-	return &PtrArray{native: native}
+	instance := &PtrArray{native: native}
+
+	return instance
 }
 
 func (recv *PtrArray) Native() unsafe.Pointer {
@@ -12491,7 +12571,9 @@ type Queue struct {
 }
 
 func QueueNewFromNative(native unsafe.Pointer) *Queue {
-	return &Queue{native: native}
+	instance := &Queue{native: native}
+
+	return instance
 }
 
 func (recv *Queue) Native() unsafe.Pointer {
@@ -12829,7 +12911,9 @@ type RWLock struct {
 }
 
 func RWLockNewFromNative(native unsafe.Pointer) *RWLock {
-	return &RWLock{native: native}
+	instance := &RWLock{native: native}
+
+	return instance
 }
 
 func (recv *RWLock) Native() unsafe.Pointer {
@@ -13099,7 +13183,9 @@ type Rand struct {
 }
 
 func RandNewFromNative(native unsafe.Pointer) *Rand {
-	return &Rand{native: native}
+	instance := &Rand{native: native}
+
+	return instance
 }
 
 func (recv *Rand) Native() unsafe.Pointer {
@@ -13388,7 +13474,9 @@ type RecMutex struct {
 }
 
 func RecMutexNewFromNative(native unsafe.Pointer) *RecMutex {
-	return &RecMutex{native: native}
+	instance := &RecMutex{native: native}
+
+	return instance
 }
 
 func (recv *RecMutex) Native() unsafe.Pointer {
@@ -13570,7 +13658,9 @@ type Regex struct {
 }
 
 func RegexNewFromNative(native unsafe.Pointer) *Regex {
-	return &Regex{native: native}
+	instance := &Regex{native: native}
+
+	return instance
 }
 
 func (recv *Regex) Native() unsafe.Pointer {
@@ -13870,7 +13960,9 @@ type SList struct {
 }
 
 func SListNewFromNative(native unsafe.Pointer) *SList {
-	return &SList{native: native}
+	instance := &SList{native: native}
+
+	return instance
 }
 
 func (recv *SList) Native() unsafe.Pointer {
@@ -13916,7 +14008,9 @@ type Scanner struct {
 }
 
 func ScannerNewFromNative(native unsafe.Pointer) *Scanner {
-	return &Scanner{native: native}
+	instance := &Scanner{native: native}
+
+	return instance
 }
 
 func (recv *Scanner) Native() unsafe.Pointer {
@@ -14542,7 +14636,9 @@ type ScannerConfig struct {
 }
 
 func ScannerConfigNewFromNative(native unsafe.Pointer) *ScannerConfig {
-	return &ScannerConfig{native: native}
+	instance := &ScannerConfig{native: native}
+
+	return instance
 }
 
 func (recv *ScannerConfig) Native() unsafe.Pointer {
@@ -14944,7 +15040,9 @@ type Sequence struct {
 }
 
 func SequenceNewFromNative(native unsafe.Pointer) *Sequence {
-	return &Sequence{native: native}
+	instance := &Sequence{native: native}
+
+	return instance
 }
 
 func (recv *Sequence) Native() unsafe.Pointer {
@@ -15193,7 +15291,9 @@ type SequenceIter struct {
 }
 
 func SequenceIterNewFromNative(native unsafe.Pointer) *SequenceIter {
-	return &SequenceIter{native: native}
+	instance := &SequenceIter{native: native}
+
+	return instance
 }
 
 func (recv *SequenceIter) Native() unsafe.Pointer {
@@ -15489,7 +15589,9 @@ type Source struct {
 }
 
 func SourceNewFromNative(native unsafe.Pointer) *Source {
-	return &Source{native: native}
+	instance := &Source{native: native}
+
+	return instance
 }
 
 func (recv *Source) Native() unsafe.Pointer {
@@ -16224,7 +16326,9 @@ type SourceCallbackFuncs struct {
 }
 
 func SourceCallbackFuncsNewFromNative(native unsafe.Pointer) *SourceCallbackFuncs {
-	return &SourceCallbackFuncs{native: native}
+	instance := &SourceCallbackFuncs{native: native}
+
+	return instance
 }
 
 func (recv *SourceCallbackFuncs) Native() unsafe.Pointer {
@@ -16274,7 +16378,9 @@ type SourceFuncs struct {
 }
 
 func SourceFuncsNewFromNative(native unsafe.Pointer) *SourceFuncs {
-	return &SourceFuncs{native: native}
+	instance := &SourceFuncs{native: native}
+
+	return instance
 }
 
 func (recv *SourceFuncs) Native() unsafe.Pointer {
@@ -16328,7 +16434,9 @@ type SourcePrivate struct {
 }
 
 func SourcePrivateNewFromNative(native unsafe.Pointer) *SourcePrivate {
-	return &SourcePrivate{native: native}
+	instance := &SourcePrivate{native: native}
+
+	return instance
 }
 
 func (recv *SourcePrivate) Native() unsafe.Pointer {
@@ -16366,7 +16474,9 @@ type StatBuf struct {
 }
 
 func StatBufNewFromNative(native unsafe.Pointer) *StatBuf {
-	return &StatBuf{native: native}
+	instance := &StatBuf{native: native}
+
+	return instance
 }
 
 func (recv *StatBuf) Native() unsafe.Pointer {
@@ -16404,7 +16514,9 @@ type String struct {
 }
 
 func StringNewFromNative(native unsafe.Pointer) *String {
-	return &String{native: native}
+	instance := &String{native: native}
+
+	return instance
 }
 
 func (recv *String) Native() unsafe.Pointer {
@@ -17296,7 +17408,9 @@ type StringChunk struct {
 }
 
 func StringChunkNewFromNative(native unsafe.Pointer) *StringChunk {
-	return &StringChunk{native: native}
+	instance := &StringChunk{native: native}
+
+	return instance
 }
 
 func (recv *StringChunk) Native() unsafe.Pointer {
@@ -17490,7 +17604,9 @@ type TestCase struct {
 }
 
 func TestCaseNewFromNative(native unsafe.Pointer) *TestCase {
-	return &TestCase{native: native}
+	instance := &TestCase{native: native}
+
+	return instance
 }
 
 func (recv *TestCase) Native() unsafe.Pointer {
@@ -17528,7 +17644,9 @@ type TestConfig struct {
 }
 
 func TestConfigNewFromNative(native unsafe.Pointer) *TestConfig {
-	return &TestConfig{native: native}
+	instance := &TestConfig{native: native}
+
+	return instance
 }
 
 func (recv *TestConfig) Native() unsafe.Pointer {
@@ -17650,7 +17768,9 @@ type TestLogBuffer struct {
 }
 
 func TestLogBufferNewFromNative(native unsafe.Pointer) *TestLogBuffer {
-	return &TestLogBuffer{native: native}
+	instance := &TestLogBuffer{native: native}
+
+	return instance
 }
 
 func (recv *TestLogBuffer) Native() unsafe.Pointer {
@@ -17778,7 +17898,9 @@ type TestLogMsg struct {
 }
 
 func TestLogMsgNewFromNative(native unsafe.Pointer) *TestLogMsg {
-	return &TestLogMsg{native: native}
+	instance := &TestLogMsg{native: native}
+
+	return instance
 }
 
 func (recv *TestLogMsg) Native() unsafe.Pointer {
@@ -17904,7 +18026,9 @@ type TestSuite struct {
 }
 
 func TestSuiteNewFromNative(native unsafe.Pointer) *TestSuite {
-	return &TestSuite{native: native}
+	instance := &TestSuite{native: native}
+
+	return instance
 }
 
 func (recv *TestSuite) Native() unsafe.Pointer {
@@ -18000,7 +18124,9 @@ type Thread struct {
 }
 
 func ThreadNewFromNative(native unsafe.Pointer) *Thread {
-	return &Thread{native: native}
+	instance := &Thread{native: native}
+
+	return instance
 }
 
 func (recv *Thread) Native() unsafe.Pointer {
@@ -18089,7 +18215,9 @@ type ThreadPool struct {
 }
 
 func ThreadPoolNewFromNative(native unsafe.Pointer) *ThreadPool {
-	return &ThreadPool{native: native}
+	instance := &ThreadPool{native: native}
+
+	return instance
 }
 
 func (recv *ThreadPool) Native() unsafe.Pointer {
@@ -18314,7 +18442,9 @@ type TimeVal struct {
 }
 
 func TimeValNewFromNative(native unsafe.Pointer) *TimeVal {
-	return &TimeVal{native: native}
+	instance := &TimeVal{native: native}
+
+	return instance
 }
 
 func (recv *TimeVal) Native() unsafe.Pointer {
@@ -18441,7 +18571,9 @@ type TimeZone struct {
 }
 
 func TimeZoneNewFromNative(native unsafe.Pointer) *TimeZone {
-	return &TimeZone{native: native}
+	instance := &TimeZone{native: native}
+
+	return instance
 }
 
 func (recv *TimeZone) Native() unsafe.Pointer {
@@ -18847,7 +18979,9 @@ type Timer struct {
 }
 
 func TimerNewFromNative(native unsafe.Pointer) *Timer {
-	return &Timer{native: native}
+	instance := &Timer{native: native}
+
+	return instance
 }
 
 func (recv *Timer) Native() unsafe.Pointer {
@@ -19090,7 +19224,9 @@ type TrashStack struct {
 }
 
 func TrashStackNewFromNative(native unsafe.Pointer) *TrashStack {
-	return &TrashStack{native: native}
+	instance := &TrashStack{native: native}
+
+	return instance
 }
 
 func (recv *TrashStack) Native() unsafe.Pointer {
@@ -19142,7 +19278,9 @@ type Tree struct {
 }
 
 func TreeNewFromNative(native unsafe.Pointer) *Tree {
-	return &Tree{native: native}
+	instance := &Tree{native: native}
+
+	return instance
 }
 
 func (recv *Tree) Native() unsafe.Pointer {
@@ -19350,7 +19488,9 @@ type Variant struct {
 }
 
 func VariantNewFromNative(native unsafe.Pointer) *Variant {
-	return &Variant{native: native}
+	instance := &Variant{native: native}
+
+	return instance
 }
 
 func (recv *Variant) Native() unsafe.Pointer {
@@ -21535,7 +21675,9 @@ type VariantBuilder struct {
 }
 
 func VariantBuilderNewFromNative(native unsafe.Pointer) *VariantBuilder {
-	return &VariantBuilder{native: native}
+	instance := &VariantBuilder{native: native}
+
+	return instance
 }
 
 func (recv *VariantBuilder) Native() unsafe.Pointer {
@@ -21829,7 +21971,9 @@ type VariantDict struct {
 }
 
 func VariantDictNewFromNative(native unsafe.Pointer) *VariantDict {
-	return &VariantDict{native: native}
+	instance := &VariantDict{native: native}
+
+	return instance
 }
 
 func (recv *VariantDict) Native() unsafe.Pointer {
@@ -22167,7 +22311,9 @@ type VariantIter struct {
 }
 
 func VariantIterNewFromNative(native unsafe.Pointer) *VariantIter {
-	return &VariantIter{native: native}
+	instance := &VariantIter{native: native}
+
+	return instance
 }
 
 func (recv *VariantIter) Native() unsafe.Pointer {
@@ -22366,7 +22512,9 @@ type VariantType struct {
 }
 
 func VariantTypeNewFromNative(native unsafe.Pointer) *VariantType {
-	return &VariantType{native: native}
+	instance := &VariantType{native: native}
+
+	return instance
 }
 
 func (recv *VariantType) Native() unsafe.Pointer {

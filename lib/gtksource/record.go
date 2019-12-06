@@ -26,7 +26,9 @@ type BufferClass struct {
 }
 
 func BufferClassNewFromNative(native unsafe.Pointer) *BufferClass {
-	return &BufferClass{native: native}
+	instance := &BufferClass{native: native}
+
+	return instance
 }
 
 /*
@@ -101,7 +103,9 @@ type BufferPrivate struct {
 }
 
 func BufferPrivateNewFromNative(native unsafe.Pointer) *BufferPrivate {
-	return &BufferPrivate{native: native}
+	instance := &BufferPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -148,7 +152,9 @@ type CompletionClass struct {
 }
 
 func CompletionClassNewFromNative(native unsafe.Pointer) *CompletionClass {
-	return &CompletionClass{native: native}
+	instance := &CompletionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -227,7 +233,9 @@ type CompletionContextClass struct {
 }
 
 func CompletionContextClassNewFromNative(native unsafe.Pointer) *CompletionContextClass {
-	return &CompletionContextClass{native: native}
+	instance := &CompletionContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -294,7 +302,9 @@ type CompletionContextPrivate struct {
 }
 
 func CompletionContextPrivateNewFromNative(native unsafe.Pointer) *CompletionContextPrivate {
-	return &CompletionContextPrivate{native: native}
+	instance := &CompletionContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -341,7 +351,9 @@ type CompletionInfoClass struct {
 }
 
 func CompletionInfoClassNewFromNative(native unsafe.Pointer) *CompletionInfoClass {
-	return &CompletionInfoClass{native: native}
+	instance := &CompletionInfoClass{native: native}
+
+	return instance
 }
 
 /*
@@ -396,7 +408,9 @@ type CompletionInfoPrivate struct {
 }
 
 func CompletionInfoPrivateNewFromNative(native unsafe.Pointer) *CompletionInfoPrivate {
-	return &CompletionInfoPrivate{native: native}
+	instance := &CompletionInfoPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -443,7 +457,9 @@ type CompletionItemClass struct {
 }
 
 func CompletionItemClassNewFromNative(native unsafe.Pointer) *CompletionItemClass {
-	return &CompletionItemClass{native: native}
+	instance := &CompletionItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -494,7 +510,9 @@ type CompletionItemPrivate struct {
 }
 
 func CompletionItemPrivateNewFromNative(native unsafe.Pointer) *CompletionItemPrivate {
-	return &CompletionItemPrivate{native: native}
+	instance := &CompletionItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -541,7 +559,9 @@ type CompletionPrivate struct {
 }
 
 func CompletionPrivateNewFromNative(native unsafe.Pointer) *CompletionPrivate {
-	return &CompletionPrivate{native: native}
+	instance := &CompletionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -588,7 +608,9 @@ type CompletionProposalIface struct {
 }
 
 func CompletionProposalIfaceNewFromNative(native unsafe.Pointer) *CompletionProposalIface {
-	return &CompletionProposalIface{native: native}
+	instance := &CompletionProposalIface{native: native}
+
+	return instance
 }
 
 /*
@@ -679,7 +701,9 @@ type CompletionProviderIface struct {
 }
 
 func CompletionProviderIfaceNewFromNative(native unsafe.Pointer) *CompletionProviderIface {
-	return &CompletionProviderIface{native: native}
+	instance := &CompletionProviderIface{native: native}
+
+	return instance
 }
 
 /*
@@ -782,7 +806,9 @@ type CompletionWordsClass struct {
 }
 
 func CompletionWordsClassNewFromNative(native unsafe.Pointer) *CompletionWordsClass {
-	return &CompletionWordsClass{native: native}
+	instance := &CompletionWordsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -833,7 +859,9 @@ type CompletionWordsPrivate struct {
 }
 
 func CompletionWordsPrivateNewFromNative(native unsafe.Pointer) *CompletionWordsPrivate {
-	return &CompletionWordsPrivate{native: native}
+	instance := &CompletionWordsPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -880,7 +908,9 @@ type Encoding struct {
 }
 
 func EncodingNewFromNative(native unsafe.Pointer) *Encoding {
-	return &Encoding{native: native}
+	instance := &Encoding{native: native}
+
+	return instance
 }
 
 /*
@@ -1083,7 +1113,9 @@ type FileClass struct {
 }
 
 func FileClassNewFromNative(native unsafe.Pointer) *FileClass {
-	return &FileClass{native: native}
+	instance := &FileClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1138,7 +1170,9 @@ type FileLoaderClass struct {
 }
 
 func FileLoaderClassNewFromNative(native unsafe.Pointer) *FileLoaderClass {
-	return &FileLoaderClass{native: native}
+	instance := &FileLoaderClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1193,7 +1227,9 @@ type FileLoaderPrivate struct {
 }
 
 func FileLoaderPrivateNewFromNative(native unsafe.Pointer) *FileLoaderPrivate {
-	return &FileLoaderPrivate{native: native}
+	instance := &FileLoaderPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1240,7 +1276,9 @@ type FilePrivate struct {
 }
 
 func FilePrivateNewFromNative(native unsafe.Pointer) *FilePrivate {
-	return &FilePrivate{native: native}
+	instance := &FilePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1287,7 +1325,9 @@ type FileSaverClass struct {
 }
 
 func FileSaverClassNewFromNative(native unsafe.Pointer) *FileSaverClass {
-	return &FileSaverClass{native: native}
+	instance := &FileSaverClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1342,7 +1382,9 @@ type FileSaverPrivate struct {
 }
 
 func FileSaverPrivateNewFromNative(native unsafe.Pointer) *FileSaverPrivate {
-	return &FileSaverPrivate{native: native}
+	instance := &FileSaverPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1389,7 +1431,9 @@ type GutterClass struct {
 }
 
 func GutterClassNewFromNative(native unsafe.Pointer) *GutterClass {
-	return &GutterClass{native: native}
+	instance := &GutterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1440,7 +1484,9 @@ type GutterPrivate struct {
 }
 
 func GutterPrivateNewFromNative(native unsafe.Pointer) *GutterPrivate {
-	return &GutterPrivate{native: native}
+	instance := &GutterPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1487,7 +1533,9 @@ type GutterRendererClass struct {
 }
 
 func GutterRendererClassNewFromNative(native unsafe.Pointer) *GutterRendererClass {
-	return &GutterRendererClass{native: native}
+	instance := &GutterRendererClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1578,7 +1626,9 @@ type GutterRendererPixbufClass struct {
 }
 
 func GutterRendererPixbufClassNewFromNative(native unsafe.Pointer) *GutterRendererPixbufClass {
-	return &GutterRendererPixbufClass{native: native}
+	instance := &GutterRendererPixbufClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1625,7 +1675,9 @@ type GutterRendererPixbufPrivate struct {
 }
 
 func GutterRendererPixbufPrivateNewFromNative(native unsafe.Pointer) *GutterRendererPixbufPrivate {
-	return &GutterRendererPixbufPrivate{native: native}
+	instance := &GutterRendererPixbufPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1672,7 +1724,9 @@ type GutterRendererPrivate struct {
 }
 
 func GutterRendererPrivateNewFromNative(native unsafe.Pointer) *GutterRendererPrivate {
-	return &GutterRendererPrivate{native: native}
+	instance := &GutterRendererPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1719,7 +1773,9 @@ type GutterRendererTextClass struct {
 }
 
 func GutterRendererTextClassNewFromNative(native unsafe.Pointer) *GutterRendererTextClass {
-	return &GutterRendererTextClass{native: native}
+	instance := &GutterRendererTextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1766,7 +1822,9 @@ type GutterRendererTextPrivate struct {
 }
 
 func GutterRendererTextPrivateNewFromNative(native unsafe.Pointer) *GutterRendererTextPrivate {
-	return &GutterRendererTextPrivate{native: native}
+	instance := &GutterRendererTextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1813,7 +1871,9 @@ type LanguageClass struct {
 }
 
 func LanguageClassNewFromNative(native unsafe.Pointer) *LanguageClass {
-	return &LanguageClass{native: native}
+	instance := &LanguageClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1872,7 +1932,9 @@ type LanguageManagerClass struct {
 }
 
 func LanguageManagerClassNewFromNative(native unsafe.Pointer) *LanguageManagerClass {
-	return &LanguageManagerClass{native: native}
+	instance := &LanguageManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1939,7 +2001,9 @@ type LanguageManagerPrivate struct {
 }
 
 func LanguageManagerPrivateNewFromNative(native unsafe.Pointer) *LanguageManagerPrivate {
-	return &LanguageManagerPrivate{native: native}
+	instance := &LanguageManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1986,7 +2050,9 @@ type LanguagePrivate struct {
 }
 
 func LanguagePrivateNewFromNative(native unsafe.Pointer) *LanguagePrivate {
-	return &LanguagePrivate{native: native}
+	instance := &LanguagePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2033,7 +2099,9 @@ type MapClass struct {
 }
 
 func MapClassNewFromNative(native unsafe.Pointer) *MapClass {
-	return &MapClass{native: native}
+	instance := &MapClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2098,7 +2166,9 @@ type MarkAttributesClass struct {
 }
 
 func MarkAttributesClassNewFromNative(native unsafe.Pointer) *MarkAttributesClass {
-	return &MarkAttributesClass{native: native}
+	instance := &MarkAttributesClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2145,7 +2215,9 @@ type MarkAttributesPrivate struct {
 }
 
 func MarkAttributesPrivateNewFromNative(native unsafe.Pointer) *MarkAttributesPrivate {
-	return &MarkAttributesPrivate{native: native}
+	instance := &MarkAttributesPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2192,7 +2264,9 @@ type MarkClass struct {
 }
 
 func MarkClassNewFromNative(native unsafe.Pointer) *MarkClass {
-	return &MarkClass{native: native}
+	instance := &MarkClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2251,7 +2325,9 @@ type MarkPrivate struct {
 }
 
 func MarkPrivateNewFromNative(native unsafe.Pointer) *MarkPrivate {
-	return &MarkPrivate{native: native}
+	instance := &MarkPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2298,7 +2374,9 @@ type PrintCompositorClass struct {
 }
 
 func PrintCompositorClassNewFromNative(native unsafe.Pointer) *PrintCompositorClass {
-	return &PrintCompositorClass{native: native}
+	instance := &PrintCompositorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2357,7 +2435,9 @@ type PrintCompositorPrivate struct {
 }
 
 func PrintCompositorPrivateNewFromNative(native unsafe.Pointer) *PrintCompositorPrivate {
-	return &PrintCompositorPrivate{native: native}
+	instance := &PrintCompositorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2404,7 +2484,9 @@ type RegionClass struct {
 }
 
 func RegionClassNewFromNative(native unsafe.Pointer) *RegionClass {
-	return &RegionClass{native: native}
+	instance := &RegionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2459,7 +2541,9 @@ type RegionIter struct {
 }
 
 func RegionIterNewFromNative(native unsafe.Pointer) *RegionIter {
-	return &RegionIter{native: native}
+	instance := &RegionIter{native: native}
+
+	return instance
 }
 
 /*
@@ -2572,7 +2656,9 @@ type SearchContextClass struct {
 }
 
 func SearchContextClassNewFromNative(native unsafe.Pointer) *SearchContextClass {
-	return &SearchContextClass{native: native}
+	instance := &SearchContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2627,7 +2713,9 @@ type SearchContextPrivate struct {
 }
 
 func SearchContextPrivateNewFromNative(native unsafe.Pointer) *SearchContextPrivate {
-	return &SearchContextPrivate{native: native}
+	instance := &SearchContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2674,7 +2762,9 @@ type SearchSettingsClass struct {
 }
 
 func SearchSettingsClassNewFromNative(native unsafe.Pointer) *SearchSettingsClass {
-	return &SearchSettingsClass{native: native}
+	instance := &SearchSettingsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2729,7 +2819,9 @@ type SearchSettingsPrivate struct {
 }
 
 func SearchSettingsPrivateNewFromNative(native unsafe.Pointer) *SearchSettingsPrivate {
-	return &SearchSettingsPrivate{native: native}
+	instance := &SearchSettingsPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2776,7 +2868,9 @@ type SpaceDrawerClass struct {
 }
 
 func SpaceDrawerClassNewFromNative(native unsafe.Pointer) *SpaceDrawerClass {
-	return &SpaceDrawerClass{native: native}
+	instance := &SpaceDrawerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2831,7 +2925,9 @@ type SpaceDrawerPrivate struct {
 }
 
 func SpaceDrawerPrivateNewFromNative(native unsafe.Pointer) *SpaceDrawerPrivate {
-	return &SpaceDrawerPrivate{native: native}
+	instance := &SpaceDrawerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2878,7 +2974,9 @@ type StyleClass struct {
 }
 
 func StyleClassNewFromNative(native unsafe.Pointer) *StyleClass {
-	return &StyleClass{native: native}
+	instance := &StyleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2925,7 +3023,9 @@ type StyleSchemeChooserButtonClass struct {
 }
 
 func StyleSchemeChooserButtonClassNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButtonClass {
-	return &StyleSchemeChooserButtonClass{native: native}
+	instance := &StyleSchemeChooserButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2976,7 +3076,9 @@ type StyleSchemeChooserInterface struct {
 }
 
 func StyleSchemeChooserInterfaceNewFromNative(native unsafe.Pointer) *StyleSchemeChooserInterface {
-	return &StyleSchemeChooserInterface{native: native}
+	instance := &StyleSchemeChooserInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -3039,7 +3141,9 @@ type StyleSchemeChooserWidgetClass struct {
 }
 
 func StyleSchemeChooserWidgetClassNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidgetClass {
-	return &StyleSchemeChooserWidgetClass{native: native}
+	instance := &StyleSchemeChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3090,7 +3194,9 @@ type StyleSchemeClass struct {
 }
 
 func StyleSchemeClassNewFromNative(native unsafe.Pointer) *StyleSchemeClass {
-	return &StyleSchemeClass{native: native}
+	instance := &StyleSchemeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3149,7 +3255,9 @@ type StyleSchemeManagerClass struct {
 }
 
 func StyleSchemeManagerClassNewFromNative(native unsafe.Pointer) *StyleSchemeManagerClass {
-	return &StyleSchemeManagerClass{native: native}
+	instance := &StyleSchemeManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3216,7 +3324,9 @@ type StyleSchemeManagerPrivate struct {
 }
 
 func StyleSchemeManagerPrivateNewFromNative(native unsafe.Pointer) *StyleSchemeManagerPrivate {
-	return &StyleSchemeManagerPrivate{native: native}
+	instance := &StyleSchemeManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3263,7 +3373,9 @@ type StyleSchemePrivate struct {
 }
 
 func StyleSchemePrivateNewFromNative(native unsafe.Pointer) *StyleSchemePrivate {
-	return &StyleSchemePrivate{native: native}
+	instance := &StyleSchemePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3310,7 +3422,9 @@ type TagClass struct {
 }
 
 func TagClassNewFromNative(native unsafe.Pointer) *TagClass {
-	return &TagClass{native: native}
+	instance := &TagClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3365,7 +3479,9 @@ type UndoManagerIface struct {
 }
 
 func UndoManagerIfaceNewFromNative(native unsafe.Pointer) *UndoManagerIface {
-	return &UndoManagerIface{native: native}
+	instance := &UndoManagerIface{native: native}
+
+	return instance
 }
 
 /*
@@ -3448,7 +3564,9 @@ type ViewClass struct {
 }
 
 func ViewClassNewFromNative(native unsafe.Pointer) *ViewClass {
-	return &ViewClass{native: native}
+	instance := &ViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3523,7 +3641,9 @@ type ViewPrivate struct {
 }
 
 func ViewPrivateNewFromNative(native unsafe.Pointer) *ViewPrivate {
-	return &ViewPrivate{native: native}
+	instance := &ViewPrivate{native: native}
+
+	return instance
 }
 
 /*

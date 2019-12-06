@@ -26,7 +26,9 @@ type Atom struct {
 }
 
 func AtomNewFromNative(native unsafe.Pointer) *Atom {
-	return &Atom{native: native}
+	instance := &Atom{native: native}
+
+	return instance
 }
 
 /*
@@ -105,7 +107,9 @@ type Color struct {
 }
 
 func ColorNewFromNative(native unsafe.Pointer) *Color {
-	return &Color{native: native}
+	instance := &Color{native: native}
+
+	return instance
 }
 
 /*
@@ -365,7 +369,9 @@ type DevicePadInterface struct {
 }
 
 func DevicePadInterfaceNewFromNative(native unsafe.Pointer) *DevicePadInterface {
-	return &DevicePadInterface{native: native}
+	instance := &DevicePadInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -412,7 +418,9 @@ type DrawingContextClass struct {
 }
 
 func DrawingContextClassNewFromNative(native unsafe.Pointer) *DrawingContextClass {
-	return &DrawingContextClass{native: native}
+	instance := &DrawingContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -459,7 +467,9 @@ type EventAny struct {
 }
 
 func EventAnyNewFromNative(native unsafe.Pointer) *EventAny {
-	return &EventAny{native: native}
+	instance := &EventAny{native: native}
+
+	return instance
 }
 
 /*
@@ -548,7 +558,9 @@ type EventButton struct {
 }
 
 func EventButtonNewFromNative(native unsafe.Pointer) *EventButton {
-	return &EventButton{native: native}
+	instance := &EventButton{native: native}
+
+	return instance
 }
 
 /*
@@ -753,7 +765,9 @@ type EventConfigure struct {
 }
 
 func EventConfigureNewFromNative(native unsafe.Pointer) *EventConfigure {
-	return &EventConfigure{native: native}
+	instance := &EventConfigure{native: native}
+
+	return instance
 }
 
 /*
@@ -898,7 +912,9 @@ type EventCrossing struct {
 }
 
 func EventCrossingNewFromNative(native unsafe.Pointer) *EventCrossing {
-	return &EventCrossing{native: native}
+	instance := &EventCrossing{native: native}
+
+	return instance
 }
 
 /*
@@ -1117,7 +1133,9 @@ type EventDND struct {
 }
 
 func EventDNDNewFromNative(native unsafe.Pointer) *EventDND {
-	return &EventDND{native: native}
+	instance := &EventDND{native: native}
+
+	return instance
 }
 
 /*
@@ -1262,7 +1280,9 @@ type EventExpose struct {
 }
 
 func EventExposeNewFromNative(native unsafe.Pointer) *EventExpose {
-	return &EventExpose{native: native}
+	instance := &EventExpose{native: native}
+
+	return instance
 }
 
 /*
@@ -1383,7 +1403,9 @@ type EventFocus struct {
 }
 
 func EventFocusNewFromNative(native unsafe.Pointer) *EventFocus {
-	return &EventFocus{native: native}
+	instance := &EventFocus{native: native}
+
+	return instance
 }
 
 /*
@@ -1486,7 +1508,9 @@ type EventGrabBroken struct {
 }
 
 func EventGrabBrokenNewFromNative(native unsafe.Pointer) *EventGrabBroken {
-	return &EventGrabBroken{native: native}
+	instance := &EventGrabBroken{native: native}
+
+	return instance
 }
 
 /*
@@ -1617,7 +1641,9 @@ type EventKey struct {
 }
 
 func EventKeyNewFromNative(native unsafe.Pointer) *EventKey {
-	return &EventKey{native: native}
+	instance := &EventKey{native: native}
+
+	return instance
 }
 
 /*
@@ -1808,7 +1834,9 @@ type EventMotion struct {
 }
 
 func EventMotionNewFromNative(native unsafe.Pointer) *EventMotion {
-	return &EventMotion{native: native}
+	instance := &EventMotion{native: native}
+
+	return instance
 }
 
 /*
@@ -2013,7 +2041,9 @@ type EventOwnerChange struct {
 }
 
 func EventOwnerChangeNewFromNative(native unsafe.Pointer) *EventOwnerChange {
-	return &EventOwnerChange{native: native}
+	instance := &EventOwnerChange{native: native}
+
+	return instance
 }
 
 /*
@@ -2172,7 +2202,9 @@ type EventPadAxis struct {
 }
 
 func EventPadAxisNewFromNative(native unsafe.Pointer) *EventPadAxis {
-	return &EventPadAxis{native: native}
+	instance := &EventPadAxis{native: native}
+
+	return instance
 }
 
 /*
@@ -2331,7 +2363,9 @@ type EventPadButton struct {
 }
 
 func EventPadButtonNewFromNative(native unsafe.Pointer) *EventPadButton {
-	return &EventPadButton{native: native}
+	instance := &EventPadButton{native: native}
+
+	return instance
 }
 
 /*
@@ -2476,7 +2510,9 @@ type EventPadGroupMode struct {
 }
 
 func EventPadGroupModeNewFromNative(native unsafe.Pointer) *EventPadGroupMode {
-	return &EventPadGroupMode{native: native}
+	instance := &EventPadGroupMode{native: native}
+
+	return instance
 }
 
 /*
@@ -2607,7 +2643,9 @@ type EventProperty struct {
 }
 
 func EventPropertyNewFromNative(native unsafe.Pointer) *EventProperty {
-	return &EventProperty{native: native}
+	instance := &EventProperty{native: native}
+
+	return instance
 }
 
 /*
@@ -2738,7 +2776,9 @@ type EventProximity struct {
 }
 
 func EventProximityNewFromNative(native unsafe.Pointer) *EventProximity {
-	return &EventProximity{native: native}
+	instance := &EventProximity{native: native}
+
+	return instance
 }
 
 /*
@@ -2855,7 +2895,9 @@ type EventScroll struct {
 }
 
 func EventScrollNewFromNative(native unsafe.Pointer) *EventScroll {
-	return &EventScroll{native: native}
+	instance := &EventScroll{native: native}
+
+	return instance
 }
 
 /*
@@ -3088,7 +3130,9 @@ type EventSelection struct {
 }
 
 func EventSelectionNewFromNative(native unsafe.Pointer) *EventSelection {
-	return &EventSelection{native: native}
+	instance := &EventSelection{native: native}
+
+	return instance
 }
 
 /*
@@ -3247,7 +3291,9 @@ type EventSequence struct {
 }
 
 func EventSequenceNewFromNative(native unsafe.Pointer) *EventSequence {
-	return &EventSequence{native: native}
+	instance := &EventSequence{native: native}
+
+	return instance
 }
 
 /*
@@ -3294,7 +3340,9 @@ type EventSetting struct {
 }
 
 func EventSettingNewFromNative(native unsafe.Pointer) *EventSetting {
-	return &EventSetting{native: native}
+	instance := &EventSetting{native: native}
+
+	return instance
 }
 
 /*
@@ -3411,7 +3459,9 @@ type EventTouch struct {
 }
 
 func EventTouchNewFromNative(native unsafe.Pointer) *EventTouch {
-	return &EventTouch{native: native}
+	instance := &EventTouch{native: native}
+
+	return instance
 }
 
 /*
@@ -3630,7 +3680,9 @@ type EventTouchpadPinch struct {
 }
 
 func EventTouchpadPinchNewFromNative(native unsafe.Pointer) *EventTouchpadPinch {
-	return &EventTouchpadPinch{native: native}
+	instance := &EventTouchpadPinch{native: native}
+
+	return instance
 }
 
 /*
@@ -3877,7 +3929,9 @@ type EventTouchpadSwipe struct {
 }
 
 func EventTouchpadSwipeNewFromNative(native unsafe.Pointer) *EventTouchpadSwipe {
-	return &EventTouchpadSwipe{native: native}
+	instance := &EventTouchpadSwipe{native: native}
+
+	return instance
 }
 
 /*
@@ -4096,7 +4150,9 @@ type EventVisibility struct {
 }
 
 func EventVisibilityNewFromNative(native unsafe.Pointer) *EventVisibility {
-	return &EventVisibility{native: native}
+	instance := &EventVisibility{native: native}
+
+	return instance
 }
 
 /*
@@ -4199,7 +4255,9 @@ type EventWindowState struct {
 }
 
 func EventWindowStateNewFromNative(native unsafe.Pointer) *EventWindowState {
-	return &EventWindowState{native: native}
+	instance := &EventWindowState{native: native}
+
+	return instance
 }
 
 /*
@@ -4296,7 +4354,9 @@ type FrameClockClass struct {
 }
 
 func FrameClockClassNewFromNative(native unsafe.Pointer) *FrameClockClass {
-	return &FrameClockClass{native: native}
+	instance := &FrameClockClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4343,7 +4403,9 @@ type FrameClockPrivate struct {
 }
 
 func FrameClockPrivateNewFromNative(native unsafe.Pointer) *FrameClockPrivate {
-	return &FrameClockPrivate{native: native}
+	instance := &FrameClockPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4390,7 +4452,9 @@ type FrameTimings struct {
 }
 
 func FrameTimingsNewFromNative(native unsafe.Pointer) *FrameTimings {
-	return &FrameTimings{native: native}
+	instance := &FrameTimings{native: native}
+
+	return instance
 }
 
 /*
@@ -4689,7 +4753,9 @@ type Geometry struct {
 }
 
 func GeometryNewFromNative(native unsafe.Pointer) *Geometry {
-	return &Geometry{native: native}
+	instance := &Geometry{native: native}
+
+	return instance
 }
 
 /*
@@ -4890,7 +4956,9 @@ type KeymapKey struct {
 }
 
 func KeymapKeyNewFromNative(native unsafe.Pointer) *KeymapKey {
-	return &KeymapKey{native: native}
+	instance := &KeymapKey{native: native}
+
+	return instance
 }
 
 /*
@@ -4979,7 +5047,9 @@ type MonitorClass struct {
 }
 
 func MonitorClassNewFromNative(native unsafe.Pointer) *MonitorClass {
-	return &MonitorClass{native: native}
+	instance := &MonitorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5026,7 +5096,9 @@ type Point struct {
 }
 
 func PointNewFromNative(native unsafe.Pointer) *Point {
-	return &Point{native: native}
+	instance := &Point{native: native}
+
+	return instance
 }
 
 /*
@@ -5101,7 +5173,9 @@ type RGBA struct {
 }
 
 func RGBANewFromNative(native unsafe.Pointer) *RGBA {
-	return &RGBA{native: native}
+	instance := &RGBA{native: native}
+
+	return instance
 }
 
 /*
@@ -5394,7 +5468,9 @@ type Rectangle struct {
 }
 
 func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
-	return &Rectangle{native: native}
+	instance := &Rectangle{native: native}
+
+	return instance
 }
 
 /*
@@ -5598,7 +5674,9 @@ type TimeCoord struct {
 }
 
 func TimeCoordNewFromNative(native unsafe.Pointer) *TimeCoord {
-	return &TimeCoord{native: native}
+	instance := &TimeCoord{native: native}
+
+	return instance
 }
 
 /*
@@ -5663,7 +5741,9 @@ type WindowAttr struct {
 }
 
 func WindowAttrNewFromNative(native unsafe.Pointer) *WindowAttr {
-	return &WindowAttr{native: native}
+	instance := &WindowAttr{native: native}
+
+	return instance
 }
 
 /*
@@ -5906,7 +5986,9 @@ type WindowClass struct {
 }
 
 func WindowClassNewFromNative(native unsafe.Pointer) *WindowClass {
-	return &WindowClass{native: native}
+	instance := &WindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6005,7 +6087,9 @@ type WindowRedirect struct {
 }
 
 func WindowRedirectNewFromNative(native unsafe.Pointer) *WindowRedirect {
-	return &WindowRedirect{native: native}
+	instance := &WindowRedirect{native: native}
+
+	return instance
 }
 
 /*

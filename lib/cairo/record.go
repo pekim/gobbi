@@ -26,7 +26,9 @@ type Context struct {
 }
 
 func ContextNewFromNative(native unsafe.Pointer) *Context {
-	return &Context{native: native}
+	instance := &Context{native: native}
+
+	return instance
 }
 
 /*
@@ -73,7 +75,9 @@ type Device struct {
 }
 
 func DeviceNewFromNative(native unsafe.Pointer) *Device {
-	return &Device{native: native}
+	instance := &Device{native: native}
+
+	return instance
 }
 
 /*
@@ -120,7 +124,9 @@ type Surface struct {
 }
 
 func SurfaceNewFromNative(native unsafe.Pointer) *Surface {
-	return &Surface{native: native}
+	instance := &Surface{native: native}
+
+	return instance
 }
 
 /*
@@ -167,7 +173,9 @@ type Matrix struct {
 }
 
 func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
-	return &Matrix{native: native}
+	instance := &Matrix{native: native}
+
+	return instance
 }
 
 /*
@@ -214,7 +222,9 @@ type Pattern struct {
 }
 
 func PatternNewFromNative(native unsafe.Pointer) *Pattern {
-	return &Pattern{native: native}
+	instance := &Pattern{native: native}
+
+	return instance
 }
 
 /*
@@ -261,7 +271,9 @@ type Region struct {
 }
 
 func RegionNewFromNative(native unsafe.Pointer) *Region {
-	return &Region{native: native}
+	instance := &Region{native: native}
+
+	return instance
 }
 
 /*
@@ -308,7 +320,9 @@ type FontOptions struct {
 }
 
 func FontOptionsNewFromNative(native unsafe.Pointer) *FontOptions {
-	return &FontOptions{native: native}
+	instance := &FontOptions{native: native}
+
+	return instance
 }
 
 /*
@@ -355,7 +369,9 @@ type FontFace struct {
 }
 
 func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
-	return &FontFace{native: native}
+	instance := &FontFace{native: native}
+
+	return instance
 }
 
 /*
@@ -402,7 +418,9 @@ type ScaledFont struct {
 }
 
 func ScaledFontNewFromNative(native unsafe.Pointer) *ScaledFont {
-	return &ScaledFont{native: native}
+	instance := &ScaledFont{native: native}
+
+	return instance
 }
 
 /*
@@ -449,7 +467,9 @@ type Path struct {
 }
 
 func PathNewFromNative(native unsafe.Pointer) *Path {
-	return &Path{native: native}
+	instance := &Path{native: native}
+
+	return instance
 }
 
 /*
@@ -496,7 +516,9 @@ type Rectangle struct {
 }
 
 func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
-	return &Rectangle{native: native}
+	instance := &Rectangle{native: native}
+
+	return instance
 }
 
 /*
@@ -599,7 +621,9 @@ type RectangleInt struct {
 }
 
 func RectangleIntNewFromNative(native unsafe.Pointer) *RectangleInt {
-	return &RectangleInt{native: native}
+	instance := &RectangleInt{native: native}
+
+	return instance
 }
 
 /*

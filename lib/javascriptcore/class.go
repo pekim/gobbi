@@ -25,7 +25,16 @@ type Class struct {
 }
 
 func ClassNewFromNative(native unsafe.Pointer) *Class {
-	return &Class{native: native}
+	instance := &Class{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -140,7 +149,16 @@ type Context struct {
 }
 
 func ContextNewFromNative(native unsafe.Pointer) *Context {
-	return &Context{native: native}
+	instance := &Context{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -665,7 +683,16 @@ type Exception struct {
 }
 
 func ExceptionNewFromNative(native unsafe.Pointer) *Exception {
-	return &Exception{native: native}
+	instance := &Exception{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1037,7 +1064,16 @@ type Value struct {
 }
 
 func ValueNewFromNative(native unsafe.Pointer) *Value {
-	return &Value{native: native}
+	instance := &Value{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1976,7 +2012,16 @@ type VirtualMachine struct {
 }
 
 func VirtualMachineNewFromNative(native unsafe.Pointer) *VirtualMachine {
-	return &VirtualMachine{native: native}
+	instance := &VirtualMachine{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2047,7 +2092,16 @@ type WeakValue struct {
 }
 
 func WeakValueNewFromNative(native unsafe.Pointer) *WeakValue {
-	return &WeakValue{native: native}
+	instance := &WeakValue{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

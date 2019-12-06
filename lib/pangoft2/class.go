@@ -26,7 +26,16 @@ type FontMap struct {
 }
 
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
-	return &FontMap{native: native}
+	instance := &FontMap{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FontMap upcasts to *FontMap

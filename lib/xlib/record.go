@@ -26,7 +26,9 @@ type Display struct {
 }
 
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
-	return &Display{native: native}
+	instance := &Display{native: native}
+
+	return instance
 }
 
 /*
@@ -73,7 +75,9 @@ type Screen struct {
 }
 
 func ScreenNewFromNative(native unsafe.Pointer) *Screen {
-	return &Screen{native: native}
+	instance := &Screen{native: native}
+
+	return instance
 }
 
 /*
@@ -120,7 +124,9 @@ type Visual struct {
 }
 
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
-	return &Visual{native: native}
+	instance := &Visual{native: native}
+
+	return instance
 }
 
 /*
@@ -167,7 +173,9 @@ type XConfigureEvent struct {
 }
 
 func XConfigureEventNewFromNative(native unsafe.Pointer) *XConfigureEvent {
-	return &XConfigureEvent{native: native}
+	instance := &XConfigureEvent{native: native}
+
+	return instance
 }
 
 /*
@@ -214,7 +222,9 @@ type XImage struct {
 }
 
 func XImageNewFromNative(native unsafe.Pointer) *XImage {
-	return &XImage{native: native}
+	instance := &XImage{native: native}
+
+	return instance
 }
 
 /*
@@ -261,7 +271,9 @@ type XFontStruct struct {
 }
 
 func XFontStructNewFromNative(native unsafe.Pointer) *XFontStruct {
-	return &XFontStruct{native: native}
+	instance := &XFontStruct{native: native}
+
+	return instance
 }
 
 /*
@@ -308,7 +320,9 @@ type XTrapezoid struct {
 }
 
 func XTrapezoidNewFromNative(native unsafe.Pointer) *XTrapezoid {
-	return &XTrapezoid{native: native}
+	instance := &XTrapezoid{native: native}
+
+	return instance
 }
 
 /*
@@ -355,7 +369,9 @@ type XVisualInfo struct {
 }
 
 func XVisualInfoNewFromNative(native unsafe.Pointer) *XVisualInfo {
-	return &XVisualInfo{native: native}
+	instance := &XVisualInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -402,7 +418,9 @@ type XWindowAttributes struct {
 }
 
 func XWindowAttributesNewFromNative(native unsafe.Pointer) *XWindowAttributes {
-	return &XWindowAttributes{native: native}
+	instance := &XWindowAttributes{native: native}
+
+	return instance
 }
 
 /*

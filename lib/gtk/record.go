@@ -27,7 +27,9 @@ type AboutDialogClass struct {
 }
 
 func AboutDialogClassNewFromNative(native unsafe.Pointer) *AboutDialogClass {
-	return &AboutDialogClass{native: native}
+	instance := &AboutDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -108,7 +110,9 @@ type AboutDialogPrivate struct {
 }
 
 func AboutDialogPrivateNewFromNative(native unsafe.Pointer) *AboutDialogPrivate {
-	return &AboutDialogPrivate{native: native}
+	instance := &AboutDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -155,7 +159,9 @@ type AccelGroupClass struct {
 }
 
 func AccelGroupClassNewFromNative(native unsafe.Pointer) *AccelGroupClass {
-	return &AccelGroupClass{native: native}
+	instance := &AccelGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -226,7 +232,9 @@ type AccelGroupEntry struct {
 }
 
 func AccelGroupEntryNewFromNative(native unsafe.Pointer) *AccelGroupEntry {
-	return &AccelGroupEntry{native: native}
+	instance := &AccelGroupEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -305,7 +313,9 @@ type AccelGroupPrivate struct {
 }
 
 func AccelGroupPrivateNewFromNative(native unsafe.Pointer) *AccelGroupPrivate {
-	return &AccelGroupPrivate{native: native}
+	instance := &AccelGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -352,7 +362,9 @@ type AccelKey struct {
 }
 
 func AccelKeyNewFromNative(native unsafe.Pointer) *AccelKey {
-	return &AccelKey{native: native}
+	instance := &AccelKey{native: native}
+
+	return instance
 }
 
 /*
@@ -431,7 +443,9 @@ type AccelLabelClass struct {
 }
 
 func AccelLabelClassNewFromNative(native unsafe.Pointer) *AccelLabelClass {
-	return &AccelLabelClass{native: native}
+	instance := &AccelLabelClass{native: native}
+
+	return instance
 }
 
 /*
@@ -592,7 +606,9 @@ type AccelLabelPrivate struct {
 }
 
 func AccelLabelPrivateNewFromNative(native unsafe.Pointer) *AccelLabelPrivate {
-	return &AccelLabelPrivate{native: native}
+	instance := &AccelLabelPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -639,7 +655,9 @@ type AccelMapClass struct {
 }
 
 func AccelMapClassNewFromNative(native unsafe.Pointer) *AccelMapClass {
-	return &AccelMapClass{native: native}
+	instance := &AccelMapClass{native: native}
+
+	return instance
 }
 
 /*
@@ -686,7 +704,9 @@ type AccessibleClass struct {
 }
 
 func AccessibleClassNewFromNative(native unsafe.Pointer) *AccessibleClass {
-	return &AccessibleClass{native: native}
+	instance := &AccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -757,7 +777,9 @@ type AccessiblePrivate struct {
 }
 
 func AccessiblePrivateNewFromNative(native unsafe.Pointer) *AccessiblePrivate {
-	return &AccessiblePrivate{native: native}
+	instance := &AccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -804,7 +826,9 @@ type ActionBarClass struct {
 }
 
 func ActionBarClassNewFromNative(native unsafe.Pointer) *ActionBarClass {
-	return &ActionBarClass{native: native}
+	instance := &ActionBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -867,7 +891,9 @@ type ActionBarPrivate struct {
 }
 
 func ActionBarPrivateNewFromNative(native unsafe.Pointer) *ActionBarPrivate {
-	return &ActionBarPrivate{native: native}
+	instance := &ActionBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -914,7 +940,9 @@ type ActionClass struct {
 }
 
 func ActionClassNewFromNative(native unsafe.Pointer) *ActionClass {
-	return &ActionClass{native: native}
+	instance := &ActionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1005,7 +1033,9 @@ type ActionEntry struct {
 }
 
 func ActionEntryNewFromNative(native unsafe.Pointer) *ActionEntry {
-	return &ActionEntry{native: native}
+	instance := &ActionEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -1126,7 +1156,9 @@ type ActionGroupClass struct {
 }
 
 func ActionGroupClassNewFromNative(native unsafe.Pointer) *ActionGroupClass {
-	return &ActionGroupClass{native: native}
+	instance := &ActionGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1197,7 +1229,9 @@ type ActionGroupPrivate struct {
 }
 
 func ActionGroupPrivateNewFromNative(native unsafe.Pointer) *ActionGroupPrivate {
-	return &ActionGroupPrivate{native: native}
+	instance := &ActionGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1244,7 +1278,9 @@ type ActionPrivate struct {
 }
 
 func ActionPrivateNewFromNative(native unsafe.Pointer) *ActionPrivate {
-	return &ActionPrivate{native: native}
+	instance := &ActionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1291,7 +1327,9 @@ type ActionableInterface struct {
 }
 
 func ActionableInterfaceNewFromNative(native unsafe.Pointer) *ActionableInterface {
-	return &ActionableInterface{native: native}
+	instance := &ActionableInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -1354,7 +1392,9 @@ type ActivatableIface struct {
 }
 
 func ActivatableIfaceNewFromNative(native unsafe.Pointer) *ActivatableIface {
-	return &ActivatableIface{native: native}
+	instance := &ActivatableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -1409,7 +1449,9 @@ type AdjustmentClass struct {
 }
 
 func AdjustmentClassNewFromNative(native unsafe.Pointer) *AdjustmentClass {
-	return &AdjustmentClass{native: native}
+	instance := &AdjustmentClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1484,7 +1526,9 @@ type AdjustmentPrivate struct {
 }
 
 func AdjustmentPrivateNewFromNative(native unsafe.Pointer) *AdjustmentPrivate {
-	return &AdjustmentPrivate{native: native}
+	instance := &AdjustmentPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1531,7 +1575,9 @@ type AlignmentClass struct {
 }
 
 func AlignmentClassNewFromNative(native unsafe.Pointer) *AlignmentClass {
-	return &AlignmentClass{native: native}
+	instance := &AlignmentClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1608,7 +1654,9 @@ type AlignmentPrivate struct {
 }
 
 func AlignmentPrivateNewFromNative(native unsafe.Pointer) *AlignmentPrivate {
-	return &AlignmentPrivate{native: native}
+	instance := &AlignmentPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1655,7 +1703,9 @@ type AppChooserButtonClass struct {
 }
 
 func AppChooserButtonClassNewFromNative(native unsafe.Pointer) *AppChooserButtonClass {
-	return &AppChooserButtonClass{native: native}
+	instance := &AppChooserButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1720,7 +1770,9 @@ type AppChooserButtonPrivate struct {
 }
 
 func AppChooserButtonPrivateNewFromNative(native unsafe.Pointer) *AppChooserButtonPrivate {
-	return &AppChooserButtonPrivate{native: native}
+	instance := &AppChooserButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1767,7 +1819,9 @@ type AppChooserDialogClass struct {
 }
 
 func AppChooserDialogClassNewFromNative(native unsafe.Pointer) *AppChooserDialogClass {
-	return &AppChooserDialogClass{native: native}
+	instance := &AppChooserDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1828,7 +1882,9 @@ type AppChooserDialogPrivate struct {
 }
 
 func AppChooserDialogPrivateNewFromNative(native unsafe.Pointer) *AppChooserDialogPrivate {
-	return &AppChooserDialogPrivate{native: native}
+	instance := &AppChooserDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1875,7 +1931,9 @@ type AppChooserWidgetClass struct {
 }
 
 func AppChooserWidgetClassNewFromNative(native unsafe.Pointer) *AppChooserWidgetClass {
-	return &AppChooserWidgetClass{native: native}
+	instance := &AppChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1948,7 +2006,9 @@ type AppChooserWidgetPrivate struct {
 }
 
 func AppChooserWidgetPrivateNewFromNative(native unsafe.Pointer) *AppChooserWidgetPrivate {
-	return &AppChooserWidgetPrivate{native: native}
+	instance := &AppChooserWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1995,7 +2055,9 @@ type ApplicationClass struct {
 }
 
 func ApplicationClassNewFromNative(native unsafe.Pointer) *ApplicationClass {
-	return &ApplicationClass{native: native}
+	instance := &ApplicationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2054,7 +2116,9 @@ type ApplicationPrivate struct {
 }
 
 func ApplicationPrivateNewFromNative(native unsafe.Pointer) *ApplicationPrivate {
-	return &ApplicationPrivate{native: native}
+	instance := &ApplicationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2101,7 +2165,9 @@ type ApplicationWindowClass struct {
 }
 
 func ApplicationWindowClassNewFromNative(native unsafe.Pointer) *ApplicationWindowClass {
-	return &ApplicationWindowClass{native: native}
+	instance := &ApplicationWindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2162,7 +2228,9 @@ type ApplicationWindowPrivate struct {
 }
 
 func ApplicationWindowPrivateNewFromNative(native unsafe.Pointer) *ApplicationWindowPrivate {
-	return &ApplicationWindowPrivate{native: native}
+	instance := &ApplicationWindowPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2209,7 +2277,9 @@ type ArrowAccessibleClass struct {
 }
 
 func ArrowAccessibleClassNewFromNative(native unsafe.Pointer) *ArrowAccessibleClass {
-	return &ArrowAccessibleClass{native: native}
+	instance := &ArrowAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2270,7 +2340,9 @@ type ArrowAccessiblePrivate struct {
 }
 
 func ArrowAccessiblePrivateNewFromNative(native unsafe.Pointer) *ArrowAccessiblePrivate {
-	return &ArrowAccessiblePrivate{native: native}
+	instance := &ArrowAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2317,7 +2389,9 @@ type ArrowClass struct {
 }
 
 func ArrowClassNewFromNative(native unsafe.Pointer) *ArrowClass {
-	return &ArrowClass{native: native}
+	instance := &ArrowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2394,7 +2468,9 @@ type ArrowPrivate struct {
 }
 
 func ArrowPrivateNewFromNative(native unsafe.Pointer) *ArrowPrivate {
-	return &ArrowPrivate{native: native}
+	instance := &ArrowPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2441,7 +2517,9 @@ type AspectFrameClass struct {
 }
 
 func AspectFrameClassNewFromNative(native unsafe.Pointer) *AspectFrameClass {
-	return &AspectFrameClass{native: native}
+	instance := &AspectFrameClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2518,7 +2596,9 @@ type AspectFramePrivate struct {
 }
 
 func AspectFramePrivateNewFromNative(native unsafe.Pointer) *AspectFramePrivate {
-	return &AspectFramePrivate{native: native}
+	instance := &AspectFramePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2565,7 +2645,9 @@ type AssistantClass struct {
 }
 
 func AssistantClassNewFromNative(native unsafe.Pointer) *AssistantClass {
-	return &AssistantClass{native: native}
+	instance := &AssistantClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2662,7 +2744,9 @@ type AssistantPrivate struct {
 }
 
 func AssistantPrivateNewFromNative(native unsafe.Pointer) *AssistantPrivate {
-	return &AssistantPrivate{native: native}
+	instance := &AssistantPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2709,7 +2793,9 @@ type BinClass struct {
 }
 
 func BinClassNewFromNative(native unsafe.Pointer) *BinClass {
-	return &BinClass{native: native}
+	instance := &BinClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2786,7 +2872,9 @@ type BinPrivate struct {
 }
 
 func BinPrivateNewFromNative(native unsafe.Pointer) *BinPrivate {
-	return &BinPrivate{native: native}
+	instance := &BinPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2833,7 +2921,9 @@ type BindingArg struct {
 }
 
 func BindingArgNewFromNative(native unsafe.Pointer) *BindingArg {
-	return &BindingArg{native: native}
+	instance := &BindingArg{native: native}
+
+	return instance
 }
 
 /*
@@ -2884,7 +2974,9 @@ type BindingEntry struct {
 }
 
 func BindingEntryNewFromNative(native unsafe.Pointer) *BindingEntry {
-	return &BindingEntry{native: native}
+	instance := &BindingEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -3047,7 +3139,9 @@ type BindingSet struct {
 }
 
 func BindingSetNewFromNative(native unsafe.Pointer) *BindingSet {
-	return &BindingSet{native: native}
+	instance := &BindingSet{native: native}
+
+	return instance
 }
 
 /*
@@ -3209,7 +3303,9 @@ type BindingSignal struct {
 }
 
 func BindingSignalNewFromNative(native unsafe.Pointer) *BindingSignal {
-	return &BindingSignal{native: native}
+	instance := &BindingSignal{native: native}
+
+	return instance
 }
 
 /*
@@ -3302,7 +3398,9 @@ type BooleanCellAccessibleClass struct {
 }
 
 func BooleanCellAccessibleClassNewFromNative(native unsafe.Pointer) *BooleanCellAccessibleClass {
-	return &BooleanCellAccessibleClass{native: native}
+	instance := &BooleanCellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3363,7 +3461,9 @@ type BooleanCellAccessiblePrivate struct {
 }
 
 func BooleanCellAccessiblePrivateNewFromNative(native unsafe.Pointer) *BooleanCellAccessiblePrivate {
-	return &BooleanCellAccessiblePrivate{native: native}
+	instance := &BooleanCellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3410,7 +3510,9 @@ type Border struct {
 }
 
 func BorderNewFromNative(native unsafe.Pointer) *Border {
-	return &Border{native: native}
+	instance := &Border{native: native}
+
+	return instance
 }
 
 /*
@@ -3588,7 +3690,9 @@ type BoxClass struct {
 }
 
 func BoxClassNewFromNative(native unsafe.Pointer) *BoxClass {
-	return &BoxClass{native: native}
+	instance := &BoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3665,7 +3769,9 @@ type BoxPrivate struct {
 }
 
 func BoxPrivateNewFromNative(native unsafe.Pointer) *BoxPrivate {
-	return &BoxPrivate{native: native}
+	instance := &BoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3712,7 +3818,9 @@ type BuildableIface struct {
 }
 
 func BuildableIfaceNewFromNative(native unsafe.Pointer) *BuildableIface {
-	return &BuildableIface{native: native}
+	instance := &BuildableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -3803,7 +3911,9 @@ type BuilderClass struct {
 }
 
 func BuilderClassNewFromNative(native unsafe.Pointer) *BuilderClass {
-	return &BuilderClass{native: native}
+	instance := &BuilderClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3890,7 +4000,9 @@ type BuilderPrivate struct {
 }
 
 func BuilderPrivateNewFromNative(native unsafe.Pointer) *BuilderPrivate {
-	return &BuilderPrivate{native: native}
+	instance := &BuilderPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3937,7 +4049,9 @@ type ButtonAccessibleClass struct {
 }
 
 func ButtonAccessibleClassNewFromNative(native unsafe.Pointer) *ButtonAccessibleClass {
-	return &ButtonAccessibleClass{native: native}
+	instance := &ButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3998,7 +4112,9 @@ type ButtonAccessiblePrivate struct {
 }
 
 func ButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *ButtonAccessiblePrivate {
-	return &ButtonAccessiblePrivate{native: native}
+	instance := &ButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4045,7 +4161,9 @@ type ButtonBoxClass struct {
 }
 
 func ButtonBoxClassNewFromNative(native unsafe.Pointer) *ButtonBoxClass {
-	return &ButtonBoxClass{native: native}
+	instance := &ButtonBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4122,7 +4240,9 @@ type ButtonBoxPrivate struct {
 }
 
 func ButtonBoxPrivateNewFromNative(native unsafe.Pointer) *ButtonBoxPrivate {
-	return &ButtonBoxPrivate{native: native}
+	instance := &ButtonBoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4169,7 +4289,9 @@ type ButtonClass struct {
 }
 
 func ButtonClassNewFromNative(native unsafe.Pointer) *ButtonClass {
-	return &ButtonClass{native: native}
+	instance := &ButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4270,7 +4392,9 @@ type ButtonPrivate struct {
 }
 
 func ButtonPrivateNewFromNative(native unsafe.Pointer) *ButtonPrivate {
-	return &ButtonPrivate{native: native}
+	instance := &ButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4317,7 +4441,9 @@ type CalendarClass struct {
 }
 
 func CalendarClassNewFromNative(native unsafe.Pointer) *CalendarClass {
-	return &CalendarClass{native: native}
+	instance := &CalendarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4422,7 +4548,9 @@ type CalendarPrivate struct {
 }
 
 func CalendarPrivateNewFromNative(native unsafe.Pointer) *CalendarPrivate {
-	return &CalendarPrivate{native: native}
+	instance := &CalendarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4469,7 +4597,9 @@ type CellAccessibleClass struct {
 }
 
 func CellAccessibleClassNewFromNative(native unsafe.Pointer) *CellAccessibleClass {
-	return &CellAccessibleClass{native: native}
+	instance := &CellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4534,7 +4664,9 @@ type CellAccessibleParentIface struct {
 }
 
 func CellAccessibleParentIfaceNewFromNative(native unsafe.Pointer) *CellAccessibleParentIface {
-	return &CellAccessibleParentIface{native: native}
+	instance := &CellAccessibleParentIface{native: native}
+
+	return instance
 }
 
 /*
@@ -4633,7 +4765,9 @@ type CellAccessiblePrivate struct {
 }
 
 func CellAccessiblePrivateNewFromNative(native unsafe.Pointer) *CellAccessiblePrivate {
-	return &CellAccessiblePrivate{native: native}
+	instance := &CellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4680,7 +4814,9 @@ type CellAreaBoxClass struct {
 }
 
 func CellAreaBoxClassNewFromNative(native unsafe.Pointer) *CellAreaBoxClass {
-	return &CellAreaBoxClass{native: native}
+	instance := &CellAreaBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4743,7 +4879,9 @@ type CellAreaBoxPrivate struct {
 }
 
 func CellAreaBoxPrivateNewFromNative(native unsafe.Pointer) *CellAreaBoxPrivate {
-	return &CellAreaBoxPrivate{native: native}
+	instance := &CellAreaBoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4790,7 +4928,9 @@ type CellAreaClass struct {
 }
 
 func CellAreaClassNewFromNative(native unsafe.Pointer) *CellAreaClass {
-	return &CellAreaClass{native: native}
+	instance := &CellAreaClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4981,7 +5121,9 @@ type CellAreaContextClass struct {
 }
 
 func CellAreaContextClassNewFromNative(native unsafe.Pointer) *CellAreaContextClass {
-	return &CellAreaContextClass{native: native}
+	instance := &CellAreaContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5068,7 +5210,9 @@ type CellAreaContextPrivate struct {
 }
 
 func CellAreaContextPrivateNewFromNative(native unsafe.Pointer) *CellAreaContextPrivate {
-	return &CellAreaContextPrivate{native: native}
+	instance := &CellAreaContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5115,7 +5259,9 @@ type CellAreaPrivate struct {
 }
 
 func CellAreaPrivateNewFromNative(native unsafe.Pointer) *CellAreaPrivate {
-	return &CellAreaPrivate{native: native}
+	instance := &CellAreaPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5162,7 +5308,9 @@ type CellEditableIface struct {
 }
 
 func CellEditableIfaceNewFromNative(native unsafe.Pointer) *CellEditableIface {
-	return &CellEditableIface{native: native}
+	instance := &CellEditableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -5221,7 +5369,9 @@ type CellLayoutIface struct {
 }
 
 func CellLayoutIfaceNewFromNative(native unsafe.Pointer) *CellLayoutIface {
-	return &CellLayoutIface{native: native}
+	instance := &CellLayoutIface{native: native}
+
+	return instance
 }
 
 /*
@@ -5304,7 +5454,9 @@ type CellRendererAccelClass struct {
 }
 
 func CellRendererAccelClassNewFromNative(native unsafe.Pointer) *CellRendererAccelClass {
-	return &CellRendererAccelClass{native: native}
+	instance := &CellRendererAccelClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5393,7 +5545,9 @@ type CellRendererAccelPrivate struct {
 }
 
 func CellRendererAccelPrivateNewFromNative(native unsafe.Pointer) *CellRendererAccelPrivate {
-	return &CellRendererAccelPrivate{native: native}
+	instance := &CellRendererAccelPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5440,7 +5594,9 @@ type CellRendererClass struct {
 }
 
 func CellRendererClassNewFromNative(native unsafe.Pointer) *CellRendererClass {
-	return &CellRendererClass{native: native}
+	instance := &CellRendererClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5549,7 +5705,9 @@ type CellRendererClassPrivate struct {
 }
 
 func CellRendererClassPrivateNewFromNative(native unsafe.Pointer) *CellRendererClassPrivate {
-	return &CellRendererClassPrivate{native: native}
+	instance := &CellRendererClassPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5596,7 +5754,9 @@ type CellRendererComboClass struct {
 }
 
 func CellRendererComboClassNewFromNative(native unsafe.Pointer) *CellRendererComboClass {
-	return &CellRendererComboClass{native: native}
+	instance := &CellRendererComboClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5673,7 +5833,9 @@ type CellRendererComboPrivate struct {
 }
 
 func CellRendererComboPrivateNewFromNative(native unsafe.Pointer) *CellRendererComboPrivate {
-	return &CellRendererComboPrivate{native: native}
+	instance := &CellRendererComboPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5720,7 +5882,9 @@ type CellRendererPixbufClass struct {
 }
 
 func CellRendererPixbufClassNewFromNative(native unsafe.Pointer) *CellRendererPixbufClass {
-	return &CellRendererPixbufClass{native: native}
+	instance := &CellRendererPixbufClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5797,7 +5961,9 @@ type CellRendererPixbufPrivate struct {
 }
 
 func CellRendererPixbufPrivateNewFromNative(native unsafe.Pointer) *CellRendererPixbufPrivate {
-	return &CellRendererPixbufPrivate{native: native}
+	instance := &CellRendererPixbufPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5844,7 +6010,9 @@ type CellRendererPrivate struct {
 }
 
 func CellRendererPrivateNewFromNative(native unsafe.Pointer) *CellRendererPrivate {
-	return &CellRendererPrivate{native: native}
+	instance := &CellRendererPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5891,7 +6059,9 @@ type CellRendererProgressClass struct {
 }
 
 func CellRendererProgressClassNewFromNative(native unsafe.Pointer) *CellRendererProgressClass {
-	return &CellRendererProgressClass{native: native}
+	instance := &CellRendererProgressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5968,7 +6138,9 @@ type CellRendererProgressPrivate struct {
 }
 
 func CellRendererProgressPrivateNewFromNative(native unsafe.Pointer) *CellRendererProgressPrivate {
-	return &CellRendererProgressPrivate{native: native}
+	instance := &CellRendererProgressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6015,7 +6187,9 @@ type CellRendererSpinClass struct {
 }
 
 func CellRendererSpinClassNewFromNative(native unsafe.Pointer) *CellRendererSpinClass {
-	return &CellRendererSpinClass{native: native}
+	instance := &CellRendererSpinClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6092,7 +6266,9 @@ type CellRendererSpinPrivate struct {
 }
 
 func CellRendererSpinPrivateNewFromNative(native unsafe.Pointer) *CellRendererSpinPrivate {
-	return &CellRendererSpinPrivate{native: native}
+	instance := &CellRendererSpinPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6139,7 +6315,9 @@ type CellRendererSpinnerClass struct {
 }
 
 func CellRendererSpinnerClassNewFromNative(native unsafe.Pointer) *CellRendererSpinnerClass {
-	return &CellRendererSpinnerClass{native: native}
+	instance := &CellRendererSpinnerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6216,7 +6394,9 @@ type CellRendererSpinnerPrivate struct {
 }
 
 func CellRendererSpinnerPrivateNewFromNative(native unsafe.Pointer) *CellRendererSpinnerPrivate {
-	return &CellRendererSpinnerPrivate{native: native}
+	instance := &CellRendererSpinnerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6263,7 +6443,9 @@ type CellRendererTextClass struct {
 }
 
 func CellRendererTextClassNewFromNative(native unsafe.Pointer) *CellRendererTextClass {
-	return &CellRendererTextClass{native: native}
+	instance := &CellRendererTextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6344,7 +6526,9 @@ type CellRendererTextPrivate struct {
 }
 
 func CellRendererTextPrivateNewFromNative(native unsafe.Pointer) *CellRendererTextPrivate {
-	return &CellRendererTextPrivate{native: native}
+	instance := &CellRendererTextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6391,7 +6575,9 @@ type CellRendererToggleClass struct {
 }
 
 func CellRendererToggleClassNewFromNative(native unsafe.Pointer) *CellRendererToggleClass {
-	return &CellRendererToggleClass{native: native}
+	instance := &CellRendererToggleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6472,7 +6658,9 @@ type CellRendererTogglePrivate struct {
 }
 
 func CellRendererTogglePrivateNewFromNative(native unsafe.Pointer) *CellRendererTogglePrivate {
-	return &CellRendererTogglePrivate{native: native}
+	instance := &CellRendererTogglePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6519,7 +6707,9 @@ type CellViewClass struct {
 }
 
 func CellViewClassNewFromNative(native unsafe.Pointer) *CellViewClass {
-	return &CellViewClass{native: native}
+	instance := &CellViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6596,7 +6786,9 @@ type CellViewPrivate struct {
 }
 
 func CellViewPrivateNewFromNative(native unsafe.Pointer) *CellViewPrivate {
-	return &CellViewPrivate{native: native}
+	instance := &CellViewPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6643,7 +6835,9 @@ type CheckButtonClass struct {
 }
 
 func CheckButtonClassNewFromNative(native unsafe.Pointer) *CheckButtonClass {
-	return &CheckButtonClass{native: native}
+	instance := &CheckButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6724,7 +6918,9 @@ type CheckMenuItemAccessibleClass struct {
 }
 
 func CheckMenuItemAccessibleClassNewFromNative(native unsafe.Pointer) *CheckMenuItemAccessibleClass {
-	return &CheckMenuItemAccessibleClass{native: native}
+	instance := &CheckMenuItemAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6785,7 +6981,9 @@ type CheckMenuItemAccessiblePrivate struct {
 }
 
 func CheckMenuItemAccessiblePrivateNewFromNative(native unsafe.Pointer) *CheckMenuItemAccessiblePrivate {
-	return &CheckMenuItemAccessiblePrivate{native: native}
+	instance := &CheckMenuItemAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6832,7 +7030,9 @@ type CheckMenuItemClass struct {
 }
 
 func CheckMenuItemClassNewFromNative(native unsafe.Pointer) *CheckMenuItemClass {
-	return &CheckMenuItemClass{native: native}
+	instance := &CheckMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6917,7 +7117,9 @@ type CheckMenuItemPrivate struct {
 }
 
 func CheckMenuItemPrivateNewFromNative(native unsafe.Pointer) *CheckMenuItemPrivate {
-	return &CheckMenuItemPrivate{native: native}
+	instance := &CheckMenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6964,7 +7166,9 @@ type ColorButtonClass struct {
 }
 
 func ColorButtonClassNewFromNative(native unsafe.Pointer) *ColorButtonClass {
-	return &ColorButtonClass{native: native}
+	instance := &ColorButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7045,7 +7249,9 @@ type ColorButtonPrivate struct {
 }
 
 func ColorButtonPrivateNewFromNative(native unsafe.Pointer) *ColorButtonPrivate {
-	return &ColorButtonPrivate{native: native}
+	instance := &ColorButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7092,7 +7298,9 @@ type ColorChooserDialogClass struct {
 }
 
 func ColorChooserDialogClassNewFromNative(native unsafe.Pointer) *ColorChooserDialogClass {
-	return &ColorChooserDialogClass{native: native}
+	instance := &ColorChooserDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7169,7 +7377,9 @@ type ColorChooserDialogPrivate struct {
 }
 
 func ColorChooserDialogPrivateNewFromNative(native unsafe.Pointer) *ColorChooserDialogPrivate {
-	return &ColorChooserDialogPrivate{native: native}
+	instance := &ColorChooserDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7216,7 +7426,9 @@ type ColorChooserInterface struct {
 }
 
 func ColorChooserInterfaceNewFromNative(native unsafe.Pointer) *ColorChooserInterface {
-	return &ColorChooserInterface{native: native}
+	instance := &ColorChooserInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -7287,7 +7499,9 @@ type ColorChooserWidgetClass struct {
 }
 
 func ColorChooserWidgetClassNewFromNative(native unsafe.Pointer) *ColorChooserWidgetClass {
-	return &ColorChooserWidgetClass{native: native}
+	instance := &ColorChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7380,7 +7594,9 @@ type ColorChooserWidgetPrivate struct {
 }
 
 func ColorChooserWidgetPrivateNewFromNative(native unsafe.Pointer) *ColorChooserWidgetPrivate {
-	return &ColorChooserWidgetPrivate{native: native}
+	instance := &ColorChooserWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7427,7 +7643,9 @@ type ColorSelectionClass struct {
 }
 
 func ColorSelectionClassNewFromNative(native unsafe.Pointer) *ColorSelectionClass {
-	return &ColorSelectionClass{native: native}
+	instance := &ColorSelectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7508,7 +7726,9 @@ type ColorSelectionDialogClass struct {
 }
 
 func ColorSelectionDialogClassNewFromNative(native unsafe.Pointer) *ColorSelectionDialogClass {
-	return &ColorSelectionDialogClass{native: native}
+	instance := &ColorSelectionDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7585,7 +7805,9 @@ type ColorSelectionDialogPrivate struct {
 }
 
 func ColorSelectionDialogPrivateNewFromNative(native unsafe.Pointer) *ColorSelectionDialogPrivate {
-	return &ColorSelectionDialogPrivate{native: native}
+	instance := &ColorSelectionDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7632,7 +7854,9 @@ type ColorSelectionPrivate struct {
 }
 
 func ColorSelectionPrivateNewFromNative(native unsafe.Pointer) *ColorSelectionPrivate {
-	return &ColorSelectionPrivate{native: native}
+	instance := &ColorSelectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7679,7 +7903,9 @@ type ComboBoxAccessibleClass struct {
 }
 
 func ComboBoxAccessibleClassNewFromNative(native unsafe.Pointer) *ComboBoxAccessibleClass {
-	return &ComboBoxAccessibleClass{native: native}
+	instance := &ComboBoxAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7740,7 +7966,9 @@ type ComboBoxAccessiblePrivate struct {
 }
 
 func ComboBoxAccessiblePrivateNewFromNative(native unsafe.Pointer) *ComboBoxAccessiblePrivate {
-	return &ComboBoxAccessiblePrivate{native: native}
+	instance := &ComboBoxAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7787,7 +8015,9 @@ type ComboBoxClass struct {
 }
 
 func ComboBoxClassNewFromNative(native unsafe.Pointer) *ComboBoxClass {
-	return &ComboBoxClass{native: native}
+	instance := &ComboBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7868,7 +8098,9 @@ type ComboBoxPrivate struct {
 }
 
 func ComboBoxPrivateNewFromNative(native unsafe.Pointer) *ComboBoxPrivate {
-	return &ComboBoxPrivate{native: native}
+	instance := &ComboBoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7915,7 +8147,9 @@ type ComboBoxTextClass struct {
 }
 
 func ComboBoxTextClassNewFromNative(native unsafe.Pointer) *ComboBoxTextClass {
-	return &ComboBoxTextClass{native: native}
+	instance := &ComboBoxTextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7992,7 +8226,9 @@ type ComboBoxTextPrivate struct {
 }
 
 func ComboBoxTextPrivateNewFromNative(native unsafe.Pointer) *ComboBoxTextPrivate {
-	return &ComboBoxTextPrivate{native: native}
+	instance := &ComboBoxTextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8039,7 +8275,9 @@ type ContainerAccessibleClass struct {
 }
 
 func ContainerAccessibleClassNewFromNative(native unsafe.Pointer) *ContainerAccessibleClass {
-	return &ContainerAccessibleClass{native: native}
+	instance := &ContainerAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8108,7 +8346,9 @@ type ContainerAccessiblePrivate struct {
 }
 
 func ContainerAccessiblePrivateNewFromNative(native unsafe.Pointer) *ContainerAccessiblePrivate {
-	return &ContainerAccessiblePrivate{native: native}
+	instance := &ContainerAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8155,7 +8395,9 @@ type ContainerCellAccessibleClass struct {
 }
 
 func ContainerCellAccessibleClassNewFromNative(native unsafe.Pointer) *ContainerCellAccessibleClass {
-	return &ContainerCellAccessibleClass{native: native}
+	instance := &ContainerCellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8216,7 +8458,9 @@ type ContainerCellAccessiblePrivate struct {
 }
 
 func ContainerCellAccessiblePrivateNewFromNative(native unsafe.Pointer) *ContainerCellAccessiblePrivate {
-	return &ContainerCellAccessiblePrivate{native: native}
+	instance := &ContainerCellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8263,7 +8507,9 @@ type ContainerClass struct {
 }
 
 func ContainerClassNewFromNative(native unsafe.Pointer) *ContainerClass {
-	return &ContainerClass{native: native}
+	instance := &ContainerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8462,7 +8708,9 @@ type ContainerPrivate struct {
 }
 
 func ContainerPrivateNewFromNative(native unsafe.Pointer) *ContainerPrivate {
-	return &ContainerPrivate{native: native}
+	instance := &ContainerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8509,7 +8757,9 @@ type CssProviderClass struct {
 }
 
 func CssProviderClassNewFromNative(native unsafe.Pointer) *CssProviderClass {
-	return &CssProviderClass{native: native}
+	instance := &CssProviderClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8576,7 +8826,9 @@ type CssProviderPrivate struct {
 }
 
 func CssProviderPrivateNewFromNative(native unsafe.Pointer) *CssProviderPrivate {
-	return &CssProviderPrivate{native: native}
+	instance := &CssProviderPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8623,7 +8875,9 @@ type CssSection struct {
 }
 
 func CssSectionNewFromNative(native unsafe.Pointer) *CssSection {
-	return &CssSection{native: native}
+	instance := &CssSection{native: native}
+
+	return instance
 }
 
 /*
@@ -8924,7 +9178,9 @@ type DialogClass struct {
 }
 
 func DialogClassNewFromNative(native unsafe.Pointer) *DialogClass {
-	return &DialogClass{native: native}
+	instance := &DialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9009,7 +9265,9 @@ type DialogPrivate struct {
 }
 
 func DialogPrivateNewFromNative(native unsafe.Pointer) *DialogPrivate {
-	return &DialogPrivate{native: native}
+	instance := &DialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9056,7 +9314,9 @@ type DrawingAreaClass struct {
 }
 
 func DrawingAreaClassNewFromNative(native unsafe.Pointer) *DrawingAreaClass {
-	return &DrawingAreaClass{native: native}
+	instance := &DrawingAreaClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9133,7 +9393,9 @@ type EditableInterface struct {
 }
 
 func EditableInterfaceNewFromNative(native unsafe.Pointer) *EditableInterface {
-	return &EditableInterface{native: native}
+	instance := &EditableInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -9224,7 +9486,9 @@ type EntryAccessibleClass struct {
 }
 
 func EntryAccessibleClassNewFromNative(native unsafe.Pointer) *EntryAccessibleClass {
-	return &EntryAccessibleClass{native: native}
+	instance := &EntryAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9285,7 +9549,9 @@ type EntryAccessiblePrivate struct {
 }
 
 func EntryAccessiblePrivateNewFromNative(native unsafe.Pointer) *EntryAccessiblePrivate {
-	return &EntryAccessiblePrivate{native: native}
+	instance := &EntryAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9332,7 +9598,9 @@ type EntryBufferClass struct {
 }
 
 func EntryBufferClassNewFromNative(native unsafe.Pointer) *EntryBufferClass {
-	return &EntryBufferClass{native: native}
+	instance := &EntryBufferClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9439,7 +9707,9 @@ type EntryBufferPrivate struct {
 }
 
 func EntryBufferPrivateNewFromNative(native unsafe.Pointer) *EntryBufferPrivate {
-	return &EntryBufferPrivate{native: native}
+	instance := &EntryBufferPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9486,7 +9756,9 @@ type EntryClass struct {
 }
 
 func EntryClassNewFromNative(native unsafe.Pointer) *EntryClass {
-	return &EntryClass{native: native}
+	instance := &EntryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9623,7 +9895,9 @@ type EntryCompletionClass struct {
 }
 
 func EntryCompletionClassNewFromNative(native unsafe.Pointer) *EntryCompletionClass {
-	return &EntryCompletionClass{native: native}
+	instance := &EntryCompletionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9706,7 +9980,9 @@ type EntryCompletionPrivate struct {
 }
 
 func EntryCompletionPrivateNewFromNative(native unsafe.Pointer) *EntryCompletionPrivate {
-	return &EntryCompletionPrivate{native: native}
+	instance := &EntryCompletionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9753,7 +10029,9 @@ type EntryPrivate struct {
 }
 
 func EntryPrivateNewFromNative(native unsafe.Pointer) *EntryPrivate {
-	return &EntryPrivate{native: native}
+	instance := &EntryPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9800,7 +10078,9 @@ type EventBoxClass struct {
 }
 
 func EventBoxClassNewFromNative(native unsafe.Pointer) *EventBoxClass {
-	return &EventBoxClass{native: native}
+	instance := &EventBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9877,7 +10157,9 @@ type EventBoxPrivate struct {
 }
 
 func EventBoxPrivateNewFromNative(native unsafe.Pointer) *EventBoxPrivate {
-	return &EventBoxPrivate{native: native}
+	instance := &EventBoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9924,7 +10206,9 @@ type EventControllerClass struct {
 }
 
 func EventControllerClassNewFromNative(native unsafe.Pointer) *EventControllerClass {
-	return &EventControllerClass{native: native}
+	instance := &EventControllerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9971,7 +10255,9 @@ type EventControllerKeyClass struct {
 }
 
 func EventControllerKeyClassNewFromNative(native unsafe.Pointer) *EventControllerKeyClass {
-	return &EventControllerKeyClass{native: native}
+	instance := &EventControllerKeyClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10018,7 +10304,9 @@ type EventControllerMotionClass struct {
 }
 
 func EventControllerMotionClassNewFromNative(native unsafe.Pointer) *EventControllerMotionClass {
-	return &EventControllerMotionClass{native: native}
+	instance := &EventControllerMotionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10065,7 +10353,9 @@ type EventControllerScrollClass struct {
 }
 
 func EventControllerScrollClassNewFromNative(native unsafe.Pointer) *EventControllerScrollClass {
-	return &EventControllerScrollClass{native: native}
+	instance := &EventControllerScrollClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10112,7 +10402,9 @@ type ExpanderAccessibleClass struct {
 }
 
 func ExpanderAccessibleClassNewFromNative(native unsafe.Pointer) *ExpanderAccessibleClass {
-	return &ExpanderAccessibleClass{native: native}
+	instance := &ExpanderAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10173,7 +10465,9 @@ type ExpanderAccessiblePrivate struct {
 }
 
 func ExpanderAccessiblePrivateNewFromNative(native unsafe.Pointer) *ExpanderAccessiblePrivate {
-	return &ExpanderAccessiblePrivate{native: native}
+	instance := &ExpanderAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10220,7 +10514,9 @@ type ExpanderClass struct {
 }
 
 func ExpanderClassNewFromNative(native unsafe.Pointer) *ExpanderClass {
-	return &ExpanderClass{native: native}
+	instance := &ExpanderClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10301,7 +10597,9 @@ type ExpanderPrivate struct {
 }
 
 func ExpanderPrivateNewFromNative(native unsafe.Pointer) *ExpanderPrivate {
-	return &ExpanderPrivate{native: native}
+	instance := &ExpanderPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10348,7 +10646,9 @@ type FileChooserButtonClass struct {
 }
 
 func FileChooserButtonClassNewFromNative(native unsafe.Pointer) *FileChooserButtonClass {
-	return &FileChooserButtonClass{native: native}
+	instance := &FileChooserButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10429,7 +10729,9 @@ type FileChooserButtonPrivate struct {
 }
 
 func FileChooserButtonPrivateNewFromNative(native unsafe.Pointer) *FileChooserButtonPrivate {
-	return &FileChooserButtonPrivate{native: native}
+	instance := &FileChooserButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10476,7 +10778,9 @@ type FileChooserDialogClass struct {
 }
 
 func FileChooserDialogClassNewFromNative(native unsafe.Pointer) *FileChooserDialogClass {
-	return &FileChooserDialogClass{native: native}
+	instance := &FileChooserDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10553,7 +10857,9 @@ type FileChooserDialogPrivate struct {
 }
 
 func FileChooserDialogPrivateNewFromNative(native unsafe.Pointer) *FileChooserDialogPrivate {
-	return &FileChooserDialogPrivate{native: native}
+	instance := &FileChooserDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10600,7 +10906,9 @@ type FileChooserNativeClass struct {
 }
 
 func FileChooserNativeClassNewFromNative(native unsafe.Pointer) *FileChooserNativeClass {
-	return &FileChooserNativeClass{native: native}
+	instance := &FileChooserNativeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10661,7 +10969,9 @@ type FileChooserWidgetClass struct {
 }
 
 func FileChooserWidgetClassNewFromNative(native unsafe.Pointer) *FileChooserWidgetClass {
-	return &FileChooserWidgetClass{native: native}
+	instance := &FileChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10738,7 +11048,9 @@ type FileChooserWidgetPrivate struct {
 }
 
 func FileChooserWidgetPrivateNewFromNative(native unsafe.Pointer) *FileChooserWidgetPrivate {
-	return &FileChooserWidgetPrivate{native: native}
+	instance := &FileChooserWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10785,7 +11097,9 @@ type FileFilterInfo struct {
 }
 
 func FileFilterInfoNewFromNative(native unsafe.Pointer) *FileFilterInfo {
-	return &FileFilterInfo{native: native}
+	instance := &FileFilterInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -10892,7 +11206,9 @@ type FixedChild struct {
 }
 
 func FixedChildNewFromNative(native unsafe.Pointer) *FixedChild {
-	return &FixedChild{native: native}
+	instance := &FixedChild{native: native}
+
+	return instance
 }
 
 /*
@@ -10981,7 +11297,9 @@ type FixedClass struct {
 }
 
 func FixedClassNewFromNative(native unsafe.Pointer) *FixedClass {
-	return &FixedClass{native: native}
+	instance := &FixedClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11058,7 +11376,9 @@ type FixedPrivate struct {
 }
 
 func FixedPrivateNewFromNative(native unsafe.Pointer) *FixedPrivate {
-	return &FixedPrivate{native: native}
+	instance := &FixedPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11105,7 +11425,9 @@ type FlowBoxAccessibleClass struct {
 }
 
 func FlowBoxAccessibleClassNewFromNative(native unsafe.Pointer) *FlowBoxAccessibleClass {
-	return &FlowBoxAccessibleClass{native: native}
+	instance := &FlowBoxAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11166,7 +11488,9 @@ type FlowBoxAccessiblePrivate struct {
 }
 
 func FlowBoxAccessiblePrivateNewFromNative(native unsafe.Pointer) *FlowBoxAccessiblePrivate {
-	return &FlowBoxAccessiblePrivate{native: native}
+	instance := &FlowBoxAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11213,7 +11537,9 @@ type FlowBoxChildAccessibleClass struct {
 }
 
 func FlowBoxChildAccessibleClassNewFromNative(native unsafe.Pointer) *FlowBoxChildAccessibleClass {
-	return &FlowBoxChildAccessibleClass{native: native}
+	instance := &FlowBoxChildAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11274,7 +11600,9 @@ type FlowBoxChildClass struct {
 }
 
 func FlowBoxChildClassNewFromNative(native unsafe.Pointer) *FlowBoxChildClass {
-	return &FlowBoxChildClass{native: native}
+	instance := &FlowBoxChildClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11347,7 +11675,9 @@ type FlowBoxClass struct {
 }
 
 func FlowBoxClassNewFromNative(native unsafe.Pointer) *FlowBoxClass {
-	return &FlowBoxClass{native: native}
+	instance := &FlowBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11460,7 +11790,9 @@ type FontButtonClass struct {
 }
 
 func FontButtonClassNewFromNative(native unsafe.Pointer) *FontButtonClass {
-	return &FontButtonClass{native: native}
+	instance := &FontButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11541,7 +11873,9 @@ type FontButtonPrivate struct {
 }
 
 func FontButtonPrivateNewFromNative(native unsafe.Pointer) *FontButtonPrivate {
-	return &FontButtonPrivate{native: native}
+	instance := &FontButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11588,7 +11922,9 @@ type FontChooserDialogClass struct {
 }
 
 func FontChooserDialogClassNewFromNative(native unsafe.Pointer) *FontChooserDialogClass {
-	return &FontChooserDialogClass{native: native}
+	instance := &FontChooserDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11665,7 +12001,9 @@ type FontChooserDialogPrivate struct {
 }
 
 func FontChooserDialogPrivateNewFromNative(native unsafe.Pointer) *FontChooserDialogPrivate {
-	return &FontChooserDialogPrivate{native: native}
+	instance := &FontChooserDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11712,7 +12050,9 @@ type FontChooserIface struct {
 }
 
 func FontChooserIfaceNewFromNative(native unsafe.Pointer) *FontChooserIface {
-	return &FontChooserIface{native: native}
+	instance := &FontChooserIface{native: native}
+
+	return instance
 }
 
 /*
@@ -11795,7 +12135,9 @@ type FontChooserWidgetClass struct {
 }
 
 func FontChooserWidgetClassNewFromNative(native unsafe.Pointer) *FontChooserWidgetClass {
-	return &FontChooserWidgetClass{native: native}
+	instance := &FontChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11888,7 +12230,9 @@ type FontChooserWidgetPrivate struct {
 }
 
 func FontChooserWidgetPrivateNewFromNative(native unsafe.Pointer) *FontChooserWidgetPrivate {
-	return &FontChooserWidgetPrivate{native: native}
+	instance := &FontChooserWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11935,7 +12279,9 @@ type FontSelectionClass struct {
 }
 
 func FontSelectionClassNewFromNative(native unsafe.Pointer) *FontSelectionClass {
-	return &FontSelectionClass{native: native}
+	instance := &FontSelectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12012,7 +12358,9 @@ type FontSelectionDialogClass struct {
 }
 
 func FontSelectionDialogClassNewFromNative(native unsafe.Pointer) *FontSelectionDialogClass {
-	return &FontSelectionDialogClass{native: native}
+	instance := &FontSelectionDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12089,7 +12437,9 @@ type FontSelectionDialogPrivate struct {
 }
 
 func FontSelectionDialogPrivateNewFromNative(native unsafe.Pointer) *FontSelectionDialogPrivate {
-	return &FontSelectionDialogPrivate{native: native}
+	instance := &FontSelectionDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12136,7 +12486,9 @@ type FontSelectionPrivate struct {
 }
 
 func FontSelectionPrivateNewFromNative(native unsafe.Pointer) *FontSelectionPrivate {
-	return &FontSelectionPrivate{native: native}
+	instance := &FontSelectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12183,7 +12535,9 @@ type FrameAccessibleClass struct {
 }
 
 func FrameAccessibleClassNewFromNative(native unsafe.Pointer) *FrameAccessibleClass {
-	return &FrameAccessibleClass{native: native}
+	instance := &FrameAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12244,7 +12598,9 @@ type FrameAccessiblePrivate struct {
 }
 
 func FrameAccessiblePrivateNewFromNative(native unsafe.Pointer) *FrameAccessiblePrivate {
-	return &FrameAccessiblePrivate{native: native}
+	instance := &FrameAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12291,7 +12647,9 @@ type FrameClass struct {
 }
 
 func FrameClassNewFromNative(native unsafe.Pointer) *FrameClass {
-	return &FrameClass{native: native}
+	instance := &FrameClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12372,7 +12730,9 @@ type FramePrivate struct {
 }
 
 func FramePrivateNewFromNative(native unsafe.Pointer) *FramePrivate {
-	return &FramePrivate{native: native}
+	instance := &FramePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12419,7 +12779,9 @@ type GLAreaClass struct {
 }
 
 func GLAreaClassNewFromNative(native unsafe.Pointer) *GLAreaClass {
-	return &GLAreaClass{native: native}
+	instance := &GLAreaClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12478,7 +12840,9 @@ type GestureClass struct {
 }
 
 func GestureClassNewFromNative(native unsafe.Pointer) *GestureClass {
-	return &GestureClass{native: native}
+	instance := &GestureClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12525,7 +12889,9 @@ type GestureDragClass struct {
 }
 
 func GestureDragClassNewFromNative(native unsafe.Pointer) *GestureDragClass {
-	return &GestureDragClass{native: native}
+	instance := &GestureDragClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12572,7 +12938,9 @@ type GestureLongPressClass struct {
 }
 
 func GestureLongPressClassNewFromNative(native unsafe.Pointer) *GestureLongPressClass {
-	return &GestureLongPressClass{native: native}
+	instance := &GestureLongPressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12619,7 +12987,9 @@ type GestureMultiPressClass struct {
 }
 
 func GestureMultiPressClassNewFromNative(native unsafe.Pointer) *GestureMultiPressClass {
-	return &GestureMultiPressClass{native: native}
+	instance := &GestureMultiPressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12666,7 +13036,9 @@ type GesturePanClass struct {
 }
 
 func GesturePanClassNewFromNative(native unsafe.Pointer) *GesturePanClass {
-	return &GesturePanClass{native: native}
+	instance := &GesturePanClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12713,7 +13085,9 @@ type GestureRotateClass struct {
 }
 
 func GestureRotateClassNewFromNative(native unsafe.Pointer) *GestureRotateClass {
-	return &GestureRotateClass{native: native}
+	instance := &GestureRotateClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12760,7 +13134,9 @@ type GestureSingleClass struct {
 }
 
 func GestureSingleClassNewFromNative(native unsafe.Pointer) *GestureSingleClass {
-	return &GestureSingleClass{native: native}
+	instance := &GestureSingleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12807,7 +13183,9 @@ type GestureStylusClass struct {
 }
 
 func GestureStylusClassNewFromNative(native unsafe.Pointer) *GestureStylusClass {
-	return &GestureStylusClass{native: native}
+	instance := &GestureStylusClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12854,7 +13232,9 @@ type GestureSwipeClass struct {
 }
 
 func GestureSwipeClassNewFromNative(native unsafe.Pointer) *GestureSwipeClass {
-	return &GestureSwipeClass{native: native}
+	instance := &GestureSwipeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12901,7 +13281,9 @@ type GestureZoomClass struct {
 }
 
 func GestureZoomClassNewFromNative(native unsafe.Pointer) *GestureZoomClass {
-	return &GestureZoomClass{native: native}
+	instance := &GestureZoomClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12948,7 +13330,9 @@ type Gradient struct {
 }
 
 func GradientNewFromNative(native unsafe.Pointer) *Gradient {
-	return &Gradient{native: native}
+	instance := &Gradient{native: native}
+
+	return instance
 }
 
 /*
@@ -13178,7 +13562,9 @@ type GridClass struct {
 }
 
 func GridClassNewFromNative(native unsafe.Pointer) *GridClass {
-	return &GridClass{native: native}
+	instance := &GridClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13271,7 +13657,9 @@ type GridPrivate struct {
 }
 
 func GridPrivateNewFromNative(native unsafe.Pointer) *GridPrivate {
-	return &GridPrivate{native: native}
+	instance := &GridPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13318,7 +13706,9 @@ type HBoxClass struct {
 }
 
 func HBoxClassNewFromNative(native unsafe.Pointer) *HBoxClass {
-	return &HBoxClass{native: native}
+	instance := &HBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13379,7 +13769,9 @@ type HButtonBoxClass struct {
 }
 
 func HButtonBoxClassNewFromNative(native unsafe.Pointer) *HButtonBoxClass {
-	return &HButtonBoxClass{native: native}
+	instance := &HButtonBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13440,7 +13832,9 @@ type HPanedClass struct {
 }
 
 func HPanedClassNewFromNative(native unsafe.Pointer) *HPanedClass {
-	return &HPanedClass{native: native}
+	instance := &HPanedClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13501,7 +13895,9 @@ type HSVClass struct {
 }
 
 func HSVClassNewFromNative(native unsafe.Pointer) *HSVClass {
-	return &HSVClass{native: native}
+	instance := &HSVClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13586,7 +13982,9 @@ type HSVPrivate struct {
 }
 
 func HSVPrivateNewFromNative(native unsafe.Pointer) *HSVPrivate {
-	return &HSVPrivate{native: native}
+	instance := &HSVPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13633,7 +14031,9 @@ type HScaleClass struct {
 }
 
 func HScaleClassNewFromNative(native unsafe.Pointer) *HScaleClass {
-	return &HScaleClass{native: native}
+	instance := &HScaleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13694,7 +14094,9 @@ type HScrollbarClass struct {
 }
 
 func HScrollbarClassNewFromNative(native unsafe.Pointer) *HScrollbarClass {
-	return &HScrollbarClass{native: native}
+	instance := &HScrollbarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13755,7 +14157,9 @@ type HSeparatorClass struct {
 }
 
 func HSeparatorClassNewFromNative(native unsafe.Pointer) *HSeparatorClass {
-	return &HSeparatorClass{native: native}
+	instance := &HSeparatorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13816,7 +14220,9 @@ type HandleBoxClass struct {
 }
 
 func HandleBoxClassNewFromNative(native unsafe.Pointer) *HandleBoxClass {
-	return &HandleBoxClass{native: native}
+	instance := &HandleBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13901,7 +14307,9 @@ type HandleBoxPrivate struct {
 }
 
 func HandleBoxPrivateNewFromNative(native unsafe.Pointer) *HandleBoxPrivate {
-	return &HandleBoxPrivate{native: native}
+	instance := &HandleBoxPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13948,7 +14356,9 @@ type HeaderBarAccessibleClass struct {
 }
 
 func HeaderBarAccessibleClassNewFromNative(native unsafe.Pointer) *HeaderBarAccessibleClass {
-	return &HeaderBarAccessibleClass{native: native}
+	instance := &HeaderBarAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14009,7 +14419,9 @@ type HeaderBarAccessiblePrivate struct {
 }
 
 func HeaderBarAccessiblePrivateNewFromNative(native unsafe.Pointer) *HeaderBarAccessiblePrivate {
-	return &HeaderBarAccessiblePrivate{native: native}
+	instance := &HeaderBarAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14056,7 +14468,9 @@ type HeaderBarClass struct {
 }
 
 func HeaderBarClassNewFromNative(native unsafe.Pointer) *HeaderBarClass {
-	return &HeaderBarClass{native: native}
+	instance := &HeaderBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14133,7 +14547,9 @@ type HeaderBarPrivate struct {
 }
 
 func HeaderBarPrivateNewFromNative(native unsafe.Pointer) *HeaderBarPrivate {
-	return &HeaderBarPrivate{native: native}
+	instance := &HeaderBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14180,7 +14596,9 @@ type IMContextClass struct {
 }
 
 func IMContextClassNewFromNative(native unsafe.Pointer) *IMContextClass {
-	return &IMContextClass{native: native}
+	instance := &IMContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14315,7 +14733,9 @@ type IMContextInfo struct {
 }
 
 func IMContextInfoNewFromNative(native unsafe.Pointer) *IMContextInfo {
-	return &IMContextInfo{native: native}
+	instance := &IMContextInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -14432,7 +14852,9 @@ type IMContextSimpleClass struct {
 }
 
 func IMContextSimpleClassNewFromNative(native unsafe.Pointer) *IMContextSimpleClass {
-	return &IMContextSimpleClass{native: native}
+	instance := &IMContextSimpleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14493,7 +14915,9 @@ type IMContextSimplePrivate struct {
 }
 
 func IMContextSimplePrivateNewFromNative(native unsafe.Pointer) *IMContextSimplePrivate {
-	return &IMContextSimplePrivate{native: native}
+	instance := &IMContextSimplePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14540,7 +14964,9 @@ type IMMulticontextClass struct {
 }
 
 func IMMulticontextClassNewFromNative(native unsafe.Pointer) *IMMulticontextClass {
-	return &IMMulticontextClass{native: native}
+	instance := &IMMulticontextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14617,7 +15043,9 @@ type IMMulticontextPrivate struct {
 }
 
 func IMMulticontextPrivateNewFromNative(native unsafe.Pointer) *IMMulticontextPrivate {
-	return &IMMulticontextPrivate{native: native}
+	instance := &IMMulticontextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14664,7 +15092,9 @@ type IconFactoryClass struct {
 }
 
 func IconFactoryClassNewFromNative(native unsafe.Pointer) *IconFactoryClass {
-	return &IconFactoryClass{native: native}
+	instance := &IconFactoryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14731,7 +15161,9 @@ type IconFactoryPrivate struct {
 }
 
 func IconFactoryPrivateNewFromNative(native unsafe.Pointer) *IconFactoryPrivate {
-	return &IconFactoryPrivate{native: native}
+	instance := &IconFactoryPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14778,7 +15210,9 @@ type IconInfoClass struct {
 }
 
 func IconInfoClassNewFromNative(native unsafe.Pointer) *IconInfoClass {
-	return &IconInfoClass{native: native}
+	instance := &IconInfoClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14825,7 +15259,9 @@ type IconSet struct {
 }
 
 func IconSetNewFromNative(native unsafe.Pointer) *IconSet {
-	return &IconSet{native: native}
+	instance := &IconSet{native: native}
+
+	return instance
 }
 
 /*
@@ -15018,7 +15454,9 @@ type IconSource struct {
 }
 
 func IconSourceNewFromNative(native unsafe.Pointer) *IconSource {
-	return &IconSource{native: native}
+	instance := &IconSource{native: native}
+
+	return instance
 }
 
 /*
@@ -15632,7 +16070,9 @@ type IconThemeClass struct {
 }
 
 func IconThemeClassNewFromNative(native unsafe.Pointer) *IconThemeClass {
-	return &IconThemeClass{native: native}
+	instance := &IconThemeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15703,7 +16143,9 @@ type IconThemePrivate struct {
 }
 
 func IconThemePrivateNewFromNative(native unsafe.Pointer) *IconThemePrivate {
-	return &IconThemePrivate{native: native}
+	instance := &IconThemePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15750,7 +16192,9 @@ type IconViewAccessibleClass struct {
 }
 
 func IconViewAccessibleClassNewFromNative(native unsafe.Pointer) *IconViewAccessibleClass {
-	return &IconViewAccessibleClass{native: native}
+	instance := &IconViewAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15811,7 +16255,9 @@ type IconViewAccessiblePrivate struct {
 }
 
 func IconViewAccessiblePrivateNewFromNative(native unsafe.Pointer) *IconViewAccessiblePrivate {
-	return &IconViewAccessiblePrivate{native: native}
+	instance := &IconViewAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15858,7 +16304,9 @@ type IconViewClass struct {
 }
 
 func IconViewClassNewFromNative(native unsafe.Pointer) *IconViewClass {
-	return &IconViewClass{native: native}
+	instance := &IconViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15967,7 +16415,9 @@ type IconViewPrivate struct {
 }
 
 func IconViewPrivateNewFromNative(native unsafe.Pointer) *IconViewPrivate {
-	return &IconViewPrivate{native: native}
+	instance := &IconViewPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16014,7 +16464,9 @@ type ImageAccessibleClass struct {
 }
 
 func ImageAccessibleClassNewFromNative(native unsafe.Pointer) *ImageAccessibleClass {
-	return &ImageAccessibleClass{native: native}
+	instance := &ImageAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16075,7 +16527,9 @@ type ImageAccessiblePrivate struct {
 }
 
 func ImageAccessiblePrivateNewFromNative(native unsafe.Pointer) *ImageAccessiblePrivate {
-	return &ImageAccessiblePrivate{native: native}
+	instance := &ImageAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16122,7 +16576,9 @@ type ImageCellAccessibleClass struct {
 }
 
 func ImageCellAccessibleClassNewFromNative(native unsafe.Pointer) *ImageCellAccessibleClass {
-	return &ImageCellAccessibleClass{native: native}
+	instance := &ImageCellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16183,7 +16639,9 @@ type ImageCellAccessiblePrivate struct {
 }
 
 func ImageCellAccessiblePrivateNewFromNative(native unsafe.Pointer) *ImageCellAccessiblePrivate {
-	return &ImageCellAccessiblePrivate{native: native}
+	instance := &ImageCellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16230,7 +16688,9 @@ type ImageClass struct {
 }
 
 func ImageClassNewFromNative(native unsafe.Pointer) *ImageClass {
-	return &ImageClass{native: native}
+	instance := &ImageClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16307,7 +16767,9 @@ type ImageMenuItemClass struct {
 }
 
 func ImageMenuItemClassNewFromNative(native unsafe.Pointer) *ImageMenuItemClass {
-	return &ImageMenuItemClass{native: native}
+	instance := &ImageMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16384,7 +16846,9 @@ type ImageMenuItemPrivate struct {
 }
 
 func ImageMenuItemPrivateNewFromNative(native unsafe.Pointer) *ImageMenuItemPrivate {
-	return &ImageMenuItemPrivate{native: native}
+	instance := &ImageMenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16431,7 +16895,9 @@ type ImagePrivate struct {
 }
 
 func ImagePrivateNewFromNative(native unsafe.Pointer) *ImagePrivate {
-	return &ImagePrivate{native: native}
+	instance := &ImagePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16478,7 +16944,9 @@ type InfoBarClass struct {
 }
 
 func InfoBarClassNewFromNative(native unsafe.Pointer) *InfoBarClass {
-	return &InfoBarClass{native: native}
+	instance := &InfoBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16563,7 +17031,9 @@ type InfoBarPrivate struct {
 }
 
 func InfoBarPrivateNewFromNative(native unsafe.Pointer) *InfoBarPrivate {
-	return &InfoBarPrivate{native: native}
+	instance := &InfoBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16610,7 +17080,9 @@ type InvisibleClass struct {
 }
 
 func InvisibleClassNewFromNative(native unsafe.Pointer) *InvisibleClass {
-	return &InvisibleClass{native: native}
+	instance := &InvisibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16687,7 +17159,9 @@ type InvisiblePrivate struct {
 }
 
 func InvisiblePrivateNewFromNative(native unsafe.Pointer) *InvisiblePrivate {
-	return &InvisiblePrivate{native: native}
+	instance := &InvisiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16734,7 +17208,9 @@ type LabelAccessibleClass struct {
 }
 
 func LabelAccessibleClassNewFromNative(native unsafe.Pointer) *LabelAccessibleClass {
-	return &LabelAccessibleClass{native: native}
+	instance := &LabelAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16795,7 +17271,9 @@ type LabelAccessiblePrivate struct {
 }
 
 func LabelAccessiblePrivateNewFromNative(native unsafe.Pointer) *LabelAccessiblePrivate {
-	return &LabelAccessiblePrivate{native: native}
+	instance := &LabelAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16842,7 +17320,9 @@ type LabelClass struct {
 }
 
 func LabelClassNewFromNative(native unsafe.Pointer) *LabelClass {
-	return &LabelClass{native: native}
+	instance := &LabelClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16951,7 +17431,9 @@ type LabelPrivate struct {
 }
 
 func LabelPrivateNewFromNative(native unsafe.Pointer) *LabelPrivate {
-	return &LabelPrivate{native: native}
+	instance := &LabelPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16998,7 +17480,9 @@ type LabelSelectionInfo struct {
 }
 
 func LabelSelectionInfoNewFromNative(native unsafe.Pointer) *LabelSelectionInfo {
-	return &LabelSelectionInfo{native: native}
+	instance := &LabelSelectionInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -17045,7 +17529,9 @@ type LayoutClass struct {
 }
 
 func LayoutClassNewFromNative(native unsafe.Pointer) *LayoutClass {
-	return &LayoutClass{native: native}
+	instance := &LayoutClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17122,7 +17608,9 @@ type LayoutPrivate struct {
 }
 
 func LayoutPrivateNewFromNative(native unsafe.Pointer) *LayoutPrivate {
-	return &LayoutPrivate{native: native}
+	instance := &LayoutPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17169,7 +17657,9 @@ type LevelBarAccessibleClass struct {
 }
 
 func LevelBarAccessibleClassNewFromNative(native unsafe.Pointer) *LevelBarAccessibleClass {
-	return &LevelBarAccessibleClass{native: native}
+	instance := &LevelBarAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17230,7 +17720,9 @@ type LevelBarAccessiblePrivate struct {
 }
 
 func LevelBarAccessiblePrivateNewFromNative(native unsafe.Pointer) *LevelBarAccessiblePrivate {
-	return &LevelBarAccessiblePrivate{native: native}
+	instance := &LevelBarAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17277,7 +17769,9 @@ type LevelBarClass struct {
 }
 
 func LevelBarClassNewFromNative(native unsafe.Pointer) *LevelBarClass {
-	return &LevelBarClass{native: native}
+	instance := &LevelBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17328,7 +17822,9 @@ type LevelBarPrivate struct {
 }
 
 func LevelBarPrivateNewFromNative(native unsafe.Pointer) *LevelBarPrivate {
-	return &LevelBarPrivate{native: native}
+	instance := &LevelBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17375,7 +17871,9 @@ type LinkButtonAccessibleClass struct {
 }
 
 func LinkButtonAccessibleClassNewFromNative(native unsafe.Pointer) *LinkButtonAccessibleClass {
-	return &LinkButtonAccessibleClass{native: native}
+	instance := &LinkButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17436,7 +17934,9 @@ type LinkButtonAccessiblePrivate struct {
 }
 
 func LinkButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *LinkButtonAccessiblePrivate {
-	return &LinkButtonAccessiblePrivate{native: native}
+	instance := &LinkButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17483,7 +17983,9 @@ type LinkButtonClass struct {
 }
 
 func LinkButtonClassNewFromNative(native unsafe.Pointer) *LinkButtonClass {
-	return &LinkButtonClass{native: native}
+	instance := &LinkButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17550,7 +18052,9 @@ type LinkButtonPrivate struct {
 }
 
 func LinkButtonPrivateNewFromNative(native unsafe.Pointer) *LinkButtonPrivate {
-	return &LinkButtonPrivate{native: native}
+	instance := &LinkButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17597,7 +18101,9 @@ type ListBoxAccessibleClass struct {
 }
 
 func ListBoxAccessibleClassNewFromNative(native unsafe.Pointer) *ListBoxAccessibleClass {
-	return &ListBoxAccessibleClass{native: native}
+	instance := &ListBoxAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17658,7 +18164,9 @@ type ListBoxAccessiblePrivate struct {
 }
 
 func ListBoxAccessiblePrivateNewFromNative(native unsafe.Pointer) *ListBoxAccessiblePrivate {
-	return &ListBoxAccessiblePrivate{native: native}
+	instance := &ListBoxAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -17705,7 +18213,9 @@ type ListBoxClass struct {
 }
 
 func ListBoxClassNewFromNative(native unsafe.Pointer) *ListBoxClass {
-	return &ListBoxClass{native: native}
+	instance := &ListBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17810,7 +18320,9 @@ type ListBoxRowAccessibleClass struct {
 }
 
 func ListBoxRowAccessibleClassNewFromNative(native unsafe.Pointer) *ListBoxRowAccessibleClass {
-	return &ListBoxRowAccessibleClass{native: native}
+	instance := &ListBoxRowAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17871,7 +18383,9 @@ type ListBoxRowClass struct {
 }
 
 func ListBoxRowClassNewFromNative(native unsafe.Pointer) *ListBoxRowClass {
-	return &ListBoxRowClass{native: native}
+	instance := &ListBoxRowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17944,7 +18458,9 @@ type ListStoreClass struct {
 }
 
 func ListStoreClassNewFromNative(native unsafe.Pointer) *ListStoreClass {
-	return &ListStoreClass{native: native}
+	instance := &ListStoreClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18011,7 +18527,9 @@ type ListStorePrivate struct {
 }
 
 func ListStorePrivateNewFromNative(native unsafe.Pointer) *ListStorePrivate {
-	return &ListStorePrivate{native: native}
+	instance := &ListStorePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18058,7 +18576,9 @@ type LockButtonAccessibleClass struct {
 }
 
 func LockButtonAccessibleClassNewFromNative(native unsafe.Pointer) *LockButtonAccessibleClass {
-	return &LockButtonAccessibleClass{native: native}
+	instance := &LockButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18119,7 +18639,9 @@ type LockButtonAccessiblePrivate struct {
 }
 
 func LockButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *LockButtonAccessiblePrivate {
-	return &LockButtonAccessiblePrivate{native: native}
+	instance := &LockButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18166,7 +18688,9 @@ type LockButtonClass struct {
 }
 
 func LockButtonClassNewFromNative(native unsafe.Pointer) *LockButtonClass {
-	return &LockButtonClass{native: native}
+	instance := &LockButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18259,7 +18783,9 @@ type LockButtonPrivate struct {
 }
 
 func LockButtonPrivateNewFromNative(native unsafe.Pointer) *LockButtonPrivate {
-	return &LockButtonPrivate{native: native}
+	instance := &LockButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18306,7 +18832,9 @@ type MenuAccessibleClass struct {
 }
 
 func MenuAccessibleClassNewFromNative(native unsafe.Pointer) *MenuAccessibleClass {
-	return &MenuAccessibleClass{native: native}
+	instance := &MenuAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18367,7 +18895,9 @@ type MenuAccessiblePrivate struct {
 }
 
 func MenuAccessiblePrivateNewFromNative(native unsafe.Pointer) *MenuAccessiblePrivate {
-	return &MenuAccessiblePrivate{native: native}
+	instance := &MenuAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18414,7 +18944,9 @@ type MenuBarClass struct {
 }
 
 func MenuBarClassNewFromNative(native unsafe.Pointer) *MenuBarClass {
-	return &MenuBarClass{native: native}
+	instance := &MenuBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18491,7 +19023,9 @@ type MenuBarPrivate struct {
 }
 
 func MenuBarPrivateNewFromNative(native unsafe.Pointer) *MenuBarPrivate {
-	return &MenuBarPrivate{native: native}
+	instance := &MenuBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18538,7 +19072,9 @@ type MenuButtonAccessibleClass struct {
 }
 
 func MenuButtonAccessibleClassNewFromNative(native unsafe.Pointer) *MenuButtonAccessibleClass {
-	return &MenuButtonAccessibleClass{native: native}
+	instance := &MenuButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18599,7 +19135,9 @@ type MenuButtonAccessiblePrivate struct {
 }
 
 func MenuButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *MenuButtonAccessiblePrivate {
-	return &MenuButtonAccessiblePrivate{native: native}
+	instance := &MenuButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18646,7 +19184,9 @@ type MenuButtonClass struct {
 }
 
 func MenuButtonClassNewFromNative(native unsafe.Pointer) *MenuButtonClass {
-	return &MenuButtonClass{native: native}
+	instance := &MenuButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18723,7 +19263,9 @@ type MenuButtonPrivate struct {
 }
 
 func MenuButtonPrivateNewFromNative(native unsafe.Pointer) *MenuButtonPrivate {
-	return &MenuButtonPrivate{native: native}
+	instance := &MenuButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18770,7 +19312,9 @@ type MenuClass struct {
 }
 
 func MenuClassNewFromNative(native unsafe.Pointer) *MenuClass {
-	return &MenuClass{native: native}
+	instance := &MenuClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18847,7 +19391,9 @@ type MenuItemAccessibleClass struct {
 }
 
 func MenuItemAccessibleClassNewFromNative(native unsafe.Pointer) *MenuItemAccessibleClass {
-	return &MenuItemAccessibleClass{native: native}
+	instance := &MenuItemAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -18908,7 +19454,9 @@ type MenuItemAccessiblePrivate struct {
 }
 
 func MenuItemAccessiblePrivateNewFromNative(native unsafe.Pointer) *MenuItemAccessiblePrivate {
-	return &MenuItemAccessiblePrivate{native: native}
+	instance := &MenuItemAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -18955,7 +19503,9 @@ type MenuItemClass struct {
 }
 
 func MenuItemClassNewFromNative(native unsafe.Pointer) *MenuItemClass {
-	return &MenuItemClass{native: native}
+	instance := &MenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19078,7 +19628,9 @@ type MenuItemPrivate struct {
 }
 
 func MenuItemPrivateNewFromNative(native unsafe.Pointer) *MenuItemPrivate {
-	return &MenuItemPrivate{native: native}
+	instance := &MenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19125,7 +19677,9 @@ type MenuPrivate struct {
 }
 
 func MenuPrivateNewFromNative(native unsafe.Pointer) *MenuPrivate {
-	return &MenuPrivate{native: native}
+	instance := &MenuPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19172,7 +19726,9 @@ type MenuShellAccessibleClass struct {
 }
 
 func MenuShellAccessibleClassNewFromNative(native unsafe.Pointer) *MenuShellAccessibleClass {
-	return &MenuShellAccessibleClass{native: native}
+	instance := &MenuShellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19233,7 +19789,9 @@ type MenuShellAccessiblePrivate struct {
 }
 
 func MenuShellAccessiblePrivateNewFromNative(native unsafe.Pointer) *MenuShellAccessiblePrivate {
-	return &MenuShellAccessiblePrivate{native: native}
+	instance := &MenuShellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19280,7 +19838,9 @@ type MenuShellClass struct {
 }
 
 func MenuShellClassNewFromNative(native unsafe.Pointer) *MenuShellClass {
-	return &MenuShellClass{native: native}
+	instance := &MenuShellClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19407,7 +19967,9 @@ type MenuShellPrivate struct {
 }
 
 func MenuShellPrivateNewFromNative(native unsafe.Pointer) *MenuShellPrivate {
-	return &MenuShellPrivate{native: native}
+	instance := &MenuShellPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19454,7 +20016,9 @@ type MenuToolButtonClass struct {
 }
 
 func MenuToolButtonClassNewFromNative(native unsafe.Pointer) *MenuToolButtonClass {
-	return &MenuToolButtonClass{native: native}
+	instance := &MenuToolButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19535,7 +20099,9 @@ type MenuToolButtonPrivate struct {
 }
 
 func MenuToolButtonPrivateNewFromNative(native unsafe.Pointer) *MenuToolButtonPrivate {
-	return &MenuToolButtonPrivate{native: native}
+	instance := &MenuToolButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19582,7 +20148,9 @@ type MessageDialogClass struct {
 }
 
 func MessageDialogClassNewFromNative(native unsafe.Pointer) *MessageDialogClass {
-	return &MessageDialogClass{native: native}
+	instance := &MessageDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19659,7 +20227,9 @@ type MessageDialogPrivate struct {
 }
 
 func MessageDialogPrivateNewFromNative(native unsafe.Pointer) *MessageDialogPrivate {
-	return &MessageDialogPrivate{native: native}
+	instance := &MessageDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19706,7 +20276,9 @@ type MiscClass struct {
 }
 
 func MiscClassNewFromNative(native unsafe.Pointer) *MiscClass {
-	return &MiscClass{native: native}
+	instance := &MiscClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19783,7 +20355,9 @@ type MiscPrivate struct {
 }
 
 func MiscPrivateNewFromNative(native unsafe.Pointer) *MiscPrivate {
-	return &MiscPrivate{native: native}
+	instance := &MiscPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19830,7 +20404,9 @@ type MountOperationClass struct {
 }
 
 func MountOperationClassNewFromNative(native unsafe.Pointer) *MountOperationClass {
-	return &MountOperationClass{native: native}
+	instance := &MountOperationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -19897,7 +20473,9 @@ type MountOperationPrivate struct {
 }
 
 func MountOperationPrivateNewFromNative(native unsafe.Pointer) *MountOperationPrivate {
-	return &MountOperationPrivate{native: native}
+	instance := &MountOperationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -19944,7 +20522,9 @@ type NativeDialogClass struct {
 }
 
 func NativeDialogClassNewFromNative(native unsafe.Pointer) *NativeDialogClass {
-	return &NativeDialogClass{native: native}
+	instance := &NativeDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20023,7 +20603,9 @@ type NotebookAccessibleClass struct {
 }
 
 func NotebookAccessibleClassNewFromNative(native unsafe.Pointer) *NotebookAccessibleClass {
-	return &NotebookAccessibleClass{native: native}
+	instance := &NotebookAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20084,7 +20666,9 @@ type NotebookAccessiblePrivate struct {
 }
 
 func NotebookAccessiblePrivateNewFromNative(native unsafe.Pointer) *NotebookAccessiblePrivate {
-	return &NotebookAccessiblePrivate{native: native}
+	instance := &NotebookAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -20131,7 +20715,9 @@ type NotebookClass struct {
 }
 
 func NotebookClassNewFromNative(native unsafe.Pointer) *NotebookClass {
-	return &NotebookClass{native: native}
+	instance := &NotebookClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20268,7 +20854,9 @@ type NotebookPageAccessibleClass struct {
 }
 
 func NotebookPageAccessibleClassNewFromNative(native unsafe.Pointer) *NotebookPageAccessibleClass {
-	return &NotebookPageAccessibleClass{native: native}
+	instance := &NotebookPageAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20319,7 +20907,9 @@ type NotebookPageAccessiblePrivate struct {
 }
 
 func NotebookPageAccessiblePrivateNewFromNative(native unsafe.Pointer) *NotebookPageAccessiblePrivate {
-	return &NotebookPageAccessiblePrivate{native: native}
+	instance := &NotebookPageAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -20366,7 +20956,9 @@ type NotebookPrivate struct {
 }
 
 func NotebookPrivateNewFromNative(native unsafe.Pointer) *NotebookPrivate {
-	return &NotebookPrivate{native: native}
+	instance := &NotebookPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -20413,7 +21005,9 @@ type NumerableIconClass struct {
 }
 
 func NumerableIconClassNewFromNative(native unsafe.Pointer) *NumerableIconClass {
-	return &NumerableIconClass{native: native}
+	instance := &NumerableIconClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20468,7 +21062,9 @@ type NumerableIconPrivate struct {
 }
 
 func NumerableIconPrivateNewFromNative(native unsafe.Pointer) *NumerableIconPrivate {
-	return &NumerableIconPrivate{native: native}
+	instance := &NumerableIconPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -20515,7 +21111,9 @@ type OffscreenWindowClass struct {
 }
 
 func OffscreenWindowClassNewFromNative(native unsafe.Pointer) *OffscreenWindowClass {
-	return &OffscreenWindowClass{native: native}
+	instance := &OffscreenWindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20592,7 +21190,9 @@ type OrientableIface struct {
 }
 
 func OrientableIfaceNewFromNative(native unsafe.Pointer) *OrientableIface {
-	return &OrientableIface{native: native}
+	instance := &OrientableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -20643,7 +21243,9 @@ type OverlayClass struct {
 }
 
 func OverlayClassNewFromNative(native unsafe.Pointer) *OverlayClass {
-	return &OverlayClass{native: native}
+	instance := &OverlayClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20740,7 +21342,9 @@ type OverlayPrivate struct {
 }
 
 func OverlayPrivateNewFromNative(native unsafe.Pointer) *OverlayPrivate {
-	return &OverlayPrivate{native: native}
+	instance := &OverlayPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -20787,7 +21391,9 @@ type PadActionEntry struct {
 }
 
 func PadActionEntryNewFromNative(native unsafe.Pointer) *PadActionEntry {
-	return &PadActionEntry{native: native}
+	instance := &PadActionEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -20904,7 +21510,9 @@ type PadControllerClass struct {
 }
 
 func PadControllerClassNewFromNative(native unsafe.Pointer) *PadControllerClass {
-	return &PadControllerClass{native: native}
+	instance := &PadControllerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -20951,7 +21559,9 @@ type PageRange struct {
 }
 
 func PageRangeNewFromNative(native unsafe.Pointer) *PageRange {
-	return &PageRange{native: native}
+	instance := &PageRange{native: native}
+
+	return instance
 }
 
 /*
@@ -21026,7 +21636,9 @@ type PanedAccessibleClass struct {
 }
 
 func PanedAccessibleClassNewFromNative(native unsafe.Pointer) *PanedAccessibleClass {
-	return &PanedAccessibleClass{native: native}
+	instance := &PanedAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -21087,7 +21699,9 @@ type PanedAccessiblePrivate struct {
 }
 
 func PanedAccessiblePrivateNewFromNative(native unsafe.Pointer) *PanedAccessiblePrivate {
-	return &PanedAccessiblePrivate{native: native}
+	instance := &PanedAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -21134,7 +21748,9 @@ type PanedClass struct {
 }
 
 func PanedClassNewFromNative(native unsafe.Pointer) *PanedClass {
-	return &PanedClass{native: native}
+	instance := &PanedClass{native: native}
+
+	return instance
 }
 
 /*
@@ -21235,7 +21851,9 @@ type PanedPrivate struct {
 }
 
 func PanedPrivateNewFromNative(native unsafe.Pointer) *PanedPrivate {
-	return &PanedPrivate{native: native}
+	instance := &PanedPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -21282,7 +21900,9 @@ type PaperSize struct {
 }
 
 func PaperSizeNewFromNative(native unsafe.Pointer) *PaperSize {
-	return &PaperSize{native: native}
+	instance := &PaperSize{native: native}
+
+	return instance
 }
 
 /*
@@ -21941,7 +22561,9 @@ type PlacesSidebarClass struct {
 }
 
 func PlacesSidebarClassNewFromNative(native unsafe.Pointer) *PlacesSidebarClass {
-	return &PlacesSidebarClass{native: native}
+	instance := &PlacesSidebarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -21988,7 +22610,9 @@ type PlugClass struct {
 }
 
 func PlugClassNewFromNative(native unsafe.Pointer) *PlugClass {
-	return &PlugClass{native: native}
+	instance := &PlugClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22069,7 +22693,9 @@ type PlugPrivate struct {
 }
 
 func PlugPrivateNewFromNative(native unsafe.Pointer) *PlugPrivate {
-	return &PlugPrivate{native: native}
+	instance := &PlugPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -22116,7 +22742,9 @@ type PopoverAccessibleClass struct {
 }
 
 func PopoverAccessibleClassNewFromNative(native unsafe.Pointer) *PopoverAccessibleClass {
-	return &PopoverAccessibleClass{native: native}
+	instance := &PopoverAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22177,7 +22805,9 @@ type PopoverClass struct {
 }
 
 func PopoverClassNewFromNative(native unsafe.Pointer) *PopoverClass {
-	return &PopoverClass{native: native}
+	instance := &PopoverClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22242,7 +22872,9 @@ type PopoverMenuClass struct {
 }
 
 func PopoverMenuClassNewFromNative(native unsafe.Pointer) *PopoverMenuClass {
-	return &PopoverMenuClass{native: native}
+	instance := &PopoverMenuClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22303,7 +22935,9 @@ type PopoverPrivate struct {
 }
 
 func PopoverPrivateNewFromNative(native unsafe.Pointer) *PopoverPrivate {
-	return &PopoverPrivate{native: native}
+	instance := &PopoverPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -22350,7 +22984,9 @@ type PrintOperationClass struct {
 }
 
 func PrintOperationClassNewFromNative(native unsafe.Pointer) *PrintOperationClass {
-	return &PrintOperationClass{native: native}
+	instance := &PrintOperationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22477,7 +23113,9 @@ type PrintOperationPreviewIface struct {
 }
 
 func PrintOperationPreviewIfaceNewFromNative(native unsafe.Pointer) *PrintOperationPreviewIface {
-	return &PrintOperationPreviewIface{native: native}
+	instance := &PrintOperationPreviewIface{native: native}
+
+	return instance
 }
 
 /*
@@ -22580,7 +23218,9 @@ type PrintOperationPrivate struct {
 }
 
 func PrintOperationPrivateNewFromNative(native unsafe.Pointer) *PrintOperationPrivate {
-	return &PrintOperationPrivate{native: native}
+	instance := &PrintOperationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -22627,7 +23267,9 @@ type ProgressBarAccessibleClass struct {
 }
 
 func ProgressBarAccessibleClassNewFromNative(native unsafe.Pointer) *ProgressBarAccessibleClass {
-	return &ProgressBarAccessibleClass{native: native}
+	instance := &ProgressBarAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22688,7 +23330,9 @@ type ProgressBarAccessiblePrivate struct {
 }
 
 func ProgressBarAccessiblePrivateNewFromNative(native unsafe.Pointer) *ProgressBarAccessiblePrivate {
-	return &ProgressBarAccessiblePrivate{native: native}
+	instance := &ProgressBarAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -22735,7 +23379,9 @@ type ProgressBarClass struct {
 }
 
 func ProgressBarClassNewFromNative(native unsafe.Pointer) *ProgressBarClass {
-	return &ProgressBarClass{native: native}
+	instance := &ProgressBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22812,7 +23458,9 @@ type ProgressBarPrivate struct {
 }
 
 func ProgressBarPrivateNewFromNative(native unsafe.Pointer) *ProgressBarPrivate {
-	return &ProgressBarPrivate{native: native}
+	instance := &ProgressBarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -22859,7 +23507,9 @@ type RadioActionClass struct {
 }
 
 func RadioActionClassNewFromNative(native unsafe.Pointer) *RadioActionClass {
-	return &RadioActionClass{native: native}
+	instance := &RadioActionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -22940,7 +23590,9 @@ type RadioActionEntry struct {
 }
 
 func RadioActionEntryNewFromNative(native unsafe.Pointer) *RadioActionEntry {
-	return &RadioActionEntry{native: native}
+	instance := &RadioActionEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -23071,7 +23723,9 @@ type RadioActionPrivate struct {
 }
 
 func RadioActionPrivateNewFromNative(native unsafe.Pointer) *RadioActionPrivate {
-	return &RadioActionPrivate{native: native}
+	instance := &RadioActionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23118,7 +23772,9 @@ type RadioButtonAccessibleClass struct {
 }
 
 func RadioButtonAccessibleClassNewFromNative(native unsafe.Pointer) *RadioButtonAccessibleClass {
-	return &RadioButtonAccessibleClass{native: native}
+	instance := &RadioButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23179,7 +23835,9 @@ type RadioButtonAccessiblePrivate struct {
 }
 
 func RadioButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *RadioButtonAccessiblePrivate {
-	return &RadioButtonAccessiblePrivate{native: native}
+	instance := &RadioButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23226,7 +23884,9 @@ type RadioButtonClass struct {
 }
 
 func RadioButtonClassNewFromNative(native unsafe.Pointer) *RadioButtonClass {
-	return &RadioButtonClass{native: native}
+	instance := &RadioButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23307,7 +23967,9 @@ type RadioButtonPrivate struct {
 }
 
 func RadioButtonPrivateNewFromNative(native unsafe.Pointer) *RadioButtonPrivate {
-	return &RadioButtonPrivate{native: native}
+	instance := &RadioButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23354,7 +24016,9 @@ type RadioMenuItemAccessibleClass struct {
 }
 
 func RadioMenuItemAccessibleClassNewFromNative(native unsafe.Pointer) *RadioMenuItemAccessibleClass {
-	return &RadioMenuItemAccessibleClass{native: native}
+	instance := &RadioMenuItemAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23415,7 +24079,9 @@ type RadioMenuItemAccessiblePrivate struct {
 }
 
 func RadioMenuItemAccessiblePrivateNewFromNative(native unsafe.Pointer) *RadioMenuItemAccessiblePrivate {
-	return &RadioMenuItemAccessiblePrivate{native: native}
+	instance := &RadioMenuItemAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23462,7 +24128,9 @@ type RadioMenuItemClass struct {
 }
 
 func RadioMenuItemClassNewFromNative(native unsafe.Pointer) *RadioMenuItemClass {
-	return &RadioMenuItemClass{native: native}
+	instance := &RadioMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23543,7 +24211,9 @@ type RadioMenuItemPrivate struct {
 }
 
 func RadioMenuItemPrivateNewFromNative(native unsafe.Pointer) *RadioMenuItemPrivate {
-	return &RadioMenuItemPrivate{native: native}
+	instance := &RadioMenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23590,7 +24260,9 @@ type RadioToolButtonClass struct {
 }
 
 func RadioToolButtonClassNewFromNative(native unsafe.Pointer) *RadioToolButtonClass {
-	return &RadioToolButtonClass{native: native}
+	instance := &RadioToolButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23667,7 +24339,9 @@ type RangeAccessibleClass struct {
 }
 
 func RangeAccessibleClassNewFromNative(native unsafe.Pointer) *RangeAccessibleClass {
-	return &RangeAccessibleClass{native: native}
+	instance := &RangeAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23728,7 +24402,9 @@ type RangeAccessiblePrivate struct {
 }
 
 func RangeAccessiblePrivateNewFromNative(native unsafe.Pointer) *RangeAccessiblePrivate {
-	return &RangeAccessiblePrivate{native: native}
+	instance := &RangeAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23775,7 +24451,9 @@ type RangeClass struct {
 }
 
 func RangeClassNewFromNative(native unsafe.Pointer) *RangeClass {
-	return &RangeClass{native: native}
+	instance := &RangeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -23900,7 +24578,9 @@ type RangePrivate struct {
 }
 
 func RangePrivateNewFromNative(native unsafe.Pointer) *RangePrivate {
-	return &RangePrivate{native: native}
+	instance := &RangePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -23947,7 +24627,9 @@ type RcContext struct {
 }
 
 func RcContextNewFromNative(native unsafe.Pointer) *RcContext {
-	return &RcContext{native: native}
+	instance := &RcContext{native: native}
+
+	return instance
 }
 
 /*
@@ -23994,7 +24676,9 @@ type RcProperty struct {
 }
 
 func RcPropertyNewFromNative(native unsafe.Pointer) *RcProperty {
-	return &RcProperty{native: native}
+	instance := &RcProperty{native: native}
+
+	return instance
 }
 
 /*
@@ -24087,7 +24771,9 @@ type RcStyleClass struct {
 }
 
 func RcStyleClassNewFromNative(native unsafe.Pointer) *RcStyleClass {
-	return &RcStyleClass{native: native}
+	instance := &RcStyleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -24170,7 +24856,9 @@ type RecentActionClass struct {
 }
 
 func RecentActionClassNewFromNative(native unsafe.Pointer) *RecentActionClass {
-	return &RecentActionClass{native: native}
+	instance := &RecentActionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -24247,7 +24935,9 @@ type RecentActionPrivate struct {
 }
 
 func RecentActionPrivateNewFromNative(native unsafe.Pointer) *RecentActionPrivate {
-	return &RecentActionPrivate{native: native}
+	instance := &RecentActionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -24294,7 +24984,9 @@ type RecentChooserDialogClass struct {
 }
 
 func RecentChooserDialogClassNewFromNative(native unsafe.Pointer) *RecentChooserDialogClass {
-	return &RecentChooserDialogClass{native: native}
+	instance := &RecentChooserDialogClass{native: native}
+
+	return instance
 }
 
 /*
@@ -24371,7 +25063,9 @@ type RecentChooserDialogPrivate struct {
 }
 
 func RecentChooserDialogPrivateNewFromNative(native unsafe.Pointer) *RecentChooserDialogPrivate {
-	return &RecentChooserDialogPrivate{native: native}
+	instance := &RecentChooserDialogPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -24418,7 +25112,9 @@ type RecentChooserIface struct {
 }
 
 func RecentChooserIfaceNewFromNative(native unsafe.Pointer) *RecentChooserIface {
-	return &RecentChooserIface{native: native}
+	instance := &RecentChooserIface{native: native}
+
+	return instance
 }
 
 /*
@@ -24521,7 +25217,9 @@ type RecentChooserMenuClass struct {
 }
 
 func RecentChooserMenuClassNewFromNative(native unsafe.Pointer) *RecentChooserMenuClass {
-	return &RecentChooserMenuClass{native: native}
+	instance := &RecentChooserMenuClass{native: native}
+
+	return instance
 }
 
 /*
@@ -24598,7 +25296,9 @@ type RecentChooserMenuPrivate struct {
 }
 
 func RecentChooserMenuPrivateNewFromNative(native unsafe.Pointer) *RecentChooserMenuPrivate {
-	return &RecentChooserMenuPrivate{native: native}
+	instance := &RecentChooserMenuPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -24645,7 +25345,9 @@ type RecentChooserWidgetClass struct {
 }
 
 func RecentChooserWidgetClassNewFromNative(native unsafe.Pointer) *RecentChooserWidgetClass {
-	return &RecentChooserWidgetClass{native: native}
+	instance := &RecentChooserWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -24722,7 +25424,9 @@ type RecentChooserWidgetPrivate struct {
 }
 
 func RecentChooserWidgetPrivateNewFromNative(native unsafe.Pointer) *RecentChooserWidgetPrivate {
-	return &RecentChooserWidgetPrivate{native: native}
+	instance := &RecentChooserWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -24769,7 +25473,9 @@ type RecentData struct {
 }
 
 func RecentDataNewFromNative(native unsafe.Pointer) *RecentData {
-	return &RecentData{native: native}
+	instance := &RecentData{native: native}
+
+	return instance
 }
 
 /*
@@ -24904,7 +25610,9 @@ type RecentFilterInfo struct {
 }
 
 func RecentFilterInfoNewFromNative(native unsafe.Pointer) *RecentFilterInfo {
-	return &RecentFilterInfo{native: native}
+	instance := &RecentFilterInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -25019,7 +25727,9 @@ type RecentInfo struct {
 }
 
 func RecentInfoNewFromNative(native unsafe.Pointer) *RecentInfo {
-	return &RecentInfo{native: native}
+	instance := &RecentInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -25780,7 +26490,9 @@ type RecentManagerClass struct {
 }
 
 func RecentManagerClassNewFromNative(native unsafe.Pointer) *RecentManagerClass {
-	return &RecentManagerClass{native: native}
+	instance := &RecentManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -25847,7 +26559,9 @@ type RecentManagerPrivate struct {
 }
 
 func RecentManagerPrivateNewFromNative(native unsafe.Pointer) *RecentManagerPrivate {
-	return &RecentManagerPrivate{native: native}
+	instance := &RecentManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -25894,7 +26608,9 @@ type RendererCellAccessibleClass struct {
 }
 
 func RendererCellAccessibleClassNewFromNative(native unsafe.Pointer) *RendererCellAccessibleClass {
-	return &RendererCellAccessibleClass{native: native}
+	instance := &RendererCellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -25955,7 +26671,9 @@ type RendererCellAccessiblePrivate struct {
 }
 
 func RendererCellAccessiblePrivateNewFromNative(native unsafe.Pointer) *RendererCellAccessiblePrivate {
-	return &RendererCellAccessiblePrivate{native: native}
+	instance := &RendererCellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -26002,7 +26720,9 @@ type RequestedSize struct {
 }
 
 func RequestedSizeNewFromNative(native unsafe.Pointer) *RequestedSize {
-	return &RequestedSize{native: native}
+	instance := &RequestedSize{native: native}
+
+	return instance
 }
 
 /*
@@ -26081,7 +26801,9 @@ type Requisition struct {
 }
 
 func RequisitionNewFromNative(native unsafe.Pointer) *Requisition {
-	return &Requisition{native: native}
+	instance := &Requisition{native: native}
+
+	return instance
 }
 
 /*
@@ -26231,7 +26953,9 @@ type RevealerClass struct {
 }
 
 func RevealerClassNewFromNative(native unsafe.Pointer) *RevealerClass {
-	return &RevealerClass{native: native}
+	instance := &RevealerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26292,7 +27016,9 @@ type ScaleAccessibleClass struct {
 }
 
 func ScaleAccessibleClassNewFromNative(native unsafe.Pointer) *ScaleAccessibleClass {
-	return &ScaleAccessibleClass{native: native}
+	instance := &ScaleAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26353,7 +27079,9 @@ type ScaleAccessiblePrivate struct {
 }
 
 func ScaleAccessiblePrivateNewFromNative(native unsafe.Pointer) *ScaleAccessiblePrivate {
-	return &ScaleAccessiblePrivate{native: native}
+	instance := &ScaleAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -26400,7 +27128,9 @@ type ScaleButtonAccessibleClass struct {
 }
 
 func ScaleButtonAccessibleClassNewFromNative(native unsafe.Pointer) *ScaleButtonAccessibleClass {
-	return &ScaleButtonAccessibleClass{native: native}
+	instance := &ScaleButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26461,7 +27191,9 @@ type ScaleButtonAccessiblePrivate struct {
 }
 
 func ScaleButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *ScaleButtonAccessiblePrivate {
-	return &ScaleButtonAccessiblePrivate{native: native}
+	instance := &ScaleButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -26508,7 +27240,9 @@ type ScaleButtonClass struct {
 }
 
 func ScaleButtonClassNewFromNative(native unsafe.Pointer) *ScaleButtonClass {
-	return &ScaleButtonClass{native: native}
+	instance := &ScaleButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26589,7 +27323,9 @@ type ScaleButtonPrivate struct {
 }
 
 func ScaleButtonPrivateNewFromNative(native unsafe.Pointer) *ScaleButtonPrivate {
-	return &ScaleButtonPrivate{native: native}
+	instance := &ScaleButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -26636,7 +27372,9 @@ type ScaleClass struct {
 }
 
 func ScaleClassNewFromNative(native unsafe.Pointer) *ScaleClass {
-	return &ScaleClass{native: native}
+	instance := &ScaleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26725,7 +27463,9 @@ type ScalePrivate struct {
 }
 
 func ScalePrivateNewFromNative(native unsafe.Pointer) *ScalePrivate {
-	return &ScalePrivate{native: native}
+	instance := &ScalePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -26772,7 +27512,9 @@ type ScrollableInterface struct {
 }
 
 func ScrollableInterfaceNewFromNative(native unsafe.Pointer) *ScrollableInterface {
-	return &ScrollableInterface{native: native}
+	instance := &ScrollableInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -26827,7 +27569,9 @@ type ScrollbarClass struct {
 }
 
 func ScrollbarClassNewFromNative(native unsafe.Pointer) *ScrollbarClass {
-	return &ScrollbarClass{native: native}
+	instance := &ScrollbarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26904,7 +27648,9 @@ type ScrolledWindowAccessibleClass struct {
 }
 
 func ScrolledWindowAccessibleClassNewFromNative(native unsafe.Pointer) *ScrolledWindowAccessibleClass {
-	return &ScrolledWindowAccessibleClass{native: native}
+	instance := &ScrolledWindowAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -26965,7 +27711,9 @@ type ScrolledWindowAccessiblePrivate struct {
 }
 
 func ScrolledWindowAccessiblePrivateNewFromNative(native unsafe.Pointer) *ScrolledWindowAccessiblePrivate {
-	return &ScrolledWindowAccessiblePrivate{native: native}
+	instance := &ScrolledWindowAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -27012,7 +27760,9 @@ type ScrolledWindowClass struct {
 }
 
 func ScrolledWindowClassNewFromNative(native unsafe.Pointer) *ScrolledWindowClass {
-	return &ScrolledWindowClass{native: native}
+	instance := &ScrolledWindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -27111,7 +27861,9 @@ type ScrolledWindowPrivate struct {
 }
 
 func ScrolledWindowPrivateNewFromNative(native unsafe.Pointer) *ScrolledWindowPrivate {
-	return &ScrolledWindowPrivate{native: native}
+	instance := &ScrolledWindowPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -27158,7 +27910,9 @@ type SearchBarClass struct {
 }
 
 func SearchBarClassNewFromNative(native unsafe.Pointer) *SearchBarClass {
-	return &SearchBarClass{native: native}
+	instance := &SearchBarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -27235,7 +27989,9 @@ type SearchEntryClass struct {
 }
 
 func SearchEntryClassNewFromNative(native unsafe.Pointer) *SearchEntryClass {
-	return &SearchEntryClass{native: native}
+	instance := &SearchEntryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -27312,7 +28068,9 @@ type SelectionData struct {
 }
 
 func SelectionDataNewFromNative(native unsafe.Pointer) *SelectionData {
-	return &SelectionData{native: native}
+	instance := &SelectionData{native: native}
+
+	return instance
 }
 
 /*
@@ -27785,7 +28543,9 @@ type SeparatorClass struct {
 }
 
 func SeparatorClassNewFromNative(native unsafe.Pointer) *SeparatorClass {
-	return &SeparatorClass{native: native}
+	instance := &SeparatorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -27862,7 +28622,9 @@ type SeparatorMenuItemClass struct {
 }
 
 func SeparatorMenuItemClassNewFromNative(native unsafe.Pointer) *SeparatorMenuItemClass {
-	return &SeparatorMenuItemClass{native: native}
+	instance := &SeparatorMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -27939,7 +28701,9 @@ type SeparatorPrivate struct {
 }
 
 func SeparatorPrivateNewFromNative(native unsafe.Pointer) *SeparatorPrivate {
-	return &SeparatorPrivate{native: native}
+	instance := &SeparatorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -27986,7 +28750,9 @@ type SeparatorToolItemClass struct {
 }
 
 func SeparatorToolItemClassNewFromNative(native unsafe.Pointer) *SeparatorToolItemClass {
-	return &SeparatorToolItemClass{native: native}
+	instance := &SeparatorToolItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28063,7 +28829,9 @@ type SeparatorToolItemPrivate struct {
 }
 
 func SeparatorToolItemPrivateNewFromNative(native unsafe.Pointer) *SeparatorToolItemPrivate {
-	return &SeparatorToolItemPrivate{native: native}
+	instance := &SeparatorToolItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -28110,7 +28878,9 @@ type SettingsClass struct {
 }
 
 func SettingsClassNewFromNative(native unsafe.Pointer) *SettingsClass {
-	return &SettingsClass{native: native}
+	instance := &SettingsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28177,7 +28947,9 @@ type SettingsPrivate struct {
 }
 
 func SettingsPrivateNewFromNative(native unsafe.Pointer) *SettingsPrivate {
-	return &SettingsPrivate{native: native}
+	instance := &SettingsPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -28224,7 +28996,9 @@ type SettingsValue struct {
 }
 
 func SettingsValueNewFromNative(native unsafe.Pointer) *SettingsValue {
-	return &SettingsValue{native: native}
+	instance := &SettingsValue{native: native}
+
+	return instance
 }
 
 /*
@@ -28289,7 +29063,9 @@ type ShortcutLabelClass struct {
 }
 
 func ShortcutLabelClassNewFromNative(native unsafe.Pointer) *ShortcutLabelClass {
-	return &ShortcutLabelClass{native: native}
+	instance := &ShortcutLabelClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28336,7 +29112,9 @@ type ShortcutsGroupClass struct {
 }
 
 func ShortcutsGroupClassNewFromNative(native unsafe.Pointer) *ShortcutsGroupClass {
-	return &ShortcutsGroupClass{native: native}
+	instance := &ShortcutsGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28383,7 +29161,9 @@ type ShortcutsSectionClass struct {
 }
 
 func ShortcutsSectionClassNewFromNative(native unsafe.Pointer) *ShortcutsSectionClass {
-	return &ShortcutsSectionClass{native: native}
+	instance := &ShortcutsSectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28430,7 +29210,9 @@ type ShortcutsShortcutClass struct {
 }
 
 func ShortcutsShortcutClassNewFromNative(native unsafe.Pointer) *ShortcutsShortcutClass {
-	return &ShortcutsShortcutClass{native: native}
+	instance := &ShortcutsShortcutClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28477,7 +29259,9 @@ type ShortcutsWindowClass struct {
 }
 
 func ShortcutsWindowClassNewFromNative(native unsafe.Pointer) *ShortcutsWindowClass {
-	return &ShortcutsWindowClass{native: native}
+	instance := &ShortcutsWindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28546,7 +29330,9 @@ type SizeGroupClass struct {
 }
 
 func SizeGroupClassNewFromNative(native unsafe.Pointer) *SizeGroupClass {
-	return &SizeGroupClass{native: native}
+	instance := &SizeGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28613,7 +29399,9 @@ type SizeGroupPrivate struct {
 }
 
 func SizeGroupPrivateNewFromNative(native unsafe.Pointer) *SizeGroupPrivate {
-	return &SizeGroupPrivate{native: native}
+	instance := &SizeGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -28660,7 +29448,9 @@ type SocketClass struct {
 }
 
 func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
-	return &SocketClass{native: native}
+	instance := &SocketClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28745,7 +29535,9 @@ type SocketPrivate struct {
 }
 
 func SocketPrivateNewFromNative(native unsafe.Pointer) *SocketPrivate {
-	return &SocketPrivate{native: native}
+	instance := &SocketPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -28792,7 +29584,9 @@ type SpinButtonAccessibleClass struct {
 }
 
 func SpinButtonAccessibleClassNewFromNative(native unsafe.Pointer) *SpinButtonAccessibleClass {
-	return &SpinButtonAccessibleClass{native: native}
+	instance := &SpinButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28853,7 +29647,9 @@ type SpinButtonAccessiblePrivate struct {
 }
 
 func SpinButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *SpinButtonAccessiblePrivate {
-	return &SpinButtonAccessiblePrivate{native: native}
+	instance := &SpinButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -28900,7 +29696,9 @@ type SpinButtonClass struct {
 }
 
 func SpinButtonClassNewFromNative(native unsafe.Pointer) *SpinButtonClass {
-	return &SpinButtonClass{native: native}
+	instance := &SpinButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -28997,7 +29795,9 @@ type SpinButtonPrivate struct {
 }
 
 func SpinButtonPrivateNewFromNative(native unsafe.Pointer) *SpinButtonPrivate {
-	return &SpinButtonPrivate{native: native}
+	instance := &SpinButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29044,7 +29844,9 @@ type SpinnerAccessibleClass struct {
 }
 
 func SpinnerAccessibleClassNewFromNative(native unsafe.Pointer) *SpinnerAccessibleClass {
-	return &SpinnerAccessibleClass{native: native}
+	instance := &SpinnerAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29105,7 +29907,9 @@ type SpinnerAccessiblePrivate struct {
 }
 
 func SpinnerAccessiblePrivateNewFromNative(native unsafe.Pointer) *SpinnerAccessiblePrivate {
-	return &SpinnerAccessiblePrivate{native: native}
+	instance := &SpinnerAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29152,7 +29956,9 @@ type SpinnerClass struct {
 }
 
 func SpinnerClassNewFromNative(native unsafe.Pointer) *SpinnerClass {
-	return &SpinnerClass{native: native}
+	instance := &SpinnerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29229,7 +30035,9 @@ type SpinnerPrivate struct {
 }
 
 func SpinnerPrivateNewFromNative(native unsafe.Pointer) *SpinnerPrivate {
-	return &SpinnerPrivate{native: native}
+	instance := &SpinnerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29276,7 +30084,9 @@ type StackAccessibleClass struct {
 }
 
 func StackAccessibleClassNewFromNative(native unsafe.Pointer) *StackAccessibleClass {
-	return &StackAccessibleClass{native: native}
+	instance := &StackAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29337,7 +30147,9 @@ type StackClass struct {
 }
 
 func StackClassNewFromNative(native unsafe.Pointer) *StackClass {
-	return &StackClass{native: native}
+	instance := &StackClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29398,7 +30210,9 @@ type StackSidebarClass struct {
 }
 
 func StackSidebarClassNewFromNative(native unsafe.Pointer) *StackSidebarClass {
-	return &StackSidebarClass{native: native}
+	instance := &StackSidebarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29475,7 +30289,9 @@ type StackSidebarPrivate struct {
 }
 
 func StackSidebarPrivateNewFromNative(native unsafe.Pointer) *StackSidebarPrivate {
-	return &StackSidebarPrivate{native: native}
+	instance := &StackSidebarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29522,7 +30338,9 @@ type StackSwitcherClass struct {
 }
 
 func StackSwitcherClassNewFromNative(native unsafe.Pointer) *StackSwitcherClass {
-	return &StackSwitcherClass{native: native}
+	instance := &StackSwitcherClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29599,7 +30417,9 @@ type StatusIconClass struct {
 }
 
 func StatusIconClassNewFromNative(native unsafe.Pointer) *StatusIconClass {
-	return &StatusIconClass{native: native}
+	instance := &StatusIconClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29694,7 +30514,9 @@ type StatusIconPrivate struct {
 }
 
 func StatusIconPrivateNewFromNative(native unsafe.Pointer) *StatusIconPrivate {
-	return &StatusIconPrivate{native: native}
+	instance := &StatusIconPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29741,7 +30563,9 @@ type StatusbarAccessibleClass struct {
 }
 
 func StatusbarAccessibleClassNewFromNative(native unsafe.Pointer) *StatusbarAccessibleClass {
-	return &StatusbarAccessibleClass{native: native}
+	instance := &StatusbarAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29802,7 +30626,9 @@ type StatusbarAccessiblePrivate struct {
 }
 
 func StatusbarAccessiblePrivateNewFromNative(native unsafe.Pointer) *StatusbarAccessiblePrivate {
-	return &StatusbarAccessiblePrivate{native: native}
+	instance := &StatusbarAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29849,7 +30675,9 @@ type StatusbarClass struct {
 }
 
 func StatusbarClassNewFromNative(native unsafe.Pointer) *StatusbarClass {
-	return &StatusbarClass{native: native}
+	instance := &StatusbarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -29938,7 +30766,9 @@ type StatusbarPrivate struct {
 }
 
 func StatusbarPrivateNewFromNative(native unsafe.Pointer) *StatusbarPrivate {
-	return &StatusbarPrivate{native: native}
+	instance := &StatusbarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -29985,7 +30815,9 @@ type StockItem struct {
 }
 
 func StockItemNewFromNative(native unsafe.Pointer) *StockItem {
-	return &StockItem{native: native}
+	instance := &StockItem{native: native}
+
+	return instance
 }
 
 /*
@@ -30152,7 +30984,9 @@ type StyleClass struct {
 }
 
 func StyleClassNewFromNative(native unsafe.Pointer) *StyleClass {
-	return &StyleClass{native: native}
+	instance := &StyleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -30355,7 +31189,9 @@ type StyleContextClass struct {
 }
 
 func StyleContextClassNewFromNative(native unsafe.Pointer) *StyleContextClass {
-	return &StyleContextClass{native: native}
+	instance := &StyleContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -30426,7 +31262,9 @@ type StyleContextPrivate struct {
 }
 
 func StyleContextPrivateNewFromNative(native unsafe.Pointer) *StyleContextPrivate {
-	return &StyleContextPrivate{native: native}
+	instance := &StyleContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -30473,7 +31311,9 @@ type StylePropertiesClass struct {
 }
 
 func StylePropertiesClassNewFromNative(native unsafe.Pointer) *StylePropertiesClass {
-	return &StylePropertiesClass{native: native}
+	instance := &StylePropertiesClass{native: native}
+
+	return instance
 }
 
 /*
@@ -30536,7 +31376,9 @@ type StylePropertiesPrivate struct {
 }
 
 func StylePropertiesPrivateNewFromNative(native unsafe.Pointer) *StylePropertiesPrivate {
-	return &StylePropertiesPrivate{native: native}
+	instance := &StylePropertiesPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -30583,7 +31425,9 @@ type StyleProviderIface struct {
 }
 
 func StyleProviderIfaceNewFromNative(native unsafe.Pointer) *StyleProviderIface {
-	return &StyleProviderIface{native: native}
+	instance := &StyleProviderIface{native: native}
+
+	return instance
 }
 
 /*
@@ -30642,7 +31486,9 @@ type SwitchAccessibleClass struct {
 }
 
 func SwitchAccessibleClassNewFromNative(native unsafe.Pointer) *SwitchAccessibleClass {
-	return &SwitchAccessibleClass{native: native}
+	instance := &SwitchAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -30703,7 +31549,9 @@ type SwitchAccessiblePrivate struct {
 }
 
 func SwitchAccessiblePrivateNewFromNative(native unsafe.Pointer) *SwitchAccessiblePrivate {
-	return &SwitchAccessiblePrivate{native: native}
+	instance := &SwitchAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -30750,7 +31598,9 @@ type SwitchClass struct {
 }
 
 func SwitchClassNewFromNative(native unsafe.Pointer) *SwitchClass {
-	return &SwitchClass{native: native}
+	instance := &SwitchClass{native: native}
+
+	return instance
 }
 
 /*
@@ -30839,7 +31689,9 @@ type SwitchPrivate struct {
 }
 
 func SwitchPrivateNewFromNative(native unsafe.Pointer) *SwitchPrivate {
-	return &SwitchPrivate{native: native}
+	instance := &SwitchPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -30886,7 +31738,9 @@ type SymbolicColor struct {
 }
 
 func SymbolicColorNewFromNative(native unsafe.Pointer) *SymbolicColor {
-	return &SymbolicColor{native: native}
+	instance := &SymbolicColor{native: native}
+
+	return instance
 }
 
 /*
@@ -31179,7 +32033,9 @@ type TableChild struct {
 }
 
 func TableChildNewFromNative(native unsafe.Pointer) *TableChild {
-	return &TableChild{native: native}
+	instance := &TableChild{native: native}
+
+	return instance
 }
 
 /*
@@ -31408,7 +32264,9 @@ type TableClass struct {
 }
 
 func TableClassNewFromNative(native unsafe.Pointer) *TableClass {
-	return &TableClass{native: native}
+	instance := &TableClass{native: native}
+
+	return instance
 }
 
 /*
@@ -31485,7 +32343,9 @@ type TablePrivate struct {
 }
 
 func TablePrivateNewFromNative(native unsafe.Pointer) *TablePrivate {
-	return &TablePrivate{native: native}
+	instance := &TablePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -31532,7 +32392,9 @@ type TableRowCol struct {
 }
 
 func TableRowColNewFromNative(native unsafe.Pointer) *TableRowCol {
-	return &TableRowCol{native: native}
+	instance := &TableRowCol{native: native}
+
+	return instance
 }
 
 /*
@@ -31691,7 +32553,9 @@ type TargetEntry struct {
 }
 
 func TargetEntryNewFromNative(native unsafe.Pointer) *TargetEntry {
-	return &TargetEntry{native: native}
+	instance := &TargetEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -31859,7 +32723,9 @@ type TargetList struct {
 }
 
 func TargetListNewFromNative(native unsafe.Pointer) *TargetList {
-	return &TargetList{native: native}
+	instance := &TargetList{native: native}
+
+	return instance
 }
 
 /*
@@ -32080,7 +32946,9 @@ type TargetPair struct {
 }
 
 func TargetPairNewFromNative(native unsafe.Pointer) *TargetPair {
-	return &TargetPair{native: native}
+	instance := &TargetPair{native: native}
+
+	return instance
 }
 
 /*
@@ -32159,7 +33027,9 @@ type TearoffMenuItemClass struct {
 }
 
 func TearoffMenuItemClassNewFromNative(native unsafe.Pointer) *TearoffMenuItemClass {
-	return &TearoffMenuItemClass{native: native}
+	instance := &TearoffMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -32236,7 +33106,9 @@ type TearoffMenuItemPrivate struct {
 }
 
 func TearoffMenuItemPrivateNewFromNative(native unsafe.Pointer) *TearoffMenuItemPrivate {
-	return &TearoffMenuItemPrivate{native: native}
+	instance := &TearoffMenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -32283,7 +33155,9 @@ type TextAppearance struct {
 }
 
 func TextAppearanceNewFromNative(native unsafe.Pointer) *TextAppearance {
-	return &TextAppearance{native: native}
+	instance := &TextAppearance{native: native}
+
+	return instance
 }
 
 /*
@@ -32422,7 +33296,9 @@ type TextAttributes struct {
 }
 
 func TextAttributesNewFromNative(native unsafe.Pointer) *TextAttributes {
-	return &TextAttributes{native: native}
+	instance := &TextAttributes{native: native}
+
+	return instance
 }
 
 /*
@@ -32841,7 +33717,9 @@ type TextBTree struct {
 }
 
 func TextBTreeNewFromNative(native unsafe.Pointer) *TextBTree {
-	return &TextBTree{native: native}
+	instance := &TextBTree{native: native}
+
+	return instance
 }
 
 /*
@@ -32888,7 +33766,9 @@ type TextBufferClass struct {
 }
 
 func TextBufferClassNewFromNative(native unsafe.Pointer) *TextBufferClass {
-	return &TextBufferClass{native: native}
+	instance := &TextBufferClass{native: native}
+
+	return instance
 }
 
 /*
@@ -33007,7 +33887,9 @@ type TextBufferPrivate struct {
 }
 
 func TextBufferPrivateNewFromNative(native unsafe.Pointer) *TextBufferPrivate {
-	return &TextBufferPrivate{native: native}
+	instance := &TextBufferPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -33054,7 +33936,9 @@ type TextCellAccessibleClass struct {
 }
 
 func TextCellAccessibleClassNewFromNative(native unsafe.Pointer) *TextCellAccessibleClass {
-	return &TextCellAccessibleClass{native: native}
+	instance := &TextCellAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -33115,7 +33999,9 @@ type TextCellAccessiblePrivate struct {
 }
 
 func TextCellAccessiblePrivateNewFromNative(native unsafe.Pointer) *TextCellAccessiblePrivate {
-	return &TextCellAccessiblePrivate{native: native}
+	instance := &TextCellAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -33162,7 +34048,9 @@ type TextChildAnchorClass struct {
 }
 
 func TextChildAnchorClassNewFromNative(native unsafe.Pointer) *TextChildAnchorClass {
-	return &TextChildAnchorClass{native: native}
+	instance := &TextChildAnchorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -33229,7 +34117,9 @@ type TextIter struct {
 }
 
 func TextIterNewFromNative(native unsafe.Pointer) *TextIter {
-	return &TextIter{native: native}
+	instance := &TextIter{native: native}
+
+	return instance
 }
 
 /*
@@ -35923,7 +36813,9 @@ type TextMarkClass struct {
 }
 
 func TextMarkClassNewFromNative(native unsafe.Pointer) *TextMarkClass {
-	return &TextMarkClass{native: native}
+	instance := &TextMarkClass{native: native}
+
+	return instance
 }
 
 /*
@@ -35990,7 +36882,9 @@ type TextTagClass struct {
 }
 
 func TextTagClassNewFromNative(native unsafe.Pointer) *TextTagClass {
-	return &TextTagClass{native: native}
+	instance := &TextTagClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36061,7 +36955,9 @@ type TextTagPrivate struct {
 }
 
 func TextTagPrivateNewFromNative(native unsafe.Pointer) *TextTagPrivate {
-	return &TextTagPrivate{native: native}
+	instance := &TextTagPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36108,7 +37004,9 @@ type TextTagTableClass struct {
 }
 
 func TextTagTableClassNewFromNative(native unsafe.Pointer) *TextTagTableClass {
-	return &TextTagTableClass{native: native}
+	instance := &TextTagTableClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36187,7 +37085,9 @@ type TextTagTablePrivate struct {
 }
 
 func TextTagTablePrivateNewFromNative(native unsafe.Pointer) *TextTagTablePrivate {
-	return &TextTagTablePrivate{native: native}
+	instance := &TextTagTablePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36234,7 +37134,9 @@ type TextViewAccessibleClass struct {
 }
 
 func TextViewAccessibleClassNewFromNative(native unsafe.Pointer) *TextViewAccessibleClass {
-	return &TextViewAccessibleClass{native: native}
+	instance := &TextViewAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36295,7 +37197,9 @@ type TextViewAccessiblePrivate struct {
 }
 
 func TextViewAccessiblePrivateNewFromNative(native unsafe.Pointer) *TextViewAccessiblePrivate {
-	return &TextViewAccessiblePrivate{native: native}
+	instance := &TextViewAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36342,7 +37246,9 @@ type TextViewClass struct {
 }
 
 func TextViewClassNewFromNative(native unsafe.Pointer) *TextViewClass {
-	return &TextViewClass{native: native}
+	instance := &TextViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36475,7 +37381,9 @@ type TextViewPrivate struct {
 }
 
 func TextViewPrivateNewFromNative(native unsafe.Pointer) *TextViewPrivate {
-	return &TextViewPrivate{native: native}
+	instance := &TextViewPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36522,7 +37430,9 @@ type ThemeEngine struct {
 }
 
 func ThemeEngineNewFromNative(native unsafe.Pointer) *ThemeEngine {
-	return &ThemeEngine{native: native}
+	instance := &ThemeEngine{native: native}
+
+	return instance
 }
 
 /*
@@ -36569,7 +37479,9 @@ type ThemingEngineClass struct {
 }
 
 func ThemingEngineClassNewFromNative(native unsafe.Pointer) *ThemingEngineClass {
-	return &ThemingEngineClass{native: native}
+	instance := &ThemingEngineClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36688,7 +37600,9 @@ type ThemingEnginePrivate struct {
 }
 
 func ThemingEnginePrivateNewFromNative(native unsafe.Pointer) *ThemingEnginePrivate {
-	return &ThemingEnginePrivate{native: native}
+	instance := &ThemingEnginePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36735,7 +37649,9 @@ type ToggleActionClass struct {
 }
 
 func ToggleActionClassNewFromNative(native unsafe.Pointer) *ToggleActionClass {
-	return &ToggleActionClass{native: native}
+	instance := &ToggleActionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -36816,7 +37732,9 @@ type ToggleActionEntry struct {
 }
 
 func ToggleActionEntryNewFromNative(native unsafe.Pointer) *ToggleActionEntry {
-	return &ToggleActionEntry{native: native}
+	instance := &ToggleActionEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -36951,7 +37869,9 @@ type ToggleActionPrivate struct {
 }
 
 func ToggleActionPrivateNewFromNative(native unsafe.Pointer) *ToggleActionPrivate {
-	return &ToggleActionPrivate{native: native}
+	instance := &ToggleActionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -36998,7 +37918,9 @@ type ToggleButtonAccessibleClass struct {
 }
 
 func ToggleButtonAccessibleClassNewFromNative(native unsafe.Pointer) *ToggleButtonAccessibleClass {
-	return &ToggleButtonAccessibleClass{native: native}
+	instance := &ToggleButtonAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37059,7 +37981,9 @@ type ToggleButtonAccessiblePrivate struct {
 }
 
 func ToggleButtonAccessiblePrivateNewFromNative(native unsafe.Pointer) *ToggleButtonAccessiblePrivate {
-	return &ToggleButtonAccessiblePrivate{native: native}
+	instance := &ToggleButtonAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37106,7 +38030,9 @@ type ToggleButtonClass struct {
 }
 
 func ToggleButtonClassNewFromNative(native unsafe.Pointer) *ToggleButtonClass {
-	return &ToggleButtonClass{native: native}
+	instance := &ToggleButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37187,7 +38113,9 @@ type ToggleButtonPrivate struct {
 }
 
 func ToggleButtonPrivateNewFromNative(native unsafe.Pointer) *ToggleButtonPrivate {
-	return &ToggleButtonPrivate{native: native}
+	instance := &ToggleButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37234,7 +38162,9 @@ type ToggleToolButtonClass struct {
 }
 
 func ToggleToolButtonClassNewFromNative(native unsafe.Pointer) *ToggleToolButtonClass {
-	return &ToggleToolButtonClass{native: native}
+	instance := &ToggleToolButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37315,7 +38245,9 @@ type ToggleToolButtonPrivate struct {
 }
 
 func ToggleToolButtonPrivateNewFromNative(native unsafe.Pointer) *ToggleToolButtonPrivate {
-	return &ToggleToolButtonPrivate{native: native}
+	instance := &ToggleToolButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37362,7 +38294,9 @@ type ToolButtonClass struct {
 }
 
 func ToolButtonClassNewFromNative(native unsafe.Pointer) *ToolButtonClass {
-	return &ToolButtonClass{native: native}
+	instance := &ToolButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37447,7 +38381,9 @@ type ToolButtonPrivate struct {
 }
 
 func ToolButtonPrivateNewFromNative(native unsafe.Pointer) *ToolButtonPrivate {
-	return &ToolButtonPrivate{native: native}
+	instance := &ToolButtonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37494,7 +38430,9 @@ type ToolItemClass struct {
 }
 
 func ToolItemClassNewFromNative(native unsafe.Pointer) *ToolItemClass {
-	return &ToolItemClass{native: native}
+	instance := &ToolItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37579,7 +38517,9 @@ type ToolItemGroupClass struct {
 }
 
 func ToolItemGroupClassNewFromNative(native unsafe.Pointer) *ToolItemGroupClass {
-	return &ToolItemGroupClass{native: native}
+	instance := &ToolItemGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37656,7 +38596,9 @@ type ToolItemGroupPrivate struct {
 }
 
 func ToolItemGroupPrivateNewFromNative(native unsafe.Pointer) *ToolItemGroupPrivate {
-	return &ToolItemGroupPrivate{native: native}
+	instance := &ToolItemGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37703,7 +38645,9 @@ type ToolItemPrivate struct {
 }
 
 func ToolItemPrivateNewFromNative(native unsafe.Pointer) *ToolItemPrivate {
-	return &ToolItemPrivate{native: native}
+	instance := &ToolItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37750,7 +38694,9 @@ type ToolPaletteClass struct {
 }
 
 func ToolPaletteClassNewFromNative(native unsafe.Pointer) *ToolPaletteClass {
-	return &ToolPaletteClass{native: native}
+	instance := &ToolPaletteClass{native: native}
+
+	return instance
 }
 
 /*
@@ -37827,7 +38773,9 @@ type ToolPalettePrivate struct {
 }
 
 func ToolPalettePrivateNewFromNative(native unsafe.Pointer) *ToolPalettePrivate {
-	return &ToolPalettePrivate{native: native}
+	instance := &ToolPalettePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -37874,7 +38822,9 @@ type ToolShellIface struct {
 }
 
 func ToolShellIfaceNewFromNative(native unsafe.Pointer) *ToolShellIface {
-	return &ToolShellIface{native: native}
+	instance := &ToolShellIface{native: native}
+
+	return instance
 }
 
 /*
@@ -37957,7 +38907,9 @@ type ToolbarClass struct {
 }
 
 func ToolbarClassNewFromNative(native unsafe.Pointer) *ToolbarClass {
-	return &ToolbarClass{native: native}
+	instance := &ToolbarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -38046,7 +38998,9 @@ type ToolbarPrivate struct {
 }
 
 func ToolbarPrivateNewFromNative(native unsafe.Pointer) *ToolbarPrivate {
-	return &ToolbarPrivate{native: native}
+	instance := &ToolbarPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -38093,7 +39047,9 @@ type ToplevelAccessibleClass struct {
 }
 
 func ToplevelAccessibleClassNewFromNative(native unsafe.Pointer) *ToplevelAccessibleClass {
-	return &ToplevelAccessibleClass{native: native}
+	instance := &ToplevelAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -38144,7 +39100,9 @@ type ToplevelAccessiblePrivate struct {
 }
 
 func ToplevelAccessiblePrivateNewFromNative(native unsafe.Pointer) *ToplevelAccessiblePrivate {
-	return &ToplevelAccessiblePrivate{native: native}
+	instance := &ToplevelAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -38191,7 +39149,9 @@ type TreeDragDestIface struct {
 }
 
 func TreeDragDestIfaceNewFromNative(native unsafe.Pointer) *TreeDragDestIface {
-	return &TreeDragDestIface{native: native}
+	instance := &TreeDragDestIface{native: native}
+
+	return instance
 }
 
 /*
@@ -38246,7 +39206,9 @@ type TreeDragSourceIface struct {
 }
 
 func TreeDragSourceIfaceNewFromNative(native unsafe.Pointer) *TreeDragSourceIface {
-	return &TreeDragSourceIface{native: native}
+	instance := &TreeDragSourceIface{native: native}
+
+	return instance
 }
 
 /*
@@ -38305,7 +39267,9 @@ type TreeIter struct {
 }
 
 func TreeIterNewFromNative(native unsafe.Pointer) *TreeIter {
-	return &TreeIter{native: native}
+	instance := &TreeIter{native: native}
+
+	return instance
 }
 
 /*
@@ -38438,7 +39402,9 @@ type TreeModelFilterClass struct {
 }
 
 func TreeModelFilterClassNewFromNative(native unsafe.Pointer) *TreeModelFilterClass {
-	return &TreeModelFilterClass{native: native}
+	instance := &TreeModelFilterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -38513,7 +39479,9 @@ type TreeModelFilterPrivate struct {
 }
 
 func TreeModelFilterPrivateNewFromNative(native unsafe.Pointer) *TreeModelFilterPrivate {
-	return &TreeModelFilterPrivate{native: native}
+	instance := &TreeModelFilterPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -38560,7 +39528,9 @@ type TreeModelIface struct {
 }
 
 func TreeModelIfaceNewFromNative(native unsafe.Pointer) *TreeModelIface {
-	return &TreeModelIface{native: native}
+	instance := &TreeModelIface{native: native}
+
+	return instance
 }
 
 /*
@@ -38687,7 +39657,9 @@ type TreeModelSortClass struct {
 }
 
 func TreeModelSortClassNewFromNative(native unsafe.Pointer) *TreeModelSortClass {
-	return &TreeModelSortClass{native: native}
+	instance := &TreeModelSortClass{native: native}
+
+	return instance
 }
 
 /*
@@ -38754,7 +39726,9 @@ type TreeModelSortPrivate struct {
 }
 
 func TreeModelSortPrivateNewFromNative(native unsafe.Pointer) *TreeModelSortPrivate {
-	return &TreeModelSortPrivate{native: native}
+	instance := &TreeModelSortPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -38801,7 +39775,9 @@ type TreePath struct {
 }
 
 func TreePathNewFromNative(native unsafe.Pointer) *TreePath {
-	return &TreePath{native: native}
+	instance := &TreePath{native: native}
+
+	return instance
 }
 
 /*
@@ -39394,7 +40370,9 @@ type TreeRowReference struct {
 }
 
 func TreeRowReferenceNewFromNative(native unsafe.Pointer) *TreeRowReference {
-	return &TreeRowReference{native: native}
+	instance := &TreeRowReference{native: native}
+
+	return instance
 }
 
 /*
@@ -39556,7 +40534,9 @@ type TreeSelectionClass struct {
 }
 
 func TreeSelectionClassNewFromNative(native unsafe.Pointer) *TreeSelectionClass {
-	return &TreeSelectionClass{native: native}
+	instance := &TreeSelectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -39627,7 +40607,9 @@ type TreeSelectionPrivate struct {
 }
 
 func TreeSelectionPrivateNewFromNative(native unsafe.Pointer) *TreeSelectionPrivate {
-	return &TreeSelectionPrivate{native: native}
+	instance := &TreeSelectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -39674,7 +40656,9 @@ type TreeSortableIface struct {
 }
 
 func TreeSortableIfaceNewFromNative(native unsafe.Pointer) *TreeSortableIface {
-	return &TreeSortableIface{native: native}
+	instance := &TreeSortableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -39745,7 +40729,9 @@ type TreeStoreClass struct {
 }
 
 func TreeStoreClassNewFromNative(native unsafe.Pointer) *TreeStoreClass {
-	return &TreeStoreClass{native: native}
+	instance := &TreeStoreClass{native: native}
+
+	return instance
 }
 
 /*
@@ -39812,7 +40798,9 @@ type TreeStorePrivate struct {
 }
 
 func TreeStorePrivateNewFromNative(native unsafe.Pointer) *TreeStorePrivate {
-	return &TreeStorePrivate{native: native}
+	instance := &TreeStorePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -39859,7 +40847,9 @@ type TreeViewAccessibleClass struct {
 }
 
 func TreeViewAccessibleClassNewFromNative(native unsafe.Pointer) *TreeViewAccessibleClass {
-	return &TreeViewAccessibleClass{native: native}
+	instance := &TreeViewAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -39920,7 +40910,9 @@ type TreeViewAccessiblePrivate struct {
 }
 
 func TreeViewAccessiblePrivateNewFromNative(native unsafe.Pointer) *TreeViewAccessiblePrivate {
-	return &TreeViewAccessiblePrivate{native: native}
+	instance := &TreeViewAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -39967,7 +40959,9 @@ type TreeViewClass struct {
 }
 
 func TreeViewClassNewFromNative(native unsafe.Pointer) *TreeViewClass {
-	return &TreeViewClass{native: native}
+	instance := &TreeViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40120,7 +41114,9 @@ type TreeViewColumnClass struct {
 }
 
 func TreeViewColumnClassNewFromNative(native unsafe.Pointer) *TreeViewColumnClass {
-	return &TreeViewColumnClass{native: native}
+	instance := &TreeViewColumnClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40191,7 +41187,9 @@ type TreeViewColumnPrivate struct {
 }
 
 func TreeViewColumnPrivateNewFromNative(native unsafe.Pointer) *TreeViewColumnPrivate {
-	return &TreeViewColumnPrivate{native: native}
+	instance := &TreeViewColumnPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -40238,7 +41236,9 @@ type TreeViewPrivate struct {
 }
 
 func TreeViewPrivateNewFromNative(native unsafe.Pointer) *TreeViewPrivate {
-	return &TreeViewPrivate{native: native}
+	instance := &TreeViewPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -40285,7 +41285,9 @@ type UIManagerClass struct {
 }
 
 func UIManagerClassNewFromNative(native unsafe.Pointer) *UIManagerClass {
-	return &UIManagerClass{native: native}
+	instance := &UIManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40384,7 +41386,9 @@ type UIManagerPrivate struct {
 }
 
 func UIManagerPrivateNewFromNative(native unsafe.Pointer) *UIManagerPrivate {
-	return &UIManagerPrivate{native: native}
+	instance := &UIManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -40431,7 +41435,9 @@ type VBoxClass struct {
 }
 
 func VBoxClassNewFromNative(native unsafe.Pointer) *VBoxClass {
-	return &VBoxClass{native: native}
+	instance := &VBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40492,7 +41498,9 @@ type VButtonBoxClass struct {
 }
 
 func VButtonBoxClassNewFromNative(native unsafe.Pointer) *VButtonBoxClass {
-	return &VButtonBoxClass{native: native}
+	instance := &VButtonBoxClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40553,7 +41561,9 @@ type VPanedClass struct {
 }
 
 func VPanedClassNewFromNative(native unsafe.Pointer) *VPanedClass {
-	return &VPanedClass{native: native}
+	instance := &VPanedClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40614,7 +41624,9 @@ type VScaleClass struct {
 }
 
 func VScaleClassNewFromNative(native unsafe.Pointer) *VScaleClass {
-	return &VScaleClass{native: native}
+	instance := &VScaleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40675,7 +41687,9 @@ type VScrollbarClass struct {
 }
 
 func VScrollbarClassNewFromNative(native unsafe.Pointer) *VScrollbarClass {
-	return &VScrollbarClass{native: native}
+	instance := &VScrollbarClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40736,7 +41750,9 @@ type VSeparatorClass struct {
 }
 
 func VSeparatorClassNewFromNative(native unsafe.Pointer) *VSeparatorClass {
-	return &VSeparatorClass{native: native}
+	instance := &VSeparatorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40797,7 +41813,9 @@ type ViewportClass struct {
 }
 
 func ViewportClassNewFromNative(native unsafe.Pointer) *ViewportClass {
-	return &ViewportClass{native: native}
+	instance := &ViewportClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40874,7 +41892,9 @@ type ViewportPrivate struct {
 }
 
 func ViewportPrivateNewFromNative(native unsafe.Pointer) *ViewportPrivate {
-	return &ViewportPrivate{native: native}
+	instance := &ViewportPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -40921,7 +41941,9 @@ type VolumeButtonClass struct {
 }
 
 func VolumeButtonClassNewFromNative(native unsafe.Pointer) *VolumeButtonClass {
-	return &VolumeButtonClass{native: native}
+	instance := &VolumeButtonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -40998,7 +42020,9 @@ type WidgetAccessibleClass struct {
 }
 
 func WidgetAccessibleClassNewFromNative(native unsafe.Pointer) *WidgetAccessibleClass {
-	return &WidgetAccessibleClass{native: native}
+	instance := &WidgetAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -41063,7 +42087,9 @@ type WidgetAccessiblePrivate struct {
 }
 
 func WidgetAccessiblePrivateNewFromNative(native unsafe.Pointer) *WidgetAccessiblePrivate {
-	return &WidgetAccessiblePrivate{native: native}
+	instance := &WidgetAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -41110,7 +42136,9 @@ type WidgetClass struct {
 }
 
 func WidgetClassNewFromNative(native unsafe.Pointer) *WidgetClass {
-	return &WidgetClass{native: native}
+	instance := &WidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -41680,7 +42708,9 @@ type WidgetClassPrivate struct {
 }
 
 func WidgetClassPrivateNewFromNative(native unsafe.Pointer) *WidgetClassPrivate {
-	return &WidgetClassPrivate{native: native}
+	instance := &WidgetClassPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -41727,7 +42757,9 @@ type WidgetPath struct {
 }
 
 func WidgetPathNewFromNative(native unsafe.Pointer) *WidgetPath {
-	return &WidgetPath{native: native}
+	instance := &WidgetPath{native: native}
+
+	return instance
 }
 
 /*
@@ -42544,7 +43576,9 @@ type WidgetPrivate struct {
 }
 
 func WidgetPrivateNewFromNative(native unsafe.Pointer) *WidgetPrivate {
-	return &WidgetPrivate{native: native}
+	instance := &WidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -42591,7 +43625,9 @@ type WindowAccessibleClass struct {
 }
 
 func WindowAccessibleClassNewFromNative(native unsafe.Pointer) *WindowAccessibleClass {
-	return &WindowAccessibleClass{native: native}
+	instance := &WindowAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -42652,7 +43688,9 @@ type WindowAccessiblePrivate struct {
 }
 
 func WindowAccessiblePrivateNewFromNative(native unsafe.Pointer) *WindowAccessiblePrivate {
-	return &WindowAccessiblePrivate{native: native}
+	instance := &WindowAccessiblePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -42699,7 +43737,9 @@ type WindowClass struct {
 }
 
 func WindowClassNewFromNative(native unsafe.Pointer) *WindowClass {
-	return &WindowClass{native: native}
+	instance := &WindowClass{native: native}
+
+	return instance
 }
 
 /*
@@ -42792,7 +43832,9 @@ type WindowGeometryInfo struct {
 }
 
 func WindowGeometryInfoNewFromNative(native unsafe.Pointer) *WindowGeometryInfo {
-	return &WindowGeometryInfo{native: native}
+	instance := &WindowGeometryInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -42839,7 +43881,9 @@ type WindowGroupClass struct {
 }
 
 func WindowGroupClassNewFromNative(native unsafe.Pointer) *WindowGroupClass {
-	return &WindowGroupClass{native: native}
+	instance := &WindowGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -42906,7 +43950,9 @@ type WindowGroupPrivate struct {
 }
 
 func WindowGroupPrivateNewFromNative(native unsafe.Pointer) *WindowGroupPrivate {
-	return &WindowGroupPrivate{native: native}
+	instance := &WindowGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -42953,7 +43999,9 @@ type WindowPrivate struct {
 }
 
 func WindowPrivateNewFromNative(native unsafe.Pointer) *WindowPrivate {
-	return &WindowPrivate{native: native}
+	instance := &WindowPrivate{native: native}
+
+	return instance
 }
 
 /*

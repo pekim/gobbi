@@ -28,7 +28,16 @@ type AboutDialog struct {
 }
 
 func AboutDialogNewFromNative(native unsafe.Pointer) *AboutDialog {
-	return &AboutDialog{native: native}
+	instance := &AboutDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -906,7 +915,16 @@ type AccelGroup struct {
 }
 
 func AccelGroupNewFromNative(native unsafe.Pointer) *AccelGroup {
-	return &AccelGroup{native: native}
+	instance := &AccelGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1095,7 +1113,16 @@ type AccelLabel struct {
 }
 
 func AccelLabelNewFromNative(native unsafe.Pointer) *AccelLabel {
-	return &AccelLabel{native: native}
+	instance := &AccelLabel{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Label upcasts to *Label
@@ -1343,7 +1370,16 @@ type AccelMap struct {
 }
 
 func AccelMapNewFromNative(native unsafe.Pointer) *AccelMap {
-	return &AccelMap{native: native}
+	instance := &AccelMap{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1380,7 +1416,16 @@ type Accessible struct {
 }
 
 func AccessibleNewFromNative(native unsafe.Pointer) *Accessible {
-	return &Accessible{native: native}
+	instance := &Accessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -1515,7 +1560,16 @@ type Action struct {
 }
 
 func ActionNewFromNative(native unsafe.Pointer) *Action {
-	return &Action{native: native}
+	instance := &Action{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2725,7 +2779,16 @@ type ActionBar struct {
 }
 
 func ActionBarNewFromNative(native unsafe.Pointer) *ActionBar {
-	return &ActionBar{native: native}
+	instance := &ActionBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -2931,7 +2994,16 @@ type ActionGroup struct {
 }
 
 func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
-	return &ActionGroup{native: native}
+	instance := &ActionGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3418,7 +3490,16 @@ type Adjustment struct {
 }
 
 func AdjustmentNewFromNative(native unsafe.Pointer) *Adjustment {
-	return &Adjustment{native: native}
+	instance := &Adjustment{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -4033,7 +4114,16 @@ type Alignment struct {
 }
 
 func AlignmentNewFromNative(native unsafe.Pointer) *Alignment {
-	return &Alignment{native: native}
+	instance := &Alignment{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -4238,7 +4328,16 @@ type AppChooserButton struct {
 }
 
 func AppChooserButtonNewFromNative(native unsafe.Pointer) *AppChooserButton {
-	return &AppChooserButton{native: native}
+	instance := &AppChooserButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ComboBox upcasts to *ComboBox
@@ -4588,7 +4687,16 @@ type AppChooserDialog struct {
 }
 
 func AppChooserDialogNewFromNative(native unsafe.Pointer) *AppChooserDialog {
-	return &AppChooserDialog{native: native}
+	instance := &AppChooserDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -4766,7 +4874,16 @@ type AppChooserWidget struct {
 }
 
 func AppChooserWidgetNewFromNative(native unsafe.Pointer) *AppChooserWidget {
-	return &AppChooserWidget{native: native}
+	instance := &AppChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -5235,7 +5352,16 @@ type Application struct {
 }
 
 func ApplicationNewFromNative(native unsafe.Pointer) *Application {
-	return &Application{native: native}
+	instance := &Application{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Application upcasts to *Application
@@ -5575,7 +5701,16 @@ type ApplicationWindow struct {
 }
 
 func ApplicationWindowNewFromNative(native unsafe.Pointer) *ApplicationWindow {
-	return &ApplicationWindow{native: native}
+	instance := &ApplicationWindow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -5837,7 +5972,16 @@ type Arrow struct {
 }
 
 func ArrowNewFromNative(native unsafe.Pointer) *Arrow {
-	return &Arrow{native: native}
+	instance := &Arrow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Misc upcasts to *Misc
@@ -5966,7 +6110,16 @@ type ArrowAccessible struct {
 }
 
 func ArrowAccessibleNewFromNative(native unsafe.Pointer) *ArrowAccessible {
-	return &ArrowAccessible{native: native}
+	instance := &ArrowAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -6046,7 +6199,16 @@ type AspectFrame struct {
 }
 
 func AspectFrameNewFromNative(native unsafe.Pointer) *AspectFrame {
-	return &AspectFrame{native: native}
+	instance := &AspectFrame{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Frame upcasts to *Frame
@@ -6190,7 +6352,16 @@ type Assistant struct {
 }
 
 func AssistantNewFromNative(native unsafe.Pointer) *Assistant {
-	return &Assistant{native: native}
+	instance := &Assistant{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -6983,7 +7154,16 @@ type Bin struct {
 }
 
 func BinNewFromNative(native unsafe.Pointer) *Bin {
-	return &Bin{native: native}
+	instance := &Bin{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -7081,7 +7261,16 @@ type BooleanCellAccessible struct {
 }
 
 func BooleanCellAccessibleNewFromNative(native unsafe.Pointer) *BooleanCellAccessible {
-	return &BooleanCellAccessible{native: native}
+	instance := &BooleanCellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
@@ -7166,7 +7355,16 @@ type Box struct {
 }
 
 func BoxNewFromNative(native unsafe.Pointer) *Box {
-	return &Box{native: native}
+	instance := &Box{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -7672,7 +7870,16 @@ type Builder struct {
 }
 
 func BuilderNewFromNative(native unsafe.Pointer) *Builder {
-	return &Builder{native: native}
+	instance := &Builder{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -8106,7 +8313,16 @@ type Button struct {
 }
 
 func ButtonNewFromNative(native unsafe.Pointer) *Button {
-	return &Button{native: native}
+	instance := &Button{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -9015,7 +9231,16 @@ type ButtonAccessible struct {
 }
 
 func ButtonAccessibleNewFromNative(native unsafe.Pointer) *ButtonAccessible {
-	return &ButtonAccessible{native: native}
+	instance := &ButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -9100,7 +9325,16 @@ type ButtonBox struct {
 }
 
 func ButtonBoxNewFromNative(native unsafe.Pointer) *ButtonBox {
-	return &ButtonBox{native: native}
+	instance := &ButtonBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -9390,7 +9624,16 @@ type Calendar struct {
 }
 
 func CalendarNewFromNative(native unsafe.Pointer) *Calendar {
-	return &Calendar{native: native}
+	instance := &Calendar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -9835,7 +10078,16 @@ type CellAccessible struct {
 }
 
 func CellAccessibleNewFromNative(native unsafe.Pointer) *CellAccessible {
-	return &CellAccessible{native: native}
+	instance := &CellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Accessible upcasts to *Accessible
@@ -9910,7 +10162,16 @@ type CellArea struct {
 }
 
 func CellAreaNewFromNative(native unsafe.Pointer) *CellArea {
-	return &CellArea{native: native}
+	instance := &CellArea{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -10798,7 +11059,16 @@ type CellAreaBox struct {
 }
 
 func CellAreaBoxNewFromNative(native unsafe.Pointer) *CellAreaBox {
-	return &CellAreaBox{native: native}
+	instance := &CellAreaBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellArea upcasts to *CellArea
@@ -11000,7 +11270,16 @@ type CellAreaContext struct {
 }
 
 func CellAreaContextNewFromNative(native unsafe.Pointer) *CellAreaContext {
-	return &CellAreaContext{native: native}
+	instance := &CellAreaContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -11354,7 +11633,16 @@ type CellRenderer struct {
 }
 
 func CellRendererNewFromNative(native unsafe.Pointer) *CellRenderer {
-	return &CellRenderer{native: native}
+	instance := &CellRenderer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -11988,7 +12276,16 @@ type CellRendererAccel struct {
 }
 
 func CellRendererAccelNewFromNative(native unsafe.Pointer) *CellRendererAccel {
-	return &CellRendererAccel{native: native}
+	instance := &CellRendererAccel{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRendererText upcasts to *CellRendererText
@@ -12084,7 +12381,16 @@ type CellRendererCombo struct {
 }
 
 func CellRendererComboNewFromNative(native unsafe.Pointer) *CellRendererCombo {
-	return &CellRendererCombo{native: native}
+	instance := &CellRendererCombo{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRendererText upcasts to *CellRendererText
@@ -12180,7 +12486,16 @@ type CellRendererPixbuf struct {
 }
 
 func CellRendererPixbufNewFromNative(native unsafe.Pointer) *CellRendererPixbuf {
-	return &CellRendererPixbuf{native: native}
+	instance := &CellRendererPixbuf{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -12271,7 +12586,16 @@ type CellRendererProgress struct {
 }
 
 func CellRendererProgressNewFromNative(native unsafe.Pointer) *CellRendererProgress {
-	return &CellRendererProgress{native: native}
+	instance := &CellRendererProgress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -12362,7 +12686,16 @@ type CellRendererSpin struct {
 }
 
 func CellRendererSpinNewFromNative(native unsafe.Pointer) *CellRendererSpin {
-	return &CellRendererSpin{native: native}
+	instance := &CellRendererSpin{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRendererText upcasts to *CellRendererText
@@ -12458,7 +12791,16 @@ type CellRendererSpinner struct {
 }
 
 func CellRendererSpinnerNewFromNative(native unsafe.Pointer) *CellRendererSpinner {
-	return &CellRendererSpinner{native: native}
+	instance := &CellRendererSpinner{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -12549,7 +12891,16 @@ type CellRendererText struct {
 }
 
 func CellRendererTextNewFromNative(native unsafe.Pointer) *CellRendererText {
-	return &CellRendererText{native: native}
+	instance := &CellRendererText{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -12669,7 +13020,16 @@ type CellRendererToggle struct {
 }
 
 func CellRendererToggleNewFromNative(native unsafe.Pointer) *CellRendererToggle {
-	return &CellRendererToggle{native: native}
+	instance := &CellRendererToggle{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -12943,7 +13303,16 @@ type CellView struct {
 }
 
 func CellViewNewFromNative(native unsafe.Pointer) *CellView {
-	return &CellView{native: native}
+	instance := &CellView{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -13359,7 +13728,16 @@ type CheckButton struct {
 }
 
 func CheckButtonNewFromNative(native unsafe.Pointer) *CheckButton {
-	return &CheckButton{native: native}
+	instance := &CheckButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleButton upcasts to *ToggleButton
@@ -13534,7 +13912,16 @@ type CheckMenuItem struct {
 }
 
 func CheckMenuItemNewFromNative(native unsafe.Pointer) *CheckMenuItem {
-	return &CheckMenuItem{native: native}
+	instance := &CheckMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuItem upcasts to *MenuItem
@@ -13915,7 +14302,16 @@ type CheckMenuItemAccessible struct {
 }
 
 func CheckMenuItemAccessibleNewFromNative(native unsafe.Pointer) *CheckMenuItemAccessible {
-	return &CheckMenuItemAccessible{native: native}
+	instance := &CheckMenuItemAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuItemAccessible upcasts to *MenuItemAccessible
@@ -14005,7 +14401,16 @@ type Clipboard struct {
 }
 
 func ClipboardNewFromNative(native unsafe.Pointer) *Clipboard {
-	return &Clipboard{native: native}
+	instance := &Clipboard{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -14353,7 +14758,16 @@ type ColorButton struct {
 }
 
 func ColorButtonNewFromNative(native unsafe.Pointer) *ColorButton {
-	return &ColorButton{native: native}
+	instance := &ColorButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -14654,7 +15068,16 @@ type ColorChooserDialog struct {
 }
 
 func ColorChooserDialogNewFromNative(native unsafe.Pointer) *ColorChooserDialog {
-	return &ColorChooserDialog{native: native}
+	instance := &ColorChooserDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -14768,7 +15191,16 @@ type ColorChooserWidget struct {
 }
 
 func ColorChooserWidgetNewFromNative(native unsafe.Pointer) *ColorChooserWidget {
-	return &ColorChooserWidget{native: native}
+	instance := &ColorChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -14869,7 +15301,16 @@ type ColorSelection struct {
 }
 
 func ColorSelectionNewFromNative(native unsafe.Pointer) *ColorSelection {
-	return &ColorSelection{native: native}
+	instance := &ColorSelection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -15262,7 +15703,16 @@ type ColorSelectionDialog struct {
 }
 
 func ColorSelectionDialogNewFromNative(native unsafe.Pointer) *ColorSelectionDialog {
-	return &ColorSelectionDialog{native: native}
+	instance := &ColorSelectionDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -15407,7 +15857,16 @@ type ComboBox struct {
 }
 
 func ComboBoxNewFromNative(native unsafe.Pointer) *ComboBox {
-	return &ComboBox{native: native}
+	instance := &ComboBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -16505,7 +16964,16 @@ type ComboBoxAccessible struct {
 }
 
 func ComboBoxAccessibleNewFromNative(native unsafe.Pointer) *ComboBoxAccessible {
-	return &ComboBoxAccessible{native: native}
+	instance := &ComboBoxAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -16590,7 +17058,16 @@ type ComboBoxText struct {
 }
 
 func ComboBoxTextNewFromNative(native unsafe.Pointer) *ComboBoxText {
-	return &ComboBoxText{native: native}
+	instance := &ComboBoxText{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ComboBox upcasts to *ComboBox
@@ -16980,7 +17457,16 @@ type Container struct {
 }
 
 func ContainerNewFromNative(native unsafe.Pointer) *Container {
-	return &Container{native: native}
+	instance := &Container{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -17610,7 +18096,16 @@ type ContainerAccessible struct {
 }
 
 func ContainerAccessibleNewFromNative(native unsafe.Pointer) *ContainerAccessible {
-	return &ContainerAccessible{native: native}
+	instance := &ContainerAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -17690,7 +18185,16 @@ type ContainerCellAccessible struct {
 }
 
 func ContainerCellAccessibleNewFromNative(native unsafe.Pointer) *ContainerCellAccessible {
-	return &ContainerCellAccessible{native: native}
+	instance := &ContainerCellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellAccessible upcasts to *CellAccessible
@@ -17860,7 +18364,16 @@ type CssProvider struct {
 }
 
 func CssProviderNewFromNative(native unsafe.Pointer) *CssProvider {
-	return &CssProvider{native: native}
+	instance := &CssProvider{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -18043,7 +18556,16 @@ type Dialog struct {
 }
 
 func DialogNewFromNative(native unsafe.Pointer) *Dialog {
-	return &Dialog{native: native}
+	instance := &Dialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -18503,7 +19025,16 @@ type DrawingArea struct {
 }
 
 func DrawingAreaNewFromNative(native unsafe.Pointer) *DrawingArea {
-	return &DrawingArea{native: native}
+	instance := &DrawingArea{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -18594,7 +19125,16 @@ type Entry struct {
 }
 
 func EntryNewFromNative(native unsafe.Pointer) *Entry {
-	return &Entry{native: native}
+	instance := &Entry{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -20494,7 +21034,16 @@ type EntryAccessible struct {
 }
 
 func EntryAccessibleNewFromNative(native unsafe.Pointer) *EntryAccessible {
-	return &EntryAccessible{native: native}
+	instance := &EntryAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -20574,7 +21123,16 @@ type EntryBuffer struct {
 }
 
 func EntryBufferNewFromNative(native unsafe.Pointer) *EntryBuffer {
-	return &EntryBuffer{native: native}
+	instance := &EntryBuffer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -20965,7 +21523,16 @@ type EntryCompletion struct {
 }
 
 func EntryCompletionNewFromNative(native unsafe.Pointer) *EntryCompletion {
-	return &EntryCompletion{native: native}
+	instance := &EntryCompletion{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -21743,7 +22310,16 @@ type EntryIconAccessible struct {
 }
 
 func EntryIconAccessibleNewFromNative(native unsafe.Pointer) *EntryIconAccessible {
-	return &EntryIconAccessible{native: native}
+	instance := &EntryIconAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -21785,7 +22361,16 @@ type EventBox struct {
 }
 
 func EventBoxNewFromNative(native unsafe.Pointer) *EventBox {
-	return &EventBox{native: native}
+	instance := &EventBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -22008,7 +22593,16 @@ type EventController struct {
 }
 
 func EventControllerNewFromNative(native unsafe.Pointer) *EventController {
-	return &EventController{native: native}
+	instance := &EventController{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -22168,7 +22762,16 @@ type EventControllerKey struct {
 }
 
 func EventControllerKeyNewFromNative(native unsafe.Pointer) *EventControllerKey {
-	return &EventControllerKey{native: native}
+	instance := &EventControllerKey{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EventController upcasts to *EventController
@@ -22368,7 +22971,16 @@ type EventControllerMotion struct {
 }
 
 func EventControllerMotionNewFromNative(native unsafe.Pointer) *EventControllerMotion {
-	return &EventControllerMotion{native: native}
+	instance := &EventControllerMotion{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EventController upcasts to *EventController
@@ -22442,7 +23054,16 @@ type EventControllerScroll struct {
 }
 
 func EventControllerScrollNewFromNative(native unsafe.Pointer) *EventControllerScroll {
-	return &EventControllerScroll{native: native}
+	instance := &EventControllerScroll{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EventController upcasts to *EventController
@@ -22490,7 +23111,16 @@ type Expander struct {
 }
 
 func ExpanderNewFromNative(native unsafe.Pointer) *Expander {
-	return &Expander{native: native}
+	instance := &Expander{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -23127,7 +23757,16 @@ type ExpanderAccessible struct {
 }
 
 func ExpanderAccessibleNewFromNative(native unsafe.Pointer) *ExpanderAccessible {
-	return &ExpanderAccessible{native: native}
+	instance := &ExpanderAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -23212,7 +23851,16 @@ type FileChooserButton struct {
 }
 
 func FileChooserButtonNewFromNative(native unsafe.Pointer) *FileChooserButton {
-	return &FileChooserButton{native: native}
+	instance := &FileChooserButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -23531,7 +24179,16 @@ type FileChooserDialog struct {
 }
 
 func FileChooserDialogNewFromNative(native unsafe.Pointer) *FileChooserDialog {
-	return &FileChooserDialog{native: native}
+	instance := &FileChooserDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -23628,7 +24285,16 @@ type FileChooserNative struct {
 }
 
 func FileChooserNativeNewFromNative(native unsafe.Pointer) *FileChooserNative {
-	return &FileChooserNative{native: native}
+	instance := &FileChooserNative{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // NativeDialog upcasts to *NativeDialog
@@ -23828,7 +24494,16 @@ type FileChooserWidget struct {
 }
 
 func FileChooserWidgetNewFromNative(native unsafe.Pointer) *FileChooserWidget {
-	return &FileChooserWidget{native: native}
+	instance := &FileChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -23945,7 +24620,16 @@ type FileFilter struct {
 }
 
 func FileFilterNewFromNative(native unsafe.Pointer) *FileFilter {
-	return &FileFilter{native: native}
+	instance := &FileFilter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -24205,7 +24889,16 @@ type Fixed struct {
 }
 
 func FixedNewFromNative(native unsafe.Pointer) *Fixed {
-	return &Fixed{native: native}
+	instance := &Fixed{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -24363,7 +25056,16 @@ type FlowBox struct {
 }
 
 func FlowBoxNewFromNative(native unsafe.Pointer) *FlowBox {
-	return &FlowBox{native: native}
+	instance := &FlowBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -25221,7 +25923,16 @@ type FlowBoxAccessible struct {
 }
 
 func FlowBoxAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxAccessible {
-	return &FlowBoxAccessible{native: native}
+	instance := &FlowBoxAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -25306,7 +26017,16 @@ type FlowBoxChild struct {
 }
 
 func FlowBoxChildNewFromNative(native unsafe.Pointer) *FlowBoxChild {
-	return &FlowBoxChild{native: native}
+	instance := &FlowBoxChild{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -25499,7 +26219,16 @@ type FlowBoxChildAccessible struct {
 }
 
 func FlowBoxChildAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxChildAccessible {
-	return &FlowBoxChildAccessible{native: native}
+	instance := &FlowBoxChildAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -25570,7 +26299,16 @@ type FontButton struct {
 }
 
 func FontButtonNewFromNative(native unsafe.Pointer) *FontButton {
-	return &FontButton{native: native}
+	instance := &FontButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -26078,7 +26816,16 @@ type FontChooserDialog struct {
 }
 
 func FontChooserDialogNewFromNative(native unsafe.Pointer) *FontChooserDialog {
-	return &FontChooserDialog{native: native}
+	instance := &FontChooserDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -26192,7 +26939,16 @@ type FontChooserWidget struct {
 }
 
 func FontChooserWidgetNewFromNative(native unsafe.Pointer) *FontChooserWidget {
-	return &FontChooserWidget{native: native}
+	instance := &FontChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -26293,7 +27049,16 @@ type FontSelection struct {
 }
 
 func FontSelectionNewFromNative(native unsafe.Pointer) *FontSelection {
-	return &FontSelection{native: native}
+	instance := &FontSelection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -26716,7 +27481,16 @@ type FontSelectionDialog struct {
 }
 
 func FontSelectionDialogNewFromNative(native unsafe.Pointer) *FontSelectionDialog {
-	return &FontSelectionDialog{native: native}
+	instance := &FontSelectionDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -27051,7 +27825,16 @@ type Frame struct {
 }
 
 func FrameNewFromNative(native unsafe.Pointer) *Frame {
-	return &Frame{native: native}
+	instance := &Frame{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -27400,7 +28183,16 @@ type FrameAccessible struct {
 }
 
 func FrameAccessibleNewFromNative(native unsafe.Pointer) *FrameAccessible {
-	return &FrameAccessible{native: native}
+	instance := &FrameAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -27485,7 +28277,16 @@ type GLArea struct {
 }
 
 func GLAreaNewFromNative(native unsafe.Pointer) *GLArea {
-	return &GLArea{native: native}
+	instance := &GLArea{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -28020,7 +28821,16 @@ type Gesture struct {
 }
 
 func GestureNewFromNative(native unsafe.Pointer) *Gesture {
-	return &Gesture{native: native}
+	instance := &Gesture{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EventController upcasts to *EventController
@@ -28308,7 +29118,16 @@ type GestureDrag struct {
 }
 
 func GestureDragNewFromNative(native unsafe.Pointer) *GestureDrag {
-	return &GestureDrag{native: native}
+	instance := &GestureDrag{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -28462,7 +29281,16 @@ type GestureLongPress struct {
 }
 
 func GestureLongPressNewFromNative(native unsafe.Pointer) *GestureLongPress {
-	return &GestureLongPress{native: native}
+	instance := &GestureLongPress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -28546,7 +29374,16 @@ type GestureMultiPress struct {
 }
 
 func GestureMultiPressNewFromNative(native unsafe.Pointer) *GestureMultiPress {
-	return &GestureMultiPress{native: native}
+	instance := &GestureMultiPress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -28634,7 +29471,16 @@ type GesturePan struct {
 }
 
 func GesturePanNewFromNative(native unsafe.Pointer) *GesturePan {
-	return &GesturePan{native: native}
+	instance := &GesturePan{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureDrag upcasts to *GestureDrag
@@ -28785,7 +29631,16 @@ type GestureRotate struct {
 }
 
 func GestureRotateNewFromNative(native unsafe.Pointer) *GestureRotate {
-	return &GestureRotate{native: native}
+	instance := &GestureRotate{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Gesture upcasts to *Gesture
@@ -28896,7 +29751,16 @@ type GestureSingle struct {
 }
 
 func GestureSingleNewFromNative(native unsafe.Pointer) *GestureSingle {
-	return &GestureSingle{native: native}
+	instance := &GestureSingle{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Gesture upcasts to *Gesture
@@ -29160,7 +30024,16 @@ type GestureStylus struct {
 }
 
 func GestureStylusNewFromNative(native unsafe.Pointer) *GestureStylus {
-	return &GestureStylus{native: native}
+	instance := &GestureStylus{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -29250,7 +30123,16 @@ type GestureSwipe struct {
 }
 
 func GestureSwipeNewFromNative(native unsafe.Pointer) *GestureSwipe {
-	return &GestureSwipe{native: native}
+	instance := &GestureSwipe{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -29369,7 +30251,16 @@ type GestureZoom struct {
 }
 
 func GestureZoomNewFromNative(native unsafe.Pointer) *GestureZoom {
-	return &GestureZoom{native: native}
+	instance := &GestureZoom{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Gesture upcasts to *Gesture
@@ -29480,7 +30371,16 @@ type Grid struct {
 }
 
 func GridNewFromNative(native unsafe.Pointer) *Grid {
-	return &Grid{native: native}
+	instance := &Grid{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -30176,7 +31076,16 @@ type HBox struct {
 }
 
 func HBoxNewFromNative(native unsafe.Pointer) *HBox {
-	return &HBox{native: native}
+	instance := &HBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -30280,7 +31189,16 @@ type HButtonBox struct {
 }
 
 func HButtonBoxNewFromNative(native unsafe.Pointer) *HButtonBox {
-	return &HButtonBox{native: native}
+	instance := &HButtonBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonBox upcasts to *ButtonBox
@@ -30386,7 +31304,16 @@ type HPaned struct {
 }
 
 func HPanedNewFromNative(native unsafe.Pointer) *HPaned {
-	return &HPaned{native: native}
+	instance := &HPaned{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Paned upcasts to *Paned
@@ -30487,7 +31414,16 @@ type HSV struct {
 }
 
 func HSVNewFromNative(native unsafe.Pointer) *HSV {
-	return &HSV{native: native}
+	instance := &HSV{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -30738,7 +31674,16 @@ type HScale struct {
 }
 
 func HScaleNewFromNative(native unsafe.Pointer) *HScale {
-	return &HScale{native: native}
+	instance := &HScale{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Scale upcasts to *Scale
@@ -30875,7 +31820,16 @@ type HScrollbar struct {
 }
 
 func HScrollbarNewFromNative(native unsafe.Pointer) *HScrollbar {
-	return &HScrollbar{native: native}
+	instance := &HScrollbar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Scrollbar upcasts to *Scrollbar
@@ -30978,7 +31932,16 @@ type HSeparator struct {
 }
 
 func HSeparatorNewFromNative(native unsafe.Pointer) *HSeparator {
-	return &HSeparator{native: native}
+	instance := &HSeparator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Separator upcasts to *Separator
@@ -31074,7 +32037,16 @@ type HandleBox struct {
 }
 
 func HandleBoxNewFromNative(native unsafe.Pointer) *HandleBox {
-	return &HandleBox{native: native}
+	instance := &HandleBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -31390,7 +32362,16 @@ type HeaderBar struct {
 }
 
 func HeaderBarNewFromNative(native unsafe.Pointer) *HeaderBar {
-	return &HeaderBar{native: native}
+	instance := &HeaderBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -31910,7 +32891,16 @@ type HeaderBarAccessible struct {
 }
 
 func HeaderBarAccessibleNewFromNative(native unsafe.Pointer) *HeaderBarAccessible {
-	return &HeaderBarAccessible{native: native}
+	instance := &HeaderBarAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -31981,7 +32971,16 @@ type IMContext struct {
 }
 
 func IMContextNewFromNative(native unsafe.Pointer) *IMContext {
-	return &IMContext{native: native}
+	instance := &IMContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -32243,7 +33242,16 @@ type IMContextSimple struct {
 }
 
 func IMContextSimpleNewFromNative(native unsafe.Pointer) *IMContextSimple {
-	return &IMContextSimple{native: native}
+	instance := &IMContextSimple{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IMContext upcasts to *IMContext
@@ -32360,7 +33368,16 @@ type IMMulticontext struct {
 }
 
 func IMMulticontextNewFromNative(native unsafe.Pointer) *IMMulticontext {
-	return &IMMulticontext{native: native}
+	instance := &IMMulticontext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IMContext upcasts to *IMContext
@@ -32536,7 +33553,16 @@ type IconFactory struct {
 }
 
 func IconFactoryNewFromNative(native unsafe.Pointer) *IconFactory {
-	return &IconFactory{native: native}
+	instance := &IconFactory{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -32726,7 +33752,16 @@ type IconInfo struct {
 }
 
 func IconInfoNewFromNative(native unsafe.Pointer) *IconInfo {
-	return &IconInfo{native: native}
+	instance := &IconInfo{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -33042,7 +34077,16 @@ type IconTheme struct {
 }
 
 func IconThemeNewFromNative(native unsafe.Pointer) *IconTheme {
-	return &IconTheme{native: native}
+	instance := &IconTheme{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -33379,7 +34423,16 @@ type IconView struct {
 }
 
 func IconViewNewFromNative(native unsafe.Pointer) *IconView {
-	return &IconView{native: native}
+	instance := &IconView{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -35140,7 +36193,16 @@ type IconViewAccessible struct {
 }
 
 func IconViewAccessibleNewFromNative(native unsafe.Pointer) *IconViewAccessible {
-	return &IconViewAccessible{native: native}
+	instance := &IconViewAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -35225,7 +36287,16 @@ type Image struct {
 }
 
 func ImageNewFromNative(native unsafe.Pointer) *Image {
-	return &Image{native: native}
+	instance := &Image{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Misc upcasts to *Misc
@@ -35874,7 +36945,16 @@ type ImageAccessible struct {
 }
 
 func ImageAccessibleNewFromNative(native unsafe.Pointer) *ImageAccessible {
-	return &ImageAccessible{native: native}
+	instance := &ImageAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -35954,7 +37034,16 @@ type ImageCellAccessible struct {
 }
 
 func ImageCellAccessibleNewFromNative(native unsafe.Pointer) *ImageCellAccessible {
-	return &ImageCellAccessible{native: native}
+	instance := &ImageCellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
@@ -36039,7 +37128,16 @@ type ImageMenuItem struct {
 }
 
 func ImageMenuItemNewFromNative(native unsafe.Pointer) *ImageMenuItem {
-	return &ImageMenuItem{native: native}
+	instance := &ImageMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuItem upcasts to *MenuItem
@@ -36454,7 +37552,16 @@ type InfoBar struct {
 }
 
 func InfoBarNewFromNative(native unsafe.Pointer) *InfoBar {
-	return &InfoBar{native: native}
+	instance := &InfoBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -36958,7 +38065,16 @@ type Invisible struct {
 }
 
 func InvisibleNewFromNative(native unsafe.Pointer) *Invisible {
-	return &Invisible{native: native}
+	instance := &Invisible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -37055,7 +38171,16 @@ type Label struct {
 }
 
 func LabelNewFromNative(native unsafe.Pointer) *Label {
-	return &Label{native: native}
+	instance := &Label{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Misc upcasts to *Misc
@@ -38453,7 +39578,16 @@ type LabelAccessible struct {
 }
 
 func LabelAccessibleNewFromNative(native unsafe.Pointer) *LabelAccessible {
-	return &LabelAccessible{native: native}
+	instance := &LabelAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -38533,7 +39667,16 @@ type Layout struct {
 }
 
 func LayoutNewFromNative(native unsafe.Pointer) *Layout {
-	return &Layout{native: native}
+	instance := &Layout{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -38881,7 +40024,16 @@ type LevelBar struct {
 }
 
 func LevelBarNewFromNative(native unsafe.Pointer) *LevelBar {
-	return &LevelBar{native: native}
+	instance := &LevelBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -39390,7 +40542,16 @@ type LevelBarAccessible struct {
 }
 
 func LevelBarAccessibleNewFromNative(native unsafe.Pointer) *LevelBarAccessible {
-	return &LevelBarAccessible{native: native}
+	instance := &LevelBarAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -39470,7 +40631,16 @@ type LinkButton struct {
 }
 
 func LinkButtonNewFromNative(native unsafe.Pointer) *LinkButton {
-	return &LinkButton{native: native}
+	instance := &LinkButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -39719,7 +40889,16 @@ type LinkButtonAccessible struct {
 }
 
 func LinkButtonAccessibleNewFromNative(native unsafe.Pointer) *LinkButtonAccessible {
-	return &LinkButtonAccessible{native: native}
+	instance := &LinkButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonAccessible upcasts to *ButtonAccessible
@@ -39809,7 +40988,16 @@ type ListBox struct {
 }
 
 func ListBoxNewFromNative(native unsafe.Pointer) *ListBox {
-	return &ListBox{native: native}
+	instance := &ListBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -40541,7 +41729,16 @@ type ListBoxAccessible struct {
 }
 
 func ListBoxAccessibleNewFromNative(native unsafe.Pointer) *ListBoxAccessible {
-	return &ListBoxAccessible{native: native}
+	instance := &ListBoxAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -40626,7 +41823,16 @@ type ListBoxRow struct {
 }
 
 func ListBoxRowNewFromNative(native unsafe.Pointer) *ListBoxRow {
-	return &ListBoxRow{native: native}
+	instance := &ListBoxRow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -41002,7 +42208,16 @@ type ListBoxRowAccessible struct {
 }
 
 func ListBoxRowAccessibleNewFromNative(native unsafe.Pointer) *ListBoxRowAccessible {
-	return &ListBoxRowAccessible{native: native}
+	instance := &ListBoxRowAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -41073,7 +42288,16 @@ type ListStore struct {
 }
 
 func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
-	return &ListStore{native: native}
+	instance := &ListStore{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -41481,7 +42705,16 @@ type LockButton struct {
 }
 
 func LockButtonNewFromNative(native unsafe.Pointer) *LockButton {
-	return &LockButton{native: native}
+	instance := &LockButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -41577,7 +42810,16 @@ type LockButtonAccessible struct {
 }
 
 func LockButtonAccessibleNewFromNative(native unsafe.Pointer) *LockButtonAccessible {
-	return &LockButtonAccessible{native: native}
+	instance := &LockButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonAccessible upcasts to *ButtonAccessible
@@ -41667,7 +42909,16 @@ type Menu struct {
 }
 
 func MenuNewFromNative(native unsafe.Pointer) *Menu {
-	return &Menu{native: native}
+	instance := &Menu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuShell upcasts to *MenuShell
@@ -42392,7 +43643,16 @@ type MenuAccessible struct {
 }
 
 func MenuAccessibleNewFromNative(native unsafe.Pointer) *MenuAccessible {
-	return &MenuAccessible{native: native}
+	instance := &MenuAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuShellAccessible upcasts to *MenuShellAccessible
@@ -42482,7 +43742,16 @@ type MenuBar struct {
 }
 
 func MenuBarNewFromNative(native unsafe.Pointer) *MenuBar {
-	return &MenuBar{native: native}
+	instance := &MenuBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuShell upcasts to *MenuShell
@@ -42707,7 +43976,16 @@ type MenuButton struct {
 }
 
 func MenuButtonNewFromNative(native unsafe.Pointer) *MenuButton {
-	return &MenuButton{native: native}
+	instance := &MenuButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleButton upcasts to *ToggleButton
@@ -43127,7 +44405,16 @@ type MenuButtonAccessible struct {
 }
 
 func MenuButtonAccessibleNewFromNative(native unsafe.Pointer) *MenuButtonAccessible {
-	return &MenuButtonAccessible{native: native}
+	instance := &MenuButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
@@ -43222,7 +44509,16 @@ type MenuItem struct {
 }
 
 func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
-	return &MenuItem{native: native}
+	instance := &MenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -43899,7 +45195,16 @@ type MenuItemAccessible struct {
 }
 
 func MenuItemAccessibleNewFromNative(native unsafe.Pointer) *MenuItemAccessible {
-	return &MenuItemAccessible{native: native}
+	instance := &MenuItemAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -43984,7 +45289,16 @@ type MenuShell struct {
 }
 
 func MenuShellNewFromNative(native unsafe.Pointer) *MenuShell {
-	return &MenuShell{native: native}
+	instance := &MenuShell{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -44437,7 +45751,16 @@ type MenuShellAccessible struct {
 }
 
 func MenuShellAccessibleNewFromNative(native unsafe.Pointer) *MenuShellAccessible {
-	return &MenuShellAccessible{native: native}
+	instance := &MenuShellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -44522,7 +45845,16 @@ type MenuToolButton struct {
 }
 
 func MenuToolButtonNewFromNative(native unsafe.Pointer) *MenuToolButton {
-	return &MenuToolButton{native: native}
+	instance := &MenuToolButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToolButton upcasts to *ToolButton
@@ -44787,7 +46119,16 @@ type MessageDialog struct {
 }
 
 func MessageDialogNewFromNative(native unsafe.Pointer) *MessageDialog {
-	return &MessageDialog{native: native}
+	instance := &MessageDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -44998,7 +46339,16 @@ type Misc struct {
 }
 
 func MiscNewFromNative(native unsafe.Pointer) *Misc {
-	return &Misc{native: native}
+	instance := &Misc{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -45185,7 +46535,16 @@ type ModelButton struct {
 }
 
 func ModelButtonNewFromNative(native unsafe.Pointer) *ModelButton {
-	return &ModelButton{native: native}
+	instance := &ModelButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -45277,7 +46636,16 @@ type MountOperation struct {
 }
 
 func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
-	return &MountOperation{native: native}
+	instance := &MountOperation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MountOperation upcasts to *MountOperation
@@ -45466,7 +46834,16 @@ type NativeDialog struct {
 }
 
 func NativeDialogNewFromNative(native unsafe.Pointer) *NativeDialog {
-	return &NativeDialog{native: native}
+	instance := &NativeDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -45838,7 +47215,16 @@ type Notebook struct {
 }
 
 func NotebookNewFromNative(native unsafe.Pointer) *Notebook {
-	return &Notebook{native: native}
+	instance := &Notebook{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -47298,7 +48684,16 @@ type NotebookAccessible struct {
 }
 
 func NotebookAccessibleNewFromNative(native unsafe.Pointer) *NotebookAccessible {
-	return &NotebookAccessible{native: native}
+	instance := &NotebookAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -47383,7 +48778,16 @@ type NotebookPageAccessible struct {
 }
 
 func NotebookPageAccessibleNewFromNative(native unsafe.Pointer) *NotebookPageAccessible {
-	return &NotebookPageAccessible{native: native}
+	instance := &NotebookPageAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -47504,7 +48908,16 @@ type NumerableIcon struct {
 }
 
 func NumerableIconNewFromNative(native unsafe.Pointer) *NumerableIcon {
-	return &NumerableIcon{native: native}
+	instance := &NumerableIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EmblemedIcon upcasts to *EmblemedIcon
@@ -47798,7 +49211,16 @@ type OffscreenWindow struct {
 }
 
 func OffscreenWindowNewFromNative(native unsafe.Pointer) *OffscreenWindow {
-	return &OffscreenWindow{native: native}
+	instance := &OffscreenWindow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -47908,7 +49330,16 @@ type Overlay struct {
 }
 
 func OverlayNewFromNative(native unsafe.Pointer) *Overlay {
-	return &Overlay{native: native}
+	instance := &Overlay{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -48145,7 +49576,16 @@ type PadController struct {
 }
 
 func PadControllerNewFromNative(native unsafe.Pointer) *PadController {
-	return &PadController{native: native}
+	instance := &PadController{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EventController upcasts to *EventController
@@ -48224,7 +49664,16 @@ type PageSetup struct {
 }
 
 func PageSetupNewFromNative(native unsafe.Pointer) *PageSetup {
-	return &PageSetup{native: native}
+	instance := &PageSetup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -48966,7 +50415,16 @@ type Paned struct {
 }
 
 func PanedNewFromNative(native unsafe.Pointer) *Paned {
-	return &Paned{native: native}
+	instance := &Paned{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -49372,7 +50830,16 @@ type PanedAccessible struct {
 }
 
 func PanedAccessibleNewFromNative(native unsafe.Pointer) *PanedAccessible {
-	return &PanedAccessible{native: native}
+	instance := &PanedAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -49457,7 +50924,16 @@ type PlacesSidebar struct {
 }
 
 func PlacesSidebarNewFromNative(native unsafe.Pointer) *PlacesSidebar {
-	return &PlacesSidebar{native: native}
+	instance := &PlacesSidebar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ScrolledWindow upcasts to *ScrolledWindow
@@ -50055,7 +51531,16 @@ type Plug struct {
 }
 
 func PlugNewFromNative(native unsafe.Pointer) *Plug {
-	return &Plug{native: native}
+	instance := &Plug{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -50276,7 +51761,16 @@ type Popover struct {
 }
 
 func PopoverNewFromNative(native unsafe.Pointer) *Popover {
-	return &Popover{native: native}
+	instance := &Popover{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -50809,7 +52303,16 @@ type PopoverAccessible struct {
 }
 
 func PopoverAccessibleNewFromNative(native unsafe.Pointer) *PopoverAccessible {
-	return &PopoverAccessible{native: native}
+	instance := &PopoverAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -50880,7 +52383,16 @@ type PopoverMenu struct {
 }
 
 func PopoverMenuNewFromNative(native unsafe.Pointer) *PopoverMenu {
-	return &PopoverMenu{native: native}
+	instance := &PopoverMenu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Popover upcasts to *Popover
@@ -51001,7 +52513,16 @@ type PrintContext struct {
 }
 
 func PrintContextNewFromNative(native unsafe.Pointer) *PrintContext {
-	return &PrintContext{native: native}
+	instance := &PrintContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -51245,7 +52766,16 @@ type PrintOperation struct {
 }
 
 func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
-	return &PrintOperation{native: native}
+	instance := &PrintOperation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -52185,7 +53715,16 @@ type PrintSettings struct {
 }
 
 func PrintSettingsNewFromNative(native unsafe.Pointer) *PrintSettings {
-	return &PrintSettings{native: native}
+	instance := &PrintSettings{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -54376,7 +55915,16 @@ type ProgressBar struct {
 }
 
 func ProgressBarNewFromNative(native unsafe.Pointer) *ProgressBar {
-	return &ProgressBar{native: native}
+	instance := &ProgressBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -54804,7 +56352,16 @@ type ProgressBarAccessible struct {
 }
 
 func ProgressBarAccessibleNewFromNative(native unsafe.Pointer) *ProgressBarAccessible {
-	return &ProgressBarAccessible{native: native}
+	instance := &ProgressBarAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -54884,7 +56441,16 @@ type RadioAction struct {
 }
 
 func RadioActionNewFromNative(native unsafe.Pointer) *RadioAction {
-	return &RadioAction{native: native}
+	instance := &RadioAction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleAction upcasts to *ToggleAction
@@ -55075,7 +56641,16 @@ type RadioButton struct {
 }
 
 func RadioButtonNewFromNative(native unsafe.Pointer) *RadioButton {
-	return &RadioButton{native: native}
+	instance := &RadioButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CheckButton upcasts to *CheckButton
@@ -55298,7 +56873,16 @@ type RadioButtonAccessible struct {
 }
 
 func RadioButtonAccessibleNewFromNative(native unsafe.Pointer) *RadioButtonAccessible {
-	return &RadioButtonAccessible{native: native}
+	instance := &RadioButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
@@ -55393,7 +56977,16 @@ type RadioMenuItem struct {
 }
 
 func RadioMenuItemNewFromNative(native unsafe.Pointer) *RadioMenuItem {
-	return &RadioMenuItem{native: native}
+	instance := &RadioMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CheckMenuItem upcasts to *CheckMenuItem
@@ -55611,7 +57204,16 @@ type RadioMenuItemAccessible struct {
 }
 
 func RadioMenuItemAccessibleNewFromNative(native unsafe.Pointer) *RadioMenuItemAccessible {
-	return &RadioMenuItemAccessible{native: native}
+	instance := &RadioMenuItemAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CheckMenuItemAccessible upcasts to *CheckMenuItemAccessible
@@ -55706,7 +57308,16 @@ type RadioToolButton struct {
 }
 
 func RadioToolButtonNewFromNative(native unsafe.Pointer) *RadioToolButton {
-	return &RadioToolButton{native: native}
+	instance := &RadioToolButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToggleToolButton upcasts to *ToggleToolButton
@@ -55865,7 +57476,16 @@ type Range struct {
 }
 
 func RangeNewFromNative(native unsafe.Pointer) *Range {
-	return &Range{native: native}
+	instance := &Range{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -56767,7 +58387,16 @@ type RangeAccessible struct {
 }
 
 func RangeAccessibleNewFromNative(native unsafe.Pointer) *RangeAccessible {
-	return &RangeAccessible{native: native}
+	instance := &RangeAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -56847,7 +58476,16 @@ type RcStyle struct {
 }
 
 func RcStyleNewFromNative(native unsafe.Pointer) *RcStyle {
-	return &RcStyle{native: native}
+	instance := &RcStyle{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -57020,7 +58658,16 @@ type RecentAction struct {
 }
 
 func RecentActionNewFromNative(native unsafe.Pointer) *RecentAction {
-	return &RecentAction{native: native}
+	instance := &RecentAction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Action upcasts to *Action
@@ -57208,7 +58855,16 @@ type RecentChooserDialog struct {
 }
 
 func RecentChooserDialogNewFromNative(native unsafe.Pointer) *RecentChooserDialog {
-	return &RecentChooserDialog{native: native}
+	instance := &RecentChooserDialog{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Dialog upcasts to *Dialog
@@ -57293,7 +58949,16 @@ type RecentChooserMenu struct {
 }
 
 func RecentChooserMenuNewFromNative(native unsafe.Pointer) *RecentChooserMenu {
-	return &RecentChooserMenu{native: native}
+	instance := &RecentChooserMenu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Menu upcasts to *Menu
@@ -57492,7 +59157,16 @@ type RecentChooserWidget struct {
 }
 
 func RecentChooserWidgetNewFromNative(native unsafe.Pointer) *RecentChooserWidget {
-	return &RecentChooserWidget{native: native}
+	instance := &RecentChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -57625,7 +59299,16 @@ type RecentFilter struct {
 }
 
 func RecentFilterNewFromNative(native unsafe.Pointer) *RecentFilter {
-	return &RecentFilter{native: native}
+	instance := &RecentFilter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -57968,7 +59651,16 @@ type RecentManager struct {
 }
 
 func RecentManagerNewFromNative(native unsafe.Pointer) *RecentManager {
-	return &RecentManager{native: native}
+	instance := &RecentManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -58269,7 +59961,16 @@ type RendererCellAccessible struct {
 }
 
 func RendererCellAccessibleNewFromNative(native unsafe.Pointer) *RendererCellAccessible {
-	return &RendererCellAccessible{native: native}
+	instance := &RendererCellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // CellAccessible upcasts to *CellAccessible
@@ -58381,7 +60082,16 @@ type Revealer struct {
 }
 
 func RevealerNewFromNative(native unsafe.Pointer) *Revealer {
-	return &Revealer{native: native}
+	instance := &Revealer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -58697,7 +60407,16 @@ type Scale struct {
 }
 
 func ScaleNewFromNative(native unsafe.Pointer) *Scale {
-	return &Scale{native: native}
+	instance := &Scale{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Range upcasts to *Range
@@ -59169,7 +60888,16 @@ type ScaleAccessible struct {
 }
 
 func ScaleAccessibleNewFromNative(native unsafe.Pointer) *ScaleAccessible {
-	return &ScaleAccessible{native: native}
+	instance := &ScaleAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // RangeAccessible upcasts to *RangeAccessible
@@ -59254,7 +60982,16 @@ type ScaleButton struct {
 }
 
 func ScaleButtonNewFromNative(native unsafe.Pointer) *ScaleButton {
-	return &ScaleButton{native: native}
+	instance := &ScaleButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -59552,7 +61289,16 @@ type ScaleButtonAccessible struct {
 }
 
 func ScaleButtonAccessibleNewFromNative(native unsafe.Pointer) *ScaleButtonAccessible {
-	return &ScaleButtonAccessible{native: native}
+	instance := &ScaleButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonAccessible upcasts to *ButtonAccessible
@@ -59642,7 +61388,16 @@ type Scrollbar struct {
 }
 
 func ScrollbarNewFromNative(native unsafe.Pointer) *Scrollbar {
-	return &Scrollbar{native: native}
+	instance := &Scrollbar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Range upcasts to *Range
@@ -59741,7 +61496,16 @@ type ScrolledWindow struct {
 }
 
 func ScrolledWindowNewFromNative(native unsafe.Pointer) *ScrolledWindow {
-	return &ScrolledWindow{native: native}
+	instance := &ScrolledWindow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -60836,7 +62600,16 @@ type ScrolledWindowAccessible struct {
 }
 
 func ScrolledWindowAccessibleNewFromNative(native unsafe.Pointer) *ScrolledWindowAccessible {
-	return &ScrolledWindowAccessible{native: native}
+	instance := &ScrolledWindowAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -60921,7 +62694,16 @@ type SearchBar struct {
 }
 
 func SearchBarNewFromNative(native unsafe.Pointer) *SearchBar {
-	return &SearchBar{native: native}
+	instance := &SearchBar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -61161,7 +62943,16 @@ type SearchEntry struct {
 }
 
 func SearchEntryNewFromNative(native unsafe.Pointer) *SearchEntry {
-	return &SearchEntry{native: native}
+	instance := &SearchEntry{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Entry upcasts to *Entry
@@ -61259,7 +63050,16 @@ type Separator struct {
 }
 
 func SeparatorNewFromNative(native unsafe.Pointer) *Separator {
-	return &Separator{native: native}
+	instance := &Separator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -61366,7 +63166,16 @@ type SeparatorMenuItem struct {
 }
 
 func SeparatorMenuItemNewFromNative(native unsafe.Pointer) *SeparatorMenuItem {
-	return &SeparatorMenuItem{native: native}
+	instance := &SeparatorMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuItem upcasts to *MenuItem
@@ -61472,7 +63281,16 @@ type SeparatorToolItem struct {
 }
 
 func SeparatorToolItemNewFromNative(native unsafe.Pointer) *SeparatorToolItem {
-	return &SeparatorToolItem{native: native}
+	instance := &SeparatorToolItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToolItem upcasts to *ToolItem
@@ -61639,7 +63457,16 @@ type Settings struct {
 }
 
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
-	return &Settings{native: native}
+	instance := &Settings{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -61832,7 +63659,16 @@ type ShortcutLabel struct {
 }
 
 func ShortcutLabelNewFromNative(native unsafe.Pointer) *ShortcutLabel {
-	return &ShortcutLabel{native: native}
+	instance := &ShortcutLabel{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -62043,7 +63879,16 @@ type ShortcutsGroup struct {
 }
 
 func ShortcutsGroupNewFromNative(native unsafe.Pointer) *ShortcutsGroup {
-	return &ShortcutsGroup{native: native}
+	instance := &ShortcutsGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -62100,7 +63945,16 @@ type ShortcutsSection struct {
 }
 
 func ShortcutsSectionNewFromNative(native unsafe.Pointer) *ShortcutsSection {
-	return &ShortcutsSection{native: native}
+	instance := &ShortcutsSection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -62157,7 +64011,16 @@ type ShortcutsShortcut struct {
 }
 
 func ShortcutsShortcutNewFromNative(native unsafe.Pointer) *ShortcutsShortcut {
-	return &ShortcutsShortcut{native: native}
+	instance := &ShortcutsShortcut{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -62214,7 +64077,16 @@ type ShortcutsWindow struct {
 }
 
 func ShortcutsWindowNewFromNative(native unsafe.Pointer) *ShortcutsWindow {
-	return &ShortcutsWindow{native: native}
+	instance := &ShortcutsWindow{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -62290,7 +64162,16 @@ type SizeGroup struct {
 }
 
 func SizeGroupNewFromNative(native unsafe.Pointer) *SizeGroup {
-	return &SizeGroup{native: native}
+	instance := &SizeGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -62545,7 +64426,16 @@ type Socket struct {
 }
 
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
-	return &Socket{native: native}
+	instance := &Socket{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -62718,7 +64608,16 @@ type SpinButton struct {
 }
 
 func SpinButtonNewFromNative(native unsafe.Pointer) *SpinButton {
-	return &SpinButton{native: native}
+	instance := &SpinButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Entry upcasts to *Entry
@@ -63526,7 +65425,16 @@ type SpinButtonAccessible struct {
 }
 
 func SpinButtonAccessibleNewFromNative(native unsafe.Pointer) *SpinButtonAccessible {
-	return &SpinButtonAccessible{native: native}
+	instance := &SpinButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // EntryAccessible upcasts to *EntryAccessible
@@ -63611,7 +65519,16 @@ type Spinner struct {
 }
 
 func SpinnerNewFromNative(native unsafe.Pointer) *Spinner {
-	return &Spinner{native: native}
+	instance := &Spinner{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -63758,7 +65675,16 @@ type SpinnerAccessible struct {
 }
 
 func SpinnerAccessibleNewFromNative(native unsafe.Pointer) *SpinnerAccessible {
-	return &SpinnerAccessible{native: native}
+	instance := &SpinnerAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -63838,7 +65764,16 @@ type Stack struct {
 }
 
 func StackNewFromNative(native unsafe.Pointer) *Stack {
-	return &Stack{native: native}
+	instance := &Stack{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -64578,7 +66513,16 @@ type StackAccessible struct {
 }
 
 func StackAccessibleNewFromNative(native unsafe.Pointer) *StackAccessible {
-	return &StackAccessible{native: native}
+	instance := &StackAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -64649,7 +66593,16 @@ type StackSidebar struct {
 }
 
 func StackSidebarNewFromNative(native unsafe.Pointer) *StackSidebar {
-	return &StackSidebar{native: native}
+	instance := &StackSidebar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -64811,7 +66764,16 @@ type StackSwitcher struct {
 }
 
 func StackSwitcherNewFromNative(native unsafe.Pointer) *StackSwitcher {
-	return &StackSwitcher{native: native}
+	instance := &StackSwitcher{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -64973,7 +66935,16 @@ type StatusIcon struct {
 }
 
 func StatusIconNewFromNative(native unsafe.Pointer) *StatusIcon {
-	return &StatusIcon{native: native}
+	instance := &StatusIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -65785,7 +67756,16 @@ type Statusbar struct {
 }
 
 func StatusbarNewFromNative(native unsafe.Pointer) *Statusbar {
-	return &Statusbar{native: native}
+	instance := &Statusbar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -66073,7 +68053,16 @@ type StatusbarAccessible struct {
 }
 
 func StatusbarAccessibleNewFromNative(native unsafe.Pointer) *StatusbarAccessible {
-	return &StatusbarAccessible{native: native}
+	instance := &StatusbarAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -66158,7 +68147,16 @@ type Style struct {
 }
 
 func StyleNewFromNative(native unsafe.Pointer) *Style {
-	return &Style{native: native}
+	instance := &Style{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -66442,7 +68440,16 @@ type StyleContext struct {
 }
 
 func StyleContextNewFromNative(native unsafe.Pointer) *StyleContext {
-	return &StyleContext{native: native}
+	instance := &StyleContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -67172,7 +69179,16 @@ type StyleProperties struct {
 }
 
 func StylePropertiesNewFromNative(native unsafe.Pointer) *StyleProperties {
-	return &StyleProperties{native: native}
+	instance := &StyleProperties{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -67374,7 +69390,16 @@ type Switch struct {
 }
 
 func SwitchNewFromNative(native unsafe.Pointer) *Switch {
-	return &Switch{native: native}
+	instance := &Switch{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Widget upcasts to *Widget
@@ -67573,7 +69598,16 @@ type SwitchAccessible struct {
 }
 
 func SwitchAccessibleNewFromNative(native unsafe.Pointer) *SwitchAccessible {
-	return &SwitchAccessible{native: native}
+	instance := &SwitchAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WidgetAccessible upcasts to *WidgetAccessible
@@ -67653,7 +69687,16 @@ type Table struct {
 }
 
 func TableNewFromNative(native unsafe.Pointer) *Table {
-	return &Table{native: native}
+	instance := &Table{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -68160,7 +70203,16 @@ type TearoffMenuItem struct {
 }
 
 func TearoffMenuItemNewFromNative(native unsafe.Pointer) *TearoffMenuItem {
-	return &TearoffMenuItem{native: native}
+	instance := &TearoffMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuItem upcasts to *MenuItem
@@ -68266,7 +70318,16 @@ type TextBuffer struct {
 }
 
 func TextBufferNewFromNative(native unsafe.Pointer) *TextBuffer {
-	return &TextBuffer{native: native}
+	instance := &TextBuffer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -70254,7 +72315,16 @@ type TextCellAccessible struct {
 }
 
 func TextCellAccessibleNewFromNative(native unsafe.Pointer) *TextCellAccessible {
-	return &TextCellAccessible{native: native}
+	instance := &TextCellAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
@@ -70339,7 +72409,16 @@ type TextChildAnchor struct {
 }
 
 func TextChildAnchorNewFromNative(native unsafe.Pointer) *TextChildAnchor {
-	return &TextChildAnchor{native: native}
+	instance := &TextChildAnchor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -70444,7 +72523,16 @@ type TextMark struct {
 }
 
 func TextMarkNewFromNative(native unsafe.Pointer) *TextMark {
-	return &TextMark{native: native}
+	instance := &TextMark{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -70707,7 +72795,16 @@ type TextTag struct {
 }
 
 func TextTagNewFromNative(native unsafe.Pointer) *TextTag {
-	return &TextTag{native: native}
+	instance := &TextTag{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -70886,7 +72983,16 @@ type TextTagTable struct {
 }
 
 func TextTagTableNewFromNative(native unsafe.Pointer) *TextTagTable {
-	return &TextTagTable{native: native}
+	instance := &TextTagTable{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -71100,7 +73206,16 @@ type TextView struct {
 }
 
 func TextViewNewFromNative(native unsafe.Pointer) *TextView {
-	return &TextView{native: native}
+	instance := &TextView{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -73169,7 +75284,16 @@ type TextViewAccessible struct {
 }
 
 func TextViewAccessibleNewFromNative(native unsafe.Pointer) *TextViewAccessible {
-	return &TextViewAccessible{native: native}
+	instance := &TextViewAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -73254,7 +75378,16 @@ type ThemingEngine struct {
 }
 
 func ThemingEngineNewFromNative(native unsafe.Pointer) *ThemingEngine {
-	return &ThemingEngine{native: native}
+	instance := &ThemingEngine{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -73477,7 +75610,16 @@ type ToggleAction struct {
 }
 
 func ToggleActionNewFromNative(native unsafe.Pointer) *ToggleAction {
-	return &ToggleAction{native: native}
+	instance := &ToggleAction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Action upcasts to *Action
@@ -73718,7 +75860,16 @@ type ToggleButton struct {
 }
 
 func ToggleButtonNewFromNative(native unsafe.Pointer) *ToggleButton {
-	return &ToggleButton{native: native}
+	instance := &ToggleButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -74085,7 +76236,16 @@ type ToggleButtonAccessible struct {
 }
 
 func ToggleButtonAccessibleNewFromNative(native unsafe.Pointer) *ToggleButtonAccessible {
-	return &ToggleButtonAccessible{native: native}
+	instance := &ToggleButtonAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonAccessible upcasts to *ButtonAccessible
@@ -74175,7 +76335,16 @@ type ToggleToolButton struct {
 }
 
 func ToggleToolButtonNewFromNative(native unsafe.Pointer) *ToggleToolButton {
-	return &ToggleToolButton{native: native}
+	instance := &ToggleToolButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToolButton upcasts to *ToolButton
@@ -74379,7 +76548,16 @@ type ToolButton struct {
 }
 
 func ToolButtonNewFromNative(native unsafe.Pointer) *ToolButton {
-	return &ToolButton{native: native}
+	instance := &ToolButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ToolItem upcasts to *ToolItem
@@ -74886,7 +77064,16 @@ type ToolItem struct {
 }
 
 func ToolItemNewFromNative(native unsafe.Pointer) *ToolItem {
-	return &ToolItem{native: native}
+	instance := &ToolItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -75788,7 +77975,16 @@ type ToolItemGroup struct {
 }
 
 func ToolItemGroupNewFromNative(native unsafe.Pointer) *ToolItemGroup {
-	return &ToolItemGroup{native: native}
+	instance := &ToolItemGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -76340,7 +78536,16 @@ type ToolPalette struct {
 }
 
 func ToolPaletteNewFromNative(native unsafe.Pointer) *ToolPalette {
-	return &ToolPalette{native: native}
+	instance := &ToolPalette{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -76986,7 +79191,16 @@ type Toolbar struct {
 }
 
 func ToolbarNewFromNative(native unsafe.Pointer) *Toolbar {
-	return &Toolbar{native: native}
+	instance := &Toolbar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -77559,7 +79773,16 @@ type Tooltip struct {
 }
 
 func TooltipNewFromNative(native unsafe.Pointer) *Tooltip {
-	return &Tooltip{native: native}
+	instance := &Tooltip{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -77749,7 +79972,16 @@ type ToplevelAccessible struct {
 }
 
 func ToplevelAccessibleNewFromNative(native unsafe.Pointer) *ToplevelAccessible {
-	return &ToplevelAccessible{native: native}
+	instance := &ToplevelAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -77811,7 +80043,16 @@ type TreeModelFilter struct {
 }
 
 func TreeModelFilterNewFromNative(native unsafe.Pointer) *TreeModelFilter {
-	return &TreeModelFilter{native: native}
+	instance := &TreeModelFilter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -78077,7 +80318,16 @@ type TreeModelSort struct {
 }
 
 func TreeModelSortNewFromNative(native unsafe.Pointer) *TreeModelSort {
-	return &TreeModelSort{native: native}
+	instance := &TreeModelSort{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -78343,7 +80593,16 @@ type TreeSelection struct {
 }
 
 func TreeSelectionNewFromNative(native unsafe.Pointer) *TreeSelection {
-	return &TreeSelection{native: native}
+	instance := &TreeSelection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -78815,7 +81074,16 @@ type TreeStore struct {
 }
 
 func TreeStoreNewFromNative(native unsafe.Pointer) *TreeStore {
-	return &TreeStore{native: native}
+	instance := &TreeStore{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -79309,7 +81577,16 @@ type TreeView struct {
 }
 
 func TreeViewNewFromNative(native unsafe.Pointer) *TreeView {
-	return &TreeView{native: native}
+	instance := &TreeView{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -81873,7 +84150,16 @@ type TreeViewAccessible struct {
 }
 
 func TreeViewAccessibleNewFromNative(native unsafe.Pointer) *TreeViewAccessible {
-	return &TreeViewAccessible{native: native}
+	instance := &TreeViewAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -81958,7 +84244,16 @@ type TreeViewColumn struct {
 }
 
 func TreeViewColumnNewFromNative(native unsafe.Pointer) *TreeViewColumn {
-	return &TreeViewColumn{native: native}
+	instance := &TreeViewColumn{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -83495,7 +85790,16 @@ type UIManager struct {
 }
 
 func UIManagerNewFromNative(native unsafe.Pointer) *UIManager {
-	return &UIManager{native: native}
+	instance := &UIManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -84011,7 +86315,16 @@ type VBox struct {
 }
 
 func VBoxNewFromNative(native unsafe.Pointer) *VBox {
-	return &VBox{native: native}
+	instance := &VBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Box upcasts to *Box
@@ -84115,7 +86428,16 @@ type VButtonBox struct {
 }
 
 func VButtonBoxNewFromNative(native unsafe.Pointer) *VButtonBox {
-	return &VButtonBox{native: native}
+	instance := &VButtonBox{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ButtonBox upcasts to *ButtonBox
@@ -84221,7 +86543,16 @@ type VPaned struct {
 }
 
 func VPanedNewFromNative(native unsafe.Pointer) *VPaned {
-	return &VPaned{native: native}
+	instance := &VPaned{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Paned upcasts to *Paned
@@ -84322,7 +86653,16 @@ type VScale struct {
 }
 
 func VScaleNewFromNative(native unsafe.Pointer) *VScale {
-	return &VScale{native: native}
+	instance := &VScale{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Scale upcasts to *Scale
@@ -84459,7 +86799,16 @@ type VScrollbar struct {
 }
 
 func VScrollbarNewFromNative(native unsafe.Pointer) *VScrollbar {
-	return &VScrollbar{native: native}
+	instance := &VScrollbar{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Scrollbar upcasts to *Scrollbar
@@ -84562,7 +86911,16 @@ type VSeparator struct {
 }
 
 func VSeparatorNewFromNative(native unsafe.Pointer) *VSeparator {
-	return &VSeparator{native: native}
+	instance := &VSeparator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Separator upcasts to *Separator
@@ -84658,7 +87016,16 @@ type Viewport struct {
 }
 
 func ViewportNewFromNative(native unsafe.Pointer) *Viewport {
-	return &Viewport{native: native}
+	instance := &Viewport{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -84949,7 +87316,16 @@ type VolumeButton struct {
 }
 
 func VolumeButtonNewFromNative(native unsafe.Pointer) *VolumeButton {
-	return &VolumeButton{native: native}
+	instance := &VolumeButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ScaleButton upcasts to *ScaleButton
@@ -85060,7 +87436,16 @@ type Widget struct {
 }
 
 func WidgetNewFromNative(native unsafe.Pointer) *Widget {
-	return &Widget{native: native}
+	instance := &Widget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -90815,7 +93200,16 @@ type WidgetAccessible struct {
 }
 
 func WidgetAccessibleNewFromNative(native unsafe.Pointer) *WidgetAccessible {
-	return &WidgetAccessible{native: native}
+	instance := &WidgetAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Accessible upcasts to *Accessible
@@ -90890,7 +93284,16 @@ type Window struct {
 }
 
 func WindowNewFromNative(native unsafe.Pointer) *Window {
-	return &Window{native: native}
+	instance := &Window{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -93774,7 +96177,16 @@ type WindowAccessible struct {
 }
 
 func WindowAccessibleNewFromNative(native unsafe.Pointer) *WindowAccessible {
-	return &WindowAccessible{native: native}
+	instance := &WindowAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ContainerAccessible upcasts to *ContainerAccessible
@@ -93859,7 +96271,16 @@ type WindowGroup struct {
 }
 
 func WindowGroupNewFromNative(native unsafe.Pointer) *WindowGroup {
-	return &WindowGroup{native: native}
+	instance := &WindowGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

@@ -25,7 +25,9 @@ type Binding struct {
 }
 
 func BindingNewFromNative(native unsafe.Pointer) *Binding {
-	return &Binding{native: native}
+	instance := &Binding{native: native}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -210,7 +212,9 @@ type InitiallyUnowned struct {
 }
 
 func InitiallyUnownedNewFromNative(native unsafe.Pointer) *InitiallyUnowned {
-	return &InitiallyUnowned{native: native}
+	instance := &InitiallyUnowned{native: native}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -251,7 +255,9 @@ type Object struct {
 }
 
 func ObjectNewFromNative(native unsafe.Pointer) *Object {
-	return &Object{native: native}
+	instance := &Object{native: native}
+
+	return instance
 }
 
 func (recv *Object) Native() unsafe.Pointer {
@@ -737,7 +743,9 @@ type ParamSpec struct {
 }
 
 func ParamSpecNewFromNative(native unsafe.Pointer) *ParamSpec {
-	return &ParamSpec{native: native}
+	instance := &ParamSpec{native: native}
+
+	return instance
 }
 
 func (recv *ParamSpec) Native() unsafe.Pointer {
@@ -1120,7 +1128,9 @@ type ParamSpecBoolean struct {
 }
 
 func ParamSpecBooleanNewFromNative(native unsafe.Pointer) *ParamSpecBoolean {
-	return &ParamSpecBoolean{native: native}
+	instance := &ParamSpecBoolean{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1175,7 +1185,9 @@ type ParamSpecBoxed struct {
 }
 
 func ParamSpecBoxedNewFromNative(native unsafe.Pointer) *ParamSpecBoxed {
-	return &ParamSpecBoxed{native: native}
+	instance := &ParamSpecBoxed{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1216,7 +1228,9 @@ type ParamSpecChar struct {
 }
 
 func ParamSpecCharNewFromNative(native unsafe.Pointer) *ParamSpecChar {
-	return &ParamSpecChar{native: native}
+	instance := &ParamSpecChar{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1299,7 +1313,9 @@ type ParamSpecDouble struct {
 }
 
 func ParamSpecDoubleNewFromNative(native unsafe.Pointer) *ParamSpecDouble {
-	return &ParamSpecDouble{native: native}
+	instance := &ParamSpecDouble{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1396,7 +1412,9 @@ type ParamSpecEnum struct {
 }
 
 func ParamSpecEnumNewFromNative(native unsafe.Pointer) *ParamSpecEnum {
-	return &ParamSpecEnum{native: native}
+	instance := &ParamSpecEnum{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1465,7 +1483,9 @@ type ParamSpecFlags struct {
 }
 
 func ParamSpecFlagsNewFromNative(native unsafe.Pointer) *ParamSpecFlags {
-	return &ParamSpecFlags{native: native}
+	instance := &ParamSpecFlags{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1534,7 +1554,9 @@ type ParamSpecFloat struct {
 }
 
 func ParamSpecFloatNewFromNative(native unsafe.Pointer) *ParamSpecFloat {
-	return &ParamSpecFloat{native: native}
+	instance := &ParamSpecFloat{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1631,7 +1653,9 @@ type ParamSpecGType struct {
 }
 
 func ParamSpecGTypeNewFromNative(native unsafe.Pointer) *ParamSpecGType {
-	return &ParamSpecGType{native: native}
+	instance := &ParamSpecGType{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1676,7 +1700,9 @@ type ParamSpecInt struct {
 }
 
 func ParamSpecIntNewFromNative(native unsafe.Pointer) *ParamSpecInt {
-	return &ParamSpecInt{native: native}
+	instance := &ParamSpecInt{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1759,7 +1785,9 @@ type ParamSpecInt64 struct {
 }
 
 func ParamSpecInt64NewFromNative(native unsafe.Pointer) *ParamSpecInt64 {
-	return &ParamSpecInt64{native: native}
+	instance := &ParamSpecInt64{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1842,7 +1870,9 @@ type ParamSpecLong struct {
 }
 
 func ParamSpecLongNewFromNative(native unsafe.Pointer) *ParamSpecLong {
-	return &ParamSpecLong{native: native}
+	instance := &ParamSpecLong{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1925,7 +1955,9 @@ type ParamSpecObject struct {
 }
 
 func ParamSpecObjectNewFromNative(native unsafe.Pointer) *ParamSpecObject {
-	return &ParamSpecObject{native: native}
+	instance := &ParamSpecObject{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1966,7 +1998,9 @@ type ParamSpecOverride struct {
 }
 
 func ParamSpecOverrideNewFromNative(native unsafe.Pointer) *ParamSpecOverride {
-	return &ParamSpecOverride{native: native}
+	instance := &ParamSpecOverride{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -1993,7 +2027,9 @@ type ParamSpecParam struct {
 }
 
 func ParamSpecParamNewFromNative(native unsafe.Pointer) *ParamSpecParam {
-	return &ParamSpecParam{native: native}
+	instance := &ParamSpecParam{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2034,7 +2070,9 @@ type ParamSpecPointer struct {
 }
 
 func ParamSpecPointerNewFromNative(native unsafe.Pointer) *ParamSpecPointer {
-	return &ParamSpecPointer{native: native}
+	instance := &ParamSpecPointer{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2075,7 +2113,9 @@ type ParamSpecString struct {
 }
 
 func ParamSpecStringNewFromNative(native unsafe.Pointer) *ParamSpecString {
-	return &ParamSpecString{native: native}
+	instance := &ParamSpecString{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2200,7 +2240,9 @@ type ParamSpecUChar struct {
 }
 
 func ParamSpecUCharNewFromNative(native unsafe.Pointer) *ParamSpecUChar {
-	return &ParamSpecUChar{native: native}
+	instance := &ParamSpecUChar{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2283,7 +2325,9 @@ type ParamSpecUInt struct {
 }
 
 func ParamSpecUIntNewFromNative(native unsafe.Pointer) *ParamSpecUInt {
-	return &ParamSpecUInt{native: native}
+	instance := &ParamSpecUInt{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2366,7 +2410,9 @@ type ParamSpecUInt64 struct {
 }
 
 func ParamSpecUInt64NewFromNative(native unsafe.Pointer) *ParamSpecUInt64 {
-	return &ParamSpecUInt64{native: native}
+	instance := &ParamSpecUInt64{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2449,7 +2495,9 @@ type ParamSpecULong struct {
 }
 
 func ParamSpecULongNewFromNative(native unsafe.Pointer) *ParamSpecULong {
-	return &ParamSpecULong{native: native}
+	instance := &ParamSpecULong{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2532,7 +2580,9 @@ type ParamSpecUnichar struct {
 }
 
 func ParamSpecUnicharNewFromNative(native unsafe.Pointer) *ParamSpecUnichar {
-	return &ParamSpecUnichar{native: native}
+	instance := &ParamSpecUnichar{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2577,7 +2627,9 @@ type ParamSpecValueArray struct {
 }
 
 func ParamSpecValueArrayNewFromNative(native unsafe.Pointer) *ParamSpecValueArray {
-	return &ParamSpecValueArray{native: native}
+	instance := &ParamSpecValueArray{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2646,7 +2698,9 @@ type ParamSpecVariant struct {
 }
 
 func ParamSpecVariantNewFromNative(native unsafe.Pointer) *ParamSpecVariant {
-	return &ParamSpecVariant{native: native}
+	instance := &ParamSpecVariant{native: native}
+
+	return instance
 }
 
 // ParamSpec upcasts to *ParamSpec
@@ -2695,7 +2749,9 @@ type TypeModule struct {
 }
 
 func TypeModuleNewFromNative(native unsafe.Pointer) *TypeModule {
-	return &TypeModule{native: native}
+	instance := &TypeModule{native: native}
+
+	return instance
 }
 
 // Object upcasts to *Object

@@ -26,7 +26,16 @@ type AppInfoMonitor struct {
 }
 
 func AppInfoMonitorNewFromNative(native unsafe.Pointer) *AppInfoMonitor {
-	return &AppInfoMonitor{native: native}
+	instance := &AppInfoMonitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -63,7 +72,16 @@ type AppLaunchContext struct {
 }
 
 func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
-	return &AppLaunchContext{native: native}
+	instance := &AppLaunchContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -254,7 +272,16 @@ type Application struct {
 }
 
 func ApplicationNewFromNative(native unsafe.Pointer) *Application {
-	return &Application{native: native}
+	instance := &Application{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1031,7 +1058,16 @@ type ApplicationCommandLine struct {
 }
 
 func ApplicationCommandLineNewFromNative(native unsafe.Pointer) *ApplicationCommandLine {
-	return &ApplicationCommandLine{native: native}
+	instance := &ApplicationCommandLine{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1328,7 +1364,16 @@ type BufferedInputStream struct {
 }
 
 func BufferedInputStreamNewFromNative(native unsafe.Pointer) *BufferedInputStream {
-	return &BufferedInputStream{native: native}
+	instance := &BufferedInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FilterInputStream upcasts to *FilterInputStream
@@ -1652,7 +1697,16 @@ type BufferedOutputStream struct {
 }
 
 func BufferedOutputStreamNewFromNative(native unsafe.Pointer) *BufferedOutputStream {
-	return &BufferedOutputStream{native: native}
+	instance := &BufferedOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FilterOutputStream upcasts to *FilterOutputStream
@@ -1914,7 +1968,16 @@ type BytesIcon struct {
 }
 
 func BytesIconNewFromNative(native unsafe.Pointer) *BytesIcon {
-	return &BytesIcon{native: native}
+	instance := &BytesIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1955,7 +2018,16 @@ type Cancellable struct {
 }
 
 func CancellableNewFromNative(native unsafe.Pointer) *Cancellable {
-	return &Cancellable{native: native}
+	instance := &Cancellable{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2297,7 +2369,16 @@ type CharsetConverter struct {
 }
 
 func CharsetConverterNewFromNative(native unsafe.Pointer) *CharsetConverter {
-	return &CharsetConverter{native: native}
+	instance := &CharsetConverter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2460,7 +2541,16 @@ type ConverterInputStream struct {
 }
 
 func ConverterInputStreamNewFromNative(native unsafe.Pointer) *ConverterInputStream {
-	return &ConverterInputStream{native: native}
+	instance := &ConverterInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FilterInputStream upcasts to *FilterInputStream
@@ -2525,7 +2615,16 @@ type ConverterOutputStream struct {
 }
 
 func ConverterOutputStreamNewFromNative(native unsafe.Pointer) *ConverterOutputStream {
-	return &ConverterOutputStream{native: native}
+	instance := &ConverterOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FilterOutputStream upcasts to *FilterOutputStream
@@ -2590,7 +2689,16 @@ type Credentials struct {
 }
 
 func CredentialsNewFromNative(native unsafe.Pointer) *Credentials {
-	return &Credentials{native: native}
+	instance := &Credentials{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2823,7 +2931,16 @@ type DBusActionGroup struct {
 }
 
 func DBusActionGroupNewFromNative(native unsafe.Pointer) *DBusActionGroup {
-	return &DBusActionGroup{native: native}
+	instance := &DBusActionGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2860,7 +2977,16 @@ type DBusAuthObserver struct {
 }
 
 func DBusAuthObserverNewFromNative(native unsafe.Pointer) *DBusAuthObserver {
-	return &DBusAuthObserver{native: native}
+	instance := &DBusAuthObserver{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2994,7 +3120,16 @@ type DBusConnection struct {
 }
 
 func DBusConnectionNewFromNative(native unsafe.Pointer) *DBusConnection {
-	return &DBusConnection{native: native}
+	instance := &DBusConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3648,7 +3783,16 @@ type DBusInterfaceSkeleton struct {
 }
 
 func DBusInterfaceSkeletonNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeleton {
-	return &DBusInterfaceSkeleton{native: native}
+	instance := &DBusInterfaceSkeleton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3973,7 +4117,16 @@ type DBusMenuModel struct {
 }
 
 func DBusMenuModelNewFromNative(native unsafe.Pointer) *DBusMenuModel {
-	return &DBusMenuModel{native: native}
+	instance := &DBusMenuModel{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuModel upcasts to *MenuModel
@@ -4015,7 +4168,16 @@ type DBusMessage struct {
 }
 
 func DBusMessageNewFromNative(native unsafe.Pointer) *DBusMessage {
-	return &DBusMessage{native: native}
+	instance := &DBusMessage{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5247,7 +5409,16 @@ type DBusMethodInvocation struct {
 }
 
 func DBusMethodInvocationNewFromNative(native unsafe.Pointer) *DBusMethodInvocation {
-	return &DBusMethodInvocation{native: native}
+	instance := &DBusMethodInvocation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5617,7 +5788,16 @@ type DBusObjectManagerClient struct {
 }
 
 func DBusObjectManagerClientNewFromNative(native unsafe.Pointer) *DBusObjectManagerClient {
-	return &DBusObjectManagerClient{native: native}
+	instance := &DBusObjectManagerClient{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5760,7 +5940,16 @@ type DBusObjectManagerServer struct {
 }
 
 func DBusObjectManagerServerNewFromNative(native unsafe.Pointer) *DBusObjectManagerServer {
-	return &DBusObjectManagerServer{native: native}
+	instance := &DBusObjectManagerServer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6014,7 +6203,16 @@ type DBusObjectProxy struct {
 }
 
 func DBusObjectProxyNewFromNative(native unsafe.Pointer) *DBusObjectProxy {
-	return &DBusObjectProxy{native: native}
+	instance := &DBusObjectProxy{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6116,7 +6314,16 @@ type DBusObjectSkeleton struct {
 }
 
 func DBusObjectSkeletonNewFromNative(native unsafe.Pointer) *DBusObjectSkeleton {
-	return &DBusObjectSkeleton{native: native}
+	instance := &DBusObjectSkeleton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6329,7 +6536,16 @@ type DBusProxy struct {
 }
 
 func DBusProxyNewFromNative(native unsafe.Pointer) *DBusProxy {
-	return &DBusProxy{native: native}
+	instance := &DBusProxy{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6702,7 +6918,16 @@ type DBusServer struct {
 }
 
 func DBusServerNewFromNative(native unsafe.Pointer) *DBusServer {
-	return &DBusServer{native: native}
+	instance := &DBusServer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6895,7 +7120,16 @@ type DataInputStream struct {
 }
 
 func DataInputStreamNewFromNative(native unsafe.Pointer) *DataInputStream {
-	return &DataInputStream{native: native}
+	instance := &DataInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // BufferedInputStream upcasts to *BufferedInputStream
@@ -7501,7 +7735,16 @@ type DataOutputStream struct {
 }
 
 func DataOutputStreamNewFromNative(native unsafe.Pointer) *DataOutputStream {
-	return &DataOutputStream{native: native}
+	instance := &DataOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // FilterOutputStream upcasts to *FilterOutputStream
@@ -7927,7 +8170,16 @@ type DesktopAppInfo struct {
 }
 
 func DesktopAppInfoNewFromNative(native unsafe.Pointer) *DesktopAppInfo {
-	return &DesktopAppInfo{native: native}
+	instance := &DesktopAppInfo{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -8543,7 +8795,16 @@ type Emblem struct {
 }
 
 func EmblemNewFromNative(native unsafe.Pointer) *Emblem {
-	return &Emblem{native: native}
+	instance := &Emblem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -8618,7 +8879,16 @@ type EmblemedIcon struct {
 }
 
 func EmblemedIconNewFromNative(native unsafe.Pointer) *EmblemedIcon {
-	return &EmblemedIcon{native: native}
+	instance := &EmblemedIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -8722,7 +8992,16 @@ type FileEnumerator struct {
 }
 
 func FileEnumeratorNewFromNative(native unsafe.Pointer) *FileEnumerator {
-	return &FileEnumerator{native: native}
+	instance := &FileEnumerator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -8936,7 +9215,16 @@ type FileIOStream struct {
 }
 
 func FileIOStreamNewFromNative(native unsafe.Pointer) *FileIOStream {
-	return &FileIOStream{native: native}
+	instance := &FileIOStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IOStream upcasts to *IOStream
@@ -9062,7 +9350,16 @@ type FileIcon struct {
 }
 
 func FileIconNewFromNative(native unsafe.Pointer) *FileIcon {
-	return &FileIcon{native: native}
+	instance := &FileIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -9103,7 +9400,16 @@ type FileInfo struct {
 }
 
 func FileInfoNewFromNative(native unsafe.Pointer) *FileInfo {
-	return &FileInfo{native: native}
+	instance := &FileInfo{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -10745,7 +11051,16 @@ type FileInputStream struct {
 }
 
 func FileInputStreamNewFromNative(native unsafe.Pointer) *FileInputStream {
-	return &FileInputStream{native: native}
+	instance := &FileInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InputStream upcasts to *InputStream
@@ -10839,7 +11154,16 @@ type FileMonitor struct {
 }
 
 func FileMonitorNewFromNative(native unsafe.Pointer) *FileMonitor {
-	return &FileMonitor{native: native}
+	instance := &FileMonitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -10975,7 +11299,16 @@ type FileOutputStream struct {
 }
 
 func FileOutputStreamNewFromNative(native unsafe.Pointer) *FileOutputStream {
-	return &FileOutputStream{native: native}
+	instance := &FileOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // OutputStream upcasts to *OutputStream
@@ -11101,7 +11434,16 @@ type FilenameCompleter struct {
 }
 
 func FilenameCompleterNewFromNative(native unsafe.Pointer) *FilenameCompleter {
-	return &FilenameCompleter{native: native}
+	instance := &FilenameCompleter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -11259,7 +11601,16 @@ type FilterInputStream struct {
 }
 
 func FilterInputStreamNewFromNative(native unsafe.Pointer) *FilterInputStream {
-	return &FilterInputStream{native: native}
+	instance := &FilterInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InputStream upcasts to *InputStream
@@ -11422,7 +11773,16 @@ type FilterOutputStream struct {
 }
 
 func FilterOutputStreamNewFromNative(native unsafe.Pointer) *FilterOutputStream {
-	return &FilterOutputStream{native: native}
+	instance := &FilterOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // OutputStream upcasts to *OutputStream
@@ -11585,7 +11945,16 @@ type IOModule struct {
 }
 
 func IOModuleNewFromNative(native unsafe.Pointer) *IOModule {
-	return &IOModule{native: native}
+	instance := &IOModule{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TypeModule upcasts to *TypeModule
@@ -11715,7 +12084,16 @@ type IOStream struct {
 }
 
 func IOStreamNewFromNative(native unsafe.Pointer) *IOStream {
-	return &IOStream{native: native}
+	instance := &IOStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -11983,7 +12361,16 @@ type InetAddress struct {
 }
 
 func InetAddressNewFromNative(native unsafe.Pointer) *InetAddress {
-	return &InetAddress{native: native}
+	instance := &InetAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -12603,7 +12990,16 @@ type InetAddressMask struct {
 }
 
 func InetAddressMaskNewFromNative(native unsafe.Pointer) *InetAddressMask {
-	return &InetAddressMask{native: native}
+	instance := &InetAddressMask{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -12903,7 +13299,16 @@ type InetSocketAddress struct {
 }
 
 func InetSocketAddressNewFromNative(native unsafe.Pointer) *InetSocketAddress {
-	return &InetSocketAddress{native: native}
+	instance := &InetSocketAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketAddress upcasts to *SocketAddress
@@ -13153,7 +13558,16 @@ type InputStream struct {
 }
 
 func InputStreamNewFromNative(native unsafe.Pointer) *InputStream {
-	return &InputStream{native: native}
+	instance := &InputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -13411,7 +13825,16 @@ type ListStore struct {
 }
 
 func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
-	return &ListStore{native: native}
+	instance := &ListStore{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -13517,7 +13940,16 @@ type MemoryInputStream struct {
 }
 
 func MemoryInputStreamNewFromNative(native unsafe.Pointer) *MemoryInputStream {
-	return &MemoryInputStream{native: native}
+	instance := &MemoryInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InputStream upcasts to *InputStream
@@ -13611,7 +14043,16 @@ type MemoryOutputStream struct {
 }
 
 func MemoryOutputStreamNewFromNative(native unsafe.Pointer) *MemoryOutputStream {
-	return &MemoryOutputStream{native: native}
+	instance := &MemoryOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // OutputStream upcasts to *OutputStream
@@ -13769,7 +14210,16 @@ type Menu struct {
 }
 
 func MenuNewFromNative(native unsafe.Pointer) *Menu {
-	return &Menu{native: native}
+	instance := &Menu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // MenuModel upcasts to *MenuModel
@@ -14287,7 +14737,16 @@ type MenuAttributeIter struct {
 }
 
 func MenuAttributeIterNewFromNative(native unsafe.Pointer) *MenuAttributeIter {
-	return &MenuAttributeIter{native: native}
+	instance := &MenuAttributeIter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -14410,7 +14869,16 @@ type MenuItem struct {
 }
 
 func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
-	return &MenuItem{native: native}
+	instance := &MenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -14772,7 +15240,16 @@ type MenuLinkIter struct {
 }
 
 func MenuLinkIterNewFromNative(native unsafe.Pointer) *MenuLinkIter {
-	return &MenuLinkIter{native: native}
+	instance := &MenuLinkIter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -14958,7 +15435,16 @@ type MenuModel struct {
 }
 
 func MenuModelNewFromNative(native unsafe.Pointer) *MenuModel {
-	return &MenuModel{native: native}
+	instance := &MenuModel{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -15212,7 +15698,16 @@ type MountOperation struct {
 }
 
 func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
-	return &MountOperation{native: native}
+	instance := &MountOperation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -15875,7 +16370,16 @@ type NativeSocketAddress struct {
 }
 
 func NativeSocketAddressNewFromNative(native unsafe.Pointer) *NativeSocketAddress {
-	return &NativeSocketAddress{native: native}
+	instance := &NativeSocketAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketAddress upcasts to *SocketAddress
@@ -15933,7 +16437,16 @@ type NativeVolumeMonitor struct {
 }
 
 func NativeVolumeMonitorNewFromNative(native unsafe.Pointer) *NativeVolumeMonitor {
-	return &NativeVolumeMonitor{native: native}
+	instance := &NativeVolumeMonitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // VolumeMonitor upcasts to *VolumeMonitor
@@ -15989,7 +16502,16 @@ type NetworkAddress struct {
 }
 
 func NetworkAddressNewFromNative(native unsafe.Pointer) *NetworkAddress {
-	return &NetworkAddress{native: native}
+	instance := &NetworkAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -16191,7 +16713,16 @@ type NetworkService struct {
 }
 
 func NetworkServiceNewFromNative(native unsafe.Pointer) *NetworkService {
-	return &NetworkService{native: native}
+	instance := &NetworkService{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -16423,7 +16954,16 @@ type Notification struct {
 }
 
 func NotificationNewFromNative(native unsafe.Pointer) *Notification {
-	return &Notification{native: native}
+	instance := &Notification{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -16677,7 +17217,16 @@ type OutputStream struct {
 }
 
 func OutputStreamNewFromNative(native unsafe.Pointer) *OutputStream {
-	return &OutputStream{native: native}
+	instance := &OutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -16988,7 +17537,16 @@ type Permission struct {
 }
 
 func PermissionNewFromNative(native unsafe.Pointer) *Permission {
-	return &Permission{native: native}
+	instance := &Permission{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -17230,7 +17788,16 @@ type PropertyAction struct {
 }
 
 func PropertyActionNewFromNative(native unsafe.Pointer) *PropertyAction {
-	return &PropertyAction{native: native}
+	instance := &PropertyAction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -17269,7 +17836,16 @@ type ProxyAddress struct {
 }
 
 func ProxyAddressNewFromNative(native unsafe.Pointer) *ProxyAddress {
-	return &ProxyAddress{native: native}
+	instance := &ProxyAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InetSocketAddress upcasts to *InetSocketAddress
@@ -17592,7 +18168,16 @@ type ProxyAddressEnumerator struct {
 }
 
 func ProxyAddressEnumeratorNewFromNative(native unsafe.Pointer) *ProxyAddressEnumerator {
-	return &ProxyAddressEnumerator{native: native}
+	instance := &ProxyAddressEnumerator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketAddressEnumerator upcasts to *SocketAddressEnumerator
@@ -17634,7 +18219,16 @@ type Resolver struct {
 }
 
 func ResolverNewFromNative(native unsafe.Pointer) *Resolver {
-	return &Resolver{native: native}
+	instance := &Resolver{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -17779,7 +18373,16 @@ type Settings struct {
 }
 
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
-	return &Settings{native: native}
+	instance := &Settings{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -18927,7 +19530,16 @@ type SettingsBackend struct {
 }
 
 func SettingsBackendNewFromNative(native unsafe.Pointer) *SettingsBackend {
-	return &SettingsBackend{native: native}
+	instance := &SettingsBackend{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -19034,7 +19646,16 @@ type SimpleAction struct {
 }
 
 func SimpleActionNewFromNative(native unsafe.Pointer) *SimpleAction {
-	return &SimpleAction{native: native}
+	instance := &SimpleAction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -19108,7 +19729,16 @@ type SimpleActionGroup struct {
 }
 
 func SimpleActionGroupNewFromNative(native unsafe.Pointer) *SimpleActionGroup {
-	return &SimpleActionGroup{native: native}
+	instance := &SimpleActionGroup{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -19210,7 +19840,16 @@ type SimpleAsyncResult struct {
 }
 
 func SimpleAsyncResultNewFromNative(native unsafe.Pointer) *SimpleAsyncResult {
-	return &SimpleAsyncResult{native: native}
+	instance := &SimpleAsyncResult{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -19539,7 +20178,16 @@ type SimpleIOStream struct {
 }
 
 func SimpleIOStreamNewFromNative(native unsafe.Pointer) *SimpleIOStream {
-	return &SimpleIOStream{native: native}
+	instance := &SimpleIOStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IOStream upcasts to *IOStream
@@ -19614,7 +20262,16 @@ type SimplePermission struct {
 }
 
 func SimplePermissionNewFromNative(native unsafe.Pointer) *SimplePermission {
-	return &SimplePermission{native: native}
+	instance := &SimplePermission{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Permission upcasts to *Permission
@@ -19688,7 +20345,16 @@ type SimpleProxyResolver struct {
 }
 
 func SimpleProxyResolverNewFromNative(native unsafe.Pointer) *SimpleProxyResolver {
-	return &SimpleProxyResolver{native: native}
+	instance := &SimpleProxyResolver{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -19817,7 +20483,16 @@ type Socket struct {
 }
 
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
-	return &Socket{native: native}
+	instance := &Socket{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -21282,7 +21957,16 @@ type SocketAddress struct {
 }
 
 func SocketAddressNewFromNative(native unsafe.Pointer) *SocketAddress {
-	return &SocketAddress{native: native}
+	instance := &SocketAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -21391,7 +22075,16 @@ type SocketAddressEnumerator struct {
 }
 
 func SocketAddressEnumeratorNewFromNative(native unsafe.Pointer) *SocketAddressEnumerator {
-	return &SocketAddressEnumerator{native: native}
+	instance := &SocketAddressEnumerator{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -21465,7 +22158,16 @@ type SocketClient struct {
 }
 
 func SocketClientNewFromNative(native unsafe.Pointer) *SocketClient {
-	return &SocketClient{native: native}
+	instance := &SocketClient{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -22137,7 +22839,16 @@ type SocketConnection struct {
 }
 
 func SocketConnectionNewFromNative(native unsafe.Pointer) *SocketConnection {
-	return &SocketConnection{native: native}
+	instance := &SocketConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IOStream upcasts to *IOStream
@@ -22373,7 +23084,16 @@ type SocketControlMessage struct {
 }
 
 func SocketControlMessageNewFromNative(native unsafe.Pointer) *SocketControlMessage {
-	return &SocketControlMessage{native: native}
+	instance := &SocketControlMessage{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -22526,7 +23246,16 @@ type SocketListener struct {
 }
 
 func SocketListenerNewFromNative(native unsafe.Pointer) *SocketListener {
-	return &SocketListener{native: native}
+	instance := &SocketListener{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -22688,7 +23417,16 @@ type SocketService struct {
 }
 
 func SocketServiceNewFromNative(native unsafe.Pointer) *SocketService {
-	return &SocketService{native: native}
+	instance := &SocketService{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketListener upcasts to *SocketListener
@@ -22876,7 +23614,16 @@ type Subprocess struct {
 }
 
 func SubprocessNewFromNative(native unsafe.Pointer) *Subprocess {
-	return &Subprocess{native: native}
+	instance := &Subprocess{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -23415,7 +24162,16 @@ type SubprocessLauncher struct {
 }
 
 func SubprocessLauncherNewFromNative(native unsafe.Pointer) *SubprocessLauncher {
-	return &SubprocessLauncher{native: native}
+	instance := &SubprocessLauncher{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -23790,7 +24546,16 @@ type Task struct {
 }
 
 func TaskNewFromNative(native unsafe.Pointer) *Task {
-	return &Task{native: native}
+	instance := &Task{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -24353,7 +25118,16 @@ type TcpConnection struct {
 }
 
 func TcpConnectionNewFromNative(native unsafe.Pointer) *TcpConnection {
-	return &TcpConnection{native: native}
+	instance := &TcpConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketConnection upcasts to *SocketConnection
@@ -24489,7 +25263,16 @@ type TcpWrapperConnection struct {
 }
 
 func TcpWrapperConnectionNewFromNative(native unsafe.Pointer) *TcpWrapperConnection {
-	return &TcpWrapperConnection{native: native}
+	instance := &TcpWrapperConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TcpConnection upcasts to *TcpConnection
@@ -24634,7 +25417,16 @@ type TestDBus struct {
 }
 
 func TestDBusNewFromNative(native unsafe.Pointer) *TestDBus {
-	return &TestDBus{native: native}
+	instance := &TestDBus{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -24820,7 +25612,16 @@ type ThemedIcon struct {
 }
 
 func ThemedIconNewFromNative(native unsafe.Pointer) *ThemedIcon {
-	return &ThemedIcon{native: native}
+	instance := &ThemedIcon{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -25009,7 +25810,16 @@ type ThreadedSocketService struct {
 }
 
 func ThreadedSocketServiceNewFromNative(native unsafe.Pointer) *ThreadedSocketService {
-	return &ThreadedSocketService{native: native}
+	instance := &ThreadedSocketService{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketService upcasts to *SocketService
@@ -25116,7 +25926,16 @@ type TlsCertificate struct {
 }
 
 func TlsCertificateNewFromNative(native unsafe.Pointer) *TlsCertificate {
-	return &TlsCertificate{native: native}
+	instance := &TlsCertificate{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -25336,7 +26155,16 @@ type TlsConnection struct {
 }
 
 func TlsConnectionNewFromNative(native unsafe.Pointer) *TlsConnection {
-	return &TlsConnection{native: native}
+	instance := &TlsConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // IOStream upcasts to *IOStream
@@ -25879,7 +26707,16 @@ type TlsDatabase struct {
 }
 
 func TlsDatabaseNewFromNative(native unsafe.Pointer) *TlsDatabase {
-	return &TlsDatabase{native: native}
+	instance := &TlsDatabase{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -26059,7 +26896,16 @@ type TlsInteraction struct {
 }
 
 func TlsInteractionNewFromNative(native unsafe.Pointer) *TlsInteraction {
-	return &TlsInteraction{native: native}
+	instance := &TlsInteraction{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -26242,7 +27088,16 @@ type TlsPassword struct {
 }
 
 func TlsPasswordNewFromNative(native unsafe.Pointer) *TlsPassword {
-	return &TlsPassword{native: native}
+	instance := &TlsPassword{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -26462,7 +27317,16 @@ type UnixConnection struct {
 }
 
 func UnixConnectionNewFromNative(native unsafe.Pointer) *UnixConnection {
-	return &UnixConnection{native: native}
+	instance := &UnixConnection{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketConnection upcasts to *SocketConnection
@@ -26678,7 +27542,16 @@ type UnixCredentialsMessage struct {
 }
 
 func UnixCredentialsMessageNewFromNative(native unsafe.Pointer) *UnixCredentialsMessage {
-	return &UnixCredentialsMessage{native: native}
+	instance := &UnixCredentialsMessage{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketControlMessage upcasts to *SocketControlMessage
@@ -26842,7 +27715,16 @@ type UnixFDList struct {
 }
 
 func UnixFDListNewFromNative(native unsafe.Pointer) *UnixFDList {
-	return &UnixFDList{native: native}
+	instance := &UnixFDList{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -27091,7 +27973,16 @@ type UnixFDMessage struct {
 }
 
 func UnixFDMessageNewFromNative(native unsafe.Pointer) *UnixFDMessage {
-	return &UnixFDMessage{native: native}
+	instance := &UnixFDMessage{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketControlMessage upcasts to *SocketControlMessage
@@ -27320,7 +28211,16 @@ type UnixInputStream struct {
 }
 
 func UnixInputStreamNewFromNative(native unsafe.Pointer) *UnixInputStream {
-	return &UnixInputStream{native: native}
+	instance := &UnixInputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InputStream upcasts to *InputStream
@@ -27502,7 +28402,16 @@ type UnixMountMonitor struct {
 }
 
 func UnixMountMonitorNewFromNative(native unsafe.Pointer) *UnixMountMonitor {
-	return &UnixMountMonitor{native: native}
+	instance := &UnixMountMonitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -27598,7 +28507,16 @@ type UnixOutputStream struct {
 }
 
 func UnixOutputStreamNewFromNative(native unsafe.Pointer) *UnixOutputStream {
-	return &UnixOutputStream{native: native}
+	instance := &UnixOutputStream{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // OutputStream upcasts to *OutputStream
@@ -27780,7 +28698,16 @@ type UnixSocketAddress struct {
 }
 
 func UnixSocketAddressNewFromNative(native unsafe.Pointer) *UnixSocketAddress {
-	return &UnixSocketAddress{native: native}
+	instance := &UnixSocketAddress{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // SocketAddress upcasts to *SocketAddress
@@ -28000,7 +28927,16 @@ type Vfs struct {
 }
 
 func VfsNewFromNative(native unsafe.Pointer) *Vfs {
-	return &Vfs{native: native}
+	instance := &Vfs{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -28142,7 +29078,16 @@ type VolumeMonitor struct {
 }
 
 func VolumeMonitorNewFromNative(native unsafe.Pointer) *VolumeMonitor {
-	return &VolumeMonitor{native: native}
+	instance := &VolumeMonitor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -28193,7 +29138,16 @@ type ZlibCompressor struct {
 }
 
 func ZlibCompressorNewFromNative(native unsafe.Pointer) *ZlibCompressor {
-	return &ZlibCompressor{native: native}
+	instance := &ZlibCompressor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -28324,7 +29278,16 @@ type ZlibDecompressor struct {
 }
 
 func ZlibDecompressorNewFromNative(native unsafe.Pointer) *ZlibDecompressor {
-	return &ZlibDecompressor{native: native}
+	instance := &ZlibDecompressor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

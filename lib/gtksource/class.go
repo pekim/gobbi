@@ -26,7 +26,16 @@ type Buffer struct {
 }
 
 func BufferNewFromNative(native unsafe.Pointer) *Buffer {
-	return &Buffer{native: native}
+	instance := &Buffer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TextBuffer upcasts to *TextBuffer
@@ -696,7 +705,16 @@ type Completion struct {
 }
 
 func CompletionNewFromNative(native unsafe.Pointer) *Completion {
-	return &Completion{native: native}
+	instance := &Completion{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -911,7 +929,16 @@ type CompletionContext struct {
 }
 
 func CompletionContextNewFromNative(native unsafe.Pointer) *CompletionContext {
-	return &CompletionContext{native: native}
+	instance := &CompletionContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -977,7 +1004,16 @@ type CompletionInfo struct {
 }
 
 func CompletionInfoNewFromNative(native unsafe.Pointer) *CompletionInfo {
-	return &CompletionInfo{native: native}
+	instance := &CompletionInfo{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Window upcasts to *Window
@@ -1093,7 +1129,16 @@ type CompletionItem struct {
 }
 
 func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
-	return &CompletionItem{native: native}
+	instance := &CompletionItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1336,7 +1381,16 @@ type CompletionWords struct {
 }
 
 func CompletionWordsNewFromNative(native unsafe.Pointer) *CompletionWords {
-	return &CompletionWords{native: native}
+	instance := &CompletionWords{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1397,7 +1451,16 @@ type File struct {
 }
 
 func FileNewFromNative(native unsafe.Pointer) *File {
-	return &File{native: native}
+	instance := &File{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1740,7 +1803,16 @@ type FileLoader struct {
 }
 
 func FileLoaderNewFromNative(native unsafe.Pointer) *FileLoader {
-	return &FileLoader{native: native}
+	instance := &FileLoader{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2000,7 +2072,16 @@ type FileSaver struct {
 }
 
 func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
-	return &FileSaver{native: native}
+	instance := &FileSaver{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2347,7 +2428,16 @@ type Gutter struct {
 }
 
 func GutterNewFromNative(native unsafe.Pointer) *Gutter {
-	return &Gutter{native: native}
+	instance := &Gutter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2653,7 +2743,16 @@ type GutterRenderer struct {
 }
 
 func GutterRendererNewFromNative(native unsafe.Pointer) *GutterRenderer {
-	return &GutterRenderer{native: native}
+	instance := &GutterRenderer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -3084,7 +3183,16 @@ type GutterRendererPixbuf struct {
 }
 
 func GutterRendererPixbufNewFromNative(native unsafe.Pointer) *GutterRendererPixbuf {
-	return &GutterRendererPixbuf{native: native}
+	instance := &GutterRendererPixbuf{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GutterRenderer upcasts to *GutterRenderer
@@ -3291,7 +3399,16 @@ type GutterRendererText struct {
 }
 
 func GutterRendererTextNewFromNative(native unsafe.Pointer) *GutterRendererText {
-	return &GutterRendererText{native: native}
+	instance := &GutterRendererText{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // GutterRenderer upcasts to *GutterRenderer
@@ -3496,7 +3613,16 @@ type Language struct {
 }
 
 func LanguageNewFromNative(native unsafe.Pointer) *Language {
-	return &Language{native: native}
+	instance := &Language{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3862,7 +3988,16 @@ type LanguageManager struct {
 }
 
 func LanguageManagerNewFromNative(native unsafe.Pointer) *LanguageManager {
-	return &LanguageManager{native: native}
+	instance := &LanguageManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4072,7 +4207,16 @@ type Map struct {
 }
 
 func MapNewFromNative(native unsafe.Pointer) *Map {
-	return &Map{native: native}
+	instance := &Map{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // View upcasts to *View
@@ -4239,7 +4383,16 @@ type Mark struct {
 }
 
 func MarkNewFromNative(native unsafe.Pointer) *Mark {
-	return &Mark{native: native}
+	instance := &Mark{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TextMark upcasts to *TextMark
@@ -4430,7 +4583,16 @@ type MarkAttributes struct {
 }
 
 func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
-	return &MarkAttributes{native: native}
+	instance := &MarkAttributes{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4699,7 +4861,16 @@ type PrintCompositor struct {
 }
 
 func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
-	return &PrintCompositor{native: native}
+	instance := &PrintCompositor{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5551,7 +5722,16 @@ type Region struct {
 }
 
 func RegionNewFromNative(native unsafe.Pointer) *Region {
-	return &Region{native: native}
+	instance := &Region{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5791,7 +5971,16 @@ type SearchContext struct {
 }
 
 func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
-	return &SearchContext{native: native}
+	instance := &SearchContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6188,7 +6377,16 @@ type SearchSettings struct {
 }
 
 func SearchSettingsNewFromNative(native unsafe.Pointer) *SearchSettings {
-	return &SearchSettings{native: native}
+	instance := &SearchSettings{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6578,7 +6776,16 @@ type SpaceDrawer struct {
 }
 
 func SpaceDrawerNewFromNative(native unsafe.Pointer) *SpaceDrawer {
-	return &SpaceDrawer{native: native}
+	instance := &SpaceDrawer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6734,7 +6941,16 @@ type Style struct {
 }
 
 func StyleNewFromNative(native unsafe.Pointer) *Style {
-	return &Style{native: native}
+	instance := &Style{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -6805,7 +7021,16 @@ type StyleScheme struct {
 }
 
 func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
-	return &StyleScheme{native: native}
+	instance := &StyleScheme{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -7049,7 +7274,16 @@ type StyleSchemeChooserButton struct {
 }
 
 func StyleSchemeChooserButtonNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButton {
-	return &StyleSchemeChooserButton{native: native}
+	instance := &StyleSchemeChooserButton{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Button upcasts to *Button
@@ -7145,7 +7379,16 @@ type StyleSchemeChooserWidget struct {
 }
 
 func StyleSchemeChooserWidgetNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidget {
-	return &StyleSchemeChooserWidget{native: native}
+	instance := &StyleSchemeChooserWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Bin upcasts to *Bin
@@ -7236,7 +7479,16 @@ type StyleSchemeManager struct {
 }
 
 func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager {
-	return &StyleSchemeManager{native: native}
+	instance := &StyleSchemeManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -7498,7 +7750,16 @@ type Tag struct {
 }
 
 func TagNewFromNative(native unsafe.Pointer) *Tag {
-	return &Tag{native: native}
+	instance := &Tag{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TextTag upcasts to *TextTag
@@ -7576,7 +7837,16 @@ type View struct {
 }
 
 func ViewNewFromNative(native unsafe.Pointer) *View {
-	return &View{native: native}
+	instance := &View{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // TextView upcasts to *TextView

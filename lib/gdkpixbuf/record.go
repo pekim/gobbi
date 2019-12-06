@@ -26,7 +26,9 @@ type PixbufFormat struct {
 }
 
 func PixbufFormatNewFromNative(native unsafe.Pointer) *PixbufFormat {
-	return &PixbufFormat{native: native}
+	instance := &PixbufFormat{native: native}
+
+	return instance
 }
 
 /*
@@ -443,7 +445,9 @@ type PixbufLoaderClass struct {
 }
 
 func PixbufLoaderClassNewFromNative(native unsafe.Pointer) *PixbufLoaderClass {
-	return &PixbufLoaderClass{native: native}
+	instance := &PixbufLoaderClass{native: native}
+
+	return instance
 }
 
 /*
@@ -510,7 +514,9 @@ type PixbufSimpleAnimClass struct {
 }
 
 func PixbufSimpleAnimClassNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimClass {
-	return &PixbufSimpleAnimClass{native: native}
+	instance := &PixbufSimpleAnimClass{native: native}
+
+	return instance
 }
 
 /*

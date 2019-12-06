@@ -25,7 +25,16 @@ type Context struct {
 }
 
 func ContextNewFromNative(native unsafe.Pointer) *Context {
-	return &Context{native: native}
+	instance := &Context{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -714,7 +723,16 @@ type Engine struct {
 }
 
 func EngineNewFromNative(native unsafe.Pointer) *Engine {
-	return &Engine{native: native}
+	instance := &Engine{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -751,7 +769,16 @@ type EngineLang struct {
 }
 
 func EngineLangNewFromNative(native unsafe.Pointer) *EngineLang {
-	return &EngineLang{native: native}
+	instance := &EngineLang{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Engine upcasts to *Engine
@@ -793,7 +820,16 @@ type EngineShape struct {
 }
 
 func EngineShapeNewFromNative(native unsafe.Pointer) *EngineShape {
-	return &EngineShape{native: native}
+	instance := &EngineShape{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Engine upcasts to *Engine
@@ -849,7 +885,16 @@ type Font struct {
 }
 
 func FontNewFromNative(native unsafe.Pointer) *Font {
-	return &Font{native: native}
+	instance := &Font{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1120,7 +1165,16 @@ type FontFace struct {
 }
 
 func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
-	return &FontFace{native: native}
+	instance := &FontFace{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1259,7 +1313,16 @@ type FontFamily struct {
 }
 
 func FontFamilyNewFromNative(native unsafe.Pointer) *FontFamily {
-	return &FontFamily{native: native}
+	instance := &FontFamily{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1366,7 +1429,16 @@ type FontMap struct {
 }
 
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
-	return &FontMap{native: native}
+	instance := &FontMap{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1602,7 +1674,16 @@ type Fontset struct {
 }
 
 func FontsetNewFromNative(native unsafe.Pointer) *Fontset {
-	return &Fontset{native: native}
+	instance := &Fontset{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1710,7 +1791,16 @@ type FontsetSimple struct {
 }
 
 func FontsetSimpleNewFromNative(native unsafe.Pointer) *FontsetSimple {
-	return &FontsetSimple{native: native}
+	instance := &FontsetSimple{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Fontset upcasts to *Fontset
@@ -1845,7 +1935,16 @@ type Layout struct {
 }
 
 func LayoutNewFromNative(native unsafe.Pointer) *Layout {
-	return &Layout{native: native}
+	instance := &Layout{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3561,7 +3660,16 @@ type Renderer struct {
 }
 
 func RendererNewFromNative(native unsafe.Pointer) *Renderer {
-	return &Renderer{native: native}
+	instance := &Renderer{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

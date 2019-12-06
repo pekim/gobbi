@@ -26,7 +26,9 @@ type ActionIface struct {
 }
 
 func ActionIfaceNewFromNative(native unsafe.Pointer) *ActionIface {
-	return &ActionIface{native: native}
+	instance := &ActionIface{native: native}
+
+	return instance
 }
 
 /*
@@ -101,7 +103,9 @@ type Attribute struct {
 }
 
 func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
-	return &Attribute{native: native}
+	instance := &Attribute{native: native}
+
+	return instance
 }
 
 /*
@@ -176,7 +180,9 @@ type ComponentIface struct {
 }
 
 func ComponentIfaceNewFromNative(native unsafe.Pointer) *ComponentIface {
-	return &ComponentIface{native: native}
+	instance := &ComponentIface{native: native}
+
+	return instance
 }
 
 /*
@@ -291,7 +297,9 @@ type DocumentIface struct {
 }
 
 func DocumentIfaceNewFromNative(native unsafe.Pointer) *DocumentIface {
-	return &DocumentIface{native: native}
+	instance := &DocumentIface{native: native}
+
+	return instance
 }
 
 /*
@@ -374,7 +382,9 @@ type EditableTextIface struct {
 }
 
 func EditableTextIfaceNewFromNative(native unsafe.Pointer) *EditableTextIface {
-	return &EditableTextIface{native: native}
+	instance := &EditableTextIface{native: native}
+
+	return instance
 }
 
 /*
@@ -453,7 +463,9 @@ type GObjectAccessibleClass struct {
 }
 
 func GObjectAccessibleClassNewFromNative(native unsafe.Pointer) *GObjectAccessibleClass {
-	return &GObjectAccessibleClass{native: native}
+	instance := &GObjectAccessibleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -522,7 +534,9 @@ type HyperlinkClass struct {
 }
 
 func HyperlinkClassNewFromNative(native unsafe.Pointer) *HyperlinkClass {
-	return &HyperlinkClass{native: native}
+	instance := &HyperlinkClass{native: native}
+
+	return instance
 }
 
 /*
@@ -613,7 +627,9 @@ type HyperlinkImplIface struct {
 }
 
 func HyperlinkImplIfaceNewFromNative(native unsafe.Pointer) *HyperlinkImplIface {
-	return &HyperlinkImplIface{native: native}
+	instance := &HyperlinkImplIface{native: native}
+
+	return instance
 }
 
 /*
@@ -668,7 +684,9 @@ type HypertextIface struct {
 }
 
 func HypertextIfaceNewFromNative(native unsafe.Pointer) *HypertextIface {
-	return &HypertextIface{native: native}
+	instance := &HypertextIface{native: native}
+
+	return instance
 }
 
 /*
@@ -735,7 +753,9 @@ type ImageIface struct {
 }
 
 func ImageIfaceNewFromNative(native unsafe.Pointer) *ImageIface {
-	return &ImageIface{native: native}
+	instance := &ImageIface{native: native}
+
+	return instance
 }
 
 /*
@@ -806,7 +826,9 @@ type Implementor struct {
 }
 
 func ImplementorNewFromNative(native unsafe.Pointer) *Implementor {
-	return &Implementor{native: native}
+	instance := &Implementor{native: native}
+
+	return instance
 }
 
 /*
@@ -885,7 +907,9 @@ type KeyEventStruct struct {
 }
 
 func KeyEventStructNewFromNative(native unsafe.Pointer) *KeyEventStruct {
-	return &KeyEventStruct{native: native}
+	instance := &KeyEventStruct{native: native}
+
+	return instance
 }
 
 /*
@@ -1030,7 +1054,9 @@ type MiscClass struct {
 }
 
 func MiscClassNewFromNative(native unsafe.Pointer) *MiscClass {
-	return &MiscClass{native: native}
+	instance := &MiscClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1093,7 +1119,9 @@ type NoOpObjectClass struct {
 }
 
 func NoOpObjectClassNewFromNative(native unsafe.Pointer) *NoOpObjectClass {
-	return &NoOpObjectClass{native: native}
+	instance := &NoOpObjectClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1154,7 +1182,9 @@ type NoOpObjectFactoryClass struct {
 }
 
 func NoOpObjectFactoryClassNewFromNative(native unsafe.Pointer) *NoOpObjectFactoryClass {
-	return &NoOpObjectFactoryClass{native: native}
+	instance := &NoOpObjectFactoryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1215,7 +1245,9 @@ type ObjectClass struct {
 }
 
 func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
-	return &ObjectClass{native: native}
+	instance := &ObjectClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1374,7 +1406,9 @@ type ObjectFactoryClass struct {
 }
 
 func ObjectFactoryClassNewFromNative(native unsafe.Pointer) *ObjectFactoryClass {
-	return &ObjectFactoryClass{native: native}
+	instance := &ObjectFactoryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1445,7 +1479,9 @@ type PlugClass struct {
 }
 
 func PlugClassNewFromNative(native unsafe.Pointer) *PlugClass {
-	return &PlugClass{native: native}
+	instance := &PlugClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1510,7 +1546,9 @@ type PropertyValues struct {
 }
 
 func PropertyValuesNewFromNative(native unsafe.Pointer) *PropertyValues {
-	return &PropertyValues{native: native}
+	instance := &PropertyValues{native: native}
+
+	return instance
 }
 
 /*
@@ -1579,7 +1617,9 @@ type Range struct {
 }
 
 func RangeNewFromNative(native unsafe.Pointer) *Range {
-	return &Range{native: native}
+	instance := &Range{native: native}
+
+	return instance
 }
 
 /*
@@ -1801,7 +1841,9 @@ type Rectangle struct {
 }
 
 func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
-	return &Rectangle{native: native}
+	instance := &Rectangle{native: native}
+
+	return instance
 }
 
 /*
@@ -1904,7 +1946,9 @@ type RegistryClass struct {
 }
 
 func RegistryClassNewFromNative(native unsafe.Pointer) *RegistryClass {
-	return &RegistryClass{native: native}
+	instance := &RegistryClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1955,7 +1999,9 @@ type RelationClass struct {
 }
 
 func RelationClassNewFromNative(native unsafe.Pointer) *RelationClass {
-	return &RelationClass{native: native}
+	instance := &RelationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2006,7 +2052,9 @@ type RelationSetClass struct {
 }
 
 func RelationSetClassNewFromNative(native unsafe.Pointer) *RelationSetClass {
-	return &RelationSetClass{native: native}
+	instance := &RelationSetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2065,7 +2113,9 @@ type SelectionIface struct {
 }
 
 func SelectionIfaceNewFromNative(native unsafe.Pointer) *SelectionIface {
-	return &SelectionIface{native: native}
+	instance := &SelectionIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2148,7 +2198,9 @@ type SocketClass struct {
 }
 
 func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
-	return &SocketClass{native: native}
+	instance := &SocketClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2213,7 +2265,9 @@ type StateSetClass struct {
 }
 
 func StateSetClassNewFromNative(native unsafe.Pointer) *StateSetClass {
-	return &StateSetClass{native: native}
+	instance := &StateSetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2264,7 +2318,9 @@ type StreamableContentIface struct {
 }
 
 func StreamableContentIfaceNewFromNative(native unsafe.Pointer) *StreamableContentIface {
-	return &StreamableContentIface{native: native}
+	instance := &StreamableContentIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2343,7 +2399,9 @@ type TableCellIface struct {
 }
 
 func TableCellIfaceNewFromNative(native unsafe.Pointer) *TableCellIface {
-	return &TableCellIface{native: native}
+	instance := &TableCellIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2418,7 +2476,9 @@ type TableIface struct {
 }
 
 func TableIfaceNewFromNative(native unsafe.Pointer) *TableIface {
-	return &TableIface{native: native}
+	instance := &TableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2613,7 +2673,9 @@ type TextIface struct {
 }
 
 func TextIfaceNewFromNative(native unsafe.Pointer) *TextIface {
-	return &TextIface{native: native}
+	instance := &TextIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2768,7 +2830,9 @@ type TextRange struct {
 }
 
 func TextRangeNewFromNative(native unsafe.Pointer) *TextRange {
-	return &TextRange{native: native}
+	instance := &TextRange{native: native}
+
+	return instance
 }
 
 /*
@@ -2871,7 +2935,9 @@ type TextRectangle struct {
 }
 
 func TextRectangleNewFromNative(native unsafe.Pointer) *TextRectangle {
-	return &TextRectangle{native: native}
+	instance := &TextRectangle{native: native}
+
+	return instance
 }
 
 /*
@@ -2974,7 +3040,9 @@ type UtilClass struct {
 }
 
 func UtilClassNewFromNative(native unsafe.Pointer) *UtilClass {
-	return &UtilClass{native: native}
+	instance := &UtilClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3053,7 +3121,9 @@ type ValueIface struct {
 }
 
 func ValueIfaceNewFromNative(native unsafe.Pointer) *ValueIface {
-	return &ValueIface{native: native}
+	instance := &ValueIface{native: native}
+
+	return instance
 }
 
 /*
@@ -3144,7 +3214,9 @@ type WindowIface struct {
 }
 
 func WindowIfaceNewFromNative(native unsafe.Pointer) *WindowIface {
-	return &WindowIface{native: native}
+	instance := &WindowIface{native: native}
+
+	return instance
 }
 
 /*

@@ -26,7 +26,9 @@ type CClosure struct {
 }
 
 func CClosureNewFromNative(native unsafe.Pointer) *CClosure {
-	return &CClosure{native: native}
+	instance := &CClosure{native: native}
+
+	return instance
 }
 
 func (recv *CClosure) Native() unsafe.Pointer {
@@ -82,7 +84,9 @@ type Closure struct {
 }
 
 func ClosureNewFromNative(native unsafe.Pointer) *Closure {
-	return &Closure{native: native}
+	instance := &Closure{native: native}
+
+	return instance
 }
 
 func (recv *Closure) Native() unsafe.Pointer {
@@ -304,7 +308,9 @@ type ClosureNotifyData struct {
 }
 
 func ClosureNotifyDataNewFromNative(native unsafe.Pointer) *ClosureNotifyData {
-	return &ClosureNotifyData{native: native}
+	instance := &ClosureNotifyData{native: native}
+
+	return instance
 }
 
 func (recv *ClosureNotifyData) Native() unsafe.Pointer {
@@ -350,7 +356,9 @@ type EnumClass struct {
 }
 
 func EnumClassNewFromNative(native unsafe.Pointer) *EnumClass {
-	return &EnumClass{native: native}
+	instance := &EnumClass{native: native}
+
+	return instance
 }
 
 func (recv *EnumClass) Native() unsafe.Pointer {
@@ -458,7 +466,9 @@ type EnumValue struct {
 }
 
 func EnumValueNewFromNative(native unsafe.Pointer) *EnumValue {
-	return &EnumValue{native: native}
+	instance := &EnumValue{native: native}
+
+	return instance
 }
 
 func (recv *EnumValue) Native() unsafe.Pointer {
@@ -538,7 +548,9 @@ type FlagsClass struct {
 }
 
 func FlagsClassNewFromNative(native unsafe.Pointer) *FlagsClass {
-	return &FlagsClass{native: native}
+	instance := &FlagsClass{native: native}
+
+	return instance
 }
 
 func (recv *FlagsClass) Native() unsafe.Pointer {
@@ -632,7 +644,9 @@ type FlagsValue struct {
 }
 
 func FlagsValueNewFromNative(native unsafe.Pointer) *FlagsValue {
-	return &FlagsValue{native: native}
+	instance := &FlagsValue{native: native}
+
+	return instance
 }
 
 func (recv *FlagsValue) Native() unsafe.Pointer {
@@ -712,7 +726,9 @@ type InitiallyUnownedClass struct {
 }
 
 func InitiallyUnownedClassNewFromNative(native unsafe.Pointer) *InitiallyUnownedClass {
-	return &InitiallyUnownedClass{native: native}
+	instance := &InitiallyUnownedClass{native: native}
+
+	return instance
 }
 
 func (recv *InitiallyUnownedClass) Native() unsafe.Pointer {
@@ -796,7 +812,9 @@ type InterfaceInfo struct {
 }
 
 func InterfaceInfoNewFromNative(native unsafe.Pointer) *InterfaceInfo {
-	return &InterfaceInfo{native: native}
+	instance := &InterfaceInfo{native: native}
+
+	return instance
 }
 
 func (recv *InterfaceInfo) Native() unsafe.Pointer {
@@ -846,7 +864,9 @@ type ObjectClass struct {
 }
 
 func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
-	return &ObjectClass{native: native}
+	instance := &ObjectClass{native: native}
+
+	return instance
 }
 
 func (recv *ObjectClass) Native() unsafe.Pointer {
@@ -1057,7 +1077,9 @@ type ObjectConstructParam struct {
 }
 
 func ObjectConstructParamNewFromNative(native unsafe.Pointer) *ObjectConstructParam {
-	return &ObjectConstructParam{native: native}
+	instance := &ObjectConstructParam{native: native}
+
+	return instance
 }
 
 func (recv *ObjectConstructParam) Native() unsafe.Pointer {
@@ -1123,7 +1145,9 @@ type ParamSpecClass struct {
 }
 
 func ParamSpecClassNewFromNative(native unsafe.Pointer) *ParamSpecClass {
-	return &ParamSpecClass{native: native}
+	instance := &ParamSpecClass{native: native}
+
+	return instance
 }
 
 func (recv *ParamSpecClass) Native() unsafe.Pointer {
@@ -1195,7 +1219,9 @@ type ParamSpecPool struct {
 }
 
 func ParamSpecPoolNewFromNative(native unsafe.Pointer) *ParamSpecPool {
-	return &ParamSpecPool{native: native}
+	instance := &ParamSpecPool{native: native}
+
+	return instance
 }
 
 func (recv *ParamSpecPool) Native() unsafe.Pointer {
@@ -1270,7 +1296,9 @@ type ParamSpecTypeInfo struct {
 }
 
 func ParamSpecTypeInfoNewFromNative(native unsafe.Pointer) *ParamSpecTypeInfo {
-	return &ParamSpecTypeInfo{native: native}
+	instance := &ParamSpecTypeInfo{native: native}
+
+	return instance
 }
 
 func (recv *ParamSpecTypeInfo) Native() unsafe.Pointer {
@@ -1360,7 +1388,9 @@ type Parameter struct {
 }
 
 func ParameterNewFromNative(native unsafe.Pointer) *Parameter {
-	return &Parameter{native: native}
+	instance := &Parameter{native: native}
+
+	return instance
 }
 
 func (recv *Parameter) Native() unsafe.Pointer {
@@ -1426,7 +1456,9 @@ type SignalInvocationHint struct {
 }
 
 func SignalInvocationHintNewFromNative(native unsafe.Pointer) *SignalInvocationHint {
-	return &SignalInvocationHint{native: native}
+	instance := &SignalInvocationHint{native: native}
+
+	return instance
 }
 
 func (recv *SignalInvocationHint) Native() unsafe.Pointer {
@@ -1496,7 +1528,9 @@ type SignalQuery_ struct {
 }
 
 func SignalQuery_NewFromNative(native unsafe.Pointer) *SignalQuery_ {
-	return &SignalQuery_{native: native}
+	instance := &SignalQuery_{native: native}
+
+	return instance
 }
 
 func (recv *SignalQuery_) Native() unsafe.Pointer {
@@ -1592,7 +1626,9 @@ type TypeClass struct {
 }
 
 func TypeClassNewFromNative(native unsafe.Pointer) *TypeClass {
-	return &TypeClass{native: native}
+	instance := &TypeClass{native: native}
+
+	return instance
 }
 
 func (recv *TypeClass) Native() unsafe.Pointer {
@@ -1781,7 +1817,9 @@ type TypeFundamentalInfo struct {
 }
 
 func TypeFundamentalInfoNewFromNative(native unsafe.Pointer) *TypeFundamentalInfo {
-	return &TypeFundamentalInfo{native: native}
+	instance := &TypeFundamentalInfo{native: native}
+
+	return instance
 }
 
 func (recv *TypeFundamentalInfo) Native() unsafe.Pointer {
@@ -1823,7 +1861,9 @@ type TypeInfo struct {
 }
 
 func TypeInfoNewFromNative(native unsafe.Pointer) *TypeInfo {
-	return &TypeInfo{native: native}
+	instance := &TypeInfo{native: native}
+
+	return instance
 }
 
 func (recv *TypeInfo) Native() unsafe.Pointer {
@@ -1941,7 +1981,9 @@ type TypeInstance struct {
 }
 
 func TypeInstanceNewFromNative(native unsafe.Pointer) *TypeInstance {
-	return &TypeInstance{native: native}
+	instance := &TypeInstance{native: native}
+
+	return instance
 }
 
 func (recv *TypeInstance) Native() unsafe.Pointer {
@@ -1981,7 +2023,9 @@ type TypeInterface struct {
 }
 
 func TypeInterfaceNewFromNative(native unsafe.Pointer) *TypeInterface {
-	return &TypeInterface{native: native}
+	instance := &TypeInterface{native: native}
+
+	return instance
 }
 
 func (recv *TypeInterface) Native() unsafe.Pointer {
@@ -2051,7 +2095,9 @@ type TypeModuleClass struct {
 }
 
 func TypeModuleClassNewFromNative(native unsafe.Pointer) *TypeModuleClass {
-	return &TypeModuleClass{native: native}
+	instance := &TypeModuleClass{native: native}
+
+	return instance
 }
 
 func (recv *TypeModuleClass) Native() unsafe.Pointer {
@@ -2127,7 +2173,9 @@ type TypePluginClass struct {
 }
 
 func TypePluginClassNewFromNative(native unsafe.Pointer) *TypePluginClass {
-	return &TypePluginClass{native: native}
+	instance := &TypePluginClass{native: native}
+
+	return instance
 }
 
 func (recv *TypePluginClass) Native() unsafe.Pointer {
@@ -2181,7 +2229,9 @@ type TypeQuery struct {
 }
 
 func TypeQueryNewFromNative(native unsafe.Pointer) *TypeQuery {
-	return &TypeQuery{native: native}
+	instance := &TypeQuery{native: native}
+
+	return instance
 }
 
 func (recv *TypeQuery) Native() unsafe.Pointer {
@@ -2265,7 +2315,9 @@ type TypeValueTable struct {
 }
 
 func TypeValueTableNewFromNative(native unsafe.Pointer) *TypeValueTable {
-	return &TypeValueTable{native: native}
+	instance := &TypeValueTable{native: native}
+
+	return instance
 }
 
 func (recv *TypeValueTable) Native() unsafe.Pointer {
@@ -2355,7 +2407,9 @@ type Value struct {
 }
 
 func ValueNewFromNative(native unsafe.Pointer) *Value {
-	return &Value{native: native}
+	instance := &Value{native: native}
+
+	return instance
 }
 
 func (recv *Value) Native() unsafe.Pointer {
@@ -3896,7 +3950,9 @@ type ValueArray struct {
 }
 
 func ValueArrayNewFromNative(native unsafe.Pointer) *ValueArray {
-	return &ValueArray{native: native}
+	instance := &ValueArray{native: native}
+
+	return instance
 }
 
 func (recv *ValueArray) Native() unsafe.Pointer {
@@ -4209,7 +4265,9 @@ type WeakRef struct {
 }
 
 func WeakRefNewFromNative(native unsafe.Pointer) *WeakRef {
-	return &WeakRef{native: native}
+	instance := &WeakRef{native: native}
+
+	return instance
 }
 
 func (recv *WeakRef) Native() unsafe.Pointer {

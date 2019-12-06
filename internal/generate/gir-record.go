@@ -145,14 +145,64 @@ func (r *Record) generateNewFromNative(f *file) {
 }
 
 func (r *Record) generateNewFromNativeBody(g *jen.Group) {
+	instance := jen.Id("instance")
+	object := jen.Id("object")
+
+	// GEN: instance := &SomeRecord{native: native}
 	g.
-		Return(jen.
-			Op("&").
-			Id(r.goName).
-			Values(jen.Dict{
-				jen.Id(fieldNameNative): jen.Id(fieldNameNative),
-			}),
-		)
+		Add(instance).
+		Op(":=").
+		Op("&").
+		Id(r.goName).
+		Values(jen.Dict{
+			jen.Id(fieldNameNative): jen.Id(fieldNameNative),
+		})
+	g.Line()
+
+	// Increment ref count as appropriate.
+	if r.derivedFromObject() {
+		g.
+			Add(object).
+			Op(":=").
+			Add(instance).Dot("Object").
+			Call()
+
+		g.
+			If(jen.Add(object).Dot("IsFloating").Call()).
+			Block(jen.Add(object).Dot("RefSink").Call()).
+			Else().
+			Block(jen.Add(object).Dot("Ref").Call())
+
+		g.Line()
+	}
+
+	// GEN: return instance
+	g.Return(instance)
+}
+
+func (r *Record) derivedFromInitiallyUnowned() bool {
+	return r.derivedFrom("InitiallyUnowned")
+}
+
+func (r *Record) derivedFromObject() bool {
+	return r.derivedFrom("Object")
+}
+
+func (r *Record) derivedFrom(name string) bool {
+	if r.namespace.Name == "GObject" {
+		return false
+	}
+
+	ancestor := r.parent
+	for ancestor != nil {
+		if ancestor.namespace.Name == "GObject" && ancestor.Name == name {
+			return true
+		}
+
+		ancestor = ancestor.parent
+	}
+
+	return false
 }
 
 func (r *Record) generateAncestorAccessors(f *file) {

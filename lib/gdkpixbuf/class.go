@@ -25,7 +25,16 @@ type Pixbuf struct {
 }
 
 func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
-	return &Pixbuf{native: native}
+	instance := &Pixbuf{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1337,7 +1346,16 @@ type PixbufAnimation struct {
 }
 
 func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
-	return &PixbufAnimation{native: native}
+	instance := &PixbufAnimation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1632,7 +1650,16 @@ type PixbufAnimationIter struct {
 }
 
 func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIter {
-	return &PixbufAnimationIter{native: native}
+	instance := &PixbufAnimationIter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1767,7 +1794,16 @@ type PixbufLoader struct {
 }
 
 func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
-	return &PixbufLoader{native: native}
+	instance := &PixbufLoader{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2064,7 +2100,16 @@ type PixbufSimpleAnim struct {
 }
 
 func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
-	return &PixbufSimpleAnim{native: native}
+	instance := &PixbufSimpleAnim{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // PixbufAnimation upcasts to *PixbufAnimation
@@ -2230,7 +2275,16 @@ type PixbufSimpleAnimIter struct {
 }
 
 func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimIter {
-	return &PixbufSimpleAnimIter{native: native}
+	instance := &PixbufSimpleAnimIter{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // PixbufAnimationIter upcasts to *PixbufAnimationIter

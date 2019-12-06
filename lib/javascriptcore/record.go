@@ -26,7 +26,9 @@ type GlobalContextRef struct {
 }
 
 func GlobalContextRefNewFromNative(native unsafe.Pointer) *GlobalContextRef {
-	return &GlobalContextRef{native: native}
+	instance := &GlobalContextRef{native: native}
+
+	return instance
 }
 
 /*
@@ -129,7 +131,9 @@ type ValueRef struct {
 }
 
 func ValueRefNewFromNative(native unsafe.Pointer) *ValueRef {
-	return &ValueRef{native: native}
+	instance := &ValueRef{native: native}
+
+	return instance
 }
 
 /*
@@ -176,7 +180,9 @@ type StringRef struct {
 }
 
 func StringRefNewFromNative(native unsafe.Pointer) *StringRef {
-	return &StringRef{native: native}
+	instance := &StringRef{native: native}
+
+	return instance
 }
 
 /*
@@ -347,7 +353,9 @@ type ClassClass struct {
 }
 
 func ClassClassNewFromNative(native unsafe.Pointer) *ClassClass {
-	return &ClassClass{native: native}
+	instance := &ClassClass{native: native}
+
+	return instance
 }
 
 /*
@@ -394,7 +402,9 @@ type ClassVTable struct {
 }
 
 func ClassVTableNewFromNative(native unsafe.Pointer) *ClassVTable {
-	return &ClassVTable{native: native}
+	instance := &ClassVTable{native: native}
+
+	return instance
 }
 
 /*
@@ -477,7 +487,9 @@ type ContextClass struct {
 }
 
 func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
-	return &ContextClass{native: native}
+	instance := &ContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -544,7 +556,9 @@ type ContextPrivate struct {
 }
 
 func ContextPrivateNewFromNative(native unsafe.Pointer) *ContextPrivate {
-	return &ContextPrivate{native: native}
+	instance := &ContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -591,7 +605,9 @@ type ExceptionClass struct {
 }
 
 func ExceptionClassNewFromNative(native unsafe.Pointer) *ExceptionClass {
-	return &ExceptionClass{native: native}
+	instance := &ExceptionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -658,7 +674,9 @@ type ExceptionPrivate struct {
 }
 
 func ExceptionPrivateNewFromNative(native unsafe.Pointer) *ExceptionPrivate {
-	return &ExceptionPrivate{native: native}
+	instance := &ExceptionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -705,7 +723,9 @@ type ValueClass struct {
 }
 
 func ValueClassNewFromNative(native unsafe.Pointer) *ValueClass {
-	return &ValueClass{native: native}
+	instance := &ValueClass{native: native}
+
+	return instance
 }
 
 /*
@@ -772,7 +792,9 @@ type ValuePrivate struct {
 }
 
 func ValuePrivateNewFromNative(native unsafe.Pointer) *ValuePrivate {
-	return &ValuePrivate{native: native}
+	instance := &ValuePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -819,7 +841,9 @@ type VirtualMachineClass struct {
 }
 
 func VirtualMachineClassNewFromNative(native unsafe.Pointer) *VirtualMachineClass {
-	return &VirtualMachineClass{native: native}
+	instance := &VirtualMachineClass{native: native}
+
+	return instance
 }
 
 /*
@@ -886,7 +910,9 @@ type VirtualMachinePrivate struct {
 }
 
 func VirtualMachinePrivateNewFromNative(native unsafe.Pointer) *VirtualMachinePrivate {
-	return &VirtualMachinePrivate{native: native}
+	instance := &VirtualMachinePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -933,7 +959,9 @@ type WeakValueClass struct {
 }
 
 func WeakValueClassNewFromNative(native unsafe.Pointer) *WeakValueClass {
-	return &WeakValueClass{native: native}
+	instance := &WeakValueClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1000,7 +1028,9 @@ type WeakValuePrivate struct {
 }
 
 func WeakValuePrivateNewFromNative(native unsafe.Pointer) *WeakValuePrivate {
-	return &WeakValuePrivate{native: native}
+	instance := &WeakValuePrivate{native: native}
+
+	return instance
 }
 
 /*

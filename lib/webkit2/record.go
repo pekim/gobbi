@@ -26,7 +26,9 @@ type ApplicationInfo struct {
 }
 
 func ApplicationInfoNewFromNative(native unsafe.Pointer) *ApplicationInfo {
-	return &ApplicationInfo{native: native}
+	instance := &ApplicationInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -274,7 +276,9 @@ type AuthenticationRequestClass struct {
 }
 
 func AuthenticationRequestClassNewFromNative(native unsafe.Pointer) *AuthenticationRequestClass {
-	return &AuthenticationRequestClass{native: native}
+	instance := &AuthenticationRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -341,7 +345,9 @@ type AuthenticationRequestPrivate struct {
 }
 
 func AuthenticationRequestPrivateNewFromNative(native unsafe.Pointer) *AuthenticationRequestPrivate {
-	return &AuthenticationRequestPrivate{native: native}
+	instance := &AuthenticationRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -388,7 +394,9 @@ type AutomationSessionClass struct {
 }
 
 func AutomationSessionClassNewFromNative(native unsafe.Pointer) *AutomationSessionClass {
-	return &AutomationSessionClass{native: native}
+	instance := &AutomationSessionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -455,7 +463,9 @@ type AutomationSessionPrivate struct {
 }
 
 func AutomationSessionPrivateNewFromNative(native unsafe.Pointer) *AutomationSessionPrivate {
-	return &AutomationSessionPrivate{native: native}
+	instance := &AutomationSessionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -502,7 +512,9 @@ type BackForwardListClass struct {
 }
 
 func BackForwardListClassNewFromNative(native unsafe.Pointer) *BackForwardListClass {
-	return &BackForwardListClass{native: native}
+	instance := &BackForwardListClass{native: native}
+
+	return instance
 }
 
 /*
@@ -569,7 +581,9 @@ type BackForwardListItemClass struct {
 }
 
 func BackForwardListItemClassNewFromNative(native unsafe.Pointer) *BackForwardListItemClass {
-	return &BackForwardListItemClass{native: native}
+	instance := &BackForwardListItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -636,7 +650,9 @@ type BackForwardListItemPrivate struct {
 }
 
 func BackForwardListItemPrivateNewFromNative(native unsafe.Pointer) *BackForwardListItemPrivate {
-	return &BackForwardListItemPrivate{native: native}
+	instance := &BackForwardListItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -683,7 +699,9 @@ type BackForwardListPrivate struct {
 }
 
 func BackForwardListPrivateNewFromNative(native unsafe.Pointer) *BackForwardListPrivate {
-	return &BackForwardListPrivate{native: native}
+	instance := &BackForwardListPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -730,7 +748,9 @@ type ColorChooserRequestClass struct {
 }
 
 func ColorChooserRequestClassNewFromNative(native unsafe.Pointer) *ColorChooserRequestClass {
-	return &ColorChooserRequestClass{native: native}
+	instance := &ColorChooserRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -781,7 +801,9 @@ type ColorChooserRequestPrivate struct {
 }
 
 func ColorChooserRequestPrivateNewFromNative(native unsafe.Pointer) *ColorChooserRequestPrivate {
-	return &ColorChooserRequestPrivate{native: native}
+	instance := &ColorChooserRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -828,7 +850,9 @@ type ContextMenuClass struct {
 }
 
 func ContextMenuClassNewFromNative(native unsafe.Pointer) *ContextMenuClass {
-	return &ContextMenuClass{native: native}
+	instance := &ContextMenuClass{native: native}
+
+	return instance
 }
 
 /*
@@ -895,7 +919,9 @@ type ContextMenuItemClass struct {
 }
 
 func ContextMenuItemClassNewFromNative(native unsafe.Pointer) *ContextMenuItemClass {
-	return &ContextMenuItemClass{native: native}
+	instance := &ContextMenuItemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -962,7 +988,9 @@ type ContextMenuItemPrivate struct {
 }
 
 func ContextMenuItemPrivateNewFromNative(native unsafe.Pointer) *ContextMenuItemPrivate {
-	return &ContextMenuItemPrivate{native: native}
+	instance := &ContextMenuItemPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1009,7 +1037,9 @@ type ContextMenuPrivate struct {
 }
 
 func ContextMenuPrivateNewFromNative(native unsafe.Pointer) *ContextMenuPrivate {
-	return &ContextMenuPrivate{native: native}
+	instance := &ContextMenuPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1056,7 +1086,9 @@ type CookieManagerClass struct {
 }
 
 func CookieManagerClassNewFromNative(native unsafe.Pointer) *CookieManagerClass {
-	return &CookieManagerClass{native: native}
+	instance := &CookieManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1123,7 +1155,9 @@ type CookieManagerPrivate struct {
 }
 
 func CookieManagerPrivateNewFromNative(native unsafe.Pointer) *CookieManagerPrivate {
-	return &CookieManagerPrivate{native: native}
+	instance := &CookieManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1170,7 +1204,9 @@ type Credential struct {
 }
 
 func CredentialNewFromNative(native unsafe.Pointer) *Credential {
-	return &Credential{native: native}
+	instance := &Credential{native: native}
+
+	return instance
 }
 
 /*
@@ -1424,7 +1460,9 @@ type DeviceInfoPermissionRequestClass struct {
 }
 
 func DeviceInfoPermissionRequestClassNewFromNative(native unsafe.Pointer) *DeviceInfoPermissionRequestClass {
-	return &DeviceInfoPermissionRequestClass{native: native}
+	instance := &DeviceInfoPermissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1491,7 +1529,9 @@ type DeviceInfoPermissionRequestPrivate struct {
 }
 
 func DeviceInfoPermissionRequestPrivateNewFromNative(native unsafe.Pointer) *DeviceInfoPermissionRequestPrivate {
-	return &DeviceInfoPermissionRequestPrivate{native: native}
+	instance := &DeviceInfoPermissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1538,7 +1578,9 @@ type DownloadClass struct {
 }
 
 func DownloadClassNewFromNative(native unsafe.Pointer) *DownloadClass {
-	return &DownloadClass{native: native}
+	instance := &DownloadClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1609,7 +1651,9 @@ type DownloadPrivate struct {
 }
 
 func DownloadPrivateNewFromNative(native unsafe.Pointer) *DownloadPrivate {
-	return &DownloadPrivate{native: native}
+	instance := &DownloadPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1656,7 +1700,9 @@ type EditorStateClass struct {
 }
 
 func EditorStateClassNewFromNative(native unsafe.Pointer) *EditorStateClass {
-	return &EditorStateClass{native: native}
+	instance := &EditorStateClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1723,7 +1769,9 @@ type EditorStatePrivate struct {
 }
 
 func EditorStatePrivateNewFromNative(native unsafe.Pointer) *EditorStatePrivate {
-	return &EditorStatePrivate{native: native}
+	instance := &EditorStatePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1770,7 +1818,9 @@ type FaviconDatabaseClass struct {
 }
 
 func FaviconDatabaseClassNewFromNative(native unsafe.Pointer) *FaviconDatabaseClass {
-	return &FaviconDatabaseClass{native: native}
+	instance := &FaviconDatabaseClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1837,7 +1887,9 @@ type FaviconDatabasePrivate struct {
 }
 
 func FaviconDatabasePrivateNewFromNative(native unsafe.Pointer) *FaviconDatabasePrivate {
-	return &FaviconDatabasePrivate{native: native}
+	instance := &FaviconDatabasePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1884,7 +1936,9 @@ type FileChooserRequestClass struct {
 }
 
 func FileChooserRequestClassNewFromNative(native unsafe.Pointer) *FileChooserRequestClass {
-	return &FileChooserRequestClass{native: native}
+	instance := &FileChooserRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1951,7 +2005,9 @@ type FileChooserRequestPrivate struct {
 }
 
 func FileChooserRequestPrivateNewFromNative(native unsafe.Pointer) *FileChooserRequestPrivate {
-	return &FileChooserRequestPrivate{native: native}
+	instance := &FileChooserRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1998,7 +2054,9 @@ type FindControllerClass struct {
 }
 
 func FindControllerClassNewFromNative(native unsafe.Pointer) *FindControllerClass {
-	return &FindControllerClass{native: native}
+	instance := &FindControllerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2065,7 +2123,9 @@ type FindControllerPrivate struct {
 }
 
 func FindControllerPrivateNewFromNative(native unsafe.Pointer) *FindControllerPrivate {
-	return &FindControllerPrivate{native: native}
+	instance := &FindControllerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2112,7 +2172,9 @@ type FormSubmissionRequestClass struct {
 }
 
 func FormSubmissionRequestClassNewFromNative(native unsafe.Pointer) *FormSubmissionRequestClass {
-	return &FormSubmissionRequestClass{native: native}
+	instance := &FormSubmissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2179,7 +2241,9 @@ type FormSubmissionRequestPrivate struct {
 }
 
 func FormSubmissionRequestPrivateNewFromNative(native unsafe.Pointer) *FormSubmissionRequestPrivate {
-	return &FormSubmissionRequestPrivate{native: native}
+	instance := &FormSubmissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2226,7 +2290,9 @@ type GeolocationManagerClass struct {
 }
 
 func GeolocationManagerClassNewFromNative(native unsafe.Pointer) *GeolocationManagerClass {
-	return &GeolocationManagerClass{native: native}
+	instance := &GeolocationManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2293,7 +2359,9 @@ type GeolocationManagerPrivate struct {
 }
 
 func GeolocationManagerPrivateNewFromNative(native unsafe.Pointer) *GeolocationManagerPrivate {
-	return &GeolocationManagerPrivate{native: native}
+	instance := &GeolocationManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2340,7 +2408,9 @@ type GeolocationPermissionRequestClass struct {
 }
 
 func GeolocationPermissionRequestClassNewFromNative(native unsafe.Pointer) *GeolocationPermissionRequestClass {
-	return &GeolocationPermissionRequestClass{native: native}
+	instance := &GeolocationPermissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2407,7 +2477,9 @@ type GeolocationPermissionRequestPrivate struct {
 }
 
 func GeolocationPermissionRequestPrivateNewFromNative(native unsafe.Pointer) *GeolocationPermissionRequestPrivate {
-	return &GeolocationPermissionRequestPrivate{native: native}
+	instance := &GeolocationPermissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2454,7 +2526,9 @@ type GeolocationPosition struct {
 }
 
 func GeolocationPositionNewFromNative(native unsafe.Pointer) *GeolocationPosition {
-	return &GeolocationPosition{native: native}
+	instance := &GeolocationPosition{native: native}
+
+	return instance
 }
 
 /*
@@ -2725,7 +2799,9 @@ type HitTestResultClass struct {
 }
 
 func HitTestResultClassNewFromNative(native unsafe.Pointer) *HitTestResultClass {
-	return &HitTestResultClass{native: native}
+	instance := &HitTestResultClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2792,7 +2868,9 @@ type HitTestResultPrivate struct {
 }
 
 func HitTestResultPrivateNewFromNative(native unsafe.Pointer) *HitTestResultPrivate {
-	return &HitTestResultPrivate{native: native}
+	instance := &HitTestResultPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2839,7 +2917,9 @@ type InstallMissingMediaPluginsPermissionRequestClass struct {
 }
 
 func InstallMissingMediaPluginsPermissionRequestClassNewFromNative(native unsafe.Pointer) *InstallMissingMediaPluginsPermissionRequestClass {
-	return &InstallMissingMediaPluginsPermissionRequestClass{native: native}
+	instance := &InstallMissingMediaPluginsPermissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2906,7 +2986,9 @@ type InstallMissingMediaPluginsPermissionRequestPrivate struct {
 }
 
 func InstallMissingMediaPluginsPermissionRequestPrivateNewFromNative(native unsafe.Pointer) *InstallMissingMediaPluginsPermissionRequestPrivate {
-	return &InstallMissingMediaPluginsPermissionRequestPrivate{native: native}
+	instance := &InstallMissingMediaPluginsPermissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2953,7 +3035,9 @@ type JavascriptResult struct {
 }
 
 func JavascriptResultNewFromNative(native unsafe.Pointer) *JavascriptResult {
-	return &JavascriptResult{native: native}
+	instance := &JavascriptResult{native: native}
+
+	return instance
 }
 
 /*
@@ -3066,7 +3150,9 @@ type MimeInfo struct {
 }
 
 func MimeInfoNewFromNative(native unsafe.Pointer) *MimeInfo {
-	return &MimeInfo{native: native}
+	instance := &MimeInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -3265,7 +3351,9 @@ type NavigationAction struct {
 }
 
 func NavigationActionNewFromNative(native unsafe.Pointer) *NavigationAction {
-	return &NavigationAction{native: native}
+	instance := &NavigationAction{native: native}
+
+	return instance
 }
 
 /*
@@ -3564,7 +3652,9 @@ type NavigationPolicyDecisionClass struct {
 }
 
 func NavigationPolicyDecisionClassNewFromNative(native unsafe.Pointer) *NavigationPolicyDecisionClass {
-	return &NavigationPolicyDecisionClass{native: native}
+	instance := &NavigationPolicyDecisionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3641,7 +3731,9 @@ type NavigationPolicyDecisionPrivate struct {
 }
 
 func NavigationPolicyDecisionPrivateNewFromNative(native unsafe.Pointer) *NavigationPolicyDecisionPrivate {
-	return &NavigationPolicyDecisionPrivate{native: native}
+	instance := &NavigationPolicyDecisionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3688,7 +3780,9 @@ type NetworkProxySettings struct {
 }
 
 func NetworkProxySettingsNewFromNative(native unsafe.Pointer) *NetworkProxySettings {
-	return &NetworkProxySettings{native: native}
+	instance := &NetworkProxySettings{native: native}
+
+	return instance
 }
 
 /*
@@ -3812,7 +3906,9 @@ type NotificationClass struct {
 }
 
 func NotificationClassNewFromNative(native unsafe.Pointer) *NotificationClass {
-	return &NotificationClass{native: native}
+	instance := &NotificationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3887,7 +3983,9 @@ type NotificationPermissionRequestClass struct {
 }
 
 func NotificationPermissionRequestClassNewFromNative(native unsafe.Pointer) *NotificationPermissionRequestClass {
-	return &NotificationPermissionRequestClass{native: native}
+	instance := &NotificationPermissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3938,7 +4036,9 @@ type NotificationPermissionRequestPrivate struct {
 }
 
 func NotificationPermissionRequestPrivateNewFromNative(native unsafe.Pointer) *NotificationPermissionRequestPrivate {
-	return &NotificationPermissionRequestPrivate{native: native}
+	instance := &NotificationPermissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3985,7 +4085,9 @@ type NotificationPrivate struct {
 }
 
 func NotificationPrivateNewFromNative(native unsafe.Pointer) *NotificationPrivate {
-	return &NotificationPrivate{native: native}
+	instance := &NotificationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4032,7 +4134,9 @@ type OptionMenuClass struct {
 }
 
 func OptionMenuClassNewFromNative(native unsafe.Pointer) *OptionMenuClass {
-	return &OptionMenuClass{native: native}
+	instance := &OptionMenuClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4099,7 +4203,9 @@ type OptionMenuItem struct {
 }
 
 func OptionMenuItemNewFromNative(native unsafe.Pointer) *OptionMenuItem {
-	return &OptionMenuItem{native: native}
+	instance := &OptionMenuItem{native: native}
+
+	return instance
 }
 
 /*
@@ -4398,7 +4504,9 @@ type OptionMenuPrivate struct {
 }
 
 func OptionMenuPrivateNewFromNative(native unsafe.Pointer) *OptionMenuPrivate {
-	return &OptionMenuPrivate{native: native}
+	instance := &OptionMenuPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4445,7 +4553,9 @@ type PermissionRequestIface struct {
 }
 
 func PermissionRequestIfaceNewFromNative(native unsafe.Pointer) *PermissionRequestIface {
-	return &PermissionRequestIface{native: native}
+	instance := &PermissionRequestIface{native: native}
+
+	return instance
 }
 
 /*
@@ -4504,7 +4614,9 @@ type PluginClass struct {
 }
 
 func PluginClassNewFromNative(native unsafe.Pointer) *PluginClass {
-	return &PluginClass{native: native}
+	instance := &PluginClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4571,7 +4683,9 @@ type PluginPrivate struct {
 }
 
 func PluginPrivateNewFromNative(native unsafe.Pointer) *PluginPrivate {
-	return &PluginPrivate{native: native}
+	instance := &PluginPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4618,7 +4732,9 @@ type PolicyDecisionClass struct {
 }
 
 func PolicyDecisionClassNewFromNative(native unsafe.Pointer) *PolicyDecisionClass {
-	return &PolicyDecisionClass{native: native}
+	instance := &PolicyDecisionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4685,7 +4801,9 @@ type PolicyDecisionPrivate struct {
 }
 
 func PolicyDecisionPrivateNewFromNative(native unsafe.Pointer) *PolicyDecisionPrivate {
-	return &PolicyDecisionPrivate{native: native}
+	instance := &PolicyDecisionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4732,7 +4850,9 @@ type PrintCustomWidgetClass struct {
 }
 
 func PrintCustomWidgetClassNewFromNative(native unsafe.Pointer) *PrintCustomWidgetClass {
-	return &PrintCustomWidgetClass{native: native}
+	instance := &PrintCustomWidgetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4807,7 +4927,9 @@ type PrintCustomWidgetPrivate struct {
 }
 
 func PrintCustomWidgetPrivateNewFromNative(native unsafe.Pointer) *PrintCustomWidgetPrivate {
-	return &PrintCustomWidgetPrivate{native: native}
+	instance := &PrintCustomWidgetPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4854,7 +4976,9 @@ type PrintOperationClass struct {
 }
 
 func PrintOperationClassNewFromNative(native unsafe.Pointer) *PrintOperationClass {
-	return &PrintOperationClass{native: native}
+	instance := &PrintOperationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4921,7 +5045,9 @@ type PrintOperationPrivate struct {
 }
 
 func PrintOperationPrivateNewFromNative(native unsafe.Pointer) *PrintOperationPrivate {
-	return &PrintOperationPrivate{native: native}
+	instance := &PrintOperationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4968,7 +5094,9 @@ type ResponsePolicyDecisionClass struct {
 }
 
 func ResponsePolicyDecisionClassNewFromNative(native unsafe.Pointer) *ResponsePolicyDecisionClass {
-	return &ResponsePolicyDecisionClass{native: native}
+	instance := &ResponsePolicyDecisionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5045,7 +5173,9 @@ type ResponsePolicyDecisionPrivate struct {
 }
 
 func ResponsePolicyDecisionPrivateNewFromNative(native unsafe.Pointer) *ResponsePolicyDecisionPrivate {
-	return &ResponsePolicyDecisionPrivate{native: native}
+	instance := &ResponsePolicyDecisionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5092,7 +5222,9 @@ type ScriptDialog struct {
 }
 
 func ScriptDialogNewFromNative(native unsafe.Pointer) *ScriptDialog {
-	return &ScriptDialog{native: native}
+	instance := &ScriptDialog{native: native}
+
+	return instance
 }
 
 /*
@@ -5381,7 +5513,9 @@ type SecurityManagerClass struct {
 }
 
 func SecurityManagerClassNewFromNative(native unsafe.Pointer) *SecurityManagerClass {
-	return &SecurityManagerClass{native: native}
+	instance := &SecurityManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5448,7 +5582,9 @@ type SecurityManagerPrivate struct {
 }
 
 func SecurityManagerPrivateNewFromNative(native unsafe.Pointer) *SecurityManagerPrivate {
-	return &SecurityManagerPrivate{native: native}
+	instance := &SecurityManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5495,7 +5631,9 @@ type SecurityOrigin struct {
 }
 
 func SecurityOriginNewFromNative(native unsafe.Pointer) *SecurityOrigin {
-	return &SecurityOrigin{native: native}
+	instance := &SecurityOrigin{native: native}
+
+	return instance
 }
 
 /*
@@ -5813,7 +5951,9 @@ type SettingsClass struct {
 }
 
 func SettingsClassNewFromNative(native unsafe.Pointer) *SettingsClass {
-	return &SettingsClass{native: native}
+	instance := &SettingsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5880,7 +6020,9 @@ type SettingsPrivate struct {
 }
 
 func SettingsPrivateNewFromNative(native unsafe.Pointer) *SettingsPrivate {
-	return &SettingsPrivate{native: native}
+	instance := &SettingsPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5927,7 +6069,9 @@ type URIRequestClass struct {
 }
 
 func URIRequestClassNewFromNative(native unsafe.Pointer) *URIRequestClass {
-	return &URIRequestClass{native: native}
+	instance := &URIRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5994,7 +6138,9 @@ type URIRequestPrivate struct {
 }
 
 func URIRequestPrivateNewFromNative(native unsafe.Pointer) *URIRequestPrivate {
-	return &URIRequestPrivate{native: native}
+	instance := &URIRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6041,7 +6187,9 @@ type URIResponseClass struct {
 }
 
 func URIResponseClassNewFromNative(native unsafe.Pointer) *URIResponseClass {
-	return &URIResponseClass{native: native}
+	instance := &URIResponseClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6108,7 +6256,9 @@ type URIResponsePrivate struct {
 }
 
 func URIResponsePrivateNewFromNative(native unsafe.Pointer) *URIResponsePrivate {
-	return &URIResponsePrivate{native: native}
+	instance := &URIResponsePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6155,7 +6305,9 @@ type URISchemeRequestClass struct {
 }
 
 func URISchemeRequestClassNewFromNative(native unsafe.Pointer) *URISchemeRequestClass {
-	return &URISchemeRequestClass{native: native}
+	instance := &URISchemeRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6222,7 +6374,9 @@ type URISchemeRequestPrivate struct {
 }
 
 func URISchemeRequestPrivateNewFromNative(native unsafe.Pointer) *URISchemeRequestPrivate {
-	return &URISchemeRequestPrivate{native: native}
+	instance := &URISchemeRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6269,7 +6423,9 @@ type UserContentFilter struct {
 }
 
 func UserContentFilterNewFromNative(native unsafe.Pointer) *UserContentFilter {
-	return &UserContentFilter{native: native}
+	instance := &UserContentFilter{native: native}
+
+	return instance
 }
 
 /*
@@ -6408,7 +6564,9 @@ type UserContentFilterStoreClass struct {
 }
 
 func UserContentFilterStoreClassNewFromNative(native unsafe.Pointer) *UserContentFilterStoreClass {
-	return &UserContentFilterStoreClass{native: native}
+	instance := &UserContentFilterStoreClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6475,7 +6633,9 @@ type UserContentFilterStorePrivate struct {
 }
 
 func UserContentFilterStorePrivateNewFromNative(native unsafe.Pointer) *UserContentFilterStorePrivate {
-	return &UserContentFilterStorePrivate{native: native}
+	instance := &UserContentFilterStorePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6522,7 +6682,9 @@ type UserContentManagerClass struct {
 }
 
 func UserContentManagerClassNewFromNative(native unsafe.Pointer) *UserContentManagerClass {
-	return &UserContentManagerClass{native: native}
+	instance := &UserContentManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6589,7 +6751,9 @@ type UserContentManagerPrivate struct {
 }
 
 func UserContentManagerPrivateNewFromNative(native unsafe.Pointer) *UserContentManagerPrivate {
-	return &UserContentManagerPrivate{native: native}
+	instance := &UserContentManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6636,7 +6800,9 @@ type UserMediaPermissionRequestClass struct {
 }
 
 func UserMediaPermissionRequestClassNewFromNative(native unsafe.Pointer) *UserMediaPermissionRequestClass {
-	return &UserMediaPermissionRequestClass{native: native}
+	instance := &UserMediaPermissionRequestClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6703,7 +6869,9 @@ type UserMediaPermissionRequestPrivate struct {
 }
 
 func UserMediaPermissionRequestPrivateNewFromNative(native unsafe.Pointer) *UserMediaPermissionRequestPrivate {
-	return &UserMediaPermissionRequestPrivate{native: native}
+	instance := &UserMediaPermissionRequestPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6750,7 +6918,9 @@ type UserScript struct {
 }
 
 func UserScriptNewFromNative(native unsafe.Pointer) *UserScript {
-	return &UserScript{native: native}
+	instance := &UserScript{native: native}
+
+	return instance
 }
 
 /*
@@ -6846,7 +7016,9 @@ type UserStyleSheet struct {
 }
 
 func UserStyleSheetNewFromNative(native unsafe.Pointer) *UserStyleSheet {
-	return &UserStyleSheet{native: native}
+	instance := &UserStyleSheet{native: native}
+
+	return instance
 }
 
 /*
@@ -6942,7 +7114,9 @@ type WebContextClass struct {
 }
 
 func WebContextClassNewFromNative(native unsafe.Pointer) *WebContextClass {
-	return &WebContextClass{native: native}
+	instance := &WebContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7025,7 +7199,9 @@ type WebContextPrivate struct {
 }
 
 func WebContextPrivateNewFromNative(native unsafe.Pointer) *WebContextPrivate {
-	return &WebContextPrivate{native: native}
+	instance := &WebContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7072,7 +7248,9 @@ type WebInspectorClass struct {
 }
 
 func WebInspectorClassNewFromNative(native unsafe.Pointer) *WebInspectorClass {
-	return &WebInspectorClass{native: native}
+	instance := &WebInspectorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7139,7 +7317,9 @@ type WebInspectorPrivate struct {
 }
 
 func WebInspectorPrivateNewFromNative(native unsafe.Pointer) *WebInspectorPrivate {
-	return &WebInspectorPrivate{native: native}
+	instance := &WebInspectorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7186,7 +7366,9 @@ type WebResourceClass struct {
 }
 
 func WebResourceClassNewFromNative(native unsafe.Pointer) *WebResourceClass {
-	return &WebResourceClass{native: native}
+	instance := &WebResourceClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7253,7 +7435,9 @@ type WebResourcePrivate struct {
 }
 
 func WebResourcePrivateNewFromNative(native unsafe.Pointer) *WebResourcePrivate {
-	return &WebResourcePrivate{native: native}
+	instance := &WebResourcePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7300,7 +7484,9 @@ type WebViewBaseClass struct {
 }
 
 func WebViewBaseClassNewFromNative(native unsafe.Pointer) *WebViewBaseClass {
-	return &WebViewBaseClass{native: native}
+	instance := &WebViewBaseClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7367,7 +7553,9 @@ type WebViewBasePrivate struct {
 }
 
 func WebViewBasePrivateNewFromNative(native unsafe.Pointer) *WebViewBasePrivate {
-	return &WebViewBasePrivate{native: native}
+	instance := &WebViewBasePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7414,7 +7602,9 @@ type WebViewClass struct {
 }
 
 func WebViewClassNewFromNative(native unsafe.Pointer) *WebViewClass {
-	return &WebViewClass{native: native}
+	instance := &WebViewClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7587,7 +7777,9 @@ type WebViewPrivate struct {
 }
 
 func WebViewPrivateNewFromNative(native unsafe.Pointer) *WebViewPrivate {
-	return &WebViewPrivate{native: native}
+	instance := &WebViewPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7634,7 +7826,9 @@ type WebViewSessionState struct {
 }
 
 func WebViewSessionStateNewFromNative(native unsafe.Pointer) *WebViewSessionState {
-	return &WebViewSessionState{native: native}
+	instance := &WebViewSessionState{native: native}
+
+	return instance
 }
 
 /*
@@ -7730,7 +7924,9 @@ type WebsiteData struct {
 }
 
 func WebsiteDataNewFromNative(native unsafe.Pointer) *WebsiteData {
-	return &WebsiteData{native: native}
+	instance := &WebsiteData{native: native}
+
+	return instance
 }
 
 /*
@@ -7873,7 +8069,9 @@ type WebsiteDataManagerClass struct {
 }
 
 func WebsiteDataManagerClassNewFromNative(native unsafe.Pointer) *WebsiteDataManagerClass {
-	return &WebsiteDataManagerClass{native: native}
+	instance := &WebsiteDataManagerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7940,7 +8138,9 @@ type WebsiteDataManagerPrivate struct {
 }
 
 func WebsiteDataManagerPrivateNewFromNative(native unsafe.Pointer) *WebsiteDataManagerPrivate {
-	return &WebsiteDataManagerPrivate{native: native}
+	instance := &WebsiteDataManagerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7987,7 +8187,9 @@ type WindowPropertiesClass struct {
 }
 
 func WindowPropertiesClassNewFromNative(native unsafe.Pointer) *WindowPropertiesClass {
-	return &WindowPropertiesClass{native: native}
+	instance := &WindowPropertiesClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8054,7 +8256,9 @@ type WindowPropertiesPrivate struct {
 }
 
 func WindowPropertiesPrivateNewFromNative(native unsafe.Pointer) *WindowPropertiesPrivate {
-	return &WindowPropertiesPrivate{native: native}
+	instance := &WindowPropertiesPrivate{native: native}
+
+	return instance
 }
 
 /*

@@ -25,7 +25,16 @@ type GObjectAccessible struct {
 }
 
 func GObjectAccessibleNewFromNative(native unsafe.Pointer) *GObjectAccessible {
-	return &GObjectAccessible{native: native}
+	instance := &GObjectAccessible{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -83,7 +92,16 @@ type Hyperlink struct {
 }
 
 func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
-	return &Hyperlink{native: native}
+	instance := &Hyperlink{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -382,7 +400,16 @@ type Misc struct {
 }
 
 func MiscNewFromNative(native unsafe.Pointer) *Misc {
-	return &Misc{native: native}
+	instance := &Misc{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -479,7 +506,16 @@ type NoOpObject struct {
 }
 
 func NoOpObjectNewFromNative(native unsafe.Pointer) *NoOpObject {
-	return &NoOpObject{native: native}
+	instance := &NoOpObject{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -537,7 +573,16 @@ type NoOpObjectFactory struct {
 }
 
 func NoOpObjectFactoryNewFromNative(native unsafe.Pointer) *NoOpObjectFactory {
-	return &NoOpObjectFactory{native: native}
+	instance := &NoOpObjectFactory{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectFactory upcasts to *ObjectFactory
@@ -623,7 +668,16 @@ type Object struct {
 }
 
 func ObjectNewFromNative(native unsafe.Pointer) *Object {
-	return &Object{native: native}
+	instance := &Object{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1475,7 +1529,16 @@ type ObjectFactory struct {
 }
 
 func ObjectFactoryNewFromNative(native unsafe.Pointer) *ObjectFactory {
-	return &ObjectFactory{native: native}
+	instance := &ObjectFactory{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1548,7 +1611,16 @@ type Plug struct {
 }
 
 func PlugNewFromNative(native unsafe.Pointer) *Plug {
-	return &Plug{native: native}
+	instance := &Plug{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -1666,7 +1738,16 @@ type Registry struct {
 }
 
 func RegistryNewFromNative(native unsafe.Pointer) *Registry {
-	return &Registry{native: native}
+	instance := &Registry{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1721,7 +1802,16 @@ type Relation struct {
 }
 
 func RelationNewFromNative(native unsafe.Pointer) *Relation {
-	return &Relation{native: native}
+	instance := &Relation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1904,7 +1994,16 @@ type RelationSet struct {
 }
 
 func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
-	return &RelationSet{native: native}
+	instance := &RelationSet{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2232,7 +2331,16 @@ type Socket struct {
 }
 
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
-	return &Socket{native: native}
+	instance := &Socket{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // ObjectAtk upcasts to *ObjectAtk
@@ -2379,7 +2487,16 @@ type StateSet struct {
 }
 
 func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
-	return &StateSet{native: native}
+	instance := &StateSet{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2712,7 +2829,16 @@ type Util struct {
 }
 
 func UtilNewFromNative(native unsafe.Pointer) *Util {
-	return &Util{native: native}
+	instance := &Util{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object

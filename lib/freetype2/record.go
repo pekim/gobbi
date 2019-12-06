@@ -26,7 +26,9 @@ type Bitmap struct {
 }
 
 func BitmapNewFromNative(native unsafe.Pointer) *Bitmap {
-	return &Bitmap{native: native}
+	instance := &Bitmap{native: native}
+
+	return instance
 }
 
 /*
@@ -73,7 +75,9 @@ type Face struct {
 }
 
 func FaceNewFromNative(native unsafe.Pointer) *Face {
-	return &Face{native: native}
+	instance := &Face{native: native}
+
+	return instance
 }
 
 /*
@@ -120,7 +124,9 @@ type Library struct {
 }
 
 func LibraryNewFromNative(native unsafe.Pointer) *Library {
-	return &Library{native: native}
+	instance := &Library{native: native}
+
+	return instance
 }
 
 /*

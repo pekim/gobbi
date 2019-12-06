@@ -26,7 +26,9 @@ type Analysis struct {
 }
 
 func AnalysisNewFromNative(native unsafe.Pointer) *Analysis {
-	return &Analysis{native: native}
+	instance := &Analysis{native: native}
+
+	return instance
 }
 
 /*
@@ -189,7 +191,9 @@ type AttrClass struct {
 }
 
 func AttrClassNewFromNative(native unsafe.Pointer) *AttrClass {
-	return &AttrClass{native: native}
+	instance := &AttrClass{native: native}
+
+	return instance
 }
 
 /*
@@ -262,7 +266,9 @@ type AttrColor struct {
 }
 
 func AttrColorNewFromNative(native unsafe.Pointer) *AttrColor {
-	return &AttrColor{native: native}
+	instance := &AttrColor{native: native}
+
+	return instance
 }
 
 /*
@@ -337,7 +343,9 @@ type AttrFloat struct {
 }
 
 func AttrFloatNewFromNative(native unsafe.Pointer) *AttrFloat {
-	return &AttrFloat{native: native}
+	instance := &AttrFloat{native: native}
+
+	return instance
 }
 
 /*
@@ -412,7 +420,9 @@ type AttrFontDesc struct {
 }
 
 func AttrFontDescNewFromNative(native unsafe.Pointer) *AttrFontDesc {
-	return &AttrFontDesc{native: native}
+	instance := &AttrFontDesc{native: native}
+
+	return instance
 }
 
 /*
@@ -487,7 +497,9 @@ type AttrFontFeatures struct {
 }
 
 func AttrFontFeaturesNewFromNative(native unsafe.Pointer) *AttrFontFeatures {
-	return &AttrFontFeatures{native: native}
+	instance := &AttrFontFeatures{native: native}
+
+	return instance
 }
 
 /*
@@ -562,7 +574,9 @@ type AttrInt struct {
 }
 
 func AttrIntNewFromNative(native unsafe.Pointer) *AttrInt {
-	return &AttrInt{native: native}
+	instance := &AttrInt{native: native}
+
+	return instance
 }
 
 /*
@@ -637,7 +651,9 @@ type AttrIterator struct {
 }
 
 func AttrIteratorNewFromNative(native unsafe.Pointer) *AttrIterator {
-	return &AttrIterator{native: native}
+	instance := &AttrIterator{native: native}
+
+	return instance
 }
 
 /*
@@ -846,7 +862,9 @@ type AttrLanguage struct {
 }
 
 func AttrLanguageNewFromNative(native unsafe.Pointer) *AttrLanguage {
-	return &AttrLanguage{native: native}
+	instance := &AttrLanguage{native: native}
+
+	return instance
 }
 
 /*
@@ -921,7 +939,9 @@ type AttrList struct {
 }
 
 func AttrListNewFromNative(native unsafe.Pointer) *AttrList {
-	return &AttrList{native: native}
+	instance := &AttrList{native: native}
+
+	return instance
 }
 
 /*
@@ -1227,7 +1247,9 @@ type AttrShape struct {
 }
 
 func AttrShapeNewFromNative(native unsafe.Pointer) *AttrShape {
-	return &AttrShape{native: native}
+	instance := &AttrShape{native: native}
+
+	return instance
 }
 
 /*
@@ -1328,7 +1350,9 @@ type AttrSize struct {
 }
 
 func AttrSizeNewFromNative(native unsafe.Pointer) *AttrSize {
-	return &AttrSize{native: native}
+	instance := &AttrSize{native: native}
+
+	return instance
 }
 
 /*
@@ -1417,7 +1441,9 @@ type AttrString struct {
 }
 
 func AttrStringNewFromNative(native unsafe.Pointer) *AttrString {
-	return &AttrString{native: native}
+	instance := &AttrString{native: native}
+
+	return instance
 }
 
 /*
@@ -1492,7 +1518,9 @@ type Attribute struct {
 }
 
 func AttributeNewFromNative(native unsafe.Pointer) *Attribute {
-	return &Attribute{native: native}
+	instance := &Attribute{native: native}
+
+	return instance
 }
 
 /*
@@ -1703,7 +1731,9 @@ type Color struct {
 }
 
 func ColorNewFromNative(native unsafe.Pointer) *Color {
-	return &Color{native: native}
+	instance := &Color{native: native}
+
+	return instance
 }
 
 /*
@@ -1917,7 +1947,9 @@ type ContextClass struct {
 }
 
 func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
-	return &ContextClass{native: native}
+	instance := &ContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1964,7 +1996,9 @@ type Coverage struct {
 }
 
 func CoverageNewFromNative(native unsafe.Pointer) *Coverage {
-	return &Coverage{native: native}
+	instance := &Coverage{native: native}
+
+	return instance
 }
 
 /*
@@ -2197,7 +2231,9 @@ type EngineClass struct {
 }
 
 func EngineClassNewFromNative(native unsafe.Pointer) *EngineClass {
-	return &EngineClass{native: native}
+	instance := &EngineClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2244,7 +2280,9 @@ type EngineInfo struct {
 }
 
 func EngineInfoNewFromNative(native unsafe.Pointer) *EngineInfo {
-	return &EngineInfo{native: native}
+	instance := &EngineInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -2361,7 +2399,9 @@ type EngineLangClass struct {
 }
 
 func EngineLangClassNewFromNative(native unsafe.Pointer) *EngineLangClass {
-	return &EngineLangClass{native: native}
+	instance := &EngineLangClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2412,7 +2452,9 @@ type EngineScriptInfo struct {
 }
 
 func EngineScriptInfoNewFromNative(native unsafe.Pointer) *EngineScriptInfo {
-	return &EngineScriptInfo{native: native}
+	instance := &EngineScriptInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -2487,7 +2529,9 @@ type EngineShapeClass struct {
 }
 
 func EngineShapeClassNewFromNative(native unsafe.Pointer) *EngineShapeClass {
-	return &EngineShapeClass{native: native}
+	instance := &EngineShapeClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2542,7 +2586,9 @@ type FontClass struct {
 }
 
 func FontClassNewFromNative(native unsafe.Pointer) *FontClass {
-	return &FontClass{native: native}
+	instance := &FontClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2629,7 +2675,9 @@ type FontDescription struct {
 }
 
 func FontDescriptionNewFromNative(native unsafe.Pointer) *FontDescription {
-	return &FontDescription{native: native}
+	instance := &FontDescription{native: native}
+
+	return instance
 }
 
 /*
@@ -3617,7 +3665,9 @@ type FontFaceClass struct {
 }
 
 func FontFaceClassNewFromNative(native unsafe.Pointer) *FontFaceClass {
-	return &FontFaceClass{native: native}
+	instance := &FontFaceClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3692,7 +3742,9 @@ type FontFamilyClass struct {
 }
 
 func FontFamilyClassNewFromNative(native unsafe.Pointer) *FontFamilyClass {
-	return &FontFamilyClass{native: native}
+	instance := &FontFamilyClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3767,7 +3819,9 @@ type FontMapClass struct {
 }
 
 func FontMapClassNewFromNative(native unsafe.Pointer) *FontMapClass {
-	return &FontMapClass{native: native}
+	instance := &FontMapClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3860,7 +3914,9 @@ type FontMetrics struct {
 }
 
 func FontMetricsNewFromNative(native unsafe.Pointer) *FontMetrics {
-	return &FontMetrics{native: native}
+	instance := &FontMetrics{native: native}
+
+	return instance
 }
 
 /*
@@ -4238,7 +4294,9 @@ type FontsetClass struct {
 }
 
 func FontsetClassNewFromNative(native unsafe.Pointer) *FontsetClass {
-	return &FontsetClass{native: native}
+	instance := &FontsetClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4321,7 +4379,9 @@ type FontsetSimpleClass struct {
 }
 
 func FontsetSimpleClassNewFromNative(native unsafe.Pointer) *FontsetSimpleClass {
-	return &FontsetSimpleClass{native: native}
+	instance := &FontsetSimpleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4368,7 +4428,9 @@ type GlyphGeometry struct {
 }
 
 func GlyphGeometryNewFromNative(native unsafe.Pointer) *GlyphGeometry {
-	return &GlyphGeometry{native: native}
+	instance := &GlyphGeometry{native: native}
+
+	return instance
 }
 
 /*
@@ -4457,7 +4519,9 @@ type GlyphInfo struct {
 }
 
 func GlyphInfoNewFromNative(native unsafe.Pointer) *GlyphInfo {
-	return &GlyphInfo{native: native}
+	instance := &GlyphInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -4546,7 +4610,9 @@ type GlyphItem struct {
 }
 
 func GlyphItemNewFromNative(native unsafe.Pointer) *GlyphItem {
-	return &GlyphItem{native: native}
+	instance := &GlyphItem{native: native}
+
+	return instance
 }
 
 /*
@@ -4721,7 +4787,9 @@ type GlyphItemIter struct {
 }
 
 func GlyphItemIterNewFromNative(native unsafe.Pointer) *GlyphItemIter {
-	return &GlyphItemIter{native: native}
+	instance := &GlyphItemIter{native: native}
+
+	return instance
 }
 
 /*
@@ -5072,7 +5140,9 @@ type GlyphString struct {
 }
 
 func GlyphStringNewFromNative(native unsafe.Pointer) *GlyphString {
-	return &GlyphString{native: native}
+	instance := &GlyphString{native: native}
+
+	return instance
 }
 
 /*
@@ -5433,7 +5503,9 @@ type GlyphVisAttr struct {
 }
 
 func GlyphVisAttrNewFromNative(native unsafe.Pointer) *GlyphVisAttr {
-	return &GlyphVisAttr{native: native}
+	instance := &GlyphVisAttr{native: native}
+
+	return instance
 }
 
 /*
@@ -5494,7 +5566,9 @@ type IncludedModule struct {
 }
 
 func IncludedModuleNewFromNative(native unsafe.Pointer) *IncludedModule {
-	return &IncludedModule{native: native}
+	instance := &IncludedModule{native: native}
+
+	return instance
 }
 
 /*
@@ -5557,7 +5631,9 @@ type Item struct {
 }
 
 func ItemNewFromNative(native unsafe.Pointer) *Item {
-	return &Item{native: native}
+	instance := &Item{native: native}
+
+	return instance
 }
 
 /*
@@ -5769,7 +5845,9 @@ type Language struct {
 }
 
 func LanguageNewFromNative(native unsafe.Pointer) *Language {
-	return &Language{native: native}
+	instance := &Language{native: native}
+
+	return instance
 }
 
 /*
@@ -5978,7 +6056,9 @@ type LayoutClass struct {
 }
 
 func LayoutClassNewFromNative(native unsafe.Pointer) *LayoutClass {
-	return &LayoutClass{native: native}
+	instance := &LayoutClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6025,7 +6105,9 @@ type LayoutIter struct {
 }
 
 func LayoutIterNewFromNative(native unsafe.Pointer) *LayoutIter {
-	return &LayoutIter{native: native}
+	instance := &LayoutIter{native: native}
+
+	return instance
 }
 
 /*
@@ -6653,7 +6735,9 @@ type LayoutLine struct {
 }
 
 func LayoutLineNewFromNative(native unsafe.Pointer) *LayoutLine {
-	return &LayoutLine{native: native}
+	instance := &LayoutLine{native: native}
+
+	return instance
 }
 
 /*
@@ -6972,7 +7056,9 @@ type LogAttr struct {
 }
 
 func LogAttrNewFromNative(native unsafe.Pointer) *LogAttr {
-	return &LogAttr{native: native}
+	instance := &LogAttr{native: native}
+
+	return instance
 }
 
 /*
@@ -7201,7 +7287,9 @@ type Map struct {
 }
 
 func MapNewFromNative(native unsafe.Pointer) *Map {
-	return &Map{native: native}
+	instance := &Map{native: native}
+
+	return instance
 }
 
 /*
@@ -7283,7 +7371,9 @@ type MapEntry struct {
 }
 
 func MapEntryNewFromNative(native unsafe.Pointer) *MapEntry {
-	return &MapEntry{native: native}
+	instance := &MapEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -7330,7 +7420,9 @@ type Matrix struct {
 }
 
 func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
-	return &Matrix{native: native}
+	instance := &Matrix{native: native}
+
+	return instance
 }
 
 /*
@@ -7840,7 +7932,9 @@ type Rectangle struct {
 }
 
 func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
-	return &Rectangle{native: native}
+	instance := &Rectangle{native: native}
+
+	return instance
 }
 
 /*
@@ -7943,7 +8037,9 @@ type RendererClass struct {
 }
 
 func RendererClassNewFromNative(native unsafe.Pointer) *RendererClass {
-	return &RendererClass{native: native}
+	instance := &RendererClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8046,7 +8142,9 @@ type RendererPrivate struct {
 }
 
 func RendererPrivateNewFromNative(native unsafe.Pointer) *RendererPrivate {
-	return &RendererPrivate{native: native}
+	instance := &RendererPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8093,7 +8191,9 @@ type ScriptIter struct {
 }
 
 func ScriptIterNewFromNative(native unsafe.Pointer) *ScriptIter {
-	return &ScriptIter{native: native}
+	instance := &ScriptIter{native: native}
+
+	return instance
 }
 
 /*
@@ -8234,7 +8334,9 @@ type TabArray struct {
 }
 
 func TabArrayNewFromNative(native unsafe.Pointer) *TabArray {
-	return &TabArray{native: native}
+	instance := &TabArray{native: native}
+
+	return instance
 }
 
 /*

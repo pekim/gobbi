@@ -26,7 +26,9 @@ type ActionEntry struct {
 }
 
 func ActionEntryNewFromNative(native unsafe.Pointer) *ActionEntry {
-	return &ActionEntry{native: native}
+	instance := &ActionEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -123,7 +125,9 @@ type ActionGroupInterface struct {
 }
 
 func ActionGroupInterfaceNewFromNative(native unsafe.Pointer) *ActionGroupInterface {
-	return &ActionGroupInterface{native: native}
+	instance := &ActionGroupInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -230,7 +234,9 @@ type ActionInterface struct {
 }
 
 func ActionInterfaceNewFromNative(native unsafe.Pointer) *ActionInterface {
-	return &ActionInterface{native: native}
+	instance := &ActionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -313,7 +319,9 @@ type ActionMapInterface struct {
 }
 
 func ActionMapInterfaceNewFromNative(native unsafe.Pointer) *ActionMapInterface {
-	return &ActionMapInterface{native: native}
+	instance := &ActionMapInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -376,7 +384,9 @@ type AppInfoIface struct {
 }
 
 func AppInfoIfaceNewFromNative(native unsafe.Pointer) *AppInfoIface {
-	return &AppInfoIface{native: native}
+	instance := &AppInfoIface{native: native}
+
+	return instance
 }
 
 /*
@@ -527,7 +537,9 @@ type AppLaunchContextClass struct {
 }
 
 func AppLaunchContextClassNewFromNative(native unsafe.Pointer) *AppLaunchContextClass {
-	return &AppLaunchContextClass{native: native}
+	instance := &AppLaunchContextClass{native: native}
+
+	return instance
 }
 
 /*
@@ -610,7 +622,9 @@ type AppLaunchContextPrivate struct {
 }
 
 func AppLaunchContextPrivateNewFromNative(native unsafe.Pointer) *AppLaunchContextPrivate {
-	return &AppLaunchContextPrivate{native: native}
+	instance := &AppLaunchContextPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -657,7 +671,9 @@ type ApplicationClass struct {
 }
 
 func ApplicationClassNewFromNative(native unsafe.Pointer) *ApplicationClass {
-	return &ApplicationClass{native: native}
+	instance := &ApplicationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -764,7 +780,9 @@ type ApplicationCommandLineClass struct {
 }
 
 func ApplicationCommandLineClassNewFromNative(native unsafe.Pointer) *ApplicationCommandLineClass {
-	return &ApplicationCommandLineClass{native: native}
+	instance := &ApplicationCommandLineClass{native: native}
+
+	return instance
 }
 
 /*
@@ -823,7 +841,9 @@ type ApplicationCommandLinePrivate struct {
 }
 
 func ApplicationCommandLinePrivateNewFromNative(native unsafe.Pointer) *ApplicationCommandLinePrivate {
-	return &ApplicationCommandLinePrivate{native: native}
+	instance := &ApplicationCommandLinePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -870,7 +890,9 @@ type ApplicationPrivate struct {
 }
 
 func ApplicationPrivateNewFromNative(native unsafe.Pointer) *ApplicationPrivate {
-	return &ApplicationPrivate{native: native}
+	instance := &ApplicationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -917,7 +939,9 @@ type AsyncInitableIface struct {
 }
 
 func AsyncInitableIfaceNewFromNative(native unsafe.Pointer) *AsyncInitableIface {
-	return &AsyncInitableIface{native: native}
+	instance := &AsyncInitableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -976,7 +1000,9 @@ type AsyncResultIface struct {
 }
 
 func AsyncResultIfaceNewFromNative(native unsafe.Pointer) *AsyncResultIface {
-	return &AsyncResultIface{native: native}
+	instance := &AsyncResultIface{native: native}
+
+	return instance
 }
 
 /*
@@ -1039,7 +1065,9 @@ type BufferedInputStreamClass struct {
 }
 
 func BufferedInputStreamClassNewFromNative(native unsafe.Pointer) *BufferedInputStreamClass {
-	return &BufferedInputStreamClass{native: native}
+	instance := &BufferedInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1132,7 +1160,9 @@ type BufferedInputStreamPrivate struct {
 }
 
 func BufferedInputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedInputStreamPrivate {
-	return &BufferedInputStreamPrivate{native: native}
+	instance := &BufferedInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1179,7 +1209,9 @@ type BufferedOutputStreamClass struct {
 }
 
 func BufferedOutputStreamClassNewFromNative(native unsafe.Pointer) *BufferedOutputStreamClass {
-	return &BufferedOutputStreamClass{native: native}
+	instance := &BufferedOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1248,7 +1280,9 @@ type BufferedOutputStreamPrivate struct {
 }
 
 func BufferedOutputStreamPrivateNewFromNative(native unsafe.Pointer) *BufferedOutputStreamPrivate {
-	return &BufferedOutputStreamPrivate{native: native}
+	instance := &BufferedOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1295,7 +1329,9 @@ type CancellableClass struct {
 }
 
 func CancellableClassNewFromNative(native unsafe.Pointer) *CancellableClass {
-	return &CancellableClass{native: native}
+	instance := &CancellableClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1370,7 +1406,9 @@ type CancellablePrivate struct {
 }
 
 func CancellablePrivateNewFromNative(native unsafe.Pointer) *CancellablePrivate {
-	return &CancellablePrivate{native: native}
+	instance := &CancellablePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1417,7 +1455,9 @@ type CharsetConverterClass struct {
 }
 
 func CharsetConverterClassNewFromNative(native unsafe.Pointer) *CharsetConverterClass {
-	return &CharsetConverterClass{native: native}
+	instance := &CharsetConverterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1468,7 +1508,9 @@ type ConverterIface struct {
 }
 
 func ConverterIfaceNewFromNative(native unsafe.Pointer) *ConverterIface {
-	return &ConverterIface{native: native}
+	instance := &ConverterIface{native: native}
+
+	return instance
 }
 
 /*
@@ -1527,7 +1569,9 @@ type ConverterInputStreamClass struct {
 }
 
 func ConverterInputStreamClassNewFromNative(native unsafe.Pointer) *ConverterInputStreamClass {
-	return &ConverterInputStreamClass{native: native}
+	instance := &ConverterInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1608,7 +1652,9 @@ type ConverterInputStreamPrivate struct {
 }
 
 func ConverterInputStreamPrivateNewFromNative(native unsafe.Pointer) *ConverterInputStreamPrivate {
-	return &ConverterInputStreamPrivate{native: native}
+	instance := &ConverterInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1655,7 +1701,9 @@ type ConverterOutputStreamClass struct {
 }
 
 func ConverterOutputStreamClassNewFromNative(native unsafe.Pointer) *ConverterOutputStreamClass {
-	return &ConverterOutputStreamClass{native: native}
+	instance := &ConverterOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1736,7 +1784,9 @@ type ConverterOutputStreamPrivate struct {
 }
 
 func ConverterOutputStreamPrivateNewFromNative(native unsafe.Pointer) *ConverterOutputStreamPrivate {
-	return &ConverterOutputStreamPrivate{native: native}
+	instance := &ConverterOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -1783,7 +1833,9 @@ type CredentialsClass struct {
 }
 
 func CredentialsClassNewFromNative(native unsafe.Pointer) *CredentialsClass {
-	return &CredentialsClass{native: native}
+	instance := &CredentialsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -1830,7 +1882,9 @@ type DBusAnnotationInfo struct {
 }
 
 func DBusAnnotationInfoNewFromNative(native unsafe.Pointer) *DBusAnnotationInfo {
-	return &DBusAnnotationInfo{native: native}
+	instance := &DBusAnnotationInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -1983,7 +2037,9 @@ type DBusArgInfo struct {
 }
 
 func DBusArgInfoNewFromNative(native unsafe.Pointer) *DBusArgInfo {
-	return &DBusArgInfo{native: native}
+	instance := &DBusArgInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -2136,7 +2192,9 @@ type DBusErrorEntry struct {
 }
 
 func DBusErrorEntryNewFromNative(native unsafe.Pointer) *DBusErrorEntry {
-	return &DBusErrorEntry{native: native}
+	instance := &DBusErrorEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -2211,7 +2269,9 @@ type DBusInterfaceIface struct {
 }
 
 func DBusInterfaceIfaceNewFromNative(native unsafe.Pointer) *DBusInterfaceIface {
-	return &DBusInterfaceIface{native: native}
+	instance := &DBusInterfaceIface{native: native}
+
+	return instance
 }
 
 /*
@@ -2278,7 +2338,9 @@ type DBusInterfaceInfo struct {
 }
 
 func DBusInterfaceInfoNewFromNative(native unsafe.Pointer) *DBusInterfaceInfo {
-	return &DBusInterfaceInfo{native: native}
+	instance := &DBusInterfaceInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -2586,7 +2648,9 @@ type DBusInterfaceSkeletonClass struct {
 }
 
 func DBusInterfaceSkeletonClassNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeletonClass {
-	return &DBusInterfaceSkeletonClass{native: native}
+	instance := &DBusInterfaceSkeletonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -2657,7 +2721,9 @@ type DBusInterfaceSkeletonPrivate struct {
 }
 
 func DBusInterfaceSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeletonPrivate {
-	return &DBusInterfaceSkeletonPrivate{native: native}
+	instance := &DBusInterfaceSkeletonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -2704,7 +2770,9 @@ type DBusInterfaceVTable struct {
 }
 
 func DBusInterfaceVTableNewFromNative(native unsafe.Pointer) *DBusInterfaceVTable {
-	return &DBusInterfaceVTable{native: native}
+	instance := &DBusInterfaceVTable{native: native}
+
+	return instance
 }
 
 /*
@@ -2763,7 +2831,9 @@ type DBusMethodInfo struct {
 }
 
 func DBusMethodInfoNewFromNative(native unsafe.Pointer) *DBusMethodInfo {
-	return &DBusMethodInfo{native: native}
+	instance := &DBusMethodInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -2910,7 +2980,9 @@ type DBusNodeInfo struct {
 }
 
 func DBusNodeInfoNewFromNative(native unsafe.Pointer) *DBusNodeInfo {
-	return &DBusNodeInfo{native: native}
+	instance := &DBusNodeInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -3109,7 +3181,9 @@ type DBusObjectIface struct {
 }
 
 func DBusObjectIfaceNewFromNative(native unsafe.Pointer) *DBusObjectIface {
-	return &DBusObjectIface{native: native}
+	instance := &DBusObjectIface{native: native}
+
+	return instance
 }
 
 /*
@@ -3180,7 +3254,9 @@ type DBusObjectManagerClientClass struct {
 }
 
 func DBusObjectManagerClientClassNewFromNative(native unsafe.Pointer) *DBusObjectManagerClientClass {
-	return &DBusObjectManagerClientClass{native: native}
+	instance := &DBusObjectManagerClientClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3239,7 +3315,9 @@ type DBusObjectManagerClientPrivate struct {
 }
 
 func DBusObjectManagerClientPrivateNewFromNative(native unsafe.Pointer) *DBusObjectManagerClientPrivate {
-	return &DBusObjectManagerClientPrivate{native: native}
+	instance := &DBusObjectManagerClientPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3286,7 +3364,9 @@ type DBusObjectManagerIface struct {
 }
 
 func DBusObjectManagerIfaceNewFromNative(native unsafe.Pointer) *DBusObjectManagerIface {
-	return &DBusObjectManagerIface{native: native}
+	instance := &DBusObjectManagerIface{native: native}
+
+	return instance
 }
 
 /*
@@ -3369,7 +3449,9 @@ type DBusObjectManagerServerClass struct {
 }
 
 func DBusObjectManagerServerClassNewFromNative(native unsafe.Pointer) *DBusObjectManagerServerClass {
-	return &DBusObjectManagerServerClass{native: native}
+	instance := &DBusObjectManagerServerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3420,7 +3502,9 @@ type DBusObjectManagerServerPrivate struct {
 }
 
 func DBusObjectManagerServerPrivateNewFromNative(native unsafe.Pointer) *DBusObjectManagerServerPrivate {
-	return &DBusObjectManagerServerPrivate{native: native}
+	instance := &DBusObjectManagerServerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3467,7 +3551,9 @@ type DBusObjectProxyClass struct {
 }
 
 func DBusObjectProxyClassNewFromNative(native unsafe.Pointer) *DBusObjectProxyClass {
-	return &DBusObjectProxyClass{native: native}
+	instance := &DBusObjectProxyClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3518,7 +3604,9 @@ type DBusObjectProxyPrivate struct {
 }
 
 func DBusObjectProxyPrivateNewFromNative(native unsafe.Pointer) *DBusObjectProxyPrivate {
-	return &DBusObjectProxyPrivate{native: native}
+	instance := &DBusObjectProxyPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3565,7 +3653,9 @@ type DBusObjectSkeletonClass struct {
 }
 
 func DBusObjectSkeletonClassNewFromNative(native unsafe.Pointer) *DBusObjectSkeletonClass {
-	return &DBusObjectSkeletonClass{native: native}
+	instance := &DBusObjectSkeletonClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3620,7 +3710,9 @@ type DBusObjectSkeletonPrivate struct {
 }
 
 func DBusObjectSkeletonPrivateNewFromNative(native unsafe.Pointer) *DBusObjectSkeletonPrivate {
-	return &DBusObjectSkeletonPrivate{native: native}
+	instance := &DBusObjectSkeletonPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3667,7 +3759,9 @@ type DBusPropertyInfo struct {
 }
 
 func DBusPropertyInfoNewFromNative(native unsafe.Pointer) *DBusPropertyInfo {
-	return &DBusPropertyInfo{native: native}
+	instance := &DBusPropertyInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -3824,7 +3918,9 @@ type DBusProxyClass struct {
 }
 
 func DBusProxyClassNewFromNative(native unsafe.Pointer) *DBusProxyClass {
-	return &DBusProxyClass{native: native}
+	instance := &DBusProxyClass{native: native}
+
+	return instance
 }
 
 /*
@@ -3879,7 +3975,9 @@ type DBusProxyPrivate struct {
 }
 
 func DBusProxyPrivateNewFromNative(native unsafe.Pointer) *DBusProxyPrivate {
-	return &DBusProxyPrivate{native: native}
+	instance := &DBusProxyPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -3926,7 +4024,9 @@ type DBusSignalInfo struct {
 }
 
 func DBusSignalInfoNewFromNative(native unsafe.Pointer) *DBusSignalInfo {
-	return &DBusSignalInfo{native: native}
+	instance := &DBusSignalInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -4069,7 +4169,9 @@ type DBusSubtreeVTable struct {
 }
 
 func DBusSubtreeVTableNewFromNative(native unsafe.Pointer) *DBusSubtreeVTable {
-	return &DBusSubtreeVTable{native: native}
+	instance := &DBusSubtreeVTable{native: native}
+
+	return instance
 }
 
 /*
@@ -4128,7 +4230,9 @@ type DataInputStreamClass struct {
 }
 
 func DataInputStreamClassNewFromNative(native unsafe.Pointer) *DataInputStreamClass {
-	return &DataInputStreamClass{native: native}
+	instance := &DataInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4209,7 +4313,9 @@ type DataInputStreamPrivate struct {
 }
 
 func DataInputStreamPrivateNewFromNative(native unsafe.Pointer) *DataInputStreamPrivate {
-	return &DataInputStreamPrivate{native: native}
+	instance := &DataInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4256,7 +4362,9 @@ type DataOutputStreamClass struct {
 }
 
 func DataOutputStreamClassNewFromNative(native unsafe.Pointer) *DataOutputStreamClass {
-	return &DataOutputStreamClass{native: native}
+	instance := &DataOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4337,7 +4445,9 @@ type DataOutputStreamPrivate struct {
 }
 
 func DataOutputStreamPrivateNewFromNative(native unsafe.Pointer) *DataOutputStreamPrivate {
-	return &DataOutputStreamPrivate{native: native}
+	instance := &DataOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -4384,7 +4494,9 @@ type DatagramBasedInterface struct {
 }
 
 func DatagramBasedInterfaceNewFromNative(native unsafe.Pointer) *DatagramBasedInterface {
-	return &DatagramBasedInterface{native: native}
+	instance := &DatagramBasedInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -4455,7 +4567,9 @@ type DesktopAppInfoClass struct {
 }
 
 func DesktopAppInfoClassNewFromNative(native unsafe.Pointer) *DesktopAppInfoClass {
-	return &DesktopAppInfoClass{native: native}
+	instance := &DesktopAppInfoClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4506,7 +4620,9 @@ type DesktopAppInfoLookupIface struct {
 }
 
 func DesktopAppInfoLookupIfaceNewFromNative(native unsafe.Pointer) *DesktopAppInfoLookupIface {
-	return &DesktopAppInfoLookupIface{native: native}
+	instance := &DesktopAppInfoLookupIface{native: native}
+
+	return instance
 }
 
 /*
@@ -4561,7 +4677,9 @@ type DriveIface struct {
 }
 
 func DriveIfaceNewFromNative(native unsafe.Pointer) *DriveIface {
-	return &DriveIface{native: native}
+	instance := &DriveIface{native: native}
+
+	return instance
 }
 
 /*
@@ -4740,7 +4858,9 @@ type DtlsClientConnectionInterface struct {
 }
 
 func DtlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsClientConnectionInterface {
-	return &DtlsClientConnectionInterface{native: native}
+	instance := &DtlsClientConnectionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -4791,7 +4911,9 @@ type DtlsConnectionInterface struct {
 }
 
 func DtlsConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsConnectionInterface {
-	return &DtlsConnectionInterface{native: native}
+	instance := &DtlsConnectionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -4878,7 +5000,9 @@ type DtlsServerConnectionInterface struct {
 }
 
 func DtlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *DtlsServerConnectionInterface {
-	return &DtlsServerConnectionInterface{native: native}
+	instance := &DtlsServerConnectionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -4929,7 +5053,9 @@ type EmblemClass struct {
 }
 
 func EmblemClassNewFromNative(native unsafe.Pointer) *EmblemClass {
-	return &EmblemClass{native: native}
+	instance := &EmblemClass{native: native}
+
+	return instance
 }
 
 /*
@@ -4976,7 +5102,9 @@ type EmblemedIconClass struct {
 }
 
 func EmblemedIconClassNewFromNative(native unsafe.Pointer) *EmblemedIconClass {
-	return &EmblemedIconClass{native: native}
+	instance := &EmblemedIconClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5027,7 +5155,9 @@ type EmblemedIconPrivate struct {
 }
 
 func EmblemedIconPrivateNewFromNative(native unsafe.Pointer) *EmblemedIconPrivate {
-	return &EmblemedIconPrivate{native: native}
+	instance := &EmblemedIconPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5074,7 +5204,9 @@ type FileAttributeInfo struct {
 }
 
 func FileAttributeInfoNewFromNative(native unsafe.Pointer) *FileAttributeInfo {
-	return &FileAttributeInfo{native: native}
+	instance := &FileAttributeInfo{native: native}
+
+	return instance
 }
 
 /*
@@ -5153,7 +5285,9 @@ type FileAttributeInfoList struct {
 }
 
 func FileAttributeInfoListNewFromNative(native unsafe.Pointer) *FileAttributeInfoList {
-	return &FileAttributeInfoList{native: native}
+	instance := &FileAttributeInfoList{native: native}
+
+	return instance
 }
 
 /*
@@ -5370,7 +5504,9 @@ type FileAttributeMatcher struct {
 }
 
 func FileAttributeMatcherNewFromNative(native unsafe.Pointer) *FileAttributeMatcher {
-	return &FileAttributeMatcher{native: native}
+	instance := &FileAttributeMatcher{native: native}
+
+	return instance
 }
 
 /*
@@ -5690,7 +5826,9 @@ type FileDescriptorBasedIface struct {
 }
 
 func FileDescriptorBasedIfaceNewFromNative(native unsafe.Pointer) *FileDescriptorBasedIface {
-	return &FileDescriptorBasedIface{native: native}
+	instance := &FileDescriptorBasedIface{native: native}
+
+	return instance
 }
 
 /*
@@ -5745,7 +5883,9 @@ type FileEnumeratorClass struct {
 }
 
 func FileEnumeratorClassNewFromNative(native unsafe.Pointer) *FileEnumeratorClass {
-	return &FileEnumeratorClass{native: native}
+	instance := &FileEnumeratorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -5848,7 +5988,9 @@ type FileEnumeratorPrivate struct {
 }
 
 func FileEnumeratorPrivateNewFromNative(native unsafe.Pointer) *FileEnumeratorPrivate {
-	return &FileEnumeratorPrivate{native: native}
+	instance := &FileEnumeratorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -5895,7 +6037,9 @@ type FileIOStreamClass struct {
 }
 
 func FileIOStreamClassNewFromNative(native unsafe.Pointer) *FileIOStreamClass {
-	return &FileIOStreamClass{native: native}
+	instance := &FileIOStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6012,7 +6156,9 @@ type FileIOStreamPrivate struct {
 }
 
 func FileIOStreamPrivateNewFromNative(native unsafe.Pointer) *FileIOStreamPrivate {
-	return &FileIOStreamPrivate{native: native}
+	instance := &FileIOStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6059,7 +6205,9 @@ type FileIconClass struct {
 }
 
 func FileIconClassNewFromNative(native unsafe.Pointer) *FileIconClass {
-	return &FileIconClass{native: native}
+	instance := &FileIconClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6106,7 +6254,9 @@ type FileIface struct {
 }
 
 func FileIfaceNewFromNative(native unsafe.Pointer) *FileIface {
-	return &FileIface{native: native}
+	instance := &FileIface{native: native}
+
+	return instance
 }
 
 /*
@@ -6579,7 +6729,9 @@ type FileInfoClass struct {
 }
 
 func FileInfoClassNewFromNative(native unsafe.Pointer) *FileInfoClass {
-	return &FileInfoClass{native: native}
+	instance := &FileInfoClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6626,7 +6778,9 @@ type FileInputStreamClass struct {
 }
 
 func FileInputStreamClassNewFromNative(native unsafe.Pointer) *FileInputStreamClass {
-	return &FileInputStreamClass{native: native}
+	instance := &FileInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6731,7 +6885,9 @@ type FileInputStreamPrivate struct {
 }
 
 func FileInputStreamPrivateNewFromNative(native unsafe.Pointer) *FileInputStreamPrivate {
-	return &FileInputStreamPrivate{native: native}
+	instance := &FileInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6778,7 +6934,9 @@ type FileMonitorClass struct {
 }
 
 func FileMonitorClassNewFromNative(native unsafe.Pointer) *FileMonitorClass {
-	return &FileMonitorClass{native: native}
+	instance := &FileMonitorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -6857,7 +7015,9 @@ type FileMonitorPrivate struct {
 }
 
 func FileMonitorPrivateNewFromNative(native unsafe.Pointer) *FileMonitorPrivate {
-	return &FileMonitorPrivate{native: native}
+	instance := &FileMonitorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -6904,7 +7064,9 @@ type FileOutputStreamClass struct {
 }
 
 func FileOutputStreamClassNewFromNative(native unsafe.Pointer) *FileOutputStreamClass {
-	return &FileOutputStreamClass{native: native}
+	instance := &FileOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7021,7 +7183,9 @@ type FileOutputStreamPrivate struct {
 }
 
 func FileOutputStreamPrivateNewFromNative(native unsafe.Pointer) *FileOutputStreamPrivate {
-	return &FileOutputStreamPrivate{native: native}
+	instance := &FileOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7068,7 +7232,9 @@ type FilenameCompleterClass struct {
 }
 
 func FilenameCompleterClassNewFromNative(native unsafe.Pointer) *FilenameCompleterClass {
-	return &FilenameCompleterClass{native: native}
+	instance := &FilenameCompleterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7135,7 +7301,9 @@ type FilterInputStreamClass struct {
 }
 
 func FilterInputStreamClassNewFromNative(native unsafe.Pointer) *FilterInputStreamClass {
-	return &FilterInputStreamClass{native: native}
+	instance := &FilterInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7208,7 +7376,9 @@ type FilterOutputStreamClass struct {
 }
 
 func FilterOutputStreamClassNewFromNative(native unsafe.Pointer) *FilterOutputStreamClass {
-	return &FilterOutputStreamClass{native: native}
+	instance := &FilterOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7281,7 +7451,9 @@ type IOExtension struct {
 }
 
 func IOExtensionNewFromNative(native unsafe.Pointer) *IOExtension {
-	return &IOExtension{native: native}
+	instance := &IOExtension{native: native}
+
+	return instance
 }
 
 /*
@@ -7396,7 +7568,9 @@ type IOExtensionPoint struct {
 }
 
 func IOExtensionPointNewFromNative(native unsafe.Pointer) *IOExtensionPoint {
-	return &IOExtensionPoint{native: native}
+	instance := &IOExtensionPoint{native: native}
+
+	return instance
 }
 
 /*
@@ -7482,7 +7656,9 @@ type IOModuleClass struct {
 }
 
 func IOModuleClassNewFromNative(native unsafe.Pointer) *IOModuleClass {
-	return &IOModuleClass{native: native}
+	instance := &IOModuleClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7529,7 +7705,9 @@ type IOModuleScope struct {
 }
 
 func IOModuleScopeNewFromNative(native unsafe.Pointer) *IOModuleScope {
-	return &IOModuleScope{native: native}
+	instance := &IOModuleScope{native: native}
+
+	return instance
 }
 
 /*
@@ -7633,7 +7811,9 @@ type IOSchedulerJob struct {
 }
 
 func IOSchedulerJobNewFromNative(native unsafe.Pointer) *IOSchedulerJob {
-	return &IOSchedulerJob{native: native}
+	instance := &IOSchedulerJob{native: native}
+
+	return instance
 }
 
 /*
@@ -7684,7 +7864,9 @@ type IOStreamAdapter struct {
 }
 
 func IOStreamAdapterNewFromNative(native unsafe.Pointer) *IOStreamAdapter {
-	return &IOStreamAdapter{native: native}
+	instance := &IOStreamAdapter{native: native}
+
+	return instance
 }
 
 /*
@@ -7731,7 +7913,9 @@ type IOStreamClass struct {
 }
 
 func IOStreamClassNewFromNative(native unsafe.Pointer) *IOStreamClass {
-	return &IOStreamClass{native: native}
+	instance := &IOStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -7842,7 +8026,9 @@ type IOStreamPrivate struct {
 }
 
 func IOStreamPrivateNewFromNative(native unsafe.Pointer) *IOStreamPrivate {
-	return &IOStreamPrivate{native: native}
+	instance := &IOStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -7889,7 +8075,9 @@ type IconIface struct {
 }
 
 func IconIfaceNewFromNative(native unsafe.Pointer) *IconIface {
-	return &IconIface{native: native}
+	instance := &IconIface{native: native}
+
+	return instance
 }
 
 /*
@@ -7960,7 +8148,9 @@ type InetAddressClass struct {
 }
 
 func InetAddressClassNewFromNative(native unsafe.Pointer) *InetAddressClass {
-	return &InetAddressClass{native: native}
+	instance := &InetAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8019,7 +8209,9 @@ type InetAddressMaskClass struct {
 }
 
 func InetAddressMaskClassNewFromNative(native unsafe.Pointer) *InetAddressMaskClass {
-	return &InetAddressMaskClass{native: native}
+	instance := &InetAddressMaskClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8070,7 +8262,9 @@ type InetAddressMaskPrivate struct {
 }
 
 func InetAddressMaskPrivateNewFromNative(native unsafe.Pointer) *InetAddressMaskPrivate {
-	return &InetAddressMaskPrivate{native: native}
+	instance := &InetAddressMaskPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8117,7 +8311,9 @@ type InetAddressPrivate struct {
 }
 
 func InetAddressPrivateNewFromNative(native unsafe.Pointer) *InetAddressPrivate {
-	return &InetAddressPrivate{native: native}
+	instance := &InetAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8164,7 +8360,9 @@ type InetSocketAddressClass struct {
 }
 
 func InetSocketAddressClassNewFromNative(native unsafe.Pointer) *InetSocketAddressClass {
-	return &InetSocketAddressClass{native: native}
+	instance := &InetSocketAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8225,7 +8423,9 @@ type InetSocketAddressPrivate struct {
 }
 
 func InetSocketAddressPrivateNewFromNative(native unsafe.Pointer) *InetSocketAddressPrivate {
-	return &InetSocketAddressPrivate{native: native}
+	instance := &InetSocketAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8272,7 +8472,9 @@ type InitableIface struct {
 }
 
 func InitableIfaceNewFromNative(native unsafe.Pointer) *InitableIface {
-	return &InitableIface{native: native}
+	instance := &InitableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -8327,7 +8529,9 @@ type InputMessage struct {
 }
 
 func InputMessageNewFromNative(native unsafe.Pointer) *InputMessage {
-	return &InputMessage{native: native}
+	instance := &InputMessage{native: native}
+
+	return instance
 }
 
 /*
@@ -8452,7 +8656,9 @@ type InputStreamClass struct {
 }
 
 func InputStreamClassNewFromNative(native unsafe.Pointer) *InputStreamClass {
-	return &InputStreamClass{native: native}
+	instance := &InputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8559,7 +8765,9 @@ type InputStreamPrivate struct {
 }
 
 func InputStreamPrivateNewFromNative(native unsafe.Pointer) *InputStreamPrivate {
-	return &InputStreamPrivate{native: native}
+	instance := &InputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8606,7 +8814,9 @@ type InputVector struct {
 }
 
 func InputVectorNewFromNative(native unsafe.Pointer) *InputVector {
-	return &InputVector{native: native}
+	instance := &InputVector{native: native}
+
+	return instance
 }
 
 /*
@@ -8671,7 +8881,9 @@ type ListModelInterface struct {
 }
 
 func ListModelInterfaceNewFromNative(native unsafe.Pointer) *ListModelInterface {
-	return &ListModelInterface{native: native}
+	instance := &ListModelInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -8734,7 +8946,9 @@ type ListStoreClass struct {
 }
 
 func ListStoreClassNewFromNative(native unsafe.Pointer) *ListStoreClass {
-	return &ListStoreClass{native: native}
+	instance := &ListStoreClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8785,7 +8999,9 @@ type LoadableIconIface struct {
 }
 
 func LoadableIconIfaceNewFromNative(native unsafe.Pointer) *LoadableIconIface {
-	return &LoadableIconIface{native: native}
+	instance := &LoadableIconIface{native: native}
+
+	return instance
 }
 
 /*
@@ -8848,7 +9064,9 @@ type MemoryInputStreamClass struct {
 }
 
 func MemoryInputStreamClassNewFromNative(native unsafe.Pointer) *MemoryInputStreamClass {
-	return &MemoryInputStreamClass{native: native}
+	instance := &MemoryInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -8929,7 +9147,9 @@ type MemoryInputStreamPrivate struct {
 }
 
 func MemoryInputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryInputStreamPrivate {
-	return &MemoryInputStreamPrivate{native: native}
+	instance := &MemoryInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -8976,7 +9196,9 @@ type MemoryOutputStreamClass struct {
 }
 
 func MemoryOutputStreamClassNewFromNative(native unsafe.Pointer) *MemoryOutputStreamClass {
-	return &MemoryOutputStreamClass{native: native}
+	instance := &MemoryOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9057,7 +9279,9 @@ type MemoryOutputStreamPrivate struct {
 }
 
 func MemoryOutputStreamPrivateNewFromNative(native unsafe.Pointer) *MemoryOutputStreamPrivate {
-	return &MemoryOutputStreamPrivate{native: native}
+	instance := &MemoryOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9104,7 +9328,9 @@ type MenuAttributeIterClass struct {
 }
 
 func MenuAttributeIterClassNewFromNative(native unsafe.Pointer) *MenuAttributeIterClass {
-	return &MenuAttributeIterClass{native: native}
+	instance := &MenuAttributeIterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9159,7 +9385,9 @@ type MenuAttributeIterPrivate struct {
 }
 
 func MenuAttributeIterPrivateNewFromNative(native unsafe.Pointer) *MenuAttributeIterPrivate {
-	return &MenuAttributeIterPrivate{native: native}
+	instance := &MenuAttributeIterPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9206,7 +9434,9 @@ type MenuLinkIterClass struct {
 }
 
 func MenuLinkIterClassNewFromNative(native unsafe.Pointer) *MenuLinkIterClass {
-	return &MenuLinkIterClass{native: native}
+	instance := &MenuLinkIterClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9261,7 +9491,9 @@ type MenuLinkIterPrivate struct {
 }
 
 func MenuLinkIterPrivateNewFromNative(native unsafe.Pointer) *MenuLinkIterPrivate {
-	return &MenuLinkIterPrivate{native: native}
+	instance := &MenuLinkIterPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9308,7 +9540,9 @@ type MenuModelClass struct {
 }
 
 func MenuModelClassNewFromNative(native unsafe.Pointer) *MenuModelClass {
-	return &MenuModelClass{native: native}
+	instance := &MenuModelClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9391,7 +9625,9 @@ type MenuModelPrivate struct {
 }
 
 func MenuModelPrivateNewFromNative(native unsafe.Pointer) *MenuModelPrivate {
-	return &MenuModelPrivate{native: native}
+	instance := &MenuModelPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9438,7 +9674,9 @@ type MountIface struct {
 }
 
 func MountIfaceNewFromNative(native unsafe.Pointer) *MountIface {
-	return &MountIface{native: native}
+	instance := &MountIface{native: native}
+
+	return instance
 }
 
 /*
@@ -9597,7 +9835,9 @@ type MountOperationClass struct {
 }
 
 func MountOperationClassNewFromNative(native unsafe.Pointer) *MountOperationClass {
-	return &MountOperationClass{native: native}
+	instance := &MountOperationClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9708,7 +9948,9 @@ type MountOperationPrivate struct {
 }
 
 func MountOperationPrivateNewFromNative(native unsafe.Pointer) *MountOperationPrivate {
-	return &MountOperationPrivate{native: native}
+	instance := &MountOperationPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9755,7 +9997,9 @@ type NativeSocketAddressClass struct {
 }
 
 func NativeSocketAddressClassNewFromNative(native unsafe.Pointer) *NativeSocketAddressClass {
-	return &NativeSocketAddressClass{native: native}
+	instance := &NativeSocketAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9816,7 +10060,9 @@ type NativeSocketAddressPrivate struct {
 }
 
 func NativeSocketAddressPrivateNewFromNative(native unsafe.Pointer) *NativeSocketAddressPrivate {
-	return &NativeSocketAddressPrivate{native: native}
+	instance := &NativeSocketAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -9863,7 +10109,9 @@ type NativeVolumeMonitorClass struct {
 }
 
 func NativeVolumeMonitorClassNewFromNative(native unsafe.Pointer) *NativeVolumeMonitorClass {
-	return &NativeVolumeMonitorClass{native: native}
+	instance := &NativeVolumeMonitorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9928,7 +10176,9 @@ type NetworkAddressClass struct {
 }
 
 func NetworkAddressClassNewFromNative(native unsafe.Pointer) *NetworkAddressClass {
-	return &NetworkAddressClass{native: native}
+	instance := &NetworkAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -9979,7 +10229,9 @@ type NetworkAddressPrivate struct {
 }
 
 func NetworkAddressPrivateNewFromNative(native unsafe.Pointer) *NetworkAddressPrivate {
-	return &NetworkAddressPrivate{native: native}
+	instance := &NetworkAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10026,7 +10278,9 @@ type NetworkMonitorInterface struct {
 }
 
 func NetworkMonitorInterfaceNewFromNative(native unsafe.Pointer) *NetworkMonitorInterface {
-	return &NetworkMonitorInterface{native: native}
+	instance := &NetworkMonitorInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -10093,7 +10347,9 @@ type NetworkServiceClass struct {
 }
 
 func NetworkServiceClassNewFromNative(native unsafe.Pointer) *NetworkServiceClass {
-	return &NetworkServiceClass{native: native}
+	instance := &NetworkServiceClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10144,7 +10400,9 @@ type NetworkServicePrivate struct {
 }
 
 func NetworkServicePrivateNewFromNative(native unsafe.Pointer) *NetworkServicePrivate {
-	return &NetworkServicePrivate{native: native}
+	instance := &NetworkServicePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10191,7 +10449,9 @@ type OutputMessage struct {
 }
 
 func OutputMessageNewFromNative(native unsafe.Pointer) *OutputMessage {
-	return &OutputMessage{native: native}
+	instance := &OutputMessage{native: native}
+
+	return instance
 }
 
 /*
@@ -10312,7 +10572,9 @@ type OutputStreamClass struct {
 }
 
 func OutputStreamClassNewFromNative(native unsafe.Pointer) *OutputStreamClass {
-	return &OutputStreamClass{native: native}
+	instance := &OutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10443,7 +10705,9 @@ type OutputStreamPrivate struct {
 }
 
 func OutputStreamPrivateNewFromNative(native unsafe.Pointer) *OutputStreamPrivate {
-	return &OutputStreamPrivate{native: native}
+	instance := &OutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10490,7 +10754,9 @@ type OutputVector struct {
 }
 
 func OutputVectorNewFromNative(native unsafe.Pointer) *OutputVector {
-	return &OutputVector{native: native}
+	instance := &OutputVector{native: native}
+
+	return instance
 }
 
 /*
@@ -10555,7 +10821,9 @@ type PermissionClass struct {
 }
 
 func PermissionClassNewFromNative(native unsafe.Pointer) *PermissionClass {
-	return &PermissionClass{native: native}
+	instance := &PermissionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10634,7 +10902,9 @@ type PermissionPrivate struct {
 }
 
 func PermissionPrivateNewFromNative(native unsafe.Pointer) *PermissionPrivate {
-	return &PermissionPrivate{native: native}
+	instance := &PermissionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -10681,7 +10951,9 @@ type PollableInputStreamInterface struct {
 }
 
 func PollableInputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableInputStreamInterface {
-	return &PollableInputStreamInterface{native: native}
+	instance := &PollableInputStreamInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -10748,7 +11020,9 @@ type PollableOutputStreamInterface struct {
 }
 
 func PollableOutputStreamInterfaceNewFromNative(native unsafe.Pointer) *PollableOutputStreamInterface {
-	return &PollableOutputStreamInterface{native: native}
+	instance := &PollableOutputStreamInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -10819,7 +11093,9 @@ type ProxyAddressClass struct {
 }
 
 func ProxyAddressClassNewFromNative(native unsafe.Pointer) *ProxyAddressClass {
-	return &ProxyAddressClass{native: native}
+	instance := &ProxyAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10880,7 +11156,9 @@ type ProxyAddressEnumeratorClass struct {
 }
 
 func ProxyAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *ProxyAddressEnumeratorClass {
-	return &ProxyAddressEnumeratorClass{native: native}
+	instance := &ProxyAddressEnumeratorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -10955,7 +11233,9 @@ type ProxyAddressEnumeratorPrivate struct {
 }
 
 func ProxyAddressEnumeratorPrivateNewFromNative(native unsafe.Pointer) *ProxyAddressEnumeratorPrivate {
-	return &ProxyAddressEnumeratorPrivate{native: native}
+	instance := &ProxyAddressEnumeratorPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11002,7 +11282,9 @@ type ProxyAddressPrivate struct {
 }
 
 func ProxyAddressPrivateNewFromNative(native unsafe.Pointer) *ProxyAddressPrivate {
-	return &ProxyAddressPrivate{native: native}
+	instance := &ProxyAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11049,7 +11331,9 @@ type ProxyInterface struct {
 }
 
 func ProxyInterfaceNewFromNative(native unsafe.Pointer) *ProxyInterface {
-	return &ProxyInterface{native: native}
+	instance := &ProxyInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -11116,7 +11400,9 @@ type ProxyResolverInterface struct {
 }
 
 func ProxyResolverInterfaceNewFromNative(native unsafe.Pointer) *ProxyResolverInterface {
-	return &ProxyResolverInterface{native: native}
+	instance := &ProxyResolverInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -11183,7 +11469,9 @@ type RemoteActionGroupInterface struct {
 }
 
 func RemoteActionGroupInterfaceNewFromNative(native unsafe.Pointer) *RemoteActionGroupInterface {
-	return &RemoteActionGroupInterface{native: native}
+	instance := &RemoteActionGroupInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -11242,7 +11530,9 @@ type ResolverClass struct {
 }
 
 func ResolverClassNewFromNative(native unsafe.Pointer) *ResolverClass {
-	return &ResolverClass{native: native}
+	instance := &ResolverClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11357,7 +11647,9 @@ type ResolverPrivate struct {
 }
 
 func ResolverPrivateNewFromNative(native unsafe.Pointer) *ResolverPrivate {
-	return &ResolverPrivate{native: native}
+	instance := &ResolverPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11404,7 +11696,9 @@ type Resource struct {
 }
 
 func ResourceNewFromNative(native unsafe.Pointer) *Resource {
-	return &Resource{native: native}
+	instance := &Resource{native: native}
+
+	return instance
 }
 
 /*
@@ -11562,7 +11856,9 @@ type SeekableIface struct {
 }
 
 func SeekableIfaceNewFromNative(native unsafe.Pointer) *SeekableIface {
-	return &SeekableIface{native: native}
+	instance := &SeekableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -11633,7 +11929,9 @@ type SettingsBackendClass struct {
 }
 
 func SettingsBackendClassNewFromNative(native unsafe.Pointer) *SettingsBackendClass {
-	return &SettingsBackendClass{native: native}
+	instance := &SettingsBackendClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11724,7 +12022,9 @@ type SettingsBackendPrivate struct {
 }
 
 func SettingsBackendPrivateNewFromNative(native unsafe.Pointer) *SettingsBackendPrivate {
-	return &SettingsBackendPrivate{native: native}
+	instance := &SettingsBackendPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11771,7 +12071,9 @@ type SettingsClass struct {
 }
 
 func SettingsClassNewFromNative(native unsafe.Pointer) *SettingsClass {
-	return &SettingsClass{native: native}
+	instance := &SettingsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -11842,7 +12144,9 @@ type SettingsPrivate struct {
 }
 
 func SettingsPrivateNewFromNative(native unsafe.Pointer) *SettingsPrivate {
-	return &SettingsPrivate{native: native}
+	instance := &SettingsPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -11889,7 +12193,9 @@ type SettingsSchema struct {
 }
 
 func SettingsSchemaNewFromNative(native unsafe.Pointer) *SettingsSchema {
-	return &SettingsSchema{native: native}
+	instance := &SettingsSchema{native: native}
+
+	return instance
 }
 
 /*
@@ -12182,7 +12488,9 @@ type SettingsSchemaKey struct {
 }
 
 func SettingsSchemaKeyNewFromNative(native unsafe.Pointer) *SettingsSchemaKey {
-	return &SettingsSchemaKey{native: native}
+	instance := &SettingsSchemaKey{native: native}
+
+	return instance
 }
 
 /*
@@ -12393,7 +12701,9 @@ type SettingsSchemaSource struct {
 }
 
 func SettingsSchemaSourceNewFromNative(native unsafe.Pointer) *SettingsSchemaSource {
-	return &SettingsSchemaSource{native: native}
+	instance := &SettingsSchemaSource{native: native}
+
+	return instance
 }
 
 /*
@@ -12555,7 +12865,9 @@ type SimpleActionGroupClass struct {
 }
 
 func SimpleActionGroupClassNewFromNative(native unsafe.Pointer) *SimpleActionGroupClass {
-	return &SimpleActionGroupClass{native: native}
+	instance := &SimpleActionGroupClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12602,7 +12914,9 @@ type SimpleActionGroupPrivate struct {
 }
 
 func SimpleActionGroupPrivateNewFromNative(native unsafe.Pointer) *SimpleActionGroupPrivate {
-	return &SimpleActionGroupPrivate{native: native}
+	instance := &SimpleActionGroupPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12649,7 +12963,9 @@ type SimpleAsyncResultClass struct {
 }
 
 func SimpleAsyncResultClassNewFromNative(native unsafe.Pointer) *SimpleAsyncResultClass {
-	return &SimpleAsyncResultClass{native: native}
+	instance := &SimpleAsyncResultClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12696,7 +13012,9 @@ type SimpleProxyResolverClass struct {
 }
 
 func SimpleProxyResolverClassNewFromNative(native unsafe.Pointer) *SimpleProxyResolverClass {
-	return &SimpleProxyResolverClass{native: native}
+	instance := &SimpleProxyResolverClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12767,7 +13085,9 @@ type SimpleProxyResolverPrivate struct {
 }
 
 func SimpleProxyResolverPrivateNewFromNative(native unsafe.Pointer) *SimpleProxyResolverPrivate {
-	return &SimpleProxyResolverPrivate{native: native}
+	instance := &SimpleProxyResolverPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -12814,7 +13134,9 @@ type SocketAddressClass struct {
 }
 
 func SocketAddressClassNewFromNative(native unsafe.Pointer) *SocketAddressClass {
-	return &SocketAddressClass{native: native}
+	instance := &SocketAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12877,7 +13199,9 @@ type SocketAddressEnumeratorClass struct {
 }
 
 func SocketAddressEnumeratorClassNewFromNative(native unsafe.Pointer) *SocketAddressEnumeratorClass {
-	return &SocketAddressEnumeratorClass{native: native}
+	instance := &SocketAddressEnumeratorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -12936,7 +13260,9 @@ type SocketClass struct {
 }
 
 func SocketClassNewFromNative(native unsafe.Pointer) *SocketClass {
-	return &SocketClass{native: native}
+	instance := &SocketClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13027,7 +13353,9 @@ type SocketClientClass struct {
 }
 
 func SocketClientClassNewFromNative(native unsafe.Pointer) *SocketClientClass {
-	return &SocketClientClass{native: native}
+	instance := &SocketClientClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13098,7 +13426,9 @@ type SocketClientPrivate struct {
 }
 
 func SocketClientPrivateNewFromNative(native unsafe.Pointer) *SocketClientPrivate {
-	return &SocketClientPrivate{native: native}
+	instance := &SocketClientPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13145,7 +13475,9 @@ type SocketConnectableIface struct {
 }
 
 func SocketConnectableIfaceNewFromNative(native unsafe.Pointer) *SocketConnectableIface {
-	return &SocketConnectableIface{native: native}
+	instance := &SocketConnectableIface{native: native}
+
+	return instance
 }
 
 /*
@@ -13208,7 +13540,9 @@ type SocketConnectionClass struct {
 }
 
 func SocketConnectionClassNewFromNative(native unsafe.Pointer) *SocketConnectionClass {
-	return &SocketConnectionClass{native: native}
+	instance := &SocketConnectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13293,7 +13627,9 @@ type SocketConnectionPrivate struct {
 }
 
 func SocketConnectionPrivateNewFromNative(native unsafe.Pointer) *SocketConnectionPrivate {
-	return &SocketConnectionPrivate{native: native}
+	instance := &SocketConnectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13340,7 +13676,9 @@ type SocketControlMessageClass struct {
 }
 
 func SocketControlMessageClassNewFromNative(native unsafe.Pointer) *SocketControlMessageClass {
-	return &SocketControlMessageClass{native: native}
+	instance := &SocketControlMessageClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13431,7 +13769,9 @@ type SocketControlMessagePrivate struct {
 }
 
 func SocketControlMessagePrivateNewFromNative(native unsafe.Pointer) *SocketControlMessagePrivate {
-	return &SocketControlMessagePrivate{native: native}
+	instance := &SocketControlMessagePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13478,7 +13818,9 @@ type SocketListenerClass struct {
 }
 
 func SocketListenerClassNewFromNative(native unsafe.Pointer) *SocketListenerClass {
-	return &SocketListenerClass{native: native}
+	instance := &SocketListenerClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13557,7 +13899,9 @@ type SocketListenerPrivate struct {
 }
 
 func SocketListenerPrivateNewFromNative(native unsafe.Pointer) *SocketListenerPrivate {
-	return &SocketListenerPrivate{native: native}
+	instance := &SocketListenerPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13604,7 +13948,9 @@ type SocketPrivate struct {
 }
 
 func SocketPrivateNewFromNative(native unsafe.Pointer) *SocketPrivate {
-	return &SocketPrivate{native: native}
+	instance := &SocketPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13651,7 +13997,9 @@ type SocketServiceClass struct {
 }
 
 func SocketServiceClassNewFromNative(native unsafe.Pointer) *SocketServiceClass {
-	return &SocketServiceClass{native: native}
+	instance := &SocketServiceClass{native: native}
+
+	return instance
 }
 
 /*
@@ -13740,7 +14088,9 @@ type SocketServicePrivate struct {
 }
 
 func SocketServicePrivateNewFromNative(native unsafe.Pointer) *SocketServicePrivate {
-	return &SocketServicePrivate{native: native}
+	instance := &SocketServicePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -13787,7 +14137,9 @@ type SrvTarget struct {
 }
 
 func SrvTargetNewFromNative(native unsafe.Pointer) *SrvTarget {
-	return &SrvTarget{native: native}
+	instance := &SrvTarget{native: native}
+
+	return instance
 }
 
 /*
@@ -14042,7 +14394,9 @@ type StaticResource struct {
 }
 
 func StaticResourceNewFromNative(native unsafe.Pointer) *StaticResource {
-	return &StaticResource{native: native}
+	instance := &StaticResource{native: native}
+
+	return instance
 }
 
 /*
@@ -14177,7 +14531,9 @@ type TaskClass struct {
 }
 
 func TaskClassNewFromNative(native unsafe.Pointer) *TaskClass {
-	return &TaskClass{native: native}
+	instance := &TaskClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14224,7 +14580,9 @@ type TcpConnectionClass struct {
 }
 
 func TcpConnectionClassNewFromNative(native unsafe.Pointer) *TcpConnectionClass {
-	return &TcpConnectionClass{native: native}
+	instance := &TcpConnectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14285,7 +14643,9 @@ type TcpConnectionPrivate struct {
 }
 
 func TcpConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpConnectionPrivate {
-	return &TcpConnectionPrivate{native: native}
+	instance := &TcpConnectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14332,7 +14692,9 @@ type TcpWrapperConnectionClass struct {
 }
 
 func TcpWrapperConnectionClassNewFromNative(native unsafe.Pointer) *TcpWrapperConnectionClass {
-	return &TcpWrapperConnectionClass{native: native}
+	instance := &TcpWrapperConnectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14393,7 +14755,9 @@ type TcpWrapperConnectionPrivate struct {
 }
 
 func TcpWrapperConnectionPrivateNewFromNative(native unsafe.Pointer) *TcpWrapperConnectionPrivate {
-	return &TcpWrapperConnectionPrivate{native: native}
+	instance := &TcpWrapperConnectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14440,7 +14804,9 @@ type ThemedIconClass struct {
 }
 
 func ThemedIconClassNewFromNative(native unsafe.Pointer) *ThemedIconClass {
-	return &ThemedIconClass{native: native}
+	instance := &ThemedIconClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14487,7 +14853,9 @@ type ThreadedSocketServiceClass struct {
 }
 
 func ThreadedSocketServiceClassNewFromNative(native unsafe.Pointer) *ThreadedSocketServiceClass {
-	return &ThreadedSocketServiceClass{native: native}
+	instance := &ThreadedSocketServiceClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14572,7 +14940,9 @@ type ThreadedSocketServicePrivate struct {
 }
 
 func ThreadedSocketServicePrivateNewFromNative(native unsafe.Pointer) *ThreadedSocketServicePrivate {
-	return &ThreadedSocketServicePrivate{native: native}
+	instance := &ThreadedSocketServicePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14619,7 +14989,9 @@ type TlsBackendInterface struct {
 }
 
 func TlsBackendInterfaceNewFromNative(native unsafe.Pointer) *TlsBackendInterface {
-	return &TlsBackendInterface{native: native}
+	instance := &TlsBackendInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -14706,7 +15078,9 @@ type TlsCertificateClass struct {
 }
 
 func TlsCertificateClassNewFromNative(native unsafe.Pointer) *TlsCertificateClass {
-	return &TlsCertificateClass{native: native}
+	instance := &TlsCertificateClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14761,7 +15135,9 @@ type TlsCertificatePrivate struct {
 }
 
 func TlsCertificatePrivateNewFromNative(native unsafe.Pointer) *TlsCertificatePrivate {
-	return &TlsCertificatePrivate{native: native}
+	instance := &TlsCertificatePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14808,7 +15184,9 @@ type TlsClientConnectionInterface struct {
 }
 
 func TlsClientConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsClientConnectionInterface {
-	return &TlsClientConnectionInterface{native: native}
+	instance := &TlsClientConnectionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -14863,7 +15241,9 @@ type TlsConnectionClass struct {
 }
 
 func TlsConnectionClassNewFromNative(native unsafe.Pointer) *TlsConnectionClass {
-	return &TlsConnectionClass{native: native}
+	instance := &TlsConnectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -14940,7 +15320,9 @@ type TlsConnectionPrivate struct {
 }
 
 func TlsConnectionPrivateNewFromNative(native unsafe.Pointer) *TlsConnectionPrivate {
-	return &TlsConnectionPrivate{native: native}
+	instance := &TlsConnectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -14987,7 +15369,9 @@ type TlsDatabaseClass struct {
 }
 
 func TlsDatabaseClassNewFromNative(native unsafe.Pointer) *TlsDatabaseClass {
-	return &TlsDatabaseClass{native: native}
+	instance := &TlsDatabaseClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15090,7 +15474,9 @@ type TlsDatabasePrivate struct {
 }
 
 func TlsDatabasePrivateNewFromNative(native unsafe.Pointer) *TlsDatabasePrivate {
-	return &TlsDatabasePrivate{native: native}
+	instance := &TlsDatabasePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15137,7 +15523,9 @@ type TlsFileDatabaseInterface struct {
 }
 
 func TlsFileDatabaseInterfaceNewFromNative(native unsafe.Pointer) *TlsFileDatabaseInterface {
-	return &TlsFileDatabaseInterface{native: native}
+	instance := &TlsFileDatabaseInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -15188,7 +15576,9 @@ type TlsInteractionClass struct {
 }
 
 func TlsInteractionClassNewFromNative(native unsafe.Pointer) *TlsInteractionClass {
-	return &TlsInteractionClass{native: native}
+	instance := &TlsInteractionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15259,7 +15649,9 @@ type TlsInteractionPrivate struct {
 }
 
 func TlsInteractionPrivateNewFromNative(native unsafe.Pointer) *TlsInteractionPrivate {
-	return &TlsInteractionPrivate{native: native}
+	instance := &TlsInteractionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15306,7 +15698,9 @@ type TlsPasswordClass struct {
 }
 
 func TlsPasswordClassNewFromNative(native unsafe.Pointer) *TlsPasswordClass {
-	return &TlsPasswordClass{native: native}
+	instance := &TlsPasswordClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15369,7 +15763,9 @@ type TlsPasswordPrivate struct {
 }
 
 func TlsPasswordPrivateNewFromNative(native unsafe.Pointer) *TlsPasswordPrivate {
-	return &TlsPasswordPrivate{native: native}
+	instance := &TlsPasswordPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15416,7 +15812,9 @@ type TlsServerConnectionInterface struct {
 }
 
 func TlsServerConnectionInterfaceNewFromNative(native unsafe.Pointer) *TlsServerConnectionInterface {
-	return &TlsServerConnectionInterface{native: native}
+	instance := &TlsServerConnectionInterface{native: native}
+
+	return instance
 }
 
 /*
@@ -15467,7 +15865,9 @@ type UnixConnectionClass struct {
 }
 
 func UnixConnectionClassNewFromNative(native unsafe.Pointer) *UnixConnectionClass {
-	return &UnixConnectionClass{native: native}
+	instance := &UnixConnectionClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15528,7 +15928,9 @@ type UnixConnectionPrivate struct {
 }
 
 func UnixConnectionPrivateNewFromNative(native unsafe.Pointer) *UnixConnectionPrivate {
-	return &UnixConnectionPrivate{native: native}
+	instance := &UnixConnectionPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15575,7 +15977,9 @@ type UnixCredentialsMessageClass struct {
 }
 
 func UnixCredentialsMessageClassNewFromNative(native unsafe.Pointer) *UnixCredentialsMessageClass {
-	return &UnixCredentialsMessageClass{native: native}
+	instance := &UnixCredentialsMessageClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15644,7 +16048,9 @@ type UnixCredentialsMessagePrivate struct {
 }
 
 func UnixCredentialsMessagePrivateNewFromNative(native unsafe.Pointer) *UnixCredentialsMessagePrivate {
-	return &UnixCredentialsMessagePrivate{native: native}
+	instance := &UnixCredentialsMessagePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15691,7 +16097,9 @@ type UnixFDListClass struct {
 }
 
 func UnixFDListClassNewFromNative(native unsafe.Pointer) *UnixFDListClass {
-	return &UnixFDListClass{native: native}
+	instance := &UnixFDListClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15762,7 +16170,9 @@ type UnixFDListPrivate struct {
 }
 
 func UnixFDListPrivateNewFromNative(native unsafe.Pointer) *UnixFDListPrivate {
-	return &UnixFDListPrivate{native: native}
+	instance := &UnixFDListPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15809,7 +16219,9 @@ type UnixFDMessageClass struct {
 }
 
 func UnixFDMessageClassNewFromNative(native unsafe.Pointer) *UnixFDMessageClass {
-	return &UnixFDMessageClass{native: native}
+	instance := &UnixFDMessageClass{native: native}
+
+	return instance
 }
 
 /*
@@ -15878,7 +16290,9 @@ type UnixFDMessagePrivate struct {
 }
 
 func UnixFDMessagePrivateNewFromNative(native unsafe.Pointer) *UnixFDMessagePrivate {
-	return &UnixFDMessagePrivate{native: native}
+	instance := &UnixFDMessagePrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -15925,7 +16339,9 @@ type UnixInputStreamClass struct {
 }
 
 func UnixInputStreamClassNewFromNative(native unsafe.Pointer) *UnixInputStreamClass {
-	return &UnixInputStreamClass{native: native}
+	instance := &UnixInputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16006,7 +16422,9 @@ type UnixInputStreamPrivate struct {
 }
 
 func UnixInputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixInputStreamPrivate {
-	return &UnixInputStreamPrivate{native: native}
+	instance := &UnixInputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16053,7 +16471,9 @@ type UnixMountEntry struct {
 }
 
 func UnixMountEntryNewFromNative(native unsafe.Pointer) *UnixMountEntry {
-	return &UnixMountEntry{native: native}
+	instance := &UnixMountEntry{native: native}
+
+	return instance
 }
 
 /*
@@ -16100,7 +16520,9 @@ type UnixMountMonitorClass struct {
 }
 
 func UnixMountMonitorClassNewFromNative(native unsafe.Pointer) *UnixMountMonitorClass {
-	return &UnixMountMonitorClass{native: native}
+	instance := &UnixMountMonitorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16147,7 +16569,9 @@ type UnixMountPoint struct {
 }
 
 func UnixMountPointNewFromNative(native unsafe.Pointer) *UnixMountPoint {
-	return &UnixMountPoint{native: native}
+	instance := &UnixMountPoint{native: native}
+
+	return instance
 }
 
 /*
@@ -16579,7 +17003,9 @@ type UnixOutputStreamClass struct {
 }
 
 func UnixOutputStreamClassNewFromNative(native unsafe.Pointer) *UnixOutputStreamClass {
-	return &UnixOutputStreamClass{native: native}
+	instance := &UnixOutputStreamClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16660,7 +17086,9 @@ type UnixOutputStreamPrivate struct {
 }
 
 func UnixOutputStreamPrivateNewFromNative(native unsafe.Pointer) *UnixOutputStreamPrivate {
-	return &UnixOutputStreamPrivate{native: native}
+	instance := &UnixOutputStreamPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16707,7 +17135,9 @@ type UnixSocketAddressClass struct {
 }
 
 func UnixSocketAddressClassNewFromNative(native unsafe.Pointer) *UnixSocketAddressClass {
-	return &UnixSocketAddressClass{native: native}
+	instance := &UnixSocketAddressClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16768,7 +17198,9 @@ type UnixSocketAddressPrivate struct {
 }
 
 func UnixSocketAddressPrivateNewFromNative(native unsafe.Pointer) *UnixSocketAddressPrivate {
-	return &UnixSocketAddressPrivate{native: native}
+	instance := &UnixSocketAddressPrivate{native: native}
+
+	return instance
 }
 
 /*
@@ -16815,7 +17247,9 @@ type VfsClass struct {
 }
 
 func VfsClassNewFromNative(native unsafe.Pointer) *VfsClass {
-	return &VfsClass{native: native}
+	instance := &VfsClass{native: native}
+
+	return instance
 }
 
 /*
@@ -16934,7 +17368,9 @@ type VolumeIface struct {
 }
 
 func VolumeIfaceNewFromNative(native unsafe.Pointer) *VolumeIface {
-	return &VolumeIface{native: native}
+	instance := &VolumeIface{native: native}
+
+	return instance
 }
 
 /*
@@ -17069,7 +17505,9 @@ type VolumeMonitorClass struct {
 }
 
 func VolumeMonitorClassNewFromNative(native unsafe.Pointer) *VolumeMonitorClass {
-	return &VolumeMonitorClass{native: native}
+	instance := &VolumeMonitorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17220,7 +17658,9 @@ type ZlibCompressorClass struct {
 }
 
 func ZlibCompressorClassNewFromNative(native unsafe.Pointer) *ZlibCompressorClass {
-	return &ZlibCompressorClass{native: native}
+	instance := &ZlibCompressorClass{native: native}
+
+	return instance
 }
 
 /*
@@ -17271,7 +17711,9 @@ type ZlibDecompressorClass struct {
 }
 
 func ZlibDecompressorClassNewFromNative(native unsafe.Pointer) *ZlibDecompressorClass {
-	return &ZlibDecompressorClass{native: native}
+	instance := &ZlibDecompressorClass{native: native}
+
+	return instance
 }
 
 /*

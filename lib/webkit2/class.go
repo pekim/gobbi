@@ -26,7 +26,16 @@ type AuthenticationRequest struct {
 }
 
 func AuthenticationRequestNewFromNative(native unsafe.Pointer) *AuthenticationRequest {
-	return &AuthenticationRequest{native: native}
+	instance := &AuthenticationRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -380,7 +389,16 @@ type AutomationSession struct {
 }
 
 func AutomationSessionNewFromNative(native unsafe.Pointer) *AutomationSession {
-	return &AutomationSession{native: native}
+	instance := &AutomationSession{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -528,7 +546,16 @@ type BackForwardList struct {
 }
 
 func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
-	return &BackForwardList{native: native}
+	instance := &BackForwardList{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -752,7 +779,16 @@ type BackForwardListItem struct {
 }
 
 func BackForwardListItemNewFromNative(native unsafe.Pointer) *BackForwardListItem {
-	return &BackForwardListItem{native: native}
+	instance := &BackForwardListItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -908,7 +944,16 @@ type ColorChooserRequest struct {
 }
 
 func ColorChooserRequestNewFromNative(native unsafe.Pointer) *ColorChooserRequest {
-	return &ColorChooserRequest{native: native}
+	instance := &ColorChooserRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1011,7 +1056,16 @@ type ContextMenu struct {
 }
 
 func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
-	return &ContextMenu{native: native}
+	instance := &ContextMenu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1408,7 +1462,16 @@ type ContextMenuItem struct {
 }
 
 func ContextMenuItemNewFromNative(native unsafe.Pointer) *ContextMenuItem {
-	return &ContextMenuItem{native: native}
+	instance := &ContextMenuItem{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -1729,7 +1792,16 @@ type CookieManager struct {
 }
 
 func CookieManagerNewFromNative(native unsafe.Pointer) *CookieManager {
-	return &CookieManager{native: native}
+	instance := &CookieManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1920,7 +1992,16 @@ type DeviceInfoPermissionRequest struct {
 }
 
 func DeviceInfoPermissionRequestNewFromNative(native unsafe.Pointer) *DeviceInfoPermissionRequest {
-	return &DeviceInfoPermissionRequest{native: native}
+	instance := &DeviceInfoPermissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -1961,7 +2042,16 @@ type Download struct {
 }
 
 func DownloadNewFromNative(native unsafe.Pointer) *Download {
-	return &Download{native: native}
+	instance := &Download{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2358,7 +2448,16 @@ type EditorState struct {
 }
 
 func EditorStateNewFromNative(native unsafe.Pointer) *EditorState {
-	return &EditorState{native: native}
+	instance := &EditorState{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2605,7 +2704,16 @@ type FaviconDatabase struct {
 }
 
 func FaviconDatabaseNewFromNative(native unsafe.Pointer) *FaviconDatabase {
-	return &FaviconDatabase{native: native}
+	instance := &FaviconDatabase{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2725,7 +2833,16 @@ type FileChooserRequest struct {
 }
 
 func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest {
-	return &FileChooserRequest{native: native}
+	instance := &FileChooserRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -2886,7 +3003,16 @@ type FindController struct {
 }
 
 func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
-	return &FindController{native: native}
+	instance := &FindController{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3201,7 +3327,16 @@ type FormSubmissionRequest struct {
 }
 
 func FormSubmissionRequestNewFromNative(native unsafe.Pointer) *FormSubmissionRequest {
-	return &FormSubmissionRequest{native: native}
+	instance := &FormSubmissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3274,7 +3409,16 @@ type GeolocationManager struct {
 }
 
 func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager {
-	return &GeolocationManager{native: native}
+	instance := &GeolocationManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3405,7 +3549,16 @@ type GeolocationPermissionRequest struct {
 }
 
 func GeolocationPermissionRequestNewFromNative(native unsafe.Pointer) *GeolocationPermissionRequest {
-	return &GeolocationPermissionRequest{native: native}
+	instance := &GeolocationPermissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3446,7 +3599,16 @@ type HitTestResult struct {
 }
 
 func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
-	return &HitTestResult{native: native}
+	instance := &HitTestResult{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3885,7 +4047,16 @@ type InstallMissingMediaPluginsPermissionRequest struct {
 }
 
 func InstallMissingMediaPluginsPermissionRequestNewFromNative(native unsafe.Pointer) *InstallMissingMediaPluginsPermissionRequest {
-	return &InstallMissingMediaPluginsPermissionRequest{native: native}
+	instance := &InstallMissingMediaPluginsPermissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -3972,7 +4143,16 @@ type NavigationPolicyDecision struct {
 }
 
 func NavigationPolicyDecisionNewFromNative(native unsafe.Pointer) *NavigationPolicyDecision {
-	return &NavigationPolicyDecision{native: native}
+	instance := &NavigationPolicyDecision{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // PolicyDecision upcasts to *PolicyDecision
@@ -4220,7 +4400,16 @@ type Notification struct {
 }
 
 func NotificationNewFromNative(native unsafe.Pointer) *Notification {
-	return &Notification{native: native}
+	instance := &Notification{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4459,7 +4648,16 @@ type NotificationPermissionRequest struct {
 }
 
 func NotificationPermissionRequestNewFromNative(native unsafe.Pointer) *NotificationPermissionRequest {
-	return &NotificationPermissionRequest{native: native}
+	instance := &NotificationPermissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4500,7 +4698,16 @@ type OptionMenu struct {
 }
 
 func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
-	return &OptionMenu{native: native}
+	instance := &OptionMenu{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4706,7 +4913,16 @@ type Plugin struct {
 }
 
 func PluginNewFromNative(native unsafe.Pointer) *Plugin {
-	return &Plugin{native: native}
+	instance := &Plugin{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4859,7 +5075,16 @@ type PolicyDecision struct {
 }
 
 func PolicyDecisionNewFromNative(native unsafe.Pointer) *PolicyDecision {
-	return &PolicyDecision{native: native}
+	instance := &PolicyDecision{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -4984,7 +5209,16 @@ type PrintCustomWidget struct {
 }
 
 func PrintCustomWidgetNewFromNative(native unsafe.Pointer) *PrintCustomWidget {
-	return &PrintCustomWidget{native: native}
+	instance := &PrintCustomWidget{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5075,7 +5309,16 @@ type PrintOperation struct {
 }
 
 func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
-	return &PrintOperation{native: native}
+	instance := &PrintOperation{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5200,7 +5443,16 @@ type ResponsePolicyDecision struct {
 }
 
 func ResponsePolicyDecisionNewFromNative(native unsafe.Pointer) *ResponsePolicyDecision {
-	return &ResponsePolicyDecision{native: native}
+	instance := &ResponsePolicyDecision{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // PolicyDecision upcasts to *PolicyDecision
@@ -5352,7 +5604,16 @@ type SecurityManager struct {
 }
 
 func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
-	return &SecurityManager{native: native}
+	instance := &SecurityManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -5779,7 +6040,16 @@ type Settings struct {
 }
 
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
-	return &Settings{native: native}
+	instance := &Settings{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -9373,7 +9643,16 @@ type URIRequest struct {
 }
 
 func URIRequestNewFromNative(native unsafe.Pointer) *URIRequest {
-	return &URIRequest{native: native}
+	instance := &URIRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -9541,7 +9820,16 @@ type URIResponse struct {
 }
 
 func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
-	return &URIResponse{native: native}
+	instance := &URIResponse{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -9744,7 +10032,16 @@ type URISchemeRequest struct {
 }
 
 func URISchemeRequestNewFromNative(native unsafe.Pointer) *URISchemeRequest {
-	return &URISchemeRequest{native: native}
+	instance := &URISchemeRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -9931,7 +10228,16 @@ type UserContentFilterStore struct {
 }
 
 func UserContentFilterStoreNewFromNative(native unsafe.Pointer) *UserContentFilterStore {
-	return &UserContentFilterStore{native: native}
+	instance := &UserContentFilterStore{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -10056,7 +10362,16 @@ type UserContentManager struct {
 }
 
 func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager {
-	return &UserContentManager{native: native}
+	instance := &UserContentManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -10482,7 +10797,16 @@ type UserMediaPermissionRequest struct {
 }
 
 func UserMediaPermissionRequestNewFromNative(native unsafe.Pointer) *UserMediaPermissionRequest {
-	return &UserMediaPermissionRequest{native: native}
+	instance := &UserMediaPermissionRequest{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -10523,7 +10847,16 @@ type WebContext struct {
 }
 
 func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
-	return &WebContext{native: native}
+	instance := &WebContext{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -11617,7 +11950,16 @@ type WebInspector struct {
 }
 
 func WebInspectorNewFromNative(native unsafe.Pointer) *WebInspector {
-	return &WebInspector{native: native}
+	instance := &WebInspector{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -11944,7 +12286,16 @@ type WebResource struct {
 }
 
 func WebResourceNewFromNative(native unsafe.Pointer) *WebResource {
-	return &WebResource{native: native}
+	instance := &WebResource{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -12067,7 +12418,16 @@ type WebView struct {
 }
 
 func WebViewNewFromNative(native unsafe.Pointer) *WebView {
-	return &WebView{native: native}
+	instance := &WebView{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // WebViewBase upcasts to *WebViewBase
@@ -13719,7 +14079,16 @@ type WebViewBase struct {
 }
 
 func WebViewBaseNewFromNative(native unsafe.Pointer) *WebViewBase {
-	return &WebViewBase{native: native}
+	instance := &WebViewBase{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Container upcasts to *Container
@@ -13775,7 +14144,16 @@ type WebsiteDataManager struct {
 }
 
 func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager {
-	return &WebsiteDataManager{native: native}
+	instance := &WebsiteDataManager{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
@@ -14194,7 +14572,16 @@ type WindowProperties struct {
 }
 
 func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
-	return &WindowProperties{native: native}
+	instance := &WindowProperties{native: native}
+
+	object := instance.Object()
+	if object.IsFloating() {
+		object.RefSink()
+	} else {
+		object.Ref()
+	}
+
+	return instance
 }
 
 // Object upcasts to *Object
