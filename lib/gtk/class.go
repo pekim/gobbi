@@ -989,6 +989,8 @@ func AccelGroupNew() *AccelGroup {
 	}
 
 	retGo := AccelGroupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1625,6 +1627,8 @@ func ActionNew(name string, label string, tooltip string, stockId string) *Actio
 	}
 
 	retGo := ActionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3056,6 +3060,8 @@ func ActionGroupNew(name string) *ActionGroup {
 	}
 
 	retGo := ActionGroupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7944,6 +7950,8 @@ func BuilderNew() *Builder {
 	}
 
 	retGo := BuilderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7976,6 +7984,8 @@ func BuilderNewFromFile(filename string) *Builder {
 	}
 
 	retGo := BuilderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -8008,6 +8018,8 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 	}
 
 	retGo := BuilderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -8041,6 +8053,8 @@ func BuilderNewFromString(string_ string, length int32) *Builder {
 	}
 
 	retGo := BuilderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18284,6 +18298,8 @@ func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	}
 
 	retGo := ContainerCellAccessibleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18438,6 +18454,8 @@ func CssProviderNew() *CssProvider {
 	}
 
 	retGo := CssProviderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -21186,6 +21204,8 @@ func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 	}
 
 	retGo := EntryBufferNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -21583,6 +21603,8 @@ func EntryCompletionNew() *EntryCompletion {
 	}
 
 	retGo := EntryCompletionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -21615,6 +21637,8 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	}
 
 	retGo := EntryCompletionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -22825,6 +22849,8 @@ func EventControllerKeyNew(widget *Widget) *EventControllerKey {
 	}
 
 	retGo := EventControllerKeyNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -23034,6 +23060,8 @@ func EventControllerMotionNew(widget *Widget) *EventControllerMotion {
 	}
 
 	retGo := EventControllerMotionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -24352,6 +24380,8 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	}
 
 	retGo := FileChooserNativeNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29191,6 +29221,8 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 	}
 
 	retGo := GestureDragNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29354,6 +29386,8 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	}
 
 	retGo := GestureLongPressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29447,6 +29481,8 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	}
 
 	retGo := GestureMultiPressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29550,6 +29586,8 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	}
 
 	retGo := GesturePanNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29699,6 +29737,8 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 	}
 
 	retGo := GestureRotateNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -30097,6 +30137,8 @@ func GestureStylusNew(widget *Widget) *GestureStylus {
 	}
 
 	retGo := GestureStylusNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -30196,6 +30238,8 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	}
 
 	retGo := GestureSwipeNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -30319,6 +30363,8 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 	}
 
 	retGo := GestureZoomNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -33317,6 +33363,8 @@ func IMContextSimpleNew() *IMContextSimple {
 	}
 
 	retGo := IMContextSimpleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -33443,6 +33491,8 @@ func IMMulticontextNew() *IMMulticontext {
 	}
 
 	retGo := IMMulticontextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -33613,6 +33663,8 @@ func IconFactoryNew() *IconFactory {
 	}
 
 	retGo := IconFactoryNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -34133,6 +34185,8 @@ func IconThemeNew() *IconTheme {
 	}
 
 	retGo := IconThemeNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -46717,6 +46771,8 @@ func MountOperationNew(parent *Window) *MountOperation {
 	}
 
 	retGo := MountOperationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -48860,6 +48916,8 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *Not
 	}
 
 	retGo := NotebookPageAccessibleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -49720,6 +49778,8 @@ func PageSetupNew() *PageSetup {
 	}
 
 	retGo := PageSetupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -49752,6 +49812,8 @@ func PageSetupNewFromFile(fileName string) *PageSetup {
 	}
 
 	retGo := PageSetupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -52826,6 +52888,8 @@ func PrintOperationNew() *PrintOperation {
 	}
 
 	retGo := PrintOperationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -53771,6 +53835,8 @@ func PrintSettingsNew() *PrintSettings {
 	}
 
 	retGo := PrintSettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -53803,6 +53869,8 @@ func PrintSettingsNewFromFile(fileName string) *PrintSettings {
 	}
 
 	retGo := PrintSettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -56527,6 +56595,8 @@ func RadioActionNew(name string, label string, tooltip string, stockId string, v
 	}
 
 	retGo := RadioActionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -58606,6 +58676,8 @@ func RcStyleNew() *RcStyle {
 	}
 
 	retGo := RcStyleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -58738,6 +58810,8 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 	}
 
 	retGo := RecentActionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -58774,6 +58848,8 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	}
 
 	retGo := RecentActionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -59707,6 +59783,8 @@ func RecentManagerNew() *RecentManager {
 	}
 
 	retGo := RecentManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -60062,6 +60140,8 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	}
 
 	retGo := RendererCellAccessibleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -64224,6 +64304,8 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	}
 
 	retGo := SizeGroupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -67009,6 +67091,8 @@ func StatusIconNew() *StatusIcon {
 	}
 
 	retGo := StatusIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -67041,6 +67125,8 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 	}
 
 	retGo := StatusIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -67075,6 +67161,8 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	}
 
 	retGo := StatusIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -67109,6 +67197,8 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	}
 
 	retGo := StatusIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -68279,6 +68369,8 @@ func StyleNew() *Style {
 	}
 
 	retGo := StyleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -68514,6 +68606,8 @@ func StyleContextNew() *StyleContext {
 	}
 
 	retGo := StyleContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -69235,6 +69329,8 @@ func StylePropertiesNew() *StyleProperties {
 	}
 
 	retGo := StylePropertiesNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -70394,6 +70490,8 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 	}
 
 	retGo := TextBufferNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -72469,6 +72567,8 @@ func TextChildAnchorNew() *TextChildAnchor {
 	}
 
 	retGo := TextChildAnchorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -72586,6 +72686,8 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 	}
 
 	retGo := TextMarkNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -72871,6 +72973,8 @@ func TextTagNew(name string) *TextTag {
 	}
 
 	retGo := TextTagNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -73057,6 +73161,8 @@ func TextTagTableNew() *TextTagTable {
 	}
 
 	retGo := TextTagTableNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -75690,6 +75796,8 @@ func ToggleActionNew(name string, label string, tooltip string, stockId string) 
 	}
 
 	retGo := ToggleActionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -85850,6 +85958,8 @@ func UIManagerNew() *UIManager {
 	}
 
 	retGo := UIManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -96345,6 +96455,8 @@ func WindowGroupNew() *WindowGroup {
 	}
 
 	retGo := WindowGroupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

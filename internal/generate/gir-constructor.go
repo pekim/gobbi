@@ -14,7 +14,7 @@ func (c *Constructor) init(ns *Namespace, record *Record) {
 
 	c.Function.init(ns, record, false)
 	c.goName = record.goName + makeExportedGoName(c.Name)
-	//c.Function.ctorRecord = record
+	c.Function.ctorRecord = record
 
 	if record.Version != "" && c.Version == "" {
 		c.Version = record.Version

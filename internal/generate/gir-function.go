@@ -23,10 +23,11 @@ type Function struct {
 	Throws         int          `xml:"throws,attr"`
 	Introspectable string       `xml:"introspectable,attr"`
 
-	namespace *Namespace
-	goName    string
-	record    *Record
-	receiver  bool
+	namespace  *Namespace
+	goName     string
+	record     *Record
+	ctorRecord *Record
+	receiver   bool
 
 	funcInfoGoName        string
 	funcInfoOnceGoName    string
@@ -162,6 +163,7 @@ func (f *Function) generateFuncInfo(fi *file) {
 
 func (f *Function) generateFunction(fi *file) {
 	fi.docForC(f.goName, f.CIdentifier)
+
 	fi.
 		Func().                                          // "func"
 		Do(f.generateReceiver).                          // (recv)
@@ -172,6 +174,7 @@ func (f *Function) generateFunction(fi *file) {
 			f.Parameters.generateReturnDeclarations(g) // out params
 		}).
 		BlockFunc(f.generateBody) // { body }
+
 	fi.Line()
 }
 
@@ -242,6 +245,33 @@ func (f *Function) generateReturnVar(g *jen.Group) {
 	}
 
 	f.ReturnValue.generateValue(g, jen.Id("retGo"), jen.Id("ret"))
+	f.adjustCtorRefCount(g)
+}
+
+func (f *Function) adjustCtorRefCount(g *jen.Group) {
+	// TODO adjustCtorRefCount
+
+	if f.ctorRecord == nil {
+		// not a constructor
+		return
+	}
+
+	if !f.ctorRecord.derivedFromObject() || f.ctorRecord.derivedFromInitiallyUnowned() {
+		return
+	}
+
+	// A call to a ...NewFromNative function will have incremented the ref
+	// count (to 2). So decrement it back to 1.
+
+	object := jen.Id("object")
+
+	g.
+		Add(object).
+		Op(":=").
+		Id("retGo").Dot("Object").
+		Call()
+
+	g.Add(object).Dot("RefSink").Call()
 }
 
 func (f *Function) generateOutArgValues(g *jen.Group) {

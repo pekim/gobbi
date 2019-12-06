@@ -109,6 +109,8 @@ func BufferNewWithLanguage(language *Language) *Buffer {
 	}
 
 	retGo := BufferNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1210,6 +1212,8 @@ func CompletionItemNewFromStock(label string, text string, stock string, info st
 	}
 
 	retGo := CompletionItemNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1525,6 +1529,8 @@ func FileNew() *File {
 	}
 
 	retGo := FileNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1880,6 +1886,8 @@ func FileLoaderNew(buffer *Buffer, file *File) *FileLoader {
 	}
 
 	retGo := FileLoaderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2149,6 +2157,8 @@ func FileSaverNew(buffer *Buffer, file *File) *FileSaver {
 	}
 
 	retGo := FileSaverNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4062,6 +4072,8 @@ func LanguageManagerNew() *LanguageManager {
 	}
 
 	retGo := LanguageManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4465,6 +4477,8 @@ func MarkNew(name string, category string) *Mark {
 	}
 
 	retGo := MarkNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4639,6 +4653,8 @@ func MarkAttributesNew() *MarkAttributes {
 	}
 
 	retGo := MarkAttributesNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4937,6 +4953,8 @@ func PrintCompositorNew(buffer *Buffer) *PrintCompositor {
 	}
 
 	retGo := PrintCompositorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4969,6 +4987,8 @@ func PrintCompositorNewFromView(view *View) *PrintCompositor {
 	}
 
 	retGo := PrintCompositorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6048,6 +6068,8 @@ func SearchContextNew(buffer *Buffer, settings *SearchSettings) *SearchContext {
 	}
 
 	retGo := SearchContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6451,6 +6473,8 @@ func SearchSettingsNew() *SearchSettings {
 	}
 
 	retGo := SearchSettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6850,6 +6874,8 @@ func SpaceDrawerNew() *SpaceDrawer {
 	}
 
 	retGo := SpaceDrawerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7553,6 +7579,8 @@ func StyleSchemeManagerNew() *StyleSchemeManager {
 	}
 
 	retGo := StyleSchemeManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7817,6 +7845,8 @@ func TagNew(name string) *Tag {
 	}
 
 	retGo := TagNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

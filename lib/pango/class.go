@@ -81,6 +81,8 @@ func ContextNew() *Context {
 	}
 
 	retGo := ContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1854,6 +1856,8 @@ func FontsetSimpleNew(language *Language) *FontsetSimple {
 	}
 
 	retGo := FontsetSimpleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1993,6 +1997,8 @@ func LayoutNew(context *Context) *Layout {
 	}
 
 	retGo := LayoutNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

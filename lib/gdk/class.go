@@ -87,6 +87,8 @@ func AppLaunchContextNew() *AppLaunchContext {
 	}
 
 	retGo := AppLaunchContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -312,6 +314,8 @@ func CursorNew(cursorType CursorType) *Cursor {
 	}
 
 	retGo := CursorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -345,6 +349,8 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	}
 
 	retGo := CursorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -378,6 +384,8 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 	}
 
 	retGo := CursorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

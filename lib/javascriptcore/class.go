@@ -209,6 +209,8 @@ func ContextNew() *Context {
 	}
 
 	retGo := ContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -241,6 +243,8 @@ func ContextNewWithVirtualMachine(vm *VirtualMachine) *Context {
 	}
 
 	retGo := ContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -746,6 +750,8 @@ func ExceptionNew(context *Context, message string) *Exception {
 	}
 
 	retGo := ExceptionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -784,6 +790,8 @@ func ExceptionNewWithName(context *Context, name string, message string) *Except
 	}
 
 	retGo := ExceptionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1133,6 +1141,8 @@ func ValueNewBoolean(context *Context, value bool) *Value {
 	}
 
 	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1171,6 +1181,8 @@ func ValueNewNull(context *Context) *Value {
 	}
 
 	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1204,6 +1216,8 @@ func ValueNewNumber(context *Context, number float64) *Value {
 	}
 
 	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1239,6 +1253,8 @@ func ValueNewString(context *Context, string_ string) *Value {
 	}
 
 	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1273,6 +1289,8 @@ func ValueNewUndefined(context *Context) *Value {
 	}
 
 	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2072,6 +2090,8 @@ func VirtualMachineNew() *VirtualMachine {
 	}
 
 	retGo := VirtualMachineNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2154,6 +2174,8 @@ func WeakValueNew(value *Value) *WeakValue {
 	}
 
 	retGo := WeakValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

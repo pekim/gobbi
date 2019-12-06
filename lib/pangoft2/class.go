@@ -87,6 +87,8 @@ func FontMapNew() *FontMap {
 	}
 
 	retGo := FontMapNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

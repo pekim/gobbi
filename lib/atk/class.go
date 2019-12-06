@@ -648,6 +648,8 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	}
 
 	retGo := NoOpObjectFactoryNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1686,6 +1688,8 @@ func PlugNew() *Plug {
 	}
 
 	retGo := PlugNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2058,6 +2062,8 @@ func RelationSetNew() *RelationSet {
 	}
 
 	retGo := RelationSetNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2406,6 +2412,8 @@ func SocketNew() *Socket {
 	}
 
 	retGo := SocketNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2547,6 +2555,8 @@ func StateSetNew() *StateSet {
 	}
 
 	retGo := StateSetNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

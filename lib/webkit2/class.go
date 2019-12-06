@@ -1130,6 +1130,8 @@ func ContextMenuNew() *ContextMenu {
 	}
 
 	retGo := ContextMenuNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -5385,6 +5387,8 @@ func PrintOperationNew(webView *WebView) *PrintOperation {
 	}
 
 	retGo := PrintOperationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6114,6 +6118,8 @@ func SettingsNew() *Settings {
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -9705,6 +9711,8 @@ func URIRequestNew(uri string) *URIRequest {
 	}
 
 	retGo := URIRequestNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -10290,6 +10298,8 @@ func UserContentFilterStoreNew(storagePath string) *UserContentFilterStore {
 	}
 
 	retGo := UserContentFilterStoreNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -10422,6 +10432,8 @@ func UserContentManagerNew() *UserContentManager {
 	}
 
 	retGo := UserContentManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -10907,6 +10919,8 @@ func WebContextNew() *WebContext {
 	}
 
 	retGo := WebContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -10937,6 +10951,8 @@ func WebContextNewEphemeral() *WebContext {
 	}
 
 	retGo := WebContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -10969,6 +10985,8 @@ func WebContextNewWithWebsiteDataManager(manager *WebsiteDataManager) *WebContex
 	}
 
 	retGo := WebContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14220,6 +14238,8 @@ func WebsiteDataManagerNewEphemeral() *WebsiteDataManager {
 	}
 
 	retGo := WebsiteDataManagerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

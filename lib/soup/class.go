@@ -89,6 +89,8 @@ func AddressNew(name string, port uint32) *Address {
 	}
 
 	retGo := AddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -122,6 +124,8 @@ func AddressNewAny(family AddressFamily, port uint32) *Address {
 	}
 
 	retGo := AddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1778,6 +1782,8 @@ func CacheNew(cacheDir string, cacheType CacheType) *Cache {
 	}
 
 	retGo := CacheNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2109,6 +2115,8 @@ func ContentSnifferNew() *ContentSniffer {
 	}
 
 	retGo := ContentSnifferNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2223,6 +2231,8 @@ func CookieJarNew() *CookieJar {
 	}
 
 	retGo := CookieJarNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2660,6 +2670,8 @@ func CookieJarDBNew(filename string, readOnly bool) *CookieJarDB {
 	}
 
 	retGo := CookieJarDBNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2758,6 +2770,8 @@ func CookieJarTextNew(filename string, readOnly bool) *CookieJarText {
 	}
 
 	retGo := CookieJarTextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2852,6 +2866,8 @@ func HSTSEnforcerNew() *HSTSEnforcer {
 	}
 
 	retGo := HSTSEnforcerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3091,6 +3107,8 @@ func HSTSEnforcerDBNew(filename string) *HSTSEnforcerDB {
 	}
 
 	retGo := HSTSEnforcerDBNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3174,6 +3192,8 @@ func LoggerNew(level LoggerLogLevel, maxBodySize int32) *Logger {
 	}
 
 	retGo := LoggerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3419,6 +3439,8 @@ func MessageNew(method string, uriString string) *Message {
 	}
 
 	retGo := MessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3452,6 +3474,8 @@ func MessageNewFromUri(method string, uri *URI) *Message {
 	}
 
 	retGo := MessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4952,6 +4976,8 @@ func RequesterNew() *Requester {
 	}
 
 	retGo := RequesterNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -5565,6 +5591,8 @@ func SessionNew() *Session {
 	}
 
 	retGo := SessionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6107,6 +6135,8 @@ func SessionAsyncNew() *SessionAsync {
 	}
 
 	retGo := SessionAsyncNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6204,6 +6234,8 @@ func SessionSyncNew() *SessionSync {
 	}
 
 	retGo := SessionSyncNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

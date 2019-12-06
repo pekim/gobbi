@@ -132,6 +132,8 @@ func AppLaunchContextNew() *AppLaunchContext {
 	}
 
 	retGo := AppLaunchContextNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1446,6 +1448,8 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	}
 
 	retGo := BufferedInputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1479,6 +1483,8 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 	}
 
 	retGo := BufferedInputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1793,6 +1799,8 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	}
 
 	retGo := BufferedOutputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1826,6 +1834,8 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 	}
 
 	retGo := BufferedOutputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2078,6 +2088,8 @@ func CancellableNew() *Cancellable {
 	}
 
 	retGo := CancellableNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2428,6 +2440,8 @@ func CharsetConverterNew(toCharset string, fromCharset string) *CharsetConverter
 	}
 
 	retGo := CharsetConverterNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2745,6 +2759,8 @@ func CredentialsNew() *Credentials {
 	}
 
 	retGo := CredentialsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -3033,6 +3049,8 @@ func DBusAuthObserverNew() *DBusAuthObserver {
 	}
 
 	retGo := DBusAuthObserverNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4224,6 +4242,8 @@ func DBusMessageNew() *DBusMessage {
 	}
 
 	retGo := DBusMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4261,6 +4281,8 @@ func DBusMessageNewMethodCall(name string, path string, interface_ string, metho
 	}
 
 	retGo := DBusMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -4295,6 +4317,8 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 	}
 
 	retGo := DBusMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -5998,6 +6022,8 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	}
 
 	retGo := DBusObjectManagerServerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6262,6 +6288,8 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 	}
 
 	retGo := DBusObjectProxyNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -6372,6 +6400,8 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	}
 
 	retGo := DBusObjectSkeletonNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7207,6 +7237,8 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	}
 
 	retGo := DataInputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -7817,6 +7849,8 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	}
 
 	retGo := DataOutputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -8228,6 +8262,8 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	}
 
 	retGo := DesktopAppInfoNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -8260,6 +8296,8 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	}
 
 	retGo := DesktopAppInfoNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -9456,6 +9494,8 @@ func FileInfoNew() *FileInfo {
 	}
 
 	retGo := FileInfoNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -11490,6 +11530,8 @@ func FilenameCompleterNew() *FilenameCompleter {
 	}
 
 	retGo := FilenameCompleterNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -12008,6 +12050,8 @@ func IOModuleNew(filename string) *IOModule {
 	}
 
 	retGo := IOModuleNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -12423,6 +12467,8 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	}
 
 	retGo := InetAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -12457,6 +12503,8 @@ func InetAddressNewFromString(string_ string) *InetAddress {
 	}
 
 	retGo := InetAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -12489,6 +12537,8 @@ func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 	}
 
 	retGo := InetAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -13053,6 +13103,8 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) *InetAddressMask {
 	}
 
 	retGo := InetAddressMaskNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -13085,6 +13137,8 @@ func InetAddressMaskNewFromString(maskString string) *InetAddressMask {
 	}
 
 	retGo := InetAddressMaskNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -13377,6 +13431,8 @@ func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress 
 	}
 
 	retGo := InetSocketAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -13410,6 +13466,8 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 	}
 
 	retGo := InetSocketAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14015,6 +14073,8 @@ func MemoryInputStreamNew() *MemoryInputStream {
 	}
 
 	retGo := MemoryInputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14120,6 +14180,8 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	}
 
 	retGo := MemoryOutputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14271,6 +14333,8 @@ func MenuNew() *Menu {
 	}
 
 	retGo := MenuNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14928,6 +14992,8 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 	}
 
 	retGo := MenuItemNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14961,6 +15027,8 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	}
 
 	retGo := MenuItemNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -14994,6 +15062,8 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	}
 
 	retGo := MenuItemNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -15027,6 +15097,8 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	}
 
 	retGo := MenuItemNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -15772,6 +15844,8 @@ func MountOperationNew() *MountOperation {
 	}
 
 	retGo := MountOperationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -16565,6 +16639,8 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	}
 
 	retGo := NetworkAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -16597,6 +16673,8 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 	}
 
 	retGo := NetworkAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -16777,6 +16855,8 @@ func NetworkServiceNew(service string, protocol string, domain string) *NetworkS
 	}
 
 	retGo := NetworkServiceNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -17012,6 +17092,8 @@ func NotificationNew(title string) *Notification {
 	}
 
 	retGo := NotificationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -17924,6 +18006,8 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 	}
 
 	retGo := ProxyAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18449,6 +18533,8 @@ func SettingsNew(schemaId string) *Settings {
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18483,6 +18569,8 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18516,6 +18604,8 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18550,6 +18640,8 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -18583,6 +18675,8 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 	}
 
 	retGo := SettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -19785,6 +19879,8 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	}
 
 	retGo := SimpleActionGroupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -20242,6 +20338,8 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 	}
 
 	retGo := SimpleIOStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -20325,6 +20423,8 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 	}
 
 	retGo := SimplePermissionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -20561,6 +20661,8 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) *
 	}
 
 	retGo := SocketNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -20593,6 +20695,8 @@ func SocketNewFromFd(fd int32) *Socket {
 	}
 
 	retGo := SocketNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -22232,6 +22336,8 @@ func SocketClientNew() *SocketClient {
 	}
 
 	retGo := SocketClientNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -23320,6 +23426,8 @@ func SocketListenerNew() *SocketListener {
 	}
 
 	retGo := SocketListenerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -23506,6 +23614,8 @@ func SocketServiceNew() *SocketService {
 	}
 
 	retGo := SocketServiceNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -25365,6 +25475,8 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	}
 
 	retGo := TcpWrapperConnectionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -25670,6 +25782,8 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	}
 
 	retGo := ThemedIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -25704,6 +25818,8 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	}
 
 	retGo := ThemedIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -25906,6 +26022,8 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	}
 
 	retGo := ThreadedSocketServiceNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -26002,6 +26120,8 @@ func TlsCertificateNewFromFile(file string) *TlsCertificate {
 	}
 
 	retGo := TlsCertificateNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -26035,6 +26155,8 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) *TlsCertificate
 	}
 
 	retGo := TlsCertificateNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -26068,6 +26190,8 @@ func TlsCertificateNewFromPem(data string, length int32) *TlsCertificate {
 	}
 
 	retGo := TlsCertificateNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -27631,6 +27755,8 @@ func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	}
 
 	retGo := UnixCredentialsMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -27663,6 +27789,8 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 	}
 
 	retGo := UnixCredentialsMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -27789,6 +27917,8 @@ func UnixFDListNew() *UnixFDList {
 	}
 
 	retGo := UnixFDListNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28062,6 +28192,8 @@ func UnixFDMessageNew() *UnixFDMessage {
 	}
 
 	retGo := UnixFDMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28094,6 +28226,8 @@ func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	}
 
 	retGo := UnixFDMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28289,6 +28423,8 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	}
 
 	retGo := UnixInputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28458,6 +28594,8 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 	}
 
 	retGo := UnixMountMonitorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28585,6 +28723,8 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	}
 
 	retGo := UnixOutputStreamNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -28775,6 +28915,8 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	}
 
 	retGo := UnixSocketAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29197,6 +29339,8 @@ func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor
 	}
 
 	retGo := ZlibCompressorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -29336,6 +29480,8 @@ func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
 	}
 
 	retGo := ZlibDecompressorNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }

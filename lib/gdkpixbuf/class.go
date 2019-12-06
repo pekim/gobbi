@@ -87,6 +87,8 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -123,6 +125,8 @@ func PixbufNewFromFile(filename string) *Pixbuf {
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -158,6 +162,8 @@ func PixbufNewFromFileAtScale(filename string, width int32, height int32, preser
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -192,6 +198,8 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) *Pixbuf
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -226,6 +234,8 @@ func PixbufNewFromResource(resourcePath string) *Pixbuf {
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -261,6 +271,8 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 	}
 
 	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1404,6 +1416,8 @@ func PixbufAnimationNewFromFile(filename string) *PixbufAnimation {
 	}
 
 	retGo := PixbufAnimationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1436,6 +1450,8 @@ func PixbufAnimationNewFromResource(resourcePath string) *PixbufAnimation {
 	}
 
 	retGo := PixbufAnimationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1854,6 +1870,8 @@ func PixbufLoaderNew() *PixbufLoader {
 	}
 
 	retGo := PixbufLoaderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1886,6 +1904,8 @@ func PixbufLoaderNewWithMimeType(mimeType string) *PixbufLoader {
 	}
 
 	retGo := PixbufLoaderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -1918,6 +1938,8 @@ func PixbufLoaderNewWithType(imageType string) *PixbufLoader {
 	}
 
 	retGo := PixbufLoaderNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
@@ -2165,6 +2187,8 @@ func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleA
 	}
 
 	retGo := PixbufSimpleAnimNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
 
 	return retGo
 }
