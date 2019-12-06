@@ -27,9 +27,13 @@ type GObjectAccessible struct {
 func GObjectAccessibleNewFromNative(native unsafe.Pointer) *GObjectAccessible {
 	return &GObjectAccessible{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *GObjectAccessible) ObjectAtk() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GObjectAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -68,6 +72,8 @@ type Hyperlink struct {
 func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
 	return &Hyperlink{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Hyperlink) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -352,6 +358,8 @@ type Misc struct {
 func MiscNewFromNative(native unsafe.Pointer) *Misc {
 	return &Misc{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -434,9 +442,13 @@ type NoOpObject struct {
 func NoOpObjectNewFromNative(native unsafe.Pointer) *NoOpObject {
 	return &NoOpObject{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *NoOpObject) ObjectAtk() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NoOpObject) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -475,9 +487,13 @@ type NoOpObjectFactory struct {
 func NoOpObjectFactoryNewFromNative(native unsafe.Pointer) *NoOpObjectFactory {
 	return &NoOpObjectFactory{native: native}
 }
+
+// ObjectFactory upcasts to *ObjectFactory
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
 	return ObjectFactoryNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NoOpObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -544,6 +560,8 @@ type Object struct {
 func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	return &Object{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Object) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1381,6 +1399,8 @@ type ObjectFactory struct {
 func ObjectFactoryNewFromNative(native unsafe.Pointer) *ObjectFactory {
 	return &ObjectFactory{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1439,9 +1459,13 @@ type Plug struct {
 func PlugNewFromNative(native unsafe.Pointer) *Plug {
 	return &Plug{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *Plug) ObjectAtk() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Plug) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1540,6 +1564,8 @@ type Registry struct {
 func RegistryNewFromNative(native unsafe.Pointer) *Registry {
 	return &Registry{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Registry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1580,6 +1606,8 @@ type Relation struct {
 func RelationNewFromNative(native unsafe.Pointer) *Relation {
 	return &Relation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1748,6 +1776,8 @@ type RelationSet struct {
 func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
 	return &RelationSet{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *RelationSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2061,9 +2091,13 @@ type Socket struct {
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *Socket) ObjectAtk() *Object {
 	return ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2191,6 +2225,8 @@ type StateSet struct {
 func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
 	return &StateSet{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StateSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2509,6 +2545,8 @@ type Util struct {
 func UtilNewFromNative(native unsafe.Pointer) *Util {
 	return &Util{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Util) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

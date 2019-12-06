@@ -28,6 +28,8 @@ type AuthenticationRequest struct {
 func AuthenticationRequestNewFromNative(native unsafe.Pointer) *AuthenticationRequest {
 	return &AuthenticationRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AuthenticationRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -367,6 +369,8 @@ type AutomationSession struct {
 func AutomationSessionNewFromNative(native unsafe.Pointer) *AutomationSession {
 	return &AutomationSession{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AutomationSession) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -500,6 +504,8 @@ type BackForwardList struct {
 func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
 	return &BackForwardList{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *BackForwardList) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -709,9 +715,13 @@ type BackForwardListItem struct {
 func BackForwardListItemNewFromNative(native unsafe.Pointer) *BackForwardListItem {
 	return &BackForwardListItem{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *BackForwardListItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *BackForwardListItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -848,6 +858,8 @@ type ColorChooserRequest struct {
 func ColorChooserRequestNewFromNative(native unsafe.Pointer) *ColorChooserRequest {
 	return &ColorChooserRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ColorChooserRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -936,6 +948,8 @@ type ContextMenu struct {
 func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
 	return &ContextMenu{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ContextMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1318,9 +1332,13 @@ type ContextMenuItem struct {
 func ContextMenuItemNewFromNative(native unsafe.Pointer) *ContextMenuItem {
 	return &ContextMenuItem{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ContextMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ContextMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1622,6 +1640,8 @@ type CookieManager struct {
 func CookieManagerNewFromNative(native unsafe.Pointer) *CookieManager {
 	return &CookieManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CookieManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1798,6 +1818,8 @@ type DeviceInfoPermissionRequest struct {
 func DeviceInfoPermissionRequestNewFromNative(native unsafe.Pointer) *DeviceInfoPermissionRequest {
 	return &DeviceInfoPermissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DeviceInfoPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1824,6 +1846,8 @@ type Download struct {
 func DownloadNewFromNative(native unsafe.Pointer) *Download {
 	return &Download{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Download) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2206,6 +2230,8 @@ type EditorState struct {
 func EditorStateNewFromNative(native unsafe.Pointer) *EditorState {
 	return &EditorState{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *EditorState) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2438,6 +2464,8 @@ type FaviconDatabase struct {
 func FaviconDatabaseNewFromNative(native unsafe.Pointer) *FaviconDatabase {
 	return &FaviconDatabase{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FaviconDatabase) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2543,6 +2571,8 @@ type FileChooserRequest struct {
 func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest {
 	return &FileChooserRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileChooserRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2689,6 +2719,8 @@ type FindController struct {
 func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
 	return &FindController{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FindController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2989,6 +3021,8 @@ type FormSubmissionRequest struct {
 func FormSubmissionRequestNewFromNative(native unsafe.Pointer) *FormSubmissionRequest {
 	return &FormSubmissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FormSubmissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3047,6 +3081,8 @@ type GeolocationManager struct {
 func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager {
 	return &GeolocationManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *GeolocationManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3163,6 +3199,8 @@ type GeolocationPermissionRequest struct {
 func GeolocationPermissionRequestNewFromNative(native unsafe.Pointer) *GeolocationPermissionRequest {
 	return &GeolocationPermissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *GeolocationPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3189,6 +3227,8 @@ type HitTestResult struct {
 func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
 	return &HitTestResult{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *HitTestResult) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3613,6 +3653,8 @@ type InstallMissingMediaPluginsPermissionRequest struct {
 func InstallMissingMediaPluginsPermissionRequestNewFromNative(native unsafe.Pointer) *InstallMissingMediaPluginsPermissionRequest {
 	return &InstallMissingMediaPluginsPermissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *InstallMissingMediaPluginsPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3685,9 +3727,13 @@ type NavigationPolicyDecision struct {
 func NavigationPolicyDecisionNewFromNative(native unsafe.Pointer) *NavigationPolicyDecision {
 	return &NavigationPolicyDecision{native: native}
 }
+
+// PolicyDecision upcasts to *PolicyDecision
 func (recv *NavigationPolicyDecision) PolicyDecision() *PolicyDecision {
 	return PolicyDecisionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NavigationPolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3916,6 +3962,8 @@ type Notification struct {
 func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 	return &Notification{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4140,6 +4188,8 @@ type NotificationPermissionRequest struct {
 func NotificationPermissionRequestNewFromNative(native unsafe.Pointer) *NotificationPermissionRequest {
 	return &NotificationPermissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *NotificationPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4166,6 +4216,8 @@ type OptionMenu struct {
 func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
 	return &OptionMenu{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *OptionMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4357,6 +4409,8 @@ type Plugin struct {
 func PluginNewFromNative(native unsafe.Pointer) *Plugin {
 	return &Plugin{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Plugin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4495,6 +4549,8 @@ type PolicyDecision struct {
 func PolicyDecisionNewFromNative(native unsafe.Pointer) *PolicyDecision {
 	return &PolicyDecision{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4605,6 +4661,8 @@ type PrintCustomWidget struct {
 func PrintCustomWidgetNewFromNative(native unsafe.Pointer) *PrintCustomWidget {
 	return &PrintCustomWidget{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintCustomWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4681,6 +4739,8 @@ type PrintOperation struct {
 func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	return &PrintOperation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4791,9 +4851,13 @@ type ResponsePolicyDecision struct {
 func ResponsePolicyDecisionNewFromNative(native unsafe.Pointer) *ResponsePolicyDecision {
 	return &ResponsePolicyDecision{native: native}
 }
+
+// PolicyDecision upcasts to *PolicyDecision
 func (recv *ResponsePolicyDecision) PolicyDecision() *PolicyDecision {
 	return PolicyDecisionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ResponsePolicyDecision) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4926,6 +4990,8 @@ type SecurityManager struct {
 func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
 	return &SecurityManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SecurityManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5338,6 +5404,8 @@ type Settings struct {
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8917,6 +8985,8 @@ type URIRequest struct {
 func URIRequestNewFromNative(native unsafe.Pointer) *URIRequest {
 	return &URIRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *URIRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9070,6 +9140,8 @@ type URIResponse struct {
 func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
 	return &URIResponse{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *URIResponse) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9258,6 +9330,8 @@ type URISchemeRequest struct {
 func URISchemeRequestNewFromNative(native unsafe.Pointer) *URISchemeRequest {
 	return &URISchemeRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *URISchemeRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9430,6 +9504,8 @@ type UserContentFilterStore struct {
 func UserContentFilterStoreNewFromNative(native unsafe.Pointer) *UserContentFilterStore {
 	return &UserContentFilterStore{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UserContentFilterStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9540,6 +9616,8 @@ type UserContentManager struct {
 func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager {
 	return &UserContentManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UserContentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9951,6 +10029,8 @@ type UserMediaPermissionRequest struct {
 func UserMediaPermissionRequestNewFromNative(native unsafe.Pointer) *UserMediaPermissionRequest {
 	return &UserMediaPermissionRequest{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UserMediaPermissionRequest) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9977,6 +10057,8 @@ type WebContext struct {
 func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
 	return &WebContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WebContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11056,6 +11138,8 @@ type WebInspector struct {
 func WebInspectorNewFromNative(native unsafe.Pointer) *WebInspector {
 	return &WebInspector{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WebInspector) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11368,6 +11452,8 @@ type WebResource struct {
 func WebResourceNewFromNative(native unsafe.Pointer) *WebResource {
 	return &WebResource{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WebResource) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11476,18 +11562,28 @@ type WebView struct {
 func WebViewNewFromNative(native unsafe.Pointer) *WebView {
 	return &WebView{native: native}
 }
+
+// WebViewBase upcasts to *WebViewBase
 func (recv *WebView) WebViewBase() *WebViewBase {
 	return WebViewBaseNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *WebView) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *WebView) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *WebView) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *WebView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13105,15 +13201,23 @@ type WebViewBase struct {
 func WebViewBaseNewFromNative(native unsafe.Pointer) *WebViewBase {
 	return &WebViewBase{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *WebViewBase) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *WebViewBase) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *WebViewBase) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *WebViewBase) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13140,6 +13244,8 @@ type WebsiteDataManager struct {
 func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager {
 	return &WebsiteDataManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WebsiteDataManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13544,6 +13650,8 @@ type WindowProperties struct {
 func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
 	return &WindowProperties{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WindowProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

@@ -28,9 +28,13 @@ type AppLaunchContext struct {
 func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	return &AppLaunchContext{native: native}
 }
+
+// AppLaunchContext upcasts to *AppLaunchContext
 func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
 	return gio.AppLaunchContextNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -230,6 +234,8 @@ type Cursor struct {
 func CursorNewFromNative(native unsafe.Pointer) *Cursor {
 	return &Cursor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Cursor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -482,6 +488,8 @@ type Device struct {
 func DeviceNewFromNative(native unsafe.Pointer) *Device {
 	return &Device{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Device) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1234,6 +1242,8 @@ type DeviceManager struct {
 func DeviceManagerNewFromNative(native unsafe.Pointer) *DeviceManager {
 	return &DeviceManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DeviceManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1322,6 +1332,8 @@ type DeviceTool struct {
 func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
 	return &DeviceTool{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DeviceTool) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1440,6 +1452,8 @@ type Display struct {
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
 	return &Display{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Display) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2671,6 +2685,8 @@ type DisplayManager struct {
 func DisplayManagerNewFromNative(native unsafe.Pointer) *DisplayManager {
 	return &DisplayManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DisplayManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2789,6 +2805,8 @@ type DragContext struct {
 func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
 	return &DragContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DragContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3040,6 +3058,8 @@ type DrawingContext struct {
 func DrawingContextNewFromNative(native unsafe.Pointer) *DrawingContext {
 	return &DrawingContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DrawingContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3130,6 +3150,8 @@ type FrameClock struct {
 func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
 	return &FrameClock{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FrameClock) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3405,6 +3427,8 @@ type GLContext struct {
 func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
 	return &GLContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *GLContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3894,6 +3918,8 @@ type Keymap struct {
 func KeymapNewFromNative(native unsafe.Pointer) *Keymap {
 	return &Keymap{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Keymap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4123,6 +4149,8 @@ type Monitor struct {
 func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
 	return &Monitor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Monitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4497,6 +4525,8 @@ type Screen struct {
 func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 	return &Screen{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Screen) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5305,6 +5335,8 @@ type Seat struct {
 func SeatNewFromNative(native unsafe.Pointer) *Seat {
 	return &Seat{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Seat) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5461,6 +5493,8 @@ type Visual struct {
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
 	return &Visual{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Visual) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5777,6 +5811,8 @@ type Window struct {
 func WindowNewFromNative(native unsafe.Pointer) *Window {
 	return &Window{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

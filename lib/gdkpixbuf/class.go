@@ -27,6 +27,8 @@ type Pixbuf struct {
 func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
 	return &Pixbuf{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Pixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1324,6 +1326,8 @@ type PixbufAnimation struct {
 func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
 	return &PixbufAnimation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PixbufAnimation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1604,6 +1608,8 @@ type PixbufAnimationIter struct {
 func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIter {
 	return &PixbufAnimationIter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PixbufAnimationIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1724,6 +1730,8 @@ type PixbufLoader struct {
 func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
 	return &PixbufLoader{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PixbufLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2006,9 +2014,13 @@ type PixbufSimpleAnim struct {
 func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
 	return &PixbufSimpleAnim{native: native}
 }
+
+// PixbufAnimation upcasts to *PixbufAnimation
 func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
 	return PixbufAnimationNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PixbufSimpleAnim) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2155,9 +2167,13 @@ type PixbufSimpleAnimIter struct {
 func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimIter {
 	return &PixbufSimpleAnimIter{native: native}
 }
+
+// PixbufAnimationIter upcasts to *PixbufAnimationIter
 func (recv *PixbufSimpleAnimIter) PixbufAnimationIter() *PixbufAnimationIter {
 	return PixbufAnimationIterNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PixbufSimpleAnimIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

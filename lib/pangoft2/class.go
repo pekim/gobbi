@@ -28,9 +28,13 @@ type FontMap struct {
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 	return &FontMap{native: native}
 }
+
+// FontMap upcasts to *FontMap
 func (recv *FontMap) FontMap() *pango.FontMap {
 	return pango.FontMapNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

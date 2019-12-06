@@ -152,19 +152,21 @@ func (r *Record) generateNewFromNativeBody(g *jen.Group) {
 }
 
 func (r *Record) generateAncestorAccessors(f *file) {
-	ancestort := r.parent
+	ancestor := r.parent
 
-	for ancestort != nil {
-		accessorName := ancestort.goName
-		if ancestort.goName == "Object" && ancestort.namespace.Name != "GObject" {
+	for ancestor != nil {
+		accessorName := ancestor.goName
+		if ancestor.goName == "Object" && ancestor.namespace.Name != "GObject" {
 			// avoid name clash
-			accessorName += ancestort.namespace.Name
+			accessorName += ancestor.namespace.Name
 		}
 
-		parentType := jen.Op("*").Id(ancestort.goName)
-		if ancestort.namespace != r.namespace {
-			parentType = jen.Op("*").Qual(ancestort.namespace.goFullPackageName, ancestort.goName)
+		parentType := jen.Op("*").Id(ancestor.goName)
+		if ancestor.namespace != r.namespace {
+			parentType = jen.Op("*").Qual(ancestor.namespace.goFullPackageName, ancestor.goName)
 		}
+
+		f.Commentf("%s upcasts to *%s", accessorName, accessorName)
 
 		// GEN: func (recv *SomeClass) AncestorName() *AncestorName {...}
 		f.
@@ -174,10 +176,10 @@ func (r *Record) generateAncestorAccessors(f *file) {
 			Params().
 			Params(parentType).
 			BlockFunc(func(g *jen.Group) {
-				r.generateAncestorAccessorBody(g, ancestort)
+				r.generateAncestorAccessorBody(g, ancestor)
 			})
 
-		ancestort = ancestort.parent
+		ancestor = ancestor.parent
 	}
 }
 

@@ -28,6 +28,8 @@ type AppInfoMonitor struct {
 func AppInfoMonitorNewFromNative(native unsafe.Pointer) *AppInfoMonitor {
 	return &AppInfoMonitor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AppInfoMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -50,6 +52,8 @@ type AppLaunchContext struct {
 func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	return &AppLaunchContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -226,6 +230,8 @@ type Application struct {
 func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 	return &Application{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -988,6 +994,8 @@ type ApplicationCommandLine struct {
 func ApplicationCommandLineNewFromNative(native unsafe.Pointer) *ApplicationCommandLine {
 	return &ApplicationCommandLine{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ApplicationCommandLine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1270,12 +1278,18 @@ type BufferedInputStream struct {
 func BufferedInputStreamNewFromNative(native unsafe.Pointer) *BufferedInputStream {
 	return &BufferedInputStream{native: native}
 }
+
+// FilterInputStream upcasts to *FilterInputStream
 func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {
 	return FilterInputStreamNewFromNative(recv.native)
 }
+
+// InputStream upcasts to *InputStream
 func (recv *BufferedInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *BufferedInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1575,12 +1589,18 @@ type BufferedOutputStream struct {
 func BufferedOutputStreamNewFromNative(native unsafe.Pointer) *BufferedOutputStream {
 	return &BufferedOutputStream{native: native}
 }
+
+// FilterOutputStream upcasts to *FilterOutputStream
 func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromNative(recv.native)
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *BufferedOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *BufferedOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1818,6 +1838,8 @@ type BytesIcon struct {
 func BytesIconNewFromNative(native unsafe.Pointer) *BytesIcon {
 	return &BytesIcon{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *BytesIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1844,6 +1866,8 @@ type Cancellable struct {
 func CancellableNewFromNative(native unsafe.Pointer) *Cancellable {
 	return &Cancellable{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Cancellable) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2171,6 +2195,8 @@ type CharsetConverter struct {
 func CharsetConverterNewFromNative(native unsafe.Pointer) *CharsetConverter {
 	return &CharsetConverter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CharsetConverter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2319,12 +2345,18 @@ type ConverterInputStream struct {
 func ConverterInputStreamNewFromNative(native unsafe.Pointer) *ConverterInputStream {
 	return &ConverterInputStream{native: native}
 }
+
+// FilterInputStream upcasts to *FilterInputStream
 func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {
 	return FilterInputStreamNewFromNative(recv.native)
 }
+
+// InputStream upcasts to *InputStream
 func (recv *ConverterInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ConverterInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2365,12 +2397,18 @@ type ConverterOutputStream struct {
 func ConverterOutputStreamNewFromNative(native unsafe.Pointer) *ConverterOutputStream {
 	return &ConverterOutputStream{native: native}
 }
+
+// FilterOutputStream upcasts to *FilterOutputStream
 func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromNative(recv.native)
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *ConverterOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ConverterOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2411,6 +2449,8 @@ type Credentials struct {
 func CredentialsNewFromNative(native unsafe.Pointer) *Credentials {
 	return &Credentials{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Credentials) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2629,6 +2669,8 @@ type DBusActionGroup struct {
 func DBusActionGroupNewFromNative(native unsafe.Pointer) *DBusActionGroup {
 	return &DBusActionGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2651,6 +2693,8 @@ type DBusAuthObserver struct {
 func DBusAuthObserverNewFromNative(native unsafe.Pointer) *DBusAuthObserver {
 	return &DBusAuthObserver{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusAuthObserver) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2770,6 +2814,8 @@ type DBusConnection struct {
 func DBusConnectionNewFromNative(native unsafe.Pointer) *DBusConnection {
 	return &DBusConnection{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3409,6 +3455,8 @@ type DBusInterfaceSkeleton struct {
 func DBusInterfaceSkeletonNewFromNative(native unsafe.Pointer) *DBusInterfaceSkeleton {
 	return &DBusInterfaceSkeleton{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3719,9 +3767,13 @@ type DBusMenuModel struct {
 func DBusMenuModelNewFromNative(native unsafe.Pointer) *DBusMenuModel {
 	return &DBusMenuModel{native: native}
 }
+
+// MenuModel upcasts to *MenuModel
 func (recv *DBusMenuModel) MenuModel() *MenuModel {
 	return MenuModelNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *DBusMenuModel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3744,6 +3796,8 @@ type DBusMessage struct {
 func DBusMessageNewFromNative(native unsafe.Pointer) *DBusMessage {
 	return &DBusMessage{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4961,6 +5015,8 @@ type DBusMethodInvocation struct {
 func DBusMethodInvocationNewFromNative(native unsafe.Pointer) *DBusMethodInvocation {
 	return &DBusMethodInvocation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusMethodInvocation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5316,6 +5372,8 @@ type DBusObjectManagerClient struct {
 func DBusObjectManagerClientNewFromNative(native unsafe.Pointer) *DBusObjectManagerClient {
 	return &DBusObjectManagerClient{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5444,6 +5502,8 @@ type DBusObjectManagerServer struct {
 func DBusObjectManagerServerNewFromNative(native unsafe.Pointer) *DBusObjectManagerServer {
 	return &DBusObjectManagerServer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusObjectManagerServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5683,6 +5743,8 @@ type DBusObjectProxy struct {
 func DBusObjectProxyNewFromNative(native unsafe.Pointer) *DBusObjectProxy {
 	return &DBusObjectProxy{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusObjectProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5770,6 +5832,8 @@ type DBusObjectSkeleton struct {
 func DBusObjectSkeletonNewFromNative(native unsafe.Pointer) *DBusObjectSkeleton {
 	return &DBusObjectSkeleton{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusObjectSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5968,6 +6032,8 @@ type DBusProxy struct {
 func DBusProxyNewFromNative(native unsafe.Pointer) *DBusProxy {
 	return &DBusProxy{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6326,6 +6392,8 @@ type DBusServer struct {
 func DBusServerNewFromNative(native unsafe.Pointer) *DBusServer {
 	return &DBusServer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DBusServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6504,15 +6572,23 @@ type DataInputStream struct {
 func DataInputStreamNewFromNative(native unsafe.Pointer) *DataInputStream {
 	return &DataInputStream{native: native}
 }
+
+// BufferedInputStream upcasts to *BufferedInputStream
 func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {
 	return BufferedInputStreamNewFromNative(recv.native)
 }
+
+// FilterInputStream upcasts to *FilterInputStream
 func (recv *DataInputStream) FilterInputStream() *FilterInputStream {
 	return FilterInputStreamNewFromNative(recv.native)
 }
+
+// InputStream upcasts to *InputStream
 func (recv *DataInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *DataInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7089,12 +7165,18 @@ type DataOutputStream struct {
 func DataOutputStreamNewFromNative(native unsafe.Pointer) *DataOutputStream {
 	return &DataOutputStream{native: native}
 }
+
+// FilterOutputStream upcasts to *FilterOutputStream
 func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromNative(recv.native)
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *DataOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *DataOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7496,6 +7578,8 @@ type DesktopAppInfo struct {
 func DesktopAppInfoNewFromNative(native unsafe.Pointer) *DesktopAppInfo {
 	return &DesktopAppInfo{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *DesktopAppInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8097,6 +8181,8 @@ type Emblem struct {
 func EmblemNewFromNative(native unsafe.Pointer) *Emblem {
 	return &Emblem{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Emblem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8157,6 +8243,8 @@ type EmblemedIcon struct {
 func EmblemedIconNewFromNative(native unsafe.Pointer) *EmblemedIcon {
 	return &EmblemedIcon{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *EmblemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8246,6 +8334,8 @@ type FileEnumerator struct {
 func FileEnumeratorNewFromNative(native unsafe.Pointer) *FileEnumerator {
 	return &FileEnumerator{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8445,9 +8535,13 @@ type FileIOStream struct {
 func FileIOStreamNewFromNative(native unsafe.Pointer) *FileIOStream {
 	return &FileIOStream{native: native}
 }
+
+// IOStream upcasts to *IOStream
 func (recv *FileIOStream) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileIOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8554,6 +8648,8 @@ type FileIcon struct {
 func FileIconNewFromNative(native unsafe.Pointer) *FileIcon {
 	return &FileIcon{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8580,6 +8676,8 @@ type FileInfo struct {
 func FileInfoNewFromNative(native unsafe.Pointer) *FileInfo {
 	return &FileInfo{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10207,9 +10305,13 @@ type FileInputStream struct {
 func FileInputStreamNewFromNative(native unsafe.Pointer) *FileInputStream {
 	return &FileInputStream{native: native}
 }
+
+// InputStream upcasts to *InputStream
 func (recv *FileInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10284,6 +10386,8 @@ type FileMonitor struct {
 func FileMonitorNewFromNative(native unsafe.Pointer) *FileMonitor {
 	return &FileMonitor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10405,9 +10509,13 @@ type FileOutputStream struct {
 func FileOutputStreamNewFromNative(native unsafe.Pointer) *FileOutputStream {
 	return &FileOutputStream{native: native}
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *FileOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10514,6 +10622,8 @@ type FilenameCompleter struct {
 func FilenameCompleterNewFromNative(native unsafe.Pointer) *FilenameCompleter {
 	return &FilenameCompleter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FilenameCompleter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10657,9 +10767,13 @@ type FilterInputStream struct {
 func FilterInputStreamNewFromNative(native unsafe.Pointer) *FilterInputStream {
 	return &FilterInputStream{native: native}
 }
+
+// InputStream upcasts to *InputStream
 func (recv *FilterInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FilterInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10803,9 +10917,13 @@ type FilterOutputStream struct {
 func FilterOutputStreamNewFromNative(native unsafe.Pointer) *FilterOutputStream {
 	return &FilterOutputStream{native: native}
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *FilterOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FilterOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10949,9 +11067,13 @@ type IOModule struct {
 func IOModuleNewFromNative(native unsafe.Pointer) *IOModule {
 	return &IOModule{native: native}
 }
+
+// TypeModule upcasts to *TypeModule
 func (recv *IOModule) TypeModule() *gobject.TypeModule {
 	return gobject.TypeModuleNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *IOModule) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11062,6 +11184,8 @@ type IOStream struct {
 func IOStreamNewFromNative(native unsafe.Pointer) *IOStream {
 	return &IOStream{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *IOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11315,6 +11439,8 @@ type InetAddress struct {
 func InetAddressNewFromNative(native unsafe.Pointer) *InetAddress {
 	return &InetAddress{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *InetAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11920,6 +12046,8 @@ type InetAddressMask struct {
 func InetAddressMaskNewFromNative(native unsafe.Pointer) *InetAddressMask {
 	return &InetAddressMask{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *InetAddressMask) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12205,9 +12333,13 @@ type InetSocketAddress struct {
 func InetSocketAddressNewFromNative(native unsafe.Pointer) *InetSocketAddress {
 	return &InetSocketAddress{native: native}
 }
+
+// SocketAddress upcasts to *SocketAddress
 func (recv *InetSocketAddress) SocketAddress() *SocketAddress {
 	return SocketAddressNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *InetSocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12438,6 +12570,8 @@ type InputStream struct {
 func InputStreamNewFromNative(native unsafe.Pointer) *InputStream {
 	return &InputStream{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *InputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12681,6 +12815,8 @@ type ListStore struct {
 func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 	return &ListStore{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12772,9 +12908,13 @@ type MemoryInputStream struct {
 func MemoryInputStreamNewFromNative(native unsafe.Pointer) *MemoryInputStream {
 	return &MemoryInputStream{native: native}
 }
+
+// InputStream upcasts to *InputStream
 func (recv *MemoryInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MemoryInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12849,9 +12989,13 @@ type MemoryOutputStream struct {
 func MemoryOutputStreamNewFromNative(native unsafe.Pointer) *MemoryOutputStream {
 	return &MemoryOutputStream{native: native}
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *MemoryOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MemoryOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12990,9 +13134,13 @@ type Menu struct {
 func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	return &Menu{native: native}
 }
+
+// MenuModel upcasts to *MenuModel
 func (recv *Menu) MenuModel() *MenuModel {
 	return MenuModelNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Menu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13491,6 +13639,8 @@ type MenuAttributeIter struct {
 func MenuAttributeIterNewFromNative(native unsafe.Pointer) *MenuAttributeIter {
 	return &MenuAttributeIter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MenuAttributeIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13599,6 +13749,8 @@ type MenuItem struct {
 func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	return &MenuItem{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13946,6 +14098,8 @@ type MenuLinkIter struct {
 func MenuLinkIterNewFromNative(native unsafe.Pointer) *MenuLinkIter {
 	return &MenuLinkIter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MenuLinkIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -14117,6 +14271,8 @@ type MenuModel struct {
 func MenuModelNewFromNative(native unsafe.Pointer) *MenuModel {
 	return &MenuModel{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MenuModel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -14356,6 +14512,8 @@ type MountOperation struct {
 func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	return &MountOperation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15004,9 +15162,13 @@ type NativeSocketAddress struct {
 func NativeSocketAddressNewFromNative(native unsafe.Pointer) *NativeSocketAddress {
 	return &NativeSocketAddress{native: native}
 }
+
+// SocketAddress upcasts to *SocketAddress
 func (recv *NativeSocketAddress) SocketAddress() *SocketAddress {
 	return SocketAddressNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NativeSocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15045,9 +15207,13 @@ type NativeVolumeMonitor struct {
 func NativeVolumeMonitorNewFromNative(native unsafe.Pointer) *NativeVolumeMonitor {
 	return &NativeVolumeMonitor{native: native}
 }
+
+// VolumeMonitor upcasts to *VolumeMonitor
 func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
 	return VolumeMonitorNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NativeVolumeMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15084,6 +15250,8 @@ type NetworkAddress struct {
 func NetworkAddressNewFromNative(native unsafe.Pointer) *NetworkAddress {
 	return &NetworkAddress{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *NetworkAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15271,6 +15439,8 @@ type NetworkService struct {
 func NetworkServiceNewFromNative(native unsafe.Pointer) *NetworkService {
 	return &NetworkService{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *NetworkService) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15488,6 +15658,8 @@ type Notification struct {
 func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 	return &Notification{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15727,6 +15899,8 @@ type OutputStream struct {
 func OutputStreamNewFromNative(native unsafe.Pointer) *OutputStream {
 	return &OutputStream{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *OutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16023,6 +16197,8 @@ type Permission struct {
 func PermissionNewFromNative(native unsafe.Pointer) *Permission {
 	return &Permission{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Permission) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16250,6 +16426,8 @@ type PropertyAction struct {
 func PropertyActionNewFromNative(native unsafe.Pointer) *PropertyAction {
 	return &PropertyAction{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PropertyAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16274,12 +16452,18 @@ type ProxyAddress struct {
 func ProxyAddressNewFromNative(native unsafe.Pointer) *ProxyAddress {
 	return &ProxyAddress{native: native}
 }
+
+// InetSocketAddress upcasts to *InetSocketAddress
 func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {
 	return InetSocketAddressNewFromNative(recv.native)
 }
+
+// SocketAddress upcasts to *SocketAddress
 func (recv *ProxyAddress) SocketAddress() *SocketAddress {
 	return SocketAddressNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ProxyAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16578,9 +16762,13 @@ type ProxyAddressEnumerator struct {
 func ProxyAddressEnumeratorNewFromNative(native unsafe.Pointer) *ProxyAddressEnumerator {
 	return &ProxyAddressEnumerator{native: native}
 }
+
+// SocketAddressEnumerator upcasts to *SocketAddressEnumerator
 func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {
 	return SocketAddressEnumeratorNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ProxyAddressEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16603,6 +16791,8 @@ type Resolver struct {
 func ResolverNewFromNative(native unsafe.Pointer) *Resolver {
 	return &Resolver{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Resolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16733,6 +16923,8 @@ type Settings struct {
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -17866,6 +18058,8 @@ type SettingsBackend struct {
 func SettingsBackendNewFromNative(native unsafe.Pointer) *SettingsBackend {
 	return &SettingsBackend{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SettingsBackend) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -17958,6 +18152,8 @@ type SimpleAction struct {
 func SimpleActionNewFromNative(native unsafe.Pointer) *SimpleAction {
 	return &SimpleAction{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SimpleAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18017,6 +18213,8 @@ type SimpleActionGroup struct {
 func SimpleActionGroupNewFromNative(native unsafe.Pointer) *SimpleActionGroup {
 	return &SimpleActionGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SimpleActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18104,6 +18302,8 @@ type SimpleAsyncResult struct {
 func SimpleAsyncResultNewFromNative(native unsafe.Pointer) *SimpleAsyncResult {
 	return &SimpleAsyncResult{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SimpleAsyncResult) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18418,9 +18618,13 @@ type SimpleIOStream struct {
 func SimpleIOStreamNewFromNative(native unsafe.Pointer) *SimpleIOStream {
 	return &SimpleIOStream{native: native}
 }
+
+// IOStream upcasts to *IOStream
 func (recv *SimpleIOStream) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SimpleIOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18476,9 +18680,13 @@ type SimplePermission struct {
 func SimplePermissionNewFromNative(native unsafe.Pointer) *SimplePermission {
 	return &SimplePermission{native: native}
 }
+
+// Permission upcasts to *Permission
 func (recv *SimplePermission) Permission() *Permission {
 	return PermissionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SimplePermission) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18533,6 +18741,8 @@ type SimpleProxyResolver struct {
 func SimpleProxyResolverNewFromNative(native unsafe.Pointer) *SimpleProxyResolver {
 	return &SimpleProxyResolver{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SimpleProxyResolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -18647,6 +18857,8 @@ type Socket struct {
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20097,6 +20309,8 @@ type SocketAddress struct {
 func SocketAddressNewFromNative(native unsafe.Pointer) *SocketAddress {
 	return &SocketAddress{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20191,6 +20405,8 @@ type SocketAddressEnumerator struct {
 func SocketAddressEnumeratorNewFromNative(native unsafe.Pointer) *SocketAddressEnumerator {
 	return &SocketAddressEnumerator{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SocketAddressEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20250,6 +20466,8 @@ type SocketClient struct {
 func SocketClientNewFromNative(native unsafe.Pointer) *SocketClient {
 	return &SocketClient{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SocketClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20907,9 +21125,13 @@ type SocketConnection struct {
 func SocketConnectionNewFromNative(native unsafe.Pointer) *SocketConnection {
 	return &SocketConnection{native: native}
 }
+
+// IOStream upcasts to *IOStream
 func (recv *SocketConnection) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SocketConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21126,6 +21348,8 @@ type SocketControlMessage struct {
 func SocketControlMessageNewFromNative(native unsafe.Pointer) *SocketControlMessage {
 	return &SocketControlMessage{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SocketControlMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21264,6 +21488,8 @@ type SocketListener struct {
 func SocketListenerNewFromNative(native unsafe.Pointer) *SocketListener {
 	return &SocketListener{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SocketListener) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21411,9 +21637,13 @@ type SocketService struct {
 func SocketServiceNewFromNative(native unsafe.Pointer) *SocketService {
 	return &SocketService{native: native}
 }
+
+// SocketListener upcasts to *SocketListener
 func (recv *SocketService) SocketListener() *SocketListener {
 	return SocketListenerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SocketService) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21582,6 +21812,8 @@ type Subprocess struct {
 func SubprocessNewFromNative(native unsafe.Pointer) *Subprocess {
 	return &Subprocess{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Subprocess) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22106,6 +22338,8 @@ type SubprocessLauncher struct {
 func SubprocessLauncherNewFromNative(native unsafe.Pointer) *SubprocessLauncher {
 	return &SubprocessLauncher{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SubprocessLauncher) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22466,6 +22700,8 @@ type Task struct {
 func TaskNewFromNative(native unsafe.Pointer) *Task {
 	return &Task{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Task) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23014,12 +23250,18 @@ type TcpConnection struct {
 func TcpConnectionNewFromNative(native unsafe.Pointer) *TcpConnection {
 	return &TcpConnection{native: native}
 }
+
+// SocketConnection upcasts to *SocketConnection
 func (recv *TcpConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromNative(recv.native)
 }
+
+// IOStream upcasts to *IOStream
 func (recv *TcpConnection) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TcpConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23131,15 +23373,23 @@ type TcpWrapperConnection struct {
 func TcpWrapperConnectionNewFromNative(native unsafe.Pointer) *TcpWrapperConnection {
 	return &TcpWrapperConnection{native: native}
 }
+
+// TcpConnection upcasts to *TcpConnection
 func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {
 	return TcpConnectionNewFromNative(recv.native)
 }
+
+// SocketConnection upcasts to *SocketConnection
 func (recv *TcpWrapperConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromNative(recv.native)
 }
+
+// IOStream upcasts to *IOStream
 func (recv *TcpWrapperConnection) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TcpWrapperConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23255,6 +23505,8 @@ type TestDBus struct {
 func TestDBusNewFromNative(native unsafe.Pointer) *TestDBus {
 	return &TestDBus{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TestDBus) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23426,6 +23678,8 @@ type ThemedIcon struct {
 func ThemedIconNewFromNative(native unsafe.Pointer) *ThemedIcon {
 	return &ThemedIcon{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ThemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23600,12 +23854,18 @@ type ThreadedSocketService struct {
 func ThreadedSocketServiceNewFromNative(native unsafe.Pointer) *ThreadedSocketService {
 	return &ThreadedSocketService{native: native}
 }
+
+// SocketService upcasts to *SocketService
 func (recv *ThreadedSocketService) SocketService() *SocketService {
 	return SocketServiceNewFromNative(recv.native)
 }
+
+// SocketListener upcasts to *SocketListener
 func (recv *ThreadedSocketService) SocketListener() *SocketListener {
 	return SocketListenerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ThreadedSocketService) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23688,6 +23948,8 @@ type TlsCertificate struct {
 func TlsCertificateNewFromNative(native unsafe.Pointer) *TlsCertificate {
 	return &TlsCertificate{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TlsCertificate) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23893,9 +24155,13 @@ type TlsConnection struct {
 func TlsConnectionNewFromNative(native unsafe.Pointer) *TlsConnection {
 	return &TlsConnection{native: native}
 }
+
+// IOStream upcasts to *IOStream
 func (recv *TlsConnection) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TlsConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24419,6 +24685,8 @@ type TlsDatabase struct {
 func TlsDatabaseNewFromNative(native unsafe.Pointer) *TlsDatabase {
 	return &TlsDatabase{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TlsDatabase) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24584,6 +24852,8 @@ type TlsInteraction struct {
 func TlsInteractionNewFromNative(native unsafe.Pointer) *TlsInteraction {
 	return &TlsInteraction{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TlsInteraction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24752,6 +25022,8 @@ type TlsPassword struct {
 func TlsPasswordNewFromNative(native unsafe.Pointer) *TlsPassword {
 	return &TlsPassword{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TlsPassword) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24957,12 +25229,18 @@ type UnixConnection struct {
 func UnixConnectionNewFromNative(native unsafe.Pointer) *UnixConnection {
 	return &UnixConnection{native: native}
 }
+
+// SocketConnection upcasts to *SocketConnection
 func (recv *UnixConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromNative(recv.native)
 }
+
+// IOStream upcasts to *IOStream
 func (recv *UnixConnection) IOStream() *IOStream {
 	return IOStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25154,9 +25432,13 @@ type UnixCredentialsMessage struct {
 func UnixCredentialsMessageNewFromNative(native unsafe.Pointer) *UnixCredentialsMessage {
 	return &UnixCredentialsMessage{native: native}
 }
+
+// SocketControlMessage upcasts to *SocketControlMessage
 func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {
 	return SocketControlMessageNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixCredentialsMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25301,6 +25583,8 @@ type UnixFDList struct {
 func UnixFDListNewFromNative(native unsafe.Pointer) *UnixFDList {
 	return &UnixFDList{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UnixFDList) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25535,9 +25819,13 @@ type UnixFDMessage struct {
 func UnixFDMessageNewFromNative(native unsafe.Pointer) *UnixFDMessage {
 	return &UnixFDMessage{native: native}
 }
+
+// SocketControlMessage upcasts to *SocketControlMessage
 func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {
 	return SocketControlMessageNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixFDMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25747,9 +26035,13 @@ type UnixInputStream struct {
 func UnixInputStreamNewFromNative(native unsafe.Pointer) *UnixInputStream {
 	return &UnixInputStream{native: native}
 }
+
+// InputStream upcasts to *InputStream
 func (recv *UnixInputStream) InputStream() *InputStream {
 	return InputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixInputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25912,6 +26204,8 @@ type UnixMountMonitor struct {
 func UnixMountMonitorNewFromNative(native unsafe.Pointer) *UnixMountMonitor {
 	return &UnixMountMonitor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UnixMountMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25993,9 +26287,13 @@ type UnixOutputStream struct {
 func UnixOutputStreamNewFromNative(native unsafe.Pointer) *UnixOutputStream {
 	return &UnixOutputStream{native: native}
 }
+
+// OutputStream upcasts to *OutputStream
 func (recv *UnixOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixOutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26158,9 +26456,13 @@ type UnixSocketAddress struct {
 func UnixSocketAddressNewFromNative(native unsafe.Pointer) *UnixSocketAddress {
 	return &UnixSocketAddress{native: native}
 }
+
+// SocketAddress upcasts to *SocketAddress
 func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
 	return SocketAddressNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *UnixSocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26361,6 +26663,8 @@ type Vfs struct {
 func VfsNewFromNative(native unsafe.Pointer) *Vfs {
 	return &Vfs{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Vfs) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26488,6 +26792,8 @@ type VolumeMonitor struct {
 func VolumeMonitorNewFromNative(native unsafe.Pointer) *VolumeMonitor {
 	return &VolumeMonitor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *VolumeMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26524,6 +26830,8 @@ type ZlibCompressor struct {
 func ZlibCompressorNewFromNative(native unsafe.Pointer) *ZlibCompressor {
 	return &ZlibCompressor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ZlibCompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26640,6 +26948,8 @@ type ZlibDecompressor struct {
 func ZlibDecompressorNewFromNative(native unsafe.Pointer) *ZlibDecompressor {
 	return &ZlibDecompressor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ZlibDecompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

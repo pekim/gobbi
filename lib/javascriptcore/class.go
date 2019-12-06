@@ -27,6 +27,8 @@ type Class struct {
 func ClassNewFromNative(native unsafe.Pointer) *Class {
 	return &Class{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Class) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -127,6 +129,8 @@ type Context struct {
 func ContextNewFromNative(native unsafe.Pointer) *Context {
 	return &Context{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -637,6 +641,8 @@ type Exception struct {
 func ExceptionNewFromNative(native unsafe.Pointer) *Exception {
 	return &Exception{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Exception) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -994,6 +1000,8 @@ type Value struct {
 func ValueNewFromNative(native unsafe.Pointer) *Value {
 	return &Value{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Value) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1918,6 +1926,8 @@ type VirtualMachine struct {
 func VirtualMachineNewFromNative(native unsafe.Pointer) *VirtualMachine {
 	return &VirtualMachine{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *VirtualMachine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1974,6 +1984,8 @@ type WeakValue struct {
 func WeakValueNewFromNative(native unsafe.Pointer) *WeakValue {
 	return &WeakValue{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WeakValue) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

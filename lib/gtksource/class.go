@@ -28,9 +28,13 @@ type Buffer struct {
 func BufferNewFromNative(native unsafe.Pointer) *Buffer {
 	return &Buffer{native: native}
 }
+
+// TextBuffer upcasts to *TextBuffer
 func (recv *Buffer) TextBuffer() *gtk.TextBuffer {
 	return gtk.TextBufferNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Buffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -681,6 +685,8 @@ type Completion struct {
 func CompletionNewFromNative(native unsafe.Pointer) *Completion {
 	return &Completion{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Completion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -881,9 +887,13 @@ type CompletionContext struct {
 func CompletionContextNewFromNative(native unsafe.Pointer) *CompletionContext {
 	return &CompletionContext{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CompletionContext) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CompletionContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -930,21 +940,33 @@ type CompletionInfo struct {
 func CompletionInfoNewFromNative(native unsafe.Pointer) *CompletionInfo {
 	return &CompletionInfo{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *CompletionInfo) Window() *gtk.Window {
 	return gtk.WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *CompletionInfo) Bin() *gtk.Bin {
 	return gtk.BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *CompletionInfo) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *CompletionInfo) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CompletionInfo) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CompletionInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1021,6 +1043,8 @@ type CompletionItem struct {
 func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
 	return &CompletionItem{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CompletionItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1249,6 +1273,8 @@ type CompletionWords struct {
 func CompletionWordsNewFromNative(native unsafe.Pointer) *CompletionWords {
 	return &CompletionWords{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CompletionWords) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1295,6 +1321,8 @@ type File struct {
 func FileNewFromNative(native unsafe.Pointer) *File {
 	return &File{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *File) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1623,6 +1651,8 @@ type FileLoader struct {
 func FileLoaderNewFromNative(native unsafe.Pointer) *FileLoader {
 	return &FileLoader{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1868,6 +1898,8 @@ type FileSaver struct {
 func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
 	return &FileSaver{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FileSaver) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2200,6 +2232,8 @@ type Gutter struct {
 func GutterNewFromNative(native unsafe.Pointer) *Gutter {
 	return &Gutter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Gutter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2491,9 +2525,13 @@ type GutterRenderer struct {
 func GutterRendererNewFromNative(native unsafe.Pointer) *GutterRenderer {
 	return &GutterRenderer{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *GutterRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GutterRenderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2905,12 +2943,18 @@ type GutterRendererPixbuf struct {
 func GutterRendererPixbufNewFromNative(native unsafe.Pointer) *GutterRendererPixbuf {
 	return &GutterRendererPixbuf{native: native}
 }
+
+// GutterRenderer upcasts to *GutterRenderer
 func (recv *GutterRendererPixbuf) GutterRenderer() *GutterRenderer {
 	return GutterRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *GutterRendererPixbuf) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GutterRendererPixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3093,12 +3137,18 @@ type GutterRendererText struct {
 func GutterRendererTextNewFromNative(native unsafe.Pointer) *GutterRendererText {
 	return &GutterRendererText{native: native}
 }
+
+// GutterRenderer upcasts to *GutterRenderer
 func (recv *GutterRendererText) GutterRenderer() *GutterRenderer {
 	return GutterRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *GutterRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GutterRendererText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3279,6 +3329,8 @@ type Language struct {
 func LanguageNewFromNative(native unsafe.Pointer) *Language {
 	return &Language{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Language) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3630,6 +3682,8 @@ type LanguageManager struct {
 func LanguageManagerNewFromNative(native unsafe.Pointer) *LanguageManager {
 	return &LanguageManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *LanguageManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3825,21 +3879,33 @@ type Map struct {
 func MapNewFromNative(native unsafe.Pointer) *Map {
 	return &Map{native: native}
 }
+
+// View upcasts to *View
 func (recv *Map) View() *View {
 	return ViewNewFromNative(recv.native)
 }
+
+// TextView upcasts to *TextView
 func (recv *Map) TextView() *gtk.TextView {
 	return gtk.TextViewNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Map) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Map) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Map) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Map) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3967,9 +4033,13 @@ type Mark struct {
 func MarkNewFromNative(native unsafe.Pointer) *Mark {
 	return &Mark{native: native}
 }
+
+// TextMark upcasts to *TextMark
 func (recv *Mark) TextMark() *gtk.TextMark {
 	return gtk.TextMarkNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Mark) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4141,6 +4211,8 @@ type MarkAttributes struct {
 func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
 	return &MarkAttributes{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *MarkAttributes) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4395,6 +4467,8 @@ type PrintCompositor struct {
 func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
 	return &PrintCompositor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintCompositor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5232,6 +5306,8 @@ type Region struct {
 func RegionNewFromNative(native unsafe.Pointer) *Region {
 	return &Region{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Region) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5457,6 +5533,8 @@ type SearchContext struct {
 func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
 	return &SearchContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SearchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5839,6 +5917,8 @@ type SearchSettings struct {
 func SearchSettingsNewFromNative(native unsafe.Pointer) *SearchSettings {
 	return &SearchSettings{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SearchSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6214,6 +6294,8 @@ type SpaceDrawer struct {
 func SpaceDrawerNewFromNative(native unsafe.Pointer) *SpaceDrawer {
 	return &SpaceDrawer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SpaceDrawer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6355,6 +6437,8 @@ type Style struct {
 func StyleNewFromNative(native unsafe.Pointer) *Style {
 	return &Style{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6411,6 +6495,8 @@ type StyleScheme struct {
 func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
 	return &StyleScheme{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StyleScheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6640,21 +6726,33 @@ type StyleSchemeChooserButton struct {
 func StyleSchemeChooserButtonNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButton {
 	return &StyleSchemeChooserButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *StyleSchemeChooserButton) Button() *gtk.Button {
 	return gtk.ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *StyleSchemeChooserButton) Bin() *gtk.Bin {
 	return gtk.BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *StyleSchemeChooserButton) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *StyleSchemeChooserButton) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *StyleSchemeChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StyleSchemeChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6711,18 +6809,28 @@ type StyleSchemeChooserWidget struct {
 func StyleSchemeChooserWidgetNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidget {
 	return &StyleSchemeChooserWidget{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *StyleSchemeChooserWidget) Bin() *gtk.Bin {
 	return gtk.BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *StyleSchemeChooserWidget) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *StyleSchemeChooserWidget) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *StyleSchemeChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StyleSchemeChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6779,6 +6887,8 @@ type StyleSchemeManager struct {
 func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager {
 	return &StyleSchemeManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StyleSchemeManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7026,9 +7136,13 @@ type Tag struct {
 func TagNewFromNative(native unsafe.Pointer) *Tag {
 	return &Tag{native: native}
 }
+
+// TextTag upcasts to *TextTag
 func (recv *Tag) TextTag() *gtk.TextTag {
 	return gtk.TextTagNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Tag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7087,18 +7201,28 @@ type View struct {
 func ViewNewFromNative(native unsafe.Pointer) *View {
 	return &View{native: native}
 }
+
+// TextView upcasts to *TextView
 func (recv *View) TextView() *gtk.TextView {
 	return gtk.TextViewNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *View) Container() *gtk.Container {
 	return gtk.ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *View) Widget() *gtk.Widget {
 	return gtk.WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *View) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *View) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

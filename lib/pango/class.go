@@ -27,6 +27,8 @@ type Context struct {
 func ContextNewFromNative(native unsafe.Pointer) *Context {
 	return &Context{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -701,6 +703,8 @@ type Engine struct {
 func EngineNewFromNative(native unsafe.Pointer) *Engine {
 	return &Engine{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Engine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -723,9 +727,13 @@ type EngineLang struct {
 func EngineLangNewFromNative(native unsafe.Pointer) *EngineLang {
 	return &EngineLang{native: native}
 }
+
+// Engine upcasts to *Engine
 func (recv *EngineLang) Engine() *Engine {
 	return EngineNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EngineLang) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -748,9 +756,13 @@ type EngineShape struct {
 func EngineShapeNewFromNative(native unsafe.Pointer) *EngineShape {
 	return &EngineShape{native: native}
 }
+
+// Engine upcasts to *Engine
 func (recv *EngineShape) Engine() *Engine {
 	return EngineNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EngineShape) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -787,6 +799,8 @@ type Font struct {
 func FontNewFromNative(native unsafe.Pointer) *Font {
 	return &Font{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Font) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1043,6 +1057,8 @@ type FontFace struct {
 func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
 	return &FontFace{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FontFace) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1167,6 +1183,8 @@ type FontFamily struct {
 func FontFamilyNewFromNative(native unsafe.Pointer) *FontFamily {
 	return &FontFamily{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FontFamily) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1259,6 +1277,8 @@ type FontMap struct {
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 	return &FontMap{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1480,6 +1500,8 @@ type Fontset struct {
 func FontsetNewFromNative(native unsafe.Pointer) *Fontset {
 	return &Fontset{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Fontset) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1573,9 +1595,13 @@ type FontsetSimple struct {
 func FontsetSimpleNewFromNative(native unsafe.Pointer) *FontsetSimple {
 	return &FontsetSimple{native: native}
 }
+
+// Fontset upcasts to *Fontset
 func (recv *FontsetSimple) Fontset() *Fontset {
 	return FontsetNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontsetSimple) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1691,6 +1717,8 @@ type Layout struct {
 func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	return &Layout{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3392,6 +3420,8 @@ type Renderer struct {
 func RendererNewFromNative(native unsafe.Pointer) *Renderer {
 	return &Renderer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Renderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }

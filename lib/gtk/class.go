@@ -30,24 +30,38 @@ type AboutDialog struct {
 func AboutDialogNewFromNative(native unsafe.Pointer) *AboutDialog {
 	return &AboutDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *AboutDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *AboutDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *AboutDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *AboutDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AboutDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AboutDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AboutDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -881,6 +895,8 @@ type AccelGroup struct {
 func AccelGroupNewFromNative(native unsafe.Pointer) *AccelGroup {
 	return &AccelGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AccelGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1055,18 +1071,28 @@ type AccelLabel struct {
 func AccelLabelNewFromNative(native unsafe.Pointer) *AccelLabel {
 	return &AccelLabel{native: native}
 }
+
+// Label upcasts to *Label
 func (recv *AccelLabel) Label() *Label {
 	return LabelNewFromNative(recv.native)
 }
+
+// Misc upcasts to *Misc
 func (recv *AccelLabel) Misc() *Misc {
 	return MiscNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AccelLabel) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AccelLabel) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AccelLabel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1280,6 +1306,8 @@ type AccelMap struct {
 func AccelMapNewFromNative(native unsafe.Pointer) *AccelMap {
 	return &AccelMap{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *AccelMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1302,9 +1330,13 @@ type Accessible struct {
 func AccessibleNewFromNative(native unsafe.Pointer) *Accessible {
 	return &Accessible{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *Accessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Accessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -1420,6 +1452,8 @@ type Action struct {
 func ActionNewFromNative(native unsafe.Pointer) *Action {
 	return &Action{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Action) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2615,18 +2649,28 @@ type ActionBar struct {
 func ActionBarNewFromNative(native unsafe.Pointer) *ActionBar {
 	return &ActionBar{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *ActionBar) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ActionBar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ActionBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ActionBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ActionBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -2798,6 +2842,8 @@ type ActionGroup struct {
 func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
 	return &ActionGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3270,9 +3316,13 @@ type Adjustment struct {
 func AdjustmentNewFromNative(native unsafe.Pointer) *Adjustment {
 	return &Adjustment{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Adjustment) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -3868,18 +3918,28 @@ type Alignment struct {
 func AlignmentNewFromNative(native unsafe.Pointer) *Alignment {
 	return &Alignment{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Alignment) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Alignment) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Alignment) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Alignment) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Alignment) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4050,21 +4110,33 @@ type AppChooserButton struct {
 func AppChooserButtonNewFromNative(native unsafe.Pointer) *AppChooserButton {
 	return &AppChooserButton{native: native}
 }
+
+// ComboBox upcasts to *ComboBox
 func (recv *AppChooserButton) ComboBox() *ComboBox {
 	return ComboBoxNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *AppChooserButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *AppChooserButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AppChooserButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AppChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AppChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4375,24 +4447,38 @@ type AppChooserDialog struct {
 func AppChooserDialogNewFromNative(native unsafe.Pointer) *AppChooserDialog {
 	return &AppChooserDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *AppChooserDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *AppChooserDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *AppChooserDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *AppChooserDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AppChooserDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AppChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AppChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4526,18 +4612,28 @@ type AppChooserWidget struct {
 func AppChooserWidgetNewFromNative(native unsafe.Pointer) *AppChooserWidget {
 	return &AppChooserWidget{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *AppChooserWidget) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *AppChooserWidget) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AppChooserWidget) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AppChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AppChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -4972,9 +5068,13 @@ type Application struct {
 func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 	return &Application{native: native}
 }
+
+// Application upcasts to *Application
 func (recv *Application) Application() *gio.Application {
 	return gio.ApplicationNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5295,21 +5395,33 @@ type ApplicationWindow struct {
 func ApplicationWindowNewFromNative(native unsafe.Pointer) *ApplicationWindow {
 	return &ApplicationWindow{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *ApplicationWindow) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ApplicationWindow) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ApplicationWindow) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ApplicationWindow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ApplicationWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ApplicationWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5532,15 +5644,23 @@ type Arrow struct {
 func ArrowNewFromNative(native unsafe.Pointer) *Arrow {
 	return &Arrow{native: native}
 }
+
+// Misc upcasts to *Misc
 func (recv *Arrow) Misc() *Misc {
 	return MiscNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Arrow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Arrow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Arrow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5640,15 +5760,23 @@ type ArrowAccessible struct {
 func ArrowAccessibleNewFromNative(native unsafe.Pointer) *ArrowAccessible {
 	return &ArrowAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ArrowAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ArrowAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ArrowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5699,21 +5827,33 @@ type AspectFrame struct {
 func AspectFrameNewFromNative(native unsafe.Pointer) *AspectFrame {
 	return &AspectFrame{native: native}
 }
+
+// Frame upcasts to *Frame
 func (recv *AspectFrame) Frame() *Frame {
 	return FrameNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *AspectFrame) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *AspectFrame) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *AspectFrame) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *AspectFrame) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *AspectFrame) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -5818,21 +5958,33 @@ type Assistant struct {
 func AssistantNewFromNative(native unsafe.Pointer) *Assistant {
 	return &Assistant{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *Assistant) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *Assistant) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Assistant) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Assistant) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Assistant) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Assistant) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6586,15 +6738,23 @@ type Bin struct {
 func BinNewFromNative(native unsafe.Pointer) *Bin {
 	return &Bin{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Bin) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Bin) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Bin) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Bin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6663,18 +6823,28 @@ type BooleanCellAccessible struct {
 func BooleanCellAccessibleNewFromNative(native unsafe.Pointer) *BooleanCellAccessible {
 	return &BooleanCellAccessible{native: native}
 }
+
+// RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessible {
 	return RendererCellAccessibleNewFromNative(recv.native)
 }
+
+// CellAccessible upcasts to *CellAccessible
 func (recv *BooleanCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *BooleanCellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *BooleanCellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *BooleanCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -6725,15 +6895,23 @@ type Box struct {
 func BoxNewFromNative(native unsafe.Pointer) *Box {
 	return &Box{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Box) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Box) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Box) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Box) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7210,6 +7388,8 @@ type Builder struct {
 func BuilderNewFromNative(native unsafe.Pointer) *Builder {
 	return &Builder{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Builder) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -7629,18 +7809,28 @@ type Button struct {
 func ButtonNewFromNative(native unsafe.Pointer) *Button {
 	return &Button{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Button) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Button) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Button) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Button) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Button) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8515,18 +8705,28 @@ type ButtonAccessible struct {
 func ButtonAccessibleNewFromNative(native unsafe.Pointer) *ButtonAccessible {
 	return &ButtonAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8577,18 +8777,28 @@ type ButtonBox struct {
 func ButtonBoxNewFromNative(native unsafe.Pointer) *ButtonBox {
 	return &ButtonBox{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ButtonBox) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ButtonBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ButtonBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -8844,12 +9054,18 @@ type Calendar struct {
 func CalendarNewFromNative(native unsafe.Pointer) *Calendar {
 	return &Calendar{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Calendar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Calendar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Calendar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9270,12 +9486,18 @@ type CellAccessible struct {
 func CellAccessibleNewFromNative(native unsafe.Pointer) *CellAccessible {
 	return &CellAccessible{native: native}
 }
+
+// Accessible upcasts to *Accessible
 func (recv *CellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *CellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -9326,9 +9548,13 @@ type CellArea struct {
 func CellAreaNewFromNative(native unsafe.Pointer) *CellArea {
 	return &CellArea{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10197,12 +10423,18 @@ type CellAreaBox struct {
 func CellAreaBoxNewFromNative(native unsafe.Pointer) *CellAreaBox {
 	return &CellAreaBox{native: native}
 }
+
+// CellArea upcasts to *CellArea
 func (recv *CellAreaBox) CellArea() *CellArea {
 	return CellAreaNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellAreaBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellAreaBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10380,6 +10612,8 @@ type CellAreaContext struct {
 func CellAreaContextNewFromNative(native unsafe.Pointer) *CellAreaContext {
 	return &CellAreaContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CellAreaContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -10719,9 +10953,13 @@ type CellRenderer struct {
 func CellRendererNewFromNative(native unsafe.Pointer) *CellRenderer {
 	return &CellRenderer{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRenderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11336,15 +11574,23 @@ type CellRendererAccel struct {
 func CellRendererAccelNewFromNative(native unsafe.Pointer) *CellRendererAccel {
 	return &CellRendererAccel{native: native}
 }
+
+// CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererAccel) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromNative(recv.native)
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererAccel) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererAccel) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererAccel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11411,15 +11657,23 @@ type CellRendererCombo struct {
 func CellRendererComboNewFromNative(native unsafe.Pointer) *CellRendererCombo {
 	return &CellRendererCombo{native: native}
 }
+
+// CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererCombo) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromNative(recv.native)
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererCombo) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererCombo) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererCombo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11486,12 +11740,18 @@ type CellRendererPixbuf struct {
 func CellRendererPixbufNewFromNative(native unsafe.Pointer) *CellRendererPixbuf {
 	return &CellRendererPixbuf{native: native}
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererPixbuf) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererPixbuf) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererPixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11558,12 +11818,18 @@ type CellRendererProgress struct {
 func CellRendererProgressNewFromNative(native unsafe.Pointer) *CellRendererProgress {
 	return &CellRendererProgress{native: native}
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererProgress) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererProgress) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererProgress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11630,15 +11896,23 @@ type CellRendererSpin struct {
 func CellRendererSpinNewFromNative(native unsafe.Pointer) *CellRendererSpin {
 	return &CellRendererSpin{native: native}
 }
+
+// CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererSpin) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromNative(recv.native)
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererSpin) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererSpin) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererSpin) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11705,12 +11979,18 @@ type CellRendererSpinner struct {
 func CellRendererSpinnerNewFromNative(native unsafe.Pointer) *CellRendererSpinner {
 	return &CellRendererSpinner{native: native}
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererSpinner) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererSpinner) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11777,12 +12057,18 @@ type CellRendererText struct {
 func CellRendererTextNewFromNative(native unsafe.Pointer) *CellRendererText {
 	return &CellRendererText{native: native}
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererText) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -11878,12 +12164,18 @@ type CellRendererToggle struct {
 func CellRendererToggleNewFromNative(native unsafe.Pointer) *CellRendererToggle {
 	return &CellRendererToggle{native: native}
 }
+
+// CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererToggle) CellRenderer() *CellRenderer {
 	return CellRendererNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRendererToggle) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellRendererToggle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12133,12 +12425,18 @@ type CellView struct {
 func CellViewNewFromNative(native unsafe.Pointer) *CellView {
 	return &CellView{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *CellView) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellView) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CellView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12530,24 +12828,38 @@ type CheckButton struct {
 func CheckButtonNewFromNative(native unsafe.Pointer) *CheckButton {
 	return &CheckButton{native: native}
 }
+
+// ToggleButton upcasts to *ToggleButton
 func (recv *CheckButton) ToggleButton() *ToggleButton {
 	return ToggleButtonNewFromNative(recv.native)
 }
+
+// Button upcasts to *Button
 func (recv *CheckButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *CheckButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *CheckButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *CheckButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CheckButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CheckButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -12678,21 +12990,33 @@ type CheckMenuItem struct {
 func CheckMenuItemNewFromNative(native unsafe.Pointer) *CheckMenuItem {
 	return &CheckMenuItem{native: native}
 }
+
+// MenuItem upcasts to *MenuItem
 func (recv *CheckMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *CheckMenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *CheckMenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *CheckMenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CheckMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CheckMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13034,21 +13358,33 @@ type CheckMenuItemAccessible struct {
 func CheckMenuItemAccessibleNewFromNative(native unsafe.Pointer) *CheckMenuItemAccessible {
 	return &CheckMenuItemAccessible{native: native}
 }
+
+// MenuItemAccessible upcasts to *MenuItemAccessible
 func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
 	return MenuItemAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *CheckMenuItemAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *CheckMenuItemAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *CheckMenuItemAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *CheckMenuItemAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *CheckMenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13099,6 +13435,8 @@ type Clipboard struct {
 func ClipboardNewFromNative(native unsafe.Pointer) *Clipboard {
 	return &Clipboard{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Clipboard) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13432,21 +13770,33 @@ type ColorButton struct {
 func ColorButtonNewFromNative(native unsafe.Pointer) *ColorButton {
 	return &ColorButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *ColorButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ColorButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ColorButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ColorButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ColorButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ColorButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13708,24 +14058,38 @@ type ColorChooserDialog struct {
 func ColorChooserDialogNewFromNative(native unsafe.Pointer) *ColorChooserDialog {
 	return &ColorChooserDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *ColorChooserDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *ColorChooserDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ColorChooserDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ColorChooserDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ColorChooserDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ColorChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ColorChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13795,18 +14159,28 @@ type ColorChooserWidget struct {
 func ColorChooserWidgetNewFromNative(native unsafe.Pointer) *ColorChooserWidget {
 	return &ColorChooserWidget{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ColorChooserWidget) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ColorChooserWidget) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ColorChooserWidget) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ColorChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ColorChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -13873,18 +14247,28 @@ type ColorSelection struct {
 func ColorSelectionNewFromNative(native unsafe.Pointer) *ColorSelection {
 	return &ColorSelection{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ColorSelection) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ColorSelection) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ColorSelection) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ColorSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ColorSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -14243,24 +14627,38 @@ type ColorSelectionDialog struct {
 func ColorSelectionDialogNewFromNative(native unsafe.Pointer) *ColorSelectionDialog {
 	return &ColorSelectionDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *ColorSelectionDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *ColorSelectionDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ColorSelectionDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ColorSelectionDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ColorSelectionDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ColorSelectionDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ColorSelectionDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -14361,18 +14759,28 @@ type ComboBox struct {
 func ComboBoxNewFromNative(native unsafe.Pointer) *ComboBox {
 	return &ComboBox{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *ComboBox) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ComboBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ComboBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ComboBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ComboBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15436,18 +15844,28 @@ type ComboBoxAccessible struct {
 func ComboBoxAccessibleNewFromNative(native unsafe.Pointer) *ComboBoxAccessible {
 	return &ComboBoxAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ComboBoxAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ComboBoxAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ComboBoxAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ComboBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15498,21 +15916,33 @@ type ComboBoxText struct {
 func ComboBoxTextNewFromNative(native unsafe.Pointer) *ComboBoxText {
 	return &ComboBoxText{native: native}
 }
+
+// ComboBox upcasts to *ComboBox
 func (recv *ComboBoxText) ComboBox() *ComboBox {
 	return ComboBoxNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ComboBoxText) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ComboBoxText) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ComboBoxText) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ComboBoxText) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ComboBoxText) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -15863,12 +16293,18 @@ type Container struct {
 func ContainerNewFromNative(native unsafe.Pointer) *Container {
 	return &Container{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Container) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Container) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Container) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16474,15 +16910,23 @@ type ContainerAccessible struct {
 func ContainerAccessibleNewFromNative(native unsafe.Pointer) *ContainerAccessible {
 	return &ContainerAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ContainerAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ContainerAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ContainerAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16533,15 +16977,23 @@ type ContainerCellAccessible struct {
 func ContainerCellAccessibleNewFromNative(native unsafe.Pointer) *ContainerCellAccessible {
 	return &ContainerCellAccessible{native: native}
 }
+
+// CellAccessible upcasts to *CellAccessible
 func (recv *ContainerCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ContainerCellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ContainerCellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ContainerCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16682,6 +17134,8 @@ type CssProvider struct {
 func CssProviderNewFromNative(native unsafe.Pointer) *CssProvider {
 	return &CssProvider{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *CssProvider) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -16850,21 +17304,33 @@ type Dialog struct {
 func DialogNewFromNative(native unsafe.Pointer) *Dialog {
 	return &Dialog{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *Dialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *Dialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Dialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Dialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Dialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Dialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -17285,12 +17751,18 @@ type DrawingArea struct {
 func DrawingAreaNewFromNative(native unsafe.Pointer) *DrawingArea {
 	return &DrawingArea{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *DrawingArea) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *DrawingArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *DrawingArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -17357,12 +17829,18 @@ type Entry struct {
 func EntryNewFromNative(native unsafe.Pointer) *Entry {
 	return &Entry{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Entry) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Entry) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Entry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -19238,15 +19716,23 @@ type EntryAccessible struct {
 func EntryAccessibleNewFromNative(native unsafe.Pointer) *EntryAccessible {
 	return &EntryAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *EntryAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *EntryAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EntryAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -19297,6 +19783,8 @@ type EntryBuffer struct {
 func EntryBufferNewFromNative(native unsafe.Pointer) *EntryBuffer {
 	return &EntryBuffer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *EntryBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -19673,6 +20161,8 @@ type EntryCompletion struct {
 func EntryCompletionNewFromNative(native unsafe.Pointer) *EntryCompletion {
 	return &EntryCompletion{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *EntryCompletion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20436,9 +20926,13 @@ type EntryIconAccessible struct {
 func EntryIconAccessibleNewFromNative(native unsafe.Pointer) *EntryIconAccessible {
 	return &EntryIconAccessible{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *EntryIconAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EntryIconAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20461,18 +20955,28 @@ type EventBox struct {
 func EventBoxNewFromNative(native unsafe.Pointer) *EventBox {
 	return &EventBox{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *EventBox) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *EventBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *EventBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *EventBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EventBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20661,6 +21165,8 @@ type EventController struct {
 func EventControllerNewFromNative(native unsafe.Pointer) *EventController {
 	return &EventController{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *EventController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20806,9 +21312,13 @@ type EventControllerKey struct {
 func EventControllerKeyNewFromNative(native unsafe.Pointer) *EventControllerKey {
 	return &EventControllerKey{native: native}
 }
+
+// EventController upcasts to *EventController
 func (recv *EventControllerKey) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EventControllerKey) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -20989,9 +21499,13 @@ type EventControllerMotion struct {
 func EventControllerMotionNewFromNative(native unsafe.Pointer) *EventControllerMotion {
 	return &EventControllerMotion{native: native}
 }
+
+// EventController upcasts to *EventController
 func (recv *EventControllerMotion) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EventControllerMotion) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21046,9 +21560,13 @@ type EventControllerScroll struct {
 func EventControllerScrollNewFromNative(native unsafe.Pointer) *EventControllerScroll {
 	return &EventControllerScroll{native: native}
 }
+
+// EventController upcasts to *EventController
 func (recv *EventControllerScroll) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *EventControllerScroll) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21077,18 +21595,28 @@ type Expander struct {
 func ExpanderNewFromNative(native unsafe.Pointer) *Expander {
 	return &Expander{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Expander) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Expander) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Expander) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Expander) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Expander) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21691,18 +22219,28 @@ type ExpanderAccessible struct {
 func ExpanderAccessibleNewFromNative(native unsafe.Pointer) *ExpanderAccessible {
 	return &ExpanderAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ExpanderAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ExpanderAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ExpanderAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ExpanderAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -21753,18 +22291,28 @@ type FileChooserButton struct {
 func FileChooserButtonNewFromNative(native unsafe.Pointer) *FileChooserButton {
 	return &FileChooserButton{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *FileChooserButton) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FileChooserButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FileChooserButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileChooserButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22049,24 +22597,38 @@ type FileChooserDialog struct {
 func FileChooserDialogNewFromNative(native unsafe.Pointer) *FileChooserDialog {
 	return &FileChooserDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *FileChooserDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *FileChooserDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *FileChooserDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FileChooserDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FileChooserDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22119,9 +22681,13 @@ type FileChooserNative struct {
 func FileChooserNativeNewFromNative(native unsafe.Pointer) *FileChooserNative {
 	return &FileChooserNative{native: native}
 }
+
+// NativeDialog upcasts to *NativeDialog
 func (recv *FileChooserNative) NativeDialog() *NativeDialog {
 	return NativeDialogNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileChooserNative) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22302,18 +22868,28 @@ type FileChooserWidget struct {
 func FileChooserWidgetNewFromNative(native unsafe.Pointer) *FileChooserWidget {
 	return &FileChooserWidget{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *FileChooserWidget) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FileChooserWidget) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FileChooserWidget) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22396,9 +22972,13 @@ type FileFilter struct {
 func FileFilterNewFromNative(native unsafe.Pointer) *FileFilter {
 	return &FileFilter{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FileFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22639,15 +23219,23 @@ type Fixed struct {
 func FixedNewFromNative(native unsafe.Pointer) *Fixed {
 	return &Fixed{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Fixed) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Fixed) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Fixed) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Fixed) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -22776,15 +23364,23 @@ type FlowBox struct {
 func FlowBoxNewFromNative(native unsafe.Pointer) *FlowBox {
 	return &FlowBox{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *FlowBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FlowBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FlowBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FlowBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23613,18 +24209,28 @@ type FlowBoxAccessible struct {
 func FlowBoxAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxAccessible {
 	return &FlowBoxAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *FlowBoxAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *FlowBoxAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *FlowBoxAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FlowBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23675,18 +24281,28 @@ type FlowBoxChild struct {
 func FlowBoxChildNewFromNative(native unsafe.Pointer) *FlowBoxChild {
 	return &FlowBoxChild{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *FlowBoxChild) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FlowBoxChild) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FlowBoxChild) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FlowBoxChild) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FlowBoxChild) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23845,18 +24461,28 @@ type FlowBoxChildAccessible struct {
 func FlowBoxChildAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxChildAccessible {
 	return &FlowBoxChildAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *FlowBoxChildAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *FlowBoxChildAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *FlowBoxChildAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FlowBoxChildAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -23893,21 +24519,33 @@ type FontButton struct {
 func FontButtonNewFromNative(native unsafe.Pointer) *FontButton {
 	return &FontButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *FontButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *FontButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FontButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FontButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FontButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24376,24 +25014,38 @@ type FontChooserDialog struct {
 func FontChooserDialogNewFromNative(native unsafe.Pointer) *FontChooserDialog {
 	return &FontChooserDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *FontChooserDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *FontChooserDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *FontChooserDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FontChooserDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FontChooserDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FontChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24463,18 +25115,28 @@ type FontChooserWidget struct {
 func FontChooserWidgetNewFromNative(native unsafe.Pointer) *FontChooserWidget {
 	return &FontChooserWidget{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *FontChooserWidget) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FontChooserWidget) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FontChooserWidget) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FontChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24541,18 +25203,28 @@ type FontSelection struct {
 func FontSelectionNewFromNative(native unsafe.Pointer) *FontSelection {
 	return &FontSelection{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *FontSelection) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FontSelection) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FontSelection) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FontSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -24941,24 +25613,38 @@ type FontSelectionDialog struct {
 func FontSelectionDialogNewFromNative(native unsafe.Pointer) *FontSelectionDialog {
 	return &FontSelectionDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *FontSelectionDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *FontSelectionDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *FontSelectionDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *FontSelectionDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *FontSelectionDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FontSelectionDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FontSelectionDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25249,18 +25935,28 @@ type Frame struct {
 func FrameNewFromNative(native unsafe.Pointer) *Frame {
 	return &Frame{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Frame) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Frame) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Frame) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Frame) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Frame) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25575,18 +26271,28 @@ type FrameAccessible struct {
 func FrameAccessibleNewFromNative(native unsafe.Pointer) *FrameAccessible {
 	return &FrameAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *FrameAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *FrameAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *FrameAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *FrameAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -25637,12 +26343,18 @@ type GLArea struct {
 func GLAreaNewFromNative(native unsafe.Pointer) *GLArea {
 	return &GLArea{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *GLArea) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *GLArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GLArea) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26153,9 +26865,13 @@ type Gesture struct {
 func GestureNewFromNative(native unsafe.Pointer) *Gesture {
 	return &Gesture{native: native}
 }
+
+// EventController upcasts to *EventController
 func (recv *Gesture) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Gesture) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26424,15 +27140,23 @@ type GestureDrag struct {
 func GestureDragNewFromNative(native unsafe.Pointer) *GestureDrag {
 	return &GestureDrag{native: native}
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GestureDrag) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureDrag) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureDrag) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureDrag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26557,15 +27281,23 @@ type GestureLongPress struct {
 func GestureLongPressNewFromNative(native unsafe.Pointer) *GestureLongPress {
 	return &GestureLongPress{native: native}
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GestureLongPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureLongPress) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureLongPress) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureLongPress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26620,15 +27352,23 @@ type GestureMultiPress struct {
 func GestureMultiPressNewFromNative(native unsafe.Pointer) *GestureMultiPress {
 	return &GestureMultiPress{native: native}
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GestureMultiPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureMultiPress) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureMultiPress) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureMultiPress) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26687,18 +27427,28 @@ type GesturePan struct {
 func GesturePanNewFromNative(native unsafe.Pointer) *GesturePan {
 	return &GesturePan{native: native}
 }
+
+// GestureDrag upcasts to *GestureDrag
 func (recv *GesturePan) GestureDrag() *GestureDrag {
 	return GestureDragNewFromNative(recv.native)
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GesturePan) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GesturePan) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GesturePan) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GesturePan) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26815,12 +27565,18 @@ type GestureRotate struct {
 func GestureRotateNewFromNative(native unsafe.Pointer) *GestureRotate {
 	return &GestureRotate{native: native}
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureRotate) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureRotate) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureRotate) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -26907,12 +27663,18 @@ type GestureSingle struct {
 func GestureSingleNewFromNative(native unsafe.Pointer) *GestureSingle {
 	return &GestureSingle{native: native}
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureSingle) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureSingle) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureSingle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -27152,15 +27914,23 @@ type GestureStylus struct {
 func GestureStylusNewFromNative(native unsafe.Pointer) *GestureStylus {
 	return &GestureStylus{native: native}
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GestureStylus) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureStylus) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureStylus) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureStylus) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -27221,15 +27991,23 @@ type GestureSwipe struct {
 func GestureSwipeNewFromNative(native unsafe.Pointer) *GestureSwipe {
 	return &GestureSwipe{native: native}
 }
+
+// GestureSingle upcasts to *GestureSingle
 func (recv *GestureSwipe) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromNative(recv.native)
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureSwipe) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureSwipe) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureSwipe) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -27319,12 +28097,18 @@ type GestureZoom struct {
 func GestureZoomNewFromNative(native unsafe.Pointer) *GestureZoom {
 	return &GestureZoom{native: native}
 }
+
+// Gesture upcasts to *Gesture
 func (recv *GestureZoom) Gesture() *Gesture {
 	return GestureNewFromNative(recv.native)
 }
+
+// EventController upcasts to *EventController
 func (recv *GestureZoom) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *GestureZoom) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -27411,15 +28195,23 @@ type Grid struct {
 func GridNewFromNative(native unsafe.Pointer) *Grid {
 	return &Grid{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Grid) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Grid) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Grid) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Grid) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28086,18 +28878,28 @@ type HBox struct {
 func HBoxNewFromNative(native unsafe.Pointer) *HBox {
 	return &HBox{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *HBox) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *HBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28167,21 +28969,33 @@ type HButtonBox struct {
 func HButtonBoxNewFromNative(native unsafe.Pointer) *HButtonBox {
 	return &HButtonBox{native: native}
 }
+
+// ButtonBox upcasts to *ButtonBox
 func (recv *HButtonBox) ButtonBox() *ButtonBox {
 	return ButtonBoxNewFromNative(recv.native)
 }
+
+// Box upcasts to *Box
 func (recv *HButtonBox) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *HButtonBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HButtonBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28248,18 +29062,28 @@ type HPaned struct {
 func HPanedNewFromNative(native unsafe.Pointer) *HPaned {
 	return &HPaned{native: native}
 }
+
+// Paned upcasts to *Paned
 func (recv *HPaned) Paned() *Paned {
 	return PanedNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *HPaned) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HPaned) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HPaned) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HPaned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28326,12 +29150,18 @@ type HSV struct {
 func HSVNewFromNative(native unsafe.Pointer) *HSV {
 	return &HSV{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *HSV) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HSV) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HSV) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28558,18 +29388,28 @@ type HScale struct {
 func HScaleNewFromNative(native unsafe.Pointer) *HScale {
 	return &HScale{native: native}
 }
+
+// Scale upcasts to *Scale
 func (recv *HScale) Scale() *Scale {
 	return ScaleNewFromNative(recv.native)
 }
+
+// Range upcasts to *Range
 func (recv *HScale) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HScale) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HScale) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HScale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28672,18 +29512,28 @@ type HScrollbar struct {
 func HScrollbarNewFromNative(native unsafe.Pointer) *HScrollbar {
 	return &HScrollbar{native: native}
 }
+
+// Scrollbar upcasts to *Scrollbar
 func (recv *HScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromNative(recv.native)
 }
+
+// Range upcasts to *Range
 func (recv *HScrollbar) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HScrollbar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HScrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HScrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28752,15 +29602,23 @@ type HSeparator struct {
 func HSeparatorNewFromNative(native unsafe.Pointer) *HSeparator {
 	return &HSeparator{native: native}
 }
+
+// Separator upcasts to *Separator
 func (recv *HSeparator) Separator() *Separator {
 	return SeparatorNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HSeparator) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HSeparator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -28827,18 +29685,28 @@ type HandleBox struct {
 func HandleBoxNewFromNative(native unsafe.Pointer) *HandleBox {
 	return &HandleBox{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *HandleBox) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *HandleBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HandleBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HandleBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HandleBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -29120,15 +29988,23 @@ type HeaderBar struct {
 func HeaderBarNewFromNative(native unsafe.Pointer) *HeaderBar {
 	return &HeaderBar{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *HeaderBar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *HeaderBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *HeaderBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HeaderBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -29619,18 +30495,28 @@ type HeaderBarAccessible struct {
 func HeaderBarAccessibleNewFromNative(native unsafe.Pointer) *HeaderBarAccessible {
 	return &HeaderBarAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *HeaderBarAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *HeaderBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *HeaderBarAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *HeaderBarAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *HeaderBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -29667,6 +30553,8 @@ type IMContext struct {
 func IMContextNewFromNative(native unsafe.Pointer) *IMContext {
 	return &IMContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *IMContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -29914,9 +30802,13 @@ type IMContextSimple struct {
 func IMContextSimpleNewFromNative(native unsafe.Pointer) *IMContextSimple {
 	return &IMContextSimple{native: native}
 }
+
+// IMContext upcasts to *IMContext
 func (recv *IMContextSimple) IMContext() *IMContext {
 	return IMContextNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *IMContextSimple) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -30014,9 +30906,13 @@ type IMMulticontext struct {
 func IMMulticontextNewFromNative(native unsafe.Pointer) *IMMulticontext {
 	return &IMMulticontext{native: native}
 }
+
+// IMContext upcasts to *IMContext
 func (recv *IMMulticontext) IMContext() *IMContext {
 	return IMContextNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *IMMulticontext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -30173,6 +31069,8 @@ type IconFactory struct {
 func IconFactoryNewFromNative(native unsafe.Pointer) *IconFactory {
 	return &IconFactory{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *IconFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -30348,6 +31246,8 @@ type IconInfo struct {
 func IconInfoNewFromNative(native unsafe.Pointer) *IconInfo {
 	return &IconInfo{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *IconInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -30649,6 +31549,8 @@ type IconTheme struct {
 func IconThemeNewFromNative(native unsafe.Pointer) *IconTheme {
 	return &IconTheme{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *IconTheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -30971,15 +31873,23 @@ type IconView struct {
 func IconViewNewFromNative(native unsafe.Pointer) *IconView {
 	return &IconView{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *IconView) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *IconView) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *IconView) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *IconView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -32711,18 +33621,28 @@ type IconViewAccessible struct {
 func IconViewAccessibleNewFromNative(native unsafe.Pointer) *IconViewAccessible {
 	return &IconViewAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *IconViewAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *IconViewAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *IconViewAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *IconViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -32773,15 +33693,23 @@ type Image struct {
 func ImageNewFromNative(native unsafe.Pointer) *Image {
 	return &Image{native: native}
 }
+
+// Misc upcasts to *Misc
 func (recv *Image) Misc() *Misc {
 	return MiscNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Image) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Image) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Image) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -33401,15 +34329,23 @@ type ImageAccessible struct {
 func ImageAccessibleNewFromNative(native unsafe.Pointer) *ImageAccessible {
 	return &ImageAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ImageAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ImageAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ImageAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -33460,18 +34396,28 @@ type ImageCellAccessible struct {
 func ImageCellAccessibleNewFromNative(native unsafe.Pointer) *ImageCellAccessible {
 	return &ImageCellAccessible{native: native}
 }
+
+// RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *ImageCellAccessible) RendererCellAccessible() *RendererCellAccessible {
 	return RendererCellAccessibleNewFromNative(recv.native)
 }
+
+// CellAccessible upcasts to *CellAccessible
 func (recv *ImageCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ImageCellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ImageCellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ImageCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -33522,21 +34468,33 @@ type ImageMenuItem struct {
 func ImageMenuItemNewFromNative(native unsafe.Pointer) *ImageMenuItem {
 	return &ImageMenuItem{native: native}
 }
+
+// MenuItem upcasts to *MenuItem
 func (recv *ImageMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ImageMenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ImageMenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ImageMenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ImageMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ImageMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -33912,18 +34870,28 @@ type InfoBar struct {
 func InfoBarNewFromNative(native unsafe.Pointer) *InfoBar {
 	return &InfoBar{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *InfoBar) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *InfoBar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *InfoBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *InfoBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *InfoBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -34393,12 +35361,18 @@ type Invisible struct {
 func InvisibleNewFromNative(native unsafe.Pointer) *Invisible {
 	return &Invisible{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Invisible) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Invisible) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Invisible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -34471,15 +35445,23 @@ type Label struct {
 func LabelNewFromNative(native unsafe.Pointer) *Label {
 	return &Label{native: native}
 }
+
+// Misc upcasts to *Misc
 func (recv *Label) Misc() *Misc {
 	return MiscNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Label) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Label) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Label) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -35848,15 +36830,23 @@ type LabelAccessible struct {
 func LabelAccessibleNewFromNative(native unsafe.Pointer) *LabelAccessible {
 	return &LabelAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *LabelAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *LabelAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LabelAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -35907,15 +36897,23 @@ type Layout struct {
 func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	return &Layout{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Layout) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Layout) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Layout) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -36234,12 +37232,18 @@ type LevelBar struct {
 func LevelBarNewFromNative(native unsafe.Pointer) *LevelBar {
 	return &LevelBar{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *LevelBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *LevelBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LevelBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -36724,15 +37728,23 @@ type LevelBarAccessible struct {
 func LevelBarAccessibleNewFromNative(native unsafe.Pointer) *LevelBarAccessible {
 	return &LevelBarAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *LevelBarAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *LevelBarAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LevelBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -36783,21 +37795,33 @@ type LinkButton struct {
 func LinkButtonNewFromNative(native unsafe.Pointer) *LinkButton {
 	return &LinkButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *LinkButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *LinkButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *LinkButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *LinkButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *LinkButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LinkButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -37007,21 +38031,33 @@ type LinkButtonAccessible struct {
 func LinkButtonAccessibleNewFromNative(native unsafe.Pointer) *LinkButtonAccessible {
 	return &LinkButtonAccessible{native: native}
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *LinkButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LinkButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *LinkButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *LinkButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LinkButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -37072,15 +38108,23 @@ type ListBox struct {
 func ListBoxNewFromNative(native unsafe.Pointer) *ListBox {
 	return &ListBox{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *ListBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ListBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ListBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ListBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -37783,18 +38827,28 @@ type ListBoxAccessible struct {
 func ListBoxAccessibleNewFromNative(native unsafe.Pointer) *ListBoxAccessible {
 	return &ListBoxAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ListBoxAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ListBoxAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ListBoxAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ListBoxAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -37845,18 +38899,28 @@ type ListBoxRow struct {
 func ListBoxRowNewFromNative(native unsafe.Pointer) *ListBoxRow {
 	return &ListBoxRow{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *ListBoxRow) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ListBoxRow) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ListBoxRow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ListBoxRow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ListBoxRow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -38198,18 +39262,28 @@ type ListBoxRowAccessible struct {
 func ListBoxRowAccessibleNewFromNative(native unsafe.Pointer) *ListBoxRowAccessible {
 	return &ListBoxRowAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ListBoxRowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ListBoxRowAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ListBoxRowAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ListBoxRowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -38246,6 +39320,8 @@ type ListStore struct {
 func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 	return &ListStore{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -38639,21 +39715,33 @@ type LockButton struct {
 func LockButtonNewFromNative(native unsafe.Pointer) *LockButton {
 	return &LockButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *LockButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *LockButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *LockButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *LockButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *LockButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LockButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -38710,21 +39798,33 @@ type LockButtonAccessible struct {
 func LockButtonAccessibleNewFromNative(native unsafe.Pointer) *LockButtonAccessible {
 	return &LockButtonAccessible{native: native}
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *LockButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LockButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *LockButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *LockButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *LockButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -38775,18 +39875,28 @@ type Menu struct {
 func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	return &Menu{native: native}
 }
+
+// MenuShell upcasts to *MenuShell
 func (recv *Menu) MenuShell() *MenuShell {
 	return MenuShellNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Menu) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Menu) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Menu) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Menu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -39477,21 +40587,33 @@ type MenuAccessible struct {
 func MenuAccessibleNewFromNative(native unsafe.Pointer) *MenuAccessible {
 	return &MenuAccessible{native: native}
 }
+
+// MenuShellAccessible upcasts to *MenuShellAccessible
 func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {
 	return MenuShellAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *MenuAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *MenuAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *MenuAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -39542,18 +40664,28 @@ type MenuBar struct {
 func MenuBarNewFromNative(native unsafe.Pointer) *MenuBar {
 	return &MenuBar{native: native}
 }
+
+// MenuShell upcasts to *MenuShell
 func (recv *MenuBar) MenuShell() *MenuShell {
 	return MenuShellNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *MenuBar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MenuBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MenuBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -39744,24 +40876,38 @@ type MenuButton struct {
 func MenuButtonNewFromNative(native unsafe.Pointer) *MenuButton {
 	return &MenuButton{native: native}
 }
+
+// ToggleButton upcasts to *ToggleButton
 func (recv *MenuButton) ToggleButton() *ToggleButton {
 	return ToggleButtonNewFromNative(recv.native)
 }
+
+// Button upcasts to *Button
 func (recv *MenuButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *MenuButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *MenuButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MenuButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MenuButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -40137,24 +41283,38 @@ type MenuButtonAccessible struct {
 func MenuButtonAccessibleNewFromNative(native unsafe.Pointer) *MenuButtonAccessible {
 	return &MenuButtonAccessible{native: native}
 }
+
+// ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromNative(recv.native)
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *MenuButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *MenuButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *MenuButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *MenuButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -40205,18 +41365,28 @@ type MenuItem struct {
 func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	return &MenuItem{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *MenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *MenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -40859,18 +42029,28 @@ type MenuItemAccessible struct {
 func MenuItemAccessibleNewFromNative(native unsafe.Pointer) *MenuItemAccessible {
 	return &MenuItemAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *MenuItemAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *MenuItemAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *MenuItemAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -40921,15 +42101,23 @@ type MenuShell struct {
 func MenuShellNewFromNative(native unsafe.Pointer) *MenuShell {
 	return &MenuShell{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *MenuShell) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MenuShell) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MenuShell) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuShell) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -41353,18 +42541,28 @@ type MenuShellAccessible struct {
 func MenuShellAccessibleNewFromNative(native unsafe.Pointer) *MenuShellAccessible {
 	return &MenuShellAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *MenuShellAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *MenuShellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *MenuShellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuShellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -41415,24 +42613,38 @@ type MenuToolButton struct {
 func MenuToolButtonNewFromNative(native unsafe.Pointer) *MenuToolButton {
 	return &MenuToolButton{native: native}
 }
+
+// ToolButton upcasts to *ToolButton
 func (recv *MenuToolButton) ToolButton() *ToolButton {
 	return ToolButtonNewFromNative(recv.native)
 }
+
+// ToolItem upcasts to *ToolItem
 func (recv *MenuToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *MenuToolButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *MenuToolButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MenuToolButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MenuToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MenuToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -41653,24 +42865,38 @@ type MessageDialog struct {
 func MessageDialogNewFromNative(native unsafe.Pointer) *MessageDialog {
 	return &MessageDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *MessageDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *MessageDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *MessageDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *MessageDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *MessageDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *MessageDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MessageDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -41837,12 +43063,18 @@ type Misc struct {
 func MiscNewFromNative(native unsafe.Pointer) *Misc {
 	return &Misc{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Misc) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Misc) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -42005,21 +43237,33 @@ type ModelButton struct {
 func ModelButtonNewFromNative(native unsafe.Pointer) *ModelButton {
 	return &ModelButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *ModelButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ModelButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ModelButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ModelButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ModelButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ModelButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -42072,9 +43316,13 @@ type MountOperation struct {
 func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	return &MountOperation{native: native}
 }
+
+// MountOperation upcasts to *MountOperation
 func (recv *MountOperation) MountOperation() *gio.MountOperation {
 	return gio.MountOperationNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -42244,6 +43492,8 @@ type NativeDialog struct {
 func NativeDialogNewFromNative(native unsafe.Pointer) *NativeDialog {
 	return &NativeDialog{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *NativeDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -42601,15 +43851,23 @@ type Notebook struct {
 func NotebookNewFromNative(native unsafe.Pointer) *Notebook {
 	return &Notebook{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Notebook) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Notebook) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Notebook) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Notebook) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44040,18 +45298,28 @@ type NotebookAccessible struct {
 func NotebookAccessibleNewFromNative(native unsafe.Pointer) *NotebookAccessible {
 	return &NotebookAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *NotebookAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *NotebookAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *NotebookAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NotebookAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44102,9 +45370,13 @@ type NotebookPageAccessible struct {
 func NotebookPageAccessibleNewFromNative(native unsafe.Pointer) *NotebookPageAccessible {
 	return &NotebookPageAccessible{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *NotebookPageAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44206,9 +45478,13 @@ type NumerableIcon struct {
 func NumerableIconNewFromNative(native unsafe.Pointer) *NumerableIcon {
 	return &NumerableIcon{native: native}
 }
+
+// EmblemedIcon upcasts to *EmblemedIcon
 func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
 	return gio.EmblemedIconNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *NumerableIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44483,21 +45759,33 @@ type OffscreenWindow struct {
 func OffscreenWindowNewFromNative(native unsafe.Pointer) *OffscreenWindow {
 	return &OffscreenWindow{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *OffscreenWindow) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *OffscreenWindow) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *OffscreenWindow) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *OffscreenWindow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *OffscreenWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *OffscreenWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44568,18 +45856,28 @@ type Overlay struct {
 func OverlayNewFromNative(native unsafe.Pointer) *Overlay {
 	return &Overlay{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Overlay) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Overlay) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Overlay) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Overlay) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Overlay) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44782,9 +46080,13 @@ type PadController struct {
 func PadControllerNewFromNative(native unsafe.Pointer) *PadController {
 	return &PadController{native: native}
 }
+
+// EventController upcasts to *EventController
 func (recv *PadController) EventController() *EventController {
 	return EventControllerNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PadController) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -44844,6 +46146,8 @@ type PageSetup struct {
 func PageSetupNewFromNative(native unsafe.Pointer) *PageSetup {
 	return &PageSetup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PageSetup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -45571,15 +46875,23 @@ type Paned struct {
 func PanedNewFromNative(native unsafe.Pointer) *Paned {
 	return &Paned{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Paned) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Paned) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Paned) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Paned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -45956,18 +47268,28 @@ type PanedAccessible struct {
 func PanedAccessibleNewFromNative(native unsafe.Pointer) *PanedAccessible {
 	return &PanedAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *PanedAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *PanedAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *PanedAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PanedAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -46018,21 +47340,33 @@ type PlacesSidebar struct {
 func PlacesSidebarNewFromNative(native unsafe.Pointer) *PlacesSidebar {
 	return &PlacesSidebar{native: native}
 }
+
+// ScrolledWindow upcasts to *ScrolledWindow
 func (recv *PlacesSidebar) ScrolledWindow() *ScrolledWindow {
 	return ScrolledWindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *PlacesSidebar) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *PlacesSidebar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *PlacesSidebar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *PlacesSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PlacesSidebar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -46591,21 +47925,33 @@ type Plug struct {
 func PlugNewFromNative(native unsafe.Pointer) *Plug {
 	return &Plug{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *Plug) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *Plug) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Plug) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Plug) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Plug) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Plug) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -46787,18 +48133,28 @@ type Popover struct {
 func PopoverNewFromNative(native unsafe.Pointer) *Popover {
 	return &Popover{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Popover) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Popover) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Popover) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Popover) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Popover) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -47297,18 +48653,28 @@ type PopoverAccessible struct {
 func PopoverAccessibleNewFromNative(native unsafe.Pointer) *PopoverAccessible {
 	return &PopoverAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *PopoverAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *PopoverAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *PopoverAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PopoverAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -47345,21 +48711,33 @@ type PopoverMenu struct {
 func PopoverMenuNewFromNative(native unsafe.Pointer) *PopoverMenu {
 	return &PopoverMenu{native: native}
 }
+
+// Popover upcasts to *Popover
 func (recv *PopoverMenu) Popover() *Popover {
 	return PopoverNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *PopoverMenu) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *PopoverMenu) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *PopoverMenu) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *PopoverMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *PopoverMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -47441,6 +48819,8 @@ type PrintContext struct {
 func PrintContextNewFromNative(native unsafe.Pointer) *PrintContext {
 	return &PrintContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -47670,6 +49050,8 @@ type PrintOperation struct {
 func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	return &PrintOperation{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -48595,6 +49977,8 @@ type PrintSettings struct {
 func PrintSettingsNewFromNative(native unsafe.Pointer) *PrintSettings {
 	return &PrintSettings{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *PrintSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -50771,12 +52155,18 @@ type ProgressBar struct {
 func ProgressBarNewFromNative(native unsafe.Pointer) *ProgressBar {
 	return &ProgressBar{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *ProgressBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ProgressBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ProgressBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51180,15 +52570,23 @@ type ProgressBarAccessible struct {
 func ProgressBarAccessibleNewFromNative(native unsafe.Pointer) *ProgressBarAccessible {
 	return &ProgressBarAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ProgressBarAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ProgressBarAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ProgressBarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51239,12 +52637,18 @@ type RadioAction struct {
 func RadioActionNewFromNative(native unsafe.Pointer) *RadioAction {
 	return &RadioAction{native: native}
 }
+
+// ToggleAction upcasts to *ToggleAction
 func (recv *RadioAction) ToggleAction() *ToggleAction {
 	return ToggleActionNewFromNative(recv.native)
 }
+
+// Action upcasts to *Action
 func (recv *RadioAction) Action() *Action {
 	return ActionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51411,27 +52815,43 @@ type RadioButton struct {
 func RadioButtonNewFromNative(native unsafe.Pointer) *RadioButton {
 	return &RadioButton{native: native}
 }
+
+// CheckButton upcasts to *CheckButton
 func (recv *RadioButton) CheckButton() *CheckButton {
 	return CheckButtonNewFromNative(recv.native)
 }
+
+// ToggleButton upcasts to *ToggleButton
 func (recv *RadioButton) ToggleButton() *ToggleButton {
 	return ToggleButtonNewFromNative(recv.native)
 }
+
+// Button upcasts to *Button
 func (recv *RadioButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *RadioButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RadioButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RadioButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RadioButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51605,24 +53025,38 @@ type RadioButtonAccessible struct {
 func RadioButtonAccessibleNewFromNative(native unsafe.Pointer) *RadioButtonAccessible {
 	return &RadioButtonAccessible{native: native}
 }
+
+// ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromNative(recv.native)
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *RadioButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *RadioButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *RadioButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *RadioButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *RadioButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51673,24 +53107,38 @@ type RadioMenuItem struct {
 func RadioMenuItemNewFromNative(native unsafe.Pointer) *RadioMenuItem {
 	return &RadioMenuItem{native: native}
 }
+
+// CheckMenuItem upcasts to *CheckMenuItem
 func (recv *RadioMenuItem) CheckMenuItem() *CheckMenuItem {
 	return CheckMenuItemNewFromNative(recv.native)
 }
+
+// MenuItem upcasts to *MenuItem
 func (recv *RadioMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *RadioMenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RadioMenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RadioMenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RadioMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51864,24 +53312,38 @@ type RadioMenuItemAccessible struct {
 func RadioMenuItemAccessibleNewFromNative(native unsafe.Pointer) *RadioMenuItemAccessible {
 	return &RadioMenuItemAccessible{native: native}
 }
+
+// CheckMenuItemAccessible upcasts to *CheckMenuItemAccessible
 func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAccessible {
 	return CheckMenuItemAccessibleNewFromNative(recv.native)
 }
+
+// MenuItemAccessible upcasts to *MenuItemAccessible
 func (recv *RadioMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
 	return MenuItemAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *RadioMenuItemAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *RadioMenuItemAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *RadioMenuItemAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *RadioMenuItemAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioMenuItemAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -51932,27 +53394,43 @@ type RadioToolButton struct {
 func RadioToolButtonNewFromNative(native unsafe.Pointer) *RadioToolButton {
 	return &RadioToolButton{native: native}
 }
+
+// ToggleToolButton upcasts to *ToggleToolButton
 func (recv *RadioToolButton) ToggleToolButton() *ToggleToolButton {
 	return ToggleToolButtonNewFromNative(recv.native)
 }
+
+// ToolButton upcasts to *ToolButton
 func (recv *RadioToolButton) ToolButton() *ToolButton {
 	return ToolButtonNewFromNative(recv.native)
 }
+
+// ToolItem upcasts to *ToolItem
 func (recv *RadioToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *RadioToolButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RadioToolButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RadioToolButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RadioToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RadioToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -52062,12 +53540,18 @@ type Range struct {
 func RangeNewFromNative(native unsafe.Pointer) *Range {
 	return &Range{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Range) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Range) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Range) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -52945,15 +54429,23 @@ type RangeAccessible struct {
 func RangeAccessibleNewFromNative(native unsafe.Pointer) *RangeAccessible {
 	return &RangeAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *RangeAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *RangeAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RangeAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53004,6 +54496,8 @@ type RcStyle struct {
 func RcStyleNewFromNative(native unsafe.Pointer) *RcStyle {
 	return &RcStyle{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *RcStyle) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53162,9 +54656,13 @@ type RecentAction struct {
 func RecentActionNewFromNative(native unsafe.Pointer) *RecentAction {
 	return &RecentAction{native: native}
 }
+
+// Action upcasts to *Action
 func (recv *RecentAction) Action() *Action {
 	return ActionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RecentAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53333,24 +54831,38 @@ type RecentChooserDialog struct {
 func RecentChooserDialogNewFromNative(native unsafe.Pointer) *RecentChooserDialog {
 	return &RecentChooserDialog{native: native}
 }
+
+// Dialog upcasts to *Dialog
 func (recv *RecentChooserDialog) Dialog() *Dialog {
 	return DialogNewFromNative(recv.native)
 }
+
+// Window upcasts to *Window
 func (recv *RecentChooserDialog) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *RecentChooserDialog) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RecentChooserDialog) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RecentChooserDialog) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RecentChooserDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53391,21 +54903,33 @@ type RecentChooserMenu struct {
 func RecentChooserMenuNewFromNative(native unsafe.Pointer) *RecentChooserMenu {
 	return &RecentChooserMenu{native: native}
 }
+
+// Menu upcasts to *Menu
 func (recv *RecentChooserMenu) Menu() *Menu {
 	return MenuNewFromNative(recv.native)
 }
+
+// MenuShell upcasts to *MenuShell
 func (recv *RecentChooserMenu) MenuShell() *MenuShell {
 	return MenuShellNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RecentChooserMenu) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RecentChooserMenu) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentChooserMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RecentChooserMenu) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53565,18 +55089,28 @@ type RecentChooserWidget struct {
 func RecentChooserWidgetNewFromNative(native unsafe.Pointer) *RecentChooserWidget {
 	return &RecentChooserWidget{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *RecentChooserWidget) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *RecentChooserWidget) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *RecentChooserWidget) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RecentChooserWidget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -53675,9 +55209,13 @@ type RecentFilter struct {
 func RecentFilterNewFromNative(native unsafe.Pointer) *RecentFilter {
 	return &RecentFilter{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RecentFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -54001,6 +55539,8 @@ type RecentManager struct {
 func RecentManagerNewFromNative(native unsafe.Pointer) *RecentManager {
 	return &RecentManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *RecentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -54287,15 +55827,23 @@ type RendererCellAccessible struct {
 func RendererCellAccessibleNewFromNative(native unsafe.Pointer) *RendererCellAccessible {
 	return &RendererCellAccessible{native: native}
 }
+
+// CellAccessible upcasts to *CellAccessible
 func (recv *RendererCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *RendererCellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *RendererCellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *RendererCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -54378,18 +55926,28 @@ type Revealer struct {
 func RevealerNewFromNative(native unsafe.Pointer) *Revealer {
 	return &Revealer{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Revealer) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Revealer) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Revealer) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Revealer) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Revealer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -54671,15 +56229,23 @@ type Scale struct {
 func ScaleNewFromNative(native unsafe.Pointer) *Scale {
 	return &Scale{native: native}
 }
+
+// Range upcasts to *Range
 func (recv *Scale) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Scale) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Scale) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Scale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -55122,18 +56688,28 @@ type ScaleAccessible struct {
 func ScaleAccessibleNewFromNative(native unsafe.Pointer) *ScaleAccessible {
 	return &ScaleAccessible{native: native}
 }
+
+// RangeAccessible upcasts to *RangeAccessible
 func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {
 	return RangeAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ScaleAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ScaleAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ScaleAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ScaleAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -55184,21 +56760,33 @@ type ScaleButton struct {
 func ScaleButtonNewFromNative(native unsafe.Pointer) *ScaleButton {
 	return &ScaleButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *ScaleButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ScaleButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ScaleButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ScaleButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ScaleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ScaleButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -55457,21 +57045,33 @@ type ScaleButtonAccessible struct {
 func ScaleButtonAccessibleNewFromNative(native unsafe.Pointer) *ScaleButtonAccessible {
 	return &ScaleButtonAccessible{native: native}
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ScaleButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ScaleButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ScaleButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ScaleButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ScaleButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -55522,15 +57122,23 @@ type Scrollbar struct {
 func ScrollbarNewFromNative(native unsafe.Pointer) *Scrollbar {
 	return &Scrollbar{native: native}
 }
+
+// Range upcasts to *Range
 func (recv *Scrollbar) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Scrollbar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Scrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Scrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -55600,18 +57208,28 @@ type ScrolledWindow struct {
 func ScrolledWindowNewFromNative(native unsafe.Pointer) *ScrolledWindow {
 	return &ScrolledWindow{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *ScrolledWindow) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ScrolledWindow) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ScrolledWindow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ScrolledWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ScrolledWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -56672,18 +58290,28 @@ type ScrolledWindowAccessible struct {
 func ScrolledWindowAccessibleNewFromNative(native unsafe.Pointer) *ScrolledWindowAccessible {
 	return &ScrolledWindowAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ScrolledWindowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ScrolledWindowAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ScrolledWindowAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ScrolledWindowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -56734,18 +58362,28 @@ type SearchBar struct {
 func SearchBarNewFromNative(native unsafe.Pointer) *SearchBar {
 	return &SearchBar{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *SearchBar) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *SearchBar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *SearchBar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *SearchBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SearchBar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -56951,15 +58589,23 @@ type SearchEntry struct {
 func SearchEntryNewFromNative(native unsafe.Pointer) *SearchEntry {
 	return &SearchEntry{native: native}
 }
+
+// Entry upcasts to *Entry
 func (recv *SearchEntry) Entry() *Entry {
 	return EntryNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *SearchEntry) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *SearchEntry) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SearchEntry) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57028,12 +58674,18 @@ type Separator struct {
 func SeparatorNewFromNative(native unsafe.Pointer) *Separator {
 	return &Separator{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Separator) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Separator) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Separator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57116,21 +58768,33 @@ type SeparatorMenuItem struct {
 func SeparatorMenuItemNewFromNative(native unsafe.Pointer) *SeparatorMenuItem {
 	return &SeparatorMenuItem{native: native}
 }
+
+// MenuItem upcasts to *MenuItem
 func (recv *SeparatorMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *SeparatorMenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *SeparatorMenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *SeparatorMenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *SeparatorMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SeparatorMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57197,21 +58861,33 @@ type SeparatorToolItem struct {
 func SeparatorToolItemNewFromNative(native unsafe.Pointer) *SeparatorToolItem {
 	return &SeparatorToolItem{native: native}
 }
+
+// ToolItem upcasts to *ToolItem
 func (recv *SeparatorToolItem) ToolItem() *ToolItem {
 	return ToolItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *SeparatorToolItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *SeparatorToolItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *SeparatorToolItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *SeparatorToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SeparatorToolItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57339,6 +59015,8 @@ type Settings struct {
 func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	return &Settings{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57517,18 +59195,28 @@ type ShortcutLabel struct {
 func ShortcutLabelNewFromNative(native unsafe.Pointer) *ShortcutLabel {
 	return &ShortcutLabel{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ShortcutLabel) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ShortcutLabel) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ShortcutLabel) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ShortcutLabel) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ShortcutLabel) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57705,18 +59393,28 @@ type ShortcutsGroup struct {
 func ShortcutsGroupNewFromNative(native unsafe.Pointer) *ShortcutsGroup {
 	return &ShortcutsGroup{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ShortcutsGroup) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ShortcutsGroup) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ShortcutsGroup) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ShortcutsGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ShortcutsGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57739,18 +59437,28 @@ type ShortcutsSection struct {
 func ShortcutsSectionNewFromNative(native unsafe.Pointer) *ShortcutsSection {
 	return &ShortcutsSection{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ShortcutsSection) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ShortcutsSection) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ShortcutsSection) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ShortcutsSection) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ShortcutsSection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57773,18 +59481,28 @@ type ShortcutsShortcut struct {
 func ShortcutsShortcutNewFromNative(native unsafe.Pointer) *ShortcutsShortcut {
 	return &ShortcutsShortcut{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *ShortcutsShortcut) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ShortcutsShortcut) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ShortcutsShortcut) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ShortcutsShortcut) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ShortcutsShortcut) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57807,21 +59525,33 @@ type ShortcutsWindow struct {
 func ShortcutsWindowNewFromNative(native unsafe.Pointer) *ShortcutsWindow {
 	return &ShortcutsWindow{native: native}
 }
+
+// Window upcasts to *Window
 func (recv *ShortcutsWindow) Window() *Window {
 	return WindowNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ShortcutsWindow) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ShortcutsWindow) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ShortcutsWindow) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ShortcutsWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ShortcutsWindow) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -57858,6 +59588,8 @@ type SizeGroup struct {
 func SizeGroupNewFromNative(native unsafe.Pointer) *SizeGroup {
 	return &SizeGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *SizeGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -58098,15 +59830,23 @@ type Socket struct {
 func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	return &Socket{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Socket) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Socket) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Socket) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -58250,15 +59990,23 @@ type SpinButton struct {
 func SpinButtonNewFromNative(native unsafe.Pointer) *SpinButton {
 	return &SpinButton{native: native}
 }
+
+// Entry upcasts to *Entry
 func (recv *SpinButton) Entry() *Entry {
 	return EntryNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *SpinButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *SpinButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SpinButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -59037,18 +60785,28 @@ type SpinButtonAccessible struct {
 func SpinButtonAccessibleNewFromNative(native unsafe.Pointer) *SpinButtonAccessible {
 	return &SpinButtonAccessible{native: native}
 }
+
+// EntryAccessible upcasts to *EntryAccessible
 func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {
 	return EntryAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SpinButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *SpinButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *SpinButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SpinButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -59099,12 +60857,18 @@ type Spinner struct {
 func SpinnerNewFromNative(native unsafe.Pointer) *Spinner {
 	return &Spinner{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Spinner) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Spinner) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Spinner) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -59227,15 +60991,23 @@ type SpinnerAccessible struct {
 func SpinnerAccessibleNewFromNative(native unsafe.Pointer) *SpinnerAccessible {
 	return &SpinnerAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *SpinnerAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *SpinnerAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SpinnerAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -59286,15 +61058,23 @@ type Stack struct {
 func StackNewFromNative(native unsafe.Pointer) *Stack {
 	return &Stack{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Stack) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Stack) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Stack) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Stack) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -60005,18 +61785,28 @@ type StackAccessible struct {
 func StackAccessibleNewFromNative(native unsafe.Pointer) *StackAccessible {
 	return &StackAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *StackAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *StackAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *StackAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *StackAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StackAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -60053,18 +61843,28 @@ type StackSidebar struct {
 func StackSidebarNewFromNative(native unsafe.Pointer) *StackSidebar {
 	return &StackSidebar{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *StackSidebar) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *StackSidebar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *StackSidebar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *StackSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StackSidebar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -60192,18 +61992,28 @@ type StackSwitcher struct {
 func StackSwitcherNewFromNative(native unsafe.Pointer) *StackSwitcher {
 	return &StackSwitcher{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *StackSwitcher) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *StackSwitcher) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *StackSwitcher) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *StackSwitcher) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StackSwitcher) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -60331,6 +62141,8 @@ type StatusIcon struct {
 func StatusIconNewFromNative(native unsafe.Pointer) *StatusIcon {
 	return &StatusIcon{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StatusIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -61128,18 +62940,28 @@ type Statusbar struct {
 func StatusbarNewFromNative(native unsafe.Pointer) *Statusbar {
 	return &Statusbar{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *Statusbar) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Statusbar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Statusbar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Statusbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Statusbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -61393,18 +63215,28 @@ type StatusbarAccessible struct {
 func StatusbarAccessibleNewFromNative(native unsafe.Pointer) *StatusbarAccessible {
 	return &StatusbarAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *StatusbarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *StatusbarAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *StatusbarAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *StatusbarAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -61455,6 +63287,8 @@ type Style struct {
 func StyleNewFromNative(native unsafe.Pointer) *Style {
 	return &Style{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -61724,6 +63558,8 @@ type StyleContext struct {
 func StyleContextNewFromNative(native unsafe.Pointer) *StyleContext {
 	return &StyleContext{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StyleContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -62439,6 +64275,8 @@ type StyleProperties struct {
 func StylePropertiesNewFromNative(native unsafe.Pointer) *StyleProperties {
 	return &StyleProperties{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *StyleProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -62626,12 +64464,18 @@ type Switch struct {
 func SwitchNewFromNative(native unsafe.Pointer) *Switch {
 	return &Switch{native: native}
 }
+
+// Widget upcasts to *Widget
 func (recv *Switch) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Switch) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Switch) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -62806,15 +64650,23 @@ type SwitchAccessible struct {
 func SwitchAccessibleNewFromNative(native unsafe.Pointer) *SwitchAccessible {
 	return &SwitchAccessible{native: native}
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *SwitchAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *SwitchAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *SwitchAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -62865,15 +64717,23 @@ type Table struct {
 func TableNewFromNative(native unsafe.Pointer) *Table {
 	return &Table{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Table) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Table) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Table) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Table) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -63351,21 +65211,33 @@ type TearoffMenuItem struct {
 func TearoffMenuItemNewFromNative(native unsafe.Pointer) *TearoffMenuItem {
 	return &TearoffMenuItem{native: native}
 }
+
+// MenuItem upcasts to *MenuItem
 func (recv *TearoffMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *TearoffMenuItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *TearoffMenuItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *TearoffMenuItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TearoffMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TearoffMenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -63432,6 +65304,8 @@ type TextBuffer struct {
 func TextBufferNewFromNative(native unsafe.Pointer) *TextBuffer {
 	return &TextBuffer{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TextBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -65405,18 +67279,28 @@ type TextCellAccessible struct {
 func TextCellAccessibleNewFromNative(native unsafe.Pointer) *TextCellAccessible {
 	return &TextCellAccessible{native: native}
 }
+
+// RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible {
 	return RendererCellAccessibleNewFromNative(recv.native)
 }
+
+// CellAccessible upcasts to *CellAccessible
 func (recv *TextCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *TextCellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *TextCellAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TextCellAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -65467,6 +67351,8 @@ type TextChildAnchor struct {
 func TextChildAnchorNewFromNative(native unsafe.Pointer) *TextChildAnchor {
 	return &TextChildAnchor{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TextChildAnchor) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -65557,6 +67443,8 @@ type TextMark struct {
 func TextMarkNewFromNative(native unsafe.Pointer) *TextMark {
 	return &TextMark{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TextMark) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -65805,6 +67693,8 @@ type TextTag struct {
 func TextTagNewFromNative(native unsafe.Pointer) *TextTag {
 	return &TextTag{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TextTag) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -65969,6 +67859,8 @@ type TextTagTable struct {
 func TextTagTableNewFromNative(native unsafe.Pointer) *TextTagTable {
 	return &TextTagTable{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TextTagTable) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -66168,15 +68060,23 @@ type TextView struct {
 func TextViewNewFromNative(native unsafe.Pointer) *TextView {
 	return &TextView{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *TextView) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *TextView) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TextView) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TextView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -68216,18 +70116,28 @@ type TextViewAccessible struct {
 func TextViewAccessibleNewFromNative(native unsafe.Pointer) *TextViewAccessible {
 	return &TextViewAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *TextViewAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *TextViewAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *TextViewAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TextViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -68278,6 +70188,8 @@ type ThemingEngine struct {
 func ThemingEngineNewFromNative(native unsafe.Pointer) *ThemingEngine {
 	return &ThemingEngine{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *ThemingEngine) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -68486,9 +70398,13 @@ type ToggleAction struct {
 func ToggleActionNewFromNative(native unsafe.Pointer) *ToggleAction {
 	return &ToggleAction{native: native}
 }
+
+// Action upcasts to *Action
 func (recv *ToggleAction) Action() *Action {
 	return ActionNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToggleAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -68710,21 +70626,33 @@ type ToggleButton struct {
 func ToggleButtonNewFromNative(native unsafe.Pointer) *ToggleButton {
 	return &ToggleButton{native: native}
 }
+
+// Button upcasts to *Button
 func (recv *ToggleButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ToggleButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ToggleButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToggleButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToggleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToggleButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -69052,21 +70980,33 @@ type ToggleButtonAccessible struct {
 func ToggleButtonAccessibleNewFromNative(native unsafe.Pointer) *ToggleButtonAccessible {
 	return &ToggleButtonAccessible{native: native}
 }
+
+// ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(recv.native)
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ToggleButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ToggleButtonAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *ToggleButtonAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ToggleButtonAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToggleButtonAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -69117,24 +71057,38 @@ type ToggleToolButton struct {
 func ToggleToolButtonNewFromNative(native unsafe.Pointer) *ToggleToolButton {
 	return &ToggleToolButton{native: native}
 }
+
+// ToolButton upcasts to *ToolButton
 func (recv *ToggleToolButton) ToolButton() *ToolButton {
 	return ToolButtonNewFromNative(recv.native)
 }
+
+// ToolItem upcasts to *ToolItem
 func (recv *ToggleToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ToggleToolButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ToggleToolButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToggleToolButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToggleToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToggleToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -69294,21 +71248,33 @@ type ToolButton struct {
 func ToolButtonNewFromNative(native unsafe.Pointer) *ToolButton {
 	return &ToolButton{native: native}
 }
+
+// ToolItem upcasts to *ToolItem
 func (recv *ToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *ToolButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ToolButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToolButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToolButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -69776,18 +71742,28 @@ type ToolItem struct {
 func ToolItemNewFromNative(native unsafe.Pointer) *ToolItem {
 	return &ToolItem{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *ToolItem) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *ToolItem) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToolItem) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToolItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -70655,15 +72631,23 @@ type ToolItemGroup struct {
 func ToolItemGroupNewFromNative(native unsafe.Pointer) *ToolItemGroup {
 	return &ToolItemGroup{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *ToolItemGroup) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToolItemGroup) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToolItemGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToolItemGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -71186,15 +73170,23 @@ type ToolPalette struct {
 func ToolPaletteNewFromNative(native unsafe.Pointer) *ToolPalette {
 	return &ToolPalette{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *ToolPalette) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *ToolPalette) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ToolPalette) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToolPalette) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -71811,15 +73803,23 @@ type Toolbar struct {
 func ToolbarNewFromNative(native unsafe.Pointer) *Toolbar {
 	return &Toolbar{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *Toolbar) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Toolbar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Toolbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Toolbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -72363,6 +74363,8 @@ type Tooltip struct {
 func TooltipNewFromNative(native unsafe.Pointer) *Tooltip {
 	return &Tooltip{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *Tooltip) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -72538,9 +74540,13 @@ type ToplevelAccessible struct {
 func ToplevelAccessibleNewFromNative(native unsafe.Pointer) *ToplevelAccessible {
 	return &ToplevelAccessible{native: native}
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *ToplevelAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *ToplevelAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -72583,6 +74589,8 @@ type TreeModelFilter struct {
 func TreeModelFilterNewFromNative(native unsafe.Pointer) *TreeModelFilter {
 	return &TreeModelFilter{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TreeModelFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -72834,6 +74842,8 @@ type TreeModelSort struct {
 func TreeModelSortNewFromNative(native unsafe.Pointer) *TreeModelSort {
 	return &TreeModelSort{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TreeModelSort) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -73085,6 +75095,8 @@ type TreeSelection struct {
 func TreeSelectionNewFromNative(native unsafe.Pointer) *TreeSelection {
 	return &TreeSelection{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TreeSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -73542,6 +75554,8 @@ type TreeStore struct {
 func TreeStoreNewFromNative(native unsafe.Pointer) *TreeStore {
 	return &TreeStore{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *TreeStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -74021,15 +76035,23 @@ type TreeView struct {
 func TreeViewNewFromNative(native unsafe.Pointer) *TreeView {
 	return &TreeView{native: native}
 }
+
+// Container upcasts to *Container
 func (recv *TreeView) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *TreeView) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TreeView) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TreeView) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -76564,18 +78586,28 @@ type TreeViewAccessible struct {
 func TreeViewAccessibleNewFromNative(native unsafe.Pointer) *TreeViewAccessible {
 	return &TreeViewAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *TreeViewAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *TreeViewAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *TreeViewAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TreeViewAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -76626,9 +78658,13 @@ type TreeViewColumn struct {
 func TreeViewColumnNewFromNative(native unsafe.Pointer) *TreeViewColumn {
 	return &TreeViewColumn{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *TreeViewColumn) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -78146,6 +80182,8 @@ type UIManager struct {
 func UIManagerNewFromNative(native unsafe.Pointer) *UIManager {
 	return &UIManager{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *UIManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -78647,18 +80685,28 @@ type VBox struct {
 func VBoxNewFromNative(native unsafe.Pointer) *VBox {
 	return &VBox{native: native}
 }
+
+// Box upcasts to *Box
 func (recv *VBox) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *VBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -78728,21 +80776,33 @@ type VButtonBox struct {
 func VButtonBoxNewFromNative(native unsafe.Pointer) *VButtonBox {
 	return &VButtonBox{native: native}
 }
+
+// ButtonBox upcasts to *ButtonBox
 func (recv *VButtonBox) ButtonBox() *ButtonBox {
 	return ButtonBoxNewFromNative(recv.native)
 }
+
+// Box upcasts to *Box
 func (recv *VButtonBox) Box() *Box {
 	return BoxNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *VButtonBox) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VButtonBox) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VButtonBox) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -78809,18 +80869,28 @@ type VPaned struct {
 func VPanedNewFromNative(native unsafe.Pointer) *VPaned {
 	return &VPaned{native: native}
 }
+
+// Paned upcasts to *Paned
 func (recv *VPaned) Paned() *Paned {
 	return PanedNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *VPaned) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VPaned) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VPaned) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VPaned) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -78887,18 +80957,28 @@ type VScale struct {
 func VScaleNewFromNative(native unsafe.Pointer) *VScale {
 	return &VScale{native: native}
 }
+
+// Scale upcasts to *Scale
 func (recv *VScale) Scale() *Scale {
 	return ScaleNewFromNative(recv.native)
 }
+
+// Range upcasts to *Range
 func (recv *VScale) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VScale) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VScale) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VScale) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -79001,18 +81081,28 @@ type VScrollbar struct {
 func VScrollbarNewFromNative(native unsafe.Pointer) *VScrollbar {
 	return &VScrollbar{native: native}
 }
+
+// Scrollbar upcasts to *Scrollbar
 func (recv *VScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromNative(recv.native)
 }
+
+// Range upcasts to *Range
 func (recv *VScrollbar) Range() *Range {
 	return RangeNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VScrollbar) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VScrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VScrollbar) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -79081,15 +81171,23 @@ type VSeparator struct {
 func VSeparatorNewFromNative(native unsafe.Pointer) *VSeparator {
 	return &VSeparator{native: native}
 }
+
+// Separator upcasts to *Separator
 func (recv *VSeparator) Separator() *Separator {
 	return SeparatorNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VSeparator) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VSeparator) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -79156,18 +81254,28 @@ type Viewport struct {
 func ViewportNewFromNative(native unsafe.Pointer) *Viewport {
 	return &Viewport{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Viewport) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Viewport) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Viewport) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Viewport) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Viewport) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -79424,24 +81532,38 @@ type VolumeButton struct {
 func VolumeButtonNewFromNative(native unsafe.Pointer) *VolumeButton {
 	return &VolumeButton{native: native}
 }
+
+// ScaleButton upcasts to *ScaleButton
 func (recv *VolumeButton) ScaleButton() *ScaleButton {
 	return ScaleButtonNewFromNative(recv.native)
 }
+
+// Button upcasts to *Button
 func (recv *VolumeButton) Button() *Button {
 	return ButtonNewFromNative(recv.native)
 }
+
+// Bin upcasts to *Bin
 func (recv *VolumeButton) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *VolumeButton) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *VolumeButton) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *VolumeButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *VolumeButton) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -79508,9 +81630,13 @@ type Widget struct {
 func WidgetNewFromNative(native unsafe.Pointer) *Widget {
 	return &Widget{native: native}
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Widget) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -85246,12 +87372,18 @@ type WidgetAccessible struct {
 func WidgetAccessibleNewFromNative(native unsafe.Pointer) *WidgetAccessible {
 	return &WidgetAccessible{native: native}
 }
+
+// Accessible upcasts to *Accessible
 func (recv *WidgetAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *WidgetAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *WidgetAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -85302,18 +87434,28 @@ type Window struct {
 func WindowNewFromNative(native unsafe.Pointer) *Window {
 	return &Window{native: native}
 }
+
+// Bin upcasts to *Bin
 func (recv *Window) Bin() *Bin {
 	return BinNewFromNative(recv.native)
 }
+
+// Container upcasts to *Container
 func (recv *Window) Container() *Container {
 	return ContainerNewFromNative(recv.native)
 }
+
+// Widget upcasts to *Widget
 func (recv *Window) Widget() *Widget {
 	return WidgetNewFromNative(recv.native)
 }
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Window) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -88163,18 +90305,28 @@ type WindowAccessible struct {
 func WindowAccessibleNewFromNative(native unsafe.Pointer) *WindowAccessible {
 	return &WindowAccessible{native: native}
 }
+
+// ContainerAccessible upcasts to *ContainerAccessible
 func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(recv.native)
 }
+
+// WidgetAccessible upcasts to *WidgetAccessible
 func (recv *WindowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(recv.native)
 }
+
+// Accessible upcasts to *Accessible
 func (recv *WindowAccessible) Accessible() *Accessible {
 	return AccessibleNewFromNative(recv.native)
 }
+
+// ObjectAtk upcasts to *ObjectAtk
 func (recv *WindowAccessible) ObjectAtk() *atk.Object {
 	return atk.ObjectNewFromNative(recv.native)
 }
+
+// Object upcasts to *Object
 func (recv *WindowAccessible) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
@@ -88225,6 +90377,8 @@ type WindowGroup struct {
 func WindowGroupNewFromNative(native unsafe.Pointer) *WindowGroup {
 	return &WindowGroup{native: native}
 }
+
+// Object upcasts to *Object
 func (recv *WindowGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromNative(recv.native)
 }
