@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -34,6 +35,10 @@ func AppInfoMonitorNewFromNative(native unsafe.Pointer) *AppInfoMonitor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -80,6 +85,10 @@ func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -282,6 +291,10 @@ func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1069,6 +1082,10 @@ func ApplicationCommandLineNewFromNative(native unsafe.Pointer) *ApplicationComm
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1374,6 +1391,10 @@ func BufferedInputStreamNewFromNative(native unsafe.Pointer) *BufferedInputStrea
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1712,6 +1733,10 @@ func BufferedOutputStreamNewFromNative(native unsafe.Pointer) *BufferedOutputStr
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1987,6 +2012,10 @@ func BytesIconNewFromNative(native unsafe.Pointer) *BytesIcon {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2036,6 +2065,10 @@ func CancellableNewFromNative(native unsafe.Pointer) *Cancellable {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2390,6 +2423,10 @@ func CharsetConverterNewFromNative(native unsafe.Pointer) *CharsetConverter {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2564,6 +2601,10 @@ func ConverterInputStreamNewFromNative(native unsafe.Pointer) *ConverterInputStr
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2638,6 +2679,10 @@ func ConverterOutputStreamNewFromNative(native unsafe.Pointer) *ConverterOutputS
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2711,6 +2756,10 @@ func CredentialsNewFromNative(native unsafe.Pointer) *Credentials {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2956,6 +3005,10 @@ func DBusActionGroupNewFromNative(native unsafe.Pointer) *DBusActionGroup {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3001,6 +3054,10 @@ func DBusAuthObserverNewFromNative(native unsafe.Pointer) *DBusAuthObserver {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3146,6 +3203,10 @@ func DBusConnectionNewFromNative(native unsafe.Pointer) *DBusConnection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3810,6 +3871,10 @@ func DBusInterfaceSkeletonNewFromNative(native unsafe.Pointer) *DBusInterfaceSke
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4144,6 +4209,10 @@ func DBusMenuModelNewFromNative(native unsafe.Pointer) *DBusMenuModel {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4194,6 +4263,10 @@ func DBusMessageNewFromNative(native unsafe.Pointer) *DBusMessage {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5442,6 +5515,10 @@ func DBusMethodInvocationNewFromNative(native unsafe.Pointer) *DBusMethodInvocat
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5821,6 +5898,10 @@ func DBusObjectManagerClientNewFromNative(native unsafe.Pointer) *DBusObjectMana
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5972,6 +6053,10 @@ func DBusObjectManagerServerNewFromNative(native unsafe.Pointer) *DBusObjectMana
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6238,6 +6323,10 @@ func DBusObjectProxyNewFromNative(native unsafe.Pointer) *DBusObjectProxy {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6350,6 +6439,10 @@ func DBusObjectSkeletonNewFromNative(native unsafe.Pointer) *DBusObjectSkeleton 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6574,6 +6667,10 @@ func DBusProxyNewFromNative(native unsafe.Pointer) *DBusProxy {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6957,6 +7054,10 @@ func DBusServerNewFromNative(native unsafe.Pointer) *DBusServer {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7158,6 +7259,10 @@ func DataInputStreamNewFromNative(native unsafe.Pointer) *DataInputStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7776,6 +7881,10 @@ func DataOutputStreamNewFromNative(native unsafe.Pointer) *DataOutputStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -8212,6 +8321,10 @@ func DesktopAppInfoNewFromNative(native unsafe.Pointer) *DesktopAppInfo {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -8842,6 +8955,10 @@ func EmblemNewFromNative(native unsafe.Pointer) *Emblem {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -8925,6 +9042,10 @@ func EmblemedIconNewFromNative(native unsafe.Pointer) *EmblemedIcon {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -9038,6 +9159,10 @@ func FileEnumeratorNewFromNative(native unsafe.Pointer) *FileEnumerator {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -9262,6 +9387,10 @@ func FileIOStreamNewFromNative(native unsafe.Pointer) *FileIOStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -9397,6 +9526,10 @@ func FileIconNewFromNative(native unsafe.Pointer) *FileIcon {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -9446,6 +9579,10 @@ func FileInfoNewFromNative(native unsafe.Pointer) *FileInfo {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11100,6 +11237,10 @@ func FileInputStreamNewFromNative(native unsafe.Pointer) *FileInputStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -11202,6 +11343,10 @@ func FileMonitorNewFromNative(native unsafe.Pointer) *FileMonitor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11348,6 +11493,10 @@ func FileOutputStreamNewFromNative(native unsafe.Pointer) *FileOutputStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -11482,6 +11631,10 @@ func FilenameCompleterNewFromNative(native unsafe.Pointer) *FilenameCompleter {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11651,6 +11804,10 @@ func FilterInputStreamNewFromNative(native unsafe.Pointer) *FilterInputStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11824,6 +11981,10 @@ func FilterOutputStreamNewFromNative(native unsafe.Pointer) *FilterOutputStream 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -11996,6 +12157,10 @@ func IOModuleNewFromNative(native unsafe.Pointer) *IOModule {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12136,6 +12301,10 @@ func IOStreamNewFromNative(native unsafe.Pointer) *IOStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -12413,6 +12582,10 @@ func InetAddressNewFromNative(native unsafe.Pointer) *InetAddress {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -13049,6 +13222,10 @@ func InetAddressMaskNewFromNative(native unsafe.Pointer) *InetAddressMask {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -13362,6 +13539,10 @@ func InetSocketAddressNewFromNative(native unsafe.Pointer) *InetSocketAddress {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -13624,6 +13805,10 @@ func InputStreamNewFromNative(native unsafe.Pointer) *InputStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -13892,6 +14077,10 @@ func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -14007,6 +14196,10 @@ func MemoryInputStreamNewFromNative(native unsafe.Pointer) *MemoryInputStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -14111,6 +14304,10 @@ func MemoryOutputStreamNewFromNative(native unsafe.Pointer) *MemoryOutputStream 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14280,6 +14477,10 @@ func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14810,6 +15011,10 @@ func MenuAttributeIterNewFromNative(native unsafe.Pointer) *MenuAttributeIter {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -14941,6 +15146,10 @@ func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -15321,6 +15530,10 @@ func MenuLinkIterNewFromNative(native unsafe.Pointer) *MenuLinkIter {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -15515,6 +15728,10 @@ func MenuModelNewFromNative(native unsafe.Pointer) *MenuModel {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -15778,6 +15995,10 @@ func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -16453,6 +16674,10 @@ func NativeSocketAddressNewFromNative(native unsafe.Pointer) *NativeSocketAddres
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -16520,6 +16745,10 @@ func NativeVolumeMonitorNewFromNative(native unsafe.Pointer) *NativeVolumeMonito
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -16584,6 +16813,10 @@ func NetworkAddressNewFromNative(native unsafe.Pointer) *NetworkAddress {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -16799,6 +17032,10 @@ func NetworkServiceNewFromNative(native unsafe.Pointer) *NetworkService {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -17042,6 +17279,10 @@ func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -17307,6 +17548,10 @@ func OutputStreamNewFromNative(native unsafe.Pointer) *OutputStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -17628,6 +17873,10 @@ func PermissionNewFromNative(native unsafe.Pointer) *Permission {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -17879,6 +18128,10 @@ func PropertyActionNewFromNative(native unsafe.Pointer) *PropertyAction {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -17926,6 +18179,10 @@ func ProxyAddressNewFromNative(native unsafe.Pointer) *ProxyAddress {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -18261,6 +18518,10 @@ func ProxyAddressEnumeratorNewFromNative(native unsafe.Pointer) *ProxyAddressEnu
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -18311,6 +18572,10 @@ func ResolverNewFromNative(native unsafe.Pointer) *Resolver {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -18465,6 +18730,10 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -19633,6 +19902,10 @@ func SettingsBackendNewFromNative(native unsafe.Pointer) *SettingsBackend {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -19749,6 +20022,10 @@ func SimpleActionNewFromNative(native unsafe.Pointer) *SimpleAction {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -19831,6 +20108,10 @@ func SimpleActionGroupNewFromNative(native unsafe.Pointer) *SimpleActionGroup {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -19944,6 +20225,10 @@ func SimpleAsyncResultNewFromNative(native unsafe.Pointer) *SimpleAsyncResult {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -20283,6 +20568,10 @@ func SimpleIOStreamNewFromNative(native unsafe.Pointer) *SimpleIOStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -20369,6 +20658,10 @@ func SimplePermissionNewFromNative(native unsafe.Pointer) *SimplePermission {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -20453,6 +20746,10 @@ func SimpleProxyResolverNewFromNative(native unsafe.Pointer) *SimpleProxyResolve
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -20591,6 +20888,10 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -22070,6 +22371,10 @@ func SocketAddressNewFromNative(native unsafe.Pointer) *SocketAddress {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -22188,6 +22493,10 @@ func SocketAddressEnumeratorNewFromNative(native unsafe.Pointer) *SocketAddressE
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -22270,6 +22579,10 @@ func SocketClientNewFromNative(native unsafe.Pointer) *SocketClient {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -22954,6 +23267,10 @@ func SocketConnectionNewFromNative(native unsafe.Pointer) *SocketConnection {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -23199,6 +23516,10 @@ func SocketControlMessageNewFromNative(native unsafe.Pointer) *SocketControlMess
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -23360,6 +23681,10 @@ func SocketListenerNewFromNative(native unsafe.Pointer) *SocketListener {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -23533,6 +23858,10 @@ func SocketServiceNewFromNative(native unsafe.Pointer) *SocketService {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -23732,6 +24061,10 @@ func SubprocessNewFromNative(native unsafe.Pointer) *Subprocess {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -24281,6 +24614,10 @@ func SubprocessLauncherNewFromNative(native unsafe.Pointer) *SubprocessLauncher 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -24664,6 +25001,10 @@ func TaskNewFromNative(native unsafe.Pointer) *Task {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -25237,6 +25578,10 @@ func TcpConnectionNewFromNative(native unsafe.Pointer) *TcpConnection {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -25381,6 +25726,10 @@ func TcpWrapperConnectionNewFromNative(native unsafe.Pointer) *TcpWrapperConnect
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -25537,6 +25886,10 @@ func TestDBusNewFromNative(native unsafe.Pointer) *TestDBus {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -25732,6 +26085,10 @@ func ThemedIconNewFromNative(native unsafe.Pointer) *ThemedIcon {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -25935,6 +26292,10 @@ func ThreadedSocketServiceNewFromNative(native unsafe.Pointer) *ThreadedSocketSe
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -26052,6 +26413,10 @@ func TlsCertificateNewFromNative(native unsafe.Pointer) *TlsCertificate {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -26287,6 +26652,10 @@ func TlsConnectionNewFromNative(native unsafe.Pointer) *TlsConnection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -26840,6 +27209,10 @@ func TlsDatabaseNewFromNative(native unsafe.Pointer) *TlsDatabase {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -27028,6 +27401,10 @@ func TlsInteractionNewFromNative(native unsafe.Pointer) *TlsInteraction {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -27220,6 +27597,10 @@ func TlsPasswordNewFromNative(native unsafe.Pointer) *TlsPassword {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -27450,6 +27831,10 @@ func UnixConnectionNewFromNative(native unsafe.Pointer) *UnixConnection {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -27675,6 +28060,10 @@ func UnixCredentialsMessageNewFromNative(native unsafe.Pointer) *UnixCredentials
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -27851,6 +28240,10 @@ func UnixFDListNewFromNative(native unsafe.Pointer) *UnixFDList {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -28112,6 +28505,10 @@ func UnixFDMessageNewFromNative(native unsafe.Pointer) *UnixFDMessage {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -28354,6 +28751,10 @@ func UnixInputStreamNewFromNative(native unsafe.Pointer) *UnixInputStream {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -28547,6 +28948,10 @@ func UnixMountMonitorNewFromNative(native unsafe.Pointer) *UnixMountMonitor {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -28653,6 +29058,10 @@ func UnixOutputStreamNewFromNative(native unsafe.Pointer) *UnixOutputStream {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -28846,6 +29255,10 @@ func UnixSocketAddressNewFromNative(native unsafe.Pointer) *UnixSocketAddress {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -29078,6 +29491,10 @@ func VfsNewFromNative(native unsafe.Pointer) *Vfs {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29229,6 +29646,10 @@ func VolumeMonitorNewFromNative(native unsafe.Pointer) *VolumeMonitor {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29288,6 +29709,10 @@ func ZlibCompressorNewFromNative(native unsafe.Pointer) *ZlibCompressor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -29430,6 +29855,10 @@ func ZlibDecompressorNewFromNative(native unsafe.Pointer) *ZlibDecompressor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

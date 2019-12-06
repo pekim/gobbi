@@ -5,6 +5,7 @@ package atk
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -33,6 +34,10 @@ func GObjectAccessibleNewFromNative(native unsafe.Pointer) *GObjectAccessible {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -100,6 +105,10 @@ func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -409,6 +418,10 @@ func MiscNewFromNative(native unsafe.Pointer) *Misc {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -515,6 +528,10 @@ func NoOpObjectNewFromNative(native unsafe.Pointer) *NoOpObject {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -581,6 +598,10 @@ func NoOpObjectFactoryNewFromNative(native unsafe.Pointer) *NoOpObjectFactory {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -678,6 +699,10 @@ func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1540,6 +1565,10 @@ func ObjectFactoryNewFromNative(native unsafe.Pointer) *ObjectFactory {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1621,6 +1650,10 @@ func PlugNewFromNative(native unsafe.Pointer) *Plug {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1751,6 +1784,10 @@ func RegistryNewFromNative(native unsafe.Pointer) *Registry {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1814,6 +1851,10 @@ func RelationNewFromNative(native unsafe.Pointer) *Relation {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2006,6 +2047,10 @@ func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2346,6 +2391,10 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2503,6 +2552,10 @@ func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2847,6 +2900,10 @@ func UtilNewFromNative(native unsafe.Pointer) *Util {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -34,6 +35,10 @@ func BufferNewFromNative(native unsafe.Pointer) *Buffer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -716,6 +721,10 @@ func CompletionNewFromNative(native unsafe.Pointer) *Completion {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -940,6 +949,10 @@ func CompletionContextNewFromNative(native unsafe.Pointer) *CompletionContext {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1014,6 +1027,10 @@ func CompletionInfoNewFromNative(native unsafe.Pointer) *CompletionInfo {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1139,6 +1156,10 @@ func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1394,6 +1415,10 @@ func CompletionWordsNewFromNative(native unsafe.Pointer) *CompletionWords {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1463,6 +1488,10 @@ func FileNewFromNative(native unsafe.Pointer) *File {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1818,6 +1847,10 @@ func FileLoaderNewFromNative(native unsafe.Pointer) *FileLoader {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2088,6 +2121,10 @@ func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2447,6 +2484,10 @@ func GutterNewFromNative(native unsafe.Pointer) *Gutter {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2761,6 +2802,10 @@ func GutterRendererNewFromNative(native unsafe.Pointer) *GutterRenderer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3202,6 +3247,10 @@ func GutterRendererPixbufNewFromNative(native unsafe.Pointer) *GutterRendererPix
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3418,6 +3467,10 @@ func GutterRendererTextNewFromNative(native unsafe.Pointer) *GutterRendererText 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3631,6 +3684,10 @@ func LanguageNewFromNative(native unsafe.Pointer) *Language {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4007,6 +4064,10 @@ func LanguageManagerNewFromNative(native unsafe.Pointer) *LanguageManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4228,6 +4289,10 @@ func MapNewFromNative(native unsafe.Pointer) *Map {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4403,6 +4468,10 @@ func MarkNewFromNative(native unsafe.Pointer) *Mark {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4605,6 +4674,10 @@ func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4885,6 +4958,10 @@ func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5751,6 +5828,10 @@ func RegionNewFromNative(native unsafe.Pointer) *Region {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5999,6 +6080,10 @@ func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6408,6 +6493,10 @@ func SearchSettingsNewFromNative(native unsafe.Pointer) *SearchSettings {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6809,6 +6898,10 @@ func SpaceDrawerNewFromNative(native unsafe.Pointer) *SpaceDrawer {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6976,6 +7069,10 @@ func StyleNewFromNative(native unsafe.Pointer) *Style {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7055,6 +7152,10 @@ func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7309,6 +7410,10 @@ func StyleSchemeChooserButtonNewFromNative(native unsafe.Pointer) *StyleSchemeCh
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7414,6 +7519,10 @@ func StyleSchemeChooserWidgetNewFromNative(native unsafe.Pointer) *StyleSchemeCh
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7513,6 +7622,10 @@ func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7787,6 +7900,10 @@ func TagNewFromNative(native unsafe.Pointer) *Tag {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7875,6 +7992,10 @@ func ViewNewFromNative(native unsafe.Pointer) *View {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

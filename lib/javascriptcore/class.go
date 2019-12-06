@@ -5,6 +5,7 @@ package javascriptcore
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -33,6 +34,10 @@ func ClassNewFromNative(native unsafe.Pointer) *Class {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -157,6 +162,10 @@ func ContextNewFromNative(native unsafe.Pointer) *Context {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -696,6 +705,10 @@ func ExceptionNewFromNative(native unsafe.Pointer) *Exception {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1080,6 +1093,10 @@ func ValueNewFromNative(native unsafe.Pointer) *Value {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2039,6 +2056,10 @@ func VirtualMachineNewFromNative(native unsafe.Pointer) *VirtualMachine {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2120,6 +2141,10 @@ func WeakValueNewFromNative(native unsafe.Pointer) *WeakValue {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

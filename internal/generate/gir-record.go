@@ -176,8 +176,37 @@ func (r *Record) generateNewFromNativeBody(g *jen.Group) {
 		g.Line()
 	}
 
+	r.setFinalizer(g, object)
+
 	// GEN: return instance
 	g.Return(instance)
+}
+
+func (r *Record) setFinalizer(g *jen.Group, instance *jen.Statement) {
+	if !r.derivedFromObject() {
+		return
+	}
+
+	object := jen.Id("o")
+	gobjectNs, _ := r.namespace.namespaces.byName("GObject")
+
+	g.
+		// GEN: runtime.SetFinalizer(...)
+		Qual("runtime", "SetFinalizer").
+		Call(
+			// GEN: instance
+			jen.Add(instance),
+
+			// GEN: func (instance *SomeRecord) { o.Object().Unref() }
+			jen.
+				Func().
+				Params(jen.Add(object).Op("*").Qual(gobjectNs.goFullPackageName, "Object")).
+				Block(jen.Add(object).
+					Dot("Unref").Call(),
+				),
+		)
+
+	g.Line()
 }
 
 func (r *Record) derivedFromInitiallyUnowned() bool {

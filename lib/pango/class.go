@@ -5,6 +5,7 @@ package pango
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -33,6 +34,10 @@ func ContextNewFromNative(native unsafe.Pointer) *Context {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -734,6 +739,10 @@ func EngineNewFromNative(native unsafe.Pointer) *Engine {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -779,6 +788,10 @@ func EngineLangNewFromNative(native unsafe.Pointer) *EngineLang {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -830,6 +843,10 @@ func EngineShapeNewFromNative(native unsafe.Pointer) *EngineShape {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -895,6 +912,10 @@ func FontNewFromNative(native unsafe.Pointer) *Font {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1176,6 +1197,10 @@ func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1324,6 +1349,10 @@ func FontFamilyNewFromNative(native unsafe.Pointer) *FontFamily {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1439,6 +1468,10 @@ func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1685,6 +1718,10 @@ func FontsetNewFromNative(native unsafe.Pointer) *Fontset {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1801,6 +1838,10 @@ func FontsetSimpleNewFromNative(native unsafe.Pointer) *FontsetSimple {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1947,6 +1988,10 @@ func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3674,6 +3719,10 @@ func RendererNewFromNative(native unsafe.Pointer) *Renderer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

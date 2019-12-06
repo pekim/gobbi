@@ -8,6 +8,7 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	xlib "github.com/pekim/gobbi/lib/xlib"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -36,6 +37,10 @@ func AboutDialogNewFromNative(native unsafe.Pointer) *AboutDialog {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -924,6 +929,10 @@ func AccelGroupNewFromNative(native unsafe.Pointer) *AccelGroup {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1123,6 +1132,10 @@ func AccelLabelNewFromNative(native unsafe.Pointer) *AccelLabel {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1381,6 +1394,10 @@ func AccelMapNewFromNative(native unsafe.Pointer) *AccelMap {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1426,6 +1443,10 @@ func AccessibleNewFromNative(native unsafe.Pointer) *Accessible {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1570,6 +1591,10 @@ func ActionNewFromNative(native unsafe.Pointer) *Action {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2792,6 +2817,10 @@ func ActionBarNewFromNative(native unsafe.Pointer) *ActionBar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3006,6 +3035,10 @@ func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3504,6 +3537,10 @@ func AdjustmentNewFromNative(native unsafe.Pointer) *Adjustment {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4129,6 +4166,10 @@ func AlignmentNewFromNative(native unsafe.Pointer) *Alignment {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4342,6 +4383,10 @@ func AppChooserButtonNewFromNative(native unsafe.Pointer) *AppChooserButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4702,6 +4747,10 @@ func AppChooserDialogNewFromNative(native unsafe.Pointer) *AppChooserDialog {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4888,6 +4937,10 @@ func AppChooserWidgetNewFromNative(native unsafe.Pointer) *AppChooserWidget {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5367,6 +5420,10 @@ func ApplicationNewFromNative(native unsafe.Pointer) *Application {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5716,6 +5773,10 @@ func ApplicationWindowNewFromNative(native unsafe.Pointer) *ApplicationWindow {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5987,6 +6048,10 @@ func ArrowNewFromNative(native unsafe.Pointer) *Arrow {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6125,6 +6190,10 @@ func ArrowAccessibleNewFromNative(native unsafe.Pointer) *ArrowAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6213,6 +6282,10 @@ func AspectFrameNewFromNative(native unsafe.Pointer) *AspectFrame {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6366,6 +6439,10 @@ func AssistantNewFromNative(native unsafe.Pointer) *Assistant {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7169,6 +7246,10 @@ func BinNewFromNative(native unsafe.Pointer) *Bin {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7276,6 +7357,10 @@ func BooleanCellAccessibleNewFromNative(native unsafe.Pointer) *BooleanCellAcces
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7369,6 +7454,10 @@ func BoxNewFromNative(native unsafe.Pointer) *Box {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7885,6 +7974,10 @@ func BuilderNewFromNative(native unsafe.Pointer) *Builder {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -8335,6 +8428,10 @@ func ButtonNewFromNative(native unsafe.Pointer) *Button {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -9254,6 +9351,10 @@ func ButtonAccessibleNewFromNative(native unsafe.Pointer) *ButtonAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -9347,6 +9448,10 @@ func ButtonBoxNewFromNative(native unsafe.Pointer) *ButtonBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -9646,6 +9751,10 @@ func CalendarNewFromNative(native unsafe.Pointer) *Calendar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -10101,6 +10210,10 @@ func CellAccessibleNewFromNative(native unsafe.Pointer) *CellAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -10184,6 +10297,10 @@ func CellAreaNewFromNative(native unsafe.Pointer) *CellArea {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11082,6 +11199,10 @@ func CellAreaBoxNewFromNative(native unsafe.Pointer) *CellAreaBox {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -11292,6 +11413,10 @@ func CellAreaContextNewFromNative(native unsafe.Pointer) *CellAreaContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11655,6 +11780,10 @@ func CellRendererNewFromNative(native unsafe.Pointer) *CellRenderer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -12299,6 +12428,10 @@ func CellRendererAccelNewFromNative(native unsafe.Pointer) *CellRendererAccel {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12403,6 +12536,10 @@ func CellRendererComboNewFromNative(native unsafe.Pointer) *CellRendererCombo {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -12509,6 +12646,10 @@ func CellRendererPixbufNewFromNative(native unsafe.Pointer) *CellRendererPixbuf 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12609,6 +12750,10 @@ func CellRendererProgressNewFromNative(native unsafe.Pointer) *CellRendererProgr
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12708,6 +12853,10 @@ func CellRendererSpinNewFromNative(native unsafe.Pointer) *CellRendererSpin {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -12814,6 +12963,10 @@ func CellRendererSpinnerNewFromNative(native unsafe.Pointer) *CellRendererSpinne
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12913,6 +13066,10 @@ func CellRendererTextNewFromNative(native unsafe.Pointer) *CellRendererText {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -13042,6 +13199,10 @@ func CellRendererToggleNewFromNative(native unsafe.Pointer) *CellRendererToggle 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -13325,6 +13486,10 @@ func CellViewNewFromNative(native unsafe.Pointer) *CellView {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -13751,6 +13916,10 @@ func CheckButtonNewFromNative(native unsafe.Pointer) *CheckButton {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -13934,6 +14103,10 @@ func CheckMenuItemNewFromNative(native unsafe.Pointer) *CheckMenuItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14325,6 +14498,10 @@ func CheckMenuItemAccessibleNewFromNative(native unsafe.Pointer) *CheckMenuItemA
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -14423,6 +14600,10 @@ func ClipboardNewFromNative(native unsafe.Pointer) *Clipboard {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14781,6 +14962,10 @@ func ColorButtonNewFromNative(native unsafe.Pointer) *ColorButton {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -15091,6 +15276,10 @@ func ColorChooserDialogNewFromNative(native unsafe.Pointer) *ColorChooserDialog 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -15214,6 +15403,10 @@ func ColorChooserWidgetNewFromNative(native unsafe.Pointer) *ColorChooserWidget 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -15323,6 +15516,10 @@ func ColorSelectionNewFromNative(native unsafe.Pointer) *ColorSelection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -15726,6 +15923,10 @@ func ColorSelectionDialogNewFromNative(native unsafe.Pointer) *ColorSelectionDia
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -15879,6 +16080,10 @@ func ComboBoxNewFromNative(native unsafe.Pointer) *ComboBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -16987,6 +17192,10 @@ func ComboBoxAccessibleNewFromNative(native unsafe.Pointer) *ComboBoxAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -17080,6 +17289,10 @@ func ComboBoxTextNewFromNative(native unsafe.Pointer) *ComboBoxText {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -17479,6 +17692,10 @@ func ContainerNewFromNative(native unsafe.Pointer) *Container {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -18119,6 +18336,10 @@ func ContainerAccessibleNewFromNative(native unsafe.Pointer) *ContainerAccessibl
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -18207,6 +18428,10 @@ func ContainerCellAccessibleNewFromNative(native unsafe.Pointer) *ContainerCellA
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -18388,6 +18613,10 @@ func CssProviderNewFromNative(native unsafe.Pointer) *CssProvider {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -18582,6 +18811,10 @@ func DialogNewFromNative(native unsafe.Pointer) *Dialog {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -19052,6 +19285,10 @@ func DrawingAreaNewFromNative(native unsafe.Pointer) *DrawingArea {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -19151,6 +19388,10 @@ func EntryNewFromNative(native unsafe.Pointer) *Entry {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -21061,6 +21302,10 @@ func EntryAccessibleNewFromNative(native unsafe.Pointer) *EntryAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -21149,6 +21394,10 @@ func EntryBufferNewFromNative(native unsafe.Pointer) *EntryBuffer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -21551,6 +21800,10 @@ func EntryCompletionNewFromNative(native unsafe.Pointer) *EntryCompletion {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -22343,6 +22596,10 @@ func EntryIconAccessibleNewFromNative(native unsafe.Pointer) *EntryIconAccessibl
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -22393,6 +22650,10 @@ func EventBoxNewFromNative(native unsafe.Pointer) *EventBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -22626,6 +22887,10 @@ func EventControllerNewFromNative(native unsafe.Pointer) *EventController {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -22794,6 +23059,10 @@ func EventControllerKeyNewFromNative(native unsafe.Pointer) *EventControllerKey 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -23006,6 +23275,10 @@ func EventControllerMotionNewFromNative(native unsafe.Pointer) *EventControllerM
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -23091,6 +23364,10 @@ func EventControllerScrollNewFromNative(native unsafe.Pointer) *EventControllerS
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -23147,6 +23424,10 @@ func ExpanderNewFromNative(native unsafe.Pointer) *Expander {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -23794,6 +24075,10 @@ func ExpanderAccessibleNewFromNative(native unsafe.Pointer) *ExpanderAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -23887,6 +24172,10 @@ func FileChooserButtonNewFromNative(native unsafe.Pointer) *FileChooserButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -24216,6 +24505,10 @@ func FileChooserDialogNewFromNative(native unsafe.Pointer) *FileChooserDialog {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -24321,6 +24614,10 @@ func FileChooserNativeNewFromNative(native unsafe.Pointer) *FileChooserNative {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -24533,6 +24830,10 @@ func FileChooserWidgetNewFromNative(native unsafe.Pointer) *FileChooserWidget {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -24658,6 +24959,10 @@ func FileFilterNewFromNative(native unsafe.Pointer) *FileFilter {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -24928,6 +25233,10 @@ func FixedNewFromNative(native unsafe.Pointer) *Fixed {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -25094,6 +25403,10 @@ func FlowBoxNewFromNative(native unsafe.Pointer) *FlowBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -25962,6 +26275,10 @@ func FlowBoxAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -26055,6 +26372,10 @@ func FlowBoxChildNewFromNative(native unsafe.Pointer) *FlowBoxChild {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -26258,6 +26579,10 @@ func FlowBoxChildAccessibleNewFromNative(native unsafe.Pointer) *FlowBoxChildAcc
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -26337,6 +26662,10 @@ func FontButtonNewFromNative(native unsafe.Pointer) *FontButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -26855,6 +27184,10 @@ func FontChooserDialogNewFromNative(native unsafe.Pointer) *FontChooserDialog {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -26978,6 +27311,10 @@ func FontChooserWidgetNewFromNative(native unsafe.Pointer) *FontChooserWidget {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -27087,6 +27424,10 @@ func FontSelectionNewFromNative(native unsafe.Pointer) *FontSelection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -27520,6 +27861,10 @@ func FontSelectionDialogNewFromNative(native unsafe.Pointer) *FontSelectionDialo
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -27863,6 +28208,10 @@ func FrameNewFromNative(native unsafe.Pointer) *Frame {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -28222,6 +28571,10 @@ func FrameAccessibleNewFromNative(native unsafe.Pointer) *FrameAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -28315,6 +28668,10 @@ func GLAreaNewFromNative(native unsafe.Pointer) *GLArea {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -28860,6 +29217,10 @@ func GestureNewFromNative(native unsafe.Pointer) *Gesture {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29157,6 +29518,10 @@ func GestureDragNewFromNative(native unsafe.Pointer) *GestureDrag {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29322,6 +29687,10 @@ func GestureLongPressNewFromNative(native unsafe.Pointer) *GestureLongPress {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29416,6 +29785,10 @@ func GestureMultiPressNewFromNative(native unsafe.Pointer) *GestureMultiPress {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -29515,6 +29888,10 @@ func GesturePanNewFromNative(native unsafe.Pointer) *GesturePan {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -29678,6 +30055,10 @@ func GestureRotateNewFromNative(native unsafe.Pointer) *GestureRotate {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -29799,6 +30180,10 @@ func GestureSingleNewFromNative(native unsafe.Pointer) *GestureSingle {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -30073,6 +30458,10 @@ func GestureStylusNewFromNative(native unsafe.Pointer) *GestureStylus {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -30173,6 +30562,10 @@ func GestureSwipeNewFromNative(native unsafe.Pointer) *GestureSwipe {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -30304,6 +30697,10 @@ func GestureZoomNewFromNative(native unsafe.Pointer) *GestureZoom {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -30425,6 +30822,10 @@ func GridNewFromNative(native unsafe.Pointer) *Grid {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -31131,6 +31532,10 @@ func HBoxNewFromNative(native unsafe.Pointer) *HBox {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -31243,6 +31648,10 @@ func HButtonBoxNewFromNative(native unsafe.Pointer) *HButtonBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -31359,6 +31768,10 @@ func HPanedNewFromNative(native unsafe.Pointer) *HPaned {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -31468,6 +31881,10 @@ func HSVNewFromNative(native unsafe.Pointer) *HSV {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -31729,6 +32146,10 @@ func HScaleNewFromNative(native unsafe.Pointer) *HScale {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -31875,6 +32296,10 @@ func HScrollbarNewFromNative(native unsafe.Pointer) *HScrollbar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -31987,6 +32412,10 @@ func HSeparatorNewFromNative(native unsafe.Pointer) *HSeparator {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -32091,6 +32520,10 @@ func HandleBoxNewFromNative(native unsafe.Pointer) *HandleBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -32416,6 +32849,10 @@ func HeaderBarNewFromNative(native unsafe.Pointer) *HeaderBar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -32946,6 +33383,10 @@ func HeaderBarAccessibleNewFromNative(native unsafe.Pointer) *HeaderBarAccessibl
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -33025,6 +33466,10 @@ func IMContextNewFromNative(native unsafe.Pointer) *IMContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -33297,6 +33742,10 @@ func IMContextSimpleNewFromNative(native unsafe.Pointer) *IMContextSimple {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -33424,6 +33873,10 @@ func IMMulticontextNewFromNative(native unsafe.Pointer) *IMMulticontext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -33611,6 +34064,10 @@ func IconFactoryNewFromNative(native unsafe.Pointer) *IconFactory {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -33812,6 +34269,10 @@ func IconInfoNewFromNative(native unsafe.Pointer) *IconInfo {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -34137,6 +34598,10 @@ func IconThemeNewFromNative(native unsafe.Pointer) *IconTheme {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -34485,6 +34950,10 @@ func IconViewNewFromNative(native unsafe.Pointer) *IconView {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -36256,6 +36725,10 @@ func IconViewAccessibleNewFromNative(native unsafe.Pointer) *IconViewAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -36349,6 +36822,10 @@ func ImageNewFromNative(native unsafe.Pointer) *Image {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -37008,6 +37485,10 @@ func ImageAccessibleNewFromNative(native unsafe.Pointer) *ImageAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -37096,6 +37577,10 @@ func ImageCellAccessibleNewFromNative(native unsafe.Pointer) *ImageCellAccessibl
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -37190,6 +37675,10 @@ func ImageMenuItemNewFromNative(native unsafe.Pointer) *ImageMenuItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -37614,6 +38103,10 @@ func InfoBarNewFromNative(native unsafe.Pointer) *InfoBar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -38128,6 +38621,10 @@ func InvisibleNewFromNative(native unsafe.Pointer) *Invisible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -38233,6 +38730,10 @@ func LabelNewFromNative(native unsafe.Pointer) *Label {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -39641,6 +40142,10 @@ func LabelAccessibleNewFromNative(native unsafe.Pointer) *LabelAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -39729,6 +40234,10 @@ func LayoutNewFromNative(native unsafe.Pointer) *Layout {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -40086,6 +40595,10 @@ func LevelBarNewFromNative(native unsafe.Pointer) *LevelBar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -40605,6 +41118,10 @@ func LevelBarAccessibleNewFromNative(native unsafe.Pointer) *LevelBarAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -40693,6 +41210,10 @@ func LinkButtonNewFromNative(native unsafe.Pointer) *LinkButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -40952,6 +41473,10 @@ func LinkButtonAccessibleNewFromNative(native unsafe.Pointer) *LinkButtonAccessi
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -41050,6 +41575,10 @@ func ListBoxNewFromNative(native unsafe.Pointer) *ListBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -41792,6 +42321,10 @@ func ListBoxAccessibleNewFromNative(native unsafe.Pointer) *ListBoxAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -41885,6 +42418,10 @@ func ListBoxRowNewFromNative(native unsafe.Pointer) *ListBoxRow {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -42271,6 +42808,10 @@ func ListBoxRowAccessibleNewFromNative(native unsafe.Pointer) *ListBoxRowAccessi
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -42350,6 +42891,10 @@ func ListStoreNewFromNative(native unsafe.Pointer) *ListStore {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -42768,6 +43313,10 @@ func LockButtonNewFromNative(native unsafe.Pointer) *LockButton {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -42873,6 +43422,10 @@ func LockButtonAccessibleNewFromNative(native unsafe.Pointer) *LockButtonAccessi
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -42971,6 +43524,10 @@ func MenuNewFromNative(native unsafe.Pointer) *Menu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -43706,6 +44263,10 @@ func MenuAccessibleNewFromNative(native unsafe.Pointer) *MenuAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -43804,6 +44365,10 @@ func MenuBarNewFromNative(native unsafe.Pointer) *MenuBar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -44038,6 +44603,10 @@ func MenuButtonNewFromNative(native unsafe.Pointer) *MenuButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -44468,6 +45037,10 @@ func MenuButtonAccessibleNewFromNative(native unsafe.Pointer) *MenuButtonAccessi
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -44571,6 +45144,10 @@ func MenuItemNewFromNative(native unsafe.Pointer) *MenuItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -45258,6 +45835,10 @@ func MenuItemAccessibleNewFromNative(native unsafe.Pointer) *MenuItemAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -45351,6 +45932,10 @@ func MenuShellNewFromNative(native unsafe.Pointer) *MenuShell {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -45814,6 +46399,10 @@ func MenuShellAccessibleNewFromNative(native unsafe.Pointer) *MenuShellAccessibl
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -45907,6 +46496,10 @@ func MenuToolButtonNewFromNative(native unsafe.Pointer) *MenuToolButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -46182,6 +46775,10 @@ func MessageDialogNewFromNative(native unsafe.Pointer) *MessageDialog {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -46402,6 +46999,10 @@ func MiscNewFromNative(native unsafe.Pointer) *Misc {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -46598,6 +47199,10 @@ func ModelButtonNewFromNative(native unsafe.Pointer) *ModelButton {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -46698,6 +47303,10 @@ func MountOperationNewFromNative(native unsafe.Pointer) *MountOperation {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -46898,6 +47507,10 @@ func NativeDialogNewFromNative(native unsafe.Pointer) *NativeDialog {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -47279,6 +47892,10 @@ func NotebookNewFromNative(native unsafe.Pointer) *Notebook {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -48749,6 +49366,10 @@ func NotebookAccessibleNewFromNative(native unsafe.Pointer) *NotebookAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -48842,6 +49463,10 @@ func NotebookPageAccessibleNewFromNative(native unsafe.Pointer) *NotebookPageAcc
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -48974,6 +49599,10 @@ func NumerableIconNewFromNative(native unsafe.Pointer) *NumerableIcon {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -49278,6 +49907,10 @@ func OffscreenWindowNewFromNative(native unsafe.Pointer) *OffscreenWindow {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -49396,6 +50029,10 @@ func OverlayNewFromNative(native unsafe.Pointer) *Overlay {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -49643,6 +50280,10 @@ func PadControllerNewFromNative(native unsafe.Pointer) *PadController {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -49730,6 +50371,10 @@ func PageSetupNewFromNative(native unsafe.Pointer) *PageSetup {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -50486,6 +51131,10 @@ func PanedNewFromNative(native unsafe.Pointer) *Paned {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -50901,6 +51550,10 @@ func PanedAccessibleNewFromNative(native unsafe.Pointer) *PanedAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -50994,6 +51647,10 @@ func PlacesSidebarNewFromNative(native unsafe.Pointer) *PlacesSidebar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -51602,6 +52259,10 @@ func PlugNewFromNative(native unsafe.Pointer) *Plug {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -51831,6 +52492,10 @@ func PopoverNewFromNative(native unsafe.Pointer) *Popover {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -52374,6 +53039,10 @@ func PopoverAccessibleNewFromNative(native unsafe.Pointer) *PopoverAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -52453,6 +53122,10 @@ func PopoverMenuNewFromNative(native unsafe.Pointer) *PopoverMenu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -52583,6 +53256,10 @@ func PrintContextNewFromNative(native unsafe.Pointer) *PrintContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -52836,6 +53513,10 @@ func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -53787,6 +54468,10 @@ func PrintSettingsNewFromNative(native unsafe.Pointer) *PrintSettings {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -55992,6 +56677,10 @@ func ProgressBarNewFromNative(native unsafe.Pointer) *ProgressBar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -56429,6 +57118,10 @@ func ProgressBarAccessibleNewFromNative(native unsafe.Pointer) *ProgressBarAcces
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -56517,6 +57210,10 @@ func RadioActionNewFromNative(native unsafe.Pointer) *RadioAction {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -56719,6 +57416,10 @@ func RadioButtonNewFromNative(native unsafe.Pointer) *RadioButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -56952,6 +57653,10 @@ func RadioButtonAccessibleNewFromNative(native unsafe.Pointer) *RadioButtonAcces
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -57055,6 +57760,10 @@ func RadioMenuItemNewFromNative(native unsafe.Pointer) *RadioMenuItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -57283,6 +57992,10 @@ func RadioMenuItemAccessibleNewFromNative(native unsafe.Pointer) *RadioMenuItemA
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -57386,6 +58099,10 @@ func RadioToolButtonNewFromNative(native unsafe.Pointer) *RadioToolButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -57554,6 +58271,10 @@ func RangeNewFromNative(native unsafe.Pointer) *Range {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -58466,6 +59187,10 @@ func RangeAccessibleNewFromNative(native unsafe.Pointer) *RangeAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -58554,6 +59279,10 @@ func RcStyleNewFromNative(native unsafe.Pointer) *RcStyle {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -58738,6 +59467,10 @@ func RecentActionNewFromNative(native unsafe.Pointer) *RecentAction {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -58940,6 +59673,10 @@ func RecentChooserDialogNewFromNative(native unsafe.Pointer) *RecentChooserDialo
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -59033,6 +59770,10 @@ func RecentChooserMenuNewFromNative(native unsafe.Pointer) *RecentChooserMenu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -59242,6 +59983,10 @@ func RecentChooserWidgetNewFromNative(native unsafe.Pointer) *RecentChooserWidge
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -59383,6 +60128,10 @@ func RecentFilterNewFromNative(native unsafe.Pointer) *RecentFilter {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -59736,6 +60485,10 @@ func RecentManagerNewFromNative(native unsafe.Pointer) *RecentManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -60048,6 +60801,10 @@ func RendererCellAccessibleNewFromNative(native unsafe.Pointer) *RendererCellAcc
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -60170,6 +60927,10 @@ func RevealerNewFromNative(native unsafe.Pointer) *Revealer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -60495,6 +61256,10 @@ func ScaleNewFromNative(native unsafe.Pointer) *Scale {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -60977,6 +61742,10 @@ func ScaleAccessibleNewFromNative(native unsafe.Pointer) *ScaleAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -61070,6 +61839,10 @@ func ScaleButtonNewFromNative(native unsafe.Pointer) *ScaleButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -61378,6 +62151,10 @@ func ScaleButtonAccessibleNewFromNative(native unsafe.Pointer) *ScaleButtonAcces
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -61476,6 +62253,10 @@ func ScrollbarNewFromNative(native unsafe.Pointer) *Scrollbar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -61584,6 +62365,10 @@ func ScrolledWindowNewFromNative(native unsafe.Pointer) *ScrolledWindow {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -62689,6 +63474,10 @@ func ScrolledWindowAccessibleNewFromNative(native unsafe.Pointer) *ScrolledWindo
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -62782,6 +63571,10 @@ func SearchBarNewFromNative(native unsafe.Pointer) *SearchBar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -63032,6 +63825,10 @@ func SearchEntryNewFromNative(native unsafe.Pointer) *SearchEntry {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -63138,6 +63935,10 @@ func SeparatorNewFromNative(native unsafe.Pointer) *Separator {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -63255,6 +64056,10 @@ func SeparatorMenuItemNewFromNative(native unsafe.Pointer) *SeparatorMenuItem {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -63369,6 +64174,10 @@ func SeparatorToolItemNewFromNative(native unsafe.Pointer) *SeparatorToolItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -63545,6 +64354,10 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -63747,6 +64560,10 @@ func ShortcutLabelNewFromNative(native unsafe.Pointer) *ShortcutLabel {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -63968,6 +64785,10 @@ func ShortcutsGroupNewFromNative(native unsafe.Pointer) *ShortcutsGroup {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -64033,6 +64854,10 @@ func ShortcutsSectionNewFromNative(native unsafe.Pointer) *ShortcutsSection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -64100,6 +64925,10 @@ func ShortcutsShortcutNewFromNative(native unsafe.Pointer) *ShortcutsShortcut {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -64165,6 +64994,10 @@ func ShortcutsWindowNewFromNative(native unsafe.Pointer) *ShortcutsWindow {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -64250,6 +65083,10 @@ func SizeGroupNewFromNative(native unsafe.Pointer) *SizeGroup {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -64517,6 +65354,10 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -64698,6 +65539,10 @@ func SpinButtonNewFromNative(native unsafe.Pointer) *SpinButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -65516,6 +66361,10 @@ func SpinButtonAccessibleNewFromNative(native unsafe.Pointer) *SpinButtonAccessi
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -65609,6 +66458,10 @@ func SpinnerNewFromNative(native unsafe.Pointer) *Spinner {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -65766,6 +66619,10 @@ func SpinnerAccessibleNewFromNative(native unsafe.Pointer) *SpinnerAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -65854,6 +66711,10 @@ func StackNewFromNative(native unsafe.Pointer) *Stack {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -66604,6 +67465,10 @@ func StackAccessibleNewFromNative(native unsafe.Pointer) *StackAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -66683,6 +67548,10 @@ func StackSidebarNewFromNative(native unsafe.Pointer) *StackSidebar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -66855,6 +67724,10 @@ func StackSwitcherNewFromNative(native unsafe.Pointer) *StackSwitcher {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -67025,6 +67898,10 @@ func StatusIconNewFromNative(native unsafe.Pointer) *StatusIcon {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -67855,6 +68732,10 @@ func StatusbarNewFromNative(native unsafe.Pointer) *Statusbar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -68152,6 +69033,10 @@ func StatusbarAccessibleNewFromNative(native unsafe.Pointer) *StatusbarAccessibl
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -68245,6 +69130,10 @@ func StyleNewFromNative(native unsafe.Pointer) *Style {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -68540,6 +69429,10 @@ func StyleContextNewFromNative(native unsafe.Pointer) *StyleContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -69282,6 +70175,10 @@ func StylePropertiesNewFromNative(native unsafe.Pointer) *StyleProperties {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -69495,6 +70392,10 @@ func SwitchNewFromNative(native unsafe.Pointer) *Switch {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -69703,6 +70604,10 @@ func SwitchAccessibleNewFromNative(native unsafe.Pointer) *SwitchAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -69791,6 +70696,10 @@ func TableNewFromNative(native unsafe.Pointer) *Table {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -70308,6 +71217,10 @@ func TearoffMenuItemNewFromNative(native unsafe.Pointer) *TearoffMenuItem {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -70422,6 +71335,10 @@ func TextBufferNewFromNative(native unsafe.Pointer) *TextBuffer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -72422,6 +73339,10 @@ func TextCellAccessibleNewFromNative(native unsafe.Pointer) *TextCellAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -72515,6 +73436,10 @@ func TextChildAnchorNewFromNative(native unsafe.Pointer) *TextChildAnchor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -72631,6 +73556,10 @@ func TextMarkNewFromNative(native unsafe.Pointer) *TextMark {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -72906,6 +73835,10 @@ func TextTagNewFromNative(native unsafe.Pointer) *TextTag {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -73095,6 +74028,10 @@ func TextTagTableNewFromNative(native unsafe.Pointer) *TextTagTable {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -73320,6 +74257,10 @@ func TextViewNewFromNative(native unsafe.Pointer) *TextView {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -75399,6 +76340,10 @@ func TextViewAccessibleNewFromNative(native unsafe.Pointer) *TextViewAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -75492,6 +76437,10 @@ func ThemingEngineNewFromNative(native unsafe.Pointer) *ThemingEngine {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -75724,6 +76673,10 @@ func ToggleActionNewFromNative(native unsafe.Pointer) *ToggleAction {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -75976,6 +76929,10 @@ func ToggleButtonNewFromNative(native unsafe.Pointer) *ToggleButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -76353,6 +77310,10 @@ func ToggleButtonAccessibleNewFromNative(native unsafe.Pointer) *ToggleButtonAcc
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -76451,6 +77412,10 @@ func ToggleToolButtonNewFromNative(native unsafe.Pointer) *ToggleToolButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -76664,6 +77629,10 @@ func ToolButtonNewFromNative(native unsafe.Pointer) *ToolButton {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -77180,6 +78149,10 @@ func ToolItemNewFromNative(native unsafe.Pointer) *ToolItem {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -78092,6 +79065,10 @@ func ToolItemGroupNewFromNative(native unsafe.Pointer) *ToolItemGroup {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -78652,6 +79629,10 @@ func ToolPaletteNewFromNative(native unsafe.Pointer) *ToolPalette {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -79308,6 +80289,10 @@ func ToolbarNewFromNative(native unsafe.Pointer) *Toolbar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -79890,6 +80875,10 @@ func TooltipNewFromNative(native unsafe.Pointer) *Tooltip {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -80089,6 +81078,10 @@ func ToplevelAccessibleNewFromNative(native unsafe.Pointer) *ToplevelAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -80159,6 +81152,10 @@ func TreeModelFilterNewFromNative(native unsafe.Pointer) *TreeModelFilter {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -80435,6 +81432,10 @@ func TreeModelSortNewFromNative(native unsafe.Pointer) *TreeModelSort {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -80709,6 +81710,10 @@ func TreeSelectionNewFromNative(native unsafe.Pointer) *TreeSelection {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -81190,6 +82195,10 @@ func TreeStoreNewFromNative(native unsafe.Pointer) *TreeStore {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -81693,6 +82702,10 @@ func TreeViewNewFromNative(native unsafe.Pointer) *TreeView {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -84267,6 +85280,10 @@ func TreeViewAccessibleNewFromNative(native unsafe.Pointer) *TreeViewAccessible 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -84360,6 +85377,10 @@ func TreeViewColumnNewFromNative(native unsafe.Pointer) *TreeViewColumn {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -85907,6 +86928,10 @@ func UIManagerNewFromNative(native unsafe.Pointer) *UIManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -86434,6 +87459,10 @@ func VBoxNewFromNative(native unsafe.Pointer) *VBox {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -86546,6 +87575,10 @@ func VButtonBoxNewFromNative(native unsafe.Pointer) *VButtonBox {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -86662,6 +87695,10 @@ func VPanedNewFromNative(native unsafe.Pointer) *VPaned {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -86771,6 +87808,10 @@ func VScaleNewFromNative(native unsafe.Pointer) *VScale {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -86918,6 +87959,10 @@ func VScrollbarNewFromNative(native unsafe.Pointer) *VScrollbar {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -87030,6 +88075,10 @@ func VSeparatorNewFromNative(native unsafe.Pointer) *VSeparator {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -87134,6 +88183,10 @@ func ViewportNewFromNative(native unsafe.Pointer) *Viewport {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -87435,6 +88488,10 @@ func VolumeButtonNewFromNative(native unsafe.Pointer) *VolumeButton {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -87554,6 +88611,10 @@ func WidgetNewFromNative(native unsafe.Pointer) *Widget {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -93319,6 +94380,10 @@ func WidgetAccessibleNewFromNative(native unsafe.Pointer) *WidgetAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -93402,6 +94467,10 @@ func WindowNewFromNative(native unsafe.Pointer) *Window {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -96296,6 +97365,10 @@ func WindowAccessibleNewFromNative(native unsafe.Pointer) *WindowAccessible {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -96389,6 +97462,10 @@ func WindowGroupNewFromNative(native unsafe.Pointer) *WindowGroup {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

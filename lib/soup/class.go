@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -34,6 +35,10 @@ func AddressNewFromNative(native unsafe.Pointer) *Address {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -422,6 +427,10 @@ func AuthNewFromNative(native unsafe.Pointer) *Auth {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -942,6 +951,10 @@ func AuthBasicNewFromNative(native unsafe.Pointer) *AuthBasic {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -993,6 +1006,10 @@ func AuthDigestNewFromNative(native unsafe.Pointer) *AuthDigest {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1043,6 +1060,10 @@ func AuthDomainNewFromNative(native unsafe.Pointer) *AuthDomain {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1352,6 +1373,10 @@ func AuthDomainBasicNewFromNative(native unsafe.Pointer) *AuthDomainBasic {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1421,6 +1446,10 @@ func AuthDomainDigestNewFromNative(native unsafe.Pointer) *AuthDomainDigest {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1489,6 +1518,10 @@ func AuthManagerNewFromNative(native unsafe.Pointer) *AuthManager {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1612,6 +1645,10 @@ func AuthNTLMNewFromNative(native unsafe.Pointer) *AuthNTLM {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1663,6 +1700,10 @@ func AuthNegotiateNewFromNative(native unsafe.Pointer) *AuthNegotiate {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1713,6 +1754,10 @@ func CacheNewFromNative(native unsafe.Pointer) *Cache {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1986,6 +2031,10 @@ func ContentDecoderNewFromNative(native unsafe.Pointer) *ContentDecoder {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2049,6 +2098,10 @@ func ContentSnifferNewFromNative(native unsafe.Pointer) *ContentSniffer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2179,6 +2232,10 @@ func CookieJarNewFromNative(native unsafe.Pointer) *CookieJar {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2601,6 +2658,10 @@ func CookieJarDBNewFromNative(native unsafe.Pointer) *CookieJarDB {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2701,6 +2762,10 @@ func CookieJarTextNewFromNative(native unsafe.Pointer) *CookieJarText {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2800,6 +2865,10 @@ func HSTSEnforcerNewFromNative(native unsafe.Pointer) *HSTSEnforcer {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3025,6 +3094,10 @@ func HSTSEnforcerDBNewFromNative(native unsafe.Pointer) *HSTSEnforcerDB {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3137,6 +3210,10 @@ func LoggerNewFromNative(native unsafe.Pointer) *Logger {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3286,6 +3363,10 @@ func MessageNewFromNative(native unsafe.Pointer) *Message {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4292,6 +4373,10 @@ func MultipartInputStreamNewFromNative(native unsafe.Pointer) *MultipartInputStr
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4392,6 +4477,10 @@ func ProxyResolverDefaultNewFromNative(native unsafe.Pointer) *ProxyResolverDefa
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4441,6 +4530,10 @@ func RequestNewFromNative(native unsafe.Pointer) *Request {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4640,6 +4733,10 @@ func RequestDataNewFromNative(native unsafe.Pointer) *RequestData {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4718,6 +4815,10 @@ func RequestFileNewFromNative(native unsafe.Pointer) *RequestFile {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4799,6 +4900,10 @@ func RequestHTTPNewFromNative(native unsafe.Pointer) *RequestHTTP {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4910,6 +5015,10 @@ func RequesterNewFromNative(native unsafe.Pointer) *Requester {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5072,6 +5181,10 @@ func ServerNewFromNative(native unsafe.Pointer) *Server {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5539,6 +5652,10 @@ func SessionNewFromNative(native unsafe.Pointer) *Session {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6069,6 +6186,10 @@ func SessionAsyncNewFromNative(native unsafe.Pointer) *SessionAsync {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6168,6 +6289,10 @@ func SessionSyncNewFromNative(native unsafe.Pointer) *SessionSync {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -6266,6 +6391,10 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6552,6 +6681,10 @@ func WebsocketConnectionNewFromNative(native unsafe.Pointer) *WebsocketConnectio
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -7020,6 +7153,10 @@ func WebsocketExtensionNewFromNative(native unsafe.Pointer) *WebsocketExtension 
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7140,6 +7277,10 @@ func WebsocketExtensionDeflateNewFromNative(native unsafe.Pointer) *WebsocketExt
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -7204,6 +7345,10 @@ func WebsocketExtensionManagerNewFromNative(native unsafe.Pointer) *WebsocketExt
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

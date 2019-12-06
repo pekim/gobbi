@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -34,6 +35,10 @@ func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -264,6 +269,10 @@ func CursorNewFromNative(native unsafe.Pointer) *Cursor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -546,6 +555,10 @@ func DeviceNewFromNative(native unsafe.Pointer) *Device {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1323,6 +1336,10 @@ func DeviceManagerNewFromNative(native unsafe.Pointer) *DeviceManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1434,6 +1451,10 @@ func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1576,6 +1597,10 @@ func DisplayNewFromNative(native unsafe.Pointer) *Display {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2832,6 +2857,10 @@ func DisplayManagerNewFromNative(native unsafe.Pointer) *DisplayManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2973,6 +3002,10 @@ func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3249,6 +3282,10 @@ func DrawingContextNewFromNative(native unsafe.Pointer) *DrawingContext {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3362,6 +3399,10 @@ func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3661,6 +3702,10 @@ func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4175,6 +4220,10 @@ func KeymapNewFromNative(native unsafe.Pointer) *Keymap {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4427,6 +4476,10 @@ func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4825,6 +4878,10 @@ func ScreenNewFromNative(native unsafe.Pointer) *Screen {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5658,6 +5715,10 @@ func SeatNewFromNative(native unsafe.Pointer) *Seat {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5837,6 +5898,10 @@ func VisualNewFromNative(native unsafe.Pointer) *Visual {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6177,6 +6242,10 @@ func WindowNewFromNative(native unsafe.Pointer) *Window {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

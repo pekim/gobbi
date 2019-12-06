@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -34,6 +35,10 @@ func AuthenticationRequestNewFromNative(native unsafe.Pointer) *AuthenticationRe
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -398,6 +403,10 @@ func AutomationSessionNewFromNative(native unsafe.Pointer) *AutomationSession {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -554,6 +563,10 @@ func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -788,6 +801,10 @@ func BackForwardListItemNewFromNative(native unsafe.Pointer) *BackForwardListIte
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -953,6 +970,10 @@ func ColorChooserRequestNewFromNative(native unsafe.Pointer) *ColorChooserReques
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1064,6 +1085,10 @@ func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1473,6 +1498,10 @@ func ContextMenuItemNewFromNative(native unsafe.Pointer) *ContextMenuItem {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1803,6 +1832,10 @@ func CookieManagerNewFromNative(native unsafe.Pointer) *CookieManager {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2003,6 +2036,10 @@ func DeviceInfoPermissionRequestNewFromNative(native unsafe.Pointer) *DeviceInfo
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2052,6 +2089,10 @@ func DownloadNewFromNative(native unsafe.Pointer) *Download {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2459,6 +2500,10 @@ func EditorStateNewFromNative(native unsafe.Pointer) *EditorState {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2715,6 +2760,10 @@ func FaviconDatabaseNewFromNative(native unsafe.Pointer) *FaviconDatabase {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2843,6 +2892,10 @@ func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3013,6 +3066,10 @@ func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3338,6 +3395,10 @@ func FormSubmissionRequestNewFromNative(native unsafe.Pointer) *FormSubmissionRe
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3419,6 +3480,10 @@ func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -3560,6 +3625,10 @@ func GeolocationPermissionRequestNewFromNative(native unsafe.Pointer) *Geolocati
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -3609,6 +3678,10 @@ func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4058,6 +4131,10 @@ func InstallMissingMediaPluginsPermissionRequestNewFromNative(native unsafe.Poin
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4153,6 +4230,10 @@ func NavigationPolicyDecisionNewFromNative(native unsafe.Pointer) *NavigationPol
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4411,6 +4492,10 @@ func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4659,6 +4744,10 @@ func NotificationPermissionRequestNewFromNative(native unsafe.Pointer) *Notifica
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -4708,6 +4797,10 @@ func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -4924,6 +5017,10 @@ func PluginNewFromNative(native unsafe.Pointer) *Plugin {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5086,6 +5183,10 @@ func PolicyDecisionNewFromNative(native unsafe.Pointer) *PolicyDecision {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5220,6 +5321,10 @@ func PrintCustomWidgetNewFromNative(native unsafe.Pointer) *PrintCustomWidget {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -5319,6 +5424,10 @@ func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5455,6 +5564,10 @@ func ResponsePolicyDecisionNewFromNative(native unsafe.Pointer) *ResponsePolicyD
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -5616,6 +5729,10 @@ func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -6052,6 +6169,10 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -9658,6 +9779,10 @@ func URIRequestNewFromNative(native unsafe.Pointer) *URIRequest {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -9836,6 +9961,10 @@ func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -10049,6 +10178,10 @@ func URISchemeRequestNewFromNative(native unsafe.Pointer) *URISchemeRequest {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -10245,6 +10378,10 @@ func UserContentFilterStoreNewFromNative(native unsafe.Pointer) *UserContentFilt
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -10380,6 +10517,10 @@ func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -10818,6 +10959,10 @@ func UserMediaPermissionRequestNewFromNative(native unsafe.Pointer) *UserMediaPe
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -10867,6 +11012,10 @@ func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -11977,6 +12126,10 @@ func WebInspectorNewFromNative(native unsafe.Pointer) *WebInspector {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12313,6 +12466,10 @@ func WebResourceNewFromNative(native unsafe.Pointer) *WebResource {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -12444,6 +12601,10 @@ func WebViewNewFromNative(native unsafe.Pointer) *WebView {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14106,6 +14267,10 @@ func WebViewBaseNewFromNative(native unsafe.Pointer) *WebViewBase {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -14170,6 +14335,10 @@ func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager 
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -14600,6 +14769,10 @@ func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }

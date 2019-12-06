@@ -5,6 +5,7 @@ package gdkpixbuf
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -33,6 +34,10 @@ func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -1367,6 +1372,10 @@ func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1675,6 +1684,10 @@ func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIte
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -1818,6 +1831,10 @@ func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
@@ -2131,6 +2148,10 @@ func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
 		object.Ref()
 	}
 
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
+
 	return instance
 }
 
@@ -2307,6 +2328,10 @@ func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimI
 	} else {
 		object.Ref()
 	}
+
+	runtime.SetFinalizer(object, func(o *gobject.Object) {
+		o.Unref()
+	})
 
 	return instance
 }
